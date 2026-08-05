@@ -107,6 +107,8 @@
          create_agent_status/4,
          create_attached_file/3,
          create_attached_file/4,
+         create_auth_code/3,
+         create_auth_code/4,
          create_contact/2,
          create_contact/3,
          create_contact_flow/3,
@@ -183,6 +185,8 @@
          deactivate_evaluation_form/5,
          delete_attached_file/4,
          delete_attached_file/5,
+         delete_contact_data/4,
+         delete_contact_data/5,
          delete_contact_evaluation/4,
          delete_contact_evaluation/5,
          delete_contact_flow/4,
@@ -229,6 +233,8 @@
          delete_rule/5,
          delete_security_profile/4,
          delete_security_profile/5,
+         delete_session/4,
+         delete_session/5,
          delete_task_template/4,
          delete_task_template/5,
          delete_test_case/4,
@@ -689,6 +695,8 @@
          search_resource_tags/3,
          search_routing_profiles/2,
          search_routing_profiles/3,
+         search_rules/2,
+         search_rules/3,
          search_security_profiles/2,
          search_security_profiles/3,
          search_test_cases/2,
@@ -901,80 +909,10 @@
 
 
 %% Example:
-%% associate_instance_storage_config_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ResourceType">> := list(any()),
-%%   <<"StorageConfig">> := instance_storage_config()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type associate_instance_storage_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workspace_media_response() :: #{
-%%   <<"Media">> => list(media_item())
-%% }
--type list_workspace_media_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_attached_file_request() :: #{
-%%   <<"AssociatedResourceArn">> := string()
-%% }
--type delete_attached_file_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_filter() :: #{
-%%   <<"ContactStates">> => list(list(any())())
-%% }
--type contact_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% answer_machine_detection_config() :: #{
-%%   <<"AwaitAnswerMachinePrompt">> => boolean(),
-%%   <<"EnableAnswerMachineDetection">> => boolean()
-%% }
--type answer_machine_detection_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_table_values_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Values">> => list(data_table_value_summary())
-%% }
--type list_data_table_values_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_identity_info_request() :: #{
-%%   <<"IdentityInfo">> := user_identity_info()
-%% }
--type update_user_identity_info_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_evaluations_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_evaluations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% outbound_caller_config() :: #{
-%%   <<"OutboundCallerIdName">> => string(),
-%%   <<"OutboundCallerIdNumberId">> => string(),
-%%   <<"OutboundFlowId">> => string()
-%% }
--type outbound_caller_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_search_filter() :: #{
-%%   <<"TagFilter">> => control_plane_tag_filter()
-%% }
--type queue_search_filter() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -985,796 +923,6 @@
 
 
 %% Example:
-%% update_user_proficiencies_request() :: #{
-%%   <<"UserProficiencies">> := list(user_proficiency())
-%% }
--type update_user_proficiencies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_item_enablement_expression() :: #{
-%%   <<"Comparator">> => list(any()),
-%%   <<"Source">> => evaluation_form_item_enablement_source(),
-%%   <<"Values">> => list(evaluation_form_item_enablement_source_value())
-%% }
--type evaluation_form_item_enablement_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_default_vocabulary_request() :: #{
-%%   <<"VocabularyId">> => string()
-%% }
--type associate_default_vocabulary_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_review_configuration() :: #{
-%%   <<"EligibilityDays">> => integer(),
-%%   <<"ReviewNotificationRecipients">> => list(evaluation_review_notification_recipient())
-%% }
--type evaluation_review_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_table_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LockVersion">> => data_table_lock_version()
-%% }
--type create_data_table_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_notification_content() :: #{
-%%   <<"Attributes">> => content_attributes(),
-%%   <<"Type">> => list(any()),
-%%   <<"ViewArn">> => string()
-%% }
--type web_notification_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_enum() :: #{
-%%   <<"Strict">> => boolean(),
-%%   <<"Values">> => list(string())
-%% }
--type validation_enum() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_persistent_contact_association_response() :: #{
-%%   <<"ContinuedFromContactId">> => string()
-%% }
--type create_persistent_contact_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_flow_module_request() :: #{}
--type delete_contact_flow_module_request() :: #{}.
-
-%% Example:
-%% delete_view_version_response() :: #{}
--type delete_view_version_response() :: #{}.
-
-
-%% Example:
-%% get_current_user_data_request() :: #{
-%%   <<"Filters">> := user_data_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_current_user_data_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% chat_streaming_configuration() :: #{
-%%   <<"StreamingEndpointArn">> => string()
-%% }
--type chat_streaming_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_effective_hours_of_operations_request() :: #{
-%%   <<"FromDate">> := string(),
-%%   <<"ToDate">> := string()
-%% }
--type get_effective_hours_of_operations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_evaluation_form_validation_request() :: #{
-%%   <<"EvaluationFormVersion">> := integer()
-%% }
--type start_evaluation_form_validation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% view_input_content() :: #{
-%%   <<"Actions">> => list(string()),
-%%   <<"Template">> => string()
-%% }
--type view_input_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_references_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReferenceSummaryList">> => list(list())
-%% }
--type list_contact_references_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_vocabularies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VocabularySummaryList">> => list(vocabulary_summary())
-%% }
--type search_vocabularies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_current_metric_data_request() :: #{
-%%   <<"CurrentMetrics">> := list(current_metric()),
-%%   <<"Filters">> := filters(),
-%%   <<"Groupings">> => list(list(any())()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortCriteria">> => list(current_metric_sort_criteria())
-%% }
--type get_current_metric_data_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_review_notification_recipient_value() :: #{
-%%   <<"UserId">> => string()
-%% }
--type evaluation_review_notification_recipient_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_table_attribute_response() :: #{
-%%   <<"AttributeId">> => string(),
-%%   <<"LockVersion">> => data_table_lock_version(),
-%%   <<"Name">> => string()
-%% }
--type create_data_table_attribute_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% participant_capabilities() :: #{
-%%   <<"ScreenShare">> => list(any()),
-%%   <<"Video">> => list(any())
-%% }
--type participant_capabilities() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_rule_request() :: #{
-%%   <<"Actions">> := list(rule_action()),
-%%   <<"ClientToken">> => string(),
-%%   <<"Function">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"PublishStatus">> := list(any()),
-%%   <<"TriggerEventSource">> := rule_trigger_event_source()
-%% }
--type create_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_evaluation_form_request() :: #{
-%%   <<"AsDraft">> => boolean(),
-%%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
-%%   <<"ClientToken">> => string(),
-%%   <<"CreateNewVersion">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"EvaluationFormVersion">> := integer(),
-%%   <<"Items">> := list(list()),
-%%   <<"LanguageConfiguration">> => evaluation_form_language_configuration(),
-%%   <<"ReviewConfiguration">> => evaluation_review_configuration(),
-%%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
-%%   <<"TargetConfiguration">> => evaluation_form_target_configuration(),
-%%   <<"Title">> := string()
-%% }
--type update_evaluation_form_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_outbound_email_contact_response() :: #{
-%%   <<"ContactId">> => string()
-%% }
--type start_outbound_email_contact_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_contact_evaluations_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"EvaluationSearchSummaryList">> => list(evaluation_search_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type search_contact_evaluations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_question_automation_answer_source() :: #{
-%%   <<"SourceType">> => list(any())
-%% }
--type evaluation_form_question_automation_answer_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_profile_search_criteria() :: #{
-%%   <<"AndConditions">> => list(security_profile_search_criteria()),
-%%   <<"OrConditions">> => list(security_profile_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type security_profile_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_traffic_distribution_group_user_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type disassociate_traffic_distribution_group_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_data_table_value_success_result() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"LockVersion">> => data_table_lock_version(),
-%%   <<"PrimaryValues">> => list(primary_value())
-%% }
--type batch_update_data_table_value_success_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_flow_attribute_filter() :: #{
-%%   <<"AndCondition">> => contact_flow_attribute_and_condition(),
-%%   <<"ContactFlowTypeCondition">> => contact_flow_type_condition(),
-%%   <<"OrConditions">> => list(contact_flow_attribute_and_condition()),
-%%   <<"TagCondition">> => tag_condition()
-%% }
--type contact_flow_attribute_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_reference() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type email_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% number_reference() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type number_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_participant_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ContactId">> := string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"ParticipantDetails">> := participant_details_to_add()
-%% }
--type create_participant_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_type_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type output_type_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% chat_contact_metrics() :: #{
-%%   <<"AgentFirstResponseTimeInMillis">> => float(),
-%%   <<"AgentFirstResponseTimestamp">> => non_neg_integer(),
-%%   <<"ConversationCloseTimeInMillis">> => float(),
-%%   <<"ConversationTurnCount">> => integer(),
-%%   <<"MultiParty">> => boolean(),
-%%   <<"TotalBotMessageLengthInChars">> => integer(),
-%%   <<"TotalBotMessages">> => integer(),
-%%   <<"TotalMessages">> => integer()
-%% }
--type chat_contact_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% traffic_distribution_group_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type traffic_distribution_group_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_multi_select_question_automation() :: #{
-%%   <<"AnswerSource">> => evaluation_form_question_automation_answer_source(),
-%%   <<"DefaultOptionRefIds">> => list(string()),
-%%   <<"Options">> => list(list())
-%% }
--type evaluation_form_multi_select_question_automation() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_flow_module() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Content">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ExternalInvocationConfiguration">> => external_invocation_configuration(),
-%%   <<"FlowModuleContentSha256">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Settings">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Version">> => float(),
-%%   <<"VersionDescription">> => string()
-%% }
--type contact_flow_module() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Username">> => string()
-%% }
--type user_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% primary_value_response() :: #{
-%%   <<"AttributeId">> => string(),
-%%   <<"AttributeName">> => string(),
-%%   <<"Value">> => string()
-%% }
--type primary_value_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_user_notifications_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UserNotifications">> => list(user_notification_summary())
-%% }
--type list_user_notifications_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_test_case_response() :: #{}
--type delete_test_case_response() :: #{}.
-
-
-%% Example:
-%% range() :: #{
-%%   <<"MaxProficiencyLevel">> => float(),
-%%   <<"MinProficiencyLevel">> => float()
-%% }
--type range() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_describe_data_table_value_success_result() :: #{
-%%   <<"AttributeId">> => string(),
-%%   <<"AttributeName">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LockVersion">> => data_table_lock_version(),
-%%   <<"PrimaryValues">> => list(primary_value_response()),
-%%   <<"RecordId">> => string(),
-%%   <<"Value">> => string()
-%% }
--type batch_describe_data_table_value_success_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_hierarchy_structure_request() :: #{}
--type describe_user_hierarchy_structure_request() :: #{}.
-
-%% Example:
-%% get_federation_token_request() :: #{}
--type get_federation_token_request() :: #{}.
-
-
-%% Example:
-%% test_case_search_criteria() :: #{
-%%   <<"AndConditions">> => list(test_case_search_criteria()),
-%%   <<"OrConditions">> => list(test_case_search_criteria()),
-%%   <<"StatusCondition">> => list(any()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type test_case_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_queues_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QueueTypes">> => list(list(any())())
-%% }
--type list_queues_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lambda_functions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_lambda_functions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_config() :: #{
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"KeyId">> => string()
-%% }
--type encryption_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_contact_flow_modules_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => contact_flow_module_search_criteria(),
-%%   <<"SearchFilter">> => contact_flow_module_search_filter()
-%% }
--type search_contact_flow_modules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_phone_numbers_summary() :: #{
-%%   <<"InstanceId">> => string(),
-%%   <<"PhoneNumber">> => string(),
-%%   <<"PhoneNumberArn">> => string(),
-%%   <<"PhoneNumberCountryCode">> => list(any()),
-%%   <<"PhoneNumberDescription">> => string(),
-%%   <<"PhoneNumberId">> => string(),
-%%   <<"PhoneNumberType">> => list(any()),
-%%   <<"SourcePhoneNumberArn">> => string(),
-%%   <<"TargetArn">> => string()
-%% }
--type list_phone_numbers_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% campaign() :: #{
-%%   <<"CampaignId">> => string()
-%% }
--type campaign() :: #{binary() => any()}.
-
-
-%% Example:
-%% persistent_connection_config() :: #{
-%%   <<"Channel">> => list(any()),
-%%   <<"PersistentConnection">> => boolean()
-%% }
--type persistent_connection_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_flow_attribute_and_condition() :: #{
-%%   <<"ContactFlowTypeCondition">> => contact_flow_type_condition(),
-%%   <<"TagConditions">> => list(tag_condition())
-%% }
--type contact_flow_attribute_and_condition() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_hierarchy_group_request() :: #{}
--type describe_user_hierarchy_group_request() :: #{}.
-
-
-%% Example:
-%% contact_flow_search_criteria() :: #{
-%%   <<"AndConditions">> => list(contact_flow_search_criteria()),
-%%   <<"OrConditions">> => list(contact_flow_search_criteria()),
-%%   <<"StateCondition">> => list(any()),
-%%   <<"StatusCondition">> => list(any()),
-%%   <<"StringCondition">> => string_condition(),
-%%   <<"TypeCondition">> => list(any())
-%% }
--type contact_flow_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_attached_files_configuration_response() :: #{
-%%   <<"AttachmentScope">> => list(any()),
-%%   <<"ExtensionConfiguration">> => extension_configuration(),
-%%   <<"InstanceId">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MaximumSizeLimitInBytes">> => float()
-%% }
--type update_attached_files_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_users_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user_search_summary())
-%% }
--type search_users_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_outbound_chat_contact_request() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"ChatDurationInMinutes">> => integer(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ContactFlowId">> := string(),
-%%   <<"DestinationEndpoint">> := endpoint(),
-%%   <<"InitialSystemMessage">> => chat_message(),
-%%   <<"InitialTemplatedSystemMessage">> => templated_message_config(),
-%%   <<"InstanceId">> := string(),
-%%   <<"ParticipantDetails">> => participant_details(),
-%%   <<"RelatedContactId">> => string(),
-%%   <<"SegmentAttributes">> := map(),
-%%   <<"SourceEndpoint">> := endpoint(),
-%%   <<"SupportedMessagingContentTypes">> => list(string())
-%% }
--type start_outbound_chat_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_contact_recording_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"InitialContactId">> := string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"VoiceRecordingConfiguration">> := voice_recording_configuration()
-%% }
--type start_contact_recording_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_traffic_distribution_group_users_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrafficDistributionGroupUserSummaryList">> => list(traffic_distribution_group_user_summary())
-%% }
--type list_traffic_distribution_group_users_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_criteria_input() :: #{
-%%   <<"Steps">> => list(routing_criteria_input_step())
-%% }
--type routing_criteria_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_notifications_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"Notifications">> => list(notification_search_summary())
-%% }
--type search_notifications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_hierarchy_group_search_filter() :: #{
-%%   <<"AttributeFilter">> => control_plane_attribute_filter()
-%% }
--type user_hierarchy_group_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_recipient() :: #{
-%%   <<"Address">> => string(),
-%%   <<"DisplayName">> => string()
-%% }
--type email_recipient() :: #{binary() => any()}.
-
-%% Example:
-%% describe_traffic_distribution_group_request() :: #{}
--type describe_traffic_distribution_group_request() :: #{}.
-
-
-%% Example:
-%% attribute_condition() :: #{
-%%   <<"ComparisonOperator">> => string(),
-%%   <<"MatchCriteria">> => match_criteria(),
-%%   <<"Name">> => string(),
-%%   <<"ProficiencyLevel">> => float(),
-%%   <<"Range">> => range(),
-%%   <<"Value">> => string()
-%% }
--type attribute_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type prompt_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workspace_visibility_request() :: #{
-%%   <<"Visibility">> := list(any())
-%% }
--type update_workspace_visibility_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hours_of_operation_override_request() :: #{}
--type delete_hours_of_operation_override_request() :: #{}.
-
-%% Example:
-%% disassociate_flow_request() :: #{}
--type disassociate_flow_request() :: #{}.
-
-
-%% Example:
-%% list_condition() :: #{
-%%   <<"Conditions">> => list(condition()),
-%%   <<"TargetListType">> => list(any())
-%% }
--type list_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% extension_configuration() :: #{
-%%   <<"AllowedExtensions">> => list(allowed_extension())
-%% }
--type extension_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_criteria_input_step_expiry() :: #{
-%%   <<"DurationInSeconds">> => integer()
-%% }
--type routing_criteria_input_step_expiry() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_use_case_response() :: #{
-%%   <<"UseCaseArn">> => string(),
-%%   <<"UseCaseId">> => string()
-%% }
--type create_use_case_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_quick_connect_config() :: #{
-%%   <<"ContactFlowId">> => string()
-%% }
--type flow_quick_connect_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% replicate_instance_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ReplicaAlias">> := string(),
-%%   <<"ReplicaRegion">> := string()
-%% }
--type replicate_instance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% deactivate_evaluation_form_response() :: #{
-%%   <<"EvaluationFormArn">> => string(),
-%%   <<"EvaluationFormId">> => string(),
-%%   <<"EvaluationFormVersion">> => integer()
-%% }
--type deactivate_evaluation_form_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_flow_search_filter() :: #{
-%%   <<"FlowAttributeFilter">> => contact_flow_attribute_filter(),
-%%   <<"TagFilter">> => control_plane_tag_filter()
-%% }
--type contact_flow_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_hours_of_operations_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"HoursOfOperations">> => list(hours_of_operation()),
-%%   <<"NextToken">> => string()
-%% }
--type search_hours_of_operations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_data_tables_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"DataTables">> => list(data_table()),
-%%   <<"NextToken">> => string()
-%% }
--type search_data_tables_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_contact_with_user_response() :: #{}
--type associate_contact_with_user_response() :: #{}.
-
-
-%% Example:
-%% list_child_hours_of_operations_response() :: #{
-%%   <<"ChildHoursOfOperationsSummaryList">> => list(hours_of_operations_identifier()),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_child_hours_of_operations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_workspace_media_request() :: #{
-%%   <<"MediaType">> := list(any())
-%% }
--type delete_workspace_media_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_invocation_configuration() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type external_invocation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% view_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type view_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% question_points_configuration() :: #{
-%%   <<"IsBonus">> => boolean(),
-%%   <<"MaxPointValue">> => integer(),
-%%   <<"MinPointValue">> => integer()
-%% }
--type question_points_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% searchable_segment_attributes() :: #{
-%%   <<"Criteria">> => list(searchable_segment_attributes_criteria()),
-%%   <<"MatchType">> => list(any())
-%% }
--type searchable_segment_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_search_filter() :: #{
-%%   <<"AttributeFilter">> => control_plane_attribute_filter()
-%% }
--type workspace_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_test_case_exception() :: #{
-%%   <<"Problems">> => list(problem_detail())
-%% }
--type invalid_test_case_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% activate_evaluation_form_request() :: #{
 %%   <<"EvaluationFormVersion">> := integer()
 %% }
@@ -1782,715 +930,27 @@
 
 
 %% Example:
-%% disassociate_security_profiles_request() :: #{
-%%   <<"EntityArn">> := string(),
-%%   <<"EntityType">> := list(any()),
-%%   <<"SecurityProfiles">> := list(security_profile_item())
-%% }
--type disassociate_security_profiles_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_attached_files_configuration_request() :: #{}
--type describe_attached_files_configuration_request() :: #{}.
-
-
-%% Example:
-%% successful_request() :: #{
-%%   <<"ContactId">> => string(),
-%%   <<"RequestIdentifier">> => string()
-%% }
--type successful_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_instance_storage_config_response() :: #{
-%%   <<"StorageConfig">> => instance_storage_config()
-%% }
--type describe_instance_storage_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_contact_request() :: #{}
--type describe_contact_request() :: #{}.
-
-
-%% Example:
-%% agent_status() :: #{
-%%   <<"AgentStatusARN">> => string(),
-%%   <<"AgentStatusId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayOrder">> => integer(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any())
-%% }
--type agent_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_available_phone_numbers_response() :: #{
-%%   <<"AvailableNumbersList">> => list(available_number_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type search_available_phone_numbers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dimensions() :: #{
-%%   <<"AgentStatus">> => agent_status_identifier(),
-%%   <<"Channel">> => list(any()),
-%%   <<"Queue">> => queue_reference(),
-%%   <<"RoutingProfile">> => routing_profile_reference(),
-%%   <<"RoutingStepExpression">> => string(),
-%%   <<"Subtype">> => string(),
-%%   <<"ValidationTestType">> => string()
-%% }
--type dimensions() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_task_template_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Constraints">> => task_template_constraints(),
-%%   <<"ContactFlowId">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Defaults">> => task_template_defaults(),
-%%   <<"Description">> => string(),
-%%   <<"Fields">> => list(task_template_field()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"SelfAssignFlowId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type get_task_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_use_case_request() :: #{}
--type delete_use_case_request() :: #{}.
-
-
-%% Example:
-%% describe_prompt_response() :: #{
-%%   <<"Prompt">> => prompt()
-%% }
--type describe_prompt_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_hours_of_operations_response() :: #{
-%%   <<"HoursOfOperationSummaryList">> => list(hours_of_operation_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_hours_of_operations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_test_case_execution_summary_response() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ObservationSummary">> => observation_summary(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type get_test_case_execution_summary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_data_table_value_failure_result() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"PrimaryValues">> => list(primary_value())
-%% }
--type batch_update_data_table_value_failure_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_suggested_answer_transcript_millisecond_offsets() :: #{
-%%   <<"BeginOffsetMillis">> => integer()
-%% }
--type evaluation_suggested_answer_transcript_millisecond_offsets() :: #{binary() => any()}.
-
-
-%% Example:
-%% predefined_attribute_configuration() :: #{
-%%   <<"EnableValueValidationOnAssociation">> => boolean(),
-%%   <<"IsReadOnly">> => boolean()
-%% }
--type predefined_attribute_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notifications_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NotificationSummaryList">> => list(notification())
-%% }
--type list_notifications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% font_family() :: #{
-%%   <<"Default">> => list(any())
-%% }
--type font_family() :: #{binary() => any()}.
-
-
-%% Example:
-%% property_validation_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"PropertyList">> => list(property_validation_exception_property())
-%% }
--type property_validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% send_outbound_email_response() :: #{}
--type send_outbound_email_response() :: #{}.
-
-
-%% Example:
-%% user_identity_info_lite() :: #{
-%%   <<"FirstName">> => string(),
-%%   <<"LastName">> => string()
-%% }
--type user_identity_info_lite() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_contact_response() :: #{
-%%   <<"Contact">> => contact()
-%% }
--type describe_contact_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_flow_associations_response() :: #{
-%%   <<"FlowAssociationSummaryList">> => list(flow_association_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_flow_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_contacts_time_range() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Type">> => list(any())
-%% }
--type search_contacts_time_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% threshold_v2() :: #{
-%%   <<"Comparison">> => string(),
-%%   <<"ThresholdValue">> => float()
-%% }
--type threshold_v2() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_attributes_response() :: #{}
--type update_contact_attributes_response() :: #{}.
-
-
-%% Example:
-%% evaluation_form_validation_finding_item() :: #{
-%%   <<"Property">> => string(),
-%%   <<"RefId">> => string()
-%% }
--type evaluation_form_validation_finding_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_contact_flow_request() :: #{
-%%   <<"Content">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> := list(any())
-%% }
--type create_contact_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_interval() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Interval">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type metric_interval() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workspace_metadata_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Title">> => string()
-%% }
--type update_workspace_metadata_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% upload_url_metadata() :: #{
-%%   <<"HeadersToInclude">> => map(),
-%%   <<"Url">> => string(),
-%%   <<"UrlExpiry">> => string()
-%% }
--type upload_url_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_contact_analysis_transcript_item_with_content() :: #{
-%%   <<"CharacterOffsets">> => real_time_contact_analysis_character_interval(),
-%%   <<"Content">> => string(),
-%%   <<"Id">> => string()
-%% }
--type real_time_contact_analysis_transcript_item_with_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_predefined_attributes_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"PredefinedAttributes">> => list(predefined_attribute())
-%% }
--type search_predefined_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_hours_of_operations_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => hours_of_operation_search_criteria(),
-%%   <<"SearchFilter">> => hours_of_operation_search_filter()
-%% }
--type search_hours_of_operations_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_predefined_attribute_request() :: #{}
--type describe_predefined_attribute_request() :: #{}.
-
-
-%% Example:
-%% post_accept_timeout_config() :: #{
-%%   <<"DurationInSeconds">> => integer()
-%% }
--type post_accept_timeout_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_prompt_file_response() :: #{
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"PromptPresignedUrl">> => string()
-%% }
--type get_prompt_file_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% view_search_criteria() :: #{
-%%   <<"AndConditions">> => list(view_search_criteria()),
-%%   <<"OrConditions">> => list(view_search_criteria()),
-%%   <<"StringCondition">> => string_condition(),
-%%   <<"ViewStatusCondition">> => list(any()),
-%%   <<"ViewTypeCondition">> => list(any())
-%% }
--type view_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% hierarchy_path_reference() :: #{
-%%   <<"LevelFive">> => hierarchy_group_summary_reference(),
-%%   <<"LevelFour">> => hierarchy_group_summary_reference(),
-%%   <<"LevelOne">> => hierarchy_group_summary_reference(),
-%%   <<"LevelThree">> => hierarchy_group_summary_reference(),
-%%   <<"LevelTwo">> => hierarchy_group_summary_reference()
-%% }
--type hierarchy_path_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_auto_evaluation_configuration() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type evaluation_form_auto_evaluation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_flow_association_response() :: #{
-%%   <<"FlowId">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type get_flow_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_attached_file_response() :: #{
-%%   <<"CreationTime">> => string(),
-%%   <<"FileArn">> => string(),
-%%   <<"FileId">> => string(),
-%%   <<"FileStatus">> => list(any())
-%% }
--type create_attached_file_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_text_question_automation() :: #{
-%%   <<"AnswerSource">> => evaluation_form_question_automation_answer_source()
-%% }
--type evaluation_form_text_question_automation() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_version_summary() :: #{
-%%   <<"CreatedBy">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
+%% activate_evaluation_form_response() :: #{
 %%   <<"EvaluationFormArn">> => string(),
 %%   <<"EvaluationFormId">> => string(),
-%%   <<"EvaluationFormVersion">> => integer(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Locked">> => boolean(),
-%%   <<"Status">> => list(any())
-%% }
--type evaluation_form_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_criteria() :: #{
-%%   <<"ActivationTimestamp">> => non_neg_integer(),
-%%   <<"Index">> => integer(),
-%%   <<"Steps">> => list(step())
-%% }
--type routing_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_attachment() :: #{
-%%   <<"FileName">> => string(),
-%%   <<"S3Url">> => string()
-%% }
--type email_attachment() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_user_proficiencies_response() :: #{
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserProficiencyList">> => list(user_proficiency())
-%% }
--type list_user_proficiencies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% historical_metric_result() :: #{
-%%   <<"Collections">> => list(historical_metric_data()),
-%%   <<"Dimensions">> => dimensions()
-%% }
--type historical_metric_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_table_attributes_response() :: #{
-%%   <<"Attributes">> => list(data_table_attribute()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_table_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_agent_status_response() :: #{
-%%   <<"AgentStatus">> => agent_status()
-%% }
--type describe_agent_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_review_metadata() :: #{
-%%   <<"CreatedBy">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"RequestedBy">> => string(),
-%%   <<"RequestedTime">> => non_neg_integer(),
-%%   <<"ReviewId">> => string(),
-%%   <<"ReviewRequestComments">> => list(evaluation_review_request_comment())
-%% }
--type evaluation_review_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_chat_integration_event_response() :: #{
-%%   <<"InitialContactId">> => string(),
-%%   <<"NewChatCreated">> => boolean()
-%% }
--type send_chat_integration_event_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_flow_module_alias_request() :: #{}
--type delete_contact_flow_module_alias_request() :: #{}.
-
-
-%% Example:
-%% meeting() :: #{
-%%   <<"MediaPlacement">> => media_placement(),
-%%   <<"MediaRegion">> => string(),
-%%   <<"MeetingFeatures">> => meeting_features_configuration(),
-%%   <<"MeetingId">> => string()
-%% }
--type meeting() :: #{binary() => any()}.
-
-
-%% Example:
-%% attached_file() :: #{
-%%   <<"AssociatedResourceArn">> => string(),
-%%   <<"CreatedBy">> => list(),
-%%   <<"CreationTime">> => string(),
-%%   <<"FileArn">> => string(),
-%%   <<"FileId">> => string(),
-%%   <<"FileName">> => string(),
-%%   <<"FileSizeInBytes">> => float(),
-%%   <<"FileStatus">> => list(any()),
-%%   <<"FileUseCaseType">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type attached_file() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_resource_tags_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag_set())
-%% }
--type search_resource_tags_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_notifications_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => notification_search_criteria(),
-%%   <<"SearchFilter">> => notification_search_filter()
-%% }
--type search_notifications_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_email_address_response() :: #{}
--type delete_email_address_response() :: #{}.
-
-
-%% Example:
-%% phone_number_quick_connect_config() :: #{
-%%   <<"PhoneNumber">> => string()
-%% }
--type phone_number_quick_connect_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_data_table_value_response() :: #{
-%%   <<"Failed">> => list(batch_delete_data_table_value_failure_result()),
-%%   <<"Successful">> => list(batch_delete_data_table_value_success_result())
-%% }
--type batch_delete_data_table_value_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% searchable_segment_attributes_criteria() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type searchable_segment_attributes_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_flow_version_request() :: #{}
--type delete_contact_flow_version_request() :: #{}.
-
-
-%% Example:
-%% list_test_case_execution_records_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_test_case_execution_records_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_profile_flow_modules_response() :: #{
-%%   <<"AllowedFlowModules">> => list(flow_module()),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_security_profile_flow_modules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% participant_metrics() :: #{
-%%   <<"ConversationAbandon">> => boolean(),
-%%   <<"LastMessageTimestamp">> => non_neg_integer(),
-%%   <<"MaxResponseTimeInMillis">> => float(),
-%%   <<"MessageLengthInChars">> => integer(),
-%%   <<"MessagesSent">> => integer(),
-%%   <<"NumResponses">> => integer(),
-%%   <<"ParticipantId">> => string(),
-%%   <<"ParticipantType">> => list(any()),
-%%   <<"TotalResponseTimeInMillis">> => float()
-%% }
--type participant_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_security_profile_response() :: #{
-%%   <<"SecurityProfile">> => security_profile()
-%% }
--type describe_security_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_evaluation_form_request() :: #{
 %%   <<"EvaluationFormVersion">> => integer()
 %% }
--type delete_evaluation_form_request() :: #{binary() => any()}.
+-type activate_evaluation_form_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% agent_status_search_criteria() :: #{
-%%   <<"AndConditions">> => list(agent_status_search_criteria()),
-%%   <<"OrConditions">> => list(agent_status_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
+%% additional_email_recipients() :: #{
+%%   <<"CcList">> => list(email_recipient()),
+%%   <<"ToList">> => list(email_recipient())
 %% }
--type agent_status_search_criteria() :: #{binary() => any()}.
+-type additional_email_recipients() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_security_profile_response() :: #{
-%%   <<"SecurityProfileArn">> => string(),
-%%   <<"SecurityProfileId">> => string()
+%% after_contact_work_config() :: #{
+%%   <<"AfterContactWorkTimeLimit">> => integer()
 %% }
--type create_security_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% failed_batch_association_summary() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type failed_batch_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% outbound_contact_not_permitted_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type outbound_contact_not_permitted_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_prompts_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PromptSummaryList">> => list(prompt_summary())
-%% }
--type list_prompts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_data_filters() :: #{
-%%   <<"Agents">> => list(string()),
-%%   <<"ContactFilter">> => contact_filter(),
-%%   <<"Queues">> => list(string()),
-%%   <<"RoutingProfiles">> => list(string()),
-%%   <<"UserHierarchyGroups">> => list(string())
-%% }
--type user_data_filters() :: #{binary() => any()}.
-
-%% Example:
-%% delete_view_request() :: #{}
--type delete_view_request() :: #{}.
-
-
-%% Example:
-%% chat_message() :: #{
-%%   <<"Content">> => string(),
-%%   <<"ContentType">> => string()
-%% }
--type chat_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_push_notification_registration_response() :: #{
-%%   <<"RegistrationId">> => string()
-%% }
--type create_push_notification_registration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_hours_of_operation_request() :: #{
-%%   <<"Config">> := list(hours_of_operation_config()),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"ParentHoursOfOperationConfigs">> => list(parent_hours_of_operation_config()),
-%%   <<"Tags">> => map(),
-%%   <<"TimeZone">> := string()
-%% }
--type create_hours_of_operation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_contact_analysis_point_of_interest() :: #{
-%%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_character_offsets())
-%% }
--type real_time_contact_analysis_point_of_interest() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_flow_version_response() :: #{}
--type delete_contact_flow_version_response() :: #{}.
-
-
-%% Example:
-%% redaction_configuration() :: #{
-%%   <<"Behavior">> => list(any()),
-%%   <<"Entities">> => list(string()),
-%%   <<"MaskMode">> => list(any()),
-%%   <<"Policy">> => list(any())
-%% }
--type redaction_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_flow_metadata_response() :: #{}
--type update_contact_flow_metadata_response() :: #{}.
-
-
-%% Example:
-%% disassociate_lex_bot_request() :: #{
-%%   <<"BotName">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"LexRegion">> := string()
-%% }
--type disassociate_lex_bot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% outbound_email_content() :: #{
-%%   <<"MessageSourceType">> => list(any()),
-%%   <<"RawMessage">> => outbound_raw_message(),
-%%   <<"TemplatedMessageConfig">> => templated_message_config()
-%% }
--type outbound_email_content() :: #{binary() => any()}.
+-type after_contact_work_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2503,2216 +963,10 @@
 
 
 %% Example:
-%% update_security_profile_request() :: #{
-%%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
-%%   <<"AllowedAccessControlTags">> => map(),
-%%   <<"AllowedFlowModules">> => list(flow_module()),
-%%   <<"Applications">> => list(application()),
-%%   <<"Description">> => string(),
-%%   <<"GranularAccessControlConfiguration">> => granular_access_control_configuration(),
-%%   <<"HierarchyRestrictedResources">> => list(string()),
-%%   <<"Permissions">> => list(string()),
-%%   <<"TagRestrictedResources">> => list(string())
+%% agent_config() :: #{
+%%   <<"Distributions">> => list(distribution())
 %% }
--type update_security_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_user_hierarchy_groups_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserHierarchyGroups">> => list(hierarchy_group())
-%% }
--type search_user_hierarchy_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_notification_summary() :: #{
-%%   <<"Content">> => map(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ExpiresAt">> => non_neg_integer(),
-%%   <<"InstanceId">> => string(),
-%%   <<"NotificationId">> => string(),
-%%   <<"NotificationStatus">> => list(any()),
-%%   <<"Priority">> => list(any()),
-%%   <<"RecipientId">> => string(),
-%%   <<"Source">> => list(any())
-%% }
--type user_notification_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% credentials() :: #{
-%%   <<"AccessToken">> => string(),
-%%   <<"AccessTokenExpiration">> => non_neg_integer(),
-%%   <<"RefreshToken">> => string(),
-%%   <<"RefreshTokenExpiration">> => non_neg_integer()
-%% }
--type credentials() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_contact_flow_modules_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"ContactFlowModules">> => list(contact_flow_module()),
-%%   <<"NextToken">> => string()
-%% }
--type search_contact_flow_modules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_contact_metrics_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"Metrics">> := list(contact_metric_info())
-%% }
--type get_contact_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_case_execution_records_response() :: #{
-%%   <<"ExecutionRecords">> => list(execution_record()),
-%%   <<"NextToken">> => string()
-%% }
--type list_test_case_execution_records_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_vocabulary_request() :: #{}
--type describe_vocabulary_request() :: #{}.
-
-
-%% Example:
-%% hours_of_operation_override_search_criteria() :: #{
-%%   <<"AndConditions">> => list(hours_of_operation_override_search_criteria()),
-%%   <<"DateCondition">> => date_condition(),
-%%   <<"OrConditions">> => list(hours_of_operation_override_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type hours_of_operation_override_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associated_contacts_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_associated_contacts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_instance_storage_config_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ResourceType">> := list(any()),
-%%   <<"StorageConfig">> := instance_storage_config()
-%% }
--type update_instance_storage_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_condition() :: #{
-%%   <<"TagKey">> => string(),
-%%   <<"TagValue">> => string()
-%% }
--type tag_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_flow_version_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Version">> => float(),
-%%   <<"VersionDescription">> => string()
-%% }
--type contact_flow_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_hours_of_operations_request() :: #{
-%%   <<"ParentHoursOfOperationConfigs">> := list(parent_hours_of_operation_config())
-%% }
--type associate_hours_of_operations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_table_lock_version() :: #{
-%%   <<"Attribute">> => string(),
-%%   <<"DataTable">> => string(),
-%%   <<"PrimaryValues">> => string(),
-%%   <<"Value">> => string()
-%% }
--type data_table_lock_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% view() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Content">> => view_content(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any()),
-%%   <<"Version">> => integer(),
-%%   <<"VersionDescription">> => string(),
-%%   <<"ViewContentSha256">> => string()
-%% }
--type view() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_flow_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_flow_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_queue_response() :: #{
-%%   <<"Queue">> => queue()
-%% }
--type describe_queue_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_attached_file_response() :: #{}
--type delete_attached_file_response() :: #{}.
-
-
-%% Example:
-%% control_plane_attribute_filter() :: #{
-%%   <<"AndCondition">> => common_attribute_and_condition(),
-%%   <<"OrConditions">> => list(common_attribute_and_condition()),
-%%   <<"TagCondition">> => tag_condition()
-%% }
--type control_plane_attribute_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% images_logo() :: #{
-%%   <<"Default">> => string(),
-%%   <<"Favicon">> => string()
-%% }
--type images_logo() :: #{binary() => any()}.
-
-
-%% Example:
-%% hours_of_operation() :: #{
-%%   <<"Config">> => list(hours_of_operation_config()),
-%%   <<"Description">> => string(),
-%%   <<"HoursOfOperationArn">> => string(),
-%%   <<"HoursOfOperationId">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ParentHoursOfOperations">> => list(hours_of_operations_identifier()),
-%%   <<"Tags">> => map(),
-%%   <<"TimeZone">> => string()
-%% }
--type hours_of_operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% read_only_field_info() :: #{
-%%   <<"Id">> => task_template_field_identifier()
-%% }
--type read_only_field_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_quick_connect_name_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_quick_connect_name_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_contact_recording_response() :: #{}
--type stop_contact_recording_response() :: #{}.
-
-
-%% Example:
-%% metric_filter_v2() :: #{
-%%   <<"MetricFilterKey">> => string(),
-%%   <<"MetricFilterValues">> => list(string()),
-%%   <<"Negate">> => boolean()
-%% }
--type metric_filter_v2() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_profile_queue_config_summary() :: #{
-%%   <<"Channel">> => list(any()),
-%%   <<"Delay">> => integer(),
-%%   <<"Priority">> => integer(),
-%%   <<"QueueArn">> => string(),
-%%   <<"QueueId">> => string(),
-%%   <<"QueueName">> => string()
-%% }
--type routing_profile_queue_config_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% date_condition() :: #{
-%%   <<"ComparisonType">> => list(any()),
-%%   <<"FieldName">> => string(),
-%%   <<"Value">> => string()
-%% }
--type date_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% widget_destination() :: #{
-%%   <<"ProfileId">> => string(),
-%%   <<"WidgetId">> => string()
-%% }
--type widget_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_metric_data_v2_response() :: #{
-%%   <<"MetricResults">> => list(metric_result_v2()),
-%%   <<"NextToken">> => string()
-%% }
--type get_metric_data_v2_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_flow_associations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type list_flow_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% hours_of_operation_search_filter() :: #{
-%%   <<"TagFilter">> => control_plane_tag_filter()
-%% }
--type hours_of_operation_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_v2_string_condition() :: #{
-%%   <<"Comparison">> => list(any())
-%% }
--type filter_v2_string_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_task_template_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Constraints">> => task_template_constraints(),
-%%   <<"ContactFlowId">> => string(),
-%%   <<"Defaults">> => task_template_defaults(),
-%%   <<"Description">> => string(),
-%%   <<"Fields">> := list(task_template_field()),
-%%   <<"Name">> := string(),
-%%   <<"SelfAssignFlowId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type create_task_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_result() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type error_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_firehose_config() :: #{
-%%   <<"FirehoseArn">> => string()
-%% }
--type kinesis_firehose_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_contact_flow_module_alias_request() :: #{}
--type describe_contact_flow_module_alias_request() :: #{}.
-
-
-%% Example:
-%% task_template_field() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> => task_template_field_identifier(),
-%%   <<"SingleSelectOptions">> => list(string()),
-%%   <<"Type">> => list(any())
-%% }
--type task_template_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_evaluation_form_response() :: #{
-%%   <<"EvaluationForm">> => evaluation_form()
-%% }
--type describe_evaluation_form_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_table_evaluated_value() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"Error">> => boolean(),
-%%   <<"EvaluatedValue">> => string(),
-%%   <<"Found">> => boolean(),
-%%   <<"PrimaryValues">> => list(primary_value()),
-%%   <<"RecordId">> => string(),
-%%   <<"ValueType">> => list(any())
-%% }
--type data_table_evaluated_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_template_defaults() :: #{
-%%   <<"DefaultFieldValues">> => list(task_template_default_field_value())
-%% }
--type task_template_defaults() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_queue_max_contacts_request() :: #{
-%%   <<"MaxContacts">> => integer()
-%% }
--type update_queue_max_contacts_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_task_template_response() :: #{}
--type delete_task_template_response() :: #{}.
-
-
-%% Example:
-%% create_integration_association_response() :: #{
-%%   <<"IntegrationAssociationArn">> => string(),
-%%   <<"IntegrationAssociationId">> => string()
-%% }
--type create_integration_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_test_case_request() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type describe_test_case_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% required_field_info() :: #{
-%%   <<"Id">> => task_template_field_identifier()
-%% }
--type required_field_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_search_summary() :: #{
-%%   <<"AfterContactWorkConfigs">> => list(after_contact_work_config_per_channel()),
-%%   <<"Arn">> => string(),
-%%   <<"AutoAcceptConfigs">> => list(auto_accept_config()),
-%%   <<"DirectoryUserId">> => string(),
-%%   <<"HierarchyGroupId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IdentityInfo">> => user_identity_info_lite(),
-%%   <<"PersistentConnectionConfigs">> => list(persistent_connection_config()),
-%%   <<"PhoneConfig">> => user_phone_config(),
-%%   <<"PhoneNumberConfigs">> => list(phone_number_config()),
-%%   <<"RoutingProfileId">> => string(),
-%%   <<"SecurityProfileIds">> => list(string()),
-%%   <<"Tags">> => map(),
-%%   <<"Username">> => string(),
-%%   <<"VoiceEnhancementConfigs">> => list(voice_enhancement_config())
-%% }
--type user_search_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% attached_file_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"FileId">> => string()
-%% }
--type attached_file_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_outbound_email_contact_request() :: #{
-%%   <<"AdditionalRecipients">> => outbound_additional_recipients(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ContactId">> := string(),
-%%   <<"DestinationEmailAddress">> := email_address_info(),
-%%   <<"EmailMessage">> := outbound_email_content(),
-%%   <<"FromEmailAddress">> => email_address_info(),
-%%   <<"InstanceId">> := string()
-%% }
--type start_outbound_email_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_flow_module_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_flow_module_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lex_v2_bot() :: #{
-%%   <<"AliasArn">> => string()
-%% }
--type lex_v2_bot() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_traffic_distribution_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_traffic_distribution_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type contact_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% palette_primary() :: #{
-%%   <<"Active">> => string(),
-%%   <<"ContrastText">> => string(),
-%%   <<"Default">> => string()
-%% }
--type palette_primary() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_contact_participant() :: #{
-%%   <<"ContactParticipantId">> => string(),
-%%   <<"ContactParticipantRole">> => list(any())
-%% }
--type evaluation_contact_participant() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type workspace_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_flow_not_published_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type contact_flow_not_published_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_flow_module_search_criteria() :: #{
-%%   <<"AndConditions">> => list(contact_flow_module_search_criteria()),
-%%   <<"OrConditions">> => list(contact_flow_module_search_criteria()),
-%%   <<"StateCondition">> => list(any()),
-%%   <<"StatusCondition">> => list(any()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type contact_flow_module_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% traffic_distribution_group_user_summary() :: #{
-%%   <<"UserId">> => string()
-%% }
--type traffic_distribution_group_user_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% use_case() :: #{
-%%   <<"UseCaseArn">> => string(),
-%%   <<"UseCaseId">> => string(),
-%%   <<"UseCaseType">> => list(any())
-%% }
--type use_case() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_flow_module_version_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Version">> => float(),
-%%   <<"VersionDescription">> => string()
-%% }
--type contact_flow_module_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_hours_of_operation_request() :: #{
-%%   <<"Config">> => list(hours_of_operation_config()),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"TimeZone">> => string()
-%% }
--type update_hours_of_operation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% customer_quality_metrics() :: #{
-%%   <<"Audio">> => audio_quality_metrics_info()
-%% }
--type customer_quality_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% number_condition() :: #{
-%%   <<"ComparisonType">> => list(any()),
-%%   <<"FieldName">> => string(),
-%%   <<"MaxValue">> => integer(),
-%%   <<"MinValue">> => integer()
-%% }
--type number_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_table_metadata_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"TimeZone">> := string(),
-%%   <<"ValueLockLevel">> := list(any())
-%% }
--type update_data_table_metadata_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_theme_config() :: #{
-%%   <<"Images">> => workspace_theme_images(),
-%%   <<"Palette">> => workspace_theme_palette(),
-%%   <<"Typography">> => workspace_theme_typography()
-%% }
--type workspace_theme_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_table_value_summary() :: #{
-%%   <<"AttributeId">> => string(),
-%%   <<"AttributeName">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LockVersion">> => data_table_lock_version(),
-%%   <<"PrimaryValues">> => list(primary_value_response()),
-%%   <<"RecordId">> => string(),
-%%   <<"Value">> => string(),
-%%   <<"ValueType">> => list(any())
-%% }
--type data_table_value_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_routing_profiles_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => routing_profile_search_criteria(),
-%%   <<"SearchFilter">> => routing_profile_search_filter()
-%% }
--type search_routing_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_rule_request() :: #{
-%%   <<"Actions">> := list(rule_action()),
-%%   <<"Function">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"PublishStatus">> := list(any())
-%% }
--type update_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% attached_files_configuration() :: #{
-%%   <<"AttachmentScope">> => list(any()),
-%%   <<"ExtensionConfiguration">> => extension_configuration(),
-%%   <<"InstanceId">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MaximumSizeLimitInBytes">> => float()
-%% }
--type attached_files_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_outbound_voice_contact_response() :: #{
-%%   <<"ContactId">> => string()
-%% }
--type start_outbound_voice_contact_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_flows_request() :: #{
-%%   <<"ContactFlowTypes">> => list(list(any())()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_flows_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_identity_info() :: #{
-%%   <<"Email">> => string(),
-%%   <<"FirstName">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"Mobile">> => string(),
-%%   <<"SecondaryEmail">> => string()
-%% }
--type user_identity_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_contact_analysis_segment_post_contact_summary() :: #{
-%%   <<"Content">> => string(),
-%%   <<"FailureCode">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type real_time_contact_analysis_segment_post_contact_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_instance_attributes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_instance_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vocabulary_response() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"VocabularyArn">> => string(),
-%%   <<"VocabularyId">> => string()
-%% }
--type create_vocabulary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% wisdom_info() :: #{
-%%   <<"AiAgents">> => list(ai_agent_info()),
-%%   <<"SessionArn">> => string()
-%% }
--type wisdom_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% release_phone_number_request() :: #{
-%%   <<"ClientToken">> => string()
-%% }
--type release_phone_number_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_data_sets_result() :: #{
-%%   <<"DataSetId">> => string(),
-%%   <<"DataSetName">> => string()
-%% }
--type analytics_data_sets_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_contact_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"DisconnectReason">> => disconnect_reason(),
-%%   <<"InstanceId">> := string()
-%% }
--type stop_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hours_of_operation_override_request() :: #{}
--type describe_hours_of_operation_override_request() :: #{}.
-
-
-%% Example:
-%% update_phone_number_response() :: #{
-%%   <<"PhoneNumberArn">> => string(),
-%%   <<"PhoneNumberId">> => string()
-%% }
--type update_phone_number_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_configuration() :: #{
-%%   <<"ContactId">> => string(),
-%%   <<"IncludeRawMessage">> => boolean(),
-%%   <<"ParticipantRole">> => list(any())
-%% }
--type contact_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% phone_number_config() :: #{
-%%   <<"Channel">> => list(any()),
-%%   <<"PhoneNumber">> => string(),
-%%   <<"PhoneType">> => list(any())
-%% }
--type phone_number_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_hierarchy_group_request() :: #{}
--type delete_user_hierarchy_group_request() :: #{}.
-
-
-%% Example:
-%% lex_bot_config() :: #{
-%%   <<"LexBot">> => lex_bot(),
-%%   <<"LexV2Bot">> => lex_v2_bot()
-%% }
--type lex_bot_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_table_metadata_response() :: #{
-%%   <<"LockVersion">> => data_table_lock_version()
-%% }
--type update_data_table_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_hierarchy_group() :: #{
-%%   <<"Arn">> => string()
-%% }
--type agent_hierarchy_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_workspace_media_request() :: #{
-%%   <<"MediaSource">> := string(),
-%%   <<"MediaType">> := list(any())
-%% }
--type import_workspace_media_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_contact_analysis_segment_issues() :: #{
-%%   <<"IssuesDetected">> => list(real_time_contact_analysis_issue_detected())
-%% }
--type real_time_contact_analysis_segment_issues() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_instance_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_evaluations_response() :: #{
-%%   <<"EvaluationSummaryList">> => list(evaluation_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_evaluations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% searchable_routing_criteria_step() :: #{
-%%   <<"AgentCriteria">> => searchable_agent_criteria_step()
-%% }
--type searchable_routing_criteria_step() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_template_default_field_value() :: #{
-%%   <<"DefaultValue">> => string(),
-%%   <<"Id">> => task_template_field_identifier()
-%% }
--type task_template_default_field_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% authentication_profile() :: #{
-%%   <<"AllowedIps">> => list(string()),
-%%   <<"Arn">> => string(),
-%%   <<"BlockedIps">> => list(string()),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MaxSessionDuration">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"PeriodicSessionDuration">> => integer(),
-%%   <<"SessionInactivityDuration">> => integer(),
-%%   <<"SessionInactivityHandlingEnabled">> => boolean()
-%% }
--type authentication_profile() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_note() :: #{
-%%   <<"Value">> => string()
-%% }
--type evaluation_note() :: #{binary() => any()}.
-
-
-%% Example:
-%% palette_navigation() :: #{
-%%   <<"Background">> => string(),
-%%   <<"InvertActionsColors">> => boolean(),
-%%   <<"Text">> => string(),
-%%   <<"TextActive">> => string(),
-%%   <<"TextBackgroundActive">> => string(),
-%%   <<"TextBackgroundHover">> => string(),
-%%   <<"TextHover">> => string()
-%% }
--type palette_navigation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_table_attribute_request() :: #{}
--type delete_data_table_attribute_request() :: #{}.
-
-
-%% Example:
-%% update_contact_flow_module_metadata_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type update_contact_flow_module_metadata_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_hours_of_operation_overrides_response() :: #{
-%%   <<"HoursOfOperationOverrideList">> => list(hours_of_operation_override()),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_hours_of_operation_overrides_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_prompt_response() :: #{
-%%   <<"PromptARN">> => string(),
-%%   <<"PromptId">> => string()
-%% }
--type update_prompt_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_contact_flow_exception() :: #{
-%%   <<"problems">> => list(problem_detail())
-%% }
--type invalid_contact_flow_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_view_metadata_response() :: #{}
--type update_view_metadata_response() :: #{}.
-
-
-%% Example:
-%% list_evaluation_form_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_evaluation_form_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_test_case_execution_response() :: #{}
--type stop_test_case_execution_response() :: #{}.
-
-
-%% Example:
-%% search_agent_statuses_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => agent_status_search_criteria(),
-%%   <<"SearchFilter">> => agent_status_search_filter()
-%% }
--type search_agent_statuses_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% inbound_email_content() :: #{
-%%   <<"MessageSourceType">> => list(any()),
-%%   <<"RawMessage">> => inbound_raw_message()
-%% }
--type inbound_email_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_table_attribute() :: #{
-%%   <<"AttributeId">> => string(),
-%%   <<"DataTableArn">> => string(),
-%%   <<"DataTableId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LockVersion">> => data_table_lock_version(),
-%%   <<"Name">> => string(),
-%%   <<"Primary">> => boolean(),
-%%   <<"Validation">> => validation(),
-%%   <<"ValueType">> => list(any()),
-%%   <<"Version">> => string()
-%% }
--type data_table_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_address_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IsDefaultOutboundEmail">> => boolean()
-%% }
--type email_address_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_view_version_request() :: #{}
--type delete_view_version_request() :: #{}.
-
-
-%% Example:
-%% after_contact_work_config() :: #{
-%%   <<"AfterContactWorkTimeLimit">> => integer()
-%% }
--type after_contact_work_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_phone_number_response() :: #{
-%%   <<"PhoneNumberArn">> => string(),
-%%   <<"PhoneNumberId">> => string()
-%% }
--type import_phone_number_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% persistent_chat() :: #{
-%%   <<"RehydrationType">> => list(any()),
-%%   <<"SourceContactId">> => string()
-%% }
--type persistent_chat() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_notification_status_request() :: #{
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Status">> := list(any())
-%% }
--type update_user_notification_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_schedule_response() :: #{}
--type update_contact_schedule_response() :: #{}.
-
-
-%% Example:
-%% queue() :: #{
-%%   <<"Description">> => string(),
-%%   <<"HoursOfOperationId">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MaxContacts">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"OutboundCallerConfig">> => outbound_caller_config(),
-%%   <<"OutboundEmailConfig">> => outbound_email_config(),
-%%   <<"QueueArn">> => string(),
-%%   <<"QueueId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type queue() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_security_profiles_request() :: #{
-%%   <<"EntityArn">> := string(),
-%%   <<"EntityType">> := list(any()),
-%%   <<"SecurityProfiles">> := list(security_profile_item())
-%% }
--type associate_security_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_item_enablement_source_value() :: #{
-%%   <<"RefId">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type evaluation_form_item_enablement_source_value() :: #{binary() => any()}.
-
-%% Example:
-%% delete_email_address_request() :: #{}
--type delete_email_address_request() :: #{}.
-
-
-%% Example:
-%% replication_status_summary() :: #{
-%%   <<"Region">> => string(),
-%%   <<"ReplicationStatus">> => list(any()),
-%%   <<"ReplicationStatusReason">> => string()
-%% }
--type replication_status_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% override_time_slice() :: #{
-%%   <<"Hours">> => integer(),
-%%   <<"Minutes">> => integer()
-%% }
--type override_time_slice() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_proficiency_disassociate() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"AttributeValue">> => string()
-%% }
--type user_proficiency_disassociate() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_service_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_service_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_use_cases_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_use_cases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_approved_origin_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Origin">> := string()
-%% }
--type disassociate_approved_origin_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% searchable_routing_criteria() :: #{
-%%   <<"Steps">> => list(searchable_routing_criteria_step())
-%% }
--type searchable_routing_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_attribute_value() :: #{
-%%   <<"ValueArn">> => string(),
-%%   <<"ValueInteger">> => integer(),
-%%   <<"ValueList">> => list(segment_attribute_value()),
-%%   <<"ValueMap">> => map(),
-%%   <<"ValueString">> => string()
-%% }
--type segment_attribute_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_contact_analysis_segment_categories() :: #{
-%%   <<"MatchedDetails">> => map()
-%% }
--type real_time_contact_analysis_segment_categories() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_lambda_function_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"FunctionArn">> := string()
-%% }
--type associate_lambda_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% transcript() :: #{
-%%   <<"Criteria">> => list(transcript_criteria()),
-%%   <<"MatchType">> => list(any())
-%% }
--type transcript() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_select_question_rule_category_automation() :: #{
-%%   <<"Category">> => string(),
-%%   <<"Condition">> => list(any()),
-%%   <<"OptionRefIds">> => list(string())
-%% }
--type multi_select_question_rule_category_automation() :: #{binary() => any()}.
-
-
-%% Example:
-%% download_url_metadata() :: #{
-%%   <<"Url">> => string(),
-%%   <<"UrlExpiry">> => string()
-%% }
--type download_url_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_table_attributes_request() :: #{
-%%   <<"AttributeIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_table_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% suspend_contact_recording_response() :: #{}
--type suspend_contact_recording_response() :: #{}.
-
-%% Example:
-%% update_participant_role_config_response() :: #{}
--type update_participant_role_config_response() :: #{}.
-
-
-%% Example:
-%% disassociate_queue_quick_connects_request() :: #{
-%%   <<"QuickConnectIds">> := list(string())
-%% }
--type disassociate_queue_quick_connects_request() :: #{binary() => any()}.
-
-%% Example:
-%% complete_attached_file_upload_response() :: #{}
--type complete_attached_file_upload_response() :: #{}.
-
-
-%% Example:
-%% sentiment_configuration() :: #{
-%%   <<"Behavior">> => list(any())
-%% }
--type sentiment_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_describe_data_table_value_response() :: #{
-%%   <<"Failed">> => list(batch_describe_data_table_value_failure_result()),
-%%   <<"Successful">> => list(batch_describe_data_table_value_success_result())
-%% }
--type batch_describe_data_table_value_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_contact_flow_module_version_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FlowModuleContentSha256">> => string()
-%% }
--type create_contact_flow_module_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_contact_flow_module_version_response() :: #{
-%%   <<"ContactFlowModuleArn">> => string(),
-%%   <<"Version">> => float()
-%% }
--type create_contact_flow_module_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_hours_of_operation_override_request() :: #{
-%%   <<"Config">> => list(hours_of_operation_override_config()),
-%%   <<"Description">> => string(),
-%%   <<"EffectiveFrom">> => string(),
-%%   <<"EffectiveTill">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OverrideType">> => list(any()),
-%%   <<"RecurrenceConfig">> => recurrence_config()
-%% }
--type update_hours_of_operation_override_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_profile_applications_response() :: #{
-%%   <<"Applications">> => list(application()),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_security_profile_applications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_theme_palette() :: #{
-%%   <<"Canvas">> => palette_canvas(),
-%%   <<"Header">> => palette_header(),
-%%   <<"Navigation">> => palette_navigation(),
-%%   <<"Primary">> => palette_primary()
-%% }
--type workspace_theme_palette() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_quick_connect_config_request() :: #{
-%%   <<"QuickConnectConfig">> := quick_connect_config()
-%% }
--type update_quick_connect_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_table_value() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LockVersion">> => data_table_lock_version(),
-%%   <<"PrimaryValues">> => list(primary_value()),
-%%   <<"Value">> => string()
-%% }
--type data_table_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_queue_hours_of_operation_request() :: #{
-%%   <<"HoursOfOperationId">> := string()
-%% }
--type update_queue_hours_of_operation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% participant_details_to_add() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"ParticipantCapabilities">> => participant_capabilities(),
-%%   <<"ParticipantRole">> => list(any())
-%% }
--type participant_details_to_add() :: #{binary() => any()}.
-
-
-%% Example:
-%% attached_files_configuration_summary() :: #{
-%%   <<"AttachmentScope">> => list(any()),
-%%   <<"ExtensionConfiguration">> => extension_configuration(),
-%%   <<"InstanceId">> => string(),
-%%   <<"MaximumSizeLimitInBytes">> => float()
-%% }
--type attached_files_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_automation_rule_category() :: #{
-%%   <<"Category">> => string(),
-%%   <<"Condition">> => list(any()),
-%%   <<"PointsOfInterest">> => list(evaluation_transcript_point_of_interest())
-%% }
--type evaluation_automation_rule_category() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_contacts_additional_time_range_criteria() :: #{
-%%   <<"TimeRange">> => search_contacts_time_range(),
-%%   <<"TimestampCondition">> => search_contacts_timestamp_condition()
-%% }
--type search_contacts_additional_time_range_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% boolean_condition() :: #{
-%%   <<"ComparisonType">> => list(any()),
-%%   <<"FieldName">> => string()
-%% }
--type boolean_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_contact_streaming_request() :: #{
-%%   <<"ChatStreamingConfiguration">> := chat_streaming_configuration(),
-%%   <<"ClientToken">> := string(),
-%%   <<"ContactId">> := string(),
-%%   <<"InstanceId">> := string()
-%% }
--type start_contact_streaming_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_analytics_data_set_response() :: #{
-%%   <<"DataSetId">> => string(),
-%%   <<"ResourceShareArn">> => string(),
-%%   <<"ResourceShareId">> => string(),
-%%   <<"TargetAccountId">> => string()
-%% }
--type associate_analytics_data_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_info_input() :: #{
-%%   <<"Id">> => string()
-%% }
--type queue_info_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_outbound_web_notification_request() :: #{
-%%   <<"BrowserId">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Content">> := web_notification_content(),
-%%   <<"Destination">> := widget_destination(),
-%%   <<"ExpiresAt">> := non_neg_integer(),
-%%   <<"SessionId">> := string(),
-%%   <<"Source">> := web_notification_source()
-%% }
--type send_outbound_web_notification_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_data_table_response() :: #{
-%%   <<"DataTable">> => data_table()
-%% }
--type describe_data_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_contact_media_processing_response() :: #{}
--type stop_contact_media_processing_response() :: #{}.
-
-
-%% Example:
-%% list_rules_request() :: #{
-%%   <<"EventSourceName">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PublishStatus">> => list(any())
-%% }
--type list_rules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_notification_response() :: #{
-%%   <<"NotificationArn">> => string(),
-%%   <<"NotificationId">> => string()
-%% }
--type create_notification_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% primary_attribute_value_filter() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type primary_attribute_value_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_case() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Content">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EntryPoint">> => test_case_entry_point(),
-%%   <<"Id">> => string(),
-%%   <<"InitializationData">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"TestCaseSha256">> => string()
-%% }
--type test_case() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_phone_number_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"PhoneNumberDescription">> => string(),
-%%   <<"SourcePhoneNumberArn">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type import_phone_number_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_hours_of_operations_request() :: #{
-%%   <<"ParentHoursOfOperationIds">> := list(string())
-%% }
--type disassociate_hours_of_operations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% claim_phone_number_response() :: #{
-%%   <<"PhoneNumberArn">> => string(),
-%%   <<"PhoneNumberId">> => string()
-%% }
--type claim_phone_number_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_info() :: #{
-%%   <<"EnqueueTimestamp">> => non_neg_integer(),
-%%   <<"Id">> => string()
-%% }
--type queue_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_evaluation_attribute_and_condition() :: #{
-%%   <<"AttributeConditions">> => list(contact_evaluation_attribute_condition()),
-%%   <<"TagConditions">> => list(tag_condition())
-%% }
--type contact_evaluation_attribute_and_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% view_search_filter() :: #{
-%%   <<"AttributeFilter">> => control_plane_attribute_filter()
-%% }
--type view_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_profile_manual_assignment_queue_config_summary() :: #{
-%%   <<"Channel">> => list(any()),
-%%   <<"QueueArn">> => string(),
-%%   <<"QueueId">> => string(),
-%%   <<"QueueName">> => string()
-%% }
--type routing_profile_manual_assignment_queue_config_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_push_notification_registration_response() :: #{}
--type delete_push_notification_registration_response() :: #{}.
-
-
-%% Example:
-%% evaluation_answer_output() :: #{
-%%   <<"SuggestedAnswers">> => list(evaluation_suggested_answer()),
-%%   <<"SystemSuggestedValue">> => list(),
-%%   <<"Value">> => list()
-%% }
--type evaluation_answer_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% participant_configuration() :: #{
-%%   <<"ResponseMode">> => list(any())
-%% }
--type participant_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% available_number_summary() :: #{
-%%   <<"PhoneNumber">> => string(),
-%%   <<"PhoneNumberCountryCode">> => list(any()),
-%%   <<"PhoneNumberType">> => list(any())
-%% }
--type available_number_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_effective_hours_of_operations_response() :: #{
-%%   <<"EffectiveHoursOfOperationList">> => list(effective_hours_of_operations()),
-%%   <<"EffectiveOverrideHoursList">> => list(effective_override_hours()),
-%%   <<"TimeZone">> => string()
-%% }
--type get_effective_hours_of_operations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_view_version_response() :: #{
-%%   <<"View">> => view()
-%% }
--type create_view_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_phone_number_response() :: #{
-%%   <<"ClaimedPhoneNumberSummary">> => claimed_phone_number_summary()
-%% }
--type describe_phone_number_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% hierarchy_group_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type hierarchy_group_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% participant_token_credentials() :: #{
-%%   <<"Expiry">> => string(),
-%%   <<"ParticipantToken">> => string()
-%% }
--type participant_token_credentials() :: #{binary() => any()}.
-
-%% Example:
-%% describe_contact_flow_module_request() :: #{}
--type describe_contact_flow_module_request() :: #{}.
-
-
-%% Example:
-%% pause_contact_request() :: #{
-%%   <<"ContactFlowId">> => string(),
-%%   <<"ContactId">> := string(),
-%%   <<"InstanceId">> := string()
-%% }
--type pause_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_instance_attribute_response() :: #{
-%%   <<"Attribute">> => attribute()
-%% }
--type describe_instance_attribute_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% participant_timer_configuration() :: #{
-%%   <<"ParticipantRole">> => list(any()),
-%%   <<"TimerType">> => list(any()),
-%%   <<"TimerValue">> => list()
-%% }
--type participant_timer_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_approved_origin_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Origin">> := string()
-%% }
--type associate_approved_origin_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_evaluation_details() :: #{
-%%   <<"AutoEvaluationEnabled">> => boolean(),
-%%   <<"AutoEvaluationStatus">> => list(any())
-%% }
--type auto_evaluation_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_address_search_criteria() :: #{
-%%   <<"AndConditions">> => list(email_address_search_criteria()),
-%%   <<"OrConditions">> => list(email_address_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type email_address_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_case_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type test_case_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_not_allowed_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type destination_not_allowed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invisible_field_info() :: #{
-%%   <<"Id">> => task_template_field_identifier()
-%% }
--type invisible_field_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% primary_attribute_access_control_configuration_item() :: #{
-%%   <<"PrimaryAttributeValues">> => list(primary_attribute_value())
-%% }
--type primary_attribute_access_control_configuration_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workspace_response() :: #{}
--type delete_workspace_response() :: #{}.
-
-
-%% Example:
-%% create_quick_connect_response() :: #{
-%%   <<"QuickConnectARN">> => string(),
-%%   <<"QuickConnectId">> => string()
-%% }
--type create_quick_connect_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lex_bots_response() :: #{
-%%   <<"LexBots">> => list(lex_bot()),
-%%   <<"NextToken">> => string()
-%% }
--type list_lex_bots_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_search_summary_segment_attribute_value() :: #{
-%%   <<"ValueMap">> => map(),
-%%   <<"ValueString">> => string()
-%% }
--type contact_search_summary_segment_attribute_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vocabulary_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Content">> := string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"VocabularyName">> := string()
-%% }
--type create_vocabulary_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_result_v2() :: #{
-%%   <<"Collections">> => list(metric_data_v2()),
-%%   <<"Dimensions">> => map(),
-%%   <<"MetricInterval">> => metric_interval()
-%% }
--type metric_result_v2() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_attached_file_metadata_response() :: #{
-%%   <<"Errors">> => list(attached_file_error()),
-%%   <<"Files">> => list(attached_file())
-%% }
--type batch_get_attached_file_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_message_reference() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type email_message_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_text_question_properties() :: #{
-%%   <<"Automation">> => evaluation_form_text_question_automation()
-%% }
--type evaluation_form_text_question_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_email_address_metadata_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string()
-%% }
--type update_email_address_metadata_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_test_cases_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"TestCases">> => list(test_case())
-%% }
--type search_test_cases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_attached_file_request() :: #{
-%%   <<"AssociatedResourceArn">> := string(),
-%%   <<"UrlExpiryInSeconds">> => integer()
-%% }
--type get_attached_file_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% transfer_contact_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ContactFlowId">> := string(),
-%%   <<"ContactId">> := string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"QueueId">> => string(),
-%%   <<"UserId">> => string()
-%% }
--type transfer_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_phone_number_request() :: #{}
--type describe_phone_number_request() :: #{}.
-
-
-%% Example:
-%% validation() :: #{
-%%   <<"Enum">> => validation_enum(),
-%%   <<"ExclusiveMaximum">> => float(),
-%%   <<"ExclusiveMinimum">> => float(),
-%%   <<"IgnoreCase">> => boolean(),
-%%   <<"MaxLength">> => integer(),
-%%   <<"MaxValues">> => integer(),
-%%   <<"Maximum">> => float(),
-%%   <<"MinLength">> => integer(),
-%%   <<"MinValues">> => integer(),
-%%   <<"Minimum">> => float(),
-%%   <<"MultipleOf">> => float()
-%% }
--type validation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_table_request() :: #{}
--type delete_data_table_request() :: #{}.
-
-%% Example:
-%% resume_contact_recording_response() :: #{}
--type resume_contact_recording_response() :: #{}.
-
-
-%% Example:
-%% list_agent_status_request() :: #{
-%%   <<"AgentStatusTypes">> => list(list(any())()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_agent_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"QueueType">> => list(any())
-%% }
--type queue_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_contact_response() :: #{
-%%   <<"ContactArn">> => string(),
-%%   <<"ContactId">> => string()
-%% }
--type create_contact_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_flow_name_response() :: #{}
--type update_contact_flow_name_response() :: #{}.
-
-%% Example:
-%% update_participant_authentication_response() :: #{}
--type update_participant_authentication_response() :: #{}.
-
-
-%% Example:
-%% list_task_templates_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TaskTemplates">> => list(task_template_metadata())
-%% }
--type list_task_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_current_user_data_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserDataList">> => list(user_data())
-%% }
--type get_current_user_data_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_request() :: #{}
--type delete_rule_request() :: #{}.
-
-%% Example:
-%% describe_authentication_profile_request() :: #{}
--type describe_authentication_profile_request() :: #{}.
-
-
-%% Example:
-%% contact_flow_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ContactFlowState">> => list(any()),
-%%   <<"ContactFlowStatus">> => list(any()),
-%%   <<"ContactFlowType">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type contact_flow_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_contact_evaluation_request() :: #{
-%%   <<"Answers">> => map(),
-%%   <<"Notes">> => map(),
-%%   <<"UpdatedBy">> => list()
-%% }
--type update_contact_evaluation_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workspace_page_response() :: #{}
--type delete_workspace_page_response() :: #{}.
-
-
-%% Example:
-%% list_analytics_data_lake_data_sets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_analytics_data_lake_data_sets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lex_bots_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_lex_bots_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_phone_numbers_v2_request() :: #{
-%%   <<"InstanceId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PhoneNumberCountryCodes">> => list(list(any())()),
-%%   <<"PhoneNumberPrefix">> => string(),
-%%   <<"PhoneNumberTypes">> => list(list(any())()),
-%%   <<"TargetArn">> => string()
-%% }
--type list_phone_numbers_v2_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_prompt_request() :: #{}
--type delete_prompt_request() :: #{}.
-
-
-%% Example:
-%% send_chat_integration_event_request() :: #{
-%%   <<"DestinationId">> := string(),
-%%   <<"Event">> := chat_event(),
-%%   <<"NewSessionDetails">> => new_session_details(),
-%%   <<"SourceId">> := string(),
-%%   <<"Subtype">> => string()
-%% }
--type send_chat_integration_event_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_case_execution() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => map(),
-%%   <<"TestCaseExecutionId">> => string(),
-%%   <<"TestCaseExecutionStatus">> => list(any()),
-%%   <<"TestCaseId">> => string()
-%% }
--type test_case_execution() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_user_hierarchy_structure_response() :: #{
-%%   <<"HierarchyStructure">> => hierarchy_structure()
-%% }
--type describe_user_hierarchy_structure_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_page() :: #{
-%%   <<"InputData">> => string(),
-%%   <<"Page">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"Slug">> => string()
-%% }
--type workspace_page() :: #{binary() => any()}.
-
-
-%% Example:
-%% question_option_points_configuration() :: #{
-%%   <<"IsBonus">> => boolean(),
-%%   <<"PointValue">> => integer()
-%% }
--type question_option_points_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_data() :: #{
-%%   <<"ActiveSlotsByChannel">> => map(),
-%%   <<"AvailableSlotsByChannel">> => map(),
-%%   <<"Contacts">> => list(agent_contact_reference()),
-%%   <<"HierarchyPath">> => hierarchy_path_reference(),
-%%   <<"MaxSlotsByChannel">> => map(),
-%%   <<"NextStatus">> => string(),
-%%   <<"RoutingProfile">> => routing_profile_reference(),
-%%   <<"Status">> => agent_status_reference(),
-%%   <<"User">> => user_reference()
-%% }
--type user_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% effective_override_hours() :: #{
-%%   <<"Date">> => string(),
-%%   <<"OverrideHours">> => list(override_hour())
-%% }
--type effective_override_hours() :: #{binary() => any()}.
-
-
-%% Example:
-%% outbound_email_config() :: #{
-%%   <<"OutboundEmailAddressId">> => string()
-%% }
--type outbound_email_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_evaluation_forms_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"EvaluationFormSearchSummaryList">> => list(evaluation_form_search_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type search_evaluation_forms_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_search_filter() :: #{
-%%   <<"AttributeFilter">> => control_plane_attribute_filter()
-%% }
--type evaluation_form_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% connect_reference() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type connect_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_validation_finding() :: #{
-%%   <<"Description">> => string(),
-%%   <<"IssueCode">> => string(),
-%%   <<"Items">> => list(evaluation_form_validation_finding_item()),
-%%   <<"Severity">> => list(any()),
-%%   <<"Suggestion">> => string()
-%% }
--type evaluation_form_validation_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_contact_conversational_analytics_job_response() :: #{
-%%   <<"ContactId">> => string(),
-%%   <<"InstanceId">> => string()
-%% }
--type start_contact_conversational_analytics_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_predefined_attribute_response() :: #{
-%%   <<"PredefinedAttribute">> => predefined_attribute()
-%% }
--type describe_predefined_attribute_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_workspace_theme_response() :: #{}
--type update_workspace_theme_response() :: #{}.
-
-
-%% Example:
-%% start_email_contact_response() :: #{
-%%   <<"ContactId">> => string()
-%% }
--type start_email_contact_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_federation_token_response() :: #{
-%%   <<"Credentials">> => credentials(),
-%%   <<"SignInUrl">> => string(),
-%%   <<"UserArn">> => string(),
-%%   <<"UserId">> => string()
-%% }
--type get_federation_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_cases_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TestCaseSummaryList">> => list(test_case_summary())
-%% }
--type list_test_cases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_traffic_distribution_groups_request() :: #{
-%%   <<"InstanceId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_traffic_distribution_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% quick_connect_search_criteria() :: #{
-%%   <<"AndConditions">> => list(quick_connect_search_criteria()),
-%%   <<"OrConditions">> => list(quick_connect_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type quick_connect_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_view_response() :: #{
-%%   <<"View">> => view()
-%% }
--type describe_view_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% monitor_contact_request() :: #{
-%%   <<"AllowedMonitorCapabilities">> => list(list(any())()),
-%%   <<"ClientToken">> => string(),
-%%   <<"ContactId">> := string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type monitor_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_test_case_request() :: #{
-%%   <<"Content">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"EntryPoint">> => test_case_entry_point(),
-%%   <<"InitializationData">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> := string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"TestCaseId">> => string()
-%% }
--type create_test_case_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_quick_connect_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"QuickConnectConfig">> := quick_connect_config(),
-%%   <<"Tags">> => map()
-%% }
--type create_quick_connect_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_table_attribute_request() :: #{}
--type describe_data_table_attribute_request() :: #{}.
-
-
-%% Example:
-%% task_action_definition() :: #{
-%%   <<"ContactFlowId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"References">> => map()
-%% }
--type task_action_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_contacts_timestamp_condition() :: #{
-%%   <<"ConditionType">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type search_contacts_timestamp_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_traffic_distribution_group_user_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type associate_traffic_distribution_group_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% customer() :: #{
-%%   <<"Capabilities">> => participant_capabilities(),
-%%   <<"DeviceInfo">> => device_info()
-%% }
--type customer() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_flow_response() :: #{}
--type delete_contact_flow_response() :: #{}.
-
-
-%% Example:
-%% update_instance_attribute_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Value">> := string()
-%% }
--type update_instance_attribute_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_workspace_response() :: #{
-%%   <<"Workspace">> => workspace()
-%% }
--type describe_workspace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_flow_module_aliases_response() :: #{
-%%   <<"ContactFlowModuleAliasSummaryList">> => list(contact_flow_module_alias_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_flow_module_aliases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_template_info_v2() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type task_template_info_v2() :: #{binary() => any()}.
-
-
-%% Example:
-%% hours_of_operation_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type hours_of_operation_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_evaluation_form_response() :: #{
-%%   <<"EvaluationFormArn">> => string(),
-%%   <<"EvaluationFormId">> => string()
-%% }
--type create_evaluation_form_response() :: #{binary() => any()}.
+-type agent_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4729,407 +983,28 @@
 
 
 %% Example:
-%% list_lambda_functions_response() :: #{
-%%   <<"LambdaFunctions">> => list(string()),
-%%   <<"NextToken">> => string()
+%% agent_first() :: #{
+%%   <<"Preview">> => preview()
 %% }
--type list_lambda_functions_response() :: #{binary() => any()}.
+-type agent_first() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_workspace_page_request() :: #{
-%%   <<"InputData">> => string(),
-%%   <<"Page">> := string(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"Slug">> => string()
+%% agent_hierarchy_group() :: #{
+%%   <<"Arn">> => string()
 %% }
--type create_workspace_page_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_routing_profile_request() :: #{}
--type delete_routing_profile_request() :: #{}.
+-type agent_hierarchy_group() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_queue_email_addresses_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"EmailAddressesId">> := list(string())
+%% agent_hierarchy_groups() :: #{
+%%   <<"L1Ids">> => list(string()),
+%%   <<"L2Ids">> => list(string()),
+%%   <<"L3Ids">> => list(string()),
+%%   <<"L4Ids">> => list(string()),
+%%   <<"L5Ids">> => list(string())
 %% }
--type disassociate_queue_email_addresses_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cross_channel_behavior() :: #{
-%%   <<"BehaviorType">> => list(any())
-%% }
--type cross_channel_behavior() :: #{binary() => any()}.
-
-%% Example:
-%% empty_field_value() :: #{}
--type empty_field_value() :: #{}.
-
-%% Example:
-%% delete_workspace_media_response() :: #{}
--type delete_workspace_media_response() :: #{}.
-
-
-%% Example:
-%% view_content() :: #{
-%%   <<"Actions">> => list(string()),
-%%   <<"InputSchema">> => string(),
-%%   <<"Template">> => string()
-%% }
--type view_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_queue_outbound_email_config_request() :: #{
-%%   <<"OutboundEmailConfig">> := outbound_email_config()
-%% }
--type update_queue_outbound_email_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_association_search_filter() :: #{
-%%   <<"AttributeFilter">> => control_plane_attribute_filter()
-%% }
--type workspace_association_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_summary() :: #{
-%%   <<"ActiveVersion">> => integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"EvaluationFormArn">> => string(),
-%%   <<"EvaluationFormId">> => string(),
-%%   <<"LastActivatedBy">> => string(),
-%%   <<"LastActivatedTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LatestVersion">> => integer(),
-%%   <<"Title">> => string()
-%% }
--type evaluation_form_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_task_template_request() :: #{
-%%   <<"SnapshotVersion">> => string()
-%% }
--type get_task_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% chat_entry_point_parameters() :: #{
-%%   <<"FlowId">> => string()
-%% }
--type chat_entry_point_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_analytics_data_set_request() :: #{
-%%   <<"DataSetId">> := string(),
-%%   <<"TargetAccountId">> => string()
-%% }
--type disassociate_analytics_data_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_agent_status_request() :: #{}
--type describe_agent_status_request() :: #{}.
-
-
-%% Example:
-%% palette_canvas() :: #{
-%%   <<"ActiveBackground">> => string(),
-%%   <<"ContainerBackground">> => string(),
-%%   <<"PageBackground">> => string()
-%% }
--type palette_canvas() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_keys_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_security_keys_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% authentication_profile_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type authentication_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_prompt_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"S3Uri">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_prompt_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_routing_profile_queues_request() :: #{
-%%   <<"ManualAssignmentQueueConfigs">> => list(routing_profile_manual_assignment_queue_config()),
-%%   <<"QueueConfigs">> => list(routing_profile_queue_config())
-%% }
--type associate_routing_profile_queues_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_prompts_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"Prompts">> => list(prompt())
-%% }
--type search_prompts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bots_request() :: #{
-%%   <<"LexVersion">> := list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_bots_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_configuration() :: #{
-%%   <<"GlobalSignInEndpoint">> => string(),
-%%   <<"ReplicationStatusSummaryList">> => list(replication_status_summary()),
-%%   <<"SourceRegion">> => string()
-%% }
--type replication_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_security_profile_request() :: #{
-%%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
-%%   <<"AllowedAccessControlTags">> => map(),
-%%   <<"AllowedFlowModules">> => list(flow_module()),
-%%   <<"Applications">> => list(application()),
-%%   <<"Description">> => string(),
-%%   <<"GranularAccessControlConfiguration">> => granular_access_control_configuration(),
-%%   <<"HierarchyRestrictedResources">> => list(string()),
-%%   <<"Permissions">> => list(string()),
-%%   <<"SecurityProfileName">> := string(),
-%%   <<"TagRestrictedResources">> => list(string()),
-%%   <<"Tags">> => map()
-%% }
--type create_security_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_table_value_identifier() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"PrimaryValues">> => list(primary_value())
-%% }
--type data_table_value_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_evaluation_configuration() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type auto_evaluation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_view_version_request() :: #{
-%%   <<"VersionDescription">> => string(),
-%%   <<"ViewContentSha256">> => string()
-%% }
--type create_view_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_attribute_request() :: #{}
--type describe_instance_attribute_request() :: #{}.
-
-
-%% Example:
-%% list_security_profile_permissions_response() :: #{
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Permissions">> => list(string())
-%% }
--type list_security_profile_permissions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_predefined_attribute_request() :: #{
-%%   <<"AttributeConfiguration">> => input_predefined_attribute_configuration(),
-%%   <<"Name">> := string(),
-%%   <<"Purposes">> => list(string()),
-%%   <<"Values">> => list()
-%% }
--type create_predefined_attribute_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_contact_media_processing_request() :: #{
-%%   <<"ContactId">> => string(),
-%%   <<"FailureMode">> => list(any()),
-%%   <<"InstanceId">> => string(),
-%%   <<"ProcessorArn">> => string()
-%% }
--type start_contact_media_processing_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_contact_metrics_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"MetricResults">> => list(contact_metric_result())
-%% }
--type get_contact_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_contact_recording_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"ContactRecordingType">> => list(any()),
-%%   <<"InitialContactId">> := string(),
-%%   <<"InstanceId">> := string()
-%% }
--type stop_contact_recording_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_contact_analysis_category_details() :: #{
-%%   <<"PointsOfInterest">> => list(real_time_contact_analysis_point_of_interest())
-%% }
--type real_time_contact_analysis_category_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_traffic_distribution_group_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_traffic_distribution_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_flow_module_alias_response() :: #{}
--type update_contact_flow_module_alias_response() :: #{}.
-
-
-%% Example:
-%% security_profile_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type security_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_contact_evaluation_response() :: #{
-%%   <<"Evaluation">> => evaluation(),
-%%   <<"EvaluationForm">> => evaluation_form_content()
-%% }
--type describe_contact_evaluation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_evaluation_form_request() :: #{
-%%   <<"EvaluationFormVersion">> => integer()
-%% }
--type describe_evaluation_form_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_test_case_execution_summary_request() :: #{}
--type get_test_case_execution_summary_request() :: #{}.
-
-
-%% Example:
-%% send_notification_action_definition() :: #{
-%%   <<"Content">> => string(),
-%%   <<"ContentType">> => list(any()),
-%%   <<"DeliveryMethod">> => list(any()),
-%%   <<"Exclusion">> => notification_recipient_type(),
-%%   <<"Recipient">> => notification_recipient_type(),
-%%   <<"Subject">> => string()
-%% }
--type send_notification_action_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_quick_connect_config() :: #{
-%%   <<"ContactFlowId">> => string(),
-%%   <<"UserId">> => string()
-%% }
--type user_quick_connect_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% phone_number_status() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type phone_number_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_entity_security_profiles_request() :: #{
-%%   <<"EntityArn">> := string(),
-%%   <<"EntityType">> := list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_entity_security_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_table_primary_values_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PrimaryValuesList">> => list(record_primary_value())
-%% }
--type list_data_table_primary_values_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_search_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Title">> => string(),
-%%   <<"Visibility">> => list(any())
-%% }
--type workspace_search_summary() :: #{binary() => any()}.
+-type agent_hierarchy_groups() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5153,10 +1028,649 @@
 
 
 %% Example:
-%% describe_hours_of_operation_response() :: #{
-%%   <<"HoursOfOperation">> => hours_of_operation()
+%% agent_quality_metrics() :: #{
+%%   <<"Audio">> => audio_quality_metrics_info()
 %% }
--type describe_hours_of_operation_response() :: #{binary() => any()}.
+-type agent_quality_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_status() :: #{
+%%   <<"AgentStatusARN">> => string(),
+%%   <<"AgentStatusId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayOrder">> => integer(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any())
+%% }
+-type agent_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_status_identifier() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type agent_status_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_status_reference() :: #{
+%%   <<"StatusArn">> => string(),
+%%   <<"StatusName">> => string(),
+%%   <<"StatusStartTimestamp">> => non_neg_integer()
+%% }
+-type agent_status_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_status_search_criteria() :: #{
+%%   <<"AndConditions">> => list(agent_status_search_criteria()),
+%%   <<"OrConditions">> => list(agent_status_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type agent_status_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_status_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type agent_status_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_status_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type agent_status_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% agents_criteria() :: #{
+%%   <<"AgentIds">> => list(string())
+%% }
+-type agents_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% ai_agent_info() :: #{
+%%   <<"AiAgentEscalated">> => boolean(),
+%%   <<"AiAgentVersionId">> => string(),
+%%   <<"AiUseCase">> => list(any())
+%% }
+-type ai_agent_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% ai_agent_search_criteria() :: #{
+%%   <<"AiAgentEscalated">> => boolean(),
+%%   <<"AiUseCase">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type ai_agent_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% ai_agents_criteria() :: #{
+%%   <<"Criteria">> => list(ai_agent_search_criteria())
+%% }
+-type ai_agents_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% alias_configuration() :: #{
+%%   <<"EmailAddressId">> => string()
+%% }
+-type alias_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% allowed_capabilities() :: #{
+%%   <<"Agent">> => participant_capabilities(),
+%%   <<"Customer">> => participant_capabilities()
+%% }
+-type allowed_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% allowed_extension() :: #{
+%%   <<"Extension">> => string()
+%% }
+-type allowed_extension() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_configuration() :: #{
+%%   <<"LanguageConfiguration">> => language_configuration(),
+%%   <<"RedactionConfiguration">> => redaction_configuration(),
+%%   <<"RulesConfiguration">> => rules_configuration(),
+%%   <<"SentimentConfiguration">> => sentiment_configuration(),
+%%   <<"SummaryConfiguration">> => summary_configuration()
+%% }
+-type analytics_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_data_association_result() :: #{
+%%   <<"DataSetId">> => string(),
+%%   <<"ResourceShareArn">> => string(),
+%%   <<"ResourceShareId">> => string(),
+%%   <<"ResourceShareStatus">> => string(),
+%%   <<"TargetAccountId">> => string()
+%% }
+-type analytics_data_association_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_data_sets_result() :: #{
+%%   <<"DataSetId">> => string(),
+%%   <<"DataSetName">> => string()
+%% }
+-type analytics_data_sets_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% answer_machine_detection_config() :: #{
+%%   <<"AwaitAnswerMachinePrompt">> => boolean(),
+%%   <<"EnableAnswerMachineDetection">> => boolean()
+%% }
+-type answer_machine_detection_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% application() :: #{
+%%   <<"ApplicationPermissions">> => list(string()),
+%%   <<"Namespace">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type application() :: #{binary() => any()}.
+
+%% Example:
+%% assign_contact_category_action_definition() :: #{}
+-type assign_contact_category_action_definition() :: #{}.
+
+
+%% Example:
+%% assign_sla_action_definition() :: #{
+%%   <<"CaseSlaConfiguration">> => case_sla_configuration(),
+%%   <<"SlaAssignmentType">> => list(any())
+%% }
+-type assign_sla_action_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_analytics_data_set_request() :: #{
+%%   <<"DataSetId">> := string(),
+%%   <<"TargetAccountId">> => string()
+%% }
+-type associate_analytics_data_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_analytics_data_set_response() :: #{
+%%   <<"DataSetId">> => string(),
+%%   <<"ResourceShareArn">> => string(),
+%%   <<"ResourceShareId">> => string(),
+%%   <<"TargetAccountId">> => string()
+%% }
+-type associate_analytics_data_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_approved_origin_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Origin">> := string()
+%% }
+-type associate_approved_origin_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_bot_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"LexBot">> => lex_bot(),
+%%   <<"LexV2Bot">> => lex_v2_bot()
+%% }
+-type associate_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_contact_with_user_request() :: #{
+%%   <<"UserId">> := string()
+%% }
+-type associate_contact_with_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_contact_with_user_response() :: #{}
+-type associate_contact_with_user_response() :: #{}.
+
+
+%% Example:
+%% associate_default_vocabulary_request() :: #{
+%%   <<"VocabularyId">> => string()
+%% }
+-type associate_default_vocabulary_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_default_vocabulary_response() :: #{}
+-type associate_default_vocabulary_response() :: #{}.
+
+
+%% Example:
+%% associate_email_address_alias_request() :: #{
+%%   <<"AliasConfiguration">> := alias_configuration(),
+%%   <<"ClientToken">> => string()
+%% }
+-type associate_email_address_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_email_address_alias_response() :: #{}
+-type associate_email_address_alias_response() :: #{}.
+
+
+%% Example:
+%% associate_flow_request() :: #{
+%%   <<"FlowId">> := string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"ResourceType">> := list(any())
+%% }
+-type associate_flow_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_flow_response() :: #{}
+-type associate_flow_response() :: #{}.
+
+
+%% Example:
+%% associate_hours_of_operations_request() :: #{
+%%   <<"ParentHoursOfOperationConfigs">> := list(parent_hours_of_operation_config())
+%% }
+-type associate_hours_of_operations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_instance_storage_config_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ResourceType">> := list(any()),
+%%   <<"StorageConfig">> := instance_storage_config()
+%% }
+-type associate_instance_storage_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_instance_storage_config_response() :: #{
+%%   <<"AssociationId">> => string()
+%% }
+-type associate_instance_storage_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_lambda_function_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"FunctionArn">> := string()
+%% }
+-type associate_lambda_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_lex_bot_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"LexBot">> := lex_bot()
+%% }
+-type associate_lex_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_phone_number_contact_flow_request() :: #{
+%%   <<"ContactFlowId">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type associate_phone_number_contact_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_queue_email_addresses_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"EmailAddressesConfig">> := list(email_address_config())
+%% }
+-type associate_queue_email_addresses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_queue_quick_connects_request() :: #{
+%%   <<"QuickConnectIds">> := list(string())
+%% }
+-type associate_queue_quick_connects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_routing_profile_queues_request() :: #{
+%%   <<"ManualAssignmentQueueConfigs">> => list(routing_profile_manual_assignment_queue_config()),
+%%   <<"QueueConfigs">> => list(routing_profile_queue_config())
+%% }
+-type associate_routing_profile_queues_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_security_key_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Key">> := string()
+%% }
+-type associate_security_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_security_key_response() :: #{
+%%   <<"AssociationId">> => string()
+%% }
+-type associate_security_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_security_profiles_request() :: #{
+%%   <<"EntityArn">> := string(),
+%%   <<"EntityType">> := list(any()),
+%%   <<"SecurityProfiles">> := list(security_profile_item())
+%% }
+-type associate_security_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_traffic_distribution_group_user_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type associate_traffic_distribution_group_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_traffic_distribution_group_user_response() :: #{}
+-type associate_traffic_distribution_group_user_response() :: #{}.
+
+
+%% Example:
+%% associate_user_proficiencies_request() :: #{
+%%   <<"UserProficiencies">> := list(user_proficiency())
+%% }
+-type associate_user_proficiencies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_workspace_request() :: #{
+%%   <<"ResourceArns">> := list(string())
+%% }
+-type associate_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_workspace_response() :: #{
+%%   <<"FailedList">> => list(failed_batch_association_summary()),
+%%   <<"SuccessfulList">> => list(successful_batch_association_summary())
+%% }
+-type associate_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_contact_summary() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"ContactArn">> => string(),
+%%   <<"ContactId">> => string(),
+%%   <<"DisconnectTimestamp">> => non_neg_integer(),
+%%   <<"InitialContactId">> => string(),
+%%   <<"InitiationMethod">> => list(any()),
+%%   <<"InitiationTimestamp">> => non_neg_integer(),
+%%   <<"PreviousContactId">> => string(),
+%%   <<"RelatedContactId">> => string()
+%% }
+-type associated_contact_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% attached_file() :: #{
+%%   <<"AssociatedResourceArn">> => string(),
+%%   <<"CreatedBy">> => list(),
+%%   <<"CreationTime">> => string(),
+%%   <<"FileArn">> => string(),
+%%   <<"FileId">> => string(),
+%%   <<"FileName">> => string(),
+%%   <<"FileSizeInBytes">> => float(),
+%%   <<"FileStatus">> => list(any()),
+%%   <<"FileUseCaseType">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type attached_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% attached_file_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"FileId">> => string()
+%% }
+-type attached_file_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% attached_files_configuration() :: #{
+%%   <<"AttachmentScope">> => list(any()),
+%%   <<"ExtensionConfiguration">> => extension_configuration(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaximumSizeLimitInBytes">> => float()
+%% }
+-type attached_files_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% attached_files_configuration_summary() :: #{
+%%   <<"AttachmentScope">> => list(any()),
+%%   <<"ExtensionConfiguration">> => extension_configuration(),
+%%   <<"InstanceId">> => string(),
+%%   <<"MaximumSizeLimitInBytes">> => float()
+%% }
+-type attached_files_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% attachment_reference() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type attachment_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% attendee() :: #{
+%%   <<"AttendeeId">> => string(),
+%%   <<"JoinToken">> => string()
+%% }
+-type attendee() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute() :: #{
+%%   <<"AttributeType">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_and_condition() :: #{
+%%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
+%%   <<"TagConditions">> => list(tag_condition())
+%% }
+-type attribute_and_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_condition() :: #{
+%%   <<"ComparisonOperator">> => string(),
+%%   <<"MatchCriteria">> => match_criteria(),
+%%   <<"Name">> => string(),
+%%   <<"ProficiencyLevel">> => float(),
+%%   <<"Range">> => range(),
+%%   <<"Value">> => string()
+%% }
+-type attribute_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_features() :: #{
+%%   <<"EchoReduction">> => list(any())
+%% }
+-type audio_features() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_quality_metrics_info() :: #{
+%%   <<"PotentialQualityIssues">> => list(string()),
+%%   <<"QualityScore">> => float()
+%% }
+-type audio_quality_metrics_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_scope() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"EntityId">> => string(),
+%%   <<"EntityType">> => list(any()),
+%%   <<"SecurityProfileIds">> => list(string())
+%% }
+-type auth_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% authentication_profile() :: #{
+%%   <<"AllowedIps">> => list(string()),
+%%   <<"Arn">> => string(),
+%%   <<"BlockedIps">> => list(string()),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaxSessionDuration">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"PeriodicSessionDuration">> => integer(),
+%%   <<"SessionInactivityDuration">> => integer(),
+%%   <<"SessionInactivityHandlingEnabled">> => boolean()
+%% }
+-type authentication_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% authentication_profile_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type authentication_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_accept_config() :: #{
+%%   <<"AgentFirstCallbackAutoAccept">> => boolean(),
+%%   <<"AutoAccept">> => boolean(),
+%%   <<"Channel">> => list(any())
+%% }
+-type auto_accept_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_evaluation_configuration() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type auto_evaluation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_evaluation_details() :: #{
+%%   <<"AutoEvaluationEnabled">> => boolean(),
+%%   <<"AutoEvaluationStatus">> => list(any())
+%% }
+-type auto_evaluation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% automatic_fail_configuration() :: #{
+%%   <<"TargetSection">> => string()
+%% }
+-type automatic_fail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% available_number_summary() :: #{
+%%   <<"PhoneNumber">> => string(),
+%%   <<"PhoneNumberCountryCode">> => list(any()),
+%%   <<"PhoneNumberType">> => list(any())
+%% }
+-type available_number_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_analytics_data_set_request() :: #{
+%%   <<"DataSetIds">> := list(string()),
+%%   <<"TargetAccountId">> => string()
+%% }
+-type batch_associate_analytics_data_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_analytics_data_set_response() :: #{
+%%   <<"Created">> => list(analytics_data_association_result()),
+%%   <<"Errors">> => list(error_result())
+%% }
+-type batch_associate_analytics_data_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_data_table_value_failure_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type batch_create_data_table_value_failure_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_data_table_value_request() :: #{
+%%   <<"Values">> := list(data_table_value())
+%% }
+-type batch_create_data_table_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_data_table_value_response() :: #{
+%%   <<"Failed">> => list(batch_create_data_table_value_failure_result()),
+%%   <<"Successful">> => list(batch_create_data_table_value_success_result())
+%% }
+-type batch_create_data_table_value_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_data_table_value_success_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value()),
+%%   <<"RecordId">> => string()
+%% }
+-type batch_create_data_table_value_success_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5169,11 +1683,65 @@
 
 
 %% Example:
-%% list_child_hours_of_operations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% batch_delete_data_table_value_request() :: #{
+%%   <<"Values">> := list(data_table_delete_value_identifier())
 %% }
--type list_child_hours_of_operations_request() :: #{binary() => any()}.
+-type batch_delete_data_table_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_data_table_value_response() :: #{
+%%   <<"Failed">> => list(batch_delete_data_table_value_failure_result()),
+%%   <<"Successful">> => list(batch_delete_data_table_value_success_result())
+%% }
+-type batch_delete_data_table_value_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_data_table_value_success_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type batch_delete_data_table_value_success_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_describe_data_table_value_failure_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type batch_describe_data_table_value_failure_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_describe_data_table_value_request() :: #{
+%%   <<"Values">> := list(data_table_value_identifier())
+%% }
+-type batch_describe_data_table_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_describe_data_table_value_response() :: #{
+%%   <<"Failed">> => list(batch_describe_data_table_value_failure_result()),
+%%   <<"Successful">> => list(batch_describe_data_table_value_success_result())
+%% }
+-type batch_describe_data_table_value_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_describe_data_table_value_success_result() :: #{
+%%   <<"AttributeId">> => string(),
+%%   <<"AttributeName">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value_response()),
+%%   <<"RecordId">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type batch_describe_data_table_value_success_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5185,19 +1753,1049 @@
 
 
 %% Example:
-%% create_prompt_response() :: #{
-%%   <<"PromptARN">> => string(),
-%%   <<"PromptId">> => string()
+%% batch_disassociate_analytics_data_set_response() :: #{
+%%   <<"Deleted">> => list(string()),
+%%   <<"Errors">> => list(error_result())
 %% }
--type create_prompt_response() :: #{binary() => any()}.
+-type batch_disassociate_analytics_data_set_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluation_form_item_enablement_source() :: #{
-%%   <<"RefId">> => string(),
+%% batch_get_attached_file_metadata_request() :: #{
+%%   <<"AssociatedResourceArn">> := string(),
+%%   <<"FileIds">> := list(string())
+%% }
+-type batch_get_attached_file_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_attached_file_metadata_response() :: #{
+%%   <<"Errors">> => list(attached_file_error()),
+%%   <<"Files">> => list(attached_file())
+%% }
+-type batch_get_attached_file_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_flow_association_request() :: #{
+%%   <<"ResourceIds">> := list(string()),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type batch_get_flow_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_flow_association_response() :: #{
+%%   <<"FlowAssociationSummaryList">> => list(flow_association_summary())
+%% }
+-type batch_get_flow_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_contact_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactDataRequestList">> := list(contact_data_request())
+%% }
+-type batch_put_contact_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_contact_response() :: #{
+%%   <<"FailedRequestList">> => list(failed_request()),
+%%   <<"SuccessfulRequestList">> => list(successful_request())
+%% }
+-type batch_put_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_data_table_value_failure_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type batch_update_data_table_value_failure_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_data_table_value_request() :: #{
+%%   <<"Values">> := list(data_table_value())
+%% }
+-type batch_update_data_table_value_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_data_table_value_response() :: #{
+%%   <<"Failed">> => list(batch_update_data_table_value_failure_result()),
+%%   <<"Successful">> => list(batch_update_data_table_value_success_result())
+%% }
+-type batch_update_data_table_value_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_data_table_value_success_result() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type batch_update_data_table_value_success_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% boolean_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"FieldName">> => string()
+%% }
+-type boolean_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% campaign() :: #{
+%%   <<"CampaignId">> => string()
+%% }
+-type campaign() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_sla_configuration() :: #{
+%%   <<"FieldId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"TargetFieldValues">> => list(field_value_union()),
+%%   <<"TargetSlaMinutes">> => float(),
 %%   <<"Type">> => list(any())
 %% }
--type evaluation_form_item_enablement_source() :: #{binary() => any()}.
+-type case_sla_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_contact_metrics() :: #{
+%%   <<"AgentFirstResponseTimeInMillis">> => float(),
+%%   <<"AgentFirstResponseTimestamp">> => non_neg_integer(),
+%%   <<"ConversationCloseTimeInMillis">> => float(),
+%%   <<"ConversationTurnCount">> => integer(),
+%%   <<"MultiParty">> => boolean(),
+%%   <<"TotalBotMessageLengthInChars">> => integer(),
+%%   <<"TotalBotMessages">> => integer(),
+%%   <<"TotalMessages">> => integer()
+%% }
+-type chat_contact_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_entry_point_parameters() :: #{
+%%   <<"FlowId">> => string()
+%% }
+-type chat_entry_point_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_event() :: #{
+%%   <<"Content">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type chat_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_message() :: #{
+%%   <<"Content">> => string(),
+%%   <<"ContentType">> => string()
+%% }
+-type chat_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_metrics() :: #{
+%%   <<"AgentMetrics">> => participant_metrics(),
+%%   <<"ChatContactMetrics">> => chat_contact_metrics(),
+%%   <<"CustomerMetrics">> => participant_metrics()
+%% }
+-type chat_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_participant_role_config() :: #{
+%%   <<"ParticipantTimerConfigList">> => list(participant_timer_configuration())
+%% }
+-type chat_participant_role_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_streaming_configuration() :: #{
+%%   <<"StreamingEndpointArn">> => string()
+%% }
+-type chat_streaming_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% claim_phone_number_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"PhoneNumber">> := string(),
+%%   <<"PhoneNumberDescription">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TargetArn">> => string()
+%% }
+-type claim_phone_number_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% claim_phone_number_response() :: #{
+%%   <<"PhoneNumberArn">> => string(),
+%%   <<"PhoneNumberId">> => string()
+%% }
+-type claim_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% claimed_phone_number_summary() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"PhoneNumberArn">> => string(),
+%%   <<"PhoneNumberCountryCode">> => list(any()),
+%%   <<"PhoneNumberDescription">> => string(),
+%%   <<"PhoneNumberId">> => string(),
+%%   <<"PhoneNumberStatus">> => phone_number_status(),
+%%   <<"PhoneNumberType">> => list(any()),
+%%   <<"SourcePhoneNumberArn">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TargetArn">> => string()
+%% }
+-type claimed_phone_number_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% common_attribute_and_condition() :: #{
+%%   <<"TagConditions">> => list(tag_condition())
+%% }
+-type common_attribute_and_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% complete_attached_file_upload_request() :: #{
+%%   <<"AssociatedResourceArn">> := string()
+%% }
+-type complete_attached_file_upload_request() :: #{binary() => any()}.
+
+%% Example:
+%% complete_attached_file_upload_response() :: #{}
+-type complete_attached_file_upload_response() :: #{}.
+
+
+%% Example:
+%% condition() :: #{
+%%   <<"NumberCondition">> => number_condition(),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditional_operation_failed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conditional_operation_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_reference() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type connect_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% connection_data() :: #{
+%%   <<"Attendee">> => attendee(),
+%%   <<"Meeting">> => meeting()
+%% }
+-type connection_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact() :: #{
+%%   <<"AdditionalEmailRecipients">> => additional_email_recipients(),
+%%   <<"AgentInfo">> => agent_info(),
+%%   <<"AnsweringMachineDetectionStatus">> => list(any()),
+%%   <<"Arn">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"Campaign">> => campaign(),
+%%   <<"Channel">> => list(any()),
+%%   <<"ChatMetrics">> => chat_metrics(),
+%%   <<"ConnectedToSystemTimestamp">> => non_neg_integer(),
+%%   <<"ContactAssociationId">> => string(),
+%%   <<"ContactDetails">> => contact_details(),
+%%   <<"ContactEvaluations">> => map(),
+%%   <<"Customer">> => customer(),
+%%   <<"CustomerEndpoint">> => endpoint_info(),
+%%   <<"CustomerId">> => string(),
+%%   <<"CustomerVoiceActivity">> => customer_voice_activity(),
+%%   <<"Description">> => string(),
+%%   <<"DisconnectDetails">> => disconnect_details(),
+%%   <<"DisconnectReason">> => string(),
+%%   <<"DisconnectTimestamp">> => non_neg_integer(),
+%%   <<"GlobalResiliencyMetadata">> => global_resiliency_metadata(),
+%%   <<"Id">> => string(),
+%%   <<"InitialContactId">> => string(),
+%%   <<"InitiationMethod">> => list(any()),
+%%   <<"InitiationTimestamp">> => non_neg_integer(),
+%%   <<"LastPausedTimestamp">> => non_neg_integer(),
+%%   <<"LastResumedTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdateTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextContacts">> => list(next_contact_entry()),
+%%   <<"OutboundStrategy">> => outbound_strategy(),
+%%   <<"PreviousContactId">> => string(),
+%%   <<"QualityMetrics">> => quality_metrics(),
+%%   <<"QueueInfo">> => queue_info(),
+%%   <<"QueuePriority">> => float(),
+%%   <<"QueueTimeAdjustmentSeconds">> => integer(),
+%%   <<"Recordings">> => list(recording_info()),
+%%   <<"RelatedContactId">> => string(),
+%%   <<"RingStartTimestamp">> => non_neg_integer(),
+%%   <<"RoutingCriteria">> => routing_criteria(),
+%%   <<"ScheduledTimestamp">> => non_neg_integer(),
+%%   <<"SegmentAttributes">> => map(),
+%%   <<"SystemEndpoint">> => endpoint_info(),
+%%   <<"Tags">> => map(),
+%%   <<"TaskTemplateInfo">> => task_template_info_v2(),
+%%   <<"TotalPauseCount">> => integer(),
+%%   <<"TotalPauseDurationInSeconds">> => integer(),
+%%   <<"WisdomInfo">> => wisdom_info()
+%% }
+-type contact() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_analysis() :: #{
+%%   <<"Transcript">> => transcript()
+%% }
+-type contact_analysis() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_configuration() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"IncludeRawMessage">> => boolean(),
+%%   <<"ParticipantRole">> => list(any())
+%% }
+-type contact_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_data_request() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Campaign">> => campaign(),
+%%   <<"CustomerEndpoint">> => endpoint(),
+%%   <<"OutboundStrategy">> => outbound_strategy(),
+%%   <<"QueueId">> => string(),
+%%   <<"RequestIdentifier">> => string(),
+%%   <<"SystemEndpoint">> => endpoint()
+%% }
+-type contact_data_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_details() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type contact_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_evaluation() :: #{
+%%   <<"DeleteTimestamp">> => non_neg_integer(),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"EvaluationArn">> => string(),
+%%   <<"ExportLocation">> => string(),
+%%   <<"FormId">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type contact_evaluation() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_evaluation_attribute_and_condition() :: #{
+%%   <<"AttributeConditions">> => list(contact_evaluation_attribute_condition()),
+%%   <<"TagConditions">> => list(tag_condition())
+%% }
+-type contact_evaluation_attribute_and_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_evaluation_attribute_condition() :: #{
+%%   <<"AttributeKey">> => list(any()),
+%%   <<"AttributeValue">> => contact_evaluation_attribute_value(),
+%%   <<"ComparisonType">> => list(any())
+%% }
+-type contact_evaluation_attribute_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_evaluation_attribute_filter() :: #{
+%%   <<"AndCondition">> => contact_evaluation_attribute_and_condition(),
+%%   <<"ContactEvaluationAttributeCondition">> => contact_evaluation_attribute_condition(),
+%%   <<"OrConditions">> => list(contact_evaluation_attribute_and_condition()),
+%%   <<"TagCondition">> => tag_condition()
+%% }
+-type contact_evaluation_attribute_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_evaluation_attribute_value() :: #{
+%%   <<"StringValue">> => string()
+%% }
+-type contact_evaluation_attribute_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_filter() :: #{
+%%   <<"ContactStates">> => list(list(any())())
+%% }
+-type contact_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Content">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FlowContentSha256">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => float(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type contact_flow() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_attribute_and_condition() :: #{
+%%   <<"ContactFlowTypeCondition">> => contact_flow_type_condition(),
+%%   <<"TagConditions">> => list(tag_condition())
+%% }
+-type contact_flow_attribute_and_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_attribute_filter() :: #{
+%%   <<"AndCondition">> => contact_flow_attribute_and_condition(),
+%%   <<"ContactFlowTypeCondition">> => contact_flow_type_condition(),
+%%   <<"OrConditions">> => list(contact_flow_attribute_and_condition()),
+%%   <<"TagCondition">> => tag_condition()
+%% }
+-type contact_flow_attribute_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_module() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Content">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ExternalInvocationConfiguration">> => external_invocation_configuration(),
+%%   <<"FlowModuleContentSha256">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Settings">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => float(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type contact_flow_module() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_module_alias_info() :: #{
+%%   <<"AliasId">> => string(),
+%%   <<"ContactFlowModuleArn">> => string(),
+%%   <<"ContactFlowModuleId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type contact_flow_module_alias_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_module_alias_summary() :: #{
+%%   <<"AliasDescription">> => string(),
+%%   <<"AliasId">> => string(),
+%%   <<"AliasName">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Version">> => float()
+%% }
+-type contact_flow_module_alias_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_module_search_criteria() :: #{
+%%   <<"AndConditions">> => list(contact_flow_module_search_criteria()),
+%%   <<"OrConditions">> => list(contact_flow_module_search_criteria()),
+%%   <<"StateCondition">> => list(any()),
+%%   <<"StatusCondition">> => list(any()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type contact_flow_module_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_module_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type contact_flow_module_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_module_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type contact_flow_module_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_module_version_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Version">> => float(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type contact_flow_module_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_not_published_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type contact_flow_not_published_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_search_criteria() :: #{
+%%   <<"AndConditions">> => list(contact_flow_search_criteria()),
+%%   <<"OrConditions">> => list(contact_flow_search_criteria()),
+%%   <<"StateCondition">> => list(any()),
+%%   <<"StatusCondition">> => list(any()),
+%%   <<"StringCondition">> => string_condition(),
+%%   <<"TypeCondition">> => list(any())
+%% }
+-type contact_flow_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_search_filter() :: #{
+%%   <<"FlowAttributeFilter">> => contact_flow_attribute_filter(),
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type contact_flow_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ContactFlowState">> => list(any()),
+%%   <<"ContactFlowStatus">> => list(any()),
+%%   <<"ContactFlowType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type contact_flow_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_type_condition() :: #{
+%%   <<"ContactFlowType">> => list(any())
+%% }
+-type contact_flow_type_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_version_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Version">> => float(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type contact_flow_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_metric_info() :: #{
+%%   <<"Name">> => list(any())
+%% }
+-type contact_metric_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_metric_result() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => list()
+%% }
+-type contact_metric_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type contact_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_not_terminated_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type contact_not_terminated_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_search_summary() :: #{
+%%   <<"AgentInfo">> => contact_search_summary_agent_info(),
+%%   <<"AiAgentInfo">> => list(contact_search_summary_ai_agent_info()),
+%%   <<"Arn">> => string(),
+%%   <<"Channel">> => list(any()),
+%%   <<"DisconnectTimestamp">> => non_neg_integer(),
+%%   <<"GlobalResiliencyMetadata">> => global_resiliency_metadata(),
+%%   <<"Id">> => string(),
+%%   <<"InitialContactId">> => string(),
+%%   <<"InitiationMethod">> => list(any()),
+%%   <<"InitiationTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PreviousContactId">> => string(),
+%%   <<"QueueInfo">> => contact_search_summary_queue_info(),
+%%   <<"RoutingCriteria">> => routing_criteria(),
+%%   <<"ScheduledTimestamp">> => non_neg_integer(),
+%%   <<"SegmentAttributes">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type contact_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_search_summary_agent_info() :: #{
+%%   <<"ConnectedToAgentTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string()
+%% }
+-type contact_search_summary_agent_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_search_summary_ai_agent_info() :: #{
+%%   <<"AiAgentEscalated">> => boolean(),
+%%   <<"AiAgentVersionId">> => string(),
+%%   <<"AiUseCase">> => list(any())
+%% }
+-type contact_search_summary_ai_agent_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_search_summary_queue_info() :: #{
+%%   <<"EnqueueTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string()
+%% }
+-type contact_search_summary_queue_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_search_summary_segment_attribute_value() :: #{
+%%   <<"ValueMap">> => map(),
+%%   <<"ValueString">> => string()
+%% }
+-type contact_search_summary_segment_attribute_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_attributes() :: #{
+%%   <<"RecommenderConfig">> => recommender_config()
+%% }
+-type content_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_plane_attribute_filter() :: #{
+%%   <<"AndCondition">> => common_attribute_and_condition(),
+%%   <<"OrConditions">> => list(common_attribute_and_condition()),
+%%   <<"TagCondition">> => tag_condition()
+%% }
+-type control_plane_attribute_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_plane_tag_filter() :: #{
+%%   <<"AndConditions">> => list(tag_condition()),
+%%   <<"OrConditions">> => list(list(tag_condition())()),
+%%   <<"TagCondition">> => tag_condition()
+%% }
+-type control_plane_tag_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_plane_user_attribute_filter() :: #{
+%%   <<"AndCondition">> => attribute_and_condition(),
+%%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
+%%   <<"OrConditions">> => list(attribute_and_condition()),
+%%   <<"TagCondition">> => tag_condition()
+%% }
+-type control_plane_user_attribute_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_status_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayOrder">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"State">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_agent_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_status_response() :: #{
+%%   <<"AgentStatusARN">> => string(),
+%%   <<"AgentStatusId">> => string()
+%% }
+-type create_agent_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attached_file_request() :: #{
+%%   <<"AssociatedResourceArn">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"FileSourceUri">> := string(),
+%%   <<"FileUseCaseType">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_attached_file_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attached_file_response() :: #{
+%%   <<"CreationTime">> => string(),
+%%   <<"FileArn">> => string(),
+%%   <<"FileId">> => string(),
+%%   <<"FileStatus">> => list(any())
+%% }
+-type create_attached_file_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_auth_code_request() :: #{
+%%   <<"MaxSessionDurationMinutes">> => integer(),
+%%   <<"Scope">> := auth_scope(),
+%%   <<"SessionInactivityDurationMinutes">> := integer()
+%% }
+-type create_auth_code_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_auth_code_response() :: #{
+%%   <<"AuthCode">> => string(),
+%%   <<"EntityId">> => string(),
+%%   <<"EntityType">> => list(any()),
+%%   <<"SessionId">> => string()
+%% }
+-type create_auth_code_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_case_action_definition() :: #{
+%%   <<"Fields">> => list(field_value()),
+%%   <<"TemplateId">> => string()
+%% }
+-type create_case_action_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_module_alias_request() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"ContactFlowModuleVersion">> := float(),
+%%   <<"Description">> => string()
+%% }
+-type create_contact_flow_module_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_module_alias_response() :: #{
+%%   <<"ContactFlowModuleArn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_contact_flow_module_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_module_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Content">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"ExternalInvocationConfiguration">> => external_invocation_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"Settings">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_contact_flow_module_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_module_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_contact_flow_module_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_module_version_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FlowModuleContentSha256">> => string()
+%% }
+-type create_contact_flow_module_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_module_version_response() :: #{
+%%   <<"ContactFlowModuleArn">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type create_contact_flow_module_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_request() :: #{
+%%   <<"Content">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_contact_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_response() :: #{
+%%   <<"ContactFlowArn">> => string(),
+%%   <<"ContactFlowId">> => string(),
+%%   <<"FlowContentSha256">> => string()
+%% }
+-type create_contact_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_version_request() :: #{
+%%   <<"ContactFlowVersion">> => float(),
+%%   <<"Description">> => string(),
+%%   <<"FlowContentSha256">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type create_contact_flow_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_version_response() :: #{
+%%   <<"ContactFlowArn">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type create_contact_flow_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_request() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Channel">> := list(any()),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ExpiryDurationInMinutes">> => integer(),
+%%   <<"InitiateAs">> => list(any()),
+%%   <<"InitiationMethod">> := list(any()),
+%%   <<"InstanceId">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"PreviousContactId">> => string(),
+%%   <<"References">> => map(),
+%%   <<"RelatedContactId">> => string(),
+%%   <<"SegmentAttributes">> => map(),
+%%   <<"UserInfo">> => user_info()
+%% }
+-type create_contact_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_response() :: #{
+%%   <<"ContactArn">> => string(),
+%%   <<"ContactId">> => string()
+%% }
+-type create_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_table_attribute_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Primary">> => boolean(),
+%%   <<"Validation">> => validation(),
+%%   <<"ValueType">> := list(any())
+%% }
+-type create_data_table_attribute_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_table_attribute_response() :: #{
+%%   <<"AttributeId">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"Name">> => string()
+%% }
+-type create_data_table_attribute_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_table_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TimeZone">> := string(),
+%%   <<"ValueLockLevel">> := list(any())
+%% }
+-type create_data_table_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_table_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version()
+%% }
+-type create_data_table_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_email_address_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_email_address_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_email_address_response() :: #{
+%%   <<"EmailAddressArn">> => string(),
+%%   <<"EmailAddressId">> => string()
+%% }
+-type create_email_address_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_evaluation_form_request() :: #{
+%%   <<"AsDraft">> => boolean(),
+%%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Items">> := list(list()),
+%%   <<"LanguageConfiguration">> => evaluation_form_language_configuration(),
+%%   <<"ReviewConfiguration">> => evaluation_review_configuration(),
+%%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
+%%   <<"Tags">> => map(),
+%%   <<"TargetConfiguration">> => evaluation_form_target_configuration(),
+%%   <<"Title">> := string()
+%% }
+-type create_evaluation_form_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_evaluation_form_response() :: #{
+%%   <<"EvaluationFormArn">> => string(),
+%%   <<"EvaluationFormId">> => string()
+%% }
+-type create_evaluation_form_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_hours_of_operation_override_request() :: #{
+%%   <<"Config">> := list(hours_of_operation_override_config()),
+%%   <<"Description">> => string(),
+%%   <<"EffectiveFrom">> := string(),
+%%   <<"EffectiveTill">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"OverrideType">> => list(any()),
+%%   <<"RecurrenceConfig">> => recurrence_config()
+%% }
+-type create_hours_of_operation_override_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_hours_of_operation_override_response() :: #{
+%%   <<"HoursOfOperationOverrideId">> => string()
+%% }
+-type create_hours_of_operation_override_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_hours_of_operation_request() :: #{
+%%   <<"Config">> := list(hours_of_operation_config()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"ParentHoursOfOperationConfigs">> => list(parent_hours_of_operation_config()),
+%%   <<"Tags">> => map(),
+%%   <<"TimeZone">> := string()
+%% }
+-type create_hours_of_operation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_hours_of_operation_response() :: #{
+%%   <<"HoursOfOperationArn">> => string(),
+%%   <<"HoursOfOperationId">> => string()
+%% }
+-type create_hours_of_operation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_instance_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"IdentityManagementType">> := list(any()),
+%%   <<"InboundCallsEnabled">> := boolean(),
+%%   <<"InstanceAlias">> => string(),
+%%   <<"OutboundCallsEnabled">> := boolean(),
+%%   <<"Tags">> => map()
+%% }
+-type create_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_instance_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_instance_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5213,53 +2811,1190 @@
 
 
 %% Example:
-%% audio_features() :: #{
-%%   <<"EchoReduction">> => list(any())
+%% create_integration_association_response() :: #{
+%%   <<"IntegrationAssociationArn">> => string(),
+%%   <<"IntegrationAssociationId">> => string()
 %% }
--type audio_features() :: #{binary() => any()}.
+-type create_integration_association_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% routing_profile_queue_config() :: #{
-%%   <<"Delay">> => integer(),
-%%   <<"Priority">> => integer(),
-%%   <<"QueueReference">> => routing_profile_queue_reference()
+%% create_notification_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Content">> := map(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"PredefinedNotificationId">> => string(),
+%%   <<"Priority">> => list(any()),
+%%   <<"Recipients">> := list(string()),
+%%   <<"Tags">> => map()
 %% }
--type routing_profile_queue_config() :: #{binary() => any()}.
+-type create_notification_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list()
+%% create_notification_response() :: #{
+%%   <<"NotificationArn">> => string(),
+%%   <<"NotificationId">> => string()
 %% }
--type invalid_request_exception() :: #{binary() => any()}.
+-type create_notification_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_create_data_table_value_response() :: #{
-%%   <<"Failed">> => list(batch_create_data_table_value_failure_result()),
-%%   <<"Successful">> => list(batch_create_data_table_value_success_result())
+%% create_participant_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"ParticipantDetails">> := participant_details_to_add()
 %% }
--type batch_create_data_table_value_response() :: #{binary() => any()}.
+-type create_participant_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_task_template_request() :: #{
+%% create_participant_response() :: #{
+%%   <<"ParticipantCredentials">> => participant_token_credentials(),
+%%   <<"ParticipantId">> => string()
+%% }
+-type create_participant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_persistent_contact_association_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"RehydrationType">> := list(any()),
+%%   <<"SourceContactId">> := string()
+%% }
+-type create_persistent_contact_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_persistent_contact_association_response() :: #{
+%%   <<"ContinuedFromContactId">> => string()
+%% }
+-type create_persistent_contact_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_predefined_attribute_request() :: #{
+%%   <<"AttributeConfiguration">> => input_predefined_attribute_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"Purposes">> => list(string()),
+%%   <<"Values">> => list()
+%% }
+-type create_predefined_attribute_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prompt_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"S3Uri">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_prompt_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_prompt_response() :: #{
+%%   <<"PromptARN">> => string(),
+%%   <<"PromptId">> => string()
+%% }
+-type create_prompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_push_notification_registration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactConfiguration">> := contact_configuration(),
+%%   <<"DeviceToken">> := string(),
+%%   <<"DeviceType">> := list(any()),
+%%   <<"PinpointAppArn">> := string()
+%% }
+-type create_push_notification_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_push_notification_registration_response() :: #{
+%%   <<"RegistrationId">> => string()
+%% }
+-type create_push_notification_registration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_queue_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EmailAddressesConfig">> => list(email_address_config()),
+%%   <<"HoursOfOperationId">> := string(),
+%%   <<"MaxContacts">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"OutboundCallerConfig">> => outbound_caller_config(),
+%%   <<"OutboundEmailConfig">> => outbound_email_config(),
+%%   <<"QuickConnectIds">> => list(string()),
+%%   <<"Tags">> => map()
+%% }
+-type create_queue_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_queue_response() :: #{
+%%   <<"QueueArn">> => string(),
+%%   <<"QueueId">> => string()
+%% }
+-type create_queue_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_quick_connect_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"QuickConnectConfig">> := quick_connect_config(),
+%%   <<"Tags">> => map()
+%% }
+-type create_quick_connect_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_quick_connect_response() :: #{
+%%   <<"QuickConnectARN">> => string(),
+%%   <<"QuickConnectId">> => string()
+%% }
+-type create_quick_connect_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_routing_profile_request() :: #{
+%%   <<"AgentAvailabilityTimer">> => list(any()),
+%%   <<"DefaultOutboundQueueId">> := string(),
+%%   <<"Description">> := string(),
+%%   <<"ManualAssignmentQueueConfigs">> => list(routing_profile_manual_assignment_queue_config()),
+%%   <<"MediaConcurrencies">> := list(media_concurrency()),
+%%   <<"Name">> := string(),
+%%   <<"QueueConfigs">> => list(routing_profile_queue_config()),
+%%   <<"Tags">> => map()
+%% }
+-type create_routing_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_routing_profile_response() :: #{
+%%   <<"RoutingProfileArn">> => string(),
+%%   <<"RoutingProfileId">> => string()
+%% }
+-type create_routing_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rule_request() :: #{
+%%   <<"Actions">> := list(rule_action()),
+%%   <<"ClientToken">> => string(),
+%%   <<"Function">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"PublishStatus">> := list(any()),
+%%   <<"TriggerEventSource">> := rule_trigger_event_source()
+%% }
+-type create_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rule_response() :: #{
+%%   <<"RuleArn">> => string(),
+%%   <<"RuleId">> => string()
+%% }
+-type create_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_security_profile_request() :: #{
+%%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
+%%   <<"AllowedAccessControlTags">> => map(),
+%%   <<"AllowedFlowModules">> => list(flow_module()),
+%%   <<"Applications">> => list(application()),
+%%   <<"Description">> => string(),
+%%   <<"GranularAccessControlConfiguration">> => granular_access_control_configuration(),
+%%   <<"HierarchyRestrictedResources">> => list(string()),
+%%   <<"Permissions">> => list(string()),
+%%   <<"SecurityProfileName">> := string(),
+%%   <<"TagRestrictedResources">> => list(string()),
+%%   <<"Tags">> => map()
+%% }
+-type create_security_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_security_profile_response() :: #{
+%%   <<"SecurityProfileArn">> => string(),
+%%   <<"SecurityProfileId">> => string()
+%% }
+-type create_security_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_task_template_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"Constraints">> => task_template_constraints(),
 %%   <<"ContactFlowId">> => string(),
 %%   <<"Defaults">> => task_template_defaults(),
 %%   <<"Description">> => string(),
-%%   <<"Fields">> => list(task_template_field()),
-%%   <<"Name">> => string(),
+%%   <<"Fields">> := list(task_template_field()),
+%%   <<"Name">> := string(),
 %%   <<"SelfAssignFlowId">> => string(),
 %%   <<"Status">> => list(any())
 %% }
--type update_task_template_request() :: #{binary() => any()}.
+-type create_task_template_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% update_contact_response() :: #{}
--type update_contact_response() :: #{}.
+%% create_task_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_task_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_test_case_request() :: #{
+%%   <<"Content">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"EntryPoint">> => test_case_entry_point(),
+%%   <<"InitializationData">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> := string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TestCaseId">> => string()
+%% }
+-type create_test_case_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_test_case_response() :: #{
+%%   <<"TestCaseArn">> => string(),
+%%   <<"TestCaseId">> => string()
+%% }
+-type create_test_case_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_traffic_distribution_group_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_traffic_distribution_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_traffic_distribution_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_traffic_distribution_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_use_case_request() :: #{
+%%   <<"Tags">> => map(),
+%%   <<"UseCaseType">> := list(any())
+%% }
+-type create_use_case_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_use_case_response() :: #{
+%%   <<"UseCaseArn">> => string(),
+%%   <<"UseCaseId">> => string()
+%% }
+-type create_use_case_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_hierarchy_group_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"ParentGroupId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_user_hierarchy_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_hierarchy_group_response() :: #{
+%%   <<"HierarchyGroupArn">> => string(),
+%%   <<"HierarchyGroupId">> => string()
+%% }
+-type create_user_hierarchy_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"AfterContactWorkConfigs">> => list(after_contact_work_config_per_channel()),
+%%   <<"AutoAcceptConfigs">> => list(auto_accept_config()),
+%%   <<"DirectoryUserId">> => string(),
+%%   <<"HierarchyGroupId">> => string(),
+%%   <<"IdentityInfo">> => user_identity_info(),
+%%   <<"Password">> => string(),
+%%   <<"PersistentConnectionConfigs">> => list(persistent_connection_config()),
+%%   <<"PhoneConfig">> => user_phone_config(),
+%%   <<"PhoneNumberConfigs">> => list(phone_number_config()),
+%%   <<"RoutingProfileId">> := string(),
+%%   <<"SecurityProfileIds">> := list(string()),
+%%   <<"Tags">> => map(),
+%%   <<"Username">> := string(),
+%%   <<"VoiceEnhancementConfigs">> => list(voice_enhancement_config())
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_response() :: #{
+%%   <<"UserArn">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type create_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_view_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Content">> := view_input_content(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_view_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_view_response() :: #{
+%%   <<"View">> => view()
+%% }
+-type create_view_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_view_version_request() :: #{
+%%   <<"VersionDescription">> => string(),
+%%   <<"ViewContentSha256">> => string()
+%% }
+-type create_view_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_view_version_response() :: #{
+%%   <<"View">> => view()
+%% }
+-type create_view_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vocabulary_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Content">> := string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"VocabularyName">> := string()
+%% }
+-type create_vocabulary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vocabulary_response() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"VocabularyArn">> => string(),
+%%   <<"VocabularyId">> => string()
+%% }
+-type create_vocabulary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_page_request() :: #{
+%%   <<"InputData">> => string(),
+%%   <<"Page">> := string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"Slug">> => string()
+%% }
+-type create_workspace_page_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_workspace_page_response() :: #{}
+-type create_workspace_page_response() :: #{}.
+
+
+%% Example:
+%% create_workspace_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"Theme">> => workspace_theme(),
+%%   <<"Title">> => string()
+%% }
+-type create_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_response() :: #{
+%%   <<"WorkspaceArn">> => string(),
+%%   <<"WorkspaceId">> => string()
+%% }
+-type create_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% credentials() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"AccessTokenExpiration">> => non_neg_integer(),
+%%   <<"RefreshToken">> => string(),
+%%   <<"RefreshTokenExpiration">> => non_neg_integer()
+%% }
+-type credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% cross_channel_behavior() :: #{
+%%   <<"BehaviorType">> => list(any())
+%% }
+-type cross_channel_behavior() :: #{binary() => any()}.
+
+
+%% Example:
+%% current_metric() :: #{
+%%   <<"MetricId">> => string(),
+%%   <<"Name">> => list(any()),
+%%   <<"Unit">> => list(any())
+%% }
+-type current_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% current_metric_data() :: #{
+%%   <<"Metric">> => current_metric(),
+%%   <<"Value">> => float()
+%% }
+-type current_metric_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% current_metric_result() :: #{
+%%   <<"Collections">> => list(current_metric_data()),
+%%   <<"Dimensions">> => dimensions()
+%% }
+-type current_metric_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% current_metric_sort_criteria() :: #{
+%%   <<"SortByMetric">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type current_metric_sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% customer() :: #{
+%%   <<"Capabilities">> => participant_capabilities(),
+%%   <<"DeviceInfo">> => device_info()
+%% }
+-type customer() :: #{binary() => any()}.
+
+
+%% Example:
+%% customer_quality_metrics() :: #{
+%%   <<"Audio">> => audio_quality_metrics_info()
+%% }
+-type customer_quality_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% customer_voice_activity() :: #{
+%%   <<"GreetingEndTimestamp">> => non_neg_integer(),
+%%   <<"GreetingStartTimestamp">> => non_neg_integer()
+%% }
+-type customer_voice_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TimeZone">> => string(),
+%%   <<"ValueLockLevel">> => list(any()),
+%%   <<"Version">> => string(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type data_table() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_access_control_configuration() :: #{
+%%   <<"PrimaryAttributeAccessControlConfiguration">> => primary_attribute_access_control_configuration_item()
+%% }
+-type data_table_access_control_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_attribute() :: #{
+%%   <<"AttributeId">> => string(),
+%%   <<"DataTableArn">> => string(),
+%%   <<"DataTableId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"Name">> => string(),
+%%   <<"Primary">> => boolean(),
+%%   <<"Validation">> => validation(),
+%%   <<"ValueType">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type data_table_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_delete_value_identifier() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type data_table_delete_value_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_evaluated_value() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Error">> => boolean(),
+%%   <<"EvaluatedValue">> => string(),
+%%   <<"Found">> => boolean(),
+%%   <<"PrimaryValues">> => list(primary_value()),
+%%   <<"RecordId">> => string(),
+%%   <<"ValueType">> => list(any())
+%% }
+-type data_table_evaluated_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_lock_version() :: #{
+%%   <<"Attribute">> => string(),
+%%   <<"DataTable">> => string(),
+%%   <<"PrimaryValues">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type data_table_lock_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_search_criteria() :: #{
+%%   <<"AndConditions">> => list(data_table_search_criteria()),
+%%   <<"OrConditions">> => list(data_table_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type data_table_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type data_table_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type data_table_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_value() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value()),
+%%   <<"Value">> => string()
+%% }
+-type data_table_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_value_evaluation_set() :: #{
+%%   <<"AttributeNames">> => list(string()),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type data_table_value_evaluation_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_value_identifier() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"PrimaryValues">> => list(primary_value())
+%% }
+-type data_table_value_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_table_value_summary() :: #{
+%%   <<"AttributeId">> => string(),
+%%   <<"AttributeName">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"PrimaryValues">> => list(primary_value_response()),
+%%   <<"RecordId">> => string(),
+%%   <<"Value">> => string(),
+%%   <<"ValueType">> => list(any())
+%% }
+-type data_table_value_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"FieldName">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type date_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_reference() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type date_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_time_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"FieldName">> => string(),
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string()
+%% }
+-type date_time_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% deactivate_evaluation_form_request() :: #{
+%%   <<"EvaluationFormVersion">> := integer()
+%% }
+-type deactivate_evaluation_form_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% deactivate_evaluation_form_response() :: #{
+%%   <<"EvaluationFormArn">> => string(),
+%%   <<"EvaluationFormId">> => string(),
+%%   <<"EvaluationFormVersion">> => integer()
+%% }
+-type deactivate_evaluation_form_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% decimal_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"FieldName">> => string(),
+%%   <<"MaxValue">> => float(),
+%%   <<"MinValue">> => float()
+%% }
+-type decimal_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_vocabulary() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"VocabularyId">> => string(),
+%%   <<"VocabularyName">> => string()
+%% }
+-type default_vocabulary() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_attached_file_request() :: #{
+%%   <<"AssociatedResourceArn">> := string()
+%% }
+-type delete_attached_file_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attached_file_response() :: #{}
+-type delete_attached_file_response() :: #{}.
+
+
+%% Example:
+%% delete_contact_data_request() :: #{
+%%   <<"ContactFields">> := list(list(any())())
+%% }
+-type delete_contact_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_contact_data_response() :: #{}
+-type delete_contact_data_response() :: #{}.
+
+%% Example:
+%% delete_contact_evaluation_request() :: #{}
+-type delete_contact_evaluation_request() :: #{}.
+
+%% Example:
+%% delete_contact_flow_module_alias_request() :: #{}
+-type delete_contact_flow_module_alias_request() :: #{}.
+
+%% Example:
+%% delete_contact_flow_module_alias_response() :: #{}
+-type delete_contact_flow_module_alias_response() :: #{}.
+
+%% Example:
+%% delete_contact_flow_module_request() :: #{}
+-type delete_contact_flow_module_request() :: #{}.
+
+%% Example:
+%% delete_contact_flow_module_response() :: #{}
+-type delete_contact_flow_module_response() :: #{}.
+
+%% Example:
+%% delete_contact_flow_module_version_request() :: #{}
+-type delete_contact_flow_module_version_request() :: #{}.
+
+%% Example:
+%% delete_contact_flow_module_version_response() :: #{}
+-type delete_contact_flow_module_version_response() :: #{}.
+
+%% Example:
+%% delete_contact_flow_request() :: #{}
+-type delete_contact_flow_request() :: #{}.
+
+%% Example:
+%% delete_contact_flow_response() :: #{}
+-type delete_contact_flow_response() :: #{}.
+
+%% Example:
+%% delete_contact_flow_version_request() :: #{}
+-type delete_contact_flow_version_request() :: #{}.
+
+%% Example:
+%% delete_contact_flow_version_response() :: #{}
+-type delete_contact_flow_version_response() :: #{}.
+
+%% Example:
+%% delete_data_table_attribute_request() :: #{}
+-type delete_data_table_attribute_request() :: #{}.
+
+
+%% Example:
+%% delete_data_table_attribute_response() :: #{
+%%   <<"LockVersion">> => data_table_lock_version()
+%% }
+-type delete_data_table_attribute_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_table_request() :: #{}
+-type delete_data_table_request() :: #{}.
+
+%% Example:
+%% delete_data_table_response() :: #{}
+-type delete_data_table_response() :: #{}.
+
+%% Example:
+%% delete_email_address_request() :: #{}
+-type delete_email_address_request() :: #{}.
+
+%% Example:
+%% delete_email_address_response() :: #{}
+-type delete_email_address_response() :: #{}.
+
+
+%% Example:
+%% delete_evaluation_form_request() :: #{
+%%   <<"EvaluationFormVersion">> => integer()
+%% }
+-type delete_evaluation_form_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hours_of_operation_override_request() :: #{}
+-type delete_hours_of_operation_override_request() :: #{}.
+
+%% Example:
+%% delete_hours_of_operation_request() :: #{}
+-type delete_hours_of_operation_request() :: #{}.
+
+
+%% Example:
+%% delete_instance_request() :: #{
+%%   <<"ClientToken">> => string()
+%% }
+-type delete_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_association_request() :: #{}
+-type delete_integration_association_request() :: #{}.
+
+%% Example:
+%% delete_notification_request() :: #{}
+-type delete_notification_request() :: #{}.
+
+%% Example:
+%% delete_notification_response() :: #{}
+-type delete_notification_response() :: #{}.
+
+%% Example:
+%% delete_predefined_attribute_request() :: #{}
+-type delete_predefined_attribute_request() :: #{}.
+
+%% Example:
+%% delete_prompt_request() :: #{}
+-type delete_prompt_request() :: #{}.
+
+
+%% Example:
+%% delete_push_notification_registration_request() :: #{
+%%   <<"ContactId">> := string()
+%% }
+-type delete_push_notification_registration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_push_notification_registration_response() :: #{}
+-type delete_push_notification_registration_response() :: #{}.
+
+%% Example:
+%% delete_queue_request() :: #{}
+-type delete_queue_request() :: #{}.
+
+%% Example:
+%% delete_quick_connect_request() :: #{}
+-type delete_quick_connect_request() :: #{}.
+
+%% Example:
+%% delete_routing_profile_request() :: #{}
+-type delete_routing_profile_request() :: #{}.
+
+%% Example:
+%% delete_rule_request() :: #{}
+-type delete_rule_request() :: #{}.
+
+%% Example:
+%% delete_security_profile_request() :: #{}
+-type delete_security_profile_request() :: #{}.
+
+%% Example:
+%% delete_session_request() :: #{}
+-type delete_session_request() :: #{}.
+
+%% Example:
+%% delete_session_response() :: #{}
+-type delete_session_response() :: #{}.
+
+%% Example:
+%% delete_task_template_request() :: #{}
+-type delete_task_template_request() :: #{}.
+
+%% Example:
+%% delete_task_template_response() :: #{}
+-type delete_task_template_response() :: #{}.
+
+%% Example:
+%% delete_test_case_request() :: #{}
+-type delete_test_case_request() :: #{}.
+
+%% Example:
+%% delete_test_case_response() :: #{}
+-type delete_test_case_response() :: #{}.
+
+%% Example:
+%% delete_traffic_distribution_group_request() :: #{}
+-type delete_traffic_distribution_group_request() :: #{}.
+
+%% Example:
+%% delete_traffic_distribution_group_response() :: #{}
+-type delete_traffic_distribution_group_response() :: #{}.
+
+%% Example:
+%% delete_use_case_request() :: #{}
+-type delete_use_case_request() :: #{}.
+
+%% Example:
+%% delete_user_hierarchy_group_request() :: #{}
+-type delete_user_hierarchy_group_request() :: #{}.
+
+%% Example:
+%% delete_user_request() :: #{}
+-type delete_user_request() :: #{}.
+
+%% Example:
+%% delete_view_request() :: #{}
+-type delete_view_request() :: #{}.
+
+%% Example:
+%% delete_view_response() :: #{}
+-type delete_view_response() :: #{}.
+
+%% Example:
+%% delete_view_version_request() :: #{}
+-type delete_view_version_request() :: #{}.
+
+%% Example:
+%% delete_view_version_response() :: #{}
+-type delete_view_version_response() :: #{}.
+
+%% Example:
+%% delete_vocabulary_request() :: #{}
+-type delete_vocabulary_request() :: #{}.
+
+
+%% Example:
+%% delete_vocabulary_response() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"VocabularyArn">> => string(),
+%%   <<"VocabularyId">> => string()
+%% }
+-type delete_vocabulary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workspace_media_request() :: #{
+%%   <<"MediaType">> := list(any())
+%% }
+-type delete_workspace_media_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_media_response() :: #{}
+-type delete_workspace_media_response() :: #{}.
+
+%% Example:
+%% delete_workspace_page_request() :: #{}
+-type delete_workspace_page_request() :: #{}.
+
+%% Example:
+%% delete_workspace_page_response() :: #{}
+-type delete_workspace_page_response() :: #{}.
+
+%% Example:
+%% delete_workspace_request() :: #{}
+-type delete_workspace_request() :: #{}.
+
+%% Example:
+%% delete_workspace_response() :: #{}
+-type delete_workspace_response() :: #{}.
+
+%% Example:
+%% describe_agent_status_request() :: #{}
+-type describe_agent_status_request() :: #{}.
+
+
+%% Example:
+%% describe_agent_status_response() :: #{
+%%   <<"AgentStatus">> => agent_status()
+%% }
+-type describe_agent_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attached_files_configuration_request() :: #{}
+-type describe_attached_files_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_attached_files_configuration_response() :: #{
+%%   <<"AttachedFilesConfiguration">> => attached_files_configuration()
+%% }
+-type describe_attached_files_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_authentication_profile_request() :: #{}
+-type describe_authentication_profile_request() :: #{}.
+
+
+%% Example:
+%% describe_authentication_profile_response() :: #{
+%%   <<"AuthenticationProfile">> => authentication_profile()
+%% }
+-type describe_authentication_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_contact_evaluation_request() :: #{}
+-type describe_contact_evaluation_request() :: #{}.
+
+
+%% Example:
+%% describe_contact_evaluation_response() :: #{
+%%   <<"Evaluation">> => evaluation(),
+%%   <<"EvaluationForm">> => evaluation_form_content()
+%% }
+-type describe_contact_evaluation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_contact_flow_module_alias_request() :: #{}
+-type describe_contact_flow_module_alias_request() :: #{}.
+
+
+%% Example:
+%% describe_contact_flow_module_alias_response() :: #{
+%%   <<"ContactFlowModuleAlias">> => contact_flow_module_alias_info()
+%% }
+-type describe_contact_flow_module_alias_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_contact_flow_module_request() :: #{}
+-type describe_contact_flow_module_request() :: #{}.
+
+
+%% Example:
+%% describe_contact_flow_module_response() :: #{
+%%   <<"ContactFlowModule">> => contact_flow_module()
+%% }
+-type describe_contact_flow_module_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_contact_flow_request() :: #{}
+-type describe_contact_flow_request() :: #{}.
+
+
+%% Example:
+%% describe_contact_flow_response() :: #{
+%%   <<"ContactFlow">> => contact_flow()
+%% }
+-type describe_contact_flow_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_contact_request() :: #{}
+-type describe_contact_request() :: #{}.
+
+
+%% Example:
+%% describe_contact_response() :: #{
+%%   <<"Contact">> => contact()
+%% }
+-type describe_contact_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_table_attribute_request() :: #{}
+-type describe_data_table_attribute_request() :: #{}.
+
+
+%% Example:
+%% describe_data_table_attribute_response() :: #{
+%%   <<"Attribute">> => data_table_attribute()
+%% }
+-type describe_data_table_attribute_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_table_request() :: #{}
+-type describe_data_table_request() :: #{}.
+
+
+%% Example:
+%% describe_data_table_response() :: #{
+%%   <<"DataTable">> => data_table()
+%% }
+-type describe_data_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_email_address_request() :: #{}
+-type describe_email_address_request() :: #{}.
+
+
+%% Example:
+%% describe_email_address_response() :: #{
+%%   <<"AliasConfigurations">> => list(alias_configuration()),
+%%   <<"CreateTimestamp">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"EmailAddressArn">> => string(),
+%%   <<"EmailAddressId">> => string(),
+%%   <<"ModifiedTimestamp">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_email_address_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_evaluation_form_request() :: #{
+%%   <<"EvaluationFormVersion">> => integer()
+%% }
+-type describe_evaluation_form_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_evaluation_form_response() :: #{
+%%   <<"EvaluationForm">> => evaluation_form()
+%% }
+-type describe_evaluation_form_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hours_of_operation_override_request() :: #{}
+-type describe_hours_of_operation_override_request() :: #{}.
+
+
+%% Example:
+%% describe_hours_of_operation_override_response() :: #{
+%%   <<"HoursOfOperationOverride">> => hours_of_operation_override()
+%% }
+-type describe_hours_of_operation_override_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hours_of_operation_request() :: #{}
+-type describe_hours_of_operation_request() :: #{}.
+
+
+%% Example:
+%% describe_hours_of_operation_response() :: #{
+%%   <<"HoursOfOperation">> => hours_of_operation()
+%% }
+-type describe_hours_of_operation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_attribute_request() :: #{}
+-type describe_instance_attribute_request() :: #{}.
+
+
+%% Example:
+%% describe_instance_attribute_response() :: #{
+%%   <<"Attribute">> => attribute()
+%% }
+-type describe_instance_attribute_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_request() :: #{}
+-type describe_instance_request() :: #{}.
+
+
+%% Example:
+%% describe_instance_response() :: #{
+%%   <<"Instance">> => instance(),
+%%   <<"ReplicationConfiguration">> => replication_configuration()
+%% }
+-type describe_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_instance_storage_config_request() :: #{
+%%   <<"ResourceType">> := list(any())
+%% }
+-type describe_instance_storage_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_instance_storage_config_response() :: #{
+%%   <<"StorageConfig">> => instance_storage_config()
+%% }
+-type describe_instance_storage_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notification_request() :: #{}
+-type describe_notification_request() :: #{}.
 
 
 %% Example:
@@ -5267,6 +4002,230 @@
 %%   <<"Notification">> => notification()
 %% }
 -type describe_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_phone_number_request() :: #{}
+-type describe_phone_number_request() :: #{}.
+
+
+%% Example:
+%% describe_phone_number_response() :: #{
+%%   <<"ClaimedPhoneNumberSummary">> => claimed_phone_number_summary()
+%% }
+-type describe_phone_number_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_predefined_attribute_request() :: #{}
+-type describe_predefined_attribute_request() :: #{}.
+
+
+%% Example:
+%% describe_predefined_attribute_response() :: #{
+%%   <<"PredefinedAttribute">> => predefined_attribute()
+%% }
+-type describe_predefined_attribute_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_prompt_request() :: #{}
+-type describe_prompt_request() :: #{}.
+
+
+%% Example:
+%% describe_prompt_response() :: #{
+%%   <<"Prompt">> => prompt()
+%% }
+-type describe_prompt_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_queue_request() :: #{}
+-type describe_queue_request() :: #{}.
+
+
+%% Example:
+%% describe_queue_response() :: #{
+%%   <<"Queue">> => queue()
+%% }
+-type describe_queue_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_quick_connect_request() :: #{}
+-type describe_quick_connect_request() :: #{}.
+
+
+%% Example:
+%% describe_quick_connect_response() :: #{
+%%   <<"QuickConnect">> => quick_connect()
+%% }
+-type describe_quick_connect_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_routing_profile_request() :: #{}
+-type describe_routing_profile_request() :: #{}.
+
+
+%% Example:
+%% describe_routing_profile_response() :: #{
+%%   <<"RoutingProfile">> => routing_profile()
+%% }
+-type describe_routing_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_request() :: #{}
+-type describe_rule_request() :: #{}.
+
+
+%% Example:
+%% describe_rule_response() :: #{
+%%   <<"Rule">> => rule()
+%% }
+-type describe_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_security_profile_request() :: #{}
+-type describe_security_profile_request() :: #{}.
+
+
+%% Example:
+%% describe_security_profile_response() :: #{
+%%   <<"SecurityProfile">> => security_profile()
+%% }
+-type describe_security_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_test_case_request() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type describe_test_case_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_test_case_response() :: #{
+%%   <<"TestCase">> => test_case()
+%% }
+-type describe_test_case_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_traffic_distribution_group_request() :: #{}
+-type describe_traffic_distribution_group_request() :: #{}.
+
+
+%% Example:
+%% describe_traffic_distribution_group_response() :: #{
+%%   <<"TrafficDistributionGroup">> => traffic_distribution_group()
+%% }
+-type describe_traffic_distribution_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_hierarchy_group_request() :: #{}
+-type describe_user_hierarchy_group_request() :: #{}.
+
+
+%% Example:
+%% describe_user_hierarchy_group_response() :: #{
+%%   <<"HierarchyGroup">> => hierarchy_group()
+%% }
+-type describe_user_hierarchy_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_hierarchy_structure_request() :: #{}
+-type describe_user_hierarchy_structure_request() :: #{}.
+
+
+%% Example:
+%% describe_user_hierarchy_structure_response() :: #{
+%%   <<"HierarchyStructure">> => hierarchy_structure()
+%% }
+-type describe_user_hierarchy_structure_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_request() :: #{}
+-type describe_user_request() :: #{}.
+
+
+%% Example:
+%% describe_user_response() :: #{
+%%   <<"User">> => user()
+%% }
+-type describe_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_view_request() :: #{}
+-type describe_view_request() :: #{}.
+
+
+%% Example:
+%% describe_view_response() :: #{
+%%   <<"View">> => view()
+%% }
+-type describe_view_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vocabulary_request() :: #{}
+-type describe_vocabulary_request() :: #{}.
+
+
+%% Example:
+%% describe_vocabulary_response() :: #{
+%%   <<"Vocabulary">> => vocabulary()
+%% }
+-type describe_vocabulary_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_request() :: #{}
+-type describe_workspace_request() :: #{}.
+
+
+%% Example:
+%% describe_workspace_response() :: #{
+%%   <<"Workspace">> => workspace()
+%% }
+-type describe_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_not_allowed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type destination_not_allowed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_info() :: #{
+%%   <<"OperatingSystem">> => string(),
+%%   <<"PlatformName">> => string(),
+%%   <<"PlatformVersion">> => string()
+%% }
+-type device_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% dimensions() :: #{
+%%   <<"AgentStatus">> => agent_status_identifier(),
+%%   <<"Channel">> => list(any()),
+%%   <<"Queue">> => queue_reference(),
+%%   <<"RoutingProfile">> => routing_profile_reference(),
+%%   <<"RoutingStepExpression">> => string(),
+%%   <<"Subtype">> => string(),
+%%   <<"ValidationTestType">> => string()
+%% }
+-type dimensions() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_analytics_data_set_request() :: #{
+%%   <<"DataSetId">> := string(),
+%%   <<"TargetAccountId">> => string()
+%% }
+-type disassociate_analytics_data_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_approved_origin_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Origin">> := string()
+%% }
+-type disassociate_approved_origin_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5279,271 +4238,417 @@
 
 
 %% Example:
-%% evaluation_score() :: #{
-%%   <<"AppliedWeight">> => float(),
-%%   <<"AutomaticFail">> => boolean(),
-%%   <<"EarnedPoints">> => integer(),
-%%   <<"MaxBasePoint">> => integer(),
-%%   <<"NotApplicable">> => boolean(),
-%%   <<"Percentage">> => float(),
-%%   <<"PerformanceCategory">> => list(any())
-%% }
--type evaluation_score() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_table_values_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PrimaryAttributeValues">> => list(primary_attribute_value_filter()),
-%%   <<"RecordIds">> => list(string())
-%% }
--type list_data_table_values_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_contact_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ContactDataRequestList">> := list(contact_data_request())
-%% }
--type batch_put_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_task_templates_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_task_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% telephony_config() :: #{
-%%   <<"Distributions">> => list(distribution())
-%% }
--type telephony_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_profiles_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SecurityProfileSummaryList">> => list(security_profile_summary())
-%% }
--type list_security_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_data_table_value_request() :: #{
-%%   <<"Values">> := list(data_table_value())
-%% }
--type batch_update_data_table_value_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workspace_theme_request() :: #{
-%%   <<"Theme">> => workspace_theme()
-%% }
--type update_workspace_theme_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_participant_response() :: #{
-%%   <<"ParticipantCredentials">> => participant_token_credentials(),
-%%   <<"ParticipantId">> => string()
-%% }
--type create_participant_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% hierarchy_group_condition() :: #{
-%%   <<"HierarchyGroupMatchType">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type hierarchy_group_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% vocabulary_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type vocabulary_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_test_case_execution_request() :: #{
-%%   <<"ClientToken">> => string()
-%% }
--type stop_test_case_execution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_view_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_view_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_contact_flow_module_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Content">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"ExternalInvocationConfiguration">> => external_invocation_configuration(),
-%%   <<"Name">> := string(),
-%%   <<"Settings">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_contact_flow_module_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_request() :: #{}
--type describe_instance_request() :: #{}.
-
-
-%% Example:
-%% security_profiles_search_filter() :: #{
-%%   <<"TagFilter">> => control_plane_tag_filter()
-%% }
--type security_profiles_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_attached_files_configuration_request() :: #{
-%%   <<"ExtensionConfiguration">> => extension_configuration(),
-%%   <<"MaximumSizeLimitInBytes">> => float()
-%% }
--type update_attached_files_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_attached_file_metadata_request() :: #{
-%%   <<"AssociatedResourceArn">> := string(),
-%%   <<"FileIds">> := list(string())
-%% }
--type batch_get_attached_file_metadata_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_flow_association_request() :: #{
-%%   <<"ResourceIds">> := list(string()),
-%%   <<"ResourceType">> => list(any())
-%% }
--type batch_get_flow_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_config() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"BucketPrefix">> => string(),
-%%   <<"EncryptionConfig">> => encryption_config()
-%% }
--type s3_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_table_attribute_response() :: #{
-%%   <<"LockVersion">> => data_table_lock_version(),
-%%   <<"Name">> => string()
-%% }
--type update_data_table_attribute_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_authentication_profiles_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_authentication_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% alias_configuration() :: #{
-%%   <<"EmailAddressId">> => string()
-%% }
--type alias_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_workspace_visibility_response() :: #{}
--type update_workspace_visibility_response() :: #{}.
-
-%% Example:
-%% update_workspace_metadata_response() :: #{}
--type update_workspace_metadata_response() :: #{}.
-
-
-%% Example:
-%% update_contact_flow_content_request() :: #{
-%%   <<"Content">> := string()
-%% }
--type update_contact_flow_content_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_email_address_alias_request() :: #{
+%% disassociate_email_address_alias_request() :: #{
 %%   <<"AliasConfiguration">> := alias_configuration(),
 %%   <<"ClientToken">> => string()
 %% }
--type associate_email_address_alias_request() :: #{binary() => any()}.
+-type disassociate_email_address_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_email_address_alias_response() :: #{}
+-type disassociate_email_address_alias_response() :: #{}.
+
+%% Example:
+%% disassociate_flow_request() :: #{}
+-type disassociate_flow_request() :: #{}.
+
+%% Example:
+%% disassociate_flow_response() :: #{}
+-type disassociate_flow_response() :: #{}.
 
 
 %% Example:
-%% batch_create_data_table_value_failure_result() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"PrimaryValues">> => list(primary_value())
+%% disassociate_hours_of_operations_request() :: #{
+%%   <<"ParentHoursOfOperationIds">> := list(string())
 %% }
--type batch_create_data_table_value_failure_result() :: #{binary() => any()}.
+-type disassociate_hours_of_operations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% user_phone_config() :: #{
-%%   <<"AfterContactWorkTimeLimit">> => integer(),
-%%   <<"AutoAccept">> => boolean(),
-%%   <<"DeskPhoneNumber">> => string(),
-%%   <<"PersistentConnection">> => boolean(),
-%%   <<"PhoneType">> => list(any())
+%% disassociate_instance_storage_config_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ResourceType">> := list(any())
 %% }
--type user_phone_config() :: #{binary() => any()}.
+-type disassociate_instance_storage_config_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% quick_connect_contact_data() :: #{
-%%   <<"ContactId">> => string(),
-%%   <<"InitiationTimestamp">> => non_neg_integer(),
-%%   <<"QuickConnectId">> => string(),
-%%   <<"QuickConnectName">> => string(),
-%%   <<"QuickConnectType">> => list(any())
+%% disassociate_lambda_function_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"FunctionArn">> := string()
 %% }
--type quick_connect_contact_data() :: #{binary() => any()}.
-
-%% Example:
-%% describe_email_address_request() :: #{}
--type describe_email_address_request() :: #{}.
+-type disassociate_lambda_function_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% submit_contact_evaluation_response() :: #{
+%% disassociate_lex_bot_request() :: #{
+%%   <<"BotName">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"LexRegion">> := string()
+%% }
+-type disassociate_lex_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_phone_number_contact_flow_request() :: #{
+%%   <<"InstanceId">> := string()
+%% }
+-type disassociate_phone_number_contact_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_queue_email_addresses_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"EmailAddressesId">> := list(string())
+%% }
+-type disassociate_queue_email_addresses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_queue_quick_connects_request() :: #{
+%%   <<"QuickConnectIds">> := list(string())
+%% }
+-type disassociate_queue_quick_connects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_routing_profile_queues_request() :: #{
+%%   <<"ManualAssignmentQueueReferences">> => list(routing_profile_queue_reference()),
+%%   <<"QueueReferences">> => list(routing_profile_queue_reference())
+%% }
+-type disassociate_routing_profile_queues_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_security_key_request() :: #{
+%%   <<"ClientToken">> => string()
+%% }
+-type disassociate_security_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_security_profiles_request() :: #{
+%%   <<"EntityArn">> := string(),
+%%   <<"EntityType">> := list(any()),
+%%   <<"SecurityProfiles">> := list(security_profile_item())
+%% }
+-type disassociate_security_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_traffic_distribution_group_user_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type disassociate_traffic_distribution_group_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_traffic_distribution_group_user_response() :: #{}
+-type disassociate_traffic_distribution_group_user_response() :: #{}.
+
+
+%% Example:
+%% disassociate_user_proficiencies_request() :: #{
+%%   <<"UserProficiencies">> := list(user_proficiency_disassociate())
+%% }
+-type disassociate_user_proficiencies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_workspace_request() :: #{
+%%   <<"ResourceArns">> := list(string())
+%% }
+-type disassociate_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_workspace_response() :: #{
+%%   <<"FailedList">> => list(failed_batch_association_summary()),
+%%   <<"SuccessfulList">> => list(successful_batch_association_summary())
+%% }
+-type disassociate_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disconnect_details() :: #{
+%%   <<"PotentialDisconnectIssue">> => string()
+%% }
+-type disconnect_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% disconnect_reason() :: #{
+%%   <<"Code">> => string()
+%% }
+-type disconnect_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% dismiss_user_contact_request() :: #{
+%%   <<"ContactId">> := string()
+%% }
+-type dismiss_user_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% dismiss_user_contact_response() :: #{}
+-type dismiss_user_contact_response() :: #{}.
+
+
+%% Example:
+%% distribution() :: #{
+%%   <<"Percentage">> => integer(),
+%%   <<"Region">> => string()
+%% }
+-type distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% download_url_metadata() :: #{
+%%   <<"Url">> => string(),
+%%   <<"UrlExpiry">> => string()
+%% }
+-type download_url_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% duplicate_resource_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_resource_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% effective_hours_of_operations() :: #{
+%%   <<"Date">> => string(),
+%%   <<"OperationalHours">> => list(operational_hour())
+%% }
+-type effective_hours_of_operations() :: #{binary() => any()}.
+
+
+%% Example:
+%% effective_override_hours() :: #{
+%%   <<"Date">> => string(),
+%%   <<"OverrideHours">> => list(override_hour())
+%% }
+-type effective_override_hours() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_address_config() :: #{
+%%   <<"EmailAddressId">> => string()
+%% }
+-type email_address_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_address_info() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> => string()
+%% }
+-type email_address_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_address_metadata() :: #{
+%%   <<"AliasConfigurations">> => list(alias_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"EmailAddressArn">> => string(),
+%%   <<"EmailAddressId">> => string()
+%% }
+-type email_address_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_address_search_criteria() :: #{
+%%   <<"AndConditions">> => list(email_address_search_criteria()),
+%%   <<"OrConditions">> => list(email_address_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type email_address_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_address_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type email_address_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_address_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IsDefaultOutboundEmail">> => boolean()
+%% }
+-type email_address_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_attachment() :: #{
+%%   <<"FileName">> => string(),
+%%   <<"S3Url">> => string()
+%% }
+-type email_attachment() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_message_reference() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type email_message_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_recipient() :: #{
+%%   <<"Address">> => string(),
+%%   <<"DisplayName">> => string()
+%% }
+-type email_recipient() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_reference() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type email_reference() :: #{binary() => any()}.
+
+%% Example:
+%% empty_field_value() :: #{}
+-type empty_field_value() :: #{}.
+
+
+%% Example:
+%% encryption_config() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"KeyId">> => string()
+%% }
+-type encryption_config() :: #{binary() => any()}.
+
+%% Example:
+%% end_associated_tasks_action_definition() :: #{}
+-type end_associated_tasks_action_definition() :: #{}.
+
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_info() :: #{
+%%   <<"Address">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type endpoint_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_result() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type error_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_data_table_values_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TimeZone">> => string(),
+%%   <<"Values">> := list(data_table_value_evaluation_set())
+%% }
+-type evaluate_data_table_values_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_data_table_values_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Values">> => list(data_table_evaluated_value())
+%% }
+-type evaluate_data_table_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation() :: #{
+%%   <<"Answers">> => map(),
+%%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"EvaluationArn">> => string(),
-%%   <<"EvaluationId">> => string()
+%%   <<"EvaluationId">> => string(),
+%%   <<"EvaluationType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Metadata">> => evaluation_metadata(),
+%%   <<"Notes">> => map(),
+%%   <<"Scores">> => map(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
 %% }
--type submit_contact_evaluation_response() :: #{binary() => any()}.
+-type evaluation() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_acknowledgement() :: #{
+%%   <<"AcknowledgedBy">> => string(),
+%%   <<"AcknowledgedTime">> => non_neg_integer(),
+%%   <<"AcknowledgerComment">> => string()
+%% }
+-type evaluation_acknowledgement() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_acknowledgement_summary() :: #{
+%%   <<"AcknowledgedBy">> => string(),
+%%   <<"AcknowledgedTime">> => non_neg_integer(),
+%%   <<"AcknowledgerComment">> => string()
+%% }
+-type evaluation_acknowledgement_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_answer_input() :: #{
+%%   <<"Value">> => list()
+%% }
+-type evaluation_answer_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_answer_output() :: #{
+%%   <<"SuggestedAnswers">> => list(evaluation_suggested_answer()),
+%%   <<"SystemSuggestedValue">> => list(),
+%%   <<"Value">> => list()
+%% }
+-type evaluation_answer_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_automation_rule_category() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Condition">> => list(any()),
+%%   <<"PointsOfInterest">> => list(evaluation_transcript_point_of_interest())
+%% }
+-type evaluation_automation_rule_category() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_contact_lens_answer_analysis_details() :: #{
+%%   <<"MatchedRuleCategories">> => list(evaluation_automation_rule_category())
+%% }
+-type evaluation_contact_lens_answer_analysis_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_contact_participant() :: #{
+%%   <<"ContactParticipantId">> => string(),
+%%   <<"ContactParticipantRole">> => list(any())
+%% }
+-type evaluation_contact_participant() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5573,588 +4678,128 @@
 
 
 %% Example:
-%% real_time_contact_analysis_transcript_item_with_character_offsets() :: #{
-%%   <<"CharacterOffsets">> => real_time_contact_analysis_character_interval(),
-%%   <<"Id">> => string()
+%% evaluation_form_auto_evaluation_configuration() :: #{
+%%   <<"Enabled">> => boolean()
 %% }
--type real_time_contact_analysis_transcript_item_with_character_offsets() :: #{binary() => any()}.
+-type evaluation_form_auto_evaluation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% date_time_condition() :: #{
-%%   <<"ComparisonType">> => list(any()),
-%%   <<"FieldName">> => string(),
-%%   <<"MaxValue">> => string(),
-%%   <<"MinValue">> => string()
-%% }
--type date_time_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% view_version_summary() :: #{
-%%   <<"Arn">> => string(),
+%% evaluation_form_content() :: #{
+%%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Version">> => integer(),
-%%   <<"VersionDescription">> => string()
-%% }
--type view_version_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_notification_request() :: #{}
--type describe_notification_request() :: #{}.
-
-
-%% Example:
-%% numeric_question_property_value_automation() :: #{
-%%   <<"Label">> => list(any())
-%% }
--type numeric_question_property_value_automation() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_traffic_distribution_request() :: #{
-%%   <<"AgentConfig">> => agent_config(),
-%%   <<"SignInConfig">> => sign_in_config(),
-%%   <<"TelephonyConfig">> => telephony_config()
-%% }
--type update_traffic_distribution_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_task_template_request() :: #{}
--type delete_task_template_request() :: #{}.
-
-%% Example:
-%% tag_contact_response() :: #{}
--type tag_contact_response() :: #{}.
-
-
-%% Example:
-%% hours_of_operations_identifier() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type hours_of_operations_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_phone_numbers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PhoneNumberCountryCodes">> => list(list(any())()),
-%%   <<"PhoneNumberTypes">> => list(list(any())())
-%% }
--type list_phone_numbers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_contact_flow_version_response() :: #{
-%%   <<"ContactFlowArn">> => string(),
-%%   <<"Version">> => float()
-%% }
--type create_contact_flow_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_theme() :: #{
-%%   <<"Dark">> => workspace_theme_config(),
-%%   <<"Light">> => workspace_theme_config()
-%% }
--type workspace_theme() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_metric_data_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"Filters">> := filters(),
-%%   <<"Groupings">> => list(list(any())()),
-%%   <<"HistoricalMetrics">> := list(historical_metric()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> := non_neg_integer()
-%% }
--type get_metric_data_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vocabulary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Content">> => string(),
-%%   <<"FailureReason">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type vocabulary() :: #{binary() => any()}.
-
-
-%% Example:
-%% inbound_raw_message() :: #{
-%%   <<"Body">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"Headers">> => map(),
-%%   <<"Subject">> => string()
-%% }
--type inbound_raw_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_routing_profile_queues_request() :: #{
-%%   <<"ManualAssignmentQueueReferences">> => list(routing_profile_queue_reference()),
-%%   <<"QueueReferences">> => list(routing_profile_queue_reference())
-%% }
--type disassociate_routing_profile_queues_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_v2() :: #{
-%%   <<"FilterKey">> => string(),
-%%   <<"FilterValues">> => list(string()),
-%%   <<"StringCondition">> => filter_v2_string_condition()
-%% }
--type filter_v2() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notifications_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_notifications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_agent_status_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayOrder">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"ResetOrderNumber">> => boolean(),
-%%   <<"State">> => list(any())
-%% }
--type update_agent_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_default_vocabulary_response() :: #{}
--type associate_default_vocabulary_response() :: #{}.
-
-
-%% Example:
-%% routing_profile_search_filter() :: #{
-%%   <<"TagFilter">> => control_plane_tag_filter()
-%% }
--type routing_profile_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_view_metadata_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_view_metadata_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_users_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UserSummaryList">> => list(user_summary())
-%% }
--type list_users_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% application() :: #{
-%%   <<"ApplicationPermissions">> => list(string()),
-%%   <<"Namespace">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type application() :: #{binary() => any()}.
-
-
-%% Example:
-%% hierarchy_level() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type hierarchy_level() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_evaluation_forms_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => evaluation_form_search_criteria(),
-%%   <<"SearchFilter">> => evaluation_form_search_filter()
-%% }
--type search_evaluation_forms_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_view_request() :: #{}
--type describe_view_request() :: #{}.
-
-
-%% Example:
-%% get_attached_file_response() :: #{
-%%   <<"AssociatedResourceArn">> => string(),
-%%   <<"CreatedBy">> => list(),
-%%   <<"CreationTime">> => string(),
-%%   <<"DownloadUrlMetadata">> => download_url_metadata(),
-%%   <<"FileArn">> => string(),
-%%   <<"FileId">> => string(),
-%%   <<"FileName">> => string(),
-%%   <<"FileSizeInBytes">> => float(),
-%%   <<"FileStatus">> => list(any()),
-%%   <<"FileUseCaseType">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type get_attached_file_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_evaluation_form_response() :: #{
 %%   <<"EvaluationFormArn">> => string(),
 %%   <<"EvaluationFormId">> => string(),
-%%   <<"EvaluationFormVersion">> => integer()
-%% }
--type update_evaluation_form_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type user_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_evaluation_form_versions_response() :: #{
-%%   <<"EvaluationFormVersionSummaryList">> => list(evaluation_form_version_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_evaluation_form_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_evaluation_form_request() :: #{
-%%   <<"AsDraft">> => boolean(),
-%%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Items">> := list(list()),
+%%   <<"EvaluationFormVersion">> => integer(),
+%%   <<"Items">> => list(list()),
 %%   <<"LanguageConfiguration">> => evaluation_form_language_configuration(),
 %%   <<"ReviewConfiguration">> => evaluation_review_configuration(),
 %%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
-%%   <<"Tags">> => map(),
 %%   <<"TargetConfiguration">> => evaluation_form_target_configuration(),
-%%   <<"Title">> := string()
+%%   <<"Title">> => string()
 %% }
--type create_evaluation_form_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_contact_recording_response() :: #{}
--type start_contact_recording_response() :: #{}.
+-type evaluation_form_content() :: #{binary() => any()}.
 
 
 %% Example:
-%% voice_enhancement_config() :: #{
-%%   <<"Channel">> => list(any()),
-%%   <<"VoiceEnhancementMode">> => list(any())
+%% evaluation_form_item_enablement_condition() :: #{
+%%   <<"Operands">> => list(list()),
+%%   <<"Operator">> => list(any())
 %% }
--type voice_enhancement_config() :: #{binary() => any()}.
+-type evaluation_form_item_enablement_condition() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_metric_data_v2_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"Filters">> := list(filter_v2()),
-%%   <<"Groupings">> => list(string()),
-%%   <<"Interval">> => interval_details(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"Metrics">> := list(metric_v2()),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"StartTime">> := non_neg_integer()
+%% evaluation_form_item_enablement_configuration() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Condition">> => evaluation_form_item_enablement_condition(),
+%%   <<"DefaultAction">> => list(any())
 %% }
--type get_metric_data_v2_request() :: #{binary() => any()}.
+-type evaluation_form_item_enablement_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% claim_phone_number_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"PhoneNumber">> := string(),
-%%   <<"PhoneNumberDescription">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"TargetArn">> => string()
+%% evaluation_form_item_enablement_expression() :: #{
+%%   <<"Comparator">> => list(any()),
+%%   <<"Source">> => evaluation_form_item_enablement_source(),
+%%   <<"Values">> => list(evaluation_form_item_enablement_source_value())
 %% }
--type claim_phone_number_request() :: #{binary() => any()}.
+-type evaluation_form_item_enablement_expression() :: #{binary() => any()}.
 
 
 %% Example:
-%% email_address_info() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"EmailAddress">> => string()
-%% }
--type email_address_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_contact_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_quick_connects_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"QuickConnects">> => list(quick_connect())
-%% }
--type search_quick_connects_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_metric_result() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Value">> => list()
-%% }
--type contact_metric_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_realtime_contact_analysis_segments_v2_response() :: #{
-%%   <<"Channel">> => list(any()),
-%%   <<"NextToken">> => string(),
-%%   <<"Segments">> => list(list()),
-%%   <<"Status">> => list(any())
-%% }
--type list_realtime_contact_analysis_segments_v2_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% integration_association_summary() :: #{
-%%   <<"InstanceId">> => string(),
-%%   <<"IntegrationArn">> => string(),
-%%   <<"IntegrationAssociationArn">> => string(),
-%%   <<"IntegrationAssociationId">> => string(),
-%%   <<"IntegrationType">> => list(any()),
-%%   <<"SourceApplicationName">> => string(),
-%%   <<"SourceApplicationUrl">> => string(),
-%%   <<"SourceType">> => list(any())
-%% }
--type integration_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_gen_a_i_answer_analysis_details() :: #{
-%%   <<"Justification">> => string(),
-%%   <<"PointsOfInterest">> => list(evaluation_transcript_point_of_interest())
-%% }
--type evaluation_gen_a_i_answer_analysis_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_analytics_data_associations_request() :: #{
-%%   <<"DataSetId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_analytics_data_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_contacts_response() :: #{
-%%   <<"Contacts">> => list(contact_search_summary()),
-%%   <<"NextToken">> => string(),
-%%   <<"TotalCount">> => float()
-%% }
--type search_contacts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_predefined_attributes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_predefined_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_quick_connects_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QuickConnectTypes">> => list(list(any())())
-%% }
--type list_quick_connects_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% distribution() :: #{
-%%   <<"Percentage">> => integer(),
-%%   <<"Region">> => string()
-%% }
--type distribution() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_quality_metrics() :: #{
-%%   <<"Audio">> => audio_quality_metrics_info()
-%% }
--type agent_quality_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_module() :: #{
-%%   <<"FlowModuleId">> => string(),
+%% evaluation_form_item_enablement_source() :: #{
+%%   <<"RefId">> => string(),
 %%   <<"Type">> => list(any())
 %% }
--type flow_module() :: #{binary() => any()}.
+-type evaluation_form_item_enablement_source() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_push_notification_registration_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ContactConfiguration">> := contact_configuration(),
-%%   <<"DeviceToken">> := string(),
-%%   <<"DeviceType">> := list(any()),
-%%   <<"PinpointAppArn">> := string()
+%% evaluation_form_item_enablement_source_value() :: #{
+%%   <<"RefId">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type create_push_notification_registration_request() :: #{binary() => any()}.
+-type evaluation_form_item_enablement_source_value() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_views_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => view_search_criteria(),
-%%   <<"SearchFilter">> => view_search_filter()
+%% evaluation_form_language_configuration() :: #{
+%%   <<"FormLanguage">> => list(any())
 %% }
--type search_views_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_flow_module_version_response() :: #{}
--type delete_contact_flow_module_version_response() :: #{}.
+-type evaluation_form_language_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_contact_streaming_response() :: #{
-%%   <<"StreamingId">> => string()
+%% evaluation_form_multi_select_question_automation() :: #{
+%%   <<"AnswerSource">> => evaluation_form_question_automation_answer_source(),
+%%   <<"DefaultOptionRefIds">> => list(string()),
+%%   <<"Options">> => list(list())
 %% }
--type start_contact_streaming_response() :: #{binary() => any()}.
+-type evaluation_form_multi_select_question_automation() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_user_hierarchy_request() :: #{
-%%   <<"HierarchyGroupId">> => string()
+%% evaluation_form_multi_select_question_option() :: #{
+%%   <<"AutomaticFail">> => boolean(),
+%%   <<"AutomaticFailConfiguration">> => automatic_fail_configuration(),
+%%   <<"PointsConfiguration">> => question_option_points_configuration(),
+%%   <<"RefId">> => string(),
+%%   <<"Score">> => integer(),
+%%   <<"Text">> => string()
 %% }
--type update_user_hierarchy_request() :: #{binary() => any()}.
+-type evaluation_form_multi_select_question_option() :: #{binary() => any()}.
 
 
 %% Example:
-%% quick_connect_search_filter() :: #{
-%%   <<"TagFilter">> => control_plane_tag_filter()
+%% evaluation_form_multi_select_question_properties() :: #{
+%%   <<"Automation">> => evaluation_form_multi_select_question_automation(),
+%%   <<"DisplayAs">> => list(any()),
+%%   <<"Options">> => list(evaluation_form_multi_select_question_option())
 %% }
--type quick_connect_search_filter() :: #{binary() => any()}.
+-type evaluation_form_multi_select_question_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_queue_email_addresses_response() :: #{
-%%   <<"EmailAddressMetadataList">> => list(email_address_summary()),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string()
+%% evaluation_form_numeric_question_option() :: #{
+%%   <<"AutomaticFail">> => boolean(),
+%%   <<"AutomaticFailConfiguration">> => automatic_fail_configuration(),
+%%   <<"MaxValue">> => integer(),
+%%   <<"MinValue">> => integer(),
+%%   <<"PointsConfiguration">> => question_option_points_configuration(),
+%%   <<"Score">> => integer()
 %% }
--type list_queue_email_addresses_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_request() :: #{}
--type describe_workspace_request() :: #{}.
+-type evaluation_form_numeric_question_option() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_lambda_function_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"FunctionArn">> := string()
+%% evaluation_form_numeric_question_properties() :: #{
+%%   <<"Automation">> => list(),
+%%   <<"MaxValue">> => integer(),
+%%   <<"MinValue">> => integer(),
+%%   <<"Options">> => list(evaluation_form_numeric_question_option())
 %% }
--type disassociate_lambda_function_request() :: #{binary() => any()}.
-
-%% Example:
-%% import_workspace_media_response() :: #{}
--type import_workspace_media_response() :: #{}.
-
-
-%% Example:
-%% primary_attribute_value() :: #{
-%%   <<"AccessType">> => list(any()),
-%%   <<"AttributeName">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type primary_attribute_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% assign_sla_action_definition() :: #{
-%%   <<"CaseSlaConfiguration">> => case_sla_configuration(),
-%%   <<"SlaAssignmentType">> => list(any())
-%% }
--type assign_sla_action_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_instance_storage_config_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ResourceType">> := list(any())
-%% }
--type disassociate_instance_storage_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_routing_profile_queues_request() :: #{
-%%   <<"QueueConfigs">> := list(routing_profile_queue_config())
-%% }
--type update_routing_profile_queues_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conditional_operation_failed_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conditional_operation_failed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_phone_config_request() :: #{
-%%   <<"PhoneConfig">> := user_phone_config()
-%% }
--type update_user_phone_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_table_search_criteria() :: #{
-%%   <<"AndConditions">> => list(data_table_search_criteria()),
-%%   <<"OrConditions">> => list(data_table_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type data_table_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_entity_security_profiles_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SecurityProfiles">> => list(security_profile_item())
-%% }
--type list_entity_security_profiles_response() :: #{binary() => any()}.
+-type evaluation_form_numeric_question_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6173,406 +4818,10 @@
 
 
 %% Example:
-%% notification_recipient_type() :: #{
-%%   <<"UserIds">> => list(string()),
-%%   <<"UserTags">> => map()
+%% evaluation_form_question_automation_answer_source() :: #{
+%%   <<"SourceType">> => list(any())
 %% }
--type notification_recipient_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_stream_config() :: #{
-%%   <<"StreamArn">> => string()
-%% }
--type kinesis_stream_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_email_address_response() :: #{
-%%   <<"AliasConfigurations">> => list(alias_configuration()),
-%%   <<"CreateTimestamp">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"EmailAddress">> => string(),
-%%   <<"EmailAddressArn">> => string(),
-%%   <<"EmailAddressId">> => string(),
-%%   <<"ModifiedTimestamp">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type describe_email_address_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_data_table_value_response() :: #{
-%%   <<"Failed">> => list(batch_update_data_table_value_failure_result()),
-%%   <<"Successful">> => list(batch_update_data_table_value_success_result())
-%% }
--type batch_update_data_table_value_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_table_request() :: #{}
--type describe_data_table_request() :: #{}.
-
-
-%% Example:
-%% template_attributes() :: #{
-%%   <<"CustomAttributes">> => map(),
-%%   <<"CustomerProfileAttributes">> => string()
-%% }
--type template_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_contact_analysis_segment_event() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"EventType">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ParticipantId">> => string(),
-%%   <<"ParticipantRole">> => list(any()),
-%%   <<"Time">> => list()
-%% }
--type real_time_contact_analysis_segment_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_data_table_value_success_result() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"LockVersion">> => data_table_lock_version(),
-%%   <<"PrimaryValues">> => list(primary_value())
-%% }
--type batch_delete_data_table_value_success_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_hierarchy_groups() :: #{
-%%   <<"L1Ids">> => list(string()),
-%%   <<"L2Ids">> => list(string()),
-%%   <<"L3Ids">> => list(string()),
-%%   <<"L4Ids">> => list(string()),
-%%   <<"L5Ids">> => list(string())
-%% }
--type agent_hierarchy_groups() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% send_outbound_web_notification_response() :: #{}
--type send_outbound_web_notification_response() :: #{}.
-
-
-%% Example:
-%% disassociate_email_address_alias_request() :: #{
-%%   <<"AliasConfiguration">> := alias_configuration(),
-%%   <<"ClientToken">> => string()
-%% }
--type disassociate_email_address_alias_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_use_cases_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UseCaseSummaryList">> => list(use_case())
-%% }
--type list_use_cases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_set() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag_set() :: #{binary() => any()}.
-
-
-%% Example:
-%% match_criteria() :: #{
-%%   <<"AgentsCriteria">> => agents_criteria()
-%% }
--type match_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% problem_detail() :: #{
-%%   <<"message">> => string()
-%% }
--type problem_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_queues_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => queue_search_criteria(),
-%%   <<"SearchFilter">> => queue_search_filter()
-%% }
--type search_queues_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_screen_sharing_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ContactId">> := string(),
-%%   <<"InstanceId">> := string()
-%% }
--type start_screen_sharing_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_case_executions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TestCaseExecutions">> => list(test_case_execution())
-%% }
--type list_test_case_executions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_analytics_data_set_request() :: #{
-%%   <<"DataSetId">> := string(),
-%%   <<"TargetAccountId">> => string()
-%% }
--type associate_analytics_data_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_association_search_criteria() :: #{
-%%   <<"AndConditions">> => list(workspace_association_search_criteria()),
-%%   <<"OrConditions">> => list(workspace_association_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type workspace_association_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_users_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => user_search_criteria(),
-%%   <<"SearchFilter">> => user_search_filter()
-%% }
--type search_users_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_test_case_execution_request() :: #{
-%%   <<"ClientToken">> => string()
-%% }
--type start_test_case_execution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_search_summary_ai_agent_info() :: #{
-%%   <<"AiAgentEscalated">> => boolean(),
-%%   <<"AiAgentVersionId">> => string(),
-%%   <<"AiUseCase">> => list(any())
-%% }
--type contact_search_summary_ai_agent_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_hierarchy_group_response() :: #{
-%%   <<"HierarchyGroupArn">> => string(),
-%%   <<"HierarchyGroupId">> => string()
-%% }
--type create_user_hierarchy_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_user_proficiencies_request() :: #{
-%%   <<"UserProficiencies">> := list(user_proficiency_disassociate())
-%% }
--type disassociate_user_proficiencies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_language_configuration() :: #{
-%%   <<"FormLanguage">> => list(any())
-%% }
--type evaluation_form_language_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_queue_email_addresses_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"EmailAddressesConfig">> := list(email_address_config())
-%% }
--type associate_queue_email_addresses_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% observation_summary() :: #{
-%%   <<"ObservationsFailed">> => integer(),
-%%   <<"ObservationsPassed">> => integer(),
-%%   <<"TotalObservations">> => integer()
-%% }
--type observation_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% decimal_condition() :: #{
-%%   <<"ComparisonType">> => list(any()),
-%%   <<"FieldName">> => string(),
-%%   <<"MaxValue">> => float(),
-%%   <<"MinValue">> => float()
-%% }
--type decimal_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_data_request() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"Campaign">> => campaign(),
-%%   <<"CustomerEndpoint">> => endpoint(),
-%%   <<"OutboundStrategy">> => outbound_strategy(),
-%%   <<"QueueId">> => string(),
-%%   <<"RequestIdentifier">> => string(),
-%%   <<"SystemEndpoint">> => endpoint()
-%% }
--type contact_data_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_phone_number_contact_flow_request() :: #{
-%%   <<"InstanceId">> := string()
-%% }
--type disassociate_phone_number_contact_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_analysis() :: #{
-%%   <<"Transcript">> => transcript()
-%% }
--type contact_analysis() :: #{binary() => any()}.
-
-
-%% Example:
-%% recording_info() :: #{
-%%   <<"DeletionReason">> => string(),
-%%   <<"FragmentStartNumber">> => string(),
-%%   <<"FragmentStopNumber">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"MediaStreamType">> => list(any()),
-%%   <<"ParticipantType">> => list(any()),
-%%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StopTimestamp">> => non_neg_integer(),
-%%   <<"StorageType">> => list(any()),
-%%   <<"UnprocessedTranscriptLocation">> => string()
-%% }
--type recording_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_approved_origins_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Origins">> => list(string())
-%% }
--type list_approved_origins_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_profile_search_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"OrganizationResourceId">> => string(),
-%%   <<"SecurityProfileName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type security_profile_search_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% agents_criteria() :: #{
-%%   <<"AgentIds">> => list(string())
-%% }
--type agents_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% effective_hours_of_operations() :: #{
-%%   <<"Date">> => string(),
-%%   <<"OperationalHours">> => list(operational_hour())
-%% }
--type effective_hours_of_operations() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_view_response() :: #{
-%%   <<"View">> => view()
-%% }
--type create_view_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_profile_search_criteria() :: #{
-%%   <<"AndConditions">> => list(routing_profile_search_criteria()),
-%%   <<"OrConditions">> => list(routing_profile_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type routing_profile_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_numeric_question_option() :: #{
-%%   <<"AutomaticFail">> => boolean(),
-%%   <<"AutomaticFailConfiguration">> => automatic_fail_configuration(),
-%%   <<"MaxValue">> => integer(),
-%%   <<"MinValue">> => integer(),
-%%   <<"PointsConfiguration">> => question_option_points_configuration(),
-%%   <<"Score">> => integer()
-%% }
--type evaluation_form_numeric_question_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_task_contact_request() :: #{
-%%   <<"Attachments">> => list(task_attachment()),
-%%   <<"Attributes">> => map(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ContactFlowId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"PreviousContactId">> => string(),
-%%   <<"QuickConnectId">> => string(),
-%%   <<"References">> => map(),
-%%   <<"RelatedContactId">> => string(),
-%%   <<"ScheduledTime">> => non_neg_integer(),
-%%   <<"SegmentAttributes">> => map(),
-%%   <<"TaskTemplateId">> => string()
-%% }
--type start_task_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_case_action_definition() :: #{
-%%   <<"Fields">> => list(field_value()),
-%%   <<"TemplateId">> => string()
-%% }
--type create_case_action_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_rule_response() :: #{
-%%   <<"RuleArn">> => string(),
-%%   <<"RuleId">> => string()
-%% }
--type create_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% current_metric_result() :: #{
-%%   <<"Collections">> => list(current_metric_data()),
-%%   <<"Dimensions">> => dimensions()
-%% }
--type current_metric_result() :: #{binary() => any()}.
+-type evaluation_form_question_automation_answer_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6585,329 +4834,294 @@
 
 
 %% Example:
-%% condition() :: #{
+%% evaluation_form_score_threshold() :: #{
+%%   <<"MaxScorePercentage">> => float(),
+%%   <<"MinScorePercentage">> => float(),
+%%   <<"PerformanceCategory">> => list(any())
+%% }
+-type evaluation_form_score_threshold() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_scoring_strategy() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"ScoreThresholds">> => list(evaluation_form_score_threshold()),
+%%   <<"Status">> => list(any())
+%% }
+-type evaluation_form_scoring_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_search_criteria() :: #{
+%%   <<"AndConditions">> => list(evaluation_form_search_criteria()),
+%%   <<"BooleanCondition">> => boolean_condition(),
+%%   <<"DateTimeCondition">> => date_time_condition(),
 %%   <<"NumberCondition">> => number_condition(),
+%%   <<"OrConditions">> => list(evaluation_form_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
--type condition() :: #{binary() => any()}.
+-type evaluation_form_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_phone_number_contact_flow_request() :: #{
-%%   <<"ContactFlowId">> := string(),
-%%   <<"InstanceId">> := string()
+%% evaluation_form_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
 %% }
--type associate_phone_number_contact_flow_request() :: #{binary() => any()}.
+-type evaluation_form_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_predefined_attribute_request() :: #{
-%%   <<"AttributeConfiguration">> => input_predefined_attribute_configuration(),
-%%   <<"Purposes">> => list(string()),
-%%   <<"Values">> => list()
-%% }
--type update_predefined_attribute_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_table_primary_values_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PrimaryAttributeValues">> => list(primary_attribute_value_filter()),
-%%   <<"RecordIds">> => list(string())
-%% }
--type list_data_table_primary_values_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_email_addresses_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => email_address_search_criteria(),
-%%   <<"SearchFilter">> => email_address_search_filter()
-%% }
--type search_email_addresses_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_integration_associations_request() :: #{
-%%   <<"IntegrationArn">> => string(),
-%%   <<"IntegrationType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_integration_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_table_attribute_request() :: #{
+%% evaluation_form_search_summary() :: #{
+%%   <<"ActiveVersion">> => integer(),
+%%   <<"AutoEvaluationEnabled">> => boolean(),
+%%   <<"ContactInteractionType">> => list(any()),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Primary">> => boolean(),
-%%   <<"Validation">> => validation(),
-%%   <<"ValueType">> := list(any())
-%% }
--type update_data_table_attribute_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_queue_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EmailAddressesConfig">> => list(email_address_config()),
-%%   <<"HoursOfOperationId">> := string(),
-%%   <<"MaxContacts">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"OutboundCallerConfig">> => outbound_caller_config(),
-%%   <<"OutboundEmailConfig">> => outbound_email_config(),
-%%   <<"QuickConnectIds">> => list(string()),
-%%   <<"Tags">> => map()
-%% }
--type create_queue_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_and_condition() :: #{
-%%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
-%%   <<"TagConditions">> => list(tag_condition())
-%% }
--type attribute_and_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% searchable_agent_criteria_step() :: #{
-%%   <<"AgentIds">> => list(string()),
-%%   <<"MatchType">> => list(any())
-%% }
--type searchable_agent_criteria_step() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_flow_module_response() :: #{}
--type delete_contact_flow_module_response() :: #{}.
-
-
-%% Example:
-%% email_address_metadata() :: #{
-%%   <<"AliasConfigurations">> => list(alias_configuration()),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"EmailAddress">> => string(),
-%%   <<"EmailAddressArn">> => string(),
-%%   <<"EmailAddressId">> => string()
-%% }
--type email_address_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_association_search_summary() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceName">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"WorkspaceArn">> => string(),
-%%   <<"WorkspaceId">> => string()
-%% }
--type workspace_association_search_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% chat_participant_role_config() :: #{
-%%   <<"ParticipantTimerConfigList">> => list(participant_timer_configuration())
-%% }
--type chat_participant_role_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_test_case_execution_response() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"TestCaseExecutionId">> => string(),
-%%   <<"TestCaseId">> => string()
-%% }
--type start_test_case_execution_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_data_table_value_request() :: #{
-%%   <<"Values">> := list(data_table_value())
-%% }
--type batch_create_data_table_value_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_test_case_request() :: #{}
--type delete_test_case_request() :: #{}.
-
-
-%% Example:
-%% single_select_question_rule_category_automation() :: #{
-%%   <<"Category">> => string(),
-%%   <<"Condition">> => list(any()),
-%%   <<"OptionRefId">> => string()
-%% }
--type single_select_question_rule_category_automation() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_status_identifier() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type agent_status_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% lex_bot() :: #{
-%%   <<"LexRegion">> => string(),
-%%   <<"Name">> => string()
-%% }
--type lex_bot() :: #{binary() => any()}.
-
-
-%% Example:
-%% device_info() :: #{
-%%   <<"OperatingSystem">> => string(),
-%%   <<"PlatformName">> => string(),
-%%   <<"PlatformVersion">> => string()
-%% }
--type device_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_flow_module_aliases_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_flow_module_aliases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% hierarchy_path() :: #{
-%%   <<"LevelFive">> => hierarchy_group_summary(),
-%%   <<"LevelFour">> => hierarchy_group_summary(),
-%%   <<"LevelOne">> => hierarchy_group_summary(),
-%%   <<"LevelThree">> => hierarchy_group_summary(),
-%%   <<"LevelTwo">> => hierarchy_group_summary()
-%% }
--type hierarchy_path() :: #{binary() => any()}.
-
-
-%% Example:
-%% quick_connect_config() :: #{
-%%   <<"FlowConfig">> => flow_quick_connect_config(),
-%%   <<"PhoneConfig">> => phone_number_quick_connect_config(),
-%%   <<"QueueConfig">> => queue_quick_connect_config(),
-%%   <<"QuickConnectType">> => list(any()),
-%%   <<"UserConfig">> => user_quick_connect_config()
-%% }
--type quick_connect_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_evaluation_form_validation_response() :: #{
 %%   <<"EvaluationFormArn">> => string(),
 %%   <<"EvaluationFormId">> => string(),
-%%   <<"EvaluationFormVersion">> => integer()
+%%   <<"EvaluationFormLanguage">> => list(any()),
+%%   <<"LastActivatedBy">> => string(),
+%%   <<"LastActivatedTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LatestVersion">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Title">> => string()
 %% }
--type start_evaluation_form_validation_response() :: #{binary() => any()}.
+-type evaluation_form_search_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_instances_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% evaluation_form_section() :: #{
+%%   <<"Instructions">> => string(),
+%%   <<"IsExcludedFromScoring">> => boolean(),
+%%   <<"Items">> => list(list()),
+%%   <<"RefId">> => string(),
+%%   <<"ScoreThresholds">> => list(evaluation_form_score_threshold()),
+%%   <<"Title">> => string(),
+%%   <<"Weight">> => float()
 %% }
--type list_instances_request() :: #{binary() => any()}.
+-type evaluation_form_section() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_contact_flow_module_alias_request() :: #{
-%%   <<"ContactFlowModuleVersion">> => float(),
+%% evaluation_form_single_select_question_automation() :: #{
+%%   <<"AnswerSource">> => evaluation_form_question_automation_answer_source(),
+%%   <<"DefaultOptionRefId">> => string(),
+%%   <<"Options">> => list(list())
+%% }
+-type evaluation_form_single_select_question_automation() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_single_select_question_option() :: #{
+%%   <<"AutomaticFail">> => boolean(),
+%%   <<"AutomaticFailConfiguration">> => automatic_fail_configuration(),
+%%   <<"PointsConfiguration">> => question_option_points_configuration(),
+%%   <<"RefId">> => string(),
+%%   <<"Score">> => integer(),
+%%   <<"Text">> => string()
+%% }
+-type evaluation_form_single_select_question_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_single_select_question_properties() :: #{
+%%   <<"Automation">> => evaluation_form_single_select_question_automation(),
+%%   <<"DisplayAs">> => list(any()),
+%%   <<"Options">> => list(evaluation_form_single_select_question_option())
+%% }
+-type evaluation_form_single_select_question_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_summary() :: #{
+%%   <<"ActiveVersion">> => integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EvaluationFormArn">> => string(),
+%%   <<"EvaluationFormId">> => string(),
+%%   <<"LastActivatedBy">> => string(),
+%%   <<"LastActivatedTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LatestVersion">> => integer(),
+%%   <<"Title">> => string()
+%% }
+-type evaluation_form_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_target_configuration() :: #{
+%%   <<"ContactInteractionType">> => list(any())
+%% }
+-type evaluation_form_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_text_question_automation() :: #{
+%%   <<"AnswerSource">> => evaluation_form_question_automation_answer_source()
+%% }
+-type evaluation_form_text_question_automation() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_text_question_properties() :: #{
+%%   <<"Automation">> => evaluation_form_text_question_automation()
+%% }
+-type evaluation_form_text_question_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_validation_finding() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Name">> => string()
+%%   <<"IssueCode">> => string(),
+%%   <<"Items">> => list(evaluation_form_validation_finding_item()),
+%%   <<"Severity">> => list(any()),
+%%   <<"Suggestion">> => string()
 %% }
--type update_contact_flow_module_alias_request() :: #{binary() => any()}.
+-type evaluation_form_validation_finding() :: #{binary() => any()}.
 
 
 %% Example:
-%% connection_data() :: #{
-%%   <<"Attendee">> => attendee(),
-%%   <<"Meeting">> => meeting()
+%% evaluation_form_validation_finding_item() :: #{
+%%   <<"Property">> => string(),
+%%   <<"RefId">> => string()
 %% }
--type connection_data() :: #{binary() => any()}.
+-type evaluation_form_validation_finding_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% monitor_contact_response() :: #{
-%%   <<"ContactArn">> => string(),
-%%   <<"ContactId">> => string()
+%% evaluation_form_version_summary() :: #{
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EvaluationFormArn">> => string(),
+%%   <<"EvaluationFormId">> => string(),
+%%   <<"EvaluationFormVersion">> => integer(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Locked">> => boolean(),
+%%   <<"Status">> => list(any())
 %% }
--type monitor_contact_response() :: #{binary() => any()}.
+-type evaluation_form_version_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_instance_storage_config_response() :: #{
-%%   <<"AssociationId">> => string()
+%% evaluation_gen_a_i_answer_analysis_details() :: #{
+%%   <<"Justification">> => string(),
+%%   <<"PointsOfInterest">> => list(evaluation_transcript_point_of_interest())
 %% }
--type associate_instance_storage_config_response() :: #{binary() => any()}.
+-type evaluation_gen_a_i_answer_analysis_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_traffic_distribution_group_users_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% evaluation_metadata() :: #{
+%%   <<"Acknowledgement">> => evaluation_acknowledgement(),
+%%   <<"AutoEvaluation">> => auto_evaluation_details(),
+%%   <<"CalibrationSessionId">> => string(),
+%%   <<"ContactAgentId">> => string(),
+%%   <<"ContactId">> => string(),
+%%   <<"ContactParticipant">> => evaluation_contact_participant(),
+%%   <<"EvaluatorArn">> => string(),
+%%   <<"Review">> => evaluation_review_metadata(),
+%%   <<"SamplingJobId">> => string(),
+%%   <<"Score">> => evaluation_score()
 %% }
--type list_traffic_distribution_group_users_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_request() :: #{}
--type delete_user_request() :: #{}.
-
-
-%% Example:
-%% get_metric_data_response() :: #{
-%%   <<"MetricResults">> => list(historical_metric_result()),
-%%   <<"NextToken">> => string()
-%% }
--type get_metric_data_response() :: #{binary() => any()}.
+-type evaluation_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_evaluation_forms_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% evaluation_note() :: #{
+%%   <<"Value">> => string()
 %% }
--type list_evaluation_forms_request() :: #{binary() => any()}.
+-type evaluation_note() :: #{binary() => any()}.
 
 
 %% Example:
-%% workspace_theme_images() :: #{
-%%   <<"Logo">> => images_logo()
+%% evaluation_question_input_details() :: #{
+%%   <<"TranscriptType">> => list(any())
 %% }
--type workspace_theme_images() :: #{binary() => any()}.
+-type evaluation_question_input_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% contact_flow_module_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any())
+%% evaluation_review_configuration() :: #{
+%%   <<"EligibilityDays">> => integer(),
+%%   <<"ReviewNotificationRecipients">> => list(evaluation_review_notification_recipient())
 %% }
--type contact_flow_module_summary() :: #{binary() => any()}.
+-type evaluation_review_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_workspace_pages_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WorkspacePageList">> => list(workspace_page())
+%% evaluation_review_metadata() :: #{
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"RequestedBy">> => string(),
+%%   <<"RequestedTime">> => non_neg_integer(),
+%%   <<"ReviewId">> => string(),
+%%   <<"ReviewRequestComments">> => list(evaluation_review_request_comment())
 %% }
--type list_workspace_pages_response() :: #{binary() => any()}.
+-type evaluation_review_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_data_table_primary_values_response() :: #{
-%%   <<"LockVersion">> => data_table_lock_version()
+%% evaluation_review_notification_recipient() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => evaluation_review_notification_recipient_value()
 %% }
--type update_data_table_primary_values_response() :: #{binary() => any()}.
+-type evaluation_review_notification_recipient() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_review_notification_recipient_value() :: #{
+%%   <<"UserId">> => string()
+%% }
+-type evaluation_review_notification_recipient_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_review_request_comment() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer()
+%% }
+-type evaluation_review_request_comment() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_score() :: #{
+%%   <<"AppliedWeight">> => float(),
+%%   <<"AutomaticFail">> => boolean(),
+%%   <<"EarnedPoints">> => integer(),
+%%   <<"MaxBasePoint">> => integer(),
+%%   <<"NotApplicable">> => boolean(),
+%%   <<"Percentage">> => float(),
+%%   <<"PerformanceCategory">> => list(any())
+%% }
+-type evaluation_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_search_criteria() :: #{
+%%   <<"AndConditions">> => list(evaluation_search_criteria()),
+%%   <<"BooleanCondition">> => boolean_condition(),
+%%   <<"DateTimeCondition">> => date_time_condition(),
+%%   <<"DecimalCondition">> => decimal_condition(),
+%%   <<"NumberCondition">> => number_condition(),
+%%   <<"OrConditions">> => list(evaluation_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type evaluation_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter(),
+%%   <<"ContactEvaluationAttributeFilter">> => contact_evaluation_attribute_filter()
+%% }
+-type evaluation_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6934,9 +5148,183 @@
 %% }
 -type evaluation_search_metadata() :: #{binary() => any()}.
 
+
 %% Example:
-%% associate_email_address_alias_response() :: #{}
--type associate_email_address_alias_response() :: #{}.
+%% evaluation_search_summary() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EvaluationArn">> => string(),
+%%   <<"EvaluationFormId">> => string(),
+%%   <<"EvaluationFormTitle">> => string(),
+%%   <<"EvaluationFormVersion">> => integer(),
+%%   <<"EvaluationId">> => string(),
+%%   <<"EvaluationType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Metadata">> => evaluation_search_metadata(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type evaluation_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_suggested_answer() :: #{
+%%   <<"AnalysisDetails">> => list(),
+%%   <<"AnalysisType">> => list(any()),
+%%   <<"Input">> => evaluation_question_input_details(),
+%%   <<"Status">> => list(any()),
+%%   <<"Value">> => list()
+%% }
+-type evaluation_suggested_answer() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_suggested_answer_transcript_millisecond_offsets() :: #{
+%%   <<"BeginOffsetMillis">> => integer()
+%% }
+-type evaluation_suggested_answer_transcript_millisecond_offsets() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_summary() :: #{
+%%   <<"Acknowledgement">> => evaluation_acknowledgement_summary(),
+%%   <<"AutoEvaluationEnabled">> => boolean(),
+%%   <<"AutoEvaluationStatus">> => list(any()),
+%%   <<"CalibrationSessionId">> => string(),
+%%   <<"ContactParticipant">> => evaluation_contact_participant(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EvaluationArn">> => string(),
+%%   <<"EvaluationFormId">> => string(),
+%%   <<"EvaluationFormTitle">> => string(),
+%%   <<"EvaluationId">> => string(),
+%%   <<"EvaluationType">> => list(any()),
+%%   <<"EvaluatorArn">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Score">> => evaluation_score(),
+%%   <<"Status">> => list(any())
+%% }
+-type evaluation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_transcript_point_of_interest() :: #{
+%%   <<"MillisecondOffsets">> => evaluation_suggested_answer_transcript_millisecond_offsets(),
+%%   <<"TranscriptSegment">> => string()
+%% }
+-type evaluation_transcript_point_of_interest() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_bridge_action_definition() :: #{
+%%   <<"Name">> => string()
+%% }
+-type event_bridge_action_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_record() :: #{
+%%   <<"ObservationId">> => string(),
+%%   <<"Record">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type execution_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% expiry() :: #{
+%%   <<"DurationInSeconds">> => integer(),
+%%   <<"ExpiryTimestamp">> => non_neg_integer()
+%% }
+-type expiry() :: #{binary() => any()}.
+
+
+%% Example:
+%% expression() :: #{
+%%   <<"AndExpression">> => list(expression()),
+%%   <<"AttributeCondition">> => attribute_condition(),
+%%   <<"NotAttributeCondition">> => attribute_condition(),
+%%   <<"OrExpression">> => list(expression())
+%% }
+-type expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension_configuration() :: #{
+%%   <<"AllowedExtensions">> => list(allowed_extension())
+%% }
+-type extension_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_invocation_configuration() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type external_invocation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_batch_association_summary() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type failed_batch_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_request() :: #{
+%%   <<"FailureReasonCode">> => list(any()),
+%%   <<"FailureReasonMessage">> => string(),
+%%   <<"RequestIdentifier">> => string()
+%% }
+-type failed_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_value() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Value">> => field_value_union()
+%% }
+-type field_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_value_union() :: #{
+%%   <<"BooleanValue">> => boolean(),
+%%   <<"DoubleValue">> => float(),
+%%   <<"EmptyValue">> => empty_field_value(),
+%%   <<"StringValue">> => string()
+%% }
+-type field_value_union() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_v2() :: #{
+%%   <<"FilterKey">> => string(),
+%%   <<"FilterValues">> => list(string()),
+%%   <<"StringCondition">> => filter_v2_string_condition()
+%% }
+-type filter_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_v2_string_condition() :: #{
+%%   <<"Comparison">> => list(any())
+%% }
+-type filter_v2_string_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% filters() :: #{
+%%   <<"AgentStatuses">> => list(string()),
+%%   <<"Channels">> => list(list(any())()),
+%%   <<"Queues">> => list(string()),
+%%   <<"RoutingProfiles">> => list(string()),
+%%   <<"RoutingStepExpressions">> => list(string()),
+%%   <<"Subtypes">> => list(string()),
+%%   <<"ValidationTestTypes">> => list(string())
+%% }
+-type filters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6947,146 +5335,297 @@
 %% }
 -type flow_association_summary() :: #{binary() => any()}.
 
-%% Example:
-%% delete_workspace_request() :: #{}
--type delete_workspace_request() :: #{}.
-
 
 %% Example:
-%% rule() :: #{
-%%   <<"Actions">> => list(rule_action()),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Function">> => string(),
-%%   <<"LastUpdatedBy">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PublishStatus">> => list(any()),
-%%   <<"RuleArn">> => string(),
-%%   <<"RuleId">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"TriggerEventSource">> => rule_trigger_event_source()
+%% flow_module() :: #{
+%%   <<"FlowModuleId">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type rule() :: #{binary() => any()}.
+-type flow_module() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_user_hierarchy_groups_request() :: #{
+%% flow_quick_connect_config() :: #{
+%%   <<"ContactFlowId">> => string()
+%% }
+-type flow_quick_connect_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% font_family() :: #{
+%%   <<"Default">> => list(any())
+%% }
+-type font_family() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_attached_file_request() :: #{
+%%   <<"AssociatedResourceArn">> := string(),
+%%   <<"UrlExpiryInSeconds">> => integer()
+%% }
+-type get_attached_file_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_attached_file_response() :: #{
+%%   <<"AssociatedResourceArn">> => string(),
+%%   <<"CreatedBy">> => list(),
+%%   <<"CreationTime">> => string(),
+%%   <<"DownloadUrlMetadata">> => download_url_metadata(),
+%%   <<"FileArn">> => string(),
+%%   <<"FileId">> => string(),
+%%   <<"FileName">> => string(),
+%%   <<"FileSizeInBytes">> => float(),
+%%   <<"FileStatus">> => list(any()),
+%%   <<"FileUseCaseType">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_attached_file_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_attributes_request() :: #{}
+-type get_contact_attributes_request() :: #{}.
+
+
+%% Example:
+%% get_contact_attributes_response() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type get_contact_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_contact_metrics_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"Metrics">> := list(contact_metric_info())
+%% }
+-type get_contact_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_contact_metrics_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MetricResults">> => list(contact_metric_result())
+%% }
+-type get_contact_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_current_metric_data_request() :: #{
+%%   <<"CurrentMetrics">> := list(current_metric()),
+%%   <<"Filters">> := filters(),
+%%   <<"Groupings">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortCriteria">> => list(current_metric_sort_criteria())
+%% }
+-type get_current_metric_data_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_current_metric_data_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"DataSnapshotTime">> => non_neg_integer(),
+%%   <<"MetricResults">> => list(current_metric_result()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_current_metric_data_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_current_user_data_request() :: #{
+%%   <<"Filters">> := user_data_filters(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type list_user_hierarchy_groups_request() :: #{binary() => any()}.
+-type get_current_user_data_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% sort() :: #{
-%%   <<"FieldName">> => list(any()),
-%%   <<"Order">> => list(any())
+%% get_current_user_data_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserDataList">> => list(user_data())
 %% }
--type sort() :: #{binary() => any()}.
+-type get_current_user_data_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% contact() :: #{
-%%   <<"AdditionalEmailRecipients">> => additional_email_recipients(),
-%%   <<"Campaign">> => campaign(),
-%%   <<"ContactEvaluations">> => map(),
-%%   <<"InitiationMethod">> => list(any()),
-%%   <<"RingStartTimestamp">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"DisconnectReason">> => string(),
-%%   <<"OutboundStrategy">> => outbound_strategy(),
-%%   <<"LastResumedTimestamp">> => non_neg_integer(),
-%%   <<"AnsweringMachineDetectionStatus">> => list(any()),
-%%   <<"LastUpdateTimestamp">> => non_neg_integer(),
-%%   <<"PreviousContactId">> => string(),
-%%   <<"SystemEndpoint">> => endpoint_info(),
-%%   <<"ScheduledTimestamp">> => non_neg_integer(),
-%%   <<"Attributes">> => map(),
-%%   <<"RoutingCriteria">> => routing_criteria(),
-%%   <<"TotalPauseCount">> => integer(),
-%%   <<"InitialContactId">> => string(),
-%%   <<"ContactDetails">> => contact_details(),
-%%   <<"ConnectedToSystemTimestamp">> => non_neg_integer(),
-%%   <<"LastPausedTimestamp">> => non_neg_integer(),
-%%   <<"ChatMetrics">> => chat_metrics(),
-%%   <<"CustomerId">> => string(),
-%%   <<"GlobalResiliencyMetadata">> => global_resiliency_metadata(),
-%%   <<"CustomerVoiceActivity">> => customer_voice_activity(),
-%%   <<"QualityMetrics">> => quality_metrics(),
-%%   <<"TaskTemplateInfo">> => task_template_info_v2(),
-%%   <<"CustomerEndpoint">> => endpoint_info(),
-%%   <<"QueueInfo">> => queue_info(),
-%%   <<"Arn">> => string(),
-%%   <<"QueueTimeAdjustmentSeconds">> => integer(),
-%%   <<"InitiationTimestamp">> => non_neg_integer(),
-%%   <<"DisconnectTimestamp">> => non_neg_integer(),
-%%   <<"Tags">> => map(),
-%%   <<"RelatedContactId">> => string(),
-%%   <<"Recordings">> => list(recording_info()),
-%%   <<"SegmentAttributes">> => map(),
-%%   <<"Name">> => string(),
-%%   <<"DisconnectDetails">> => disconnect_details(),
-%%   <<"TotalPauseDurationInSeconds">> => integer(),
-%%   <<"WisdomInfo">> => wisdom_info(),
-%%   <<"ContactAssociationId">> => string(),
-%%   <<"AgentInfo">> => agent_info(),
-%%   <<"Description">> => string(),
-%%   <<"Channel">> => list(any()),
-%%   <<"QueuePriority">> => float(),
-%%   <<"NextContacts">> => list(next_contact_entry()),
-%%   <<"Customer">> => customer()
+%% get_effective_hours_of_operations_request() :: #{
+%%   <<"FromDate">> := string(),
+%%   <<"ToDate">> := string()
 %% }
--type contact() :: #{binary() => any()}.
+-type get_effective_hours_of_operations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluate_data_table_values_request() :: #{
+%% get_effective_hours_of_operations_response() :: #{
+%%   <<"EffectiveHoursOfOperationList">> => list(effective_hours_of_operations()),
+%%   <<"EffectiveOverrideHoursList">> => list(effective_override_hours()),
+%%   <<"TimeZone">> => string()
+%% }
+-type get_effective_hours_of_operations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evaluation_form_validation_request() :: #{
+%%   <<"EvaluationFormVersion">> => integer()
+%% }
+-type get_evaluation_form_validation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_evaluation_form_validation_response() :: #{
+%%   <<"EvaluationFormId">> => string(),
+%%   <<"EvaluationFormVersion">> => integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Findings">> => list(evaluation_form_validation_finding()),
+%%   <<"StartedTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_evaluation_form_validation_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_federation_token_request() :: #{}
+-type get_federation_token_request() :: #{}.
+
+
+%% Example:
+%% get_federation_token_response() :: #{
+%%   <<"Credentials">> => credentials(),
+%%   <<"SignInUrl">> => string(),
+%%   <<"UserArn">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type get_federation_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_flow_association_request() :: #{}
+-type get_flow_association_request() :: #{}.
+
+
+%% Example:
+%% get_flow_association_response() :: #{
+%%   <<"FlowId">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type get_flow_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_metric_data_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"Filters">> := filters(),
+%%   <<"Groupings">> => list(list(any())()),
+%%   <<"HistoricalMetrics">> := list(historical_metric()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TimeZone">> => string(),
-%%   <<"Values">> := list(data_table_value_evaluation_set())
+%%   <<"StartTime">> := non_neg_integer()
 %% }
--type evaluate_data_table_values_request() :: #{binary() => any()}.
+-type get_metric_data_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_routing_profile_default_outbound_queue_request() :: #{
-%%   <<"DefaultOutboundQueueId">> := string()
+%% get_metric_data_response() :: #{
+%%   <<"MetricResults">> => list(historical_metric_result()),
+%%   <<"NextToken">> => string()
 %% }
--type update_routing_profile_default_outbound_queue_request() :: #{binary() => any()}.
+-type get_metric_data_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_routing_profile_concurrency_request() :: #{
-%%   <<"MediaConcurrencies">> := list(media_concurrency())
+%% get_metric_data_v2_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"Filters">> := list(filter_v2()),
+%%   <<"Groupings">> => list(string()),
+%%   <<"Interval">> => interval_details(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Metrics">> := list(metric_v2()),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"StartTime">> := non_neg_integer()
 %% }
--type update_routing_profile_concurrency_request() :: #{binary() => any()}.
+-type get_metric_data_v2_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% input_predefined_attribute_configuration() :: #{
-%%   <<"EnableValueValidationOnAssociation">> => boolean()
+%% get_metric_data_v2_response() :: #{
+%%   <<"MetricResults">> => list(metric_result_v2()),
+%%   <<"NextToken">> => string()
 %% }
--type input_predefined_attribute_configuration() :: #{binary() => any()}.
+-type get_metric_data_v2_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_prompt_file_request() :: #{}
+-type get_prompt_file_request() :: #{}.
 
 
 %% Example:
-%% routing_profile_queue_reference() :: #{
-%%   <<"Channel">> => list(any()),
-%%   <<"QueueId">> => string()
+%% get_prompt_file_response() :: #{
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PromptPresignedUrl">> => string()
 %% }
--type routing_profile_queue_reference() :: #{binary() => any()}.
-
-%% Example:
-%% start_contact_media_processing_response() :: #{}
--type start_contact_media_processing_response() :: #{}.
+-type get_prompt_file_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% granular_access_control_configuration() :: #{
-%%   <<"DataTableAccessControlConfiguration">> => data_table_access_control_configuration()
+%% get_task_template_request() :: #{
+%%   <<"SnapshotVersion">> => string()
 %% }
--type granular_access_control_configuration() :: #{binary() => any()}.
+-type get_task_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_task_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Constraints">> => task_template_constraints(),
+%%   <<"ContactFlowId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Defaults">> => task_template_defaults(),
+%%   <<"Description">> => string(),
+%%   <<"Fields">> => list(task_template_field()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SelfAssignFlowId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_task_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_test_case_execution_summary_request() :: #{}
+-type get_test_case_execution_summary_request() :: #{}.
+
+
+%% Example:
+%% get_test_case_execution_summary_response() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ObservationSummary">> => observation_summary(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_test_case_execution_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_traffic_distribution_request() :: #{}
+-type get_traffic_distribution_request() :: #{}.
+
+
+%% Example:
+%% get_traffic_distribution_response() :: #{
+%%   <<"AgentConfig">> => agent_config(),
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"SignInConfig">> => sign_in_config(),
+%%   <<"TelephonyConfig">> => telephony_config()
+%% }
+-type get_traffic_distribution_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7099,168 +5638,10 @@
 
 
 %% Example:
-%% control_plane_user_attribute_filter() :: #{
-%%   <<"AndCondition">> => attribute_and_condition(),
-%%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
-%%   <<"OrConditions">> => list(attribute_and_condition()),
-%%   <<"TagCondition">> => tag_condition()
+%% granular_access_control_configuration() :: #{
+%%   <<"DataTableAccessControlConfiguration">> => data_table_access_control_configuration()
 %% }
--type control_plane_user_attribute_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_agent_status_response() :: #{
-%%   <<"AgentStatusARN">> => string(),
-%%   <<"AgentStatusId">> => string()
-%% }
--type create_agent_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_evaluation_form_validation_request() :: #{
-%%   <<"EvaluationFormVersion">> => integer()
-%% }
--type get_evaluation_form_validation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_views_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type list_views_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_contact_streaming_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"StreamingId">> := string()
-%% }
--type stop_contact_streaming_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_reference() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type user_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_contact_flow_metadata_request() :: #{
-%%   <<"ContactFlowState">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_contact_flow_metadata_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% state_transition() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"StateEndTimestamp">> => non_neg_integer(),
-%%   <<"StateStartTimestamp">> => non_neg_integer()
-%% }
--type state_transition() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_hours_of_operation_overrides_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => hours_of_operation_override_search_criteria(),
-%%   <<"SearchFilter">> => hours_of_operation_search_filter()
-%% }
--type search_hours_of_operation_overrides_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_profile_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type routing_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% dismiss_user_contact_request() :: #{
-%%   <<"ContactId">> := string()
-%% }
--type dismiss_user_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_notification_content_response() :: #{}
--type update_notification_content_response() :: #{}.
-
-
-%% Example:
-%% search_data_tables_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => data_table_search_criteria(),
-%%   <<"SearchFilter">> => data_table_search_filter()
-%% }
--type search_data_tables_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_recording_configuration() :: #{
-%%   <<"IvrRecordingTrack">> => list(any()),
-%%   <<"VoiceRecordingTrack">> => list(any())
-%% }
--type voice_recording_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_numeric_question_properties() :: #{
-%%   <<"Automation">> => list(),
-%%   <<"MaxValue">> => integer(),
-%%   <<"MinValue">> => integer(),
-%%   <<"Options">> => list(evaluation_form_numeric_question_option())
-%% }
--type evaluation_form_numeric_question_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% additional_email_recipients() :: #{
-%%   <<"CcList">> => list(email_recipient()),
-%%   <<"ToList">> => list(email_recipient())
-%% }
--type additional_email_recipients() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_instance_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute()),
-%%   <<"NextToken">> => string()
-%% }
--type list_instance_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_attached_file_request() :: #{
-%%   <<"AssociatedResourceArn">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"FileSourceUri">> := string(),
-%%   <<"FileUseCaseType">> := list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_attached_file_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_user_status_request() :: #{
-%%   <<"AgentStatusId">> := string()
-%% }
--type put_user_status_request() :: #{binary() => any()}.
+-type granular_access_control_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7278,290 +5659,154 @@
 
 
 %% Example:
-%% searchable_contact_attributes_criteria() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Values">> => list(string())
+%% hierarchy_group_condition() :: #{
+%%   <<"HierarchyGroupMatchType">> => list(any()),
+%%   <<"Value">> => string()
 %% }
--type searchable_contact_attributes_criteria() :: #{binary() => any()}.
+-type hierarchy_group_condition() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_data_tables_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% hierarchy_group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
 %% }
--type list_data_tables_request() :: #{binary() => any()}.
+-type hierarchy_group_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_view_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ViewVersionSummaryList">> => list(view_version_summary())
-%% }
--type list_view_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"Address">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_reference() :: #{
+%% hierarchy_group_summary_reference() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string()
 %% }
--type queue_reference() :: #{binary() => any()}.
+-type hierarchy_group_summary_reference() :: #{binary() => any()}.
 
 
 %% Example:
-%% contact_flow_module_alias_info() :: #{
-%%   <<"AliasId">> => string(),
-%%   <<"ContactFlowModuleArn">> => string(),
-%%   <<"ContactFlowModuleId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Version">> => float()
+%% hierarchy_groups() :: #{
+%%   <<"Level1">> => agent_hierarchy_group(),
+%%   <<"Level2">> => agent_hierarchy_group(),
+%%   <<"Level3">> => agent_hierarchy_group(),
+%%   <<"Level4">> => agent_hierarchy_group(),
+%%   <<"Level5">> => agent_hierarchy_group()
 %% }
--type contact_flow_module_alias_info() :: #{binary() => any()}.
+-type hierarchy_groups() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_delete_data_table_value_request() :: #{
-%%   <<"Values">> := list(data_table_delete_value_identifier())
-%% }
--type batch_delete_data_table_value_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% interval_details() :: #{
-%%   <<"IntervalPeriod">> => list(any()),
-%%   <<"TimeZone">> => string()
-%% }
--type interval_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_evaluation() :: #{
-%%   <<"DeleteTimestamp">> => non_neg_integer(),
-%%   <<"EndTimestamp">> => non_neg_integer(),
-%%   <<"EvaluationArn">> => string(),
-%%   <<"ExportLocation">> => string(),
-%%   <<"FormId">> => string(),
-%%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type contact_evaluation() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_workspaces_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => workspace_search_criteria(),
-%%   <<"SearchFilter">> => workspace_search_filter()
-%% }
--type search_workspaces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_flow_modules_response() :: #{
-%%   <<"ContactFlowModulesSummaryList">> => list(contact_flow_module_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_flow_modules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule_action() :: #{
-%%   <<"ActionType">> => list(any()),
-%%   <<"AssignContactCategoryAction">> => assign_contact_category_action_definition(),
-%%   <<"AssignSlaAction">> => assign_sla_action_definition(),
-%%   <<"CreateCaseAction">> => create_case_action_definition(),
-%%   <<"EndAssociatedTasksAction">> => end_associated_tasks_action_definition(),
-%%   <<"EventBridgeAction">> => event_bridge_action_definition(),
-%%   <<"SendNotificationAction">> => send_notification_action_definition(),
-%%   <<"SubmitAutoEvaluationAction">> => submit_auto_evaluation_action_definition(),
-%%   <<"TaskAction">> => task_action_definition(),
-%%   <<"UpdateCaseAction">> => update_case_action_definition()
-%% }
--type rule_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_instances_response() :: #{
-%%   <<"InstanceSummaryList">> => list(instance_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_instances_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_test_cases_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => test_case_search_criteria(),
-%%   <<"SearchFilter">> => test_case_search_filter()
-%% }
--type search_test_cases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_routing_profile_agent_availability_timer_request() :: #{
-%%   <<"AgentAvailabilityTimer">> := list(any())
-%% }
--type update_routing_profile_agent_availability_timer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% successful_batch_association_summary() :: #{
-%%   <<"ResourceArn">> => string()
-%% }
--type successful_batch_association_summary() :: #{binary() => any()}.
-
-%% Example:
-%% resume_contact_response() :: #{}
--type resume_contact_response() :: #{}.
-
-
-%% Example:
-%% preview() :: #{
-%%   <<"AllowedUserActions">> => list(list(any())()),
-%%   <<"PostAcceptTimeoutConfig">> => post_accept_timeout_config()
-%% }
--type preview() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_prompts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_prompts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_email_addresses_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"EmailAddresses">> => list(email_address_metadata()),
-%%   <<"NextToken">> => string()
-%% }
--type search_email_addresses_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_evaluation_request() :: #{}
--type delete_contact_evaluation_request() :: #{}.
-
-
-%% Example:
-%% list_security_profile_permissions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_security_profile_permissions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_describe_data_table_value_request() :: #{
-%%   <<"Values">> := list(data_table_value_identifier())
-%% }
--type batch_describe_data_table_value_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_case_action_definition() :: #{
-%%   <<"Fields">> => list(field_value())
-%% }
--type update_case_action_definition() :: #{binary() => any()}.
-
-%% Example:
-%% untag_contact_response() :: #{}
--type untag_contact_response() :: #{}.
-
-
-%% Example:
-%% security_profile() :: #{
-%%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
-%%   <<"AllowedAccessControlTags">> => map(),
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"GranularAccessControlConfiguration">> => granular_access_control_configuration(),
-%%   <<"HierarchyRestrictedResources">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"OrganizationResourceId">> => string(),
-%%   <<"SecurityProfileName">> => string(),
-%%   <<"TagRestrictedResources">> => list(string()),
-%%   <<"Tags">> => map()
-%% }
--type security_profile() :: #{binary() => any()}.
-
-
-%% Example:
-%% quick_connect_summary() :: #{
+%% hierarchy_level() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"QuickConnectType">> => list(any())
+%%   <<"Name">> => string()
 %% }
--type quick_connect_summary() :: #{binary() => any()}.
+-type hierarchy_level() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_security_key_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Key">> := string()
+%% hierarchy_level_update() :: #{
+%%   <<"Name">> => string()
 %% }
--type associate_security_key_request() :: #{binary() => any()}.
+-type hierarchy_level_update() :: #{binary() => any()}.
 
 
 %% Example:
-%% current_metric() :: #{
-%%   <<"MetricId">> => string(),
+%% hierarchy_path() :: #{
+%%   <<"LevelFive">> => hierarchy_group_summary(),
+%%   <<"LevelFour">> => hierarchy_group_summary(),
+%%   <<"LevelOne">> => hierarchy_group_summary(),
+%%   <<"LevelThree">> => hierarchy_group_summary(),
+%%   <<"LevelTwo">> => hierarchy_group_summary()
+%% }
+-type hierarchy_path() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_path_reference() :: #{
+%%   <<"LevelFive">> => hierarchy_group_summary_reference(),
+%%   <<"LevelFour">> => hierarchy_group_summary_reference(),
+%%   <<"LevelOne">> => hierarchy_group_summary_reference(),
+%%   <<"LevelThree">> => hierarchy_group_summary_reference(),
+%%   <<"LevelTwo">> => hierarchy_group_summary_reference()
+%% }
+-type hierarchy_path_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_structure() :: #{
+%%   <<"LevelFive">> => hierarchy_level(),
+%%   <<"LevelFour">> => hierarchy_level(),
+%%   <<"LevelOne">> => hierarchy_level(),
+%%   <<"LevelThree">> => hierarchy_level(),
+%%   <<"LevelTwo">> => hierarchy_level()
+%% }
+-type hierarchy_structure() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_structure_update() :: #{
+%%   <<"LevelFive">> => hierarchy_level_update(),
+%%   <<"LevelFour">> => hierarchy_level_update(),
+%%   <<"LevelOne">> => hierarchy_level_update(),
+%%   <<"LevelThree">> => hierarchy_level_update(),
+%%   <<"LevelTwo">> => hierarchy_level_update()
+%% }
+-type hierarchy_structure_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% historical_metric() :: #{
 %%   <<"Name">> => list(any()),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Threshold">> => threshold(),
 %%   <<"Unit">> => list(any())
 %% }
--type current_metric() :: #{binary() => any()}.
+-type historical_metric() :: #{binary() => any()}.
 
 
 %% Example:
-%% traffic_distribution_group() :: #{
-%%   <<"Arn">> => string(),
+%% historical_metric_data() :: #{
+%%   <<"Metric">> => historical_metric(),
+%%   <<"Value">> => float()
+%% }
+-type historical_metric_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% historical_metric_result() :: #{
+%%   <<"Collections">> => list(historical_metric_data()),
+%%   <<"Dimensions">> => dimensions()
+%% }
+-type historical_metric_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% hours_of_operation() :: #{
+%%   <<"Config">> => list(hours_of_operation_config()),
 %%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"InstanceArn">> => string(),
-%%   <<"IsDefault">> => boolean(),
+%%   <<"HoursOfOperationArn">> => string(),
+%%   <<"HoursOfOperationId">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
+%%   <<"ParentHoursOfOperations">> => list(hours_of_operations_identifier()),
+%%   <<"Tags">> => map(),
+%%   <<"TimeZone">> => string()
 %% }
--type traffic_distribution_group() :: #{binary() => any()}.
+-type hours_of_operation() :: #{binary() => any()}.
 
 
 %% Example:
-%% notification_search_filter() :: #{
-%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% hours_of_operation_config() :: #{
+%%   <<"Day">> => list(any()),
+%%   <<"EndTime">> => hours_of_operation_time_slice(),
+%%   <<"StartTime">> => hours_of_operation_time_slice()
 %% }
--type notification_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_hierarchy_group_search_criteria() :: #{
-%%   <<"AndConditions">> => list(user_hierarchy_group_search_criteria()),
-%%   <<"OrConditions">> => list(user_hierarchy_group_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type user_hierarchy_group_search_criteria() :: #{binary() => any()}.
+-type hours_of_operation_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7581,626 +5826,145 @@
 
 
 %% Example:
-%% evaluation_search_summary() :: #{
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"EvaluationArn">> => string(),
-%%   <<"EvaluationFormId">> => string(),
-%%   <<"EvaluationFormTitle">> => string(),
-%%   <<"EvaluationFormVersion">> => integer(),
-%%   <<"EvaluationId">> => string(),
-%%   <<"EvaluationType">> => list(any()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Metadata">> => evaluation_search_metadata(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
+%% hours_of_operation_override_config() :: #{
+%%   <<"Day">> => list(any()),
+%%   <<"EndTime">> => override_time_slice(),
+%%   <<"StartTime">> => override_time_slice()
 %% }
--type evaluation_search_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_workspace_page_response() :: #{}
--type update_workspace_page_response() :: #{}.
+-type hours_of_operation_override_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_analytics_data_lake_data_sets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(analytics_data_sets_result())
-%% }
--type list_analytics_data_lake_data_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule_summary() :: #{
-%%   <<"ActionSummaries">> => list(action_summary()),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"EventSourceName">> => list(any()),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PublishStatus">> => list(any()),
-%%   <<"RuleArn">> => string(),
-%%   <<"RuleId">> => string()
-%% }
--type rule_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_table_value_evaluation_set() :: #{
-%%   <<"AttributeNames">> => list(string()),
-%%   <<"PrimaryValues">> => list(primary_value())
-%% }
--type data_table_value_evaluation_set() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_search_criteria() :: #{
-%%   <<"AndConditions">> => list(notification_search_criteria()),
-%%   <<"OrConditions">> => list(notification_search_criteria()),
+%% hours_of_operation_override_search_criteria() :: #{
+%%   <<"AndConditions">> => list(hours_of_operation_override_search_criteria()),
+%%   <<"DateCondition">> => date_condition(),
+%%   <<"OrConditions">> => list(hours_of_operation_override_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
--type notification_search_criteria() :: #{binary() => any()}.
+-type hours_of_operation_override_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_security_profile_applications_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% hours_of_operation_search_criteria() :: #{
+%%   <<"AndConditions">> => list(hours_of_operation_search_criteria()),
+%%   <<"OrConditions">> => list(hours_of_operation_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
 %% }
--type list_security_profile_applications_request() :: #{binary() => any()}.
+-type hours_of_operation_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_routing_profile_name_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_routing_profile_name_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attached_files_configurations_response() :: #{
-%%   <<"AttachedFilesConfigurations">> => list(attached_files_configuration_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_attached_files_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_flow_module_search_filter() :: #{
+%% hours_of_operation_search_filter() :: #{
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
--type contact_flow_module_search_filter() :: #{binary() => any()}.
+-type hours_of_operation_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% security_profile_item() :: #{
-%%   <<"Id">> => string()
-%% }
--type security_profile_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_hours_of_operation_override_response() :: #{
-%%   <<"HoursOfOperationOverride">> => hours_of_operation_override()
-%% }
--type describe_hours_of_operation_override_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workspace_response() :: #{
-%%   <<"WorkspaceArn">> => string(),
-%%   <<"WorkspaceId">> => string()
-%% }
--type create_workspace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace() :: #{
+%% hours_of_operation_summary() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Theme">> => workspace_theme(),
-%%   <<"Title">> => string(),
-%%   <<"Visibility">> => list(any())
+%%   <<"Name">> => string()
 %% }
--type workspace() :: #{binary() => any()}.
+-type hours_of_operation_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% notification_search_summary() :: #{
+%% hours_of_operation_time_slice() :: #{
+%%   <<"Hours">> => integer(),
+%%   <<"Minutes">> => integer()
+%% }
+-type hours_of_operation_time_slice() :: #{binary() => any()}.
+
+
+%% Example:
+%% hours_of_operations_identifier() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Content">> => map(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ExpiresAt">> => non_neg_integer(),
 %%   <<"Id">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Priority">> => list(any()),
-%%   <<"Recipients">> => list(string()),
-%%   <<"Tags">> => map()
+%%   <<"Name">> => string()
 %% }
--type notification_search_summary() :: #{binary() => any()}.
+-type hours_of_operations_identifier() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_routing_profile_queues_response() :: #{
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RoutingProfileQueueConfigSummaryList">> => list(routing_profile_queue_config_summary())
-%% }
--type list_routing_profile_queues_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_flow_modules_request() :: #{
-%%   <<"ContactFlowModuleState">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_flow_modules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% language_configuration() :: #{
-%%   <<"LanguageLocale">> => string()
-%% }
--type language_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_bot_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"LexBot">> => lex_bot(),
-%%   <<"LexV2Bot">> => lex_v2_bot()
-%% }
--type associate_bot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_lex_bot_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"LexBot">> := lex_bot()
-%% }
--type associate_lex_bot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_data_table_attribute_response() :: #{
-%%   <<"Attribute">> => data_table_attribute()
-%% }
--type describe_data_table_attribute_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_security_profile_request() :: #{}
--type delete_security_profile_request() :: #{}.
-
-
-%% Example:
-%% contact_evaluation_attribute_condition() :: #{
-%%   <<"AttributeKey">> => list(any()),
-%%   <<"AttributeValue">> => contact_evaluation_attribute_value(),
-%%   <<"ComparisonType">> => list(any())
-%% }
--type contact_evaluation_attribute_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_user_response() :: #{
-%%   <<"User">> => user()
-%% }
--type describe_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% string_condition() :: #{
-%%   <<"ComparisonType">> => list(any()),
-%%   <<"FieldName">> => string(),
-%%   <<"Value">> => string()
-%% }
--type string_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bots_response() :: #{
-%%   <<"LexBots">> => list(lex_bot_config()),
-%%   <<"NextToken">> => string()
-%% }
--type list_bots_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_criteria_input_step() :: #{
-%%   <<"Expiry">> => routing_criteria_input_step_expiry(),
-%%   <<"Expression">> => expression()
-%% }
--type routing_criteria_input_step() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_search_summary_agent_info() :: #{
-%%   <<"ConnectedToAgentTimestamp">> => non_neg_integer(),
-%%   <<"Id">> => string()
-%% }
--type contact_search_summary_agent_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workspaces_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WorkspaceSummaryList">> => list(workspace_summary())
-%% }
--type list_workspaces_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% quality_metrics() :: #{
-%%   <<"Agent">> => agent_quality_metrics(),
-%%   <<"Customer">> => customer_quality_metrics()
-%% }
--type quality_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_hierarchy_structure_request() :: #{
-%%   <<"HierarchyStructure">> := hierarchy_structure_update()
-%% }
--type update_user_hierarchy_structure_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_traffic_distribution_group_request() :: #{}
--type delete_traffic_distribution_group_request() :: #{}.
-
-
-%% Example:
-%% list_contact_flow_versions_response() :: #{
-%%   <<"ContactFlowVersionSummaryList">> => list(contact_flow_version_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_flow_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% outbound_raw_message() :: #{
-%%   <<"Body">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"Subject">> => string()
-%% }
--type outbound_raw_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rule_request() :: #{}
--type describe_rule_request() :: #{}.
-
-
-%% Example:
-%% describe_test_case_response() :: #{
-%%   <<"TestCase">> => test_case()
-%% }
--type describe_test_case_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% deactivate_evaluation_form_request() :: #{
-%%   <<"EvaluationFormVersion">> := integer()
-%% }
--type deactivate_evaluation_form_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_security_profiles_request() :: #{
-%%   <<"SecurityProfileIds">> := list(string())
-%% }
--type update_user_security_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_status_reason() :: #{
+%% idempotency_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type instance_status_reason() :: #{binary() => any()}.
+-type idempotency_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_agent_status_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayOrder">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"State">> := list(any()),
-%%   <<"Tags">> => map()
+%% images_logo() :: #{
+%%   <<"Default">> => string(),
+%%   <<"Favicon">> => string()
 %% }
--type create_agent_status_request() :: #{binary() => any()}.
+-type images_logo() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_push_notification_registration_request() :: #{
-%%   <<"ContactId">> := string()
-%% }
--type delete_push_notification_registration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resume_contact_request() :: #{
-%%   <<"ContactFlowId">> => string(),
-%%   <<"ContactId">> := string(),
-%%   <<"InstanceId">> := string()
-%% }
--type resume_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_contact_media_processing_request() :: #{
-%%   <<"ContactId">> => string(),
-%%   <<"InstanceId">> => string()
-%% }
--type stop_contact_media_processing_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_traffic_distribution_group_user_response() :: #{}
--type associate_traffic_distribution_group_user_response() :: #{}.
-
-
-%% Example:
-%% customer_voice_activity() :: #{
-%%   <<"GreetingEndTimestamp">> => non_neg_integer(),
-%%   <<"GreetingStartTimestamp">> => non_neg_integer()
-%% }
--type customer_voice_activity() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_routing_data_response() :: #{}
--type update_contact_routing_data_response() :: #{}.
-
-
-%% Example:
-%% delete_data_table_attribute_response() :: #{
-%%   <<"LockVersion">> => data_table_lock_version()
-%% }
--type delete_data_table_attribute_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_flow_association_request() :: #{}
--type get_flow_association_request() :: #{}.
-
-%% Example:
-%% delete_integration_association_request() :: #{}
--type delete_integration_association_request() :: #{}.
-
-
-%% Example:
-%% list_security_keys_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SecurityKeys">> => list(security_key())
-%% }
--type list_security_keys_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_queue_email_addresses_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_queue_email_addresses_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_view_request() :: #{
+%% import_phone_number_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"Content">> := view_input_content(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Status">> := list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_view_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_prompt_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"S3Uri">> => string()
-%% }
--type update_prompt_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_search_criteria() :: #{
-%%   <<"AndConditions">> => list(user_search_criteria()),
-%%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
-%%   <<"ListCondition">> => list_condition(),
-%%   <<"OrConditions">> => list(user_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type user_search_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% describe_contact_evaluation_request() :: #{}
--type describe_contact_evaluation_request() :: #{}.
-
-
-%% Example:
-%% data_table_delete_value_identifier() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"LockVersion">> => data_table_lock_version(),
-%%   <<"PrimaryValues">> => list(primary_value())
-%% }
--type data_table_delete_value_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_status_search_filter() :: #{
-%%   <<"AttributeFilter">> => control_plane_attribute_filter()
-%% }
--type agent_status_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_traffic_distribution_response() :: #{
-%%   <<"AgentConfig">> => agent_config(),
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"SignInConfig">> => sign_in_config(),
-%%   <<"TelephonyConfig">> => telephony_config()
-%% }
--type get_traffic_distribution_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_flow_module_alias_response() :: #{}
--type delete_contact_flow_module_alias_response() :: #{}.
-
-
-%% Example:
-%% transfer_contact_response() :: #{
-%%   <<"ContactArn">> => string(),
-%%   <<"ContactId">> => string()
-%% }
--type transfer_contact_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_view_content_request() :: #{
-%%   <<"Content">> := view_input_content(),
-%%   <<"Status">> := list(any())
-%% }
--type update_view_content_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_contact_evaluation_response() :: #{
-%%   <<"EvaluationArn">> => string(),
-%%   <<"EvaluationId">> => string()
-%% }
--type update_contact_evaluation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_single_select_question_option() :: #{
-%%   <<"AutomaticFail">> => boolean(),
-%%   <<"AutomaticFailConfiguration">> => automatic_fail_configuration(),
-%%   <<"PointsConfiguration">> => question_option_points_configuration(),
-%%   <<"RefId">> => string(),
-%%   <<"Score">> => integer(),
-%%   <<"Text">> => string()
-%% }
--type evaluation_form_single_select_question_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_view_content_response() :: #{
-%%   <<"View">> => view()
-%% }
--type update_view_content_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_email_contact_request() :: #{
-%%   <<"AdditionalRecipients">> => inbound_additional_recipients(),
-%%   <<"Attachments">> => list(email_attachment()),
-%%   <<"Attributes">> => map(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ContactFlowId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DestinationEmailAddress">> := string(),
-%%   <<"EmailMessage">> := inbound_email_content(),
-%%   <<"FromEmailAddress">> := email_address_info(),
 %%   <<"InstanceId">> := string(),
-%%   <<"Name">> => string(),
-%%   <<"References">> => map(),
-%%   <<"RelatedContactId">> => string(),
-%%   <<"SegmentAttributes">> => map()
-%% }
--type start_email_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_instance_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"IdentityManagementType">> := list(any()),
-%%   <<"InboundCallsEnabled">> := boolean(),
-%%   <<"InstanceAlias">> => string(),
-%%   <<"OutboundCallsEnabled">> := boolean(),
+%%   <<"PhoneNumberDescription">> => string(),
+%%   <<"SourcePhoneNumberArn">> := string(),
 %%   <<"Tags">> => map()
 %% }
--type create_instance_request() :: #{binary() => any()}.
+-type import_phone_number_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% hierarchy_group_summary_reference() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
+%% import_phone_number_response() :: #{
+%%   <<"PhoneNumberArn">> => string(),
+%%   <<"PhoneNumberId">> => string()
 %% }
--type hierarchy_group_summary_reference() :: #{binary() => any()}.
+-type import_phone_number_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% hierarchy_structure() :: #{
-%%   <<"LevelFive">> => hierarchy_level(),
-%%   <<"LevelFour">> => hierarchy_level(),
-%%   <<"LevelOne">> => hierarchy_level(),
-%%   <<"LevelThree">> => hierarchy_level(),
-%%   <<"LevelTwo">> => hierarchy_level()
+%% import_workspace_media_request() :: #{
+%%   <<"MediaSource">> := string(),
+%%   <<"MediaType">> := list(any())
 %% }
--type hierarchy_structure() :: #{binary() => any()}.
+-type import_workspace_media_request() :: #{binary() => any()}.
 
 %% Example:
-%% stop_contact_streaming_response() :: #{}
--type stop_contact_streaming_response() :: #{}.
+%% import_workspace_media_response() :: #{}
+-type import_workspace_media_response() :: #{}.
 
 
 %% Example:
-%% describe_instance_response() :: #{
-%%   <<"Instance">> => instance(),
-%%   <<"ReplicationConfiguration">> => replication_configuration()
+%% inbound_additional_recipients() :: #{
+%%   <<"CcAddresses">> => list(email_address_info()),
+%%   <<"ToAddresses">> => list(email_address_info())
 %% }
--type describe_instance_response() :: #{binary() => any()}.
+-type inbound_additional_recipients() :: #{binary() => any()}.
 
 
 %% Example:
-%% new_session_details() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"ParticipantDetails">> => participant_details(),
-%%   <<"StreamingConfiguration">> => chat_streaming_configuration(),
-%%   <<"SupportedMessagingContentTypes">> => list(string())
+%% inbound_email_content() :: #{
+%%   <<"MessageSourceType">> => list(any()),
+%%   <<"RawMessage">> => inbound_raw_message()
 %% }
--type new_session_details() :: #{binary() => any()}.
+-type inbound_email_content() :: #{binary() => any()}.
 
 
 %% Example:
-%% hierarchy_groups() :: #{
-%%   <<"Level1">> => agent_hierarchy_group(),
-%%   <<"Level2">> => agent_hierarchy_group(),
-%%   <<"Level3">> => agent_hierarchy_group(),
-%%   <<"Level4">> => agent_hierarchy_group(),
-%%   <<"Level5">> => agent_hierarchy_group()
+%% inbound_raw_message() :: #{
+%%   <<"Body">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"Headers">> => map(),
+%%   <<"Subject">> => string()
 %% }
--type hierarchy_groups() :: #{binary() => any()}.
+-type inbound_raw_message() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_queue_outbound_caller_config_request() :: #{
-%%   <<"OutboundCallerConfig">> := outbound_caller_config()
+%% input_predefined_attribute_configuration() :: #{
+%%   <<"EnableValueValidationOnAssociation">> => boolean()
 %% }
--type update_queue_outbound_caller_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_contact_attributes_response() :: #{
-%%   <<"Attributes">> => map()
-%% }
--type get_contact_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_contact_lens_answer_analysis_details() :: #{
-%%   <<"MatchedRuleCategories">> => list(evaluation_automation_rule_category())
-%% }
--type evaluation_contact_lens_answer_analysis_details() :: #{binary() => any()}.
+-type input_predefined_attribute_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8222,869 +5986,22 @@
 
 
 %% Example:
-%% execution_record() :: #{
-%%   <<"ObservationId">> => string(),
-%%   <<"Record">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type execution_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_flow_type_condition() :: #{
-%%   <<"ContactFlowType">> => list(any())
-%% }
--type contact_flow_type_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% sign_in_config() :: #{
-%%   <<"Distributions">> => list(sign_in_distribution())
-%% }
--type sign_in_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_routing_profiles_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RoutingProfileSummaryList">> => list(routing_profile_summary())
-%% }
--type list_routing_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_evaluation_form_validation_response() :: #{
-%%   <<"EvaluationFormId">> => string(),
-%%   <<"EvaluationFormVersion">> => integer(),
-%%   <<"FailureReason">> => string(),
-%%   <<"Findings">> => list(evaluation_form_validation_finding()),
-%%   <<"StartedTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type get_evaluation_form_validation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
+%% instance_status_reason() :: #{
 %%   <<"Message">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type instance_status_reason() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_hours_of_operation_overrides_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"HoursOfOperationOverrides">> => list(hours_of_operation_override()),
-%%   <<"NextToken">> => string()
-%% }
--type search_hours_of_operation_overrides_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_contact_flow_module_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_contact_flow_module_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_web_r_t_c_contact_response() :: #{
-%%   <<"ConnectionData">> => connection_data(),
-%%   <<"ContactId">> => string(),
-%%   <<"ParticipantId">> => string(),
-%%   <<"ParticipantToken">> => string()
-%% }
--type start_web_r_t_c_contact_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% current_metric_sort_criteria() :: #{
-%%   <<"SortByMetric">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type current_metric_sort_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_attributes() :: #{
-%%   <<"RecommenderConfig">> => recommender_config()
-%% }
--type content_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_test_case_request() :: #{
-%%   <<"Content">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EntryPoint">> => test_case_entry_point(),
-%%   <<"InitializationData">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type update_test_case_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_traffic_distribution_response() :: #{}
--type update_traffic_distribution_response() :: #{}.
-
-
-%% Example:
-%% security_key() :: #{
+%% instance_storage_config() :: #{
 %%   <<"AssociationId">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Key">> => string()
-%% }
--type security_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rules_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RuleSummaryList">> => list(rule_summary())
-%% }
--type list_rules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_hours_of_operation_override_response() :: #{
-%%   <<"HoursOfOperationOverrideId">> => string()
-%% }
--type create_hours_of_operation_override_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_resource_tags_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceTypes">> => list(string()),
-%%   <<"SearchCriteria">> => resource_tags_search_criteria()
-%% }
--type search_resource_tags_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disconnect_reason() :: #{
-%%   <<"Code">> => string()
-%% }
--type disconnect_reason() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_cases_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_test_cases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% replicate_instance_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type replicate_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_contact_analysis_character_interval() :: #{
-%%   <<"BeginOffsetChar">> => integer(),
-%%   <<"EndOffsetChar">> => integer()
-%% }
--type real_time_contact_analysis_character_interval() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_value() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Value">> => field_value_union()
-%% }
--type field_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_template_constraints() :: #{
-%%   <<"InvisibleFields">> => list(invisible_field_info()),
-%%   <<"ReadOnlyFields">> => list(read_only_field_info()),
-%%   <<"RequiredFields">> => list(required_field_info())
-%% }
--type task_template_constraints() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_contact_routing_data_request() :: #{
-%%   <<"QueuePriority">> => float(),
-%%   <<"QueueTimeAdjustmentSeconds">> => integer(),
-%%   <<"RoutingCriteria">> => routing_criteria_input()
-%% }
--type update_contact_routing_data_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_traffic_distribution_group_response() :: #{
-%%   <<"TrafficDistributionGroup">> => traffic_distribution_group()
-%% }
--type describe_traffic_distribution_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_hours_of_operations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_hours_of_operations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_user_hierarchy_group_response() :: #{
-%%   <<"HierarchyGroup">> => hierarchy_group()
-%% }
--type describe_user_hierarchy_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_quality_metrics_info() :: #{
-%%   <<"PotentialQualityIssues">> => list(string()),
-%%   <<"QualityScore">> => float()
-%% }
--type audio_quality_metrics_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_queue_name_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_queue_name_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_contact_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"Tags">> := map()
-%% }
--type tag_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_contact_evaluation_response() :: #{
-%%   <<"EvaluationArn">> => string(),
-%%   <<"EvaluationId">> => string()
-%% }
--type start_contact_evaluation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attached_files_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_attached_files_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_case_entry_point() :: #{
-%%   <<"ChatEntryPointParameters">> => chat_entry_point_parameters(),
-%%   <<"Type">> => list(any()),
-%%   <<"VoiceCallEntryPointParameters">> => voice_call_entry_point_parameters()
-%% }
--type test_case_entry_point() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_routing_profiles_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"RoutingProfiles">> => list(routing_profile())
-%% }
--type search_routing_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_quick_connect_config() :: #{
-%%   <<"ContactFlowId">> => string(),
-%%   <<"QueueId">> => string()
-%% }
--type queue_quick_connect_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_proficiency() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"AttributeValue">> => string(),
-%%   <<"Level">> => float()
-%% }
--type user_proficiency() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_info() :: #{
-%%   <<"Address">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type endpoint_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_campaign() :: #{
-%%   <<"CampaignId">> => string(),
-%%   <<"OutboundRequestId">> => string()
-%% }
--type source_campaign() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_search_criteria() :: #{
-%%   <<"AndConditions">> => list(queue_search_criteria()),
-%%   <<"OrConditions">> => list(queue_search_criteria()),
-%%   <<"QueueTypeCondition">> => list(any()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type queue_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_first() :: #{
-%%   <<"Preview">> => preview()
-%% }
--type agent_first() :: #{binary() => any()}.
-
-
-%% Example:
-%% submit_contact_evaluation_request() :: #{
-%%   <<"Answers">> => map(),
-%%   <<"Notes">> => map(),
-%%   <<"SubmittedBy">> => list()
-%% }
--type submit_contact_evaluation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% common_attribute_and_condition() :: #{
-%%   <<"TagConditions">> => list(tag_condition())
-%% }
--type common_attribute_and_condition() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_request() :: #{}
--type describe_user_request() :: #{}.
-
-
-%% Example:
-%% associate_user_proficiencies_request() :: #{
-%%   <<"UserProficiencies">> := list(user_proficiency())
-%% }
--type associate_user_proficiencies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_security_profiles_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => security_profile_search_criteria(),
-%%   <<"SearchFilter">> => security_profiles_search_filter()
-%% }
--type search_security_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_prompts_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => prompt_search_criteria(),
-%%   <<"SearchFilter">> => prompt_search_filter()
-%% }
--type search_prompts_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_security_profile_request() :: #{}
--type describe_security_profile_request() :: #{}.
-
-
-%% Example:
-%% search_security_profiles_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"SecurityProfiles">> => list(security_profile_search_summary())
-%% }
--type search_security_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_config() :: #{
-%%   <<"Distributions">> => list(distribution())
-%% }
--type agent_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_tables_response() :: #{
-%%   <<"DataTableSummaryList">> => list(data_table_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_tables_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_answer_input() :: #{
-%%   <<"Value">> => list()
-%% }
--type evaluation_answer_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notification_response() :: #{}
--type delete_notification_response() :: #{}.
-
-
-%% Example:
-%% workspace_search_criteria() :: #{
-%%   <<"AndConditions">> => list(workspace_search_criteria()),
-%%   <<"OrConditions">> => list(workspace_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type workspace_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_bridge_action_definition() :: #{
-%%   <<"Name">> => string()
-%% }
--type event_bridge_action_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_default_vocabularies_request() :: #{
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_default_vocabularies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_active_region_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_active_region_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_participant_authentication_request() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"ErrorDescription">> => string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"State">> := string()
-%% }
--type update_participant_authentication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_references_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReferenceTypes">> := list(list(any())())
-%% }
--type list_contact_references_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% meeting_features_configuration() :: #{
-%%   <<"Audio">> => audio_features()
-%% }
--type meeting_features_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_contact_attributes_request() :: #{
-%%   <<"Attributes">> := map(),
-%%   <<"InitialContactId">> := string(),
-%%   <<"InstanceId">> := string()
-%% }
--type update_contact_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_theme_typography() :: #{
-%%   <<"FontFamily">> => font_family()
-%% }
--type workspace_theme_typography() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_contact_request() :: #{
-%%   <<"CustomerEndpoint">> => endpoint(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"QueueInfo">> => queue_info_input(),
-%%   <<"References">> => map(),
-%%   <<"SegmentAttributes">> => map(),
-%%   <<"SystemEndpoint">> => endpoint(),
-%%   <<"UserInfo">> => user_info()
-%% }
--type update_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_contact_flow_request() :: #{}
--type describe_contact_flow_request() :: #{}.
-
-
-%% Example:
-%% list_queue_quick_connects_response() :: #{
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QuickConnectSummaryList">> => list(quick_connect_summary())
-%% }
--type list_queue_quick_connects_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associated_contacts_response() :: #{
-%%   <<"ContactSummaryList">> => list(associated_contact_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_associated_contacts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% outbound_additional_recipients() :: #{
-%%   <<"CcEmailAddresses">> => list(email_address_info())
-%% }
--type outbound_additional_recipients() :: #{binary() => any()}.
-
-
-%% Example:
-%% searchable_contact_attributes() :: #{
-%%   <<"Criteria">> => list(searchable_contact_attributes_criteria()),
-%%   <<"MatchType">> => list(any())
-%% }
--type searchable_contact_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommender_config() :: #{
-%%   <<"Context">> => map(),
-%%   <<"DomainName">> => string(),
-%%   <<"RecommenderName">> => string()
-%% }
--type recommender_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_routing_profiles_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_routing_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_contact_response() :: #{
-%%   <<"FailedRequestList">> => list(failed_request()),
-%%   <<"SuccessfulRequestList">> => list(successful_request())
-%% }
--type batch_put_contact_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_contact_flow_response() :: #{
-%%   <<"ContactFlow">> => contact_flow()
-%% }
--type describe_contact_flow_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_flow_content_response() :: #{}
--type update_contact_flow_content_response() :: #{}.
-
-%% Example:
-%% stop_contact_response() :: #{}
--type stop_contact_response() :: #{}.
-
-
-%% Example:
-%% invalid_contact_flow_module_exception() :: #{
-%%   <<"Problems">> => list(problem_detail())
-%% }
--type invalid_contact_flow_module_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% contact_flow() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Content">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"FlowContentSha256">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => list(any()),
-%%   <<"Version">> => float(),
-%%   <<"VersionDescription">> => string()
-%% }
--type contact_flow() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_traffic_distribution_groups_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrafficDistributionGroupSummaryList">> => list(traffic_distribution_group_summary())
-%% }
--type list_traffic_distribution_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workspaces_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_workspaces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contact_flows_response() :: #{
-%%   <<"ContactFlowSummaryList">> => list(contact_flow_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_contact_flows_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% idempotency_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type idempotency_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_quick_connects_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => quick_connect_search_criteria(),
-%%   <<"SearchFilter">> => quick_connect_search_filter()
-%% }
--type search_quick_connects_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_case_executions_request() :: #{
-%%   <<"EndTime">> => float(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> => float(),
-%%   <<"Status">> => list(any()),
-%%   <<"TestCaseId">> => string(),
-%%   <<"TestCaseName">> => string()
-%% }
--type list_test_case_executions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_section() :: #{
-%%   <<"Instructions">> => string(),
-%%   <<"IsExcludedFromScoring">> => boolean(),
-%%   <<"Items">> => list(list()),
-%%   <<"RefId">> => string(),
-%%   <<"ScoreThresholds">> => list(evaluation_form_score_threshold()),
-%%   <<"Title">> => string(),
-%%   <<"Weight">> => float()
-%% }
--type evaluation_form_section() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_contacts_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => search_criteria(),
-%%   <<"Sort">> => sort(),
-%%   <<"TimeRange">> := search_contacts_time_range()
-%% }
--type search_contacts_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_quick_connect_request() :: #{}
--type delete_quick_connect_request() :: #{}.
-
-
-%% Example:
-%% create_contact_flow_module_alias_request() :: #{
-%%   <<"AliasName">> := string(),
-%%   <<"ContactFlowModuleVersion">> := float(),
-%%   <<"Description">> => string()
-%% }
--type create_contact_flow_module_alias_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% outbound_strategy() :: #{
-%%   <<"Config">> => outbound_strategy_config(),
-%%   <<"Type">> => list(any())
-%% }
--type outbound_strategy() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_metric_info() :: #{
-%%   <<"Name">> => list(any())
-%% }
--type contact_metric_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_outbound_chat_contact_response() :: #{
-%%   <<"ContactId">> => string()
-%% }
--type start_outbound_chat_contact_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_evaluation_attribute_filter() :: #{
-%%   <<"AndCondition">> => contact_evaluation_attribute_and_condition(),
-%%   <<"ContactEvaluationAttributeCondition">> => contact_evaluation_attribute_condition(),
-%%   <<"OrConditions">> => list(contact_evaluation_attribute_and_condition()),
-%%   <<"TagCondition">> => tag_condition()
-%% }
--type contact_evaluation_attribute_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_search_criteria() :: #{
-%%   <<"AndConditions">> => list(evaluation_search_criteria()),
-%%   <<"BooleanCondition">> => boolean_condition(),
-%%   <<"DateTimeCondition">> => date_time_condition(),
-%%   <<"DecimalCondition">> => decimal_condition(),
-%%   <<"NumberCondition">> => number_condition(),
-%%   <<"OrConditions">> => list(evaluation_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type evaluation_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_integration_associations_response() :: #{
-%%   <<"IntegrationAssociationSummaryList">> => list(integration_association_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_integration_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_value_union() :: #{
-%%   <<"BooleanValue">> => boolean(),
-%%   <<"DoubleValue">> => float(),
-%%   <<"EmptyValue">> => empty_field_value(),
-%%   <<"StringValue">> => string()
-%% }
--type field_value_union() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_call_entry_point_parameters() :: #{
-%%   <<"DestinationPhoneNumber">> => string(),
-%%   <<"FlowId">> => string(),
-%%   <<"SourcePhoneNumber">> => string()
-%% }
--type voice_call_entry_point_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% phone_number_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"PhoneNumber">> => string(),
-%%   <<"PhoneNumberCountryCode">> => list(any()),
-%%   <<"PhoneNumberType">> => list(any())
-%% }
--type phone_number_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% primary_value() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"Value">> => string()
-%% }
--type primary_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% hierarchy_level_update() :: #{
-%%   <<"Name">> => string()
-%% }
--type hierarchy_level_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% allowed_extension() :: #{
-%%   <<"Extension">> => string()
-%% }
--type allowed_extension() :: #{binary() => any()}.
-
-
-%% Example:
-%% resume_contact_recording_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"ContactRecordingType">> => list(any()),
-%%   <<"InitialContactId">> := string(),
-%%   <<"InstanceId">> := string()
-%% }
--type resume_contact_recording_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automatic_fail_configuration() :: #{
-%%   <<"TargetSection">> => string()
-%% }
--type automatic_fail_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_security_key_request() :: #{
-%%   <<"ClientToken">> => string()
-%% }
--type disassociate_security_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_notification_content_request() :: #{
-%%   <<"Content">> := map()
-%% }
--type update_notification_content_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_suggested_answer() :: #{
-%%   <<"AnalysisDetails">> => list(),
-%%   <<"AnalysisType">> => list(any()),
-%%   <<"Input">> => evaluation_question_input_details(),
-%%   <<"Status">> => list(any()),
-%%   <<"Value">> => list()
-%% }
--type evaluation_suggested_answer() :: #{binary() => any()}.
+%%   <<"KinesisFirehoseConfig">> => kinesis_firehose_config(),
+%%   <<"KinesisStreamConfig">> => kinesis_stream_config(),
+%%   <<"KinesisVideoStreamConfig">> => kinesis_video_stream_config(),
+%%   <<"S3Config">> => s3_config(),
+%%   <<"StorageType">> => list(any())
+%% }
+-type instance_storage_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9104,364 +6021,340 @@
 
 
 %% Example:
-%% evaluation_search_filter() :: #{
-%%   <<"AttributeFilter">> => control_plane_attribute_filter(),
-%%   <<"ContactEvaluationAttributeFilter">> => contact_evaluation_attribute_filter()
+%% integration_association_summary() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationAssociationArn">> => string(),
+%%   <<"IntegrationAssociationId">> => string(),
+%%   <<"IntegrationType">> => list(any()),
+%%   <<"SourceApplicationName">> => string(),
+%%   <<"SourceApplicationUrl">> => string(),
+%%   <<"SourceType">> => list(any())
 %% }
--type evaluation_search_filter() :: #{binary() => any()}.
+-type integration_association_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_instance_storage_config_request() :: #{
-%%   <<"ResourceType">> := list(any())
-%% }
--type describe_instance_storage_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
+%% internal_service_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type internal_service_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluation_acknowledgement() :: #{
-%%   <<"AcknowledgedBy">> => string(),
-%%   <<"AcknowledgedTime">> => non_neg_integer(),
-%%   <<"AcknowledgerComment">> => string()
+%% interval_details() :: #{
+%%   <<"IntervalPeriod">> => list(any()),
+%%   <<"TimeZone">> => string()
 %% }
--type evaluation_acknowledgement() :: #{binary() => any()}.
+-type interval_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_participant_role_config_request() :: #{
-%%   <<"ChannelConfiguration">> := list()
+%% invalid_active_region_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type update_participant_role_config_request() :: #{binary() => any()}.
+-type invalid_active_region_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluation_transcript_point_of_interest() :: #{
-%%   <<"MillisecondOffsets">> => evaluation_suggested_answer_transcript_millisecond_offsets(),
-%%   <<"TranscriptSegment">> => string()
+%% invalid_contact_flow_exception() :: #{
+%%   <<"problems">> => list(problem_detail())
 %% }
--type evaluation_transcript_point_of_interest() :: #{binary() => any()}.
+-type invalid_contact_flow_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_predefined_attributes_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => predefined_attribute_search_criteria()
+%% invalid_contact_flow_module_exception() :: #{
+%%   <<"Problems">> => list(problem_detail())
 %% }
--type search_predefined_attributes_request() :: #{binary() => any()}.
+-type invalid_contact_flow_module_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_instance_request() :: #{
-%%   <<"ClientToken">> => string()
+%% invalid_parameter_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type delete_instance_request() :: #{binary() => any()}.
+-type invalid_parameter_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% recurrence_config() :: #{
-%%   <<"RecurrencePattern">> => recurrence_pattern()
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list()
 %% }
--type recurrence_config() :: #{binary() => any()}.
+-type invalid_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% current_metric_data() :: #{
-%%   <<"Metric">> => current_metric(),
-%%   <<"Value">> => float()
+%% invalid_test_case_exception() :: #{
+%%   <<"Problems">> => list(problem_detail())
 %% }
--type current_metric_data() :: #{binary() => any()}.
+-type invalid_test_case_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_views_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"Views">> => list(view())
+%% invisible_field_info() :: #{
+%%   <<"Id">> => task_template_field_identifier()
 %% }
--type search_views_response() :: #{binary() => any()}.
+-type invisible_field_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% user() :: #{
-%%   <<"AfterContactWorkConfigs">> => list(after_contact_work_config_per_channel()),
-%%   <<"Arn">> => string(),
-%%   <<"AutoAcceptConfigs">> => list(auto_accept_config()),
-%%   <<"DirectoryUserId">> => string(),
-%%   <<"HierarchyGroupId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IdentityInfo">> => user_identity_info(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"PersistentConnectionConfigs">> => list(persistent_connection_config()),
-%%   <<"PhoneConfig">> => user_phone_config(),
-%%   <<"PhoneNumberConfigs">> => list(phone_number_config()),
-%%   <<"RoutingProfileId">> => string(),
-%%   <<"SecurityProfileIds">> => list(string()),
-%%   <<"Tags">> => map(),
-%%   <<"Username">> => string(),
-%%   <<"VoiceEnhancementConfigs">> => list(voice_enhancement_config())
+%% kinesis_firehose_config() :: #{
+%%   <<"FirehoseArn">> => string()
 %% }
--type user() :: #{binary() => any()}.
+-type kinesis_firehose_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_contact_flow_name_request() :: #{
-%%   <<"Description">> => string(),
+%% kinesis_stream_config() :: #{
+%%   <<"StreamArn">> => string()
+%% }
+-type kinesis_stream_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_video_stream_config() :: #{
+%%   <<"EncryptionConfig">> => encryption_config(),
+%%   <<"Prefix">> => string(),
+%%   <<"RetentionPeriodHours">> => integer()
+%% }
+-type kinesis_video_stream_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% language_configuration() :: #{
+%%   <<"LanguageLocale">> => string()
+%% }
+-type language_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lex_bot() :: #{
+%%   <<"LexRegion">> => string(),
 %%   <<"Name">> => string()
 %% }
--type update_contact_flow_name_request() :: #{binary() => any()}.
+-type lex_bot() :: #{binary() => any()}.
 
 
 %% Example:
-%% email_address_config() :: #{
-%%   <<"EmailAddressId">> => string()
+%% lex_bot_config() :: #{
+%%   <<"LexBot">> => lex_bot(),
+%%   <<"LexV2Bot">> => lex_v2_bot()
 %% }
--type email_address_config() :: #{binary() => any()}.
+-type lex_bot_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% web_notification_source() :: #{
-%%   <<"SourceCampaign">> => source_campaign()
+%% lex_v2_bot() :: #{
+%%   <<"AliasArn">> => string()
 %% }
--type web_notification_source() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vocabulary_request() :: #{}
--type delete_vocabulary_request() :: #{}.
+-type lex_v2_bot() :: #{binary() => any()}.
 
 
 %% Example:
-%% expression() :: #{
-%%   <<"AndExpression">> => list(expression()),
-%%   <<"AttributeCondition">> => attribute_condition(),
-%%   <<"NotAttributeCondition">> => attribute_condition(),
-%%   <<"OrExpression">> => list(expression())
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type expression() :: #{binary() => any()}.
+-type limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% contact_evaluation_attribute_value() :: #{
-%%   <<"StringValue">> => string()
-%% }
--type contact_evaluation_attribute_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_search_summary() :: #{
-%%   <<"AgentInfo">> => contact_search_summary_agent_info(),
-%%   <<"AiAgentInfo">> => list(contact_search_summary_ai_agent_info()),
-%%   <<"Arn">> => string(),
-%%   <<"Channel">> => list(any()),
-%%   <<"DisconnectTimestamp">> => non_neg_integer(),
-%%   <<"GlobalResiliencyMetadata">> => global_resiliency_metadata(),
-%%   <<"Id">> => string(),
-%%   <<"InitialContactId">> => string(),
-%%   <<"InitiationMethod">> => list(any()),
-%%   <<"InitiationTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PreviousContactId">> => string(),
-%%   <<"QueueInfo">> => contact_search_summary_queue_info(),
-%%   <<"RoutingCriteria">> => routing_criteria(),
-%%   <<"ScheduledTimestamp">> => non_neg_integer(),
-%%   <<"SegmentAttributes">> => map(),
-%%   <<"Tags">> => map()
-%% }
--type contact_search_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_hours_of_operation_override_request() :: #{
-%%   <<"Config">> := list(hours_of_operation_override_config()),
-%%   <<"Description">> => string(),
-%%   <<"EffectiveFrom">> := string(),
-%%   <<"EffectiveTill">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"OverrideType">> => list(any()),
-%%   <<"RecurrenceConfig">> => recurrence_config()
-%% }
--type create_hours_of_operation_override_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_email_address_response() :: #{
-%%   <<"EmailAddressArn">> => string(),
-%%   <<"EmailAddressId">> => string()
-%% }
--type create_email_address_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_contact_flow_module_response() :: #{
-%%   <<"ContactFlowModule">> => contact_flow_module()
-%% }
--type describe_contact_flow_module_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_contact_request() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"Channel">> := list(any()),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ExpiryDurationInMinutes">> => integer(),
-%%   <<"InitiateAs">> => list(any()),
-%%   <<"InitiationMethod">> := list(any()),
-%%   <<"InstanceId">> := string(),
-%%   <<"Name">> => string(),
-%%   <<"PreviousContactId">> => string(),
-%%   <<"References">> => map(),
-%%   <<"RelatedContactId">> => string(),
-%%   <<"SegmentAttributes">> => map(),
-%%   <<"UserInfo">> => user_info()
-%% }
--type create_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_flow_response() :: #{}
--type disassociate_flow_response() :: #{}.
-
-
-%% Example:
-%% evaluation_form_multi_select_question_option() :: #{
-%%   <<"AutomaticFail">> => boolean(),
-%%   <<"AutomaticFailConfiguration">> => automatic_fail_configuration(),
-%%   <<"PointsConfiguration">> => question_option_points_configuration(),
-%%   <<"RefId">> => string(),
-%%   <<"Score">> => integer(),
-%%   <<"Text">> => string()
-%% }
--type evaluation_form_multi_select_question_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% predefined_attribute_search_criteria() :: #{
-%%   <<"AndConditions">> => list(predefined_attribute_search_criteria()),
-%%   <<"OrConditions">> => list(predefined_attribute_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type predefined_attribute_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_quick_connect_response() :: #{
-%%   <<"QuickConnect">> => quick_connect()
-%% }
--type describe_quick_connect_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% predefined_attribute_summary() :: #{
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type predefined_attribute_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_accept_config() :: #{
-%%   <<"AgentFirstCallbackAutoAccept">> => boolean(),
-%%   <<"AutoAccept">> => boolean(),
-%%   <<"Channel">> => list(any())
-%% }
--type auto_accept_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_contact_analysis_transcript_item_redaction() :: #{
-%%   <<"CharacterOffsets">> => list(real_time_contact_analysis_character_interval())
-%% }
--type real_time_contact_analysis_transcript_item_redaction() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_hierarchy_group_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"ParentGroupId">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_user_hierarchy_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_hours_of_operation_response() :: #{
-%%   <<"HoursOfOperationArn">> => string(),
-%%   <<"HoursOfOperationId">> => string()
-%% }
--type create_hours_of_operation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% hours_of_operation_search_criteria() :: #{
-%%   <<"AndConditions">> => list(hours_of_operation_search_criteria()),
-%%   <<"OrConditions">> => list(hours_of_operation_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type hours_of_operation_search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_routing_profile_response() :: #{
-%%   <<"RoutingProfileArn">> => string(),
-%%   <<"RoutingProfileId">> => string()
-%% }
--type create_routing_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% assign_contact_category_action_definition() :: #{}
--type assign_contact_category_action_definition() :: #{}.
-
-
-%% Example:
-%% search_contact_flows_request() :: #{
-%%   <<"InstanceId">> := string(),
+%% list_agent_status_request() :: #{
+%%   <<"AgentStatusTypes">> => list(list(any())()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => contact_flow_search_criteria(),
-%%   <<"SearchFilter">> => contact_flow_search_filter()
+%%   <<"NextToken">> => string()
 %% }
--type search_contact_flows_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_prompt_file_request() :: #{}
--type get_prompt_file_request() :: #{}.
+-type list_agent_status_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% analytics_data_association_result() :: #{
+%% list_agent_status_response() :: #{
+%%   <<"AgentStatusSummaryList">> => list(agent_status_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_agent_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analytics_data_associations_request() :: #{
 %%   <<"DataSetId">> => string(),
-%%   <<"ResourceShareArn">> => string(),
-%%   <<"ResourceShareId">> => string(),
-%%   <<"ResourceShareStatus">> => string(),
-%%   <<"TargetAccountId">> => string()
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type analytics_data_association_result() :: #{binary() => any()}.
+-type list_analytics_data_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_attached_file_upload_response() :: #{
-%%   <<"CreatedBy">> => list(),
-%%   <<"CreationTime">> => string(),
-%%   <<"FileArn">> => string(),
-%%   <<"FileId">> => string(),
-%%   <<"FileStatus">> => list(any()),
-%%   <<"UploadUrlMetadata">> => upload_url_metadata()
+%% list_analytics_data_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(analytics_data_association_result())
 %% }
--type start_attached_file_upload_response() :: #{binary() => any()}.
+-type list_analytics_data_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_view_response() :: #{}
--type delete_view_response() :: #{}.
+%% list_analytics_data_lake_data_sets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_analytics_data_lake_data_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analytics_data_lake_data_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(analytics_data_sets_result())
+%% }
+-type list_analytics_data_lake_data_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_approved_origins_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_approved_origins_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_approved_origins_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Origins">> => list(string())
+%% }
+-type list_approved_origins_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_contacts_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associated_contacts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_contacts_response() :: #{
+%%   <<"ContactSummaryList">> => list(associated_contact_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associated_contacts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attached_files_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attached_files_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attached_files_configurations_response() :: #{
+%%   <<"AttachedFilesConfigurations">> => list(attached_files_configuration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attached_files_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_authentication_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_authentication_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_authentication_profiles_response() :: #{
+%%   <<"AuthenticationProfileSummaryList">> => list(authentication_profile_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_authentication_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bots_request() :: #{
+%%   <<"LexVersion">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bots_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bots_response() :: #{
+%%   <<"LexBots">> => list(lex_bot_config()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bots_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_child_hours_of_operations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_child_hours_of_operations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_child_hours_of_operations_response() :: #{
+%%   <<"ChildHoursOfOperationsSummaryList">> => list(hours_of_operations_identifier()),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_child_hours_of_operations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_condition() :: #{
+%%   <<"Conditions">> => list(condition()),
+%%   <<"TargetListType">> => list(any())
+%% }
+-type list_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_evaluations_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_evaluations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_evaluations_response() :: #{
+%%   <<"EvaluationSummaryList">> => list(evaluation_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_evaluations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flow_module_aliases_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_module_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flow_module_aliases_response() :: #{
+%%   <<"ContactFlowModuleAliasSummaryList">> => list(contact_flow_module_alias_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_module_aliases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flow_module_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_module_versions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9473,11 +6366,867 @@
 
 
 %% Example:
+%% list_contact_flow_modules_request() :: #{
+%%   <<"ContactFlowModuleState">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_modules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flow_modules_response() :: #{
+%%   <<"ContactFlowModulesSummaryList">> => list(contact_flow_module_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_modules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flow_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flow_versions_response() :: #{
+%%   <<"ContactFlowVersionSummaryList">> => list(contact_flow_version_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flows_request() :: #{
+%%   <<"ContactFlowTypes">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flows_response() :: #{
+%%   <<"ContactFlowSummaryList">> => list(contact_flow_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_references_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReferenceTypes">> := list(list(any())())
+%% }
+-type list_contact_references_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_references_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReferenceSummaryList">> => list(list())
+%% }
+-type list_contact_references_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_table_attributes_request() :: #{
+%%   <<"AttributeIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_table_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_table_attributes_response() :: #{
+%%   <<"Attributes">> => list(data_table_attribute()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_table_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_table_primary_values_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PrimaryAttributeValues">> => list(primary_attribute_value_filter()),
+%%   <<"RecordIds">> => list(string())
+%% }
+-type list_data_table_primary_values_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_table_primary_values_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PrimaryValuesList">> => list(record_primary_value())
+%% }
+-type list_data_table_primary_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_table_values_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PrimaryAttributeValues">> => list(primary_attribute_value_filter()),
+%%   <<"RecordIds">> => list(string())
+%% }
+-type list_data_table_values_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_table_values_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Values">> => list(data_table_value_summary())
+%% }
+-type list_data_table_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_tables_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_tables_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_tables_response() :: #{
+%%   <<"DataTableSummaryList">> => list(data_table_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_tables_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_default_vocabularies_request() :: #{
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_default_vocabularies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_default_vocabularies_response() :: #{
+%%   <<"DefaultVocabularyList">> => list(default_vocabulary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_default_vocabularies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_security_profiles_request() :: #{
+%%   <<"EntityArn">> := string(),
+%%   <<"EntityType">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entity_security_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_security_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecurityProfiles">> => list(security_profile_item())
+%% }
+-type list_entity_security_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluation_form_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_evaluation_form_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluation_form_versions_response() :: #{
+%%   <<"EvaluationFormVersionSummaryList">> => list(evaluation_form_version_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_evaluation_form_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluation_forms_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_evaluation_forms_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluation_forms_response() :: #{
+%%   <<"EvaluationFormSummaryList">> => list(evaluation_form_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_evaluation_forms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flow_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type list_flow_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_flow_associations_response() :: #{
+%%   <<"FlowAssociationSummaryList">> => list(flow_association_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_flow_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_hours_of_operation_overrides_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hours_of_operation_overrides_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_hours_of_operation_overrides_response() :: #{
+%%   <<"HoursOfOperationOverrideList">> => list(hours_of_operation_override()),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hours_of_operation_overrides_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_hours_of_operations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hours_of_operations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_hours_of_operations_response() :: #{
+%%   <<"HoursOfOperationSummaryList">> => list(hours_of_operation_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hours_of_operations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instance_attributes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_instance_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instance_attributes_response() :: #{
+%%   <<"Attributes">> => list(attribute()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_instance_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instance_storage_configs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> := list(any())
+%% }
+-type list_instance_storage_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instance_storage_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StorageConfigs">> => list(instance_storage_config())
+%% }
+-type list_instance_storage_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instances_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_instances_response() :: #{
+%%   <<"InstanceSummaryList">> => list(instance_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_instances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integration_associations_request() :: #{
+%%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_integration_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integration_associations_response() :: #{
+%%   <<"IntegrationAssociationSummaryList">> => list(integration_association_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_integration_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lambda_functions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_lambda_functions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lambda_functions_response() :: #{
+%%   <<"LambdaFunctions">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_lambda_functions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lex_bots_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_lex_bots_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lex_bots_response() :: #{
+%%   <<"LexBots">> => list(lex_bot()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_lex_bots_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notifications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_notifications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notifications_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotificationSummaryList">> => list(notification())
+%% }
+-type list_notifications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_numbers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumberCountryCodes">> => list(list(any())()),
+%%   <<"PhoneNumberTypes">> => list(list(any())())
+%% }
+-type list_phone_numbers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_numbers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumberSummaryList">> => list(phone_number_summary())
+%% }
+-type list_phone_numbers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_numbers_summary() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"PhoneNumberArn">> => string(),
+%%   <<"PhoneNumberCountryCode">> => list(any()),
+%%   <<"PhoneNumberDescription">> => string(),
+%%   <<"PhoneNumberId">> => string(),
+%%   <<"PhoneNumberType">> => list(any()),
+%%   <<"SourcePhoneNumberArn">> => string(),
+%%   <<"TargetArn">> => string()
+%% }
+-type list_phone_numbers_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_numbers_v2_request() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumberCountryCodes">> => list(list(any())()),
+%%   <<"PhoneNumberPrefix">> => string(),
+%%   <<"PhoneNumberTypes">> => list(list(any())()),
+%%   <<"TargetArn">> => string()
+%% }
+-type list_phone_numbers_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_phone_numbers_v2_response() :: #{
 %%   <<"ListPhoneNumbersSummaryList">> => list(list_phone_numbers_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_phone_numbers_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_predefined_attributes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_predefined_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_predefined_attributes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PredefinedAttributeSummaryList">> => list(predefined_attribute_summary())
+%% }
+-type list_predefined_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prompts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_prompts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_prompts_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PromptSummaryList">> => list(prompt_summary())
+%% }
+-type list_prompts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_email_addresses_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_queue_email_addresses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_email_addresses_response() :: #{
+%%   <<"EmailAddressMetadataList">> => list(email_address_summary()),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_queue_email_addresses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_quick_connects_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_queue_quick_connects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_quick_connects_response() :: #{
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QuickConnectSummaryList">> => list(quick_connect_summary())
+%% }
+-type list_queue_quick_connects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queues_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueueTypes">> => list(list(any())())
+%% }
+-type list_queues_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queues_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QueueSummaryList">> => list(queue_summary())
+%% }
+-type list_queues_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quick_connects_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QuickConnectTypes">> => list(list(any())())
+%% }
+-type list_quick_connects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quick_connects_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QuickConnectSummaryList">> => list(quick_connect_summary())
+%% }
+-type list_quick_connects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_realtime_contact_analysis_segments_v2_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OutputType">> := list(any()),
+%%   <<"SegmentTypes">> := list(list(any())())
+%% }
+-type list_realtime_contact_analysis_segments_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_realtime_contact_analysis_segments_v2_response() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"Segments">> => list(list()),
+%%   <<"Status">> => list(any())
+%% }
+-type list_realtime_contact_analysis_segments_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routing_profile_manual_assignment_queues_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_routing_profile_manual_assignment_queues_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routing_profile_manual_assignment_queues_response() :: #{
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RoutingProfileManualAssignmentQueueConfigSummaryList">> => list(routing_profile_manual_assignment_queue_config_summary())
+%% }
+-type list_routing_profile_manual_assignment_queues_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routing_profile_queues_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_routing_profile_queues_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routing_profile_queues_response() :: #{
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RoutingProfileQueueConfigSummaryList">> => list(routing_profile_queue_config_summary())
+%% }
+-type list_routing_profile_queues_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routing_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_routing_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routing_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RoutingProfileSummaryList">> => list(routing_profile_summary())
+%% }
+-type list_routing_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rules_request() :: #{
+%%   <<"EventSourceName">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PublishStatus">> => list(any())
+%% }
+-type list_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rules_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleSummaryList">> => list(rule_summary())
+%% }
+-type list_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_keys_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_security_keys_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_keys_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecurityKeys">> => list(security_key())
+%% }
+-type list_security_keys_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profile_applications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_security_profile_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profile_applications_response() :: #{
+%%   <<"Applications">> => list(application()),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_security_profile_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profile_flow_modules_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_security_profile_flow_modules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profile_flow_modules_response() :: #{
+%%   <<"AllowedFlowModules">> => list(flow_module()),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_security_profile_flow_modules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profile_permissions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_security_profile_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profile_permissions_response() :: #{
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Permissions">> => list(string())
+%% }
+-type list_security_profile_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_security_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecurityProfileSummaryList">> => list(security_profile_summary())
+%% }
+-type list_security_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_task_templates_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_task_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_task_templates_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TaskTemplates">> => list(task_template_metadata())
+%% }
+-type list_task_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_case_execution_records_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_test_case_execution_records_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_case_execution_records_response() :: #{
+%%   <<"ExecutionRecords">> => list(execution_record()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_test_case_execution_records_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_case_executions_request() :: #{
+%%   <<"EndTime">> => float(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => float(),
+%%   <<"Status">> => list(any()),
+%%   <<"TestCaseId">> => string(),
+%%   <<"TestCaseName">> => string()
+%% }
+-type list_test_case_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_case_executions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TestCaseExecutions">> => list(test_case_execution())
+%% }
+-type list_test_case_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_cases_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_test_cases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_cases_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TestCaseSummaryList">> => list(test_case_summary())
+%% }
+-type list_test_cases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_distribution_group_users_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_traffic_distribution_group_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_distribution_group_users_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrafficDistributionGroupUserSummaryList">> => list(traffic_distribution_group_user_summary())
+%% }
+-type list_traffic_distribution_group_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_distribution_groups_request() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_traffic_distribution_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_distribution_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrafficDistributionGroupSummaryList">> => list(traffic_distribution_group_summary())
+%% }
+-type list_traffic_distribution_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_use_cases_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_use_cases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_use_cases_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UseCaseSummaryList">> => list(use_case())
+%% }
+-type list_use_cases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_hierarchy_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_user_hierarchy_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_hierarchy_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserHierarchyGroupSummaryList">> => list(hierarchy_group_summary())
+%% }
+-type list_user_hierarchy_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_notifications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_user_notifications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_user_notifications_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserNotifications">> => list(user_notification_summary())
+%% }
+-type list_user_notifications_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9489,22 +7238,199 @@
 
 
 %% Example:
-%% update_task_template_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Constraints">> => task_template_constraints(),
-%%   <<"ContactFlowId">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Defaults">> => task_template_defaults(),
-%%   <<"Description">> => string(),
-%%   <<"Fields">> => list(task_template_field()),
-%%   <<"Id">> => string(),
-%%   <<"InstanceId">> => string(),
+%% list_user_proficiencies_response() :: #{
+%%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"SelfAssignFlowId">> => string(),
-%%   <<"Status">> => list(any())
+%%   <<"NextToken">> => string(),
+%%   <<"UserProficiencyList">> => list(user_proficiency())
 %% }
--type update_task_template_response() :: #{binary() => any()}.
+-type list_user_proficiencies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserSummaryList">> => list(user_summary())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_view_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_view_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_view_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ViewVersionSummaryList">> => list(view_version_summary())
+%% }
+-type list_view_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_views_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_views_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_views_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ViewsSummaryList">> => list(view_summary())
+%% }
+-type list_views_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workspace_media_request() :: #{}
+-type list_workspace_media_request() :: #{}.
+
+
+%% Example:
+%% list_workspace_media_response() :: #{
+%%   <<"Media">> => list(media_item())
+%% }
+-type list_workspace_media_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspace_pages_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_workspace_pages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspace_pages_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspacePageList">> => list(workspace_page())
+%% }
+-type list_workspace_pages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspaces_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_workspaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workspaces_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspaceSummaryList">> => list(workspace_summary())
+%% }
+-type list_workspaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_criteria() :: #{
+%%   <<"AgentsCriteria">> => agents_criteria()
+%% }
+-type match_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% maximum_result_returned_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type maximum_result_returned_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_concurrency() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"Concurrency">> => integer(),
+%%   <<"CrossChannelBehavior">> => cross_channel_behavior()
+%% }
+-type media_concurrency() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_item() :: #{
+%%   <<"Source">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type media_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_placement() :: #{
+%%   <<"AudioFallbackUrl">> => string(),
+%%   <<"AudioHostUrl">> => string(),
+%%   <<"EventIngestionUrl">> => string(),
+%%   <<"SignalingUrl">> => string(),
+%%   <<"TurnControlUrl">> => string()
+%% }
+-type media_placement() :: #{binary() => any()}.
+
+
+%% Example:
+%% meeting() :: #{
+%%   <<"MediaPlacement">> => media_placement(),
+%%   <<"MediaRegion">> => string(),
+%%   <<"MeetingFeatures">> => meeting_features_configuration(),
+%%   <<"MeetingId">> => string()
+%% }
+-type meeting() :: #{binary() => any()}.
+
+
+%% Example:
+%% meeting_features_configuration() :: #{
+%%   <<"Audio">> => audio_features()
+%% }
+-type meeting_features_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_data_v2() :: #{
+%%   <<"Metric">> => metric_v2(),
+%%   <<"Value">> => float()
+%% }
+-type metric_data_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_filter_v2() :: #{
+%%   <<"MetricFilterKey">> => string(),
+%%   <<"MetricFilterValues">> => list(string()),
+%%   <<"Negate">> => boolean()
+%% }
+-type metric_filter_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_interval() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Interval">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type metric_interval() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_result_v2() :: #{
+%%   <<"Collections">> => list(metric_data_v2()),
+%%   <<"Dimensions">> => map(),
+%%   <<"MetricInterval">> => metric_interval()
+%% }
+-type metric_result_v2() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9518,318 +7444,31 @@
 
 
 %% Example:
-%% threshold() :: #{
-%%   <<"Comparison">> => list(any()),
-%%   <<"ThresholdValue">> => float()
-%% }
--type threshold() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_contact_flow_version_request() :: #{
-%%   <<"ContactFlowVersion">> => float(),
-%%   <<"Description">> => string(),
-%%   <<"FlowContentSha256">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type create_contact_flow_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_outbound_voice_contact_request() :: #{
-%%   <<"AnswerMachineDetectionConfig">> => answer_machine_detection_config(),
-%%   <<"Attributes">> => map(),
-%%   <<"CampaignId">> => string(),
+%% monitor_contact_request() :: #{
+%%   <<"AllowedMonitorCapabilities">> => list(list(any())()),
 %%   <<"ClientToken">> => string(),
-%%   <<"ContactFlowId">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"DestinationPhoneNumber">> := string(),
+%%   <<"ContactId">> := string(),
 %%   <<"InstanceId">> := string(),
-%%   <<"Name">> => string(),
-%%   <<"OutboundStrategy">> => outbound_strategy(),
-%%   <<"QueueId">> => string(),
-%%   <<"References">> => map(),
-%%   <<"RelatedContactId">> => string(),
-%%   <<"RingTimeoutInSeconds">> => integer(),
-%%   <<"SourcePhoneNumber">> => string(),
-%%   <<"TrafficType">> => list(any())
+%%   <<"UserId">> := string()
 %% }
--type start_outbound_voice_contact_request() :: #{binary() => any()}.
+-type monitor_contact_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% attribute() :: #{
-%%   <<"AttributeType">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_use_case_request() :: #{
-%%   <<"Tags">> => map(),
-%%   <<"UseCaseType">> := list(any())
-%% }
--type create_use_case_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_users_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_users_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% default_vocabulary() :: #{
-%%   <<"InstanceId">> => string(),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"VocabularyId">> => string(),
-%%   <<"VocabularyName">> => string()
-%% }
--type default_vocabulary() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_task_contact_response() :: #{
+%% monitor_contact_response() :: #{
+%%   <<"ContactArn">> => string(),
 %%   <<"ContactId">> => string()
 %% }
--type start_task_contact_response() :: #{binary() => any()}.
+-type monitor_contact_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% chat_event() :: #{
-%%   <<"Content">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"Type">> => list(any())
+%% multi_select_question_rule_category_automation() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Condition">> => list(any()),
+%%   <<"OptionRefIds">> => list(string())
 %% }
--type chat_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% filters() :: #{
-%%   <<"AgentStatuses">> => list(string()),
-%%   <<"Channels">> => list(list(any())()),
-%%   <<"Queues">> => list(string()),
-%%   <<"RoutingProfiles">> => list(string()),
-%%   <<"RoutingStepExpressions">> => list(string()),
-%%   <<"Subtypes">> => list(string()),
-%%   <<"ValidationTestTypes">> => list(string())
-%% }
--type filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_agent_status_response() :: #{
-%%   <<"AgentStatusSummaryList">> => list(agent_status_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_agent_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_routing_profile_request() :: #{
-%%   <<"RoutingProfileId">> := string()
-%% }
--type update_user_routing_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_template_field_identifier() :: #{
-%%   <<"Name">> => string()
-%% }
--type task_template_field_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_queue_quick_connects_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_queue_quick_connects_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_queues_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"QueueSummaryList">> => list(queue_summary())
-%% }
--type list_queues_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_notification_status_response() :: #{}
--type update_user_notification_status_response() :: #{}.
-
-
-%% Example:
-%% list_evaluation_forms_response() :: #{
-%%   <<"EvaluationFormSummaryList">> => list(evaluation_form_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_evaluation_forms_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_table_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type data_table_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_single_select_question_properties() :: #{
-%%   <<"Automation">> => evaluation_form_single_select_question_automation(),
-%%   <<"DisplayAs">> => list(any()),
-%%   <<"Options">> => list(evaluation_form_single_select_question_option())
-%% }
--type evaluation_form_single_select_question_properties() :: #{binary() => any()}.
-
-%% Example:
-%% get_traffic_distribution_request() :: #{}
--type get_traffic_distribution_request() :: #{}.
-
-
-%% Example:
-%% complete_attached_file_upload_request() :: #{
-%%   <<"AssociatedResourceArn">> := string()
-%% }
--type complete_attached_file_upload_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% attendee() :: #{
-%%   <<"AttendeeId">> => string(),
-%%   <<"JoinToken">> => string()
-%% }
--type attendee() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_authentication_profile_response() :: #{
-%%   <<"AuthenticationProfile">> => authentication_profile()
-%% }
--type describe_authentication_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disconnect_details() :: #{
-%%   <<"PotentialDisconnectIssue">> => string()
-%% }
--type disconnect_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% palette_header() :: #{
-%%   <<"Background">> => string(),
-%%   <<"InvertActionsColors">> => boolean(),
-%%   <<"Text">> => string(),
-%%   <<"TextHover">> => string()
-%% }
--type palette_header() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_table_response() :: #{}
--type delete_data_table_response() :: #{}.
-
-
-%% Example:
-%% send_outbound_email_request() :: #{
-%%   <<"AdditionalRecipients">> => outbound_additional_recipients(),
-%%   <<"ClientToken">> => string(),
-%%   <<"DestinationEmailAddress">> := email_address_info(),
-%%   <<"EmailMessage">> := outbound_email_content(),
-%%   <<"FromEmailAddress">> := email_address_info(),
-%%   <<"SourceCampaign">> => source_campaign(),
-%%   <<"TrafficType">> := list(any())
-%% }
--type send_outbound_email_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workspace_pages_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_workspace_pages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_status_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type agent_status_summary() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_traffic_distribution_group_user_response() :: #{}
--type disassociate_traffic_distribution_group_user_response() :: #{}.
-
-
-%% Example:
-%% create_test_case_response() :: #{
-%%   <<"TestCaseArn">> => string(),
-%%   <<"TestCaseId">> => string()
-%% }
--type create_test_case_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_vocabularies_request() :: #{
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NameStartsWith">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type search_vocabularies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_search_filter() :: #{
-%%   <<"TagFilter">> => control_plane_tag_filter()
-%% }
--type prompt_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_hours_of_operation_overrides_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_hours_of_operation_overrides_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_queue_status_request() :: #{
-%%   <<"Status">> := list(any())
-%% }
--type update_queue_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% chat_metrics() :: #{
-%%   <<"AgentMetrics">> => participant_metrics(),
-%%   <<"ChatContactMetrics">> => chat_contact_metrics(),
-%%   <<"CustomerMetrics">> => participant_metrics()
-%% }
--type chat_metrics() :: #{binary() => any()}.
+-type multi_select_question_rule_category_automation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9841,19 +7480,21 @@
 
 
 %% Example:
-%% describe_vocabulary_response() :: #{
-%%   <<"Vocabulary">> => vocabulary()
+%% new_session_details() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"ParticipantDetails">> => participant_details(),
+%%   <<"StreamingConfiguration">> => chat_streaming_configuration(),
+%%   <<"SupportedMessagingContentTypes">> => list(string())
 %% }
--type describe_vocabulary_response() :: #{binary() => any()}.
+-type new_session_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_flow_request() :: #{
-%%   <<"FlowId">> := string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"ResourceType">> := list(any())
+%% next_contact_entry() :: #{
+%%   <<"NextContactMetadata">> => list(),
+%%   <<"Type">> => list(any())
 %% }
--type associate_flow_request() :: #{binary() => any()}.
+-type next_contact_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9873,6 +7514,81 @@
 
 
 %% Example:
+%% notification_recipient_type() :: #{
+%%   <<"UserIds">> => list(string()),
+%%   <<"UserTags">> => map()
+%% }
+-type notification_recipient_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_search_criteria() :: #{
+%%   <<"AndConditions">> => list(notification_search_criteria()),
+%%   <<"OrConditions">> => list(notification_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type notification_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type notification_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_search_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Content">> => map(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Priority">> => list(any()),
+%%   <<"Recipients">> => list(string()),
+%%   <<"Tags">> => map()
+%% }
+-type notification_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% number_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"FieldName">> => string(),
+%%   <<"MaxValue">> => integer(),
+%%   <<"MinValue">> => integer()
+%% }
+-type number_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% number_reference() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type number_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% numeric_question_property_value_automation() :: #{
+%%   <<"Label">> => list(any())
+%% }
+-type numeric_question_property_value_automation() :: #{binary() => any()}.
+
+
+%% Example:
+%% observation_summary() :: #{
+%%   <<"ObservationsFailed">> => integer(),
+%%   <<"ObservationsPassed">> => integer(),
+%%   <<"TotalObservations">> => integer()
+%% }
+-type observation_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% operational_hour() :: #{
 %%   <<"End">> => override_time_slice(),
 %%   <<"Start">> => override_time_slice()
@@ -9881,250 +7597,538 @@
 
 
 %% Example:
-%% next_contact_entry() :: #{
-%%   <<"NextContactMetadata">> => list(),
+%% outbound_additional_recipients() :: #{
+%%   <<"CcEmailAddresses">> => list(email_address_info())
+%% }
+-type outbound_additional_recipients() :: #{binary() => any()}.
+
+
+%% Example:
+%% outbound_caller_config() :: #{
+%%   <<"OutboundCallerIdName">> => string(),
+%%   <<"OutboundCallerIdNumberId">> => string(),
+%%   <<"OutboundFlowId">> => string()
+%% }
+-type outbound_caller_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% outbound_contact_not_permitted_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type outbound_contact_not_permitted_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% outbound_email_config() :: #{
+%%   <<"OutboundEmailAddressId">> => string()
+%% }
+-type outbound_email_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% outbound_email_content() :: #{
+%%   <<"MessageSourceType">> => list(any()),
+%%   <<"RawMessage">> => outbound_raw_message(),
+%%   <<"TemplatedMessageConfig">> => templated_message_config()
+%% }
+-type outbound_email_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% outbound_raw_message() :: #{
+%%   <<"Body">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"Subject">> => string()
+%% }
+-type outbound_raw_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% outbound_strategy() :: #{
+%%   <<"Config">> => outbound_strategy_config(),
 %%   <<"Type">> => list(any())
 %% }
--type next_contact_entry() :: #{binary() => any()}.
+-type outbound_strategy() :: #{binary() => any()}.
 
 
 %% Example:
-%% contact_details() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
+%% outbound_strategy_config() :: #{
+%%   <<"AgentFirst">> => agent_first()
 %% }
--type contact_details() :: #{binary() => any()}.
+-type outbound_strategy_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% metric_data_v2() :: #{
-%%   <<"Metric">> => metric_v2(),
-%%   <<"Value">> => float()
+%% output_type_not_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type metric_data_v2() :: #{binary() => any()}.
+-type output_type_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% email_address_search_filter() :: #{
-%%   <<"TagFilter">> => control_plane_tag_filter()
+%% override_hour() :: #{
+%%   <<"End">> => override_time_slice(),
+%%   <<"OperationalStatus">> => list(any()),
+%%   <<"OverrideName">> => string(),
+%%   <<"Start">> => override_time_slice()
 %% }
--type email_address_search_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_prompt_request() :: #{}
--type describe_prompt_request() :: #{}.
+-type override_hour() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_phone_numbers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PhoneNumberSummaryList">> => list(phone_number_summary())
+%% override_time_slice() :: #{
+%%   <<"Hours">> => integer(),
+%%   <<"Minutes">> => integer()
 %% }
--type list_phone_numbers_response() :: #{binary() => any()}.
+-type override_time_slice() :: #{binary() => any()}.
 
 
 %% Example:
-%% real_time_contact_analysis_attachment() :: #{
-%%   <<"AttachmentId">> => string(),
-%%   <<"AttachmentName">> => string(),
-%%   <<"ContentType">> => string(),
+%% palette_canvas() :: #{
+%%   <<"ActiveBackground">> => string(),
+%%   <<"ContainerBackground">> => string(),
+%%   <<"PageBackground">> => string()
+%% }
+-type palette_canvas() :: #{binary() => any()}.
+
+
+%% Example:
+%% palette_header() :: #{
+%%   <<"Background">> => string(),
+%%   <<"InvertActionsColors">> => boolean(),
+%%   <<"Text">> => string(),
+%%   <<"TextHover">> => string()
+%% }
+-type palette_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% palette_navigation() :: #{
+%%   <<"Background">> => string(),
+%%   <<"InvertActionsColors">> => boolean(),
+%%   <<"Text">> => string(),
+%%   <<"TextActive">> => string(),
+%%   <<"TextBackgroundActive">> => string(),
+%%   <<"TextBackgroundHover">> => string(),
+%%   <<"TextHover">> => string()
+%% }
+-type palette_navigation() :: #{binary() => any()}.
+
+
+%% Example:
+%% palette_primary() :: #{
+%%   <<"Active">> => string(),
+%%   <<"ContrastText">> => string(),
+%%   <<"Default">> => string()
+%% }
+-type palette_primary() :: #{binary() => any()}.
+
+
+%% Example:
+%% parent_hours_of_operation_config() :: #{
+%%   <<"HoursOfOperationId">> => string()
+%% }
+-type parent_hours_of_operation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% participant_capabilities() :: #{
+%%   <<"ScreenShare">> => list(any()),
+%%   <<"Video">> => list(any())
+%% }
+-type participant_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% participant_configuration() :: #{
+%%   <<"ResponseMode">> => list(any())
+%% }
+-type participant_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% participant_details() :: #{
+%%   <<"DisplayName">> => string()
+%% }
+-type participant_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% participant_details_to_add() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"ParticipantCapabilities">> => participant_capabilities(),
+%%   <<"ParticipantRole">> => list(any())
+%% }
+-type participant_details_to_add() :: #{binary() => any()}.
+
+
+%% Example:
+%% participant_metrics() :: #{
+%%   <<"ConversationAbandon">> => boolean(),
+%%   <<"LastMessageTimestamp">> => non_neg_integer(),
+%%   <<"MaxResponseTimeInMillis">> => float(),
+%%   <<"MessageLengthInChars">> => integer(),
+%%   <<"MessagesSent">> => integer(),
+%%   <<"NumResponses">> => integer(),
+%%   <<"ParticipantId">> => string(),
+%%   <<"ParticipantType">> => list(any()),
+%%   <<"TotalResponseTimeInMillis">> => float()
+%% }
+-type participant_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% participant_timer_configuration() :: #{
+%%   <<"ParticipantRole">> => list(any()),
+%%   <<"TimerType">> => list(any()),
+%%   <<"TimerValue">> => list()
+%% }
+-type participant_timer_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% participant_token_credentials() :: #{
+%%   <<"Expiry">> => string(),
+%%   <<"ParticipantToken">> => string()
+%% }
+-type participant_token_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% pause_contact_request() :: #{
+%%   <<"ContactFlowId">> => string(),
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type pause_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% pause_contact_response() :: #{}
+-type pause_contact_response() :: #{}.
+
+
+%% Example:
+%% persistent_chat() :: #{
+%%   <<"RehydrationType">> => list(any()),
+%%   <<"SourceContactId">> => string()
+%% }
+-type persistent_chat() :: #{binary() => any()}.
+
+
+%% Example:
+%% persistent_connection_config() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"PersistentConnection">> => boolean()
+%% }
+-type persistent_connection_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_config() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"PhoneType">> => list(any())
+%% }
+-type phone_number_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_quick_connect_config() :: #{
+%%   <<"PhoneNumber">> => string()
+%% }
+-type phone_number_quick_connect_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_status() :: #{
+%%   <<"Message">> => string(),
 %%   <<"Status">> => list(any())
 %% }
--type real_time_contact_analysis_attachment() :: #{binary() => any()}.
+-type phone_number_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% contact_search_summary_queue_info() :: #{
-%%   <<"EnqueueTimestamp">> => non_neg_integer(),
-%%   <<"Id">> => string()
+%% phone_number_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"PhoneNumberCountryCode">> => list(any()),
+%%   <<"PhoneNumberType">> => list(any())
 %% }
--type contact_search_summary_queue_info() :: #{binary() => any()}.
+-type phone_number_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_contacts_additional_time_range() :: #{
-%%   <<"Criteria">> => list(search_contacts_additional_time_range_criteria()),
-%%   <<"MatchType">> => list(any())
+%% post_accept_timeout_config() :: #{
+%%   <<"DurationInSeconds">> => integer()
 %% }
--type search_contacts_additional_time_range() :: #{binary() => any()}.
+-type post_accept_timeout_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluation_form_target_configuration() :: #{
-%%   <<"ContactInteractionType">> => list(any())
+%% predefined_attribute() :: #{
+%%   <<"AttributeConfiguration">> => predefined_attribute_configuration(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Purposes">> => list(string()),
+%%   <<"Values">> => list()
 %% }
--type evaluation_form_target_configuration() :: #{binary() => any()}.
+-type predefined_attribute() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_email_address_request() :: #{
-%%   <<"ClientToken">> => string(),
+%% predefined_attribute_configuration() :: #{
+%%   <<"EnableValueValidationOnAssociation">> => boolean(),
+%%   <<"IsReadOnly">> => boolean()
+%% }
+-type predefined_attribute_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% predefined_attribute_search_criteria() :: #{
+%%   <<"AndConditions">> => list(predefined_attribute_search_criteria()),
+%%   <<"OrConditions">> => list(predefined_attribute_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type predefined_attribute_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% predefined_attribute_summary() :: #{
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type predefined_attribute_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% preview() :: #{
+%%   <<"AllowedUserActions">> => list(list(any())()),
+%%   <<"PostAcceptTimeoutConfig">> => post_accept_timeout_config()
+%% }
+-type preview() :: #{binary() => any()}.
+
+
+%% Example:
+%% primary_attribute_access_control_configuration_item() :: #{
+%%   <<"PrimaryAttributeValues">> => list(primary_attribute_value())
+%% }
+-type primary_attribute_access_control_configuration_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% primary_attribute_value() :: #{
+%%   <<"AccessType">> => list(any()),
+%%   <<"AttributeName">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type primary_attribute_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% primary_attribute_value_filter() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type primary_attribute_value_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% primary_value() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type primary_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% primary_value_response() :: #{
+%%   <<"AttributeId">> => string(),
+%%   <<"AttributeName">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type primary_value_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% problem_detail() :: #{
+%%   <<"message">> => string()
+%% }
+-type problem_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt() :: #{
 %%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"EmailAddress">> := string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PromptARN">> => string(),
+%%   <<"PromptId">> => string(),
 %%   <<"Tags">> => map()
 %% }
--type create_email_address_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_queue_request() :: #{}
--type delete_queue_request() :: #{}.
+-type prompt() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluation() :: #{
-%%   <<"Answers">> => map(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"EvaluationArn">> => string(),
-%%   <<"EvaluationId">> => string(),
-%%   <<"EvaluationType">> => list(any()),
+%% prompt_search_criteria() :: #{
+%%   <<"AndConditions">> => list(prompt_search_criteria()),
+%%   <<"OrConditions">> => list(prompt_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type prompt_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type prompt_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% prompt_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Metadata">> => evaluation_metadata(),
-%%   <<"Notes">> => map(),
-%%   <<"Scores">> => map(),
+%%   <<"Name">> => string()
+%% }
+-type prompt_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_validation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"PropertyList">> => list(property_validation_exception_property())
+%% }
+-type property_validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_validation_exception_property() :: #{
+%%   <<"Message">> => string(),
+%%   <<"PropertyPath">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type property_validation_exception_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_user_status_request() :: #{
+%%   <<"AgentStatusId">> := string()
+%% }
+-type put_user_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_user_status_response() :: #{}
+-type put_user_status_response() :: #{}.
+
+
+%% Example:
+%% quality_metrics() :: #{
+%%   <<"Agent">> => agent_quality_metrics(),
+%%   <<"Customer">> => customer_quality_metrics()
+%% }
+-type quality_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% question_option_points_configuration() :: #{
+%%   <<"IsBonus">> => boolean(),
+%%   <<"PointValue">> => integer()
+%% }
+-type question_option_points_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% question_points_configuration() :: #{
+%%   <<"IsBonus">> => boolean(),
+%%   <<"MaxPointValue">> => integer(),
+%%   <<"MinPointValue">> => integer()
+%% }
+-type question_points_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% queue() :: #{
+%%   <<"Description">> => string(),
+%%   <<"HoursOfOperationId">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaxContacts">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"OutboundCallerConfig">> => outbound_caller_config(),
+%%   <<"OutboundEmailConfig">> => outbound_email_config(),
+%%   <<"QueueArn">> => string(),
+%%   <<"QueueId">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
--type evaluation() :: #{binary() => any()}.
+-type queue() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_vocabulary_response() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"VocabularyArn">> => string(),
-%%   <<"VocabularyId">> => string()
+%% queue_info() :: #{
+%%   <<"EnqueueTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string()
 %% }
--type delete_vocabulary_response() :: #{binary() => any()}.
+-type queue_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_phone_number_metadata_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"PhoneNumberDescription">> => string()
+%% queue_info_input() :: #{
+%%   <<"Id">> => string()
 %% }
--type update_phone_number_metadata_request() :: #{binary() => any()}.
+-type queue_info_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% sign_in_distribution() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Region">> => string()
+%% queue_quick_connect_config() :: #{
+%%   <<"ContactFlowId">> => string(),
+%%   <<"QueueId">> => string()
 %% }
--type sign_in_distribution() :: #{binary() => any()}.
-
-%% Example:
-%% start_screen_sharing_response() :: #{}
--type start_screen_sharing_response() :: #{}.
+-type queue_quick_connect_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% media_concurrency() :: #{
-%%   <<"Channel">> => list(any()),
-%%   <<"Concurrency">> => integer(),
-%%   <<"CrossChannelBehavior">> => cross_channel_behavior()
+%% queue_reference() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
 %% }
--type media_concurrency() :: #{binary() => any()}.
+-type queue_reference() :: #{binary() => any()}.
 
 
 %% Example:
-%% control_plane_tag_filter() :: #{
-%%   <<"AndConditions">> => list(tag_condition()),
-%%   <<"OrConditions">> => list(list(tag_condition())()),
-%%   <<"TagCondition">> => tag_condition()
+%% queue_search_criteria() :: #{
+%%   <<"AndConditions">> => list(queue_search_criteria()),
+%%   <<"OrConditions">> => list(queue_search_criteria()),
+%%   <<"QueueTypeCondition">> => list(any()),
+%%   <<"StringCondition">> => string_condition()
 %% }
--type control_plane_tag_filter() :: #{binary() => any()}.
+-type queue_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% ai_agent_info() :: #{
-%%   <<"AiAgentEscalated">> => boolean(),
-%%   <<"AiAgentVersionId">> => string(),
-%%   <<"AiUseCase">> => list(any())
+%% queue_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
--type ai_agent_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_flow_module_version_request() :: #{}
--type delete_contact_flow_module_version_request() :: #{}.
+-type queue_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% summary_configuration() :: #{
-%%   <<"SummaryModes">> => list(list(any())())
-%% }
--type summary_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_metadata() :: #{
-%%   <<"Acknowledgement">> => evaluation_acknowledgement(),
-%%   <<"AutoEvaluation">> => auto_evaluation_details(),
-%%   <<"CalibrationSessionId">> => string(),
-%%   <<"ContactAgentId">> => string(),
-%%   <<"ContactId">> => string(),
-%%   <<"ContactParticipant">> => evaluation_contact_participant(),
-%%   <<"EvaluatorArn">> => string(),
-%%   <<"Review">> => evaluation_review_metadata(),
-%%   <<"SamplingJobId">> => string(),
-%%   <<"Score">> => evaluation_score()
-%% }
--type evaluation_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_routing_profile_manual_assignment_queues_response() :: #{
+%% queue_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RoutingProfileManualAssignmentQueueConfigSummaryList">> => list(routing_profile_manual_assignment_queue_config_summary())
+%%   <<"Name">> => string(),
+%%   <<"QueueType">> => list(any())
 %% }
--type list_routing_profile_manual_assignment_queues_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_workspace_associations_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkspaceAssociations">> => list(workspace_association_search_summary())
-%% }
--type search_workspace_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% templated_message_config() :: #{
-%%   <<"KnowledgeBaseId">> => string(),
-%%   <<"MessageTemplateId">> => string(),
-%%   <<"TemplateAttributes">> => template_attributes()
-%% }
--type templated_message_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_scoring_strategy() :: #{
-%%   <<"Mode">> => list(any()),
-%%   <<"ScoreThresholds">> => list(evaluation_form_score_threshold()),
-%%   <<"Status">> => list(any())
-%% }
--type evaluation_form_scoring_strategy() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_data_table_value_success_result() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"LockVersion">> => data_table_lock_version(),
-%%   <<"PrimaryValues">> => list(primary_value()),
-%%   <<"RecordId">> => string()
-%% }
--type batch_create_data_table_value_success_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_agent_statuses_response() :: #{
-%%   <<"AgentStatuses">> => list(agent_status()),
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string()
-%% }
--type search_agent_statuses_response() :: #{binary() => any()}.
+-type queue_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10142,272 +8146,401 @@
 
 
 %% Example:
-%% search_contact_flows_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"ContactFlows">> => list(contact_flow()),
-%%   <<"NextToken">> => string()
+%% quick_connect_config() :: #{
+%%   <<"FlowConfig">> => flow_quick_connect_config(),
+%%   <<"PhoneConfig">> => phone_number_quick_connect_config(),
+%%   <<"QueueConfig">> => queue_quick_connect_config(),
+%%   <<"QuickConnectType">> => list(any()),
+%%   <<"UserConfig">> => user_quick_connect_config()
 %% }
--type search_contact_flows_response() :: #{binary() => any()}.
+-type quick_connect_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% associated_contact_summary() :: #{
-%%   <<"Channel">> => list(any()),
-%%   <<"ContactArn">> => string(),
+%% quick_connect_contact_data() :: #{
 %%   <<"ContactId">> => string(),
-%%   <<"DisconnectTimestamp">> => non_neg_integer(),
-%%   <<"InitialContactId">> => string(),
-%%   <<"InitiationMethod">> => list(any()),
 %%   <<"InitiationTimestamp">> => non_neg_integer(),
-%%   <<"PreviousContactId">> => string(),
-%%   <<"RelatedContactId">> => string()
+%%   <<"QuickConnectId">> => string(),
+%%   <<"QuickConnectName">> => string(),
+%%   <<"QuickConnectType">> => list(any())
 %% }
--type associated_contact_summary() :: #{binary() => any()}.
-
-%% Example:
-%% pause_contact_response() :: #{}
--type pause_contact_response() :: #{}.
+-type quick_connect_contact_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_security_key_response() :: #{
-%%   <<"AssociationId">> => string()
+%% quick_connect_search_criteria() :: #{
+%%   <<"AndConditions">> => list(quick_connect_search_criteria()),
+%%   <<"OrConditions">> => list(quick_connect_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
 %% }
--type associate_security_key_response() :: #{binary() => any()}.
+-type quick_connect_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_describe_data_table_value_failure_result() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"PrimaryValues">> => list(primary_value())
-%% }
--type batch_describe_data_table_value_failure_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% rules_configuration() :: #{
-%%   <<"Behavior">> => list(any())
-%% }
--type rules_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workspace_page_request() :: #{
-%%   <<"InputData">> => string(),
-%%   <<"NewPage">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"Slug">> => string()
-%% }
--type update_workspace_page_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% hours_of_operation_config() :: #{
-%%   <<"Day">> => list(any()),
-%%   <<"EndTime">> => hours_of_operation_time_slice(),
-%%   <<"StartTime">> => hours_of_operation_time_slice()
-%% }
--type hours_of_operation_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% outbound_strategy_config() :: #{
-%%   <<"AgentFirst">> => agent_first()
-%% }
--type outbound_strategy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_attached_file_upload_request() :: #{
-%%   <<"AssociatedResourceArn">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"CreatedBy">> => list(),
-%%   <<"FileName">> := string(),
-%%   <<"FileSizeInBytes">> := float(),
-%%   <<"FileUseCaseType">> := list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UrlExpiryInSeconds">> => integer()
-%% }
--type start_attached_file_upload_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% activate_evaluation_form_response() :: #{
-%%   <<"EvaluationFormArn">> => string(),
-%%   <<"EvaluationFormId">> => string(),
-%%   <<"EvaluationFormVersion">> => integer()
-%% }
--type activate_evaluation_form_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_approved_origins_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_approved_origins_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% case_sla_configuration() :: #{
-%%   <<"FieldId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"TargetFieldValues">> => list(field_value_union()),
-%%   <<"TargetSlaMinutes">> => float(),
-%%   <<"Type">> => list(any())
-%% }
--type case_sla_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% historical_metric() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Statistic">> => list(any()),
-%%   <<"Threshold">> => threshold(),
-%%   <<"Unit">> => list(any())
-%% }
--type historical_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% failed_request() :: #{
-%%   <<"FailureReasonCode">> => list(any()),
-%%   <<"FailureReasonMessage">> => string(),
-%%   <<"RequestIdentifier">> => string()
-%% }
--type failed_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_associate_analytics_data_set_request() :: #{
-%%   <<"DataSetIds">> := list(string()),
-%%   <<"TargetAccountId">> => string()
-%% }
--type batch_associate_analytics_data_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_acknowledgement_summary() :: #{
-%%   <<"AcknowledgedBy">> => string(),
-%%   <<"AcknowledgedTime">> => non_neg_integer(),
-%%   <<"AcknowledgerComment">> => string()
-%% }
--type evaluation_acknowledgement_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% step() :: #{
-%%   <<"Expiry">> => expiry(),
-%%   <<"Expression">> => expression(),
-%%   <<"Status">> => list(any())
-%% }
--type step() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_flow_module_alias_summary() :: #{
-%%   <<"AliasDescription">> => string(),
-%%   <<"AliasId">> => string(),
-%%   <<"AliasName">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Version">> => float()
-%% }
--type contact_flow_module_alias_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_queue_quick_connects_request() :: #{
-%%   <<"QuickConnectIds">> := list(string())
-%% }
--type associate_queue_quick_connects_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ai_agent_search_criteria() :: #{
-%%   <<"AiAgentEscalated">> => boolean(),
-%%   <<"AiUseCase">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"VersionNumber">> => integer()
-%% }
--type ai_agent_search_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notification_request() :: #{}
--type delete_notification_request() :: #{}.
-
-
-%% Example:
-%% tag_search_condition() :: #{
-%%   <<"tagKey">> => string(),
-%%   <<"tagKeyComparisonType">> => list(any()),
-%%   <<"tagValue">> => string(),
-%%   <<"tagValueComparisonType">> => list(any())
-%% }
--type tag_search_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_template_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type task_template_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_email_address_alias_response() :: #{}
--type disassociate_email_address_alias_response() :: #{}.
-
-%% Example:
-%% create_workspace_page_response() :: #{}
--type create_workspace_page_response() :: #{}.
-
-
-%% Example:
-%% attachment_reference() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type attachment_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_case_search_filter() :: #{
+%% quick_connect_search_filter() :: #{
 %%   <<"TagFilter">> => control_plane_tag_filter()
 %% }
--type test_case_search_filter() :: #{binary() => any()}.
+-type quick_connect_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% url_reference() :: #{
+%% quick_connect_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"Value">> => string()
+%%   <<"QuickConnectType">> => list(any())
 %% }
--type url_reference() :: #{binary() => any()}.
+-type quick_connect_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% string_reference() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
+%% range() :: #{
+%%   <<"MaxProficiencyLevel">> => float(),
+%%   <<"MinProficiencyLevel">> => float()
 %% }
--type string_reference() :: #{binary() => any()}.
+-type range() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_predefined_attributes_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PredefinedAttributeSummaryList">> => list(predefined_attribute_summary())
+%% read_only_field_info() :: #{
+%%   <<"Id">> => task_template_field_identifier()
 %% }
--type list_predefined_attributes_response() :: #{binary() => any()}.
+-type read_only_field_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_attachment() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"AttachmentName">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type real_time_contact_analysis_attachment() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_category_details() :: #{
+%%   <<"PointsOfInterest">> => list(real_time_contact_analysis_point_of_interest())
+%% }
+-type real_time_contact_analysis_category_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_character_interval() :: #{
+%%   <<"BeginOffsetChar">> => integer(),
+%%   <<"EndOffsetChar">> => integer()
+%% }
+-type real_time_contact_analysis_character_interval() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_issue_detected() :: #{
+%%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_content())
+%% }
+-type real_time_contact_analysis_issue_detected() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_point_of_interest() :: #{
+%%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_character_offsets())
+%% }
+-type real_time_contact_analysis_point_of_interest() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_segment_attachments() :: #{
+%%   <<"Attachments">> => list(real_time_contact_analysis_attachment()),
+%%   <<"DisplayName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ParticipantId">> => string(),
+%%   <<"ParticipantRole">> => list(any()),
+%%   <<"Time">> => list()
+%% }
+-type real_time_contact_analysis_segment_attachments() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_segment_categories() :: #{
+%%   <<"MatchedDetails">> => map()
+%% }
+-type real_time_contact_analysis_segment_categories() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_segment_event() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"EventType">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ParticipantId">> => string(),
+%%   <<"ParticipantRole">> => list(any()),
+%%   <<"Time">> => list()
+%% }
+-type real_time_contact_analysis_segment_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_segment_issues() :: #{
+%%   <<"IssuesDetected">> => list(real_time_contact_analysis_issue_detected())
+%% }
+-type real_time_contact_analysis_segment_issues() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_segment_post_contact_summary() :: #{
+%%   <<"Content">> => string(),
+%%   <<"FailureCode">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type real_time_contact_analysis_segment_post_contact_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_segment_transcript() :: #{
+%%   <<"Content">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ParticipantId">> => string(),
+%%   <<"ParticipantRole">> => list(any()),
+%%   <<"Redaction">> => real_time_contact_analysis_transcript_item_redaction(),
+%%   <<"Sentiment">> => list(any()),
+%%   <<"Time">> => list()
+%% }
+-type real_time_contact_analysis_segment_transcript() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_transcript_item_redaction() :: #{
+%%   <<"CharacterOffsets">> => list(real_time_contact_analysis_character_interval())
+%% }
+-type real_time_contact_analysis_transcript_item_redaction() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_transcript_item_with_character_offsets() :: #{
+%%   <<"CharacterOffsets">> => real_time_contact_analysis_character_interval(),
+%%   <<"Id">> => string()
+%% }
+-type real_time_contact_analysis_transcript_item_with_character_offsets() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_transcript_item_with_content() :: #{
+%%   <<"CharacterOffsets">> => real_time_contact_analysis_character_interval(),
+%%   <<"Content">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type real_time_contact_analysis_transcript_item_with_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommender_config() :: #{
+%%   <<"Context">> => map(),
+%%   <<"DomainName">> => string(),
+%%   <<"RecommenderName">> => string()
+%% }
+-type recommender_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% record_primary_value() :: #{
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PrimaryValues">> => list(primary_value_response()),
+%%   <<"RecordId">> => string()
+%% }
+-type record_primary_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% recording_info() :: #{
+%%   <<"DeletionReason">> => string(),
+%%   <<"FragmentStartNumber">> => string(),
+%%   <<"FragmentStopNumber">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"MediaStreamType">> => list(any()),
+%%   <<"ParticipantType">> => list(any()),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StopTimestamp">> => non_neg_integer(),
+%%   <<"StorageType">> => list(any()),
+%%   <<"UnprocessedTranscriptLocation">> => string()
+%% }
+-type recording_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% recurrence_config() :: #{
+%%   <<"RecurrencePattern">> => recurrence_pattern()
+%% }
+-type recurrence_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% recurrence_pattern() :: #{
+%%   <<"ByMonth">> => list(integer()),
+%%   <<"ByMonthDay">> => list(integer()),
+%%   <<"ByWeekdayOccurrence">> => list(integer()),
+%%   <<"Frequency">> => list(any()),
+%%   <<"Interval">> => integer()
+%% }
+-type recurrence_pattern() :: #{binary() => any()}.
+
+
+%% Example:
+%% redaction_configuration() :: #{
+%%   <<"Behavior">> => list(any()),
+%%   <<"Entities">> => list(string()),
+%%   <<"MaskMode">> => list(any()),
+%%   <<"Policy">> => list(any())
+%% }
+-type redaction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% release_phone_number_request() :: #{
+%%   <<"ClientToken">> => string()
+%% }
+-type release_phone_number_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replicate_instance_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ReplicaAlias">> := string(),
+%%   <<"ReplicaRegion">> := string()
+%% }
+-type replicate_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replicate_instance_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type replicate_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_configuration() :: #{
+%%   <<"GlobalSignInEndpoint">> => string(),
+%%   <<"ReplicationStatusSummaryList">> => list(replication_status_summary()),
+%%   <<"SourceRegion">> => string()
+%% }
+-type replication_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_status_summary() :: #{
+%%   <<"Region">> => string(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"ReplicationStatusReason">> => string()
+%% }
+-type replication_status_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% required_field_info() :: #{
+%%   <<"Id">> => task_template_field_identifier()
+%% }
+-type required_field_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_ready_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_tags_search_criteria() :: #{
+%%   <<"TagSearchCondition">> => tag_search_condition()
+%% }
+-type resource_tags_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% resume_contact_recording_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"ContactRecordingType">> => list(any()),
+%%   <<"InitialContactId">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type resume_contact_recording_request() :: #{binary() => any()}.
+
+%% Example:
+%% resume_contact_recording_response() :: #{}
+-type resume_contact_recording_response() :: #{}.
+
+
+%% Example:
+%% resume_contact_request() :: #{
+%%   <<"ContactFlowId">> => string(),
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type resume_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% resume_contact_response() :: #{}
+-type resume_contact_response() :: #{}.
+
+
+%% Example:
+%% routing_criteria() :: #{
+%%   <<"ActivationTimestamp">> => non_neg_integer(),
+%%   <<"Index">> => integer(),
+%%   <<"Steps">> => list(step())
+%% }
+-type routing_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_criteria_input() :: #{
+%%   <<"Steps">> => list(routing_criteria_input_step())
+%% }
+-type routing_criteria_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_criteria_input_step() :: #{
+%%   <<"Expiry">> => routing_criteria_input_step_expiry(),
+%%   <<"Expression">> => expression()
+%% }
+-type routing_criteria_input_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_criteria_input_step_expiry() :: #{
+%%   <<"DurationInSeconds">> => integer()
+%% }
+-type routing_criteria_input_step_expiry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10434,21 +8567,166 @@
 
 
 %% Example:
-%% recurrence_pattern() :: #{
-%%   <<"ByMonth">> => list(integer()),
-%%   <<"ByMonthDay">> => list(integer()),
-%%   <<"ByWeekdayOccurrence">> => list(integer()),
-%%   <<"Frequency">> => list(any()),
-%%   <<"Interval">> => integer()
+%% routing_profile_manual_assignment_queue_config() :: #{
+%%   <<"QueueReference">> => routing_profile_queue_reference()
 %% }
--type recurrence_pattern() :: #{binary() => any()}.
+-type routing_profile_manual_assignment_queue_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_routing_profile_response() :: #{
-%%   <<"RoutingProfile">> => routing_profile()
+%% routing_profile_manual_assignment_queue_config_summary() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"QueueArn">> => string(),
+%%   <<"QueueId">> => string(),
+%%   <<"QueueName">> => string()
 %% }
--type describe_routing_profile_response() :: #{binary() => any()}.
+-type routing_profile_manual_assignment_queue_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_profile_queue_config() :: #{
+%%   <<"Delay">> => integer(),
+%%   <<"Priority">> => integer(),
+%%   <<"QueueReference">> => routing_profile_queue_reference()
+%% }
+-type routing_profile_queue_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_profile_queue_config_summary() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"Delay">> => integer(),
+%%   <<"Priority">> => integer(),
+%%   <<"QueueArn">> => string(),
+%%   <<"QueueId">> => string(),
+%%   <<"QueueName">> => string()
+%% }
+-type routing_profile_queue_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_profile_queue_reference() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"QueueId">> => string()
+%% }
+-type routing_profile_queue_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_profile_reference() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type routing_profile_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_profile_search_criteria() :: #{
+%%   <<"AndConditions">> => list(routing_profile_search_criteria()),
+%%   <<"OrConditions">> => list(routing_profile_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type routing_profile_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_profile_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type routing_profile_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_profile_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type routing_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule() :: #{
+%%   <<"Actions">> => list(rule_action()),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Function">> => string(),
+%%   <<"LastUpdatedBy">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublishStatus">> => list(any()),
+%%   <<"RuleArn">> => string(),
+%%   <<"RuleCapabilityTiers">> => list(list(any())()),
+%%   <<"RuleId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TriggerEventSource">> => rule_trigger_event_source()
+%% }
+-type rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_action() :: #{
+%%   <<"ActionType">> => list(any()),
+%%   <<"AssignContactCategoryAction">> => assign_contact_category_action_definition(),
+%%   <<"AssignSlaAction">> => assign_sla_action_definition(),
+%%   <<"CreateCaseAction">> => create_case_action_definition(),
+%%   <<"EndAssociatedTasksAction">> => end_associated_tasks_action_definition(),
+%%   <<"EventBridgeAction">> => event_bridge_action_definition(),
+%%   <<"SendNotificationAction">> => send_notification_action_definition(),
+%%   <<"SubmitAutoEvaluationAction">> => submit_auto_evaluation_action_definition(),
+%%   <<"TaskAction">> => task_action_definition(),
+%%   <<"UpdateCaseAction">> => update_case_action_definition()
+%% }
+-type rule_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_attribute_and_condition() :: #{
+%%   <<"TagConditions">> => list(tag_condition())
+%% }
+-type rule_attribute_and_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_attribute_filter() :: #{
+%%   <<"AndCondition">> => rule_attribute_and_condition(),
+%%   <<"OrConditions">> => list(rule_attribute_and_condition()),
+%%   <<"TagCondition">> => tag_condition()
+%% }
+-type rule_attribute_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_search_summary() :: #{
+%%   <<"ActionSummaries">> => list(action_summary()),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedBy">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublishStatus">> => list(any()),
+%%   <<"RuleArn">> => string(),
+%%   <<"RuleCapabilityTiers">> => list(list(any())()),
+%%   <<"RuleId">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TriggerEventSource">> => rule_trigger_event_source()
+%% }
+-type rule_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_summary() :: #{
+%%   <<"ActionSummaries">> => list(action_summary()),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EventSourceName">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublishStatus">> => list(any()),
+%%   <<"RuleArn">> => string(),
+%%   <<"RuleCapabilityTiers">> => list(list(any())()),
+%%   <<"RuleId">> => string()
+%% }
+-type rule_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10460,34 +8738,912 @@
 
 
 %% Example:
-%% create_routing_profile_request() :: #{
-%%   <<"AgentAvailabilityTimer">> => list(any()),
-%%   <<"DefaultOutboundQueueId">> := string(),
-%%   <<"Description">> := string(),
-%%   <<"ManualAssignmentQueueConfigs">> => list(routing_profile_manual_assignment_queue_config()),
-%%   <<"MediaConcurrencies">> := list(media_concurrency()),
-%%   <<"Name">> := string(),
-%%   <<"QueueConfigs">> => list(routing_profile_queue_config()),
+%% rules_configuration() :: #{
+%%   <<"Behavior">> => list(any())
+%% }
+-type rules_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rules_search_criteria() :: #{
+%%   <<"AndConditions">> => list(rules_search_criteria()),
+%%   <<"OrConditions">> => list(rules_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type rules_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% rules_search_filter() :: #{
+%%   <<"AttributeFilter">> => rule_attribute_filter()
+%% }
+-type rules_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_config() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"BucketPrefix">> => string(),
+%%   <<"EncryptionConfig">> => encryption_config()
+%% }
+-type s3_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_agent_statuses_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => agent_status_search_criteria(),
+%%   <<"SearchFilter">> => agent_status_search_filter()
+%% }
+-type search_agent_statuses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_agent_statuses_response() :: #{
+%%   <<"AgentStatuses">> => list(agent_status()),
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_agent_statuses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_available_phone_numbers_request() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumberCountryCode">> := list(any()),
+%%   <<"PhoneNumberPrefix">> => string(),
+%%   <<"PhoneNumberType">> := list(any()),
+%%   <<"TargetArn">> => string()
+%% }
+-type search_available_phone_numbers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_available_phone_numbers_response() :: #{
+%%   <<"AvailableNumbersList">> => list(available_number_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_available_phone_numbers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contact_evaluations_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => evaluation_search_criteria(),
+%%   <<"SearchFilter">> => evaluation_search_filter()
+%% }
+-type search_contact_evaluations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contact_evaluations_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"EvaluationSearchSummaryList">> => list(evaluation_search_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_contact_evaluations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contact_flow_modules_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => contact_flow_module_search_criteria(),
+%%   <<"SearchFilter">> => contact_flow_module_search_filter()
+%% }
+-type search_contact_flow_modules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contact_flow_modules_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"ContactFlowModules">> => list(contact_flow_module()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_contact_flow_modules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contact_flows_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => contact_flow_search_criteria(),
+%%   <<"SearchFilter">> => contact_flow_search_filter()
+%% }
+-type search_contact_flows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contact_flows_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"ContactFlows">> => list(contact_flow()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_contact_flows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contacts_additional_time_range() :: #{
+%%   <<"Criteria">> => list(search_contacts_additional_time_range_criteria()),
+%%   <<"MatchType">> => list(any())
+%% }
+-type search_contacts_additional_time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contacts_additional_time_range_criteria() :: #{
+%%   <<"TimeRange">> => search_contacts_time_range(),
+%%   <<"TimestampCondition">> => search_contacts_timestamp_condition()
+%% }
+-type search_contacts_additional_time_range_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contacts_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => search_criteria(),
+%%   <<"Sort">> => sort(),
+%%   <<"TimeRange">> := search_contacts_time_range()
+%% }
+-type search_contacts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contacts_response() :: #{
+%%   <<"Contacts">> => list(contact_search_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"TotalCount">> => float()
+%% }
+-type search_contacts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contacts_time_range() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type search_contacts_time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contacts_timestamp_condition() :: #{
+%%   <<"ConditionType">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type search_contacts_timestamp_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_criteria() :: #{
+%%   <<"ActiveRegions">> => list(string()),
+%%   <<"AdditionalTimeRange">> => search_contacts_additional_time_range(),
+%%   <<"AgentHierarchyGroups">> => agent_hierarchy_groups(),
+%%   <<"AgentIds">> => list(string()),
+%%   <<"AiAgents">> => ai_agents_criteria(),
+%%   <<"Channels">> => list(list(any())()),
+%%   <<"ContactAnalysis">> => contact_analysis(),
+%%   <<"ContactTags">> => control_plane_tag_filter(),
+%%   <<"InitiationMethods">> => list(list(any())()),
+%%   <<"Name">> => name_criteria(),
+%%   <<"QueueIds">> => list(string()),
+%%   <<"RoutingCriteria">> => searchable_routing_criteria(),
+%%   <<"SearchableContactAttributes">> => searchable_contact_attributes(),
+%%   <<"SearchableSegmentAttributes">> => searchable_segment_attributes()
+%% }
+-type search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_data_tables_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => data_table_search_criteria(),
+%%   <<"SearchFilter">> => data_table_search_filter()
+%% }
+-type search_data_tables_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_data_tables_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"DataTables">> => list(data_table()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_data_tables_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_email_addresses_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => email_address_search_criteria(),
+%%   <<"SearchFilter">> => email_address_search_filter()
+%% }
+-type search_email_addresses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_email_addresses_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"EmailAddresses">> => list(email_address_metadata()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_email_addresses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_evaluation_forms_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => evaluation_form_search_criteria(),
+%%   <<"SearchFilter">> => evaluation_form_search_filter()
+%% }
+-type search_evaluation_forms_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_evaluation_forms_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"EvaluationFormSearchSummaryList">> => list(evaluation_form_search_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_evaluation_forms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_hours_of_operation_overrides_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => hours_of_operation_override_search_criteria(),
+%%   <<"SearchFilter">> => hours_of_operation_search_filter()
+%% }
+-type search_hours_of_operation_overrides_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_hours_of_operation_overrides_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"HoursOfOperationOverrides">> => list(hours_of_operation_override()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_hours_of_operation_overrides_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_hours_of_operations_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => hours_of_operation_search_criteria(),
+%%   <<"SearchFilter">> => hours_of_operation_search_filter()
+%% }
+-type search_hours_of_operations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_hours_of_operations_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"HoursOfOperations">> => list(hours_of_operation()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_hours_of_operations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_notifications_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => notification_search_criteria(),
+%%   <<"SearchFilter">> => notification_search_filter()
+%% }
+-type search_notifications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_notifications_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"Notifications">> => list(notification_search_summary())
+%% }
+-type search_notifications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_predefined_attributes_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => predefined_attribute_search_criteria()
+%% }
+-type search_predefined_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_predefined_attributes_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"PredefinedAttributes">> => list(predefined_attribute())
+%% }
+-type search_predefined_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_prompts_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => prompt_search_criteria(),
+%%   <<"SearchFilter">> => prompt_search_filter()
+%% }
+-type search_prompts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_prompts_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"Prompts">> => list(prompt())
+%% }
+-type search_prompts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_queues_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => queue_search_criteria(),
+%%   <<"SearchFilter">> => queue_search_filter()
+%% }
+-type search_queues_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_queues_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"Queues">> => list(queue())
+%% }
+-type search_queues_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_quick_connects_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => quick_connect_search_criteria(),
+%%   <<"SearchFilter">> => quick_connect_search_filter()
+%% }
+-type search_quick_connects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_quick_connects_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"QuickConnects">> => list(quick_connect())
+%% }
+-type search_quick_connects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resource_tags_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"SearchCriteria">> => resource_tags_search_criteria()
+%% }
+-type search_resource_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resource_tags_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag_set())
+%% }
+-type search_resource_tags_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_routing_profiles_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => routing_profile_search_criteria(),
+%%   <<"SearchFilter">> => routing_profile_search_filter()
+%% }
+-type search_routing_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_routing_profiles_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"RoutingProfiles">> => list(routing_profile())
+%% }
+-type search_routing_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_rules_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => rules_search_criteria(),
+%%   <<"SearchFilter">> => rules_search_filter()
+%% }
+-type search_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_rules_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"Rules">> => list(rule_search_summary())
+%% }
+-type search_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_security_profiles_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => security_profile_search_criteria(),
+%%   <<"SearchFilter">> => security_profiles_search_filter()
+%% }
+-type search_security_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_security_profiles_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"SecurityProfiles">> => list(security_profile_search_summary())
+%% }
+-type search_security_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_test_cases_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => test_case_search_criteria(),
+%%   <<"SearchFilter">> => test_case_search_filter()
+%% }
+-type search_test_cases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_test_cases_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"TestCases">> => list(test_case())
+%% }
+-type search_test_cases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_user_hierarchy_groups_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => user_hierarchy_group_search_criteria(),
+%%   <<"SearchFilter">> => user_hierarchy_group_search_filter()
+%% }
+-type search_user_hierarchy_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_user_hierarchy_groups_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserHierarchyGroups">> => list(hierarchy_group())
+%% }
+-type search_user_hierarchy_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_users_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => user_search_criteria(),
+%%   <<"SearchFilter">> => user_search_filter()
+%% }
+-type search_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_users_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"Users">> => list(user_search_summary())
+%% }
+-type search_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_views_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => view_search_criteria(),
+%%   <<"SearchFilter">> => view_search_filter()
+%% }
+-type search_views_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_views_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"Views">> => list(view())
+%% }
+-type search_views_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_vocabularies_request() :: #{
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameStartsWith">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type search_vocabularies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_vocabularies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VocabularySummaryList">> => list(vocabulary_summary())
+%% }
+-type search_vocabularies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_workspace_associations_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => workspace_association_search_criteria(),
+%%   <<"SearchFilter">> => workspace_association_search_filter()
+%% }
+-type search_workspace_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_workspace_associations_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspaceAssociations">> => list(workspace_association_search_summary())
+%% }
+-type search_workspace_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_workspaces_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => workspace_search_criteria(),
+%%   <<"SearchFilter">> => workspace_search_filter()
+%% }
+-type search_workspaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_workspaces_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"NextToken">> => string(),
+%%   <<"Workspaces">> => list(workspace_search_summary())
+%% }
+-type search_workspaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% searchable_agent_criteria_step() :: #{
+%%   <<"AgentIds">> => list(string()),
+%%   <<"MatchType">> => list(any())
+%% }
+-type searchable_agent_criteria_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% searchable_contact_attributes() :: #{
+%%   <<"Criteria">> => list(searchable_contact_attributes_criteria()),
+%%   <<"MatchType">> => list(any())
+%% }
+-type searchable_contact_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% searchable_contact_attributes_criteria() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type searchable_contact_attributes_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% searchable_routing_criteria() :: #{
+%%   <<"Steps">> => list(searchable_routing_criteria_step())
+%% }
+-type searchable_routing_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% searchable_routing_criteria_step() :: #{
+%%   <<"AgentCriteria">> => searchable_agent_criteria_step()
+%% }
+-type searchable_routing_criteria_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% searchable_segment_attributes() :: #{
+%%   <<"Criteria">> => list(searchable_segment_attributes_criteria()),
+%%   <<"MatchType">> => list(any())
+%% }
+-type searchable_segment_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% searchable_segment_attributes_criteria() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type searchable_segment_attributes_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_key() :: #{
+%%   <<"AssociationId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Key">> => string()
+%% }
+-type security_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_profile() :: #{
+%%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
+%%   <<"AllowedAccessControlTags">> => map(),
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"GranularAccessControlConfiguration">> => granular_access_control_configuration(),
+%%   <<"HierarchyRestrictedResources">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OrganizationResourceId">> => string(),
+%%   <<"SecurityProfileName">> => string(),
+%%   <<"TagRestrictedResources">> => list(string()),
 %%   <<"Tags">> => map()
 %% }
--type create_routing_profile_request() :: #{binary() => any()}.
+-type security_profile() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_workspace_response() :: #{
-%%   <<"FailedList">> => list(failed_batch_association_summary()),
-%%   <<"SuccessfulList">> => list(successful_batch_association_summary())
+%% security_profile_item() :: #{
+%%   <<"Id">> => string()
 %% }
--type associate_workspace_response() :: #{binary() => any()}.
+-type security_profile_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluation_form_item_enablement_configuration() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Condition">> => evaluation_form_item_enablement_condition(),
-%%   <<"DefaultAction">> => list(any())
+%% security_profile_search_criteria() :: #{
+%%   <<"AndConditions">> => list(security_profile_search_criteria()),
+%%   <<"OrConditions">> => list(security_profile_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
 %% }
--type evaluation_form_item_enablement_configuration() :: #{binary() => any()}.
+-type security_profile_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_profile_search_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"OrganizationResourceId">> => string(),
+%%   <<"SecurityProfileName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type security_profile_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_profile_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type security_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_profiles_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type security_profiles_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_attribute_value() :: #{
+%%   <<"ValueArn">> => string(),
+%%   <<"ValueInteger">> => integer(),
+%%   <<"ValueList">> => list(segment_attribute_value()),
+%%   <<"ValueMap">> => map(),
+%%   <<"ValueString">> => string()
+%% }
+-type segment_attribute_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_chat_integration_event_request() :: #{
+%%   <<"DestinationId">> := string(),
+%%   <<"Event">> := chat_event(),
+%%   <<"NewSessionDetails">> => new_session_details(),
+%%   <<"SourceId">> := string(),
+%%   <<"Subtype">> => string()
+%% }
+-type send_chat_integration_event_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_chat_integration_event_response() :: #{
+%%   <<"InitialContactId">> => string(),
+%%   <<"NewChatCreated">> => boolean()
+%% }
+-type send_chat_integration_event_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_notification_action_definition() :: #{
+%%   <<"Content">> => string(),
+%%   <<"ContentType">> => list(any()),
+%%   <<"DeliveryMethod">> => list(any()),
+%%   <<"Exclusion">> => notification_recipient_type(),
+%%   <<"Recipient">> => notification_recipient_type(),
+%%   <<"Subject">> => string()
+%% }
+-type send_notification_action_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_outbound_email_request() :: #{
+%%   <<"AdditionalRecipients">> => outbound_additional_recipients(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DestinationEmailAddress">> := email_address_info(),
+%%   <<"EmailMessage">> := outbound_email_content(),
+%%   <<"FromEmailAddress">> := email_address_info(),
+%%   <<"SourceCampaign">> => source_campaign(),
+%%   <<"TrafficType">> := list(any())
+%% }
+-type send_outbound_email_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_outbound_email_response() :: #{}
+-type send_outbound_email_response() :: #{}.
+
+
+%% Example:
+%% send_outbound_web_notification_request() :: #{
+%%   <<"BrowserId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Content">> := web_notification_content(),
+%%   <<"Destination">> := widget_destination(),
+%%   <<"ExpiresAt">> := non_neg_integer(),
+%%   <<"SessionId">> := string(),
+%%   <<"Source">> := web_notification_source()
+%% }
+-type send_outbound_web_notification_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_outbound_web_notification_response() :: #{}
+-type send_outbound_web_notification_response() :: #{}.
+
+
+%% Example:
+%% sentiment_configuration() :: #{
+%%   <<"Behavior">> => list(any())
+%% }
+-type sentiment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sign_in_config() :: #{
+%%   <<"Distributions">> => list(sign_in_distribution())
+%% }
+-type sign_in_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% sign_in_distribution() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Region">> => string()
+%% }
+-type sign_in_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% single_select_question_rule_category_automation() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Condition">> => list(any()),
+%%   <<"OptionRefId">> => string()
+%% }
+-type single_select_question_rule_category_automation() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort() :: #{
+%%   <<"FieldName">> => list(any()),
+%%   <<"Order">> => list(any())
+%% }
+-type sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_campaign() :: #{
+%%   <<"CampaignId">> => string(),
+%%   <<"OutboundRequestId">> => string()
+%% }
+-type source_campaign() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_attached_file_upload_request() :: #{
+%%   <<"AssociatedResourceArn">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"CreatedBy">> => list(),
+%%   <<"FileName">> := string(),
+%%   <<"FileSizeInBytes">> := float(),
+%%   <<"FileUseCaseType">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UrlExpiryInSeconds">> => integer()
+%% }
+-type start_attached_file_upload_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_attached_file_upload_response() :: #{
+%%   <<"CreatedBy">> => list(),
+%%   <<"CreationTime">> => string(),
+%%   <<"FileArn">> => string(),
+%%   <<"FileId">> => string(),
+%%   <<"FileStatus">> => list(any()),
+%%   <<"UploadUrlMetadata">> => upload_url_metadata()
+%% }
+-type start_attached_file_upload_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10521,102 +9677,20 @@
 
 
 %% Example:
-%% update_phone_number_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"TargetArn">> => string()
+%% start_contact_conversational_analytics_job_request() :: #{
+%%   <<"AnalyticsConfiguration">> := analytics_configuration(),
+%%   <<"AnalyticsModes">> := list(list(any())()),
+%%   <<"ClientToken">> => string()
 %% }
--type update_phone_number_request() :: #{binary() => any()}.
+-type start_contact_conversational_analytics_job_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_contact_schedule_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"ScheduledTime">> := non_neg_integer()
+%% start_contact_conversational_analytics_job_response() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"InstanceId">> => string()
 %% }
--type update_contact_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_user_status_response() :: #{}
--type put_user_status_response() :: #{}.
-
-
-%% Example:
-%% hours_of_operation_time_slice() :: #{
-%%   <<"Hours">> => integer(),
-%%   <<"Minutes">> => integer()
-%% }
--type hours_of_operation_time_slice() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_table_search_filter() :: #{
-%%   <<"AttributeFilter">> => control_plane_attribute_filter()
-%% }
--type data_table_search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% prompt_search_criteria() :: #{
-%%   <<"AndConditions">> => list(prompt_search_criteria()),
-%%   <<"OrConditions">> => list(prompt_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
-%% }
--type prompt_search_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% update_test_case_response() :: #{}
--type update_test_case_response() :: #{}.
-
-
-%% Example:
-%% search_criteria() :: #{
-%%   <<"ActiveRegions">> => list(string()),
-%%   <<"AdditionalTimeRange">> => search_contacts_additional_time_range(),
-%%   <<"AgentHierarchyGroups">> => agent_hierarchy_groups(),
-%%   <<"AgentIds">> => list(string()),
-%%   <<"AiAgents">> => ai_agents_criteria(),
-%%   <<"Channels">> => list(list(any())()),
-%%   <<"ContactAnalysis">> => contact_analysis(),
-%%   <<"ContactTags">> => control_plane_tag_filter(),
-%%   <<"InitiationMethods">> => list(list(any())()),
-%%   <<"Name">> => name_criteria(),
-%%   <<"QueueIds">> => list(string()),
-%%   <<"RoutingCriteria">> => searchable_routing_criteria(),
-%%   <<"SearchableContactAttributes">> => searchable_contact_attributes(),
-%%   <<"SearchableSegmentAttributes">> => searchable_segment_attributes()
-%% }
--type search_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% update_contact_flow_module_metadata_response() :: #{}
--type update_contact_flow_module_metadata_response() :: #{}.
-
-
-%% Example:
-%% list_security_profiles_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_security_profiles_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hours_of_operation_request() :: #{}
--type describe_hours_of_operation_request() :: #{}.
-
-%% Example:
-%% describe_routing_profile_request() :: #{}
--type describe_routing_profile_request() :: #{}.
-
-
-%% Example:
-%% kinesis_video_stream_config() :: #{
-%%   <<"EncryptionConfig">> => encryption_config(),
-%%   <<"Prefix">> => string(),
-%%   <<"RetentionPeriodHours">> => integer()
-%% }
--type kinesis_video_stream_config() :: #{binary() => any()}.
+-type start_contact_conversational_analytics_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10631,374 +9705,230 @@
 
 
 %% Example:
-%% claimed_phone_number_summary() :: #{
-%%   <<"InstanceId">> => string(),
-%%   <<"PhoneNumber">> => string(),
-%%   <<"PhoneNumberArn">> => string(),
-%%   <<"PhoneNumberCountryCode">> => list(any()),
-%%   <<"PhoneNumberDescription">> => string(),
-%%   <<"PhoneNumberId">> => string(),
-%%   <<"PhoneNumberStatus">> => phone_number_status(),
-%%   <<"PhoneNumberType">> => list(any()),
-%%   <<"SourcePhoneNumberArn">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"TargetArn">> => string()
-%% }
--type claimed_phone_number_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_item_enablement_condition() :: #{
-%%   <<"Operands">> => list(list()),
-%%   <<"Operator">> => list(any())
-%% }
--type evaluation_form_item_enablement_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_quick_connects_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"QuickConnectSummaryList">> => list(quick_connect_summary())
-%% }
--type list_quick_connects_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_task_template_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_task_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_profile_flow_modules_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_security_profile_flow_modules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_contact_with_user_request() :: #{
-%%   <<"UserId">> := string()
-%% }
--type associate_contact_with_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_user_hierarchy_groups_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => user_hierarchy_group_search_criteria(),
-%%   <<"SearchFilter">> => user_hierarchy_group_search_filter()
-%% }
--type search_user_hierarchy_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_summary() :: #{
-%%   <<"Acknowledgement">> => evaluation_acknowledgement_summary(),
-%%   <<"AutoEvaluationEnabled">> => boolean(),
-%%   <<"AutoEvaluationStatus">> => list(any()),
-%%   <<"CalibrationSessionId">> => string(),
-%%   <<"ContactParticipant">> => evaluation_contact_participant(),
-%%   <<"CreatedTime">> => non_neg_integer(),
+%% start_contact_evaluation_response() :: #{
 %%   <<"EvaluationArn">> => string(),
-%%   <<"EvaluationFormId">> => string(),
-%%   <<"EvaluationFormTitle">> => string(),
-%%   <<"EvaluationId">> => string(),
-%%   <<"EvaluationType">> => list(any()),
-%%   <<"EvaluatorArn">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Score">> => evaluation_score(),
-%%   <<"Status">> => list(any())
+%%   <<"EvaluationId">> => string()
 %% }
--type evaluation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% end_associated_tasks_action_definition() :: #{}
--type end_associated_tasks_action_definition() :: #{}.
+-type start_contact_evaluation_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% historical_metric_data() :: #{
-%%   <<"Metric">> => historical_metric(),
-%%   <<"Value">> => float()
+%% start_contact_media_processing_request() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"FailureMode">> => list(any()),
+%%   <<"InstanceId">> => string(),
+%%   <<"ProcessorArn">> => string()
 %% }
--type historical_metric_data() :: #{binary() => any()}.
+-type start_contact_media_processing_request() :: #{binary() => any()}.
 
 %% Example:
-%% associate_flow_response() :: #{}
--type associate_flow_response() :: #{}.
+%% start_contact_media_processing_response() :: #{}
+-type start_contact_media_processing_response() :: #{}.
 
 
 %% Example:
-%% create_notification_request() :: #{
+%% start_contact_recording_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"InitialContactId">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"VoiceRecordingConfiguration">> := voice_recording_configuration()
+%% }
+-type start_contact_recording_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_contact_recording_response() :: #{}
+-type start_contact_recording_response() :: #{}.
+
+
+%% Example:
+%% start_contact_streaming_request() :: #{
+%%   <<"ChatStreamingConfiguration">> := chat_streaming_configuration(),
+%%   <<"ClientToken">> := string(),
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type start_contact_streaming_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_contact_streaming_response() :: #{
+%%   <<"StreamingId">> => string()
+%% }
+-type start_contact_streaming_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_email_contact_request() :: #{
+%%   <<"AdditionalRecipients">> => inbound_additional_recipients(),
+%%   <<"Attachments">> => list(email_attachment()),
+%%   <<"Attributes">> => map(),
 %%   <<"ClientToken">> => string(),
-%%   <<"Content">> := map(),
-%%   <<"ExpiresAt">> => non_neg_integer(),
-%%   <<"PredefinedNotificationId">> => string(),
-%%   <<"Priority">> => list(any()),
-%%   <<"Recipients">> := list(string()),
-%%   <<"Tags">> => map()
-%% }
--type create_notification_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_instance_storage_configs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StorageConfigs">> => list(instance_storage_config())
-%% }
--type list_instance_storage_configs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_ready_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_ready_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_single_select_question_automation() :: #{
-%%   <<"AnswerSource">> => evaluation_form_question_automation_answer_source(),
-%%   <<"DefaultOptionRefId">> => string(),
-%%   <<"Options">> => list(list())
-%% }
--type evaluation_form_single_select_question_automation() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_attachment() :: #{
-%%   <<"FileName">> => string(),
-%%   <<"S3Url">> => string()
-%% }
--type task_attachment() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_queues_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"Queues">> => list(queue())
-%% }
--type search_queues_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_profile_reference() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type routing_profile_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_contact_conversational_analytics_job_request() :: #{
-%%   <<"AnalyticsConfiguration">> := analytics_configuration(),
-%%   <<"AnalyticsModes">> := list(list(any())()),
-%%   <<"ClientToken">> => string()
-%% }
--type start_contact_conversational_analytics_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_contact_analysis_issue_detected() :: #{
-%%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_content())
-%% }
--type real_time_contact_analysis_issue_detected() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_authentication_profile_request() :: #{
-%%   <<"AllowedIps">> => list(string()),
-%%   <<"BlockedIps">> => list(string()),
+%%   <<"ContactFlowId">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"DestinationEmailAddress">> := string(),
+%%   <<"EmailMessage">> := inbound_email_content(),
+%%   <<"FromEmailAddress">> := email_address_info(),
+%%   <<"InstanceId">> := string(),
 %%   <<"Name">> => string(),
-%%   <<"PeriodicSessionDuration">> => integer(),
-%%   <<"SessionInactivityDuration">> => integer(),
-%%   <<"SessionInactivityHandlingEnabled">> => boolean()
+%%   <<"References">> => map(),
+%%   <<"RelatedContactId">> => string(),
+%%   <<"SegmentAttributes">> => map()
 %% }
--type update_authentication_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_quick_connect_request() :: #{}
--type describe_quick_connect_request() :: #{}.
+-type start_email_contact_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluation_review_notification_recipient() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => evaluation_review_notification_recipient_value()
+%% start_email_contact_response() :: #{
+%%   <<"ContactId">> => string()
 %% }
--type evaluation_review_notification_recipient() :: #{binary() => any()}.
-
-%% Example:
-%% delete_predefined_attribute_request() :: #{}
--type delete_predefined_attribute_request() :: #{}.
+-type start_email_contact_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_user_response() :: #{
-%%   <<"UserArn">> => string(),
-%%   <<"UserId">> => string()
+%% start_evaluation_form_validation_request() :: #{
+%%   <<"EvaluationFormVersion">> := integer()
 %% }
--type create_user_response() :: #{binary() => any()}.
+-type start_evaluation_form_validation_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_table() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LockVersion">> => data_table_lock_version(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"TimeZone">> => string(),
-%%   <<"ValueLockLevel">> => list(any()),
-%%   <<"Version">> => string(),
-%%   <<"VersionDescription">> => string()
-%% }
--type data_table() :: #{binary() => any()}.
-
-
-%% Example:
-%% inbound_additional_recipients() :: #{
-%%   <<"CcAddresses">> => list(email_address_info()),
-%%   <<"ToAddresses">> => list(email_address_info())
-%% }
--type inbound_additional_recipients() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_instance_storage_configs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> := list(any())
-%% }
--type list_instance_storage_configs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_search_summary() :: #{
-%%   <<"ActiveVersion">> => integer(),
-%%   <<"AutoEvaluationEnabled">> => boolean(),
-%%   <<"ContactInteractionType">> => list(any()),
-%%   <<"CreatedBy">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
+%% start_evaluation_form_validation_response() :: #{
 %%   <<"EvaluationFormArn">> => string(),
 %%   <<"EvaluationFormId">> => string(),
-%%   <<"EvaluationFormLanguage">> => list(any()),
-%%   <<"LastActivatedBy">> => string(),
-%%   <<"LastActivatedTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"LatestVersion">> => integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Title">> => string()
+%%   <<"EvaluationFormVersion">> => integer()
 %% }
--type evaluation_form_search_summary() :: #{binary() => any()}.
+-type start_evaluation_form_validation_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_views_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ViewsSummaryList">> => list(view_summary())
-%% }
--type list_views_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% duplicate_resource_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_resource_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_configuration() :: #{
-%%   <<"LanguageConfiguration">> => language_configuration(),
-%%   <<"RedactionConfiguration">> => redaction_configuration(),
-%%   <<"RulesConfiguration">> => rules_configuration(),
-%%   <<"SentimentConfiguration">> => sentiment_configuration(),
-%%   <<"SummaryConfiguration">> => summary_configuration()
-%% }
--type analytics_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_question_input_details() :: #{
-%%   <<"TranscriptType">> => list(any())
-%% }
--type evaluation_question_input_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hours_of_operation_request() :: #{}
--type delete_hours_of_operation_request() :: #{}.
-
-
-%% Example:
-%% maximum_result_returned_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type maximum_result_returned_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_persistent_contact_association_request() :: #{
+%% start_outbound_chat_contact_request() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"ChatDurationInMinutes">> => integer(),
 %%   <<"ClientToken">> => string(),
-%%   <<"RehydrationType">> := list(any()),
-%%   <<"SourceContactId">> := string()
+%%   <<"ContactFlowId">> := string(),
+%%   <<"DestinationEndpoint">> := endpoint(),
+%%   <<"InitialSystemMessage">> => chat_message(),
+%%   <<"InitialTemplatedSystemMessage">> => templated_message_config(),
+%%   <<"InstanceId">> := string(),
+%%   <<"ParticipantDetails">> => participant_details(),
+%%   <<"RelatedContactId">> => string(),
+%%   <<"SegmentAttributes">> := map(),
+%%   <<"SourceEndpoint">> := endpoint(),
+%%   <<"SupportedMessagingContentTypes">> => list(string())
 %% }
--type create_persistent_contact_association_request() :: #{binary() => any()}.
+-type start_outbound_chat_contact_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_analytics_data_associations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(analytics_data_association_result())
+%% start_outbound_chat_contact_response() :: #{
+%%   <<"ContactId">> => string()
 %% }
--type list_analytics_data_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_traffic_distribution_group_response() :: #{}
--type delete_traffic_distribution_group_response() :: #{}.
+-type start_outbound_chat_contact_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_conflict_exception() :: #{
-%%   <<"Message">> => string()
+%% start_outbound_email_contact_request() :: #{
+%%   <<"AdditionalRecipients">> => outbound_additional_recipients(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactId">> := string(),
+%%   <<"DestinationEmailAddress">> := email_address_info(),
+%%   <<"EmailMessage">> := outbound_email_content(),
+%%   <<"FromEmailAddress">> => email_address_info(),
+%%   <<"InstanceId">> := string()
 %% }
--type resource_conflict_exception() :: #{binary() => any()}.
+-type start_outbound_email_contact_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluation_form_search_criteria() :: #{
-%%   <<"AndConditions">> => list(evaluation_form_search_criteria()),
-%%   <<"BooleanCondition">> => boolean_condition(),
-%%   <<"DateTimeCondition">> => date_time_condition(),
-%%   <<"NumberCondition">> => number_condition(),
-%%   <<"OrConditions">> => list(evaluation_form_search_criteria()),
-%%   <<"StringCondition">> => string_condition()
+%% start_outbound_email_contact_response() :: #{
+%%   <<"ContactId">> => string()
 %% }
--type evaluation_form_search_criteria() :: #{binary() => any()}.
+-type start_outbound_email_contact_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_user_hierarchy_groups_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UserHierarchyGroupSummaryList">> => list(hierarchy_group_summary())
+%% start_outbound_voice_contact_request() :: #{
+%%   <<"AnswerMachineDetectionConfig">> => answer_machine_detection_config(),
+%%   <<"Attributes">> => map(),
+%%   <<"CampaignId">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactFlowId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"DestinationPhoneNumber">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"OutboundStrategy">> => outbound_strategy(),
+%%   <<"QueueId">> => string(),
+%%   <<"References">> => map(),
+%%   <<"RelatedContactId">> => string(),
+%%   <<"RingTimeoutInSeconds">> => integer(),
+%%   <<"SourcePhoneNumber">> => string(),
+%%   <<"TrafficType">> => list(any())
 %% }
--type list_user_hierarchy_groups_response() :: #{binary() => any()}.
+-type start_outbound_voice_contact_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_outbound_voice_contact_response() :: #{
+%%   <<"ContactId">> => string()
+%% }
+-type start_outbound_voice_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_screen_sharing_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type start_screen_sharing_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_screen_sharing_response() :: #{}
+-type start_screen_sharing_response() :: #{}.
+
+
+%% Example:
+%% start_task_contact_request() :: #{
+%%   <<"Attachments">> => list(task_attachment()),
+%%   <<"Attributes">> => map(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactFlowId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"PreviousContactId">> => string(),
+%%   <<"QuickConnectId">> => string(),
+%%   <<"References">> => map(),
+%%   <<"RelatedContactId">> => string(),
+%%   <<"ScheduledTime">> => non_neg_integer(),
+%%   <<"SegmentAttributes">> => map(),
+%%   <<"TaskTemplateId">> => string()
+%% }
+-type start_task_contact_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_task_contact_response() :: #{
+%%   <<"ContactId">> => string()
+%% }
+-type start_task_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_test_case_execution_request() :: #{
+%%   <<"ClientToken">> => string()
+%% }
+-type start_test_case_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_test_case_execution_response() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"TestCaseExecutionId">> => string(),
+%%   <<"TestCaseId">> => string()
+%% }
+-type start_test_case_execution_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11017,355 +9947,460 @@
 
 
 %% Example:
-%% describe_contact_flow_module_alias_response() :: #{
-%%   <<"ContactFlowModuleAlias">> => contact_flow_module_alias_info()
+%% start_web_r_t_c_contact_response() :: #{
+%%   <<"ConnectionData">> => connection_data(),
+%%   <<"ContactId">> => string(),
+%%   <<"ParticipantId">> => string(),
+%%   <<"ParticipantToken">> => string()
 %% }
--type describe_contact_flow_module_alias_response() :: #{binary() => any()}.
+-type start_web_r_t_c_contact_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_workspaces_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"NextToken">> => string(),
-%%   <<"Workspaces">> => list(workspace_search_summary())
+%% state_transition() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateEndTimestamp">> => non_neg_integer(),
+%%   <<"StateStartTimestamp">> => non_neg_integer()
 %% }
--type search_workspaces_response() :: #{binary() => any()}.
+-type state_transition() :: #{binary() => any()}.
 
 
 %% Example:
-%% parent_hours_of_operation_config() :: #{
-%%   <<"HoursOfOperationId">> => string()
+%% step() :: #{
+%%   <<"Expiry">> => expiry(),
+%%   <<"Expression">> => expression(),
+%%   <<"Status">> => list(any())
 %% }
--type parent_hours_of_operation_config() :: #{binary() => any()}.
+-type step() :: #{binary() => any()}.
 
 
 %% Example:
-%% hierarchy_structure_update() :: #{
-%%   <<"LevelFive">> => hierarchy_level_update(),
-%%   <<"LevelFour">> => hierarchy_level_update(),
-%%   <<"LevelOne">> => hierarchy_level_update(),
-%%   <<"LevelThree">> => hierarchy_level_update(),
-%%   <<"LevelTwo">> => hierarchy_level_update()
+%% stop_contact_media_processing_request() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"InstanceId">> => string()
 %% }
--type hierarchy_structure_update() :: #{binary() => any()}.
+-type stop_contact_media_processing_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_contact_media_processing_response() :: #{}
+-type stop_contact_media_processing_response() :: #{}.
 
 
 %% Example:
-%% list_default_vocabularies_response() :: #{
-%%   <<"DefaultVocabularyList">> => list(default_vocabulary()),
-%%   <<"NextToken">> => string()
+%% stop_contact_recording_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"ContactRecordingType">> => list(any()),
+%%   <<"InitialContactId">> := string(),
+%%   <<"InstanceId">> := string()
 %% }
--type list_default_vocabularies_response() :: #{binary() => any()}.
+-type stop_contact_recording_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_contact_recording_response() :: #{}
+-type stop_contact_recording_response() :: #{}.
 
 
 %% Example:
-%% user_search_filter() :: #{
-%%   <<"TagFilter">> => control_plane_tag_filter(),
-%%   <<"UserAttributeFilter">> => control_plane_user_attribute_filter()
+%% stop_contact_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"DisconnectReason">> => disconnect_reason(),
+%%   <<"InstanceId">> := string()
 %% }
--type user_search_filter() :: #{binary() => any()}.
+-type stop_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_contact_response() :: #{}
+-type stop_contact_response() :: #{}.
 
 
 %% Example:
-%% evaluation_review_request_comment() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer()
+%% stop_contact_streaming_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"StreamingId">> := string()
 %% }
--type evaluation_review_request_comment() :: #{binary() => any()}.
+-type stop_contact_streaming_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_contact_streaming_response() :: #{}
+-type stop_contact_streaming_response() :: #{}.
 
 
 %% Example:
-%% prompt() :: #{
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedRegion">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PromptARN">> => string(),
-%%   <<"PromptId">> => string(),
-%%   <<"Tags">> => map()
+%% stop_test_case_execution_request() :: #{
+%%   <<"ClientToken">> => string()
 %% }
--type prompt() :: #{binary() => any()}.
+-type stop_test_case_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_test_case_execution_response() :: #{}
+-type stop_test_case_execution_response() :: #{}.
 
 
 %% Example:
-%% media_placement() :: #{
-%%   <<"AudioFallbackUrl">> => string(),
-%%   <<"AudioHostUrl">> => string(),
-%%   <<"EventIngestionUrl">> => string(),
-%%   <<"SignalingUrl">> => string(),
-%%   <<"TurnControlUrl">> => string()
+%% string_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"FieldName">> => string(),
+%%   <<"Value">> => string()
 %% }
--type media_placement() :: #{binary() => any()}.
+-type string_condition() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_workspace_request() :: #{
-%%   <<"ResourceArns">> := list(string())
-%% }
--type disassociate_workspace_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_workspace_request() :: #{
-%%   <<"ResourceArns">> := list(string())
-%% }
--type associate_workspace_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% routing_profile_manual_assignment_queue_config() :: #{
-%%   <<"QueueReference">> => routing_profile_queue_reference()
-%% }
--type routing_profile_manual_assignment_queue_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_realtime_contact_analysis_segments_v2_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OutputType">> := list(any()),
-%%   <<"SegmentTypes">> := list(list(any())())
-%% }
--type list_realtime_contact_analysis_segments_v2_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_contact_flow_request() :: #{}
--type delete_contact_flow_request() :: #{}.
-
-
-%% Example:
-%% get_current_metric_data_response() :: #{
-%%   <<"ApproximateTotalCount">> => float(),
-%%   <<"DataSnapshotTime">> => non_neg_integer(),
-%%   <<"MetricResults">> => list(current_metric_result()),
-%%   <<"NextToken">> => string()
-%% }
--type get_current_metric_data_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_authentication_profiles_response() :: #{
-%%   <<"AuthenticationProfileSummaryList">> => list(authentication_profile_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_authentication_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_available_phone_numbers_request() :: #{
-%%   <<"InstanceId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PhoneNumberCountryCode">> := list(any()),
-%%   <<"PhoneNumberPrefix">> => string(),
-%%   <<"PhoneNumberType">> := list(any()),
-%%   <<"TargetArn">> => string()
-%% }
--type search_available_phone_numbers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_attached_files_configuration_response() :: #{
-%%   <<"AttachedFilesConfiguration">> => attached_files_configuration()
-%% }
--type describe_attached_files_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_form_score_threshold() :: #{
-%%   <<"MaxScorePercentage">> => float(),
-%%   <<"MinScorePercentage">> => float(),
-%%   <<"PerformanceCategory">> => list(any())
-%% }
--type evaluation_form_score_threshold() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_rule_response() :: #{
-%%   <<"Rule">> => rule()
-%% }
--type describe_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% participant_details() :: #{
-%%   <<"DisplayName">> => string()
-%% }
--type participant_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% date_reference() :: #{
+%% string_reference() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
 %% }
--type date_reference() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workspace_page_request() :: #{}
--type delete_workspace_page_request() :: #{}.
+-type string_reference() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluation_form_multi_select_question_properties() :: #{
-%%   <<"Automation">> => evaluation_form_multi_select_question_automation(),
-%%   <<"DisplayAs">> => list(any()),
-%%   <<"Options">> => list(evaluation_form_multi_select_question_option())
+%% submit_auto_evaluation_action_definition() :: #{
+%%   <<"EvaluationFormId">> => string()
 %% }
--type evaluation_form_multi_select_question_properties() :: #{binary() => any()}.
+-type submit_auto_evaluation_action_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_data_table_request() :: #{
+%% submit_contact_evaluation_request() :: #{
+%%   <<"Answers">> => map(),
+%%   <<"Notes">> => map(),
+%%   <<"SubmittedBy">> => list()
+%% }
+-type submit_contact_evaluation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% submit_contact_evaluation_response() :: #{
+%%   <<"EvaluationArn">> => string(),
+%%   <<"EvaluationId">> => string()
+%% }
+-type submit_contact_evaluation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% successful_batch_association_summary() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type successful_batch_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% successful_request() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"RequestIdentifier">> => string()
+%% }
+-type successful_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% summary_configuration() :: #{
+%%   <<"SummaryModes">> => list(list(any())())
+%% }
+-type summary_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% suspend_contact_recording_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"ContactRecordingType">> => list(any()),
+%%   <<"InitialContactId">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type suspend_contact_recording_request() :: #{binary() => any()}.
+
+%% Example:
+%% suspend_contact_recording_response() :: #{}
+-type suspend_contact_recording_response() :: #{}.
+
+
+%% Example:
+%% tag_condition() :: #{
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string()
+%% }
+-type tag_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_contact_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_contact_response() :: #{}
+-type tag_contact_response() :: #{}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_search_condition() :: #{
+%%   <<"tagKey">> => string(),
+%%   <<"tagKeyComparisonType">> => list(any()),
+%%   <<"tagValue">> => string(),
+%%   <<"tagValueComparisonType">> => list(any())
+%% }
+-type tag_search_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_set() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_action_definition() :: #{
+%%   <<"ContactFlowId">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Status">> := list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"TimeZone">> := string(),
-%%   <<"ValueLockLevel">> := list(any())
+%%   <<"Name">> => string(),
+%%   <<"References">> => map()
 %% }
--type create_data_table_request() :: #{binary() => any()}.
+-type task_action_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_workspace_associations_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => workspace_association_search_criteria(),
-%%   <<"SearchFilter">> => workspace_association_search_filter()
+%% task_attachment() :: #{
+%%   <<"FileName">> => string(),
+%%   <<"S3Url">> => string()
 %% }
--type search_workspace_associations_request() :: #{binary() => any()}.
+-type task_attachment() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_contact_flow_module_alias_response() :: #{
-%%   <<"ContactFlowModuleArn">> => string(),
-%%   <<"Id">> => string()
+%% task_template_constraints() :: #{
+%%   <<"InvisibleFields">> => list(invisible_field_info()),
+%%   <<"ReadOnlyFields">> => list(read_only_field_info()),
+%%   <<"RequiredFields">> => list(required_field_info())
 %% }
--type create_contact_flow_module_alias_response() :: #{binary() => any()}.
+-type task_template_constraints() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_contact_evaluations_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchCriteria">> => evaluation_search_criteria(),
-%%   <<"SearchFilter">> => evaluation_search_filter()
+%% task_template_default_field_value() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"Id">> => task_template_field_identifier()
 %% }
--type search_contact_evaluations_request() :: #{binary() => any()}.
+-type task_template_default_field_value() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_workspace_response() :: #{
-%%   <<"FailedList">> => list(failed_batch_association_summary()),
-%%   <<"SuccessfulList">> => list(successful_batch_association_summary())
+%% task_template_defaults() :: #{
+%%   <<"DefaultFieldValues">> => list(task_template_default_field_value())
 %% }
--type disassociate_workspace_response() :: #{binary() => any()}.
+-type task_template_defaults() :: #{binary() => any()}.
 
 
 %% Example:
-%% media_item() :: #{
-%%   <<"Source">> => string(),
+%% task_template_field() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => task_template_field_identifier(),
+%%   <<"SingleSelectOptions">> => list(string()),
 %%   <<"Type">> => list(any())
 %% }
--type media_item() :: #{binary() => any()}.
+-type task_template_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_queue_response() :: #{
-%%   <<"QueueArn">> => string(),
-%%   <<"QueueId">> => string()
+%% task_template_field_identifier() :: #{
+%%   <<"Name">> => string()
 %% }
--type create_queue_response() :: #{binary() => any()}.
+-type task_template_field_identifier() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_data_table_primary_values_request() :: #{
-%%   <<"LockVersion">> := data_table_lock_version(),
-%%   <<"NewPrimaryValues">> := list(primary_value()),
-%%   <<"PrimaryValues">> := list(primary_value())
+%% task_template_info_v2() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
 %% }
--type update_data_table_primary_values_request() :: #{binary() => any()}.
+-type task_template_info_v2() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_email_address_metadata_response() :: #{
-%%   <<"EmailAddressArn">> => string(),
-%%   <<"EmailAddressId">> => string()
+%% task_template_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type update_email_address_metadata_response() :: #{binary() => any()}.
+-type task_template_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluate_data_table_values_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Values">> => list(data_table_evaluated_value())
+%% telephony_config() :: #{
+%%   <<"Distributions">> => list(distribution())
 %% }
--type evaluate_data_table_values_response() :: #{binary() => any()}.
+-type telephony_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% predefined_attribute() :: #{
-%%   <<"AttributeConfiguration">> => predefined_attribute_configuration(),
+%% template_attributes() :: #{
+%%   <<"CustomAttributes">> => map(),
+%%   <<"CustomerProfileAttributes">> => string()
+%% }
+-type template_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% templated_message_config() :: #{
+%%   <<"KnowledgeBaseId">> => string(),
+%%   <<"MessageTemplateId">> => string(),
+%%   <<"TemplateAttributes">> => template_attributes()
+%% }
+-type templated_message_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_case() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Content">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EntryPoint">> => test_case_entry_point(),
+%%   <<"Id">> => string(),
+%%   <<"InitializationData">> => string(),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"Purposes">> => list(string()),
-%%   <<"Values">> => list()
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TestCaseSha256">> => string()
 %% }
--type predefined_attribute() :: #{binary() => any()}.
+-type test_case() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_user_hierarchy_group_name_request() :: #{
-%%   <<"Name">> := string()
+%% test_case_entry_point() :: #{
+%%   <<"ChatEntryPointParameters">> => chat_entry_point_parameters(),
+%%   <<"Type">> => list(any()),
+%%   <<"VoiceCallEntryPointParameters">> => voice_call_entry_point_parameters()
 %% }
--type update_user_hierarchy_group_name_request() :: #{binary() => any()}.
+-type test_case_entry_point() :: #{binary() => any()}.
 
 
 %% Example:
-%% user_info() :: #{
+%% test_case_execution() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Tags">> => map(),
+%%   <<"TestCaseExecutionId">> => string(),
+%%   <<"TestCaseExecutionStatus">> => list(any()),
+%%   <<"TestCaseId">> => string()
+%% }
+-type test_case_execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_case_search_criteria() :: #{
+%%   <<"AndConditions">> => list(test_case_search_criteria()),
+%%   <<"OrConditions">> => list(test_case_search_criteria()),
+%%   <<"StatusCondition">> => list(any()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type test_case_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_case_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type test_case_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_case_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type test_case_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% threshold() :: #{
+%%   <<"Comparison">> => list(any()),
+%%   <<"ThresholdValue">> => float()
+%% }
+-type threshold() :: #{binary() => any()}.
+
+
+%% Example:
+%% threshold_v2() :: #{
+%%   <<"Comparison">> => string(),
+%%   <<"ThresholdValue">> => float()
+%% }
+-type threshold_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_distribution_group() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type traffic_distribution_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_distribution_group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type traffic_distribution_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_distribution_group_user_summary() :: #{
 %%   <<"UserId">> => string()
 %% }
--type user_info() :: #{binary() => any()}.
+-type traffic_distribution_group_user_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% real_time_contact_analysis_segment_attachments() :: #{
-%%   <<"Attachments">> => list(real_time_contact_analysis_attachment()),
-%%   <<"DisplayName">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ParticipantId">> => string(),
-%%   <<"ParticipantRole">> => list(any()),
-%%   <<"Time">> => list()
+%% transcript() :: #{
+%%   <<"Criteria">> => list(transcript_criteria()),
+%%   <<"MatchType">> => list(any())
 %% }
--type real_time_contact_analysis_segment_attachments() :: #{binary() => any()}.
-
-
-%% Example:
-%% expiry() :: #{
-%%   <<"DurationInSeconds">> => integer(),
-%%   <<"ExpiryTimestamp">> => non_neg_integer()
-%% }
--type expiry() :: #{binary() => any()}.
-
-
-%% Example:
-%% real_time_contact_analysis_segment_transcript() :: #{
-%%   <<"Content">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ParticipantId">> => string(),
-%%   <<"ParticipantRole">> => list(any()),
-%%   <<"Redaction">> => real_time_contact_analysis_transcript_item_redaction(),
-%%   <<"Sentiment">> => list(any()),
-%%   <<"Time">> => list()
-%% }
--type real_time_contact_analysis_segment_transcript() :: #{binary() => any()}.
+-type transcript() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11378,38 +10413,166 @@
 
 
 %% Example:
-%% data_table_access_control_configuration() :: #{
-%%   <<"PrimaryAttributeAccessControlConfiguration">> => primary_attribute_access_control_configuration_item()
+%% transfer_contact_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ContactFlowId">> := string(),
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"QueueId">> => string(),
+%%   <<"UserId">> => string()
 %% }
--type data_table_access_control_configuration() :: #{binary() => any()}.
+-type transfer_contact_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_contact_flow_response() :: #{
-%%   <<"ContactFlowArn">> => string(),
-%%   <<"ContactFlowId">> => string(),
-%%   <<"FlowContentSha256">> => string()
+%% transfer_contact_response() :: #{
+%%   <<"ContactArn">> => string(),
+%%   <<"ContactId">> => string()
 %% }
--type create_contact_flow_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_queue_request() :: #{}
--type describe_queue_request() :: #{}.
+-type transfer_contact_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_disassociate_analytics_data_set_response() :: #{
-%%   <<"Deleted">> => list(string()),
-%%   <<"Errors">> => list(error_result())
+%% untag_contact_request() :: #{
+%%   <<"TagKeys">> := list(string())
 %% }
--type batch_disassociate_analytics_data_set_response() :: #{binary() => any()}.
+-type untag_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_contact_response() :: #{}
+-type untag_contact_response() :: #{}.
 
 
 %% Example:
-%% submit_auto_evaluation_action_definition() :: #{
-%%   <<"EvaluationFormId">> => string()
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type submit_auto_evaluation_action_definition() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_status_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayOrder">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"ResetOrderNumber">> => boolean(),
+%%   <<"State">> => list(any())
+%% }
+-type update_agent_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_attached_files_configuration_request() :: #{
+%%   <<"ExtensionConfiguration">> => extension_configuration(),
+%%   <<"MaximumSizeLimitInBytes">> => float()
+%% }
+-type update_attached_files_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_attached_files_configuration_response() :: #{
+%%   <<"AttachmentScope">> => list(any()),
+%%   <<"ExtensionConfiguration">> => extension_configuration(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MaximumSizeLimitInBytes">> => float()
+%% }
+-type update_attached_files_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_authentication_profile_request() :: #{
+%%   <<"AllowedIps">> => list(string()),
+%%   <<"BlockedIps">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PeriodicSessionDuration">> => integer(),
+%%   <<"SessionInactivityDuration">> => integer(),
+%%   <<"SessionInactivityHandlingEnabled">> => boolean()
+%% }
+-type update_authentication_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_case_action_definition() :: #{
+%%   <<"Fields">> => list(field_value())
+%% }
+-type update_case_action_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_contact_attributes_request() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"InitialContactId">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type update_contact_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_attributes_response() :: #{}
+-type update_contact_attributes_response() :: #{}.
+
+
+%% Example:
+%% update_contact_evaluation_request() :: #{
+%%   <<"Answers">> => map(),
+%%   <<"Notes">> => map(),
+%%   <<"UpdatedBy">> => list()
+%% }
+-type update_contact_evaluation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_contact_evaluation_response() :: #{
+%%   <<"EvaluationArn">> => string(),
+%%   <<"EvaluationId">> => string()
+%% }
+-type update_contact_evaluation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_contact_flow_content_request() :: #{
+%%   <<"Content">> := string()
+%% }
+-type update_contact_flow_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_flow_content_response() :: #{}
+-type update_contact_flow_content_response() :: #{}.
+
+
+%% Example:
+%% update_contact_flow_metadata_request() :: #{
+%%   <<"ContactFlowState">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_contact_flow_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_flow_metadata_response() :: #{}
+-type update_contact_flow_metadata_response() :: #{}.
+
+
+%% Example:
+%% update_contact_flow_module_alias_request() :: #{
+%%   <<"ContactFlowModuleVersion">> => float(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_contact_flow_module_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_flow_module_alias_response() :: #{}
+-type update_contact_flow_module_alias_response() :: #{}.
+
+
+%% Example:
+%% update_contact_flow_module_content_request() :: #{
+%%   <<"Content">> => string(),
+%%   <<"Settings">> => string()
+%% }
+-type update_contact_flow_module_content_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_contact_flow_module_content_response() :: #{}
@@ -11417,45 +10580,479 @@
 
 
 %% Example:
-%% batch_get_flow_association_response() :: #{
-%%   <<"FlowAssociationSummaryList">> => list(flow_association_summary())
+%% update_contact_flow_module_metadata_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
 %% }
--type batch_get_flow_association_response() :: #{binary() => any()}.
+-type update_contact_flow_module_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_flow_module_metadata_response() :: #{}
+-type update_contact_flow_module_metadata_response() :: #{}.
 
 
 %% Example:
-%% resource_tags_search_criteria() :: #{
-%%   <<"TagSearchCondition">> => tag_search_condition()
+%% update_contact_flow_name_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
 %% }
--type resource_tags_search_criteria() :: #{binary() => any()}.
+-type update_contact_flow_name_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_flow_name_response() :: #{}
+-type update_contact_flow_name_response() :: #{}.
 
 
 %% Example:
-%% ai_agents_criteria() :: #{
-%%   <<"Criteria">> => list(ai_agent_search_criteria())
+%% update_contact_request() :: #{
+%%   <<"CustomerEndpoint">> => endpoint(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"QueueInfo">> => queue_info_input(),
+%%   <<"References">> => map(),
+%%   <<"SegmentAttributes">> => map(),
+%%   <<"SystemEndpoint">> => endpoint(),
+%%   <<"UserInfo">> => user_info()
 %% }
--type ai_agents_criteria() :: #{binary() => any()}.
+-type update_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_response() :: #{}
+-type update_contact_response() :: #{}.
 
 
 %% Example:
-%% create_workspace_request() :: #{
+%% update_contact_routing_data_request() :: #{
+%%   <<"QueuePriority">> => float(),
+%%   <<"QueueTimeAdjustmentSeconds">> => integer(),
+%%   <<"RoutingCriteria">> => routing_criteria_input()
+%% }
+-type update_contact_routing_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_routing_data_response() :: #{}
+-type update_contact_routing_data_response() :: #{}.
+
+
+%% Example:
+%% update_contact_schedule_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"ScheduledTime">> := non_neg_integer()
+%% }
+-type update_contact_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_schedule_response() :: #{}
+-type update_contact_schedule_response() :: #{}.
+
+
+%% Example:
+%% update_data_table_attribute_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"Theme">> => workspace_theme(),
-%%   <<"Title">> => string()
+%%   <<"Primary">> => boolean(),
+%%   <<"Validation">> => validation(),
+%%   <<"ValueType">> := list(any())
 %% }
--type create_workspace_request() :: #{binary() => any()}.
+-type update_data_table_attribute_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% override_hour() :: #{
-%%   <<"End">> => override_time_slice(),
-%%   <<"OperationalStatus">> => list(any()),
-%%   <<"OverrideName">> => string(),
-%%   <<"Start">> => override_time_slice()
+%% update_data_table_attribute_response() :: #{
+%%   <<"LockVersion">> => data_table_lock_version(),
+%%   <<"Name">> => string()
 %% }
--type override_hour() :: #{binary() => any()}.
+-type update_data_table_attribute_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_table_metadata_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"TimeZone">> := string(),
+%%   <<"ValueLockLevel">> := list(any())
+%% }
+-type update_data_table_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_table_metadata_response() :: #{
+%%   <<"LockVersion">> => data_table_lock_version()
+%% }
+-type update_data_table_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_table_primary_values_request() :: #{
+%%   <<"LockVersion">> := data_table_lock_version(),
+%%   <<"NewPrimaryValues">> := list(primary_value()),
+%%   <<"PrimaryValues">> := list(primary_value())
+%% }
+-type update_data_table_primary_values_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_table_primary_values_response() :: #{
+%%   <<"LockVersion">> => data_table_lock_version()
+%% }
+-type update_data_table_primary_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_email_address_metadata_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string()
+%% }
+-type update_email_address_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_email_address_metadata_response() :: #{
+%%   <<"EmailAddressArn">> => string(),
+%%   <<"EmailAddressId">> => string()
+%% }
+-type update_email_address_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_evaluation_form_request() :: #{
+%%   <<"AsDraft">> => boolean(),
+%%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
+%%   <<"ClientToken">> => string(),
+%%   <<"CreateNewVersion">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationFormVersion">> := integer(),
+%%   <<"Items">> := list(list()),
+%%   <<"LanguageConfiguration">> => evaluation_form_language_configuration(),
+%%   <<"ReviewConfiguration">> => evaluation_review_configuration(),
+%%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
+%%   <<"TargetConfiguration">> => evaluation_form_target_configuration(),
+%%   <<"Title">> := string()
+%% }
+-type update_evaluation_form_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_evaluation_form_response() :: #{
+%%   <<"EvaluationFormArn">> => string(),
+%%   <<"EvaluationFormId">> => string(),
+%%   <<"EvaluationFormVersion">> => integer()
+%% }
+-type update_evaluation_form_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_hours_of_operation_override_request() :: #{
+%%   <<"Config">> => list(hours_of_operation_override_config()),
+%%   <<"Description">> => string(),
+%%   <<"EffectiveFrom">> => string(),
+%%   <<"EffectiveTill">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OverrideType">> => list(any()),
+%%   <<"RecurrenceConfig">> => recurrence_config()
+%% }
+-type update_hours_of_operation_override_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_hours_of_operation_request() :: #{
+%%   <<"Config">> => list(hours_of_operation_config()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"TimeZone">> => string()
+%% }
+-type update_hours_of_operation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_instance_attribute_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Value">> := string()
+%% }
+-type update_instance_attribute_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_instance_storage_config_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ResourceType">> := list(any()),
+%%   <<"StorageConfig">> := instance_storage_config()
+%% }
+-type update_instance_storage_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_notification_content_request() :: #{
+%%   <<"Content">> := map()
+%% }
+-type update_notification_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_content_response() :: #{}
+-type update_notification_content_response() :: #{}.
+
+
+%% Example:
+%% update_participant_authentication_request() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"ErrorDescription">> => string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"State">> := string()
+%% }
+-type update_participant_authentication_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_participant_authentication_response() :: #{}
+-type update_participant_authentication_response() :: #{}.
+
+
+%% Example:
+%% update_participant_role_config_request() :: #{
+%%   <<"ChannelConfiguration">> := list()
+%% }
+-type update_participant_role_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_participant_role_config_response() :: #{}
+-type update_participant_role_config_response() :: #{}.
+
+
+%% Example:
+%% update_phone_number_metadata_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"PhoneNumberDescription">> => string()
+%% }
+-type update_phone_number_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_phone_number_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"TargetArn">> => string()
+%% }
+-type update_phone_number_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_phone_number_response() :: #{
+%%   <<"PhoneNumberArn">> => string(),
+%%   <<"PhoneNumberId">> => string()
+%% }
+-type update_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_predefined_attribute_request() :: #{
+%%   <<"AttributeConfiguration">> => input_predefined_attribute_configuration(),
+%%   <<"Purposes">> => list(string()),
+%%   <<"Values">> => list()
+%% }
+-type update_predefined_attribute_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_prompt_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type update_prompt_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_prompt_response() :: #{
+%%   <<"PromptARN">> => string(),
+%%   <<"PromptId">> => string()
+%% }
+-type update_prompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_queue_hours_of_operation_request() :: #{
+%%   <<"HoursOfOperationId">> := string()
+%% }
+-type update_queue_hours_of_operation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_queue_max_contacts_request() :: #{
+%%   <<"MaxContacts">> => integer()
+%% }
+-type update_queue_max_contacts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_queue_name_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_queue_name_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_queue_outbound_caller_config_request() :: #{
+%%   <<"OutboundCallerConfig">> := outbound_caller_config()
+%% }
+-type update_queue_outbound_caller_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_queue_outbound_email_config_request() :: #{
+%%   <<"OutboundEmailConfig">> := outbound_email_config()
+%% }
+-type update_queue_outbound_email_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_queue_status_request() :: #{
+%%   <<"Status">> := list(any())
+%% }
+-type update_queue_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quick_connect_config_request() :: #{
+%%   <<"QuickConnectConfig">> := quick_connect_config()
+%% }
+-type update_quick_connect_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quick_connect_name_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_quick_connect_name_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_routing_profile_agent_availability_timer_request() :: #{
+%%   <<"AgentAvailabilityTimer">> := list(any())
+%% }
+-type update_routing_profile_agent_availability_timer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_routing_profile_concurrency_request() :: #{
+%%   <<"MediaConcurrencies">> := list(media_concurrency())
+%% }
+-type update_routing_profile_concurrency_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_routing_profile_default_outbound_queue_request() :: #{
+%%   <<"DefaultOutboundQueueId">> := string()
+%% }
+-type update_routing_profile_default_outbound_queue_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_routing_profile_name_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_routing_profile_name_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_routing_profile_queues_request() :: #{
+%%   <<"QueueConfigs">> := list(routing_profile_queue_config())
+%% }
+-type update_routing_profile_queues_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_rule_request() :: #{
+%%   <<"Actions">> := list(rule_action()),
+%%   <<"Function">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"PublishStatus">> := list(any())
+%% }
+-type update_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_security_profile_request() :: #{
+%%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
+%%   <<"AllowedAccessControlTags">> => map(),
+%%   <<"AllowedFlowModules">> => list(flow_module()),
+%%   <<"Applications">> => list(application()),
+%%   <<"Description">> => string(),
+%%   <<"GranularAccessControlConfiguration">> => granular_access_control_configuration(),
+%%   <<"HierarchyRestrictedResources">> => list(string()),
+%%   <<"Permissions">> => list(string()),
+%%   <<"TagRestrictedResources">> => list(string())
+%% }
+-type update_security_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_task_template_request() :: #{
+%%   <<"Constraints">> => task_template_constraints(),
+%%   <<"ContactFlowId">> => string(),
+%%   <<"Defaults">> => task_template_defaults(),
+%%   <<"Description">> => string(),
+%%   <<"Fields">> => list(task_template_field()),
+%%   <<"Name">> => string(),
+%%   <<"SelfAssignFlowId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_task_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_task_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Constraints">> => task_template_constraints(),
+%%   <<"ContactFlowId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Defaults">> => task_template_defaults(),
+%%   <<"Description">> => string(),
+%%   <<"Fields">> => list(task_template_field()),
+%%   <<"Id">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SelfAssignFlowId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_task_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_test_case_request() :: #{
+%%   <<"Content">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EntryPoint">> => test_case_entry_point(),
+%%   <<"InitializationData">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_test_case_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_test_case_response() :: #{}
+-type update_test_case_response() :: #{}.
+
+
+%% Example:
+%% update_traffic_distribution_request() :: #{
+%%   <<"AgentConfig">> => agent_config(),
+%%   <<"SignInConfig">> => sign_in_config(),
+%%   <<"TelephonyConfig">> => telephony_config()
+%% }
+-type update_traffic_distribution_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_traffic_distribution_response() :: #{}
+-type update_traffic_distribution_response() :: #{}.
 
 
 %% Example:
@@ -11470,1792 +11067,2354 @@
 
 
 %% Example:
-%% suspend_contact_recording_request() :: #{
-%%   <<"ContactId">> := string(),
-%%   <<"ContactRecordingType">> => list(any()),
-%%   <<"InitialContactId">> := string(),
-%%   <<"InstanceId">> := string()
+%% update_user_hierarchy_group_name_request() :: #{
+%%   <<"Name">> := string()
 %% }
--type suspend_contact_recording_request() :: #{binary() => any()}.
+-type update_user_hierarchy_group_name_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_user_request() :: #{
+%% update_user_hierarchy_request() :: #{
+%%   <<"HierarchyGroupId">> => string()
+%% }
+-type update_user_hierarchy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_hierarchy_structure_request() :: #{
+%%   <<"HierarchyStructure">> := hierarchy_structure_update()
+%% }
+-type update_user_hierarchy_structure_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_identity_info_request() :: #{
+%%   <<"IdentityInfo">> := user_identity_info()
+%% }
+-type update_user_identity_info_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_notification_status_request() :: #{
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> := list(any())
+%% }
+-type update_user_notification_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_notification_status_response() :: #{}
+-type update_user_notification_status_response() :: #{}.
+
+
+%% Example:
+%% update_user_phone_config_request() :: #{
+%%   <<"PhoneConfig">> := user_phone_config()
+%% }
+-type update_user_phone_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_proficiencies_request() :: #{
+%%   <<"UserProficiencies">> := list(user_proficiency())
+%% }
+-type update_user_proficiencies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_routing_profile_request() :: #{
+%%   <<"RoutingProfileId">> := string()
+%% }
+-type update_user_routing_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_security_profiles_request() :: #{
+%%   <<"SecurityProfileIds">> := list(string())
+%% }
+-type update_user_security_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_view_content_request() :: #{
+%%   <<"Content">> := view_input_content(),
+%%   <<"Status">> := list(any())
+%% }
+-type update_view_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_view_content_response() :: #{
+%%   <<"View">> => view()
+%% }
+-type update_view_content_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_view_metadata_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_view_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_view_metadata_response() :: #{}
+-type update_view_metadata_response() :: #{}.
+
+
+%% Example:
+%% update_workspace_metadata_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type update_workspace_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_metadata_response() :: #{}
+-type update_workspace_metadata_response() :: #{}.
+
+
+%% Example:
+%% update_workspace_page_request() :: #{
+%%   <<"InputData">> => string(),
+%%   <<"NewPage">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Slug">> => string()
+%% }
+-type update_workspace_page_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_page_response() :: #{}
+-type update_workspace_page_response() :: #{}.
+
+
+%% Example:
+%% update_workspace_theme_request() :: #{
+%%   <<"Theme">> => workspace_theme()
+%% }
+-type update_workspace_theme_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_theme_response() :: #{}
+-type update_workspace_theme_response() :: #{}.
+
+
+%% Example:
+%% update_workspace_visibility_request() :: #{
+%%   <<"Visibility">> := list(any())
+%% }
+-type update_workspace_visibility_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_visibility_response() :: #{}
+-type update_workspace_visibility_response() :: #{}.
+
+
+%% Example:
+%% upload_url_metadata() :: #{
+%%   <<"HeadersToInclude">> => map(),
+%%   <<"Url">> => string(),
+%%   <<"UrlExpiry">> => string()
+%% }
+-type upload_url_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% url_reference() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type url_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% use_case() :: #{
+%%   <<"UseCaseArn">> => string(),
+%%   <<"UseCaseId">> => string(),
+%%   <<"UseCaseType">> => list(any())
+%% }
+-type use_case() :: #{binary() => any()}.
+
+
+%% Example:
+%% user() :: #{
 %%   <<"AfterContactWorkConfigs">> => list(after_contact_work_config_per_channel()),
+%%   <<"Arn">> => string(),
 %%   <<"AutoAcceptConfigs">> => list(auto_accept_config()),
 %%   <<"DirectoryUserId">> => string(),
 %%   <<"HierarchyGroupId">> => string(),
+%%   <<"Id">> => string(),
 %%   <<"IdentityInfo">> => user_identity_info(),
-%%   <<"Password">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"PersistentConnectionConfigs">> => list(persistent_connection_config()),
 %%   <<"PhoneConfig">> => user_phone_config(),
 %%   <<"PhoneNumberConfigs">> => list(phone_number_config()),
-%%   <<"RoutingProfileId">> := string(),
-%%   <<"SecurityProfileIds">> := list(string()),
+%%   <<"RoutingProfileId">> => string(),
+%%   <<"SecurityProfileIds">> => list(string()),
 %%   <<"Tags">> => map(),
-%%   <<"Username">> := string(),
+%%   <<"Username">> => string(),
 %%   <<"VoiceEnhancementConfigs">> => list(voice_enhancement_config())
 %% }
--type create_user_request() :: #{binary() => any()}.
+-type user() :: #{binary() => any()}.
 
 
 %% Example:
-%% property_validation_exception_property() :: #{
-%%   <<"Message">> => string(),
-%%   <<"PropertyPath">> => string(),
-%%   <<"Reason">> => list(any())
+%% user_data() :: #{
+%%   <<"ActiveSlotsByChannel">> => map(),
+%%   <<"AvailableSlotsByChannel">> => map(),
+%%   <<"Contacts">> => list(agent_contact_reference()),
+%%   <<"HierarchyPath">> => hierarchy_path_reference(),
+%%   <<"MaxSlotsByChannel">> => map(),
+%%   <<"NextStatus">> => string(),
+%%   <<"RoutingProfile">> => routing_profile_reference(),
+%%   <<"Status">> => agent_status_reference(),
+%%   <<"User">> => user_reference()
 %% }
--type property_validation_exception_property() :: #{binary() => any()}.
+-type user_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_user_notifications_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% user_data_filters() :: #{
+%%   <<"Agents">> => list(string()),
+%%   <<"ContactFilter">> => contact_filter(),
+%%   <<"Queues">> => list(string()),
+%%   <<"RoutingProfiles">> => list(string()),
+%%   <<"UserHierarchyGroups">> => list(string())
 %% }
--type list_user_notifications_request() :: #{binary() => any()}.
+-type user_data_filters() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluation_form_content() :: #{
-%%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
-%%   <<"Description">> => string(),
-%%   <<"EvaluationFormArn">> => string(),
-%%   <<"EvaluationFormId">> => string(),
-%%   <<"EvaluationFormVersion">> => integer(),
-%%   <<"Items">> => list(list()),
-%%   <<"LanguageConfiguration">> => evaluation_form_language_configuration(),
-%%   <<"ReviewConfiguration">> => evaluation_review_configuration(),
-%%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
-%%   <<"TargetConfiguration">> => evaluation_form_target_configuration(),
-%%   <<"Title">> => string()
+%% user_hierarchy_group_search_criteria() :: #{
+%%   <<"AndConditions">> => list(user_hierarchy_group_search_criteria()),
+%%   <<"OrConditions">> => list(user_hierarchy_group_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
 %% }
--type evaluation_form_content() :: #{binary() => any()}.
-
-%% Example:
-%% dismiss_user_contact_response() :: #{}
--type dismiss_user_contact_response() :: #{}.
+-type user_hierarchy_group_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_contact_flow_module_content_request() :: #{
-%%   <<"Content">> => string(),
-%%   <<"Settings">> => string()
+%% user_hierarchy_group_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
 %% }
--type update_contact_flow_module_content_request() :: #{binary() => any()}.
+-type user_hierarchy_group_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_routing_profile_manual_assignment_queues_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% user_identity_info() :: #{
+%%   <<"Email">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"Mobile">> => string(),
+%%   <<"SecondaryEmail">> => string()
 %% }
--type list_routing_profile_manual_assignment_queues_request() :: #{binary() => any()}.
+-type user_identity_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_data_table_attribute_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Primary">> => boolean(),
-%%   <<"Validation">> => validation(),
-%%   <<"ValueType">> := list(any())
+%% user_identity_info_lite() :: #{
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string()
 %% }
--type create_data_table_attribute_request() :: #{binary() => any()}.
+-type user_identity_info_lite() :: #{binary() => any()}.
 
 
 %% Example:
-%% instance_storage_config() :: #{
-%%   <<"AssociationId">> => string(),
-%%   <<"KinesisFirehoseConfig">> => kinesis_firehose_config(),
-%%   <<"KinesisStreamConfig">> => kinesis_stream_config(),
-%%   <<"KinesisVideoStreamConfig">> => kinesis_video_stream_config(),
-%%   <<"S3Config">> => s3_config(),
-%%   <<"StorageType">> => list(any())
+%% user_info() :: #{
+%%   <<"UserId">> => string()
 %% }
--type instance_storage_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_workspace_media_request() :: #{}
--type list_workspace_media_request() :: #{}.
+-type user_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% record_primary_value() :: #{
+%% user_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type user_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_notification_summary() :: #{
+%%   <<"Content">> => map(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"InstanceId">> => string(),
+%%   <<"NotificationId">> => string(),
+%%   <<"NotificationStatus">> => list(any()),
+%%   <<"Priority">> => list(any()),
+%%   <<"RecipientId">> => string(),
+%%   <<"Source">> => list(any())
+%% }
+-type user_notification_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_phone_config() :: #{
+%%   <<"AfterContactWorkTimeLimit">> => integer(),
+%%   <<"AutoAccept">> => boolean(),
+%%   <<"DeskPhoneNumber">> => string(),
+%%   <<"PersistentConnection">> => boolean(),
+%%   <<"PhoneType">> => list(any())
+%% }
+-type user_phone_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_proficiency() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeValue">> => string(),
+%%   <<"Level">> => float()
+%% }
+-type user_proficiency() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_proficiency_disassociate() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"AttributeValue">> => string()
+%% }
+-type user_proficiency_disassociate() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_quick_connect_config() :: #{
+%%   <<"ContactFlowId">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type user_quick_connect_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_reference() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type user_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_search_criteria() :: #{
+%%   <<"AndConditions">> => list(user_search_criteria()),
+%%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
+%%   <<"ListCondition">> => list_condition(),
+%%   <<"OrConditions">> => list(user_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type user_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter(),
+%%   <<"UserAttributeFilter">> => control_plane_user_attribute_filter()
+%% }
+-type user_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_search_summary() :: #{
+%%   <<"AfterContactWorkConfigs">> => list(after_contact_work_config_per_channel()),
+%%   <<"Arn">> => string(),
+%%   <<"AutoAcceptConfigs">> => list(auto_accept_config()),
+%%   <<"DirectoryUserId">> => string(),
+%%   <<"HierarchyGroupId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"IdentityInfo">> => user_identity_info_lite(),
+%%   <<"PersistentConnectionConfigs">> => list(persistent_connection_config()),
+%%   <<"PhoneConfig">> => user_phone_config(),
+%%   <<"PhoneNumberConfigs">> => list(phone_number_config()),
+%%   <<"RoutingProfileId">> => string(),
+%%   <<"SecurityProfileIds">> => list(string()),
+%%   <<"Tags">> => map(),
+%%   <<"Username">> => string(),
+%%   <<"VoiceEnhancementConfigs">> => list(voice_enhancement_config())
+%% }
+-type user_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"PrimaryValues">> => list(primary_value_response()),
-%%   <<"RecordId">> => string()
+%%   <<"Username">> => string()
 %% }
--type record_primary_value() :: #{binary() => any()}.
+-type user_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_routing_profile_queues_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% validation() :: #{
+%%   <<"Enum">> => validation_enum(),
+%%   <<"ExclusiveMaximum">> => float(),
+%%   <<"ExclusiveMinimum">> => float(),
+%%   <<"IgnoreCase">> => boolean(),
+%%   <<"MaxLength">> => integer(),
+%%   <<"MaxValues">> => integer(),
+%%   <<"Maximum">> => float(),
+%%   <<"MinLength">> => integer(),
+%%   <<"MinValues">> => integer(),
+%%   <<"Minimum">> => float(),
+%%   <<"MultipleOf">> => float()
 %% }
--type list_routing_profile_queues_request() :: #{binary() => any()}.
+-type validation() :: #{binary() => any()}.
 
 
 %% Example:
-%% agent_status_reference() :: #{
-%%   <<"StatusArn">> => string(),
-%%   <<"StatusName">> => string(),
-%%   <<"StatusStartTimestamp">> => non_neg_integer()
+%% validation_enum() :: #{
+%%   <<"Strict">> => boolean(),
+%%   <<"Values">> => list(string())
 %% }
--type agent_status_reference() :: #{binary() => any()}.
+-type validation_enum() :: #{binary() => any()}.
 
 
 %% Example:
-%% allowed_capabilities() :: #{
-%%   <<"Agent">> => participant_capabilities(),
-%%   <<"Customer">> => participant_capabilities()
+%% view() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Content">> => view_content(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => integer(),
+%%   <<"VersionDescription">> => string(),
+%%   <<"ViewContentSha256">> => string()
 %% }
--type allowed_capabilities() :: #{binary() => any()}.
-
-%% Example:
-%% get_contact_attributes_request() :: #{}
--type get_contact_attributes_request() :: #{}.
-
-
-%% Example:
-%% hours_of_operation_override_config() :: #{
-%%   <<"Day">> => list(any()),
-%%   <<"EndTime">> => override_time_slice(),
-%%   <<"StartTime">> => override_time_slice()
-%% }
--type hours_of_operation_override_config() :: #{binary() => any()}.
+-type view() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_associate_analytics_data_set_response() :: #{
-%%   <<"Created">> => list(analytics_data_association_result()),
-%%   <<"Errors">> => list(error_result())
+%% view_content() :: #{
+%%   <<"Actions">> => list(string()),
+%%   <<"InputSchema">> => string(),
+%%   <<"Template">> => string()
 %% }
--type batch_associate_analytics_data_set_response() :: #{binary() => any()}.
+-type view_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_input_content() :: #{
+%%   <<"Actions">> => list(string()),
+%%   <<"Template">> => string()
+%% }
+-type view_input_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_search_criteria() :: #{
+%%   <<"AndConditions">> => list(view_search_criteria()),
+%%   <<"OrConditions">> => list(view_search_criteria()),
+%%   <<"StringCondition">> => string_condition(),
+%%   <<"ViewStatusCondition">> => list(any()),
+%%   <<"ViewTypeCondition">> => list(any())
+%% }
+-type view_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type view_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type view_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_version_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => integer(),
+%%   <<"VersionDescription">> => string()
+%% }
+-type view_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% vocabulary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Content">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type vocabulary() :: #{binary() => any()}.
+
+
+%% Example:
+%% vocabulary_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type vocabulary_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice_call_entry_point_parameters() :: #{
+%%   <<"DestinationPhoneNumber">> => string(),
+%%   <<"FlowId">> => string(),
+%%   <<"SourcePhoneNumber">> => string()
+%% }
+-type voice_call_entry_point_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice_enhancement_config() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"VoiceEnhancementMode">> => list(any())
+%% }
+-type voice_enhancement_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice_recording_configuration() :: #{
+%%   <<"IvrRecordingTrack">> => list(any()),
+%%   <<"VoiceRecordingTrack">> => list(any())
+%% }
+-type voice_recording_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_notification_content() :: #{
+%%   <<"Attributes">> => content_attributes(),
+%%   <<"Type">> => list(any()),
+%%   <<"ViewArn">> => string()
+%% }
+-type web_notification_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_notification_source() :: #{
+%%   <<"SourceCampaign">> => source_campaign()
+%% }
+-type web_notification_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% widget_destination() :: #{
+%%   <<"ProfileId">> => string(),
+%%   <<"WidgetId">> => string()
+%% }
+-type widget_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% wisdom_info() :: #{
+%%   <<"AiAgents">> => list(ai_agent_info()),
+%%   <<"SessionArn">> => string()
+%% }
+-type wisdom_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Theme">> => workspace_theme(),
+%%   <<"Title">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type workspace() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_association_search_criteria() :: #{
+%%   <<"AndConditions">> => list(workspace_association_search_criteria()),
+%%   <<"OrConditions">> => list(workspace_association_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type workspace_association_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_association_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type workspace_association_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_association_search_summary() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"WorkspaceArn">> => string(),
+%%   <<"WorkspaceId">> => string()
+%% }
+-type workspace_association_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_page() :: #{
+%%   <<"InputData">> => string(),
+%%   <<"Page">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Slug">> => string()
+%% }
+-type workspace_page() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_search_criteria() :: #{
+%%   <<"AndConditions">> => list(workspace_search_criteria()),
+%%   <<"OrConditions">> => list(workspace_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type workspace_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type workspace_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_search_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Title">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type workspace_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type workspace_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_theme() :: #{
+%%   <<"Dark">> => workspace_theme_config(),
+%%   <<"Light">> => workspace_theme_config()
+%% }
+-type workspace_theme() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_theme_config() :: #{
+%%   <<"Images">> => workspace_theme_images(),
+%%   <<"Palette">> => workspace_theme_palette(),
+%%   <<"Typography">> => workspace_theme_typography()
+%% }
+-type workspace_theme_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_theme_images() :: #{
+%%   <<"Logo">> => images_logo()
+%% }
+-type workspace_theme_images() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_theme_palette() :: #{
+%%   <<"Canvas">> => palette_canvas(),
+%%   <<"Header">> => palette_header(),
+%%   <<"Navigation">> => palette_navigation(),
+%%   <<"Primary">> => palette_primary()
+%% }
+-type workspace_theme_palette() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_theme_typography() :: #{
+%%   <<"FontFamily">> => font_family()
+%% }
+-type workspace_theme_typography() :: #{binary() => any()}.
 
 -type activate_evaluation_form_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type associate_analytics_data_set_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type associate_approved_origin_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type associate_bot_errors() ::
-    resource_conflict_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type associate_contact_with_user_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type associate_default_vocabulary_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type associate_email_address_alias_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    idempotency_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type associate_flow_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type associate_hours_of_operations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    conditional_operation_failed_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    conditional_operation_failed_exception().
 
 -type associate_instance_storage_config_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type associate_lambda_function_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type associate_lex_bot_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type associate_phone_number_contact_flow_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type associate_queue_email_addresses_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type associate_queue_quick_connects_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type associate_routing_profile_queues_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type associate_security_key_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type associate_security_profiles_errors() ::
-    resource_conflict_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    conditional_operation_failed_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    conditional_operation_failed_exception() | 
+    access_denied_exception().
 
 -type associate_traffic_distribution_group_user_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type associate_user_proficiencies_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type associate_workspace_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type batch_associate_analytics_data_set_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type batch_create_data_table_value_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type batch_delete_data_table_value_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type batch_describe_data_table_value_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type batch_disassociate_analytics_data_set_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type batch_get_attached_file_metadata_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type batch_get_flow_association_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type batch_put_contact_errors() ::
-    limit_exceeded_exception() | 
-    idempotency_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type batch_update_data_table_value_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type claim_phone_number_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type complete_attached_file_upload_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type create_agent_status_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_attached_file_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
+    resource_conflict_exception() | 
     invalid_request_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
+
+-type create_auth_code_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type create_contact_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type create_contact_flow_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    invalid_contact_flow_exception() | 
     internal_service_exception() | 
-    invalid_contact_flow_exception().
+    duplicate_resource_exception().
 
 -type create_contact_flow_module_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    idempotency_exception() | 
-    invalid_contact_flow_module_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    invalid_contact_flow_module_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type create_contact_flow_module_alias_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type create_contact_flow_module_version_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type create_contact_flow_version_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type create_data_table_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type create_data_table_attribute_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type create_email_address_errors() ::
-    resource_conflict_exception() | 
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    idempotency_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type create_evaluation_form_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type create_hours_of_operation_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_hours_of_operation_override_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_instance_errors() ::
     throttling_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type create_integration_association_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_notification_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type create_participant_errors() ::
     throttling_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    conflict_exception().
 
 -type create_persistent_contact_association_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type create_predefined_attribute_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_prompt_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
+    limit_exceeded_exception() | 
     invalid_request_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_push_notification_registration_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type create_queue_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_quick_connect_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_routing_profile_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_rule_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type create_security_profile_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_task_template_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception() | 
-    property_validation_exception().
+    property_validation_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
 
 -type create_test_case_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    idempotency_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_test_case_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    invalid_test_case_exception().
+    idempotency_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type create_traffic_distribution_group_errors() ::
-    resource_conflict_exception() | 
-    resource_not_ready_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type create_use_case_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_user_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_user_hierarchy_group_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type create_view_errors() ::
-    duplicate_resource_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type create_view_version_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type create_vocabulary_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type create_workspace_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type create_workspace_page_errors() ::
-    resource_conflict_exception() | 
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type deactivate_evaluation_form_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type delete_attached_file_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
+-type delete_contact_data_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    contact_not_terminated_exception().
 
 -type delete_contact_evaluation_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type delete_contact_flow_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_contact_flow_module_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_contact_flow_module_alias_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_contact_flow_module_version_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_contact_flow_version_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_data_table_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type delete_data_table_attribute_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type delete_email_address_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_evaluation_form_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type delete_hours_of_operation_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type delete_hours_of_operation_override_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type delete_instance_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type delete_integration_association_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type delete_notification_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_predefined_attribute_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
 
 -type delete_prompt_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type delete_push_notification_registration_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_queue_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
 
 -type delete_quick_connect_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type delete_routing_profile_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
 
 -type delete_rule_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_security_profile_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
+
+-type delete_session_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_task_template_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type delete_test_case_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_traffic_distribution_group_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_in_use_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type delete_use_case_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type delete_user_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type delete_user_hierarchy_group_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
 
 -type delete_view_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type delete_view_version_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type delete_vocabulary_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type delete_workspace_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type delete_workspace_media_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type delete_workspace_page_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_agent_status_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_attached_files_configuration_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_authentication_profile_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_contact_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_contact_evaluation_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_contact_flow_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
     contact_flow_not_published_exception().
 
 -type describe_contact_flow_module_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_contact_flow_module_alias_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_data_table_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_data_table_attribute_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_email_address_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_evaluation_form_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_hours_of_operation_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_hours_of_operation_override_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_instance_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type describe_instance_attribute_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_instance_storage_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_notification_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_phone_number_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_predefined_attribute_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_prompt_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_queue_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_quick_connect_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_routing_profile_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_rule_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_security_profile_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_test_case_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_traffic_distribution_group_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_user_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_user_hierarchy_group_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_user_hierarchy_structure_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type describe_view_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_vocabulary_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_workspace_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type disassociate_analytics_data_set_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type disassociate_approved_origin_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type disassociate_bot_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type disassociate_email_address_alias_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type disassociate_flow_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type disassociate_hours_of_operations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    conditional_operation_failed_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    conditional_operation_failed_exception().
 
 -type disassociate_instance_storage_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type disassociate_lambda_function_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type disassociate_lex_bot_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type disassociate_phone_number_contact_flow_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type disassociate_queue_email_addresses_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type disassociate_queue_quick_connects_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type disassociate_routing_profile_queues_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type disassociate_security_key_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type disassociate_security_profiles_errors() ::
-    resource_conflict_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    conditional_operation_failed_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    conditional_operation_failed_exception() | 
+    access_denied_exception().
 
 -type disassociate_traffic_distribution_group_user_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type disassociate_user_proficiencies_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type disassociate_workspace_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type dismiss_user_contact_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type evaluate_data_table_values_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type get_attached_file_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type get_contact_attributes_errors() ::
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type get_contact_metrics_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type get_current_metric_data_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type get_current_user_data_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type get_effective_hours_of_operations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type get_evaluation_form_validation_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type get_federation_token_errors() ::
-    duplicate_resource_exception() | 
-    invalid_parameter_exception() | 
     user_not_found_exception() | 
-    invalid_request_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type get_flow_association_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type get_metric_data_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type get_metric_data_v2_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type get_prompt_file_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type get_task_template_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type get_test_case_execution_summary_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type get_traffic_distribution_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type import_phone_number_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type import_workspace_media_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_agent_statuses_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_analytics_data_associations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_analytics_data_lake_data_sets_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_approved_origins_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_associated_contacts_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_attached_files_configurations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_authentication_profiles_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_bots_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type list_child_hours_of_operations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_contact_evaluations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_contact_flow_module_aliases_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_contact_flow_module_versions_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_contact_flow_modules_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_contact_flow_versions_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_contact_flows_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_contact_references_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_data_table_attributes_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_data_table_primary_values_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_data_table_values_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_data_tables_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_default_vocabularies_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_request_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_entity_security_profiles_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_evaluation_form_versions_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_evaluation_forms_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_flow_associations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_hours_of_operation_overrides_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_hours_of_operations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_instance_attributes_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_instance_storage_configs_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_instances_errors() ::
@@ -13264,1288 +13423,1296 @@
 
 -type list_integration_associations_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type list_lambda_functions_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_lex_bots_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_notifications_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_phone_numbers_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_phone_numbers_v2_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_predefined_attributes_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_prompts_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_queue_email_addresses_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_queue_quick_connects_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_queues_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_quick_connects_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_realtime_contact_analysis_segments_v2_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    output_type_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_exception() | 
-    output_type_not_found_exception().
+    access_denied_exception().
 
 -type list_routing_profile_manual_assignment_queues_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_routing_profile_queues_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_routing_profiles_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_rules_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_security_keys_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_security_profile_applications_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_security_profile_flow_modules_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_security_profile_permissions_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_security_profiles_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_task_templates_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_test_case_execution_records_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_test_case_executions_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_test_cases_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_traffic_distribution_group_users_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_traffic_distribution_groups_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_request_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_use_cases_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_exception().
 
 -type list_user_hierarchy_groups_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_user_notifications_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_user_proficiencies_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_users_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type list_view_versions_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_views_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    internal_service_exception().
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_workspace_media_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_workspace_pages_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_workspaces_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type monitor_contact_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type pause_contact_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type put_user_status_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type release_phone_number_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type replicate_instance_errors() ::
-    resource_conflict_exception() | 
-    resource_not_ready_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type resume_contact_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type resume_contact_recording_errors() ::
-    invalid_active_region_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_active_region_exception() | 
     internal_service_exception().
 
 -type search_agent_statuses_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_available_phone_numbers_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_contact_evaluations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_contact_flow_modules_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_contact_flows_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_contacts_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_data_tables_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_email_addresses_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_evaluation_forms_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_hours_of_operation_overrides_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_hours_of_operations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_notifications_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_predefined_attributes_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_prompts_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_queues_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_quick_connects_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_resource_tags_errors() ::
-    maximum_result_returned_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    maximum_result_returned_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_routing_profiles_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
+
+-type search_rules_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_security_profiles_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_test_cases_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_user_hierarchy_groups_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_users_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type search_views_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_vocabularies_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_request_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_workspace_associations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_workspaces_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type send_chat_integration_event_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type send_outbound_email_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type send_outbound_web_notification_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type start_attached_file_upload_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
+    resource_conflict_exception() | 
     invalid_request_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type start_chat_contact_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type start_contact_conversational_analytics_job_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type start_contact_evaluation_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type start_contact_media_processing_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type start_contact_recording_errors() ::
-    invalid_active_region_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    invalid_active_region_exception() | 
     internal_service_exception().
 
 -type start_contact_streaming_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type start_email_contact_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type start_evaluation_form_validation_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type start_outbound_chat_contact_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type start_outbound_email_contact_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type start_outbound_voice_contact_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    destination_not_allowed_exception() | 
+    outbound_contact_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    outbound_contact_not_permitted_exception().
+    destination_not_allowed_exception().
 
 -type start_screen_sharing_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type start_task_contact_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type start_test_case_execution_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type start_web_r_t_c_contact_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type stop_contact_errors() ::
-    invalid_active_region_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    invalid_active_region_exception() | 
     internal_service_exception() | 
     contact_not_found_exception().
 
 -type stop_contact_media_processing_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type stop_contact_recording_errors() ::
-    invalid_active_region_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_active_region_exception() | 
     internal_service_exception().
 
 -type stop_contact_streaming_errors() ::
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type stop_test_case_execution_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type submit_contact_evaluation_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type suspend_contact_recording_errors() ::
-    invalid_active_region_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_active_region_exception() | 
     internal_service_exception().
 
 -type tag_contact_errors() ::
     throttling_exception() | 
-    invalid_active_region_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    invalid_active_region_exception() | 
     internal_service_exception().
 
 -type tag_resource_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type transfer_contact_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type untag_contact_errors() ::
     throttling_exception() | 
-    invalid_active_region_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    invalid_active_region_exception() | 
     internal_service_exception().
 
 -type untag_resource_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_agent_status_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type update_attached_files_configuration_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type update_authentication_profile_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_contact_errors() ::
     throttling_exception() | 
-    invalid_active_region_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    invalid_active_region_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type update_contact_attributes_errors() ::
-    invalid_active_region_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    invalid_active_region_exception() | 
     internal_service_exception().
 
 -type update_contact_evaluation_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_contact_flow_content_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception() | 
-    invalid_contact_flow_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    invalid_contact_flow_exception() | 
+    internal_service_exception().
 
 -type update_contact_flow_metadata_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type update_contact_flow_module_alias_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    conditional_operation_failed_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    conditional_operation_failed_exception() | 
+    access_denied_exception().
 
 -type update_contact_flow_module_content_errors() ::
     throttling_exception() | 
-    invalid_contact_flow_module_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_contact_flow_module_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type update_contact_flow_module_metadata_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type update_contact_flow_name_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type update_contact_routing_data_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_active_region_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
+    invalid_active_region_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type update_contact_schedule_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_data_table_attribute_errors() ::
-    limit_exceeded_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type update_data_table_metadata_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type update_data_table_primary_values_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type update_email_address_metadata_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type update_evaluation_form_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_hours_of_operation_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type update_hours_of_operation_override_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    conditional_operation_failed_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    conditional_operation_failed_exception().
 
 -type update_instance_attribute_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_instance_storage_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_notification_content_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type update_participant_authentication_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
     conflict_exception() | 
-    internal_service_exception().
+    access_denied_exception().
 
 -type update_participant_role_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type update_phone_number_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type update_phone_number_metadata_errors() ::
     throttling_exception() | 
-    idempotency_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    idempotency_exception() | 
+    access_denied_exception().
 
 -type update_predefined_attribute_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_prompt_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_queue_hours_of_operation_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_queue_max_contacts_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_queue_name_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type update_queue_outbound_caller_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_queue_outbound_email_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    conditional_operation_failed_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    conditional_operation_failed_exception() | 
+    access_denied_exception().
 
 -type update_queue_status_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_quick_connect_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_quick_connect_name_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_routing_profile_agent_availability_timer_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_routing_profile_concurrency_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_routing_profile_default_outbound_queue_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_routing_profile_name_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type update_routing_profile_queues_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_rule_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type update_security_profile_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_task_template_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception() | 
-    property_validation_exception().
+    property_validation_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
 
 -type update_test_case_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_test_case_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    invalid_test_case_exception().
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type update_traffic_distribution_errors() ::
-    resource_conflict_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type update_user_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    conditional_operation_failed_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    conditional_operation_failed_exception().
 
 -type update_user_hierarchy_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_user_hierarchy_group_name_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception().
 
 -type update_user_hierarchy_structure_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
 
 -type update_user_identity_info_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_user_notification_status_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type update_user_phone_config_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_user_proficiencies_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_user_routing_profile_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_user_security_profiles_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception().
 
 -type update_view_content_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type update_view_metadata_errors() ::
-    duplicate_resource_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     internal_service_exception() | 
-    resource_in_use_exception().
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type update_workspace_metadata_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type update_workspace_page_errors() ::
-    resource_conflict_exception() | 
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type update_workspace_theme_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type update_workspace_visibility_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -14717,8 +14884,12 @@ associate_bot(Client, InstanceId, Input0, Options0) ->
 %%
 %% Important things to know
 %%
-%% Use this API with chat, email, and task contacts. It does not support
-%% voice contacts.
+%% Use this API with chat, email, task, and voice contacts. For voice
+%% callbacks, this API does not support customer-first mode.
+%%
+%% This API can be used to offer a contact to an agent even if the agent is
+%% currently at maximum concurrency
+%% for the channel.
 %%
 %% Use it to associate contacts with users regardless of their current state,
 %% including custom states. Ensure
@@ -14965,10 +15136,10 @@ associate_flow(Client, InstanceId, Input0, Options0) ->
 %% @doc Associates a set of hours of operations with another hours of
 %% operation.
 %%
-%% Refer to Administrator Guide here :
+%% For more information about inheriting overrides from parent hours of
+%% operation, see Hours of operation overrides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/hours-of-operation-overrides.html
-%% for more information on inheriting overrides from parent hours of
-%% operation(s).
+%% in the Administrator Guide.
 -spec associate_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list(), associate_hours_of_operations_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -16042,6 +16213,45 @@ create_attached_file(Client, InstanceId, Input0, Options0) ->
                      {<<"associatedResourceArn">>, <<"AssociatedResourceArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an authorization code for the specified Connect Customer
+%% instance.
+%%
+%% The authorization code can be used
+%% to establish a session with scoped permissions defined by the specified
+%% scope parameters.
+-spec create_auth_code(aws_client:aws_client(), binary() | list(), create_auth_code_request()) ->
+    {ok, create_auth_code_response(), tuple()} |
+    {error, any()} |
+    {error, create_auth_code_errors(), tuple()}.
+create_auth_code(Client, InstanceId, Input) ->
+    create_auth_code(Client, InstanceId, Input, []).
+
+-spec create_auth_code(aws_client:aws_client(), binary() | list(), create_auth_code_request(), proplists:proplist()) ->
+    {ok, create_auth_code_response(), tuple()} |
+    {error, any()} |
+    {error, create_auth_code_errors(), tuple()}.
+create_auth_code(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/auth/code/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
@@ -17612,6 +17822,56 @@ delete_attached_file(Client, FileId, InstanceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified fields containing personally identifiable
+%% information (PII) from a
+%% contact in the specified Connect Customer instance.
+%%
+%% This operation redacts PII (such as
+%% customer endpoints, additional email recipients, and the email subject)
+%% from the contact and its
+%% associated contact trace record (CTR). The contact must be in a terminated
+%% state.
+%%
+%% This operation performs a hard deletion of the specified PII and cannot be
+%% undone. There is
+%% no retention period; after the data is deleted, it cannot be recovered.
+%% Only fields that
+%% Connect Customer identifies and stores as PII are removed. Any PII that
+%% you place in fields
+%% outside the scope of this operation remains your responsibility to remove.
+-spec delete_contact_data(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_data_request()) ->
+    {ok, delete_contact_data_response(), tuple()} |
+    {error, any()} |
+    {error, delete_contact_data_errors(), tuple()}.
+delete_contact_data(Client, ContactId, InstanceId, Input) ->
+    delete_contact_data(Client, ContactId, InstanceId, Input, []).
+
+-spec delete_contact_data(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_data_request(), proplists:proplist()) ->
+    {ok, delete_contact_data_response(), tuple()} |
+    {error, any()} |
+    {error, delete_contact_data_errors(), tuple()}.
+delete_contact_data(Client, ContactId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/delete/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a contact evaluation in the specified Connect Customer
 %% instance.
 -spec delete_contact_evaluation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_evaluation_request()) ->
@@ -18437,6 +18697,40 @@ delete_security_profile(Client, InstanceId, SecurityProfileId, Input) ->
 delete_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a session for the specified Connect Customer instance.
+-spec delete_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_session_request()) ->
+    {ok, delete_session_response(), tuple()} |
+    {error, any()} |
+    {error, delete_session_errors(), tuple()}.
+delete_session(Client, InstanceId, SessionId, Input) ->
+    delete_session(Client, InstanceId, SessionId, Input, []).
+
+-spec delete_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_session_request(), proplists:proplist()) ->
+    {ok, delete_session_response(), tuple()} |
+    {error, any()} |
+    {error, delete_session_errors(), tuple()}.
+delete_session(Client, InstanceId, SessionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/auth/sessions/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -20625,10 +20919,10 @@ disassociate_flow(Client, InstanceId, ResourceId, ResourceType, Input0, Options0
 %% @doc Disassociates a set of hours of operations with another hours of
 %% operation.
 %%
-%% Refer to Administrator Guide here :
+%% For more information about inheriting overrides from parent hours of
+%% operation, see Hours of operation overrides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/hours-of-operation-overrides.html
-%% for more information on inheriting overrides from parent hours of
-%% operation(s).
+%% in the Administrator Guide.
 -spec disassociate_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_hours_of_operations_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -22397,7 +22691,8 @@ list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap, Options0)
 %%
 %% For more information about child hours of operations, see Link overrides
 %% from different hours of operation:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/ in the
+%% https://docs.aws.amazon.com/connect/latest/adminguide/hours-of-operation-overrides.html
+%% in the
 %% Administrator Guide.
 -spec list_child_hours_of_operations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_child_hours_of_operations_response(), tuple()} |
@@ -26184,6 +26479,41 @@ search_routing_profiles(Client, Input) ->
 search_routing_profiles(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-routing-profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches rules in an Connect Customer instance, with optional
+%% filtering.
+-spec search_rules(aws_client:aws_client(), search_rules_request()) ->
+    {ok, search_rules_response(), tuple()} |
+    {error, any()} |
+    {error, search_rules_errors(), tuple()}.
+search_rules(Client, Input) ->
+    search_rules(Client, Input, []).
+
+-spec search_rules(aws_client:aws_client(), search_rules_request(), proplists:proplist()) ->
+    {ok, search_rules_response(), tuple()} |
+    {error, any()} |
+    {error, search_rules_errors(), tuple()}.
+search_rules(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-rules"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

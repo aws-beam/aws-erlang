@@ -40,6 +40,12 @@
          get_profile_update_task/3,
          get_profile_visibility/2,
          get_profile_visibility/3,
+         get_qualifications_association_details/2,
+         get_qualifications_association_details/3,
+         get_qualifications_association_task/2,
+         get_qualifications_association_task/3,
+         get_qualifications_disassociation_task/2,
+         get_qualifications_disassociation_task/3,
          get_verification/2,
          get_verification/3,
          list_connection_invitations/2,
@@ -60,6 +66,10 @@
          send_email_verification_code/3,
          start_profile_update_task/2,
          start_profile_update_task/3,
+         start_qualifications_association_task/2,
+         start_qualifications_association_task/3,
+         start_qualifications_disassociation_task/2,
+         start_qualifications_disassociation_task/3,
          start_verification/2,
          start_verification/3,
          tag_resource/2,
@@ -73,79 +83,12 @@
 
 
 %% Example:
-%% get_profile_update_task_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type get_profile_update_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_connection_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type get_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_connection_request() :: #{
+%% accept_connection_invitation_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> := string(),
-%%   <<"ConnectionType">> := list(any()),
-%%   <<"Identifier">> := string(),
-%%   <<"Reason">> := [string()]
+%%   <<"Identifier">> := string()
 %% }
--type cancel_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_verification_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"VerificationDetails">> => list()
-%% }
--type start_verification_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_profile_visibility_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ProfileId">> => string(),
-%%   <<"Visibility">> => list(any())
-%% }
--type put_profile_visibility_response() :: #{binary() => any()}.
-
-%% Example:
-%% partner_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LegalName">> => string()
-%% }
--type partner_summary() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_connection_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"ConnectionTypes">> => map(),
-%%   <<"Id">> => string(),
-%%   <<"OtherParticipantAccountId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type get_connection_response() :: #{binary() => any()}.
+-type accept_connection_invitation_request() :: #{binary() => any()}.
 
 %% Example:
 %% accept_connection_invitation_response() :: #{
@@ -154,71 +97,26 @@
 -type accept_connection_invitation_response() :: #{binary() => any()}.
 
 %% Example:
-%% business_verification_details() :: #{
-%%   <<"CountryCode">> => string(),
-%%   <<"JurisdictionOfIncorporation">> => string(),
-%%   <<"LegalName">> => string(),
-%%   <<"RegistrationId">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
 %% }
--type business_verification_details() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_connection_invitations_response() :: #{
-%%   <<"ConnectionInvitationSummaries">> => list(connection_invitation_summary()),
-%%   <<"NextToken">> => string()
+%% account_summary() :: #{
+%%   <<"Name">> => string()
 %% }
--type list_connection_invitations_response() :: #{binary() => any()}.
+-type account_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_connections_response() :: #{
-%%   <<"ConnectionSummaries">> => list(connection_summary()),
-%%   <<"NextToken">> => string()
+%% alliance_lead_contact() :: #{
+%%   <<"BusinessTitle">> => string(),
+%%   <<"Email">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string()
 %% }
--type list_connections_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_partner_request() :: #{
-%%   <<"AllianceLeadContact">> := alliance_lead_contact(),
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"EmailVerificationCode">> := string(),
-%%   <<"LegalName">> := string(),
-%%   <<"PrimarySolutionType">> := list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_partner_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_connection_invitation_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type get_connection_invitation_request() :: #{binary() => any()}.
-
-%% Example:
-%% connection_type_summary() :: #{
-%%   <<"OtherParticipant">> => list(),
-%%   <<"Status">> => list(any())
-%% }
--type connection_type_summary() :: #{binary() => any()}.
-
-%% Example:
-%% connection_type_detail() :: #{
-%%   <<"CanceledAt">> => non_neg_integer(),
-%%   <<"CanceledBy">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"InviterEmail">> => string(),
-%%   <<"InviterName">> => string(),
-%%   <<"OtherParticipant">> => list(),
-%%   <<"Status">> => list(any())
-%% }
--type connection_type_detail() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_aws_training_certification_email_domain_response() :: #{
-
-%% }
--type disassociate_aws_training_certification_email_domain_response() :: #{binary() => any()}.
+-type alliance_lead_contact() :: #{binary() => any()}.
 
 %% Example:
 %% associate_aws_training_certification_email_domain_request() :: #{
@@ -231,38 +129,10 @@
 -type associate_aws_training_certification_email_domain_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_partners_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_partners_request() :: #{binary() => any()}.
+%% associate_aws_training_certification_email_domain_response() :: #{
 
-%% Example:
-%% partner_profile() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IndustrySegments">> => list(list(any())()),
-%%   <<"LocalizedContents">> => list(localized_content()),
-%%   <<"LogoUrl">> => string(),
-%%   <<"PrimarySolutionType">> => list(any()),
-%%   <<"ProfileId">> => string(),
-%%   <<"TranslationSourceLocale">> => string(),
-%%   <<"WebsiteUrl">> => string()
 %% }
--type partner_profile() :: #{binary() => any()}.
-
-%% Example:
-%% get_connection_preferences_request() :: #{
-%%   <<"Catalog">> := string()
-%% }
--type get_connection_preferences_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type associate_aws_training_certification_email_domain_response() :: #{binary() => any()}.
 
 %% Example:
 %% business_validation_error() :: #{
@@ -270,6 +140,15 @@
 %%   <<"Message">> => [string()]
 %% }
 -type business_validation_error() :: #{binary() => any()}.
+
+%% Example:
+%% business_verification_details() :: #{
+%%   <<"CountryCode">> => string(),
+%%   <<"JurisdictionOfIncorporation">> => string(),
+%%   <<"LegalName">> => string(),
+%%   <<"RegistrationId">> => string()
+%% }
+-type business_verification_details() :: #{binary() => any()}.
 
 %% Example:
 %% business_verification_response() :: #{
@@ -280,127 +159,12 @@
 -type business_verification_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_profile_visibility_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string(),
-%%   <<"Visibility">> := list(any())
-%% }
--type put_profile_visibility_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_partners_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PartnerSummaryList">> => list(partner_summary())
-%% }
--type list_partners_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_profile_update_task_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Identifier">> := string(),
-%%   <<"TaskDetails">> := task_details()
-%% }
--type start_profile_update_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% accept_connection_invitation_request() :: #{
+%% cancel_connection_invitation_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> := string(),
 %%   <<"Identifier">> := string()
 %% }
--type accept_connection_invitation_request() :: #{binary() => any()}.
-
-%% Example:
-%% reject_connection_invitation_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"ConnectionId">> => string(),
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ExpiresAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"InvitationMessage">> => string(),
-%%   <<"InviterEmail">> => string(),
-%%   <<"InviterName">> => string(),
-%%   <<"OtherParticipantIdentifier">> => string(),
-%%   <<"ParticipantType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type reject_connection_invitation_response() :: #{binary() => any()}.
-
-%% Example:
-%% registrant_verification_details() :: #{
-
-%% }
--type registrant_verification_details() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_invitation_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"ConnectionId">> => string(),
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ExpiresAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"InvitationMessage">> => string(),
-%%   <<"InviterEmail">> => string(),
-%%   <<"InviterName">> => string(),
-%%   <<"OtherParticipantIdentifier">> => string(),
-%%   <<"ParticipantType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type create_connection_invitation_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_connections_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ConnectionType">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OtherParticipantIdentifiers">> => list(string())
-%% }
--type list_connections_request() :: #{binary() => any()}.
-
-%% Example:
-%% partner_domain() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"RegisteredAt">> => non_neg_integer()
-%% }
--type partner_domain() :: #{binary() => any()}.
-
-%% Example:
-%% put_alliance_lead_contact_request() :: #{
-%%   <<"AllianceLeadContact">> := alliance_lead_contact(),
-%%   <<"Catalog">> := string(),
-%%   <<"EmailVerificationCode">> => string(),
-%%   <<"Identifier">> := string()
-%% }
--type put_alliance_lead_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
+-type cancel_connection_invitation_request() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_connection_invitation_response() :: #{
@@ -422,22 +186,55 @@
 -type cancel_connection_invitation_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_connection_invitation_request() :: #{
+%% cancel_connection_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> := string(),
 %%   <<"ConnectionType">> := list(any()),
-%%   <<"Email">> := string(),
-%%   <<"Message">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"ReceiverIdentifier">> := string()
+%%   <<"Identifier">> := string(),
+%%   <<"Reason">> := [string()]
 %% }
--type create_connection_invitation_request() :: #{binary() => any()}.
+-type cancel_connection_request() :: #{binary() => any()}.
 
 %% Example:
-%% send_email_verification_code_response() :: #{
-
+%% cancel_connection_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"ConnectionTypes">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"OtherParticipantAccountId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type send_email_verification_code_response() :: #{binary() => any()}.
+-type cancel_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_profile_update_task_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Identifier">> := string(),
+%%   <<"TaskId">> := string()
+%% }
+-type cancel_profile_update_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_profile_update_task_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"ErrorDetailList">> => list(error_detail()),
+%%   <<"Id">> => string(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskDetails">> => task_details(),
+%%   <<"TaskId">> => string()
+%% }
+-type cancel_profile_update_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
 %% connection() :: #{
@@ -451,27 +248,93 @@
 -type connection() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
+%% connection_invitation_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"OtherParticipantIdentifier">> => string(),
+%%   <<"ParticipantType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type connection_invitation_summary() :: #{binary() => any()}.
 
 %% Example:
-%% get_partner_request() :: #{
+%% connection_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"ConnectionTypes">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"OtherParticipantAccountId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type connection_summary() :: #{binary() => any()}.
+
+%% Example:
+%% connection_type_detail() :: #{
+%%   <<"CanceledAt">> => non_neg_integer(),
+%%   <<"CanceledBy">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"InviterEmail">> => string(),
+%%   <<"InviterName">> => string(),
+%%   <<"OtherParticipant">> => list(),
+%%   <<"Status">> => list(any())
+%% }
+-type connection_type_detail() :: #{binary() => any()}.
+
+%% Example:
+%% connection_type_summary() :: #{
+%%   <<"OtherParticipant">> => list(),
+%%   <<"Status">> => list(any())
+%% }
+-type connection_type_summary() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_invitation_request() :: #{
 %%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
+%%   <<"ClientToken">> := string(),
+%%   <<"ConnectionType">> := list(any()),
+%%   <<"Email">> := string(),
+%%   <<"Message">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"ReceiverIdentifier">> := string()
 %% }
--type get_partner_request() :: #{binary() => any()}.
+-type create_connection_invitation_request() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_profile_update_task_request() :: #{
+%% create_connection_invitation_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"InvitationMessage">> => string(),
+%%   <<"InviterEmail">> => string(),
+%%   <<"InviterName">> => string(),
+%%   <<"OtherParticipantIdentifier">> => string(),
+%%   <<"ParticipantType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type create_connection_invitation_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_partner_request() :: #{
+%%   <<"AllianceLeadContact">> := alliance_lead_contact(),
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> => string(),
-%%   <<"Identifier">> := string(),
-%%   <<"TaskId">> := string()
+%%   <<"EmailVerificationCode">> := string(),
+%%   <<"LegalName">> := string(),
+%%   <<"PrimarySolutionType">> := list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type cancel_profile_update_task_request() :: #{binary() => any()}.
+-type create_partner_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_partner_response() :: #{
@@ -487,25 +350,58 @@
 -type create_partner_response() :: #{binary() => any()}.
 
 %% Example:
-%% partner_profile_summary() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
+%% disassociate_aws_training_certification_email_domain_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DomainName">> := string(),
+%%   <<"Identifier">> := string()
 %% }
--type partner_profile_summary() :: #{binary() => any()}.
+-type disassociate_aws_training_certification_email_domain_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_profile_update_task_response() :: #{
+%% disassociate_aws_training_certification_email_domain_response() :: #{
+
+%% }
+-type disassociate_aws_training_certification_email_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"Locale">> => [string()],
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+%% Example:
+%% field_validation_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => [string()],
+%%   <<"Name">> => [string()]
+%% }
+-type field_validation_error() :: #{binary() => any()}.
+
+%% Example:
+%% get_alliance_lead_contact_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_alliance_lead_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_alliance_lead_contact_response() :: #{
+%%   <<"AllianceLeadContact">> => alliance_lead_contact(),
 %%   <<"Arn">> => string(),
 %%   <<"Catalog">> => string(),
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"ErrorDetailList">> => list(error_detail()),
-%%   <<"Id">> => string(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TaskDetails">> => task_details(),
-%%   <<"TaskId">> => string()
+%%   <<"Id">> => string()
 %% }
--type get_profile_update_task_response() :: #{binary() => any()}.
+-type get_alliance_lead_contact_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connection_invitation_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_connection_invitation_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_connection_invitation_response() :: #{
@@ -527,19 +423,241 @@
 -type get_connection_invitation_response() :: #{binary() => any()}.
 
 %% Example:
-%% alliance_lead_contact() :: #{
-%%   <<"BusinessTitle">> => string(),
-%%   <<"Email">> => string(),
-%%   <<"FirstName">> => string(),
-%%   <<"LastName">> => string()
+%% get_connection_preferences_request() :: #{
+%%   <<"Catalog">> := string()
 %% }
--type alliance_lead_contact() :: #{binary() => any()}.
+-type get_connection_preferences_request() :: #{binary() => any()}.
 
 %% Example:
-%% associate_aws_training_certification_email_domain_response() :: #{
-
+%% get_connection_preferences_response() :: #{
+%%   <<"AccessType">> => list(any()),
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"ExcludedParticipantIds">> => list(string()),
+%%   <<"Revision">> => float(),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type associate_aws_training_certification_email_domain_response() :: #{binary() => any()}.
+-type get_connection_preferences_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connection_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_connection_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"ConnectionTypes">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"OtherParticipantAccountId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_partner_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_partner_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_partner_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AwsTrainingCertificationEmailDomains">> => list(partner_domain()),
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LegalName">> => string(),
+%%   <<"Profile">> => partner_profile()
+%% }
+-type get_partner_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_update_task_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_profile_update_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_update_task_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"ErrorDetailList">> => list(error_detail()),
+%%   <<"Id">> => string(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskDetails">> => task_details(),
+%%   <<"TaskId">> => string()
+%% }
+-type get_profile_update_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_visibility_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_profile_visibility_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_visibility_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type get_profile_visibility_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualifications_association_details_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_qualifications_association_details_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualifications_association_details_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedPartners">> => list(qualifications_association_partner()),
+%%   <<"Catalog">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"PrimaryPartner">> => qualifications_association_partner(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_qualifications_association_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualifications_association_task_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_qualifications_association_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualifications_association_task_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"PrimaryPartner">> => qualifications_association_partner(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskId">> => string()
+%% }
+-type get_qualifications_association_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualifications_disassociation_task_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_qualifications_disassociation_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualifications_disassociation_task_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedPartner">> => qualifications_association_partner(),
+%%   <<"Catalog">> => string(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskId">> => string()
+%% }
+-type get_qualifications_disassociation_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_verification_request() :: #{
+%%   <<"VerificationType">> := list(any())
+%% }
+-type get_verification_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_verification_response() :: #{
+%%   <<"CompletedAt">> => non_neg_integer(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"VerificationResponseDetails">> => list(),
+%%   <<"VerificationStatus">> => list(any()),
+%%   <<"VerificationStatusReason">> => string(),
+%%   <<"VerificationType">> => list(any())
+%% }
+-type get_verification_response() :: #{binary() => any()}.
+
+%% Example:
+%% headquarters() :: #{
+%%   <<"CountryCode">> => string(),
+%%   <<"SubdivisionCode">> => string()
+%% }
+-type headquarters() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_connection_invitations_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OtherParticipantIdentifiers">> => list(string()),
+%%   <<"ParticipantType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type list_connection_invitations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_connection_invitations_response() :: #{
+%%   <<"ConnectionInvitationSummaries">> => list(connection_invitation_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connection_invitations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ConnectionType">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OtherParticipantIdentifiers">> => list(string())
+%% }
+-type list_connections_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_response() :: #{
+%%   <<"ConnectionSummaries">> => list(connection_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connections_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_partners_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_partners_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_partners_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PartnerSummaryList">> => list(partner_summary())
+%% }
+-type list_partners_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -547,6 +665,64 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% localized_content() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Locale">> => string(),
+%%   <<"LogoUrl">> => string(),
+%%   <<"WebsiteUrl">> => string()
+%% }
+-type localized_content() :: #{binary() => any()}.
+
+%% Example:
+%% partner_domain() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"RegisteredAt">> => non_neg_integer()
+%% }
+-type partner_domain() :: #{binary() => any()}.
+
+%% Example:
+%% partner_profile() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Headquarters">> => headquarters(),
+%%   <<"IndustrySegments">> => list(list(any())()),
+%%   <<"LocalizedContents">> => list(localized_content()),
+%%   <<"LogoUrl">> => string(),
+%%   <<"PrimarySolutionType">> => list(any()),
+%%   <<"ProfileId">> => string(),
+%%   <<"TranslationSourceLocale">> => string(),
+%%   <<"WebsiteUrl">> => string()
+%% }
+-type partner_profile() :: #{binary() => any()}.
+
+%% Example:
+%% partner_profile_summary() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type partner_profile_summary() :: #{binary() => any()}.
+
+%% Example:
+%% partner_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LegalName">> => string()
+%% }
+-type partner_summary() :: #{binary() => any()}.
+
+%% Example:
+%% put_alliance_lead_contact_request() :: #{
+%%   <<"AllianceLeadContact">> := alliance_lead_contact(),
+%%   <<"Catalog">> := string(),
+%%   <<"EmailVerificationCode">> => string(),
+%%   <<"Identifier">> := string()
+%% }
+-type put_alliance_lead_contact_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_alliance_lead_contact_response() :: #{
@@ -558,14 +734,113 @@
 -type put_alliance_lead_contact_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_profile_visibility_response() :: #{
+%% put_profile_visibility_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"Visibility">> := list(any())
+%% }
+-type put_profile_visibility_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_profile_visibility_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Catalog">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"ProfileId">> => string(),
 %%   <<"Visibility">> => list(any())
 %% }
--type get_profile_visibility_response() :: #{binary() => any()}.
+-type put_profile_visibility_response() :: #{binary() => any()}.
+
+%% Example:
+%% qualifications_association_partner() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ProfileId">> => string()
+%% }
+-type qualifications_association_partner() :: #{binary() => any()}.
+
+%% Example:
+%% registrant_verification_details() :: #{
+
+%% }
+-type registrant_verification_details() :: #{binary() => any()}.
+
+%% Example:
+%% registrant_verification_response() :: #{
+%%   <<"CompletionUrl">> => string(),
+%%   <<"CompletionUrlExpiresAt">> => non_neg_integer()
+%% }
+-type registrant_verification_response() :: #{binary() => any()}.
+
+%% Example:
+%% reject_connection_invitation_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"Reason">> => [string()]
+%% }
+-type reject_connection_invitation_request() :: #{binary() => any()}.
+
+%% Example:
+%% reject_connection_invitation_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"ConnectionId">> => string(),
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"InvitationMessage">> => string(),
+%%   <<"InviterEmail">> => string(),
+%%   <<"InviterName">> => string(),
+%%   <<"OtherParticipantIdentifier">> => string(),
+%%   <<"ParticipantType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type reject_connection_invitation_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% seller_profile_summary() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type seller_profile_summary() :: #{binary() => any()}.
+
+%% Example:
+%% send_email_verification_code_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Email">> := string()
+%% }
+-type send_email_verification_code_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_email_verification_code_response() :: #{
+
+%% }
+-type send_email_verification_code_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_profile_update_task_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Identifier">> := string(),
+%%   <<"TaskDetails">> := task_details()
+%% }
+-type start_profile_update_task_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_profile_update_task_response() :: #{
@@ -582,72 +857,53 @@
 -type start_profile_update_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% account_summary() :: #{
-%%   <<"Name">> => string()
-%% }
--type account_summary() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_aws_training_certification_email_domain_request() :: #{
+%% start_qualifications_association_task_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> => string(),
-%%   <<"DomainName">> := string(),
-%%   <<"Identifier">> := string()
+%%   <<"Identifier">> := string(),
+%%   <<"PrimaryPartner">> := qualifications_association_partner()
 %% }
--type disassociate_aws_training_certification_email_domain_request() :: #{binary() => any()}.
+-type start_qualifications_association_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_profile_visibility_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type get_profile_visibility_request() :: #{binary() => any()}.
-
-%% Example:
-%% localized_content() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Locale">> => string(),
-%%   <<"LogoUrl">> => string(),
-%%   <<"WebsiteUrl">> => string()
-%% }
--type localized_content() :: #{binary() => any()}.
-
-%% Example:
-%% registrant_verification_response() :: #{
-%%   <<"CompletionUrl">> => string(),
-%%   <<"CompletionUrlExpiresAt">> => non_neg_integer()
-%% }
--type registrant_verification_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_profile_update_task_response() :: #{
+%% start_qualifications_association_task_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Catalog">> => string(),
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"ErrorDetailList">> => list(error_detail()),
+%%   <<"Id">> => string(),
+%%   <<"PrimaryPartner">> => qualifications_association_partner(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskId">> => string()
+%% }
+-type start_qualifications_association_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_qualifications_disassociation_task_request() :: #{
+%%   <<"AssociatedPartner">> := qualifications_association_partner(),
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Identifier">> := string()
+%% }
+-type start_qualifications_disassociation_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_qualifications_disassociation_task_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedPartner">> => qualifications_association_partner(),
+%%   <<"Catalog">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"StartedAt">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"TaskDetails">> => task_details(),
 %%   <<"TaskId">> => string()
 %% }
--type cancel_profile_update_task_response() :: #{binary() => any()}.
+-type start_qualifications_disassociation_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% reject_connection_invitation_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"Identifier">> := string(),
-%%   <<"Reason">> => [string()]
+%% start_verification_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"VerificationDetails">> => list()
 %% }
--type reject_connection_invitation_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
+-type start_verification_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_verification_response() :: #{
@@ -661,28 +917,18 @@
 -type start_verification_response() :: #{binary() => any()}.
 
 %% Example:
-%% error_detail() :: #{
-%%   <<"Locale">> => [string()],
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type error_detail() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_alliance_lead_contact_response() :: #{
-%%   <<"AllianceLeadContact">> => alliance_lead_contact(),
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"Id">> => string()
-%% }
--type get_alliance_lead_contact_response() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
@@ -691,55 +937,18 @@
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_verification_response() :: #{
-%%   <<"CompletedAt">> => non_neg_integer(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"VerificationResponseDetails">> => list(),
-%%   <<"VerificationStatus">> => list(any()),
-%%   <<"VerificationStatusReason">> => string(),
-%%   <<"VerificationType">> => list(any())
+%% task_details() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Headquarters">> => headquarters(),
+%%   <<"IndustrySegments">> => list(list(any())()),
+%%   <<"LocalizedContents">> => list(localized_content()),
+%%   <<"LogoUrl">> => string(),
+%%   <<"PrimarySolutionType">> => list(any()),
+%%   <<"TranslationSourceLocale">> => string(),
+%%   <<"WebsiteUrl">> => string()
 %% }
--type get_verification_response() :: #{binary() => any()}.
-
-%% Example:
-%% connection_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"ConnectionTypes">> => map(),
-%%   <<"Id">> => string(),
-%%   <<"OtherParticipantAccountId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type connection_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_alliance_lead_contact_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Identifier">> := string()
-%% }
--type get_alliance_lead_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% field_validation_error() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => [string()],
-%%   <<"Name">> => [string()]
-%% }
--type field_validation_error() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"ErrorDetails">> => list(list()),
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type task_details() :: #{binary() => any()}.
 
 %% Example:
 %% throttling_exception() :: #{
@@ -750,25 +959,17 @@
 -type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% seller_profile_summary() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type seller_profile_summary() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_verification_request() :: #{
-%%   <<"VerificationType">> := list(any())
-%% }
--type get_verification_request() :: #{binary() => any()}.
+%% untag_resource_response() :: #{
 
-%% Example:
-%% cancel_connection_invitation_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ClientToken">> := string(),
-%%   <<"Identifier">> := string()
 %% }
--type cancel_connection_invitation_request() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_connection_preferences_request() :: #{
@@ -778,88 +979,6 @@
 %%   <<"Revision">> := float()
 %% }
 -type update_connection_preferences_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_connection_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"ConnectionTypes">> => map(),
-%%   <<"Id">> => string(),
-%%   <<"OtherParticipantAccountId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type cancel_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_partner_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AwsTrainingCertificationEmailDomains">> => list(partner_domain()),
-%%   <<"Catalog">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LegalName">> => string(),
-%%   <<"Profile">> => partner_profile()
-%% }
--type get_partner_response() :: #{binary() => any()}.
-
-%% Example:
-%% send_email_verification_code_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"Email">> := string()
-%% }
--type send_email_verification_code_request() :: #{binary() => any()}.
-
-%% Example:
-%% connection_invitation_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"ConnectionId">> => string(),
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ExpiresAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"OtherParticipantIdentifier">> => string(),
-%%   <<"ParticipantType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type connection_invitation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_connection_invitations_request() :: #{
-%%   <<"Catalog">> := string(),
-%%   <<"ConnectionType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OtherParticipantIdentifiers">> => list(string()),
-%%   <<"ParticipantType">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type list_connection_invitations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_connection_preferences_response() :: #{
-%%   <<"AccessType">> => list(any()),
-%%   <<"Arn">> => string(),
-%%   <<"Catalog">> => string(),
-%%   <<"ExcludedParticipantIds">> => list(string()),
-%%   <<"Revision">> => float(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type get_connection_preferences_response() :: #{binary() => any()}.
-
-%% Example:
-%% task_details() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IndustrySegments">> => list(list(any())()),
-%%   <<"LocalizedContents">> => list(localized_content()),
-%%   <<"LogoUrl">> => string(),
-%%   <<"PrimarySolutionType">> => list(any()),
-%%   <<"TranslationSourceLocale">> => string(),
-%%   <<"WebsiteUrl">> => string()
-%% }
--type task_details() :: #{binary() => any()}.
 
 %% Example:
 %% update_connection_preferences_response() :: #{
@@ -872,219 +991,264 @@
 %% }
 -type update_connection_preferences_response() :: #{binary() => any()}.
 
+%% Example:
+%% validation_exception() :: #{
+%%   <<"ErrorDetails">> => list(list()),
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type accept_connection_invitation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_aws_training_certification_email_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_connection_invitation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_profile_update_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_connection_invitation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_partner_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_aws_training_certification_email_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_alliance_lead_contact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_connection_invitation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_connection_preferences_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_partner_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_profile_update_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_profile_visibility_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
+
+-type get_qualifications_association_details_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_qualifications_association_task_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_qualifications_disassociation_task_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_verification_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_connection_invitations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_connections_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_partners_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_alliance_lead_contact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_profile_visibility_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type reject_connection_invitation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type send_email_verification_code_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type start_profile_update_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type start_qualifications_association_task_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type start_qualifications_disassociation_task_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_verification_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_connection_preferences_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -1359,6 +1523,67 @@ get_profile_visibility(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProfileVisibility">>, Input, Options).
 
+%% @doc Returns your current qualifications association status, the primary
+%% partner, and the full list of partners associated under the primary
+%% partner.
+-spec get_qualifications_association_details(aws_client:aws_client(), get_qualifications_association_details_request()) ->
+    {ok, get_qualifications_association_details_response(), tuple()} |
+    {error, any()} |
+    {error, get_qualifications_association_details_errors(), tuple()}.
+get_qualifications_association_details(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_qualifications_association_details(Client, Input, []).
+
+-spec get_qualifications_association_details(aws_client:aws_client(), get_qualifications_association_details_request(), proplists:proplist()) ->
+    {ok, get_qualifications_association_details_response(), tuple()} |
+    {error, any()} |
+    {error, get_qualifications_association_details_errors(), tuple()}.
+get_qualifications_association_details(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetQualificationsAssociationDetails">>, Input, Options).
+
+%% @doc Retrieves the status and details of the most recent qualifications
+%% association task for your partner account.
+%%
+%% Use this operation to poll the progress of an association task initiated
+%% by `StartQualificationsAssociationTask'.
+-spec get_qualifications_association_task(aws_client:aws_client(), get_qualifications_association_task_request()) ->
+    {ok, get_qualifications_association_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_qualifications_association_task_errors(), tuple()}.
+get_qualifications_association_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_qualifications_association_task(Client, Input, []).
+
+-spec get_qualifications_association_task(aws_client:aws_client(), get_qualifications_association_task_request(), proplists:proplist()) ->
+    {ok, get_qualifications_association_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_qualifications_association_task_errors(), tuple()}.
+get_qualifications_association_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetQualificationsAssociationTask">>, Input, Options).
+
+%% @doc Retrieves the status and details of the most recent qualifications
+%% disassociation task for your partner account.
+%%
+%% Use this operation to poll the progress of a disassociation task initiated
+%% by `StartQualificationsDisassociationTask'.
+-spec get_qualifications_disassociation_task(aws_client:aws_client(), get_qualifications_disassociation_task_request()) ->
+    {ok, get_qualifications_disassociation_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_qualifications_disassociation_task_errors(), tuple()}.
+get_qualifications_disassociation_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_qualifications_disassociation_task(Client, Input, []).
+
+-spec get_qualifications_disassociation_task(aws_client:aws_client(), get_qualifications_disassociation_task_request(), proplists:proplist()) ->
+    {ok, get_qualifications_disassociation_task_response(), tuple()} |
+    {error, any()} |
+    {error, get_qualifications_disassociation_task_errors(), tuple()}.
+get_qualifications_disassociation_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetQualificationsDisassociationTask">>, Input, Options).
+
 %% @doc Retrieves the current status and details of a verification process
 %% for a partner account.
 %%
@@ -1541,6 +1766,50 @@ start_profile_update_task(Client, Input)
 start_profile_update_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartProfileUpdateTask">>, Input, Options).
+
+%% @doc Initiates an asynchronous task to associate your partner
+%% qualifications with a primary account.
+%%
+%% You must be a subsidiary of the primary account with an active subsidiary
+%% connection. Use `GetQualificationsAssociationTask' to monitor task
+%% progress.
+-spec start_qualifications_association_task(aws_client:aws_client(), start_qualifications_association_task_request()) ->
+    {ok, start_qualifications_association_task_response(), tuple()} |
+    {error, any()} |
+    {error, start_qualifications_association_task_errors(), tuple()}.
+start_qualifications_association_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_qualifications_association_task(Client, Input, []).
+
+-spec start_qualifications_association_task(aws_client:aws_client(), start_qualifications_association_task_request(), proplists:proplist()) ->
+    {ok, start_qualifications_association_task_response(), tuple()} |
+    {error, any()} |
+    {error, start_qualifications_association_task_errors(), tuple()}.
+start_qualifications_association_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartQualificationsAssociationTask">>, Input, Options).
+
+%% @doc Initiates an asynchronous task to disassociate your partner
+%% qualifications from a primary account.
+%%
+%% You must currently be associated and cannot disassociate if you are the
+%% primary partner. Use `GetQualificationsDisassociationTask' to monitor
+%% task progress.
+-spec start_qualifications_disassociation_task(aws_client:aws_client(), start_qualifications_disassociation_task_request()) ->
+    {ok, start_qualifications_disassociation_task_response(), tuple()} |
+    {error, any()} |
+    {error, start_qualifications_disassociation_task_errors(), tuple()}.
+start_qualifications_disassociation_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_qualifications_disassociation_task(Client, Input, []).
+
+-spec start_qualifications_disassociation_task(aws_client:aws_client(), start_qualifications_disassociation_task_request(), proplists:proplist()) ->
+    {ok, start_qualifications_disassociation_task_response(), tuple()} |
+    {error, any()} |
+    {error, start_qualifications_disassociation_task_errors(), tuple()}.
+start_qualifications_disassociation_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartQualificationsDisassociationTask">>, Input, Options).
 
 %% @doc Initiates a new verification process for a partner account.
 %%

@@ -67,11 +67,84 @@
 
 
 %% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"amznErrorType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_link_input() :: #{
+%%   <<"LabelTemplate">> := string(),
+%%   <<"LinkConfiguration">> => link_configuration(),
+%%   <<"ResourceTypes">> := list(list(any())()),
+%%   <<"SinkIdentifier">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_link_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_link_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => [string()],
+%%   <<"Label">> => [string()],
+%%   <<"LabelTemplate">> => [string()],
+%%   <<"LinkConfiguration">> => link_configuration(),
+%%   <<"ResourceTypes">> => list([string()]()),
+%%   <<"SinkArn">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type create_link_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_sink_input() :: #{
 %%   <<"Name">> := string(),
 %%   <<"Tags">> => map()
 %% }
 -type create_sink_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sink_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type create_sink_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_link_input() :: #{
+%%   <<"Identifier">> := string()
+%% }
+-type delete_link_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_link_output() :: #{}
+-type delete_link_output() :: #{}.
+
+
+%% Example:
+%% delete_sink_input() :: #{
+%%   <<"Identifier">> := string()
+%% }
+-type delete_sink_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sink_output() :: #{}
+-type delete_sink_output() :: #{}.
+
+
+%% Example:
+%% get_link_input() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"IncludeTags">> => boolean()
+%% }
+-type get_link_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -89,75 +162,21 @@
 
 
 %% Example:
-%% delete_link_input() :: #{
-%%   <<"Identifier">> := string()
+%% get_sink_input() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"IncludeTags">> => boolean()
 %% }
--type delete_link_input() :: #{binary() => any()}.
+-type get_sink_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% metric_configuration() :: #{
-%%   <<"Filter">> => string()
-%% }
--type metric_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_group_configuration() :: #{
-%%   <<"Filter">> => string()
-%% }
--type log_group_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% missing_required_parameter_exception() :: #{
-%%   <<"amznErrorType">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type missing_required_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_sink_output() :: #{}
--type delete_sink_output() :: #{}.
-
-
-%% Example:
-%% list_links_output() :: #{
-%%   <<"Items">> => list(list_links_item()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_links_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_sink_policy_output() :: #{
-%%   <<"Policy">> => [string()],
-%%   <<"SinkArn">> => [string()],
-%%   <<"SinkId">> => [string()]
-%% }
--type put_sink_policy_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attached_links_output() :: #{
-%%   <<"Items">> => list(list_attached_links_item()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_attached_links_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
+%% get_sink_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Id">> => [string()],
+%%   <<"Name">> => [string()],
 %%   <<"Tags">> => map()
 %% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_sink_input() :: #{
-%%   <<"Identifier">> := string()
-%% }
--type delete_sink_input() :: #{binary() => any()}.
+-type get_sink_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -177,39 +196,36 @@
 
 
 %% Example:
+%% internal_service_fault() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"amznErrorType">> => [string()]
+%% }
+-type internal_service_fault() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"amznErrorType">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_configuration() :: #{
+%%   <<"LogGroupConfiguration">> => log_group_configuration(),
+%%   <<"MetricConfiguration">> => metric_configuration()
+%% }
+-type link_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_attached_links_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"SinkIdentifier">> := string()
 %% }
 -type list_attached_links_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_link_input() :: #{
-%%   <<"LabelTemplate">> := string(),
-%%   <<"LinkConfiguration">> => link_configuration(),
-%%   <<"ResourceTypes">> := list(list(any())()),
-%%   <<"SinkIdentifier">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_link_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"amznErrorType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"amznErrorType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -222,80 +238,19 @@
 
 
 %% Example:
+%% list_attached_links_output() :: #{
+%%   <<"Items">> => list(list_attached_links_item()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_attached_links_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_links_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_links_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"amznErrorType">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_link_input() :: #{
-%%   <<"Identifier">> := string(),
-%%   <<"IncludeTags">> => boolean(),
-%%   <<"LinkConfiguration">> => link_configuration(),
-%%   <<"ResourceTypes">> := list(list(any())())
-%% }
--type update_link_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sink_output() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"Id">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"Tags">> => map()
-%% }
--type create_sink_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sink_input() :: #{
-%%   <<"Identifier">> := string(),
-%%   <<"IncludeTags">> => boolean()
-%% }
--type get_sink_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_link_output() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"Id">> => [string()],
-%%   <<"Label">> => [string()],
-%%   <<"LabelTemplate">> => [string()],
-%%   <<"LinkConfiguration">> => link_configuration(),
-%%   <<"ResourceTypes">> => list([string()]()),
-%%   <<"SinkArn">> => [string()],
-%%   <<"Tags">> => map()
-%% }
--type create_link_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% link_configuration() :: #{
-%%   <<"LogGroupConfiguration">> => log_group_configuration(),
-%%   <<"MetricConfiguration">> => metric_configuration()
-%% }
--type link_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
 
 
 %% Example:
@@ -310,69 +265,19 @@
 
 
 %% Example:
+%% list_links_output() :: #{
+%%   <<"Items">> => list(list_links_item()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_links_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_sinks_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
 -type list_sinks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"amznErrorType">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sinks_output() :: #{
-%%   <<"Items">> => list(list_sinks_item()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_sinks_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% get_link_input() :: #{
-%%   <<"Identifier">> := string(),
-%%   <<"IncludeTags">> => boolean()
-%% }
--type get_link_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_link_output() :: #{}
--type delete_link_output() :: #{}.
-
-
-%% Example:
-%% internal_service_fault() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"amznErrorType">> => [string()]
-%% }
--type internal_service_fault() :: #{binary() => any()}.
 
 
 %% Example:
@@ -385,13 +290,116 @@
 
 
 %% Example:
-%% get_sink_output() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"Id">> => [string()],
-%%   <<"Name">> => [string()],
+%% list_sinks_output() :: #{
+%%   <<"Items">> => list(list_sinks_item()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_sinks_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
 %%   <<"Tags">> => map()
 %% }
--type get_sink_output() :: #{binary() => any()}.
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_group_configuration() :: #{
+%%   <<"Filter">> => string()
+%% }
+-type log_group_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_configuration() :: #{
+%%   <<"Filter">> => string()
+%% }
+-type metric_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% missing_required_parameter_exception() :: #{
+%%   <<"amznErrorType">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type missing_required_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sink_policy_input() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"SinkIdentifier">> := string()
+%% }
+-type put_sink_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sink_policy_output() :: #{
+%%   <<"Policy">> => [string()],
+%%   <<"SinkArn">> => [string()],
+%%   <<"SinkId">> => [string()]
+%% }
+-type put_sink_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"amznErrorType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"amznErrorType">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_link_input() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"IncludeTags">> => boolean(),
+%%   <<"LinkConfiguration">> => link_configuration(),
+%%   <<"ResourceTypes">> := list(list(any())())
+%% }
+-type update_link_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -409,93 +417,85 @@
 
 
 %% Example:
-%% too_many_tags_exception() :: #{
+%% validation_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_sink_policy_input() :: #{
-%%   <<"Policy">> := string(),
-%%   <<"SinkIdentifier">> := string()
-%% }
--type put_sink_policy_input() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_link_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_fault() | 
+    conflict_exception().
 
 -type create_sink_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_fault() | 
+    conflict_exception().
 
 -type delete_link_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_fault().
 
 -type delete_sink_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_fault() | 
+    conflict_exception().
 
 -type get_link_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_fault().
 
 -type get_sink_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_fault().
 
 -type get_sink_policy_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_fault().
 
 -type list_attached_links_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_fault().
 
 -type list_links_errors() ::
-    internal_service_fault() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    resource_not_found_exception().
+    internal_service_fault().
 
 -type list_sinks_errors() ::
-    internal_service_fault() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    resource_not_found_exception().
+    internal_service_fault().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
     resource_not_found_exception().
 
 -type put_sink_policy_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_fault().
 
 -type tag_resource_errors() ::
-    too_many_tags_exception() | 
     validation_exception() | 
+    too_many_tags_exception() | 
     resource_not_found_exception().
 
 -type untag_resource_errors() ::
@@ -503,10 +503,10 @@
     resource_not_found_exception().
 
 -type update_link_errors() ::
-    internal_service_fault() | 
-    invalid_parameter_exception() | 
     resource_not_found_exception() | 
-    missing_required_parameter_exception().
+    missing_required_parameter_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_fault().
 
 %%====================================================================
 %% API

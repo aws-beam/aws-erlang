@@ -59,41 +59,39 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_index_input() :: #{
+%%   <<"dataType">> := list(any()),
+%%   <<"dimension">> := integer(),
+%%   <<"distanceMetric">> := list(any()),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"indexName">> := string(),
+%%   <<"metadataConfiguration">> => metadata_configuration(),
+%%   <<"tags">> => map(),
+%%   <<"vectorBucketArn">> => string(),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type create_index_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_index_output() :: #{
 %%   <<"indexArn">> => string()
 %% }
 -type create_index_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% kms_disabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_disabled_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% vector_bucket_summary() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"vectorBucketArn">> => string(),
-%%   <<"vectorBucketName">> => string()
-%% }
--type vector_bucket_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_configuration() :: #{
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"sseType">> => list(any())
-%% }
--type encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_vector_bucket_policy_output() :: #{
-%%   <<"policy">> => string()
-%% }
--type get_vector_bucket_policy_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -106,17 +104,85 @@
 
 
 %% Example:
-%% get_vectors_output() :: #{
-%%   <<"vectors">> => list(get_output_vector())
+%% create_vector_bucket_output() :: #{
+%%   <<"vectorBucketArn">> => string()
 %% }
--type get_vectors_output() :: #{binary() => any()}.
+-type create_vector_bucket_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% request_timeout_exception() :: #{
-%%   <<"message">> => string()
+%% delete_index_input() :: #{
+%%   <<"indexArn">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"vectorBucketName">> => string()
 %% }
--type request_timeout_exception() :: #{binary() => any()}.
+-type delete_index_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_output() :: #{}
+-type delete_index_output() :: #{}.
+
+
+%% Example:
+%% delete_vector_bucket_input() :: #{
+%%   <<"vectorBucketArn">> => string(),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type delete_vector_bucket_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vector_bucket_output() :: #{}
+-type delete_vector_bucket_output() :: #{}.
+
+
+%% Example:
+%% delete_vector_bucket_policy_input() :: #{
+%%   <<"vectorBucketArn">> => string(),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type delete_vector_bucket_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vector_bucket_policy_output() :: #{}
+-type delete_vector_bucket_policy_output() :: #{}.
+
+
+%% Example:
+%% delete_vectors_input() :: #{
+%%   <<"indexArn">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"keys">> := list(string()),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type delete_vectors_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vectors_output() :: #{}
+-type delete_vectors_output() :: #{}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"sseType">> => list(any())
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_index_input() :: #{
+%%   <<"indexArn">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type get_index_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_index_output() :: #{
+%%   <<"index">> => index()
+%% }
+-type get_index_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -129,42 +195,6 @@
 
 
 %% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_vectors_input() :: #{
-%%   <<"filter">> => [any()],
-%%   <<"indexArn">> => string(),
-%%   <<"indexName">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryVector">> := list(),
-%%   <<"returnDistance">> => [boolean()],
-%%   <<"returnMetadata">> => [boolean()],
-%%   <<"topK">> := integer(),
-%%   <<"vectorBucketName">> => string()
-%% }
--type query_vectors_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_index_output() :: #{
-%%   <<"index">> => index()
-%% }
--type get_index_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% get_vector_bucket_input() :: #{
 %%   <<"vectorBucketArn">> => string(),
 %%   <<"vectorBucketName">> => string()
@@ -173,30 +203,44 @@
 
 
 %% Example:
-%% list_vector_buckets_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"prefix">> => string()
+%% get_vector_bucket_output() :: #{
+%%   <<"vectorBucket">> => vector_bucket()
 %% }
--type list_vector_buckets_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vector_bucket_policy_output() :: #{}
--type delete_vector_bucket_policy_output() :: #{}.
-
-%% Example:
-%% put_vectors_output() :: #{}
--type put_vectors_output() :: #{}.
+-type get_vector_bucket_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_vectors_input() :: #{
+%% get_vector_bucket_policy_input() :: #{
+%%   <<"vectorBucketArn">> => string(),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type get_vector_bucket_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_vector_bucket_policy_output() :: #{
+%%   <<"policy">> => string()
+%% }
+-type get_vector_bucket_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_vectors_input() :: #{
 %%   <<"indexArn">> => string(),
 %%   <<"indexName">> => string(),
-%%   <<"vectorBucketName">> => string(),
-%%   <<"vectors">> := list(put_input_vector())
+%%   <<"keys">> := list(string()),
+%%   <<"returnData">> => [boolean()],
+%%   <<"returnMetadata">> => [boolean()],
+%%   <<"vectorBucketName">> => string()
 %% }
--type put_vectors_input() :: #{binary() => any()}.
+-type get_vectors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_vectors_output() :: #{
+%%   <<"vectors">> => list(get_output_vector())
+%% }
+-type get_vectors_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -215,33 +259,6 @@
 
 
 %% Example:
-%% query_vectors_output() :: #{
-%%   <<"distanceMetric">> => list(any()),
-%%   <<"nextToken">> => string(),
-%%   <<"vectors">> => list(query_output_vector())
-%% }
--type query_vectors_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vector_bucket_output() :: #{}
--type delete_vector_bucket_output() :: #{}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% index_summary() :: #{
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"indexArn">> => string(),
@@ -249,6 +266,41 @@
 %%   <<"vectorBucketName">> => string()
 %% }
 -type index_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_disabled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_invalid_key_usage_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_key_usage_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -263,18 +315,11 @@
 
 
 %% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => string()
+%% list_indexes_output() :: #{
+%%   <<"indexes">> => list(index_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_vector_bucket_policy_input() :: #{
-%%   <<"vectorBucketArn">> => string(),
-%%   <<"vectorBucketName">> => string()
-%% }
--type delete_vector_bucket_policy_input() :: #{binary() => any()}.
+-type list_indexes_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -285,96 +330,25 @@
 %% }
 -type list_output_vector() :: #{binary() => any()}.
 
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
 
 %% Example:
-%% put_input_vector() :: #{
-%%   <<"data">> => list(),
-%%   <<"key">> => string(),
-%%   <<"metadata">> => any()
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
 %% }
--type put_input_vector() :: #{binary() => any()}.
-
-%% Example:
-%% put_vector_bucket_policy_output() :: #{}
--type put_vector_bucket_policy_output() :: #{}.
+-type list_tags_for_resource_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_vector_bucket_output() :: #{
-%%   <<"vectorBucketArn">> => string()
+%% list_vector_buckets_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"prefix">> => string()
 %% }
--type create_vector_bucket_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_vectors_input() :: #{
-%%   <<"indexArn">> => string(),
-%%   <<"indexName">> => string(),
-%%   <<"keys">> := list(string()),
-%%   <<"vectorBucketName">> => string()
-%% }
--type delete_vectors_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"path">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_vector_bucket_output() :: #{
-%%   <<"vectorBucket">> => vector_bucket()
-%% }
--type get_vector_bucket_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% vector_bucket() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"vectorBucketArn">> => string(),
-%%   <<"vectorBucketName">> => string()
-%% }
--type vector_bucket() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_index_output() :: #{}
--type delete_index_output() :: #{}.
-
-
-%% Example:
-%% metadata_configuration() :: #{
-%%   <<"nonFilterableMetadataKeys">> => list(string())
-%% }
--type metadata_configuration() :: #{binary() => any()}.
+-type list_vector_buckets_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -401,128 +375,34 @@
 
 
 %% Example:
-%% kms_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_index_input() :: #{
-%%   <<"indexArn">> => string(),
-%%   <<"indexName">> => string(),
-%%   <<"vectorBucketName">> => string()
-%% }
--type get_index_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-
-%% Example:
-%% delete_index_input() :: #{
-%%   <<"indexArn">> => string(),
-%%   <<"indexName">> => string(),
-%%   <<"vectorBucketName">> => string()
-%% }
--type delete_index_input() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% get_vectors_input() :: #{
-%%   <<"indexArn">> => string(),
-%%   <<"indexName">> => string(),
-%%   <<"keys">> := list(string()),
-%%   <<"returnData">> => [boolean()],
-%%   <<"returnMetadata">> => [boolean()],
-%%   <<"vectorBucketName">> => string()
-%% }
--type get_vectors_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_vector_bucket_policy_input() :: #{
-%%   <<"vectorBucketArn">> => string(),
-%%   <<"vectorBucketName">> => string()
-%% }
--type get_vector_bucket_policy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_indexes_output() :: #{
-%%   <<"indexes">> => list(index_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_indexes_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_vector_bucket_input() :: #{
-%%   <<"vectorBucketArn">> => string(),
-%%   <<"vectorBucketName">> => string()
-%% }
--type delete_vector_bucket_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_index_input() :: #{
-%%   <<"dataType">> := list(any()),
-%%   <<"dimension">> := integer(),
-%%   <<"distanceMetric">> := list(any()),
-%%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"indexName">> := string(),
-%%   <<"metadataConfiguration">> => metadata_configuration(),
-%%   <<"tags">> => map(),
-%%   <<"vectorBucketArn">> => string(),
-%%   <<"vectorBucketName">> => string()
-%% }
--type create_index_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% kms_invalid_state_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_invalid_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vectors_output() :: #{}
--type delete_vectors_output() :: #{}.
-
-
-%% Example:
 %% list_vectors_output() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"vectors">> => list(list_output_vector())
 %% }
 -type list_vectors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_configuration() :: #{
+%%   <<"nonFilterableMetadataKeys">> => list(string())
+%% }
+-type metadata_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_input_vector() :: #{
+%%   <<"data">> => list(),
+%%   <<"key">> => string(),
+%%   <<"metadata">> => any()
+%% }
+-type put_input_vector() :: #{binary() => any()}.
 
 
 %% Example:
@@ -533,12 +413,23 @@
 %% }
 -type put_vector_bucket_policy_input() :: #{binary() => any()}.
 
+%% Example:
+%% put_vector_bucket_policy_output() :: #{}
+-type put_vector_bucket_policy_output() :: #{}.
+
 
 %% Example:
-%% kms_invalid_key_usage_exception() :: #{
-%%   <<"message">> => string()
+%% put_vectors_input() :: #{
+%%   <<"indexArn">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"vectorBucketName">> => string(),
+%%   <<"vectors">> := list(put_input_vector())
 %% }
--type kms_invalid_key_usage_exception() :: #{binary() => any()}.
+-type put_vectors_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_vectors_output() :: #{}
+-type put_vectors_output() :: #{}.
 
 
 %% Example:
@@ -549,10 +440,119 @@
 %% }
 -type query_output_vector() :: #{binary() => any()}.
 
+
+%% Example:
+%% query_vectors_input() :: #{
+%%   <<"filter">> => [any()],
+%%   <<"indexArn">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryVector">> := list(),
+%%   <<"returnDistance">> => [boolean()],
+%%   <<"returnMetadata">> => [boolean()],
+%%   <<"topK">> := integer(),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type query_vectors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_vectors_output() :: #{
+%%   <<"distanceMetric">> => list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"vectors">> => list(query_output_vector())
+%% }
+-type query_vectors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"path">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_bucket() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
+%%   <<"vectorBucketArn">> => string(),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type vector_bucket() :: #{binary() => any()}.
+
+
+%% Example:
+%% vector_bucket_summary() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"vectorBucketArn">> => string(),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type vector_bucket_summary() :: #{binary() => any()}.
+
 -type create_index_errors() ::
     service_unavailable_exception() | 
-    not_found_exception() | 
     service_quota_exceeded_exception() | 
+    not_found_exception() | 
     conflict_exception().
 
 -type create_vector_bucket_errors() ::
@@ -574,13 +574,13 @@
     not_found_exception().
 
 -type delete_vectors_errors() ::
-    kms_invalid_key_usage_exception() | 
-    kms_invalid_state_exception() | 
-    access_denied_exception() | 
-    kms_not_found_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    kms_disabled_exception().
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_invalid_key_usage_exception() | 
+    kms_disabled_exception() | 
+    access_denied_exception().
 
 -type get_index_errors() ::
     service_unavailable_exception() | 
@@ -595,11 +595,11 @@
     not_found_exception().
 
 -type get_vectors_errors() ::
-    kms_invalid_key_usage_exception() | 
-    kms_invalid_state_exception() | 
-    kms_not_found_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_invalid_key_usage_exception() | 
     kms_disabled_exception().
 
 -type list_indexes_errors() ::
@@ -614,30 +614,30 @@
     service_unavailable_exception().
 
 -type list_vectors_errors() ::
-    access_denied_exception() | 
     service_unavailable_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    access_denied_exception().
 
 -type put_vector_bucket_policy_errors() ::
     service_unavailable_exception() | 
     not_found_exception().
 
 -type put_vectors_errors() ::
-    kms_invalid_key_usage_exception() | 
-    kms_invalid_state_exception() | 
-    access_denied_exception() | 
-    kms_not_found_exception() | 
     service_unavailable_exception() | 
-    not_found_exception() | 
     service_quota_exceeded_exception() | 
-    kms_disabled_exception().
+    not_found_exception() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_invalid_key_usage_exception() | 
+    kms_disabled_exception() | 
+    access_denied_exception().
 
 -type query_vectors_errors() ::
-    kms_invalid_key_usage_exception() | 
-    kms_invalid_state_exception() | 
-    kms_not_found_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_invalid_key_usage_exception() | 
     kms_disabled_exception().
 
 -type tag_resource_errors() ::

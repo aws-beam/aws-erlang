@@ -143,148 +143,58 @@
 
 
 %% Example:
-%% get_messaging_streaming_configurations_response() :: #{
-%%   <<"StreamingConfigurations">> => list(streaming_configuration())
+%% app_instance_user_membership_summary() :: #{
+%%   <<"ReadMarkerTimestamp">> => non_neg_integer(),
+%%   <<"SubChannelId">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type get_messaging_streaming_configurations_response() :: #{binary() => any()}.
+-type app_instance_user_membership_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_channel_flows_request() :: #{
-%%   <<"AppInstanceArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% associate_channel_flow_request() :: #{
+%%   <<"ChannelFlowArn">> := string(),
+%%   <<"ChimeBearer">> := string()
 %% }
--type list_channel_flows_request() :: #{binary() => any()}.
+-type associate_channel_flow_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% streaming_configuration() :: #{
-%%   <<"DataType">> => list(any()),
-%%   <<"ResourceArn">> => string()
+%% bad_request_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
 %% }
--type streaming_configuration() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_channel_memberships_for_app_instance_user_request() :: #{
-%%   <<"AppInstanceUserArn">> => string(),
+%% batch_channel_memberships() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"InvitedBy">> => identity(),
+%%   <<"Members">> => list(identity()),
+%%   <<"SubChannelId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type batch_channel_memberships() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_channel_membership_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"MemberArn">> => string()
+%% }
+-type batch_create_channel_membership_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_channel_membership_request() :: #{
 %%   <<"ChimeBearer">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"MemberArns">> := list(string()),
+%%   <<"SubChannelId">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type list_channel_memberships_for_app_instance_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_channel_request() :: #{
-%%   <<"ChimeBearer">> := string()
-%% }
--type delete_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sub_channel_summary() :: #{
-%%   <<"MembershipCount">> => integer(),
-%%   <<"SubChannelId">> => string()
-%% }
--type sub_channel_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_bans_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_channel_bans_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_moderated_by_app_instance_user_request() :: #{
-%%   <<"AppInstanceUserArn">> := string(),
-%%   <<"ChimeBearer">> := string()
-%% }
--type describe_channel_moderated_by_app_instance_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_moderator_response() :: #{
-%%   <<"ChannelModerator">> => channel_moderator()
-%% }
--type describe_channel_moderator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% redact_channel_message_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"MessageId">> => string(),
-%%   <<"SubChannelId">> => string()
-%% }
--type redact_channel_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_moderator_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"ChannelModerator">> => identity()
-%% }
--type create_channel_moderator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_channel_moderator_request() :: #{
-%%   <<"ChimeBearer">> := string()
-%% }
--type delete_channel_moderator_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_response() :: #{
-%%   <<"ChannelArn">> => string()
-%% }
--type create_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_membership_for_app_instance_user_summary() :: #{
-%%   <<"AppInstanceUserMembershipSummary">> => app_instance_user_membership_summary(),
-%%   <<"ChannelSummary">> => channel_summary()
-%% }
--type channel_membership_for_app_instance_user_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_flows_response() :: #{
-%%   <<"ChannelFlows">> => list(channel_flow_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_channel_flows_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_flow_response() :: #{
-%%   <<"ChannelFlow">> => channel_flow()
-%% }
--type describe_channel_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_messages_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"ChannelMessages">> => list(channel_message_summary()),
-%%   <<"NextToken">> => string(),
-%%   <<"SubChannelId">> => string()
-%% }
--type list_channel_messages_response() :: #{binary() => any()}.
+-type batch_create_channel_membership_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -296,49 +206,86 @@
 
 
 %% Example:
-%% put_channel_expiration_settings_response() :: #{
+%% channel() :: #{
 %%   <<"ChannelArn">> => string(),
-%%   <<"ExpirationSettings">> => expiration_settings()
+%%   <<"ChannelFlowArn">> => string(),
+%%   <<"CreatedBy">> => identity(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"ElasticChannelConfiguration">> => elastic_channel_configuration(),
+%%   <<"ExpirationSettings">> => expiration_settings(),
+%%   <<"LastMessageTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Metadata">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Privacy">> => list(any())
 %% }
--type put_channel_expiration_settings_response() :: #{binary() => any()}.
+-type channel() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_failure_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
+%% channel_associated_with_flow_summary() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Privacy">> => list(any())
 %% }
--type service_failure_exception() :: #{binary() => any()}.
+-type channel_associated_with_flow_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% identity() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
+%% channel_ban() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"CreatedBy">> => identity(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Member">> => identity()
 %% }
--type identity() :: #{binary() => any()}.
+-type channel_ban() :: #{binary() => any()}.
 
 
 %% Example:
-%% forbidden_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
+%% channel_ban_summary() :: #{
+%%   <<"Member">> => identity()
 %% }
--type forbidden_exception() :: #{binary() => any()}.
+-type channel_ban_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_channel_flow_response() :: #{
-%%   <<"ChannelFlowArn">> => string()
+%% channel_flow() :: #{
+%%   <<"ChannelFlowArn">> => string(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Processors">> => list(processor())
 %% }
--type update_channel_flow_response() :: #{binary() => any()}.
+-type channel_flow() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_channel_moderated_by_app_instance_user_response() :: #{
-%%   <<"Channel">> => channel_moderated_by_app_instance_user_summary()
+%% channel_flow_callback_request() :: #{
+%%   <<"CallbackId">> := string(),
+%%   <<"ChannelMessage">> := channel_message_callback(),
+%%   <<"DeleteResource">> => boolean()
 %% }
--type describe_channel_moderated_by_app_instance_user_response() :: #{binary() => any()}.
+-type channel_flow_callback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_flow_callback_response() :: #{
+%%   <<"CallbackId">> => string(),
+%%   <<"ChannelArn">> => string()
+%% }
+-type channel_flow_callback_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_flow_summary() :: #{
+%%   <<"ChannelFlowArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Processors">> => list(processor())
+%% }
+-type channel_flow_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -355,289 +302,11 @@
 
 
 %% Example:
-%% message_attribute_value() :: #{
-%%   <<"StringValues">> => list(string())
+%% channel_membership_for_app_instance_user_summary() :: #{
+%%   <<"AppInstanceUserMembershipSummary">> => app_instance_user_membership_summary(),
+%%   <<"ChannelSummary">> => channel_summary()
 %% }
--type message_attribute_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_client_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type unauthorized_client_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% redact_channel_message_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"SubChannelId">> => string()
-%% }
--type redact_channel_message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_channels_request() :: #{
-%%   <<"ChimeBearer">> => string(),
-%%   <<"Fields">> := list(search_field()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type search_channels_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_message_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"Content">> := string(),
-%%   <<"ContentType">> => string(),
-%%   <<"Metadata">> => string(),
-%%   <<"SubChannelId">> => string()
-%% }
--type update_channel_message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_moderator_request() :: #{
-%%   <<"ChannelModeratorArn">> := string(),
-%%   <<"ChimeBearer">> := string()
-%% }
--type create_channel_moderator_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttled_client_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type throttled_client_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channels_associated_with_channel_flow_response() :: #{
-%%   <<"Channels">> => list(channel_associated_with_flow_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_channels_associated_with_channel_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_membership_response() :: #{
-%%   <<"ChannelMembership">> => channel_membership()
-%% }
--type describe_channel_membership_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_ban_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"MemberArn">> := string()
-%% }
--type create_channel_ban_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_channel_flow_request() :: #{}
--type describe_channel_flow_request() :: #{}.
-
-
-%% Example:
-%% app_instance_user_membership_summary() :: #{
-%%   <<"ReadMarkerTimestamp">> => non_neg_integer(),
-%%   <<"SubChannelId">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type app_instance_user_membership_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_channel_message_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"MessageId">> => string(),
-%%   <<"Status">> => channel_message_status_structure(),
-%%   <<"SubChannelId">> => string()
-%% }
--type send_channel_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% processor() :: #{
-%%   <<"Configuration">> => processor_configuration(),
-%%   <<"ExecutionOrder">> => integer(),
-%%   <<"FallbackAction">> => list(any()),
-%%   <<"Name">> => string()
-%% }
--type processor() :: #{binary() => any()}.
-
-
-%% Example:
-%% expiration_settings() :: #{
-%%   <<"ExpirationCriterion">> => list(any()),
-%%   <<"ExpirationDays">> => integer()
-%% }
--type expiration_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_message_callback() :: #{
-%%   <<"Content">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"MessageAttributes">> => map(),
-%%   <<"MessageId">> => string(),
-%%   <<"Metadata">> => string(),
-%%   <<"PushNotification">> => push_notification_configuration(),
-%%   <<"SubChannelId">> => string()
-%% }
--type channel_message_callback() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sub_channels_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SubChannels">> => list(sub_channel_summary())
-%% }
--type list_sub_channels_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_channel_membership_preferences_request() :: #{
-%%   <<"ChimeBearer">> := string()
-%% }
--type get_channel_membership_preferences_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channels_moderated_by_app_instance_user_response() :: #{
-%%   <<"Channels">> => list(channel_moderated_by_app_instance_user_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_channels_moderated_by_app_instance_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_channel_membership_preferences_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"Preferences">> := channel_membership_preferences()
-%% }
--type put_channel_membership_preferences_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channels_moderated_by_app_instance_user_request() :: #{
-%%   <<"AppInstanceUserArn">> => string(),
-%%   <<"ChimeBearer">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_channels_moderated_by_app_instance_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% target() :: #{
-%%   <<"MemberArn">> => string()
-%% }
--type target() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_moderator_request() :: #{
-%%   <<"ChimeBearer">> := string()
-%% }
--type describe_channel_moderator_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_flow() :: #{
-%%   <<"ChannelFlowArn">> => string(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Processors">> => list(processor())
-%% }
--type channel_flow() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_summary() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"LastMessageTimestamp">> => non_neg_integer(),
-%%   <<"Metadata">> => string(),
-%%   <<"Mode">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Privacy">> => list(any())
-%% }
--type channel_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_flow_callback_request() :: #{
-%%   <<"CallbackId">> := string(),
-%%   <<"ChannelMessage">> := channel_message_callback(),
-%%   <<"DeleteResource">> => boolean()
-%% }
--type channel_flow_callback_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_channel_message_response() :: #{
-%%   <<"ChannelMessage">> => channel_message()
-%% }
--type get_channel_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_membership_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"SubChannelId">> => string()
-%% }
--type describe_channel_membership_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_messaging_streaming_configurations_response() :: #{
-%%   <<"StreamingConfigurations">> => list(streaming_configuration())
-%% }
--type put_messaging_streaming_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_flow_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"Processors">> := list(processor())
-%% }
--type update_channel_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_channel_flow_request() :: #{
-%%   <<"ChimeBearer">> := string()
-%% }
--type disassociate_channel_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
+-type channel_membership_for_app_instance_user_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -648,207 +317,10 @@
 
 
 %% Example:
-%% channel_ban_summary() :: #{
-%%   <<"Member">> => identity()
-%% }
--type channel_ban_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_response() :: #{
-%%   <<"Channel">> => channel()
-%% }
--type describe_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_channel_ban_request() :: #{
-%%   <<"ChimeBearer">> := string()
-%% }
--type delete_channel_ban_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_bans_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"ChannelBans">> => list(channel_ban_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_channel_bans_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_request() :: #{
-%%   <<"ChimeBearer">> := string()
-%% }
--type describe_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_memberships_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SubChannelId">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type list_channel_memberships_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% channel_membership_summary() :: #{
 %%   <<"Member">> => identity()
 %% }
 -type channel_membership_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_request() :: #{
-%%   <<"AppInstanceArn">> := string(),
-%%   <<"ChannelId">> => string(),
-%%   <<"ChimeBearer">> := string(),
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"ElasticChannelConfiguration">> => elastic_channel_configuration(),
-%%   <<"ExpirationSettings">> => expiration_settings(),
-%%   <<"MemberArns">> => list(string()),
-%%   <<"Metadata">> => string(),
-%%   <<"Mode">> => list(any()),
-%%   <<"ModeratorArns">> => list(string()),
-%%   <<"Name">> := string(),
-%%   <<"Privacy">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_messaging_session_endpoint_request() :: #{
-%%   <<"NetworkType">> => list(any())
-%% }
--type get_messaging_session_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_messaging_streaming_configurations_request() :: #{
-%%   <<"StreamingConfigurations">> := list(streaming_configuration())
-%% }
--type put_messaging_streaming_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_memberships_for_app_instance_user_response() :: #{
-%%   <<"ChannelMemberships">> => list(channel_membership_for_app_instance_user_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_channel_memberships_for_app_instance_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channels_response() :: #{
-%%   <<"Channels">> => list(channel_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_channels_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_membership_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"MemberArn">> := string(),
-%%   <<"SubChannelId">> => string(),
-%%   <<"Type">> := list(any())
-%% }
--type create_channel_membership_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% push_notification_preferences() :: #{
-%%   <<"AllowNotifications">> => list(any()),
-%%   <<"FilterRule">> => string()
-%% }
--type push_notification_preferences() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_messaging_session_endpoint_response() :: #{
-%%   <<"Endpoint">> => messaging_session_endpoint()
-%% }
--type get_messaging_session_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"Metadata">> => string(),
-%%   <<"Mode">> => list(any()),
-%%   <<"Name">> => string()
-%% }
--type update_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_channel_membership_preferences_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"Member">> => identity(),
-%%   <<"Preferences">> => channel_membership_preferences()
-%% }
--type put_channel_membership_preferences_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_flow_request() :: #{
-%%   <<"AppInstanceArn">> := string(),
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Processors">> := list(processor()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_channel_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_read_marker_request() :: #{
-%%   <<"ChimeBearer">> := string()
-%% }
--type update_channel_read_marker_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_moderated_by_app_instance_user_summary() :: #{
-%%   <<"ChannelSummary">> => channel_summary()
-%% }
--type channel_moderated_by_app_instance_user_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -874,263 +346,16 @@
 
 
 %% Example:
-%% messaging_session_endpoint() :: #{
-%%   <<"Url">> => string()
-%% }
--type messaging_session_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_message_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"MessageId">> => string(),
-%%   <<"Status">> => channel_message_status_structure(),
-%%   <<"SubChannelId">> => string()
-%% }
--type update_channel_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_associated_with_flow_summary() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"Metadata">> => string(),
-%%   <<"Mode">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Privacy">> => list(any())
-%% }
--type channel_associated_with_flow_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_channel_message_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"SubChannelId">> => string()
-%% }
--type delete_channel_message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_field() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type search_field() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_flow_request() :: #{}
--type delete_channel_flow_request() :: #{}.
-
-
-%% Example:
-%% list_channel_moderators_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_channel_moderators_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_configuration() :: #{
-%%   <<"InvocationType">> => list(any()),
-%%   <<"ResourceArn">> => string()
-%% }
--type lambda_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channels_associated_with_channel_flow_request() :: #{
-%%   <<"ChannelFlowArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_channels_associated_with_channel_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_channel_membership_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"MemberArns">> := list(string()),
-%%   <<"SubChannelId">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type batch_create_channel_membership_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_membership_for_app_instance_user_request() :: #{
-%%   <<"AppInstanceUserArn">> := string(),
-%%   <<"ChimeBearer">> := string()
-%% }
--type describe_channel_membership_for_app_instance_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_channel_membership_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"SubChannelId">> => string()
-%% }
--type delete_channel_membership_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_messages_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"NotAfter">> => non_neg_integer(),
-%%   <<"NotBefore">> => non_neg_integer(),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"SubChannelId">> => string()
-%% }
--type list_channel_messages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_channel_message_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"Content">> := string(),
+%% channel_message_callback() :: #{
+%%   <<"Content">> => string(),
 %%   <<"ContentType">> => string(),
 %%   <<"MessageAttributes">> => map(),
+%%   <<"MessageId">> => string(),
 %%   <<"Metadata">> => string(),
-%%   <<"Persistence">> := list(any()),
 %%   <<"PushNotification">> => push_notification_configuration(),
-%%   <<"SubChannelId">> => string(),
-%%   <<"Target">> => list(target()),
-%%   <<"Type">> := list(any())
-%% }
--type send_channel_message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_messaging_streaming_configurations_request() :: #{}
--type delete_messaging_streaming_configurations_request() :: #{}.
-
-
-%% Example:
-%% get_channel_message_status_response() :: #{
-%%   <<"Status">> => channel_message_status_structure()
-%% }
--type get_channel_message_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% processor_configuration() :: #{
-%%   <<"Lambda">> => lambda_configuration()
-%% }
--type processor_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_moderators_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"ChannelModerators">> => list(channel_moderator_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_channel_moderators_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_channel_message_request() :: #{
-%%   <<"ChimeBearer">> := string(),
 %%   <<"SubChannelId">> => string()
 %% }
--type get_channel_message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_ban_response() :: #{
-%%   <<"ChannelBan">> => channel_ban()
-%% }
--type describe_channel_ban_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_flow_response() :: #{
-%%   <<"ChannelFlowArn">> => string()
-%% }
--type create_channel_flow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sub_channels_request() :: #{
-%%   <<"ChimeBearer">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_sub_channels_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_ban() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"CreatedBy">> => identity(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Member">> => identity()
-%% }
--type channel_ban() :: #{binary() => any()}.
-
-
-%% Example:
-%% push_notification_configuration() :: #{
-%%   <<"Body">> => string(),
-%%   <<"Title">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type push_notification_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_channel_flow_request() :: #{
-%%   <<"ChannelFlowArn">> := string(),
-%%   <<"ChimeBearer">> := string()
-%% }
--type associate_channel_flow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"ChannelFlowArn">> => string(),
-%%   <<"CreatedBy">> => identity(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"ElasticChannelConfiguration">> => elastic_channel_configuration(),
-%%   <<"ExpirationSettings">> => expiration_settings(),
-%%   <<"LastMessageTimestamp">> => non_neg_integer(),
-%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"Metadata">> => string(),
-%%   <<"Mode">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Privacy">> => list(any())
-%% }
--type channel() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_memberships_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"ChannelMemberships">> => list(channel_membership_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_channel_memberships_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_moderator() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"CreatedBy">> => identity(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Moderator">> => identity()
-%% }
--type channel_moderator() :: #{binary() => any()}.
+-type channel_message_callback() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1139,131 +364,6 @@
 %%   <<"Value">> => list(any())
 %% }
 -type channel_message_status_structure() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_channel_expiration_settings_request() :: #{
-%%   <<"ChimeBearer">> => string(),
-%%   <<"ExpirationSettings">> => expiration_settings()
-%% }
--type put_channel_expiration_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_ban_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"Member">> => identity()
-%% }
--type create_channel_ban_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_channel_membership_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"MemberArn">> => string()
-%% }
--type batch_create_channel_membership_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_flow_summary() :: #{
-%%   <<"ChannelFlowArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Processors">> => list(processor())
-%% }
--type channel_flow_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_read_marker_response() :: #{
-%%   <<"ChannelArn">> => string()
-%% }
--type update_channel_read_marker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_channel_membership_preferences_response() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"Member">> => identity(),
-%%   <<"Preferences">> => channel_membership_preferences()
-%% }
--type get_channel_membership_preferences_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_moderator_summary() :: #{
-%%   <<"Moderator">> => identity()
-%% }
--type channel_moderator_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_channel_memberships() :: #{
-%%   <<"ChannelArn">> => string(),
-%%   <<"InvitedBy">> => identity(),
-%%   <<"Members">> => list(identity()),
-%%   <<"SubChannelId">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type batch_channel_memberships() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_response() :: #{
-%%   <<"ChannelArn">> => string()
-%% }
--type update_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_ban_request() :: #{
-%%   <<"ChimeBearer">> := string()
-%% }
--type describe_channel_ban_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_channel_membership_for_app_instance_user_response() :: #{
-%%   <<"ChannelMembership">> => channel_membership_for_app_instance_user_summary()
-%% }
--type describe_channel_membership_for_app_instance_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_flow_callback_response() :: #{
-%%   <<"CallbackId">> => string(),
-%%   <<"ChannelArn">> => string()
-%% }
--type channel_flow_callback_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channels_request() :: #{
-%%   <<"AppInstanceArn">> := string(),
-%%   <<"ChimeBearer">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Privacy">> => list(any())
-%% }
--type list_channels_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% elastic_channel_configuration() :: #{
-%%   <<"MaximumSubChannels">> => integer(),
-%%   <<"MinimumMembershipPercentage">> => integer(),
-%%   <<"TargetMembershipsPerSubChannel">> => integer()
-%% }
--type elastic_channel_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1286,15 +386,742 @@
 
 
 %% Example:
+%% channel_moderated_by_app_instance_user_summary() :: #{
+%%   <<"ChannelSummary">> => channel_summary()
+%% }
+-type channel_moderated_by_app_instance_user_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_moderator() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"CreatedBy">> => identity(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Moderator">> => identity()
+%% }
+-type channel_moderator() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_moderator_summary() :: #{
+%%   <<"Moderator">> => identity()
+%% }
+-type channel_moderator_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_summary() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"LastMessageTimestamp">> => non_neg_integer(),
+%%   <<"Metadata">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Privacy">> => list(any())
+%% }
+-type channel_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_ban_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"MemberArn">> := string()
+%% }
+-type create_channel_ban_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_ban_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Member">> => identity()
+%% }
+-type create_channel_ban_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_flow_request() :: #{
+%%   <<"AppInstanceArn">> := string(),
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Processors">> := list(processor()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_channel_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_flow_response() :: #{
+%%   <<"ChannelFlowArn">> => string()
+%% }
+-type create_channel_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_membership_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"MemberArn">> := string(),
+%%   <<"SubChannelId">> => string(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_channel_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_membership_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Member">> => identity(),
+%%   <<"SubChannelId">> => string()
+%% }
+-type create_channel_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_moderator_request() :: #{
+%%   <<"ChannelModeratorArn">> := string(),
+%%   <<"ChimeBearer">> := string()
+%% }
+-type create_channel_moderator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_moderator_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelModerator">> => identity()
+%% }
+-type create_channel_moderator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_request() :: #{
+%%   <<"AppInstanceArn">> := string(),
+%%   <<"ChannelId">> => string(),
+%%   <<"ChimeBearer">> := string(),
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ElasticChannelConfiguration">> => elastic_channel_configuration(),
+%%   <<"ExpirationSettings">> => expiration_settings(),
+%%   <<"MemberArns">> => list(string()),
+%%   <<"Metadata">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"ModeratorArns">> => list(string()),
+%%   <<"Name">> := string(),
+%%   <<"Privacy">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_response() :: #{
+%%   <<"ChannelArn">> => string()
+%% }
+-type create_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_channel_ban_request() :: #{
+%%   <<"ChimeBearer">> := string()
+%% }
+-type delete_channel_ban_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_flow_request() :: #{}
+-type delete_channel_flow_request() :: #{}.
+
+
+%% Example:
+%% delete_channel_membership_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"SubChannelId">> => string()
+%% }
+-type delete_channel_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_channel_message_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"SubChannelId">> => string()
+%% }
+-type delete_channel_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_channel_moderator_request() :: #{
+%%   <<"ChimeBearer">> := string()
+%% }
+-type delete_channel_moderator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_channel_request() :: #{
+%%   <<"ChimeBearer">> := string()
+%% }
+-type delete_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_messaging_streaming_configurations_request() :: #{}
+-type delete_messaging_streaming_configurations_request() :: #{}.
+
+
+%% Example:
+%% describe_channel_ban_request() :: #{
+%%   <<"ChimeBearer">> := string()
+%% }
+-type describe_channel_ban_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_ban_response() :: #{
+%%   <<"ChannelBan">> => channel_ban()
+%% }
+-type describe_channel_ban_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_channel_flow_request() :: #{}
+-type describe_channel_flow_request() :: #{}.
+
+
+%% Example:
+%% describe_channel_flow_response() :: #{
+%%   <<"ChannelFlow">> => channel_flow()
+%% }
+-type describe_channel_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_membership_for_app_instance_user_request() :: #{
+%%   <<"AppInstanceUserArn">> := string(),
+%%   <<"ChimeBearer">> := string()
+%% }
+-type describe_channel_membership_for_app_instance_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_membership_for_app_instance_user_response() :: #{
+%%   <<"ChannelMembership">> => channel_membership_for_app_instance_user_summary()
+%% }
+-type describe_channel_membership_for_app_instance_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_membership_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"SubChannelId">> => string()
+%% }
+-type describe_channel_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_membership_response() :: #{
+%%   <<"ChannelMembership">> => channel_membership()
+%% }
+-type describe_channel_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_moderated_by_app_instance_user_request() :: #{
+%%   <<"AppInstanceUserArn">> := string(),
+%%   <<"ChimeBearer">> := string()
+%% }
+-type describe_channel_moderated_by_app_instance_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_moderated_by_app_instance_user_response() :: #{
+%%   <<"Channel">> => channel_moderated_by_app_instance_user_summary()
+%% }
+-type describe_channel_moderated_by_app_instance_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_moderator_request() :: #{
+%%   <<"ChimeBearer">> := string()
+%% }
+-type describe_channel_moderator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_moderator_response() :: #{
+%%   <<"ChannelModerator">> => channel_moderator()
+%% }
+-type describe_channel_moderator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_request() :: #{
+%%   <<"ChimeBearer">> := string()
+%% }
+-type describe_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_channel_response() :: #{
+%%   <<"Channel">> => channel()
+%% }
+-type describe_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_channel_flow_request() :: #{
+%%   <<"ChimeBearer">> := string()
+%% }
+-type disassociate_channel_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% elastic_channel_configuration() :: #{
+%%   <<"MaximumSubChannels">> => integer(),
+%%   <<"MinimumMembershipPercentage">> => integer(),
+%%   <<"TargetMembershipsPerSubChannel">> => integer()
+%% }
+-type elastic_channel_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% expiration_settings() :: #{
+%%   <<"ExpirationCriterion">> => list(any()),
+%%   <<"ExpirationDays">> => integer()
+%% }
+-type expiration_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_membership_preferences_request() :: #{
+%%   <<"ChimeBearer">> := string()
+%% }
+-type get_channel_membership_preferences_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_membership_preferences_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Member">> => identity(),
+%%   <<"Preferences">> => channel_membership_preferences()
+%% }
+-type get_channel_membership_preferences_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_message_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"SubChannelId">> => string()
+%% }
+-type get_channel_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_message_response() :: #{
+%%   <<"ChannelMessage">> => channel_message()
+%% }
+-type get_channel_message_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_channel_message_status_request() :: #{
 %%   <<"ChimeBearer">> := string(),
 %%   <<"SubChannelId">> => string()
 %% }
 -type get_channel_message_status_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_channel_message_status_response() :: #{
+%%   <<"Status">> => channel_message_status_structure()
+%% }
+-type get_channel_message_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_messaging_session_endpoint_request() :: #{
+%%   <<"NetworkType">> => list(any())
+%% }
+-type get_messaging_session_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_messaging_session_endpoint_response() :: #{
+%%   <<"Endpoint">> => messaging_session_endpoint()
+%% }
+-type get_messaging_session_endpoint_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_messaging_streaming_configurations_request() :: #{}
 -type get_messaging_streaming_configurations_request() :: #{}.
+
+
+%% Example:
+%% get_messaging_streaming_configurations_response() :: #{
+%%   <<"StreamingConfigurations">> => list(streaming_configuration())
+%% }
+-type get_messaging_streaming_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_configuration() :: #{
+%%   <<"InvocationType">> => list(any()),
+%%   <<"ResourceArn">> => string()
+%% }
+-type lambda_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_bans_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_bans_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_bans_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelBans">> => list(channel_ban_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_bans_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_flows_request() :: #{
+%%   <<"AppInstanceArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_flows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_flows_response() :: #{
+%%   <<"ChannelFlows">> => list(channel_flow_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_flows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_memberships_for_app_instance_user_request() :: #{
+%%   <<"AppInstanceUserArn">> => string(),
+%%   <<"ChimeBearer">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_memberships_for_app_instance_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_memberships_for_app_instance_user_response() :: #{
+%%   <<"ChannelMemberships">> => list(channel_membership_for_app_instance_user_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_memberships_for_app_instance_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_memberships_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SubChannelId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_channel_memberships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_memberships_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelMemberships">> => list(channel_membership_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_memberships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_messages_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"NotAfter">> => non_neg_integer(),
+%%   <<"NotBefore">> => non_neg_integer(),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SubChannelId">> => string()
+%% }
+-type list_channel_messages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_messages_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelMessages">> => list(channel_message_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"SubChannelId">> => string()
+%% }
+-type list_channel_messages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_moderators_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_moderators_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_moderators_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelModerators">> => list(channel_moderator_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channel_moderators_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_associated_with_channel_flow_request() :: #{
+%%   <<"ChannelFlowArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_associated_with_channel_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_associated_with_channel_flow_response() :: #{
+%%   <<"Channels">> => list(channel_associated_with_flow_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_associated_with_channel_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_moderated_by_app_instance_user_request() :: #{
+%%   <<"AppInstanceUserArn">> => string(),
+%%   <<"ChimeBearer">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_moderated_by_app_instance_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_moderated_by_app_instance_user_response() :: #{
+%%   <<"Channels">> => list(channel_moderated_by_app_instance_user_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_moderated_by_app_instance_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_request() :: #{
+%%   <<"AppInstanceArn">> := string(),
+%%   <<"ChimeBearer">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Privacy">> => list(any())
+%% }
+-type list_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_response() :: #{
+%%   <<"Channels">> => list(channel_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_channels_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_sub_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_channels_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SubChannels">> => list(sub_channel_summary())
+%% }
+-type list_sub_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_attribute_value() :: #{
+%%   <<"StringValues">> => list(string())
+%% }
+-type message_attribute_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% messaging_session_endpoint() :: #{
+%%   <<"Url">> => string()
+%% }
+-type messaging_session_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% processor() :: #{
+%%   <<"Configuration">> => processor_configuration(),
+%%   <<"ExecutionOrder">> => integer(),
+%%   <<"FallbackAction">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type processor() :: #{binary() => any()}.
+
+
+%% Example:
+%% processor_configuration() :: #{
+%%   <<"Lambda">> => lambda_configuration()
+%% }
+-type processor_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% push_notification_configuration() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type push_notification_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% push_notification_preferences() :: #{
+%%   <<"AllowNotifications">> => list(any()),
+%%   <<"FilterRule">> => string()
+%% }
+-type push_notification_preferences() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_channel_expiration_settings_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"ExpirationSettings">> => expiration_settings()
+%% }
+-type put_channel_expiration_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_channel_expiration_settings_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ExpirationSettings">> => expiration_settings()
+%% }
+-type put_channel_expiration_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_channel_membership_preferences_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"Preferences">> := channel_membership_preferences()
+%% }
+-type put_channel_membership_preferences_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_channel_membership_preferences_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"Member">> => identity(),
+%%   <<"Preferences">> => channel_membership_preferences()
+%% }
+-type put_channel_membership_preferences_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_messaging_streaming_configurations_request() :: #{
+%%   <<"StreamingConfigurations">> := list(streaming_configuration())
+%% }
+-type put_messaging_streaming_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_messaging_streaming_configurations_response() :: #{
+%%   <<"StreamingConfigurations">> => list(streaming_configuration())
+%% }
+-type put_messaging_streaming_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% redact_channel_message_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"SubChannelId">> => string()
+%% }
+-type redact_channel_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% redact_channel_message_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"MessageId">> => string(),
+%%   <<"SubChannelId">> => string()
+%% }
+-type redact_channel_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_channels_request() :: #{
+%%   <<"ChimeBearer">> => string(),
+%%   <<"Fields">> := list(search_field()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_channels_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1306,456 +1133,629 @@
 
 
 %% Example:
-%% create_channel_membership_response() :: #{
+%% search_field() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type search_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_channel_message_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"Content">> := string(),
+%%   <<"ContentType">> => string(),
+%%   <<"MessageAttributes">> => map(),
+%%   <<"Metadata">> => string(),
+%%   <<"Persistence">> := list(any()),
+%%   <<"PushNotification">> => push_notification_configuration(),
+%%   <<"SubChannelId">> => string(),
+%%   <<"Target">> => list(target()),
+%%   <<"Type">> := list(any())
+%% }
+-type send_channel_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_channel_message_response() :: #{
 %%   <<"ChannelArn">> => string(),
-%%   <<"Member">> => identity(),
+%%   <<"MessageId">> => string(),
+%%   <<"Status">> => channel_message_status_structure(),
 %%   <<"SubChannelId">> => string()
 %% }
--type create_channel_membership_response() :: #{binary() => any()}.
+-type send_channel_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_failure_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type service_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_configuration() :: #{
+%%   <<"DataType">> => list(any()),
+%%   <<"ResourceArn">> => string()
+%% }
+-type streaming_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% sub_channel_summary() :: #{
+%%   <<"MembershipCount">> => integer(),
+%%   <<"SubChannelId">> => string()
+%% }
+-type sub_channel_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% target() :: #{
+%%   <<"MemberArn">> => string()
+%% }
+-type target() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttled_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type throttled_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_flow_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"Processors">> := list(processor())
+%% }
+-type update_channel_flow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_flow_response() :: #{
+%%   <<"ChannelFlowArn">> => string()
+%% }
+-type update_channel_flow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_message_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"Content">> := string(),
+%%   <<"ContentType">> => string(),
+%%   <<"Metadata">> => string(),
+%%   <<"SubChannelId">> => string()
+%% }
+-type update_channel_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_message_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"MessageId">> => string(),
+%%   <<"Status">> => channel_message_status_structure(),
+%%   <<"SubChannelId">> => string()
+%% }
+-type update_channel_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_read_marker_request() :: #{
+%%   <<"ChimeBearer">> := string()
+%% }
+-type update_channel_read_marker_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_read_marker_response() :: #{
+%%   <<"ChannelArn">> => string()
+%% }
+-type update_channel_read_marker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_request() :: #{
+%%   <<"ChimeBearer">> := string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type update_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_response() :: #{
+%%   <<"ChannelArn">> => string()
+%% }
+-type update_channel_response() :: #{binary() => any()}.
 
 -type associate_channel_flow_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type batch_create_channel_membership_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type channel_flow_callback_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_channel_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_channel_ban_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_channel_flow_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_channel_membership_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_channel_moderator_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_channel_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_channel_ban_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_channel_flow_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_channel_membership_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_channel_message_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_channel_moderator_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_messaging_streaming_configurations_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_channel_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_channel_ban_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_channel_flow_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_channel_membership_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_channel_membership_for_app_instance_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_channel_moderated_by_app_instance_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type describe_channel_moderator_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type disassociate_channel_flow_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_channel_membership_preferences_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_channel_message_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_channel_message_status_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_messaging_session_endpoint_errors() ::
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
-    forbidden_exception() | 
-    service_failure_exception().
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    forbidden_exception().
 
 -type get_messaging_streaming_configurations_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_channel_bans_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_channel_flows_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_channel_memberships_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_channel_memberships_for_app_instance_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_channel_messages_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_channel_moderators_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_channels_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_channels_associated_with_channel_flow_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_channels_moderated_by_app_instance_user_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_sub_channels_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type put_channel_expiration_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_channel_membership_preferences_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_messaging_streaming_configurations_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type redact_channel_message_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type search_channels_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type send_channel_message_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_channel_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_channel_flow_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_channel_message_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_channel_read_marker_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

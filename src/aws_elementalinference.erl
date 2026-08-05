@@ -56,81 +56,10 @@
 
 
 %% Example:
-%% clipping_config() :: #{
-%%   <<"callbackMetadata">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type clipping_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_feed_request() :: #{}
--type delete_feed_request() :: #{}.
-
-
-%% Example:
-%% delete_dictionary_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_dictionary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_dictionary_entries_response() :: #{
-%%   <<"entries">> => string()
-%% }
--type export_dictionary_entries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dictionary_request() :: #{
-%%   <<"entries">> => string(),
-%%   <<"language">> := list(any()),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_dictionary_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_feed_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"association">> => feed_association(),
-%%   <<"dataEndpoints">> => list([string()]()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"outputs">> => list(get_output()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_feed_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_dictionary_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"language">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"references">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type get_dictionary_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -139,120 +68,6 @@
 %%   <<"width">> => [integer()]
 %% }
 -type aspect_ratio() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dictionary_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"language">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"references">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_dictionary_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dictionary_request() :: #{}
--type delete_dictionary_request() :: #{}.
-
-
-%% Example:
-%% feed_association() :: #{
-%%   <<"associatedResourceName">> => string()
-%% }
--type feed_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cropping_config() :: #{}
--type cropping_config() :: #{}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_feed_request() :: #{
-%%   <<"name">> := string(),
-%%   <<"outputs">> := list(update_output())
-%% }
--type update_feed_request() :: #{binary() => any()}.
-
-%% Example:
-%% export_dictionary_entries_request() :: #{}
--type export_dictionary_entries_request() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dictionary_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"language">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"references">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type update_dictionary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_feed_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"association">> => feed_association(),
-%%   <<"dataEndpoints">> => list([string()]()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"outputs">> => list(get_output()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type get_feed_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_feed_request() :: #{
-%%   <<"name">> := string(),
-%%   <<"outputs">> := list(create_output()),
-%%   <<"tags">> => map()
-%% }
--type create_feed_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_output() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"outputConfig">> => list(),
-%%   <<"status">> => list(any())
-%% }
--type create_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -273,31 +88,198 @@
 
 
 %% Example:
-%% update_dictionary_request() :: #{
-%%   <<"entries">> => string(),
-%%   <<"language">> => list(any()),
-%%   <<"name">> => string()
+%% clipping_config() :: #{
+%%   <<"callbackMetadata">> => string()
 %% }
--type update_dictionary_request() :: #{binary() => any()}.
+-type clipping_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_feeds_response() :: #{
-%%   <<"feeds">> => list(feed_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_feeds_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dictionary_request() :: #{
+%%   <<"entries">> => string(),
+%%   <<"language">> := list(any()),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_dictionary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dictionary_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"references">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_dictionary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_feed_request() :: #{
+%%   <<"accessRoleArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"outputs">> := list(create_output()),
+%%   <<"tags">> => map()
+%% }
+-type create_feed_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_feed_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"association">> => feed_association(),
+%%   <<"dataEndpoints">> => list([string()]()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputs">> => list(get_output()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_feed_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_output() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputConfig">> => list(),
+%%   <<"status">> => list(any())
+%% }
+-type create_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% cropping_config() :: #{
+%%   <<"templateGroups">> => list(template_group())
+%% }
+-type cropping_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dictionary_request() :: #{}
+-type delete_dictionary_request() :: #{}.
+
+
+%% Example:
+%% delete_dictionary_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_dictionary_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_feed_request() :: #{}
+-type delete_feed_request() :: #{}.
+
+
+%% Example:
+%% delete_feed_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_feed_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dictionary_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type dictionary_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_feed_request() :: #{
+%%   <<"associatedResourceName">> := string(),
+%%   <<"dryRun">> => [boolean()]
+%% }
+-type disassociate_feed_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_feed_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string()
+%% }
+-type disassociate_feed_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_dictionary_entries_request() :: #{}
+-type export_dictionary_entries_request() :: #{}.
+
+
+%% Example:
+%% export_dictionary_entries_response() :: #{
+%%   <<"entries">> => string()
+%% }
+-type export_dictionary_entries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% feed_association() :: #{
+%%   <<"associatedResourceName">> => string()
+%% }
+-type feed_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% feed_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"association">> => feed_association(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type feed_summary() :: #{binary() => any()}.
 
 %% Example:
 %% get_dictionary_request() :: #{}
 -type get_dictionary_request() :: #{}.
+
+
+%% Example:
+%% get_dictionary_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"references">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type get_dictionary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_feed_request() :: #{}
+-type get_feed_request() :: #{}.
+
+
+%% Example:
+%% get_feed_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"association">> => feed_association(),
+%%   <<"dataEndpoints">> => list([string()]()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputs">> => list(get_output()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type get_feed_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -309,24 +291,6 @@
 %%   <<"status">> => list(any())
 %% }
 -type get_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% too_many_request_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type too_many_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -345,14 +309,122 @@
 
 
 %% Example:
-%% dictionary_summary() :: #{
+%% list_dictionaries_response() :: #{
+%%   <<"dictionaries">> => list(dictionary_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_dictionaries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_feeds_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_feeds_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_feeds_response() :: #{
+%%   <<"feeds">> => list(feed_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_feeds_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% subtitling_config() :: #{
+%%   <<"aspectRatio">> => aspect_ratio(),
+%%   <<"dictionary">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"profanityFilter">> => list(any())
+%% }
+-type subtitling_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_group() :: #{
+%%   <<"name">> => string(),
+%%   <<"templateUris">> => list(string())
+%% }
+-type template_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_request_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type too_many_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dictionary_request() :: #{
+%%   <<"entries">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type update_dictionary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dictionary_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
 %%   <<"language">> => list(any()),
 %%   <<"name">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"references">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
 %% }
--type dictionary_summary() :: #{binary() => any()}.
+-type update_dictionary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_feed_request() :: #{
+%%   <<"accessRoleArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"outputs">> := list(update_output())
+%% }
+-type update_feed_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -370,63 +442,6 @@
 
 
 %% Example:
-%% feed_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"association">> => feed_association(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type feed_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_dictionaries_response() :: #{
-%%   <<"dictionaries">> => list(dictionary_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_dictionaries_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_feed_request() :: #{}
--type get_feed_request() :: #{}.
-
-
-%% Example:
-%% disassociate_feed_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string()
-%% }
--type disassociate_feed_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_feed_request() :: #{
-%%   <<"associatedResourceName">> := string(),
-%%   <<"dryRun">> => [boolean()]
-%% }
--type disassociate_feed_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_feeds_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_feeds_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% subtitling_config() :: #{
-%%   <<"aspectRatio">> => aspect_ratio(),
-%%   <<"dictionary">> => string(),
-%%   <<"language">> => list(any()),
-%%   <<"profanityFilter">> => list(any())
-%% }
--type subtitling_config() :: #{binary() => any()}.
-
-
-%% Example:
 %% update_output() :: #{
 %%   <<"description">> => string(),
 %%   <<"fromAssociation">> => [boolean()],
@@ -438,134 +453,132 @@
 
 
 %% Example:
-%% delete_feed_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => list(any())
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type delete_feed_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type associate_feed_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_request_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_dictionary_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_request_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_feed_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_request_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_dictionary_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_feed_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_feed_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type export_dictionary_entries_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_dictionary_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_feed_errors() ::
-    internal_server_error_exception() | 
     too_many_request_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_dictionaries_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
+    too_many_request_exception() | 
+    internal_server_error_exception() | 
     access_denied_exception().
 
 -type list_feeds_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_dictionary_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_feed_errors() ::
-    internal_server_error_exception() | 
-    too_many_request_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_request_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

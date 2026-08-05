@@ -35,6 +35,8 @@
          create_code_security_integration/3,
          create_code_security_scan_configuration/2,
          create_code_security_scan_configuration/3,
+         create_connector/2,
+         create_connector/3,
          create_filter/2,
          create_filter/3,
          create_findings_report/2,
@@ -47,6 +49,8 @@
          delete_code_security_integration/3,
          delete_code_security_scan_configuration/2,
          delete_code_security_scan_configuration/3,
+         delete_connector/2,
+         delete_connector/3,
          delete_filter/2,
          delete_filter/3,
          describe_organization_configuration/2,
@@ -104,6 +108,10 @@
          list_code_security_scan_configuration_associations/3,
          list_code_security_scan_configurations/2,
          list_code_security_scan_configurations/3,
+         list_connector_scan_configurations/2,
+         list_connector_scan_configurations/3,
+         list_connectors/2,
+         list_connectors/3,
          list_coverage/2,
          list_coverage/3,
          list_coverage_statistics/2,
@@ -149,6 +157,10 @@
          update_code_security_scan_configuration/3,
          update_configuration/2,
          update_configuration/3,
+         update_connector/2,
+         update_connector/3,
+         update_connector_scan_configuration/2,
+         update_connector_scan_configuration/3,
          update_ec2_deep_inspection_configuration/2,
          update_ec2_deep_inspection_configuration/3,
          update_encryption_key/2,
@@ -165,552 +177,72 @@
 
 
 %% Example:
-%% update_ec2_deep_inspection_configuration_request() :: #{
-%%   <<"activateDeepInspection">> => [boolean()],
-%%   <<"packagePaths">> => list(string())
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type update_ec2_deep_inspection_configuration_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_disassociate_code_security_scan_configuration_request() :: #{
-%%   <<"disassociateConfigurationRequests">> := list(disassociate_configuration_request())
-%% }
--type batch_disassociate_code_security_scan_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_encryption_key_response() :: #{
-%%   <<"kmsKeyId">> => string()
-%% }
--type get_encryption_key_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_vulnerability_details() :: #{
-%%   <<"cwes">> => list(string()),
-%%   <<"detectorId">> => string(),
-%%   <<"detectorName">> => string(),
-%%   <<"detectorTags">> => list(string()),
-%%   <<"filePath">> => code_file_path(),
-%%   <<"referenceUrls">> => list(string()),
-%%   <<"ruleId">> => string(),
-%%   <<"sourceLambdaLayerArn">> => string()
-%% }
--type code_vulnerability_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% disable_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"resourceTypes">> => list(string())
-%% }
--type disable_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_file_path() :: #{
-%%   <<"endLine">> => [integer()],
-%%   <<"fileName">> => string(),
-%%   <<"filePath">> => string(),
-%%   <<"startLine">> => [integer()]
-%% }
--type code_file_path() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_git_lab_self_managed_integration_detail() :: #{
-%%   <<"accessToken">> => string(),
-%%   <<"instanceUrl">> => string()
-%% }
--type create_git_lab_self_managed_integration_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_path() :: #{
-%%   <<"steps">> => list(step())
-%% }
--type network_path() :: #{binary() => any()}.
-
-
-%% Example:
-%% state() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
+%% account() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"resourceStatus">> => resource_status(),
 %%   <<"status">> => string()
 %% }
--type state() :: #{binary() => any()}.
+-type account() :: #{binary() => any()}.
 
 
 %% Example:
-%% cvss4() :: #{
-%%   <<"baseScore">> => float(),
-%%   <<"scoringVector">> => string()
-%% }
--type cvss4() :: #{binary() => any()}.
-
-
-%% Example:
-%% v_m_scanner_state() :: #{
-%%   <<"activated">> => [boolean()],
-%%   <<"activatedAt">> => non_neg_integer(),
-%%   <<"status">> => string()
-%% }
--type v_m_scanner_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_delegated_admin_account_response() :: #{
-%%   <<"delegatedAdmin">> => delegated_admin()
-%% }
--type get_delegated_admin_account_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% repository_aggregation() :: #{
-%%   <<"repositories">> => list(string_filter()),
+%% account_aggregation() :: #{
+%%   <<"findingType">> => string(),
+%%   <<"resourceType">> => string(),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
--type repository_aggregation() :: #{binary() => any()}.
+-type account_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
-%% project_code_security_scan_configuration() :: #{
-%%   <<"continuousIntegrationScanConfigurations">> => list(project_continuous_integration_scan_configuration()),
-%%   <<"periodicScanConfigurations">> => list(project_periodic_scan_configuration())
-%% }
--type project_code_security_scan_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% suggested_fix() :: #{
-%%   <<"code">> => [string()],
-%%   <<"description">> => [string()]
-%% }
--type suggested_fix() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_finding_status_filter() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"value">> => list(any())
-%% }
--type cis_finding_status_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"clientToken">> => string(),
-%%   <<"resourceTypes">> := list(string())
-%% }
--type enable_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vulnerability() :: #{
-%%   <<"atigData">> => atig_data(),
-%%   <<"cisaData">> => cisa_data(),
-%%   <<"cvss2">> => cvss2(),
-%%   <<"cvss3">> => cvss3(),
-%%   <<"cvss4">> => cvss4(),
-%%   <<"cwes">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"detectionPlatforms">> => list(string()),
-%%   <<"epss">> => epss(),
-%%   <<"exploitObserved">> => exploit_observed(),
-%%   <<"id">> => string(),
-%%   <<"referenceUrls">> => list(string()),
-%%   <<"relatedVulnerabilities">> => list(string()),
-%%   <<"source">> => string(),
-%%   <<"sourceUrl">> => string(),
-%%   <<"vendorCreatedAt">> => non_neg_integer(),
-%%   <<"vendorSeverity">> => string(),
-%%   <<"vendorUpdatedAt">> => non_neg_integer()
-%% }
--type vulnerability() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sbom_export_request() :: #{
-%%   <<"reportFormat">> := string(),
-%%   <<"resourceFilterCriteria">> => resource_filter_criteria(),
-%%   <<"s3Destination">> := destination()
-%% }
--type create_sbom_export_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_code_security_integration_request() :: #{
-%%   <<"integrationArn">> := string(),
-%%   <<"tags">> => map()
-%% }
--type get_code_security_integration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_code_security_scan_request() :: #{
-%%   <<"resource">> := list(),
-%%   <<"scanId">> := string()
-%% }
--type get_code_security_scan_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_organization_configuration_request() :: #{}
--type describe_organization_configuration_request() :: #{}.
-
-
-%% Example:
-%% update_git_lab_self_managed_integration_detail() :: #{
-%%   <<"authCode">> => string()
-%% }
--type update_git_lab_self_managed_integration_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_total() :: #{
+%% account_aggregation_response() :: #{
 %%   <<"accountId">> => string(),
-%%   <<"usage">> => list(usage())
+%%   <<"exploitAvailableCount">> => [float()],
+%%   <<"fixAvailableCount">> => [float()],
+%%   <<"severityCounts">> => severity_counts()
 %% }
--type usage_total() :: #{binary() => any()}.
+-type account_aggregation_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% cis_targets() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"targetResourceTags">> => map()
-%% }
--type cis_targets() :: #{binary() => any()}.
-
-
-%% Example:
-%% remediation() :: #{
-%%   <<"recommendation">> => recommendation()
-%% }
--type remediation() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_configuration_request() :: #{
-%%   <<"ec2Configuration">> => ec2_configuration(),
-%%   <<"ecrConfiguration">> => ecr_configuration()
-%% }
--type update_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_security_integration_summary() :: #{
-%%   <<"createdOn">> => [non_neg_integer()],
-%%   <<"integrationArn">> => string(),
-%%   <<"lastUpdateOn">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any())
-%% }
--type code_security_integration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_findings_report_response() :: #{
-%%   <<"reportId">> => string()
-%% }
--type create_findings_report_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% continuous_integration_scan_configuration() :: #{
-%%   <<"supportedEvents">> => list(list(any())())
-%% }
--type continuous_integration_scan_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% counts() :: #{
-%%   <<"count">> => float(),
-%%   <<"groupKey">> => string()
-%% }
--type counts() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_map_filter() :: #{
-%%   <<"comparison">> => string(),
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type coverage_map_filter() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% filter_criteria() :: #{
-%%   <<"updatedAt">> => list(date_filter()),
-%%   <<"lambdaFunctionLastModifiedAt">> => list(date_filter()),
-%%   <<"networkProtocol">> => list(string_filter()),
-%%   <<"lambdaFunctionLayers">> => list(string_filter()),
-%%   <<"awsAccountId">> => list(string_filter()),
-%%   <<"inspectorScore">> => list(number_filter()),
-%%   <<"ecrImageArchitecture">> => list(string_filter()),
-%%   <<"codeRepositoryProjectName">> => list(string_filter()),
-%%   <<"codeVulnerabilityFilePath">> => list(string_filter()),
-%%   <<"epssScore">> => list(number_filter()),
-%%   <<"ec2InstanceVpcId">> => list(string_filter()),
-%%   <<"codeVulnerabilityDetectorName">> => list(string_filter()),
-%%   <<"findingStatus">> => list(string_filter()),
-%%   <<"relatedVulnerabilities">> => list(string_filter()),
-%%   <<"vulnerabilityId">> => list(string_filter()),
-%%   <<"componentType">> => list(string_filter()),
-%%   <<"componentId">> => list(string_filter()),
-%%   <<"ec2InstanceSubnetId">> => list(string_filter()),
-%%   <<"codeRepositoryProviderType">> => list(string_filter()),
-%%   <<"portRange">> => list(port_range_filter()),
-%%   <<"vulnerablePackages">> => list(package_filter()),
-%%   <<"ecrImageRegistry">> => list(string_filter()),
-%%   <<"lambdaFunctionExecutionRoleArn">> => list(string_filter()),
-%%   <<"resourceTags">> => list(map_filter()),
-%%   <<"vulnerabilitySource">> => list(string_filter()),
-%%   <<"findingArn">> => list(string_filter()),
-%%   <<"codeVulnerabilityDetectorTags">> => list(string_filter()),
-%%   <<"ecrImageInUseCount">> => list(number_filter()),
-%%   <<"ec2InstanceImageId">> => list(string_filter()),
-%%   <<"ecrImagePushedAt">> => list(date_filter()),
-%%   <<"ecrImageRepositoryName">> => list(string_filter()),
-%%   <<"findingType">> => list(string_filter()),
-%%   <<"resourceId">> => list(string_filter()),
-%%   <<"firstObservedAt">> => list(date_filter()),
-%%   <<"lambdaFunctionRuntime">> => list(string_filter()),
-%%   <<"ecrImageTags">> => list(string_filter()),
-%%   <<"vendorSeverity">> => list(string_filter()),
-%%   <<"lambdaFunctionName">> => list(string_filter()),
-%%   <<"ecrImageHash">> => list(string_filter()),
-%%   <<"lastObservedAt">> => list(date_filter()),
-%%   <<"resourceType">> => list(string_filter()),
-%%   <<"fixAvailable">> => list(string_filter()),
-%%   <<"severity">> => list(string_filter()),
-%%   <<"ecrImageLastInUseAt">> => list(date_filter()),
-%%   <<"exploitAvailable">> => list(string_filter()),
-%%   <<"title">> => list(string_filter())
-%% }
--type filter_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sbom_export_response() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"filterCriteria">> => resource_filter_criteria(),
-%%   <<"format">> => string(),
-%%   <<"reportId">> => string(),
-%%   <<"s3Destination">> => destination(),
-%%   <<"status">> => string()
-%% }
--type get_sbom_export_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% time() :: #{
-%%   <<"timeOfDay">> => string(),
-%%   <<"timezone">> => string()
-%% }
--type time() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_cis_scan_configuration_request() :: #{
-%%   <<"scanConfigurationArn">> := string()
-%% }
--type delete_cis_scan_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disable_delegated_admin_account_response() :: #{
-%%   <<"delegatedAdminAccountId">> := string()
-%% }
--type disable_delegated_admin_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_configuration_request() :: #{}
--type get_configuration_request() :: #{}.
-
-
-%% Example:
-%% cvss3() :: #{
-%%   <<"baseScore">> => float(),
-%%   <<"scoringVector">> => string()
-%% }
--type cvss3() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_cis_session_request() :: #{
-%%   <<"message">> := start_cis_session_message(),
-%%   <<"scanJobId">> := string()
-%% }
--type start_cis_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_vulnerabilities_filter_criteria() :: #{
-%%   <<"vulnerabilityIds">> => list(string())
-%% }
--type search_vulnerabilities_filter_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_account_ec2_deep_inspection_status() :: #{
+%% account_state() :: #{
 %%   <<"accountId">> => string(),
-%%   <<"activateDeepInspection">> => [boolean()]
+%%   <<"resourceState">> => resource_state(),
+%%   <<"state">> => state()
 %% }
--type member_account_ec2_deep_inspection_status() :: #{binary() => any()}.
+-type account_state() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_member_ec2_deep_inspection_status_response() :: #{
-%%   <<"accountIds">> => list(member_account_ec2_deep_inspection_status_state()),
-%%   <<"failedAccountIds">> => list(failed_member_account_ec2_deep_inspection_status_state())
+%% ami_aggregation() :: #{
+%%   <<"amis">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
 %% }
--type batch_get_member_ec2_deep_inspection_status_response() :: #{binary() => any()}.
+-type ami_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
-%% ec2_metadata() :: #{
-%%   <<"amiId">> => string(),
-%%   <<"platform">> => string(),
-%%   <<"tags">> => map()
-%% }
--type ec2_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_security_scan_configurations_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_code_security_scan_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_account_ec2_deep_inspection_status_state() :: #{
+%% ami_aggregation_response() :: #{
 %%   <<"accountId">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"status">> => string()
+%%   <<"affectedInstances">> => [float()],
+%%   <<"ami">> => string(),
+%%   <<"cloudAccountId">> => string(),
+%%   <<"cloudOrgId">> => string(),
+%%   <<"cloudPartition">> => string(),
+%%   <<"cloudProvider">> => string(),
+%%   <<"cloudRegion">> => string(),
+%%   <<"severityCounts">> => severity_counts()
 %% }
--type member_account_ec2_deep_inspection_status_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_findings_report_status_response() :: #{
-%%   <<"destination">> => destination(),
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"filterCriteria">> => filter_criteria(),
-%%   <<"reportId">> => string(),
-%%   <<"status">> => string()
-%% }
--type get_findings_report_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_configuration() :: #{
-%%   <<"activateVMScanner">> => [boolean()],
-%%   <<"scanMode">> => string()
-%% }
--type ec2_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_state() :: #{
-%%   <<"codeRepository">> => state(),
-%%   <<"ec2">> => state(),
-%%   <<"ecr">> => state(),
-%%   <<"lambda">> => state(),
-%%   <<"lambdaCode">> => state()
-%% }
--type resource_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_configuration_state() :: #{
-%%   <<"scanModeState">> => ec2_scan_mode_state(),
-%%   <<"vmScannerState">> => v_m_scanner_state()
-%% }
--type ec2_configuration_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_usage_totals_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_usage_totals_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delegated_admin() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"relationshipStatus">> => string()
-%% }
--type delegated_admin() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_scan_status_filter() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"value">> => list(any())
-%% }
--type cis_scan_status_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_account_permissions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"permissions">> := list(permission())
-%% }
--type list_account_permissions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_findings_report_status_request() :: #{
-%%   <<"reportId">> => string()
-%% }
--type get_findings_report_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_findings_report_response() :: #{
-%%   <<"reportId">> := string()
-%% }
--type cancel_findings_report_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cis_targets() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"targetResourceTags">> => map()
-%% }
--type update_cis_targets() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_string_filter() :: #{
-%%   <<"comparison">> => string(),
-%%   <<"value">> => string()
-%% }
--type coverage_string_filter() :: #{binary() => any()}.
+-type ami_aggregation_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -722,28 +254,108 @@
 
 
 %% Example:
-%% list_findings_response() :: #{
-%%   <<"findings">> => list(finding()),
-%%   <<"nextToken">> => string()
+%% associate_member_request() :: #{
+%%   <<"accountId">> := string()
 %% }
--type list_findings_response() :: #{binary() => any()}.
+-type associate_member_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% disable_response() :: #{
-%%   <<"accounts">> := list(account()),
-%%   <<"failedAccounts">> => list(failed_account())
+%% associate_member_response() :: #{
+%%   <<"accountId">> := string()
 %% }
--type disable_response() :: #{binary() => any()}.
+-type associate_member_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% ecr_configuration() :: #{
-%%   <<"pullDateRescanDuration">> => string(),
-%%   <<"pullDateRescanMode">> => string(),
-%%   <<"rescanDuration">> => string()
+%% atig_data() :: #{
+%%   <<"firstSeen">> => non_neg_integer(),
+%%   <<"lastSeen">> => non_neg_integer(),
+%%   <<"targets">> => list(string()),
+%%   <<"ttps">> => list(string())
 %% }
--type ecr_configuration() :: #{binary() => any()}.
+-type atig_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_enable() :: #{
+%%   <<"codeRepository">> => [boolean()],
+%%   <<"ec2">> => [boolean()],
+%%   <<"ecr">> => [boolean()],
+%%   <<"lambda">> => [boolean()],
+%%   <<"lambdaCode">> => [boolean()]
+%% }
+-type auto_enable() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_config_connector_arn_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type aws_config_connector_arn_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_ec2_instance_details() :: #{
+%%   <<"iamInstanceProfileArn">> => string(),
+%%   <<"imageId">> => string(),
+%%   <<"ipV4Addresses">> => list(string()),
+%%   <<"ipV6Addresses">> => list(string()),
+%%   <<"keyName">> => string(),
+%%   <<"launchedAt">> => non_neg_integer(),
+%%   <<"platform">> => string(),
+%%   <<"subnetId">> => string(),
+%%   <<"type">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type aws_ec2_instance_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_ecr_container_aggregation() :: #{
+%%   <<"architectures">> => list(string_filter()),
+%%   <<"imageShas">> => list(string_filter()),
+%%   <<"imageTags">> => list(string_filter()),
+%%   <<"inUseCount">> => list(number_filter()),
+%%   <<"lastInUseAt">> => list(date_filter()),
+%%   <<"repositories">> => list(string_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type aws_ecr_container_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_ecr_container_aggregation_response() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"architecture">> => [string()],
+%%   <<"imageSha">> => [string()],
+%%   <<"imageTags">> => list(string()),
+%%   <<"inUseCount">> => [float()],
+%%   <<"lastInUseAt">> => non_neg_integer(),
+%%   <<"repository">> => [string()],
+%%   <<"resourceId">> => string(),
+%%   <<"severityCounts">> => severity_counts()
+%% }
+-type aws_ecr_container_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_ecr_container_image_details() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"author">> => [string()],
+%%   <<"imageHash">> => string(),
+%%   <<"imageTags">> => list(string()),
+%%   <<"inUseCount">> => [float()],
+%%   <<"lastInUseAt">> => non_neg_integer(),
+%%   <<"platform">> => string(),
+%%   <<"pushedAt">> => non_neg_integer(),
+%%   <<"registry">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type aws_ecr_container_image_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -755,31 +367,343 @@
 
 
 %% Example:
-%% cis_target_resource_aggregation() :: #{
+%% aws_eks_metadata_details() :: #{
+%%   <<"namespace">> => [string()],
+%%   <<"workloadInfoList">> => list(aws_eks_workload_info())
+%% }
+-type aws_eks_metadata_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_eks_workload_info() :: #{
+%%   <<"name">> => [string()],
+%%   <<"type">> => [string()]
+%% }
+-type aws_eks_workload_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_lambda_function_details() :: #{
+%%   <<"architectures">> => list(string()),
+%%   <<"codeSha256">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"functionName">> => string(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"layers">> => list(string()),
+%%   <<"packageType">> => string(),
+%%   <<"runtime">> => string(),
+%%   <<"version">> => string(),
+%%   <<"vpcConfig">> => lambda_vpc_config()
+%% }
+-type aws_lambda_function_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_provider_detail_create() :: #{
+%%   <<"autoInstallVMScanner">> => [boolean()],
+%%   <<"awsConfigConnectorArn">> => string(),
+%%   <<"azureRegions">> => list(string()),
+%%   <<"scopeConfiguration">> => azure_scope_configuration_input()
+%% }
+-type azure_provider_detail_create() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_provider_detail_update() :: #{
+%%   <<"autoInstallVMScanner">> => [boolean()],
+%%   <<"azureRegions">> => list(string()),
+%%   <<"scopeConfiguration">> => azure_scope_configuration_input()
+%% }
+-type azure_provider_detail_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_scope_configuration() :: #{
+%%   <<"containerImageScanning">> => scope_configuration(),
+%%   <<"serverlessScanning">> => scope_configuration(),
+%%   <<"vmScanning">> => scope_configuration()
+%% }
+-type azure_scope_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_scope_configuration_input() :: #{
+%%   <<"containerImageScanning">> => scope_configuration_input(),
+%%   <<"serverlessScanning">> => scope_configuration_input(),
+%%   <<"vmScanning">> => scope_configuration_input()
+%% }
+-type azure_scope_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_code_security_scan_configuration_request() :: #{
+%%   <<"associateConfigurationRequests">> := list(associate_configuration_request())
+%% }
+-type batch_associate_code_security_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_code_security_scan_configuration_response() :: #{
+%%   <<"failedAssociations">> => list(failed_association_result()),
+%%   <<"successfulAssociations">> => list(successful_association_result())
+%% }
+-type batch_associate_code_security_scan_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_code_security_scan_configuration_request() :: #{
+%%   <<"disassociateConfigurationRequests">> := list(disassociate_configuration_request())
+%% }
+-type batch_disassociate_code_security_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_code_security_scan_configuration_response() :: #{
+%%   <<"failedAssociations">> => list(failed_association_result()),
+%%   <<"successfulAssociations">> => list(successful_association_result())
+%% }
+-type batch_disassociate_code_security_scan_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_account_status_request() :: #{
+%%   <<"accountIds">> => list(string())
+%% }
+-type batch_get_account_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_account_status_response() :: #{
+%%   <<"accounts">> := list(account_state()),
+%%   <<"failedAccounts">> => list(failed_account())
+%% }
+-type batch_get_account_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_code_snippet_request() :: #{
+%%   <<"findingArns">> := list(string())
+%% }
+-type batch_get_code_snippet_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_code_snippet_response() :: #{
+%%   <<"codeSnippetResults">> => list(code_snippet_result()),
+%%   <<"errors">> => list(code_snippet_error())
+%% }
+-type batch_get_code_snippet_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_finding_details_request() :: #{
+%%   <<"findingArns">> := list(string())
+%% }
+-type batch_get_finding_details_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_finding_details_response() :: #{
+%%   <<"errors">> => list(finding_details_error()),
+%%   <<"findingDetails">> => list(finding_detail())
+%% }
+-type batch_get_finding_details_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_free_trial_info_request() :: #{
+%%   <<"accountIds">> := list(string())
+%% }
+-type batch_get_free_trial_info_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_free_trial_info_response() :: #{
+%%   <<"accounts">> := list(free_trial_account_info()),
+%%   <<"failedAccounts">> := list(free_trial_info_error())
+%% }
+-type batch_get_free_trial_info_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_member_ec2_deep_inspection_status_request() :: #{
+%%   <<"accountIds">> => list(string())
+%% }
+-type batch_get_member_ec2_deep_inspection_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_member_ec2_deep_inspection_status_response() :: #{
+%%   <<"accountIds">> => list(member_account_ec2_deep_inspection_status_state()),
+%%   <<"failedAccountIds">> => list(failed_member_account_ec2_deep_inspection_status_state())
+%% }
+-type batch_get_member_ec2_deep_inspection_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_member_ec2_deep_inspection_status_request() :: #{
+%%   <<"accountIds">> := list(member_account_ec2_deep_inspection_status())
+%% }
+-type batch_update_member_ec2_deep_inspection_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_member_ec2_deep_inspection_status_response() :: #{
+%%   <<"accountIds">> => list(member_account_ec2_deep_inspection_status_state()),
+%%   <<"failedAccountIds">> => list(failed_member_account_ec2_deep_inspection_status_state())
+%% }
+-type batch_update_member_ec2_deep_inspection_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_findings_report_request() :: #{
+%%   <<"reportId">> := string()
+%% }
+-type cancel_findings_report_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_findings_report_response() :: #{
+%%   <<"reportId">> := string()
+%% }
+-type cancel_findings_report_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_sbom_export_request() :: #{
+%%   <<"reportId">> := string()
+%% }
+-type cancel_sbom_export_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_sbom_export_response() :: #{
+%%   <<"reportId">> => string()
+%% }
+-type cancel_sbom_export_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cis_check_aggregation() :: #{
 %%   <<"accountId">> => string(),
+%%   <<"checkDescription">> => [string()],
+%%   <<"checkId">> => [string()],
+%%   <<"level">> => list(any()),
 %%   <<"platform">> => [string()],
 %%   <<"scanArn">> => string(),
 %%   <<"statusCounts">> => status_counts(),
+%%   <<"title">> => [string()]
+%% }
+-type cis_check_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% cis_date_filter() :: #{
+%%   <<"earliestScanStartTime">> => [non_neg_integer()],
+%%   <<"latestScanStartTime">> => [non_neg_integer()]
+%% }
+-type cis_date_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% cis_finding_status_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"value">> => list(any())
+%% }
+-type cis_finding_status_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% cis_number_filter() :: #{
+%%   <<"lowerInclusive">> => [integer()],
+%%   <<"upperInclusive">> => [integer()]
+%% }
+-type cis_number_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% cis_result_status_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"value">> => list(any())
+%% }
+-type cis_result_status_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% cis_scan() :: #{
+%%   <<"failedChecks">> => [integer()],
+%%   <<"scanArn">> => string(),
+%%   <<"scanConfigurationArn">> => string(),
+%%   <<"scanDate">> => [non_neg_integer()],
+%%   <<"scanName">> => string(),
+%%   <<"scheduledBy">> => [string()],
+%%   <<"securityLevel">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"targets">> => cis_targets(),
+%%   <<"totalChecks">> => [integer()]
+%% }
+-type cis_scan() :: #{binary() => any()}.
+
+
+%% Example:
+%% cis_scan_configuration() :: #{
+%%   <<"ownerId">> => string(),
+%%   <<"scanConfigurationArn">> => string(),
+%%   <<"scanName">> => string(),
+%%   <<"schedule">> => list(),
+%%   <<"securityLevel">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"targets">> => cis_targets()
+%% }
+-type cis_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% cis_scan_result_details() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"checkDescription">> => [string()],
+%%   <<"checkId">> => [string()],
+%%   <<"findingArn">> => string(),
+%%   <<"level">> => list(any()),
+%%   <<"platform">> => [string()],
+%%   <<"remediation">> => [string()],
+%%   <<"scanArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
 %%   <<"targetResourceId">> => string(),
-%%   <<"targetResourceTags">> => map(),
-%%   <<"targetStatus">> => list(any()),
-%%   <<"targetStatusReason">> => list(any())
+%%   <<"title">> => [string()]
 %% }
--type cis_target_resource_aggregation() :: #{binary() => any()}.
+-type cis_scan_result_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_filter_response() :: #{
-%%   <<"arn">> := string()
+%% cis_scan_result_details_filter_criteria() :: #{
+%%   <<"checkIdFilters">> => list(cis_string_filter()),
+%%   <<"findingArnFilters">> => list(cis_string_filter()),
+%%   <<"findingStatusFilters">> => list(cis_finding_status_filter()),
+%%   <<"securityLevelFilters">> => list(cis_security_level_filter()),
+%%   <<"titleFilters">> => list(cis_string_filter())
 %% }
--type create_filter_response() :: #{binary() => any()}.
+-type cis_scan_result_details_filter_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_member_response() :: #{
-%%   <<"accountId">> := string()
+%% cis_scan_results_aggregated_by_checks_filter_criteria() :: #{
+%%   <<"accountIdFilters">> => list(cis_string_filter()),
+%%   <<"checkIdFilters">> => list(cis_string_filter()),
+%%   <<"failedResourcesFilters">> => list(cis_number_filter()),
+%%   <<"platformFilters">> => list(cis_string_filter()),
+%%   <<"securityLevelFilters">> => list(cis_security_level_filter()),
+%%   <<"titleFilters">> => list(cis_string_filter())
 %% }
--type associate_member_response() :: #{binary() => any()}.
+-type cis_scan_results_aggregated_by_checks_filter_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -798,165 +722,203 @@
 
 
 %% Example:
-%% resource_status() :: #{
-%%   <<"codeRepository">> => string(),
-%%   <<"ec2">> => string(),
-%%   <<"ecr">> => string(),
-%%   <<"lambda">> => string(),
-%%   <<"lambdaCode">> => string()
+%% cis_scan_status_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"value">> => list(any())
 %% }
--type resource_status() :: #{binary() => any()}.
+-type cis_scan_status_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% delegated_admin_account() :: #{
+%% cis_security_level_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"value">> => list(any())
+%% }
+-type cis_security_level_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% cis_session_message() :: #{
+%%   <<"cisRuleDetails">> => binary(),
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type cis_session_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% cis_string_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type cis_string_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% cis_target_resource_aggregation() :: #{
 %%   <<"accountId">> => string(),
-%%   <<"status">> => string()
+%%   <<"platform">> => [string()],
+%%   <<"scanArn">> => string(),
+%%   <<"statusCounts">> => status_counts(),
+%%   <<"targetResourceId">> => string(),
+%%   <<"targetResourceTags">> => map(),
+%%   <<"targetStatus">> => list(any()),
+%%   <<"targetStatusReason">> => list(any())
 %% }
--type delegated_admin_account() :: #{binary() => any()}.
+-type cis_target_resource_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_scan_metadata() :: #{
-%%   <<"codeRepository">> => code_repository_metadata(),
-%%   <<"ec2">> => ec2_metadata(),
-%%   <<"ecrImage">> => ecr_container_image_metadata(),
-%%   <<"ecrRepository">> => ecr_repository_metadata(),
-%%   <<"lambdaFunction">> => lambda_function_metadata()
+%% cis_target_status_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"value">> => list(any())
 %% }
--type resource_scan_metadata() :: #{binary() => any()}.
+-type cis_target_status_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% monthly_schedule() :: #{
-%%   <<"day">> => list(any()),
-%%   <<"startTime">> => time()
+%% cis_target_status_reason_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"value">> => list(any())
 %% }
--type monthly_schedule() :: #{binary() => any()}.
+-type cis_target_status_reason_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_member_request() :: #{
-%%   <<"accountId">> := string()
+%% cis_targets() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"targetResourceTags">> => map()
 %% }
--type associate_member_request() :: #{binary() => any()}.
+-type cis_targets() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_git_hub_integration_detail() :: #{
-%%   <<"code">> => string(),
-%%   <<"installationId">> => string()
+%% cisa_data() :: #{
+%%   <<"action">> => string(),
+%%   <<"dateAdded">> => non_neg_integer(),
+%%   <<"dateDue">> => non_neg_integer()
 %% }
--type update_git_hub_integration_detail() :: #{binary() => any()}.
+-type cisa_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_cis_scan_configuration_request() :: #{
-%%   <<"scanConfigurationArn">> := string(),
-%%   <<"scanName">> => string(),
-%%   <<"schedule">> => list(),
-%%   <<"securityLevel">> => list(any()),
-%%   <<"targets">> => update_cis_targets()
+%% cluster_details() :: #{
+%%   <<"clusterMetadata">> => list(),
+%%   <<"lastInUse">> => [non_neg_integer()],
+%%   <<"runningUnitCount">> => [float()],
+%%   <<"stoppedUnitCount">> => [float()]
 %% }
--type update_cis_scan_configuration_request() :: #{binary() => any()}.
+-type cluster_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% reset_encryption_key_request() :: #{
-%%   <<"resourceType">> := string(),
-%%   <<"scanType">> := string()
+%% cluster_for_image_filter_criteria() :: #{
+%%   <<"resourceId">> => [string()]
 %% }
--type reset_encryption_key_request() :: #{binary() => any()}.
+-type cluster_for_image_filter_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_code_security_integration_response() :: #{
-%%   <<"integrationArn">> => string()
+%% cluster_information() :: #{
+%%   <<"clusterArn">> => [string()],
+%%   <<"clusterDetails">> => list(cluster_details())
 %% }
--type delete_code_security_integration_response() :: #{binary() => any()}.
+-type cluster_information() :: #{binary() => any()}.
 
 
 %% Example:
-%% cis_scan_configuration() :: #{
-%%   <<"ownerId">> => string(),
-%%   <<"scanConfigurationArn">> => string(),
-%%   <<"scanName">> => string(),
-%%   <<"schedule">> => list(),
-%%   <<"securityLevel">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"targets">> => cis_targets()
+%% code_file_path() :: #{
+%%   <<"endLine">> => [integer()],
+%%   <<"fileName">> => string(),
+%%   <<"filePath">> => string(),
+%%   <<"startLine">> => [integer()]
 %% }
--type cis_scan_configuration() :: #{binary() => any()}.
+-type code_file_path() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% code_line() :: #{
+%%   <<"content">> => [string()],
+%%   <<"lineNumber">> => [integer()]
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type code_line() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_code_security_integration_request() :: #{
-%%   <<"details">> => list(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := list(any())
+%% code_repository_aggregation() :: #{
+%%   <<"projectNames">> => list(string_filter()),
+%%   <<"providerTypes">> => list(string_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
 %% }
--type create_code_security_integration_request() :: #{binary() => any()}.
+-type code_repository_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_code_security_scan_configuration_response() :: #{
-%%   <<"scanConfigurationArn">> => string()
+%% code_repository_aggregation_response() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"exploitAvailableActiveFindingsCount">> => [float()],
+%%   <<"fixAvailableActiveFindingsCount">> => [float()],
+%%   <<"projectNames">> => [string()],
+%%   <<"providerType">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"severityCounts">> => severity_counts()
 %% }
--type delete_code_security_scan_configuration_response() :: #{binary() => any()}.
+-type code_repository_aggregation_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_cis_scan_configurations_request() :: #{
-%%   <<"filterCriteria">> => list_cis_scan_configurations_filter_criteria(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
+%% code_repository_details() :: #{
+%%   <<"integrationArn">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"providerType">> => string()
 %% }
--type list_cis_scan_configurations_request() :: #{binary() => any()}.
+-type code_repository_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_free_trial_info_response() :: #{
-%%   <<"accounts">> := list(free_trial_account_info()),
-%%   <<"failedAccounts">> := list(free_trial_info_error())
+%% code_repository_metadata() :: #{
+%%   <<"integrationArn">> => string(),
+%%   <<"lastScannedCommitId">> => string(),
+%%   <<"onDemandScan">> => code_repository_on_demand_scan(),
+%%   <<"projectName">> => [string()],
+%%   <<"providerType">> => [string()],
+%%   <<"providerTypeVisibility">> => [string()],
+%%   <<"scanConfiguration">> => project_code_security_scan_configuration()
 %% }
--type batch_get_free_trial_info_response() :: #{binary() => any()}.
+-type code_repository_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% coverage_number_filter() :: #{
-%%   <<"lowerInclusive">> => [float()],
-%%   <<"upperInclusive">> => [float()]
+%% code_repository_on_demand_scan() :: #{
+%%   <<"lastScanAt">> => non_neg_integer(),
+%%   <<"lastScannedCommitId">> => string(),
+%%   <<"scanStatus">> => scan_status()
 %% }
--type coverage_number_filter() :: #{binary() => any()}.
+-type code_repository_on_demand_scan() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_ec2_deep_inspection_configuration_response() :: #{
-%%   <<"errorMessage">> => string(),
-%%   <<"orgPackagePaths">> => list(string()),
-%%   <<"packagePaths">> => list(string()),
-%%   <<"status">> => string()
+%% code_security_integration_summary() :: #{
+%%   <<"createdOn">> => [non_neg_integer()],
+%%   <<"integrationArn">> => string(),
+%%   <<"lastUpdateOn">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"type">> => list(any())
 %% }
--type update_ec2_deep_inspection_configuration_response() :: #{binary() => any()}.
+-type code_security_integration_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% failed_member_account_ec2_deep_inspection_status_state() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"ec2ScanStatus">> => string(),
-%%   <<"errorMessage">> => string()
+%% code_security_scan_configuration() :: #{
+%%   <<"continuousIntegrationScanConfiguration">> => continuous_integration_scan_configuration(),
+%%   <<"periodicScanConfiguration">> => periodic_scan_configuration(),
+%%   <<"ruleSetCategories">> => list(list(any())())
 %% }
--type failed_member_account_ec2_deep_inspection_status_state() :: #{binary() => any()}.
+-type code_security_scan_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -967,97 +929,26 @@
 
 
 %% Example:
-%% title_aggregation_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"severityCounts">> => severity_counts(),
-%%   <<"title">> => string(),
-%%   <<"vulnerabilityId">> => [string()]
+%% code_security_scan_configuration_summary() :: #{
+%%   <<"continuousIntegrationScanSupportedEvents">> => list(list(any())()),
+%%   <<"frequencyExpression">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ownerAccountId">> => string(),
+%%   <<"periodicScanFrequency">> => list(any()),
+%%   <<"ruleSetCategories">> => list(list(any())()),
+%%   <<"scanConfigurationArn">> => string(),
+%%   <<"scopeSettings">> => scope_settings()
 %% }
--type title_aggregation_response() :: #{binary() => any()}.
+-type code_security_scan_configuration_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% severity_counts() :: #{
-%%   <<"all">> => [float()],
-%%   <<"critical">> => [float()],
-%%   <<"high">> => [float()],
-%%   <<"medium">> => [float()]
-%% }
--type severity_counts() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cis_scans_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"scans">> => list(cis_scan())
-%% }
--type list_cis_scans_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_type_aggregation_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"exploitAvailableCount">> => [float()],
-%%   <<"fixAvailableCount">> => [float()],
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type finding_type_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_findings_report_request() :: #{
-%%   <<"reportId">> := string()
-%% }
--type cancel_findings_report_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage() :: #{
-%%   <<"currency">> => string(),
-%%   <<"estimatedMonthlyCost">> => float(),
-%%   <<"total">> => float(),
-%%   <<"type">> => string()
-%% }
--type usage() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_cis_session_request() :: #{
-%%   <<"message">> := stop_cis_session_message(),
-%%   <<"scanJobId">> := string(),
-%%   <<"sessionToken">> := string()
-%% }
--type stop_cis_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% failed_account() :: #{
-%%   <<"accountId">> => string(),
+%% code_snippet_error() :: #{
 %%   <<"errorCode">> => string(),
 %%   <<"errorMessage">> => string(),
-%%   <<"resourceStatus">> => resource_status(),
-%%   <<"status">> => string()
+%%   <<"findingArn">> => string()
 %% }
--type failed_account() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_instance_aggregation() :: #{
-%%   <<"amis">> => list(string_filter()),
-%%   <<"instanceIds">> => list(string_filter()),
-%%   <<"instanceTags">> => list(map_filter()),
-%%   <<"operatingSystems">> => list(string_filter()),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type ec2_instance_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_for_image_filter_criteria() :: #{
-%%   <<"resourceId">> => [string()]
-%% }
--type cluster_for_image_filter_criteria() :: #{binary() => any()}.
+-type code_snippet_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1072,121 +963,26 @@
 
 
 %% Example:
-%% cancel_sbom_export_request() :: #{
-%%   <<"reportId">> := string()
+%% code_vulnerability_details() :: #{
+%%   <<"cwes">> => list(string()),
+%%   <<"detectorId">> => string(),
+%%   <<"detectorName">> => string(),
+%%   <<"detectorTags">> => list(string()),
+%%   <<"filePath">> => code_file_path(),
+%%   <<"referenceUrls">> => list(string()),
+%%   <<"ruleId">> => string(),
+%%   <<"sourceLambdaLayerArn">> => string()
 %% }
--type cancel_sbom_export_request() :: #{binary() => any()}.
+-type code_vulnerability_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_code_security_scan_configuration_associations_response() :: #{
-%%   <<"associations">> => list(code_security_scan_configuration_association_summary()),
-%%   <<"nextToken">> => string()
+%% compute_platform() :: #{
+%%   <<"product">> => string(),
+%%   <<"vendor">> => string(),
+%%   <<"version">> => string()
 %% }
--type list_code_security_scan_configuration_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cis_scan_results_aggregated_by_checks_response() :: #{
-%%   <<"checkAggregations">> => list(cis_check_aggregation()),
-%%   <<"nextToken">> => string()
-%% }
--type list_cis_scan_results_aggregated_by_checks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_code_security_integration_request() :: #{
-%%   <<"integrationArn">> := string()
-%% }
--type delete_code_security_integration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_target_status_reason_filter() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"value">> => list(any())
-%% }
--type cis_target_status_reason_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% periodic_scan_configuration() :: #{
-%%   <<"frequency">> => list(any()),
-%%   <<"frequencyExpression">> => string()
-%% }
--type periodic_scan_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_filter_response() :: #{
-%%   <<"arn">> := string()
-%% }
--type update_filter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_organization_configuration_response() :: #{
-%%   <<"autoEnable">> => auto_enable(),
-%%   <<"maxAccountLimitReached">> => [boolean()]
-%% }
--type describe_organization_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_encryption_key_request() :: #{
-%%   <<"kmsKeyId">> := string(),
-%%   <<"resourceType">> := string(),
-%%   <<"scanType">> := string()
-%% }
--type update_encryption_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_encryption_key_response() :: #{}
--type update_encryption_key_response() :: #{}.
-
-
-%% Example:
-%% create_cis_scan_configuration_response() :: #{
-%%   <<"scanConfigurationArn">> => string()
-%% }
--type create_cis_scan_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_finding_aggregations_response() :: #{
-%%   <<"aggregationType">> := string(),
-%%   <<"nextToken">> => string(),
-%%   <<"responses">> => list(list())
-%% }
--type list_finding_aggregations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cis_scan_results_aggregated_by_target_resource_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"targetResourceAggregations">> => list(cis_target_resource_aggregation())
-%% }
--type list_cis_scan_results_aggregated_by_target_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configuration_response() :: #{
-%%   <<"ec2Configuration">> => ec2_configuration_state(),
-%%   <<"ecrConfiguration">> => ecr_configuration_state()
-%% }
--type get_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_function_aggregation() :: #{
-%%   <<"functionNames">> => list(string_filter()),
-%%   <<"functionTags">> => list(map_filter()),
-%%   <<"resourceIds">> => list(string_filter()),
-%%   <<"runtimes">> => list(string_filter()),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type lambda_function_aggregation() :: #{binary() => any()}.
+-type compute_platform() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1199,10 +995,339 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
+%% connector() :: #{
+%%   <<"autoInstallVMScanner">> => [boolean()],
+%%   <<"awsConfigConnectorArn">> => string(),
+%%   <<"azureRegions">> => list(string()),
+%%   <<"connectorArn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"enablementStatus">> => list(any()),
+%%   <<"enablementStatusReason">> => [string()],
+%%   <<"health">> => connector_health(),
+%%   <<"name">> => string(),
+%%   <<"provider">> => list(any()),
+%%   <<"scopeConfiguration">> => azure_scope_configuration(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type connector() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_arn_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type connector_arn_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_container_image_scan_configuration() :: #{
+%%   <<"pullDuration">> => string(),
+%%   <<"pushDuration">> => string()
+%% }
+-type connector_container_image_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_filter_criteria() :: #{
+%%   <<"accounts">> => list(string_filter()),
+%%   <<"awsConfigConnectorArns">> => list(aws_config_connector_arn_filter()),
+%%   <<"connectorArns">> => list(connector_arn_filter()),
+%%   <<"connectorType">> => list(connector_type_filter()),
+%%   <<"provider">> => list(provider_filter())
+%% }
+-type connector_filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_health() :: #{
+%%   <<"connectorStatus">> => list(any()),
+%%   <<"lastCheckedAt">> => [non_neg_integer()],
 %%   <<"message">> => [string()]
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type connector_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_scan_configuration() :: #{
+%%   <<"containerImageScanning">> => connector_container_image_scan_configuration()
+%% }
+-type connector_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_scan_configuration_item() :: #{
+%%   <<"awsConfigConnectorArn">> => string(),
+%%   <<"connectorArns">> => list(string()),
+%%   <<"scanConfiguration">> => connector_scan_configuration()
+%% }
+-type connector_scan_configuration_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_type_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"value">> => list(any())
+%% }
+-type connector_type_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_image_aggregation() :: #{
+%%   <<"architectures">> => list(string_filter()),
+%%   <<"cloudAccountIds">> => list(string_filter()),
+%%   <<"cloudOrgIds">> => list(string_filter()),
+%%   <<"cloudPartitions">> => list(string_filter()),
+%%   <<"cloudProviders">> => list(string_filter()),
+%%   <<"cloudRegions">> => list(string_filter()),
+%%   <<"imageDigests">> => list(string_filter()),
+%%   <<"imageTags">> => list(string_filter()),
+%%   <<"inUseCount">> => list(number_filter()),
+%%   <<"lastInUseAt">> => list(date_filter()),
+%%   <<"registries">> => list(string_filter()),
+%%   <<"repositories">> => list(string_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type container_image_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_image_aggregation_response() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"architecture">> => [string()],
+%%   <<"cloudAccountId">> => string(),
+%%   <<"cloudOrgId">> => string(),
+%%   <<"cloudPartition">> => string(),
+%%   <<"cloudProvider">> => string(),
+%%   <<"cloudRegion">> => string(),
+%%   <<"exploitAvailableActiveFindingsCount">> => [float()],
+%%   <<"fixAvailableActiveFindingsCount">> => [float()],
+%%   <<"imageDigest">> => [string()],
+%%   <<"imageTags">> => list(string()),
+%%   <<"inUseCount">> => [float()],
+%%   <<"lastInUseAt">> => non_neg_integer(),
+%%   <<"registry">> => [string()],
+%%   <<"repository">> => [string()],
+%%   <<"resourceId">> => string(),
+%%   <<"severityCounts">> => severity_counts()
+%% }
+-type container_image_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_image_metadata() :: #{
+%%   <<"imagePulledAt">> => non_neg_integer(),
+%%   <<"imageTags">> => list([string()]()),
+%%   <<"inUseCount">> => [float()],
+%%   <<"lastInUseAt">> => non_neg_integer()
+%% }
+-type container_image_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_registry_metadata() :: #{
+%%   <<"name">> => [string()]
+%% }
+-type container_registry_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_repository_metadata() :: #{
+%%   <<"name">> => [string()],
+%%   <<"scanFrequency">> => [string()]
+%% }
+-type container_repository_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% continuous_integration_scan_configuration() :: #{
+%%   <<"supportedEvents">> => list(list(any())())
+%% }
+-type continuous_integration_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% counts() :: #{
+%%   <<"count">> => float(),
+%%   <<"groupKey">> => string()
+%% }
+-type counts() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_date_filter() :: #{
+%%   <<"endInclusive">> => non_neg_integer(),
+%%   <<"startInclusive">> => non_neg_integer()
+%% }
+-type coverage_date_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_filter_criteria() :: #{
+%%   <<"accountId">> => list(coverage_string_filter()),
+%%   <<"cloudContainerImageTags">> => list(coverage_string_filter()),
+%%   <<"cloudContainerRegistryName">> => list(coverage_string_filter()),
+%%   <<"cloudContainerRepositoryName">> => list(coverage_string_filter()),
+%%   <<"cloudProvider">> => list(coverage_string_filter()),
+%%   <<"cloudProviderAccountId">> => list(coverage_string_filter()),
+%%   <<"cloudProviderOrgId">> => list(coverage_string_filter()),
+%%   <<"cloudProviderRegion">> => list(coverage_string_filter()),
+%%   <<"cloudServerlessFunctionName">> => list(coverage_string_filter()),
+%%   <<"cloudServerlessFunctionRuntime">> => list(coverage_string_filter()),
+%%   <<"cloudServerlessFunctionTags">> => list(coverage_map_filter()),
+%%   <<"cloudVmInstanceTags">> => list(coverage_map_filter()),
+%%   <<"codeRepositoryProjectName">> => list(coverage_string_filter()),
+%%   <<"codeRepositoryProviderType">> => list(coverage_string_filter()),
+%%   <<"codeRepositoryProviderTypeVisibility">> => list(coverage_string_filter()),
+%%   <<"ec2InstanceTags">> => list(coverage_map_filter()),
+%%   <<"ecrImageInUseCount">> => list(coverage_number_filter()),
+%%   <<"ecrImageLastInUseAt">> => list(coverage_date_filter()),
+%%   <<"ecrImageTags">> => list(coverage_string_filter()),
+%%   <<"ecrRepositoryName">> => list(coverage_string_filter()),
+%%   <<"imagePulledAt">> => list(coverage_date_filter()),
+%%   <<"lambdaFunctionName">> => list(coverage_string_filter()),
+%%   <<"lambdaFunctionRuntime">> => list(coverage_string_filter()),
+%%   <<"lambdaFunctionTags">> => list(coverage_map_filter()),
+%%   <<"lastScannedAt">> => list(coverage_date_filter()),
+%%   <<"lastScannedCommitId">> => list(coverage_string_filter()),
+%%   <<"resourceId">> => list(coverage_string_filter()),
+%%   <<"resourceType">> => list(coverage_string_filter()),
+%%   <<"scanMode">> => list(coverage_string_filter()),
+%%   <<"scanStatusCode">> => list(coverage_string_filter()),
+%%   <<"scanStatusReason">> => list(coverage_string_filter()),
+%%   <<"scanType">> => list(coverage_string_filter())
+%% }
+-type coverage_filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_map_filter() :: #{
+%%   <<"comparison">> => string(),
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type coverage_map_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_number_filter() :: #{
+%%   <<"lowerInclusive">> => [float()],
+%%   <<"upperInclusive">> => [float()]
+%% }
+-type coverage_number_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_string_filter() :: #{
+%%   <<"comparison">> => string(),
+%%   <<"value">> => string()
+%% }
+-type coverage_string_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% covered_resource() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"lastScannedAt">> => non_neg_integer(),
+%%   <<"provider">> => string(),
+%%   <<"providerAccountId">> => string(),
+%%   <<"providerOrgId">> => string(),
+%%   <<"providerPartition">> => string(),
+%%   <<"providerRegion">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceMetadata">> => resource_scan_metadata(),
+%%   <<"resourceType">> => string(),
+%%   <<"scanMode">> => string(),
+%%   <<"scanStatus">> => scan_status(),
+%%   <<"scanType">> => string()
+%% }
+-type covered_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cis_scan_configuration_request() :: #{
+%%   <<"scanName">> := string(),
+%%   <<"schedule">> := list(),
+%%   <<"securityLevel">> := list(any()),
+%%   <<"tags">> => map(),
+%%   <<"targets">> := create_cis_targets()
+%% }
+-type create_cis_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cis_scan_configuration_response() :: #{
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type create_cis_scan_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cis_targets() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"targetResourceTags">> => map()
+%% }
+-type create_cis_targets() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_security_integration_request() :: #{
+%%   <<"details">> => list(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any())
+%% }
+-type create_code_security_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_security_integration_response() :: #{
+%%   <<"authorizationUrl">> => string(),
+%%   <<"integrationArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_code_security_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_security_scan_configuration_request() :: #{
+%%   <<"configuration">> := code_security_scan_configuration(),
+%%   <<"level">> := list(any()),
+%%   <<"name">> := string(),
+%%   <<"scopeSettings">> => scope_settings(),
+%%   <<"tags">> => map()
+%% }
+-type create_code_security_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_code_security_scan_configuration_response() :: #{
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type create_code_security_scan_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"provider">> := list(any()),
+%%   <<"providerDetail">> := list(),
+%%   <<"tags">> => map()
+%% }
+-type create_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_response() :: #{
+%%   <<"connectorArn">> => string()
+%% }
+-type create_connector_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1218,162 +1343,50 @@
 
 
 %% Example:
-%% coverage_date_filter() :: #{
-%%   <<"endInclusive">> => non_neg_integer(),
-%%   <<"startInclusive">> => non_neg_integer()
+%% create_filter_response() :: #{
+%%   <<"arn">> := string()
 %% }
--type coverage_date_filter() :: #{binary() => any()}.
+-type create_filter_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_code_security_scan_configurations_response() :: #{
-%%   <<"configurations">> => list(code_security_scan_configuration_summary()),
-%%   <<"nextToken">> => string()
+%% create_findings_report_request() :: #{
+%%   <<"filterCriteria">> => filter_criteria(),
+%%   <<"reportFormat">> := string(),
+%%   <<"s3Destination">> := destination()
 %% }
--type list_code_security_scan_configurations_response() :: #{binary() => any()}.
+-type create_findings_report_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_code_security_scan_response() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastCommitId">> => [string()],
-%%   <<"resource">> => list(),
-%%   <<"scanId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
+%% create_findings_report_response() :: #{
+%%   <<"reportId">> => string()
 %% }
--type get_code_security_scan_response() :: #{binary() => any()}.
+-type create_findings_report_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% compute_platform() :: #{
-%%   <<"product">> => string(),
-%%   <<"vendor">> => string(),
-%%   <<"version">> => string()
+%% create_git_lab_self_managed_integration_detail() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"instanceUrl">> => string()
 %% }
--type compute_platform() :: #{binary() => any()}.
+-type create_git_lab_self_managed_integration_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% send_cis_session_health_request() :: #{
-%%   <<"scanJobId">> := string(),
-%%   <<"sessionToken">> := string()
+%% create_sbom_export_request() :: #{
+%%   <<"reportFormat">> := string(),
+%%   <<"resourceFilterCriteria">> => resource_filter_criteria(),
+%%   <<"s3Destination">> := destination()
 %% }
--type send_cis_session_health_request() :: #{binary() => any()}.
+-type create_sbom_export_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% ecr_repository_metadata() :: #{
-%%   <<"name">> => [string()],
-%%   <<"scanFrequency">> => string()
+%% create_sbom_export_response() :: #{
+%%   <<"reportId">> => string()
 %% }
--type ecr_repository_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sbom_export_request() :: #{
-%%   <<"reportId">> := string()
-%% }
--type get_sbom_export_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_delegated_admin_accounts_response() :: #{
-%%   <<"delegatedAdminAccounts">> => list(delegated_admin_account()),
-%%   <<"nextToken">> => string()
-%% }
--type list_delegated_admin_accounts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_security_integrations_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_code_security_integrations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ecr_configuration_state() :: #{
-%%   <<"rescanDurationState">> => ecr_rescan_duration_state()
-%% }
--type ecr_configuration_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_filter_criteria() :: #{
-%%   <<"accountId">> => list(resource_string_filter()),
-%%   <<"ec2InstanceTags">> => list(resource_map_filter()),
-%%   <<"ecrImageTags">> => list(resource_string_filter()),
-%%   <<"ecrRepositoryName">> => list(resource_string_filter()),
-%%   <<"lambdaFunctionName">> => list(resource_string_filter()),
-%%   <<"lambdaFunctionTags">> => list(resource_map_filter()),
-%%   <<"resourceId">> => list(resource_string_filter()),
-%%   <<"resourceType">> => list(resource_string_filter())
-%% }
--type resource_filter_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cis_targets() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"targetResourceTags">> => map()
-%% }
--type create_cis_targets() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_delegated_admin_account_response() :: #{
-%%   <<"delegatedAdminAccountId">> := string()
-%% }
--type enable_delegated_admin_account_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_cis_scan_configuration_response() :: #{
-%%   <<"scanConfigurationArn">> => string()
-%% }
--type delete_cis_scan_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_line() :: #{
-%%   <<"content">> => [string()],
-%%   <<"lineNumber">> => [integer()]
-%% }
--type code_line() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"Url">> => string(),
-%%   <<"text">> => string()
-%% }
--type recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_cis_message_progress() :: #{
-%%   <<"errorChecks">> => integer(),
-%%   <<"failedChecks">> => integer(),
-%%   <<"informationalChecks">> => integer(),
-%%   <<"notApplicableChecks">> => integer(),
-%%   <<"notEvaluatedChecks">> => integer(),
-%%   <<"successfulChecks">> => integer(),
-%%   <<"totalChecks">> => integer(),
-%%   <<"unknownChecks">> => integer()
-%% }
--type stop_cis_message_progress() :: #{binary() => any()}.
+-type create_sbom_export_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1385,93 +1398,37 @@
 
 
 %% Example:
-%% cis_check_aggregation() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"checkDescription">> => [string()],
-%%   <<"checkId">> => [string()],
-%%   <<"level">> => list(any()),
-%%   <<"platform">> => [string()],
-%%   <<"scanArn">> => string(),
-%%   <<"statusCounts">> => status_counts(),
-%%   <<"title">> => [string()]
+%% cvss3() :: #{
+%%   <<"baseScore">> => float(),
+%%   <<"scoringVector">> => string()
 %% }
--type cis_check_aggregation() :: #{binary() => any()}.
+-type cvss3() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_cis_session_message() :: #{
-%%   <<"sessionToken">> => string()
+%% cvss4() :: #{
+%%   <<"baseScore">> => float(),
+%%   <<"scoringVector">> => string()
 %% }
--type start_cis_session_message() :: #{binary() => any()}.
+-type cvss4() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_finding_details_request() :: #{
-%%   <<"findingArns">> := list(string())
+%% cvss_score() :: #{
+%%   <<"baseScore">> => [float()],
+%%   <<"scoringVector">> => string(),
+%%   <<"source">> => string(),
+%%   <<"version">> => string()
 %% }
--type batch_get_finding_details_request() :: #{binary() => any()}.
+-type cvss_score() :: #{binary() => any()}.
 
 
 %% Example:
-%% code_snippet_error() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"findingArn">> => string()
+%% cvss_score_adjustment() :: #{
+%%   <<"metric">> => string(),
+%%   <<"reason">> => string()
 %% }
--type code_snippet_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_vpc_config() :: #{
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type lambda_vpc_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% account() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"resourceStatus">> => resource_status(),
-%%   <<"status">> => string()
-%% }
--type account() :: #{binary() => any()}.
-
-
-%% Example:
-%% atig_data() :: #{
-%%   <<"firstSeen">> => non_neg_integer(),
-%%   <<"lastSeen">> => non_neg_integer(),
-%%   <<"targets">> => list(string()),
-%%   <<"ttps">> => list(string())
-%% }
--type atig_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_security_scan_configuration_summary() :: #{
-%%   <<"continuousIntegrationScanSupportedEvents">> => list(list(any())()),
-%%   <<"frequencyExpression">> => string(),
-%%   <<"name">> => string(),
-%%   <<"ownerAccountId">> => string(),
-%%   <<"periodicScanFrequency">> => list(any()),
-%%   <<"ruleSetCategories">> => list(list(any())()),
-%%   <<"scanConfigurationArn">> => string(),
-%%   <<"scopeSettings">> => scope_settings(),
-%%   <<"tags">> => map()
-%% }
--type code_security_scan_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_details() :: #{
-%%   <<"clusterMetadata">> => list(),
-%%   <<"lastInUse">> => [non_neg_integer()],
-%%   <<"runningUnitCount">> => [float()],
-%%   <<"stoppedUnitCount">> => [float()]
-%% }
--type cluster_details() :: #{binary() => any()}.
+-type cvss_score_adjustment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1487,23 +1444,464 @@
 
 
 %% Example:
-%% code_security_scan_configuration() :: #{
-%%   <<"continuousIntegrationScanConfiguration">> => continuous_integration_scan_configuration(),
-%%   <<"periodicScanConfiguration">> => periodic_scan_configuration(),
-%%   <<"ruleSetCategories">> => list(list(any())())
+%% daily_schedule() :: #{
+%%   <<"startTime">> => time()
 %% }
--type code_security_scan_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% stop_cis_session_response() :: #{}
--type stop_cis_session_response() :: #{}.
+-type daily_schedule() :: #{binary() => any()}.
 
 
 %% Example:
-%% inspector_score_details() :: #{
-%%   <<"adjustedCvss">> => cvss_score_details()
+%% date_filter() :: #{
+%%   <<"endInclusive">> => [non_neg_integer()],
+%%   <<"startInclusive">> => [non_neg_integer()]
 %% }
--type inspector_score_details() :: #{binary() => any()}.
+-type date_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% delegated_admin() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"relationshipStatus">> => string()
+%% }
+-type delegated_admin() :: #{binary() => any()}.
+
+
+%% Example:
+%% delegated_admin_account() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delegated_admin_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cis_scan_configuration_request() :: #{
+%%   <<"scanConfigurationArn">> := string()
+%% }
+-type delete_cis_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cis_scan_configuration_response() :: #{
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type delete_cis_scan_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_code_security_integration_request() :: #{
+%%   <<"integrationArn">> := string()
+%% }
+-type delete_code_security_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_code_security_integration_response() :: #{
+%%   <<"integrationArn">> => string()
+%% }
+-type delete_code_security_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_code_security_scan_configuration_request() :: #{
+%%   <<"scanConfigurationArn">> := string()
+%% }
+-type delete_code_security_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_code_security_scan_configuration_response() :: #{
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type delete_code_security_scan_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_connector_request() :: #{
+%%   <<"connectorArn">> := string()
+%% }
+-type delete_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connector_response() :: #{}
+-type delete_connector_response() :: #{}.
+
+
+%% Example:
+%% delete_filter_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_filter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_filter_response() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_organization_configuration_request() :: #{}
+-type describe_organization_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_organization_configuration_response() :: #{
+%%   <<"autoEnable">> => auto_enable(),
+%%   <<"maxAccountLimitReached">> => [boolean()]
+%% }
+-type describe_organization_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination() :: #{
+%%   <<"bucketName">> => [string()],
+%%   <<"keyPrefix">> => [string()],
+%%   <<"kmsKeyArn">> => [string()]
+%% }
+-type destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_delegated_admin_account_request() :: #{
+%%   <<"delegatedAdminAccountId">> := string()
+%% }
+-type disable_delegated_admin_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_delegated_admin_account_response() :: #{
+%%   <<"delegatedAdminAccountId">> := string()
+%% }
+-type disable_delegated_admin_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"resourceTypes">> => list(string())
+%% }
+-type disable_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_response() :: #{
+%%   <<"accounts">> := list(account()),
+%%   <<"failedAccounts">> => list(failed_account())
+%% }
+-type disable_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_configuration_request() :: #{
+%%   <<"resource">> => list(),
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type disassociate_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_member_request() :: #{
+%%   <<"accountId">> := string()
+%% }
+-type disassociate_member_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_member_response() :: #{
+%%   <<"accountId">> := string()
+%% }
+-type disassociate_member_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_configuration() :: #{
+%%   <<"activateVMScanner">> => [boolean()],
+%%   <<"scanMode">> => string()
+%% }
+-type ec2_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_configuration_state() :: #{
+%%   <<"scanModeState">> => ec2_scan_mode_state(),
+%%   <<"vmScannerState">> => v_m_scanner_state()
+%% }
+-type ec2_configuration_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_instance_aggregation() :: #{
+%%   <<"amis">> => list(string_filter()),
+%%   <<"instanceIds">> => list(string_filter()),
+%%   <<"instanceTags">> => list(map_filter()),
+%%   <<"operatingSystems">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type ec2_instance_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_instance_aggregation_response() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"ami">> => string(),
+%%   <<"instanceId">> => string(),
+%%   <<"instanceTags">> => map(),
+%%   <<"networkFindings">> => [float()],
+%%   <<"operatingSystem">> => [string()],
+%%   <<"severityCounts">> => severity_counts()
+%% }
+-type ec2_instance_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_metadata() :: #{
+%%   <<"amiId">> => string(),
+%%   <<"platform">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type ec2_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_scan_mode_state() :: #{
+%%   <<"scanMode">> => string(),
+%%   <<"scanModeStatus">> => string()
+%% }
+-type ec2_scan_mode_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecr_configuration() :: #{
+%%   <<"pullDateRescanDuration">> => string(),
+%%   <<"pullDateRescanMode">> => string(),
+%%   <<"rescanDuration">> => string()
+%% }
+-type ecr_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecr_configuration_state() :: #{
+%%   <<"rescanDurationState">> => ecr_rescan_duration_state()
+%% }
+-type ecr_configuration_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecr_container_image_metadata() :: #{
+%%   <<"imagePulledAt">> => non_neg_integer(),
+%%   <<"inUseCount">> => [float()],
+%%   <<"lastInUseAt">> => non_neg_integer(),
+%%   <<"tags">> => list([string()]())
+%% }
+-type ecr_container_image_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecr_repository_metadata() :: #{
+%%   <<"name">> => [string()],
+%%   <<"scanFrequency">> => string()
+%% }
+-type ecr_repository_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecr_rescan_duration_state() :: #{
+%%   <<"pullDateRescanDuration">> => string(),
+%%   <<"pullDateRescanMode">> => string(),
+%%   <<"rescanDuration">> => string(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type ecr_rescan_duration_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_delegated_admin_account_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"delegatedAdminAccountId">> := string()
+%% }
+-type enable_delegated_admin_account_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_delegated_admin_account_response() :: #{
+%%   <<"delegatedAdminAccountId">> := string()
+%% }
+-type enable_delegated_admin_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"clientToken">> => string(),
+%%   <<"resourceTypes">> := list(string())
+%% }
+-type enable_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_response() :: #{
+%%   <<"accounts">> := list(account()),
+%%   <<"failedAccounts">> => list(failed_account())
+%% }
+-type enable_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% epss() :: #{
+%%   <<"score">> => float()
+%% }
+-type epss() :: #{binary() => any()}.
+
+
+%% Example:
+%% epss_details() :: #{
+%%   <<"score">> => float()
+%% }
+-type epss_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% evidence() :: #{
+%%   <<"evidenceDetail">> => string(),
+%%   <<"evidenceRule">> => string(),
+%%   <<"severity">> => string()
+%% }
+-type evidence() :: #{binary() => any()}.
+
+
+%% Example:
+%% exploit_observed() :: #{
+%%   <<"firstSeen">> => non_neg_integer(),
+%%   <<"lastSeen">> => non_neg_integer()
+%% }
+-type exploit_observed() :: #{binary() => any()}.
+
+
+%% Example:
+%% exploitability_details() :: #{
+%%   <<"lastKnownExploitAt">> => non_neg_integer()
+%% }
+-type exploitability_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_account() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"resourceStatus">> => resource_status(),
+%%   <<"status">> => string()
+%% }
+-type failed_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_association_result() :: #{
+%%   <<"resource">> => list(),
+%%   <<"scanConfigurationArn">> => string(),
+%%   <<"statusCode">> => list(any()),
+%%   <<"statusMessage">> => string()
+%% }
+-type failed_association_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_member_account_ec2_deep_inspection_status_state() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"ec2ScanStatus">> => string(),
+%%   <<"errorMessage">> => string()
+%% }
+-type failed_member_account_ec2_deep_inspection_status_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"action">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"criteria">> => filter_criteria(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ownerId">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_criteria() :: #{
+%%   <<"awsAccountId">> => list(string_filter()),
+%%   <<"cloudImageArchitecture">> => list(string_filter()),
+%%   <<"cloudImageDigest">> => list(string_filter()),
+%%   <<"cloudImageInUseCount">> => list(number_filter()),
+%%   <<"cloudImageLastInUseAt">> => list(date_filter()),
+%%   <<"cloudImagePushedAt">> => list(date_filter()),
+%%   <<"cloudImageRegistry">> => list(string_filter()),
+%%   <<"cloudImageRepositoryName">> => list(string_filter()),
+%%   <<"cloudImageTags">> => list(string_filter()),
+%%   <<"cloudProvider">> => list(string_filter()),
+%%   <<"cloudProviderAccountId">> => list(string_filter()),
+%%   <<"cloudProviderOrgId">> => list(string_filter()),
+%%   <<"cloudProviderRegion">> => list(string_filter()),
+%%   <<"cloudServerlessFunctionExecutionRole">> => list(string_filter()),
+%%   <<"cloudServerlessFunctionLastModifiedAt">> => list(date_filter()),
+%%   <<"cloudServerlessFunctionName">> => list(string_filter()),
+%%   <<"cloudServerlessFunctionRuntime">> => list(string_filter()),
+%%   <<"cloudVmImageReference">> => list(string_filter()),
+%%   <<"cloudVmNetworkId">> => list(string_filter()),
+%%   <<"cloudVmSubnetIds">> => list(string_filter()),
+%%   <<"codeRepositoryProjectName">> => list(string_filter()),
+%%   <<"codeRepositoryProviderType">> => list(string_filter()),
+%%   <<"codeVulnerabilityDetectorName">> => list(string_filter()),
+%%   <<"codeVulnerabilityDetectorTags">> => list(string_filter()),
+%%   <<"codeVulnerabilityFilePath">> => list(string_filter()),
+%%   <<"componentId">> => list(string_filter()),
+%%   <<"componentType">> => list(string_filter()),
+%%   <<"ec2InstanceImageId">> => list(string_filter()),
+%%   <<"ec2InstanceSubnetId">> => list(string_filter()),
+%%   <<"ec2InstanceVpcId">> => list(string_filter()),
+%%   <<"ecrImageArchitecture">> => list(string_filter()),
+%%   <<"ecrImageHash">> => list(string_filter()),
+%%   <<"ecrImageInUseCount">> => list(number_filter()),
+%%   <<"ecrImageLastInUseAt">> => list(date_filter()),
+%%   <<"ecrImagePushedAt">> => list(date_filter()),
+%%   <<"ecrImageRegistry">> => list(string_filter()),
+%%   <<"ecrImageRepositoryName">> => list(string_filter()),
+%%   <<"ecrImageTags">> => list(string_filter()),
+%%   <<"epssScore">> => list(number_filter()),
+%%   <<"exploitAvailable">> => list(string_filter()),
+%%   <<"findingArn">> => list(string_filter()),
+%%   <<"findingStatus">> => list(string_filter()),
+%%   <<"findingType">> => list(string_filter()),
+%%   <<"firstObservedAt">> => list(date_filter()),
+%%   <<"fixAvailable">> => list(string_filter()),
+%%   <<"inspectorScore">> => list(number_filter()),
+%%   <<"lambdaFunctionExecutionRoleArn">> => list(string_filter()),
+%%   <<"lambdaFunctionLastModifiedAt">> => list(date_filter()),
+%%   <<"lambdaFunctionLayers">> => list(string_filter()),
+%%   <<"lambdaFunctionName">> => list(string_filter()),
+%%   <<"lambdaFunctionRuntime">> => list(string_filter()),
+%%   <<"lastObservedAt">> => list(date_filter()),
+%%   <<"networkProtocol">> => list(string_filter()),
+%%   <<"portRange">> => list(port_range_filter()),
+%%   <<"relatedVulnerabilities">> => list(string_filter()),
+%%   <<"resourceId">> => list(string_filter()),
+%%   <<"resourceTags">> => list(map_filter()),
+%%   <<"resourceType">> => list(string_filter()),
+%%   <<"severity">> => list(string_filter()),
+%%   <<"title">> => list(string_filter()),
+%%   <<"updatedAt">> => list(date_filter()),
+%%   <<"vendorSeverity">> => list(string_filter()),
+%%   <<"vulnerabilityId">> => list(string_filter()),
+%%   <<"vulnerabilitySource">> => list(string_filter()),
+%%   <<"vulnerablePackages">> => list(package_filter())
+%% }
+-type filter_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1534,12 +1932,1842 @@
 
 
 %% Example:
+%% finding_detail() :: #{
+%%   <<"cisaData">> => cisa_data(),
+%%   <<"cwes">> => list(string()),
+%%   <<"epssScore">> => [float()],
+%%   <<"evidences">> => list(evidence()),
+%%   <<"exploitObserved">> => exploit_observed(),
+%%   <<"findingArn">> => string(),
+%%   <<"referenceUrls">> => list(string()),
+%%   <<"riskScore">> => integer(),
+%%   <<"tools">> => list(string()),
+%%   <<"ttps">> => list(string())
+%% }
+-type finding_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_details_error() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"findingArn">> => string()
+%% }
+-type finding_details_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_type_aggregation() :: #{
+%%   <<"findingType">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type finding_type_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_type_aggregation_response() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"cloudAccountId">> => [string()],
+%%   <<"cloudOrgId">> => [string()],
+%%   <<"cloudPartition">> => [string()],
+%%   <<"cloudProvider">> => [string()],
+%%   <<"cloudRegion">> => [string()],
+%%   <<"exploitAvailableCount">> => [float()],
+%%   <<"fixAvailableCount">> => [float()],
+%%   <<"severityCounts">> => severity_counts()
+%% }
+-type finding_type_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% free_trial_account_info() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"freeTrialInfo">> => list(free_trial_info())
+%% }
+-type free_trial_account_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% free_trial_info() :: #{
+%%   <<"cloudProvider">> => string(),
+%%   <<"end">> => [non_neg_integer()],
+%%   <<"start">> => [non_neg_integer()],
+%%   <<"status">> => string(),
+%%   <<"type">> => string()
+%% }
+-type free_trial_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% free_trial_info_error() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"code">> => string(),
 %%   <<"message">> => [string()]
 %% }
 -type free_trial_info_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cis_scan_report_request() :: #{
+%%   <<"reportFormat">> => list(any()),
+%%   <<"scanArn">> := string(),
+%%   <<"targetAccounts">> => list(string())
+%% }
+-type get_cis_scan_report_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cis_scan_report_response() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"url">> => [string()]
+%% }
+-type get_cis_scan_report_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cis_scan_result_details_request() :: #{
+%%   <<"accountId">> := string(),
+%%   <<"filterCriteria">> => cis_scan_result_details_filter_criteria(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"scanArn">> := string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"targetResourceId">> := string()
+%% }
+-type get_cis_scan_result_details_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cis_scan_result_details_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scanResultDetails">> => list(cis_scan_result_details())
+%% }
+-type get_cis_scan_result_details_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_clusters_for_image_request() :: #{
+%%   <<"filter">> := cluster_for_image_filter_criteria(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type get_clusters_for_image_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_clusters_for_image_response() :: #{
+%%   <<"cluster">> => list(cluster_information()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_clusters_for_image_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_security_integration_request() :: #{
+%%   <<"integrationArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type get_code_security_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_security_integration_response() :: #{
+%%   <<"authorizationUrl">> => string(),
+%%   <<"createdOn">> => [non_neg_integer()],
+%%   <<"integrationArn">> => string(),
+%%   <<"lastUpdateOn">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type get_code_security_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_security_scan_configuration_request() :: #{
+%%   <<"scanConfigurationArn">> := string()
+%% }
+-type get_code_security_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_security_scan_configuration_response() :: #{
+%%   <<"configuration">> => code_security_scan_configuration(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"level">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"scanConfigurationArn">> => string(),
+%%   <<"scopeSettings">> => scope_settings(),
+%%   <<"tags">> => map()
+%% }
+-type get_code_security_scan_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_security_scan_request() :: #{
+%%   <<"resource">> := list(),
+%%   <<"scanId">> := string()
+%% }
+-type get_code_security_scan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_security_scan_response() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastCommitId">> => [string()],
+%%   <<"resource">> => list(),
+%%   <<"scanId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_code_security_scan_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_configuration_request() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type get_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_configuration_response() :: #{
+%%   <<"ec2Configuration">> => ec2_configuration_state(),
+%%   <<"ecrConfiguration">> => ecr_configuration_state()
+%% }
+-type get_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_delegated_admin_account_request() :: #{}
+-type get_delegated_admin_account_request() :: #{}.
+
+
+%% Example:
+%% get_delegated_admin_account_response() :: #{
+%%   <<"delegatedAdmin">> => delegated_admin()
+%% }
+-type get_delegated_admin_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ec2_deep_inspection_configuration_request() :: #{}
+-type get_ec2_deep_inspection_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_ec2_deep_inspection_configuration_response() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"orgPackagePaths">> => list(string()),
+%%   <<"packagePaths">> => list(string()),
+%%   <<"status">> => string()
+%% }
+-type get_ec2_deep_inspection_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_encryption_key_request() :: #{
+%%   <<"resourceType">> := string(),
+%%   <<"scanType">> := string()
+%% }
+-type get_encryption_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_encryption_key_response() :: #{
+%%   <<"kmsKeyId">> => string()
+%% }
+-type get_encryption_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_findings_report_status_request() :: #{
+%%   <<"reportId">> => string()
+%% }
+-type get_findings_report_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_findings_report_status_response() :: #{
+%%   <<"destination">> => destination(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"filterCriteria">> => filter_criteria(),
+%%   <<"reportId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type get_findings_report_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_member_request() :: #{
+%%   <<"accountId">> := string()
+%% }
+-type get_member_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_member_response() :: #{
+%%   <<"member">> => member()
+%% }
+-type get_member_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sbom_export_request() :: #{
+%%   <<"reportId">> := string()
+%% }
+-type get_sbom_export_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sbom_export_response() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"filterCriteria">> => resource_filter_criteria(),
+%%   <<"format">> => string(),
+%%   <<"reportId">> => string(),
+%%   <<"s3Destination">> => destination(),
+%%   <<"status">> => string()
+%% }
+-type get_sbom_export_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% image() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"author">> => [string()],
+%%   <<"imageDigest">> => string(),
+%%   <<"imageTags">> => list(string()),
+%%   <<"inUseCount">> => [float()],
+%%   <<"lastInUseAt">> => non_neg_integer(),
+%%   <<"platform">> => string(),
+%%   <<"pushedAt">> => non_neg_integer(),
+%%   <<"registry">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type image() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_layer_aggregation() :: #{
+%%   <<"cloudAccountIds">> => list(string_filter()),
+%%   <<"cloudOrgIds">> => list(string_filter()),
+%%   <<"cloudPartitions">> => list(string_filter()),
+%%   <<"cloudProviders">> => list(string_filter()),
+%%   <<"cloudRegions">> => list(string_filter()),
+%%   <<"layerHashes">> => list(string_filter()),
+%%   <<"repositories">> => list(string_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type image_layer_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_layer_aggregation_response() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"cloudAccountId">> => [string()],
+%%   <<"cloudOrgId">> => [string()],
+%%   <<"cloudPartition">> => [string()],
+%%   <<"cloudProvider">> => [string()],
+%%   <<"cloudRegion">> => [string()],
+%%   <<"layerHash">> => string(),
+%%   <<"repository">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"severityCounts">> => severity_counts()
+%% }
+-type image_layer_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% inspector_score_details() :: #{
+%%   <<"adjustedCvss">> => cvss_score_details()
+%% }
+-type inspector_score_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function_aggregation() :: #{
+%%   <<"functionNames">> => list(string_filter()),
+%%   <<"functionTags">> => list(map_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
+%%   <<"runtimes">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type lambda_function_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function_aggregation_response() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"functionName">> => [string()],
+%%   <<"lambdaTags">> => map(),
+%%   <<"lastModifiedAt">> => non_neg_integer(),
+%%   <<"resourceId">> => string(),
+%%   <<"runtime">> => [string()],
+%%   <<"severityCounts">> => severity_counts()
+%% }
+-type lambda_function_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function_metadata() :: #{
+%%   <<"functionName">> => [string()],
+%%   <<"functionTags">> => map(),
+%%   <<"layers">> => list([string()]()),
+%%   <<"runtime">> => string()
+%% }
+-type lambda_function_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_layer_aggregation() :: #{
+%%   <<"functionNames">> => list(string_filter()),
+%%   <<"layerArns">> => list(string_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type lambda_layer_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_layer_aggregation_response() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"functionName">> => string(),
+%%   <<"layerArn">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"severityCounts">> => severity_counts()
+%% }
+-type lambda_layer_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_vpc_config() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type lambda_vpc_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_permissions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"service">> => string()
+%% }
+-type list_account_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_permissions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissions">> := list(permission())
+%% }
+-type list_account_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cis_scan_configurations_filter_criteria() :: #{
+%%   <<"scanConfigurationArnFilters">> => list(cis_string_filter()),
+%%   <<"scanNameFilters">> => list(cis_string_filter()),
+%%   <<"targetResourceTagFilters">> => list(tag_filter())
+%% }
+-type list_cis_scan_configurations_filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cis_scan_configurations_request() :: #{
+%%   <<"filterCriteria">> => list_cis_scan_configurations_filter_criteria(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_cis_scan_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cis_scan_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scanConfigurations">> => list(cis_scan_configuration())
+%% }
+-type list_cis_scan_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cis_scan_results_aggregated_by_checks_request() :: #{
+%%   <<"filterCriteria">> => cis_scan_results_aggregated_by_checks_filter_criteria(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"scanArn">> := string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_cis_scan_results_aggregated_by_checks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cis_scan_results_aggregated_by_checks_response() :: #{
+%%   <<"checkAggregations">> => list(cis_check_aggregation()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_cis_scan_results_aggregated_by_checks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cis_scan_results_aggregated_by_target_resource_request() :: #{
+%%   <<"filterCriteria">> => cis_scan_results_aggregated_by_target_resource_filter_criteria(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"scanArn">> := string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_cis_scan_results_aggregated_by_target_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cis_scan_results_aggregated_by_target_resource_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"targetResourceAggregations">> => list(cis_target_resource_aggregation())
+%% }
+-type list_cis_scan_results_aggregated_by_target_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cis_scans_filter_criteria() :: #{
+%%   <<"failedChecksFilters">> => list(cis_number_filter()),
+%%   <<"scanArnFilters">> => list(cis_string_filter()),
+%%   <<"scanAtFilters">> => list(cis_date_filter()),
+%%   <<"scanConfigurationArnFilters">> => list(cis_string_filter()),
+%%   <<"scanNameFilters">> => list(cis_string_filter()),
+%%   <<"scanStatusFilters">> => list(cis_scan_status_filter()),
+%%   <<"scheduledByFilters">> => list(cis_string_filter()),
+%%   <<"targetAccountIdFilters">> => list(cis_string_filter()),
+%%   <<"targetResourceIdFilters">> => list(cis_string_filter()),
+%%   <<"targetResourceTagFilters">> => list(tag_filter())
+%% }
+-type list_cis_scans_filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cis_scans_request() :: #{
+%%   <<"detailLevel">> => list(any()),
+%%   <<"filterCriteria">> => list_cis_scans_filter_criteria(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_cis_scans_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cis_scans_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scans">> => list(cis_scan())
+%% }
+-type list_cis_scans_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_security_integrations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_code_security_integrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_security_integrations_response() :: #{
+%%   <<"integrations">> => list(code_security_integration_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_code_security_integrations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_security_scan_configuration_associations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"scanConfigurationArn">> := string()
+%% }
+-type list_code_security_scan_configuration_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_security_scan_configuration_associations_response() :: #{
+%%   <<"associations">> => list(code_security_scan_configuration_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_security_scan_configuration_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_security_scan_configurations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_security_scan_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_security_scan_configurations_response() :: #{
+%%   <<"configurations">> => list(code_security_scan_configuration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_security_scan_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connector_scan_configurations_request() :: #{
+%%   <<"awsConfigConnectorArns">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connector_scan_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connector_scan_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scanConfigurations">> => list(connector_scan_configuration_item())
+%% }
+-type list_connector_scan_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connectors_request() :: #{
+%%   <<"filterCriteria">> => connector_filter_criteria(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_connectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connectors_response() :: #{
+%%   <<"items">> => list(connector()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_connectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_coverage_request() :: #{
+%%   <<"filterCriteria">> => coverage_filter_criteria(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_coverage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_coverage_response() :: #{
+%%   <<"coveredResources">> => list(covered_resource()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_coverage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_coverage_statistics_request() :: #{
+%%   <<"filterCriteria">> => coverage_filter_criteria(),
+%%   <<"groupBy">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_coverage_statistics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_coverage_statistics_response() :: #{
+%%   <<"countsByGroup">> => list(counts()),
+%%   <<"nextToken">> => string(),
+%%   <<"totalCounts">> := [float()]
+%% }
+-type list_coverage_statistics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_delegated_admin_accounts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_delegated_admin_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_delegated_admin_accounts_response() :: #{
+%%   <<"delegatedAdminAccounts">> => list(delegated_admin_account()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_delegated_admin_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_filters_request() :: #{
+%%   <<"action">> => string(),
+%%   <<"arns">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_filters_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_filters_response() :: #{
+%%   <<"filters">> := list(filter()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_filters_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_finding_aggregations_request() :: #{
+%%   <<"accountIds">> => list(string_filter()),
+%%   <<"aggregationRequest">> => list(),
+%%   <<"aggregationType">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_finding_aggregations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_finding_aggregations_response() :: #{
+%%   <<"aggregationType">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"responses">> => list(list())
+%% }
+-type list_finding_aggregations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_request() :: #{
+%%   <<"filterCriteria">> => filter_criteria(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortCriteria">> => sort_criteria()
+%% }
+-type list_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_response() :: #{
+%%   <<"findings">> => list(finding()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"onlyAssociated">> => [boolean()]
+%% }
+-type list_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_response() :: #{
+%%   <<"members">> => list(member()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_members_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_usage_totals_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_usage_totals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_usage_totals_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"totals">> => list(usage_total())
+%% }
+-type list_usage_totals_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% map_filter() :: #{
+%%   <<"comparison">> => string(),
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type map_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% member() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"delegatedAdminAccountId">> => string(),
+%%   <<"relationshipStatus">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type member() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_account_ec2_deep_inspection_status() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"activateDeepInspection">> => [boolean()]
+%% }
+-type member_account_ec2_deep_inspection_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_account_ec2_deep_inspection_status_state() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"status">> => string()
+%% }
+-type member_account_ec2_deep_inspection_status_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% monthly_schedule() :: #{
+%%   <<"day">> => list(any()),
+%%   <<"startTime">> => time()
+%% }
+-type monthly_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_path() :: #{
+%%   <<"steps">> => list(step())
+%% }
+-type network_path() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_reachability_details() :: #{
+%%   <<"networkPath">> => network_path(),
+%%   <<"openPortRange">> => port_range(),
+%%   <<"protocol">> => string()
+%% }
+-type network_reachability_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% number_filter() :: #{
+%%   <<"lowerInclusive">> => [float()],
+%%   <<"upperInclusive">> => [float()]
+%% }
+-type number_filter() :: #{binary() => any()}.
+
+%% Example:
+%% one_time_schedule() :: #{}
+-type one_time_schedule() :: #{}.
+
+
+%% Example:
+%% package_aggregation() :: #{
+%%   <<"packageNames">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type package_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_aggregation_response() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"packageName">> => string(),
+%%   <<"severityCounts">> => severity_counts()
+%% }
+-type package_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_filter() :: #{
+%%   <<"architecture">> => string_filter(),
+%%   <<"epoch">> => number_filter(),
+%%   <<"filePath">> => string_filter(),
+%%   <<"name">> => string_filter(),
+%%   <<"release">> => string_filter(),
+%%   <<"sourceLambdaLayerArn">> => string_filter(),
+%%   <<"sourceLayerHash">> => string_filter(),
+%%   <<"version">> => string_filter()
+%% }
+-type package_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_vulnerability_details() :: #{
+%%   <<"cvss">> => list(cvss_score()),
+%%   <<"referenceUrls">> => list(string()),
+%%   <<"relatedVulnerabilities">> => list(string()),
+%%   <<"source">> => string(),
+%%   <<"sourceUrl">> => string(),
+%%   <<"vendorCreatedAt">> => non_neg_integer(),
+%%   <<"vendorSeverity">> => string(),
+%%   <<"vendorUpdatedAt">> => non_neg_integer(),
+%%   <<"vulnerabilityId">> => string(),
+%%   <<"vulnerablePackages">> => list(vulnerable_package())
+%% }
+-type package_vulnerability_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% periodic_scan_configuration() :: #{
+%%   <<"frequency">> => list(any()),
+%%   <<"frequencyExpression">> => string()
+%% }
+-type periodic_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission() :: #{
+%%   <<"operation">> => string(),
+%%   <<"service">> => string()
+%% }
+-type permission() :: #{binary() => any()}.
+
+
+%% Example:
+%% port_range() :: #{
+%%   <<"begin">> => integer(),
+%%   <<"end">> => integer()
+%% }
+-type port_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% port_range_filter() :: #{
+%%   <<"beginInclusive">> => integer(),
+%%   <<"endInclusive">> => integer()
+%% }
+-type port_range_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_code_security_scan_configuration() :: #{
+%%   <<"continuousIntegrationScanConfigurations">> => list(project_continuous_integration_scan_configuration()),
+%%   <<"periodicScanConfigurations">> => list(project_periodic_scan_configuration())
+%% }
+-type project_code_security_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_continuous_integration_scan_configuration() :: #{
+%%   <<"ruleSetCategories">> => list(list(any())()),
+%%   <<"supportedEvent">> => list(any())
+%% }
+-type project_continuous_integration_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_periodic_scan_configuration() :: #{
+%%   <<"frequencyExpression">> => string(),
+%%   <<"ruleSetCategories">> => list(list(any())())
+%% }
+-type project_periodic_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% provider_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"value">> => list(any())
+%% }
+-type provider_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"Url">> => string(),
+%%   <<"text">> => string()
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation() :: #{
+%%   <<"recommendation">> => recommendation()
+%% }
+-type remediation() :: #{binary() => any()}.
+
+
+%% Example:
+%% repository_aggregation() :: #{
+%%   <<"repositories">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type repository_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% repository_aggregation_response() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"affectedImages">> => [float()],
+%%   <<"cloudAccountId">> => string(),
+%%   <<"cloudOrgId">> => string(),
+%%   <<"cloudPartition">> => string(),
+%%   <<"cloudProvider">> => string(),
+%%   <<"cloudRegion">> => string(),
+%%   <<"repository">> => string(),
+%%   <<"severityCounts">> => severity_counts()
+%% }
+-type repository_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_encryption_key_request() :: #{
+%%   <<"resourceType">> := string(),
+%%   <<"scanType">> := string()
+%% }
+-type reset_encryption_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% reset_encryption_key_response() :: #{}
+-type reset_encryption_key_response() :: #{}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"details">> => resource_details(),
+%%   <<"id">> => string(),
+%%   <<"partition">> => string(),
+%%   <<"provider">> => string(),
+%%   <<"providerAccountId">> => string(),
+%%   <<"providerOrgId">> => string(),
+%%   <<"region">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_details() :: #{
+%%   <<"awsEc2Instance">> => aws_ec2_instance_details(),
+%%   <<"awsEcrContainerImage">> => aws_ecr_container_image_details(),
+%%   <<"awsLambdaFunction">> => aws_lambda_function_details(),
+%%   <<"codeRepository">> => code_repository_details(),
+%%   <<"image">> => image(),
+%%   <<"serverlessFunction">> => serverless_function(),
+%%   <<"vm">> => vm()
+%% }
+-type resource_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_filter_criteria() :: #{
+%%   <<"accountId">> => list(resource_string_filter()),
+%%   <<"cloudContainerImageTags">> => list(resource_string_filter()),
+%%   <<"cloudContainerRegistryName">> => list(resource_string_filter()),
+%%   <<"cloudContainerRepositoryName">> => list(resource_string_filter()),
+%%   <<"cloudProvider">> => list(resource_string_filter()),
+%%   <<"cloudProviderAccountId">> => list(resource_string_filter()),
+%%   <<"cloudProviderOrgId">> => list(resource_string_filter()),
+%%   <<"cloudProviderRegion">> => list(resource_string_filter()),
+%%   <<"cloudServerlessFunctionName">> => list(resource_string_filter()),
+%%   <<"cloudServerlessFunctionRuntime">> => list(resource_string_filter()),
+%%   <<"cloudServerlessFunctionTags">> => list(resource_map_filter()),
+%%   <<"cloudVmInstanceTags">> => list(resource_map_filter()),
+%%   <<"ec2InstanceTags">> => list(resource_map_filter()),
+%%   <<"ecrImageTags">> => list(resource_string_filter()),
+%%   <<"ecrRepositoryName">> => list(resource_string_filter()),
+%%   <<"lambdaFunctionName">> => list(resource_string_filter()),
+%%   <<"lambdaFunctionTags">> => list(resource_map_filter()),
+%%   <<"resourceId">> => list(resource_string_filter()),
+%%   <<"resourceType">> => list(resource_string_filter())
+%% }
+-type resource_filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_map_filter() :: #{
+%%   <<"comparison">> => string(),
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type resource_map_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_scan_metadata() :: #{
+%%   <<"codeRepository">> => code_repository_metadata(),
+%%   <<"containerImage">> => container_image_metadata(),
+%%   <<"containerRegistry">> => container_registry_metadata(),
+%%   <<"containerRepository">> => container_repository_metadata(),
+%%   <<"ec2">> => ec2_metadata(),
+%%   <<"ecrImage">> => ecr_container_image_metadata(),
+%%   <<"ecrRepository">> => ecr_repository_metadata(),
+%%   <<"lambdaFunction">> => lambda_function_metadata(),
+%%   <<"serverlessFunction">> => serverless_function_metadata(),
+%%   <<"vmInstance">> => vm_instance_metadata()
+%% }
+-type resource_scan_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_state() :: #{
+%%   <<"codeRepository">> => state(),
+%%   <<"ec2">> => state(),
+%%   <<"ecr">> => state(),
+%%   <<"lambda">> => state(),
+%%   <<"lambdaCode">> => state()
+%% }
+-type resource_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_status() :: #{
+%%   <<"codeRepository">> => string(),
+%%   <<"ec2">> => string(),
+%%   <<"ecr">> => string(),
+%%   <<"lambda">> => string(),
+%%   <<"lambdaCode">> => string()
+%% }
+-type resource_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_string_filter() :: #{
+%%   <<"comparison">> => string(),
+%%   <<"value">> => string()
+%% }
+-type resource_string_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_status() :: #{
+%%   <<"reason">> => string(),
+%%   <<"statusCode">> => string()
+%% }
+-type scan_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% scope_configuration() :: #{
+%%   <<"scopeType">> => list(any()),
+%%   <<"scopeValues">> => list(string()),
+%%   <<"state">> => list(any()),
+%%   <<"stateReason">> => [string()]
+%% }
+-type scope_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% scope_configuration_input() :: #{
+%%   <<"scopeType">> => list(any()),
+%%   <<"scopeValues">> => list(string())
+%% }
+-type scope_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% scope_settings() :: #{
+%%   <<"projectSelectionScope">> => list(any())
+%% }
+-type scope_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_vulnerabilities_filter_criteria() :: #{
+%%   <<"vulnerabilityIds">> => list(string())
+%% }
+-type search_vulnerabilities_filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_vulnerabilities_request() :: #{
+%%   <<"filterCriteria">> := search_vulnerabilities_filter_criteria(),
+%%   <<"nextToken">> => string()
+%% }
+-type search_vulnerabilities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_vulnerabilities_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"vulnerabilities">> => list(vulnerability())
+%% }
+-type search_vulnerabilities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_cis_session_health_request() :: #{
+%%   <<"scanJobId">> := string(),
+%%   <<"sessionToken">> := string()
+%% }
+-type send_cis_session_health_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_cis_session_health_response() :: #{}
+-type send_cis_session_health_response() :: #{}.
+
+
+%% Example:
+%% send_cis_session_telemetry_request() :: #{
+%%   <<"messages">> := list(cis_session_message()),
+%%   <<"scanJobId">> := string(),
+%%   <<"sessionToken">> := string()
+%% }
+-type send_cis_session_telemetry_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_cis_session_telemetry_response() :: #{}
+-type send_cis_session_telemetry_response() :: #{}.
+
+
+%% Example:
+%% serverless_function() :: #{
+%%   <<"architectures">> => list(string()),
+%%   <<"codeDigest">> => string(),
+%%   <<"executionRole">> => string(),
+%%   <<"lastModifiedAt">> => non_neg_integer(),
+%%   <<"layers">> => list(string()),
+%%   <<"networkId">> => string(),
+%%   <<"packageType">> => string(),
+%%   <<"runtime">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"serverlessFunctionName">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"version">> => string()
+%% }
+-type serverless_function() :: #{binary() => any()}.
+
+
+%% Example:
+%% serverless_function_aggregation() :: #{
+%%   <<"cloudAccountIds">> => list(string_filter()),
+%%   <<"cloudOrgIds">> => list(string_filter()),
+%%   <<"cloudPartitions">> => list(string_filter()),
+%%   <<"cloudProviders">> => list(string_filter()),
+%%   <<"cloudRegions">> => list(string_filter()),
+%%   <<"functionNames">> => list(string_filter()),
+%%   <<"functionTags">> => list(map_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
+%%   <<"runtimes">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type serverless_function_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% serverless_function_aggregation_response() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"cloudAccountId">> => string(),
+%%   <<"cloudOrgId">> => string(),
+%%   <<"cloudPartition">> => string(),
+%%   <<"cloudProvider">> => string(),
+%%   <<"cloudRegion">> => string(),
+%%   <<"exploitAvailableActiveFindingsCount">> => [float()],
+%%   <<"fixAvailableActiveFindingsCount">> => [float()],
+%%   <<"functionName">> => [string()],
+%%   <<"lastModifiedAt">> => non_neg_integer(),
+%%   <<"resourceId">> => string(),
+%%   <<"runtime">> => [string()],
+%%   <<"severityCounts">> => severity_counts(),
+%%   <<"tags">> => map()
+%% }
+-type serverless_function_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% serverless_function_metadata() :: #{
+%%   <<"functionTags">> => map(),
+%%   <<"runtime">> => [string()],
+%%   <<"serverlessFunctionName">> => [string()]
+%% }
+-type serverless_function_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% severity_counts() :: #{
+%%   <<"all">> => [float()],
+%%   <<"critical">> => [float()],
+%%   <<"high">> => [float()],
+%%   <<"medium">> => [float()]
+%% }
+-type severity_counts() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort_criteria() :: #{
+%%   <<"field">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_cis_session_message() :: #{
+%%   <<"sessionToken">> => string()
+%% }
+-type start_cis_session_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_cis_session_request() :: #{
+%%   <<"message">> := start_cis_session_message(),
+%%   <<"scanJobId">> := string()
+%% }
+-type start_cis_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_cis_session_response() :: #{}
+-type start_cis_session_response() :: #{}.
+
+
+%% Example:
+%% start_code_security_scan_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resource">> := list()
+%% }
+-type start_code_security_scan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_code_security_scan_response() :: #{
+%%   <<"scanId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_code_security_scan_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% state() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"status">> => string()
+%% }
+-type state() :: #{binary() => any()}.
+
+
+%% Example:
+%% status_counts() :: #{
+%%   <<"failed">> => [integer()],
+%%   <<"passed">> => [integer()],
+%%   <<"skipped">> => [integer()]
+%% }
+-type status_counts() :: #{binary() => any()}.
+
+
+%% Example:
+%% step() :: #{
+%%   <<"componentArn">> => string(),
+%%   <<"componentId">> => string(),
+%%   <<"componentType">> => string()
+%% }
+-type step() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_cis_message_progress() :: #{
+%%   <<"errorChecks">> => integer(),
+%%   <<"failedChecks">> => integer(),
+%%   <<"informationalChecks">> => integer(),
+%%   <<"notApplicableChecks">> => integer(),
+%%   <<"notEvaluatedChecks">> => integer(),
+%%   <<"successfulChecks">> => integer(),
+%%   <<"totalChecks">> => integer(),
+%%   <<"unknownChecks">> => integer()
+%% }
+-type stop_cis_message_progress() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_cis_session_message() :: #{
+%%   <<"benchmarkProfile">> => string(),
+%%   <<"benchmarkVersion">> => string(),
+%%   <<"computePlatform">> => compute_platform(),
+%%   <<"progress">> => stop_cis_message_progress(),
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type stop_cis_session_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_cis_session_request() :: #{
+%%   <<"message">> := stop_cis_session_message(),
+%%   <<"scanJobId">> := string(),
+%%   <<"sessionToken">> := string()
+%% }
+-type stop_cis_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_cis_session_response() :: #{}
+-type stop_cis_session_response() :: #{}.
+
+
+%% Example:
+%% string_filter() :: #{
+%%   <<"comparison">> => string(),
+%%   <<"value">> => string()
+%% }
+-type string_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% successful_association_result() :: #{
+%%   <<"resource">> => list(),
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type successful_association_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% suggested_fix() :: #{
+%%   <<"code">> => [string()],
+%%   <<"description">> => [string()]
+%% }
+-type suggested_fix() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_filter() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% time() :: #{
+%%   <<"timeOfDay">> => string(),
+%%   <<"timezone">> => string()
+%% }
+-type time() :: #{binary() => any()}.
+
+
+%% Example:
+%% title_aggregation() :: #{
+%%   <<"findingType">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string(),
+%%   <<"titles">> => list(string_filter()),
+%%   <<"vulnerabilityIds">> => list(string_filter())
+%% }
+-type title_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% title_aggregation_response() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"severityCounts">> => severity_counts(),
+%%   <<"title">> => string(),
+%%   <<"vulnerabilityId">> => [string()]
+%% }
+-type title_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_cis_scan_configuration_request() :: #{
+%%   <<"scanConfigurationArn">> := string(),
+%%   <<"scanName">> => string(),
+%%   <<"schedule">> => list(),
+%%   <<"securityLevel">> => list(any()),
+%%   <<"targets">> => update_cis_targets()
+%% }
+-type update_cis_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cis_scan_configuration_response() :: #{
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type update_cis_scan_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cis_targets() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"targetResourceTags">> => map()
+%% }
+-type update_cis_targets() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_code_security_integration_request() :: #{
+%%   <<"details">> := list(),
+%%   <<"integrationArn">> := string()
+%% }
+-type update_code_security_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_code_security_integration_response() :: #{
+%%   <<"integrationArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_code_security_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_code_security_scan_configuration_request() :: #{
+%%   <<"configuration">> := code_security_scan_configuration(),
+%%   <<"scanConfigurationArn">> := string()
+%% }
+-type update_code_security_scan_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_code_security_scan_configuration_response() :: #{
+%%   <<"scanConfigurationArn">> => string()
+%% }
+-type update_code_security_scan_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configuration_inheritance() :: #{
+%%   <<"ec2Configuration">> => string(),
+%%   <<"ecrConfiguration">> => string()
+%% }
+-type update_configuration_inheritance() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configuration_request() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"ec2Configuration">> => ec2_configuration(),
+%%   <<"ecrConfiguration">> => ecr_configuration(),
+%%   <<"updateConfigurationInheritance">> => update_configuration_inheritance()
+%% }
+-type update_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_configuration_response() :: #{}
+-type update_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_connector_request() :: #{
+%%   <<"connectorArn">> := string(),
+%%   <<"description">> => string(),
+%%   <<"providerDetail">> => list()
+%% }
+-type update_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connector_response() :: #{
+%%   <<"connectorArn">> => string()
+%% }
+-type update_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connector_scan_configuration_request() :: #{
+%%   <<"awsConfigConnectorArn">> := string(),
+%%   <<"scanConfiguration">> := connector_scan_configuration()
+%% }
+-type update_connector_scan_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_connector_scan_configuration_response() :: #{}
+-type update_connector_scan_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_ec2_deep_inspection_configuration_request() :: #{
+%%   <<"activateDeepInspection">> => [boolean()],
+%%   <<"packagePaths">> => list(string())
+%% }
+-type update_ec2_deep_inspection_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ec2_deep_inspection_configuration_response() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"orgPackagePaths">> => list(string()),
+%%   <<"packagePaths">> => list(string()),
+%%   <<"status">> => string()
+%% }
+-type update_ec2_deep_inspection_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_encryption_key_request() :: #{
+%%   <<"kmsKeyId">> := string(),
+%%   <<"resourceType">> := string(),
+%%   <<"scanType">> := string()
+%% }
+-type update_encryption_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_encryption_key_response() :: #{}
+-type update_encryption_key_response() :: #{}.
+
+
+%% Example:
+%% update_filter_request() :: #{
+%%   <<"action">> => string(),
+%%   <<"description">> => string(),
+%%   <<"filterArn">> := string(),
+%%   <<"filterCriteria">> => filter_criteria(),
+%%   <<"name">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type update_filter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_filter_response() :: #{
+%%   <<"arn">> := string()
+%% }
+-type update_filter_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_git_hub_integration_detail() :: #{
+%%   <<"code">> => string(),
+%%   <<"installationId">> => string()
+%% }
+-type update_git_hub_integration_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_git_lab_self_managed_integration_detail() :: #{
+%%   <<"authCode">> => string()
+%% }
+-type update_git_lab_self_managed_integration_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_org_ec2_deep_inspection_configuration_request() :: #{
+%%   <<"orgPackagePaths">> := list(string())
+%% }
+-type update_org_ec2_deep_inspection_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_org_ec2_deep_inspection_configuration_response() :: #{}
+-type update_org_ec2_deep_inspection_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_organization_configuration_request() :: #{
+%%   <<"autoEnable">> := auto_enable()
+%% }
+-type update_organization_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_organization_configuration_response() :: #{
+%%   <<"autoEnable">> := auto_enable()
+%% }
+-type update_organization_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage() :: #{
+%%   <<"cloudProvider">> => string(),
+%%   <<"currency">> => string(),
+%%   <<"estimatedMonthlyCost">> => float(),
+%%   <<"total">> => float(),
+%%   <<"type">> => string()
+%% }
+-type usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage_total() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"usage">> => list(usage())
+%% }
+-type usage_total() :: #{binary() => any()}.
+
+
+%% Example:
+%% v_m_scanner_state() :: #{
+%%   <<"activated">> => [boolean()],
+%%   <<"activatedAt">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type v_m_scanner_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fields">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% vm() :: #{
+%%   <<"executionRole">> => string(),
+%%   <<"ipV4Addresses">> => list(string()),
+%%   <<"ipV6Addresses">> => list(string()),
+%%   <<"keyName">> => string(),
+%%   <<"launchedAt">> => non_neg_integer(),
+%%   <<"networkId">> => string(),
+%%   <<"platform">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"type">> => string(),
+%%   <<"vmImageReference">> => string(),
+%%   <<"vmName">> => string()
+%% }
+-type vm() :: #{binary() => any()}.
+
+
+%% Example:
+%% vm_instance_aggregation() :: #{
+%%   <<"cloudAccountIds">> => list(string_filter()),
+%%   <<"cloudOrgIds">> => list(string_filter()),
+%%   <<"cloudPartitions">> => list(string_filter()),
+%%   <<"cloudProviders">> => list(string_filter()),
+%%   <<"cloudRegions">> => list(string_filter()),
+%%   <<"instanceTags">> => list(map_filter()),
+%%   <<"operatingSystems">> => list(string_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string(),
+%%   <<"vmImageReferences">> => list(string_filter())
+%% }
+-type vm_instance_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% vm_instance_aggregation_response() :: #{
+%%   <<"accountId">> => [string()],
+%%   <<"cloudAccountId">> => string(),
+%%   <<"cloudOrgId">> => string(),
+%%   <<"cloudPartition">> => string(),
+%%   <<"cloudProvider">> => string(),
+%%   <<"cloudRegion">> => string(),
+%%   <<"exploitAvailableActiveFindingsCount">> => [float()],
+%%   <<"fixAvailableActiveFindingsCount">> => [float()],
+%%   <<"networkFindings">> => [float()],
+%%   <<"operatingSystem">> => [string()],
+%%   <<"resourceId">> => string(),
+%%   <<"severityCounts">> => severity_counts(),
+%%   <<"tags">> => map(),
+%%   <<"vmImageReference">> => [string()]
+%% }
+-type vm_instance_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vm_instance_metadata() :: #{
+%%   <<"inventoryHash">> => [string()],
+%%   <<"platform">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"vmImageReference">> => [string()]
+%% }
+-type vm_instance_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% vulnerability() :: #{
+%%   <<"atigData">> => atig_data(),
+%%   <<"cisaData">> => cisa_data(),
+%%   <<"cvss2">> => cvss2(),
+%%   <<"cvss3">> => cvss3(),
+%%   <<"cvss4">> => cvss4(),
+%%   <<"cwes">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"detectionPlatforms">> => list(string()),
+%%   <<"epss">> => epss(),
+%%   <<"exploitObserved">> => exploit_observed(),
+%%   <<"id">> => string(),
+%%   <<"referenceUrls">> => list(string()),
+%%   <<"relatedVulnerabilities">> => list(string()),
+%%   <<"source">> => string(),
+%%   <<"sourceUrl">> => string(),
+%%   <<"vendorCreatedAt">> => non_neg_integer(),
+%%   <<"vendorSeverity">> => string(),
+%%   <<"vendorUpdatedAt">> => non_neg_integer()
+%% }
+-type vulnerability() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1560,2173 +3788,555 @@
 
 
 %% Example:
-%% port_range_filter() :: #{
-%%   <<"beginInclusive">> => integer(),
-%%   <<"endInclusive">> => integer()
-%% }
--type port_range_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_type_aggregation() :: #{
-%%   <<"findingType">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type finding_type_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_code_security_integration_response() :: #{
-%%   <<"authorizationUrl">> => string(),
-%%   <<"createdOn">> => [non_neg_integer()],
-%%   <<"integrationArn">> => string(),
-%%   <<"lastUpdateOn">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any())
-%% }
--type get_code_security_integration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% date_filter() :: #{
-%%   <<"endInclusive">> => [non_neg_integer()],
-%%   <<"startInclusive">> => [non_neg_integer()]
-%% }
--type date_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_request() :: #{
-%%   <<"filterCriteria">> => filter_criteria(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortCriteria">> => sort_criteria()
-%% }
--type list_findings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cvss_score_adjustment() :: #{
-%%   <<"metric">> => string(),
-%%   <<"reason">> => string()
-%% }
--type cvss_score_adjustment() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_usage_totals_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"totals">> => list(usage_total())
-%% }
--type list_usage_totals_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_code_security_scan_configuration_response() :: #{
-%%   <<"scanConfigurationArn">> => string()
-%% }
--type create_code_security_scan_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cisa_data() :: #{
-%%   <<"action">> => string(),
-%%   <<"dateAdded">> => non_neg_integer(),
-%%   <<"dateDue">> => non_neg_integer()
-%% }
--type cisa_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_map_filter() :: #{
-%%   <<"comparison">> => string(),
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type resource_map_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_filter_response() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_filter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% repository_aggregation_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"affectedImages">> => [float()],
-%%   <<"repository">> => string(),
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type repository_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_function_aggregation_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"functionName">> => [string()],
-%%   <<"lambdaTags">> => map(),
-%%   <<"lastModifiedAt">> => non_neg_integer(),
-%%   <<"resourceId">> => string(),
-%%   <<"runtime">> => [string()],
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type lambda_function_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_coverage_response() :: #{
-%%   <<"coveredResources">> => list(covered_resource()),
-%%   <<"nextToken">> => string()
-%% }
--type list_coverage_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_member_request() :: #{
-%%   <<"accountId">> := string()
-%% }
--type get_member_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_organization_configuration_response() :: #{
-%%   <<"autoEnable">> := auto_enable()
-%% }
--type update_organization_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_vulnerabilities_request() :: #{
-%%   <<"filterCriteria">> := search_vulnerabilities_filter_criteria(),
-%%   <<"nextToken">> => string()
-%% }
--type search_vulnerabilities_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cis_scan_configurations_filter_criteria() :: #{
-%%   <<"scanConfigurationArnFilters">> => list(cis_string_filter()),
-%%   <<"scanNameFilters">> => list(cis_string_filter()),
-%%   <<"targetResourceTagFilters">> => list(tag_filter())
-%% }
--type list_cis_scan_configurations_filter_criteria() :: #{binary() => any()}.
-
-%% Example:
-%% get_delegated_admin_account_request() :: #{}
--type get_delegated_admin_account_request() :: #{}.
-
-
-%% Example:
-%% start_code_security_scan_response() :: #{
-%%   <<"scanId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type start_code_security_scan_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_security_level_filter() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"value">> => list(any())
-%% }
--type cis_security_level_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% covered_resource() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"lastScannedAt">> => non_neg_integer(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceMetadata">> => resource_scan_metadata(),
-%%   <<"resourceType">> => string(),
-%%   <<"scanMode">> => string(),
-%%   <<"scanStatus">> => scan_status(),
-%%   <<"scanType">> => string()
-%% }
--type covered_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_information() :: #{
-%%   <<"clusterArn">> => [string()],
-%%   <<"clusterDetails">> => list(cluster_details())
-%% }
--type cluster_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_repository_aggregation() :: #{
-%%   <<"projectNames">> => list(string_filter()),
-%%   <<"providerTypes">> => list(string_filter()),
-%%   <<"resourceIds">> => list(string_filter()),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type code_repository_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"action">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"criteria">> => filter_criteria(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"ownerId">> => string(),
-%%   <<"reason">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sbom_export_response() :: #{
-%%   <<"reportId">> => string()
-%% }
--type create_sbom_export_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cis_scan_configurations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"scanConfigurations">> => list(cis_scan_configuration())
-%% }
--type list_cis_scan_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_detail() :: #{
-%%   <<"cisaData">> => cisa_data(),
-%%   <<"cwes">> => list(string()),
-%%   <<"epssScore">> => [float()],
-%%   <<"evidences">> => list(evidence()),
-%%   <<"exploitObserved">> => exploit_observed(),
-%%   <<"findingArn">> => string(),
-%%   <<"referenceUrls">> => list(string()),
-%%   <<"riskScore">> => integer(),
-%%   <<"tools">> => list(string()),
-%%   <<"ttps">> => list(string())
-%% }
--type finding_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_function_metadata() :: #{
-%%   <<"functionName">> => [string()],
-%%   <<"functionTags">> => map(),
-%%   <<"layers">> => list([string()]()),
-%%   <<"runtime">> => string()
-%% }
--type lambda_function_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_account_permissions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"service">> => string()
-%% }
--type list_account_permissions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_session_message() :: #{
-%%   <<"cisRuleDetails">> => binary(),
-%%   <<"ruleId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type cis_session_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_delegated_admin_accounts_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_delegated_admin_accounts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_code_security_integration_request() :: #{
-%%   <<"details">> := list(),
-%%   <<"integrationArn">> := string()
-%% }
--type update_code_security_integration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ecr_rescan_duration_state() :: #{
-%%   <<"pullDateRescanDuration">> => string(),
-%%   <<"pullDateRescanMode">> => string(),
-%%   <<"rescanDuration">> => string(),
-%%   <<"status">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type ecr_rescan_duration_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_number_filter() :: #{
-%%   <<"lowerInclusive">> => [integer()],
-%%   <<"upperInclusive">> => [integer()]
-%% }
--type cis_number_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_findings_report_request() :: #{
-%%   <<"filterCriteria">> => filter_criteria(),
-%%   <<"reportFormat">> := string(),
-%%   <<"s3Destination">> := destination()
-%% }
--type create_findings_report_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_configuration_response() :: #{}
--type update_configuration_response() :: #{}.
-
-
-%% Example:
-%% get_code_security_scan_configuration_request() :: #{
-%%   <<"scanConfigurationArn">> := string()
-%% }
--type get_code_security_scan_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ecr_container_image_metadata() :: #{
-%%   <<"imagePulledAt">> => non_neg_integer(),
-%%   <<"inUseCount">> => [float()],
-%%   <<"lastInUseAt">> => non_neg_integer(),
-%%   <<"tags">> => list([string()]())
-%% }
--type ecr_container_image_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_filter_request() :: #{
-%%   <<"action">> => string(),
-%%   <<"description">> => string(),
-%%   <<"filterArn">> := string(),
-%%   <<"filterCriteria">> => filter_criteria(),
-%%   <<"name">> => string(),
-%%   <<"reason">> => string()
-%% }
--type update_filter_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_aggregation_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"exploitAvailableCount">> => [float()],
-%%   <<"fixAvailableCount">> => [float()],
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type account_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_repository_metadata() :: #{
-%%   <<"integrationArn">> => string(),
-%%   <<"lastScannedCommitId">> => string(),
-%%   <<"onDemandScan">> => code_repository_on_demand_scan(),
-%%   <<"projectName">> => [string()],
-%%   <<"providerType">> => [string()],
-%%   <<"providerTypeVisibility">> => [string()],
-%%   <<"scanConfiguration">> => project_code_security_scan_configuration()
-%% }
--type code_repository_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_security_integrations_response() :: #{
-%%   <<"integrations">> => list(code_security_integration_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_code_security_integrations_response() :: #{binary() => any()}.
-
-%% Example:
-%% send_cis_session_health_response() :: #{}
--type send_cis_session_health_response() :: #{}.
-
-
-%% Example:
-%% batch_get_account_status_response() :: #{
-%%   <<"accounts">> := list(account_state()),
-%%   <<"failedAccounts">> => list(failed_account())
-%% }
--type batch_get_account_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_free_trial_info_request() :: #{
-%%   <<"accountIds">> := list(string())
-%% }
--type batch_get_free_trial_info_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_member_response() :: #{
-%%   <<"member">> => member()
-%% }
--type get_member_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% epss_details() :: #{
-%%   <<"score">> => float()
-%% }
--type epss_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% port_range() :: #{
-%%   <<"begin">> => integer(),
-%%   <<"end">> => integer()
-%% }
--type port_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_organization_configuration_request() :: #{
-%%   <<"autoEnable">> := auto_enable()
-%% }
--type update_organization_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_response() :: #{
-%%   <<"accounts">> := list(account()),
-%%   <<"failedAccounts">> => list(failed_account())
-%% }
--type enable_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_aggregation_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"packageName">> => string(),
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type package_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cis_scans_request() :: #{
-%%   <<"detailLevel">> => list(any()),
-%%   <<"filterCriteria">> => list_cis_scans_filter_criteria(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_cis_scans_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_layer_aggregation() :: #{
-%%   <<"layerHashes">> => list(string_filter()),
-%%   <<"repositories">> => list(string_filter()),
-%%   <<"resourceIds">> => list(string_filter()),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type image_layer_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_aggregation() :: #{
-%%   <<"findingType">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type account_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_layer_aggregation() :: #{
-%%   <<"functionNames">> => list(string_filter()),
-%%   <<"layerArns">> => list(string_filter()),
-%%   <<"resourceIds">> => list(string_filter()),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type lambda_layer_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_code_security_scan_configuration_request() :: #{
-%%   <<"configuration">> := code_security_scan_configuration(),
-%%   <<"scanConfigurationArn">> := string()
-%% }
--type update_code_security_scan_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_reachability_details() :: #{
-%%   <<"networkPath">> => network_path(),
-%%   <<"openPortRange">> => port_range(),
-%%   <<"protocol">> => string()
-%% }
--type network_reachability_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_code_snippet_request() :: #{
-%%   <<"findingArns">> := list(string())
-%% }
--type batch_get_code_snippet_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_scan() :: #{
-%%   <<"failedChecks">> => [integer()],
-%%   <<"scanArn">> => string(),
-%%   <<"scanConfigurationArn">> => string(),
-%%   <<"scanDate">> => [non_neg_integer()],
-%%   <<"scanName">> => string(),
-%%   <<"scheduledBy">> => [string()],
-%%   <<"securityLevel">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"targets">> => cis_targets(),
-%%   <<"totalChecks">> => [integer()]
-%% }
--type cis_scan() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cis_scan_configuration_request() :: #{
-%%   <<"scanName">> := string(),
-%%   <<"schedule">> := list(),
-%%   <<"securityLevel">> := list(any()),
-%%   <<"tags">> => map(),
-%%   <<"targets">> := create_cis_targets()
-%% }
--type create_cis_scan_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_details_error() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"findingArn">> => string()
-%% }
--type finding_details_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_code_security_scan_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"resource">> := list()
-%% }
--type start_code_security_scan_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sort_criteria() :: #{
-%%   <<"field">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type sort_criteria() :: #{binary() => any()}.
-
-
-%% Example:
 %% weekly_schedule() :: #{
 %%   <<"days">> => list(list(any())()),
 %%   <<"startTime">> => time()
 %% }
 -type weekly_schedule() :: #{binary() => any()}.
 
-
-%% Example:
-%% package_vulnerability_details() :: #{
-%%   <<"cvss">> => list(cvss_score()),
-%%   <<"referenceUrls">> => list(string()),
-%%   <<"relatedVulnerabilities">> => list(string()),
-%%   <<"source">> => string(),
-%%   <<"sourceUrl">> => string(),
-%%   <<"vendorCreatedAt">> => non_neg_integer(),
-%%   <<"vendorSeverity">> => string(),
-%%   <<"vendorUpdatedAt">> => non_neg_integer(),
-%%   <<"vulnerabilityId">> => string(),
-%%   <<"vulnerablePackages">> => list(vulnerable_package())
-%% }
--type package_vulnerability_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% cvss_score() :: #{
-%%   <<"baseScore">> => [float()],
-%%   <<"scoringVector">> => string(),
-%%   <<"source">> => string(),
-%%   <<"version">> => string()
-%% }
--type cvss_score() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_ec2_instance_details() :: #{
-%%   <<"iamInstanceProfileArn">> => string(),
-%%   <<"imageId">> => string(),
-%%   <<"ipV4Addresses">> => list(string()),
-%%   <<"ipV6Addresses">> => list(string()),
-%%   <<"keyName">> => string(),
-%%   <<"launchedAt">> => non_neg_integer(),
-%%   <<"platform">> => string(),
-%%   <<"subnetId">> => string(),
-%%   <<"type">> => string(),
-%%   <<"vpcId">> => string()
-%% }
--type aws_ec2_instance_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_code_security_scan_configuration_request() :: #{
-%%   <<"configuration">> := code_security_scan_configuration(),
-%%   <<"level">> := list(any()),
-%%   <<"name">> := string(),
-%%   <<"scopeSettings">> => scope_settings(),
-%%   <<"tags">> => map()
-%% }
--type create_code_security_scan_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_member_ec2_deep_inspection_status_request() :: #{
-%%   <<"accountIds">> => list(string())
-%% }
--type batch_get_member_ec2_deep_inspection_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% epss() :: #{
-%%   <<"score">> => float()
-%% }
--type epss() :: #{binary() => any()}.
-
-
-%% Example:
-%% exploit_observed() :: #{
-%%   <<"firstSeen">> => non_neg_integer(),
-%%   <<"lastSeen">> => non_neg_integer()
-%% }
--type exploit_observed() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_members_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"onlyAssociated">> => [boolean()]
-%% }
--type list_members_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_members_response() :: #{
-%%   <<"members">> => list(member()),
-%%   <<"nextToken">> => string()
-%% }
--type list_members_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ec2_deep_inspection_configuration_response() :: #{
-%%   <<"errorMessage">> => string(),
-%%   <<"orgPackagePaths">> => list(string()),
-%%   <<"packagePaths">> => list(string()),
-%%   <<"status">> => string()
-%% }
--type get_ec2_deep_inspection_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disable_delegated_admin_account_request() :: #{
-%%   <<"delegatedAdminAccountId">> := string()
-%% }
--type disable_delegated_admin_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_string_filter() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"value">> => [string()]
-%% }
--type cis_string_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% project_continuous_integration_scan_configuration() :: #{
-%%   <<"ruleSetCategories">> => list(list(any())()),
-%%   <<"supportedEvent">> => list(any())
-%% }
--type project_continuous_integration_scan_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% free_trial_info() :: #{
-%%   <<"end">> => [non_neg_integer()],
-%%   <<"start">> => [non_neg_integer()],
-%%   <<"status">> => string(),
-%%   <<"type">> => string()
-%% }
--type free_trial_info() :: #{binary() => any()}.
-
-%% Example:
-%% start_cis_session_response() :: #{}
--type start_cis_session_response() :: #{}.
-
-
-%% Example:
-%% get_cis_scan_report_request() :: #{
-%%   <<"reportFormat">> => list(any()),
-%%   <<"scanArn">> := string(),
-%%   <<"targetAccounts">> => list(string())
-%% }
--type get_cis_scan_report_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scope_settings() :: #{
-%%   <<"projectSelectionScope">> => list(any())
-%% }
--type scope_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cis_scan_configuration_response() :: #{
-%%   <<"scanConfigurationArn">> => string()
-%% }
--type update_cis_scan_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% get_cis_scan_result_details_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"scanResultDetails">> => list(cis_scan_result_details())
-%% }
--type get_cis_scan_result_details_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_coverage_request() :: #{
-%%   <<"filterCriteria">> => coverage_filter_criteria(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_coverage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination() :: #{
-%%   <<"bucketName">> => [string()],
-%%   <<"keyPrefix">> => [string()],
-%%   <<"kmsKeyArn">> => [string()]
-%% }
--type destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_string_filter() :: #{
-%%   <<"comparison">> => string(),
-%%   <<"value">> => string()
-%% }
--type resource_string_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_coverage_statistics_response() :: #{
-%%   <<"countsByGroup">> => list(counts()),
-%%   <<"nextToken">> => string(),
-%%   <<"totalCounts">> := [float()]
-%% }
--type list_coverage_statistics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_target_status_filter() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"value">> => list(any())
-%% }
--type cis_target_status_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_coverage_statistics_request() :: #{
-%%   <<"filterCriteria">> => coverage_filter_criteria(),
-%%   <<"groupBy">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_coverage_statistics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% daily_schedule() :: #{
-%%   <<"startTime">> => time()
-%% }
--type daily_schedule() :: #{binary() => any()}.
-
-%% Example:
-%% get_ec2_deep_inspection_configuration_request() :: #{}
--type get_ec2_deep_inspection_configuration_request() :: #{}.
-
-
-%% Example:
-%% evidence() :: #{
-%%   <<"evidenceDetail">> => string(),
-%%   <<"evidenceRule">> => string(),
-%%   <<"severity">> => string()
-%% }
--type evidence() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_filter_criteria() :: #{
-%%   <<"accountId">> => list(coverage_string_filter()),
-%%   <<"codeRepositoryProjectName">> => list(coverage_string_filter()),
-%%   <<"codeRepositoryProviderType">> => list(coverage_string_filter()),
-%%   <<"codeRepositoryProviderTypeVisibility">> => list(coverage_string_filter()),
-%%   <<"ec2InstanceTags">> => list(coverage_map_filter()),
-%%   <<"ecrImageInUseCount">> => list(coverage_number_filter()),
-%%   <<"ecrImageLastInUseAt">> => list(coverage_date_filter()),
-%%   <<"ecrImageTags">> => list(coverage_string_filter()),
-%%   <<"ecrRepositoryName">> => list(coverage_string_filter()),
-%%   <<"imagePulledAt">> => list(coverage_date_filter()),
-%%   <<"lambdaFunctionName">> => list(coverage_string_filter()),
-%%   <<"lambdaFunctionRuntime">> => list(coverage_string_filter()),
-%%   <<"lambdaFunctionTags">> => list(coverage_map_filter()),
-%%   <<"lastScannedAt">> => list(coverage_date_filter()),
-%%   <<"lastScannedCommitId">> => list(coverage_string_filter()),
-%%   <<"resourceId">> => list(coverage_string_filter()),
-%%   <<"resourceType">> => list(coverage_string_filter()),
-%%   <<"scanMode">> => list(coverage_string_filter()),
-%%   <<"scanStatusCode">> => list(coverage_string_filter()),
-%%   <<"scanStatusReason">> => list(coverage_string_filter()),
-%%   <<"scanType">> => list(coverage_string_filter())
-%% }
--type coverage_filter_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_sbom_export_response() :: #{
-%%   <<"reportId">> => string()
-%% }
--type cancel_sbom_export_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_account_status_request() :: #{
-%%   <<"accountIds">> => list(string())
-%% }
--type batch_get_account_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_clusters_for_image_response() :: #{
-%%   <<"cluster">> => list(cluster_information()),
-%%   <<"nextToken">> => string()
-%% }
--type get_clusters_for_image_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_code_security_integration_response() :: #{
-%%   <<"authorizationUrl">> => string(),
-%%   <<"integrationArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_code_security_integration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_cis_session_message() :: #{
-%%   <<"benchmarkProfile">> => string(),
-%%   <<"benchmarkVersion">> => string(),
-%%   <<"computePlatform">> => compute_platform(),
-%%   <<"progress">> => stop_cis_message_progress(),
-%%   <<"reason">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type stop_cis_session_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% ami_aggregation() :: #{
-%%   <<"amis">> => list(string_filter()),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type ami_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% member() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"delegatedAdminAccountId">> => string(),
-%%   <<"relationshipStatus">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type member() :: #{binary() => any()}.
-
-
-%% Example:
-%% string_filter() :: #{
-%%   <<"comparison">> => string(),
-%%   <<"value">> => string()
-%% }
--type string_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cis_scan_results_aggregated_by_checks_request() :: #{
-%%   <<"filterCriteria">> => cis_scan_results_aggregated_by_checks_filter_criteria(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"scanArn">> := string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_cis_scan_results_aggregated_by_checks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_security_scan_configuration_associations_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"scanConfigurationArn">> := string()
-%% }
--type list_code_security_scan_configuration_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_repository_aggregation_response() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"exploitAvailableActiveFindingsCount">> => [float()],
-%%   <<"fixAvailableActiveFindingsCount">> => [float()],
-%%   <<"projectNames">> => [string()],
-%%   <<"providerType">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type code_repository_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_code_security_scan_configuration_request() :: #{
-%%   <<"scanConfigurationArn">> := string()
-%% }
--type delete_code_security_scan_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_aggregation() :: #{
-%%   <<"packageNames">> => list(string_filter()),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type package_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% status_counts() :: #{
-%%   <<"failed">> => [integer()],
-%%   <<"passed">> => [integer()],
-%%   <<"skipped">> => [integer()]
-%% }
--type status_counts() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_scan_results_aggregated_by_checks_filter_criteria() :: #{
-%%   <<"accountIdFilters">> => list(cis_string_filter()),
-%%   <<"checkIdFilters">> => list(cis_string_filter()),
-%%   <<"failedResourcesFilters">> => list(cis_number_filter()),
-%%   <<"platformFilters">> => list(cis_string_filter()),
-%%   <<"securityLevelFilters">> => list(cis_security_level_filter()),
-%%   <<"titleFilters">> => list(cis_string_filter())
-%% }
--type cis_scan_results_aggregated_by_checks_filter_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_status() :: #{
-%%   <<"reason">> => string(),
-%%   <<"statusCode">> => string()
-%% }
--type scan_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_encryption_key_request() :: #{
-%%   <<"resourceType">> := string(),
-%%   <<"scanType">> := string()
-%% }
--type get_encryption_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_repository_on_demand_scan() :: #{
-%%   <<"lastScanAt">> => non_neg_integer(),
-%%   <<"lastScannedCommitId">> => string(),
-%%   <<"scanStatus">> => scan_status()
-%% }
--type code_repository_on_demand_scan() :: #{binary() => any()}.
-
-
-%% Example:
-%% failed_association_result() :: #{
-%%   <<"resource">> => list(),
-%%   <<"scanConfigurationArn">> => string(),
-%%   <<"statusCode">> => list(any()),
-%%   <<"statusMessage">> => string()
-%% }
--type failed_association_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_result_status_filter() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"value">> => list(any())
-%% }
--type cis_result_status_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_finding_aggregations_request() :: #{
-%%   <<"accountIds">> => list(string_filter()),
-%%   <<"aggregationRequest">> => list(),
-%%   <<"aggregationType">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_finding_aggregations_request() :: #{binary() => any()}.
-
-%% Example:
-%% one_time_schedule() :: #{}
--type one_time_schedule() :: #{}.
-
-
-%% Example:
-%% get_code_security_scan_configuration_response() :: #{
-%%   <<"configuration">> => code_security_scan_configuration(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastUpdatedAt">> => [non_neg_integer()],
-%%   <<"level">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"scanConfigurationArn">> => string(),
-%%   <<"scopeSettings">> => scope_settings(),
-%%   <<"tags">> => map()
-%% }
--type get_code_security_scan_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_instance_aggregation_response() :: #{
-%%   <<"accountId">> => [string()],
-%%   <<"ami">> => string(),
-%%   <<"instanceId">> => string(),
-%%   <<"instanceTags">> => map(),
-%%   <<"networkFindings">> => [float()],
-%%   <<"operatingSystem">> => [string()],
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type ec2_instance_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_associate_code_security_scan_configuration_request() :: #{
-%%   <<"associateConfigurationRequests">> := list(associate_configuration_request())
-%% }
--type batch_associate_code_security_scan_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cis_scan_results_aggregated_by_target_resource_request() :: #{
-%%   <<"filterCriteria">> => cis_scan_results_aggregated_by_target_resource_filter_criteria(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"scanArn">> := string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_cis_scan_results_aggregated_by_target_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_disassociate_code_security_scan_configuration_response() :: #{
-%%   <<"failedAssociations">> => list(failed_association_result()),
-%%   <<"successfulAssociations">> => list(successful_association_result())
-%% }
--type batch_disassociate_code_security_scan_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_ecr_container_aggregation() :: #{
-%%   <<"architectures">> => list(string_filter()),
-%%   <<"imageShas">> => list(string_filter()),
-%%   <<"imageTags">> => list(string_filter()),
-%%   <<"inUseCount">> => list(number_filter()),
-%%   <<"lastInUseAt">> => list(date_filter()),
-%%   <<"repositories">> => list(string_filter()),
-%%   <<"resourceIds">> => list(string_filter()),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type aws_ecr_container_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_filter() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_code_snippet_response() :: #{
-%%   <<"codeSnippetResults">> => list(code_snippet_result()),
-%%   <<"errors">> => list(code_snippet_error())
-%% }
--type batch_get_code_snippet_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_filter() :: #{
-%%   <<"architecture">> => string_filter(),
-%%   <<"epoch">> => number_filter(),
-%%   <<"filePath">> => string_filter(),
-%%   <<"name">> => string_filter(),
-%%   <<"release">> => string_filter(),
-%%   <<"sourceLambdaLayerArn">> => string_filter(),
-%%   <<"sourceLayerHash">> => string_filter(),
-%%   <<"version">> => string_filter()
-%% }
--type package_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% step() :: #{
-%%   <<"componentArn">> => string(),
-%%   <<"componentId">> => string(),
-%%   <<"componentType">> => string()
-%% }
--type step() :: #{binary() => any()}.
-
-
-%% Example:
-%% exploitability_details() :: #{
-%%   <<"lastKnownExploitAt">> => non_neg_integer()
-%% }
--type exploitability_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_details() :: #{
-%%   <<"awsEc2Instance">> => aws_ec2_instance_details(),
-%%   <<"awsEcrContainerImage">> => aws_ecr_container_image_details(),
-%%   <<"awsLambdaFunction">> => aws_lambda_function_details(),
-%%   <<"codeRepository">> => code_repository_details()
-%% }
--type resource_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_member_ec2_deep_inspection_status_request() :: #{
-%%   <<"accountIds">> := list(member_account_ec2_deep_inspection_status())
-%% }
--type batch_update_member_ec2_deep_inspection_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% send_cis_session_telemetry_response() :: #{}
--type send_cis_session_telemetry_response() :: #{}.
-
-
-%% Example:
-%% batch_update_member_ec2_deep_inspection_status_response() :: #{
-%%   <<"accountIds">> => list(member_account_ec2_deep_inspection_status_state()),
-%%   <<"failedAccountIds">> => list(failed_member_account_ec2_deep_inspection_status_state())
-%% }
--type batch_update_member_ec2_deep_inspection_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_enable() :: #{
-%%   <<"codeRepository">> => [boolean()],
-%%   <<"ec2">> => [boolean()],
-%%   <<"ecr">> => [boolean()],
-%%   <<"lambda">> => [boolean()],
-%%   <<"lambdaCode">> => [boolean()]
-%% }
--type auto_enable() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_scan_result_details() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"checkDescription">> => [string()],
-%%   <<"checkId">> => [string()],
-%%   <<"findingArn">> => string(),
-%%   <<"level">> => list(any()),
-%%   <<"platform">> => [string()],
-%%   <<"remediation">> => [string()],
-%%   <<"scanArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()],
-%%   <<"targetResourceId">> => string(),
-%%   <<"title">> => [string()]
-%% }
--type cis_scan_result_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_repository_details() :: #{
-%%   <<"integrationArn">> => string(),
-%%   <<"projectName">> => string(),
-%%   <<"providerType">> => string()
-%% }
--type code_repository_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cis_scan_report_response() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"url">> => [string()]
-%% }
--type get_cis_scan_report_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_clusters_for_image_request() :: #{
-%%   <<"filter">> := cluster_for_image_filter_criteria(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type get_clusters_for_image_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_cis_session_telemetry_request() :: #{
-%%   <<"messages">> := list(cis_session_message()),
-%%   <<"scanJobId">> := string(),
-%%   <<"sessionToken">> := string()
-%% }
--type send_cis_session_telemetry_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_delegated_admin_account_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"delegatedAdminAccountId">> := string()
-%% }
--type enable_delegated_admin_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_layer_aggregation_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"layerHash">> => string(),
-%%   <<"repository">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type image_layer_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_layer_aggregation_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"functionName">> => string(),
-%%   <<"layerArn">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type lambda_layer_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_code_security_integration_response() :: #{
-%%   <<"integrationArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type update_code_security_integration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_ecr_container_image_details() :: #{
-%%   <<"architecture">> => string(),
-%%   <<"author">> => [string()],
-%%   <<"imageHash">> => string(),
-%%   <<"imageTags">> => list(string()),
-%%   <<"inUseCount">> => [float()],
-%%   <<"lastInUseAt">> => non_neg_integer(),
-%%   <<"platform">> => string(),
-%%   <<"pushedAt">> => non_neg_integer(),
-%%   <<"registry">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type aws_ecr_container_image_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_member_response() :: #{
-%%   <<"accountId">> := string()
-%% }
--type disassociate_member_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_code_security_scan_configuration_response() :: #{
-%%   <<"scanConfigurationArn">> => string()
-%% }
--type update_code_security_scan_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% title_aggregation() :: #{
-%%   <<"findingType">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string(),
-%%   <<"titles">> => list(string_filter()),
-%%   <<"vulnerabilityIds">> => list(string_filter())
-%% }
--type title_aggregation() :: #{binary() => any()}.
-
-%% Example:
-%% update_org_ec2_deep_inspection_configuration_response() :: #{}
--type update_org_ec2_deep_inspection_configuration_response() :: #{}.
-
-
-%% Example:
-%% aws_eks_metadata_details() :: #{
-%%   <<"namespace">> => [string()],
-%%   <<"workloadInfoList">> => list(aws_eks_workload_info())
-%% }
--type aws_eks_metadata_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cis_scan_result_details_request() :: #{
-%%   <<"accountId">> := string(),
-%%   <<"filterCriteria">> => cis_scan_result_details_filter_criteria(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"scanArn">> := string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any()),
-%%   <<"targetResourceId">> := string()
-%% }
--type get_cis_scan_result_details_request() :: #{binary() => any()}.
-
-%% Example:
-%% reset_encryption_key_response() :: #{}
--type reset_encryption_key_response() :: #{}.
-
-
-%% Example:
-%% aws_lambda_function_details() :: #{
-%%   <<"architectures">> => list(string()),
-%%   <<"codeSha256">> => string(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"functionName">> => string(),
-%%   <<"lastModifiedAt">> => [non_neg_integer()],
-%%   <<"layers">> => list(string()),
-%%   <<"packageType">> => string(),
-%%   <<"runtime">> => string(),
-%%   <<"version">> => string(),
-%%   <<"vpcConfig">> => lambda_vpc_config()
-%% }
--type aws_lambda_function_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_scan_mode_state() :: #{
-%%   <<"scanMode">> => string(),
-%%   <<"scanModeStatus">> => string()
-%% }
--type ec2_scan_mode_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_date_filter() :: #{
-%%   <<"earliestScanStartTime">> => [non_neg_integer()],
-%%   <<"latestScanStartTime">> => [non_neg_integer()]
-%% }
--type cis_date_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_associate_code_security_scan_configuration_response() :: #{
-%%   <<"failedAssociations">> => list(failed_association_result()),
-%%   <<"successfulAssociations">> => list(successful_association_result())
-%% }
--type batch_associate_code_security_scan_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cis_scan_result_details_filter_criteria() :: #{
-%%   <<"checkIdFilters">> => list(cis_string_filter()),
-%%   <<"findingArnFilters">> => list(cis_string_filter()),
-%%   <<"findingStatusFilters">> => list(cis_finding_status_filter()),
-%%   <<"securityLevelFilters">> => list(cis_security_level_filter()),
-%%   <<"titleFilters">> => list(cis_string_filter())
-%% }
--type cis_scan_result_details_filter_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_filters_response() :: #{
-%%   <<"filters">> := list(filter()),
-%%   <<"nextToken">> => string()
-%% }
--type list_filters_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_eks_workload_info() :: #{
-%%   <<"name">> => [string()],
-%%   <<"type">> => [string()]
-%% }
--type aws_eks_workload_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% permission() :: #{
-%%   <<"operation">> => string(),
-%%   <<"service">> => string()
-%% }
--type permission() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_configuration_request() :: #{
-%%   <<"resource">> => list(),
-%%   <<"scanConfigurationArn">> => string()
-%% }
--type disassociate_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_vulnerabilities_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"vulnerabilities">> => list(vulnerability())
-%% }
--type search_vulnerabilities_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% free_trial_account_info() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"freeTrialInfo">> => list(free_trial_info())
-%% }
--type free_trial_account_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_org_ec2_deep_inspection_configuration_request() :: #{
-%%   <<"orgPackagePaths">> := list(string())
-%% }
--type update_org_ec2_deep_inspection_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_filter_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_filter_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_ecr_container_aggregation_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"architecture">> => [string()],
-%%   <<"imageSha">> => [string()],
-%%   <<"imageTags">> => list(string()),
-%%   <<"inUseCount">> => [float()],
-%%   <<"lastInUseAt">> => non_neg_integer(),
-%%   <<"repository">> => [string()],
-%%   <<"resourceId">> => string(),
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type aws_ecr_container_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_state() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"resourceState">> => resource_state(),
-%%   <<"state">> => state()
-%% }
--type account_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% number_filter() :: #{
-%%   <<"lowerInclusive">> => [float()],
-%%   <<"upperInclusive">> => [float()]
-%% }
--type number_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cis_scans_filter_criteria() :: #{
-%%   <<"failedChecksFilters">> => list(cis_number_filter()),
-%%   <<"scanArnFilters">> => list(cis_string_filter()),
-%%   <<"scanAtFilters">> => list(cis_date_filter()),
-%%   <<"scanConfigurationArnFilters">> => list(cis_string_filter()),
-%%   <<"scanNameFilters">> => list(cis_string_filter()),
-%%   <<"scanStatusFilters">> => list(cis_scan_status_filter()),
-%%   <<"scheduledByFilters">> => list(cis_string_filter()),
-%%   <<"targetAccountIdFilters">> => list(cis_string_filter()),
-%%   <<"targetResourceIdFilters">> => list(cis_string_filter()),
-%%   <<"targetResourceTagFilters">> => list(tag_filter())
-%% }
--type list_cis_scans_filter_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% map_filter() :: #{
-%%   <<"comparison">> => string(),
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type map_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_filters_request() :: #{
-%%   <<"action">> => string(),
-%%   <<"arns">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_filters_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% project_periodic_scan_configuration() :: #{
-%%   <<"frequencyExpression">> => string(),
-%%   <<"ruleSetCategories">> => list(list(any())())
-%% }
--type project_periodic_scan_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_finding_details_response() :: #{
-%%   <<"errors">> => list(finding_details_error()),
-%%   <<"findingDetails">> => list(finding_detail())
-%% }
--type batch_get_finding_details_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource() :: #{
-%%   <<"details">> => resource_details(),
-%%   <<"id">> => string(),
-%%   <<"partition">> => string(),
-%%   <<"region">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% successful_association_result() :: #{
-%%   <<"resource">> => list(),
-%%   <<"scanConfigurationArn">> => string()
-%% }
--type successful_association_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% ami_aggregation_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"affectedInstances">> => [float()],
-%%   <<"ami">> => string(),
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type ami_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_member_request() :: #{
-%%   <<"accountId">> := string()
-%% }
--type disassociate_member_request() :: #{binary() => any()}.
-
 -type associate_member_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type batch_associate_code_security_scan_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_disassociate_code_security_scan_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_get_account_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_get_code_snippet_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type batch_get_finding_details_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type batch_get_free_trial_info_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type batch_get_member_ec2_deep_inspection_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type batch_update_member_ec2_deep_inspection_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type cancel_findings_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type cancel_sbom_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_cis_scan_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_code_security_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_code_security_scan_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_connector_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_filter_errors() ::
-    bad_request_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_findings_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_sbom_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_cis_scan_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_code_security_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_code_security_scan_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
+
+-type delete_connector_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_filter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_organization_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type disable_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disable_delegated_admin_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_member_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type enable_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type enable_delegated_admin_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_cis_scan_report_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_cis_scan_result_details_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_clusters_for_image_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_code_security_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_code_security_scan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_code_security_scan_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_configuration_errors() ::
+    validation_exception() | 
     throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_delegated_admin_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_ec2_deep_inspection_configuration_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_encryption_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_findings_report_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_member_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sbom_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_account_permissions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_cis_scan_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_cis_scan_results_aggregated_by_checks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_cis_scan_results_aggregated_by_target_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_cis_scans_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_code_security_integrations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_code_security_scan_configuration_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_code_security_scan_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
+
+-type list_connector_scan_configurations_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_connectors_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_coverage_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_coverage_statistics_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_delegated_admin_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_filters_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_finding_aggregations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_findings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_members_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_usage_totals_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type reset_encryption_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type search_vulnerabilities_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type send_cis_session_health_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type send_cis_session_telemetry_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_cis_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_code_security_scan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_cis_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_cis_scan_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_code_security_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_code_security_scan_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_connector_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_connector_scan_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_ec2_deep_inspection_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_encryption_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_filter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_org_ec2_deep_inspection_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_organization_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -4246,6 +4856,41 @@ create_code_security_scan_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a connector that links an external cloud provider to Amazon
+%% Inspector for vulnerability scanning.
+-spec create_connector(aws_client:aws_client(), create_connector_request()) ->
+    {ok, create_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_connector_errors(), tuple()}.
+create_connector(Client, Input) ->
+    create_connector(Client, Input, []).
+
+-spec create_connector(aws_client:aws_client(), create_connector_request(), proplists:proplist()) ->
+    {ok, create_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_connector_errors(), tuple()}.
+create_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/connector/create"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a filter resource using specified filter criteria.
 %%
 %% When the filter action is set
@@ -4439,6 +5084,40 @@ delete_code_security_scan_configuration(Client, Input) ->
 delete_code_security_scan_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/codesecurity/scan-configuration/delete"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a connector from your account.
+-spec delete_connector(aws_client:aws_client(), delete_connector_request()) ->
+    {ok, delete_connector_response(), tuple()} |
+    {error, any()} |
+    {error, delete_connector_errors(), tuple()}.
+delete_connector(Client, Input) ->
+    delete_connector(Client, Input, []).
+
+-spec delete_connector(aws_client:aws_client(), delete_connector_request(), proplists:proplist()) ->
+    {ok, delete_connector_response(), tuple()} |
+    {error, any()} |
+    {error, delete_connector_errors(), tuple()}.
+delete_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/connector/delete"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4909,7 +5588,15 @@ get_code_security_scan_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves setting configurations for Inspector scans.
+%% @doc Retrieves setting configurations for Amazon Inspector scans.
+%%
+%% If you specify an
+%% `accountId', this operation returns the scan configuration for that
+%% member
+%% account. You must be the delegated administrator for the specified member
+%% account.
+%% If you do not specify an `accountId', this operation returns your own
+%% scan configuration.
 -spec get_configuration(aws_client:aws_client(), get_configuration_request()) ->
     {ok, get_configuration_response(), tuple()} |
     {error, any()} |
@@ -5442,6 +6129,80 @@ list_code_security_scan_configurations(Client, Input0, Options0) ->
                      {<<"nextToken">>, <<"nextToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists scan configurations for Amazon Web Services Config connectors.
+%%
+%% Results are paginated. Use the `nextToken' parameter to retrieve the
+%% next page of results.
+-spec list_connector_scan_configurations(aws_client:aws_client(), list_connector_scan_configurations_request()) ->
+    {ok, list_connector_scan_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_connector_scan_configurations_errors(), tuple()}.
+list_connector_scan_configurations(Client, Input) ->
+    list_connector_scan_configurations(Client, Input, []).
+
+-spec list_connector_scan_configurations(aws_client:aws_client(), list_connector_scan_configurations_request(), proplists:proplist()) ->
+    {ok, list_connector_scan_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_connector_scan_configurations_errors(), tuple()}.
+list_connector_scan_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/connectorscanconfigurations/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists connectors in your account.
+%%
+%% Results are paginated. Use the `nextToken' parameter to retrieve the
+%% next page of results.
+-spec list_connectors(aws_client:aws_client(), list_connectors_request()) ->
+    {ok, list_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_connectors_errors(), tuple()}.
+list_connectors(Client, Input) ->
+    list_connectors(Client, Input, []).
+
+-spec list_connectors(aws_client:aws_client(), list_connectors_request(), proplists:proplist()) ->
+    {ok, list_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_connectors_errors(), tuple()}.
+list_connectors(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/connector/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists coverage details for your environment.
@@ -6199,12 +6960,18 @@ update_code_security_scan_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates setting configurations for your Amazon Inspector account.
+%% @doc Updates the scan configuration for your Amazon Inspector account.
 %%
-%% When you use this API as an Amazon Inspector
-%% delegated administrator this updates the setting for all accounts you
-%% manage. Member
-%% accounts in an organization cannot update this setting.
+%% If you don't specify an
+%% `accountId', this operation updates the delegated administrator's
+%% configuration
+%% and propagates it to member accounts that have not been individually
+%% configured. If you
+%% specify an `accountId', this operation updates that member
+%% account's
+%% configuration. Only the delegated administrator can specify an
+%% `accountId';
+%% member accounts cannot call this operation.
 -spec update_configuration(aws_client:aws_client(), update_configuration_request()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
@@ -6219,6 +6986,76 @@ update_configuration(Client, Input) ->
 update_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration/update"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the description or provider-specific configuration details of
+%% an existing connector.
+-spec update_connector(aws_client:aws_client(), update_connector_request()) ->
+    {ok, update_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_connector_errors(), tuple()}.
+update_connector(Client, Input) ->
+    update_connector(Client, Input, []).
+
+-spec update_connector(aws_client:aws_client(), update_connector_request(), proplists:proplist()) ->
+    {ok, update_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_connector_errors(), tuple()}.
+update_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/connector/update"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates scan configuration settings for resources associated with an
+%% Amazon Web Services Config connector.
+-spec update_connector_scan_configuration(aws_client:aws_client(), update_connector_scan_configuration_request()) ->
+    {ok, update_connector_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_connector_scan_configuration_errors(), tuple()}.
+update_connector_scan_configuration(Client, Input) ->
+    update_connector_scan_configuration(Client, Input, []).
+
+-spec update_connector_scan_configuration(aws_client:aws_client(), update_connector_scan_configuration_request(), proplists:proplist()) ->
+    {ok, update_connector_scan_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_connector_scan_configuration_errors(), tuple()}.
+update_connector_scan_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/connectorscanconfiguration/update"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -203,289 +203,46 @@
 
 
 %% Example:
-%% list_resource_profile_artifacts_response() :: #{
-%%   <<"artifacts">> => list(resource_profile_artifact()),
-%%   <<"nextToken">> => string()
+%% accept_invitation_request() :: #{
+%%   <<"administratorAccountId">> => string(),
+%%   <<"invitationId">> := string(),
+%%   <<"masterAccount">> => string()
 %% }
--type list_resource_profile_artifacts_response() :: #{binary() => any()}.
+-type accept_invitation_request() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_from_master_account_request() :: #{}
--type disassociate_from_master_account_request() :: #{}.
+%% accept_invitation_response() :: #{}
+-type accept_invitation_response() :: #{}.
 
 
 %% Example:
-%% tag_value_pair() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% access_control_list() :: #{
+%%   <<"allowsPublicReadAccess">> => boolean(),
+%%   <<"allowsPublicWriteAccess">> => boolean()
 %% }
--type tag_value_pair() :: #{binary() => any()}.
+-type access_control_list() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_resources_request() :: #{
-%%   <<"bucketCriteria">> => search_resources_bucket_criteria(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortCriteria">> => search_resources_sort_criteria()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type search_resources_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_findings_filter_response() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"arn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"findingCriteria">> => finding_criteria(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"position">> => integer(),
-%%   <<"tags">> => map()
-%% }
--type get_findings_filter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_buckets_request() :: #{
-%%   <<"criteria">> => map(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortCriteria">> => bucket_sort_criteria()
-%% }
--type describe_buckets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_count_by_encryption_type() :: #{
-%%   <<"customerManaged">> => float(),
-%%   <<"kmsManaged">> => float(),
-%%   <<"s3Managed">> => float(),
-%%   <<"unencrypted">> => float(),
-%%   <<"unknown">> => float()
-%% }
--type object_count_by_encryption_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_context() :: #{
-%%   <<"attributes">> => session_context_attributes(),
-%%   <<"sessionIssuer">> => session_issuer()
-%% }
--type session_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% bucket_statistics_by_sensitivity() :: #{
-%%   <<"classificationError">> => sensitivity_aggregations(),
-%%   <<"notClassified">> => sensitivity_aggregations(),
-%%   <<"notSensitive">> => sensitivity_aggregations(),
-%%   <<"sensitive">> => sensitivity_aggregations()
-%% }
--type bucket_statistics_by_sensitivity() :: #{binary() => any()}.
-
-
-%% Example:
-%% ip_country() :: #{
-%%   <<"code">> => string(),
-%%   <<"name">> => string()
-%% }
--type ip_country() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_member_response() :: #{
-%%   <<"arn">> => string()
-%% }
--type create_member_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_profile_response() :: #{}
--type update_resource_profile_response() :: #{}.
-
-
-%% Example:
-%% get_usage_statistics_request() :: #{
-%%   <<"filterBy">> => list(usage_statistics_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => usage_statistics_sort_by(),
-%%   <<"timeRange">> => list(any())
-%% }
--type get_usage_statistics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_classification_job_response() :: #{
-%%   <<"allowListIds">> => list(string()),
-%%   <<"clientToken">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customDataIdentifierIds">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"initialRun">> => boolean(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"jobStatus">> => list(any()),
-%%   <<"jobType">> => list(any()),
-%%   <<"lastRunErrorStatus">> => last_run_error_status(),
-%%   <<"lastRunTime">> => non_neg_integer(),
-%%   <<"managedDataIdentifierIds">> => list(string()),
-%%   <<"managedDataIdentifierSelector">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"s3JobDefinition">> => s3_job_definition(),
-%%   <<"samplingPercentage">> => integer(),
-%%   <<"scheduleFrequency">> => job_schedule_frequency(),
-%%   <<"statistics">> => statistics(),
-%%   <<"tags">> => map(),
-%%   <<"userPausedDetails">> => user_paused_details()
-%% }
--type describe_classification_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_statistics_filter() :: #{
-%%   <<"comparator">> => list(any()),
-%%   <<"key">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type usage_statistics_filter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_findings_filter_response() :: #{}
--type delete_findings_filter_response() :: #{}.
-
-
-%% Example:
-%% ip_city() :: #{
-%%   <<"name">> => string()
-%% }
--type ip_city() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_member_request() :: #{
-%%   <<"account">> := account_detail(),
-%%   <<"tags">> => map()
-%% }
--type create_member_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% range() :: #{
-%%   <<"end">> => float(),
-%%   <<"start">> => float(),
-%%   <<"startColumn">> => float()
-%% }
--type range() :: #{binary() => any()}.
-
-
-%% Example:
-%% bucket_count_policy_allows_unencrypted_object_uploads() :: #{
-%%   <<"allowsUnencryptedObjectUploads">> => float(),
-%%   <<"deniesUnencryptedObjectUploads">> => float(),
-%%   <<"unknown">> => float()
-%% }
--type bucket_count_policy_allows_unencrypted_object_uploads() :: #{binary() => any()}.
-
-
-%% Example:
-%% decline_invitations_response() :: #{
-%%   <<"unprocessedAccounts">> => list(unprocessed_account())
-%% }
--type decline_invitations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% retrieval_configuration() :: #{
-%%   <<"externalId">> => string(),
-%%   <<"retrievalMode">> => list(any()),
-%%   <<"roleName">> => string()
-%% }
--type retrieval_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_bucket_definition_for_job() :: #{
+%% account_detail() :: #{
 %%   <<"accountId">> => string(),
-%%   <<"buckets">> => list(string())
+%%   <<"email">> => string()
 %% }
--type s3_bucket_definition_for_job() :: #{binary() => any()}.
-
-%% Example:
-%% update_classification_scope_response() :: #{}
--type update_classification_scope_response() :: #{}.
-
-%% Example:
-%% disable_organization_admin_account_response() :: #{}
--type disable_organization_admin_account_response() :: #{}.
+-type account_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_jobs_filter_term() :: #{
-%%   <<"comparator">> => list(any()),
-%%   <<"key">> => list(any()),
-%%   <<"values">> => list(string())
+%% account_level_permissions() :: #{
+%%   <<"blockPublicAccess">> => block_public_access()
 %% }
--type list_jobs_filter_term() :: #{binary() => any()}.
-
-%% Example:
-%% describe_organization_configuration_request() :: #{}
--type describe_organization_configuration_request() :: #{}.
-
-
-%% Example:
-%% aws_account() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"principalId">> => string()
-%% }
--type aws_account() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_reveal_configuration_response() :: #{
-%%   <<"configuration">> => reveal_configuration(),
-%%   <<"retrievalConfiguration">> => retrieval_configuration()
-%% }
--type get_reveal_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_allow_list_request() :: #{
-%%   <<"ignoreJobChecks">> => string()
-%% }
--type delete_allow_list_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resources_affected() :: #{
-%%   <<"s3Bucket">> => s3_bucket(),
-%%   <<"s3Object">> => s3_object()
-%% }
--type resources_affected() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_total() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"estimatedCost">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type usage_total() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sensitivity_inspection_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_sensitivity_inspection_templates_request() :: #{binary() => any()}.
+-type account_level_permissions() :: #{binary() => any()}.
 
 
 %% Example:
@@ -497,55 +254,162 @@
 
 
 %% Example:
-%% s3_classification_scope_exclusion() :: #{
-%%   <<"bucketNames">> => list(string())
+%% allow_list_criteria() :: #{
+%%   <<"regex">> => string(),
+%%   <<"s3WordsList">> => s3_words_list()
 %% }
--type s3_classification_scope_exclusion() :: #{binary() => any()}.
+-type allow_list_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_sensitivity_inspection_template_response() :: #{
+%% allow_list_status() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"description">> => string()
+%% }
+-type allow_list_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% allow_list_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"excludes">> => sensitivity_inspection_template_excludes(),
-%%   <<"includes">> => sensitivity_inspection_template_includes(),
+%%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"sensitivityInspectionTemplateId">> => string()
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type get_sensitivity_inspection_template_response() :: #{binary() => any()}.
+-type allow_list_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% sensitivity_aggregations() :: #{
-%%   <<"classifiableSizeInBytes">> => float(),
-%%   <<"publiclyAccessibleCount">> => float(),
-%%   <<"totalCount">> => float(),
-%%   <<"totalSizeInBytes">> => float()
+%% api_call_details() :: #{
+%%   <<"api">> => string(),
+%%   <<"apiServiceName">> => string(),
+%%   <<"firstSeen">> => non_neg_integer(),
+%%   <<"lastSeen">> => non_neg_integer()
 %% }
--type sensitivity_aggregations() :: #{binary() => any()}.
+-type api_call_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% classification_result() :: #{
-%%   <<"additionalOccurrences">> => boolean(),
-%%   <<"customDataIdentifiers">> => custom_data_identifiers(),
-%%   <<"mimeType">> => string(),
-%%   <<"sensitiveData">> => list(sensitive_data_item()),
-%%   <<"sizeClassified">> => float(),
-%%   <<"status">> => classification_result_status()
+%% assumed_role() :: #{
+%%   <<"accessKeyId">> => string(),
+%%   <<"accountId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"principalId">> => string(),
+%%   <<"sessionContext">> => session_context()
 %% }
--type classification_result() :: #{binary() => any()}.
+-type assumed_role() :: #{binary() => any()}.
 
 
 %% Example:
-%% classification_result_status() :: #{
-%%   <<"code">> => string(),
-%%   <<"reason">> => string()
+%% automated_discovery_account() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type classification_result_status() :: #{binary() => any()}.
+-type automated_discovery_account() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_custom_data_identifier_request() :: #{}
--type delete_custom_data_identifier_request() :: #{}.
+%% automated_discovery_account_update() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type automated_discovery_account_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_discovery_account_update_error() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"errorCode">> => list(any())
+%% }
+-type automated_discovery_account_update_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_account() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"principalId">> => string()
+%% }
+-type aws_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_service() :: #{
+%%   <<"invokedBy">> => string()
+%% }
+-type aws_service() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_custom_data_identifier_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deleted">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type batch_get_custom_data_identifier_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_custom_data_identifiers_request() :: #{
+%%   <<"ids">> => list(string())
+%% }
+-type batch_get_custom_data_identifiers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_custom_data_identifiers_response() :: #{
+%%   <<"customDataIdentifiers">> => list(batch_get_custom_data_identifier_summary()),
+%%   <<"notFoundIdentifierIds">> => list(string())
+%% }
+-type batch_get_custom_data_identifiers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_automated_discovery_accounts_request() :: #{
+%%   <<"accounts">> => list(automated_discovery_account_update())
+%% }
+-type batch_update_automated_discovery_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_automated_discovery_accounts_response() :: #{
+%%   <<"errors">> => list(automated_discovery_account_update_error())
+%% }
+-type batch_update_automated_discovery_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% block_public_access() :: #{
+%%   <<"blockPublicAcls">> => boolean(),
+%%   <<"blockPublicPolicy">> => boolean(),
+%%   <<"ignorePublicAcls">> => boolean(),
+%%   <<"restrictPublicBuckets">> => boolean()
+%% }
+-type block_public_access() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_count_by_effective_permission() :: #{
+%%   <<"publiclyAccessible">> => float(),
+%%   <<"publiclyReadable">> => float(),
+%%   <<"publiclyWritable">> => float(),
+%%   <<"unknown">> => float()
+%% }
+-type bucket_count_by_effective_permission() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_count_by_encryption_type() :: #{
+%%   <<"kmsManaged">> => float(),
+%%   <<"s3Managed">> => float(),
+%%   <<"unencrypted">> => float(),
+%%   <<"unknown">> => float()
+%% }
+-type bucket_count_by_encryption_type() :: #{binary() => any()}.
 
 
 %% Example:
@@ -557,36 +421,14 @@
 %% }
 -type bucket_count_by_shared_access_type() :: #{binary() => any()}.
 
-%% Example:
-%% get_administrator_account_request() :: #{}
--type get_administrator_account_request() :: #{}.
 
 %% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% managed_data_identifier_summary() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"id">> => string()
+%% bucket_count_policy_allows_unencrypted_object_uploads() :: #{
+%%   <<"allowsUnencryptedObjectUploads">> => float(),
+%%   <<"deniesUnencryptedObjectUploads">> => float(),
+%%   <<"unknown">> => float()
 %% }
--type managed_data_identifier_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% bucket_sort_criteria() :: #{
-%%   <<"attributeName">> => string(),
-%%   <<"orderBy">> => list(any())
-%% }
--type bucket_sort_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_member_session_request() :: #{
-%%   <<"status">> := list(any())
-%% }
--type update_member_session_request() :: #{binary() => any()}.
+-type bucket_count_policy_allows_unencrypted_object_uploads() :: #{binary() => any()}.
 
 
 %% Example:
@@ -603,18 +445,12 @@
 
 
 %% Example:
-%% account_level_permissions() :: #{
-%%   <<"blockPublicAccess">> => block_public_access()
+%% bucket_level_permissions() :: #{
+%%   <<"accessControlList">> => access_control_list(),
+%%   <<"blockPublicAccess">> => block_public_access(),
+%%   <<"bucketPolicy">> => bucket_policy()
 %% }
--type account_level_permissions() :: #{binary() => any()}.
-
-%% Example:
-%% update_macie_session_response() :: #{}
--type update_macie_session_response() :: #{}.
-
-%% Example:
-%% get_findings_publication_configuration_request() :: #{}
--type get_findings_publication_configuration_request() :: #{}.
+-type bucket_level_permissions() :: #{binary() => any()}.
 
 
 %% Example:
@@ -651,147 +487,53 @@
 
 
 %% Example:
-%% batch_get_custom_data_identifiers_request() :: #{
-%%   <<"ids">> => list(string())
+%% bucket_permission_configuration() :: #{
+%%   <<"accountLevelPermissions">> => account_level_permissions(),
+%%   <<"bucketLevelPermissions">> => bucket_level_permissions()
 %% }
--type batch_get_custom_data_identifiers_request() :: #{binary() => any()}.
+-type bucket_permission_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_scope_term() :: #{
-%%   <<"comparator">> => list(any()),
-%%   <<"key">> => string(),
-%%   <<"tagValues">> => list(tag_value_pair()),
-%%   <<"target">> => list(any())
+%% bucket_policy() :: #{
+%%   <<"allowsPublicReadAccess">> => boolean(),
+%%   <<"allowsPublicWriteAccess">> => boolean()
 %% }
--type tag_scope_term() :: #{binary() => any()}.
-
-%% Example:
-%% get_sensitivity_inspection_template_request() :: #{}
--type get_sensitivity_inspection_template_request() :: #{}.
+-type bucket_policy() :: #{binary() => any()}.
 
 
 %% Example:
-%% suppress_data_identifier() :: #{
-%%   <<"id">> => string(),
+%% bucket_public_access() :: #{
+%%   <<"effectivePermission">> => list(any()),
+%%   <<"permissionConfiguration">> => bucket_permission_configuration()
+%% }
+-type bucket_public_access() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_server_side_encryption() :: #{
+%%   <<"kmsMasterKeyId">> => string(),
 %%   <<"type">> => list(any())
 %% }
--type suppress_data_identifier() :: #{binary() => any()}.
+-type bucket_server_side_encryption() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_bucket_statistics_request() :: #{
-%%   <<"accountId">> => string()
-%% }
--type get_bucket_statistics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invitation() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"invitationId">> => string(),
-%%   <<"invitedAt">> => non_neg_integer(),
-%%   <<"relationshipStatus">> => list(any())
-%% }
--type invitation() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_from_master_account_response() :: #{}
--type disassociate_from_master_account_response() :: #{}.
-
-%% Example:
-%% delete_member_request() :: #{}
--type delete_member_request() :: #{}.
-
-
-%% Example:
-%% update_allow_list_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string()
-%% }
--type update_allow_list_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_by_account() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"estimatedCost">> => string(),
-%%   <<"serviceLimit">> => service_limit(),
-%%   <<"type">> => list(any())
-%% }
--type usage_by_account() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_data_identifiers_response() :: #{
-%%   <<"items">> => list(custom_data_identifier_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_custom_data_identifiers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_side_encryption() :: #{
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsMasterKeyId">> => string()
-%% }
--type server_side_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_automated_discovery_accounts_request() :: #{
-%%   <<"accounts">> => list(automated_discovery_account_update())
-%% }
--type batch_update_automated_discovery_accounts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sensitivity_inspection_template_excludes() :: #{
-%%   <<"managedDataIdentifierIds">> => list(string())
-%% }
--type sensitivity_inspection_template_excludes() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_object() :: #{
-%%   <<"bucketArn">> => string(),
-%%   <<"eTag">> => string(),
-%%   <<"extension">> => string(),
-%%   <<"key">> => string(),
-%%   <<"lastModified">> => non_neg_integer(),
-%%   <<"path">> => string(),
-%%   <<"publicAccess">> => boolean(),
-%%   <<"serverSideEncryption">> => server_side_encryption(),
-%%   <<"size">> => float(),
-%%   <<"storageClass">> => list(any()),
-%%   <<"tags">> => list(key_value_pair()),
-%%   <<"versionId">> => string()
-%% }
--type s3_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_response() :: #{
-%%   <<"findingIds">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_findings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_hub_configuration() :: #{
-%%   <<"publishClassificationFindings">> => boolean(),
-%%   <<"publishPolicyFindings">> => boolean()
-%% }
--type security_hub_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_statistics_sort_by() :: #{
-%%   <<"key">> => list(any()),
+%% bucket_sort_criteria() :: #{
+%%   <<"attributeName">> => string(),
 %%   <<"orderBy">> => list(any())
 %% }
--type usage_statistics_sort_by() :: #{binary() => any()}.
+-type bucket_sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_statistics_by_sensitivity() :: #{
+%%   <<"classificationError">> => sensitivity_aggregations(),
+%%   <<"notClassified">> => sensitivity_aggregations(),
+%%   <<"notSensitive">> => sensitivity_aggregations(),
+%%   <<"sensitive">> => sensitivity_aggregations()
+%% }
+-type bucket_statistics_by_sensitivity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -805,235 +547,67 @@
 
 
 %% Example:
-%% user_identity() :: #{
-%%   <<"assumedRole">> => assumed_role(),
-%%   <<"awsAccount">> => aws_account(),
-%%   <<"awsService">> => aws_service(),
-%%   <<"federatedUser">> => federated_user(),
-%%   <<"iamUser">> => iam_user(),
-%%   <<"root">> => user_identity_root(),
-%%   <<"type">> => list(any())
+%% classification_details() :: #{
+%%   <<"detailedResultsLocation">> => string(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"originType">> => list(any()),
+%%   <<"result">> => classification_result()
 %% }
--type user_identity() :: #{binary() => any()}.
+-type classification_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_jobs_sort_criteria() :: #{
-%%   <<"attributeName">> => list(any()),
-%%   <<"orderBy">> => list(any())
+%% classification_export_configuration() :: #{
+%%   <<"s3Destination">> => s3_destination()
 %% }
--type list_jobs_sort_criteria() :: #{binary() => any()}.
+-type classification_export_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% automated_discovery_account_update() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"status">> => list(any())
+%% classification_result() :: #{
+%%   <<"additionalOccurrences">> => boolean(),
+%%   <<"customDataIdentifiers">> => custom_data_identifiers(),
+%%   <<"mimeType">> => string(),
+%%   <<"sensitiveData">> => list(sensitive_data_item()),
+%%   <<"sizeClassified">> => float(),
+%%   <<"status">> => classification_result_status()
 %% }
--type automated_discovery_account_update() :: #{binary() => any()}.
+-type classification_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_findings_request() :: #{
-%%   <<"findingIds">> := list(string()),
-%%   <<"sortCriteria">> => sort_criteria()
+%% classification_result_status() :: #{
+%%   <<"code">> => string(),
+%%   <<"reason">> => string()
 %% }
--type get_findings_request() :: #{binary() => any()}.
+-type classification_result_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% monthly_schedule() :: #{
-%%   <<"dayOfMonth">> => integer()
-%% }
--type monthly_schedule() :: #{binary() => any()}.
-
-
-%% Example:
-%% criteria_block_for_job() :: #{
-%%   <<"and">> => list(criteria_for_job())
-%% }
--type criteria_block_for_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_detail() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"email">> => string()
-%% }
--type account_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_classification_jobs_request() :: #{
-%%   <<"filterCriteria">> => list_jobs_filter_criteria(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortCriteria">> => list_jobs_sort_criteria()
-%% }
--type list_classification_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_automated_discovery_configuration_response() :: #{
-%%   <<"autoEnableOrganizationMembers">> => list(any()),
-%%   <<"classificationScopeId">> => string(),
-%%   <<"disabledAt">> => non_neg_integer(),
-%%   <<"firstEnabledAt">> => non_neg_integer(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"sensitivityInspectionTemplateId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_automated_discovery_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_profile_detections_response() :: #{
-%%   <<"detections">> => list(detection()),
-%%   <<"nextToken">> => string()
-%% }
--type list_resource_profile_detections_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_bucket_criteria_for_job() :: #{
-%%   <<"excludes">> => criteria_block_for_job(),
-%%   <<"includes">> => criteria_block_for_job()
-%% }
--type s3_bucket_criteria_for_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% bucket_public_access() :: #{
-%%   <<"effectivePermission">> => list(any()),
-%%   <<"permissionConfiguration">> => bucket_permission_configuration()
-%% }
--type bucket_public_access() :: #{binary() => any()}.
-
-%% Example:
-%% get_classification_scope_request() :: #{}
--type get_classification_scope_request() :: #{}.
-
-
-%% Example:
-%% disable_organization_admin_account_request() :: #{
-%%   <<"adminAccountId">> := string()
-%% }
--type disable_organization_admin_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_resources_sort_criteria() :: #{
-%%   <<"attributeName">> => list(any()),
-%%   <<"orderBy">> => list(any())
-%% }
--type search_resources_sort_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_detection() :: #{
-%%   <<"arn">> => string(),
-%%   <<"count">> => float(),
-%%   <<"name">> => string(),
-%%   <<"occurrences">> => occurrences()
-%% }
--type custom_detection() :: #{binary() => any()}.
-
-
-%% Example:
-%% scoping() :: #{
-%%   <<"excludes">> => job_scoping_block(),
-%%   <<"includes">> => job_scoping_block()
-%% }
--type scoping() :: #{binary() => any()}.
-
-
-%% Example:
-%% allow_list_status() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"description">> => string()
-%% }
--type allow_list_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_user() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"principalId">> => string(),
-%%   <<"userName">> => string()
-%% }
--type iam_user() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_data_identifier_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
+%% classification_scope_summary() :: #{
 %%   <<"id">> => string(),
 %%   <<"name">> => string()
 %% }
--type custom_data_identifier_summary() :: #{binary() => any()}.
+-type classification_scope_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% finding_statistics_sort_criteria() :: #{
-%%   <<"attributeName">> => list(any()),
-%%   <<"orderBy">> => list(any())
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type finding_statistics_sort_criteria() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% finding_actor() :: #{
-%%   <<"domainDetails">> => domain_details(),
-%%   <<"ipAddressDetails">> => ip_address_details(),
-%%   <<"userIdentity">> => user_identity()
+%% create_allow_list_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"criteria">> := allow_list_criteria(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
 %% }
--type finding_actor() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_context_attributes() :: #{
-%%   <<"creationDate">> => non_neg_integer(),
-%%   <<"mfaAuthenticated">> => boolean()
-%% }
--type session_context_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_custom_data_identifier_response() :: #{
-%%   <<"customDataIdentifierId">> => string()
-%% }
--type create_custom_data_identifier_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% severity() :: #{
-%%   <<"description">> => list(any()),
-%%   <<"score">> => float()
-%% }
--type severity() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_macie_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"findingPublishingFrequency">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type enable_macie_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_findings_filter_request() :: #{}
--type delete_findings_filter_request() :: #{}.
+-type create_allow_list_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1045,123 +619,30 @@
 
 
 %% Example:
-%% classification_export_configuration() :: #{
-%%   <<"s3Destination">> => s3_destination()
+%% create_classification_job_request() :: #{
+%%   <<"allowListIds">> => list(string()),
+%%   <<"clientToken">> := string(),
+%%   <<"customDataIdentifierIds">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"initialRun">> => boolean(),
+%%   <<"jobType">> := list(any()),
+%%   <<"managedDataIdentifierIds">> => list(string()),
+%%   <<"managedDataIdentifierSelector">> => list(any()),
+%%   <<"name">> := string(),
+%%   <<"s3JobDefinition">> := s3_job_definition(),
+%%   <<"samplingPercentage">> => integer(),
+%%   <<"scheduleFrequency">> => job_schedule_frequency(),
+%%   <<"tags">> => map()
 %% }
--type classification_export_configuration() :: #{binary() => any()}.
+-type create_classification_job_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% bucket_count_by_encryption_type() :: #{
-%%   <<"kmsManaged">> => float(),
-%%   <<"s3Managed">> => float(),
-%%   <<"unencrypted">> => float(),
-%%   <<"unknown">> => float()
+%% create_classification_job_response() :: #{
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string()
 %% }
--type bucket_count_by_encryption_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_resources_response() :: #{
-%%   <<"matchingResources">> => list(matching_resource()),
-%%   <<"nextToken">> => string()
-%% }
--type search_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_classification_scope_request() :: #{
-%%   <<"s3">> => s3_classification_scope_update()
-%% }
--type update_classification_scope_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_classification_job_response() :: #{}
--type update_classification_job_response() :: #{}.
-
-
-%% Example:
-%% api_call_details() :: #{
-%%   <<"api">> => string(),
-%%   <<"apiServiceName">> => string(),
-%%   <<"firstSeen">> => non_neg_integer(),
-%%   <<"lastSeen">> => non_neg_integer()
-%% }
--type api_call_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_profile_response() :: #{
-%%   <<"profileUpdatedAt">> => non_neg_integer(),
-%%   <<"sensitivityScore">> => integer(),
-%%   <<"sensitivityScoreOverridden">> => boolean(),
-%%   <<"statistics">> => resource_statistics()
-%% }
--type get_resource_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% simple_scope_term() :: #{
-%%   <<"comparator">> => list(any()),
-%%   <<"key">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type simple_scope_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_custom_data_identifier_request() :: #{
-%%   <<"ignoreWords">> => list(string()),
-%%   <<"keywords">> => list(string()),
-%%   <<"maximumMatchDistance">> => integer(),
-%%   <<"regex">> := string(),
-%%   <<"sampleText">> := string()
-%% }
--type test_custom_data_identifier_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_automated_discovery_accounts_response() :: #{
-%%   <<"items">> => list(automated_discovery_account()),
-%%   <<"nextToken">> => string()
-%% }
--type list_automated_discovery_accounts_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_from_administrator_account_response() :: #{}
--type disassociate_from_administrator_account_response() :: #{}.
-
-%% Example:
-%% get_custom_data_identifier_request() :: #{}
--type get_custom_data_identifier_request() :: #{}.
-
-
-%% Example:
-%% job_summary() :: #{
-%%   <<"bucketCriteria">> => s3_bucket_criteria_for_job(),
-%%   <<"bucketDefinitions">> => list(s3_bucket_definition_for_job()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"jobId">> => string(),
-%%   <<"jobStatus">> => list(any()),
-%%   <<"jobType">> => list(any()),
-%%   <<"lastRunErrorStatus">> => last_run_error_status(),
-%%   <<"name">> => string(),
-%%   <<"userPausedDetails">> => user_paused_details()
-%% }
--type job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_automated_discovery_accounts_request() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_automated_discovery_accounts_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_sensitivity_inspection_template_response() :: #{}
--type update_sensitivity_inspection_template_response() :: #{}.
+-type create_classification_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1180,291 +661,10 @@
 
 
 %% Example:
-%% occurrences() :: #{
-%%   <<"cells">> => list(cell()),
-%%   <<"lineRanges">> => list(range()),
-%%   <<"offsetRanges">> => list(range()),
-%%   <<"pages">> => list(page()),
-%%   <<"records">> => list(record())
+%% create_custom_data_identifier_response() :: #{
+%%   <<"customDataIdentifierId">> => string()
 %% }
--type occurrences() :: #{binary() => any()}.
-
-%% Example:
-%% get_allow_list_request() :: #{}
--type get_allow_list_request() :: #{}.
-
-
-%% Example:
-%% job_scope_term() :: #{
-%%   <<"simpleScopeTerm">> => simple_scope_term(),
-%%   <<"tagScopeTerm">> => tag_scope_term()
-%% }
--type job_scope_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_organization_configuration_response() :: #{
-%%   <<"autoEnable">> => boolean(),
-%%   <<"maxAccountLimitReached">> => boolean()
-%% }
--type describe_organization_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_sensitive_data_occurrences_request() :: #{}
--type get_sensitive_data_occurrences_request() :: #{}.
-
-
-%% Example:
-%% s3_classification_scope() :: #{
-%%   <<"excludes">> => s3_classification_scope_exclusion()
-%% }
--type s3_classification_scope() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_filters_response() :: #{
-%%   <<"findingsFilterListItems">> => list(findings_filter_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_findings_filters_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_classification_export_configuration_response() :: #{
-%%   <<"configuration">> => classification_export_configuration()
-%% }
--type get_classification_export_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_classification_scopes_request() :: #{
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_classification_scopes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_data_identifiers_request() :: #{
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_data_identifiers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_findings_filter_request() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"findingCriteria">> => finding_criteria(),
-%%   <<"name">> => string(),
-%%   <<"position">> => integer()
-%% }
--type update_findings_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% disable_macie_request() :: #{}
--type disable_macie_request() :: #{}.
-
-%% Example:
-%% get_macie_session_request() :: #{}
--type get_macie_session_request() :: #{}.
-
-
-%% Example:
-%% create_findings_filter_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string()
-%% }
--type create_findings_filter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_resources_tag_criterion() :: #{
-%%   <<"comparator">> => list(any()),
-%%   <<"tagValues">> => list(search_resources_tag_criterion_pair())
-%% }
--type search_resources_tag_criterion() :: #{binary() => any()}.
-
-%% Example:
-%% delete_allow_list_response() :: #{}
--type delete_allow_list_response() :: #{}.
-
-
-%% Example:
-%% s3_bucket() :: #{
-%%   <<"allowsUnencryptedObjectUploads">> => list(any()),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"defaultServerSideEncryption">> => server_side_encryption(),
-%%   <<"name">> => string(),
-%%   <<"owner">> => s3_bucket_owner(),
-%%   <<"publicAccess">> => bucket_public_access(),
-%%   <<"tags">> => list(key_value_pair())
-%% }
--type s3_bucket() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_level_statistics() :: #{
-%%   <<"fileType">> => float(),
-%%   <<"storageClass">> => float(),
-%%   <<"total">> => float()
-%% }
--type object_level_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% bucket_server_side_encryption() :: #{
-%%   <<"kmsMasterKeyId">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type bucket_server_side_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_macie_session_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"findingPublishingFrequency">> => list(any()),
-%%   <<"serviceRole">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_macie_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_service() :: #{
-%%   <<"invokedBy">> => string()
-%% }
--type aws_service() :: #{binary() => any()}.
-
-
-%% Example:
-%% sensitivity_inspection_templates_entry() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type sensitivity_inspection_templates_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_custom_data_identifier_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"deleted">> => boolean(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type batch_get_custom_data_identifier_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_resources_bucket_criteria() :: #{
-%%   <<"excludes">> => search_resources_criteria_block(),
-%%   <<"includes">> => search_resources_criteria_block()
-%% }
--type search_resources_bucket_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% federated_user() :: #{
-%%   <<"accessKeyId">> => string(),
-%%   <<"accountId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"principalId">> => string(),
-%%   <<"sessionContext">> => session_context()
-%% }
--type federated_user() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resource_profile_detections_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"suppressDataIdentifiers">> => list(suppress_data_identifier())
-%% }
--type update_resource_profile_detections_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_findings_response() :: #{
-%%   <<"findings">> => list(finding())
-%% }
--type get_findings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_findings_publication_configuration_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"securityHubConfiguration">> => security_hub_configuration()
-%% }
--type put_findings_publication_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bucket_policy() :: #{
-%%   <<"allowsPublicReadAccess">> => boolean(),
-%%   <<"allowsPublicWriteAccess">> => boolean()
-%% }
--type bucket_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% findings_filter_list_item() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type findings_filter_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_allow_lists_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_allow_lists_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_identity_root() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"principalId">> => string()
-%% }
--type user_identity_root() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_filter_criteria() :: #{
-%%   <<"excludes">> => list(list_jobs_filter_term()),
-%%   <<"includes">> => list(list_jobs_filter_term())
-%% }
--type list_jobs_filter_criteria() :: #{binary() => any()}.
+-type create_custom_data_identifier_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1481,67 +681,352 @@
 
 
 %% Example:
-%% get_sensitive_data_occurrences_response() :: #{
-%%   <<"error">> => string(),
-%%   <<"sensitiveDataOccurrences">> => map(),
-%%   <<"status">> => list(any())
-%% }
--type get_sensitive_data_occurrences_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_findings_filter_response() :: #{
+%% create_findings_filter_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"id">> => string()
 %% }
--type update_findings_filter_response() :: #{binary() => any()}.
+-type create_findings_filter_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_resources_tag_criterion_pair() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% create_invitations_request() :: #{
+%%   <<"accountIds">> := list(string()),
+%%   <<"disableEmailNotification">> => boolean(),
+%%   <<"message">> => string()
 %% }
--type search_resources_tag_criterion_pair() :: #{binary() => any()}.
+-type create_invitations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% automated_discovery_account_update_error() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"errorCode">> => list(any())
+%% create_invitations_response() :: #{
+%%   <<"unprocessedAccounts">> => list(unprocessed_account())
 %% }
--type automated_discovery_account_update_error() :: #{binary() => any()}.
+-type create_invitations_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_managed_data_identifiers_response() :: #{
-%%   <<"items">> => list(managed_data_identifier_summary()),
-%%   <<"nextToken">> => string()
+%% create_member_request() :: #{
+%%   <<"account">> := account_detail(),
+%%   <<"tags">> => map()
 %% }
--type list_managed_data_identifiers_response() :: #{binary() => any()}.
+-type create_member_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% allow_list_summary() :: #{
+%% create_member_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type create_member_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sample_findings_request() :: #{
+%%   <<"findingTypes">> => list(list(any())())
+%% }
+-type create_sample_findings_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_sample_findings_response() :: #{}
+-type create_sample_findings_response() :: #{}.
+
+
+%% Example:
+%% criteria_block_for_job() :: #{
+%%   <<"and">> => list(criteria_for_job())
+%% }
+-type criteria_block_for_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% criteria_for_job() :: #{
+%%   <<"simpleCriterion">> => simple_criterion_for_job(),
+%%   <<"tagCriterion">> => tag_criterion_for_job()
+%% }
+-type criteria_for_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% criterion_additional_properties() :: #{
+%%   <<"eq">> => list(string()),
+%%   <<"eqExactMatch">> => list(string()),
+%%   <<"gt">> => float(),
+%%   <<"gte">> => float(),
+%%   <<"lt">> => float(),
+%%   <<"lte">> => float(),
+%%   <<"neq">> => list(string())
+%% }
+-type criterion_additional_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_data_identifier_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"name">> => string()
 %% }
--type allow_list_summary() :: #{binary() => any()}.
+-type custom_data_identifier_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% classification_details() :: #{
-%%   <<"detailedResultsLocation">> => string(),
+%% custom_data_identifiers() :: #{
+%%   <<"detections">> => list(custom_detection()),
+%%   <<"totalCount">> => float()
+%% }
+-type custom_data_identifiers() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_detection() :: #{
+%%   <<"arn">> => string(),
+%%   <<"count">> => float(),
+%%   <<"name">> => string(),
+%%   <<"occurrences">> => occurrences()
+%% }
+-type custom_detection() :: #{binary() => any()}.
+
+%% Example:
+%% daily_schedule() :: #{}
+-type daily_schedule() :: #{}.
+
+
+%% Example:
+%% decline_invitations_request() :: #{
+%%   <<"accountIds">> := list(string())
+%% }
+-type decline_invitations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% decline_invitations_response() :: #{
+%%   <<"unprocessedAccounts">> => list(unprocessed_account())
+%% }
+-type decline_invitations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_detection() :: #{
+%%   <<"count">> => float(),
+%%   <<"occurrences">> => occurrences(),
+%%   <<"type">> => string()
+%% }
+-type default_detection() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_allow_list_request() :: #{
+%%   <<"ignoreJobChecks">> => string()
+%% }
+-type delete_allow_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_allow_list_response() :: #{}
+-type delete_allow_list_response() :: #{}.
+
+%% Example:
+%% delete_custom_data_identifier_request() :: #{}
+-type delete_custom_data_identifier_request() :: #{}.
+
+%% Example:
+%% delete_custom_data_identifier_response() :: #{}
+-type delete_custom_data_identifier_response() :: #{}.
+
+%% Example:
+%% delete_findings_filter_request() :: #{}
+-type delete_findings_filter_request() :: #{}.
+
+%% Example:
+%% delete_findings_filter_response() :: #{}
+-type delete_findings_filter_response() :: #{}.
+
+
+%% Example:
+%% delete_invitations_request() :: #{
+%%   <<"accountIds">> := list(string())
+%% }
+-type delete_invitations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_invitations_response() :: #{
+%%   <<"unprocessedAccounts">> => list(unprocessed_account())
+%% }
+-type delete_invitations_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_member_request() :: #{}
+-type delete_member_request() :: #{}.
+
+%% Example:
+%% delete_member_response() :: #{}
+-type delete_member_response() :: #{}.
+
+
+%% Example:
+%% describe_buckets_request() :: #{
+%%   <<"criteria">> => map(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortCriteria">> => bucket_sort_criteria()
+%% }
+-type describe_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_buckets_response() :: #{
+%%   <<"buckets">> => list(bucket_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_buckets_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_classification_job_request() :: #{}
+-type describe_classification_job_request() :: #{}.
+
+
+%% Example:
+%% describe_classification_job_response() :: #{
+%%   <<"allowListIds">> => list(string()),
+%%   <<"clientToken">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customDataIdentifierIds">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"initialRun">> => boolean(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobId">> => string(),
-%%   <<"originType">> => list(any()),
-%%   <<"result">> => classification_result()
+%%   <<"jobStatus">> => list(any()),
+%%   <<"jobType">> => list(any()),
+%%   <<"lastRunErrorStatus">> => last_run_error_status(),
+%%   <<"lastRunTime">> => non_neg_integer(),
+%%   <<"managedDataIdentifierIds">> => list(string()),
+%%   <<"managedDataIdentifierSelector">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"s3JobDefinition">> => s3_job_definition(),
+%%   <<"samplingPercentage">> => integer(),
+%%   <<"scheduleFrequency">> => job_schedule_frequency(),
+%%   <<"statistics">> => statistics(),
+%%   <<"tags">> => map(),
+%%   <<"userPausedDetails">> => user_paused_details()
 %% }
--type classification_details() :: #{binary() => any()}.
+-type describe_classification_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_organization_configuration_request() :: #{}
+-type describe_organization_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_organization_configuration_response() :: #{
+%%   <<"autoEnable">> => boolean(),
+%%   <<"maxAccountLimitReached">> => boolean()
+%% }
+-type describe_organization_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% detected_data_details() :: #{
+%%   <<"value">> => string()
+%% }
+-type detected_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% detection() :: #{
+%%   <<"arn">> => string(),
+%%   <<"count">> => float(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"suppressed">> => boolean(),
+%%   <<"type">> => list(any())
+%% }
+-type detection() :: #{binary() => any()}.
+
+%% Example:
+%% disable_macie_request() :: #{}
+-type disable_macie_request() :: #{}.
+
+%% Example:
+%% disable_macie_response() :: #{}
+-type disable_macie_response() :: #{}.
+
+
+%% Example:
+%% disable_organization_admin_account_request() :: #{
+%%   <<"adminAccountId">> := string()
+%% }
+-type disable_organization_admin_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_organization_admin_account_response() :: #{}
+-type disable_organization_admin_account_response() :: #{}.
+
+%% Example:
+%% disassociate_from_administrator_account_request() :: #{}
+-type disassociate_from_administrator_account_request() :: #{}.
+
+%% Example:
+%% disassociate_from_administrator_account_response() :: #{}
+-type disassociate_from_administrator_account_response() :: #{}.
+
+%% Example:
+%% disassociate_from_master_account_request() :: #{}
+-type disassociate_from_master_account_request() :: #{}.
+
+%% Example:
+%% disassociate_from_master_account_response() :: #{}
+-type disassociate_from_master_account_response() :: #{}.
+
+%% Example:
+%% disassociate_member_request() :: #{}
+-type disassociate_member_request() :: #{}.
+
+%% Example:
+%% disassociate_member_response() :: #{}
+-type disassociate_member_response() :: #{}.
+
+
+%% Example:
+%% domain_details() :: #{
+%%   <<"domainName">> => string()
+%% }
+-type domain_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_macie_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"findingPublishingFrequency">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type enable_macie_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_macie_response() :: #{}
+-type enable_macie_response() :: #{}.
+
+
+%% Example:
+%% enable_organization_admin_account_request() :: #{
+%%   <<"adminAccountId">> := string(),
+%%   <<"clientToken">> => string()
+%% }
+-type enable_organization_admin_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_organization_admin_account_response() :: #{}
+-type enable_organization_admin_account_response() :: #{}.
+
+
+%% Example:
+%% federated_user() :: #{
+%%   <<"accessKeyId">> => string(),
+%%   <<"accountId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"principalId">> => string(),
+%%   <<"sessionContext">> => session_context()
+%% }
+-type federated_user() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1567,222 +1052,102 @@
 %% }
 -type finding() :: #{binary() => any()}.
 
-%% Example:
-%% describe_classification_job_request() :: #{}
--type describe_classification_job_request() :: #{}.
 
 %% Example:
-%% update_automated_discovery_configuration_response() :: #{}
--type update_automated_discovery_configuration_response() :: #{}.
-
-
-%% Example:
-%% update_macie_session_request() :: #{
-%%   <<"findingPublishingFrequency">> => list(any()),
-%%   <<"status">> => list(any())
+%% finding_action() :: #{
+%%   <<"actionType">> => list(any()),
+%%   <<"apiCallDetails">> => api_call_details()
 %% }
--type update_macie_session_request() :: #{binary() => any()}.
+-type finding_action() :: #{binary() => any()}.
 
 
 %% Example:
-%% ip_geo_location() :: #{
-%%   <<"lat">> => float(),
-%%   <<"lon">> => float()
+%% finding_actor() :: #{
+%%   <<"domainDetails">> => domain_details(),
+%%   <<"ipAddressDetails">> => ip_address_details(),
+%%   <<"userIdentity">> => user_identity()
 %% }
--type ip_geo_location() :: #{binary() => any()}.
+-type finding_actor() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_profile_artifact() :: #{
+%% finding_criteria() :: #{
+%%   <<"criterion">> => map()
+%% }
+-type finding_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_statistics_sort_criteria() :: #{
+%%   <<"attributeName">> => list(any()),
+%%   <<"orderBy">> => list(any())
+%% }
+-type finding_statistics_sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% findings_filter_list_item() :: #{
+%%   <<"action">> => list(any()),
 %%   <<"arn">> => string(),
-%%   <<"classificationResultStatus">> => string(),
-%%   <<"sensitive">> => boolean()
-%% }
--type resource_profile_artifact() :: #{binary() => any()}.
-
-%% Example:
-%% update_member_session_response() :: #{}
--type update_member_session_response() :: #{}.
-
-
-%% Example:
-%% get_finding_statistics_request() :: #{
-%%   <<"findingCriteria">> => finding_criteria(),
-%%   <<"groupBy">> := list(any()),
-%%   <<"size">> => integer(),
-%%   <<"sortCriteria">> => finding_statistics_sort_criteria()
-%% }
--type get_finding_statistics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_profile_artifacts_request() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourceArn">> := string()
-%% }
--type list_resource_profile_artifacts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_request() :: #{
-%%   <<"findingCriteria">> => finding_criteria(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortCriteria">> => sort_criteria()
-%% }
--type list_findings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_buckets_response() :: #{
-%%   <<"buckets">> => list(bucket_metadata()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_buckets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_data_identifiers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_custom_data_identifiers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% macie2_record() :: #{
-%%   <<"jsonPath">> => string(),
-%%   <<"recordIndex">> => float()
-%% }
--type macie2_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_retrieval_configuration() :: #{
-%%   <<"retrievalMode">> => list(any()),
-%%   <<"roleName">> => string()
-%% }
--type update_retrieval_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_custom_data_identifier_response() :: #{
-%%   <<"matchCount">> => integer()
-%% }
--type test_custom_data_identifier_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_findings_filter_request() :: #{}
--type get_findings_filter_request() :: #{}.
-
-%% Example:
-%% get_member_request() :: #{}
--type get_member_request() :: #{}.
-
-
-%% Example:
-%% s3_bucket_owner() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"id">> => string()
-%% }
--type s3_bucket_owner() :: #{binary() => any()}.
-
-%% Example:
-%% update_organization_configuration_response() :: #{}
--type update_organization_configuration_response() :: #{}.
-
-
-%% Example:
-%% get_finding_statistics_response() :: #{
-%%   <<"countsByGroup">> => list(group_count())
-%% }
--type get_finding_statistics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_usage_totals_request() :: #{
-%%   <<"timeRange">> => string()
-%% }
--type get_usage_totals_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% detection() :: #{
-%%   <<"arn">> => string(),
-%%   <<"count">> => float(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"suppressed">> => boolean(),
-%%   <<"type">> => list(any())
+%%   <<"tags">> => map()
 %% }
--type detection() :: #{binary() => any()}.
+-type findings_filter_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_administrator_account_request() :: #{}
+-type get_administrator_account_request() :: #{}.
 
 
 %% Example:
-%% s3_classification_scope_exclusion_update() :: #{
-%%   <<"bucketNames">> => list(string()),
-%%   <<"operation">> => list(any())
+%% get_administrator_account_response() :: #{
+%%   <<"administrator">> => invitation()
 %% }
--type s3_classification_scope_exclusion_update() :: #{binary() => any()}.
+-type get_administrator_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_allow_list_request() :: #{}
+-type get_allow_list_request() :: #{}.
 
 
 %% Example:
-%% s3_destination() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"expectedBucketOwner">> => string(),
-%%   <<"keyPrefix">> => string(),
-%%   <<"kmsKeyArn">> => string()
+%% get_allow_list_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"criteria">> => allow_list_criteria(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => allow_list_status(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type s3_destination() :: #{binary() => any()}.
+-type get_allow_list_response() :: #{binary() => any()}.
 
 %% Example:
-%% accept_invitation_response() :: #{}
--type accept_invitation_response() :: #{}.
-
-
-%% Example:
-%% resource_statistics() :: #{
-%%   <<"totalBytesClassified">> => float(),
-%%   <<"totalDetections">> => float(),
-%%   <<"totalDetectionsSuppressed">> => float(),
-%%   <<"totalItemsClassified">> => float(),
-%%   <<"totalItemsSensitive">> => float(),
-%%   <<"totalItemsSkipped">> => float(),
-%%   <<"totalItemsSkippedInvalidEncryption">> => float(),
-%%   <<"totalItemsSkippedInvalidKms">> => float(),
-%%   <<"totalItemsSkippedPermissionDenied">> => float()
-%% }
--type resource_statistics() :: #{binary() => any()}.
+%% get_automated_discovery_configuration_request() :: #{}
+-type get_automated_discovery_configuration_request() :: #{}.
 
 
 %% Example:
-%% create_sample_findings_request() :: #{
-%%   <<"findingTypes">> => list(list(any())())
+%% get_automated_discovery_configuration_response() :: #{
+%%   <<"autoEnableOrganizationMembers">> => list(any()),
+%%   <<"classificationScopeId">> => string(),
+%%   <<"disabledAt">> => non_neg_integer(),
+%%   <<"firstEnabledAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"sensitivityInspectionTemplateId">> => string(),
+%%   <<"status">> => list(any())
 %% }
--type create_sample_findings_request() :: #{binary() => any()}.
+-type get_automated_discovery_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% decline_invitations_request() :: #{
-%%   <<"accountIds">> := list(string())
+%% get_bucket_statistics_request() :: #{
+%%   <<"accountId">> => string()
 %% }
--type decline_invitations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sensitive_data_item() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"detections">> => list(default_detection()),
-%%   <<"totalCount">> => float()
-%% }
--type sensitive_data_item() :: #{binary() => any()}.
+-type get_bucket_statistics_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1804,13 +1169,142 @@
 %% }
 -type get_bucket_statistics_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_classification_export_configuration_request() :: #{}
+-type get_classification_export_configuration_request() :: #{}.
+
 
 %% Example:
-%% update_automated_discovery_configuration_request() :: #{
-%%   <<"autoEnableOrganizationMembers">> => list(any()),
-%%   <<"status">> := list(any())
+%% get_classification_export_configuration_response() :: #{
+%%   <<"configuration">> => classification_export_configuration()
 %% }
--type update_automated_discovery_configuration_request() :: #{binary() => any()}.
+-type get_classification_export_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_classification_scope_request() :: #{}
+-type get_classification_scope_request() :: #{}.
+
+
+%% Example:
+%% get_classification_scope_response() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"s3">> => s3_classification_scope()
+%% }
+-type get_classification_scope_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_data_identifier_request() :: #{}
+-type get_custom_data_identifier_request() :: #{}.
+
+
+%% Example:
+%% get_custom_data_identifier_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deleted">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ignoreWords">> => list(string()),
+%%   <<"keywords">> => list(string()),
+%%   <<"maximumMatchDistance">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"regex">> => string(),
+%%   <<"severityLevels">> => list(severity_level()),
+%%   <<"tags">> => map()
+%% }
+-type get_custom_data_identifier_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_statistics_request() :: #{
+%%   <<"findingCriteria">> => finding_criteria(),
+%%   <<"groupBy">> := list(any()),
+%%   <<"size">> => integer(),
+%%   <<"sortCriteria">> => finding_statistics_sort_criteria()
+%% }
+-type get_finding_statistics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_statistics_response() :: #{
+%%   <<"countsByGroup">> => list(group_count())
+%% }
+-type get_finding_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_findings_filter_request() :: #{}
+-type get_findings_filter_request() :: #{}.
+
+
+%% Example:
+%% get_findings_filter_response() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"arn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"findingCriteria">> => finding_criteria(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"position">> => integer(),
+%%   <<"tags">> => map()
+%% }
+-type get_findings_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_findings_publication_configuration_request() :: #{}
+-type get_findings_publication_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_findings_publication_configuration_response() :: #{
+%%   <<"securityHubConfiguration">> => security_hub_configuration()
+%% }
+-type get_findings_publication_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_findings_request() :: #{
+%%   <<"findingIds">> := list(string()),
+%%   <<"sortCriteria">> => sort_criteria()
+%% }
+-type get_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_findings_response() :: #{
+%%   <<"findings">> => list(finding())
+%% }
+-type get_findings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_invitations_count_request() :: #{}
+-type get_invitations_count_request() :: #{}.
+
+
+%% Example:
+%% get_invitations_count_response() :: #{
+%%   <<"invitationsCount">> => float()
+%% }
+-type get_invitations_count_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_macie_session_request() :: #{}
+-type get_macie_session_request() :: #{}.
+
+
+%% Example:
+%% get_macie_session_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"findingPublishingFrequency">> => list(any()),
+%%   <<"serviceRole">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_macie_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_master_account_request() :: #{}
+-type get_master_account_request() :: #{}.
 
 
 %% Example:
@@ -1819,69 +1313,9 @@
 %% }
 -type get_master_account_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% job_schedule_frequency() :: #{
-%%   <<"dailySchedule">> => daily_schedule(),
-%%   <<"monthlySchedule">> => monthly_schedule(),
-%%   <<"weeklySchedule">> => weekly_schedule()
-%% }
--type job_schedule_frequency() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_details() :: #{
-%%   <<"isDefinedInJob">> => list(any()),
-%%   <<"isMonitoredByJob">> => list(any()),
-%%   <<"lastJobId">> => string(),
-%%   <<"lastJobRunTime">> => non_neg_integer()
-%% }
--type job_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_classification_export_configuration_response() :: #{
-%%   <<"configuration">> => classification_export_configuration()
-%% }
--type put_classification_export_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_classification_job_response() :: #{
-%%   <<"jobArn">> => string(),
-%%   <<"jobId">> => string()
-%% }
--type create_classification_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% allow_list_criteria() :: #{
-%%   <<"regex">> => string(),
-%%   <<"s3WordsList">> => s3_words_list()
-%% }
--type allow_list_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_invitations_request() :: #{
-%%   <<"accountIds">> := list(string())
-%% }
--type delete_invitations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% classification_scope_summary() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type classification_scope_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
+%% get_member_request() :: #{}
+-type get_member_request() :: #{}.
 
 
 %% Example:
@@ -1900,93 +1334,176 @@
 
 
 %% Example:
-%% update_reveal_configuration_request() :: #{
-%%   <<"configuration">> := reveal_configuration(),
-%%   <<"retrievalConfiguration">> => update_retrieval_configuration()
+%% get_resource_profile_request() :: #{
+%%   <<"resourceArn">> := string()
 %% }
--type update_reveal_configuration_request() :: #{binary() => any()}.
+-type get_resource_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_organization_configuration_request() :: #{
-%%   <<"autoEnable">> := boolean()
+%% get_resource_profile_response() :: #{
+%%   <<"profileUpdatedAt">> => non_neg_integer(),
+%%   <<"sensitivityScore">> => integer(),
+%%   <<"sensitivityScoreOverridden">> => boolean(),
+%%   <<"statistics">> => resource_statistics()
 %% }
--type update_organization_configuration_request() :: #{binary() => any()}.
+-type get_resource_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_reveal_configuration_request() :: #{}
+-type get_reveal_configuration_request() :: #{}.
 
 
 %% Example:
-%% enable_organization_admin_account_request() :: #{
-%%   <<"adminAccountId">> := string(),
-%%   <<"clientToken">> => string()
-%% }
--type enable_organization_admin_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sensitivity_inspection_template_includes() :: #{
-%%   <<"allowListIds">> => list(string()),
-%%   <<"customDataIdentifierIds">> => list(string()),
-%%   <<"managedDataIdentifierIds">> => list(string())
-%% }
--type sensitivity_inspection_template_includes() :: #{binary() => any()}.
-
-%% Example:
-%% delete_member_response() :: #{}
--type delete_member_response() :: #{}.
-
-
-%% Example:
-%% s3_classification_scope_update() :: #{
-%%   <<"excludes">> => s3_classification_scope_exclusion_update()
-%% }
--type s3_classification_scope_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_resources_criteria() :: #{
-%%   <<"simpleCriterion">> => search_resources_simple_criterion(),
-%%   <<"tagCriterion">> => search_resources_tag_criterion()
-%% }
--type search_resources_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_invitations_response() :: #{
-%%   <<"unprocessedAccounts">> => list(unprocessed_account())
-%% }
--type delete_invitations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_reveal_configuration_response() :: #{
+%% get_reveal_configuration_response() :: #{
 %%   <<"configuration">> => reveal_configuration(),
 %%   <<"retrievalConfiguration">> => retrieval_configuration()
 %% }
--type update_reveal_configuration_response() :: #{binary() => any()}.
+-type get_reveal_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sensitive_data_occurrences_availability_request() :: #{}
+-type get_sensitive_data_occurrences_availability_request() :: #{}.
 
 
 %% Example:
-%% list_organization_admin_accounts_request() :: #{
+%% get_sensitive_data_occurrences_availability_response() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"reasons">> => list(list(any())())
+%% }
+-type get_sensitive_data_occurrences_availability_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sensitive_data_occurrences_request() :: #{}
+-type get_sensitive_data_occurrences_request() :: #{}.
+
+
+%% Example:
+%% get_sensitive_data_occurrences_response() :: #{
+%%   <<"error">> => string(),
+%%   <<"sensitiveDataOccurrences">> => map(),
+%%   <<"status">> => list(any())
+%% }
+-type get_sensitive_data_occurrences_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sensitivity_inspection_template_request() :: #{}
+-type get_sensitivity_inspection_template_request() :: #{}.
+
+
+%% Example:
+%% get_sensitivity_inspection_template_response() :: #{
+%%   <<"description">> => string(),
+%%   <<"excludes">> => sensitivity_inspection_template_excludes(),
+%%   <<"includes">> => sensitivity_inspection_template_includes(),
+%%   <<"name">> => string(),
+%%   <<"sensitivityInspectionTemplateId">> => string()
+%% }
+-type get_sensitivity_inspection_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_usage_statistics_request() :: #{
+%%   <<"filterBy">> => list(usage_statistics_filter()),
 %%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => usage_statistics_sort_by(),
+%%   <<"timeRange">> => list(any())
 %% }
--type list_organization_admin_accounts_request() :: #{binary() => any()}.
+-type get_usage_statistics_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_custom_data_identifiers_response() :: #{
-%%   <<"customDataIdentifiers">> => list(batch_get_custom_data_identifier_summary()),
-%%   <<"notFoundIdentifierIds">> => list(string())
+%% get_usage_statistics_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"records">> => list(usage_record()),
+%%   <<"timeRange">> => list(any())
 %% }
--type batch_get_custom_data_identifiers_response() :: #{binary() => any()}.
+-type get_usage_statistics_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% sort_criteria() :: #{
-%%   <<"attributeName">> => string(),
-%%   <<"orderBy">> => list(any())
+%% get_usage_totals_request() :: #{
+%%   <<"timeRange">> => string()
 %% }
--type sort_criteria() :: #{binary() => any()}.
+-type get_usage_totals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_usage_totals_response() :: #{
+%%   <<"timeRange">> => list(any()),
+%%   <<"usageTotals">> => list(usage_total())
+%% }
+-type get_usage_totals_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_count() :: #{
+%%   <<"count">> => float(),
+%%   <<"groupKey">> => string()
+%% }
+-type group_count() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_user() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"principalId">> => string(),
+%%   <<"userName">> => string()
+%% }
+-type iam_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invitation() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"invitationId">> => string(),
+%%   <<"invitedAt">> => non_neg_integer(),
+%%   <<"relationshipStatus">> => list(any())
+%% }
+-type invitation() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_address_details() :: #{
+%%   <<"ipAddressV4">> => string(),
+%%   <<"ipCity">> => ip_city(),
+%%   <<"ipCountry">> => ip_country(),
+%%   <<"ipGeoLocation">> => ip_geo_location(),
+%%   <<"ipOwner">> => ip_owner()
+%% }
+-type ip_address_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_city() :: #{
+%%   <<"name">> => string()
+%% }
+-type ip_city() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_country() :: #{
+%%   <<"code">> => string(),
+%%   <<"name">> => string()
+%% }
+-type ip_country() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_geo_location() :: #{
+%%   <<"lat">> => float(),
+%%   <<"lon">> => float()
+%% }
+-type ip_geo_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2000,74 +1517,240 @@
 
 
 %% Example:
-%% criteria_for_job() :: #{
-%%   <<"simpleCriterion">> => simple_criterion_for_job(),
-%%   <<"tagCriterion">> => tag_criterion_for_job()
+%% job_details() :: #{
+%%   <<"isDefinedInJob">> => list(any()),
+%%   <<"isMonitoredByJob">> => list(any()),
+%%   <<"lastJobId">> => string(),
+%%   <<"lastJobRunTime">> => non_neg_integer()
 %% }
--type criteria_for_job() :: #{binary() => any()}.
-
-%% Example:
-%% get_sensitive_data_occurrences_availability_request() :: #{}
--type get_sensitive_data_occurrences_availability_request() :: #{}.
+-type job_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% weekly_schedule() :: #{
-%%   <<"dayOfWeek">> => list(any())
+%% job_schedule_frequency() :: #{
+%%   <<"dailySchedule">> => daily_schedule(),
+%%   <<"monthlySchedule">> => monthly_schedule(),
+%%   <<"weeklySchedule">> => weekly_schedule()
 %% }
--type weekly_schedule() :: #{binary() => any()}.
+-type job_schedule_frequency() :: #{binary() => any()}.
 
 
 %% Example:
-%% unprocessable_entity_exception() :: #{
-%%   <<"message">> => string()
+%% job_scope_term() :: #{
+%%   <<"simpleScopeTerm">> => simple_scope_term(),
+%%   <<"tagScopeTerm">> => tag_scope_term()
 %% }
--type unprocessable_entity_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_classification_export_configuration_request() :: #{}
--type get_classification_export_configuration_request() :: #{}.
+-type job_scope_term() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
+%% job_scoping_block() :: #{
+%%   <<"and">> => list(job_scope_term())
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_invitations_count_request() :: #{}
--type get_invitations_count_request() :: #{}.
+-type job_scoping_block() :: #{binary() => any()}.
 
 
 %% Example:
-%% default_detection() :: #{
-%%   <<"count">> => float(),
-%%   <<"occurrences">> => occurrences(),
-%%   <<"type">> => string()
+%% job_summary() :: #{
+%%   <<"bucketCriteria">> => s3_bucket_criteria_for_job(),
+%%   <<"bucketDefinitions">> => list(s3_bucket_definition_for_job()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"jobId">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"jobType">> => list(any()),
+%%   <<"lastRunErrorStatus">> => last_run_error_status(),
+%%   <<"name">> => string(),
+%%   <<"userPausedDetails">> => user_paused_details()
 %% }
--type default_detection() :: #{binary() => any()}.
+-type job_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_words_list() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"objectKey">> => string()
+%% key_value_pair() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type s3_words_list() :: #{binary() => any()}.
+-type key_value_pair() :: #{binary() => any()}.
 
 
 %% Example:
-%% accept_invitation_request() :: #{
-%%   <<"administratorAccountId">> => string(),
-%%   <<"invitationId">> := string(),
-%%   <<"masterAccount">> => string()
+%% last_run_error_status() :: #{
+%%   <<"code">> => list(any())
 %% }
--type accept_invitation_request() :: #{binary() => any()}.
+-type last_run_error_status() :: #{binary() => any()}.
+
 
 %% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+%% list_allow_lists_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_allow_lists_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_allow_lists_response() :: #{
+%%   <<"allowLists">> => list(allow_list_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_allow_lists_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_discovery_accounts_request() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_discovery_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_discovery_accounts_response() :: #{
+%%   <<"items">> => list(automated_discovery_account()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_discovery_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_classification_jobs_request() :: #{
+%%   <<"filterCriteria">> => list_jobs_filter_criteria(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortCriteria">> => list_jobs_sort_criteria()
+%% }
+-type list_classification_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_classification_jobs_response() :: #{
+%%   <<"items">> => list(job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_classification_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_classification_scopes_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_classification_scopes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_classification_scopes_response() :: #{
+%%   <<"classificationScopes">> => list(classification_scope_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_classification_scopes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_data_identifiers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_data_identifiers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_data_identifiers_response() :: #{
+%%   <<"items">> => list(custom_data_identifier_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_data_identifiers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_filters_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_filters_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_filters_response() :: #{
+%%   <<"findingsFilterListItems">> => list(findings_filter_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_filters_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_request() :: #{
+%%   <<"findingCriteria">> => finding_criteria(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortCriteria">> => sort_criteria()
+%% }
+-type list_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_response() :: #{
+%%   <<"findingIds">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invitations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_invitations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invitations_response() :: #{
+%%   <<"invitations">> => list(invitation()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_invitations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_filter_criteria() :: #{
+%%   <<"excludes">> => list(list_jobs_filter_term()),
+%%   <<"includes">> => list(list_jobs_filter_term())
+%% }
+-type list_jobs_filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_filter_term() :: #{
+%%   <<"comparator">> => list(any()),
+%%   <<"key">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type list_jobs_filter_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_sort_criteria() :: #{
+%%   <<"attributeName">> => list(any()),
+%%   <<"orderBy">> => list(any())
+%% }
+-type list_jobs_sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_data_identifiers_request() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_data_identifiers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_data_identifiers_response() :: #{
+%%   <<"items">> => list(managed_data_identifier_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_data_identifiers_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2088,60 +1771,35 @@
 
 
 %% Example:
-%% block_public_access() :: #{
-%%   <<"blockPublicAcls">> => boolean(),
-%%   <<"blockPublicPolicy">> => boolean(),
-%%   <<"ignorePublicAcls">> => boolean(),
-%%   <<"restrictPublicBuckets">> => boolean()
-%% }
--type block_public_access() :: #{binary() => any()}.
-
-
-%% Example:
-%% last_run_error_status() :: #{
-%%   <<"code">> => list(any())
-%% }
--type last_run_error_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% statistics() :: #{
-%%   <<"approximateNumberOfObjectsToProcess">> => float(),
-%%   <<"numberOfRuns">> => float()
-%% }
--type statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_filters_request() :: #{
+%% list_organization_admin_accounts_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type list_findings_filters_request() :: #{binary() => any()}.
+-type list_organization_admin_accounts_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_sensitivity_inspection_template_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"excludes">> => sensitivity_inspection_template_excludes(),
-%%   <<"includes">> => sensitivity_inspection_template_includes()
+%% list_organization_admin_accounts_response() :: #{
+%%   <<"adminAccounts">> => list(admin_account()),
+%%   <<"nextToken">> => string()
 %% }
--type update_sensitivity_inspection_template_request() :: #{binary() => any()}.
+-type list_organization_admin_accounts_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_resources_criteria_block() :: #{
-%%   <<"and">> => list(search_resources_criteria())
+%% list_resource_profile_artifacts_request() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> := string()
 %% }
--type search_resources_criteria_block() :: #{binary() => any()}.
+-type list_resource_profile_artifacts_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% key_value_pair() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% list_resource_profile_artifacts_response() :: #{
+%%   <<"artifacts">> => list(resource_profile_artifact()),
+%%   <<"nextToken">> => string()
 %% }
--type key_value_pair() :: #{binary() => any()}.
+-type list_resource_profile_artifacts_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2154,358 +1812,54 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
+%% list_resource_profile_detections_response() :: #{
+%%   <<"detections">> => list(detection()),
+%%   <<"nextToken">> => string()
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type list_resource_profile_detections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sensitivity_inspection_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sensitivity_inspection_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sensitivity_inspection_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sensitivityInspectionTemplates">> => list(sensitivity_inspection_templates_entry())
+%% }
+-type list_sensitivity_inspection_templates_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
 
-%% Example:
-%% get_master_account_request() :: #{}
--type get_master_account_request() :: #{}.
-
 
 %% Example:
-%% s3_job_definition() :: #{
-%%   <<"bucketCriteria">> => s3_bucket_criteria_for_job(),
-%%   <<"bucketDefinitions">> => list(s3_bucket_definition_for_job()),
-%%   <<"scoping">> => scoping()
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
 %% }
--type s3_job_definition() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_limit() :: #{
-%%   <<"isServiceLimited">> => boolean(),
-%%   <<"unit">> => list(any()),
-%%   <<"value">> => float()
+%% macie2_record() :: #{
+%%   <<"jsonPath">> => string(),
+%%   <<"recordIndex">> => float()
 %% }
--type service_limit() :: #{binary() => any()}.
-
-%% Example:
-%% daily_schedule() :: #{}
--type daily_schedule() :: #{}.
+-type macie2_record() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_invitations_count_response() :: #{
-%%   <<"invitationsCount">> => float()
+%% managed_data_identifier_summary() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"id">> => string()
 %% }
--type get_invitations_count_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sensitive_data_occurrences_availability_response() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"reasons">> => list(list(any())())
-%% }
--type get_sensitive_data_occurrences_availability_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_profile_detections_response() :: #{}
--type update_resource_profile_detections_response() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_findings_publication_configuration_response() :: #{
-%%   <<"securityHubConfiguration">> => security_hub_configuration()
-%% }
--type get_findings_publication_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% severity_level() :: #{
-%%   <<"occurrencesThreshold">> => float(),
-%%   <<"severity">> => list(any())
-%% }
--type severity_level() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_invitations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_invitations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_classification_scope_response() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"s3">> => s3_classification_scope()
-%% }
--type get_classification_scope_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_criteria() :: #{
-%%   <<"criterion">> => map()
-%% }
--type finding_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_details() :: #{
-%%   <<"replicated">> => boolean(),
-%%   <<"replicatedExternally">> => boolean(),
-%%   <<"replicationAccounts">> => list(string())
-%% }
--type replication_details() :: #{binary() => any()}.
-
-%% Example:
-%% create_sample_findings_response() :: #{}
--type create_sample_findings_response() :: #{}.
-
-
-%% Example:
-%% update_resource_profile_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"sensitivityScoreOverride">> => integer()
-%% }
--type update_resource_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_usage_totals_response() :: #{
-%%   <<"timeRange">> => list(any()),
-%%   <<"usageTotals">> => list(usage_total())
-%% }
--type get_usage_totals_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% member() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"administratorAccountId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"email">> => string(),
-%%   <<"invitedAt">> => non_neg_integer(),
-%%   <<"masterAccountId">> => string(),
-%%   <<"relationshipStatus">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type member() :: #{binary() => any()}.
-
-%% Example:
-%% enable_organization_admin_account_response() :: #{}
--type enable_organization_admin_account_response() :: #{}.
-
-
-%% Example:
-%% update_allow_list_request() :: #{
-%%   <<"criteria">> := allow_list_criteria(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string()
-%% }
--type update_allow_list_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_action() :: #{
-%%   <<"actionType">> => list(any()),
-%%   <<"apiCallDetails">> => api_call_details()
-%% }
--type finding_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% ip_address_details() :: #{
-%%   <<"ipAddressV4">> => string(),
-%%   <<"ipCity">> => ip_city(),
-%%   <<"ipCountry">> => ip_country(),
-%%   <<"ipGeoLocation">> => ip_geo_location(),
-%%   <<"ipOwner">> => ip_owner()
-%% }
--type ip_address_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_classification_export_configuration_request() :: #{
-%%   <<"configuration">> := classification_export_configuration()
-%% }
--type put_classification_export_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_resources_simple_criterion() :: #{
-%%   <<"comparator">> => list(any()),
-%%   <<"key">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type search_resources_simple_criterion() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_criterion_for_job() :: #{
-%%   <<"comparator">> => list(any()),
-%%   <<"tagValues">> => list(tag_criterion_pair_for_job())
-%% }
--type tag_criterion_for_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_details() :: #{
-%%   <<"domainName">> => string()
-%% }
--type domain_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% criterion_additional_properties() :: #{
-%%   <<"eq">> => list(string()),
-%%   <<"eqExactMatch">> => list(string()),
-%%   <<"gt">> => float(),
-%%   <<"gte">> => float(),
-%%   <<"lt">> => float(),
-%%   <<"lte">> => float(),
-%%   <<"neq">> => list(string())
-%% }
--type criterion_additional_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_issuer() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"principalId">> => string(),
-%%   <<"type">> => string(),
-%%   <<"userName">> => string()
-%% }
--type session_issuer() :: #{binary() => any()}.
-
-%% Example:
-%% get_reveal_configuration_request() :: #{}
--type get_reveal_configuration_request() :: #{}.
-
-
-%% Example:
-%% assumed_role() :: #{
-%%   <<"accessKeyId">> => string(),
-%%   <<"accountId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"principalId">> => string(),
-%%   <<"sessionContext">> => session_context()
-%% }
--type assumed_role() :: #{binary() => any()}.
-
-
-%% Example:
-%% unprocessed_account() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string()
-%% }
--type unprocessed_account() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_automated_discovery_accounts_response() :: #{
-%%   <<"errors">> => list(automated_discovery_account_update_error())
-%% }
--type batch_update_automated_discovery_accounts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_classification_scopes_response() :: #{
-%%   <<"classificationScopes">> => list(classification_scope_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_classification_scopes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bucket_permission_configuration() :: #{
-%%   <<"accountLevelPermissions">> => account_level_permissions(),
-%%   <<"bucketLevelPermissions">> => bucket_level_permissions()
-%% }
--type bucket_permission_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_paused_details() :: #{
-%%   <<"jobExpiresAt">> => non_neg_integer(),
-%%   <<"jobImminentExpirationHealthEventArn">> => string(),
-%%   <<"jobPausedAt">> => non_neg_integer()
-%% }
--type user_paused_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_invitations_response() :: #{
-%%   <<"unprocessedAccounts">> => list(unprocessed_account())
-%% }
--type create_invitations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_allow_list_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"criteria">> => allow_list_criteria(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => allow_list_status(),
-%%   <<"tags">> => map(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_allow_list_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reveal_configuration() :: #{
-%%   <<"kmsKeyId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type reveal_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_profile_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type get_resource_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_member_response() :: #{}
--type disassociate_member_response() :: #{}.
-
-
-%% Example:
-%% bucket_level_permissions() :: #{
-%%   <<"accessControlList">> => access_control_list(),
-%%   <<"blockPublicAccess">> => block_public_access(),
-%%   <<"bucketPolicy">> => bucket_policy()
-%% }
--type bucket_level_permissions() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_organization_admin_accounts_response() :: #{
-%%   <<"adminAccounts">> => list(admin_account()),
-%%   <<"nextToken">> => string()
-%% }
--type list_organization_admin_accounts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_allow_lists_response() :: #{
-%%   <<"allowLists">> => list(allow_list_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_allow_lists_response() :: #{binary() => any()}.
+-type managed_data_identifier_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2529,110 +1883,65 @@
 %% }
 -type matching_bucket() :: #{binary() => any()}.
 
-%% Example:
-%% get_automated_discovery_configuration_request() :: #{}
--type get_automated_discovery_configuration_request() :: #{}.
-
-
-%% Example:
-%% get_custom_data_identifier_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"deleted">> => boolean(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"ignoreWords">> => list(string()),
-%%   <<"keywords">> => list(string()),
-%%   <<"maximumMatchDistance">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"regex">> => string(),
-%%   <<"severityLevels">> => list(severity_level()),
-%%   <<"tags">> => map()
-%% }
--type get_custom_data_identifier_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sensitivity_inspection_templates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sensitivityInspectionTemplates">> => list(sensitivity_inspection_templates_entry())
-%% }
--type list_sensitivity_inspection_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_data_identifiers() :: #{
-%%   <<"detections">> => list(custom_detection()),
-%%   <<"totalCount">> => float()
-%% }
--type custom_data_identifiers() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_from_administrator_account_request() :: #{}
--type disassociate_from_administrator_account_request() :: #{}.
-
-
-%% Example:
-%% access_control_list() :: #{
-%%   <<"allowsPublicReadAccess">> => boolean(),
-%%   <<"allowsPublicWriteAccess">> => boolean()
-%% }
--type access_control_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_record() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"automatedDiscoveryFreeTrialStartDate">> => non_neg_integer(),
-%%   <<"freeTrialStartDate">> => non_neg_integer(),
-%%   <<"usage">> => list(usage_by_account())
-%% }
--type usage_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_administrator_account_response() :: #{
-%%   <<"administrator">> => invitation()
-%% }
--type get_administrator_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_data_identifier_response() :: #{}
--type delete_custom_data_identifier_response() :: #{}.
-
-
-%% Example:
-%% job_scoping_block() :: #{
-%%   <<"and">> => list(job_scope_term())
-%% }
--type job_scoping_block() :: #{binary() => any()}.
-
-%% Example:
-%% enable_macie_response() :: #{}
--type enable_macie_response() :: #{}.
-
-
-%% Example:
-%% tag_criterion_pair_for_job() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag_criterion_pair_for_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_count() :: #{
-%%   <<"count">> => float(),
-%%   <<"groupKey">> => string()
-%% }
--type group_count() :: #{binary() => any()}.
-
 
 %% Example:
 %% matching_resource() :: #{
 %%   <<"matchingBucket">> => matching_bucket()
 %% }
 -type matching_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% member() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"administratorAccountId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"email">> => string(),
+%%   <<"invitedAt">> => non_neg_integer(),
+%%   <<"masterAccountId">> => string(),
+%%   <<"relationshipStatus">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type member() :: #{binary() => any()}.
+
+
+%% Example:
+%% monthly_schedule() :: #{
+%%   <<"dayOfMonth">> => integer()
+%% }
+-type monthly_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_count_by_encryption_type() :: #{
+%%   <<"customerManaged">> => float(),
+%%   <<"kmsManaged">> => float(),
+%%   <<"s3Managed">> => float(),
+%%   <<"unencrypted">> => float(),
+%%   <<"unknown">> => float()
+%% }
+-type object_count_by_encryption_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_level_statistics() :: #{
+%%   <<"fileType">> => float(),
+%%   <<"storageClass">> => float(),
+%%   <<"total">> => float()
+%% }
+-type object_level_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% occurrences() :: #{
+%%   <<"cells">> => list(cell()),
+%%   <<"lineRanges">> => list(range()),
+%%   <<"offsetRanges">> => list(range()),
+%%   <<"pages">> => list(page()),
+%%   <<"records">> => list(record())
+%% }
+-type occurrences() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2653,32 +1962,415 @@
 
 
 %% Example:
-%% create_classification_job_request() :: #{
-%%   <<"allowListIds">> => list(string()),
-%%   <<"clientToken">> := string(),
-%%   <<"customDataIdentifierIds">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"initialRun">> => boolean(),
-%%   <<"jobType">> := list(any()),
-%%   <<"managedDataIdentifierIds">> => list(string()),
-%%   <<"managedDataIdentifierSelector">> => list(any()),
-%%   <<"name">> := string(),
-%%   <<"s3JobDefinition">> := s3_job_definition(),
-%%   <<"samplingPercentage">> => integer(),
-%%   <<"scheduleFrequency">> => job_schedule_frequency(),
-%%   <<"tags">> => map()
+%% put_classification_export_configuration_request() :: #{
+%%   <<"configuration">> := classification_export_configuration()
 %% }
--type create_classification_job_request() :: #{binary() => any()}.
+-type put_classification_export_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% bucket_count_by_effective_permission() :: #{
-%%   <<"publiclyAccessible">> => float(),
-%%   <<"publiclyReadable">> => float(),
-%%   <<"publiclyWritable">> => float(),
-%%   <<"unknown">> => float()
+%% put_classification_export_configuration_response() :: #{
+%%   <<"configuration">> => classification_export_configuration()
 %% }
--type bucket_count_by_effective_permission() :: #{binary() => any()}.
+-type put_classification_export_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_findings_publication_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"securityHubConfiguration">> => security_hub_configuration()
+%% }
+-type put_findings_publication_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_findings_publication_configuration_response() :: #{}
+-type put_findings_publication_configuration_response() :: #{}.
+
+
+%% Example:
+%% range() :: #{
+%%   <<"end">> => float(),
+%%   <<"start">> => float(),
+%%   <<"startColumn">> => float()
+%% }
+-type range() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_details() :: #{
+%%   <<"replicated">> => boolean(),
+%%   <<"replicatedExternally">> => boolean(),
+%%   <<"replicationAccounts">> => list(string())
+%% }
+-type replication_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_profile_artifact() :: #{
+%%   <<"arn">> => string(),
+%%   <<"classificationResultStatus">> => string(),
+%%   <<"sensitive">> => boolean()
+%% }
+-type resource_profile_artifact() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_statistics() :: #{
+%%   <<"totalBytesClassified">> => float(),
+%%   <<"totalDetections">> => float(),
+%%   <<"totalDetectionsSuppressed">> => float(),
+%%   <<"totalItemsClassified">> => float(),
+%%   <<"totalItemsSensitive">> => float(),
+%%   <<"totalItemsSkipped">> => float(),
+%%   <<"totalItemsSkippedInvalidEncryption">> => float(),
+%%   <<"totalItemsSkippedInvalidKms">> => float(),
+%%   <<"totalItemsSkippedPermissionDenied">> => float()
+%% }
+-type resource_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% resources_affected() :: #{
+%%   <<"s3Bucket">> => s3_bucket(),
+%%   <<"s3Object">> => s3_object()
+%% }
+-type resources_affected() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_configuration() :: #{
+%%   <<"externalId">> => string(),
+%%   <<"retrievalMode">> => list(any()),
+%%   <<"roleName">> => string()
+%% }
+-type retrieval_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% reveal_configuration() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type reveal_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket() :: #{
+%%   <<"allowsUnencryptedObjectUploads">> => list(any()),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"defaultServerSideEncryption">> => server_side_encryption(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => s3_bucket_owner(),
+%%   <<"publicAccess">> => bucket_public_access(),
+%%   <<"tags">> => list(key_value_pair())
+%% }
+-type s3_bucket() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_criteria_for_job() :: #{
+%%   <<"excludes">> => criteria_block_for_job(),
+%%   <<"includes">> => criteria_block_for_job()
+%% }
+-type s3_bucket_criteria_for_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_definition_for_job() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"buckets">> => list(string())
+%% }
+-type s3_bucket_definition_for_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_owner() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"id">> => string()
+%% }
+-type s3_bucket_owner() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_classification_scope() :: #{
+%%   <<"excludes">> => s3_classification_scope_exclusion()
+%% }
+-type s3_classification_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_classification_scope_exclusion() :: #{
+%%   <<"bucketNames">> => list(string())
+%% }
+-type s3_classification_scope_exclusion() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_classification_scope_exclusion_update() :: #{
+%%   <<"bucketNames">> => list(string()),
+%%   <<"operation">> => list(any())
+%% }
+-type s3_classification_scope_exclusion_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_classification_scope_update() :: #{
+%%   <<"excludes">> => s3_classification_scope_exclusion_update()
+%% }
+-type s3_classification_scope_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_destination() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"expectedBucketOwner">> => string(),
+%%   <<"keyPrefix">> => string(),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type s3_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_job_definition() :: #{
+%%   <<"bucketCriteria">> => s3_bucket_criteria_for_job(),
+%%   <<"bucketDefinitions">> => list(s3_bucket_definition_for_job()),
+%%   <<"scoping">> => scoping()
+%% }
+-type s3_job_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object() :: #{
+%%   <<"bucketArn">> => string(),
+%%   <<"eTag">> => string(),
+%%   <<"extension">> => string(),
+%%   <<"key">> => string(),
+%%   <<"lastModified">> => non_neg_integer(),
+%%   <<"path">> => string(),
+%%   <<"publicAccess">> => boolean(),
+%%   <<"serverSideEncryption">> => server_side_encryption(),
+%%   <<"size">> => float(),
+%%   <<"storageClass">> => list(any()),
+%%   <<"tags">> => list(key_value_pair()),
+%%   <<"versionId">> => string()
+%% }
+-type s3_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_words_list() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"objectKey">> => string()
+%% }
+-type s3_words_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% scoping() :: #{
+%%   <<"excludes">> => job_scoping_block(),
+%%   <<"includes">> => job_scoping_block()
+%% }
+-type scoping() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_bucket_criteria() :: #{
+%%   <<"excludes">> => search_resources_criteria_block(),
+%%   <<"includes">> => search_resources_criteria_block()
+%% }
+-type search_resources_bucket_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_criteria() :: #{
+%%   <<"simpleCriterion">> => search_resources_simple_criterion(),
+%%   <<"tagCriterion">> => search_resources_tag_criterion()
+%% }
+-type search_resources_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_criteria_block() :: #{
+%%   <<"and">> => list(search_resources_criteria())
+%% }
+-type search_resources_criteria_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_request() :: #{
+%%   <<"bucketCriteria">> => search_resources_bucket_criteria(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortCriteria">> => search_resources_sort_criteria()
+%% }
+-type search_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_response() :: #{
+%%   <<"matchingResources">> => list(matching_resource()),
+%%   <<"nextToken">> => string()
+%% }
+-type search_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_simple_criterion() :: #{
+%%   <<"comparator">> => list(any()),
+%%   <<"key">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type search_resources_simple_criterion() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_sort_criteria() :: #{
+%%   <<"attributeName">> => list(any()),
+%%   <<"orderBy">> => list(any())
+%% }
+-type search_resources_sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_tag_criterion() :: #{
+%%   <<"comparator">> => list(any()),
+%%   <<"tagValues">> => list(search_resources_tag_criterion_pair())
+%% }
+-type search_resources_tag_criterion() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_tag_criterion_pair() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type search_resources_tag_criterion_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_hub_configuration() :: #{
+%%   <<"publishClassificationFindings">> => boolean(),
+%%   <<"publishPolicyFindings">> => boolean()
+%% }
+-type security_hub_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% sensitive_data_item() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"detections">> => list(default_detection()),
+%%   <<"totalCount">> => float()
+%% }
+-type sensitive_data_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% sensitivity_aggregations() :: #{
+%%   <<"classifiableSizeInBytes">> => float(),
+%%   <<"publiclyAccessibleCount">> => float(),
+%%   <<"totalCount">> => float(),
+%%   <<"totalSizeInBytes">> => float()
+%% }
+-type sensitivity_aggregations() :: #{binary() => any()}.
+
+
+%% Example:
+%% sensitivity_inspection_template_excludes() :: #{
+%%   <<"managedDataIdentifierIds">> => list(string())
+%% }
+-type sensitivity_inspection_template_excludes() :: #{binary() => any()}.
+
+
+%% Example:
+%% sensitivity_inspection_template_includes() :: #{
+%%   <<"allowListIds">> => list(string()),
+%%   <<"customDataIdentifierIds">> => list(string()),
+%%   <<"managedDataIdentifierIds">> => list(string())
+%% }
+-type sensitivity_inspection_template_includes() :: #{binary() => any()}.
+
+
+%% Example:
+%% sensitivity_inspection_templates_entry() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type sensitivity_inspection_templates_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_side_encryption() :: #{
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsMasterKeyId">> => string()
+%% }
+-type server_side_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_limit() :: #{
+%%   <<"isServiceLimited">> => boolean(),
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => float()
+%% }
+-type service_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_context() :: #{
+%%   <<"attributes">> => session_context_attributes(),
+%%   <<"sessionIssuer">> => session_issuer()
+%% }
+-type session_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_context_attributes() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"mfaAuthenticated">> => boolean()
+%% }
+-type session_context_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_issuer() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"principalId">> => string(),
+%%   <<"type">> => string(),
+%%   <<"userName">> => string()
+%% }
+-type session_issuer() :: #{binary() => any()}.
+
+
+%% Example:
+%% severity() :: #{
+%%   <<"description">> => list(any()),
+%%   <<"score">> => float()
+%% }
+-type severity() :: #{binary() => any()}.
+
+
+%% Example:
+%% severity_level() :: #{
+%%   <<"occurrencesThreshold">> => float(),
+%%   <<"severity">> => list(any())
+%% }
+-type severity_level() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2691,18 +2383,162 @@
 
 
 %% Example:
-%% detected_data_details() :: #{
-%%   <<"value">> => string()
+%% simple_scope_term() :: #{
+%%   <<"comparator">> => list(any()),
+%%   <<"key">> => list(any()),
+%%   <<"values">> => list(string())
 %% }
--type detected_data_details() :: #{binary() => any()}.
+-type simple_scope_term() :: #{binary() => any()}.
 
 
 %% Example:
-%% automated_discovery_account() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"status">> => list(any())
+%% sort_criteria() :: #{
+%%   <<"attributeName">> => string(),
+%%   <<"orderBy">> => list(any())
 %% }
--type automated_discovery_account() :: #{binary() => any()}.
+-type sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% statistics() :: #{
+%%   <<"approximateNumberOfObjectsToProcess">> => float(),
+%%   <<"numberOfRuns">> => float()
+%% }
+-type statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% suppress_data_identifier() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type suppress_data_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_criterion_for_job() :: #{
+%%   <<"comparator">> => list(any()),
+%%   <<"tagValues">> => list(tag_criterion_pair_for_job())
+%% }
+-type tag_criterion_for_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_criterion_pair_for_job() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag_criterion_pair_for_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% tag_scope_term() :: #{
+%%   <<"comparator">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"tagValues">> => list(tag_value_pair()),
+%%   <<"target">> => list(any())
+%% }
+-type tag_scope_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_value_pair() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag_value_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_custom_data_identifier_request() :: #{
+%%   <<"ignoreWords">> => list(string()),
+%%   <<"keywords">> => list(string()),
+%%   <<"maximumMatchDistance">> => integer(),
+%%   <<"regex">> := string(),
+%%   <<"sampleText">> := string()
+%% }
+-type test_custom_data_identifier_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_custom_data_identifier_response() :: #{
+%%   <<"matchCount">> => integer()
+%% }
+-type test_custom_data_identifier_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_entity_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unprocessable_entity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessed_account() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type unprocessed_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_allow_list_request() :: #{
+%%   <<"criteria">> := allow_list_criteria(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string()
+%% }
+-type update_allow_list_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_allow_list_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string()
+%% }
+-type update_allow_list_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_automated_discovery_configuration_request() :: #{
+%%   <<"autoEnableOrganizationMembers">> => list(any()),
+%%   <<"status">> := list(any())
+%% }
+-type update_automated_discovery_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_automated_discovery_configuration_response() :: #{}
+-type update_automated_discovery_configuration_response() :: #{}.
 
 
 %% Example:
@@ -2711,707 +2547,871 @@
 %% }
 -type update_classification_job_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_classification_job_response() :: #{}
+-type update_classification_job_response() :: #{}.
+
 
 %% Example:
-%% get_usage_statistics_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"records">> => list(usage_record()),
-%%   <<"timeRange">> => list(any())
+%% update_classification_scope_request() :: #{
+%%   <<"s3">> => s3_classification_scope_update()
 %% }
--type get_usage_statistics_response() :: #{binary() => any()}.
+-type update_classification_scope_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_classification_scope_response() :: #{}
+-type update_classification_scope_response() :: #{}.
 
 
 %% Example:
-%% create_invitations_request() :: #{
-%%   <<"accountIds">> := list(string()),
-%%   <<"disableEmailNotification">> => boolean(),
+%% update_findings_filter_request() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"findingCriteria">> => finding_criteria(),
+%%   <<"name">> => string(),
+%%   <<"position">> => integer()
+%% }
+-type update_findings_filter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_findings_filter_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string()
+%% }
+-type update_findings_filter_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_macie_session_request() :: #{
+%%   <<"findingPublishingFrequency">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type update_macie_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_macie_session_response() :: #{}
+-type update_macie_session_response() :: #{}.
+
+
+%% Example:
+%% update_member_session_request() :: #{
+%%   <<"status">> := list(any())
+%% }
+-type update_member_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_member_session_response() :: #{}
+-type update_member_session_response() :: #{}.
+
+
+%% Example:
+%% update_organization_configuration_request() :: #{
+%%   <<"autoEnable">> := boolean()
+%% }
+-type update_organization_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_organization_configuration_response() :: #{}
+-type update_organization_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_resource_profile_detections_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"suppressDataIdentifiers">> => list(suppress_data_identifier())
+%% }
+-type update_resource_profile_detections_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_profile_detections_response() :: #{}
+-type update_resource_profile_detections_response() :: #{}.
+
+
+%% Example:
+%% update_resource_profile_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"sensitivityScoreOverride">> => integer()
+%% }
+-type update_resource_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_profile_response() :: #{}
+-type update_resource_profile_response() :: #{}.
+
+
+%% Example:
+%% update_retrieval_configuration() :: #{
+%%   <<"retrievalMode">> => list(any()),
+%%   <<"roleName">> => string()
+%% }
+-type update_retrieval_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_reveal_configuration_request() :: #{
+%%   <<"configuration">> := reveal_configuration(),
+%%   <<"retrievalConfiguration">> => update_retrieval_configuration()
+%% }
+-type update_reveal_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_reveal_configuration_response() :: #{
+%%   <<"configuration">> => reveal_configuration(),
+%%   <<"retrievalConfiguration">> => retrieval_configuration()
+%% }
+-type update_reveal_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sensitivity_inspection_template_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"excludes">> => sensitivity_inspection_template_excludes(),
+%%   <<"includes">> => sensitivity_inspection_template_includes()
+%% }
+-type update_sensitivity_inspection_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_sensitivity_inspection_template_response() :: #{}
+-type update_sensitivity_inspection_template_response() :: #{}.
+
+
+%% Example:
+%% usage_by_account() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"estimatedCost">> => string(),
+%%   <<"serviceLimit">> => service_limit(),
+%%   <<"type">> => list(any())
+%% }
+-type usage_by_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage_record() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"automatedDiscoveryFreeTrialStartDate">> => non_neg_integer(),
+%%   <<"freeTrialStartDate">> => non_neg_integer(),
+%%   <<"usage">> => list(usage_by_account())
+%% }
+-type usage_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage_statistics_filter() :: #{
+%%   <<"comparator">> => list(any()),
+%%   <<"key">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type usage_statistics_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage_statistics_sort_by() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"orderBy">> => list(any())
+%% }
+-type usage_statistics_sort_by() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage_total() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"estimatedCost">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type usage_total() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_identity() :: #{
+%%   <<"assumedRole">> => assumed_role(),
+%%   <<"awsAccount">> => aws_account(),
+%%   <<"awsService">> => aws_service(),
+%%   <<"federatedUser">> => federated_user(),
+%%   <<"iamUser">> => iam_user(),
+%%   <<"root">> => user_identity_root(),
+%%   <<"type">> => list(any())
+%% }
+-type user_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_identity_root() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"principalId">> => string()
+%% }
+-type user_identity_root() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_paused_details() :: #{
+%%   <<"jobExpiresAt">> => non_neg_integer(),
+%%   <<"jobImminentExpirationHealthEventArn">> => string(),
+%%   <<"jobPausedAt">> => non_neg_integer()
+%% }
+-type user_paused_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type create_invitations_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_allow_list_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"criteria">> := allow_list_criteria(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
+%% weekly_schedule() :: #{
+%%   <<"dayOfWeek">> => list(any())
 %% }
--type create_allow_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_findings_publication_configuration_response() :: #{}
--type put_findings_publication_configuration_response() :: #{}.
-
-
-%% Example:
-%% list_classification_jobs_response() :: #{
-%%   <<"items">> => list(job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_classification_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_invitations_response() :: #{
-%%   <<"invitations">> => list(invitation()),
-%%   <<"nextToken">> => string()
-%% }
--type list_invitations_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_member_request() :: #{}
--type disassociate_member_request() :: #{}.
-
-%% Example:
-%% disable_macie_response() :: #{}
--type disable_macie_response() :: #{}.
+-type weekly_schedule() :: #{binary() => any()}.
 
 -type accept_invitation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_get_custom_data_identifiers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_update_automated_discovery_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_allow_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_classification_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_custom_data_identifier_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_findings_filter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_invitations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_member_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_sample_findings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type decline_invitations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_allow_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_custom_data_identifier_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_findings_filter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_invitations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_member_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_buckets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_classification_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_organization_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disable_macie_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disable_organization_admin_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_from_administrator_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_from_master_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_member_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type enable_macie_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type enable_organization_admin_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_administrator_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_allow_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_automated_discovery_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_bucket_statistics_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_classification_export_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_classification_scope_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_custom_data_identifier_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_finding_statistics_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_findings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_findings_filter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_findings_publication_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_invitations_count_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_macie_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_master_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_member_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_resource_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_reveal_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_sensitive_data_occurrences_errors() ::
-    throttling_exception() | 
-    access_denied_exception() | 
     unprocessable_entity_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_sensitive_data_occurrences_availability_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sensitivity_inspection_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_usage_statistics_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_usage_totals_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_allow_lists_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_automated_discovery_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_classification_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_classification_scopes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_custom_data_identifiers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_findings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_findings_filters_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_invitations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_members_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_organization_admin_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_resource_profile_artifacts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_resource_profile_detections_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sensitivity_inspection_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type put_classification_export_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_findings_publication_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type search_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type test_custom_data_identifier_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_allow_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_automated_discovery_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_classification_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_classification_scope_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_findings_filter_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_macie_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_member_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_organization_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_resource_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_resource_profile_detections_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_reveal_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_sensitivity_inspection_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

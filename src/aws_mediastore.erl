@@ -54,18 +54,6 @@
 
 
 %% Example:
-%% put_cors_policy_output() :: #{
-
-%% }
--type put_cors_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_container_input() :: #{
-%%   <<"ContainerName">> := string()
-%% }
--type delete_container_input() :: #{binary() => any()}.
-
-%% Example:
 %% container() :: #{
 %%   <<"ARN">> => string(),
 %%   <<"AccessLoggingEnabled">> => boolean(),
@@ -77,96 +65,16 @@
 -type container() :: #{binary() => any()}.
 
 %% Example:
-%% delete_lifecycle_policy_output() :: #{
-
-%% }
--type delete_lifecycle_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_access_logging_output() :: #{
-
-%% }
--type stop_access_logging_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_container_policy_input() :: #{
-%%   <<"ContainerName">> := string(),
-%%   <<"Policy">> := string()
-%% }
--type put_container_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_container_output() :: #{
-%%   <<"Container">> => container()
-%% }
--type describe_container_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_access_logging_input() :: #{
-%%   <<"ContainerName">> := string()
-%% }
--type start_access_logging_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_metric_policy_output() :: #{
-%%   <<"MetricPolicy">> => metric_policy()
-%% }
--type get_metric_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_container_policy_output() :: #{
-
-%% }
--type put_container_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_policy_output() :: #{
-%%   <<"Policy">> => string()
-%% }
--type get_container_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_container_output() :: #{
-
-%% }
--type delete_container_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_cors_policy_input() :: #{
-%%   <<"ContainerName">> := string(),
-%%   <<"CorsPolicy">> := list(cors_rule())
-%% }
--type put_cors_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cors_policy_input() :: #{
-%%   <<"ContainerName">> := string()
-%% }
--type delete_cors_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_cors_policy_output() :: #{
-%%   <<"CorsPolicy">> => list(cors_rule())
-%% }
--type get_cors_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% policy_not_found_exception() :: #{
+%% container_in_use_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type policy_not_found_exception() :: #{binary() => any()}.
+-type container_in_use_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_container_policy_input() :: #{
-%%   <<"ContainerName">> := string()
+%% container_not_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type delete_container_policy_input() :: #{binary() => any()}.
+-type container_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% cors_policy_not_found_exception() :: #{
@@ -175,17 +83,87 @@
 -type cors_policy_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_cors_policy_input() :: #{
-%%   <<"ContainerName">> := string()
+%% cors_rule() :: #{
+%%   <<"AllowedHeaders">> => list(string()),
+%%   <<"AllowedMethods">> => list(list(any())()),
+%%   <<"AllowedOrigins">> => list(string()),
+%%   <<"ExposeHeaders">> => list(string()),
+%%   <<"MaxAgeSeconds">> => integer()
 %% }
--type get_cors_policy_input() :: #{binary() => any()}.
+-type cors_rule() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% create_container_input() :: #{
+%%   <<"ContainerName">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type tag() :: #{binary() => any()}.
+-type create_container_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_container_output() :: #{
+%%   <<"Container">> => container()
+%% }
+-type create_container_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type delete_container_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_output() :: #{
+
+%% }
+-type delete_container_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type delete_container_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_container_policy_output() :: #{
+
+%% }
+-type delete_container_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cors_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type delete_cors_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cors_policy_output() :: #{
+
+%% }
+-type delete_cors_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type delete_lifecycle_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_policy_output() :: #{
+
+%% }
+-type delete_lifecycle_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type delete_metric_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_policy_output() :: #{
+
+%% }
+-type delete_metric_policy_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_container_input() :: #{
@@ -194,10 +172,70 @@
 -type describe_container_input() :: #{binary() => any()}.
 
 %% Example:
-%% stop_access_logging_input() :: #{
+%% describe_container_output() :: #{
+%%   <<"Container">> => container()
+%% }
+-type describe_container_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_policy_input() :: #{
 %%   <<"ContainerName">> := string()
 %% }
--type stop_access_logging_input() :: #{binary() => any()}.
+-type get_container_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_container_policy_output() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_container_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_cors_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type get_cors_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_cors_policy_output() :: #{
+%%   <<"CorsPolicy">> => list(cors_rule())
+%% }
+-type get_cors_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_lifecycle_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type get_lifecycle_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_lifecycle_policy_output() :: #{
+%%   <<"LifecyclePolicy">> => string()
+%% }
+-type get_lifecycle_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_metric_policy_input() :: #{
+%%   <<"ContainerName">> := string()
+%% }
+-type get_metric_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_metric_policy_output() :: #{
+%%   <<"MetricPolicy">> => metric_policy()
+%% }
+-type get_metric_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_containers_input() :: #{
@@ -214,108 +252,16 @@
 -type list_containers_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_lifecycle_policy_input() :: #{
-%%   <<"ContainerName">> := string()
+%% list_tags_for_resource_input() :: #{
+%%   <<"Resource">> := string()
 %% }
--type get_lifecycle_policy_input() :: #{binary() => any()}.
+-type list_tags_for_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_input() :: #{
-%%   <<"Resource">> := string(),
-%%   <<"Tags">> := list(tag())
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => list(tag())
 %% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% put_lifecycle_policy_output() :: #{
-
-%% }
--type put_lifecycle_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% metric_policy_rule() :: #{
-%%   <<"ObjectGroup">> => string(),
-%%   <<"ObjectGroupName">> => string()
-%% }
--type metric_policy_rule() :: #{binary() => any()}.
-
-%% Example:
-%% delete_metric_policy_output() :: #{
-
-%% }
--type delete_metric_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{
-
-%% }
--type tag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% cors_rule() :: #{
-%%   <<"AllowedHeaders">> => list(string()),
-%%   <<"AllowedMethods">> => list(list(any())()),
-%%   <<"AllowedOrigins">> => list(string()),
-%%   <<"ExposeHeaders">> => list(string()),
-%%   <<"MaxAgeSeconds">> => integer()
-%% }
--type cors_rule() :: #{binary() => any()}.
-
-%% Example:
-%% delete_container_policy_output() :: #{
-
-%% }
--type delete_container_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lifecycle_policy_input() :: #{
-%%   <<"ContainerName">> := string()
-%% }
--type delete_lifecycle_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% put_metric_policy_input() :: #{
-%%   <<"ContainerName">> := string(),
-%%   <<"MetricPolicy">> := metric_policy()
-%% }
--type put_metric_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% container_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type container_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_container_output() :: #{
-%%   <<"Container">> => container()
-%% }
--type create_container_output() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_error() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_error() :: #{binary() => any()}.
-
-%% Example:
-%% put_metric_policy_output() :: #{
-
-%% }
--type put_metric_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"Resource">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_metric_policy_input() :: #{
-%%   <<"ContainerName">> := string()
-%% }
--type delete_metric_policy_input() :: #{binary() => any()}.
+-type list_tags_for_resource_output() :: #{binary() => any()}.
 
 %% Example:
 %% metric_policy() :: #{
@@ -325,40 +271,43 @@
 -type metric_policy() :: #{binary() => any()}.
 
 %% Example:
-%% container_in_use_exception() :: #{
+%% metric_policy_rule() :: #{
+%%   <<"ObjectGroup">> => string(),
+%%   <<"ObjectGroupName">> => string()
+%% }
+-type metric_policy_rule() :: #{binary() => any()}.
+
+%% Example:
+%% policy_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type container_in_use_exception() :: #{binary() => any()}.
+-type policy_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"Resource">> := string()
+%% put_container_policy_input() :: #{
+%%   <<"ContainerName">> := string(),
+%%   <<"Policy">> := string()
 %% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
+-type put_container_policy_input() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_output() :: #{
+%% put_container_policy_output() :: #{
 
 %% }
--type untag_resource_output() :: #{binary() => any()}.
+-type put_container_policy_output() :: #{binary() => any()}.
 
 %% Example:
-%% start_access_logging_output() :: #{
-
+%% put_cors_policy_input() :: #{
+%%   <<"ContainerName">> := string(),
+%%   <<"CorsPolicy">> := list(cors_rule())
 %% }
--type start_access_logging_output() :: #{binary() => any()}.
+-type put_cors_policy_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_cors_policy_output() :: #{
+%% put_cors_policy_output() :: #{
 
 %% }
--type delete_cors_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_container_policy_input() :: #{
-%%   <<"ContainerName">> := string()
-%% }
--type get_container_policy_input() :: #{binary() => any()}.
+-type put_cors_policy_output() :: #{binary() => any()}.
 
 %% Example:
 %% put_lifecycle_policy_input() :: #{
@@ -368,139 +317,190 @@
 -type put_lifecycle_policy_input() :: #{binary() => any()}.
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%% put_lifecycle_policy_output() :: #{
+
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type put_lifecycle_policy_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_metric_policy_input() :: #{
+%% put_metric_policy_input() :: #{
+%%   <<"ContainerName">> := string(),
+%%   <<"MetricPolicy">> := metric_policy()
+%% }
+-type put_metric_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_metric_policy_output() :: #{
+
+%% }
+-type put_metric_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_access_logging_input() :: #{
 %%   <<"ContainerName">> := string()
 %% }
--type get_metric_policy_input() :: #{binary() => any()}.
+-type start_access_logging_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_lifecycle_policy_output() :: #{
-%%   <<"LifecyclePolicy">> => string()
+%% start_access_logging_output() :: #{
+
 %% }
--type get_lifecycle_policy_output() :: #{binary() => any()}.
+-type start_access_logging_output() :: #{binary() => any()}.
 
 %% Example:
-%% create_container_input() :: #{
-%%   <<"ContainerName">> := string(),
-%%   <<"Tags">> => list(tag())
+%% stop_access_logging_input() :: #{
+%%   <<"ContainerName">> := string()
 %% }
--type create_container_input() :: #{binary() => any()}.
+-type stop_access_logging_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_access_logging_output() :: #{
+
+%% }
+-type stop_access_logging_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Resource">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"Resource">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
 
 -type create_container_errors() ::
     limit_exceeded_exception() | 
-    container_in_use_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    container_in_use_exception().
 
 -type delete_container_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
-    container_not_found_exception().
+    container_not_found_exception() | 
+    container_in_use_exception().
 
 -type delete_container_policy_errors() ::
-    container_in_use_exception() | 
+    policy_not_found_exception() | 
     internal_server_error() | 
     container_not_found_exception() | 
-    policy_not_found_exception().
+    container_in_use_exception().
 
 -type delete_cors_policy_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
+    cors_policy_not_found_exception() | 
     container_not_found_exception() | 
-    cors_policy_not_found_exception().
+    container_in_use_exception().
 
 -type delete_lifecycle_policy_errors() ::
-    container_in_use_exception() | 
+    policy_not_found_exception() | 
     internal_server_error() | 
     container_not_found_exception() | 
-    policy_not_found_exception().
+    container_in_use_exception().
 
 -type delete_metric_policy_errors() ::
-    container_in_use_exception() | 
+    policy_not_found_exception() | 
     internal_server_error() | 
     container_not_found_exception() | 
-    policy_not_found_exception().
+    container_in_use_exception().
 
 -type describe_container_errors() ::
     internal_server_error() | 
     container_not_found_exception().
 
 -type get_container_policy_errors() ::
-    container_in_use_exception() | 
+    policy_not_found_exception() | 
     internal_server_error() | 
     container_not_found_exception() | 
-    policy_not_found_exception().
+    container_in_use_exception().
 
 -type get_cors_policy_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
+    cors_policy_not_found_exception() | 
     container_not_found_exception() | 
-    cors_policy_not_found_exception().
+    container_in_use_exception().
 
 -type get_lifecycle_policy_errors() ::
-    container_in_use_exception() | 
+    policy_not_found_exception() | 
     internal_server_error() | 
     container_not_found_exception() | 
-    policy_not_found_exception().
+    container_in_use_exception().
 
 -type get_metric_policy_errors() ::
-    container_in_use_exception() | 
+    policy_not_found_exception() | 
     internal_server_error() | 
     container_not_found_exception() | 
-    policy_not_found_exception().
+    container_in_use_exception().
 
 -type list_containers_errors() ::
     internal_server_error().
 
 -type list_tags_for_resource_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
-    container_not_found_exception().
+    container_not_found_exception() | 
+    container_in_use_exception().
 
 -type put_container_policy_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
-    container_not_found_exception().
+    container_not_found_exception() | 
+    container_in_use_exception().
 
 -type put_cors_policy_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
-    container_not_found_exception().
+    container_not_found_exception() | 
+    container_in_use_exception().
 
 -type put_lifecycle_policy_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
-    container_not_found_exception().
+    container_not_found_exception() | 
+    container_in_use_exception().
 
 -type put_metric_policy_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
-    container_not_found_exception().
+    container_not_found_exception() | 
+    container_in_use_exception().
 
 -type start_access_logging_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
-    container_not_found_exception().
+    container_not_found_exception() | 
+    container_in_use_exception().
 
 -type stop_access_logging_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
-    container_not_found_exception().
+    container_not_found_exception() | 
+    container_in_use_exception().
 
 -type tag_resource_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
-    container_not_found_exception().
+    container_not_found_exception() | 
+    container_in_use_exception().
 
 -type untag_resource_errors() ::
-    container_in_use_exception() | 
     internal_server_error() | 
-    container_not_found_exception().
+    container_not_found_exception() | 
+    container_in_use_exception().
 
 %%====================================================================
 %% API

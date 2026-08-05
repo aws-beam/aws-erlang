@@ -202,538 +202,6 @@
 
 
 %% Example:
-%% create_custom_routing_endpoint_group_response() :: #{
-%%   <<"EndpointGroup">> => custom_routing_endpoint_group()
-%% }
--type create_custom_routing_endpoint_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_cross_account_resource_accounts_request() :: #{
-
-%% }
--type list_cross_account_resource_accounts_request() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_configuration() :: #{
-%%   <<"AttachmentArn">> => string(),
-%%   <<"ClientIPPreservationEnabled">> => boolean(),
-%%   <<"EndpointId">> => string(),
-%%   <<"Weight">> => integer()
-%% }
--type endpoint_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% byoip_cidr() :: #{
-%%   <<"Cidr">> => string(),
-%%   <<"Events">> => list(byoip_cidr_event()),
-%%   <<"State">> => list(any())
-%% }
--type byoip_cidr() :: #{binary() => any()}.
-
-%% Example:
-%% describe_accelerator_attributes_request() :: #{
-%%   <<"AcceleratorArn">> := string()
-%% }
--type describe_accelerator_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_cross_account_attachments_response() :: #{
-%%   <<"CrossAccountAttachments">> => list(attachment()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cross_account_attachments_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_accelerator_attributes_response() :: #{
-%%   <<"AcceleratorAttributes">> => accelerator_attributes()
-%% }
--type update_accelerator_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_routing_accelerator_response() :: #{
-%%   <<"Accelerator">> => custom_routing_accelerator()
-%% }
--type describe_custom_routing_accelerator_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_accelerator_request() :: #{
-%%   <<"AcceleratorArn">> := string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"IpAddresses">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type update_accelerator_request() :: #{binary() => any()}.
-
-%% Example:
-%% accelerator_attributes() :: #{
-%%   <<"FlowLogsEnabled">> => boolean(),
-%%   <<"FlowLogsS3Bucket">> => string(),
-%%   <<"FlowLogsS3Prefix">> => string()
-%% }
--type accelerator_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% create_accelerator_response() :: #{
-%%   <<"Accelerator">> => accelerator()
-%% }
--type create_accelerator_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_listener_response() :: #{
-%%   <<"Listener">> => listener()
-%% }
--type create_listener_response() :: #{binary() => any()}.
-
-%% Example:
-%% custom_routing_destination_configuration() :: #{
-%%   <<"FromPort">> => integer(),
-%%   <<"Protocols">> => list(list(any())()),
-%%   <<"ToPort">> => integer()
-%% }
--type custom_routing_destination_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_cross_account_attachments_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_cross_account_attachments_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_routing_accelerator_request() :: #{
-%%   <<"AcceleratorArn">> := string()
-%% }
--type describe_custom_routing_accelerator_request() :: #{binary() => any()}.
-
-%% Example:
-%% deprovision_byoip_cidr_response() :: #{
-%%   <<"ByoipCidr">> => byoip_cidr()
-%% }
--type deprovision_byoip_cidr_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% listener() :: #{
-%%   <<"ClientAffinity">> => list(any()),
-%%   <<"ListenerArn">> => string(),
-%%   <<"PortRanges">> => list(port_range()),
-%%   <<"Protocol">> => list(any())
-%% }
--type listener() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type endpoint_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_custom_routing_listener_response() :: #{
-%%   <<"Listener">> => custom_routing_listener()
-%% }
--type update_custom_routing_listener_response() :: #{binary() => any()}.
-
-%% Example:
-%% socket_address() :: #{
-%%   <<"IpAddress">> => string(),
-%%   <<"Port">> => integer()
-%% }
--type socket_address() :: #{binary() => any()}.
-
-%% Example:
-%% custom_routing_endpoint_group() :: #{
-%%   <<"DestinationDescriptions">> => list(custom_routing_destination_description()),
-%%   <<"EndpointDescriptions">> => list(custom_routing_endpoint_description()),
-%%   <<"EndpointGroupArn">> => string(),
-%%   <<"EndpointGroupRegion">> => string()
-%% }
--type custom_routing_endpoint_group() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_routing_listener_response() :: #{
-%%   <<"Listener">> => custom_routing_listener()
-%% }
--type create_custom_routing_listener_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_routing_endpoint_groups_response() :: #{
-%%   <<"EndpointGroups">> => list(custom_routing_endpoint_group()),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_routing_endpoint_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_accelerator_attributes_response() :: #{
-%%   <<"AcceleratorAttributes">> => accelerator_attributes()
-%% }
--type describe_accelerator_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% byoip_cidr_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type byoip_cidr_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% custom_routing_destination_description() :: #{
-%%   <<"FromPort">> => integer(),
-%%   <<"Protocols">> => list(list(any())()),
-%%   <<"ToPort">> => integer()
-%% }
--type custom_routing_destination_description() :: #{binary() => any()}.
-
-%% Example:
-%% attachment() :: #{
-%%   <<"AttachmentArn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Principals">> => list(string()),
-%%   <<"Resources">> => list(resource())
-%% }
--type attachment() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_routing_port_mappings_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PortMappings">> => list(port_mapping())
-%% }
--type list_custom_routing_port_mappings_response() :: #{binary() => any()}.
-
-%% Example:
-%% provision_byoip_cidr_response() :: #{
-%%   <<"ByoipCidr">> => byoip_cidr()
-%% }
--type provision_byoip_cidr_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_routing_listener_request() :: #{
-%%   <<"ListenerArn">> := string()
-%% }
--type describe_custom_routing_listener_request() :: #{binary() => any()}.
-
-%% Example:
-%% incorrect_cidr_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type incorrect_cidr_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_endpoint_group_request() :: #{
-%%   <<"EndpointGroupArn">> := string()
-%% }
--type delete_endpoint_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% attachment_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type attachment_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% internal_service_error_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_service_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_accelerator_attributes_request() :: #{
-%%   <<"AcceleratorArn">> := string(),
-%%   <<"FlowLogsEnabled">> => boolean(),
-%%   <<"FlowLogsS3Bucket">> => string(),
-%%   <<"FlowLogsS3Prefix">> => string()
-%% }
--type update_accelerator_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_description() :: #{
-%%   <<"ClientIPPreservationEnabled">> => boolean(),
-%%   <<"EndpointId">> => string(),
-%%   <<"HealthReason">> => string(),
-%%   <<"HealthState">> => list(any()),
-%%   <<"Weight">> => integer()
-%% }
--type endpoint_description() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cross_account_attachment_response() :: #{
-%%   <<"CrossAccountAttachment">> => attachment()
-%% }
--type describe_cross_account_attachment_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_routing_listener_request() :: #{
-%%   <<"AcceleratorArn">> := string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"PortRanges">> := list(port_range())
-%% }
--type create_custom_routing_listener_request() :: #{binary() => any()}.
-
-%% Example:
-%% accelerator_not_disabled_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type accelerator_not_disabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% remove_custom_routing_endpoints_request() :: #{
-%%   <<"EndpointGroupArn">> := string(),
-%%   <<"EndpointIds">> := list(string())
-%% }
--type remove_custom_routing_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_accelerator_request() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"IpAddresses">> => list(string()),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_accelerator_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cross_account_attachment_request() :: #{
-%%   <<"AttachmentArn">> := string()
-%% }
--type describe_cross_account_attachment_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_byoip_cidrs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_byoip_cidrs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_routing_listeners_response() :: #{
-%%   <<"Listeners">> => list(custom_routing_listener()),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_routing_listeners_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_cross_account_attachment_request() :: #{
-%%   <<"AddPrincipals">> => list(string()),
-%%   <<"AddResources">> => list(resource()),
-%%   <<"AttachmentArn">> := string(),
-%%   <<"Name">> => string(),
-%%   <<"RemovePrincipals">> => list(string()),
-%%   <<"RemoveResources">> => list(resource())
-%% }
--type update_cross_account_attachment_request() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_identifier() :: #{
-%%   <<"ClientIPPreservationEnabled">> => boolean(),
-%%   <<"EndpointId">> => string()
-%% }
--type endpoint_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% update_cross_account_attachment_response() :: #{
-%%   <<"CrossAccountAttachment">> => attachment()
-%% }
--type update_cross_account_attachment_response() :: #{binary() => any()}.
-
-%% Example:
-%% add_endpoints_request() :: #{
-%%   <<"EndpointConfigurations">> := list(endpoint_configuration()),
-%%   <<"EndpointGroupArn">> := string()
-%% }
--type add_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_cross_account_attachment_response() :: #{
-%%   <<"CrossAccountAttachment">> => attachment()
-%% }
--type create_cross_account_attachment_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_routing_port_mappings_by_destination_request() :: #{
-%%   <<"DestinationAddress">> := string(),
-%%   <<"EndpointId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_routing_port_mappings_by_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_accelerator_response() :: #{
-%%   <<"Accelerator">> => accelerator()
-%% }
--type describe_accelerator_response() :: #{binary() => any()}.
-
-%% Example:
-%% port_override() :: #{
-%%   <<"EndpointPort">> => integer(),
-%%   <<"ListenerPort">> => integer()
-%% }
--type port_override() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_group_response() :: #{
-%%   <<"EndpointGroup">> => endpoint_group()
-%% }
--type create_endpoint_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_listeners_request() :: #{
-%%   <<"AcceleratorArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_listeners_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% advertise_byoip_cidr_request() :: #{
-%%   <<"Cidr">> := string()
-%% }
--type advertise_byoip_cidr_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_endpoints_request() :: #{
-%%   <<"EndpointGroupArn">> := string(),
-%%   <<"EndpointIdentifiers">> := list(endpoint_identifier())
-%% }
--type remove_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% accelerator_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type accelerator_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_routing_accelerator_attributes_request() :: #{
-%%   <<"AcceleratorArn">> := string()
-%% }
--type describe_custom_routing_accelerator_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_listener_response() :: #{
-%%   <<"Listener">> => listener()
-%% }
--type describe_listener_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_accelerators_response() :: #{
-%%   <<"Accelerators">> => list(accelerator()),
-%%   <<"NextToken">> => string()
-%% }
--type list_accelerators_response() :: #{binary() => any()}.
-
-%% Example:
-%% cross_account_resource() :: #{
-%%   <<"AttachmentArn">> => string(),
-%%   <<"Cidr">> => string(),
-%%   <<"EndpointId">> => string()
-%% }
--type cross_account_resource() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_group_request() :: #{
-%%   <<"EndpointGroupArn">> := string()
-%% }
--type describe_endpoint_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_custom_routing_listener_request() :: #{
-%%   <<"ListenerArn">> := string(),
-%%   <<"PortRanges">> := list(port_range())
-%% }
--type update_custom_routing_listener_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_listener_request() :: #{
-%%   <<"ListenerArn">> := string()
-%% }
--type describe_listener_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_routing_endpoint_group_response() :: #{
-%%   <<"EndpointGroup">> => custom_routing_endpoint_group()
-%% }
--type describe_custom_routing_endpoint_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_routing_port_mappings_by_destination_response() :: #{
-%%   <<"DestinationPortMappings">> => list(destination_port_mapping()),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_routing_port_mappings_by_destination_response() :: #{binary() => any()}.
-
-%% Example:
-%% custom_routing_listener() :: #{
-%%   <<"ListenerArn">> => string(),
-%%   <<"PortRanges">> => list(port_range())
-%% }
--type custom_routing_listener() :: #{binary() => any()}.
-
-%% Example:
-%% list_cross_account_resources_request() :: #{
-%%   <<"AcceleratorArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceOwnerAwsAccountId">> := string()
-%% }
--type list_cross_account_resources_request() :: #{binary() => any()}.
-
-%% Example:
-%% ip_set() :: #{
-%%   <<"IpAddressFamily">> => list(any()),
-%%   <<"IpAddresses">> => list(string()),
-%%   <<"IpFamily">> => string()
-%% }
--type ip_set() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
 %% accelerator() :: #{
 %%   <<"AcceleratorArn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -750,29 +218,183 @@
 -type accelerator() :: #{binary() => any()}.
 
 %% Example:
+%% accelerator_attributes() :: #{
+%%   <<"FlowLogsEnabled">> => boolean(),
+%%   <<"FlowLogsS3Bucket">> => string(),
+%%   <<"FlowLogsS3Prefix">> => string()
+%% }
+-type accelerator_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_event() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type accelerator_event() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_not_disabled_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type accelerator_not_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type accelerator_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% add_custom_routing_endpoints_request() :: #{
+%%   <<"EndpointConfigurations">> := list(custom_routing_endpoint_configuration()),
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type add_custom_routing_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_custom_routing_endpoints_response() :: #{
+%%   <<"EndpointDescriptions">> => list(custom_routing_endpoint_description()),
+%%   <<"EndpointGroupArn">> => string()
+%% }
+-type add_custom_routing_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_endpoints_request() :: #{
+%%   <<"EndpointConfigurations">> := list(endpoint_configuration()),
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type add_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_endpoints_response() :: #{
+%%   <<"EndpointDescriptions">> => list(endpoint_description()),
+%%   <<"EndpointGroupArn">> => string()
+%% }
+-type add_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% advertise_byoip_cidr_request() :: #{
+%%   <<"Cidr">> := string()
+%% }
+-type advertise_byoip_cidr_request() :: #{binary() => any()}.
+
+%% Example:
 %% advertise_byoip_cidr_response() :: #{
 %%   <<"ByoipCidr">> => byoip_cidr()
 %% }
 -type advertise_byoip_cidr_response() :: #{binary() => any()}.
 
 %% Example:
-%% custom_routing_endpoint_configuration() :: #{
-%%   <<"AttachmentArn">> => string(),
-%%   <<"EndpointId">> => string()
+%% allow_custom_routing_traffic_request() :: #{
+%%   <<"AllowAllTrafficToEndpoint">> => boolean(),
+%%   <<"DestinationAddresses">> => list(string()),
+%%   <<"DestinationPorts">> => list(integer()),
+%%   <<"EndpointGroupArn">> := string(),
+%%   <<"EndpointId">> := string()
 %% }
--type custom_routing_endpoint_configuration() :: #{binary() => any()}.
+-type allow_custom_routing_traffic_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_port_range_exception() :: #{
+%% associated_endpoint_group_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_port_range_exception() :: #{binary() => any()}.
+-type associated_endpoint_group_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% update_custom_routing_accelerator_attributes_response() :: #{
-%%   <<"AcceleratorAttributes">> => custom_routing_accelerator_attributes()
+%% associated_listener_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type update_custom_routing_accelerator_attributes_response() :: #{binary() => any()}.
+-type associated_listener_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% attachment() :: #{
+%%   <<"AttachmentArn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Principals">> => list(string()),
+%%   <<"Resources">> => list(resource())
+%% }
+-type attachment() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type attachment_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% byoip_cidr() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"Events">> => list(byoip_cidr_event()),
+%%   <<"State">> => list(any())
+%% }
+-type byoip_cidr() :: #{binary() => any()}.
+
+%% Example:
+%% byoip_cidr_event() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type byoip_cidr_event() :: #{binary() => any()}.
+
+%% Example:
+%% byoip_cidr_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type byoip_cidr_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cidr_authorization_context() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Signature">> => string()
+%% }
+-type cidr_authorization_context() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_accelerator_request() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpAddresses">> => list(string()),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_accelerator_response() :: #{
+%%   <<"Accelerator">> => accelerator()
+%% }
+-type create_accelerator_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_cross_account_attachment_request() :: #{
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Principals">> => list(string()),
+%%   <<"Resources">> => list(resource()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_cross_account_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cross_account_attachment_response() :: #{
+%%   <<"CrossAccountAttachment">> => attachment()
+%% }
+-type create_cross_account_attachment_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_custom_routing_accelerator_request() :: #{
@@ -786,414 +408,10 @@
 -type create_custom_routing_accelerator_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_listeners_response() :: #{
-%%   <<"Listeners">> => list(listener()),
-%%   <<"NextToken">> => string()
-%% }
--type list_listeners_response() :: #{binary() => any()}.
-
-%% Example:
-%% withdraw_byoip_cidr_response() :: #{
-%%   <<"ByoipCidr">> => byoip_cidr()
-%% }
--type withdraw_byoip_cidr_response() :: #{binary() => any()}.
-
-%% Example:
-%% allow_custom_routing_traffic_request() :: #{
-%%   <<"AllowAllTrafficToEndpoint">> => boolean(),
-%%   <<"DestinationAddresses">> => list(string()),
-%%   <<"DestinationPorts">> => list(integer()),
-%%   <<"EndpointGroupArn">> := string(),
-%%   <<"EndpointId">> := string()
-%% }
--type allow_custom_routing_traffic_request() :: #{binary() => any()}.
-
-%% Example:
-%% deny_custom_routing_traffic_request() :: #{
-%%   <<"DenyAllTrafficToEndpoint">> => boolean(),
-%%   <<"DestinationAddresses">> => list(string()),
-%%   <<"DestinationPorts">> => list(integer()),
-%%   <<"EndpointGroupArn">> := string(),
-%%   <<"EndpointId">> := string()
-%% }
--type deny_custom_routing_traffic_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_routing_listeners_request() :: #{
-%%   <<"AcceleratorArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_routing_listeners_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_group_response() :: #{
-%%   <<"EndpointGroup">> => endpoint_group()
-%% }
--type describe_endpoint_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_cross_account_attachment_request() :: #{
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Principals">> => list(string()),
-%%   <<"Resources">> => list(resource()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_cross_account_attachment_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_accelerator_response() :: #{
-%%   <<"Accelerator">> => accelerator()
-%% }
--type update_accelerator_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_cross_account_resources_response() :: #{
-%%   <<"CrossAccountResources">> => list(cross_account_resource()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cross_account_resources_response() :: #{binary() => any()}.
-
-%% Example:
-%% associated_listener_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type associated_listener_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type endpoint_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% port_range() :: #{
-%%   <<"FromPort">> => integer(),
-%%   <<"ToPort">> => integer()
-%% }
--type port_range() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_routing_port_mappings_request() :: #{
-%%   <<"AcceleratorArn">> := string(),
-%%   <<"EndpointGroupArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_routing_port_mappings_request() :: #{binary() => any()}.
-
-%% Example:
-%% add_endpoints_response() :: #{
-%%   <<"EndpointDescriptions">> => list(endpoint_description()),
-%%   <<"EndpointGroupArn">> => string()
-%% }
--type add_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_routing_listener_request() :: #{
-%%   <<"ListenerArn">> := string()
-%% }
--type delete_custom_routing_listener_request() :: #{binary() => any()}.
-
-%% Example:
-%% byoip_cidr_event() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type byoip_cidr_event() :: #{binary() => any()}.
-
-%% Example:
-%% associated_endpoint_group_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type associated_endpoint_group_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_endpoint_group_request() :: #{
-%%   <<"EndpointConfigurations">> => list(endpoint_configuration()),
-%%   <<"EndpointGroupArn">> := string(),
-%%   <<"HealthCheckIntervalSeconds">> => integer(),
-%%   <<"HealthCheckPath">> => string(),
-%%   <<"HealthCheckPort">> => integer(),
-%%   <<"HealthCheckProtocol">> => list(any()),
-%%   <<"PortOverrides">> => list(port_override()),
-%%   <<"ThresholdCount">> => integer(),
-%%   <<"TrafficDialPercentage">> => float()
-%% }
--type update_endpoint_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_custom_routing_accelerator_request() :: #{
-%%   <<"AcceleratorArn">> := string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"IpAddresses">> => list(string()),
-%%   <<"Name">> => string()
-%% }
--type update_custom_routing_accelerator_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_routing_endpoint_group_request() :: #{
-%%   <<"EndpointGroupArn">> := string()
-%% }
--type describe_custom_routing_endpoint_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_endpoint_groups_response() :: #{
-%%   <<"EndpointGroups">> => list(endpoint_group()),
-%%   <<"NextToken">> => string()
-%% }
--type list_endpoint_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cross_account_attachment_request() :: #{
-%%   <<"AttachmentArn">> := string()
-%% }
--type delete_cross_account_attachment_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_listener_request() :: #{
-%%   <<"ClientAffinity">> => list(any()),
-%%   <<"ListenerArn">> := string(),
-%%   <<"PortRanges">> => list(port_range()),
-%%   <<"Protocol">> => list(any())
-%% }
--type update_listener_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_listener_response() :: #{
-%%   <<"Listener">> => listener()
-%% }
--type update_listener_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% custom_routing_accelerator_attributes() :: #{
-%%   <<"FlowLogsEnabled">> => boolean(),
-%%   <<"FlowLogsS3Bucket">> => string(),
-%%   <<"FlowLogsS3Prefix">> => string()
-%% }
--type custom_routing_accelerator_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_argument_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_argument_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cidr_authorization_context() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Signature">> => string()
-%% }
--type cidr_authorization_context() :: #{binary() => any()}.
-
-%% Example:
-%% port_mapping() :: #{
-%%   <<"AcceleratorPort">> => integer(),
-%%   <<"DestinationSocketAddress">> => socket_address(),
-%%   <<"DestinationTrafficState">> => list(any()),
-%%   <<"EndpointGroupArn">> => string(),
-%%   <<"EndpointId">> => string(),
-%%   <<"Protocols">> => list(list(any())())
-%% }
--type port_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% update_custom_routing_accelerator_response() :: #{
+%% create_custom_routing_accelerator_response() :: #{
 %%   <<"Accelerator">> => custom_routing_accelerator()
 %% }
--type update_custom_routing_accelerator_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% add_custom_routing_endpoints_request() :: #{
-%%   <<"EndpointConfigurations">> := list(custom_routing_endpoint_configuration()),
-%%   <<"EndpointGroupArn">> := string()
-%% }
--type add_custom_routing_endpoints_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_byoip_cidrs_response() :: #{
-%%   <<"ByoipCidrs">> => list(byoip_cidr()),
-%%   <<"NextToken">> => string()
-%% }
--type list_byoip_cidrs_response() :: #{binary() => any()}.
-
-%% Example:
-%% transaction_in_progress_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type transaction_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_accelerator_request() :: #{
-%%   <<"AcceleratorArn">> := string()
-%% }
--type delete_accelerator_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_endpoint_groups_request() :: #{
-%%   <<"ListenerArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_endpoint_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% withdraw_byoip_cidr_request() :: #{
-%%   <<"Cidr">> := string()
-%% }
--type withdraw_byoip_cidr_request() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_group_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type endpoint_group_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_accelerators_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_accelerators_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_routing_accelerator_request() :: #{
-%%   <<"AcceleratorArn">> := string()
-%% }
--type delete_custom_routing_accelerator_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_routing_accelerators_response() :: #{
-%%   <<"Accelerators">> => list(custom_routing_accelerator()),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_routing_accelerators_response() :: #{binary() => any()}.
-
-%% Example:
-%% custom_routing_accelerator() :: #{
-%%   <<"AcceleratorArn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"DnsName">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"IpSets">> => list(ip_set()),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type custom_routing_accelerator() :: #{binary() => any()}.
-
-%% Example:
-%% update_custom_routing_accelerator_attributes_request() :: #{
-%%   <<"AcceleratorArn">> := string(),
-%%   <<"FlowLogsEnabled">> => boolean(),
-%%   <<"FlowLogsS3Bucket">> => string(),
-%%   <<"FlowLogsS3Prefix">> => string()
-%% }
--type update_custom_routing_accelerator_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_accelerator_request() :: #{
-%%   <<"AcceleratorArn">> := string()
-%% }
--type describe_accelerator_request() :: #{binary() => any()}.
-
-%% Example:
-%% add_custom_routing_endpoints_response() :: #{
-%%   <<"EndpointDescriptions">> => list(custom_routing_endpoint_description()),
-%%   <<"EndpointGroupArn">> => string()
-%% }
--type add_custom_routing_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_routing_endpoint_groups_request() :: #{
-%%   <<"ListenerArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_routing_endpoint_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% listener_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type listener_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% destination_port_mapping() :: #{
-%%   <<"AcceleratorArn">> => string(),
-%%   <<"AcceleratorSocketAddresses">> => list(socket_address()),
-%%   <<"DestinationSocketAddress">> => socket_address(),
-%%   <<"DestinationTrafficState">> => list(any()),
-%%   <<"EndpointGroupArn">> => string(),
-%%   <<"EndpointGroupRegion">> => string(),
-%%   <<"EndpointId">> => string(),
-%%   <<"IpAddressType">> => list(any())
-%% }
--type destination_port_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% list_cross_account_resource_accounts_response() :: #{
-%%   <<"ResourceOwnerAwsAccountIds">> => list(string())
-%% }
--type list_cross_account_resource_accounts_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_listener_request() :: #{
-%%   <<"ListenerArn">> := string()
-%% }
--type delete_listener_request() :: #{binary() => any()}.
-
-%% Example:
-%% accelerator_event() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type accelerator_event() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_group_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type endpoint_group_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_endpoint_group_response() :: #{
-%%   <<"EndpointGroup">> => endpoint_group()
-%% }
--type update_endpoint_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_routing_accelerator_attributes_response() :: #{
-%%   <<"AcceleratorAttributes">> => custom_routing_accelerator_attributes()
-%% }
--type describe_custom_routing_accelerator_attributes_response() :: #{binary() => any()}.
+-type create_custom_routing_accelerator_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_custom_routing_endpoint_group_request() :: #{
@@ -1205,81 +423,24 @@
 -type create_custom_routing_endpoint_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% endpoint_group() :: #{
-%%   <<"EndpointDescriptions">> => list(endpoint_description()),
-%%   <<"EndpointGroupArn">> => string(),
-%%   <<"EndpointGroupRegion">> => string(),
-%%   <<"HealthCheckIntervalSeconds">> => integer(),
-%%   <<"HealthCheckPath">> => string(),
-%%   <<"HealthCheckPort">> => integer(),
-%%   <<"HealthCheckProtocol">> => list(any()),
-%%   <<"PortOverrides">> => list(port_override()),
-%%   <<"ThresholdCount">> => integer(),
-%%   <<"TrafficDialPercentage">> => float()
+%% create_custom_routing_endpoint_group_response() :: #{
+%%   <<"EndpointGroup">> => custom_routing_endpoint_group()
 %% }
--type endpoint_group() :: #{binary() => any()}.
+-type create_custom_routing_endpoint_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% deprovision_byoip_cidr_request() :: #{
-%%   <<"Cidr">> := string()
+%% create_custom_routing_listener_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"PortRanges">> := list(port_range())
 %% }
--type deprovision_byoip_cidr_request() :: #{binary() => any()}.
+-type create_custom_routing_listener_request() :: #{binary() => any()}.
 
 %% Example:
-%% custom_routing_endpoint_description() :: #{
-%%   <<"EndpointId">> => string()
-%% }
--type custom_routing_endpoint_description() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_routing_accelerators_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_custom_routing_accelerators_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_routing_endpoint_group_request() :: #{
-%%   <<"EndpointGroupArn">> := string()
-%% }
--type delete_custom_routing_endpoint_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_routing_accelerator_response() :: #{
-%%   <<"Accelerator">> => custom_routing_accelerator()
-%% }
--type create_custom_routing_accelerator_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_routing_listener_response() :: #{
+%% create_custom_routing_listener_response() :: #{
 %%   <<"Listener">> => custom_routing_listener()
 %% }
--type describe_custom_routing_listener_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_listener_request() :: #{
-%%   <<"AcceleratorArn">> := string(),
-%%   <<"ClientAffinity">> => list(any()),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"PortRanges">> := list(port_range()),
-%%   <<"Protocol">> := list(any())
-%% }
--type create_listener_request() :: #{binary() => any()}.
-
-%% Example:
-%% provision_byoip_cidr_request() :: #{
-%%   <<"Cidr">> := string(),
-%%   <<"CidrAuthorizationContext">> := cidr_authorization_context()
-%% }
--type provision_byoip_cidr_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource() :: #{
-%%   <<"Cidr">> => string(),
-%%   <<"EndpointId">> => string(),
-%%   <<"Region">> => string()
-%% }
--type resource() :: #{binary() => any()}.
+-type create_custom_routing_listener_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_endpoint_group_request() :: #{
@@ -1297,176 +458,1015 @@
 %% }
 -type create_endpoint_group_request() :: #{binary() => any()}.
 
+%% Example:
+%% create_endpoint_group_response() :: #{
+%%   <<"EndpointGroup">> => endpoint_group()
+%% }
+-type create_endpoint_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_listener_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"ClientAffinity">> => list(any()),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"PortRanges">> := list(port_range()),
+%%   <<"Protocol">> := list(any())
+%% }
+-type create_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_listener_response() :: #{
+%%   <<"Listener">> => listener()
+%% }
+-type create_listener_response() :: #{binary() => any()}.
+
+%% Example:
+%% cross_account_resource() :: #{
+%%   <<"AttachmentArn">> => string(),
+%%   <<"Cidr">> => string(),
+%%   <<"EndpointId">> => string()
+%% }
+-type cross_account_resource() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_accelerator() :: #{
+%%   <<"AcceleratorArn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DnsName">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpSets">> => list(ip_set()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type custom_routing_accelerator() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_accelerator_attributes() :: #{
+%%   <<"FlowLogsEnabled">> => boolean(),
+%%   <<"FlowLogsS3Bucket">> => string(),
+%%   <<"FlowLogsS3Prefix">> => string()
+%% }
+-type custom_routing_accelerator_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_destination_configuration() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"Protocols">> => list(list(any())()),
+%%   <<"ToPort">> => integer()
+%% }
+-type custom_routing_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_destination_description() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"Protocols">> => list(list(any())()),
+%%   <<"ToPort">> => integer()
+%% }
+-type custom_routing_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_endpoint_configuration() :: #{
+%%   <<"AttachmentArn">> => string(),
+%%   <<"EndpointId">> => string()
+%% }
+-type custom_routing_endpoint_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_endpoint_description() :: #{
+%%   <<"EndpointId">> => string()
+%% }
+-type custom_routing_endpoint_description() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_endpoint_group() :: #{
+%%   <<"DestinationDescriptions">> => list(custom_routing_destination_description()),
+%%   <<"EndpointDescriptions">> => list(custom_routing_endpoint_description()),
+%%   <<"EndpointGroupArn">> => string(),
+%%   <<"EndpointGroupRegion">> => string()
+%% }
+-type custom_routing_endpoint_group() :: #{binary() => any()}.
+
+%% Example:
+%% custom_routing_listener() :: #{
+%%   <<"ListenerArn">> => string(),
+%%   <<"PortRanges">> => list(port_range())
+%% }
+-type custom_routing_listener() :: #{binary() => any()}.
+
+%% Example:
+%% delete_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type delete_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cross_account_attachment_request() :: #{
+%%   <<"AttachmentArn">> := string()
+%% }
+-type delete_cross_account_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_routing_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type delete_custom_routing_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_routing_endpoint_group_request() :: #{
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type delete_custom_routing_endpoint_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_routing_listener_request() :: #{
+%%   <<"ListenerArn">> := string()
+%% }
+-type delete_custom_routing_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_group_request() :: #{
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type delete_endpoint_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_listener_request() :: #{
+%%   <<"ListenerArn">> := string()
+%% }
+-type delete_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% deny_custom_routing_traffic_request() :: #{
+%%   <<"DenyAllTrafficToEndpoint">> => boolean(),
+%%   <<"DestinationAddresses">> => list(string()),
+%%   <<"DestinationPorts">> => list(integer()),
+%%   <<"EndpointGroupArn">> := string(),
+%%   <<"EndpointId">> := string()
+%% }
+-type deny_custom_routing_traffic_request() :: #{binary() => any()}.
+
+%% Example:
+%% deprovision_byoip_cidr_request() :: #{
+%%   <<"Cidr">> := string()
+%% }
+-type deprovision_byoip_cidr_request() :: #{binary() => any()}.
+
+%% Example:
+%% deprovision_byoip_cidr_response() :: #{
+%%   <<"ByoipCidr">> => byoip_cidr()
+%% }
+-type deprovision_byoip_cidr_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_accelerator_attributes_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type describe_accelerator_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_accelerator_attributes_response() :: #{
+%%   <<"AcceleratorAttributes">> => accelerator_attributes()
+%% }
+-type describe_accelerator_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type describe_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_accelerator_response() :: #{
+%%   <<"Accelerator">> => accelerator()
+%% }
+-type describe_accelerator_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cross_account_attachment_request() :: #{
+%%   <<"AttachmentArn">> := string()
+%% }
+-type describe_cross_account_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cross_account_attachment_response() :: #{
+%%   <<"CrossAccountAttachment">> => attachment()
+%% }
+-type describe_cross_account_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_accelerator_attributes_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type describe_custom_routing_accelerator_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_accelerator_attributes_response() :: #{
+%%   <<"AcceleratorAttributes">> => custom_routing_accelerator_attributes()
+%% }
+-type describe_custom_routing_accelerator_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string()
+%% }
+-type describe_custom_routing_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_accelerator_response() :: #{
+%%   <<"Accelerator">> => custom_routing_accelerator()
+%% }
+-type describe_custom_routing_accelerator_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_endpoint_group_request() :: #{
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type describe_custom_routing_endpoint_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_endpoint_group_response() :: #{
+%%   <<"EndpointGroup">> => custom_routing_endpoint_group()
+%% }
+-type describe_custom_routing_endpoint_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_listener_request() :: #{
+%%   <<"ListenerArn">> := string()
+%% }
+-type describe_custom_routing_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_routing_listener_response() :: #{
+%%   <<"Listener">> => custom_routing_listener()
+%% }
+-type describe_custom_routing_listener_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_group_request() :: #{
+%%   <<"EndpointGroupArn">> := string()
+%% }
+-type describe_endpoint_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_group_response() :: #{
+%%   <<"EndpointGroup">> => endpoint_group()
+%% }
+-type describe_endpoint_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listener_request() :: #{
+%%   <<"ListenerArn">> := string()
+%% }
+-type describe_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listener_response() :: #{
+%%   <<"Listener">> => listener()
+%% }
+-type describe_listener_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination_port_mapping() :: #{
+%%   <<"AcceleratorArn">> => string(),
+%%   <<"AcceleratorSocketAddresses">> => list(socket_address()),
+%%   <<"DestinationSocketAddress">> => socket_address(),
+%%   <<"DestinationTrafficState">> => list(any()),
+%%   <<"EndpointGroupArn">> => string(),
+%%   <<"EndpointGroupRegion">> => string(),
+%%   <<"EndpointId">> => string(),
+%%   <<"IpAddressType">> => list(any())
+%% }
+-type destination_port_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type endpoint_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_configuration() :: #{
+%%   <<"AttachmentArn">> => string(),
+%%   <<"ClientIPPreservationEnabled">> => boolean(),
+%%   <<"EndpointId">> => string(),
+%%   <<"Weight">> => integer()
+%% }
+-type endpoint_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_description() :: #{
+%%   <<"ClientIPPreservationEnabled">> => boolean(),
+%%   <<"EndpointId">> => string(),
+%%   <<"HealthReason">> => string(),
+%%   <<"HealthState">> => list(any()),
+%%   <<"Weight">> => integer()
+%% }
+-type endpoint_description() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_group() :: #{
+%%   <<"EndpointDescriptions">> => list(endpoint_description()),
+%%   <<"EndpointGroupArn">> => string(),
+%%   <<"EndpointGroupRegion">> => string(),
+%%   <<"HealthCheckIntervalSeconds">> => integer(),
+%%   <<"HealthCheckPath">> => string(),
+%%   <<"HealthCheckPort">> => integer(),
+%%   <<"HealthCheckProtocol">> => list(any()),
+%%   <<"PortOverrides">> => list(port_override()),
+%%   <<"ThresholdCount">> => integer(),
+%%   <<"TrafficDialPercentage">> => float()
+%% }
+-type endpoint_group() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_group_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type endpoint_group_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_group_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type endpoint_group_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_identifier() :: #{
+%%   <<"ClientIPPreservationEnabled">> => boolean(),
+%%   <<"EndpointId">> => string()
+%% }
+-type endpoint_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type endpoint_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% incorrect_cidr_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type incorrect_cidr_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_argument_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_port_range_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_port_range_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ip_set() :: #{
+%%   <<"IpAddressFamily">> => list(any()),
+%%   <<"IpAddresses">> => list(string()),
+%%   <<"IpFamily">> => string()
+%% }
+-type ip_set() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_accelerators_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accelerators_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_accelerators_response() :: #{
+%%   <<"Accelerators">> => list(accelerator()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accelerators_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_byoip_cidrs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_byoip_cidrs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_byoip_cidrs_response() :: #{
+%%   <<"ByoipCidrs">> => list(byoip_cidr()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_byoip_cidrs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_attachments_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cross_account_attachments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_attachments_response() :: #{
+%%   <<"CrossAccountAttachments">> => list(attachment()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cross_account_attachments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_resource_accounts_request() :: #{
+
+%% }
+-type list_cross_account_resource_accounts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_resource_accounts_response() :: #{
+%%   <<"ResourceOwnerAwsAccountIds">> => list(string())
+%% }
+-type list_cross_account_resource_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_resources_request() :: #{
+%%   <<"AcceleratorArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceOwnerAwsAccountId">> := string()
+%% }
+-type list_cross_account_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cross_account_resources_response() :: #{
+%%   <<"CrossAccountResources">> => list(cross_account_resource()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cross_account_resources_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_accelerators_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_accelerators_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_accelerators_response() :: #{
+%%   <<"Accelerators">> => list(custom_routing_accelerator()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_accelerators_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_endpoint_groups_request() :: #{
+%%   <<"ListenerArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_endpoint_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_endpoint_groups_response() :: #{
+%%   <<"EndpointGroups">> => list(custom_routing_endpoint_group()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_endpoint_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_listeners_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_listeners_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_listeners_response() :: #{
+%%   <<"Listeners">> => list(custom_routing_listener()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_listeners_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_port_mappings_by_destination_request() :: #{
+%%   <<"DestinationAddress">> := string(),
+%%   <<"EndpointId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_port_mappings_by_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_port_mappings_by_destination_response() :: #{
+%%   <<"DestinationPortMappings">> => list(destination_port_mapping()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_port_mappings_by_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_port_mappings_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"EndpointGroupArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_routing_port_mappings_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_routing_port_mappings_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PortMappings">> => list(port_mapping())
+%% }
+-type list_custom_routing_port_mappings_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_groups_request() :: #{
+%%   <<"ListenerArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoint_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_groups_response() :: #{
+%%   <<"EndpointGroups">> => list(endpoint_group()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_endpoint_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_listeners_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_listeners_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_listeners_response() :: #{
+%%   <<"Listeners">> => list(listener()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_listeners_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% listener() :: #{
+%%   <<"ClientAffinity">> => list(any()),
+%%   <<"ListenerArn">> => string(),
+%%   <<"PortRanges">> => list(port_range()),
+%%   <<"Protocol">> => list(any())
+%% }
+-type listener() :: #{binary() => any()}.
+
+%% Example:
+%% listener_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type listener_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% port_mapping() :: #{
+%%   <<"AcceleratorPort">> => integer(),
+%%   <<"DestinationSocketAddress">> => socket_address(),
+%%   <<"DestinationTrafficState">> => list(any()),
+%%   <<"EndpointGroupArn">> => string(),
+%%   <<"EndpointId">> => string(),
+%%   <<"Protocols">> => list(list(any())())
+%% }
+-type port_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% port_override() :: #{
+%%   <<"EndpointPort">> => integer(),
+%%   <<"ListenerPort">> => integer()
+%% }
+-type port_override() :: #{binary() => any()}.
+
+%% Example:
+%% port_range() :: #{
+%%   <<"FromPort">> => integer(),
+%%   <<"ToPort">> => integer()
+%% }
+-type port_range() :: #{binary() => any()}.
+
+%% Example:
+%% provision_byoip_cidr_request() :: #{
+%%   <<"Cidr">> := string(),
+%%   <<"CidrAuthorizationContext">> := cidr_authorization_context()
+%% }
+-type provision_byoip_cidr_request() :: #{binary() => any()}.
+
+%% Example:
+%% provision_byoip_cidr_response() :: #{
+%%   <<"ByoipCidr">> => byoip_cidr()
+%% }
+-type provision_byoip_cidr_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_custom_routing_endpoints_request() :: #{
+%%   <<"EndpointGroupArn">> := string(),
+%%   <<"EndpointIds">> := list(string())
+%% }
+-type remove_custom_routing_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_endpoints_request() :: #{
+%%   <<"EndpointGroupArn">> := string(),
+%%   <<"EndpointIdentifiers">> := list(endpoint_identifier())
+%% }
+-type remove_endpoints_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"EndpointId">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+%% Example:
+%% socket_address() :: #{
+%%   <<"IpAddress">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type socket_address() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% transaction_in_progress_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type transaction_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_accelerator_attributes_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"FlowLogsEnabled">> => boolean(),
+%%   <<"FlowLogsS3Bucket">> => string(),
+%%   <<"FlowLogsS3Prefix">> => string()
+%% }
+-type update_accelerator_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_accelerator_attributes_response() :: #{
+%%   <<"AcceleratorAttributes">> => accelerator_attributes()
+%% }
+-type update_accelerator_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpAddresses">> => list(string()),
+%%   <<"Name">> => string()
+%% }
+-type update_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_accelerator_response() :: #{
+%%   <<"Accelerator">> => accelerator()
+%% }
+-type update_accelerator_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_cross_account_attachment_request() :: #{
+%%   <<"AddPrincipals">> => list(string()),
+%%   <<"AddResources">> => list(resource()),
+%%   <<"AttachmentArn">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"RemovePrincipals">> => list(string()),
+%%   <<"RemoveResources">> => list(resource())
+%% }
+-type update_cross_account_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cross_account_attachment_response() :: #{
+%%   <<"CrossAccountAttachment">> => attachment()
+%% }
+-type update_cross_account_attachment_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_accelerator_attributes_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"FlowLogsEnabled">> => boolean(),
+%%   <<"FlowLogsS3Bucket">> => string(),
+%%   <<"FlowLogsS3Prefix">> => string()
+%% }
+-type update_custom_routing_accelerator_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_accelerator_attributes_response() :: #{
+%%   <<"AcceleratorAttributes">> => custom_routing_accelerator_attributes()
+%% }
+-type update_custom_routing_accelerator_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_accelerator_request() :: #{
+%%   <<"AcceleratorArn">> := string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpAddresses">> => list(string()),
+%%   <<"Name">> => string()
+%% }
+-type update_custom_routing_accelerator_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_accelerator_response() :: #{
+%%   <<"Accelerator">> => custom_routing_accelerator()
+%% }
+-type update_custom_routing_accelerator_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_listener_request() :: #{
+%%   <<"ListenerArn">> := string(),
+%%   <<"PortRanges">> := list(port_range())
+%% }
+-type update_custom_routing_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_routing_listener_response() :: #{
+%%   <<"Listener">> => custom_routing_listener()
+%% }
+-type update_custom_routing_listener_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_group_request() :: #{
+%%   <<"EndpointConfigurations">> => list(endpoint_configuration()),
+%%   <<"EndpointGroupArn">> := string(),
+%%   <<"HealthCheckIntervalSeconds">> => integer(),
+%%   <<"HealthCheckPath">> => string(),
+%%   <<"HealthCheckPort">> => integer(),
+%%   <<"HealthCheckProtocol">> => list(any()),
+%%   <<"PortOverrides">> => list(port_override()),
+%%   <<"ThresholdCount">> => integer(),
+%%   <<"TrafficDialPercentage">> => float()
+%% }
+-type update_endpoint_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_endpoint_group_response() :: #{
+%%   <<"EndpointGroup">> => endpoint_group()
+%% }
+-type update_endpoint_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_listener_request() :: #{
+%%   <<"ClientAffinity">> => list(any()),
+%%   <<"ListenerArn">> := string(),
+%%   <<"PortRanges">> => list(port_range()),
+%%   <<"Protocol">> => list(any())
+%% }
+-type update_listener_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_listener_response() :: #{
+%%   <<"Listener">> => listener()
+%% }
+-type update_listener_response() :: #{binary() => any()}.
+
+%% Example:
+%% withdraw_byoip_cidr_request() :: #{
+%%   <<"Cidr">> := string()
+%% }
+-type withdraw_byoip_cidr_request() :: #{binary() => any()}.
+
+%% Example:
+%% withdraw_byoip_cidr_response() :: #{
+%%   <<"ByoipCidr">> => byoip_cidr()
+%% }
+-type withdraw_byoip_cidr_response() :: #{binary() => any()}.
+
 -type add_custom_routing_endpoints_errors() ::
-    endpoint_group_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    conflict_exception() | 
     internal_service_error_exception() | 
-    endpoint_already_exists_exception().
+    endpoint_group_not_found_exception() | 
+    endpoint_already_exists_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type add_endpoints_errors() ::
-    endpoint_group_not_found_exception() | 
-    limit_exceeded_exception() | 
     transaction_in_progress_exception() | 
+    limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    endpoint_group_not_found_exception() | 
+    access_denied_exception().
 
 -type advertise_byoip_cidr_errors() ::
     invalid_argument_exception() | 
-    access_denied_exception() | 
     internal_service_error_exception() | 
     incorrect_cidr_state_exception() | 
-    byoip_cidr_not_found_exception().
+    byoip_cidr_not_found_exception() | 
+    access_denied_exception().
 
 -type allow_custom_routing_traffic_errors() ::
-    endpoint_group_not_found_exception() | 
     invalid_argument_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    endpoint_group_not_found_exception().
 
 -type create_accelerator_errors() ::
-    limit_exceeded_exception() | 
     transaction_in_progress_exception() | 
+    limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_cross_account_attachment_errors() ::
-    limit_exceeded_exception() | 
     transaction_in_progress_exception() | 
+    limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_custom_routing_accelerator_errors() ::
-    limit_exceeded_exception() | 
     transaction_in_progress_exception() | 
+    limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_custom_routing_endpoint_group_errors() ::
     listener_not_found_exception() | 
-    endpoint_group_already_exists_exception() | 
     limit_exceeded_exception() | 
-    invalid_argument_exception() | 
-    access_denied_exception() | 
     invalid_port_range_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_argument_exception() | 
+    internal_service_error_exception() | 
+    endpoint_group_already_exists_exception() | 
+    access_denied_exception() | 
+    accelerator_not_found_exception().
 
 -type create_custom_routing_listener_errors() ::
     limit_exceeded_exception() | 
-    invalid_argument_exception() | 
     invalid_port_range_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_argument_exception() | 
+    internal_service_error_exception() | 
+    accelerator_not_found_exception().
 
 -type create_endpoint_group_errors() ::
     listener_not_found_exception() | 
-    endpoint_group_already_exists_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
+    internal_service_error_exception() | 
+    endpoint_group_already_exists_exception() | 
     access_denied_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    accelerator_not_found_exception().
 
 -type create_listener_errors() ::
     limit_exceeded_exception() | 
-    invalid_argument_exception() | 
     invalid_port_range_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_argument_exception() | 
+    internal_service_error_exception() | 
+    accelerator_not_found_exception().
 
 -type delete_accelerator_errors() ::
     transaction_in_progress_exception() | 
     invalid_argument_exception() | 
+    internal_service_error_exception() | 
     associated_listener_found_exception() | 
     accelerator_not_found_exception() | 
-    accelerator_not_disabled_exception() | 
-    internal_service_error_exception().
+    accelerator_not_disabled_exception().
 
 -type delete_cross_account_attachment_errors() ::
     transaction_in_progress_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
     internal_service_error_exception() | 
-    attachment_not_found_exception().
+    attachment_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_custom_routing_accelerator_errors() ::
     transaction_in_progress_exception() | 
     invalid_argument_exception() | 
+    internal_service_error_exception() | 
     associated_listener_found_exception() | 
     accelerator_not_found_exception() | 
-    accelerator_not_disabled_exception() | 
-    internal_service_error_exception().
+    accelerator_not_disabled_exception().
 
 -type delete_custom_routing_endpoint_group_errors() ::
-    endpoint_group_not_found_exception() | 
     invalid_argument_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    endpoint_group_not_found_exception().
 
 -type delete_custom_routing_listener_errors() ::
     listener_not_found_exception() | 
     invalid_argument_exception() | 
-    associated_endpoint_group_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    associated_endpoint_group_found_exception().
 
 -type delete_endpoint_group_errors() ::
-    endpoint_group_not_found_exception() | 
     invalid_argument_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    endpoint_group_not_found_exception().
 
 -type delete_listener_errors() ::
     listener_not_found_exception() | 
     invalid_argument_exception() | 
-    associated_endpoint_group_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    associated_endpoint_group_found_exception().
 
 -type deny_custom_routing_traffic_errors() ::
-    endpoint_group_not_found_exception() | 
     invalid_argument_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    endpoint_group_not_found_exception().
 
 -type deprovision_byoip_cidr_errors() ::
     invalid_argument_exception() | 
-    access_denied_exception() | 
     internal_service_error_exception() | 
     incorrect_cidr_state_exception() | 
-    byoip_cidr_not_found_exception().
+    byoip_cidr_not_found_exception() | 
+    access_denied_exception().
 
 -type describe_accelerator_errors() ::
     invalid_argument_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    accelerator_not_found_exception().
 
 -type describe_accelerator_attributes_errors() ::
     invalid_argument_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    accelerator_not_found_exception().
 
 -type describe_cross_account_attachment_errors() ::
     invalid_argument_exception() | 
-    access_denied_exception() | 
     internal_service_error_exception() | 
-    attachment_not_found_exception().
+    attachment_not_found_exception() | 
+    access_denied_exception().
 
 -type describe_custom_routing_accelerator_errors() ::
     invalid_argument_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    accelerator_not_found_exception().
 
 -type describe_custom_routing_accelerator_attributes_errors() ::
     invalid_argument_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    accelerator_not_found_exception().
 
 -type describe_custom_routing_endpoint_group_errors() ::
-    endpoint_group_not_found_exception() | 
     invalid_argument_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    endpoint_group_not_found_exception().
 
 -type describe_custom_routing_listener_errors() ::
     listener_not_found_exception() | 
@@ -1474,9 +1474,9 @@
     internal_service_error_exception().
 
 -type describe_endpoint_group_errors() ::
-    endpoint_group_not_found_exception() | 
     invalid_argument_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    endpoint_group_not_found_exception().
 
 -type describe_listener_errors() ::
     listener_not_found_exception() | 
@@ -1484,179 +1484,179 @@
     internal_service_error_exception().
 
 -type list_accelerators_errors() ::
-    invalid_argument_exception() | 
     invalid_next_token_exception() | 
+    invalid_argument_exception() | 
     internal_service_error_exception().
 
 -type list_byoip_cidrs_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
     invalid_next_token_exception() | 
-    internal_service_error_exception().
+    invalid_argument_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_cross_account_attachments_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
     invalid_next_token_exception() | 
-    internal_service_error_exception().
+    invalid_argument_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_cross_account_resource_accounts_errors() ::
-    access_denied_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_cross_account_resources_errors() ::
-    invalid_argument_exception() | 
-    access_denied_exception() | 
     invalid_next_token_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_argument_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception() | 
+    accelerator_not_found_exception().
 
 -type list_custom_routing_accelerators_errors() ::
-    invalid_argument_exception() | 
     invalid_next_token_exception() | 
+    invalid_argument_exception() | 
     internal_service_error_exception().
 
 -type list_custom_routing_endpoint_groups_errors() ::
     listener_not_found_exception() | 
-    invalid_argument_exception() | 
     invalid_next_token_exception() | 
+    invalid_argument_exception() | 
     internal_service_error_exception().
 
 -type list_custom_routing_listeners_errors() ::
-    invalid_argument_exception() | 
     invalid_next_token_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_argument_exception() | 
+    internal_service_error_exception() | 
+    accelerator_not_found_exception().
 
 -type list_custom_routing_port_mappings_errors() ::
-    endpoint_group_not_found_exception() | 
-    invalid_argument_exception() | 
     invalid_next_token_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_argument_exception() | 
+    internal_service_error_exception() | 
+    endpoint_group_not_found_exception() | 
+    accelerator_not_found_exception().
 
 -type list_custom_routing_port_mappings_by_destination_errors() ::
-    invalid_argument_exception() | 
-    endpoint_not_found_exception() | 
     invalid_next_token_exception() | 
-    internal_service_error_exception().
+    invalid_argument_exception() | 
+    internal_service_error_exception() | 
+    endpoint_not_found_exception().
 
 -type list_endpoint_groups_errors() ::
     listener_not_found_exception() | 
-    invalid_argument_exception() | 
     invalid_next_token_exception() | 
+    invalid_argument_exception() | 
     internal_service_error_exception().
 
 -type list_listeners_errors() ::
-    invalid_argument_exception() | 
     invalid_next_token_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_argument_exception() | 
+    internal_service_error_exception() | 
+    accelerator_not_found_exception().
 
 -type list_tags_for_resource_errors() ::
-    endpoint_group_not_found_exception() | 
     listener_not_found_exception() | 
     invalid_argument_exception() | 
-    accelerator_not_found_exception() | 
     internal_service_error_exception() | 
-    attachment_not_found_exception().
+    endpoint_group_not_found_exception() | 
+    attachment_not_found_exception() | 
+    accelerator_not_found_exception().
 
 -type provision_byoip_cidr_errors() ::
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
     internal_service_error_exception() | 
-    incorrect_cidr_state_exception().
+    incorrect_cidr_state_exception() | 
+    access_denied_exception().
 
 -type remove_custom_routing_endpoints_errors() ::
-    endpoint_group_not_found_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
+    internal_service_error_exception() | 
     endpoint_not_found_exception() | 
+    endpoint_group_not_found_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    access_denied_exception().
 
 -type remove_endpoints_errors() ::
-    endpoint_group_not_found_exception() | 
     transaction_in_progress_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    endpoint_group_not_found_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     invalid_argument_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    accelerator_not_found_exception().
 
 -type untag_resource_errors() ::
     invalid_argument_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    accelerator_not_found_exception().
 
 -type update_accelerator_errors() ::
     transaction_in_progress_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    accelerator_not_found_exception() | 
+    internal_service_error_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    access_denied_exception() | 
+    accelerator_not_found_exception().
 
 -type update_accelerator_attributes_errors() ::
     transaction_in_progress_exception() | 
     invalid_argument_exception() | 
+    internal_service_error_exception() | 
     access_denied_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    accelerator_not_found_exception().
 
 -type update_cross_account_attachment_errors() ::
-    limit_exceeded_exception() | 
     transaction_in_progress_exception() | 
+    limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
     internal_service_error_exception() | 
-    attachment_not_found_exception().
+    attachment_not_found_exception() | 
+    access_denied_exception().
 
 -type update_custom_routing_accelerator_errors() ::
     transaction_in_progress_exception() | 
     invalid_argument_exception() | 
-    accelerator_not_found_exception() | 
+    internal_service_error_exception() | 
     conflict_exception() | 
-    internal_service_error_exception().
+    accelerator_not_found_exception().
 
 -type update_custom_routing_accelerator_attributes_errors() ::
     transaction_in_progress_exception() | 
     invalid_argument_exception() | 
+    internal_service_error_exception() | 
     access_denied_exception() | 
-    accelerator_not_found_exception() | 
-    internal_service_error_exception().
+    accelerator_not_found_exception().
 
 -type update_custom_routing_listener_errors() ::
     listener_not_found_exception() | 
     limit_exceeded_exception() | 
-    invalid_argument_exception() | 
     invalid_port_range_exception() | 
+    invalid_argument_exception() | 
     internal_service_error_exception().
 
 -type update_endpoint_group_errors() ::
-    endpoint_group_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
-    access_denied_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    endpoint_group_not_found_exception() | 
+    access_denied_exception().
 
 -type update_listener_errors() ::
     listener_not_found_exception() | 
     limit_exceeded_exception() | 
-    invalid_argument_exception() | 
     invalid_port_range_exception() | 
+    invalid_argument_exception() | 
     internal_service_error_exception().
 
 -type withdraw_byoip_cidr_errors() ::
     invalid_argument_exception() | 
-    access_denied_exception() | 
     internal_service_error_exception() | 
     incorrect_cidr_state_exception() | 
-    byoip_cidr_not_found_exception().
+    byoip_cidr_not_found_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -85,136 +85,17 @@
 
 
 %% Example:
-%% permission_group_params() :: #{
-%%   <<"datasetPermissions">> => list(resource_permission()),
-%%   <<"permissionGroupId">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type permission_group_params() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_permission_group_request() :: #{
-%%   <<"applicationPermissions">> := list(list(any())()),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string()
-%% }
--type create_permission_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_external_data_view_access_details_request() :: #{}
--type get_external_data_view_access_details_request() :: #{}.
-
-
-%% Example:
-%% list_users_by_permission_group_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"users">> => list(user_by_permission_group())
-%% }
--type list_users_by_permission_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_permission_group_request() :: #{
+%% associate_user_to_permission_group_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
--type delete_permission_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_dataset_response() :: #{
-%%   <<"datasetId">> => string()
-%% }
--type delete_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_programmatic_access_credentials_response() :: #{
-%%   <<"credentials">> => credentials(),
-%%   <<"durationInMinutes">> => float()
-%% }
--type get_programmatic_access_credentials_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dataset_response() :: #{
-%%   <<"datasetId">> => string()
-%% }
--type update_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_response() :: #{
-%%   <<"userId">> => string()
-%% }
--type update_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema_definition() :: #{
-%%   <<"columns">> => list(column_definition()),
-%%   <<"primaryKeyColumns">> => list(string())
-%% }
--type schema_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_view_response() :: #{
-%%   <<"dataViewId">> => string(),
-%%   <<"datasetId">> => string()
-%% }
--type create_data_view_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% credentials() :: #{
-%%   <<"accessKeyId">> => string(),
-%%   <<"secretAccessKey">> => string(),
-%%   <<"sessionToken">> => string()
-%% }
--type credentials() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_user_response() :: #{
-%%   <<"apiAccess">> => list(any()),
-%%   <<"apiAccessPrincipalArn">> => string(),
-%%   <<"createTime">> => float(),
-%%   <<"emailAddress">> => string(),
-%%   <<"firstName">> => string(),
-%%   <<"lastDisabledTime">> => float(),
-%%   <<"lastEnabledTime">> => float(),
-%%   <<"lastLoginTime">> => float(),
-%%   <<"lastModifiedTime">> => float(),
-%%   <<"lastName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"userId">> => string()
-%% }
--type get_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_user_from_permission_group_response() :: #{
-%%   <<"statusCode">> => integer()
-%% }
--type disassociate_user_from_permission_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_permission_groups_by_user_request() :: #{
-%%   <<"maxResults">> := integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_permission_groups_by_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datasets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_datasets_request() :: #{binary() => any()}.
+-type associate_user_to_permission_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -223,266 +104,23 @@
 %% }
 -type associate_user_to_permission_group_response() :: #{binary() => any()}.
 
-%% Example:
-%% get_permission_group_request() :: #{}
--type get_permission_group_request() :: #{}.
-
 
 %% Example:
-%% create_data_view_request() :: #{
-%%   <<"asOfTimestamp">> => float(),
-%%   <<"autoUpdate">> => boolean(),
-%%   <<"clientToken">> => string(),
-%%   <<"destinationTypeParams">> := data_view_destination_type_params(),
-%%   <<"partitionColumns">> => list(string()),
-%%   <<"sortColumns">> => list(string())
+%% aws_credentials() :: #{
+%%   <<"accessKeyId">> => string(),
+%%   <<"expiration">> => float(),
+%%   <<"secretAccessKey">> => string(),
+%%   <<"sessionToken">> => string()
 %% }
--type create_data_view_request() :: #{binary() => any()}.
+-type aws_credentials() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_users_by_permission_group_request() :: #{
-%%   <<"maxResults">> := integer(),
-%%   <<"nextToken">> => string()
+%% changeset_error_info() :: #{
+%%   <<"errorCategory">> => list(any()),
+%%   <<"errorMessage">> => string()
 %% }
--type list_users_by_permission_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_external_data_view_access_details_response() :: #{
-%%   <<"credentials">> => aws_credentials(),
-%%   <<"s3Location">> => s3_location()
-%% }
--type get_external_data_view_access_details_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_changeset_request() :: #{}
--type get_changeset_request() :: #{}.
-
-
-%% Example:
-%% create_permission_group_response() :: #{
-%%   <<"permissionGroupId">> => string()
-%% }
--type create_permission_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_permission_group_response() :: #{
-%%   <<"permissionGroupId">> => string()
-%% }
--type delete_permission_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_permission_groups_by_user_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"permissionGroups">> => list(permission_group_by_user())
-%% }
--type list_permission_groups_by_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataset() :: #{
-%%   <<"alias">> => string(),
-%%   <<"createTime">> => float(),
-%%   <<"datasetArn">> => string(),
-%%   <<"datasetDescription">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"datasetTitle">> => string(),
-%%   <<"kind">> => list(any()),
-%%   <<"lastModifiedTime">> => float(),
-%%   <<"ownerInfo">> => dataset_owner_info(),
-%%   <<"schemaDefinition">> => schema_union()
-%% }
--type dataset() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dataset_response() :: #{
-%%   <<"datasetId">> => string()
-%% }
--type create_dataset_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_view_request() :: #{}
--type get_data_view_request() :: #{}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"reason">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"reason">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_changeset_response() :: #{
-%%   <<"changesetId">> => string(),
-%%   <<"datasetId">> => string()
-%% }
--type create_changeset_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_request() :: #{}
--type get_user_request() :: #{}.
-
-
-%% Example:
-%% dataset_owner_info() :: #{
-%%   <<"email">> => string(),
-%%   <<"name">> => string(),
-%%   <<"phoneNumber">> => string()
-%% }
--type dataset_owner_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_working_location_response() :: #{
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3Path">> => string(),
-%%   <<"s3Uri">> => string()
-%% }
--type get_working_location_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_view_response() :: #{
-%%   <<"asOfTimestamp">> => float(),
-%%   <<"autoUpdate">> => boolean(),
-%%   <<"createTime">> => float(),
-%%   <<"dataViewArn">> => string(),
-%%   <<"dataViewId">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"destinationTypeParams">> => data_view_destination_type_params(),
-%%   <<"errorInfo">> => data_view_error_info(),
-%%   <<"lastModifiedTime">> => float(),
-%%   <<"partitionColumns">> => list(string()),
-%%   <<"sortColumns">> => list(string()),
-%%   <<"status">> => list(any())
-%% }
--type get_data_view_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_user_from_permission_group_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type disassociate_user_from_permission_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% reset_user_password_response() :: #{
-%%   <<"temporaryPassword">> => string(),
-%%   <<"userId">> => string()
-%% }
--type reset_user_password_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% permission_group_by_user() :: #{
-%%   <<"membershipStatus">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"permissionGroupId">> => string()
-%% }
--type permission_group_by_user() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_users_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"users">> => list(user())
-%% }
--type list_users_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_permission_group_response() :: #{
-%%   <<"permissionGroup">> => permission_group()
-%% }
--type get_permission_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_view_destination_type_params() :: #{
-%%   <<"destinationType">> => string(),
-%%   <<"s3DestinationExportFileFormat">> => list(any()),
-%%   <<"s3DestinationExportFileFormatOptions">> => map()
-%% }
--type data_view_destination_type_params() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_permission_group_request() :: #{
-%%   <<"applicationPermissions">> => list(list(any())()),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_permission_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_changeset_request() :: #{
-%%   <<"changeType">> := list(any()),
-%%   <<"clientToken">> => string(),
-%%   <<"formatParams">> := map(),
-%%   <<"sourceParams">> := map()
-%% }
--type create_changeset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema_union() :: #{
-%%   <<"tabularSchemaConfig">> => schema_definition()
-%% }
--type schema_union() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_changeset_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"formatParams">> := map(),
-%%   <<"sourceParams">> := map()
-%% }
--type update_changeset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"key">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dataset_request() :: #{
-%%   <<"alias">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"datasetDescription">> => string(),
-%%   <<"datasetTitle">> := string(),
-%%   <<"kind">> := list(any()),
-%%   <<"schemaDefinition">> => schema_union()
-%% }
--type update_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_changesets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_changesets_request() :: #{binary() => any()}.
+-type changeset_error_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -505,17 +143,220 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
+%% column_definition() :: #{
+%%   <<"columnDescription">> => string(),
+%%   <<"columnName">> => string(),
+%%   <<"dataType">> => list(any())
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type column_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% reset_user_password_request() :: #{
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_changeset_request() :: #{
+%%   <<"changeType">> := list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"formatParams">> := map(),
+%%   <<"sourceParams">> := map()
+%% }
+-type create_changeset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_changeset_response() :: #{
+%%   <<"changesetId">> => string(),
+%%   <<"datasetId">> => string()
+%% }
+-type create_changeset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_view_request() :: #{
+%%   <<"asOfTimestamp">> => float(),
+%%   <<"autoUpdate">> => boolean(),
+%%   <<"clientToken">> => string(),
+%%   <<"destinationTypeParams">> := data_view_destination_type_params(),
+%%   <<"partitionColumns">> => list(string()),
+%%   <<"sortColumns">> => list(string())
+%% }
+-type create_data_view_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_view_response() :: #{
+%%   <<"dataViewId">> => string(),
+%%   <<"datasetId">> => string()
+%% }
+-type create_data_view_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetTitle">> := string(),
+%%   <<"kind">> := list(any()),
+%%   <<"ownerInfo">> => dataset_owner_info(),
+%%   <<"permissionGroupParams">> := permission_group_params(),
+%%   <<"schemaDefinition">> => schema_union()
+%% }
+-type create_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_response() :: #{
+%%   <<"datasetId">> => string()
+%% }
+-type create_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_permission_group_request() :: #{
+%%   <<"applicationPermissions">> := list(list(any())()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string()
+%% }
+-type create_permission_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_permission_group_response() :: #{
+%%   <<"permissionGroupId">> => string()
+%% }
+-type create_permission_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"apiAccess">> => list(any()),
+%%   <<"apiAccessPrincipalArn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"emailAddress">> := string(),
+%%   <<"firstName">> => string(),
+%%   <<"lastName">> => string(),
+%%   <<"type">> := list(any())
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_response() :: #{
+%%   <<"userId">> => string()
+%% }
+-type create_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% credentials() :: #{
+%%   <<"accessKeyId">> => string(),
+%%   <<"secretAccessKey">> => string(),
+%%   <<"sessionToken">> => string()
+%% }
+-type credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_view_destination_type_params() :: #{
+%%   <<"destinationType">> => string(),
+%%   <<"s3DestinationExportFileFormat">> => list(any()),
+%%   <<"s3DestinationExportFileFormatOptions">> => map()
+%% }
+-type data_view_destination_type_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_view_error_info() :: #{
+%%   <<"errorCategory">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type data_view_error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_view_summary() :: #{
+%%   <<"asOfTimestamp">> => float(),
+%%   <<"autoUpdate">> => boolean(),
+%%   <<"createTime">> => float(),
+%%   <<"dataViewArn">> => string(),
+%%   <<"dataViewId">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"destinationTypeProperties">> => data_view_destination_type_params(),
+%%   <<"errorInfo">> => data_view_error_info(),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"partitionColumns">> => list(string()),
+%%   <<"sortColumns">> => list(string()),
+%%   <<"status">> => list(any())
+%% }
+-type data_view_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset() :: #{
+%%   <<"alias">> => string(),
+%%   <<"createTime">> => float(),
+%%   <<"datasetArn">> => string(),
+%%   <<"datasetDescription">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"datasetTitle">> => string(),
+%%   <<"kind">> => list(any()),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"ownerInfo">> => dataset_owner_info(),
+%%   <<"schemaDefinition">> => schema_union()
+%% }
+-type dataset() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_owner_info() :: #{
+%%   <<"email">> => string(),
+%%   <<"name">> => string(),
+%%   <<"phoneNumber">> => string()
+%% }
+-type dataset_owner_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
--type reset_user_password_request() :: #{binary() => any()}.
+-type delete_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_response() :: #{
+%%   <<"datasetId">> => string()
+%% }
+-type delete_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_permission_group_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_permission_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_permission_group_response() :: #{
+%%   <<"permissionGroupId">> => string()
+%% }
+-type delete_permission_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_user_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type disable_user_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -526,11 +367,35 @@
 
 
 %% Example:
-%% changeset_error_info() :: #{
-%%   <<"errorCategory">> => list(any()),
-%%   <<"errorMessage">> => string()
+%% disassociate_user_from_permission_group_request() :: #{
+%%   <<"clientToken">> => string()
 %% }
--type changeset_error_info() :: #{binary() => any()}.
+-type disassociate_user_from_permission_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_user_from_permission_group_response() :: #{
+%%   <<"statusCode">> => integer()
+%% }
+-type disassociate_user_from_permission_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_user_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type enable_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% enable_user_response() :: #{
+%%   <<"userId">> => string()
+%% }
+-type enable_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_changeset_request() :: #{}
+-type get_changeset_request() :: #{}.
 
 
 %% Example:
@@ -551,62 +416,31 @@
 %% }
 -type get_changeset_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% list_permission_groups_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"permissionGroups">> => list(permission_group())
-%% }
--type list_permission_groups_response() :: #{binary() => any()}.
+%% get_data_view_request() :: #{}
+-type get_data_view_request() :: #{}.
 
 
 %% Example:
-%% update_changeset_response() :: #{
-%%   <<"changesetId">> => string(),
-%%   <<"datasetId">> => string()
+%% get_data_view_response() :: #{
+%%   <<"asOfTimestamp">> => float(),
+%%   <<"autoUpdate">> => boolean(),
+%%   <<"createTime">> => float(),
+%%   <<"dataViewArn">> => string(),
+%%   <<"dataViewId">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"destinationTypeParams">> => data_view_destination_type_params(),
+%%   <<"errorInfo">> => data_view_error_info(),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"partitionColumns">> => list(string()),
+%%   <<"sortColumns">> => list(string()),
+%%   <<"status">> => list(any())
 %% }
--type update_changeset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_view_error_info() :: #{
-%%   <<"errorCategory">> => list(any()),
-%%   <<"errorMessage">> => string()
-%% }
--type data_view_error_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_credentials() :: #{
-%%   <<"accessKeyId">> => string(),
-%%   <<"expiration">> => float(),
-%%   <<"secretAccessKey">> => string(),
-%%   <<"sessionToken">> => string()
-%% }
--type aws_credentials() :: #{binary() => any()}.
+-type get_data_view_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_dataset_request() :: #{}
 -type get_dataset_request() :: #{}.
-
-
-%% Example:
-%% update_user_request() :: #{
-%%   <<"apiAccess">> => list(any()),
-%%   <<"apiAccessPrincipalArn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"firstName">> => string(),
-%%   <<"lastName">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type update_user_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -624,34 +458,342 @@
 %% }
 -type get_dataset_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_external_data_view_access_details_request() :: #{}
+-type get_external_data_view_access_details_request() :: #{}.
+
 
 %% Example:
-%% validation_exception() :: #{
+%% get_external_data_view_access_details_response() :: #{
+%%   <<"credentials">> => aws_credentials(),
+%%   <<"s3Location">> => s3_location()
+%% }
+-type get_external_data_view_access_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_permission_group_request() :: #{}
+-type get_permission_group_request() :: #{}.
+
+
+%% Example:
+%% get_permission_group_response() :: #{
+%%   <<"permissionGroup">> => permission_group()
+%% }
+-type get_permission_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_programmatic_access_credentials_request() :: #{
+%%   <<"durationInMinutes">> => float(),
+%%   <<"environmentId">> := string()
+%% }
+-type get_programmatic_access_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_programmatic_access_credentials_response() :: #{
+%%   <<"credentials">> => credentials(),
+%%   <<"durationInMinutes">> => float()
+%% }
+-type get_programmatic_access_credentials_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_request() :: #{}
+-type get_user_request() :: #{}.
+
+
+%% Example:
+%% get_user_response() :: #{
+%%   <<"apiAccess">> => list(any()),
+%%   <<"apiAccessPrincipalArn">> => string(),
+%%   <<"createTime">> => float(),
+%%   <<"emailAddress">> => string(),
+%%   <<"firstName">> => string(),
+%%   <<"lastDisabledTime">> => float(),
+%%   <<"lastEnabledTime">> => float(),
+%%   <<"lastLoginTime">> => float(),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"lastName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"userId">> => string()
+%% }
+-type get_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_working_location_request() :: #{
+%%   <<"locationType">> => list(any())
+%% }
+-type get_working_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_working_location_response() :: #{
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3Path">> => string(),
+%%   <<"s3Uri">> => string()
+%% }
+-type get_working_location_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_changesets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_changesets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_changesets_response() :: #{
+%%   <<"changesets">> => list(changeset_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_changesets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_views_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_views_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_views_response() :: #{
+%%   <<"dataViews">> => list(data_view_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_views_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_datasets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"datasets">> => list(dataset()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_groups_by_user_request() :: #{
+%%   <<"maxResults">> := integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_permission_groups_by_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_groups_by_user_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissionGroups">> => list(permission_group_by_user())
+%% }
+-type list_permission_groups_by_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_groups_request() :: #{
+%%   <<"maxResults">> := integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_permission_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_permission_groups_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"permissionGroups">> => list(permission_group())
+%% }
+-type list_permission_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_by_permission_group_request() :: #{
+%%   <<"maxResults">> := integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_users_by_permission_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_by_permission_group_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"users">> => list(user_by_permission_group())
+%% }
+-type list_users_by_permission_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"maxResults">> := integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"users">> => list(user())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_group() :: #{
+%%   <<"applicationPermissions">> => list(list(any())()),
+%%   <<"createTime">> => float(),
+%%   <<"description">> => string(),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"membershipStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"permissionGroupId">> => string()
+%% }
+-type permission_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_group_by_user() :: #{
+%%   <<"membershipStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"permissionGroupId">> => string()
+%% }
+-type permission_group_by_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_group_params() :: #{
+%%   <<"datasetPermissions">> => list(resource_permission()),
+%%   <<"permissionGroupId">> => string()
+%% }
+-type permission_group_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_user_password_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type reset_user_password_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_user_password_response() :: #{
+%%   <<"temporaryPassword">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type reset_user_password_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"reason">> => string()
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_dataset_request() :: #{
+%% resource_permission() :: #{
+%%   <<"permission">> => string()
+%% }
+-type resource_permission() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_definition() :: #{
+%%   <<"columns">> => list(column_definition()),
+%%   <<"primaryKeyColumns">> => list(string())
+%% }
+-type schema_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_union() :: #{
+%%   <<"tabularSchemaConfig">> => schema_definition()
+%% }
+-type schema_union() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{}
+-type throttling_exception() :: #{}.
+
+
+%% Example:
+%% update_changeset_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"formatParams">> := map(),
+%%   <<"sourceParams">> := map()
+%% }
+-type update_changeset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_changeset_response() :: #{
+%%   <<"changesetId">> => string(),
+%%   <<"datasetId">> => string()
+%% }
+-type update_changeset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_request() :: #{
 %%   <<"alias">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"datasetDescription">> => string(),
 %%   <<"datasetTitle">> := string(),
 %%   <<"kind">> := list(any()),
-%%   <<"ownerInfo">> => dataset_owner_info(),
-%%   <<"permissionGroupParams">> := permission_group_params(),
 %%   <<"schemaDefinition">> => schema_union()
 %% }
--type create_dataset_request() :: #{binary() => any()}.
+-type update_dataset_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% enable_user_request() :: #{
-%%   <<"clientToken">> => string()
+%% update_dataset_response() :: #{
+%%   <<"datasetId">> => string()
 %% }
--type enable_user_request() :: #{binary() => any()}.
+-type update_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_permission_group_request() :: #{
+%%   <<"applicationPermissions">> => list(list(any())()),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_permission_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -662,14 +804,22 @@
 
 
 %% Example:
-%% associate_user_to_permission_group_request() :: #{
-%%   <<"clientToken">> => string()
+%% update_user_request() :: #{
+%%   <<"apiAccess">> => list(any()),
+%%   <<"apiAccessPrincipalArn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"firstName">> => string(),
+%%   <<"lastName">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type associate_user_to_permission_group_request() :: #{binary() => any()}.
+-type update_user_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% throttling_exception() :: #{}
--type throttling_exception() :: #{}.
+%% update_user_response() :: #{
+%%   <<"userId">> => string()
+%% }
+-type update_user_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -692,22 +842,6 @@
 
 
 %% Example:
-%% list_data_views_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_views_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_users_request() :: #{
-%%   <<"maxResults">> := integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_users_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% user_by_permission_group() :: #{
 %%   <<"apiAccess">> => list(any()),
 %%   <<"apiAccessPrincipalArn">> => string(),
@@ -723,382 +857,248 @@
 
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
+%% validation_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_working_location_request() :: #{
-%%   <<"locationType">> => list(any())
-%% }
--type get_working_location_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_permission() :: #{
-%%   <<"permission">> => string()
-%% }
--type resource_permission() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_dataset_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datasets_response() :: #{
-%%   <<"datasets">> => list(dataset()),
-%%   <<"nextToken">> => string()
-%% }
--type list_datasets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% permission_group() :: #{
-%%   <<"applicationPermissions">> => list(list(any())()),
-%%   <<"createTime">> => float(),
-%%   <<"description">> => string(),
-%%   <<"lastModifiedTime">> => float(),
-%%   <<"membershipStatus">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"permissionGroupId">> => string()
-%% }
--type permission_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_programmatic_access_credentials_request() :: #{
-%%   <<"durationInMinutes">> => float(),
-%%   <<"environmentId">> := string()
-%% }
--type get_programmatic_access_credentials_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_permission_groups_request() :: #{
-%%   <<"maxResults">> := integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_permission_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_changesets_response() :: #{
-%%   <<"changesets">> => list(changeset_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_changesets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_view_summary() :: #{
-%%   <<"asOfTimestamp">> => float(),
-%%   <<"autoUpdate">> => boolean(),
-%%   <<"createTime">> => float(),
-%%   <<"dataViewArn">> => string(),
-%%   <<"dataViewId">> => string(),
-%%   <<"datasetId">> => string(),
-%%   <<"destinationTypeProperties">> => data_view_destination_type_params(),
-%%   <<"errorInfo">> => data_view_error_info(),
-%%   <<"lastModifiedTime">> => float(),
-%%   <<"partitionColumns">> => list(string()),
-%%   <<"sortColumns">> => list(string()),
-%%   <<"status">> => list(any())
-%% }
--type data_view_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% disable_user_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type disable_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_response() :: #{
-%%   <<"userId">> => string()
-%% }
--type create_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_user_response() :: #{
-%%   <<"userId">> => string()
-%% }
--type enable_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% column_definition() :: #{
-%%   <<"columnDescription">> => string(),
-%%   <<"columnName">> => string(),
-%%   <<"dataType">> => list(any())
-%% }
--type column_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_views_response() :: #{
-%%   <<"dataViews">> => list(data_view_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_views_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_request() :: #{
-%%   <<"apiAccess">> => list(any()),
-%%   <<"apiAccessPrincipalArn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"emailAddress">> := string(),
-%%   <<"firstName">> => string(),
-%%   <<"lastName">> => string(),
-%%   <<"type">> := list(any())
-%% }
--type create_user_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type associate_user_to_permission_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_changeset_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_data_view_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_dataset_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_permission_group_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    limit_exceeded_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_user_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    limit_exceeded_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_dataset_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_permission_group_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disable_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_user_from_permission_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type enable_user_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    limit_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_changeset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_data_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_external_data_view_access_details_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_permission_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_programmatic_access_credentials_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_working_location_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_changesets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_data_views_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type list_datasets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type list_permission_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_permission_groups_by_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_users_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_users_by_permission_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type reset_user_password_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_changeset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_dataset_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_permission_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

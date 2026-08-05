@@ -39,11 +39,92 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTags">> := list(resource_tag())
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% column() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type column() :: #{binary() => any()}.
+
+%% Example:
+%% create_export_request() :: #{
+%%   <<"Export">> := export(),
+%%   <<"ResourceTags">> => list(resource_tag())
+%% }
+-type create_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_export_response() :: #{
+%%   <<"ExportArn">> => string()
+%% }
+-type create_export_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_query() :: #{
+%%   <<"QueryStatement">> => string(),
+%%   <<"TableConfigurations">> => map()
+%% }
+-type data_query() :: #{binary() => any()}.
+
+%% Example:
+%% delete_export_request() :: #{
+%%   <<"ExportArn">> := string()
+%% }
+-type delete_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_export_response() :: #{
+%%   <<"ExportArn">> => string()
+%% }
+-type delete_export_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination_configurations() :: #{
+%%   <<"S3Destination">> => s3_destination()
+%% }
+-type destination_configurations() :: #{binary() => any()}.
+
+%% Example:
+%% execution_reference() :: #{
+%%   <<"ExecutionId">> => string(),
+%%   <<"ExecutionStatus">> => execution_status()
+%% }
+-type execution_reference() :: #{binary() => any()}.
+
+%% Example:
+%% execution_status() :: #{
+%%   <<"CompletedAt">> => [non_neg_integer()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"StatusCode">> => list(any()),
+%%   <<"StatusReason">> => list(any())
+%% }
+-type execution_status() :: #{binary() => any()}.
+
+%% Example:
+%% export() :: #{
+%%   <<"DataQuery">> => data_query(),
+%%   <<"Description">> => string(),
+%%   <<"DestinationConfigurations">> => destination_configurations(),
+%%   <<"ExportArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RefreshCadence">> => refresh_cadence()
+%% }
+-type export() :: #{binary() => any()}.
+
+%% Example:
+%% export_reference() :: #{
+%%   <<"ExportArn">> => string(),
+%%   <<"ExportName">> => string(),
+%%   <<"ExportStatus">> => export_status()
+%% }
+-type export_reference() :: #{binary() => any()}.
 
 %% Example:
 %% export_status() :: #{
@@ -56,25 +137,32 @@
 -type export_status() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% get_execution_request() :: #{
+%%   <<"ExecutionId">> := string(),
+%%   <<"ExportArn">> := string()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_export_request() :: #{
-%%   <<"Export">> := export(),
-%%   <<"ResourceTags">> => list(resource_tag())
-%% }
--type create_export_request() :: #{binary() => any()}.
+-type get_execution_request() :: #{binary() => any()}.
 
 %% Example:
-%% column() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string()
+%% get_execution_response() :: #{
+%%   <<"ExecutionId">> => string(),
+%%   <<"ExecutionStatus">> => execution_status(),
+%%   <<"Export">> => export()
 %% }
--type column() :: #{binary() => any()}.
+-type get_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_export_request() :: #{
+%%   <<"ExportArn">> := string()
+%% }
+-type get_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_export_response() :: #{
+%%   <<"Export">> => export(),
+%%   <<"ExportStatus">> => export_status()
+%% }
+-type get_export_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_table_request() :: #{
@@ -93,27 +181,25 @@
 -type get_table_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_export_request() :: #{
-%%   <<"ExportArn">> := string()
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type delete_export_request() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTagKeys">> := list(string())
+%% list_executions_request() :: #{
+%%   <<"ExportArn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type list_executions_request() :: #{binary() => any()}.
 
 %% Example:
-%% execution_status() :: #{
-%%   <<"CompletedAt">> => [non_neg_integer()],
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"StatusCode">> => list(any()),
-%%   <<"StatusReason">> => list(any())
+%% list_executions_response() :: #{
+%%   <<"Executions">> => list(execution_reference()),
+%%   <<"NextToken">> => string()
 %% }
--type execution_status() :: #{binary() => any()}.
+-type list_executions_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_exports_request() :: #{
@@ -121,6 +207,42 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_exports_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_exports_response() :: #{
+%%   <<"Exports">> => list(export_reference()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_exports_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_tables_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tables">> => list(table())
+%% }
+-type list_tables_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceTags">> => list(resource_tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% refresh_cadence() :: #{
@@ -137,63 +259,11 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_tables_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tables">> => list(table())
+%% resource_tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type list_tables_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_executions_response() :: #{
-%%   <<"Executions">> => list(execution_reference()),
-%%   <<"NextToken">> => string()
-%% }
--type list_executions_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% export_reference() :: #{
-%%   <<"ExportArn">> => string(),
-%%   <<"ExportName">> => string(),
-%%   <<"ExportStatus">> => export_status()
-%% }
--type export_reference() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceTags">> => list(resource_tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_export_response() :: #{
-%%   <<"ExportArn">> => string()
-%% }
--type delete_export_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% data_query() :: #{
-%%   <<"QueryStatement">> => string(),
-%%   <<"TableConfigurations">> => map()
-%% }
--type data_query() :: #{binary() => any()}.
+-type resource_tag() :: #{binary() => any()}.
 
 %% Example:
 %% s3_destination() :: #{
@@ -206,73 +276,6 @@
 -type s3_destination() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% destination_configurations() :: #{
-%%   <<"S3Destination">> => s3_destination()
-%% }
--type destination_configurations() :: #{binary() => any()}.
-
-%% Example:
-%% resource_tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type resource_tag() :: #{binary() => any()}.
-
-%% Example:
-%% get_export_request() :: #{
-%%   <<"ExportArn">> := string()
-%% }
--type get_export_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_execution_response() :: #{
-%%   <<"ExecutionId">> => string(),
-%%   <<"ExecutionStatus">> => execution_status(),
-%%   <<"Export">> => export()
-%% }
--type get_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_export_response() :: #{
-%%   <<"ExportArn">> => string()
-%% }
--type create_export_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()),
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
 %% s3_output_configurations() :: #{
 %%   <<"Compression">> => list(any()),
 %%   <<"Format">> => list(any()),
@@ -280,6 +283,24 @@
 %%   <<"Overwrite">> => list(any())
 %% }
 -type s3_output_configurations() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% table() :: #{
+%%   <<"Description">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableProperties">> => list(table_property_description())
+%% }
+-type table() :: #{binary() => any()}.
 
 %% Example:
 %% table_property_description() :: #{
@@ -291,6 +312,19 @@
 -type table_property_description() :: #{binary() => any()}.
 
 %% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"ResourceTags">> := list(resource_tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"QuotaCode">> => string(),
@@ -299,31 +333,17 @@
 -type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_export_response() :: #{
-%%   <<"Export">> => export(),
-%%   <<"ExportStatus">> => export_status()
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"ResourceTagKeys">> := list(string())
 %% }
--type get_export_response() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% execution_reference() :: #{
-%%   <<"ExecutionId">> => string(),
-%%   <<"ExecutionStatus">> => execution_status()
-%% }
--type execution_reference() :: #{binary() => any()}.
+%% untag_resource_response() :: #{
 
-%% Example:
-%% get_execution_request() :: #{
-%%   <<"ExecutionId">> := string(),
-%%   <<"ExportArn">> := string()
 %% }
--type get_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_export_response() :: #{
-%%   <<"ExportArn">> => string()
-%% }
--type update_export_response() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_export_request() :: #{
@@ -333,118 +353,98 @@
 -type update_export_request() :: #{binary() => any()}.
 
 %% Example:
-%% table() :: #{
-%%   <<"Description">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"TableProperties">> => list(table_property_description())
+%% update_export_response() :: #{
+%%   <<"ExportArn">> => string()
 %% }
--type table() :: #{binary() => any()}.
+-type update_export_response() :: #{binary() => any()}.
 
 %% Example:
-%% export() :: #{
-%%   <<"DataQuery">> => data_query(),
-%%   <<"Description">> => string(),
-%%   <<"DestinationConfigurations">> => destination_configurations(),
-%%   <<"ExportArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RefreshCadence">> => refresh_cadence()
+%% validation_exception() :: #{
+%%   <<"Fields">> => list(validation_exception_field()),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
--type export() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_executions_request() :: #{
-%%   <<"ExportArn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% validation_exception_field() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string()
 %% }
--type list_executions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tables_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_tables_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_exports_response() :: #{
-%%   <<"Exports">> => list(export_reference()),
-%%   <<"NextToken">> => string()
-%% }
--type list_exports_response() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type create_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type delete_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_execution_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_table_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_executions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_exports_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_tables_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

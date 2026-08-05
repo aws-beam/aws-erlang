@@ -133,198 +133,29 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := list(tag())
+%% access_denied_exception() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"message">> => [string()]
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_data_lake_exceptions_response() :: #{
-%%   <<"exceptions">> => list(data_lake_exception()),
-%%   <<"nextToken">> => string()
+%% aws_identity() :: #{
+%%   <<"externalId">> => string(),
+%%   <<"principal">> => string()
 %% }
--type list_data_lake_exceptions_response() :: #{binary() => any()}.
+-type aws_identity() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_aws_log_source_response() :: #{
-%%   <<"failed">> => list(string())
-%% }
--type create_aws_log_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscriber_request() :: #{}
--type delete_subscriber_request() :: #{}.
-
-
-%% Example:
-%% list_data_lakes_request() :: #{
-%%   <<"regions">> => list(string())
-%% }
--type list_data_lakes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_replication_configuration() :: #{
-%%   <<"regions">> => list(string()),
-%%   <<"roleArn">> => string()
-%% }
--type data_lake_replication_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_custom_log_source_response() :: #{
-%%   <<"source">> => custom_log_source_resource()
-%% }
--type create_custom_log_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_log_source_attributes() :: #{
-%%   <<"crawlerArn">> => string(),
-%%   <<"databaseArn">> => string(),
-%%   <<"tableArn">> => string()
-%% }
--type custom_log_source_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_log_sources_request() :: #{
+%% aws_log_source_configuration() :: #{
 %%   <<"accounts">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
 %%   <<"regions">> => list(string()),
-%%   <<"sources">> => list(list())
+%%   <<"sourceName">> => list(any()),
+%%   <<"sourceVersion">> => string()
 %% }
--type list_log_sources_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-%% Example:
-%% update_data_lake_exception_subscription_response() :: #{}
--type update_data_lake_exception_subscription_response() :: #{}.
-
-
-%% Example:
-%% update_subscriber_response() :: #{
-%%   <<"subscriber">> => subscriber_resource()
-%% }
--type update_subscriber_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_lake_sources_request() :: #{
-%%   <<"accounts">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_data_lake_sources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_lake_request() :: #{
-%%   <<"configurations">> := list(data_lake_configuration()),
-%%   <<"metaStoreManagerRoleArn">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_data_lake_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_log_source_configuration() :: #{
-%%   <<"crawlerConfiguration">> => custom_log_source_crawler_configuration(),
-%%   <<"providerIdentity">> => aws_identity()
-%% }
--type custom_log_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_lakes_response() :: #{
-%%   <<"dataLakes">> => list(data_lake_resource())
-%% }
--type list_data_lakes_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_log_source_response() :: #{}
--type delete_custom_log_source_response() :: #{}.
-
-
-%% Example:
-%% create_subscriber_response() :: #{
-%%   <<"subscriber">> => subscriber_resource()
-%% }
--type create_subscriber_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_lake_organization_configuration_response() :: #{}
--type create_data_lake_organization_configuration_response() :: #{}.
-
-
-%% Example:
-%% data_lake_source_status() :: #{
-%%   <<"resource">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type data_lake_source_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_lake_exception_subscription_response() :: #{}
--type create_data_lake_exception_subscription_response() :: #{}.
-
-
-%% Example:
-%% update_data_lake_exception_subscription_request() :: #{
-%%   <<"exceptionTimeToLive">> => [float()],
-%%   <<"notificationEndpoint">> := string(),
-%%   <<"subscriptionProtocol">> := string()
-%% }
--type update_data_lake_exception_subscription_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_auto_enable_new_account_configuration() :: #{
-%%   <<"region">> => string(),
-%%   <<"sources">> => list(aws_log_source_resource())
-%% }
--type data_lake_auto_enable_new_account_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_lake_request() :: #{
-%%   <<"configurations">> := list(data_lake_configuration()),
-%%   <<"metaStoreManagerRoleArn">> => string()
-%% }
--type update_data_lake_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscriber_response() :: #{}
--type delete_subscriber_response() :: #{}.
-
-
-%% Example:
-%% create_aws_log_source_request() :: #{
-%%   <<"sources">> := list(aws_log_source_configuration())
-%% }
--type create_aws_log_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_lake_sources_response() :: #{
-%%   <<"dataLakeArn">> => string(),
-%%   <<"dataLakeSources">> => list(data_lake_source()),
-%%   <<"nextToken">> => string()
-%% }
--type get_data_lake_sources_response() :: #{binary() => any()}.
+-type aws_log_source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -336,28 +167,10 @@
 
 
 %% Example:
-%% data_lake_encryption_configuration() :: #{
-%%   <<"kmsKeyId">> => [string()]
+%% bad_request_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type data_lake_encryption_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_lake_organization_configuration_response() :: #{}
--type delete_data_lake_organization_configuration_response() :: #{}.
-
-
-%% Example:
-%% update_data_lake_response() :: #{
-%%   <<"dataLakes">> => list(data_lake_resource())
-%% }
--type update_data_lake_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_lake_response() :: #{
-%%   <<"dataLakes">> => list(data_lake_resource())
-%% }
--type create_data_lake_response() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -370,45 +183,157 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceName">> => [string()],
-%%   <<"resourceType">> => [string()]
+%% create_aws_log_source_request() :: #{
+%%   <<"sources">> := list(aws_log_source_configuration())
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type create_aws_log_source_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_subscriber_request() :: #{
-%%   <<"sources">> => list(list()),
+%% create_aws_log_source_response() :: #{
+%%   <<"failed">> => list(string())
+%% }
+-type create_aws_log_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_log_source_request() :: #{
+%%   <<"configuration">> := custom_log_source_configuration(),
+%%   <<"eventClasses">> => list(string()),
+%%   <<"sourceName">> := string(),
+%%   <<"sourceVersion">> => string()
+%% }
+-type create_custom_log_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_log_source_response() :: #{
+%%   <<"source">> => custom_log_source_resource()
+%% }
+-type create_custom_log_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_lake_exception_subscription_request() :: #{
+%%   <<"exceptionTimeToLive">> => [float()],
+%%   <<"notificationEndpoint">> := string(),
+%%   <<"subscriptionProtocol">> := string()
+%% }
+-type create_data_lake_exception_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_lake_exception_subscription_response() :: #{}
+-type create_data_lake_exception_subscription_response() :: #{}.
+
+
+%% Example:
+%% create_data_lake_organization_configuration_request() :: #{
+%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration())
+%% }
+-type create_data_lake_organization_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_lake_organization_configuration_response() :: #{}
+-type create_data_lake_organization_configuration_response() :: #{}.
+
+
+%% Example:
+%% create_data_lake_request() :: #{
+%%   <<"configurations">> := list(data_lake_configuration()),
+%%   <<"metaStoreManagerRoleArn">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_data_lake_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_lake_response() :: #{
+%%   <<"dataLakes">> => list(data_lake_resource())
+%% }
+-type create_data_lake_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscriber_notification_request() :: #{
+%%   <<"configuration">> := list()
+%% }
+-type create_subscriber_notification_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscriber_notification_response() :: #{
+%%   <<"subscriberEndpoint">> => string()
+%% }
+-type create_subscriber_notification_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscriber_request() :: #{
+%%   <<"accessTypes">> => list(list(any())()),
+%%   <<"sources">> := list(list()),
 %%   <<"subscriberDescription">> => string(),
-%%   <<"subscriberIdentity">> => aws_identity(),
-%%   <<"subscriberName">> => string()
+%%   <<"subscriberIdentity">> := aws_identity(),
+%%   <<"subscriberName">> := [string()],
+%%   <<"tags">> => list(tag())
 %% }
--type update_subscriber_request() :: #{binary() => any()}.
+-type create_subscriber_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_subscriber_response() :: #{
+%% create_subscriber_response() :: #{
 %%   <<"subscriber">> => subscriber_resource()
 %% }
--type get_subscriber_response() :: #{binary() => any()}.
+-type create_subscriber_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_lake_lifecycle_transition() :: #{
-%%   <<"days">> => [integer()],
-%%   <<"storageClass">> => string()
+%% custom_log_source_attributes() :: #{
+%%   <<"crawlerArn">> => string(),
+%%   <<"databaseArn">> => string(),
+%%   <<"tableArn">> => string()
 %% }
--type data_lake_lifecycle_transition() :: #{binary() => any()}.
+-type custom_log_source_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_log_source_configuration() :: #{
+%%   <<"crawlerConfiguration">> => custom_log_source_crawler_configuration(),
+%%   <<"providerIdentity">> => aws_identity()
+%% }
+-type custom_log_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_log_source_crawler_configuration() :: #{
+%%   <<"roleArn">> => string()
+%% }
+-type custom_log_source_crawler_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_log_source_provider() :: #{
+%%   <<"location">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type custom_log_source_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_log_source_resource() :: #{
+%%   <<"attributes">> => custom_log_source_attributes(),
+%%   <<"provider">> => custom_log_source_provider(),
+%%   <<"sourceName">> => string(),
+%%   <<"sourceVersion">> => string()
+%% }
+-type custom_log_source_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_auto_enable_new_account_configuration() :: #{
+%%   <<"region">> => string(),
+%%   <<"sources">> => list(aws_log_source_resource())
+%% }
+-type data_lake_auto_enable_new_account_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -422,15 +347,183 @@
 
 
 %% Example:
-%% aws_identity() :: #{
-%%   <<"externalId">> => string(),
-%%   <<"principal">> => string()
+%% data_lake_encryption_configuration() :: #{
+%%   <<"kmsKeyId">> => [string()]
 %% }
--type aws_identity() :: #{binary() => any()}.
+-type data_lake_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_exception() :: #{
+%%   <<"exception">> => string(),
+%%   <<"region">> => string(),
+%%   <<"remediation">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type data_lake_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_lifecycle_configuration() :: #{
+%%   <<"expiration">> => data_lake_lifecycle_expiration(),
+%%   <<"transitions">> => list(data_lake_lifecycle_transition())
+%% }
+-type data_lake_lifecycle_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_lifecycle_expiration() :: #{
+%%   <<"days">> => [integer()]
+%% }
+-type data_lake_lifecycle_expiration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_lifecycle_transition() :: #{
+%%   <<"days">> => [integer()],
+%%   <<"storageClass">> => string()
+%% }
+-type data_lake_lifecycle_transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_replication_configuration() :: #{
+%%   <<"regions">> => list(string()),
+%%   <<"roleArn">> => string()
+%% }
+-type data_lake_replication_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_resource() :: #{
+%%   <<"createStatus">> => list(any()),
+%%   <<"dataLakeArn">> => string(),
+%%   <<"encryptionConfiguration">> => data_lake_encryption_configuration(),
+%%   <<"lifecycleConfiguration">> => data_lake_lifecycle_configuration(),
+%%   <<"region">> => string(),
+%%   <<"replicationConfiguration">> => data_lake_replication_configuration(),
+%%   <<"s3BucketArn">> => string(),
+%%   <<"updateStatus">> => data_lake_update_status()
+%% }
+-type data_lake_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_source() :: #{
+%%   <<"account">> => [string()],
+%%   <<"eventClasses">> => list(string()),
+%%   <<"sourceName">> => [string()],
+%%   <<"sourceStatuses">> => list(data_lake_source_status())
+%% }
+-type data_lake_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_source_status() :: #{
+%%   <<"resource">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type data_lake_source_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_update_exception() :: #{
+%%   <<"code">> => [string()],
+%%   <<"reason">> => [string()]
+%% }
+-type data_lake_update_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_lake_update_status() :: #{
+%%   <<"exception">> => data_lake_update_exception(),
+%%   <<"requestId">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type data_lake_update_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_aws_log_source_request() :: #{
+%%   <<"sources">> := list(aws_log_source_configuration())
+%% }
+-type delete_aws_log_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_aws_log_source_response() :: #{
+%%   <<"failed">> => list(string())
+%% }
+-type delete_aws_log_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_custom_log_source_request() :: #{
+%%   <<"sourceVersion">> => string()
+%% }
+-type delete_custom_log_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_log_source_response() :: #{}
+-type delete_custom_log_source_response() :: #{}.
+
+%% Example:
+%% delete_data_lake_exception_subscription_request() :: #{}
+-type delete_data_lake_exception_subscription_request() :: #{}.
+
+%% Example:
+%% delete_data_lake_exception_subscription_response() :: #{}
+-type delete_data_lake_exception_subscription_response() :: #{}.
+
+
+%% Example:
+%% delete_data_lake_organization_configuration_request() :: #{
+%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration())
+%% }
+-type delete_data_lake_organization_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_lake_organization_configuration_response() :: #{}
+-type delete_data_lake_organization_configuration_response() :: #{}.
+
+
+%% Example:
+%% delete_data_lake_request() :: #{
+%%   <<"regions">> := list(string())
+%% }
+-type delete_data_lake_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_lake_response() :: #{}
+-type delete_data_lake_response() :: #{}.
+
+%% Example:
+%% delete_subscriber_notification_request() :: #{}
+-type delete_subscriber_notification_request() :: #{}.
 
 %% Example:
 %% delete_subscriber_notification_response() :: #{}
 -type delete_subscriber_notification_response() :: #{}.
+
+%% Example:
+%% delete_subscriber_request() :: #{}
+-type delete_subscriber_request() :: #{}.
+
+%% Example:
+%% delete_subscriber_response() :: #{}
+-type delete_subscriber_response() :: #{}.
+
+%% Example:
+%% deregister_data_lake_delegated_administrator_request() :: #{}
+-type deregister_data_lake_delegated_administrator_request() :: #{}.
+
+%% Example:
+%% deregister_data_lake_delegated_administrator_response() :: #{}
+-type deregister_data_lake_delegated_administrator_response() :: #{}.
+
+%% Example:
+%% get_data_lake_exception_subscription_request() :: #{}
+-type get_data_lake_exception_subscription_request() :: #{}.
 
 
 %% Example:
@@ -441,32 +534,133 @@
 %% }
 -type get_data_lake_exception_subscription_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_data_lake_organization_configuration_request() :: #{}
+-type get_data_lake_organization_configuration_request() :: #{}.
+
 
 %% Example:
-%% update_subscriber_notification_request() :: #{
-%%   <<"configuration">> := list()
+%% get_data_lake_organization_configuration_response() :: #{
+%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration())
 %% }
--type update_subscriber_notification_request() :: #{binary() => any()}.
+-type get_data_lake_organization_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_data_lake_exception_subscription_request() :: #{
-%%   <<"exceptionTimeToLive">> => [float()],
-%%   <<"notificationEndpoint">> := string(),
-%%   <<"subscriptionProtocol">> := string()
+%% get_data_lake_sources_request() :: #{
+%%   <<"accounts">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type create_data_lake_exception_subscription_request() :: #{binary() => any()}.
-
-%% Example:
-%% sqs_notification_configuration() :: #{}
--type sqs_notification_configuration() :: #{}.
+-type get_data_lake_sources_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_subscriber_notification_request() :: #{
-%%   <<"configuration">> := list()
+%% get_data_lake_sources_response() :: #{
+%%   <<"dataLakeArn">> => string(),
+%%   <<"dataLakeSources">> => list(data_lake_source()),
+%%   <<"nextToken">> => string()
 %% }
--type create_subscriber_notification_request() :: #{binary() => any()}.
+-type get_data_lake_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscriber_request() :: #{}
+-type get_subscriber_request() :: #{}.
+
+
+%% Example:
+%% get_subscriber_response() :: #{
+%%   <<"subscriber">> => subscriber_resource()
+%% }
+-type get_subscriber_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% https_notification_configuration() :: #{
+%%   <<"authorizationApiKeyName">> => [string()],
+%%   <<"authorizationApiKeyValue">> => [string()],
+%%   <<"endpoint">> => [string()],
+%%   <<"httpMethod">> => list(any()),
+%%   <<"targetRoleArn">> => string()
+%% }
+-type https_notification_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_lake_exceptions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"regions">> => list(string())
+%% }
+-type list_data_lake_exceptions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_lake_exceptions_response() :: #{
+%%   <<"exceptions">> => list(data_lake_exception()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_lake_exceptions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_lakes_request() :: #{
+%%   <<"regions">> => list(string())
+%% }
+-type list_data_lakes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_lakes_response() :: #{
+%%   <<"dataLakes">> => list(data_lake_resource())
+%% }
+-type list_data_lakes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_log_sources_request() :: #{
+%%   <<"accounts">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"regions">> => list(string()),
+%%   <<"sources">> => list(list())
+%% }
+-type list_log_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_log_sources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sources">> => list(log_source())
+%% }
+-type list_log_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscribers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscribers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscribers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"subscribers">> => list(subscriber_resource())
+%% }
+-type list_subscribers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
@@ -474,6 +668,39 @@
 %%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_source() :: #{
+%%   <<"account">> => string(),
+%%   <<"region">> => string(),
+%%   <<"sources">> => list(list())
+%% }
+-type log_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_data_lake_delegated_administrator_request() :: #{
+%%   <<"accountId">> := string()
+%% }
+-type register_data_lake_delegated_administrator_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_data_lake_delegated_administrator_response() :: #{}
+-type register_data_lake_delegated_administrator_response() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sqs_notification_configuration() :: #{}
+-type sqs_notification_configuration() :: #{}.
 
 
 %% Example:
@@ -498,194 +725,22 @@
 
 
 %% Example:
-%% create_data_lake_organization_configuration_request() :: #{
-%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration())
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type create_data_lake_organization_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_data_lake_delegated_administrator_response() :: #{}
--type deregister_data_lake_delegated_administrator_response() :: #{}.
+-type tag() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_data_lake_exceptions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"regions">> => list(string())
+%% tag_resource_request() :: #{
+%%   <<"tags">> := list(tag())
 %% }
--type list_data_lake_exceptions_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_data_lake_delegated_administrator_request() :: #{}
--type deregister_data_lake_delegated_administrator_request() :: #{}.
-
-
-%% Example:
-%% list_subscribers_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"subscribers">> => list(subscriber_resource())
-%% }
--type list_subscribers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_data_lake_organization_configuration_request() :: #{
-%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration())
-%% }
--type delete_data_lake_organization_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_log_source_configuration() :: #{
-%%   <<"accounts">> => list(string()),
-%%   <<"regions">> => list(string()),
-%%   <<"sourceName">> => list(any()),
-%%   <<"sourceVersion">> => string()
-%% }
--type aws_log_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_log_source_crawler_configuration() :: #{
-%%   <<"roleArn">> => string()
-%% }
--type custom_log_source_crawler_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_source() :: #{
-%%   <<"account">> => [string()],
-%%   <<"eventClasses">> => list(string()),
-%%   <<"sourceName">> => [string()],
-%%   <<"sourceStatuses">> => list(data_lake_source_status())
-%% }
--type data_lake_source() :: #{binary() => any()}.
-
-%% Example:
-%% get_subscriber_request() :: #{}
--type get_subscriber_request() :: #{}.
-
-
-%% Example:
-%% data_lake_lifecycle_expiration() :: #{
-%%   <<"days">> => [integer()]
-%% }
--type data_lake_lifecycle_expiration() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_source() :: #{
-%%   <<"account">> => string(),
-%%   <<"region">> => string(),
-%%   <<"sources">> => list(list())
-%% }
--type log_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_resource() :: #{
-%%   <<"createStatus">> => list(any()),
-%%   <<"dataLakeArn">> => string(),
-%%   <<"encryptionConfiguration">> => data_lake_encryption_configuration(),
-%%   <<"lifecycleConfiguration">> => data_lake_lifecycle_configuration(),
-%%   <<"region">> => string(),
-%%   <<"replicationConfiguration">> => data_lake_replication_configuration(),
-%%   <<"s3BucketArn">> => string(),
-%%   <<"updateStatus">> => data_lake_update_status()
-%% }
--type data_lake_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_aws_log_source_response() :: #{
-%%   <<"failed">> => list(string())
-%% }
--type delete_aws_log_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_lifecycle_configuration() :: #{
-%%   <<"expiration">> => data_lake_lifecycle_expiration(),
-%%   <<"transitions">> => list(data_lake_lifecycle_transition())
-%% }
--type data_lake_lifecycle_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_lake_response() :: #{}
--type delete_data_lake_response() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_lake_organization_configuration_request() :: #{}
--type get_data_lake_organization_configuration_request() :: #{}.
-
-
-%% Example:
-%% list_log_sources_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sources">> => list(log_source())
-%% }
--type list_log_sources_response() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% data_lake_update_exception() :: #{
-%%   <<"code">> => [string()],
-%%   <<"reason">> => [string()]
-%% }
--type data_lake_update_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_custom_log_source_request() :: #{
-%%   <<"configuration">> := custom_log_source_configuration(),
-%%   <<"eventClasses">> => list(string()),
-%%   <<"sourceName">> := string(),
-%%   <<"sourceVersion">> => string()
-%% }
--type create_custom_log_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_log_source_provider() :: #{
-%%   <<"location">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type custom_log_source_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_data_lake_request() :: #{
-%%   <<"regions">> := list(string())
-%% }
--type delete_data_lake_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_lake_exception_subscription_response() :: #{}
--type delete_data_lake_exception_subscription_response() :: #{}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
@@ -699,13 +754,49 @@
 
 
 %% Example:
-%% data_lake_exception() :: #{
-%%   <<"exception">> => string(),
-%%   <<"region">> => string(),
-%%   <<"remediation">> => string(),
-%%   <<"timestamp">> => [non_neg_integer()]
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type data_lake_exception() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_data_lake_exception_subscription_request() :: #{
+%%   <<"exceptionTimeToLive">> => [float()],
+%%   <<"notificationEndpoint">> := string(),
+%%   <<"subscriptionProtocol">> := string()
+%% }
+-type update_data_lake_exception_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_lake_exception_subscription_response() :: #{}
+-type update_data_lake_exception_subscription_response() :: #{}.
+
+
+%% Example:
+%% update_data_lake_request() :: #{
+%%   <<"configurations">> := list(data_lake_configuration()),
+%%   <<"metaStoreManagerRoleArn">> => string()
+%% }
+-type update_data_lake_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_data_lake_response() :: #{
+%%   <<"dataLakes">> => list(data_lake_resource())
+%% }
+-type update_data_lake_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscriber_notification_request() :: #{
+%%   <<"configuration">> := list()
+%% }
+-type update_subscriber_notification_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -716,359 +807,268 @@
 
 
 %% Example:
-%% create_subscriber_notification_response() :: #{
-%%   <<"subscriberEndpoint">> => string()
-%% }
--type create_subscriber_notification_response() :: #{binary() => any()}.
-
-%% Example:
-%% register_data_lake_delegated_administrator_response() :: #{}
--type register_data_lake_delegated_administrator_response() :: #{}.
-
-
-%% Example:
-%% delete_custom_log_source_request() :: #{
-%%   <<"sourceVersion">> => string()
-%% }
--type delete_custom_log_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_log_source_resource() :: #{
-%%   <<"attributes">> => custom_log_source_attributes(),
-%%   <<"provider">> => custom_log_source_provider(),
-%%   <<"sourceName">> => string(),
-%%   <<"sourceVersion">> => string()
-%% }
--type custom_log_source_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_lake_organization_configuration_response() :: #{
-%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration())
-%% }
--type get_data_lake_organization_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_lake_exception_subscription_request() :: #{}
--type get_data_lake_exception_subscription_request() :: #{}.
-
-
-%% Example:
-%% register_data_lake_delegated_administrator_request() :: #{
-%%   <<"accountId">> := string()
-%% }
--type register_data_lake_delegated_administrator_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscriber_notification_request() :: #{}
--type delete_subscriber_notification_request() :: #{}.
-
-
-%% Example:
-%% create_subscriber_request() :: #{
-%%   <<"accessTypes">> => list(list(any())()),
-%%   <<"sources">> := list(list()),
+%% update_subscriber_request() :: #{
+%%   <<"sources">> => list(list()),
 %%   <<"subscriberDescription">> => string(),
-%%   <<"subscriberIdentity">> := aws_identity(),
-%%   <<"subscriberName">> := [string()],
-%%   <<"tags">> => list(tag())
+%%   <<"subscriberIdentity">> => aws_identity(),
+%%   <<"subscriberName">> => string()
 %% }
--type create_subscriber_request() :: #{binary() => any()}.
+-type update_subscriber_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_aws_log_source_request() :: #{
-%%   <<"sources">> := list(aws_log_source_configuration())
+%% update_subscriber_response() :: #{
+%%   <<"subscriber">> => subscriber_resource()
 %% }
--type delete_aws_log_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscribers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_subscribers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_lake_update_status() :: #{
-%%   <<"exception">> => data_lake_update_exception(),
-%%   <<"requestId">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type data_lake_update_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_lake_exception_subscription_request() :: #{}
--type delete_data_lake_exception_subscription_request() :: #{}.
-
-
-%% Example:
-%% https_notification_configuration() :: #{
-%%   <<"authorizationApiKeyName">> => [string()],
-%%   <<"authorizationApiKeyValue">> => [string()],
-%%   <<"endpoint">> => [string()],
-%%   <<"httpMethod">> => list(any()),
-%%   <<"targetRoleArn">> => string()
-%% }
--type https_notification_configuration() :: #{binary() => any()}.
+-type update_subscriber_response() :: #{binary() => any()}.
 
 -type create_aws_log_source_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_custom_log_source_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_data_lake_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_data_lake_exception_subscription_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_data_lake_organization_configuration_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_subscriber_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_subscriber_notification_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_aws_log_source_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_custom_log_source_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_data_lake_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_data_lake_exception_subscription_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_data_lake_organization_configuration_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_subscriber_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_subscriber_notification_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type deregister_data_lake_delegated_administrator_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_data_lake_exception_subscription_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_data_lake_organization_configuration_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_data_lake_sources_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_subscriber_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_data_lake_exceptions_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_data_lakes_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_log_sources_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_subscribers_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type register_data_lake_delegated_administrator_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_data_lake_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_data_lake_exception_subscription_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_subscriber_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_subscriber_notification_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

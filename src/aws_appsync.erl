@@ -187,149 +187,83 @@
 
 
 %% Example:
-%% data_source_introspection_model_index() :: #{
-%%   <<"fields">> => list(string()),
-%%   <<"name">> => string()
-%% }
--type data_source_introspection_model_index() :: #{binary() => any()}.
-
-%% Example:
-%% get_channel_namespace_request() :: #{}
--type get_channel_namespace_request() :: #{}.
-
-
-%% Example:
-%% get_type_request() :: #{
-%%   <<"format">> := list(any())
-%% }
--type get_type_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_merged_graphql_api_response() :: #{
-%%   <<"sourceApiAssociation">> => source_api_association()
-%% }
--type associate_merged_graphql_api_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_names_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_domain_names_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluate_code_response() :: #{
-%%   <<"error">> => evaluate_code_error_detail(),
-%%   <<"evaluationResult">> => string(),
-%%   <<"logs">> => list(string()),
-%%   <<"outErrors">> => string(),
-%%   <<"stash">> => string()
-%% }
--type evaluate_code_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_error_location() :: #{
-%%   <<"column">> => integer(),
-%%   <<"line">> => integer(),
-%%   <<"span">> => integer()
-%% }
--type code_error_location() :: #{binary() => any()}.
-
-%% Example:
-%% delete_type_request() :: #{}
--type delete_type_request() :: #{}.
-
-
-%% Example:
-%% list_resolvers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_resolvers_request() :: #{binary() => any()}.
-
-%% Example:
-%% flush_api_cache_request() :: #{}
--type flush_api_cache_request() :: #{}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_type_response() :: #{}
--type delete_type_response() :: #{}.
-
-
-%% Example:
-%% internal_failure_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type internal_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_source_graphql_api_request() :: #{}
--type disassociate_source_graphql_api_request() :: #{}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_api_keys_response() :: #{
-%%   <<"apiKeys">> => list(api_key()),
-%%   <<"nextToken">> => string()
+%% additional_authentication_provider() :: #{
+%%   <<"authenticationType">> => list(any()),
+%%   <<"lambdaAuthorizerConfig">> => lambda_authorizer_config(),
+%%   <<"openIDConnectConfig">> => open_id_connect_config(),
+%%   <<"userPoolConfig">> => cognito_user_pool_config()
 %% }
--type list_api_keys_response() :: #{binary() => any()}.
+-type additional_authentication_provider() :: #{binary() => any()}.
 
 
 %% Example:
-%% lambda_conflict_handler_config() :: #{
-%%   <<"lambdaConflictHandlerArn">> => string()
+%% api() :: #{
+%%   <<"apiArn">> => string(),
+%%   <<"apiId">> => string(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"dns">> => map(),
+%%   <<"eventConfig">> => event_config(),
+%%   <<"name">> => string(),
+%%   <<"ownerContact">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"wafWebAclArn">> => string(),
+%%   <<"xrayEnabled">> => boolean()
 %% }
--type lambda_conflict_handler_config() :: #{binary() => any()}.
+-type api() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluate_code_error_detail() :: #{
-%%   <<"codeErrors">> => list(code_error()),
+%% api_association() :: #{
+%%   <<"apiId">> => string(),
+%%   <<"associationStatus">> => list(any()),
+%%   <<"deploymentDetail">> => string(),
+%%   <<"domainName">> => string()
+%% }
+-type api_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_cache() :: #{
+%%   <<"apiCachingBehavior">> => list(any()),
+%%   <<"atRestEncryptionEnabled">> => boolean(),
+%%   <<"healthMetricsConfig">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"transitEncryptionEnabled">> => boolean(),
+%%   <<"ttl">> => float(),
+%%   <<"type">> => list(any())
+%% }
+-type api_cache() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_key() :: #{
+%%   <<"deletes">> => float(),
+%%   <<"description">> => string(),
+%%   <<"expires">> => float(),
+%%   <<"id">> => string()
+%% }
+-type api_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_key_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type evaluate_code_error_detail() :: #{binary() => any()}.
+-type api_key_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% unauthorized_exception() :: #{
+%% api_key_validity_out_of_bounds_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_source_api_associations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sourceApiAssociationSummaries">> => list(source_api_association_summary())
-%% }
--type list_source_api_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_functions_response() :: #{
-%%   <<"functions">> => list(function_configuration()),
-%%   <<"nextToken">> => string()
-%% }
--type list_functions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_types_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"types">> => list(type())
-%% }
--type list_types_response() :: #{binary() => any()}.
+-type api_key_validity_out_of_bounds_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -340,10 +274,250 @@
 
 
 %% Example:
-%% update_resolver_response() :: #{
-%%   <<"resolver">> => resolver()
+%% app_sync_runtime() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"runtimeVersion">> => string()
 %% }
--type update_resolver_response() :: #{binary() => any()}.
+-type app_sync_runtime() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_api_request() :: #{
+%%   <<"apiId">> := string()
+%% }
+-type associate_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_api_response() :: #{
+%%   <<"apiAssociation">> => api_association()
+%% }
+-type associate_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_merged_graphql_api_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"mergedApiIdentifier">> := string(),
+%%   <<"sourceApiAssociationConfig">> => source_api_association_config()
+%% }
+-type associate_merged_graphql_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_merged_graphql_api_response() :: #{
+%%   <<"sourceApiAssociation">> => source_api_association()
+%% }
+-type associate_merged_graphql_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_source_graphql_api_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"sourceApiAssociationConfig">> => source_api_association_config(),
+%%   <<"sourceApiIdentifier">> := string()
+%% }
+-type associate_source_graphql_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_source_graphql_api_response() :: #{
+%%   <<"sourceApiAssociation">> => source_api_association()
+%% }
+-type associate_source_graphql_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_mode() :: #{
+%%   <<"authType">> => list(any())
+%% }
+-type auth_mode() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_provider() :: #{
+%%   <<"authType">> => list(any()),
+%%   <<"cognitoConfig">> => cognito_config(),
+%%   <<"lambdaAuthorizerConfig">> => lambda_authorizer_config(),
+%%   <<"openIDConnectConfig">> => open_id_connect_config()
+%% }
+-type auth_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorization_config() :: #{
+%%   <<"authorizationType">> => list(any()),
+%%   <<"awsIamConfig">> => aws_iam_config()
+%% }
+-type authorization_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_iam_config() :: #{
+%%   <<"signingRegion">> => string(),
+%%   <<"signingServiceName">> => string()
+%% }
+-type aws_iam_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_detail() :: #{
+%%   <<"codeErrors">> => list(code_error())
+%% }
+-type bad_request_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"detail">> => bad_request_detail(),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% caching_config() :: #{
+%%   <<"cachingKeys">> => list(string()),
+%%   <<"ttl">> => float()
+%% }
+-type caching_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_namespace() :: #{
+%%   <<"apiId">> => string(),
+%%   <<"channelNamespaceArn">> => string(),
+%%   <<"codeHandlers">> => string(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"handlerConfigs">> => handler_configs(),
+%%   <<"lastModified">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"publishAuthModes">> => list(auth_mode()),
+%%   <<"subscribeAuthModes">> => list(auth_mode()),
+%%   <<"tags">> => map()
+%% }
+-type channel_namespace() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_error() :: #{
+%%   <<"errorType">> => string(),
+%%   <<"location">> => code_error_location(),
+%%   <<"value">> => string()
+%% }
+-type code_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_error_location() :: #{
+%%   <<"column">> => integer(),
+%%   <<"line">> => integer(),
+%%   <<"span">> => integer()
+%% }
+-type code_error_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% cognito_config() :: #{
+%%   <<"appIdClientRegex">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"userPoolId">> => string()
+%% }
+-type cognito_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cognito_user_pool_config() :: #{
+%%   <<"appIdClientRegex">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"userPoolId">> => string()
+%% }
+-type cognito_user_pool_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_cache_request() :: #{
+%%   <<"apiCachingBehavior">> := list(any()),
+%%   <<"atRestEncryptionEnabled">> => boolean(),
+%%   <<"healthMetricsConfig">> => list(any()),
+%%   <<"transitEncryptionEnabled">> => boolean(),
+%%   <<"ttl">> := float(),
+%%   <<"type">> := list(any())
+%% }
+-type create_api_cache_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_cache_response() :: #{
+%%   <<"apiCache">> => api_cache()
+%% }
+-type create_api_cache_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_key_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"expires">> => float()
+%% }
+-type create_api_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_key_response() :: #{
+%%   <<"apiKey">> => api_key()
+%% }
+-type create_api_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_request() :: #{
+%%   <<"eventConfig">> := event_config(),
+%%   <<"name">> := string(),
+%%   <<"ownerContact">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_api_response() :: #{
+%%   <<"api">> => api()
+%% }
+-type create_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_namespace_request() :: #{
+%%   <<"codeHandlers">> => string(),
+%%   <<"handlerConfigs">> => handler_configs(),
+%%   <<"name">> := string(),
+%%   <<"publishAuthModes">> => list(auth_mode()),
+%%   <<"subscribeAuthModes">> => list(auth_mode()),
+%%   <<"tags">> => map()
+%% }
+-type create_channel_namespace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_namespace_response() :: #{
+%%   <<"channelNamespace">> => channel_namespace()
+%% }
+-type create_channel_namespace_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -365,142 +539,10 @@
 
 
 %% Example:
-%% data_source_introspection_model_field() :: #{
-%%   <<"length">> => float(),
-%%   <<"name">> => string(),
-%%   <<"type">> => data_source_introspection_model_field_type()
+%% create_data_source_response() :: #{
+%%   <<"dataSource">> => data_source()
 %% }
--type data_source_introspection_model_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% integration() :: #{
-%%   <<"dataSourceName">> => string(),
-%%   <<"lambdaConfig">> => lambda_config()
-%% }
--type integration() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_authorizer_config() :: #{
-%%   <<"authorizerResultTtlInSeconds">> => integer(),
-%%   <<"authorizerUri">> => string(),
-%%   <<"identityValidationExpression">> => string()
-%% }
--type lambda_authorizer_config() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-%% Example:
-%% delete_graphql_api_response() :: #{}
--type delete_graphql_api_response() :: #{}.
-
-
-%% Example:
-%% list_graphql_apis_response() :: #{
-%%   <<"graphqlApis">> => list(graphql_api()),
-%%   <<"nextToken">> => string()
-%% }
--type list_graphql_apis_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resolver_request() :: #{}
--type get_resolver_request() :: #{}.
-
-%% Example:
-%% delete_domain_name_response() :: #{}
--type delete_domain_name_response() :: #{}.
-
-
-%% Example:
-%% additional_authentication_provider() :: #{
-%%   <<"authenticationType">> => list(any()),
-%%   <<"lambdaAuthorizerConfig">> => lambda_authorizer_config(),
-%%   <<"openIDConnectConfig">> => open_id_connect_config(),
-%%   <<"userPoolConfig">> => cognito_user_pool_config()
-%% }
--type additional_authentication_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_source_api_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_source_api_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_source_api_association_response() :: #{
-%%   <<"sourceApiAssociation">> => source_api_association()
-%% }
--type get_source_api_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resolvers_by_function_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_resolvers_by_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_api_key_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"expires">> => float()
-%% }
--type update_api_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_api_response() :: #{
-%%   <<"api">> => api()
-%% }
--type create_api_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_namespaces_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_channel_namespaces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_schema_creation_status_response() :: #{
-%%   <<"details">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_schema_creation_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cognito_user_pool_config() :: #{
-%%   <<"appIdClientRegex">> => string(),
-%%   <<"awsRegion">> => string(),
-%%   <<"userPoolId">> => string()
-%% }
--type cognito_user_pool_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% api_key_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type api_key_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% cognito_config() :: #{
-%%   <<"appIdClientRegex">> => string(),
-%%   <<"awsRegion">> => string(),
-%%   <<"userPoolId">> => string()
-%% }
--type cognito_config() :: #{binary() => any()}.
+-type create_data_source_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -514,74 +556,88 @@
 
 
 %% Example:
-%% list_graphql_apis_request() :: #{
-%%   <<"apiType">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owner">> => list(any())
+%% create_domain_name_response() :: #{
+%%   <<"domainNameConfig">> => domain_name_config()
 %% }
--type list_graphql_apis_request() :: #{binary() => any()}.
+-type create_domain_name_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_api_association_response() :: #{
-%%   <<"apiAssociation">> => api_association()
+%% create_function_request() :: #{
+%%   <<"code">> => string(),
+%%   <<"dataSourceName">> := string(),
+%%   <<"description">> => string(),
+%%   <<"functionVersion">> => string(),
+%%   <<"maxBatchSize">> => integer(),
+%%   <<"name">> := string(),
+%%   <<"requestMappingTemplate">> => string(),
+%%   <<"responseMappingTemplate">> => string(),
+%%   <<"runtime">> => app_sync_runtime(),
+%%   <<"syncConfig">> => sync_config()
 %% }
--type get_api_association_response() :: #{binary() => any()}.
+-type create_function_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_api_cache_response() :: #{
-%%   <<"apiCache">> => api_cache()
-%% }
--type create_api_cache_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_types_by_association_request() :: #{
-%%   <<"format">> := list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_types_by_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_response() :: #{
+%% create_function_response() :: #{
 %%   <<"functionConfiguration">> => function_configuration()
 %% }
--type get_function_response() :: #{binary() => any()}.
+-type create_function_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_data_source_response() :: #{
-%%   <<"dataSource">> => data_source()
+%% create_graphql_api_request() :: #{
+%%   <<"additionalAuthenticationProviders">> => list(additional_authentication_provider()),
+%%   <<"apiType">> => list(any()),
+%%   <<"authenticationType">> := list(any()),
+%%   <<"enhancedMetricsConfig">> => enhanced_metrics_config(),
+%%   <<"introspectionConfig">> => list(any()),
+%%   <<"lambdaAuthorizerConfig">> => lambda_authorizer_config(),
+%%   <<"logConfig">> => log_config(),
+%%   <<"mergedApiExecutionRoleArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"openIDConnectConfig">> => open_id_connect_config(),
+%%   <<"ownerContact">> => string(),
+%%   <<"queryDepthLimit">> => integer(),
+%%   <<"resolverCountLimit">> => integer(),
+%%   <<"tags">> => map(),
+%%   <<"userPoolConfig">> => user_pool_config(),
+%%   <<"visibility">> => list(any()),
+%%   <<"xrayEnabled">> => boolean()
 %% }
--type update_data_source_response() :: #{binary() => any()}.
+-type create_graphql_api_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_graphql_api_environment_variables_response() :: #{
-%%   <<"environmentVariables">> => map()
+%% create_graphql_api_response() :: #{
+%%   <<"graphqlApi">> => graphql_api()
 %% }
--type put_graphql_api_environment_variables_response() :: #{binary() => any()}.
+-type create_graphql_api_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_channel_namespace_request() :: #{
-%%   <<"codeHandlers">> => string(),
-%%   <<"handlerConfigs">> => handler_configs(),
-%%   <<"publishAuthModes">> => list(auth_mode()),
-%%   <<"subscribeAuthModes">> => list(auth_mode())
+%% create_resolver_request() :: #{
+%%   <<"cachingConfig">> => caching_config(),
+%%   <<"code">> => string(),
+%%   <<"dataSourceName">> => string(),
+%%   <<"fieldName">> := string(),
+%%   <<"kind">> => list(any()),
+%%   <<"maxBatchSize">> => integer(),
+%%   <<"metricsConfig">> => list(any()),
+%%   <<"pipelineConfig">> => pipeline_config(),
+%%   <<"requestMappingTemplate">> => string(),
+%%   <<"responseMappingTemplate">> => string(),
+%%   <<"runtime">> => app_sync_runtime(),
+%%   <<"syncConfig">> => sync_config()
 %% }
--type update_channel_namespace_request() :: #{binary() => any()}.
+-type create_resolver_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% create_resolver_response() :: #{
+%%   <<"resolver">> => resolver()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type create_resolver_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -593,38 +649,271 @@
 
 
 %% Example:
-%% event_log_config() :: #{
-%%   <<"cloudWatchLogsRoleArn">> => string(),
-%%   <<"logLevel">> => list(any())
+%% create_type_response() :: #{
+%%   <<"type">> => type()
 %% }
--type event_log_config() :: #{binary() => any()}.
+-type create_type_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% rds_http_endpoint_config() :: #{
-%%   <<"awsRegion">> => string(),
-%%   <<"awsSecretStoreArn">> => string(),
-%%   <<"databaseName">> => string(),
-%%   <<"dbClusterIdentifier">> => string(),
-%%   <<"schema">> => string()
+%% data_source() :: #{
+%%   <<"dataSourceArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"dynamodbConfig">> => dynamodb_data_source_config(),
+%%   <<"elasticsearchConfig">> => elasticsearch_data_source_config(),
+%%   <<"eventBridgeConfig">> => event_bridge_data_source_config(),
+%%   <<"httpConfig">> => http_data_source_config(),
+%%   <<"lambdaConfig">> => lambda_data_source_config(),
+%%   <<"metricsConfig">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"openSearchServiceConfig">> => open_search_service_data_source_config(),
+%%   <<"relationalDatabaseConfig">> => relational_database_data_source_config(),
+%%   <<"serviceRoleArn">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type rds_http_endpoint_config() :: #{binary() => any()}.
+-type data_source() :: #{binary() => any()}.
 
 
 %% Example:
-%% handler_configs() :: #{
-%%   <<"onPublish">> => handler_config(),
-%%   <<"onSubscribe">> => handler_config()
+%% data_source_introspection_model() :: #{
+%%   <<"fields">> => list(data_source_introspection_model_field()),
+%%   <<"indexes">> => list(data_source_introspection_model_index()),
+%%   <<"name">> => string(),
+%%   <<"primaryKey">> => data_source_introspection_model_index(),
+%%   <<"sdl">> => string()
 %% }
--type handler_configs() :: #{binary() => any()}.
+-type data_source_introspection_model() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_apis_response() :: #{
-%%   <<"apis">> => list(api()),
+%% data_source_introspection_model_field() :: #{
+%%   <<"length">> => float(),
+%%   <<"name">> => string(),
+%%   <<"type">> => data_source_introspection_model_field_type()
+%% }
+-type data_source_introspection_model_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_introspection_model_field_type() :: #{
+%%   <<"kind">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => data_source_introspection_model_field_type(),
+%%   <<"values">> => list(string())
+%% }
+-type data_source_introspection_model_field_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_introspection_model_index() :: #{
+%%   <<"fields">> => list(string()),
+%%   <<"name">> => string()
+%% }
+-type data_source_introspection_model_index() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_introspection_result() :: #{
+%%   <<"models">> => list(data_source_introspection_model()),
 %%   <<"nextToken">> => string()
 %% }
--type list_apis_response() :: #{binary() => any()}.
+-type data_source_introspection_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_api_cache_request() :: #{}
+-type delete_api_cache_request() :: #{}.
+
+%% Example:
+%% delete_api_cache_response() :: #{}
+-type delete_api_cache_response() :: #{}.
+
+%% Example:
+%% delete_api_key_request() :: #{}
+-type delete_api_key_request() :: #{}.
+
+%% Example:
+%% delete_api_key_response() :: #{}
+-type delete_api_key_response() :: #{}.
+
+%% Example:
+%% delete_api_request() :: #{}
+-type delete_api_request() :: #{}.
+
+%% Example:
+%% delete_api_response() :: #{}
+-type delete_api_response() :: #{}.
+
+%% Example:
+%% delete_channel_namespace_request() :: #{}
+-type delete_channel_namespace_request() :: #{}.
+
+%% Example:
+%% delete_channel_namespace_response() :: #{}
+-type delete_channel_namespace_response() :: #{}.
+
+%% Example:
+%% delete_data_source_request() :: #{}
+-type delete_data_source_request() :: #{}.
+
+%% Example:
+%% delete_data_source_response() :: #{}
+-type delete_data_source_response() :: #{}.
+
+%% Example:
+%% delete_domain_name_request() :: #{}
+-type delete_domain_name_request() :: #{}.
+
+%% Example:
+%% delete_domain_name_response() :: #{}
+-type delete_domain_name_response() :: #{}.
+
+%% Example:
+%% delete_function_request() :: #{}
+-type delete_function_request() :: #{}.
+
+%% Example:
+%% delete_function_response() :: #{}
+-type delete_function_response() :: #{}.
+
+%% Example:
+%% delete_graphql_api_request() :: #{}
+-type delete_graphql_api_request() :: #{}.
+
+%% Example:
+%% delete_graphql_api_response() :: #{}
+-type delete_graphql_api_response() :: #{}.
+
+%% Example:
+%% delete_resolver_request() :: #{}
+-type delete_resolver_request() :: #{}.
+
+%% Example:
+%% delete_resolver_response() :: #{}
+-type delete_resolver_response() :: #{}.
+
+%% Example:
+%% delete_type_request() :: #{}
+-type delete_type_request() :: #{}.
+
+%% Example:
+%% delete_type_response() :: #{}
+-type delete_type_response() :: #{}.
+
+
+%% Example:
+%% delta_sync_config() :: #{
+%%   <<"baseTableTTL">> => float(),
+%%   <<"deltaSyncTableName">> => string(),
+%%   <<"deltaSyncTableTTL">> => float()
+%% }
+-type delta_sync_config() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_api_request() :: #{}
+-type disassociate_api_request() :: #{}.
+
+%% Example:
+%% disassociate_api_response() :: #{}
+-type disassociate_api_response() :: #{}.
+
+%% Example:
+%% disassociate_merged_graphql_api_request() :: #{}
+-type disassociate_merged_graphql_api_request() :: #{}.
+
+
+%% Example:
+%% disassociate_merged_graphql_api_response() :: #{
+%%   <<"sourceApiAssociationStatus">> => list(any())
+%% }
+-type disassociate_merged_graphql_api_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_source_graphql_api_request() :: #{}
+-type disassociate_source_graphql_api_request() :: #{}.
+
+
+%% Example:
+%% disassociate_source_graphql_api_response() :: #{
+%%   <<"sourceApiAssociationStatus">> => list(any())
+%% }
+-type disassociate_source_graphql_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_name_config() :: #{
+%%   <<"appsyncDomainName">> => string(),
+%%   <<"certificateArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainName">> => string(),
+%%   <<"domainNameArn">> => string(),
+%%   <<"hostedZoneId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type domain_name_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamodb_data_source_config() :: #{
+%%   <<"awsRegion">> => string(),
+%%   <<"deltaSyncConfig">> => delta_sync_config(),
+%%   <<"tableName">> => string(),
+%%   <<"useCallerCredentials">> => boolean(),
+%%   <<"versioned">> => boolean()
+%% }
+-type dynamodb_data_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% elasticsearch_data_source_config() :: #{
+%%   <<"awsRegion">> => string(),
+%%   <<"endpoint">> => string()
+%% }
+-type elasticsearch_data_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% enhanced_metrics_config() :: #{
+%%   <<"dataSourceLevelMetricsBehavior">> => list(any()),
+%%   <<"operationLevelMetricsConfig">> => list(any()),
+%%   <<"resolverLevelMetricsBehavior">> => list(any())
+%% }
+-type enhanced_metrics_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"message">> => string()
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_code_error_detail() :: #{
+%%   <<"codeErrors">> => list(code_error()),
+%%   <<"message">> => string()
+%% }
+-type evaluate_code_error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_code_request() :: #{
+%%   <<"code">> := string(),
+%%   <<"context">> := string(),
+%%   <<"function">> => string(),
+%%   <<"runtime">> := app_sync_runtime()
+%% }
+-type evaluate_code_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_code_response() :: #{
+%%   <<"error">> => evaluate_code_error_detail(),
+%%   <<"evaluationResult">> => string(),
+%%   <<"logs">> => list(string()),
+%%   <<"outErrors">> => string(),
+%%   <<"stash">> => string()
+%% }
+-type evaluate_code_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -633,16 +922,6 @@
 %%   <<"template">> := string()
 %% }
 -type evaluate_mapping_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% open_id_connect_config() :: #{
-%%   <<"authTTL">> => float(),
-%%   <<"clientId">> => string(),
-%%   <<"iatTTL">> => float(),
-%%   <<"issuer">> => string()
-%% }
--type open_id_connect_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -657,55 +936,243 @@
 
 
 %% Example:
-%% list_resolvers_by_function_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resolvers">> => list(resolver())
+%% event_bridge_data_source_config() :: #{
+%%   <<"eventBusArn">> => string()
 %% }
--type list_resolvers_by_function_response() :: #{binary() => any()}.
+-type event_bridge_data_source_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_function_response() :: #{
+%% event_config() :: #{
+%%   <<"authProviders">> => list(auth_provider()),
+%%   <<"connectionAuthModes">> => list(auth_mode()),
+%%   <<"defaultPublishAuthModes">> => list(auth_mode()),
+%%   <<"defaultSubscribeAuthModes">> => list(auth_mode()),
+%%   <<"logConfig">> => event_log_config()
+%% }
+-type event_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_log_config() :: #{
+%%   <<"cloudWatchLogsRoleArn">> => string(),
+%%   <<"logLevel">> => list(any())
+%% }
+-type event_log_config() :: #{binary() => any()}.
+
+%% Example:
+%% flush_api_cache_request() :: #{}
+-type flush_api_cache_request() :: #{}.
+
+%% Example:
+%% flush_api_cache_response() :: #{}
+-type flush_api_cache_response() :: #{}.
+
+
+%% Example:
+%% function_configuration() :: #{
+%%   <<"code">> => string(),
+%%   <<"dataSourceName">> => string(),
+%%   <<"description">> => string(),
+%%   <<"functionArn">> => string(),
+%%   <<"functionId">> => string(),
+%%   <<"functionVersion">> => string(),
+%%   <<"maxBatchSize">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"requestMappingTemplate">> => string(),
+%%   <<"responseMappingTemplate">> => string(),
+%%   <<"runtime">> => app_sync_runtime(),
+%%   <<"syncConfig">> => sync_config()
+%% }
+-type function_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_api_association_request() :: #{}
+-type get_api_association_request() :: #{}.
+
+
+%% Example:
+%% get_api_association_response() :: #{
+%%   <<"apiAssociation">> => api_association()
+%% }
+-type get_api_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_api_cache_request() :: #{}
+-type get_api_cache_request() :: #{}.
+
+
+%% Example:
+%% get_api_cache_response() :: #{
+%%   <<"apiCache">> => api_cache()
+%% }
+-type get_api_cache_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_api_request() :: #{}
+-type get_api_request() :: #{}.
+
+
+%% Example:
+%% get_api_response() :: #{
+%%   <<"api">> => api()
+%% }
+-type get_api_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_namespace_request() :: #{}
+-type get_channel_namespace_request() :: #{}.
+
+
+%% Example:
+%% get_channel_namespace_response() :: #{
+%%   <<"channelNamespace">> => channel_namespace()
+%% }
+-type get_channel_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_source_introspection_request() :: #{
+%%   <<"includeModelsSDL">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_data_source_introspection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_data_source_introspection_response() :: #{
+%%   <<"introspectionId">> => string(),
+%%   <<"introspectionResult">> => data_source_introspection_result(),
+%%   <<"introspectionStatus">> => list(any()),
+%%   <<"introspectionStatusDetail">> => string()
+%% }
+-type get_data_source_introspection_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_source_request() :: #{}
+-type get_data_source_request() :: #{}.
+
+
+%% Example:
+%% get_data_source_response() :: #{
+%%   <<"dataSource">> => data_source()
+%% }
+-type get_data_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_name_request() :: #{}
+-type get_domain_name_request() :: #{}.
+
+
+%% Example:
+%% get_domain_name_response() :: #{
+%%   <<"domainNameConfig">> => domain_name_config()
+%% }
+-type get_domain_name_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_function_request() :: #{}
+-type get_function_request() :: #{}.
+
+
+%% Example:
+%% get_function_response() :: #{
 %%   <<"functionConfiguration">> => function_configuration()
 %% }
--type update_function_response() :: #{binary() => any()}.
+-type get_function_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_channel_namespace_request() :: #{}
--type delete_channel_namespace_request() :: #{}.
+%% get_graphql_api_environment_variables_request() :: #{}
+-type get_graphql_api_environment_variables_request() :: #{}.
 
 
 %% Example:
-%% auth_mode() :: #{
-%%   <<"authType">> => list(any())
+%% get_graphql_api_environment_variables_response() :: #{
+%%   <<"environmentVariables">> => map()
 %% }
--type auth_mode() :: #{binary() => any()}.
+-type get_graphql_api_environment_variables_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_graphql_api_request() :: #{}
+-type get_graphql_api_request() :: #{}.
 
 
 %% Example:
-%% update_graphql_api_response() :: #{
+%% get_graphql_api_response() :: #{
 %%   <<"graphqlApi">> => graphql_api()
 %% }
--type update_graphql_api_response() :: #{binary() => any()}.
+-type get_graphql_api_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_api_cache_request() :: #{
-%%   <<"apiCachingBehavior">> := list(any()),
-%%   <<"atRestEncryptionEnabled">> => boolean(),
-%%   <<"healthMetricsConfig">> => list(any()),
-%%   <<"transitEncryptionEnabled">> => boolean(),
-%%   <<"ttl">> := float(),
-%%   <<"type">> := list(any())
+%% get_introspection_schema_request() :: #{
+%%   <<"format">> := list(any()),
+%%   <<"includeDirectives">> => boolean()
 %% }
--type create_api_cache_request() :: #{binary() => any()}.
+-type get_introspection_schema_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_api_key_response() :: #{
-%%   <<"apiKey">> => api_key()
+%% get_introspection_schema_response() :: #{
+%%   <<"schema">> => binary()
 %% }
--type update_api_key_response() :: #{binary() => any()}.
+-type get_introspection_schema_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resolver_request() :: #{}
+-type get_resolver_request() :: #{}.
+
+
+%% Example:
+%% get_resolver_response() :: #{
+%%   <<"resolver">> => resolver()
+%% }
+-type get_resolver_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_schema_creation_status_request() :: #{}
+-type get_schema_creation_status_request() :: #{}.
+
+
+%% Example:
+%% get_schema_creation_status_response() :: #{
+%%   <<"details">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_schema_creation_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_source_api_association_request() :: #{}
+-type get_source_api_association_request() :: #{}.
+
+
+%% Example:
+%% get_source_api_association_response() :: #{
+%%   <<"sourceApiAssociation">> => source_api_association()
+%% }
+-type get_source_api_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_type_request() :: #{
+%%   <<"format">> := list(any())
+%% }
+-type get_type_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_type_response() :: #{
+%%   <<"type">> => type()
+%% }
+-type get_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% graph_q_l_schema_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type graph_q_l_schema_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -736,40 +1203,129 @@
 %% }
 -type graphql_api() :: #{binary() => any()}.
 
-%% Example:
-%% get_api_cache_request() :: #{}
--type get_api_cache_request() :: #{}.
 
 %% Example:
-%% delete_graphql_api_request() :: #{}
--type delete_graphql_api_request() :: #{}.
-
-%% Example:
-%% get_api_association_request() :: #{}
--type get_api_association_request() :: #{}.
-
-
-%% Example:
-%% caching_config() :: #{
-%%   <<"cachingKeys">> => list(string()),
-%%   <<"ttl">> => float()
+%% handler_config() :: #{
+%%   <<"behavior">> => list(any()),
+%%   <<"integration">> => integration()
 %% }
--type caching_config() :: #{binary() => any()}.
+-type handler_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% authorization_config() :: #{
-%%   <<"authorizationType">> => list(any()),
-%%   <<"awsIamConfig">> => aws_iam_config()
+%% handler_configs() :: #{
+%%   <<"onPublish">> => handler_config(),
+%%   <<"onSubscribe">> => handler_config()
 %% }
--type authorization_config() :: #{binary() => any()}.
+-type handler_configs() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_type_response() :: #{
-%%   <<"type">> => type()
+%% http_data_source_config() :: #{
+%%   <<"authorizationConfig">> => authorization_config(),
+%%   <<"endpoint">> => string()
 %% }
--type get_type_response() :: #{binary() => any()}.
+-type http_data_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% integration() :: #{
+%%   <<"dataSourceName">> => string(),
+%%   <<"lambdaConfig">> => lambda_config()
+%% }
+-type integration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_authorizer_config() :: #{
+%%   <<"authorizerResultTtlInSeconds">> => integer(),
+%%   <<"authorizerUri">> => string(),
+%%   <<"identityValidationExpression">> => string()
+%% }
+-type lambda_authorizer_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_config() :: #{
+%%   <<"invokeType">> => list(any())
+%% }
+-type lambda_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_conflict_handler_config() :: #{
+%%   <<"lambdaConflictHandlerArn">> => string()
+%% }
+-type lambda_conflict_handler_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_data_source_config() :: #{
+%%   <<"lambdaFunctionArn">> => string()
+%% }
+-type lambda_data_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_api_keys_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_api_keys_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_api_keys_response() :: #{
+%%   <<"apiKeys">> => list(api_key()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_api_keys_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_apis_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_apis_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_apis_response() :: #{
+%%   <<"apis">> => list(api()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_apis_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_namespaces_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_channel_namespaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_namespaces_response() :: #{
+%%   <<"channelNamespaces">> => list(channel_namespace()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_channel_namespaces_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -781,153 +1337,85 @@
 
 
 %% Example:
-%% get_introspection_schema_response() :: #{
-%%   <<"schema">> => binary()
+%% list_data_sources_response() :: #{
+%%   <<"dataSources">> => list(data_source()),
+%%   <<"nextToken">> => string()
 %% }
--type get_introspection_schema_response() :: #{binary() => any()}.
+-type list_data_sources_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_channel_namespace_request() :: #{
-%%   <<"codeHandlers">> => string(),
-%%   <<"handlerConfigs">> => handler_configs(),
-%%   <<"name">> := string(),
-%%   <<"publishAuthModes">> => list(auth_mode()),
-%%   <<"subscribeAuthModes">> => list(auth_mode()),
-%%   <<"tags">> => map()
+%% list_domain_names_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type create_channel_namespace_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_source_response() :: #{}
--type delete_data_source_response() :: #{}.
+-type list_domain_names_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delta_sync_config() :: #{
-%%   <<"baseTableTTL">> => float(),
-%%   <<"deltaSyncTableName">> => string(),
-%%   <<"deltaSyncTableTTL">> => float()
+%% list_domain_names_response() :: #{
+%%   <<"domainNameConfigs">> => list(domain_name_config()),
+%%   <<"nextToken">> => string()
 %% }
--type delta_sync_config() :: #{binary() => any()}.
+-type list_domain_names_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% app_sync_runtime() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"runtimeVersion">> => string()
+%% list_functions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type app_sync_runtime() :: #{binary() => any()}.
+-type list_functions_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_api_response() :: #{
-%%   <<"apiAssociation">> => api_association()
+%% list_functions_response() :: #{
+%%   <<"functions">> => list(function_configuration()),
+%%   <<"nextToken">> => string()
 %% }
--type associate_api_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_function_request() :: #{}
--type get_function_request() :: #{}.
+-type list_functions_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
+%% list_graphql_apis_request() :: #{
+%%   <<"apiType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owner">> => list(any())
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type list_graphql_apis_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_resolver_request() :: #{
-%%   <<"cachingConfig">> => caching_config(),
-%%   <<"code">> => string(),
-%%   <<"dataSourceName">> => string(),
-%%   <<"kind">> => list(any()),
-%%   <<"maxBatchSize">> => integer(),
-%%   <<"metricsConfig">> => list(any()),
-%%   <<"pipelineConfig">> => pipeline_config(),
-%%   <<"requestMappingTemplate">> => string(),
-%%   <<"responseMappingTemplate">> => string(),
-%%   <<"runtime">> => app_sync_runtime(),
-%%   <<"syncConfig">> => sync_config()
+%% list_graphql_apis_response() :: #{
+%%   <<"graphqlApis">> => list(graphql_api()),
+%%   <<"nextToken">> => string()
 %% }
--type update_resolver_request() :: #{binary() => any()}.
+-type list_graphql_apis_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% user_pool_config() :: #{
-%%   <<"appIdClientRegex">> => string(),
-%%   <<"awsRegion">> => string(),
-%%   <<"defaultAction">> => list(any()),
-%%   <<"userPoolId">> => string()
+%% list_resolvers_by_function_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type user_pool_config() :: #{binary() => any()}.
+-type list_resolvers_by_function_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_api_response() :: #{
-%%   <<"api">> => api()
+%% list_resolvers_by_function_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resolvers">> => list(resolver())
 %% }
--type get_api_response() :: #{binary() => any()}.
+-type list_resolvers_by_function_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_channel_namespace_response() :: #{
-%%   <<"channelNamespace">> => channel_namespace()
+%% list_resolvers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type get_channel_namespace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_graphql_api_environment_variables_request() :: #{
-%%   <<"environmentVariables">> := map()
-%% }
--type put_graphql_api_environment_variables_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resolver_request() :: #{
-%%   <<"cachingConfig">> => caching_config(),
-%%   <<"code">> => string(),
-%%   <<"dataSourceName">> => string(),
-%%   <<"fieldName">> := string(),
-%%   <<"kind">> => list(any()),
-%%   <<"maxBatchSize">> => integer(),
-%%   <<"metricsConfig">> => list(any()),
-%%   <<"pipelineConfig">> => pipeline_config(),
-%%   <<"requestMappingTemplate">> => string(),
-%%   <<"responseMappingTemplate">> => string(),
-%%   <<"runtime">> => app_sync_runtime(),
-%%   <<"syncConfig">> => sync_config()
-%% }
--type create_resolver_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_error() :: #{
-%%   <<"errorType">> => string(),
-%%   <<"location">> => code_error_location(),
-%%   <<"value">> => string()
-%% }
--type code_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_function_request() :: #{}
--type delete_function_request() :: #{}.
-
-
-%% Example:
-%% log_config() :: #{
-%%   <<"cloudWatchLogsRoleArn">> => string(),
-%%   <<"excludeVerboseContent">> => boolean(),
-%%   <<"fieldLogLevel">> => list(any())
-%% }
--type log_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_source_request() :: #{}
--type get_data_source_request() :: #{}.
+-type list_resolvers_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -939,42 +1427,73 @@
 
 
 %% Example:
-%% update_api_response() :: #{
-%%   <<"api">> => api()
+%% list_source_api_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type update_api_response() :: #{binary() => any()}.
+-type list_source_api_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
+%% list_source_api_associations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sourceApiAssociationSummaries">> => list(source_api_association_summary())
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type list_source_api_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
-%% get_api_cache_response() :: #{
-%%   <<"apiCache">> => api_cache()
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
 %% }
--type get_api_cache_response() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_merged_graphql_api_response() :: #{
-%%   <<"sourceApiAssociationStatus">> => list(any())
+%% list_types_by_association_request() :: #{
+%%   <<"format">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type disassociate_merged_graphql_api_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_api_request() :: #{}
--type disassociate_api_request() :: #{}.
+-type list_types_by_association_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_type_response() :: #{
-%%   <<"type">> => type()
+%% list_types_by_association_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"types">> => list(type())
 %% }
--type create_type_response() :: #{binary() => any()}.
+-type list_types_by_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_types_request() :: #{
+%%   <<"format">> := list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_types_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"types">> => list(type())
+%% }
+-type list_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_config() :: #{
+%%   <<"cloudWatchLogsRoleArn">> => string(),
+%%   <<"excludeVerboseContent">> => boolean(),
+%%   <<"fieldLogLevel">> => list(any())
+%% }
+-type log_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -985,108 +1504,70 @@
 
 
 %% Example:
-%% get_graphql_api_environment_variables_response() :: #{
+%% open_id_connect_config() :: #{
+%%   <<"authTTL">> => float(),
+%%   <<"clientId">> => string(),
+%%   <<"iatTTL">> => float(),
+%%   <<"issuer">> => string()
+%% }
+-type open_id_connect_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_search_service_data_source_config() :: #{
+%%   <<"awsRegion">> => string(),
+%%   <<"endpoint">> => string()
+%% }
+-type open_search_service_data_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_config() :: #{
+%%   <<"functions">> => list(string())
+%% }
+-type pipeline_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_graphql_api_environment_variables_request() :: #{
+%%   <<"environmentVariables">> := map()
+%% }
+-type put_graphql_api_environment_variables_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_graphql_api_environment_variables_response() :: #{
 %%   <<"environmentVariables">> => map()
 %% }
--type get_graphql_api_environment_variables_response() :: #{binary() => any()}.
+-type put_graphql_api_environment_variables_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_function_response() :: #{
-%%   <<"functionConfiguration">> => function_configuration()
+%% rds_data_api_config() :: #{
+%%   <<"databaseName">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"secretArn">> => string()
 %% }
--type create_function_response() :: #{binary() => any()}.
+-type rds_data_api_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% enhanced_metrics_config() :: #{
-%%   <<"dataSourceLevelMetricsBehavior">> => list(any()),
-%%   <<"operationLevelMetricsConfig">> => list(any()),
-%%   <<"resolverLevelMetricsBehavior">> => list(any())
+%% rds_http_endpoint_config() :: #{
+%%   <<"awsRegion">> => string(),
+%%   <<"awsSecretStoreArn">> => string(),
+%%   <<"databaseName">> => string(),
+%%   <<"dbClusterIdentifier">> => string(),
+%%   <<"schema">> => string()
 %% }
--type enhanced_metrics_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_api_key_response() :: #{}
--type delete_api_key_response() :: #{}.
+-type rds_http_endpoint_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_data_sources_response() :: #{
-%%   <<"dataSources">> => list(data_source()),
-%%   <<"nextToken">> => string()
+%% relational_database_data_source_config() :: #{
+%%   <<"rdsHttpEndpointConfig">> => rds_http_endpoint_config(),
+%%   <<"relationalDatabaseSourceType">> => list(any())
 %% }
--type list_data_sources_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_source_request() :: #{}
--type delete_data_source_request() :: #{}.
-
-%% Example:
-%% delete_function_response() :: #{}
--type delete_function_response() :: #{}.
-
-
-%% Example:
-%% api_cache() :: #{
-%%   <<"apiCachingBehavior">> => list(any()),
-%%   <<"atRestEncryptionEnabled">> => boolean(),
-%%   <<"healthMetricsConfig">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"transitEncryptionEnabled">> => boolean(),
-%%   <<"ttl">> => float(),
-%%   <<"type">> => list(any())
-%% }
--type api_cache() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_domain_name_response() :: #{
-%%   <<"domainNameConfig">> => domain_name_config()
-%% }
--type update_domain_name_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resolver_request() :: #{}
--type delete_resolver_request() :: #{}.
-
-
-%% Example:
-%% get_data_source_introspection_response() :: #{
-%%   <<"introspectionId">> => string(),
-%%   <<"introspectionResult">> => data_source_introspection_result(),
-%%   <<"introspectionStatus">> => list(any()),
-%%   <<"introspectionStatusDetail">> => string()
-%% }
--type get_data_source_introspection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_source_api_association_request() :: #{}
--type get_source_api_association_request() :: #{}.
-
-
-%% Example:
-%% start_data_source_introspection_response() :: #{
-%%   <<"introspectionId">> => string(),
-%%   <<"introspectionStatus">> => list(any()),
-%%   <<"introspectionStatusDetail">> => string()
-%% }
--type start_data_source_introspection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% handler_config() :: #{
-%%   <<"behavior">> => list(any()),
-%%   <<"integration">> => integration()
-%% }
--type handler_config() :: #{binary() => any()}.
+-type relational_database_data_source_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1110,218 +1591,10 @@
 
 
 %% Example:
-%% list_domain_names_response() :: #{
-%%   <<"domainNameConfigs">> => list(domain_name_config()),
-%%   <<"nextToken">> => string()
-%% }
--type list_domain_names_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_api_key_response() :: #{
-%%   <<"apiKey">> => api_key()
-%% }
--type create_api_key_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_type_request() :: #{
-%%   <<"definition">> => string(),
-%%   <<"format">> := list(any())
-%% }
--type update_type_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% pipeline_config() :: #{
-%%   <<"functions">> => list(string())
-%% }
--type pipeline_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_domain_name_request() :: #{
-%%   <<"description">> => string()
-%% }
--type update_domain_name_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_api_key_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"expires">> => float()
-%% }
--type create_api_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_data_source_config() :: #{
-%%   <<"lambdaFunctionArn">> => string()
-%% }
--type lambda_data_source_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_api_cache_request() :: #{
-%%   <<"apiCachingBehavior">> := list(any()),
-%%   <<"healthMetricsConfig">> => list(any()),
-%%   <<"ttl">> := float(),
-%%   <<"type">> := list(any())
-%% }
--type update_api_cache_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_config() :: #{
-%%   <<"authProviders">> => list(auth_provider()),
-%%   <<"connectionAuthModes">> => list(auth_mode()),
-%%   <<"defaultPublishAuthModes">> => list(auth_mode()),
-%%   <<"defaultSubscribeAuthModes">> => list(auth_mode()),
-%%   <<"logConfig">> => event_log_config()
-%% }
--type event_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_functions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_functions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% api_association() :: #{
-%%   <<"apiId">> => string(),
-%%   <<"associationStatus">> => list(any()),
-%%   <<"deploymentDetail">> => string(),
-%%   <<"domainName">> => string()
-%% }
--type api_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% http_data_source_config() :: #{
-%%   <<"authorizationConfig">> => authorization_config(),
-%%   <<"endpoint">> => string()
-%% }
--type http_data_source_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_source_response() :: #{
-%%   <<"dataSource">> => data_source()
-%% }
--type create_data_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_schema_merge_response() :: #{
-%%   <<"sourceApiAssociationStatus">> => list(any())
-%% }
--type start_schema_merge_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_api_cache_request() :: #{}
--type delete_api_cache_request() :: #{}.
-
-
-%% Example:
-%% create_channel_namespace_response() :: #{
-%%   <<"channelNamespace">> => channel_namespace()
-%% }
--type create_channel_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_schema_merge_request() :: #{}
--type start_schema_merge_request() :: #{}.
-
-
-%% Example:
-%% rds_data_api_config() :: #{
-%%   <<"databaseName">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"secretArn">> => string()
-%% }
--type rds_data_api_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_namespace_response() :: #{}
--type delete_channel_namespace_response() :: #{}.
-
-
-%% Example:
-%% list_apis_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_apis_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% auth_provider() :: #{
-%%   <<"authType">> => list(any()),
-%%   <<"cognitoConfig">> => cognito_config(),
-%%   <<"lambdaAuthorizerConfig">> => lambda_authorizer_config(),
-%%   <<"openIDConnectConfig">> => open_id_connect_config()
-%% }
--type auth_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_iam_config() :: #{
-%%   <<"signingRegion">> => string(),
-%%   <<"signingServiceName">> => string()
-%% }
--type aws_iam_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_schema_creation_status_request() :: #{}
--type get_schema_creation_status_request() :: #{}.
-
-
-%% Example:
-%% error_detail() :: #{
+%% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type error_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_namespace() :: #{
-%%   <<"apiId">> => string(),
-%%   <<"channelNamespaceArn">> => string(),
-%%   <<"codeHandlers">> => string(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"handlerConfigs">> => handler_configs(),
-%%   <<"lastModified">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"publishAuthModes">> => list(auth_mode()),
-%%   <<"subscribeAuthModes">> => list(auth_mode()),
-%%   <<"tags">> => map()
-%% }
--type channel_namespace() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_source_graphql_api_response() :: #{
-%%   <<"sourceApiAssociationStatus">> => list(any())
-%% }
--type disassociate_source_graphql_api_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resolver_response() :: #{
-%%   <<"resolver">> => resolver()
-%% }
--type get_resolver_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1340,35 +1613,12 @@
 %% }
 -type source_api_association() :: #{binary() => any()}.
 
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
 
 %% Example:
-%% get_domain_name_request() :: #{}
--type get_domain_name_request() :: #{}.
-
-
-%% Example:
-%% associate_api_request() :: #{
-%%   <<"apiId">> := string()
+%% source_api_association_config() :: #{
+%%   <<"mergeType">> => list(any())
 %% }
--type associate_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_graphql_api_response() :: #{
-%%   <<"graphqlApi">> => graphql_api()
-%% }
--type get_graphql_api_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resolver_response() :: #{}
--type delete_resolver_response() :: #{}.
-
-%% Example:
-%% delete_api_key_request() :: #{}
--type delete_api_key_request() :: #{}.
+-type source_api_association_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1385,51 +1635,19 @@
 
 
 %% Example:
-%% update_api_request() :: #{
-%%   <<"eventConfig">> := event_config(),
-%%   <<"name">> := string(),
-%%   <<"ownerContact">> => string()
+%% start_data_source_introspection_request() :: #{
+%%   <<"rdsDataApiConfig">> => rds_data_api_config()
 %% }
--type update_api_request() :: #{binary() => any()}.
+-type start_data_source_introspection_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% domain_name_config() :: #{
-%%   <<"appsyncDomainName">> => string(),
-%%   <<"certificateArn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"domainName">> => string(),
-%%   <<"domainNameArn">> => string(),
-%%   <<"hostedZoneId">> => string(),
-%%   <<"tags">> => map()
+%% start_data_source_introspection_response() :: #{
+%%   <<"introspectionId">> => string(),
+%%   <<"introspectionStatus">> => list(any()),
+%%   <<"introspectionStatusDetail">> => string()
 %% }
--type domain_name_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_types_by_association_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"types">> => list(type())
-%% }
--type list_types_by_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_schema_creation_response() :: #{
-%%   <<"status">> => list(any())
-%% }
--type start_schema_creation_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_merged_graphql_api_request() :: #{}
--type disassociate_merged_graphql_api_request() :: #{}.
+-type start_data_source_introspection_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1440,79 +1658,135 @@
 
 
 %% Example:
-%% list_channel_namespaces_response() :: #{
-%%   <<"channelNamespaces">> => list(channel_namespace()),
-%%   <<"nextToken">> => string()
+%% start_schema_creation_response() :: #{
+%%   <<"status">> => list(any())
 %% }
--type list_channel_namespaces_response() :: #{binary() => any()}.
+-type start_schema_creation_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+%% start_schema_merge_request() :: #{}
+-type start_schema_merge_request() :: #{}.
 
 
 %% Example:
-%% api_key_validity_out_of_bounds_exception() :: #{
+%% start_schema_merge_response() :: #{
+%%   <<"sourceApiAssociationStatus">> => list(any())
+%% }
+-type start_schema_merge_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% sync_config() :: #{
+%%   <<"conflictDetection">> => list(any()),
+%%   <<"conflictHandler">> => list(any()),
+%%   <<"lambdaConflictHandlerConfig">> => lambda_conflict_handler_config()
+%% }
+-type sync_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% type() :: #{
+%%   <<"arn">> => string(),
+%%   <<"definition">> => string(),
+%%   <<"description">> => string(),
+%%   <<"format">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type type() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type api_key_validity_out_of_bounds_exception() :: #{binary() => any()}.
+-type unauthorized_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% function_configuration() :: #{
-%%   <<"code">> => string(),
-%%   <<"dataSourceName">> => string(),
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_api_cache_request() :: #{
+%%   <<"apiCachingBehavior">> := list(any()),
+%%   <<"healthMetricsConfig">> => list(any()),
+%%   <<"ttl">> := float(),
+%%   <<"type">> := list(any())
+%% }
+-type update_api_cache_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_api_cache_response() :: #{
+%%   <<"apiCache">> => api_cache()
+%% }
+-type update_api_cache_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_api_key_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"functionArn">> => string(),
-%%   <<"functionId">> => string(),
-%%   <<"functionVersion">> => string(),
-%%   <<"maxBatchSize">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"requestMappingTemplate">> => string(),
-%%   <<"responseMappingTemplate">> => string(),
-%%   <<"runtime">> => app_sync_runtime(),
-%%   <<"syncConfig">> => sync_config()
+%%   <<"expires">> => float()
 %% }
--type function_configuration() :: #{binary() => any()}.
+-type update_api_key_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% elasticsearch_data_source_config() :: #{
-%%   <<"awsRegion">> => string(),
-%%   <<"endpoint">> => string()
+%% update_api_key_response() :: #{
+%%   <<"apiKey">> => api_key()
 %% }
--type elasticsearch_data_source_config() :: #{binary() => any()}.
+-type update_api_key_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% lambda_config() :: #{
-%%   <<"invokeType">> => list(any())
+%% update_api_request() :: #{
+%%   <<"eventConfig">> := event_config(),
+%%   <<"name">> := string(),
+%%   <<"ownerContact">> => string()
 %% }
--type lambda_config() :: #{binary() => any()}.
+-type update_api_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_api_keys_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% update_api_response() :: #{
+%%   <<"api">> => api()
 %% }
--type list_api_keys_request() :: #{binary() => any()}.
+-type update_api_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% relational_database_data_source_config() :: #{
-%%   <<"rdsHttpEndpointConfig">> => rds_http_endpoint_config(),
-%%   <<"relationalDatabaseSourceType">> => list(any())
+%% update_channel_namespace_request() :: #{
+%%   <<"codeHandlers">> => string(),
+%%   <<"handlerConfigs">> => handler_configs(),
+%%   <<"publishAuthModes">> => list(auth_mode()),
+%%   <<"subscribeAuthModes">> => list(auth_mode())
 %% }
--type relational_database_data_source_config() :: #{binary() => any()}.
+-type update_channel_namespace_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% open_search_service_data_source_config() :: #{
-%%   <<"awsRegion">> => string(),
-%%   <<"endpoint">> => string()
+%% update_channel_namespace_response() :: #{
+%%   <<"channelNamespace">> => channel_namespace()
 %% }
--type open_search_service_data_source_config() :: #{binary() => any()}.
+-type update_channel_namespace_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1531,155 +1805,26 @@
 %% }
 -type update_data_source_request() :: #{binary() => any()}.
 
-%% Example:
-%% flush_api_cache_response() :: #{}
--type flush_api_cache_response() :: #{}.
-
 
 %% Example:
-%% create_api_request() :: #{
-%%   <<"eventConfig">> := event_config(),
-%%   <<"name">> := string(),
-%%   <<"ownerContact">> => string(),
-%%   <<"tags">> => map()
+%% update_data_source_response() :: #{
+%%   <<"dataSource">> => data_source()
 %% }
--type create_api_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_api_cache_response() :: #{}
--type delete_api_cache_response() :: #{}.
+-type update_data_source_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_source_graphql_api_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"sourceApiAssociationConfig">> => source_api_association_config(),
-%%   <<"sourceApiIdentifier">> := string()
+%% update_domain_name_request() :: #{
+%%   <<"description">> => string()
 %% }
--type associate_source_graphql_api_request() :: #{binary() => any()}.
+-type update_domain_name_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% type() :: #{
-%%   <<"arn">> => string(),
-%%   <<"definition">> => string(),
-%%   <<"description">> => string(),
-%%   <<"format">> => list(any()),
-%%   <<"name">> => string()
-%% }
--type type() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source_introspection_model() :: #{
-%%   <<"fields">> => list(data_source_introspection_model_field()),
-%%   <<"indexes">> => list(data_source_introspection_model_index()),
-%%   <<"name">> => string(),
-%%   <<"primaryKey">> => data_source_introspection_model_index(),
-%%   <<"sdl">> => string()
-%% }
--type data_source_introspection_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% api() :: #{
-%%   <<"apiArn">> => string(),
-%%   <<"apiId">> => string(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"dns">> => map(),
-%%   <<"eventConfig">> => event_config(),
-%%   <<"name">> => string(),
-%%   <<"ownerContact">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"wafWebAclArn">> => string(),
-%%   <<"xrayEnabled">> => boolean()
-%% }
--type api() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_namespace_response() :: #{
-%%   <<"channelNamespace">> => channel_namespace()
-%% }
--type update_channel_namespace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_graphql_api_response() :: #{
-%%   <<"graphqlApi">> => graphql_api()
-%% }
--type create_graphql_api_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source_introspection_result() :: #{
-%%   <<"models">> => list(data_source_introspection_model()),
-%%   <<"nextToken">> => string()
-%% }
--type data_source_introspection_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluate_code_request() :: #{
-%%   <<"code">> := string(),
-%%   <<"context">> := string(),
-%%   <<"function">> => string(),
-%%   <<"runtime">> := app_sync_runtime()
-%% }
--type evaluate_code_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_source_graphql_api_response() :: #{
-%%   <<"sourceApiAssociation">> => source_api_association()
-%% }
--type associate_source_graphql_api_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_name_request() :: #{}
--type delete_domain_name_request() :: #{}.
-
-
-%% Example:
-%% source_api_association_config() :: #{
-%%   <<"mergeType">> => list(any())
-%% }
--type source_api_association_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_bridge_data_source_config() :: #{
-%%   <<"eventBusArn">> => string()
-%% }
--type event_bridge_data_source_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_type_response() :: #{
-%%   <<"type">> => type()
-%% }
--type update_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_name_response() :: #{
+%% update_domain_name_response() :: #{
 %%   <<"domainNameConfig">> => domain_name_config()
 %% }
--type create_domain_name_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_source_api_association_response() :: #{
-%%   <<"sourceApiAssociation">> => source_api_association()
-%% }
--type update_source_api_association_response() :: #{binary() => any()}.
+-type update_domain_name_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1699,12 +1844,10 @@
 
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"detail">> => bad_request_detail(),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
+%% update_function_response() :: #{
+%%   <<"functionConfiguration">> => function_configuration()
 %% }
--type bad_request_exception() :: #{binary() => any()}.
+-type update_function_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1728,52 +1871,34 @@
 
 
 %% Example:
-%% update_api_cache_response() :: #{
-%%   <<"apiCache">> => api_cache()
+%% update_graphql_api_response() :: #{
+%%   <<"graphqlApi">> => graphql_api()
 %% }
--type update_api_cache_response() :: #{binary() => any()}.
+-type update_graphql_api_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_resolver_response() :: #{
-%%   <<"resolver">> => resolver()
-%% }
--type create_resolver_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_introspection_schema_request() :: #{
-%%   <<"format">> := list(any()),
-%%   <<"includeDirectives">> => boolean()
-%% }
--type get_introspection_schema_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_function_request() :: #{
+%% update_resolver_request() :: #{
+%%   <<"cachingConfig">> => caching_config(),
 %%   <<"code">> => string(),
-%%   <<"dataSourceName">> := string(),
-%%   <<"description">> => string(),
-%%   <<"functionVersion">> => string(),
+%%   <<"dataSourceName">> => string(),
+%%   <<"kind">> => list(any()),
 %%   <<"maxBatchSize">> => integer(),
-%%   <<"name">> := string(),
+%%   <<"metricsConfig">> => list(any()),
+%%   <<"pipelineConfig">> => pipeline_config(),
 %%   <<"requestMappingTemplate">> => string(),
 %%   <<"responseMappingTemplate">> => string(),
 %%   <<"runtime">> => app_sync_runtime(),
 %%   <<"syncConfig">> => sync_config()
 %% }
--type create_function_request() :: #{binary() => any()}.
+-type update_resolver_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% bad_request_detail() :: #{
-%%   <<"codeErrors">> => list(code_error())
+%% update_resolver_response() :: #{
+%%   <<"resolver">> => resolver()
 %% }
--type bad_request_detail() :: #{binary() => any()}.
-
-%% Example:
-%% get_graphql_api_request() :: #{}
--type get_graphql_api_request() :: #{}.
+-type update_resolver_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1783,665 +1908,540 @@
 %% }
 -type update_source_api_association_request() :: #{binary() => any()}.
 
-%% Example:
-%% get_graphql_api_environment_variables_request() :: #{}
--type get_graphql_api_environment_variables_request() :: #{}.
 
 %% Example:
-%% disassociate_api_response() :: #{}
--type disassociate_api_response() :: #{}.
-
-
-%% Example:
-%% data_source() :: #{
-%%   <<"dataSourceArn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"dynamodbConfig">> => dynamodb_data_source_config(),
-%%   <<"elasticsearchConfig">> => elasticsearch_data_source_config(),
-%%   <<"eventBridgeConfig">> => event_bridge_data_source_config(),
-%%   <<"httpConfig">> => http_data_source_config(),
-%%   <<"lambdaConfig">> => lambda_data_source_config(),
-%%   <<"metricsConfig">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"openSearchServiceConfig">> => open_search_service_data_source_config(),
-%%   <<"relationalDatabaseConfig">> => relational_database_data_source_config(),
-%%   <<"serviceRoleArn">> => string(),
-%%   <<"type">> => list(any())
+%% update_source_api_association_response() :: #{
+%%   <<"sourceApiAssociation">> => source_api_association()
 %% }
--type data_source() :: #{binary() => any()}.
+-type update_source_api_association_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% sync_config() :: #{
-%%   <<"conflictDetection">> => list(any()),
-%%   <<"conflictHandler">> => list(any()),
-%%   <<"lambdaConflictHandlerConfig">> => lambda_conflict_handler_config()
+%% update_type_request() :: #{
+%%   <<"definition">> => string(),
+%%   <<"format">> := list(any())
 %% }
--type sync_config() :: #{binary() => any()}.
+-type update_type_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_source_introspection_model_field_type() :: #{
-%%   <<"kind">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => data_source_introspection_model_field_type(),
-%%   <<"values">> => list(string())
+%% update_type_response() :: #{
+%%   <<"type">> => type()
 %% }
--type data_source_introspection_model_field_type() :: #{binary() => any()}.
+-type update_type_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_graphql_api_request() :: #{
-%%   <<"additionalAuthenticationProviders">> => list(additional_authentication_provider()),
-%%   <<"apiType">> => list(any()),
-%%   <<"authenticationType">> := list(any()),
-%%   <<"enhancedMetricsConfig">> => enhanced_metrics_config(),
-%%   <<"introspectionConfig">> => list(any()),
-%%   <<"lambdaAuthorizerConfig">> => lambda_authorizer_config(),
-%%   <<"logConfig">> => log_config(),
-%%   <<"mergedApiExecutionRoleArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"openIDConnectConfig">> => open_id_connect_config(),
-%%   <<"ownerContact">> => string(),
-%%   <<"queryDepthLimit">> => integer(),
-%%   <<"resolverCountLimit">> => integer(),
-%%   <<"tags">> => map(),
-%%   <<"userPoolConfig">> => user_pool_config(),
-%%   <<"visibility">> => list(any()),
-%%   <<"xrayEnabled">> => boolean()
-%% }
--type create_graphql_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% api_key() :: #{
-%%   <<"deletes">> => float(),
-%%   <<"description">> => string(),
-%%   <<"expires">> => float(),
-%%   <<"id">> => string()
-%% }
--type api_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_data_source_introspection_request() :: #{
-%%   <<"rdsDataApiConfig">> => rds_data_api_config()
-%% }
--type start_data_source_introspection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_source_response() :: #{
-%%   <<"dataSource">> => data_source()
-%% }
--type get_data_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dynamodb_data_source_config() :: #{
+%% user_pool_config() :: #{
+%%   <<"appIdClientRegex">> => string(),
 %%   <<"awsRegion">> => string(),
-%%   <<"deltaSyncConfig">> => delta_sync_config(),
-%%   <<"tableName">> => string(),
-%%   <<"useCallerCredentials">> => boolean(),
-%%   <<"versioned">> => boolean()
+%%   <<"defaultAction">> => list(any()),
+%%   <<"userPoolId">> => string()
 %% }
--type dynamodb_data_source_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_types_request() :: #{
-%%   <<"format">> := list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_types_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_api_request() :: #{}
--type get_api_request() :: #{}.
-
-
-%% Example:
-%% graph_q_l_schema_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type graph_q_l_schema_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_name_response() :: #{
-%%   <<"domainNameConfig">> => domain_name_config()
-%% }
--type get_domain_name_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_source_introspection_request() :: #{
-%%   <<"includeModelsSDL">> => boolean(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_data_source_introspection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_merged_graphql_api_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"mergedApiIdentifier">> := string(),
-%%   <<"sourceApiAssociationConfig">> => source_api_association_config()
-%% }
--type associate_merged_graphql_api_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_api_request() :: #{}
--type delete_api_request() :: #{}.
-
-%% Example:
-%% delete_api_response() :: #{}
--type delete_api_response() :: #{}.
+-type user_pool_config() :: #{binary() => any()}.
 
 -type associate_api_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type associate_merged_graphql_api_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type associate_source_graphql_api_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type create_api_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    service_quota_exceeded_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    service_quota_exceeded_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type create_api_cache_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type create_api_key_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    api_key_validity_out_of_bounds_exception() | 
-    not_found_exception() | 
-    api_key_limit_exceeded_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    api_key_validity_out_of_bounds_exception() | 
+    api_key_limit_exceeded_exception().
 
 -type create_channel_namespace_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
-    service_quota_exceeded_exception() | 
-    conflict_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type create_data_source_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type create_domain_name_errors() ::
+    internal_failure_exception() | 
     bad_request_exception() | 
-    access_denied_exception() | 
-    internal_failure_exception().
+    access_denied_exception().
 
 -type create_function_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type create_graphql_api_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    api_limit_exceeded_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    api_limit_exceeded_exception().
 
 -type create_resolver_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type create_type_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type delete_api_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_api_cache_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type delete_api_key_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type delete_channel_namespace_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_data_source_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type delete_domain_name_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_function_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type delete_graphql_api_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_resolver_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type delete_type_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type disassociate_api_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type disassociate_merged_graphql_api_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type disassociate_source_graphql_api_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type evaluate_code_errors() ::
+    internal_failure_exception() | 
     bad_request_exception() | 
-    access_denied_exception() | 
-    internal_failure_exception().
+    access_denied_exception().
 
 -type evaluate_mapping_template_errors() ::
+    internal_failure_exception() | 
     bad_request_exception() | 
-    access_denied_exception() | 
-    internal_failure_exception().
+    access_denied_exception().
 
 -type flush_api_cache_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type get_api_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_api_association_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_api_cache_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type get_channel_namespace_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_data_source_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type get_data_source_introspection_errors() ::
-    bad_request_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_domain_name_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_function_errors() ::
-    concurrent_modification_exception() | 
+    unauthorized_exception() | 
     not_found_exception() | 
-    unauthorized_exception().
+    concurrent_modification_exception().
 
 -type get_graphql_api_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_graphql_api_environment_variables_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_introspection_schema_errors() ::
-    graph_q_l_schema_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    graph_q_l_schema_exception().
 
 -type get_resolver_errors() ::
-    concurrent_modification_exception() | 
+    unauthorized_exception() | 
     not_found_exception() | 
-    unauthorized_exception().
+    concurrent_modification_exception().
 
 -type get_schema_creation_status_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_source_api_association_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_type_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type list_api_keys_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_apis_errors() ::
-    bad_request_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_channel_namespaces_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_data_sources_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_domain_names_errors() ::
+    internal_failure_exception() | 
     bad_request_exception() | 
-    access_denied_exception() | 
-    internal_failure_exception().
+    access_denied_exception().
 
 -type list_functions_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_graphql_apis_errors() ::
-    bad_request_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_resolvers_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_resolvers_by_function_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_source_api_associations_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_types_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type list_types_by_association_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type put_graphql_api_environment_variables_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type start_data_source_introspection_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type start_schema_creation_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type start_schema_merge_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_api_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_api_cache_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type update_api_key_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    api_key_validity_out_of_bounds_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception() | 
+    api_key_validity_out_of_bounds_exception().
 
 -type update_channel_namespace_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_data_source_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type update_domain_name_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
     not_found_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_function_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type update_graphql_api_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_resolver_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type update_source_api_association_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type update_type_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

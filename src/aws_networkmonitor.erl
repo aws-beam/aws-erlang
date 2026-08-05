@@ -65,34 +65,39 @@
 
 
 %% Example:
-%% list_monitors_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"state">> => [string()]
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_monitors_input() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_monitor_output() :: #{
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_monitor_input() :: #{
 %%   <<"aggregationPeriod">> => float(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"clientToken">> => [string()],
+%%   <<"monitorName">> := string(),
+%%   <<"probes">> => list(create_monitor_probe_input()),
+%%   <<"tags">> => map()
+%% }
+-type create_monitor_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_monitor_output() :: #{
+%%   <<"aggregationPeriod">> => float(),
 %%   <<"monitorArn">> => string(),
 %%   <<"monitorName">> => string(),
-%%   <<"probes">> => list(probe()),
 %%   <<"state">> => list(any()),
 %%   <<"tags">> => map()
 %% }
--type get_monitor_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_monitors_output() :: #{
-%%   <<"monitors">> => list(monitor_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_monitors_output() :: #{binary() => any()}.
+-type create_monitor_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -108,79 +113,12 @@
 
 
 %% Example:
-%% update_probe_output() :: #{
-%%   <<"addressFamily">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"destination">> => string(),
-%%   <<"destinationPort">> => integer(),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"packetSize">> => integer(),
-%%   <<"probeArn">> => string(),
-%%   <<"probeId">> => string(),
-%%   <<"protocol">> => list(any()),
-%%   <<"sourceArn">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"vpcId">> => string()
-%% }
--type update_probe_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_monitor_output() :: #{}
--type delete_monitor_output() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_monitor_input() :: #{}
--type delete_monitor_input() :: #{}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_probe_input() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"probe">> := probe_input(),
 %%   <<"tags">> => map()
 %% }
 -type create_probe_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_probe_input() :: #{}
--type delete_probe_input() :: #{}.
-
-%% Example:
-%% get_probe_input() :: #{}
--type get_probe_input() :: #{}.
-
-%% Example:
-%% get_monitor_input() :: #{}
--type get_monitor_input() :: #{}.
 
 
 %% Example:
@@ -201,112 +139,43 @@
 %% }
 -type create_probe_output() :: #{binary() => any()}.
 
+%% Example:
+%% delete_monitor_input() :: #{}
+-type delete_monitor_input() :: #{}.
 
 %% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
+%% delete_monitor_output() :: #{}
+-type delete_monitor_output() :: #{}.
+
+%% Example:
+%% delete_probe_input() :: #{}
+-type delete_probe_input() :: #{}.
 
 %% Example:
 %% delete_probe_output() :: #{}
 -type delete_probe_output() :: #{}.
 
 %% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
+%% get_monitor_input() :: #{}
+-type get_monitor_input() :: #{}.
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_probe_input() :: #{
-%%   <<"destination">> => string(),
-%%   <<"destinationPort">> => integer(),
-%%   <<"packetSize">> => integer(),
-%%   <<"protocol">> => list(any()),
-%%   <<"state">> => list(any())
-%% }
--type update_probe_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% probe_input() :: #{
-%%   <<"destination">> => string(),
-%%   <<"destinationPort">> => integer(),
-%%   <<"packetSize">> => integer(),
-%%   <<"protocol">> => list(any()),
-%%   <<"sourceArn">> => string(),
+%% get_monitor_output() :: #{
+%%   <<"aggregationPeriod">> => float(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"monitorArn">> => string(),
+%%   <<"monitorName">> => string(),
+%%   <<"probes">> => list(probe()),
+%%   <<"state">> => list(any()),
 %%   <<"tags">> => map()
 %% }
--type probe_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_monitor_input() :: #{
-%%   <<"aggregationPeriod">> := float()
-%% }
--type update_monitor_input() :: #{binary() => any()}.
-
+-type get_monitor_output() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-
-%% Example:
-%% probe() :: #{
-%%   <<"addressFamily">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"destination">> => string(),
-%%   <<"destinationPort">> => integer(),
-%%   <<"modifiedAt">> => non_neg_integer(),
-%%   <<"packetSize">> => integer(),
-%%   <<"probeArn">> => string(),
-%%   <<"probeId">> => string(),
-%%   <<"protocol">> => list(any()),
-%%   <<"sourceArn">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"vpcId">> => string()
-%% }
--type probe() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
+%% get_probe_input() :: #{}
+-type get_probe_input() :: #{}.
 
 
 %% Example:
@@ -329,14 +198,38 @@
 
 
 %% Example:
-%% create_monitor_output() :: #{
-%%   <<"aggregationPeriod">> => float(),
-%%   <<"monitorArn">> => string(),
-%%   <<"monitorName">> => string(),
-%%   <<"state">> => list(any()),
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_monitors_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"state">> => [string()]
+%% }
+-type list_monitors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_monitors_output() :: #{
+%%   <<"monitors">> => list(monitor_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_monitors_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
 %%   <<"tags">> => map()
 %% }
--type create_monitor_output() :: #{binary() => any()}.
+-type list_tags_for_resource_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -351,6 +244,87 @@
 
 
 %% Example:
+%% probe() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destination">> => string(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"packetSize">> => integer(),
+%%   <<"probeArn">> => string(),
+%%   <<"probeId">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"sourceArn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"vpcId">> => string()
+%% }
+-type probe() :: #{binary() => any()}.
+
+
+%% Example:
+%% probe_input() :: #{
+%%   <<"destination">> => string(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"packetSize">> => integer(),
+%%   <<"protocol">> => list(any()),
+%%   <<"sourceArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type probe_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_monitor_input() :: #{
+%%   <<"aggregationPeriod">> := float()
+%% }
+-type update_monitor_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_monitor_output() :: #{
 %%   <<"aggregationPeriod">> => float(),
 %%   <<"monitorArn">> => string(),
@@ -362,105 +336,131 @@
 
 
 %% Example:
-%% create_monitor_input() :: #{
-%%   <<"aggregationPeriod">> => float(),
-%%   <<"clientToken">> => [string()],
-%%   <<"monitorName">> := string(),
-%%   <<"probes">> => list(create_monitor_probe_input()),
-%%   <<"tags">> => map()
+%% update_probe_input() :: #{
+%%   <<"destination">> => string(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"packetSize">> => integer(),
+%%   <<"protocol">> => list(any()),
+%%   <<"state">> => list(any())
 %% }
--type create_monitor_input() :: #{binary() => any()}.
+-type update_probe_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_probe_output() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"destination">> => string(),
+%%   <<"destinationPort">> => integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"packetSize">> => integer(),
+%%   <<"probeArn">> => string(),
+%%   <<"probeId">> => string(),
+%%   <<"protocol">> => list(any()),
+%%   <<"sourceArn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"vpcId">> => string()
+%% }
+-type update_probe_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_probe_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_probe_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_probe_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_monitors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_monitor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_probe_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

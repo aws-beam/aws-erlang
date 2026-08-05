@@ -267,25 +267,91 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-
-%% Example:
-%% run_log_location() :: #{
-%%   <<"engineLogStream">> => string(),
-%%   <<"runLogStream">> => string()
-%% }
--type run_log_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_multipart_read_set_uploads_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_multipart_read_set_uploads_request() :: #{binary() => any()}.
-
 %% Example:
 %% abort_multipart_read_set_upload_request() :: #{}
 -type abort_multipart_read_set_upload_request() :: #{}.
+
+%% Example:
+%% abort_multipart_read_set_upload_response() :: #{}
+-type abort_multipart_read_set_upload_response() :: #{}.
+
+%% Example:
+%% accept_share_request() :: #{}
+-type accept_share_request() :: #{}.
+
+
+%% Example:
+%% accept_share_response() :: #{
+%%   <<"status">> => string()
+%% }
+-type accept_share_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% activate_read_set_filter() :: #{
+%%   <<"createdAfter">> => [non_neg_integer()],
+%%   <<"createdBefore">> => [non_neg_integer()],
+%%   <<"status">> => string()
+%% }
+-type activate_read_set_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% activate_read_set_job_item() :: #{
+%%   <<"completionTime">> => [non_neg_integer()],
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"sequenceStoreId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type activate_read_set_job_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% activate_read_set_source_item() :: #{
+%%   <<"readSetId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string()
+%% }
+-type activate_read_set_source_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% annotation_import_item_detail() :: #{
+%%   <<"jobStatus">> => string(),
+%%   <<"source">> => string()
+%% }
+-type annotation_import_item_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% annotation_import_item_source() :: #{
+%%   <<"source">> => string()
+%% }
+-type annotation_import_item_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% annotation_import_job_item() :: #{
+%%   <<"annotationFields">> => map(),
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"destinationName">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"roleArn">> => string(),
+%%   <<"runLeftNormalization">> => boolean(),
+%%   <<"status">> => string(),
+%%   <<"updateTime">> => non_neg_integer(),
+%%   <<"versionName">> => string()
+%% }
+-type annotation_import_job_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -304,6 +370,387 @@
 %%   <<"updateTime">> => non_neg_integer()
 %% }
 -type annotation_store_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% annotation_store_version_item() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"storeId">> => string(),
+%%   <<"updateTime">> => non_neg_integer(),
+%%   <<"versionArn">> => string(),
+%%   <<"versionName">> => string(),
+%%   <<"versionSizeBytes">> => [float()]
+%% }
+-type annotation_store_version_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_read_set_request() :: #{
+%%   <<"ids">> := list(string())
+%% }
+-type batch_delete_read_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_read_set_response() :: #{
+%%   <<"errors">> => list(read_set_batch_error())
+%% }
+-type batch_delete_read_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_list_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"totalRuns">> => [integer()],
+%%   <<"workflowId">> => string()
+%% }
+-type batch_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_annotation_import_request() :: #{}
+-type cancel_annotation_import_request() :: #{}.
+
+%% Example:
+%% cancel_annotation_import_response() :: #{}
+-type cancel_annotation_import_response() :: #{}.
+
+
+%% Example:
+%% cancel_run_batch_request() :: #{
+%%   <<"batchId">> := string()
+%% }
+-type cancel_run_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_run_batch_response() :: #{}
+-type cancel_run_batch_response() :: #{}.
+
+%% Example:
+%% cancel_run_request() :: #{}
+-type cancel_run_request() :: #{}.
+
+%% Example:
+%% cancel_variant_import_request() :: #{}
+-type cancel_variant_import_request() :: #{}.
+
+%% Example:
+%% cancel_variant_import_response() :: #{}
+-type cancel_variant_import_response() :: #{}.
+
+
+%% Example:
+%% complete_multipart_read_set_upload_request() :: #{
+%%   <<"parts">> := list(complete_read_set_upload_part_list_item())
+%% }
+-type complete_multipart_read_set_upload_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% complete_multipart_read_set_upload_response() :: #{
+%%   <<"readSetId">> => string()
+%% }
+-type complete_multipart_read_set_upload_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% complete_read_set_upload_part_list_item() :: #{
+%%   <<"checksum">> => [string()],
+%%   <<"partNumber">> => [integer()],
+%%   <<"partSource">> => string()
+%% }
+-type complete_read_set_upload_part_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_details() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"uuid">> => string()
+%% }
+-type configuration_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_list_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type configuration_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_registry_map() :: #{
+%%   <<"imageMappings">> => list(image_mapping()),
+%%   <<"registryMappings">> => list(registry_mapping())
+%% }
+-type container_registry_map() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_annotation_store_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"reference">> => list(),
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"storeFormat">> := string(),
+%%   <<"storeOptions">> => list(),
+%%   <<"tags">> => map(),
+%%   <<"versionName">> => string()
+%% }
+-type create_annotation_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_annotation_store_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"reference">> => list(),
+%%   <<"status">> => string(),
+%%   <<"storeFormat">> => string(),
+%%   <<"storeOptions">> => list(),
+%%   <<"versionName">> => string()
+%% }
+-type create_annotation_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_annotation_store_version_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"versionName">> := string(),
+%%   <<"versionOptions">> => list()
+%% }
+-type create_annotation_store_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_annotation_store_version_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"storeId">> => string(),
+%%   <<"versionName">> => string(),
+%%   <<"versionOptions">> => list()
+%% }
+-type create_annotation_store_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configuration_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"requestId">> := string(),
+%%   <<"runConfigurations">> := run_configurations(),
+%%   <<"tags">> => map()
+%% }
+-type create_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"runConfigurations">> => run_configurations_response(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"uuid">> => string()
+%% }
+-type create_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multipart_read_set_upload_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"generatedFrom">> => string(),
+%%   <<"name">> := string(),
+%%   <<"referenceArn">> => string(),
+%%   <<"sampleId">> := string(),
+%%   <<"sourceFileType">> := string(),
+%%   <<"subjectId">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_multipart_read_set_upload_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multipart_read_set_upload_response() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"generatedFrom">> => string(),
+%%   <<"name">> => string(),
+%%   <<"referenceArn">> => string(),
+%%   <<"sampleId">> => string(),
+%%   <<"sequenceStoreId">> => string(),
+%%   <<"sourceFileType">> => string(),
+%%   <<"subjectId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"uploadId">> => string()
+%% }
+-type create_multipart_read_set_upload_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_reference_store_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"tags">> => map()
+%% }
+-type create_reference_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_reference_store_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sseConfig">> => sse_config()
+%% }
+-type create_reference_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_run_cache_request() :: #{
+%%   <<"cacheBehavior">> => string(),
+%%   <<"cacheBucketOwnerId">> => string(),
+%%   <<"cacheS3Location">> := string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"requestId">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_run_cache_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_run_cache_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_run_cache_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_run_group_request() :: #{
+%%   <<"maxCpus">> => [integer()],
+%%   <<"maxDuration">> => [integer()],
+%%   <<"maxGpus">> => [integer()],
+%%   <<"maxRuns">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"requestId">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_run_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_run_group_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_run_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sequence_store_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"eTagAlgorithmFamily">> => string(),
+%%   <<"fallbackLocation">> => string(),
+%%   <<"name">> := string(),
+%%   <<"propagatedSetLevelTags">> => list(string()),
+%%   <<"s3AccessConfig">> => s3_access_config(),
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"tags">> => map()
+%% }
+-type create_sequence_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sequence_store_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"eTagAlgorithmFamily">> => string(),
+%%   <<"fallbackLocation">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"propagatedSetLevelTags">> => list(string()),
+%%   <<"s3Access">> => sequence_store_s3_access(),
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string()
+%% }
+-type create_sequence_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_share_request() :: #{
+%%   <<"principalSubscriber">> := [string()],
+%%   <<"resourceArn">> := [string()],
+%%   <<"shareName">> => string()
+%% }
+-type create_share_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_share_response() :: #{
+%%   <<"shareId">> => [string()],
+%%   <<"shareName">> => string(),
+%%   <<"status">> => string()
+%% }
+-type create_share_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_variant_store_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"reference">> := list(),
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"tags">> => map()
+%% }
+-type create_variant_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_variant_store_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"reference">> => list(),
+%%   <<"status">> => string()
+%% }
+-type create_variant_store_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -331,32 +778,92 @@
 %% }
 -type create_workflow_request() :: #{binary() => any()}.
 
-%% Example:
-%% cancel_annotation_import_request() :: #{}
--type cancel_annotation_import_request() :: #{}.
-
 
 %% Example:
-%% create_run_cache_response() :: #{
+%% create_workflow_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
 %%   <<"status">> => string(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"uuid">> => string()
 %% }
--type create_run_cache_response() :: #{binary() => any()}.
+-type create_workflow_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_variant_store_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
+%% create_workflow_version_request() :: #{
+%%   <<"accelerators">> => string(),
+%%   <<"containerRegistryMap">> => container_registry_map(),
+%%   <<"containerRegistryMapUri">> => string(),
+%%   <<"definitionRepository">> => definition_repository(),
+%%   <<"definitionUri">> => string(),
+%%   <<"definitionZip">> => [binary()],
 %%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"reference">> => list(),
-%%   <<"status">> => string(),
-%%   <<"updateTime">> => non_neg_integer()
+%%   <<"engine">> => string(),
+%%   <<"main">> => string(),
+%%   <<"parameterTemplate">> => map(),
+%%   <<"parameterTemplatePath">> => string(),
+%%   <<"readmeMarkdown">> => string(),
+%%   <<"readmePath">> => string(),
+%%   <<"readmeUri">> => string(),
+%%   <<"requestId">> := string(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"versionName">> := string(),
+%%   <<"workflowBucketOwnerId">> => string()
 %% }
--type update_variant_store_response() :: #{binary() => any()}.
+-type create_workflow_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workflow_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"uuid">> => string(),
+%%   <<"versionName">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type create_workflow_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_run_setting() :: #{
+%%   <<"cacheBehavior">> => string(),
+%%   <<"cacheId">> => string(),
+%%   <<"configurationName">> => string(),
+%%   <<"engineSettings">> => any(),
+%%   <<"logLevel">> => string(),
+%%   <<"name">> => string(),
+%%   <<"networkingMode">> => string(),
+%%   <<"outputBucketOwnerId">> => string(),
+%%   <<"outputUri">> => string(),
+%%   <<"parameters">> => any(),
+%%   <<"priority">> => [integer()],
+%%   <<"retentionMode">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"runGroupId">> => string(),
+%%   <<"runTags">> => map(),
+%%   <<"scratchStorageMode">> => string(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
+%%   <<"workflowId">> => string(),
+%%   <<"workflowOwnerId">> => string(),
+%%   <<"workflowType">> => string(),
+%%   <<"workflowVersionName">> => string()
+%% }
+-type default_run_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% definition_repository() :: #{
+%%   <<"connectionArn">> => string(),
+%%   <<"excludeFilePatterns">> => list([string()]()),
+%%   <<"fullRepositoryId">> => string(),
+%%   <<"sourceReference">> => source_reference()
+%% }
+-type definition_repository() :: #{binary() => any()}.
 
 
 %% Example:
@@ -371,199 +878,424 @@
 
 
 %% Example:
-%% import_read_set_job_item() :: #{
+%% delete_annotation_store_request() :: #{
+%%   <<"force">> => [boolean()]
+%% }
+-type delete_annotation_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_annotation_store_response() :: #{
+%%   <<"status">> => string()
+%% }
+-type delete_annotation_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_annotation_store_versions_request() :: #{
+%%   <<"force">> => [boolean()],
+%%   <<"versions">> := list(string())
+%% }
+-type delete_annotation_store_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_annotation_store_versions_response() :: #{
+%%   <<"errors">> => list(version_delete_error())
+%% }
+-type delete_annotation_store_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_batch_request() :: #{}
+-type delete_batch_request() :: #{}.
+
+%% Example:
+%% delete_configuration_request() :: #{}
+-type delete_configuration_request() :: #{}.
+
+%% Example:
+%% delete_reference_request() :: #{}
+-type delete_reference_request() :: #{}.
+
+%% Example:
+%% delete_reference_response() :: #{}
+-type delete_reference_response() :: #{}.
+
+%% Example:
+%% delete_reference_store_request() :: #{}
+-type delete_reference_store_request() :: #{}.
+
+%% Example:
+%% delete_reference_store_response() :: #{}
+-type delete_reference_store_response() :: #{}.
+
+
+%% Example:
+%% delete_run_batch_request() :: #{
+%%   <<"batchId">> := string()
+%% }
+-type delete_run_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_run_batch_response() :: #{}
+-type delete_run_batch_response() :: #{}.
+
+%% Example:
+%% delete_run_cache_request() :: #{}
+-type delete_run_cache_request() :: #{}.
+
+%% Example:
+%% delete_run_group_request() :: #{}
+-type delete_run_group_request() :: #{}.
+
+%% Example:
+%% delete_run_request() :: #{}
+-type delete_run_request() :: #{}.
+
+%% Example:
+%% delete_s3_access_policy_request() :: #{}
+-type delete_s3_access_policy_request() :: #{}.
+
+%% Example:
+%% delete_s3_access_policy_response() :: #{}
+-type delete_s3_access_policy_response() :: #{}.
+
+%% Example:
+%% delete_sequence_store_request() :: #{}
+-type delete_sequence_store_request() :: #{}.
+
+%% Example:
+%% delete_sequence_store_response() :: #{}
+-type delete_sequence_store_response() :: #{}.
+
+%% Example:
+%% delete_share_request() :: #{}
+-type delete_share_request() :: #{}.
+
+
+%% Example:
+%% delete_share_response() :: #{
+%%   <<"status">> => string()
+%% }
+-type delete_share_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_variant_store_request() :: #{
+%%   <<"force">> => [boolean()]
+%% }
+-type delete_variant_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_variant_store_response() :: #{
+%%   <<"status">> => string()
+%% }
+-type delete_variant_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_request() :: #{}
+-type delete_workflow_request() :: #{}.
+
+%% Example:
+%% delete_workflow_version_request() :: #{}
+-type delete_workflow_version_request() :: #{}.
+
+
+%% Example:
+%% e_tag() :: #{
+%%   <<"algorithm">> => string(),
+%%   <<"source1">> => [string()],
+%%   <<"source2">> => [string()]
+%% }
+-type e_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_read_set() :: #{
+%%   <<"readSetId">> => string()
+%% }
+-type export_read_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_read_set_detail() :: #{
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string()
+%% }
+-type export_read_set_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_read_set_filter() :: #{
+%%   <<"createdAfter">> => [non_neg_integer()],
+%%   <<"createdBefore">> => [non_neg_integer()],
+%%   <<"status">> => string()
+%% }
+-type export_read_set_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_read_set_job_detail() :: #{
+%%   <<"completionTime">> => [non_neg_integer()],
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"destination">> => string(),
+%%   <<"id">> => string(),
+%%   <<"sequenceStoreId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type export_read_set_job_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_information() :: #{
+%%   <<"contentLength">> => [float()],
+%%   <<"partSize">> => [float()],
+%%   <<"s3Access">> => read_set_s3_access(),
+%%   <<"totalParts">> => [integer()]
+%% }
+-type file_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"resourceArns">> => list([string()]()),
+%%   <<"status">> => list(string()),
+%%   <<"type">> => list(string())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_annotation_import_request() :: #{}
+-type get_annotation_import_request() :: #{}.
+
+
+%% Example:
+%% get_annotation_import_response() :: #{
+%%   <<"annotationFields">> => map(),
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"destinationName">> => string(),
+%%   <<"formatOptions">> => list(),
+%%   <<"id">> => string(),
+%%   <<"items">> => list(annotation_import_item_detail()),
+%%   <<"roleArn">> => string(),
+%%   <<"runLeftNormalization">> => boolean(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"updateTime">> => non_neg_integer(),
+%%   <<"versionName">> => string()
+%% }
+-type get_annotation_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_annotation_store_request() :: #{}
+-type get_annotation_store_request() :: #{}.
+
+
+%% Example:
+%% get_annotation_store_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"numVersions">> => [integer()],
+%%   <<"reference">> => list(),
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"storeArn">> => string(),
+%%   <<"storeFormat">> => string(),
+%%   <<"storeOptions">> => list(),
+%%   <<"storeSizeBytes">> => [float()],
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type get_annotation_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_annotation_store_version_request() :: #{}
+-type get_annotation_store_version_request() :: #{}.
+
+
+%% Example:
+%% get_annotation_store_version_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"storeId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer(),
+%%   <<"versionArn">> => string(),
+%%   <<"versionName">> => string(),
+%%   <<"versionOptions">> => list(),
+%%   <<"versionSizeBytes">> => [float()]
+%% }
+-type get_annotation_store_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_batch_request() :: #{}
+-type get_batch_request() :: #{}.
+
+
+%% Example:
+%% get_batch_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"defaultRunSetting">> => default_run_setting(),
+%%   <<"failedTime">> => non_neg_integer(),
+%%   <<"failureReason">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"processedTime">> => non_neg_integer(),
+%%   <<"runSummary">> => run_summary(),
+%%   <<"status">> => string(),
+%%   <<"submissionSummary">> => submission_summary(),
+%%   <<"submittedTime">> => non_neg_integer(),
+%%   <<"tags">> => map(),
+%%   <<"totalRuns">> => [integer()],
+%%   <<"uuid">> => string()
+%% }
+-type get_batch_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_configuration_request() :: #{}
+-type get_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"runConfigurations">> => run_configurations_response(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"uuid">> => string()
+%% }
+-type get_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_read_set_activation_job_request() :: #{}
+-type get_read_set_activation_job_request() :: #{}.
+
+
+%% Example:
+%% get_read_set_activation_job_response() :: #{
+%%   <<"completionTime">> => [non_neg_integer()],
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"sequenceStoreId">> => string(),
+%%   <<"sources">> => list(activate_read_set_source_item()),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string()
+%% }
+-type get_read_set_activation_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_read_set_export_job_request() :: #{}
+-type get_read_set_export_job_request() :: #{}.
+
+
+%% Example:
+%% get_read_set_export_job_response() :: #{
+%%   <<"completionTime">> => [non_neg_integer()],
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"destination">> => string(),
+%%   <<"id">> => string(),
+%%   <<"readSets">> => list(export_read_set_detail()),
+%%   <<"sequenceStoreId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string()
+%% }
+-type get_read_set_export_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_read_set_import_job_request() :: #{}
+-type get_read_set_import_job_request() :: #{}.
+
+
+%% Example:
+%% get_read_set_import_job_response() :: #{
 %%   <<"completionTime">> => [non_neg_integer()],
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"sequenceStoreId">> => string(),
-%%   <<"status">> => string()
-%% }
--type import_read_set_job_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% activate_read_set_filter() :: #{
-%%   <<"createdAfter">> => [non_neg_integer()],
-%%   <<"createdBefore">> => [non_neg_integer()],
-%%   <<"status">> => string()
-%% }
--type activate_read_set_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% run_cache_list_item() :: #{
-%%   <<"arn">> => string(),
-%%   <<"cacheBehavior">> => string(),
-%%   <<"cacheS3Uri">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type run_cache_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_variant_store_request() :: #{
-%%   <<"description">> => string()
-%% }
--type update_variant_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_version_list_item() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"digest">> => string(),
-%%   <<"metadata">> => map(),
+%%   <<"sources">> => list(import_read_set_source_item()),
 %%   <<"status">> => string(),
-%%   <<"type">> => string(),
-%%   <<"versionName">> => string(),
-%%   <<"workflowId">> => string()
+%%   <<"statusMessage">> => string()
 %% }
--type workflow_version_list_item() :: #{binary() => any()}.
+-type get_read_set_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_read_set_metadata_request() :: #{}
+-type get_read_set_metadata_request() :: #{}.
 
 
 %% Example:
-%% start_run_batch_response() :: #{
+%% get_read_set_metadata_response() :: #{
 %%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"uuid">> => string()
-%% }
--type start_run_batch_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sequence_store_response() :: #{
-%%   <<"arn">> => string(),
+%%   <<"creationJobId">> => string(),
 %%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"creationType">> => string(),
 %%   <<"description">> => string(),
-%%   <<"eTagAlgorithmFamily">> => string(),
-%%   <<"fallbackLocation">> => string(),
+%%   <<"etag">> => e_tag(),
+%%   <<"fileType">> => string(),
+%%   <<"files">> => read_set_files(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"propagatedSetLevelTags">> => list(string()),
-%%   <<"s3Access">> => sequence_store_s3_access(),
-%%   <<"sseConfig">> => sse_config(),
+%%   <<"referenceArn">> => string(),
+%%   <<"sampleId">> => string(),
+%%   <<"sequenceInformation">> => sequence_information(),
+%%   <<"sequenceStoreId">> => string(),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
+%%   <<"subjectId">> => string()
 %% }
--type update_sequence_store_response() :: #{binary() => any()}.
+-type get_read_set_metadata_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_annotation_store_version_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
+%% get_read_set_request() :: #{
+%%   <<"file">> => string(),
+%%   <<"partNumber">> := [integer()]
+%% }
+-type get_read_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_read_set_response() :: #{
+%%   <<"payload">> => binary()
+%% }
+-type get_read_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_reference_import_job_request() :: #{}
+-type get_reference_import_job_request() :: #{}.
+
+
+%% Example:
+%% get_reference_import_job_response() :: #{
+%%   <<"completionTime">> => [non_neg_integer()],
+%%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
-%%   <<"name">> => string(),
+%%   <<"referenceStoreId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"sources">> => list(import_reference_source_item()),
 %%   <<"status">> => string(),
-%%   <<"storeId">> => string(),
-%%   <<"updateTime">> => non_neg_integer(),
-%%   <<"versionName">> => string()
+%%   <<"statusMessage">> => string()
 %% }
--type update_annotation_store_version_response() :: #{binary() => any()}.
-
+-type get_reference_import_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_shares_request() :: #{
-%%   <<"filter">> => filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"resourceOwner">> := string()
-%% }
--type list_shares_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_annotation_store_request() :: #{
-%%   <<"description">> => string()
-%% }
--type update_annotation_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_run_request() :: #{
-%%   <<"export">> => list(string())
-%% }
--type get_run_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% inline_setting() :: #{
-%%   <<"engineSettings">> => any(),
-%%   <<"name">> => string(),
-%%   <<"outputBucketOwnerId">> => string(),
-%%   <<"outputUri">> => string(),
-%%   <<"parameters">> => any(),
-%%   <<"priority">> => [integer()],
-%%   <<"runSettingId">> => string(),
-%%   <<"runTags">> => map()
-%% }
--type inline_setting() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_reference_stores_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"referenceStores">> => list(reference_store_detail())
-%% }
--type list_reference_stores_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% read_set_upload_part_list_filter() :: #{
-%%   <<"createdAfter">> => [non_neg_integer()],
-%%   <<"createdBefore">> => [non_neg_integer()]
-%% }
--type read_set_upload_part_list_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_run_cache_request() :: #{
-%%   <<"cacheBehavior">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_run_cache_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_read_set_export_jobs_request() :: #{
-%%   <<"filter">> => export_read_set_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_read_set_export_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_runs_response() :: #{
-%%   <<"items">> => list(run_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_runs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_read_set_filter() :: #{
-%%   <<"createdAfter">> => [non_neg_integer()],
-%%   <<"createdBefore">> => [non_neg_integer()],
-%%   <<"status">> => string()
-%% }
--type import_read_set_filter() :: #{binary() => any()}.
+%% get_reference_metadata_request() :: #{}
+-type get_reference_metadata_request() :: #{}.
 
 
 %% Example:
@@ -585,179 +1317,297 @@
 
 
 %% Example:
-%% create_annotation_store_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"reference">> => list(),
-%%   <<"sseConfig">> => sse_config(),
-%%   <<"storeFormat">> := string(),
-%%   <<"storeOptions">> => list(),
-%%   <<"tags">> => map(),
-%%   <<"versionName">> => string()
-%% }
--type create_annotation_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% upload_read_set_part_request() :: #{
+%% get_reference_request() :: #{
+%%   <<"file">> => string(),
 %%   <<"partNumber">> := [integer()],
-%%   <<"partSource">> := string(),
-%%   <<"payload">> := binary()
+%%   <<"range">> => string()
 %% }
--type upload_read_set_part_request() :: #{binary() => any()}.
+-type get_reference_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_read_set_activation_jobs_response() :: #{
-%%   <<"activationJobs">> => list(activate_read_set_job_item()),
-%%   <<"nextToken">> => string()
+%% get_reference_response() :: #{
+%%   <<"payload">> => binary()
 %% }
--type list_read_set_activation_jobs_response() :: #{binary() => any()}.
+-type get_reference_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_reference_store_request() :: #{}
+-type get_reference_store_request() :: #{}.
 
 
 %% Example:
-%% delete_variant_store_response() :: #{
-%%   <<"status">> => string()
-%% }
--type delete_variant_store_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_read_set_import_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"roleArn">> := string(),
-%%   <<"sources">> := list(start_read_set_import_job_source_item())
-%% }
--type start_read_set_import_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% variant_import_job_item() :: #{
-%%   <<"annotationFields">> => map(),
-%%   <<"completionTime">> => non_neg_integer(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"destinationName">> => [string()],
-%%   <<"id">> => [string()],
-%%   <<"roleArn">> => string(),
-%%   <<"runLeftNormalization">> => boolean(),
-%%   <<"status">> => string(),
-%%   <<"updateTime">> => non_neg_integer()
-%% }
--type variant_import_job_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_reference_job_item() :: #{
-%%   <<"completionTime">> => [non_neg_integer()],
+%% get_reference_store_response() :: #{
+%%   <<"arn">> => string(),
 %%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
 %%   <<"id">> => string(),
-%%   <<"referenceStoreId">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => string()
+%%   <<"name">> => string(),
+%%   <<"sseConfig">> => sse_config()
 %% }
--type import_reference_job_item() :: #{binary() => any()}.
+-type get_reference_store_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+%% get_run_cache_request() :: #{}
+-type get_run_cache_request() :: #{}.
+
 
 %% Example:
-%% get_read_set_export_job_request() :: #{}
--type get_read_set_export_job_request() :: #{}.
+%% get_run_cache_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"cacheBehavior">> => string(),
+%%   <<"cacheBucketOwnerId">> => string(),
+%%   <<"cacheS3Uri">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_run_cache_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_run_group_request() :: #{}
 -type get_run_group_request() :: #{}.
 
-%% Example:
-%% delete_sequence_store_request() :: #{}
--type delete_sequence_store_request() :: #{}.
-
 
 %% Example:
-%% start_reference_import_job_response() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
+%% get_run_group_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
 %%   <<"id">> => string(),
-%%   <<"referenceStoreId">> => string(),
+%%   <<"maxCpus">> => [integer()],
+%%   <<"maxDuration">> => [integer()],
+%%   <<"maxGpus">> => [integer()],
+%%   <<"maxRuns">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_run_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_run_request() :: #{
+%%   <<"export">> => list(string())
+%% }
+-type get_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_run_response() :: #{
+%%   <<"accelerators">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"batchId">> => string(),
+%%   <<"cacheBehavior">> => string(),
+%%   <<"cacheId">> => string(),
+%%   <<"configuration">> => configuration_details(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"definition">> => string(),
+%%   <<"digest">> => string(),
+%%   <<"engineSettings">> => any(),
+%%   <<"engineVersion">> => string(),
+%%   <<"failureReason">> => string(),
+%%   <<"id">> => string(),
+%%   <<"logLevel">> => string(),
+%%   <<"logLocation">> => run_log_location(),
+%%   <<"name">> => string(),
+%%   <<"networkingMode">> => string(),
+%%   <<"outputUri">> => string(),
+%%   <<"parameters">> => any(),
+%%   <<"priority">> => [integer()],
+%%   <<"resourceDigests">> => map(),
+%%   <<"retentionMode">> => string(),
 %%   <<"roleArn">> => string(),
-%%   <<"status">> => string()
+%%   <<"runGroupId">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"runOutputUri">> => string(),
+%%   <<"scratchStorageMode">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"startedBy">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"stopTime">> => non_neg_integer(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"uuid">> => string(),
+%%   <<"vpcConfig">> => vpc_config_response(),
+%%   <<"workflowId">> => string(),
+%%   <<"workflowOwnerId">> => string(),
+%%   <<"workflowType">> => string(),
+%%   <<"workflowUuid">> => string(),
+%%   <<"workflowVersionName">> => string()
 %% }
--type start_reference_import_job_response() :: #{binary() => any()}.
+-type get_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_workflow_request() :: #{}
--type delete_workflow_request() :: #{}.
+%% get_run_task_request() :: #{}
+-type get_run_task_request() :: #{}.
 
 
 %% Example:
-%% list_annotation_stores_request() :: #{
-%%   <<"filter">> => list_annotation_stores_filter(),
-%%   <<"ids">> => list(string()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
+%% get_run_task_response() :: #{
+%%   <<"cacheHit">> => [boolean()],
+%%   <<"cacheS3Uri">> => string(),
+%%   <<"cpus">> => [integer()],
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"failureReason">> => string(),
+%%   <<"gpus">> => [integer()],
+%%   <<"imageDetails">> => image_details(),
+%%   <<"instanceType">> => string(),
+%%   <<"logStream">> => string(),
+%%   <<"memory">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"stopTime">> => non_neg_integer(),
+%%   <<"taskId">> => string(),
+%%   <<"uuid">> => string()
 %% }
--type list_annotation_stores_request() :: #{binary() => any()}.
+-type get_run_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_configuration_request() :: #{}
--type get_configuration_request() :: #{}.
+%% get_s3_access_policy_request() :: #{}
+-type get_s3_access_policy_request() :: #{}.
 
 
 %% Example:
-%% delete_annotation_store_response() :: #{
-%%   <<"status">> => string()
+%% get_s3_access_policy_response() :: #{
+%%   <<"s3AccessPointArn">> => string(),
+%%   <<"s3AccessPolicy">> => string(),
+%%   <<"storeId">> => string(),
+%%   <<"storeType">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type delete_annotation_store_response() :: #{binary() => any()}.
+-type get_s3_access_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sequence_store_request() :: #{}
+-type get_sequence_store_request() :: #{}.
 
 
 %% Example:
-%% update_annotation_store_response() :: #{
+%% get_sequence_store_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"eTagAlgorithmFamily">> => string(),
+%%   <<"fallbackLocation">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"propagatedSetLevelTags">> => list(string()),
+%%   <<"s3Access">> => sequence_store_s3_access(),
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type get_sequence_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_share_request() :: #{}
+-type get_share_request() :: #{}.
+
+
+%% Example:
+%% get_share_response() :: #{
+%%   <<"share">> => share_details()
+%% }
+-type get_share_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_variant_import_request() :: #{}
+-type get_variant_import_request() :: #{}.
+
+
+%% Example:
+%% get_variant_import_response() :: #{
+%%   <<"annotationFields">> => map(),
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"destinationName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"items">> => list(variant_import_item_detail()),
+%%   <<"roleArn">> => string(),
+%%   <<"runLeftNormalization">> => boolean(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type get_variant_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_variant_store_request() :: #{}
+-type get_variant_store_request() :: #{}.
+
+
+%% Example:
+%% get_variant_store_response() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => [string()],
 %%   <<"reference">> => list(),
+%%   <<"sseConfig">> => sse_config(),
 %%   <<"status">> => string(),
-%%   <<"storeFormat">> => string(),
-%%   <<"storeOptions">> => list(),
+%%   <<"statusMessage">> => string(),
+%%   <<"storeArn">> => string(),
+%%   <<"storeSizeBytes">> => [float()],
+%%   <<"tags">> => map(),
 %%   <<"updateTime">> => non_neg_integer()
 %% }
--type update_annotation_store_response() :: #{binary() => any()}.
+-type get_variant_store_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% read_set_filter() :: #{
-%%   <<"createdAfter">> => [non_neg_integer()],
-%%   <<"createdBefore">> => [non_neg_integer()],
-%%   <<"creationType">> => string(),
-%%   <<"generatedFrom">> => string(),
+%% get_workflow_request() :: #{
+%%   <<"export">> => list(string()),
+%%   <<"type">> => string(),
+%%   <<"workflowOwnerId">> => string()
+%% }
+-type get_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workflow_response() :: #{
+%%   <<"accelerators">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"containerRegistryMap">> => container_registry_map(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"definition">> => string(),
+%%   <<"definitionRepositoryDetails">> => definition_repository_details(),
+%%   <<"description">> => string(),
+%%   <<"digest">> => string(),
+%%   <<"engine">> => string(),
+%%   <<"id">> => string(),
+%%   <<"main">> => string(),
+%%   <<"metadata">> => map(),
 %%   <<"name">> => string(),
-%%   <<"referenceArn">> => string(),
-%%   <<"sampleId">> => string(),
+%%   <<"parameterTemplate">> => map(),
+%%   <<"profileParameterTemplates">> => map(),
+%%   <<"profiles">> => list(string()),
+%%   <<"readme">> => string(),
+%%   <<"readmePath">> => string(),
 %%   <<"status">> => string(),
-%%   <<"subjectId">> => string()
+%%   <<"statusMessage">> => string(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string(),
+%%   <<"uuid">> => string()
 %% }
--type read_set_filter() :: #{binary() => any()}.
+-type get_workflow_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_delete_read_set_response() :: #{
-%%   <<"errors">> => list(read_set_batch_error())
+%% get_workflow_version_request() :: #{
+%%   <<"export">> => list(string()),
+%%   <<"type">> => string(),
+%%   <<"workflowOwnerId">> => string()
 %% }
--type batch_delete_read_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_read_set_activation_jobs_request() :: #{
-%%   <<"filter">> => activate_read_set_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_read_set_activation_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_annotation_store_request() :: #{}
--type get_annotation_store_request() :: #{}.
+-type get_workflow_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -793,189 +1643,181 @@
 
 
 %% Example:
-%% list_variant_import_jobs_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"variantImportJobs">> => list(variant_import_job_item())
+%% image_details() :: #{
+%%   <<"image">> => string(),
+%%   <<"imageDigest">> => string(),
+%%   <<"sourceImage">> => string()
 %% }
--type list_variant_import_jobs_response() :: #{binary() => any()}.
+-type image_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_configurations_response() :: #{
-%%   <<"items">> => list(configuration_list_item()),
-%%   <<"nextToken">> => string()
+%% image_mapping() :: #{
+%%   <<"destinationImage">> => string(),
+%%   <<"sourceImage">> => string()
 %% }
--type list_configurations_response() :: #{binary() => any()}.
+-type image_mapping() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_s3_access_policy_request() :: #{
-%%   <<"s3AccessPolicy">> := string()
+%% import_read_set_filter() :: #{
+%%   <<"createdAfter">> => [non_neg_integer()],
+%%   <<"createdBefore">> => [non_neg_integer()],
+%%   <<"status">> => string()
 %% }
--type put_s3_access_policy_request() :: #{binary() => any()}.
+-type import_read_set_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_access_config() :: #{
-%%   <<"accessLogLocation">> => string()
-%% }
--type s3_access_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_list_item() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"digest">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"type">> => string()
-%% }
--type workflow_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_read_set_job_detail() :: #{
+%% import_read_set_job_item() :: #{
 %%   <<"completionTime">> => [non_neg_integer()],
 %%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"destination">> => string(),
 %%   <<"id">> => string(),
+%%   <<"roleArn">> => string(),
 %%   <<"sequenceStoreId">> => string(),
 %%   <<"status">> => string()
 %% }
--type export_read_set_job_detail() :: #{binary() => any()}.
+-type import_read_set_job_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_annotation_store_versions_response() :: #{
-%%   <<"errors">> => list(version_delete_error())
-%% }
--type delete_annotation_store_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% submission_summary() :: #{
-%%   <<"failedCancelSubmissionCount">> => [integer()],
-%%   <<"failedDeleteSubmissionCount">> => [integer()],
-%%   <<"failedStartSubmissionCount">> => [integer()],
-%%   <<"pendingStartSubmissionCount">> => [integer()],
-%%   <<"successfulCancelSubmissionCount">> => [integer()],
-%%   <<"successfulDeleteSubmissionCount">> => [integer()],
-%%   <<"successfulStartSubmissionCount">> => [integer()]
-%% }
--type submission_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% upload_read_set_part_response() :: #{
-%%   <<"checksum">> => [string()]
-%% }
--type upload_read_set_part_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_reference_metadata_request() :: #{}
--type get_reference_metadata_request() :: #{}.
-
-%% Example:
-%% accept_share_request() :: #{}
--type accept_share_request() :: #{}.
-
-
-%% Example:
-%% list_run_caches_response() :: #{
-%%   <<"items">> => list(run_cache_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_run_caches_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% share_details() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"ownerId">> => [string()],
-%%   <<"principalSubscriber">> => [string()],
-%%   <<"resourceArn">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"shareId">> => [string()],
-%%   <<"shareName">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"updateTime">> => non_neg_integer()
-%% }
--type share_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_s3_access_policy_request() :: #{}
--type get_s3_access_policy_request() :: #{}.
-
-
-%% Example:
-%% annotation_store_version_item() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
+%% import_read_set_source_item() :: #{
 %%   <<"description">> => string(),
-%%   <<"id">> => string(),
+%%   <<"generatedFrom">> => string(),
 %%   <<"name">> => string(),
+%%   <<"readSetId">> => string(),
+%%   <<"referenceArn">> => string(),
+%%   <<"sampleId">> => string(),
+%%   <<"sourceFileType">> => string(),
+%%   <<"sourceFiles">> => source_files(),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string(),
-%%   <<"storeId">> => string(),
-%%   <<"updateTime">> => non_neg_integer(),
-%%   <<"versionArn">> => string(),
-%%   <<"versionName">> => string(),
-%%   <<"versionSizeBytes">> => [float()]
+%%   <<"subjectId">> => string(),
+%%   <<"tags">> => map()
 %% }
--type annotation_store_version_item() :: #{binary() => any()}.
+-type import_read_set_source_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% activate_read_set_job_item() :: #{
+%% import_reference_filter() :: #{
+%%   <<"createdAfter">> => [non_neg_integer()],
+%%   <<"createdBefore">> => [non_neg_integer()],
+%%   <<"status">> => string()
+%% }
+-type import_reference_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_reference_job_item() :: #{
 %%   <<"completionTime">> => [non_neg_integer()],
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
-%%   <<"sequenceStoreId">> => string(),
+%%   <<"referenceStoreId">> => string(),
+%%   <<"roleArn">> => string(),
 %%   <<"status">> => string()
 %% }
--type activate_read_set_job_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_run_group_request() :: #{}
--type delete_run_group_request() :: #{}.
+-type import_reference_job_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% default_run_setting() :: #{
-%%   <<"cacheBehavior">> => string(),
-%%   <<"cacheId">> => string(),
-%%   <<"configurationName">> => string(),
-%%   <<"engineSettings">> => any(),
-%%   <<"logLevel">> => string(),
+%% import_reference_source_item() :: #{
+%%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"networkingMode">> => string(),
+%%   <<"referenceId">> => string(),
+%%   <<"sourceFile">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type import_reference_source_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_setting() :: #{
+%%   <<"engineSettings">> => any(),
+%%   <<"name">> => string(),
 %%   <<"outputBucketOwnerId">> => string(),
 %%   <<"outputUri">> => string(),
 %%   <<"parameters">> => any(),
 %%   <<"priority">> => [integer()],
-%%   <<"retentionMode">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"runGroupId">> => string(),
-%%   <<"runTags">> => map(),
-%%   <<"scratchStorageMode">> => string(),
-%%   <<"storageCapacity">> => [integer()],
-%%   <<"storageType">> => string(),
-%%   <<"workflowId">> => string(),
-%%   <<"workflowOwnerId">> => string(),
-%%   <<"workflowType">> => string(),
-%%   <<"workflowVersionName">> => string()
+%%   <<"runSettingId">> => string(),
+%%   <<"runTags">> => map()
 %% }
--type default_run_setting() :: #{binary() => any()}.
+-type inline_setting() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_reference_response() :: #{
-%%   <<"payload">> => binary()
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type get_reference_response() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_annotation_import_jobs_filter() :: #{
+%%   <<"status">> => string(),
+%%   <<"storeName">> => [string()]
+%% }
+-type list_annotation_import_jobs_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_annotation_import_jobs_request() :: #{
+%%   <<"filter">> => list_annotation_import_jobs_filter(),
+%%   <<"ids">> => list(string()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_annotation_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_annotation_import_jobs_response() :: #{
+%%   <<"annotationImportJobs">> => list(annotation_import_job_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_annotation_import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_annotation_store_versions_filter() :: #{
+%%   <<"status">> => string()
+%% }
+-type list_annotation_store_versions_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_annotation_store_versions_request() :: #{
+%%   <<"filter">> => list_annotation_store_versions_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_annotation_store_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_annotation_store_versions_response() :: #{
+%%   <<"annotationStoreVersions">> => list(annotation_store_version_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_annotation_store_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_annotation_stores_filter() :: #{
+%%   <<"status">> => string()
+%% }
+-type list_annotation_stores_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_annotation_stores_request() :: #{
+%%   <<"filter">> => list_annotation_stores_filter(),
+%%   <<"ids">> => list(string()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_annotation_stores_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -987,7 +1829,417 @@
 
 
 %% Example:
-%% create_multipart_read_set_upload_response() :: #{
+%% list_batch_request() :: #{
+%%   <<"maxItems">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"runGroupId">> => string(),
+%%   <<"startingToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_batch_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_batch_response() :: #{
+%%   <<"items">> => list(batch_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_batch_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configurations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"startingToken">> => string()
+%% }
+-type list_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configurations_response() :: #{
+%%   <<"items">> => list(configuration_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multipart_read_set_uploads_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_multipart_read_set_uploads_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multipart_read_set_uploads_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"uploads">> => list(multipart_read_set_upload_list_item())
+%% }
+-type list_multipart_read_set_uploads_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_read_set_activation_jobs_request() :: #{
+%%   <<"filter">> => activate_read_set_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_read_set_activation_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_read_set_activation_jobs_response() :: #{
+%%   <<"activationJobs">> => list(activate_read_set_job_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_read_set_activation_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_read_set_export_jobs_request() :: #{
+%%   <<"filter">> => export_read_set_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_read_set_export_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_read_set_export_jobs_response() :: #{
+%%   <<"exportJobs">> => list(export_read_set_job_detail()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_read_set_export_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_read_set_import_jobs_request() :: #{
+%%   <<"filter">> => import_read_set_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_read_set_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_read_set_import_jobs_response() :: #{
+%%   <<"importJobs">> => list(import_read_set_job_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_read_set_import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_read_set_upload_parts_request() :: #{
+%%   <<"filter">> => read_set_upload_part_list_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"partSource">> := string()
+%% }
+-type list_read_set_upload_parts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_read_set_upload_parts_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"parts">> => list(read_set_upload_part_list_item())
+%% }
+-type list_read_set_upload_parts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_read_sets_request() :: #{
+%%   <<"filter">> => read_set_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_read_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_read_sets_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"readSets">> => list(read_set_list_item())
+%% }
+-type list_read_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reference_import_jobs_request() :: #{
+%%   <<"filter">> => import_reference_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_reference_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reference_import_jobs_response() :: #{
+%%   <<"importJobs">> => list(import_reference_job_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_reference_import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reference_stores_request() :: #{
+%%   <<"filter">> => reference_store_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_reference_stores_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reference_stores_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"referenceStores">> => list(reference_store_detail())
+%% }
+-type list_reference_stores_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_references_request() :: #{
+%%   <<"filter">> => reference_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_references_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_references_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"references">> => list(reference_list_item())
+%% }
+-type list_references_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_run_caches_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"startingToken">> => string()
+%% }
+-type list_run_caches_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_run_caches_response() :: #{
+%%   <<"items">> => list(run_cache_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_run_caches_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_run_groups_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"startingToken">> => string()
+%% }
+-type list_run_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_run_groups_response() :: #{
+%%   <<"items">> => list(run_group_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_run_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_run_tasks_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"startingToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_run_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_run_tasks_response() :: #{
+%%   <<"items">> => list(task_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_run_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_runs_in_batch_request() :: #{
+%%   <<"maxItems">> => [integer()],
+%%   <<"runId">> => [string()],
+%%   <<"runSettingId">> => [string()],
+%%   <<"startingToken">> => string(),
+%%   <<"submissionStatus">> => string()
+%% }
+-type list_runs_in_batch_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_runs_in_batch_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"runs">> => list(run_batch_list_item())
+%% }
+-type list_runs_in_batch_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_runs_request() :: #{
+%%   <<"batchId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"runGroupId">> => string(),
+%%   <<"startingToken">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_runs_response() :: #{
+%%   <<"items">> => list(run_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_runs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sequence_stores_request() :: #{
+%%   <<"filter">> => sequence_store_filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_sequence_stores_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sequence_stores_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sequenceStores">> => list(sequence_store_detail())
+%% }
+-type list_sequence_stores_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_shares_request() :: #{
+%%   <<"filter">> => filter(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"resourceOwner">> := string()
+%% }
+-type list_shares_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_shares_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"shares">> => list(share_details())
+%% }
+-type list_shares_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_variant_import_jobs_filter() :: #{
+%%   <<"status">> => string(),
+%%   <<"storeName">> => [string()]
+%% }
+-type list_variant_import_jobs_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_variant_import_jobs_request() :: #{
+%%   <<"filter">> => list_variant_import_jobs_filter(),
+%%   <<"ids">> => list(string()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_variant_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_variant_import_jobs_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"variantImportJobs">> => list(variant_import_job_item())
+%% }
+-type list_variant_import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_variant_stores_filter() :: #{
+%%   <<"status">> => string()
+%% }
+-type list_variant_stores_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_variant_stores_request() :: #{
+%%   <<"filter">> => list_variant_stores_filter(),
+%%   <<"ids">> => list(string()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_variant_stores_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_variant_stores_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"variantStores">> => list(variant_store_item())
+%% }
+-type list_variant_stores_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_versions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"startingToken">> => string(),
+%%   <<"type">> => string(),
+%%   <<"workflowOwnerId">> => string()
+%% }
+-type list_workflow_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_versions_response() :: #{
+%%   <<"items">> => list(workflow_version_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_workflow_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflows_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"startingToken">> => string(),
+%%   <<"type">> => string()
+%% }
+-type list_workflows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflows_response() :: #{
+%%   <<"items">> => list(workflow_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_workflows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% multipart_read_set_upload_list_item() :: #{
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"generatedFrom">> => string(),
@@ -1000,52 +2252,151 @@
 %%   <<"tags">> => map(),
 %%   <<"uploadId">> => string()
 %% }
--type create_multipart_read_set_upload_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_run_cache_request() :: #{}
--type delete_run_cache_request() :: #{}.
-
-%% Example:
-%% delete_s3_access_policy_response() :: #{}
--type delete_s3_access_policy_response() :: #{}.
-
-%% Example:
-%% delete_reference_request() :: #{}
--type delete_reference_request() :: #{}.
+-type multipart_read_set_upload_list_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% request_timeout_exception() :: #{
+%% not_supported_operation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type request_timeout_exception() :: #{binary() => any()}.
+-type not_supported_operation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_annotation_store_versions_response() :: #{
-%%   <<"annotationStoreVersions">> => list(annotation_store_version_item()),
-%%   <<"nextToken">> => [string()]
+%% put_s3_access_policy_request() :: #{
+%%   <<"s3AccessPolicy">> := string()
 %% }
--type list_annotation_store_versions_response() :: #{binary() => any()}.
+-type put_s3_access_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% complete_multipart_read_set_upload_response() :: #{
-%%   <<"readSetId">> => string()
+%% put_s3_access_policy_response() :: #{
+%%   <<"s3AccessPointArn">> => string(),
+%%   <<"storeId">> => string(),
+%%   <<"storeType">> => list(any())
 %% }
--type complete_multipart_read_set_upload_response() :: #{binary() => any()}.
+-type put_s3_access_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_workflow_request() :: #{
-%%   <<"description">> => string(),
+%% range_not_satisfiable_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type range_not_satisfiable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_options() :: #{
+%%   <<"comment">> => string(),
+%%   <<"encoding">> => string(),
+%%   <<"escape">> => string(),
+%%   <<"escapeQuotes">> => boolean(),
+%%   <<"header">> => boolean(),
+%%   <<"lineSep">> => string(),
+%%   <<"quote">> => string(),
+%%   <<"quoteAll">> => boolean(),
+%%   <<"sep">> => string()
+%% }
+-type read_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_set_batch_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type read_set_batch_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_set_files() :: #{
+%%   <<"index">> => file_information(),
+%%   <<"source1">> => file_information(),
+%%   <<"source2">> => file_information()
+%% }
+-type read_set_files() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_set_filter() :: #{
+%%   <<"createdAfter">> => [non_neg_integer()],
+%%   <<"createdBefore">> => [non_neg_integer()],
+%%   <<"creationType">> => string(),
+%%   <<"generatedFrom">> => string(),
 %%   <<"name">> => string(),
-%%   <<"readmeMarkdown">> => string(),
-%%   <<"storageCapacity">> => [integer()],
-%%   <<"storageType">> => string()
+%%   <<"referenceArn">> => string(),
+%%   <<"sampleId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"subjectId">> => string()
 %% }
--type update_workflow_request() :: #{binary() => any()}.
+-type read_set_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_set_list_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"creationType">> => string(),
+%%   <<"description">> => string(),
+%%   <<"etag">> => e_tag(),
+%%   <<"fileType">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"referenceArn">> => string(),
+%%   <<"sampleId">> => string(),
+%%   <<"sequenceInformation">> => sequence_information(),
+%%   <<"sequenceStoreId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"subjectId">> => string()
+%% }
+-type read_set_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_set_s3_access() :: #{
+%%   <<"s3Uri">> => string()
+%% }
+-type read_set_s3_access() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_set_upload_part_list_filter() :: #{
+%%   <<"createdAfter">> => [non_neg_integer()],
+%%   <<"createdBefore">> => [non_neg_integer()]
+%% }
+-type read_set_upload_part_list_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_set_upload_part_list_item() :: #{
+%%   <<"checksum">> => [string()],
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"lastUpdatedTime">> => [non_neg_integer()],
+%%   <<"partNumber">> => [integer()],
+%%   <<"partSize">> => [float()],
+%%   <<"partSource">> => string()
+%% }
+-type read_set_upload_part_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_files() :: #{
+%%   <<"index">> => file_information(),
+%%   <<"source">> => file_information()
+%% }
+-type reference_files() :: #{binary() => any()}.
+
+
+%% Example:
+%% reference_filter() :: #{
+%%   <<"createdAfter">> => [non_neg_integer()],
+%%   <<"createdBefore">> => [non_neg_integer()],
+%%   <<"md5">> => string(),
+%%   <<"name">> => string()
+%% }
+-type reference_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1064,17 +2415,102 @@
 
 
 %% Example:
-%% tsv_options() :: #{
-%%   <<"readOptions">> => read_options()
+%% reference_store_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sseConfig">> => sse_config()
 %% }
--type tsv_options() :: #{binary() => any()}.
+-type reference_store_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% cancel_run_batch_request() :: #{
-%%   <<"batchId">> := string()
+%% reference_store_filter() :: #{
+%%   <<"createdAfter">> => [non_neg_integer()],
+%%   <<"createdBefore">> => [non_neg_integer()],
+%%   <<"name">> => string()
 %% }
--type cancel_run_batch_request() :: #{binary() => any()}.
+-type reference_store_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_mapping() :: #{
+%%   <<"ecrAccountId">> => string(),
+%%   <<"ecrRepositoryPrefix">> => string(),
+%%   <<"upstreamRegistryUrl">> => string(),
+%%   <<"upstreamRepositoryPrefix">> => string()
+%% }
+-type registry_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_timeout_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type request_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_batch_list_item() :: #{
+%%   <<"runArn">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"runInternalUuid">> => string(),
+%%   <<"runSettingId">> => string(),
+%%   <<"submissionFailureMessage">> => string(),
+%%   <<"submissionFailureReason">> => string(),
+%%   <<"submissionStatus">> => string()
+%% }
+-type run_batch_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_cache_list_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"cacheBehavior">> => string(),
+%%   <<"cacheS3Uri">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type run_cache_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_configurations() :: #{
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type run_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_configurations_response() :: #{
+%%   <<"vpcConfig">> => vpc_config_response()
+%% }
+-type run_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% run_group_list_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"maxCpus">> => [integer()],
+%%   <<"maxDuration">> => [integer()],
+%%   <<"maxGpus">> => [integer()],
+%%   <<"maxRuns">> => [integer()],
+%%   <<"name">> => string()
+%% }
+-type run_group_list_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1098,193 +2534,11 @@
 
 
 %% Example:
-%% start_reference_import_job_source_item() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sourceFile">> => string(),
-%%   <<"tags">> => map()
+%% run_log_location() :: #{
+%%   <<"engineLogStream">> => string(),
+%%   <<"runLogStream">> => string()
 %% }
--type start_reference_import_job_source_item() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_variant_import_request() :: #{}
--type cancel_variant_import_request() :: #{}.
-
-%% Example:
-%% get_annotation_store_version_request() :: #{}
--type get_annotation_store_version_request() :: #{}.
-
-
-%% Example:
-%% list_variant_import_jobs_request() :: #{
-%%   <<"filter">> => list_variant_import_jobs_filter(),
-%%   <<"ids">> => list(string()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_variant_import_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_annotation_store_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"reference">> => list(),
-%%   <<"status">> => string(),
-%%   <<"storeFormat">> => string(),
-%%   <<"storeOptions">> => list(),
-%%   <<"versionName">> => string()
-%% }
--type create_annotation_store_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_annotation_import_response() :: #{}
--type cancel_annotation_import_response() :: #{}.
-
-
-%% Example:
-%% create_share_request() :: #{
-%%   <<"principalSubscriber">> := [string()],
-%%   <<"resourceArn">> := [string()],
-%%   <<"shareName">> => string()
-%% }
--type create_share_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_read_set_import_jobs_response() :: #{
-%%   <<"importJobs">> => list(import_read_set_job_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_read_set_import_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_read_set_activation_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"sources">> := list(start_read_set_activation_job_source_item())
-%% }
--type start_read_set_activation_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_annotation_store_version_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"storeId">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"updateTime">> => non_neg_integer(),
-%%   <<"versionArn">> => string(),
-%%   <<"versionName">> => string(),
-%%   <<"versionOptions">> => list(),
-%%   <<"versionSizeBytes">> => [float()]
-%% }
--type get_annotation_store_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_reference() :: #{
-%%   <<"type">> => string(),
-%%   <<"value">> => string()
-%% }
--type source_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_read_set_request() :: #{
-%%   <<"file">> => string(),
-%%   <<"partNumber">> := [integer()]
-%% }
--type get_read_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% variant_store_item() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"reference">> => list(),
-%%   <<"sseConfig">> => sse_config(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"storeArn">> => string(),
-%%   <<"storeSizeBytes">> => [float()],
-%%   <<"updateTime">> => non_neg_integer()
-%% }
--type variant_store_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_list_item() :: #{
-%%   <<"cacheHit">> => [boolean()],
-%%   <<"cacheS3Uri">> => string(),
-%%   <<"cpus">> => [integer()],
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"gpus">> => [integer()],
-%%   <<"instanceType">> => string(),
-%%   <<"memory">> => [integer()],
-%%   <<"name">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"stopTime">> => non_neg_integer(),
-%%   <<"taskId">> => string()
-%% }
--type task_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_request() :: #{
-%%   <<"export">> => list(string()),
-%%   <<"type">> => string(),
-%%   <<"workflowOwnerId">> => string()
-%% }
--type get_workflow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configurations_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"startingToken">> => string()
-%% }
--type list_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% run_configurations_response() :: #{
-%%   <<"vpcConfig">> => vpc_config_response()
-%% }
--type run_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_references_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"references">> => list(reference_list_item())
-%% }
--type list_references_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_variant_stores_request() :: #{
-%%   <<"filter">> => list_variant_stores_filter(),
-%%   <<"ids">> => list(string()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_variant_stores_request() :: #{binary() => any()}.
+-type run_log_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1302,235 +2556,37 @@
 
 
 %% Example:
-%% get_read_set_metadata_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationJobId">> => string(),
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"creationType">> => string(),
-%%   <<"description">> => string(),
-%%   <<"etag">> => e_tag(),
-%%   <<"fileType">> => string(),
-%%   <<"files">> => read_set_files(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"referenceArn">> => string(),
-%%   <<"sampleId">> => string(),
-%%   <<"sequenceInformation">> => sequence_information(),
-%%   <<"sequenceStoreId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"subjectId">> => string()
+%% s3_access_config() :: #{
+%%   <<"accessLogLocation">> => string()
 %% }
--type get_read_set_metadata_response() :: #{binary() => any()}.
+-type s3_access_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_sequence_store_request() :: #{
-%%   <<"clientToken">> => string(),
+%% sequence_information() :: #{
+%%   <<"alignment">> => [string()],
+%%   <<"generatedFrom">> => string(),
+%%   <<"totalBaseCount">> => [float()],
+%%   <<"totalReadCount">> => [float()]
+%% }
+-type sequence_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% sequence_store_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"eTagAlgorithmFamily">> => string(),
 %%   <<"fallbackLocation">> => string(),
-%%   <<"name">> := string(),
-%%   <<"propagatedSetLevelTags">> => list(string()),
-%%   <<"s3AccessConfig">> => s3_access_config(),
-%%   <<"sseConfig">> => sse_config(),
-%%   <<"tags">> => map()
-%% }
--type create_sequence_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_share_response() :: #{
-%%   <<"status">> => string()
-%% }
--type accept_share_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_annotation_store_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
 %%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"numVersions">> => [integer()],
-%%   <<"reference">> => list(),
+%%   <<"name">> => string(),
 %%   <<"sseConfig">> => sse_config(),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string(),
-%%   <<"storeArn">> => string(),
-%%   <<"storeFormat">> => string(),
-%%   <<"storeOptions">> => list(),
-%%   <<"storeSizeBytes">> => [float()],
-%%   <<"tags">> => map(),
-%%   <<"updateTime">> => non_neg_integer()
+%%   <<"updateTime">> => [non_neg_integer()]
 %% }
--type get_annotation_store_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_runs_in_batch_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"runs">> => list(run_batch_list_item())
-%% }
--type list_runs_in_batch_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_batch_request() :: #{}
--type delete_batch_request() :: #{}.
-
-
-%% Example:
-%% definition_repository() :: #{
-%%   <<"connectionArn">> => string(),
-%%   <<"excludeFilePatterns">> => list([string()]()),
-%%   <<"fullRepositoryId">> => string(),
-%%   <<"sourceReference">> => source_reference()
-%% }
--type definition_repository() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_parameter() :: #{
-%%   <<"description">> => string(),
-%%   <<"optional">> => [boolean()]
-%% }
--type workflow_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_shares_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"shares">> => list(share_details())
-%% }
--type list_shares_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_run_cache_request() :: #{
-%%   <<"cacheBehavior">> => string(),
-%%   <<"cacheBucketOwnerId">> => string(),
-%%   <<"cacheS3Location">> := string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"requestId">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_run_cache_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vcf_options() :: #{
-%%   <<"ignoreFilterField">> => [boolean()],
-%%   <<"ignoreQualField">> => [boolean()]
-%% }
--type vcf_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_read_set_activation_job_response() :: #{
-%%   <<"completionTime">> => [non_neg_integer()],
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"sequenceStoreId">> => string(),
-%%   <<"sources">> => list(activate_read_set_source_item()),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string()
-%% }
--type get_read_set_activation_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% complete_read_set_upload_part_list_item() :: #{
-%%   <<"checksum">> => [string()],
-%%   <<"partNumber">> => [integer()],
-%%   <<"partSource">> => string()
-%% }
--type complete_read_set_upload_part_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_run_group_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"maxCpus">> => [integer()],
-%%   <<"maxDuration">> => [integer()],
-%%   <<"maxGpus">> => [integer()],
-%%   <<"maxRuns">> => [integer()],
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type get_run_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% registry_mapping() :: #{
-%%   <<"ecrAccountId">> => string(),
-%%   <<"ecrRepositoryPrefix">> => string(),
-%%   <<"upstreamRegistryUrl">> => string(),
-%%   <<"upstreamRepositoryPrefix">> => string()
-%% }
--type registry_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% variant_import_item_source() :: #{
-%%   <<"source">> => string()
-%% }
--type variant_import_item_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% reference_store_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sseConfig">> => sse_config()
-%% }
--type reference_store_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% version_delete_error() :: #{
-%%   <<"message">> => [string()],
-%%   <<"versionName">> => string()
-%% }
--type version_delete_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workflow_version_request() :: #{}
--type delete_workflow_version_request() :: #{}.
-
-
-%% Example:
-%% not_supported_operation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type not_supported_operation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configuration_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"runConfigurations">> => run_configurations_response(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"uuid">> => string()
-%% }
--type get_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sequence_stores_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sequenceStores">> => list(sequence_store_detail())
-%% }
--type list_sequence_stores_response() :: #{binary() => any()}.
+-type sequence_store_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1546,190 +2602,12 @@
 
 
 %% Example:
-%% get_batch_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"defaultRunSetting">> => default_run_setting(),
-%%   <<"failedTime">> => non_neg_integer(),
-%%   <<"failureReason">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"processedTime">> => non_neg_integer(),
-%%   <<"runSummary">> => run_summary(),
-%%   <<"status">> => string(),
-%%   <<"submissionSummary">> => submission_summary(),
-%%   <<"submittedTime">> => non_neg_integer(),
-%%   <<"tags">> => map(),
-%%   <<"totalRuns">> => [integer()],
-%%   <<"uuid">> => string()
+%% sequence_store_s3_access() :: #{
+%%   <<"accessLogLocation">> => string(),
+%%   <<"s3AccessPointArn">> => string(),
+%%   <<"s3Uri">> => string()
 %% }
--type get_batch_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_reference_request() :: #{
-%%   <<"file">> => string(),
-%%   <<"partNumber">> := [integer()],
-%%   <<"range">> => string()
-%% }
--type get_reference_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% annotation_import_job_item() :: #{
-%%   <<"annotationFields">> => map(),
-%%   <<"completionTime">> => non_neg_integer(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"destinationName">> => [string()],
-%%   <<"id">> => [string()],
-%%   <<"roleArn">> => string(),
-%%   <<"runLeftNormalization">> => boolean(),
-%%   <<"status">> => string(),
-%%   <<"updateTime">> => non_neg_integer(),
-%%   <<"versionName">> => string()
-%% }
--type annotation_import_job_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sequence_store_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"eTagAlgorithmFamily">> => string(),
-%%   <<"fallbackLocation">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"propagatedSetLevelTags">> => list(string()),
-%%   <<"s3Access">> => sequence_store_s3_access(),
-%%   <<"sseConfig">> => sse_config(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type get_sequence_store_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% run_group_list_item() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"maxCpus">> => [integer()],
-%%   <<"maxDuration">> => [integer()],
-%%   <<"maxGpus">> => [integer()],
-%%   <<"maxRuns">> => [integer()],
-%%   <<"name">> => string()
-%% }
--type run_group_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_annotation_store_version_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"storeId">> => string(),
-%%   <<"versionName">> => string(),
-%%   <<"versionOptions">> => list()
-%% }
--type create_annotation_store_version_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configuration_request() :: #{}
--type delete_configuration_request() :: #{}.
-
-
-%% Example:
-%% start_reference_import_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"roleArn">> := string(),
-%%   <<"sources">> := list(start_reference_import_job_source_item())
-%% }
--type start_reference_import_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_run_tasks_response() :: #{
-%%   <<"items">> => list(task_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_run_tasks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_share_response() :: #{
-%%   <<"shareId">> => [string()],
-%%   <<"shareName">> => string(),
-%%   <<"status">> => string()
-%% }
--type create_share_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workflow_version_request() :: #{
-%%   <<"accelerators">> => string(),
-%%   <<"containerRegistryMap">> => container_registry_map(),
-%%   <<"containerRegistryMapUri">> => string(),
-%%   <<"definitionRepository">> => definition_repository(),
-%%   <<"definitionUri">> => string(),
-%%   <<"definitionZip">> => [binary()],
-%%   <<"description">> => string(),
-%%   <<"engine">> => string(),
-%%   <<"main">> => string(),
-%%   <<"parameterTemplate">> => map(),
-%%   <<"parameterTemplatePath">> => string(),
-%%   <<"readmeMarkdown">> => string(),
-%%   <<"readmePath">> => string(),
-%%   <<"readmeUri">> => string(),
-%%   <<"requestId">> := string(),
-%%   <<"storageCapacity">> => [integer()],
-%%   <<"storageType">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"versionName">> := string(),
-%%   <<"workflowBucketOwnerId">> => string()
-%% }
--type create_workflow_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_read_set_source_item() :: #{
-%%   <<"description">> => string(),
-%%   <<"generatedFrom">> => string(),
-%%   <<"name">> => string(),
-%%   <<"readSetId">> => string(),
-%%   <<"referenceArn">> => string(),
-%%   <<"sampleId">> => string(),
-%%   <<"sourceFileType">> => string(),
-%%   <<"sourceFiles">> => source_files(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"subjectId">> => string(),
-%%   <<"tags">> => map()
-%% }
--type import_read_set_source_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_variant_store_request() :: #{
-%%   <<"force">> => [boolean()]
-%% }
--type delete_variant_store_request() :: #{binary() => any()}.
+-type sequence_store_s3_access() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1740,121 +2618,118 @@
 
 
 %% Example:
-%% create_reference_store_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"sseConfig">> => sse_config(),
-%%   <<"tags">> => map()
+%% share_details() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"ownerId">> => [string()],
+%%   <<"principalSubscriber">> => [string()],
+%%   <<"resourceArn">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"shareId">> => [string()],
+%%   <<"shareName">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"updateTime">> => non_neg_integer()
 %% }
--type create_reference_store_request() :: #{binary() => any()}.
+-type share_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% annotation_import_item_detail() :: #{
-%%   <<"jobStatus">> => string(),
-%%   <<"source">> => string()
+%% source_files() :: #{
+%%   <<"source1">> => string(),
+%%   <<"source2">> => string()
 %% }
--type annotation_import_item_detail() :: #{binary() => any()}.
+-type source_files() :: #{binary() => any()}.
 
 
 %% Example:
-%% e_tag() :: #{
-%%   <<"algorithm">> => string(),
-%%   <<"source1">> => [string()],
-%%   <<"source2">> => [string()]
+%% source_reference() :: #{
+%%   <<"type">> => string(),
+%%   <<"value">> => string()
 %% }
--type e_tag() :: #{binary() => any()}.
+-type source_reference() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_read_set_import_jobs_request() :: #{
-%%   <<"filter">> => import_read_set_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_read_set_import_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_read_set_metadata_request() :: #{}
--type get_read_set_metadata_request() :: #{}.
-
-
-%% Example:
-%% reference_store_filter() :: #{
-%%   <<"createdAfter">> => [non_neg_integer()],
-%%   <<"createdBefore">> => [non_neg_integer()],
-%%   <<"name">> => string()
-%% }
--type reference_store_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_variant_stores_filter() :: #{
-%%   <<"status">> => string()
-%% }
--type list_variant_stores_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_read_sets_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"readSets">> => list(read_set_list_item())
-%% }
--type list_read_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_annotation_store_request() :: #{
-%%   <<"force">> => [boolean()]
-%% }
--type delete_annotation_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflows_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"name">> => string(),
-%%   <<"startingToken">> => string(),
+%% sse_config() :: #{
+%%   <<"keyArn">> => [string()],
 %%   <<"type">> => string()
 %% }
--type list_workflows_request() :: #{binary() => any()}.
+-type sse_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_multipart_read_set_upload_request() :: #{
+%% start_annotation_import_request() :: #{
+%%   <<"annotationFields">> => map(),
+%%   <<"destinationName">> := string(),
+%%   <<"formatOptions">> => list(),
+%%   <<"items">> := list(annotation_import_item_source()),
+%%   <<"roleArn">> := string(),
+%%   <<"runLeftNormalization">> => boolean(),
+%%   <<"versionName">> => string()
+%% }
+-type start_annotation_import_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_annotation_import_response() :: #{
+%%   <<"jobId">> => string()
+%% }
+-type start_annotation_import_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_read_set_activation_job_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"generatedFrom">> => string(),
-%%   <<"name">> := string(),
-%%   <<"referenceArn">> => string(),
-%%   <<"sampleId">> := string(),
-%%   <<"sourceFileType">> := string(),
-%%   <<"subjectId">> := string(),
-%%   <<"tags">> => map()
+%%   <<"sources">> := list(start_read_set_activation_job_source_item())
 %% }
--type create_multipart_read_set_upload_request() :: #{binary() => any()}.
+-type start_read_set_activation_job_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% image_details() :: #{
-%%   <<"image">> => string(),
-%%   <<"imageDigest">> => string(),
-%%   <<"sourceImage">> => string()
+%% start_read_set_activation_job_response() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"sequenceStoreId">> => string(),
+%%   <<"status">> => string()
 %% }
--type image_details() :: #{binary() => any()}.
+-type start_read_set_activation_job_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_sequence_store_request() :: #{
+%% start_read_set_activation_job_source_item() :: #{
+%%   <<"readSetId">> => string()
+%% }
+-type start_read_set_activation_job_source_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_read_set_export_job_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"fallbackLocation">> => string(),
-%%   <<"name">> => string(),
-%%   <<"propagatedSetLevelTags">> => list(string()),
-%%   <<"s3AccessConfig">> => s3_access_config()
+%%   <<"destination">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"sources">> := list(export_read_set())
 %% }
--type update_sequence_store_request() :: #{binary() => any()}.
+-type start_read_set_export_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_read_set_export_job_response() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"destination">> => string(),
+%%   <<"id">> => string(),
+%%   <<"sequenceStoreId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type start_read_set_export_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_read_set_import_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"roleArn">> := string(),
+%%   <<"sources">> := list(start_read_set_import_job_source_item())
+%% }
+-type start_read_set_import_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1866,99 +2741,6 @@
 %%   <<"status">> => string()
 %% }
 -type start_read_set_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_reference_store_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sseConfig">> => sse_config()
-%% }
--type get_reference_store_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% read_set_upload_part_list_item() :: #{
-%%   <<"checksum">> => [string()],
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"lastUpdatedTime">> => [non_neg_integer()],
-%%   <<"partNumber">> => [integer()],
-%%   <<"partSize">> => [float()],
-%%   <<"partSource">> => string()
-%% }
--type read_set_upload_part_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_config() :: #{
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string())
-%% }
--type vpc_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_s3_access_policy_response() :: #{
-%%   <<"s3AccessPointArn">> => string(),
-%%   <<"storeId">> => string(),
-%%   <<"storeType">> => list(any())
-%% }
--type put_s3_access_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workflow_version_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"uuid">> => string(),
-%%   <<"versionName">> => string(),
-%%   <<"workflowId">> => string()
-%% }
--type create_workflow_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configuration_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"requestId">> := string(),
-%%   <<"runConfigurations">> := run_configurations(),
-%%   <<"tags">> => map()
-%% }
--type create_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% read_set_files() :: #{
-%%   <<"index">> => file_information(),
-%%   <<"source1">> => file_information(),
-%%   <<"source2">> => file_information()
-%% }
--type read_set_files() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_run_batch_response() :: #{}
--type cancel_run_batch_response() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_details() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"uuid">> => string()
-%% }
--type configuration_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1977,757 +2759,55 @@
 
 
 %% Example:
-%% activate_read_set_source_item() :: #{
-%%   <<"readSetId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string()
-%% }
--type activate_read_set_source_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_annotation_import_jobs_response() :: #{
-%%   <<"annotationImportJobs">> => list(annotation_import_job_item()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_annotation_import_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reference_files() :: #{
-%%   <<"index">> => file_information(),
-%%   <<"source">> => file_information()
-%% }
--type reference_files() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_annotation_import_request() :: #{
-%%   <<"annotationFields">> => map(),
-%%   <<"destinationName">> := string(),
-%%   <<"formatOptions">> => list(),
-%%   <<"items">> := list(annotation_import_item_source()),
+%% start_reference_import_job_request() :: #{
+%%   <<"clientToken">> => string(),
 %%   <<"roleArn">> := string(),
-%%   <<"runLeftNormalization">> => boolean(),
-%%   <<"versionName">> => string()
+%%   <<"sources">> := list(start_reference_import_job_source_item())
 %% }
--type start_annotation_import_request() :: #{binary() => any()}.
+-type start_reference_import_job_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_delete_read_set_request() :: #{
-%%   <<"ids">> := list(string())
-%% }
--type batch_delete_read_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_variant_store_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"reference">> => list(),
-%%   <<"status">> => string()
-%% }
--type create_variant_store_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_version_request() :: #{
-%%   <<"export">> => list(string()),
-%%   <<"type">> => string(),
-%%   <<"workflowOwnerId">> => string()
-%% }
--type get_workflow_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_run_cache_request() :: #{}
--type get_run_cache_request() :: #{}.
-
-
-%% Example:
-%% list_runs_in_batch_request() :: #{
-%%   <<"maxItems">> => [integer()],
-%%   <<"runId">> => [string()],
-%%   <<"runSettingId">> => [string()],
-%%   <<"startingToken">> => string(),
-%%   <<"submissionStatus">> => string()
-%% }
--type list_runs_in_batch_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_read_sets_request() :: #{
-%%   <<"filter">> => read_set_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_read_sets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_run_groups_response() :: #{
-%%   <<"items">> => list(run_group_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_run_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflow_versions_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"startingToken">> => string(),
-%%   <<"type">> => string(),
-%%   <<"workflowOwnerId">> => string()
-%% }
--type list_workflow_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% annotation_import_item_source() :: #{
-%%   <<"source">> => string()
-%% }
--type annotation_import_item_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"resourceArns">> => list([string()]()),
-%%   <<"status">> => list(string()),
-%%   <<"type">> => list(string())
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configuration_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"runConfigurations">> => run_configurations_response(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"uuid">> => string()
-%% }
--type create_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sequence_store_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"eTagAlgorithmFamily">> => string(),
-%%   <<"fallbackLocation">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"propagatedSetLevelTags">> => list(string()),
-%%   <<"s3Access">> => sequence_store_s3_access(),
-%%   <<"sseConfig">> => sse_config(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string()
-%% }
--type create_sequence_store_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_run_request() :: #{}
--type cancel_run_request() :: #{}.
-
-%% Example:
-%% delete_run_request() :: #{}
--type delete_run_request() :: #{}.
-
-
-%% Example:
-%% create_run_group_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_run_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_sequence_store_response() :: #{}
--type delete_sequence_store_response() :: #{}.
-
-
-%% Example:
-%% start_read_set_export_job_response() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"destination">> => string(),
-%%   <<"id">> => string(),
-%%   <<"sequenceStoreId">> => string(),
-%%   <<"status">> => string()
-%% }
--type start_read_set_export_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_list_item() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"totalRuns">> => [integer()],
-%%   <<"workflowId">> => string()
-%% }
--type batch_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflow_versions_response() :: #{
-%%   <<"items">> => list(workflow_version_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_workflow_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_reference_store_request() :: #{}
--type get_reference_store_request() :: #{}.
-
-
-%% Example:
-%% update_annotation_store_version_request() :: #{
-%%   <<"description">> => string()
-%% }
--type update_annotation_store_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_run_batch_request() :: #{
-%%   <<"batchId">> := string()
-%% }
--type delete_run_batch_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% reference_filter() :: #{
-%%   <<"createdAfter">> => [non_neg_integer()],
-%%   <<"createdBefore">> => [non_neg_integer()],
-%%   <<"md5">> => string(),
-%%   <<"name">> => string()
-%% }
--type reference_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_read_set_response() :: #{
-%%   <<"payload">> => binary()
-%% }
--type get_read_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_run_tasks_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"startingToken">> => string(),
-%%   <<"status">> => string()
-%% }
--type list_run_tasks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_read_set_export_jobs_response() :: #{
-%%   <<"exportJobs">> => list(export_read_set_job_detail()),
-%%   <<"nextToken">> => string()
-%% }
--type list_read_set_export_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sequence_store_s3_access() :: #{
-%%   <<"accessLogLocation">> => string(),
-%%   <<"s3AccessPointArn">> => string(),
-%%   <<"s3Uri">> => string()
-%% }
--type sequence_store_s3_access() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_variant_store_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"reference">> := list(),
-%%   <<"sseConfig">> => sse_config(),
-%%   <<"tags">> => map()
-%% }
--type create_variant_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_read_set_export_job_response() :: #{
-%%   <<"completionTime">> => [non_neg_integer()],
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"destination">> => string(),
-%%   <<"id">> => string(),
-%%   <<"readSets">> => list(export_read_set_detail()),
-%%   <<"sequenceStoreId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string()
-%% }
--type get_read_set_export_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sequence_stores_request() :: #{
-%%   <<"filter">> => sequence_store_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_sequence_stores_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_read_set_detail() :: #{
-%%   <<"id">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string()
-%% }
--type export_read_set_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_annotation_store_versions_filter() :: #{
-%%   <<"status">> => string()
-%% }
--type list_annotation_store_versions_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_multipart_read_set_uploads_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"uploads">> => list(multipart_read_set_upload_list_item())
-%% }
--type list_multipart_read_set_uploads_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% read_options() :: #{
-%%   <<"comment">> => string(),
-%%   <<"encoding">> => string(),
-%%   <<"escape">> => string(),
-%%   <<"escapeQuotes">> => boolean(),
-%%   <<"header">> => boolean(),
-%%   <<"lineSep">> => string(),
-%%   <<"quote">> => string(),
-%%   <<"quoteAll">> => boolean(),
-%%   <<"sep">> => string()
-%% }
--type read_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% sse_config() :: #{
-%%   <<"keyArn">> => [string()],
-%%   <<"type">> => string()
-%% }
--type sse_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_variant_import_response() :: #{
-%%   <<"annotationFields">> => map(),
-%%   <<"completionTime">> => non_neg_integer(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"destinationName">> => string(),
-%%   <<"id">> => string(),
-%%   <<"items">> => list(variant_import_item_detail()),
-%%   <<"roleArn">> => string(),
-%%   <<"runLeftNormalization">> => boolean(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"updateTime">> => non_neg_integer()
-%% }
--type get_variant_import_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_run_group_request() :: #{
-%%   <<"maxCpus">> => [integer()],
-%%   <<"maxDuration">> => [integer()],
-%%   <<"maxGpus">> => [integer()],
-%%   <<"maxRuns">> => [integer()],
-%%   <<"name">> => string()
-%% }
--type update_run_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workflow_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"uuid">> => string()
-%% }
--type create_workflow_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_variant_store_request() :: #{}
--type get_variant_store_request() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_read_set_activation_job_request() :: #{}
--type get_read_set_activation_job_request() :: #{}.
-
-%% Example:
-%% get_variant_import_request() :: #{}
--type get_variant_import_request() :: #{}.
-
-
-%% Example:
-%% sequence_information() :: #{
-%%   <<"alignment">> => [string()],
-%%   <<"generatedFrom">> => string(),
-%%   <<"totalBaseCount">> => [float()],
-%%   <<"totalReadCount">> => [float()]
-%% }
--type sequence_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_reference_stores_request() :: #{
-%%   <<"filter">> => reference_store_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_reference_stores_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_reference_import_jobs_request() :: #{
-%%   <<"filter">> => import_reference_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_reference_import_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_sequence_store_request() :: #{}
--type get_sequence_store_request() :: #{}.
-
-
-%% Example:
-%% get_reference_import_job_response() :: #{
-%%   <<"completionTime">> => [non_neg_integer()],
+%% start_reference_import_job_response() :: #{
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
 %%   <<"referenceStoreId">> => string(),
 %%   <<"roleArn">> => string(),
-%%   <<"sources">> => list(import_reference_source_item()),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string()
-%% }
--type get_reference_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_read_set_import_job_response() :: #{
-%%   <<"completionTime">> => [non_neg_integer()],
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"sequenceStoreId">> => string(),
-%%   <<"sources">> => list(import_read_set_source_item()),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string()
-%% }
--type get_read_set_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_run_caches_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"startingToken">> => string()
-%% }
--type list_run_caches_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_run_cache_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"cacheBehavior">> => string(),
-%%   <<"cacheBucketOwnerId">> => string(),
-%%   <<"cacheS3Uri">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map()
-%% }
--type get_run_cache_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tsv_version_options() :: #{
-%%   <<"annotationType">> => string(),
-%%   <<"formatToHeader">> => map(),
-%%   <<"schema">> => list(map())
-%% }
--type tsv_version_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_batch_request() :: #{
-%%   <<"maxItems">> => [integer()],
-%%   <<"name">> => string(),
-%%   <<"runGroupId">> => string(),
-%%   <<"startingToken">> => string(),
 %%   <<"status">> => string()
 %% }
--type list_batch_request() :: #{binary() => any()}.
+-type start_reference_import_job_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% import_reference_filter() :: #{
-%%   <<"createdAfter">> => [non_neg_integer()],
-%%   <<"createdBefore">> => [non_neg_integer()],
-%%   <<"status">> => string()
-%% }
--type import_reference_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_annotation_import_jobs_request() :: #{
-%%   <<"filter">> => list_annotation_import_jobs_filter(),
-%%   <<"ids">> => list(string()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_annotation_import_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_variant_stores_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"variantStores">> => list(variant_store_item())
-%% }
--type list_variant_stores_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_annotation_import_response() :: #{
-%%   <<"jobId">> => string()
-%% }
--type start_annotation_import_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_list_item() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
+%% start_reference_import_job_source_item() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type configuration_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_run_batch_response() :: #{}
--type delete_run_batch_response() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_read_set_import_job_request() :: #{}
--type get_read_set_import_job_request() :: #{}.
-
-%% Example:
-%% delete_reference_store_request() :: #{}
--type delete_reference_store_request() :: #{}.
-
-%% Example:
-%% delete_s3_access_policy_request() :: #{}
--type delete_s3_access_policy_request() :: #{}.
-
-
-%% Example:
-%% multipart_read_set_upload_list_item() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"generatedFrom">> => string(),
-%%   <<"name">> => string(),
-%%   <<"referenceArn">> => string(),
-%%   <<"sampleId">> => string(),
-%%   <<"sequenceStoreId">> => string(),
-%%   <<"sourceFileType">> => string(),
-%%   <<"subjectId">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"uploadId">> => string()
-%% }
--type multipart_read_set_upload_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_mapping() :: #{
-%%   <<"destinationImage">> => string(),
-%%   <<"sourceImage">> => string()
-%% }
--type image_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% variant_import_item_detail() :: #{
-%%   <<"jobStatus">> => string(),
-%%   <<"source">> => string(),
-%%   <<"statusMessage">> => string()
-%% }
--type variant_import_item_detail() :: #{binary() => any()}.
-
-%% Example:
-%% get_run_task_request() :: #{}
--type get_run_task_request() :: #{}.
-
-
-%% Example:
-%% get_run_task_response() :: #{
-%%   <<"cacheHit">> => [boolean()],
-%%   <<"cacheS3Uri">> => string(),
-%%   <<"cpus">> => [integer()],
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"failureReason">> => string(),
-%%   <<"gpus">> => [integer()],
-%%   <<"imageDetails">> => image_details(),
-%%   <<"instanceType">> => string(),
-%%   <<"logStream">> => string(),
-%%   <<"memory">> => [integer()],
-%%   <<"name">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"stopTime">> => non_neg_integer(),
-%%   <<"taskId">> => string()
-%% }
--type get_run_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_reference_store_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sseConfig">> => sse_config()
-%% }
--type create_reference_store_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_reference_source_item() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"referenceId">> => string(),
 %%   <<"sourceFile">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
 %%   <<"tags">> => map()
 %% }
--type import_reference_source_item() :: #{binary() => any()}.
+-type start_reference_import_job_source_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_read_set_upload_parts_request() :: #{
-%%   <<"filter">> => read_set_upload_part_list_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"partSource">> := string()
+%% start_run_batch_request() :: #{
+%%   <<"batchName">> => string(),
+%%   <<"batchRunSettings">> := list(),
+%%   <<"defaultRunSetting">> := default_run_setting(),
+%%   <<"requestId">> := string(),
+%%   <<"tags">> => map()
 %% }
--type list_read_set_upload_parts_request() :: #{binary() => any()}.
+-type start_run_batch_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_references_request() :: #{
-%%   <<"filter">> => reference_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_references_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% read_set_list_item() :: #{
+%% start_run_batch_response() :: #{
 %%   <<"arn">> => string(),
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"creationType">> => string(),
-%%   <<"description">> => string(),
-%%   <<"etag">> => e_tag(),
-%%   <<"fileType">> => string(),
 %%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"referenceArn">> => string(),
-%%   <<"sampleId">> => string(),
-%%   <<"sequenceInformation">> => sequence_information(),
-%%   <<"sequenceStoreId">> => string(),
 %%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"subjectId">> => string()
+%%   <<"tags">> => map(),
+%%   <<"uuid">> => string()
 %% }
--type read_set_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_annotation_import_request() :: #{}
--type get_annotation_import_request() :: #{}.
-
-
-%% Example:
-%% get_s3_access_policy_response() :: #{
-%%   <<"s3AccessPointArn">> => string(),
-%%   <<"s3AccessPolicy">> => string(),
-%%   <<"storeId">> => string(),
-%%   <<"storeType">> => list(any()),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type get_s3_access_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_reference_response() :: #{}
--type delete_reference_response() :: #{}.
-
-
-%% Example:
-%% vpc_config_response() :: #{
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type vpc_config_response() :: #{binary() => any()}.
+-type start_run_batch_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2760,268 +2840,6 @@
 
 
 %% Example:
-%% delete_annotation_store_versions_request() :: #{
-%%   <<"force">> => [boolean()],
-%%   <<"versions">> := list(string())
-%% }
--type delete_annotation_store_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workflow_version_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"readmeMarkdown">> => string(),
-%%   <<"storageCapacity">> => [integer()],
-%%   <<"storageType">> => string()
-%% }
--type update_workflow_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_batch_request() :: #{}
--type get_batch_request() :: #{}.
-
-%% Example:
-%% get_share_request() :: #{}
--type get_share_request() :: #{}.
-
-
-%% Example:
-%% start_read_set_activation_job_response() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"sequenceStoreId">> => string(),
-%%   <<"status">> => string()
-%% }
--type start_read_set_activation_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_annotation_store_version_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"versionName">> := string(),
-%%   <<"versionOptions">> => list()
-%% }
--type create_annotation_store_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_share_response() :: #{
-%%   <<"share">> => share_details()
-%% }
--type get_share_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_variant_import_response() :: #{}
--type cancel_variant_import_response() :: #{}.
-
-
-%% Example:
-%% list_read_set_upload_parts_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"parts">> => list(read_set_upload_part_list_item())
-%% }
--type list_read_set_upload_parts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_batch_response() :: #{
-%%   <<"items">> => list(batch_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_batch_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_reference_store_response() :: #{}
--type delete_reference_store_response() :: #{}.
-
-
-%% Example:
-%% delete_share_response() :: #{
-%%   <<"status">> => string()
-%% }
--type delete_share_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_read_set_activation_job_source_item() :: #{
-%%   <<"readSetId">> => string()
-%% }
--type start_read_set_activation_job_source_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_variant_import_request() :: #{
-%%   <<"annotationFields">> => map(),
-%%   <<"destinationName">> := string(),
-%%   <<"items">> := list(variant_import_item_source()),
-%%   <<"roleArn">> := string(),
-%%   <<"runLeftNormalization">> => boolean()
-%% }
--type start_variant_import_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_files() :: #{
-%%   <<"source1">> => string(),
-%%   <<"source2">> => string()
-%% }
--type source_files() :: #{binary() => any()}.
-
-%% Example:
-%% get_reference_import_job_request() :: #{}
--type get_reference_import_job_request() :: #{}.
-
-
-%% Example:
-%% file_information() :: #{
-%%   <<"contentLength">> => [float()],
-%%   <<"partSize">> => [float()],
-%%   <<"s3Access">> => read_set_s3_access(),
-%%   <<"totalParts">> => [integer()]
-%% }
--type file_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_read_set_export_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"destination">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"sources">> := list(export_read_set())
-%% }
--type start_read_set_export_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_variant_import_response() :: #{
-%%   <<"jobId">> => string()
-%% }
--type start_variant_import_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tsv_store_options() :: #{
-%%   <<"annotationType">> => string(),
-%%   <<"formatToHeader">> => map(),
-%%   <<"schema">> => list(map())
-%% }
--type tsv_store_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_annotation_store_versions_request() :: #{
-%%   <<"filter">> => list_annotation_store_versions_filter(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_annotation_store_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_registry_map() :: #{
-%%   <<"imageMappings">> => list(image_mapping()),
-%%   <<"registryMappings">> => list(registry_mapping())
-%% }
--type container_registry_map() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_run_response() :: #{
-%%   <<"outputUri">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"workflowOwnerId">> => string(),
-%%   <<"accelerators">> => string(),
-%%   <<"status">> => string(),
-%%   <<"runOutputUri">> => string(),
-%%   <<"runGroupId">> => string(),
-%%   <<"networkingMode">> => string(),
-%%   <<"definition">> => string(),
-%%   <<"id">> => string(),
-%%   <<"cacheId">> => string(),
-%%   <<"storageType">> => string(),
-%%   <<"vpcConfig">> => vpc_config_response(),
-%%   <<"parameters">> => any(),
-%%   <<"configuration">> => configuration_details(),
-%%   <<"stopTime">> => non_neg_integer(),
-%%   <<"workflowVersionName">> => string(),
-%%   <<"resourceDigests">> => map(),
-%%   <<"tags">> => map(),
-%%   <<"storageCapacity">> => [integer()],
-%%   <<"priority">> => [integer()],
-%%   <<"batchId">> => string(),
-%%   <<"retentionMode">> => string(),
-%%   <<"logLevel">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"failureReason">> => string(),
-%%   <<"runId">> => string(),
-%%   <<"workflowId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"workflowUuid">> => string(),
-%%   <<"cacheBehavior">> => string(),
-%%   <<"engineSettings">> => any(),
-%%   <<"startedBy">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"engineVersion">> => string(),
-%%   <<"scratchStorageMode">> => string(),
-%%   <<"workflowType">> => string(),
-%%   <<"logLocation">> => run_log_location(),
-%%   <<"uuid">> => string(),
-%%   <<"digest">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"name">> => string()
-%% }
--type get_run_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_run_groups_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"name">> => string(),
-%%   <<"startingToken">> => string()
-%% }
--type list_run_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflows_response() :: #{
-%%   <<"items">> => list(workflow_list_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_workflows_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_annotation_stores_filter() :: #{
-%%   <<"status">> => string()
-%% }
--type list_annotation_stores_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% range_not_satisfiable_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type range_not_satisfiable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% complete_multipart_read_set_upload_request() :: #{
-%%   <<"parts">> := list(complete_read_set_upload_part_list_item())
-%% }
--type complete_multipart_read_set_upload_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% read_set_batch_error() :: #{
-%%   <<"code">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"message">> => [string()]
-%% }
--type read_set_batch_error() :: #{binary() => any()}.
-
-
-%% Example:
 %% start_run_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"configuration">> => configuration_details(),
@@ -3036,26 +2854,300 @@
 
 
 %% Example:
-%% list_runs_request() :: #{
-%%   <<"batchId">> => string(),
-%%   <<"maxResults">> => [integer()],
+%% start_variant_import_request() :: #{
+%%   <<"annotationFields">> => map(),
+%%   <<"destinationName">> := string(),
+%%   <<"items">> := list(variant_import_item_source()),
+%%   <<"roleArn">> := string(),
+%%   <<"runLeftNormalization">> => boolean()
+%% }
+-type start_variant_import_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_variant_import_response() :: #{
+%%   <<"jobId">> => string()
+%% }
+-type start_variant_import_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% submission_summary() :: #{
+%%   <<"failedCancelSubmissionCount">> => [integer()],
+%%   <<"failedDeleteSubmissionCount">> => [integer()],
+%%   <<"failedStartSubmissionCount">> => [integer()],
+%%   <<"pendingStartSubmissionCount">> => [integer()],
+%%   <<"successfulCancelSubmissionCount">> => [integer()],
+%%   <<"successfulDeleteSubmissionCount">> => [integer()],
+%%   <<"successfulStartSubmissionCount">> => [integer()]
+%% }
+-type submission_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% task_list_item() :: #{
+%%   <<"cacheHit">> => [boolean()],
+%%   <<"cacheS3Uri">> => string(),
+%%   <<"cpus">> => [integer()],
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"gpus">> => [integer()],
+%%   <<"instanceType">> => string(),
+%%   <<"memory">> => [integer()],
 %%   <<"name">> => string(),
-%%   <<"runGroupId">> => string(),
-%%   <<"startingToken">> => string(),
-%%   <<"status">> => string()
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"stopTime">> => non_neg_integer(),
+%%   <<"taskId">> => string(),
+%%   <<"uuid">> => string()
 %% }
--type list_runs_request() :: #{binary() => any()}.
+-type task_list_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% run_configurations() :: #{
-%%   <<"vpcConfig">> => vpc_config()
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type run_configurations() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_variant_store_response() :: #{
+%% tsv_options() :: #{
+%%   <<"readOptions">> => read_options()
+%% }
+-type tsv_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% tsv_store_options() :: #{
+%%   <<"annotationType">> => string(),
+%%   <<"formatToHeader">> => map(),
+%%   <<"schema">> => list(map())
+%% }
+-type tsv_store_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% tsv_version_options() :: #{
+%%   <<"annotationType">> => string(),
+%%   <<"formatToHeader">> => map(),
+%%   <<"schema">> => list(map())
+%% }
+-type tsv_version_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_annotation_store_request() :: #{
+%%   <<"description">> => string()
+%% }
+-type update_annotation_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_annotation_store_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"reference">> => list(),
+%%   <<"status">> => string(),
+%%   <<"storeFormat">> => string(),
+%%   <<"storeOptions">> => list(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type update_annotation_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_annotation_store_version_request() :: #{
+%%   <<"description">> => string()
+%% }
+-type update_annotation_store_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_annotation_store_version_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"storeId">> => string(),
+%%   <<"updateTime">> => non_neg_integer(),
+%%   <<"versionName">> => string()
+%% }
+-type update_annotation_store_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_run_cache_request() :: #{
+%%   <<"cacheBehavior">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type update_run_cache_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_run_group_request() :: #{
+%%   <<"maxCpus">> => [integer()],
+%%   <<"maxDuration">> => [integer()],
+%%   <<"maxGpus">> => [integer()],
+%%   <<"maxRuns">> => [integer()],
+%%   <<"name">> => string()
+%% }
+-type update_run_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sequence_store_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"fallbackLocation">> => string(),
+%%   <<"name">> => string(),
+%%   <<"propagatedSetLevelTags">> => list(string()),
+%%   <<"s3AccessConfig">> => s3_access_config()
+%% }
+-type update_sequence_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sequence_store_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"eTagAlgorithmFamily">> => string(),
+%%   <<"fallbackLocation">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"propagatedSetLevelTags">> => list(string()),
+%%   <<"s3Access">> => sequence_store_s3_access(),
+%%   <<"sseConfig">> => sse_config(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => string(),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type update_sequence_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_variant_store_request() :: #{
+%%   <<"description">> => string()
+%% }
+-type update_variant_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_variant_store_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"reference">> => list(),
+%%   <<"status">> => string(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type update_variant_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workflow_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"readmeMarkdown">> => string(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string()
+%% }
+-type update_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workflow_version_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"readmeMarkdown">> => string(),
+%%   <<"storageCapacity">> => [integer()],
+%%   <<"storageType">> => string()
+%% }
+-type update_workflow_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_read_set_part_request() :: #{
+%%   <<"partNumber">> := [integer()],
+%%   <<"partSource">> := string(),
+%%   <<"payload">> := binary()
+%% }
+-type upload_read_set_part_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_read_set_part_response() :: #{
+%%   <<"checksum">> => [string()]
+%% }
+-type upload_read_set_part_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% variant_import_item_detail() :: #{
+%%   <<"jobStatus">> => string(),
+%%   <<"source">> => string(),
+%%   <<"statusMessage">> => string()
+%% }
+-type variant_import_item_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% variant_import_item_source() :: #{
+%%   <<"source">> => string()
+%% }
+-type variant_import_item_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% variant_import_job_item() :: #{
+%%   <<"annotationFields">> => map(),
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"destinationName">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"roleArn">> => string(),
+%%   <<"runLeftNormalization">> => boolean(),
+%%   <<"status">> => string(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type variant_import_job_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% variant_store_item() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
@@ -3066,1120 +3158,1030 @@
 %%   <<"statusMessage">> => string(),
 %%   <<"storeArn">> => string(),
 %%   <<"storeSizeBytes">> => [float()],
-%%   <<"tags">> => map(),
 %%   <<"updateTime">> => non_neg_integer()
 %% }
--type get_variant_store_response() :: #{binary() => any()}.
+-type variant_store_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% run_batch_list_item() :: #{
-%%   <<"runArn">> => string(),
-%%   <<"runId">> => string(),
-%%   <<"runInternalUuid">> => string(),
-%%   <<"runSettingId">> => string(),
-%%   <<"submissionFailureMessage">> => string(),
-%%   <<"submissionFailureReason">> => string(),
-%%   <<"submissionStatus">> => string()
+%% vcf_options() :: #{
+%%   <<"ignoreFilterField">> => [boolean()],
+%%   <<"ignoreQualField">> => [boolean()]
 %% }
--type run_batch_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_share_request() :: #{}
--type delete_share_request() :: #{}.
+-type vcf_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_annotation_import_jobs_filter() :: #{
-%%   <<"status">> => string(),
-%%   <<"storeName">> => [string()]
-%% }
--type list_annotation_import_jobs_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_reference_import_jobs_response() :: #{
-%%   <<"importJobs">> => list(import_reference_job_item()),
-%%   <<"nextToken">> => string()
-%% }
--type list_reference_import_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_annotation_import_response() :: #{
-%%   <<"annotationFields">> => map(),
-%%   <<"completionTime">> => non_neg_integer(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"destinationName">> => string(),
-%%   <<"formatOptions">> => list(),
-%%   <<"id">> => string(),
-%%   <<"items">> => list(annotation_import_item_detail()),
-%%   <<"roleArn">> => string(),
-%%   <<"runLeftNormalization">> => boolean(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"updateTime">> => non_neg_integer(),
+%% version_delete_error() :: #{
+%%   <<"message">> => [string()],
 %%   <<"versionName">> => string()
 %% }
--type get_annotation_import_response() :: #{binary() => any()}.
+-type version_delete_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_run_batch_request() :: #{
-%%   <<"batchName">> => string(),
-%%   <<"batchRunSettings">> := list(),
-%%   <<"defaultRunSetting">> := default_run_setting(),
-%%   <<"requestId">> := string(),
-%%   <<"tags">> => map()
+%% vpc_config() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
 %% }
--type start_run_batch_request() :: #{binary() => any()}.
+-type vpc_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% read_set_s3_access() :: #{
-%%   <<"s3Uri">> => string()
+%% vpc_config_response() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
 %% }
--type read_set_s3_access() :: #{binary() => any()}.
+-type vpc_config_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_run_group_request() :: #{
-%%   <<"maxCpus">> => [integer()],
-%%   <<"maxDuration">> => [integer()],
-%%   <<"maxGpus">> => [integer()],
-%%   <<"maxRuns">> => [integer()],
-%%   <<"name">> => string(),
-%%   <<"requestId">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_run_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% abort_multipart_read_set_upload_response() :: #{}
--type abort_multipart_read_set_upload_response() :: #{}.
-
-
-%% Example:
-%% list_variant_import_jobs_filter() :: #{
-%%   <<"status">> => string(),
-%%   <<"storeName">> => [string()]
-%% }
--type list_variant_import_jobs_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_read_set_filter() :: #{
-%%   <<"createdAfter">> => [non_neg_integer()],
-%%   <<"createdBefore">> => [non_neg_integer()],
-%%   <<"status">> => string()
-%% }
--type export_read_set_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% sequence_store_detail() :: #{
+%% workflow_list_item() :: #{
 %%   <<"arn">> => string(),
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"eTagAlgorithmFamily">> => string(),
-%%   <<"fallbackLocation">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sseConfig">> => sse_config(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"updateTime">> => [non_neg_integer()]
-%% }
--type sequence_store_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_response() :: #{
-%%   <<"accelerators">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"containerRegistryMap">> => container_registry_map(),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"definition">> => string(),
-%%   <<"definitionRepositoryDetails">> => definition_repository_details(),
-%%   <<"description">> => string(),
 %%   <<"digest">> => string(),
-%%   <<"engine">> => string(),
 %%   <<"id">> => string(),
-%%   <<"main">> => string(),
 %%   <<"metadata">> => map(),
 %%   <<"name">> => string(),
-%%   <<"parameterTemplate">> => map(),
-%%   <<"profileParameterTemplates">> => map(),
-%%   <<"profiles">> => list(string()),
-%%   <<"readme">> => string(),
-%%   <<"readmePath">> => string(),
 %%   <<"status">> => string(),
-%%   <<"statusMessage">> => string(),
-%%   <<"storageCapacity">> => [integer()],
-%%   <<"storageType">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string(),
-%%   <<"uuid">> => string()
+%%   <<"type">> => string()
 %% }
--type get_workflow_response() :: #{binary() => any()}.
+-type workflow_list_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% export_read_set() :: #{
-%%   <<"readSetId">> => string()
+%% workflow_parameter() :: #{
+%%   <<"description">> => string(),
+%%   <<"optional">> => [boolean()]
 %% }
--type export_read_set() :: #{binary() => any()}.
+-type workflow_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_version_list_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"digest">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"status">> => string(),
+%%   <<"type">> => string(),
+%%   <<"versionName">> => string(),
+%%   <<"workflowId">> => string()
+%% }
+-type workflow_version_list_item() :: #{binary() => any()}.
 
 -type abort_multipart_read_set_upload_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
     not_supported_operation_exception() | 
-    request_timeout_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type accept_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_delete_read_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type cancel_annotation_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type cancel_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type cancel_run_batch_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type cancel_variant_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type complete_multipart_read_set_upload_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
     not_supported_operation_exception() | 
-    request_timeout_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_annotation_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_annotation_store_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type create_multipart_read_set_upload_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
     not_supported_operation_exception() | 
-    request_timeout_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_reference_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_run_cache_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type create_run_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type create_sequence_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_variant_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type create_workflow_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type delete_annotation_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_annotation_store_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_batch_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type delete_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type delete_reference_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type delete_reference_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type delete_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type delete_run_batch_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type delete_run_cache_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type delete_run_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type delete_s3_access_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
     not_supported_operation_exception() | 
-    request_timeout_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_sequence_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type delete_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_variant_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type delete_workflow_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type get_annotation_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_annotation_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_annotation_store_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_batch_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type get_read_set_errors() ::
-    range_not_satisfiable_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    range_not_satisfiable_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type get_read_set_activation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_read_set_export_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_read_set_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_read_set_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_reference_errors() ::
-    range_not_satisfiable_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    range_not_satisfiable_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_reference_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_reference_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_reference_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type get_run_cache_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type get_run_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type get_run_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type get_s3_access_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
     not_supported_operation_exception() | 
-    request_timeout_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_sequence_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_share_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_variant_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_variant_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type get_workflow_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_annotation_import_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_annotation_store_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_annotation_stores_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_batch_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    request_timeout_exception() | 
     internal_server_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_multipart_read_set_uploads_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
     not_supported_operation_exception() | 
-    request_timeout_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_read_set_activation_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_read_set_export_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_read_set_import_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_read_set_upload_parts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
     not_supported_operation_exception() | 
-    request_timeout_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_read_sets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_reference_import_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_reference_stores_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    request_timeout_exception() | 
     internal_server_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_references_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_run_caches_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_run_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_run_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_runs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_runs_in_batch_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_sequence_stores_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    request_timeout_exception() | 
     internal_server_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_shares_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_variant_import_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_variant_stores_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_workflow_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type list_workflows_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type put_s3_access_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
     not_supported_operation_exception() | 
-    request_timeout_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_annotation_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_read_set_activation_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_read_set_export_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_read_set_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_reference_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_run_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type start_run_batch_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type start_variant_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type update_annotation_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_annotation_store_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_run_cache_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type update_run_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type update_sequence_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type update_variant_store_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_workflow_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type update_workflow_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    request_timeout_exception().
+    access_denied_exception().
 
 -type upload_read_set_part_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    request_timeout_exception() | 
     not_supported_operation_exception() | 
-    request_timeout_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

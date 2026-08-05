@@ -153,6 +153,77 @@
 
 
 %% Example:
+%% accept_grouping_recommendation_entry() :: #{
+%%   <<"groupingRecommendationId">> => string()
+%% }
+-type accept_grouping_recommendation_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% accept_resource_grouping_recommendations_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"entries">> := list(accept_grouping_recommendation_entry())
+%% }
+-type accept_resource_grouping_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% accept_resource_grouping_recommendations_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"failedEntries">> => list(failed_grouping_recommendation_entry())
+%% }
+-type accept_resource_grouping_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_draft_app_version_resource_mappings_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"resourceMappings">> := list(resource_mapping())
+%% }
+-type add_draft_app_version_resource_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_draft_app_version_resource_mappings_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"resourceMappings">> := list(resource_mapping())
+%% }
+-type add_draft_app_version_resource_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% alarm() :: #{
+%%   <<"alarmArn">> => string(),
+%%   <<"source">> => string()
+%% }
+-type alarm() :: #{binary() => any()}.
+
+
+%% Example:
+%% alarm_recommendation() :: #{
+%%   <<"appComponentName">> => string(),
+%%   <<"appComponentNames">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"items">> => list(recommendation_item()),
+%%   <<"name">> => string(),
+%%   <<"prerequisite">> => string(),
+%%   <<"recommendationId">> => string(),
+%%   <<"recommendationStatus">> => list(any()),
+%%   <<"referenceId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type alarm_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
 %% app() :: #{
 %%   <<"appArn">> => string(),
 %%   <<"assessmentSchedule">> => list(any()),
@@ -175,1312 +246,6 @@
 %%   <<"tags">> => map()
 %% }
 -type app() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_recommendation_status_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"requestEntries">> := list(update_recommendation_status_request_entry())
-%% }
--type batch_update_recommendation_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_component_compliances_response() :: #{
-%%   <<"componentCompliances">> := list(app_component_compliance()),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_component_compliances_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_version_resources_resolution_status_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"resolutionId">> => string()
-%% }
--type describe_app_version_resources_resolution_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_apps_response() :: #{
-%%   <<"appSummaries">> := list(app_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_apps_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_resource_grouping_recommendation_task_response() :: #{
-%%   <<"errorMessage">> => string(),
-%%   <<"groupingId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type describe_resource_grouping_recommendation_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_component_recommendations_response() :: #{
-%%   <<"componentRecommendations">> := list(component_recommendation()),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_component_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_version_resource_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsRegion">> => string(),
-%%   <<"logicalResourceId">> => logical_resource_id(),
-%%   <<"physicalResourceId">> => string(),
-%%   <<"resourceName">> => string()
-%% }
--type describe_app_version_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_metrics_export_response() :: #{
-%%   <<"errorMessage">> => string(),
-%%   <<"exportLocation">> => s3_location(),
-%%   <<"metricsExportId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type describe_metrics_export_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_component_recommendations_request() :: #{
-%%   <<"assessmentArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_component_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_draft_app_version_resource_mappings_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"resourceMappings">> := list(resource_mapping())
-%% }
--type add_draft_app_version_resource_mappings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_request() :: #{
-%%   <<"assessmentSchedule">> => list(any()),
-%%   <<"awsApplicationArn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"eventSubscriptions">> => list(event_subscription()),
-%%   <<"name">> := string(),
-%%   <<"permissionModel">> => permission_model(),
-%%   <<"policyArn">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_app_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_version_resources_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"physicalResources">> := list(physical_resource()),
-%%   <<"resolutionId">> := string()
-%% }
--type list_app_version_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_app_response() :: #{
-%%   <<"appArn">> := string()
-%% }
--type delete_app_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_version_app_component_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appComponent">> => app_component(),
-%%   <<"appVersion">> := string()
-%% }
--type create_app_version_app_component_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_assessments_request() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"assessmentName">> => string(),
-%%   <<"assessmentStatus">> => list(list(any())()),
-%%   <<"complianceStatus">> => list(any()),
-%%   <<"invoker">> => list(any()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"reverseOrder">> => boolean()
-%% }
--type list_app_assessments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_versions_response() :: #{
-%%   <<"appVersions">> := list(app_version_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_draft_app_version_resource_mappings_response() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"appVersion">> => string()
-%% }
--type remove_draft_app_version_resource_mappings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resolve_app_version_resources_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string()
-%% }
--type resolve_app_version_resources_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% update_app_version_app_component_request() :: #{
-%%   <<"additionalInfo">> => map(),
-%%   <<"appArn">> := string(),
-%%   <<"id">> := string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type update_app_version_app_component_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_draft_app_version_template_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appTemplateBody">> := string()
-%% }
--type put_draft_app_version_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_mapping() :: #{
-%%   <<"appRegistryAppName">> => string(),
-%%   <<"eksSourceName">> => string(),
-%%   <<"logicalStackName">> => string(),
-%%   <<"mappingType">> => list(any()),
-%%   <<"physicalResourceId">> => physical_resource_id(),
-%%   <<"resourceGroupName">> => string(),
-%%   <<"resourceName">> => string(),
-%%   <<"terraformSourceName">> => string()
-%% }
--type resource_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_unsupported_app_version_resources_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resolutionId">> := string(),
-%%   <<"unsupportedResources">> := list(unsupported_resource())
-%% }
--type list_unsupported_app_version_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resiliency_score() :: #{
-%%   <<"componentScore">> => map(),
-%%   <<"disruptionScore">> => map(),
-%%   <<"score">> => float()
-%% }
--type resiliency_score() :: #{binary() => any()}.
-
-
-%% Example:
-%% unsupported_resource() :: #{
-%%   <<"logicalResourceId">> => logical_resource_id(),
-%%   <<"physicalResourceId">> => physical_resource_id(),
-%%   <<"resourceType">> => string(),
-%%   <<"unsupportedResourceStatus">> => string()
-%% }
--type unsupported_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_version_resource_request() :: #{
-%%   <<"additionalInfo">> => map(),
-%%   <<"appArn">> := string(),
-%%   <<"appComponents">> := list(string()),
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsRegion">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"logicalResourceId">> := logical_resource_id(),
-%%   <<"physicalResourceId">> := string(),
-%%   <<"resourceName">> => string(),
-%%   <<"resourceType">> := string()
-%% }
--type create_app_version_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_resource_grouping_recommendation_task_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"groupingId">> => string()
-%% }
--type describe_resource_grouping_recommendation_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% alarm() :: #{
-%%   <<"alarmArn">> => string(),
-%%   <<"source">> => string()
-%% }
--type alarm() :: #{binary() => any()}.
-
-
-%% Example:
-%% config_recommendation() :: #{
-%%   <<"appComponentName">> => string(),
-%%   <<"compliance">> => map(),
-%%   <<"cost">> => cost(),
-%%   <<"description">> => string(),
-%%   <<"haArchitecture">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"optimizationType">> => list(any()),
-%%   <<"recommendationCompliance">> => map(),
-%%   <<"referenceId">> => string(),
-%%   <<"suggestedChanges">> => list(string())
-%% }
--type config_recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_subscription() :: #{
-%%   <<"eventType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"snsTopicArn">> => string()
-%% }
--type event_subscription() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_version_template_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string()
-%% }
--type describe_app_version_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_resource_grouping_recommendation_task_response() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"groupingId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type start_resource_grouping_recommendation_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_resources_to_draft_app_version_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"eksSources">> => list(eks_source()),
-%%   <<"importStrategy">> => list(any()),
-%%   <<"sourceArns">> => list(string()),
-%%   <<"terraformSources">> => list(terraform_source())
-%% }
--type import_resources_to_draft_app_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_app_input_source_response() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"appInputSource">> => app_input_source()
-%% }
--type delete_app_input_source_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_app_assessment_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"assessmentName">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"tags">> => map()
-%% }
--type start_app_assessment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_version_app_components_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appComponents">> => list(app_component()),
-%%   <<"appVersion">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_version_app_components_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_recommendation_status_response() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"failedEntries">> => list(batch_update_recommendation_status_failed_entry()),
-%%   <<"successfulEntries">> => list(batch_update_recommendation_status_successful_entry())
-%% }
--type batch_update_recommendation_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_unsupported_app_version_resources_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resolutionId">> => string()
-%% }
--type list_unsupported_app_version_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_input_sources_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_input_sources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_recommendations_request() :: #{
-%%   <<"assessmentArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_test_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% failure_policy() :: #{
-%%   <<"rpoInSecs">> => integer(),
-%%   <<"rtoInSecs">> => integer()
-%% }
--type failure_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recommendation_template_response() :: #{
-%%   <<"recommendationTemplate">> => recommendation_template()
-%% }
--type create_recommendation_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_response() :: #{
-%%   <<"app">> := app()
-%% }
--type describe_app_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disruption_compliance() :: #{
-%%   <<"achievableRpoInSecs">> => integer(),
-%%   <<"achievableRtoInSecs">> => integer(),
-%%   <<"complianceStatus">> => list(any()),
-%%   <<"currentRpoInSecs">> => integer(),
-%%   <<"currentRtoInSecs">> => integer(),
-%%   <<"message">> => string(),
-%%   <<"rpoDescription">> => string(),
-%%   <<"rpoReferenceId">> => string(),
-%%   <<"rtoDescription">> => string(),
-%%   <<"rtoReferenceId">> => string()
-%% }
--type disruption_compliance() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resiliency_policies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"policyName">> => string()
-%% }
--type list_resiliency_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recommendation_status_request_entry() :: #{
-%%   <<"appComponentId">> => string(),
-%%   <<"entryId">> => string(),
-%%   <<"excludeReason">> => list(any()),
-%%   <<"excluded">> => boolean(),
-%%   <<"item">> => update_recommendation_status_item(),
-%%   <<"referenceId">> => string()
-%% }
--type update_recommendation_status_request_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% terraform_source() :: #{
-%%   <<"s3StateFileUrl">> => string()
-%% }
--type terraform_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_version_resources_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resolutionId">> => string()
-%% }
--type list_app_version_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_errors_details() :: #{
-%%   <<"hasMoreErrors">> => boolean(),
-%%   <<"resourceErrors">> => list(resource_error())
-%% }
--type resource_errors_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_recommendation() :: #{
-%%   <<"appComponentName">> => string(),
-%%   <<"configRecommendations">> => list(config_recommendation()),
-%%   <<"recommendationStatus">> => list(any())
-%% }
--type component_recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_risk_recommendation() :: #{
-%%   <<"appComponents">> => list(string()),
-%%   <<"recommendation">> => string(),
-%%   <<"risk">> => string()
-%% }
--type assessment_risk_recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_version_resource_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"physicalResource">> => physical_resource()
-%% }
--type create_app_version_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% logical_resource_id() :: #{
-%%   <<"eksSourceName">> => string(),
-%%   <<"identifier">> => string(),
-%%   <<"logicalStackName">> => string(),
-%%   <<"resourceGroupName">> => string(),
-%%   <<"terraformSourceName">> => string()
-%% }
--type logical_resource_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_app_version_resource_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"physicalResource">> => physical_resource()
-%% }
--type delete_app_version_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_assessment_request() :: #{
-%%   <<"assessmentArn">> := string()
-%% }
--type describe_app_assessment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_item() :: #{
-%%   <<"alreadyImplemented">> => boolean(),
-%%   <<"discoveredAlarm">> => alarm(),
-%%   <<"excludeReason">> => list(any()),
-%%   <<"excluded">> => boolean(),
-%%   <<"latestDiscoveredExperiment">> => experiment(),
-%%   <<"resourceId">> => string(),
-%%   <<"targetAccountId">> => string(),
-%%   <<"targetRegion">> => string()
-%% }
--type recommendation_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_version_resource_mappings_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourceMappings">> := list(resource_mapping())
-%% }
--type list_app_version_resource_mappings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_version_resource_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"physicalResource">> => physical_resource()
-%% }
--type describe_app_version_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_draft_app_version_template_response() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"appVersion">> => string()
-%% }
--type put_draft_app_version_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_assessment_compliance_drifts_request() :: #{
-%%   <<"assessmentArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_assessment_compliance_drifts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_app_input_source_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"eksSourceClusterNamespace">> => eks_source_cluster_namespace(),
-%%   <<"sourceArn">> => string(),
-%%   <<"terraformSource">> => terraform_source()
-%% }
--type delete_app_input_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_suggested_resiliency_policies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_suggested_resiliency_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_recommendation_status_failed_entry() :: #{
-%%   <<"entryId">> => string(),
-%%   <<"errorMessage">> => string()
-%% }
--type batch_update_recommendation_status_failed_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% alarm_recommendation() :: #{
-%%   <<"appComponentName">> => string(),
-%%   <<"appComponentNames">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"items">> => list(recommendation_item()),
-%%   <<"name">> => string(),
-%%   <<"prerequisite">> => string(),
-%%   <<"recommendationId">> => string(),
-%%   <<"recommendationStatus">> => list(any()),
-%%   <<"referenceId">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type alarm_recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendation_templates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"recommendationTemplates">> => list(recommendation_template())
-%% }
--type list_recommendation_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_metrics_export_response() :: #{
-%%   <<"metricsExportId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type start_metrics_export_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% scoring_component_resiliency_score() :: #{
-%%   <<"excludedCount">> => float(),
-%%   <<"outstandingCount">> => float(),
-%%   <<"possibleScore">> => float(),
-%%   <<"score">> => float()
-%% }
--type scoring_component_resiliency_score() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_identifier() :: #{
-%%   <<"logicalResourceId">> => logical_resource_id(),
-%%   <<"resourceType">> => string()
-%% }
--type resource_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_resource_grouping_recommendations_response() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"failedEntries">> => list(failed_grouping_recommendation_entry())
-%% }
--type accept_resource_grouping_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resiliency_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"dataLocationConstraint">> => list(any()),
-%%   <<"policy">> := map(),
-%%   <<"policyDescription">> => string(),
-%%   <<"policyName">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"tier">> := list(any())
-%% }
--type create_resiliency_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_assessments_response() :: #{
-%%   <<"assessmentSummaries">> := list(app_assessment_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_assessments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sop_recommendations_request() :: #{
-%%   <<"assessmentArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_sop_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_resource_grouping_recommendations_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"entries">> := list(accept_grouping_recommendation_entry())
-%% }
--type accept_resource_grouping_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_version_resource_mappings_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_version_resource_mappings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_draft_app_version_resource_mappings_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"resourceMappings">> := list(resource_mapping())
-%% }
--type add_draft_app_version_resource_mappings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_metrics_export_request() :: #{
-%%   <<"metricsExportId">> := string()
-%% }
--type describe_metrics_export_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_version_app_component_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"id">> := string()
-%% }
--type describe_app_version_app_component_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resiliency_policy_response() :: #{
-%%   <<"policy">> := resiliency_policy()
-%% }
--type update_resiliency_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_app_version_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> => string(),
-%%   <<"identifier">> => float(),
-%%   <<"versionName">> => string()
-%% }
--type publish_app_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_version_resource_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"physicalResource">> => physical_resource()
-%% }
--type update_app_version_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_recommendation_status_successful_entry() :: #{
-%%   <<"appComponentId">> => string(),
-%%   <<"entryId">> => string(),
-%%   <<"excludeReason">> => list(any()),
-%%   <<"excluded">> => boolean(),
-%%   <<"item">> => update_recommendation_status_item(),
-%%   <<"referenceId">> => string()
-%% }
--type batch_update_recommendation_status_successful_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resiliency_policy_response() :: #{
-%%   <<"policy">> := resiliency_policy()
-%% }
--type create_resiliency_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_version_response() :: #{
-%%   <<"additionalInfo">> => map(),
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string()
-%% }
--type update_app_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% field() :: #{
-%%   <<"aggregation">> => list(any()),
-%%   <<"name">> => string()
-%% }
--type field() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_grouping_recommendation_entry() :: #{
-%%   <<"groupingRecommendationId">> => string(),
-%%   <<"rejectionReason">> => list(any())
-%% }
--type reject_grouping_recommendation_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_metrics_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"rows">> => list(list(string())())
-%% }
--type list_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_alarm_recommendations_response() :: #{
-%%   <<"alarmRecommendations">> := list(alarm_recommendation()),
-%%   <<"nextToken">> => string()
-%% }
--type list_alarm_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_source_cluster_namespace() :: #{
-%%   <<"eksClusterArn">> => string(),
-%%   <<"namespace">> => string()
-%% }
--type eks_source_cluster_namespace() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_draft_app_version_resources_import_status_request() :: #{
-%%   <<"appArn">> := string()
-%% }
--type describe_draft_app_version_resources_import_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_version_template_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appTemplateBody">> := string(),
-%%   <<"appVersion">> := string()
-%% }
--type describe_app_version_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_resiliency_policy_response() :: #{
-%%   <<"policy">> := resiliency_policy()
-%% }
--type describe_resiliency_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_component() :: #{
-%%   <<"additionalInfo">> => map(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type app_component() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_disruption_compliance() :: #{
-%%   <<"expectedComplianceStatus">> => list(any()),
-%%   <<"expectedRpoDescription">> => string(),
-%%   <<"expectedRpoInSecs">> => integer(),
-%%   <<"expectedRtoDescription">> => string(),
-%%   <<"expectedRtoInSecs">> => integer()
-%% }
--type recommendation_disruption_compliance() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_suggested_resiliency_policies_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resiliencyPolicies">> := list(resiliency_policy())
-%% }
--type list_suggested_resiliency_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_error() :: #{
-%%   <<"logicalResourceId">> => string(),
-%%   <<"physicalResourceId">> => string(),
-%%   <<"reason">> => string()
-%% }
--type resource_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% accept_grouping_recommendation_entry() :: #{
-%%   <<"groupingRecommendationId">> => string()
-%% }
--type accept_grouping_recommendation_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% condition() :: #{
-%%   <<"field">> => string(),
-%%   <<"operator">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% resolve_app_version_resources_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"resolutionId">> := string(),
-%%   <<"status">> := list(any())
-%% }
--type resolve_app_version_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_input_source() :: #{
-%%   <<"eksSourceClusterNamespace">> => eks_source_cluster_namespace(),
-%%   <<"importType">> => list(any()),
-%%   <<"resourceCount">> => integer(),
-%%   <<"sourceArn">> => string(),
-%%   <<"sourceName">> => string(),
-%%   <<"terraformSource">> => terraform_source()
-%% }
--type app_input_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_recommendation_template_response() :: #{
-%%   <<"recommendationTemplateArn">> := string(),
-%%   <<"status">> := list(any())
-%% }
--type delete_recommendation_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% physical_resource() :: #{
-%%   <<"additionalInfo">> => map(),
-%%   <<"appComponents">> => list(app_component()),
-%%   <<"excluded">> => boolean(),
-%%   <<"logicalResourceId">> => logical_resource_id(),
-%%   <<"parentResourceName">> => string(),
-%%   <<"physicalResourceId">> => physical_resource_id(),
-%%   <<"resourceName">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"sourceType">> => list(any())
-%% }
--type physical_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% sort() :: #{
-%%   <<"ascending">> => boolean(),
-%%   <<"field">> => string()
-%% }
--type sort() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_summary() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"assessmentSchedule">> => list(any()),
-%%   <<"awsApplicationArn">> => string(),
-%%   <<"complianceStatus">> => list(any()),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"driftStatus">> => list(any()),
-%%   <<"lastAppComplianceEvaluationTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"resiliencyScore">> => float(),
-%%   <<"rpoInSecs">> => integer(),
-%%   <<"rtoInSecs">> => integer(),
-%%   <<"status">> => list(any())
-%% }
--type app_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_resource_grouping_recommendations_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"entries">> := list(reject_grouping_recommendation_entry())
-%% }
--type reject_resource_grouping_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_test_recommendations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"testRecommendations">> := list(test_recommendation())
-%% }
--type list_test_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_response() :: #{
-%%   <<"app">> := app()
-%% }
--type update_app_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_drift() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"appVersion">> => string(),
-%%   <<"diffType">> => list(any()),
-%%   <<"referenceId">> => string(),
-%%   <<"resourceIdentifier">> => resource_identifier()
-%% }
--type resource_drift() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_assessment_summary() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"appVersion">> => string(),
-%%   <<"assessmentArn">> => string(),
-%%   <<"assessmentName">> => string(),
-%%   <<"assessmentStatus">> => list(any()),
-%%   <<"complianceStatus">> => list(any()),
-%%   <<"cost">> => cost(),
-%%   <<"driftStatus">> => list(any()),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"invoker">> => list(any()),
-%%   <<"message">> => string(),
-%%   <<"resiliencyScore">> => float(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"versionName">> => string()
-%% }
--type app_assessment_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_source() :: #{
-%%   <<"eksClusterArn">> => string(),
-%%   <<"namespaces">> => list(string())
-%% }
--type eks_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_app_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"forceDelete">> => boolean()
-%% }
--type delete_app_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_assessment_resource_drifts_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourceDrifts">> => list(resource_drift())
-%% }
--type list_app_assessment_resource_drifts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_version_resource_request() :: #{
-%%   <<"additionalInfo">> => map(),
-%%   <<"appArn">> := string(),
-%%   <<"appComponents">> => list(string()),
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsRegion">> => string(),
-%%   <<"excluded">> => boolean(),
-%%   <<"logicalResourceId">> => logical_resource_id(),
-%%   <<"physicalResourceId">> => string(),
-%%   <<"resourceName">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type update_app_version_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_app_version_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"versionName">> => string()
-%% }
--type publish_app_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_request() :: #{
-%%   <<"appArn">> := string()
-%% }
--type describe_app_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_detail() :: #{
-%%   <<"errorMessage">> => string()
-%% }
--type error_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_grouping_recommendations_response() :: #{
-%%   <<"groupingRecommendations">> => list(grouping_recommendation()),
-%%   <<"nextToken">> => string()
-%% }
--type list_resource_grouping_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resiliency_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"policyArn">> := string()
-%% }
--type delete_resiliency_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_assessment_compliance_drifts_response() :: #{
-%%   <<"complianceDrifts">> => list(compliance_drift()),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_assessment_compliance_drifts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_app_version_app_component_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appComponent">> => app_component(),
-%%   <<"appVersion">> := string()
-%% }
--type delete_app_version_app_component_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% delete_app_version_app_component_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"id">> := string()
-%% }
--type delete_app_version_app_component_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_resources_to_draft_app_version_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"eksSources">> => list(eks_source()),
-%%   <<"sourceArns">> => list(string()),
-%%   <<"status">> := list(any()),
-%%   <<"terraformSources">> => list(terraform_source())
-%% }
--type import_resources_to_draft_app_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% app_version_summary() :: #{
-%%   <<"appVersion">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"identifier">> => float(),
-%%   <<"versionName">> => string()
-%% }
--type app_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_version_app_components_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_version_app_components_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% permission_model() :: #{
-%%   <<"crossAccountRoleArns">> => list(string()),
-%%   <<"invokerRoleName">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type permission_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resiliency_policy_request() :: #{
-%%   <<"dataLocationConstraint">> => list(any()),
-%%   <<"policy">> => map(),
-%%   <<"policyArn">> := string(),
-%%   <<"policyDescription">> => string(),
-%%   <<"policyName">> => string(),
-%%   <<"tier">> => list(any())
-%% }
--type update_resiliency_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_input_sources_response() :: #{
-%%   <<"appInputSources">> := list(app_input_source()),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_input_sources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% resiliency_policy() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"dataLocationConstraint">> => list(any()),
-%%   <<"estimatedCostTier">> => list(any()),
-%%   <<"policy">> => map(),
-%%   <<"policyArn">> => string(),
-%%   <<"policyDescription">> => string(),
-%%   <<"policyName">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"tier">> => list(any())
-%% }
--type resiliency_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_app_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"assessmentSchedule">> => list(any()),
-%%   <<"clearResiliencyPolicyArn">> => boolean(),
-%%   <<"description">> => string(),
-%%   <<"eventSubscriptions">> => list(event_subscription()),
-%%   <<"permissionModel">> => permission_model(),
-%%   <<"policyArn">> => string()
-%% }
--type update_app_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1509,59 +274,773 @@
 
 
 %% Example:
-%% test_recommendation() :: #{
-%%   <<"appComponentId">> => string(),
-%%   <<"appComponentName">> => string(),
-%%   <<"dependsOnAlarms">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"intent">> => string(),
-%%   <<"items">> => list(recommendation_item()),
-%%   <<"name">> => string(),
-%%   <<"prerequisite">> => string(),
-%%   <<"recommendationId">> => string(),
-%%   <<"recommendationStatus">> => list(any()),
-%%   <<"referenceId">> => string(),
-%%   <<"risk">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type test_recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendation_templates_request() :: #{
+%% app_assessment_summary() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appVersion">> => string(),
 %%   <<"assessmentArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"recommendationTemplateArn">> => string(),
-%%   <<"reverseOrder">> => boolean(),
-%%   <<"status">> => list(list(any())())
-%% }
--type list_recommendation_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
+%%   <<"assessmentName">> => string(),
+%%   <<"assessmentStatus">> => list(any()),
+%%   <<"complianceStatus">> => list(any()),
+%%   <<"cost">> => cost(),
+%%   <<"driftStatus">> => list(any()),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"invoker">> => list(any()),
 %%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => integer()
+%%   <<"resiliencyScore">> => float(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"versionName">> => string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type app_assessment_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_app_assessment_response() :: #{
+%% app_component() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type app_component() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_component_compliance() :: #{
+%%   <<"appComponentName">> => string(),
+%%   <<"compliance">> => map(),
+%%   <<"cost">> => cost(),
+%%   <<"message">> => string(),
+%%   <<"resiliencyScore">> => resiliency_score(),
+%%   <<"status">> => list(any())
+%% }
+-type app_component_compliance() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_input_source() :: #{
+%%   <<"eksSourceClusterNamespace">> => eks_source_cluster_namespace(),
+%%   <<"importType">> => list(any()),
+%%   <<"resourceCount">> => integer(),
+%%   <<"sourceArn">> => string(),
+%%   <<"sourceName">> => string(),
+%%   <<"terraformSource">> => terraform_source()
+%% }
+-type app_input_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_summary() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"assessmentSchedule">> => list(any()),
+%%   <<"awsApplicationArn">> => string(),
+%%   <<"complianceStatus">> => list(any()),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"driftStatus">> => list(any()),
+%%   <<"lastAppComplianceEvaluationTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"resiliencyScore">> => float(),
+%%   <<"rpoInSecs">> => integer(),
+%%   <<"rtoInSecs">> => integer(),
+%%   <<"status">> => list(any())
+%% }
+-type app_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_version_summary() :: #{
+%%   <<"appVersion">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"identifier">> => float(),
+%%   <<"versionName">> => string()
+%% }
+-type app_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_risk_recommendation() :: #{
+%%   <<"appComponents">> => list(string()),
+%%   <<"recommendation">> => string(),
+%%   <<"risk">> => string()
+%% }
+-type assessment_risk_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_summary() :: #{
+%%   <<"riskRecommendations">> => list(assessment_risk_recommendation()),
+%%   <<"summary">> => string()
+%% }
+-type assessment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_recommendation_status_failed_entry() :: #{
+%%   <<"entryId">> => string(),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_update_recommendation_status_failed_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_recommendation_status_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"requestEntries">> := list(update_recommendation_status_request_entry())
+%% }
+-type batch_update_recommendation_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_recommendation_status_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"failedEntries">> => list(batch_update_recommendation_status_failed_entry()),
+%%   <<"successfulEntries">> => list(batch_update_recommendation_status_successful_entry())
+%% }
+-type batch_update_recommendation_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_recommendation_status_successful_entry() :: #{
+%%   <<"appComponentId">> => string(),
+%%   <<"entryId">> => string(),
+%%   <<"excludeReason">> => list(any()),
+%%   <<"excluded">> => boolean(),
+%%   <<"item">> => update_recommendation_status_item(),
+%%   <<"referenceId">> => string()
+%% }
+-type batch_update_recommendation_status_successful_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% compliance_drift() :: #{
+%%   <<"actualReferenceId">> => string(),
+%%   <<"actualValue">> => map(),
+%%   <<"appId">> => string(),
+%%   <<"appVersion">> => string(),
+%%   <<"diffType">> => list(any()),
+%%   <<"driftType">> => list(any()),
+%%   <<"entityId">> => string(),
+%%   <<"entityType">> => string(),
+%%   <<"expectedReferenceId">> => string(),
+%%   <<"expectedValue">> => map()
+%% }
+-type compliance_drift() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_recommendation() :: #{
+%%   <<"appComponentName">> => string(),
+%%   <<"configRecommendations">> => list(config_recommendation()),
+%%   <<"recommendationStatus">> => list(any())
+%% }
+-type component_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition() :: #{
+%%   <<"field">> => string(),
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% config_recommendation() :: #{
+%%   <<"appComponentName">> => string(),
+%%   <<"compliance">> => map(),
+%%   <<"cost">> => cost(),
+%%   <<"description">> => string(),
+%%   <<"haArchitecture">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"optimizationType">> => list(any()),
+%%   <<"recommendationCompliance">> => map(),
+%%   <<"referenceId">> => string(),
+%%   <<"suggestedChanges">> => list(string())
+%% }
+-type config_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cost() :: #{
+%%   <<"amount">> => float(),
+%%   <<"currency">> => string(),
+%%   <<"frequency">> => list(any())
+%% }
+-type cost() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_request() :: #{
+%%   <<"assessmentSchedule">> => list(any()),
+%%   <<"awsApplicationArn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"eventSubscriptions">> => list(event_subscription()),
+%%   <<"name">> := string(),
+%%   <<"permissionModel">> => permission_model(),
+%%   <<"policyArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_response() :: #{
+%%   <<"app">> := app()
+%% }
+-type create_app_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_version_app_component_request() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> := string(),
+%%   <<"type">> := string()
+%% }
+-type create_app_version_app_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_version_app_component_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appComponent">> => app_component(),
+%%   <<"appVersion">> := string()
+%% }
+-type create_app_version_app_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_version_resource_request() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string(),
+%%   <<"appComponents">> := list(string()),
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"logicalResourceId">> := logical_resource_id(),
+%%   <<"physicalResourceId">> := string(),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceType">> := string()
+%% }
+-type create_app_version_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_version_resource_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"physicalResource">> => physical_resource()
+%% }
+-type create_app_version_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommendation_template_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"bucketName">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"format">> => list(any()),
+%%   <<"name">> := string(),
+%%   <<"recommendationIds">> => list(string()),
+%%   <<"recommendationTypes">> => list(list(any())()),
+%%   <<"tags">> => map()
+%% }
+-type create_recommendation_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommendation_template_response() :: #{
+%%   <<"recommendationTemplate">> => recommendation_template()
+%% }
+-type create_recommendation_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resiliency_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"dataLocationConstraint">> => list(any()),
+%%   <<"policy">> := map(),
+%%   <<"policyDescription">> => string(),
+%%   <<"policyName">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"tier">> := list(any())
+%% }
+-type create_resiliency_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resiliency_policy_response() :: #{
+%%   <<"policy">> := resiliency_policy()
+%% }
+-type create_resiliency_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_assessment_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"clientToken">> => string()
+%% }
+-type delete_app_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_assessment_response() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"assessmentStatus">> := list(any())
+%% }
+-type delete_app_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_input_source_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"eksSourceClusterNamespace">> => eks_source_cluster_namespace(),
+%%   <<"sourceArn">> => string(),
+%%   <<"terraformSource">> => terraform_source()
+%% }
+-type delete_app_input_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_input_source_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appInputSource">> => app_input_source()
+%% }
+-type delete_app_input_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"forceDelete">> => boolean()
+%% }
+-type delete_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_response() :: #{
+%%   <<"appArn">> := string()
+%% }
+-type delete_app_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_version_app_component_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"id">> := string()
+%% }
+-type delete_app_version_app_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_version_app_component_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appComponent">> => app_component(),
+%%   <<"appVersion">> := string()
+%% }
+-type delete_app_version_app_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_version_resource_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"physicalResourceId">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type delete_app_version_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_app_version_resource_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"physicalResource">> => physical_resource()
+%% }
+-type delete_app_version_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recommendation_template_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"recommendationTemplateArn">> := string()
+%% }
+-type delete_recommendation_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recommendation_template_response() :: #{
+%%   <<"recommendationTemplateArn">> := string(),
+%%   <<"status">> := list(any())
+%% }
+-type delete_recommendation_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resiliency_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"policyArn">> := string()
+%% }
+-type delete_resiliency_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resiliency_policy_response() :: #{
+%%   <<"policyArn">> := string()
+%% }
+-type delete_resiliency_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_assessment_request() :: #{
+%%   <<"assessmentArn">> := string()
+%% }
+-type describe_app_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_assessment_response() :: #{
 %%   <<"assessment">> := app_assessment()
 %% }
--type start_app_assessment_response() :: #{binary() => any()}.
+-type describe_app_assessment_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_recommendation_status_item() :: #{
-%%   <<"resourceId">> => string(),
-%%   <<"targetAccountId">> => string(),
-%%   <<"targetRegion">> => string()
+%% describe_app_request() :: #{
+%%   <<"appArn">> := string()
 %% }
--type update_recommendation_status_item() :: #{binary() => any()}.
+-type describe_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_response() :: #{
+%%   <<"app">> := app()
+%% }
+-type describe_app_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_app_component_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"id">> := string()
+%% }
+-type describe_app_version_app_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_app_component_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appComponent">> => app_component(),
+%%   <<"appVersion">> := string()
+%% }
+-type describe_app_version_app_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string()
+%% }
+-type describe_app_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_resource_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"physicalResourceId">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type describe_app_version_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_resource_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"physicalResource">> => physical_resource()
+%% }
+-type describe_app_version_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_resources_resolution_status_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"resolutionId">> => string()
+%% }
+-type describe_app_version_resources_resolution_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_resources_resolution_status_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"resolutionId">> := string(),
+%%   <<"status">> := list(any())
+%% }
+-type describe_app_version_resources_resolution_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_response() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string()
+%% }
+-type describe_app_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_template_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string()
+%% }
+-type describe_app_version_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_app_version_template_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appTemplateBody">> := string(),
+%%   <<"appVersion">> := string()
+%% }
+-type describe_app_version_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_draft_app_version_resources_import_status_request() :: #{
+%%   <<"appArn">> := string()
+%% }
+-type describe_draft_app_version_resources_import_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_draft_app_version_resources_import_status_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"errorDetails">> => list(error_detail()),
+%%   <<"errorMessage">> => string(),
+%%   <<"status">> := list(any()),
+%%   <<"statusChangeTime">> := non_neg_integer()
+%% }
+-type describe_draft_app_version_resources_import_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_metrics_export_request() :: #{
+%%   <<"metricsExportId">> := string()
+%% }
+-type describe_metrics_export_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_metrics_export_response() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"exportLocation">> => s3_location(),
+%%   <<"metricsExportId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_metrics_export_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_resiliency_policy_request() :: #{
+%%   <<"policyArn">> := string()
+%% }
+-type describe_resiliency_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_resiliency_policy_response() :: #{
+%%   <<"policy">> := resiliency_policy()
+%% }
+-type describe_resiliency_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_resource_grouping_recommendation_task_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"groupingId">> => string()
+%% }
+-type describe_resource_grouping_recommendation_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_resource_grouping_recommendation_task_response() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"groupingId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_resource_grouping_recommendation_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disruption_compliance() :: #{
+%%   <<"achievableRpoInSecs">> => integer(),
+%%   <<"achievableRtoInSecs">> => integer(),
+%%   <<"complianceStatus">> => list(any()),
+%%   <<"currentRpoInSecs">> => integer(),
+%%   <<"currentRtoInSecs">> => integer(),
+%%   <<"message">> => string(),
+%%   <<"rpoDescription">> => string(),
+%%   <<"rpoReferenceId">> => string(),
+%%   <<"rtoDescription">> => string(),
+%%   <<"rtoReferenceId">> => string()
+%% }
+-type disruption_compliance() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_source() :: #{
+%%   <<"eksClusterArn">> => string(),
+%%   <<"namespaces">> => list(string())
+%% }
+-type eks_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_source_cluster_namespace() :: #{
+%%   <<"eksClusterArn">> => string(),
+%%   <<"namespace">> => string()
+%% }
+-type eks_source_cluster_namespace() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"errorMessage">> => string()
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_subscription() :: #{
+%%   <<"eventType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"snsTopicArn">> => string()
+%% }
+-type event_subscription() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment() :: #{
+%%   <<"experimentArn">> => string(),
+%%   <<"experimentTemplateId">> => string()
+%% }
+-type experiment() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_grouping_recommendation_entry() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"groupingRecommendationId">> => string()
+%% }
+-type failed_grouping_recommendation_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% failure_policy() :: #{
+%%   <<"rpoInSecs">> => integer(),
+%%   <<"rtoInSecs">> => integer()
+%% }
+-type failure_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% field() :: #{
+%%   <<"aggregation">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type field() :: #{binary() => any()}.
+
+
+%% Example:
+%% grouping_app_component() :: #{
+%%   <<"appComponentId">> => string(),
+%%   <<"appComponentName">> => string(),
+%%   <<"appComponentType">> => string()
+%% }
+-type grouping_app_component() :: #{binary() => any()}.
+
+
+%% Example:
+%% grouping_recommendation() :: #{
+%%   <<"confidenceLevel">> => list(any()),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"groupingAppComponent">> => grouping_app_component(),
+%%   <<"groupingRecommendationId">> => string(),
+%%   <<"recommendationReasons">> => list(string()),
+%%   <<"rejectionReason">> => list(any()),
+%%   <<"resources">> => list(grouping_resource()),
+%%   <<"score">> => float(),
+%%   <<"status">> => list(any())
+%% }
+-type grouping_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% grouping_resource() :: #{
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"physicalResourceId">> => physical_resource_id(),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"sourceAppComponentIds">> => list(string())
+%% }
+-type grouping_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_resources_to_draft_app_version_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"eksSources">> => list(eks_source()),
+%%   <<"importStrategy">> => list(any()),
+%%   <<"sourceArns">> => list(string()),
+%%   <<"terraformSources">> => list(terraform_source())
+%% }
+-type import_resources_to_draft_app_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_resources_to_draft_app_version_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"eksSources">> => list(eks_source()),
+%%   <<"sourceArns">> => list(string()),
+%%   <<"status">> := list(any()),
+%%   <<"terraformSources">> => list(terraform_source())
+%% }
+-type import_resources_to_draft_app_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1574,41 +1053,196 @@
 
 
 %% Example:
-%% start_resource_grouping_recommendation_task_request() :: #{
-%%   <<"appArn">> := string()
+%% list_alarm_recommendations_response() :: #{
+%%   <<"alarmRecommendations">> := list(alarm_recommendation()),
+%%   <<"nextToken">> => string()
 %% }
--type start_resource_grouping_recommendation_task_request() :: #{binary() => any()}.
+-type list_alarm_recommendations_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_app_version_request() :: #{
-%%   <<"additionalInfo">> => map(),
-%%   <<"appArn">> := string()
+%% list_app_assessment_compliance_drifts_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type update_app_version_request() :: #{binary() => any()}.
+-type list_app_assessment_compliance_drifts_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_resiliency_policy_request() :: #{
-%%   <<"policyArn">> := string()
+%% list_app_assessment_compliance_drifts_response() :: #{
+%%   <<"complianceDrifts">> => list(compliance_drift()),
+%%   <<"nextToken">> => string()
 %% }
--type describe_resiliency_policy_request() :: #{binary() => any()}.
+-type list_app_assessment_compliance_drifts_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_app_assessment_response() :: #{
-%%   <<"assessment">> := app_assessment()
+%% list_app_assessment_resource_drifts_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type describe_app_assessment_response() :: #{binary() => any()}.
+-type list_app_assessment_resource_drifts_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_app_version_app_component_response() :: #{
+%% list_app_assessment_resource_drifts_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceDrifts">> => list(resource_drift())
+%% }
+-type list_app_assessment_resource_drifts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_assessments_request() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"assessmentName">> => string(),
+%%   <<"assessmentStatus">> => list(list(any())()),
+%%   <<"complianceStatus">> => list(any()),
+%%   <<"invoker">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reverseOrder">> => boolean()
+%% }
+-type list_app_assessments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_assessments_response() :: #{
+%%   <<"assessmentSummaries">> := list(app_assessment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_assessments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_component_compliances_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_component_compliances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_component_compliances_response() :: #{
+%%   <<"componentCompliances">> := list(app_component_compliance()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_component_compliances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_component_recommendations_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_component_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_component_recommendations_response() :: #{
+%%   <<"componentRecommendations">> := list(component_recommendation()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_component_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_input_sources_request() :: #{
 %%   <<"appArn">> := string(),
-%%   <<"appComponent">> => app_component(),
-%%   <<"appVersion">> := string()
+%%   <<"appVersion">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type describe_app_version_app_component_response() :: #{binary() => any()}.
+-type list_app_input_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_input_sources_response() :: #{
+%%   <<"appInputSources">> := list(app_input_source()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_input_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_app_components_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_version_app_components_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_app_components_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appComponents">> => list(app_component()),
+%%   <<"appVersion">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_version_app_components_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_resource_mappings_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_version_resource_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_resource_mappings_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceMappings">> := list(resource_mapping())
+%% }
+-type list_app_version_resource_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_resources_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resolutionId">> => string()
+%% }
+-type list_app_version_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_version_resources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"physicalResources">> := list(physical_resource()),
+%%   <<"resolutionId">> := string()
+%% }
+-type list_app_version_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_versions_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type list_app_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_app_versions_response() :: #{
+%%   <<"appVersions">> := list(app_version_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_app_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1626,12 +1260,271 @@
 
 
 %% Example:
-%% update_app_version_app_component_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appComponent">> => app_component(),
-%%   <<"appVersion">> := string()
+%% list_apps_response() :: #{
+%%   <<"appSummaries">> := list(app_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type update_app_version_app_component_response() :: #{binary() => any()}.
+-type list_apps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metrics_request() :: #{
+%%   <<"conditions">> => list(condition()),
+%%   <<"dataSource">> => string(),
+%%   <<"fields">> => list(field()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sorts">> => list(sort())
+%% }
+-type list_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metrics_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"rows">> => list(list(string())())
+%% }
+-type list_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendation_templates_request() :: #{
+%%   <<"assessmentArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationTemplateArn">> => string(),
+%%   <<"reverseOrder">> => boolean(),
+%%   <<"status">> => list(list(any())())
+%% }
+-type list_recommendation_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendation_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationTemplates">> => list(recommendation_template())
+%% }
+-type list_recommendation_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resiliency_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyName">> => string()
+%% }
+-type list_resiliency_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resiliency_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resiliencyPolicies">> := list(resiliency_policy())
+%% }
+-type list_resiliency_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_grouping_recommendations_request() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_grouping_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_grouping_recommendations_response() :: #{
+%%   <<"groupingRecommendations">> => list(grouping_recommendation()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resource_grouping_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sop_recommendations_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sop_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sop_recommendations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sopRecommendations">> := list(sop_recommendation())
+%% }
+-type list_sop_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_suggested_resiliency_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_suggested_resiliency_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_suggested_resiliency_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resiliencyPolicies">> := list(resiliency_policy())
+%% }
+-type list_suggested_resiliency_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_recommendations_request() :: #{
+%%   <<"assessmentArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_test_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_recommendations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testRecommendations">> := list(test_recommendation())
+%% }
+-type list_test_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_unsupported_app_version_resources_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resolutionId">> => string()
+%% }
+-type list_unsupported_app_version_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_unsupported_app_version_resources_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resolutionId">> := string(),
+%%   <<"unsupportedResources">> := list(unsupported_resource())
+%% }
+-type list_unsupported_app_version_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logical_resource_id() :: #{
+%%   <<"eksSourceName">> => string(),
+%%   <<"identifier">> => string(),
+%%   <<"logicalStackName">> => string(),
+%%   <<"resourceGroupName">> => string(),
+%%   <<"terraformSourceName">> => string()
+%% }
+-type logical_resource_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_model() :: #{
+%%   <<"crossAccountRoleArns">> => list(string()),
+%%   <<"invokerRoleName">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type permission_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% physical_resource() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appComponents">> => list(app_component()),
+%%   <<"excluded">> => boolean(),
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"parentResourceName">> => string(),
+%%   <<"physicalResourceId">> => physical_resource_id(),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type physical_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% physical_resource_id() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"identifier">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type physical_resource_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_app_version_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"versionName">> => string()
+%% }
+-type publish_app_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_app_version_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> => string(),
+%%   <<"identifier">> => float(),
+%%   <<"versionName">> => string()
+%% }
+-type publish_app_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_draft_app_version_template_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appTemplateBody">> := string()
+%% }
+-type put_draft_app_version_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_draft_app_version_template_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appVersion">> => string()
+%% }
+-type put_draft_app_version_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_disruption_compliance() :: #{
+%%   <<"expectedComplianceStatus">> => list(any()),
+%%   <<"expectedRpoDescription">> => string(),
+%%   <<"expectedRpoInSecs">> => integer(),
+%%   <<"expectedRtoDescription">> => string(),
+%%   <<"expectedRtoInSecs">> => integer()
+%% }
+-type recommendation_disruption_compliance() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_item() :: #{
+%%   <<"alreadyImplemented">> => boolean(),
+%%   <<"discoveredAlarm">> => alarm(),
+%%   <<"excludeReason">> => list(any()),
+%%   <<"excluded">> => boolean(),
+%%   <<"latestDiscoveredExperiment">> => experiment(),
+%%   <<"resourceId">> => string(),
+%%   <<"targetAccountId">> => string(),
+%%   <<"targetRegion">> => string()
+%% }
+-type recommendation_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1655,195 +1548,19 @@
 
 
 %% Example:
-%% list_metrics_request() :: #{
-%%   <<"conditions">> => list(condition()),
-%%   <<"dataSource">> => string(),
-%%   <<"fields">> => list(field()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sorts">> => list(sort())
+%% reject_grouping_recommendation_entry() :: #{
+%%   <<"groupingRecommendationId">> => string(),
+%%   <<"rejectionReason">> => list(any())
 %% }
--type list_metrics_request() :: #{binary() => any()}.
+-type reject_grouping_recommendation_entry() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_resiliency_policy_response() :: #{
-%%   <<"policyArn">> := string()
-%% }
--type delete_resiliency_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_app_version_resource_request() :: #{
+%% reject_resource_grouping_recommendations_request() :: #{
 %%   <<"appArn">> := string(),
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsRegion">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"logicalResourceId">> => logical_resource_id(),
-%%   <<"physicalResourceId">> => string(),
-%%   <<"resourceName">> => string()
+%%   <<"entries">> := list(reject_grouping_recommendation_entry())
 %% }
--type delete_app_version_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sop_recommendations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sopRecommendations">> := list(sop_recommendation())
-%% }
--type list_sop_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_app_assessment_response() :: #{
-%%   <<"assessmentArn">> := string(),
-%%   <<"assessmentStatus">> := list(any())
-%% }
--type delete_app_assessment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% physical_resource_id() :: #{
-%%   <<"awsAccountId">> => string(),
-%%   <<"awsRegion">> => string(),
-%%   <<"identifier">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type physical_resource_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment() :: #{
-%%   <<"experimentArn">> => string(),
-%%   <<"experimentTemplateId">> => string()
-%% }
--type experiment() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_response() :: #{
-%%   <<"app">> := app()
-%% }
--type create_app_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_component_compliances_request() :: #{
-%%   <<"assessmentArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_component_compliances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_versions_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type list_app_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% compliance_drift() :: #{
-%%   <<"actualReferenceId">> => string(),
-%%   <<"actualValue">> => map(),
-%%   <<"appId">> => string(),
-%%   <<"appVersion">> => string(),
-%%   <<"diffType">> => list(any()),
-%%   <<"driftType">> => list(any()),
-%%   <<"entityId">> => string(),
-%%   <<"entityType">> => string(),
-%%   <<"expectedReferenceId">> => string(),
-%%   <<"expectedValue">> => map()
-%% }
--type compliance_drift() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_version_app_component_request() :: #{
-%%   <<"additionalInfo">> => map(),
-%%   <<"appArn">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"id">> => string(),
-%%   <<"name">> := string(),
-%%   <<"type">> := string()
-%% }
--type create_app_version_app_component_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% grouping_app_component() :: #{
-%%   <<"appComponentId">> => string(),
-%%   <<"appComponentName">> => string(),
-%%   <<"appComponentType">> => string()
-%% }
--type grouping_app_component() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_recommendation_template_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"recommendationTemplateArn">> := string()
-%% }
--type delete_recommendation_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_app_assessment_resource_drifts_request() :: #{
-%%   <<"assessmentArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_app_assessment_resource_drifts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_grouping_recommendations_request() :: #{
-%%   <<"appArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_resource_grouping_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cost() :: #{
-%%   <<"amount">> => float(),
-%%   <<"currency">> => string(),
-%%   <<"frequency">> => list(any())
-%% }
--type cost() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_version_resources_resolution_status_response() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"resolutionId">> := string(),
-%%   <<"status">> := list(any())
-%% }
--type describe_app_version_resources_resolution_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resiliency_policies_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resiliencyPolicies">> := list(resiliency_policy())
-%% }
--type list_resiliency_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% assessment_summary() :: #{
-%%   <<"riskRecommendations">> => list(assessment_risk_recommendation()),
-%%   <<"summary">> => string()
-%% }
--type assessment_summary() :: #{binary() => any()}.
+-type reject_resource_grouping_recommendations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1868,30 +1585,137 @@
 
 
 %% Example:
-%% grouping_resource() :: #{
+%% remove_draft_app_version_resource_mappings_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appVersion">> => string()
+%% }
+-type remove_draft_app_version_resource_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resiliency_policy() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"dataLocationConstraint">> => list(any()),
+%%   <<"estimatedCostTier">> => list(any()),
+%%   <<"policy">> => map(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyDescription">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"tier">> => list(any())
+%% }
+-type resiliency_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% resiliency_score() :: #{
+%%   <<"componentScore">> => map(),
+%%   <<"disruptionScore">> => map(),
+%%   <<"score">> => float()
+%% }
+-type resiliency_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolve_app_version_resources_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string()
+%% }
+-type resolve_app_version_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolve_app_version_resources_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"resolutionId">> := string(),
+%%   <<"status">> := list(any())
+%% }
+-type resolve_app_version_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_drift() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"appVersion">> => string(),
+%%   <<"diffType">> => list(any()),
+%%   <<"referenceId">> => string(),
+%%   <<"resourceIdentifier">> => resource_identifier()
+%% }
+-type resource_drift() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_error() :: #{
+%%   <<"logicalResourceId">> => string(),
+%%   <<"physicalResourceId">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type resource_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_errors_details() :: #{
+%%   <<"hasMoreErrors">> => boolean(),
+%%   <<"resourceErrors">> => list(resource_error())
+%% }
+-type resource_errors_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_identifier() :: #{
 %%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_mapping() :: #{
+%%   <<"appRegistryAppName">> => string(),
+%%   <<"eksSourceName">> => string(),
+%%   <<"logicalStackName">> => string(),
+%%   <<"mappingType">> => list(any()),
 %%   <<"physicalResourceId">> => physical_resource_id(),
+%%   <<"resourceGroupName">> => string(),
 %%   <<"resourceName">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"sourceAppComponentIds">> => list(string())
+%%   <<"terraformSourceName">> => string()
 %% }
--type grouping_resource() :: #{binary() => any()}.
+-type resource_mapping() :: #{binary() => any()}.
 
 
 %% Example:
-%% failed_grouping_recommendation_entry() :: #{
-%%   <<"errorMessage">> => string(),
-%%   <<"groupingRecommendationId">> => string()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
 %% }
--type failed_grouping_recommendation_entry() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_metrics_export_request() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"clientToken">> => string()
+%% s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"prefix">> => string()
 %% }
--type start_metrics_export_request() :: #{binary() => any()}.
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% scoring_component_resiliency_score() :: #{
+%%   <<"excludedCount">> => float(),
+%%   <<"outstandingCount">> => float(),
+%%   <<"possibleScore">> => float(),
+%%   <<"score">> => float()
+%% }
+-type scoring_component_resiliency_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1910,555 +1734,731 @@
 
 
 %% Example:
-%% app_component_compliance() :: #{
-%%   <<"appComponentName">> => string(),
-%%   <<"compliance">> => map(),
-%%   <<"cost">> => cost(),
-%%   <<"message">> => string(),
-%%   <<"resiliencyScore">> => resiliency_score(),
-%%   <<"status">> => list(any())
+%% sort() :: #{
+%%   <<"ascending">> => boolean(),
+%%   <<"field">> => string()
 %% }
--type app_component_compliance() :: #{binary() => any()}.
+-type sort() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_app_assessment_request() :: #{
-%%   <<"assessmentArn">> := string(),
-%%   <<"clientToken">> => string()
-%% }
--type delete_app_assessment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recommendation_template_request() :: #{
-%%   <<"assessmentArn">> := string(),
-%%   <<"bucketName">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"format">> => list(any()),
-%%   <<"name">> := string(),
-%%   <<"recommendationIds">> => list(string()),
-%%   <<"recommendationTypes">> => list(list(any())()),
-%%   <<"tags">> => map()
-%% }
--type create_recommendation_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_app_version_request() :: #{
-%%   <<"appArn">> := string(),
-%%   <<"appVersion">> := string()
-%% }
--type describe_app_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% grouping_recommendation() :: #{
-%%   <<"confidenceLevel">> => list(any()),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"groupingAppComponent">> => grouping_app_component(),
-%%   <<"groupingRecommendationId">> => string(),
-%%   <<"recommendationReasons">> => list(string()),
-%%   <<"rejectionReason">> => list(any()),
-%%   <<"resources">> => list(grouping_resource()),
-%%   <<"score">> => float(),
-%%   <<"status">> => list(any())
-%% }
--type grouping_recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_draft_app_version_resources_import_status_response() :: #{
+%% start_app_assessment_request() :: #{
 %%   <<"appArn">> := string(),
 %%   <<"appVersion">> := string(),
-%%   <<"errorDetails">> => list(error_detail()),
-%%   <<"errorMessage">> => string(),
-%%   <<"status">> := list(any()),
-%%   <<"statusChangeTime">> := non_neg_integer()
+%%   <<"assessmentName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
 %% }
--type describe_draft_app_version_resources_import_status_response() :: #{binary() => any()}.
+-type start_app_assessment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_app_version_response() :: #{
+%% start_app_assessment_response() :: #{
+%%   <<"assessment">> := app_assessment()
+%% }
+-type start_app_assessment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_metrics_export_request() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"clientToken">> => string()
+%% }
+-type start_metrics_export_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_metrics_export_response() :: #{
+%%   <<"metricsExportId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_metrics_export_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_resource_grouping_recommendation_task_request() :: #{
+%%   <<"appArn">> := string()
+%% }
+-type start_resource_grouping_recommendation_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_resource_grouping_recommendation_task_response() :: #{
+%%   <<"appArn">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"groupingId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_resource_grouping_recommendation_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% terraform_source() :: #{
+%%   <<"s3StateFileUrl">> => string()
+%% }
+-type terraform_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_recommendation() :: #{
+%%   <<"appComponentId">> => string(),
+%%   <<"appComponentName">> => string(),
+%%   <<"dependsOnAlarms">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"intent">> => string(),
+%%   <<"items">> => list(recommendation_item()),
+%%   <<"name">> => string(),
+%%   <<"prerequisite">> => string(),
+%%   <<"recommendationId">> => string(),
+%%   <<"recommendationStatus">> => list(any()),
+%%   <<"referenceId">> => string(),
+%%   <<"risk">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type test_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_resource() :: #{
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"physicalResourceId">> => physical_resource_id(),
+%%   <<"resourceType">> => string(),
+%%   <<"unsupportedResourceStatus">> => string()
+%% }
+-type unsupported_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_app_request() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"assessmentSchedule">> => list(any()),
+%%   <<"clearResiliencyPolicyArn">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"eventSubscriptions">> => list(event_subscription()),
+%%   <<"permissionModel">> => permission_model(),
+%%   <<"policyArn">> => string()
+%% }
+-type update_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_response() :: #{
+%%   <<"app">> := app()
+%% }
+-type update_app_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_version_app_component_request() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string(),
+%%   <<"id">> := string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type update_app_version_app_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_version_app_component_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appComponent">> => app_component(),
+%%   <<"appVersion">> := string()
+%% }
+-type update_app_version_app_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_version_request() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string()
+%% }
+-type update_app_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_version_resource_request() :: #{
+%%   <<"additionalInfo">> => map(),
+%%   <<"appArn">> := string(),
+%%   <<"appComponents">> => list(string()),
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsRegion">> => string(),
+%%   <<"excluded">> => boolean(),
+%%   <<"logicalResourceId">> => logical_resource_id(),
+%%   <<"physicalResourceId">> => string(),
+%%   <<"resourceName">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type update_app_version_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_version_resource_response() :: #{
+%%   <<"appArn">> := string(),
+%%   <<"appVersion">> := string(),
+%%   <<"physicalResource">> => physical_resource()
+%% }
+-type update_app_version_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_version_response() :: #{
 %%   <<"additionalInfo">> => map(),
 %%   <<"appArn">> := string(),
 %%   <<"appVersion">> := string()
 %% }
--type describe_app_version_response() :: #{binary() => any()}.
+-type update_app_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recommendation_status_item() :: #{
+%%   <<"resourceId">> => string(),
+%%   <<"targetAccountId">> => string(),
+%%   <<"targetRegion">> => string()
+%% }
+-type update_recommendation_status_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recommendation_status_request_entry() :: #{
+%%   <<"appComponentId">> => string(),
+%%   <<"entryId">> => string(),
+%%   <<"excludeReason">> => list(any()),
+%%   <<"excluded">> => boolean(),
+%%   <<"item">> => update_recommendation_status_item(),
+%%   <<"referenceId">> => string()
+%% }
+-type update_recommendation_status_request_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resiliency_policy_request() :: #{
+%%   <<"dataLocationConstraint">> => list(any()),
+%%   <<"policy">> => map(),
+%%   <<"policyArn">> := string(),
+%%   <<"policyDescription">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"tier">> => list(any())
+%% }
+-type update_resiliency_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resiliency_policy_response() :: #{
+%%   <<"policy">> := resiliency_policy()
+%% }
+-type update_resiliency_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type accept_resource_grouping_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type add_draft_app_version_resource_mappings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_update_recommendation_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_app_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_app_version_app_component_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_app_version_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_recommendation_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_resiliency_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_app_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_app_assessment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_app_input_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_app_version_app_component_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_app_version_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_recommendation_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_resiliency_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_app_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_app_assessment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_app_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_app_version_app_component_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_app_version_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_app_version_resources_resolution_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_app_version_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_draft_app_version_resources_import_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_metrics_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_resiliency_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_resource_grouping_recommendation_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type import_resources_to_draft_app_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_alarm_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_app_assessment_compliance_drifts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_app_assessment_resource_drifts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_app_assessments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_app_component_compliances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_app_component_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_app_input_sources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_app_version_app_components_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_app_version_resource_mappings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_app_version_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_app_versions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_apps_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_metrics_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_recommendation_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_resiliency_policies_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_resource_grouping_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_sop_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_suggested_resiliency_policies_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_test_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_unsupported_app_version_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type publish_app_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_draft_app_version_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type reject_resource_grouping_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type remove_draft_app_version_resource_mappings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type resolve_app_version_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_app_assessment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_metrics_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_resource_grouping_recommendation_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_app_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_app_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_app_version_app_component_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_app_version_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_resiliency_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

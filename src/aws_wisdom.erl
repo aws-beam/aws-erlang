@@ -115,90 +115,10 @@
 
 
 %% Example:
-%% start_content_upload_response() :: #{
-%%   <<"headersToInclude">> := map(),
-%%   <<"uploadId">> := string(),
-%%   <<"url">> := string(),
-%%   <<"urlExpiry">> := [non_neg_integer()]
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type start_content_upload_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_knowledge_base_template_uri_request() :: #{
-%%   <<"templateUri">> := string()
-%% }
--type update_knowledge_base_template_uri_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_assistant_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"results">> := list(result_data())
-%% }
--type query_assistant_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_summary() :: #{
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"sessionArn">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type session_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_quick_response_response() :: #{
-%%   <<"quickResponse">> => quick_response_data()
-%% }
--type create_quick_response_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_session_response() :: #{
-%%   <<"session">> => session_data()
-%% }
--type get_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_quick_responses_request() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchExpression">> := quick_response_search_expression()
-%% }
--type search_quick_responses_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% quick_response_search_expression() :: #{
-%%   <<"filters">> => list(quick_response_filter_field()),
-%%   <<"orderOnField">> => quick_response_order_field(),
-%%   <<"queries">> => list(quick_response_query_field())
-%% }
--type quick_response_search_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% highlight() :: #{
-%%   <<"beginOffsetInclusive">> => integer(),
-%%   <<"endOffsetExclusive">> => integer()
-%% }
--type highlight() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -210,63 +130,44 @@
 
 
 %% Example:
-%% list_contents_response() :: #{
-%%   <<"contentSummaries">> := list(content_summary()),
-%%   <<"nextToken">> => string()
+%% assistant_association_data() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantAssociationArn">> => string(),
+%%   <<"assistantAssociationId">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"associationData">> => list(),
+%%   <<"associationType">> => string(),
+%%   <<"tags">> => map()
 %% }
--type list_contents_response() :: #{binary() => any()}.
+-type assistant_association_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% quick_response_filter_field() :: #{
-%%   <<"includeNoExistence">> => [boolean()],
+%% assistant_association_summary() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantAssociationArn">> => string(),
+%%   <<"assistantAssociationId">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"associationData">> => list(),
+%%   <<"associationType">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type assistant_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% assistant_data() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"integrationConfiguration">> => assistant_integration_configuration(),
 %%   <<"name">> => string(),
-%%   <<"operator">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type quick_response_filter_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_source_configuration() :: #{
-%%   <<"configuration">> => list(),
-%%   <<"source">> => string()
-%% }
--type external_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_data() :: #{
-%%   <<"document">> => document(),
-%%   <<"recommendationId">> => [string()],
-%%   <<"relevanceLevel">> => string(),
-%%   <<"relevanceScore">> => float(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
 %%   <<"type">> => string()
 %% }
--type recommendation_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_contents_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_contents_request() :: #{binary() => any()}.
-
-%% Example:
-%% remove_knowledge_base_template_uri_response() :: #{}
--type remove_knowledge_base_template_uri_response() :: #{}.
-
-%% Example:
-%% delete_assistant_association_request() :: #{}
--type delete_assistant_association_request() :: #{}.
-
-
-%% Example:
-%% get_content_summary_response() :: #{
-%%   <<"contentSummary">> => content_summary()
-%% }
--type get_content_summary_response() :: #{binary() => any()}.
+-type assistant_data() :: #{binary() => any()}.
 
 
 %% Example:
@@ -275,9 +176,130 @@
 %% }
 -type assistant_integration_configuration() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_knowledge_base_response() :: #{}
--type delete_knowledge_base_response() :: #{}.
+%% assistant_summary() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"integrationConfiguration">> => assistant_integration_configuration(),
+%%   <<"name">> => string(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type assistant_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_configuration() :: #{
+%%   <<"instanceId">> => string()
+%% }
+-type connect_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_data() :: #{
+%%   <<"contentArn">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"contentType">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"linkOutUri">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string(),
+%%   <<"urlExpiry">> => [non_neg_integer()]
+%% }
+-type content_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_reference() :: #{
+%%   <<"contentArn">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string()
+%% }
+-type content_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_summary() :: #{
+%%   <<"contentArn">> => string(),
+%%   <<"contentId">> => string(),
+%%   <<"contentType">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> => string(),
+%%   <<"revisionId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"title">> => string()
+%% }
+-type content_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assistant_association_request() :: #{
+%%   <<"association">> := list(),
+%%   <<"associationType">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_assistant_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assistant_association_response() :: #{
+%%   <<"assistantAssociation">> => assistant_association_data()
+%% }
+-type create_assistant_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assistant_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := string()
+%% }
+-type create_assistant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assistant_response() :: #{
+%%   <<"assistant">> => assistant_data()
+%% }
+-type create_assistant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_content_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"name">> := string(),
+%%   <<"overrideLinkOutUri">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"title">> => string(),
+%%   <<"uploadId">> := string()
+%% }
+-type create_content_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -288,36 +310,17 @@
 
 
 %% Example:
-%% get_assistant_response() :: #{
-%%   <<"assistant">> => assistant_data()
-%% }
--type get_assistant_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommendations_response() :: #{
-%%   <<"recommendations">> := list(recommendation_data()),
-%%   <<"triggers">> => list(recommendation_trigger())
-%% }
--type get_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_timeout_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type request_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_import_job_request() :: #{
+%% create_knowledge_base_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"externalSourceConfiguration">> => external_source_configuration(),
-%%   <<"importJobType">> := string(),
-%%   <<"metadata">> => map(),
-%%   <<"uploadId">> := string()
+%%   <<"description">> => string(),
+%%   <<"knowledgeBaseType">> := string(),
+%%   <<"name">> := string(),
+%%   <<"renderingConfiguration">> => rendering_configuration(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"sourceConfiguration">> => list(),
+%%   <<"tags">> => map()
 %% }
--type start_import_job_request() :: #{binary() => any()}.
+-type create_knowledge_base_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -325,20 +328,6 @@
 %%   <<"knowledgeBase">> => knowledge_base_data()
 %% }
 -type create_knowledge_base_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_assistant_association_response() :: #{
-%%   <<"assistantAssociation">> => assistant_association_data()
-%% }
--type get_assistant_association_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -359,42 +348,10 @@
 
 
 %% Example:
-%% connect_configuration() :: #{
-%%   <<"instanceId">> => string()
+%% create_quick_response_response() :: #{
+%%   <<"quickResponse">> => quick_response_data()
 %% }
--type connect_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_content_response() :: #{
-%%   <<"contentSummaries">> := list(content_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type search_content_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_request() :: #{}
--type get_session_request() :: #{}.
-
-
-%% Example:
-%% list_quick_responses_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_quick_responses_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_content_upload_request() :: #{
-%%   <<"contentType">> := string(),
-%%   <<"presignedUrlTimeToLive">> => integer()
-%% }
--type start_content_upload_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assistant_request() :: #{}
--type delete_assistant_request() :: #{}.
+-type create_quick_response_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -408,79 +365,212 @@
 
 
 %% Example:
-%% update_knowledge_base_template_uri_response() :: #{
+%% create_session_response() :: #{
+%%   <<"session">> => session_data()
+%% }
+-type create_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_assistant_association_request() :: #{}
+-type delete_assistant_association_request() :: #{}.
+
+%% Example:
+%% delete_assistant_association_response() :: #{}
+-type delete_assistant_association_response() :: #{}.
+
+%% Example:
+%% delete_assistant_request() :: #{}
+-type delete_assistant_request() :: #{}.
+
+%% Example:
+%% delete_assistant_response() :: #{}
+-type delete_assistant_response() :: #{}.
+
+%% Example:
+%% delete_content_request() :: #{}
+-type delete_content_request() :: #{}.
+
+%% Example:
+%% delete_content_response() :: #{}
+-type delete_content_response() :: #{}.
+
+%% Example:
+%% delete_import_job_request() :: #{}
+-type delete_import_job_request() :: #{}.
+
+%% Example:
+%% delete_import_job_response() :: #{}
+-type delete_import_job_response() :: #{}.
+
+%% Example:
+%% delete_knowledge_base_request() :: #{}
+-type delete_knowledge_base_request() :: #{}.
+
+%% Example:
+%% delete_knowledge_base_response() :: #{}
+-type delete_knowledge_base_response() :: #{}.
+
+%% Example:
+%% delete_quick_response_request() :: #{}
+-type delete_quick_response_request() :: #{}.
+
+%% Example:
+%% delete_quick_response_response() :: #{}
+-type delete_quick_response_response() :: #{}.
+
+
+%% Example:
+%% document() :: #{
+%%   <<"contentReference">> => content_reference(),
+%%   <<"excerpt">> => document_text(),
+%%   <<"title">> => document_text()
+%% }
+-type document() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_text() :: #{
+%%   <<"highlights">> => list(highlight()),
+%%   <<"text">> => string()
+%% }
+-type document_text() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_source_configuration() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"source">> => string()
+%% }
+-type external_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"field">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"value">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_assistant_association_request() :: #{}
+-type get_assistant_association_request() :: #{}.
+
+
+%% Example:
+%% get_assistant_association_response() :: #{
+%%   <<"assistantAssociation">> => assistant_association_data()
+%% }
+-type get_assistant_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_assistant_request() :: #{}
+-type get_assistant_request() :: #{}.
+
+
+%% Example:
+%% get_assistant_response() :: #{
+%%   <<"assistant">> => assistant_data()
+%% }
+-type get_assistant_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_content_request() :: #{}
+-type get_content_request() :: #{}.
+
+
+%% Example:
+%% get_content_response() :: #{
+%%   <<"content">> => content_data()
+%% }
+-type get_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_content_summary_request() :: #{}
+-type get_content_summary_request() :: #{}.
+
+
+%% Example:
+%% get_content_summary_response() :: #{
+%%   <<"contentSummary">> => content_summary()
+%% }
+-type get_content_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_import_job_request() :: #{}
+-type get_import_job_request() :: #{}.
+
+
+%% Example:
+%% get_import_job_response() :: #{
+%%   <<"importJob">> => import_job_data()
+%% }
+-type get_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_knowledge_base_request() :: #{}
+-type get_knowledge_base_request() :: #{}.
+
+
+%% Example:
+%% get_knowledge_base_response() :: #{
 %%   <<"knowledgeBase">> => knowledge_base_data()
 %% }
--type update_knowledge_base_template_uri_response() :: #{binary() => any()}.
+-type get_knowledge_base_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_quick_response_request() :: #{}
+-type get_quick_response_request() :: #{}.
 
 
 %% Example:
-%% create_knowledge_base_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"knowledgeBaseType">> := string(),
-%%   <<"name">> := string(),
-%%   <<"renderingConfiguration">> => rendering_configuration(),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"sourceConfiguration">> => list(),
-%%   <<"tags">> => map()
+%% get_quick_response_response() :: #{
+%%   <<"quickResponse">> => quick_response_data()
 %% }
--type create_knowledge_base_request() :: #{binary() => any()}.
+-type get_quick_response_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_import_jobs_request() :: #{
+%% get_recommendations_request() :: #{
 %%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%%   <<"waitTimeSeconds">> => integer()
 %% }
--type list_import_jobs_request() :: #{binary() => any()}.
+-type get_recommendations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% knowledge_base_summary() :: #{
-%%   <<"description">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"knowledgeBaseType">> => string(),
-%%   <<"name">> => string(),
-%%   <<"renderingConfiguration">> => rendering_configuration(),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"sourceConfiguration">> => list(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map()
+%% get_recommendations_response() :: #{
+%%   <<"recommendations">> := list(recommendation_data()),
+%%   <<"triggers">> => list(recommendation_trigger())
 %% }
--type knowledge_base_summary() :: #{binary() => any()}.
+-type get_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{}
+-type get_session_request() :: #{}.
 
 
 %% Example:
-%% list_quick_responses_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"quickResponseSummaries">> => list(quick_response_summary())
+%% get_session_response() :: #{
+%%   <<"session">> => session_data()
 %% }
--type list_quick_responses_response() :: #{binary() => any()}.
+-type get_session_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_knowledge_bases_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% grouping_configuration() :: #{
+%%   <<"criteria">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type list_knowledge_bases_request() :: #{binary() => any()}.
+-type grouping_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
+%% highlight() :: #{
+%%   <<"beginOffsetInclusive">> => integer(),
+%%   <<"endOffsetExclusive">> => integer()
 %% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceName">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type highlight() :: #{binary() => any()}.
 
 
 %% Example:
@@ -503,6 +593,30 @@
 
 
 %% Example:
+%% import_job_summary() :: #{
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"externalSourceConfiguration">> => external_source_configuration(),
+%%   <<"importJobId">> => string(),
+%%   <<"importJobType">> => string(),
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"metadata">> => map(),
+%%   <<"status">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type import_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_association_data() :: #{
+%%   <<"knowledgeBaseArn">> => string(),
+%%   <<"knowledgeBaseId">> => string()
+%% }
+-type knowledge_base_association_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_data() :: #{
 %%   <<"description">> => string(),
 %%   <<"knowledgeBaseArn">> => string(),
@@ -520,139 +634,141 @@
 
 
 %% Example:
-%% assistant_association_data() :: #{
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantAssociationArn">> => string(),
-%%   <<"assistantAssociationId">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"associationData">> => list(),
-%%   <<"associationType">> => string(),
-%%   <<"tags">> => map()
-%% }
--type assistant_association_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_text() :: #{
-%%   <<"highlights">> => list(highlight()),
-%%   <<"text">> => string()
-%% }
--type document_text() :: #{binary() => any()}.
-
-%% Example:
-%% get_assistant_request() :: #{}
--type get_assistant_request() :: #{}.
-
-%% Example:
-%% delete_assistant_response() :: #{}
--type delete_assistant_response() :: #{}.
-
-
-%% Example:
-%% quick_response_contents() :: #{
-%%   <<"markdown">> => list(),
-%%   <<"plainText">> => list()
-%% }
--type quick_response_contents() :: #{binary() => any()}.
-
-%% Example:
-%% delete_import_job_request() :: #{}
--type delete_import_job_request() :: #{}.
-
-
-%% Example:
-%% assistant_data() :: #{
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantId">> => string(),
+%% knowledge_base_summary() :: #{
 %%   <<"description">> => string(),
-%%   <<"integrationConfiguration">> => assistant_integration_configuration(),
-%%   <<"name">> => string(),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type assistant_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assistant_response() :: #{
-%%   <<"assistant">> => assistant_data()
-%% }
--type create_assistant_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% quick_response_summary() :: #{
-%%   <<"channels">> => list(string()),
-%%   <<"contentType">> => string(),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"isActive">> => [boolean()],
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
-%%   <<"lastModifiedBy">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"knowledgeBaseType">> => string(),
 %%   <<"name">> => string(),
-%%   <<"quickResponseArn">> => string(),
-%%   <<"quickResponseId">> => string(),
+%%   <<"renderingConfiguration">> => rendering_configuration(),
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"sourceConfiguration">> => list(),
 %%   <<"status">> => string(),
 %%   <<"tags">> => map()
 %% }
--type quick_response_summary() :: #{binary() => any()}.
+-type knowledge_base_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_quick_response_response() :: #{
-%%   <<"quickResponse">> => quick_response_data()
-%% }
--type get_quick_response_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_import_job_request() :: #{}
--type get_import_job_request() :: #{}.
-
-
-%% Example:
-%% create_assistant_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := string()
-%% }
--type create_assistant_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommendations_request() :: #{
+%% list_assistant_associations_request() :: #{
 %%   <<"maxResults">> => integer(),
-%%   <<"waitTimeSeconds">> => integer()
+%%   <<"nextToken">> => string()
 %% }
--type get_recommendations_request() :: #{binary() => any()}.
+-type list_assistant_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% query_recommendation_trigger_data() :: #{
-%%   <<"text">> => string()
+%% list_assistant_associations_response() :: #{
+%%   <<"assistantAssociationSummaries">> := list(assistant_association_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type query_recommendation_trigger_data() :: #{binary() => any()}.
+-type list_assistant_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_sessions_response() :: #{
+%% list_assistants_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assistants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assistants_response() :: #{
+%%   <<"assistantSummaries">> := list(assistant_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_assistants_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contents_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contents_response() :: #{
+%%   <<"contentSummaries">> := list(content_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_import_jobs_response() :: #{
+%%   <<"importJobSummaries">> => list(import_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_bases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_knowledge_bases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_bases_response() :: #{
+%%   <<"knowledgeBaseSummaries">> := list(knowledge_base_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_knowledge_bases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quick_responses_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_quick_responses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_quick_responses_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sessionSummaries">> := list(session_summary())
+%%   <<"quickResponseSummaries">> => list(quick_response_summary())
 %% }
--type search_sessions_response() :: #{binary() => any()}.
+-type list_quick_responses_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% notify_recommendations_received_error() :: #{
+%%   <<"message">> => string(),
+%%   <<"recommendationId">> => [string()]
+%% }
+-type notify_recommendations_received_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% notify_recommendations_received_request() :: #{
+%%   <<"recommendationIds">> := list([string()]())
+%% }
+-type notify_recommendations_received_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -664,21 +780,42 @@
 
 
 %% Example:
-%% update_quick_response_request() :: #{
-%%   <<"channels">> => list(string()),
-%%   <<"content">> => list(),
-%%   <<"contentType">> => string(),
-%%   <<"description">> => string(),
-%%   <<"groupingConfiguration">> => grouping_configuration(),
-%%   <<"isActive">> => [boolean()],
-%%   <<"language">> => string(),
-%%   <<"name">> => string(),
-%%   <<"removeDescription">> => [boolean()],
-%%   <<"removeGroupingConfiguration">> => [boolean()],
-%%   <<"removeShortcutKey">> => [boolean()],
-%%   <<"shortcutKey">> => string()
+%% precondition_failed_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type update_quick_response_request() :: #{binary() => any()}.
+-type precondition_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_assistant_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryText">> := string()
+%% }
+-type query_assistant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_assistant_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> := list(result_data())
+%% }
+-type query_assistant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_recommendation_trigger_data() :: #{
+%%   <<"text">> => string()
+%% }
+-type query_recommendation_trigger_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_response_contents() :: #{
+%%   <<"markdown">> => list(),
+%%   <<"plainText">> => list()
+%% }
+-type quick_response_contents() :: #{binary() => any()}.
 
 
 %% Example:
@@ -706,198 +843,41 @@
 
 
 %% Example:
-%% knowledge_base_association_data() :: #{
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string()
-%% }
--type knowledge_base_association_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assistant_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_assistant_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_knowledge_base_request() :: #{}
--type delete_knowledge_base_request() :: #{}.
-
-
-%% Example:
-%% update_quick_response_response() :: #{
-%%   <<"quickResponse">> => quick_response_data()
-%% }
--type update_quick_response_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% assistant_summary() :: #{
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"integrationConfiguration">> => assistant_integration_configuration(),
+%% quick_response_filter_field() :: #{
+%%   <<"includeNoExistence">> => [boolean()],
 %%   <<"name">> => string(),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type assistant_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_expression() :: #{
-%%   <<"filters">> => list(filter())
-%% }
--type search_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"field">> => string(),
 %%   <<"operator">> => string(),
-%%   <<"value">> => string()
+%%   <<"values">> => list(string())
 %% }
--type filter() :: #{binary() => any()}.
+-type quick_response_filter_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% server_side_encryption_configuration() :: #{
-%%   <<"kmsKeyId">> => string()
-%% }
--type server_side_encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_data() :: #{
-%%   <<"description">> => string(),
-%%   <<"integrationConfiguration">> => session_integration_configuration(),
+%% quick_response_order_field() :: #{
 %%   <<"name">> => string(),
-%%   <<"sessionArn">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"tags">> => map()
+%%   <<"order">> => string()
 %% }
--type session_data() :: #{binary() => any()}.
+-type quick_response_order_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_sessions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchExpression">> := search_expression()
+%% quick_response_query_field() :: #{
+%%   <<"allowFuzziness">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"operator">> => string(),
+%%   <<"priority">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type search_sessions_request() :: #{binary() => any()}.
+-type quick_response_query_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_import_jobs_response() :: #{
-%%   <<"importJobSummaries">> => list(import_job_summary()),
-%%   <<"nextToken">> => string()
+%% quick_response_search_expression() :: #{
+%%   <<"filters">> => list(quick_response_filter_field()),
+%%   <<"orderOnField">> => quick_response_order_field(),
+%%   <<"queries">> => list(quick_response_query_field())
 %% }
--type list_import_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% remove_knowledge_base_template_uri_request() :: #{}
--type remove_knowledge_base_template_uri_request() :: #{}.
-
-
-%% Example:
-%% search_quick_responses_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"results">> => list(quick_response_search_result_data())
-%% }
--type search_quick_responses_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% notify_recommendations_received_error() :: #{
-%%   <<"message">> => string(),
-%%   <<"recommendationId">> => [string()]
-%% }
--type notify_recommendations_received_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_import_job_response() :: #{
-%%   <<"importJob">> => import_job_data()
-%% }
--type get_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_content_response() :: #{
-%%   <<"content">> => content_data()
-%% }
--type update_content_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_quick_response_request() :: #{}
--type get_quick_response_request() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assistant_association_response() :: #{
-%%   <<"assistantAssociation">> => assistant_association_data()
-%% }
--type create_assistant_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_content_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"name">> := string(),
-%%   <<"overrideLinkOutUri">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"title">> => string(),
-%%   <<"uploadId">> := string()
-%% }
--type create_content_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% import_job_summary() :: #{
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"externalSourceConfiguration">> => external_source_configuration(),
-%%   <<"importJobId">> => string(),
-%%   <<"importJobType">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"metadata">> => map(),
-%%   <<"status">> => string(),
-%%   <<"uploadId">> => string()
-%% }
--type import_job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_assistant_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryText">> := string()
-%% }
--type query_assistant_request() :: #{binary() => any()}.
+-type quick_response_search_expression() :: #{binary() => any()}.
 
 
 %% Example:
@@ -927,87 +907,34 @@
 
 
 %% Example:
-%% rendering_configuration() :: #{
-%%   <<"templateUri">> => string()
-%% }
--type rendering_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_content_request() :: #{}
--type delete_content_request() :: #{}.
-
-%% Example:
-%% get_content_request() :: #{}
--type get_content_request() :: #{}.
-
-%% Example:
-%% delete_quick_response_request() :: #{}
--type delete_quick_response_request() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% content_reference() :: #{
-%%   <<"contentArn">> => string(),
-%%   <<"contentId">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string()
-%% }
--type content_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_data() :: #{
-%%   <<"contentArn">> => string(),
-%%   <<"contentId">> => string(),
+%% quick_response_summary() :: #{
+%%   <<"channels">> => list(string()),
 %%   <<"contentType">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"isActive">> => [boolean()],
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
-%%   <<"linkOutUri">> => string(),
-%%   <<"metadata">> => map(),
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"revisionId">> => string(),
+%%   <<"quickResponseArn">> => string(),
+%%   <<"quickResponseId">> => string(),
 %%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"title">> => string(),
-%%   <<"url">> => string(),
-%%   <<"urlExpiry">> => [non_neg_integer()]
+%%   <<"tags">> => map()
 %% }
--type content_data() :: #{binary() => any()}.
+-type quick_response_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% content_summary() :: #{
-%%   <<"contentArn">> => string(),
-%%   <<"contentId">> => string(),
-%%   <<"contentType">> => string(),
-%%   <<"knowledgeBaseArn">> => string(),
-%%   <<"knowledgeBaseId">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"name">> => string(),
-%%   <<"revisionId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"title">> => string()
+%% recommendation_data() :: #{
+%%   <<"document">> => document(),
+%%   <<"recommendationId">> => [string()],
+%%   <<"relevanceLevel">> => string(),
+%%   <<"relevanceScore">> => float(),
+%%   <<"type">> => string()
 %% }
--type content_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_content_response() :: #{
-%%   <<"content">> => content_data()
-%% }
--type get_content_response() :: #{binary() => any()}.
+-type recommendation_data() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1020,35 +947,35 @@
 %% }
 -type recommendation_trigger() :: #{binary() => any()}.
 
+%% Example:
+%% remove_knowledge_base_template_uri_request() :: #{}
+-type remove_knowledge_base_template_uri_request() :: #{}.
 
 %% Example:
-%% notify_recommendations_received_request() :: #{
-%%   <<"recommendationIds">> := list([string()]())
-%% }
--type notify_recommendations_received_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_knowledge_bases_response() :: #{
-%%   <<"knowledgeBaseSummaries">> := list(knowledge_base_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_knowledge_bases_response() :: #{binary() => any()}.
+%% remove_knowledge_base_template_uri_response() :: #{}
+-type remove_knowledge_base_template_uri_response() :: #{}.
 
 
 %% Example:
-%% get_knowledge_base_response() :: #{
-%%   <<"knowledgeBase">> => knowledge_base_data()
+%% rendering_configuration() :: #{
+%%   <<"templateUri">> => string()
 %% }
--type get_knowledge_base_response() :: #{binary() => any()}.
+-type rendering_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_assistant_associations_response() :: #{
-%%   <<"assistantAssociationSummaries">> := list(assistant_association_summary()),
-%%   <<"nextToken">> => string()
+%% request_timeout_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_assistant_associations_response() :: #{binary() => any()}.
+-type request_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1061,10 +988,171 @@
 
 
 %% Example:
+%% search_content_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchExpression">> := search_expression()
+%% }
+-type search_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_content_response() :: #{
+%%   <<"contentSummaries">> := list(content_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type search_content_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_expression() :: #{
+%%   <<"filters">> => list(filter())
+%% }
+-type search_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_quick_responses_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchExpression">> := quick_response_search_expression()
+%% }
+-type search_quick_responses_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_quick_responses_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"results">> => list(quick_response_search_result_data())
+%% }
+-type search_quick_responses_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_sessions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchExpression">> := search_expression()
+%% }
+-type search_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessionSummaries">> := list(session_summary())
+%% }
+-type search_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_side_encryption_configuration() :: #{
+%%   <<"kmsKeyId">> => string()
+%% }
+-type server_side_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_data() :: #{
+%%   <<"description">> => string(),
+%%   <<"integrationConfiguration">> => session_integration_configuration(),
+%%   <<"name">> => string(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type session_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_integration_configuration() :: #{
+%%   <<"topicIntegrationArn">> => string()
+%% }
+-type session_integration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_summary() :: #{
+%%   <<"assistantArn">> => string(),
+%%   <<"assistantId">> => string(),
+%%   <<"sessionArn">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_content_upload_request() :: #{
+%%   <<"contentType">> := string(),
+%%   <<"presignedUrlTimeToLive">> => integer()
+%% }
+-type start_content_upload_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_content_upload_response() :: #{
+%%   <<"headersToInclude">> := map(),
+%%   <<"uploadId">> := string(),
+%%   <<"url">> := string(),
+%%   <<"urlExpiry">> := [non_neg_integer()]
+%% }
+-type start_content_upload_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_import_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"externalSourceConfiguration">> => external_source_configuration(),
+%%   <<"importJobType">> := string(),
+%%   <<"metadata">> => map(),
+%%   <<"uploadId">> := string()
+%% }
+-type start_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_import_job_response() :: #{
 %%   <<"importJob">> => import_job_data()
 %% }
 -type start_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => [string()]
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -1080,177 +1168,89 @@
 
 
 %% Example:
-%% assistant_association_summary() :: #{
-%%   <<"assistantArn">> => string(),
-%%   <<"assistantAssociationArn">> => string(),
-%%   <<"assistantAssociationId">> => string(),
-%%   <<"assistantId">> => string(),
-%%   <<"associationData">> => list(),
-%%   <<"associationType">> => string(),
-%%   <<"tags">> => map()
+%% update_content_response() :: #{
+%%   <<"content">> => content_data()
 %% }
--type assistant_association_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_content_summary_request() :: #{}
--type get_content_summary_request() :: #{}.
+-type update_content_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% quick_response_query_field() :: #{
-%%   <<"allowFuzziness">> => [boolean()],
+%% update_knowledge_base_template_uri_request() :: #{
+%%   <<"templateUri">> := string()
+%% }
+-type update_knowledge_base_template_uri_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_knowledge_base_template_uri_response() :: #{
+%%   <<"knowledgeBase">> => knowledge_base_data()
+%% }
+-type update_knowledge_base_template_uri_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_quick_response_request() :: #{
+%%   <<"channels">> => list(string()),
+%%   <<"content">> => list(),
+%%   <<"contentType">> => string(),
+%%   <<"description">> => string(),
+%%   <<"groupingConfiguration">> => grouping_configuration(),
+%%   <<"isActive">> => [boolean()],
+%%   <<"language">> => string(),
 %%   <<"name">> => string(),
-%%   <<"operator">> => string(),
-%%   <<"priority">> => string(),
-%%   <<"values">> => list(string())
+%%   <<"removeDescription">> => [boolean()],
+%%   <<"removeGroupingConfiguration">> => [boolean()],
+%%   <<"removeShortcutKey">> => [boolean()],
+%%   <<"shortcutKey">> => string()
 %% }
--type quick_response_query_field() :: #{binary() => any()}.
-
-%% Example:
-%% get_assistant_association_request() :: #{}
--type get_assistant_association_request() :: #{}.
-
-%% Example:
-%% delete_content_response() :: #{}
--type delete_content_response() :: #{}.
-
-%% Example:
-%% get_knowledge_base_request() :: #{}
--type get_knowledge_base_request() :: #{}.
+-type update_quick_response_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% quick_response_order_field() :: #{
-%%   <<"name">> => string(),
-%%   <<"order">> => string()
+%% update_quick_response_response() :: #{
+%%   <<"quickResponse">> => quick_response_data()
 %% }
--type quick_response_order_field() :: #{binary() => any()}.
+-type update_quick_response_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_assistants_response() :: #{
-%%   <<"assistantSummaries">> := list(assistant_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_assistants_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_quick_response_response() :: #{}
--type delete_quick_response_response() :: #{}.
-
-
-%% Example:
-%% search_content_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchExpression">> := search_expression()
-%% }
--type search_content_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% grouping_configuration() :: #{
-%%   <<"criteria">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type grouping_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_assistant_association_request() :: #{
-%%   <<"association">> := list(),
-%%   <<"associationType">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_assistant_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_session_response() :: #{
-%%   <<"session">> => session_data()
-%% }
--type create_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% precondition_failed_exception() :: #{
+%% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type precondition_failed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_assistant_association_response() :: #{}
--type delete_assistant_association_response() :: #{}.
-
-
-%% Example:
-%% document() :: #{
-%%   <<"contentReference">> => content_reference(),
-%%   <<"excerpt">> => document_text(),
-%%   <<"title">> => document_text()
-%% }
--type document() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_assistants_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_assistants_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_integration_configuration() :: #{
-%%   <<"topicIntegrationArn">> => string()
-%% }
--type session_integration_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_import_job_response() :: #{}
--type delete_import_job_response() :: #{}.
-
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceName">> => [string()]
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_assistant_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_assistant_association_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_content_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_knowledge_base_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_quick_response_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_session_errors() ::
     validation_exception() | 
@@ -1259,85 +1259,85 @@
 
 -type delete_assistant_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_assistant_association_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_content_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type delete_import_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_knowledge_base_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_quick_response_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_assistant_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_assistant_association_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_content_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_content_summary_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_import_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_knowledge_base_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_quick_response_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_recommendations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_session_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_assistant_associations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_assistants_errors() ::
     validation_exception() | 
@@ -1345,8 +1345,8 @@
 
 -type list_contents_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_import_jobs_errors() ::
     validation_exception() | 
@@ -1358,55 +1358,55 @@
 
 -type list_quick_responses_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
 
 -type notify_recommendations_received_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type query_assistant_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    access_denied_exception().
 
 -type remove_knowledge_base_template_uri_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type search_content_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type search_quick_responses_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    request_timeout_exception().
+    request_timeout_exception() | 
+    access_denied_exception().
 
 -type search_sessions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type start_content_upload_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type start_import_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
@@ -1416,22 +1416,22 @@
     resource_not_found_exception().
 
 -type update_content_errors() ::
-    precondition_failed_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    precondition_failed_exception() | 
+    access_denied_exception().
 
 -type update_knowledge_base_template_uri_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_quick_response_errors() ::
-    precondition_failed_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    precondition_failed_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -121,6 +121,27 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% allowed_statistics() :: #{
+%%   <<"Statistics">> => list(string())
+%% }
+-type allowed_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_recipe_version_request() :: #{
+%%   <<"RecipeVersions">> := list(string())
+%% }
+-type batch_delete_recipe_version_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_delete_recipe_version_response() :: #{
 %%   <<"Errors">> => list(recipe_version_error_detail()),
 %%   <<"Name">> => string()
@@ -129,97 +150,54 @@
 
 
 %% Example:
-%% describe_project_response() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"DatasetName">> => string(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
+%% column_selector() :: #{
 %%   <<"Name">> => string(),
-%%   <<"OpenDate">> => non_neg_integer(),
-%%   <<"OpenedBy">> => string(),
-%%   <<"RecipeName">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Sample">> => sample(),
-%%   <<"SessionStatus">> => list(any()),
+%%   <<"Regex">> => string()
+%% }
+-type column_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% column_statistics_configuration() :: #{
+%%   <<"Selectors">> => list(column_selector()),
+%%   <<"Statistics">> => statistics_configuration()
+%% }
+-type column_statistics_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition_expression() :: #{
+%%   <<"Condition">> => string(),
+%%   <<"TargetColumn">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type condition_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_request() :: #{
+%%   <<"Format">> => list(any()),
+%%   <<"FormatOptions">> => format_options(),
+%%   <<"Input">> := input(),
+%%   <<"Name">> := string(),
+%%   <<"PathOptions">> => path_options(),
 %%   <<"Tags">> => map()
 %% }
--type describe_project_response() :: #{binary() => any()}.
+-type create_dataset_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% database_output() :: #{
-%%   <<"DatabaseOptions">> => database_table_output_options(),
-%%   <<"DatabaseOutputMode">> => list(any()),
-%%   <<"GlueConnectionName">> => string()
-%% }
--type database_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ruleset_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Rules">> := list(rule()),
-%%   <<"Tags">> => map(),
-%%   <<"TargetArn">> := string()
-%% }
--type create_ruleset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recipe_reference() :: #{
-%%   <<"Name">> => string(),
-%%   <<"RecipeVersion">> => string()
-%% }
--type recipe_reference() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_ruleset_response() :: #{
+%% create_dataset_response() :: #{
 %%   <<"Name">> => string()
 %% }
--type update_ruleset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_schedule_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_schedule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recipe_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Steps">> := list(recipe_step()),
-%%   <<"Tags">> => map()
-%% }
--type create_recipe_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_table_output_options() :: #{
-%%   <<"Location">> => s3_location()
-%% }
--type s3_table_output_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recipes_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Recipes">> => list(recipe())
-%% }
--type list_recipes_response() :: #{binary() => any()}.
+-type create_dataset_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -240,6 +218,308 @@
 %%   <<"ValidationConfigurations">> => list(validation_configuration())
 %% }
 -type create_profile_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profile_job_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_profile_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_request() :: #{
+%%   <<"DatasetName">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RecipeName">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Sample">> => sample(),
+%%   <<"Tags">> => map()
+%% }
+-type create_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_project_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recipe_job_request() :: #{
+%%   <<"DataCatalogOutputs">> => list(data_catalog_output()),
+%%   <<"DatabaseOutputs">> => list(database_output()),
+%%   <<"DatasetName">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionMode">> => list(any()),
+%%   <<"LogSubscription">> => list(any()),
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MaxRetries">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"Outputs">> => list(output()),
+%%   <<"ProjectName">> => string(),
+%%   <<"RecipeReference">> => recipe_reference(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"Timeout">> => integer()
+%% }
+-type create_recipe_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recipe_job_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_recipe_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recipe_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Steps">> := list(recipe_step()),
+%%   <<"Tags">> => map()
+%% }
+-type create_recipe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recipe_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_recipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ruleset_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Rules">> := list(rule()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetArn">> := string()
+%% }
+-type create_ruleset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ruleset_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_ruleset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schedule_request() :: #{
+%%   <<"CronExpression">> := string(),
+%%   <<"JobNames">> => list(string()),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schedule_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% csv_options() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"HeaderRow">> => boolean()
+%% }
+-type csv_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% csv_output_options() :: #{
+%%   <<"Delimiter">> => string()
+%% }
+-type csv_output_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_catalog_input_definition() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TempDirectory">> => s3_location()
+%% }
+-type data_catalog_input_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_catalog_output() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DatabaseOptions">> => database_table_output_options(),
+%%   <<"Overwrite">> => boolean(),
+%%   <<"S3Options">> => s3_table_output_options(),
+%%   <<"TableName">> => string()
+%% }
+-type data_catalog_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% database_input_definition() :: #{
+%%   <<"DatabaseTableName">> => string(),
+%%   <<"GlueConnectionName">> => string(),
+%%   <<"QueryString">> => string(),
+%%   <<"TempDirectory">> => s3_location()
+%% }
+-type database_input_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% database_output() :: #{
+%%   <<"DatabaseOptions">> => database_table_output_options(),
+%%   <<"DatabaseOutputMode">> => list(any()),
+%%   <<"GlueConnectionName">> => string()
+%% }
+-type database_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% database_table_output_options() :: #{
+%%   <<"TableName">> => string(),
+%%   <<"TempDirectory">> => s3_location()
+%% }
+-type database_table_output_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"FormatOptions">> => format_options(),
+%%   <<"Input">> => input(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PathOptions">> => path_options(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Source">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type dataset() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_parameter() :: #{
+%%   <<"CreateColumn">> => boolean(),
+%%   <<"DatetimeOptions">> => datetime_options(),
+%%   <<"Filter">> => filter_expression(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type dataset_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% datetime_options() :: #{
+%%   <<"Format">> => string(),
+%%   <<"LocaleCode">> => string(),
+%%   <<"TimezoneOffset">> => string()
+%% }
+-type datetime_options() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_request() :: #{}
+-type delete_dataset_request() :: #{}.
+
+
+%% Example:
+%% delete_dataset_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type delete_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_request() :: #{}
+-type delete_job_request() :: #{}.
+
+
+%% Example:
+%% delete_job_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type delete_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_request() :: #{}
+-type delete_project_request() :: #{}.
+
+
+%% Example:
+%% delete_project_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type delete_project_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recipe_version_request() :: #{}
+-type delete_recipe_version_request() :: #{}.
+
+
+%% Example:
+%% delete_recipe_version_response() :: #{
+%%   <<"Name">> => string(),
+%%   <<"RecipeVersion">> => string()
+%% }
+-type delete_recipe_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ruleset_request() :: #{}
+-type delete_ruleset_request() :: #{}.
+
+
+%% Example:
+%% delete_ruleset_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type delete_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_schedule_request() :: #{}
+-type delete_schedule_request() :: #{}.
+
+
+%% Example:
+%% delete_schedule_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type delete_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_dataset_request() :: #{}
+-type describe_dataset_request() :: #{}.
+
+
+%% Example:
+%% describe_dataset_response() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"FormatOptions">> => format_options(),
+%%   <<"Input">> => input(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PathOptions">> => path_options(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Source">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type describe_dataset_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_job_request() :: #{}
+-type describe_job_request() :: #{}.
 
 
 %% Example:
@@ -271,117 +551,9 @@
 %% }
 -type describe_job_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% view_frame() :: #{
-%%   <<"Analytics">> => list(any()),
-%%   <<"ColumnRange">> => integer(),
-%%   <<"HiddenColumns">> => list(string()),
-%%   <<"RowRange">> => integer(),
-%%   <<"StartColumnIndex">> => integer(),
-%%   <<"StartRowIndex">> => integer()
-%% }
--type view_frame() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_dataset_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type delete_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dataset_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% statistics_configuration() :: #{
-%%   <<"IncludedStatistics">> => list(string()),
-%%   <<"Overrides">> => list(statistic_override())
-%% }
--type statistics_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_run() :: #{
-%%   <<"Attempt">> => integer(),
-%%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"DataCatalogOutputs">> => list(data_catalog_output()),
-%%   <<"DatabaseOutputs">> => list(database_output()),
-%%   <<"DatasetName">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ExecutionTime">> => integer(),
-%%   <<"JobName">> => string(),
-%%   <<"JobSample">> => job_sample(),
-%%   <<"LogGroupName">> => string(),
-%%   <<"LogSubscription">> => list(any()),
-%%   <<"Outputs">> => list(output()),
-%%   <<"RecipeReference">> => recipe_reference(),
-%%   <<"RunId">> => string(),
-%%   <<"StartedBy">> => string(),
-%%   <<"StartedOn">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"ValidationConfigurations">> => list(validation_configuration())
-%% }
--type job_run() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% publish_recipe_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type publish_recipe_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% datetime_options() :: #{
-%%   <<"Format">> => string(),
-%%   <<"LocaleCode">> => string(),
-%%   <<"TimezoneOffset">> => string()
-%% }
--type datetime_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% path_options() :: #{
-%%   <<"FilesLimit">> => files_limit(),
-%%   <<"LastModifiedDateCondition">> => filter_expression(),
-%%   <<"Parameters">> => map()
-%% }
--type path_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_request() :: #{
-%%   <<"DatasetName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProjectName">> => string()
-%% }
--type list_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_job_run_request() :: #{}
--type stop_job_run_request() :: #{}.
-
-%% Example:
-%% describe_project_request() :: #{}
--type describe_project_request() :: #{}.
-
-
-%% Example:
-%% batch_delete_recipe_version_request() :: #{
-%%   <<"RecipeVersions">> := list(string())
-%% }
--type batch_delete_recipe_version_request() :: #{binary() => any()}.
+%% describe_job_run_request() :: #{}
+-type describe_job_run_request() :: #{}.
 
 
 %% Example:
@@ -408,293 +580,13 @@
 %% }
 -type describe_job_run_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% list_job_runs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_job_runs_request() :: #{binary() => any()}.
+%% describe_project_request() :: #{}
+-type describe_project_request() :: #{}.
 
 
 %% Example:
-%% create_recipe_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_recipe_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata() :: #{
-%%   <<"SourceArn">> => string()
-%% }
--type metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_datasets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_datasets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_project_session_response() :: #{
-%%   <<"ClientSessionId">> => string(),
-%%   <<"Name">> => string()
-%% }
--type start_project_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_ruleset_response() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"Rules">> => list(rule()),
-%%   <<"Tags">> => map(),
-%%   <<"TargetArn">> => string()
-%% }
--type describe_ruleset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% entity_detector_configuration() :: #{
-%%   <<"AllowedStatistics">> => list(allowed_statistics()),
-%%   <<"EntityTypes">> => list(string())
-%% }
--type entity_detector_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recipe_job_request() :: #{
-%%   <<"DataCatalogOutputs">> => list(data_catalog_output()),
-%%   <<"DatabaseOutputs">> => list(database_output()),
-%%   <<"DatasetName">> => string(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"EncryptionMode">> => list(any()),
-%%   <<"LogSubscription">> => list(any()),
-%%   <<"MaxCapacity">> => integer(),
-%%   <<"MaxRetries">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"Outputs">> => list(output()),
-%%   <<"ProjectName">> => string(),
-%%   <<"RecipeReference">> => recipe_reference(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"Timeout">> => integer()
-%% }
--type create_recipe_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ruleset_request() :: #{}
--type describe_ruleset_request() :: #{}.
-
-
-%% Example:
-%% update_recipe_job_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_recipe_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_response() :: #{
-%%   <<"Jobs">> => list(job()),
-%%   <<"NextToken">> => string()
-%% }
--type list_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_catalog_output() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"DatabaseOptions">> => database_table_output_options(),
-%%   <<"Overwrite">> => boolean(),
-%%   <<"S3Options">> => s3_table_output_options(),
-%%   <<"TableName">> => string()
-%% }
--type data_catalog_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_schedule_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type delete_schedule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_project_response() :: #{
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type update_project_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_schedules_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Schedules">> => list(schedule())
-%% }
--type list_schedules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_profile_job_request() :: #{
-%%   <<"Configuration">> => profile_configuration(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"EncryptionMode">> => list(any()),
-%%   <<"JobSample">> => job_sample(),
-%%   <<"LogSubscription">> => list(any()),
-%%   <<"MaxCapacity">> => integer(),
-%%   <<"MaxRetries">> => integer(),
-%%   <<"OutputLocation">> := s3_location(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Timeout">> => integer(),
-%%   <<"ValidationConfigurations">> => list(validation_configuration())
-%% }
--type update_profile_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_ruleset_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type delete_ruleset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataset() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"Format">> => list(any()),
-%%   <<"FormatOptions">> => format_options(),
-%%   <<"Input">> => input(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PathOptions">> => path_options(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"Source">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type dataset() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_schedule_response() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"CronExpression">> => string(),
-%%   <<"JobNames">> => list(string()),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type describe_schedule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_format_options() :: #{
-%%   <<"Csv">> => csv_output_options()
-%% }
--type output_format_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_dataset_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_sample() :: #{
-%%   <<"Mode">> => list(any()),
-%%   <<"Size">> => float()
-%% }
--type job_sample() :: #{binary() => any()}.
-
-
-%% Example:
-%% files_limit() :: #{
-%%   <<"MaxFiles">> => integer(),
-%%   <<"Order">> => list(any()),
-%%   <<"OrderedBy">> => list(any())
-%% }
--type files_limit() :: #{binary() => any()}.
-
-
-%% Example:
-%% csv_options() :: #{
-%%   <<"Delimiter">> => string(),
-%%   <<"HeaderRow">> => boolean()
-%% }
--type csv_options() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_run_request() :: #{}
--type describe_job_run_request() :: #{}.
-
-
-%% Example:
-%% input() :: #{
-%%   <<"DataCatalogInputDefinition">> => data_catalog_input_definition(),
-%%   <<"DatabaseInputDefinition">> => database_input_definition(),
-%%   <<"Metadata">> => metadata(),
-%%   <<"S3InputDefinition">> => s3_location()
-%% }
--type input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_project_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_project_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_job_run_response() :: #{
-%%   <<"RunId">> => string()
-%% }
--type start_job_run_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% project() :: #{
-%%   <<"AccountId">> => string(),
+%% describe_project_response() :: #{
 %%   <<"CreateDate">> => non_neg_integer(),
 %%   <<"CreatedBy">> => string(),
 %%   <<"DatasetName">> => string(),
@@ -707,70 +599,17 @@
 %%   <<"ResourceArn">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"Sample">> => sample(),
+%%   <<"SessionStatus">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
--type project() :: #{binary() => any()}.
+-type describe_project_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_configuration() :: #{
-%%   <<"RulesetArn">> => string(),
-%%   <<"ValidationMode">> => list(any())
+%% describe_recipe_request() :: #{
+%%   <<"RecipeVersion">> => string()
 %% }
--type validation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_recipe_request() :: #{
-%%   <<"Description">> => string()
-%% }
--type publish_recipe_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rulesets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Rulesets">> => list(ruleset_item())
-%% }
--type list_rulesets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_project_session_request() :: #{
-%%   <<"AssumeControl">> => boolean()
-%% }
--type start_project_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% csv_output_options() :: #{
-%%   <<"Delimiter">> => string()
-%% }
--type csv_output_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recipe_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_recipe_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recipe_action() :: #{
-%%   <<"Operation">> => string(),
-%%   <<"Parameters">> => map()
-%% }
--type recipe_action() :: #{binary() => any()}.
+-type describe_recipe_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -791,13 +630,78 @@
 %% }
 -type describe_recipe_response() :: #{binary() => any()}.
 
+%% Example:
+%% describe_ruleset_request() :: #{}
+-type describe_ruleset_request() :: #{}.
+
 
 %% Example:
-%% list_job_runs_response() :: #{
-%%   <<"JobRuns">> => list(job_run()),
-%%   <<"NextToken">> => string()
+%% describe_ruleset_response() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Rules">> => list(rule()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetArn">> => string()
 %% }
--type list_job_runs_response() :: #{binary() => any()}.
+-type describe_ruleset_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_schedule_request() :: #{}
+-type describe_schedule_request() :: #{}.
+
+
+%% Example:
+%% describe_schedule_response() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CronExpression">> => string(),
+%%   <<"JobNames">> => list(string()),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% entity_detector_configuration() :: #{
+%%   <<"AllowedStatistics">> => list(allowed_statistics()),
+%%   <<"EntityTypes">> => list(string())
+%% }
+-type entity_detector_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% excel_options() :: #{
+%%   <<"HeaderRow">> => boolean(),
+%%   <<"SheetIndexes">> => list(integer()),
+%%   <<"SheetNames">> => list(string())
+%% }
+-type excel_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% files_limit() :: #{
+%%   <<"MaxFiles">> => integer(),
+%%   <<"Order">> => list(any()),
+%%   <<"OrderedBy">> => list(any())
+%% }
+-type files_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_expression() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"ValuesMap">> => map()
+%% }
+-type filter_expression() :: #{binary() => any()}.
 
 
 %% Example:
@@ -810,165 +714,13 @@
 
 
 %% Example:
-%% list_rulesets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TargetArn">> => string()
+%% input() :: #{
+%%   <<"DataCatalogInputDefinition">> => data_catalog_input_definition(),
+%%   <<"DatabaseInputDefinition">> => database_input_definition(),
+%%   <<"Metadata">> => metadata(),
+%%   <<"S3InputDefinition">> => s3_location()
 %% }
--type list_rulesets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recipe() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ProjectName">> => string(),
-%%   <<"PublishedBy">> => string(),
-%%   <<"PublishedDate">> => non_neg_integer(),
-%%   <<"RecipeVersion">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"Steps">> => list(recipe_step()),
-%%   <<"Tags">> => map()
-%% }
--type recipe() :: #{binary() => any()}.
-
-
-%% Example:
-%% sample() :: #{
-%%   <<"Size">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type sample() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_projects_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Projects">> => list(project())
-%% }
--type list_projects_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recipe_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Recipes">> => list(recipe())
-%% }
--type list_recipe_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_job_request() :: #{}
--type describe_job_request() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_catalog_input_definition() :: #{
-%%   <<"CatalogId">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"TempDirectory">> => s3_location()
-%% }
--type data_catalog_input_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% ruleset_item() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"RuleCount">> => integer(),
-%%   <<"Tags">> => map(),
-%%   <<"TargetArn">> => string()
-%% }
--type ruleset_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_expression() :: #{
-%%   <<"Expression">> => string(),
-%%   <<"ValuesMap">> => map()
-%% }
--type filter_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"BucketOwner">> => string(),
-%%   <<"Key">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_dataset_request() :: #{
-%%   <<"Format">> => list(any()),
-%%   <<"FormatOptions">> => format_options(),
-%%   <<"Input">> := input(),
-%%   <<"PathOptions">> => path_options()
-%% }
--type update_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% database_table_output_options() :: #{
-%%   <<"TableName">> => string(),
-%%   <<"TempDirectory">> => s3_location()
-%% }
--type database_table_output_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule() :: #{
-%%   <<"CheckExpression">> => string(),
-%%   <<"ColumnSelectors">> => list(column_selector()),
-%%   <<"Disabled">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"SubstitutionMap">> => map(),
-%%   <<"Threshold">> => threshold()
-%% }
--type rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recipe_job_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_recipe_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dataset_parameter() :: #{
-%%   <<"CreateColumn">> => boolean(),
-%%   <<"DatetimeOptions">> => datetime_options(),
-%%   <<"Filter">> => filter_expression(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type dataset_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_recipe_request() :: #{
-%%   <<"RecipeVersion">> => string()
-%% }
--type describe_recipe_request() :: #{binary() => any()}.
+-type input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -976,187 +728,6 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"CronExpression">> => string(),
-%%   <<"JobNames">> => list(string()),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type schedule() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_project_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type delete_project_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_job_run_response() :: #{
-%%   <<"RunId">> => string()
-%% }
--type stop_job_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_job_run_request() :: #{}
--type start_job_run_request() :: #{}.
-
-
-%% Example:
-%% update_project_request() :: #{
-%%   <<"RoleArn">> := string(),
-%%   <<"Sample">> => sample()
-%% }
--type update_project_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_configuration() :: #{
-%%   <<"ColumnStatisticsConfigurations">> => list(column_statistics_configuration()),
-%%   <<"DatasetStatisticsConfiguration">> => statistics_configuration(),
-%%   <<"EntityDetectorConfiguration">> => entity_detector_configuration(),
-%%   <<"ProfileColumns">> => list(column_selector())
-%% }
--type profile_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_ruleset_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Rules">> := list(rule())
-%% }
--type update_ruleset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recipe_step() :: #{
-%%   <<"Action">> => recipe_action(),
-%%   <<"ConditionExpressions">> => list(condition_expression())
-%% }
--type recipe_step() :: #{binary() => any()}.
-
-
-%% Example:
-%% database_input_definition() :: #{
-%%   <<"DatabaseTableName">> => string(),
-%%   <<"GlueConnectionName">> => string(),
-%%   <<"QueryString">> => string(),
-%%   <<"TempDirectory">> => s3_location()
-%% }
--type database_input_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-%% Example:
-%% delete_recipe_version_request() :: #{}
--type delete_recipe_version_request() :: #{}.
-
-
-%% Example:
-%% column_selector() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Regex">> => string()
-%% }
--type column_selector() :: #{binary() => any()}.
-
-
-%% Example:
-%% json_options() :: #{
-%%   <<"MultiLine">> => boolean()
-%% }
--type json_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_schedule_request() :: #{
-%%   <<"CronExpression">> := string(),
-%%   <<"JobNames">> => list(string())
-%% }
--type update_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_job_request() :: #{}
--type delete_job_request() :: #{}.
-
-
-%% Example:
-%% recipe_version_error_detail() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"RecipeVersion">> => string()
-%% }
--type recipe_version_error_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% column_statistics_configuration() :: #{
-%%   <<"Selectors">> => list(column_selector()),
-%%   <<"Statistics">> => statistics_configuration()
-%% }
--type column_statistics_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ruleset_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_ruleset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recipe_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Steps">> => list(recipe_step())
-%% }
--type update_recipe_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_dataset_response() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"Format">> => list(any()),
-%%   <<"FormatOptions">> => format_options(),
-%%   <<"Input">> => input(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PathOptions">> => path_options(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"Source">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type describe_dataset_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
@@ -1190,62 +761,92 @@
 
 
 %% Example:
-%% create_dataset_request() :: #{
-%%   <<"Format">> => list(any()),
-%%   <<"FormatOptions">> => format_options(),
-%%   <<"Input">> := input(),
-%%   <<"Name">> := string(),
-%%   <<"PathOptions">> => path_options(),
-%%   <<"Tags">> => map()
-%% }
--type create_dataset_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recipe_job_request() :: #{
+%% job_run() :: #{
+%%   <<"Attempt">> => integer(),
+%%   <<"CompletedOn">> => non_neg_integer(),
 %%   <<"DataCatalogOutputs">> => list(data_catalog_output()),
 %%   <<"DatabaseOutputs">> => list(database_output()),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"EncryptionMode">> => list(any()),
+%%   <<"DatasetName">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ExecutionTime">> => integer(),
+%%   <<"JobName">> => string(),
+%%   <<"JobSample">> => job_sample(),
+%%   <<"LogGroupName">> => string(),
 %%   <<"LogSubscription">> => list(any()),
-%%   <<"MaxCapacity">> => integer(),
-%%   <<"MaxRetries">> => integer(),
 %%   <<"Outputs">> => list(output()),
-%%   <<"RoleArn">> := string(),
-%%   <<"Timeout">> => integer()
+%%   <<"RecipeReference">> => recipe_reference(),
+%%   <<"RunId">> => string(),
+%%   <<"StartedBy">> => string(),
+%%   <<"StartedOn">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"ValidationConfigurations">> => list(validation_configuration())
 %% }
--type update_recipe_job_request() :: #{binary() => any()}.
+-type job_run() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_schedule_request() :: #{
-%%   <<"CronExpression">> := string(),
-%%   <<"JobNames">> => list(string()),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
+%% job_sample() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"Size">> => float()
 %% }
--type create_schedule_request() :: #{binary() => any()}.
+-type job_sample() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_project_request() :: #{
-%%   <<"DatasetName">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"RecipeName">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Sample">> => sample(),
-%%   <<"Tags">> => map()
+%% json_options() :: #{
+%%   <<"MultiLine">> => boolean()
 %% }
--type create_project_request() :: #{binary() => any()}.
+-type json_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% condition_expression() :: #{
-%%   <<"Condition">> => string(),
-%%   <<"TargetColumn">> => string(),
-%%   <<"Value">> => string()
+%% list_datasets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type condition_expression() :: #{binary() => any()}.
+-type list_datasets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_response() :: #{
+%%   <<"Datasets">> => list(dataset()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_datasets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_runs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_job_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_runs_response() :: #{
+%%   <<"JobRuns">> => list(job_run()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_job_runs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"DatasetName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProjectName">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_response() :: #{
+%%   <<"Jobs">> => list(job()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1257,23 +858,62 @@
 
 
 %% Example:
-%% threshold() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Unit">> => list(any()),
-%%   <<"Value">> => float()
+%% list_projects_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Projects">> => list(project())
 %% }
--type threshold() :: #{binary() => any()}.
+-type list_projects_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_schedule_response() :: #{
-%%   <<"Name">> => string()
+%% list_recipe_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NextToken">> => string()
 %% }
--type create_schedule_response() :: #{binary() => any()}.
+-type list_recipe_versions_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_schedule_request() :: #{}
--type delete_schedule_request() :: #{}.
+%% list_recipe_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Recipes">> => list(recipe())
+%% }
+-type list_recipe_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recipes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RecipeVersion">> => string()
+%% }
+-type list_recipes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recipes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Recipes">> => list(recipe())
+%% }
+-type list_recipes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rulesets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TargetArn">> => string()
+%% }
+-type list_rulesets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rulesets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Rulesets">> => list(ruleset_item())
+%% }
+-type list_rulesets_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1286,89 +926,230 @@
 
 
 %% Example:
-%% excel_options() :: #{
-%%   <<"HeaderRow">> => boolean(),
-%%   <<"SheetIndexes">> => list(integer()),
-%%   <<"SheetNames">> => list(string())
+%% list_schedules_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Schedules">> => list(schedule())
 %% }
--type excel_options() :: #{binary() => any()}.
+-type list_schedules_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
-%% allowed_statistics() :: #{
-%%   <<"Statistics">> => list(string())
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
 %% }
--type allowed_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% describe_dataset_request() :: #{}
--type describe_dataset_request() :: #{}.
-
-%% Example:
-%% delete_dataset_request() :: #{}
--type delete_dataset_request() :: #{}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_datasets_response() :: #{
-%%   <<"Datasets">> => list(dataset()),
-%%   <<"NextToken">> => string()
+%% metadata() :: #{
+%%   <<"SourceArn">> => string()
 %% }
--type list_datasets_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_project_request() :: #{}
--type delete_project_request() :: #{}.
+-type metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_profile_job_response() :: #{
+%% output() :: #{
+%%   <<"CompressionFormat">> => list(any()),
+%%   <<"Format">> => list(any()),
+%%   <<"FormatOptions">> => output_format_options(),
+%%   <<"Location">> => s3_location(),
+%%   <<"MaxOutputFiles">> => integer(),
+%%   <<"Overwrite">> => boolean(),
+%%   <<"PartitionColumns">> => list(string())
+%% }
+-type output() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_format_options() :: #{
+%%   <<"Csv">> => csv_output_options()
+%% }
+-type output_format_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% path_options() :: #{
+%%   <<"FilesLimit">> => files_limit(),
+%%   <<"LastModifiedDateCondition">> => filter_expression(),
+%%   <<"Parameters">> => map()
+%% }
+-type path_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_configuration() :: #{
+%%   <<"ColumnStatisticsConfigurations">> => list(column_statistics_configuration()),
+%%   <<"DatasetStatisticsConfiguration">> => statistics_configuration(),
+%%   <<"EntityDetectorConfiguration">> => entity_detector_configuration(),
+%%   <<"ProfileColumns">> => list(column_selector())
+%% }
+-type profile_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% project() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"DatasetName">> => string(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OpenDate">> => non_neg_integer(),
+%%   <<"OpenedBy">> => string(),
+%%   <<"RecipeName">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Sample">> => sample(),
+%%   <<"Tags">> => map()
+%% }
+-type project() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_recipe_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type publish_recipe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_recipe_response() :: #{
 %%   <<"Name">> => string()
 %% }
--type update_profile_job_response() :: #{binary() => any()}.
+-type publish_recipe_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_job_response() :: #{
-%%   <<"Name">> => string()
+%% recipe() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ProjectName">> => string(),
+%%   <<"PublishedBy">> => string(),
+%%   <<"PublishedDate">> => non_neg_integer(),
+%%   <<"RecipeVersion">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Steps">> => list(recipe_step()),
+%%   <<"Tags">> => map()
 %% }
--type delete_job_response() :: #{binary() => any()}.
+-type recipe() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_recipe_version_response() :: #{
+%% recipe_action() :: #{
+%%   <<"Operation">> => string(),
+%%   <<"Parameters">> => map()
+%% }
+-type recipe_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% recipe_reference() :: #{
 %%   <<"Name">> => string(),
 %%   <<"RecipeVersion">> => string()
 %% }
--type delete_recipe_version_response() :: #{binary() => any()}.
+-type recipe_reference() :: #{binary() => any()}.
 
 
 %% Example:
-%% statistic_override() :: #{
-%%   <<"Parameters">> => map(),
-%%   <<"Statistic">> => string()
+%% recipe_step() :: #{
+%%   <<"Action">> => recipe_action(),
+%%   <<"ConditionExpressions">> => list(condition_expression())
 %% }
--type statistic_override() :: #{binary() => any()}.
+-type recipe_step() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_profile_job_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_profile_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_schedule_request() :: #{}
--type describe_schedule_request() :: #{}.
-
-
-%% Example:
-%% list_recipes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%% recipe_version_error_detail() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
 %%   <<"RecipeVersion">> => string()
 %% }
--type list_recipes_request() :: #{binary() => any()}.
+-type recipe_version_error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule() :: #{
+%%   <<"CheckExpression">> => string(),
+%%   <<"ColumnSelectors">> => list(column_selector()),
+%%   <<"Disabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"SubstitutionMap">> => map(),
+%%   <<"Threshold">> => threshold()
+%% }
+-type rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% ruleset_item() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"RuleCount">> => integer(),
+%%   <<"Tags">> => map(),
+%%   <<"TargetArn">> => string()
+%% }
+-type ruleset_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"BucketOwner">> => string(),
+%%   <<"Key">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_table_output_options() :: #{
+%%   <<"Location">> => s3_location()
+%% }
+-type s3_table_output_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% sample() :: #{
+%%   <<"Size">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type sample() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CronExpression">> => string(),
+%%   <<"JobNames">> => list(string()),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type schedule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1392,20 +1173,182 @@
 
 
 %% Example:
-%% output() :: #{
-%%   <<"CompressionFormat">> => list(any()),
-%%   <<"Format">> => list(any()),
-%%   <<"FormatOptions">> => output_format_options(),
-%%   <<"Location">> => s3_location(),
-%%   <<"MaxOutputFiles">> => integer(),
-%%   <<"Overwrite">> => boolean(),
-%%   <<"PartitionColumns">> => list(string())
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type output() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_ruleset_request() :: #{}
--type delete_ruleset_request() :: #{}.
+%% start_job_run_request() :: #{}
+-type start_job_run_request() :: #{}.
+
+
+%% Example:
+%% start_job_run_response() :: #{
+%%   <<"RunId">> => string()
+%% }
+-type start_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_project_session_request() :: #{
+%%   <<"AssumeControl">> => boolean()
+%% }
+-type start_project_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_project_session_response() :: #{
+%%   <<"ClientSessionId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type start_project_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% statistic_override() :: #{
+%%   <<"Parameters">> => map(),
+%%   <<"Statistic">> => string()
+%% }
+-type statistic_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% statistics_configuration() :: #{
+%%   <<"IncludedStatistics">> => list(string()),
+%%   <<"Overrides">> => list(statistic_override())
+%% }
+-type statistics_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% stop_job_run_request() :: #{}
+-type stop_job_run_request() :: #{}.
+
+
+%% Example:
+%% stop_job_run_response() :: #{
+%%   <<"RunId">> => string()
+%% }
+-type stop_job_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% threshold() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Unit">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type threshold() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_dataset_request() :: #{
+%%   <<"Format">> => list(any()),
+%%   <<"FormatOptions">> => format_options(),
+%%   <<"Input">> := input(),
+%%   <<"PathOptions">> => path_options()
+%% }
+-type update_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_dataset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_profile_job_request() :: #{
+%%   <<"Configuration">> => profile_configuration(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionMode">> => list(any()),
+%%   <<"JobSample">> => job_sample(),
+%%   <<"LogSubscription">> => list(any()),
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MaxRetries">> => integer(),
+%%   <<"OutputLocation">> := s3_location(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Timeout">> => integer(),
+%%   <<"ValidationConfigurations">> => list(validation_configuration())
+%% }
+-type update_profile_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_profile_job_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_profile_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_project_request() :: #{
+%%   <<"RoleArn">> := string(),
+%%   <<"Sample">> => sample()
+%% }
+-type update_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_project_response() :: #{
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type update_project_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recipe_job_request() :: #{
+%%   <<"DataCatalogOutputs">> => list(data_catalog_output()),
+%%   <<"DatabaseOutputs">> => list(database_output()),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionMode">> => list(any()),
+%%   <<"LogSubscription">> => list(any()),
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MaxRetries">> => integer(),
+%%   <<"Outputs">> => list(output()),
+%%   <<"RoleArn">> := string(),
+%%   <<"Timeout">> => integer()
+%% }
+-type update_recipe_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recipe_job_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_recipe_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recipe_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Steps">> => list(recipe_step())
+%% }
+-type update_recipe_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1414,6 +1357,63 @@
 %% }
 -type update_recipe_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_ruleset_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Rules">> := list(rule())
+%% }
+-type update_ruleset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ruleset_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_ruleset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_schedule_request() :: #{
+%%   <<"CronExpression">> := string(),
+%%   <<"JobNames">> => list(string())
+%% }
+-type update_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_schedule_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type update_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_configuration() :: #{
+%%   <<"RulesetArn">> => string(),
+%%   <<"ValidationMode">> => list(any())
+%% }
+-type validation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_frame() :: #{
+%%   <<"Analytics">> => list(any()),
+%%   <<"ColumnRange">> => integer(),
+%%   <<"HiddenColumns">> => list(string()),
+%%   <<"RowRange">> => integer(),
+%%   <<"StartColumnIndex">> => integer(),
+%%   <<"StartRowIndex">> => integer()
+%% }
+-type view_frame() :: #{binary() => any()}.
+
 -type batch_delete_recipe_version_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
@@ -1421,21 +1421,21 @@
 
 -type create_dataset_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_profile_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_project_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_recipe_errors() ::
@@ -1445,10 +1445,10 @@
 
 -type create_recipe_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_ruleset_errors() ::
     validation_exception() | 
@@ -1545,8 +1545,8 @@
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type publish_recipe_errors() ::
     validation_exception() | 
@@ -1576,23 +1576,23 @@
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_dataset_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_profile_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_project_errors() ::
     validation_exception() | 
@@ -1604,8 +1604,8 @@
 
 -type update_recipe_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type update_ruleset_errors() ::
     validation_exception() | 

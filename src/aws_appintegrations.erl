@@ -92,194 +92,10 @@
 
 
 %% Example:
-%% external_url_config() :: #{
-%%   <<"AccessUrl">> => string(),
-%%   <<"ApprovedOrigins">> => list(string())
-%% }
--type external_url_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_integration_association_summary() :: #{
-%%   <<"ClientId">> => string(),
-%%   <<"DataIntegrationArn">> => string(),
-%%   <<"DataIntegrationAssociationArn">> => string(),
-%%   <<"DestinationURI">> => string(),
-%%   <<"ExecutionConfiguration">> => execution_configuration(),
-%%   <<"LastExecutionStatus">> => last_execution_status()
-%% }
--type data_integration_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_integration_response() :: #{}
--type update_data_integration_response() :: #{}.
-
-
-%% Example:
-%% iframe_config() :: #{
-%%   <<"Allow">> => list(string()),
-%%   <<"Sandbox">> => list(string())
-%% }
--type iframe_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% unsupported_operation_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type unsupported_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_integration_request() :: #{}
--type get_event_integration_request() :: #{}.
-
-
-%% Example:
-%% last_execution_status() :: #{
-%%   <<"ExecutionStatus">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type last_execution_status() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_data_integration_associations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_integration_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_integration_associations_response() :: #{
-%%   <<"DataIntegrationAssociations">> => list(data_integration_association_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_integration_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_integrations_response() :: #{
-%%   <<"DataIntegrations">> => list(data_integration_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_data_integrations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_event_integration_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EventBridgeBus">> => string(),
-%%   <<"EventFilter">> => event_filter(),
-%%   <<"EventIntegrationArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_event_integration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_integration_request() :: #{}
--type get_data_integration_request() :: #{}.
-
-
-%% Example:
-%% application_source_config() :: #{
-%%   <<"ExternalUrlConfig">> => external_url_config()
-%% }
--type application_source_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_integration_association_response() :: #{}
--type update_data_integration_association_response() :: #{}.
-
-
-%% Example:
-%% create_data_integration_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"FileConfiguration">> => file_configuration(),
-%%   <<"KmsKey">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"ObjectConfiguration">> => map(),
-%%   <<"ScheduleConfig">> => schedule_configuration(),
-%%   <<"SourceURI">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_data_integration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_handling() :: #{
-%%   <<"Scope">> => list(any())
-%% }
--type contact_handling() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_integration_associations_response() :: #{
-%%   <<"EventIntegrationAssociations">> => list(event_integration_association()),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_integration_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_integration_associations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_integration_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_integration_association_request() :: #{
-%%   <<"ClientAssociationMetadata">> => map(),
-%%   <<"ClientId">> => string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"DestinationURI">> => string(),
-%%   <<"ExecutionConfiguration">> => execution_configuration(),
-%%   <<"ObjectConfiguration">> => map()
-%% }
--type create_data_integration_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_integration_response() :: #{
-%%   <<"EventIntegrationArn">> => string()
-%% }
--type create_event_integration_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -292,38 +108,38 @@
 
 
 %% Example:
-%% list_application_associations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% application_config() :: #{
+%%   <<"ContactHandling">> => contact_handling()
 %% }
--type list_application_associations_request() :: #{binary() => any()}.
+-type application_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_data_integrations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% application_source_config() :: #{
+%%   <<"ExternalUrlConfig">> => external_url_config()
 %% }
--type list_data_integrations_request() :: #{binary() => any()}.
+-type application_source_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_event_integration_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EventBridgeBus">> := string(),
-%%   <<"EventFilter">> := event_filter(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
+%% application_summary() :: #{
+%%   <<"ApplicationType">> => list(any()),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"IsService">> => boolean(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Namespace">> => string()
 %% }
--type create_event_integration_request() :: #{binary() => any()}.
+-type application_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% contact_handling() :: #{
+%%   <<"Scope">> => list(any())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type contact_handling() :: #{binary() => any()}.
 
 
 %% Example:
@@ -347,8 +163,52 @@
 
 
 %% Example:
-%% get_data_integration_response() :: #{
+%% create_application_response() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_integration_association_request() :: #{
+%%   <<"ClientAssociationMetadata">> => map(),
+%%   <<"ClientId">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DestinationURI">> => string(),
+%%   <<"ExecutionConfiguration">> => execution_configuration(),
+%%   <<"ObjectConfiguration">> => map()
+%% }
+-type create_data_integration_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_integration_association_response() :: #{
+%%   <<"DataIntegrationArn">> => string(),
+%%   <<"DataIntegrationAssociationId">> => string()
+%% }
+-type create_data_integration_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_integration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FileConfiguration">> => file_configuration(),
+%%   <<"KmsKey">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"ObjectConfiguration">> => map(),
+%%   <<"ScheduleConfig">> => schedule_configuration(),
+%%   <<"SourceURI">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_data_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_integration_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"FileConfiguration">> => file_configuration(),
 %%   <<"Id">> => string(),
@@ -359,22 +219,109 @@
 %%   <<"SourceURI">> => string(),
 %%   <<"Tags">> => map()
 %% }
--type get_data_integration_response() :: #{binary() => any()}.
+-type create_data_integration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_quota_exceeded_exception() :: #{
+%% create_event_integration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EventBridgeBus">> := string(),
+%%   <<"EventFilter">> := event_filter(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_integration_response() :: #{
+%%   <<"EventIntegrationArn">> => string()
+%% }
+-type create_event_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_association_summary() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"DataIntegrationArn">> => string(),
+%%   <<"DataIntegrationAssociationArn">> => string(),
+%%   <<"DestinationURI">> => string(),
+%%   <<"ExecutionConfiguration">> => execution_configuration(),
+%%   <<"LastExecutionStatus">> => last_execution_status()
+%% }
+-type data_integration_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_integration_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SourceURI">> => string()
+%% }
+-type data_integration_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
+%% Example:
+%% delete_application_response() :: #{}
+-type delete_application_response() :: #{}.
+
+%% Example:
+%% delete_data_integration_request() :: #{}
+-type delete_data_integration_request() :: #{}.
+
+%% Example:
+%% delete_data_integration_response() :: #{}
+-type delete_data_integration_response() :: #{}.
+
+%% Example:
+%% delete_event_integration_request() :: #{}
+-type delete_event_integration_request() :: #{}.
+
+%% Example:
+%% delete_event_integration_response() :: #{}
+-type delete_event_integration_response() :: #{}.
+
+
+%% Example:
+%% duplicate_resource_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type resource_quota_exceeded_exception() :: #{binary() => any()}.
+-type duplicate_resource_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_application_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
+%% event_filter() :: #{
+%%   <<"Source">> => string()
 %% }
--type create_application_response() :: #{binary() => any()}.
+-type event_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_integration() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventBridgeBus">> => string(),
+%%   <<"EventFilter">> => event_filter(),
+%%   <<"EventIntegrationArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type event_integration() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_integration_association() :: #{
+%%   <<"ClientAssociationMetadata">> => map(),
+%%   <<"ClientId">> => string(),
+%%   <<"EventBridgeRuleName">> => string(),
+%%   <<"EventIntegrationAssociationArn">> => string(),
+%%   <<"EventIntegrationAssociationId">> => string(),
+%%   <<"EventIntegrationName">> => string()
+%% }
+-type event_integration_association() :: #{binary() => any()}.
 
 
 %% Example:
@@ -387,67 +334,23 @@
 
 
 %% Example:
-%% event_filter() :: #{
-%%   <<"Source">> => string()
+%% external_url_config() :: #{
+%%   <<"AccessUrl">> => string(),
+%%   <<"ApprovedOrigins">> => list(string())
 %% }
--type event_filter() :: #{binary() => any()}.
-
-%% Example:
-%% update_event_integration_response() :: #{}
--type update_event_integration_response() :: #{}.
+-type external_url_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_event_integration_request() :: #{
-%%   <<"Description">> => string()
+%% file_configuration() :: #{
+%%   <<"Filters">> => map(),
+%%   <<"Folders">> => list(string())
 %% }
--type update_event_integration_request() :: #{binary() => any()}.
+-type file_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% delete_application_response() :: #{}
--type delete_application_response() :: #{}.
-
-
-%% Example:
-%% create_data_integration_association_response() :: #{
-%%   <<"DataIntegrationArn">> => string(),
-%%   <<"DataIntegrationAssociationId">> => string()
-%% }
--type create_data_integration_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_integration_response() :: #{}
--type delete_event_integration_response() :: #{}.
-
-
-%% Example:
-%% update_application_request() :: #{
-%%   <<"ApplicationConfig">> => application_config(),
-%%   <<"ApplicationSourceConfig">> => application_source_config(),
-%%   <<"ApplicationType">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"IframeConfig">> => iframe_config(),
-%%   <<"InitializationTimeout">> => integer(),
-%%   <<"IsService">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"Permissions">> => list(string()),
-%%   <<"Publications">> => list(publication()),
-%%   <<"Subscriptions">> => list(subscription())
-%% }
--type update_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_response() :: #{}
--type update_application_response() :: #{}.
-
-
-%% Example:
-%% publication() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Event">> => string(),
-%%   <<"Schema">> => string()
-%% }
--type publication() :: #{binary() => any()}.
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
 
 
 %% Example:
@@ -472,6 +375,88 @@
 %% }
 -type get_application_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_data_integration_request() :: #{}
+-type get_data_integration_request() :: #{}.
+
+
+%% Example:
+%% get_data_integration_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FileConfiguration">> => file_configuration(),
+%%   <<"Id">> => string(),
+%%   <<"KmsKey">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ObjectConfiguration">> => map(),
+%%   <<"ScheduleConfiguration">> => schedule_configuration(),
+%%   <<"SourceURI">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_data_integration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_integration_request() :: #{}
+-type get_event_integration_request() :: #{}.
+
+
+%% Example:
+%% get_event_integration_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventBridgeBus">> => string(),
+%%   <<"EventFilter">> => event_filter(),
+%%   <<"EventIntegrationArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_event_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% iframe_config() :: #{
+%%   <<"Allow">> => list(string()),
+%%   <<"Sandbox">> => list(string())
+%% }
+-type iframe_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_service_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% last_execution_status() :: #{
+%%   <<"ExecutionStatus">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type last_execution_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_application_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_application_associations_response() :: #{
+%%   <<"ApplicationAssociations">> => list(application_association_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_associations_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_applications_request() :: #{
@@ -483,50 +468,75 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
+%% list_applications_response() :: #{
+%%   <<"Applications">> => list(application_summary()),
+%%   <<"NextToken">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type list_applications_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_data_integration_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"FileConfiguration">> => file_configuration(),
-%%   <<"Id">> => string(),
-%%   <<"KmsKey">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ObjectConfiguration">> => map(),
-%%   <<"ScheduleConfiguration">> => schedule_configuration(),
-%%   <<"SourceURI">> => string(),
-%%   <<"Tags">> => map()
+%% list_data_integration_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type create_data_integration_response() :: #{binary() => any()}.
+-type list_data_integration_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_data_integration_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
+%% list_data_integration_associations_response() :: #{
+%%   <<"DataIntegrationAssociations">> => list(data_integration_association_summary()),
+%%   <<"NextToken">> => string()
 %% }
--type update_data_integration_request() :: #{binary() => any()}.
+-type list_data_integration_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_service_error() :: #{
-%%   <<"Message">> => string()
+%% list_data_integrations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type internal_service_error() :: #{binary() => any()}.
+-type list_data_integrations_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_data_integration_request() :: #{}
--type delete_data_integration_request() :: #{}.
+%% list_data_integrations_response() :: #{
+%%   <<"DataIntegrations">> => list(data_integration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_integrations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_integration_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_integration_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_integration_associations_response() :: #{
+%%   <<"EventIntegrationAssociations">> => list(event_integration_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_integration_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_integrations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_integrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_integrations_response() :: #{
+%%   <<"EventIntegrations">> => list(event_integration()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_integrations_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
@@ -534,10 +544,41 @@
 
 
 %% Example:
-%% update_data_integration_association_request() :: #{
-%%   <<"ExecutionConfiguration">> := execution_configuration()
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
 %% }
--type update_data_integration_association_request() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% on_demand_configuration() :: #{
+%%   <<"EndTime">> => string(),
+%%   <<"StartTime">> => string()
+%% }
+-type on_demand_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% publication() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Event">> => string(),
+%%   <<"Schema">> => string()
+%% }
+-type publication() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -550,304 +591,263 @@
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_integration_request() :: #{}
--type delete_event_integration_request() :: #{}.
-
-
-%% Example:
 %% subscription() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Event">> => string()
 %% }
 -type subscription() :: #{binary() => any()}.
 
-%% Example:
-%% delete_data_integration_response() :: #{}
--type delete_data_integration_response() :: #{}.
-
 
 %% Example:
-%% application_summary() :: #{
-%%   <<"ApplicationType">> => list(any()),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"IsService">> => boolean(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Namespace">> => string()
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type application_summary() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
-%% list_application_associations_response() :: #{
-%%   <<"ApplicationAssociations">> => list(application_association_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_response() :: #{
-%%   <<"Applications">> => list(application_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_integrations_response() :: #{
-%%   <<"EventIntegrations">> => list(event_integration()),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_integrations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_integrations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_integrations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_config() :: #{
-%%   <<"ContactHandling">> => contact_handling()
-%% }
--type application_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% file_configuration() :: #{
-%%   <<"Filters">> => map(),
-%%   <<"Folders">> => list(string())
-%% }
--type file_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_integration_association() :: #{
-%%   <<"ClientAssociationMetadata">> => map(),
-%%   <<"ClientId">> => string(),
-%%   <<"EventBridgeRuleName">> => string(),
-%%   <<"EventIntegrationAssociationArn">> => string(),
-%%   <<"EventIntegrationAssociationId">> => string(),
-%%   <<"EventIntegrationName">> => string()
-%% }
--type event_integration_association() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_request() :: #{}
--type get_application_request() :: #{}.
-
-
-%% Example:
-%% duplicate_resource_exception() :: #{
+%% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type duplicate_resource_exception() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% event_integration() :: #{
+%% unsupported_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"ApplicationConfig">> => application_config(),
+%%   <<"ApplicationSourceConfig">> => application_source_config(),
+%%   <<"ApplicationType">> => list(any()),
 %%   <<"Description">> => string(),
-%%   <<"EventBridgeBus">> => string(),
-%%   <<"EventFilter">> => event_filter(),
-%%   <<"EventIntegrationArn">> => string(),
+%%   <<"IframeConfig">> => iframe_config(),
+%%   <<"InitializationTimeout">> => integer(),
+%%   <<"IsService">> => boolean(),
 %%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
+%%   <<"Permissions">> => list(string()),
+%%   <<"Publications">> => list(publication()),
+%%   <<"Subscriptions">> => list(subscription())
 %% }
--type event_integration() :: #{binary() => any()}.
+-type update_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_response() :: #{}
+-type update_application_response() :: #{}.
 
 
 %% Example:
-%% data_integration_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SourceURI">> => string()
+%% update_data_integration_association_request() :: #{
+%%   <<"ExecutionConfiguration">> := execution_configuration()
 %% }
--type data_integration_summary() :: #{binary() => any()}.
+-type update_data_integration_association_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_application_request() :: #{}
--type delete_application_request() :: #{}.
+%% update_data_integration_association_response() :: #{}
+-type update_data_integration_association_response() :: #{}.
 
 
 %% Example:
-%% on_demand_configuration() :: #{
-%%   <<"EndTime">> => string(),
-%%   <<"StartTime">> => string()
+%% update_data_integration_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
 %% }
--type on_demand_configuration() :: #{binary() => any()}.
+-type update_data_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_integration_response() :: #{}
+-type update_data_integration_response() :: #{}.
+
+
+%% Example:
+%% update_event_integration_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type update_event_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_event_integration_response() :: #{}
+-type update_event_integration_response() :: #{}.
 
 -type create_application_errors() ::
-    duplicate_resource_exception() | 
+    unsupported_operation_exception() | 
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
     resource_quota_exceeded_exception() | 
     invalid_request_exception() | 
-    unsupported_operation_exception().
+    internal_service_error() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type create_data_integration_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
     resource_quota_exceeded_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_service_error() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type create_data_integration_association_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
     resource_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type create_event_integration_errors() ::
-    duplicate_resource_exception() | 
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
     resource_quota_exceeded_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_service_error() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type delete_application_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type delete_data_integration_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type delete_event_integration_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type get_application_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type get_data_integration_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type get_event_integration_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type list_application_associations_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type list_applications_errors() ::
     throttling_exception() | 
+    invalid_request_exception() | 
     internal_service_error() | 
-    access_denied_exception() | 
-    invalid_request_exception().
+    access_denied_exception().
 
 -type list_data_integration_associations_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type list_data_integrations_errors() ::
     throttling_exception() | 
+    invalid_request_exception() | 
     internal_service_error() | 
-    access_denied_exception() | 
-    invalid_request_exception().
+    access_denied_exception().
 
 -type list_event_integration_associations_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type list_event_integrations_errors() ::
     throttling_exception() | 
+    invalid_request_exception() | 
     internal_service_error() | 
-    access_denied_exception() | 
-    invalid_request_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type tag_resource_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type untag_resource_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type update_application_errors() ::
+    unsupported_operation_exception() | 
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unsupported_operation_exception().
+    invalid_request_exception() | 
+    internal_service_error() | 
+    access_denied_exception().
 
 -type update_data_integration_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type update_data_integration_association_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type update_event_integration_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -82,45 +82,6 @@
 
 
 %% Example:
-%% update_public_dns_namespace_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type update_public_dns_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% dns_properties() :: #{
-%%   <<"HostedZoneId">> => string(),
-%%   <<"SOA">> => s_o_a()
-%% }
--type dns_properties() :: #{binary() => any()}.
-
-%% Example:
-%% operation() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"OwnerAccount">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Targets">> => map(),
-%%   <<"Type">> => list(any()),
-%%   <<"UpdateDate">> => non_neg_integer()
-%% }
--type operation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_namespace_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type delete_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% private_dns_properties_mutable() :: #{
-%%   <<"SOA">> => s_o_a()
-%% }
--type private_dns_properties_mutable() :: #{binary() => any()}.
-
-%% Example:
 %% create_http_namespace_request() :: #{
 %%   <<"CreatorRequestId">> => string(),
 %%   <<"Description">> => string(),
@@ -130,41 +91,63 @@
 -type create_http_namespace_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_private_dns_namespace_response() :: #{
+%% create_http_namespace_response() :: #{
 %%   <<"OperationId">> => string()
 %% }
--type update_private_dns_namespace_response() :: #{binary() => any()}.
+-type create_http_namespace_response() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
+%% create_private_dns_namespace_request() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Properties">> => private_dns_namespace_properties(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Vpc">> := string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type create_private_dns_namespace_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_http_namespace_response() :: #{
+%% create_private_dns_namespace_response() :: #{
 %%   <<"OperationId">> => string()
 %% }
--type update_http_namespace_response() :: #{binary() => any()}.
+-type create_private_dns_namespace_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_service_attributes_response() :: #{
-%%   <<"ServiceAttributes">> => service_attributes()
+%% create_public_dns_namespace_request() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Properties">> => public_dns_namespace_properties(),
+%%   <<"Tags">> => list(tag())
 %% }
--type get_service_attributes_response() :: #{binary() => any()}.
+-type create_public_dns_namespace_request() :: #{binary() => any()}.
 
 %% Example:
-%% private_dns_namespace_properties() :: #{
-%%   <<"DnsProperties">> => private_dns_properties_mutable()
+%% create_public_dns_namespace_response() :: #{
+%%   <<"OperationId">> => string()
 %% }
--type private_dns_namespace_properties() :: #{binary() => any()}.
+-type create_public_dns_namespace_response() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_input() :: #{
-%%   <<"Message">> => string()
+%% create_service_request() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DnsConfig">> => dns_config(),
+%%   <<"HealthCheckConfig">> => health_check_config(),
+%%   <<"HealthCheckCustomConfig">> => health_check_custom_config(),
+%%   <<"Name">> := string(),
+%%   <<"NamespaceId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => list(any())
 %% }
--type invalid_input() :: #{binary() => any()}.
+-type create_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_response() :: #{
+%%   <<"Service">> => service()
+%% }
+-type create_service_response() :: #{binary() => any()}.
 
 %% Example:
 %% custom_health_not_found() :: #{
@@ -173,18 +156,215 @@
 -type custom_health_not_found() :: #{binary() => any()}.
 
 %% Example:
+%% delete_namespace_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type delete_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_namespace_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type delete_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_attributes_request() :: #{
+%%   <<"Attributes">> := list(string()),
+%%   <<"ServiceId">> := string()
+%% }
+-type delete_service_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_attributes_response() :: #{
+
+%% }
+-type delete_service_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type delete_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_response() :: #{
+
+%% }
+-type delete_service_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_instance_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"ServiceId">> := string()
+%% }
+-type deregister_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_instance_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type deregister_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% discover_instances_request() :: #{
+%%   <<"HealthStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NamespaceName">> := string(),
+%%   <<"OptionalParameters">> => map(),
+%%   <<"OwnerAccount">> => string(),
+%%   <<"QueryParameters">> => map(),
+%%   <<"ServiceName">> := string()
+%% }
+-type discover_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% discover_instances_response() :: #{
+%%   <<"Instances">> => list(http_instance_summary()),
+%%   <<"InstancesRevision">> => float()
+%% }
+-type discover_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% discover_instances_revision_request() :: #{
+%%   <<"NamespaceName">> := string(),
+%%   <<"OwnerAccount">> => string(),
+%%   <<"ServiceName">> := string()
+%% }
+-type discover_instances_revision_request() :: #{binary() => any()}.
+
+%% Example:
+%% discover_instances_revision_response() :: #{
+%%   <<"InstancesRevision">> => float()
+%% }
+-type discover_instances_revision_response() :: #{binary() => any()}.
+
+%% Example:
+%% dns_config() :: #{
+%%   <<"DnsRecords">> => list(dns_record()),
+%%   <<"NamespaceId">> => string(),
+%%   <<"RoutingPolicy">> => list(any())
+%% }
+-type dns_config() :: #{binary() => any()}.
+
+%% Example:
+%% dns_config_change() :: #{
+%%   <<"DnsRecords">> => list(dns_record())
+%% }
+-type dns_config_change() :: #{binary() => any()}.
+
+%% Example:
+%% dns_properties() :: #{
+%%   <<"HostedZoneId">> => string(),
+%%   <<"SOA">> => s_o_a()
+%% }
+-type dns_properties() :: #{binary() => any()}.
+
+%% Example:
+%% dns_record() :: #{
+%%   <<"TTL">> => float(),
+%%   <<"Type">> => list(any())
+%% }
+-type dns_record() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_request() :: #{
+%%   <<"DuplicateOperationId">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type duplicate_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"ServiceId">> := string()
+%% }
+-type get_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instance_response() :: #{
+%%   <<"Instance">> => instance(),
+%%   <<"ResourceOwner">> => string()
+%% }
+-type get_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_instances_health_status_request() :: #{
+%%   <<"Instances">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceId">> := string()
+%% }
+-type get_instances_health_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_instances_health_status_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => map()
+%% }
+-type get_instances_health_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_namespace_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type get_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_namespace_response() :: #{
+%%   <<"Namespace">> => namespace()
+%% }
+-type get_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_operation_request() :: #{
+%%   <<"OperationId">> := string(),
+%%   <<"OwnerAccount">> => string()
+%% }
+-type get_operation_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_operation_response() :: #{
+%%   <<"Operation">> => operation()
+%% }
+-type get_operation_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_attributes_request() :: #{
+%%   <<"ServiceId">> := string()
+%% }
+-type get_service_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_attributes_response() :: #{
+%%   <<"ServiceAttributes">> => service_attributes()
+%% }
+-type get_service_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type get_service_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_service_response() :: #{
 %%   <<"Service">> => service()
 %% }
 -type get_service_response() :: #{binary() => any()}.
 
 %% Example:
-%% service_change() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DnsConfig">> => dns_config_change(),
-%%   <<"HealthCheckConfig">> => health_check_config()
+%% health_check_config() :: #{
+%%   <<"FailureThreshold">> => integer(),
+%%   <<"ResourcePath">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type service_change() :: #{binary() => any()}.
+-type health_check_config() :: #{binary() => any()}.
+
+%% Example:
+%% health_check_custom_config() :: #{
+%%   <<"FailureThreshold">> => integer()
+%% }
+-type health_check_custom_config() :: #{binary() => any()}.
 
 %% Example:
 %% http_instance_summary() :: #{
@@ -197,10 +377,61 @@
 -type http_instance_summary() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% http_namespace_change() :: #{
+%%   <<"Description">> => string()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
+-type http_namespace_change() :: #{binary() => any()}.
+
+%% Example:
+%% http_properties() :: #{
+%%   <<"HttpName">> => string()
+%% }
+-type http_properties() :: #{binary() => any()}.
+
+%% Example:
+%% instance() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"CreatedByAccount">> => string(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type instance() :: #{binary() => any()}.
+
+%% Example:
+%% instance_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type instance_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% instance_summary() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"CreatedByAccount">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type instance_summary() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_instances_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceId">> := string()
+%% }
+-type list_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instances_response() :: #{
+%%   <<"Instances">> => list(instance_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceOwner">> => string()
+%% }
+-type list_instances_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_namespaces_request() :: #{
@@ -211,10 +442,97 @@
 -type list_namespaces_request() :: #{binary() => any()}.
 
 %% Example:
-%% private_dns_properties_mutable_change() :: #{
-%%   <<"SOA">> => s_o_a_change()
+%% list_namespaces_response() :: #{
+%%   <<"Namespaces">> => list(namespace_summary()),
+%%   <<"NextToken">> => string()
 %% }
--type private_dns_properties_mutable_change() :: #{binary() => any()}.
+-type list_namespaces_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_operations_request() :: #{
+%%   <<"Filters">> => list(operation_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_operations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_operations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Operations">> => list(operation_summary())
+%% }
+-type list_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_request() :: #{
+%%   <<"Filters">> => list(service_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_services_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_services_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Services">> => list(service_summary())
+%% }
+-type list_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% namespace() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Properties">> => namespace_properties(),
+%%   <<"ResourceOwner">> => string(),
+%%   <<"ServiceCount">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type namespace() :: #{binary() => any()}.
+
+%% Example:
+%% namespace_already_exists() :: #{
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"NamespaceId">> => string()
+%% }
+-type namespace_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% namespace_filter() :: #{
+%%   <<"Condition">> => list(any()),
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type namespace_filter() :: #{binary() => any()}.
+
+%% Example:
+%% namespace_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type namespace_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% namespace_properties() :: #{
+%%   <<"DnsProperties">> => dns_properties(),
+%%   <<"HttpProperties">> => http_properties()
+%% }
+-type namespace_properties() :: #{binary() => any()}.
 
 %% Example:
 %% namespace_summary() :: #{
@@ -231,52 +549,89 @@
 -type namespace_summary() :: #{binary() => any()}.
 
 %% Example:
-%% update_instance_custom_health_status_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"ServiceId">> := string(),
-%%   <<"Status">> := list(any())
+%% operation() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"OwnerAccount">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Targets">> => map(),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdateDate">> => non_neg_integer()
 %% }
--type update_instance_custom_health_status_request() :: #{binary() => any()}.
+-type operation() :: #{binary() => any()}.
 
 %% Example:
-%% resource_in_use() :: #{
+%% operation_filter() :: #{
+%%   <<"Condition">> => list(any()),
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type operation_filter() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_found() :: #{
 %%   <<"Message">> => string()
 %% }
--type resource_in_use() :: #{binary() => any()}.
+-type operation_not_found() :: #{binary() => any()}.
 
 %% Example:
-%% get_instances_health_status_request() :: #{
-%%   <<"Instances">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceId">> := string()
+%% operation_summary() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type get_instances_health_status_request() :: #{binary() => any()}.
+-type operation_summary() :: #{binary() => any()}.
 
 %% Example:
-%% create_public_dns_namespace_response() :: #{
-%%   <<"OperationId">> => string()
+%% private_dns_namespace_change() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Properties">> => private_dns_namespace_properties_change()
 %% }
--type create_public_dns_namespace_response() :: #{binary() => any()}.
+-type private_dns_namespace_change() :: #{binary() => any()}.
 
 %% Example:
-%% get_operation_response() :: #{
-%%   <<"Operation">> => operation()
+%% private_dns_namespace_properties() :: #{
+%%   <<"DnsProperties">> => private_dns_properties_mutable()
 %% }
--type get_operation_response() :: #{binary() => any()}.
+-type private_dns_namespace_properties() :: #{binary() => any()}.
 
 %% Example:
-%% public_dns_properties_mutable_change() :: #{
+%% private_dns_namespace_properties_change() :: #{
+%%   <<"DnsProperties">> => private_dns_properties_mutable_change()
+%% }
+-type private_dns_namespace_properties_change() :: #{binary() => any()}.
+
+%% Example:
+%% private_dns_properties_mutable() :: #{
+%%   <<"SOA">> => s_o_a()
+%% }
+-type private_dns_properties_mutable() :: #{binary() => any()}.
+
+%% Example:
+%% private_dns_properties_mutable_change() :: #{
 %%   <<"SOA">> => s_o_a_change()
 %% }
--type public_dns_properties_mutable_change() :: #{binary() => any()}.
+-type private_dns_properties_mutable_change() :: #{binary() => any()}.
 
 %% Example:
-%% discover_instances_response() :: #{
-%%   <<"Instances">> => list(http_instance_summary()),
-%%   <<"InstancesRevision">> => float()
+%% public_dns_namespace_change() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Properties">> => public_dns_namespace_properties_change()
 %% }
--type discover_instances_response() :: #{binary() => any()}.
+-type public_dns_namespace_change() :: #{binary() => any()}.
+
+%% Example:
+%% public_dns_namespace_properties() :: #{
+%%   <<"DnsProperties">> => public_dns_properties_mutable()
+%% }
+-type public_dns_namespace_properties() :: #{binary() => any()}.
+
+%% Example:
+%% public_dns_namespace_properties_change() :: #{
+%%   <<"DnsProperties">> => public_dns_properties_mutable_change()
+%% }
+-type public_dns_namespace_properties_change() :: #{binary() => any()}.
 
 %% Example:
 %% public_dns_properties_mutable() :: #{
@@ -285,10 +640,61 @@
 -type public_dns_properties_mutable() :: #{binary() => any()}.
 
 %% Example:
-%% public_dns_namespace_properties() :: #{
-%%   <<"DnsProperties">> => public_dns_properties_mutable()
+%% public_dns_properties_mutable_change() :: #{
+%%   <<"SOA">> => s_o_a_change()
 %% }
--type public_dns_namespace_properties() :: #{binary() => any()}.
+-type public_dns_properties_mutable_change() :: #{binary() => any()}.
+
+%% Example:
+%% register_instance_request() :: #{
+%%   <<"Attributes">> := map(),
+%%   <<"CreatorRequestId">> => string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"ServiceId">> := string()
+%% }
+-type register_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_instance_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type register_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% request_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type request_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% resource_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s_o_a() :: #{
+%%   <<"TTL">> => float()
+%% }
+-type s_o_a() :: #{binary() => any()}.
+
+%% Example:
+%% s_o_a_change() :: #{
+%%   <<"TTL">> => float()
+%% }
+-type s_o_a_change() :: #{binary() => any()}.
 
 %% Example:
 %% service() :: #{
@@ -310,127 +716,35 @@
 -type service() :: #{binary() => any()}.
 
 %% Example:
-%% operation_summary() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type operation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% discover_instances_request() :: #{
-%%   <<"HealthStatus">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NamespaceName">> := string(),
-%%   <<"OptionalParameters">> => map(),
-%%   <<"OwnerAccount">> => string(),
-%%   <<"QueryParameters">> => map(),
-%%   <<"ServiceName">> := string()
-%% }
--type discover_instances_request() :: #{binary() => any()}.
-
-%% Example:
-%% private_dns_namespace_properties_change() :: #{
-%%   <<"DnsProperties">> => private_dns_properties_mutable_change()
-%% }
--type private_dns_namespace_properties_change() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_instance_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"ServiceId">> := string()
-%% }
--type deregister_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_private_dns_namespace_request() :: #{
+%% service_already_exists() :: #{
 %%   <<"CreatorRequestId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Properties">> => private_dns_namespace_properties(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Vpc">> := string()
+%%   <<"Message">> => string(),
+%%   <<"ServiceArn">> => string(),
+%%   <<"ServiceId">> => string()
 %% }
--type create_private_dns_namespace_request() :: #{binary() => any()}.
+-type service_already_exists() :: #{binary() => any()}.
 
 %% Example:
-%% get_service_request() :: #{
-%%   <<"Id">> := string()
+%% service_attributes() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"ResourceOwner">> => string(),
+%%   <<"ServiceArn">> => string()
 %% }
--type get_service_request() :: #{binary() => any()}.
+-type service_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% get_service_attributes_request() :: #{
-%%   <<"ServiceId">> := string()
-%% }
--type get_service_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_instance_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"ServiceId">> := string()
-%% }
--type get_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_services_request() :: #{
-%%   <<"Filters">> => list(service_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_services_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_namespace_response() :: #{
-%%   <<"Namespace">> => namespace()
-%% }
--type get_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% health_check_custom_config() :: #{
-%%   <<"FailureThreshold">> => integer()
-%% }
--type health_check_custom_config() :: #{binary() => any()}.
-
-%% Example:
-%% namespace_properties() :: #{
-%%   <<"DnsProperties">> => dns_properties(),
-%%   <<"HttpProperties">> => http_properties()
-%% }
--type namespace_properties() :: #{binary() => any()}.
-
-%% Example:
-%% list_operations_request() :: #{
-%%   <<"Filters">> => list(operation_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_operations_request() :: #{binary() => any()}.
-
-%% Example:
-%% public_dns_namespace_change() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Properties">> => public_dns_namespace_properties_change()
-%% }
--type public_dns_namespace_change() :: #{binary() => any()}.
-
-%% Example:
-%% s_o_a() :: #{
-%%   <<"TTL">> => float()
-%% }
--type s_o_a() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
+%% service_attributes_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type service_attributes_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_change() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DnsConfig">> => dns_config_change(),
+%%   <<"HealthCheckConfig">> => health_check_config()
+%% }
+-type service_change() :: #{binary() => any()}.
 
 %% Example:
 %% service_filter() :: #{
@@ -441,37 +755,10 @@
 -type service_filter() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% service_not_found() :: #{
+%%   <<"Message">> => string()
 %% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% create_private_dns_namespace_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type create_private_dns_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% discover_instances_revision_response() :: #{
-%%   <<"InstancesRevision">> => float()
-%% }
--type discover_instances_revision_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_services_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Services">> => list(service_summary())
-%% }
--type list_services_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_operation_request() :: #{
-%%   <<"OperationId">> := string(),
-%%   <<"OwnerAccount">> => string()
-%% }
--type get_operation_request() :: #{binary() => any()}.
+-type service_not_found() :: #{binary() => any()}.
 
 %% Example:
 %% service_summary() :: #{
@@ -491,87 +778,44 @@
 -type service_summary() :: #{binary() => any()}.
 
 %% Example:
-%% private_dns_namespace_change() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Properties">> => private_dns_namespace_properties_change()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type private_dns_namespace_change() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% s_o_a_change() :: #{
-%%   <<"TTL">> => float()
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type s_o_a_change() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_service_request() :: #{
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DnsConfig">> => dns_config(),
-%%   <<"HealthCheckConfig">> => health_check_config(),
-%%   <<"HealthCheckCustomConfig">> => health_check_custom_config(),
-%%   <<"Name">> := string(),
-%%   <<"NamespaceId">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> => list(any())
+%% tag_resource_response() :: #{
+
 %% }
--type create_service_request() :: #{binary() => any()}.
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_instance_response() :: #{
-%%   <<"Instance">> => instance(),
-%%   <<"ResourceOwner">> => string()
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
 %% }
--type get_instance_response() :: #{binary() => any()}.
+-type too_many_tags_exception() :: #{binary() => any()}.
 
 %% Example:
-%% register_instance_request() :: #{
-%%   <<"Attributes">> := map(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"ServiceId">> := string()
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type register_instance_request() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% duplicate_request() :: #{
-%%   <<"DuplicateOperationId">> => string(),
-%%   <<"Message">> => string()
-%% }
--type duplicate_request() :: #{binary() => any()}.
+%% untag_resource_response() :: #{
 
-%% Example:
-%% delete_service_attributes_request() :: #{
-%%   <<"Attributes">> := list(string()),
-%%   <<"ServiceId">> := string()
 %% }
--type delete_service_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% discover_instances_revision_request() :: #{
-%%   <<"NamespaceName">> := string(),
-%%   <<"OwnerAccount">> => string(),
-%%   <<"ServiceName">> := string()
-%% }
--type discover_instances_revision_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% operation_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type operation_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% service_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_not_found() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_http_namespace_request() :: #{
@@ -582,200 +826,18 @@
 -type update_http_namespace_request() :: #{binary() => any()}.
 
 %% Example:
-%% dns_config() :: #{
-%%   <<"DnsRecords">> => list(dns_record()),
-%%   <<"NamespaceId">> => string(),
-%%   <<"RoutingPolicy">> => list(any())
-%% }
--type dns_config() :: #{binary() => any()}.
-
-%% Example:
-%% http_namespace_change() :: #{
-%%   <<"Description">> => string()
-%% }
--type http_namespace_change() :: #{binary() => any()}.
-
-%% Example:
-%% register_instance_response() :: #{
+%% update_http_namespace_response() :: #{
 %%   <<"OperationId">> => string()
 %% }
--type register_instance_response() :: #{binary() => any()}.
+-type update_http_namespace_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_public_dns_namespace_request() :: #{
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Properties">> => public_dns_namespace_properties(),
-%%   <<"Tags">> => list(tag())
+%% update_instance_custom_health_status_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"ServiceId">> := string(),
+%%   <<"Status">> := list(any())
 %% }
--type create_public_dns_namespace_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_instances_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceId">> := string()
-%% }
--type list_instances_request() :: #{binary() => any()}.
-
-%% Example:
-%% namespace_filter() :: #{
-%%   <<"Condition">> => list(any()),
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type namespace_filter() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"Service">> := service_change()
-%% }
--type update_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_instances_response() :: #{
-%%   <<"Instances">> => list(instance_summary()),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceOwner">> => string()
-%% }
--type list_instances_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_attributes_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_attributes_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% namespace_already_exists() :: #{
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"NamespaceId">> => string()
-%% }
--type namespace_already_exists() :: #{binary() => any()}.
-
-%% Example:
-%% http_properties() :: #{
-%%   <<"HttpName">> => string()
-%% }
--type http_properties() :: #{binary() => any()}.
-
-%% Example:
-%% dns_record() :: #{
-%%   <<"TTL">> => float(),
-%%   <<"Type">> => list(any())
-%% }
--type dns_record() :: #{binary() => any()}.
-
-%% Example:
-%% list_operations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Operations">> => list(operation_summary())
-%% }
--type list_operations_response() :: #{binary() => any()}.
-
-%% Example:
-%% instance() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"CreatedByAccount">> => string(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"Id">> => string()
-%% }
--type instance() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_attributes_response() :: #{
-
-%% }
--type delete_service_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% request_limit_exceeded() :: #{
-%%   <<"Message">> => string()
-%% }
--type request_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% get_instances_health_status_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => map()
-%% }
--type get_instances_health_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_http_namespace_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type create_http_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_request() :: #{
-%%   <<"Id">> := string()
-%% }
--type delete_service_request() :: #{binary() => any()}.
-
-%% Example:
-%% health_check_config() :: #{
-%%   <<"FailureThreshold">> => integer(),
-%%   <<"ResourcePath">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type health_check_config() :: #{binary() => any()}.
-
-%% Example:
-%% service_attributes() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"ResourceOwner">> => string(),
-%%   <<"ServiceArn">> => string()
-%% }
--type service_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% instance_summary() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"CreatedByAccount">> => string(),
-%%   <<"Id">> => string()
-%% }
--type instance_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_namespaces_response() :: #{
-%%   <<"Namespaces">> => list(namespace_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_namespaces_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_namespace_request() :: #{
-%%   <<"Id">> := string()
-%% }
--type delete_namespace_request() :: #{binary() => any()}.
-
-%% Example:
-%% dns_config_change() :: #{
-%%   <<"DnsRecords">> => list(dns_record())
-%% }
--type dns_config_change() :: #{binary() => any()}.
-
-%% Example:
-%% namespace_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type namespace_not_found() :: #{binary() => any()}.
+-type update_instance_custom_health_status_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_private_dns_namespace_request() :: #{
@@ -786,84 +848,10 @@
 -type update_private_dns_namespace_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_service_attributes_response() :: #{
-
-%% }
--type update_service_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% instance_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type instance_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_response() :: #{
+%% update_private_dns_namespace_response() :: #{
 %%   <<"OperationId">> => string()
 %% }
--type update_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_response() :: #{
-
-%% }
--type delete_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_instance_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type deregister_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_service_response() :: #{
-%%   <<"Service">> => service()
-%% }
--type create_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_limit_exceeded() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% service_already_exists() :: #{
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"ServiceArn">> => string(),
-%%   <<"ServiceId">> => string()
-%% }
--type service_already_exists() :: #{binary() => any()}.
-
-%% Example:
-%% namespace() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"CreatorRequestId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Properties">> => namespace_properties(),
-%%   <<"ResourceOwner">> => string(),
-%%   <<"ServiceCount">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type namespace() :: #{binary() => any()}.
-
-%% Example:
-%% public_dns_namespace_properties_change() :: #{
-%%   <<"DnsProperties">> => public_dns_properties_mutable_change()
-%% }
--type public_dns_namespace_properties_change() :: #{binary() => any()}.
-
-%% Example:
-%% operation_filter() :: #{
-%%   <<"Condition">> => list(any()),
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type operation_filter() :: #{binary() => any()}.
+-type update_private_dns_namespace_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_public_dns_namespace_request() :: #{
@@ -874,11 +862,10 @@
 -type update_public_dns_namespace_request() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceName">> => string()
+%% update_public_dns_namespace_response() :: #{
+%%   <<"OperationId">> => string()
 %% }
--type too_many_tags_exception() :: #{binary() => any()}.
+-type update_public_dns_namespace_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_service_attributes_request() :: #{
@@ -888,31 +875,44 @@
 -type update_service_attributes_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_namespace_request() :: #{
-%%   <<"Id">> := string()
+%% update_service_attributes_response() :: #{
+
 %% }
--type get_namespace_request() :: #{binary() => any()}.
+-type update_service_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"Service">> := service_change()
+%% }
+-type update_service_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type update_service_response() :: #{binary() => any()}.
 
 -type create_http_namespace_errors() ::
     too_many_tags_exception() | 
     resource_limit_exceeded() | 
     namespace_already_exists() | 
-    duplicate_request() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type create_private_dns_namespace_errors() ::
     too_many_tags_exception() | 
     resource_limit_exceeded() | 
     namespace_already_exists() | 
-    duplicate_request() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type create_public_dns_namespace_errors() ::
     too_many_tags_exception() | 
     resource_limit_exceeded() | 
     namespace_already_exists() | 
-    duplicate_request() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type create_service_errors() ::
     too_many_tags_exception() | 
@@ -922,10 +922,10 @@
     invalid_input().
 
 -type delete_namespace_errors() ::
-    namespace_not_found() | 
-    duplicate_request() | 
     resource_in_use() | 
-    invalid_input().
+    namespace_not_found() | 
+    invalid_input() | 
+    duplicate_request().
 
 -type delete_service_errors() ::
     service_not_found() | 
@@ -937,33 +937,33 @@
     invalid_input().
 
 -type deregister_instance_errors() ::
-    instance_not_found() | 
     service_not_found() | 
-    duplicate_request() | 
     resource_in_use() | 
-    invalid_input().
+    invalid_input() | 
+    instance_not_found() | 
+    duplicate_request().
 
 -type discover_instances_errors() ::
-    namespace_not_found() | 
-    request_limit_exceeded() | 
     service_not_found() | 
+    request_limit_exceeded() | 
+    namespace_not_found() | 
     invalid_input().
 
 -type discover_instances_revision_errors() ::
-    namespace_not_found() | 
-    request_limit_exceeded() | 
     service_not_found() | 
+    request_limit_exceeded() | 
+    namespace_not_found() | 
     invalid_input().
 
 -type get_instance_errors() ::
-    instance_not_found() | 
     service_not_found() | 
-    invalid_input().
+    invalid_input() | 
+    instance_not_found().
 
 -type get_instances_health_status_errors() ::
-    instance_not_found() | 
     service_not_found() | 
-    invalid_input().
+    invalid_input() | 
+    instance_not_found().
 
 -type get_namespace_errors() ::
     namespace_not_found() | 
@@ -999,11 +999,11 @@
     invalid_input().
 
 -type register_instance_errors() ::
-    resource_limit_exceeded() | 
     service_not_found() | 
-    duplicate_request() | 
+    resource_limit_exceeded() | 
     resource_in_use() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
@@ -1015,37 +1015,37 @@
     invalid_input().
 
 -type update_http_namespace_errors() ::
-    namespace_not_found() | 
-    duplicate_request() | 
     resource_in_use() | 
-    invalid_input().
+    namespace_not_found() | 
+    invalid_input() | 
+    duplicate_request().
 
 -type update_instance_custom_health_status_errors() ::
-    instance_not_found() | 
     service_not_found() | 
-    custom_health_not_found() | 
-    invalid_input().
+    invalid_input() | 
+    instance_not_found() | 
+    custom_health_not_found().
 
 -type update_private_dns_namespace_errors() ::
-    namespace_not_found() | 
-    duplicate_request() | 
     resource_in_use() | 
-    invalid_input().
+    namespace_not_found() | 
+    invalid_input() | 
+    duplicate_request().
 
 -type update_public_dns_namespace_errors() ::
-    namespace_not_found() | 
-    duplicate_request() | 
     resource_in_use() | 
-    invalid_input().
+    namespace_not_found() | 
+    invalid_input() | 
+    duplicate_request().
 
 -type update_service_errors() ::
     service_not_found() | 
-    duplicate_request() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type update_service_attributes_errors() ::
-    service_attributes_limit_exceeded_exception() | 
     service_not_found() | 
+    service_attributes_limit_exceeded_exception() | 
     invalid_input().
 
 %%====================================================================

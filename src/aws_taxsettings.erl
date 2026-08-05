@@ -54,43 +54,60 @@
 
 
 %% Example:
-%% get_tax_registration_document_request() :: #{
-%%   <<"destinationS3Location">> => destination_s3_location(),
-%%   <<"taxDocumentMetadata">> := tax_document_metadata()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_tax_registration_document_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% south_korea_additional_info() :: #{
-%%   <<"businessRepresentativeName">> => string(),
-%%   <<"itemOfBusiness">> => string(),
-%%   <<"lineOfBusiness">> => string()
+%% account_details() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"accountMetaData">> => account_meta_data(),
+%%   <<"taxInheritanceDetails">> => tax_inheritance_details(),
+%%   <<"taxRegistration">> => tax_registration_with_jurisdiction()
 %% }
--type south_korea_additional_info() :: #{binary() => any()}.
+-type account_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% source_s3_location() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"key">> => string()
+%% account_meta_data() :: #{
+%%   <<"accountName">> => string(),
+%%   <<"address">> => address(),
+%%   <<"addressRoleMap">> => map(),
+%%   <<"addressType">> => list(any()),
+%%   <<"seller">> => string()
 %% }
--type source_s3_location() :: #{binary() => any()}.
+-type account_meta_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_delete_tax_registration_response() :: #{
-%%   <<"errors">> => list(batch_delete_tax_registration_error())
+%% additional_info_request() :: #{
+%%   <<"belgiumAdditionalInfo">> => belgium_additional_info(),
+%%   <<"canadaAdditionalInfo">> => canada_additional_info(),
+%%   <<"chileAdditionalInfo">> => chile_additional_info(),
+%%   <<"egyptAdditionalInfo">> => egypt_additional_info(),
+%%   <<"estoniaAdditionalInfo">> => estonia_additional_info(),
+%%   <<"franceAdditionalInfo">> => france_additional_info(),
+%%   <<"georgiaAdditionalInfo">> => georgia_additional_info(),
+%%   <<"greeceAdditionalInfo">> => greece_additional_info(),
+%%   <<"indonesiaAdditionalInfo">> => indonesia_additional_info(),
+%%   <<"israelAdditionalInfo">> => israel_additional_info(),
+%%   <<"italyAdditionalInfo">> => italy_additional_info(),
+%%   <<"kenyaAdditionalInfo">> => kenya_additional_info(),
+%%   <<"malaysiaAdditionalInfo">> => malaysia_additional_info(),
+%%   <<"philippinesAdditionalInfo">> => philippines_additional_info(),
+%%   <<"polandAdditionalInfo">> => poland_additional_info(),
+%%   <<"romaniaAdditionalInfo">> => romania_additional_info(),
+%%   <<"saudiArabiaAdditionalInfo">> => saudi_arabia_additional_info(),
+%%   <<"southKoreaAdditionalInfo">> => south_korea_additional_info(),
+%%   <<"spainAdditionalInfo">> => spain_additional_info(),
+%%   <<"turkeyAdditionalInfo">> => turkey_additional_info(),
+%%   <<"ukraineAdditionalInfo">> => ukraine_additional_info(),
+%%   <<"uzbekistanAdditionalInfo">> => uzbekistan_additional_info(),
+%%   <<"vietnamAdditionalInfo">> => vietnam_additional_info()
 %% }
--type batch_delete_tax_registration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tax_exemptions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_tax_exemptions_request() :: #{binary() => any()}.
+-type additional_info_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -125,6 +142,131 @@
 
 
 %% Example:
+%% address() :: #{
+%%   <<"addressLine1">> => string(),
+%%   <<"addressLine2">> => string(),
+%%   <<"addressLine3">> => string(),
+%%   <<"city">> => string(),
+%%   <<"countryCode">> => string(),
+%%   <<"districtOrCounty">> => string(),
+%%   <<"postalCode">> => string(),
+%%   <<"stateOrRegion">> => string()
+%% }
+-type address() :: #{binary() => any()}.
+
+
+%% Example:
+%% attachment_upload_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type attachment_upload_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% authority() :: #{
+%%   <<"country">> => string(),
+%%   <<"state">> => string()
+%% }
+-type authority() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_tax_registration_error() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type batch_delete_tax_registration_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_tax_registration_request() :: #{
+%%   <<"accountIds">> := list(string())
+%% }
+-type batch_delete_tax_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_tax_registration_response() :: #{
+%%   <<"errors">> => list(batch_delete_tax_registration_error())
+%% }
+-type batch_delete_tax_registration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_tax_exemptions_request() :: #{
+%%   <<"accountIds">> := list(string())
+%% }
+-type batch_get_tax_exemptions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_tax_exemptions_response() :: #{
+%%   <<"failedAccounts">> => list(string()),
+%%   <<"taxExemptionDetailsMap">> => map()
+%% }
+-type batch_get_tax_exemptions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_tax_registration_error() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type batch_put_tax_registration_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_tax_registration_request() :: #{
+%%   <<"accountIds">> := list(string()),
+%%   <<"taxRegistrationEntry">> := tax_registration_entry()
+%% }
+-type batch_put_tax_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_tax_registration_response() :: #{
+%%   <<"errors">> => list(batch_put_tax_registration_error()),
+%%   <<"status">> => list(any())
+%% }
+-type batch_put_tax_registration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% belgium_additional_info() :: #{
+%%   <<"isMercuriusBoxEnabled">> => [boolean()],
+%%   <<"peppolId">> => string()
+%% }
+-type belgium_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% brazil_additional_info() :: #{
+%%   <<"ccmCode">> => string(),
+%%   <<"legalNatureCode">> => string()
+%% }
+-type brazil_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% canada_additional_info() :: #{
+%%   <<"canadaQuebecSalesTaxNumber">> => string(),
+%%   <<"canadaRetailSalesTaxNumber">> => string(),
+%%   <<"isResellerAccount">> => [boolean()],
+%%   <<"provincialSalesTaxId">> => string()
+%% }
+-type canada_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_creation_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type case_creation_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% chile_additional_info() :: #{
 %%   <<"businessActivity">> => string(),
 %%   <<"documentType">> => list(any())
@@ -133,10 +275,169 @@
 
 
 %% Example:
-%% ukraine_additional_info() :: #{
-%%   <<"ukraineTrnType">> => list(any())
+%% conflict_exception() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"message">> => string()
 %% }
--type ukraine_additional_info() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_supplemental_tax_registration_request() :: #{
+%%   <<"authorityId">> := string()
+%% }
+-type delete_supplemental_tax_registration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_supplemental_tax_registration_response() :: #{}
+-type delete_supplemental_tax_registration_response() :: #{}.
+
+
+%% Example:
+%% delete_tax_registration_request() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type delete_tax_registration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tax_registration_response() :: #{}
+-type delete_tax_registration_response() :: #{}.
+
+
+%% Example:
+%% destination_s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type destination_s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% egypt_additional_info() :: #{
+%%   <<"uniqueIdentificationNumber">> => string(),
+%%   <<"uniqueIdentificationNumberExpirationDate">> => string()
+%% }
+-type egypt_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% estonia_additional_info() :: #{
+%%   <<"registryCommercialCode">> => string()
+%% }
+-type estonia_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% exemption_certificate() :: #{
+%%   <<"documentFile">> => binary(),
+%%   <<"documentName">> => string()
+%% }
+-type exemption_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% france_additional_info() :: #{
+%%   <<"sirenNumber">> => string()
+%% }
+-type france_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% georgia_additional_info() :: #{
+%%   <<"personType">> => list(any())
+%% }
+-type georgia_additional_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_tax_exemption_types_request() :: #{}
+-type get_tax_exemption_types_request() :: #{}.
+
+
+%% Example:
+%% get_tax_exemption_types_response() :: #{
+%%   <<"taxExemptionTypes">> => list(tax_exemption_type())
+%% }
+-type get_tax_exemption_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_tax_inheritance_request() :: #{}
+-type get_tax_inheritance_request() :: #{}.
+
+
+%% Example:
+%% get_tax_inheritance_response() :: #{
+%%   <<"heritageStatus">> => list(any())
+%% }
+-type get_tax_inheritance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_tax_registration_document_request() :: #{
+%%   <<"destinationS3Location">> => destination_s3_location(),
+%%   <<"taxDocumentMetadata">> := tax_document_metadata()
+%% }
+-type get_tax_registration_document_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_tax_registration_document_response() :: #{
+%%   <<"destinationFilePath">> => string(),
+%%   <<"presignedS3Url">> => string()
+%% }
+-type get_tax_registration_document_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_tax_registration_request() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type get_tax_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_tax_registration_response() :: #{
+%%   <<"taxRegistration">> => tax_registration()
+%% }
+-type get_tax_registration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% greece_additional_info() :: #{
+%%   <<"contractingAuthorityCode">> => string()
+%% }
+-type greece_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% india_additional_info() :: #{
+%%   <<"pan">> => string()
+%% }
+-type india_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% indonesia_additional_info() :: #{
+%%   <<"decisionNumber">> => string(),
+%%   <<"ppnExceptionDesignationCode">> => string(),
+%%   <<"taxRegistrationNumberType">> => list(any())
+%% }
+-type indonesia_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% israel_additional_info() :: #{
+%%   <<"customerType">> => list(any()),
+%%   <<"dealerType">> => list(any())
+%% }
+-type israel_additional_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -151,18 +452,225 @@
 
 
 %% Example:
-%% attachment_upload_exception() :: #{
-%%   <<"message">> => string()
+%% jurisdiction() :: #{
+%%   <<"countryCode">> => string(),
+%%   <<"stateOrRegion">> => string()
 %% }
--type attachment_upload_exception() :: #{binary() => any()}.
+-type jurisdiction() :: #{binary() => any()}.
 
 
 %% Example:
-%% tax_inheritance_details() :: #{
-%%   <<"inheritanceObtainedReason">> => string(),
-%%   <<"parentEntityId">> => string()
+%% kenya_additional_info() :: #{
+%%   <<"personType">> => list(any())
 %% }
--type tax_inheritance_details() :: #{binary() => any()}.
+-type kenya_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_supplemental_tax_registrations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_supplemental_tax_registrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_supplemental_tax_registrations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taxRegistrations">> => list(supplemental_tax_registration())
+%% }
+-type list_supplemental_tax_registrations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tax_exemptions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_tax_exemptions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tax_exemptions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"taxExemptionDetailsMap">> => map()
+%% }
+-type list_tax_exemptions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tax_registrations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_tax_registrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tax_registrations_response() :: #{
+%%   <<"accountDetails">> => list(account_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_tax_registrations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% malaysia_additional_info() :: #{
+%%   <<"businessRegistrationNumber">> => string(),
+%%   <<"serviceTaxCodes">> => list(list(any())()),
+%%   <<"taxInformationNumber">> => string()
+%% }
+-type malaysia_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% philippines_additional_info() :: #{
+%%   <<"isVatRegistered">> => [boolean()]
+%% }
+-type philippines_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% poland_additional_info() :: #{
+%%   <<"individualRegistrationNumber">> => string(),
+%%   <<"isGroupVatEnabled">> => [boolean()],
+%%   <<"taxRegistrationNumberType">> => list(any())
+%% }
+-type poland_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_supplemental_tax_registration_request() :: #{
+%%   <<"taxRegistrationEntry">> := supplemental_tax_registration_entry()
+%% }
+-type put_supplemental_tax_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_supplemental_tax_registration_response() :: #{
+%%   <<"authorityId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type put_supplemental_tax_registration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_tax_exemption_request() :: #{
+%%   <<"accountIds">> := list(string()),
+%%   <<"authority">> := authority(),
+%%   <<"exemptionCertificate">> := exemption_certificate(),
+%%   <<"exemptionType">> := string()
+%% }
+-type put_tax_exemption_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_tax_exemption_response() :: #{
+%%   <<"caseId">> => string()
+%% }
+-type put_tax_exemption_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_tax_inheritance_request() :: #{
+%%   <<"heritageStatus">> => list(any())
+%% }
+-type put_tax_inheritance_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_tax_inheritance_response() :: #{}
+-type put_tax_inheritance_response() :: #{}.
+
+
+%% Example:
+%% put_tax_registration_request() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"taxRegistrationEntry">> := tax_registration_entry()
+%% }
+-type put_tax_registration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_tax_registration_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type put_tax_registration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% romania_additional_info() :: #{
+%%   <<"taxRegistrationNumberType">> => list(any())
+%% }
+-type romania_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% saudi_arabia_additional_info() :: #{
+%%   <<"taxRegistrationNumberType">> => list(any())
+%% }
+-type saudi_arabia_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string()
+%% }
+-type source_s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% south_korea_additional_info() :: #{
+%%   <<"businessRepresentativeName">> => string(),
+%%   <<"itemOfBusiness">> => string(),
+%%   <<"lineOfBusiness">> => string()
+%% }
+-type south_korea_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% spain_additional_info() :: #{
+%%   <<"registrationType">> => list(any())
+%% }
+-type spain_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% supplemental_tax_registration() :: #{
+%%   <<"address">> => address(),
+%%   <<"authorityId">> => string(),
+%%   <<"legalName">> => string(),
+%%   <<"registrationId">> => string(),
+%%   <<"registrationType">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type supplemental_tax_registration() :: #{binary() => any()}.
+
+
+%% Example:
+%% supplemental_tax_registration_entry() :: #{
+%%   <<"address">> => address(),
+%%   <<"legalName">> => string(),
+%%   <<"registrationId">> => string(),
+%%   <<"registrationType">> => list(any())
+%% }
+-type supplemental_tax_registration_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% tax_document_metadata() :: #{
+%%   <<"taxDocumentAccessToken">> => string(),
+%%   <<"taxDocumentName">> => string()
+%% }
+-type tax_document_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -178,186 +686,13 @@
 
 
 %% Example:
-%% malaysia_additional_info() :: #{
-%%   <<"businessRegistrationNumber">> => string(),
-%%   <<"serviceTaxCodes">> => list(list(any())()),
-%%   <<"taxInformationNumber">> => string()
+%% tax_exemption_details() :: #{
+%%   <<"heritageObtainedDetails">> => [boolean()],
+%%   <<"heritageObtainedParentEntity">> => string(),
+%%   <<"heritageObtainedReason">> => string(),
+%%   <<"taxExemptions">> => list(tax_exemption())
 %% }
--type malaysia_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% kenya_additional_info() :: #{
-%%   <<"personType">> => list(any())
-%% }
--type kenya_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% greece_additional_info() :: #{
-%%   <<"contractingAuthorityCode">> => string()
-%% }
--type greece_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_tax_registration_response() :: #{
-%%   <<"taxRegistration">> => tax_registration()
-%% }
--type get_tax_registration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tax_registration_doc_file() :: #{
-%%   <<"fileContent">> => binary(),
-%%   <<"fileName">> => string()
-%% }
--type tax_registration_doc_file() :: #{binary() => any()}.
-
-
-%% Example:
-%% india_additional_info() :: #{
-%%   <<"pan">> => string()
-%% }
--type india_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% poland_additional_info() :: #{
-%%   <<"individualRegistrationNumber">> => string(),
-%%   <<"isGroupVatEnabled">> => [boolean()],
-%%   <<"taxRegistrationNumberType">> => list(any())
-%% }
--type poland_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% belgium_additional_info() :: #{
-%%   <<"isMercuriusBoxEnabled">> => [boolean()],
-%%   <<"peppolId">> => string()
-%% }
--type belgium_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_tax_exemptions_response() :: #{
-%%   <<"failedAccounts">> => list(string()),
-%%   <<"taxExemptionDetailsMap">> => map()
-%% }
--type batch_get_tax_exemptions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_supplemental_tax_registration_request() :: #{
-%%   <<"taxRegistrationEntry">> := supplemental_tax_registration_entry()
-%% }
--type put_supplemental_tax_registration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_tax_registration_request() :: #{
-%%   <<"accountIds">> := list(string()),
-%%   <<"taxRegistrationEntry">> := tax_registration_entry()
-%% }
--type batch_put_tax_registration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% egypt_additional_info() :: #{
-%%   <<"uniqueIdentificationNumber">> => string(),
-%%   <<"uniqueIdentificationNumberExpirationDate">> => string()
-%% }
--type egypt_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% case_creation_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type case_creation_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_supplemental_tax_registration_request() :: #{
-%%   <<"authorityId">> := string()
-%% }
--type delete_supplemental_tax_registration_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_tax_exemption_types_request() :: #{}
--type get_tax_exemption_types_request() :: #{}.
-
-
-%% Example:
-%% get_tax_registration_request() :: #{
-%%   <<"accountId">> => string()
-%% }
--type get_tax_registration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_tax_inheritance_response() :: #{
-%%   <<"heritageStatus">> => list(any())
-%% }
--type get_tax_inheritance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% romania_additional_info() :: #{
-%%   <<"taxRegistrationNumberType">> => list(any())
-%% }
--type romania_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% brazil_additional_info() :: #{
-%%   <<"ccmCode">> => string(),
-%%   <<"legalNatureCode">> => string()
-%% }
--type brazil_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% additional_info_request() :: #{
-%%   <<"belgiumAdditionalInfo">> => belgium_additional_info(),
-%%   <<"canadaAdditionalInfo">> => canada_additional_info(),
-%%   <<"chileAdditionalInfo">> => chile_additional_info(),
-%%   <<"egyptAdditionalInfo">> => egypt_additional_info(),
-%%   <<"estoniaAdditionalInfo">> => estonia_additional_info(),
-%%   <<"franceAdditionalInfo">> => france_additional_info(),
-%%   <<"georgiaAdditionalInfo">> => georgia_additional_info(),
-%%   <<"greeceAdditionalInfo">> => greece_additional_info(),
-%%   <<"indonesiaAdditionalInfo">> => indonesia_additional_info(),
-%%   <<"israelAdditionalInfo">> => israel_additional_info(),
-%%   <<"italyAdditionalInfo">> => italy_additional_info(),
-%%   <<"kenyaAdditionalInfo">> => kenya_additional_info(),
-%%   <<"malaysiaAdditionalInfo">> => malaysia_additional_info(),
-%%   <<"philippinesAdditionalInfo">> => philippines_additional_info(),
-%%   <<"polandAdditionalInfo">> => poland_additional_info(),
-%%   <<"romaniaAdditionalInfo">> => romania_additional_info(),
-%%   <<"saudiArabiaAdditionalInfo">> => saudi_arabia_additional_info(),
-%%   <<"southKoreaAdditionalInfo">> => south_korea_additional_info(),
-%%   <<"spainAdditionalInfo">> => spain_additional_info(),
-%%   <<"turkeyAdditionalInfo">> => turkey_additional_info(),
-%%   <<"ukraineAdditionalInfo">> => ukraine_additional_info(),
-%%   <<"uzbekistanAdditionalInfo">> => uzbekistan_additional_info(),
-%%   <<"vietnamAdditionalInfo">> => vietnam_additional_info()
-%% }
--type additional_info_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% supplemental_tax_registration_entry() :: #{
-%%   <<"address">> => address(),
-%%   <<"legalName">> => string(),
-%%   <<"registrationId">> => string(),
-%%   <<"registrationType">> => list(any())
-%% }
--type supplemental_tax_registration_entry() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tax_registration_response() :: #{}
--type delete_tax_registration_response() :: #{}.
+-type tax_exemption_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -370,228 +705,11 @@
 
 
 %% Example:
-%% indonesia_additional_info() :: #{
-%%   <<"decisionNumber">> => string(),
-%%   <<"ppnExceptionDesignationCode">> => string(),
-%%   <<"taxRegistrationNumberType">> => list(any())
+%% tax_inheritance_details() :: #{
+%%   <<"inheritanceObtainedReason">> => string(),
+%%   <<"parentEntityId">> => string()
 %% }
--type indonesia_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% authority() :: #{
-%%   <<"country">> => string(),
-%%   <<"state">> => string()
-%% }
--type authority() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_tax_exemption_types_response() :: #{
-%%   <<"taxExemptionTypes">> => list(tax_exemption_type())
-%% }
--type get_tax_exemption_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_tax_registration_response() :: #{
-%%   <<"errors">> => list(batch_put_tax_registration_error()),
-%%   <<"status">> => list(any())
-%% }
--type batch_put_tax_registration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tax_document_metadata() :: #{
-%%   <<"taxDocumentAccessToken">> => string(),
-%%   <<"taxDocumentName">> => string()
-%% }
--type tax_document_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% estonia_additional_info() :: #{
-%%   <<"registryCommercialCode">> => string()
-%% }
--type estonia_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tax_registrations_response() :: #{
-%%   <<"accountDetails">> => list(account_details()),
-%%   <<"nextToken">> => string()
-%% }
--type list_tax_registrations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tax_registrations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_tax_registrations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% spain_additional_info() :: #{
-%%   <<"registrationType">> => list(any())
-%% }
--type spain_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_supplemental_tax_registration_response() :: #{
-%%   <<"authorityId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type put_supplemental_tax_registration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% georgia_additional_info() :: #{
-%%   <<"personType">> => list(any())
-%% }
--type georgia_additional_info() :: #{binary() => any()}.
-
-%% Example:
-%% put_tax_inheritance_response() :: #{}
--type put_tax_inheritance_response() :: #{}.
-
-
-%% Example:
-%% france_additional_info() :: #{
-%%   <<"sirenNumber">> => string()
-%% }
--type france_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tax_exemptions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"taxExemptionDetailsMap">> => map()
-%% }
--type list_tax_exemptions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_details() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"accountMetaData">> => account_meta_data(),
-%%   <<"taxInheritanceDetails">> => tax_inheritance_details(),
-%%   <<"taxRegistration">> => tax_registration_with_jurisdiction()
-%% }
--type account_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_tax_exemption_response() :: #{
-%%   <<"caseId">> => string()
-%% }
--type put_tax_exemption_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tax_registration_document() :: #{
-%%   <<"file">> => tax_registration_doc_file(),
-%%   <<"s3Location">> => source_s3_location()
-%% }
--type tax_registration_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_s3_location() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"prefix">> => string()
-%% }
--type destination_s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_tax_registration_error() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type batch_delete_tax_registration_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% saudi_arabia_additional_info() :: #{
-%%   <<"taxRegistrationNumberType">> => list(any())
-%% }
--type saudi_arabia_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% canada_additional_info() :: #{
-%%   <<"canadaQuebecSalesTaxNumber">> => string(),
-%%   <<"canadaRetailSalesTaxNumber">> => string(),
-%%   <<"isResellerAccount">> => [boolean()],
-%%   <<"provincialSalesTaxId">> => string()
-%% }
--type canada_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% uzbekistan_additional_info() :: #{
-%%   <<"taxRegistrationNumberType">> => list(any()),
-%%   <<"vatRegistrationNumber">> => string()
-%% }
--type uzbekistan_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_tax_registration_request() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"taxRegistrationEntry">> := tax_registration_entry()
-%% }
--type put_tax_registration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% verification_details() :: #{
-%%   <<"dateOfBirth">> => string(),
-%%   <<"taxRegistrationDocuments">> => list(tax_registration_document())
-%% }
--type verification_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_tax_registration_request() :: #{
-%%   <<"accountId">> => string()
-%% }
--type delete_tax_registration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
+-type tax_inheritance_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -610,23 +728,19 @@
 
 
 %% Example:
-%% turkey_additional_info() :: #{
-%%   <<"industries">> => list(any()),
-%%   <<"kepEmailId">> => string(),
-%%   <<"secondaryTaxId">> => string(),
-%%   <<"taxOffice">> => string()
+%% tax_registration_doc_file() :: #{
+%%   <<"fileContent">> => binary(),
+%%   <<"fileName">> => string()
 %% }
--type turkey_additional_info() :: #{binary() => any()}.
+-type tax_registration_doc_file() :: #{binary() => any()}.
 
 
 %% Example:
-%% vietnam_additional_info() :: #{
-%%   <<"electronicTransactionCodeNumber">> => string(),
-%%   <<"enterpriseIdentificationNumber">> => string(),
-%%   <<"paymentVoucherNumber">> => string(),
-%%   <<"paymentVoucherNumberDate">> => string()
+%% tax_registration_document() :: #{
+%%   <<"file">> => tax_registration_doc_file(),
+%%   <<"s3Location">> => source_s3_location()
 %% }
--type vietnam_additional_info() :: #{binary() => any()}.
+-type tax_registration_document() :: #{binary() => any()}.
 
 
 %% Example:
@@ -644,38 +758,6 @@
 
 
 %% Example:
-%% philippines_additional_info() :: #{
-%%   <<"isVatRegistered">> => [boolean()]
-%% }
--type philippines_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_tax_exemption_request() :: #{
-%%   <<"accountIds">> := list(string()),
-%%   <<"authority">> := authority(),
-%%   <<"exemptionCertificate">> := exemption_certificate(),
-%%   <<"exemptionType">> := string()
-%% }
--type put_tax_exemption_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_supplemental_tax_registrations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_supplemental_tax_registrations_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% tax_registration_with_jurisdiction() :: #{
 %%   <<"additionalTaxInformation">> => additional_info_response(),
 %%   <<"certifiedEmailId">> => string(),
@@ -689,19 +771,30 @@
 %% }
 -type tax_registration_with_jurisdiction() :: #{binary() => any()}.
 
-%% Example:
-%% delete_supplemental_tax_registration_response() :: #{}
--type delete_supplemental_tax_registration_response() :: #{}.
-
 
 %% Example:
-%% tax_exemption_details() :: #{
-%%   <<"heritageObtainedDetails">> => [boolean()],
-%%   <<"heritageObtainedParentEntity">> => string(),
-%%   <<"heritageObtainedReason">> => string(),
-%%   <<"taxExemptions">> => list(tax_exemption())
+%% turkey_additional_info() :: #{
+%%   <<"industries">> => list(any()),
+%%   <<"kepEmailId">> => string(),
+%%   <<"secondaryTaxId">> => string(),
+%%   <<"taxOffice">> => string()
 %% }
--type tax_exemption_details() :: #{binary() => any()}.
+-type turkey_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% ukraine_additional_info() :: #{
+%%   <<"ukraineTrnType">> => list(any())
+%% }
+-type ukraine_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% uzbekistan_additional_info() :: #{
+%%   <<"taxRegistrationNumberType">> => list(any()),
+%%   <<"vatRegistrationNumber">> => string()
+%% }
+-type uzbekistan_additional_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -714,121 +807,28 @@
 
 
 %% Example:
-%% list_supplemental_tax_registrations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"taxRegistrations">> => list(supplemental_tax_registration())
+%% validation_exception_field() :: #{
+%%   <<"name">> => string()
 %% }
--type list_supplemental_tax_registrations_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_tax_inheritance_request() :: #{}
--type get_tax_inheritance_request() :: #{}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_put_tax_registration_error() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
+%% verification_details() :: #{
+%%   <<"dateOfBirth">> => string(),
+%%   <<"taxRegistrationDocuments">> => list(tax_registration_document())
 %% }
--type batch_put_tax_registration_error() :: #{binary() => any()}.
+-type verification_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_tax_inheritance_request() :: #{
-%%   <<"heritageStatus">> => list(any())
+%% vietnam_additional_info() :: #{
+%%   <<"electronicTransactionCodeNumber">> => string(),
+%%   <<"enterpriseIdentificationNumber">> => string(),
+%%   <<"paymentVoucherNumber">> => string(),
+%%   <<"paymentVoucherNumberDate">> => string()
 %% }
--type put_tax_inheritance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% exemption_certificate() :: #{
-%%   <<"documentFile">> => binary(),
-%%   <<"documentName">> => string()
-%% }
--type exemption_certificate() :: #{binary() => any()}.
-
-
-%% Example:
-%% address() :: #{
-%%   <<"addressLine1">> => string(),
-%%   <<"addressLine2">> => string(),
-%%   <<"addressLine3">> => string(),
-%%   <<"city">> => string(),
-%%   <<"countryCode">> => string(),
-%%   <<"districtOrCounty">> => string(),
-%%   <<"postalCode">> => string(),
-%%   <<"stateOrRegion">> => string()
-%% }
--type address() :: #{binary() => any()}.
-
-
-%% Example:
-%% israel_additional_info() :: #{
-%%   <<"customerType">> => list(any()),
-%%   <<"dealerType">> => list(any())
-%% }
--type israel_additional_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% supplemental_tax_registration() :: #{
-%%   <<"address">> => address(),
-%%   <<"authorityId">> => string(),
-%%   <<"legalName">> => string(),
-%%   <<"registrationId">> => string(),
-%%   <<"registrationType">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type supplemental_tax_registration() :: #{binary() => any()}.
-
-
-%% Example:
-%% jurisdiction() :: #{
-%%   <<"countryCode">> => string(),
-%%   <<"stateOrRegion">> => string()
-%% }
--type jurisdiction() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_tax_exemptions_request() :: #{
-%%   <<"accountIds">> := list(string())
-%% }
--type batch_get_tax_exemptions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_meta_data() :: #{
-%%   <<"accountName">> => string(),
-%%   <<"address">> => address(),
-%%   <<"addressRoleMap">> => map(),
-%%   <<"addressType">> => list(any()),
-%%   <<"seller">> => string()
-%% }
--type account_meta_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_tax_registration_request() :: #{
-%%   <<"accountIds">> := list(string())
-%% }
--type batch_delete_tax_registration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_tax_registration_response() :: #{
-%%   <<"status">> => list(any())
-%% }
--type put_tax_registration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_tax_registration_document_response() :: #{
-%%   <<"destinationFilePath">> => string(),
-%%   <<"presignedS3Url">> => string()
-%% }
--type get_tax_registration_document_response() :: #{binary() => any()}.
+-type vietnam_additional_info() :: #{binary() => any()}.
 
 -type batch_delete_tax_registration_errors() ::
     validation_exception() | 
@@ -837,8 +837,8 @@
 
 -type batch_get_tax_exemptions_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type batch_put_tax_registration_errors() ::
     validation_exception() | 
@@ -847,30 +847,30 @@
 
 -type delete_supplemental_tax_registration_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_tax_registration_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_tax_exemption_types_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_tax_inheritance_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_tax_registration_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_tax_registration_document_errors() ::
     validation_exception() | 
@@ -878,18 +878,18 @@
 
 -type list_supplemental_tax_registrations_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_tax_exemptions_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_tax_registrations_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type put_supplemental_tax_registration_errors() ::
     validation_exception() | 
@@ -898,16 +898,16 @@
 
 -type put_tax_exemption_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     case_creation_limit_exceeded_exception() | 
-    attachment_upload_exception().
+    attachment_upload_exception() | 
+    access_denied_exception().
 
 -type put_tax_inheritance_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type put_tax_registration_errors() ::

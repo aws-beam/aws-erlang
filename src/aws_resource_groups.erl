@@ -103,40 +103,26 @@
 
 
 %% Example:
-%% resource_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
+%% account_settings() :: #{
+%%   <<"GroupLifecycleEventsDesiredStatus">> => list(any()),
+%%   <<"GroupLifecycleEventsStatus">> => list(any()),
+%%   <<"GroupLifecycleEventsStatusMessage">> => string()
 %% }
--type resource_filter() :: #{binary() => any()}.
+-type account_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tag_sync_tasks_input() :: #{
-%%   <<"Filters">> => list(list_tag_sync_tasks_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_tag_sync_tasks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
+%% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type unauthorized_exception() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_tag_sync_task_output() :: #{
-%%   <<"GroupArn">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"ResourceQuery">> => resource_query(),
-%%   <<"RoleArn">> => string(),
-%%   <<"TagKey">> => string(),
-%%   <<"TagValue">> => string(),
-%%   <<"TaskArn">> => string()
+%% cancel_tag_sync_task_input() :: #{
+%%   <<"TaskArn">> := string()
 %% }
--type start_tag_sync_task_output() :: #{binary() => any()}.
+-type cancel_tag_sync_task_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -154,34 +140,37 @@
 
 
 %% Example:
-%% update_group_query_output() :: #{
-%%   <<"GroupQuery">> => group_query()
+%% create_group_output() :: #{
+%%   <<"Group">> => group(),
+%%   <<"GroupConfiguration">> => group_configuration(),
+%%   <<"ResourceQuery">> => resource_query(),
+%%   <<"Tags">> => map()
 %% }
--type update_group_query_output() :: #{binary() => any()}.
+-type create_group_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% cancel_tag_sync_task_input() :: #{
-%%   <<"TaskArn">> := string()
-%% }
--type cancel_tag_sync_task_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_grouping_statuses_output() :: #{
+%% delete_group_input() :: #{
 %%   <<"Group">> => string(),
-%%   <<"GroupingStatuses">> => list(grouping_statuses_item()),
-%%   <<"NextToken">> => string()
+%%   <<"GroupName">> => string()
 %% }
--type list_grouping_statuses_output() :: #{binary() => any()}.
+-type delete_group_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_group_resources_item() :: #{
-%%   <<"Identifier">> => resource_identifier(),
-%%   <<"Status">> => resource_status()
+%% delete_group_output() :: #{
+%%   <<"Group">> => group()
 %% }
--type list_group_resources_item() :: #{binary() => any()}.
+-type delete_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_resource() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type failed_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -192,35 +181,10 @@
 
 
 %% Example:
-%% tag_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Tags">> => map()
+%% get_account_settings_output() :: #{
+%%   <<"AccountSettings">> => account_settings()
 %% }
--type tag_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% method_not_allowed_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type method_not_allowed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_group_query_input() :: #{
-%%   <<"Group">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"ResourceQuery">> := resource_query()
-%% }
--type update_group_query_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tag_sync_tasks_filter() :: #{
-%%   <<"GroupArn">> => string(),
-%%   <<"GroupName">> => string()
-%% }
--type list_tag_sync_tasks_filter() :: #{binary() => any()}.
+-type get_account_settings_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -231,87 +195,25 @@
 
 
 %% Example:
-%% resource_status() :: #{
-%%   <<"Name">> => list(any())
+%% get_group_configuration_output() :: #{
+%%   <<"GroupConfiguration">> => group_configuration()
 %% }
--type resource_status() :: #{binary() => any()}.
+-type get_group_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_query() :: #{
-%%   <<"Query">> => string(),
-%%   <<"Type">> => list(any())
+%% get_group_input() :: #{
+%%   <<"Group">> => string(),
+%%   <<"GroupName">> => string()
 %% }
--type resource_query() :: #{binary() => any()}.
+-type get_group_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_tag_sync_task_input() :: #{
-%%   <<"Group">> := string(),
-%%   <<"ResourceQuery">> => resource_query(),
-%%   <<"RoleArn">> := string(),
-%%   <<"TagKey">> => string(),
-%%   <<"TagValue">> => string()
-%% }
--type start_tag_sync_task_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_identifier() :: #{
-%%   <<"Criticality">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"GroupArn">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"Owner">> => string()
-%% }
--type group_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_tags_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_tags_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_input() :: #{
-%%   <<"Keys">> := list(string())
-%% }
--type untag_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_group_output() :: #{
+%% get_group_output() :: #{
 %%   <<"Group">> => group()
 %% }
--type update_group_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_group_configuration_input() :: #{
-%%   <<"Configuration">> => list(group_configuration_item()),
-%%   <<"Group">> => string()
-%% }
--type put_group_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_groups_output() :: #{
-%%   <<"GroupIdentifiers">> => list(group_identifier()),
-%%   <<"Groups">> => list(group()),
-%%   <<"NextToken">> => string()
-%% }
--type list_groups_output() :: #{binary() => any()}.
+-type get_group_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -323,20 +225,6 @@
 
 
 %% Example:
-%% get_group_configuration_output() :: #{
-%%   <<"GroupConfiguration">> => group_configuration()
-%% }
--type get_group_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% pending_resource() :: #{
-%%   <<"ResourceArn">> => string()
-%% }
--type pending_resource() :: #{binary() => any()}.
-
-
-%% Example:
 %% get_group_query_output() :: #{
 %%   <<"GroupQuery">> => group_query()
 %% }
@@ -344,66 +232,10 @@
 
 
 %% Example:
-%% group_resources_output() :: #{
-%%   <<"Failed">> => list(failed_resource()),
-%%   <<"Pending">> => list(pending_resource()),
-%%   <<"Succeeded">> => list(string())
+%% get_tag_sync_task_input() :: #{
+%%   <<"TaskArn">> := string()
 %% }
--type group_resources_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_identifier() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_grouping_statuses_input() :: #{
-%%   <<"Filters">> => list(list_grouping_statuses_filter()),
-%%   <<"Group">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_grouping_statuses_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_configuration_parameter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type group_configuration_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_output() :: #{
-%%   <<"Group">> => group(),
-%%   <<"GroupConfiguration">> => group_configuration(),
-%%   <<"ResourceQuery">> => resource_query(),
-%%   <<"Tags">> => map()
-%% }
--type create_group_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% ungroup_resources_output() :: #{
-%%   <<"Failed">> => list(failed_resource()),
-%%   <<"Pending">> => list(pending_resource()),
-%%   <<"Succeeded">> => list(string())
-%% }
--type ungroup_resources_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_resources_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceQuery">> := resource_query()
-%% }
--type search_resources_input() :: #{binary() => any()}.
+-type get_tag_sync_task_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -421,12 +253,56 @@
 %% }
 -type get_tag_sync_task_output() :: #{binary() => any()}.
 
+%% Example:
+%% get_tags_input() :: #{}
+-type get_tags_input() :: #{}.
+
 
 %% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% get_tags_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Tags">> => map()
 %% }
--type not_found_exception() :: #{binary() => any()}.
+-type get_tags_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% group() :: #{
+%%   <<"ApplicationTag">> => map(),
+%%   <<"Criticality">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"GroupArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string()
+%% }
+-type group() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_configuration() :: #{
+%%   <<"Configuration">> => list(group_configuration_item()),
+%%   <<"FailureReason">> => string(),
+%%   <<"ProposedConfiguration">> => list(group_configuration_item()),
+%%   <<"Status">> => list(any())
+%% }
+-type group_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_configuration_item() :: #{
+%%   <<"Parameters">> => list(group_configuration_parameter()),
+%%   <<"Type">> => string()
+%% }
+-type group_configuration_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_configuration_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type group_configuration_parameter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -438,11 +314,239 @@
 
 
 %% Example:
+%% group_identifier() :: #{
+%%   <<"Criticality">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"Owner">> => string()
+%% }
+-type group_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_query() :: #{
+%%   <<"GroupName">> => string(),
+%%   <<"ResourceQuery">> => resource_query()
+%% }
+-type group_query() :: #{binary() => any()}.
+
+
+%% Example:
 %% group_resources_input() :: #{
 %%   <<"Group">> := string(),
 %%   <<"ResourceArns">> := list(string())
 %% }
 -type group_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_resources_output() :: #{
+%%   <<"Failed">> => list(failed_resource()),
+%%   <<"Pending">> => list(pending_resource()),
+%%   <<"Succeeded">> => list(string())
+%% }
+-type group_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% grouping_statuses_item() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type grouping_statuses_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_resources_input() :: #{
+%%   <<"Filters">> => list(resource_filter()),
+%%   <<"Group">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_group_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_resources_item() :: #{
+%%   <<"Identifier">> => resource_identifier(),
+%%   <<"Status">> => resource_status()
+%% }
+-type list_group_resources_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_resources_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QueryErrors">> => list(query_error()),
+%%   <<"ResourceIdentifiers">> => list(resource_identifier()),
+%%   <<"Resources">> => list(list_group_resources_item())
+%% }
+-type list_group_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_grouping_statuses_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type list_grouping_statuses_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_grouping_statuses_input() :: #{
+%%   <<"Filters">> => list(list_grouping_statuses_filter()),
+%%   <<"Group">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_grouping_statuses_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_grouping_statuses_output() :: #{
+%%   <<"Group">> => string(),
+%%   <<"GroupingStatuses">> => list(grouping_statuses_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_grouping_statuses_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_input() :: #{
+%%   <<"Filters">> => list(group_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_output() :: #{
+%%   <<"GroupIdentifiers">> => list(group_identifier()),
+%%   <<"Groups">> => list(group()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tag_sync_tasks_filter() :: #{
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type list_tag_sync_tasks_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tag_sync_tasks_input() :: #{
+%%   <<"Filters">> => list(list_tag_sync_tasks_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_tag_sync_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tag_sync_tasks_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TagSyncTasks">> => list(tag_sync_task_item())
+%% }
+-type list_tag_sync_tasks_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% method_not_allowed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type method_not_allowed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% pending_resource() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type pending_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_group_configuration_input() :: #{
+%%   <<"Configuration">> => list(group_configuration_item()),
+%%   <<"Group">> => string()
+%% }
+-type put_group_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_group_configuration_output() :: #{}
+-type put_group_configuration_output() :: #{}.
+
+
+%% Example:
+%% query_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type query_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type resource_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_identifier() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_query() :: #{
+%%   <<"Query">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type resource_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_status() :: #{
+%%   <<"Name">> => list(any())
+%% }
+-type resource_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_resources_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceQuery">> := resource_query()
+%% }
+-type search_resources_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -455,13 +559,42 @@
 
 
 %% Example:
-%% list_group_resources_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"QueryErrors">> => list(query_error()),
-%%   <<"ResourceIdentifiers">> => list(resource_identifier()),
-%%   <<"Resources">> => list(list_group_resources_item())
+%% start_tag_sync_task_input() :: #{
+%%   <<"Group">> := string(),
+%%   <<"ResourceQuery">> => resource_query(),
+%%   <<"RoleArn">> := string(),
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string()
 %% }
--type list_group_resources_output() :: #{binary() => any()}.
+-type start_tag_sync_task_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_tag_sync_task_output() :: #{
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"ResourceQuery">> => resource_query(),
+%%   <<"RoleArn">> => string(),
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string(),
+%%   <<"TaskArn">> => string()
+%% }
+-type start_tag_sync_task_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_input() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type tag_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -481,19 +614,49 @@
 
 
 %% Example:
-%% delete_group_input() :: #{
-%%   <<"Group">> => string(),
-%%   <<"GroupName">> => string()
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type delete_group_input() :: #{binary() => any()}.
+-type too_many_requests_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% group_query() :: #{
-%%   <<"GroupName">> => string(),
-%%   <<"ResourceQuery">> => resource_query()
+%% unauthorized_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type group_query() :: #{binary() => any()}.
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ungroup_resources_input() :: #{
+%%   <<"Group">> := string(),
+%%   <<"ResourceArns">> := list(string())
+%% }
+-type ungroup_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% ungroup_resources_output() :: #{
+%%   <<"Failed">> => list(failed_resource()),
+%%   <<"Pending">> => list(pending_resource()),
+%%   <<"Succeeded">> => list(string())
+%% }
+-type ungroup_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_input() :: #{
+%%   <<"Keys">> := list(string())
+%% }
+-type untag_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Keys">> => list(string())
+%% }
+-type untag_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -504,52 +667,10 @@
 
 
 %% Example:
-%% get_group_output() :: #{
-%%   <<"Group">> => group()
-%% }
--type get_group_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% update_account_settings_output() :: #{
 %%   <<"AccountSettings">> => account_settings()
 %% }
 -type update_account_settings_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_group_input() :: #{
-%%   <<"Group">> => string(),
-%%   <<"GroupName">> => string()
-%% }
--type get_group_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_group_resources_input() :: #{
-%%   <<"Filters">> => list(resource_filter()),
-%%   <<"Group">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_group_resources_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_settings() :: #{
-%%   <<"GroupLifecycleEventsDesiredStatus">> => list(any()),
-%%   <<"GroupLifecycleEventsStatus">> => list(any()),
-%%   <<"GroupLifecycleEventsStatusMessage">> => string()
-%% }
--type account_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_tag_sync_task_input() :: #{
-%%   <<"TaskArn">> := string()
-%% }
--type get_tag_sync_task_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -565,329 +686,208 @@
 
 
 %% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_tags_input() :: #{}
--type get_tags_input() :: #{}.
-
-
-%% Example:
-%% grouping_statuses_item() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type grouping_statuses_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% group() :: #{
-%%   <<"ApplicationTag">> => map(),
-%%   <<"Criticality">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"GroupArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string()
-%% }
--type group() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_account_settings_output() :: #{
-%%   <<"AccountSettings">> => account_settings()
-%% }
--type get_account_settings_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% ungroup_resources_input() :: #{
-%%   <<"Group">> := string(),
-%%   <<"ResourceArns">> := list(string())
-%% }
--type ungroup_resources_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_groups_input() :: #{
-%%   <<"Filters">> => list(group_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_groups_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_grouping_statuses_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type list_grouping_statuses_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Keys">> => list(string())
-%% }
--type untag_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% failed_resource() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type failed_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_group_output() :: #{
+%% update_group_output() :: #{
 %%   <<"Group">> => group()
 %% }
--type delete_group_output() :: #{binary() => any()}.
+-type update_group_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% group_configuration() :: #{
-%%   <<"Configuration">> => list(group_configuration_item()),
-%%   <<"FailureReason">> => string(),
-%%   <<"ProposedConfiguration">> => list(group_configuration_item()),
-%%   <<"Status">> => list(any())
+%% update_group_query_input() :: #{
+%%   <<"Group">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"ResourceQuery">> := resource_query()
 %% }
--type group_configuration() :: #{binary() => any()}.
+-type update_group_query_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% query_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"Message">> => string()
+%% update_group_query_output() :: #{
+%%   <<"GroupQuery">> => group_query()
 %% }
--type query_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tag_sync_tasks_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TagSyncTasks">> => list(tag_sync_task_item())
-%% }
--type list_tag_sync_tasks_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_group_configuration_output() :: #{}
--type put_group_configuration_output() :: #{}.
-
-
-%% Example:
-%% group_configuration_item() :: #{
-%%   <<"Parameters">> => list(group_configuration_parameter()),
-%%   <<"Type">> => string()
-%% }
--type group_configuration_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_input() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_input() :: #{binary() => any()}.
+-type update_group_query_output() :: #{binary() => any()}.
 
 -type cancel_tag_sync_task_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type create_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_account_settings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_group_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_group_query_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_tag_sync_task_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type get_tags_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type group_resources_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_group_resources_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_grouping_statuses_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_groups_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_tag_sync_tasks_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type put_group_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type search_resources_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type start_tag_sync_task_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type tag_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type ungroup_resources_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type untag_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_account_settings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_group_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_group_query_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

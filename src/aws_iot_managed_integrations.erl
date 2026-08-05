@@ -221,12 +221,57 @@
 
 
 %% Example:
-%% managed_thing_association() :: #{
-%%   <<"AccountAssociationId">> => string(),
-%%   <<"ManagedThingAssociationStatus">> => list(any()),
-%%   <<"ManagedThingId">> => string()
+%% abort_config_criteria() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"FailureType">> => list(any()),
+%%   <<"MinNumberOfExecutedThings">> => integer(),
+%%   <<"ThresholdPercentage">> => float()
 %% }
--type managed_thing_association() :: #{binary() => any()}.
+-type abort_config_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_association_item() :: #{
+%%   <<"AccountAssociationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"AssociationState">> => list(any()),
+%%   <<"ConnectorDestinationId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type account_association_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_config() :: #{
+%%   <<"GeneralAuthorization">> => list(auth_material()),
+%%   <<"oAuth">> => o_auth_config()
+%% }
+-type auth_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_config_update() :: #{
+%%   <<"GeneralAuthorizationUpdate">> => general_authorization_update(),
+%%   <<"oAuthUpdate">> => o_auth_update()
+%% }
+-type auth_config_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_material() :: #{
+%%   <<"AuthMaterialName">> => string(),
+%%   <<"SecretsManager">> => secrets_manager()
+%% }
+-type auth_material() :: #{binary() => any()}.
 
 
 %% Example:
@@ -240,175 +285,160 @@
 
 
 %% Example:
-%% list_destinations_response() :: #{
-%%   <<"DestinationList">> => list(destination_summary()),
-%%   <<"NextToken">> => string()
+%% capability_report() :: #{
+%%   <<"endpoints">> => list(capability_report_endpoint()),
+%%   <<"nodeId">> => string(),
+%%   <<"version">> => string()
 %% }
--type list_destinations_response() :: #{binary() => any()}.
+-type capability_report() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_default_encryption_configuration_response() :: #{
-%%   <<"configurationStatus">> => configuration_status(),
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsKeyArn">> => string()
+%% capability_report_capability() :: #{
+%%   <<"actions">> => list(string()),
+%%   <<"events">> => list(string()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"properties">> => list(string()),
+%%   <<"version">> => string()
 %% }
--type put_default_encryption_configuration_response() :: #{binary() => any()}.
+-type capability_report_capability() :: #{binary() => any()}.
 
 
 %% Example:
-%% matter_cluster() :: #{
-%%   <<"attributes">> => any(),
-%%   <<"commands">> => map(),
-%%   <<"events">> => map(),
+%% capability_report_endpoint() :: #{
+%%   <<"capabilities">> => list(capability_report_capability()),
+%%   <<"deviceTypes">> => list(string()),
 %%   <<"id">> => string()
 %% }
--type matter_cluster() :: #{binary() => any()}.
+-type capability_report_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
-%% wi_fi_simple_setup_configuration() :: #{
-%%   <<"EnableAsProvisionee">> => boolean(),
-%%   <<"EnableAsProvisioner">> => boolean(),
-%%   <<"TimeoutInMinutes">> => integer()
+%% capability_schema_item() :: #{
+%%   <<"CapabilityId">> => string(),
+%%   <<"ExtrinsicId">> => string(),
+%%   <<"ExtrinsicVersion">> => integer(),
+%%   <<"Format">> => list(any()),
+%%   <<"Schema">> => any()
 %% }
--type wi_fi_simple_setup_configuration() :: #{binary() => any()}.
+-type capability_schema_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_hub_configuration_response() :: #{
-%%   <<"HubTokenTimerExpirySettingInSeconds">> => float(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%% command_capability() :: #{
+%%   <<"actions">> => list(capability_action()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"version">> => string()
 %% }
--type get_hub_configuration_response() :: #{binary() => any()}.
+-type command_capability() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_device_discoveries_response() :: #{
-%%   <<"Items">> => list(device_discovery_summary()),
-%%   <<"NextToken">> => string()
+%% command_endpoint() :: #{
+%%   <<"capabilities">> => list(command_capability()),
+%%   <<"endpointId">> => string()
 %% }
--type list_device_discoveries_response() :: #{binary() => any()}.
+-type command_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_provisioning_profile_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ClaimCertificate">> => string(),
-%%   <<"ClaimCertificatePrivateKey">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ProvisioningType">> => list(any()),
-%%   <<"Status">> => list(any())
+%% configuration_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
 %% }
--type create_provisioning_profile_response() :: #{binary() => any()}.
+-type configuration_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_ota_task_executions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% configuration_status() :: #{
+%%   <<"error">> => configuration_error(),
+%%   <<"state">> => list(any())
 %% }
--type list_ota_task_executions_request() :: #{binary() => any()}.
+-type configuration_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% auth_material() :: #{
-%%   <<"AuthMaterialName">> => string(),
-%%   <<"SecretsManager">> => secrets_manager()
-%% }
--type auth_material() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_managed_thing_command_request() :: #{
-%%   <<"AccountAssociationId">> => string(),
-%%   <<"ConnectorAssociationId">> => string(),
-%%   <<"Endpoints">> := list(command_endpoint())
-%% }
--type send_managed_thing_command_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_runtime_log_configuration_request() :: #{
-%%   <<"RuntimeLogConfigurations">> := runtime_log_configurations()
-%% }
--type put_runtime_log_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% auth_config_update() :: #{
-%%   <<"GeneralAuthorizationUpdate">> => general_authorization_update(),
-%%   <<"oAuthUpdate">> => o_auth_update()
-%% }
--type auth_config_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% schema_version_list_item() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Namespace">> => string(),
-%%   <<"SchemaId">> => string(),
-%%   <<"SemanticVersion">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Visibility">> => list(any())
-%% }
--type schema_version_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_destination_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_destination_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_failure_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type internal_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_managed_thing_capabilities_request() :: #{}
--type get_managed_thing_capabilities_request() :: #{}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% proactive_refresh_token_renewal() :: #{
-%%   <<"DaysBeforeRenewal">> => [integer()],
-%%   <<"enabled">> => [boolean()]
+%% connector_destination_summary() :: #{
+%%   <<"CloudConnectorId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
 %% }
--type proactive_refresh_token_renewal() :: #{binary() => any()}.
+-type connector_destination_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_managed_thing_account_associations_request() :: #{
+%% connector_item() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EndpointConfig">> => endpoint_config(),
+%%   <<"EndpointType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type connector_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_account_association_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ConnectorDestinationId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"GeneralAuthorization">> => general_authorization_name(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_account_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_account_association_response() :: #{
 %%   <<"AccountAssociationId">> => string(),
-%%   <<"ManagedThingId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"Arn">> => string(),
+%%   <<"AssociationState">> => list(any()),
+%%   <<"OAuthAuthorizationUrl">> => string()
 %% }
--type list_managed_thing_account_associations_request() :: #{binary() => any()}.
+-type create_account_association_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% o_auth_config() :: #{
-%%   <<"authUrl">> => string(),
-%%   <<"oAuthCompleteRedirectUrl">> => [string()],
-%%   <<"proactiveRefreshTokenRenewal">> => proactive_refresh_token_renewal(),
-%%   <<"scope">> => [string()],
-%%   <<"tokenEndpointAuthenticationScheme">> => list(any()),
-%%   <<"tokenUrl">> => string()
+%% create_cloud_connector_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointConfig">> := endpoint_config(),
+%%   <<"EndpointType">> => list(any()),
+%%   <<"Name">> := string()
 %% }
--type o_auth_config() :: #{binary() => any()}.
+-type create_cloud_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cloud_connector_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type create_cloud_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_destination_request() :: #{
+%%   <<"AuthConfig">> := auth_config(),
+%%   <<"AuthType">> => list(any()),
+%%   <<"ClientToken">> => string(),
+%%   <<"CloudConnectorId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SecretsManager">> => secrets_manager()
+%% }
+-type create_connector_destination_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -416,6 +446,24 @@
 %%   <<"Id">> => string()
 %% }
 -type create_connector_destination_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_credential_locker_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_credential_locker_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_credential_locker_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string()
+%% }
+-type create_credential_locker_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -430,24 +478,95 @@
 %% }
 -type create_destination_request() :: #{binary() => any()}.
 
-%% Example:
-%% get_ota_task_request() :: #{}
--type get_ota_task_request() :: #{}.
-
 
 %% Example:
-%% unauthorized_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cloud_connector_request() :: #{
-%%   <<"Description">> => string(),
+%% create_destination_response() :: #{
 %%   <<"Name">> => string()
 %% }
--type update_cloud_connector_request() :: #{binary() => any()}.
+-type create_destination_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_log_configuration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"EventLogLevel">> := list(any()),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> := string()
+%% }
+-type create_event_log_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_log_configuration_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type create_event_log_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_managed_thing_request() :: #{
+%%   <<"AuthenticationMaterial">> := string(),
+%%   <<"AuthenticationMaterialType">> := list(any()),
+%%   <<"Brand">> => string(),
+%%   <<"Capabilities">> => string(),
+%%   <<"CapabilityReport">> => capability_report(),
+%%   <<"CapabilitySchemas">> => list(capability_schema_item()),
+%%   <<"Classification">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"CredentialLockerId">> => string(),
+%%   <<"MetaData">> => map(),
+%%   <<"Model">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"Role">> := list(any()),
+%%   <<"SerialNumber">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"WiFiSimpleSetupConfiguration">> => wi_fi_simple_setup_configuration()
+%% }
+-type create_managed_thing_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_managed_thing_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string()
+%% }
+-type create_managed_thing_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_notification_configuration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DestinationName">> := string(),
+%%   <<"EventType">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_notification_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_notification_configuration_response() :: #{
+%%   <<"EventType">> => list(any())
+%% }
+-type create_notification_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ota_task_configuration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PushConfig">> => push_config()
+%% }
+-type create_ota_task_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ota_task_configuration_response() :: #{
+%%   <<"TaskConfigurationId">> => string()
+%% }
+-type create_ota_task_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -469,102 +588,133 @@
 
 
 %% Example:
-%% retry_config_criteria() :: #{
-%%   <<"FailureType">> => list(any()),
-%%   <<"MinNumberOfRetries">> => integer()
-%% }
--type retry_config_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% matter_capability_report_cluster() :: #{
-%%   <<"attributes">> => list(matter_capability_report_attribute()),
-%%   <<"commands">> => list(string()),
-%%   <<"events">> => list(string()),
-%%   <<"fabricIndex">> => integer(),
-%%   <<"featureMap">> => float(),
-%%   <<"generatedCommands">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"publicId">> => string(),
-%%   <<"revision">> => integer(),
-%%   <<"specVersion">> => string()
-%% }
--type matter_capability_report_cluster() :: #{binary() => any()}.
-
-
-%% Example:
-%% secrets_manager() :: #{
-%%   <<"arn">> => string(),
-%%   <<"versionId">> => string()
-%% }
--type secrets_manager() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ota_task_configuration_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
+%% create_ota_task_response() :: #{
 %%   <<"Description">> => string(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskId">> => string()
+%% }
+-type create_ota_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_provisioning_profile_request() :: #{
+%%   <<"CaCertificate">> => string(),
+%%   <<"ClaimCertificate">> => string(),
+%%   <<"ClientToken">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"PushConfig">> => push_config(),
-%%   <<"TaskConfigurationId">> => string()
+%%   <<"ProvisioningType">> := list(any()),
+%%   <<"Tags">> => map()
 %% }
--type get_ota_task_configuration_response() :: #{binary() => any()}.
+-type create_provisioning_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_ota_task_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"TaskConfigurationId">> => string()
-%% }
--type update_ota_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% ota_task_execution_retry_config() :: #{
-%%   <<"RetryConfigCriteria">> => list(retry_config_criteria())
-%% }
--type ota_task_execution_retry_config() :: #{binary() => any()}.
-
-%% Example:
-%% start_account_association_refresh_request() :: #{}
--type start_account_association_refresh_request() :: #{}.
-
-
-%% Example:
-%% event_log_configuration_summary() :: #{
-%%   <<"EventLogLevel">> => list(any()),
+%% create_provisioning_profile_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ClaimCertificate">> => string(),
+%%   <<"ClaimCertificatePrivateKey">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
+%%   <<"Name">> => string(),
+%%   <<"ProvisioningType">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type event_log_configuration_summary() :: #{binary() => any()}.
+-type create_provisioning_profile_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_destination_response() :: #{
+%% credential_locker_summary() :: #{
+%%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type credential_locker_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_association_request() :: #{}
+-type delete_account_association_request() :: #{}.
+
+%% Example:
+%% delete_cloud_connector_request() :: #{}
+-type delete_cloud_connector_request() :: #{}.
+
+%% Example:
+%% delete_connector_destination_request() :: #{}
+-type delete_connector_destination_request() :: #{}.
+
+%% Example:
+%% delete_credential_locker_request() :: #{}
+-type delete_credential_locker_request() :: #{}.
+
+%% Example:
+%% delete_destination_request() :: #{}
+-type delete_destination_request() :: #{}.
+
+%% Example:
+%% delete_event_log_configuration_request() :: #{}
+-type delete_event_log_configuration_request() :: #{}.
+
+
+%% Example:
+%% delete_managed_thing_request() :: #{
+%%   <<"Force">> => [boolean()]
+%% }
+-type delete_managed_thing_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notification_configuration_request() :: #{}
+-type delete_notification_configuration_request() :: #{}.
+
+%% Example:
+%% delete_ota_task_configuration_request() :: #{}
+-type delete_ota_task_configuration_request() :: #{}.
+
+%% Example:
+%% delete_ota_task_request() :: #{}
+-type delete_ota_task_request() :: #{}.
+
+%% Example:
+%% delete_provisioning_profile_request() :: #{}
+-type delete_provisioning_profile_request() :: #{}.
+
+
+%% Example:
+%% deregister_account_association_request() :: #{
+%%   <<"AccountAssociationId">> := string(),
+%%   <<"ManagedThingId">> := string()
+%% }
+-type deregister_account_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_summary() :: #{
 %%   <<"DeliveryDestinationArn">> => string(),
 %%   <<"DeliveryDestinationType">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"RoleArn">> => string()
 %% }
--type get_destination_response() :: #{binary() => any()}.
+-type destination_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% rollout_rate_increase_criteria() :: #{
-%%   <<"numberOfNotifiedThings">> => integer(),
-%%   <<"numberOfSucceededThings">> => integer()
+%% device() :: #{
+%%   <<"CapabilityReport">> => matter_capability_report(),
+%%   <<"CapabilitySchemas">> => list(capability_schema_item()),
+%%   <<"ConnectorDeviceId">> => string(),
+%%   <<"ConnectorDeviceName">> => string(),
+%%   <<"DeviceMetadata">> => any()
 %% }
--type rollout_rate_increase_criteria() :: #{binary() => any()}.
+-type device() :: #{binary() => any()}.
+
+
+%% Example:
+%% device_discovery_summary() :: #{
+%%   <<"DiscoveryType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type device_discovery_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -581,103 +731,22 @@
 %% }
 -type discovered_device_summary() :: #{binary() => any()}.
 
-%% Example:
-%% get_notification_configuration_request() :: #{}
--type get_notification_configuration_request() :: #{}.
 
 %% Example:
-%% register_custom_endpoint_request() :: #{}
--type register_custom_endpoint_request() :: #{}.
-
-
-%% Example:
-%% list_schema_versions_response() :: #{
-%%   <<"Items">> => list(schema_version_list_item()),
-%%   <<"NextToken">> => string()
+%% endpoint_config() :: #{
+%%   <<"lambda">> => lambda_config()
 %% }
--type list_schema_versions_response() :: #{binary() => any()}.
+-type endpoint_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% ota_task_execution_summary() :: #{
-%%   <<"ExecutionNumber">> => float(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"QueuedAt">> => non_neg_integer(),
-%%   <<"RetryAttempt">> => integer(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type ota_task_execution_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_ota_task_configuration_request() :: #{}
--type get_ota_task_configuration_request() :: #{}.
-
-
-%% Example:
-%% matter_capability_report_attribute() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"value">> => any()
-%% }
--type matter_capability_report_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ota_task_request() :: #{}
--type delete_ota_task_request() :: #{}.
-
-
-%% Example:
-%% start_device_discovery_response() :: #{
+%% event_log_configuration_summary() :: #{
+%%   <<"EventLogLevel">> => list(any()),
 %%   <<"Id">> => string(),
-%%   <<"StartedAt">> => non_neg_integer()
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
 %% }
--type start_device_discovery_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_hub_configuration_request() :: #{
-%%   <<"HubTokenTimerExpirySettingInSeconds">> := float()
-%% }
--type put_hub_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cloud_connectors_response() :: #{
-%%   <<"Items">> => list(connector_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cloud_connectors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_provisioning_profile_request() :: #{
-%%   <<"CaCertificate">> => string(),
-%%   <<"ClaimCertificate">> => string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ProvisioningType">> := list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_provisioning_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_thing_connectivity_data_response() :: #{
-%%   <<"Connected">> => boolean(),
-%%   <<"DisconnectReason">> => list(any()),
-%%   <<"ManagedThingId">> => string(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type get_managed_thing_connectivity_data_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% state_endpoint() :: #{
-%%   <<"capabilities">> => list(state_capability()),
-%%   <<"endpointId">> => string()
-%% }
--type state_endpoint() :: #{binary() => any()}.
+-type event_log_configuration_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -690,1075 +759,22 @@
 
 
 %% Example:
-%% o_auth_update() :: #{
-%%   <<"oAuthCompleteRedirectUrl">> => [string()],
-%%   <<"proactiveRefreshTokenRenewal">> => proactive_refresh_token_renewal()
+%% general_authorization_name() :: #{
+%%   <<"AuthMaterialName">> => string()
 %% }
--type o_auth_update() :: #{binary() => any()}.
+-type general_authorization_name() :: #{binary() => any()}.
 
 
 %% Example:
-%% device_discovery_summary() :: #{
-%%   <<"DiscoveryType">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Status">> => list(any())
+%% general_authorization_update() :: #{
+%%   <<"AuthMaterialsToAdd">> => list(auth_material()),
+%%   <<"AuthMaterialsToUpdate">> => list(auth_material())
 %% }
--type device_discovery_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_credential_lockers_response() :: #{
-%%   <<"Items">> => list(credential_locker_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_credential_lockers_response() :: #{binary() => any()}.
-
-%% Example:
-%% reset_runtime_log_configuration_request() :: #{}
--type reset_runtime_log_configuration_request() :: #{}.
-
-%% Example:
-%% get_credential_locker_request() :: #{}
--type get_credential_locker_request() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% push_config() :: #{
-%%   <<"AbortConfig">> => ota_task_abort_config(),
-%%   <<"RolloutConfig">> => ota_task_execution_rollout_config(),
-%%   <<"TimeoutConfig">> => ota_task_timeout_config()
-%% }
--type push_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ota_task_configuration_request() :: #{}
--type delete_ota_task_configuration_request() :: #{}.
-
-
-%% Example:
-%% list_notification_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_notification_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_discovery_request() :: #{}
--type get_device_discovery_request() :: #{}.
-
-
-%% Example:
-%% get_connector_destination_response() :: #{
-%%   <<"AuthConfig">> => auth_config(),
-%%   <<"AuthType">> => list(any()),
-%%   <<"CloudConnectorId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OAuthCompleteRedirectUrl">> => string(),
-%%   <<"SecretsManager">> => secrets_manager()
-%% }
--type get_connector_destination_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ota_task_configuration_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"TaskConfigurationId">> => string()
-%% }
--type ota_task_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_status() :: #{
-%%   <<"error">> => configuration_error(),
-%%   <<"state">> => list(any())
-%% }
--type configuration_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_notification_configuration_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DestinationName">> => string(),
-%%   <<"EventType">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type get_notification_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_credential_locker_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_credential_locker_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_hub_configuration_request() :: #{}
--type get_hub_configuration_request() :: #{}.
-
-
-%% Example:
-%% ota_task_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskConfigurationId">> => string(),
-%%   <<"TaskId">> => string()
-%% }
--type ota_task_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ota_task_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_ota_task_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_custom_endpoint_request() :: #{}
--type get_custom_endpoint_request() :: #{}.
-
-
-%% Example:
-%% capability_report_endpoint() :: #{
-%%   <<"capabilities">> => list(capability_report_capability()),
-%%   <<"deviceTypes">> => list(string()),
-%%   <<"id">> => string()
-%% }
--type capability_report_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_thing_account_associations_response() :: #{
-%%   <<"Items">> => list(managed_thing_association()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_managed_thing_account_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% matter_endpoint() :: #{
-%%   <<"clusters">> => list(matter_cluster()),
-%%   <<"id">> => string()
-%% }
--type matter_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule_maintenance_window() :: #{
-%%   <<"DurationInMinutes">> => integer(),
-%%   <<"StartTime">> => string()
-%% }
--type schedule_maintenance_window() :: #{binary() => any()}.
-
-
-%% Example:
-%% command_capability() :: #{
-%%   <<"actions">> => list(capability_action()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"version">> => string()
-%% }
--type command_capability() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cloud_connector_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EndpointConfig">> => endpoint_config(),
-%%   <<"EndpointType">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type get_cloud_connector_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cloud_connector_request() :: #{}
--type delete_cloud_connector_request() :: #{}.
-
-
-%% Example:
-%% list_ota_tasks_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tasks">> => list(ota_task_summary())
-%% }
--type list_ota_tasks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_managed_thing_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Id">> => string()
-%% }
--type create_managed_thing_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ota_task_scheduling_config() :: #{
-%%   <<"EndBehavior">> => list(any()),
-%%   <<"EndTime">> => string(),
-%%   <<"MaintenanceWindows">> => list(schedule_maintenance_window()),
-%%   <<"StartTime">> => string()
-%% }
--type ota_task_scheduling_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_managed_thing_request() :: #{}
--type get_managed_thing_request() :: #{}.
-
-
-%% Example:
-%% credential_locker_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type credential_locker_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_hub_configuration_response() :: #{
-%%   <<"HubTokenTimerExpirySettingInSeconds">> => float()
-%% }
--type put_hub_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notification_configuration_request() :: #{}
--type delete_notification_configuration_request() :: #{}.
-
-
-%% Example:
-%% list_notification_configurations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NotificationConfigurationList">> => list(notification_configuration_summary())
-%% }
--type list_notification_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_log_configurations_response() :: #{
-%%   <<"EventLogConfigurationList">> => list(event_log_configuration_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_log_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_connector_event_request() :: #{
-%%   <<"ConnectorDeviceId">> => string(),
-%%   <<"DeviceDiscoveryId">> => string(),
-%%   <<"Devices">> => list(device()),
-%%   <<"MatterEndpoint">> => matter_endpoint(),
-%%   <<"Message">> => string(),
-%%   <<"Operation">> := list(any()),
-%%   <<"OperationVersion">> => string(),
-%%   <<"StatusCode">> => integer(),
-%%   <<"TraceId">> => string(),
-%%   <<"UserId">> => string()
-%% }
--type send_connector_event_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_account_association_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ConnectorDestinationId">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"GeneralAuthorization">> => general_authorization_name(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_account_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_custom_endpoint_response() :: #{
-%%   <<"EndpointAddress">> => string()
-%% }
--type get_custom_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_log_configuration_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type create_event_log_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_default_encryption_configuration_response() :: #{
-%%   <<"configurationStatus">> => configuration_status(),
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsKeyArn">> => string()
-%% }
--type get_default_encryption_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_log_configuration_request() :: #{}
--type get_event_log_configuration_request() :: #{}.
-
-%% Example:
-%% delete_provisioning_profile_request() :: #{}
--type delete_provisioning_profile_request() :: #{}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_managed_thing_state_request() :: #{}
--type get_managed_thing_state_request() :: #{}.
-
-
-%% Example:
-%% ota_task_abort_config() :: #{
-%%   <<"AbortConfigCriteriaList">> => list(abort_config_criteria())
-%% }
--type ota_task_abort_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_association_item() :: #{
-%%   <<"AccountAssociationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"AssociationState">> => list(any()),
-%%   <<"ConnectorDestinationId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"Name">> => string()
-%% }
--type account_association_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% ota_task_execution_summaries() :: #{
-%%   <<"ManagedThingId">> => string(),
-%%   <<"TaskExecutionSummary">> => ota_task_execution_summary()
-%% }
--type ota_task_execution_summaries() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_summary() :: #{
-%%   <<"DeliveryDestinationArn">> => string(),
-%%   <<"DeliveryDestinationType">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string()
-%% }
--type destination_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% capability_schema_item() :: #{
-%%   <<"CapabilityId">> => string(),
-%%   <<"ExtrinsicId">> => string(),
-%%   <<"ExtrinsicVersion">> => integer(),
-%%   <<"Format">> => list(any()),
-%%   <<"Schema">> => any()
-%% }
--type capability_schema_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_notification_configuration_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DestinationName">> := string(),
-%%   <<"EventType">> := list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_notification_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_runtime_log_configuration_request() :: #{}
--type get_runtime_log_configuration_request() :: #{}.
-
-%% Example:
-%% get_default_encryption_configuration_request() :: #{}
--type get_default_encryption_configuration_request() :: #{}.
-
-
-%% Example:
-%% create_cloud_connector_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type create_cloud_connector_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_managed_thing_meta_data_request() :: #{}
--type get_managed_thing_meta_data_request() :: #{}.
-
-
-%% Example:
-%% list_destinations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_destinations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_managed_thing_command_response() :: #{
-%%   <<"TraceId">> => string()
-%% }
--type send_managed_thing_command_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_notification_configuration_request() :: #{
-%%   <<"DestinationName">> := string()
-%% }
--type update_notification_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connector_destination_request() :: #{
-%%   <<"AuthConfig">> := auth_config(),
-%%   <<"AuthType">> => list(any()),
-%%   <<"ClientToken">> => string(),
-%%   <<"CloudConnectorId">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SecretsManager">> => secrets_manager()
-%% }
--type create_connector_destination_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_thing_state_response() :: #{
-%%   <<"Endpoints">> => list(state_endpoint())
-%% }
--type get_managed_thing_state_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_notification_configuration_response() :: #{
-%%   <<"EventType">> => list(any())
-%% }
--type create_notification_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_thing_certificate_response() :: #{
-%%   <<"CertificatePem">> => string(),
-%%   <<"ManagedThingId">> => string()
-%% }
--type get_managed_thing_certificate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_destination_request() :: #{}
--type delete_destination_request() :: #{}.
-
-
-%% Example:
-%% create_event_log_configuration_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"EventLogLevel">> := list(any()),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> := string()
-%% }
--type create_event_log_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_managed_thing_request() :: #{
-%%   <<"Brand">> => string(),
-%%   <<"Capabilities">> => string(),
-%%   <<"CapabilityReport">> => capability_report(),
-%%   <<"CapabilitySchemas">> => list(capability_schema_item()),
-%%   <<"Classification">> => string(),
-%%   <<"CredentialLockerId">> => string(),
-%%   <<"HubNetworkMode">> => list(any()),
-%%   <<"MetaData">> => map(),
-%%   <<"Model">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"SerialNumber">> => string(),
-%%   <<"WiFiSimpleSetupConfiguration">> => wi_fi_simple_setup_configuration()
-%% }
--type update_managed_thing_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ota_task_configuration_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PushConfig">> => push_config()
-%% }
--type create_ota_task_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_credential_locker_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_credential_locker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_runtime_log_configuration_response() :: #{
-%%   <<"ManagedThingId">> => string(),
-%%   <<"RuntimeLogConfigurations">> => runtime_log_configurations()
-%% }
--type get_runtime_log_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_account_associations_response() :: #{
-%%   <<"Items">> => list(account_association_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_account_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ota_tasks_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_ota_tasks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_thing_meta_data_response() :: #{
-%%   <<"ManagedThingId">> => string(),
-%%   <<"MetaData">> => map()
-%% }
--type get_managed_thing_meta_data_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connector_destinations_response() :: #{
-%%   <<"ConnectorDestinationList">> => list(connector_destination_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_connector_destinations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_log_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_log_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_config() :: #{
-%%   <<"lambda">> => lambda_config()
-%% }
--type endpoint_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_item() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EndpointConfig">> => endpoint_config(),
-%%   <<"EndpointType">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type connector_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ota_task_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskId">> => string()
-%% }
--type create_ota_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_discovered_devices_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_discovered_devices_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_processing_details() :: #{
-%%   <<"NumberOfCanceledThings">> => [integer()],
-%%   <<"NumberOfFailedThings">> => [integer()],
-%%   <<"NumberOfInProgressThings">> => [integer()],
-%%   <<"numberOfQueuedThings">> => [integer()],
-%%   <<"numberOfRejectedThings">> => [integer()],
-%%   <<"numberOfRemovedThings">> => [integer()],
-%%   <<"numberOfSucceededThings">> => [integer()],
-%%   <<"numberOfTimedOutThings">> => [integer()],
-%%   <<"processingTargets">> => list([string()]())
-%% }
--type task_processing_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_provisioning_profiles_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_provisioning_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_destination_request() :: #{
-%%   <<"DeliveryDestinationArn">> => string(),
-%%   <<"DeliveryDestinationType">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"RoleArn">> => string()
-%% }
--type update_destination_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_schema_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Namespace">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaId">> => string(),
-%%   <<"SemanticVersion">> => string(),
-%%   <<"Visibility">> => list(any())
-%% }
--type list_schema_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_account_association_refresh_response() :: #{
-%%   <<"OAuthAuthorizationUrl">> => string()
-%% }
--type start_account_association_refresh_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_device_discoveries_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusFilter">> => list(any()),
-%%   <<"TypeFilter">> => list(any())
-%% }
--type list_device_discoveries_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_log_configuration_request() :: #{}
--type delete_event_log_configuration_request() :: #{}.
-
-
-%% Example:
-%% start_device_discovery_request() :: #{
-%%   <<"AccountAssociationId">> => string(),
-%%   <<"AuthenticationMaterial">> => string(),
-%%   <<"AuthenticationMaterialType">> => list(any()),
-%%   <<"ClientToken">> => string(),
-%%   <<"ConnectorAssociationIdentifier">> => string(),
-%%   <<"ConnectorDeviceIdList">> => list(string()),
-%%   <<"ControllerIdentifier">> => string(),
-%%   <<"CustomProtocolDetail">> => map(),
-%%   <<"DiscoveryType">> := list(any()),
-%%   <<"EndDeviceIdentifier">> => string(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type start_device_discovery_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_thing_schemas_response() :: #{
-%%   <<"Items">> => list(managed_thing_schema_list_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_managed_thing_schemas_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% provisioning_profile_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ProvisioningType">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type provisioning_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_device_discovery_response() :: #{
-%%   <<"AccountAssociationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"ConnectorAssociationId">> => string(),
-%%   <<"ControllerId">> => string(),
-%%   <<"DiscoveryType">> => list(any()),
-%%   <<"FinishedAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type get_device_discovery_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_thing_summary() :: #{
-%%   <<"ActivatedAt">> => non_neg_integer(),
-%%   <<"AdvertisedProductId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"Brand">> => string(),
-%%   <<"Classification">> => string(),
-%%   <<"ConnectorDestinationId">> => string(),
-%%   <<"ConnectorDeviceId">> => string(),
-%%   <<"ConnectorPolicyId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CredentialLockerId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Model">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"ParentControllerId">> => string(),
-%%   <<"ProvisioningStatus">> => list(any()),
-%%   <<"Role">> => list(any()),
-%%   <<"SerialNumber">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type managed_thing_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_provisioning_profiles_response() :: #{
-%%   <<"Items">> => list(provisioning_profile_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_provisioning_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_account_association_response() :: #{
-%%   <<"AccountAssociationId">> => string(),
-%%   <<"DeviceDiscoveryId">> => string(),
-%%   <<"ManagedThingId">> => string()
-%% }
--type register_account_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_account_association_request() :: #{}
--type delete_account_association_request() :: #{}.
-
-
-%% Example:
-%% list_ota_task_executions_response() :: #{
-%%   <<"ExecutionSummaries">> => list(ota_task_execution_summaries()),
-%%   <<"NextToken">> => string()
-%% }
--type list_ota_task_executions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_schema_version_request() :: #{
-%%   <<"Format">> => list(any())
-%% }
--type get_schema_version_request() :: #{binary() => any()}.
+-type general_authorization_update() :: #{binary() => any()}.
 
 %% Example:
 %% get_account_association_request() :: #{}
 -type get_account_association_request() :: #{}.
-
-%% Example:
-%% get_cloud_connector_request() :: #{}
--type get_cloud_connector_request() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_thing_capabilities_response() :: #{
-%%   <<"Capabilities">> => string(),
-%%   <<"CapabilityReport">> => capability_report(),
-%%   <<"ManagedThingId">> => string()
-%% }
--type get_managed_thing_capabilities_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_connector_destination_request() :: #{}
--type get_connector_destination_request() :: #{}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% runtime_log_configurations() :: #{
-%%   <<"DeleteLocalStoreAfterUpload">> => boolean(),
-%%   <<"LocalStoreFileRotationMaxBytes">> => integer(),
-%%   <<"LocalStoreFileRotationMaxFiles">> => integer(),
-%%   <<"LocalStoreLocation">> => string(),
-%%   <<"LogFlushLevel">> => list(any()),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"UploadLog">> => boolean(),
-%%   <<"UploadPeriodMinutes">> => integer()
-%% }
--type runtime_log_configurations() :: #{binary() => any()}.
-
-%% Example:
-%% get_destination_request() :: #{}
--type get_destination_request() :: #{}.
-
-
-%% Example:
-%% list_managed_things_request() :: #{
-%%   <<"ConnectorDestinationIdFilter">> => string(),
-%%   <<"ConnectorDeviceIdFilter">> => string(),
-%%   <<"ConnectorPolicyIdFilter">> => string(),
-%%   <<"CredentialLockerFilter">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OwnerFilter">> => string(),
-%%   <<"ParentControllerIdentifierFilter">> => string(),
-%%   <<"ProvisioningStatusFilter">> => list(any()),
-%%   <<"RoleFilter">> => list(any()),
-%%   <<"SerialNumberFilter">> => string()
-%% }
--type list_managed_things_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cloud_connector_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EndpointConfig">> := endpoint_config(),
-%%   <<"EndpointType">> => list(any()),
-%%   <<"Name">> := string()
-%% }
--type create_cloud_connector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% matter_capability_report() :: #{
-%%   <<"endpoints">> => list(matter_capability_report_endpoint()),
-%%   <<"nodeId">> => string(),
-%%   <<"version">> => string()
-%% }
--type matter_capability_report() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_destination_summary() :: #{
-%%   <<"CloudConnectorId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type connector_destination_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_credential_locker_request() :: #{}
--type delete_credential_locker_request() :: #{}.
-
-
-%% Example:
-%% auth_config() :: #{
-%%   <<"GeneralAuthorization">> => list(auth_material()),
-%%   <<"oAuth">> => o_auth_config()
-%% }
--type auth_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_credential_lockers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_credential_lockers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% command_endpoint() :: #{
-%%   <<"capabilities">> => list(command_capability()),
-%%   <<"endpointId">> => string()
-%% }
--type command_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_thing_schemas_request() :: #{
-%%   <<"CapabilityIdFilter">> => string(),
-%%   <<"EndpointIdFilter">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_managed_thing_schemas_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% capability_report_capability() :: #{
-%%   <<"actions">> => list(string()),
-%%   <<"events">> => list(string()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"properties">> => list(string()),
-%%   <<"version">> => string()
-%% }
--type capability_report_capability() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ota_task_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"OtaMechanism">> => list(any()),
-%%   <<"OtaSchedulingConfig">> => ota_task_scheduling_config(),
-%%   <<"OtaTargetQueryString">> => string(),
-%%   <<"OtaTaskExecutionRetryConfig">> => ota_task_execution_retry_config(),
-%%   <<"OtaType">> => list(any()),
-%%   <<"Protocol">> => list(any()),
-%%   <<"S3Url">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Target">> => list([string()]()),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskConfigurationId">> => string(),
-%%   <<"TaskId">> => string(),
-%%   <<"TaskProcessingDetails">> => task_processing_details()
-%% }
--type get_ota_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_config() :: #{
-%%   <<"arn">> => string()
-%% }
--type lambda_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_account_association_request() :: #{
-%%   <<"AccountAssociationId">> := string(),
-%%   <<"DeviceDiscoveryId">> := string(),
-%%   <<"ManagedThingId">> := string()
-%% }
--type register_account_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_things_response() :: #{
-%%   <<"Items">> => list(managed_thing_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_managed_things_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_event_log_configuration_response() :: #{
-%%   <<"EventLogLevel">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type get_event_log_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connector_destination_request() :: #{
-%%   <<"AuthConfig">> => auth_config_update(),
-%%   <<"AuthType">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SecretsManager">> => secrets_manager()
-%% }
--type update_connector_destination_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1776,100 +792,197 @@
 %% }
 -type get_account_association_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% update_event_log_configuration_request() :: #{
-%%   <<"EventLogLevel">> := list(any())
-%% }
--type update_event_log_configuration_request() :: #{binary() => any()}.
+%% get_cloud_connector_request() :: #{}
+-type get_cloud_connector_request() :: #{}.
 
 
 %% Example:
-%% general_authorization_name() :: #{
-%%   <<"AuthMaterialName">> => string()
-%% }
--type general_authorization_name() :: #{binary() => any()}.
-
-
-%% Example:
-%% ota_task_timeout_config() :: #{
-%%   <<"InProgressTimeoutInMinutes">> => float()
-%% }
--type ota_task_timeout_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_account_association_request() :: #{
+%% get_cloud_connector_response() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_account_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_discovered_devices_response() :: #{
-%%   <<"Items">> => list(discovered_device_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_discovered_devices_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_provisioning_profile_request() :: #{}
--type get_provisioning_profile_request() :: #{}.
-
-
-%% Example:
-%% create_credential_locker_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Id">> => string()
-%% }
--type create_credential_locker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% general_authorization_update() :: #{
-%%   <<"AuthMaterialsToAdd">> => list(auth_material()),
-%%   <<"AuthMaterialsToUpdate">> => list(auth_material())
-%% }
--type general_authorization_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cloud_connectors_request() :: #{
-%%   <<"LambdaArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
+%%   <<"EndpointConfig">> => endpoint_config(),
+%%   <<"EndpointType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
 %%   <<"Type">> => list(any())
 %% }
--type list_cloud_connectors_request() :: #{binary() => any()}.
+-type get_cloud_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connector_destination_request() :: #{}
+-type get_connector_destination_request() :: #{}.
 
 
 %% Example:
-%% capability_report() :: #{
-%%   <<"endpoints">> => list(capability_report_endpoint()),
-%%   <<"nodeId">> => string(),
-%%   <<"version">> => string()
+%% get_connector_destination_response() :: #{
+%%   <<"AuthConfig">> => auth_config(),
+%%   <<"AuthType">> => list(any()),
+%%   <<"CloudConnectorId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OAuthCompleteRedirectUrl">> => string(),
+%%   <<"SecretsManager">> => secrets_manager()
 %% }
--type capability_report() :: #{binary() => any()}.
+-type get_connector_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_credential_locker_request() :: #{}
+-type get_credential_locker_request() :: #{}.
 
 
 %% Example:
-%% device() :: #{
-%%   <<"CapabilityReport">> => matter_capability_report(),
-%%   <<"CapabilitySchemas">> => list(capability_schema_item()),
-%%   <<"ConnectorDeviceId">> => string(),
-%%   <<"ConnectorDeviceName">> => string(),
-%%   <<"DeviceMetadata">> => any()
+%% get_credential_locker_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
 %% }
--type device() :: #{binary() => any()}.
+-type get_credential_locker_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_endpoint_request() :: #{}
+-type get_custom_endpoint_request() :: #{}.
+
+
+%% Example:
+%% get_custom_endpoint_response() :: #{
+%%   <<"EndpointAddress">> => string()
+%% }
+-type get_custom_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_default_encryption_configuration_request() :: #{}
+-type get_default_encryption_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_default_encryption_configuration_response() :: #{
+%%   <<"configurationStatus">> => configuration_status(),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type get_default_encryption_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_destination_request() :: #{}
+-type get_destination_request() :: #{}.
+
+
+%% Example:
+%% get_destination_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DeliveryDestinationArn">> => string(),
+%%   <<"DeliveryDestinationType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_discovery_request() :: #{}
+-type get_device_discovery_request() :: #{}.
+
+
+%% Example:
+%% get_device_discovery_response() :: #{
+%%   <<"AccountAssociationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"ConnectorAssociationId">> => string(),
+%%   <<"ControllerId">> => string(),
+%%   <<"DiscoveryType">> => list(any()),
+%%   <<"FinishedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_device_discovery_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_log_configuration_request() :: #{}
+-type get_event_log_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_event_log_configuration_response() :: #{
+%%   <<"EventLogLevel">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type get_event_log_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_hub_configuration_request() :: #{}
+-type get_hub_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_hub_configuration_response() :: #{
+%%   <<"HubTokenTimerExpirySettingInSeconds">> => float(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_hub_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_thing_capabilities_request() :: #{}
+-type get_managed_thing_capabilities_request() :: #{}.
+
+
+%% Example:
+%% get_managed_thing_capabilities_response() :: #{
+%%   <<"Capabilities">> => string(),
+%%   <<"CapabilityReport">> => capability_report(),
+%%   <<"ManagedThingId">> => string()
+%% }
+-type get_managed_thing_capabilities_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_thing_certificate_request() :: #{}
+-type get_managed_thing_certificate_request() :: #{}.
+
+
+%% Example:
+%% get_managed_thing_certificate_response() :: #{
+%%   <<"CertificatePem">> => string(),
+%%   <<"ManagedThingId">> => string()
+%% }
+-type get_managed_thing_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_thing_connectivity_data_request() :: #{}
+-type get_managed_thing_connectivity_data_request() :: #{}.
+
+
+%% Example:
+%% get_managed_thing_connectivity_data_response() :: #{
+%%   <<"Connected">> => boolean(),
+%%   <<"DisconnectReason">> => list(any()),
+%%   <<"ManagedThingId">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type get_managed_thing_connectivity_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_thing_meta_data_request() :: #{}
+-type get_managed_thing_meta_data_request() :: #{}.
+
+
+%% Example:
+%% get_managed_thing_meta_data_response() :: #{
+%%   <<"ManagedThingId">> => string(),
+%%   <<"MetaData">> => map()
+%% }
+-type get_managed_thing_meta_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_thing_request() :: #{}
+-type get_managed_thing_request() :: #{}.
 
 
 %% Example:
@@ -1904,52 +1017,109 @@
 %% }
 -type get_managed_thing_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_managed_thing_state_request() :: #{}
+-type get_managed_thing_state_request() :: #{}.
+
 
 %% Example:
-%% delete_managed_thing_request() :: #{
-%%   <<"Force">> => [boolean()]
+%% get_managed_thing_state_response() :: #{
+%%   <<"Endpoints">> => list(state_endpoint())
 %% }
--type delete_managed_thing_request() :: #{binary() => any()}.
+-type get_managed_thing_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_notification_configuration_request() :: #{}
+-type get_notification_configuration_request() :: #{}.
 
 
 %% Example:
-%% list_ota_task_configurations_response() :: #{
-%%   <<"Items">> => list(ota_task_configuration_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_ota_task_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% state_capability() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"properties">> => any(),
-%%   <<"version">> => string()
-%% }
--type state_capability() :: #{binary() => any()}.
-
-
-%% Example:
-%% abort_config_criteria() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"FailureType">> => list(any()),
-%%   <<"MinNumberOfExecutedThings">> => integer(),
-%%   <<"ThresholdPercentage">> => float()
-%% }
--type abort_config_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_configuration_summary() :: #{
+%% get_notification_configuration_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DestinationName">> => string(),
-%%   <<"EventType">> => list(any())
+%%   <<"EventType">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type notification_configuration_summary() :: #{binary() => any()}.
+-type get_notification_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_managed_thing_connectivity_data_request() :: #{}
--type get_managed_thing_connectivity_data_request() :: #{}.
+%% get_ota_task_configuration_request() :: #{}
+-type get_ota_task_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_ota_task_configuration_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PushConfig">> => push_config(),
+%%   <<"TaskConfigurationId">> => string()
+%% }
+-type get_ota_task_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ota_task_request() :: #{}
+-type get_ota_task_request() :: #{}.
+
+
+%% Example:
+%% get_ota_task_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"OtaMechanism">> => list(any()),
+%%   <<"OtaSchedulingConfig">> => ota_task_scheduling_config(),
+%%   <<"OtaTargetQueryString">> => string(),
+%%   <<"OtaTaskExecutionRetryConfig">> => ota_task_execution_retry_config(),
+%%   <<"OtaType">> => list(any()),
+%%   <<"Protocol">> => list(any()),
+%%   <<"S3Url">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Target">> => list([string()]()),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskConfigurationId">> => string(),
+%%   <<"TaskId">> => string(),
+%%   <<"TaskProcessingDetails">> => task_processing_details()
+%% }
+-type get_ota_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_provisioning_profile_request() :: #{}
+-type get_provisioning_profile_request() :: #{}.
+
+
+%% Example:
+%% get_provisioning_profile_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ClaimCertificate">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ProvisioningType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_provisioning_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_runtime_log_configuration_request() :: #{}
+-type get_runtime_log_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_runtime_log_configuration_response() :: #{
+%%   <<"ManagedThingId">> => string(),
+%%   <<"RuntimeLogConfigurations">> => runtime_log_configurations()
+%% }
+-type get_runtime_log_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_schema_version_request() :: #{
+%%   <<"Format">> => list(any())
+%% }
+-type get_schema_version_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1966,6 +1136,41 @@
 
 
 %% Example:
+%% internal_failure_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_config() :: #{
+%%   <<"arn">> => string()
+%% }
+-type lambda_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_account_associations_request() :: #{
 %%   <<"ConnectorDestinationId">> => string(),
 %%   <<"MaxResults">> => integer(),
@@ -1975,57 +1180,378 @@
 
 
 %% Example:
-%% register_custom_endpoint_response() :: #{
-%%   <<"EndpointAddress">> => string()
+%% list_account_associations_response() :: #{
+%%   <<"Items">> => list(account_association_item()),
+%%   <<"NextToken">> => string()
 %% }
--type register_custom_endpoint_response() :: #{binary() => any()}.
+-type list_account_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% configuration_error() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
+%% list_cloud_connectors_request() :: #{
+%%   <<"LambdaArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type configuration_error() :: #{binary() => any()}.
+-type list_cloud_connectors_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% deregister_account_association_request() :: #{
-%%   <<"AccountAssociationId">> := string(),
-%%   <<"ManagedThingId">> := string()
+%% list_cloud_connectors_response() :: #{
+%%   <<"Items">> => list(connector_item()),
+%%   <<"NextToken">> => string()
 %% }
--type deregister_account_association_request() :: #{binary() => any()}.
+-type list_cloud_connectors_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_default_encryption_configuration_request() :: #{
-%%   <<"encryptionType">> := list(any()),
-%%   <<"kmsKeyArn">> => string()
+%% list_connector_destinations_request() :: #{
+%%   <<"CloudConnectorId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type put_default_encryption_configuration_request() :: #{binary() => any()}.
+-type list_connector_destinations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_managed_thing_request() :: #{
-%%   <<"AuthenticationMaterial">> := string(),
-%%   <<"AuthenticationMaterialType">> := list(any()),
+%% list_connector_destinations_response() :: #{
+%%   <<"ConnectorDestinationList">> => list(connector_destination_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connector_destinations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_credential_lockers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_credential_lockers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_credential_lockers_response() :: #{
+%%   <<"Items">> => list(credential_locker_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_credential_lockers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_destinations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_destinations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_destinations_response() :: #{
+%%   <<"DestinationList">> => list(destination_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_destinations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_discoveries_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusFilter">> => list(any()),
+%%   <<"TypeFilter">> => list(any())
+%% }
+-type list_device_discoveries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_discoveries_response() :: #{
+%%   <<"Items">> => list(device_discovery_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_device_discoveries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_discovered_devices_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_discovered_devices_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_discovered_devices_response() :: #{
+%%   <<"Items">> => list(discovered_device_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_discovered_devices_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_log_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_log_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_log_configurations_response() :: #{
+%%   <<"EventLogConfigurationList">> => list(event_log_configuration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_log_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_thing_account_associations_request() :: #{
+%%   <<"AccountAssociationId">> => string(),
+%%   <<"ManagedThingId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_managed_thing_account_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_thing_account_associations_response() :: #{
+%%   <<"Items">> => list(managed_thing_association()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_managed_thing_account_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_thing_schemas_request() :: #{
+%%   <<"CapabilityIdFilter">> => string(),
+%%   <<"EndpointIdFilter">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_managed_thing_schemas_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_thing_schemas_response() :: #{
+%%   <<"Items">> => list(managed_thing_schema_list_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_managed_thing_schemas_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_things_request() :: #{
+%%   <<"ConnectorDestinationIdFilter">> => string(),
+%%   <<"ConnectorDeviceIdFilter">> => string(),
+%%   <<"ConnectorPolicyIdFilter">> => string(),
+%%   <<"CredentialLockerFilter">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OwnerFilter">> => string(),
+%%   <<"ParentControllerIdentifierFilter">> => string(),
+%%   <<"ProvisioningStatusFilter">> => list(any()),
+%%   <<"RoleFilter">> => list(any()),
+%%   <<"SerialNumberFilter">> => string()
+%% }
+-type list_managed_things_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_things_response() :: #{
+%%   <<"Items">> => list(managed_thing_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_managed_things_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_notification_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_configurations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotificationConfigurationList">> => list(notification_configuration_summary())
+%% }
+-type list_notification_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ota_task_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ota_task_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ota_task_configurations_response() :: #{
+%%   <<"Items">> => list(ota_task_configuration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ota_task_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ota_task_executions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ota_task_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ota_task_executions_response() :: #{
+%%   <<"ExecutionSummaries">> => list(ota_task_execution_summaries()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ota_task_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ota_tasks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ota_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ota_tasks_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tasks">> => list(ota_task_summary())
+%% }
+-type list_ota_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provisioning_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_provisioning_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provisioning_profiles_response() :: #{
+%%   <<"Items">> => list(provisioning_profile_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_provisioning_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schema_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Namespace">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaId">> => string(),
+%%   <<"SemanticVersion">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type list_schema_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schema_versions_response() :: #{
+%%   <<"Items">> => list(schema_version_list_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_schema_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_thing_association() :: #{
+%%   <<"AccountAssociationId">> => string(),
+%%   <<"ManagedThingAssociationStatus">> => list(any()),
+%%   <<"ManagedThingId">> => string()
+%% }
+-type managed_thing_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_thing_schema_list_item() :: #{
+%%   <<"CapabilityId">> => string(),
+%%   <<"EndpointId">> => string(),
+%%   <<"Schema">> => any()
+%% }
+-type managed_thing_schema_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_thing_summary() :: #{
+%%   <<"ActivatedAt">> => non_neg_integer(),
+%%   <<"AdvertisedProductId">> => string(),
+%%   <<"Arn">> => string(),
 %%   <<"Brand">> => string(),
-%%   <<"Capabilities">> => string(),
-%%   <<"CapabilityReport">> => capability_report(),
-%%   <<"CapabilitySchemas">> => list(capability_schema_item()),
 %%   <<"Classification">> => string(),
-%%   <<"ClientToken">> => string(),
+%%   <<"ConnectorDestinationId">> => string(),
+%%   <<"ConnectorDeviceId">> => string(),
+%%   <<"ConnectorPolicyId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"CredentialLockerId">> => string(),
-%%   <<"MetaData">> => map(),
+%%   <<"Id">> => string(),
 %%   <<"Model">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Owner">> => string(),
-%%   <<"Role">> := list(any()),
+%%   <<"ParentControllerId">> => string(),
+%%   <<"ProvisioningStatus">> => list(any()),
+%%   <<"Role">> => list(any()),
 %%   <<"SerialNumber">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"WiFiSimpleSetupConfiguration">> => wi_fi_simple_setup_configuration()
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type create_managed_thing_request() :: #{binary() => any()}.
+-type managed_thing_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% matter_capability_report() :: #{
+%%   <<"endpoints">> => list(matter_capability_report_endpoint()),
+%%   <<"nodeId">> => string(),
+%%   <<"version">> => string()
+%% }
+-type matter_capability_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% matter_capability_report_attribute() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"value">> => any()
+%% }
+-type matter_capability_report_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% matter_capability_report_cluster() :: #{
+%%   <<"attributes">> => list(matter_capability_report_attribute()),
+%%   <<"commands">> => list(string()),
+%%   <<"events">> => list(string()),
+%%   <<"fabricIndex">> => integer(),
+%%   <<"featureMap">> => float(),
+%%   <<"generatedCommands">> => list(string()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"publicId">> => string(),
+%%   <<"revision">> => integer(),
+%%   <<"specVersion">> => string()
+%% }
+-type matter_capability_report_cluster() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2041,30 +1567,311 @@
 
 
 %% Example:
-%% create_account_association_response() :: #{
-%%   <<"AccountAssociationId">> => string(),
+%% matter_cluster() :: #{
+%%   <<"attributes">> => any(),
+%%   <<"commands">> => map(),
+%%   <<"events">> => map(),
+%%   <<"id">> => string()
+%% }
+-type matter_cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% matter_endpoint() :: #{
+%%   <<"clusters">> => list(matter_cluster()),
+%%   <<"id">> => string()
+%% }
+-type matter_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_configuration_summary() :: #{
+%%   <<"DestinationName">> => string(),
+%%   <<"EventType">> => list(any())
+%% }
+-type notification_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth_config() :: #{
+%%   <<"authUrl">> => string(),
+%%   <<"oAuthCompleteRedirectUrl">> => [string()],
+%%   <<"proactiveRefreshTokenRenewal">> => proactive_refresh_token_renewal(),
+%%   <<"scope">> => [string()],
+%%   <<"tokenEndpointAuthenticationScheme">> => list(any()),
+%%   <<"tokenUrl">> => string()
+%% }
+-type o_auth_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth_update() :: #{
+%%   <<"oAuthCompleteRedirectUrl">> => [string()],
+%%   <<"proactiveRefreshTokenRenewal">> => proactive_refresh_token_renewal()
+%% }
+-type o_auth_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% ota_task_abort_config() :: #{
+%%   <<"AbortConfigCriteriaList">> => list(abort_config_criteria())
+%% }
+-type ota_task_abort_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% ota_task_configuration_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"TaskConfigurationId">> => string()
+%% }
+-type ota_task_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ota_task_execution_retry_config() :: #{
+%%   <<"RetryConfigCriteria">> => list(retry_config_criteria())
+%% }
+-type ota_task_execution_retry_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% ota_task_execution_rollout_config() :: #{
+%%   <<"ExponentialRolloutRate">> => exponential_rollout_rate(),
+%%   <<"MaximumPerMinute">> => integer()
+%% }
+-type ota_task_execution_rollout_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% ota_task_execution_summaries() :: #{
+%%   <<"ManagedThingId">> => string(),
+%%   <<"TaskExecutionSummary">> => ota_task_execution_summary()
+%% }
+-type ota_task_execution_summaries() :: #{binary() => any()}.
+
+
+%% Example:
+%% ota_task_execution_summary() :: #{
+%%   <<"ExecutionNumber">> => float(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"QueuedAt">> => non_neg_integer(),
+%%   <<"RetryAttempt">> => integer(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type ota_task_execution_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ota_task_scheduling_config() :: #{
+%%   <<"EndBehavior">> => list(any()),
+%%   <<"EndTime">> => string(),
+%%   <<"MaintenanceWindows">> => list(schedule_maintenance_window()),
+%%   <<"StartTime">> => string()
+%% }
+-type ota_task_scheduling_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% ota_task_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskConfigurationId">> => string(),
+%%   <<"TaskId">> => string()
+%% }
+-type ota_task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% ota_task_timeout_config() :: #{
+%%   <<"InProgressTimeoutInMinutes">> => float()
+%% }
+-type ota_task_timeout_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% proactive_refresh_token_renewal() :: #{
+%%   <<"DaysBeforeRenewal">> => [integer()],
+%%   <<"enabled">> => [boolean()]
+%% }
+-type proactive_refresh_token_renewal() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioning_profile_summary() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssociationState">> => list(any()),
-%%   <<"OAuthAuthorizationUrl">> => string()
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ProvisioningType">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type create_account_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connector_destination_request() :: #{}
--type delete_connector_destination_request() :: #{}.
-
-%% Example:
-%% get_managed_thing_certificate_request() :: #{}
--type get_managed_thing_certificate_request() :: #{}.
+-type provisioning_profile_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% managed_thing_schema_list_item() :: #{
-%%   <<"CapabilityId">> => string(),
-%%   <<"EndpointId">> => string(),
-%%   <<"Schema">> => any()
+%% push_config() :: #{
+%%   <<"AbortConfig">> => ota_task_abort_config(),
+%%   <<"RolloutConfig">> => ota_task_execution_rollout_config(),
+%%   <<"TimeoutConfig">> => ota_task_timeout_config()
 %% }
--type managed_thing_schema_list_item() :: #{binary() => any()}.
+-type push_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_default_encryption_configuration_request() :: #{
+%%   <<"encryptionType">> := list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type put_default_encryption_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_default_encryption_configuration_response() :: #{
+%%   <<"configurationStatus">> => configuration_status(),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type put_default_encryption_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_hub_configuration_request() :: #{
+%%   <<"HubTokenTimerExpirySettingInSeconds">> := float()
+%% }
+-type put_hub_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_hub_configuration_response() :: #{
+%%   <<"HubTokenTimerExpirySettingInSeconds">> => float()
+%% }
+-type put_hub_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_runtime_log_configuration_request() :: #{
+%%   <<"RuntimeLogConfigurations">> := runtime_log_configurations()
+%% }
+-type put_runtime_log_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_account_association_request() :: #{
+%%   <<"AccountAssociationId">> := string(),
+%%   <<"DeviceDiscoveryId">> := string(),
+%%   <<"ManagedThingId">> := string()
+%% }
+-type register_account_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_account_association_response() :: #{
+%%   <<"AccountAssociationId">> => string(),
+%%   <<"DeviceDiscoveryId">> => string(),
+%%   <<"ManagedThingId">> => string()
+%% }
+-type register_account_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_custom_endpoint_request() :: #{}
+-type register_custom_endpoint_request() :: #{}.
+
+
+%% Example:
+%% register_custom_endpoint_response() :: #{
+%%   <<"EndpointAddress">> => string()
+%% }
+-type register_custom_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% reset_runtime_log_configuration_request() :: #{}
+-type reset_runtime_log_configuration_request() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_config_criteria() :: #{
+%%   <<"FailureType">> => list(any()),
+%%   <<"MinNumberOfRetries">> => integer()
+%% }
+-type retry_config_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% rollout_rate_increase_criteria() :: #{
+%%   <<"numberOfNotifiedThings">> => integer(),
+%%   <<"numberOfSucceededThings">> => integer()
+%% }
+-type rollout_rate_increase_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_log_configurations() :: #{
+%%   <<"DeleteLocalStoreAfterUpload">> => boolean(),
+%%   <<"LocalStoreFileRotationMaxBytes">> => integer(),
+%%   <<"LocalStoreFileRotationMaxFiles">> => integer(),
+%%   <<"LocalStoreLocation">> => string(),
+%%   <<"LogFlushLevel">> => list(any()),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"UploadLog">> => boolean(),
+%%   <<"UploadPeriodMinutes">> => integer()
+%% }
+-type runtime_log_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_maintenance_window() :: #{
+%%   <<"DurationInMinutes">> => integer(),
+%%   <<"StartTime">> => string()
+%% }
+-type schedule_maintenance_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_version_list_item() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"SchemaId">> => string(),
+%%   <<"SemanticVersion">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type schema_version_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager() :: #{
+%%   <<"arn">> => string(),
+%%   <<"versionId">> => string()
+%% }
+-type secrets_manager() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_connector_event_request() :: #{
+%%   <<"ConnectorDeviceId">> => string(),
+%%   <<"DeviceDiscoveryId">> => string(),
+%%   <<"Devices">> => list(device()),
+%%   <<"MatterEndpoint">> => matter_endpoint(),
+%%   <<"Message">> => string(),
+%%   <<"Operation">> := list(any()),
+%%   <<"OperationVersion">> => string(),
+%%   <<"StatusCode">> => integer(),
+%%   <<"TraceId">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type send_connector_event_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2075,693 +1882,886 @@
 
 
 %% Example:
-%% get_provisioning_profile_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ClaimCertificate">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ProvisioningType">> => list(any()),
-%%   <<"Status">> => list(any()),
+%% send_managed_thing_command_request() :: #{
+%%   <<"AccountAssociationId">> => string(),
+%%   <<"ConnectorAssociationId">> => string(),
+%%   <<"Endpoints">> := list(command_endpoint())
+%% }
+-type send_managed_thing_command_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_managed_thing_command_response() :: #{
+%%   <<"TraceId">> => string()
+%% }
+-type send_managed_thing_command_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_account_association_refresh_request() :: #{}
+-type start_account_association_refresh_request() :: #{}.
+
+
+%% Example:
+%% start_account_association_refresh_response() :: #{
+%%   <<"OAuthAuthorizationUrl">> => string()
+%% }
+-type start_account_association_refresh_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_device_discovery_request() :: #{
+%%   <<"AccountAssociationId">> => string(),
+%%   <<"AuthenticationMaterial">> => string(),
+%%   <<"AuthenticationMaterialType">> => list(any()),
+%%   <<"ClientToken">> => string(),
+%%   <<"ConnectorAssociationIdentifier">> => string(),
+%%   <<"ConnectorDeviceIdList">> => list(string()),
+%%   <<"ControllerIdentifier">> => string(),
+%%   <<"CustomProtocolDetail">> => map(),
+%%   <<"DiscoveryType">> := list(any()),
+%%   <<"EndDeviceIdentifier">> => string(),
+%%   <<"Protocol">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
--type get_provisioning_profile_response() :: #{binary() => any()}.
+-type start_device_discovery_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_connector_destinations_request() :: #{
-%%   <<"CloudConnectorId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% start_device_discovery_response() :: #{
+%%   <<"Id">> => string(),
+%%   <<"StartedAt">> => non_neg_integer()
 %% }
--type list_connector_destinations_request() :: #{binary() => any()}.
+-type start_device_discovery_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_ota_task_configuration_response() :: #{
+%% state_capability() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"properties">> => any(),
+%%   <<"version">> => string()
+%% }
+-type state_capability() :: #{binary() => any()}.
+
+
+%% Example:
+%% state_endpoint() :: #{
+%%   <<"capabilities">> => list(state_capability()),
+%%   <<"endpointId">> => string()
+%% }
+-type state_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% task_processing_details() :: #{
+%%   <<"NumberOfCanceledThings">> => [integer()],
+%%   <<"NumberOfFailedThings">> => [integer()],
+%%   <<"NumberOfInProgressThings">> => [integer()],
+%%   <<"numberOfQueuedThings">> => [integer()],
+%%   <<"numberOfRejectedThings">> => [integer()],
+%%   <<"numberOfRemovedThings">> => [integer()],
+%%   <<"numberOfSucceededThings">> => [integer()],
+%%   <<"numberOfTimedOutThings">> => [integer()],
+%%   <<"processingTargets">> => list([string()]())
+%% }
+-type task_processing_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_account_association_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_account_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_connector_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_cloud_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connector_destination_request() :: #{
+%%   <<"AuthConfig">> => auth_config_update(),
+%%   <<"AuthType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SecretsManager">> => secrets_manager()
+%% }
+-type update_connector_destination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_destination_request() :: #{
+%%   <<"DeliveryDestinationArn">> => string(),
+%%   <<"DeliveryDestinationType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_destination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_log_configuration_request() :: #{
+%%   <<"EventLogLevel">> := list(any())
+%% }
+-type update_event_log_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_managed_thing_request() :: #{
+%%   <<"Brand">> => string(),
+%%   <<"Capabilities">> => string(),
+%%   <<"CapabilityReport">> => capability_report(),
+%%   <<"CapabilitySchemas">> => list(capability_schema_item()),
+%%   <<"Classification">> => string(),
+%%   <<"CredentialLockerId">> => string(),
+%%   <<"HubNetworkMode">> => list(any()),
+%%   <<"MetaData">> => map(),
+%%   <<"Model">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"WiFiSimpleSetupConfiguration">> => wi_fi_simple_setup_configuration()
+%% }
+-type update_managed_thing_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_notification_configuration_request() :: #{
+%%   <<"DestinationName">> := string()
+%% }
+-type update_notification_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ota_task_request() :: #{
+%%   <<"Description">> => string(),
 %%   <<"TaskConfigurationId">> => string()
 %% }
--type create_ota_task_configuration_response() :: #{binary() => any()}.
+-type update_ota_task_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% ota_task_execution_rollout_config() :: #{
-%%   <<"ExponentialRolloutRate">> => exponential_rollout_rate(),
-%%   <<"MaximumPerMinute">> => integer()
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type ota_task_execution_rollout_config() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% wi_fi_simple_setup_configuration() :: #{
+%%   <<"EnableAsProvisionee">> => boolean(),
+%%   <<"EnableAsProvisioner">> => boolean(),
+%%   <<"TimeoutInMinutes">> => integer()
+%% }
+-type wi_fi_simple_setup_configuration() :: #{binary() => any()}.
 
 -type create_account_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_cloud_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_connector_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_credential_locker_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_event_log_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_managed_thing_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_notification_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_ota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_ota_task_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_provisioning_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_account_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_cloud_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_connector_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_credential_locker_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_event_log_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_managed_thing_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_notification_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_ota_task_errors() ::
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_ota_task_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_provisioning_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type deregister_account_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_account_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_cloud_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_connector_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_credential_locker_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_custom_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_default_encryption_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type get_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_device_discovery_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_event_log_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_hub_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_managed_thing_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_managed_thing_capabilities_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_managed_thing_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_managed_thing_connectivity_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_managed_thing_meta_data_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_managed_thing_state_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type get_notification_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_ota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_ota_task_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_provisioning_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_runtime_log_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_schema_version_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_account_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
     internal_server_exception() | 
-    service_unavailable_exception().
+    access_denied_exception().
 
 -type list_cloud_connectors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_connector_destinations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_credential_lockers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
     internal_server_exception() | 
-    service_unavailable_exception().
+    access_denied_exception().
 
 -type list_destinations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_device_discoveries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_discovered_devices_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_event_log_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_managed_thing_account_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_managed_thing_schemas_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_managed_things_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_notification_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_ota_task_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_ota_task_executions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_ota_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_provisioning_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_schema_versions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    invalid_request_exception().
 
 -type put_default_encryption_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type put_hub_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type put_runtime_log_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type register_account_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type register_custom_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type reset_runtime_log_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type send_connector_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type send_managed_thing_command_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_account_association_refresh_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_device_discovery_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
-    unauthorized_exception().
-
--type untag_resource_errors() ::
-    throttling_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
-    unauthorized_exception().
-
--type update_account_association_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_unavailable_exception() | 
-    resource_not_found_exception() | 
     conflict_exception().
 
--type update_cloud_connector_errors() ::
+-type untag_resource_errors() ::
+    unauthorized_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    invalid_request_exception() | 
+    conflict_exception().
 
--type update_connector_destination_errors() ::
-    throttling_exception() | 
+-type update_account_association_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type update_destination_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type update_event_log_configuration_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type update_managed_thing_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
+
+-type update_cloud_connector_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_connector_destination_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_destination_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_event_log_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_managed_thing_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_notification_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_ota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

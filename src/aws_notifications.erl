@@ -131,59 +131,100 @@
 
 
 %% Example:
-%% list_member_accounts_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"memberAccount">> => string(),
-%%   <<"nextToken">> => string(),
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_detail() :: #{
+%%   <<"summarizationDimensions">> => list(summarization_dimension_detail())
+%% }
+-type aggregation_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_key() :: #{
+%%   <<"name">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type aggregation_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_summary() :: #{
+%%   <<"additionalSummarizationDimensions">> => list(summarization_dimension_overview()),
+%%   <<"aggregatedAccounts">> => summarization_dimension_overview(),
+%%   <<"aggregatedBy">> => list(aggregation_key()),
+%%   <<"aggregatedOrganizationalUnits">> => summarization_dimension_overview(),
+%%   <<"aggregatedRegions">> => summarization_dimension_overview(),
+%%   <<"eventCount">> => [integer()]
+%% }
+-type aggregation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_channel_request() :: #{
+%%   <<"notificationConfigurationArn">> := string()
+%% }
+-type associate_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_channel_response() :: #{}
+-type associate_channel_response() :: #{}.
+
+
+%% Example:
+%% associate_managed_notification_account_contact_request() :: #{
+%%   <<"managedNotificationConfigurationArn">> := string()
+%% }
+-type associate_managed_notification_account_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_managed_notification_account_contact_response() :: #{}
+-type associate_managed_notification_account_contact_response() :: #{}.
+
+
+%% Example:
+%% associate_managed_notification_additional_channel_request() :: #{
+%%   <<"managedNotificationConfigurationArn">> := string()
+%% }
+-type associate_managed_notification_additional_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_managed_notification_additional_channel_response() :: #{}
+-type associate_managed_notification_additional_channel_response() :: #{}.
+
+
+%% Example:
+%% associate_organizational_unit_request() :: #{
+%%   <<"notificationConfigurationArn">> := string()
+%% }
+-type associate_organizational_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_organizational_unit_response() :: #{}
+-type associate_organizational_unit_response() :: #{}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_rule_request() :: #{
+%%   <<"eventPattern">> => string(),
+%%   <<"eventType">> := string(),
 %%   <<"notificationConfigurationArn">> := string(),
-%%   <<"organizationalUnitId">> => string(),
-%%   <<"status">> => string()
+%%   <<"regions">> := list(string()),
+%%   <<"source">> := string()
 %% }
--type list_member_accounts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_notification_channel_associations_request() :: #{
-%%   <<"managedNotificationConfigurationArn">> := string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_notification_channel_associations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_event_metadata_summary() :: #{
-%%   <<"eventOriginRegion">> => [string()],
-%%   <<"eventType">> => [string()],
-%%   <<"source">> => [string()]
-%% }
--type source_event_metadata_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_notification_configurations_request() :: #{
-%%   <<"channelIdentifier">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_notification_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_part_value() :: #{
-%%   <<"displayText">> => [string()],
-%%   <<"textByLocale">> => map(),
-%%   <<"type">> => string(),
-%%   <<"url">> => string()
-%% }
--type text_part_value() :: #{binary() => any()}.
+-type create_event_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -196,27 +237,159 @@
 
 
 %% Example:
-%% notification_configuration_structure() :: #{
+%% create_notification_configuration_request() :: #{
 %%   <<"aggregationDuration">> => string(),
+%%   <<"description">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_notification_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_notification_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type create_notification_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_rule_request() :: #{}
+-type delete_event_rule_request() :: #{}.
+
+%% Example:
+%% delete_event_rule_response() :: #{}
+-type delete_event_rule_response() :: #{}.
+
+%% Example:
+%% delete_notification_configuration_request() :: #{}
+-type delete_notification_configuration_request() :: #{}.
+
+%% Example:
+%% delete_notification_configuration_response() :: #{}
+-type delete_notification_configuration_response() :: #{}.
+
+%% Example:
+%% deregister_notification_hub_request() :: #{}
+-type deregister_notification_hub_request() :: #{}.
+
+
+%% Example:
+%% deregister_notification_hub_response() :: #{
+%%   <<"notificationHubRegion">> => string(),
+%%   <<"statusSummary">> => notification_hub_status_summary()
+%% }
+-type deregister_notification_hub_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dimension() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type dimension() :: #{binary() => any()}.
+
+%% Example:
+%% disable_notifications_access_for_organization_request() :: #{}
+-type disable_notifications_access_for_organization_request() :: #{}.
+
+%% Example:
+%% disable_notifications_access_for_organization_response() :: #{}
+-type disable_notifications_access_for_organization_response() :: #{}.
+
+
+%% Example:
+%% disassociate_channel_request() :: #{
+%%   <<"notificationConfigurationArn">> := string()
+%% }
+-type disassociate_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_channel_response() :: #{}
+-type disassociate_channel_response() :: #{}.
+
+
+%% Example:
+%% disassociate_managed_notification_account_contact_request() :: #{
+%%   <<"managedNotificationConfigurationArn">> := string()
+%% }
+-type disassociate_managed_notification_account_contact_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_managed_notification_account_contact_response() :: #{}
+-type disassociate_managed_notification_account_contact_response() :: #{}.
+
+
+%% Example:
+%% disassociate_managed_notification_additional_channel_request() :: #{
+%%   <<"managedNotificationConfigurationArn">> := string()
+%% }
+-type disassociate_managed_notification_additional_channel_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_managed_notification_additional_channel_response() :: #{}
+-type disassociate_managed_notification_additional_channel_response() :: #{}.
+
+
+%% Example:
+%% disassociate_organizational_unit_request() :: #{
+%%   <<"notificationConfigurationArn">> := string()
+%% }
+-type disassociate_organizational_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_organizational_unit_response() :: #{}
+-type disassociate_organizational_unit_response() :: #{}.
+
+%% Example:
+%% enable_notifications_access_for_organization_request() :: #{}
+-type enable_notifications_access_for_organization_request() :: #{}.
+
+%% Example:
+%% enable_notifications_access_for_organization_response() :: #{}
+-type enable_notifications_access_for_organization_response() :: #{}.
+
+
+%% Example:
+%% event_rule_status_summary() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => string()
+%% }
+-type event_rule_status_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_rule_structure() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"subtype">> => string()
+%%   <<"eventPattern">> => string(),
+%%   <<"eventType">> => string(),
+%%   <<"managedRules">> => list(string()),
+%%   <<"notificationConfigurationArn">> => string(),
+%%   <<"regions">> => list(string()),
+%%   <<"source">> => string(),
+%%   <<"statusSummaryByRegion">> => map()
 %% }
--type notification_configuration_structure() :: #{binary() => any()}.
+-type event_rule_structure() :: #{binary() => any()}.
 
 %% Example:
-%% associate_managed_notification_additional_channel_response() :: #{}
--type associate_managed_notification_additional_channel_response() :: #{}.
+%% get_event_rule_request() :: #{}
+-type get_event_rule_request() :: #{}.
 
 
 %% Example:
-%% notifications_access_for_organization() :: #{
-%%   <<"accessStatus">> => list(any())
+%% get_event_rule_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"eventPattern">> => string(),
+%%   <<"eventType">> => string(),
+%%   <<"managedRules">> => list(string()),
+%%   <<"notificationConfigurationArn">> => string(),
+%%   <<"regions">> => list(string()),
+%%   <<"source">> => string(),
+%%   <<"statusSummaryByRegion">> => map()
 %% }
--type notifications_access_for_organization() :: #{binary() => any()}.
+-type get_event_rule_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -227,14 +400,161 @@
 
 
 %% Example:
+%% get_managed_notification_child_event_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"content">> => managed_notification_child_event(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"managedNotificationConfigurationArn">> => string()
+%% }
+-type get_managed_notification_child_event_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_managed_notification_configuration_request() :: #{}
+-type get_managed_notification_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_managed_notification_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"category">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"subCategory">> => [string()]
+%% }
+-type get_managed_notification_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_managed_notification_event_request() :: #{
+%%   <<"locale">> => string()
+%% }
+-type get_managed_notification_event_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_managed_notification_event_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"content">> => managed_notification_event(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"managedNotificationConfigurationArn">> => string()
+%% }
+-type get_managed_notification_event_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_notification_configuration_request() :: #{}
+-type get_notification_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_notification_configuration_response() :: #{
+%%   <<"aggregationDuration">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"subtype">> => string()
+%% }
+-type get_notification_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_notification_event_request() :: #{
 %%   <<"locale">> => string()
 %% }
 -type get_notification_event_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% disassociate_managed_notification_additional_channel_response() :: #{}
--type disassociate_managed_notification_additional_channel_response() :: #{}.
+%% get_notification_event_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"content">> => notification_event_schema(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"notificationConfigurationArn">> => string()
+%% }
+-type get_notification_event_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_notifications_access_for_organization_request() :: #{}
+-type get_notifications_access_for_organization_request() :: #{}.
+
+
+%% Example:
+%% get_notifications_access_for_organization_response() :: #{
+%%   <<"notificationsAccessForOrganization">> => notifications_access_for_organization()
+%% }
+-type get_notifications_access_for_organization_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"notificationConfigurationArn">> := string()
+%% }
+-type list_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_response() :: #{
+%%   <<"channels">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_rules_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"notificationConfigurationArn">> := string()
+%% }
+-type list_event_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_rules_response() :: #{
+%%   <<"eventRules">> => list(event_rule_structure()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_event_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_notification_channel_associations_request() :: #{
+%%   <<"managedNotificationConfigurationArn">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_notification_channel_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_notification_channel_associations_response() :: #{
+%%   <<"channelAssociations">> => list(managed_notification_channel_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_notification_channel_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_notification_child_events_request() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"organizationalUnitId">> => string(),
+%%   <<"relatedAccount">> => string(),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type list_managed_notification_child_events_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -246,34 +566,121 @@
 
 
 %% Example:
-%% get_managed_notification_event_request() :: #{
-%%   <<"locale">> => string()
+%% list_managed_notification_configurations_request() :: #{
+%%   <<"channelIdentifier">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
 %% }
--type get_managed_notification_event_request() :: #{binary() => any()}.
+-type list_managed_notification_configurations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% notification_hub_status_summary() :: #{
-%%   <<"reason">> => string(),
+%% list_managed_notification_configurations_response() :: #{
+%%   <<"managedNotificationConfigurations">> => list(managed_notification_configuration_structure()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_notification_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_notification_events_request() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"organizationalUnitId">> => string(),
+%%   <<"relatedAccount">> => string(),
+%%   <<"source">> => string(),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type list_managed_notification_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_notification_events_response() :: #{
+%%   <<"managedNotificationEvents">> => list(managed_notification_event_overview()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_notification_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_member_accounts_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"memberAccount">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"notificationConfigurationArn">> := string(),
+%%   <<"organizationalUnitId">> => string(),
 %%   <<"status">> => string()
 %% }
--type notification_hub_status_summary() :: #{binary() => any()}.
+-type list_member_accounts_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_event_rule_request() :: #{
-%%   <<"eventPattern">> => string(),
-%%   <<"regions">> => list(string())
+%% list_member_accounts_response() :: #{
+%%   <<"memberAccounts">> => list(member_account()),
+%%   <<"nextToken">> => string()
 %% }
--type update_event_rule_request() :: #{binary() => any()}.
+-type list_member_accounts_response() :: #{binary() => any()}.
+
 
 %% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+%% list_notification_configurations_request() :: #{
+%%   <<"channelArn">> => string(),
+%%   <<"eventRuleSource">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string(),
+%%   <<"subtype">> => string()
+%% }
+-type list_notification_configurations_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% disassociate_channel_response() :: #{}
--type disassociate_channel_response() :: #{}.
+%% list_notification_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"notificationConfigurations">> => list(notification_configuration_structure())
+%% }
+-type list_notification_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_events_request() :: #{
+%%   <<"aggregateNotificationEventArn">> => string(),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"includeChildEvents">> => [boolean()],
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"organizationalUnitId">> => string(),
+%%   <<"source">> => string(),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type list_notification_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_events_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"notificationEvents">> => list(notification_event_overview())
+%% }
+-type list_notification_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_hubs_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_notification_hubs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_hubs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"notificationHubs">> => list(notification_hub_overview())
+%% }
+-type list_notification_hubs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -286,73 +693,84 @@
 
 
 %% Example:
-%% list_member_accounts_response() :: #{
-%%   <<"memberAccounts">> => list(member_account()),
-%%   <<"nextToken">> => string()
+%% list_organizational_units_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"organizationalUnits">> => list(string())
 %% }
--type list_member_accounts_response() :: #{binary() => any()}.
+-type list_organizational_units_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
-%% media_element() :: #{
-%%   <<"caption">> => string(),
-%%   <<"mediaId">> => string(),
-%%   <<"type">> => string(),
-%%   <<"url">> => string()
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
 %% }
--type media_element() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% managed_notification_event_overview() :: #{
-%%   <<"aggregatedNotificationRegions">> => list(string()),
-%%   <<"aggregationEventType">> => string(),
-%%   <<"aggregationSummary">> => aggregation_summary(),
+%% managed_notification_channel_association_summary() :: #{
+%%   <<"channelIdentifier">> => [string()],
+%%   <<"channelType">> => string(),
+%%   <<"overrideOption">> => string()
+%% }
+-type managed_notification_channel_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_notification_child_event() :: #{
+%%   <<"aggregateManagedNotificationEventArn">> => string(),
+%%   <<"aggregationDetail">> => aggregation_detail(),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"eventStatus">> => string(),
+%%   <<"id">> => string(),
+%%   <<"messageComponents">> => message_components(),
+%%   <<"notificationType">> => string(),
+%%   <<"organizationalUnitId">> => string(),
+%%   <<"schemaVersion">> => string(),
+%%   <<"sourceEventDetailUrl">> => string(),
+%%   <<"sourceEventDetailUrlDisplayText">> => [string()],
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"textParts">> => map()
+%% }
+-type managed_notification_child_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_notification_child_event_overview() :: #{
+%%   <<"aggregateManagedNotificationEventArn">> => string(),
 %%   <<"arn">> => string(),
+%%   <<"childEvent">> => managed_notification_child_event_summary(),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"managedNotificationConfigurationArn">> => string(),
-%%   <<"notificationEvent">> => managed_notification_event_summary(),
 %%   <<"organizationalUnitId">> => string(),
 %%   <<"relatedAccount">> => string()
 %% }
--type managed_notification_event_overview() :: #{binary() => any()}.
+-type managed_notification_child_event_overview() :: #{binary() => any()}.
 
 
 %% Example:
-%% message_components_summary() :: #{
-%%   <<"headline">> => [string()]
+%% managed_notification_child_event_summary() :: #{
+%%   <<"aggregationDetail">> => aggregation_detail(),
+%%   <<"eventStatus">> => string(),
+%%   <<"messageComponents">> => message_components_summary(),
+%%   <<"notificationType">> => string(),
+%%   <<"schemaVersion">> => string(),
+%%   <<"sourceEventMetadata">> => managed_source_event_metadata_summary()
 %% }
--type message_components_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_rule_response() :: #{}
--type delete_event_rule_response() :: #{}.
+-type managed_notification_child_event_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% deregister_notification_hub_response() :: #{
-%%   <<"notificationHubRegion">> => string(),
-%%   <<"statusSummary">> => notification_hub_status_summary()
-%% }
--type deregister_notification_hub_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_notification_configuration_request() :: #{}
--type get_notification_configuration_request() :: #{}.
-
-%% Example:
-%% associate_managed_notification_account_contact_response() :: #{}
--type associate_managed_notification_account_contact_response() :: #{}.
-
-
-%% Example:
-%% get_managed_notification_event_response() :: #{
+%% managed_notification_configuration_structure() :: #{
 %%   <<"arn">> => string(),
-%%   <<"content">> => managed_notification_event(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"managedNotificationConfigurationArn">> => string()
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
 %% }
--type get_managed_notification_event_response() :: #{binary() => any()}.
+-type managed_notification_configuration_structure() :: #{binary() => any()}.
 
 
 %% Example:
@@ -375,105 +793,80 @@
 
 
 %% Example:
-%% list_notification_hubs_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_notification_hubs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_notification_event_response() :: #{
+%% managed_notification_event_overview() :: #{
+%%   <<"aggregatedNotificationRegions">> => list(string()),
+%%   <<"aggregationEventType">> => string(),
+%%   <<"aggregationSummary">> => aggregation_summary(),
 %%   <<"arn">> => string(),
-%%   <<"content">> => notification_event_schema(),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"notificationConfigurationArn">> => string()
+%%   <<"managedNotificationConfigurationArn">> => string(),
+%%   <<"notificationEvent">> => managed_notification_event_summary(),
+%%   <<"organizationalUnitId">> => string(),
+%%   <<"relatedAccount">> => string()
 %% }
--type get_notification_event_response() :: #{binary() => any()}.
+-type managed_notification_event_overview() :: #{binary() => any()}.
 
 
 %% Example:
-%% aggregation_summary() :: #{
-%%   <<"additionalSummarizationDimensions">> => list(summarization_dimension_overview()),
-%%   <<"aggregatedAccounts">> => summarization_dimension_overview(),
-%%   <<"aggregatedBy">> => list(aggregation_key()),
-%%   <<"aggregatedOrganizationalUnits">> => summarization_dimension_overview(),
-%%   <<"aggregatedRegions">> => summarization_dimension_overview(),
-%%   <<"eventCount">> => [integer()]
+%% managed_notification_event_summary() :: #{
+%%   <<"eventStatus">> => string(),
+%%   <<"messageComponents">> => message_components_summary(),
+%%   <<"notificationType">> => string(),
+%%   <<"schemaVersion">> => string(),
+%%   <<"sourceEventMetadata">> => managed_source_event_metadata_summary()
 %% }
--type aggregation_summary() :: #{binary() => any()}.
+-type managed_notification_event_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% aggregation_key() :: #{
-%%   <<"name">> => [string()],
-%%   <<"value">> => [string()]
+%% managed_source_event_metadata_summary() :: #{
+%%   <<"eventOriginRegion">> => string(),
+%%   <<"eventType">> => string(),
+%%   <<"source">> => string()
 %% }
--type aggregation_key() :: #{binary() => any()}.
+-type managed_source_event_metadata_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% summarization_dimension_detail() :: #{
-%%   <<"name">> => [string()],
-%%   <<"value">> => [string()]
+%% media_element() :: #{
+%%   <<"caption">> => string(),
+%%   <<"mediaId">> => string(),
+%%   <<"type">> => string(),
+%%   <<"url">> => string()
 %% }
--type summarization_dimension_detail() :: #{binary() => any()}.
+-type media_element() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_event_rules_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"notificationConfigurationArn">> := string()
-%% }
--type list_event_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_channel_response() :: #{}
--type associate_channel_response() :: #{}.
-
-%% Example:
-%% disable_notifications_access_for_organization_request() :: #{}
--type disable_notifications_access_for_organization_request() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_rule_request() :: #{}
--type get_event_rule_request() :: #{}.
-
-
-%% Example:
-%% list_managed_notification_configurations_response() :: #{
-%%   <<"managedNotificationConfigurations">> => list(managed_notification_configuration_structure()),
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_notification_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notification_configurations_request() :: #{
-%%   <<"channelArn">> => string(),
-%%   <<"eventRuleSource">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
+%% member_account() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"notificationConfigurationArn">> => string(),
+%%   <<"organizationalUnitId">> => string(),
 %%   <<"status">> => string(),
-%%   <<"subtype">> => string()
+%%   <<"statusReason">> => [string()]
 %% }
--type list_notification_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_organizational_unit_response() :: #{}
--type associate_organizational_unit_response() :: #{}.
+-type member_account() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_notification_configuration_response() :: #{
+%% message_components() :: #{
+%%   <<"completeDescription">> => string(),
+%%   <<"dimensions">> => list(dimension()),
+%%   <<"headline">> => string(),
+%%   <<"paragraphSummary">> => string()
+%% }
+-type message_components() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_components_summary() :: #{
+%%   <<"headline">> => [string()]
+%% }
+-type message_components_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_configuration_structure() :: #{
 %%   <<"aggregationDuration">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
@@ -482,14 +875,22 @@
 %%   <<"status">> => string(),
 %%   <<"subtype">> => string()
 %% }
--type get_notification_configuration_response() :: #{binary() => any()}.
+-type notification_configuration_structure() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_channel_request() :: #{
-%%   <<"notificationConfigurationArn">> := string()
+%% notification_event_overview() :: #{
+%%   <<"aggregateNotificationEventArn">> => string(),
+%%   <<"aggregationEventType">> => string(),
+%%   <<"aggregationSummary">> => aggregation_summary(),
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"notificationConfigurationArn">> => string(),
+%%   <<"notificationEvent">> => notification_event_summary(),
+%%   <<"organizationalUnitId">> => string(),
+%%   <<"relatedAccount">> => string()
 %% }
--type associate_channel_request() :: #{binary() => any()}.
+-type notification_event_overview() :: #{binary() => any()}.
 
 
 %% Example:
@@ -515,75 +916,14 @@
 
 
 %% Example:
-%% list_notification_events_request() :: #{
-%%   <<"aggregateNotificationEventArn">> => string(),
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"includeChildEvents">> => [boolean()],
-%%   <<"locale">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"organizationalUnitId">> => string(),
-%%   <<"source">> => string(),
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type list_notification_events_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_managed_notification_configuration_request() :: #{}
--type get_managed_notification_configuration_request() :: #{}.
-
-%% Example:
-%% disassociate_managed_notification_account_contact_response() :: #{}
--type disassociate_managed_notification_account_contact_response() :: #{}.
-
-
-%% Example:
-%% managed_notification_child_event() :: #{
-%%   <<"aggregateManagedNotificationEventArn">> => string(),
-%%   <<"aggregationDetail">> => aggregation_detail(),
-%%   <<"endTime">> => [non_neg_integer()],
+%% notification_event_summary() :: #{
 %%   <<"eventStatus">> => string(),
-%%   <<"id">> => string(),
-%%   <<"messageComponents">> => message_components(),
+%%   <<"messageComponents">> => message_components_summary(),
 %%   <<"notificationType">> => string(),
-%%   <<"organizationalUnitId">> => string(),
 %%   <<"schemaVersion">> => string(),
-%%   <<"sourceEventDetailUrl">> => string(),
-%%   <<"sourceEventDetailUrlDisplayText">> => [string()],
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"textParts">> => map()
+%%   <<"sourceEventMetadata">> => source_event_metadata_summary()
 %% }
--type managed_notification_child_event() :: #{binary() => any()}.
-
-%% Example:
-%% get_notifications_access_for_organization_request() :: #{}
--type get_notifications_access_for_organization_request() :: #{}.
-
-
-%% Example:
-%% aggregation_detail() :: #{
-%%   <<"summarizationDimensions">> => list(summarization_dimension_detail())
-%% }
--type aggregation_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_organizational_units_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"organizationalUnits">> => list(string())
-%% }
--type list_organizational_units_response() :: #{binary() => any()}.
-
-%% Example:
-%% enable_notifications_access_for_organization_response() :: #{}
--type enable_notifications_access_for_organization_response() :: #{}.
-
-
-%% Example:
-%% associate_organizational_unit_request() :: #{
-%%   <<"notificationConfigurationArn">> := string()
-%% }
--type associate_organizational_unit_request() :: #{binary() => any()}.
+-type notification_event_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -597,20 +937,45 @@
 
 
 %% Example:
-%% update_event_rule_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"notificationConfigurationArn">> => string(),
-%%   <<"statusSummaryByRegion">> => map()
+%% notification_hub_status_summary() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => string()
 %% }
--type update_event_rule_response() :: #{binary() => any()}.
+-type notification_hub_status_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string()
+%% notifications_access_for_organization() :: #{
+%%   <<"accessStatus">> => list(any())
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type notifications_access_for_organization() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_notification_hub_request() :: #{
+%%   <<"notificationHubRegion">> := string()
+%% }
+-type register_notification_hub_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_notification_hub_response() :: #{
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"lastActivationTime">> => non_neg_integer(),
+%%   <<"notificationHubRegion">> => string(),
+%%   <<"statusSummary">> => notification_hub_status_summary()
+%% }
+-type register_notification_hub_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"arn">> => string(),
+%%   <<"detailUrl">> => string(),
+%%   <<"id">> => [string()],
+%%   <<"tags">> => list([string()]())
+%% }
+-type resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -619,67 +984,6 @@
 %%   <<"resourceId">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notification_configuration_request() :: #{}
--type delete_notification_configuration_request() :: #{}.
-
-
-%% Example:
-%% list_notification_configurations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"notificationConfigurations">> => list(notification_configuration_structure())
-%% }
--type list_notification_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_notifications_access_for_organization_response() :: #{
-%%   <<"notificationsAccessForOrganization">> => notifications_access_for_organization()
-%% }
--type get_notifications_access_for_organization_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notification_configuration_response() :: #{}
--type delete_notification_configuration_response() :: #{}.
-
-
-%% Example:
-%% list_managed_notification_events_request() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"locale">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"organizationalUnitId">> => string(),
-%%   <<"relatedAccount">> => string(),
-%%   <<"source">> => string(),
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type list_managed_notification_events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_account() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"notificationConfigurationArn">> => string(),
-%%   <<"organizationalUnitId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusReason">> => [string()]
-%% }
--type member_account() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_notification_child_events_request() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"locale">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"organizationalUnitId">> => string(),
-%%   <<"relatedAccount">> => string(),
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type list_managed_notification_child_events_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -691,293 +995,6 @@
 %%   <<"serviceCode">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_notification_configuration_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"category">> => [string()],
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"subCategory">> => [string()]
-%% }
--type get_managed_notification_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_managed_notification_additional_channel_request() :: #{
-%%   <<"managedNotificationConfigurationArn">> := string()
-%% }
--type disassociate_managed_notification_additional_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_rule_structure() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"eventPattern">> => string(),
-%%   <<"eventType">> => string(),
-%%   <<"managedRules">> => list(string()),
-%%   <<"notificationConfigurationArn">> => string(),
-%%   <<"regions">> => list(string()),
-%%   <<"source">> => string(),
-%%   <<"statusSummaryByRegion">> => map()
-%% }
--type event_rule_structure() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notification_hubs_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"notificationHubs">> => list(notification_hub_overview())
-%% }
--type list_notification_hubs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_notification_child_event_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"content">> => managed_notification_child_event(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"managedNotificationConfigurationArn">> => string()
-%% }
--type get_managed_notification_child_event_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_notification_configuration_request() :: #{
-%%   <<"aggregationDuration">> => string(),
-%%   <<"description">> := string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_notification_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_notification_hub_request() :: #{
-%%   <<"notificationHubRegion">> := string()
-%% }
--type register_notification_hub_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notification_events_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"notificationEvents">> => list(notification_event_overview())
-%% }
--type list_notification_events_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_notification_configuration_request() :: #{
-%%   <<"aggregationDuration">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_notification_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_notification_configuration_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"status">> => string()
-%% }
--type create_notification_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channels_response() :: #{
-%%   <<"channels">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_channels_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_notification_event_summary() :: #{
-%%   <<"eventStatus">> => string(),
-%%   <<"messageComponents">> => message_components_summary(),
-%%   <<"notificationType">> => string(),
-%%   <<"schemaVersion">> => string(),
-%%   <<"sourceEventMetadata">> => managed_source_event_metadata_summary()
-%% }
--type managed_notification_event_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_notification_channel_associations_response() :: #{
-%%   <<"channelAssociations">> => list(managed_notification_channel_association_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_notification_channel_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_rule_status_summary() :: #{
-%%   <<"reason">> => string(),
-%%   <<"status">> => string()
-%% }
--type event_rule_status_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_rules_response() :: #{
-%%   <<"eventRules">> => list(event_rule_structure()),
-%%   <<"nextToken">> => string()
-%% }
--type list_event_rules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_event_summary() :: #{
-%%   <<"eventStatus">> => string(),
-%%   <<"messageComponents">> => message_components_summary(),
-%%   <<"notificationType">> => string(),
-%%   <<"schemaVersion">> => string(),
-%%   <<"sourceEventMetadata">> => source_event_metadata_summary()
-%% }
--type notification_event_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_notification_events_response() :: #{
-%%   <<"managedNotificationEvents">> => list(managed_notification_event_overview()),
-%%   <<"nextToken">> => string()
-%% }
--type list_managed_notification_events_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_event_overview() :: #{
-%%   <<"aggregateNotificationEventArn">> => string(),
-%%   <<"aggregationEventType">> => string(),
-%%   <<"aggregationSummary">> => aggregation_summary(),
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"notificationConfigurationArn">> => string(),
-%%   <<"notificationEvent">> => notification_event_summary(),
-%%   <<"organizationalUnitId">> => string(),
-%%   <<"relatedAccount">> => string()
-%% }
--type notification_event_overview() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_notification_child_event_summary() :: #{
-%%   <<"aggregationDetail">> => aggregation_detail(),
-%%   <<"eventStatus">> => string(),
-%%   <<"messageComponents">> => message_components_summary(),
-%%   <<"notificationType">> => string(),
-%%   <<"schemaVersion">> => string(),
-%%   <<"sourceEventMetadata">> => managed_source_event_metadata_summary()
-%% }
--type managed_notification_child_event_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_channel_request() :: #{
-%%   <<"notificationConfigurationArn">> := string()
-%% }
--type disassociate_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_components() :: #{
-%%   <<"completeDescription">> => string(),
-%%   <<"dimensions">> => list(dimension()),
-%%   <<"headline">> => string(),
-%%   <<"paragraphSummary">> => string()
-%% }
--type message_components() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_organizational_unit_response() :: #{}
--type disassociate_organizational_unit_response() :: #{}.
-
-
-%% Example:
-%% summarization_dimension_overview() :: #{
-%%   <<"count">> => [integer()],
-%%   <<"name">> => [string()],
-%%   <<"sampleValues">> => list([string()]())
-%% }
--type summarization_dimension_overview() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_notification_configuration_response() :: #{
-%%   <<"arn">> => string()
-%% }
--type update_notification_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_rule_request() :: #{}
--type delete_event_rule_request() :: #{}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-%% Example:
-%% enable_notifications_access_for_organization_request() :: #{}
--type enable_notifications_access_for_organization_request() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"retryAfterSeconds">> => [integer()],
-%%   <<"serviceCode">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_notification_hub_request() :: #{}
--type deregister_notification_hub_request() :: #{}.
 
 
 %% Example:
@@ -995,426 +1012,409 @@
 
 
 %% Example:
-%% managed_notification_configuration_structure() :: #{
+%% source_event_metadata_summary() :: #{
+%%   <<"eventOriginRegion">> => [string()],
+%%   <<"eventType">> => [string()],
+%%   <<"source">> => [string()]
+%% }
+-type source_event_metadata_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% summarization_dimension_detail() :: #{
+%%   <<"name">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type summarization_dimension_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% summarization_dimension_overview() :: #{
+%%   <<"count">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"sampleValues">> => list([string()]())
+%% }
+-type summarization_dimension_overview() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% text_part_value() :: #{
+%%   <<"displayText">> => [string()],
+%%   <<"textByLocale">> => map(),
+%%   <<"type">> => string(),
+%%   <<"url">> => string()
+%% }
+-type text_part_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_event_rule_request() :: #{
+%%   <<"eventPattern">> => string(),
+%%   <<"regions">> => list(string())
+%% }
+-type update_event_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_rule_response() :: #{
 %%   <<"arn">> => string(),
+%%   <<"notificationConfigurationArn">> => string(),
+%%   <<"statusSummaryByRegion">> => map()
+%% }
+-type update_event_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_notification_configuration_request() :: #{
+%%   <<"aggregationDuration">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string()
 %% }
--type managed_notification_configuration_structure() :: #{binary() => any()}.
+-type update_notification_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_managed_notification_account_contact_request() :: #{
-%%   <<"managedNotificationConfigurationArn">> := string()
+%% update_notification_configuration_response() :: #{
+%%   <<"arn">> => string()
 %% }
--type associate_managed_notification_account_contact_request() :: #{binary() => any()}.
-
-%% Example:
-%% disable_notifications_access_for_organization_response() :: #{}
--type disable_notifications_access_for_organization_response() :: #{}.
+-type update_notification_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% dimension() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
 %% }
--type dimension() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% disassociate_organizational_unit_request() :: #{
-%%   <<"notificationConfigurationArn">> := string()
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
 %% }
--type disassociate_organizational_unit_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_notification_channel_association_summary() :: #{
-%%   <<"channelIdentifier">> => [string()],
-%%   <<"channelType">> => string(),
-%%   <<"overrideOption">> => string()
-%% }
--type managed_notification_channel_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_source_event_metadata_summary() :: #{
-%%   <<"eventOriginRegion">> => string(),
-%%   <<"eventType">> => string(),
-%%   <<"source">> => string()
-%% }
--type managed_source_event_metadata_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_event_rule_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"eventPattern">> => string(),
-%%   <<"eventType">> => string(),
-%%   <<"managedRules">> => list(string()),
-%%   <<"notificationConfigurationArn">> => string(),
-%%   <<"regions">> => list(string()),
-%%   <<"source">> => string(),
-%%   <<"statusSummaryByRegion">> => map()
-%% }
--type get_event_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_managed_notification_account_contact_request() :: #{
-%%   <<"managedNotificationConfigurationArn">> := string()
-%% }
--type disassociate_managed_notification_account_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_notification_child_event_overview() :: #{
-%%   <<"aggregateManagedNotificationEventArn">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"childEvent">> => managed_notification_child_event_summary(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"managedNotificationConfigurationArn">> => string(),
-%%   <<"organizationalUnitId">> => string(),
-%%   <<"relatedAccount">> => string()
-%% }
--type managed_notification_child_event_overview() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_notification_hub_response() :: #{
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"lastActivationTime">> => non_neg_integer(),
-%%   <<"notificationHubRegion">> => string(),
-%%   <<"statusSummary">> => notification_hub_status_summary()
-%% }
--type register_notification_hub_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channels_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"notificationConfigurationArn">> := string()
-%% }
--type list_channels_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_rule_request() :: #{
-%%   <<"eventPattern">> => string(),
-%%   <<"eventType">> := string(),
-%%   <<"notificationConfigurationArn">> := string(),
-%%   <<"regions">> := list(string()),
-%%   <<"source">> := string()
-%% }
--type create_event_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_managed_notification_additional_channel_request() :: #{
-%%   <<"managedNotificationConfigurationArn">> := string()
-%% }
--type associate_managed_notification_additional_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource() :: #{
-%%   <<"arn">> => string(),
-%%   <<"detailUrl">> => string(),
-%%   <<"id">> => [string()],
-%%   <<"tags">> => list([string()]())
-%% }
--type resource() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type associate_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_managed_notification_account_contact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_managed_notification_additional_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_organizational_unit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_event_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_notification_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_event_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_notification_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type deregister_notification_hub_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disable_notifications_access_for_organization_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_managed_notification_account_contact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_managed_notification_additional_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_organizational_unit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type enable_notifications_access_for_organization_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_event_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_managed_notification_child_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_managed_notification_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_managed_notification_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_notification_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_notification_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_notifications_access_for_organization_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_channels_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_event_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_managed_notification_channel_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_managed_notification_child_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_managed_notification_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_managed_notification_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_member_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_notification_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_notification_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_notification_hubs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_organizational_units_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type register_notification_hub_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_event_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_notification_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

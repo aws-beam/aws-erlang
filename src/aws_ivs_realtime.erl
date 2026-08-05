@@ -165,30 +165,479 @@
 
 
 %% Example:
-%% video() :: #{
-%%   <<"bitrate">> => integer(),
-%%   <<"framerate">> => float(),
-%%   <<"height">> => integer(),
-%%   <<"width">> => integer()
+%% access_denied_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
--type video() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_stage_request() :: #{
-%%   <<"arn">> := string(),
+%% auto_participant_recording_configuration() :: #{
+%%   <<"hlsConfiguration">> => participant_recording_hls_configuration(),
+%%   <<"mediaTypes">> => list(list(any())()),
+%%   <<"recordParticipantReplicas">> => boolean(),
+%%   <<"recordingReconnectWindowSeconds">> => integer(),
+%%   <<"storageConfigurationArn">> => string(),
+%%   <<"thumbnailConfiguration">> => participant_thumbnail_configuration()
+%% }
+-type auto_participant_recording_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_destination_configuration() :: #{
+%%   <<"channelArn">> => string(),
+%%   <<"encoderConfigurationArn">> => string()
+%% }
+-type channel_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition() :: #{
+%%   <<"arn">> => string(),
+%%   <<"destinations">> => list(destination()),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"layout">> => layout_configuration(),
+%%   <<"stageArn">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type composition() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition_recording_hls_configuration() :: #{
+%%   <<"targetSegmentDurationSeconds">> => integer()
+%% }
+-type composition_recording_hls_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"destinations">> => list(destination_summary()),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"stageArn">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type composition_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% composition_thumbnail_configuration() :: #{
+%%   <<"storage">> => list(list(any())()),
+%%   <<"targetIntervalSeconds">> => integer()
+%% }
+-type composition_thumbnail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_encoder_configuration_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"video">> => video()
+%% }
+-type create_encoder_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_encoder_configuration_response() :: #{
+%%   <<"encoderConfiguration">> => encoder_configuration()
+%% }
+-type create_encoder_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ingest_configuration_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"ingestProtocol">> := list(any()),
+%%   <<"insecureIngest">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"redundantIngest">> => boolean(),
+%%   <<"stageArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"userId">> => string()
+%% }
+-type create_ingest_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ingest_configuration_response() :: #{
+%%   <<"ingestConfiguration">> => ingest_configuration()
+%% }
+-type create_ingest_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_participant_token_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"capabilities">> => list(string()),
+%%   <<"duration">> => integer(),
+%%   <<"stageArn">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type create_participant_token_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_participant_token_response() :: #{
+%%   <<"participantToken">> => participant_token()
+%% }
+-type create_participant_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_stage_request() :: #{
 %%   <<"autoParticipantRecordingConfiguration">> => auto_participant_recording_configuration(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"participantTokenConfigurations">> => list(participant_token_configuration()),
+%%   <<"tags">> => map()
 %% }
--type update_stage_request() :: #{binary() => any()}.
+-type create_stage_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_participant_replicas_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"replicas">> => list(participant_replica())
+%% create_stage_response() :: #{
+%%   <<"participantTokens">> => list(participant_token()),
+%%   <<"stage">> => stage()
 %% }
--type list_participant_replicas_response() :: #{binary() => any()}.
+-type create_stage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_storage_configuration_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"s3">> := s3_storage_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type create_storage_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_storage_configuration_response() :: #{
+%%   <<"storageConfiguration">> => storage_configuration()
+%% }
+-type create_storage_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_encoder_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_encoder_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_encoder_configuration_response() :: #{}
+-type delete_encoder_configuration_response() :: #{}.
+
+
+%% Example:
+%% delete_ingest_configuration_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"force">> => boolean()
+%% }
+-type delete_ingest_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ingest_configuration_response() :: #{}
+-type delete_ingest_configuration_response() :: #{}.
+
+
+%% Example:
+%% delete_public_key_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_public_key_response() :: #{}
+-type delete_public_key_response() :: #{}.
+
+
+%% Example:
+%% delete_stage_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_stage_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stage_response() :: #{}
+-type delete_stage_response() :: #{}.
+
+
+%% Example:
+%% delete_storage_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_storage_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_storage_configuration_response() :: #{}
+-type delete_storage_configuration_response() :: #{}.
+
+
+%% Example:
+%% destination() :: #{
+%%   <<"configuration">> => destination_configuration(),
+%%   <<"detail">> => destination_detail(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"state">> => string()
+%% }
+-type destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_configuration() :: #{
+%%   <<"channel">> => channel_destination_configuration(),
+%%   <<"name">> => string(),
+%%   <<"s3">> => s3_destination_configuration()
+%% }
+-type destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_detail() :: #{
+%%   <<"s3">> => s3_detail()
+%% }
+-type destination_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_summary() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"state">> => string()
+%% }
+-type destination_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% disconnect_participant_request() :: #{
+%%   <<"participantId">> := string(),
+%%   <<"reason">> => string(),
+%%   <<"stageArn">> := string()
+%% }
+-type disconnect_participant_request() :: #{binary() => any()}.
+
+%% Example:
+%% disconnect_participant_response() :: #{}
+-type disconnect_participant_response() :: #{}.
+
+
+%% Example:
+%% encoder_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"video">> => video()
+%% }
+-type encoder_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% encoder_configuration_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type encoder_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% event() :: #{
+%%   <<"destinationSessionId">> => string(),
+%%   <<"destinationStageArn">> => string(),
+%%   <<"errorCode">> => list(any()),
+%%   <<"eventTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"newToken">> => exchanged_participant_token(),
+%%   <<"participantId">> => string(),
+%%   <<"previousToken">> => exchanged_participant_token(),
+%%   <<"remoteParticipantId">> => string(),
+%%   <<"replica">> => boolean()
+%% }
+-type event() :: #{binary() => any()}.
+
+
+%% Example:
+%% exchanged_participant_token() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"capabilities">> => list(string()),
+%%   <<"expirationTime">> => non_neg_integer(),
+%%   <<"userId">> => string()
+%% }
+-type exchanged_participant_token() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_composition_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_composition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_composition_response() :: #{
+%%   <<"composition">> => composition()
+%% }
+-type get_composition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_encoder_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_encoder_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_encoder_configuration_response() :: #{
+%%   <<"encoderConfiguration">> => encoder_configuration()
+%% }
+-type get_encoder_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_ingest_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_ingest_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_ingest_configuration_response() :: #{
+%%   <<"ingestConfiguration">> => ingest_configuration()
+%% }
+-type get_ingest_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_participant_request() :: #{
+%%   <<"participantId">> := string(),
+%%   <<"sessionId">> := string(),
+%%   <<"stageArn">> := string()
+%% }
+-type get_participant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_participant_response() :: #{
+%%   <<"participant">> => participant()
+%% }
+-type get_participant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_key_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_public_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_key_response() :: #{
+%%   <<"publicKey">> => public_key()
+%% }
+-type get_public_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_stage_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_stage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_stage_response() :: #{
+%%   <<"stage">> => stage()
+%% }
+-type get_stage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_stage_session_request() :: #{
+%%   <<"sessionId">> := string(),
+%%   <<"stageArn">> := string()
+%% }
+-type get_stage_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_stage_session_response() :: #{
+%%   <<"stageSession">> => stage_session()
+%% }
+-type get_stage_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_storage_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_storage_configuration_response() :: #{
+%%   <<"storageConfiguration">> => storage_configuration()
+%% }
+-type get_storage_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% grid_configuration() :: #{
+%%   <<"featuredParticipantAttribute">> => string(),
+%%   <<"gridGap">> => integer(),
+%%   <<"omitStoppedVideo">> => boolean(),
+%%   <<"participantOrderAttribute">> => string(),
+%%   <<"videoAspectRatio">> => list(any()),
+%%   <<"videoFillMode">> => list(any())
+%% }
+-type grid_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_public_key_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"publicKeyMaterial">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type import_public_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_public_key_response() :: #{
+%%   <<"publicKey">> => public_key()
+%% }
+-type import_public_key_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -210,29 +659,184 @@
 
 
 %% Example:
-%% get_composition_response() :: #{
-%%   <<"composition">> => composition()
-%% }
--type get_composition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% stage() :: #{
-%%   <<"activeSessionId">> => string(),
+%% ingest_configuration_summary() :: #{
 %%   <<"arn">> => string(),
-%%   <<"autoParticipantRecordingConfiguration">> => auto_participant_recording_configuration(),
-%%   <<"endpoints">> => stage_endpoints(),
+%%   <<"ingestProtocol">> => list(any()),
 %%   <<"name">> => string(),
-%%   <<"tags">> => map()
+%%   <<"participantId">> => string(),
+%%   <<"redundantIngest">> => boolean(),
+%%   <<"stageArn">> => string(),
+%%   <<"state">> => string(),
+%%   <<"userId">> => string()
 %% }
--type stage() :: #{binary() => any()}.
+-type ingest_configuration_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% internal_server_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% layout_configuration() :: #{
+%%   <<"grid">> => grid_configuration(),
+%%   <<"pip">> => pip_configuration()
+%% }
+-type layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_compositions_request() :: #{
+%%   <<"filterByEncoderConfigurationArn">> => string(),
+%%   <<"filterByStageArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_compositions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_compositions_response() :: #{
+%%   <<"compositions">> => list(composition_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_compositions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_encoder_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_encoder_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_encoder_configurations_response() :: #{
+%%   <<"encoderConfigurations">> => list(encoder_configuration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_encoder_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ingest_configurations_request() :: #{
+%%   <<"filterByStageArn">> => string(),
+%%   <<"filterByState">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ingest_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ingest_configurations_response() :: #{
+%%   <<"ingestConfigurations">> => list(ingest_configuration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ingest_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_participant_events_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"participantId">> := string(),
+%%   <<"sessionId">> := string(),
+%%   <<"stageArn">> := string()
+%% }
+-type list_participant_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_participant_events_response() :: #{
+%%   <<"events">> => list(event()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_participant_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_participant_replicas_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"participantId">> := string(),
+%%   <<"sourceStageArn">> := string()
+%% }
+-type list_participant_replicas_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_participant_replicas_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"replicas">> => list(participant_replica())
+%% }
+-type list_participant_replicas_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_participants_request() :: #{
+%%   <<"filterByPublished">> => boolean(),
+%%   <<"filterByRecordingState">> => string(),
+%%   <<"filterByState">> => string(),
+%%   <<"filterByUserId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sessionId">> := string(),
+%%   <<"stageArn">> := string()
+%% }
+-type list_participants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_participants_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"participants">> => list(participant_summary())
+%% }
+-type list_participants_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_public_keys_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_public_keys_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_public_keys_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"publicKeys">> => list(public_key_summary())
+%% }
+-type list_public_keys_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stage_sessions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"stageArn">> := string()
+%% }
+-type list_stage_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stage_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"stageSessions">> => list(stage_session_summary())
+%% }
+-type list_stage_sessions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -244,40 +848,38 @@
 
 
 %% Example:
-%% composition() :: #{
-%%   <<"arn">> => string(),
-%%   <<"destinations">> => list(destination()),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"layout">> => layout_configuration(),
-%%   <<"stageArn">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"state">> => string(),
-%%   <<"tags">> => map()
+%% list_stages_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"stages">> := list(stage_summary())
 %% }
--type composition() :: #{binary() => any()}.
+-type list_stages_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_storage_configuration_response() :: #{
-%%   <<"storageConfiguration">> => storage_configuration()
+%% list_storage_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type get_storage_configuration_response() :: #{binary() => any()}.
+-type list_storage_configurations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_stage_response() :: #{
-%%   <<"participantTokens">> => list(participant_token()),
-%%   <<"stage">> => stage()
+%% list_storage_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"storageConfigurations">> => list(storage_configuration_summary())
 %% }
--type create_stage_response() :: #{binary() => any()}.
+-type list_storage_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
-%% recording_configuration() :: #{
-%%   <<"format">> => string(),
-%%   <<"hlsConfiguration">> => composition_recording_hls_configuration()
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> := map()
 %% }
--type recording_configuration() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -309,10 +911,10 @@
 
 
 %% Example:
-%% create_ingest_configuration_response() :: #{
-%%   <<"ingestConfiguration">> => ingest_configuration()
+%% participant_recording_hls_configuration() :: #{
+%%   <<"targetSegmentDurationSeconds">> => integer()
 %% }
--type create_ingest_configuration_response() :: #{binary() => any()}.
+-type participant_recording_hls_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -325,102 +927,6 @@
 %%   <<"sourceStageArn">> => string()
 %% }
 -type participant_replica() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stage_response() :: #{
-%%   <<"stage">> => stage()
-%% }
--type get_stage_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_composition_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type stop_composition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ingest_configuration_request() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"ingestProtocol">> := list(any()),
-%%   <<"insecureIngest">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"redundantIngest">> => boolean(),
-%%   <<"stageArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"userId">> => string()
-%% }
--type create_ingest_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% pip_configuration() :: #{
-%%   <<"featuredParticipantAttribute">> => string(),
-%%   <<"gridGap">> => integer(),
-%%   <<"omitStoppedVideo">> => boolean(),
-%%   <<"participantOrderAttribute">> => string(),
-%%   <<"pipBehavior">> => list(any()),
-%%   <<"pipHeight">> => integer(),
-%%   <<"pipOffset">> => integer(),
-%%   <<"pipParticipantAttribute">> => string(),
-%%   <<"pipPosition">> => list(any()),
-%%   <<"pipWidth">> => integer(),
-%%   <<"videoFillMode">> => list(any())
-%% }
--type pip_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_compositions_response() :: #{
-%%   <<"compositions">> => list(composition_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_compositions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_public_keys_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"publicKeys">> => list(public_key_summary())
-%% }
--type list_public_keys_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_encoder_configuration_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_encoder_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_storage_configuration_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_storage_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ingest_configuration_response() :: #{
-%%   <<"ingestConfiguration">> => ingest_configuration()
-%% }
--type get_ingest_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_compositions_request() :: #{
-%%   <<"filterByEncoderConfigurationArn">> => string(),
-%%   <<"filterByStageArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_compositions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -442,709 +948,12 @@
 
 
 %% Example:
-%% list_ingest_configurations_response() :: #{
-%%   <<"ingestConfigurations">> => list(ingest_configuration_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_ingest_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% disconnect_participant_response() :: #{}
--type disconnect_participant_response() :: #{}.
-
-
-%% Example:
-%% stage_endpoints() :: #{
-%%   <<"events">> => string(),
-%%   <<"rtmp">> => string(),
-%%   <<"rtmps">> => string(),
-%%   <<"whip">> => string()
-%% }
--type stage_endpoints() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stage_session_request() :: #{
-%%   <<"sessionId">> := string(),
-%%   <<"stageArn">> := string()
-%% }
--type get_stage_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stage_session_response() :: #{
-%%   <<"stageSession">> => stage_session()
-%% }
--type get_stage_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_participant_replicas_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"participantId">> := string(),
-%%   <<"sourceStageArn">> := string()
-%% }
--type list_participant_replicas_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_stage_response() :: #{
-%%   <<"stage">> => stage()
-%% }
--type update_stage_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% participant_token_configuration() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"capabilities">> => list(string()),
-%%   <<"duration">> => integer(),
-%%   <<"userId">> => string()
-%% }
--type participant_token_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_ingest_configuration_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"redundantIngest">> => boolean(),
-%%   <<"stageArn">> => string()
-%% }
--type update_ingest_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_configuration_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"s3">> => s3_storage_configuration(),
-%%   <<"tags">> => map()
-%% }
--type storage_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_public_key_response() :: #{
-%%   <<"publicKey">> => public_key()
-%% }
--type import_public_key_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_encoder_configurations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_encoder_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stage_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_stage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_public_keys_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_public_keys_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_composition_response() :: #{
-%%   <<"composition">> => composition()
-%% }
--type start_composition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_composition_request() :: #{
-%%   <<"destinations">> := list(destination_configuration()),
-%%   <<"idempotencyToken">> => string(),
-%%   <<"layout">> => layout_configuration(),
-%%   <<"stageArn">> := string(),
-%%   <<"tags">> => map()
-%% }
--type start_composition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_stage_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_stage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_composition_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_composition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_encoder_configuration_response() :: #{
-%%   <<"encoderConfiguration">> => encoder_configuration()
-%% }
--type get_encoder_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_storage_configurations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_storage_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disconnect_participant_request() :: #{
-%%   <<"participantId">> := string(),
-%%   <<"reason">> => string(),
-%%   <<"stageArn">> := string()
-%% }
--type disconnect_participant_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_participant_replication_response() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type start_participant_replication_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_storage_configurations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"storageConfigurations">> => list(storage_configuration_summary())
-%% }
--type list_storage_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_public_key_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_public_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_ingest_configuration_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"force">> => boolean()
-%% }
--type delete_ingest_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_participants_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"participants">> => list(participant_summary())
-%% }
--type list_participants_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ingest_configurations_request() :: #{
-%%   <<"filterByStageArn">> => string(),
-%%   <<"filterByState">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_ingest_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_destination_configuration() :: #{
-%%   <<"channelArn">> => string(),
-%%   <<"encoderConfigurationArn">> => string()
-%% }
--type channel_destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_participant_response() :: #{
-%%   <<"participant">> => participant()
-%% }
--type get_participant_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_participants_request() :: #{
-%%   <<"filterByPublished">> => boolean(),
-%%   <<"filterByRecordingState">> => string(),
-%%   <<"filterByState">> => string(),
-%%   <<"filterByUserId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sessionId">> := string(),
-%%   <<"stageArn">> := string()
-%% }
--type list_participants_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% participant_recording_hls_configuration() :: #{
-%%   <<"targetSegmentDurationSeconds">> => integer()
-%% }
--type participant_recording_hls_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_stage_sessions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"stageArn">> := string()
-%% }
--type list_stage_sessions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_storage_configuration_response() :: #{
-%%   <<"storageConfiguration">> => storage_configuration()
-%% }
--type create_storage_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_participant_recording_configuration() :: #{
-%%   <<"hlsConfiguration">> => participant_recording_hls_configuration(),
-%%   <<"mediaTypes">> => list(list(any())()),
-%%   <<"recordParticipantReplicas">> => boolean(),
-%%   <<"recordingReconnectWindowSeconds">> => integer(),
-%%   <<"storageConfigurationArn">> => string(),
-%%   <<"thumbnailConfiguration">> => participant_thumbnail_configuration()
-%% }
--type auto_participant_recording_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_participant_token_response() :: #{
-%%   <<"participantToken">> => participant_token()
-%% }
--type create_participant_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_destination_configuration() :: #{
-%%   <<"encoderConfigurationArns">> => list(string()),
-%%   <<"recordingConfiguration">> => recording_configuration(),
-%%   <<"storageConfigurationArn">> => string(),
-%%   <<"thumbnailConfigurations">> => list(composition_thumbnail_configuration())
-%% }
--type s3_destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% exchanged_participant_token() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"capabilities">> => list(string()),
-%%   <<"expirationTime">> => non_neg_integer(),
-%%   <<"userId">> => string()
-%% }
--type exchanged_participant_token() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_summary() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"state">> => string()
-%% }
--type destination_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_configuration() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"s3">> => s3_storage_configuration(),
-%%   <<"tags">> => map()
-%% }
--type storage_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_stage_sessions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"stageSessions">> => list(stage_session_summary())
-%% }
--type list_stage_sessions_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% participant_thumbnail_configuration() :: #{
 %%   <<"recordingMode">> => list(any()),
 %%   <<"storage">> => list(list(any())()),
 %%   <<"targetIntervalSeconds">> => integer()
 %% }
 -type participant_thumbnail_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> := map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% encoder_configuration() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"video">> => video()
-%% }
--type encoder_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_key() :: #{
-%%   <<"arn">> => string(),
-%%   <<"fingerprint">> => string(),
-%%   <<"name">> => string(),
-%%   <<"publicKeyMaterial">> => string(),
-%%   <<"tags">> => map()
-%% }
--type public_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% encoder_configuration_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type encoder_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_ingest_configuration_response() :: #{
-%%   <<"ingestConfiguration">> => ingest_configuration()
-%% }
--type update_ingest_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% stage_session_summary() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"sessionId">> => string(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type stage_session_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stage_response() :: #{}
--type delete_stage_response() :: #{}.
-
-
-%% Example:
-%% create_stage_request() :: #{
-%%   <<"autoParticipantRecordingConfiguration">> => auto_participant_recording_configuration(),
-%%   <<"name">> => string(),
-%%   <<"participantTokenConfigurations">> => list(participant_token_configuration()),
-%%   <<"tags">> => map()
-%% }
--type create_stage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_detail() :: #{
-%%   <<"recordingPrefix">> => string()
-%% }
--type s3_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_participant_token_request() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"capabilities">> => list(string()),
-%%   <<"duration">> => integer(),
-%%   <<"stageArn">> := string(),
-%%   <<"userId">> => string()
-%% }
--type create_participant_token_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_public_key_request() :: #{
-%%   <<"name">> => string(),
-%%   <<"publicKeyMaterial">> := string(),
-%%   <<"tags">> => map()
-%% }
--type import_public_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingest_configuration_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"ingestProtocol">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"participantId">> => string(),
-%%   <<"redundantIngest">> => boolean(),
-%%   <<"stageArn">> => string(),
-%%   <<"state">> => string(),
-%%   <<"userId">> => string()
-%% }
--type ingest_configuration_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_public_key_response() :: #{}
--type delete_public_key_response() :: #{}.
-
-
-%% Example:
-%% list_stages_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"stages">> := list(stage_summary())
-%% }
--type list_stages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% event() :: #{
-%%   <<"destinationSessionId">> => string(),
-%%   <<"destinationStageArn">> => string(),
-%%   <<"errorCode">> => list(any()),
-%%   <<"eventTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"newToken">> => exchanged_participant_token(),
-%%   <<"participantId">> => string(),
-%%   <<"previousToken">> => exchanged_participant_token(),
-%%   <<"remoteParticipantId">> => string(),
-%%   <<"replica">> => boolean()
-%% }
--type event() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_encoder_configurations_response() :: #{
-%%   <<"encoderConfigurations">> => list(encoder_configuration_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_encoder_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_public_key_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_public_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_participant_request() :: #{
-%%   <<"participantId">> := string(),
-%%   <<"sessionId">> := string(),
-%%   <<"stageArn">> := string()
-%% }
--type get_participant_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_public_key_response() :: #{
-%%   <<"publicKey">> => public_key()
-%% }
--type get_public_key_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% stop_participant_replication_request() :: #{
-%%   <<"destinationStageArn">> := string(),
-%%   <<"participantId">> := string(),
-%%   <<"sourceStageArn">> := string()
-%% }
--type stop_participant_replication_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_storage_configuration_response() :: #{}
--type delete_storage_configuration_response() :: #{}.
-
-
-%% Example:
-%% list_participant_events_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"participantId">> := string(),
-%%   <<"sessionId">> := string(),
-%%   <<"stageArn">> := string()
-%% }
--type list_participant_events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_participant_replication_response() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type stop_participant_replication_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% composition_recording_hls_configuration() :: #{
-%%   <<"targetSegmentDurationSeconds">> => integer()
-%% }
--type composition_recording_hls_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% grid_configuration() :: #{
-%%   <<"featuredParticipantAttribute">> => string(),
-%%   <<"gridGap">> => integer(),
-%%   <<"omitStoppedVideo">> => boolean(),
-%%   <<"participantOrderAttribute">> => string(),
-%%   <<"videoAspectRatio">> => list(any()),
-%%   <<"videoFillMode">> => list(any())
-%% }
--type grid_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ingest_configuration_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_ingest_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% composition_thumbnail_configuration() :: #{
-%%   <<"storage">> => list(list(any())()),
-%%   <<"targetIntervalSeconds">> => integer()
-%% }
--type composition_thumbnail_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% destination() :: #{
-%%   <<"configuration">> => destination_configuration(),
-%%   <<"detail">> => destination_detail(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"state">> => string()
-%% }
--type destination() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1159,134 +968,15 @@
 %% }
 -type participant_token() :: #{binary() => any()}.
 
-%% Example:
-%% stop_composition_response() :: #{}
--type stop_composition_response() :: #{}.
-
 
 %% Example:
-%% start_participant_replication_request() :: #{
+%% participant_token_configuration() :: #{
 %%   <<"attributes">> => map(),
-%%   <<"destinationStageArn">> := string(),
-%%   <<"participantId">> := string(),
-%%   <<"reconnectWindowSeconds">> => integer(),
-%%   <<"sourceStageArn">> := string()
+%%   <<"capabilities">> => list(string()),
+%%   <<"duration">> => integer(),
+%%   <<"userId">> => string()
 %% }
--type start_participant_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_storage_configuration_request() :: #{
-%%   <<"name">> => string(),
-%%   <<"s3">> := s3_storage_configuration(),
-%%   <<"tags">> => map()
-%% }
--type create_storage_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_detail() :: #{
-%%   <<"s3">> => s3_detail()
-%% }
--type destination_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_encoder_configuration_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_encoder_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_key_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type public_key_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_encoder_configuration_request() :: #{
-%%   <<"name">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"video">> => video()
-%% }
--type create_encoder_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_storage_configuration() :: #{
-%%   <<"bucketName">> => string()
-%% }
--type s3_storage_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% stage_session() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"sessionId">> => string(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type stage_session() :: #{binary() => any()}.
-
-
-%% Example:
-%% stage_summary() :: #{
-%%   <<"activeSessionId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type stage_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_storage_configuration_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_storage_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% redundant_ingest_credential() :: #{
-%%   <<"participantId">> => string(),
-%%   <<"streamKey">> => string()
-%% }
--type redundant_ingest_credential() :: #{binary() => any()}.
-
-
-%% Example:
-%% composition_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"destinations">> => list(destination_summary()),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"stageArn">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"state">> => string(),
-%%   <<"tags">> => map()
-%% }
--type composition_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_encoder_configuration_response() :: #{}
--type delete_encoder_configuration_response() :: #{}.
-
-
-%% Example:
-%% create_encoder_configuration_response() :: #{
-%%   <<"encoderConfiguration">> => encoder_configuration()
-%% }
--type create_encoder_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% layout_configuration() :: #{
-%%   <<"grid">> => grid_configuration(),
-%%   <<"pip">> => pip_configuration()
-%% }
--type layout_configuration() :: #{binary() => any()}.
+-type participant_token_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1305,174 +995,484 @@
 
 
 %% Example:
-%% destination_configuration() :: #{
-%%   <<"channel">> => channel_destination_configuration(),
+%% pip_configuration() :: #{
+%%   <<"featuredParticipantAttribute">> => string(),
+%%   <<"gridGap">> => integer(),
+%%   <<"omitStoppedVideo">> => boolean(),
+%%   <<"participantOrderAttribute">> => string(),
+%%   <<"pipBehavior">> => list(any()),
+%%   <<"pipHeight">> => integer(),
+%%   <<"pipOffset">> => integer(),
+%%   <<"pipParticipantAttribute">> => string(),
+%%   <<"pipPosition">> => list(any()),
+%%   <<"pipWidth">> => integer(),
+%%   <<"videoFillMode">> => list(any())
+%% }
+-type pip_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_key() :: #{
+%%   <<"arn">> => string(),
+%%   <<"fingerprint">> => string(),
 %%   <<"name">> => string(),
-%%   <<"s3">> => s3_destination_configuration()
+%%   <<"publicKeyMaterial">> => string(),
+%%   <<"tags">> => map()
 %% }
--type destination_configuration() :: #{binary() => any()}.
+-type public_key() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_participant_events_response() :: #{
-%%   <<"events">> => list(event()),
-%%   <<"nextToken">> => string()
+%% public_key_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
 %% }
--type list_participant_events_response() :: #{binary() => any()}.
+-type public_key_summary() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_ingest_configuration_response() :: #{}
--type delete_ingest_configuration_response() :: #{}.
+%% recording_configuration() :: #{
+%%   <<"format">> => string(),
+%%   <<"hlsConfiguration">> => composition_recording_hls_configuration()
+%% }
+-type recording_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redundant_ingest_credential() :: #{
+%%   <<"participantId">> => string(),
+%%   <<"streamKey">> => string()
+%% }
+-type redundant_ingest_credential() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_destination_configuration() :: #{
+%%   <<"encoderConfigurationArns">> => list(string()),
+%%   <<"recordingConfiguration">> => recording_configuration(),
+%%   <<"storageConfigurationArn">> => string(),
+%%   <<"thumbnailConfigurations">> => list(composition_thumbnail_configuration())
+%% }
+-type s3_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_detail() :: #{
+%%   <<"recordingPrefix">> => string()
+%% }
+-type s3_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_storage_configuration() :: #{
+%%   <<"bucketName">> => string()
+%% }
+-type s3_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% stage() :: #{
+%%   <<"activeSessionId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"autoParticipantRecordingConfiguration">> => auto_participant_recording_configuration(),
+%%   <<"endpoints">> => stage_endpoints(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type stage() :: #{binary() => any()}.
+
+
+%% Example:
+%% stage_endpoints() :: #{
+%%   <<"events">> => string(),
+%%   <<"rtmp">> => string(),
+%%   <<"rtmps">> => string(),
+%%   <<"whip">> => string()
+%% }
+-type stage_endpoints() :: #{binary() => any()}.
+
+
+%% Example:
+%% stage_session() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"sessionId">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type stage_session() :: #{binary() => any()}.
+
+
+%% Example:
+%% stage_session_summary() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"sessionId">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type stage_session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% stage_summary() :: #{
+%%   <<"activeSessionId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type stage_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_composition_request() :: #{
+%%   <<"destinations">> := list(destination_configuration()),
+%%   <<"idempotencyToken">> => string(),
+%%   <<"layout">> => layout_configuration(),
+%%   <<"stageArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type start_composition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_composition_response() :: #{
+%%   <<"composition">> => composition()
+%% }
+-type start_composition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_participant_replication_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"destinationStageArn">> := string(),
+%%   <<"participantId">> := string(),
+%%   <<"reconnectWindowSeconds">> => integer(),
+%%   <<"sourceStageArn">> := string()
+%% }
+-type start_participant_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_participant_replication_response() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type start_participant_replication_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_composition_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type stop_composition_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_composition_response() :: #{}
+-type stop_composition_response() :: #{}.
+
+
+%% Example:
+%% stop_participant_replication_request() :: #{
+%%   <<"destinationStageArn">> := string(),
+%%   <<"participantId">> := string(),
+%%   <<"sourceStageArn">> := string()
+%% }
+-type stop_participant_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_participant_replication_response() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type stop_participant_replication_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"s3">> => s3_storage_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_configuration_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"s3">> => s3_storage_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type storage_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_ingest_configuration_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"redundantIngest">> => boolean(),
+%%   <<"stageArn">> => string()
+%% }
+-type update_ingest_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ingest_configuration_response() :: #{
+%%   <<"ingestConfiguration">> => ingest_configuration()
+%% }
+-type update_ingest_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_stage_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"autoParticipantRecordingConfiguration">> => auto_participant_recording_configuration(),
+%%   <<"name">> => string()
+%% }
+-type update_stage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_stage_response() :: #{
+%%   <<"stage">> => stage()
+%% }
+-type update_stage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% video() :: #{
+%%   <<"bitrate">> => integer(),
+%%   <<"framerate">> => float(),
+%%   <<"height">> => integer(),
+%%   <<"width">> => integer()
+%% }
+-type video() :: #{binary() => any()}.
 
 -type create_encoder_configuration_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_ingest_configuration_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception().
+    service_quota_exceeded_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type create_participant_token_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type create_stage_errors() ::
-    pending_verification() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception().
-
--type create_storage_configuration_errors() ::
-    pending_verification() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    access_denied_exception().
+
+-type create_stage_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    pending_verification() | 
+    access_denied_exception().
+
+-type create_storage_configuration_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    pending_verification() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_encoder_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_ingest_configuration_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_public_key_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_stage_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_storage_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disconnect_participant_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type get_composition_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_encoder_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_ingest_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_participant_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_public_key_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_stage_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_stage_session_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_storage_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type import_public_key_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_compositions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_encoder_configurations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_ingest_configurations_errors() ::
     validation_exception() | 
@@ -1500,77 +1500,77 @@
 
 -type list_stages_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_storage_configurations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type start_composition_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_participant_replication_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_composition_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_participant_replication_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_ingest_configuration_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_stage_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

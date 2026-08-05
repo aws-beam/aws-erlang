@@ -45,76 +45,38 @@
 
 
 %% Example:
-%% connector() :: #{
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% challenge() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"ConnectorArn">> => string(),
 %%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Endpoint">> => [string()],
-%%   <<"MobileDeviceManagement">> => list(),
-%%   <<"OpenIdConfiguration">> => open_id_configuration(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any()),
-%%   <<"Type">> => list(any()),
+%%   <<"Password">> => string(),
 %%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
--type connector() :: #{binary() => any()}.
+-type challenge() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
+%% challenge_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ConnectorArn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connectors_response() :: #{
-%%   <<"Connectors">> => list(connector_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_connectors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_challenge_response() :: #{
-%%   <<"Challenge">> => challenge()
-%% }
--type create_challenge_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_challenge_metadata_response() :: #{
-%%   <<"ChallengeMetadata">> => challenge_metadata()
-%% }
--type get_challenge_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_connectors_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_connectors_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_challenge_password_request() :: #{}
--type get_challenge_password_request() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list([string()]())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_challenge_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ConnectorArn">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_challenge_request() :: #{binary() => any()}.
+-type challenge_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -137,89 +99,19 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"QuotaCode">> => [string()],
-%%   <<"ResourceType">> => [string()],
-%%   <<"ServiceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% open_id_configuration() :: #{
-%%   <<"Audience">> => [string()],
-%%   <<"Issuer">> => [string()],
-%%   <<"Subject">> => [string()]
-%% }
--type open_id_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_challenge_request() :: #{}
--type delete_challenge_request() :: #{}.
-
-
-%% Example:
-%% create_connector_response() :: #{
-%%   <<"ConnectorArn">> => string()
-%% }
--type create_connector_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% challenge() :: #{
+%% connector() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ConnectorArn">> => string(),
+%%   <<"CertificateAuthorityArn">> => string(),
 %%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Password">> => string(),
+%%   <<"Endpoint">> => [string()],
+%%   <<"MobileDeviceManagement">> => list(),
+%%   <<"OpenIdConfiguration">> => open_id_configuration(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"Type">> => list(any()),
 %%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
--type challenge() :: #{binary() => any()}.
-
-%% Example:
-%% get_connector_request() :: #{}
--type get_connector_request() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_connector_request() :: #{
-%%   <<"CertificateAuthorityArn">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"MobileDeviceManagement">> => list(),
-%%   <<"Tags">> => map(),
-%%   <<"VpcEndpointId">> => string()
-%% }
--type create_connector_request() :: #{binary() => any()}.
+-type connector() :: #{binary() => any()}.
 
 
 %% Example:
@@ -239,22 +131,71 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
+%% create_challenge_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ConnectorArn">> := string(),
+%%   <<"Tags">> => map()
 %% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type create_challenge_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()]
+%% create_challenge_response() :: #{
+%%   <<"Challenge">> => challenge()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type create_challenge_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_request() :: #{
+%%   <<"CertificateAuthorityArn">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"MobileDeviceManagement">> => list(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type create_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_response() :: #{
+%%   <<"ConnectorArn">> => string()
+%% }
+-type create_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_challenge_request() :: #{}
+-type delete_challenge_request() :: #{}.
+
+%% Example:
+%% delete_connector_request() :: #{}
+-type delete_connector_request() :: #{}.
+
+%% Example:
+%% get_challenge_metadata_request() :: #{}
+-type get_challenge_metadata_request() :: #{}.
+
+
+%% Example:
+%% get_challenge_metadata_response() :: #{
+%%   <<"ChallengeMetadata">> => challenge_metadata()
+%% }
+-type get_challenge_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_challenge_password_request() :: #{}
+-type get_challenge_password_request() :: #{}.
+
+
+%% Example:
+%% get_challenge_password_response() :: #{
+%%   <<"Password">> => string()
+%% }
+-type get_challenge_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_connector_request() :: #{}
+-type get_connector_request() :: #{}.
 
 
 %% Example:
@@ -262,6 +203,21 @@
 %%   <<"Connector">> => connector()
 %% }
 -type get_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% intune_configuration() :: #{
+%%   <<"AzureApplicationId">> => string(),
+%%   <<"Domain">> => string()
+%% }
+-type intune_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -274,39 +230,6 @@
 
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connector_request() :: #{}
--type delete_connector_request() :: #{}.
-
-
-%% Example:
-%% challenge_metadata() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ConnectorArn">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"UpdatedAt">> => [non_neg_integer()]
-%% }
--type challenge_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% get_challenge_metadata_request() :: #{}
--type get_challenge_metadata_request() :: #{}.
-
-
-%% Example:
-%% intune_configuration() :: #{
-%%   <<"AzureApplicationId">> => string(),
-%%   <<"Domain">> => string()
-%% }
--type intune_configuration() :: #{binary() => any()}.
-
-
-%% Example:
 %% list_challenge_metadata_response() :: #{
 %%   <<"Challenges">> => list(challenge_metadata_summary()),
 %%   <<"NextToken">> => string()
@@ -315,100 +238,177 @@
 
 
 %% Example:
-%% get_challenge_password_response() :: #{
-%%   <<"Password">> => string()
+%% list_connectors_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type get_challenge_password_response() :: #{binary() => any()}.
+-type list_connectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connectors_response() :: #{
+%%   <<"Connectors">> => list(connector_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_id_configuration() :: #{
+%%   <<"Audience">> => [string()],
+%%   <<"Issuer">> => [string()],
+%%   <<"Subject">> => [string()]
+%% }
+-type open_id_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"QuotaCode">> => [string()],
+%%   <<"ResourceType">> => [string()],
+%%   <<"ServiceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_challenge_errors() ::
-    bad_request_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_challenge_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_challenge_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_challenge_password_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_challenge_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_connectors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -294,11 +294,14 @@
 
 
 %% Example:
-%% list_functions_by_code_signing_config_response() :: #{
-%%   <<"FunctionArns">> => list(string()),
-%%   <<"NextMarker">> => string()
+%% account_limit() :: #{
+%%   <<"CodeSizeUnzipped">> => float(),
+%%   <<"CodeSizeZipped">> => float(),
+%%   <<"ConcurrentExecutions">> => integer(),
+%%   <<"TotalCodeSize">> => float(),
+%%   <<"UnreservedConcurrentExecutions">> => integer()
 %% }
--type list_functions_by_code_signing_config_response() :: #{binary() => any()}.
+-type account_limit() :: #{binary() => any()}.
 
 
 %% Example:
@@ -310,1201 +313,46 @@
 
 
 %% Example:
-%% function_event_invoke_config() :: #{
-%%   <<"DestinationConfig">> => destination_config(),
-%%   <<"FunctionArn">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"MaximumEventAgeInSeconds">> => integer(),
-%%   <<"MaximumRetryAttempts">> => integer()
-%% }
--type function_event_invoke_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_aliases_response() :: #{
-%%   <<"Aliases">> => list(alias_configuration()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_aliases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unsupported_media_type_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type unsupported_media_type_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% operation() :: #{
-%%   <<"CallbackDetails">> => callback_details(),
-%%   <<"ChainedInvokeDetails">> => chained_invoke_details(),
-%%   <<"ContextDetails">> => context_details(),
-%%   <<"EndTimestamp">> => non_neg_integer(),
-%%   <<"ExecutionDetails">> => execution_details(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ParentId">> => string(),
-%%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StepDetails">> => step_details(),
-%%   <<"SubType">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"WaitDetails">> => wait_details()
-%% }
--type operation() :: #{binary() => any()}.
-
-
-%% Example:
-%% chained_invoke_stopped_details() :: #{
-%%   <<"Error">> => event_error()
-%% }
--type chained_invoke_stopped_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% kms_disabled_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type kms_disabled_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_aliases_request() :: #{
-%%   <<"FunctionVersion">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_aliases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_code() :: #{
-%%   <<"ImageUri">> => string(),
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3Key">> => string(),
-%%   <<"S3ObjectStorageMode">> => list(any()),
-%%   <<"S3ObjectVersion">> => string(),
-%%   <<"SourceKMSKeyArn">> => string(),
-%%   <<"ZipFile">> => binary()
-%% }
--type function_code() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_security_group_id_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type invalid_security_group_id_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_event_source_mapping_request() :: #{
-%%   <<"AmazonManagedKafkaEventSourceConfig">> => amazon_managed_kafka_event_source_config(),
-%%   <<"BatchSize">> => integer(),
-%%   <<"BisectBatchOnFunctionError">> => boolean(),
-%%   <<"DestinationConfig">> => destination_config(),
-%%   <<"DocumentDBEventSourceConfig">> => document_db_event_source_config(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"FilterCriteria">> => filter_criteria(),
-%%   <<"FunctionName">> => string(),
-%%   <<"FunctionResponseTypes">> => list(list(any())()),
-%%   <<"KMSKeyArn">> => string(),
-%%   <<"LoggingConfig">> => event_source_mapping_logging_config(),
-%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
-%%   <<"MaximumRecordAgeInSeconds">> => integer(),
-%%   <<"MaximumRetryAttempts">> => integer(),
-%%   <<"MetricsConfig">> => event_source_mapping_metrics_config(),
-%%   <<"ParallelizationFactor">> => integer(),
-%%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
-%%   <<"ScalingConfig">> => scaling_config(),
-%%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
-%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()),
-%%   <<"TumblingWindowInSeconds">> => integer()
-%% }
--type update_event_source_mapping_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_capacity_provider_response() :: #{
-%%   <<"CapacityProvider">> => capacity_provider()
-%% }
--type delete_capacity_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% runtime_version_config() :: #{
-%%   <<"Error">> => runtime_version_error(),
-%%   <<"RuntimeVersionArn">> => string()
-%% }
--type runtime_version_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_function_versions_by_capacity_provider_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_function_versions_by_capacity_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_capacity_provider_request() :: #{}
--type delete_capacity_provider_request() :: #{}.
-
-
-%% Example:
-%% wait_succeeded_details() :: #{
-%%   <<"Duration">> => integer()
-%% }
--type wait_succeeded_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% snap_start() :: #{
-%%   <<"ApplyOn">> => list(any())
-%% }
--type snap_start() :: #{binary() => any()}.
-
-
-%% Example:
-%% lambda_managed_instances_capacity_provider_config() :: #{
-%%   <<"CapacityProviderArn">> => string(),
-%%   <<"ExecutionEnvironmentMemoryGiBPerVCpu">> => float(),
-%%   <<"PerExecutionEnvironmentMaxConcurrency">> => integer()
-%% }
--type lambda_managed_instances_capacity_provider_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_scaling_config_response() :: #{
-%%   <<"AppliedFunctionScalingConfig">> => function_scaling_config(),
-%%   <<"FunctionArn">> => string(),
-%%   <<"RequestedFunctionScalingConfig">> => function_scaling_config()
-%% }
--type get_function_scaling_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_code_signing_config_request() :: #{}
--type get_code_signing_config_request() :: #{}.
-
-
-%% Example:
-%% get_function_scaling_config_request() :: #{
-%%   <<"Qualifier">> := string()
-%% }
--type get_function_scaling_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% mode_not_supported_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type mode_not_supported_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_layer_version_permission_request() :: #{
-%%   <<"RevisionId">> => string()
-%% }
--type remove_layer_version_permission_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_function_code_signing_config_request() :: #{}
--type delete_function_code_signing_config_request() :: #{}.
-
-
-%% Example:
-%% event_result() :: #{
-%%   <<"Payload">> => string(),
-%%   <<"Truncated">> => boolean()
-%% }
--type event_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_schema_validation_config() :: #{
-%%   <<"Attribute">> => list(any())
-%% }
--type kafka_schema_validation_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_response() :: #{
-%%   <<"Error">> => environment_error(),
-%%   <<"Variables">> => map()
-%% }
--type environment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% provisioned_concurrency_config_list_item() :: #{
-%%   <<"AllocatedProvisionedConcurrentExecutions">> => integer(),
-%%   <<"AvailableProvisionedConcurrentExecutions">> => integer(),
-%%   <<"FunctionArn">> => string(),
-%%   <<"LastModified">> => string(),
-%%   <<"RequestedProvisionedConcurrentExecutions">> => integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type provisioned_concurrency_config_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_object() :: #{
-%%   <<"ErrorData">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ErrorType">> => string(),
-%%   <<"StackTrace">> => list(string())
-%% }
--type error_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_alias_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FunctionVersion">> => string(),
+%% add_layer_version_permission_request() :: #{
+%%   <<"Action">> := string(),
+%%   <<"OrganizationId">> => string(),
+%%   <<"Principal">> := string(),
 %%   <<"RevisionId">> => string(),
-%%   <<"RoutingConfig">> => alias_routing_configuration()
+%%   <<"StatementId">> := string()
 %% }
--type update_alias_request() :: #{binary() => any()}.
+-type add_layer_version_permission_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_functions_response() :: #{
-%%   <<"Functions">> => list(function_configuration()),
-%%   <<"NextMarker">> => string()
+%% add_layer_version_permission_response() :: #{
+%%   <<"RevisionId">> => string(),
+%%   <<"Statement">> => string()
 %% }
--type list_functions_response() :: #{binary() => any()}.
+-type add_layer_version_permission_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_function_concurrency_request() :: #{
-%%   <<"ReservedConcurrentExecutions">> := integer()
-%% }
--type put_function_concurrency_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_length_exceeded_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type policy_length_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% callback_timed_out_details() :: #{
-%%   <<"Error">> => event_error()
-%% }
--type callback_timed_out_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_provisioned_concurrency_configs_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"ProvisionedConcurrencyConfigs">> => list(provisioned_concurrency_config_list_item())
-%% }
--type list_provisioned_concurrency_configs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% context_succeeded_details() :: #{
-%%   <<"Result">> => event_result()
-%% }
--type context_succeeded_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_signing_configs_response() :: #{
-%%   <<"CodeSigningConfigs">> => list(code_signing_config()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_code_signing_configs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% amazon_managed_kafka_event_source_config() :: #{
-%%   <<"ConsumerGroupId">> => string(),
-%%   <<"SchemaRegistryConfig">> => kafka_schema_registry_config()
-%% }
--type amazon_managed_kafka_event_source_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_with_response_stream_response() :: #{
-%%   <<"EventStream">> => list(),
-%%   <<"ExecutedVersion">> => string(),
-%%   <<"ResponseStreamContentType">> => string(),
-%%   <<"StatusCode">> => integer()
-%% }
--type invoke_with_response_stream_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution_details() :: #{
-%%   <<"InputPayload">> => string()
-%% }
--type execution_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_criteria() :: #{
-%%   <<"Filters">> => list(filter())
-%% }
--type filter_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_code_location() :: #{
-%%   <<"Error">> => function_code_location_error(),
-%%   <<"ImageUri">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"RepositoryType">> => string(),
-%%   <<"ResolvedImageUri">> => string(),
-%%   <<"ResolvedS3Object">> => resolved_s3_object(),
-%%   <<"SourceKMSKeyArn">> => string()
-%% }
--type function_code_location() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_settings_request() :: #{}
--type get_account_settings_request() :: #{}.
-
-%% Example:
-%% send_durable_execution_callback_failure_response() :: #{}
--type send_durable_execution_callback_failure_response() :: #{}.
-
-
-%% Example:
-%% create_alias_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FunctionVersion">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"RoutingConfig">> => alias_routing_configuration()
-%% }
--type create_alias_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% callback_failed_details() :: #{
-%%   <<"Error">> => event_error()
-%% }
--type callback_failed_details() :: #{binary() => any()}.
-
-%% Example:
-%% step_started_details() :: #{}
--type step_started_details() :: #{}.
-
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_layer_version_policy_response() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type get_layer_version_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_account_settings_response() :: #{
-%%   <<"AccountLimit">> => account_limit(),
-%%   <<"AccountUsage">> => account_usage()
-%% }
--type get_account_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_request() :: #{
-%%   <<"Qualifier">> => string()
-%% }
--type get_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_layer_version_response() :: #{
-%%   <<"CompatibleArchitectures">> => list(list(any())()),
-%%   <<"CompatibleRuntimes">> => list(list(any())()),
-%%   <<"Content">> => layer_version_content_output(),
-%%   <<"CreatedDate">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LayerArn">> => string(),
-%%   <<"LayerVersionArn">> => string(),
-%%   <<"LicenseInfo">> => string(),
-%%   <<"Version">> => float()
-%% }
--type get_layer_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_capacity_provider_request() :: #{
-%%   <<"CapacityProviderScalingConfig">> => capacity_provider_scaling_config(),
-%%   <<"PropagateTags">> => propagate_tags()
-%% }
--type update_capacity_provider_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution_timed_out_details() :: #{
-%%   <<"Error">> => event_error()
-%% }
--type execution_timed_out_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% context_options() :: #{
-%%   <<"ReplayChildren">> => boolean()
-%% }
--type context_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_function_recursion_config_response() :: #{
-%%   <<"RecursiveLoop">> => list(any())
-%% }
--type put_function_recursion_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_durable_execution_request() :: #{}
--type get_durable_execution_request() :: #{}.
-
-
-%% Example:
-%% put_function_event_invoke_config_request() :: #{
-%%   <<"DestinationConfig">> => destination_config(),
-%%   <<"MaximumEventAgeInSeconds">> => integer(),
-%%   <<"MaximumRetryAttempts">> => integer(),
-%%   <<"Qualifier">> => string()
-%% }
--type put_function_event_invoke_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_async_request() :: #{
-%%   <<"InvokeArgs">> := binary()
-%% }
--type invoke_async_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_layers_response() :: #{
-%%   <<"Layers">> => list(layers_list_item()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_layers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% chained_invoke_started_details() :: #{
-%%   <<"DurableExecutionArn">> => string(),
-%%   <<"ExecutedVersion">> => string(),
-%%   <<"FunctionName">> => string(),
-%%   <<"Input">> => event_input(),
-%%   <<"TenantId">> => string()
-%% }
--type chained_invoke_started_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution() :: #{
-%%   <<"DurableExecutionArn">> => string(),
-%%   <<"DurableExecutionName">> => string(),
-%%   <<"EndTimestamp">> => non_neg_integer(),
-%%   <<"FunctionArn">> => string(),
-%%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type execution() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_access_configuration() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"URI">> => string()
-%% }
--type source_access_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_layer_version_policy_request() :: #{}
--type get_layer_version_policy_request() :: #{}.
-
-
-%% Example:
-%% list_code_signing_configs_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_code_signing_configs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% layer_version_content_output() :: #{
-%%   <<"CodeSha256">> => string(),
-%%   <<"CodeSize">> => float(),
-%%   <<"Location">> => string(),
-%%   <<"ResolvedS3Object">> => resolved_s3_object(),
-%%   <<"SigningJobArn">> => string(),
-%%   <<"SigningProfileVersionArn">> => string()
-%% }
--type layer_version_content_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invocation_response() :: #{
-%%   <<"DurableExecutionArn">> => string(),
-%%   <<"ExecutedVersion">> => string(),
-%%   <<"FunctionError">> => string(),
-%%   <<"LogResult">> => string(),
-%%   <<"Payload">> => binary(),
-%%   <<"StatusCode">> => integer()
-%% }
--type invocation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_function_url_config_request() :: #{
-%%   <<"Qualifier">> => string()
-%% }
--type delete_function_url_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_function_recursion_config_request() :: #{}
--type get_function_recursion_config_request() :: #{}.
-
-
-%% Example:
-%% e_n_i_not_ready_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type e_n_i_not_ready_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_access_denied_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type ec2_access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_durable_execution_history_request() :: #{
-%%   <<"IncludeExecutionData">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"ReverseOrder">> => boolean()
-%% }
--type get_durable_execution_history_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% chained_invoke_timed_out_details() :: #{
-%%   <<"Error">> => event_error()
-%% }
--type chained_invoke_timed_out_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% capacity_provider_scaling_config() :: #{
-%%   <<"MaxVCpuCount">> => integer(),
-%%   <<"ScalingMode">> => list(any()),
-%%   <<"ScalingPolicies">> => list(target_tracking_scaling_policy())
-%% }
--type capacity_provider_scaling_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_scaling_config() :: #{
-%%   <<"MaxExecutionEnvironments">> => integer(),
-%%   <<"MinExecutionEnvironments">> => integer()
-%% }
--type function_scaling_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_function_url_config_request() :: #{
-%%   <<"AuthType">> => list(any()),
-%%   <<"Cors">> => cors(),
-%%   <<"InvokeMode">> => list(any()),
-%%   <<"Qualifier">> => string()
-%% }
--type update_function_url_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% chained_invoke_succeeded_details() :: #{
-%%   <<"Result">> => event_result()
-%% }
--type chained_invoke_succeeded_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_function_versions_by_capacity_provider_response() :: #{
-%%   <<"CapacityProviderArn">> => string(),
-%%   <<"FunctionVersions">> => list(function_versions_by_capacity_provider_list_item()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_function_versions_by_capacity_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% self_managed_kafka_event_source_config() :: #{
-%%   <<"ConsumerGroupId">> => string(),
-%%   <<"SchemaRegistryConfig">> => kafka_schema_registry_config()
-%% }
--type self_managed_kafka_event_source_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_tracking_scaling_policy() :: #{
-%%   <<"PredefinedMetricType">> => list(any()),
-%%   <<"TargetValue">> => float()
-%% }
--type target_tracking_scaling_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% snap_start_not_ready_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type snap_start_not_ready_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_configuration_request() :: #{
-%%   <<"Qualifier">> => string()
-%% }
--type get_function_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_artifact_user_failed_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type code_artifact_user_failed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% capacity_provider_vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type capacity_provider_vpc_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_response() :: #{
-%%   <<"Code">> => function_code_location(),
-%%   <<"Concurrency">> => concurrency(),
-%%   <<"Configuration">> => function_configuration(),
-%%   <<"Tags">> => map(),
-%%   <<"TagsError">> => tags_error()
-%% }
--type get_function_response() :: #{binary() => any()}.
-
-%% Example:
-%% context_started_details() :: #{}
--type context_started_details() :: #{}.
-
-
-%% Example:
-%% logging_config() :: #{
-%%   <<"ApplicationLogLevel">> => list(any()),
-%%   <<"LogFormat">> => list(any()),
-%%   <<"LogGroup">> => string(),
-%%   <<"SystemLogLevel">> => list(any())
-%% }
--type logging_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_function_concurrency_request() :: #{}
--type delete_function_concurrency_request() :: #{}.
-
-
-%% Example:
-%% image_config() :: #{
-%%   <<"Command">> => list(string()),
-%%   <<"EntryPoint">> => list(string()),
-%%   <<"WorkingDirectory">> => string()
-%% }
--type image_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_function_url_config_response() :: #{
-%%   <<"AuthType">> => list(any()),
-%%   <<"Cors">> => cors(),
-%%   <<"CreationTime">> => string(),
-%%   <<"FunctionArn">> => string(),
-%%   <<"FunctionUrl">> => string(),
-%%   <<"InvokeMode">> => list(any()),
-%%   <<"LastModifiedTime">> => string()
-%% }
--type update_function_url_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Reason">> => list(any()),
-%%   <<"Type">> => string(),
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_function_code_signing_config_request() :: #{}
--type get_function_code_signing_config_request() :: #{}.
-
-
-%% Example:
-%% put_function_recursion_config_request() :: #{
-%%   <<"RecursiveLoop">> := list(any())
-%% }
--type put_function_recursion_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_config() :: #{
-%%   <<"OnFailure">> => on_failure(),
-%%   <<"OnSuccess">> => on_success()
-%% }
--type destination_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_files_mount_connectivity_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type s3_files_mount_connectivity_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% snap_start_timeout_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type snap_start_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% callback_timeout_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type callback_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_durable_executions_by_function_request() :: #{
-%%   <<"DurableExecutionName">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
+%% add_permission_request() :: #{
+%%   <<"Action">> := string(),
+%%   <<"EventSourceToken">> => string(),
+%%   <<"FunctionUrlAuthType">> => list(any()),
+%%   <<"InvokedViaFunctionUrl">> => boolean(),
+%%   <<"Principal">> := string(),
+%%   <<"PrincipalOrgID">> => string(),
 %%   <<"Qualifier">> => string(),
-%%   <<"ReverseOrder">> => boolean(),
-%%   <<"StartedAfter">> => non_neg_integer(),
-%%   <<"StartedBefore">> => non_neg_integer(),
-%%   <<"Statuses">> => list(list(any())())
+%%   <<"RevisionId">> => string(),
+%%   <<"SourceAccount">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"StatementId">> := string()
 %% }
--type list_durable_executions_by_function_request() :: #{binary() => any()}.
+-type add_permission_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_provisioned_concurrency_config_request() :: #{
-%%   <<"ProvisionedConcurrentExecutions">> := integer(),
-%%   <<"Qualifier">> := string()
+%% add_permission_response() :: #{
+%%   <<"Statement">> => string()
 %% }
--type put_provisioned_concurrency_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% serialized_request_entity_too_large_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type serialized_request_entity_too_large_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_layer_version_request() :: #{}
--type delete_layer_version_request() :: #{}.
-
-
-%% Example:
-%% operation_update() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"CallbackOptions">> => callback_options(),
-%%   <<"ChainedInvokeOptions">> => chained_invoke_options(),
-%%   <<"ContextOptions">> => context_options(),
-%%   <<"Error">> => error_object(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ParentId">> => string(),
-%%   <<"Payload">> => string(),
-%%   <<"StepOptions">> => step_options(),
-%%   <<"SubType">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"WaitOptions">> => wait_options()
-%% }
--type operation_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% checkpoint_updated_execution_state() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"Operations">> => list(operation())
-%% }
--type checkpoint_updated_execution_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_code_signing_config_response() :: #{
-%%   <<"CodeSigningConfig">> => code_signing_config()
-%% }
--type create_code_signing_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% alias_limit_exceeded_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type alias_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_response_stream_update() :: #{
-%%   <<"Payload">> => binary()
-%% }
--type invoke_response_stream_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_function_event_invoke_configs_response() :: #{
-%%   <<"FunctionEventInvokeConfigs">> => list(function_event_invoke_config()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_function_event_invoke_configs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_concurrency_response() :: #{
-%%   <<"ReservedConcurrentExecutions">> => integer()
-%% }
--type get_function_concurrency_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution_started_details() :: #{
-%%   <<"ExecutionTimeout">> => integer(),
-%%   <<"Input">> => event_input()
-%% }
--type execution_started_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_source_mapping_request() :: #{}
--type delete_event_source_mapping_request() :: #{}.
-
-%% Example:
-%% send_durable_execution_callback_heartbeat_request() :: #{}
--type send_durable_execution_callback_heartbeat_request() :: #{}.
-
-
-%% Example:
-%% recursive_invocation_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type recursive_invocation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% chained_invoke_failed_details() :: #{
-%%   <<"Error">> => event_error()
-%% }
--type chained_invoke_failed_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_durable_execution_state_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"Operations">> => list(operation())
-%% }
--type get_durable_execution_state_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_input() :: #{
-%%   <<"Payload">> => string(),
-%%   <<"Truncated">> => boolean()
-%% }
--type event_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_runtime_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type invalid_runtime_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_function_concurrency_request() :: #{}
--type get_function_concurrency_request() :: #{}.
-
-%% Example:
-%% get_alias_request() :: #{}
--type get_alias_request() :: #{}.
-
-
-%% Example:
-%% wait_options() :: #{
-%%   <<"WaitSeconds">> => integer()
-%% }
--type wait_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_capacity_providers_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"State">> => list(any())
-%% }
--type list_capacity_providers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_details() :: #{
-%%   <<"CurrentAttempt">> => integer(),
-%%   <<"NextAttemptDelaySeconds">> => integer()
-%% }
--type retry_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% on_failure() :: #{
-%%   <<"Destination">> => string()
-%% }
--type on_failure() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_source_mappings_response() :: #{
-%%   <<"EventSourceMappings">> => list(event_source_mapping_configuration()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_event_source_mappings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_runtime_management_config_request() :: #{
-%%   <<"Qualifier">> => string()
-%% }
--type get_runtime_management_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_request_content_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type invalid_request_content_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_runtime_management_config_request() :: #{
-%%   <<"Qualifier">> => string(),
-%%   <<"RuntimeVersionArn">> => string(),
-%%   <<"UpdateRuntimeOn">> := list(any())
-%% }
--type put_runtime_management_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_request() :: #{
-%%   <<"Qualifier">> => string()
-%% }
--type get_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% durable_config() :: #{
-%%   <<"ExecutionTimeout">> => integer(),
-%%   <<"RetentionPeriodInDays">> => integer()
-%% }
--type durable_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_layer_version_response() :: #{
-%%   <<"CompatibleArchitectures">> => list(list(any())()),
-%%   <<"CompatibleRuntimes">> => list(list(any())()),
-%%   <<"Content">> => layer_version_content_output(),
-%%   <<"CreatedDate">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LayerArn">> => string(),
-%%   <<"LayerVersionArn">> => string(),
-%%   <<"LicenseInfo">> => string(),
-%%   <<"Version">> => float()
-%% }
--type publish_layer_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_db_event_source_config() :: #{
-%%   <<"CollectionName">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"FullDocument">> => list(any())
-%% }
--type document_db_event_source_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% durable_execution_already_started_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type durable_execution_already_started_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_code_signing_config_request() :: #{}
--type delete_code_signing_config_request() :: #{}.
-
-
-%% Example:
-%% code_artifact_user_pending_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type code_artifact_user_pending_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_function_url_config_response() :: #{
-%%   <<"AuthType">> => list(any()),
-%%   <<"Cors">> => cors(),
-%%   <<"CreationTime">> => string(),
-%%   <<"FunctionArn">> => string(),
-%%   <<"FunctionUrl">> => string(),
-%%   <<"InvokeMode">> => list(any())
-%% }
--type create_function_url_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_signing_config_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type code_signing_config_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment() :: #{
-%%   <<"Variables">> => map()
-%% }
--type environment() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_function_request() :: #{
-%%   <<"Qualifier">> => string()
-%% }
--type delete_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_version_request() :: #{
-%%   <<"CodeSha256">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"PublishTo">> => list(any()),
-%%   <<"RevisionId">> => string()
-%% }
--type publish_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invocation_completed_details() :: #{
-%%   <<"EndTimestamp">> => non_neg_integer(),
-%%   <<"Error">> => event_error(),
-%%   <<"RequestId">> => string(),
-%%   <<"StartTimestamp">> => non_neg_integer()
-%% }
--type invocation_completed_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_function_code_signing_config_response() :: #{
-%%   <<"CodeSigningConfigArn">> => string(),
-%%   <<"FunctionName">> => string()
-%% }
--type put_function_code_signing_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_capacity_providers_response() :: #{
-%%   <<"CapacityProviders">> => list(capacity_provider()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_capacity_providers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_failed_details() :: #{
-%%   <<"Error">> => event_error(),
-%%   <<"RetryDetails">> => retry_details()
-%% }
--type step_failed_details() :: #{binary() => any()}.
+-type add_permission_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1520,29 +368,390 @@
 
 
 %% Example:
-%% event_error() :: #{
-%%   <<"Payload">> => error_object(),
-%%   <<"Truncated">> => boolean()
+%% alias_limit_exceeded_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
 %% }
--type event_error() :: #{binary() => any()}.
+-type alias_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_function_code_request() :: #{
-%%   <<"Architectures">> => list(list(any())()),
-%%   <<"DryRun">> => boolean(),
-%%   <<"ImageUri">> => string(),
-%%   <<"Publish">> => boolean(),
-%%   <<"PublishTo">> => list(any()),
-%%   <<"RevisionId">> => string(),
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3Key">> => string(),
-%%   <<"S3ObjectStorageMode">> => list(any()),
-%%   <<"S3ObjectVersion">> => string(),
-%%   <<"SourceKMSKeyArn">> => string(),
-%%   <<"ZipFile">> => binary()
+%% alias_routing_configuration() :: #{
+%%   <<"AdditionalVersionWeights">> => map()
 %% }
--type update_function_code_request() :: #{binary() => any()}.
+-type alias_routing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% allowed_publishers() :: #{
+%%   <<"SigningProfileVersionArns">> => list(string())
+%% }
+-type allowed_publishers() :: #{binary() => any()}.
+
+
+%% Example:
+%% amazon_managed_kafka_event_source_config() :: #{
+%%   <<"ConsumerGroupId">> => string(),
+%%   <<"SchemaRegistryConfig">> => kafka_schema_registry_config()
+%% }
+-type amazon_managed_kafka_event_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% callback_details() :: #{
+%%   <<"CallbackId">> => string(),
+%%   <<"Error">> => error_object(),
+%%   <<"Result">> => string()
+%% }
+-type callback_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% callback_failed_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type callback_failed_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% callback_options() :: #{
+%%   <<"HeartbeatTimeoutSeconds">> => integer(),
+%%   <<"TimeoutSeconds">> => integer()
+%% }
+-type callback_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% callback_started_details() :: #{
+%%   <<"CallbackId">> => string(),
+%%   <<"HeartbeatTimeout">> => integer(),
+%%   <<"Timeout">> => integer()
+%% }
+-type callback_started_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% callback_succeeded_details() :: #{
+%%   <<"Result">> => event_result()
+%% }
+-type callback_succeeded_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% callback_timed_out_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type callback_timed_out_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% callback_timeout_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type callback_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider() :: #{
+%%   <<"CapacityProviderArn">> => string(),
+%%   <<"CapacityProviderScalingConfig">> => capacity_provider_scaling_config(),
+%%   <<"InstanceRequirements">> => instance_requirements(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"LastModified">> => string(),
+%%   <<"PermissionsConfig">> => capacity_provider_permissions_config(),
+%%   <<"PropagateTags">> => propagate_tags(),
+%%   <<"State">> => list(any()),
+%%   <<"TelemetryConfig">> => capacity_provider_telemetry_config(),
+%%   <<"VpcConfig">> => capacity_provider_vpc_config()
+%% }
+-type capacity_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_config() :: #{
+%%   <<"LambdaManagedInstancesCapacityProviderConfig">> => lambda_managed_instances_capacity_provider_config()
+%% }
+-type capacity_provider_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_limit_exceeded_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type capacity_provider_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_logging_config() :: #{
+%%   <<"LogGroup">> => string(),
+%%   <<"SystemLogLevel">> => list(any())
+%% }
+-type capacity_provider_logging_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_permissions_config() :: #{
+%%   <<"CapacityProviderOperatorRoleArn">> => string()
+%% }
+-type capacity_provider_permissions_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_scaling_config() :: #{
+%%   <<"MaxVCpuCount">> => integer(),
+%%   <<"ScalingMode">> => list(any()),
+%%   <<"ScalingPolicies">> => list(target_tracking_scaling_policy())
+%% }
+-type capacity_provider_scaling_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_telemetry_config() :: #{
+%%   <<"LoggingConfig">> => capacity_provider_logging_config()
+%% }
+-type capacity_provider_telemetry_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type capacity_provider_vpc_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_details() :: #{
+%%   <<"Error">> => error_object(),
+%%   <<"Result">> => string()
+%% }
+-type chained_invoke_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_failed_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type chained_invoke_failed_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_options() :: #{
+%%   <<"FunctionName">> => string(),
+%%   <<"TenantId">> => string()
+%% }
+-type chained_invoke_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_started_details() :: #{
+%%   <<"DurableExecutionArn">> => string(),
+%%   <<"ExecutedVersion">> => string(),
+%%   <<"FunctionName">> => string(),
+%%   <<"Input">> => event_input(),
+%%   <<"TenantId">> => string()
+%% }
+-type chained_invoke_started_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_stopped_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type chained_invoke_stopped_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_succeeded_details() :: #{
+%%   <<"Result">> => event_result()
+%% }
+-type chained_invoke_succeeded_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% chained_invoke_timed_out_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type chained_invoke_timed_out_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% checkpoint_durable_execution_request() :: #{
+%%   <<"CheckpointToken">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Updates">> => list(operation_update())
+%% }
+-type checkpoint_durable_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% checkpoint_durable_execution_response() :: #{
+%%   <<"CheckpointToken">> => string(),
+%%   <<"NewExecutionState">> => checkpoint_updated_execution_state()
+%% }
+-type checkpoint_durable_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% checkpoint_updated_execution_state() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Operations">> => list(operation())
+%% }
+-type checkpoint_updated_execution_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_artifact_user_deleted_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type code_artifact_user_deleted_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_artifact_user_failed_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type code_artifact_user_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_artifact_user_pending_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type code_artifact_user_pending_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_signing_config() :: #{
+%%   <<"AllowedPublishers">> => allowed_publishers(),
+%%   <<"CodeSigningConfigArn">> => string(),
+%%   <<"CodeSigningConfigId">> => string(),
+%%   <<"CodeSigningPolicies">> => code_signing_policies(),
+%%   <<"Description">> => string(),
+%%   <<"LastModified">> => string()
+%% }
+-type code_signing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_signing_config_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type code_signing_config_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_signing_policies() :: #{
+%%   <<"UntrustedArtifactOnDeployment">> => list(any())
+%% }
+-type code_signing_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_storage_exceeded_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type code_storage_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_verification_failed_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type code_verification_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% concurrency() :: #{
+%%   <<"ReservedConcurrentExecutions">> => integer()
+%% }
+-type concurrency() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_details() :: #{
+%%   <<"Error">> => error_object(),
+%%   <<"ReplayChildren">> => boolean(),
+%%   <<"Result">> => string()
+%% }
+-type context_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_failed_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type context_failed_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_options() :: #{
+%%   <<"ReplayChildren">> => boolean()
+%% }
+-type context_options() :: #{binary() => any()}.
+
+%% Example:
+%% context_started_details() :: #{}
+-type context_started_details() :: #{}.
+
+
+%% Example:
+%% context_succeeded_details() :: #{
+%%   <<"Result">> => event_result()
+%% }
+-type context_succeeded_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% cors() :: #{
+%%   <<"AllowCredentials">> => boolean(),
+%%   <<"AllowHeaders">> => list(string()),
+%%   <<"AllowMethods">> => list(string()),
+%%   <<"AllowOrigins">> => list(string()),
+%%   <<"ExposeHeaders">> => list(string()),
+%%   <<"MaxAge">> => integer()
+%% }
+-type cors() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_alias_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FunctionVersion">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RoutingConfig">> => alias_routing_configuration()
+%% }
+-type create_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_capacity_provider_request() :: #{
+%%   <<"CapacityProviderName">> := string(),
+%%   <<"CapacityProviderScalingConfig">> => capacity_provider_scaling_config(),
+%%   <<"InstanceRequirements">> => instance_requirements(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"PermissionsConfig">> := capacity_provider_permissions_config(),
+%%   <<"PropagateTags">> => propagate_tags(),
+%%   <<"Tags">> => map(),
+%%   <<"TelemetryConfig">> => capacity_provider_telemetry_config(),
+%%   <<"VpcConfig">> := capacity_provider_vpc_config()
+%% }
+-type create_capacity_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_capacity_provider_response() :: #{
+%%   <<"CapacityProvider">> => capacity_provider()
+%% }
+-type create_capacity_provider_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1556,59 +765,10 @@
 
 
 %% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
+%% create_code_signing_config_response() :: #{
+%%   <<"CodeSigningConfig">> => code_signing_config()
 %% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_source_mapping_configuration() :: #{
-%%   <<"MetricsConfig">> => event_source_mapping_metrics_config(),
-%%   <<"FunctionResponseTypes">> => list(list(any())()),
-%%   <<"Queues">> => list(string()),
-%%   <<"MaximumRecordAgeInSeconds">> => integer(),
-%%   <<"UUID">> => string(),
-%%   <<"BatchSize">> => integer(),
-%%   <<"StateTransitionReason">> => string(),
-%%   <<"KMSKeyArn">> => string(),
-%%   <<"SelfManagedEventSource">> => self_managed_event_source(),
-%%   <<"StartingPositionTimestamp">> => non_neg_integer(),
-%%   <<"EventSourceMappingArn">> => string(),
-%%   <<"AmazonManagedKafkaEventSourceConfig">> => amazon_managed_kafka_event_source_config(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"DocumentDBEventSourceConfig">> => document_db_event_source_config(),
-%%   <<"FunctionArn">> => string(),
-%%   <<"ScalingConfig">> => scaling_config(),
-%%   <<"State">> => string(),
-%%   <<"StartingPosition">> => list(any()),
-%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
-%%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
-%%   <<"MaximumRetryAttempts">> => integer(),
-%%   <<"DestinationConfig">> => destination_config(),
-%%   <<"FilterCriteria">> => filter_criteria(),
-%%   <<"ParallelizationFactor">> => integer(),
-%%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
-%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()),
-%%   <<"EventSourceArn">> => string(),
-%%   <<"LoggingConfig">> => event_source_mapping_logging_config(),
-%%   <<"FilterCriteriaError">> => filter_criteria_error(),
-%%   <<"LastProcessingResult">> => string(),
-%%   <<"Topics">> => list(string()),
-%%   <<"TumblingWindowInSeconds">> => integer(),
-%%   <<"BisectBatchOnFunctionError">> => boolean()
-%% }
--type event_source_mapping_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% provisioned_poller_config() :: #{
-%%   <<"MaximumPollers">> => integer(),
-%%   <<"MinimumPollers">> => integer(),
-%%   <<"PollerGroupName">> => string()
-%% }
--type provisioned_poller_config() :: #{binary() => any()}.
+-type create_code_signing_config_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1644,18 +804,39 @@
 %% }
 -type create_event_source_mapping_request() :: #{binary() => any()}.
 
-%% Example:
-%% get_capacity_provider_request() :: #{}
--type get_capacity_provider_request() :: #{}.
-
 
 %% Example:
-%% checkpoint_durable_execution_request() :: #{
-%%   <<"CheckpointToken">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Updates">> => list(operation_update())
+%% create_function_request() :: #{
+%%   <<"Architectures">> => list(list(any())()),
+%%   <<"CapacityProviderConfig">> => capacity_provider_config(),
+%%   <<"Code">> := function_code(),
+%%   <<"CodeSigningConfigArn">> => string(),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
+%%   <<"Description">> => string(),
+%%   <<"DurableConfig">> => durable_config(),
+%%   <<"Environment">> => environment(),
+%%   <<"EphemeralStorage">> => ephemeral_storage(),
+%%   <<"FileSystemConfigs">> => list(file_system_config()),
+%%   <<"FunctionName">> := string(),
+%%   <<"Handler">> => string(),
+%%   <<"ImageConfig">> => image_config(),
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"Layers">> => list(string()),
+%%   <<"LoggingConfig">> => logging_config(),
+%%   <<"MemorySize">> => integer(),
+%%   <<"PackageType">> => list(any()),
+%%   <<"Publish">> => boolean(),
+%%   <<"PublishTo">> => list(any()),
+%%   <<"Role">> := string(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"SnapStart">> => snap_start(),
+%%   <<"Tags">> => map(),
+%%   <<"TenancyConfig">> => tenancy_config(),
+%%   <<"Timeout">> => integer(),
+%%   <<"TracingConfig">> => tracing_config(),
+%%   <<"VpcConfig">> => vpc_config()
 %% }
--type checkpoint_durable_execution_request() :: #{binary() => any()}.
+-type create_function_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1669,34 +850,71 @@
 
 
 %% Example:
-%% layer() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CodeSize">> => float(),
-%%   <<"SigningJobArn">> => string(),
-%%   <<"SigningProfileVersionArn">> => string()
+%% create_function_url_config_response() :: #{
+%%   <<"AuthType">> => list(any()),
+%%   <<"Cors">> => cors(),
+%%   <<"CreationTime">> => string(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionUrl">> => string(),
+%%   <<"InvokeMode">> => list(any())
 %% }
--type layer() :: #{binary() => any()}.
+-type create_function_url_config_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_durable_execution_state_request() :: #{
-%%   <<"CheckpointToken">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
+%% dead_letter_config() :: #{
+%%   <<"TargetArn">> => string()
 %% }
--type get_durable_execution_state_request() :: #{binary() => any()}.
+-type dead_letter_config() :: #{binary() => any()}.
+
+%% Example:
+%% delete_alias_request() :: #{}
+-type delete_alias_request() :: #{}.
+
+%% Example:
+%% delete_capacity_provider_request() :: #{}
+-type delete_capacity_provider_request() :: #{}.
 
 
 %% Example:
-%% get_provisioned_concurrency_config_response() :: #{
-%%   <<"AllocatedProvisionedConcurrentExecutions">> => integer(),
-%%   <<"AvailableProvisionedConcurrentExecutions">> => integer(),
-%%   <<"LastModified">> => string(),
-%%   <<"RequestedProvisionedConcurrentExecutions">> => integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
+%% delete_capacity_provider_response() :: #{
+%%   <<"CapacityProvider">> => capacity_provider()
 %% }
--type get_provisioned_concurrency_config_response() :: #{binary() => any()}.
+-type delete_capacity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_code_signing_config_request() :: #{}
+-type delete_code_signing_config_request() :: #{}.
+
+%% Example:
+%% delete_code_signing_config_response() :: #{}
+-type delete_code_signing_config_response() :: #{}.
+
+%% Example:
+%% delete_event_source_mapping_request() :: #{}
+-type delete_event_source_mapping_request() :: #{}.
+
+%% Example:
+%% delete_function_code_signing_config_request() :: #{}
+-type delete_function_code_signing_config_request() :: #{}.
+
+%% Example:
+%% delete_function_concurrency_request() :: #{}
+-type delete_function_concurrency_request() :: #{}.
+
+
+%% Example:
+%% delete_function_event_invoke_config_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type delete_function_event_invoke_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_function_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type delete_function_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1707,116 +925,151 @@
 
 
 %% Example:
-%% vpc_config() :: #{
-%%   <<"Ipv6AllowedForDualStack">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type vpc_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type service_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_layer_version_request() :: #{
-%%   <<"CompatibleArchitectures">> => list(list(any())()),
-%%   <<"CompatibleRuntimes">> => list(list(any())()),
-%%   <<"Content">> := layer_version_content_input(),
-%%   <<"Description">> => string(),
-%%   <<"LicenseInfo">> => string()
-%% }
--type publish_layer_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% subnet_ip_address_limit_reached_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type subnet_ip_address_limit_reached_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_permission_request() :: #{
-%%   <<"Qualifier">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type remove_permission_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution_failed_details() :: #{
-%%   <<"Error">> => event_error()
-%% }
--type execution_failed_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_limit() :: #{
-%%   <<"CodeSizeUnzipped">> => float(),
-%%   <<"CodeSizeZipped">> => float(),
-%%   <<"ConcurrentExecutions">> => integer(),
-%%   <<"TotalCodeSize">> => float(),
-%%   <<"UnreservedConcurrentExecutions">> => integer()
-%% }
--type account_limit() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_function_event_invoke_config_request() :: #{
-%%   <<"DestinationConfig">> => destination_config(),
-%%   <<"MaximumEventAgeInSeconds">> => integer(),
-%%   <<"MaximumRetryAttempts">> => integer(),
+%% delete_function_url_config_request() :: #{
 %%   <<"Qualifier">> => string()
 %% }
--type update_function_event_invoke_config_request() :: #{binary() => any()}.
+-type delete_function_url_config_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_code_signing_config_response() :: #{}
--type delete_code_signing_config_response() :: #{}.
+%% delete_layer_version_request() :: #{}
+-type delete_layer_version_request() :: #{}.
 
 
 %% Example:
-%% file_system_config() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"LocalMountPath">> => string()
+%% delete_provisioned_concurrency_config_request() :: #{
+%%   <<"Qualifier">> := string()
 %% }
--type file_system_config() :: #{binary() => any()}.
+-type delete_provisioned_concurrency_config_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% wait_cancelled_details() :: #{
-%%   <<"Error">> => event_error()
+%% destination_config() :: #{
+%%   <<"OnFailure">> => on_failure(),
+%%   <<"OnSuccess">> => on_success()
 %% }
--type wait_cancelled_details() :: #{binary() => any()}.
+-type destination_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% tracing_config() :: #{
-%%   <<"Mode">> => list(any())
+%% document_db_event_source_config() :: #{
+%%   <<"CollectionName">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"FullDocument">> => list(any())
 %% }
--type tracing_config() :: #{binary() => any()}.
+-type document_db_event_source_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_layer_version_by_arn_request() :: #{
-%%   <<"Arn">> := string()
+%% durable_config() :: #{
+%%   <<"ExecutionTimeout">> => integer(),
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"RetentionPeriodInDays">> => integer()
 %% }
--type get_layer_version_by_arn_request() :: #{binary() => any()}.
+-type durable_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% code_verification_failed_exception() :: #{
+%% durable_execution_already_started_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => string()
 %% }
--type code_verification_failed_exception() :: #{binary() => any()}.
+-type durable_execution_already_started_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_f_s_i_o_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_f_s_i_o_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_f_s_mount_connectivity_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_f_s_mount_connectivity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_f_s_mount_failure_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_f_s_mount_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_f_s_mount_timeout_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_f_s_mount_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_n_i_limit_reached_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_n_i_limit_reached_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% e_n_i_not_ready_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type e_n_i_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_access_denied_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type ec2_access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_throttled_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type ec2_throttled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_unexpected_exception() :: #{
+%%   <<"EC2ErrorCode">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type ec2_unexpected_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment() :: #{
+%%   <<"Variables">> => map()
+%% }
+-type environment() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type environment_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_response() :: #{
+%%   <<"Error">> => environment_error(),
+%%   <<"Variables">> => map()
+%% }
+-type environment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1827,263 +1080,13 @@
 
 
 %% Example:
-%% put_provisioned_concurrency_config_response() :: #{
-%%   <<"AllocatedProvisionedConcurrentExecutions">> => integer(),
-%%   <<"AvailableProvisionedConcurrentExecutions">> => integer(),
-%%   <<"LastModified">> => string(),
-%%   <<"RequestedProvisionedConcurrentExecutions">> => integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
+%% error_object() :: #{
+%%   <<"ErrorData">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ErrorType">> => string(),
+%%   <<"StackTrace">> => list(string())
 %% }
--type put_provisioned_concurrency_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_durable_execution_response() :: #{
-%%   <<"DurableExecutionArn">> => string(),
-%%   <<"DurableExecutionName">> => string(),
-%%   <<"EndTimestamp">> => non_neg_integer(),
-%%   <<"Error">> => error_object(),
-%%   <<"FunctionArn">> => string(),
-%%   <<"InputPayload">> => string(),
-%%   <<"Result">> => string(),
-%%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TraceHeader">> => trace_header(),
-%%   <<"Version">> => string()
-%% }
--type get_durable_execution_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_source_mapping_logging_config() :: #{
-%%   <<"SystemLogLevel">> => list(any())
-%% }
--type event_source_mapping_logging_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"Pattern">> => string()
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% layer_versions_list_item() :: #{
-%%   <<"CompatibleArchitectures">> => list(list(any())()),
-%%   <<"CompatibleRuntimes">> => list(list(any())()),
-%%   <<"CreatedDate">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LayerVersionArn">> => string(),
-%%   <<"LicenseInfo">> => string(),
-%%   <<"Version">> => float()
-%% }
--type layer_versions_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_layer_versions_response() :: #{
-%%   <<"LayerVersions">> => list(layer_versions_list_item()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_layer_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_files_mount_failure_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type s3_files_mount_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_async_response() :: #{
-%%   <<"Status">> => integer()
-%% }
--type invoke_async_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_versions_by_function_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_versions_by_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_capacity_provider_response() :: #{
-%%   <<"CapacityProvider">> => capacity_provider()
-%% }
--type create_capacity_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_too_large_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type request_too_large_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% scaling_config() :: #{
-%%   <<"MaximumConcurrency">> => integer()
-%% }
--type scaling_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_policy_response() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type get_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_provisioned_concurrency_config_request() :: #{
-%%   <<"Qualifier">> := string()
-%% }
--type get_provisioned_concurrency_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% callback_started_details() :: #{
-%%   <<"CallbackId">> => string(),
-%%   <<"HeartbeatTimeout">> => integer(),
-%%   <<"Timeout">> => integer()
-%% }
--type callback_started_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% checkpoint_durable_execution_response() :: #{
-%%   <<"CheckpointToken">> => string(),
-%%   <<"NewExecutionState">> => checkpoint_updated_execution_state()
-%% }
--type checkpoint_durable_execution_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_capacity_provider_response() :: #{
-%%   <<"CapacityProvider">> => capacity_provider()
-%% }
--type update_capacity_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% chained_invoke_details() :: #{
-%%   <<"Error">> => error_object(),
-%%   <<"Result">> => string()
-%% }
--type chained_invoke_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution_stopped_details() :: #{
-%%   <<"Error">> => event_error()
-%% }
--type execution_stopped_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% capacity_provider_permissions_config() :: #{
-%%   <<"CapacityProviderOperatorRoleArn">> => string()
-%% }
--type capacity_provider_permissions_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_artifact_user_deleted_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type code_artifact_user_deleted_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_functions_request() :: #{
-%%   <<"FunctionVersion">> => list(any()),
-%%   <<"Marker">> => string(),
-%%   <<"MasterRegion">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_functions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_layer_version_permission_request() :: #{
-%%   <<"Action">> := string(),
-%%   <<"OrganizationId">> => string(),
-%%   <<"Principal">> := string(),
-%%   <<"RevisionId">> => string(),
-%%   <<"StatementId">> := string()
-%% }
--type add_layer_version_permission_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_functions_by_code_signing_config_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_functions_by_code_signing_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_source_mappings_request() :: #{
-%%   <<"EventSourceArn">> => string(),
-%%   <<"FunctionName">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_event_source_mappings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% kms_access_denied_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type kms_access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_code_signing_config_request() :: #{
-%%   <<"AllowedPublishers">> => allowed_publishers(),
-%%   <<"CodeSigningPolicies">> => code_signing_policies(),
-%%   <<"Description">> => string()
-%% }
--type update_code_signing_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_function_code_signing_config_request() :: #{
-%%   <<"CodeSigningConfigArn">> := string()
-%% }
--type put_function_code_signing_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% send_durable_execution_callback_success_response() :: #{}
--type send_durable_execution_callback_success_response() :: #{}.
-
-
-%% Example:
-%% send_durable_execution_callback_success_request() :: #{
-%%   <<"Result">> => binary()
-%% }
--type send_durable_execution_callback_success_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_layer_version_permission_response() :: #{
-%%   <<"RevisionId">> => string(),
-%%   <<"Statement">> => string()
-%% }
--type add_layer_version_permission_response() :: #{binary() => any()}.
+-type error_object() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2122,38 +1125,75 @@
 %% }
 -type event() :: #{binary() => any()}.
 
-%% Example:
-%% get_event_source_mapping_request() :: #{}
--type get_event_source_mapping_request() :: #{}.
-
 
 %% Example:
-%% kafka_schema_registry_access_config() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"URI">> => string()
+%% event_error() :: #{
+%%   <<"Payload">> => error_object(),
+%%   <<"Truncated">> => boolean()
 %% }
--type kafka_schema_registry_access_config() :: #{binary() => any()}.
+-type event_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% invocation_request() :: #{
-%%   <<"ClientContext">> => string(),
-%%   <<"DurableExecutionName">> => string(),
-%%   <<"InvocationType">> => list(any()),
-%%   <<"LogType">> => list(any()),
-%%   <<"Payload">> => binary(),
-%%   <<"Qualifier">> => string(),
-%%   <<"TenantId">> => string()
+%% event_input() :: #{
+%%   <<"Payload">> => string(),
+%%   <<"Truncated">> => boolean()
 %% }
--type invocation_request() :: #{binary() => any()}.
+-type event_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_zip_file_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
+%% event_result() :: #{
+%%   <<"Payload">> => string(),
+%%   <<"Truncated">> => boolean()
 %% }
--type invalid_zip_file_exception() :: #{binary() => any()}.
+-type event_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_source_mapping_configuration() :: #{
+%%   <<"AmazonManagedKafkaEventSourceConfig">> => amazon_managed_kafka_event_source_config(),
+%%   <<"BatchSize">> => integer(),
+%%   <<"BisectBatchOnFunctionError">> => boolean(),
+%%   <<"DestinationConfig">> => destination_config(),
+%%   <<"DocumentDBEventSourceConfig">> => document_db_event_source_config(),
+%%   <<"EventSourceArn">> => string(),
+%%   <<"EventSourceMappingArn">> => string(),
+%%   <<"FilterCriteria">> => filter_criteria(),
+%%   <<"FilterCriteriaError">> => filter_criteria_error(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionResponseTypes">> => list(list(any())()),
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastProcessingResult">> => string(),
+%%   <<"LoggingConfig">> => event_source_mapping_logging_config(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"MaximumRecordAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"MetricsConfig">> => event_source_mapping_metrics_config(),
+%%   <<"ParallelizationFactor">> => integer(),
+%%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
+%%   <<"Queues">> => list(string()),
+%%   <<"ScalingConfig">> => scaling_config(),
+%%   <<"SelfManagedEventSource">> => self_managed_event_source(),
+%%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
+%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()),
+%%   <<"StartingPosition">> => list(any()),
+%%   <<"StartingPositionTimestamp">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"StateTransitionReason">> => string(),
+%%   <<"Topics">> => list(string()),
+%%   <<"TumblingWindowInSeconds">> => integer(),
+%%   <<"UUID">> => string()
+%% }
+-type event_source_mapping_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_source_mapping_logging_config() :: #{
+%%   <<"SystemLogLevel">> => list(any())
+%% }
+-type event_source_mapping_logging_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2164,354 +1204,188 @@
 
 
 %% Example:
-%% invoke_with_response_stream_complete_event() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorDetails">> => string(),
-%%   <<"LogResult">> => string()
+%% execution() :: #{
+%%   <<"DurableExecutionArn">> => string(),
+%%   <<"DurableExecutionName">> => string(),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
 %% }
--type invoke_with_response_stream_complete_event() :: #{binary() => any()}.
+-type execution() :: #{binary() => any()}.
 
 
 %% Example:
-%% kms_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
+%% execution_details() :: #{
+%%   <<"InputPayload">> => string()
 %% }
--type kms_not_found_exception() :: #{binary() => any()}.
+-type execution_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% snap_start_regeneration_failure_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type snap_start_regeneration_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% callback_succeeded_details() :: #{
-%%   <<"Result">> => event_result()
-%% }
--type callback_succeeded_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_with_response_stream_request() :: #{
-%%   <<"ClientContext">> => string(),
-%%   <<"InvocationType">> => list(any()),
-%%   <<"LogType">> => list(any()),
-%%   <<"Payload">> => binary(),
-%%   <<"Qualifier">> => string(),
-%%   <<"TenantId">> => string()
-%% }
--type invoke_with_response_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_durable_execution_callback_failure_request() :: #{
-%%   <<"Error">> => error_object()
-%% }
--type send_durable_execution_callback_failure_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% wait_started_details() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"ScheduledEndTimestamp">> => non_neg_integer()
-%% }
--type wait_started_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_url_config_request() :: #{
-%%   <<"Qualifier">> => string()
-%% }
--type get_function_url_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% context_failed_details() :: #{
+%% execution_failed_details() :: #{
 %%   <<"Error">> => event_error()
 %% }
--type context_failed_details() :: #{binary() => any()}.
+-type execution_failed_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% propagate_tags() :: #{
-%%   <<"ExplicitTags">> => map(),
-%%   <<"Mode">> => list(any())
+%% execution_started_details() :: #{
+%%   <<"ExecutionTimeout">> => integer(),
+%%   <<"Input">> => event_input()
 %% }
--type propagate_tags() :: #{binary() => any()}.
+-type execution_started_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% resolved_s3_object() :: #{
+%% execution_stopped_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type execution_stopped_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_succeeded_details() :: #{
+%%   <<"Result">> => event_result()
+%% }
+-type execution_succeeded_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_timed_out_details() :: #{
+%%   <<"Error">> => event_error()
+%% }
+-type execution_timed_out_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_system_config() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"LocalMountPath">> => string()
+%% }
+-type file_system_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Pattern">> => string()
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_criteria() :: #{
+%%   <<"Filters">> => list(filter())
+%% }
+-type filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_criteria_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type filter_criteria_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_code() :: #{
+%%   <<"ImageUri">> => string(),
 %%   <<"S3Bucket">> => string(),
 %%   <<"S3Key">> => string(),
-%%   <<"S3ObjectVersion">> => string()
+%%   <<"S3ObjectStorageMode">> => list(any()),
+%%   <<"S3ObjectVersion">> => string(),
+%%   <<"SourceKMSKeyArn">> => string(),
+%%   <<"ZipFile">> => binary()
 %% }
--type resolved_s3_object() :: #{binary() => any()}.
+-type function_code() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_code_signing_config_response() :: #{
-%%   <<"CodeSigningConfig">> => code_signing_config()
+%% function_code_location() :: #{
+%%   <<"Error">> => function_code_location_error(),
+%%   <<"ImageUri">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"RepositoryType">> => string(),
+%%   <<"ResolvedImageUri">> => string(),
+%%   <<"ResolvedS3Object">> => resolved_s3_object(),
+%%   <<"SourceKMSKeyArn">> => string()
 %% }
--type update_code_signing_config_response() :: #{binary() => any()}.
+-type function_code_location() :: #{binary() => any()}.
 
 
 %% Example:
-%% instance_requirements() :: #{
-%%   <<"AllowedInstanceTypes">> => list(string()),
-%%   <<"Architectures">> => list(list(any())()),
-%%   <<"ExcludedInstanceTypes">> => list(string())
-%% }
--type instance_requirements() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_versions_by_capacity_provider_list_item() :: #{
-%%   <<"FunctionArn">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type function_versions_by_capacity_provider_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_capacity_provider_response() :: #{
-%%   <<"CapacityProvider">> => capacity_provider()
-%% }
--type get_capacity_provider_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dead_letter_config() :: #{
-%%   <<"TargetArn">> => string()
-%% }
--type dead_letter_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% e_f_s_mount_timeout_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type e_f_s_mount_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_provisioned_concurrency_config_request() :: #{
-%%   <<"Qualifier">> := string()
-%% }
--type delete_provisioned_concurrency_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_config_error() :: #{
+%% function_code_location_error() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
--type image_config_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_layers_request() :: #{
-%%   <<"CompatibleArchitecture">> => list(any()),
-%%   <<"CompatibleRuntime">> => list(any()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_layers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% provisioned_concurrency_config_not_found_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type provisioned_concurrency_config_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% capacity_provider_limit_exceeded_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type capacity_provider_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_code_signing_config_response() :: #{
-%%   <<"CodeSigningConfig">> => code_signing_config()
-%% }
--type get_code_signing_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% runtime_version_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type runtime_version_error() :: #{binary() => any()}.
-
-%% Example:
-%% get_layer_version_request() :: #{}
--type get_layer_version_request() :: #{}.
+-type function_code_location_error() :: #{binary() => any()}.
 
 
 %% Example:
 %% function_configuration() :: #{
-%%   <<"Environment">> => environment_response(),
-%%   <<"MemorySize">> => integer(),
-%%   <<"EphemeralStorage">> => ephemeral_storage(),
-%%   <<"Version">> => string(),
-%%   <<"CodeSize">> => float(),
 %%   <<"Architectures">> => list(list(any())()),
-%%   <<"FileSystemConfigs">> => list(file_system_config()),
 %%   <<"CapacityProviderConfig">> => capacity_provider_config(),
-%%   <<"LastUpdateStatusReasonCode">> => list(any()),
-%%   <<"KMSKeyArn">> => string(),
-%%   <<"PackageType">> => list(any()),
-%%   <<"LastModified">> => string(),
-%%   <<"Layers">> => list(layer()),
-%%   <<"FunctionArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"VpcConfig">> => vpc_config_response(),
-%%   <<"ImageConfigResponse">> => image_config_response(),
-%%   <<"LastUpdateStatus">> => list(any()),
-%%   <<"DeadLetterConfig">> => dead_letter_config(),
-%%   <<"Timeout">> => integer(),
-%%   <<"DurableConfig">> => durable_config(),
-%%   <<"MasterArn">> => string(),
-%%   <<"SnapStart">> => snap_start_response(),
 %%   <<"CodeSha256">> => string(),
-%%   <<"StateReason">> => string(),
-%%   <<"RuntimeVersionConfig">> => runtime_version_config(),
-%%   <<"Role">> => string(),
-%%   <<"LoggingConfig">> => logging_config(),
-%%   <<"StateReasonCode">> => list(any()),
-%%   <<"RevisionId">> => string(),
-%%   <<"FunctionName">> => string(),
-%%   <<"TenancyConfig">> => tenancy_config(),
-%%   <<"LastUpdateStatusReason">> => string(),
-%%   <<"SigningJobArn">> => string(),
-%%   <<"Runtime">> => list(any()),
-%%   <<"TracingConfig">> => tracing_config_response(),
+%%   <<"CodeSize">> => float(),
 %%   <<"ConfigSha256">> => string(),
+%%   <<"DeadLetterConfig">> => dead_letter_config(),
 %%   <<"Description">> => string(),
+%%   <<"DurableConfig">> => durable_config(),
+%%   <<"Environment">> => environment_response(),
+%%   <<"EphemeralStorage">> => ephemeral_storage(),
+%%   <<"FileSystemConfigs">> => list(file_system_config()),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionName">> => string(),
+%%   <<"Handler">> => string(),
+%%   <<"ImageConfigResponse">> => image_config_response(),
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"LastModified">> => string(),
+%%   <<"LastUpdateStatus">> => list(any()),
+%%   <<"LastUpdateStatusReason">> => string(),
+%%   <<"LastUpdateStatusReasonCode">> => list(any()),
+%%   <<"Layers">> => list(layer()),
+%%   <<"LoggingConfig">> => logging_config(),
+%%   <<"MasterArn">> => string(),
+%%   <<"MemorySize">> => integer(),
+%%   <<"PackageType">> => list(any()),
+%%   <<"RevisionId">> => string(),
+%%   <<"Role">> => string(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"RuntimeVersionConfig">> => runtime_version_config(),
+%%   <<"SigningJobArn">> => string(),
 %%   <<"SigningProfileVersionArn">> => string(),
-%%   <<"Handler">> => string()
+%%   <<"SnapStart">> => snap_start_response(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"StateReasonCode">> => list(any()),
+%%   <<"TenancyConfig">> => tenancy_config(),
+%%   <<"Timeout">> => integer(),
+%%   <<"TracingConfig">> => tracing_config_response(),
+%%   <<"Version">> => string(),
+%%   <<"VpcConfig">> => vpc_config_response()
 %% }
 -type function_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% e_f_s_mount_connectivity_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type e_f_s_mount_connectivity_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_runtime_management_config_response() :: #{
+%% function_event_invoke_config() :: #{
+%%   <<"DestinationConfig">> => destination_config(),
 %%   <<"FunctionArn">> => string(),
-%%   <<"RuntimeVersionArn">> => string(),
-%%   <<"UpdateRuntimeOn">> => list(any())
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"MaximumEventAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer()
 %% }
--type get_runtime_management_config_response() :: #{binary() => any()}.
+-type function_event_invoke_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_runtime_management_config_response() :: #{
-%%   <<"FunctionArn">> => string(),
-%%   <<"RuntimeVersionArn">> => string(),
-%%   <<"UpdateRuntimeOn">> => list(any())
+%% function_scaling_config() :: #{
+%%   <<"MaxExecutionEnvironments">> => integer(),
+%%   <<"MinExecutionEnvironments">> => integer()
 %% }
--type put_runtime_management_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% capacity_provider_config() :: #{
-%%   <<"LambdaManagedInstancesCapacityProviderConfig">> => lambda_managed_instances_capacity_provider_config()
-%% }
--type capacity_provider_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% e_n_i_limit_reached_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type e_n_i_limit_reached_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_durable_execution_response() :: #{
-%%   <<"StopTimestamp">> => non_neg_integer()
-%% }
--type stop_durable_execution_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_function_url_configs_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_function_url_configs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_layer_versions_request() :: #{
-%%   <<"CompatibleArchitecture">> => list(any()),
-%%   <<"CompatibleRuntime">> => list(any()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_layer_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_function_scaling_config_request() :: #{
-%%   <<"FunctionScalingConfig">> => function_scaling_config(),
-%%   <<"Qualifier">> := string()
-%% }
--type put_function_scaling_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_durable_executions_by_function_response() :: #{
-%%   <<"DurableExecutions">> => list(execution()),
-%%   <<"NextMarker">> => string()
-%% }
--type list_durable_executions_by_function_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_function_event_invoke_config_request() :: #{
-%%   <<"Qualifier">> => string()
-%% }
--type delete_function_event_invoke_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% e_f_s_mount_failure_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type e_f_s_mount_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% cors() :: #{
-%%   <<"AllowCredentials">> => boolean(),
-%%   <<"AllowHeaders">> => list(string()),
-%%   <<"AllowMethods">> => list(string()),
-%%   <<"AllowOrigins">> => list(string()),
-%%   <<"ExposeHeaders">> => list(string()),
-%%   <<"MaxAge">> => integer()
-%% }
--type cors() :: #{binary() => any()}.
+-type function_scaling_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2528,10 +1402,895 @@
 
 
 %% Example:
-%% wait_details() :: #{
-%%   <<"ScheduledEndTimestamp">> => non_neg_integer()
+%% function_versions_by_capacity_provider_list_item() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"State">> => list(any())
 %% }
--type wait_details() :: #{binary() => any()}.
+-type function_versions_by_capacity_provider_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_versions_per_capacity_provider_limit_exceeded_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type function_versions_per_capacity_provider_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_settings_request() :: #{}
+-type get_account_settings_request() :: #{}.
+
+
+%% Example:
+%% get_account_settings_response() :: #{
+%%   <<"AccountLimit">> => account_limit(),
+%%   <<"AccountUsage">> => account_usage()
+%% }
+-type get_account_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_alias_request() :: #{}
+-type get_alias_request() :: #{}.
+
+%% Example:
+%% get_capacity_provider_request() :: #{}
+-type get_capacity_provider_request() :: #{}.
+
+
+%% Example:
+%% get_capacity_provider_response() :: #{
+%%   <<"CapacityProvider">> => capacity_provider()
+%% }
+-type get_capacity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_code_signing_config_request() :: #{}
+-type get_code_signing_config_request() :: #{}.
+
+
+%% Example:
+%% get_code_signing_config_response() :: #{
+%%   <<"CodeSigningConfig">> => code_signing_config()
+%% }
+-type get_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_durable_execution_history_request() :: #{
+%%   <<"IncludeExecutionData">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"ReverseOrder">> => boolean()
+%% }
+-type get_durable_execution_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_durable_execution_history_response() :: #{
+%%   <<"Events">> => list(event()),
+%%   <<"NextMarker">> => string()
+%% }
+-type get_durable_execution_history_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_durable_execution_request() :: #{
+%%   <<"IncludeExecutionData">> => boolean()
+%% }
+-type get_durable_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_durable_execution_response() :: #{
+%%   <<"DurableConfig">> => durable_config(),
+%%   <<"DurableExecutionArn">> => string(),
+%%   <<"DurableExecutionName">> => string(),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"Error">> => error_object(),
+%%   <<"ExecutionDataIncluded">> => boolean(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"InputPayload">> => string(),
+%%   <<"Result">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TraceHeader">> => trace_header(),
+%%   <<"Version">> => string()
+%% }
+-type get_durable_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_durable_execution_state_request() :: #{
+%%   <<"CheckpointToken">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type get_durable_execution_state_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_durable_execution_state_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Operations">> => list(operation())
+%% }
+-type get_durable_execution_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_source_mapping_request() :: #{}
+-type get_event_source_mapping_request() :: #{}.
+
+%% Example:
+%% get_function_code_signing_config_request() :: #{}
+-type get_function_code_signing_config_request() :: #{}.
+
+
+%% Example:
+%% get_function_code_signing_config_response() :: #{
+%%   <<"CodeSigningConfigArn">> => string(),
+%%   <<"FunctionName">> => string()
+%% }
+-type get_function_code_signing_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_function_concurrency_request() :: #{}
+-type get_function_concurrency_request() :: #{}.
+
+
+%% Example:
+%% get_function_concurrency_response() :: #{
+%%   <<"ReservedConcurrentExecutions">> => integer()
+%% }
+-type get_function_concurrency_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_configuration_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_function_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_event_invoke_config_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_function_event_invoke_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_function_recursion_config_request() :: #{}
+-type get_function_recursion_config_request() :: #{}.
+
+
+%% Example:
+%% get_function_recursion_config_response() :: #{
+%%   <<"RecursiveLoop">> => list(any())
+%% }
+-type get_function_recursion_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_response() :: #{
+%%   <<"Code">> => function_code_location(),
+%%   <<"Concurrency">> => concurrency(),
+%%   <<"Configuration">> => function_configuration(),
+%%   <<"Tags">> => map(),
+%%   <<"TagsError">> => tags_error()
+%% }
+-type get_function_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_scaling_config_request() :: #{
+%%   <<"Qualifier">> := string()
+%% }
+-type get_function_scaling_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_scaling_config_response() :: #{
+%%   <<"AppliedFunctionScalingConfig">> => function_scaling_config(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"RequestedFunctionScalingConfig">> => function_scaling_config()
+%% }
+-type get_function_scaling_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_url_config_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_function_url_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_function_url_config_response() :: #{
+%%   <<"AuthType">> => list(any()),
+%%   <<"Cors">> => cors(),
+%%   <<"CreationTime">> => string(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionUrl">> => string(),
+%%   <<"InvokeMode">> => list(any()),
+%%   <<"LastModifiedTime">> => string()
+%% }
+-type get_function_url_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_layer_version_by_arn_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type get_layer_version_by_arn_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_layer_version_policy_request() :: #{}
+-type get_layer_version_policy_request() :: #{}.
+
+
+%% Example:
+%% get_layer_version_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type get_layer_version_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_layer_version_request() :: #{}
+-type get_layer_version_request() :: #{}.
+
+
+%% Example:
+%% get_layer_version_response() :: #{
+%%   <<"CompatibleArchitectures">> => list(list(any())()),
+%%   <<"CompatibleRuntimes">> => list(list(any())()),
+%%   <<"Content">> => layer_version_content_output(),
+%%   <<"CreatedDate">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LayerArn">> => string(),
+%%   <<"LayerVersionArn">> => string(),
+%%   <<"LicenseInfo">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type get_layer_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_policy_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_provisioned_concurrency_config_request() :: #{
+%%   <<"Qualifier">> := string()
+%% }
+-type get_provisioned_concurrency_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_provisioned_concurrency_config_response() :: #{
+%%   <<"AllocatedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"AvailableProvisionedConcurrentExecutions">> => integer(),
+%%   <<"LastModified">> => string(),
+%%   <<"RequestedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type get_provisioned_concurrency_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_runtime_management_config_request() :: #{
+%%   <<"Qualifier">> => string()
+%% }
+-type get_runtime_management_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_runtime_management_config_response() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"RuntimeVersionArn">> => string(),
+%%   <<"UpdateRuntimeOn">> => list(any())
+%% }
+-type get_runtime_management_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_config() :: #{
+%%   <<"Command">> => list(string()),
+%%   <<"EntryPoint">> => list(string()),
+%%   <<"WorkingDirectory">> => string()
+%% }
+-type image_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_config_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type image_config_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_config_response() :: #{
+%%   <<"Error">> => image_config_error(),
+%%   <<"ImageConfig">> => image_config()
+%% }
+-type image_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_requirements() :: #{
+%%   <<"AllowedInstanceTypes">> => list(string()),
+%%   <<"Architectures">> => list(list(any())()),
+%%   <<"ExcludedInstanceTypes">> => list(string())
+%% }
+-type instance_requirements() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_code_signature_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_code_signature_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_content_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_request_content_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_runtime_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_runtime_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_security_group_id_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_security_group_id_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_subnet_id_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_subnet_id_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_zip_file_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type invalid_zip_file_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_completed_details() :: #{
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"Error">> => event_error(),
+%%   <<"RequestId">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer()
+%% }
+-type invocation_completed_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_request() :: #{
+%%   <<"ClientContext">> => string(),
+%%   <<"DurableExecutionName">> => string(),
+%%   <<"InvocationType">> => list(any()),
+%%   <<"LogType">> => list(any()),
+%%   <<"Payload">> => binary(),
+%%   <<"Qualifier">> => string(),
+%%   <<"TenantId">> => string()
+%% }
+-type invocation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_response() :: #{
+%%   <<"DurableExecutionArn">> => string(),
+%%   <<"ExecutedVersion">> => string(),
+%%   <<"FunctionError">> => string(),
+%%   <<"LogResult">> => string(),
+%%   <<"Payload">> => binary(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type invocation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_async_request() :: #{
+%%   <<"InvokeArgs">> := binary()
+%% }
+-type invoke_async_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_async_response() :: #{
+%%   <<"Status">> => integer()
+%% }
+-type invoke_async_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_response_stream_update() :: #{
+%%   <<"Payload">> => binary()
+%% }
+-type invoke_response_stream_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_with_response_stream_complete_event() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorDetails">> => string(),
+%%   <<"LogResult">> => string()
+%% }
+-type invoke_with_response_stream_complete_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_with_response_stream_request() :: #{
+%%   <<"ClientContext">> => string(),
+%%   <<"InvocationType">> => list(any()),
+%%   <<"LogType">> => list(any()),
+%%   <<"Payload">> => binary(),
+%%   <<"Qualifier">> => string(),
+%%   <<"TenantId">> => string()
+%% }
+-type invoke_with_response_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_with_response_stream_response() :: #{
+%%   <<"EventStream">> => list(),
+%%   <<"ExecutedVersion">> => string(),
+%%   <<"ResponseStreamContentType">> => string(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type invoke_with_response_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_schema_registry_access_config() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"URI">> => string()
+%% }
+-type kafka_schema_registry_access_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_schema_registry_config() :: #{
+%%   <<"AccessConfigs">> => list(kafka_schema_registry_access_config()),
+%%   <<"EventRecordFormat">> => list(any()),
+%%   <<"SchemaRegistryURI">> => string(),
+%%   <<"SchemaValidationConfigs">> => list(kafka_schema_validation_config())
+%% }
+-type kafka_schema_registry_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_schema_validation_config() :: #{
+%%   <<"Attribute">> => list(any())
+%% }
+-type kafka_schema_validation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_access_denied_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type kms_access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_disabled_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type kms_disabled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_invalid_state_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type kms_invalid_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type kms_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_managed_instances_capacity_provider_config() :: #{
+%%   <<"CapacityProviderArn">> => string(),
+%%   <<"ExecutionEnvironmentMemoryGiBPerVCpu">> => float(),
+%%   <<"PerExecutionEnvironmentMaxConcurrency">> => integer()
+%% }
+-type lambda_managed_instances_capacity_provider_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% layer() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CodeSize">> => float(),
+%%   <<"SigningJobArn">> => string(),
+%%   <<"SigningProfileVersionArn">> => string()
+%% }
+-type layer() :: #{binary() => any()}.
+
+
+%% Example:
+%% layer_version_content_input() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string(),
+%%   <<"S3ObjectStorageMode">> => list(any()),
+%%   <<"S3ObjectVersion">> => string(),
+%%   <<"ZipFile">> => binary()
+%% }
+-type layer_version_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% layer_version_content_output() :: #{
+%%   <<"CodeSha256">> => string(),
+%%   <<"CodeSize">> => float(),
+%%   <<"Location">> => string(),
+%%   <<"ResolvedS3Object">> => resolved_s3_object(),
+%%   <<"SigningJobArn">> => string(),
+%%   <<"SigningProfileVersionArn">> => string()
+%% }
+-type layer_version_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% layer_versions_list_item() :: #{
+%%   <<"CompatibleArchitectures">> => list(list(any())()),
+%%   <<"CompatibleRuntimes">> => list(list(any())()),
+%%   <<"CreatedDate">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LayerVersionArn">> => string(),
+%%   <<"LicenseInfo">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type layer_versions_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% layers_list_item() :: #{
+%%   <<"LatestMatchingVersion">> => layer_versions_list_item(),
+%%   <<"LayerArn">> => string(),
+%%   <<"LayerName">> => string()
+%% }
+-type layers_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_aliases_request() :: #{
+%%   <<"FunctionVersion">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_aliases_response() :: #{
+%%   <<"Aliases">> => list(alias_configuration()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_aliases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_capacity_providers_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"State">> => list(any())
+%% }
+-type list_capacity_providers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_capacity_providers_response() :: #{
+%%   <<"CapacityProviders">> => list(capacity_provider()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_capacity_providers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_signing_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_code_signing_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_signing_configs_response() :: #{
+%%   <<"CodeSigningConfigs">> => list(code_signing_config()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_code_signing_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_durable_executions_by_function_request() :: #{
+%%   <<"DurableExecutionName">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Qualifier">> => string(),
+%%   <<"ReverseOrder">> => boolean(),
+%%   <<"StartedAfter">> => non_neg_integer(),
+%%   <<"StartedBefore">> => non_neg_integer(),
+%%   <<"Statuses">> => list(list(any())())
+%% }
+-type list_durable_executions_by_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_durable_executions_by_function_response() :: #{
+%%   <<"DurableExecutions">> => list(execution()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_durable_executions_by_function_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_source_mappings_request() :: #{
+%%   <<"EventSourceArn">> => string(),
+%%   <<"FunctionName">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_event_source_mappings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_source_mappings_response() :: #{
+%%   <<"EventSourceMappings">> => list(event_source_mapping_configuration()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_event_source_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_event_invoke_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_function_event_invoke_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_event_invoke_configs_response() :: #{
+%%   <<"FunctionEventInvokeConfigs">> => list(function_event_invoke_config()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_function_event_invoke_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_url_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_function_url_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_url_configs_response() :: #{
+%%   <<"FunctionUrlConfigs">> => list(function_url_config()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_function_url_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_versions_by_capacity_provider_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_function_versions_by_capacity_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_function_versions_by_capacity_provider_response() :: #{
+%%   <<"CapacityProviderArn">> => string(),
+%%   <<"FunctionVersions">> => list(function_versions_by_capacity_provider_list_item()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_function_versions_by_capacity_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_by_code_signing_config_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_functions_by_code_signing_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_by_code_signing_config_response() :: #{
+%%   <<"FunctionArns">> => list(string()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_functions_by_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_request() :: #{
+%%   <<"FunctionVersion">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MasterRegion">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_functions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_response() :: #{
+%%   <<"Functions">> => list(function_configuration()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_functions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_layer_versions_request() :: #{
+%%   <<"CompatibleArchitecture">> => list(any()),
+%%   <<"CompatibleRuntime">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_layer_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_layer_versions_response() :: #{
+%%   <<"LayerVersions">> => list(layer_versions_list_item()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_layer_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_layers_request() :: #{
+%%   <<"CompatibleArchitecture">> => list(any()),
+%%   <<"CompatibleRuntime">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_layers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_layers_response() :: #{
+%%   <<"Layers">> => list(layers_list_item()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_layers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provisioned_concurrency_configs_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_provisioned_concurrency_configs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_provisioned_concurrency_configs_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"ProvisionedConcurrencyConfigs">> => list(provisioned_concurrency_config_list_item())
+%% }
+-type list_provisioned_concurrency_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_request() :: #{}
+-type list_tags_request() :: #{}.
+
+
+%% Example:
+%% list_tags_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_versions_by_function_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_versions_by_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_versions_by_function_response() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"Versions">> => list(function_configuration())
+%% }
+-type list_versions_by_function_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_config() :: #{
+%%   <<"ApplicationLogLevel">> => list(any()),
+%%   <<"LogFormat">> => list(any()),
+%%   <<"LogGroup">> => string(),
+%%   <<"SystemLogLevel">> => list(any())
+%% }
+-type logging_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% mode_not_supported_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type mode_not_supported_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_published_version_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type no_published_version_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% on_failure() :: #{
+%%   <<"Destination">> => string()
+%% }
+-type on_failure() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2542,10 +2301,712 @@
 
 
 %% Example:
+%% operation() :: #{
+%%   <<"CallbackDetails">> => callback_details(),
+%%   <<"ChainedInvokeDetails">> => chained_invoke_details(),
+%%   <<"ContextDetails">> => context_details(),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"ExecutionDetails">> => execution_details(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ParentId">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StepDetails">> => step_details(),
+%%   <<"SubType">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"WaitDetails">> => wait_details()
+%% }
+-type operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% operation_update() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"CallbackOptions">> => callback_options(),
+%%   <<"ChainedInvokeOptions">> => chained_invoke_options(),
+%%   <<"ContextOptions">> => context_options(),
+%%   <<"Error">> => error_object(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ParentId">> => string(),
+%%   <<"Payload">> => string(),
+%%   <<"StepOptions">> => step_options(),
+%%   <<"SubType">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"WaitOptions">> => wait_options()
+%% }
+-type operation_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_length_exceeded_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type policy_length_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% precondition_failed_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type precondition_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% propagate_tags() :: #{
+%%   <<"ExplicitTags">> => map(),
+%%   <<"Mode">> => list(any())
+%% }
+-type propagate_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_concurrency_config_list_item() :: #{
+%%   <<"AllocatedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"AvailableProvisionedConcurrentExecutions">> => integer(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"LastModified">> => string(),
+%%   <<"RequestedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type provisioned_concurrency_config_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_concurrency_config_not_found_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type provisioned_concurrency_config_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_poller_config() :: #{
+%%   <<"MaximumPollers">> => integer(),
+%%   <<"MinimumPollers">> => integer(),
+%%   <<"PollerGroupName">> => string()
+%% }
+-type provisioned_poller_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_policy_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type public_policy_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_layer_version_request() :: #{
+%%   <<"CompatibleArchitectures">> => list(list(any())()),
+%%   <<"CompatibleRuntimes">> => list(list(any())()),
+%%   <<"Content">> := layer_version_content_input(),
+%%   <<"Description">> => string(),
+%%   <<"LicenseInfo">> => string()
+%% }
+-type publish_layer_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_layer_version_response() :: #{
+%%   <<"CompatibleArchitectures">> => list(list(any())()),
+%%   <<"CompatibleRuntimes">> => list(list(any())()),
+%%   <<"Content">> => layer_version_content_output(),
+%%   <<"CreatedDate">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LayerArn">> => string(),
+%%   <<"LayerVersionArn">> => string(),
+%%   <<"LicenseInfo">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type publish_layer_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_version_request() :: #{
+%%   <<"CodeSha256">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"PublishTo">> => list(any()),
+%%   <<"RevisionId">> => string()
+%% }
+-type publish_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_code_signing_config_request() :: #{
+%%   <<"CodeSigningConfigArn">> := string()
+%% }
+-type put_function_code_signing_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_code_signing_config_response() :: #{
+%%   <<"CodeSigningConfigArn">> => string(),
+%%   <<"FunctionName">> => string()
+%% }
+-type put_function_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_concurrency_request() :: #{
+%%   <<"ReservedConcurrentExecutions">> := integer()
+%% }
+-type put_function_concurrency_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_event_invoke_config_request() :: #{
+%%   <<"DestinationConfig">> => destination_config(),
+%%   <<"MaximumEventAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"Qualifier">> => string()
+%% }
+-type put_function_event_invoke_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_recursion_config_request() :: #{
+%%   <<"RecursiveLoop">> := list(any())
+%% }
+-type put_function_recursion_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_recursion_config_response() :: #{
+%%   <<"RecursiveLoop">> => list(any())
+%% }
+-type put_function_recursion_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_scaling_config_request() :: #{
+%%   <<"FunctionScalingConfig">> => function_scaling_config(),
+%%   <<"Qualifier">> := string()
+%% }
+-type put_function_scaling_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_function_scaling_config_response() :: #{
+%%   <<"FunctionState">> => list(any())
+%% }
+-type put_function_scaling_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_provisioned_concurrency_config_request() :: #{
+%%   <<"ProvisionedConcurrentExecutions">> := integer(),
+%%   <<"Qualifier">> := string()
+%% }
+-type put_provisioned_concurrency_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_provisioned_concurrency_config_response() :: #{
+%%   <<"AllocatedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"AvailableProvisionedConcurrentExecutions">> => integer(),
+%%   <<"LastModified">> => string(),
+%%   <<"RequestedProvisionedConcurrentExecutions">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type put_provisioned_concurrency_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_runtime_management_config_request() :: #{
+%%   <<"Qualifier">> => string(),
+%%   <<"RuntimeVersionArn">> => string(),
+%%   <<"UpdateRuntimeOn">> := list(any())
+%% }
+-type put_runtime_management_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_runtime_management_config_response() :: #{
+%%   <<"FunctionArn">> => string(),
+%%   <<"RuntimeVersionArn">> => string(),
+%%   <<"UpdateRuntimeOn">> => list(any())
+%% }
+-type put_runtime_management_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recursive_invocation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type recursive_invocation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_layer_version_permission_request() :: #{
+%%   <<"RevisionId">> => string()
+%% }
+-type remove_layer_version_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_permission_request() :: #{
+%%   <<"Qualifier">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type remove_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_too_large_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type request_too_large_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolved_s3_object() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string(),
+%%   <<"S3ObjectVersion">> => string()
+%% }
+-type resolved_s3_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_conflict_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type resource_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_ready_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type resource_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_details() :: #{
+%%   <<"CurrentAttempt">> => integer(),
+%%   <<"NextAttemptDelaySeconds">> => integer()
+%% }
+-type retry_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_version_config() :: #{
+%%   <<"Error">> => runtime_version_error(),
+%%   <<"RuntimeVersionArn">> => string()
+%% }
+-type runtime_version_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_version_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type runtime_version_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_files_mount_connectivity_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type s3_files_mount_connectivity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_files_mount_failure_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type s3_files_mount_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_files_mount_timeout_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type s3_files_mount_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% scaling_config() :: #{
+%%   <<"MaximumConcurrency">> => integer()
+%% }
+-type scaling_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% self_managed_event_source() :: #{
 %%   <<"Endpoints">> => map()
 %% }
 -type self_managed_event_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% self_managed_kafka_event_source_config() :: #{
+%%   <<"ConsumerGroupId">> => string(),
+%%   <<"SchemaRegistryConfig">> => kafka_schema_registry_config()
+%% }
+-type self_managed_kafka_event_source_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_durable_execution_callback_failure_request() :: #{
+%%   <<"Error">> => error_object()
+%% }
+-type send_durable_execution_callback_failure_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_durable_execution_callback_failure_response() :: #{}
+-type send_durable_execution_callback_failure_response() :: #{}.
+
+%% Example:
+%% send_durable_execution_callback_heartbeat_request() :: #{}
+-type send_durable_execution_callback_heartbeat_request() :: #{}.
+
+%% Example:
+%% send_durable_execution_callback_heartbeat_response() :: #{}
+-type send_durable_execution_callback_heartbeat_response() :: #{}.
+
+
+%% Example:
+%% send_durable_execution_callback_success_request() :: #{
+%%   <<"Result">> => binary()
+%% }
+-type send_durable_execution_callback_success_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_durable_execution_callback_success_response() :: #{}
+-type send_durable_execution_callback_success_response() :: #{}.
+
+
+%% Example:
+%% serialized_request_entity_too_large_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type serialized_request_entity_too_large_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start() :: #{
+%%   <<"ApplyOn">> => list(any())
+%% }
+-type snap_start() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type snap_start_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start_not_ready_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type snap_start_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start_regeneration_failure_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type snap_start_regeneration_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start_response() :: #{
+%%   <<"ApplyOn">> => list(any()),
+%%   <<"OptimizationStatus">> => list(any())
+%% }
+-type snap_start_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% snap_start_timeout_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type snap_start_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_access_configuration() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"URI">> => string()
+%% }
+-type source_access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_details() :: #{
+%%   <<"Attempt">> => integer(),
+%%   <<"Error">> => error_object(),
+%%   <<"NextAttemptTimestamp">> => non_neg_integer(),
+%%   <<"Result">> => string()
+%% }
+-type step_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_failed_details() :: #{
+%%   <<"Error">> => event_error(),
+%%   <<"RetryDetails">> => retry_details()
+%% }
+-type step_failed_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_options() :: #{
+%%   <<"NextAttemptDelaySeconds">> => integer()
+%% }
+-type step_options() :: #{binary() => any()}.
+
+%% Example:
+%% step_started_details() :: #{}
+-type step_started_details() :: #{}.
+
+
+%% Example:
+%% step_succeeded_details() :: #{
+%%   <<"Result">> => event_result(),
+%%   <<"RetryDetails">> => retry_details()
+%% }
+-type step_succeeded_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_durable_execution_request() :: #{
+%%   <<"Error">> => error_object()
+%% }
+-type stop_durable_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_durable_execution_response() :: #{
+%%   <<"StopTimestamp">> => non_neg_integer()
+%% }
+-type stop_durable_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% subnet_ip_address_limit_reached_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type subnet_ip_address_limit_reached_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tags_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type tags_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_tracking_scaling_policy() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"TargetValue">> => float()
+%% }
+-type target_tracking_scaling_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% tenancy_config() :: #{
+%%   <<"TenantIsolationMode">> => list(any())
+%% }
+-type tenancy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Reason">> => list(any()),
+%%   <<"Type">> => string(),
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% trace_header() :: #{
+%%   <<"XAmznTraceId">> => string()
+%% }
+-type trace_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% tracing_config() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type tracing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% tracing_config_response() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type tracing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsupported_media_type_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type unsupported_media_type_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_alias_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FunctionVersion">> => string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"RoutingConfig">> => alias_routing_configuration()
+%% }
+-type update_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_capacity_provider_request() :: #{
+%%   <<"CapacityProviderScalingConfig">> => capacity_provider_scaling_config(),
+%%   <<"PropagateTags">> => propagate_tags(),
+%%   <<"TelemetryConfig">> => capacity_provider_telemetry_config()
+%% }
+-type update_capacity_provider_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_capacity_provider_response() :: #{
+%%   <<"CapacityProvider">> => capacity_provider()
+%% }
+-type update_capacity_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_code_signing_config_request() :: #{
+%%   <<"AllowedPublishers">> => allowed_publishers(),
+%%   <<"CodeSigningPolicies">> => code_signing_policies(),
+%%   <<"Description">> => string()
+%% }
+-type update_code_signing_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_code_signing_config_response() :: #{
+%%   <<"CodeSigningConfig">> => code_signing_config()
+%% }
+-type update_code_signing_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_source_mapping_request() :: #{
+%%   <<"AmazonManagedKafkaEventSourceConfig">> => amazon_managed_kafka_event_source_config(),
+%%   <<"BatchSize">> => integer(),
+%%   <<"BisectBatchOnFunctionError">> => boolean(),
+%%   <<"DestinationConfig">> => destination_config(),
+%%   <<"DocumentDBEventSourceConfig">> => document_db_event_source_config(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"FilterCriteria">> => filter_criteria(),
+%%   <<"FunctionName">> => string(),
+%%   <<"FunctionResponseTypes">> => list(list(any())()),
+%%   <<"KMSKeyArn">> => string(),
+%%   <<"LoggingConfig">> => event_source_mapping_logging_config(),
+%%   <<"MaximumBatchingWindowInSeconds">> => integer(),
+%%   <<"MaximumRecordAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"MetricsConfig">> => event_source_mapping_metrics_config(),
+%%   <<"ParallelizationFactor">> => integer(),
+%%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
+%%   <<"ScalingConfig">> => scaling_config(),
+%%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
+%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()),
+%%   <<"TumblingWindowInSeconds">> => integer()
+%% }
+-type update_event_source_mapping_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_function_code_request() :: #{
+%%   <<"Architectures">> => list(list(any())()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageUri">> => string(),
+%%   <<"Publish">> => boolean(),
+%%   <<"PublishTo">> => list(any()),
+%%   <<"RevisionId">> => string(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string(),
+%%   <<"S3ObjectStorageMode">> => list(any()),
+%%   <<"S3ObjectVersion">> => string(),
+%%   <<"SourceKMSKeyArn">> => string(),
+%%   <<"ZipFile">> => binary()
+%% }
+-type update_function_code_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2575,105 +3036,45 @@
 
 
 %% Example:
-%% kafka_schema_registry_config() :: #{
-%%   <<"AccessConfigs">> => list(kafka_schema_registry_access_config()),
-%%   <<"EventRecordFormat">> => list(any()),
-%%   <<"SchemaRegistryURI">> => string(),
-%%   <<"SchemaValidationConfigs">> => list(kafka_schema_validation_config())
+%% update_function_event_invoke_config_request() :: #{
+%%   <<"DestinationConfig">> => destination_config(),
+%%   <<"MaximumEventAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer(),
+%%   <<"Qualifier">> => string()
 %% }
--type kafka_schema_registry_config() :: #{binary() => any()}.
+-type update_function_event_invoke_config_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_function_code_signing_config_response() :: #{
-%%   <<"CodeSigningConfigArn">> => string(),
-%%   <<"FunctionName">> => string()
+%% update_function_url_config_request() :: #{
+%%   <<"AuthType">> => list(any()),
+%%   <<"Cors">> => cors(),
+%%   <<"InvokeMode">> => list(any()),
+%%   <<"Qualifier">> => string()
 %% }
--type get_function_code_signing_config_response() :: #{binary() => any()}.
+-type update_function_url_config_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_code_signature_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
+%% update_function_url_config_response() :: #{
+%%   <<"AuthType">> => list(any()),
+%%   <<"Cors">> => cors(),
+%%   <<"CreationTime">> => string(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionUrl">> => string(),
+%%   <<"InvokeMode">> => list(any()),
+%%   <<"LastModifiedTime">> => string()
 %% }
--type invalid_code_signature_exception() :: #{binary() => any()}.
+-type update_function_url_config_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_function_url_configs_response() :: #{
-%%   <<"FunctionUrlConfigs">> => list(function_url_config()),
-%%   <<"NextMarker">> => string()
+%% vpc_config() :: #{
+%%   <<"Ipv6AllowedForDualStack">> => boolean(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
--type list_function_url_configs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% allowed_publishers() :: #{
-%%   <<"SigningProfileVersionArns">> => list(string())
-%% }
--type allowed_publishers() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_durable_execution_history_response() :: #{
-%%   <<"Events">> => list(event()),
-%%   <<"NextMarker">> => string()
-%% }
--type get_durable_execution_history_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% capacity_provider() :: #{
-%%   <<"CapacityProviderArn">> => string(),
-%%   <<"CapacityProviderScalingConfig">> => capacity_provider_scaling_config(),
-%%   <<"InstanceRequirements">> => instance_requirements(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"LastModified">> => string(),
-%%   <<"PermissionsConfig">> => capacity_provider_permissions_config(),
-%%   <<"PropagateTags">> => propagate_tags(),
-%%   <<"State">> => list(any()),
-%%   <<"VpcConfig">> => capacity_provider_vpc_config()
-%% }
--type capacity_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_versions_per_capacity_provider_limit_exceeded_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type function_versions_per_capacity_provider_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% callback_options() :: #{
-%%   <<"HeartbeatTimeoutSeconds">> => integer(),
-%%   <<"TimeoutSeconds">> => integer()
-%% }
--type callback_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_versions_by_function_response() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"Versions">> => list(function_configuration())
-%% }
--type list_versions_by_function_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_capacity_provider_request() :: #{
-%%   <<"CapacityProviderName">> := string(),
-%%   <<"CapacityProviderScalingConfig">> => capacity_provider_scaling_config(),
-%%   <<"InstanceRequirements">> => instance_requirements(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"PermissionsConfig">> := capacity_provider_permissions_config(),
-%%   <<"PropagateTags">> => propagate_tags(),
-%%   <<"Tags">> => map(),
-%%   <<"VpcConfig">> := capacity_provider_vpc_config()
-%% }
--type create_capacity_provider_request() :: #{binary() => any()}.
+-type vpc_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2687,1078 +3088,730 @@
 
 
 %% Example:
-%% public_policy_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
+%% wait_cancelled_details() :: #{
+%%   <<"Error">> => event_error()
 %% }
--type public_policy_exception() :: #{binary() => any()}.
+-type wait_cancelled_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% ec2_unexpected_exception() :: #{
-%%   <<"EC2ErrorCode">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
+%% wait_details() :: #{
+%%   <<"ScheduledEndTimestamp">> => non_neg_integer()
 %% }
--type ec2_unexpected_exception() :: #{binary() => any()}.
+-type wait_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_function_url_config_response() :: #{
-%%   <<"AuthType">> => list(any()),
-%%   <<"Cors">> => cors(),
-%%   <<"CreationTime">> => string(),
-%%   <<"FunctionArn">> => string(),
-%%   <<"FunctionUrl">> => string(),
-%%   <<"InvokeMode">> => list(any()),
-%%   <<"LastModifiedTime">> => string()
+%% wait_options() :: #{
+%%   <<"WaitSeconds">> => integer()
 %% }
--type get_function_url_config_response() :: #{binary() => any()}.
+-type wait_options() :: #{binary() => any()}.
 
 
 %% Example:
-%% step_options() :: #{
-%%   <<"NextAttemptDelaySeconds">> => integer()
+%% wait_started_details() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"ScheduledEndTimestamp">> => non_neg_integer()
 %% }
--type step_options() :: #{binary() => any()}.
+-type wait_started_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_function_event_invoke_config_request() :: #{
-%%   <<"Qualifier">> => string()
+%% wait_succeeded_details() :: #{
+%%   <<"Duration">> => integer()
 %% }
--type get_function_event_invoke_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_details() :: #{
-%%   <<"Attempt">> => integer(),
-%%   <<"Error">> => error_object(),
-%%   <<"NextAttemptTimestamp">> => non_neg_integer(),
-%%   <<"Result">> => string()
-%% }
--type step_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution_succeeded_details() :: #{
-%%   <<"Result">> => event_result()
-%% }
--type execution_succeeded_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_function_request() :: #{
-%%   <<"Architectures">> => list(list(any())()),
-%%   <<"CapacityProviderConfig">> => capacity_provider_config(),
-%%   <<"Code">> := function_code(),
-%%   <<"CodeSigningConfigArn">> => string(),
-%%   <<"DeadLetterConfig">> => dead_letter_config(),
-%%   <<"Description">> => string(),
-%%   <<"DurableConfig">> => durable_config(),
-%%   <<"Environment">> => environment(),
-%%   <<"EphemeralStorage">> => ephemeral_storage(),
-%%   <<"FileSystemConfigs">> => list(file_system_config()),
-%%   <<"FunctionName">> := string(),
-%%   <<"Handler">> => string(),
-%%   <<"ImageConfig">> => image_config(),
-%%   <<"KMSKeyArn">> => string(),
-%%   <<"Layers">> => list(string()),
-%%   <<"LoggingConfig">> => logging_config(),
-%%   <<"MemorySize">> => integer(),
-%%   <<"PackageType">> => list(any()),
-%%   <<"Publish">> => boolean(),
-%%   <<"PublishTo">> => list(any()),
-%%   <<"Role">> := string(),
-%%   <<"Runtime">> => list(any()),
-%%   <<"SnapStart">> => snap_start(),
-%%   <<"Tags">> => map(),
-%%   <<"TenancyConfig">> => tenancy_config(),
-%%   <<"Timeout">> => integer(),
-%%   <<"TracingConfig">> => tracing_config(),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type create_function_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type environment_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_published_version_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type no_published_version_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_durable_execution_request() :: #{
-%%   <<"Error">> => error_object()
-%% }
--type stop_durable_execution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tags_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type tags_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_throttled_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type ec2_throttled_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% trace_header() :: #{
-%%   <<"XAmznTraceId">> => string()
-%% }
--type trace_header() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_request() :: #{}
--type list_tags_request() :: #{}.
-
-
-%% Example:
-%% e_f_s_i_o_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type e_f_s_i_o_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% kms_invalid_state_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type kms_invalid_state_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% layers_list_item() :: #{
-%%   <<"LatestMatchingVersion">> => layer_versions_list_item(),
-%%   <<"LayerArn">> => string(),
-%%   <<"LayerName">> => string()
-%% }
--type layers_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% chained_invoke_options() :: #{
-%%   <<"FunctionName">> => string(),
-%%   <<"TenantId">> => string()
-%% }
--type chained_invoke_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% alias_routing_configuration() :: #{
-%%   <<"AdditionalVersionWeights">> => map()
-%% }
--type alias_routing_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_config_response() :: #{
-%%   <<"Error">> => image_config_error(),
-%%   <<"ImageConfig">> => image_config()
-%% }
--type image_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_function_scaling_config_response() :: #{
-%%   <<"FunctionState">> => list(any())
-%% }
--type put_function_scaling_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_subnet_id_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type invalid_subnet_id_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tenancy_config() :: #{
-%%   <<"TenantIsolationMode">> => list(any())
-%% }
--type tenancy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% snap_start_response() :: #{
-%%   <<"ApplyOn">> => list(any()),
-%%   <<"OptimizationStatus">> => list(any())
-%% }
--type snap_start_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_storage_exceeded_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type code_storage_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% layer_version_content_input() :: #{
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3Key">> => string(),
-%%   <<"S3ObjectStorageMode">> => list(any()),
-%%   <<"S3ObjectVersion">> => string(),
-%%   <<"ZipFile">> => binary()
-%% }
--type layer_version_content_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_ready_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type resource_not_ready_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_signing_policies() :: #{
-%%   <<"UntrustedArtifactOnDeployment">> => list(any())
-%% }
--type code_signing_policies() :: #{binary() => any()}.
-
-
-%% Example:
-%% precondition_failed_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type precondition_failed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% send_durable_execution_callback_heartbeat_response() :: #{}
--type send_durable_execution_callback_heartbeat_response() :: #{}.
-
-
-%% Example:
-%% list_function_event_invoke_configs_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_function_event_invoke_configs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% context_details() :: #{
-%%   <<"Error">> => error_object(),
-%%   <<"ReplayChildren">> => boolean(),
-%%   <<"Result">> => string()
-%% }
--type context_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_conflict_exception() :: #{
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
-%% }
--type resource_conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_files_mount_timeout_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type s3_files_mount_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_code_location_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type function_code_location_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% concurrency() :: #{
-%%   <<"ReservedConcurrentExecutions">> => integer()
-%% }
--type concurrency() :: #{binary() => any()}.
-
-%% Example:
-%% delete_alias_request() :: #{}
--type delete_alias_request() :: #{}.
-
-
-%% Example:
-%% callback_details() :: #{
-%%   <<"CallbackId">> => string(),
-%%   <<"Error">> => error_object(),
-%%   <<"Result">> => string()
-%% }
--type callback_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_provisioned_concurrency_configs_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer()
-%% }
--type list_provisioned_concurrency_configs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_permission_request() :: #{
-%%   <<"Action">> := string(),
-%%   <<"EventSourceToken">> => string(),
-%%   <<"FunctionUrlAuthType">> => list(any()),
-%%   <<"InvokedViaFunctionUrl">> => boolean(),
-%%   <<"Principal">> := string(),
-%%   <<"PrincipalOrgID">> => string(),
-%%   <<"Qualifier">> => string(),
-%%   <<"RevisionId">> => string(),
-%%   <<"SourceAccount">> => string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"StatementId">> := string()
-%% }
--type add_permission_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_criteria_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type filter_criteria_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% tracing_config_response() :: #{
-%%   <<"Mode">> => list(any())
-%% }
--type tracing_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% snap_start_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type snap_start_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_function_recursion_config_response() :: #{
-%%   <<"RecursiveLoop">> => list(any())
-%% }
--type get_function_recursion_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_succeeded_details() :: #{
-%%   <<"Result">> => event_result(),
-%%   <<"RetryDetails">> => retry_details()
-%% }
--type step_succeeded_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_permission_response() :: #{
-%%   <<"Statement">> => string()
-%% }
--type add_permission_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_signing_config() :: #{
-%%   <<"AllowedPublishers">> => allowed_publishers(),
-%%   <<"CodeSigningConfigArn">> => string(),
-%%   <<"CodeSigningConfigId">> => string(),
-%%   <<"CodeSigningPolicies">> => code_signing_policies(),
-%%   <<"Description">> => string(),
-%%   <<"LastModified">> => string()
-%% }
--type code_signing_config() :: #{binary() => any()}.
+-type wait_succeeded_details() :: #{binary() => any()}.
 
 -type add_layer_version_permission_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
     resource_conflict_exception() | 
     precondition_failed_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    policy_length_exceeded_exception().
+    policy_length_exceeded_exception() | 
+    invalid_parameter_value_exception().
 
 -type add_permission_errors() ::
-    resource_conflict_exception() | 
-    precondition_failed_exception() | 
-    public_policy_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    policy_length_exceeded_exception().
+    service_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    public_policy_exception() | 
+    precondition_failed_exception() | 
+    policy_length_exceeded_exception() | 
+    invalid_parameter_value_exception().
 
 -type checkpoint_durable_execution_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    too_many_requests_exception().
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_parameter_value_exception().
 
 -type create_alias_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    alias_limit_exceeded_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception() | 
+    alias_limit_exceeded_exception().
 
 -type create_capacity_provider_errors() ::
-    resource_conflict_exception() | 
-    capacity_provider_limit_exceeded_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
+    resource_conflict_exception() | 
     invalid_parameter_value_exception() | 
-    too_many_requests_exception().
+    capacity_provider_limit_exceeded_exception().
 
 -type create_code_signing_config_errors() ::
     service_exception() | 
     invalid_parameter_value_exception().
 
 -type create_event_source_mapping_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type create_function_errors() ::
-    resource_conflict_exception() | 
-    code_storage_exceeded_exception() | 
-    function_versions_per_capacity_provider_limit_exceeded_exception() | 
-    invalid_code_signature_exception() | 
-    code_verification_failed_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    code_signing_config_not_found_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_code_signature_exception() | 
+    function_versions_per_capacity_provider_limit_exceeded_exception() | 
+    code_verification_failed_exception() | 
+    code_storage_exceeded_exception() | 
+    code_signing_config_not_found_exception().
 
 -type create_function_url_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_alias_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_capacity_provider_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_code_signing_config_errors() ::
-    resource_conflict_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_event_source_mapping_errors() ::
-    resource_conflict_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    service_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_function_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_function_code_signing_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    code_signing_config_not_found_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception().
 
 -type delete_function_concurrency_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_function_event_invoke_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_function_url_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type delete_layer_version_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type delete_provisioned_concurrency_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_account_settings_errors() ::
-    service_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    service_exception().
 
 -type get_alias_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_capacity_provider_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_code_signing_config_errors() ::
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_durable_execution_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_durable_execution_history_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_durable_execution_state_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    too_many_requests_exception().
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_event_source_mapping_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_function_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_function_code_signing_config_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    code_signing_config_not_found_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception().
 
 -type get_function_concurrency_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_function_configuration_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_function_event_invoke_config_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_function_recursion_config_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_function_scaling_config_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_function_url_config_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_layer_version_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_layer_version_by_arn_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_layer_version_policy_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_policy_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type get_provisioned_concurrency_config_errors() ::
-    provisioned_concurrency_config_not_found_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    provisioned_concurrency_config_not_found_exception() | 
+    invalid_parameter_value_exception().
 
 -type get_runtime_management_config_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type invoke_errors() ::
-    snap_start_exception() | 
-    s3_files_mount_timeout_exception() | 
-    resource_conflict_exception() | 
-    resource_not_ready_exception() | 
-    invalid_subnet_id_exception() | 
-    kms_invalid_state_exception() | 
-    e_f_s_i_o_exception() | 
-    ec2_throttled_exception() | 
-    no_published_version_exception() | 
-    ec2_unexpected_exception() | 
-    e_f_s_mount_failure_exception() | 
-    e_n_i_limit_reached_exception() | 
-    e_f_s_mount_connectivity_exception() | 
-    e_f_s_mount_timeout_exception() | 
-    snap_start_regeneration_failure_exception() | 
-    kms_not_found_exception() | 
-    invalid_zip_file_exception() | 
-    kms_access_denied_exception() | 
-    code_artifact_user_deleted_exception() | 
-    request_too_large_exception() | 
-    s3_files_mount_failure_exception() | 
-    subnet_ip_address_limit_reached_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    service_quota_exceeded_exception() | 
-    code_artifact_user_pending_exception() | 
-    durable_execution_already_started_exception() | 
-    resource_not_found_exception() | 
-    invalid_request_content_exception() | 
-    invalid_runtime_exception() | 
-    recursive_invocation_exception() | 
-    serialized_request_entity_too_large_exception() | 
-    snap_start_timeout_exception() | 
-    s3_files_mount_connectivity_exception() | 
+    unsupported_media_type_exception() | 
     too_many_requests_exception() | 
-    code_artifact_user_failed_exception() | 
+    subnet_ip_address_limit_reached_exception() | 
+    snap_start_timeout_exception() | 
+    snap_start_regeneration_failure_exception() | 
     snap_start_not_ready_exception() | 
+    snap_start_exception() | 
+    service_quota_exceeded_exception() | 
+    service_exception() | 
+    serialized_request_entity_too_large_exception() | 
+    s3_files_mount_timeout_exception() | 
+    s3_files_mount_failure_exception() | 
+    s3_files_mount_connectivity_exception() | 
+    resource_not_ready_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    request_too_large_exception() | 
+    recursive_invocation_exception() | 
+    no_published_version_exception() | 
+    mode_not_supported_exception() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_zip_file_exception() | 
+    invalid_subnet_id_exception() | 
+    invalid_security_group_id_exception() | 
+    invalid_runtime_exception() | 
+    invalid_request_content_exception() | 
+    invalid_parameter_value_exception() | 
+    ec2_unexpected_exception() | 
+    ec2_throttled_exception() | 
     ec2_access_denied_exception() | 
     e_n_i_not_ready_exception() | 
-    mode_not_supported_exception() | 
-    invalid_security_group_id_exception() | 
-    kms_disabled_exception() | 
-    unsupported_media_type_exception().
+    e_n_i_limit_reached_exception() | 
+    e_f_s_mount_timeout_exception() | 
+    e_f_s_mount_failure_exception() | 
+    e_f_s_mount_connectivity_exception() | 
+    e_f_s_i_o_exception() | 
+    durable_execution_already_started_exception() | 
+    code_artifact_user_pending_exception() | 
+    code_artifact_user_failed_exception() | 
+    code_artifact_user_deleted_exception().
 
 -type invoke_async_errors() ::
-    snap_start_exception() | 
-    s3_files_mount_timeout_exception() | 
-    resource_conflict_exception() | 
-    invalid_subnet_id_exception() | 
-    kms_invalid_state_exception() | 
-    e_f_s_i_o_exception() | 
-    ec2_throttled_exception() | 
-    ec2_unexpected_exception() | 
-    e_f_s_mount_failure_exception() | 
-    e_n_i_limit_reached_exception() | 
-    e_f_s_mount_connectivity_exception() | 
-    e_f_s_mount_timeout_exception() | 
-    snap_start_regeneration_failure_exception() | 
-    kms_not_found_exception() | 
-    kms_access_denied_exception() | 
-    s3_files_mount_failure_exception() | 
     subnet_ip_address_limit_reached_exception() | 
-    service_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    invalid_request_content_exception() | 
-    invalid_runtime_exception() | 
     snap_start_timeout_exception() | 
-    s3_files_mount_connectivity_exception() | 
+    snap_start_regeneration_failure_exception() | 
     snap_start_not_ready_exception() | 
-    ec2_access_denied_exception() | 
+    snap_start_exception() | 
+    service_quota_exceeded_exception() | 
+    service_exception() | 
+    s3_files_mount_timeout_exception() | 
+    s3_files_mount_failure_exception() | 
+    s3_files_mount_connectivity_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
     mode_not_supported_exception() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_subnet_id_exception() | 
     invalid_security_group_id_exception() | 
-    kms_disabled_exception().
+    invalid_runtime_exception() | 
+    invalid_request_content_exception() | 
+    ec2_unexpected_exception() | 
+    ec2_throttled_exception() | 
+    ec2_access_denied_exception() | 
+    e_n_i_limit_reached_exception() | 
+    e_f_s_mount_timeout_exception() | 
+    e_f_s_mount_failure_exception() | 
+    e_f_s_mount_connectivity_exception() | 
+    e_f_s_i_o_exception().
 
 -type invoke_with_response_stream_errors() ::
-    snap_start_exception() | 
-    s3_files_mount_timeout_exception() | 
-    resource_conflict_exception() | 
-    resource_not_ready_exception() | 
-    invalid_subnet_id_exception() | 
-    kms_invalid_state_exception() | 
-    e_f_s_i_o_exception() | 
-    ec2_throttled_exception() | 
-    no_published_version_exception() | 
-    ec2_unexpected_exception() | 
-    e_f_s_mount_failure_exception() | 
-    e_n_i_limit_reached_exception() | 
-    e_f_s_mount_connectivity_exception() | 
-    e_f_s_mount_timeout_exception() | 
-    snap_start_regeneration_failure_exception() | 
-    kms_not_found_exception() | 
-    invalid_zip_file_exception() | 
-    kms_access_denied_exception() | 
-    request_too_large_exception() | 
-    s3_files_mount_failure_exception() | 
-    subnet_ip_address_limit_reached_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    invalid_request_content_exception() | 
-    invalid_runtime_exception() | 
-    recursive_invocation_exception() | 
-    serialized_request_entity_too_large_exception() | 
-    snap_start_timeout_exception() | 
-    s3_files_mount_connectivity_exception() | 
+    unsupported_media_type_exception() | 
     too_many_requests_exception() | 
+    subnet_ip_address_limit_reached_exception() | 
+    snap_start_timeout_exception() | 
+    snap_start_regeneration_failure_exception() | 
     snap_start_not_ready_exception() | 
-    ec2_access_denied_exception() | 
-    invalid_security_group_id_exception() | 
+    snap_start_exception() | 
+    service_quota_exceeded_exception() | 
+    service_exception() | 
+    serialized_request_entity_too_large_exception() | 
+    s3_files_mount_timeout_exception() | 
+    s3_files_mount_failure_exception() | 
+    s3_files_mount_connectivity_exception() | 
+    resource_not_ready_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    request_too_large_exception() | 
+    recursive_invocation_exception() | 
+    no_published_version_exception() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
     kms_disabled_exception() | 
-    unsupported_media_type_exception().
+    kms_access_denied_exception() | 
+    invalid_zip_file_exception() | 
+    invalid_subnet_id_exception() | 
+    invalid_security_group_id_exception() | 
+    invalid_runtime_exception() | 
+    invalid_request_content_exception() | 
+    invalid_parameter_value_exception() | 
+    ec2_unexpected_exception() | 
+    ec2_throttled_exception() | 
+    ec2_access_denied_exception() | 
+    e_n_i_limit_reached_exception() | 
+    e_f_s_mount_timeout_exception() | 
+    e_f_s_mount_failure_exception() | 
+    e_f_s_mount_connectivity_exception() | 
+    e_f_s_i_o_exception().
 
 -type list_aliases_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_capacity_providers_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_code_signing_configs_errors() ::
     service_exception() | 
     invalid_parameter_value_exception().
 
 -type list_durable_executions_by_function_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_event_source_mappings_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_function_event_invoke_configs_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_function_url_configs_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_function_versions_by_capacity_provider_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_functions_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_functions_by_code_signing_config_errors() ::
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception().
 
 -type list_layer_versions_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_layers_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_provisioned_concurrency_configs_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_tags_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type list_versions_by_function_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type publish_layer_version_errors() ::
-    code_storage_exceeded_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception() | 
+    code_storage_exceeded_exception().
 
 -type publish_version_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
     resource_conflict_exception() | 
     precondition_failed_exception() | 
-    code_storage_exceeded_exception() | 
-    function_versions_per_capacity_provider_limit_exceeded_exception() | 
-    service_exception() | 
     invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    function_versions_per_capacity_provider_limit_exceeded_exception() | 
+    code_storage_exceeded_exception().
 
 -type put_function_code_signing_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    code_signing_config_not_found_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception() | 
+    code_signing_config_not_found_exception().
 
 -type put_function_concurrency_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type put_function_event_invoke_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type put_function_recursion_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type put_function_scaling_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type put_provisioned_concurrency_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type put_runtime_management_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type remove_layer_version_permission_errors() ::
-    precondition_failed_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    precondition_failed_exception() | 
+    invalid_parameter_value_exception().
 
 -type remove_permission_errors() ::
-    precondition_failed_exception() | 
-    public_policy_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    public_policy_exception() | 
+    precondition_failed_exception() | 
+    invalid_parameter_value_exception().
 
 -type send_durable_execution_callback_failure_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    callback_timeout_exception() | 
-    too_many_requests_exception().
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    callback_timeout_exception().
 
 -type send_durable_execution_callback_heartbeat_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    callback_timeout_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception() | 
+    callback_timeout_exception().
 
 -type send_durable_execution_callback_success_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    callback_timeout_exception() | 
-    too_many_requests_exception().
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    callback_timeout_exception().
 
 -type stop_durable_execution_errors() ::
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_parameter_value_exception().
 
 -type tag_resource_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type untag_resource_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type update_alias_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
     resource_conflict_exception() | 
     precondition_failed_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_value_exception().
 
 -type update_capacity_provider_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type update_code_signing_config_errors() ::
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception().
 
 -type update_event_source_mapping_errors() ::
-    resource_conflict_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    resource_in_use_exception().
+    service_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type update_function_code_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
     resource_conflict_exception() | 
     precondition_failed_exception() | 
-    code_storage_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
     invalid_code_signature_exception() | 
     code_verification_failed_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    code_signing_config_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    code_storage_exceeded_exception() | 
+    code_signing_config_not_found_exception().
 
 -type update_function_configuration_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
     resource_conflict_exception() | 
     precondition_failed_exception() | 
+    invalid_parameter_value_exception() | 
     invalid_code_signature_exception() | 
     code_verification_failed_exception() | 
-    service_exception() | 
-    invalid_parameter_value_exception() | 
-    code_signing_config_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    code_signing_config_not_found_exception().
 
 -type update_function_event_invoke_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 -type update_function_url_config_errors() ::
-    resource_conflict_exception() | 
+    too_many_requests_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
 
 %%====================================================================
 %% API
@@ -4883,7 +4936,11 @@ get_durable_execution(Client, DurableExecutionArn, QueryMap, HeadersMap, Options
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"IncludeExecutionData">>, maps:get(<<"IncludeExecutionData">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

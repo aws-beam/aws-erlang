@@ -99,26 +99,61 @@
 
 
 %% Example:
-%% update_sol_network_package_output() :: #{
-%%   <<"nsdOperationalState">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type update_sol_network_package_output() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_sol_network_operation_input() :: #{}
+-type cancel_sol_network_operation_input() :: #{}.
 
 
 %% Example:
-%% get_sol_vnf_info() :: #{
-%%   <<"vnfState">> => list(any()),
-%%   <<"vnfcResourceInfo">> => list(get_sol_vnfc_resource_info())
+%% create_sol_function_package_input() :: #{
+%%   <<"tags">> => map()
 %% }
--type get_sol_vnf_info() :: #{binary() => any()}.
+-type create_sol_function_package_input() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_sol_function_package_input() :: #{}
--type delete_sol_function_package_input() :: #{}.
+%% create_sol_function_package_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"onboardingState">> => list(any()),
+%%   <<"operationalState">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"usageState">> => list(any())
+%% }
+-type create_sol_function_package_output() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_sol_network_instance_input() :: #{}
--type delete_sol_network_instance_input() :: #{}.
+%% create_sol_network_instance_input() :: #{
+%%   <<"nsDescription">> => [string()],
+%%   <<"nsName">> := [string()],
+%%   <<"nsdInfoId">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_sol_network_instance_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sol_network_instance_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"nsInstanceName">> => [string()],
+%%   <<"nsdInfoId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_sol_network_instance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sol_network_package_input() :: #{
+%%   <<"tags">> => map()
+%% }
+-type create_sol_network_package_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -132,62 +167,36 @@
 %% }
 -type create_sol_network_package_output() :: #{binary() => any()}.
 
+%% Example:
+%% delete_sol_function_package_input() :: #{}
+-type delete_sol_function_package_input() :: #{}.
 
 %% Example:
-%% get_sol_function_package_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => get_sol_function_package_metadata(),
-%%   <<"onboardingState">> => list(any()),
-%%   <<"operationalState">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"usageState">> => list(any()),
-%%   <<"vnfProductName">> => [string()],
-%%   <<"vnfProvider">> => [string()],
-%%   <<"vnfdId">> => [string()],
-%%   <<"vnfdVersion">> => [string()]
-%% }
--type get_sol_function_package_output() :: #{binary() => any()}.
+%% delete_sol_network_instance_input() :: #{}
+-type delete_sol_network_instance_input() :: #{}.
+
+%% Example:
+%% delete_sol_network_package_input() :: #{}
+-type delete_sol_network_package_input() :: #{}.
 
 
 %% Example:
-%% list_sol_function_instance_metadata() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastModified">> => [non_neg_integer()]
+%% error_info() :: #{
+%%   <<"cause">> => string(),
+%%   <<"details">> => string()
 %% }
--type list_sol_function_instance_metadata() :: #{binary() => any()}.
+-type error_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_sol_function_instances_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%% function_artifact_meta() :: #{
+%%   <<"overrides">> => list(tosca_override())
 %% }
--type list_sol_function_instances_input() :: #{binary() => any()}.
-
+-type function_artifact_meta() :: #{binary() => any()}.
 
 %% Example:
-%% list_sol_network_operations_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"nsInstanceId">> => string()
-%% }
--type list_sol_network_operations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_sol_network_package_content_metadata() :: #{
-%%   <<"nsd">> => network_artifact_meta()
-%% }
--type validate_sol_network_package_content_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sol_network_packages_output() :: #{
-%%   <<"networkPackages">> => list(list_sol_network_package_info()),
-%%   <<"nextToken">> => string()
-%% }
--type list_sol_network_packages_output() :: #{binary() => any()}.
+%% get_sol_function_instance_input() :: #{}
+-type get_sol_function_instance_input() :: #{}.
 
 
 %% Example:
@@ -196,31 +205,6 @@
 %%   <<"lastModified">> => [non_neg_integer()]
 %% }
 -type get_sol_function_instance_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sol_network_package_input() :: #{
-%%   <<"tags">> => map()
-%% }
--type create_sol_network_package_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_sol_function_package_content_metadata() :: #{
-%%   <<"vnfd">> => function_artifact_meta()
-%% }
--type put_sol_function_package_content_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% get_sol_network_package_descriptor_input() :: #{}
--type get_sol_network_package_descriptor_input() :: #{}.
-
-
-%% Example:
-%% get_sol_function_package_descriptor_input() :: #{
-%%   <<"accept">> := list(any())
-%% }
--type get_sol_function_package_descriptor_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -242,103 +226,63 @@
 
 
 %% Example:
-%% get_sol_network_package_output() :: #{
+%% get_sol_function_package_content_input() :: #{
+%%   <<"accept">> := list(any())
+%% }
+-type get_sol_function_package_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_function_package_content_output() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"packageContent">> => [binary()]
+%% }
+-type get_sol_function_package_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_function_package_descriptor_input() :: #{
+%%   <<"accept">> := list(any())
+%% }
+-type get_sol_function_package_descriptor_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_function_package_descriptor_output() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"vnfd">> => [binary()]
+%% }
+-type get_sol_function_package_descriptor_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_sol_function_package_input() :: #{}
+-type get_sol_function_package_input() :: #{}.
+
+
+%% Example:
+%% get_sol_function_package_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()],
+%%   <<"vnfd">> => function_artifact_meta()
+%% }
+-type get_sol_function_package_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_function_package_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
-%%   <<"metadata">> => get_sol_network_package_metadata(),
-%%   <<"nsdId">> => string(),
-%%   <<"nsdName">> => [string()],
-%%   <<"nsdOnboardingState">> => list(any()),
-%%   <<"nsdOperationalState">> => list(any()),
-%%   <<"nsdUsageState">> => list(any()),
-%%   <<"nsdVersion">> => [string()],
+%%   <<"metadata">> => get_sol_function_package_metadata(),
+%%   <<"onboardingState">> => list(any()),
+%%   <<"operationalState">> => list(any()),
 %%   <<"tags">> => map(),
-%%   <<"vnfPkgIds">> => list(string())
-%% }
--type get_sol_network_package_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_info() :: #{
-%%   <<"cause">> => string(),
-%%   <<"details">> => string()
-%% }
--type error_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_sol_function_package_content_output() :: #{
-%%   <<"id">> => string(),
-%%   <<"metadata">> => put_sol_function_package_content_metadata(),
+%%   <<"usageState">> => list(any()),
 %%   <<"vnfProductName">> => [string()],
 %%   <<"vnfProvider">> => [string()],
-%%   <<"vnfdId">> => string(),
+%%   <<"vnfdId">> => [string()],
 %%   <<"vnfdVersion">> => [string()]
 %% }
--type put_sol_function_package_content_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_sol_network_package_input() :: #{}
--type get_sol_network_package_input() :: #{}.
-
-
-%% Example:
-%% list_sol_network_packages_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_sol_network_packages_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_sol_network_package_content_input() :: #{
-%%   <<"contentType">> => list(any()),
-%%   <<"file">> := binary()
-%% }
--type validate_sol_network_package_content_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_sol_network_package_content_input() :: #{
-%%   <<"contentType">> => list(any()),
-%%   <<"file">> := binary()
-%% }
--type put_sol_network_package_content_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sol_network_operations_info() :: #{
-%%   <<"arn">> => string(),
-%%   <<"error">> => problem_details(),
-%%   <<"id">> => string(),
-%%   <<"lcmOperationType">> => list(any()),
-%%   <<"metadata">> => list_sol_network_operations_metadata(),
-%%   <<"nsInstanceId">> => string(),
-%%   <<"operationState">> => list(any()),
-%%   <<"updateType">> => list(any())
-%% }
--type list_sol_network_operations_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% terminate_sol_network_instance_input() :: #{
-%%   <<"tags">> => map()
-%% }
--type terminate_sol_network_instance_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type get_sol_function_package_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -347,188 +291,17 @@
 %% }
 -type get_sol_instantiated_vnf_info() :: #{binary() => any()}.
 
-
 %% Example:
-%% get_sol_vnfc_resource_info() :: #{
-%%   <<"metadata">> => get_sol_vnfc_resource_info_metadata()
-%% }
--type get_sol_vnfc_resource_info() :: #{binary() => any()}.
+%% get_sol_network_instance_input() :: #{}
+-type get_sol_network_instance_input() :: #{}.
 
 
 %% Example:
-%% list_sol_network_package_metadata() :: #{
+%% get_sol_network_instance_metadata() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"lastModified">> => [non_neg_integer()]
 %% }
--type list_sol_network_package_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_ns_metadata() :: #{
-%%   <<"additionalParamsForNs">> => [any()],
-%%   <<"nsdInfoId">> => string()
-%% }
--type update_ns_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_sol_network_package_content_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => put_sol_network_package_content_metadata(),
-%%   <<"nsdId">> => string(),
-%%   <<"nsdName">> => [string()],
-%%   <<"nsdVersion">> => [string()],
-%%   <<"vnfPkgIds">> => list(string())
-%% }
--type put_sol_network_package_content_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sol_network_instances_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_sol_network_instances_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_sol_network_package_content_metadata() :: #{
-%%   <<"nsd">> => network_artifact_meta()
-%% }
--type put_sol_network_package_content_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sol_network_operations_metadata() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastModified">> => [non_neg_integer()],
-%%   <<"nsdInfoId">> => string(),
-%%   <<"vnfInstanceId">> => string()
-%% }
--type list_sol_network_operations_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sol_network_package_content_output() :: #{
-%%   <<"contentType">> => list(any()),
-%%   <<"nsdContent">> => [binary()]
-%% }
--type get_sol_network_package_content_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sol_network_instance_output() :: #{
-%%   <<"nsLcmOpOccId">> => string(),
-%%   <<"tags">> => map()
-%% }
--type update_sol_network_instance_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% problem_details() :: #{
-%%   <<"detail">> => [string()],
-%%   <<"title">> => [string()]
-%% }
--type problem_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sol_network_instance_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"nsInstanceName">> => [string()],
-%%   <<"nsdInfoId">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_sol_network_instance_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% terminate_sol_network_instance_output() :: #{
-%%   <<"nsLcmOpOccId">> => string(),
-%%   <<"tags">> => map()
-%% }
--type terminate_sol_network_instance_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_sol_function_package_content_input() :: #{
-%%   <<"contentType">> => list(any()),
-%%   <<"file">> := binary()
-%% }
--type put_sol_function_package_content_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% instantiate_sol_network_instance_input() :: #{
-%%   <<"additionalParamsForNs">> => [any()],
-%%   <<"dryRun">> => [boolean()],
-%%   <<"tags">> => map()
-%% }
--type instantiate_sol_network_instance_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sol_function_packages_output() :: #{
-%%   <<"functionPackages">> => list(list_sol_function_package_info()),
-%%   <<"nextToken">> => string()
-%% }
--type list_sol_function_packages_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sol_function_package_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"onboardingState">> => list(any()),
-%%   <<"operationalState">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"usageState">> => list(any())
-%% }
--type create_sol_function_package_output() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_sol_network_operation_input() :: #{}
--type cancel_sol_network_operation_input() :: #{}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sol_network_modify() :: #{
-%%   <<"vnfConfigurableProperties">> => [any()],
-%%   <<"vnfInstanceId">> => string()
-%% }
--type update_sol_network_modify() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sol_network_service_data() :: #{
-%%   <<"additionalParamsForNs">> => [any()],
-%%   <<"nsdInfoId">> => string()
-%% }
--type update_sol_network_service_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sol_network_instance_metadata() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastModified">> => [non_neg_integer()]
-%% }
--type list_sol_network_instance_metadata() :: #{binary() => any()}.
+-type get_sol_network_instance_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -547,191 +320,8 @@
 -type get_sol_network_instance_output() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% modify_vnf_info_metadata() :: #{
-%%   <<"vnfConfigurableProperties">> => [any()],
-%%   <<"vnfInstanceId">> => string()
-%% }
--type modify_vnf_info_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sol_function_package_descriptor_output() :: #{
-%%   <<"contentType">> => list(any()),
-%%   <<"vnfd">> => [binary()]
-%% }
--type get_sol_function_package_descriptor_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sol_network_instance_metadata() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastModified">> => [non_neg_integer()]
-%% }
--type get_sol_network_instance_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sol_network_package_metadata() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastModified">> => [non_neg_integer()],
-%%   <<"nsd">> => network_artifact_meta()
-%% }
--type get_sol_network_package_metadata() :: #{binary() => any()}.
-
-%% Example:
 %% get_sol_network_operation_input() :: #{}
 -type get_sol_network_operation_input() :: #{}.
-
-
-%% Example:
-%% update_sol_network_package_input() :: #{
-%%   <<"nsdOperationalState">> := list(any())
-%% }
--type update_sol_network_package_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sol_function_package_input() :: #{
-%%   <<"tags">> => map()
-%% }
--type create_sol_function_package_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sol_function_package_output() :: #{
-%%   <<"operationalState">> => list(any())
-%% }
--type update_sol_function_package_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sol_network_operation_task_details() :: #{
-%%   <<"taskContext">> => map(),
-%%   <<"taskEndTime">> => [non_neg_integer()],
-%%   <<"taskErrorDetails">> => error_info(),
-%%   <<"taskName">> => [string()],
-%%   <<"taskStartTime">> => [non_neg_integer()],
-%%   <<"taskStatus">> => list(any())
-%% }
--type get_sol_network_operation_task_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sol_network_package_content_input() :: #{
-%%   <<"accept">> := list(any())
-%% }
--type get_sol_network_package_content_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_sol_network_package_input() :: #{}
--type delete_sol_network_package_input() :: #{}.
-
-%% Example:
-%% get_sol_function_package_input() :: #{}
--type get_sol_function_package_input() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-
-%% Example:
-%% validate_sol_network_package_content_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => validate_sol_network_package_content_metadata(),
-%%   <<"nsdId">> => string(),
-%%   <<"nsdName">> => [string()],
-%%   <<"nsdVersion">> => [string()],
-%%   <<"vnfPkgIds">> => list(string())
-%% }
--type validate_sol_network_package_content_output() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% get_sol_function_package_content_input() :: #{
-%%   <<"accept">> := list(any())
-%% }
--type get_sol_function_package_content_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sol_function_package_metadata() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastModified">> => [non_neg_integer()],
-%%   <<"vnfd">> => function_artifact_meta()
-%% }
--type get_sol_function_package_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sol_network_instance_input() :: #{
-%%   <<"modifyVnfInfoData">> => update_sol_network_modify(),
-%%   <<"tags">> => map(),
-%%   <<"updateNs">> => update_sol_network_service_data(),
-%%   <<"updateType">> := list(any())
-%% }
--type update_sol_network_instance_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% instantiate_sol_network_instance_output() :: #{
-%%   <<"nsLcmOpOccId">> => string(),
-%%   <<"tags">> => map()
-%% }
--type instantiate_sol_network_instance_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tosca_override() :: #{
-%%   <<"defaultValue">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type tosca_override() :: #{binary() => any()}.
 
 
 %% Example:
@@ -743,145 +333,6 @@
 %%   <<"updateNsMetadata">> => update_ns_metadata()
 %% }
 -type get_sol_network_operation_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sol_network_operations_output() :: #{
-%%   <<"networkOperations">> => list(list_sol_network_operations_info()),
-%%   <<"nextToken">> => string()
-%% }
--type list_sol_network_operations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sol_function_package_metadata() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"lastModified">> => [non_neg_integer()]
-%% }
--type list_sol_function_package_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% get_sol_function_instance_input() :: #{}
--type get_sol_function_instance_input() :: #{}.
-
-
-%% Example:
-%% get_sol_vnfc_resource_info_metadata() :: #{
-%%   <<"cluster">> => [string()],
-%%   <<"helmChart">> => [string()],
-%%   <<"nodeGroup">> => [string()]
-%% }
--type get_sol_vnfc_resource_info_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% get_sol_network_instance_input() :: #{}
--type get_sol_network_instance_input() :: #{}.
-
-
-%% Example:
-%% instantiate_metadata() :: #{
-%%   <<"additionalParamsForNs">> => [any()],
-%%   <<"nsdInfoId">> => string()
-%% }
--type instantiate_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sol_network_instances_output() :: #{
-%%   <<"networkInstances">> => list(list_sol_network_instance_info()),
-%%   <<"nextToken">> => string()
-%% }
--type list_sol_network_instances_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sol_network_instance_input() :: #{
-%%   <<"nsDescription">> => [string()],
-%%   <<"nsName">> := [string()],
-%%   <<"nsdInfoId">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_sol_network_instance_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sol_network_instance_info() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => list_sol_network_instance_metadata(),
-%%   <<"nsInstanceDescription">> => [string()],
-%%   <<"nsInstanceName">> => [string()],
-%%   <<"nsState">> => list(any()),
-%%   <<"nsdId">> => string(),
-%%   <<"nsdInfoId">> => string()
-%% }
--type list_sol_network_instance_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sol_function_package_info() :: #{
-%%   <<"arn">> => string(),
-%%   <<"id">> => string(),
-%%   <<"metadata">> => list_sol_function_package_metadata(),
-%%   <<"onboardingState">> => list(any()),
-%%   <<"operationalState">> => list(any()),
-%%   <<"usageState">> => list(any()),
-%%   <<"vnfProductName">> => [string()],
-%%   <<"vnfProvider">> => [string()],
-%%   <<"vnfdId">> => [string()],
-%%   <<"vnfdVersion">> => [string()]
-%% }
--type list_sol_function_package_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% function_artifact_meta() :: #{
-%%   <<"overrides">> => list(tosca_override())
-%% }
--type function_artifact_meta() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_sol_function_package_content_input() :: #{
-%%   <<"contentType">> => list(any()),
-%%   <<"file">> := binary()
-%% }
--type validate_sol_function_package_content_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_sol_function_package_content_output() :: #{
-%%   <<"id">> => string(),
-%%   <<"metadata">> => validate_sol_function_package_content_metadata(),
-%%   <<"vnfProductName">> => [string()],
-%%   <<"vnfProvider">> => [string()],
-%%   <<"vnfdId">> => string(),
-%%   <<"vnfdVersion">> => [string()]
-%% }
--type validate_sol_function_package_content_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sol_network_package_descriptor_output() :: #{
-%%   <<"contentType">> => list(any()),
-%%   <<"nsd">> => [binary()]
-%% }
--type get_sol_network_package_descriptor_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_sol_function_package_content_metadata() :: #{
-%%   <<"vnfd">> => function_artifact_meta()
-%% }
--type validate_sol_function_package_content_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sol_function_package_content_output() :: #{
-%%   <<"contentType">> => list(any()),
-%%   <<"packageContent">> => [binary()]
-%% }
--type get_sol_function_package_content_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -901,6 +352,138 @@
 
 
 %% Example:
+%% get_sol_network_operation_task_details() :: #{
+%%   <<"taskContext">> => map(),
+%%   <<"taskEndTime">> => [non_neg_integer()],
+%%   <<"taskErrorDetails">> => error_info(),
+%%   <<"taskName">> => [string()],
+%%   <<"taskStartTime">> => [non_neg_integer()],
+%%   <<"taskStatus">> => list(any())
+%% }
+-type get_sol_network_operation_task_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_package_content_input() :: #{
+%%   <<"accept">> := list(any())
+%% }
+-type get_sol_network_package_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_package_content_output() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"nsdContent">> => [binary()]
+%% }
+-type get_sol_network_package_content_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_sol_network_package_descriptor_input() :: #{}
+-type get_sol_network_package_descriptor_input() :: #{}.
+
+
+%% Example:
+%% get_sol_network_package_descriptor_output() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"nsd">> => [binary()]
+%% }
+-type get_sol_network_package_descriptor_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_sol_network_package_input() :: #{}
+-type get_sol_network_package_input() :: #{}.
+
+
+%% Example:
+%% get_sol_network_package_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()],
+%%   <<"nsd">> => network_artifact_meta()
+%% }
+-type get_sol_network_package_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_network_package_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => get_sol_network_package_metadata(),
+%%   <<"nsdId">> => string(),
+%%   <<"nsdName">> => [string()],
+%%   <<"nsdOnboardingState">> => list(any()),
+%%   <<"nsdOperationalState">> => list(any()),
+%%   <<"nsdUsageState">> => list(any()),
+%%   <<"nsdVersion">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"vnfPkgIds">> => list(string())
+%% }
+-type get_sol_network_package_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_vnf_info() :: #{
+%%   <<"vnfState">> => list(any()),
+%%   <<"vnfcResourceInfo">> => list(get_sol_vnfc_resource_info())
+%% }
+-type get_sol_vnf_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_vnfc_resource_info() :: #{
+%%   <<"metadata">> => get_sol_vnfc_resource_info_metadata()
+%% }
+-type get_sol_vnfc_resource_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sol_vnfc_resource_info_metadata() :: #{
+%%   <<"cluster">> => [string()],
+%%   <<"helmChart">> => [string()],
+%%   <<"nodeGroup">> => [string()]
+%% }
+-type get_sol_vnfc_resource_info_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% instantiate_metadata() :: #{
+%%   <<"additionalParamsForNs">> => [any()],
+%%   <<"nsdInfoId">> => string()
+%% }
+-type instantiate_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% instantiate_sol_network_instance_input() :: #{
+%%   <<"additionalParamsForNs">> => [any()],
+%%   <<"dryRun">> => [boolean()],
+%%   <<"tags">> => map()
+%% }
+-type instantiate_sol_network_instance_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% instantiate_sol_network_instance_output() :: #{
+%%   <<"nsLcmOpOccId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type instantiate_sol_network_instance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% lcm_operation_info() :: #{
+%%   <<"nsLcmOpOccId">> => string()
+%% }
+-type lcm_operation_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_sol_function_instance_info() :: #{
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
@@ -915,17 +498,19 @@
 
 
 %% Example:
-%% lcm_operation_info() :: #{
-%%   <<"nsLcmOpOccId">> => string()
+%% list_sol_function_instance_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
 %% }
--type lcm_operation_info() :: #{binary() => any()}.
+-type list_sol_function_instance_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_sol_function_package_input() :: #{
-%%   <<"operationalState">> := list(any())
+%% list_sol_function_instances_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
 %% }
--type update_sol_function_package_input() :: #{binary() => any()}.
+-type list_sol_function_instances_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -934,6 +519,125 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_sol_function_instances_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_package_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => list_sol_function_package_metadata(),
+%%   <<"onboardingState">> => list(any()),
+%%   <<"operationalState">> => list(any()),
+%%   <<"usageState">> => list(any()),
+%%   <<"vnfProductName">> => [string()],
+%%   <<"vnfProvider">> => [string()],
+%%   <<"vnfdId">> => [string()],
+%%   <<"vnfdVersion">> => [string()]
+%% }
+-type list_sol_function_package_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_package_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
+%% }
+-type list_sol_function_package_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_packages_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_function_packages_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_function_packages_output() :: #{
+%%   <<"functionPackages">> => list(list_sol_function_package_info()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_function_packages_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_instance_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => list_sol_network_instance_metadata(),
+%%   <<"nsInstanceDescription">> => [string()],
+%%   <<"nsInstanceName">> => [string()],
+%%   <<"nsState">> => list(any()),
+%%   <<"nsdId">> => string(),
+%%   <<"nsdInfoId">> => string()
+%% }
+-type list_sol_network_instance_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_instance_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
+%% }
+-type list_sol_network_instance_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_instances_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_network_instances_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_instances_output() :: #{
+%%   <<"networkInstances">> => list(list_sol_network_instance_info()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_network_instances_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_operations_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"error">> => problem_details(),
+%%   <<"id">> => string(),
+%%   <<"lcmOperationType">> => list(any()),
+%%   <<"metadata">> => list_sol_network_operations_metadata(),
+%%   <<"nsInstanceId">> => string(),
+%%   <<"operationState">> => list(any()),
+%%   <<"updateType">> => list(any())
+%% }
+-type list_sol_network_operations_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_operations_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"nsInstanceId">> => string()
+%% }
+-type list_sol_network_operations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_operations_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()],
+%%   <<"nsdInfoId">> => string(),
+%%   <<"vnfInstanceId">> => string()
+%% }
+-type list_sol_network_operations_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_operations_output() :: #{
+%%   <<"networkOperations">> => list(list_sol_network_operations_info()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_network_operations_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -955,11 +659,46 @@
 
 
 %% Example:
-%% list_sol_function_packages_input() :: #{
+%% list_sol_network_package_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"lastModified">> => [non_neg_integer()]
+%% }
+-type list_sol_network_package_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_packages_input() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string()
 %% }
--type list_sol_function_packages_input() :: #{binary() => any()}.
+-type list_sol_network_packages_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sol_network_packages_output() :: #{
+%%   <<"networkPackages">> => list(list_sol_network_package_info()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sol_network_packages_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% modify_vnf_info_metadata() :: #{
+%%   <<"vnfConfigurableProperties">> => [any()],
+%%   <<"vnfInstanceId">> => string()
+%% }
+-type modify_vnf_info_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -968,235 +707,496 @@
 %% }
 -type network_artifact_meta() :: #{binary() => any()}.
 
+
+%% Example:
+%% problem_details() :: #{
+%%   <<"detail">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type problem_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_function_package_content_input() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"file">> := binary()
+%% }
+-type put_sol_function_package_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_function_package_content_metadata() :: #{
+%%   <<"vnfd">> => function_artifact_meta()
+%% }
+-type put_sol_function_package_content_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_function_package_content_output() :: #{
+%%   <<"id">> => string(),
+%%   <<"metadata">> => put_sol_function_package_content_metadata(),
+%%   <<"vnfProductName">> => [string()],
+%%   <<"vnfProvider">> => [string()],
+%%   <<"vnfdId">> => string(),
+%%   <<"vnfdVersion">> => [string()]
+%% }
+-type put_sol_function_package_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_network_package_content_input() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"file">> := binary()
+%% }
+-type put_sol_network_package_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_network_package_content_metadata() :: #{
+%%   <<"nsd">> => network_artifact_meta()
+%% }
+-type put_sol_network_package_content_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_sol_network_package_content_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => put_sol_network_package_content_metadata(),
+%%   <<"nsdId">> => string(),
+%%   <<"nsdName">> => [string()],
+%%   <<"nsdVersion">> => [string()],
+%%   <<"vnfPkgIds">> => list(string())
+%% }
+-type put_sol_network_package_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% terminate_sol_network_instance_input() :: #{
+%%   <<"tags">> => map()
+%% }
+-type terminate_sol_network_instance_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_sol_network_instance_output() :: #{
+%%   <<"nsLcmOpOccId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type terminate_sol_network_instance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tosca_override() :: #{
+%%   <<"defaultValue">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type tosca_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_ns_metadata() :: #{
+%%   <<"additionalParamsForNs">> => [any()],
+%%   <<"nsdInfoId">> => string()
+%% }
+-type update_ns_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_function_package_input() :: #{
+%%   <<"operationalState">> := list(any())
+%% }
+-type update_sol_function_package_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_function_package_output() :: #{
+%%   <<"operationalState">> => list(any())
+%% }
+-type update_sol_function_package_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_network_instance_input() :: #{
+%%   <<"modifyVnfInfoData">> => update_sol_network_modify(),
+%%   <<"tags">> => map(),
+%%   <<"updateNs">> => update_sol_network_service_data(),
+%%   <<"updateType">> := list(any())
+%% }
+-type update_sol_network_instance_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_network_instance_output() :: #{
+%%   <<"nsLcmOpOccId">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type update_sol_network_instance_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_network_modify() :: #{
+%%   <<"vnfConfigurableProperties">> => [any()],
+%%   <<"vnfInstanceId">> => string()
+%% }
+-type update_sol_network_modify() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_network_package_input() :: #{
+%%   <<"nsdOperationalState">> := list(any())
+%% }
+-type update_sol_network_package_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_network_package_output() :: #{
+%%   <<"nsdOperationalState">> => list(any())
+%% }
+-type update_sol_network_package_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sol_network_service_data() :: #{
+%%   <<"additionalParamsForNs">> => [any()],
+%%   <<"nsdInfoId">> => string()
+%% }
+-type update_sol_network_service_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_sol_function_package_content_input() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"file">> := binary()
+%% }
+-type validate_sol_function_package_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_sol_function_package_content_metadata() :: #{
+%%   <<"vnfd">> => function_artifact_meta()
+%% }
+-type validate_sol_function_package_content_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_sol_function_package_content_output() :: #{
+%%   <<"id">> => string(),
+%%   <<"metadata">> => validate_sol_function_package_content_metadata(),
+%%   <<"vnfProductName">> => [string()],
+%%   <<"vnfProvider">> => [string()],
+%%   <<"vnfdId">> => string(),
+%%   <<"vnfdVersion">> => [string()]
+%% }
+-type validate_sol_function_package_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_sol_network_package_content_input() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"file">> := binary()
+%% }
+-type validate_sol_network_package_content_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_sol_network_package_content_metadata() :: #{
+%%   <<"nsd">> => network_artifact_meta()
+%% }
+-type validate_sol_network_package_content_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_sol_network_package_content_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"metadata">> => validate_sol_network_package_content_metadata(),
+%%   <<"nsdId">> => string(),
+%%   <<"nsdName">> => [string()],
+%%   <<"nsdVersion">> => [string()],
+%%   <<"vnfPkgIds">> => list(string())
+%% }
+-type validate_sol_network_package_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type cancel_sol_network_operation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_sol_function_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type create_sol_network_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_sol_network_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 -type delete_sol_function_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_sol_network_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_sol_network_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sol_function_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sol_function_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sol_function_package_content_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sol_function_package_descriptor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sol_network_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sol_network_operation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sol_network_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sol_network_package_content_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_sol_network_package_descriptor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type instantiate_sol_network_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sol_function_instances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sol_function_packages_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sol_network_instances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sol_network_operations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sol_network_packages_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_sol_function_package_content_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_sol_network_package_content_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type terminate_sol_network_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_sol_function_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_sol_network_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_sol_network_package_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type validate_sol_function_package_content_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type validate_sol_network_package_content_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

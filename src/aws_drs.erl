@@ -112,281 +112,101 @@
 
 
 %% Example:
-%% describe_job_log_items_request() :: #{
-%%   <<"jobID">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% access_denied_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
 %% }
--type describe_job_log_items_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_failback_replication_configuration_request() :: #{
-%%   <<"bandwidthThrottling">> => float(),
-%%   <<"internetProtocol">> => string(),
-%%   <<"name">> => string(),
-%%   <<"recoveryInstanceID">> := string(),
-%%   <<"usePrivateIP">> => [boolean()]
+%% account() :: #{
+%%   <<"accountID">> => string()
 %% }
--type update_failback_replication_configuration_request() :: #{binary() => any()}.
+-type account() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_recovery_instances_request_filters() :: #{
-%%   <<"recoveryInstanceIDs">> => list(string()),
-%%   <<"sourceServerIDs">> => list(string())
-%% }
--type describe_recovery_instances_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_source_servers_request() :: #{
-%%   <<"filters">> => describe_source_servers_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_source_servers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_staging_accounts_response() :: #{
-%%   <<"accounts">> => list(account()),
-%%   <<"nextToken">> => string()
-%% }
--type list_staging_accounts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_recovery_request_source_server() :: #{
-%%   <<"recoverySnapshotID">> => string(),
-%%   <<"sourceServerID">> => string()
-%% }
--type start_recovery_request_source_server() :: #{binary() => any()}.
-
-
-%% Example:
-%% life_cycle() :: #{
-%%   <<"addedToServiceDateTime">> => string(),
-%%   <<"elapsedReplicationDuration">> => string(),
-%%   <<"firstByteDateTime">> => string(),
-%%   <<"lastLaunch">> => life_cycle_last_launch(),
-%%   <<"lastSeenByServiceDateTime">> => string()
-%% }
--type life_cycle() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_life_cycle() :: #{
-%%   <<"apiCallDateTime">> => [non_neg_integer()],
-%%   <<"jobID">> => string(),
-%%   <<"lastRecoveryResult">> => string()
-%% }
--type recovery_life_cycle() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_source_network_cfn_template_request() :: #{
+%% associate_source_network_stack_request() :: #{
+%%   <<"cfnStackName">> := string(),
 %%   <<"sourceNetworkID">> := string()
 %% }
--type export_source_network_cfn_template_request() :: #{binary() => any()}.
+-type associate_source_network_stack_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% source_cloud_properties() :: #{
-%%   <<"originAccountID">> => string(),
-%%   <<"originAvailabilityZone">> => string(),
-%%   <<"originRegion">> => string(),
-%%   <<"sourceOutpostArn">> => string()
-%% }
--type source_cloud_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_extensible_source_servers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"stagingAccountID">> := string()
-%% }
--type list_extensible_source_servers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_launch_configuration_templates_request() :: #{
-%%   <<"launchConfigurationTemplateIDs">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_launch_configuration_templates_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_source_server_response() :: #{}
--type delete_source_server_response() :: #{}.
-
-
-%% Example:
-%% delete_source_server_request() :: #{
-%%   <<"sourceServerID">> := string()
-%% }
--type delete_source_server_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_recovery_instances_response() :: #{
-%%   <<"items">> => list(recovery_instance()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_recovery_instances_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_configuration_template() :: #{
-%%   <<"arn">> => string(),
-%%   <<"associateDefaultSecurityGroup">> => [boolean()],
-%%   <<"autoReplicateNewDisks">> => [boolean()],
-%%   <<"bandwidthThrottling">> => float(),
-%%   <<"createPublicIP">> => [boolean()],
-%%   <<"dataPlaneRouting">> => string(),
-%%   <<"defaultLargeStagingDiskType">> => string(),
-%%   <<"ebsEncryption">> => string(),
-%%   <<"ebsEncryptionKeyArn">> => string(),
-%%   <<"internetProtocol">> => string(),
-%%   <<"pitPolicy">> => list(p_i_t_policy_rule()),
-%%   <<"replicationConfigurationTemplateID">> := string(),
-%%   <<"replicationServerInstanceType">> => string(),
-%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
-%%   <<"stagingAreaSubnetId">> => string(),
-%%   <<"stagingAreaTags">> => map(),
-%%   <<"tags">> => map(),
-%%   <<"useDedicatedReplicationServer">> => [boolean()]
-%% }
--type replication_configuration_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_instance_properties() :: #{
-%%   <<"cpus">> => list(c_p_u()),
-%%   <<"disks">> => list(recovery_instance_disk()),
-%%   <<"identificationHints">> => identification_hints(),
-%%   <<"lastUpdatedDateTime">> => string(),
-%%   <<"networkInterfaces">> => list(network_interface()),
-%%   <<"os">> => o_s(),
-%%   <<"ramBytes">> => float()
-%% }
--type recovery_instance_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_instance_disk() :: #{
-%%   <<"bytes">> => float(),
-%%   <<"ebsVolumeID">> => string(),
-%%   <<"internalDeviceName">> => string()
-%% }
--type recovery_instance_disk() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_replication_configuration_template_request() :: #{
-%%   <<"arn">> => string(),
-%%   <<"associateDefaultSecurityGroup">> => [boolean()],
-%%   <<"autoReplicateNewDisks">> => [boolean()],
-%%   <<"bandwidthThrottling">> => float(),
-%%   <<"createPublicIP">> => [boolean()],
-%%   <<"dataPlaneRouting">> => string(),
-%%   <<"defaultLargeStagingDiskType">> => string(),
-%%   <<"ebsEncryption">> => string(),
-%%   <<"ebsEncryptionKeyArn">> => string(),
-%%   <<"internetProtocol">> => string(),
-%%   <<"pitPolicy">> => list(p_i_t_policy_rule()),
-%%   <<"replicationConfigurationTemplateID">> := string(),
-%%   <<"replicationServerInstanceType">> => string(),
-%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
-%%   <<"stagingAreaSubnetId">> => string(),
-%%   <<"stagingAreaTags">> => map(),
-%%   <<"useDedicatedReplicationServer">> => [boolean()]
-%% }
--type update_replication_configuration_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_configuration_replicated_disk() :: #{
-%%   <<"deviceName">> => string(),
-%%   <<"iops">> => float(),
-%%   <<"isBootDisk">> => [boolean()],
-%%   <<"optimizedStagingDiskType">> => string(),
-%%   <<"stagingDiskType">> => string(),
-%%   <<"throughput">> => float()
-%% }
--type replication_configuration_replicated_disk() :: #{binary() => any()}.
-
-
-%% Example:
-%% terminate_recovery_instances_response() :: #{
+%% associate_source_network_stack_response() :: #{
 %%   <<"job">> => job()
 %% }
--type terminate_recovery_instances_response() :: #{binary() => any()}.
+-type associate_source_network_stack_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% participating_resource() :: #{
-%%   <<"launchStatus">> => string(),
-%%   <<"participatingResourceID">> => list()
+%% c_p_u() :: #{
+%%   <<"cores">> => float(),
+%%   <<"modelName">> => string()
 %% }
--type participating_resource() :: #{binary() => any()}.
+-type c_p_u() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_launch_action_request() :: #{
-%%   <<"actionCode">> := string(),
-%%   <<"actionId">> := string(),
-%%   <<"actionVersion">> := string(),
-%%   <<"active">> := [boolean()],
-%%   <<"category">> := string(),
-%%   <<"description">> := string(),
-%%   <<"name">> := string(),
-%%   <<"optional">> := [boolean()],
-%%   <<"order">> := integer(),
-%%   <<"parameters">> => map(),
-%%   <<"resourceId">> := string()
+%% conflict_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
 %% }
--type put_launch_action_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% stop_failback_request() :: #{
-%%   <<"recoveryInstanceID">> := string()
+%% conversion_properties() :: #{
+%%   <<"dataTimestamp">> => string(),
+%%   <<"forceUefi">> => [boolean()],
+%%   <<"rootVolumeName">> => string(),
+%%   <<"volumeToConversionMap">> => map(),
+%%   <<"volumeToProductCodes">> => map(),
+%%   <<"volumeToVolumeSize">> => map()
 %% }
--type stop_failback_request() :: #{binary() => any()}.
+-type conversion_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_source_network_request() :: #{
-%%   <<"sourceNetworkID">> := string()
+%% create_extended_source_server_request() :: #{
+%%   <<"sourceServerArn">> := string(),
+%%   <<"tags">> => map()
 %% }
--type delete_source_network_request() :: #{binary() => any()}.
+-type create_extended_source_server_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% network_interface() :: #{
-%%   <<"ips">> => list(string()),
-%%   <<"isPrimary">> => [boolean()],
-%%   <<"macAddress">> => string()
+%% create_extended_source_server_response() :: #{
+%%   <<"sourceServer">> => source_server()
 %% }
--type network_interface() :: #{binary() => any()}.
+-type create_extended_source_server_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_source_networks_response() :: #{
-%%   <<"items">> => list(source_network()),
-%%   <<"nextToken">> => string()
+%% create_launch_configuration_template_request() :: #{
+%%   <<"copyPrivateIp">> => [boolean()],
+%%   <<"copyTags">> => [boolean()],
+%%   <<"exportBucketArn">> => string(),
+%%   <<"launchDisposition">> => string(),
+%%   <<"launchIntoSourceInstance">> => [boolean()],
+%%   <<"licensing">> => licensing(),
+%%   <<"postLaunchEnabled">> => [boolean()],
+%%   <<"recoveryMode">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targetInstanceTypeRightSizingMethod">> => string()
 %% }
--type describe_source_networks_response() :: #{binary() => any()}.
+-type create_launch_configuration_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_launch_configuration_template_response() :: #{
+%%   <<"launchConfigurationTemplate">> => launch_configuration_template()
+%% }
+-type create_launch_configuration_template_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -412,66 +232,90 @@
 
 
 %% Example:
-%% put_launch_action_response() :: #{
-%%   <<"actionCode">> => string(),
-%%   <<"actionId">> => string(),
-%%   <<"actionVersion">> => string(),
-%%   <<"active">> => [boolean()],
-%%   <<"category">> => string(),
-%%   <<"description">> => string(),
+%% create_source_network_request() :: #{
+%%   <<"originAccountID">> := string(),
+%%   <<"originRegion">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"vpcID">> := string()
+%% }
+-type create_source_network_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_source_network_response() :: #{
+%%   <<"sourceNetworkID">> => string()
+%% }
+-type create_source_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_replication_error() :: #{
+%%   <<"error">> => string(),
+%%   <<"rawError">> => string()
+%% }
+-type data_replication_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_replication_info() :: #{
+%%   <<"dataReplicationError">> => data_replication_error(),
+%%   <<"dataReplicationInitiation">> => data_replication_initiation(),
+%%   <<"dataReplicationState">> => string(),
+%%   <<"etaDateTime">> => string(),
+%%   <<"lagDuration">> => string(),
+%%   <<"replicatedDisks">> => list(data_replication_info_replicated_disk()),
+%%   <<"stagingAvailabilityZone">> => string(),
+%%   <<"stagingOutpostArn">> => string()
+%% }
+-type data_replication_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_replication_info_replicated_disk() :: #{
+%%   <<"backloggedStorageBytes">> => float(),
+%%   <<"deviceName">> => string(),
+%%   <<"replicatedStorageBytes">> => float(),
+%%   <<"rescannedStorageBytes">> => float(),
+%%   <<"totalStorageBytes">> => float(),
+%%   <<"volumeStatus">> => string()
+%% }
+-type data_replication_info_replicated_disk() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_replication_initiation() :: #{
+%%   <<"nextAttemptDateTime">> => string(),
+%%   <<"startDateTime">> => string(),
+%%   <<"steps">> => list(data_replication_initiation_step())
+%% }
+-type data_replication_initiation() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_replication_initiation_step() :: #{
 %%   <<"name">> => string(),
-%%   <<"optional">> => [boolean()],
-%%   <<"order">> => integer(),
-%%   <<"parameters">> => map(),
-%%   <<"resourceId">> => string(),
-%%   <<"type">> => string()
+%%   <<"status">> => string()
 %% }
--type put_launch_action_response() :: #{binary() => any()}.
+-type data_replication_initiation_step() :: #{binary() => any()}.
 
 
 %% Example:
-%% staging_source_server() :: #{
-%%   <<"arn">> => string(),
-%%   <<"hostname">> => string(),
-%%   <<"tags">> => map()
+%% delete_job_request() :: #{
+%%   <<"jobID">> := string()
 %% }
--type staging_source_server() :: #{binary() => any()}.
+-type delete_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_response() :: #{}
+-type delete_job_response() :: #{}.
 
 
 %% Example:
-%% launch_action_parameter() :: #{
-%%   <<"type">> => string(),
-%%   <<"value">> => string()
+%% delete_launch_action_request() :: #{
+%%   <<"actionId">> := string(),
+%%   <<"resourceId">> := string()
 %% }
--type launch_action_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_data_replication_request() :: #{
-%%   <<"sourceServerID">> => string()
-%% }
--type retry_data_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_replication_configuration_request() :: #{
-%%   <<"sourceServerID">> := string()
-%% }
--type get_replication_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_replication_request() :: #{
-%%   <<"sourceServerID">> := string()
-%% }
--type start_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type delete_launch_action_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_launch_action_response() :: #{}
@@ -479,41 +323,139 @@
 
 
 %% Example:
-%% start_source_network_replication_request() :: #{
+%% delete_launch_configuration_template_request() :: #{
+%%   <<"launchConfigurationTemplateID">> := string()
+%% }
+-type delete_launch_configuration_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_launch_configuration_template_response() :: #{}
+-type delete_launch_configuration_template_response() :: #{}.
+
+
+%% Example:
+%% delete_recovery_instance_request() :: #{
+%%   <<"recoveryInstanceID">> := string()
+%% }
+-type delete_recovery_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_replication_configuration_template_request() :: #{
+%%   <<"replicationConfigurationTemplateID">> := string()
+%% }
+-type delete_replication_configuration_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_configuration_template_response() :: #{}
+-type delete_replication_configuration_template_response() :: #{}.
+
+
+%% Example:
+%% delete_source_network_request() :: #{
 %%   <<"sourceNetworkID">> := string()
 %% }
--type start_source_network_replication_request() :: #{binary() => any()}.
+-type delete_source_network_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_source_network_response() :: #{}
+-type delete_source_network_response() :: #{}.
 
 
 %% Example:
-%% stop_replication_request() :: #{
+%% delete_source_server_request() :: #{
 %%   <<"sourceServerID">> := string()
 %% }
--type stop_replication_request() :: #{binary() => any()}.
+-type delete_source_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_source_server_response() :: #{}
+-type delete_source_server_response() :: #{}.
 
 
 %% Example:
-%% start_failback_launch_response() :: #{
-%%   <<"job">> => job()
+%% describe_job_log_items_request() :: #{
+%%   <<"jobID">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type start_failback_launch_response() :: #{binary() => any()}.
+-type describe_job_log_items_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% launch_configuration_template() :: #{
-%%   <<"arn">> => string(),
-%%   <<"copyPrivateIp">> => [boolean()],
-%%   <<"copyTags">> => [boolean()],
-%%   <<"exportBucketArn">> => string(),
-%%   <<"launchConfigurationTemplateID">> => string(),
-%%   <<"launchDisposition">> => string(),
-%%   <<"launchIntoSourceInstance">> => [boolean()],
-%%   <<"licensing">> => licensing(),
-%%   <<"postLaunchEnabled">> => [boolean()],
-%%   <<"tags">> => map(),
-%%   <<"targetInstanceTypeRightSizingMethod">> => string()
+%% describe_job_log_items_response() :: #{
+%%   <<"items">> => list(job_log()),
+%%   <<"nextToken">> => string()
 %% }
--type launch_configuration_template() :: #{binary() => any()}.
+-type describe_job_log_items_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_jobs_request() :: #{
+%%   <<"filters">> => describe_jobs_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_jobs_request_filters() :: #{
+%%   <<"fromDate">> => string(),
+%%   <<"jobIDs">> => list(string()),
+%%   <<"toDate">> => string()
+%% }
+-type describe_jobs_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_jobs_response() :: #{
+%%   <<"items">> => list(job()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_launch_configuration_templates_request() :: #{
+%%   <<"launchConfigurationTemplateIDs">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_launch_configuration_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_launch_configuration_templates_response() :: #{
+%%   <<"items">> => list(launch_configuration_template()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_launch_configuration_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_recovery_instances_request() :: #{
+%%   <<"filters">> => describe_recovery_instances_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_recovery_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_recovery_instances_request_filters() :: #{
+%%   <<"recoveryInstanceIDs">> => list(string()),
+%%   <<"sourceServerIDs">> => list(string())
+%% }
+-type describe_recovery_instances_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_recovery_instances_response() :: #{
+%%   <<"items">> => list(recovery_instance()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_recovery_instances_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -528,53 +470,156 @@
 
 
 %% Example:
-%% launch_actions_request_filters() :: #{
-%%   <<"actionIds">> => list(string())
+%% describe_recovery_snapshots_request_filters() :: #{
+%%   <<"fromDateTime">> => string(),
+%%   <<"toDateTime">> => string()
 %% }
--type launch_actions_request_filters() :: #{binary() => any()}.
+-type describe_recovery_snapshots_request_filters() :: #{binary() => any()}.
 
 
 %% Example:
-%% licensing() :: #{
-%%   <<"osByol">> => [boolean()]
+%% describe_recovery_snapshots_response() :: #{
+%%   <<"items">> => list(recovery_snapshot()),
+%%   <<"nextToken">> => string()
 %% }
--type licensing() :: #{binary() => any()}.
+-type describe_recovery_snapshots_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% p_i_t_policy_rule() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"interval">> => integer(),
-%%   <<"retentionDuration">> => integer(),
-%%   <<"ruleID">> => float(),
-%%   <<"units">> => string()
+%% describe_replication_configuration_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"replicationConfigurationTemplateIDs">> => list(string())
 %% }
--type p_i_t_policy_rule() :: #{binary() => any()}.
+-type describe_replication_configuration_templates_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% recovery_instance_failback() :: #{
-%%   <<"agentLastSeenByServiceDateTime">> => string(),
-%%   <<"elapsedReplicationDuration">> => string(),
-%%   <<"failbackClientID">> => string(),
-%%   <<"failbackClientLastSeenByServiceDateTime">> => string(),
-%%   <<"failbackInitiationTime">> => string(),
-%%   <<"failbackJobID">> => string(),
-%%   <<"failbackLaunchType">> => string(),
-%%   <<"failbackToOriginalServer">> => [boolean()],
-%%   <<"firstByteDateTime">> => string(),
-%%   <<"state">> => string()
+%% describe_replication_configuration_templates_response() :: #{
+%%   <<"items">> => list(replication_configuration_template()),
+%%   <<"nextToken">> => string()
 %% }
--type recovery_instance_failback() :: #{binary() => any()}.
+-type describe_replication_configuration_templates_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_recovery_request() :: #{
-%%   <<"isDrill">> => [boolean()],
-%%   <<"sourceServers">> := list(start_recovery_request_source_server()),
-%%   <<"tags">> => map()
+%% describe_source_networks_request() :: #{
+%%   <<"filters">> => describe_source_networks_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type start_recovery_request() :: #{binary() => any()}.
+-type describe_source_networks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_source_networks_request_filters() :: #{
+%%   <<"originAccountID">> => string(),
+%%   <<"originRegion">> => string(),
+%%   <<"sourceNetworkIDs">> => list(string())
+%% }
+-type describe_source_networks_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_source_networks_response() :: #{
+%%   <<"items">> => list(source_network()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_source_networks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_source_servers_request() :: #{
+%%   <<"filters">> => describe_source_servers_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_source_servers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_source_servers_request_filters() :: #{
+%%   <<"hardwareId">> => string(),
+%%   <<"sourceServerIDs">> => list(string()),
+%%   <<"stagingAccountIDs">> => list(string())
+%% }
+-type describe_source_servers_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_source_servers_response() :: #{
+%%   <<"items">> => list(source_server()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_source_servers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disconnect_recovery_instance_request() :: #{
+%%   <<"recoveryInstanceID">> := string()
+%% }
+-type disconnect_recovery_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disconnect_source_server_request() :: #{
+%%   <<"sourceServerID">> := string()
+%% }
+-type disconnect_source_server_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disk() :: #{
+%%   <<"bytes">> => float(),
+%%   <<"deviceName">> => string()
+%% }
+-type disk() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_source_network_cfn_template_request() :: #{
+%%   <<"sourceNetworkID">> := string()
+%% }
+-type export_source_network_cfn_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_source_network_cfn_template_response() :: #{
+%%   <<"s3DestinationUrl">> => string()
+%% }
+-type export_source_network_cfn_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_failback_replication_configuration_request() :: #{
+%%   <<"recoveryInstanceID">> := string()
+%% }
+-type get_failback_replication_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_failback_replication_configuration_response() :: #{
+%%   <<"bandwidthThrottling">> => float(),
+%%   <<"internetProtocol">> => string(),
+%%   <<"name">> => string(),
+%%   <<"recoveryInstanceID">> := string(),
+%%   <<"usePrivateIP">> => [boolean()]
+%% }
+-type get_failback_replication_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_launch_configuration_request() :: #{
+%%   <<"sourceServerID">> := string()
+%% }
+-type get_launch_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_replication_configuration_request() :: #{
+%%   <<"sourceServerID">> := string()
+%% }
+-type get_replication_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -585,6 +630,61 @@
 %%   <<"vmWareUuid">> => string()
 %% }
 -type identification_hints() :: #{binary() => any()}.
+
+%% Example:
+%% initialize_service_request() :: #{}
+-type initialize_service_request() :: #{}.
+
+%% Example:
+%% initialize_service_response() :: #{}
+-type initialize_service_response() :: #{}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => float()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% job() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDateTime">> => string(),
+%%   <<"endDateTime">> => string(),
+%%   <<"initiatedBy">> => string(),
+%%   <<"jobID">> => string(),
+%%   <<"participatingResources">> => list(participating_resource()),
+%%   <<"participatingServers">> => list(participating_server()),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type job() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_log() :: #{
+%%   <<"event">> => string(),
+%%   <<"eventData">> => job_log_event_data(),
+%%   <<"logDateTime">> => string()
+%% }
+-type job_log() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_log_event_data() :: #{
+%%   <<"attemptCount">> => float(),
+%%   <<"conversionProperties">> => conversion_properties(),
+%%   <<"conversionServerID">> => string(),
+%%   <<"eventResourceData">> => list(),
+%%   <<"maxAttemptsCount">> => float(),
+%%   <<"rawError">> => string(),
+%%   <<"sourceServerID">> => string(),
+%%   <<"targetInstanceID">> => string()
+%% }
+-type job_log_event_data() :: #{binary() => any()}.
 
 
 %% Example:
@@ -605,41 +705,307 @@
 
 
 %% Example:
-%% source_properties() :: #{
-%%   <<"cpus">> => list(c_p_u()),
-%%   <<"disks">> => list(disk()),
-%%   <<"identificationHints">> => identification_hints(),
-%%   <<"lastUpdatedDateTime">> => string(),
-%%   <<"networkInterfaces">> => list(network_interface()),
-%%   <<"os">> => o_s(),
-%%   <<"ramBytes">> => float(),
-%%   <<"recommendedInstanceType">> => string(),
-%%   <<"supportsNitroInstances">> => [boolean()]
+%% launch_action_parameter() :: #{
+%%   <<"type">> => string(),
+%%   <<"value">> => string()
 %% }
--type source_properties() :: #{binary() => any()}.
+-type launch_action_parameter() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_source_servers_response() :: #{
-%%   <<"items">> => list(source_server()),
+%% launch_action_run() :: #{
+%%   <<"action">> => launch_action(),
+%%   <<"failureReason">> => string(),
+%%   <<"runId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type launch_action_run() :: #{binary() => any()}.
+
+
+%% Example:
+%% launch_actions_request_filters() :: #{
+%%   <<"actionIds">> => list(string())
+%% }
+-type launch_actions_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% launch_actions_status() :: #{
+%%   <<"runs">> => list(launch_action_run()),
+%%   <<"ssmAgentDiscoveryDatetime">> => string()
+%% }
+-type launch_actions_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% launch_configuration() :: #{
+%%   <<"copyPrivateIp">> => [boolean()],
+%%   <<"copyTags">> => [boolean()],
+%%   <<"ec2LaunchTemplateID">> => string(),
+%%   <<"launchDisposition">> => string(),
+%%   <<"launchIntoInstanceProperties">> => launch_into_instance_properties(),
+%%   <<"licensing">> => licensing(),
+%%   <<"name">> => string(),
+%%   <<"postLaunchEnabled">> => [boolean()],
+%%   <<"recoveryMode">> => string(),
+%%   <<"sourceServerID">> => string(),
+%%   <<"targetInstanceTypeRightSizingMethod">> => string()
+%% }
+-type launch_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% launch_configuration_template() :: #{
+%%   <<"arn">> => string(),
+%%   <<"copyPrivateIp">> => [boolean()],
+%%   <<"copyTags">> => [boolean()],
+%%   <<"exportBucketArn">> => string(),
+%%   <<"launchConfigurationTemplateID">> => string(),
+%%   <<"launchDisposition">> => string(),
+%%   <<"launchIntoSourceInstance">> => [boolean()],
+%%   <<"licensing">> => licensing(),
+%%   <<"postLaunchEnabled">> => [boolean()],
+%%   <<"recoveryMode">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targetInstanceTypeRightSizingMethod">> => string()
+%% }
+-type launch_configuration_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% launch_into_instance_properties() :: #{
+%%   <<"launchIntoEC2InstanceID">> => string()
+%% }
+-type launch_into_instance_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% licensing() :: #{
+%%   <<"osByol">> => [boolean()]
+%% }
+-type licensing() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle() :: #{
+%%   <<"addedToServiceDateTime">> => string(),
+%%   <<"elapsedReplicationDuration">> => string(),
+%%   <<"firstByteDateTime">> => string(),
+%%   <<"lastLaunch">> => life_cycle_last_launch(),
+%%   <<"lastSeenByServiceDateTime">> => string()
+%% }
+-type life_cycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle_last_launch() :: #{
+%%   <<"initiated">> => life_cycle_last_launch_initiated(),
+%%   <<"status">> => string()
+%% }
+-type life_cycle_last_launch() :: #{binary() => any()}.
+
+
+%% Example:
+%% life_cycle_last_launch_initiated() :: #{
+%%   <<"apiCallDateTime">> => string(),
+%%   <<"jobID">> => string(),
+%%   <<"type">> => string()
+%% }
+-type life_cycle_last_launch_initiated() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_extensible_source_servers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"stagingAccountID">> := string()
+%% }
+-type list_extensible_source_servers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_extensible_source_servers_response() :: #{
+%%   <<"items">> => list(staging_source_server()),
 %%   <<"nextToken">> => string()
 %% }
--type describe_source_servers_response() :: #{binary() => any()}.
+-type list_extensible_source_servers_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% reverse_replication_request() :: #{
-%%   <<"recoveryInstanceID">> := string()
+%% list_launch_actions_request() :: #{
+%%   <<"filters">> => launch_actions_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceId">> := string()
 %% }
--type reverse_replication_request() :: #{binary() => any()}.
+-type list_launch_actions_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_replication_configuration_templates_response() :: #{
-%%   <<"items">> => list(replication_configuration_template()),
+%% list_launch_actions_response() :: #{
+%%   <<"items">> => list(launch_action()),
 %%   <<"nextToken">> => string()
 %% }
--type describe_replication_configuration_templates_response() :: #{binary() => any()}.
+-type list_launch_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_staging_accounts_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_staging_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_staging_accounts_response() :: #{
+%%   <<"accounts">> => list(account()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_staging_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"ips">> => list(string()),
+%%   <<"isPrimary">> => [boolean()],
+%%   <<"macAddress">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_s() :: #{
+%%   <<"fullString">> => string()
+%% }
+-type o_s() :: #{binary() => any()}.
+
+
+%% Example:
+%% p_i_t_policy_rule() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"interval">> => integer(),
+%%   <<"retentionDuration">> => integer(),
+%%   <<"ruleID">> => float(),
+%%   <<"units">> => string()
+%% }
+-type p_i_t_policy_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% participating_resource() :: #{
+%%   <<"launchStatus">> => string(),
+%%   <<"participatingResourceID">> => list()
+%% }
+-type participating_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% participating_server() :: #{
+%%   <<"launchActionsStatus">> => launch_actions_status(),
+%%   <<"launchStatus">> => string(),
+%%   <<"recoveryInstanceID">> => string(),
+%%   <<"sourceServerID">> => string()
+%% }
+-type participating_server() :: #{binary() => any()}.
+
+
+%% Example:
+%% product_code() :: #{
+%%   <<"productCodeId">> => string(),
+%%   <<"productCodeMode">> => string()
+%% }
+-type product_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_launch_action_request() :: #{
+%%   <<"actionCode">> := string(),
+%%   <<"actionId">> := string(),
+%%   <<"actionVersion">> := string(),
+%%   <<"active">> := [boolean()],
+%%   <<"category">> := string(),
+%%   <<"description">> := string(),
+%%   <<"name">> := string(),
+%%   <<"optional">> := [boolean()],
+%%   <<"order">> := integer(),
+%%   <<"parameters">> => map(),
+%%   <<"resourceId">> := string()
+%% }
+-type put_launch_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_launch_action_response() :: #{
+%%   <<"actionCode">> => string(),
+%%   <<"actionId">> => string(),
+%%   <<"actionVersion">> => string(),
+%%   <<"active">> => [boolean()],
+%%   <<"category">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"optional">> => [boolean()],
+%%   <<"order">> => integer(),
+%%   <<"parameters">> => map(),
+%%   <<"resourceId">> => string(),
+%%   <<"type">> => string()
+%% }
+-type put_launch_action_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_instance() :: #{
+%%   <<"agentVersion">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"dataReplicationInfo">> => recovery_instance_data_replication_info(),
+%%   <<"ec2InstanceID">> => string(),
+%%   <<"ec2InstanceState">> => string(),
+%%   <<"failback">> => recovery_instance_failback(),
+%%   <<"isDrill">> => [boolean()],
+%%   <<"jobID">> => string(),
+%%   <<"originAvailabilityZone">> => string(),
+%%   <<"originEnvironment">> => string(),
+%%   <<"pointInTimeSnapshotDateTime">> => string(),
+%%   <<"recoveryInstanceID">> => string(),
+%%   <<"recoveryInstanceProperties">> => recovery_instance_properties(),
+%%   <<"sourceOutpostArn">> => string(),
+%%   <<"sourceServerID">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type recovery_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_instance_data_replication_error() :: #{
+%%   <<"error">> => string(),
+%%   <<"rawError">> => string()
+%% }
+-type recovery_instance_data_replication_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_instance_data_replication_info() :: #{
+%%   <<"dataReplicationError">> => recovery_instance_data_replication_error(),
+%%   <<"dataReplicationInitiation">> => recovery_instance_data_replication_initiation(),
+%%   <<"dataReplicationState">> => string(),
+%%   <<"etaDateTime">> => string(),
+%%   <<"lagDuration">> => string(),
+%%   <<"replicatedDisks">> => list(recovery_instance_data_replication_info_replicated_disk()),
+%%   <<"stagingAvailabilityZone">> => string(),
+%%   <<"stagingOutpostArn">> => string()
+%% }
+-type recovery_instance_data_replication_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -652,9 +1018,79 @@
 %% }
 -type recovery_instance_data_replication_info_replicated_disk() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_replication_configuration_template_response() :: #{}
--type delete_replication_configuration_template_response() :: #{}.
+%% recovery_instance_data_replication_initiation() :: #{
+%%   <<"startDateTime">> => string(),
+%%   <<"steps">> => list(recovery_instance_data_replication_initiation_step())
+%% }
+-type recovery_instance_data_replication_initiation() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_instance_data_replication_initiation_step() :: #{
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type recovery_instance_data_replication_initiation_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_instance_disk() :: #{
+%%   <<"bytes">> => float(),
+%%   <<"ebsVolumeID">> => string(),
+%%   <<"internalDeviceName">> => string()
+%% }
+-type recovery_instance_disk() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_instance_failback() :: #{
+%%   <<"agentLastSeenByServiceDateTime">> => string(),
+%%   <<"elapsedReplicationDuration">> => string(),
+%%   <<"failbackClientID">> => string(),
+%%   <<"failbackClientLastSeenByServiceDateTime">> => string(),
+%%   <<"failbackInitiationTime">> => string(),
+%%   <<"failbackJobID">> => string(),
+%%   <<"failbackLaunchType">> => string(),
+%%   <<"failbackToOriginalServer">> => [boolean()],
+%%   <<"firstByteDateTime">> => string(),
+%%   <<"state">> => string()
+%% }
+-type recovery_instance_failback() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_instance_properties() :: #{
+%%   <<"cpus">> => list(c_p_u()),
+%%   <<"disks">> => list(recovery_instance_disk()),
+%%   <<"identificationHints">> => identification_hints(),
+%%   <<"lastUpdatedDateTime">> => string(),
+%%   <<"networkInterfaces">> => list(network_interface()),
+%%   <<"os">> => o_s(),
+%%   <<"ramBytes">> => float()
+%% }
+-type recovery_instance_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_life_cycle() :: #{
+%%   <<"apiCallDateTime">> => [non_neg_integer()],
+%%   <<"jobID">> => string(),
+%%   <<"lastRecoveryResult">> => string()
+%% }
+-type recovery_life_cycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_snapshot() :: #{
+%%   <<"ebsSnapshots">> => list(string()),
+%%   <<"expectedTimestamp">> => string(),
+%%   <<"snapshotID">> => string(),
+%%   <<"sourceServerID">> => string(),
+%%   <<"timestamp">> => string()
+%% }
+-type recovery_snapshot() :: #{binary() => any()}.
 
 
 %% Example:
@@ -682,13 +1118,39 @@
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
+%% replication_configuration_replicated_disk() :: #{
+%%   <<"deviceName">> => string(),
+%%   <<"iops">> => float(),
+%%   <<"isBootDisk">> => [boolean()],
+%%   <<"optimizedStagingDiskType">> => string(),
+%%   <<"stagingDiskType">> => string(),
+%%   <<"throughput">> => float()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type replication_configuration_replicated_disk() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_configuration_template() :: #{
+%%   <<"arn">> => string(),
+%%   <<"associateDefaultSecurityGroup">> => [boolean()],
+%%   <<"autoReplicateNewDisks">> => [boolean()],
+%%   <<"bandwidthThrottling">> => float(),
+%%   <<"createPublicIP">> => [boolean()],
+%%   <<"dataPlaneRouting">> => string(),
+%%   <<"defaultLargeStagingDiskType">> => string(),
+%%   <<"ebsEncryption">> => string(),
+%%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
+%%   <<"pitPolicy">> => list(p_i_t_policy_rule()),
+%%   <<"replicationConfigurationTemplateID">> := string(),
+%%   <<"replicationServerInstanceType">> => string(),
+%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
+%%   <<"stagingAreaSubnetId">> => string(),
+%%   <<"stagingAreaTags">> => map(),
+%%   <<"tags">> => map(),
+%%   <<"useDedicatedReplicationServer">> => [boolean()]
+%% }
+-type replication_configuration_template() :: #{binary() => any()}.
 
 
 %% Example:
@@ -702,37 +1164,24 @@
 
 
 %% Example:
-%% describe_source_networks_request() :: #{
-%%   <<"filters">> => describe_source_networks_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% retry_data_replication_request() :: #{
+%%   <<"sourceServerID">> => string()
 %% }
--type describe_source_networks_request() :: #{binary() => any()}.
+-type retry_data_replication_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_replication_error() :: #{
-%%   <<"error">> => string(),
-%%   <<"rawError">> => string()
-%% }
--type data_replication_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% disconnect_recovery_instance_request() :: #{
+%% reverse_replication_request() :: #{
 %%   <<"recoveryInstanceID">> := string()
 %% }
--type disconnect_recovery_instance_request() :: #{binary() => any()}.
+-type reverse_replication_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_launch_actions_request() :: #{
-%%   <<"filters">> => launch_actions_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceId">> := string()
+%% reverse_replication_response() :: #{
+%%   <<"reversedDirectionSourceServerArn">> => string()
 %% }
--type list_launch_actions_request() :: #{binary() => any()}.
+-type reverse_replication_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -748,116 +1197,13 @@
 
 
 %% Example:
-%% start_source_network_recovery_request_network_entry() :: #{
-%%   <<"cfnStackName">> => string(),
-%%   <<"sourceNetworkID">> => string()
+%% source_cloud_properties() :: #{
+%%   <<"originAccountID">> => string(),
+%%   <<"originAvailabilityZone">> => string(),
+%%   <<"originRegion">> => string(),
+%%   <<"sourceOutpostArn">> => string()
 %% }
--type start_source_network_recovery_request_network_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% c_p_u() :: #{
-%%   <<"cores">> => float(),
-%%   <<"modelName">> => string()
-%% }
--type c_p_u() :: #{binary() => any()}.
-
-
-%% Example:
-%% uninitialized_account_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
-%% }
--type uninitialized_account_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% launch_action_run() :: #{
-%%   <<"action">> => launch_action(),
-%%   <<"failureReason">> => string(),
-%%   <<"runId">> => string(),
-%%   <<"status">> => string()
-%% }
--type launch_action_run() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_recovery_instance_request() :: #{
-%%   <<"recoveryInstanceID">> := string()
-%% }
--type delete_recovery_instance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% account() :: #{
-%%   <<"accountID">> => string()
-%% }
--type account() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_instance_data_replication_initiation() :: #{
-%%   <<"startDateTime">> => string(),
-%%   <<"steps">> => list(recovery_instance_data_replication_initiation_step())
-%% }
--type recovery_instance_data_replication_initiation() :: #{binary() => any()}.
-
-%% Example:
-%% initialize_service_request() :: #{}
--type initialize_service_request() :: #{}.
-
-
-%% Example:
-%% create_launch_configuration_template_request() :: #{
-%%   <<"copyPrivateIp">> => [boolean()],
-%%   <<"copyTags">> => [boolean()],
-%%   <<"exportBucketArn">> => string(),
-%%   <<"launchDisposition">> => string(),
-%%   <<"launchIntoSourceInstance">> => [boolean()],
-%%   <<"licensing">> => licensing(),
-%%   <<"postLaunchEnabled">> => [boolean()],
-%%   <<"tags">> => map(),
-%%   <<"targetInstanceTypeRightSizingMethod">> => string()
-%% }
--type create_launch_configuration_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_instance_data_replication_info() :: #{
-%%   <<"dataReplicationError">> => recovery_instance_data_replication_error(),
-%%   <<"dataReplicationInitiation">> => recovery_instance_data_replication_initiation(),
-%%   <<"dataReplicationState">> => string(),
-%%   <<"etaDateTime">> => string(),
-%%   <<"lagDuration">> => string(),
-%%   <<"replicatedDisks">> => list(recovery_instance_data_replication_info_replicated_disk()),
-%%   <<"stagingAvailabilityZone">> => string(),
-%%   <<"stagingOutpostArn">> => string()
-%% }
--type recovery_instance_data_replication_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_source_network_request() :: #{
-%%   <<"originAccountID">> := string(),
-%%   <<"originRegion">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"vpcID">> := string()
-%% }
--type create_source_network_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_launch_configuration_template_response() :: #{
-%%   <<"launchConfigurationTemplate">> => launch_configuration_template()
-%% }
--type update_launch_configuration_template_response() :: #{binary() => any()}.
+-type source_cloud_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -878,206 +1224,48 @@
 
 
 %% Example:
-%% data_replication_info() :: #{
-%%   <<"dataReplicationError">> => data_replication_error(),
-%%   <<"dataReplicationInitiation">> => data_replication_initiation(),
-%%   <<"dataReplicationState">> => string(),
-%%   <<"etaDateTime">> => string(),
-%%   <<"lagDuration">> => string(),
-%%   <<"replicatedDisks">> => list(data_replication_info_replicated_disk()),
-%%   <<"stagingAvailabilityZone">> => string(),
-%%   <<"stagingOutpostArn">> => string()
+%% source_network_data() :: #{
+%%   <<"sourceNetworkID">> => string(),
+%%   <<"sourceVpc">> => string(),
+%%   <<"stackName">> => string(),
+%%   <<"targetVpc">> => string()
 %% }
--type data_replication_info() :: #{binary() => any()}.
+-type source_network_data() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
+%% source_properties() :: #{
+%%   <<"cpus">> => list(c_p_u()),
+%%   <<"disks">> => list(disk()),
+%%   <<"identificationHints">> => identification_hints(),
+%%   <<"lastUpdatedDateTime">> => string(),
+%%   <<"networkInterfaces">> => list(network_interface()),
+%%   <<"os">> => o_s(),
+%%   <<"ramBytes">> => float(),
+%%   <<"recommendedInstanceType">> => string(),
+%%   <<"supportsNitroInstances">> => [boolean()]
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type source_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_source_servers_request_filters() :: #{
-%%   <<"hardwareId">> => string(),
-%%   <<"sourceServerIDs">> => list(string()),
-%%   <<"stagingAccountIDs">> => list(string())
-%% }
--type describe_source_servers_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% reverse_replication_response() :: #{
-%%   <<"reversedDirectionSourceServerArn">> => string()
-%% }
--type reverse_replication_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% terminate_recovery_instances_request() :: #{
-%%   <<"recoveryInstanceIDs">> := list(string())
-%% }
--type terminate_recovery_instances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_replication_info_replicated_disk() :: #{
-%%   <<"backloggedStorageBytes">> => float(),
-%%   <<"deviceName">> => string(),
-%%   <<"replicatedStorageBytes">> => float(),
-%%   <<"rescannedStorageBytes">> => float(),
-%%   <<"totalStorageBytes">> => float(),
-%%   <<"volumeStatus">> => string()
-%% }
--type data_replication_info_replicated_disk() :: #{binary() => any()}.
-
-
-%% Example:
-%% disconnect_source_server_request() :: #{
-%%   <<"sourceServerID">> := string()
-%% }
--type disconnect_source_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% initialize_service_response() :: #{}
--type initialize_service_response() :: #{}.
-
-
-%% Example:
-%% launch_actions_status() :: #{
-%%   <<"runs">> => list(launch_action_run()),
-%%   <<"ssmAgentDiscoveryDatetime">> => string()
-%% }
--type launch_actions_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversion_properties() :: #{
-%%   <<"dataTimestamp">> => string(),
-%%   <<"forceUefi">> => [boolean()],
-%%   <<"rootVolumeName">> => string(),
-%%   <<"volumeToConversionMap">> => map(),
-%%   <<"volumeToProductCodes">> => map(),
-%%   <<"volumeToVolumeSize">> => map()
-%% }
--type conversion_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% product_code() :: #{
-%%   <<"productCodeId">> => string(),
-%%   <<"productCodeMode">> => string()
-%% }
--type product_code() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_source_network_cfn_template_response() :: #{
-%%   <<"s3DestinationUrl">> => string()
-%% }
--type export_source_network_cfn_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_jobs_request_filters() :: #{
-%%   <<"fromDate">> => string(),
-%%   <<"jobIDs">> => list(string()),
-%%   <<"toDate">> => string()
-%% }
--type describe_jobs_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_replication_initiation() :: #{
-%%   <<"nextAttemptDateTime">> => string(),
-%%   <<"startDateTime">> => string(),
-%%   <<"steps">> => list(data_replication_initiation_step())
-%% }
--type data_replication_initiation() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_launch_configuration_templates_response() :: #{
-%%   <<"items">> => list(launch_configuration_template()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_launch_configuration_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_launch_action_request() :: #{
-%%   <<"actionId">> := string(),
-%%   <<"resourceId">> := string()
-%% }
--type delete_launch_action_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_launch_configuration_request() :: #{
-%%   <<"sourceServerID">> := string()
-%% }
--type get_launch_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => float()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_source_networks_request_filters() :: #{
-%%   <<"originAccountID">> => string(),
-%%   <<"originRegion">> => string(),
-%%   <<"sourceNetworkIDs">> => list(string())
-%% }
--type describe_source_networks_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_source_network_stack_request() :: #{
-%%   <<"cfnStackName">> := string(),
-%%   <<"sourceNetworkID">> := string()
-%% }
--type associate_source_network_stack_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% participating_server() :: #{
-%%   <<"launchActionsStatus">> => launch_actions_status(),
-%%   <<"launchStatus">> => string(),
-%%   <<"recoveryInstanceID">> => string(),
-%%   <<"sourceServerID">> => string()
-%% }
--type participating_server() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_replication_initiation_step() :: #{
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type data_replication_initiation_step() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_source_network_recovery_request() :: #{
-%%   <<"deployAsNew">> => [boolean()],
-%%   <<"sourceNetworks">> := list(start_source_network_recovery_request_network_entry()),
+%% source_server() :: #{
+%%   <<"agentVersion">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"dataReplicationInfo">> => data_replication_info(),
+%%   <<"lastLaunchResult">> => string(),
+%%   <<"lifeCycle">> => life_cycle(),
+%%   <<"recoveryInstanceId">> => string(),
+%%   <<"replicationDirection">> => string(),
+%%   <<"reversedDirectionSourceServerArn">> => string(),
+%%   <<"sourceCloudProperties">> => source_cloud_properties(),
+%%   <<"sourceNetworkID">> => string(),
+%%   <<"sourceProperties">> => source_properties(),
+%%   <<"sourceServerID">> => string(),
+%%   <<"stagingArea">> => staging_area(),
 %%   <<"tags">> => map()
 %% }
--type start_source_network_recovery_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_source_network_replication_response() :: #{
-%%   <<"sourceNetwork">> => source_network()
-%% }
--type stop_source_network_replication_response() :: #{binary() => any()}.
+-type source_server() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1091,43 +1279,58 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
+%% staging_source_server() :: #{
+%%   <<"arn">> => string(),
+%%   <<"hostname">> => string(),
+%%   <<"tags">> => map()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type staging_source_server() :: #{binary() => any()}.
 
 
 %% Example:
-%% recovery_instance_data_replication_initiation_step() :: #{
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
+%% start_failback_launch_request() :: #{
+%%   <<"recoveryInstanceIDs">> := list(string()),
+%%   <<"tags">> => map()
 %% }
--type recovery_instance_data_replication_initiation_step() :: #{binary() => any()}.
+-type start_failback_launch_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% life_cycle_last_launch_initiated() :: #{
-%%   <<"apiCallDateTime">> => string(),
-%%   <<"jobID">> => string(),
-%%   <<"type">> => string()
+%% start_failback_launch_response() :: #{
+%%   <<"job">> => job()
 %% }
--type life_cycle_last_launch_initiated() :: #{binary() => any()}.
+-type start_failback_launch_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_launch_actions_response() :: #{
-%%   <<"items">> => list(launch_action()),
-%%   <<"nextToken">> => string()
+%% start_recovery_request() :: #{
+%%   <<"isDrill">> => [boolean()],
+%%   <<"sourceServers">> := list(start_recovery_request_source_server()),
+%%   <<"tags">> => map()
 %% }
--type list_launch_actions_response() :: #{binary() => any()}.
+-type start_recovery_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% stop_replication_response() :: #{
-%%   <<"sourceServer">> => source_server()
+%% start_recovery_request_source_server() :: #{
+%%   <<"recoverySnapshotID">> => string(),
+%%   <<"sourceServerID">> => string()
 %% }
--type stop_replication_response() :: #{binary() => any()}.
+-type start_recovery_request_source_server() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_recovery_response() :: #{
+%%   <<"job">> => job()
+%% }
+-type start_recovery_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_replication_request() :: #{
+%%   <<"sourceServerID">> := string()
+%% }
+-type start_replication_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1138,10 +1341,34 @@
 
 
 %% Example:
-%% delete_job_request() :: #{
-%%   <<"jobID">> := string()
+%% start_source_network_recovery_request() :: #{
+%%   <<"deployAsNew">> => [boolean()],
+%%   <<"sourceNetworks">> := list(start_source_network_recovery_request_network_entry()),
+%%   <<"tags">> => map()
 %% }
--type delete_job_request() :: #{binary() => any()}.
+-type start_source_network_recovery_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_source_network_recovery_request_network_entry() :: #{
+%%   <<"cfnStackName">> => string(),
+%%   <<"sourceNetworkID">> => string()
+%% }
+-type start_source_network_recovery_request_network_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_source_network_recovery_response() :: #{
+%%   <<"job">> => job()
+%% }
+-type start_source_network_recovery_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_source_network_replication_request() :: #{
+%%   <<"sourceNetworkID">> := string()
+%% }
+-type start_source_network_replication_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1152,111 +1379,59 @@
 
 
 %% Example:
-%% get_failback_replication_configuration_response() :: #{
-%%   <<"bandwidthThrottling">> => float(),
-%%   <<"internetProtocol">> => string(),
-%%   <<"name">> => string(),
-%%   <<"recoveryInstanceID">> := string(),
-%%   <<"usePrivateIP">> => [boolean()]
-%% }
--type get_failback_replication_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_jobs_response() :: #{
-%%   <<"items">> => list(job()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disk() :: #{
-%%   <<"bytes">> => float(),
-%%   <<"deviceName">> => string()
-%% }
--type disk() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_launch_configuration_request() :: #{
-%%   <<"copyPrivateIp">> => [boolean()],
-%%   <<"copyTags">> => [boolean()],
-%%   <<"launchDisposition">> => string(),
-%%   <<"launchIntoInstanceProperties">> => launch_into_instance_properties(),
-%%   <<"licensing">> => licensing(),
-%%   <<"name">> => string(),
-%%   <<"postLaunchEnabled">> => [boolean()],
-%%   <<"sourceServerID">> := string(),
-%%   <<"targetInstanceTypeRightSizingMethod">> => string()
-%% }
--type update_launch_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% delete_replication_configuration_template_request() :: #{
-%%   <<"replicationConfigurationTemplateID">> := string()
-%% }
--type delete_replication_configuration_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% job() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationDateTime">> => string(),
-%%   <<"endDateTime">> => string(),
-%%   <<"initiatedBy">> => string(),
-%%   <<"jobID">> => string(),
-%%   <<"participatingResources">> => list(participating_resource()),
-%%   <<"participatingServers">> => list(participating_server()),
-%%   <<"status">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type job() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_failback_replication_configuration_request() :: #{
+%% stop_failback_request() :: #{
 %%   <<"recoveryInstanceID">> := string()
 %% }
--type get_failback_replication_configuration_request() :: #{binary() => any()}.
+-type stop_failback_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% recovery_instance() :: #{
-%%   <<"agentVersion">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"dataReplicationInfo">> => recovery_instance_data_replication_info(),
-%%   <<"ec2InstanceID">> => string(),
-%%   <<"ec2InstanceState">> => string(),
-%%   <<"failback">> => recovery_instance_failback(),
-%%   <<"isDrill">> => [boolean()],
-%%   <<"jobID">> => string(),
-%%   <<"originAvailabilityZone">> => string(),
-%%   <<"originEnvironment">> => string(),
-%%   <<"pointInTimeSnapshotDateTime">> => string(),
-%%   <<"recoveryInstanceID">> => string(),
-%%   <<"recoveryInstanceProperties">> => recovery_instance_properties(),
-%%   <<"sourceOutpostArn">> => string(),
-%%   <<"sourceServerID">> => string(),
-%%   <<"tags">> => map()
+%% stop_replication_request() :: #{
+%%   <<"sourceServerID">> := string()
 %% }
--type recovery_instance() :: #{binary() => any()}.
+-type stop_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_replication_response() :: #{
+%%   <<"sourceServer">> => source_server()
+%% }
+-type stop_replication_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_source_network_replication_request() :: #{
+%%   <<"sourceNetworkID">> := string()
+%% }
+-type stop_source_network_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_source_network_replication_response() :: #{
+%%   <<"sourceNetwork">> => source_network()
+%% }
+-type stop_source_network_replication_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_recovery_instances_request() :: #{
+%%   <<"recoveryInstanceIDs">> := list(string())
+%% }
+-type terminate_recovery_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_recovery_instances_response() :: #{
+%%   <<"job">> => job()
+%% }
+-type terminate_recovery_instances_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1270,91 +1445,68 @@
 
 
 %% Example:
-%% launch_into_instance_properties() :: #{
-%%   <<"launchIntoEC2InstanceID">> => string()
+%% uninitialized_account_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
 %% }
--type launch_into_instance_properties() :: #{binary() => any()}.
+-type uninitialized_account_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_failback_launch_request() :: #{
-%%   <<"recoveryInstanceIDs">> := list(string()),
-%%   <<"tags">> => map()
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type start_failback_launch_request() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_recovery_response() :: #{
-%%   <<"job">> => job()
+%% update_failback_replication_configuration_request() :: #{
+%%   <<"bandwidthThrottling">> => float(),
+%%   <<"internetProtocol">> => string(),
+%%   <<"name">> => string(),
+%%   <<"recoveryInstanceID">> := string(),
+%%   <<"usePrivateIP">> => [boolean()]
 %% }
--type start_recovery_response() :: #{binary() => any()}.
+-type update_failback_replication_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_staging_accounts_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_staging_accounts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_log_event_data() :: #{
-%%   <<"attemptCount">> => float(),
-%%   <<"conversionProperties">> => conversion_properties(),
-%%   <<"conversionServerID">> => string(),
-%%   <<"eventResourceData">> => list(),
-%%   <<"maxAttemptsCount">> => float(),
-%%   <<"rawError">> => string(),
-%%   <<"sourceServerID">> => string(),
-%%   <<"targetInstanceID">> => string()
-%% }
--type job_log_event_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_jobs_request() :: #{
-%%   <<"filters">> => describe_jobs_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% launch_configuration() :: #{
+%% update_launch_configuration_request() :: #{
 %%   <<"copyPrivateIp">> => [boolean()],
 %%   <<"copyTags">> => [boolean()],
-%%   <<"ec2LaunchTemplateID">> => string(),
 %%   <<"launchDisposition">> => string(),
 %%   <<"launchIntoInstanceProperties">> => launch_into_instance_properties(),
 %%   <<"licensing">> => licensing(),
 %%   <<"name">> => string(),
 %%   <<"postLaunchEnabled">> => [boolean()],
-%%   <<"sourceServerID">> => string(),
+%%   <<"recoveryMode">> => string(),
+%%   <<"sourceServerID">> := string(),
 %%   <<"targetInstanceTypeRightSizingMethod">> => string()
 %% }
--type launch_configuration() :: #{binary() => any()}.
+-type update_launch_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_extensible_source_servers_response() :: #{
-%%   <<"items">> => list(staging_source_server()),
-%%   <<"nextToken">> => string()
+%% update_launch_configuration_template_request() :: #{
+%%   <<"copyPrivateIp">> => [boolean()],
+%%   <<"copyTags">> => [boolean()],
+%%   <<"exportBucketArn">> => string(),
+%%   <<"launchConfigurationTemplateID">> := string(),
+%%   <<"launchDisposition">> => string(),
+%%   <<"launchIntoSourceInstance">> => [boolean()],
+%%   <<"licensing">> => licensing(),
+%%   <<"postLaunchEnabled">> => [boolean()],
+%%   <<"recoveryMode">> => string(),
+%%   <<"targetInstanceTypeRightSizingMethod">> => string()
 %% }
--type list_extensible_source_servers_response() :: #{binary() => any()}.
+-type update_launch_configuration_template_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% recovery_snapshot() :: #{
-%%   <<"ebsSnapshots">> => list(string()),
-%%   <<"expectedTimestamp">> => string(),
-%%   <<"snapshotID">> => string(),
-%%   <<"sourceServerID">> => string(),
-%%   <<"timestamp">> => string()
+%% update_launch_configuration_template_response() :: #{
+%%   <<"launchConfigurationTemplate">> => launch_configuration_template()
 %% }
--type recovery_snapshot() :: #{binary() => any()}.
+-type update_launch_configuration_template_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1382,553 +1534,406 @@
 
 
 %% Example:
-%% source_network_data() :: #{
-%%   <<"sourceNetworkID">> => string(),
-%%   <<"sourceVpc">> => string(),
-%%   <<"stackName">> => string(),
-%%   <<"targetVpc">> => string()
-%% }
--type source_network_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_server() :: #{
-%%   <<"agentVersion">> => string(),
+%% update_replication_configuration_template_request() :: #{
 %%   <<"arn">> => string(),
-%%   <<"dataReplicationInfo">> => data_replication_info(),
-%%   <<"lastLaunchResult">> => string(),
-%%   <<"lifeCycle">> => life_cycle(),
-%%   <<"recoveryInstanceId">> => string(),
-%%   <<"replicationDirection">> => string(),
-%%   <<"reversedDirectionSourceServerArn">> => string(),
-%%   <<"sourceCloudProperties">> => source_cloud_properties(),
-%%   <<"sourceNetworkID">> => string(),
-%%   <<"sourceProperties">> => source_properties(),
-%%   <<"sourceServerID">> => string(),
-%%   <<"stagingArea">> => staging_area(),
-%%   <<"tags">> => map()
+%%   <<"associateDefaultSecurityGroup">> => [boolean()],
+%%   <<"autoReplicateNewDisks">> => [boolean()],
+%%   <<"bandwidthThrottling">> => float(),
+%%   <<"createPublicIP">> => [boolean()],
+%%   <<"dataPlaneRouting">> => string(),
+%%   <<"defaultLargeStagingDiskType">> => string(),
+%%   <<"ebsEncryption">> => string(),
+%%   <<"ebsEncryptionKeyArn">> => string(),
+%%   <<"internetProtocol">> => string(),
+%%   <<"pitPolicy">> => list(p_i_t_policy_rule()),
+%%   <<"replicationConfigurationTemplateID">> := string(),
+%%   <<"replicationServerInstanceType">> => string(),
+%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
+%%   <<"stagingAreaSubnetId">> => string(),
+%%   <<"stagingAreaTags">> => map(),
+%%   <<"useDedicatedReplicationServer">> => [boolean()]
 %% }
--type source_server() :: #{binary() => any()}.
-
-%% Example:
-%% delete_source_network_response() :: #{}
--type delete_source_network_response() :: #{}.
+-type update_replication_configuration_template_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% stop_source_network_replication_request() :: #{
-%%   <<"sourceNetworkID">> := string()
+%% validation_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
 %% }
--type stop_source_network_replication_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_source_network_recovery_response() :: #{
-%%   <<"job">> => job()
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
 %% }
--type start_source_network_recovery_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% life_cycle_last_launch() :: #{
-%%   <<"initiated">> => life_cycle_last_launch_initiated(),
-%%   <<"status">> => string()
-%% }
--type life_cycle_last_launch() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_recovery_instances_request() :: #{
-%%   <<"filters">> => describe_recovery_instances_request_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_recovery_instances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_source_network_stack_response() :: #{
-%%   <<"job">> => job()
-%% }
--type associate_source_network_stack_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_launch_configuration_template_response() :: #{}
--type delete_launch_configuration_template_response() :: #{}.
-
-%% Example:
-%% delete_job_response() :: #{}
--type delete_job_response() :: #{}.
-
-
-%% Example:
-%% describe_replication_configuration_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"replicationConfigurationTemplateIDs">> => list(string())
-%% }
--type describe_replication_configuration_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% o_s() :: #{
-%%   <<"fullString">> => string()
-%% }
--type o_s() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_extended_source_server_response() :: #{
-%%   <<"sourceServer">> => source_server()
-%% }
--type create_extended_source_server_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_job_log_items_response() :: #{
-%%   <<"items">> => list(job_log()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_job_log_items_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_instance_data_replication_error() :: #{
-%%   <<"error">> => string(),
-%%   <<"rawError">> => string()
-%% }
--type recovery_instance_data_replication_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_launch_configuration_template_request() :: #{
-%%   <<"copyPrivateIp">> => [boolean()],
-%%   <<"copyTags">> => [boolean()],
-%%   <<"exportBucketArn">> => string(),
-%%   <<"launchConfigurationTemplateID">> := string(),
-%%   <<"launchDisposition">> => string(),
-%%   <<"launchIntoSourceInstance">> => [boolean()],
-%%   <<"licensing">> => licensing(),
-%%   <<"postLaunchEnabled">> => [boolean()],
-%%   <<"targetInstanceTypeRightSizingMethod">> => string()
-%% }
--type update_launch_configuration_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_launch_configuration_template_response() :: #{
-%%   <<"launchConfigurationTemplate">> => launch_configuration_template()
-%% }
--type create_launch_configuration_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_extended_source_server_request() :: #{
-%%   <<"sourceServerArn">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_extended_source_server_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_recovery_snapshots_response() :: #{
-%%   <<"items">> => list(recovery_snapshot()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_recovery_snapshots_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_log() :: #{
-%%   <<"event">> => string(),
-%%   <<"eventData">> => job_log_event_data(),
-%%   <<"logDateTime">> => string()
-%% }
--type job_log() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_recovery_snapshots_request_filters() :: #{
-%%   <<"fromDateTime">> => string(),
-%%   <<"toDateTime">> => string()
-%% }
--type describe_recovery_snapshots_request_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_source_network_response() :: #{
-%%   <<"sourceNetworkID">> => string()
-%% }
--type create_source_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_launch_configuration_template_request() :: #{
-%%   <<"launchConfigurationTemplateID">> := string()
-%% }
--type delete_launch_configuration_template_request() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type associate_source_network_stack_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_extended_source_server_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type create_launch_configuration_template_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    uninitialized_account_exception() | 
-    service_quota_exceeded_exception().
-
--type create_replication_configuration_template_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    uninitialized_account_exception() | 
-    service_quota_exceeded_exception().
-
--type create_source_network_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
-    uninitialized_account_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type create_launch_configuration_template_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type create_replication_configuration_template_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type create_source_network_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_job_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_launch_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type delete_launch_configuration_template_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_recovery_instance_errors() ::
-    throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
-    conflict_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_replication_configuration_template_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_source_network_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_source_server_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type describe_job_log_items_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    uninitialized_account_exception().
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
 
 -type describe_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    uninitialized_account_exception().
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
 
 -type describe_launch_configuration_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_recovery_instances_errors() ::
+    uninitialized_account_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
     internal_server_exception() | 
-    uninitialized_account_exception().
+    access_denied_exception().
 
 -type describe_recovery_snapshots_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    uninitialized_account_exception().
+    access_denied_exception().
 
 -type describe_replication_configuration_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type describe_source_networks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    uninitialized_account_exception().
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
 
 -type describe_source_servers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    uninitialized_account_exception().
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
 
 -type disconnect_recovery_instance_errors() ::
-    throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disconnect_source_server_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type export_source_network_cfn_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_failback_replication_configuration_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
-    resource_not_found_exception().
-
--type get_launch_configuration_errors() ::
     throttling_exception() | 
-    internal_server_exception() | 
-    uninitialized_account_exception() | 
-    resource_not_found_exception().
-
--type get_replication_configuration_errors() ::
-    throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    uninitialized_account_exception() | 
-    resource_not_found_exception().
-
--type initialize_service_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception().
 
--type list_extensible_source_servers_errors() ::
+-type get_launch_configuration_errors() ::
+    uninitialized_account_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type get_replication_configuration_errors() ::
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    uninitialized_account_exception().
+    access_denied_exception().
+
+-type initialize_service_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_extensible_source_servers_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_launch_actions_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_staging_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    uninitialized_account_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_launch_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type retry_data_replication_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type reverse_replication_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_failback_launch_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_recovery_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_replication_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_source_network_recovery_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_source_network_replication_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type stop_failback_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type stop_replication_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type stop_source_network_replication_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type terminate_recovery_instances_errors() ::
-    throttling_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_failback_replication_configuration_errors() ::
-    throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_launch_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_launch_configuration_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_replication_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_replication_configuration_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     uninitialized_account_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

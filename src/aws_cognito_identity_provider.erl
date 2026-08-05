@@ -86,6 +86,8 @@
          admin_get_device/3,
          admin_get_user/2,
          admin_get_user/3,
+         admin_get_user_auth_factors/2,
+         admin_get_user_auth_factors/3,
          admin_initiate_auth/2,
          admin_initiate_auth/3,
          admin_link_provider_for_user/2,
@@ -321,360 +323,95 @@
 
 
 %% Example:
-%% create_user_pool_domain_response() :: #{
-%%   <<"CloudFrontDomain">> => string(),
-%%   <<"ManagedLoginVersion">> => integer(),
-%%   <<"Routing">> => routing_type()
-%% }
--type create_user_pool_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_web_authn_credential_response() :: #{
-
-%% }
--type delete_web_authn_credential_response() :: #{binary() => any()}.
-
-%% Example:
-%% authentication_result_type() :: #{
-%%   <<"AccessToken">> => string(),
-%%   <<"ExpiresIn">> => integer(),
-%%   <<"IdToken">> => string(),
-%%   <<"NewDeviceMetadata">> => new_device_metadata_type(),
-%%   <<"RefreshToken">> => string(),
-%%   <<"TokenType">> => string()
-%% }
--type authentication_result_type() :: #{binary() => any()}.
-
-%% Example:
-%% verify_user_attribute_response() :: #{
-
-%% }
--type verify_user_attribute_response() :: #{binary() => any()}.
-
-%% Example:
-%% admin_update_auth_event_feedback_response() :: #{
-
-%% }
--type admin_update_auth_event_feedback_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_terms_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Terms">> => list(terms_description_type())
-%% }
--type list_terms_response() :: #{binary() => any()}.
-
-%% Example:
-%% analytics_metadata_type() :: #{
-%%   <<"AnalyticsEndpointId">> => string()
-%% }
--type analytics_metadata_type() :: #{binary() => any()}.
-
-%% Example:
-%% user_import_in_progress_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type user_import_in_progress_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% initiate_auth_request() :: #{
-%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
-%%   <<"AuthFlow">> := list(any()),
-%%   <<"AuthParameters">> => map(),
+%% account_recovery_setting_type() :: #{
+%%   <<"RecoveryMechanisms">> => list(recovery_option_type())
+%% }
+-type account_recovery_setting_type() :: #{binary() => any()}.
+
+%% Example:
+%% account_takeover_action_type() :: #{
+%%   <<"EventAction">> => list(any()),
+%%   <<"Notify">> => boolean()
+%% }
+-type account_takeover_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% account_takeover_actions_type() :: #{
+%%   <<"HighAction">> => account_takeover_action_type(),
+%%   <<"LowAction">> => account_takeover_action_type(),
+%%   <<"MediumAction">> => account_takeover_action_type()
+%% }
+-type account_takeover_actions_type() :: #{binary() => any()}.
+
+%% Example:
+%% account_takeover_risk_configuration_type() :: #{
+%%   <<"Actions">> => account_takeover_actions_type(),
+%%   <<"NotifyConfiguration">> => notify_configuration_type()
+%% }
+-type account_takeover_risk_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% add_custom_attributes_request() :: #{
+%%   <<"CustomAttributes">> := list(schema_attribute_type()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type add_custom_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_custom_attributes_response() :: #{
+
+%% }
+-type add_custom_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% add_user_pool_client_secret_request() :: #{
 %%   <<"ClientId">> := string(),
-%%   <<"ClientMetadata">> => map(),
-%%   <<"Session">> => string(),
-%%   <<"UserContextData">> => user_context_data_type()
-%% }
--type initiate_auth_request() :: #{binary() => any()}.
-
-%% Example:
-%% complete_web_authn_registration_request() :: #{
-%%   <<"AccessToken">> := string(),
-%%   <<"Credential">> := any()
-%% }
--type complete_web_authn_registration_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_update_device_status_response() :: #{
-
-%% }
--type admin_update_device_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% set_user_mfa_preference_response() :: #{
-
-%% }
--type set_user_mfa_preference_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_pool_replica_request() :: #{
-%%   <<"RegionName">> := string(),
+%%   <<"ClientSecret">> => string(),
 %%   <<"UserPoolId">> := string()
 %% }
--type delete_user_pool_replica_request() :: #{binary() => any()}.
+-type add_user_pool_client_secret_request() :: #{binary() => any()}.
 
 %% Example:
-%% web_authn_challenge_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% add_user_pool_client_secret_response() :: #{
+%%   <<"ClientSecretDescriptor">> => client_secret_descriptor_type()
 %% }
--type web_authn_challenge_not_found_exception() :: #{binary() => any()}.
+-type add_user_pool_client_secret_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_devices_request() :: #{
-%%   <<"AccessToken">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"PaginationToken">> => string()
-%% }
--type list_devices_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_pool_request() :: #{
-%%   <<"AccountRecoverySetting">> => account_recovery_setting_type(),
-%%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
-%%   <<"AutoVerifiedAttributes">> => list(list(any())()),
-%%   <<"DeletionProtection">> => list(any()),
-%%   <<"DeviceConfiguration">> => device_configuration_type(),
-%%   <<"EmailConfiguration">> => email_configuration_type(),
-%%   <<"EmailVerificationMessage">> => string(),
-%%   <<"EmailVerificationSubject">> => string(),
-%%   <<"IssuerConfiguration">> => issuer_configuration_type(),
-%%   <<"KeyConfiguration">> => key_configuration_type(),
-%%   <<"LambdaConfig">> => lambda_config_type(),
-%%   <<"MfaConfiguration">> => list(any()),
-%%   <<"Policies">> => user_pool_policy_type(),
-%%   <<"PoolName">> => string(),
-%%   <<"SmsAuthenticationMessage">> => string(),
-%%   <<"SmsConfiguration">> => sms_configuration_type(),
-%%   <<"SmsVerificationMessage">> => string(),
-%%   <<"UserAttributeUpdateSettings">> => user_attribute_update_settings_type(),
-%%   <<"UserPoolAddOns">> => user_pool_add_ons_type(),
+%% admin_add_user_to_group_request() :: #{
+%%   <<"GroupName">> := string(),
 %%   <<"UserPoolId">> := string(),
-%%   <<"UserPoolTags">> => map(),
-%%   <<"UserPoolTier">> => list(any()),
-%%   <<"VerificationMessageTemplate">> => verification_message_template_type()
+%%   <<"Username">> := string()
 %% }
--type update_user_pool_request() :: #{binary() => any()}.
+-type admin_add_user_to_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_csv_header_request() :: #{
-%%   <<"UserPoolId">> := string()
+%% admin_confirm_sign_up_request() :: #{
+%%   <<"ClientMetadata">> => map(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
 %% }
--type get_csv_header_request() :: #{binary() => any()}.
+-type admin_confirm_sign_up_request() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_token_type_exception() :: #{
-%%   <<"message">> => string()
+%% admin_confirm_sign_up_response() :: #{
+
 %% }
--type unsupported_token_type_exception() :: #{binary() => any()}.
+-type admin_confirm_sign_up_response() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_failed_attempts_exception() :: #{
-%%   <<"message">> => string()
+%% admin_create_user_config_type() :: #{
+%%   <<"AllowAdminCreateUserOnly">> => boolean(),
+%%   <<"InviteMessageTemplate">> => message_template_type(),
+%%   <<"UnusedAccountValidityDays">> => integer()
 %% }
--type too_many_failed_attempts_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_attributes_request() :: #{
-%%   <<"AccessToken">> := string(),
-%%   <<"UserAttributeNames">> := list(string())
-%% }
--type delete_user_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_attributes_response() :: #{
-%%   <<"CodeDeliveryDetailsList">> => list(code_delivery_details_type())
-%% }
--type update_user_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% event_context_data_type() :: #{
-%%   <<"City">> => string(),
-%%   <<"Country">> => string(),
-%%   <<"DeviceName">> => string(),
-%%   <<"IpAddress">> => string(),
-%%   <<"Timezone">> => string()
-%% }
--type event_context_data_type() :: #{binary() => any()}.
-
-%% Example:
-%% describe_managed_login_branding_request() :: #{
-%%   <<"ManagedLoginBrandingId">> := string(),
-%%   <<"ReturnMergedResources">> => boolean(),
-%%   <<"UserPoolId">> := string()
-%% }
--type describe_managed_login_branding_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_configuration_type() :: #{
-%%   <<"BucketArn">> => string()
-%% }
--type s3_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% user_not_confirmed_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type user_not_confirmed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_identity_providers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type list_identity_providers_request() :: #{binary() => any()}.
-
-%% Example:
-%% user_pool_client_description() :: #{
-%%   <<"ClientId">> => string(),
-%%   <<"ClientName">> => string(),
-%%   <<"UserPoolId">> => string()
-%% }
--type user_pool_client_description() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_operation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% advanced_security_additional_flows_type() :: #{
-%%   <<"CustomAuthMode">> => list(any())
-%% }
--type advanced_security_additional_flows_type() :: #{binary() => any()}.
-
-%% Example:
-%% resource_server_scope_type() :: #{
-%%   <<"ScopeDescription">> => string(),
-%%   <<"ScopeName">> => string()
-%% }
--type resource_server_scope_type() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_email_role_access_policy_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_email_role_access_policy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_csv_header_response() :: #{
-%%   <<"CSVHeader">> => list(string()),
-%%   <<"UserPoolId">> => string()
-%% }
--type get_csv_header_response() :: #{binary() => any()}.
-
-%% Example:
-%% set_log_delivery_configuration_request() :: #{
-%%   <<"LogConfigurations">> := list(log_configuration_type()),
-%%   <<"UserPoolId">> := string()
-%% }
--type set_log_delivery_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_identity_provider_response() :: #{
-%%   <<"IdentityProvider">> => identity_provider_type()
-%% }
--type update_identity_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_identity_provider_request() :: #{
-%%   <<"ProviderName">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type describe_identity_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% limit_definition_type() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"LimitClass">> => list(any())
-%% }
--type limit_definition_type() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_user_state_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_user_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% password_history_policy_violation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type password_history_policy_violation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_sign_up_response() :: #{
-%%   <<"Session">> => string()
-%% }
--type confirm_sign_up_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_auth_factors_response() :: #{
-%%   <<"ConfiguredUserAuthFactors">> => list(list(any())()),
-%%   <<"PreferredMfaSetting">> => string(),
-%%   <<"UserMFASettingList">> => list(string()),
-%%   <<"Username">> => string()
-%% }
--type get_user_auth_factors_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_pool_domain_request() :: #{
-%%   <<"CustomDomainConfig">> => custom_domain_config_type(),
-%%   <<"Domain">> := string(),
-%%   <<"ManagedLoginVersion">> => integer(),
-%%   <<"Routing">> => routing_type(),
-%%   <<"UserPoolId">> := string()
-%% }
--type create_user_pool_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_respond_to_auth_challenge_response() :: #{
-%%   <<"AuthenticationResult">> => authentication_result_type(),
-%%   <<"ChallengeName">> => list(any()),
-%%   <<"ChallengeParameters">> => map(),
-%%   <<"Session">> => string()
-%% }
--type admin_respond_to_auth_challenge_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_terms_request() :: #{
-%%   <<"Enforcement">> => list(any()),
-%%   <<"Links">> => map(),
-%%   <<"TermsId">> := string(),
-%%   <<"TermsName">> => string(),
-%%   <<"TermsSource">> => list(any()),
-%%   <<"UserPoolId">> := string()
-%% }
--type update_terms_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_pool_domain_response() :: #{
-%%   <<"CloudFrontDomain">> => string(),
-%%   <<"ManagedLoginVersion">> => integer(),
-%%   <<"Routing">> => routing_type()
-%% }
--type update_user_pool_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
+-type admin_create_user_config_type() :: #{binary() => any()}.
 
 %% Example:
 %% admin_create_user_request() :: #{
@@ -691,38 +428,108 @@
 -type admin_create_user_request() :: #{binary() => any()}.
 
 %% Example:
-%% admin_set_user_settings_response() :: #{
-
+%% admin_create_user_response() :: #{
+%%   <<"User">> => user_type()
 %% }
--type admin_set_user_settings_response() :: #{binary() => any()}.
+-type admin_create_user_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_managed_login_branding_response() :: #{
-%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
+%% admin_delete_user_attributes_request() :: #{
+%%   <<"UserAttributeNames">> := list(string()),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
 %% }
--type describe_managed_login_branding_response() :: #{binary() => any()}.
+-type admin_delete_user_attributes_request() :: #{binary() => any()}.
 
 %% Example:
-%% admin_link_provider_for_user_request() :: #{
-%%   <<"DestinationUser">> := provider_user_identifier_type(),
-%%   <<"SourceUser">> := provider_user_identifier_type(),
+%% admin_delete_user_attributes_response() :: #{
+
+%% }
+-type admin_delete_user_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_delete_user_request() :: #{
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_disable_provider_for_user_request() :: #{
+%%   <<"User">> := provider_user_identifier_type(),
 %%   <<"UserPoolId">> := string()
 %% }
--type admin_link_provider_for_user_request() :: #{binary() => any()}.
+-type admin_disable_provider_for_user_request() :: #{binary() => any()}.
 
 %% Example:
-%% issuer_configuration_type() :: #{
-%%   <<"Type">> => list(any())
+%% admin_disable_provider_for_user_response() :: #{
+
 %% }
--type issuer_configuration_type() :: #{binary() => any()}.
+-type admin_disable_provider_for_user_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_user_attributes_request() :: #{
-%%   <<"AccessToken">> := string(),
-%%   <<"ClientMetadata">> => map(),
-%%   <<"UserAttributes">> := list(attribute_type())
+%% admin_disable_user_request() :: #{
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
 %% }
--type update_user_attributes_request() :: #{binary() => any()}.
+-type admin_disable_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_disable_user_response() :: #{
+
+%% }
+-type admin_disable_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_enable_user_request() :: #{
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_enable_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_enable_user_response() :: #{
+
+%% }
+-type admin_enable_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_forget_device_request() :: #{
+%%   <<"DeviceKey">> := string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_forget_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_get_device_request() :: #{
+%%   <<"DeviceKey">> := string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_get_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_get_device_response() :: #{
+%%   <<"Device">> => device_type()
+%% }
+-type admin_get_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_get_user_auth_factors_request() :: #{
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_get_user_auth_factors_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_get_user_auth_factors_response() :: #{
+%%   <<"ConfiguredUserAuthFactors">> => list(list(any())()),
+%%   <<"PreferredMfaSetting">> => string(),
+%%   <<"UserMFASettingList">> => list(string()),
+%%   <<"Username">> => string()
+%% }
+-type admin_get_user_auth_factors_response() :: #{binary() => any()}.
 
 %% Example:
 %% admin_get_user_request() :: #{
@@ -730,469 +537,6 @@
 %%   <<"Username">> := string()
 %% }
 -type admin_get_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% account_takeover_risk_configuration_type() :: #{
-%%   <<"Actions">> => account_takeover_actions_type(),
-%%   <<"NotifyConfiguration">> => notify_configuration_type()
-%% }
--type account_takeover_risk_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% sms_mfa_config_type() :: #{
-%%   <<"SmsAuthenticationMessage">> => string(),
-%%   <<"SmsConfiguration">> => sms_configuration_type()
-%% }
--type sms_mfa_config_type() :: #{binary() => any()}.
-
-%% Example:
-%% device_secret_verifier_config_type() :: #{
-%%   <<"PasswordVerifier">> => string(),
-%%   <<"Salt">> => string()
-%% }
--type device_secret_verifier_config_type() :: #{binary() => any()}.
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-%% Example:
-%% message_template_type() :: #{
-%%   <<"EmailMessage">> => string(),
-%%   <<"EmailSubject">> => string(),
-%%   <<"SMSMessage">> => string()
-%% }
--type message_template_type() :: #{binary() => any()}.
-
-%% Example:
-%% list_user_pools_request() :: #{
-%%   <<"MaxResults">> := integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_user_pools_request() :: #{binary() => any()}.
-
-%% Example:
-%% new_device_metadata_type() :: #{
-%%   <<"DeviceGroupKey">> => string(),
-%%   <<"DeviceKey">> => string()
-%% }
--type new_device_metadata_type() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_import_job_response() :: #{
-%%   <<"UserImportJob">> => user_import_job_type()
-%% }
--type describe_user_import_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% terms_type() :: #{
-%%   <<"ClientId">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Enforcement">> => list(any()),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Links">> => map(),
-%%   <<"TermsId">> => string(),
-%%   <<"TermsName">> => string(),
-%%   <<"TermsSource">> => list(any()),
-%%   <<"UserPoolId">> => string()
-%% }
--type terms_type() :: #{binary() => any()}.
-
-%% Example:
-%% associate_software_token_response() :: #{
-%%   <<"SecretCode">> => string(),
-%%   <<"Session">> => string()
-%% }
--type associate_software_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_web_authn_registration_request() :: #{
-%%   <<"AccessToken">> := string()
-%% }
--type start_web_authn_registration_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_identity_provider_response() :: #{
-%%   <<"IdentityProvider">> => identity_provider_type()
-%% }
--type create_identity_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_server_response() :: #{
-%%   <<"ResourceServer">> => resource_server_type()
-%% }
--type update_resource_server_response() :: #{binary() => any()}.
-
-%% Example:
-%% number_attribute_constraints_type() :: #{
-%%   <<"MaxValue">> => string(),
-%%   <<"MinValue">> => string()
-%% }
--type number_attribute_constraints_type() :: #{binary() => any()}.
-
-%% Example:
-%% web_authn_configuration_type() :: #{
-%%   <<"FactorConfiguration">> => list(any()),
-%%   <<"RelyingPartyId">> => string(),
-%%   <<"UserVerification">> => list(any())
-%% }
--type web_authn_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% admin_add_user_to_group_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_add_user_to_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% alias_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type alias_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% verify_software_token_response() :: #{
-%%   <<"Session">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type verify_software_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_pool_domain_response() :: #{
-
-%% }
--type delete_user_pool_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_response() :: #{
-%%   <<"MFAOptions">> => list(mfa_option_type()),
-%%   <<"PreferredMfaSetting">> => string(),
-%%   <<"UserAttributes">> => list(attribute_type()),
-%%   <<"UserMFASettingList">> => list(string()),
-%%   <<"Username">> => string()
-%% }
--type get_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_in_group_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type list_users_in_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_user_pool_replicas_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type list_user_pool_replicas_request() :: #{binary() => any()}.
-
-%% Example:
-%% user_type() :: #{
-%%   <<"Attributes">> => list(attribute_type()),
-%%   <<"Enabled">> => boolean(),
-%%   <<"MFAOptions">> => list(mfa_option_type()),
-%%   <<"UserCreateDate">> => non_neg_integer(),
-%%   <<"UserLastModifiedDate">> => non_neg_integer(),
-%%   <<"UserStatus">> => list(any()),
-%%   <<"Username">> => string()
-%% }
--type user_type() :: #{binary() => any()}.
-
-%% Example:
-%% list_user_pools_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UserPools">> => list(user_pool_description_type())
-%% }
--type list_user_pools_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_pool_response() :: #{
-%%   <<"UserPool">> => user_pool_type()
-%% }
--type create_user_pool_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_risk_configuration_request() :: #{
-%%   <<"ClientId">> => string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type describe_risk_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_identity_provider_response() :: #{
-%%   <<"IdentityProvider">> => identity_provider_type()
-%% }
--type describe_identity_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_identity_provider_request() :: #{
-%%   <<"ProviderName">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type delete_identity_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% compromised_credentials_risk_configuration_type() :: #{
-%%   <<"Actions">> => compromised_credentials_actions_type(),
-%%   <<"EventFilter">> => list(list(any())())
-%% }
--type compromised_credentials_risk_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_pool_domain_request() :: #{
-%%   <<"Domain">> := string()
-%% }
--type describe_user_pool_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_provisioned_limit_response() :: #{
-%%   <<"Limit">> => limit_type()
-%% }
--type get_provisioned_limit_response() :: #{binary() => any()}.
-
-%% Example:
-%% compromised_credentials_actions_type() :: #{
-%%   <<"EventAction">> => list(any())
-%% }
--type compromised_credentials_actions_type() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_server_request() :: #{
-%%   <<"Identifier">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Scopes">> => list(resource_server_scope_type()),
-%%   <<"UserPoolId">> := string()
-%% }
--type update_resource_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% user_pool_description_type() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LambdaConfig">> => lambda_config_type(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ReplicaRegions">> => list(string()),
-%%   <<"Status">> => list(any())
-%% }
--type user_pool_description_type() :: #{binary() => any()}.
-
-%% Example:
-%% verify_software_token_request() :: #{
-%%   <<"AccessToken">> => string(),
-%%   <<"FriendlyDeviceName">> => string(),
-%%   <<"Session">> => string(),
-%%   <<"UserCode">> := string()
-%% }
--type verify_software_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_server_response() :: #{
-%%   <<"ResourceServer">> => resource_server_type()
-%% }
--type describe_resource_server_response() :: #{binary() => any()}.
-
-%% Example:
-%% group_type() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"GroupName">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Precedence">> => integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"UserPoolId">> => string()
-%% }
--type group_type() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_pool_mfa_config_request() :: #{
-%%   <<"UserPoolId">> := string()
-%% }
--type get_user_pool_mfa_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% change_password_response() :: #{
-
-%% }
--type change_password_response() :: #{binary() => any()}.
-
-%% Example:
-%% admin_create_user_response() :: #{
-%%   <<"User">> => user_type()
-%% }
--type admin_create_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% user_pool_replica_type() :: #{
-%%   <<"RegionName">> => string(),
-%%   <<"Role">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"UserPoolArn">> => string()
-%% }
--type user_pool_replica_type() :: #{binary() => any()}.
-
-%% Example:
-%% web_authn_relying_party_mismatch_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type web_authn_relying_party_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_server_request() :: #{
-%%   <<"Identifier">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type describe_resource_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% global_sign_out_request() :: #{
-%%   <<"AccessToken">> := string()
-%% }
--type global_sign_out_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_attributes_response() :: #{
-
-%% }
--type delete_user_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_attribute_verification_code_request() :: #{
-%%   <<"AccessToken">> := string(),
-%%   <<"AttributeName">> := string(),
-%%   <<"ClientMetadata">> => map()
-%% }
--type get_user_attribute_verification_code_request() :: #{binary() => any()}.
-
-%% Example:
-%% refresh_token_reuse_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type refresh_token_reuse_exception() :: #{binary() => any()}.
-
-%% Example:
-%% user_attribute_update_settings_type() :: #{
-%%   <<"AttributesRequireVerificationBeforeUpdate">> => list(list(any())())
-%% }
--type user_attribute_update_settings_type() :: #{binary() => any()}.
-
-%% Example:
-%% software_token_mfa_settings_type() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"PreferredMfa">> => boolean()
-%% }
--type software_token_mfa_settings_type() :: #{binary() => any()}.
-
-%% Example:
-%% describe_managed_login_branding_by_client_request() :: #{
-%%   <<"ClientId">> := string(),
-%%   <<"ReturnMergedResources">> => boolean(),
-%%   <<"UserPoolId">> := string()
-%% }
--type describe_managed_login_branding_by_client_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_list_groups_for_user_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_list_groups_for_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_web_authn_registration_response() :: #{
-%%   <<"CredentialCreationOptions">> => any()
-%% }
--type start_web_authn_registration_response() :: #{binary() => any()}.
-
-%% Example:
-%% attribute_type() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type attribute_type() :: #{binary() => any()}.
-
-%% Example:
-%% user_pool_client_type() :: #{
-%%   <<"AccessTokenValidity">> => integer(),
-%%   <<"AllowedOAuthFlows">> => list(list(any())()),
-%%   <<"AllowedOAuthFlowsUserPoolClient">> => boolean(),
-%%   <<"AllowedOAuthScopes">> => list(string()),
-%%   <<"AnalyticsConfiguration">> => analytics_configuration_type(),
-%%   <<"AuthSessionValidity">> => integer(),
-%%   <<"CallbackURLs">> => list(string()),
-%%   <<"ClientId">> => string(),
-%%   <<"ClientName">> => string(),
-%%   <<"ClientSecret">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"DefaultRedirectURI">> => string(),
-%%   <<"EnablePropagateAdditionalUserContextData">> => boolean(),
-%%   <<"EnableTokenRevocation">> => boolean(),
-%%   <<"ExplicitAuthFlows">> => list(list(any())()),
-%%   <<"IdTokenValidity">> => integer(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"LogoutURLs">> => list(string()),
-%%   <<"PreventUserExistenceErrors">> => list(any()),
-%%   <<"ReadAttributes">> => list(string()),
-%%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
-%%   <<"RefreshTokenValidity">> => integer(),
-%%   <<"SupportedIdentityProviders">> => list(string()),
-%%   <<"TokenValidityUnits">> => token_validity_units_type(),
-%%   <<"UserPoolId">> => string(),
-%%   <<"WriteAttributes">> => list(string())
-%% }
--type user_pool_client_type() :: #{binary() => any()}.
-
-%% Example:
-%% admin_create_user_config_type() :: #{
-%%   <<"AllowAdminCreateUserOnly">> => boolean(),
-%%   <<"InviteMessageTemplate">> => message_template_type(),
-%%   <<"UnusedAccountValidityDays">> => integer()
-%% }
--type admin_create_user_config_type() :: #{binary() => any()}.
-
-%% Example:
-%% sign_in_policy_type() :: #{
-%%   <<"AllowedFirstAuthFactors">> => list(list(any())())
-%% }
--type sign_in_policy_type() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% set_user_pool_mfa_config_response() :: #{
-%%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
-%%   <<"MfaConfiguration">> => list(any()),
-%%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
-%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type(),
-%%   <<"WebAuthnConfiguration">> => web_authn_configuration_type()
-%% }
--type set_user_pool_mfa_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_provider_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type duplicate_provider_exception() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
 
 %% Example:
 %% admin_get_user_response() :: #{
@@ -1209,83 +553,209 @@
 -type admin_get_user_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_user_pool_client_secrets_response() :: #{
-%%   <<"ClientSecrets">> => list(client_secret_descriptor_type()),
+%% admin_initiate_auth_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"AuthFlow">> := list(any()),
+%%   <<"AuthParameters">> => map(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"ContextData">> => context_data_type(),
+%%   <<"Session">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type admin_initiate_auth_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_initiate_auth_response() :: #{
+%%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"AvailableChallenges">> => list(list(any())()),
+%%   <<"ChallengeName">> => list(any()),
+%%   <<"ChallengeParameters">> => map(),
+%%   <<"Session">> => string()
+%% }
+-type admin_initiate_auth_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_link_provider_for_user_request() :: #{
+%%   <<"DestinationUser">> := provider_user_identifier_type(),
+%%   <<"SourceUser">> := provider_user_identifier_type(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type admin_link_provider_for_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_link_provider_for_user_response() :: #{
+
+%% }
+-type admin_link_provider_for_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_list_devices_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"PaginationToken">> => string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_list_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_list_devices_response() :: #{
+%%   <<"Devices">> => list(device_type()),
+%%   <<"PaginationToken">> => string()
+%% }
+-type admin_list_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_list_groups_for_user_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_list_groups_for_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_list_groups_for_user_response() :: #{
+%%   <<"Groups">> => list(group_type()),
 %%   <<"NextToken">> => string()
 %% }
--type list_user_pool_client_secrets_response() :: #{binary() => any()}.
+-type admin_list_groups_for_user_response() :: #{binary() => any()}.
 
 %% Example:
-%% confirm_device_request() :: #{
-%%   <<"AccessToken">> := string(),
-%%   <<"DeviceKey">> := string(),
-%%   <<"DeviceName">> => string(),
-%%   <<"DeviceSecretVerifierConfig">> => device_secret_verifier_config_type()
+%% admin_list_user_auth_events_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
 %% }
--type confirm_device_request() :: #{binary() => any()}.
+-type admin_list_user_auth_events_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_user_import_job_response() :: #{
-%%   <<"UserImportJob">> => user_import_job_type()
+%% admin_list_user_auth_events_response() :: #{
+%%   <<"AuthEvents">> => list(auth_event_type()),
+%%   <<"NextToken">> => string()
 %% }
--type create_user_import_job_response() :: #{binary() => any()}.
+-type admin_list_user_auth_events_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_user_pool_domain_request() :: #{
-%%   <<"CustomDomainConfig">> => custom_domain_config_type(),
-%%   <<"Domain">> := string(),
-%%   <<"ManagedLoginVersion">> => integer(),
-%%   <<"Routing">> => routing_type(),
-%%   <<"UserPoolId">> := string()
-%% }
--type update_user_pool_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% terms_description_type() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Enforcement">> => list(any()),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"TermsId">> => string(),
-%%   <<"TermsName">> => string()
-%% }
--type terms_description_type() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_pool_client_secret_request() :: #{
-%%   <<"ClientId">> := string(),
-%%   <<"ClientSecretId">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type delete_user_pool_client_secret_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_group_request() :: #{
-%%   <<"Description">> => string(),
+%% admin_remove_user_from_group_request() :: #{
 %%   <<"GroupName">> := string(),
-%%   <<"Precedence">> => integer(),
-%%   <<"RoleArn">> => string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_remove_user_from_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_reset_user_password_request() :: #{
+%%   <<"ClientMetadata">> => map(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_reset_user_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_reset_user_password_response() :: #{
+
+%% }
+-type admin_reset_user_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_respond_to_auth_challenge_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ChallengeName">> := list(any()),
+%%   <<"ChallengeResponses">> => map(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"ContextData">> => context_data_type(),
+%%   <<"Session">> => string(),
 %%   <<"UserPoolId">> := string()
 %% }
--type update_group_request() :: #{binary() => any()}.
+-type admin_respond_to_auth_challenge_request() :: #{binary() => any()}.
 
 %% Example:
-%% add_custom_attributes_response() :: #{
-
+%% admin_respond_to_auth_challenge_response() :: #{
+%%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"ChallengeName">> => list(any()),
+%%   <<"ChallengeParameters">> => map(),
+%%   <<"Session">> => string()
 %% }
--type add_custom_attributes_response() :: #{binary() => any()}.
+-type admin_respond_to_auth_challenge_response() :: #{binary() => any()}.
 
 %% Example:
-%% user_pool_policy_type() :: #{
-%%   <<"PasswordPolicy">> => password_policy_type(),
-%%   <<"SignInPolicy">> => sign_in_policy_type()
+%% admin_set_user_mfa_preference_request() :: #{
+%%   <<"EmailMfaSettings">> => email_mfa_settings_type(),
+%%   <<"SMSMfaSettings">> => sms_mfa_settings_type(),
+%%   <<"SoftwareTokenMfaSettings">> => software_token_mfa_settings_type(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string(),
+%%   <<"WebAuthnMfaSettings">> => web_authn_mfa_settings_type()
 %% }
--type user_pool_policy_type() :: #{binary() => any()}.
+-type admin_set_user_mfa_preference_request() :: #{binary() => any()}.
 
 %% Example:
-%% admin_disable_user_response() :: #{
+%% admin_set_user_mfa_preference_response() :: #{
 
 %% }
--type admin_disable_user_response() :: #{binary() => any()}.
+-type admin_set_user_mfa_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_set_user_password_request() :: #{
+%%   <<"Password">> := string(),
+%%   <<"Permanent">> => boolean(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_set_user_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_set_user_password_response() :: #{
+
+%% }
+-type admin_set_user_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_set_user_settings_request() :: #{
+%%   <<"MFAOptions">> := list(mfa_option_type()),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_set_user_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_set_user_settings_response() :: #{
+
+%% }
+-type admin_set_user_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_update_auth_event_feedback_request() :: #{
+%%   <<"EventId">> := string(),
+%%   <<"FeedbackValue">> := list(any()),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_update_auth_event_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_update_auth_event_feedback_response() :: #{
+
+%% }
+-type admin_update_auth_event_feedback_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_update_device_status_request() :: #{
+%%   <<"DeviceKey">> := string(),
+%%   <<"DeviceRememberedStatus">> => list(any()),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_update_device_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_update_device_status_response() :: #{
+
+%% }
+-type admin_update_device_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% admin_update_user_attributes_request() :: #{
@@ -1297,93 +767,321 @@
 -type admin_update_user_attributes_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_user_pool_client_secrets_request() :: #{
-%%   <<"ClientId">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type list_user_pool_client_secrets_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_enable_user_response() :: #{
+%% admin_update_user_attributes_response() :: #{
 
 %% }
--type admin_enable_user_response() :: #{binary() => any()}.
+-type admin_update_user_attributes_response() :: #{binary() => any()}.
 
 %% Example:
-%% identity_provider_type() :: #{
-%%   <<"AttributeMapping">> => map(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"IdpIdentifiers">> => list(string()),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"ProviderDetails">> => map(),
-%%   <<"ProviderName">> => string(),
-%%   <<"ProviderType">> => list(any()),
-%%   <<"UserPoolId">> => string()
-%% }
--type identity_provider_type() :: #{binary() => any()}.
-
-%% Example:
-%% key_configuration_type() :: #{
-%%   <<"KeyType">> => list(any()),
-%%   <<"KmsKeyArn">> => string()
-%% }
--type key_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_server_request() :: #{
-%%   <<"Identifier">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type delete_resource_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_risk_configuration_response() :: #{
-%%   <<"RiskConfiguration">> => risk_configuration_type()
-%% }
--type describe_risk_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% admin_set_user_settings_request() :: #{
-%%   <<"MFAOptions">> := list(mfa_option_type()),
+%% admin_user_global_sign_out_request() :: #{
 %%   <<"UserPoolId">> := string(),
 %%   <<"Username">> := string()
 %% }
--type admin_set_user_settings_request() :: #{binary() => any()}.
+-type admin_user_global_sign_out_request() :: #{binary() => any()}.
 
 %% Example:
-%% set_ui_customization_request() :: #{
-%%   <<"CSS">> => string(),
-%%   <<"ClientId">> => string(),
-%%   <<"ImageFile">> => binary(),
-%%   <<"UserPoolId">> := string()
+%% admin_user_global_sign_out_response() :: #{
+
 %% }
--type set_ui_customization_request() :: #{binary() => any()}.
+-type admin_user_global_sign_out_response() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_sms_role_access_policy_exception() :: #{
+%% advanced_security_additional_flows_type() :: #{
+%%   <<"CustomAuthMode">> => list(any())
+%% }
+-type advanced_security_additional_flows_type() :: #{binary() => any()}.
+
+%% Example:
+%% alias_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_sms_role_access_policy_exception() :: #{binary() => any()}.
+-type alias_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_identity_provider_by_identifier_request() :: #{
-%%   <<"IdpIdentifier">> := string(),
+%% analytics_configuration_type() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"ExternalId">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UserDataShared">> => boolean()
+%% }
+-type analytics_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% analytics_metadata_type() :: #{
+%%   <<"AnalyticsEndpointId">> => string()
+%% }
+-type analytics_metadata_type() :: #{binary() => any()}.
+
+%% Example:
+%% asset_type() :: #{
+%%   <<"Bytes">> => binary(),
+%%   <<"Category">> => list(any()),
+%%   <<"ColorMode">> => list(any()),
+%%   <<"Extension">> => list(any()),
+%%   <<"ResourceId">> => string()
+%% }
+-type asset_type() :: #{binary() => any()}.
+
+%% Example:
+%% associate_software_token_request() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"Session">> => string()
+%% }
+-type associate_software_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_software_token_response() :: #{
+%%   <<"SecretCode">> => string(),
+%%   <<"Session">> => string()
+%% }
+-type associate_software_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% attribute_type() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type attribute_type() :: #{binary() => any()}.
+
+%% Example:
+%% auth_event_type() :: #{
+%%   <<"ChallengeResponses">> => list(challenge_response_type()),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"EventContextData">> => event_context_data_type(),
+%%   <<"EventFeedback">> => event_feedback_type(),
+%%   <<"EventId">> => string(),
+%%   <<"EventResponse">> => list(any()),
+%%   <<"EventRisk">> => event_risk_type(),
+%%   <<"EventType">> => list(any())
+%% }
+-type auth_event_type() :: #{binary() => any()}.
+
+%% Example:
+%% authentication_result_type() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"ExpiresIn">> => integer(),
+%%   <<"IdToken">> => string(),
+%%   <<"NewDeviceMetadata">> => new_device_metadata_type(),
+%%   <<"RefreshToken">> => string(),
+%%   <<"TokenType">> => string()
+%% }
+-type authentication_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% challenge_response_type() :: #{
+%%   <<"ChallengeName">> => list(any()),
+%%   <<"ChallengeResponse">> => list(any())
+%% }
+-type challenge_response_type() :: #{binary() => any()}.
+
+%% Example:
+%% change_password_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"PreviousPassword">> => string(),
+%%   <<"ProposedPassword">> := string()
+%% }
+-type change_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% change_password_response() :: #{
+
+%% }
+-type change_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% client_secret_descriptor_type() :: #{
+%%   <<"ClientSecretCreateDate">> => non_neg_integer(),
+%%   <<"ClientSecretId">> => string(),
+%%   <<"ClientSecretValue">> => string()
+%% }
+-type client_secret_descriptor_type() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs_configuration_type() :: #{
+%%   <<"LogGroupArn">> => string()
+%% }
+-type cloud_watch_logs_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% code_delivery_details_type() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"DeliveryMedium">> => list(any()),
+%%   <<"Destination">> => string()
+%% }
+-type code_delivery_details_type() :: #{binary() => any()}.
+
+%% Example:
+%% code_delivery_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type code_delivery_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% code_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type code_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% complete_web_authn_registration_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"Credential">> := any()
+%% }
+-type complete_web_authn_registration_request() :: #{binary() => any()}.
+
+%% Example:
+%% complete_web_authn_registration_response() :: #{
+
+%% }
+-type complete_web_authn_registration_response() :: #{binary() => any()}.
+
+%% Example:
+%% compromised_credentials_actions_type() :: #{
+%%   <<"EventAction">> => list(any())
+%% }
+-type compromised_credentials_actions_type() :: #{binary() => any()}.
+
+%% Example:
+%% compromised_credentials_risk_configuration_type() :: #{
+%%   <<"Actions">> => compromised_credentials_actions_type(),
+%%   <<"EventFilter">> => list(list(any())())
+%% }
+-type compromised_credentials_risk_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_device_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"DeviceKey">> := string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"DeviceSecretVerifierConfig">> => device_secret_verifier_config_type()
+%% }
+-type confirm_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_device_response() :: #{
+%%   <<"UserConfirmationNecessary">> => boolean()
+%% }
+-type confirm_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_forgot_password_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"ConfirmationCode">> := string(),
+%%   <<"Password">> := string(),
+%%   <<"SecretHash">> => string(),
+%%   <<"UserContextData">> => user_context_data_type(),
+%%   <<"Username">> := string()
+%% }
+-type confirm_forgot_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_forgot_password_response() :: #{
+
+%% }
+-type confirm_forgot_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_sign_up_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"ConfirmationCode">> := string(),
+%%   <<"ForceAliasCreation">> => boolean(),
+%%   <<"SecretHash">> => string(),
+%%   <<"Session">> => string(),
+%%   <<"UserContextData">> => user_context_data_type(),
+%%   <<"Username">> := string()
+%% }
+-type confirm_sign_up_request() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_sign_up_response() :: #{
+%%   <<"Session">> => string()
+%% }
+-type confirm_sign_up_response() :: #{binary() => any()}.
+
+%% Example:
+%% context_data_type() :: #{
+%%   <<"EncodedData">> => string(),
+%%   <<"HttpHeaders">> => list(http_header()),
+%%   <<"IpAddress">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"ServerPath">> => string()
+%% }
+-type context_data_type() :: #{binary() => any()}.
+
+%% Example:
+%% create_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GroupName">> := string(),
+%%   <<"Precedence">> => integer(),
+%%   <<"RoleArn">> => string(),
 %%   <<"UserPoolId">> := string()
 %% }
--type get_identity_provider_by_identifier_request() :: #{binary() => any()}.
+-type create_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_user_pool_client_secret_response() :: #{
-
+%% create_group_response() :: #{
+%%   <<"Group">> => group_type()
 %% }
--type delete_user_pool_client_secret_response() :: #{binary() => any()}.
+-type create_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% admin_set_user_mfa_preference_response() :: #{
-
+%% create_identity_provider_request() :: #{
+%%   <<"AttributeMapping">> => map(),
+%%   <<"IdpIdentifiers">> => list(string()),
+%%   <<"ProviderDetails">> := map(),
+%%   <<"ProviderName">> := string(),
+%%   <<"ProviderType">> := list(any()),
+%%   <<"UserPoolId">> := string()
 %% }
--type admin_set_user_mfa_preference_response() :: #{binary() => any()}.
+-type create_identity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_identity_provider_response() :: #{
+%%   <<"IdentityProvider">> => identity_provider_type()
+%% }
+-type create_identity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_managed_login_branding_request() :: #{
+%%   <<"Assets">> => list(asset_type()),
+%%   <<"ClientId">> := string(),
+%%   <<"Settings">> => any(),
+%%   <<"UseCognitoProvidedValues">> => boolean(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type create_managed_login_branding_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_managed_login_branding_response() :: #{
+%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
+%% }
+-type create_managed_login_branding_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_server_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scopes">> => list(resource_server_scope_type()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type create_resource_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_server_response() :: #{
+%%   <<"ResourceServer">> => resource_server_type()
+%% }
+-type create_resource_server_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_terms_request() :: #{
@@ -1397,60 +1095,78 @@
 -type create_terms_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_user_pool_response() :: #{
-
+%% create_terms_response() :: #{
+%%   <<"Terms">> => terms_type()
 %% }
--type update_user_pool_response() :: #{binary() => any()}.
+-type create_terms_response() :: #{binary() => any()}.
 
 %% Example:
-%% set_risk_configuration_request() :: #{
-%%   <<"AccountTakeoverRiskConfiguration">> => account_takeover_risk_configuration_type(),
-%%   <<"ClientId">> => string(),
-%%   <<"CompromisedCredentialsRiskConfiguration">> => compromised_credentials_risk_configuration_type(),
-%%   <<"RiskExceptionConfiguration">> => risk_exception_configuration_type(),
+%% create_user_import_job_request() :: #{
+%%   <<"CloudWatchLogsRoleArn">> := string(),
+%%   <<"JobName">> := string(),
+%%   <<"PasswordHashingAlgorithm">> => list(any()),
 %%   <<"UserPoolId">> := string()
 %% }
--type set_risk_configuration_request() :: #{binary() => any()}.
+-type create_user_import_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_device_status_response() :: #{
-
+%% create_user_import_job_response() :: #{
+%%   <<"UserImportJob">> => user_import_job_type()
 %% }
--type update_device_status_response() :: #{binary() => any()}.
+-type create_user_import_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_managed_login_branding_request() :: #{
-%%   <<"Assets">> => list(asset_type()),
-%%   <<"ManagedLoginBrandingId">> => string(),
-%%   <<"Settings">> => any(),
-%%   <<"UseCognitoProvidedValues">> => boolean(),
-%%   <<"UserPoolId">> => string()
+%% create_user_pool_client_request() :: #{
+%%   <<"AccessTokenValidity">> => integer(),
+%%   <<"AllowedOAuthFlows">> => list(list(any())()),
+%%   <<"AllowedOAuthFlowsUserPoolClient">> => boolean(),
+%%   <<"AllowedOAuthScopes">> => list(string()),
+%%   <<"AnalyticsConfiguration">> => analytics_configuration_type(),
+%%   <<"AuthSessionValidity">> => integer(),
+%%   <<"CallbackURLs">> => list(string()),
+%%   <<"ClientName">> := string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"DefaultRedirectURI">> => string(),
+%%   <<"EnablePropagateAdditionalUserContextData">> => boolean(),
+%%   <<"EnableTokenRevocation">> => boolean(),
+%%   <<"ExplicitAuthFlows">> => list(list(any())()),
+%%   <<"GenerateSecret">> => boolean(),
+%%   <<"IdTokenValidity">> => integer(),
+%%   <<"LogoutURLs">> => list(string()),
+%%   <<"PreventUserExistenceErrors">> => list(any()),
+%%   <<"ReadAttributes">> => list(string()),
+%%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
+%%   <<"RefreshTokenValidity">> => integer(),
+%%   <<"SupportedIdentityProviders">> => list(string()),
+%%   <<"TokenValidityUnits">> => token_validity_units_type(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"WriteAttributes">> => list(string())
 %% }
--type update_managed_login_branding_request() :: #{binary() => any()}.
+-type create_user_pool_client_request() :: #{binary() => any()}.
 
 %% Example:
-%% admin_user_global_sign_out_response() :: #{
-
-%% }
--type admin_user_global_sign_out_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_pool_client_response() :: #{
+%% create_user_pool_client_response() :: #{
 %%   <<"UserPoolClient">> => user_pool_client_type()
 %% }
--type describe_user_pool_client_response() :: #{binary() => any()}.
+-type create_user_pool_client_response() :: #{binary() => any()}.
 
 %% Example:
-%% code_mismatch_exception() :: #{
-%%   <<"message">> => string()
+%% create_user_pool_domain_request() :: #{
+%%   <<"CustomDomainConfig">> => custom_domain_config_type(),
+%%   <<"Domain">> := string(),
+%%   <<"ManagedLoginVersion">> => integer(),
+%%   <<"Routing">> => routing_type(),
+%%   <<"UserPoolId">> := string()
 %% }
--type code_mismatch_exception() :: #{binary() => any()}.
+-type create_user_pool_domain_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_signing_certificate_response() :: #{
-%%   <<"Certificate">> => string()
+%% create_user_pool_domain_response() :: #{
+%%   <<"CloudFrontDomain">> => string(),
+%%   <<"ManagedLoginVersion">> => integer(),
+%%   <<"Routing">> => routing_type()
 %% }
--type get_signing_certificate_response() :: #{binary() => any()}.
+-type create_user_pool_domain_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_user_pool_replica_request() :: #{
@@ -1461,275 +1177,10 @@
 -type create_user_pool_replica_request() :: #{binary() => any()}.
 
 %% Example:
-%% custom_email_lambda_version_config_type() :: #{
-%%   <<"LambdaArn">> => string(),
-%%   <<"LambdaVersion">> => list(any())
+%% create_user_pool_replica_response() :: #{
+%%   <<"UserPoolReplica">> => user_pool_replica_type()
 %% }
--type custom_email_lambda_version_config_type() :: #{binary() => any()}.
-
-%% Example:
-%% device_type() :: #{
-%%   <<"DeviceAttributes">> => list(attribute_type()),
-%%   <<"DeviceCreateDate">> => non_neg_integer(),
-%%   <<"DeviceKey">> => string(),
-%%   <<"DeviceLastAuthenticatedDate">> => non_neg_integer(),
-%%   <<"DeviceLastModifiedDate">> => non_neg_integer()
-%% }
--type device_type() :: #{binary() => any()}.
-
-%% Example:
-%% delete_managed_login_branding_request() :: #{
-%%   <<"ManagedLoginBrandingId">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type delete_managed_login_branding_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_pool_mfa_config_response() :: #{
-%%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
-%%   <<"MfaConfiguration">> => list(any()),
-%%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
-%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type(),
-%%   <<"WebAuthnConfiguration">> => web_authn_configuration_type()
-%% }
--type get_user_pool_mfa_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_auth_factors_request() :: #{
-%%   <<"AccessToken">> := string()
-%% }
--type get_user_auth_factors_request() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_token_response() :: #{
-
-%% }
--type revoke_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% ui_customization_type() :: #{
-%%   <<"CSS">> => string(),
-%%   <<"CSSVersion">> => string(),
-%%   <<"ClientId">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"ImageUrl">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"UserPoolId">> => string()
-%% }
--type ui_customization_type() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_request() :: #{
-%%   <<"AccessToken">> := string()
-%% }
--type get_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% verify_user_attribute_request() :: #{
-%%   <<"AccessToken">> := string(),
-%%   <<"AttributeName">> := string(),
-%%   <<"Code">> := string()
-%% }
--type verify_user_attribute_request() :: #{binary() => any()}.
-
-%% Example:
-%% notify_email_type() :: #{
-%%   <<"HtmlBody">> => string(),
-%%   <<"Subject">> => string(),
-%%   <<"TextBody">> => string()
-%% }
--type notify_email_type() :: #{binary() => any()}.
-
-%% Example:
-%% admin_update_auth_event_feedback_request() :: #{
-%%   <<"EventId">> := string(),
-%%   <<"FeedbackValue">> := list(any()),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_update_auth_event_feedback_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_in_group_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user_type())
-%% }
--type list_users_in_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% scope_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type scope_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% respond_to_auth_challenge_request() :: #{
-%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
-%%   <<"ChallengeName">> := list(any()),
-%%   <<"ChallengeResponses">> => map(),
-%%   <<"ClientId">> := string(),
-%%   <<"ClientMetadata">> => map(),
-%%   <<"Session">> => string(),
-%%   <<"UserContextData">> => user_context_data_type()
-%% }
--type respond_to_auth_challenge_request() :: #{binary() => any()}.
-
-%% Example:
-%% tier_change_not_allowed_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tier_change_not_allowed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% set_ui_customization_response() :: #{
-%%   <<"UICustomization">> => ui_customization_type()
-%% }
--type set_ui_customization_response() :: #{binary() => any()}.
-
-%% Example:
-%% token_validity_units_type() :: #{
-%%   <<"AccessToken">> => list(any()),
-%%   <<"IdToken">> => list(any()),
-%%   <<"RefreshToken">> => list(any())
-%% }
--type token_validity_units_type() :: #{binary() => any()}.
-
-%% Example:
-%% user_context_data_type() :: #{
-%%   <<"EncodedData">> => string(),
-%%   <<"IpAddress">> => string()
-%% }
--type user_context_data_type() :: #{binary() => any()}.
-
-%% Example:
-%% managed_login_branding_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type managed_login_branding_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% string_attribute_constraints_type() :: #{
-%%   <<"MaxLength">> => string(),
-%%   <<"MinLength">> => string()
-%% }
--type string_attribute_constraints_type() :: #{binary() => any()}.
-
-%% Example:
-%% admin_delete_user_attributes_request() :: #{
-%%   <<"UserAttributeNames">> := list(string()),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_delete_user_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_config_type() :: #{
-%%   <<"CreateAuthChallenge">> => string(),
-%%   <<"CustomEmailSender">> => custom_email_lambda_version_config_type(),
-%%   <<"CustomMessage">> => string(),
-%%   <<"CustomSMSSender">> => custom_sms_lambda_version_config_type(),
-%%   <<"DefineAuthChallenge">> => string(),
-%%   <<"InboundFederation">> => inbound_federation_lambda_type(),
-%%   <<"KMSKeyID">> => string(),
-%%   <<"PostAuthentication">> => string(),
-%%   <<"PostConfirmation">> => string(),
-%%   <<"PreAuthentication">> => string(),
-%%   <<"PreSignUp">> => string(),
-%%   <<"PreTokenGeneration">> => string(),
-%%   <<"PreTokenGenerationConfig">> => pre_token_generation_version_config_type(),
-%%   <<"UserMigration">> => string(),
-%%   <<"VerifyAuthChallengeResponse">> => string()
-%% }
--type lambda_config_type() :: #{binary() => any()}.
-
-%% Example:
-%% log_delivery_configuration_type() :: #{
-%%   <<"LogConfigurations">> => list(log_configuration_type()),
-%%   <<"UserPoolId">> => string()
-%% }
--type log_delivery_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% risk_exception_configuration_type() :: #{
-%%   <<"BlockedIPRangeList">> => list(string()),
-%%   <<"SkippedIPRangeList">> => list(string())
-%% }
--type risk_exception_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% group_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type group_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% password_reset_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type password_reset_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% web_authn_client_mismatch_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type web_authn_client_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% admin_set_user_password_response() :: #{
-
-%% }
--type admin_set_user_password_response() :: #{binary() => any()}.
-
-%% Example:
-%% admin_list_devices_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"PaginationToken">> => string(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_list_devices_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_pool_client_response() :: #{
-%%   <<"UserPoolClient">> => user_pool_client_type()
-%% }
--type create_user_pool_client_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% client_secret_descriptor_type() :: #{
-%%   <<"ClientSecretCreateDate">> => non_neg_integer(),
-%%   <<"ClientSecretId">> => string(),
-%%   <<"ClientSecretValue">> => string()
-%% }
--type client_secret_descriptor_type() :: #{binary() => any()}.
-
-%% Example:
-%% get_tokens_from_refresh_token_request() :: #{
-%%   <<"ClientId">> := string(),
-%%   <<"ClientMetadata">> => map(),
-%%   <<"ClientSecret">> => string(),
-%%   <<"DeviceKey">> => string(),
-%%   <<"RefreshToken">> := string()
-%% }
--type get_tokens_from_refresh_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_pool_response() :: #{
-%%   <<"UserPool">> => user_pool_type()
-%% }
--type describe_user_pool_response() :: #{binary() => any()}.
+-type create_user_pool_replica_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_user_pool_request() :: #{
@@ -1763,89 +1214,79 @@
 -type create_user_pool_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_user_import_jobs_response() :: #{
-%%   <<"PaginationToken">> => string(),
-%%   <<"UserImportJobs">> => list(user_import_job_type())
+%% create_user_pool_response() :: #{
+%%   <<"UserPool">> => user_pool_type()
 %% }
--type list_user_import_jobs_response() :: #{binary() => any()}.
+-type create_user_pool_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_users_response() :: #{
-%%   <<"PaginationToken">> => string(),
-%%   <<"Users">> => list(user_type())
+%% custom_domain_config_type() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"SecurityPolicy">> => list(any())
 %% }
--type list_users_response() :: #{binary() => any()}.
+-type custom_domain_config_type() :: #{binary() => any()}.
 
 %% Example:
-%% user_import_job_type() :: #{
-%%   <<"CloudWatchLogsRoleArn">> => string(),
-%%   <<"CompletionDate">> => non_neg_integer(),
-%%   <<"CompletionMessage">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"FailedUsers">> => float(),
-%%   <<"ImportedUsers">> => float(),
-%%   <<"JobId">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"PreSignedUrl">> => string(),
-%%   <<"SkippedUsers">> => float(),
-%%   <<"StartDate">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"UserPoolId">> => string()
+%% custom_email_lambda_version_config_type() :: #{
+%%   <<"LambdaArn">> => string(),
+%%   <<"LambdaVersion">> => list(any())
 %% }
--type user_import_job_type() :: #{binary() => any()}.
+-type custom_email_lambda_version_config_type() :: #{binary() => any()}.
 
 %% Example:
-%% create_user_pool_client_request() :: #{
-%%   <<"AccessTokenValidity">> => integer(),
-%%   <<"AllowedOAuthFlows">> => list(list(any())()),
-%%   <<"AllowedOAuthFlowsUserPoolClient">> => boolean(),
-%%   <<"AllowedOAuthScopes">> => list(string()),
-%%   <<"AnalyticsConfiguration">> => analytics_configuration_type(),
-%%   <<"AuthSessionValidity">> => integer(),
-%%   <<"CallbackURLs">> => list(string()),
-%%   <<"ClientName">> := string(),
-%%   <<"ClientSecret">> => string(),
-%%   <<"DefaultRedirectURI">> => string(),
-%%   <<"EnablePropagateAdditionalUserContextData">> => boolean(),
-%%   <<"EnableTokenRevocation">> => boolean(),
-%%   <<"ExplicitAuthFlows">> => list(list(any())()),
-%%   <<"GenerateSecret">> => boolean(),
-%%   <<"IdTokenValidity">> => integer(),
-%%   <<"LogoutURLs">> => list(string()),
-%%   <<"PreventUserExistenceErrors">> => list(any()),
-%%   <<"ReadAttributes">> => list(string()),
-%%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
-%%   <<"RefreshTokenValidity">> => integer(),
-%%   <<"SupportedIdentityProviders">> => list(string()),
-%%   <<"TokenValidityUnits">> => token_validity_units_type(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"WriteAttributes">> => list(string())
+%% custom_sms_lambda_version_config_type() :: #{
+%%   <<"LambdaArn">> => string(),
+%%   <<"LambdaVersion">> => list(any())
 %% }
--type create_user_pool_client_request() :: #{binary() => any()}.
+-type custom_sms_lambda_version_config_type() :: #{binary() => any()}.
 
 %% Example:
-%% get_identity_provider_by_identifier_response() :: #{
-%%   <<"IdentityProvider">> => identity_provider_type()
+%% delete_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"UserPoolId">> := string()
 %% }
--type get_identity_provider_by_identifier_response() :: #{binary() => any()}.
+-type delete_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% web_authn_configuration_missing_exception() :: #{
-%%   <<"message">> => string()
+%% delete_identity_provider_request() :: #{
+%%   <<"ProviderName">> := string(),
+%%   <<"UserPoolId">> := string()
 %% }
--type web_authn_configuration_missing_exception() :: #{binary() => any()}.
+-type delete_identity_provider_request() :: #{binary() => any()}.
 
 %% Example:
-%% admin_disable_provider_for_user_response() :: #{
-
+%% delete_managed_login_branding_request() :: #{
+%%   <<"ManagedLoginBrandingId">> := string(),
+%%   <<"UserPoolId">> := string()
 %% }
--type admin_disable_provider_for_user_response() :: #{binary() => any()}.
+-type delete_managed_login_branding_request() :: #{binary() => any()}.
 
 %% Example:
-%% cloud_watch_logs_configuration_type() :: #{
-%%   <<"LogGroupArn">> => string()
+%% delete_resource_server_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"UserPoolId">> := string()
 %% }
--type cloud_watch_logs_configuration_type() :: #{binary() => any()}.
+-type delete_resource_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_terms_request() :: #{
+%%   <<"TermsId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_terms_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_attributes_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"UserAttributeNames">> := list(string())
+%% }
+-type delete_user_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_attributes_response() :: #{
+
+%% }
+-type delete_user_attributes_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_user_pool_client_request() :: #{
@@ -1855,16 +1296,976 @@
 -type delete_user_pool_client_request() :: #{binary() => any()}.
 
 %% Example:
-%% user_not_found_exception() :: #{
+%% delete_user_pool_client_secret_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"ClientSecretId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_user_pool_client_secret_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_client_secret_response() :: #{
+
+%% }
+-type delete_user_pool_client_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_domain_request() :: #{
+%%   <<"Domain">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_user_pool_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_domain_response() :: #{
+
+%% }
+-type delete_user_pool_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_replica_request() :: #{
+%%   <<"RegionName">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_user_pool_replica_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_replica_response() :: #{
+%%   <<"UserPoolReplica">> => user_pool_replica_type()
+%% }
+-type delete_user_pool_replica_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_pool_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_user_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{
+%%   <<"AccessToken">> := string()
+%% }
+-type delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_authn_credential_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"CredentialId">> := string()
+%% }
+-type delete_web_authn_credential_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_authn_credential_response() :: #{
+
+%% }
+-type delete_web_authn_credential_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_provider_request() :: #{
+%%   <<"ProviderName">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_identity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_provider_response() :: #{
+%%   <<"IdentityProvider">> => identity_provider_type()
+%% }
+-type describe_identity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_managed_login_branding_by_client_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"ReturnMergedResources">> => boolean(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_managed_login_branding_by_client_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_managed_login_branding_by_client_response() :: #{
+%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
+%% }
+-type describe_managed_login_branding_by_client_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_managed_login_branding_request() :: #{
+%%   <<"ManagedLoginBrandingId">> := string(),
+%%   <<"ReturnMergedResources">> => boolean(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_managed_login_branding_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_managed_login_branding_response() :: #{
+%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
+%% }
+-type describe_managed_login_branding_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_server_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_resource_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_server_response() :: #{
+%%   <<"ResourceServer">> => resource_server_type()
+%% }
+-type describe_resource_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_risk_configuration_request() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_risk_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_risk_configuration_response() :: #{
+%%   <<"RiskConfiguration">> => risk_configuration_type()
+%% }
+-type describe_risk_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_terms_request() :: #{
+%%   <<"TermsId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_terms_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_terms_response() :: #{
+%%   <<"Terms">> => terms_type()
+%% }
+-type describe_terms_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_import_job_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_user_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_import_job_response() :: #{
+%%   <<"UserImportJob">> => user_import_job_type()
+%% }
+-type describe_user_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_client_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_user_pool_client_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_client_response() :: #{
+%%   <<"UserPoolClient">> => user_pool_client_type()
+%% }
+-type describe_user_pool_client_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_domain_request() :: #{
+%%   <<"Domain">> := string()
+%% }
+-type describe_user_pool_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_domain_response() :: #{
+%%   <<"DomainDescription">> => domain_description_type()
+%% }
+-type describe_user_pool_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_user_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_pool_response() :: #{
+%%   <<"UserPool">> => user_pool_type()
+%% }
+-type describe_user_pool_response() :: #{binary() => any()}.
+
+%% Example:
+%% device_configuration_type() :: #{
+%%   <<"ChallengeRequiredOnNewDevice">> => boolean(),
+%%   <<"DeviceOnlyRememberedOnUserPrompt">> => boolean()
+%% }
+-type device_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% device_key_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type user_not_found_exception() :: #{binary() => any()}.
+-type device_key_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% device_secret_verifier_config_type() :: #{
+%%   <<"PasswordVerifier">> => string(),
+%%   <<"Salt">> => string()
+%% }
+-type device_secret_verifier_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% device_type() :: #{
+%%   <<"DeviceAttributes">> => list(attribute_type()),
+%%   <<"DeviceCreateDate">> => non_neg_integer(),
+%%   <<"DeviceKey">> => string(),
+%%   <<"DeviceLastAuthenticatedDate">> => non_neg_integer(),
+%%   <<"DeviceLastModifiedDate">> => non_neg_integer()
+%% }
+-type device_type() :: #{binary() => any()}.
+
+%% Example:
+%% domain_description_type() :: #{
+%%   <<"AWSAccountId">> => string(),
+%%   <<"CloudFrontDistribution">> => string(),
+%%   <<"CustomDomainConfig">> => custom_domain_config_type(),
+%%   <<"Domain">> => string(),
+%%   <<"ManagedLoginVersion">> => integer(),
+%%   <<"Routing">> => routing_type(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserPoolId">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type domain_description_type() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_provider_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_provider_exception() :: #{binary() => any()}.
+
+%% Example:
+%% email_configuration_type() :: #{
+%%   <<"ConfigurationSet">> => string(),
+%%   <<"EmailSendingAccount">> => list(any()),
+%%   <<"From">> => string(),
+%%   <<"ReplyToEmailAddress">> => string(),
+%%   <<"SourceArn">> => string()
+%% }
+-type email_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% email_mfa_config_type() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Subject">> => string()
+%% }
+-type email_mfa_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% email_mfa_settings_type() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"PreferredMfa">> => boolean()
+%% }
+-type email_mfa_settings_type() :: #{binary() => any()}.
+
+%% Example:
+%% enable_software_token_mfa_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type enable_software_token_mfa_exception() :: #{binary() => any()}.
+
+%% Example:
+%% eums_sms_configuration_type() :: #{
+%%   <<"CallerArn">> => string(),
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"ExternalId">> => string(),
+%%   <<"InEntityId">> => string(),
+%%   <<"InTemplateId">> => string(),
+%%   <<"OriginationIdentity">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type eums_sms_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% event_context_data_type() :: #{
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"Timezone">> => string()
+%% }
+-type event_context_data_type() :: #{binary() => any()}.
+
+%% Example:
+%% event_feedback_type() :: #{
+%%   <<"FeedbackDate">> => non_neg_integer(),
+%%   <<"FeedbackValue">> => list(any()),
+%%   <<"Provider">> => string()
+%% }
+-type event_feedback_type() :: #{binary() => any()}.
+
+%% Example:
+%% event_risk_type() :: #{
+%%   <<"CompromisedCredentialsDetected">> => boolean(),
+%%   <<"RiskDecision">> => list(any()),
+%%   <<"RiskLevel">> => list(any())
+%% }
+-type event_risk_type() :: #{binary() => any()}.
+
+%% Example:
+%% expired_code_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_code_exception() :: #{binary() => any()}.
+
+%% Example:
+%% failover_type() :: #{
+%%   <<"PrimaryRoute53HealthCheckId">> => string(),
+%%   <<"SecondaryRegion">> => string()
+%% }
+-type failover_type() :: #{binary() => any()}.
 
 %% Example:
 %% feature_unavailable_in_tier_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type feature_unavailable_in_tier_exception() :: #{binary() => any()}.
+
+%% Example:
+%% firehose_configuration_type() :: #{
+%%   <<"StreamArn">> => string()
+%% }
+-type firehose_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+%% Example:
+%% forget_device_request() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"DeviceKey">> := string()
+%% }
+-type forget_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% forgot_password_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"SecretHash">> => string(),
+%%   <<"UserContextData">> => user_context_data_type(),
+%%   <<"Username">> := string()
+%% }
+-type forgot_password_request() :: #{binary() => any()}.
+
+%% Example:
+%% forgot_password_response() :: #{
+%%   <<"CodeDeliveryDetails">> => code_delivery_details_type()
+%% }
+-type forgot_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_csv_header_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_csv_header_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_csv_header_response() :: #{
+%%   <<"CSVHeader">> => list(string()),
+%%   <<"UserPoolId">> => string()
+%% }
+-type get_csv_header_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_request() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"DeviceKey">> := string()
+%% }
+-type get_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_response() :: #{
+%%   <<"Device">> => device_type()
+%% }
+-type get_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_response() :: #{
+%%   <<"Group">> => group_type()
+%% }
+-type get_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_provider_by_identifier_request() :: #{
+%%   <<"IdpIdentifier">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_identity_provider_by_identifier_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_provider_by_identifier_response() :: #{
+%%   <<"IdentityProvider">> => identity_provider_type()
+%% }
+-type get_identity_provider_by_identifier_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_delivery_configuration_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_log_delivery_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_delivery_configuration_response() :: #{
+%%   <<"LogDeliveryConfiguration">> => log_delivery_configuration_type()
+%% }
+-type get_log_delivery_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_provisioned_limit_request() :: #{
+%%   <<"LimitDefinition">> := limit_definition_type()
+%% }
+-type get_provisioned_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_provisioned_limit_response() :: #{
+%%   <<"Limit">> => limit_type()
+%% }
+-type get_provisioned_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_signing_certificate_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_signing_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_signing_certificate_response() :: #{
+%%   <<"Certificate">> => string()
+%% }
+-type get_signing_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_tokens_from_refresh_token_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"DeviceKey">> => string(),
+%%   <<"RefreshToken">> := string()
+%% }
+-type get_tokens_from_refresh_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_tokens_from_refresh_token_response() :: #{
+%%   <<"AuthenticationResult">> => authentication_result_type()
+%% }
+-type get_tokens_from_refresh_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ui_customization_request() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_ui_customization_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ui_customization_response() :: #{
+%%   <<"UICustomization">> => ui_customization_type()
+%% }
+-type get_ui_customization_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_attribute_verification_code_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"AttributeName">> := string(),
+%%   <<"ClientMetadata">> => map()
+%% }
+-type get_user_attribute_verification_code_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_attribute_verification_code_response() :: #{
+%%   <<"CodeDeliveryDetails">> => code_delivery_details_type()
+%% }
+-type get_user_attribute_verification_code_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_auth_factors_request() :: #{
+%%   <<"AccessToken">> := string()
+%% }
+-type get_user_auth_factors_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_auth_factors_response() :: #{
+%%   <<"ConfiguredUserAuthFactors">> => list(list(any())()),
+%%   <<"PreferredMfaSetting">> => string(),
+%%   <<"UserMFASettingList">> => list(string()),
+%%   <<"Username">> => string()
+%% }
+-type get_user_auth_factors_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_pool_mfa_config_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_user_pool_mfa_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_pool_mfa_config_response() :: #{
+%%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
+%%   <<"MfaConfiguration">> => list(any()),
+%%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
+%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type(),
+%%   <<"WebAuthnConfiguration">> => web_authn_configuration_type()
+%% }
+-type get_user_pool_mfa_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_request() :: #{
+%%   <<"AccessToken">> := string()
+%% }
+-type get_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_response() :: #{
+%%   <<"MFAOptions">> => list(mfa_option_type()),
+%%   <<"PreferredMfaSetting">> => string(),
+%%   <<"UserAttributes">> => list(attribute_type()),
+%%   <<"UserMFASettingList">> => list(string()),
+%%   <<"Username">> => string()
+%% }
+-type get_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% global_sign_out_request() :: #{
+%%   <<"AccessToken">> := string()
+%% }
+-type global_sign_out_request() :: #{binary() => any()}.
+
+%% Example:
+%% global_sign_out_response() :: #{
+
+%% }
+-type global_sign_out_response() :: #{binary() => any()}.
+
+%% Example:
+%% group_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type group_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% group_type() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Precedence">> => integer(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type group_type() :: #{binary() => any()}.
+
+%% Example:
+%% http_header() :: #{
+%%   <<"headerName">> => string(),
+%%   <<"headerValue">> => string()
+%% }
+-type http_header() :: #{binary() => any()}.
+
+%% Example:
+%% identity_provider_type() :: #{
+%%   <<"AttributeMapping">> => map(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"IdpIdentifiers">> => list(string()),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"ProviderDetails">> => map(),
+%%   <<"ProviderName">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"UserPoolId">> => string()
+%% }
+-type identity_provider_type() :: #{binary() => any()}.
+
+%% Example:
+%% inbound_federation_lambda_type() :: #{
+%%   <<"LambdaArn">> => string(),
+%%   <<"LambdaVersion">> => list(any())
+%% }
+-type inbound_federation_lambda_type() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_auth_request() :: #{
+%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"AuthFlow">> := list(any()),
+%%   <<"AuthParameters">> => map(),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"Session">> => string(),
+%%   <<"UserContextData">> => user_context_data_type()
+%% }
+-type initiate_auth_request() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_auth_response() :: #{
+%%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"AvailableChallenges">> => list(list(any())()),
+%%   <<"ChallengeName">> => list(any()),
+%%   <<"ChallengeParameters">> => map(),
+%%   <<"Session">> => string()
+%% }
+-type initiate_auth_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_email_role_access_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_email_role_access_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_lambda_response_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_lambda_response_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_o_auth_flow_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_o_auth_flow_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reasonCode">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_password_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_password_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sms_role_access_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_sms_role_access_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sms_role_trust_relationship_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_sms_role_trust_relationship_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_user_pool_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_user_pool_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% issuer_configuration_type() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type issuer_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% key_configuration_type() :: #{
+%%   <<"KeyType">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type key_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_config_type() :: #{
+%%   <<"CreateAuthChallenge">> => string(),
+%%   <<"CustomEmailSender">> => custom_email_lambda_version_config_type(),
+%%   <<"CustomMessage">> => string(),
+%%   <<"CustomSMSSender">> => custom_sms_lambda_version_config_type(),
+%%   <<"DefineAuthChallenge">> => string(),
+%%   <<"InboundFederation">> => inbound_federation_lambda_type(),
+%%   <<"KMSKeyID">> => string(),
+%%   <<"PostAuthentication">> => string(),
+%%   <<"PostConfirmation">> => string(),
+%%   <<"PreAuthentication">> => string(),
+%%   <<"PreSignUp">> => string(),
+%%   <<"PreTokenGeneration">> => string(),
+%%   <<"PreTokenGenerationConfig">> => pre_token_generation_version_config_type(),
+%%   <<"UserMigration">> => string(),
+%%   <<"VerifyAuthChallengeResponse">> => string()
+%% }
+-type lambda_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% limit_definition_type() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"LimitClass">> => list(any())
+%% }
+-type limit_definition_type() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_type() :: #{
+%%   <<"FreeLimitValue">> => integer(),
+%%   <<"LimitDefinition">> => limit_definition_type(),
+%%   <<"ProvisionedLimitValue">> => integer()
+%% }
+-type limit_type() :: #{binary() => any()}.
+
+%% Example:
+%% list_devices_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"PaginationToken">> => string()
+%% }
+-type list_devices_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_devices_response() :: #{
+%%   <<"Devices">> => list(device_type()),
+%%   <<"PaginationToken">> => string()
+%% }
+-type list_devices_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"Groups">> => list(group_type()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_providers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_identity_providers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_providers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Providers">> => list(provider_description())
+%% }
+-type list_identity_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_servers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_resource_servers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_servers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceServers">> => list(resource_server_type())
+%% }
+-type list_resource_servers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_terms_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_terms_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_terms_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Terms">> => list(terms_description_type())
+%% }
+-type list_terms_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_import_jobs_request() :: #{
+%%   <<"MaxResults">> := integer(),
+%%   <<"PaginationToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_user_import_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_import_jobs_response() :: #{
+%%   <<"PaginationToken">> => string(),
+%%   <<"UserImportJobs">> => list(user_import_job_type())
+%% }
+-type list_user_import_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pool_client_secrets_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_user_pool_client_secrets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pool_client_secrets_response() :: #{
+%%   <<"ClientSecrets">> => list(client_secret_descriptor_type()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_user_pool_client_secrets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pool_clients_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_user_pool_clients_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pool_clients_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolClients">> => list(user_pool_client_description())
+%% }
+-type list_user_pool_clients_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pool_replicas_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_user_pool_replicas_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pool_replicas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolReplicas">> => list(user_pool_replica_type())
+%% }
+-type list_user_pool_replicas_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pools_request() :: #{
+%%   <<"MaxResults">> := integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_user_pools_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_pools_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserPools">> => list(user_pool_description_type())
+%% }
+-type list_user_pools_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_in_group_request() :: #{
+%%   <<"GroupName">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_users_in_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_in_group_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Users">> => list(user_type())
+%% }
+-type list_users_in_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"AttributesToGet">> => list(string()),
+%%   <<"Filter">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"PaginationToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"PaginationToken">> => string(),
+%%   <<"Users">> => list(user_type())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_web_authn_credentials_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_web_authn_credentials_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_web_authn_credentials_response() :: #{
+%%   <<"Credentials">> => list(web_authn_credential_description()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_web_authn_credentials_response() :: #{binary() => any()}.
+
+%% Example:
+%% log_configuration_type() :: #{
+%%   <<"CloudWatchLogsConfiguration">> => cloud_watch_logs_configuration_type(),
+%%   <<"EventSource">> => list(any()),
+%%   <<"FirehoseConfiguration">> => firehose_configuration_type(),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"S3Configuration">> => s3_configuration_type()
+%% }
+-type log_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% log_delivery_configuration_type() :: #{
+%%   <<"LogConfigurations">> => list(log_configuration_type()),
+%%   <<"UserPoolId">> => string()
+%% }
+-type log_delivery_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% managed_login_branding_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type managed_login_branding_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% managed_login_branding_type() :: #{
@@ -1879,6 +2280,78 @@
 -type managed_login_branding_type() :: #{binary() => any()}.
 
 %% Example:
+%% message_template_type() :: #{
+%%   <<"EmailMessage">> => string(),
+%%   <<"EmailSubject">> => string(),
+%%   <<"SMSMessage">> => string()
+%% }
+-type message_template_type() :: #{binary() => any()}.
+
+%% Example:
+%% mfa_method_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type mfa_method_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% mfa_option_type() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"DeliveryMedium">> => list(any())
+%% }
+-type mfa_option_type() :: #{binary() => any()}.
+
+%% Example:
+%% new_device_metadata_type() :: #{
+%%   <<"DeviceGroupKey">> => string(),
+%%   <<"DeviceKey">> => string()
+%% }
+-type new_device_metadata_type() :: #{binary() => any()}.
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% notify_configuration_type() :: #{
+%%   <<"BlockEmail">> => notify_email_type(),
+%%   <<"From">> => string(),
+%%   <<"MfaEmail">> => notify_email_type(),
+%%   <<"NoActionEmail">> => notify_email_type(),
+%%   <<"ReplyTo">> => string(),
+%%   <<"SourceArn">> => string()
+%% }
+-type notify_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% notify_email_type() :: #{
+%%   <<"HtmlBody">> => string(),
+%%   <<"Subject">> => string(),
+%%   <<"TextBody">> => string()
+%% }
+-type notify_email_type() :: #{binary() => any()}.
+
+%% Example:
+%% number_attribute_constraints_type() :: #{
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string()
+%% }
+-type number_attribute_constraints_type() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_enabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% password_history_policy_violation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type password_history_policy_violation_exception() :: #{binary() => any()}.
+
+%% Example:
 %% password_policy_type() :: #{
 %%   <<"MinimumLength">> => integer(),
 %%   <<"PasswordHistorySize">> => integer(),
@@ -1891,75 +2364,90 @@
 -type password_policy_type() :: #{binary() => any()}.
 
 %% Example:
-%% get_provisioned_limit_request() :: #{
-%%   <<"LimitDefinition">> := limit_definition_type()
+%% password_reset_required_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_provisioned_limit_request() :: #{binary() => any()}.
+-type password_reset_required_exception() :: #{binary() => any()}.
 
 %% Example:
-%% admin_confirm_sign_up_request() :: #{
-%%   <<"ClientMetadata">> => map(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_confirm_sign_up_request() :: #{binary() => any()}.
-
-%% Example:
-%% custom_domain_config_type() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"SecurityPolicy">> => list(any())
-%% }
--type custom_domain_config_type() :: #{binary() => any()}.
-
-%% Example:
-%% custom_sms_lambda_version_config_type() :: #{
+%% pre_token_generation_version_config_type() :: #{
 %%   <<"LambdaArn">> => string(),
 %%   <<"LambdaVersion">> => list(any())
 %% }
--type custom_sms_lambda_version_config_type() :: #{binary() => any()}.
+-type pre_token_generation_version_config_type() :: #{binary() => any()}.
 
 %% Example:
-%% admin_enable_user_request() :: #{
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
+%% precondition_not_met_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type admin_enable_user_request() :: #{binary() => any()}.
+-type precondition_not_met_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_resource_server_request() :: #{
-%%   <<"Identifier">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Scopes">> => list(resource_server_scope_type()),
-%%   <<"UserPoolId">> := string()
+%% provider_description() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"ProviderName">> => string(),
+%%   <<"ProviderType">> => list(any())
 %% }
--type create_resource_server_request() :: #{binary() => any()}.
+-type provider_description() :: #{binary() => any()}.
 
 %% Example:
-%% admin_initiate_auth_request() :: #{
+%% provider_user_identifier_type() :: #{
+%%   <<"ProviderAttributeName">> => string(),
+%%   <<"ProviderAttributeValue">> => string(),
+%%   <<"ProviderName">> => string()
+%% }
+-type provider_user_identifier_type() :: #{binary() => any()}.
+
+%% Example:
+%% recovery_option_type() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Priority">> => integer()
+%% }
+-type recovery_option_type() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_token_reuse_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type refresh_token_reuse_exception() :: #{binary() => any()}.
+
+%% Example:
+%% refresh_token_rotation_type() :: #{
+%%   <<"Feature">> => list(any()),
+%%   <<"RetryGracePeriodSeconds">> => integer()
+%% }
+-type refresh_token_rotation_type() :: #{binary() => any()}.
+
+%% Example:
+%% resend_confirmation_code_request() :: #{
 %%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
-%%   <<"AuthFlow">> := list(any()),
-%%   <<"AuthParameters">> => map(),
 %%   <<"ClientId">> := string(),
 %%   <<"ClientMetadata">> => map(),
-%%   <<"ContextData">> => context_data_type(),
-%%   <<"Session">> => string(),
-%%   <<"UserPoolId">> := string()
+%%   <<"SecretHash">> => string(),
+%%   <<"UserContextData">> => user_context_data_type(),
+%%   <<"Username">> := string()
 %% }
--type admin_initiate_auth_request() :: #{binary() => any()}.
+-type resend_confirmation_code_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
+%% resend_confirmation_code_response() :: #{
+%%   <<"CodeDeliveryDetails">> => code_delivery_details_type()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type resend_confirmation_code_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_device_status_request() :: #{
-%%   <<"AccessToken">> := string(),
-%%   <<"DeviceKey">> := string(),
-%%   <<"DeviceRememberedStatus">> => list(any())
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_device_status_request() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_server_scope_type() :: #{
+%%   <<"ScopeDescription">> => string(),
+%%   <<"ScopeName">> => string()
+%% }
+-type resource_server_scope_type() :: #{binary() => any()}.
 
 %% Example:
 %% resource_server_type() :: #{
@@ -1971,130 +2459,174 @@
 -type resource_server_type() :: #{binary() => any()}.
 
 %% Example:
-%% software_token_mfa_config_type() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type software_token_mfa_config_type() :: #{binary() => any()}.
-
-%% Example:
-%% list_devices_response() :: #{
-%%   <<"Devices">> => list(device_type()),
-%%   <<"PaginationToken">> => string()
-%% }
--type list_devices_response() :: #{binary() => any()}.
-
-%% Example:
-%% admin_reset_user_password_response() :: #{
-
-%% }
--type admin_reset_user_password_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_group_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"GroupName">> := string(),
-%%   <<"Precedence">> => integer(),
-%%   <<"RoleArn">> => string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type create_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_user_global_sign_out_request() :: #{
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_user_global_sign_out_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_auth_event_feedback_response() :: #{
-
-%% }
--type update_auth_event_feedback_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_lambda_response_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_lambda_response_exception() :: #{binary() => any()}.
-
-%% Example:
-%% sms_mfa_settings_type() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"PreferredMfa">> => boolean()
-%% }
--type sms_mfa_settings_type() :: #{binary() => any()}.
-
-%% Example:
-%% limit_type() :: #{
-%%   <<"FreeLimitValue">> => integer(),
-%%   <<"LimitDefinition">> => limit_definition_type(),
-%%   <<"ProvisionedLimitValue">> => integer()
-%% }
--type limit_type() :: #{binary() => any()}.
-
-%% Example:
-%% add_custom_attributes_request() :: #{
-%%   <<"CustomAttributes">> := list(schema_attribute_type()),
-%%   <<"UserPoolId">> := string()
-%% }
--type add_custom_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_disable_user_request() :: #{
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_disable_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% email_configuration_type() :: #{
-%%   <<"ConfigurationSet">> => string(),
-%%   <<"EmailSendingAccount">> => list(any()),
-%%   <<"From">> => string(),
-%%   <<"ReplyToEmailAddress">> => string(),
-%%   <<"SourceArn">> => string()
-%% }
--type email_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% expired_code_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type expired_code_exception() :: #{binary() => any()}.
-
-%% Example:
-%% forgot_password_request() :: #{
+%% respond_to_auth_challenge_request() :: #{
 %%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
+%%   <<"ChallengeName">> := list(any()),
+%%   <<"ChallengeResponses">> => map(),
 %%   <<"ClientId">> := string(),
 %%   <<"ClientMetadata">> => map(),
-%%   <<"SecretHash">> => string(),
-%%   <<"UserContextData">> => user_context_data_type(),
-%%   <<"Username">> := string()
+%%   <<"Session">> => string(),
+%%   <<"UserContextData">> => user_context_data_type()
 %% }
--type forgot_password_request() :: #{binary() => any()}.
+-type respond_to_auth_challenge_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_user_pool_clients_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolId">> := string()
+%% respond_to_auth_challenge_response() :: #{
+%%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"ChallengeName">> => list(any()),
+%%   <<"ChallengeParameters">> => map(),
+%%   <<"Session">> => string()
 %% }
--type list_user_pool_clients_request() :: #{binary() => any()}.
+-type respond_to_auth_challenge_response() :: #{binary() => any()}.
 
 %% Example:
-%% admin_remove_user_from_group_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
+%% revoke_token_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"Token">> := string()
 %% }
--type admin_remove_user_from_group_request() :: #{binary() => any()}.
+-type revoke_token_request() :: #{binary() => any()}.
 
 %% Example:
-%% user_pool_tagging_exception() :: #{
+%% revoke_token_response() :: #{
+
+%% }
+-type revoke_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% risk_configuration_type() :: #{
+%%   <<"AccountTakeoverRiskConfiguration">> => account_takeover_risk_configuration_type(),
+%%   <<"ClientId">> => string(),
+%%   <<"CompromisedCredentialsRiskConfiguration">> => compromised_credentials_risk_configuration_type(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"RiskExceptionConfiguration">> => risk_exception_configuration_type(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type risk_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% risk_exception_configuration_type() :: #{
+%%   <<"BlockedIPRangeList">> => list(string()),
+%%   <<"SkippedIPRangeList">> => list(string())
+%% }
+-type risk_exception_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% routing_type() :: #{
+%%   <<"Failover">> => failover_type()
+%% }
+-type routing_type() :: #{binary() => any()}.
+
+%% Example:
+%% s3_configuration_type() :: #{
+%%   <<"BucketArn">> => string()
+%% }
+-type s3_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% schema_attribute_type() :: #{
+%%   <<"AttributeDataType">> => list(any()),
+%%   <<"DeveloperOnlyAttribute">> => boolean(),
+%%   <<"Mutable">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"NumberAttributeConstraints">> => number_attribute_constraints_type(),
+%%   <<"Required">> => boolean(),
+%%   <<"StringAttributeConstraints">> => string_attribute_constraints_type()
+%% }
+-type schema_attribute_type() :: #{binary() => any()}.
+
+%% Example:
+%% scope_does_not_exist_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type user_pool_tagging_exception() :: #{binary() => any()}.
+-type scope_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_log_delivery_configuration_request() :: #{
+%%   <<"LogConfigurations">> := list(log_configuration_type()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type set_log_delivery_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_log_delivery_configuration_response() :: #{
+%%   <<"LogDeliveryConfiguration">> => log_delivery_configuration_type()
+%% }
+-type set_log_delivery_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_risk_configuration_request() :: #{
+%%   <<"AccountTakeoverRiskConfiguration">> => account_takeover_risk_configuration_type(),
+%%   <<"ClientId">> => string(),
+%%   <<"CompromisedCredentialsRiskConfiguration">> => compromised_credentials_risk_configuration_type(),
+%%   <<"RiskExceptionConfiguration">> => risk_exception_configuration_type(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type set_risk_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_risk_configuration_response() :: #{
+%%   <<"RiskConfiguration">> => risk_configuration_type()
+%% }
+-type set_risk_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_ui_customization_request() :: #{
+%%   <<"CSS">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"ImageFile">> => binary(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type set_ui_customization_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_ui_customization_response() :: #{
+%%   <<"UICustomization">> => ui_customization_type()
+%% }
+-type set_ui_customization_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_mfa_preference_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"EmailMfaSettings">> => email_mfa_settings_type(),
+%%   <<"SMSMfaSettings">> => sms_mfa_settings_type(),
+%%   <<"SoftwareTokenMfaSettings">> => software_token_mfa_settings_type(),
+%%   <<"WebAuthnMfaSettings">> => web_authn_mfa_settings_type()
+%% }
+-type set_user_mfa_preference_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_mfa_preference_response() :: #{
+
+%% }
+-type set_user_mfa_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_pool_mfa_config_request() :: #{
+%%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
+%%   <<"MfaConfiguration">> => list(any()),
+%%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
+%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"WebAuthnConfiguration">> => web_authn_configuration_type()
+%% }
+-type set_user_pool_mfa_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_pool_mfa_config_response() :: #{
+%%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
+%%   <<"MfaConfiguration">> => list(any()),
+%%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
+%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type(),
+%%   <<"WebAuthnConfiguration">> => web_authn_configuration_type()
+%% }
+-type set_user_pool_mfa_config_response() :: #{binary() => any()}.
 
 %% Example:
 %% set_user_settings_request() :: #{
@@ -2104,148 +2636,16 @@
 -type set_user_settings_request() :: #{binary() => any()}.
 
 %% Example:
-%% recovery_option_type() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Priority">> => integer()
+%% set_user_settings_response() :: #{
+
 %% }
--type recovery_option_type() :: #{binary() => any()}.
+-type set_user_settings_response() :: #{binary() => any()}.
 
 %% Example:
-%% provider_user_identifier_type() :: #{
-%%   <<"ProviderAttributeName">> => string(),
-%%   <<"ProviderAttributeValue">> => string(),
-%%   <<"ProviderName">> => string()
+%% sign_in_policy_type() :: #{
+%%   <<"AllowedFirstAuthFactors">> => list(list(any())())
 %% }
--type provider_user_identifier_type() :: #{binary() => any()}.
-
-%% Example:
-%% event_feedback_type() :: #{
-%%   <<"FeedbackDate">> => non_neg_integer(),
-%%   <<"FeedbackValue">> => list(any()),
-%%   <<"Provider">> => string()
-%% }
--type event_feedback_type() :: #{binary() => any()}.
-
-%% Example:
-%% describe_managed_login_branding_by_client_response() :: #{
-%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
-%% }
--type describe_managed_login_branding_by_client_response() :: #{binary() => any()}.
-
-%% Example:
-%% change_password_request() :: #{
-%%   <<"AccessToken">> := string(),
-%%   <<"PreviousPassword">> => string(),
-%%   <<"ProposedPassword">> := string()
-%% }
--type change_password_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_list_devices_response() :: #{
-%%   <<"Devices">> => list(device_type()),
-%%   <<"PaginationToken">> => string()
-%% }
--type admin_list_devices_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_request() :: #{
-%%   <<"AccessToken">> := string()
-%% }
--type delete_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_log_delivery_configuration_request() :: #{
-%%   <<"UserPoolId">> := string()
-%% }
--type get_log_delivery_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_o_auth_flow_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_o_auth_flow_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_terms_request() :: #{
-%%   <<"TermsId">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type delete_terms_request() :: #{binary() => any()}.
-
-%% Example:
-%% initiate_auth_response() :: #{
-%%   <<"AuthenticationResult">> => authentication_result_type(),
-%%   <<"AvailableChallenges">> => list(list(any())()),
-%%   <<"ChallengeName">> => list(any()),
-%%   <<"ChallengeParameters">> => map(),
-%%   <<"Session">> => string()
-%% }
--type initiate_auth_response() :: #{binary() => any()}.
-
-%% Example:
-%% add_user_pool_client_secret_response() :: #{
-%%   <<"ClientSecretDescriptor">> => client_secret_descriptor_type()
-%% }
--type add_user_pool_client_secret_response() :: #{binary() => any()}.
-
-%% Example:
-%% web_authn_credential_description() :: #{
-%%   <<"AuthenticatorAttachment">> => string(),
-%%   <<"AuthenticatorTransports">> => list(string()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CredentialId">> => string(),
-%%   <<"FriendlyCredentialName">> => string(),
-%%   <<"RelyingPartyId">> => string()
-%% }
--type web_authn_credential_description() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_request() :: #{
-%%   <<"AccessToken">> => string(),
-%%   <<"DeviceKey">> := string()
-%% }
--type get_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_import_job_request() :: #{
-%%   <<"CloudWatchLogsRoleArn">> := string(),
-%%   <<"JobName">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type create_user_import_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_set_user_password_request() :: #{
-%%   <<"Password">> := string(),
-%%   <<"Permanent">> => boolean(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_set_user_password_request() :: #{binary() => any()}.
-
-%% Example:
-%% web_authn_credential_not_supported_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type web_authn_credential_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_pool_domain_response() :: #{
-%%   <<"DomainDescription">> => domain_description_type()
-%% }
--type describe_user_pool_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_managed_login_branding_response() :: #{
-%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
-%% }
--type create_managed_login_branding_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_terms_response() :: #{
-%%   <<"Terms">> => terms_type()
-%% }
--type create_terms_response() :: #{binary() => any()}.
+-type sign_in_policy_type() :: #{binary() => any()}.
 
 %% Example:
 %% sign_up_request() :: #{
@@ -2262,217 +2662,6 @@
 -type sign_up_request() :: #{binary() => any()}.
 
 %% Example:
-%% forget_device_request() :: #{
-%%   <<"AccessToken">> => string(),
-%%   <<"DeviceKey">> := string()
-%% }
--type forget_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% device_configuration_type() :: #{
-%%   <<"ChallengeRequiredOnNewDevice">> => boolean(),
-%%   <<"DeviceOnlyRememberedOnUserPrompt">> => boolean()
-%% }
--type device_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% user_pool_add_ons_type() :: #{
-%%   <<"AdvancedSecurityAdditionalFlows">> => advanced_security_additional_flows_type(),
-%%   <<"AdvancedSecurityMode">> => list(any())
-%% }
--type user_pool_add_ons_type() :: #{binary() => any()}.
-
-%% Example:
-%% routing_type() :: #{
-%%   <<"Failover">> => failover_type()
-%% }
--type routing_type() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_pool_request() :: #{
-%%   <<"UserPoolId">> := string()
-%% }
--type describe_user_pool_request() :: #{binary() => any()}.
-
-%% Example:
-%% web_authn_mfa_settings_type() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type web_authn_mfa_settings_type() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_pool_domain_request() :: #{
-%%   <<"Domain">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type delete_user_pool_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% user_lambda_validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type user_lambda_validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% inbound_federation_lambda_type() :: #{
-%%   <<"LambdaArn">> => string(),
-%%   <<"LambdaVersion">> => list(any())
-%% }
--type inbound_federation_lambda_type() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_pool_request() :: #{
-%%   <<"UserPoolId">> := string()
-%% }
--type delete_user_pool_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_pool_replica_response() :: #{
-%%   <<"UserPoolReplica">> => user_pool_replica_type()
-%% }
--type update_user_pool_replica_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_user_import_jobs_request() :: #{
-%%   <<"MaxResults">> := integer(),
-%%   <<"PaginationToken">> => string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type list_user_import_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% challenge_response_type() :: #{
-%%   <<"ChallengeName">> => list(any()),
-%%   <<"ChallengeResponse">> => list(any())
-%% }
--type challenge_response_type() :: #{binary() => any()}.
-
-%% Example:
-%% resend_confirmation_code_request() :: #{
-%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
-%%   <<"ClientId">> := string(),
-%%   <<"ClientMetadata">> => map(),
-%%   <<"SecretHash">> => string(),
-%%   <<"UserContextData">> => user_context_data_type(),
-%%   <<"Username">> := string()
-%% }
--type resend_confirmation_code_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_respond_to_auth_challenge_request() :: #{
-%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
-%%   <<"ChallengeName">> := list(any()),
-%%   <<"ChallengeResponses">> => map(),
-%%   <<"ClientId">> := string(),
-%%   <<"ClientMetadata">> => map(),
-%%   <<"ContextData">> => context_data_type(),
-%%   <<"Session">> => string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type admin_respond_to_auth_challenge_request() :: #{binary() => any()}.
-
-%% Example:
-%% email_mfa_settings_type() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"PreferredMfa">> => boolean()
-%% }
--type email_mfa_settings_type() :: #{binary() => any()}.
-
-%% Example:
-%% not_authorized_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_authorized_exception() :: #{binary() => any()}.
-
-%% Example:
-%% admin_list_user_auth_events_response() :: #{
-%%   <<"AuthEvents">> => list(auth_event_type()),
-%%   <<"NextToken">> => string()
-%% }
--type admin_list_user_auth_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_tokens_from_refresh_token_response() :: #{
-%%   <<"AuthenticationResult">> => authentication_result_type()
-%% }
--type get_tokens_from_refresh_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_identity_provider_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_identity_provider_exception() :: #{binary() => any()}.
-
-%% Example:
-%% user_pool_add_on_not_enabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type user_pool_add_on_not_enabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioned_limit_request() :: #{
-%%   <<"LimitDefinition">> := limit_definition_type(),
-%%   <<"RequestedLimitValue">> := integer()
-%% }
--type update_provisioned_limit_request() :: #{binary() => any()}.
-
-%% Example:
-%% auth_event_type() :: #{
-%%   <<"ChallengeResponses">> => list(challenge_response_type()),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"EventContextData">> => event_context_data_type(),
-%%   <<"EventFeedback">> => event_feedback_type(),
-%%   <<"EventId">> => string(),
-%%   <<"EventResponse">> => list(any()),
-%%   <<"EventRisk">> => event_risk_type(),
-%%   <<"EventType">> => list(any())
-%% }
--type auth_event_type() :: #{binary() => any()}.
-
-%% Example:
-%% create_identity_provider_request() :: #{
-%%   <<"AttributeMapping">> => map(),
-%%   <<"IdpIdentifiers">> => list(string()),
-%%   <<"ProviderDetails">> := map(),
-%%   <<"ProviderName">> := string(),
-%%   <<"ProviderType">> := list(any()),
-%%   <<"UserPoolId">> := string()
-%% }
--type create_identity_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_terms_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type list_terms_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_managed_login_branding_response() :: #{
-%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
-%% }
--type update_managed_login_branding_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_user_pool_configuration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_user_pool_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% set_log_delivery_configuration_response() :: #{
-%%   <<"LogDeliveryConfiguration">> => log_delivery_configuration_type()
-%% }
--type set_log_delivery_configuration_response() :: #{binary() => any()}.
-
-%% Example:
 %% sign_up_response() :: #{
 %%   <<"CodeDeliveryDetails">> => code_delivery_details_type(),
 %%   <<"Session">> => string(),
@@ -2482,103 +2671,98 @@
 -type sign_up_response() :: #{binary() => any()}.
 
 %% Example:
+%% sms_configuration_type() :: #{
+%%   <<"EumsSms">> => eums_sms_configuration_type(),
+%%   <<"ExternalId">> => string(),
+%%   <<"SnsCallerArn">> => string(),
+%%   <<"SnsRegion">> => string()
+%% }
+-type sms_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% sms_mfa_config_type() :: #{
+%%   <<"SmsAuthenticationMessage">> => string(),
+%%   <<"SmsConfiguration">> => sms_configuration_type()
+%% }
+-type sms_mfa_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% sms_mfa_settings_type() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"PreferredMfa">> => boolean()
+%% }
+-type sms_mfa_settings_type() :: #{binary() => any()}.
+
+%% Example:
+%% software_token_mfa_config_type() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type software_token_mfa_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% software_token_mfa_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type software_token_mfa_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% software_token_mfa_settings_type() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"PreferredMfa">> => boolean()
+%% }
+-type software_token_mfa_settings_type() :: #{binary() => any()}.
+
+%% Example:
+%% start_user_import_job_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type start_user_import_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% start_user_import_job_response() :: #{
 %%   <<"UserImportJob">> => user_import_job_type()
 %% }
 -type start_user_import_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% confirm_forgot_password_response() :: #{
-
+%% start_web_authn_registration_request() :: #{
+%%   <<"AccessToken">> := string()
 %% }
--type confirm_forgot_password_response() :: #{binary() => any()}.
+-type start_web_authn_registration_request() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
+%% start_web_authn_registration_response() :: #{
+%%   <<"CredentialCreationOptions">> => any()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type start_web_authn_registration_response() :: #{binary() => any()}.
 
 %% Example:
-%% log_configuration_type() :: #{
-%%   <<"CloudWatchLogsConfiguration">> => cloud_watch_logs_configuration_type(),
-%%   <<"EventSource">> => list(any()),
-%%   <<"FirehoseConfiguration">> => firehose_configuration_type(),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"S3Configuration">> => s3_configuration_type()
-%% }
--type log_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% operation_not_enabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type operation_not_enabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% global_sign_out_response() :: #{
-
-%% }
--type global_sign_out_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"reasonCode">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_terms_request() :: #{
-%%   <<"TermsId">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type describe_terms_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_confirm_sign_up_response() :: #{
-
-%% }
--type admin_confirm_sign_up_response() :: #{binary() => any()}.
-
-%% Example:
-%% set_user_pool_mfa_config_request() :: #{
-%%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
-%%   <<"MfaConfiguration">> => list(any()),
-%%   <<"SmsMfaConfiguration">> => sms_mfa_config_type(),
-%%   <<"SoftwareTokenMfaConfiguration">> => software_token_mfa_config_type(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"WebAuthnConfiguration">> => web_authn_configuration_type()
-%% }
--type set_user_pool_mfa_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_import_job_request() :: #{
+%% stop_user_import_job_request() :: #{
 %%   <<"JobId">> := string(),
 %%   <<"UserPoolId">> := string()
 %% }
--type describe_user_import_job_request() :: #{binary() => any()}.
+-type stop_user_import_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% firehose_configuration_type() :: #{
-%%   <<"StreamArn">> => string()
+%% stop_user_import_job_response() :: #{
+%%   <<"UserImportJob">> => user_import_job_type()
 %% }
--type firehose_configuration_type() :: #{binary() => any()}.
+-type stop_user_import_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% admin_disable_provider_for_user_request() :: #{
-%%   <<"User">> := provider_user_identifier_type(),
-%%   <<"UserPoolId">> := string()
+%% string_attribute_constraints_type() :: #{
+%%   <<"MaxLength">> => string(),
+%%   <<"MinLength">> => string()
 %% }
--type admin_disable_provider_for_user_request() :: #{binary() => any()}.
+-type string_attribute_constraints_type() :: #{binary() => any()}.
 
 %% Example:
-%% code_delivery_details_type() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"DeliveryMedium">> => list(any()),
-%%   <<"Destination">> => string()
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := map()
 %% }
--type code_delivery_details_type() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
@@ -2587,44 +2771,121 @@
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% event_risk_type() :: #{
-%%   <<"CompromisedCredentialsDetected">> => boolean(),
-%%   <<"RiskDecision">> => list(any()),
-%%   <<"RiskLevel">> => list(any())
+%% terms_description_type() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Enforcement">> => list(any()),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"TermsId">> => string(),
+%%   <<"TermsName">> => string()
 %% }
--type event_risk_type() :: #{binary() => any()}.
+-type terms_description_type() :: #{binary() => any()}.
 
 %% Example:
-%% get_ui_customization_request() :: #{
+%% terms_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type terms_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% terms_type() :: #{
 %%   <<"ClientId">> => string(),
-%%   <<"UserPoolId">> := string()
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Enforcement">> => list(any()),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Links">> => map(),
+%%   <<"TermsId">> => string(),
+%%   <<"TermsName">> => string(),
+%%   <<"TermsSource">> => list(any()),
+%%   <<"UserPoolId">> => string()
 %% }
--type get_ui_customization_request() :: #{binary() => any()}.
+-type terms_type() :: #{binary() => any()}.
 
 %% Example:
-%% set_user_settings_response() :: #{
-
+%% tier_change_not_allowed_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type set_user_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_device_response() :: #{
-%%   <<"UserConfirmationNecessary">> => boolean()
-%% }
--type confirm_device_response() :: #{binary() => any()}.
+-type tier_change_not_allowed_exception() :: #{binary() => any()}.
 
 %% Example:
-%% account_recovery_setting_type() :: #{
-%%   <<"RecoveryMechanisms">> => list(recovery_option_type())
+%% token_validity_units_type() :: #{
+%%   <<"AccessToken">> => list(any()),
+%%   <<"IdToken">> => list(any()),
+%%   <<"RefreshToken">> => list(any())
 %% }
--type account_recovery_setting_type() :: #{binary() => any()}.
+-type token_validity_units_type() :: #{binary() => any()}.
 
 %% Example:
-%% describe_user_pool_client_request() :: #{
-%%   <<"ClientId">> := string(),
-%%   <<"UserPoolId">> := string()
+%% too_many_failed_attempts_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_user_pool_client_request() :: #{binary() => any()}.
+-type too_many_failed_attempts_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ui_customization_type() :: #{
+%%   <<"CSS">> => string(),
+%%   <<"CSSVersion">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"ImageUrl">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type ui_customization_type() :: #{binary() => any()}.
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unexpected_lambda_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unexpected_lambda_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_identity_provider_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_identity_provider_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_token_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_token_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_user_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_user_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_auth_event_feedback_request() :: #{
@@ -2637,212 +2898,131 @@
 -type update_auth_event_feedback_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_user_pool_replicas_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolReplicas">> => list(user_pool_replica_type())
+%% update_auth_event_feedback_response() :: #{
+
 %% }
--type list_user_pool_replicas_response() :: #{binary() => any()}.
+-type update_auth_event_feedback_response() :: #{binary() => any()}.
 
 %% Example:
-%% asset_type() :: #{
-%%   <<"Bytes">> => binary(),
-%%   <<"Category">> => list(any()),
-%%   <<"ColorMode">> => list(any()),
-%%   <<"Extension">> => list(any()),
-%%   <<"ResourceId">> => string()
-%% }
--type asset_type() :: #{binary() => any()}.
-
-%% Example:
-%% pre_token_generation_version_config_type() :: #{
-%%   <<"LambdaArn">> => string(),
-%%   <<"LambdaVersion">> => list(any())
-%% }
--type pre_token_generation_version_config_type() :: #{binary() => any()}.
-
-%% Example:
-%% admin_update_device_status_request() :: #{
+%% update_device_status_request() :: #{
+%%   <<"AccessToken">> := string(),
 %%   <<"DeviceKey">> := string(),
-%%   <<"DeviceRememberedStatus">> => list(any()),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
+%%   <<"DeviceRememberedStatus">> => list(any())
 %% }
--type admin_update_device_status_request() :: #{binary() => any()}.
+-type update_device_status_request() :: #{binary() => any()}.
 
 %% Example:
-%% software_token_mfa_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% update_device_status_response() :: #{
+
 %% }
--type software_token_mfa_not_found_exception() :: #{binary() => any()}.
+-type update_device_status_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_log_delivery_configuration_response() :: #{
-%%   <<"LogDeliveryConfiguration">> => log_delivery_configuration_type()
-%% }
--type get_log_delivery_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resend_confirmation_code_response() :: #{
-%%   <<"CodeDeliveryDetails">> => code_delivery_details_type()
-%% }
--type resend_confirmation_code_response() :: #{binary() => any()}.
-
-%% Example:
-%% add_user_pool_client_secret_request() :: #{
-%%   <<"ClientId">> := string(),
-%%   <<"ClientSecret">> => string(),
+%% update_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GroupName">> := string(),
+%%   <<"Precedence">> => integer(),
+%%   <<"RoleArn">> => string(),
 %%   <<"UserPoolId">> := string()
 %% }
--type add_user_pool_client_secret_request() :: #{binary() => any()}.
+-type update_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% admin_reset_user_password_request() :: #{
-%%   <<"ClientMetadata">> => map(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_reset_user_password_request() :: #{binary() => any()}.
-
-%% Example:
-%% admin_link_provider_for_user_response() :: #{
-
-%% }
--type admin_link_provider_for_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% admin_get_device_response() :: #{
-%%   <<"Device">> => device_type()
-%% }
--type admin_get_device_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_servers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type list_resource_servers_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% email_mfa_config_type() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Subject">> => string()
-%% }
--type email_mfa_config_type() :: #{binary() => any()}.
-
-%% Example:
-%% admin_update_user_attributes_response() :: #{
-
-%% }
--type admin_update_user_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_pool_client_response() :: #{
-%%   <<"UserPoolClient">> => user_pool_client_type()
-%% }
--type update_user_pool_client_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_identity_providers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Providers">> => list(provider_description())
-%% }
--type list_identity_providers_response() :: #{binary() => any()}.
-
-%% Example:
-%% http_header() :: #{
-%%   <<"headerName">> => string(),
-%%   <<"headerValue">> => string()
-%% }
--type http_header() :: #{binary() => any()}.
-
-%% Example:
-%% enable_software_token_mfa_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type enable_software_token_mfa_exception() :: #{binary() => any()}.
-
-%% Example:
-%% web_authn_not_enabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type web_authn_not_enabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_response() :: #{
+%% update_group_response() :: #{
 %%   <<"Group">> => group_type()
 %% }
--type get_group_response() :: #{binary() => any()}.
+-type update_group_response() :: #{binary() => any()}.
 
 %% Example:
-%% refresh_token_rotation_type() :: #{
-%%   <<"Feature">> => list(any()),
-%%   <<"RetryGracePeriodSeconds">> => integer()
-%% }
--type refresh_token_rotation_type() :: #{binary() => any()}.
-
-%% Example:
-%% stop_user_import_job_response() :: #{
-%%   <<"UserImportJob">> => user_import_job_type()
-%% }
--type stop_user_import_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_pool_replica_response() :: #{
-%%   <<"UserPoolReplica">> => user_pool_replica_type()
-%% }
--type delete_user_pool_replica_response() :: #{binary() => any()}.
-
-%% Example:
-%% notify_configuration_type() :: #{
-%%   <<"BlockEmail">> => notify_email_type(),
-%%   <<"From">> => string(),
-%%   <<"MfaEmail">> => notify_email_type(),
-%%   <<"NoActionEmail">> => notify_email_type(),
-%%   <<"ReplyTo">> => string(),
-%%   <<"SourceArn">> => string()
-%% }
--type notify_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% admin_list_groups_for_user_response() :: #{
-%%   <<"Groups">> => list(group_type()),
-%%   <<"NextToken">> => string()
-%% }
--type admin_list_groups_for_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_pool_replica_request() :: #{
-%%   <<"RegionName">> := string(),
-%%   <<"Status">> := list(any()),
+%% update_identity_provider_request() :: #{
+%%   <<"AttributeMapping">> => map(),
+%%   <<"IdpIdentifiers">> => list(string()),
+%%   <<"ProviderDetails">> => map(),
+%%   <<"ProviderName">> := string(),
 %%   <<"UserPoolId">> := string()
 %% }
--type update_user_pool_replica_request() :: #{binary() => any()}.
+-type update_identity_provider_request() :: #{binary() => any()}.
 
 %% Example:
-%% username_exists_exception() :: #{
-%%   <<"message">> => string()
+%% update_identity_provider_response() :: #{
+%%   <<"IdentityProvider">> => identity_provider_type()
 %% }
--type username_exists_exception() :: #{binary() => any()}.
+-type update_identity_provider_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_group_request() :: #{
-%%   <<"GroupName">> := string(),
+%% update_managed_login_branding_request() :: #{
+%%   <<"Assets">> => list(asset_type()),
+%%   <<"ManagedLoginBrandingId">> => string(),
+%%   <<"Settings">> => any(),
+%%   <<"UseCognitoProvidedValues">> => boolean(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type update_managed_login_branding_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_managed_login_branding_response() :: #{
+%%   <<"ManagedLoginBranding">> => managed_login_branding_type()
+%% }
+-type update_managed_login_branding_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioned_limit_request() :: #{
+%%   <<"LimitDefinition">> := limit_definition_type(),
+%%   <<"RequestedLimitValue">> := integer()
+%% }
+-type update_provisioned_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioned_limit_response() :: #{
+%%   <<"Limit">> => limit_type()
+%% }
+-type update_provisioned_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_server_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Scopes">> => list(resource_server_scope_type()),
 %%   <<"UserPoolId">> := string()
 %% }
--type delete_group_request() :: #{binary() => any()}.
+-type update_resource_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_server_response() :: #{
+%%   <<"ResourceServer">> => resource_server_type()
+%% }
+-type update_resource_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_terms_request() :: #{
+%%   <<"Enforcement">> => list(any()),
+%%   <<"Links">> => map(),
+%%   <<"TermsId">> := string(),
+%%   <<"TermsName">> => string(),
+%%   <<"TermsSource">> => list(any()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type update_terms_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_terms_response() :: #{
+%%   <<"Terms">> => terms_type()
+%% }
+-type update_terms_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_attributes_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"UserAttributes">> := list(attribute_type())
+%% }
+-type update_user_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_attributes_response() :: #{
+%%   <<"CodeDeliveryDetailsList">> => list(code_delivery_details_type())
+%% }
+-type update_user_attributes_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_user_pool_client_request() :: #{
@@ -2873,332 +3053,271 @@
 -type update_user_pool_client_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_ui_customization_response() :: #{
-%%   <<"UICustomization">> => ui_customization_type()
+%% update_user_pool_client_response() :: #{
+%%   <<"UserPoolClient">> => user_pool_client_type()
 %% }
--type get_ui_customization_response() :: #{binary() => any()}.
+-type update_user_pool_client_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_users_request() :: #{
-%%   <<"AttributesToGet">> => list(string()),
-%%   <<"Filter">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"PaginationToken">> => string(),
+%% update_user_pool_domain_request() :: #{
+%%   <<"CustomDomainConfig">> => custom_domain_config_type(),
+%%   <<"Domain">> := string(),
+%%   <<"ManagedLoginVersion">> => integer(),
+%%   <<"Routing">> => routing_type(),
 %%   <<"UserPoolId">> := string()
 %% }
--type list_users_request() :: #{binary() => any()}.
+-type update_user_pool_domain_request() :: #{binary() => any()}.
 
 %% Example:
-%% revoke_token_request() :: #{
-%%   <<"ClientId">> := string(),
-%%   <<"ClientSecret">> => string(),
-%%   <<"Token">> := string()
+%% update_user_pool_domain_response() :: #{
+%%   <<"CloudFrontDomain">> => string(),
+%%   <<"ManagedLoginVersion">> => integer(),
+%%   <<"Routing">> => routing_type()
 %% }
--type revoke_token_request() :: #{binary() => any()}.
+-type update_user_pool_domain_response() :: #{binary() => any()}.
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% associate_software_token_request() :: #{
-%%   <<"AccessToken">> => string(),
-%%   <<"Session">> => string()
-%% }
--type associate_software_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_forgot_password_request() :: #{
-%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
-%%   <<"ClientId">> := string(),
-%%   <<"ClientMetadata">> => map(),
-%%   <<"ConfirmationCode">> := string(),
-%%   <<"Password">> := string(),
-%%   <<"SecretHash">> => string(),
-%%   <<"UserContextData">> => user_context_data_type(),
-%%   <<"Username">> := string()
-%% }
--type confirm_forgot_password_request() :: #{binary() => any()}.
-
-%% Example:
-%% mfa_option_type() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"DeliveryMedium">> => list(any())
-%% }
--type mfa_option_type() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioned_limit_response() :: #{
-%%   <<"Limit">> => limit_type()
-%% }
--type update_provisioned_limit_response() :: #{binary() => any()}.
-
-%% Example:
-%% code_delivery_failure_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type code_delivery_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_resource_server_response() :: #{
-%%   <<"ResourceServer">> => resource_server_type()
-%% }
--type create_resource_server_response() :: #{binary() => any()}.
-
-%% Example:
-%% forgot_password_response() :: #{
-%%   <<"CodeDeliveryDetails">> => code_delivery_details_type()
-%% }
--type forgot_password_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_managed_login_branding_request() :: #{
-%%   <<"Assets">> => list(asset_type()),
-%%   <<"ClientId">> := string(),
-%%   <<"Settings">> => any(),
-%%   <<"UseCognitoProvidedValues">> => boolean(),
+%% update_user_pool_replica_request() :: #{
+%%   <<"RegionName">> := string(),
+%%   <<"Status">> := list(any()),
 %%   <<"UserPoolId">> := string()
 %% }
--type create_managed_login_branding_request() :: #{binary() => any()}.
+-type update_user_pool_replica_request() :: #{binary() => any()}.
 
 %% Example:
-%% schema_attribute_type() :: #{
-%%   <<"AttributeDataType">> => list(any()),
-%%   <<"DeveloperOnlyAttribute">> => boolean(),
-%%   <<"Mutable">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"NumberAttributeConstraints">> => number_attribute_constraints_type(),
-%%   <<"Required">> => boolean(),
-%%   <<"StringAttributeConstraints">> => string_attribute_constraints_type()
+%% update_user_pool_replica_response() :: #{
+%%   <<"UserPoolReplica">> => user_pool_replica_type()
 %% }
--type schema_attribute_type() :: #{binary() => any()}.
+-type update_user_pool_replica_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_web_authn_credentials_request() :: #{
-%%   <<"AccessToken">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% update_user_pool_request() :: #{
+%%   <<"AccountRecoverySetting">> => account_recovery_setting_type(),
+%%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
+%%   <<"AutoVerifiedAttributes">> => list(list(any())()),
+%%   <<"DeletionProtection">> => list(any()),
+%%   <<"DeviceConfiguration">> => device_configuration_type(),
+%%   <<"EmailConfiguration">> => email_configuration_type(),
+%%   <<"EmailVerificationMessage">> => string(),
+%%   <<"EmailVerificationSubject">> => string(),
+%%   <<"IssuerConfiguration">> => issuer_configuration_type(),
+%%   <<"KeyConfiguration">> => key_configuration_type(),
+%%   <<"LambdaConfig">> => lambda_config_type(),
+%%   <<"MfaConfiguration">> => list(any()),
+%%   <<"Policies">> => user_pool_policy_type(),
+%%   <<"PoolName">> => string(),
+%%   <<"SmsAuthenticationMessage">> => string(),
+%%   <<"SmsConfiguration">> => sms_configuration_type(),
+%%   <<"SmsVerificationMessage">> => string(),
+%%   <<"UserAttributeUpdateSettings">> => user_attribute_update_settings_type(),
+%%   <<"UserPoolAddOns">> => user_pool_add_ons_type(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"UserPoolTags">> => map(),
+%%   <<"UserPoolTier">> => list(any()),
+%%   <<"VerificationMessageTemplate">> => verification_message_template_type()
 %% }
--type list_web_authn_credentials_request() :: #{binary() => any()}.
+-type update_user_pool_request() :: #{binary() => any()}.
 
 %% Example:
-%% web_authn_origin_not_allowed_exception() :: #{
-%%   <<"message">> => string()
+%% update_user_pool_response() :: #{
+
 %% }
--type web_authn_origin_not_allowed_exception() :: #{binary() => any()}.
+-type update_user_pool_response() :: #{binary() => any()}.
 
 %% Example:
-%% account_takeover_action_type() :: #{
-%%   <<"EventAction">> => list(any()),
-%%   <<"Notify">> => boolean()
+%% user_attribute_update_settings_type() :: #{
+%%   <<"AttributesRequireVerificationBeforeUpdate">> => list(list(any())())
 %% }
--type account_takeover_action_type() :: #{binary() => any()}.
+-type user_attribute_update_settings_type() :: #{binary() => any()}.
 
 %% Example:
-%% update_identity_provider_request() :: #{
-%%   <<"AttributeMapping">> => map(),
-%%   <<"IdpIdentifiers">> => list(string()),
-%%   <<"ProviderDetails">> => map(),
-%%   <<"ProviderName">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type update_identity_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% context_data_type() :: #{
+%% user_context_data_type() :: #{
 %%   <<"EncodedData">> => string(),
-%%   <<"HttpHeaders">> => list(http_header()),
-%%   <<"IpAddress">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"ServerPath">> => string()
+%%   <<"IpAddress">> => string()
 %% }
--type context_data_type() :: #{binary() => any()}.
+-type user_context_data_type() :: #{binary() => any()}.
 
 %% Example:
-%% admin_get_device_request() :: #{
-%%   <<"DeviceKey">> := string(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_get_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_response() :: #{
-%%   <<"Groups">> => list(group_type()),
-%%   <<"NextToken">> => string()
-%% }
--type list_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% admin_initiate_auth_response() :: #{
-%%   <<"AuthenticationResult">> => authentication_result_type(),
-%%   <<"AvailableChallenges">> => list(list(any())()),
-%%   <<"ChallengeName">> => list(any()),
-%%   <<"ChallengeParameters">> => map(),
-%%   <<"Session">> => string()
-%% }
--type admin_initiate_auth_response() :: #{binary() => any()}.
-
-%% Example:
-%% failover_type() :: #{
-%%   <<"PrimaryRoute53HealthCheckId">> => string(),
-%%   <<"SecondaryRegion">> => string()
-%% }
--type failover_type() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_request() :: #{
-%%   <<"GroupName">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type get_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_sign_up_request() :: #{
-%%   <<"AnalyticsMetadata">> => analytics_metadata_type(),
-%%   <<"ClientId">> := string(),
-%%   <<"ClientMetadata">> => map(),
-%%   <<"ConfirmationCode">> := string(),
-%%   <<"ForceAliasCreation">> => boolean(),
-%%   <<"SecretHash">> => string(),
-%%   <<"Session">> => string(),
-%%   <<"UserContextData">> => user_context_data_type(),
-%%   <<"Username">> := string()
-%% }
--type confirm_sign_up_request() :: #{binary() => any()}.
-
-%% Example:
-%% respond_to_auth_challenge_response() :: #{
-%%   <<"AuthenticationResult">> => authentication_result_type(),
-%%   <<"ChallengeName">> => list(any()),
-%%   <<"ChallengeParameters">> => map(),
-%%   <<"Session">> => string()
-%% }
--type respond_to_auth_challenge_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_terms_response() :: #{
-%%   <<"Terms">> => terms_type()
-%% }
--type describe_terms_response() :: #{binary() => any()}.
-
-%% Example:
-%% admin_forget_device_request() :: #{
-%%   <<"DeviceKey">> := string(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_forget_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_web_authn_credential_request() :: #{
-%%   <<"AccessToken">> := string(),
-%%   <<"CredentialId">> := string()
-%% }
--type delete_web_authn_credential_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_groups_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type list_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% set_risk_configuration_response() :: #{
-%%   <<"RiskConfiguration">> => risk_configuration_type()
-%% }
--type set_risk_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_web_authn_credentials_response() :: #{
-%%   <<"Credentials">> => list(web_authn_credential_description()),
-%%   <<"NextToken">> => string()
-%% }
--type list_web_authn_credentials_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_sms_role_trust_relationship_exception() :: #{
+%% user_import_in_progress_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_sms_role_trust_relationship_exception() :: #{binary() => any()}.
+-type user_import_in_progress_exception() :: #{binary() => any()}.
 
 %% Example:
-%% admin_list_user_auth_events_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
+%% user_import_job_type() :: #{
+%%   <<"CloudWatchLogsRoleArn">> => string(),
+%%   <<"CompletionDate">> => non_neg_integer(),
+%%   <<"CompletionMessage">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"FailedUsers">> => float(),
+%%   <<"ImportedUsers">> => float(),
+%%   <<"JobId">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"PasswordHashingAlgorithm">> => list(any()),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"SkippedUsers">> => float(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserPoolId">> => string()
 %% }
--type admin_list_user_auth_events_request() :: #{binary() => any()}.
+-type user_import_job_type() :: #{binary() => any()}.
+
+%% Example:
+%% user_lambda_validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_lambda_validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% user_not_confirmed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_not_confirmed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% user_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_add_on_not_enabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_pool_add_on_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_add_ons_type() :: #{
+%%   <<"AdvancedSecurityAdditionalFlows">> => advanced_security_additional_flows_type(),
+%%   <<"AdvancedSecurityMode">> => list(any())
+%% }
+-type user_pool_add_ons_type() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_client_description() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"ClientName">> => string(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type user_pool_client_description() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_client_type() :: #{
+%%   <<"AccessTokenValidity">> => integer(),
+%%   <<"AllowedOAuthFlows">> => list(list(any())()),
+%%   <<"AllowedOAuthFlowsUserPoolClient">> => boolean(),
+%%   <<"AllowedOAuthScopes">> => list(string()),
+%%   <<"AnalyticsConfiguration">> => analytics_configuration_type(),
+%%   <<"AuthSessionValidity">> => integer(),
+%%   <<"CallbackURLs">> => list(string()),
+%%   <<"ClientId">> => string(),
+%%   <<"ClientName">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"DefaultRedirectURI">> => string(),
+%%   <<"EnablePropagateAdditionalUserContextData">> => boolean(),
+%%   <<"EnableTokenRevocation">> => boolean(),
+%%   <<"ExplicitAuthFlows">> => list(list(any())()),
+%%   <<"IdTokenValidity">> => integer(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"LogoutURLs">> => list(string()),
+%%   <<"PreventUserExistenceErrors">> => list(any()),
+%%   <<"ReadAttributes">> => list(string()),
+%%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
+%%   <<"RefreshTokenValidity">> => integer(),
+%%   <<"SupportedIdentityProviders">> => list(string()),
+%%   <<"TokenValidityUnits">> => token_validity_units_type(),
+%%   <<"UserPoolId">> => string(),
+%%   <<"WriteAttributes">> => list(string())
+%% }
+-type user_pool_client_type() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_description_type() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LambdaConfig">> => lambda_config_type(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ReplicaRegions">> => list(string()),
+%%   <<"Status">> => list(any())
+%% }
+-type user_pool_description_type() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_policy_type() :: #{
+%%   <<"PasswordPolicy">> => password_policy_type(),
+%%   <<"SignInPolicy">> => sign_in_policy_type()
+%% }
+-type user_pool_policy_type() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_replica_type() :: #{
+%%   <<"RegionName">> => string(),
+%%   <<"Role">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UserPoolArn">> => string()
+%% }
+-type user_pool_replica_type() :: #{binary() => any()}.
+
+%% Example:
+%% user_pool_tagging_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type user_pool_tagging_exception() :: #{binary() => any()}.
 
 %% Example:
 %% user_pool_type() :: #{
-%%   <<"SchemaAttributes">> => list(schema_attribute_type()),
-%%   <<"IssuerConfiguration">> => issuer_configuration_type(),
-%%   <<"Policies">> => user_pool_policy_type(),
-%%   <<"UserAttributeUpdateSettings">> => user_attribute_update_settings_type(),
-%%   <<"CustomDomain">> => string(),
-%%   <<"MfaConfiguration">> => list(any()),
-%%   <<"EstimatedNumberOfUsers">> => integer(),
-%%   <<"KeyConfiguration">> => key_configuration_type(),
-%%   <<"Id">> => string(),
-%%   <<"UserPoolTags">> => map(),
-%%   <<"EmailConfigurationFailure">> => string(),
-%%   <<"UserPoolAddOns">> => user_pool_add_ons_type(),
-%%   <<"VerificationMessageTemplate">> => verification_message_template_type(),
 %%   <<"AccountRecoverySetting">> => account_recovery_setting_type(),
-%%   <<"EmailVerificationMessage">> => string(),
+%%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
 %%   <<"AliasAttributes">> => list(list(any())()),
-%%   <<"EmailConfiguration">> => email_configuration_type(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"SmsConfigurationFailure">> => string(),
-%%   <<"UserPoolTier">> => list(any()),
-%%   <<"EmailVerificationSubject">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"AutoVerifiedAttributes">> => list(list(any())()),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"CustomDomain">> => string(),
+%%   <<"DeletionProtection">> => list(any()),
 %%   <<"DeviceConfiguration">> => device_configuration_type(),
-%%   <<"SmsConfiguration">> => sms_configuration_type(),
-%%   <<"UsernameConfiguration">> => username_configuration_type(),
-%%   <<"UsernameAttributes">> => list(list(any())()),
-%%   <<"SmsAuthenticationMessage">> => string(),
-%%   <<"Name">> => string(),
 %%   <<"Domain">> => string(),
+%%   <<"EmailConfiguration">> => email_configuration_type(),
+%%   <<"EmailConfigurationFailure">> => string(),
+%%   <<"EmailVerificationMessage">> => string(),
+%%   <<"EmailVerificationSubject">> => string(),
+%%   <<"EstimatedNumberOfUsers">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"IssuerConfiguration">> => issuer_configuration_type(),
+%%   <<"KeyConfiguration">> => key_configuration_type(),
+%%   <<"LambdaConfig">> => lambda_config_type(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"MfaConfiguration">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Policies">> => user_pool_policy_type(),
+%%   <<"SchemaAttributes">> => list(schema_attribute_type()),
+%%   <<"SmsAuthenticationMessage">> => string(),
+%%   <<"SmsConfiguration">> => sms_configuration_type(),
+%%   <<"SmsConfigurationFailure">> => string(),
 %%   <<"SmsVerificationMessage">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
-%%   <<"LambdaConfig">> => lambda_config_type(),
-%%   <<"DeletionProtection">> => list(any())
+%%   <<"UserAttributeUpdateSettings">> => user_attribute_update_settings_type(),
+%%   <<"UserPoolAddOns">> => user_pool_add_ons_type(),
+%%   <<"UserPoolTags">> => map(),
+%%   <<"UserPoolTier">> => list(any()),
+%%   <<"UsernameAttributes">> => list(list(any())()),
+%%   <<"UsernameConfiguration">> => username_configuration_type(),
+%%   <<"VerificationMessageTemplate">> => verification_message_template_type()
 %% }
 -type user_pool_type() :: #{binary() => any()}.
 
 %% Example:
-%% terms_exists_exception() :: #{
-%%   <<"message">> => string()
+%% user_type() :: #{
+%%   <<"Attributes">> => list(attribute_type()),
+%%   <<"Enabled">> => boolean(),
+%%   <<"MFAOptions">> => list(mfa_option_type()),
+%%   <<"UserCreateDate">> => non_neg_integer(),
+%%   <<"UserLastModifiedDate">> => non_neg_integer(),
+%%   <<"UserStatus">> => list(any()),
+%%   <<"Username">> => string()
 %% }
--type terms_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% precondition_not_met_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type precondition_not_met_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_pool_replica_response() :: #{
-%%   <<"UserPoolReplica">> => user_pool_replica_type()
-%% }
--type create_user_pool_replica_response() :: #{binary() => any()}.
-
-%% Example:
-%% admin_delete_user_attributes_response() :: #{
-
-%% }
--type admin_delete_user_attributes_response() :: #{binary() => any()}.
+-type user_type() :: #{binary() => any()}.
 
 %% Example:
 %% username_configuration_type() :: #{
@@ -3207,65 +3326,10 @@
 -type username_configuration_type() :: #{binary() => any()}.
 
 %% Example:
-%% account_takeover_actions_type() :: #{
-%%   <<"HighAction">> => account_takeover_action_type(),
-%%   <<"LowAction">> => account_takeover_action_type(),
-%%   <<"MediumAction">> => account_takeover_action_type()
-%% }
--type account_takeover_actions_type() :: #{binary() => any()}.
-
-%% Example:
-%% admin_set_user_mfa_preference_request() :: #{
-%%   <<"EmailMfaSettings">> => email_mfa_settings_type(),
-%%   <<"SMSMfaSettings">> => sms_mfa_settings_type(),
-%%   <<"SoftwareTokenMfaSettings">> => software_token_mfa_settings_type(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string(),
-%%   <<"WebAuthnMfaSettings">> => web_authn_mfa_settings_type()
-%% }
--type admin_set_user_mfa_preference_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_user_import_job_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"UserPoolId">> := string()
-%% }
--type stop_user_import_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_signing_certificate_request() :: #{
-%%   <<"UserPoolId">> := string()
-%% }
--type get_signing_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_password_exception() :: #{
+%% username_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_password_exception() :: #{binary() => any()}.
-
-%% Example:
-%% device_key_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type device_key_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_group_response() :: #{
-%%   <<"Group">> => group_type()
-%% }
--type update_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% risk_configuration_type() :: #{
-%%   <<"AccountTakeoverRiskConfiguration">> => account_takeover_risk_configuration_type(),
-%%   <<"ClientId">> => string(),
-%%   <<"CompromisedCredentialsRiskConfiguration">> => compromised_credentials_risk_configuration_type(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"RiskExceptionConfiguration">> => risk_exception_configuration_type(),
-%%   <<"UserPoolId">> => string()
-%% }
--type risk_configuration_type() :: #{binary() => any()}.
+-type username_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% verification_message_template_type() :: #{
@@ -3279,1510 +3343,1488 @@
 -type verification_message_template_type() :: #{binary() => any()}.
 
 %% Example:
-%% analytics_configuration_type() :: #{
-%%   <<"ApplicationArn">> => string(),
-%%   <<"ApplicationId">> => string(),
-%%   <<"ExternalId">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"UserDataShared">> => boolean()
+%% verify_software_token_request() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"FriendlyDeviceName">> => string(),
+%%   <<"Session">> => string(),
+%%   <<"UserCode">> := string()
 %% }
--type analytics_configuration_type() :: #{binary() => any()}.
+-type verify_software_token_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_group_response() :: #{
-%%   <<"Group">> => group_type()
+%% verify_software_token_response() :: #{
+%%   <<"Session">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type create_group_response() :: #{binary() => any()}.
+-type verify_software_token_response() :: #{binary() => any()}.
 
 %% Example:
-%% mfa_method_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type mfa_method_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% complete_web_authn_registration_response() :: #{
-
-%% }
--type complete_web_authn_registration_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_terms_response() :: #{
-%%   <<"Terms">> => terms_type()
-%% }
--type update_terms_response() :: #{binary() => any()}.
-
-%% Example:
-%% sms_configuration_type() :: #{
-%%   <<"ExternalId">> => string(),
-%%   <<"SnsCallerArn">> => string(),
-%%   <<"SnsRegion">> => string()
-%% }
--type sms_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% list_user_pool_clients_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UserPoolClients">> => list(user_pool_client_description())
-%% }
--type list_user_pool_clients_response() :: #{binary() => any()}.
-
-%% Example:
-%% provider_description() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"ProviderName">> => string(),
-%%   <<"ProviderType">> => list(any())
-%% }
--type provider_description() :: #{binary() => any()}.
-
-%% Example:
-%% admin_delete_user_request() :: #{
-%%   <<"UserPoolId">> := string(),
-%%   <<"Username">> := string()
-%% }
--type admin_delete_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% set_user_mfa_preference_request() :: #{
+%% verify_user_attribute_request() :: #{
 %%   <<"AccessToken">> := string(),
-%%   <<"EmailMfaSettings">> => email_mfa_settings_type(),
-%%   <<"SMSMfaSettings">> => sms_mfa_settings_type(),
-%%   <<"SoftwareTokenMfaSettings">> => software_token_mfa_settings_type(),
-%%   <<"WebAuthnMfaSettings">> => web_authn_mfa_settings_type()
+%%   <<"AttributeName">> := string(),
+%%   <<"Code">> := string()
 %% }
--type set_user_mfa_preference_request() :: #{binary() => any()}.
+-type verify_user_attribute_request() :: #{binary() => any()}.
 
 %% Example:
-%% unexpected_lambda_exception() :: #{
+%% verify_user_attribute_response() :: #{
+
+%% }
+-type verify_user_attribute_response() :: #{binary() => any()}.
+
+%% Example:
+%% web_authn_challenge_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type unexpected_lambda_exception() :: #{binary() => any()}.
+-type web_authn_challenge_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_device_response() :: #{
-%%   <<"Device">> => device_type()
+%% web_authn_client_mismatch_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_device_response() :: #{binary() => any()}.
+-type web_authn_client_mismatch_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_user_attribute_verification_code_response() :: #{
-%%   <<"CodeDeliveryDetails">> => code_delivery_details_type()
+%% web_authn_configuration_missing_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_user_attribute_verification_code_response() :: #{binary() => any()}.
+-type web_authn_configuration_missing_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_resource_servers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceServers">> => list(resource_server_type())
+%% web_authn_configuration_type() :: #{
+%%   <<"FactorConfiguration">> => list(any()),
+%%   <<"RelyingPartyId">> => string(),
+%%   <<"UserVerification">> => list(any())
 %% }
--type list_resource_servers_response() :: #{binary() => any()}.
+-type web_authn_configuration_type() :: #{binary() => any()}.
 
 %% Example:
-%% start_user_import_job_request() :: #{
-%%   <<"JobId">> := string(),
-%%   <<"UserPoolId">> := string()
+%% web_authn_credential_description() :: #{
+%%   <<"AuthenticatorAttachment">> => string(),
+%%   <<"AuthenticatorTransports">> => list(string()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CredentialId">> => string(),
+%%   <<"FriendlyCredentialName">> => string(),
+%%   <<"RelyingPartyId">> => string()
 %% }
--type start_user_import_job_request() :: #{binary() => any()}.
+-type web_authn_credential_description() :: #{binary() => any()}.
 
 %% Example:
-%% domain_description_type() :: #{
-%%   <<"AWSAccountId">> => string(),
-%%   <<"CloudFrontDistribution">> => string(),
-%%   <<"CustomDomainConfig">> => custom_domain_config_type(),
-%%   <<"Domain">> => string(),
-%%   <<"ManagedLoginVersion">> => integer(),
-%%   <<"Routing">> => routing_type(),
-%%   <<"S3Bucket">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UserPoolId">> => string(),
-%%   <<"Version">> => string()
+%% web_authn_credential_not_supported_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type domain_description_type() :: #{binary() => any()}.
+-type web_authn_credential_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% web_authn_mfa_settings_type() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type web_authn_mfa_settings_type() :: #{binary() => any()}.
+
+%% Example:
+%% web_authn_not_enabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type web_authn_not_enabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% web_authn_origin_not_allowed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type web_authn_origin_not_allowed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% web_authn_relying_party_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type web_authn_relying_party_mismatch_exception() :: #{binary() => any()}.
 
 -type add_custom_attributes_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_import_in_progress_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    user_import_in_progress_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type add_user_pool_client_secret_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type admin_add_user_to_group_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_confirm_sign_up_errors() ::
+    user_not_found_exception() | 
+    user_lambda_validation_exception() | 
     unexpected_lambda_exception() | 
-    internal_error_exception() | 
+    too_many_requests_exception() | 
+    too_many_failed_attempts_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    not_authorized_exception() | 
-    user_lambda_validation_exception() | 
     invalid_lambda_response_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    too_many_failed_attempts_exception().
+    internal_error_exception().
 
 -type admin_create_user_errors() ::
-    unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    invalid_password_exception() | 
-    precondition_not_met_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    code_delivery_failure_exception() | 
     username_exists_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    user_lambda_validation_exception() | 
+    unsupported_user_state_exception() | 
+    unexpected_lambda_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    precondition_not_met_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    invalid_lambda_response_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
     invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception() | 
-    unsupported_user_state_exception().
+    invalid_password_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
+    internal_error_exception() | 
+    code_delivery_failure_exception().
 
 -type admin_delete_user_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_delete_user_attributes_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_disable_provider_for_user_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     alias_exists_exception().
 
 -type admin_disable_user_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_enable_user_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_forget_device_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
     user_not_found_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_get_device_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_get_user_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
+
+-type admin_get_user_auth_factors_errors() ::
     user_not_found_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_initiate_auth_errors() ::
-    unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    mfa_method_not_found_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    invalid_lambda_response_exception() | 
     user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception() | 
-    invalid_email_role_access_policy_exception() | 
+    user_not_confirmed_exception() | 
+    user_lambda_validation_exception() | 
     unsupported_operation_exception() | 
-    user_not_confirmed_exception().
+    unexpected_lambda_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    mfa_method_not_found_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    internal_error_exception().
 
 -type admin_link_provider_for_user_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     alias_exists_exception().
 
 -type admin_list_devices_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_list_groups_for_user_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_list_user_auth_events_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
     user_pool_add_on_not_enabled_exception() | 
-    not_authorized_exception() | 
     user_not_found_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_remove_user_from_group_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_reset_user_password_errors() ::
+    user_not_found_exception() | 
+    user_lambda_validation_exception() | 
     unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    invalid_lambda_response_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
     invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception() | 
-    invalid_email_role_access_policy_exception().
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    internal_error_exception().
 
 -type admin_respond_to_auth_challenge_errors() ::
-    unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    mfa_method_not_found_exception() | 
-    invalid_password_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    software_token_mfa_not_found_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    expired_code_exception() | 
-    invalid_lambda_response_exception() | 
     user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    code_mismatch_exception() | 
-    invalid_sms_role_access_policy_exception() | 
+    user_not_confirmed_exception() | 
+    user_lambda_validation_exception() | 
+    unexpected_lambda_exception() | 
     too_many_requests_exception() | 
-    alias_exists_exception() | 
+    software_token_mfa_not_found_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     password_history_policy_violation_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    mfa_method_not_found_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    invalid_password_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
     invalid_email_role_access_policy_exception() | 
-    user_not_confirmed_exception().
+    internal_error_exception() | 
+    expired_code_exception() | 
+    code_mismatch_exception() | 
+    alias_exists_exception().
 
 -type admin_set_user_mfa_preference_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    user_not_confirmed_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_set_user_password_errors() ::
-    internal_error_exception() | 
-    invalid_password_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_history_policy_violation_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    password_history_policy_violation_exception().
+    invalid_password_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_set_user_settings_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_update_auth_event_feedback_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
     user_pool_add_on_not_enabled_exception() | 
-    not_authorized_exception() | 
     user_not_found_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_update_device_status_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
     user_not_found_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_update_user_attributes_errors() ::
+    user_not_found_exception() | 
+    user_lambda_validation_exception() | 
     unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    invalid_lambda_response_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
     invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception() | 
-    alias_exists_exception() | 
-    invalid_email_role_access_policy_exception().
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    internal_error_exception() | 
+    alias_exists_exception().
 
 -type admin_user_global_sign_out_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type associate_software_token_errors() ::
-    internal_error_exception() | 
-    concurrent_modification_exception() | 
     software_token_mfa_not_found_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    forbidden_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception() | 
+    concurrent_modification_exception().
 
 -type change_password_errors() ::
-    internal_error_exception() | 
-    invalid_password_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
+    password_history_policy_violation_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception() | 
-    password_history_policy_violation_exception() | 
-    user_not_confirmed_exception().
+    limit_exceeded_exception() | 
+    invalid_password_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type complete_web_authn_registration_errors() ::
-    internal_error_exception() | 
+    web_authn_relying_party_mismatch_exception() | 
     web_authn_origin_not_allowed_exception() | 
-    limit_exceeded_exception() | 
     web_authn_not_enabled_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    not_authorized_exception() | 
     web_authn_credential_not_supported_exception() | 
     web_authn_client_mismatch_exception() | 
-    password_reset_required_exception() | 
+    web_authn_challenge_not_found_exception() | 
     too_many_requests_exception() | 
-    web_authn_relying_party_mismatch_exception() | 
-    forbidden_exception() | 
-    web_authn_challenge_not_found_exception().
+    password_reset_required_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type confirm_device_errors() ::
-    internal_error_exception() | 
-    device_key_exists_exception() | 
-    invalid_password_exception() | 
     username_exists_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
-    invalid_lambda_response_exception() | 
     user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
+    user_not_confirmed_exception() | 
     too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_password_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
+    internal_error_exception() | 
     forbidden_exception() | 
-    user_not_confirmed_exception().
+    device_key_exists_exception().
 
 -type confirm_forgot_password_errors() ::
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    user_lambda_validation_exception() | 
     unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    invalid_password_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    too_many_failed_attempts_exception() | 
+    resource_not_found_exception() | 
+    password_history_policy_violation_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    expired_code_exception() | 
+    limit_exceeded_exception() | 
+    invalid_password_exception() | 
+    invalid_parameter_exception() | 
     invalid_lambda_response_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    code_mismatch_exception() | 
-    too_many_requests_exception() | 
+    internal_error_exception() | 
     forbidden_exception() | 
-    password_history_policy_violation_exception() | 
-    user_not_confirmed_exception() | 
-    too_many_failed_attempts_exception().
+    expired_code_exception() | 
+    code_mismatch_exception().
 
 -type confirm_sign_up_errors() ::
+    user_not_found_exception() | 
+    user_lambda_validation_exception() | 
     unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    too_many_failed_attempts_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    expired_code_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
     invalid_lambda_response_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    code_mismatch_exception() | 
-    too_many_requests_exception() | 
-    alias_exists_exception() | 
+    internal_error_exception() | 
     forbidden_exception() | 
-    too_many_failed_attempts_exception().
+    expired_code_exception() | 
+    code_mismatch_exception() | 
+    alias_exists_exception().
 
 -type create_group_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    group_exists_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
-
--type create_identity_provider_errors() ::
-    internal_error_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    not_authorized_exception() | 
-    resource_not_found_exception() | 
+    internal_error_exception() | 
+    group_exists_exception().
+
+-type create_identity_provider_errors() ::
     too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     duplicate_provider_exception().
 
 -type create_managed_login_branding_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
     managed_login_branding_exists_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type create_resource_server_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type create_terms_errors() ::
-    internal_error_exception() | 
+    too_many_requests_exception() | 
     terms_exists_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type create_user_import_job_errors() ::
-    internal_error_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     precondition_not_met_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type create_user_pool_errors() ::
-    internal_error_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
     user_pool_tagging_exception() | 
-    feature_unavailable_in_tier_exception() | 
-    tier_change_not_allowed_exception() | 
-    invalid_sms_role_access_policy_exception() | 
     too_many_requests_exception() | 
-    invalid_email_role_access_policy_exception().
+    tier_change_not_allowed_exception() | 
+    not_authorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    invalid_parameter_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception().
 
 -type create_user_pool_client_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    not_authorized_exception() | 
-    invalid_o_auth_flow_exception() | 
-    feature_unavailable_in_tier_exception() | 
+    too_many_requests_exception() | 
     scope_does_not_exist_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_o_auth_flow_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception().
 
 -type create_user_pool_domain_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     feature_unavailable_in_tier_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type create_user_pool_replica_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    user_pool_tagging_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_pool_tagging_exception() | 
-    feature_unavailable_in_tier_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception().
 
 -type delete_group_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type delete_identity_provider_errors() ::
-    internal_error_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
     unsupported_identity_provider_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type delete_managed_login_branding_errors() ::
-    internal_error_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type delete_resource_server_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type delete_terms_errors() ::
-    internal_error_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type delete_user_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception() | 
-    user_not_confirmed_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type delete_user_attributes_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception() | 
-    user_not_confirmed_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type delete_user_pool_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_import_in_progress_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    user_import_in_progress_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type delete_user_pool_client_errors() ::
-    internal_error_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type delete_user_pool_client_secret_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type delete_user_pool_domain_errors() ::
-    internal_error_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type delete_user_pool_replica_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type delete_web_authn_credential_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     forbidden_exception().
 
 -type describe_identity_provider_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_managed_login_branding_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_managed_login_branding_by_client_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_resource_server_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_risk_configuration_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
     user_pool_add_on_not_enabled_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_terms_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_user_import_job_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_user_pool_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_pool_tagging_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_pool_tagging_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_user_pool_client_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_user_pool_domain_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type forget_device_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
     user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
+    user_not_confirmed_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception() | 
-    user_not_confirmed_exception().
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type forgot_password_errors() ::
+    user_not_found_exception() | 
+    user_lambda_validation_exception() | 
     unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    code_delivery_failure_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    invalid_lambda_response_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
     invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    internal_error_exception() | 
     forbidden_exception() | 
-    invalid_email_role_access_policy_exception().
+    code_delivery_failure_exception().
 
 -type get_csv_header_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_device_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
     user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
+    user_not_confirmed_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception() | 
-    user_not_confirmed_exception().
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type get_group_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_identity_provider_by_identifier_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_log_delivery_configuration_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_provisioned_limit_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_signing_certificate_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_tokens_from_refresh_token_errors() ::
+    user_not_found_exception() | 
+    user_lambda_validation_exception() | 
     unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    refresh_token_reuse_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_lambda_validation_exception() | 
+    invalid_parameter_exception() | 
     invalid_lambda_response_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    refresh_token_reuse_exception() | 
+    internal_error_exception() | 
     forbidden_exception().
 
 -type get_ui_customization_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type get_user_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception() | 
-    user_not_confirmed_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type get_user_attribute_verification_code_errors() ::
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    user_lambda_validation_exception() | 
     unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    code_delivery_failure_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    invalid_lambda_response_exception() | 
-    user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
     invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
     invalid_email_role_access_policy_exception() | 
-    user_not_confirmed_exception().
+    internal_error_exception() | 
+    forbidden_exception() | 
+    code_delivery_failure_exception().
 
 -type get_user_auth_factors_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception() | 
-    user_not_confirmed_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type get_user_pool_mfa_config_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type global_sign_out_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_confirmed_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception() | 
-    user_not_confirmed_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type initiate_auth_errors() ::
-    unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    invalid_lambda_response_exception() | 
     user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception() | 
-    invalid_email_role_access_policy_exception() | 
+    user_not_confirmed_exception() | 
+    user_lambda_validation_exception() | 
     unsupported_operation_exception() | 
-    user_not_confirmed_exception().
+    unexpected_lambda_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type list_devices_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
     user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
+    user_not_confirmed_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception() | 
-    user_not_confirmed_exception().
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type list_groups_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_identity_providers_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_resource_servers_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_terms_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_user_import_jobs_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_user_pool_client_secrets_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_user_pool_clients_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_user_pool_replicas_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_user_pools_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
     not_authorized_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_users_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_users_in_group_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_web_authn_credentials_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    password_reset_required_exception() | 
-    too_many_requests_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     forbidden_exception().
 
 -type resend_confirmation_code_errors() ::
+    user_not_found_exception() | 
+    user_lambda_validation_exception() | 
     unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    code_delivery_failure_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    invalid_lambda_response_exception() | 
-    user_not_found_exception() | 
-    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
     invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    internal_error_exception() | 
     forbidden_exception() | 
-    invalid_email_role_access_policy_exception().
+    code_delivery_failure_exception().
 
 -type respond_to_auth_challenge_errors() ::
-    unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    mfa_method_not_found_exception() | 
-    invalid_password_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    software_token_mfa_not_found_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    expired_code_exception() | 
-    invalid_lambda_response_exception() | 
     user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    code_mismatch_exception() | 
-    invalid_sms_role_access_policy_exception() | 
+    user_not_confirmed_exception() | 
+    user_lambda_validation_exception() | 
+    unexpected_lambda_exception() | 
     too_many_requests_exception() | 
-    alias_exists_exception() | 
-    forbidden_exception() | 
+    software_token_mfa_not_found_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     password_history_policy_violation_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    mfa_method_not_found_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
+    invalid_sms_role_access_policy_exception() | 
+    invalid_password_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
     invalid_email_role_access_policy_exception() | 
-    user_not_confirmed_exception().
+    internal_error_exception() | 
+    forbidden_exception() | 
+    expired_code_exception() | 
+    code_mismatch_exception() | 
+    alias_exists_exception().
 
 -type revoke_token_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception() | 
-    unauthorized_exception() | 
+    unsupported_token_type_exception() | 
     unsupported_operation_exception() | 
-    unsupported_token_type_exception().
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    operation_not_enabled_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type set_log_delivery_configuration_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
-    feature_unavailable_in_tier_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception().
 
 -type set_risk_configuration_errors() ::
-    internal_error_exception() | 
-    code_delivery_failure_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
     user_pool_add_on_not_enabled_exception() | 
-    not_authorized_exception() | 
-    resource_not_found_exception() | 
     too_many_requests_exception() | 
-    invalid_email_role_access_policy_exception().
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    internal_error_exception() | 
+    code_delivery_failure_exception().
 
 -type set_ui_customization_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type set_user_mfa_preference_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    forbidden_exception() | 
-    user_not_confirmed_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type set_user_pool_mfa_config_errors() ::
-    internal_error_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    feature_unavailable_in_tier_exception() | 
-    resource_not_found_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
     invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    concurrent_modification_exception().
 
 -type set_user_settings_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    forbidden_exception() | 
-    user_not_confirmed_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type sign_up_errors() ::
-    unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    invalid_password_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    code_delivery_failure_exception() | 
-    limit_exceeded_exception() | 
     username_exists_exception() | 
-    invalid_parameter_exception() | 
+    user_lambda_validation_exception() | 
+    unexpected_lambda_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    invalid_lambda_response_exception() | 
-    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
     invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception() | 
+    invalid_password_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
+    invalid_email_role_access_policy_exception() | 
+    internal_error_exception() | 
     forbidden_exception() | 
-    invalid_email_role_access_policy_exception().
+    code_delivery_failure_exception().
 
 -type start_user_import_job_errors() ::
-    internal_error_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     precondition_not_met_exception() | 
-    invalid_parameter_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type start_web_authn_registration_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
     web_authn_not_enabled_exception() | 
-    invalid_parameter_exception() | 
+    web_authn_configuration_missing_exception() | 
+    too_many_requests_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    web_authn_configuration_missing_exception() | 
-    password_reset_required_exception() | 
-    too_many_requests_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     forbidden_exception().
 
 -type stop_user_import_job_errors() ::
-    internal_error_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     precondition_not_met_exception() | 
-    invalid_parameter_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type tag_resource_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type untag_resource_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type update_auth_event_feedback_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
     user_pool_add_on_not_enabled_exception() | 
-    not_authorized_exception() | 
     user_not_found_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type update_device_status_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
     user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
+    user_not_confirmed_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception() | 
-    user_not_confirmed_exception().
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type update_group_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type update_identity_provider_errors() ::
-    internal_error_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
     unsupported_identity_provider_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type update_managed_login_branding_errors() ::
-    internal_error_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type update_provisioned_limit_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    not_authorized_exception() | 
+    too_many_requests_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type update_resource_server_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type update_terms_errors() ::
-    internal_error_exception() | 
+    too_many_requests_exception() | 
     terms_exists_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type update_user_attributes_errors() ::
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    user_lambda_validation_exception() | 
     unexpected_lambda_exception() | 
-    internal_error_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    code_delivery_failure_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    user_lambda_validation_exception() | 
-    expired_code_exception() | 
-    invalid_lambda_response_exception() | 
-    user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    code_mismatch_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
     invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception() | 
-    alias_exists_exception() | 
-    forbidden_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
     invalid_email_role_access_policy_exception() | 
-    user_not_confirmed_exception().
+    internal_error_exception() | 
+    forbidden_exception() | 
+    expired_code_exception() | 
+    code_mismatch_exception() | 
+    code_delivery_failure_exception() | 
+    alias_exists_exception().
 
 -type update_user_pool_errors() ::
-    internal_error_exception() | 
-    invalid_sms_role_trust_relationship_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    not_authorized_exception() | 
     user_pool_tagging_exception() | 
-    feature_unavailable_in_tier_exception() | 
+    user_import_in_progress_exception() | 
+    too_many_requests_exception() | 
     tier_change_not_allowed_exception() | 
     resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_sms_role_trust_relationship_exception() | 
     invalid_sms_role_access_policy_exception() | 
-    too_many_requests_exception() | 
+    invalid_parameter_exception() | 
     invalid_email_role_access_policy_exception() | 
-    user_import_in_progress_exception().
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    concurrent_modification_exception().
 
 -type update_user_pool_client_errors() ::
-    internal_error_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    not_authorized_exception() | 
-    invalid_o_auth_flow_exception() | 
-    feature_unavailable_in_tier_exception() | 
+    too_many_requests_exception() | 
     scope_does_not_exist_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    invalid_o_auth_flow_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    concurrent_modification_exception().
 
 -type update_user_pool_domain_errors() ::
-    internal_error_exception() | 
-    concurrent_modification_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     feature_unavailable_in_tier_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    concurrent_modification_exception().
 
 -type update_user_pool_replica_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type verify_software_token_errors() ::
-    internal_error_exception() | 
-    enable_software_token_mfa_exception() | 
-    software_token_mfa_not_found_exception() | 
-    invalid_parameter_exception() | 
-    operation_not_enabled_exception() | 
-    invalid_user_pool_configuration_exception() | 
-    not_authorized_exception() | 
     user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    code_mismatch_exception() | 
+    user_not_confirmed_exception() | 
     too_many_requests_exception() | 
+    software_token_mfa_not_found_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_user_pool_configuration_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     forbidden_exception() | 
-    user_not_confirmed_exception().
+    enable_software_token_mfa_exception() | 
+    code_mismatch_exception().
 
 -type verify_user_attribute_errors() ::
-    internal_error_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
     operation_not_enabled_exception() | 
     not_authorized_exception() | 
-    expired_code_exception() | 
-    user_not_found_exception() | 
-    password_reset_required_exception() | 
-    resource_not_found_exception() | 
-    code_mismatch_exception() | 
-    too_many_requests_exception() | 
-    alias_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
     forbidden_exception() | 
-    user_not_confirmed_exception().
+    expired_code_exception() | 
+    code_mismatch_exception() | 
+    alias_exists_exception().
 
 %%====================================================================
 %% API
@@ -5329,6 +5371,45 @@ admin_get_user(Client, Input)
 admin_get_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminGetUser">>, Input, Options).
+
+%% @doc Lists the authentication options for a user in a user pool.
+%%
+%% Returns the
+%% following:
+%%
+%% The user's multi-factor authentication (MFA) preferences.
+%%
+%% The user's options for choice-based authentication with the
+%% `USER_AUTH' flow.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec admin_get_user_auth_factors(aws_client:aws_client(), admin_get_user_auth_factors_request()) ->
+    {ok, admin_get_user_auth_factors_response(), tuple()} |
+    {error, any()} |
+    {error, admin_get_user_auth_factors_errors(), tuple()}.
+admin_get_user_auth_factors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    admin_get_user_auth_factors(Client, Input, []).
+
+-spec admin_get_user_auth_factors(aws_client:aws_client(), admin_get_user_auth_factors_request(), proplists:proplist()) ->
+    {ok, admin_get_user_auth_factors_response(), tuple()} |
+    {error, any()} |
+    {error, admin_get_user_auth_factors_errors(), tuple()}.
+admin_get_user_auth_factors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AdminGetUserAuthFactors">>, Input, Options).
 
 %% @doc Starts sign-in for applications with a server-side component, for
 %% example a

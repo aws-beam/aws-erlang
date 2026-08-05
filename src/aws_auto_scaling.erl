@@ -160,35 +160,54 @@
 
 
 %% Example:
-%% step_adjustment() :: #{
-%%   <<"MetricIntervalLowerBound">> => float(),
-%%   <<"MetricIntervalUpperBound">> => float(),
-%%   <<"ScalingAdjustment">> => integer()
+%% accelerator_count_request() :: #{
+%%   <<"Max">> => integer(),
+%%   <<"Min">> => integer()
 %% }
--type step_adjustment() :: #{binary() => any()}.
+-type accelerator_count_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_lifecycle_hooks_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"LifecycleHookNames">> => list(string())
+%% accelerator_total_memory_mi_b_request() :: #{
+%%   <<"Max">> => integer(),
+%%   <<"Min">> => integer()
 %% }
--type describe_lifecycle_hooks_type() :: #{binary() => any()}.
+-type accelerator_total_memory_mi_b_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_metric_collection_types_answer() :: #{
-%%   <<"Granularities">> => list(metric_granularity_type()),
-%%   <<"Metrics">> => list(metric_collection_type())
+%% active_instance_refresh_not_found_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_metric_collection_types_answer() :: #{binary() => any()}.
+-type active_instance_refresh_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
-%% describe_account_limits_answer() :: #{
-%%   <<"MaxNumberOfAutoScalingGroups">> => integer(),
-%%   <<"MaxNumberOfLaunchConfigurations">> => integer(),
-%%   <<"NumberOfAutoScalingGroups">> => integer(),
-%%   <<"NumberOfLaunchConfigurations">> => integer()
+%% activities_type() :: #{
+%%   <<"Activities">> := list(activity()),
+%%   <<"NextToken">> => string()
 %% }
--type describe_account_limits_answer() :: #{binary() => any()}.
+-type activities_type() :: #{binary() => any()}.
+
+%% Example:
+%% activity() :: #{
+%%   <<"ActivityId">> => string(),
+%%   <<"AutoScalingGroupARN">> => string(),
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"AutoScalingGroupState">> => string(),
+%%   <<"Cause">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Details">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"Progress">> => integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"StatusCode">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type activity() :: #{binary() => any()}.
+
+%% Example:
+%% activity_type() :: #{
+%%   <<"Activity">> => activity()
+%% }
+-type activity_type() :: #{binary() => any()}.
 
 %% Example:
 %% adjustment_type() :: #{
@@ -197,63 +216,314 @@
 -type adjustment_type() :: #{binary() => any()}.
 
 %% Example:
-%% describe_load_balancers_request() :: #{
+%% alarm() :: #{
+%%   <<"AlarmARN">> => string(),
+%%   <<"AlarmName">> => string()
+%% }
+-type alarm() :: #{binary() => any()}.
+
+%% Example:
+%% alarm_specification() :: #{
+%%   <<"Alarms">> => list(string())
+%% }
+-type alarm_specification() :: #{binary() => any()}.
+
+%% Example:
+%% already_exists_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% attach_instances_query() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceIds">> => list(string())
+%% }
+-type attach_instances_query() :: #{binary() => any()}.
+
+%% Example:
+%% attach_load_balancer_target_groups_result_type() :: #{
+
+%% }
+-type attach_load_balancer_target_groups_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% attach_load_balancer_target_groups_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"TargetGroupARNs">> := list(string())
+%% }
+-type attach_load_balancer_target_groups_type() :: #{binary() => any()}.
+
+%% Example:
+%% attach_load_balancers_result_type() :: #{
+
+%% }
+-type attach_load_balancers_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% attach_load_balancers_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"LoadBalancerNames">> := list(string())
+%% }
+-type attach_load_balancers_type() :: #{binary() => any()}.
+
+%% Example:
+%% attach_traffic_sources_result_type() :: #{
+
+%% }
+-type attach_traffic_sources_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% attach_traffic_sources_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"SkipZonalShiftValidation">> => boolean(),
+%%   <<"TrafficSources">> := list(traffic_source_identifier())
+%% }
+-type attach_traffic_sources_type() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group() :: #{
+%%   <<"AutoScalingGroupARN">> => string(),
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZoneImpairmentPolicy">> => availability_zone_impairment_policy(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"CapacityRebalance">> => boolean(),
+%%   <<"CapacityReservationSpecification">> => capacity_reservation_specification(),
+%%   <<"Context">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DefaultCooldown">> => integer(),
+%%   <<"DefaultInstanceWarmup">> => integer(),
+%%   <<"DeletionProtection">> => list(any()),
+%%   <<"DesiredCapacity">> => integer(),
+%%   <<"DesiredCapacityType">> => string(),
+%%   <<"EnabledMetrics">> => list(enabled_metric()),
+%%   <<"HealthCheckGracePeriod">> => integer(),
+%%   <<"HealthCheckType">> => string(),
+%%   <<"InstanceLifecyclePolicy">> => instance_lifecycle_policy(),
+%%   <<"InstanceMaintenancePolicy">> => instance_maintenance_policy(),
+%%   <<"Instances">> => list(instance()),
+%%   <<"LaunchConfigurationName">> => string(),
+%%   <<"LaunchTemplate">> => launch_template_specification(),
+%%   <<"LoadBalancerNames">> => list(string()),
+%%   <<"MaxInstanceLifetime">> => integer(),
+%%   <<"MaxSize">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
+%%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
+%%   <<"PlacementGroup">> => string(),
+%%   <<"PredictedCapacity">> => integer(),
+%%   <<"ServiceLinkedRoleARN">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SuspendedProcesses">> => list(suspended_process()),
+%%   <<"Tags">> => list(tag_description()),
+%%   <<"TargetGroupARNs">> => list(string()),
+%%   <<"TerminationPolicies">> => list(string()),
+%%   <<"TrafficSources">> => list(traffic_source_identifier()),
+%%   <<"VPCZoneIdentifier">> => string(),
+%%   <<"WarmPoolConfiguration">> => warm_pool_configuration(),
+%%   <<"WarmPoolSize">> => integer()
+%% }
+-type auto_scaling_group() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_group_names_type() :: #{
+%%   <<"AutoScalingGroupNames">> => list(string()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IncludeInstances">> => boolean(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type describe_load_balancers_request() :: #{binary() => any()}.
+-type auto_scaling_group_names_type() :: #{binary() => any()}.
 
 %% Example:
-%% predictive_scaling_metric_specification() :: #{
-%%   <<"CustomizedCapacityMetricSpecification">> => predictive_scaling_customized_capacity_metric(),
-%%   <<"CustomizedLoadMetricSpecification">> => predictive_scaling_customized_load_metric(),
-%%   <<"CustomizedScalingMetricSpecification">> => predictive_scaling_customized_scaling_metric(),
-%%   <<"PredefinedLoadMetricSpecification">> => predictive_scaling_predefined_load_metric(),
-%%   <<"PredefinedMetricPairSpecification">> => predictive_scaling_predefined_metric_pair(),
-%%   <<"PredefinedScalingMetricSpecification">> => predictive_scaling_predefined_scaling_metric(),
-%%   <<"TargetValue">> => float()
+%% auto_scaling_groups_type() :: #{
+%%   <<"AutoScalingGroups">> := list(auto_scaling_group()),
+%%   <<"NextToken">> => string()
 %% }
--type predictive_scaling_metric_specification() :: #{binary() => any()}.
+-type auto_scaling_groups_type() :: #{binary() => any()}.
 
 %% Example:
-%% rollback_instance_refresh_answer() :: #{
+%% auto_scaling_instance_details() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"HealthStatus">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"LaunchConfigurationName">> => string(),
+%%   <<"LaunchTemplate">> => launch_template_specification(),
+%%   <<"LifecycleState">> => string(),
+%%   <<"ProtectedFromScaleIn">> => boolean(),
+%%   <<"WeightedCapacity">> => string()
+%% }
+-type auto_scaling_instance_details() :: #{binary() => any()}.
+
+%% Example:
+%% auto_scaling_instances_type() :: #{
+%%   <<"AutoScalingInstances">> => list(auto_scaling_instance_details()),
+%%   <<"NextToken">> => string()
+%% }
+-type auto_scaling_instances_type() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone_distribution() :: #{
+%%   <<"CapacityDistributionStrategy">> => list(any())
+%% }
+-type availability_zone_distribution() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone_impairment_policy() :: #{
+%%   <<"ImpairedZoneHealthCheckBehavior">> => list(any()),
+%%   <<"ZonalShiftEnabled">> => boolean()
+%% }
+-type availability_zone_impairment_policy() :: #{binary() => any()}.
+
+%% Example:
+%% baseline_ebs_bandwidth_mbps_request() :: #{
+%%   <<"Max">> => integer(),
+%%   <<"Min">> => integer()
+%% }
+-type baseline_ebs_bandwidth_mbps_request() :: #{binary() => any()}.
+
+%% Example:
+%% baseline_performance_factors_request() :: #{
+%%   <<"Cpu">> => cpu_performance_factor_request()
+%% }
+-type baseline_performance_factors_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_scheduled_action_answer() :: #{
+%%   <<"FailedScheduledActions">> => list(failed_scheduled_update_group_action_request())
+%% }
+-type batch_delete_scheduled_action_answer() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_scheduled_action_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ScheduledActionNames">> := list(string())
+%% }
+-type batch_delete_scheduled_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_scheduled_update_group_action_answer() :: #{
+%%   <<"FailedScheduledUpdateGroupActions">> => list(failed_scheduled_update_group_action_request())
+%% }
+-type batch_put_scheduled_update_group_action_answer() :: #{binary() => any()}.
+
+%% Example:
+%% batch_put_scheduled_update_group_action_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ScheduledUpdateGroupActions">> := list(scheduled_update_group_action_request())
+%% }
+-type batch_put_scheduled_update_group_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% block_device_mapping() :: #{
+%%   <<"DeviceName">> => string(),
+%%   <<"Ebs">> => ebs(),
+%%   <<"NoDevice">> => boolean(),
+%%   <<"VirtualName">> => string()
+%% }
+-type block_device_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_instance_refresh_answer() :: #{
 %%   <<"InstanceRefreshId">> => string()
 %% }
--type rollback_instance_refresh_answer() :: #{binary() => any()}.
+-type cancel_instance_refresh_answer() :: #{binary() => any()}.
 
 %% Example:
-%% describe_notification_configurations_type() :: #{
-%%   <<"AutoScalingGroupNames">> => list(string()),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
+%% cancel_instance_refresh_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"WaitForTransitioningInstances">> => boolean()
 %% }
--type describe_notification_configurations_type() :: #{binary() => any()}.
+-type cancel_instance_refresh_type() :: #{binary() => any()}.
 
 %% Example:
-%% policy_arn_type() :: #{
-%%   <<"Alarms">> => list(alarm()),
-%%   <<"PolicyARN">> => string()
+%% capacity_forecast() :: #{
+%%   <<"Timestamps">> => list(non_neg_integer()),
+%%   <<"Values">> => list(float())
 %% }
--type policy_arn_type() :: #{binary() => any()}.
+-type capacity_forecast() :: #{binary() => any()}.
 
 %% Example:
-%% instance_refresh() :: #{
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"DesiredConfiguration">> => desired_configuration(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InstanceRefreshId">> => string(),
-%%   <<"InstancesToUpdate">> => integer(),
-%%   <<"PercentageComplete">> => integer(),
-%%   <<"Preferences">> => refresh_preferences(),
-%%   <<"ProgressDetails">> => instance_refresh_progress_details(),
-%%   <<"RollbackDetails">> => rollback_details(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string(),
-%%   <<"Strategy">> => list(any())
+%% capacity_reservation_specification() :: #{
+%%   <<"CapacityReservationPreference">> => list(any()),
+%%   <<"CapacityReservationTarget">> => capacity_reservation_target()
 %% }
--type instance_refresh() :: #{binary() => any()}.
+-type capacity_reservation_specification() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_target() :: #{
+%%   <<"CapacityReservationIds">> => list(string()),
+%%   <<"CapacityReservationResourceGroupArns">> => list(string())
+%% }
+-type capacity_reservation_target() :: #{binary() => any()}.
+
+%% Example:
+%% complete_lifecycle_action_answer() :: #{
+
+%% }
+-type complete_lifecycle_action_answer() :: #{binary() => any()}.
+
+%% Example:
+%% complete_lifecycle_action_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LifecycleActionResult">> := string(),
+%%   <<"LifecycleActionToken">> => string(),
+%%   <<"LifecycleHookName">> := string()
+%% }
+-type complete_lifecycle_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% cpu_performance_factor_request() :: #{
+%%   <<"References">> => list(performance_factor_reference_request())
+%% }
+-type cpu_performance_factor_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_auto_scaling_group_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZoneImpairmentPolicy">> => availability_zone_impairment_policy(),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"CapacityRebalance">> => boolean(),
+%%   <<"CapacityReservationSpecification">> => capacity_reservation_specification(),
+%%   <<"Context">> => string(),
+%%   <<"DefaultCooldown">> => integer(),
+%%   <<"DefaultInstanceWarmup">> => integer(),
+%%   <<"DeletionProtection">> => list(any()),
+%%   <<"DesiredCapacity">> => integer(),
+%%   <<"DesiredCapacityType">> => string(),
+%%   <<"HealthCheckGracePeriod">> => integer(),
+%%   <<"HealthCheckType">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceLifecyclePolicy">> => instance_lifecycle_policy(),
+%%   <<"InstanceMaintenancePolicy">> => instance_maintenance_policy(),
+%%   <<"LaunchConfigurationName">> => string(),
+%%   <<"LaunchTemplate">> => launch_template_specification(),
+%%   <<"LifecycleHookSpecificationList">> => list(lifecycle_hook_specification()),
+%%   <<"LoadBalancerNames">> => list(string()),
+%%   <<"MaxInstanceLifetime">> => integer(),
+%%   <<"MaxSize">> := integer(),
+%%   <<"MinSize">> := integer(),
+%%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
+%%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
+%%   <<"PlacementGroup">> => string(),
+%%   <<"ServiceLinkedRoleARN">> => string(),
+%%   <<"SkipZonalShiftValidation">> => boolean(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetGroupARNs">> => list(string()),
+%%   <<"TerminationPolicies">> => list(string()),
+%%   <<"TrafficSources">> => list(traffic_source_identifier()),
+%%   <<"VPCZoneIdentifier">> => string()
+%% }
+-type create_auto_scaling_group_type() :: #{binary() => any()}.
 
 %% Example:
 %% create_launch_configuration_type() :: #{
@@ -280,395 +550,10 @@
 -type create_launch_configuration_type() :: #{binary() => any()}.
 
 %% Example:
-%% delete_warm_pool_answer() :: #{
-
-%% }
--type delete_warm_pool_answer() :: #{binary() => any()}.
-
-%% Example:
-%% instance_refresh_progress_details() :: #{
-%%   <<"LivePoolProgress">> => instance_refresh_live_pool_progress(),
-%%   <<"WarmPoolProgress">> => instance_refresh_warm_pool_progress()
-%% }
--type instance_refresh_progress_details() :: #{binary() => any()}.
-
-%% Example:
-%% tags_type() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag_description())
-%% }
--type tags_type() :: #{binary() => any()}.
-
-%% Example:
-%% traffic_source_identifier() :: #{
-%%   <<"Identifier">> => string(),
-%%   <<"Type">> => string()
-%% }
--type traffic_source_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% exit_standby_query() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"InstanceIds">> => list(string())
-%% }
--type exit_standby_query() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tags_type() :: #{
+%% create_or_update_tags_type() :: #{
 %%   <<"Tags">> := list(tag())
 %% }
--type delete_tags_type() :: #{binary() => any()}.
-
-%% Example:
-%% start_instance_refresh_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"DesiredConfiguration">> => desired_configuration(),
-%%   <<"Preferences">> => refresh_preferences(),
-%%   <<"Strategy">> => list(any())
-%% }
--type start_instance_refresh_type() :: #{binary() => any()}.
-
-%% Example:
-%% process_type() :: #{
-%%   <<"ProcessName">> => string()
-%% }
--type process_type() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scheduled_actions_type() :: #{
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ScheduledActionNames">> => list(string()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type describe_scheduled_actions_type() :: #{binary() => any()}.
-
-%% Example:
-%% block_device_mapping() :: #{
-%%   <<"DeviceName">> => string(),
-%%   <<"Ebs">> => ebs(),
-%%   <<"NoDevice">> => boolean(),
-%%   <<"VirtualName">> => string()
-%% }
--type block_device_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% metric() :: #{
-%%   <<"Dimensions">> => list(metric_dimension()),
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string()
-%% }
--type metric() :: #{binary() => any()}.
-
-%% Example:
-%% predictive_scaling_predefined_metric_pair() :: #{
-%%   <<"PredefinedMetricType">> => list(any()),
-%%   <<"ResourceLabel">> => string()
-%% }
--type predictive_scaling_predefined_metric_pair() :: #{binary() => any()}.
-
-%% Example:
-%% enter_standby_answer() :: #{
-%%   <<"Activities">> => list(activity())
-%% }
--type enter_standby_answer() :: #{binary() => any()}.
-
-%% Example:
-%% instance_reuse_policy() :: #{
-%%   <<"ReuseOnScaleIn">> => boolean()
-%% }
--type instance_reuse_policy() :: #{binary() => any()}.
-
-%% Example:
-%% alarm() :: #{
-%%   <<"AlarmARN">> => string(),
-%%   <<"AlarmName">> => string()
-%% }
--type alarm() :: #{binary() => any()}.
-
-%% Example:
-%% traffic_source_state() :: #{
-%%   <<"Identifier">> => string(),
-%%   <<"State">> => string(),
-%%   <<"TrafficSource">> => string(),
-%%   <<"Type">> => string()
-%% }
--type traffic_source_state() :: #{binary() => any()}.
-
-%% Example:
-%% baseline_performance_factors_request() :: #{
-%%   <<"Cpu">> => cpu_performance_factor_request()
-%% }
--type baseline_performance_factors_request() :: #{binary() => any()}.
-
-%% Example:
-%% metric_granularity_type() :: #{
-%%   <<"Granularity">> => string()
-%% }
--type metric_granularity_type() :: #{binary() => any()}.
-
-%% Example:
-%% availability_zone_impairment_policy() :: #{
-%%   <<"ImpairedZoneHealthCheckBehavior">> => list(any()),
-%%   <<"ZonalShiftEnabled">> => boolean()
-%% }
--type availability_zone_impairment_policy() :: #{binary() => any()}.
-
-%% Example:
-%% describe_warm_pool_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_warm_pool_type() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_hook() :: #{
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"DefaultResult">> => string(),
-%%   <<"GlobalTimeout">> => integer(),
-%%   <<"HeartbeatTimeout">> => integer(),
-%%   <<"LifecycleHookName">> => string(),
-%%   <<"LifecycleTransition">> => string(),
-%%   <<"NotificationMetadata">> => string(),
-%%   <<"NotificationTargetARN">> => string(),
-%%   <<"RoleARN">> => string()
-%% }
--type lifecycle_hook() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_traffic_sources_request() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TrafficSourceType">> => string()
-%% }
--type describe_traffic_sources_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_auto_scaling_group_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"ForceDelete">> => boolean()
-%% }
--type delete_auto_scaling_group_type() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_reservation_target() :: #{
-%%   <<"CapacityReservationIds">> => list(string()),
-%%   <<"CapacityReservationResourceGroupArns">> => list(string())
-%% }
--type capacity_reservation_target() :: #{binary() => any()}.
-
-%% Example:
-%% idempotent_parameter_mismatch_error() :: #{
-%%   <<"Message">> => string()
-%% }
--type idempotent_parameter_mismatch_error() :: #{binary() => any()}.
-
-%% Example:
-%% record_lifecycle_action_heartbeat_answer() :: #{
-
-%% }
--type record_lifecycle_action_heartbeat_answer() :: #{binary() => any()}.
-
-%% Example:
-%% describe_lifecycle_hooks_answer() :: #{
-%%   <<"LifecycleHooks">> => list(lifecycle_hook())
-%% }
--type describe_lifecycle_hooks_answer() :: #{binary() => any()}.
-
-%% Example:
-%% put_lifecycle_hook_answer() :: #{
-
-%% }
--type put_lifecycle_hook_answer() :: #{binary() => any()}.
-
-%% Example:
-%% memory_gi_b_per_v_cpu_request() :: #{
-%%   <<"Max">> => float(),
-%%   <<"Min">> => float()
-%% }
--type memory_gi_b_per_v_cpu_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_instance_refresh_answer() :: #{
-%%   <<"InstanceRefreshId">> => string()
-%% }
--type cancel_instance_refresh_answer() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_policy() :: #{
-%%   <<"AdjustmentType">> => string(),
-%%   <<"Alarms">> => list(alarm()),
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"Cooldown">> => integer(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"EstimatedInstanceWarmup">> => integer(),
-%%   <<"MetricAggregationType">> => string(),
-%%   <<"MinAdjustmentMagnitude">> => integer(),
-%%   <<"MinAdjustmentStep">> => integer(),
-%%   <<"PolicyARN">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyType">> => string(),
-%%   <<"PredictiveScalingConfiguration">> => predictive_scaling_configuration(),
-%%   <<"ScalingAdjustment">> => integer(),
-%%   <<"StepAdjustments">> => list(step_adjustment()),
-%%   <<"TargetTrackingConfiguration">> => target_tracking_configuration()
-%% }
--type scaling_policy() :: #{binary() => any()}.
-
-%% Example:
-%% describe_notification_configurations_answer() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NotificationConfigurations">> := list(notification_configuration())
-%% }
--type describe_notification_configurations_answer() :: #{binary() => any()}.
-
-%% Example:
-%% instance_maintenance_policy() :: #{
-%%   <<"MaxHealthyPercentage">> => integer(),
-%%   <<"MinHealthyPercentage">> => integer()
-%% }
--type instance_maintenance_policy() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_actions_type() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ScheduledUpdateGroupActions">> => list(scheduled_update_group_action())
-%% }
--type scheduled_actions_type() :: #{binary() => any()}.
-
-%% Example:
-%% attach_load_balancers_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"LoadBalancerNames">> := list(string())
-%% }
--type attach_load_balancers_type() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_hook_specification() :: #{
-%%   <<"DefaultResult">> => string(),
-%%   <<"HeartbeatTimeout">> => integer(),
-%%   <<"LifecycleHookName">> => string(),
-%%   <<"LifecycleTransition">> => string(),
-%%   <<"NotificationMetadata">> => string(),
-%%   <<"NotificationTargetARN">> => string(),
-%%   <<"RoleARN">> => string()
-%% }
--type lifecycle_hook_specification() :: #{binary() => any()}.
-
-%% Example:
-%% describe_load_balancer_target_groups_response() :: #{
-%%   <<"LoadBalancerTargetGroups">> => list(load_balancer_target_group_state()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_load_balancer_target_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_process_query() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"ScalingProcesses">> => list(string())
-%% }
--type scaling_process_query() :: #{binary() => any()}.
-
-%% Example:
-%% launch_configuration_names_type() :: #{
-%%   <<"LaunchConfigurationNames">> => list(string()),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type launch_configuration_names_type() :: #{binary() => any()}.
-
-%% Example:
-%% attach_load_balancers_result_type() :: #{
-
-%% }
--type attach_load_balancers_result_type() :: #{binary() => any()}.
-
-%% Example:
-%% detach_instances_answer() :: #{
-%%   <<"Activities">> => list(activity())
-%% }
--type detach_instances_answer() :: #{binary() => any()}.
-
-%% Example:
-%% enabled_metric() :: #{
-%%   <<"Granularity">> => string(),
-%%   <<"Metric">> => string()
-%% }
--type enabled_metric() :: #{binary() => any()}.
-
-%% Example:
-%% get_predictive_scaling_forecast_answer() :: #{
-%%   <<"CapacityForecast">> := capacity_forecast(),
-%%   <<"LoadForecast">> := list(load_forecast()),
-%%   <<"UpdateTime">> := non_neg_integer()
-%% }
--type get_predictive_scaling_forecast_answer() :: #{binary() => any()}.
-
-%% Example:
-%% retention_triggers() :: #{
-%%   <<"TerminateHookAbandon">> => list(any())
-%% }
--type retention_triggers() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_activity_in_progress_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type scaling_activity_in_progress_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_policies_type() :: #{
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyNames">> => list(string()),
-%%   <<"PolicyTypes">> => list(string())
-%% }
--type describe_policies_type() :: #{binary() => any()}.
-
-%% Example:
-%% mixed_instances_policy() :: #{
-%%   <<"InstancesDistribution">> => instances_distribution(),
-%%   <<"LaunchTemplate">> => launch_template()
-%% }
--type mixed_instances_policy() :: #{binary() => any()}.
-
-%% Example:
-%% launch_configurations_type() :: #{
-%%   <<"LaunchConfigurations">> := list(launch_configuration()),
-%%   <<"NextToken">> => string()
-%% }
--type launch_configurations_type() :: #{binary() => any()}.
-
-%% Example:
-%% instance_lifecycle_policy() :: #{
-%%   <<"RetentionTriggers">> => retention_triggers()
-%% }
--type instance_lifecycle_policy() :: #{binary() => any()}.
-
-%% Example:
-%% delete_notification_configuration_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"TopicARN">> := string()
-%% }
--type delete_notification_configuration_type() :: #{binary() => any()}.
-
-%% Example:
-%% predictive_scaling_predefined_load_metric() :: #{
-%%   <<"PredefinedMetricType">> => list(any()),
-%%   <<"ResourceLabel">> => string()
-%% }
--type predictive_scaling_predefined_load_metric() :: #{binary() => any()}.
+-type create_or_update_tags_type() :: #{binary() => any()}.
 
 %% Example:
 %% customized_metric_specification() :: #{
@@ -683,33 +568,100 @@
 -type customized_metric_specification() :: #{binary() => any()}.
 
 %% Example:
-%% auto_scaling_group_names_type() :: #{
-%%   <<"AutoScalingGroupNames">> => list(string()),
-%%   <<"Filters">> => list(filter()),
-%%   <<"IncludeInstances">> => boolean(),
+%% delete_auto_scaling_group_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ForceDelete">> => boolean()
+%% }
+-type delete_auto_scaling_group_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_hook_answer() :: #{
+
+%% }
+-type delete_lifecycle_hook_answer() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lifecycle_hook_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"LifecycleHookName">> := string()
+%% }
+-type delete_lifecycle_hook_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_notification_configuration_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"TopicARN">> := string()
+%% }
+-type delete_notification_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_type() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"PolicyName">> := string()
+%% }
+-type delete_policy_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_action_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ScheduledActionName">> := string()
+%% }
+-type delete_scheduled_action_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_type() :: #{
+%%   <<"Tags">> := list(tag())
+%% }
+-type delete_tags_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_warm_pool_answer() :: #{
+
+%% }
+-type delete_warm_pool_answer() :: #{binary() => any()}.
+
+%% Example:
+%% delete_warm_pool_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ForceDelete">> => boolean()
+%% }
+-type delete_warm_pool_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_limits_answer() :: #{
+%%   <<"MaxNumberOfAutoScalingGroups">> => integer(),
+%%   <<"MaxNumberOfLaunchConfigurations">> => integer(),
+%%   <<"NumberOfAutoScalingGroups">> => integer(),
+%%   <<"NumberOfLaunchConfigurations">> => integer()
+%% }
+-type describe_account_limits_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_adjustment_types_answer() :: #{
+%%   <<"AdjustmentTypes">> => list(adjustment_type())
+%% }
+-type describe_adjustment_types_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_auto_scaling_instances_type() :: #{
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type auto_scaling_group_names_type() :: #{binary() => any()}.
+-type describe_auto_scaling_instances_type() :: #{binary() => any()}.
 
 %% Example:
-%% describe_traffic_sources_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrafficSources">> => list(traffic_source_state())
+%% describe_auto_scaling_notification_types_answer() :: #{
+%%   <<"AutoScalingNotificationTypes">> => list(string())
 %% }
--type describe_traffic_sources_response() :: #{binary() => any()}.
+-type describe_auto_scaling_notification_types_answer() :: #{binary() => any()}.
 
 %% Example:
-%% launch_instances_error() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailabilityZoneId">> => string(),
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"MarketType">> => string(),
-%%   <<"SubnetId">> => string()
+%% describe_instance_refreshes_answer() :: #{
+%%   <<"InstanceRefreshes">> => list(instance_refresh()),
+%%   <<"NextToken">> => string()
 %% }
--type launch_instances_error() :: #{binary() => any()}.
+-type describe_instance_refreshes_answer() :: #{binary() => any()}.
 
 %% Example:
 %% describe_instance_refreshes_type() :: #{
@@ -721,61 +673,107 @@
 -type describe_instance_refreshes_type() :: #{binary() => any()}.
 
 %% Example:
-%% put_notification_configuration_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"NotificationTypes">> := list(string()),
-%%   <<"TopicARN">> := string()
+%% describe_lifecycle_hook_types_answer() :: #{
+%%   <<"LifecycleHookTypes">> => list(string())
 %% }
--type put_notification_configuration_type() :: #{binary() => any()}.
+-type describe_lifecycle_hook_types_answer() :: #{binary() => any()}.
 
 %% Example:
-%% policies_type() :: #{
+%% describe_lifecycle_hooks_answer() :: #{
+%%   <<"LifecycleHooks">> => list(lifecycle_hook())
+%% }
+-type describe_lifecycle_hooks_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lifecycle_hooks_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"LifecycleHookNames">> => list(string())
+%% }
+-type describe_lifecycle_hooks_type() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_target_groups_request() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_load_balancer_target_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_target_groups_response() :: #{
+%%   <<"LoadBalancerTargetGroups">> => list(load_balancer_target_group_state()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_load_balancer_target_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancers_request() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_load_balancers_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancers_response() :: #{
+%%   <<"LoadBalancers">> => list(load_balancer_state()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_load_balancers_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metric_collection_types_answer() :: #{
+%%   <<"Granularities">> => list(metric_granularity_type()),
+%%   <<"Metrics">> => list(metric_collection_type())
+%% }
+-type describe_metric_collection_types_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_notification_configurations_answer() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScalingPolicies">> => list(scaling_policy())
+%%   <<"NotificationConfigurations">> := list(notification_configuration())
 %% }
--type policies_type() :: #{binary() => any()}.
+-type describe_notification_configurations_answer() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_instance_refresh_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"WaitForTransitioningInstances">> => boolean()
+%% describe_notification_configurations_type() :: #{
+%%   <<"AutoScalingGroupNames">> => list(string()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type cancel_instance_refresh_type() :: #{binary() => any()}.
+-type describe_notification_configurations_type() :: #{binary() => any()}.
 
 %% Example:
-%% execute_policy_type() :: #{
+%% describe_policies_type() :: #{
 %%   <<"AutoScalingGroupName">> => string(),
-%%   <<"BreachThreshold">> => float(),
-%%   <<"HonorCooldown">> => boolean(),
-%%   <<"MetricValue">> => float(),
-%%   <<"PolicyName">> := string()
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyNames">> => list(string()),
+%%   <<"PolicyTypes">> => list(string())
 %% }
--type execute_policy_type() :: #{binary() => any()}.
+-type describe_policies_type() :: #{binary() => any()}.
 
 %% Example:
-%% detach_load_balancers_result_type() :: #{
-
+%% describe_scaling_activities_type() :: #{
+%%   <<"ActivityIds">> => list(string()),
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IncludeDeletedGroups">> => boolean(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type detach_load_balancers_result_type() :: #{binary() => any()}.
-
-%% Example:
-%% active_instance_refresh_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type active_instance_refresh_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% predictive_scaling_predefined_scaling_metric() :: #{
-%%   <<"PredefinedMetricType">> => list(any()),
-%%   <<"ResourceLabel">> => string()
-%% }
--type predictive_scaling_predefined_scaling_metric() :: #{binary() => any()}.
+-type describe_scaling_activities_type() :: #{binary() => any()}.
 
 %% Example:
-%% predictive_scaling_customized_load_metric() :: #{
-%%   <<"MetricDataQueries">> => list(metric_data_query())
+%% describe_scheduled_actions_type() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduledActionNames">> => list(string()),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type predictive_scaling_customized_load_metric() :: #{binary() => any()}.
+-type describe_scheduled_actions_type() :: #{binary() => any()}.
 
 %% Example:
 %% describe_tags_type() :: #{
@@ -786,145 +784,109 @@
 -type describe_tags_type() :: #{binary() => any()}.
 
 %% Example:
-%% warm_pool_configuration() :: #{
-%%   <<"InstanceReusePolicy">> => instance_reuse_policy(),
-%%   <<"MaxGroupPreparedCapacity">> => integer(),
-%%   <<"MinSize">> => integer(),
-%%   <<"PoolState">> => list(any()),
-%%   <<"Status">> => list(any())
+%% describe_termination_policy_types_answer() :: #{
+%%   <<"TerminationPolicyTypes">> => list(string())
 %% }
--type warm_pool_configuration() :: #{binary() => any()}.
+-type describe_termination_policy_types_answer() :: #{binary() => any()}.
 
 %% Example:
-%% v_cpu_count_request() :: #{
-%%   <<"Max">> => integer(),
-%%   <<"Min">> => integer()
-%% }
--type v_cpu_count_request() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_instance_in_auto_scaling_group_type() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"ShouldDecrementDesiredCapacity">> := boolean()
-%% }
--type terminate_instance_in_auto_scaling_group_type() :: #{binary() => any()}.
-
-%% Example:
-%% complete_lifecycle_action_type() :: #{
+%% describe_traffic_sources_request() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"LifecycleActionResult">> := string(),
-%%   <<"LifecycleActionToken">> => string(),
-%%   <<"LifecycleHookName">> := string()
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TrafficSourceType">> => string()
 %% }
--type complete_lifecycle_action_type() :: #{binary() => any()}.
+-type describe_traffic_sources_request() :: #{binary() => any()}.
 
 %% Example:
-%% activity() :: #{
-%%   <<"ActivityId">> => string(),
-%%   <<"AutoScalingGroupARN">> => string(),
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"AutoScalingGroupState">> => string(),
-%%   <<"Cause">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Details">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Progress">> => integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"StatusCode">> => list(any()),
-%%   <<"StatusMessage">> => string()
+%% describe_traffic_sources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrafficSources">> => list(traffic_source_state())
 %% }
--type activity() :: #{binary() => any()}.
+-type describe_traffic_sources_response() :: #{binary() => any()}.
 
 %% Example:
-%% instances_distribution() :: #{
-%%   <<"OnDemandAllocationStrategy">> => string(),
-%%   <<"OnDemandBaseCapacity">> => integer(),
-%%   <<"OnDemandPercentageAboveBaseCapacity">> => integer(),
-%%   <<"SpotAllocationStrategy">> => string(),
-%%   <<"SpotInstancePools">> => integer(),
-%%   <<"SpotMaxPrice">> => string()
+%% describe_warm_pool_answer() :: #{
+%%   <<"Instances">> => list(instance()),
+%%   <<"NextToken">> => string(),
+%%   <<"WarmPoolConfiguration">> => warm_pool_configuration()
 %% }
--type instances_distribution() :: #{binary() => any()}.
+-type describe_warm_pool_answer() :: #{binary() => any()}.
 
 %% Example:
-%% attach_traffic_sources_result_type() :: #{
-
-%% }
--type attach_traffic_sources_result_type() :: #{binary() => any()}.
-
-%% Example:
-%% describe_load_balancers_response() :: #{
-%%   <<"LoadBalancers">> => list(load_balancer_state()),
+%% describe_warm_pool_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type describe_load_balancers_response() :: #{binary() => any()}.
+-type describe_warm_pool_type() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"PropagateAtLaunch">> => boolean(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"Value">> => string()
+%% desired_configuration() :: #{
+%%   <<"LaunchTemplate">> => launch_template_specification(),
+%%   <<"MixedInstancesPolicy">> => mixed_instances_policy()
 %% }
--type tag() :: #{binary() => any()}.
+-type desired_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% scheduled_update_group_action() :: #{
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"DesiredCapacity">> => integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"MaxSize">> => integer(),
-%%   <<"MinSize">> => integer(),
-%%   <<"Recurrence">> => string(),
-%%   <<"ScheduledActionARN">> => string(),
-%%   <<"ScheduledActionName">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Time">> => non_neg_integer(),
-%%   <<"TimeZone">> => string()
+%% detach_instances_answer() :: #{
+%%   <<"Activities">> => list(activity())
 %% }
--type scheduled_update_group_action() :: #{binary() => any()}.
+-type detach_instances_answer() :: #{binary() => any()}.
 
 %% Example:
-%% load_forecast() :: #{
-%%   <<"MetricSpecification">> => predictive_scaling_metric_specification(),
-%%   <<"Timestamps">> => list(non_neg_integer()),
-%%   <<"Values">> => list(float())
-%% }
--type load_forecast() :: #{binary() => any()}.
-
-%% Example:
-%% irreversible_instance_refresh_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type irreversible_instance_refresh_fault() :: #{binary() => any()}.
-
-%% Example:
-%% record_lifecycle_action_heartbeat_type() :: #{
+%% detach_instances_query() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"LifecycleActionToken">> => string(),
-%%   <<"LifecycleHookName">> := string()
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"ShouldDecrementDesiredCapacity">> := boolean()
 %% }
--type record_lifecycle_action_heartbeat_type() :: #{binary() => any()}.
+-type detach_instances_query() :: #{binary() => any()}.
 
 %% Example:
-%% accelerator_count_request() :: #{
-%%   <<"Max">> => integer(),
-%%   <<"Min">> => integer()
+%% detach_load_balancer_target_groups_result_type() :: #{
+
 %% }
--type accelerator_count_request() :: #{binary() => any()}.
+-type detach_load_balancer_target_groups_result_type() :: #{binary() => any()}.
 
 %% Example:
-%% metric_data_query() :: #{
-%%   <<"Expression">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Label">> => string(),
-%%   <<"MetricStat">> => metric_stat(),
-%%   <<"ReturnData">> => boolean()
+%% detach_load_balancer_target_groups_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"TargetGroupARNs">> := list(string())
 %% }
--type metric_data_query() :: #{binary() => any()}.
+-type detach_load_balancer_target_groups_type() :: #{binary() => any()}.
+
+%% Example:
+%% detach_load_balancers_result_type() :: #{
+
+%% }
+-type detach_load_balancers_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% detach_load_balancers_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"LoadBalancerNames">> := list(string())
+%% }
+-type detach_load_balancers_type() :: #{binary() => any()}.
+
+%% Example:
+%% detach_traffic_sources_result_type() :: #{
+
+%% }
+-type detach_traffic_sources_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% detach_traffic_sources_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"TrafficSources">> := list(traffic_source_identifier())
+%% }
+-type detach_traffic_sources_type() :: #{binary() => any()}.
+
+%% Example:
+%% disable_metrics_collection_query() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"Metrics">> => list(string())
+%% }
+-type disable_metrics_collection_query() :: #{binary() => any()}.
 
 %% Example:
 %% ebs() :: #{
@@ -939,122 +901,25 @@
 -type ebs() :: #{binary() => any()}.
 
 %% Example:
-%% put_scheduled_update_group_action_type() :: #{
+%% enable_metrics_collection_query() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
-%%   <<"DesiredCapacity">> => integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"MaxSize">> => integer(),
-%%   <<"MinSize">> => integer(),
-%%   <<"Recurrence">> => string(),
-%%   <<"ScheduledActionName">> := string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Time">> => non_neg_integer(),
-%%   <<"TimeZone">> => string()
+%%   <<"Granularity">> := string(),
+%%   <<"Metrics">> => list(string())
 %% }
--type put_scheduled_update_group_action_type() :: #{binary() => any()}.
+-type enable_metrics_collection_query() :: #{binary() => any()}.
 
 %% Example:
-%% tag_description() :: #{
-%%   <<"Key">> => string(),
-%%   <<"PropagateAtLaunch">> => boolean(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"Value">> => string()
+%% enabled_metric() :: #{
+%%   <<"Granularity">> => string(),
+%%   <<"Metric">> => string()
 %% }
--type tag_description() :: #{binary() => any()}.
+-type enabled_metric() :: #{binary() => any()}.
 
 %% Example:
-%% target_tracking_metric_stat() :: #{
-%%   <<"Metric">> => metric(),
-%%   <<"Period">> => integer(),
-%%   <<"Stat">> => string(),
-%%   <<"Unit">> => string()
+%% enter_standby_answer() :: #{
+%%   <<"Activities">> => list(activity())
 %% }
--type target_tracking_metric_stat() :: #{binary() => any()}.
-
-%% Example:
-%% detach_traffic_sources_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"TrafficSources">> := list(traffic_source_identifier())
-%% }
--type detach_traffic_sources_type() :: #{binary() => any()}.
-
-%% Example:
-%% detach_load_balancers_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"LoadBalancerNames">> := list(string())
-%% }
--type detach_load_balancers_type() :: #{binary() => any()}.
-
-%% Example:
-%% resource_contention_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_contention_fault() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_instance_details() :: #{
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailabilityZoneId">> => string(),
-%%   <<"HealthStatus">> => string(),
-%%   <<"ImageId">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"LaunchConfigurationName">> => string(),
-%%   <<"LaunchTemplate">> => launch_template_specification(),
-%%   <<"LifecycleState">> => string(),
-%%   <<"ProtectedFromScaleIn">> => boolean(),
-%%   <<"WeightedCapacity">> => string()
-%% }
--type auto_scaling_instance_details() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer_state() :: #{
-%%   <<"LoadBalancerName">> => string(),
-%%   <<"State">> => string()
-%% }
--type load_balancer_state() :: #{binary() => any()}.
-
-%% Example:
-%% attach_traffic_sources_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"SkipZonalShiftValidation">> => boolean(),
-%%   <<"TrafficSources">> := list(traffic_source_identifier())
-%% }
--type attach_traffic_sources_type() :: #{binary() => any()}.
-
-%% Example:
-%% predictive_scaling_customized_scaling_metric() :: #{
-%%   <<"MetricDataQueries">> => list(metric_data_query())
-%% }
--type predictive_scaling_customized_scaling_metric() :: #{binary() => any()}.
-
-%% Example:
-%% suspended_process() :: #{
-%%   <<"ProcessName">> => string(),
-%%   <<"SuspensionReason">> => string()
-%% }
--type suspended_process() :: #{binary() => any()}.
-
-%% Example:
-%% performance_factor_reference_request() :: #{
-%%   <<"InstanceFamily">> => string()
-%% }
--type performance_factor_reference_request() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_update_group_action_request() :: #{
-%%   <<"DesiredCapacity">> => integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"MaxSize">> => integer(),
-%%   <<"MinSize">> => integer(),
-%%   <<"Recurrence">> => string(),
-%%   <<"ScheduledActionName">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TimeZone">> => string()
-%% }
--type scheduled_update_group_action_request() :: #{binary() => any()}.
+-type enter_standby_answer() :: #{binary() => any()}.
 
 %% Example:
 %% enter_standby_query() :: #{
@@ -1065,65 +930,27 @@
 -type enter_standby_query() :: #{binary() => any()}.
 
 %% Example:
-%% complete_lifecycle_action_answer() :: #{
-
+%% execute_policy_type() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"BreachThreshold">> => float(),
+%%   <<"HonorCooldown">> => boolean(),
+%%   <<"MetricValue">> => float(),
+%%   <<"PolicyName">> := string()
 %% }
--type complete_lifecycle_action_answer() :: #{binary() => any()}.
+-type execute_policy_type() :: #{binary() => any()}.
 
 %% Example:
-%% describe_lifecycle_hook_types_answer() :: #{
-%%   <<"LifecycleHookTypes">> => list(string())
+%% exit_standby_answer() :: #{
+%%   <<"Activities">> => list(activity())
 %% }
--type describe_lifecycle_hook_types_answer() :: #{binary() => any()}.
+-type exit_standby_answer() :: #{binary() => any()}.
 
 %% Example:
-%% detach_load_balancer_target_groups_type() :: #{
+%% exit_standby_query() :: #{
 %%   <<"AutoScalingGroupName">> := string(),
-%%   <<"TargetGroupARNs">> := list(string())
+%%   <<"InstanceIds">> => list(string())
 %% }
--type detach_load_balancer_target_groups_type() :: #{binary() => any()}.
-
-%% Example:
-%% put_lifecycle_hook_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"DefaultResult">> => string(),
-%%   <<"HeartbeatTimeout">> => integer(),
-%%   <<"LifecycleHookName">> := string(),
-%%   <<"LifecycleTransition">> => string(),
-%%   <<"NotificationMetadata">> => string(),
-%%   <<"NotificationTargetARN">> => string(),
-%%   <<"RoleARN">> => string()
-%% }
--type put_lifecycle_hook_type() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_reservation_specification() :: #{
-%%   <<"CapacityReservationPreference">> => list(any()),
-%%   <<"CapacityReservationTarget">> => capacity_reservation_target()
-%% }
--type capacity_reservation_specification() :: #{binary() => any()}.
-
-%% Example:
-%% launch_template_overrides() :: #{
-%%   <<"ImageId">> => string(),
-%%   <<"InstanceRequirements">> => instance_requirements(),
-%%   <<"InstanceType">> => string(),
-%%   <<"LaunchTemplateSpecification">> => launch_template_specification(),
-%%   <<"WeightedCapacity">> => string()
-%% }
--type launch_template_overrides() :: #{binary() => any()}.
-
-%% Example:
-%% describe_termination_policy_types_answer() :: #{
-%%   <<"TerminationPolicyTypes">> => list(string())
-%% }
--type describe_termination_policy_types_answer() :: #{binary() => any()}.
-
-%% Example:
-%% create_or_update_tags_type() :: #{
-%%   <<"Tags">> := list(tag())
-%% }
--type create_or_update_tags_type() :: #{binary() => any()}.
+-type exit_standby_query() :: #{binary() => any()}.
 
 %% Example:
 %% failed_scheduled_update_group_action_request() :: #{
@@ -1141,51 +968,12 @@
 -type filter() :: #{binary() => any()}.
 
 %% Example:
-%% metric_dimension() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
+%% get_predictive_scaling_forecast_answer() :: #{
+%%   <<"CapacityForecast">> := capacity_forecast(),
+%%   <<"LoadForecast">> := list(load_forecast()),
+%%   <<"UpdateTime">> := non_neg_integer()
 %% }
--type metric_dimension() :: #{binary() => any()}.
-
-%% Example:
-%% create_auto_scaling_group_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"ServiceLinkedRoleARN">> => string(),
-%%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
-%%   <<"TargetGroupARNs">> => list(string()),
-%%   <<"LifecycleHookSpecificationList">> => list(lifecycle_hook_specification()),
-%%   <<"TerminationPolicies">> => list(string()),
-%%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
-%%   <<"InstanceId">> => string(),
-%%   <<"CapacityReservationSpecification">> => capacity_reservation_specification(),
-%%   <<"LaunchConfigurationName">> => string(),
-%%   <<"DesiredCapacityType">> => string(),
-%%   <<"VPCZoneIdentifier">> => string(),
-%%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
-%%   <<"MinSize">> := integer(),
-%%   <<"PlacementGroup">> => string(),
-%%   <<"HealthCheckType">> => string(),
-%%   <<"Context">> => string(),
-%%   <<"MaxInstanceLifetime">> => integer(),
-%%   <<"HealthCheckGracePeriod">> => integer(),
-%%   <<"SkipZonalShiftValidation">> => boolean(),
-%%   <<"InstanceLifecyclePolicy">> => instance_lifecycle_policy(),
-%%   <<"LaunchTemplate">> => launch_template_specification(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"LoadBalancerNames">> => list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"CapacityRebalance">> => boolean(),
-%%   <<"AvailabilityZoneIds">> => list(string()),
-%%   <<"TrafficSources">> => list(traffic_source_identifier()),
-%%   <<"AvailabilityZoneImpairmentPolicy">> => availability_zone_impairment_policy(),
-%%   <<"InstanceMaintenancePolicy">> => instance_maintenance_policy(),
-%%   <<"DefaultCooldown">> => integer(),
-%%   <<"MaxSize">> := integer(),
-%%   <<"DesiredCapacity">> => integer(),
-%%   <<"DefaultInstanceWarmup">> => integer(),
-%%   <<"DeletionProtection">> => list(any())
-%% }
--type create_auto_scaling_group_type() :: #{binary() => any()}.
+-type get_predictive_scaling_forecast_answer() :: #{binary() => any()}.
 
 %% Example:
 %% get_predictive_scaling_forecast_type() :: #{
@@ -1197,131 +985,10 @@
 -type get_predictive_scaling_forecast_type() :: #{binary() => any()}.
 
 %% Example:
-%% network_bandwidth_gbps_request() :: #{
-%%   <<"Max">> => float(),
-%%   <<"Min">> => float()
+%% idempotent_parameter_mismatch_error() :: #{
+%%   <<"Message">> => string()
 %% }
--type network_bandwidth_gbps_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_warm_pool_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"InstanceReusePolicy">> => instance_reuse_policy(),
-%%   <<"MaxGroupPreparedCapacity">> => integer(),
-%%   <<"MinSize">> => integer(),
-%%   <<"PoolState">> => list(any())
-%% }
--type put_warm_pool_type() :: #{binary() => any()}.
-
-%% Example:
-%% start_instance_refresh_answer() :: #{
-%%   <<"InstanceRefreshId">> => string()
-%% }
--type start_instance_refresh_answer() :: #{binary() => any()}.
-
-%% Example:
-%% notification_configuration() :: #{
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"NotificationType">> => string(),
-%%   <<"TopicARN">> => string()
-%% }
--type notification_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_in_use_fault() :: #{binary() => any()}.
-
-%% Example:
-%% instance_refresh_warm_pool_progress() :: #{
-%%   <<"InstancesToUpdate">> => integer(),
-%%   <<"PercentageComplete">> => integer()
-%% }
--type instance_refresh_warm_pool_progress() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_scheduled_action_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"ScheduledActionNames">> := list(string())
-%% }
--type batch_delete_scheduled_action_type() :: #{binary() => any()}.
-
-%% Example:
-%% exit_standby_answer() :: #{
-%%   <<"Activities">> => list(activity())
-%% }
--type exit_standby_answer() :: #{binary() => any()}.
-
-%% Example:
-%% describe_adjustment_types_answer() :: #{
-%%   <<"AdjustmentTypes">> => list(adjustment_type())
-%% }
--type describe_adjustment_types_answer() :: #{binary() => any()}.
-
-%% Example:
-%% already_exists_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% launch_configuration_name_type() :: #{
-%%   <<"LaunchConfigurationName">> := string()
-%% }
--type launch_configuration_name_type() :: #{binary() => any()}.
-
-%% Example:
-%% accelerator_total_memory_mi_b_request() :: #{
-%%   <<"Max">> => integer(),
-%%   <<"Min">> => integer()
-%% }
--type accelerator_total_memory_mi_b_request() :: #{binary() => any()}.
-
-%% Example:
-%% activity_type() :: #{
-%%   <<"Activity">> => activity()
-%% }
--type activity_type() :: #{binary() => any()}.
-
-%% Example:
-%% processes_type() :: #{
-%%   <<"Processes">> => list(process_type())
-%% }
--type processes_type() :: #{binary() => any()}.
-
-%% Example:
-%% detach_traffic_sources_result_type() :: #{
-
-%% }
--type detach_traffic_sources_result_type() :: #{binary() => any()}.
-
-%% Example:
-%% delete_warm_pool_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"ForceDelete">> => boolean()
-%% }
--type delete_warm_pool_type() :: #{binary() => any()}.
-
-%% Example:
-%% describe_warm_pool_answer() :: #{
-%%   <<"Instances">> => list(instance()),
-%%   <<"NextToken">> => string(),
-%%   <<"WarmPoolConfiguration">> => warm_pool_configuration()
-%% }
--type describe_warm_pool_answer() :: #{binary() => any()}.
-
-%% Example:
-%% launch_instances_request() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"AvailabilityZoneIds">> => list(string()),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"ClientToken">> := string(),
-%%   <<"RequestedCapacity">> := integer(),
-%%   <<"RetryStrategy">> => list(any()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type launch_instances_request() :: #{binary() => any()}.
+-type idempotent_parameter_mismatch_error() :: #{binary() => any()}.
 
 %% Example:
 %% instance() :: #{
@@ -1340,12 +1007,28 @@
 -type instance() :: #{binary() => any()}.
 
 %% Example:
-%% detach_instances_query() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
+%% instance_collection() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"InstanceIds">> => list(string()),
-%%   <<"ShouldDecrementDesiredCapacity">> := boolean()
+%%   <<"InstanceType">> => string(),
+%%   <<"MarketType">> => string(),
+%%   <<"SubnetId">> => string()
 %% }
--type detach_instances_query() :: #{binary() => any()}.
+-type instance_collection() :: #{binary() => any()}.
+
+%% Example:
+%% instance_lifecycle_policy() :: #{
+%%   <<"RetentionTriggers">> => retention_triggers()
+%% }
+-type instance_lifecycle_policy() :: #{binary() => any()}.
+
+%% Example:
+%% instance_maintenance_policy() :: #{
+%%   <<"MaxHealthyPercentage">> => integer(),
+%%   <<"MinHealthyPercentage">> => integer()
+%% }
+-type instance_maintenance_policy() :: #{binary() => any()}.
 
 %% Example:
 %% instance_metadata_options() :: #{
@@ -1356,40 +1039,55 @@
 -type instance_metadata_options() :: #{binary() => any()}.
 
 %% Example:
-%% load_balancer_target_group_state() :: #{
-%%   <<"LoadBalancerTargetGroupARN">> => string(),
-%%   <<"State">> => string()
+%% instance_monitoring() :: #{
+%%   <<"Enabled">> => boolean()
 %% }
--type load_balancer_target_group_state() :: #{binary() => any()}.
+-type instance_monitoring() :: #{binary() => any()}.
 
 %% Example:
-%% predefined_metric_specification() :: #{
-%%   <<"PredefinedMetricType">> => list(any()),
-%%   <<"ResourceLabel">> => string()
+%% instance_refresh() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"DesiredConfiguration">> => desired_configuration(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InstanceRefreshId">> => string(),
+%%   <<"InstancesToUpdate">> => integer(),
+%%   <<"PercentageComplete">> => integer(),
+%%   <<"Preferences">> => refresh_preferences(),
+%%   <<"ProgressDetails">> => instance_refresh_progress_details(),
+%%   <<"RollbackDetails">> => rollback_details(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"Strategy">> => list(any())
 %% }
--type predefined_metric_specification() :: #{binary() => any()}.
+-type instance_refresh() :: #{binary() => any()}.
 
 %% Example:
-%% metric_stat() :: #{
-%%   <<"Metric">> => metric(),
-%%   <<"Stat">> => string(),
-%%   <<"Unit">> => string()
+%% instance_refresh_in_progress_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type metric_stat() :: #{binary() => any()}.
+-type instance_refresh_in_progress_fault() :: #{binary() => any()}.
 
 %% Example:
-%% activities_type() :: #{
-%%   <<"Activities">> := list(activity()),
-%%   <<"NextToken">> => string()
+%% instance_refresh_live_pool_progress() :: #{
+%%   <<"InstancesToUpdate">> => integer(),
+%%   <<"PercentageComplete">> => integer()
 %% }
--type activities_type() :: #{binary() => any()}.
+-type instance_refresh_live_pool_progress() :: #{binary() => any()}.
 
 %% Example:
-%% attach_instances_query() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"InstanceIds">> => list(string())
+%% instance_refresh_progress_details() :: #{
+%%   <<"LivePoolProgress">> => instance_refresh_live_pool_progress(),
+%%   <<"WarmPoolProgress">> => instance_refresh_warm_pool_progress()
 %% }
--type attach_instances_query() :: #{binary() => any()}.
+-type instance_refresh_progress_details() :: #{binary() => any()}.
+
+%% Example:
+%% instance_refresh_warm_pool_progress() :: #{
+%%   <<"InstancesToUpdate">> => integer(),
+%%   <<"PercentageComplete">> => integer()
+%% }
+-type instance_refresh_warm_pool_progress() :: #{binary() => any()}.
 
 %% Example:
 %% instance_requirements() :: #{
@@ -1422,76 +1120,471 @@
 -type instance_requirements() :: #{binary() => any()}.
 
 %% Example:
-%% instance_monitoring() :: #{
-%%   <<"Enabled">> => boolean()
+%% instance_reuse_policy() :: #{
+%%   <<"ReuseOnScaleIn">> => boolean()
 %% }
--type instance_monitoring() :: #{binary() => any()}.
+-type instance_reuse_policy() :: #{binary() => any()}.
 
 %% Example:
-%% set_desired_capacity_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"DesiredCapacity">> := integer(),
-%%   <<"HonorCooldown">> => boolean()
+%% instances_distribution() :: #{
+%%   <<"OnDemandAllocationStrategy">> => string(),
+%%   <<"OnDemandBaseCapacity">> => integer(),
+%%   <<"OnDemandPercentageAboveBaseCapacity">> => integer(),
+%%   <<"SpotAllocationStrategy">> => string(),
+%%   <<"SpotInstancePools">> => integer(),
+%%   <<"SpotMaxPrice">> => string()
 %% }
--type set_desired_capacity_type() :: #{binary() => any()}.
+-type instances_distribution() :: #{binary() => any()}.
 
 %% Example:
-%% auto_scaling_group() :: #{
-%%   <<"ServiceLinkedRoleARN">> => string(),
-%%   <<"Instances">> => list(instance()),
-%%   <<"MaxSize">> => integer(),
-%%   <<"SuspendedProcesses">> => list(suspended_process()),
-%%   <<"EnabledMetrics">> => list(enabled_metric()),
-%%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
-%%   <<"TargetGroupARNs">> => list(string()),
-%%   <<"TerminationPolicies">> => list(string()),
-%%   <<"AvailabilityZoneDistribution">> => availability_zone_distribution(),
-%%   <<"CapacityReservationSpecification">> => capacity_reservation_specification(),
-%%   <<"LaunchConfigurationName">> => string(),
-%%   <<"DesiredCapacityType">> => string(),
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"VPCZoneIdentifier">> => string(),
-%%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
-%%   <<"AutoScalingGroupARN">> => string(),
-%%   <<"PlacementGroup">> => string(),
-%%   <<"HealthCheckType">> => string(),
-%%   <<"Context">> => string(),
-%%   <<"MaxInstanceLifetime">> => integer(),
-%%   <<"HealthCheckGracePeriod">> => integer(),
-%%   <<"InstanceLifecyclePolicy">> => instance_lifecycle_policy(),
-%%   <<"LaunchTemplate">> => launch_template_specification(),
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"LoadBalancerNames">> => list(string()),
-%%   <<"Tags">> => list(tag_description()),
-%%   <<"CapacityRebalance">> => boolean(),
-%%   <<"AvailabilityZoneIds">> => list(string()),
-%%   <<"TrafficSources">> => list(traffic_source_identifier()),
-%%   <<"AvailabilityZoneImpairmentPolicy">> => availability_zone_impairment_policy(),
-%%   <<"InstanceMaintenancePolicy">> => instance_maintenance_policy(),
+%% invalid_next_token() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_next_token() :: #{binary() => any()}.
+
+%% Example:
+%% irreversible_instance_refresh_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type irreversible_instance_refresh_fault() :: #{binary() => any()}.
+
+%% Example:
+%% launch_configuration() :: #{
+%%   <<"AssociatePublicIpAddress">> => boolean(),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
+%%   <<"ClassicLinkVPCId">> => string(),
+%%   <<"ClassicLinkVPCSecurityGroups">> => list(string()),
 %%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"DefaultCooldown">> => integer(),
-%%   <<"WarmPoolConfiguration">> => warm_pool_configuration(),
-%%   <<"Status">> => string(),
-%%   <<"PredictedCapacity">> => integer(),
-%%   <<"MinSize">> => integer(),
+%%   <<"EbsOptimized">> => boolean(),
+%%   <<"IamInstanceProfile">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"InstanceMonitoring">> => instance_monitoring(),
+%%   <<"InstanceType">> => string(),
+%%   <<"KernelId">> => string(),
+%%   <<"KeyName">> => string(),
+%%   <<"LaunchConfigurationARN">> => string(),
+%%   <<"LaunchConfigurationName">> => string(),
+%%   <<"MetadataOptions">> => instance_metadata_options(),
+%%   <<"PlacementTenancy">> => string(),
+%%   <<"RamdiskId">> => string(),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"SpotPrice">> => string(),
+%%   <<"UserData">> => string()
+%% }
+-type launch_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% launch_configuration_name_type() :: #{
+%%   <<"LaunchConfigurationName">> := string()
+%% }
+-type launch_configuration_name_type() :: #{binary() => any()}.
+
+%% Example:
+%% launch_configuration_names_type() :: #{
+%%   <<"LaunchConfigurationNames">> => list(string()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type launch_configuration_names_type() :: #{binary() => any()}.
+
+%% Example:
+%% launch_configurations_type() :: #{
+%%   <<"LaunchConfigurations">> := list(launch_configuration()),
+%%   <<"NextToken">> => string()
+%% }
+-type launch_configurations_type() :: #{binary() => any()}.
+
+%% Example:
+%% launch_instances_error() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"MarketType">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type launch_instances_error() :: #{binary() => any()}.
+
+%% Example:
+%% launch_instances_request() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"ClientToken">> := string(),
+%%   <<"RequestedCapacity">> := integer(),
+%%   <<"RetryStrategy">> => list(any()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type launch_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% launch_instances_result() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Errors">> => list(launch_instances_error()),
+%%   <<"Instances">> => list(instance_collection())
+%% }
+-type launch_instances_result() :: #{binary() => any()}.
+
+%% Example:
+%% launch_template() :: #{
+%%   <<"LaunchTemplateSpecification">> => launch_template_specification(),
+%%   <<"Overrides">> => list(launch_template_overrides())
+%% }
+-type launch_template() :: #{binary() => any()}.
+
+%% Example:
+%% launch_template_overrides() :: #{
+%%   <<"ImageId">> => string(),
+%%   <<"InstanceRequirements">> => instance_requirements(),
+%%   <<"InstanceType">> => string(),
+%%   <<"LaunchTemplateSpecification">> => launch_template_specification(),
+%%   <<"WeightedCapacity">> => string()
+%% }
+-type launch_template_overrides() :: #{binary() => any()}.
+
+%% Example:
+%% launch_template_specification() :: #{
+%%   <<"LaunchTemplateId">> => string(),
+%%   <<"LaunchTemplateName">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type launch_template_specification() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_hook() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"DefaultResult">> => string(),
+%%   <<"GlobalTimeout">> => integer(),
+%%   <<"HeartbeatTimeout">> => integer(),
+%%   <<"LifecycleHookName">> => string(),
+%%   <<"LifecycleTransition">> => string(),
+%%   <<"NotificationMetadata">> => string(),
+%%   <<"NotificationTargetARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type lifecycle_hook() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_hook_specification() :: #{
+%%   <<"DefaultResult">> => string(),
+%%   <<"HeartbeatTimeout">> => integer(),
+%%   <<"LifecycleHookName">> => string(),
+%%   <<"LifecycleTransition">> => string(),
+%%   <<"NotificationMetadata">> => string(),
+%%   <<"NotificationTargetARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type lifecycle_hook_specification() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_state() :: #{
+%%   <<"LoadBalancerName">> => string(),
+%%   <<"State">> => string()
+%% }
+-type load_balancer_state() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_target_group_state() :: #{
+%%   <<"LoadBalancerTargetGroupARN">> => string(),
+%%   <<"State">> => string()
+%% }
+-type load_balancer_target_group_state() :: #{binary() => any()}.
+
+%% Example:
+%% load_forecast() :: #{
+%%   <<"MetricSpecification">> => predictive_scaling_metric_specification(),
+%%   <<"Timestamps">> => list(non_neg_integer()),
+%%   <<"Values">> => list(float())
+%% }
+-type load_forecast() :: #{binary() => any()}.
+
+%% Example:
+%% memory_gi_b_per_v_cpu_request() :: #{
+%%   <<"Max">> => float(),
+%%   <<"Min">> => float()
+%% }
+-type memory_gi_b_per_v_cpu_request() :: #{binary() => any()}.
+
+%% Example:
+%% memory_mi_b_request() :: #{
+%%   <<"Max">> => integer(),
+%%   <<"Min">> => integer()
+%% }
+-type memory_mi_b_request() :: #{binary() => any()}.
+
+%% Example:
+%% metric() :: #{
+%%   <<"Dimensions">> => list(metric_dimension()),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string()
+%% }
+-type metric() :: #{binary() => any()}.
+
+%% Example:
+%% metric_collection_type() :: #{
+%%   <<"Metric">> => string()
+%% }
+-type metric_collection_type() :: #{binary() => any()}.
+
+%% Example:
+%% metric_data_query() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"MetricStat">> => metric_stat(),
+%%   <<"ReturnData">> => boolean()
+%% }
+-type metric_data_query() :: #{binary() => any()}.
+
+%% Example:
+%% metric_dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type metric_dimension() :: #{binary() => any()}.
+
+%% Example:
+%% metric_granularity_type() :: #{
+%%   <<"Granularity">> => string()
+%% }
+-type metric_granularity_type() :: #{binary() => any()}.
+
+%% Example:
+%% metric_stat() :: #{
+%%   <<"Metric">> => metric(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => string()
+%% }
+-type metric_stat() :: #{binary() => any()}.
+
+%% Example:
+%% mixed_instances_policy() :: #{
+%%   <<"InstancesDistribution">> => instances_distribution(),
+%%   <<"LaunchTemplate">> => launch_template()
+%% }
+-type mixed_instances_policy() :: #{binary() => any()}.
+
+%% Example:
+%% network_bandwidth_gbps_request() :: #{
+%%   <<"Max">> => float(),
+%%   <<"Min">> => float()
+%% }
+-type network_bandwidth_gbps_request() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface_count_request() :: #{
+%%   <<"Max">> => integer(),
+%%   <<"Min">> => integer()
+%% }
+-type network_interface_count_request() :: #{binary() => any()}.
+
+%% Example:
+%% notification_configuration() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"NotificationType">> => string(),
+%%   <<"TopicARN">> => string()
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% performance_factor_reference_request() :: #{
+%%   <<"InstanceFamily">> => string()
+%% }
+-type performance_factor_reference_request() :: #{binary() => any()}.
+
+%% Example:
+%% policies_type() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScalingPolicies">> => list(scaling_policy())
+%% }
+-type policies_type() :: #{binary() => any()}.
+
+%% Example:
+%% policy_arn_type() :: #{
+%%   <<"Alarms">> => list(alarm()),
+%%   <<"PolicyARN">> => string()
+%% }
+-type policy_arn_type() :: #{binary() => any()}.
+
+%% Example:
+%% predefined_metric_specification() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predefined_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_configuration() :: #{
+%%   <<"MaxCapacityBreachBehavior">> => list(any()),
+%%   <<"MaxCapacityBuffer">> => integer(),
+%%   <<"MetricSpecifications">> => list(predictive_scaling_metric_specification()),
+%%   <<"Mode">> => list(any()),
+%%   <<"SchedulingBufferTime">> => integer()
+%% }
+-type predictive_scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_customized_capacity_metric() :: #{
+%%   <<"MetricDataQueries">> => list(metric_data_query())
+%% }
+-type predictive_scaling_customized_capacity_metric() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_customized_load_metric() :: #{
+%%   <<"MetricDataQueries">> => list(metric_data_query())
+%% }
+-type predictive_scaling_customized_load_metric() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_customized_scaling_metric() :: #{
+%%   <<"MetricDataQueries">> => list(metric_data_query())
+%% }
+-type predictive_scaling_customized_scaling_metric() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_metric_specification() :: #{
+%%   <<"CustomizedCapacityMetricSpecification">> => predictive_scaling_customized_capacity_metric(),
+%%   <<"CustomizedLoadMetricSpecification">> => predictive_scaling_customized_load_metric(),
+%%   <<"CustomizedScalingMetricSpecification">> => predictive_scaling_customized_scaling_metric(),
+%%   <<"PredefinedLoadMetricSpecification">> => predictive_scaling_predefined_load_metric(),
+%%   <<"PredefinedMetricPairSpecification">> => predictive_scaling_predefined_metric_pair(),
+%%   <<"PredefinedScalingMetricSpecification">> => predictive_scaling_predefined_scaling_metric(),
+%%   <<"TargetValue">> => float()
+%% }
+-type predictive_scaling_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_predefined_load_metric() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predictive_scaling_predefined_load_metric() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_predefined_metric_pair() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predictive_scaling_predefined_metric_pair() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_predefined_scaling_metric() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predictive_scaling_predefined_scaling_metric() :: #{binary() => any()}.
+
+%% Example:
+%% process_type() :: #{
+%%   <<"ProcessName">> => string()
+%% }
+-type process_type() :: #{binary() => any()}.
+
+%% Example:
+%% processes_type() :: #{
+%%   <<"Processes">> => list(process_type())
+%% }
+-type processes_type() :: #{binary() => any()}.
+
+%% Example:
+%% put_lifecycle_hook_answer() :: #{
+
+%% }
+-type put_lifecycle_hook_answer() :: #{binary() => any()}.
+
+%% Example:
+%% put_lifecycle_hook_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"DefaultResult">> => string(),
+%%   <<"HeartbeatTimeout">> => integer(),
+%%   <<"LifecycleHookName">> := string(),
+%%   <<"LifecycleTransition">> => string(),
+%%   <<"NotificationMetadata">> => string(),
+%%   <<"NotificationTargetARN">> => string(),
+%%   <<"RoleARN">> => string()
+%% }
+-type put_lifecycle_hook_type() :: #{binary() => any()}.
+
+%% Example:
+%% put_notification_configuration_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"NotificationTypes">> := list(string()),
+%%   <<"TopicARN">> := string()
+%% }
+-type put_notification_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% put_scaling_policy_type() :: #{
+%%   <<"AdjustmentType">> => string(),
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"Cooldown">> => integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EstimatedInstanceWarmup">> => integer(),
+%%   <<"MetricAggregationType">> => string(),
+%%   <<"MinAdjustmentMagnitude">> => integer(),
+%%   <<"MinAdjustmentStep">> => integer(),
+%%   <<"PolicyName">> := string(),
+%%   <<"PolicyType">> => string(),
+%%   <<"PredictiveScalingConfiguration">> => predictive_scaling_configuration(),
+%%   <<"ScalingAdjustment">> => integer(),
+%%   <<"StepAdjustments">> => list(step_adjustment()),
+%%   <<"TargetTrackingConfiguration">> => target_tracking_configuration()
+%% }
+-type put_scaling_policy_type() :: #{binary() => any()}.
+
+%% Example:
+%% put_scheduled_update_group_action_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
 %%   <<"DesiredCapacity">> => integer(),
-%%   <<"DefaultInstanceWarmup">> => integer(),
-%%   <<"WarmPoolSize">> => integer(),
-%%   <<"DeletionProtection">> => list(any())
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxSize">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"Recurrence">> => string(),
+%%   <<"ScheduledActionName">> := string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Time">> => non_neg_integer(),
+%%   <<"TimeZone">> => string()
 %% }
--type auto_scaling_group() :: #{binary() => any()}.
+-type put_scheduled_update_group_action_type() :: #{binary() => any()}.
 
 %% Example:
-%% batch_put_scheduled_update_group_action_answer() :: #{
-%%   <<"FailedScheduledUpdateGroupActions">> => list(failed_scheduled_update_group_action_request())
+%% put_warm_pool_answer() :: #{
+
 %% }
--type batch_put_scheduled_update_group_action_answer() :: #{binary() => any()}.
+-type put_warm_pool_answer() :: #{binary() => any()}.
 
 %% Example:
-%% describe_auto_scaling_notification_types_answer() :: #{
-%%   <<"AutoScalingNotificationTypes">> => list(string())
+%% put_warm_pool_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceReusePolicy">> => instance_reuse_policy(),
+%%   <<"MaxGroupPreparedCapacity">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"PoolState">> => list(any())
 %% }
--type describe_auto_scaling_notification_types_answer() :: #{binary() => any()}.
+-type put_warm_pool_type() :: #{binary() => any()}.
+
+%% Example:
+%% record_lifecycle_action_heartbeat_answer() :: #{
+
+%% }
+-type record_lifecycle_action_heartbeat_answer() :: #{binary() => any()}.
+
+%% Example:
+%% record_lifecycle_action_heartbeat_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LifecycleActionToken">> => string(),
+%%   <<"LifecycleHookName">> := string()
+%% }
+-type record_lifecycle_action_heartbeat_type() :: #{binary() => any()}.
 
 %% Example:
 %% refresh_preferences() :: #{
@@ -1510,40 +1603,266 @@
 -type refresh_preferences() :: #{binary() => any()}.
 
 %% Example:
-%% launch_template() :: #{
-%%   <<"LaunchTemplateSpecification">> => launch_template_specification(),
-%%   <<"Overrides">> => list(launch_template_overrides())
+%% resource_contention_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type launch_template() :: #{binary() => any()}.
+-type resource_contention_fault() :: #{binary() => any()}.
 
 %% Example:
-%% batch_put_scheduled_update_group_action_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"ScheduledUpdateGroupActions">> := list(scheduled_update_group_action_request())
+%% resource_in_use_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type batch_put_scheduled_update_group_action_type() :: #{binary() => any()}.
+-type resource_in_use_fault() :: #{binary() => any()}.
 
 %% Example:
-%% launch_instances_result() :: #{
+%% retention_triggers() :: #{
+%%   <<"TerminateHookAbandon">> => list(any())
+%% }
+-type retention_triggers() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_details() :: #{
+%%   <<"InstancesToUpdateOnRollback">> => integer(),
+%%   <<"PercentageCompleteOnRollback">> => integer(),
+%%   <<"ProgressDetailsOnRollback">> => instance_refresh_progress_details(),
+%%   <<"RollbackReason">> => string(),
+%%   <<"RollbackStartTime">> => non_neg_integer()
+%% }
+-type rollback_details() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_instance_refresh_answer() :: #{
+%%   <<"InstanceRefreshId">> => string()
+%% }
+-type rollback_instance_refresh_answer() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_instance_refresh_type() :: #{
+%%   <<"AutoScalingGroupName">> := string()
+%% }
+-type rollback_instance_refresh_type() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_activity_in_progress_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type scaling_activity_in_progress_fault() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_policy() :: #{
+%%   <<"AdjustmentType">> => string(),
+%%   <<"Alarms">> => list(alarm()),
 %%   <<"AutoScalingGroupName">> => string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Errors">> => list(launch_instances_error()),
-%%   <<"Instances">> => list(instance_collection())
+%%   <<"Cooldown">> => integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EstimatedInstanceWarmup">> => integer(),
+%%   <<"MetricAggregationType">> => string(),
+%%   <<"MinAdjustmentMagnitude">> => integer(),
+%%   <<"MinAdjustmentStep">> => integer(),
+%%   <<"PolicyARN">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyType">> => string(),
+%%   <<"PredictiveScalingConfiguration">> => predictive_scaling_configuration(),
+%%   <<"ScalingAdjustment">> => integer(),
+%%   <<"StepAdjustments">> => list(step_adjustment()),
+%%   <<"TargetTrackingConfiguration">> => target_tracking_configuration()
 %% }
--type launch_instances_result() :: #{binary() => any()}.
+-type scaling_policy() :: #{binary() => any()}.
 
 %% Example:
-%% describe_instance_refreshes_answer() :: #{
-%%   <<"InstanceRefreshes">> => list(instance_refresh()),
-%%   <<"NextToken">> => string()
+%% scaling_process_query() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"ScalingProcesses">> => list(string())
 %% }
--type describe_instance_refreshes_answer() :: #{binary() => any()}.
+-type scaling_process_query() :: #{binary() => any()}.
 
 %% Example:
-%% put_warm_pool_answer() :: #{
+%% scheduled_actions_type() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduledUpdateGroupActions">> => list(scheduled_update_group_action())
+%% }
+-type scheduled_actions_type() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_update_group_action() :: #{
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"DesiredCapacity">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxSize">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"Recurrence">> => string(),
+%%   <<"ScheduledActionARN">> => string(),
+%%   <<"ScheduledActionName">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Time">> => non_neg_integer(),
+%%   <<"TimeZone">> => string()
+%% }
+-type scheduled_update_group_action() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_update_group_action_request() :: #{
+%%   <<"DesiredCapacity">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxSize">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"Recurrence">> => string(),
+%%   <<"ScheduledActionName">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TimeZone">> => string()
+%% }
+-type scheduled_update_group_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% service_linked_role_failure() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_linked_role_failure() :: #{binary() => any()}.
+
+%% Example:
+%% set_desired_capacity_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"DesiredCapacity">> := integer(),
+%%   <<"HonorCooldown">> => boolean()
+%% }
+-type set_desired_capacity_type() :: #{binary() => any()}.
+
+%% Example:
+%% set_instance_health_query() :: #{
+%%   <<"HealthStatus">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"ShouldRespectGracePeriod">> => boolean()
+%% }
+-type set_instance_health_query() :: #{binary() => any()}.
+
+%% Example:
+%% set_instance_protection_answer() :: #{
 
 %% }
--type put_warm_pool_answer() :: #{binary() => any()}.
+-type set_instance_protection_answer() :: #{binary() => any()}.
+
+%% Example:
+%% set_instance_protection_query() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"InstanceIds">> := list(string()),
+%%   <<"ProtectedFromScaleIn">> := boolean()
+%% }
+-type set_instance_protection_query() :: #{binary() => any()}.
+
+%% Example:
+%% start_instance_refresh_answer() :: #{
+%%   <<"InstanceRefreshId">> => string()
+%% }
+-type start_instance_refresh_answer() :: #{binary() => any()}.
+
+%% Example:
+%% start_instance_refresh_type() :: #{
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"DesiredConfiguration">> => desired_configuration(),
+%%   <<"Preferences">> => refresh_preferences(),
+%%   <<"Strategy">> => list(any())
+%% }
+-type start_instance_refresh_type() :: #{binary() => any()}.
+
+%% Example:
+%% step_adjustment() :: #{
+%%   <<"MetricIntervalLowerBound">> => float(),
+%%   <<"MetricIntervalUpperBound">> => float(),
+%%   <<"ScalingAdjustment">> => integer()
+%% }
+-type step_adjustment() :: #{binary() => any()}.
+
+%% Example:
+%% suspended_process() :: #{
+%%   <<"ProcessName">> => string(),
+%%   <<"SuspensionReason">> => string()
+%% }
+-type suspended_process() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"PropagateAtLaunch">> => boolean(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_description() :: #{
+%%   <<"Key">> => string(),
+%%   <<"PropagateAtLaunch">> => boolean(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag_description() :: #{binary() => any()}.
+
+%% Example:
+%% tags_type() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag_description())
+%% }
+-type tags_type() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_configuration() :: #{
+%%   <<"CustomizedMetricSpecification">> => customized_metric_specification(),
+%%   <<"DisableScaleIn">> => boolean(),
+%%   <<"PredefinedMetricSpecification">> => predefined_metric_specification(),
+%%   <<"TargetValue">> => float()
+%% }
+-type target_tracking_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_metric_data_query() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"MetricStat">> => target_tracking_metric_stat(),
+%%   <<"Period">> => integer(),
+%%   <<"ReturnData">> => boolean()
+%% }
+-type target_tracking_metric_data_query() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_metric_stat() :: #{
+%%   <<"Metric">> => metric(),
+%%   <<"Period">> => integer(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => string()
+%% }
+-type target_tracking_metric_stat() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_instance_in_auto_scaling_group_type() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"ShouldDecrementDesiredCapacity">> := boolean()
+%% }
+-type terminate_instance_in_auto_scaling_group_type() :: #{binary() => any()}.
+
+%% Example:
+%% total_local_storage_g_b_request() :: #{
+%%   <<"Max">> => float(),
+%%   <<"Min">> => float()
+%% }
+-type total_local_storage_g_b_request() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_source_identifier() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type traffic_source_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_source_state() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"State">> => string(),
+%%   <<"TrafficSource">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type traffic_source_state() :: #{binary() => any()}.
 
 %% Example:
 %% update_auto_scaling_group_type() :: #{
@@ -1580,340 +1899,21 @@
 -type update_auto_scaling_group_type() :: #{binary() => any()}.
 
 %% Example:
-%% describe_load_balancer_target_groups_request() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_load_balancer_target_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_refresh_in_progress_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type instance_refresh_in_progress_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_action_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"ScheduledActionName">> := string()
-%% }
--type delete_scheduled_action_type() :: #{binary() => any()}.
-
-%% Example:
-%% launch_configuration() :: #{
-%%   <<"AssociatePublicIpAddress">> => boolean(),
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
-%%   <<"ClassicLinkVPCId">> => string(),
-%%   <<"ClassicLinkVPCSecurityGroups">> => list(string()),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"EbsOptimized">> => boolean(),
-%%   <<"IamInstanceProfile">> => string(),
-%%   <<"ImageId">> => string(),
-%%   <<"InstanceMonitoring">> => instance_monitoring(),
-%%   <<"InstanceType">> => string(),
-%%   <<"KernelId">> => string(),
-%%   <<"KeyName">> => string(),
-%%   <<"LaunchConfigurationARN">> => string(),
-%%   <<"LaunchConfigurationName">> => string(),
-%%   <<"MetadataOptions">> => instance_metadata_options(),
-%%   <<"PlacementTenancy">> => string(),
-%%   <<"RamdiskId">> => string(),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"SpotPrice">> => string(),
-%%   <<"UserData">> => string()
-%% }
--type launch_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% cpu_performance_factor_request() :: #{
-%%   <<"References">> => list(performance_factor_reference_request())
-%% }
--type cpu_performance_factor_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_collection() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailabilityZoneId">> => string(),
-%%   <<"InstanceIds">> => list(string()),
-%%   <<"InstanceType">> => string(),
-%%   <<"MarketType">> => string(),
-%%   <<"SubnetId">> => string()
-%% }
--type instance_collection() :: #{binary() => any()}.
-
-%% Example:
-%% attach_load_balancer_target_groups_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"TargetGroupARNs">> := list(string())
-%% }
--type attach_load_balancer_target_groups_type() :: #{binary() => any()}.
-
-%% Example:
-%% launch_template_specification() :: #{
-%%   <<"LaunchTemplateId">> => string(),
-%%   <<"LaunchTemplateName">> => string(),
-%%   <<"Version">> => string()
-%% }
--type launch_template_specification() :: #{binary() => any()}.
-
-%% Example:
-%% rollback_details() :: #{
-%%   <<"InstancesToUpdateOnRollback">> => integer(),
-%%   <<"PercentageCompleteOnRollback">> => integer(),
-%%   <<"ProgressDetailsOnRollback">> => instance_refresh_progress_details(),
-%%   <<"RollbackReason">> => string(),
-%%   <<"RollbackStartTime">> => non_neg_integer()
-%% }
--type rollback_details() :: #{binary() => any()}.
-
-%% Example:
-%% set_instance_protection_query() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"InstanceIds">> := list(string()),
-%%   <<"ProtectedFromScaleIn">> := boolean()
-%% }
--type set_instance_protection_query() :: #{binary() => any()}.
-
-%% Example:
-%% memory_mi_b_request() :: #{
+%% v_cpu_count_request() :: #{
 %%   <<"Max">> => integer(),
 %%   <<"Min">> => integer()
 %% }
--type memory_mi_b_request() :: #{binary() => any()}.
+-type v_cpu_count_request() :: #{binary() => any()}.
 
 %% Example:
-%% network_interface_count_request() :: #{
-%%   <<"Max">> => integer(),
-%%   <<"Min">> => integer()
+%% warm_pool_configuration() :: #{
+%%   <<"InstanceReusePolicy">> => instance_reuse_policy(),
+%%   <<"MaxGroupPreparedCapacity">> => integer(),
+%%   <<"MinSize">> => integer(),
+%%   <<"PoolState">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type network_interface_count_request() :: #{binary() => any()}.
-
-%% Example:
-%% set_instance_health_query() :: #{
-%%   <<"HealthStatus">> := string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"ShouldRespectGracePeriod">> => boolean()
-%% }
--type set_instance_health_query() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lifecycle_hook_type() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"LifecycleHookName">> := string()
-%% }
--type delete_lifecycle_hook_type() :: #{binary() => any()}.
-
-%% Example:
-%% disable_metrics_collection_query() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"Metrics">> => list(string())
-%% }
--type disable_metrics_collection_query() :: #{binary() => any()}.
-
-%% Example:
-%% total_local_storage_g_b_request() :: #{
-%%   <<"Max">> => float(),
-%%   <<"Min">> => float()
-%% }
--type total_local_storage_g_b_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_linked_role_failure() :: #{
-%%   <<"message">> => string()
-%% }
--type service_linked_role_failure() :: #{binary() => any()}.
-
-%% Example:
-%% set_instance_protection_answer() :: #{
-
-%% }
--type set_instance_protection_answer() :: #{binary() => any()}.
-
-%% Example:
-%% predictive_scaling_customized_capacity_metric() :: #{
-%%   <<"MetricDataQueries">> => list(metric_data_query())
-%% }
--type predictive_scaling_customized_capacity_metric() :: #{binary() => any()}.
-
-%% Example:
-%% rollback_instance_refresh_type() :: #{
-%%   <<"AutoScalingGroupName">> := string()
-%% }
--type rollback_instance_refresh_type() :: #{binary() => any()}.
-
-%% Example:
-%% availability_zone_distribution() :: #{
-%%   <<"CapacityDistributionStrategy">> => list(any())
-%% }
--type availability_zone_distribution() :: #{binary() => any()}.
-
-%% Example:
-%% target_tracking_metric_data_query() :: #{
-%%   <<"Expression">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Label">> => string(),
-%%   <<"MetricStat">> => target_tracking_metric_stat(),
-%%   <<"Period">> => integer(),
-%%   <<"ReturnData">> => boolean()
-%% }
--type target_tracking_metric_data_query() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_forecast() :: #{
-%%   <<"Timestamps">> => list(non_neg_integer()),
-%%   <<"Values">> => list(float())
-%% }
--type capacity_forecast() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_instances_type() :: #{
-%%   <<"AutoScalingInstances">> => list(auto_scaling_instance_details()),
-%%   <<"NextToken">> => string()
-%% }
--type auto_scaling_instances_type() :: #{binary() => any()}.
-
-%% Example:
-%% detach_load_balancer_target_groups_result_type() :: #{
-
-%% }
--type detach_load_balancer_target_groups_result_type() :: #{binary() => any()}.
-
-%% Example:
-%% alarm_specification() :: #{
-%%   <<"Alarms">> => list(string())
-%% }
--type alarm_specification() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scaling_activities_type() :: #{
-%%   <<"ActivityIds">> => list(string()),
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"Filters">> => list(filter()),
-%%   <<"IncludeDeletedGroups">> => boolean(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_scaling_activities_type() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lifecycle_hook_answer() :: #{
-
-%% }
--type delete_lifecycle_hook_answer() :: #{binary() => any()}.
-
-%% Example:
-%% describe_auto_scaling_instances_type() :: #{
-%%   <<"InstanceIds">> => list(string()),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_auto_scaling_instances_type() :: #{binary() => any()}.
-
-%% Example:
-%% instance_refresh_live_pool_progress() :: #{
-%%   <<"InstancesToUpdate">> => integer(),
-%%   <<"PercentageComplete">> => integer()
-%% }
--type instance_refresh_live_pool_progress() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_groups_type() :: #{
-%%   <<"AutoScalingGroups">> := list(auto_scaling_group()),
-%%   <<"NextToken">> => string()
-%% }
--type auto_scaling_groups_type() :: #{binary() => any()}.
-
-%% Example:
-%% metric_collection_type() :: #{
-%%   <<"Metric">> => string()
-%% }
--type metric_collection_type() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_scheduled_action_answer() :: #{
-%%   <<"FailedScheduledActions">> => list(failed_scheduled_update_group_action_request())
-%% }
--type batch_delete_scheduled_action_answer() :: #{binary() => any()}.
-
-%% Example:
-%% enable_metrics_collection_query() :: #{
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"Granularity">> := string(),
-%%   <<"Metrics">> => list(string())
-%% }
--type enable_metrics_collection_query() :: #{binary() => any()}.
-
-%% Example:
-%% desired_configuration() :: #{
-%%   <<"LaunchTemplate">> => launch_template_specification(),
-%%   <<"MixedInstancesPolicy">> => mixed_instances_policy()
-%% }
--type desired_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_next_token() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_next_token() :: #{binary() => any()}.
-
-%% Example:
-%% baseline_ebs_bandwidth_mbps_request() :: #{
-%%   <<"Max">> => integer(),
-%%   <<"Min">> => integer()
-%% }
--type baseline_ebs_bandwidth_mbps_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_scaling_policy_type() :: #{
-%%   <<"AdjustmentType">> => string(),
-%%   <<"AutoScalingGroupName">> := string(),
-%%   <<"Cooldown">> => integer(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"EstimatedInstanceWarmup">> => integer(),
-%%   <<"MetricAggregationType">> => string(),
-%%   <<"MinAdjustmentMagnitude">> => integer(),
-%%   <<"MinAdjustmentStep">> => integer(),
-%%   <<"PolicyName">> := string(),
-%%   <<"PolicyType">> => string(),
-%%   <<"PredictiveScalingConfiguration">> => predictive_scaling_configuration(),
-%%   <<"ScalingAdjustment">> => integer(),
-%%   <<"StepAdjustments">> => list(step_adjustment()),
-%%   <<"TargetTrackingConfiguration">> => target_tracking_configuration()
-%% }
--type put_scaling_policy_type() :: #{binary() => any()}.
-
-%% Example:
-%% attach_load_balancer_target_groups_result_type() :: #{
-
-%% }
--type attach_load_balancer_target_groups_result_type() :: #{binary() => any()}.
-
-%% Example:
-%% predictive_scaling_configuration() :: #{
-%%   <<"MaxCapacityBreachBehavior">> => list(any()),
-%%   <<"MaxCapacityBuffer">> => integer(),
-%%   <<"MetricSpecifications">> => list(predictive_scaling_metric_specification()),
-%%   <<"Mode">> => list(any()),
-%%   <<"SchedulingBufferTime">> => integer()
-%% }
--type predictive_scaling_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% target_tracking_configuration() :: #{
-%%   <<"CustomizedMetricSpecification">> => customized_metric_specification(),
-%%   <<"DisableScaleIn">> => boolean(),
-%%   <<"PredefinedMetricSpecification">> => predefined_metric_specification(),
-%%   <<"TargetValue">> => float()
-%% }
--type target_tracking_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_policy_type() :: #{
-%%   <<"AutoScalingGroupName">> => string(),
-%%   <<"PolicyName">> := string()
-%% }
--type delete_policy_type() :: #{binary() => any()}.
+-type warm_pool_configuration() :: #{binary() => any()}.
 
 -type attach_instances_errors() ::
     service_linked_role_failure() | 
@@ -1921,56 +1921,56 @@
 
 -type attach_load_balancer_target_groups_errors() ::
     service_linked_role_failure() | 
-    instance_refresh_in_progress_fault() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    instance_refresh_in_progress_fault().
 
 -type attach_load_balancers_errors() ::
     service_linked_role_failure() | 
-    instance_refresh_in_progress_fault() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    instance_refresh_in_progress_fault().
 
 -type attach_traffic_sources_errors() ::
     service_linked_role_failure() | 
-    instance_refresh_in_progress_fault() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    instance_refresh_in_progress_fault().
 
 -type batch_delete_scheduled_action_errors() ::
     resource_contention_fault().
 
 -type batch_put_scheduled_update_group_action_errors() ::
-    already_exists_fault() | 
     resource_contention_fault() | 
-    limit_exceeded_fault().
+    limit_exceeded_fault() | 
+    already_exists_fault().
 
 -type cancel_instance_refresh_errors() ::
     resource_contention_fault() | 
-    active_instance_refresh_not_found_fault() | 
-    limit_exceeded_fault().
+    limit_exceeded_fault() | 
+    active_instance_refresh_not_found_fault().
 
 -type complete_lifecycle_action_errors() ::
     resource_contention_fault().
 
 -type create_auto_scaling_group_errors() ::
     service_linked_role_failure() | 
-    already_exists_fault() | 
     resource_contention_fault() | 
-    limit_exceeded_fault().
+    limit_exceeded_fault() | 
+    already_exists_fault().
 
 -type create_launch_configuration_errors() ::
-    already_exists_fault() | 
     resource_contention_fault() | 
-    limit_exceeded_fault().
+    limit_exceeded_fault() | 
+    already_exists_fault().
 
 -type create_or_update_tags_errors() ::
-    already_exists_fault() | 
     resource_in_use_fault() | 
     resource_contention_fault() | 
-    limit_exceeded_fault().
+    limit_exceeded_fault() | 
+    already_exists_fault().
 
 -type delete_auto_scaling_group_errors() ::
+    scaling_activity_in_progress_fault() | 
     resource_in_use_fault() | 
-    resource_contention_fault() | 
-    scaling_activity_in_progress_fault().
+    resource_contention_fault().
 
 -type delete_launch_configuration_errors() ::
     resource_in_use_fault() | 
@@ -1994,9 +1994,9 @@
     resource_contention_fault().
 
 -type delete_warm_pool_errors() ::
+    scaling_activity_in_progress_fault() | 
     resource_in_use_fault() | 
     resource_contention_fault() | 
-    scaling_activity_in_progress_fault() | 
     limit_exceeded_fault().
 
 -type describe_account_limits_errors() ::
@@ -2006,23 +2006,23 @@
     resource_contention_fault().
 
 -type describe_auto_scaling_groups_errors() ::
-    invalid_next_token() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_auto_scaling_instances_errors() ::
-    invalid_next_token() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_auto_scaling_notification_types_errors() ::
     resource_contention_fault().
 
 -type describe_instance_refreshes_errors() ::
-    invalid_next_token() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_launch_configurations_errors() ::
-    invalid_next_token() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_lifecycle_hook_types_errors() ::
     resource_contention_fault().
@@ -2031,51 +2031,51 @@
     resource_contention_fault().
 
 -type describe_load_balancer_target_groups_errors() ::
-    invalid_next_token() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_load_balancers_errors() ::
-    invalid_next_token() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_metric_collection_types_errors() ::
     resource_contention_fault().
 
 -type describe_notification_configurations_errors() ::
-    invalid_next_token() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_policies_errors() ::
-    invalid_next_token() | 
     service_linked_role_failure() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_scaling_activities_errors() ::
-    invalid_next_token() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_scaling_process_types_errors() ::
     resource_contention_fault().
 
 -type describe_scheduled_actions_errors() ::
-    invalid_next_token() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_tags_errors() ::
-    invalid_next_token() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_termination_policy_types_errors() ::
     resource_contention_fault().
 
 -type describe_traffic_sources_errors() ::
-    invalid_next_token() | 
-    resource_contention_fault().
+    resource_contention_fault() | 
+    invalid_next_token().
 
 -type describe_warm_pool_errors() ::
-    invalid_next_token() | 
     resource_contention_fault() | 
-    limit_exceeded_fault().
+    limit_exceeded_fault() | 
+    invalid_next_token().
 
 -type detach_instances_errors() ::
     resource_contention_fault().
@@ -2099,8 +2099,8 @@
     resource_contention_fault().
 
 -type execute_policy_errors() ::
-    resource_contention_fault() | 
-    scaling_activity_in_progress_fault().
+    scaling_activity_in_progress_fault() | 
+    resource_contention_fault().
 
 -type exit_standby_errors() ::
     resource_contention_fault().
@@ -2127,14 +2127,14 @@
     limit_exceeded_fault().
 
 -type put_scheduled_update_group_action_errors() ::
-    already_exists_fault() | 
     resource_contention_fault() | 
-    limit_exceeded_fault().
+    limit_exceeded_fault() | 
+    already_exists_fault().
 
 -type put_warm_pool_errors() ::
-    instance_refresh_in_progress_fault() | 
     resource_contention_fault() | 
-    limit_exceeded_fault().
+    limit_exceeded_fault() | 
+    instance_refresh_in_progress_fault().
 
 -type record_lifecycle_action_heartbeat_errors() ::
     resource_contention_fault().
@@ -2145,13 +2145,13 @@
 
 -type rollback_instance_refresh_errors() ::
     resource_contention_fault() | 
+    limit_exceeded_fault() | 
     irreversible_instance_refresh_fault() | 
-    active_instance_refresh_not_found_fault() | 
-    limit_exceeded_fault().
+    active_instance_refresh_not_found_fault().
 
 -type set_desired_capacity_errors() ::
-    resource_contention_fault() | 
-    scaling_activity_in_progress_fault().
+    scaling_activity_in_progress_fault() | 
+    resource_contention_fault().
 
 -type set_instance_health_errors() ::
     resource_contention_fault().
@@ -2161,22 +2161,22 @@
     limit_exceeded_fault().
 
 -type start_instance_refresh_errors() ::
-    instance_refresh_in_progress_fault() | 
     resource_contention_fault() | 
-    limit_exceeded_fault().
+    limit_exceeded_fault() | 
+    instance_refresh_in_progress_fault().
 
 -type suspend_processes_errors() ::
     resource_in_use_fault() | 
     resource_contention_fault().
 
 -type terminate_instance_in_auto_scaling_group_errors() ::
-    resource_contention_fault() | 
-    scaling_activity_in_progress_fault().
+    scaling_activity_in_progress_fault() | 
+    resource_contention_fault().
 
 -type update_auto_scaling_group_errors() ::
     service_linked_role_failure() | 
-    resource_contention_fault() | 
-    scaling_activity_in_progress_fault().
+    scaling_activity_in_progress_fault() | 
+    resource_contention_fault().
 
 %%====================================================================
 %% API

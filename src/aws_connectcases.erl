@@ -111,27 +111,184 @@
 
 
 %% Example:
-%% contact_filter() :: #{
-%%   <<"channel">> => list(string()),
-%%   <<"contactArn">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type contact_filter() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_domain_request() :: #{}
--type get_domain_request() :: #{}.
+%% audit_event() :: #{
+%%   <<"eventId">> => string(),
+%%   <<"fields">> => list(audit_event_field()),
+%%   <<"performedBy">> => audit_event_performed_by(),
+%%   <<"performedTime">> => non_neg_integer(),
+%%   <<"relatedItemType">> => string(),
+%%   <<"type">> => string()
+%% }
+-type audit_event() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_case_rule_request() :: #{}
--type delete_case_rule_request() :: #{}.
+%% audit_event_field() :: #{
+%%   <<"eventFieldId">> => string(),
+%%   <<"newValue">> => list(),
+%%   <<"oldValue">> => list()
+%% }
+-type audit_event_field() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_domain_response() :: #{}
--type delete_domain_response() :: #{}.
+%% audit_event_performed_by() :: #{
+%%   <<"iamPrincipalArn">> => string(),
+%%   <<"user">> => list()
+%% }
+-type audit_event_performed_by() :: #{binary() => any()}.
+
 
 %% Example:
-%% update_case_rule_response() :: #{}
--type update_case_rule_response() :: #{}.
+%% basic_layout() :: #{
+%%   <<"moreInfo">> => layout_sections(),
+%%   <<"topPanel">> => layout_sections()
+%% }
+-type basic_layout() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_case_rule_request() :: #{
+%%   <<"caseRules">> := list(case_rule_identifier())
+%% }
+-type batch_get_case_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_case_rule_response() :: #{
+%%   <<"caseRules">> => list(get_case_rule_response()),
+%%   <<"errors">> => list(case_rule_error()),
+%%   <<"unprocessedCaseRules">> => list(string())
+%% }
+-type batch_get_case_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_field_request() :: #{
+%%   <<"fields">> := list(field_identifier())
+%% }
+-type batch_get_field_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_field_response() :: #{
+%%   <<"errors">> := list(field_error()),
+%%   <<"fields">> := list(get_field_response())
+%% }
+-type batch_get_field_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_field_options_request() :: #{
+%%   <<"options">> := list(field_option())
+%% }
+-type batch_put_field_options_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_field_options_response() :: #{
+%%   <<"errors">> => list(field_option_error())
+%% }
+-type batch_put_field_options_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% boolean_operands() :: #{
+%%   <<"operandOne">> => list(),
+%%   <<"operandTwo">> => list(),
+%%   <<"result">> => [boolean()]
+%% }
+-type boolean_operands() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_event_included_data() :: #{
+%%   <<"fields">> => list(field_identifier())
+%% }
+-type case_event_included_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_rule_error() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type case_rule_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_rule_identifier() :: #{
+%%   <<"id">> => string()
+%% }
+-type case_rule_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_rule_summary() :: #{
+%%   <<"caseRuleArn">> => string(),
+%%   <<"caseRuleId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ruleType">> => string()
+%% }
+-type case_rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_summary() :: #{
+%%   <<"caseId">> => string(),
+%%   <<"templateId">> => string()
+%% }
+-type case_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% comment_content() :: #{
+%%   <<"body">> => string(),
+%%   <<"contentType">> => string()
+%% }
+-type comment_content() :: #{binary() => any()}.
+
+%% Example:
+%% comment_filter() :: #{}
+-type comment_filter() :: #{}.
+
+
+%% Example:
+%% comment_update_content() :: #{
+%%   <<"body">> => string(),
+%%   <<"contentType">> => string()
+%% }
+-type comment_update_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% compound_condition() :: #{
+%%   <<"conditions">> => list(list())
+%% }
+-type compound_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_case_content() :: #{
+%%   <<"caseId">> => string()
+%% }
+-type connect_case_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -142,94 +299,34 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% connect_case_input_content() :: #{
+%%   <<"caseId">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type connect_case_input_content() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_layout_request() :: #{
-%%   <<"content">> => list(),
-%%   <<"name">> => string()
+%% contact() :: #{
+%%   <<"contactArn">> => string()
 %% }
--type update_layout_request() :: #{binary() => any()}.
+-type contact() :: #{binary() => any()}.
 
 
 %% Example:
-%% template_rule() :: #{
-%%   <<"caseRuleId">> => string(),
-%%   <<"fieldId">> => string()
+%% contact_content() :: #{
+%%   <<"channel">> => string(),
+%%   <<"connectedToSystemTime">> => non_neg_integer(),
+%%   <<"contactArn">> => string()
 %% }
--type template_rule() :: #{binary() => any()}.
+-type contact_content() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_case_audit_events_response() :: #{
-%%   <<"auditEvents">> => list(audit_event()),
-%%   <<"nextToken">> => string()
+%% contact_filter() :: #{
+%%   <<"channel">> => list(string()),
+%%   <<"contactArn">> => string()
 %% }
--type get_case_audit_events_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sla_content() :: #{
-%%   <<"slaConfiguration">> => sla_configuration()
-%% }
--type sla_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_related_items_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"relatedItems">> := list(search_related_items_response_item())
-%% }
--type search_related_items_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_fields_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_fields_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_cases_request() :: #{
-%%   <<"fields">> => list(field_identifier()),
-%%   <<"filter">> => list(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"searchTerm">> => [string()],
-%%   <<"sorts">> => list(sort())
-%% }
--type search_cases_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_case_audit_events_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type get_case_audit_events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_case_rule_response() :: #{
-%%   <<"caseRuleArn">> => string(),
-%%   <<"caseRuleId">> => string()
-%% }
--type create_case_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_templates_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(string())
-%% }
--type list_templates_request() :: #{binary() => any()}.
+-type contact_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -244,45 +341,95 @@
 
 
 %% Example:
-%% field_option_error() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"message">> => [string()],
-%%   <<"value">> => string()
+%% create_case_response() :: #{
+%%   <<"caseArn">> := string(),
+%%   <<"caseId">> := string()
 %% }
--type field_option_error() :: #{binary() => any()}.
+-type create_case_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_layouts_response() :: #{
-%%   <<"layouts">> := list(layout_summary()),
-%%   <<"nextToken">> => string()
+%% create_case_rule_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"rule">> := list()
 %% }
--type list_layouts_response() :: #{binary() => any()}.
+-type create_case_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% compound_condition() :: #{
-%%   <<"conditions">> => list(list())
+%% create_case_rule_response() :: #{
+%%   <<"caseRuleArn">> => string(),
+%%   <<"caseRuleId">> => string()
 %% }
--type compound_condition() :: #{binary() => any()}.
+-type create_case_rule_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% domain_summary() :: #{
-%%   <<"domainArn">> => string(),
-%%   <<"domainId">> => string(),
-%%   <<"name">> => string()
+%% create_domain_request() :: #{
+%%   <<"name">> := string()
 %% }
--type domain_summary() :: #{binary() => any()}.
+-type create_domain_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% field_options_case_rule() :: #{
-%%   <<"childFieldId">> => string(),
-%%   <<"parentChildFieldOptionsMappings">> => list(parent_child_field_options_mapping()),
-%%   <<"parentFieldId">> => string()
+%% create_domain_response() :: #{
+%%   <<"domainArn">> := string(),
+%%   <<"domainId">> := string(),
+%%   <<"domainStatus">> := string()
 %% }
--type field_options_case_rule() :: #{binary() => any()}.
+-type create_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_field_request() :: #{
+%%   <<"attributes">> => list(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"type">> := string()
+%% }
+-type create_field_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_field_response() :: #{
+%%   <<"fieldArn">> := string(),
+%%   <<"fieldId">> := string()
+%% }
+-type create_field_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_layout_request() :: #{
+%%   <<"content">> := list(),
+%%   <<"name">> := string()
+%% }
+-type create_layout_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_layout_response() :: #{
+%%   <<"layoutArn">> := string(),
+%%   <<"layoutId">> := string()
+%% }
+-type create_layout_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_related_item_request() :: #{
+%%   <<"content">> := list(),
+%%   <<"performedBy">> => list(),
+%%   <<"type">> := string()
+%% }
+-type create_related_item_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_related_item_response() :: #{
+%%   <<"relatedItemArn">> := string(),
+%%   <<"relatedItemId">> := string()
+%% }
+-type create_related_item_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -296,6 +443,338 @@
 %%   <<"tagPropagationConfigurations">> => list(tag_propagation_configuration())
 %% }
 -type create_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_template_response() :: #{
+%%   <<"templateArn">> := string(),
+%%   <<"templateId">> := string()
+%% }
+-type create_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_content() :: #{
+%%   <<"fields">> => list(field_value())
+%% }
+-type custom_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_filter() :: #{
+%%   <<"fields">> => list()
+%% }
+-type custom_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_input_content() :: #{
+%%   <<"fields">> => list(field_value())
+%% }
+-type custom_input_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_update_content() :: #{
+%%   <<"fields">> => list(field_value())
+%% }
+-type custom_update_content() :: #{binary() => any()}.
+
+%% Example:
+%% delete_case_request() :: #{}
+-type delete_case_request() :: #{}.
+
+%% Example:
+%% delete_case_response() :: #{}
+-type delete_case_response() :: #{}.
+
+%% Example:
+%% delete_case_rule_request() :: #{}
+-type delete_case_rule_request() :: #{}.
+
+%% Example:
+%% delete_case_rule_response() :: #{}
+-type delete_case_rule_response() :: #{}.
+
+%% Example:
+%% delete_domain_request() :: #{}
+-type delete_domain_request() :: #{}.
+
+%% Example:
+%% delete_domain_response() :: #{}
+-type delete_domain_response() :: #{}.
+
+%% Example:
+%% delete_field_request() :: #{}
+-type delete_field_request() :: #{}.
+
+%% Example:
+%% delete_field_response() :: #{}
+-type delete_field_response() :: #{}.
+
+%% Example:
+%% delete_layout_request() :: #{}
+-type delete_layout_request() :: #{}.
+
+%% Example:
+%% delete_layout_response() :: #{}
+-type delete_layout_response() :: #{}.
+
+%% Example:
+%% delete_related_item_request() :: #{}
+-type delete_related_item_request() :: #{}.
+
+%% Example:
+%% delete_related_item_response() :: #{}
+-type delete_related_item_response() :: #{}.
+
+%% Example:
+%% delete_template_request() :: #{}
+-type delete_template_request() :: #{}.
+
+%% Example:
+%% delete_template_response() :: #{}
+-type delete_template_response() :: #{}.
+
+
+%% Example:
+%% domain_summary() :: #{
+%%   <<"domainArn">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"name">> => string()
+%% }
+-type domain_summary() :: #{binary() => any()}.
+
+%% Example:
+%% empty_field_value() :: #{}
+-type empty_field_value() :: #{}.
+
+%% Example:
+%% empty_operand_value() :: #{}
+-type empty_operand_value() :: #{}.
+
+
+%% Example:
+%% event_bridge_configuration() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"includedData">> => event_included_data()
+%% }
+-type event_bridge_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_included_data() :: #{
+%%   <<"caseData">> => case_event_included_data(),
+%%   <<"relatedItemData">> => related_item_event_included_data()
+%% }
+-type event_included_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_error() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type field_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_group() :: #{
+%%   <<"fields">> => list(field_item()),
+%%   <<"name">> => [string()]
+%% }
+-type field_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_identifier() :: #{
+%%   <<"id">> => string()
+%% }
+-type field_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_item() :: #{
+%%   <<"id">> => string()
+%% }
+-type field_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_option() :: #{
+%%   <<"active">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type field_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_option_error() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"value">> => string()
+%% }
+-type field_option_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_options_case_rule() :: #{
+%%   <<"childFieldId">> => string(),
+%%   <<"parentChildFieldOptionsMappings">> => list(parent_child_field_options_mapping()),
+%%   <<"parentFieldId">> => string()
+%% }
+-type field_options_case_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_summary() :: #{
+%%   <<"attributes">> => list(),
+%%   <<"fieldArn">> => string(),
+%%   <<"fieldId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"type">> => string()
+%% }
+-type field_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_value() :: #{
+%%   <<"id">> => string(),
+%%   <<"value">> => list()
+%% }
+-type field_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_content() :: #{
+%%   <<"fileArn">> => string()
+%% }
+-type file_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_filter() :: #{
+%%   <<"fileArn">> => string()
+%% }
+-type file_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_case_audit_events_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type get_case_audit_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_case_audit_events_response() :: #{
+%%   <<"auditEvents">> => list(audit_event()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_case_audit_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_case_event_configuration_request() :: #{}
+-type get_case_event_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_case_event_configuration_response() :: #{
+%%   <<"eventBridge">> := event_bridge_configuration()
+%% }
+-type get_case_event_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_case_request() :: #{
+%%   <<"fields">> := list(field_identifier()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_case_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_case_response() :: #{
+%%   <<"fields">> := list(field_value()),
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"templateId">> := string()
+%% }
+-type get_case_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_case_rule_response() :: #{
+%%   <<"caseRuleArn">> => string(),
+%%   <<"caseRuleId">> => string(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"deleted">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"rule">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type get_case_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_request() :: #{}
+-type get_domain_request() :: #{}.
+
+
+%% Example:
+%% get_domain_response() :: #{
+%%   <<"createdTime">> := non_neg_integer(),
+%%   <<"domainArn">> := string(),
+%%   <<"domainId">> := string(),
+%%   <<"domainStatus">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type get_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_field_response() :: #{
+%%   <<"attributes">> => list(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"deleted">> => boolean(),
+%%   <<"description">> => string(),
+%%   <<"fieldArn">> => string(),
+%%   <<"fieldId">> => string(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"namespace">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type get_field_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_layout_request() :: #{}
+-type get_layout_request() :: #{}.
+
+
+%% Example:
+%% get_layout_response() :: #{
+%%   <<"content">> := list(),
+%%   <<"createdTime">> => non_neg_integer(),
+%%   <<"deleted">> => boolean(),
+%%   <<"lastModifiedTime">> => non_neg_integer(),
+%%   <<"layoutArn">> := string(),
+%%   <<"layoutId">> := string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type get_layout_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_request() :: #{}
+-type get_template_request() :: #{}.
 
 
 %% Example:
@@ -316,39 +795,93 @@
 %% }
 -type get_template_response() :: #{binary() => any()}.
 
-%% Example:
-%% delete_related_item_request() :: #{}
--type delete_related_item_request() :: #{}.
-
 
 %% Example:
-%% batch_put_field_options_request() :: #{
-%%   <<"options">> := list(field_option())
+%% hidden_case_rule() :: #{
+%%   <<"conditions">> => list(list()),
+%%   <<"defaultValue">> => [boolean()]
 %% }
--type batch_put_field_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_field_request() :: #{}
--type delete_field_request() :: #{}.
+-type hidden_case_rule() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_case_response() :: #{
-%%   <<"caseArn">> := string(),
-%%   <<"caseId">> := string()
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
 %% }
--type create_case_response() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% file_filter() :: #{
-%%   <<"fileArn">> => string()
+%% layout_configuration() :: #{
+%%   <<"defaultLayout">> => string()
 %% }
--type file_filter() :: #{binary() => any()}.
+-type layout_configuration() :: #{binary() => any()}.
+
 
 %% Example:
-%% comment_filter() :: #{}
--type comment_filter() :: #{}.
+%% layout_sections() :: #{
+%%   <<"sections">> => list(list())
+%% }
+-type layout_sections() :: #{binary() => any()}.
+
+
+%% Example:
+%% layout_summary() :: #{
+%%   <<"layoutArn">> => string(),
+%%   <<"layoutId">> => string(),
+%%   <<"name">> => string()
+%% }
+-type layout_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_case_rules_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_case_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_case_rules_response() :: #{
+%%   <<"caseRules">> => list(case_rule_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_case_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cases_for_contact_request() :: #{
+%%   <<"contactArn">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_cases_for_contact_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cases_for_contact_response() :: #{
+%%   <<"cases">> := list(case_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_cases_for_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domains_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_response() :: #{
+%%   <<"domains">> := list(domain_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domains_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -361,73 +894,105 @@
 
 
 %% Example:
-%% create_layout_request() :: #{
-%%   <<"content">> := list(),
-%%   <<"name">> := string()
+%% list_field_options_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"options">> := list(field_option())
 %% }
--type create_layout_request() :: #{binary() => any()}.
+-type list_field_options_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_template_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"layoutConfiguration">> => layout_configuration(),
-%%   <<"name">> => string(),
-%%   <<"requiredFields">> => list(required_field()),
-%%   <<"rules">> => list(template_rule()),
-%%   <<"status">> => string(),
-%%   <<"tagPropagationConfigurations">> => list(tag_propagation_configuration())
-%% }
--type update_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cases_for_contact_response() :: #{
-%%   <<"cases">> := list(case_summary()),
+%% list_fields_request() :: #{
+%%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type list_cases_for_contact_response() :: #{binary() => any()}.
+-type list_fields_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% list_fields_response() :: #{
+%%   <<"fields">> := list(field_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type list_fields_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% hidden_case_rule() :: #{
+%% list_layouts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_layouts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_layouts_response() :: #{
+%%   <<"layouts">> := list(layout_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_layouts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(string())
+%% }
+-type list_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"templates">> := list(template_summary())
+%% }
+-type list_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% parent_child_field_options_mapping() :: #{
+%%   <<"childFieldOptionValues">> => list(string()),
+%%   <<"parentFieldOptionValue">> => string()
+%% }
+-type parent_child_field_options_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_case_event_configuration_request() :: #{
+%%   <<"eventBridge">> := event_bridge_configuration()
+%% }
+-type put_case_event_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_case_event_configuration_response() :: #{}
+-type put_case_event_configuration_response() :: #{}.
+
+
+%% Example:
+%% related_item_event_included_data() :: #{
+%%   <<"includeContent">> => [boolean()]
+%% }
+-type related_item_event_included_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% required_case_rule() :: #{
 %%   <<"conditions">> => list(list()),
 %%   <<"defaultValue">> => [boolean()]
 %% }
--type hidden_case_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_field_response() :: #{
-%%   <<"fieldArn">> := string(),
-%%   <<"fieldId">> := string()
-%% }
--type create_field_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_case_response() :: #{
-%%   <<"fields">> := list(field_value()),
-%%   <<"nextToken">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"templateId">> := string()
-%% }
--type get_case_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% comment_content() :: #{
-%%   <<"body">> => string(),
-%%   <<"contentType">> => string()
-%% }
--type comment_content() :: #{binary() => any()}.
+-type required_case_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -438,29 +1003,72 @@
 
 
 %% Example:
-%% get_case_rule_response() :: #{
-%%   <<"caseRuleArn">> => string(),
-%%   <<"caseRuleId">> => string(),
-%%   <<"createdTime">> => non_neg_integer(),
-%%   <<"deleted">> => boolean(),
-%%   <<"description">> => string(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"rule">> => list(),
-%%   <<"tags">> => map()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type get_case_rule_response() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% text_attributes() :: #{
-%%   <<"isMultiline">> => [boolean()]
+%% search_all_related_items_request() :: #{
+%%   <<"filters">> => list(list()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sorts">> => list(search_all_related_items_sort())
 %% }
--type text_attributes() :: #{binary() => any()}.
+-type search_all_related_items_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_layout_response() :: #{}
--type delete_layout_response() :: #{}.
+%% search_all_related_items_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"relatedItems">> => list(search_all_related_items_response_item())
+%% }
+-type search_all_related_items_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_all_related_items_response_item() :: #{
+%%   <<"associationTime">> => non_neg_integer(),
+%%   <<"caseId">> => string(),
+%%   <<"content">> => list(),
+%%   <<"performedBy">> => list(),
+%%   <<"relatedItemId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type search_all_related_items_response_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_all_related_items_sort() :: #{
+%%   <<"sortOrder">> => string(),
+%%   <<"sortProperty">> => string()
+%% }
+-type search_all_related_items_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_cases_request() :: #{
+%%   <<"fields">> => list(field_identifier()),
+%%   <<"filter">> => list(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"searchTerm">> => [string()],
+%%   <<"sorts">> => list(sort())
+%% }
+-type search_cases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_cases_response() :: #{
+%%   <<"cases">> := list(search_cases_response_item()),
+%%   <<"nextToken">> => string(),
+%%   <<"totalCount">> => float()
+%% }
+-type search_cases_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -481,123 +1089,13 @@
 %% }
 -type search_related_items_request() :: #{binary() => any()}.
 
-%% Example:
-%% delete_domain_request() :: #{}
--type delete_domain_request() :: #{}.
-
 
 %% Example:
-%% basic_layout() :: #{
-%%   <<"moreInfo">> => layout_sections(),
-%%   <<"topPanel">> => layout_sections()
-%% }
--type basic_layout() :: #{binary() => any()}.
-
-%% Example:
-%% empty_field_value() :: #{}
--type empty_field_value() :: #{}.
-
-%% Example:
-%% delete_template_request() :: #{}
--type delete_template_request() :: #{}.
-
-%% Example:
-%% get_case_event_configuration_request() :: #{}
--type get_case_event_configuration_request() :: #{}.
-
-
-%% Example:
-%% search_all_related_items_response() :: #{
+%% search_related_items_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"relatedItems">> => list(search_all_related_items_response_item())
+%%   <<"relatedItems">> := list(search_related_items_response_item())
 %% }
--type search_all_related_items_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_value() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_all_related_items_request() :: #{
-%%   <<"filters">> => list(list()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"sorts">> => list(search_all_related_items_sort())
-%% }
--type search_all_related_items_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_request() :: #{
-%%   <<"name">> := string()
-%% }
--type create_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_field_request() :: #{
-%%   <<"fields">> := list(field_identifier())
-%% }
--type batch_get_field_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_case_event_configuration_response() :: #{
-%%   <<"eventBridge">> := event_bridge_configuration()
-%% }
--type get_case_event_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% connect_case_content() :: #{
-%%   <<"caseId">> => string()
-%% }
--type connect_case_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% audit_event_field() :: #{
-%%   <<"eventFieldId">> => string(),
-%%   <<"newValue">> => list(),
-%%   <<"oldValue">> => list()
-%% }
--type audit_event_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_case_request() :: #{
-%%   <<"fields">> := list(field_identifier()),
-%%   <<"nextToken">> => string()
-%% }
--type get_case_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type search_related_items_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -613,23 +1111,88 @@
 
 
 %% Example:
-%% list_domains_response() :: #{
-%%   <<"domains">> := list(domain_summary()),
-%%   <<"nextToken">> => string()
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_domains_response() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_case_rules_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% sla_configuration() :: #{
+%%   <<"completionTime">> => non_neg_integer(),
+%%   <<"fieldId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"targetFieldValues">> => list(list()),
+%%   <<"targetTime">> => non_neg_integer(),
+%%   <<"type">> => string()
 %% }
--type list_case_rules_request() :: #{binary() => any()}.
+-type sla_configuration() :: #{binary() => any()}.
+
 
 %% Example:
-%% update_field_response() :: #{}
--type update_field_response() :: #{}.
+%% sla_content() :: #{
+%%   <<"slaConfiguration">> => sla_configuration()
+%% }
+-type sla_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% sla_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"status">> => string()
+%% }
+-type sla_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% sla_input_configuration() :: #{
+%%   <<"fieldId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"targetFieldValues">> => list(list()),
+%%   <<"targetSlaMinutes">> => float(),
+%%   <<"type">> => string()
+%% }
+-type sla_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort() :: #{
+%%   <<"fieldId">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_propagation_configuration() :: #{
+%%   <<"resourceType">> => string(),
+%%   <<"tagMap">> => map()
+%% }
+-type tag_propagation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_value() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_rule() :: #{
+%%   <<"caseRuleId">> => string(),
+%%   <<"fieldId">> => string()
+%% }
+-type template_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -644,139 +1207,82 @@
 
 
 %% Example:
-%% create_case_rule_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"rule">> := list()
+%% text_attributes() :: #{
+%%   <<"isMultiline">> => [boolean()]
 %% }
--type create_case_rule_request() :: #{binary() => any()}.
+-type text_attributes() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_field_request() :: #{
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_case_request() :: #{
+%%   <<"fields">> := list(field_value()),
+%%   <<"performedBy">> => list()
+%% }
+-type update_case_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_case_response() :: #{}
+-type update_case_response() :: #{}.
+
+
+%% Example:
+%% update_case_rule_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"rule">> => list()
+%% }
+-type update_case_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_case_rule_response() :: #{}
+-type update_case_rule_response() :: #{}.
+
+
+%% Example:
+%% update_field_request() :: #{
 %%   <<"attributes">> => list(),
 %%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"type">> := string()
+%%   <<"name">> => string()
 %% }
--type create_field_request() :: #{binary() => any()}.
+-type update_field_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_field_response() :: #{}
+-type update_field_response() :: #{}.
 
 
 %% Example:
-%% batch_get_field_response() :: #{
-%%   <<"errors">> := list(field_error()),
-%%   <<"fields">> := list(get_field_response())
+%% update_layout_request() :: #{
+%%   <<"content">> => list(),
+%%   <<"name">> => string()
 %% }
--type batch_get_field_response() :: #{binary() => any()}.
+-type update_layout_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_layout_response() :: #{}
+-type update_layout_response() :: #{}.
 
 
 %% Example:
-%% list_case_rules_response() :: #{
-%%   <<"caseRules">> => list(case_rule_summary()),
-%%   <<"nextToken">> => string()
+%% update_related_item_request() :: #{
+%%   <<"content">> := list(),
+%%   <<"performedBy">> => list()
 %% }
--type list_case_rules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sla_input_configuration() :: #{
-%%   <<"fieldId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"targetFieldValues">> => list(list()),
-%%   <<"targetSlaMinutes">> => float(),
-%%   <<"type">> => string()
-%% }
--type sla_input_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_case_rule_response() :: #{}
--type delete_case_rule_response() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% comment_update_content() :: #{
-%%   <<"body">> => string(),
-%%   <<"contentType">> => string()
-%% }
--type comment_update_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_layout_response() :: #{
-%%   <<"layoutArn">> := string(),
-%%   <<"layoutId">> := string()
-%% }
--type create_layout_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% parent_child_field_options_mapping() :: #{
-%%   <<"childFieldOptionValues">> => list(string()),
-%%   <<"parentFieldOptionValue">> => string()
-%% }
--type parent_child_field_options_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% empty_operand_value() :: #{}
--type empty_operand_value() :: #{}.
-
-%% Example:
-%% put_case_event_configuration_response() :: #{}
--type put_case_event_configuration_response() :: #{}.
-
-
-%% Example:
-%% list_fields_response() :: #{
-%%   <<"fields">> := list(field_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_fields_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_case_response() :: #{}
--type delete_case_response() :: #{}.
-
-
-%% Example:
-%% sort() :: #{
-%%   <<"fieldId">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type sort() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact() :: #{
-%%   <<"contactArn">> => string()
-%% }
--type contact() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_related_item_response() :: #{
-%%   <<"relatedItemArn">> := string(),
-%%   <<"relatedItemId">> := string()
-%% }
--type create_related_item_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_response() :: #{
-%%   <<"createdTime">> := non_neg_integer(),
-%%   <<"domainArn">> := string(),
-%%   <<"domainId">> := string(),
-%%   <<"domainStatus">> := string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type get_domain_response() :: #{binary() => any()}.
+-type update_related_item_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -794,252 +1300,20 @@
 
 
 %% Example:
-%% field_item() :: #{
-%%   <<"id">> => string()
-%% }
--type field_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_error() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"message">> => [string()]
-%% }
--type field_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_summary() :: #{
-%%   <<"attributes">> => list(),
-%%   <<"fieldArn">> => string(),
-%%   <<"fieldId">> => string(),
+%% update_template_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"layoutConfiguration">> => layout_configuration(),
 %%   <<"name">> => string(),
-%%   <<"namespace">> => string(),
-%%   <<"type">> => string()
+%%   <<"requiredFields">> => list(required_field()),
+%%   <<"rules">> => list(template_rule()),
+%%   <<"status">> => string(),
+%%   <<"tagPropagationConfigurations">> => list(tag_propagation_configuration())
 %% }
--type field_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_case_request() :: #{}
--type delete_case_request() :: #{}.
-
-%% Example:
-%% delete_related_item_response() :: #{}
--type delete_related_item_response() :: #{}.
-
-
-%% Example:
-%% list_layouts_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_layouts_request() :: #{binary() => any()}.
+-type update_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_template_response() :: #{}
 -type update_template_response() :: #{}.
-
-
-%% Example:
-%% list_domains_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_domains_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_included_data() :: #{
-%%   <<"caseData">> => case_event_included_data(),
-%%   <<"relatedItemData">> => related_item_event_included_data()
-%% }
--type event_included_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_case_request() :: #{
-%%   <<"fields">> := list(field_value()),
-%%   <<"performedBy">> => list()
-%% }
--type update_case_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sla_filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"status">> => string()
-%% }
--type sla_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_bridge_configuration() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"includedData">> => event_included_data()
-%% }
--type event_bridge_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_field_response() :: #{}
--type delete_field_response() :: #{}.
-
-
-%% Example:
-%% sla_configuration() :: #{
-%%   <<"completionTime">> => non_neg_integer(),
-%%   <<"fieldId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"targetFieldValues">> => list(list()),
-%%   <<"targetTime">> => non_neg_integer(),
-%%   <<"type">> => string()
-%% }
--type sla_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_case_rule_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"rule">> => list()
-%% }
--type update_case_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_layout_request() :: #{}
--type get_layout_request() :: #{}.
-
-
-%% Example:
-%% case_rule_summary() :: #{
-%%   <<"caseRuleArn">> => string(),
-%%   <<"caseRuleId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"ruleType">> => string()
-%% }
--type case_rule_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_case_rule_response() :: #{
-%%   <<"caseRules">> => list(get_case_rule_response()),
-%%   <<"errors">> => list(case_rule_error()),
-%%   <<"unprocessedCaseRules">> => list(string())
-%% }
--type batch_get_case_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_input_content() :: #{
-%%   <<"fields">> => list(field_value())
-%% }
--type custom_input_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_value() :: #{
-%%   <<"id">> => string(),
-%%   <<"value">> => list()
-%% }
--type field_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_all_related_items_response_item() :: #{
-%%   <<"associationTime">> => non_neg_integer(),
-%%   <<"caseId">> => string(),
-%%   <<"content">> => list(),
-%%   <<"performedBy">> => list(),
-%%   <<"relatedItemId">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type search_all_related_items_response_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_field_request() :: #{
-%%   <<"attributes">> => list(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string()
-%% }
--type update_field_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_related_item_request() :: #{
-%%   <<"content">> := list(),
-%%   <<"performedBy">> => list()
-%% }
--type update_related_item_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_option() :: #{
-%%   <<"active">> => [boolean()],
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type field_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% layout_summary() :: #{
-%%   <<"layoutArn">> => string(),
-%%   <<"layoutId">> => string(),
-%%   <<"name">> => string()
-%% }
--type layout_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% connect_case_input_content() :: #{
-%%   <<"caseId">> => string()
-%% }
--type connect_case_input_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_templates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"templates">> := list(template_summary())
-%% }
--type list_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_case_event_configuration_request() :: #{
-%%   <<"eventBridge">> := event_bridge_configuration()
-%% }
--type put_case_event_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% layout_sections() :: #{
-%%   <<"sections">> => list(list())
-%% }
--type layout_sections() :: #{binary() => any()}.
-
-%% Example:
-%% get_template_request() :: #{}
--type get_template_request() :: #{}.
 
 
 %% Example:
@@ -1048,605 +1322,331 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% custom_update_content() :: #{
-%%   <<"fields">> => list(field_value())
-%% }
--type custom_update_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_response() :: #{
-%%   <<"domainArn">> := string(),
-%%   <<"domainId">> := string(),
-%%   <<"domainStatus">> := string()
-%% }
--type create_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_filter() :: #{
-%%   <<"fields">> => list()
-%% }
--type custom_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_layout_response() :: #{
-%%   <<"content">> := list(),
-%%   <<"createdTime">> => non_neg_integer(),
-%%   <<"deleted">> => boolean(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"layoutArn">> := string(),
-%%   <<"layoutId">> := string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type get_layout_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_cases_response() :: #{
-%%   <<"cases">> := list(search_cases_response_item()),
-%%   <<"nextToken">> => string(),
-%%   <<"totalCount">> => float()
-%% }
--type search_cases_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_all_related_items_sort() :: #{
-%%   <<"sortOrder">> => string(),
-%%   <<"sortProperty">> => string()
-%% }
--type search_all_related_items_sort() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_field_options_response() :: #{
-%%   <<"errors">> => list(field_option_error())
-%% }
--type batch_put_field_options_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_case_response() :: #{}
--type update_case_response() :: #{}.
-
-
-%% Example:
-%% case_rule_error() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"message">> => [string()]
-%% }
--type case_rule_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_template_response() :: #{
-%%   <<"templateArn">> := string(),
-%%   <<"templateId">> := string()
-%% }
--type create_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_layout_response() :: #{}
--type update_layout_response() :: #{}.
-
-%% Example:
-%% delete_template_response() :: #{}
--type delete_template_response() :: #{}.
-
-
-%% Example:
-%% field_identifier() :: #{
-%%   <<"id">> => string()
-%% }
--type field_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% file_content() :: #{
-%%   <<"fileArn">> => string()
-%% }
--type file_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% boolean_operands() :: #{
-%%   <<"operandOne">> => list(),
-%%   <<"operandTwo">> => list(),
-%%   <<"result">> => [boolean()]
-%% }
--type boolean_operands() :: #{binary() => any()}.
-
-%% Example:
-%% delete_layout_request() :: #{}
--type delete_layout_request() :: #{}.
-
-
-%% Example:
-%% required_case_rule() :: #{
-%%   <<"conditions">> => list(list()),
-%%   <<"defaultValue">> => [boolean()]
-%% }
--type required_case_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_field_options_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"options">> := list(field_option())
-%% }
--type list_field_options_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% case_rule_identifier() :: #{
-%%   <<"id">> => string()
-%% }
--type case_rule_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cases_for_contact_request() :: #{
-%%   <<"contactArn">> := string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_cases_for_contact_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_related_item_request() :: #{
-%%   <<"content">> := list(),
-%%   <<"performedBy">> => list(),
-%%   <<"type">> := string()
-%% }
--type create_related_item_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_field_response() :: #{
-%%   <<"attributes">> => list(),
-%%   <<"createdTime">> => non_neg_integer(),
-%%   <<"deleted">> => boolean(),
-%%   <<"description">> => string(),
-%%   <<"fieldArn">> => string(),
-%%   <<"fieldId">> => string(),
-%%   <<"lastModifiedTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"namespace">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type get_field_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% case_summary() :: #{
-%%   <<"caseId">> => string(),
-%%   <<"templateId">> => string()
-%% }
--type case_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_content() :: #{
-%%   <<"fields">> => list(field_value())
-%% }
--type custom_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_group() :: #{
-%%   <<"fields">> => list(field_item()),
-%%   <<"name">> => [string()]
-%% }
--type field_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% audit_event() :: #{
-%%   <<"eventId">> => string(),
-%%   <<"fields">> => list(audit_event_field()),
-%%   <<"performedBy">> => audit_event_performed_by(),
-%%   <<"performedTime">> => non_neg_integer(),
-%%   <<"relatedItemType">> => string(),
-%%   <<"type">> => string()
-%% }
--type audit_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% case_event_included_data() :: #{
-%%   <<"fields">> => list(field_identifier())
-%% }
--type case_event_included_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_propagation_configuration() :: #{
-%%   <<"resourceType">> => string(),
-%%   <<"tagMap">> => map()
-%% }
--type tag_propagation_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% layout_configuration() :: #{
-%%   <<"defaultLayout">> => string()
-%% }
--type layout_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% related_item_event_included_data() :: #{
-%%   <<"includeContent">> => [boolean()]
-%% }
--type related_item_event_included_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_content() :: #{
-%%   <<"channel">> => string(),
-%%   <<"connectedToSystemTime">> => non_neg_integer(),
-%%   <<"contactArn">> => string()
-%% }
--type contact_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% audit_event_performed_by() :: #{
-%%   <<"iamPrincipalArn">> => string(),
-%%   <<"user">> => list()
-%% }
--type audit_event_performed_by() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_case_rule_request() :: #{
-%%   <<"caseRules">> := list(case_rule_identifier())
-%% }
--type batch_get_case_rule_request() :: #{binary() => any()}.
-
 -type batch_get_case_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_get_field_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_put_field_options_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_case_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_case_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_field_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_layout_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_related_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type create_template_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type create_template_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_case_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_case_rule_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_field_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_layout_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_related_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_case_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_case_audit_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_case_event_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_domain_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_layout_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_template_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_case_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_cases_for_contact_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_domains_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_field_options_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_fields_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_layouts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_case_event_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type search_all_related_items_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type search_cases_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type search_related_items_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_case_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_case_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_field_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_layout_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_related_item_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type update_template_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_template_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

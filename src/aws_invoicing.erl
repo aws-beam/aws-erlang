@@ -96,6 +96,8 @@
          list_tags_for_resource/3,
          put_procurement_portal_preference/2,
          put_procurement_portal_preference/3,
+         send_procurement_portal_validation/2,
+         send_procurement_portal_validation/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -103,24 +105,80 @@
          update_invoice_unit/2,
          update_invoice_unit/3,
          update_procurement_portal_preference_status/2,
-         update_procurement_portal_preference_status/3]).
+         update_procurement_portal_preference_status/3,
+         verify_procurement_portal_validation/2,
+         verify_procurement_portal_validation/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
 %% Example:
-%% purchase_order_data_source() :: #{
-%%   <<"EinvoiceDeliveryDocumentType">> => list(any()),
-%%   <<"PurchaseOrderDataSourceType">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
 %% }
--type purchase_order_data_source() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTags">> := list(resource_tag())
+%% amount_breakdown() :: #{
+%%   <<"Discounts">> => discounts_breakdown(),
+%%   <<"Fees">> => fees_breakdown(),
+%%   <<"SubTotalAmount">> => string(),
+%%   <<"Taxes">> => taxes_breakdown()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type amount_breakdown() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_invoice_profile_request() :: #{
+%%   <<"AccountIds">> := list(string())
+%% }
+-type batch_get_invoice_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_invoice_profile_response() :: #{
+%%   <<"Profiles">> => list(invoice_profile())
+%% }
+-type batch_get_invoice_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% billing_period() :: #{
+%%   <<"Month">> => integer(),
+%%   <<"Year">> => integer()
+%% }
+-type billing_period() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% contact() :: #{
+%%   <<"Email">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type contact() :: #{binary() => any()}.
+
+%% Example:
+%% create_invoice_unit_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"InvoiceReceiver">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"ResourceTags">> => list(resource_tag()),
+%%   <<"Rule">> := invoice_unit_rule(),
+%%   <<"TaxInheritanceDisabled">> => boolean()
+%% }
+-type create_invoice_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_invoice_unit_response() :: #{
+%%   <<"InvoiceUnitArn">> => string()
+%% }
+-type create_invoice_unit_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_procurement_portal_preference_request() :: #{
@@ -143,10 +201,127 @@
 -type create_procurement_portal_preference_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_procurement_portal_preference_response() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> => string()
+%% }
+-type create_procurement_portal_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% currency_exchange_details() :: #{
+%%   <<"Rate">> => string(),
+%%   <<"SourceCurrencyCode">> => string(),
+%%   <<"TargetCurrencyCode">> => string()
+%% }
+-type currency_exchange_details() :: #{binary() => any()}.
+
+%% Example:
+%% date_interval() :: #{
+%%   <<"EndDate">> => [non_neg_integer()],
+%%   <<"StartDate">> => [non_neg_integer()]
+%% }
+-type date_interval() :: #{binary() => any()}.
+
+%% Example:
+%% delete_invoice_unit_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InvoiceUnitArn">> := string()
+%% }
+-type delete_invoice_unit_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_invoice_unit_response() :: #{
 %%   <<"InvoiceUnitArn">> => string()
 %% }
 -type delete_invoice_unit_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_procurement_portal_preference_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ProcurementPortalPreferenceArn">> := string()
+%% }
+-type delete_procurement_portal_preference_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_procurement_portal_preference_response() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> => string()
+%% }
+-type delete_procurement_portal_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% discounts_breakdown() :: #{
+%%   <<"Breakdown">> => list(discounts_breakdown_amount()),
+%%   <<"TotalAmount">> => string()
+%% }
+-type discounts_breakdown() :: #{binary() => any()}.
+
+%% Example:
+%% discounts_breakdown_amount() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Rate">> => string()
+%% }
+-type discounts_breakdown_amount() :: #{binary() => any()}.
+
+%% Example:
+%% einvoice_delivery_preference() :: #{
+%%   <<"ConnectionTestingMethod">> => list(any()),
+%%   <<"EinvoiceDeliveryActivationDate">> => [non_neg_integer()],
+%%   <<"EinvoiceDeliveryAttachmentTypes">> => list(list(any())()),
+%%   <<"EinvoiceDeliveryDocumentTypes">> => list(list(any())()),
+%%   <<"Protocol">> => list(any()),
+%%   <<"PurchaseOrderDataSources">> => list(purchase_order_data_source())
+%% }
+-type einvoice_delivery_preference() :: #{binary() => any()}.
+
+%% Example:
+%% entity() :: #{
+%%   <<"BillingEntity">> => list(any()),
+%%   <<"InvoicingEntity">> => string()
+%% }
+-type entity() :: #{binary() => any()}.
+
+%% Example:
+%% fees_breakdown() :: #{
+%%   <<"Breakdown">> => list(fees_breakdown_amount()),
+%%   <<"TotalAmount">> => string()
+%% }
+-type fees_breakdown() :: #{binary() => any()}.
+
+%% Example:
+%% fees_breakdown_amount() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Rate">> => string()
+%% }
+-type fees_breakdown_amount() :: #{binary() => any()}.
+
+%% Example:
+%% filters() :: #{
+%%   <<"Accounts">> => list(string()),
+%%   <<"BillSourceAccounts">> => list(string()),
+%%   <<"InvoiceReceivers">> => list(string()),
+%%   <<"Names">> => list(string())
+%% }
+-type filters() :: #{binary() => any()}.
+
+%% Example:
+%% get_invoice_p_d_f_request() :: #{
+%%   <<"InvoiceId">> := string()
+%% }
+-type get_invoice_p_d_f_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_invoice_p_d_f_response() :: #{
+%%   <<"InvoicePDF">> => invoice_p_d_f()
+%% }
+-type get_invoice_p_d_f_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_invoice_unit_request() :: #{
+%%   <<"AsOf">> => non_neg_integer(),
+%%   <<"InvoiceUnitArn">> := string()
+%% }
+-type get_invoice_unit_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_invoice_unit_response() :: #{
@@ -161,32 +336,171 @@
 -type get_invoice_unit_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% get_procurement_portal_preference_request() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> := string()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% entity() :: #{
-%%   <<"BillingEntity">> => list(any()),
-%%   <<"InvoicingEntity">> => string()
-%% }
--type entity() :: #{binary() => any()}.
+-type get_procurement_portal_preference_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_procurement_portal_preference_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Contacts">> := list(contact()),
-%%   <<"EinvoiceDeliveryEnabled">> := [boolean()],
-%%   <<"EinvoiceDeliveryPreference">> => einvoice_delivery_preference(),
-%%   <<"ProcurementPortalInstanceEndpoint">> => string(),
-%%   <<"ProcurementPortalPreferenceArn">> := string(),
-%%   <<"ProcurementPortalSharedSecret">> => string(),
-%%   <<"PurchaseOrderRetrievalEnabled">> := [boolean()],
-%%   <<"Selector">> => procurement_portal_preference_selector(),
-%%   <<"TestEnvPreference">> => test_env_preference_input()
+%% get_procurement_portal_preference_response() :: #{
+%%   <<"ProcurementPortalPreference">> => procurement_portal_preference()
 %% }
--type put_procurement_portal_preference_request() :: #{binary() => any()}.
+-type get_procurement_portal_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_currency_amount() :: #{
+%%   <<"AmountBreakdown">> => amount_breakdown(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"CurrencyExchangeDetails">> => currency_exchange_details(),
+%%   <<"TotalAmount">> => string(),
+%%   <<"TotalAmountBeforeTax">> => string()
+%% }
+-type invoice_currency_amount() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_p_d_f() :: #{
+%%   <<"DocumentUrl">> => string(),
+%%   <<"DocumentUrlExpirationDate">> => [non_neg_integer()],
+%%   <<"InvoiceId">> => string(),
+%%   <<"SupplementalDocuments">> => list(supplemental_document())
+%% }
+-type invoice_p_d_f() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_profile() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"ReceiverAddress">> => receiver_address(),
+%%   <<"ReceiverEmail">> => string(),
+%%   <<"ReceiverName">> => string(),
+%%   <<"TaxRegistrationNumber">> => string()
+%% }
+-type invoice_profile() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_summaries_filter() :: #{
+%%   <<"BillingPeriod">> => billing_period(),
+%%   <<"InvoicingEntity">> => string(),
+%%   <<"ReceiverRole">> => list(any()),
+%%   <<"TimeInterval">> => date_interval()
+%% }
+-type invoice_summaries_filter() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_summaries_selector() :: #{
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type invoice_summaries_selector() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"BaseCurrencyAmount">> => invoice_currency_amount(),
+%%   <<"BillSourceAccounts">> => list(string()),
+%%   <<"BillSourceAccountsTotalCount">> => [integer()],
+%%   <<"BillType">> => list(any()),
+%%   <<"BillingPeriod">> => billing_period(),
+%%   <<"CommercialInvoiceId">> => string(),
+%%   <<"DueDate">> => [non_neg_integer()],
+%%   <<"EinvoiceDeliveryStatus">> => list(any()),
+%%   <<"Entity">> => entity(),
+%%   <<"InvoiceFrequency">> => list(any()),
+%%   <<"InvoiceId">> => string(),
+%%   <<"InvoiceType">> => list(any()),
+%%   <<"IssuedDate">> => [non_neg_integer()],
+%%   <<"OriginalInvoiceId">> => string(),
+%%   <<"PaymentCurrencyAmount">> => invoice_currency_amount(),
+%%   <<"PurchaseOrderNumber">> => string(),
+%%   <<"ReceiverRole">> => list(any()),
+%%   <<"TaxAuthorityStatus">> => list(any()),
+%%   <<"TaxCurrencyAmount">> => invoice_currency_amount()
+%% }
+-type invoice_summary() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_unit() :: #{
+%%   <<"Description">> => string(),
+%%   <<"InvoiceReceiver">> => string(),
+%%   <<"InvoiceUnitArn">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Rule">> => invoice_unit_rule(),
+%%   <<"TaxInheritanceDisabled">> => boolean()
+%% }
+-type invoice_unit() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_unit_rule() :: #{
+%%   <<"BillSourceAccounts">> => list(string()),
+%%   <<"LinkedAccounts">> => list(string())
+%% }
+-type invoice_unit_rule() :: #{binary() => any()}.
+
+%% Example:
+%% list_invoice_summaries_request() :: #{
+%%   <<"Filter">> => invoice_summaries_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Selector">> := invoice_summaries_selector()
+%% }
+-type list_invoice_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_invoice_summaries_response() :: #{
+%%   <<"InvoiceSummaries">> => list(invoice_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invoice_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_invoice_units_request() :: #{
+%%   <<"AsOf">> => non_neg_integer(),
+%%   <<"Filters">> => filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invoice_units_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_invoice_units_response() :: #{
+%%   <<"InvoiceUnits">> => list(invoice_unit()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invoice_units_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_procurement_portal_preferences_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_procurement_portal_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_procurement_portal_preferences_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProcurementPortalPreferences">> => list(procurement_portal_preference_summary())
+%% }
+-type list_procurement_portal_preferences_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"ResourceTags">> => list(resource_tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% procurement_portal_preference() :: #{
@@ -217,488 +531,11 @@
 -type procurement_portal_preference() :: #{binary() => any()}.
 
 %% Example:
-%% discounts_breakdown_amount() :: #{
-%%   <<"Amount">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Rate">> => string()
+%% procurement_portal_preference_selector() :: #{
+%%   <<"InvoiceUnitArns">> => list(string()),
+%%   <<"SellerOfRecords">> => list(string())
 %% }
--type discounts_breakdown_amount() :: #{binary() => any()}.
-
-%% Example:
-%% date_interval() :: #{
-%%   <<"EndDate">> => [non_neg_integer()],
-%%   <<"StartDate">> => [non_neg_integer()]
-%% }
--type date_interval() :: #{binary() => any()}.
-
-%% Example:
-%% update_procurement_portal_preference_status_response() :: #{
-%%   <<"ProcurementPortalPreferenceArn">> => string()
-%% }
--type update_procurement_portal_preference_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% invoice_summaries_filter() :: #{
-%%   <<"BillingPeriod">> => billing_period(),
-%%   <<"InvoicingEntity">> => string(),
-%%   <<"ReceiverRole">> => list(any()),
-%%   <<"TimeInterval">> => date_interval()
-%% }
--type invoice_summaries_filter() :: #{binary() => any()}.
-
-%% Example:
-%% invoice_p_d_f() :: #{
-%%   <<"DocumentUrl">> => string(),
-%%   <<"DocumentUrlExpirationDate">> => [non_neg_integer()],
-%%   <<"InvoiceId">> => string(),
-%%   <<"SupplementalDocuments">> => list(supplemental_document())
-%% }
--type invoice_p_d_f() :: #{binary() => any()}.
-
-%% Example:
-%% invoice_profile() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Issuer">> => string(),
-%%   <<"ReceiverAddress">> => receiver_address(),
-%%   <<"ReceiverEmail">> => string(),
-%%   <<"ReceiverName">> => string(),
-%%   <<"TaxRegistrationNumber">> => string()
-%% }
--type invoice_profile() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_invoice_unit_response() :: #{
-%%   <<"InvoiceUnitArn">> => string()
-%% }
--type update_invoice_unit_response() :: #{binary() => any()}.
-
-%% Example:
-%% receiver_address() :: #{
-%%   <<"AddressLine1">> => string(),
-%%   <<"AddressLine2">> => string(),
-%%   <<"AddressLine3">> => string(),
-%%   <<"City">> => string(),
-%%   <<"CompanyName">> => string(),
-%%   <<"CountryCode">> => string(),
-%%   <<"DistrictOrCounty">> => string(),
-%%   <<"PostalCode">> => string(),
-%%   <<"StateOrRegion">> => string()
-%% }
--type receiver_address() :: #{binary() => any()}.
-
-%% Example:
-%% list_invoice_units_response() :: #{
-%%   <<"InvoiceUnits">> => list(invoice_unit()),
-%%   <<"NextToken">> => string()
-%% }
--type list_invoice_units_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_procurement_portal_preference_response() :: #{
-%%   <<"ProcurementPortalPreferenceArn">> => string()
-%% }
--type delete_procurement_portal_preference_response() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_invoice_unit_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"InvoiceUnitArn">> := string()
-%% }
--type delete_invoice_unit_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_invoice_p_d_f_request() :: #{
-%%   <<"InvoiceId">> := string()
-%% }
--type get_invoice_p_d_f_request() :: #{binary() => any()}.
-
-%% Example:
-%% taxes_breakdown_amount() :: #{
-%%   <<"Amount">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Rate">> => string()
-%% }
--type taxes_breakdown_amount() :: #{binary() => any()}.
-
-%% Example:
-%% invoice_summary() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"BaseCurrencyAmount">> => invoice_currency_amount(),
-%%   <<"BillSourceAccounts">> => list(string()),
-%%   <<"BillSourceAccountsTotalCount">> => [integer()],
-%%   <<"BillType">> => list(any()),
-%%   <<"BillingPeriod">> => billing_period(),
-%%   <<"CommercialInvoiceId">> => string(),
-%%   <<"DueDate">> => [non_neg_integer()],
-%%   <<"EinvoiceDeliveryStatus">> => list(any()),
-%%   <<"Entity">> => entity(),
-%%   <<"InvoiceFrequency">> => list(any()),
-%%   <<"InvoiceId">> => string(),
-%%   <<"InvoiceType">> => list(any()),
-%%   <<"IssuedDate">> => [non_neg_integer()],
-%%   <<"OriginalInvoiceId">> => string(),
-%%   <<"PaymentCurrencyAmount">> => invoice_currency_amount(),
-%%   <<"PurchaseOrderNumber">> => string(),
-%%   <<"ReceiverRole">> => list(any()),
-%%   <<"TaxAuthorityStatus">> => list(any()),
-%%   <<"TaxCurrencyAmount">> => invoice_currency_amount()
-%% }
--type invoice_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_procurement_portal_preferences_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_procurement_portal_preferences_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"ResourceTags">> => list(resource_tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% currency_exchange_details() :: #{
-%%   <<"Rate">> => string(),
-%%   <<"SourceCurrencyCode">> => string(),
-%%   <<"TargetCurrencyCode">> => string()
-%% }
--type currency_exchange_details() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_invoice_profile_request() :: #{
-%%   <<"AccountIds">> := list(string())
-%% }
--type batch_get_invoice_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% einvoice_delivery_preference() :: #{
-%%   <<"ConnectionTestingMethod">> => list(any()),
-%%   <<"EinvoiceDeliveryActivationDate">> => [non_neg_integer()],
-%%   <<"EinvoiceDeliveryAttachmentTypes">> => list(list(any())()),
-%%   <<"EinvoiceDeliveryDocumentTypes">> => list(list(any())()),
-%%   <<"Protocol">> => list(any()),
-%%   <<"PurchaseOrderDataSources">> => list(purchase_order_data_source())
-%% }
--type einvoice_delivery_preference() :: #{binary() => any()}.
-
-%% Example:
-%% update_procurement_portal_preference_status_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"EinvoiceDeliveryPreferenceStatus">> => list(any()),
-%%   <<"EinvoiceDeliveryPreferenceStatusReason">> => string(),
-%%   <<"ProcurementPortalPreferenceArn">> := string(),
-%%   <<"PurchaseOrderRetrievalPreferenceStatus">> => list(any()),
-%%   <<"PurchaseOrderRetrievalPreferenceStatusReason">> => string()
-%% }
--type update_procurement_portal_preference_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% invoice_currency_amount() :: #{
-%%   <<"AmountBreakdown">> => amount_breakdown(),
-%%   <<"CurrencyCode">> => string(),
-%%   <<"CurrencyExchangeDetails">> => currency_exchange_details(),
-%%   <<"TotalAmount">> => string(),
-%%   <<"TotalAmountBeforeTax">> => string()
-%% }
--type invoice_currency_amount() :: #{binary() => any()}.
-
-%% Example:
-%% discounts_breakdown() :: #{
-%%   <<"Breakdown">> => list(discounts_breakdown_amount()),
-%%   <<"TotalAmount">> => string()
-%% }
--type discounts_breakdown() :: #{binary() => any()}.
-
-%% Example:
-%% contact() :: #{
-%%   <<"Email">> => string(),
-%%   <<"Name">> => string()
-%% }
--type contact() :: #{binary() => any()}.
-
-%% Example:
-%% billing_period() :: #{
-%%   <<"Month">> => integer(),
-%%   <<"Year">> => integer()
-%% }
--type billing_period() :: #{binary() => any()}.
-
-%% Example:
-%% fees_breakdown_amount() :: #{
-%%   <<"Amount">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Rate">> => string()
-%% }
--type fees_breakdown_amount() :: #{binary() => any()}.
-
-%% Example:
-%% test_env_preference_input() :: #{
-%%   <<"BuyerDomain">> => list(any()),
-%%   <<"BuyerIdentifier">> => string(),
-%%   <<"ProcurementPortalInstanceEndpoint">> => string(),
-%%   <<"ProcurementPortalSharedSecret">> => string(),
-%%   <<"SupplierDomain">> => list(any()),
-%%   <<"SupplierIdentifier">> => string()
-%% }
--type test_env_preference_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_procurement_portal_preference_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ProcurementPortalPreferenceArn">> := string()
-%% }
--type delete_procurement_portal_preference_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_invoice_units_request() :: #{
-%%   <<"AsOf">> => non_neg_integer(),
-%%   <<"Filters">> => filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_invoice_units_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type resource_tag() :: #{binary() => any()}.
-
-%% Example:
-%% put_procurement_portal_preference_response() :: #{
-%%   <<"ProcurementPortalPreferenceArn">> => string()
-%% }
--type put_procurement_portal_preference_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_invoice_p_d_f_response() :: #{
-%%   <<"InvoicePDF">> => invoice_p_d_f()
-%% }
--type get_invoice_p_d_f_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_procurement_portal_preference_response() :: #{
-%%   <<"ProcurementPortalPreferenceArn">> => string()
-%% }
--type create_procurement_portal_preference_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_procurement_portal_preference_response() :: #{
-%%   <<"ProcurementPortalPreference">> => procurement_portal_preference()
-%% }
--type get_procurement_portal_preference_response() :: #{binary() => any()}.
-
-%% Example:
-%% test_env_preference() :: #{
-%%   <<"BuyerDomain">> => list(any()),
-%%   <<"BuyerIdentifier">> => string(),
-%%   <<"ProcurementPortalInstanceEndpoint">> => string(),
-%%   <<"ProcurementPortalSharedSecret">> => string(),
-%%   <<"PurchaseOrderRetrievalEndpoint">> => string(),
-%%   <<"SupplierDomain">> => list(any()),
-%%   <<"SupplierIdentifier">> => string()
-%% }
--type test_env_preference() :: #{binary() => any()}.
-
-%% Example:
-%% invoice_unit_rule() :: #{
-%%   <<"BillSourceAccounts">> => list(string()),
-%%   <<"LinkedAccounts">> => list(string())
-%% }
--type invoice_unit_rule() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_invoice_profile_response() :: #{
-%%   <<"Profiles">> => list(invoice_profile())
-%% }
--type batch_get_invoice_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% invoice_summaries_selector() :: #{
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type invoice_summaries_selector() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any()),
-%%   <<"resourceName">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% supplemental_document() :: #{
-%%   <<"DocumentId">> => string(),
-%%   <<"DocumentType">> => list(any()),
-%%   <<"DocumentUrl">> => string(),
-%%   <<"DocumentUrlExpirationDate">> => [non_neg_integer()]
-%% }
--type supplemental_document() :: #{binary() => any()}.
-
-%% Example:
-%% create_invoice_unit_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"InvoiceReceiver">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"ResourceTags">> => list(resource_tag()),
-%%   <<"Rule">> := invoice_unit_rule(),
-%%   <<"TaxInheritanceDisabled">> => boolean()
-%% }
--type create_invoice_unit_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_invoice_unit_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"InvoiceUnitArn">> := string(),
-%%   <<"Rule">> => invoice_unit_rule(),
-%%   <<"TaxInheritanceDisabled">> => boolean()
-%% }
--type update_invoice_unit_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% amount_breakdown() :: #{
-%%   <<"Discounts">> => discounts_breakdown(),
-%%   <<"Fees">> => fees_breakdown(),
-%%   <<"SubTotalAmount">> => string(),
-%%   <<"Taxes">> => taxes_breakdown()
-%% }
--type amount_breakdown() :: #{binary() => any()}.
-
-%% Example:
-%% list_procurement_portal_preferences_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProcurementPortalPreferences">> => list(procurement_portal_preference_summary())
-%% }
--type list_procurement_portal_preferences_response() :: #{binary() => any()}.
-
-%% Example:
-%% filters() :: #{
-%%   <<"Accounts">> => list(string()),
-%%   <<"BillSourceAccounts">> => list(string()),
-%%   <<"InvoiceReceivers">> => list(string()),
-%%   <<"Names">> => list(string())
-%% }
--type filters() :: #{binary() => any()}.
-
-%% Example:
-%% list_invoice_summaries_response() :: #{
-%%   <<"InvoiceSummaries">> => list(invoice_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_invoice_summaries_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_invoice_unit_response() :: #{
-%%   <<"InvoiceUnitArn">> => string()
-%% }
--type create_invoice_unit_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_procurement_portal_preference_request() :: #{
-%%   <<"ProcurementPortalPreferenceArn">> := string()
-%% }
--type get_procurement_portal_preference_request() :: #{binary() => any()}.
-
-%% Example:
-%% fees_breakdown() :: #{
-%%   <<"Breakdown">> => list(fees_breakdown_amount()),
-%%   <<"TotalAmount">> => string()
-%% }
--type fees_breakdown() :: #{binary() => any()}.
-
-%% Example:
-%% get_invoice_unit_request() :: #{
-%%   <<"AsOf">> => non_neg_integer(),
-%%   <<"InvoiceUnitArn">> := string()
-%% }
--type get_invoice_unit_request() :: #{binary() => any()}.
-
-%% Example:
-%% invoice_unit() :: #{
-%%   <<"Description">> => string(),
-%%   <<"InvoiceReceiver">> => string(),
-%%   <<"InvoiceUnitArn">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Rule">> => invoice_unit_rule(),
-%%   <<"TaxInheritanceDisabled">> => boolean()
-%% }
--type invoice_unit() :: #{binary() => any()}.
+-type procurement_portal_preference_selector() :: #{binary() => any()}.
 
 %% Example:
 %% procurement_portal_preference_summary() :: #{
@@ -723,20 +560,101 @@
 -type procurement_portal_preference_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_invoice_summaries_request() :: #{
-%%   <<"Filter">> => invoice_summaries_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Selector">> := invoice_summaries_selector()
+%% purchase_order_data_source() :: #{
+%%   <<"EinvoiceDeliveryDocumentType">> => list(any()),
+%%   <<"PurchaseOrderDataSourceType">> => list(any())
 %% }
--type list_invoice_summaries_request() :: #{binary() => any()}.
+-type purchase_order_data_source() :: #{binary() => any()}.
 
 %% Example:
-%% procurement_portal_preference_selector() :: #{
-%%   <<"InvoiceUnitArns">> => list(string()),
-%%   <<"SellerOfRecords">> => list(string())
+%% put_procurement_portal_preference_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Contacts">> := list(contact()),
+%%   <<"EinvoiceDeliveryEnabled">> := [boolean()],
+%%   <<"EinvoiceDeliveryPreference">> => einvoice_delivery_preference(),
+%%   <<"ProcurementPortalInstanceEndpoint">> => string(),
+%%   <<"ProcurementPortalPreferenceArn">> := string(),
+%%   <<"ProcurementPortalSharedSecret">> => string(),
+%%   <<"PurchaseOrderRetrievalEnabled">> := [boolean()],
+%%   <<"Selector">> => procurement_portal_preference_selector(),
+%%   <<"TestEnvPreference">> => test_env_preference_input()
 %% }
--type procurement_portal_preference_selector() :: #{binary() => any()}.
+-type put_procurement_portal_preference_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_procurement_portal_preference_response() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> => string()
+%% }
+-type put_procurement_portal_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% receiver_address() :: #{
+%%   <<"AddressLine1">> => string(),
+%%   <<"AddressLine2">> => string(),
+%%   <<"AddressLine3">> => string(),
+%%   <<"City">> => string(),
+%%   <<"CompanyName">> => string(),
+%%   <<"CountryCode">> => string(),
+%%   <<"DistrictOrCounty">> => string(),
+%%   <<"PostalCode">> => string(),
+%%   <<"StateOrRegion">> => string()
+%% }
+-type receiver_address() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceName">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type resource_tag() :: #{binary() => any()}.
+
+%% Example:
+%% send_procurement_portal_validation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ProcurementPortalPreferenceArn">> := string()
+%% }
+-type send_procurement_portal_validation_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_procurement_portal_validation_response() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> => string()
+%% }
+-type send_procurement_portal_validation_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% supplemental_document() :: #{
+%%   <<"DocumentId">> => string(),
+%%   <<"DocumentType">> => list(any()),
+%%   <<"DocumentUrl">> => string(),
+%%   <<"DocumentUrlExpirationDate">> => [non_neg_integer()]
+%% }
+-type supplemental_document() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"ResourceTags">> := list(resource_tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% taxes_breakdown() :: #{
@@ -745,132 +663,259 @@
 %% }
 -type taxes_breakdown() :: #{binary() => any()}.
 
+%% Example:
+%% taxes_breakdown_amount() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Rate">> => string()
+%% }
+-type taxes_breakdown_amount() :: #{binary() => any()}.
+
+%% Example:
+%% test_env_preference() :: #{
+%%   <<"BuyerDomain">> => list(any()),
+%%   <<"BuyerIdentifier">> => string(),
+%%   <<"ProcurementPortalInstanceEndpoint">> => string(),
+%%   <<"ProcurementPortalSharedSecret">> => string(),
+%%   <<"PurchaseOrderRetrievalEndpoint">> => string(),
+%%   <<"SupplierDomain">> => list(any()),
+%%   <<"SupplierIdentifier">> => string()
+%% }
+-type test_env_preference() :: #{binary() => any()}.
+
+%% Example:
+%% test_env_preference_input() :: #{
+%%   <<"BuyerDomain">> => list(any()),
+%%   <<"BuyerIdentifier">> => string(),
+%%   <<"ProcurementPortalInstanceEndpoint">> => string(),
+%%   <<"ProcurementPortalSharedSecret">> => string(),
+%%   <<"SupplierDomain">> => list(any()),
+%%   <<"SupplierIdentifier">> => string()
+%% }
+-type test_env_preference_input() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"ResourceTagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_invoice_unit_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"InvoiceUnitArn">> := string(),
+%%   <<"Rule">> => invoice_unit_rule(),
+%%   <<"TaxInheritanceDisabled">> => boolean()
+%% }
+-type update_invoice_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_invoice_unit_response() :: #{
+%%   <<"InvoiceUnitArn">> => string()
+%% }
+-type update_invoice_unit_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_procurement_portal_preference_status_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"EinvoiceDeliveryPreferenceStatus">> => list(any()),
+%%   <<"EinvoiceDeliveryPreferenceStatusReason">> => string(),
+%%   <<"ProcurementPortalPreferenceArn">> := string(),
+%%   <<"PurchaseOrderRetrievalPreferenceStatus">> => list(any()),
+%%   <<"PurchaseOrderRetrievalPreferenceStatusReason">> => string()
+%% }
+-type update_procurement_portal_preference_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_procurement_portal_preference_status_response() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> => string()
+%% }
+-type update_procurement_portal_preference_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any()),
+%%   <<"resourceName">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+%% Example:
+%% verify_procurement_portal_validation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Code">> := string(),
+%%   <<"ProcurementPortalPreferenceArn">> := string()
+%% }
+-type verify_procurement_portal_validation_request() :: #{binary() => any()}.
+
+%% Example:
+%% verify_procurement_portal_validation_response() :: #{
+%%   <<"ProcurementPortalPreferenceArn">> => string()
+%% }
+-type verify_procurement_portal_validation_response() :: #{binary() => any()}.
+
 -type batch_get_invoice_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_invoice_unit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_procurement_portal_preference_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_invoice_unit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_procurement_portal_preference_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_invoice_p_d_f_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_invoice_unit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_procurement_portal_preference_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_invoice_summaries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_invoice_units_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_procurement_portal_preferences_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_procurement_portal_preference_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type send_procurement_portal_validation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type untag_resource_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type update_invoice_unit_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type update_procurement_portal_preference_status_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_invoice_unit_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_procurement_portal_preference_status_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type verify_procurement_portal_validation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -1144,6 +1189,32 @@ put_procurement_portal_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutProcurementPortalPreference">>, Input, Options).
 
+%% @doc This feature API is subject to changing at any time.
+%%
+%% For more information, see the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/ (Betas and Previews).
+%%
+%% Sends a validation request for a procurement portal preference. This
+%% operation initiates the validation process by issuing a validation code
+%% that confirms ownership and connectivity of the configured procurement
+%% portal endpoint. Use `VerifyProcurementPortalValidation' to submit the
+%% received code and complete validation.
+-spec send_procurement_portal_validation(aws_client:aws_client(), send_procurement_portal_validation_request()) ->
+    {ok, send_procurement_portal_validation_response(), tuple()} |
+    {error, any()} |
+    {error, send_procurement_portal_validation_errors(), tuple()}.
+send_procurement_portal_validation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_procurement_portal_validation(Client, Input, []).
+
+-spec send_procurement_portal_validation(aws_client:aws_client(), send_procurement_portal_validation_request(), proplists:proplist()) ->
+    {ok, send_procurement_portal_validation_response(), tuple()} |
+    {error, any()} |
+    {error, send_procurement_portal_validation_errors(), tuple()}.
+send_procurement_portal_validation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendProcurementPortalValidation">>, Input, Options).
+
 %% @doc Adds a tag to a resource.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
@@ -1219,6 +1290,31 @@ update_procurement_portal_preference_status(Client, Input)
 update_procurement_portal_preference_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProcurementPortalPreferenceStatus">>, Input, Options).
+
+%% @doc This feature API is subject to changing at any time.
+%%
+%% For more information, see the Amazon Web Services Service Terms:
+%% https://aws.amazon.com/service-terms/ (Betas and Previews).
+%%
+%% Submits a validation code to complete the validation of a procurement
+%% portal preference. Use this operation after calling
+%% `SendProcurementPortalValidation' to confirm ownership and
+%% connectivity of the configured procurement portal endpoint.
+-spec verify_procurement_portal_validation(aws_client:aws_client(), verify_procurement_portal_validation_request()) ->
+    {ok, verify_procurement_portal_validation_response(), tuple()} |
+    {error, any()} |
+    {error, verify_procurement_portal_validation_errors(), tuple()}.
+verify_procurement_portal_validation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    verify_procurement_portal_validation(Client, Input, []).
+
+-spec verify_procurement_portal_validation(aws_client:aws_client(), verify_procurement_portal_validation_request(), proplists:proplist()) ->
+    {ok, verify_procurement_portal_validation_response(), tuple()} |
+    {error, any()} |
+    {error, verify_procurement_portal_validation_errors(), tuple()}.
+verify_procurement_portal_validation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"VerifyProcurementPortalValidation">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

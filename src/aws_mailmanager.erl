@@ -140,44 +140,449 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% add_header_action() :: #{
+%%   <<"HeaderName">> => string(),
+%%   <<"HeaderValue">> => string()
+%% }
+-type add_header_action() :: #{binary() => any()}.
+
+%% Example:
+%% addon_instance() :: #{
+%%   <<"AddonInstanceArn">> => string(),
+%%   <<"AddonInstanceId">> => string(),
+%%   <<"AddonName">> => string(),
+%%   <<"AddonSubscriptionId">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()]
+%% }
+-type addon_instance() :: #{binary() => any()}.
+
+%% Example:
+%% addon_subscription() :: #{
+%%   <<"AddonName">> => string(),
+%%   <<"AddonSubscriptionArn">> => string(),
+%%   <<"AddonSubscriptionId">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()]
+%% }
+-type addon_subscription() :: #{binary() => any()}.
+
+%% Example:
+%% address_filter() :: #{
+%%   <<"AddressPrefix">> => string()
+%% }
+-type address_filter() :: #{binary() => any()}.
+
+%% Example:
+%% address_list() :: #{
+%%   <<"AddressListArn">> => string(),
+%%   <<"AddressListId">> => string(),
+%%   <<"AddressListName">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()]
+%% }
+-type address_list() :: #{binary() => any()}.
+
+%% Example:
+%% analysis() :: #{
+%%   <<"Analyzer">> => string(),
+%%   <<"ResultField">> => string()
+%% }
+-type analysis() :: #{binary() => any()}.
+
+%% Example:
+%% archive() :: #{
+%%   <<"ArchiveId">> => string(),
+%%   <<"ArchiveName">> => string(),
+%%   <<"ArchiveState">> => list(any()),
+%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()]
+%% }
+-type archive() :: #{binary() => any()}.
+
+%% Example:
+%% archive_action() :: #{
+%%   <<"ActionFailurePolicy">> => list(any()),
+%%   <<"TargetArchive">> => string()
+%% }
+-type archive_action() :: #{binary() => any()}.
+
+%% Example:
+%% archive_boolean_expression() :: #{
+%%   <<"Evaluate">> => list(),
+%%   <<"Operator">> => list(any())
+%% }
+-type archive_boolean_expression() :: #{binary() => any()}.
+
+%% Example:
+%% archive_filters() :: #{
+%%   <<"Include">> => list(list()),
+%%   <<"Unless">> => list(list())
+%% }
+-type archive_filters() :: #{binary() => any()}.
+
+%% Example:
+%% archive_string_expression() :: #{
+%%   <<"Evaluate">> => list(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type archive_string_expression() :: #{binary() => any()}.
+
+%% Example:
+%% bounce_action() :: #{
+%%   <<"ActionFailurePolicy">> => list(any()),
+%%   <<"DiagnosticMessage">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Sender">> => string(),
+%%   <<"SmtpReplyCode">> => string(),
+%%   <<"StatusCode">> => string()
+%% }
+-type bounce_action() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_addon_instance_request() :: #{
+%%   <<"AddonSubscriptionId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_addon_instance_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_addon_instance_response() :: #{
 %%   <<"AddonInstanceId">> => string()
 %% }
 -type create_addon_instance_response() :: #{binary() => any()}.
 
 %% Example:
-%% import_data_format() :: #{
-%%   <<"ImportDataType">> => list(any())
+%% create_addon_subscription_request() :: #{
+%%   <<"AddonName">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type import_data_format() :: #{binary() => any()}.
+-type create_addon_subscription_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_traffic_policies_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
+%% create_addon_subscription_response() :: #{
+%%   <<"AddonSubscriptionId">> => string()
 %% }
--type list_traffic_policies_request() :: #{binary() => any()}.
+-type create_addon_subscription_response() :: #{binary() => any()}.
 
 %% Example:
-%% ingress_analysis() :: #{
-%%   <<"Analyzer">> => string(),
-%%   <<"ResultField">> => string()
+%% create_address_list_import_job_request() :: #{
+%%   <<"AddressListId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ImportDataFormat">> := import_data_format(),
+%%   <<"Name">> := string()
 %% }
--type ingress_analysis() :: #{binary() => any()}.
+-type create_address_list_import_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_archive_message_content_response() :: #{
-%%   <<"Body">> => message_body()
+%% create_address_list_import_job_response() :: #{
+%%   <<"JobId">> => string(),
+%%   <<"PreSignedUrl">> => string()
 %% }
--type get_archive_message_content_response() :: #{binary() => any()}.
+-type create_address_list_import_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% ingress_point_password_configuration() :: #{
-%%   <<"PreviousSmtpPasswordExpiryTimestamp">> => [non_neg_integer()],
-%%   <<"PreviousSmtpPasswordVersion">> => [string()],
-%%   <<"SmtpPasswordVersion">> => [string()]
+%% create_address_list_request() :: #{
+%%   <<"AddressListName">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type ingress_point_password_configuration() :: #{binary() => any()}.
+-type create_address_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_address_list_response() :: #{
+%%   <<"AddressListId">> => string()
+%% }
+-type create_address_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_archive_request() :: #{
+%%   <<"ArchiveName">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"Retention">> => list(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_archive_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_archive_response() :: #{
+%%   <<"ArchiveId">> => string()
+%% }
+-type create_archive_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_ingress_point_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"IngressPointConfiguration">> => list(),
+%%   <<"IngressPointName">> := string(),
+%%   <<"NetworkConfiguration">> => list(),
+%%   <<"RuleSetId">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TlsPolicy">> => list(any()),
+%%   <<"TrafficPolicyId">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type create_ingress_point_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_ingress_point_response() :: #{
+%%   <<"IngressPointId">> => string()
+%% }
+-type create_ingress_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_relay_request() :: #{
+%%   <<"Authentication">> := list(),
+%%   <<"ClientToken">> => string(),
+%%   <<"RelayName">> := string(),
+%%   <<"ServerName">> := string(),
+%%   <<"ServerPort">> := integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_relay_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_relay_response() :: #{
+%%   <<"RelayId">> => string()
+%% }
+-type create_relay_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_set_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"RuleSetName">> := string(),
+%%   <<"Rules">> := list(rule()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_set_response() :: #{
+%%   <<"RuleSetId">> => string()
+%% }
+-type create_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_traffic_policy_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DefaultAction">> := list(any()),
+%%   <<"MaxMessageSizeBytes">> => integer(),
+%%   <<"PolicyStatements">> := list(policy_statement()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrafficPolicyName">> := string()
+%% }
+-type create_traffic_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_traffic_policy_response() :: #{
+%%   <<"TrafficPolicyId">> => string()
+%% }
+-type create_traffic_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_addon_instance_request() :: #{
+%%   <<"AddonInstanceId">> := string()
+%% }
+-type delete_addon_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_addon_instance_response() :: #{
+
+%% }
+-type delete_addon_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_addon_subscription_request() :: #{
+%%   <<"AddonSubscriptionId">> := string()
+%% }
+-type delete_addon_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_addon_subscription_response() :: #{
+
+%% }
+-type delete_addon_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_address_list_request() :: #{
+%%   <<"AddressListId">> := string()
+%% }
+-type delete_address_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_address_list_response() :: #{
+
+%% }
+-type delete_address_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_archive_request() :: #{
+%%   <<"ArchiveId">> := string()
+%% }
+-type delete_archive_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_archive_response() :: #{
+
+%% }
+-type delete_archive_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ingress_point_request() :: #{
+%%   <<"IngressPointId">> := string()
+%% }
+-type delete_ingress_point_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ingress_point_response() :: #{
+
+%% }
+-type delete_ingress_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_relay_request() :: #{
+%%   <<"RelayId">> := string()
+%% }
+-type delete_relay_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_relay_response() :: #{
+
+%% }
+-type delete_relay_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_set_request() :: #{
+%%   <<"RuleSetId">> := string()
+%% }
+-type delete_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_set_response() :: #{
+
+%% }
+-type delete_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_traffic_policy_request() :: #{
+%%   <<"TrafficPolicyId">> := string()
+%% }
+-type delete_traffic_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_traffic_policy_response() :: #{
+
+%% }
+-type delete_traffic_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% deliver_to_mailbox_action() :: #{
+%%   <<"ActionFailurePolicy">> => list(any()),
+%%   <<"MailboxArn">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type deliver_to_mailbox_action() :: #{binary() => any()}.
+
+%% Example:
+%% deliver_to_q_business_action() :: #{
+%%   <<"ActionFailurePolicy">> => list(any()),
+%%   <<"ApplicationId">> => string(),
+%%   <<"IndexId">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type deliver_to_q_business_action() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_member_from_address_list_request() :: #{
+%%   <<"Address">> := string(),
+%%   <<"AddressListId">> := string()
+%% }
+-type deregister_member_from_address_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_member_from_address_list_response() :: #{
+
+%% }
+-type deregister_member_from_address_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% drop_action() :: #{
+
+%% }
+-type drop_action() :: #{binary() => any()}.
+
+%% Example:
+%% envelope() :: #{
+%%   <<"From">> => [string()],
+%%   <<"Helo">> => [string()],
+%%   <<"To">> => list([string()]())
+%% }
+-type envelope() :: #{binary() => any()}.
+
+%% Example:
+%% export_status() :: #{
+%%   <<"CompletionTimestamp">> => [non_neg_integer()],
+%%   <<"ErrorMessage">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"SubmissionTimestamp">> => [non_neg_integer()]
+%% }
+-type export_status() :: #{binary() => any()}.
+
+%% Example:
+%% export_summary() :: #{
+%%   <<"ExportId">> => string(),
+%%   <<"Status">> => export_status()
+%% }
+-type export_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_addon_instance_request() :: #{
+%%   <<"AddonInstanceId">> := string()
+%% }
+-type get_addon_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_addon_instance_response() :: #{
+%%   <<"AddonInstanceArn">> => string(),
+%%   <<"AddonName">> => string(),
+%%   <<"AddonSubscriptionId">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()]
+%% }
+-type get_addon_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_addon_subscription_request() :: #{
+%%   <<"AddonSubscriptionId">> := string()
+%% }
+-type get_addon_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_addon_subscription_response() :: #{
+%%   <<"AddonName">> => string(),
+%%   <<"AddonSubscriptionArn">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()]
+%% }
+-type get_addon_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_address_list_import_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type get_address_list_import_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_address_list_import_job_response() :: #{
@@ -197,17 +602,56 @@
 -type get_address_list_import_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_address_list_import_job_response() :: #{
-
+%% get_address_list_request() :: #{
+%%   <<"AddressListId">> := string()
 %% }
--type start_address_list_import_job_response() :: #{binary() => any()}.
+-type get_address_list_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
+%% get_address_list_response() :: #{
+%%   <<"AddressListArn">> => string(),
+%%   <<"AddressListId">> => string(),
+%%   <<"AddressListName">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()]
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type get_address_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_archive_export_request() :: #{
+%%   <<"ExportId">> := string()
+%% }
+-type get_archive_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_archive_export_response() :: #{
+%%   <<"ArchiveId">> => string(),
+%%   <<"ExportDestinationConfiguration">> => list(),
+%%   <<"Filters">> => archive_filters(),
+%%   <<"FromTimestamp">> => [non_neg_integer()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"Status">> => export_status(),
+%%   <<"ToTimestamp">> => [non_neg_integer()]
+%% }
+-type get_archive_export_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_archive_message_content_request() :: #{
+%%   <<"ArchivedMessageId">> := string()
+%% }
+-type get_archive_message_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_archive_message_content_response() :: #{
+%%   <<"Body">> => message_body()
+%% }
+-type get_archive_message_content_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_archive_message_request() :: #{
+%%   <<"ArchivedMessageId">> := string()
+%% }
+-type get_archive_message_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_archive_message_response() :: #{
@@ -218,144 +662,29 @@
 -type get_archive_message_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_relay_response() :: #{
-
+%% get_archive_request() :: #{
+%%   <<"ArchiveId">> := string()
 %% }
--type update_relay_response() :: #{binary() => any()}.
+-type get_archive_request() :: #{binary() => any()}.
 
 %% Example:
-%% rule_dmarc_expression() :: #{
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(list(any())())
+%% get_archive_response() :: #{
+%%   <<"ArchiveArn">> => string(),
+%%   <<"ArchiveId">> => string(),
+%%   <<"ArchiveName">> => string(),
+%%   <<"ArchiveState">> => list(any()),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()],
+%%   <<"Retention">> => list()
 %% }
--type rule_dmarc_expression() :: #{binary() => any()}.
+-type get_archive_response() :: #{binary() => any()}.
 
 %% Example:
-%% drop_action() :: #{
-
+%% get_archive_search_request() :: #{
+%%   <<"SearchId">> := string()
 %% }
--type drop_action() :: #{binary() => any()}.
-
-%% Example:
-%% update_rule_set_request() :: #{
-%%   <<"RuleSetId">> := string(),
-%%   <<"RuleSetName">> => string(),
-%%   <<"Rules">> => list(rule())
-%% }
--type update_rule_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% addon_instance() :: #{
-%%   <<"AddonInstanceArn">> => string(),
-%%   <<"AddonInstanceId">> => string(),
-%%   <<"AddonName">> => string(),
-%%   <<"AddonSubscriptionId">> => string(),
-%%   <<"CreatedTimestamp">> => [non_neg_integer()]
-%% }
--type addon_instance() :: #{binary() => any()}.
-
-%% Example:
-%% get_archive_search_results_response() :: #{
-%%   <<"Rows">> => list(row())
-%% }
--type get_archive_search_results_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_archives_response() :: #{
-%%   <<"Archives">> => list(archive()),
-%%   <<"NextToken">> => string()
-%% }
--type list_archives_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_archive_search_response() :: #{
-
-%% }
--type stop_archive_search_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_ingress_points_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type list_ingress_points_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_traffic_policy_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DefaultAction">> := list(any()),
-%%   <<"MaxMessageSizeBytes">> => integer(),
-%%   <<"PolicyStatements">> := list(policy_statement()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrafficPolicyName">> := string()
-%% }
--type create_traffic_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_address_lists_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type list_address_lists_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_addon_instance_request() :: #{
-%%   <<"AddonSubscriptionId">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_addon_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_ingress_point_request() :: #{
-%%   <<"IngressPointConfiguration">> => list(),
-%%   <<"IngressPointId">> := string(),
-%%   <<"IngressPointName">> => string(),
-%%   <<"RuleSetId">> => string(),
-%%   <<"StatusToUpdate">> => list(any()),
-%%   <<"TlsPolicy">> => list(any()),
-%%   <<"TrafficPolicyId">> => string()
-%% }
--type update_ingress_point_request() :: #{binary() => any()}.
-
-%% Example:
-%% relay_action() :: #{
-%%   <<"ActionFailurePolicy">> => list(any()),
-%%   <<"MailFrom">> => list(any()),
-%%   <<"Relay">> => string()
-%% }
--type relay_action() :: #{binary() => any()}.
-
-%% Example:
-%% create_address_list_request() :: #{
-%%   <<"AddressListName">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_address_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% rule_number_expression() :: #{
-%%   <<"Evaluate">> => list(),
-%%   <<"Operator">> => list(any()),
-%%   <<"Value">> => [float()]
-%% }
--type rule_number_expression() :: #{binary() => any()}.
-
-%% Example:
-%% export_status() :: #{
-%%   <<"CompletionTimestamp">> => [non_neg_integer()],
-%%   <<"ErrorMessage">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"SubmissionTimestamp">> => [non_neg_integer()]
-%% }
--type export_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_address_list_response() :: #{
-
-%% }
--type delete_address_list_response() :: #{binary() => any()}.
+-type get_archive_search_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_archive_search_response() :: #{
@@ -369,197 +698,23 @@
 -type get_archive_search_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_members_of_address_list_request() :: #{
-%%   <<"AddressListId">> := string(),
-%%   <<"Filter">> => address_filter(),
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type list_members_of_address_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_relay_response() :: #{
-%%   <<"Authentication">> => list(),
-%%   <<"CreatedTimestamp">> => [non_neg_integer()],
-%%   <<"LastModifiedTimestamp">> => [non_neg_integer()],
-%%   <<"RelayArn">> => string(),
-%%   <<"RelayId">> => string(),
-%%   <<"RelayName">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"ServerPort">> => integer()
-%% }
--type get_relay_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_action() :: #{
-%%   <<"ActionFailurePolicy">> => list(any()),
-%%   <<"RoleArn">> => string(),
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3Prefix">> => string(),
-%%   <<"S3SseKmsKeyId">> => string()
-%% }
--type s3_action() :: #{binary() => any()}.
-
-%% Example:
-%% stop_address_list_import_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type stop_address_list_import_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_addon_subscriptions_response() :: #{
-%%   <<"AddonSubscriptions">> => list(addon_subscription()),
-%%   <<"NextToken">> => string()
-%% }
--type list_addon_subscriptions_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_addon_instance_request() :: #{
-%%   <<"AddonInstanceId">> := string()
-%% }
--type delete_addon_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_traffic_policy_response() :: #{
-
-%% }
--type update_traffic_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% rule_ip_expression() :: #{
-%%   <<"Evaluate">> => list(),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type rule_ip_expression() :: #{binary() => any()}.
-
-%% Example:
-%% start_archive_export_request() :: #{
-%%   <<"ArchiveId">> := string(),
-%%   <<"ExportDestinationConfiguration">> := list(),
-%%   <<"Filters">> => archive_filters(),
-%%   <<"FromTimestamp">> := [non_neg_integer()],
-%%   <<"IncludeMetadata">> => [boolean()],
-%%   <<"MaxResults">> => integer(),
-%%   <<"ToTimestamp">> := [non_neg_integer()]
-%% }
--type start_archive_export_request() :: #{binary() => any()}.
-
-%% Example:
-%% relay() :: #{
-%%   <<"LastModifiedTimestamp">> => [non_neg_integer()],
-%%   <<"RelayId">> => string(),
-%%   <<"RelayName">> => string()
-%% }
--type relay() :: #{binary() => any()}.
-
-%% Example:
-%% list_addon_instances_response() :: #{
-%%   <<"AddonInstances">> => list(addon_instance()),
-%%   <<"NextToken">> => string()
-%% }
--type list_addon_instances_response() :: #{binary() => any()}.
-
-%% Example:
-%% metadata() :: #{
-%%   <<"ConfigurationSet">> => [string()],
-%%   <<"IngressPointId">> => string(),
-%%   <<"RuleSetId">> => string(),
-%%   <<"SenderHostname">> => [string()],
-%%   <<"SenderIpAddress">> => string(),
-%%   <<"SendingMethod">> => [string()],
-%%   <<"SendingPool">> => [string()],
-%%   <<"SourceArn">> => [string()],
-%%   <<"SourceIdentity">> => [string()],
-%%   <<"Timestamp">> => [non_neg_integer()],
-%%   <<"TlsCipherSuite">> => [string()],
-%%   <<"TlsProtocol">> => [string()],
-%%   <<"TrafficPolicyId">> => string()
-%% }
--type metadata() :: #{binary() => any()}.
-
-%% Example:
-%% invoke_lambda_action() :: #{
-%%   <<"ActionFailurePolicy">> => list(any()),
-%%   <<"FunctionArn">> => string(),
-%%   <<"InvocationType">> => list(any()),
-%%   <<"RetryTimeMinutes">> => integer(),
-%%   <<"RoleArn">> => string()
-%% }
--type invoke_lambda_action() :: #{binary() => any()}.
-
-%% Example:
-%% list_traffic_policies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrafficPolicies">> => list(traffic_policy())
-%% }
--type list_traffic_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% message_body() :: #{
-%%   <<"Html">> => [string()],
-%%   <<"MessageMalformed">> => [boolean()],
-%%   <<"Text">> => [string()]
-%% }
--type message_body() :: #{binary() => any()}.
-
-%% Example:
-%% get_address_list_import_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type get_address_list_import_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_set_response() :: #{
-
-%% }
--type delete_rule_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_addon_subscription_request() :: #{
-%%   <<"AddonSubscriptionId">> := string()
-%% }
--type get_addon_subscription_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_archive_search_request() :: #{
+%% get_archive_search_results_request() :: #{
 %%   <<"SearchId">> := string()
 %% }
--type get_archive_search_request() :: #{binary() => any()}.
+-type get_archive_search_results_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_archive_export_response() :: #{
-%%   <<"ExportId">> => string()
+%% get_archive_search_results_response() :: #{
+%%   <<"Rows">> => list(row())
 %% }
--type start_archive_export_response() :: #{binary() => any()}.
+-type get_archive_search_results_response() :: #{binary() => any()}.
 
 %% Example:
-%% policy_statement() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Conditions">> => list(list())
+%% get_ingress_point_request() :: #{
+%%   <<"IncludeTrustStoreContents">> => list(any()),
+%%   <<"IngressPointId">> := string()
 %% }
--type policy_statement() :: #{binary() => any()}.
-
-%% Example:
-%% traffic_policy() :: #{
-%%   <<"DefaultAction">> => list(any()),
-%%   <<"TrafficPolicyId">> => string(),
-%%   <<"TrafficPolicyName">> => string()
-%% }
--type traffic_policy() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type get_ingress_point_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_ingress_point_response() :: #{
@@ -580,40 +735,43 @@
 -type get_ingress_point_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_address_list_response() :: #{
-%%   <<"AddressListArn">> => string(),
-%%   <<"AddressListId">> => string(),
-%%   <<"AddressListName">> => string(),
+%% get_member_of_address_list_request() :: #{
+%%   <<"Address">> := string(),
+%%   <<"AddressListId">> := string()
+%% }
+-type get_member_of_address_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_member_of_address_list_response() :: #{
+%%   <<"Address">> => string(),
+%%   <<"CreatedTimestamp">> => [non_neg_integer()]
+%% }
+-type get_member_of_address_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_relay_request() :: #{
+%%   <<"RelayId">> := string()
+%% }
+-type get_relay_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_relay_response() :: #{
+%%   <<"Authentication">> => list(),
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
-%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()]
+%%   <<"LastModifiedTimestamp">> => [non_neg_integer()],
+%%   <<"RelayArn">> => string(),
+%%   <<"RelayId">> => string(),
+%%   <<"RelayName">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"ServerPort">> => integer()
 %% }
--type get_address_list_response() :: #{binary() => any()}.
+-type get_relay_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_archive_message_request() :: #{
-%%   <<"ArchivedMessageId">> := string()
+%% get_rule_set_request() :: #{
+%%   <<"RuleSetId">> := string()
 %% }
--type get_archive_message_request() :: #{binary() => any()}.
-
-%% Example:
-%% rule_boolean_expression() :: #{
-%%   <<"Evaluate">> => list(),
-%%   <<"Operator">> => list(any())
-%% }
--type rule_boolean_expression() :: #{binary() => any()}.
-
-%% Example:
-%% start_address_list_import_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type start_address_list_import_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% send_action() :: #{
-%%   <<"ActionFailurePolicy">> => list(any()),
-%%   <<"RoleArn">> => string()
-%% }
--type send_action() :: #{binary() => any()}.
+-type get_rule_set_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_rule_set_response() :: #{
@@ -627,47 +785,53 @@
 -type get_rule_set_response() :: #{binary() => any()}.
 
 %% Example:
-%% deliver_to_mailbox_action() :: #{
-%%   <<"ActionFailurePolicy">> => list(any()),
-%%   <<"MailboxArn">> => string(),
-%%   <<"RoleArn">> => string()
+%% get_traffic_policy_request() :: #{
+%%   <<"TrafficPolicyId">> := string()
 %% }
--type deliver_to_mailbox_action() :: #{binary() => any()}.
+-type get_traffic_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% rule_verdict_expression() :: #{
-%%   <<"Evaluate">> => list(),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(list(any())())
+%% get_traffic_policy_response() :: #{
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"DefaultAction">> => list(any()),
+%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()],
+%%   <<"MaxMessageSizeBytes">> => integer(),
+%%   <<"PolicyStatements">> => list(policy_statement()),
+%%   <<"TrafficPolicyArn">> => string(),
+%%   <<"TrafficPolicyId">> => string(),
+%%   <<"TrafficPolicyName">> => string()
 %% }
--type rule_verdict_expression() :: #{binary() => any()}.
+-type get_traffic_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_relay_request() :: #{
-%%   <<"RelayId">> := string()
+%% import_data_format() :: #{
+%%   <<"ImportDataType">> => list(any())
 %% }
--type get_relay_request() :: #{binary() => any()}.
+-type import_data_format() :: #{binary() => any()}.
 
 %% Example:
-%% register_member_to_address_list_response() :: #{
-
+%% import_job() :: #{
+%%   <<"AddressListId">> => string(),
+%%   <<"CompletedTimestamp">> => [non_neg_integer()],
+%%   <<"CreatedTimestamp">> => [non_neg_integer()],
+%%   <<"Error">> => string(),
+%%   <<"FailedItemsCount">> => integer(),
+%%   <<"ImportDataFormat">> => import_data_format(),
+%%   <<"ImportedItemsCount">> => integer(),
+%%   <<"JobId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PreSignedUrl">> => string(),
+%%   <<"StartTimestamp">> => [non_neg_integer()],
+%%   <<"Status">> => list(any())
 %% }
--type register_member_to_address_list_response() :: #{binary() => any()}.
+-type import_job() :: #{binary() => any()}.
 
 %% Example:
-%% delete_archive_response() :: #{
-
+%% ingress_analysis() :: #{
+%%   <<"Analyzer">> => string(),
+%%   <<"ResultField">> => string()
 %% }
--type delete_archive_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_addon_instance_response() :: #{
-%%   <<"AddonInstanceArn">> => string(),
-%%   <<"AddonName">> => string(),
-%%   <<"AddonSubscriptionId">> => string(),
-%%   <<"CreatedTimestamp">> => [non_neg_integer()]
-%% }
--type get_addon_instance_response() :: #{binary() => any()}.
+-type ingress_analysis() :: #{binary() => any()}.
 
 %% Example:
 %% ingress_boolean_expression() :: #{
@@ -677,36 +841,27 @@
 -type ingress_boolean_expression() :: #{binary() => any()}.
 
 %% Example:
-%% create_address_list_import_job_request() :: #{
-%%   <<"AddressListId">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ImportDataFormat">> := import_data_format(),
-%%   <<"Name">> := string()
+%% ingress_ipv4_expression() :: #{
+%%   <<"Evaluate">> => list(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
 %% }
--type create_address_list_import_job_request() :: #{binary() => any()}.
+-type ingress_ipv4_expression() :: #{binary() => any()}.
 
 %% Example:
-%% search_summary() :: #{
-%%   <<"SearchId">> => string(),
-%%   <<"Status">> => search_status()
+%% ingress_ipv6_expression() :: #{
+%%   <<"Evaluate">> => list(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
 %% }
--type search_summary() :: #{binary() => any()}.
+-type ingress_ipv6_expression() :: #{binary() => any()}.
 
 %% Example:
-%% create_archive_request() :: #{
-%%   <<"ArchiveName">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"Retention">> => list(),
-%%   <<"Tags">> => list(tag())
+%% ingress_is_in_address_list() :: #{
+%%   <<"AddressLists">> => list(string()),
+%%   <<"Attribute">> => list(any())
 %% }
--type create_archive_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_archive_request() :: #{
-%%   <<"ArchiveId">> := string()
-%% }
--type delete_archive_request() :: #{binary() => any()}.
+-type ingress_is_in_address_list() :: #{binary() => any()}.
 
 %% Example:
 %% ingress_point() :: #{
@@ -719,94 +874,74 @@
 -type ingress_point() :: #{binary() => any()}.
 
 %% Example:
-%% delete_addon_instance_response() :: #{
-
+%% ingress_point_auth_configuration() :: #{
+%%   <<"IngressPointPasswordConfiguration">> => ingress_point_password_configuration(),
+%%   <<"SecretArn">> => string(),
+%%   <<"TlsAuthConfiguration">> => tls_auth_configuration()
 %% }
--type delete_addon_instance_response() :: #{binary() => any()}.
+-type ingress_point_auth_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% public_network_configuration() :: #{
-%%   <<"IpType">> => list(any())
+%% ingress_point_password_configuration() :: #{
+%%   <<"PreviousSmtpPasswordExpiryTimestamp">> => [non_neg_integer()],
+%%   <<"PreviousSmtpPasswordVersion">> => [string()],
+%%   <<"SmtpPasswordVersion">> => [string()]
 %% }
--type public_network_configuration() :: #{binary() => any()}.
+-type ingress_point_password_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% create_address_list_import_job_response() :: #{
-%%   <<"JobId">> => string(),
-%%   <<"PreSignedUrl">> => string()
+%% ingress_string_expression() :: #{
+%%   <<"Evaluate">> => list(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list([string()]())
 %% }
--type create_address_list_import_job_response() :: #{binary() => any()}.
+-type ingress_string_expression() :: #{binary() => any()}.
 
 %% Example:
-%% ingress_is_in_address_list() :: #{
-%%   <<"AddressLists">> => list(string()),
-%%   <<"Attribute">> => list(any())
+%% ingress_tls_protocol_expression() :: #{
+%%   <<"Evaluate">> => list(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => list(any())
 %% }
--type ingress_is_in_address_list() :: #{binary() => any()}.
+-type ingress_tls_protocol_expression() :: #{binary() => any()}.
 
 %% Example:
-%% sns_action() :: #{
+%% invoke_lambda_action() :: #{
 %%   <<"ActionFailurePolicy">> => list(any()),
-%%   <<"Encoding">> => list(any()),
-%%   <<"PayloadType">> => list(any()),
-%%   <<"RoleArn">> => string(),
-%%   <<"TopicArn">> => string()
+%%   <<"FunctionArn">> => string(),
+%%   <<"InvocationType">> => list(any()),
+%%   <<"RetryTimeMinutes">> => integer(),
+%%   <<"RoleArn">> => string()
 %% }
--type sns_action() :: #{binary() => any()}.
+-type invoke_lambda_action() :: #{binary() => any()}.
 
 %% Example:
-%% tls_auth_configuration() :: #{
-%%   <<"TrustStore">> => trust_store()
-%% }
--type tls_auth_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_archives_request() :: #{
+%% list_addon_instances_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => integer()
 %% }
--type list_archives_request() :: #{binary() => any()}.
+-type list_addon_instances_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_addon_subscription_response() :: #{
-%%   <<"AddonSubscriptionId">> => string()
+%% list_addon_instances_response() :: #{
+%%   <<"AddonInstances">> => list(addon_instance()),
+%%   <<"NextToken">> => string()
 %% }
--type create_addon_subscription_response() :: #{binary() => any()}.
+-type list_addon_instances_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_archive_response() :: #{
-%%   <<"ArchiveArn">> => string(),
-%%   <<"ArchiveId">> => string(),
-%%   <<"ArchiveName">> => string(),
-%%   <<"ArchiveState">> => list(any()),
-%%   <<"CreatedTimestamp">> => [non_neg_integer()],
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()],
-%%   <<"Retention">> => list()
+%% list_addon_subscriptions_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
 %% }
--type get_archive_response() :: #{binary() => any()}.
+-type list_addon_subscriptions_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_archive_message_content_request() :: #{
-%%   <<"ArchivedMessageId">> := string()
+%% list_addon_subscriptions_response() :: #{
+%%   <<"AddonSubscriptions">> => list(addon_subscription()),
+%%   <<"NextToken">> => string()
 %% }
--type get_archive_message_content_request() :: #{binary() => any()}.
-
-%% Example:
-%% archive_string_expression() :: #{
-%%   <<"Evaluate">> => list(),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type archive_string_expression() :: #{binary() => any()}.
-
-%% Example:
-%% ingress_ipv4_expression() :: #{
-%%   <<"Evaluate">> => list(),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type ingress_ipv4_expression() :: #{binary() => any()}.
+-type list_addon_subscriptions_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_address_list_import_jobs_request() :: #{
@@ -817,11 +952,192 @@
 -type list_address_list_import_jobs_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_address_list_import_jobs_response() :: #{
+%%   <<"ImportJobs">> => list(import_job()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_address_list_import_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_address_lists_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_address_lists_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_address_lists_response() :: #{
+%%   <<"AddressLists">> => list(address_list()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_address_lists_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_archive_exports_request() :: #{
+%%   <<"ArchiveId">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_archive_exports_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_archive_exports_response() :: #{
+%%   <<"Exports">> => list(export_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_archive_exports_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_archive_searches_request() :: #{
+%%   <<"ArchiveId">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_archive_searches_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_archive_searches_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Searches">> => list(search_summary())
+%% }
+-type list_archive_searches_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_archives_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_archives_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_archives_response() :: #{
+%%   <<"Archives">> => list(archive()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_archives_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_ingress_points_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_ingress_points_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ingress_points_response() :: #{
+%%   <<"IngressPoints">> => list(ingress_point()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ingress_points_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_members_of_address_list_request() :: #{
+%%   <<"AddressListId">> := string(),
+%%   <<"Filter">> => address_filter(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_members_of_address_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_members_of_address_list_response() :: #{
+%%   <<"Addresses">> => list(saved_address()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_members_of_address_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_relays_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => [integer()]
+%% }
+-type list_relays_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_relays_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Relays">> => list(relay())
 %% }
 -type list_relays_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_sets_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_rule_sets_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleSets">> => list(rule_set())
+%% }
+-type list_rule_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_traffic_policies_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_traffic_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_traffic_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrafficPolicies">> => list(traffic_policy())
+%% }
+-type list_traffic_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% message_body() :: #{
+%%   <<"Html">> => [string()],
+%%   <<"MessageMalformed">> => [boolean()],
+%%   <<"Text">> => [string()]
+%% }
+-type message_body() :: #{binary() => any()}.
+
+%% Example:
+%% metadata() :: #{
+%%   <<"ConfigurationSet">> => [string()],
+%%   <<"IngressPointId">> => string(),
+%%   <<"RuleSetId">> => string(),
+%%   <<"SenderHostname">> => [string()],
+%%   <<"SenderIpAddress">> => string(),
+%%   <<"SendingMethod">> => [string()],
+%%   <<"SendingPool">> => [string()],
+%%   <<"SourceArn">> => [string()],
+%%   <<"SourceIdentity">> => [string()],
+%%   <<"Timestamp">> => [non_neg_integer()],
+%%   <<"TlsCipherSuite">> => [string()],
+%%   <<"TlsProtocol">> => [string()],
+%%   <<"TrafficPolicyId">> => string()
+%% }
+-type metadata() :: #{binary() => any()}.
+
+%% Example:
+%% no_authentication() :: #{
+
+%% }
+-type no_authentication() :: #{binary() => any()}.
+
+%% Example:
+%% policy_statement() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Conditions">> => list(list())
+%% }
+-type policy_statement() :: #{binary() => any()}.
 
 %% Example:
 %% private_network_configuration() :: #{
@@ -830,60 +1146,51 @@
 -type private_network_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% create_rule_set_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"RuleSetName">> := string(),
-%%   <<"Rules">> := list(rule()),
-%%   <<"Tags">> => list(tag())
+%% public_network_configuration() :: #{
+%%   <<"IpType">> => list(any())
 %% }
--type create_rule_set_request() :: #{binary() => any()}.
+-type public_network_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
+%% register_member_to_address_list_request() :: #{
+%%   <<"Address">> := string(),
+%%   <<"AddressListId">> := string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type register_member_to_address_list_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_member_to_address_list_response() :: #{
+
+%% }
+-type register_member_to_address_list_response() :: #{binary() => any()}.
+
+%% Example:
+%% relay() :: #{
+%%   <<"LastModifiedTimestamp">> => [non_neg_integer()],
+%%   <<"RelayId">> => string(),
+%%   <<"RelayName">> => string()
+%% }
+-type relay() :: #{binary() => any()}.
+
+%% Example:
+%% relay_action() :: #{
+%%   <<"ActionFailurePolicy">> => list(any()),
+%%   <<"MailFrom">> => list(any()),
+%%   <<"Relay">> => string()
+%% }
+-type relay_action() :: #{binary() => any()}.
+
+%% Example:
+%% replace_recipient_action() :: #{
+%%   <<"ReplaceWith">> => list(string())
+%% }
+-type replace_recipient_action() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_addon_subscriptions_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type list_addon_subscriptions_request() :: #{binary() => any()}.
-
-%% Example:
-%% envelope() :: #{
-%%   <<"From">> => [string()],
-%%   <<"Helo">> => [string()],
-%%   <<"To">> => list([string()]())
-%% }
--type envelope() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% archive_action() :: #{
-%%   <<"ActionFailurePolicy">> => list(any()),
-%%   <<"TargetArchive">> => string()
-%% }
--type archive_action() :: #{binary() => any()}.
-
-%% Example:
-%% stop_archive_search_request() :: #{
-%%   <<"SearchId">> := string()
-%% }
--type stop_archive_search_request() :: #{binary() => any()}.
 
 %% Example:
 %% row() :: #{
@@ -910,138 +1217,50 @@
 -type row() :: #{binary() => any()}.
 
 %% Example:
-%% create_relay_response() :: #{
-%%   <<"RelayId">> => string()
+%% rule() :: #{
+%%   <<"Actions">> => list(list()),
+%%   <<"Conditions">> => list(list()),
+%%   <<"Name">> => string(),
+%%   <<"Unless">> => list(list())
 %% }
--type create_relay_response() :: #{binary() => any()}.
+-type rule() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%% rule_boolean_expression() :: #{
+%%   <<"Evaluate">> => list(),
+%%   <<"Operator">> => list(any())
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type rule_boolean_expression() :: #{binary() => any()}.
 
 %% Example:
-%% delete_ingress_point_request() :: #{
-%%   <<"IngressPointId">> := string()
+%% rule_dmarc_expression() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(list(any())())
 %% }
--type delete_ingress_point_request() :: #{binary() => any()}.
+-type rule_dmarc_expression() :: #{binary() => any()}.
 
 %% Example:
-%% saved_address() :: #{
-%%   <<"Address">> => string(),
-%%   <<"CreatedTimestamp">> => [non_neg_integer()]
-%% }
--type saved_address() :: #{binary() => any()}.
-
-%% Example:
-%% create_rule_set_response() :: #{
-%%   <<"RuleSetId">> => string()
-%% }
--type create_rule_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_traffic_policy_response() :: #{
-%%   <<"TrafficPolicyId">> => string()
-%% }
--type create_traffic_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% export_summary() :: #{
-%%   <<"ExportId">> => string(),
-%%   <<"Status">> => export_status()
-%% }
--type export_summary() :: #{binary() => any()}.
-
-%% Example:
-%% address_filter() :: #{
-%%   <<"AddressPrefix">> => string()
-%% }
--type address_filter() :: #{binary() => any()}.
-
-%% Example:
-%% update_traffic_policy_request() :: #{
-%%   <<"DefaultAction">> => list(any()),
-%%   <<"MaxMessageSizeBytes">> => integer(),
-%%   <<"PolicyStatements">> => list(policy_statement()),
-%%   <<"TrafficPolicyId">> := string(),
-%%   <<"TrafficPolicyName">> => string()
-%% }
--type update_traffic_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% ingress_ipv6_expression() :: #{
+%% rule_ip_expression() :: #{
 %%   <<"Evaluate">> => list(),
 %%   <<"Operator">> => list(any()),
 %%   <<"Values">> => list(string())
 %% }
--type ingress_ipv6_expression() :: #{binary() => any()}.
+-type rule_ip_expression() :: #{binary() => any()}.
 
 %% Example:
-%% delete_address_list_request() :: #{
-%%   <<"AddressListId">> := string()
+%% rule_is_in_address_list() :: #{
+%%   <<"AddressLists">> => list(string()),
+%%   <<"Attribute">> => list(any())
 %% }
--type delete_address_list_request() :: #{binary() => any()}.
+-type rule_is_in_address_list() :: #{binary() => any()}.
 
 %% Example:
-%% get_address_list_request() :: #{
-%%   <<"AddressListId">> := string()
+%% rule_number_expression() :: #{
+%%   <<"Evaluate">> => list(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => [float()]
 %% }
--type get_address_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_rule_set_response() :: #{
-
-%% }
--type update_rule_set_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_member_from_address_list_request() :: #{
-%%   <<"Address">> := string(),
-%%   <<"AddressListId">> := string()
-%% }
--type deregister_member_from_address_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_ingress_point_response() :: #{
-
-%% }
--type update_ingress_point_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_member_of_address_list_response() :: #{
-%%   <<"Address">> => string(),
-%%   <<"CreatedTimestamp">> => [non_neg_integer()]
-%% }
--type get_member_of_address_list_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_ingress_point_response() :: #{
-%%   <<"IngressPointId">> => string()
-%% }
--type create_ingress_point_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_relay_request() :: #{
-%%   <<"Authentication">> => list(),
-%%   <<"RelayId">> := string(),
-%%   <<"RelayName">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"ServerPort">> => integer()
-%% }
--type update_relay_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_addon_instance_request() :: #{
-%%   <<"AddonInstanceId">> := string()
-%% }
--type get_addon_instance_request() :: #{binary() => any()}.
+-type rule_number_expression() :: #{binary() => any()}.
 
 %% Example:
 %% rule_set() :: #{
@@ -1052,216 +1271,112 @@
 -type rule_set() :: #{binary() => any()}.
 
 %% Example:
-%% rule() :: #{
-%%   <<"Actions">> => list(list()),
-%%   <<"Conditions">> => list(list()),
-%%   <<"Name">> => string(),
-%%   <<"Unless">> => list(list())
-%% }
--type rule() :: #{binary() => any()}.
-
-%% Example:
-%% list_rule_sets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RuleSets">> => list(rule_set())
-%% }
--type list_rule_sets_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_traffic_policy_response() :: #{
-
-%% }
--type delete_traffic_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_addon_subscription_response() :: #{
-
-%% }
--type delete_addon_subscription_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_archive_searches_request() :: #{
-%%   <<"ArchiveId">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type list_archive_searches_request() :: #{binary() => any()}.
-
-%% Example:
-%% import_job() :: #{
-%%   <<"AddressListId">> => string(),
-%%   <<"CompletedTimestamp">> => [non_neg_integer()],
-%%   <<"CreatedTimestamp">> => [non_neg_integer()],
-%%   <<"Error">> => string(),
-%%   <<"FailedItemsCount">> => integer(),
-%%   <<"ImportDataFormat">> => import_data_format(),
-%%   <<"ImportedItemsCount">> => integer(),
-%%   <<"JobId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PreSignedUrl">> => string(),
-%%   <<"StartTimestamp">> => [non_neg_integer()],
-%%   <<"Status">> => list(any())
-%% }
--type import_job() :: #{binary() => any()}.
-
-%% Example:
-%% list_archive_searches_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Searches">> => list(search_summary())
-%% }
--type list_archive_searches_response() :: #{binary() => any()}.
-
-%% Example:
-%% analysis() :: #{
-%%   <<"Analyzer">> => string(),
-%%   <<"ResultField">> => string()
-%% }
--type analysis() :: #{binary() => any()}.
-
-%% Example:
-%% delete_addon_subscription_request() :: #{
-%%   <<"AddonSubscriptionId">> := string()
-%% }
--type delete_addon_subscription_request() :: #{binary() => any()}.
-
-%% Example:
-%% archive_boolean_expression() :: #{
-%%   <<"Evaluate">> => list(),
-%%   <<"Operator">> => list(any())
-%% }
--type archive_boolean_expression() :: #{binary() => any()}.
-
-%% Example:
-%% list_rule_sets_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type list_rule_sets_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_archive_export_request() :: #{
-%%   <<"ExportId">> := string()
-%% }
--type stop_archive_export_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_traffic_policy_response() :: #{
-%%   <<"CreatedTimestamp">> => [non_neg_integer()],
-%%   <<"DefaultAction">> => list(any()),
-%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()],
-%%   <<"MaxMessageSizeBytes">> => integer(),
-%%   <<"PolicyStatements">> => list(policy_statement()),
-%%   <<"TrafficPolicyArn">> => string(),
-%%   <<"TrafficPolicyId">> => string(),
-%%   <<"TrafficPolicyName">> => string()
-%% }
--type get_traffic_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% ingress_tls_protocol_expression() :: #{
+%% rule_string_expression() :: #{
 %%   <<"Evaluate">> => list(),
 %%   <<"Operator">> => list(any()),
-%%   <<"Value">> => list(any())
+%%   <<"Values">> => list(string())
 %% }
--type ingress_tls_protocol_expression() :: #{binary() => any()}.
+-type rule_string_expression() :: #{binary() => any()}.
 
 %% Example:
-%% delete_ingress_point_response() :: #{
-
+%% rule_verdict_expression() :: #{
+%%   <<"Evaluate">> => list(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(list(any())())
 %% }
--type delete_ingress_point_response() :: #{binary() => any()}.
+-type rule_verdict_expression() :: #{binary() => any()}.
 
 %% Example:
-%% no_authentication() :: #{
-
-%% }
--type no_authentication() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_archive_request() :: #{
-%%   <<"ArchiveId">> := string()
-%% }
--type get_archive_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_address_list_import_jobs_response() :: #{
-%%   <<"ImportJobs">> => list(import_job()),
-%%   <<"NextToken">> => string()
-%% }
--type list_address_list_import_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_address_list_import_job_response() :: #{
-
-%% }
--type stop_address_list_import_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_relay_response() :: #{
-
-%% }
--type delete_relay_response() :: #{binary() => any()}.
-
-%% Example:
-%% deliver_to_q_business_action() :: #{
+%% s3_action() :: #{
 %%   <<"ActionFailurePolicy">> => list(any()),
-%%   <<"ApplicationId">> => string(),
-%%   <<"IndexId">> => string(),
-%%   <<"RoleArn">> => string()
+%%   <<"RoleArn">> => string(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Prefix">> => string(),
+%%   <<"S3SseKmsKeyId">> => string()
 %% }
--type deliver_to_q_business_action() :: #{binary() => any()}.
+-type s3_action() :: #{binary() => any()}.
 
 %% Example:
-%% register_member_to_address_list_request() :: #{
-%%   <<"Address">> := string(),
-%%   <<"AddressListId">> := string()
+%% s3_export_destination_configuration() :: #{
+%%   <<"S3Location">> => string()
 %% }
--type register_member_to_address_list_request() :: #{binary() => any()}.
+-type s3_export_destination_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% addon_subscription() :: #{
-%%   <<"AddonName">> => string(),
-%%   <<"AddonSubscriptionArn">> => string(),
-%%   <<"AddonSubscriptionId">> => string(),
+%% saved_address() :: #{
+%%   <<"Address">> => string(),
 %%   <<"CreatedTimestamp">> => [non_neg_integer()]
 %% }
--type addon_subscription() :: #{binary() => any()}.
+-type saved_address() :: #{binary() => any()}.
 
 %% Example:
-%% delete_relay_request() :: #{
-%%   <<"RelayId">> := string()
+%% search_status() :: #{
+%%   <<"CompletionTimestamp">> => [non_neg_integer()],
+%%   <<"ErrorMessage">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"SubmissionTimestamp">> => [non_neg_integer()]
 %% }
--type delete_relay_request() :: #{binary() => any()}.
+-type search_status() :: #{binary() => any()}.
 
 %% Example:
-%% replace_recipient_action() :: #{
-%%   <<"ReplaceWith">> => list(string())
+%% search_summary() :: #{
+%%   <<"SearchId">> => string(),
+%%   <<"Status">> => search_status()
 %% }
--type replace_recipient_action() :: #{binary() => any()}.
+-type search_summary() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception() :: #{
+%% send_action() :: #{
+%%   <<"ActionFailurePolicy">> => list(any()),
+%%   <<"RoleArn">> => string()
+%% }
+-type send_action() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
+%% sns_action() :: #{
+%%   <<"ActionFailurePolicy">> => list(any()),
+%%   <<"Encoding">> => list(any()),
+%%   <<"PayloadType">> => list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"TopicArn">> => string()
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type sns_action() :: #{binary() => any()}.
+
+%% Example:
+%% start_address_list_import_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type start_address_list_import_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_address_list_import_job_response() :: #{
+
+%% }
+-type start_address_list_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_archive_export_request() :: #{
+%%   <<"ArchiveId">> := string(),
+%%   <<"ExportDestinationConfiguration">> := list(),
+%%   <<"Filters">> => archive_filters(),
+%%   <<"FromTimestamp">> := [non_neg_integer()],
+%%   <<"IncludeMetadata">> => [boolean()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"ToTimestamp">> := [non_neg_integer()]
+%% }
+-type start_archive_export_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_archive_export_response() :: #{
+%%   <<"ExportId">> => string()
+%% }
+-type start_archive_export_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_archive_search_request() :: #{
@@ -1274,108 +1389,28 @@
 -type start_archive_search_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_archive_export_response() :: #{
-%%   <<"ArchiveId">> => string(),
-%%   <<"ExportDestinationConfiguration">> => list(),
-%%   <<"Filters">> => archive_filters(),
-%%   <<"FromTimestamp">> => [non_neg_integer()],
-%%   <<"MaxResults">> => integer(),
-%%   <<"Status">> => export_status(),
-%%   <<"ToTimestamp">> => [non_neg_integer()]
+%% start_archive_search_response() :: #{
+%%   <<"SearchId">> => string()
 %% }
--type get_archive_export_response() :: #{binary() => any()}.
+-type start_archive_search_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_ingress_points_response() :: #{
-%%   <<"IngressPoints">> => list(ingress_point()),
-%%   <<"NextToken">> => string()
+%% stop_address_list_import_job_request() :: #{
+%%   <<"JobId">> := string()
 %% }
--type list_ingress_points_response() :: #{binary() => any()}.
+-type stop_address_list_import_job_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_archive_response() :: #{
-%%   <<"ArchiveId">> => string()
+%% stop_address_list_import_job_response() :: #{
+
 %% }
--type create_archive_response() :: #{binary() => any()}.
+-type stop_address_list_import_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_ingress_point_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"IngressPointConfiguration">> => list(),
-%%   <<"IngressPointName">> := string(),
-%%   <<"NetworkConfiguration">> => list(),
-%%   <<"RuleSetId">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TlsPolicy">> => list(any()),
-%%   <<"TrafficPolicyId">> := string(),
-%%   <<"Type">> := list(any())
+%% stop_archive_export_request() :: #{
+%%   <<"ExportId">> := string()
 %% }
--type create_ingress_point_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_relays_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => [integer()]
-%% }
--type list_relays_request() :: #{binary() => any()}.
-
-%% Example:
-%% rule_is_in_address_list() :: #{
-%%   <<"AddressLists">> => list(string()),
-%%   <<"Attribute">> => list(any())
-%% }
--type rule_is_in_address_list() :: #{binary() => any()}.
-
-%% Example:
-%% ingress_string_expression() :: #{
-%%   <<"Evaluate">> => list(),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list([string()]())
-%% }
--type ingress_string_expression() :: #{binary() => any()}.
-
-%% Example:
-%% get_rule_set_request() :: #{
-%%   <<"RuleSetId">> := string()
-%% }
--type get_rule_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_addon_subscription_response() :: #{
-%%   <<"AddonName">> => string(),
-%%   <<"AddonSubscriptionArn">> => string(),
-%%   <<"CreatedTimestamp">> => [non_neg_integer()]
-%% }
--type get_addon_subscription_response() :: #{binary() => any()}.
-
-%% Example:
-%% archive() :: #{
-%%   <<"ArchiveId">> => string(),
-%%   <<"ArchiveName">> => string(),
-%%   <<"ArchiveState">> => list(any()),
-%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()]
-%% }
--type archive() :: #{binary() => any()}.
-
-%% Example:
-%% update_archive_request() :: #{
-%%   <<"ArchiveId">> := string(),
-%%   <<"ArchiveName">> => string(),
-%%   <<"Retention">> => list()
-%% }
--type update_archive_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_traffic_policy_request() :: #{
-%%   <<"TrafficPolicyId">> := string()
-%% }
--type delete_traffic_policy_request() :: #{binary() => any()}.
+-type stop_archive_export_request() :: #{binary() => any()}.
 
 %% Example:
 %% stop_archive_export_response() :: #{
@@ -1384,182 +1419,56 @@
 -type stop_archive_export_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_traffic_policy_request() :: #{
-%%   <<"TrafficPolicyId">> := string()
-%% }
--type get_traffic_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_set_request() :: #{
-%%   <<"RuleSetId">> := string()
-%% }
--type delete_rule_set_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_addon_subscription_request() :: #{
-%%   <<"AddonName">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_addon_subscription_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_archive_exports_response() :: #{
-%%   <<"Exports">> => list(export_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_archive_exports_response() :: #{binary() => any()}.
-
-%% Example:
-%% address_list() :: #{
-%%   <<"AddressListArn">> => string(),
-%%   <<"AddressListId">> => string(),
-%%   <<"AddressListName">> => string(),
-%%   <<"CreatedTimestamp">> => [non_neg_integer()],
-%%   <<"LastUpdatedTimestamp">> => [non_neg_integer()]
-%% }
--type address_list() :: #{binary() => any()}.
-
-%% Example:
-%% list_members_of_address_list_response() :: #{
-%%   <<"Addresses">> => list(saved_address()),
-%%   <<"NextToken">> => string()
-%% }
--type list_members_of_address_list_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_archive_exports_request() :: #{
-%%   <<"ArchiveId">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type list_archive_exports_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_archive_search_results_request() :: #{
+%% stop_archive_search_request() :: #{
 %%   <<"SearchId">> := string()
 %% }
--type get_archive_search_results_request() :: #{binary() => any()}.
+-type stop_archive_search_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_archive_export_request() :: #{
-%%   <<"ExportId">> := string()
+%% stop_archive_search_response() :: #{
+
 %% }
--type get_archive_export_request() :: #{binary() => any()}.
+-type stop_archive_search_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_archive_response() :: #{
-
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type update_archive_response() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% search_status() :: #{
-%%   <<"CompletionTimestamp">> => [non_neg_integer()],
-%%   <<"ErrorMessage">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"SubmissionTimestamp">> => [non_neg_integer()]
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type search_status() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% ingress_point_auth_configuration() :: #{
-%%   <<"IngressPointPasswordConfiguration">> => ingress_point_password_configuration(),
-%%   <<"SecretArn">> => string(),
-%%   <<"TlsAuthConfiguration">> => tls_auth_configuration()
+%% tag_resource_response() :: #{
+
 %% }
--type ingress_point_auth_configuration() :: #{binary() => any()}.
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% deregister_member_from_address_list_response() :: #{
-
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type deregister_member_from_address_list_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_address_lists_response() :: #{
-%%   <<"AddressLists">> => list(address_list()),
-%%   <<"NextToken">> => string()
-%% }
--type list_address_lists_response() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% start_archive_search_response() :: #{
-%%   <<"SearchId">> => string()
+%% tls_auth_configuration() :: #{
+%%   <<"TrustStore">> => trust_store()
 %% }
--type start_archive_search_response() :: #{binary() => any()}.
+-type tls_auth_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% get_ingress_point_request() :: #{
-%%   <<"IncludeTrustStoreContents">> => list(any()),
-%%   <<"IngressPointId">> := string()
+%% traffic_policy() :: #{
+%%   <<"DefaultAction">> => list(any()),
+%%   <<"TrafficPolicyId">> => string(),
+%%   <<"TrafficPolicyName">> => string()
 %% }
--type get_ingress_point_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_addon_instances_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type list_addon_instances_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_export_destination_configuration() :: #{
-%%   <<"S3Location">> => string()
-%% }
--type s3_export_destination_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% rule_string_expression() :: #{
-%%   <<"Evaluate">> => list(),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type rule_string_expression() :: #{binary() => any()}.
-
-%% Example:
-%% create_relay_request() :: #{
-%%   <<"Authentication">> := list(),
-%%   <<"ClientToken">> => string(),
-%%   <<"RelayName">> := string(),
-%%   <<"ServerName">> := string(),
-%%   <<"ServerPort">> := integer(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_relay_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_member_of_address_list_request() :: #{
-%%   <<"Address">> := string(),
-%%   <<"AddressListId">> := string()
-%% }
--type get_member_of_address_list_request() :: #{binary() => any()}.
-
-%% Example:
-%% bounce_action() :: #{
-%%   <<"ActionFailurePolicy">> => list(any()),
-%%   <<"DiagnosticMessage">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Sender">> => string(),
-%%   <<"SmtpReplyCode">> => string(),
-%%   <<"StatusCode">> => string()
-%% }
--type bounce_action() :: #{binary() => any()}.
-
-%% Example:
-%% add_header_action() :: #{
-%%   <<"HeaderName">> => string(),
-%%   <<"HeaderValue">> => string()
-%% }
--type add_header_action() :: #{binary() => any()}.
-
-%% Example:
-%% archive_filters() :: #{
-%%   <<"Include">> => list(list()),
-%%   <<"Unless">> => list(list())
-%% }
--type archive_filters() :: #{binary() => any()}.
+-type traffic_policy() :: #{binary() => any()}.
 
 %% Example:
 %% trust_store() :: #{
@@ -1570,10 +1479,101 @@
 -type trust_store() :: #{binary() => any()}.
 
 %% Example:
-%% create_address_list_response() :: #{
-%%   <<"AddressListId">> => string()
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type create_address_list_response() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_archive_request() :: #{
+%%   <<"ArchiveId">> := string(),
+%%   <<"ArchiveName">> => string(),
+%%   <<"Retention">> => list()
+%% }
+-type update_archive_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_archive_response() :: #{
+
+%% }
+-type update_archive_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_ingress_point_request() :: #{
+%%   <<"IngressPointConfiguration">> => list(),
+%%   <<"IngressPointId">> := string(),
+%%   <<"IngressPointName">> => string(),
+%%   <<"RuleSetId">> => string(),
+%%   <<"StatusToUpdate">> => list(any()),
+%%   <<"TlsPolicy">> => list(any()),
+%%   <<"TrafficPolicyId">> => string()
+%% }
+-type update_ingress_point_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_ingress_point_response() :: #{
+
+%% }
+-type update_ingress_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_relay_request() :: #{
+%%   <<"Authentication">> => list(),
+%%   <<"RelayId">> := string(),
+%%   <<"RelayName">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"ServerPort">> => integer()
+%% }
+-type update_relay_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_relay_response() :: #{
+
+%% }
+-type update_relay_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_set_request() :: #{
+%%   <<"RuleSetId">> := string(),
+%%   <<"RuleSetName">> => string(),
+%%   <<"Rules">> => list(rule())
+%% }
+-type update_rule_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_rule_set_response() :: #{
+
+%% }
+-type update_rule_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_traffic_policy_request() :: #{
+%%   <<"DefaultAction">> => list(any()),
+%%   <<"MaxMessageSizeBytes">> => integer(),
+%%   <<"PolicyStatements">> => list(policy_statement()),
+%%   <<"TrafficPolicyId">> := string(),
+%%   <<"TrafficPolicyName">> => string()
+%% }
+-type update_traffic_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_traffic_policy_response() :: #{
+
+%% }
+-type update_traffic_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_addon_instance_errors() ::
     validation_exception() | 
@@ -1582,30 +1582,30 @@
     conflict_exception().
 
 -type create_addon_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type create_address_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_address_list_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type create_archive_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_ingress_point_errors() ::
     validation_exception() | 
@@ -1636,16 +1636,16 @@
     conflict_exception().
 
 -type delete_address_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    conflict_exception().
+    throttling_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_archive_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    conflict_exception().
+    throttling_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_ingress_point_errors() ::
     validation_exception() | 
@@ -1667,11 +1667,11 @@
     conflict_exception().
 
 -type deregister_member_from_address_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_addon_instance_errors() ::
     validation_exception() | 
@@ -1682,58 +1682,58 @@
     resource_not_found_exception().
 
 -type get_address_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_address_list_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_archive_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_archive_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type get_archive_message_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type get_archive_message_content_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type get_archive_search_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type get_archive_search_results_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    conflict_exception().
+    throttling_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_ingress_point_errors() ::
     validation_exception() | 
     resource_not_found_exception().
 
 -type get_member_of_address_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_relay_errors() ::
     validation_exception() | 
@@ -1754,41 +1754,41 @@
     validation_exception().
 
 -type list_address_list_import_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_address_lists_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_archive_exports_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_archive_searches_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_archives_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type list_ingress_points_errors() ::
     validation_exception().
 
 -type list_members_of_address_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_relays_errors() ::
     validation_exception().
@@ -1804,51 +1804,51 @@
     validation_exception().
 
 -type register_member_to_address_list_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_address_list_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_archive_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type start_archive_search_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_address_list_import_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_archive_export_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type stop_archive_search_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     access_denied_exception().
 
 -type tag_resource_errors() ::
@@ -1863,12 +1863,12 @@
     conflict_exception().
 
 -type update_archive_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_ingress_point_errors() ::
     validation_exception() | 

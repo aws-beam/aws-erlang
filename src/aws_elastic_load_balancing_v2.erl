@@ -151,109 +151,63 @@
 
 
 %% Example:
-%% describe_listener_attributes_input() :: #{
-%%   <<"ListenerArn">> := string()
-%% }
--type describe_listener_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% rule_transform() :: #{
-%%   <<"HostHeaderRewriteConfig">> => host_header_rewrite_config(),
-%%   <<"Type">> => list(any()),
-%%   <<"UrlRewriteConfig">> => url_rewrite_config()
-%% }
--type rule_transform() :: #{binary() => any()}.
-
-%% Example:
-%% target_health() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Reason">> => list(any()),
-%%   <<"State">> => list(any())
-%% }
--type target_health() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_target_exception() :: #{
+%% a_l_p_n_policy_not_supported_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_target_exception() :: #{binary() => any()}.
+-type a_l_p_n_policy_not_supported_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_rules_input() :: #{
-%%   <<"ListenerArn">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"RuleArns">> => list(string())
+%% action() :: #{
+%%   <<"AuthenticateCognitoConfig">> => authenticate_cognito_action_config(),
+%%   <<"AuthenticateOidcConfig">> => authenticate_oidc_action_config(),
+%%   <<"FixedResponseConfig">> => fixed_response_action_config(),
+%%   <<"ForwardConfig">> => forward_action_config(),
+%%   <<"JwtValidationConfig">> => jwt_validation_action_config(),
+%%   <<"Order">> => integer(),
+%%   <<"RedirectConfig">> => redirect_action_config(),
+%%   <<"TargetGroupArn">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type describe_rules_input() :: #{binary() => any()}.
+-type action() :: #{binary() => any()}.
 
 %% Example:
-%% get_trust_store_ca_certificates_bundle_output() :: #{
-%%   <<"Location">> => string()
+%% add_listener_certificates_input() :: #{
+%%   <<"Certificates">> := list(certificate()),
+%%   <<"ListenerArn">> := string()
 %% }
--type get_trust_store_ca_certificates_bundle_output() :: #{binary() => any()}.
+-type add_listener_certificates_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_capacity_reservation_output() :: #{
-%%   <<"CapacityReservationState">> => list(zonal_capacity_reservation_state()),
-%%   <<"DecreaseRequestsRemaining">> => integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MinimumLoadBalancerCapacity">> => minimum_load_balancer_capacity()
+%% add_listener_certificates_output() :: #{
+%%   <<"Certificates">> => list(certificate())
 %% }
--type describe_capacity_reservation_output() :: #{binary() => any()}.
+-type add_listener_certificates_output() :: #{binary() => any()}.
 
 %% Example:
-%% rewrite_config() :: #{
-%%   <<"Regex">> => string(),
-%%   <<"Replace">> => string()
+%% add_tags_input() :: #{
+%%   <<"ResourceArns">> := list(string()),
+%%   <<"Tags">> := list(tag())
 %% }
--type rewrite_config() :: #{binary() => any()}.
+-type add_tags_input() :: #{binary() => any()}.
 
 %% Example:
-%% trust_store_revocation() :: #{
-%%   <<"NumberOfRevokedEntries">> => float(),
-%%   <<"RevocationId">> => float(),
-%%   <<"RevocationType">> => list(any()),
-%%   <<"TrustStoreArn">> => string()
+%% add_tags_output() :: #{
+
 %% }
--type trust_store_revocation() :: #{binary() => any()}.
+-type add_tags_output() :: #{binary() => any()}.
 
 %% Example:
-%% minimum_load_balancer_capacity() :: #{
-%%   <<"CapacityUnits">> => integer()
+%% add_trust_store_revocations_input() :: #{
+%%   <<"RevocationContents">> => list(revocation_content()),
+%%   <<"TrustStoreArn">> := string()
 %% }
--type minimum_load_balancer_capacity() :: #{binary() => any()}.
+-type add_trust_store_revocations_input() :: #{binary() => any()}.
 
 %% Example:
-%% availability_zone() :: #{
-%%   <<"LoadBalancerAddresses">> => list(load_balancer_address()),
-%%   <<"OutpostId">> => string(),
-%%   <<"SourceNatIpv6Prefixes">> => list(string()),
-%%   <<"SubnetId">> => string(),
-%%   <<"ZoneName">> => string()
+%% add_trust_store_revocations_output() :: #{
+%%   <<"TrustStoreRevocations">> => list(trust_store_revocation())
 %% }
--type availability_zone() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_output() :: #{
-%%   <<"Policy">> => string()
-%% }
--type get_resource_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% revocation_content() :: #{
-%%   <<"RevocationType">> => list(any()),
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3Key">> => string(),
-%%   <<"S3ObjectVersion">> => string()
-%% }
--type revocation_content() :: #{binary() => any()}.
-
-%% Example:
-%% delete_listener_output() :: #{
-
-%% }
--type delete_listener_output() :: #{binary() => any()}.
+-type add_trust_store_revocations_output() :: #{binary() => any()}.
 
 %% Example:
 %% administrative_override() :: #{
@@ -264,359 +218,30 @@
 -type administrative_override() :: #{binary() => any()}.
 
 %% Example:
-%% add_trust_store_revocations_output() :: #{
-%%   <<"TrustStoreRevocations">> => list(trust_store_revocation())
-%% }
--type add_trust_store_revocations_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_target_group_output() :: #{
-%%   <<"TargetGroups">> => list(target_group())
-%% }
--type create_target_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% listener() :: #{
-%%   <<"AlpnPolicy">> => list(string()),
-%%   <<"Certificates">> => list(certificate()),
-%%   <<"DefaultActions">> => list(action()),
-%%   <<"ListenerArn">> => string(),
-%%   <<"LoadBalancerArn">> => string(),
-%%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
-%%   <<"Port">> => integer(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"SslPolicy">> => string()
-%% }
--type listener() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% availability_zone_not_supported_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type availability_zone_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_listener_input() :: #{
-%%   <<"AlpnPolicy">> => list(string()),
-%%   <<"Certificates">> => list(certificate()),
-%%   <<"DefaultActions">> := list(action()),
-%%   <<"LoadBalancerArn">> := string(),
-%%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
-%%   <<"Port">> => integer(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"SslPolicy">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_listener_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_load_balancer_output() :: #{
-
-%% }
--type delete_load_balancer_output() :: #{binary() => any()}.
-
-%% Example:
-%% add_listener_certificates_output() :: #{
-%%   <<"Certificates">> => list(certificate())
-%% }
--type add_listener_certificates_output() :: #{binary() => any()}.
-
-%% Example:
-%% modify_target_group_output() :: #{
-%%   <<"TargetGroups">> => list(target_group())
-%% }
--type modify_target_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% set_security_groups_input() :: #{
-%%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => list(any()),
-%%   <<"LoadBalancerArn">> := string(),
-%%   <<"SecurityGroups">> := list(string())
-%% }
--type set_security_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_output() :: #{
-
-%% }
--type add_tags_output() :: #{binary() => any()}.
-
-%% Example:
-%% modify_trust_store_input() :: #{
-%%   <<"CaCertificatesBundleS3Bucket">> := string(),
-%%   <<"CaCertificatesBundleS3Key">> := string(),
-%%   <<"CaCertificatesBundleS3ObjectVersion">> => string(),
-%%   <<"TrustStoreArn">> := string()
-%% }
--type modify_trust_store_input() :: #{binary() => any()}.
-
-%% Example:
-%% modify_target_group_attributes_input() :: #{
-%%   <<"Attributes">> := list(target_group_attribute()),
-%%   <<"TargetGroupArn">> := string()
-%% }
--type modify_target_group_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_listener_certificates_input() :: #{
-%%   <<"Certificates">> := list(certificate()),
-%%   <<"ListenerArn">> := string()
-%% }
--type add_listener_certificates_input() :: #{binary() => any()}.
-
-%% Example:
-%% set_subnets_input() :: #{
-%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"LoadBalancerArn">> := string(),
-%%   <<"SubnetMappings">> => list(subnet_mapping()),
-%%   <<"Subnets">> => list(string())
-%% }
--type set_subnets_input() :: #{binary() => any()}.
-
-%% Example:
-%% subnet_mapping() :: #{
-%%   <<"AllocationId">> => string(),
-%%   <<"IPv6Address">> => string(),
-%%   <<"PrivateIPv4Address">> => string(),
-%%   <<"SourceNatIpv6Prefix">> => string(),
-%%   <<"SubnetId">> => string()
-%% }
--type subnet_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% ssl_policy() :: #{
-%%   <<"Ciphers">> => list(cipher()),
-%%   <<"Name">> => string(),
-%%   <<"SslProtocols">> => list(string()),
-%%   <<"SupportedLoadBalancerTypes">> => list(string())
-%% }
--type ssl_policy() :: #{binary() => any()}.
-
-%% Example:
-%% fixed_response_action_config() :: #{
-%%   <<"ContentType">> => string(),
-%%   <<"MessageBody">> => string(),
-%%   <<"StatusCode">> => string()
-%% }
--type fixed_response_action_config() :: #{binary() => any()}.
-
-%% Example:
-%% modify_listener_output() :: #{
-%%   <<"Listeners">> => list(listener())
-%% }
--type modify_listener_output() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_targets_input() :: #{
-%%   <<"TargetGroupArn">> := string(),
-%%   <<"Targets">> := list(target_description())
-%% }
--type deregister_targets_input() :: #{binary() => any()}.
-
-%% Example:
-%% trust_store_association() :: #{
-%%   <<"ResourceArn">> => string()
-%% }
--type trust_store_association() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_input() :: #{
-%%   <<"ResourceArns">> := list(string()),
-%%   <<"Tags">> := list(tag())
-%% }
--type add_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% mutual_authentication_attributes() :: #{
-%%   <<"AdvertiseTrustStoreCaNames">> => list(any()),
-%%   <<"IgnoreClientCertificateExpiry">> => boolean(),
-%%   <<"Mode">> => string(),
-%%   <<"TrustStoreArn">> => string(),
-%%   <<"TrustStoreAssociationStatus">> => list(any())
-%% }
--type mutual_authentication_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% limit() :: #{
-%%   <<"Max">> => string(),
-%%   <<"Name">> => string()
-%% }
--type limit() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_configuration_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_configuration_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% subnet_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type subnet_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_rule_output() :: #{
-%%   <<"Rules">> => list(rule())
-%% }
--type create_rule_output() :: #{binary() => any()}.
-
-%% Example:
-%% add_trust_store_revocations_input() :: #{
-%%   <<"RevocationContents">> => list(revocation_content()),
-%%   <<"TrustStoreArn">> := string()
-%% }
--type add_trust_store_revocations_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_target_group_attributes_output() :: #{
-%%   <<"Attributes">> => list(target_group_attribute())
-%% }
--type describe_target_group_attributes_output() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_rules_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_rules_exception() :: #{binary() => any()}.
-
-%% Example:
-%% target_description() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"QuicServerId">> => string()
-%% }
--type target_description() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trust_stores_output() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"TrustStores">> => list(trust_store())
-%% }
--type describe_trust_stores_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ssl_policies_input() :: #{
-%%   <<"LoadBalancerType">> => list(any()),
-%%   <<"Marker">> => string(),
-%%   <<"Names">> => list(string()),
-%%   <<"PageSize">> => integer()
-%% }
--type describe_ssl_policies_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_load_balancer_output() :: #{
-%%   <<"LoadBalancers">> => list(load_balancer())
-%% }
--type create_load_balancer_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_target_group_output() :: #{
-
-%% }
--type delete_target_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_load_balancers_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_load_balancers_exception() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_output() :: #{
-
-%% }
--type remove_tags_output() :: #{binary() => any()}.
-
-%% Example:
 %% allocation_id_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type allocation_id_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% insufficient_capacity_exception() :: #{
-%%   <<"Message">> => string()
+%% anomaly_detection() :: #{
+%%   <<"MitigationInEffect">> => list(any()),
+%%   <<"Result">> => list(any())
 %% }
--type insufficient_capacity_exception() :: #{binary() => any()}.
+-type anomaly_detection() :: #{binary() => any()}.
 
 %% Example:
-%% delete_rule_output() :: #{
-
+%% authenticate_cognito_action_config() :: #{
+%%   <<"AuthenticationRequestExtraParams">> => map(),
+%%   <<"OnUnauthenticatedRequest">> => list(any()),
+%%   <<"Scope">> => string(),
+%%   <<"SessionCookieName">> => string(),
+%%   <<"SessionTimeout">> => float(),
+%%   <<"UserPoolArn">> => string(),
+%%   <<"UserPoolClientId">> => string(),
+%%   <<"UserPoolDomain">> => string()
 %% }
--type delete_rule_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_trust_store_input() :: #{
-%%   <<"CaCertificatesBundleS3Bucket">> := string(),
-%%   <<"CaCertificatesBundleS3Key">> := string(),
-%%   <<"CaCertificatesBundleS3ObjectVersion">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_trust_store_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_association_same_account_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_association_same_account_exception() :: #{binary() => any()}.
-
-%% Example:
-%% query_string_condition_config() :: #{
-%%   <<"Values">> => list(query_string_key_value_pair())
-%% }
--type query_string_condition_config() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_listener_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_listener_exception() :: #{binary() => any()}.
-
-%% Example:
-%% query_string_key_value_pair() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type query_string_key_value_pair() :: #{binary() => any()}.
-
-%% Example:
-%% get_trust_store_revocation_content_output() :: #{
-%%   <<"Location">> => string()
-%% }
--type get_trust_store_revocation_content_output() :: #{binary() => any()}.
-
-%% Example:
-%% host_header_condition_config() :: #{
-%%   <<"RegexValues">> => list(string()),
-%%   <<"Values">> => list(string())
-%% }
--type host_header_condition_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ssl_policies_output() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"SslPolicies">> => list(ssl_policy())
-%% }
--type describe_ssl_policies_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trust_store_revocation() :: #{
-%%   <<"NumberOfRevokedEntries">> => float(),
-%%   <<"RevocationId">> => float(),
-%%   <<"RevocationType">> => list(any()),
-%%   <<"TrustStoreArn">> => string()
-%% }
--type describe_trust_store_revocation() :: #{binary() => any()}.
+-type authenticate_cognito_action_config() :: #{binary() => any()}.
 
 %% Example:
 %% authenticate_oidc_action_config() :: #{
@@ -636,39 +261,130 @@
 -type authenticate_oidc_action_config() :: #{binary() => any()}.
 
 %% Example:
-%% redirect_action_config() :: #{
-%%   <<"Host">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"Port">> => string(),
-%%   <<"Protocol">> => string(),
-%%   <<"Query">> => string(),
-%%   <<"StatusCode">> => list(any())
+%% availability_zone() :: #{
+%%   <<"LoadBalancerAddresses">> => list(load_balancer_address()),
+%%   <<"OutpostId">> => string(),
+%%   <<"SourceNatIpv6Prefixes">> => list(string()),
+%%   <<"SubnetId">> => string(),
+%%   <<"ZoneName">> => string()
 %% }
--type redirect_action_config() :: #{binary() => any()}.
+-type availability_zone() :: #{binary() => any()}.
 
 %% Example:
-%% url_rewrite_config() :: #{
-%%   <<"Rewrites">> => list(rewrite_config())
-%% }
--type url_rewrite_config() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
+%% availability_zone_not_supported_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type availability_zone_not_supported_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_tags_input() :: #{
-%%   <<"ResourceArns">> := list(string())
-%% }
--type describe_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% priority_in_use_exception() :: #{
+%% ca_certificates_bundle_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type priority_in_use_exception() :: #{binary() => any()}.
+-type ca_certificates_bundle_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_decrease_requests_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type capacity_decrease_requests_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_pending_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type capacity_reservation_pending_exception() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_status() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Reason">> => string()
+%% }
+-type capacity_reservation_status() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_units_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type capacity_units_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% certificate() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"IsDefault">> => boolean()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type certificate_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cipher() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer()
+%% }
+-type cipher() :: #{binary() => any()}.
+
+%% Example:
+%% create_listener_input() :: #{
+%%   <<"AlpnPolicy">> => list(string()),
+%%   <<"Certificates">> => list(certificate()),
+%%   <<"DefaultActions">> := list(action()),
+%%   <<"LoadBalancerArn">> := string(),
+%%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"SslPolicy">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_listener_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_listener_output() :: #{
+%%   <<"Listeners">> => list(listener())
+%% }
+-type create_listener_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_input() :: #{
+%%   <<"CustomerOwnedIpv4Pool">> => string(),
+%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpamPools">> => ipam_pools(),
+%%   <<"Name">> := string(),
+%%   <<"Scheme">> => list(any()),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
+%%   <<"Subnets">> => list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => list(any())
+%% }
+-type create_load_balancer_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_load_balancer_output() :: #{
+%%   <<"LoadBalancers">> => list(load_balancer())
+%% }
+-type create_load_balancer_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_input() :: #{
+%%   <<"Actions">> := list(action()),
+%%   <<"Conditions">> := list(rule_condition()),
+%%   <<"ListenerArn">> := string(),
+%%   <<"Priority">> := integer(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Transforms">> => list(rule_transform())
+%% }
+-type create_rule_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_rule_output() :: #{
+%%   <<"Rules">> => list(rule())
+%% }
+-type create_rule_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_target_group_input() :: #{
@@ -694,48 +410,44 @@
 -type create_target_group_input() :: #{binary() => any()}.
 
 %% Example:
-%% certificate_not_found_exception() :: #{
+%% create_target_group_output() :: #{
+%%   <<"TargetGroups">> => list(target_group())
+%% }
+-type create_target_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_trust_store_input() :: #{
+%%   <<"CaCertificatesBundleS3Bucket">> := string(),
+%%   <<"CaCertificatesBundleS3Key">> := string(),
+%%   <<"CaCertificatesBundleS3ObjectVersion">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_trust_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_trust_store_output() :: #{
+%%   <<"TrustStores">> => list(trust_store())
+%% }
+-type create_trust_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_association_same_account_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type certificate_not_found_exception() :: #{binary() => any()}.
+-type delete_association_same_account_exception() :: #{binary() => any()}.
 
 %% Example:
-%% deregister_targets_output() :: #{
-
+%% delete_listener_input() :: #{
+%%   <<"ListenerArn">> := string()
 %% }
--type deregister_targets_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
+-type delete_listener_input() :: #{binary() => any()}.
 
 %% Example:
-%% modify_listener_input() :: #{
-%%   <<"AlpnPolicy">> => list(string()),
-%%   <<"Certificates">> => list(certificate()),
-%%   <<"DefaultActions">> => list(action()),
-%%   <<"ListenerArn">> := string(),
-%%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
-%%   <<"Port">> => integer(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"SslPolicy">> => string()
-%% }
--type modify_listener_input() :: #{binary() => any()}.
+%% delete_listener_output() :: #{
 
-%% Example:
-%% prior_request_not_complete_exception() :: #{
-%%   <<"Message">> => string()
 %% }
--type prior_request_not_complete_exception() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_unique_target_groups_per_load_balancer_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_unique_target_groups_per_load_balancer_exception() :: #{binary() => any()}.
+-type delete_listener_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_load_balancer_input() :: #{
@@ -744,75 +456,22 @@
 -type delete_load_balancer_input() :: #{binary() => any()}.
 
 %% Example:
-%% set_rule_priorities_output() :: #{
-%%   <<"Rules">> => list(rule())
+%% delete_load_balancer_output() :: #{
+
 %% }
--type set_rule_priorities_output() :: #{binary() => any()}.
+-type delete_load_balancer_output() :: #{binary() => any()}.
 
 %% Example:
-%% tag_description() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => list(tag())
+%% delete_rule_input() :: #{
+%%   <<"RuleArn">> := string()
 %% }
--type tag_description() :: #{binary() => any()}.
+-type delete_rule_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_target_group_input() :: #{
-%%   <<"TargetGroupArn">> := string()
-%% }
--type delete_target_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% target_group_tuple() :: #{
-%%   <<"TargetGroupArn">> => string(),
-%%   <<"Weight">> => integer()
-%% }
--type target_group_tuple() :: #{binary() => any()}.
-
-%% Example:
-%% set_subnets_output() :: #{
-%%   <<"AvailabilityZones">> => list(availability_zone()),
-%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
-%%   <<"IpAddressType">> => list(any())
-%% }
--type set_subnets_output() :: #{binary() => any()}.
-
-%% Example:
-%% incompatible_protocols_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type incompatible_protocols_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_listener_output() :: #{
-%%   <<"Listeners">> => list(listener())
-%% }
--type create_listener_output() :: #{binary() => any()}.
-
-%% Example:
-%% revocation_id_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type revocation_id_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% set_ip_address_type_input() :: #{
-%%   <<"IpAddressType">> := list(any()),
-%%   <<"LoadBalancerArn">> := string()
-%% }
--type set_ip_address_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% register_targets_output() :: #{
+%% delete_rule_output() :: #{
 
 %% }
--type register_targets_output() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_target_groups_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_target_groups_exception() :: #{binary() => any()}.
+-type delete_rule_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_shared_trust_store_association_input() :: #{
@@ -822,153 +481,54 @@
 -type delete_shared_trust_store_association_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_listener_input() :: #{
-%%   <<"ListenerArn">> := string()
+%% delete_shared_trust_store_association_output() :: #{
+
 %% }
--type delete_listener_input() :: #{binary() => any()}.
+-type delete_shared_trust_store_association_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_listener_attributes_output() :: #{
-%%   <<"Attributes">> => list(listener_attribute())
+%% delete_target_group_input() :: #{
+%%   <<"TargetGroupArn">> := string()
 %% }
--type describe_listener_attributes_output() :: #{binary() => any()}.
+-type delete_target_group_input() :: #{binary() => any()}.
 
 %% Example:
-%% load_balancer_state() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Reason">> => string()
+%% delete_target_group_output() :: #{
+
 %% }
--type load_balancer_state() :: #{binary() => any()}.
+-type delete_target_group_output() :: #{binary() => any()}.
 
 %% Example:
-%% trust_store_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type trust_store_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% remove_listener_certificates_input() :: #{
-%%   <<"Certificates">> := list(certificate()),
-%%   <<"ListenerArn">> := string()
-%% }
--type remove_listener_certificates_input() :: #{binary() => any()}.
-
-%% Example:
-%% forward_action_config() :: #{
-%%   <<"TargetGroupStickinessConfig">> => target_group_stickiness_config(),
-%%   <<"TargetGroups">> => list(target_group_tuple())
-%% }
--type forward_action_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_trust_store_ca_certificates_bundle_input() :: #{
+%% delete_trust_store_input() :: #{
 %%   <<"TrustStoreArn">> := string()
 %% }
--type get_trust_store_ca_certificates_bundle_input() :: #{binary() => any()}.
+-type delete_trust_store_input() :: #{binary() => any()}.
 
 %% Example:
-%% load_balancer_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% delete_trust_store_output() :: #{
+
 %% }
--type load_balancer_not_found_exception() :: #{binary() => any()}.
+-type delete_trust_store_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_tags_output() :: #{
-%%   <<"TagDescriptions">> => list(tag_description())
+%% deregister_targets_input() :: #{
+%%   <<"TargetGroupArn">> := string(),
+%%   <<"Targets">> := list(target_description())
 %% }
--type describe_tags_output() :: #{binary() => any()}.
+-type deregister_targets_input() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_actions_exception() :: #{
-%%   <<"Message">> => string()
+%% deregister_targets_output() :: #{
+
 %% }
--type too_many_actions_exception() :: #{binary() => any()}.
+-type deregister_targets_output() :: #{binary() => any()}.
 
 %% Example:
-%% trust_store_association_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type trust_store_association_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trust_stores_input() :: #{
+%% describe_account_limits_input() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Names">> => list(string()),
-%%   <<"PageSize">> => integer(),
-%%   <<"TrustStoreArns">> => list(string())
+%%   <<"PageSize">> => integer()
 %% }
--type describe_trust_stores_input() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_targets_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_targets_exception() :: #{binary() => any()}.
-
-%% Example:
-%% operation_not_permitted_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type operation_not_permitted_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_listener_certificates_output() :: #{
-%%   <<"Certificates">> => list(certificate()),
-%%   <<"NextMarker">> => string()
-%% }
--type describe_listener_certificates_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trust_store_associations_input() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"TrustStoreArn">> := string()
-%% }
--type describe_trust_store_associations_input() :: #{binary() => any()}.
-
-%% Example:
-%% target_health_description() :: #{
-%%   <<"AdministrativeOverride">> => administrative_override(),
-%%   <<"AnomalyDetection">> => anomaly_detection(),
-%%   <<"HealthCheckPort">> => string(),
-%%   <<"Target">> => target_description(),
-%%   <<"TargetHealth">> => target_health()
-%% }
--type target_health_description() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_load_balancer_action_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_load_balancer_action_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rule() :: #{
-%%   <<"Actions">> => list(action()),
-%%   <<"Conditions">> => list(rule_condition()),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"Priority">> => string(),
-%%   <<"RuleArn">> => string(),
-%%   <<"Transforms">> => list(rule_transform())
-%% }
--type rule() :: #{binary() => any()}.
-
-%% Example:
-%% create_rule_input() :: #{
-%%   <<"Actions">> := list(action()),
-%%   <<"Conditions">> := list(rule_condition()),
-%%   <<"ListenerArn">> := string(),
-%%   <<"Priority">> := integer(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Transforms">> => list(rule_transform())
-%% }
--type create_rule_input() :: #{binary() => any()}.
-
-%% Example:
-%% set_rule_priorities_input() :: #{
-%%   <<"RulePriorities">> := list(rule_priority_pair())
-%% }
--type set_rule_priorities_input() :: #{binary() => any()}.
+-type describe_account_limits_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_account_limits_output() :: #{
@@ -978,22 +538,74 @@
 -type describe_account_limits_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_trust_store_output() :: #{
-
+%% describe_capacity_reservation_input() :: #{
+%%   <<"LoadBalancerArn">> := string()
 %% }
--type delete_trust_store_output() :: #{binary() => any()}.
-
-%% Example:
-%% revocation_content_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type revocation_content_not_found_exception() :: #{binary() => any()}.
+-type describe_capacity_reservation_input() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_listeners_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_capacity_reservation_output() :: #{
+%%   <<"CapacityReservationState">> => list(zonal_capacity_reservation_state()),
+%%   <<"DecreaseRequestsRemaining">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"MinimumLoadBalancerCapacity">> => minimum_load_balancer_capacity()
 %% }
--type too_many_listeners_exception() :: #{binary() => any()}.
+-type describe_capacity_reservation_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listener_attributes_input() :: #{
+%%   <<"ListenerArn">> := string()
+%% }
+-type describe_listener_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listener_attributes_output() :: #{
+%%   <<"Attributes">> => list(listener_attribute())
+%% }
+-type describe_listener_attributes_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listener_certificates_input() :: #{
+%%   <<"ListenerArn">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type describe_listener_certificates_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listener_certificates_output() :: #{
+%%   <<"Certificates">> => list(certificate()),
+%%   <<"NextMarker">> => string()
+%% }
+-type describe_listener_certificates_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listeners_input() :: #{
+%%   <<"ListenerArns">> => list(string()),
+%%   <<"LoadBalancerArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type describe_listeners_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_listeners_output() :: #{
+%%   <<"Listeners">> => list(listener()),
+%%   <<"NextMarker">> => string()
+%% }
+-type describe_listeners_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_attributes_input() :: #{
+%%   <<"LoadBalancerArn">> := string()
+%% }
+-type describe_load_balancer_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_load_balancer_attributes_output() :: #{
+%%   <<"Attributes">> => list(load_balancer_attribute())
+%% }
+-type describe_load_balancer_attributes_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_load_balancers_input() :: #{
@@ -1005,145 +617,77 @@
 -type describe_load_balancers_input() :: #{binary() => any()}.
 
 %% Example:
-%% rule_priority_pair() :: #{
-%%   <<"Priority">> => integer(),
-%%   <<"RuleArn">> => string()
-%% }
--type rule_priority_pair() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_target_group_name_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_target_group_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% modify_ip_pools_output() :: #{
-%%   <<"IpamPools">> => ipam_pools()
-%% }
--type modify_ip_pools_output() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_reservation_pending_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type capacity_reservation_pending_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_listeners_output() :: #{
-%%   <<"Listeners">> => list(listener()),
+%% describe_load_balancers_output() :: #{
+%%   <<"LoadBalancers">> => list(load_balancer()),
 %%   <<"NextMarker">> => string()
 %% }
--type describe_listeners_output() :: #{binary() => any()}.
+-type describe_load_balancers_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_load_balancer_attributes_output() :: #{
-%%   <<"Attributes">> => list(load_balancer_attribute())
+%% describe_rules_input() :: #{
+%%   <<"ListenerArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"RuleArns">> => list(string())
 %% }
--type describe_load_balancer_attributes_output() :: #{binary() => any()}.
+-type describe_rules_input() :: #{binary() => any()}.
 
 %% Example:
-%% certificate() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"IsDefault">> => boolean()
-%% }
--type certificate() :: #{binary() => any()}.
-
-%% Example:
-%% modify_load_balancer_attributes_output() :: #{
-%%   <<"Attributes">> => list(load_balancer_attribute())
-%% }
--type modify_load_balancer_attributes_output() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer_attribute() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type load_balancer_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% remove_trust_store_revocations_input() :: #{
-%%   <<"RevocationIds">> := list(float()),
-%%   <<"TrustStoreArn">> := string()
-%% }
--type remove_trust_store_revocations_input() :: #{binary() => any()}.
-
-%% Example:
-%% host_header_rewrite_config() :: #{
-%%   <<"Rewrites">> => list(rewrite_config())
-%% }
--type host_header_rewrite_config() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_certificates_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_certificates_exception() :: #{binary() => any()}.
-
-%% Example:
-%% ssl_policy_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type ssl_policy_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% remove_listener_certificates_output() :: #{
-
-%% }
--type remove_listener_certificates_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_security_group_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_security_group_exception() :: #{binary() => any()}.
-
-%% Example:
-%% action() :: #{
-%%   <<"AuthenticateCognitoConfig">> => authenticate_cognito_action_config(),
-%%   <<"AuthenticateOidcConfig">> => authenticate_oidc_action_config(),
-%%   <<"FixedResponseConfig">> => fixed_response_action_config(),
-%%   <<"ForwardConfig">> => forward_action_config(),
-%%   <<"JwtValidationConfig">> => jwt_validation_action_config(),
-%%   <<"Order">> => integer(),
-%%   <<"RedirectConfig">> => redirect_action_config(),
-%%   <<"TargetGroupArn">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type action() :: #{binary() => any()}.
-
-%% Example:
-%% modify_listener_attributes_output() :: #{
-%%   <<"Attributes">> => list(listener_attribute())
-%% }
--type modify_listener_attributes_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trust_store_associations_output() :: #{
+%% describe_rules_output() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"TrustStoreAssociations">> => list(trust_store_association())
+%%   <<"Rules">> => list(rule())
 %% }
--type describe_trust_store_associations_output() :: #{binary() => any()}.
+-type describe_rules_output() :: #{binary() => any()}.
 
 %% Example:
-%% authenticate_cognito_action_config() :: #{
-%%   <<"AuthenticationRequestExtraParams">> => map(),
-%%   <<"OnUnauthenticatedRequest">> => list(any()),
-%%   <<"Scope">> => string(),
-%%   <<"SessionCookieName">> => string(),
-%%   <<"SessionTimeout">> => float(),
-%%   <<"UserPoolArn">> => string(),
-%%   <<"UserPoolClientId">> => string(),
-%%   <<"UserPoolDomain">> => string()
+%% describe_ssl_policies_input() :: #{
+%%   <<"LoadBalancerType">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"Names">> => list(string()),
+%%   <<"PageSize">> => integer()
 %% }
--type authenticate_cognito_action_config() :: #{binary() => any()}.
+-type describe_ssl_policies_input() :: #{binary() => any()}.
 
 %% Example:
-%% delete_trust_store_input() :: #{
-%%   <<"TrustStoreArn">> := string()
+%% describe_ssl_policies_output() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"SslPolicies">> => list(ssl_policy())
 %% }
--type delete_trust_store_input() :: #{binary() => any()}.
+-type describe_ssl_policies_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_input() :: #{
+%%   <<"ResourceArns">> := list(string())
+%% }
+-type describe_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_output() :: #{
+%%   <<"TagDescriptions">> => list(tag_description())
+%% }
+-type describe_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_target_group_attributes_input() :: #{
+%%   <<"TargetGroupArn">> := string()
+%% }
+-type describe_target_group_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_target_group_attributes_output() :: #{
+%%   <<"Attributes">> => list(target_group_attribute())
+%% }
+-type describe_target_group_attributes_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_target_groups_input() :: #{
+%%   <<"LoadBalancerArn">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"Names">> => list(string()),
+%%   <<"PageSize">> => integer(),
+%%   <<"TargetGroupArns">> => list(string())
+%% }
+-type describe_target_groups_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_target_groups_output() :: #{
@@ -1153,43 +697,42 @@
 -type describe_target_groups_output() :: #{binary() => any()}.
 
 %% Example:
-%% remove_trust_store_revocations_output() :: #{
-
+%% describe_target_health_input() :: #{
+%%   <<"Include">> => list(list(any())()),
+%%   <<"TargetGroupArn">> := string(),
+%%   <<"Targets">> => list(target_description())
 %% }
--type remove_trust_store_revocations_output() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_units_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type capacity_units_limit_exceeded_exception() :: #{binary() => any()}.
+-type describe_target_health_input() :: #{binary() => any()}.
 
 %% Example:
-%% jwt_validation_action_additional_claim() :: #{
-%%   <<"Format">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
+%% describe_target_health_output() :: #{
+%%   <<"TargetHealthDescriptions">> => list(target_health_description())
 %% }
--type jwt_validation_action_additional_claim() :: #{binary() => any()}.
+-type describe_target_health_output() :: #{binary() => any()}.
 
 %% Example:
-%% target_group_stickiness_config() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"Enabled">> => boolean()
+%% describe_trust_store_associations_input() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"TrustStoreArn">> := string()
 %% }
--type target_group_stickiness_config() :: #{binary() => any()}.
+-type describe_trust_store_associations_input() :: #{binary() => any()}.
 
 %% Example:
-%% http_request_method_condition_config() :: #{
-%%   <<"Values">> => list(string())
+%% describe_trust_store_associations_output() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"TrustStoreAssociations">> => list(trust_store_association())
 %% }
--type http_request_method_condition_config() :: #{binary() => any()}.
+-type describe_trust_store_associations_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_resource_policy_input() :: #{
-%%   <<"ResourceArn">> := string()
+%% describe_trust_store_revocation() :: #{
+%%   <<"NumberOfRevokedEntries">> => float(),
+%%   <<"RevocationId">> => float(),
+%%   <<"RevocationType">> => list(any()),
+%%   <<"TrustStoreArn">> => string()
 %% }
--type get_resource_policy_input() :: #{binary() => any()}.
+-type describe_trust_store_revocation() :: #{binary() => any()}.
 
 %% Example:
 %% describe_trust_store_revocations_input() :: #{
@@ -1201,24 +744,329 @@
 -type describe_trust_store_revocations_input() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_trust_store_revocation_entries_exception() :: #{
-%%   <<"Message">> => string()
+%% describe_trust_store_revocations_output() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"TrustStoreRevocations">> => list(describe_trust_store_revocation())
 %% }
--type too_many_trust_store_revocation_entries_exception() :: #{binary() => any()}.
+-type describe_trust_store_revocations_output() :: #{binary() => any()}.
 
 %% Example:
-%% rule_condition() :: #{
-%%   <<"Field">> => string(),
-%%   <<"HostHeaderConfig">> => host_header_condition_config(),
-%%   <<"HttpHeaderConfig">> => http_header_condition_config(),
-%%   <<"HttpRequestMethodConfig">> => http_request_method_condition_config(),
-%%   <<"PathPatternConfig">> => path_pattern_condition_config(),
-%%   <<"QueryStringConfig">> => query_string_condition_config(),
+%% describe_trust_stores_input() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Names">> => list(string()),
+%%   <<"PageSize">> => integer(),
+%%   <<"TrustStoreArns">> => list(string())
+%% }
+-type describe_trust_stores_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_trust_stores_output() :: #{
+%%   <<"NextMarker">> => string(),
+%%   <<"TrustStores">> => list(trust_store())
+%% }
+-type describe_trust_stores_output() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_listener_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_listener_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_load_balancer_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_load_balancer_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_tag_keys_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_tag_keys_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_target_group_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_target_group_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_trust_store_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_trust_store_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% fixed_response_action_config() :: #{
+%%   <<"ContentType">> => string(),
+%%   <<"MessageBody">> => string(),
+%%   <<"StatusCode">> => string()
+%% }
+-type fixed_response_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% forward_action_config() :: #{
+%%   <<"TargetGroupStickinessConfig">> => target_group_stickiness_config(),
+%%   <<"TargetGroups">> => list(target_group_tuple())
+%% }
+-type forward_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_output() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_trust_store_ca_certificates_bundle_input() :: #{
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type get_trust_store_ca_certificates_bundle_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_trust_store_ca_certificates_bundle_output() :: #{
+%%   <<"Location">> => string()
+%% }
+-type get_trust_store_ca_certificates_bundle_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_trust_store_revocation_content_input() :: #{
+%%   <<"RevocationId">> := float(),
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type get_trust_store_revocation_content_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_trust_store_revocation_content_output() :: #{
+%%   <<"Location">> => string()
+%% }
+-type get_trust_store_revocation_content_output() :: #{binary() => any()}.
+
+%% Example:
+%% health_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type health_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% host_header_condition_config() :: #{
 %%   <<"RegexValues">> => list(string()),
-%%   <<"SourceIpConfig">> => source_ip_condition_config(),
 %%   <<"Values">> => list(string())
 %% }
--type rule_condition() :: #{binary() => any()}.
+-type host_header_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% host_header_rewrite_config() :: #{
+%%   <<"Rewrites">> => list(rewrite_config())
+%% }
+-type host_header_rewrite_config() :: #{binary() => any()}.
+
+%% Example:
+%% http_header_condition_config() :: #{
+%%   <<"HttpHeaderName">> => string(),
+%%   <<"RegexValues">> => list(string()),
+%%   <<"Values">> => list(string())
+%% }
+-type http_header_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% http_request_method_condition_config() :: #{
+%%   <<"Values">> => list(string())
+%% }
+-type http_request_method_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% incompatible_protocols_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type incompatible_protocols_exception() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_capacity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type insufficient_capacity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_ca_certificates_bundle_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_ca_certificates_bundle_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_configuration_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_configuration_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_load_balancer_action_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_load_balancer_action_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_revocation_content_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_revocation_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_scheme_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_scheme_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_security_group_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_security_group_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subnet_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_subnet_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_target_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_pools() :: #{
+%%   <<"Ipv4IpamPoolId">> => string()
+%% }
+-type ipam_pools() :: #{binary() => any()}.
+
+%% Example:
+%% jwt_validation_action_additional_claim() :: #{
+%%   <<"Format">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type jwt_validation_action_additional_claim() :: #{binary() => any()}.
+
+%% Example:
+%% jwt_validation_action_config() :: #{
+%%   <<"AdditionalClaims">> => list(jwt_validation_action_additional_claim()),
+%%   <<"Issuer">> => string(),
+%%   <<"JwksEndpoint">> => string()
+%% }
+-type jwt_validation_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% limit() :: #{
+%%   <<"Max">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type limit() :: #{binary() => any()}.
+
+%% Example:
+%% listener() :: #{
+%%   <<"AlpnPolicy">> => list(string()),
+%%   <<"Certificates">> => list(certificate()),
+%%   <<"DefaultActions">> => list(action()),
+%%   <<"ListenerArn">> => string(),
+%%   <<"LoadBalancerArn">> => string(),
+%%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"SslPolicy">> => string()
+%% }
+-type listener() :: #{binary() => any()}.
+
+%% Example:
+%% listener_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type listener_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% listener_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type listener_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer() :: #{
+%%   <<"AvailabilityZones">> => list(availability_zone()),
+%%   <<"CanonicalHostedZoneId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"CustomerOwnedIpv4Pool">> => string(),
+%%   <<"DNSName">> => string(),
+%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
+%%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"IpamPools">> => ipam_pools(),
+%%   <<"LoadBalancerArn">> => string(),
+%%   <<"LoadBalancerName">> => string(),
+%%   <<"Scheme">> => list(any()),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"State">> => load_balancer_state(),
+%%   <<"Type">> => list(any()),
+%%   <<"VpcId">> => string()
+%% }
+-type load_balancer() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_address() :: #{
+%%   <<"AllocationId">> => string(),
+%%   <<"IPv6Address">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"PrivateIPv4Address">> => string()
+%% }
+-type load_balancer_address() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_attribute() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type load_balancer_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type load_balancer_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_state() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Reason">> => string()
+%% }
+-type load_balancer_state() :: #{binary() => any()}.
+
+%% Example:
+%% matcher() :: #{
+%%   <<"GrpcCode">> => string(),
+%%   <<"HttpCode">> => string()
+%% }
+-type matcher() :: #{binary() => any()}.
+
+%% Example:
+%% minimum_load_balancer_capacity() :: #{
+%%   <<"CapacityUnits">> => integer()
+%% }
+-type minimum_load_balancer_capacity() :: #{binary() => any()}.
+
+%% Example:
+%% modify_capacity_reservation_input() :: #{
+%%   <<"LoadBalancerArn">> := string(),
+%%   <<"MinimumLoadBalancerCapacity">> => minimum_load_balancer_capacity(),
+%%   <<"ResetCapacityReservation">> => boolean()
+%% }
+-type modify_capacity_reservation_input() :: #{binary() => any()}.
 
 %% Example:
 %% modify_capacity_reservation_output() :: #{
@@ -1238,16 +1086,42 @@
 -type modify_ip_pools_input() :: #{binary() => any()}.
 
 %% Example:
-%% capacity_decrease_requests_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%% modify_ip_pools_output() :: #{
+%%   <<"IpamPools">> => ipam_pools()
 %% }
--type capacity_decrease_requests_limit_exceeded_exception() :: #{binary() => any()}.
+-type modify_ip_pools_output() :: #{binary() => any()}.
 
 %% Example:
-%% target_group_association_limit_exception() :: #{
-%%   <<"Message">> => string()
+%% modify_listener_attributes_input() :: #{
+%%   <<"Attributes">> := list(listener_attribute()),
+%%   <<"ListenerArn">> := string()
 %% }
--type target_group_association_limit_exception() :: #{binary() => any()}.
+-type modify_listener_attributes_input() :: #{binary() => any()}.
+
+%% Example:
+%% modify_listener_attributes_output() :: #{
+%%   <<"Attributes">> => list(listener_attribute())
+%% }
+-type modify_listener_attributes_output() :: #{binary() => any()}.
+
+%% Example:
+%% modify_listener_input() :: #{
+%%   <<"AlpnPolicy">> => list(string()),
+%%   <<"Certificates">> => list(certificate()),
+%%   <<"DefaultActions">> => list(action()),
+%%   <<"ListenerArn">> := string(),
+%%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
+%%   <<"Port">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"SslPolicy">> => string()
+%% }
+-type modify_listener_input() :: #{binary() => any()}.
+
+%% Example:
+%% modify_listener_output() :: #{
+%%   <<"Listeners">> => list(listener())
+%% }
+-type modify_listener_output() :: #{binary() => any()}.
 
 %% Example:
 %% modify_load_balancer_attributes_input() :: #{
@@ -1257,38 +1131,391 @@
 -type modify_load_balancer_attributes_input() :: #{binary() => any()}.
 
 %% Example:
-%% create_load_balancer_input() :: #{
-%%   <<"CustomerOwnedIpv4Pool">> => string(),
-%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"IpamPools">> => ipam_pools(),
-%%   <<"Name">> := string(),
-%%   <<"Scheme">> => list(any()),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"SubnetMappings">> => list(subnet_mapping()),
-%%   <<"Subnets">> => list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> => list(any())
+%% modify_load_balancer_attributes_output() :: #{
+%%   <<"Attributes">> => list(load_balancer_attribute())
 %% }
--type create_load_balancer_input() :: #{binary() => any()}.
+-type modify_load_balancer_attributes_output() :: #{binary() => any()}.
 
 %% Example:
-%% too_many_trust_stores_exception() :: #{
-%%   <<"Message">> => string()
+%% modify_rule_input() :: #{
+%%   <<"Actions">> => list(action()),
+%%   <<"Conditions">> => list(rule_condition()),
+%%   <<"ResetTransforms">> => boolean(),
+%%   <<"RuleArn">> := string(),
+%%   <<"Transforms">> => list(rule_transform())
 %% }
--type too_many_trust_stores_exception() :: #{binary() => any()}.
+-type modify_rule_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_target_group_attributes_input() :: #{
+%% modify_rule_output() :: #{
+%%   <<"Rules">> => list(rule())
+%% }
+-type modify_rule_output() :: #{binary() => any()}.
+
+%% Example:
+%% modify_target_group_attributes_input() :: #{
+%%   <<"Attributes">> := list(target_group_attribute()),
 %%   <<"TargetGroupArn">> := string()
 %% }
--type describe_target_group_attributes_input() :: #{binary() => any()}.
+-type modify_target_group_attributes_input() :: #{binary() => any()}.
 
 %% Example:
-%% duplicate_tag_keys_exception() :: #{
+%% modify_target_group_attributes_output() :: #{
+%%   <<"Attributes">> => list(target_group_attribute())
+%% }
+-type modify_target_group_attributes_output() :: #{binary() => any()}.
+
+%% Example:
+%% modify_target_group_input() :: #{
+%%   <<"HealthCheckEnabled">> => boolean(),
+%%   <<"HealthCheckIntervalSeconds">> => integer(),
+%%   <<"HealthCheckPath">> => string(),
+%%   <<"HealthCheckPort">> => string(),
+%%   <<"HealthCheckProtocol">> => list(any()),
+%%   <<"HealthCheckTimeoutSeconds">> => integer(),
+%%   <<"HealthyThresholdCount">> => integer(),
+%%   <<"Matcher">> => matcher(),
+%%   <<"TargetGroupArn">> := string(),
+%%   <<"UnhealthyThresholdCount">> => integer()
+%% }
+-type modify_target_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% modify_target_group_output() :: #{
+%%   <<"TargetGroups">> => list(target_group())
+%% }
+-type modify_target_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% modify_trust_store_input() :: #{
+%%   <<"CaCertificatesBundleS3Bucket">> := string(),
+%%   <<"CaCertificatesBundleS3Key">> := string(),
+%%   <<"CaCertificatesBundleS3ObjectVersion">> => string(),
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type modify_trust_store_input() :: #{binary() => any()}.
+
+%% Example:
+%% modify_trust_store_output() :: #{
+%%   <<"TrustStores">> => list(trust_store())
+%% }
+-type modify_trust_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% mutual_authentication_attributes() :: #{
+%%   <<"AdvertiseTrustStoreCaNames">> => list(any()),
+%%   <<"IgnoreClientCertificateExpiry">> => boolean(),
+%%   <<"Mode">> => string(),
+%%   <<"TrustStoreArn">> => string(),
+%%   <<"TrustStoreAssociationStatus">> => list(any())
+%% }
+-type mutual_authentication_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_permitted_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type duplicate_tag_keys_exception() :: #{binary() => any()}.
+-type operation_not_permitted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% path_pattern_condition_config() :: #{
+%%   <<"RegexValues">> => list(string()),
+%%   <<"Values">> => list(string())
+%% }
+-type path_pattern_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% prior_request_not_complete_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type prior_request_not_complete_exception() :: #{binary() => any()}.
+
+%% Example:
+%% priority_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type priority_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% query_string_condition_config() :: #{
+%%   <<"Values">> => list(query_string_key_value_pair())
+%% }
+-type query_string_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% query_string_key_value_pair() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type query_string_key_value_pair() :: #{binary() => any()}.
+
+%% Example:
+%% redirect_action_config() :: #{
+%%   <<"Host">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Port">> => string(),
+%%   <<"Protocol">> => string(),
+%%   <<"Query">> => string(),
+%%   <<"StatusCode">> => list(any())
+%% }
+-type redirect_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% register_targets_input() :: #{
+%%   <<"TargetGroupArn">> := string(),
+%%   <<"Targets">> := list(target_description())
+%% }
+-type register_targets_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_targets_output() :: #{
+
+%% }
+-type register_targets_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_listener_certificates_input() :: #{
+%%   <<"Certificates">> := list(certificate()),
+%%   <<"ListenerArn">> := string()
+%% }
+-type remove_listener_certificates_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_listener_certificates_output() :: #{
+
+%% }
+-type remove_listener_certificates_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_input() :: #{
+%%   <<"ResourceArns">> := list(string()),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type remove_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_output() :: #{
+
+%% }
+-type remove_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% remove_trust_store_revocations_input() :: #{
+%%   <<"RevocationIds">> := list(float()),
+%%   <<"TrustStoreArn">> := string()
+%% }
+-type remove_trust_store_revocations_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_trust_store_revocations_output() :: #{
+
+%% }
+-type remove_trust_store_revocations_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% revocation_content() :: #{
+%%   <<"RevocationType">> => list(any()),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string(),
+%%   <<"S3ObjectVersion">> => string()
+%% }
+-type revocation_content() :: #{binary() => any()}.
+
+%% Example:
+%% revocation_content_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type revocation_content_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% revocation_id_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type revocation_id_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rewrite_config() :: #{
+%%   <<"Regex">> => string(),
+%%   <<"Replace">> => string()
+%% }
+-type rewrite_config() :: #{binary() => any()}.
+
+%% Example:
+%% rule() :: #{
+%%   <<"Actions">> => list(action()),
+%%   <<"Conditions">> => list(rule_condition()),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Priority">> => string(),
+%%   <<"RuleArn">> => string(),
+%%   <<"Transforms">> => list(rule_transform())
+%% }
+-type rule() :: #{binary() => any()}.
+
+%% Example:
+%% rule_condition() :: #{
+%%   <<"Field">> => string(),
+%%   <<"HostHeaderConfig">> => host_header_condition_config(),
+%%   <<"HttpHeaderConfig">> => http_header_condition_config(),
+%%   <<"HttpRequestMethodConfig">> => http_request_method_condition_config(),
+%%   <<"PathPatternConfig">> => path_pattern_condition_config(),
+%%   <<"QueryStringConfig">> => query_string_condition_config(),
+%%   <<"RegexValues">> => list(string()),
+%%   <<"SourceIpConfig">> => source_ip_condition_config(),
+%%   <<"Values">> => list(string())
+%% }
+-type rule_condition() :: #{binary() => any()}.
+
+%% Example:
+%% rule_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type rule_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rule_priority_pair() :: #{
+%%   <<"Priority">> => integer(),
+%%   <<"RuleArn">> => string()
+%% }
+-type rule_priority_pair() :: #{binary() => any()}.
+
+%% Example:
+%% rule_transform() :: #{
+%%   <<"HostHeaderRewriteConfig">> => host_header_rewrite_config(),
+%%   <<"Type">> => list(any()),
+%%   <<"UrlRewriteConfig">> => url_rewrite_config()
+%% }
+-type rule_transform() :: #{binary() => any()}.
+
+%% Example:
+%% set_ip_address_type_input() :: #{
+%%   <<"IpAddressType">> := list(any()),
+%%   <<"LoadBalancerArn">> := string()
+%% }
+-type set_ip_address_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_ip_address_type_output() :: #{
+%%   <<"IpAddressType">> => list(any())
+%% }
+-type set_ip_address_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_rule_priorities_input() :: #{
+%%   <<"RulePriorities">> := list(rule_priority_pair())
+%% }
+-type set_rule_priorities_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_rule_priorities_output() :: #{
+%%   <<"Rules">> => list(rule())
+%% }
+-type set_rule_priorities_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_security_groups_input() :: #{
+%%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => list(any()),
+%%   <<"LoadBalancerArn">> := string(),
+%%   <<"SecurityGroups">> := list(string())
+%% }
+-type set_security_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_security_groups_output() :: #{
+%%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => list(any()),
+%%   <<"SecurityGroupIds">> => list(string())
+%% }
+-type set_security_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_subnets_input() :: #{
+%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"LoadBalancerArn">> := string(),
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
+%%   <<"Subnets">> => list(string())
+%% }
+-type set_subnets_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_subnets_output() :: #{
+%%   <<"AvailabilityZones">> => list(availability_zone()),
+%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
+%%   <<"IpAddressType">> => list(any())
+%% }
+-type set_subnets_output() :: #{binary() => any()}.
+
+%% Example:
+%% source_ip_condition_config() :: #{
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type source_ip_condition_config() :: #{binary() => any()}.
+
+%% Example:
+%% ssl_policy() :: #{
+%%   <<"Ciphers">> => list(cipher()),
+%%   <<"Name">> => string(),
+%%   <<"SslProtocols">> => list(string()),
+%%   <<"SupportedLoadBalancerTypes">> => list(string())
+%% }
+-type ssl_policy() :: #{binary() => any()}.
+
+%% Example:
+%% ssl_policy_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ssl_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_mapping() :: #{
+%%   <<"AllocationId">> => string(),
+%%   <<"IPv6Address">> => string(),
+%%   <<"PrivateIPv4Address">> => string(),
+%%   <<"SourceNatIpv6Prefix">> => string(),
+%%   <<"SubnetId">> => string()
+%% }
+-type subnet_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type subnet_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_description() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type tag_description() :: #{binary() => any()}.
+
+%% Example:
+%% target_description() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"QuicServerId">> => string()
+%% }
+-type target_description() :: #{binary() => any()}.
 
 %% Example:
 %% target_group() :: #{
@@ -1315,204 +1542,10 @@
 -type target_group() :: #{binary() => any()}.
 
 %% Example:
-%% load_balancer() :: #{
-%%   <<"AvailabilityZones">> => list(availability_zone()),
-%%   <<"CanonicalHostedZoneId">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"CustomerOwnedIpv4Pool">> => string(),
-%%   <<"DNSName">> => string(),
-%%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
-%%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => string(),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"IpamPools">> => ipam_pools(),
-%%   <<"LoadBalancerArn">> => string(),
-%%   <<"LoadBalancerName">> => string(),
-%%   <<"Scheme">> => list(any()),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"State">> => load_balancer_state(),
-%%   <<"Type">> => list(any()),
-%%   <<"VpcId">> => string()
-%% }
--type load_balancer() :: #{binary() => any()}.
-
-%% Example:
-%% describe_target_health_input() :: #{
-%%   <<"Include">> => list(list(any())()),
-%%   <<"TargetGroupArn">> := string(),
-%%   <<"Targets">> => list(target_description())
-%% }
--type describe_target_health_input() :: #{binary() => any()}.
-
-%% Example:
-%% matcher() :: #{
-%%   <<"GrpcCode">> => string(),
-%%   <<"HttpCode">> => string()
-%% }
--type matcher() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_trust_store_name_exception() :: #{
+%% target_group_association_limit_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type duplicate_trust_store_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_trust_store_revocations_output() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"TrustStoreRevocations">> => list(describe_trust_store_revocation())
-%% }
--type describe_trust_store_revocations_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_listeners_input() :: #{
-%%   <<"ListenerArns">> => list(string()),
-%%   <<"LoadBalancerArn">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type describe_listeners_input() :: #{binary() => any()}.
-
-%% Example:
-%% jwt_validation_action_config() :: #{
-%%   <<"AdditionalClaims">> => list(jwt_validation_action_additional_claim()),
-%%   <<"Issuer">> => string(),
-%%   <<"JwksEndpoint">> => string()
-%% }
--type jwt_validation_action_config() :: #{binary() => any()}.
-
-%% Example:
-%% register_targets_input() :: #{
-%%   <<"TargetGroupArn">> := string(),
-%%   <<"Targets">> := list(target_description())
-%% }
--type register_targets_input() :: #{binary() => any()}.
-
-%% Example:
-%% set_ip_address_type_output() :: #{
-%%   <<"IpAddressType">> => list(any())
-%% }
--type set_ip_address_type_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_load_balancer_attributes_input() :: #{
-%%   <<"LoadBalancerArn">> := string()
-%% }
--type describe_load_balancer_attributes_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_revocation_content_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_revocation_content_exception() :: #{binary() => any()}.
-
-%% Example:
-%% a_l_p_n_policy_not_supported_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type a_l_p_n_policy_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% target_group_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type target_group_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_listener_certificates_input() :: #{
-%%   <<"ListenerArn">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type describe_listener_certificates_input() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_registrations_for_target_id_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_registrations_for_target_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_trust_store_revocation_content_input() :: #{
-%%   <<"RevocationId">> := float(),
-%%   <<"TrustStoreArn">> := string()
-%% }
--type get_trust_store_revocation_content_input() :: #{binary() => any()}.
-
-%% Example:
-%% trust_store_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type trust_store_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rules_output() :: #{
-%%   <<"NextMarker">> => string(),
-%%   <<"Rules">> => list(rule())
-%% }
--type describe_rules_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_limits_input() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type describe_account_limits_input() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer_address() :: #{
-%%   <<"AllocationId">> => string(),
-%%   <<"IPv6Address">> => string(),
-%%   <<"IpAddress">> => string(),
-%%   <<"PrivateIPv4Address">> => string()
-%% }
--type load_balancer_address() :: #{binary() => any()}.
-
-%% Example:
-%% modify_rule_input() :: #{
-%%   <<"Actions">> => list(action()),
-%%   <<"Conditions">> => list(rule_condition()),
-%%   <<"ResetTransforms">> => boolean(),
-%%   <<"RuleArn">> := string(),
-%%   <<"Transforms">> => list(rule_transform())
-%% }
--type modify_rule_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_input() :: #{
-%%   <<"RuleArn">> := string()
-%% }
--type delete_rule_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_capacity_reservation_input() :: #{
-%%   <<"LoadBalancerArn">> := string()
-%% }
--type describe_capacity_reservation_input() :: #{binary() => any()}.
-
-%% Example:
-%% ipam_pools() :: #{
-%%   <<"Ipv4IpamPoolId">> => string()
-%% }
--type ipam_pools() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_ca_certificates_bundle_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_ca_certificates_bundle_exception() :: #{binary() => any()}.
-
-%% Example:
-%% health_unavailable_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type health_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_load_balancers_output() :: #{
-%%   <<"LoadBalancers">> => list(load_balancer()),
-%%   <<"NextMarker">> => string()
-%% }
--type describe_load_balancers_output() :: #{binary() => any()}.
+-type target_group_association_limit_exception() :: #{binary() => any()}.
 
 %% Example:
 %% target_group_attribute() :: #{
@@ -1522,153 +1555,78 @@
 -type target_group_attribute() :: #{binary() => any()}.
 
 %% Example:
-%% modify_capacity_reservation_input() :: #{
-%%   <<"LoadBalancerArn">> := string(),
-%%   <<"MinimumLoadBalancerCapacity">> => minimum_load_balancer_capacity(),
-%%   <<"ResetCapacityReservation">> => boolean()
-%% }
--type modify_capacity_reservation_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_subnet_exception() :: #{
+%% target_group_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_subnet_exception() :: #{binary() => any()}.
+-type target_group_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% trust_store_not_ready_exception() :: #{
+%% target_group_stickiness_config() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type target_group_stickiness_config() :: #{binary() => any()}.
+
+%% Example:
+%% target_group_tuple() :: #{
+%%   <<"TargetGroupArn">> => string(),
+%%   <<"Weight">> => integer()
+%% }
+-type target_group_tuple() :: #{binary() => any()}.
+
+%% Example:
+%% target_health() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Reason">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type target_health() :: #{binary() => any()}.
+
+%% Example:
+%% target_health_description() :: #{
+%%   <<"AdministrativeOverride">> => administrative_override(),
+%%   <<"AnomalyDetection">> => anomaly_detection(),
+%%   <<"HealthCheckPort">> => string(),
+%%   <<"Target">> => target_description(),
+%%   <<"TargetHealth">> => target_health()
+%% }
+-type target_health_description() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_actions_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type trust_store_not_ready_exception() :: #{binary() => any()}.
+-type too_many_actions_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_target_groups_input() :: #{
-%%   <<"LoadBalancerArn">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"Names">> => list(string()),
-%%   <<"PageSize">> => integer(),
-%%   <<"TargetGroupArns">> => list(string())
-%% }
--type describe_target_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_load_balancer_name_exception() :: #{
+%% too_many_certificates_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type duplicate_load_balancer_name_exception() :: #{binary() => any()}.
+-type too_many_certificates_exception() :: #{binary() => any()}.
 
 %% Example:
-%% remove_tags_input() :: #{
-%%   <<"ResourceArns">> := list(string()),
-%%   <<"TagKeys">> := list(string())
-%% }
--type remove_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% http_header_condition_config() :: #{
-%%   <<"HttpHeaderName">> => string(),
-%%   <<"RegexValues">> => list(string()),
-%%   <<"Values">> => list(string())
-%% }
--type http_header_condition_config() :: #{binary() => any()}.
-
-%% Example:
-%% listener_not_found_exception() :: #{
+%% too_many_listeners_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type listener_not_found_exception() :: #{binary() => any()}.
+-type too_many_listeners_exception() :: #{binary() => any()}.
 
 %% Example:
-%% path_pattern_condition_config() :: #{
-%%   <<"RegexValues">> => list(string()),
-%%   <<"Values">> => list(string())
-%% }
--type path_pattern_condition_config() :: #{binary() => any()}.
-
-%% Example:
-%% ca_certificates_bundle_not_found_exception() :: #{
+%% too_many_load_balancers_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type ca_certificates_bundle_not_found_exception() :: #{binary() => any()}.
+-type too_many_load_balancers_exception() :: #{binary() => any()}.
 
 %% Example:
-%% zonal_capacity_reservation_state() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"EffectiveCapacityUnits">> => float(),
-%%   <<"State">> => capacity_reservation_status()
-%% }
--type zonal_capacity_reservation_state() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_scheme_exception() :: #{
+%% too_many_registrations_for_target_id_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_scheme_exception() :: #{binary() => any()}.
+-type too_many_registrations_for_target_id_exception() :: #{binary() => any()}.
 
 %% Example:
-%% capacity_reservation_status() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Reason">> => string()
-%% }
--type capacity_reservation_status() :: #{binary() => any()}.
-
-%% Example:
-%% anomaly_detection() :: #{
-%%   <<"MitigationInEffect">> => list(any()),
-%%   <<"Result">> => list(any())
-%% }
--type anomaly_detection() :: #{binary() => any()}.
-
-%% Example:
-%% describe_target_health_output() :: #{
-%%   <<"TargetHealthDescriptions">> => list(target_health_description())
-%% }
--type describe_target_health_output() :: #{binary() => any()}.
-
-%% Example:
-%% source_ip_condition_config() :: #{
-%%   <<"Values">> => list(string())
-%% }
--type source_ip_condition_config() :: #{binary() => any()}.
-
-%% Example:
-%% cipher() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Priority">> => integer()
-%% }
--type cipher() :: #{binary() => any()}.
-
-%% Example:
-%% rule_not_found_exception() :: #{
+%% too_many_rules_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type rule_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_trust_store_output() :: #{
-%%   <<"TrustStores">> => list(trust_store())
-%% }
--type create_trust_store_output() :: #{binary() => any()}.
-
-%% Example:
-%% set_security_groups_output() :: #{
-%%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => list(any()),
-%%   <<"SecurityGroupIds">> => list(string())
-%% }
--type set_security_groups_output() :: #{binary() => any()}.
-
-%% Example:
-%% modify_trust_store_output() :: #{
-%%   <<"TrustStores">> => list(trust_store())
-%% }
--type modify_trust_store_output() :: #{binary() => any()}.
-
-%% Example:
-%% listener_attribute() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type listener_attribute() :: #{binary() => any()}.
+-type too_many_rules_exception() :: #{binary() => any()}.
 
 %% Example:
 %% too_many_tags_exception() :: #{
@@ -1677,44 +1635,34 @@
 -type too_many_tags_exception() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_protocol_exception() :: #{
+%% too_many_target_groups_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type unsupported_protocol_exception() :: #{binary() => any()}.
+-type too_many_target_groups_exception() :: #{binary() => any()}.
 
 %% Example:
-%% modify_listener_attributes_input() :: #{
-%%   <<"Attributes">> := list(listener_attribute()),
-%%   <<"ListenerArn">> := string()
+%% too_many_targets_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type modify_listener_attributes_input() :: #{binary() => any()}.
+-type too_many_targets_exception() :: #{binary() => any()}.
 
 %% Example:
-%% modify_target_group_input() :: #{
-%%   <<"HealthCheckEnabled">> => boolean(),
-%%   <<"HealthCheckIntervalSeconds">> => integer(),
-%%   <<"HealthCheckPath">> => string(),
-%%   <<"HealthCheckPort">> => string(),
-%%   <<"HealthCheckProtocol">> => list(any()),
-%%   <<"HealthCheckTimeoutSeconds">> => integer(),
-%%   <<"HealthyThresholdCount">> => integer(),
-%%   <<"Matcher">> => matcher(),
-%%   <<"TargetGroupArn">> := string(),
-%%   <<"UnhealthyThresholdCount">> => integer()
+%% too_many_trust_store_revocation_entries_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type modify_target_group_input() :: #{binary() => any()}.
+-type too_many_trust_store_revocation_entries_exception() :: #{binary() => any()}.
 
 %% Example:
-%% modify_rule_output() :: #{
-%%   <<"Rules">> => list(rule())
+%% too_many_trust_stores_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type modify_rule_output() :: #{binary() => any()}.
+-type too_many_trust_stores_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_shared_trust_store_association_output() :: #{
-
+%% too_many_unique_target_groups_per_load_balancer_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type delete_shared_trust_store_association_output() :: #{binary() => any()}.
+-type too_many_unique_target_groups_per_load_balancer_exception() :: #{binary() => any()}.
 
 %% Example:
 %% trust_store() :: #{
@@ -1727,123 +1675,176 @@
 -type trust_store() :: #{binary() => any()}.
 
 %% Example:
-%% modify_target_group_attributes_output() :: #{
-%%   <<"Attributes">> => list(target_group_attribute())
+%% trust_store_association() :: #{
+%%   <<"ResourceArn">> => string()
 %% }
--type modify_target_group_attributes_output() :: #{binary() => any()}.
+-type trust_store_association() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store_association_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trust_store_association_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trust_store_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trust_store_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store_not_ready_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type trust_store_not_ready_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trust_store_revocation() :: #{
+%%   <<"NumberOfRevokedEntries">> => float(),
+%%   <<"RevocationId">> => float(),
+%%   <<"RevocationType">> => list(any()),
+%%   <<"TrustStoreArn">> => string()
+%% }
+-type trust_store_revocation() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_protocol_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_protocol_exception() :: #{binary() => any()}.
+
+%% Example:
+%% url_rewrite_config() :: #{
+%%   <<"Rewrites">> => list(rewrite_config())
+%% }
+-type url_rewrite_config() :: #{binary() => any()}.
+
+%% Example:
+%% zonal_capacity_reservation_state() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"EffectiveCapacityUnits">> => float(),
+%%   <<"State">> => capacity_reservation_status()
+%% }
+-type zonal_capacity_reservation_state() :: #{binary() => any()}.
 
 -type add_listener_certificates_errors() ::
-    listener_not_found_exception() | 
     too_many_certificates_exception() | 
+    listener_not_found_exception() | 
     certificate_not_found_exception().
 
 -type add_tags_errors() ::
+    trust_store_not_found_exception() | 
     too_many_tags_exception() | 
-    rule_not_found_exception() | 
-    listener_not_found_exception() | 
     target_group_not_found_exception() | 
-    duplicate_tag_keys_exception() | 
+    rule_not_found_exception() | 
     load_balancer_not_found_exception() | 
-    trust_store_not_found_exception().
+    listener_not_found_exception() | 
+    duplicate_tag_keys_exception().
 
 -type add_trust_store_revocations_errors() ::
-    invalid_revocation_content_exception() | 
+    trust_store_not_found_exception() | 
     too_many_trust_store_revocation_entries_exception() | 
     revocation_content_not_found_exception() | 
-    trust_store_not_found_exception().
+    invalid_revocation_content_exception().
 
 -type create_listener_errors() ::
     unsupported_protocol_exception() | 
-    too_many_tags_exception() | 
     trust_store_not_ready_exception() | 
+    trust_store_not_found_exception() | 
+    too_many_unique_target_groups_per_load_balancer_exception() | 
+    too_many_targets_exception() | 
+    too_many_tags_exception() | 
     too_many_registrations_for_target_id_exception() | 
+    too_many_listeners_exception() | 
+    too_many_certificates_exception() | 
+    too_many_actions_exception() | 
     target_group_not_found_exception() | 
-    a_l_p_n_policy_not_supported_exception() | 
     target_group_association_limit_exception() | 
     ssl_policy_not_found_exception() | 
-    too_many_certificates_exception() | 
-    too_many_listeners_exception() | 
-    invalid_load_balancer_action_exception() | 
-    too_many_targets_exception() | 
-    too_many_actions_exception() | 
     load_balancer_not_found_exception() | 
-    trust_store_not_found_exception() | 
+    invalid_load_balancer_action_exception() | 
+    invalid_configuration_request_exception() | 
     incompatible_protocols_exception() | 
-    too_many_unique_target_groups_per_load_balancer_exception() | 
-    certificate_not_found_exception() | 
     duplicate_listener_exception() | 
-    invalid_configuration_request_exception().
+    certificate_not_found_exception() | 
+    a_l_p_n_policy_not_supported_exception().
 
 -type create_load_balancer_errors() ::
     too_many_tags_exception() | 
-    invalid_scheme_exception() | 
-    duplicate_load_balancer_name_exception() | 
-    invalid_subnet_exception() | 
-    duplicate_tag_keys_exception() | 
-    invalid_security_group_exception() | 
-    operation_not_permitted_exception() | 
-    allocation_id_not_found_exception() | 
     too_many_load_balancers_exception() | 
     subnet_not_found_exception() | 
+    resource_in_use_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_subnet_exception() | 
+    invalid_security_group_exception() | 
+    invalid_scheme_exception() | 
     invalid_configuration_request_exception() | 
+    duplicate_tag_keys_exception() | 
+    duplicate_load_balancer_name_exception() | 
     availability_zone_not_supported_exception() | 
-    resource_in_use_exception().
+    allocation_id_not_found_exception().
 
 -type create_rule_errors() ::
     unsupported_protocol_exception() | 
+    too_many_unique_target_groups_per_load_balancer_exception() | 
+    too_many_targets_exception() | 
+    too_many_target_groups_exception() | 
     too_many_tags_exception() | 
-    listener_not_found_exception() | 
+    too_many_rules_exception() | 
     too_many_registrations_for_target_id_exception() | 
+    too_many_actions_exception() | 
     target_group_not_found_exception() | 
     target_group_association_limit_exception() | 
-    invalid_load_balancer_action_exception() | 
-    too_many_targets_exception() | 
-    too_many_actions_exception() | 
-    too_many_target_groups_exception() | 
-    incompatible_protocols_exception() | 
-    too_many_unique_target_groups_per_load_balancer_exception() | 
     priority_in_use_exception() | 
-    too_many_rules_exception() | 
-    invalid_configuration_request_exception().
+    listener_not_found_exception() | 
+    invalid_load_balancer_action_exception() | 
+    invalid_configuration_request_exception() | 
+    incompatible_protocols_exception().
 
 -type create_target_group_errors() ::
-    too_many_tags_exception() | 
-    duplicate_target_group_name_exception() | 
     too_many_target_groups_exception() | 
-    invalid_configuration_request_exception().
+    too_many_tags_exception() | 
+    invalid_configuration_request_exception() | 
+    duplicate_target_group_name_exception().
 
 -type create_trust_store_errors() ::
+    too_many_trust_stores_exception() | 
     too_many_tags_exception() | 
-    ca_certificates_bundle_not_found_exception() | 
     invalid_ca_certificates_bundle_exception() | 
     duplicate_trust_store_name_exception() | 
     duplicate_tag_keys_exception() | 
-    too_many_trust_stores_exception().
+    ca_certificates_bundle_not_found_exception().
 
 -type delete_listener_errors() ::
-    listener_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    listener_not_found_exception().
 
 -type delete_load_balancer_errors() ::
+    resource_in_use_exception() | 
     operation_not_permitted_exception() | 
-    load_balancer_not_found_exception() | 
-    resource_in_use_exception().
+    load_balancer_not_found_exception().
 
 -type delete_rule_errors() ::
     rule_not_found_exception() | 
     operation_not_permitted_exception().
 
 -type delete_shared_trust_store_association_errors() ::
-    trust_store_association_not_found_exception() | 
     trust_store_not_found_exception() | 
+    trust_store_association_not_found_exception() | 
     delete_association_same_account_exception().
 
 -type delete_target_group_errors() ::
     resource_in_use_exception().
 
 -type delete_trust_store_errors() ::
-    trust_store_in_use_exception() | 
-    trust_store_not_found_exception().
+    trust_store_not_found_exception() | 
+    trust_store_in_use_exception().
 
 -type deregister_targets_errors() ::
     target_group_not_found_exception() | 
@@ -1860,8 +1861,8 @@
 
 -type describe_listeners_errors() ::
     unsupported_protocol_exception() | 
-    listener_not_found_exception() | 
-    load_balancer_not_found_exception().
+    load_balancer_not_found_exception() | 
+    listener_not_found_exception().
 
 -type describe_load_balancer_attributes_errors() ::
     load_balancer_not_found_exception().
@@ -1878,11 +1879,11 @@
     ssl_policy_not_found_exception().
 
 -type describe_tags_errors() ::
-    rule_not_found_exception() | 
-    listener_not_found_exception() | 
+    trust_store_not_found_exception() | 
     target_group_not_found_exception() | 
+    rule_not_found_exception() | 
     load_balancer_not_found_exception() | 
-    trust_store_not_found_exception().
+    listener_not_found_exception().
 
 -type describe_target_group_attributes_errors() ::
     target_group_not_found_exception().
@@ -1892,9 +1893,9 @@
     load_balancer_not_found_exception().
 
 -type describe_target_health_errors() ::
-    health_unavailable_exception() | 
     target_group_not_found_exception() | 
-    invalid_target_exception().
+    invalid_target_exception() | 
+    health_unavailable_exception().
 
 -type describe_trust_store_associations_errors() ::
     trust_store_not_found_exception().
@@ -1917,38 +1918,38 @@
     revocation_id_not_found_exception().
 
 -type modify_capacity_reservation_errors() ::
-    capacity_decrease_requests_limit_exceeded_exception() | 
-    capacity_units_limit_exceeded_exception() | 
-    capacity_reservation_pending_exception() | 
+    prior_request_not_complete_exception() | 
     operation_not_permitted_exception() | 
     load_balancer_not_found_exception() | 
-    prior_request_not_complete_exception() | 
+    invalid_configuration_request_exception() | 
     insufficient_capacity_exception() | 
-    invalid_configuration_request_exception().
+    capacity_units_limit_exceeded_exception() | 
+    capacity_reservation_pending_exception() | 
+    capacity_decrease_requests_limit_exceeded_exception().
 
 -type modify_ip_pools_errors() ::
     load_balancer_not_found_exception().
 
 -type modify_listener_errors() ::
     unsupported_protocol_exception() | 
-    listener_not_found_exception() | 
     trust_store_not_ready_exception() | 
+    trust_store_not_found_exception() | 
+    too_many_unique_target_groups_per_load_balancer_exception() | 
+    too_many_targets_exception() | 
     too_many_registrations_for_target_id_exception() | 
+    too_many_listeners_exception() | 
+    too_many_certificates_exception() | 
+    too_many_actions_exception() | 
     target_group_not_found_exception() | 
-    a_l_p_n_policy_not_supported_exception() | 
     target_group_association_limit_exception() | 
     ssl_policy_not_found_exception() | 
-    too_many_certificates_exception() | 
-    too_many_listeners_exception() | 
+    listener_not_found_exception() | 
     invalid_load_balancer_action_exception() | 
-    too_many_targets_exception() | 
-    too_many_actions_exception() | 
-    trust_store_not_found_exception() | 
+    invalid_configuration_request_exception() | 
     incompatible_protocols_exception() | 
-    too_many_unique_target_groups_per_load_balancer_exception() | 
-    certificate_not_found_exception() | 
     duplicate_listener_exception() | 
-    invalid_configuration_request_exception().
+    certificate_not_found_exception() | 
+    a_l_p_n_policy_not_supported_exception().
 
 -type modify_listener_attributes_errors() ::
     listener_not_found_exception() | 
@@ -1960,16 +1961,16 @@
 
 -type modify_rule_errors() ::
     unsupported_protocol_exception() | 
-    rule_not_found_exception() | 
+    too_many_unique_target_groups_per_load_balancer_exception() | 
+    too_many_targets_exception() | 
     too_many_registrations_for_target_id_exception() | 
+    too_many_actions_exception() | 
     target_group_not_found_exception() | 
     target_group_association_limit_exception() | 
-    invalid_load_balancer_action_exception() | 
+    rule_not_found_exception() | 
     operation_not_permitted_exception() | 
-    too_many_targets_exception() | 
-    too_many_actions_exception() | 
-    incompatible_protocols_exception() | 
-    too_many_unique_target_groups_per_load_balancer_exception().
+    invalid_load_balancer_action_exception() | 
+    incompatible_protocols_exception().
 
 -type modify_target_group_errors() ::
     target_group_not_found_exception() | 
@@ -1980,55 +1981,55 @@
     invalid_configuration_request_exception().
 
 -type modify_trust_store_errors() ::
-    ca_certificates_bundle_not_found_exception() | 
+    trust_store_not_found_exception() | 
     invalid_ca_certificates_bundle_exception() | 
-    trust_store_not_found_exception().
+    ca_certificates_bundle_not_found_exception().
 
 -type register_targets_errors() ::
+    too_many_targets_exception() | 
     too_many_registrations_for_target_id_exception() | 
     target_group_not_found_exception() | 
-    too_many_targets_exception() | 
     invalid_target_exception().
 
 -type remove_listener_certificates_errors() ::
-    listener_not_found_exception() | 
-    operation_not_permitted_exception().
+    operation_not_permitted_exception() | 
+    listener_not_found_exception().
 
 -type remove_tags_errors() ::
+    trust_store_not_found_exception() | 
     too_many_tags_exception() | 
-    rule_not_found_exception() | 
-    listener_not_found_exception() | 
     target_group_not_found_exception() | 
+    rule_not_found_exception() | 
     load_balancer_not_found_exception() | 
-    trust_store_not_found_exception().
+    listener_not_found_exception().
 
 -type remove_trust_store_revocations_errors() ::
     trust_store_not_found_exception() | 
     revocation_id_not_found_exception().
 
 -type set_ip_address_type_errors() ::
-    invalid_subnet_exception() | 
     load_balancer_not_found_exception() | 
+    invalid_subnet_exception() | 
     invalid_configuration_request_exception().
 
 -type set_rule_priorities_errors() ::
     rule_not_found_exception() | 
-    operation_not_permitted_exception() | 
-    priority_in_use_exception().
+    priority_in_use_exception() | 
+    operation_not_permitted_exception().
 
 -type set_security_groups_errors() ::
-    invalid_security_group_exception() | 
     load_balancer_not_found_exception() | 
+    invalid_security_group_exception() | 
     invalid_configuration_request_exception().
 
 -type set_subnets_errors() ::
-    invalid_subnet_exception() | 
-    capacity_reservation_pending_exception() | 
-    load_balancer_not_found_exception() | 
-    allocation_id_not_found_exception() | 
     subnet_not_found_exception() | 
+    load_balancer_not_found_exception() | 
+    invalid_subnet_exception() | 
     invalid_configuration_request_exception() | 
-    availability_zone_not_supported_exception().
+    capacity_reservation_pending_exception() | 
+    availability_zone_not_supported_exception() | 
+    allocation_id_not_found_exception().
 
 %%====================================================================
 %% API
@@ -2187,19 +2188,21 @@ create_load_balancer(Client, Input, Options)
 %% @doc Creates a rule for the specified listener.
 %%
 %% The listener must be associated with an
-%% Application Load Balancer.
+%% Application Load Balancer or a dual-stack Network Load Balancer.
 %%
-%% Each rule consists of a priority, one or more actions, one or more
-%% conditions, and
-%% up to two optional transforms. Rules are evaluated in priority order, from
-%% the lowest value
-%% to the highest value. When the conditions for a rule are met, its actions
-%% are performed.
-%% If the conditions for no rules are met, the actions for the default rule
-%% are performed.
-%% For more information, see Listener rules:
+%% Each rule consists of a priority, one or more actions, and one or more
+%% conditions. Rules
+%% are evaluated in priority order, from the lowest value to the highest
+%% value. When the
+%% conditions for a rule are met, its actions are performed. If the
+%% conditions for no rules are
+%% met, the actions for the default rule are performed. For more information,
+%% see Listener rules:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules
-%% in the Application Load Balancers Guide.
+%% in the Application Load Balancers Guide or
+%% Listener rules:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html#listener-rules
+%% in the Network Load Balancers Guide.
 -spec create_rule(aws_client:aws_client(), create_rule_input()) ->
     {ok, create_rule_output(), tuple()} |
     {error, any()} |

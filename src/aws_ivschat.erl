@@ -176,40 +176,26 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_room_request() :: #{
-%%   <<"identifier">> := string()
+%% cloud_watch_logs_destination_configuration() :: #{
+%%   <<"logGroupName">> => string()
 %% }
--type delete_room_request() :: #{binary() => any()}.
+-type cloud_watch_logs_destination_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_message_response() :: #{
-%%   <<"id">> => string()
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
 %% }
--type delete_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rooms_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"rooms">> := list(room_summary())
-%% }
--type list_rooms_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-%% Example:
-%% disconnect_user_response() :: #{}
--type disconnect_user_response() :: #{}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -224,46 +210,12 @@
 
 
 %% Example:
-%% delete_message_request() :: #{
-%%   <<"id">> := string(),
-%%   <<"reason">> => string(),
-%%   <<"roomIdentifier">> := string()
+%% create_chat_token_response() :: #{
+%%   <<"sessionExpirationTime">> => non_neg_integer(),
+%%   <<"token">> => string(),
+%%   <<"tokenExpirationTime">> => non_neg_integer()
 %% }
--type delete_message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disconnect_user_request() :: #{
-%%   <<"reason">> => string(),
-%%   <<"roomIdentifier">> := string(),
-%%   <<"userId">> := string()
-%% }
--type disconnect_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_logging_configuration_request() :: #{
-%%   <<"destinationConfiguration">> => list(),
-%%   <<"identifier">> := string(),
-%%   <<"name">> => string()
-%% }
--type update_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_room_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"loggingConfigurationIdentifiers">> => list(string()),
-%%   <<"maximumMessageLength">> => integer(),
-%%   <<"maximumMessageRatePerSecond">> => integer(),
-%%   <<"messageReviewHandler">> => message_review_handler(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"updateTime">> => non_neg_integer()
-%% }
--type update_room_response() :: #{binary() => any()}.
+-type create_chat_token_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -273,31 +225,6 @@
 %%   <<"tags">> => map()
 %% }
 -type create_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_event_request() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"eventName">> := string(),
-%%   <<"roomIdentifier">> := string()
-%% }
--type send_event_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -315,12 +242,246 @@
 
 
 %% Example:
+%% create_room_request() :: #{
+%%   <<"loggingConfigurationIdentifiers">> => list(string()),
+%%   <<"maximumMessageLength">> => integer(),
+%%   <<"maximumMessageRatePerSecond">> => integer(),
+%%   <<"messageReviewHandler">> => message_review_handler(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_room_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_room_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()),
+%%   <<"maximumMessageLength">> => integer(),
+%%   <<"maximumMessageRatePerSecond">> => integer(),
+%%   <<"messageReviewHandler">> => message_review_handler(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type create_room_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_logging_configuration_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type delete_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_message_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"reason">> => string(),
+%%   <<"roomIdentifier">> := string()
+%% }
+-type delete_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_message_response() :: #{
+%%   <<"id">> => string()
+%% }
+-type delete_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_room_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type delete_room_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disconnect_user_request() :: #{
+%%   <<"reason">> => string(),
+%%   <<"roomIdentifier">> := string(),
+%%   <<"userId">> := string()
+%% }
+-type disconnect_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% disconnect_user_response() :: #{}
+-type disconnect_user_response() :: #{}.
+
+
+%% Example:
+%% firehose_destination_configuration() :: #{
+%%   <<"deliveryStreamName">> => string()
+%% }
+-type firehose_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_logging_configuration_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_logging_configuration_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"destinationConfiguration">> => list(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type get_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_room_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_room_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_room_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()),
+%%   <<"maximumMessageLength">> => integer(),
+%%   <<"maximumMessageRatePerSecond">> => integer(),
+%%   <<"messageReviewHandler">> => message_review_handler(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type get_room_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_logging_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_logging_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_logging_configurations_response() :: #{
+%%   <<"loggingConfigurations">> := list(logging_configuration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_logging_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rooms_request() :: #{
+%%   <<"loggingConfigurationIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"messageReviewHandlerUri">> => string(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_rooms_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rooms_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"rooms">> := list(room_summary())
+%% }
+-type list_rooms_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> := map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_configuration_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"destinationConfiguration">> => list(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type logging_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_review_handler() :: #{
+%%   <<"fallbackResult">> => string(),
+%%   <<"uri">> => string()
+%% }
+-type message_review_handler() :: #{binary() => any()}.
+
+
+%% Example:
+%% pending_verification() :: #{
+%%   <<"message">> => string()
+%% }
+-type pending_verification() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"resourceId">> => string(),
 %%   <<"resourceType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% room_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()),
+%%   <<"messageReviewHandler">> => message_review_handler(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type room_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_destination_configuration() :: #{
+%%   <<"bucketName">> => string()
+%% }
+-type s3_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_event_request() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"eventName">> := string(),
+%%   <<"roomIdentifier">> := string()
+%% }
+-type send_event_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -341,129 +502,14 @@
 
 
 %% Example:
-%% get_logging_configuration_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createTime">> => non_neg_integer(),
-%%   <<"destinationConfiguration">> => list(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"state">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"updateTime">> => non_neg_integer()
-%% }
--type get_logging_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_destination_configuration() :: #{
-%%   <<"bucketName">> => string()
-%% }
--type s3_destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
+%% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_chat_token_response() :: #{
-%%   <<"sessionExpirationTime">> => non_neg_integer(),
-%%   <<"token">> => string(),
-%%   <<"tokenExpirationTime">> => non_neg_integer()
-%% }
--type create_chat_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_logging_configuration_request() :: #{
-%%   <<"identifier">> := string()
-%% }
--type get_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_room_request() :: #{
-%%   <<"identifier">> := string()
-%% }
--type get_room_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_logging_configurations_response() :: #{
-%%   <<"loggingConfigurations">> := list(logging_configuration_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_logging_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_room_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"loggingConfigurationIdentifiers">> => list(string()),
-%%   <<"maximumMessageLength">> => integer(),
-%%   <<"maximumMessageRatePerSecond">> => integer(),
-%%   <<"messageReviewHandler">> => message_review_handler(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"updateTime">> => non_neg_integer()
-%% }
--type get_room_response() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% create_room_request() :: #{
-%%   <<"loggingConfigurationIdentifiers">> => list(string()),
-%%   <<"maximumMessageLength">> => integer(),
-%%   <<"maximumMessageRatePerSecond">> => integer(),
-%%   <<"messageReviewHandler">> => message_review_handler(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_room_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -477,57 +523,23 @@
 
 
 %% Example:
-%% list_rooms_request() :: #{
-%%   <<"loggingConfigurationIdentifier">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"messageReviewHandlerUri">> => string(),
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string()
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type list_rooms_request() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
-%% list_logging_configurations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% update_logging_configuration_request() :: #{
+%%   <<"destinationConfiguration">> => list(),
+%%   <<"identifier">> := string(),
+%%   <<"name">> => string()
 %% }
--type list_logging_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_logs_destination_configuration() :: #{
-%%   <<"logGroupName">> => string()
-%% }
--type cloud_watch_logs_destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% firehose_destination_configuration() :: #{
-%%   <<"deliveryStreamName">> => string()
-%% }
--type firehose_destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_logging_configuration_request() :: #{
-%%   <<"identifier">> := string()
-%% }
--type delete_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% room_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"loggingConfigurationIdentifiers">> => list(string()),
-%%   <<"messageReviewHandler">> => message_review_handler(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"updateTime">> => non_neg_integer()
-%% }
--type room_summary() :: #{binary() => any()}.
+-type update_logging_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -545,20 +557,6 @@
 
 
 %% Example:
-%% logging_configuration_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createTime">> => non_neg_integer(),
-%%   <<"destinationConfiguration">> => list(),
-%%   <<"id">> => string(),
-%%   <<"name">> => string(),
-%%   <<"state">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"updateTime">> => non_neg_integer()
-%% }
--type logging_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
 %% update_room_request() :: #{
 %%   <<"identifier">> := string(),
 %%   <<"loggingConfigurationIdentifiers">> => list(string()),
@@ -571,7 +569,7 @@
 
 
 %% Example:
-%% create_room_response() :: #{
+%% update_room_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createTime">> => non_neg_integer(),
 %%   <<"id">> => string(),
@@ -583,81 +581,83 @@
 %%   <<"tags">> => map(),
 %%   <<"updateTime">> => non_neg_integer()
 %% }
--type create_room_response() :: #{binary() => any()}.
+-type update_room_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% pending_verification() :: #{
-%%   <<"message">> => string()
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
 %% }
--type pending_verification() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% message_review_handler() :: #{
-%%   <<"fallbackResult">> => string(),
-%%   <<"uri">> => string()
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
 %% }
--type message_review_handler() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type create_chat_token_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type create_logging_configuration_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_room_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_logging_configuration_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_message_errors() ::
-    pending_verification() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type delete_room_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type disconnect_user_errors() ::
-    pending_verification() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type get_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_room_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_logging_configurations_errors() ::
     validation_exception() | 
@@ -665,43 +665,43 @@
 
 -type list_rooms_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type send_event_errors() ::
-    pending_verification() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_logging_configuration_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_room_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

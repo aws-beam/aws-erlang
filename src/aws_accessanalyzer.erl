@@ -140,453 +140,30 @@
 
 
 %% Example:
-%% trail_properties() :: #{
-%%   <<"allRegions">> => [boolean()],
-%%   <<"cloudTrailArn">> => string(),
-%%   <<"regions">> => list([string()]())
+%% access() :: #{
+%%   <<"actions">> => list(string()),
+%%   <<"resources">> => list(string())
 %% }
--type trail_properties() :: #{binary() => any()}.
+-type access() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_analyzer_request() :: #{
-%%   <<"configuration">> => list()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type update_analyzer_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% cloud_trail_details() :: #{
-%%   <<"accessRole">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"trails">> => list(trail())
-%% }
--type cloud_trail_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_analyzer_response() :: #{
-%%   <<"configuration">> => list()
-%% }
--type update_analyzer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> => map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% reason_summary() :: #{
-%%   <<"description">> => [string()],
-%%   <<"statementId">> => [string()],
-%%   <<"statementIndex">> => [integer()]
-%% }
--type reason_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_findings_statistics_request() :: #{
-%%   <<"analyzerArn">> := string()
-%% }
--type get_findings_statistics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% status_reason() :: #{
-%%   <<"code">> => string()
-%% }
--type status_reason() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_configuration() :: #{
-%%   <<"vpcId">> => string()
-%% }
--type vpc_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% analysis_rule() :: #{
-%%   <<"exclusions">> => list(analysis_rule_criteria())
-%% }
--type analysis_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% unused_access_type_statistics() :: #{
-%%   <<"total">> => [integer()],
-%%   <<"unusedAccessType">> => [string()]
-%% }
--type unused_access_type_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% check_no_public_access_response() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reasons">> => list(reason_summary()),
-%%   <<"result">> => string()
-%% }
--type check_no_public_access_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_archive_rule_request() :: #{
-%%   <<"clientToken">> => [string()]
-%% }
--type delete_archive_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_aggregation_account_details() :: #{
-%%   <<"account">> => [string()],
-%%   <<"details">> => map(),
-%%   <<"numberOfActiveFindings">> => [integer()]
-%% }
--type finding_aggregation_account_details() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_access_previews_response() :: #{
-%%   <<"accessPreviews">> := list(access_preview_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_access_previews_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unused_iam_user_access_key_details() :: #{
-%%   <<"accessKeyId">> => [string()],
-%%   <<"lastAccessed">> => non_neg_integer()
-%% }
--type unused_iam_user_access_key_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% kms_grant_constraints() :: #{
-%%   <<"encryptionContextEquals">> => map(),
-%%   <<"encryptionContextSubset">> => map()
-%% }
--type kms_grant_constraints() :: #{binary() => any()}.
-
-
-%% Example:
-%% generated_policy_properties() :: #{
-%%   <<"cloudTrailProperties">> => cloud_trail_properties(),
-%%   <<"isComplete">> => [boolean()],
-%%   <<"principalArn">> => string()
-%% }
--type generated_policy_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_summary() :: #{
-%%   <<"action">> => list([string()]()),
-%%   <<"analyzedAt">> => non_neg_integer(),
-%%   <<"condition">> => map(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"error">> => [string()],
-%%   <<"id">> => string(),
-%%   <<"isPublic">> => [boolean()],
-%%   <<"principal">> => map(),
-%%   <<"resource">> => [string()],
-%%   <<"resourceControlPolicyRestriction">> => string(),
-%%   <<"resourceOwnerAccount">> => [string()],
-%%   <<"resourceType">> => string(),
-%%   <<"sources">> => list(finding_source()),
-%%   <<"status">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type finding_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_previews_request() :: #{
-%%   <<"analyzerArn">> := string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_access_previews_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sns_topic_configuration() :: #{
-%%   <<"topicPolicy">> => string()
-%% }
--type sns_topic_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% unused_access_configuration() :: #{
-%%   <<"analysisRule">> => analysis_rule(),
-%%   <<"unusedAccessAge">> => [integer()]
-%% }
--type unused_access_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_bucket_acl_grant_configuration() :: #{
-%%   <<"grantee">> => list(),
-%%   <<"permission">> => string()
-%% }
--type s3_bucket_acl_grant_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_findings_statistics_response() :: #{
-%%   <<"findingsStatistics">> => list(list()),
-%%   <<"lastUpdatedAt">> => non_neg_integer()
-%% }
--type get_findings_statistics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_finding_recommendation_response() :: #{
-%%   <<"completedAt">> => non_neg_integer(),
-%%   <<"error">> => recommendation_error(),
-%%   <<"nextToken">> => string(),
-%%   <<"recommendationType">> => string(),
-%%   <<"recommendedSteps">> => list(list()),
-%%   <<"resourceArn">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => string()
-%% }
--type get_finding_recommendation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analyzed_resource() :: #{
-%%   <<"actions">> => list([string()]()),
-%%   <<"analyzedAt">> => non_neg_integer(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"error">> => [string()],
-%%   <<"isPublic">> => [boolean()],
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceOwnerAccount">> => [string()],
-%%   <<"resourceType">> => string(),
-%%   <<"sharedVia">> => list([string()]()),
-%%   <<"status">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type analyzed_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_analyzer_response() :: #{
-%%   <<"analyzer">> => analyzer_summary()
-%% }
--type get_analyzer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_access_analysis_rule_criteria() :: #{
-%%   <<"accountIds">> => list([string()]()),
-%%   <<"resourceArns">> => list([string()]()),
-%%   <<"resourceTypes">> => list(string())
-%% }
--type internal_access_analysis_rule_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_response() :: #{
-%%   <<"findings">> => list(finding_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_findings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_analyzer_request() :: #{
-%%   <<"analyzerName">> => string(),
-%%   <<"archiveRules">> => list(inline_archive_rule()),
-%%   <<"clientToken">> => [string()],
-%%   <<"configuration">> => list(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type create_analyzer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% unused_iam_user_password_details() :: #{
-%%   <<"lastAccessed">> => non_neg_integer()
-%% }
--type unused_iam_user_password_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% unused_iam_role_details() :: #{
-%%   <<"lastAccessed">> => non_neg_integer()
-%% }
--type unused_iam_role_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% unused_permission_details() :: #{
-%%   <<"actions">> => list(unused_action()),
-%%   <<"lastAccessed">> => non_neg_integer(),
-%%   <<"serviceNamespace">> => [string()]
-%% }
--type unused_permission_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> => list([string()]())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_analyzed_resource_response() :: #{
-%%   <<"resource">> => analyzed_resource()
-%% }
--type get_analyzed_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_finding_v2_request() :: #{
-%%   <<"analyzerArn">> := string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type get_finding_v2_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_express_directory_access_point_configuration() :: #{
-%%   <<"accessPointPolicy">> => string(),
-%%   <<"networkOrigin">> => list()
-%% }
--type s3_express_directory_access_point_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% check_no_new_access_request() :: #{
-%%   <<"existingPolicyDocument">> := string(),
-%%   <<"newPolicyDocument">> := string(),
-%%   <<"policyType">> := string()
-%% }
--type check_no_new_access_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% position() :: #{
-%%   <<"column">> => [integer()],
-%%   <<"line">> => [integer()],
-%%   <<"offset">> => [integer()]
-%% }
--type position() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_analyzer_request() :: #{
-%%   <<"clientToken">> => [string()]
-%% }
--type delete_analyzer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_analyzers_response() :: #{
-%%   <<"analyzers">> => list(analyzer_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_analyzers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% analysis_rule_criteria() :: #{
-%%   <<"accountIds">> => list([string()]()),
-%%   <<"resourceTags">> => list(map())
-%% }
--type analysis_rule_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% check_access_not_granted_response() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reasons">> => list(reason_summary()),
-%%   <<"result">> => string()
-%% }
--type check_access_not_granted_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_access_configuration() :: #{
-%%   <<"analysisRule">> => internal_access_analysis_rule()
-%% }
--type internal_access_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_policy_generation_response() :: #{}
--type cancel_policy_generation_response() :: #{}.
-
-
-%% Example:
-%% list_findings_v2_request() :: #{
-%%   <<"analyzerArn">> := string(),
-%%   <<"filter">> => map(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"sort">> => sort_criteria()
-%% }
--type list_findings_v2_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_analyzed_resources_request() :: #{
+%% access_preview() :: #{
 %%   <<"analyzerArn">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"resourceType">> => string()
+%%   <<"configurations">> => map(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => access_preview_status_reason()
 %% }
--type list_analyzed_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_preview_status_reason() :: #{
-%%   <<"code">> => string()
-%% }
--type access_preview_status_reason() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_archive_rules_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_archive_rules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% span() :: #{
-%%   <<"end">> => position(),
-%%   <<"start">> => position()
-%% }
--type span() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_source() :: #{
-%%   <<"detail">> => finding_source_detail(),
-%%   <<"type">> => string()
-%% }
--type finding_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_analyzed_resources_response() :: #{
-%%   <<"analyzedResources">> => list(analyzed_resource_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_analyzed_resources_response() :: #{binary() => any()}.
+-type access_preview() :: #{binary() => any()}.
 
 
 %% Example:
@@ -612,6 +189,91 @@
 
 
 %% Example:
+%% access_preview_status_reason() :: #{
+%%   <<"code">> => string()
+%% }
+-type access_preview_status_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_preview_summary() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => access_preview_status_reason()
+%% }
+-type access_preview_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_rule() :: #{
+%%   <<"exclusions">> => list(analysis_rule_criteria())
+%% }
+-type analysis_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_rule_criteria() :: #{
+%%   <<"accountIds">> => list([string()]()),
+%%   <<"resourceTags">> => list(map())
+%% }
+-type analysis_rule_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% analyzed_resource() :: #{
+%%   <<"actions">> => list([string()]()),
+%%   <<"analyzedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => [string()],
+%%   <<"isPublic">> => [boolean()],
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string(),
+%%   <<"sharedVia">> => list([string()]()),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type analyzed_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% analyzed_resource_summary() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string()
+%% }
+-type analyzed_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% analyzer_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastResourceAnalyzed">> => [string()],
+%%   <<"lastResourceAnalyzedAt">> => non_neg_integer(),
+%%   <<"managedBy">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => status_reason(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type analyzer_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% apply_archive_rule_request() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"ruleName">> => string()
+%% }
+-type apply_archive_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% archive_rule_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"filter">> => map(),
@@ -619,6 +281,86 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type archive_rule_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_policy_generation_request() :: #{}
+-type cancel_policy_generation_request() :: #{}.
+
+%% Example:
+%% cancel_policy_generation_response() :: #{}
+-type cancel_policy_generation_response() :: #{}.
+
+
+%% Example:
+%% check_access_not_granted_request() :: #{
+%%   <<"access">> := list(access()),
+%%   <<"policyDocument">> := string(),
+%%   <<"policyType">> := string()
+%% }
+-type check_access_not_granted_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_access_not_granted_response() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reasons">> => list(reason_summary()),
+%%   <<"result">> => string()
+%% }
+-type check_access_not_granted_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_no_new_access_request() :: #{
+%%   <<"existingPolicyDocument">> := string(),
+%%   <<"newPolicyDocument">> := string(),
+%%   <<"policyType">> := string()
+%% }
+-type check_no_new_access_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_no_new_access_response() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reasons">> => list(reason_summary()),
+%%   <<"result">> => string()
+%% }
+-type check_no_new_access_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_no_public_access_request() :: #{
+%%   <<"policyDocument">> := string(),
+%%   <<"resourceType">> := string()
+%% }
+-type check_no_public_access_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_no_public_access_response() :: #{
+%%   <<"message">> => [string()],
+%%   <<"reasons">> => list(reason_summary()),
+%%   <<"result">> => string()
+%% }
+-type check_no_public_access_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_trail_details() :: #{
+%%   <<"accessRole">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"trails">> => list(trail())
+%% }
+-type cloud_trail_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_trail_properties() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"trailProperties">> => list(trail_properties())
+%% }
+-type cloud_trail_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -631,25 +373,6 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_access_findings_statistics() :: #{
-%%   <<"resourceTypeStatistics">> => map(),
-%%   <<"totalActiveFindings">> => [integer()],
-%%   <<"totalArchivedFindings">> => [integer()],
-%%   <<"totalResolvedFindings">> => [integer()]
-%% }
--type external_access_findings_statistics() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_access_preview_request() :: #{
 %%   <<"analyzerArn">> := string(),
 %%   <<"clientToken">> => [string()],
@@ -659,10 +382,109 @@
 
 
 %% Example:
-%% policy_generation_details() :: #{
-%%   <<"principalArn">> => string()
+%% create_access_preview_response() :: #{
+%%   <<"id">> := string()
 %% }
--type policy_generation_details() :: #{binary() => any()}.
+-type create_access_preview_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_analyzer_request() :: #{
+%%   <<"analyzerName">> => string(),
+%%   <<"archiveRules">> => list(inline_archive_rule()),
+%%   <<"clientToken">> => [string()],
+%%   <<"configuration">> => list(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type create_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_analyzer_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type create_analyzer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_archive_rule_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"filter">> => map(),
+%%   <<"ruleName">> => string()
+%% }
+-type create_archive_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_linked_analyzer_request() :: #{
+%%   <<"archiveRules">> => list(inline_archive_rule()),
+%%   <<"clientToken">> => [string()],
+%%   <<"configuration">> => list(),
+%%   <<"type">> := string()
+%% }
+-type create_service_linked_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_linked_analyzer_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type create_service_linked_analyzer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% criterion() :: #{
+%%   <<"contains">> => list([string()]()),
+%%   <<"eq">> => list([string()]()),
+%%   <<"exists">> => [boolean()],
+%%   <<"neq">> => list([string()]())
+%% }
+-type criterion() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_analyzer_request() :: #{
+%%   <<"clientToken">> => [string()]
+%% }
+-type delete_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_archive_rule_request() :: #{
+%%   <<"clientToken">> => [string()]
+%% }
+-type delete_archive_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_service_linked_analyzer_request() :: #{
+%%   <<"clientToken">> => [string()]
+%% }
+-type delete_service_linked_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamodb_stream_configuration() :: #{
+%%   <<"streamPolicy">> => string()
+%% }
+-type dynamodb_stream_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamodb_table_configuration() :: #{
+%%   <<"tablePolicy">> => string()
+%% }
+-type dynamodb_table_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_snapshot_configuration() :: #{
+%%   <<"groups">> => list(string()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"userIds">> => list(string())
+%% }
+-type ebs_snapshot_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -673,71 +495,32 @@
 
 
 %% Example:
-%% internal_access_analysis_rule() :: #{
-%%   <<"inclusions">> => list(internal_access_analysis_rule_criteria())
+%% efs_file_system_configuration() :: #{
+%%   <<"fileSystemPolicy">> => string()
 %% }
--type internal_access_analysis_rule() :: #{binary() => any()}.
+-type efs_file_system_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_generated_policy_response() :: #{
-%%   <<"generatedPolicyResult">> := generated_policy_result(),
-%%   <<"jobDetails">> := job_details()
+%% external_access_details() :: #{
+%%   <<"action">> => list([string()]()),
+%%   <<"condition">> => map(),
+%%   <<"isPublic">> => [boolean()],
+%%   <<"principal">> => map(),
+%%   <<"resourceControlPolicyRestriction">> => string(),
+%%   <<"sources">> => list(finding_source())
 %% }
--type get_generated_policy_response() :: #{binary() => any()}.
+-type external_access_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% check_no_public_access_request() :: #{
-%%   <<"policyDocument">> := string(),
-%%   <<"resourceType">> := string()
+%% external_access_findings_statistics() :: #{
+%%   <<"resourceTypeStatistics">> => map(),
+%%   <<"totalActiveFindings">> => [integer()],
+%%   <<"totalArchivedFindings">> => [integer()],
+%%   <<"totalResolvedFindings">> => [integer()]
 %% }
--type check_no_public_access_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_policy_finding() :: #{
-%%   <<"findingDetails">> => [string()],
-%%   <<"findingType">> => string(),
-%%   <<"issueCode">> => string(),
-%%   <<"learnMoreLink">> => string(),
-%%   <<"locations">> => list(location())
-%% }
--type validate_policy_finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_archive_rules_response() :: #{
-%%   <<"archiveRules">> => list(archive_rule_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_archive_rules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_generated_policy_request() :: #{
-%%   <<"includeResourcePlaceholders">> => [boolean()],
-%%   <<"includeServiceLevelTemplate">> => [boolean()]
-%% }
--type get_generated_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% analyzed_resource_summary() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceOwnerAccount">> => [string()],
-%%   <<"resourceType">> => string()
-%% }
--type analyzed_resource_summary() :: #{binary() => any()}.
+-type external_access_findings_statistics() :: #{binary() => any()}.
 
 
 %% Example:
@@ -762,50 +545,280 @@
 
 
 %% Example:
-%% kms_grant_configuration() :: #{
-%%   <<"constraints">> => kms_grant_constraints(),
-%%   <<"granteePrincipal">> => string(),
-%%   <<"issuingAccount">> => string(),
-%%   <<"operations">> => list(string()),
-%%   <<"retiringPrincipal">> => string()
+%% finding_aggregation_account_details() :: #{
+%%   <<"account">> => [string()],
+%%   <<"details">> => map(),
+%%   <<"numberOfActiveFindings">> => [integer()]
 %% }
--type kms_grant_configuration() :: #{binary() => any()}.
+-type finding_aggregation_account_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% check_no_new_access_response() :: #{
-%%   <<"message">> => [string()],
-%%   <<"reasons">> => list(reason_summary()),
-%%   <<"result">> => string()
+%% finding_source() :: #{
+%%   <<"detail">> => finding_source_detail(),
+%%   <<"type">> => string()
 %% }
--type check_no_new_access_response() :: #{binary() => any()}.
+-type finding_source() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% finding_source_detail() :: #{
+%%   <<"accessPointAccount">> => [string()],
+%%   <<"accessPointArn">> => [string()]
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type finding_source_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_findings_request() :: #{
-%%   <<"analyzerArn">> => string(),
-%%   <<"filter">> => map(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"sort">> => sort_criteria()
+%% finding_summary() :: #{
+%%   <<"action">> => list([string()]()),
+%%   <<"analyzedAt">> => non_neg_integer(),
+%%   <<"condition">> => map(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"isPublic">> => [boolean()],
+%%   <<"principal">> => map(),
+%%   <<"resource">> => [string()],
+%%   <<"resourceControlPolicyRestriction">> => string(),
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string(),
+%%   <<"sources">> => list(finding_source()),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type list_findings_request() :: #{binary() => any()}.
+-type finding_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_policy_generations_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
+%% finding_summary_v2() :: #{
+%%   <<"analyzedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => [string()],
+%%   <<"findingType">> => string(),
+%%   <<"id">> => string(),
+%%   <<"resource">> => [string()],
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type finding_summary_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_finding_recommendation_request() :: #{
+%%   <<"analyzerArn">> := string()
+%% }
+-type generate_finding_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% generated_policy() :: #{
+%%   <<"policy">> => [string()]
+%% }
+-type generated_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% generated_policy_properties() :: #{
+%%   <<"cloudTrailProperties">> => cloud_trail_properties(),
+%%   <<"isComplete">> => [boolean()],
 %%   <<"principalArn">> => string()
 %% }
--type list_policy_generations_request() :: #{binary() => any()}.
+-type generated_policy_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% generated_policy_result() :: #{
+%%   <<"generatedPolicies">> => list(generated_policy()),
+%%   <<"properties">> => generated_policy_properties()
+%% }
+-type generated_policy_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_preview_request() :: #{
+%%   <<"analyzerArn">> := string()
+%% }
+-type get_access_preview_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_access_preview_response() :: #{
+%%   <<"accessPreview">> := access_preview()
+%% }
+-type get_access_preview_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_analyzed_resource_request() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"resourceArn">> => string()
+%% }
+-type get_analyzed_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_analyzed_resource_response() :: #{
+%%   <<"resource">> => analyzed_resource()
+%% }
+-type get_analyzed_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_analyzer_request() :: #{}
+-type get_analyzer_request() :: #{}.
+
+
+%% Example:
+%% get_analyzer_response() :: #{
+%%   <<"analyzer">> => analyzer_summary()
+%% }
+-type get_analyzer_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_archive_rule_request() :: #{}
+-type get_archive_rule_request() :: #{}.
+
+
+%% Example:
+%% get_archive_rule_response() :: #{
+%%   <<"archiveRule">> => archive_rule_summary()
+%% }
+-type get_archive_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_recommendation_request() :: #{
+%%   <<"analyzerArn">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type get_finding_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_recommendation_response() :: #{
+%%   <<"completedAt">> => non_neg_integer(),
+%%   <<"error">> => recommendation_error(),
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationType">> => string(),
+%%   <<"recommendedSteps">> => list(list()),
+%%   <<"resourceArn">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type get_finding_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_request() :: #{
+%%   <<"analyzerArn">> => string()
+%% }
+-type get_finding_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_response() :: #{
+%%   <<"finding">> => finding()
+%% }
+-type get_finding_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_v2_request() :: #{
+%%   <<"analyzerArn">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type get_finding_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_v2_response() :: #{
+%%   <<"analyzedAt">> => non_neg_integer(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"error">> => [string()],
+%%   <<"findingDetails">> => list(list()),
+%%   <<"findingType">> => string(),
+%%   <<"id">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"resource">> => [string()],
+%%   <<"resourceOwnerAccount">> => [string()],
+%%   <<"resourceType">> => string(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_finding_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_findings_statistics_request() :: #{
+%%   <<"analyzerArn">> := string()
+%% }
+-type get_findings_statistics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_findings_statistics_response() :: #{
+%%   <<"findingsStatistics">> => list(list()),
+%%   <<"lastUpdatedAt">> => non_neg_integer()
+%% }
+-type get_findings_statistics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_generated_policy_request() :: #{
+%%   <<"includeResourcePlaceholders">> => [boolean()],
+%%   <<"includeServiceLevelTemplate">> => [boolean()]
+%% }
+-type get_generated_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_generated_policy_response() :: #{
+%%   <<"generatedPolicyResult">> := generated_policy_result(),
+%%   <<"jobDetails">> := job_details()
+%% }
+-type get_generated_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_role_configuration() :: #{
+%%   <<"trustPolicy">> => string()
+%% }
+-type iam_role_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_archive_rule() :: #{
+%%   <<"filter">> => map(),
+%%   <<"ruleName">> => string()
+%% }
+-type inline_archive_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_access_analysis_rule() :: #{
+%%   <<"inclusions">> => list(internal_access_analysis_rule_criteria())
+%% }
+-type internal_access_analysis_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_access_analysis_rule_criteria() :: #{
+%%   <<"accountIds">> => list([string()]()),
+%%   <<"resourceArns">> => list([string()]()),
+%%   <<"resourceTypes">> => list(string())
+%% }
+-type internal_access_analysis_rule_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_access_configuration() :: #{
+%%   <<"analysisRule">> => internal_access_analysis_rule()
+%% }
+-type internal_access_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -824,34 +837,239 @@
 
 
 %% Example:
-%% generated_policy_result() :: #{
-%%   <<"generatedPolicies">> => list(generated_policy()),
-%%   <<"properties">> => generated_policy_properties()
+%% internal_access_findings_statistics() :: #{
+%%   <<"resourceTypeStatistics">> => map(),
+%%   <<"totalActiveFindings">> => [integer()],
+%%   <<"totalArchivedFindings">> => [integer()],
+%%   <<"totalResolvedFindings">> => [integer()]
 %% }
--type generated_policy_result() :: #{binary() => any()}.
+-type internal_access_findings_statistics() :: #{binary() => any()}.
 
 
 %% Example:
-%% iam_role_configuration() :: #{
-%%   <<"trustPolicy">> => string()
+%% internal_access_resource_type_details() :: #{
+%%   <<"totalActiveFindings">> => [integer()],
+%%   <<"totalArchivedFindings">> => [integer()],
+%%   <<"totalResolvedFindings">> => [integer()]
 %% }
--type iam_role_configuration() :: #{binary() => any()}.
+-type internal_access_resource_type_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception_field() :: #{
+%% internal_server_exception() :: #{
 %%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
+%%   <<"retryAfterSeconds">> => [integer()]
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internet_configuration() :: #{}
+-type internet_configuration() :: #{}.
 
 
 %% Example:
-%% recommendation_error() :: #{
-%%   <<"code">> => [string()],
+%% invalid_parameter_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type recommendation_error() :: #{binary() => any()}.
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_details() :: #{
+%%   <<"completedOn">> => non_neg_integer(),
+%%   <<"jobError">> => job_error(),
+%%   <<"jobId">> => string(),
+%%   <<"startedOn">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type job_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type job_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_grant_configuration() :: #{
+%%   <<"constraints">> => kms_grant_constraints(),
+%%   <<"granteePrincipal">> => string(),
+%%   <<"issuingAccount">> => string(),
+%%   <<"operations">> => list(string()),
+%%   <<"retiringPrincipal">> => string()
+%% }
+-type kms_grant_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_grant_constraints() :: #{
+%%   <<"encryptionContextEquals">> => map(),
+%%   <<"encryptionContextSubset">> => map()
+%% }
+-type kms_grant_constraints() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_key_configuration() :: #{
+%%   <<"grants">> => list(kms_grant_configuration()),
+%%   <<"keyPolicies">> => map()
+%% }
+-type kms_key_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_preview_findings_request() :: #{
+%%   <<"analyzerArn">> := string(),
+%%   <<"filter">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_preview_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_preview_findings_response() :: #{
+%%   <<"findings">> := list(access_preview_finding()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_preview_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_previews_request() :: #{
+%%   <<"analyzerArn">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_previews_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_previews_response() :: #{
+%%   <<"accessPreviews">> := list(access_preview_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_access_previews_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyzed_resources_request() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type list_analyzed_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyzed_resources_response() :: #{
+%%   <<"analyzedResources">> => list(analyzed_resource_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_analyzed_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyzers_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => string()
+%% }
+-type list_analyzers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analyzers_response() :: #{
+%%   <<"analyzers">> => list(analyzer_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_analyzers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_archive_rules_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_archive_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_archive_rules_response() :: #{
+%%   <<"archiveRules">> => list(archive_rule_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_archive_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_request() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"filter">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => sort_criteria()
+%% }
+-type list_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_response() :: #{
+%%   <<"findings">> => list(finding_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_v2_request() :: #{
+%%   <<"analyzerArn">> := string(),
+%%   <<"filter">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sort">> => sort_criteria()
+%% }
+-type list_findings_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_v2_response() :: #{
+%%   <<"findings">> => list(finding_summary_v2()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_findings_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"principalArn">> => string()
+%% }
+-type list_policy_generations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_generations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"policyGenerations">> := list(policy_generation())
+%% }
+-type list_policy_generations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -874,6 +1092,64 @@
 
 
 %% Example:
+%% policy_generation_details() :: #{
+%%   <<"principalArn">> => string()
+%% }
+-type policy_generation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% position() :: #{
+%%   <<"column">> => [integer()],
+%%   <<"line">> => [integer()],
+%%   <<"offset">> => [integer()]
+%% }
+-type position() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_db_cluster_snapshot_configuration() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type rds_db_cluster_snapshot_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_db_snapshot_configuration() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"kmsKeyId">> => string()
+%% }
+-type rds_db_snapshot_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% reason_summary() :: #{
+%%   <<"description">> => [string()],
+%%   <<"statementId">> => [string()],
+%%   <<"statementIndex">> => [integer()]
+%% }
+-type reason_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type recommendation_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_type_details() :: #{
 %%   <<"totalActiveCrossAccount">> => [integer()],
 %%   <<"totalActiveErrors">> => [integer()],
@@ -883,116 +1159,38 @@
 
 
 %% Example:
-%% apply_archive_rule_request() :: #{
-%%   <<"analyzerArn">> => string(),
-%%   <<"clientToken">> => [string()],
-%%   <<"ruleName">> => string()
+%% s3_access_point_configuration() :: #{
+%%   <<"accessPointPolicy">> => string(),
+%%   <<"networkOrigin">> => list(),
+%%   <<"publicAccessBlock">> => s3_public_access_block_configuration()
 %% }
--type apply_archive_rule_request() :: #{binary() => any()}.
+-type s3_access_point_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_policy_generations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"policyGenerations">> := list(policy_generation())
+%% s3_bucket_acl_grant_configuration() :: #{
+%%   <<"grantee">> => list(),
+%%   <<"permission">> => string()
 %% }
--type list_policy_generations_response() :: #{binary() => any()}.
+-type s3_bucket_acl_grant_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_service_linked_analyzer_request() :: #{
-%%   <<"clientToken">> => [string()]
+%% s3_bucket_configuration() :: #{
+%%   <<"accessPoints">> => map(),
+%%   <<"bucketAclGrants">> => list(s3_bucket_acl_grant_configuration()),
+%%   <<"bucketPolicy">> => string(),
+%%   <<"bucketPublicAccessBlock">> => s3_public_access_block_configuration()
 %% }
--type delete_service_linked_analyzer_request() :: #{binary() => any()}.
+-type s3_bucket_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_finding_recommendation_request() :: #{
-%%   <<"analyzerArn">> := string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%% s3_express_directory_access_point_configuration() :: #{
+%%   <<"accessPointPolicy">> => string(),
+%%   <<"networkOrigin">> => list()
 %% }
--type get_finding_recommendation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_finding_recommendation_request() :: #{
-%%   <<"analyzerArn">> := string()
-%% }
--type generate_finding_recommendation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% kms_key_configuration() :: #{
-%%   <<"grants">> => list(kms_grant_configuration()),
-%%   <<"keyPolicies">> => map()
-%% }
--type kms_key_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_details() :: #{
-%%   <<"completedOn">> => non_neg_integer(),
-%%   <<"jobError">> => job_error(),
-%%   <<"jobId">> => string(),
-%%   <<"startedOn">> => non_neg_integer(),
-%%   <<"status">> => string()
-%% }
--type job_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% inline_archive_rule() :: #{
-%%   <<"filter">> => map(),
-%%   <<"ruleName">> => string()
-%% }
--type inline_archive_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% ebs_snapshot_configuration() :: #{
-%%   <<"groups">> => list(string()),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"userIds">> => list(string())
-%% }
--type ebs_snapshot_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% dynamodb_table_configuration() :: #{
-%%   <<"tablePolicy">> => string()
-%% }
--type dynamodb_table_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% efs_file_system_configuration() :: #{
-%%   <<"fileSystemPolicy">> => string()
-%% }
--type efs_file_system_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_finding_request() :: #{
-%%   <<"analyzerArn">> => string()
-%% }
--type get_finding_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_policy_response() :: #{
-%%   <<"findings">> := list(validate_policy_finding()),
-%%   <<"nextToken">> => string()
-%% }
--type validate_policy_response() :: #{binary() => any()}.
+-type s3_express_directory_access_point_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1004,10 +1202,58 @@
 
 
 %% Example:
-%% create_access_preview_response() :: #{
-%%   <<"id">> := string()
+%% s3_public_access_block_configuration() :: #{
+%%   <<"ignorePublicAcls">> => [boolean()],
+%%   <<"restrictPublicBuckets">> => [boolean()]
 %% }
--type create_access_preview_response() :: #{binary() => any()}.
+-type s3_public_access_block_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_secret_configuration() :: #{
+%%   <<"kmsKeyId">> => string(),
+%%   <<"secretPolicy">> => string()
+%% }
+-type secrets_manager_secret_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sns_topic_configuration() :: #{
+%%   <<"topicPolicy">> => string()
+%% }
+-type sns_topic_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort_criteria() :: #{
+%%   <<"attributeName">> => [string()],
+%%   <<"orderBy">> => string()
+%% }
+-type sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% span() :: #{
+%%   <<"end">> => position(),
+%%   <<"start">> => position()
+%% }
+-type span() :: #{binary() => any()}.
+
+
+%% Example:
+%% sqs_queue_configuration() :: #{
+%%   <<"queuePolicy">> => string()
+%% }
+-type sqs_queue_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1020,56 +1266,26 @@
 
 
 %% Example:
-%% external_access_details() :: #{
-%%   <<"action">> => list([string()]()),
-%%   <<"condition">> => map(),
-%%   <<"isPublic">> => [boolean()],
-%%   <<"principal">> => map(),
-%%   <<"resourceControlPolicyRestriction">> => string(),
-%%   <<"sources">> => list(finding_source())
+%% start_policy_generation_response() :: #{
+%%   <<"jobId">> := string()
 %% }
--type external_access_details() :: #{binary() => any()}.
+-type start_policy_generation_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_finding_response() :: #{
-%%   <<"finding">> => finding()
+%% start_resource_scan_request() :: #{
+%%   <<"analyzerArn">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceOwnerAccount">> => [string()]
 %% }
--type get_finding_response() :: #{binary() => any()}.
+-type start_resource_scan_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% sort_criteria() :: #{
-%%   <<"attributeName">> => [string()],
-%%   <<"orderBy">> => string()
+%% status_reason() :: #{
+%%   <<"code">> => string()
 %% }
--type sort_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_trail_properties() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"trailProperties">> => list(trail_properties())
-%% }
--type cloud_trail_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_preview_findings_request() :: #{
-%%   <<"analyzerArn">> := string(),
-%%   <<"filter">> => map(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_access_preview_findings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% unprocessable_entity_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type unprocessable_entity_exception() :: #{binary() => any()}.
+-type status_reason() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1081,34 +1297,10 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
+%% tag_resource_request() :: #{
+%%   <<"tags">> => map()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_analyzer_response() :: #{
-%%   <<"arn">> => string()
-%% }
--type create_analyzer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unused_permissions_recommended_step() :: #{
-%%   <<"existingPolicyId">> => [string()],
-%%   <<"policyUpdatedAt">> => non_neg_integer(),
-%%   <<"recommendedAction">> => string(),
-%%   <<"recommendedPolicy">> => [string()]
-%% }
--type unused_permissions_recommended_step() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -1116,27 +1308,55 @@
 
 
 %% Example:
-%% validate_policy_request() :: #{
-%%   <<"locale">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"policyDocument">> := string(),
-%%   <<"policyType">> := string(),
-%%   <<"validatePolicyResourceType">> => string()
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
 %% }
--type validate_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_analyzer_request() :: #{}
--type get_analyzer_request() :: #{}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_analyzed_resource_request() :: #{
-%%   <<"analyzerArn">> => string(),
-%%   <<"resourceArn">> => string()
+%% trail() :: #{
+%%   <<"allRegions">> => [boolean()],
+%%   <<"cloudTrailArn">> => string(),
+%%   <<"regions">> => list([string()]())
 %% }
--type get_analyzed_resource_request() :: #{binary() => any()}.
+-type trail() :: #{binary() => any()}.
+
+
+%% Example:
+%% trail_properties() :: #{
+%%   <<"allRegions">> => [boolean()],
+%%   <<"cloudTrailArn">> => string(),
+%%   <<"regions">> => list([string()]())
+%% }
+-type trail_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_entity_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type unprocessable_entity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> => list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% unused_access_configuration() :: #{
+%%   <<"analysisRule">> => analysis_rule(),
+%%   <<"unusedAccessAge">> => [integer()]
+%% }
+-type unused_access_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1151,26 +1371,82 @@
 
 
 %% Example:
-%% s3_bucket_configuration() :: #{
-%%   <<"accessPoints">> => map(),
-%%   <<"bucketAclGrants">> => list(s3_bucket_acl_grant_configuration()),
-%%   <<"bucketPolicy">> => string(),
-%%   <<"bucketPublicAccessBlock">> => s3_public_access_block_configuration()
+%% unused_access_type_statistics() :: #{
+%%   <<"total">> => [integer()],
+%%   <<"unusedAccessType">> => [string()]
 %% }
--type s3_bucket_configuration() :: #{binary() => any()}.
+-type unused_access_type_statistics() :: #{binary() => any()}.
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => string()
+%% unused_action() :: #{
+%%   <<"action">> => [string()],
+%%   <<"lastAccessed">> => non_neg_integer()
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type unused_action() :: #{binary() => any()}.
+
 
 %% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+%% unused_iam_role_details() :: #{
+%%   <<"lastAccessed">> => non_neg_integer()
+%% }
+-type unused_iam_role_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_iam_user_access_key_details() :: #{
+%%   <<"accessKeyId">> => [string()],
+%%   <<"lastAccessed">> => non_neg_integer()
+%% }
+-type unused_iam_user_access_key_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_iam_user_password_details() :: #{
+%%   <<"lastAccessed">> => non_neg_integer()
+%% }
+-type unused_iam_user_password_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_permission_details() :: #{
+%%   <<"actions">> => list(unused_action()),
+%%   <<"lastAccessed">> => non_neg_integer(),
+%%   <<"serviceNamespace">> => [string()]
+%% }
+-type unused_permission_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% unused_permissions_recommended_step() :: #{
+%%   <<"existingPolicyId">> => [string()],
+%%   <<"policyUpdatedAt">> => non_neg_integer(),
+%%   <<"recommendedAction">> => string(),
+%%   <<"recommendedPolicy">> => [string()]
+%% }
+-type unused_permissions_recommended_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_analyzer_request() :: #{
+%%   <<"configuration">> => list()
+%% }
+-type update_analyzer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_analyzer_response() :: #{
+%%   <<"configuration">> => list()
+%% }
+-type update_analyzer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_archive_rule_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"filter">> => map()
+%% }
+-type update_archive_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1185,613 +1461,337 @@
 
 
 %% Example:
-%% internal_access_resource_type_details() :: #{
-%%   <<"totalActiveFindings">> => [integer()],
-%%   <<"totalArchivedFindings">> => [integer()],
-%%   <<"totalResolvedFindings">> => [integer()]
-%% }
--type internal_access_resource_type_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_access_preview_request() :: #{
-%%   <<"analyzerArn">> := string()
-%% }
--type get_access_preview_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_source_detail() :: #{
-%%   <<"accessPointAccount">> => [string()],
-%%   <<"accessPointArn">> => [string()]
-%% }
--type finding_source_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_linked_analyzer_request() :: #{
-%%   <<"archiveRules">> => list(inline_archive_rule()),
-%%   <<"clientToken">> => [string()],
-%%   <<"configuration">> => list(),
-%%   <<"type">> := string()
-%% }
--type create_service_linked_analyzer_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access() :: #{
-%%   <<"actions">> => list(string()),
-%%   <<"resources">> => list(string())
-%% }
--type access() :: #{binary() => any()}.
-
-
-%% Example:
-%% rds_db_snapshot_configuration() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"kmsKeyId">> => string()
-%% }
--type rds_db_snapshot_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_finding_v2_response() :: #{
-%%   <<"analyzedAt">> => non_neg_integer(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"error">> => [string()],
-%%   <<"findingDetails">> => list(list()),
+%% validate_policy_finding() :: #{
+%%   <<"findingDetails">> => [string()],
 %%   <<"findingType">> => string(),
-%%   <<"id">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"resource">> => [string()],
-%%   <<"resourceOwnerAccount">> => [string()],
-%%   <<"resourceType">> => string(),
-%%   <<"status">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"issueCode">> => string(),
+%%   <<"learnMoreLink">> => string(),
+%%   <<"locations">> => list(location())
 %% }
--type get_finding_v2_response() :: #{binary() => any()}.
+-type validate_policy_finding() :: #{binary() => any()}.
 
 
 %% Example:
-%% finding_summary_v2() :: #{
-%%   <<"analyzedAt">> => non_neg_integer(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"error">> => [string()],
-%%   <<"findingType">> => string(),
-%%   <<"id">> => string(),
-%%   <<"resource">> => [string()],
-%%   <<"resourceOwnerAccount">> => [string()],
-%%   <<"resourceType">> => string(),
-%%   <<"status">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type finding_summary_v2() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_policy_generation_request() :: #{}
--type cancel_policy_generation_request() :: #{}.
-
-%% Example:
-%% get_archive_rule_request() :: #{}
--type get_archive_rule_request() :: #{}.
-
-
-%% Example:
-%% analyzer_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"configuration">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"lastResourceAnalyzed">> => [string()],
-%%   <<"lastResourceAnalyzedAt">> => non_neg_integer(),
-%%   <<"managedBy">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusReason">> => status_reason(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => string()
-%% }
--type analyzer_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% trail() :: #{
-%%   <<"allRegions">> => [boolean()],
-%%   <<"cloudTrailArn">> => string(),
-%%   <<"regions">> => list([string()]())
-%% }
--type trail() :: #{binary() => any()}.
-
-
-%% Example:
-%% generated_policy() :: #{
-%%   <<"policy">> => [string()]
-%% }
--type generated_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% check_access_not_granted_request() :: #{
-%%   <<"access">> := list(access()),
-%%   <<"policyDocument">> := string(),
-%%   <<"policyType">> := string()
-%% }
--type check_access_not_granted_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_linked_analyzer_response() :: #{
-%%   <<"arn">> => string()
-%% }
--type create_service_linked_analyzer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% rds_db_cluster_snapshot_configuration() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"kmsKeyId">> => string()
-%% }
--type rds_db_cluster_snapshot_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_preview_summary() :: #{
-%%   <<"analyzerArn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusReason">> => access_preview_status_reason()
-%% }
--type access_preview_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_access_findings_statistics() :: #{
-%%   <<"resourceTypeStatistics">> => map(),
-%%   <<"totalActiveFindings">> => [integer()],
-%%   <<"totalArchivedFindings">> => [integer()],
-%%   <<"totalResolvedFindings">> => [integer()]
-%% }
--type internal_access_findings_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_analyzers_request() :: #{
+%% validate_policy_request() :: #{
+%%   <<"locale">> => string(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
-%%   <<"type">> => string()
+%%   <<"policyDocument">> := string(),
+%%   <<"policyType">> := string(),
+%%   <<"validatePolicyResourceType">> => string()
 %% }
--type list_analyzers_request() :: #{binary() => any()}.
+-type validate_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_findings_v2_response() :: #{
-%%   <<"findings">> => list(finding_summary_v2()),
+%% validate_policy_response() :: #{
+%%   <<"findings">> := list(validate_policy_finding()),
 %%   <<"nextToken">> => string()
 %% }
--type list_findings_v2_response() :: #{binary() => any()}.
+-type validate_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_policy_generation_response() :: #{
-%%   <<"jobId">> := string()
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
 %% }
--type start_policy_generation_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_access_preview_response() :: #{
-%%   <<"accessPreview">> := access_preview()
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
 %% }
--type get_access_preview_response() :: #{binary() => any()}.
-
-%% Example:
-%% internet_configuration() :: #{}
--type internet_configuration() :: #{}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% criterion() :: #{
-%%   <<"contains">> => list([string()]()),
-%%   <<"eq">> => list([string()]()),
-%%   <<"exists">> => [boolean()],
-%%   <<"neq">> => list([string()]())
+%% vpc_configuration() :: #{
+%%   <<"vpcId">> => string()
 %% }
--type criterion() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_archive_rule_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"filter">> => map(),
-%%   <<"ruleName">> => string()
-%% }
--type create_archive_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_resource_scan_request() :: #{
-%%   <<"analyzerArn">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceOwnerAccount">> => [string()]
-%% }
--type start_resource_scan_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% secrets_manager_secret_configuration() :: #{
-%%   <<"kmsKeyId">> => string(),
-%%   <<"secretPolicy">> => string()
-%% }
--type secrets_manager_secret_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_error() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => [string()]
-%% }
--type job_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_public_access_block_configuration() :: #{
-%%   <<"ignorePublicAcls">> => [boolean()],
-%%   <<"restrictPublicBuckets">> => [boolean()]
-%% }
--type s3_public_access_block_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_preview() :: #{
-%%   <<"analyzerArn">> => string(),
-%%   <<"configurations">> => map(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusReason">> => access_preview_status_reason()
-%% }
--type access_preview() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_archive_rule_response() :: #{
-%%   <<"archiveRule">> => archive_rule_summary()
-%% }
--type get_archive_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sqs_queue_configuration() :: #{
-%%   <<"queuePolicy">> => string()
-%% }
--type sqs_queue_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_access_point_configuration() :: #{
-%%   <<"accessPointPolicy">> => string(),
-%%   <<"networkOrigin">> => list(),
-%%   <<"publicAccessBlock">> => s3_public_access_block_configuration()
-%% }
--type s3_access_point_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_archive_rule_request() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"filter">> => map()
-%% }
--type update_archive_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_preview_findings_response() :: #{
-%%   <<"findings">> := list(access_preview_finding()),
-%%   <<"nextToken">> => string()
-%% }
--type list_access_preview_findings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dynamodb_stream_configuration() :: #{
-%%   <<"streamPolicy">> => string()
-%% }
--type dynamodb_stream_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% unused_action() :: #{
-%%   <<"action">> => [string()],
-%%   <<"lastAccessed">> => non_neg_integer()
-%% }
--type unused_action() :: #{binary() => any()}.
+-type vpc_configuration() :: #{binary() => any()}.
 
 -type apply_archive_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type cancel_policy_generation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type check_access_not_granted_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     unprocessable_entity_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type check_no_new_access_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     unprocessable_entity_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type check_no_public_access_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     unprocessable_entity_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_access_preview_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_analyzer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_archive_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_linked_analyzer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_analyzer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_archive_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_service_linked_analyzer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type generate_finding_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_access_preview_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_analyzed_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_analyzer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_archive_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_finding_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_finding_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_finding_v2_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_findings_statistics_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_generated_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_access_preview_findings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_access_previews_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_analyzed_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_analyzers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_archive_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_findings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_findings_v2_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_policy_generations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_policy_generation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_resource_scan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_analyzer_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_archive_rule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_findings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type validate_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

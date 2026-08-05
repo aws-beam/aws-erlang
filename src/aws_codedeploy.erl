@@ -194,35 +194,79 @@
 
 
 %% Example:
-%% batch_limit_exceeded_exception() :: #{
+%% add_tags_to_on_premises_instances_input() :: #{
+%%   <<"instanceNames">> := list(string()),
+%%   <<"tags">> := list(tag())
+%% }
+-type add_tags_to_on_premises_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% alarm() :: #{
+%%   <<"name">> => string()
+%% }
+-type alarm() :: #{binary() => any()}.
+
+%% Example:
+%% alarm_configuration() :: #{
+%%   <<"alarms">> => list(alarm()),
+%%   <<"enabled">> => boolean(),
+%%   <<"ignorePollAlarmFailure">> => boolean()
+%% }
+-type alarm_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% alarms_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type batch_limit_exceeded_exception() :: #{binary() => any()}.
+-type alarms_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% traffic_route() :: #{
-%%   <<"listenerArns">> => list(string())
+%% app_spec_content() :: #{
+%%   <<"content">> => string(),
+%%   <<"sha256">> => string()
 %% }
--type traffic_route() :: #{binary() => any()}.
+-type app_spec_content() :: #{binary() => any()}.
 
 %% Example:
-%% get_deployment_config_input() :: #{
-%%   <<"deploymentConfigName">> := string()
-%% }
--type get_deployment_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_load_balancer_info_exception() :: #{
+%% application_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_load_balancer_info_exception() :: #{binary() => any()}.
+-type application_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% minimum_healthy_hosts_per_zone() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"value">> => integer()
+%% application_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type minimum_healthy_hosts_per_zone() :: #{binary() => any()}.
+-type application_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% application_info() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"applicationName">> => string(),
+%%   <<"computePlatform">> => list(any()),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"gitHubAccountName">> => string(),
+%%   <<"linkedToGitHub">> => boolean()
+%% }
+-type application_info() :: #{binary() => any()}.
+
+%% Example:
+%% application_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type application_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% application_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type application_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% arn_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type arn_not_supported_exception() :: #{binary() => any()}.
 
 %% Example:
 %% auto_rollback_configuration() :: #{
@@ -232,81 +276,12 @@
 -type auto_rollback_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% deployment_target_id_required_exception() :: #{
-%%   <<"message">> => string()
+%% auto_scaling_group() :: #{
+%%   <<"hook">> => string(),
+%%   <<"name">> => string(),
+%%   <<"terminationHook">> => string()
 %% }
--type deployment_target_id_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_config_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_config_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_event_already_completed_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type lifecycle_event_already_completed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_deployments_input() :: #{
-%%   <<"deploymentIds">> := list(string())
-%% }
--type batch_get_deployments_input() :: #{binary() => any()}.
-
-%% Example:
-%% application_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type application_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_deployment_group_output() :: #{
-%%   <<"hooksNotCleanedUp">> => list(auto_scaling_group())
-%% }
--type delete_deployment_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% instance_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type instance_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_action_for_deployment_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_action_for_deployment_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% skip_wait_time_for_instance_termination_input() :: #{
-%%   <<"deploymentId">> => string()
-%% }
--type skip_wait_time_for_instance_termination_input() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_is_not_in_ready_state_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_is_not_in_ready_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% revision_location() :: #{
-%%   <<"appSpecContent">> => app_spec_content(),
-%%   <<"gitHubLocation">> => git_hub_location(),
-%%   <<"revisionType">> => list(any()),
-%%   <<"s3Location">> => s3_location(),
-%%   <<"string">> => raw_string()
-%% }
--type revision_location() :: #{binary() => any()}.
-
-%% Example:
-%% list_deployment_instances_output() :: #{
-%%   <<"instancesList">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployment_instances_output() :: #{binary() => any()}.
+-type auto_scaling_group() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_application_revisions_input() :: #{
@@ -316,45 +291,77 @@
 -type batch_get_application_revisions_input() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_trigger_config_exception() :: #{
-%%   <<"message">> => string()
+%% batch_get_application_revisions_output() :: #{
+%%   <<"applicationName">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"revisions">> => list(revision_info())
 %% }
--type invalid_trigger_config_exception() :: #{binary() => any()}.
+-type batch_get_application_revisions_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_deployment_instances_input() :: #{
+%% batch_get_applications_input() :: #{
+%%   <<"applicationNames">> := list(string())
+%% }
+-type batch_get_applications_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_applications_output() :: #{
+%%   <<"applicationsInfo">> => list(application_info())
+%% }
+-type batch_get_applications_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_deployment_groups_input() :: #{
+%%   <<"applicationName">> := string(),
+%%   <<"deploymentGroupNames">> := list(string())
+%% }
+-type batch_get_deployment_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_deployment_groups_output() :: #{
+%%   <<"deploymentGroupsInfo">> => list(deployment_group_info()),
+%%   <<"errorMessage">> => string()
+%% }
+-type batch_get_deployment_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_deployment_instances_input() :: #{
 %%   <<"deploymentId">> := string(),
-%%   <<"instanceStatusFilter">> => list(list(any())()),
-%%   <<"instanceTypeFilter">> => list(list(any())()),
-%%   <<"nextToken">> => string()
+%%   <<"instanceIds">> := list(string())
 %% }
--type list_deployment_instances_input() :: #{binary() => any()}.
+-type batch_get_deployment_instances_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_deployment_target_input() :: #{
+%% batch_get_deployment_instances_output() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"instancesSummary">> => list(instance_summary())
+%% }
+-type batch_get_deployment_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_deployment_targets_input() :: #{
 %%   <<"deploymentId">> := string(),
-%%   <<"targetId">> := string()
+%%   <<"targetIds">> := list(string())
 %% }
--type get_deployment_target_input() :: #{binary() => any()}.
+-type batch_get_deployment_targets_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_deployment_instance_input() :: #{
-%%   <<"deploymentId">> := string(),
-%%   <<"instanceId">> := string()
+%% batch_get_deployment_targets_output() :: #{
+%%   <<"deploymentTargets">> => list(deployment_target())
 %% }
--type get_deployment_instance_input() :: #{binary() => any()}.
+-type batch_get_deployment_targets_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_deployment_output() :: #{
-%%   <<"deploymentInfo">> => deployment_info()
+%% batch_get_deployments_input() :: #{
+%%   <<"deploymentIds">> := list(string())
 %% }
--type get_deployment_output() :: #{binary() => any()}.
+-type batch_get_deployments_input() :: #{binary() => any()}.
 
 %% Example:
-%% application_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
+%% batch_get_deployments_output() :: #{
+%%   <<"deploymentsInfo">> => list(deployment_info())
 %% }
--type application_limit_exceeded_exception() :: #{binary() => any()}.
+-type batch_get_deployments_output() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_on_premises_instances_input() :: #{
@@ -363,12 +370,116 @@
 -type batch_get_on_premises_instances_input() :: #{binary() => any()}.
 
 %% Example:
-%% ec2_tag_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
+%% batch_get_on_premises_instances_output() :: #{
+%%   <<"instanceInfos">> => list(instance_info())
 %% }
--type ec2_tag_filter() :: #{binary() => any()}.
+-type batch_get_on_premises_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type batch_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% blue_green_deployment_configuration() :: #{
+%%   <<"deploymentReadyOption">> => deployment_ready_option(),
+%%   <<"greenFleetProvisioningOption">> => green_fleet_provisioning_option(),
+%%   <<"terminateBlueInstancesOnDeploymentSuccess">> => blue_instance_termination_option()
+%% }
+-type blue_green_deployment_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% blue_instance_termination_option() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"terminationWaitTimeInMinutes">> => integer()
+%% }
+-type blue_instance_termination_option() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_name_filter_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type bucket_name_filter_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_formation_target() :: #{
+%%   <<"deploymentId">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lifecycleEvents">> => list(lifecycle_event()),
+%%   <<"resourceType">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetId">> => string(),
+%%   <<"targetVersionWeight">> => float()
+%% }
+-type cloud_formation_target() :: #{binary() => any()}.
+
+%% Example:
+%% continue_deployment_input() :: #{
+%%   <<"deploymentId">> => string(),
+%%   <<"deploymentWaitType">> => list(any())
+%% }
+-type continue_deployment_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_input() :: #{
+%%   <<"applicationName">> := string(),
+%%   <<"computePlatform">> => list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_application_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_output() :: #{
+%%   <<"applicationId">> => string()
+%% }
+-type create_application_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_deployment_config_input() :: #{
+%%   <<"computePlatform">> => list(any()),
+%%   <<"deploymentConfigName">> := string(),
+%%   <<"minimumHealthyHosts">> => minimum_healthy_hosts(),
+%%   <<"trafficRoutingConfig">> => traffic_routing_config(),
+%%   <<"zonalConfig">> => zonal_config()
+%% }
+-type create_deployment_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_deployment_config_output() :: #{
+%%   <<"deploymentConfigId">> => string()
+%% }
+-type create_deployment_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_deployment_group_input() :: #{
+%%   <<"alarmConfiguration">> => alarm_configuration(),
+%%   <<"applicationName">> := string(),
+%%   <<"autoRollbackConfiguration">> => auto_rollback_configuration(),
+%%   <<"autoScalingGroups">> => list(string()),
+%%   <<"blueGreenDeploymentConfiguration">> => blue_green_deployment_configuration(),
+%%   <<"deploymentConfigName">> => string(),
+%%   <<"deploymentGroupName">> := string(),
+%%   <<"deploymentStyle">> => deployment_style(),
+%%   <<"ec2TagFilters">> => list(ec2_tag_filter()),
+%%   <<"ec2TagSet">> => ec2_tag_set(),
+%%   <<"ecsServices">> => list(e_c_s_service()),
+%%   <<"loadBalancerInfo">> => load_balancer_info(),
+%%   <<"onPremisesInstanceTagFilters">> => list(tag_filter()),
+%%   <<"onPremisesTagSet">> => on_premises_tag_set(),
+%%   <<"outdatedInstancesStrategy">> => list(any()),
+%%   <<"serviceRoleArn">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"terminationHookEnabled">> => boolean(),
+%%   <<"triggerConfigurations">> => list(trigger_config())
+%% }
+-type create_deployment_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_deployment_group_output() :: #{
+%%   <<"deploymentGroupId">> => string()
+%% }
+-type create_deployment_group_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_deployment_input() :: #{
@@ -387,169 +498,53 @@
 -type create_deployment_input() :: #{binary() => any()}.
 
 %% Example:
-%% alarm() :: #{
-%%   <<"name">> => string()
+%% create_deployment_output() :: #{
+%%   <<"deploymentId">> => string()
 %% }
--type alarm() :: #{binary() => any()}.
+-type create_deployment_output() :: #{binary() => any()}.
 
 %% Example:
-%% revision_required_exception() :: #{
-%%   <<"message">> => string()
+%% delete_application_input() :: #{
+%%   <<"applicationName">> := string()
 %% }
--type revision_required_exception() :: #{binary() => any()}.
+-type delete_application_input() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_sort_order_exception() :: #{
-%%   <<"message">> => string()
+%% delete_deployment_config_input() :: #{
+%%   <<"deploymentConfigName">> := string()
 %% }
--type invalid_sort_order_exception() :: #{binary() => any()}.
+-type delete_deployment_config_input() :: #{binary() => any()}.
 
 %% Example:
-%% e_c_s_task_set() :: #{
-%%   <<"desiredCount">> => float(),
-%%   <<"identifer">> => string(),
-%%   <<"pendingCount">> => float(),
-%%   <<"runningCount">> => float(),
-%%   <<"status">> => string(),
-%%   <<"targetGroup">> => target_group_info(),
-%%   <<"taskSetLabel">> => list(any()),
-%%   <<"trafficWeight">> => float()
+%% delete_deployment_group_input() :: #{
+%%   <<"applicationName">> := string(),
+%%   <<"deploymentGroupName">> := string()
 %% }
--type e_c_s_task_set() :: #{binary() => any()}.
+-type delete_deployment_group_input() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_instance_status_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_instance_status_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_deployment_groups_output() :: #{
-%%   <<"deploymentGroupsInfo">> => list(deployment_group_info()),
-%%   <<"errorMessage">> => string()
-%% }
--type batch_get_deployment_groups_output() :: #{binary() => any()}.
-
-%% Example:
-%% e_c_s_target() :: #{
-%%   <<"deploymentId">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lifecycleEvents">> => list(lifecycle_event()),
-%%   <<"status">> => list(any()),
-%%   <<"targetArn">> => string(),
-%%   <<"targetId">> => string(),
-%%   <<"taskSetsInfo">> => list(e_c_s_task_set())
-%% }
--type e_c_s_target() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_deployment_targets_output() :: #{
-%%   <<"deploymentTargets">> => list(deployment_target())
-%% }
--type batch_get_deployment_targets_output() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_deployment_instances_input() :: #{
-%%   <<"deploymentId">> := string(),
-%%   <<"instanceIds">> := list(string())
-%% }
--type batch_get_deployment_instances_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_deployment_group_output() :: #{
+%% delete_deployment_group_output() :: #{
 %%   <<"hooksNotCleanedUp">> => list(auto_scaling_group())
 %% }
--type update_deployment_group_output() :: #{binary() => any()}.
+-type delete_deployment_group_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_application_revisions_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"revisions">> => list(revision_location())
+%% delete_git_hub_account_token_input() :: #{
+%%   <<"tokenName">> => string()
 %% }
--type list_application_revisions_output() :: #{binary() => any()}.
+-type delete_git_hub_account_token_input() :: #{binary() => any()}.
 
 %% Example:
-%% git_hub_account_token_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
+%% delete_git_hub_account_token_output() :: #{
+%%   <<"tokenName">> => string()
 %% }
--type git_hub_account_token_does_not_exist_exception() :: #{binary() => any()}.
+-type delete_git_hub_account_token_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_deployment_input() :: #{
-%%   <<"deploymentId">> := string()
+%% delete_resources_by_external_id_input() :: #{
+%%   <<"externalId">> => string()
 %% }
--type get_deployment_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_deployment_status_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_deployment_status_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_target() :: #{
-%%   <<"cloudFormationTarget">> => cloud_formation_target(),
-%%   <<"deploymentTargetType">> => list(any()),
-%%   <<"ecsTarget">> => e_c_s_target(),
-%%   <<"instanceTarget">> => instance_target(),
-%%   <<"lambdaTarget">> => lambda_target()
-%% }
--type deployment_target() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_style() :: #{
-%%   <<"deploymentOption">> => list(any()),
-%%   <<"deploymentType">> => list(any())
-%% }
--type deployment_style() :: #{binary() => any()}.
-
-%% Example:
-%% instance_name_already_registered_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type instance_name_already_registered_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_deployment_style_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_deployment_style_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_operation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_application_output() :: #{
-%%   <<"applicationId">> => string()
-%% }
--type create_application_output() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_config_name_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_config_name_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_minimum_healthy_host_value_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_minimum_healthy_host_value_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_deployment_target_id_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_deployment_target_id_exception() :: #{binary() => any()}.
+-type delete_resources_by_external_id_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resources_by_external_id_output() :: #{
@@ -558,109 +553,116 @@
 -type delete_resources_by_external_id_output() :: #{binary() => any()}.
 
 %% Example:
+%% deployment_already_completed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type deployment_already_completed_exception() :: #{binary() => any()}.
+
+%% Example:
 %% deployment_config_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type deployment_config_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_git_hub_account_token_name_exception() :: #{
+%% deployment_config_does_not_exist_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_git_hub_account_token_name_exception() :: #{binary() => any()}.
+-type deployment_config_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_tags_to_add_exception() :: #{
+%% deployment_config_in_use_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_tags_to_add_exception() :: #{binary() => any()}.
+-type deployment_config_in_use_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_registration_status_exception() :: #{
+%% deployment_config_info() :: #{
+%%   <<"computePlatform">> => list(any()),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"deploymentConfigId">> => string(),
+%%   <<"deploymentConfigName">> => string(),
+%%   <<"minimumHealthyHosts">> => minimum_healthy_hosts(),
+%%   <<"trafficRoutingConfig">> => traffic_routing_config(),
+%%   <<"zonalConfig">> => zonal_config()
+%% }
+-type deployment_config_info() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_config_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_registration_status_exception() :: #{binary() => any()}.
+-type deployment_config_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_update_outdated_instances_only_value_exception() :: #{
+%% deployment_config_name_required_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_update_outdated_instances_only_value_exception() :: #{binary() => any()}.
+-type deployment_config_name_required_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_deployment_targets_input() :: #{
-%%   <<"deploymentId">> := string(),
-%%   <<"nextToken">> => string(),
-%%   <<"targetFilters">> => map()
-%% }
--type list_deployment_targets_input() :: #{binary() => any()}.
-
-%% Example:
-%% instance_does_not_exist_exception() :: #{
+%% deployment_does_not_exist_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type instance_does_not_exist_exception() :: #{binary() => any()}.
+-type deployment_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% app_spec_content() :: #{
-%%   <<"content">> => string(),
-%%   <<"sha256">> => string()
-%% }
--type app_spec_content() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_deployment_targets_input() :: #{
-%%   <<"deploymentId">> := string(),
-%%   <<"targetIds">> := list(string())
-%% }
--type batch_get_deployment_targets_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_bucket_name_filter_exception() :: #{
+%% deployment_group_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_bucket_name_filter_exception() :: #{binary() => any()}.
+-type deployment_group_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_deployment_group_input() :: #{
-%%   <<"applicationName">> := string(),
-%%   <<"deploymentGroupName">> := string()
-%% }
--type get_deployment_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_iam_session_arn_exception() :: #{
+%% deployment_group_does_not_exist_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_iam_session_arn_exception() :: #{binary() => any()}.
+-type deployment_group_does_not_exist_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_deployment_group_output() :: #{
-%%   <<"deploymentGroupId">> => string()
+%% deployment_group_info() :: #{
+%%   <<"alarmConfiguration">> => alarm_configuration(),
+%%   <<"applicationName">> => string(),
+%%   <<"autoRollbackConfiguration">> => auto_rollback_configuration(),
+%%   <<"autoScalingGroups">> => list(auto_scaling_group()),
+%%   <<"blueGreenDeploymentConfiguration">> => blue_green_deployment_configuration(),
+%%   <<"computePlatform">> => list(any()),
+%%   <<"deploymentConfigName">> => string(),
+%%   <<"deploymentGroupId">> => string(),
+%%   <<"deploymentGroupName">> => string(),
+%%   <<"deploymentStyle">> => deployment_style(),
+%%   <<"ec2TagFilters">> => list(ec2_tag_filter()),
+%%   <<"ec2TagSet">> => ec2_tag_set(),
+%%   <<"ecsServices">> => list(e_c_s_service()),
+%%   <<"lastAttemptedDeployment">> => last_deployment_info(),
+%%   <<"lastSuccessfulDeployment">> => last_deployment_info(),
+%%   <<"loadBalancerInfo">> => load_balancer_info(),
+%%   <<"onPremisesInstanceTagFilters">> => list(tag_filter()),
+%%   <<"onPremisesTagSet">> => on_premises_tag_set(),
+%%   <<"outdatedInstancesStrategy">> => list(any()),
+%%   <<"serviceRoleArn">> => string(),
+%%   <<"targetRevision">> => revision_location(),
+%%   <<"terminationHookEnabled">> => boolean(),
+%%   <<"triggerConfigurations">> => list(trigger_config())
 %% }
--type create_deployment_group_output() :: #{binary() => any()}.
+-type deployment_group_info() :: #{binary() => any()}.
 
 %% Example:
-%% zonal_config() :: #{
-%%   <<"firstZoneMonitorDurationInSeconds">> => float(),
-%%   <<"minimumHealthyHostsPerZone">> => minimum_healthy_hosts_per_zone(),
-%%   <<"monitorDurationInSeconds">> => float()
+%% deployment_group_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type zonal_config() :: #{binary() => any()}.
+-type deployment_group_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_deployment_configs_output() :: #{
-%%   <<"deploymentConfigsList">> => list(string()),
-%%   <<"nextToken">> => string()
+%% deployment_group_name_required_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_deployment_configs_output() :: #{binary() => any()}.
+-type deployment_group_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type deployment_id_required_exception() :: #{binary() => any()}.
 
 %% Example:
 %% deployment_info() :: #{
@@ -698,169 +700,16 @@
 -type deployment_info() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_arn_exception() :: #{
+%% deployment_is_not_in_ready_state_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_arn_exception() :: #{binary() => any()}.
+-type deployment_is_not_in_ready_state_exception() :: #{binary() => any()}.
 
 %% Example:
-%% deployment_id_required_exception() :: #{
+%% deployment_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type deployment_id_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% time_based_linear() :: #{
-%%   <<"linearInterval">> => integer(),
-%%   <<"linearPercentage">> => integer()
-%% }
--type time_based_linear() :: #{binary() => any()}.
-
-%% Example:
-%% target_group_pair_info() :: #{
-%%   <<"prodTrafficRoute">> => traffic_route(),
-%%   <<"targetGroups">> => list(target_group_info()),
-%%   <<"testTrafficRoute">> => traffic_route()
-%% }
--type target_group_pair_info() :: #{binary() => any()}.
-
-%% Example:
-%% list_on_premises_instances_output() :: #{
-%%   <<"instanceNames">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_on_premises_instances_output() :: #{binary() => any()}.
-
-%% Example:
-%% iam_user_arn_already_registered_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type iam_user_arn_already_registered_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_deployments_output() :: #{
-%%   <<"deploymentsInfo">> => list(deployment_info())
-%% }
--type batch_get_deployments_output() :: #{binary() => any()}.
-
-%% Example:
-%% application_name_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type application_name_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% register_application_revision_input() :: #{
-%%   <<"applicationName">> := string(),
-%%   <<"description">> => string(),
-%%   <<"revision">> := revision_location()
-%% }
--type register_application_revision_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_git_hub_account_token_names_input() :: #{
-%%   <<"nextToken">> => string()
-%% }
--type list_git_hub_account_token_names_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_file_exists_behavior_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_file_exists_behavior_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_revision_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_revision_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_deployment_instance_output() :: #{
-%%   <<"instanceSummary">> => instance_summary()
-%% }
--type get_deployment_instance_output() :: #{binary() => any()}.
-
-%% Example:
-%% description_too_long_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type description_too_long_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_on_premises_instance_output() :: #{
-%%   <<"instanceInfo">> => instance_info()
-%% }
--type get_on_premises_instance_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_applications_output() :: #{
-%%   <<"applications">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_applications_output() :: #{binary() => any()}.
-
-%% Example:
-%% git_hub_location() :: #{
-%%   <<"commitId">> => string(),
-%%   <<"repository">> => string()
-%% }
--type git_hub_location() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_e_c_s_service_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_e_c_s_service_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_applications_input() :: #{
-%%   <<"applicationNames">> := list(string())
-%% }
--type batch_get_applications_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_alarm_config_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_alarm_config_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_deployment_groups_output() :: #{
-%%   <<"applicationName">> => string(),
-%%   <<"deploymentGroups">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployment_groups_output() :: #{binary() => any()}.
-
-%% Example:
-%% application_info() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"applicationName">> => string(),
-%%   <<"computePlatform">> => list(any()),
-%%   <<"createTime">> => non_neg_integer(),
-%%   <<"gitHubAccountName">> => string(),
-%%   <<"linkedToGitHub">> => boolean()
-%% }
--type application_info() :: #{binary() => any()}.
-
-%% Example:
-%% arn_not_supported_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type arn_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% instance_id_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type instance_id_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_applications_input() :: #{
-%%   <<"nextToken">> => string()
-%% }
--type list_applications_input() :: #{binary() => any()}.
+-type deployment_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% deployment_not_started_exception() :: #{
@@ -869,10 +718,78 @@
 -type deployment_not_started_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_auto_scaling_group_exception() :: #{
+%% deployment_overview() :: #{
+%%   <<"Failed">> => float(),
+%%   <<"InProgress">> => float(),
+%%   <<"Pending">> => float(),
+%%   <<"Ready">> => float(),
+%%   <<"Skipped">> => float(),
+%%   <<"Succeeded">> => float()
+%% }
+-type deployment_overview() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_ready_option() :: #{
+%%   <<"actionOnTimeout">> => list(any()),
+%%   <<"waitTimeInMinutes">> => integer()
+%% }
+-type deployment_ready_option() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_style() :: #{
+%%   <<"deploymentOption">> => list(any()),
+%%   <<"deploymentType">> => list(any())
+%% }
+-type deployment_style() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_target() :: #{
+%%   <<"cloudFormationTarget">> => cloud_formation_target(),
+%%   <<"deploymentTargetType">> => list(any()),
+%%   <<"ecsTarget">> => e_c_s_target(),
+%%   <<"instanceTarget">> => instance_target(),
+%%   <<"lambdaTarget">> => lambda_target()
+%% }
+-type deployment_target() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_target_does_not_exist_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_auto_scaling_group_exception() :: #{binary() => any()}.
+-type deployment_target_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_target_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type deployment_target_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_target_list_size_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type deployment_target_list_size_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_on_premises_instance_input() :: #{
+%%   <<"instanceName">> := string()
+%% }
+-type deregister_on_premises_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% description_too_long_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type description_too_long_exception() :: #{binary() => any()}.
+
+%% Example:
+%% diagnostics() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"logTail">> => string(),
+%%   <<"message">> => string(),
+%%   <<"scriptName">> => string()
+%% }
+-type diagnostics() :: #{binary() => any()}.
 
 %% Example:
 %% e_c_s_service() :: #{
@@ -882,57 +799,84 @@
 -type e_c_s_service() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_time_range_exception() :: #{
+%% e_c_s_service_mapping_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_time_range_exception() :: #{binary() => any()}.
+-type e_c_s_service_mapping_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% deployment_group_info() :: #{
-%%   <<"alarmConfiguration">> => alarm_configuration(),
-%%   <<"applicationName">> => string(),
-%%   <<"autoRollbackConfiguration">> => auto_rollback_configuration(),
-%%   <<"autoScalingGroups">> => list(auto_scaling_group()),
-%%   <<"blueGreenDeploymentConfiguration">> => blue_green_deployment_configuration(),
-%%   <<"computePlatform">> => list(any()),
-%%   <<"deploymentConfigName">> => string(),
-%%   <<"deploymentGroupId">> => string(),
-%%   <<"deploymentGroupName">> => string(),
-%%   <<"deploymentStyle">> => deployment_style(),
-%%   <<"ec2TagFilters">> => list(ec2_tag_filter()),
-%%   <<"ec2TagSet">> => ec2_tag_set(),
-%%   <<"ecsServices">> => list(e_c_s_service()),
-%%   <<"lastAttemptedDeployment">> => last_deployment_info(),
-%%   <<"lastSuccessfulDeployment">> => last_deployment_info(),
-%%   <<"loadBalancerInfo">> => load_balancer_info(),
-%%   <<"onPremisesInstanceTagFilters">> => list(tag_filter()),
-%%   <<"onPremisesTagSet">> => on_premises_tag_set(),
-%%   <<"outdatedInstancesStrategy">> => list(any()),
-%%   <<"serviceRoleArn">> => string(),
-%%   <<"targetRevision">> => revision_location(),
-%%   <<"terminationHookEnabled">> => boolean(),
-%%   <<"triggerConfigurations">> => list(trigger_config())
+%% e_c_s_target() :: #{
+%%   <<"deploymentId">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lifecycleEvents">> => list(lifecycle_event()),
+%%   <<"status">> => list(any()),
+%%   <<"targetArn">> => string(),
+%%   <<"targetId">> => string(),
+%%   <<"taskSetsInfo">> => list(e_c_s_task_set())
 %% }
--type deployment_group_info() :: #{binary() => any()}.
+-type e_c_s_target() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_on_premises_tag_combination_exception() :: #{
-%%   <<"message">> => string()
+%% e_c_s_task_set() :: #{
+%%   <<"desiredCount">> => float(),
+%%   <<"identifer">> => string(),
+%%   <<"pendingCount">> => float(),
+%%   <<"runningCount">> => float(),
+%%   <<"status">> => string(),
+%%   <<"targetGroup">> => target_group_info(),
+%%   <<"taskSetLabel">> => list(any()),
+%%   <<"trafficWeight">> => float()
 %% }
--type invalid_on_premises_tag_combination_exception() :: #{binary() => any()}.
+-type e_c_s_task_set() :: #{binary() => any()}.
 
 %% Example:
-%% on_premises_tag_set() :: #{
-%%   <<"onPremisesTagSetList">> => list(list(tag_filter())())
+%% e_lb_info() :: #{
+%%   <<"name">> => string()
 %% }
--type on_premises_tag_set() :: #{binary() => any()}.
+-type e_lb_info() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
+%% ec2_tag_filter() :: #{
 %%   <<"Key">> => string(),
+%%   <<"Type">> => list(any()),
 %%   <<"Value">> => string()
 %% }
--type tag() :: #{binary() => any()}.
+-type ec2_tag_filter() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_tag_set() :: #{
+%%   <<"ec2TagSetList">> => list(list(ec2_tag_filter())())
+%% }
+-type ec2_tag_set() :: #{binary() => any()}.
+
+%% Example:
+%% error_information() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => string()
+%% }
+-type error_information() :: #{binary() => any()}.
+
+%% Example:
+%% generic_revision_info() :: #{
+%%   <<"deploymentGroups">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"firstUsedTime">> => non_neg_integer(),
+%%   <<"lastUsedTime">> => non_neg_integer(),
+%%   <<"registerTime">> => non_neg_integer()
+%% }
+-type generic_revision_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_input() :: #{
+%%   <<"applicationName">> := string()
+%% }
+-type get_application_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_output() :: #{
+%%   <<"application">> => application_info()
+%% }
+-type get_application_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_application_revision_input() :: #{
@@ -942,10 +886,339 @@
 -type get_application_revision_input() :: #{binary() => any()}.
 
 %% Example:
-%% put_lifecycle_event_hook_execution_status_output() :: #{
-%%   <<"lifecycleEventHookExecutionId">> => string()
+%% get_application_revision_output() :: #{
+%%   <<"applicationName">> => string(),
+%%   <<"revision">> => revision_location(),
+%%   <<"revisionInfo">> => generic_revision_info()
 %% }
--type put_lifecycle_event_hook_execution_status_output() :: #{binary() => any()}.
+-type get_application_revision_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_config_input() :: #{
+%%   <<"deploymentConfigName">> := string()
+%% }
+-type get_deployment_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_config_output() :: #{
+%%   <<"deploymentConfigInfo">> => deployment_config_info()
+%% }
+-type get_deployment_config_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_group_input() :: #{
+%%   <<"applicationName">> := string(),
+%%   <<"deploymentGroupName">> := string()
+%% }
+-type get_deployment_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_group_output() :: #{
+%%   <<"deploymentGroupInfo">> => deployment_group_info()
+%% }
+-type get_deployment_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_input() :: #{
+%%   <<"deploymentId">> := string()
+%% }
+-type get_deployment_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_instance_input() :: #{
+%%   <<"deploymentId">> := string(),
+%%   <<"instanceId">> := string()
+%% }
+-type get_deployment_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_instance_output() :: #{
+%%   <<"instanceSummary">> => instance_summary()
+%% }
+-type get_deployment_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_output() :: #{
+%%   <<"deploymentInfo">> => deployment_info()
+%% }
+-type get_deployment_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_target_input() :: #{
+%%   <<"deploymentId">> := string(),
+%%   <<"targetId">> := string()
+%% }
+-type get_deployment_target_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_target_output() :: #{
+%%   <<"deploymentTarget">> => deployment_target()
+%% }
+-type get_deployment_target_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_on_premises_instance_input() :: #{
+%%   <<"instanceName">> := string()
+%% }
+-type get_on_premises_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_on_premises_instance_output() :: #{
+%%   <<"instanceInfo">> => instance_info()
+%% }
+-type get_on_premises_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% git_hub_account_token_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type git_hub_account_token_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% git_hub_account_token_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type git_hub_account_token_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% git_hub_location() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"repository">> => string()
+%% }
+-type git_hub_location() :: #{binary() => any()}.
+
+%% Example:
+%% green_fleet_provisioning_option() :: #{
+%%   <<"action">> => list(any())
+%% }
+-type green_fleet_provisioning_option() :: #{binary() => any()}.
+
+%% Example:
+%% iam_arn_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type iam_arn_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% iam_session_arn_already_registered_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type iam_session_arn_already_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% iam_user_arn_already_registered_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type iam_user_arn_already_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% iam_user_arn_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type iam_user_arn_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% instance_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type instance_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% instance_id_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type instance_id_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% instance_info() :: #{
+%%   <<"deregisterTime">> => non_neg_integer(),
+%%   <<"iamSessionArn">> => string(),
+%%   <<"iamUserArn">> => string(),
+%%   <<"instanceArn">> => string(),
+%%   <<"instanceName">> => string(),
+%%   <<"registerTime">> => non_neg_integer(),
+%%   <<"tags">> => list(tag())
+%% }
+-type instance_info() :: #{binary() => any()}.
+
+%% Example:
+%% instance_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type instance_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% instance_name_already_registered_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type instance_name_already_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% instance_name_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type instance_name_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% instance_not_registered_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type instance_not_registered_exception() :: #{binary() => any()}.
+
+%% Example:
+%% instance_summary() :: #{
+%%   <<"deploymentId">> => string(),
+%%   <<"instanceId">> => string(),
+%%   <<"instanceType">> => list(any()),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lifecycleEvents">> => list(lifecycle_event()),
+%%   <<"status">> => list(any())
+%% }
+-type instance_summary() :: #{binary() => any()}.
+
+%% Example:
+%% instance_target() :: #{
+%%   <<"deploymentId">> => string(),
+%%   <<"instanceLabel">> => list(any()),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lifecycleEvents">> => list(lifecycle_event()),
+%%   <<"status">> => list(any()),
+%%   <<"targetArn">> => string(),
+%%   <<"targetId">> => string()
+%% }
+-type instance_target() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_alarm_config_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_alarm_config_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_application_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_application_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_arn_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_auto_rollback_config_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_auto_rollback_config_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_auto_scaling_group_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_auto_scaling_group_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_blue_green_deployment_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_blue_green_deployment_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_bucket_name_filter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_bucket_name_filter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_compute_platform_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_compute_platform_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deployed_state_filter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_deployed_state_filter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deployment_config_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_deployment_config_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deployment_group_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_deployment_group_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deployment_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_deployment_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deployment_instance_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_deployment_instance_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deployment_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_deployment_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deployment_style_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_deployment_style_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deployment_target_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_deployment_target_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deployment_wait_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_deployment_wait_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_e_c_s_service_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_e_c_s_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_ec2_tag_combination_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_ec2_tag_combination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_ec2_tag_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_ec2_tag_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_external_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_external_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_file_exists_behavior_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_file_exists_behavior_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_git_hub_account_token_exception() :: #{
@@ -954,30 +1227,218 @@
 -type invalid_git_hub_account_token_exception() :: #{binary() => any()}.
 
 %% Example:
-%% deployment_target_list_size_exceeded_exception() :: #{
+%% invalid_git_hub_account_token_name_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type deployment_target_list_size_exceeded_exception() :: #{binary() => any()}.
+-type invalid_git_hub_account_token_name_exception() :: #{binary() => any()}.
 
 %% Example:
-%% deployment_does_not_exist_exception() :: #{
+%% invalid_iam_session_arn_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type deployment_does_not_exist_exception() :: #{binary() => any()}.
+-type invalid_iam_session_arn_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_application_input() :: #{
-%%   <<"applicationName">> := string(),
-%%   <<"computePlatform">> => list(any()),
-%%   <<"tags">> => list(tag())
+%% invalid_iam_user_arn_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type create_application_input() :: #{binary() => any()}.
+-type invalid_iam_user_arn_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_ignore_application_stop_failures_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_ignore_application_stop_failures_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_instance_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_instance_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_instance_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_instance_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_instance_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_instance_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_key_prefix_filter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_key_prefix_filter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_lifecycle_event_hook_execution_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_lifecycle_event_hook_execution_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_lifecycle_event_hook_execution_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_lifecycle_event_hook_execution_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_load_balancer_info_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_load_balancer_info_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_minimum_healthy_host_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_minimum_healthy_host_value_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_next_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_on_premises_tag_combination_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_on_premises_tag_combination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_registration_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_registration_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_revision_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_revision_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_role_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_role_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sort_by_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_sort_by_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sort_order_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_sort_order_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_filter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_filter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tags_to_add_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tags_to_add_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target_filter_name_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_target_filter_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target_group_pair_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_target_group_pair_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target_instances_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_target_instances_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_time_range_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_time_range_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_traffic_routing_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_traffic_routing_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_trigger_config_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_trigger_config_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_update_outdated_instances_only_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_update_outdated_instances_only_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_zonal_deployment_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_zonal_deployment_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_function_info() :: #{
+%%   <<"currentVersion">> => string(),
+%%   <<"functionAlias">> => string(),
+%%   <<"functionName">> => string(),
+%%   <<"targetVersion">> => string(),
+%%   <<"targetVersionWeight">> => float()
+%% }
+-type lambda_function_info() :: #{binary() => any()}.
+
+%% Example:
+%% lambda_target() :: #{
+%%   <<"deploymentId">> => string(),
+%%   <<"lambdaFunctionInfo">> => lambda_function_info(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lifecycleEvents">> => list(lifecycle_event()),
+%%   <<"status">> => list(any()),
+%%   <<"targetArn">> => string(),
+%%   <<"targetId">> => string()
+%% }
+-type lambda_target() :: #{binary() => any()}.
 
 %% Example:
 %% last_deployment_info() :: #{
@@ -989,10 +1450,502 @@
 -type last_deployment_info() :: #{binary() => any()}.
 
 %% Example:
-%% e_lb_info() :: #{
+%% lifecycle_event() :: #{
+%%   <<"diagnostics">> => diagnostics(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"lifecycleEventName">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type lifecycle_event() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_event_already_completed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type lifecycle_event_already_completed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% lifecycle_hook_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type lifecycle_hook_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_revisions_input() :: #{
+%%   <<"applicationName">> := string(),
+%%   <<"deployed">> => list(any()),
+%%   <<"nextToken">> => string(),
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3KeyPrefix">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_application_revisions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_revisions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"revisions">> => list(revision_location())
+%% }
+-type list_application_revisions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_input() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_applications_output() :: #{
+%%   <<"applications">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_deployment_configs_input() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_configs_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_deployment_configs_output() :: #{
+%%   <<"deploymentConfigsList">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_configs_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_deployment_groups_input() :: #{
+%%   <<"applicationName">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_deployment_groups_output() :: #{
+%%   <<"applicationName">> => string(),
+%%   <<"deploymentGroups">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_deployment_instances_input() :: #{
+%%   <<"deploymentId">> := string(),
+%%   <<"instanceStatusFilter">> => list(list(any())()),
+%%   <<"instanceTypeFilter">> => list(list(any())()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_deployment_instances_output() :: #{
+%%   <<"instancesList">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_deployment_targets_input() :: #{
+%%   <<"deploymentId">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"targetFilters">> => map()
+%% }
+-type list_deployment_targets_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_deployment_targets_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"targetIds">> => list(string())
+%% }
+-type list_deployment_targets_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_deployments_input() :: #{
+%%   <<"applicationName">> => string(),
+%%   <<"createTimeRange">> => time_range(),
+%%   <<"deploymentGroupName">> => string(),
+%%   <<"externalId">> => string(),
+%%   <<"includeOnlyStatuses">> => list(list(any())()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployments_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_deployments_output() :: #{
+%%   <<"deployments">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployments_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_git_hub_account_token_names_input() :: #{
+%%   <<"nextToken">> => string()
+%% }
+-type list_git_hub_account_token_names_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_git_hub_account_token_names_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tokenNameList">> => list(string())
+%% }
+-type list_git_hub_account_token_names_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_on_premises_instances_input() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"registrationStatus">> => list(any()),
+%%   <<"tagFilters">> => list(tag_filter())
+%% }
+-type list_on_premises_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_on_premises_instances_output() :: #{
+%%   <<"instanceNames">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_on_premises_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% load_balancer_info() :: #{
+%%   <<"elbInfoList">> => list(e_lb_info()),
+%%   <<"targetGroupInfoList">> => list(target_group_info()),
+%%   <<"targetGroupPairInfoList">> => list(target_group_pair_info())
+%% }
+-type load_balancer_info() :: #{binary() => any()}.
+
+%% Example:
+%% minimum_healthy_hosts() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type minimum_healthy_hosts() :: #{binary() => any()}.
+
+%% Example:
+%% minimum_healthy_hosts_per_zone() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type minimum_healthy_hosts_per_zone() :: #{binary() => any()}.
+
+%% Example:
+%% multiple_iam_arns_provided_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type multiple_iam_arns_provided_exception() :: #{binary() => any()}.
+
+%% Example:
+%% on_premises_tag_set() :: #{
+%%   <<"onPremisesTagSetList">> => list(list(tag_filter())())
+%% }
+-type on_premises_tag_set() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_supported_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_lifecycle_event_hook_execution_status_input() :: #{
+%%   <<"deploymentId">> => string(),
+%%   <<"lifecycleEventHookExecutionId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type put_lifecycle_event_hook_execution_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_lifecycle_event_hook_execution_status_output() :: #{
+%%   <<"lifecycleEventHookExecutionId">> => string()
+%% }
+-type put_lifecycle_event_hook_execution_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% raw_string() :: #{
+%%   <<"content">> => string(),
+%%   <<"sha256">> => string()
+%% }
+-type raw_string() :: #{binary() => any()}.
+
+%% Example:
+%% register_application_revision_input() :: #{
+%%   <<"applicationName">> := string(),
+%%   <<"description">> => string(),
+%%   <<"revision">> := revision_location()
+%% }
+-type register_application_revision_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_on_premises_instance_input() :: #{
+%%   <<"iamSessionArn">> => string(),
+%%   <<"iamUserArn">> => string(),
+%%   <<"instanceName">> := string()
+%% }
+-type register_on_premises_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% related_deployments() :: #{
+%%   <<"autoUpdateOutdatedInstancesDeploymentIds">> => list(string()),
+%%   <<"autoUpdateOutdatedInstancesRootDeploymentId">> => string()
+%% }
+-type related_deployments() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_on_premises_instances_input() :: #{
+%%   <<"instanceNames">> := list(string()),
+%%   <<"tags">> := list(tag())
+%% }
+-type remove_tags_from_on_premises_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% resource_arn_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_arn_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% revision_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type revision_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% revision_info() :: #{
+%%   <<"genericRevisionInfo">> => generic_revision_info(),
+%%   <<"revisionLocation">> => revision_location()
+%% }
+-type revision_info() :: #{binary() => any()}.
+
+%% Example:
+%% revision_location() :: #{
+%%   <<"appSpecContent">> => app_spec_content(),
+%%   <<"gitHubLocation">> => git_hub_location(),
+%%   <<"revisionType">> => list(any()),
+%%   <<"s3Location">> => s3_location(),
+%%   <<"string">> => raw_string()
+%% }
+-type revision_location() :: #{binary() => any()}.
+
+%% Example:
+%% revision_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type revision_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% role_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type role_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_info() :: #{
+%%   <<"rollbackDeploymentId">> => string(),
+%%   <<"rollbackMessage">> => string(),
+%%   <<"rollbackTriggeringDeploymentId">> => string()
+%% }
+-type rollback_info() :: #{binary() => any()}.
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"bundleType">> => list(any()),
+%%   <<"eTag">> => string(),
+%%   <<"key">> => string(),
+%%   <<"version">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% skip_wait_time_for_instance_termination_input() :: #{
+%%   <<"deploymentId">> => string()
+%% }
+-type skip_wait_time_for_instance_termination_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_deployment_input() :: #{
+%%   <<"autoRollbackEnabled">> => boolean(),
+%%   <<"deploymentId">> := string()
+%% }
+-type stop_deployment_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_deployment_output() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string()
+%% }
+-type stop_deployment_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type tag_filter() :: #{binary() => any()}.
+
+%% Example:
+%% tag_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_required_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{
+
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag_set_list_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type tag_set_list_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target_group_info() :: #{
 %%   <<"name">> => string()
 %% }
--type e_lb_info() :: #{binary() => any()}.
+-type target_group_info() :: #{binary() => any()}.
+
+%% Example:
+%% target_group_pair_info() :: #{
+%%   <<"prodTrafficRoute">> => traffic_route(),
+%%   <<"targetGroups">> => list(target_group_info()),
+%%   <<"testTrafficRoute">> => traffic_route()
+%% }
+-type target_group_pair_info() :: #{binary() => any()}.
+
+%% Example:
+%% target_instances() :: #{
+%%   <<"autoScalingGroups">> => list(string()),
+%%   <<"ec2TagSet">> => ec2_tag_set(),
+%%   <<"tagFilters">> => list(ec2_tag_filter())
+%% }
+-type target_instances() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% time_based_canary() :: #{
+%%   <<"canaryInterval">> => integer(),
+%%   <<"canaryPercentage">> => integer()
+%% }
+-type time_based_canary() :: #{binary() => any()}.
+
+%% Example:
+%% time_based_linear() :: #{
+%%   <<"linearInterval">> => integer(),
+%%   <<"linearPercentage">> => integer()
+%% }
+-type time_based_linear() :: #{binary() => any()}.
+
+%% Example:
+%% time_range() :: #{
+%%   <<"end">> => non_neg_integer(),
+%%   <<"start">> => non_neg_integer()
+%% }
+-type time_range() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_route() :: #{
+%%   <<"listenerArns">> => list(string())
+%% }
+-type traffic_route() :: #{binary() => any()}.
+
+%% Example:
+%% traffic_routing_config() :: #{
+%%   <<"timeBasedCanary">> => time_based_canary(),
+%%   <<"timeBasedLinear">> => time_based_linear(),
+%%   <<"type">> => list(any())
+%% }
+-type traffic_routing_config() :: #{binary() => any()}.
+
+%% Example:
+%% trigger_config() :: #{
+%%   <<"triggerEvents">> => list(list(any())()),
+%%   <<"triggerName">> => string(),
+%%   <<"triggerTargetArn">> => string()
+%% }
+-type trigger_config() :: #{binary() => any()}.
+
+%% Example:
+%% trigger_targets_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type trigger_targets_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_action_for_deployment_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_action_for_deployment_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{
+
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_input() :: #{
+%%   <<"applicationName">> => string(),
+%%   <<"newApplicationName">> => string()
+%% }
+-type update_application_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_deployment_group_input() :: #{
@@ -1019,1023 +1972,70 @@
 -type update_deployment_group_input() :: #{binary() => any()}.
 
 %% Example:
-%% tag_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
+%% update_deployment_group_output() :: #{
+%%   <<"hooksNotCleanedUp">> => list(auto_scaling_group())
 %% }
--type tag_limit_exceeded_exception() :: #{binary() => any()}.
+-type update_deployment_group_output() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_external_id_exception() :: #{
-%%   <<"message">> => string()
+%% zonal_config() :: #{
+%%   <<"firstZoneMonitorDurationInSeconds">> => float(),
+%%   <<"minimumHealthyHostsPerZone">> => minimum_healthy_hosts_per_zone(),
+%%   <<"monitorDurationInSeconds">> => float()
 %% }
--type invalid_external_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_git_hub_account_token_input() :: #{
-%%   <<"tokenName">> => string()
-%% }
--type delete_git_hub_account_token_input() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_target_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_target_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_deployment_config_output() :: #{
-%%   <<"deploymentConfigId">> => string()
-%% }
--type create_deployment_config_output() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_function_info() :: #{
-%%   <<"currentVersion">> => string(),
-%%   <<"functionAlias">> => string(),
-%%   <<"functionName">> => string(),
-%%   <<"targetVersion">> => string(),
-%%   <<"targetVersionWeight">> => float()
-%% }
--type lambda_function_info() :: #{binary() => any()}.
-
-%% Example:
-%% list_deployment_targets_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"targetIds">> => list(string())
-%% }
--type list_deployment_targets_output() :: #{binary() => any()}.
-
-%% Example:
-%% green_fleet_provisioning_option() :: #{
-%%   <<"action">> => list(any())
-%% }
--type green_fleet_provisioning_option() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_input_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_deployment_group_input() :: #{
-%%   <<"applicationName">> := string(),
-%%   <<"deploymentGroupName">> := string()
-%% }
--type delete_deployment_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_on_premises_instances_input() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"registrationStatus">> => list(any()),
-%%   <<"tagFilters">> => list(tag_filter())
-%% }
--type list_on_premises_instances_input() :: #{binary() => any()}.
-
-%% Example:
-%% iam_session_arn_already_registered_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type iam_session_arn_already_registered_exception() :: #{binary() => any()}.
-
-%% Example:
-%% raw_string() :: #{
-%%   <<"content">> => string(),
-%%   <<"sha256">> => string()
-%% }
--type raw_string() :: #{binary() => any()}.
-
-%% Example:
-%% instance_target() :: #{
-%%   <<"deploymentId">> => string(),
-%%   <<"instanceLabel">> => list(any()),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lifecycleEvents">> => list(lifecycle_event()),
-%%   <<"status">> => list(any()),
-%%   <<"targetArn">> => string(),
-%%   <<"targetId">> => string()
-%% }
--type instance_target() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_deployment_group_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_deployment_group_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_config_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_config_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_key_prefix_filter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_key_prefix_filter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% target_instances() :: #{
-%%   <<"autoScalingGroups">> => list(string()),
-%%   <<"ec2TagSet">> => ec2_tag_set(),
-%%   <<"tagFilters">> => list(ec2_tag_filter())
-%% }
--type target_instances() :: #{binary() => any()}.
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"bundleType">> => list(any()),
-%%   <<"eTag">> => string(),
-%%   <<"key">> => string(),
-%%   <<"version">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-%% Example:
-%% blue_green_deployment_configuration() :: #{
-%%   <<"deploymentReadyOption">> => deployment_ready_option(),
-%%   <<"greenFleetProvisioningOption">> => green_fleet_provisioning_option(),
-%%   <<"terminateBlueInstancesOnDeploymentSuccess">> => blue_instance_termination_option()
-%% }
--type blue_green_deployment_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% minimum_healthy_hosts() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"value">> => integer()
-%% }
--type minimum_healthy_hosts() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_deployment_groups_input() :: #{
-%%   <<"applicationName">> := string(),
-%%   <<"deploymentGroupNames">> := list(string())
-%% }
--type batch_get_deployment_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_revisions_input() :: #{
-%%   <<"applicationName">> := string(),
-%%   <<"deployed">> => list(any()),
-%%   <<"nextToken">> => string(),
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3KeyPrefix">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_application_revisions_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_deployment_wait_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_deployment_wait_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_group_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_group_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_role_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_role_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_zonal_deployment_configuration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_zonal_deployment_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_on_premises_instance_input() :: #{
-%%   <<"instanceName">> := string()
-%% }
--type get_on_premises_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% continue_deployment_input() :: #{
-%%   <<"deploymentId">> => string(),
-%%   <<"deploymentWaitType">> => list(any())
-%% }
--type continue_deployment_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_output() :: #{
-%%   <<"application">> => application_info()
-%% }
--type get_application_output() :: #{binary() => any()}.
-
-%% Example:
-%% application_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type application_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{
-
-%% }
--type tag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_overview() :: #{
-%%   <<"Failed">> => float(),
-%%   <<"InProgress">> => float(),
-%%   <<"Pending">> => float(),
-%%   <<"Ready">> => float(),
-%%   <<"Skipped">> => float(),
-%%   <<"Succeeded">> => float()
-%% }
--type deployment_overview() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_on_premises_instances_output() :: #{
-%%   <<"instanceInfos">> => list(instance_info())
-%% }
--type batch_get_on_premises_instances_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_instance_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_instance_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% iam_arn_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type iam_arn_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_deployment_config_input() :: #{
-%%   <<"computePlatform">> => list(any()),
-%%   <<"deploymentConfigName">> := string(),
-%%   <<"minimumHealthyHosts">> => minimum_healthy_hosts(),
-%%   <<"trafficRoutingConfig">> => traffic_routing_config(),
-%%   <<"zonalConfig">> => zonal_config()
-%% }
--type create_deployment_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_formation_target() :: #{
-%%   <<"deploymentId">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lifecycleEvents">> => list(lifecycle_event()),
-%%   <<"resourceType">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"targetId">> => string(),
-%%   <<"targetVersionWeight">> => float()
-%% }
--type cloud_formation_target() :: #{binary() => any()}.
-
-%% Example:
-%% trigger_targets_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type trigger_targets_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% git_hub_account_token_name_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type git_hub_account_token_name_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_arn_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_arn_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_deployment_config_output() :: #{
-%%   <<"deploymentConfigInfo">> => deployment_config_info()
-%% }
--type get_deployment_config_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_traffic_routing_configuration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_traffic_routing_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_deployment_group_input() :: #{
-%%   <<"alarmConfiguration">> => alarm_configuration(),
-%%   <<"applicationName">> := string(),
-%%   <<"autoRollbackConfiguration">> => auto_rollback_configuration(),
-%%   <<"autoScalingGroups">> => list(string()),
-%%   <<"blueGreenDeploymentConfiguration">> => blue_green_deployment_configuration(),
-%%   <<"deploymentConfigName">> => string(),
-%%   <<"deploymentGroupName">> := string(),
-%%   <<"deploymentStyle">> => deployment_style(),
-%%   <<"ec2TagFilters">> => list(ec2_tag_filter()),
-%%   <<"ec2TagSet">> => ec2_tag_set(),
-%%   <<"ecsServices">> => list(e_c_s_service()),
-%%   <<"loadBalancerInfo">> => load_balancer_info(),
-%%   <<"onPremisesInstanceTagFilters">> => list(tag_filter()),
-%%   <<"onPremisesTagSet">> => on_premises_tag_set(),
-%%   <<"outdatedInstancesStrategy">> => list(any()),
-%%   <<"serviceRoleArn">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"terminationHookEnabled">> => boolean(),
-%%   <<"triggerConfigurations">> => list(trigger_config())
-%% }
--type create_deployment_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% blue_instance_termination_option() :: #{
-%%   <<"action">> => list(any()),
-%%   <<"terminationWaitTimeInMinutes">> => integer()
-%% }
--type blue_instance_termination_option() :: #{binary() => any()}.
-
-%% Example:
-%% related_deployments() :: #{
-%%   <<"autoUpdateOutdatedInstancesDeploymentIds">> => list(string()),
-%%   <<"autoUpdateOutdatedInstancesRootDeploymentId">> => string()
-%% }
--type related_deployments() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_group_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_group_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% time_range() :: #{
-%%   <<"end">> => non_neg_integer(),
-%%   <<"start">> => non_neg_integer()
-%% }
--type time_range() :: #{binary() => any()}.
-
-%% Example:
-%% iam_user_arn_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type iam_user_arn_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% diagnostics() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"logTail">> => string(),
-%%   <<"message">> => string(),
-%%   <<"scriptName">> => string()
-%% }
--type diagnostics() :: #{binary() => any()}.
-
-%% Example:
-%% register_on_premises_instance_input() :: #{
-%%   <<"iamSessionArn">> => string(),
-%%   <<"iamUserArn">> => string(),
-%%   <<"instanceName">> := string()
-%% }
--type register_on_premises_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_tag_set() :: #{
-%%   <<"ec2TagSetList">> => list(list(ec2_tag_filter())())
-%% }
--type ec2_tag_set() :: #{binary() => any()}.
-
-%% Example:
-%% revision_info() :: #{
-%%   <<"genericRevisionInfo">> => generic_revision_info(),
-%%   <<"revisionLocation">> => revision_location()
-%% }
--type revision_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_input() :: #{
-%%   <<"applicationName">> := string()
-%% }
--type delete_application_input() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_hook_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type lifecycle_hook_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_deployment_config_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_deployment_config_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_application_revisions_output() :: #{
-%%   <<"applicationName">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"revisions">> => list(revision_info())
-%% }
--type batch_get_application_revisions_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_sort_by_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_sort_by_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_deployment_groups_input() :: #{
-%%   <<"applicationName">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployment_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_applications_output() :: #{
-%%   <<"applicationsInfo">> => list(application_info())
-%% }
--type batch_get_applications_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_deployment_input() :: #{
-%%   <<"autoRollbackEnabled">> => boolean(),
-%%   <<"deploymentId">> := string()
-%% }
--type stop_deployment_input() :: #{binary() => any()}.
-
-%% Example:
-%% traffic_routing_config() :: #{
-%%   <<"timeBasedCanary">> => time_based_canary(),
-%%   <<"timeBasedLinear">> => time_based_linear(),
-%%   <<"type">> => list(any())
-%% }
--type traffic_routing_config() :: #{binary() => any()}.
-
-%% Example:
-%% role_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type role_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% generic_revision_info() :: #{
-%%   <<"deploymentGroups">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"firstUsedTime">> => non_neg_integer(),
-%%   <<"lastUsedTime">> => non_neg_integer(),
-%%   <<"registerTime">> => non_neg_integer()
-%% }
--type generic_revision_info() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_deployment_instances_output() :: #{
-%%   <<"errorMessage">> => string(),
-%%   <<"instancesSummary">> => list(instance_summary())
-%% }
--type batch_get_deployment_instances_output() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_group() :: #{
-%%   <<"hook">> => string(),
-%%   <<"name">> => string(),
-%%   <<"terminationHook">> => string()
-%% }
--type auto_scaling_group() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_to_on_premises_instances_input() :: #{
-%%   <<"instanceNames">> := list(string()),
-%%   <<"tags">> := list(tag())
-%% }
--type add_tags_to_on_premises_instances_input() :: #{binary() => any()}.
-
-%% Example:
-%% resource_validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_deployed_state_filter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_deployed_state_filter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_deployment_group_output() :: #{
-%%   <<"deploymentGroupInfo">> => deployment_group_info()
-%% }
--type get_deployment_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{
-
-%% }
--type untag_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% revision_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type revision_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% load_balancer_info() :: #{
-%%   <<"elbInfoList">> => list(e_lb_info()),
-%%   <<"targetGroupInfoList">> => list(target_group_info()),
-%%   <<"targetGroupPairInfoList">> => list(target_group_pair_info())
-%% }
--type load_balancer_info() :: #{binary() => any()}.
-
-%% Example:
-%% e_c_s_service_mapping_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type e_c_s_service_mapping_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_iam_user_arn_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_iam_user_arn_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_on_premises_instance_input() :: #{
-%%   <<"instanceName">> := string()
-%% }
--type deregister_on_premises_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% instance_summary() :: #{
-%%   <<"deploymentId">> => string(),
-%%   <<"instanceId">> => string(),
-%%   <<"instanceType">> => list(any()),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lifecycleEvents">> => list(lifecycle_event()),
-%%   <<"status">> => list(any())
-%% }
--type instance_summary() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_application_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_application_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% bucket_name_filter_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type bucket_name_filter_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_already_completed_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_already_completed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_instance_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_instance_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rollback_info() :: #{
-%%   <<"rollbackDeploymentId">> => string(),
-%%   <<"rollbackMessage">> => string(),
-%%   <<"rollbackTriggeringDeploymentId">> => string()
-%% }
--type rollback_info() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_input() :: #{
-%%   <<"applicationName">> => string(),
-%%   <<"newApplicationName">> => string()
-%% }
--type update_application_input() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% lifecycle_event() :: #{
-%%   <<"diagnostics">> => diagnostics(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"lifecycleEventName">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type lifecycle_event() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_config_info() :: #{
-%%   <<"computePlatform">> => list(any()),
-%%   <<"createTime">> => non_neg_integer(),
-%%   <<"deploymentConfigId">> => string(),
-%%   <<"deploymentConfigName">> => string(),
-%%   <<"minimumHealthyHosts">> => minimum_healthy_hosts(),
-%%   <<"trafficRoutingConfig">> => traffic_routing_config(),
-%%   <<"zonalConfig">> => zonal_config()
-%% }
--type deployment_config_info() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_blue_green_deployment_configuration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_blue_green_deployment_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_deployment_config_input() :: #{
-%%   <<"deploymentConfigName">> := string()
-%% }
--type delete_deployment_config_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_target_filter_name_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_target_filter_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_deployments_output() :: #{
-%%   <<"deployments">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployments_output() :: #{binary() => any()}.
-
-%% Example:
-%% error_information() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string()
-%% }
--type error_information() :: #{binary() => any()}.
-
-%% Example:
-%% tag_set_list_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_set_list_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_deployment_output() :: #{
-%%   <<"deploymentId">> => string()
-%% }
--type create_deployment_output() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_ready_option() :: #{
-%%   <<"actionOnTimeout">> => list(any()),
-%%   <<"waitTimeInMinutes">> => integer()
-%% }
--type deployment_ready_option() :: #{binary() => any()}.
-
-%% Example:
-%% list_deployments_input() :: #{
-%%   <<"applicationName">> => string(),
-%%   <<"createTimeRange">> => time_range(),
-%%   <<"deploymentGroupName">> => string(),
-%%   <<"externalId">> => string(),
-%%   <<"includeOnlyStatuses">> => list(list(any())()),
-%%   <<"nextToken">> => string()
-%% }
--type list_deployments_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_deployment_configs_input() :: #{
-%%   <<"nextToken">> => string()
-%% }
--type list_deployment_configs_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_revision_output() :: #{
-%%   <<"applicationName">> => string(),
-%%   <<"revision">> => revision_location(),
-%%   <<"revisionInfo">> => generic_revision_info()
-%% }
--type get_application_revision_output() :: #{binary() => any()}.
-
-%% Example:
-%% instance_info() :: #{
-%%   <<"deregisterTime">> => non_neg_integer(),
-%%   <<"iamSessionArn">> => string(),
-%%   <<"iamUserArn">> => string(),
-%%   <<"instanceArn">> => string(),
-%%   <<"instanceName">> => string(),
-%%   <<"registerTime">> => non_neg_integer(),
-%%   <<"tags">> => list(tag())
-%% }
--type instance_info() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_group_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_group_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% lambda_target() :: #{
-%%   <<"deploymentId">> => string(),
-%%   <<"lambdaFunctionInfo">> => lambda_function_info(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lifecycleEvents">> => list(lifecycle_event()),
-%%   <<"status">> => list(any()),
-%%   <<"targetArn">> => string(),
-%%   <<"targetId">> => string()
-%% }
--type lambda_target() :: #{binary() => any()}.
-
-%% Example:
-%% tag_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type tag_filter() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_input() :: #{
-%%   <<"applicationName">> := string()
-%% }
--type get_application_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_deployment_instance_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_deployment_instance_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% operation_not_supported_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type operation_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_deployment_target_output() :: #{
-%%   <<"deploymentTarget">> => deployment_target()
-%% }
--type get_deployment_target_output() :: #{binary() => any()}.
-
-%% Example:
-%% multiple_iam_arns_provided_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type multiple_iam_arns_provided_exception() :: #{binary() => any()}.
-
-%% Example:
-%% time_based_canary() :: #{
-%%   <<"canaryInterval">> => integer(),
-%%   <<"canaryPercentage">> => integer()
-%% }
--type time_based_canary() :: #{binary() => any()}.
-
-%% Example:
-%% stop_deployment_output() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string()
-%% }
--type stop_deployment_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_git_hub_account_token_output() :: #{
-%%   <<"tokenName">> => string()
-%% }
--type delete_git_hub_account_token_output() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_from_on_premises_instances_input() :: #{
-%%   <<"instanceNames">> := list(string()),
-%%   <<"tags">> := list(tag())
-%% }
--type remove_tags_from_on_premises_instances_input() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_target_instances_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_target_instances_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_compute_platform_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_compute_platform_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_config_does_not_exist_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_config_does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_ignore_application_stop_failures_value_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_ignore_application_stop_failures_value_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tag_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_tag_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tag_filter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_tag_filter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_target_group_pair_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_target_group_pair_exception() :: #{binary() => any()}.
-
-%% Example:
-%% alarms_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type alarms_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_git_hub_account_token_names_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tokenNameList">> => list(string())
-%% }
--type list_git_hub_account_token_names_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_lifecycle_event_hook_execution_status_input() :: #{
-%%   <<"deploymentId">> => string(),
-%%   <<"lifecycleEventHookExecutionId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type put_lifecycle_event_hook_execution_status_input() :: #{binary() => any()}.
-
-%% Example:
-%% instance_name_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type instance_name_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% trigger_config() :: #{
-%%   <<"triggerEvents">> => list(list(any())()),
-%%   <<"triggerName">> => string(),
-%%   <<"triggerTargetArn">> => string()
-%% }
--type trigger_config() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_deployment_id_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_deployment_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% instance_not_registered_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type instance_not_registered_exception() :: #{binary() => any()}.
-
-%% Example:
-%% alarm_configuration() :: #{
-%%   <<"alarms">> => list(alarm()),
-%%   <<"enabled">> => boolean(),
-%%   <<"ignorePollAlarmFailure">> => boolean()
-%% }
--type alarm_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_ec2_tag_combination_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_ec2_tag_combination_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_ec2_tag_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_ec2_tag_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_auto_rollback_config_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_auto_rollback_config_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_lifecycle_event_hook_execution_id_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_lifecycle_event_hook_execution_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_group_name_required_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type deployment_group_name_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_lifecycle_event_hook_execution_status_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_lifecycle_event_hook_execution_status_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resources_by_external_id_input() :: #{
-%%   <<"externalId">> => string()
-%% }
--type delete_resources_by_external_id_input() :: #{binary() => any()}.
-
-%% Example:
-%% target_group_info() :: #{
-%%   <<"name">> => string()
-%% }
--type target_group_info() :: #{binary() => any()}.
+-type zonal_config() :: #{binary() => any()}.
 
 -type add_tags_to_on_premises_instances_errors() ::
-    instance_not_registered_exception() | 
-    instance_name_required_exception() | 
+    tag_required_exception() | 
+    tag_limit_exceeded_exception() | 
     invalid_tag_exception() | 
     invalid_instance_name_exception() | 
-    tag_limit_exceeded_exception() | 
-    tag_required_exception() | 
+    instance_not_registered_exception() | 
+    instance_name_required_exception() | 
     instance_limit_exceeded_exception().
 
 -type batch_get_application_revisions_errors() ::
-    invalid_application_name_exception() | 
-    invalid_revision_exception() | 
-    application_name_required_exception() | 
     revision_required_exception() | 
-    application_does_not_exist_exception() | 
-    batch_limit_exceeded_exception().
+    invalid_revision_exception() | 
+    invalid_application_name_exception() | 
+    batch_limit_exceeded_exception() | 
+    application_name_required_exception() | 
+    application_does_not_exist_exception().
 
 -type batch_get_applications_errors() ::
     invalid_application_name_exception() | 
+    batch_limit_exceeded_exception() | 
     application_name_required_exception() | 
-    application_does_not_exist_exception() | 
-    batch_limit_exceeded_exception().
+    application_does_not_exist_exception().
 
 -type batch_get_deployment_groups_errors() ::
+    invalid_deployment_group_name_exception() | 
+    invalid_application_name_exception() | 
     deployment_group_name_required_exception() | 
     deployment_config_does_not_exist_exception() | 
-    invalid_application_name_exception() | 
-    invalid_deployment_group_name_exception() | 
+    batch_limit_exceeded_exception() | 
     application_name_required_exception() | 
-    application_does_not_exist_exception() | 
-    batch_limit_exceeded_exception().
+    application_does_not_exist_exception().
 
 -type batch_get_deployment_instances_errors() ::
+    invalid_instance_name_exception() | 
     invalid_deployment_id_exception() | 
     invalid_compute_platform_exception() | 
-    invalid_instance_name_exception() | 
-    deployment_does_not_exist_exception() | 
     instance_id_required_exception() | 
     deployment_id_required_exception() | 
+    deployment_does_not_exist_exception() | 
     batch_limit_exceeded_exception().
 
 -type batch_get_deployment_targets_errors() ::
+    invalid_deployment_target_id_exception() | 
     invalid_deployment_id_exception() | 
-    deployment_target_does_not_exist_exception() | 
-    deployment_does_not_exist_exception() | 
+    instance_does_not_exist_exception() | 
     deployment_target_list_size_exceeded_exception() | 
+    deployment_target_id_required_exception() | 
+    deployment_target_does_not_exist_exception() | 
     deployment_not_started_exception() | 
     deployment_id_required_exception() | 
-    instance_does_not_exist_exception() | 
-    invalid_deployment_target_id_exception() | 
-    deployment_target_id_required_exception().
+    deployment_does_not_exist_exception().
 
 -type batch_get_deployments_errors() ::
     invalid_deployment_id_exception() | 
@@ -2043,129 +2043,129 @@
     batch_limit_exceeded_exception().
 
 -type batch_get_on_premises_instances_errors() ::
-    instance_name_required_exception() | 
     invalid_instance_name_exception() | 
+    instance_name_required_exception() | 
     batch_limit_exceeded_exception().
 
 -type continue_deployment_errors() ::
-    invalid_deployment_id_exception() | 
-    deployment_already_completed_exception() | 
+    unsupported_action_for_deployment_type_exception() | 
     invalid_deployment_wait_type_exception() | 
-    deployment_does_not_exist_exception() | 
-    deployment_id_required_exception() | 
     invalid_deployment_status_exception() | 
+    invalid_deployment_id_exception() | 
     deployment_is_not_in_ready_state_exception() | 
-    unsupported_action_for_deployment_type_exception().
+    deployment_id_required_exception() | 
+    deployment_does_not_exist_exception() | 
+    deployment_already_completed_exception().
 
 -type create_application_errors() ::
+    invalid_tags_to_add_exception() | 
     invalid_compute_platform_exception() | 
     invalid_application_name_exception() | 
-    application_already_exists_exception() | 
     application_name_required_exception() | 
-    invalid_tags_to_add_exception() | 
-    application_limit_exceeded_exception().
+    application_limit_exceeded_exception() | 
+    application_already_exists_exception().
 
 -type create_deployment_errors() ::
-    deployment_group_name_required_exception() | 
-    invalid_auto_rollback_config_exception() | 
-    alarms_limit_exceeded_exception() | 
-    invalid_ignore_application_stop_failures_value_exception() | 
-    deployment_config_does_not_exist_exception() | 
-    invalid_target_instances_exception() | 
-    deployment_limit_exceeded_exception() | 
-    invalid_application_name_exception() | 
     throttling_exception() | 
+    revision_required_exception() | 
     revision_does_not_exist_exception() | 
-    invalid_deployment_config_name_exception() | 
-    deployment_group_does_not_exist_exception() | 
+    invalid_update_outdated_instances_only_value_exception() | 
     invalid_traffic_routing_configuration_exception() | 
+    invalid_target_instances_exception() | 
     invalid_role_exception() | 
-    invalid_deployment_group_name_exception() | 
+    invalid_revision_exception() | 
+    invalid_load_balancer_info_exception() | 
+    invalid_ignore_application_stop_failures_value_exception() | 
     invalid_git_hub_account_token_exception() | 
+    invalid_file_exists_behavior_exception() | 
+    invalid_deployment_group_name_exception() | 
+    invalid_deployment_config_name_exception() | 
     invalid_auto_scaling_group_exception() | 
+    invalid_auto_rollback_config_exception() | 
+    invalid_application_name_exception() | 
     invalid_alarm_config_exception() | 
     description_too_long_exception() | 
-    invalid_revision_exception() | 
-    invalid_file_exists_behavior_exception() | 
+    deployment_limit_exceeded_exception() | 
+    deployment_group_name_required_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    deployment_config_does_not_exist_exception() | 
     application_name_required_exception() | 
-    invalid_update_outdated_instances_only_value_exception() | 
-    revision_required_exception() | 
     application_does_not_exist_exception() | 
-    invalid_load_balancer_info_exception().
+    alarms_limit_exceeded_exception().
 
 -type create_deployment_config_errors() ::
-    invalid_compute_platform_exception() | 
-    invalid_deployment_config_name_exception() | 
-    invalid_traffic_routing_configuration_exception() | 
     invalid_zonal_deployment_configuration_exception() | 
-    deployment_config_already_exists_exception() | 
+    invalid_traffic_routing_configuration_exception() | 
     invalid_minimum_healthy_host_value_exception() | 
+    invalid_deployment_config_name_exception() | 
+    invalid_compute_platform_exception() | 
     deployment_config_name_required_exception() | 
-    deployment_config_limit_exceeded_exception().
+    deployment_config_limit_exceeded_exception() | 
+    deployment_config_already_exists_exception().
 
 -type create_deployment_group_errors() ::
-    deployment_group_name_required_exception() | 
-    invalid_auto_rollback_config_exception() | 
+    trigger_targets_limit_exceeded_exception() | 
+    throttling_exception() | 
+    tag_set_list_limit_exceeded_exception() | 
+    role_required_exception() | 
+    lifecycle_hook_limit_exceeded_exception() | 
+    invalid_trigger_config_exception() | 
+    invalid_traffic_routing_configuration_exception() | 
+    invalid_target_group_pair_exception() | 
+    invalid_tags_to_add_exception() | 
+    invalid_tag_exception() | 
+    invalid_role_exception() | 
+    invalid_on_premises_tag_combination_exception() | 
+    invalid_load_balancer_info_exception() | 
+    invalid_input_exception() | 
     invalid_ec2_tag_exception() | 
     invalid_ec2_tag_combination_exception() | 
-    alarms_limit_exceeded_exception() | 
-    invalid_target_group_pair_exception() | 
-    invalid_tag_exception() | 
-    deployment_config_does_not_exist_exception() | 
-    deployment_group_limit_exceeded_exception() | 
-    tag_set_list_limit_exceeded_exception() | 
-    invalid_blue_green_deployment_configuration_exception() | 
-    invalid_application_name_exception() | 
-    throttling_exception() | 
-    e_c_s_service_mapping_limit_exceeded_exception() | 
-    role_required_exception() | 
-    invalid_deployment_config_name_exception() | 
-    lifecycle_hook_limit_exceeded_exception() | 
-    invalid_traffic_routing_configuration_exception() | 
-    trigger_targets_limit_exceeded_exception() | 
-    invalid_role_exception() | 
-    deployment_group_already_exists_exception() | 
-    invalid_deployment_group_name_exception() | 
-    invalid_input_exception() | 
-    invalid_on_premises_tag_combination_exception() | 
-    invalid_auto_scaling_group_exception() | 
-    invalid_alarm_config_exception() | 
     invalid_e_c_s_service_exception() | 
-    application_name_required_exception() | 
-    invalid_tags_to_add_exception() | 
     invalid_deployment_style_exception() | 
-    invalid_trigger_config_exception() | 
+    invalid_deployment_group_name_exception() | 
+    invalid_deployment_config_name_exception() | 
+    invalid_blue_green_deployment_configuration_exception() | 
+    invalid_auto_scaling_group_exception() | 
+    invalid_auto_rollback_config_exception() | 
+    invalid_application_name_exception() | 
+    invalid_alarm_config_exception() | 
+    e_c_s_service_mapping_limit_exceeded_exception() | 
+    deployment_group_name_required_exception() | 
+    deployment_group_limit_exceeded_exception() | 
+    deployment_group_already_exists_exception() | 
+    deployment_config_does_not_exist_exception() | 
+    application_name_required_exception() | 
     application_does_not_exist_exception() | 
-    invalid_load_balancer_info_exception().
+    alarms_limit_exceeded_exception().
 
 -type delete_application_errors() ::
-    invalid_application_name_exception() | 
     invalid_role_exception() | 
+    invalid_application_name_exception() | 
     application_name_required_exception().
 
 -type delete_deployment_config_errors() ::
+    invalid_operation_exception() | 
     invalid_deployment_config_name_exception() | 
-    deployment_config_in_use_exception() | 
     deployment_config_name_required_exception() | 
-    invalid_operation_exception().
+    deployment_config_in_use_exception().
 
 -type delete_deployment_group_errors() ::
-    deployment_group_name_required_exception() | 
-    invalid_application_name_exception() | 
     invalid_role_exception() | 
     invalid_deployment_group_name_exception() | 
+    invalid_application_name_exception() | 
+    deployment_group_name_required_exception() | 
     application_name_required_exception().
 
 -type delete_git_hub_account_token_errors() ::
-    operation_not_supported_exception() | 
     resource_validation_exception() | 
-    git_hub_account_token_name_required_exception() | 
+    operation_not_supported_exception() | 
     invalid_git_hub_account_token_name_exception() | 
+    git_hub_account_token_name_required_exception() | 
     git_hub_account_token_does_not_exist_exception().
 
 -type deregister_on_premises_instance_errors() ::
-    instance_name_required_exception() | 
-    invalid_instance_name_exception().
+    invalid_instance_name_exception() | 
+    instance_name_required_exception().
 
 -type get_application_errors() ::
     invalid_application_name_exception() | 
@@ -2173,67 +2173,67 @@
     application_does_not_exist_exception().
 
 -type get_application_revision_errors() ::
-    invalid_application_name_exception() | 
+    revision_required_exception() | 
     revision_does_not_exist_exception() | 
     invalid_revision_exception() | 
+    invalid_application_name_exception() | 
     application_name_required_exception() | 
-    revision_required_exception() | 
     application_does_not_exist_exception().
 
 -type get_deployment_errors() ::
     invalid_deployment_id_exception() | 
-    deployment_does_not_exist_exception() | 
-    deployment_id_required_exception().
+    deployment_id_required_exception() | 
+    deployment_does_not_exist_exception().
 
 -type get_deployment_config_errors() ::
-    deployment_config_does_not_exist_exception() | 
-    invalid_compute_platform_exception() | 
     invalid_deployment_config_name_exception() | 
-    deployment_config_name_required_exception().
+    invalid_compute_platform_exception() | 
+    deployment_config_name_required_exception() | 
+    deployment_config_does_not_exist_exception().
 
 -type get_deployment_group_errors() ::
-    deployment_group_name_required_exception() | 
-    deployment_config_does_not_exist_exception() | 
-    invalid_application_name_exception() | 
-    deployment_group_does_not_exist_exception() | 
     invalid_deployment_group_name_exception() | 
+    invalid_application_name_exception() | 
+    deployment_group_name_required_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    deployment_config_does_not_exist_exception() | 
     application_name_required_exception() | 
     application_does_not_exist_exception().
 
 -type get_deployment_instance_errors() ::
+    invalid_instance_name_exception() | 
     invalid_deployment_id_exception() | 
     invalid_compute_platform_exception() | 
-    invalid_instance_name_exception() | 
-    deployment_does_not_exist_exception() | 
     instance_id_required_exception() | 
+    instance_does_not_exist_exception() | 
     deployment_id_required_exception() | 
-    instance_does_not_exist_exception().
+    deployment_does_not_exist_exception().
 
 -type get_deployment_target_errors() ::
-    invalid_deployment_id_exception() | 
     invalid_instance_name_exception() | 
+    invalid_deployment_target_id_exception() | 
+    invalid_deployment_id_exception() | 
+    deployment_target_id_required_exception() | 
     deployment_target_does_not_exist_exception() | 
-    deployment_does_not_exist_exception() | 
     deployment_not_started_exception() | 
     deployment_id_required_exception() | 
-    invalid_deployment_target_id_exception() | 
-    deployment_target_id_required_exception().
+    deployment_does_not_exist_exception().
 
 -type get_on_premises_instance_errors() ::
+    invalid_instance_name_exception() | 
     instance_not_registered_exception() | 
-    instance_name_required_exception() | 
-    invalid_instance_name_exception().
+    instance_name_required_exception().
 
 -type list_application_revisions_errors() ::
-    bucket_name_filter_required_exception() | 
-    invalid_application_name_exception() | 
-    invalid_deployed_state_filter_exception() | 
-    invalid_sort_by_exception() | 
-    invalid_key_prefix_filter_exception() | 
-    invalid_next_token_exception() | 
-    application_name_required_exception() | 
-    invalid_bucket_name_filter_exception() | 
     invalid_sort_order_exception() | 
+    invalid_sort_by_exception() | 
+    invalid_next_token_exception() | 
+    invalid_key_prefix_filter_exception() | 
+    invalid_deployed_state_filter_exception() | 
+    invalid_bucket_name_filter_exception() | 
+    invalid_application_name_exception() | 
+    bucket_name_filter_required_exception() | 
+    application_name_required_exception() | 
     application_does_not_exist_exception().
 
 -type list_applications_errors() ::
@@ -2243,174 +2243,174 @@
     invalid_next_token_exception().
 
 -type list_deployment_groups_errors() ::
-    invalid_application_name_exception() | 
     invalid_next_token_exception() | 
+    invalid_application_name_exception() | 
     application_name_required_exception() | 
     application_does_not_exist_exception().
 
 -type list_deployment_instances_errors() ::
+    invalid_target_filter_name_exception() | 
+    invalid_next_token_exception() | 
+    invalid_instance_type_exception() | 
+    invalid_instance_status_exception() | 
+    invalid_deployment_instance_type_exception() | 
     invalid_deployment_id_exception() | 
     invalid_compute_platform_exception() | 
-    invalid_deployment_instance_type_exception() | 
-    invalid_target_filter_name_exception() | 
-    invalid_instance_type_exception() | 
-    invalid_next_token_exception() | 
-    deployment_does_not_exist_exception() | 
     deployment_not_started_exception() | 
     deployment_id_required_exception() | 
-    invalid_instance_status_exception().
+    deployment_does_not_exist_exception().
 
 -type list_deployment_targets_errors() ::
-    invalid_deployment_id_exception() | 
-    invalid_deployment_instance_type_exception() | 
     invalid_target_filter_name_exception() | 
-    invalid_instance_type_exception() | 
     invalid_next_token_exception() | 
-    deployment_does_not_exist_exception() | 
+    invalid_instance_type_exception() | 
+    invalid_instance_status_exception() | 
+    invalid_deployment_instance_type_exception() | 
+    invalid_deployment_id_exception() | 
     deployment_not_started_exception() | 
     deployment_id_required_exception() | 
-    invalid_instance_status_exception().
+    deployment_does_not_exist_exception().
 
 -type list_deployments_errors() ::
-    deployment_group_name_required_exception() | 
-    invalid_application_name_exception() | 
-    deployment_group_does_not_exist_exception() | 
-    invalid_deployment_group_name_exception() | 
+    invalid_time_range_exception() | 
+    invalid_next_token_exception() | 
     invalid_input_exception() | 
     invalid_external_id_exception() | 
-    invalid_next_token_exception() | 
-    invalid_time_range_exception() | 
-    application_name_required_exception() | 
     invalid_deployment_status_exception() | 
+    invalid_deployment_group_name_exception() | 
+    invalid_application_name_exception() | 
+    deployment_group_name_required_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    application_name_required_exception() | 
     application_does_not_exist_exception().
 
 -type list_git_hub_account_token_names_errors() ::
-    operation_not_supported_exception() | 
     resource_validation_exception() | 
+    operation_not_supported_exception() | 
     invalid_next_token_exception().
 
 -type list_on_premises_instances_errors() ::
     invalid_tag_filter_exception() | 
-    invalid_next_token_exception() | 
-    invalid_registration_status_exception().
+    invalid_registration_status_exception() | 
+    invalid_next_token_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_arn_required_exception() | 
-    arn_not_supported_exception() | 
-    invalid_arn_exception().
+    invalid_arn_exception() | 
+    arn_not_supported_exception().
 
 -type put_lifecycle_event_hook_execution_status_errors() ::
+    unsupported_action_for_deployment_type_exception() | 
+    lifecycle_event_already_completed_exception() | 
     invalid_lifecycle_event_hook_execution_status_exception() | 
     invalid_lifecycle_event_hook_execution_id_exception() | 
     invalid_deployment_id_exception() | 
-    deployment_does_not_exist_exception() | 
     deployment_id_required_exception() | 
-    unsupported_action_for_deployment_type_exception() | 
-    lifecycle_event_already_completed_exception().
+    deployment_does_not_exist_exception().
 
 -type register_application_revision_errors() ::
+    revision_required_exception() | 
+    invalid_revision_exception() | 
     invalid_application_name_exception() | 
     description_too_long_exception() | 
-    invalid_revision_exception() | 
     application_name_required_exception() | 
-    revision_required_exception() | 
     application_does_not_exist_exception().
 
 -type register_on_premises_instance_errors() ::
-    instance_name_required_exception() | 
     multiple_iam_arns_provided_exception() | 
-    invalid_iam_user_arn_exception() | 
-    iam_user_arn_required_exception() | 
-    iam_arn_required_exception() | 
     invalid_instance_name_exception() | 
-    iam_session_arn_already_registered_exception() | 
-    iam_user_arn_already_registered_exception() | 
+    invalid_iam_user_arn_exception() | 
     invalid_iam_session_arn_exception() | 
-    instance_name_already_registered_exception().
+    instance_name_required_exception() | 
+    instance_name_already_registered_exception() | 
+    iam_user_arn_required_exception() | 
+    iam_user_arn_already_registered_exception() | 
+    iam_session_arn_already_registered_exception() | 
+    iam_arn_required_exception().
 
 -type remove_tags_from_on_premises_instances_errors() ::
-    instance_not_registered_exception() | 
-    instance_name_required_exception() | 
+    tag_required_exception() | 
+    tag_limit_exceeded_exception() | 
     invalid_tag_exception() | 
     invalid_instance_name_exception() | 
-    tag_limit_exceeded_exception() | 
-    tag_required_exception() | 
+    instance_not_registered_exception() | 
+    instance_name_required_exception() | 
     instance_limit_exceeded_exception().
 
 -type skip_wait_time_for_instance_termination_errors() ::
+    unsupported_action_for_deployment_type_exception() | 
     invalid_deployment_id_exception() | 
-    deployment_already_completed_exception() | 
-    deployment_does_not_exist_exception() | 
     deployment_not_started_exception() | 
     deployment_id_required_exception() | 
-    unsupported_action_for_deployment_type_exception().
+    deployment_does_not_exist_exception() | 
+    deployment_already_completed_exception().
 
 -type stop_deployment_errors() ::
+    unsupported_action_for_deployment_type_exception() | 
     invalid_deployment_id_exception() | 
-    deployment_already_completed_exception() | 
+    deployment_id_required_exception() | 
     deployment_group_does_not_exist_exception() | 
     deployment_does_not_exist_exception() | 
-    deployment_id_required_exception() | 
-    unsupported_action_for_deployment_type_exception().
+    deployment_already_completed_exception().
 
 -type tag_resource_errors() ::
-    deployment_config_does_not_exist_exception() | 
-    deployment_group_does_not_exist_exception() | 
-    resource_arn_required_exception() | 
-    arn_not_supported_exception() | 
-    invalid_arn_exception() | 
-    invalid_tags_to_add_exception() | 
     tag_required_exception() | 
+    resource_arn_required_exception() | 
+    invalid_tags_to_add_exception() | 
+    invalid_arn_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    deployment_config_does_not_exist_exception() | 
+    arn_not_supported_exception() | 
     application_does_not_exist_exception().
 
 -type untag_resource_errors() ::
-    deployment_config_does_not_exist_exception() | 
-    deployment_group_does_not_exist_exception() | 
-    resource_arn_required_exception() | 
-    arn_not_supported_exception() | 
-    invalid_arn_exception() | 
-    invalid_tags_to_add_exception() | 
     tag_required_exception() | 
+    resource_arn_required_exception() | 
+    invalid_tags_to_add_exception() | 
+    invalid_arn_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    deployment_config_does_not_exist_exception() | 
+    arn_not_supported_exception() | 
     application_does_not_exist_exception().
 
 -type update_application_errors() ::
     invalid_application_name_exception() | 
-    application_already_exists_exception() | 
     application_name_required_exception() | 
-    application_does_not_exist_exception().
+    application_does_not_exist_exception() | 
+    application_already_exists_exception().
 
 -type update_deployment_group_errors() ::
-    deployment_group_name_required_exception() | 
-    invalid_auto_rollback_config_exception() | 
-    invalid_ec2_tag_exception() | 
-    invalid_ec2_tag_combination_exception() | 
-    alarms_limit_exceeded_exception() | 
+    trigger_targets_limit_exceeded_exception() | 
+    throttling_exception() | 
+    tag_set_list_limit_exceeded_exception() | 
+    lifecycle_hook_limit_exceeded_exception() | 
+    invalid_trigger_config_exception() | 
+    invalid_traffic_routing_configuration_exception() | 
     invalid_target_group_pair_exception() | 
     invalid_tag_exception() | 
-    deployment_config_does_not_exist_exception() | 
-    tag_set_list_limit_exceeded_exception() | 
-    invalid_blue_green_deployment_configuration_exception() | 
-    invalid_application_name_exception() | 
-    throttling_exception() | 
-    e_c_s_service_mapping_limit_exceeded_exception() | 
-    invalid_deployment_config_name_exception() | 
-    lifecycle_hook_limit_exceeded_exception() | 
-    deployment_group_does_not_exist_exception() | 
-    invalid_traffic_routing_configuration_exception() | 
-    trigger_targets_limit_exceeded_exception() | 
     invalid_role_exception() | 
-    deployment_group_already_exists_exception() | 
-    invalid_deployment_group_name_exception() | 
-    invalid_input_exception() | 
     invalid_on_premises_tag_combination_exception() | 
-    invalid_auto_scaling_group_exception() | 
-    invalid_alarm_config_exception() | 
+    invalid_load_balancer_info_exception() | 
+    invalid_input_exception() | 
+    invalid_ec2_tag_exception() | 
+    invalid_ec2_tag_combination_exception() | 
     invalid_e_c_s_service_exception() | 
-    application_name_required_exception() | 
     invalid_deployment_style_exception() | 
-    invalid_trigger_config_exception() | 
+    invalid_deployment_group_name_exception() | 
+    invalid_deployment_config_name_exception() | 
+    invalid_blue_green_deployment_configuration_exception() | 
+    invalid_auto_scaling_group_exception() | 
+    invalid_auto_rollback_config_exception() | 
+    invalid_application_name_exception() | 
+    invalid_alarm_config_exception() | 
+    e_c_s_service_mapping_limit_exceeded_exception() | 
+    deployment_group_name_required_exception() | 
+    deployment_group_does_not_exist_exception() | 
+    deployment_group_already_exists_exception() | 
+    deployment_config_does_not_exist_exception() | 
+    application_name_required_exception() | 
     application_does_not_exist_exception() | 
-    invalid_load_balancer_info_exception().
+    alarms_limit_exceeded_exception().
 
 %%====================================================================
 %% API

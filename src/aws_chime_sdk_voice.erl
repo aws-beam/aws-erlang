@@ -245,21 +245,65 @@
 
 
 %% Example:
-%% put_voice_connector_external_systems_configuration_request() :: #{
-%%   <<"ContactCenterSystemTypes">> => list(list(any())()),
-%%   <<"SessionBorderControllerTypes">> => list(list(any())())
+%% access_denied_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
 %% }
--type put_voice_connector_external_systems_configuration_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% streaming_configuration() :: #{
-%%   <<"DataRetentionInHours">> => integer(),
-%%   <<"Disabled">> => boolean(),
-%%   <<"MediaInsightsConfiguration">> => media_insights_configuration(),
-%%   <<"StreamingNotificationTargets">> => list(streaming_notification_target())
+%% address() :: #{
+%%   <<"city">> => string(),
+%%   <<"country">> => string(),
+%%   <<"postDirectional">> => string(),
+%%   <<"postalCode">> => string(),
+%%   <<"postalCodePlus4">> => string(),
+%%   <<"preDirectional">> => string(),
+%%   <<"state">> => string(),
+%%   <<"streetName">> => string(),
+%%   <<"streetNumber">> => string(),
+%%   <<"streetSuffix">> => string()
 %% }
--type streaming_configuration() :: #{binary() => any()}.
+-type address() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_phone_numbers_with_voice_connector_group_request() :: #{
+%%   <<"E164PhoneNumbers">> := list(string()),
+%%   <<"ForceAssociate">> => boolean()
+%% }
+-type associate_phone_numbers_with_voice_connector_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_phone_numbers_with_voice_connector_group_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
+%% }
+-type associate_phone_numbers_with_voice_connector_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_phone_numbers_with_voice_connector_request() :: #{
+%%   <<"E164PhoneNumbers">> := list(string()),
+%%   <<"ForceAssociate">> => boolean()
+%% }
+-type associate_phone_numbers_with_voice_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_phone_numbers_with_voice_connector_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
+%% }
+-type associate_phone_numbers_with_voice_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -270,33 +314,24 @@
 
 
 %% Example:
-%% put_voice_connector_termination_credentials_request() :: #{
-%%   <<"Credentials">> => list(credential())
+%% batch_delete_phone_number_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
 %% }
--type put_voice_connector_termination_credentials_request() :: #{binary() => any()}.
+-type batch_delete_phone_number_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_sip_rule_request() :: #{
-%%   <<"Disabled">> => boolean(),
-%%   <<"Name">> := string(),
-%%   <<"TargetApplications">> => list(sip_rule_target_application())
+%% batch_update_phone_number_request() :: #{
+%%   <<"UpdatePhoneNumberRequestItems">> := list(update_phone_number_request_item())
 %% }
--type update_sip_rule_request() :: #{binary() => any()}.
+-type batch_update_phone_number_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% sip_rule() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Disabled">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"SipRuleId">> => string(),
-%%   <<"TargetApplications">> => list(sip_rule_target_application()),
-%%   <<"TriggerType">> => list(any()),
-%%   <<"TriggerValue">> => string(),
-%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% batch_update_phone_number_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
 %% }
--type sip_rule() :: #{binary() => any()}.
+-type batch_update_phone_number_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -309,10 +344,77 @@
 
 
 %% Example:
+%% candidate_address() :: #{
+%%   <<"city">> => string(),
+%%   <<"country">> => string(),
+%%   <<"postalCode">> => string(),
+%%   <<"postalCodePlus4">> => string(),
+%%   <<"state">> => string(),
+%%   <<"streetInfo">> => string(),
+%%   <<"streetNumber">> => string()
+%% }
+-type candidate_address() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_phone_number_order_request() :: #{
+%%   <<"E164PhoneNumbers">> := list(string()),
+%%   <<"Name">> => string(),
+%%   <<"ProductType">> := list(any())
+%% }
+-type create_phone_number_order_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_phone_number_order_response() :: #{
 %%   <<"PhoneNumberOrder">> => phone_number_order()
 %% }
 -type create_phone_number_order_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_proxy_session_request() :: #{
+%%   <<"Capabilities">> := list(list(any())()),
+%%   <<"ExpiryMinutes">> => integer(),
+%%   <<"GeoMatchLevel">> => list(any()),
+%%   <<"GeoMatchParams">> => geo_match_params(),
+%%   <<"Name">> => string(),
+%%   <<"NumberSelectionBehavior">> => list(any()),
+%%   <<"ParticipantPhoneNumbers">> := list(string())
+%% }
+-type create_proxy_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_proxy_session_response() :: #{
+%%   <<"ProxySession">> => proxy_session()
+%% }
+-type create_proxy_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sip_media_application_call_request() :: #{
+%%   <<"ArgumentsMap">> => map(),
+%%   <<"FromPhoneNumber">> := string(),
+%%   <<"SipHeaders">> => map(),
+%%   <<"ToPhoneNumber">> := string()
+%% }
+-type create_sip_media_application_call_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sip_media_application_call_response() :: #{
+%%   <<"SipMediaApplicationCall">> => sip_media_application_call()
+%% }
+-type create_sip_media_application_call_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -326,194 +428,21 @@
 
 
 %% Example:
-%% update_sip_media_application_call_response() :: #{
-%%   <<"SipMediaApplicationCall">> => sip_media_application_call()
+%% create_sip_media_application_response() :: #{
+%%   <<"SipMediaApplication">> => sip_media_application()
 %% }
--type update_sip_media_application_call_response() :: #{binary() => any()}.
+-type create_sip_media_application_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_sip_media_application_logging_configuration_request() :: #{
-%%   <<"SipMediaApplicationLoggingConfiguration">> => sip_media_application_logging_configuration()
-%% }
--type put_sip_media_application_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% proxy() :: #{
-%%   <<"DefaultSessionExpiryMinutes">> => integer(),
+%% create_sip_rule_request() :: #{
 %%   <<"Disabled">> => boolean(),
-%%   <<"FallBackPhoneNumber">> => string(),
-%%   <<"PhoneNumberCountries">> => list(string())
+%%   <<"Name">> := string(),
+%%   <<"TargetApplications">> := list(sip_rule_target_application()),
+%%   <<"TriggerType">> := list(any()),
+%%   <<"TriggerValue">> := string()
 %% }
--type proxy() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_proxy_session_request() :: #{
-%%   <<"Capabilities">> := list(list(any())()),
-%%   <<"ExpiryMinutes">> => integer()
-%% }
--type update_proxy_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_phone_number_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error())
-%% }
--type batch_update_phone_number_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_voice_connector_termination_health_request() :: #{}
--type get_voice_connector_termination_health_request() :: #{}.
-
-
-%% Example:
-%% validate_e911_address_response() :: #{
-%%   <<"Address">> => address(),
-%%   <<"AddressExternalId">> => string(),
-%%   <<"CandidateAddressList">> => list(candidate_address()),
-%%   <<"ValidationResult">> => integer()
-%% }
--type validate_e911_address_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_voice_connector_response() :: #{
-%%   <<"VoiceConnector">> => voice_connector()
-%% }
--type update_voice_connector_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_phone_number_orders_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PhoneNumberOrders">> => list(phone_number_order())
-%% }
--type list_phone_number_orders_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_voice_tone_analysis_task_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"TransactionId">> := string()
-%% }
--type start_voice_tone_analysis_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% speaker_search_result() :: #{
-%%   <<"ConfidenceScore">> => float(),
-%%   <<"VoiceProfileId">> => string()
-%% }
--type speaker_search_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% termination_health() :: #{
-%%   <<"Source">> => string(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type termination_health() :: #{binary() => any()}.
-
-
-%% Example:
-%% participant() :: #{
-%%   <<"PhoneNumber">> => string(),
-%%   <<"ProxyPhoneNumber">> => string()
-%% }
--type participant() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sip_media_application_request() :: #{
-%%   <<"Endpoints">> => list(sip_media_application_endpoint()),
-%%   <<"Name">> => string()
-%% }
--type update_sip_media_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_profile_domain_summary() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"UpdatedTimestamp">> => non_neg_integer(),
-%%   <<"VoiceProfileDomainArn">> => string(),
-%%   <<"VoiceProfileDomainId">> => string()
-%% }
--type voice_profile_domain_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_voice_connector_group_request() :: #{}
--type delete_voice_connector_group_request() :: #{}.
-
-
-%% Example:
-%% origination() :: #{
-%%   <<"Disabled">> => boolean(),
-%%   <<"Routes">> => list(origination_route())
-%% }
--type origination() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_speaker_search_task_response() :: #{
-%%   <<"SpeakerSearchTask">> => speaker_search_task()
-%% }
--type start_speaker_search_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_voice_connectors_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_voice_connectors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% phone_number_country() :: #{
-%%   <<"CountryCode">> => string(),
-%%   <<"SupportedPhoneNumberTypes">> => list(list(any())())
-%% }
--type phone_number_country() :: #{binary() => any()}.
-
-
-%% Example:
-%% geo_match_params() :: #{
-%%   <<"AreaCode">> => string(),
-%%   <<"Country">> => string()
-%% }
--type geo_match_params() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_available_phone_numbers_response() :: #{
-%%   <<"E164PhoneNumbers">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type search_available_phone_numbers_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_voice_connector_request() :: #{}
--type get_voice_connector_request() :: #{}.
-
-
-%% Example:
-%% put_voice_connector_origination_response() :: #{
-%%   <<"Origination">> => origination()
-%% }
--type put_voice_connector_origination_response() :: #{binary() => any()}.
+-type create_sip_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -524,11 +453,12 @@
 
 
 %% Example:
-%% associate_phone_numbers_with_voice_connector_group_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string()),
-%%   <<"ForceAssociate">> => boolean()
+%% create_voice_connector_group_request() :: #{
+%%   <<"CallDistributionType">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"VoiceConnectorItems">> => list(voice_connector_item())
 %% }
--type associate_phone_numbers_with_voice_connector_group_request() :: #{binary() => any()}.
+-type create_voice_connector_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -539,60 +469,47 @@
 
 
 %% Example:
-%% list_voice_profile_domains_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VoiceProfileDomains">> => list(voice_profile_domain_summary())
+%% create_voice_connector_request() :: #{
+%%   <<"AwsRegion">> => list(any()),
+%%   <<"IntegrationType">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"NetworkType">> => list(any()),
+%%   <<"RequireEncryption">> := boolean(),
+%%   <<"Tags">> => list(tag())
 %% }
--type list_voice_profile_domains_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_voice_connector_termination_credentials_request() :: #{}
--type list_voice_connector_termination_credentials_request() :: #{}.
+-type create_voice_connector_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_phone_number_settings_request() :: #{
-%%   <<"CallingName">> := string()
+%% create_voice_connector_response() :: #{
+%%   <<"VoiceConnector">> => voice_connector()
 %% }
--type update_phone_number_settings_request() :: #{binary() => any()}.
+-type create_voice_connector_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_voice_connector_proxy_response() :: #{
-%%   <<"Proxy">> => proxy()
+%% create_voice_profile_domain_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"ServerSideEncryptionConfiguration">> := server_side_encryption_configuration(),
+%%   <<"Tags">> => list(tag())
 %% }
--type get_voice_connector_proxy_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_voice_connector_logging_configuration_request() :: #{}
--type get_voice_connector_logging_configuration_request() :: #{}.
+-type create_voice_profile_domain_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_failure_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
+%% create_voice_profile_domain_response() :: #{
+%%   <<"VoiceProfileDomain">> => voice_profile_domain()
 %% }
--type service_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_sip_rule_request() :: #{}
--type delete_sip_rule_request() :: #{}.
-
-%% Example:
-%% get_voice_connector_emergency_calling_configuration_request() :: #{}
--type get_voice_connector_emergency_calling_configuration_request() :: #{}.
-
-%% Example:
-%% restore_phone_number_request() :: #{}
--type restore_phone_number_request() :: #{}.
+-type create_voice_profile_domain_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_voice_connector_emergency_calling_configuration_request() :: #{
-%%   <<"EmergencyCallingConfiguration">> := emergency_calling_configuration()
+%% create_voice_profile_request() :: #{
+%%   <<"SpeakerSearchTaskId">> := string()
 %% }
--type put_voice_connector_emergency_calling_configuration_request() :: #{binary() => any()}.
+-type create_voice_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -600,6 +517,129 @@
 %%   <<"VoiceProfile">> => voice_profile()
 %% }
 -type create_voice_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% credential() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type credential() :: #{binary() => any()}.
+
+
+%% Example:
+%% d_n_i_s_emergency_calling_configuration() :: #{
+%%   <<"CallingCountry">> => string(),
+%%   <<"EmergencyPhoneNumber">> => string(),
+%%   <<"TestPhoneNumber">> => string()
+%% }
+-type d_n_i_s_emergency_calling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_phone_number_request() :: #{}
+-type delete_phone_number_request() :: #{}.
+
+%% Example:
+%% delete_proxy_session_request() :: #{}
+-type delete_proxy_session_request() :: #{}.
+
+%% Example:
+%% delete_sip_media_application_request() :: #{}
+-type delete_sip_media_application_request() :: #{}.
+
+%% Example:
+%% delete_sip_rule_request() :: #{}
+-type delete_sip_rule_request() :: #{}.
+
+%% Example:
+%% delete_voice_connector_emergency_calling_configuration_request() :: #{}
+-type delete_voice_connector_emergency_calling_configuration_request() :: #{}.
+
+%% Example:
+%% delete_voice_connector_external_systems_configuration_request() :: #{}
+-type delete_voice_connector_external_systems_configuration_request() :: #{}.
+
+%% Example:
+%% delete_voice_connector_group_request() :: #{}
+-type delete_voice_connector_group_request() :: #{}.
+
+%% Example:
+%% delete_voice_connector_origination_request() :: #{}
+-type delete_voice_connector_origination_request() :: #{}.
+
+%% Example:
+%% delete_voice_connector_proxy_request() :: #{}
+-type delete_voice_connector_proxy_request() :: #{}.
+
+%% Example:
+%% delete_voice_connector_request() :: #{}
+-type delete_voice_connector_request() :: #{}.
+
+%% Example:
+%% delete_voice_connector_streaming_configuration_request() :: #{}
+-type delete_voice_connector_streaming_configuration_request() :: #{}.
+
+
+%% Example:
+%% delete_voice_connector_termination_credentials_request() :: #{
+%%   <<"Usernames">> := list(string())
+%% }
+-type delete_voice_connector_termination_credentials_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_voice_connector_termination_request() :: #{}
+-type delete_voice_connector_termination_request() :: #{}.
+
+%% Example:
+%% delete_voice_profile_domain_request() :: #{}
+-type delete_voice_profile_domain_request() :: #{}.
+
+%% Example:
+%% delete_voice_profile_request() :: #{}
+-type delete_voice_profile_request() :: #{}.
+
+
+%% Example:
+%% disassociate_phone_numbers_from_voice_connector_group_request() :: #{
+%%   <<"E164PhoneNumbers">> := list(string())
+%% }
+-type disassociate_phone_numbers_from_voice_connector_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_phone_numbers_from_voice_connector_group_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
+%% }
+-type disassociate_phone_numbers_from_voice_connector_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_phone_numbers_from_voice_connector_request() :: #{
+%%   <<"E164PhoneNumbers">> := list(string())
+%% }
+-type disassociate_phone_numbers_from_voice_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_phone_numbers_from_voice_connector_response() :: #{
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
+%% }
+-type disassociate_phone_numbers_from_voice_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% emergency_calling_configuration() :: #{
+%%   <<"DNIS">> => list(d_n_i_s_emergency_calling_configuration())
+%% }
+-type emergency_calling_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_systems_configuration() :: #{
+%%   <<"ContactCenterSystemTypes">> => list(list(any())()),
+%%   <<"SessionBorderControllerTypes">> => list(list(any())())
+%% }
+-type external_systems_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -611,24 +651,224 @@
 
 
 %% Example:
+%% geo_match_params() :: #{
+%%   <<"AreaCode">> => string(),
+%%   <<"Country">> => string()
+%% }
+-type geo_match_params() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_global_settings_response() :: #{
+%%   <<"VoiceConnector">> => voice_connector_settings()
+%% }
+-type get_global_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_phone_number_order_request() :: #{}
+-type get_phone_number_order_request() :: #{}.
+
+
+%% Example:
+%% get_phone_number_order_response() :: #{
+%%   <<"PhoneNumberOrder">> => phone_number_order()
+%% }
+-type get_phone_number_order_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_phone_number_request() :: #{}
+-type get_phone_number_request() :: #{}.
+
+
+%% Example:
+%% get_phone_number_response() :: #{
+%%   <<"PhoneNumber">> => phone_number()
+%% }
+-type get_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_phone_number_settings_response() :: #{
+%%   <<"CallingName">> => string(),
+%%   <<"CallingNameUpdatedTimestamp">> => non_neg_integer()
+%% }
+-type get_phone_number_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_proxy_session_request() :: #{}
+-type get_proxy_session_request() :: #{}.
+
+
+%% Example:
+%% get_proxy_session_response() :: #{
+%%   <<"ProxySession">> => proxy_session()
+%% }
+-type get_proxy_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sip_media_application_alexa_skill_configuration_request() :: #{}
+-type get_sip_media_application_alexa_skill_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_sip_media_application_alexa_skill_configuration_response() :: #{
+%%   <<"SipMediaApplicationAlexaSkillConfiguration">> => sip_media_application_alexa_skill_configuration()
+%% }
+-type get_sip_media_application_alexa_skill_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sip_media_application_logging_configuration_request() :: #{}
+-type get_sip_media_application_logging_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_sip_media_application_logging_configuration_response() :: #{
+%%   <<"SipMediaApplicationLoggingConfiguration">> => sip_media_application_logging_configuration()
+%% }
+-type get_sip_media_application_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sip_media_application_request() :: #{}
+-type get_sip_media_application_request() :: #{}.
+
+
+%% Example:
+%% get_sip_media_application_response() :: #{
+%%   <<"SipMediaApplication">> => sip_media_application()
+%% }
+-type get_sip_media_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sip_rule_request() :: #{}
+-type get_sip_rule_request() :: #{}.
+
+
+%% Example:
+%% get_sip_rule_response() :: #{
+%%   <<"SipRule">> => sip_rule()
+%% }
+-type get_sip_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_speaker_search_task_request() :: #{}
+-type get_speaker_search_task_request() :: #{}.
+
+
+%% Example:
+%% get_speaker_search_task_response() :: #{
+%%   <<"SpeakerSearchTask">> => speaker_search_task()
+%% }
+-type get_speaker_search_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_emergency_calling_configuration_request() :: #{}
+-type get_voice_connector_emergency_calling_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_voice_connector_emergency_calling_configuration_response() :: #{
+%%   <<"EmergencyCallingConfiguration">> => emergency_calling_configuration()
+%% }
+-type get_voice_connector_emergency_calling_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_external_systems_configuration_request() :: #{}
+-type get_voice_connector_external_systems_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_voice_connector_external_systems_configuration_response() :: #{
+%%   <<"ExternalSystemsConfiguration">> => external_systems_configuration()
+%% }
+-type get_voice_connector_external_systems_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_group_request() :: #{}
+-type get_voice_connector_group_request() :: #{}.
+
+
+%% Example:
+%% get_voice_connector_group_response() :: #{
+%%   <<"VoiceConnectorGroup">> => voice_connector_group()
+%% }
+-type get_voice_connector_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_logging_configuration_request() :: #{}
+-type get_voice_connector_logging_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_voice_connector_logging_configuration_response() :: #{
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type get_voice_connector_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_origination_request() :: #{}
+-type get_voice_connector_origination_request() :: #{}.
+
+
+%% Example:
+%% get_voice_connector_origination_response() :: #{
+%%   <<"Origination">> => origination()
+%% }
+-type get_voice_connector_origination_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_proxy_request() :: #{}
+-type get_voice_connector_proxy_request() :: #{}.
+
+
+%% Example:
+%% get_voice_connector_proxy_response() :: #{
+%%   <<"Proxy">> => proxy()
+%% }
+-type get_voice_connector_proxy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_request() :: #{}
+-type get_voice_connector_request() :: #{}.
+
+
+%% Example:
 %% get_voice_connector_response() :: #{
 %%   <<"VoiceConnector">> => voice_connector()
 %% }
 -type get_voice_connector_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% update_voice_profile_response() :: #{
-%%   <<"VoiceProfile">> => voice_profile()
-%% }
--type update_voice_profile_response() :: #{binary() => any()}.
+%% get_voice_connector_streaming_configuration_request() :: #{}
+-type get_voice_connector_streaming_configuration_request() :: #{}.
 
 
 %% Example:
-%% create_proxy_session_response() :: #{
-%%   <<"ProxySession">> => proxy_session()
+%% get_voice_connector_streaming_configuration_response() :: #{
+%%   <<"StreamingConfiguration">> => streaming_configuration()
 %% }
--type create_proxy_session_response() :: #{binary() => any()}.
+-type get_voice_connector_streaming_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_termination_health_request() :: #{}
+-type get_voice_connector_termination_health_request() :: #{}.
+
+
+%% Example:
+%% get_voice_connector_termination_health_response() :: #{
+%%   <<"TerminationHealth">> => termination_health()
+%% }
+-type get_voice_connector_termination_health_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_connector_termination_request() :: #{}
+-type get_voice_connector_termination_request() :: #{}.
+
+
+%% Example:
+%% get_voice_connector_termination_response() :: #{
+%%   <<"Termination">> => termination()
+%% }
+-type get_voice_connector_termination_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_voice_profile_domain_request() :: #{}
@@ -636,31 +876,299 @@
 
 
 %% Example:
-%% put_voice_connector_termination_request() :: #{
-%%   <<"Termination">> := termination()
+%% get_voice_profile_domain_response() :: #{
+%%   <<"VoiceProfileDomain">> => voice_profile_domain()
 %% }
--type put_voice_connector_termination_request() :: #{binary() => any()}.
+-type get_voice_profile_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_profile_request() :: #{}
+-type get_voice_profile_request() :: #{}.
 
 
 %% Example:
-%% phone_number_association() :: #{
-%%   <<"AssociatedTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => list(any()),
-%%   <<"Value">> => string()
+%% get_voice_profile_response() :: #{
+%%   <<"VoiceProfile">> => voice_profile()
 %% }
--type phone_number_association() :: #{binary() => any()}.
+-type get_voice_profile_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% unauthorized_client_exception() :: #{
+%% get_voice_tone_analysis_task_request() :: #{
+%%   <<"IsCaller">> := boolean()
+%% }
+-type get_voice_tone_analysis_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_voice_tone_analysis_task_response() :: #{
+%%   <<"VoiceToneAnalysisTask">> => voice_tone_analysis_task()
+%% }
+-type get_voice_tone_analysis_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% gone_exception() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
--type unauthorized_client_exception() :: #{binary() => any()}.
+-type gone_exception() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_voice_connector_streaming_configuration_request() :: #{}
--type get_voice_connector_streaming_configuration_request() :: #{}.
+%% list_available_voice_connector_regions_response() :: #{
+%%   <<"VoiceConnectorRegions">> => list(list(any())())
+%% }
+-type list_available_voice_connector_regions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_number_orders_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_phone_number_orders_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_number_orders_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumberOrders">> => list(phone_number_order())
+%% }
+-type list_phone_number_orders_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_numbers_request() :: #{
+%%   <<"FilterName">> => list(any()),
+%%   <<"FilterValue">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProductType">> => list(any()),
+%%   <<"Status">> => string()
+%% }
+-type list_phone_numbers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_phone_numbers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumbers">> => list(phone_number())
+%% }
+-type list_phone_numbers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_proxy_sessions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_proxy_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_proxy_sessions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProxySessions">> => list(proxy_session())
+%% }
+-type list_proxy_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sip_media_applications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_sip_media_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sip_media_applications_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SipMediaApplications">> => list(sip_media_application())
+%% }
+-type list_sip_media_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sip_rules_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SipMediaApplicationId">> => string()
+%% }
+-type list_sip_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sip_rules_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SipRules">> => list(sip_rule())
+%% }
+-type list_sip_rules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_supported_phone_number_countries_request() :: #{
+%%   <<"ProductType">> := list(any())
+%% }
+-type list_supported_phone_number_countries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_supported_phone_number_countries_response() :: #{
+%%   <<"PhoneNumberCountries">> => list(phone_number_country())
+%% }
+-type list_supported_phone_number_countries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_voice_connector_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_voice_connector_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_voice_connector_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VoiceConnectorGroups">> => list(voice_connector_group())
+%% }
+-type list_voice_connector_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_voice_connector_termination_credentials_request() :: #{}
+-type list_voice_connector_termination_credentials_request() :: #{}.
+
+
+%% Example:
+%% list_voice_connector_termination_credentials_response() :: #{
+%%   <<"Usernames">> => list(string())
+%% }
+-type list_voice_connector_termination_credentials_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_voice_connectors_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_voice_connectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_voice_connectors_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VoiceConnectors">> => list(voice_connector())
+%% }
+-type list_voice_connectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_voice_profile_domains_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_voice_profile_domains_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_voice_profile_domains_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VoiceProfileDomains">> => list(voice_profile_domain_summary())
+%% }
+-type list_voice_profile_domains_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_voice_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VoiceProfileDomainId">> := string()
+%% }
+-type list_voice_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_voice_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VoiceProfiles">> => list(voice_profile_summary())
+%% }
+-type list_voice_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"EnableMediaMetricLogs">> => boolean(),
+%%   <<"EnableSIPLogs">> => boolean()
+%% }
+-type logging_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_insights_configuration() :: #{
+%%   <<"ConfigurationArn">> => string(),
+%%   <<"Disabled">> => boolean()
+%% }
+-type media_insights_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ordered_phone_number() :: #{
+%%   <<"E164PhoneNumber">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type ordered_phone_number() :: #{binary() => any()}.
+
+
+%% Example:
+%% origination() :: #{
+%%   <<"Disabled">> => boolean(),
+%%   <<"Routes">> => list(origination_route())
+%% }
+-type origination() :: #{binary() => any()}.
+
+
+%% Example:
+%% origination_route() :: #{
+%%   <<"Host">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"Priority">> => integer(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"Weight">> => integer()
+%% }
+-type origination_route() :: #{binary() => any()}.
+
+
+%% Example:
+%% participant() :: #{
+%%   <<"PhoneNumber">> => string(),
+%%   <<"ProxyPhoneNumber">> => string()
+%% }
+-type participant() :: #{binary() => any()}.
 
 
 %% Example:
@@ -675,6 +1183,7 @@
 %%   <<"E164PhoneNumber">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OrderId">> => string(),
+%%   <<"PhoneNumberArn">> => string(),
 %%   <<"PhoneNumberId">> => string(),
 %%   <<"ProductType">> => list(any()),
 %%   <<"Status">> => list(any()),
@@ -685,486 +1194,65 @@
 
 
 %% Example:
-%% termination() :: #{
-%%   <<"CallingRegions">> => list(string()),
-%%   <<"CidrAllowedList">> => list(string()),
-%%   <<"CpsLimit">> => integer(),
-%%   <<"DefaultPhoneNumber">> => string(),
-%%   <<"Disabled">> => boolean()
-%% }
--type termination() :: #{binary() => any()}.
-
-%% Example:
-%% get_phone_number_order_request() :: #{}
--type get_phone_number_order_request() :: #{}.
-
-
-%% Example:
-%% create_voice_profile_domain_response() :: #{
-%%   <<"VoiceProfileDomain">> => voice_profile_domain()
-%% }
--type create_voice_profile_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% speaker_search_task() :: #{
-%%   <<"CallDetails">> => call_details(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"SpeakerSearchDetails">> => speaker_search_details(),
-%%   <<"SpeakerSearchTaskId">> => string(),
-%%   <<"SpeakerSearchTaskStatus">> => string(),
-%%   <<"StartedTimestamp">> => non_neg_integer(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"UpdatedTimestamp">> => non_neg_integer()
-%% }
--type speaker_search_task() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_phone_number_response() :: #{
-%%   <<"PhoneNumber">> => phone_number()
-%% }
--type update_phone_number_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_speaker_search_task_response() :: #{
-%%   <<"SpeakerSearchTask">> => speaker_search_task()
-%% }
--type get_speaker_search_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_speaker_search_task_request() :: #{}
--type stop_speaker_search_task_request() :: #{}.
-
-
-%% Example:
-%% throttled_client_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type throttled_client_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% gone_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type gone_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_voice_profile_request() :: #{
-%%   <<"SpeakerSearchTaskId">> := string()
-%% }
--type update_voice_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_insights_configuration() :: #{
-%%   <<"ConfigurationArn">> => string(),
-%%   <<"Disabled">> => boolean()
-%% }
--type media_insights_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_connector_termination_health_response() :: #{
-%%   <<"TerminationHealth">> => termination_health()
-%% }
--type get_voice_connector_termination_health_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_phone_numbers_with_voice_connector_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string()),
-%%   <<"ForceAssociate">> => boolean()
-%% }
--type associate_phone_numbers_with_voice_connector_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_voice_connector_origination_request() :: #{}
--type delete_voice_connector_origination_request() :: #{}.
-
-
-%% Example:
-%% list_sip_media_applications_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_sip_media_applications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_connector_external_systems_configuration_response() :: #{
-%%   <<"ExternalSystemsConfiguration">> => external_systems_configuration()
-%% }
--type get_voice_connector_external_systems_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ordered_phone_number() :: #{
-%%   <<"E164PhoneNumber">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type ordered_phone_number() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sip_media_application_logging_configuration_response() :: #{
-%%   <<"SipMediaApplicationLoggingConfiguration">> => sip_media_application_logging_configuration()
-%% }
--type get_sip_media_application_logging_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_proxy_session_response() :: #{
-%%   <<"ProxySession">> => proxy_session()
-%% }
--type update_proxy_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_phone_number_order_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string()),
-%%   <<"Name">> => string(),
-%%   <<"ProductType">> := list(any())
-%% }
--type create_phone_number_order_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_systems_configuration() :: #{
-%%   <<"ContactCenterSystemTypes">> => list(list(any())()),
-%%   <<"SessionBorderControllerTypes">> => list(list(any())())
-%% }
--type external_systems_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_sip_media_application_request() :: #{}
--type delete_sip_media_application_request() :: #{}.
-
-
-%% Example:
-%% get_sip_media_application_response() :: #{
-%%   <<"SipMediaApplication">> => sip_media_application()
-%% }
--type get_sip_media_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sip_rule_response() :: #{
-%%   <<"SipRule">> => sip_rule()
-%% }
--type get_sip_rule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_voice_profile_domain_response() :: #{
-%%   <<"VoiceProfileDomain">> => voice_profile_domain()
-%% }
--type update_voice_profile_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_connector_settings() :: #{
-%%   <<"CdrBucket">> => string()
-%% }
--type voice_connector_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_tone_analysis_task_response() :: #{
-%%   <<"VoiceToneAnalysisTask">> => voice_tone_analysis_task()
-%% }
--type get_voice_tone_analysis_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_proxy_session_request() :: #{}
--type delete_proxy_session_request() :: #{}.
-
-
-%% Example:
-%% logging_configuration() :: #{
-%%   <<"EnableMediaMetricLogs">> => boolean(),
-%%   <<"EnableSIPLogs">> => boolean()
-%% }
--type logging_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_voice_connector_external_systems_configuration_response() :: #{
-%%   <<"ExternalSystemsConfiguration">> => external_systems_configuration()
-%% }
--type put_voice_connector_external_systems_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_profile_domain() :: #{
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"UpdatedTimestamp">> => non_neg_integer(),
-%%   <<"VoiceProfileDomainArn">> => string(),
-%%   <<"VoiceProfileDomainId">> => string()
-%% }
--type voice_profile_domain() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_phone_number_response() :: #{
-%%   <<"PhoneNumber">> => phone_number()
-%% }
--type restore_phone_number_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% speaker_search_details() :: #{
-%%   <<"Results">> => list(speaker_search_result()),
-%%   <<"VoiceprintGenerationStatus">> => string()
-%% }
--type speaker_search_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_phone_number_orders_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_phone_number_orders_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_voice_connector_termination_response() :: #{
-%%   <<"Termination">> => termination()
-%% }
--type put_voice_connector_termination_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_voice_connector_group_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"VoiceConnectorItems">> := list(voice_connector_item())
-%% }
--type update_voice_connector_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_supported_phone_number_countries_response() :: #{
-%%   <<"PhoneNumberCountries">> => list(phone_number_country())
-%% }
--type list_supported_phone_number_countries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_voice_tone_analysis_task_response() :: #{
-%%   <<"VoiceToneAnalysisTask">> => voice_tone_analysis_task()
-%% }
--type start_voice_tone_analysis_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sip_media_application_response() :: #{
-%%   <<"SipMediaApplication">> => sip_media_application()
-%% }
--type update_sip_media_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% d_n_i_s_emergency_calling_configuration() :: #{
-%%   <<"CallingCountry">> => string(),
-%%   <<"EmergencyPhoneNumber">> => string(),
-%%   <<"TestPhoneNumber">> => string()
-%% }
--type d_n_i_s_emergency_calling_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_connector_logging_configuration_response() :: #{
-%%   <<"LoggingConfiguration">> => logging_configuration()
-%% }
--type get_voice_connector_logging_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_phone_numbers_from_voice_connector_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string())
-%% }
--type disassociate_phone_numbers_from_voice_connector_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_voice_connector_proxy_request() :: #{}
--type delete_voice_connector_proxy_request() :: #{}.
-
-
-%% Example:
-%% list_voice_connector_groups_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VoiceConnectorGroups">> => list(voice_connector_group())
-%% }
--type list_voice_connector_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sip_rules_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SipMediaApplicationId">> => string()
-%% }
--type list_sip_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_voice_profile_request() :: #{}
--type get_voice_profile_request() :: #{}.
-
-
-%% Example:
-%% list_proxy_sessions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProxySessions">> => list(proxy_session())
-%% }
--type list_proxy_sessions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sip_media_application_alexa_skill_configuration_response() :: #{
-%%   <<"SipMediaApplicationAlexaSkillConfiguration">> => sip_media_application_alexa_skill_configuration()
-%% }
--type get_sip_media_application_alexa_skill_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_voice_connector_streaming_configuration_response() :: #{
-%%   <<"StreamingConfiguration">> => streaming_configuration()
-%% }
--type put_voice_connector_streaming_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_e911_address_request() :: #{
-%%   <<"AwsAccountId">> := string(),
-%%   <<"City">> := string(),
-%%   <<"Country">> := string(),
-%%   <<"PostalCode">> := string(),
-%%   <<"State">> := string(),
-%%   <<"StreetInfo">> := string(),
-%%   <<"StreetNumber">> := string()
-%% }
--type validate_e911_address_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_voice_connector_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_voice_connector_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_phone_numbers_from_voice_connector_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error())
-%% }
--type disassociate_phone_numbers_from_voice_connector_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_voice_connector_termination_request() :: #{}
--type get_voice_connector_termination_request() :: #{}.
-
-
-%% Example:
-%% list_sip_rules_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SipRules">> => list(sip_rule())
-%% }
--type list_sip_rules_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_phone_numbers_from_voice_connector_group_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string())
-%% }
--type disassociate_phone_numbers_from_voice_connector_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
+%% phone_number_association() :: #{
+%%   <<"AssociatedTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => list(any()),
 %%   <<"Value">> => string()
 %% }
--type tag() :: #{binary() => any()}.
+-type phone_number_association() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_sip_rule_request() :: #{
-%%   <<"Disabled">> => boolean(),
-%%   <<"Name">> := string(),
-%%   <<"TargetApplications">> => list(sip_rule_target_application()),
-%%   <<"TriggerType">> := list(any()),
-%%   <<"TriggerValue">> := string()
+%% phone_number_capabilities() :: #{
+%%   <<"InboundCall">> => boolean(),
+%%   <<"InboundMMS">> => boolean(),
+%%   <<"InboundSMS">> => boolean(),
+%%   <<"OutboundCall">> => boolean(),
+%%   <<"OutboundMMS">> => boolean(),
+%%   <<"OutboundSMS">> => boolean()
 %% }
--type create_sip_rule_request() :: #{binary() => any()}.
+-type phone_number_capabilities() :: #{binary() => any()}.
 
 
 %% Example:
-%% voice_profile() :: #{
+%% phone_number_country() :: #{
+%%   <<"CountryCode">> => string(),
+%%   <<"SupportedPhoneNumberTypes">> => list(list(any())())
+%% }
+-type phone_number_country() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"PhoneNumberId">> => string()
+%% }
+-type phone_number_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_order() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"ExpirationTimestamp">> => non_neg_integer(),
-%%   <<"UpdatedTimestamp">> => non_neg_integer(),
-%%   <<"VoiceProfileArn">> => string(),
-%%   <<"VoiceProfileDomainId">> => string(),
-%%   <<"VoiceProfileId">> => string()
+%%   <<"FocDate">> => string(),
+%%   <<"OrderType">> => list(any()),
+%%   <<"OrderedPhoneNumbers">> => list(ordered_phone_number()),
+%%   <<"PhoneNumberOrderId">> => string(),
+%%   <<"ProductType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
 %% }
--type voice_profile() :: #{binary() => any()}.
+-type phone_number_order() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_voice_connector_streaming_configuration_request() :: #{
-%%   <<"StreamingConfiguration">> := streaming_configuration()
+%% proxy() :: #{
+%%   <<"DefaultSessionExpiryMinutes">> => integer(),
+%%   <<"Disabled">> => boolean(),
+%%   <<"FallBackPhoneNumber">> => string(),
+%%   <<"PhoneNumberCountries">> => list(string())
 %% }
--type put_voice_connector_streaming_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_speaker_search_task_request() :: #{
-%%   <<"CallLeg">> => list(any()),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"TransactionId">> := string(),
-%%   <<"VoiceProfileDomainId">> := string()
-%% }
--type start_speaker_search_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_phone_number_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error())
-%% }
--type batch_delete_phone_number_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_connector_streaming_configuration_response() :: #{
-%%   <<"StreamingConfiguration">> => streaming_configuration()
-%% }
--type get_voice_connector_streaming_configuration_response() :: #{binary() => any()}.
+-type proxy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1187,61 +1275,88 @@
 
 
 %% Example:
-%% get_phone_number_order_response() :: #{
-%%   <<"PhoneNumberOrder">> => phone_number_order()
+%% put_sip_media_application_alexa_skill_configuration_request() :: #{
+%%   <<"SipMediaApplicationAlexaSkillConfiguration">> => sip_media_application_alexa_skill_configuration()
 %% }
--type get_phone_number_order_response() :: #{binary() => any()}.
+-type put_sip_media_application_alexa_skill_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_phone_numbers_request() :: #{
-%%   <<"FilterName">> => list(any()),
-%%   <<"FilterValue">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProductType">> => list(any()),
-%%   <<"Status">> => string()
+%% put_sip_media_application_alexa_skill_configuration_response() :: #{
+%%   <<"SipMediaApplicationAlexaSkillConfiguration">> => sip_media_application_alexa_skill_configuration()
 %% }
--type list_phone_numbers_request() :: #{binary() => any()}.
+-type put_sip_media_application_alexa_skill_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
+%% put_sip_media_application_logging_configuration_request() :: #{
+%%   <<"SipMediaApplicationLoggingConfiguration">> => sip_media_application_logging_configuration()
 %% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
+-type put_sip_media_application_logging_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_voice_connector_request() :: #{
-%%   <<"AwsRegion">> => list(any()),
-%%   <<"IntegrationType">> => list(any()),
-%%   <<"Name">> := string(),
-%%   <<"NetworkType">> => list(any()),
-%%   <<"RequireEncryption">> := boolean(),
-%%   <<"Tags">> => list(tag())
+%% put_sip_media_application_logging_configuration_response() :: #{
+%%   <<"SipMediaApplicationLoggingConfiguration">> => sip_media_application_logging_configuration()
 %% }
--type create_voice_connector_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_phone_number_request() :: #{}
--type get_phone_number_request() :: #{}.
+-type put_sip_media_application_logging_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_voice_profile_request() :: #{
-%%   <<"SpeakerSearchTaskId">> := string()
+%% put_voice_connector_emergency_calling_configuration_request() :: #{
+%%   <<"EmergencyCallingConfiguration">> := emergency_calling_configuration()
 %% }
--type create_voice_profile_request() :: #{binary() => any()}.
+-type put_voice_connector_emergency_calling_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% not_found_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
+%% put_voice_connector_emergency_calling_configuration_response() :: #{
+%%   <<"EmergencyCallingConfiguration">> => emergency_calling_configuration()
 %% }
--type not_found_exception() :: #{binary() => any()}.
+-type put_voice_connector_emergency_calling_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_external_systems_configuration_request() :: #{
+%%   <<"ContactCenterSystemTypes">> => list(list(any())()),
+%%   <<"SessionBorderControllerTypes">> => list(list(any())())
+%% }
+-type put_voice_connector_external_systems_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_external_systems_configuration_response() :: #{
+%%   <<"ExternalSystemsConfiguration">> => external_systems_configuration()
+%% }
+-type put_voice_connector_external_systems_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_logging_configuration_request() :: #{
+%%   <<"LoggingConfiguration">> := logging_configuration()
+%% }
+-type put_voice_connector_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_logging_configuration_response() :: #{
+%%   <<"LoggingConfiguration">> => logging_configuration()
+%% }
+-type put_voice_connector_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_origination_request() :: #{
+%%   <<"Origination">> := origination()
+%% }
+-type put_voice_connector_origination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_origination_response() :: #{
+%%   <<"Origination">> => origination()
+%% }
+-type put_voice_connector_origination_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1255,42 +1370,137 @@
 
 
 %% Example:
-%% associate_phone_numbers_with_voice_connector_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error())
+%% put_voice_connector_proxy_response() :: #{
+%%   <<"Proxy">> => proxy()
 %% }
--type associate_phone_numbers_with_voice_connector_response() :: #{binary() => any()}.
+-type put_voice_connector_proxy_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_voice_connector_logging_configuration_request() :: #{
-%%   <<"LoggingConfiguration">> := logging_configuration()
+%% put_voice_connector_streaming_configuration_request() :: #{
+%%   <<"StreamingConfiguration">> := streaming_configuration()
 %% }
--type put_voice_connector_logging_configuration_request() :: #{binary() => any()}.
+-type put_voice_connector_streaming_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% phone_number_order() :: #{
+%% put_voice_connector_streaming_configuration_response() :: #{
+%%   <<"StreamingConfiguration">> => streaming_configuration()
+%% }
+-type put_voice_connector_streaming_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_termination_credentials_request() :: #{
+%%   <<"Credentials">> => list(credential())
+%% }
+-type put_voice_connector_termination_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_termination_request() :: #{
+%%   <<"Termination">> := termination()
+%% }
+-type put_voice_connector_termination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_voice_connector_termination_response() :: #{
+%%   <<"Termination">> => termination()
+%% }
+-type put_voice_connector_termination_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restore_phone_number_request() :: #{}
+-type restore_phone_number_request() :: #{}.
+
+
+%% Example:
+%% restore_phone_number_response() :: #{
+%%   <<"PhoneNumber">> => phone_number()
+%% }
+-type restore_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_available_phone_numbers_request() :: #{
+%%   <<"AreaCode">> => string(),
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PhoneNumberType">> => list(any()),
+%%   <<"State">> => string(),
+%%   <<"TollFreePrefix">> => string()
+%% }
+-type search_available_phone_numbers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_available_phone_numbers_response() :: #{
+%%   <<"E164PhoneNumbers">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_available_phone_numbers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_side_encryption_configuration() :: #{
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type server_side_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_failure_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type service_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sip_media_application() :: #{
+%%   <<"AwsRegion">> => string(),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"FocDate">> => non_neg_integer(),
-%%   <<"OrderType">> => list(any()),
-%%   <<"OrderedPhoneNumbers">> => list(ordered_phone_number()),
-%%   <<"PhoneNumberOrderId">> => string(),
-%%   <<"ProductType">> => list(any()),
-%%   <<"Status">> => list(any()),
+%%   <<"Endpoints">> => list(sip_media_application_endpoint()),
+%%   <<"Name">> => string(),
+%%   <<"SipMediaApplicationArn">> => string(),
+%%   <<"SipMediaApplicationId">> => string(),
 %%   <<"UpdatedTimestamp">> => non_neg_integer()
 %% }
--type phone_number_order() :: #{binary() => any()}.
-
-%% Example:
-%% delete_phone_number_request() :: #{}
--type delete_phone_number_request() :: #{}.
+-type sip_media_application() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
+%% sip_media_application_alexa_skill_configuration() :: #{
+%%   <<"AlexaSkillIds">> => list(string()),
+%%   <<"AlexaSkillStatus">> => list(any())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type sip_media_application_alexa_skill_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% sip_media_application_call() :: #{
+%%   <<"TransactionId">> => string()
+%% }
+-type sip_media_application_call() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1301,17 +1511,371 @@
 
 
 %% Example:
-%% disassociate_phone_numbers_from_voice_connector_group_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error())
+%% sip_media_application_logging_configuration() :: #{
+%%   <<"EnableSipMediaApplicationMessageLogs">> => boolean()
 %% }
--type disassociate_phone_numbers_from_voice_connector_group_response() :: #{binary() => any()}.
+-type sip_media_application_logging_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_global_settings_response() :: #{
-%%   <<"VoiceConnector">> => voice_connector_settings()
+%% sip_rule() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Disabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"SipRuleId">> => string(),
+%%   <<"TargetApplications">> => list(sip_rule_target_application()),
+%%   <<"TriggerType">> => list(any()),
+%%   <<"TriggerValue">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
 %% }
--type get_global_settings_response() :: #{binary() => any()}.
+-type sip_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% sip_rule_target_application() :: #{
+%%   <<"AwsRegion">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"SipMediaApplicationId">> => string()
+%% }
+-type sip_rule_target_application() :: #{binary() => any()}.
+
+
+%% Example:
+%% speaker_search_details() :: #{
+%%   <<"Results">> => list(speaker_search_result()),
+%%   <<"VoiceprintGenerationStatus">> => string()
+%% }
+-type speaker_search_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% speaker_search_result() :: #{
+%%   <<"ConfidenceScore">> => float(),
+%%   <<"VoiceProfileId">> => string()
+%% }
+-type speaker_search_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% speaker_search_task() :: #{
+%%   <<"CallDetails">> => call_details(),
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"SpeakerSearchDetails">> => speaker_search_details(),
+%%   <<"SpeakerSearchTaskId">> => string(),
+%%   <<"SpeakerSearchTaskStatus">> => string(),
+%%   <<"StartedTimestamp">> => non_neg_integer(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer()
+%% }
+-type speaker_search_task() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_speaker_search_task_request() :: #{
+%%   <<"CallLeg">> => list(any()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"TransactionId">> := string(),
+%%   <<"VoiceProfileDomainId">> := string()
+%% }
+-type start_speaker_search_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_speaker_search_task_response() :: #{
+%%   <<"SpeakerSearchTask">> => speaker_search_task()
+%% }
+-type start_speaker_search_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_voice_tone_analysis_task_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"TransactionId">> := string()
+%% }
+-type start_voice_tone_analysis_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_voice_tone_analysis_task_response() :: #{
+%%   <<"VoiceToneAnalysisTask">> => voice_tone_analysis_task()
+%% }
+-type start_voice_tone_analysis_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_speaker_search_task_request() :: #{}
+-type stop_speaker_search_task_request() :: #{}.
+
+%% Example:
+%% stop_voice_tone_analysis_task_request() :: #{}
+-type stop_voice_tone_analysis_task_request() :: #{}.
+
+
+%% Example:
+%% streaming_configuration() :: #{
+%%   <<"DataRetentionInHours">> => integer(),
+%%   <<"Disabled">> => boolean(),
+%%   <<"MediaInsightsConfiguration">> => media_insights_configuration(),
+%%   <<"StreamingNotificationTargets">> => list(streaming_notification_target())
+%% }
+-type streaming_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_notification_target() :: #{
+%%   <<"NotificationTarget">> => list(any())
+%% }
+-type streaming_notification_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% termination() :: #{
+%%   <<"CallingRegions">> => list(string()),
+%%   <<"CidrAllowedList">> => list(string()),
+%%   <<"CpsLimit">> => integer(),
+%%   <<"DefaultPhoneNumber">> => string(),
+%%   <<"Disabled">> => boolean()
+%% }
+-type termination() :: #{binary() => any()}.
+
+
+%% Example:
+%% termination_health() :: #{
+%%   <<"Source">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type termination_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttled_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type throttled_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_client_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_entity_exception() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type unprocessable_entity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_global_settings_request() :: #{
+%%   <<"VoiceConnector">> := voice_connector_settings()
+%% }
+-type update_global_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_phone_number_request() :: #{
+%%   <<"CallingName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ProductType">> => list(any())
+%% }
+-type update_phone_number_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_phone_number_request_item() :: #{
+%%   <<"CallingName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PhoneNumberId">> => string(),
+%%   <<"ProductType">> => list(any())
+%% }
+-type update_phone_number_request_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_phone_number_response() :: #{
+%%   <<"PhoneNumber">> => phone_number()
+%% }
+-type update_phone_number_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_phone_number_settings_request() :: #{
+%%   <<"CallingName">> := string()
+%% }
+-type update_phone_number_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_proxy_session_request() :: #{
+%%   <<"Capabilities">> := list(list(any())()),
+%%   <<"ExpiryMinutes">> => integer()
+%% }
+-type update_proxy_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_proxy_session_response() :: #{
+%%   <<"ProxySession">> => proxy_session()
+%% }
+-type update_proxy_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sip_media_application_call_request() :: #{
+%%   <<"Arguments">> := map()
+%% }
+-type update_sip_media_application_call_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sip_media_application_call_response() :: #{
+%%   <<"SipMediaApplicationCall">> => sip_media_application_call()
+%% }
+-type update_sip_media_application_call_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sip_media_application_request() :: #{
+%%   <<"Endpoints">> => list(sip_media_application_endpoint()),
+%%   <<"Name">> => string()
+%% }
+-type update_sip_media_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sip_media_application_response() :: #{
+%%   <<"SipMediaApplication">> => sip_media_application()
+%% }
+-type update_sip_media_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sip_rule_request() :: #{
+%%   <<"Disabled">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"TargetApplications">> => list(sip_rule_target_application())
+%% }
+-type update_sip_rule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sip_rule_response() :: #{
+%%   <<"SipRule">> => sip_rule()
+%% }
+-type update_sip_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_connector_group_request() :: #{
+%%   <<"CallDistributionType">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"VoiceConnectorItems">> := list(voice_connector_item())
+%% }
+-type update_voice_connector_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_connector_group_response() :: #{
+%%   <<"VoiceConnectorGroup">> => voice_connector_group()
+%% }
+-type update_voice_connector_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_connector_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"RequireEncryption">> := boolean()
+%% }
+-type update_voice_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_connector_response() :: #{
+%%   <<"VoiceConnector">> => voice_connector()
+%% }
+-type update_voice_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_profile_domain_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_voice_profile_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_profile_domain_response() :: #{
+%%   <<"VoiceProfileDomain">> => voice_profile_domain()
+%% }
+-type update_voice_profile_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_profile_request() :: #{
+%%   <<"SpeakerSearchTaskId">> := string()
+%% }
+-type update_voice_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_voice_profile_response() :: #{
+%%   <<"VoiceProfile">> => voice_profile()
+%% }
+-type update_voice_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_e911_address_request() :: #{
+%%   <<"AwsAccountId">> := string(),
+%%   <<"City">> := string(),
+%%   <<"Country">> := string(),
+%%   <<"PostalCode">> := string(),
+%%   <<"State">> := string(),
+%%   <<"StreetInfo">> := string(),
+%%   <<"StreetNumber">> := string()
+%% }
+-type validate_e911_address_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_e911_address_response() :: #{
+%%   <<"Address">> => address(),
+%%   <<"AddressExternalId">> => string(),
+%%   <<"CandidateAddressList">> => list(candidate_address()),
+%%   <<"ValidationResult">> => integer()
+%% }
+-type validate_e911_address_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1331,70 +1895,16 @@
 
 
 %% Example:
-%% list_proxy_sessions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_proxy_sessions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% origination_route() :: #{
-%%   <<"Host">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"Priority">> => integer(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"Weight">> => integer()
-%% }
--type origination_route() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_voice_profile_domains_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_voice_profile_domains_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_tone_analysis_task() :: #{
-%%   <<"CallDetails">> => call_details(),
+%% voice_connector_group() :: #{
+%%   <<"CallDistributionType">> => list(any()),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"StartedTimestamp">> => non_neg_integer(),
-%%   <<"StatusMessage">> => string(),
+%%   <<"Name">> => string(),
 %%   <<"UpdatedTimestamp">> => non_neg_integer(),
-%%   <<"VoiceToneAnalysisTaskId">> => string(),
-%%   <<"VoiceToneAnalysisTaskStatus">> => string()
+%%   <<"VoiceConnectorGroupArn">> => string(),
+%%   <<"VoiceConnectorGroupId">> => string(),
+%%   <<"VoiceConnectorItems">> => list(voice_connector_item())
 %% }
--type voice_tone_analysis_task() :: #{binary() => any()}.
-
-
-%% Example:
-%% streaming_notification_target() :: #{
-%%   <<"NotificationTarget">> => list(any())
-%% }
--type streaming_notification_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_voice_profile_domain_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"ServerSideEncryptionConfiguration">> := server_side_encryption_configuration(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_voice_profile_domain_request() :: #{binary() => any()}.
+-type voice_connector_group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1406,156 +1916,47 @@
 
 
 %% Example:
-%% list_available_voice_connector_regions_response() :: #{
-%%   <<"VoiceConnectorRegions">> => list(list(any())())
+%% voice_connector_settings() :: #{
+%%   <<"CdrBucket">> => string()
 %% }
--type list_available_voice_connector_regions_response() :: #{binary() => any()}.
+-type voice_connector_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_sip_media_application_logging_configuration_response() :: #{
-%%   <<"SipMediaApplicationLoggingConfiguration">> => sip_media_application_logging_configuration()
+%% voice_profile() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"ExpirationTimestamp">> => non_neg_integer(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer(),
+%%   <<"VoiceProfileArn">> => string(),
+%%   <<"VoiceProfileDomainId">> => string(),
+%%   <<"VoiceProfileId">> => string()
 %% }
--type put_sip_media_application_logging_configuration_response() :: #{binary() => any()}.
+-type voice_profile() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_voice_connector_group_response() :: #{
-%%   <<"VoiceConnectorGroup">> => voice_connector_group()
-%% }
--type update_voice_connector_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_phone_number_response() :: #{
-%%   <<"PhoneNumber">> => phone_number()
-%% }
--type get_phone_number_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_voice_profiles_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"VoiceProfileDomainId">> := string()
-%% }
--type list_voice_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_voice_connector_termination_credentials_response() :: #{
-%%   <<"Usernames">> => list(string())
-%% }
--type list_voice_connector_termination_credentials_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_side_encryption_configuration() :: #{
-%%   <<"KmsKeyArn">> => string()
-%% }
--type server_side_encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_global_settings_request() :: #{
-%%   <<"VoiceConnector">> => voice_connector_settings()
-%% }
--type update_global_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sip_media_application_alexa_skill_configuration() :: #{
-%%   <<"AlexaSkillIds">> => list(string()),
-%%   <<"AlexaSkillStatus">> => list(any())
-%% }
--type sip_media_application_alexa_skill_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_proxy_session_request() :: #{
-%%   <<"Capabilities">> := list(list(any())()),
-%%   <<"ExpiryMinutes">> => integer(),
-%%   <<"GeoMatchLevel">> => list(any()),
-%%   <<"GeoMatchParams">> => geo_match_params(),
+%% voice_profile_domain() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NumberSelectionBehavior">> => list(any()),
-%%   <<"ParticipantPhoneNumbers">> := list(string())
+%%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer(),
+%%   <<"VoiceProfileDomainArn">> => string(),
+%%   <<"VoiceProfileDomainId">> => string()
 %% }
--type create_proxy_session_request() :: #{binary() => any()}.
+-type voice_profile_domain() :: #{binary() => any()}.
 
 
 %% Example:
-%% candidate_address() :: #{
-%%   <<"city">> => string(),
-%%   <<"country">> => string(),
-%%   <<"postalCode">> => string(),
-%%   <<"postalCodePlus4">> => string(),
-%%   <<"state">> => string(),
-%%   <<"streetInfo">> => string(),
-%%   <<"streetNumber">> => string()
+%% voice_profile_domain_summary() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"UpdatedTimestamp">> => non_neg_integer(),
+%%   <<"VoiceProfileDomainArn">> => string(),
+%%   <<"VoiceProfileDomainId">> => string()
 %% }
--type candidate_address() :: #{binary() => any()}.
-
-%% Example:
-%% get_sip_rule_request() :: #{}
--type get_sip_rule_request() :: #{}.
-
-%% Example:
-%% get_voice_connector_external_systems_configuration_request() :: #{}
--type get_voice_connector_external_systems_configuration_request() :: #{}.
-
-%% Example:
-%% get_voice_connector_proxy_request() :: #{}
--type get_voice_connector_proxy_request() :: #{}.
-
-
-%% Example:
-%% list_sip_media_applications_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SipMediaApplications">> => list(sip_media_application())
-%% }
--type list_sip_media_applications_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_sip_media_application_logging_configuration_request() :: #{}
--type get_sip_media_application_logging_configuration_request() :: #{}.
-
-%% Example:
-%% delete_voice_connector_external_systems_configuration_request() :: #{}
--type delete_voice_connector_external_systems_configuration_request() :: #{}.
-
-%% Example:
-%% stop_voice_tone_analysis_task_request() :: #{}
--type stop_voice_tone_analysis_task_request() :: #{}.
-
-
-%% Example:
-%% sip_media_application_logging_configuration() :: #{
-%%   <<"EnableSipMediaApplicationMessageLogs">> => boolean()
-%% }
--type sip_media_application_logging_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_proxy_session_response() :: #{
-%%   <<"ProxySession">> => proxy_session()
-%% }
--type get_proxy_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_voice_profiles_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VoiceProfiles">> => list(voice_profile_summary())
-%% }
--type list_voice_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sip_rule_response() :: #{
-%%   <<"SipRule">> => sip_rule()
-%% }
--type update_sip_rule_response() :: #{binary() => any()}.
+-type voice_profile_domain_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1571,1326 +1972,934 @@
 
 
 %% Example:
-%% unprocessable_entity_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type unprocessable_entity_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_voice_connector_group_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"VoiceConnectorItems">> => list(voice_connector_item())
-%% }
--type create_voice_connector_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_profile_response() :: #{
-%%   <<"VoiceProfile">> => voice_profile()
-%% }
--type get_voice_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sip_media_application_call_response() :: #{
-%%   <<"SipMediaApplicationCall">> => sip_media_application_call()
-%% }
--type create_sip_media_application_call_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% phone_number_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"PhoneNumberId">> => string()
-%% }
--type phone_number_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_phone_number_request_item() :: #{
-%%   <<"CallingName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PhoneNumberId">> => string(),
-%%   <<"ProductType">> => list(any())
-%% }
--type update_phone_number_request_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_phone_numbers_with_voice_connector_group_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error())
-%% }
--type associate_phone_numbers_with_voice_connector_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_voice_connector_origination_request() :: #{
-%%   <<"Origination">> := origination()
-%% }
--type put_voice_connector_origination_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_voice_connector_termination_credentials_request() :: #{
-%%   <<"Usernames">> := list(string())
-%% }
--type delete_voice_connector_termination_credentials_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_voice_connectors_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VoiceConnectors">> => list(voice_connector())
-%% }
--type list_voice_connectors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_sip_media_application_alexa_skill_configuration_response() :: #{
-%%   <<"SipMediaApplicationAlexaSkillConfiguration">> => sip_media_application_alexa_skill_configuration()
-%% }
--type put_sip_media_application_alexa_skill_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_voice_connector_group_request() :: #{}
--type get_voice_connector_group_request() :: #{}.
-
-
-%% Example:
-%% voice_connector_group() :: #{
+%% voice_tone_analysis_task() :: #{
+%%   <<"CallDetails">> => call_details(),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Name">> => string(),
+%%   <<"StartedTimestamp">> => non_neg_integer(),
+%%   <<"StatusMessage">> => string(),
 %%   <<"UpdatedTimestamp">> => non_neg_integer(),
-%%   <<"VoiceConnectorGroupArn">> => string(),
-%%   <<"VoiceConnectorGroupId">> => string(),
-%%   <<"VoiceConnectorItems">> => list(voice_connector_item())
+%%   <<"VoiceToneAnalysisTaskId">> => string(),
+%%   <<"VoiceToneAnalysisTaskStatus">> => string()
 %% }
--type voice_connector_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_connector_origination_response() :: #{
-%%   <<"Origination">> => origination()
-%% }
--type get_voice_connector_origination_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_voice_profile_request() :: #{}
--type delete_voice_profile_request() :: #{}.
-
-%% Example:
-%% delete_voice_profile_domain_request() :: #{}
--type delete_voice_profile_domain_request() :: #{}.
-
-
-%% Example:
-%% get_phone_number_settings_response() :: #{
-%%   <<"CallingName">> => string(),
-%%   <<"CallingNameUpdatedTimestamp">> => non_neg_integer()
-%% }
--type get_phone_number_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sip_media_application_call_request() :: #{
-%%   <<"ArgumentsMap">> => map(),
-%%   <<"FromPhoneNumber">> := string(),
-%%   <<"SipHeaders">> => map(),
-%%   <<"ToPhoneNumber">> := string()
-%% }
--type create_sip_media_application_call_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sip_media_application_call_request() :: #{
-%%   <<"Arguments">> := map()
-%% }
--type update_sip_media_application_call_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_voice_connector_termination_request() :: #{}
--type delete_voice_connector_termination_request() :: #{}.
-
-
-%% Example:
-%% get_voice_connector_group_response() :: #{
-%%   <<"VoiceConnectorGroup">> => voice_connector_group()
-%% }
--type get_voice_connector_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_voice_connector_logging_configuration_response() :: #{
-%%   <<"LoggingConfiguration">> => logging_configuration()
-%% }
--type put_voice_connector_logging_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_voice_connector_response() :: #{
-%%   <<"VoiceConnector">> => voice_connector()
-%% }
--type create_voice_connector_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_proxy_session_request() :: #{}
--type get_proxy_session_request() :: #{}.
-
-
-%% Example:
-%% sip_media_application_call() :: #{
-%%   <<"TransactionId">> => string()
-%% }
--type sip_media_application_call() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_phone_numbers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number())
-%% }
--type list_phone_numbers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_voice_connector_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"RequireEncryption">> := boolean()
-%% }
--type update_voice_connector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_tone_analysis_task_request() :: #{
-%%   <<"IsCaller">> := boolean()
-%% }
--type get_voice_tone_analysis_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_voice_profile_domain_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_voice_profile_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% credential() :: #{
-%%   <<"Password">> => string(),
-%%   <<"Username">> => string()
-%% }
--type credential() :: #{binary() => any()}.
-
-
-%% Example:
-%% phone_number_capabilities() :: #{
-%%   <<"InboundCall">> => boolean(),
-%%   <<"InboundMMS">> => boolean(),
-%%   <<"InboundSMS">> => boolean(),
-%%   <<"OutboundCall">> => boolean(),
-%%   <<"OutboundMMS">> => boolean(),
-%%   <<"OutboundSMS">> => boolean()
-%% }
--type phone_number_capabilities() :: #{binary() => any()}.
-
-%% Example:
-%% delete_voice_connector_streaming_configuration_request() :: #{}
--type delete_voice_connector_streaming_configuration_request() :: #{}.
-
-%% Example:
-%% delete_voice_connector_emergency_calling_configuration_request() :: #{}
--type delete_voice_connector_emergency_calling_configuration_request() :: #{}.
-
-%% Example:
-%% get_sip_media_application_request() :: #{}
--type get_sip_media_application_request() :: #{}.
-
-
-%% Example:
-%% create_sip_media_application_response() :: #{
-%%   <<"SipMediaApplication">> => sip_media_application()
-%% }
--type create_sip_media_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_voice_connector_proxy_response() :: #{
-%%   <<"Proxy">> => proxy()
-%% }
--type put_voice_connector_proxy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% address() :: #{
-%%   <<"city">> => string(),
-%%   <<"country">> => string(),
-%%   <<"postDirectional">> => string(),
-%%   <<"postalCode">> => string(),
-%%   <<"postalCodePlus4">> => string(),
-%%   <<"preDirectional">> => string(),
-%%   <<"state">> => string(),
-%%   <<"streetName">> => string(),
-%%   <<"streetNumber">> => string(),
-%%   <<"streetSuffix">> => string()
-%% }
--type address() :: #{binary() => any()}.
-
-
-%% Example:
-%% sip_rule_target_application() :: #{
-%%   <<"AwsRegion">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"SipMediaApplicationId">> => string()
-%% }
--type sip_rule_target_application() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_connector_emergency_calling_configuration_response() :: #{
-%%   <<"EmergencyCallingConfiguration">> => emergency_calling_configuration()
-%% }
--type get_voice_connector_emergency_calling_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_speaker_search_task_request() :: #{}
--type get_speaker_search_task_request() :: #{}.
-
-%% Example:
-%% delete_voice_connector_request() :: #{}
--type delete_voice_connector_request() :: #{}.
-
-
-%% Example:
-%% update_phone_number_request() :: #{
-%%   <<"CallingName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ProductType">> => list(any())
-%% }
--type update_phone_number_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_profile_domain_response() :: #{
-%%   <<"VoiceProfileDomain">> => voice_profile_domain()
-%% }
--type get_voice_profile_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_voice_connector_origination_request() :: #{}
--type get_voice_connector_origination_request() :: #{}.
-
-
-%% Example:
-%% put_voice_connector_emergency_calling_configuration_response() :: #{
-%%   <<"EmergencyCallingConfiguration">> => emergency_calling_configuration()
-%% }
--type put_voice_connector_emergency_calling_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_connector_termination_response() :: #{
-%%   <<"Termination">> => termination()
-%% }
--type get_voice_connector_termination_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_sip_media_application_alexa_skill_configuration_request() :: #{}
--type get_sip_media_application_alexa_skill_configuration_request() :: #{}.
-
-
-%% Example:
-%% batch_update_phone_number_request() :: #{
-%%   <<"UpdatePhoneNumberRequestItems">> := list(update_phone_number_request_item())
-%% }
--type batch_update_phone_number_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_sip_media_application_alexa_skill_configuration_request() :: #{
-%%   <<"SipMediaApplicationAlexaSkillConfiguration">> => sip_media_application_alexa_skill_configuration()
-%% }
--type put_sip_media_application_alexa_skill_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sip_media_application() :: #{
-%%   <<"AwsRegion">> => string(),
-%%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Endpoints">> => list(sip_media_application_endpoint()),
-%%   <<"Name">> => string(),
-%%   <<"SipMediaApplicationArn">> => string(),
-%%   <<"SipMediaApplicationId">> => string(),
-%%   <<"UpdatedTimestamp">> => non_neg_integer()
-%% }
--type sip_media_application() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_available_phone_numbers_request() :: #{
-%%   <<"AreaCode">> => string(),
-%%   <<"City">> => string(),
-%%   <<"Country">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PhoneNumberType">> => list(any()),
-%%   <<"State">> => string(),
-%%   <<"TollFreePrefix">> => string()
-%% }
--type search_available_phone_numbers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_supported_phone_number_countries_request() :: #{
-%%   <<"ProductType">> := list(any())
-%% }
--type list_supported_phone_number_countries_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% emergency_calling_configuration() :: #{
-%%   <<"DNIS">> => list(d_n_i_s_emergency_calling_configuration())
-%% }
--type emergency_calling_configuration() :: #{binary() => any()}.
+-type voice_tone_analysis_task() :: #{binary() => any()}.
 
 -type associate_phone_numbers_with_voice_connector_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type associate_phone_numbers_with_voice_connector_group_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type batch_delete_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type batch_update_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type create_phone_number_order_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_proxy_session_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type create_sip_media_application_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_sip_media_application_call_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_sip_rule_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_voice_connector_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_voice_connector_group_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_voice_profile_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    gone_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
+    gone_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_voice_profile_domain_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_proxy_session_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_sip_media_application_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_sip_rule_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_voice_connector_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_voice_connector_emergency_calling_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_voice_connector_external_systems_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_voice_connector_group_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_voice_connector_origination_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_voice_connector_proxy_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_voice_connector_streaming_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_voice_connector_termination_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_voice_connector_termination_credentials_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type delete_voice_profile_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_voice_profile_domain_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type disassociate_phone_numbers_from_voice_connector_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type disassociate_phone_numbers_from_voice_connector_group_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_global_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_phone_number_order_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_phone_number_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_proxy_session_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_sip_media_application_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_sip_media_application_alexa_skill_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
+    gone_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_sip_media_application_logging_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_sip_rule_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_speaker_search_task_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_voice_connector_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_voice_connector_emergency_calling_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_voice_connector_external_systems_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_voice_connector_group_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_voice_connector_logging_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_voice_connector_origination_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_voice_connector_proxy_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_voice_connector_streaming_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_voice_connector_termination_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_voice_connector_termination_health_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type get_voice_profile_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_voice_profile_domain_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_voice_tone_analysis_task_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_available_voice_connector_regions_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_phone_number_orders_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_phone_numbers_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_proxy_sessions_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_sip_media_applications_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_sip_rules_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_supported_phone_number_countries_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
     unauthorized_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_voice_connector_groups_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_voice_connector_termination_credentials_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_voice_connectors_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_voice_profile_domains_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type list_voice_profiles_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type put_sip_media_application_alexa_skill_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
+    gone_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type put_sip_media_application_logging_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type put_voice_connector_emergency_calling_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type put_voice_connector_external_systems_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type put_voice_connector_logging_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type put_voice_connector_origination_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type put_voice_connector_proxy_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type put_voice_connector_streaming_configuration_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type put_voice_connector_termination_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type put_voice_connector_termination_credentials_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type restore_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type search_available_phone_numbers_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type start_speaker_search_task_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
     unprocessable_entity_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    gone_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
+    gone_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type start_voice_tone_analysis_task_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
     unprocessable_entity_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    gone_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
+    gone_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type stop_speaker_search_task_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
     unprocessable_entity_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type stop_voice_tone_analysis_task_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
     unprocessable_entity_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
     unauthorized_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
     unauthorized_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_global_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_phone_number_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_phone_number_settings_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_proxy_session_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_sip_media_application_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_sip_media_application_call_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_sip_rule_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    resource_limit_exceeded_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    resource_limit_exceeded_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_voice_connector_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception().
 
 -type update_voice_connector_group_errors() ::
-    bad_request_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_voice_profile_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    gone_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
+    gone_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_voice_profile_domain_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type validate_e911_address_errors() ::
-    bad_request_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    not_found_exception() | 
-    throttled_client_exception() | 
     unauthorized_client_exception() | 
+    throttled_client_exception() | 
+    service_unavailable_exception() | 
+    service_failure_exception() | 
+    not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -3089,6 +3098,9 @@ create_phone_number_order(Client, Input0, Options0) ->
 %% @doc Creates a proxy session for the specified Amazon Chime SDK Voice
 %% Connector for
 %% the specified participant phone numbers.
+%%
+%% End of support notice: On April 7, 2026, AWS will end support for Amazon
+%% Chime SDK proxy sessions.
 -spec create_proxy_session(aws_client:aws_client(), binary() | list(), create_proxy_session_request()) ->
     {ok, create_proxy_session_response(), tuple()} |
     {error, any()} |
@@ -3463,6 +3475,9 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 %% @doc Deletes the specified proxy session from the specified Amazon Chime
 %% SDK Voice
 %% Connector.
+%%
+%% End of support notice: On April 7, 2026, AWS will end support for Amazon
+%% Chime SDK proxy sessions.
 -spec delete_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_proxy_session_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3752,6 +3767,9 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) -
 
 %% @doc Deletes the proxy configuration from the specified Amazon Chime SDK
 %% Voice Connector.
+%%
+%% End of support notice: On April 7, 2026, AWS will end support for Amazon
+%% Chime SDK proxy sessions.
 -spec delete_voice_connector_proxy(aws_client:aws_client(), binary() | list(), delete_voice_connector_proxy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4194,6 +4212,9 @@ get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves the specified proxy session details for the specified
 %% Amazon Chime SDK Voice Connector.
+%%
+%% End of support notice: On April 7, 2026, AWS will end support for Amazon
+%% Chime SDK proxy sessions.
 -spec get_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_proxy_session_response(), tuple()} |
     {error, any()} |
@@ -4660,6 +4681,9 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 %% @doc Retrieves the proxy configuration details for the specified Amazon
 %% Chime SDK Voice
 %% Connector.
+%%
+%% End of support notice: On April 7, 2026, AWS will end support for Amazon
+%% Chime SDK proxy sessions.
 -spec get_voice_connector_proxy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
@@ -5064,6 +5088,9 @@ list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the proxy sessions for the specified Amazon Chime SDK Voice
 %% Connector.
+%%
+%% End of support notice: On April 7, 2026, AWS will end support for Amazon
+%% Chime SDK proxy sessions.
 -spec list_proxy_sessions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_proxy_sessions_response(), tuple()} |
     {error, any()} |
@@ -5697,6 +5724,9 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
 
 %% @doc Puts the specified proxy configuration to the specified Amazon Chime
 %% SDK Voice Connector.
+%%
+%% End of support notice: On April 7, 2026, AWS will end support for Amazon
+%% Chime SDK proxy sessions.
 -spec put_voice_connector_proxy(aws_client:aws_client(), binary() | list(), put_voice_connector_proxy_request()) ->
     {ok, put_voice_connector_proxy_response(), tuple()} |
     {error, any()} |
@@ -6261,6 +6291,9 @@ update_phone_number_settings(Client, Input0, Options0) ->
 
 %% @doc Updates the specified proxy session details, such as voice or SMS
 %% capabilities.
+%%
+%% End of support notice: On April 7, 2026, AWS will end support for Amazon
+%% Chime SDK proxy sessions.
 -spec update_proxy_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_proxy_session_request()) ->
     {ok, update_proxy_session_response(), tuple()} |
     {error, any()} |

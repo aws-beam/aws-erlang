@@ -66,6 +66,90 @@
 
 
 %% Example:
+%% add_tags_input() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"ResourceType">> := list(any()),
+%%   <<"Tags">> := list(tag())
+%% }
+-type add_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_output() :: #{
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type add_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_prediction() :: #{
+%%   <<"BatchPredictionDataSourceId">> => string(),
+%%   <<"BatchPredictionId">> => string(),
+%%   <<"ComputeTime">> => float(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedByIamUser">> => string(),
+%%   <<"FinishedAt">> => non_neg_integer(),
+%%   <<"InputDataLocationS3">> => string(),
+%%   <<"InvalidRecordCount">> => float(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"MLModelId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputUri">> => string(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalRecordCount">> => float()
+%% }
+-type batch_prediction() :: #{binary() => any()}.
+
+%% Example:
+%% create_batch_prediction_input() :: #{
+%%   <<"BatchPredictionDataSourceId">> := string(),
+%%   <<"BatchPredictionId">> := string(),
+%%   <<"BatchPredictionName">> => string(),
+%%   <<"MLModelId">> := string(),
+%%   <<"OutputUri">> := string()
+%% }
+-type create_batch_prediction_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_batch_prediction_output() :: #{
+%%   <<"BatchPredictionId">> => string()
+%% }
+-type create_batch_prediction_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_source_from_rds_input() :: #{
+%%   <<"ComputeStatistics">> => boolean(),
+%%   <<"DataSourceId">> := string(),
+%%   <<"DataSourceName">> => string(),
+%%   <<"RDSData">> := rds_data_spec(),
+%%   <<"RoleARN">> := string()
+%% }
+-type create_data_source_from_rds_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_source_from_rds_output() :: #{
+%%   <<"DataSourceId">> => string()
+%% }
+-type create_data_source_from_rds_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_source_from_redshift_input() :: #{
+%%   <<"ComputeStatistics">> => boolean(),
+%%   <<"DataSourceId">> := string(),
+%%   <<"DataSourceName">> => string(),
+%%   <<"DataSpec">> := redshift_data_spec(),
+%%   <<"RoleARN">> := string()
+%% }
+-type create_data_source_from_redshift_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_source_from_redshift_output() :: #{
+%%   <<"DataSourceId">> => string()
+%% }
+-type create_data_source_from_redshift_output() :: #{binary() => any()}.
+
+%% Example:
 %% create_data_source_from_s3_input() :: #{
 %%   <<"ComputeStatistics">> => boolean(),
 %%   <<"DataSourceId">> := string(),
@@ -73,6 +157,289 @@
 %%   <<"DataSpec">> := s3_data_spec()
 %% }
 -type create_data_source_from_s3_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_source_from_s3_output() :: #{
+%%   <<"DataSourceId">> => string()
+%% }
+-type create_data_source_from_s3_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_evaluation_input() :: #{
+%%   <<"EvaluationDataSourceId">> := string(),
+%%   <<"EvaluationId">> := string(),
+%%   <<"EvaluationName">> => string(),
+%%   <<"MLModelId">> := string()
+%% }
+-type create_evaluation_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_evaluation_output() :: #{
+%%   <<"EvaluationId">> => string()
+%% }
+-type create_evaluation_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_ml_model_input() :: #{
+%%   <<"MLModelId">> := string(),
+%%   <<"MLModelName">> => string(),
+%%   <<"MLModelType">> := list(any()),
+%%   <<"Parameters">> => map(),
+%%   <<"Recipe">> => string(),
+%%   <<"RecipeUri">> => string(),
+%%   <<"TrainingDataSourceId">> := string()
+%% }
+-type create_ml_model_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_ml_model_output() :: #{
+%%   <<"MLModelId">> => string()
+%% }
+-type create_ml_model_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_realtime_endpoint_input() :: #{
+%%   <<"MLModelId">> := string()
+%% }
+-type create_realtime_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_realtime_endpoint_output() :: #{
+%%   <<"MLModelId">> => string(),
+%%   <<"RealtimeEndpointInfo">> => realtime_endpoint_info()
+%% }
+-type create_realtime_endpoint_output() :: #{binary() => any()}.
+
+%% Example:
+%% data_source() :: #{
+%%   <<"ComputeStatistics">> => boolean(),
+%%   <<"ComputeTime">> => float(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedByIamUser">> => string(),
+%%   <<"DataLocationS3">> => string(),
+%%   <<"DataRearrangement">> => string(),
+%%   <<"DataSizeInBytes">> => float(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"FinishedAt">> => non_neg_integer(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NumberOfFiles">> => float(),
+%%   <<"RDSMetadata">> => rds_metadata(),
+%%   <<"RedshiftMetadata">> => redshift_metadata(),
+%%   <<"RoleARN">> => string(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% delete_batch_prediction_input() :: #{
+%%   <<"BatchPredictionId">> := string()
+%% }
+-type delete_batch_prediction_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_batch_prediction_output() :: #{
+%%   <<"BatchPredictionId">> => string()
+%% }
+-type delete_batch_prediction_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_source_input() :: #{
+%%   <<"DataSourceId">> := string()
+%% }
+-type delete_data_source_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_source_output() :: #{
+%%   <<"DataSourceId">> => string()
+%% }
+-type delete_data_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_evaluation_input() :: #{
+%%   <<"EvaluationId">> := string()
+%% }
+-type delete_evaluation_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_evaluation_output() :: #{
+%%   <<"EvaluationId">> => string()
+%% }
+-type delete_evaluation_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ml_model_input() :: #{
+%%   <<"MLModelId">> := string()
+%% }
+-type delete_ml_model_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ml_model_output() :: #{
+%%   <<"MLModelId">> => string()
+%% }
+-type delete_ml_model_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_realtime_endpoint_input() :: #{
+%%   <<"MLModelId">> := string()
+%% }
+-type delete_realtime_endpoint_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_realtime_endpoint_output() :: #{
+%%   <<"MLModelId">> => string(),
+%%   <<"RealtimeEndpointInfo">> => realtime_endpoint_info()
+%% }
+-type delete_realtime_endpoint_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_input() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"ResourceType">> := list(any()),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type delete_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_output() :: #{
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type delete_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_predictions_input() :: #{
+%%   <<"EQ">> => string(),
+%%   <<"FilterVariable">> => list(any()),
+%%   <<"GE">> => string(),
+%%   <<"GT">> => string(),
+%%   <<"LE">> => string(),
+%%   <<"LT">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NE">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type describe_batch_predictions_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_batch_predictions_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(batch_prediction())
+%% }
+-type describe_batch_predictions_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_sources_input() :: #{
+%%   <<"EQ">> => string(),
+%%   <<"FilterVariable">> => list(any()),
+%%   <<"GE">> => string(),
+%%   <<"GT">> => string(),
+%%   <<"LE">> => string(),
+%%   <<"LT">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NE">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type describe_data_sources_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_sources_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(data_source())
+%% }
+-type describe_data_sources_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_evaluations_input() :: #{
+%%   <<"EQ">> => string(),
+%%   <<"FilterVariable">> => list(any()),
+%%   <<"GE">> => string(),
+%%   <<"GT">> => string(),
+%%   <<"LE">> => string(),
+%%   <<"LT">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NE">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type describe_evaluations_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_evaluations_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(evaluation())
+%% }
+-type describe_evaluations_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ml_models_input() :: #{
+%%   <<"EQ">> => string(),
+%%   <<"FilterVariable">> => list(any()),
+%%   <<"GE">> => string(),
+%%   <<"GT">> => string(),
+%%   <<"LE">> => string(),
+%%   <<"LT">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NE">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type describe_ml_models_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ml_models_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(ml_model())
+%% }
+-type describe_ml_models_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_input() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"ResourceType">> := list(any())
+%% }
+-type describe_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_output() :: #{
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type describe_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% evaluation() :: #{
+%%   <<"ComputeTime">> => float(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedByIamUser">> => string(),
+%%   <<"EvaluationDataSourceId">> => string(),
+%%   <<"EvaluationId">> => string(),
+%%   <<"FinishedAt">> => non_neg_integer(),
+%%   <<"InputDataLocationS3">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"MLModelId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PerformanceMetrics">> => performance_metrics(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type evaluation() :: #{binary() => any()}.
+
+%% Example:
+%% get_batch_prediction_input() :: #{
+%%   <<"BatchPredictionId">> := string()
+%% }
+-type get_batch_prediction_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_batch_prediction_output() :: #{
@@ -97,25 +464,6 @@
 -type get_batch_prediction_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_evaluation_output() :: #{
-%%   <<"EvaluationId">> => string()
-%% }
--type delete_evaluation_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_realtime_endpoint_output() :: #{
-%%   <<"MLModelId">> => string(),
-%%   <<"RealtimeEndpointInfo">> => realtime_endpoint_info()
-%% }
--type create_realtime_endpoint_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_evaluation_input() :: #{
-%%   <<"EvaluationId">> := string()
-%% }
--type delete_evaluation_input() :: #{binary() => any()}.
-
-%% Example:
 %% get_data_source_input() :: #{
 %%   <<"DataSourceId">> := string(),
 %%   <<"Verbose">> => boolean()
@@ -123,16 +471,62 @@
 -type get_data_source_input() :: #{binary() => any()}.
 
 %% Example:
-%% redshift_data_spec() :: #{
+%% get_data_source_output() :: #{
+%%   <<"ComputeStatistics">> => boolean(),
+%%   <<"ComputeTime">> => float(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedByIamUser">> => string(),
+%%   <<"DataLocationS3">> => string(),
 %%   <<"DataRearrangement">> => string(),
-%%   <<"DataSchema">> => string(),
-%%   <<"DataSchemaUri">> => string(),
-%%   <<"DatabaseCredentials">> => redshift_database_credentials(),
-%%   <<"DatabaseInformation">> => redshift_database(),
-%%   <<"S3StagingLocation">> => string(),
-%%   <<"SelectSqlQuery">> => string()
+%%   <<"DataSizeInBytes">> => float(),
+%%   <<"DataSourceId">> => string(),
+%%   <<"DataSourceSchema">> => string(),
+%%   <<"FinishedAt">> => non_neg_integer(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"LogUri">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NumberOfFiles">> => float(),
+%%   <<"RDSMetadata">> => rds_metadata(),
+%%   <<"RedshiftMetadata">> => redshift_metadata(),
+%%   <<"RoleARN">> => string(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
 %% }
--type redshift_data_spec() :: #{binary() => any()}.
+-type get_data_source_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_evaluation_input() :: #{
+%%   <<"EvaluationId">> := string()
+%% }
+-type get_evaluation_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_evaluation_output() :: #{
+%%   <<"ComputeTime">> => float(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedByIamUser">> => string(),
+%%   <<"EvaluationDataSourceId">> => string(),
+%%   <<"EvaluationId">> => string(),
+%%   <<"FinishedAt">> => non_neg_integer(),
+%%   <<"InputDataLocationS3">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"LogUri">> => string(),
+%%   <<"MLModelId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PerformanceMetrics">> => performance_metrics(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_evaluation_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_ml_model_input() :: #{
+%%   <<"MLModelId">> := string(),
+%%   <<"Verbose">> => boolean()
+%% }
+-type get_ml_model_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_ml_model_output() :: #{
@@ -161,205 +555,38 @@
 -type get_ml_model_output() :: #{binary() => any()}.
 
 %% Example:
-%% delete_tags_input() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"ResourceType">> := list(any()),
-%%   <<"TagKeys">> := list(string())
+%% idempotent_parameter_mismatch_exception() :: #{
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
 %% }
--type delete_tags_input() :: #{binary() => any()}.
+-type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
 
 %% Example:
-%% predict_input() :: #{
-%%   <<"MLModelId">> := string(),
-%%   <<"PredictEndpoint">> := string(),
-%%   <<"Record">> := map()
+%% internal_server_exception() :: #{
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
 %% }
--type predict_input() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
-%% redshift_metadata() :: #{
-%%   <<"DatabaseUserName">> => string(),
-%%   <<"RedshiftDatabase">> => redshift_database(),
-%%   <<"SelectSqlQuery">> => string()
+%% invalid_input_exception() :: #{
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
 %% }
--type redshift_metadata() :: #{binary() => any()}.
+-type invalid_input_exception() :: #{binary() => any()}.
 
 %% Example:
-%% add_tags_output() :: #{
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any())
+%% invalid_tag_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type add_tags_output() :: #{binary() => any()}.
+-type invalid_tag_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_ml_model_output() :: #{
-%%   <<"MLModelId">> => string()
+%% limit_exceeded_exception() :: #{
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
 %% }
--type delete_ml_model_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_ml_model_input() :: #{
-%%   <<"MLModelId">> := string(),
-%%   <<"MLModelName">> => string(),
-%%   <<"MLModelType">> := list(any()),
-%%   <<"Parameters">> => map(),
-%%   <<"Recipe">> => string(),
-%%   <<"RecipeUri">> => string(),
-%%   <<"TrainingDataSourceId">> := string()
-%% }
--type create_ml_model_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_batch_predictions_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(batch_prediction())
-%% }
--type describe_batch_predictions_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_source_output() :: #{
-%%   <<"ComputeStatistics">> => boolean(),
-%%   <<"ComputeTime">> => float(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedByIamUser">> => string(),
-%%   <<"DataLocationS3">> => string(),
-%%   <<"DataRearrangement">> => string(),
-%%   <<"DataSizeInBytes">> => float(),
-%%   <<"DataSourceId">> => string(),
-%%   <<"DataSourceSchema">> => string(),
-%%   <<"FinishedAt">> => non_neg_integer(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"LogUri">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NumberOfFiles">> => float(),
-%%   <<"RDSMetadata">> => rds_metadata(),
-%%   <<"RedshiftMetadata">> => redshift_metadata(),
-%%   <<"RoleARN">> => string(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type get_data_source_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_evaluation_output() :: #{
-%%   <<"ComputeTime">> => float(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedByIamUser">> => string(),
-%%   <<"EvaluationDataSourceId">> => string(),
-%%   <<"EvaluationId">> => string(),
-%%   <<"FinishedAt">> => non_neg_integer(),
-%%   <<"InputDataLocationS3">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"LogUri">> => string(),
-%%   <<"MLModelId">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PerformanceMetrics">> => performance_metrics(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type get_evaluation_output() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_input() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"ResourceType">> := list(any()),
-%%   <<"Tags">> := list(tag())
-%% }
--type add_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% predict_output() :: #{
-%%   <<"Prediction">> => prediction()
-%% }
--type predict_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_evaluations_input() :: #{
-%%   <<"EQ">> => string(),
-%%   <<"FilterVariable">> => list(any()),
-%%   <<"GE">> => string(),
-%%   <<"GT">> => string(),
-%%   <<"LE">> => string(),
-%%   <<"LT">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NE">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"SortOrder">> => list(any())
-%% }
--type describe_evaluations_input() :: #{binary() => any()}.
-
-%% Example:
-%% rds_database() :: #{
-%%   <<"DatabaseName">> => string(),
-%%   <<"InstanceIdentifier">> => string()
-%% }
--type rds_database() :: #{binary() => any()}.
-
-%% Example:
-%% update_evaluation_input() :: #{
-%%   <<"EvaluationId">> := string(),
-%%   <<"EvaluationName">> := string()
-%% }
--type update_evaluation_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_prediction() :: #{
-%%   <<"BatchPredictionDataSourceId">> => string(),
-%%   <<"BatchPredictionId">> => string(),
-%%   <<"ComputeTime">> => float(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedByIamUser">> => string(),
-%%   <<"FinishedAt">> => non_neg_integer(),
-%%   <<"InputDataLocationS3">> => string(),
-%%   <<"InvalidRecordCount">> => float(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"MLModelId">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputUri">> => string(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TotalRecordCount">> => float()
-%% }
--type batch_prediction() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ml_models_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(ml_model())
-%% }
--type describe_ml_models_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ml_model_input() :: #{
-%%   <<"MLModelId">> := string()
-%% }
--type delete_ml_model_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_source_input() :: #{
-%%   <<"DataSourceId">> := string(),
-%%   <<"DataSourceName">> := string()
-%% }
--type update_data_source_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_ml_model_input() :: #{
-%%   <<"MLModelId">> := string(),
-%%   <<"Verbose">> => boolean()
-%% }
--type get_ml_model_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_ml_model_input() :: #{
-%%   <<"MLModelId">> := string(),
-%%   <<"MLModelName">> => string(),
-%%   <<"ScoreThreshold">> => float()
-%% }
--type update_ml_model_input() :: #{binary() => any()}.
+-type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% ml_model() :: #{
@@ -386,6 +613,41 @@
 -type ml_model() :: #{binary() => any()}.
 
 %% Example:
+%% performance_metrics() :: #{
+%%   <<"Properties">> => map()
+%% }
+-type performance_metrics() :: #{binary() => any()}.
+
+%% Example:
+%% predict_input() :: #{
+%%   <<"MLModelId">> := string(),
+%%   <<"PredictEndpoint">> := string(),
+%%   <<"Record">> := map()
+%% }
+-type predict_input() :: #{binary() => any()}.
+
+%% Example:
+%% predict_output() :: #{
+%%   <<"Prediction">> => prediction()
+%% }
+-type predict_output() :: #{binary() => any()}.
+
+%% Example:
+%% prediction() :: #{
+%%   <<"details">> => map(),
+%%   <<"predictedLabel">> => string(),
+%%   <<"predictedScores">> => map(),
+%%   <<"predictedValue">> => float()
+%% }
+-type prediction() :: #{binary() => any()}.
+
+%% Example:
+%% predictor_not_mounted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type predictor_not_mounted_exception() :: #{binary() => any()}.
+
+%% Example:
 %% rds_data_spec() :: #{
 %%   <<"DataRearrangement">> => string(),
 %%   <<"DataSchema">> => string(),
@@ -402,123 +664,18 @@
 -type rds_data_spec() :: #{binary() => any()}.
 
 %% Example:
-%% create_evaluation_input() :: #{
-%%   <<"EvaluationDataSourceId">> := string(),
-%%   <<"EvaluationId">> := string(),
-%%   <<"EvaluationName">> => string(),
-%%   <<"MLModelId">> := string()
+%% rds_database() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"InstanceIdentifier">> => string()
 %% }
--type create_evaluation_input() :: #{binary() => any()}.
+-type rds_database() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"code">> => integer(),
-%%   <<"message">> => string()
+%% rds_database_credentials() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tags_input() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"ResourceType">> := list(any())
-%% }
--type describe_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_source_output() :: #{
-%%   <<"DataSourceId">> => string()
-%% }
--type delete_data_source_output() :: #{binary() => any()}.
-
-%% Example:
-%% predictor_not_mounted_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type predictor_not_mounted_exception() :: #{binary() => any()}.
-
-%% Example:
-%% idempotent_parameter_mismatch_exception() :: #{
-%%   <<"code">> => integer(),
-%%   <<"message">> => string()
-%% }
--type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% realtime_endpoint_info() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EndpointStatus">> => list(any()),
-%%   <<"EndpointUrl">> => string(),
-%%   <<"PeakRequestsPerSecond">> => integer()
-%% }
--type realtime_endpoint_info() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_source_from_s3_output() :: #{
-%%   <<"DataSourceId">> => string()
-%% }
--type create_data_source_from_s3_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type tag_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_source_from_redshift_output() :: #{
-%%   <<"DataSourceId">> => string()
-%% }
--type create_data_source_from_redshift_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tags_output() :: #{
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type describe_tags_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_input_exception() :: #{
-%%   <<"code">> => integer(),
-%%   <<"message">> => string()
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_source_from_rds_input() :: #{
-%%   <<"ComputeStatistics">> => boolean(),
-%%   <<"DataSourceId">> := string(),
-%%   <<"DataSourceName">> => string(),
-%%   <<"RDSData">> := rds_data_spec(),
-%%   <<"RoleARN">> := string()
-%% }
--type create_data_source_from_rds_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_evaluation_output() :: #{
-%%   <<"EvaluationId">> => string()
-%% }
--type update_evaluation_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_evaluation_input() :: #{
-%%   <<"EvaluationId">> := string()
-%% }
--type get_evaluation_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_batch_prediction_input() :: #{
-%%   <<"BatchPredictionId">> := string()
-%% }
--type get_batch_prediction_input() :: #{binary() => any()}.
+-type rds_database_credentials() :: #{binary() => any()}.
 
 %% Example:
 %% rds_metadata() :: #{
@@ -532,23 +689,54 @@
 -type rds_metadata() :: #{binary() => any()}.
 
 %% Example:
-%% delete_realtime_endpoint_output() :: #{
-%%   <<"MLModelId">> => string(),
-%%   <<"RealtimeEndpointInfo">> => realtime_endpoint_info()
+%% realtime_endpoint_info() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EndpointStatus">> => list(any()),
+%%   <<"EndpointUrl">> => string(),
+%%   <<"PeakRequestsPerSecond">> => integer()
 %% }
--type delete_realtime_endpoint_output() :: #{binary() => any()}.
+-type realtime_endpoint_info() :: #{binary() => any()}.
 
 %% Example:
-%% update_data_source_output() :: #{
-%%   <<"DataSourceId">> => string()
+%% redshift_data_spec() :: #{
+%%   <<"DataRearrangement">> => string(),
+%%   <<"DataSchema">> => string(),
+%%   <<"DataSchemaUri">> => string(),
+%%   <<"DatabaseCredentials">> => redshift_database_credentials(),
+%%   <<"DatabaseInformation">> => redshift_database(),
+%%   <<"S3StagingLocation">> => string(),
+%%   <<"SelectSqlQuery">> => string()
 %% }
--type update_data_source_output() :: #{binary() => any()}.
+-type redshift_data_spec() :: #{binary() => any()}.
 
 %% Example:
-%% create_realtime_endpoint_input() :: #{
-%%   <<"MLModelId">> := string()
+%% redshift_database() :: #{
+%%   <<"ClusterIdentifier">> => string(),
+%%   <<"DatabaseName">> => string()
 %% }
--type create_realtime_endpoint_input() :: #{binary() => any()}.
+-type redshift_database() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_database_credentials() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type redshift_database_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_metadata() :: #{
+%%   <<"DatabaseUserName">> => string(),
+%%   <<"RedshiftDatabase">> => redshift_database(),
+%%   <<"SelectSqlQuery">> => string()
+%% }
+-type redshift_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"code">> => integer(),
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% s3_data_spec() :: #{
@@ -560,27 +748,17 @@
 -type s3_data_spec() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"code">> => integer(),
-%%   <<"message">> => string()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% describe_data_sources_input() :: #{
-%%   <<"EQ">> => string(),
-%%   <<"FilterVariable">> => list(any()),
-%%   <<"GE">> => string(),
-%%   <<"GT">> => string(),
-%%   <<"LE">> => string(),
-%%   <<"LT">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NE">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"SortOrder">> => list(any())
+%% tag_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_data_sources_input() :: #{binary() => any()}.
+-type tag_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% update_batch_prediction_input() :: #{
@@ -590,117 +768,44 @@
 -type update_batch_prediction_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_data_sources_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(data_source())
-%% }
--type describe_data_sources_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_evaluation_output() :: #{
-%%   <<"EvaluationId">> => string()
-%% }
--type create_evaluation_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_batch_prediction_output() :: #{
+%% update_batch_prediction_output() :: #{
 %%   <<"BatchPredictionId">> => string()
 %% }
--type create_batch_prediction_output() :: #{binary() => any()}.
+-type update_batch_prediction_output() :: #{binary() => any()}.
 
 %% Example:
-%% redshift_database() :: #{
-%%   <<"ClusterIdentifier">> => string(),
-%%   <<"DatabaseName">> => string()
+%% update_data_source_input() :: #{
+%%   <<"DataSourceId">> := string(),
+%%   <<"DataSourceName">> := string()
 %% }
--type redshift_database() :: #{binary() => any()}.
+-type update_data_source_input() :: #{binary() => any()}.
 
 %% Example:
-%% performance_metrics() :: #{
-%%   <<"Properties">> => map()
+%% update_data_source_output() :: #{
+%%   <<"DataSourceId">> => string()
 %% }
--type performance_metrics() :: #{binary() => any()}.
+-type update_data_source_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_ml_models_input() :: #{
-%%   <<"EQ">> => string(),
-%%   <<"FilterVariable">> => list(any()),
-%%   <<"GE">> => string(),
-%%   <<"GT">> => string(),
-%%   <<"LE">> => string(),
-%%   <<"LT">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NE">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"SortOrder">> => list(any())
+%% update_evaluation_input() :: #{
+%%   <<"EvaluationId">> := string(),
+%%   <<"EvaluationName">> := string()
 %% }
--type describe_ml_models_input() :: #{binary() => any()}.
+-type update_evaluation_input() :: #{binary() => any()}.
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"code">> => integer(),
-%%   <<"message">> => string()
+%% update_evaluation_output() :: #{
+%%   <<"EvaluationId">> => string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type update_evaluation_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_batch_predictions_input() :: #{
-%%   <<"EQ">> => string(),
-%%   <<"FilterVariable">> => list(any()),
-%%   <<"GE">> => string(),
-%%   <<"GT">> => string(),
-%%   <<"LE">> => string(),
-%%   <<"LT">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NE">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"SortOrder">> => list(any())
+%% update_ml_model_input() :: #{
+%%   <<"MLModelId">> := string(),
+%%   <<"MLModelName">> => string(),
+%%   <<"ScoreThreshold">> => float()
 %% }
--type describe_batch_predictions_input() :: #{binary() => any()}.
-
-%% Example:
-%% evaluation() :: #{
-%%   <<"ComputeTime">> => float(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedByIamUser">> => string(),
-%%   <<"EvaluationDataSourceId">> => string(),
-%%   <<"EvaluationId">> => string(),
-%%   <<"FinishedAt">> => non_neg_integer(),
-%%   <<"InputDataLocationS3">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"MLModelId">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PerformanceMetrics">> => performance_metrics(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type evaluation() :: #{binary() => any()}.
-
-%% Example:
-%% data_source() :: #{
-%%   <<"ComputeStatistics">> => boolean(),
-%%   <<"ComputeTime">> => float(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"CreatedByIamUser">> => string(),
-%%   <<"DataLocationS3">> => string(),
-%%   <<"DataRearrangement">> => string(),
-%%   <<"DataSizeInBytes">> => float(),
-%%   <<"DataSourceId">> => string(),
-%%   <<"FinishedAt">> => non_neg_integer(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NumberOfFiles">> => float(),
-%%   <<"RDSMetadata">> => rds_metadata(),
-%%   <<"RedshiftMetadata">> => redshift_metadata(),
-%%   <<"RoleARN">> => string(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any())
-%% }
--type data_source() :: #{binary() => any()}.
+-type update_ml_model_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_ml_model_output() :: #{
@@ -708,251 +813,146 @@
 %% }
 -type update_ml_model_output() :: #{binary() => any()}.
 
-%% Example:
-%% delete_data_source_input() :: #{
-%%   <<"DataSourceId">> := string()
-%% }
--type delete_data_source_input() :: #{binary() => any()}.
-
-%% Example:
-%% redshift_database_credentials() :: #{
-%%   <<"Password">> => string(),
-%%   <<"Username">> => string()
-%% }
--type redshift_database_credentials() :: #{binary() => any()}.
-
-%% Example:
-%% delete_realtime_endpoint_input() :: #{
-%%   <<"MLModelId">> := string()
-%% }
--type delete_realtime_endpoint_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_batch_prediction_output() :: #{
-%%   <<"BatchPredictionId">> => string()
-%% }
--type delete_batch_prediction_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tag_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_tag_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_source_from_rds_output() :: #{
-%%   <<"DataSourceId">> => string()
-%% }
--type create_data_source_from_rds_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_source_from_redshift_input() :: #{
-%%   <<"ComputeStatistics">> => boolean(),
-%%   <<"DataSourceId">> := string(),
-%%   <<"DataSourceName">> => string(),
-%%   <<"DataSpec">> := redshift_data_spec(),
-%%   <<"RoleARN">> := string()
-%% }
--type create_data_source_from_redshift_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_batch_prediction_output() :: #{
-%%   <<"BatchPredictionId">> => string()
-%% }
--type update_batch_prediction_output() :: #{binary() => any()}.
-
-%% Example:
-%% prediction() :: #{
-%%   <<"details">> => map(),
-%%   <<"predictedLabel">> => string(),
-%%   <<"predictedScores">> => map(),
-%%   <<"predictedValue">> => float()
-%% }
--type prediction() :: #{binary() => any()}.
-
-%% Example:
-%% create_ml_model_output() :: #{
-%%   <<"MLModelId">> => string()
-%% }
--type create_ml_model_output() :: #{binary() => any()}.
-
-%% Example:
-%% rds_database_credentials() :: #{
-%%   <<"Password">> => string(),
-%%   <<"Username">> => string()
-%% }
--type rds_database_credentials() :: #{binary() => any()}.
-
-%% Example:
-%% create_batch_prediction_input() :: #{
-%%   <<"BatchPredictionDataSourceId">> := string(),
-%%   <<"BatchPredictionId">> := string(),
-%%   <<"BatchPredictionName">> => string(),
-%%   <<"MLModelId">> := string(),
-%%   <<"OutputUri">> := string()
-%% }
--type create_batch_prediction_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_batch_prediction_input() :: #{
-%%   <<"BatchPredictionId">> := string()
-%% }
--type delete_batch_prediction_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tags_output() :: #{
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type delete_tags_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_evaluations_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(evaluation())
-%% }
--type describe_evaluations_output() :: #{binary() => any()}.
-
 -type add_tags_errors() ::
-    invalid_tag_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
     tag_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_tag_exception() | 
+    invalid_input_exception() | 
+    internal_server_exception().
 
 -type create_batch_prediction_errors() ::
-    internal_server_exception() | 
     invalid_input_exception() | 
+    internal_server_exception() | 
     idempotent_parameter_mismatch_exception().
 
 -type create_data_source_from_rds_errors() ::
-    internal_server_exception() | 
     invalid_input_exception() | 
+    internal_server_exception() | 
     idempotent_parameter_mismatch_exception().
 
 -type create_data_source_from_redshift_errors() ::
-    internal_server_exception() | 
     invalid_input_exception() | 
+    internal_server_exception() | 
     idempotent_parameter_mismatch_exception().
 
 -type create_data_source_from_s3_errors() ::
-    internal_server_exception() | 
     invalid_input_exception() | 
+    internal_server_exception() | 
     idempotent_parameter_mismatch_exception().
 
 -type create_evaluation_errors() ::
-    internal_server_exception() | 
     invalid_input_exception() | 
+    internal_server_exception() | 
     idempotent_parameter_mismatch_exception().
 
 -type create_ml_model_errors() ::
-    internal_server_exception() | 
     invalid_input_exception() | 
+    internal_server_exception() | 
     idempotent_parameter_mismatch_exception().
 
 -type create_realtime_endpoint_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type delete_batch_prediction_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type delete_data_source_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type delete_evaluation_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type delete_ml_model_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type delete_realtime_endpoint_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type delete_tags_errors() ::
+    resource_not_found_exception() | 
     invalid_tag_exception() | 
-    internal_server_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type describe_batch_predictions_errors() ::
-    internal_server_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_server_exception().
 
 -type describe_data_sources_errors() ::
-    internal_server_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_server_exception().
 
 -type describe_evaluations_errors() ::
-    internal_server_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_server_exception().
 
 -type describe_ml_models_errors() ::
-    internal_server_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_server_exception().
 
 -type describe_tags_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_batch_prediction_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_data_source_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_evaluation_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type get_ml_model_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type predict_errors() ::
-    limit_exceeded_exception() | 
-    internal_server_exception() | 
-    invalid_input_exception() | 
+    resource_not_found_exception() | 
     predictor_not_mounted_exception() | 
-    resource_not_found_exception().
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    internal_server_exception().
 
 -type update_batch_prediction_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type update_data_source_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type update_evaluation_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type update_ml_model_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 %%====================================================================
 %% API

@@ -122,6 +122,8 @@
          disassociate_connection_from_lag/3,
          disassociate_mac_sec_key/2,
          disassociate_mac_sec_key/3,
+         list_virtual_interface_routes/2,
+         list_virtual_interface_routes/3,
          list_virtual_interface_test_history/2,
          list_virtual_interface_test_history/3,
          start_bgp_failover_test/2,
@@ -147,176 +149,114 @@
 
 
 %% Example:
-%% confirm_transit_virtual_interface_request() :: #{
+%% accept_direct_connect_gateway_association_proposal_request() :: #{
+%%   <<"associatedGatewayOwnerAccount">> := string(),
 %%   <<"directConnectGatewayId">> := string(),
-%%   <<"virtualInterfaceId">> := string()
-%% }
--type confirm_transit_virtual_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_connection_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"connectionName">> => string(),
-%%   <<"encryptionMode">> => string()
-%% }
--type update_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_direct_connect_gateway_associations_result() :: #{
-%%   <<"directConnectGatewayAssociations">> => list(direct_connect_gateway_association()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_direct_connect_gateway_associations_result() :: #{binary() => any()}.
-
-%% Example:
-%% direct_connect_gateway_association_proposal() :: #{
-%%   <<"associatedGateway">> => associated_gateway(),
-%%   <<"directConnectGatewayId">> => string(),
-%%   <<"directConnectGatewayOwnerAccount">> => string(),
-%%   <<"existingAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
-%%   <<"proposalId">> => string(),
-%%   <<"proposalState">> => list(any()),
-%%   <<"requestedAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix())
-%% }
--type direct_connect_gateway_association_proposal() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_virtual_interface_attributes_request() :: #{
-%%   <<"enableSiteLink">> => boolean(),
-%%   <<"mtu">> => integer(),
-%%   <<"rateLimit">> => string(),
-%%   <<"virtualInterfaceId">> := string(),
-%%   <<"virtualInterfaceName">> => string()
-%% }
--type update_virtual_interface_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_bgp_failover_test_request() :: #{
-%%   <<"bgpPeers">> => list(string()),
-%%   <<"testDurationInMinutes">> => integer(),
-%%   <<"virtualInterfaceId">> := string()
-%% }
--type start_bgp_failover_test_request() :: #{binary() => any()}.
-
-%% Example:
-%% rate_limiter_status() :: #{
-%%   <<"inUse">> => integer(),
-%%   <<"maxAllowed">> => integer(),
-%%   <<"remaining">> => integer(),
-%%   <<"totalBandwidth">> => string()
-%% }
--type rate_limiter_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_direct_connect_gateways_result() :: #{
-%%   <<"directConnectGateways">> => list(direct_connect_gateway()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_direct_connect_gateways_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_direct_connect_gateways_request() :: #{
-%%   <<"directConnectGatewayId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_direct_connect_gateways_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_direct_connect_gateway_association_proposals_request() :: #{
-%%   <<"associatedGatewayId">> => string(),
-%%   <<"directConnectGatewayId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"proposalId">> => string()
-%% }
--type describe_direct_connect_gateway_association_proposals_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_lags_request() :: #{
-%%   <<"lagId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_lags_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_bgp_failover_test_request() :: #{
-%%   <<"virtualInterfaceId">> := string()
-%% }
--type stop_bgp_failover_test_request() :: #{binary() => any()}.
-
-%% Example:
-%% new_private_virtual_interface() :: #{
-%%   <<"addressFamily">> => list(any()),
-%%   <<"amazonAddress">> => string(),
-%%   <<"asn">> => integer(),
-%%   <<"asnLong">> => float(),
-%%   <<"authKey">> => string(),
-%%   <<"customerAddress">> => string(),
-%%   <<"directConnectGatewayId">> => string(),
-%%   <<"enableSiteLink">> => boolean(),
-%%   <<"mtu">> => integer(),
-%%   <<"rateLimit">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"virtualGatewayId">> => string(),
-%%   <<"virtualInterfaceName">> => string(),
-%%   <<"vlan">> => integer()
-%% }
--type new_private_virtual_interface() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_connection_response() :: #{
-%%   <<"connectionState">> => list(any())
-%% }
--type confirm_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% virtual_gateways() :: #{
-%%   <<"virtualGateways">> => list(virtual_gateway())
-%% }
--type virtual_gateways() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_direct_connect_gateway_association_proposal_request() :: #{
+%%   <<"overrideAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
 %%   <<"proposalId">> := string()
 %% }
--type delete_direct_connect_gateway_association_proposal_request() :: #{binary() => any()}.
+-type accept_direct_connect_gateway_association_proposal_request() :: #{binary() => any()}.
 
 %% Example:
-%% new_private_virtual_interface_allocation() :: #{
-%%   <<"addressFamily">> => list(any()),
-%%   <<"amazonAddress">> => string(),
-%%   <<"asn">> => integer(),
-%%   <<"asnLong">> => float(),
-%%   <<"authKey">> => string(),
-%%   <<"customerAddress">> => string(),
-%%   <<"mtu">> => integer(),
-%%   <<"rateLimit">> => string(),
+%% accept_direct_connect_gateway_association_proposal_result() :: #{
+%%   <<"directConnectGatewayAssociation">> => direct_connect_gateway_association()
+%% }
+-type accept_direct_connect_gateway_association_proposal_result() :: #{binary() => any()}.
+
+%% Example:
+%% allocate_connection_on_interconnect_request() :: #{
+%%   <<"bandwidth">> := string(),
+%%   <<"connectionName">> := string(),
+%%   <<"interconnectId">> := string(),
+%%   <<"ownerAccount">> := string(),
+%%   <<"vlan">> := integer()
+%% }
+-type allocate_connection_on_interconnect_request() :: #{binary() => any()}.
+
+%% Example:
+%% allocate_hosted_connection_request() :: #{
+%%   <<"bandwidth">> := string(),
+%%   <<"connectionId">> := string(),
+%%   <<"connectionName">> := string(),
+%%   <<"ownerAccount">> := string(),
 %%   <<"tags">> => list(tag()),
-%%   <<"virtualInterfaceName">> => string(),
-%%   <<"vlan">> => integer()
+%%   <<"vlan">> := integer()
 %% }
--type new_private_virtual_interface_allocation() :: #{binary() => any()}.
+-type allocate_hosted_connection_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_direct_connect_gateway_result() :: #{
-%%   <<"directConnectGateway">> => direct_connect_gateway()
+%% allocate_private_virtual_interface_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"newPrivateVirtualInterfaceAllocation">> := new_private_virtual_interface_allocation(),
+%%   <<"ownerAccount">> := string()
 %% }
--type create_direct_connect_gateway_result() :: #{binary() => any()}.
+-type allocate_private_virtual_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% allocate_public_virtual_interface_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"newPublicVirtualInterfaceAllocation">> := new_public_virtual_interface_allocation(),
+%%   <<"ownerAccount">> := string()
+%% }
+-type allocate_public_virtual_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% allocate_transit_virtual_interface_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"newTransitVirtualInterfaceAllocation">> := new_transit_virtual_interface_allocation(),
+%%   <<"ownerAccount">> := string()
+%% }
+-type allocate_transit_virtual_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% allocate_transit_virtual_interface_result() :: #{
+%%   <<"virtualInterface">> => virtual_interface()
+%% }
+-type allocate_transit_virtual_interface_result() :: #{binary() => any()}.
+
+%% Example:
+%% as_path_segment() :: #{
+%%   <<"path">> => list(float()),
+%%   <<"pathType">> => list(any())
+%% }
+-type as_path_segment() :: #{binary() => any()}.
+
+%% Example:
+%% associate_connection_with_lag_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"lagId">> := string()
+%% }
+-type associate_connection_with_lag_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_hosted_connection_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"parentConnectionId">> := string()
+%% }
+-type associate_hosted_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_mac_sec_key_request() :: #{
+%%   <<"cak">> => string(),
+%%   <<"ckn">> => string(),
+%%   <<"connectionId">> := string(),
+%%   <<"secretARN">> => string()
+%% }
+-type associate_mac_sec_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_mac_sec_key_response() :: #{
+%%   <<"connectionId">> => string(),
+%%   <<"macSecKeys">> => list(mac_sec_key())
+%% }
+-type associate_mac_sec_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_virtual_interface_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"virtualInterfaceId">> := string()
+%% }
+-type associate_virtual_interface_request() :: #{binary() => any()}.
 
 %% Example:
 %% associated_core_network() :: #{
@@ -327,95 +267,13 @@
 -type associated_core_network() :: #{binary() => any()}.
 
 %% Example:
-%% create_interconnect_request() :: #{
-%%   <<"bandwidth">> := string(),
-%%   <<"interconnectName">> := string(),
-%%   <<"lagId">> => string(),
-%%   <<"location">> := string(),
-%%   <<"providerName">> => string(),
-%%   <<"requestMACSec">> => boolean(),
-%%   <<"tags">> => list(tag())
+%% associated_gateway() :: #{
+%%   <<"id">> => string(),
+%%   <<"ownerAccount">> => string(),
+%%   <<"region">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type create_interconnect_request() :: #{binary() => any()}.
-
-%% Example:
-%% loa() :: #{
-%%   <<"loaContent">> => binary(),
-%%   <<"loaContentType">> => list(any())
-%% }
--type loa() :: #{binary() => any()}.
-
-%% Example:
-%% direct_connect_client_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type direct_connect_client_exception() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_connection_request() :: #{
-%%   <<"connectionId">> := string()
-%% }
--type confirm_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_customer_metadata_response() :: #{
-%%   <<"agreements">> => list(customer_agreement()),
-%%   <<"nniPartnerType">> => list(any())
-%% }
--type describe_customer_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_direct_connect_gateway_associations_request() :: #{
-%%   <<"associatedGatewayId">> => string(),
-%%   <<"associationId">> => string(),
-%%   <<"directConnectGatewayId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"virtualGatewayId">> => string()
-%% }
--type describe_direct_connect_gateway_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_direct_connect_gateway_association_result() :: #{
-%%   <<"directConnectGatewayAssociation">> => direct_connect_gateway_association()
-%% }
--type update_direct_connect_gateway_association_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_virtual_interface_request() :: #{
-%%   <<"virtualInterfaceId">> := string()
-%% }
--type delete_virtual_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_hosted_connections_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_hosted_connections_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_mac_sec_key_response() :: #{
-%%   <<"connectionId">> => string(),
-%%   <<"macSecKeys">> => list(mac_sec_key())
-%% }
--type disassociate_mac_sec_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_private_virtual_interface_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"newPrivateVirtualInterface">> := new_private_virtual_interface()
-%% }
--type create_private_virtual_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connections_request() :: #{
-%%   <<"connectionId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_connections_request() :: #{binary() => any()}.
+-type associated_gateway() :: #{binary() => any()}.
 
 %% Example:
 %% bgp_peer() :: #{
@@ -434,28 +292,16 @@
 -type bgp_peer() :: #{binary() => any()}.
 
 %% Example:
-%% interconnect() :: #{
-%%   <<"awsDevice">> => string(),
-%%   <<"awsDeviceV2">> => string(),
-%%   <<"awsLogicalDeviceId">> => string(),
-%%   <<"bandwidth">> => string(),
-%%   <<"encryptionMode">> => string(),
-%%   <<"hasLogicalRedundancy">> => list(any()),
-%%   <<"interconnectId">> => string(),
-%%   <<"interconnectName">> => string(),
-%%   <<"interconnectState">> => list(any()),
-%%   <<"jumboFrameCapable">> => boolean(),
-%%   <<"lagId">> => string(),
-%%   <<"loaIssueTime">> => non_neg_integer(),
-%%   <<"location">> => string(),
-%%   <<"macSecCapable">> => boolean(),
-%%   <<"macSecKeys">> => list(mac_sec_key()),
-%%   <<"portEncryptionStatus">> => string(),
-%%   <<"providerName">> => string(),
-%%   <<"region">> => string(),
-%%   <<"tags">> => list(tag())
+%% confirm_connection_request() :: #{
+%%   <<"connectionId">> := string()
 %% }
--type interconnect() :: #{binary() => any()}.
+-type confirm_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% confirm_connection_response() :: #{
+%%   <<"connectionState">> => list(any())
+%% }
+-type confirm_connection_response() :: #{binary() => any()}.
 
 %% Example:
 %% confirm_customer_agreement_request() :: #{
@@ -464,162 +310,30 @@
 -type confirm_customer_agreement_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_transit_virtual_interface_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"newTransitVirtualInterface">> := new_transit_virtual_interface()
+%% confirm_customer_agreement_response() :: #{
+%%   <<"status">> => string()
 %% }
--type create_transit_virtual_interface_request() :: #{binary() => any()}.
+-type confirm_customer_agreement_response() :: #{binary() => any()}.
 
 %% Example:
-%% direct_connect_gateway_association() :: #{
-%%   <<"allowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
-%%   <<"associatedCoreNetwork">> => associated_core_network(),
-%%   <<"associatedGateway">> => associated_gateway(),
-%%   <<"associationId">> => string(),
-%%   <<"associationState">> => list(any()),
+%% confirm_private_virtual_interface_request() :: #{
 %%   <<"directConnectGatewayId">> => string(),
-%%   <<"directConnectGatewayOwnerAccount">> => string(),
-%%   <<"stateChangeError">> => string(),
 %%   <<"virtualGatewayId">> => string(),
-%%   <<"virtualGatewayOwnerAccount">> => string(),
-%%   <<"virtualGatewayRegion">> => string()
+%%   <<"virtualInterfaceId">> := string()
 %% }
--type direct_connect_gateway_association() :: #{binary() => any()}.
+-type confirm_private_virtual_interface_request() :: #{binary() => any()}.
 
 %% Example:
-%% router_type() :: #{
-%%   <<"platform">> => string(),
-%%   <<"routerTypeIdentifier">> => string(),
-%%   <<"software">> => string(),
-%%   <<"vendor">> => string(),
-%%   <<"xsltTemplateName">> => string(),
-%%   <<"xsltTemplateNameForMacSec">> => string()
+%% confirm_private_virtual_interface_response() :: #{
+%%   <<"virtualInterfaceState">> => list(any())
 %% }
--type router_type() :: #{binary() => any()}.
+-type confirm_private_virtual_interface_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
+%% confirm_public_virtual_interface_request() :: #{
+%%   <<"virtualInterfaceId">> := string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_bgp_peer_request() :: #{
-%%   <<"newBGPPeer">> => new_bgp_peer(),
-%%   <<"virtualInterfaceId">> => string()
-%% }
--type create_bgp_peer_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_bgp_peer_response() :: #{
-%%   <<"virtualInterface">> => virtual_interface()
-%% }
--type create_bgp_peer_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tags_response() :: #{
-%%   <<"resourceTags">> => list(resource_tag())
-%% }
--type describe_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_virtual_interface_test_history_request() :: #{
-%%   <<"bgpPeers">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => string(),
-%%   <<"testId">> => string(),
-%%   <<"virtualInterfaceId">> => string()
-%% }
--type list_virtual_interface_test_history_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_direct_connect_gateway_attachments_result() :: #{
-%%   <<"directConnectGatewayAttachments">> => list(direct_connect_gateway_attachment()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_direct_connect_gateway_attachments_result() :: #{binary() => any()}.
-
-%% Example:
-%% virtual_interfaces() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"virtualInterfaces">> => list(virtual_interface())
-%% }
--type virtual_interfaces() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_mac_sec_key_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"secretARN">> := string()
-%% }
--type disassociate_mac_sec_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% new_transit_virtual_interface_allocation() :: #{
-%%   <<"addressFamily">> => list(any()),
-%%   <<"amazonAddress">> => string(),
-%%   <<"asn">> => integer(),
-%%   <<"asnLong">> => float(),
-%%   <<"authKey">> => string(),
-%%   <<"customerAddress">> => string(),
-%%   <<"mtu">> => integer(),
-%%   <<"rateLimit">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"virtualInterfaceName">> => string(),
-%%   <<"vlan">> => integer()
-%% }
--type new_transit_virtual_interface_allocation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bgp_peer_request() :: #{
-%%   <<"asn">> => integer(),
-%%   <<"asnLong">> => float(),
-%%   <<"bgpPeerId">> => string(),
-%%   <<"customerAddress">> => string(),
-%%   <<"virtualInterfaceId">> => string()
-%% }
--type delete_bgp_peer_request() :: #{binary() => any()}.
-
-%% Example:
-%% allocate_transit_virtual_interface_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"newTransitVirtualInterfaceAllocation">> := new_transit_virtual_interface_allocation(),
-%%   <<"ownerAccount">> := string()
-%% }
--type allocate_transit_virtual_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% allocate_transit_virtual_interface_result() :: #{
-%%   <<"virtualInterface">> => virtual_interface()
-%% }
--type allocate_transit_virtual_interface_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_direct_connect_gateway_response() :: #{
-%%   <<"directConnectGateway">> => direct_connect_gateway()
-%% }
--type update_direct_connect_gateway_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_bgp_peer_response() :: #{
-%%   <<"virtualInterface">> => virtual_interface()
-%% }
--type delete_bgp_peer_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_lag_request() :: #{
-%%   <<"childConnectionTags">> => list(tag()),
-%%   <<"connectionId">> => string(),
-%%   <<"connectionsBandwidth">> := string(),
-%%   <<"lagName">> := string(),
-%%   <<"location">> := string(),
-%%   <<"numberOfConnections">> := integer(),
-%%   <<"providerName">> => string(),
-%%   <<"requestMACSec">> => boolean(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_lag_request() :: #{binary() => any()}.
+-type confirm_public_virtual_interface_request() :: #{binary() => any()}.
 
 %% Example:
 %% confirm_public_virtual_interface_response() :: #{
@@ -628,43 +342,17 @@
 -type confirm_public_virtual_interface_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_interconnect_loa_response() :: #{
-%%   <<"loa">> => loa()
+%% confirm_transit_virtual_interface_request() :: #{
+%%   <<"directConnectGatewayId">> := string(),
+%%   <<"virtualInterfaceId">> := string()
 %% }
--type describe_interconnect_loa_response() :: #{binary() => any()}.
+-type confirm_transit_virtual_interface_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_virtual_interface_test_history_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"virtualInterfaceTestHistory">> => list(virtual_interface_test_history())
+%% confirm_transit_virtual_interface_response() :: #{
+%%   <<"virtualInterfaceState">> => list(any())
 %% }
--type list_virtual_interface_test_history_response() :: #{binary() => any()}.
-
-%% Example:
-%% virtual_gateway() :: #{
-%%   <<"virtualGatewayId">> => string(),
-%%   <<"virtualGatewayState">> => string()
-%% }
--type virtual_gateway() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% start_bgp_failover_test_response() :: #{
-%%   <<"virtualInterfaceTest">> => virtual_interface_test_history()
-%% }
--type start_bgp_failover_test_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_direct_connect_gateway_result() :: #{
-%%   <<"directConnectGateway">> => direct_connect_gateway()
-%% }
--type delete_direct_connect_gateway_result() :: #{binary() => any()}.
+-type confirm_transit_virtual_interface_response() :: #{binary() => any()}.
 
 %% Example:
 %% connection() :: #{
@@ -696,10 +384,691 @@
 -type connection() :: #{binary() => any()}.
 
 %% Example:
-%% stop_bgp_failover_test_response() :: #{
-%%   <<"virtualInterfaceTest">> => virtual_interface_test_history()
+%% connections() :: #{
+%%   <<"connections">> => list(connection()),
+%%   <<"nextToken">> => string()
 %% }
--type stop_bgp_failover_test_response() :: #{binary() => any()}.
+-type connections() :: #{binary() => any()}.
+
+%% Example:
+%% create_bgp_peer_request() :: #{
+%%   <<"newBGPPeer">> => new_bgp_peer(),
+%%   <<"virtualInterfaceId">> => string()
+%% }
+-type create_bgp_peer_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_bgp_peer_response() :: #{
+%%   <<"virtualInterface">> => virtual_interface()
+%% }
+-type create_bgp_peer_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_request() :: #{
+%%   <<"bandwidth">> := string(),
+%%   <<"connectionName">> := string(),
+%%   <<"lagId">> => string(),
+%%   <<"location">> := string(),
+%%   <<"providerName">> => string(),
+%%   <<"requestMACSec">> => boolean(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_direct_connect_gateway_association_proposal_request() :: #{
+%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
+%%   <<"directConnectGatewayId">> := string(),
+%%   <<"directConnectGatewayOwnerAccount">> := string(),
+%%   <<"gatewayId">> := string(),
+%%   <<"removeAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix())
+%% }
+-type create_direct_connect_gateway_association_proposal_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_direct_connect_gateway_association_proposal_result() :: #{
+%%   <<"directConnectGatewayAssociationProposal">> => direct_connect_gateway_association_proposal()
+%% }
+-type create_direct_connect_gateway_association_proposal_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_direct_connect_gateway_association_request() :: #{
+%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
+%%   <<"directConnectGatewayId">> := string(),
+%%   <<"gatewayId">> => string(),
+%%   <<"virtualGatewayId">> => string()
+%% }
+-type create_direct_connect_gateway_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_direct_connect_gateway_association_result() :: #{
+%%   <<"directConnectGatewayAssociation">> => direct_connect_gateway_association()
+%% }
+-type create_direct_connect_gateway_association_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_direct_connect_gateway_request() :: #{
+%%   <<"amazonSideAsn">> => float(),
+%%   <<"directConnectGatewayName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_direct_connect_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_direct_connect_gateway_result() :: #{
+%%   <<"directConnectGateway">> => direct_connect_gateway()
+%% }
+-type create_direct_connect_gateway_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_interconnect_request() :: #{
+%%   <<"bandwidth">> := string(),
+%%   <<"interconnectName">> := string(),
+%%   <<"lagId">> => string(),
+%%   <<"location">> := string(),
+%%   <<"providerName">> => string(),
+%%   <<"requestMACSec">> => boolean(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_interconnect_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_lag_request() :: #{
+%%   <<"childConnectionTags">> => list(tag()),
+%%   <<"connectionId">> => string(),
+%%   <<"connectionsBandwidth">> := string(),
+%%   <<"lagName">> := string(),
+%%   <<"location">> := string(),
+%%   <<"numberOfConnections">> := integer(),
+%%   <<"providerName">> => string(),
+%%   <<"requestMACSec">> => boolean(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_lag_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_private_virtual_interface_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"newPrivateVirtualInterface">> := new_private_virtual_interface()
+%% }
+-type create_private_virtual_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_public_virtual_interface_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"newPublicVirtualInterface">> := new_public_virtual_interface()
+%% }
+-type create_public_virtual_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_transit_virtual_interface_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"newTransitVirtualInterface">> := new_transit_virtual_interface()
+%% }
+-type create_transit_virtual_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_transit_virtual_interface_result() :: #{
+%%   <<"virtualInterface">> => virtual_interface()
+%% }
+-type create_transit_virtual_interface_result() :: #{binary() => any()}.
+
+%% Example:
+%% customer_agreement() :: #{
+%%   <<"agreementName">> => string(),
+%%   <<"status">> => string()
+%% }
+-type customer_agreement() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bgp_peer_request() :: #{
+%%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
+%%   <<"bgpPeerId">> => string(),
+%%   <<"customerAddress">> => string(),
+%%   <<"virtualInterfaceId">> => string()
+%% }
+-type delete_bgp_peer_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_bgp_peer_response() :: #{
+%%   <<"virtualInterface">> => virtual_interface()
+%% }
+-type delete_bgp_peer_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_request() :: #{
+%%   <<"connectionId">> := string()
+%% }
+-type delete_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_direct_connect_gateway_association_proposal_request() :: #{
+%%   <<"proposalId">> := string()
+%% }
+-type delete_direct_connect_gateway_association_proposal_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_direct_connect_gateway_association_proposal_result() :: #{
+%%   <<"directConnectGatewayAssociationProposal">> => direct_connect_gateway_association_proposal()
+%% }
+-type delete_direct_connect_gateway_association_proposal_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_direct_connect_gateway_association_request() :: #{
+%%   <<"associationId">> => string(),
+%%   <<"directConnectGatewayId">> => string(),
+%%   <<"virtualGatewayId">> => string()
+%% }
+-type delete_direct_connect_gateway_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_direct_connect_gateway_association_result() :: #{
+%%   <<"directConnectGatewayAssociation">> => direct_connect_gateway_association()
+%% }
+-type delete_direct_connect_gateway_association_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_direct_connect_gateway_request() :: #{
+%%   <<"directConnectGatewayId">> := string()
+%% }
+-type delete_direct_connect_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_direct_connect_gateway_result() :: #{
+%%   <<"directConnectGateway">> => direct_connect_gateway()
+%% }
+-type delete_direct_connect_gateway_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_interconnect_request() :: #{
+%%   <<"interconnectId">> := string()
+%% }
+-type delete_interconnect_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_interconnect_response() :: #{
+%%   <<"interconnectState">> => list(any())
+%% }
+-type delete_interconnect_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_lag_request() :: #{
+%%   <<"lagId">> := string()
+%% }
+-type delete_lag_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_virtual_interface_request() :: #{
+%%   <<"virtualInterfaceId">> := string()
+%% }
+-type delete_virtual_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_virtual_interface_response() :: #{
+%%   <<"virtualInterfaceState">> => list(any())
+%% }
+-type delete_virtual_interface_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_loa_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"loaContentType">> => list(any()),
+%%   <<"providerName">> => string()
+%% }
+-type describe_connection_loa_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_loa_response() :: #{
+%%   <<"loa">> => loa()
+%% }
+-type describe_connection_loa_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connections_on_interconnect_request() :: #{
+%%   <<"interconnectId">> := string()
+%% }
+-type describe_connections_on_interconnect_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connections_request() :: #{
+%%   <<"connectionId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_connections_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_customer_metadata_response() :: #{
+%%   <<"agreements">> => list(customer_agreement()),
+%%   <<"nniPartnerType">> => list(any())
+%% }
+-type describe_customer_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_direct_connect_gateway_association_proposals_request() :: #{
+%%   <<"associatedGatewayId">> => string(),
+%%   <<"directConnectGatewayId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"proposalId">> => string()
+%% }
+-type describe_direct_connect_gateway_association_proposals_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_direct_connect_gateway_association_proposals_result() :: #{
+%%   <<"directConnectGatewayAssociationProposals">> => list(direct_connect_gateway_association_proposal()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_direct_connect_gateway_association_proposals_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_direct_connect_gateway_associations_request() :: #{
+%%   <<"associatedGatewayId">> => string(),
+%%   <<"associationId">> => string(),
+%%   <<"directConnectGatewayId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"virtualGatewayId">> => string()
+%% }
+-type describe_direct_connect_gateway_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_direct_connect_gateway_associations_result() :: #{
+%%   <<"directConnectGatewayAssociations">> => list(direct_connect_gateway_association()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_direct_connect_gateway_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_direct_connect_gateway_attachments_request() :: #{
+%%   <<"directConnectGatewayId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"virtualInterfaceId">> => string()
+%% }
+-type describe_direct_connect_gateway_attachments_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_direct_connect_gateway_attachments_result() :: #{
+%%   <<"directConnectGatewayAttachments">> => list(direct_connect_gateway_attachment()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_direct_connect_gateway_attachments_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_direct_connect_gateways_request() :: #{
+%%   <<"directConnectGatewayId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_direct_connect_gateways_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_direct_connect_gateways_result() :: #{
+%%   <<"directConnectGateways">> => list(direct_connect_gateway()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_direct_connect_gateways_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hosted_connections_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_hosted_connections_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_interconnect_loa_request() :: #{
+%%   <<"interconnectId">> := string(),
+%%   <<"loaContentType">> => list(any()),
+%%   <<"providerName">> => string()
+%% }
+-type describe_interconnect_loa_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_interconnect_loa_response() :: #{
+%%   <<"loa">> => loa()
+%% }
+-type describe_interconnect_loa_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_interconnects_request() :: #{
+%%   <<"interconnectId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_interconnects_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lags_request() :: #{
+%%   <<"lagId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_lags_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_loa_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"loaContentType">> => list(any()),
+%%   <<"providerName">> => string()
+%% }
+-type describe_loa_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_router_configuration_request() :: #{
+%%   <<"routerTypeIdentifier">> => string(),
+%%   <<"virtualInterfaceId">> := string()
+%% }
+-type describe_router_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_router_configuration_response() :: #{
+%%   <<"customerRouterConfig">> => string(),
+%%   <<"router">> => router_type(),
+%%   <<"virtualInterfaceId">> => string(),
+%%   <<"virtualInterfaceName">> => string()
+%% }
+-type describe_router_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_request() :: #{
+%%   <<"resourceArns">> := list(string())
+%% }
+-type describe_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_response() :: #{
+%%   <<"resourceTags">> => list(resource_tag())
+%% }
+-type describe_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_virtual_interfaces_request() :: #{
+%%   <<"connectionId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"virtualInterfaceId">> => string()
+%% }
+-type describe_virtual_interfaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% direct_connect_client_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type direct_connect_client_exception() :: #{binary() => any()}.
+
+%% Example:
+%% direct_connect_gateway() :: #{
+%%   <<"amazonSideAsn">> => float(),
+%%   <<"directConnectGatewayId">> => string(),
+%%   <<"directConnectGatewayName">> => string(),
+%%   <<"directConnectGatewayState">> => list(any()),
+%%   <<"ownerAccount">> => string(),
+%%   <<"stateChangeError">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type direct_connect_gateway() :: #{binary() => any()}.
+
+%% Example:
+%% direct_connect_gateway_association() :: #{
+%%   <<"allowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
+%%   <<"associatedCoreNetwork">> => associated_core_network(),
+%%   <<"associatedGateway">> => associated_gateway(),
+%%   <<"associationId">> => string(),
+%%   <<"associationState">> => list(any()),
+%%   <<"directConnectGatewayId">> => string(),
+%%   <<"directConnectGatewayOwnerAccount">> => string(),
+%%   <<"stateChangeError">> => string(),
+%%   <<"virtualGatewayId">> => string(),
+%%   <<"virtualGatewayOwnerAccount">> => string(),
+%%   <<"virtualGatewayRegion">> => string()
+%% }
+-type direct_connect_gateway_association() :: #{binary() => any()}.
+
+%% Example:
+%% direct_connect_gateway_association_proposal() :: #{
+%%   <<"associatedGateway">> => associated_gateway(),
+%%   <<"directConnectGatewayId">> => string(),
+%%   <<"directConnectGatewayOwnerAccount">> => string(),
+%%   <<"existingAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
+%%   <<"proposalId">> => string(),
+%%   <<"proposalState">> => list(any()),
+%%   <<"requestedAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix())
+%% }
+-type direct_connect_gateway_association_proposal() :: #{binary() => any()}.
+
+%% Example:
+%% direct_connect_gateway_attachment() :: #{
+%%   <<"attachmentState">> => list(any()),
+%%   <<"attachmentType">> => list(any()),
+%%   <<"directConnectGatewayId">> => string(),
+%%   <<"stateChangeError">> => string(),
+%%   <<"virtualInterfaceId">> => string(),
+%%   <<"virtualInterfaceOwnerAccount">> => string(),
+%%   <<"virtualInterfaceRegion">> => string()
+%% }
+-type direct_connect_gateway_attachment() :: #{binary() => any()}.
+
+%% Example:
+%% direct_connect_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type direct_connect_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_connection_from_lag_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"lagId">> := string()
+%% }
+-type disassociate_connection_from_lag_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_mac_sec_key_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"secretARN">> := string()
+%% }
+-type disassociate_mac_sec_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_mac_sec_key_response() :: #{
+%%   <<"connectionId">> => string(),
+%%   <<"macSecKeys">> => list(mac_sec_key())
+%% }
+-type disassociate_mac_sec_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_tag_keys_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_tag_keys_exception() :: #{binary() => any()}.
+
+%% Example:
+%% interconnect() :: #{
+%%   <<"awsDevice">> => string(),
+%%   <<"awsDeviceV2">> => string(),
+%%   <<"awsLogicalDeviceId">> => string(),
+%%   <<"bandwidth">> => string(),
+%%   <<"encryptionMode">> => string(),
+%%   <<"hasLogicalRedundancy">> => list(any()),
+%%   <<"interconnectId">> => string(),
+%%   <<"interconnectName">> => string(),
+%%   <<"interconnectState">> => list(any()),
+%%   <<"jumboFrameCapable">> => boolean(),
+%%   <<"lagId">> => string(),
+%%   <<"loaIssueTime">> => non_neg_integer(),
+%%   <<"location">> => string(),
+%%   <<"macSecCapable">> => boolean(),
+%%   <<"macSecKeys">> => list(mac_sec_key()),
+%%   <<"portEncryptionStatus">> => string(),
+%%   <<"providerName">> => string(),
+%%   <<"region">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type interconnect() :: #{binary() => any()}.
+
+%% Example:
+%% interconnects() :: #{
+%%   <<"interconnects">> => list(interconnect()),
+%%   <<"nextToken">> => string()
+%% }
+-type interconnects() :: #{binary() => any()}.
+
+%% Example:
+%% lag() :: #{
+%%   <<"allowsHostedConnections">> => boolean(),
+%%   <<"awsDevice">> => string(),
+%%   <<"awsDeviceV2">> => string(),
+%%   <<"awsLogicalDeviceId">> => string(),
+%%   <<"connections">> => list(connection()),
+%%   <<"connectionsBandwidth">> => string(),
+%%   <<"encryptionMode">> => string(),
+%%   <<"hasLogicalRedundancy">> => list(any()),
+%%   <<"jumboFrameCapable">> => boolean(),
+%%   <<"lagId">> => string(),
+%%   <<"lagName">> => string(),
+%%   <<"lagState">> => list(any()),
+%%   <<"location">> => string(),
+%%   <<"macSecCapable">> => boolean(),
+%%   <<"macSecKeys">> => list(mac_sec_key()),
+%%   <<"minimumLinks">> => integer(),
+%%   <<"numberOfConnections">> => integer(),
+%%   <<"ownerAccount">> => string(),
+%%   <<"providerName">> => string(),
+%%   <<"rateLimiterStatus">> => rate_limiter_status(),
+%%   <<"region">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type lag() :: #{binary() => any()}.
+
+%% Example:
+%% lags() :: #{
+%%   <<"lags">> => list(lag()),
+%%   <<"nextToken">> => string()
+%% }
+-type lags() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_virtual_interface_routes_request() :: #{
+%%   <<"filters">> => route_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"virtualInterfaceId">> => string()
+%% }
+-type list_virtual_interface_routes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_virtual_interface_routes_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"routes">> => list(route()),
+%%   <<"virtualInterfaceId">> => string()
+%% }
+-type list_virtual_interface_routes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_virtual_interface_test_history_request() :: #{
+%%   <<"bgpPeers">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => string(),
+%%   <<"testId">> => string(),
+%%   <<"virtualInterfaceId">> => string()
+%% }
+-type list_virtual_interface_test_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_virtual_interface_test_history_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"virtualInterfaceTestHistory">> => list(virtual_interface_test_history())
+%% }
+-type list_virtual_interface_test_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% loa() :: #{
+%%   <<"loaContent">> => binary(),
+%%   <<"loaContentType">> => list(any())
+%% }
+-type loa() :: #{binary() => any()}.
+
+%% Example:
+%% location() :: #{
+%%   <<"availableMacSecPortSpeeds">> => list(string()),
+%%   <<"availablePortSpeeds">> => list(string()),
+%%   <<"availableProviders">> => list(string()),
+%%   <<"locationCode">> => string(),
+%%   <<"locationName">> => string(),
+%%   <<"region">> => string()
+%% }
+-type location() :: #{binary() => any()}.
+
+%% Example:
+%% locations() :: #{
+%%   <<"locations">> => list(location())
+%% }
+-type locations() :: #{binary() => any()}.
+
+%% Example:
+%% mac_sec_key() :: #{
+%%   <<"ckn">> => string(),
+%%   <<"secretARN">> => string(),
+%%   <<"startOn">> => string(),
+%%   <<"state">> => string()
+%% }
+-type mac_sec_key() :: #{binary() => any()}.
+
+%% Example:
+%% new_bgp_peer() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"amazonAddress">> => string(),
+%%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
+%%   <<"authKey">> => string(),
+%%   <<"customerAddress">> => string()
+%% }
+-type new_bgp_peer() :: #{binary() => any()}.
+
+%% Example:
+%% new_private_virtual_interface() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"amazonAddress">> => string(),
+%%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
+%%   <<"authKey">> => string(),
+%%   <<"customerAddress">> => string(),
+%%   <<"directConnectGatewayId">> => string(),
+%%   <<"enableSiteLink">> => boolean(),
+%%   <<"mtu">> => integer(),
+%%   <<"rateLimit">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"virtualGatewayId">> => string(),
+%%   <<"virtualInterfaceName">> => string(),
+%%   <<"vlan">> => integer()
+%% }
+-type new_private_virtual_interface() :: #{binary() => any()}.
+
+%% Example:
+%% new_private_virtual_interface_allocation() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"amazonAddress">> => string(),
+%%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
+%%   <<"authKey">> => string(),
+%%   <<"customerAddress">> => string(),
+%%   <<"mtu">> => integer(),
+%%   <<"rateLimit">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"virtualInterfaceName">> => string(),
+%%   <<"vlan">> => integer()
+%% }
+-type new_private_virtual_interface_allocation() :: #{binary() => any()}.
 
 %% Example:
 %% new_public_virtual_interface() :: #{
@@ -718,141 +1087,20 @@
 -type new_public_virtual_interface() :: #{binary() => any()}.
 
 %% Example:
-%% create_public_virtual_interface_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"newPublicVirtualInterface">> := new_public_virtual_interface()
+%% new_public_virtual_interface_allocation() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"amazonAddress">> => string(),
+%%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
+%%   <<"authKey">> => string(),
+%%   <<"customerAddress">> => string(),
+%%   <<"rateLimit">> => string(),
+%%   <<"routeFilterPrefixes">> => list(route_filter_prefix()),
+%%   <<"tags">> => list(tag()),
+%%   <<"virtualInterfaceName">> => string(),
+%%   <<"vlan">> => integer()
 %% }
--type create_public_virtual_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_interconnect_response() :: #{
-%%   <<"interconnectState">> => list(any())
-%% }
--type delete_interconnect_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_direct_connect_gateway_association_proposal_result() :: #{
-%%   <<"directConnectGatewayAssociationProposal">> => direct_connect_gateway_association_proposal()
-%% }
--type delete_direct_connect_gateway_association_proposal_result() :: #{binary() => any()}.
-
-%% Example:
-%% customer_agreement() :: #{
-%%   <<"agreementName">> => string(),
-%%   <<"status">> => string()
-%% }
--type customer_agreement() :: #{binary() => any()}.
-
-%% Example:
-%% create_direct_connect_gateway_request() :: #{
-%%   <<"amazonSideAsn">> => float(),
-%%   <<"directConnectGatewayName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_direct_connect_gateway_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_direct_connect_gateway_association_request() :: #{
-%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
-%%   <<"directConnectGatewayId">> := string(),
-%%   <<"gatewayId">> => string(),
-%%   <<"virtualGatewayId">> => string()
-%% }
--type create_direct_connect_gateway_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_interconnect_loa_request() :: #{
-%%   <<"interconnectId">> := string(),
-%%   <<"loaContentType">> => list(any()),
-%%   <<"providerName">> => string()
-%% }
--type describe_interconnect_loa_request() :: #{binary() => any()}.
-
-%% Example:
-%% mac_sec_key() :: #{
-%%   <<"ckn">> => string(),
-%%   <<"secretARN">> => string(),
-%%   <<"startOn">> => string(),
-%%   <<"state">> => string()
-%% }
--type mac_sec_key() :: #{binary() => any()}.
-
-%% Example:
-%% location() :: #{
-%%   <<"availableMacSecPortSpeeds">> => list(string()),
-%%   <<"availablePortSpeeds">> => list(string()),
-%%   <<"availableProviders">> => list(string()),
-%%   <<"locationCode">> => string(),
-%%   <<"locationName">> => string(),
-%%   <<"region">> => string()
-%% }
--type location() :: #{binary() => any()}.
-
-%% Example:
-%% describe_router_configuration_request() :: #{
-%%   <<"routerTypeIdentifier">> => string(),
-%%   <<"virtualInterfaceId">> := string()
-%% }
--type describe_router_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lag_request() :: #{
-%%   <<"lagId">> := string()
-%% }
--type delete_lag_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_direct_connect_gateway_request() :: #{
-%%   <<"directConnectGatewayId">> := string()
-%% }
--type delete_direct_connect_gateway_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_virtual_interfaces_request() :: #{
-%%   <<"connectionId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"virtualInterfaceId">> => string()
-%% }
--type describe_virtual_interfaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% connections() :: #{
-%%   <<"connections">> => list(connection()),
-%%   <<"nextToken">> => string()
-%% }
--type connections() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_private_virtual_interface_response() :: #{
-%%   <<"virtualInterfaceState">> => list(any())
-%% }
--type confirm_private_virtual_interface_response() :: #{binary() => any()}.
-
-%% Example:
-%% locations() :: #{
-%%   <<"locations">> => list(location())
-%% }
--type locations() :: #{binary() => any()}.
-
-%% Example:
-%% accept_direct_connect_gateway_association_proposal_result() :: #{
-%%   <<"directConnectGatewayAssociation">> => direct_connect_gateway_association()
-%% }
--type accept_direct_connect_gateway_association_proposal_result() :: #{binary() => any()}.
-
-%% Example:
-%% virtual_interface_test_history() :: #{
-%%   <<"bgpPeers">> => list(string()),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"ownerAccount">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"testDurationInMinutes">> => integer(),
-%%   <<"testId">> => string(),
-%%   <<"virtualInterfaceId">> => string()
-%% }
--type virtual_interface_test_history() :: #{binary() => any()}.
+-type new_public_virtual_interface_allocation() :: #{binary() => any()}.
 
 %% Example:
 %% new_transit_virtual_interface() :: #{
@@ -873,17 +1121,207 @@
 -type new_transit_virtual_interface() :: #{binary() => any()}.
 
 %% Example:
-%% describe_connections_on_interconnect_request() :: #{
-%%   <<"interconnectId">> := string()
+%% new_transit_virtual_interface_allocation() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"amazonAddress">> => string(),
+%%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
+%%   <<"authKey">> => string(),
+%%   <<"customerAddress">> => string(),
+%%   <<"mtu">> => integer(),
+%%   <<"rateLimit">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"virtualInterfaceName">> => string(),
+%%   <<"vlan">> => integer()
 %% }
--type describe_connections_on_interconnect_request() :: #{binary() => any()}.
+-type new_transit_virtual_interface_allocation() :: #{binary() => any()}.
 
 %% Example:
-%% describe_direct_connect_gateway_association_proposals_result() :: #{
-%%   <<"directConnectGatewayAssociationProposals">> => list(direct_connect_gateway_association_proposal()),
-%%   <<"nextToken">> => string()
+%% rate_limiter_status() :: #{
+%%   <<"inUse">> => integer(),
+%%   <<"maxAllowed">> => integer(),
+%%   <<"remaining">> => integer(),
+%%   <<"totalBandwidth">> => string()
 %% }
--type describe_direct_connect_gateway_association_proposals_result() :: #{binary() => any()}.
+-type rate_limiter_status() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag() :: #{
+%%   <<"resourceArn">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type resource_tag() :: #{binary() => any()}.
+
+%% Example:
+%% route() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"asPath">> => list(as_path_segment()),
+%%   <<"awsLogicalDeviceId">> => string(),
+%%   <<"cidr">> => string(),
+%%   <<"communities">> => list(string()),
+%%   <<"routeDirection">> => list(any()),
+%%   <<"routeInstalledAt">> => non_neg_integer()
+%% }
+-type route() :: #{binary() => any()}.
+
+%% Example:
+%% route_filter_prefix() :: #{
+%%   <<"cidr">> => string()
+%% }
+-type route_filter_prefix() :: #{binary() => any()}.
+
+%% Example:
+%% route_filters() :: #{
+%%   <<"addressFamily">> => list(any()),
+%%   <<"asPath">> => list(float()),
+%%   <<"cidrs">> => list(string()),
+%%   <<"communities">> => list(string()),
+%%   <<"routeDirection">> => list(any())
+%% }
+-type route_filters() :: #{binary() => any()}.
+
+%% Example:
+%% router_type() :: #{
+%%   <<"platform">> => string(),
+%%   <<"routerTypeIdentifier">> => string(),
+%%   <<"software">> => string(),
+%%   <<"vendor">> => string(),
+%%   <<"xsltTemplateName">> => string(),
+%%   <<"xsltTemplateNameForMacSec">> => string()
+%% }
+-type router_type() :: #{binary() => any()}.
+
+%% Example:
+%% start_bgp_failover_test_request() :: #{
+%%   <<"bgpPeers">> => list(string()),
+%%   <<"testDurationInMinutes">> => integer(),
+%%   <<"virtualInterfaceId">> := string()
+%% }
+-type start_bgp_failover_test_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_bgp_failover_test_response() :: #{
+%%   <<"virtualInterfaceTest">> => virtual_interface_test_history()
+%% }
+-type start_bgp_failover_test_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_bgp_failover_test_request() :: #{
+%%   <<"virtualInterfaceId">> := string()
+%% }
+-type stop_bgp_failover_test_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_bgp_failover_test_response() :: #{
+%%   <<"virtualInterfaceTest">> => virtual_interface_test_history()
+%% }
+-type stop_bgp_failover_test_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_request() :: #{
+%%   <<"connectionId">> := string(),
+%%   <<"connectionName">> => string(),
+%%   <<"encryptionMode">> => string()
+%% }
+-type update_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_direct_connect_gateway_association_request() :: #{
+%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
+%%   <<"associationId">> => string(),
+%%   <<"removeAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix())
+%% }
+-type update_direct_connect_gateway_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_direct_connect_gateway_association_result() :: #{
+%%   <<"directConnectGatewayAssociation">> => direct_connect_gateway_association()
+%% }
+-type update_direct_connect_gateway_association_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_direct_connect_gateway_request() :: #{
+%%   <<"directConnectGatewayId">> := string(),
+%%   <<"newDirectConnectGatewayName">> := string()
+%% }
+-type update_direct_connect_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_direct_connect_gateway_response() :: #{
+%%   <<"directConnectGateway">> => direct_connect_gateway()
+%% }
+-type update_direct_connect_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_lag_request() :: #{
+%%   <<"encryptionMode">> => string(),
+%%   <<"lagId">> := string(),
+%%   <<"lagName">> => string(),
+%%   <<"minimumLinks">> => integer()
+%% }
+-type update_lag_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_virtual_interface_attributes_request() :: #{
+%%   <<"enableSiteLink">> => boolean(),
+%%   <<"mtu">> => integer(),
+%%   <<"rateLimit">> => string(),
+%%   <<"virtualInterfaceId">> := string(),
+%%   <<"virtualInterfaceName">> => string()
+%% }
+-type update_virtual_interface_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% virtual_gateway() :: #{
+%%   <<"virtualGatewayId">> => string(),
+%%   <<"virtualGatewayState">> => string()
+%% }
+-type virtual_gateway() :: #{binary() => any()}.
+
+%% Example:
+%% virtual_gateways() :: #{
+%%   <<"virtualGateways">> => list(virtual_gateway())
+%% }
+-type virtual_gateways() :: #{binary() => any()}.
 
 %% Example:
 %% virtual_interface() :: #{
@@ -919,414 +1357,24 @@
 -type virtual_interface() :: #{binary() => any()}.
 
 %% Example:
-%% resource_tag() :: #{
-%%   <<"resourceArn">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type resource_tag() :: #{binary() => any()}.
-
-%% Example:
-%% allocate_hosted_connection_request() :: #{
-%%   <<"bandwidth">> := string(),
-%%   <<"connectionId">> := string(),
-%%   <<"connectionName">> := string(),
-%%   <<"ownerAccount">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"vlan">> := integer()
-%% }
--type allocate_hosted_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_mac_sec_key_request() :: #{
-%%   <<"cak">> => string(),
-%%   <<"ckn">> => string(),
-%%   <<"connectionId">> := string(),
-%%   <<"secretARN">> => string()
-%% }
--type associate_mac_sec_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_hosted_connection_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"parentConnectionId">> := string()
-%% }
--type associate_hosted_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_direct_connect_gateway_attachments_request() :: #{
-%%   <<"directConnectGatewayId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
+%% virtual_interface_test_history() :: #{
+%%   <<"bgpPeers">> => list(string()),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"ownerAccount">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"testDurationInMinutes">> => integer(),
+%%   <<"testId">> => string(),
 %%   <<"virtualInterfaceId">> => string()
 %% }
--type describe_direct_connect_gateway_attachments_request() :: #{binary() => any()}.
+-type virtual_interface_test_history() :: #{binary() => any()}.
 
 %% Example:
-%% direct_connect_gateway_attachment() :: #{
-%%   <<"attachmentState">> => list(any()),
-%%   <<"attachmentType">> => list(any()),
-%%   <<"directConnectGatewayId">> => string(),
-%%   <<"stateChangeError">> => string(),
-%%   <<"virtualInterfaceId">> => string(),
-%%   <<"virtualInterfaceOwnerAccount">> => string(),
-%%   <<"virtualInterfaceRegion">> => string()
+%% virtual_interfaces() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"virtualInterfaces">> => list(virtual_interface())
 %% }
--type direct_connect_gateway_attachment() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connection_loa_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"loaContentType">> => list(any()),
-%%   <<"providerName">> => string()
-%% }
--type describe_connection_loa_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_lag_request() :: #{
-%%   <<"encryptionMode">> => string(),
-%%   <<"lagId">> := string(),
-%%   <<"lagName">> => string(),
-%%   <<"minimumLinks">> => integer()
-%% }
--type update_lag_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_interconnects_request() :: #{
-%%   <<"interconnectId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_interconnects_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_virtual_interface_response() :: #{
-%%   <<"virtualInterfaceState">> => list(any())
-%% }
--type delete_virtual_interface_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_direct_connect_gateway_association_request() :: #{
-%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
-%%   <<"associationId">> => string(),
-%%   <<"removeAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix())
-%% }
--type update_direct_connect_gateway_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_private_virtual_interface_request() :: #{
-%%   <<"directConnectGatewayId">> => string(),
-%%   <<"virtualGatewayId">> => string(),
-%%   <<"virtualInterfaceId">> := string()
-%% }
--type confirm_private_virtual_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_interconnect_request() :: #{
-%%   <<"interconnectId">> := string()
-%% }
--type delete_interconnect_request() :: #{binary() => any()}.
-
-%% Example:
-%% interconnects() :: #{
-%%   <<"interconnects">> => list(interconnect()),
-%%   <<"nextToken">> => string()
-%% }
--type interconnects() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_tag_keys_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type duplicate_tag_keys_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_connection_from_lag_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"lagId">> := string()
-%% }
--type disassociate_connection_from_lag_request() :: #{binary() => any()}.
-
-%% Example:
-%% route_filter_prefix() :: #{
-%%   <<"cidr">> => string()
-%% }
--type route_filter_prefix() :: #{binary() => any()}.
-
-%% Example:
-%% allocate_connection_on_interconnect_request() :: #{
-%%   <<"bandwidth">> := string(),
-%%   <<"connectionName">> := string(),
-%%   <<"interconnectId">> := string(),
-%%   <<"ownerAccount">> := string(),
-%%   <<"vlan">> := integer()
-%% }
--type allocate_connection_on_interconnect_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_direct_connect_gateway_association_proposal_result() :: #{
-%%   <<"directConnectGatewayAssociationProposal">> => direct_connect_gateway_association_proposal()
-%% }
--type create_direct_connect_gateway_association_proposal_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_direct_connect_gateway_association_proposal_request() :: #{
-%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
-%%   <<"directConnectGatewayId">> := string(),
-%%   <<"directConnectGatewayOwnerAccount">> := string(),
-%%   <<"gatewayId">> := string(),
-%%   <<"removeAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix())
-%% }
--type create_direct_connect_gateway_association_proposal_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_direct_connect_gateway_association_request() :: #{
-%%   <<"associationId">> => string(),
-%%   <<"directConnectGatewayId">> => string(),
-%%   <<"virtualGatewayId">> => string()
-%% }
--type delete_direct_connect_gateway_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_transit_virtual_interface_response() :: #{
-%%   <<"virtualInterfaceState">> => list(any())
-%% }
--type confirm_transit_virtual_interface_response() :: #{binary() => any()}.
-
-%% Example:
-%% accept_direct_connect_gateway_association_proposal_request() :: #{
-%%   <<"associatedGatewayOwnerAccount">> := string(),
-%%   <<"directConnectGatewayId">> := string(),
-%%   <<"overrideAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
-%%   <<"proposalId">> := string()
-%% }
--type accept_direct_connect_gateway_association_proposal_request() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% allocate_private_virtual_interface_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"newPrivateVirtualInterfaceAllocation">> := new_private_virtual_interface_allocation(),
-%%   <<"ownerAccount">> := string()
-%% }
--type allocate_private_virtual_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_mac_sec_key_response() :: #{
-%%   <<"connectionId">> => string(),
-%%   <<"macSecKeys">> => list(mac_sec_key())
-%% }
--type associate_mac_sec_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% allocate_public_virtual_interface_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"newPublicVirtualInterfaceAllocation">> := new_public_virtual_interface_allocation(),
-%%   <<"ownerAccount">> := string()
-%% }
--type allocate_public_virtual_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% direct_connect_gateway() :: #{
-%%   <<"amazonSideAsn">> => float(),
-%%   <<"directConnectGatewayId">> => string(),
-%%   <<"directConnectGatewayName">> => string(),
-%%   <<"directConnectGatewayState">> => list(any()),
-%%   <<"ownerAccount">> => string(),
-%%   <<"stateChangeError">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type direct_connect_gateway() :: #{binary() => any()}.
-
-%% Example:
-%% associate_connection_with_lag_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"lagId">> := string()
-%% }
--type associate_connection_with_lag_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tags_request() :: #{
-%%   <<"resourceArns">> := list(string())
-%% }
--type describe_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_direct_connect_gateway_association_result() :: #{
-%%   <<"directConnectGatewayAssociation">> => direct_connect_gateway_association()
-%% }
--type create_direct_connect_gateway_association_result() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_customer_agreement_response() :: #{
-%%   <<"status">> => string()
-%% }
--type confirm_customer_agreement_response() :: #{binary() => any()}.
-
-%% Example:
-%% associated_gateway() :: #{
-%%   <<"id">> => string(),
-%%   <<"ownerAccount">> => string(),
-%%   <<"region">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type associated_gateway() :: #{binary() => any()}.
-
-%% Example:
-%% describe_router_configuration_response() :: #{
-%%   <<"customerRouterConfig">> => string(),
-%%   <<"router">> => router_type(),
-%%   <<"virtualInterfaceId">> => string(),
-%%   <<"virtualInterfaceName">> => string()
-%% }
--type describe_router_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_request() :: #{
-%%   <<"connectionId">> := string()
-%% }
--type delete_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% direct_connect_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type direct_connect_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% confirm_public_virtual_interface_request() :: #{
-%%   <<"virtualInterfaceId">> := string()
-%% }
--type confirm_public_virtual_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_virtual_interface_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"virtualInterfaceId">> := string()
-%% }
--type associate_virtual_interface_request() :: #{binary() => any()}.
-
-%% Example:
-%% lags() :: #{
-%%   <<"lags">> => list(lag()),
-%%   <<"nextToken">> => string()
-%% }
--type lags() :: #{binary() => any()}.
-
-%% Example:
-%% describe_loa_request() :: #{
-%%   <<"connectionId">> := string(),
-%%   <<"loaContentType">> => list(any()),
-%%   <<"providerName">> => string()
-%% }
--type describe_loa_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connection_loa_response() :: #{
-%%   <<"loa">> => loa()
-%% }
--type describe_connection_loa_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_request() :: #{
-%%   <<"bandwidth">> := string(),
-%%   <<"connectionName">> := string(),
-%%   <<"lagId">> => string(),
-%%   <<"location">> := string(),
-%%   <<"providerName">> => string(),
-%%   <<"requestMACSec">> => boolean(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_direct_connect_gateway_request() :: #{
-%%   <<"directConnectGatewayId">> := string(),
-%%   <<"newDirectConnectGatewayName">> := string()
-%% }
--type update_direct_connect_gateway_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_direct_connect_gateway_association_result() :: #{
-%%   <<"directConnectGatewayAssociation">> => direct_connect_gateway_association()
-%% }
--type delete_direct_connect_gateway_association_result() :: #{binary() => any()}.
-
-%% Example:
-%% lag() :: #{
-%%   <<"allowsHostedConnections">> => boolean(),
-%%   <<"awsDevice">> => string(),
-%%   <<"awsDeviceV2">> => string(),
-%%   <<"awsLogicalDeviceId">> => string(),
-%%   <<"connections">> => list(connection()),
-%%   <<"connectionsBandwidth">> => string(),
-%%   <<"encryptionMode">> => string(),
-%%   <<"hasLogicalRedundancy">> => list(any()),
-%%   <<"jumboFrameCapable">> => boolean(),
-%%   <<"lagId">> => string(),
-%%   <<"lagName">> => string(),
-%%   <<"lagState">> => list(any()),
-%%   <<"location">> => string(),
-%%   <<"macSecCapable">> => boolean(),
-%%   <<"macSecKeys">> => list(mac_sec_key()),
-%%   <<"minimumLinks">> => integer(),
-%%   <<"numberOfConnections">> => integer(),
-%%   <<"ownerAccount">> => string(),
-%%   <<"providerName">> => string(),
-%%   <<"rateLimiterStatus">> => rate_limiter_status(),
-%%   <<"region">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type lag() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% new_public_virtual_interface_allocation() :: #{
-%%   <<"addressFamily">> => list(any()),
-%%   <<"amazonAddress">> => string(),
-%%   <<"asn">> => integer(),
-%%   <<"asnLong">> => float(),
-%%   <<"authKey">> => string(),
-%%   <<"customerAddress">> => string(),
-%%   <<"rateLimit">> => string(),
-%%   <<"routeFilterPrefixes">> => list(route_filter_prefix()),
-%%   <<"tags">> => list(tag()),
-%%   <<"virtualInterfaceName">> => string(),
-%%   <<"vlan">> => integer()
-%% }
--type new_public_virtual_interface_allocation() :: #{binary() => any()}.
-
-%% Example:
-%% new_bgp_peer() :: #{
-%%   <<"addressFamily">> => list(any()),
-%%   <<"amazonAddress">> => string(),
-%%   <<"asn">> => integer(),
-%%   <<"asnLong">> => float(),
-%%   <<"authKey">> => string(),
-%%   <<"customerAddress">> => string()
-%% }
--type new_bgp_peer() :: #{binary() => any()}.
-
-%% Example:
-%% create_transit_virtual_interface_result() :: #{
-%%   <<"virtualInterface">> => virtual_interface()
-%% }
--type create_transit_virtual_interface_result() :: #{binary() => any()}.
+-type virtual_interfaces() :: #{binary() => any()}.
 
 -type accept_direct_connect_gateway_association_proposal_errors() ::
     direct_connect_server_exception() | 
@@ -1338,34 +1386,34 @@
 
 -type allocate_hosted_connection_errors() ::
     too_many_tags_exception() | 
-    direct_connect_server_exception() | 
     duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type allocate_private_virtual_interface_errors() ::
     too_many_tags_exception() | 
-    direct_connect_server_exception() | 
     limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type allocate_public_virtual_interface_errors() ::
     too_many_tags_exception() | 
-    direct_connect_server_exception() | 
     limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type allocate_transit_virtual_interface_errors() ::
     too_many_tags_exception() | 
-    direct_connect_server_exception() | 
     limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type associate_connection_with_lag_errors() ::
-    direct_connect_server_exception() | 
     limit_exceeded_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type associate_hosted_connection_errors() ::
@@ -1406,8 +1454,8 @@
 
 -type create_connection_errors() ::
     too_many_tags_exception() | 
-    direct_connect_server_exception() | 
     duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type create_direct_connect_gateway_errors() ::
@@ -1424,35 +1472,35 @@
 
 -type create_interconnect_errors() ::
     too_many_tags_exception() | 
-    direct_connect_server_exception() | 
     duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type create_lag_errors() ::
     too_many_tags_exception() | 
-    direct_connect_server_exception() | 
     duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type create_private_virtual_interface_errors() ::
     too_many_tags_exception() | 
-    direct_connect_server_exception() | 
     limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type create_public_virtual_interface_errors() ::
     too_many_tags_exception() | 
-    direct_connect_server_exception() | 
     limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type create_transit_virtual_interface_errors() ::
     too_many_tags_exception() | 
-    direct_connect_server_exception() | 
     limit_exceeded_exception() | 
     duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type delete_bgp_peer_errors() ::
@@ -1567,6 +1615,10 @@
     direct_connect_server_exception() | 
     direct_connect_client_exception().
 
+-type list_virtual_interface_routes_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
 -type list_virtual_interface_test_history_errors() ::
     direct_connect_server_exception() | 
     direct_connect_client_exception().
@@ -1581,8 +1633,8 @@
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    direct_connect_server_exception() | 
     duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
     direct_connect_client_exception().
 
 -type untag_resource_errors() ::
@@ -3031,6 +3083,31 @@ disassociate_mac_sec_key(Client, Input)
 disassociate_mac_sec_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateMacSecKey">>, Input, Options).
+
+%% @doc Lists the routes for the specified virtual interface.
+%%
+%% Use the `routeDirection' filter to control which routes are returned:
+%%
+%% `accepted': routes received from the customer network over the virtual
+%% interface.
+%%
+%% `advertised': routes advertised to the customer network over the
+%% virtual interface.
+-spec list_virtual_interface_routes(aws_client:aws_client(), list_virtual_interface_routes_request()) ->
+    {ok, list_virtual_interface_routes_response(), tuple()} |
+    {error, any()} |
+    {error, list_virtual_interface_routes_errors(), tuple()}.
+list_virtual_interface_routes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_virtual_interface_routes(Client, Input, []).
+
+-spec list_virtual_interface_routes(aws_client:aws_client(), list_virtual_interface_routes_request(), proplists:proplist()) ->
+    {ok, list_virtual_interface_routes_response(), tuple()} |
+    {error, any()} |
+    {error, list_virtual_interface_routes_errors(), tuple()}.
+list_virtual_interface_routes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListVirtualInterfaceRoutes">>, Input, Options).
 
 %% @doc Lists the virtual interface failover test history.
 -spec list_virtual_interface_test_history(aws_client:aws_client(), list_virtual_interface_test_history_request()) ->

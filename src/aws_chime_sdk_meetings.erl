@@ -53,47 +53,146 @@
 
 
 %% Example:
-%% update_attendee_capabilities_response() :: #{
-%%   <<"Attendee">> => attendee()
+%% attendee() :: #{
+%%   <<"AttendeeId">> => string(),
+%%   <<"Capabilities">> => attendee_capabilities(),
+%%   <<"ExternalUserId">> => string(),
+%%   <<"JoinToken">> => string()
 %% }
--type update_attendee_capabilities_response() :: #{binary() => any()}.
+-type attendee() :: #{binary() => any()}.
 
 
 %% Example:
-%% notifications_configuration() :: #{
-%%   <<"LambdaFunctionArn">> => string(),
-%%   <<"SnsTopicArn">> => string(),
-%%   <<"SqsQueueArn">> => string()
+%% attendee_capabilities() :: #{
+%%   <<"Audio">> => list(any()),
+%%   <<"Content">> => list(any()),
+%%   <<"Video">> => list(any())
 %% }
--type notifications_configuration() :: #{binary() => any()}.
+-type attendee_capabilities() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
+%% attendee_features() :: #{
+%%   <<"MaxCount">> => integer()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type attendee_features() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_attendee_response() :: #{
-%%   <<"Attendee">> => attendee()
+%% attendee_id_item() :: #{
+%%   <<"AttendeeId">> => string()
 %% }
--type get_attendee_response() :: #{binary() => any()}.
+-type attendee_id_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% unauthorized_exception() :: #{
+%% audio_features() :: #{
+%%   <<"EchoReduction">> => list(any())
+%% }
+-type audio_features() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
--type unauthorized_exception() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
+
 
 %% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+%% batch_create_attendee_request() :: #{
+%%   <<"Attendees">> := list(create_attendee_request_item())
+%% }
+-type batch_create_attendee_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_attendee_response() :: #{
+%%   <<"Attendees">> => list(attendee()),
+%%   <<"Errors">> => list(create_attendee_error())
+%% }
+-type batch_create_attendee_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_attendee_capabilities_except_request() :: #{
+%%   <<"Capabilities">> := attendee_capabilities(),
+%%   <<"ExcludedAttendeeIds">> := list(attendee_id_item())
+%% }
+-type batch_update_attendee_capabilities_except_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_features() :: #{
+%%   <<"MaxResolution">> => list(any())
+%% }
+-type content_features() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attendee_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ExternalUserId">> => string()
+%% }
+-type create_attendee_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attendee_request() :: #{
+%%   <<"Capabilities">> => attendee_capabilities(),
+%%   <<"ExternalUserId">> := string()
+%% }
+-type create_attendee_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attendee_request_item() :: #{
+%%   <<"Capabilities">> => attendee_capabilities(),
+%%   <<"ExternalUserId">> => string()
+%% }
+-type create_attendee_request_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_attendee_response() :: #{
+%%   <<"Attendee">> => attendee()
+%% }
+-type create_attendee_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_meeting_request() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"ExternalMeetingId">> := string(),
+%%   <<"MediaPlacementNetworkType">> => list(any()),
+%%   <<"MediaRegion">> := string(),
+%%   <<"MeetingFeatures">> => meeting_features_configuration(),
+%%   <<"MeetingHostId">> => string(),
+%%   <<"NotificationsConfiguration">> => notifications_configuration(),
+%%   <<"PrimaryMeetingId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TenantIds">> => list(string())
+%% }
+-type create_meeting_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_meeting_response() :: #{
+%%   <<"Meeting">> => meeting()
+%% }
+-type create_meeting_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -114,69 +213,32 @@
 
 
 %% Example:
-%% service_failure_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type service_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% meeting() :: #{
-%%   <<"ExternalMeetingId">> => string(),
-%%   <<"MediaPlacement">> => media_placement(),
-%%   <<"MediaRegion">> => string(),
-%%   <<"MeetingArn">> => string(),
-%%   <<"MeetingFeatures">> => meeting_features_configuration(),
-%%   <<"MeetingHostId">> => string(),
-%%   <<"MeetingId">> => string(),
-%%   <<"PrimaryMeetingId">> => string(),
-%%   <<"TenantIds">> => list(string())
-%% }
--type meeting() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_meeting_response() :: #{
+%% create_meeting_with_attendees_response() :: #{
+%%   <<"Attendees">> => list(attendee()),
+%%   <<"Errors">> => list(create_attendee_error()),
 %%   <<"Meeting">> => meeting()
 %% }
--type create_meeting_response() :: #{binary() => any()}.
+-type create_meeting_with_attendees_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attendee_request() :: #{}
+-type delete_attendee_request() :: #{}.
+
+%% Example:
+%% delete_meeting_request() :: #{}
+-type delete_meeting_request() :: #{}.
 
 
 %% Example:
-%% get_meeting_response() :: #{
-%%   <<"Meeting">> => meeting()
+%% engine_transcribe_medical_settings() :: #{
+%%   <<"ContentIdentificationType">> => list(any()),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Region">> => list(any()),
+%%   <<"Specialty">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"VocabularyName">> => string()
 %% }
--type get_meeting_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_meeting_transcription_request() :: #{}
--type stop_meeting_transcription_request() :: #{}.
-
-
-%% Example:
-%% attendee_features() :: #{
-%%   <<"MaxCount">> => integer()
-%% }
--type attendee_features() :: #{binary() => any()}.
+-type engine_transcribe_medical_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -202,170 +264,12 @@
 
 
 %% Example:
-%% list_attendees_response() :: #{
-%%   <<"Attendees">> => list(attendee()),
-%%   <<"NextToken">> => string()
-%% }
--type list_attendees_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_meeting_with_attendees_response() :: #{
-%%   <<"Attendees">> => list(attendee()),
-%%   <<"Errors">> => list(create_attendee_error()),
-%%   <<"Meeting">> => meeting()
-%% }
--type create_meeting_with_attendees_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% transcription_configuration() :: #{
-%%   <<"EngineTranscribeMedicalSettings">> => engine_transcribe_medical_settings(),
-%%   <<"EngineTranscribeSettings">> => engine_transcribe_settings()
-%% }
--type transcription_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
+%% forbidden_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_meeting_request() :: #{}
--type delete_meeting_request() :: #{}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"ResourceName">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_features() :: #{
-%%   <<"EchoReduction">> => list(any())
-%% }
--type audio_features() :: #{binary() => any()}.
-
-
-%% Example:
-%% engine_transcribe_medical_settings() :: #{
-%%   <<"ContentIdentificationType">> => list(any()),
-%%   <<"LanguageCode">> => list(any()),
-%%   <<"Region">> => list(any()),
-%%   <<"Specialty">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"VocabularyName">> => string()
-%% }
--type engine_transcribe_medical_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_meeting_request() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"ExternalMeetingId">> := string(),
-%%   <<"MediaPlacementNetworkType">> => list(any()),
-%%   <<"MediaRegion">> := string(),
-%%   <<"MeetingFeatures">> => meeting_features_configuration(),
-%%   <<"MeetingHostId">> => string(),
-%%   <<"NotificationsConfiguration">> => notifications_configuration(),
-%%   <<"PrimaryMeetingId">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TenantIds">> => list(string())
-%% }
--type create_meeting_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_attendee_request_item() :: #{
-%%   <<"Capabilities">> => attendee_capabilities(),
-%%   <<"ExternalUserId">> => string()
-%% }
--type create_attendee_request_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_attendee_response() :: #{
-%%   <<"Attendee">> => attendee()
-%% }
--type create_attendee_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attendee_capabilities() :: #{
-%%   <<"Audio">> => list(any()),
-%%   <<"Content">> => list(any()),
-%%   <<"Video">> => list(any())
-%% }
--type attendee_capabilities() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"RetryAfterSeconds">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_meeting_request() :: #{}
--type get_meeting_request() :: #{}.
-
-
-%% Example:
-%% create_attendee_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ExternalUserId">> => string()
-%% }
--type create_attendee_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% unprocessable_entity_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type unprocessable_entity_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type forbidden_exception() :: #{binary() => any()}.
 
 %% Example:
 %% get_attendee_request() :: #{}
@@ -373,88 +277,21 @@
 
 
 %% Example:
-%% attendee_id_item() :: #{
-%%   <<"AttendeeId">> => string()
+%% get_attendee_response() :: #{
+%%   <<"Attendee">> => attendee()
 %% }
--type attendee_id_item() :: #{binary() => any()}.
+-type get_attendee_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_meeting_request() :: #{}
+-type get_meeting_request() :: #{}.
 
 
 %% Example:
-%% meeting_features_configuration() :: #{
-%%   <<"Attendee">> => attendee_features(),
-%%   <<"Audio">> => audio_features(),
-%%   <<"Content">> => content_features(),
-%%   <<"Video">> => video_features()
+%% get_meeting_response() :: #{
+%%   <<"Meeting">> => meeting()
 %% }
--type meeting_features_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_features() :: #{
-%%   <<"MaxResolution">> => list(any())
-%% }
--type content_features() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_attendee_capabilities_request() :: #{
-%%   <<"Capabilities">> := attendee_capabilities()
-%% }
--type update_attendee_capabilities_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_meeting_transcription_request() :: #{
-%%   <<"TranscriptionConfiguration">> := transcription_configuration()
-%% }
--type start_meeting_transcription_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_attendee_request() :: #{
-%%   <<"Attendees">> := list(create_attendee_request_item())
-%% }
--type batch_create_attendee_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_attendee_response() :: #{
-%%   <<"Attendees">> => list(attendee()),
-%%   <<"Errors">> => list(create_attendee_error())
-%% }
--type batch_create_attendee_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attendees_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_attendees_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_attendee_capabilities_except_request() :: #{
-%%   <<"Capabilities">> := attendee_capabilities(),
-%%   <<"ExcludedAttendeeIds">> := list(attendee_id_item())
-%% }
--type batch_update_attendee_capabilities_except_request() :: #{binary() => any()}.
+-type get_meeting_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -467,37 +304,33 @@
 
 
 %% Example:
-%% video_features() :: #{
-%%   <<"MaxResolution">> => list(any())
+%% list_attendees_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type video_features() :: #{binary() => any()}.
+-type list_attendees_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% attendee() :: #{
-%%   <<"AttendeeId">> => string(),
-%%   <<"Capabilities">> => attendee_capabilities(),
-%%   <<"ExternalUserId">> => string(),
-%%   <<"JoinToken">> => string()
+%% list_attendees_response() :: #{
+%%   <<"Attendees">> => list(attendee()),
+%%   <<"NextToken">> => string()
 %% }
--type attendee() :: #{binary() => any()}.
+-type list_attendees_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RequestId">> => string()
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
 %% }
--type bad_request_exception() :: #{binary() => any()}.
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_attendee_request() :: #{
-%%   <<"Capabilities">> => attendee_capabilities(),
-%%   <<"ExternalUserId">> := string()
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
 %% }
--type create_attendee_request() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -515,6 +348,118 @@
 
 
 %% Example:
+%% meeting() :: #{
+%%   <<"ExternalMeetingId">> => string(),
+%%   <<"MediaPlacement">> => media_placement(),
+%%   <<"MediaRegion">> => string(),
+%%   <<"MeetingArn">> => string(),
+%%   <<"MeetingFeatures">> => meeting_features_configuration(),
+%%   <<"MeetingHostId">> => string(),
+%%   <<"MeetingId">> => string(),
+%%   <<"PrimaryMeetingId">> => string(),
+%%   <<"TenantIds">> => list(string())
+%% }
+-type meeting() :: #{binary() => any()}.
+
+
+%% Example:
+%% meeting_features_configuration() :: #{
+%%   <<"Attendee">> => attendee_features(),
+%%   <<"Audio">> => audio_features(),
+%%   <<"Content">> => content_features(),
+%%   <<"Video">> => video_features()
+%% }
+-type meeting_features_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% notifications_configuration() :: #{
+%%   <<"LambdaFunctionArn">> => string(),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SqsQueueArn">> => string()
+%% }
+-type notifications_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_failure_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type service_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"RetryAfterSeconds">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_meeting_transcription_request() :: #{
+%%   <<"TranscriptionConfiguration">> := transcription_configuration()
+%% }
+-type start_meeting_transcription_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_meeting_transcription_request() :: #{}
+-type stop_meeting_transcription_request() :: #{}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string(),
@@ -523,168 +468,223 @@
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_attendee_request() :: #{}
--type delete_attendee_request() :: #{}.
+%% transcription_configuration() :: #{
+%%   <<"EngineTranscribeMedicalSettings">> => engine_transcribe_medical_settings(),
+%%   <<"EngineTranscribeSettings">> => engine_transcribe_settings()
+%% }
+-type transcription_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessable_entity_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type unprocessable_entity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_attendee_capabilities_request() :: #{
+%%   <<"Capabilities">> := attendee_capabilities()
+%% }
+-type update_attendee_capabilities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_attendee_capabilities_response() :: #{
+%%   <<"Attendee">> => attendee()
+%% }
+-type update_attendee_capabilities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_features() :: #{
+%%   <<"MaxResolution">> => list(any())
+%% }
+-type video_features() :: #{binary() => any()}.
 
 -type batch_create_attendee_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     unprocessable_entity_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    not_found_exception() | 
-    forbidden_exception() | 
     service_failure_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type batch_update_attendee_capabilities_except_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    forbidden_exception() | 
     service_failure_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_attendee_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     unprocessable_entity_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    not_found_exception() | 
-    forbidden_exception() | 
     service_failure_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_meeting_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    conflict_exception() | 
-    forbidden_exception() | 
     service_failure_exception() | 
-    unauthorized_exception().
+    limit_exceeded_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_meeting_with_attendees_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    conflict_exception() | 
-    forbidden_exception() | 
     service_failure_exception() | 
-    unauthorized_exception().
+    limit_exceeded_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_attendee_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    service_failure_exception() | 
     not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_meeting_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    service_failure_exception() | 
     not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type get_attendee_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    service_failure_exception() | 
     not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type get_meeting_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    service_failure_exception() | 
     not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_attendees_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
+    service_failure_exception() | 
     not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception() | 
-    forbidden_exception() | 
     service_failure_exception() | 
-    unauthorized_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type start_meeting_transcription_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    throttling_exception() | 
     unprocessable_entity_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
-    not_found_exception() | 
-    forbidden_exception() | 
     service_failure_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type stop_meeting_transcription_errors() ::
-    bad_request_exception() | 
-    throttling_exception() | 
     unprocessable_entity_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
+    service_failure_exception() | 
     not_found_exception() | 
     forbidden_exception() | 
-    service_failure_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type tag_resource_errors() ::
+    unauthorized_exception() | 
     too_many_tags_exception() | 
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception() | 
-    forbidden_exception() | 
     service_failure_exception() | 
-    unauthorized_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception() | 
-    forbidden_exception() | 
     service_failure_exception() | 
-    unauthorized_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_attendee_capabilities_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     service_unavailable_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
-    forbidden_exception() | 
     service_failure_exception() | 
-    unauthorized_exception().
+    not_found_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

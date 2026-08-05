@@ -58,12 +58,35 @@
 
 
 %% Example:
-%% web_r_t_cmeeting() :: #{
-%%   <<"MediaPlacement">> => web_r_t_cmedia_placement(),
-%%   <<"MeetingFeatures">> => meeting_features_configuration(),
-%%   <<"MeetingId">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type web_r_t_cmeeting() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% attachment_item() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"AttachmentName">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type attachment_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% attendee() :: #{
+%%   <<"AttendeeId">> => string(),
+%%   <<"JoinToken">> => string()
+%% }
+-type attendee() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_features() :: #{
+%%   <<"EchoReduction">> => list(any())
+%% }
+-type audio_features() :: #{binary() => any()}.
 
 
 %% Example:
@@ -73,70 +96,9 @@
 %% }
 -type cancel_participant_authentication_request() :: #{binary() => any()}.
 
-
 %% Example:
-%% view() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Content">> => view_content(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Version">> => integer()
-%% }
--type view() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_authentication_url_response() :: #{
-%%   <<"AuthenticationUrl">> => string()
-%% }
--type get_authentication_url_response() :: #{binary() => any()}.
-
-%% Example:
-%% disconnect_participant_response() :: #{}
--type disconnect_participant_response() :: #{}.
-
-
-%% Example:
-%% receipt() :: #{
-%%   <<"DeliveredTimestamp">> => string(),
-%%   <<"ReadTimestamp">> => string(),
-%%   <<"RecipientParticipantId">> => string()
-%% }
--type receipt() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_r_t_cmedia_placement() :: #{
-%%   <<"AudioFallbackUrl">> => string(),
-%%   <<"AudioHostUrl">> => string(),
-%%   <<"EventIngestionUrl">> => string(),
-%%   <<"SignalingUrl">> => string()
-%% }
--type web_r_t_cmedia_placement() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_position() :: #{
-%%   <<"AbsoluteTime">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"MostRecent">> => integer()
-%% }
--type start_position() :: #{binary() => any()}.
-
-
-%% Example:
-%% websocket() :: #{
-%%   <<"ConnectionExpiry">> => string(),
-%%   <<"Url">> => string()
-%% }
--type websocket() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_processing_metadata() :: #{
-%%   <<"MessageProcessingStatus">> => list(any())
-%% }
--type message_processing_metadata() :: #{binary() => any()}.
+%% cancel_participant_authentication_response() :: #{}
+-type cancel_participant_authentication_response() :: #{}.
 
 
 %% Example:
@@ -147,15 +109,49 @@
 %% }
 -type complete_attachment_upload_request() :: #{binary() => any()}.
 
+%% Example:
+%% complete_attachment_upload_response() :: #{}
+-type complete_attachment_upload_response() :: #{}.
+
 
 %% Example:
-%% send_event_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ConnectionToken">> := string(),
-%%   <<"Content">> => string(),
-%%   <<"ContentType">> := string()
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type send_event_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connection_credentials() :: #{
+%%   <<"ConnectionToken">> => string(),
+%%   <<"Expiry">> => string()
+%% }
+-type connection_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_participant_connection_request() :: #{
+%%   <<"ConnectParticipant">> => boolean(),
+%%   <<"ParticipantToken">> := string(),
+%%   <<"Type">> => list(list(any())())
+%% }
+-type create_participant_connection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_participant_connection_response() :: #{
+%%   <<"ConnectionCredentials">> => connection_credentials(),
+%%   <<"WebRTCConnection">> => web_r_t_c_connection(),
+%%   <<"Websocket">> => websocket()
+%% }
+-type create_participant_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_view_request() :: #{
+%%   <<"ConnectionToken">> := string()
+%% }
+-type describe_view_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -163,6 +159,81 @@
 %%   <<"View">> => view()
 %% }
 -type describe_view_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disconnect_participant_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ConnectionToken">> := string()
+%% }
+-type disconnect_participant_request() :: #{binary() => any()}.
+
+%% Example:
+%% disconnect_participant_response() :: #{}
+-type disconnect_participant_response() :: #{}.
+
+
+%% Example:
+%% get_attachment_request() :: #{
+%%   <<"AttachmentId">> := string(),
+%%   <<"ConnectionToken">> := string(),
+%%   <<"UrlExpiryInSeconds">> => integer()
+%% }
+-type get_attachment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_attachment_response() :: #{
+%%   <<"AttachmentSizeInBytes">> => float(),
+%%   <<"Url">> => string(),
+%%   <<"UrlExpiry">> => string()
+%% }
+-type get_attachment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_authentication_url_request() :: #{
+%%   <<"ConnectionToken">> := string(),
+%%   <<"RedirectUri">> := string(),
+%%   <<"SessionId">> := string()
+%% }
+-type get_authentication_url_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_authentication_url_response() :: #{
+%%   <<"AuthenticationUrl">> => string()
+%% }
+-type get_authentication_url_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_transcript_request() :: #{
+%%   <<"ConnectionToken">> := string(),
+%%   <<"ContactId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ScanDirection">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StartPosition">> => start_position()
+%% }
+-type get_transcript_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_transcript_response() :: #{
+%%   <<"InitialContactId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Transcript">> => list(item())
+%% }
+-type get_transcript_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -184,110 +255,10 @@
 
 
 %% Example:
-%% disconnect_participant_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ConnectionToken">> := string()
+%% meeting_features_configuration() :: #{
+%%   <<"Audio">> => audio_features()
 %% }
--type disconnect_participant_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% view_content() :: #{
-%%   <<"Actions">> => list(string()),
-%%   <<"InputSchema">> => string(),
-%%   <<"Template">> => string()
-%% }
--type view_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_participant_connection_request() :: #{
-%%   <<"ConnectParticipant">> => boolean(),
-%%   <<"ParticipantToken">> := string(),
-%%   <<"Type">> => list(list(any())())
-%% }
--type create_participant_connection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_event_response() :: #{
-%%   <<"AbsoluteTime">> => string(),
-%%   <<"Id">> => string()
-%% }
--type send_event_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_features() :: #{
-%%   <<"EchoReduction">> => list(any())
-%% }
--type audio_features() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% attachment_item() :: #{
-%%   <<"AttachmentId">> => string(),
-%%   <<"AttachmentName">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type attachment_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_authentication_url_request() :: #{
-%%   <<"ConnectionToken">> := string(),
-%%   <<"RedirectUri">> := string(),
-%%   <<"SessionId">> := string()
-%% }
--type get_authentication_url_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_view_request() :: #{
-%%   <<"ConnectionToken">> := string()
-%% }
--type describe_view_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_attachment_response() :: #{
-%%   <<"AttachmentSizeInBytes">> => float(),
-%%   <<"Url">> => string(),
-%%   <<"UrlExpiry">> => string()
-%% }
--type get_attachment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_r_t_c_connection() :: #{
-%%   <<"Attendee">> => attendee(),
-%%   <<"Meeting">> => web_r_t_cmeeting()
-%% }
--type web_r_t_c_connection() :: #{binary() => any()}.
+-type meeting_features_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -300,48 +271,72 @@
 
 
 %% Example:
-%% start_attachment_upload_response() :: #{
-%%   <<"AttachmentId">> => string(),
-%%   <<"UploadMetadata">> => upload_metadata()
+%% message_processing_metadata() :: #{
+%%   <<"MessageProcessingStatus">> => list(any())
 %% }
--type start_attachment_upload_response() :: #{binary() => any()}.
+-type message_processing_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_transcript_request() :: #{
+%% receipt() :: #{
+%%   <<"DeliveredTimestamp">> => string(),
+%%   <<"ReadTimestamp">> => string(),
+%%   <<"RecipientParticipantId">> => string()
+%% }
+-type receipt() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_event_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"ConnectionToken">> := string(),
-%%   <<"ContactId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ScanDirection">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"StartPosition">> => start_position()
+%%   <<"Content">> => string(),
+%%   <<"ContentType">> := string()
 %% }
--type get_transcript_request() :: #{binary() => any()}.
+-type send_event_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_attachment_request() :: #{
-%%   <<"AttachmentId">> := string(),
+%% send_event_response() :: #{
+%%   <<"AbsoluteTime">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type send_event_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_message_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"ConnectionToken">> := string(),
-%%   <<"UrlExpiryInSeconds">> => integer()
+%%   <<"Content">> := string(),
+%%   <<"ContentType">> := string()
 %% }
--type get_attachment_request() :: #{binary() => any()}.
+-type send_message_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% connection_credentials() :: #{
-%%   <<"ConnectionToken">> => string(),
-%%   <<"Expiry">> => string()
+%% send_message_response() :: #{
+%%   <<"AbsoluteTime">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MessageMetadata">> => message_processing_metadata()
 %% }
--type connection_credentials() :: #{binary() => any()}.
+-type send_message_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_exception() :: #{
+%% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -356,28 +351,20 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
+%% start_attachment_upload_response() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"UploadMetadata">> => upload_metadata()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% complete_attachment_upload_response() :: #{}
--type complete_attachment_upload_response() :: #{}.
+-type start_attachment_upload_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% meeting_features_configuration() :: #{
-%%   <<"Audio">> => audio_features()
+%% start_position() :: #{
+%%   <<"AbsoluteTime">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MostRecent">> => integer()
 %% }
--type meeting_features_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
+-type start_position() :: #{binary() => any()}.
 
 
 %% Example:
@@ -385,46 +372,6 @@
 %%   <<"Message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_transcript_response() :: #{
-%%   <<"InitialContactId">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Transcript">> => list(item())
-%% }
--type get_transcript_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_message_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ConnectionToken">> := string(),
-%%   <<"Content">> := string(),
-%%   <<"ContentType">> := string()
-%% }
--type send_message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% attendee() :: #{
-%%   <<"AttendeeId">> => string(),
-%%   <<"JoinToken">> => string()
-%% }
--type attendee() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_participant_authentication_response() :: #{}
--type cancel_participant_authentication_response() :: #{}.
-
-
-%% Example:
-%% send_message_response() :: #{
-%%   <<"AbsoluteTime">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"MessageMetadata">> => message_processing_metadata()
-%% }
--type send_message_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -437,83 +384,136 @@
 
 
 %% Example:
-%% create_participant_connection_response() :: #{
-%%   <<"ConnectionCredentials">> => connection_credentials(),
-%%   <<"WebRTCConnection">> => web_r_t_c_connection(),
-%%   <<"Websocket">> => websocket()
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type create_participant_connection_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% view() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Content">> => view_content(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type view() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_content() :: #{
+%%   <<"Actions">> => list(string()),
+%%   <<"InputSchema">> => string(),
+%%   <<"Template">> => string()
+%% }
+-type view_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_r_t_c_connection() :: #{
+%%   <<"Attendee">> => attendee(),
+%%   <<"Meeting">> => web_r_t_cmeeting()
+%% }
+-type web_r_t_c_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_r_t_cmedia_placement() :: #{
+%%   <<"AudioFallbackUrl">> => string(),
+%%   <<"AudioHostUrl">> => string(),
+%%   <<"EventIngestionUrl">> => string(),
+%%   <<"SignalingUrl">> => string()
+%% }
+-type web_r_t_cmedia_placement() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_r_t_cmeeting() :: #{
+%%   <<"MediaPlacement">> => web_r_t_cmedia_placement(),
+%%   <<"MeetingFeatures">> => meeting_features_configuration(),
+%%   <<"MeetingId">> => string()
+%% }
+-type web_r_t_cmeeting() :: #{binary() => any()}.
+
+
+%% Example:
+%% websocket() :: #{
+%%   <<"ConnectionExpiry">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type websocket() :: #{binary() => any()}.
 
 -type cancel_participant_authentication_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type complete_attachment_upload_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_participant_connection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disconnect_participant_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_attachment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_authentication_url_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_transcript_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type send_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type send_message_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_attachment_upload_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

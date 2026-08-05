@@ -46,6 +46,13 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% action_summary() :: #{
 %%   <<"action">> => string(),
 %%   <<"description">> => string(),
@@ -55,17 +62,12 @@
 
 
 %% Example:
-%% delete_support_permit_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"permit">> => permit(),
-%%   <<"signingKeyInfo">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"supportCaseDisplayId">> => string()
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type delete_support_permit_output() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -82,15 +84,6 @@
 
 
 %% Example:
-%% list_actions_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"service">> := string()
-%% }
--type list_actions_input() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_support_permit_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -104,6 +97,28 @@
 %% }
 -type create_support_permit_output() :: #{binary() => any()}.
 
+%% Example:
+%% delete_support_permit_input() :: #{}
+-type delete_support_permit_input() :: #{}.
+
+
+%% Example:
+%% delete_support_permit_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"permit">> => permit(),
+%%   <<"signingKeyInfo">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"supportCaseDisplayId">> => string()
+%% }
+-type delete_support_permit_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_action_input() :: #{}
+-type get_action_input() :: #{}.
+
 
 %% Example:
 %% get_action_output() :: #{
@@ -112,6 +127,10 @@
 %%   <<"service">> => string()
 %% }
 -type get_action_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_support_permit_input() :: #{}
+-type get_support_permit_input() :: #{}.
 
 
 %% Example:
@@ -130,10 +149,28 @@
 
 
 %% Example:
-%% reject_support_permit_request_output() :: #{
-%%   <<"requestArn">> => string()
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
 %% }
--type reject_support_permit_request_output() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"service">> := string()
+%% }
+-type list_actions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actions_output() :: #{
+%%   <<"actionSummaries">> => list(action_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_actions_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -146,11 +183,32 @@
 
 
 %% Example:
+%% list_support_permit_requests_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"supportPermitRequests">> => list(support_permit_request())
+%% }
+-type list_support_permit_requests_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_support_permits_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"supportPermitStatuses">> => list(list(any())())
+%% }
+-type list_support_permits_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_support_permits_output() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"supportPermits">> => list(support_permit_summary())
 %% }
 -type list_support_permits_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
 
 
 %% Example:
@@ -161,12 +219,23 @@
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
+%% permit() :: #{
+%%   <<"actions">> => list(),
+%%   <<"conditions">> => list(list()),
+%%   <<"resources">> => list()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type permit() :: #{binary() => any()}.
+
+%% Example:
+%% reject_support_permit_request_input() :: #{}
+-type reject_support_permit_request_input() :: #{}.
+
+
+%% Example:
+%% reject_support_permit_request_output() :: #{
+%%   <<"requestArn">> => string()
+%% }
+-type reject_support_permit_request_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -176,19 +245,6 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% reject_support_permit_request_input() :: #{}
--type reject_support_permit_request_input() :: #{}.
-
-
-%% Example:
-%% permit() :: #{
-%%   <<"actions">> => list(),
-%%   <<"conditions">> => list(list()),
-%%   <<"resources">> => list()
-%% }
--type permit() :: #{binary() => any()}.
 
 
 %% Example:
@@ -203,19 +259,15 @@
 
 
 %% Example:
-%% list_support_permit_requests_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"supportPermitRequests">> => list(support_permit_request())
+%% support_permit_request() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"permit">> => permit(),
+%%   <<"requestArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"supportCaseDisplayId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type list_support_permit_requests_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"path">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
+-type support_permit_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -237,71 +289,9 @@
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
-
-%% Example:
-%% list_actions_output() :: #{
-%%   <<"actionSummaries">> => list(action_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_actions_output() :: #{binary() => any()}.
-
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_support_permit_input() :: #{}
--type delete_support_permit_input() :: #{}.
-
-
-%% Example:
-%% support_permit_request() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"permit">> => permit(),
-%%   <<"requestArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"supportCaseDisplayId">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type support_permit_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
 
 
 %% Example:
@@ -313,96 +303,106 @@
 
 
 %% Example:
-%% list_support_permits_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"supportPermitStatuses">> => list(list(any())())
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type list_support_permits_input() :: #{binary() => any()}.
+-type untag_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% get_support_permit_input() :: #{}
--type get_support_permit_input() :: #{}.
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
 
 %% Example:
-%% get_action_input() :: #{}
--type get_action_input() :: #{}.
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"path">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type create_support_permit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_support_permit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_support_permit_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_actions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_support_permit_requests_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_support_permits_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type reject_support_permit_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

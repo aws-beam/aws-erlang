@@ -69,350 +69,25 @@
 
 
 %% Example:
-%% list_s_n_o_m_e_d_c_t_inference_jobs_request() :: #{
-%%   <<"Filter">> => comprehend_medical_async_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_s_n_o_m_e_d_c_t_inference_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_rx_norm_inference_job_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type start_rx_norm_inference_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% s_n_o_m_e_d_c_t_trait() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Score">> => float()
-%% }
--type s_n_o_m_e_d_c_t_trait() :: #{binary() => any()}.
-
-%% Example:
-%% trait() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Score">> => float()
-%% }
--type trait() :: #{binary() => any()}.
-
-%% Example:
-%% detect_entities_v2_request() :: #{
-%%   <<"Text">> := string()
-%% }
--type detect_entities_v2_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_phi_detection_jobs_request() :: #{
-%%   <<"Filter">> => comprehend_medical_async_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_phi_detection_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% icd10_cm_entity() :: #{
-%%   <<"Attributes">> => list(icd10_cm_attribute()),
-%%   <<"BeginOffset">> => integer(),
-%%   <<"Category">> => list(any()),
-%%   <<"EndOffset">> => integer(),
-%%   <<"ICD10CMConcepts">> => list(icd10_cm_concept()),
-%%   <<"Id">> => integer(),
-%%   <<"Score">> => float(),
-%%   <<"Text">> => string(),
-%%   <<"Traits">> => list(icd10_cm_trait()),
-%%   <<"Type">> => list(any())
-%% }
--type icd10_cm_entity() :: #{binary() => any()}.
-
-%% Example:
-%% input_data_config() :: #{
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3Key">> => string()
-%% }
--type input_data_config() :: #{binary() => any()}.
-
-%% Example:
-%% characters() :: #{
-%%   <<"OriginalTextCharacters">> => integer()
-%% }
--type characters() :: #{binary() => any()}.
-
-%% Example:
-%% entity() :: #{
-%%   <<"Attributes">> => list(attribute()),
-%%   <<"BeginOffset">> => integer(),
-%%   <<"Category">> => list(any()),
-%%   <<"EndOffset">> => integer(),
-%%   <<"Id">> => integer(),
-%%   <<"Score">> => float(),
-%%   <<"Text">> => string(),
-%%   <<"Traits">> => list(trait()),
-%%   <<"Type">> => list(any())
-%% }
--type entity() :: #{binary() => any()}.
-
-%% Example:
-%% describe_icd10_cm_inference_job_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobProperties">> => comprehend_medical_async_job_properties()
-%% }
--type describe_icd10_cm_inference_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_rx_norm_inference_jobs_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_rx_norm_inference_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_icd10_cm_inference_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_icd10_cm_inference_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_encoding_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_encoding_exception() :: #{binary() => any()}.
-
-%% Example:
-%% s_n_o_m_e_d_c_t_attribute() :: #{
+%% attribute() :: #{
 %%   <<"BeginOffset">> => integer(),
 %%   <<"Category">> => list(any()),
 %%   <<"EndOffset">> => integer(),
 %%   <<"Id">> => integer(),
 %%   <<"RelationshipScore">> => float(),
 %%   <<"RelationshipType">> => list(any()),
-%%   <<"SNOMEDCTConcepts">> => list(s_n_o_m_e_d_c_t_concept()),
 %%   <<"Score">> => float(),
 %%   <<"Text">> => string(),
-%%   <<"Traits">> => list(s_n_o_m_e_d_c_t_trait()),
+%%   <<"Traits">> => list(trait()),
 %%   <<"Type">> => list(any())
 %% }
--type s_n_o_m_e_d_c_t_attribute() :: #{binary() => any()}.
+-type attribute() :: #{binary() => any()}.
 
 %% Example:
-%% infer_s_n_o_m_e_d_c_t_response() :: #{
-%%   <<"Characters">> => characters(),
-%%   <<"Entities">> => list(s_n_o_m_e_d_c_t_entity()),
-%%   <<"ModelVersion">> => string(),
-%%   <<"PaginationToken">> => string(),
-%%   <<"SNOMEDCTDetails">> => s_n_o_m_e_d_c_t_details()
+%% characters() :: #{
+%%   <<"OriginalTextCharacters">> => integer()
 %% }
--type infer_s_n_o_m_e_d_c_t_response() :: #{binary() => any()}.
-
-%% Example:
-%% detect_phi_response() :: #{
-%%   <<"Entities">> => list(entity()),
-%%   <<"ModelVersion">> => string(),
-%%   <<"PaginationToken">> => string()
-%% }
--type detect_phi_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_phi_detection_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"KMSKey">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"OutputDataConfig">> := output_data_config()
-%% }
--type start_phi_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_entities_detection_v2_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type stop_entities_detection_v2_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% infer_rx_norm_response() :: #{
-%%   <<"Entities">> => list(rx_norm_entity()),
-%%   <<"ModelVersion">> => string(),
-%%   <<"PaginationToken">> => string()
-%% }
--type infer_rx_norm_response() :: #{binary() => any()}.
-
-%% Example:
-%% unmapped_attribute() :: #{
-%%   <<"Attribute">> => attribute(),
-%%   <<"Type">> => list(any())
-%% }
--type unmapped_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-%% Example:
-%% s_n_o_m_e_d_c_t_details() :: #{
-%%   <<"Edition">> => string(),
-%%   <<"Language">> => string(),
-%%   <<"VersionDate">> => string()
-%% }
--type s_n_o_m_e_d_c_t_details() :: #{binary() => any()}.
-
-%% Example:
-%% start_icd10_cm_inference_job_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type start_icd10_cm_inference_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_s_n_o_m_e_d_c_t_inference_jobs_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_s_n_o_m_e_d_c_t_inference_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% rx_norm_entity() :: #{
-%%   <<"Attributes">> => list(rx_norm_attribute()),
-%%   <<"BeginOffset">> => integer(),
-%%   <<"Category">> => list(any()),
-%%   <<"EndOffset">> => integer(),
-%%   <<"Id">> => integer(),
-%%   <<"RxNormConcepts">> => list(rx_norm_concept()),
-%%   <<"Score">> => float(),
-%%   <<"Text">> => string(),
-%%   <<"Traits">> => list(rx_norm_trait()),
-%%   <<"Type">> => list(any())
-%% }
--type rx_norm_entity() :: #{binary() => any()}.
-
-%% Example:
-%% icd10_cm_concept() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Score">> => float()
-%% }
--type icd10_cm_concept() :: #{binary() => any()}.
-
-%% Example:
-%% detect_entities_response() :: #{
-%%   <<"Entities">> => list(entity()),
-%%   <<"ModelVersion">> => string(),
-%%   <<"PaginationToken">> => string(),
-%%   <<"UnmappedAttributes">> => list(unmapped_attribute())
-%% }
--type detect_entities_response() :: #{binary() => any()}.
-
-%% Example:
-%% rx_norm_concept() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Score">> => float()
-%% }
--type rx_norm_concept() :: #{binary() => any()}.
-
-%% Example:
-%% start_entities_detection_v2_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"KMSKey">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"OutputDataConfig">> := output_data_config()
-%% }
--type start_entities_detection_v2_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_s_n_o_m_e_d_c_t_inference_job_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobProperties">> => comprehend_medical_async_job_properties()
-%% }
--type describe_s_n_o_m_e_d_c_t_inference_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% infer_icd10_cm_response() :: #{
-%%   <<"Entities">> => list(icd10_cm_entity()),
-%%   <<"ModelVersion">> => string(),
-%%   <<"PaginationToken">> => string()
-%% }
--type infer_icd10_cm_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_icd10_cm_inference_jobs_request() :: #{
-%%   <<"Filter">> => comprehend_medical_async_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_icd10_cm_inference_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% detect_entities_v2_response() :: #{
-%%   <<"Entities">> => list(entity()),
-%%   <<"ModelVersion">> => string(),
-%%   <<"PaginationToken">> => string(),
-%%   <<"UnmappedAttributes">> => list(unmapped_attribute())
-%% }
--type detect_entities_v2_response() :: #{binary() => any()}.
-
-%% Example:
-%% detect_entities_request() :: #{
-%%   <<"Text">> := string()
-%% }
--type detect_entities_request() :: #{binary() => any()}.
-
-%% Example:
-%% s_n_o_m_e_d_c_t_entity() :: #{
-%%   <<"Attributes">> => list(s_n_o_m_e_d_c_t_attribute()),
-%%   <<"BeginOffset">> => integer(),
-%%   <<"Category">> => list(any()),
-%%   <<"EndOffset">> => integer(),
-%%   <<"Id">> => integer(),
-%%   <<"SNOMEDCTConcepts">> => list(s_n_o_m_e_d_c_t_concept()),
-%%   <<"Score">> => float(),
-%%   <<"Text">> => string(),
-%%   <<"Traits">> => list(s_n_o_m_e_d_c_t_trait()),
-%%   <<"Type">> => list(any())
-%% }
--type s_n_o_m_e_d_c_t_entity() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_phi_detection_jobs_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_phi_detection_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_entities_detection_v2_jobs_request() :: #{
-%%   <<"Filter">> => comprehend_medical_async_job_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_entities_detection_v2_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_phi_detection_job_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobProperties">> => comprehend_medical_async_job_properties()
-%% }
--type describe_phi_detection_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_phi_detection_job_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type stop_phi_detection_job_response() :: #{binary() => any()}.
+-type characters() :: #{binary() => any()}.
 
 %% Example:
 %% comprehend_medical_async_job_filter() :: #{
@@ -422,168 +97,6 @@
 %%   <<"SubmitTimeBefore">> => non_neg_integer()
 %% }
 -type comprehend_medical_async_job_filter() :: #{binary() => any()}.
-
-%% Example:
-%% stop_icd10_cm_inference_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type stop_icd10_cm_inference_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entities_detection_v2_job_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobProperties">> => comprehend_medical_async_job_properties()
-%% }
--type describe_entities_detection_v2_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rx_norm_inference_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_rx_norm_inference_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rx_norm_attribute() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"EndOffset">> => integer(),
-%%   <<"Id">> => integer(),
-%%   <<"RelationshipScore">> => float(),
-%%   <<"Score">> => float(),
-%%   <<"Text">> => string(),
-%%   <<"Traits">> => list(rx_norm_trait()),
-%%   <<"Type">> => list(any())
-%% }
--type rx_norm_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rx_norm_inference_job_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobProperties">> => comprehend_medical_async_job_properties()
-%% }
--type describe_rx_norm_inference_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% icd10_cm_attribute() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"Category">> => list(any()),
-%%   <<"EndOffset">> => integer(),
-%%   <<"Id">> => integer(),
-%%   <<"RelationshipScore">> => float(),
-%%   <<"RelationshipType">> => list(any()),
-%%   <<"Score">> => float(),
-%%   <<"Text">> => string(),
-%%   <<"Traits">> => list(icd10_cm_trait()),
-%%   <<"Type">> => list(any())
-%% }
--type icd10_cm_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% list_entities_detection_v2_jobs_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_entities_detection_v2_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_icd10_cm_inference_jobs_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
-%%   <<"NextToken">> => string()
-%% }
--type list_icd10_cm_inference_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% infer_s_n_o_m_e_d_c_t_request() :: #{
-%%   <<"Text">> := string()
-%% }
--type infer_s_n_o_m_e_d_c_t_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_icd10_cm_inference_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"KMSKey">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"OutputDataConfig">> := output_data_config()
-%% }
--type start_icd10_cm_inference_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_s_n_o_m_e_d_c_t_inference_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_s_n_o_m_e_d_c_t_inference_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_rx_norm_inference_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"KMSKey">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"OutputDataConfig">> := output_data_config()
-%% }
--type start_rx_norm_inference_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_s_n_o_m_e_d_c_t_inference_job_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type start_s_n_o_m_e_d_c_t_inference_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% text_size_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type text_size_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stop_s_n_o_m_e_d_c_t_inference_job_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type stop_s_n_o_m_e_d_c_t_inference_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% detect_phi_request() :: #{
-%%   <<"Text">> := string()
-%% }
--type detect_phi_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_s_n_o_m_e_d_c_t_inference_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type stop_s_n_o_m_e_d_c_t_inference_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_s_n_o_m_e_d_c_t_inference_job_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DataAccessRoleArn">> := string(),
-%%   <<"InputDataConfig">> := input_data_config(),
-%%   <<"JobName">> => string(),
-%%   <<"KMSKey">> => string(),
-%%   <<"LanguageCode">> := list(any()),
-%%   <<"OutputDataConfig">> := output_data_config()
-%% }
--type start_s_n_o_m_e_d_c_t_inference_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entities_detection_v2_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type describe_entities_detection_v2_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% comprehend_medical_async_job_properties() :: #{
@@ -605,10 +118,167 @@
 -type comprehend_medical_async_job_properties() :: #{binary() => any()}.
 
 %% Example:
-%% stop_rx_norm_inference_job_request() :: #{
+%% describe_entities_detection_v2_job_request() :: #{
 %%   <<"JobId">> := string()
 %% }
--type stop_rx_norm_inference_job_request() :: #{binary() => any()}.
+-type describe_entities_detection_v2_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entities_detection_v2_job_response() :: #{
+%%   <<"ComprehendMedicalAsyncJobProperties">> => comprehend_medical_async_job_properties()
+%% }
+-type describe_entities_detection_v2_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_icd10_cm_inference_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_icd10_cm_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_icd10_cm_inference_job_response() :: #{
+%%   <<"ComprehendMedicalAsyncJobProperties">> => comprehend_medical_async_job_properties()
+%% }
+-type describe_icd10_cm_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_phi_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_phi_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_phi_detection_job_response() :: #{
+%%   <<"ComprehendMedicalAsyncJobProperties">> => comprehend_medical_async_job_properties()
+%% }
+-type describe_phi_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rx_norm_inference_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_rx_norm_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rx_norm_inference_job_response() :: #{
+%%   <<"ComprehendMedicalAsyncJobProperties">> => comprehend_medical_async_job_properties()
+%% }
+-type describe_rx_norm_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_s_n_o_m_e_d_c_t_inference_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type describe_s_n_o_m_e_d_c_t_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_s_n_o_m_e_d_c_t_inference_job_response() :: #{
+%%   <<"ComprehendMedicalAsyncJobProperties">> => comprehend_medical_async_job_properties()
+%% }
+-type describe_s_n_o_m_e_d_c_t_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_entities_request() :: #{
+%%   <<"Text">> := string()
+%% }
+-type detect_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_entities_response() :: #{
+%%   <<"Entities">> => list(entity()),
+%%   <<"ModelVersion">> => string(),
+%%   <<"PaginationToken">> => string(),
+%%   <<"UnmappedAttributes">> => list(unmapped_attribute())
+%% }
+-type detect_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_entities_v2_request() :: #{
+%%   <<"Text">> := string()
+%% }
+-type detect_entities_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_entities_v2_response() :: #{
+%%   <<"Entities">> => list(entity()),
+%%   <<"ModelVersion">> => string(),
+%%   <<"PaginationToken">> => string(),
+%%   <<"UnmappedAttributes">> => list(unmapped_attribute())
+%% }
+-type detect_entities_v2_response() :: #{binary() => any()}.
+
+%% Example:
+%% detect_phi_request() :: #{
+%%   <<"Text">> := string()
+%% }
+-type detect_phi_request() :: #{binary() => any()}.
+
+%% Example:
+%% detect_phi_response() :: #{
+%%   <<"Entities">> => list(entity()),
+%%   <<"ModelVersion">> => string(),
+%%   <<"PaginationToken">> => string()
+%% }
+-type detect_phi_response() :: #{binary() => any()}.
+
+%% Example:
+%% entity() :: #{
+%%   <<"Attributes">> => list(attribute()),
+%%   <<"BeginOffset">> => integer(),
+%%   <<"Category">> => list(any()),
+%%   <<"EndOffset">> => integer(),
+%%   <<"Id">> => integer(),
+%%   <<"Score">> => float(),
+%%   <<"Text">> => string(),
+%%   <<"Traits">> => list(trait()),
+%%   <<"Type">> => list(any())
+%% }
+-type entity() :: #{binary() => any()}.
+
+%% Example:
+%% icd10_cm_attribute() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"Category">> => list(any()),
+%%   <<"EndOffset">> => integer(),
+%%   <<"Id">> => integer(),
+%%   <<"RelationshipScore">> => float(),
+%%   <<"RelationshipType">> => list(any()),
+%%   <<"Score">> => float(),
+%%   <<"Text">> => string(),
+%%   <<"Traits">> => list(icd10_cm_trait()),
+%%   <<"Type">> => list(any())
+%% }
+-type icd10_cm_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% icd10_cm_concept() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Score">> => float()
+%% }
+-type icd10_cm_concept() :: #{binary() => any()}.
+
+%% Example:
+%% icd10_cm_entity() :: #{
+%%   <<"Attributes">> => list(icd10_cm_attribute()),
+%%   <<"BeginOffset">> => integer(),
+%%   <<"Category">> => list(any()),
+%%   <<"EndOffset">> => integer(),
+%%   <<"ICD10CMConcepts">> => list(icd10_cm_concept()),
+%%   <<"Id">> => integer(),
+%%   <<"Score">> => float(),
+%%   <<"Text">> => string(),
+%%   <<"Traits">> => list(icd10_cm_trait()),
+%%   <<"Type">> => list(any())
+%% }
+-type icd10_cm_entity() :: #{binary() => any()}.
+
+%% Example:
+%% icd10_cm_trait() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Score">> => float()
+%% }
+-type icd10_cm_trait() :: #{binary() => any()}.
 
 %% Example:
 %% infer_icd10_cm_request() :: #{
@@ -617,16 +287,112 @@
 -type infer_icd10_cm_request() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
+%% infer_icd10_cm_response() :: #{
+%%   <<"Entities">> => list(icd10_cm_entity()),
+%%   <<"ModelVersion">> => string(),
+%%   <<"PaginationToken">> => string()
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type infer_icd10_cm_response() :: #{binary() => any()}.
 
 %% Example:
-%% stop_icd10_cm_inference_job_response() :: #{
-%%   <<"JobId">> => string()
+%% infer_rx_norm_request() :: #{
+%%   <<"Text">> := string()
 %% }
--type stop_icd10_cm_inference_job_response() :: #{binary() => any()}.
+-type infer_rx_norm_request() :: #{binary() => any()}.
+
+%% Example:
+%% infer_rx_norm_response() :: #{
+%%   <<"Entities">> => list(rx_norm_entity()),
+%%   <<"ModelVersion">> => string(),
+%%   <<"PaginationToken">> => string()
+%% }
+-type infer_rx_norm_response() :: #{binary() => any()}.
+
+%% Example:
+%% infer_s_n_o_m_e_d_c_t_request() :: #{
+%%   <<"Text">> := string()
+%% }
+-type infer_s_n_o_m_e_d_c_t_request() :: #{binary() => any()}.
+
+%% Example:
+%% infer_s_n_o_m_e_d_c_t_response() :: #{
+%%   <<"Characters">> => characters(),
+%%   <<"Entities">> => list(s_n_o_m_e_d_c_t_entity()),
+%%   <<"ModelVersion">> => string(),
+%%   <<"PaginationToken">> => string(),
+%%   <<"SNOMEDCTDetails">> => s_n_o_m_e_d_c_t_details()
+%% }
+-type infer_s_n_o_m_e_d_c_t_response() :: #{binary() => any()}.
+
+%% Example:
+%% input_data_config() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string()
+%% }
+-type input_data_config() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_encoding_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_encoding_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_detection_v2_jobs_request() :: #{
+%%   <<"Filter">> => comprehend_medical_async_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entities_detection_v2_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_entities_detection_v2_jobs_response() :: #{
+%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entities_detection_v2_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_icd10_cm_inference_jobs_request() :: #{
+%%   <<"Filter">> => comprehend_medical_async_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_icd10_cm_inference_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_icd10_cm_inference_jobs_response() :: #{
+%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_icd10_cm_inference_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_phi_detection_jobs_request() :: #{
+%%   <<"Filter">> => comprehend_medical_async_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_phi_detection_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_phi_detection_jobs_response() :: #{
+%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_phi_detection_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_rx_norm_inference_jobs_request() :: #{
@@ -637,37 +403,26 @@
 -type list_rx_norm_inference_jobs_request() :: #{binary() => any()}.
 
 %% Example:
-%% attribute() :: #{
-%%   <<"BeginOffset">> => integer(),
-%%   <<"Category">> => list(any()),
-%%   <<"EndOffset">> => integer(),
-%%   <<"Id">> => integer(),
-%%   <<"RelationshipScore">> => float(),
-%%   <<"RelationshipType">> => list(any()),
-%%   <<"Score">> => float(),
-%%   <<"Text">> => string(),
-%%   <<"Traits">> => list(trait()),
-%%   <<"Type">> => list(any())
+%% list_rx_norm_inference_jobs_response() :: #{
+%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
+%%   <<"NextToken">> => string()
 %% }
--type attribute() :: #{binary() => any()}.
+-type list_rx_norm_inference_jobs_response() :: #{binary() => any()}.
 
 %% Example:
-%% start_phi_detection_job_response() :: #{
-%%   <<"JobId">> => string()
+%% list_s_n_o_m_e_d_c_t_inference_jobs_request() :: #{
+%%   <<"Filter">> => comprehend_medical_async_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type start_phi_detection_job_response() :: #{binary() => any()}.
+-type list_s_n_o_m_e_d_c_t_inference_jobs_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_phi_detection_job_request() :: #{
-%%   <<"JobId">> := string()
+%% list_s_n_o_m_e_d_c_t_inference_jobs_response() :: #{
+%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
+%%   <<"NextToken">> => string()
 %% }
--type describe_phi_detection_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_phi_detection_job_request() :: #{
-%%   <<"JobId">> := string()
-%% }
--type stop_phi_detection_job_request() :: #{binary() => any()}.
+-type list_s_n_o_m_e_d_c_t_inference_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% output_data_config() :: #{
@@ -677,16 +432,46 @@
 -type output_data_config() :: #{binary() => any()}.
 
 %% Example:
-%% infer_rx_norm_request() :: #{
-%%   <<"Text">> := string()
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type infer_rx_norm_request() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% stop_entities_detection_v2_job_response() :: #{
-%%   <<"JobId">> => string()
+%% rx_norm_attribute() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"EndOffset">> => integer(),
+%%   <<"Id">> => integer(),
+%%   <<"RelationshipScore">> => float(),
+%%   <<"Score">> => float(),
+%%   <<"Text">> => string(),
+%%   <<"Traits">> => list(rx_norm_trait()),
+%%   <<"Type">> => list(any())
 %% }
--type stop_entities_detection_v2_job_response() :: #{binary() => any()}.
+-type rx_norm_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% rx_norm_concept() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Score">> => float()
+%% }
+-type rx_norm_concept() :: #{binary() => any()}.
+
+%% Example:
+%% rx_norm_entity() :: #{
+%%   <<"Attributes">> => list(rx_norm_attribute()),
+%%   <<"BeginOffset">> => integer(),
+%%   <<"Category">> => list(any()),
+%%   <<"EndOffset">> => integer(),
+%%   <<"Id">> => integer(),
+%%   <<"RxNormConcepts">> => list(rx_norm_concept()),
+%%   <<"Score">> => float(),
+%%   <<"Text">> => string(),
+%%   <<"Traits">> => list(rx_norm_trait()),
+%%   <<"Type">> => list(any())
+%% }
+-type rx_norm_entity() :: #{binary() => any()}.
 
 %% Example:
 %% rx_norm_trait() :: #{
@@ -696,23 +481,20 @@
 -type rx_norm_trait() :: #{binary() => any()}.
 
 %% Example:
-%% stop_rx_norm_inference_job_response() :: #{
-%%   <<"JobId">> => string()
+%% s_n_o_m_e_d_c_t_attribute() :: #{
+%%   <<"BeginOffset">> => integer(),
+%%   <<"Category">> => list(any()),
+%%   <<"EndOffset">> => integer(),
+%%   <<"Id">> => integer(),
+%%   <<"RelationshipScore">> => float(),
+%%   <<"RelationshipType">> => list(any()),
+%%   <<"SNOMEDCTConcepts">> => list(s_n_o_m_e_d_c_t_concept()),
+%%   <<"Score">> => float(),
+%%   <<"Text">> => string(),
+%%   <<"Traits">> => list(s_n_o_m_e_d_c_t_trait()),
+%%   <<"Type">> => list(any())
 %% }
--type stop_rx_norm_inference_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_entities_detection_v2_job_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type start_entities_detection_v2_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% icd10_cm_trait() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Score">> => float()
-%% }
--type icd10_cm_trait() :: #{binary() => any()}.
+-type s_n_o_m_e_d_c_t_attribute() :: #{binary() => any()}.
 
 %% Example:
 %% s_n_o_m_e_d_c_t_concept() :: #{
@@ -722,169 +504,387 @@
 %% }
 -type s_n_o_m_e_d_c_t_concept() :: #{binary() => any()}.
 
+%% Example:
+%% s_n_o_m_e_d_c_t_details() :: #{
+%%   <<"Edition">> => string(),
+%%   <<"Language">> => string(),
+%%   <<"VersionDate">> => string()
+%% }
+-type s_n_o_m_e_d_c_t_details() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_o_m_e_d_c_t_entity() :: #{
+%%   <<"Attributes">> => list(s_n_o_m_e_d_c_t_attribute()),
+%%   <<"BeginOffset">> => integer(),
+%%   <<"Category">> => list(any()),
+%%   <<"EndOffset">> => integer(),
+%%   <<"Id">> => integer(),
+%%   <<"SNOMEDCTConcepts">> => list(s_n_o_m_e_d_c_t_concept()),
+%%   <<"Score">> => float(),
+%%   <<"Text">> => string(),
+%%   <<"Traits">> => list(s_n_o_m_e_d_c_t_trait()),
+%%   <<"Type">> => list(any())
+%% }
+-type s_n_o_m_e_d_c_t_entity() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_o_m_e_d_c_t_trait() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Score">> => float()
+%% }
+-type s_n_o_m_e_d_c_t_trait() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_entities_detection_v2_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"OutputDataConfig">> := output_data_config()
+%% }
+-type start_entities_detection_v2_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_entities_detection_v2_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_entities_detection_v2_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_icd10_cm_inference_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"OutputDataConfig">> := output_data_config()
+%% }
+-type start_icd10_cm_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_icd10_cm_inference_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_icd10_cm_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_phi_detection_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"OutputDataConfig">> := output_data_config()
+%% }
+-type start_phi_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_phi_detection_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_phi_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_rx_norm_inference_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"OutputDataConfig">> := output_data_config()
+%% }
+-type start_rx_norm_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_rx_norm_inference_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_rx_norm_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_s_n_o_m_e_d_c_t_inference_job_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DataAccessRoleArn">> := string(),
+%%   <<"InputDataConfig">> := input_data_config(),
+%%   <<"JobName">> => string(),
+%%   <<"KMSKey">> => string(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"OutputDataConfig">> := output_data_config()
+%% }
+-type start_s_n_o_m_e_d_c_t_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_s_n_o_m_e_d_c_t_inference_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_s_n_o_m_e_d_c_t_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_entities_detection_v2_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_entities_detection_v2_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_entities_detection_v2_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type stop_entities_detection_v2_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_icd10_cm_inference_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_icd10_cm_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_icd10_cm_inference_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type stop_icd10_cm_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_phi_detection_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_phi_detection_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_phi_detection_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type stop_phi_detection_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_rx_norm_inference_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_rx_norm_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_rx_norm_inference_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type stop_rx_norm_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_s_n_o_m_e_d_c_t_inference_job_request() :: #{
+%%   <<"JobId">> := string()
+%% }
+-type stop_s_n_o_m_e_d_c_t_inference_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_s_n_o_m_e_d_c_t_inference_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type stop_s_n_o_m_e_d_c_t_inference_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% text_size_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type text_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+%% Example:
+%% trait() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Score">> => float()
+%% }
+-type trait() :: #{binary() => any()}.
+
+%% Example:
+%% unmapped_attribute() :: #{
+%%   <<"Attribute">> => attribute(),
+%%   <<"Type">> => list(any())
+%% }
+-type unmapped_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type describe_entities_detection_v2_job_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_icd10_cm_inference_job_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_phi_detection_job_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_rx_norm_inference_job_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type describe_s_n_o_m_e_d_c_t_inference_job_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type detect_entities_errors() ::
+    too_many_requests_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception() | 
-    invalid_encoding_exception().
+    invalid_encoding_exception() | 
+    internal_server_exception().
 
 -type detect_entities_v2_errors() ::
+    too_many_requests_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception() | 
-    invalid_encoding_exception().
+    invalid_encoding_exception() | 
+    internal_server_exception().
 
 -type detect_phi_errors() ::
+    too_many_requests_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception() | 
-    invalid_encoding_exception().
+    invalid_encoding_exception() | 
+    internal_server_exception().
 
 -type infer_icd10_cm_errors() ::
+    too_many_requests_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception() | 
-    invalid_encoding_exception().
+    invalid_encoding_exception() | 
+    internal_server_exception().
 
 -type infer_rx_norm_errors() ::
+    too_many_requests_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception() | 
-    invalid_encoding_exception().
+    invalid_encoding_exception() | 
+    internal_server_exception().
 
 -type infer_s_n_o_m_e_d_c_t_errors() ::
+    too_many_requests_exception() | 
     text_size_limit_exceeded_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception() | 
-    invalid_encoding_exception().
+    invalid_encoding_exception() | 
+    internal_server_exception().
 
 -type list_entities_detection_v2_jobs_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_icd10_cm_inference_jobs_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_phi_detection_jobs_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_rx_norm_inference_jobs_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type list_s_n_o_m_e_d_c_t_inference_jobs_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     invalid_request_exception() | 
-    too_many_requests_exception().
+    internal_server_exception().
 
 -type start_entities_detection_v2_job_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_icd10_cm_inference_job_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_phi_detection_job_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_rx_norm_inference_job_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type start_s_n_o_m_e_d_c_t_inference_job_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 -type stop_entities_detection_v2_job_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type stop_icd10_cm_inference_job_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type stop_phi_detection_job_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type stop_rx_norm_inference_job_errors() ::
-    internal_server_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_server_exception().
 
 -type stop_s_n_o_m_e_d_c_t_inference_job_errors() ::
-    internal_server_exception() | 
-    invalid_request_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    invalid_request_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

@@ -62,54 +62,19 @@
 
 
 %% Example:
-%% list_suite_definitions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"suiteDefinitionInformationList">> => list(suite_definition_information())
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_suite_definitions_response() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% create_suite_definition_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"suiteDefinitionConfiguration">> := suite_definition_configuration(),
+%%   <<"tags">> => map()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_suite_run_request() :: #{}
--type get_suite_run_request() :: #{}.
-
-
-%% Example:
-%% start_suite_run_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"endpoint">> => string(),
-%%   <<"suiteRunArn">> => string(),
-%%   <<"suiteRunId">> => string()
-%% }
--type start_suite_run_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% suite_run_configuration() :: #{
-%%   <<"parallelRun">> => boolean(),
-%%   <<"primaryDevice">> => device_under_test(),
-%%   <<"selectedTestList">> => list(string())
-%% }
--type suite_run_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% suite_definition_information() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"defaultDevices">> => list(device_under_test()),
-%%   <<"intendedForQualification">> => boolean(),
-%%   <<"isLongDurationTest">> => boolean(),
-%%   <<"protocol">> => list(any()),
-%%   <<"suiteDefinitionId">> => string(),
-%%   <<"suiteDefinitionName">> => string()
-%% }
--type suite_definition_information() :: #{binary() => any()}.
+-type create_suite_definition_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -122,31 +87,12 @@
 -type create_suite_definition_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% test_result() :: #{
-%%   <<"groups">> => list(group_result())
-%% }
--type test_result() :: #{binary() => any()}.
-
+%% delete_suite_definition_request() :: #{}
+-type delete_suite_definition_request() :: #{}.
 
 %% Example:
-%% suite_run_information() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"endAt">> => non_neg_integer(),
-%%   <<"failed">> => integer(),
-%%   <<"passed">> => integer(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"suiteDefinitionId">> => string(),
-%%   <<"suiteDefinitionName">> => string(),
-%%   <<"suiteDefinitionVersion">> => string(),
-%%   <<"suiteRunId">> => string()
-%% }
--type suite_run_information() :: #{binary() => any()}.
+%% delete_suite_definition_response() :: #{}
+-type delete_suite_definition_response() :: #{}.
 
 
 %% Example:
@@ -159,14 +105,45 @@
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% get_endpoint_request() :: #{
+%%   <<"authenticationMethod">> => list(any()),
+%%   <<"certificateArn">> => string(),
+%%   <<"deviceRoleArn">> => string(),
+%%   <<"thingArn">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type get_endpoint_request() :: #{binary() => any()}.
+
 
 %% Example:
-%% stop_suite_run_response() :: #{}
--type stop_suite_run_response() :: #{}.
+%% get_endpoint_response() :: #{
+%%   <<"endpoint">> => string()
+%% }
+-type get_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_suite_definition_request() :: #{
+%%   <<"suiteDefinitionVersion">> => string()
+%% }
+-type get_suite_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_suite_definition_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastModifiedAt">> => non_neg_integer(),
+%%   <<"latestVersion">> => string(),
+%%   <<"suiteDefinitionArn">> => string(),
+%%   <<"suiteDefinitionConfiguration">> => suite_definition_configuration(),
+%%   <<"suiteDefinitionId">> => string(),
+%%   <<"suiteDefinitionVersion">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type get_suite_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_suite_run_report_request() :: #{}
+-type get_suite_run_report_request() :: #{}.
 
 
 %% Example:
@@ -175,38 +152,9 @@
 %% }
 -type get_suite_run_report_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% list_suite_definitions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_suite_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_suite_run_report_request() :: #{}
--type get_suite_run_report_request() :: #{}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_endpoint_response() :: #{
-%%   <<"endpoint">> => string()
-%% }
--type get_endpoint_response() :: #{binary() => any()}.
+%% get_suite_run_request() :: #{}
+-type get_suite_run_request() :: #{}.
 
 
 %% Example:
@@ -227,23 +175,12 @@
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% group_result() :: #{
+%%   <<"groupId">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"tests">> => list(test_case_run())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_suite_definition_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"suiteDefinitionConfiguration">> := suite_definition_configuration(),
-%%   <<"tags">> => map()
-%% }
--type create_suite_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_suite_run_request() :: #{}
--type stop_suite_run_request() :: #{}.
+-type group_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -254,10 +191,19 @@
 
 
 %% Example:
-%% get_suite_definition_request() :: #{
-%%   <<"suiteDefinitionVersion">> => string()
+%% list_suite_definitions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type get_suite_definition_request() :: #{binary() => any()}.
+-type list_suite_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_suite_definitions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"suiteDefinitionInformationList">> => list(suite_definition_information())
+%% }
+-type list_suite_definitions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -269,9 +215,58 @@
 %% }
 -type list_suite_runs_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_suite_definition_request() :: #{}
--type delete_suite_definition_request() :: #{}.
+%% list_suite_runs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"suiteRunsList">> => list(suite_run_information())
+%% }
+-type list_suite_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_suite_run_request() :: #{
+%%   <<"suiteDefinitionVersion">> => string(),
+%%   <<"suiteRunConfiguration">> := suite_run_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type start_suite_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_suite_run_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endpoint">> => string(),
+%%   <<"suiteRunArn">> => string(),
+%%   <<"suiteRunId">> => string()
+%% }
+-type start_suite_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_suite_run_request() :: #{}
+-type stop_suite_run_request() :: #{}.
+
+%% Example:
+%% stop_suite_run_response() :: #{}
+-type stop_suite_run_response() :: #{}.
 
 
 %% Example:
@@ -288,80 +283,52 @@
 
 
 %% Example:
-%% test_case_scenario() :: #{
-%%   <<"failure">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"systemMessage">> => string(),
-%%   <<"testCaseScenarioId">> => string(),
-%%   <<"testCaseScenarioType">> => list(any())
+%% suite_definition_information() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"defaultDevices">> => list(device_under_test()),
+%%   <<"intendedForQualification">> => boolean(),
+%%   <<"isLongDurationTest">> => boolean(),
+%%   <<"protocol">> => list(any()),
+%%   <<"suiteDefinitionId">> => string(),
+%%   <<"suiteDefinitionName">> => string()
 %% }
--type test_case_scenario() :: #{binary() => any()}.
+-type suite_definition_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% suite_run_configuration() :: #{
+%%   <<"parallelRun">> => boolean(),
+%%   <<"primaryDevice">> => device_under_test(),
+%%   <<"selectedTestList">> => list(string())
+%% }
+-type suite_run_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% suite_run_information() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endAt">> => non_neg_integer(),
+%%   <<"failed">> => integer(),
+%%   <<"passed">> => integer(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"suiteDefinitionId">> => string(),
+%%   <<"suiteDefinitionName">> => string(),
+%%   <<"suiteDefinitionVersion">> => string(),
+%%   <<"suiteRunId">> => string()
+%% }
+-type suite_run_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
-
-%% Example:
-%% delete_suite_definition_response() :: #{}
--type delete_suite_definition_response() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% update_suite_definition_request() :: #{
-%%   <<"suiteDefinitionConfiguration">> := suite_definition_configuration()
-%% }
--type update_suite_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_suite_definition_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"lastModifiedAt">> => non_neg_integer(),
-%%   <<"latestVersion">> => string(),
-%%   <<"suiteDefinitionArn">> => string(),
-%%   <<"suiteDefinitionConfiguration">> => suite_definition_configuration(),
-%%   <<"suiteDefinitionId">> => string(),
-%%   <<"suiteDefinitionVersion">> => string(),
-%%   <<"tags">> => map()
-%% }
--type get_suite_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_suite_runs_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"suiteRunsList">> => list(suite_run_information())
-%% }
--type list_suite_runs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_result() :: #{
-%%   <<"groupId">> => string(),
-%%   <<"groupName">> => string(),
-%%   <<"tests">> => list(test_case_run())
-%% }
--type group_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_suite_run_request() :: #{
-%%   <<"suiteDefinitionVersion">> => string(),
-%%   <<"suiteRunConfiguration">> := suite_run_configuration(),
-%%   <<"tags">> => map()
-%% }
--type start_suite_run_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -381,13 +348,39 @@
 
 
 %% Example:
-%% get_endpoint_request() :: #{
-%%   <<"authenticationMethod">> => list(any()),
-%%   <<"certificateArn">> => string(),
-%%   <<"deviceRoleArn">> => string(),
-%%   <<"thingArn">> => string()
+%% test_case_scenario() :: #{
+%%   <<"failure">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"systemMessage">> => string(),
+%%   <<"testCaseScenarioId">> => string(),
+%%   <<"testCaseScenarioType">> => list(any())
 %% }
--type get_endpoint_request() :: #{binary() => any()}.
+-type test_case_scenario() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_result() :: #{
+%%   <<"groups">> => list(group_result())
+%% }
+-type test_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_suite_definition_request() :: #{
+%%   <<"suiteDefinitionConfiguration">> := suite_definition_configuration()
+%% }
+-type update_suite_definition_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -401,6 +394,13 @@
 %% }
 -type update_suite_definition_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type create_suite_definition_errors() ::
     validation_exception() | 
     internal_server_exception().
@@ -411,23 +411,23 @@
 
 -type get_endpoint_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_suite_definition_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_suite_run_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_suite_run_report_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_suite_definitions_errors() ::
     validation_exception() | 
@@ -439,8 +439,8 @@
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type start_suite_run_errors() ::
     validation_exception() | 
@@ -449,18 +449,18 @@
 
 -type stop_suite_run_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_suite_definition_errors() ::
     validation_exception() | 

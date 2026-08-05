@@ -241,225 +241,76 @@
 
 
 %% Example:
-%% source_attribution() :: #{
-%%   <<"citationNumber">> => integer(),
-%%   <<"datasourceId">> => string(),
-%%   <<"documentId">> => string(),
-%%   <<"indexId">> => string(),
-%%   <<"snippet">> => string(),
-%%   <<"textMessageSegments">> => list(text_segment()),
-%%   <<"title">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"url">> => string()
+%% access_configuration() :: #{
+%%   <<"accessControls">> => list(access_control()),
+%%   <<"memberRelation">> => list(any())
 %% }
--type source_attribution() :: #{binary() => any()}.
+-type access_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% action_summary() :: #{
-%%   <<"actionIdentifier">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"instructionExample">> => string()
+%% access_control() :: #{
+%%   <<"memberRelation">> => list(any()),
+%%   <<"principals">> => list(list())
 %% }
--type action_summary() :: #{binary() => any()}.
+-type access_control() :: #{binary() => any()}.
 
 
 %% Example:
-%% instruction_collection() :: #{
-%%   <<"customInstructions">> => string(),
-%%   <<"examples">> => string(),
-%%   <<"identity">> => string(),
-%%   <<"outputStyle">> => string(),
-%%   <<"perspective">> => string(),
-%%   <<"responseLength">> => string(),
-%%   <<"targetAudience">> => string(),
-%%   <<"tone">> => string()
-%% }
--type instruction_collection() :: #{binary() => any()}.
-
-
-%% Example:
-%% applied_attachments_configuration() :: #{
-%%   <<"attachmentsControlMode">> => list(any())
-%% }
--type applied_attachments_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_subscription_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"principal">> := list(),
-%%   <<"type">> := list(any())
-%% }
--type create_subscription_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_feedback_request() :: #{
-%%   <<"messageCopiedAt">> => non_neg_integer(),
-%%   <<"messageUsefulness">> => message_usefulness_feedback(),
-%%   <<"userId">> => string()
-%% }
--type put_feedback_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_accessor_request() :: #{
-%%   <<"actionConfigurations">> := list(action_configuration()),
-%%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
-%%   <<"displayName">> => string()
-%% }
--type update_data_accessor_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_extraction_configuration() :: #{
-%%   <<"audioExtractionConfiguration">> => audio_extraction_configuration(),
-%%   <<"imageExtractionConfiguration">> => image_extraction_configuration(),
-%%   <<"videoExtractionConfiguration">> => video_extraction_configuration()
-%% }
--type media_extraction_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_configuration() :: #{
-%%   <<"kmsKeyId">> => string()
-%% }
--type encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_too_large_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type media_too_large_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := list(tag())
+%% action_configuration() :: #{
+%%   <<"action">> => string(),
+%%   <<"filterConfiguration">> => action_filter_configuration()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type action_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_web_experience_response() :: #{
-%%   <<"webExperienceArn">> => string(),
-%%   <<"webExperienceId">> => string()
+%% action_execution() :: #{
+%%   <<"payload">> => map(),
+%%   <<"payloadFieldNameSeparator">> => string(),
+%%   <<"pluginId">> => string()
 %% }
--type create_web_experience_response() :: #{binary() => any()}.
+-type action_execution() :: #{binary() => any()}.
 
 
 %% Example:
-%% auth_challenge_response_event() :: #{
-%%   <<"responseMap">> => map()
+%% action_execution_event() :: #{
+%%   <<"payload">> => map(),
+%%   <<"payloadFieldNameSeparator">> => string(),
+%%   <<"pluginId">> => string()
 %% }
--type auth_challenge_response_event() :: #{binary() => any()}.
+-type action_execution_event() :: #{binary() => any()}.
 
 
 %% Example:
-%% data_source_vpc_configuration() :: #{
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string())
+%% action_execution_payload_field() :: #{
+%%   <<"value">> => any()
 %% }
--type data_source_vpc_configuration() :: #{binary() => any()}.
+-type action_execution_payload_field() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_data_accessors_response() :: #{
-%%   <<"dataAccessors">> => list(data_accessor()),
-%%   <<"nextToken">> => string()
+%% action_filter_configuration() :: #{
+%%   <<"documentAttributeFilter">> => attribute_filter()
 %% }
--type list_data_accessors_response() :: #{binary() => any()}.
+-type action_filter_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_retriever_response() :: #{
-%%   <<"retrieverArn">> => string(),
-%%   <<"retrieverId">> => string()
-%% }
--type create_retriever_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_web_experiences_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_web_experiences_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% applied_orchestration_configuration() :: #{
-%%   <<"control">> => list(any())
-%% }
--type applied_orchestration_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% index_capacity_configuration() :: #{
-%%   <<"units">> => integer()
-%% }
--type index_capacity_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_web_experience_request() :: #{}
--type delete_web_experience_request() :: #{}.
-
-
-%% Example:
-%% document_attribute() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => list()
-%% }
--type document_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% plugin() :: #{
-%%   <<"buildStatus">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"displayName">> => string(),
+%% action_review() :: #{
+%%   <<"payload">> => map(),
+%%   <<"payloadFieldNameSeparator">> => string(),
 %%   <<"pluginId">> => string(),
-%%   <<"serverUrl">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"pluginType">> => list(any())
 %% }
--type plugin() :: #{binary() => any()}.
-
-
-%% Example:
-%% string_list_attribute_boosting_configuration() :: #{
-%%   <<"boostingLevel">> => list(any())
-%% }
--type string_list_attribute_boosting_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_user_response() :: #{
-%%   <<"userAliasesAdded">> => list(user_alias()),
-%%   <<"userAliasesDeleted">> => list(user_alias()),
-%%   <<"userAliasesUpdated">> => list(user_alias())
-%% }
--type update_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_source_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"configuration">> := any(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> := string(),
-%%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
-%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
-%%   <<"roleArn">> => string(),
-%%   <<"syncSchedule">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"vpcConfiguration">> => data_source_vpc_configuration()
-%% }
--type create_data_source_request() :: #{binary() => any()}.
+-type action_review() :: #{binary() => any()}.
 
 
 %% Example:
@@ -476,272 +327,103 @@
 
 
 %% Example:
-%% get_data_accessor_response() :: #{
-%%   <<"actionConfigurations">> => list(action_configuration()),
-%%   <<"applicationId">> => string(),
-%%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataAccessorArn">> => string(),
-%%   <<"dataAccessorId">> => string(),
+%% action_review_payload_field() :: #{
+%%   <<"allowedFormat">> => string(),
+%%   <<"allowedValues">> => list(action_review_payload_field_allowed_value()),
+%%   <<"arrayItemJsonSchema">> => any(),
+%%   <<"displayDescription">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"idcApplicationArn">> => string(),
-%%   <<"principal">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_data_accessor_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% idc_auth_configuration() :: #{
-%%   <<"idcApplicationArn">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type idc_auth_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% text_output_event() :: #{
-%%   <<"conversationId">> => string(),
-%%   <<"systemMessage">> => string(),
-%%   <<"systemMessageId">> => string(),
-%%   <<"systemMessageType">> => list(any()),
-%%   <<"userMessageId">> => string()
-%% }
--type text_output_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversation_source() :: #{
-%%   <<"attachmentId">> => string(),
-%%   <<"conversationId">> => string()
-%% }
--type conversation_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_acl() :: #{
-%%   <<"allowlist">> => document_acl_membership(),
-%%   <<"denyList">> => document_acl_membership()
-%% }
--type document_acl() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% get_retriever_response() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"configuration">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"displayName">> => string(),
-%%   <<"retrieverArn">> => string(),
-%%   <<"retrieverId">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
+%%   <<"displayOrder">> => integer(),
+%%   <<"required">> => [boolean()],
 %%   <<"type">> => list(any()),
+%%   <<"value">> => any()
+%% }
+-type action_review_payload_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_review_payload_field_allowed_value() :: #{
+%%   <<"displayValue">> => any(),
+%%   <<"value">> => any()
+%% }
+-type action_review_payload_field_allowed_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_summary() :: #{
+%%   <<"actionIdentifier">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"instructionExample">> => string()
+%% }
+-type action_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% application() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"identityType">> => list(any()),
+%%   <<"quickSightConfiguration">> => quick_sight_configuration(),
+%%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type get_retriever_response() :: #{binary() => any()}.
+-type application() :: #{binary() => any()}.
 
 
 %% Example:
-%% o_auth2_client_credential_configuration() :: #{
-%%   <<"authorizationUrl">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"secretArn">> => string(),
-%%   <<"tokenUrl">> => string()
+%% applied_attachments_configuration() :: #{
+%%   <<"attachmentsControlMode">> => list(any())
 %% }
--type o_auth2_client_credential_configuration() :: #{binary() => any()}.
+-type applied_attachments_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% customization_configuration() :: #{
-%%   <<"customCSSUrl">> => string(),
-%%   <<"faviconUrl">> => string(),
-%%   <<"fontUrl">> => string(),
-%%   <<"logoUrl">> => string()
+%% applied_creator_mode_configuration() :: #{
+%%   <<"creatorModeControl">> => list(any())
 %% }
--type customization_configuration() :: #{binary() => any()}.
+-type applied_creator_mode_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% member_group() :: #{
-%%   <<"groupName">> => string(),
+%% applied_orchestration_configuration() :: #{
+%%   <<"control">> => list(any())
+%% }
+-type applied_orchestration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_permission_request() :: #{
+%%   <<"actions">> := list(string()),
+%%   <<"conditions">> => list(permission_condition()),
+%%   <<"principal">> := string(),
+%%   <<"statementId">> := string()
+%% }
+-type associate_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_permission_response() :: #{
+%%   <<"statement">> => string()
+%% }
+-type associate_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associated_group() :: #{
+%%   <<"name">> => string(),
 %%   <<"type">> => list(any())
 %% }
--type member_group() :: #{binary() => any()}.
-
-%% Example:
-%% get_chat_response_configuration_request() :: #{}
--type get_chat_response_configuration_request() :: #{}.
-
-%% Example:
-%% delete_index_request() :: #{}
--type delete_index_request() :: #{}.
+-type associated_group() :: #{binary() => any()}.
 
 
 %% Example:
-%% plugin_configuration() :: #{
-%%   <<"pluginId">> => string()
-%% }
--type plugin_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_blocker_rule() :: #{
-%%   <<"systemMessageOverride">> => string()
-%% }
--type content_blocker_rule() :: #{binary() => any()}.
-
-%% Example:
-%% get_policy_request() :: #{}
--type get_policy_request() :: #{}.
-
-
-%% Example:
-%% list_plugin_type_metadata_response() :: #{
-%%   <<"items">> => list(plugin_type_metadata_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_plugin_type_metadata_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% failed_attachment_event() :: #{
-%%   <<"attachment">> => attachment_output(),
-%%   <<"conversationId">> => string(),
-%%   <<"systemMessageId">> => string(),
-%%   <<"userMessageId">> => string()
-%% }
--type failed_attachment_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% principal_user() :: #{
-%%   <<"access">> => list(any()),
+%% associated_user() :: #{
 %%   <<"id">> => string(),
-%%   <<"membershipType">> => list(any())
+%%   <<"type">> => list(any())
 %% }
--type principal_user() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_accessor_response() :: #{
-%%   <<"dataAccessorArn">> => string(),
-%%   <<"dataAccessorId">> => string(),
-%%   <<"idcApplicationArn">> => string()
-%% }
--type create_data_accessor_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_document() :: #{
-%%   <<"documentId">> => string()
-%% }
--type delete_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% auth_challenge_request_event() :: #{
-%%   <<"authorizationUrl">> => string()
-%% }
--type auth_challenge_request_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_attribute_target() :: #{
-%%   <<"attributeValueOperator">> => list(any()),
-%%   <<"key">> => string(),
-%%   <<"value">> => list()
-%% }
--type document_attribute_target() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_messages_response() :: #{
-%%   <<"messages">> => list(message()),
-%%   <<"nextToken">> => string()
-%% }
--type list_messages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source_sync_job_metrics() :: #{
-%%   <<"documentsAdded">> => string(),
-%%   <<"documentsDeleted">> => string(),
-%%   <<"documentsFailed">> => string(),
-%%   <<"documentsModified">> => string(),
-%%   <<"documentsScanned">> => string()
-%% }
--type data_source_sync_job_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_accessor_request() :: #{
-%%   <<"actionConfigurations">> := list(action_configuration()),
-%%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
-%%   <<"clientToken">> => string(),
-%%   <<"displayName">> := string(),
-%%   <<"principal">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_data_accessor_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% license_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type license_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_group_response() :: #{}
--type put_group_response() :: #{}.
-
-
-%% Example:
-%% create_plugin_response() :: #{
-%%   <<"buildStatus">> => list(any()),
-%%   <<"pluginArn">> => string(),
-%%   <<"pluginId">> => string()
-%% }
--type create_plugin_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_user_response() :: #{
-%%   <<"userAliases">> => list(user_alias())
-%% }
--type get_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_conversation_request() :: #{
-%%   <<"userId">> => string()
-%% }
--type delete_conversation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_retriever_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"configuration">> := list(),
-%%   <<"displayName">> := string(),
-%%   <<"roleArn">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"type">> := list(any())
-%% }
--type create_retriever_request() :: #{binary() => any()}.
-
-%% Example:
-%% no_auth_configuration() :: #{}
--type no_auth_configuration() :: #{}.
-
-%% Example:
-%% delete_web_experience_response() :: #{}
--type delete_web_experience_response() :: #{}.
+-type associated_user() :: #{binary() => any()}.
 
 
 %% Example:
@@ -761,115 +443,107 @@
 
 
 %% Example:
-%% list_web_experiences_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"webExperiences">> => list(web_experience())
+%% attachment_input() :: #{
+%%   <<"copyFrom">> => list(),
+%%   <<"data">> => binary(),
+%%   <<"name">> => string()
 %% }
--type list_web_experiences_response() :: #{binary() => any()}.
+-type attachment_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% video_extraction_configuration() :: #{
-%%   <<"videoExtractionStatus">> => list(any())
+%% attachment_input_event() :: #{
+%%   <<"attachment">> => attachment_input()
 %% }
--type video_extraction_configuration() :: #{binary() => any()}.
+-type attachment_input_event() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_chat_response_configurations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_chat_response_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_chat_response_configuration_response() :: #{}
--type update_chat_response_configuration_response() :: #{}.
-
-
-%% Example:
-%% list_plugin_actions_response() :: #{
-%%   <<"items">> => list(action_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_plugin_actions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% action_review() :: #{
-%%   <<"payload">> => map(),
-%%   <<"payloadFieldNameSeparator">> => string(),
-%%   <<"pluginId">> => string(),
-%%   <<"pluginType">> => list(any())
-%% }
--type action_review() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscription_details() :: #{
-%%   <<"type">> => list(any())
-%% }
--type subscription_details() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_source_response() :: #{}
--type update_data_source_response() :: #{}.
-
-
-%% Example:
-%% topic_configuration() :: #{
-%%   <<"description">> => string(),
-%%   <<"exampleChatMessages">> => list(string()),
+%% attachment_output() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"conversationId">> => string(),
+%%   <<"error">> => error_detail(),
 %%   <<"name">> => string(),
-%%   <<"rules">> => list(rule())
+%%   <<"status">> => list(any())
 %% }
--type topic_configuration() :: #{binary() => any()}.
+-type attachment_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% attachments_configuration() :: #{
+%%   <<"attachmentsControlMode">> => list(any())
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type attachments_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% check_document_access_response() :: #{
-%%   <<"documentAcl">> => document_acl(),
-%%   <<"hasAccess">> => [boolean()],
-%%   <<"userAliases">> => list(associated_user()),
-%%   <<"userGroups">> => list(associated_group())
+%% attribute_filter() :: #{
+%%   <<"andAllFilters">> => list(attribute_filter()),
+%%   <<"containsAll">> => document_attribute(),
+%%   <<"containsAny">> => document_attribute(),
+%%   <<"equalsTo">> => document_attribute(),
+%%   <<"greaterThan">> => document_attribute(),
+%%   <<"greaterThanOrEquals">> => document_attribute(),
+%%   <<"lessThan">> => document_attribute(),
+%%   <<"lessThanOrEquals">> => document_attribute(),
+%%   <<"notFilter">> => attribute_filter(),
+%%   <<"orAllFilters">> => list(attribute_filter())
 %% }
--type check_document_access_response() :: #{binary() => any()}.
+-type attribute_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_retriever_request() :: #{
-%%   <<"configuration">> => list(),
-%%   <<"displayName">> => string(),
-%%   <<"roleArn">> => string()
+%% audio_extraction_configuration() :: #{
+%%   <<"audioExtractionStatus">> => list(any())
 %% }
--type update_retriever_request() :: #{binary() => any()}.
+-type audio_extraction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% text_input_event() :: #{
-%%   <<"userMessage">> => string()
+%% audio_source_details() :: #{
+%%   <<"audioExtractionType">> => list(any()),
+%%   <<"endTimeMilliseconds">> => float(),
+%%   <<"mediaId">> => string(),
+%%   <<"mediaMimeType">> => string(),
+%%   <<"startTimeMilliseconds">> => float()
 %% }
--type text_input_event() :: #{binary() => any()}.
+-type audio_source_details() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_data_accessor_request() :: #{}
--type delete_data_accessor_request() :: #{}.
+%% auth_challenge_request() :: #{
+%%   <<"authorizationUrl">> => string()
+%% }
+-type auth_challenge_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% user_alias() :: #{
-%%   <<"dataSourceId">> => string(),
-%%   <<"indexId">> => string(),
-%%   <<"userId">> => string()
+%% auth_challenge_request_event() :: #{
+%%   <<"authorizationUrl">> => string()
 %% }
--type user_alias() :: #{binary() => any()}.
+-type auth_challenge_request_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_challenge_response() :: #{
+%%   <<"responseMap">> => map()
+%% }
+-type auth_challenge_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_challenge_response_event() :: #{
+%%   <<"responseMap">> => map()
+%% }
+-type auth_challenge_response_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_subscription_configuration() :: #{
+%%   <<"autoSubscribe">> => list(any()),
+%%   <<"defaultSubscriptionType">> => list(any())
+%% }
+-type auto_subscription_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -881,114 +555,62 @@
 
 
 %% Example:
-%% document_attribute_condition() :: #{
-%%   <<"key">> => string(),
-%%   <<"operator">> => list(any()),
-%%   <<"value">> => list()
+%% batch_delete_document_request() :: #{
+%%   <<"dataSourceSyncId">> => string(),
+%%   <<"documents">> := list(delete_document())
 %% }
--type document_attribute_condition() :: #{binary() => any()}.
+-type batch_delete_document_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_indices_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% batch_delete_document_response() :: #{
+%%   <<"failedDocuments">> => list(failed_document())
 %% }
--type list_indices_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_index_response() :: #{}
--type delete_index_response() :: #{}.
+-type batch_delete_document_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% document_acl_membership() :: #{
-%%   <<"conditions">> => list(document_acl_condition()),
-%%   <<"memberRelation">> => list(any())
+%% batch_put_document_request() :: #{
+%%   <<"dataSourceSyncId">> => string(),
+%%   <<"documents">> := list(document()),
+%%   <<"roleArn">> => string()
 %% }
--type document_acl_membership() :: #{binary() => any()}.
+-type batch_put_document_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_documents_response() :: #{
-%%   <<"documentDetailList">> => list(document_details()),
-%%   <<"nextToken">> => string()
+%% batch_put_document_response() :: #{
+%%   <<"failedDocuments">> => list(failed_document())
 %% }
--type list_documents_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_data_accessor_response() :: #{}
--type update_data_accessor_response() :: #{}.
+-type batch_put_document_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_plugin_request() :: #{
-%%   <<"authConfiguration">> := list(),
-%%   <<"clientToken">> => string(),
-%%   <<"customPluginConfiguration">> => custom_plugin_configuration(),
-%%   <<"displayName">> := string(),
-%%   <<"serverUrl">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"type">> := list(any())
+%% blocked_phrases_configuration() :: #{
+%%   <<"blockedPhrases">> => list(string()),
+%%   <<"systemMessageOverride">> => string()
 %% }
--type create_plugin_request() :: #{binary() => any()}.
+-type blocked_phrases_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% metadata_event() :: #{
-%%   <<"conversationId">> => string(),
-%%   <<"finalTextMessage">> => string(),
-%%   <<"sourceAttributions">> => list(source_attribution()),
-%%   <<"systemMessageId">> => string(),
-%%   <<"userMessageId">> => string()
+%% blocked_phrases_configuration_update() :: #{
+%%   <<"blockedPhrasesToCreateOrUpdate">> => list(string()),
+%%   <<"blockedPhrasesToDelete">> => list(string()),
+%%   <<"systemMessageOverride">> => string()
 %% }
--type metadata_event() :: #{binary() => any()}.
+-type blocked_phrases_configuration_update() :: #{binary() => any()}.
 
 
 %% Example:
-%% image_extraction_configuration() :: #{
-%%   <<"imageExtractionStatus">> => list(any())
+%% browser_extension_configuration() :: #{
+%%   <<"enabledBrowserExtensions">> => list(string())
 %% }
--type image_extraction_configuration() :: #{binary() => any()}.
-
+-type browser_extension_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% plugin_type_metadata_summary() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type plugin_type_metadata_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_plugin_type_actions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_plugin_type_actions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_chat_response_configuration_response() :: #{
-%%   <<"chatResponseConfigurationArn">> => string(),
-%%   <<"chatResponseConfigurationId">> => string()
-%% }
--type create_chat_response_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% chat_sync_output() :: #{
-%%   <<"actionReview">> => action_review(),
-%%   <<"authChallengeRequest">> => auth_challenge_request(),
-%%   <<"conversationId">> => string(),
-%%   <<"failedAttachments">> => list(attachment_output()),
-%%   <<"sourceAttributions">> => list(source_attribution()),
-%%   <<"systemMessage">> => string(),
-%%   <<"systemMessageId">> => string(),
-%%   <<"userMessageId">> => string()
-%% }
--type chat_sync_output() :: #{binary() => any()}.
+%% cancel_subscription_request() :: #{}
+-type cancel_subscription_request() :: #{}.
 
 
 %% Example:
@@ -999,197 +621,48 @@
 %% }
 -type cancel_subscription_response() :: #{binary() => any()}.
 
-%% Example:
-%% get_plugin_request() :: #{}
--type get_plugin_request() :: #{}.
 
 %% Example:
-%% update_chat_controls_configuration_response() :: #{}
--type update_chat_controls_configuration_response() :: #{}.
-
-
-%% Example:
-%% list_data_sources_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% chat_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"conversationId">> => string(),
+%%   <<"inputStream">> => list(),
+%%   <<"parentMessageId">> => string(),
+%%   <<"userGroups">> => list(string()),
+%%   <<"userId">> => string()
 %% }
--type list_data_sources_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_conversation_response() :: #{}
--type delete_conversation_response() :: #{}.
-
-%% Example:
-%% delete_data_source_response() :: #{}
--type delete_data_source_response() :: #{}.
+-type chat_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% index() :: #{
+%% chat_output() :: #{
+%%   <<"outputStream">> => list()
+%% }
+-type chat_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% chat_response_configuration() :: #{
+%%   <<"chatResponseConfigurationArn">> => string(),
+%%   <<"chatResponseConfigurationId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"displayName">> => string(),
-%%   <<"indexId">> => string(),
+%%   <<"responseConfigurationSummary">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type index() :: #{binary() => any()}.
+-type chat_response_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% audio_extraction_configuration() :: #{
-%%   <<"audioExtractionStatus">> => list(any())
-%% }
--type audio_extraction_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_attribute_configuration() :: #{
-%%   <<"name">> => string(),
-%%   <<"search">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type document_attribute_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_web_experience_response() :: #{}
--type update_web_experience_response() :: #{}.
-
-
-%% Example:
-%% create_web_experience_request() :: #{
-%%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
-%%   <<"clientToken">> => string(),
-%%   <<"customizationConfiguration">> => customization_configuration(),
-%%   <<"identityProviderConfiguration">> => list(),
-%%   <<"origins">> => list(string()),
-%%   <<"roleArn">> => string(),
-%%   <<"samplePromptsControlMode">> => list(any()),
-%%   <<"subtitle">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"title">> => string(),
-%%   <<"welcomeMessage">> => string()
-%% }
--type create_web_experience_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% web_experience() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"defaultEndpoint">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"webExperienceId">> => string()
-%% }
--type web_experience() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_data_source_sync_job_request() :: #{}
--type start_data_source_sync_job_request() :: #{}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_plugin_response() :: #{}
--type update_plugin_response() :: #{}.
-
-
-%% Example:
-%% inline_document_enrichment_configuration() :: #{
-%%   <<"condition">> => document_attribute_condition(),
-%%   <<"documentContentOperator">> => list(any()),
-%%   <<"target">> => document_attribute_target()
-%% }
--type inline_document_enrichment_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% associated_user() :: #{
-%%   <<"id">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type associated_user() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_request() :: #{}
--type get_user_request() :: #{}.
-
-
-%% Example:
-%% start_data_source_sync_job_response() :: #{
-%%   <<"executionId">> => string()
-%% }
--type start_data_source_sync_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_web_experience_response() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"authenticationConfiguration">> => list(),
-%%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customizationConfiguration">> => customization_configuration(),
-%%   <<"defaultEndpoint">> => string(),
+%% chat_response_configuration_detail() :: #{
 %%   <<"error">> => error_detail(),
-%%   <<"identityProviderConfiguration">> => list(),
-%%   <<"origins">> => list(string()),
-%%   <<"roleArn">> => string(),
-%%   <<"samplePromptsControlMode">> => list(any()),
+%%   <<"responseConfigurationSummary">> => string(),
+%%   <<"responseConfigurations">> => map(),
 %%   <<"status">> => list(any()),
-%%   <<"subtitle">> => string(),
-%%   <<"title">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"webExperienceArn">> => string(),
-%%   <<"webExperienceId">> => string(),
-%%   <<"welcomeMessage">> => string()
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type get_web_experience_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_retrievers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_retrievers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_retrievers_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"retrievers">> => list(retriever())
-%% }
--type list_retrievers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_document_response() :: #{
-%%   <<"failedDocuments">> => list(failed_document())
-%% }
--type batch_delete_document_response() :: #{binary() => any()}.
+-type chat_response_configuration_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1211,208 +684,97 @@
 
 
 %% Example:
-%% applied_creator_mode_configuration() :: #{
-%%   <<"creatorModeControl">> => list(any())
+%% chat_sync_output() :: #{
+%%   <<"actionReview">> => action_review(),
+%%   <<"authChallengeRequest">> => auth_challenge_request(),
+%%   <<"conversationId">> => string(),
+%%   <<"failedAttachments">> => list(attachment_output()),
+%%   <<"sourceAttributions">> => list(source_attribution()),
+%%   <<"systemMessage">> => string(),
+%%   <<"systemMessageId">> => string(),
+%%   <<"userMessageId">> => string()
 %% }
--type applied_creator_mode_configuration() :: #{binary() => any()}.
+-type chat_sync_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% action_execution() :: #{
-%%   <<"payload">> => map(),
-%%   <<"payloadFieldNameSeparator">> => string(),
-%%   <<"pluginId">> => string()
+%% check_document_access_request() :: #{
+%%   <<"dataSourceId">> => string()
 %% }
--type action_execution() :: #{binary() => any()}.
+-type check_document_access_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% member_user() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"userId">> => string()
+%% check_document_access_response() :: #{
+%%   <<"documentAcl">> => document_acl(),
+%%   <<"hasAccess">> => [boolean()],
+%%   <<"userAliases">> => list(associated_user()),
+%%   <<"userGroups">> => list(associated_group())
 %% }
--type member_user() :: #{binary() => any()}.
+-type check_document_access_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% kendra_index_configuration() :: #{
-%%   <<"indexId">> => string()
+%% configuration_event() :: #{
+%%   <<"attributeFilter">> => attribute_filter(),
+%%   <<"chatMode">> => list(any()),
+%%   <<"chatModeConfiguration">> => list()
 %% }
--type kendra_index_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_source_request() :: #{}
--type get_data_source_request() :: #{}.
+-type configuration_event() :: #{binary() => any()}.
 
 
 %% Example:
-%% chat_response_configuration_detail() :: #{
-%%   <<"error">> => error_detail(),
-%%   <<"responseConfigurationSummary">> => string(),
-%%   <<"responseConfigurations">> => map(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type chat_response_configuration_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_attachment_request() :: #{
-%%   <<"userId">> => string()
-%% }
--type delete_attachment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"resourceId">> => string(),
 %%   <<"resourceType">> => string()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_control() :: #{
-%%   <<"memberRelation">> => list(any()),
-%%   <<"principals">> => list(list())
+%% content_blocker_rule() :: #{
+%%   <<"systemMessageOverride">> => string()
 %% }
--type access_control() :: #{binary() => any()}.
+-type content_blocker_rule() :: #{binary() => any()}.
 
 
 %% Example:
-%% custom_plugin_configuration() :: #{
-%%   <<"apiSchema">> => list(),
-%%   <<"apiSchemaType">> => list(any()),
-%%   <<"description">> => string()
+%% content_retrieval_rule() :: #{
+%%   <<"eligibleDataSources">> => list(eligible_data_source())
 %% }
--type custom_plugin_configuration() :: #{binary() => any()}.
+-type content_retrieval_rule() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_web_experience_request() :: #{
-%%   <<"authenticationConfiguration">> => list(),
-%%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
-%%   <<"customizationConfiguration">> => customization_configuration(),
-%%   <<"identityProviderConfiguration">> => list(),
-%%   <<"origins">> => list(string()),
-%%   <<"roleArn">> => string(),
-%%   <<"samplePromptsControlMode">> => list(any()),
-%%   <<"subtitle">> => string(),
-%%   <<"title">> => string(),
-%%   <<"welcomeMessage">> => string()
+%% conversation() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"title">> => string()
 %% }
--type update_web_experience_request() :: #{binary() => any()}.
+-type conversation() :: #{binary() => any()}.
 
 
 %% Example:
-%% application() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"displayName">> => string(),
-%%   <<"identityType">> => list(any()),
-%%   <<"quickSightConfiguration">> => quick_sight_configuration(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
+%% conversation_source() :: #{
+%%   <<"attachmentId">> => string(),
+%%   <<"conversationId">> => string()
 %% }
--type application() :: #{binary() => any()}.
+-type conversation_source() :: #{binary() => any()}.
 
 
 %% Example:
-%% number_attribute_boosting_configuration() :: #{
-%%   <<"boostingLevel">> => list(any()),
-%%   <<"boostingType">> => list(any())
+%% create_anonymous_web_experience_url_request() :: #{
+%%   <<"sessionDurationInMinutes">> => integer()
 %% }
--type number_attribute_boosting_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_permission_response() :: #{}
--type disassociate_permission_response() :: #{}.
+-type create_anonymous_web_experience_url_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% associated_group() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
+%% create_anonymous_web_experience_url_response() :: #{
+%%   <<"anonymousUrl">> => string()
 %% }
--type associated_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% string_attribute_boosting_configuration() :: #{
-%%   <<"attributeValueBoosting">> => map(),
-%%   <<"boostingLevel">> => list(any())
-%% }
--type string_attribute_boosting_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_conversations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"userId">> => string()
-%% }
--type list_conversations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_sources_response() :: #{
-%%   <<"dataSources">> => list(data_source()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_sources_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_source_request() :: #{}
--type delete_data_source_request() :: #{}.
-
-%% Example:
-%% delete_retriever_request() :: #{}
--type delete_retriever_request() :: #{}.
-
-
-%% Example:
-%% personalization_configuration() :: #{
-%%   <<"personalizationControlMode">> => list(any())
-%% }
--type personalization_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% attachment_input() :: #{
-%%   <<"copyFrom">> => list(),
-%%   <<"data">> => binary(),
-%%   <<"name">> => string()
-%% }
--type attachment_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_status_detail() :: #{
-%%   <<"errorDetail">> => error_detail(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type group_status_detail() :: #{binary() => any()}.
-
-%% Example:
-%% delete_chat_response_configuration_request() :: #{}
--type delete_chat_response_configuration_request() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_subscription_configuration() :: #{
-%%   <<"autoSubscribe">> => list(any()),
-%%   <<"defaultSubscriptionType">> => list(any())
-%% }
--type auto_subscription_configuration() :: #{binary() => any()}.
+-type create_anonymous_web_experience_url_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1436,80 +798,6 @@
 
 
 %% Example:
-%% text_segment() :: #{
-%%   <<"beginOffset">> => integer(),
-%%   <<"endOffset">> => integer(),
-%%   <<"mediaId">> => string(),
-%%   <<"mediaMimeType">> => string(),
-%%   <<"snippetExcerpt">> => snippet_excerpt(),
-%%   <<"sourceDetails">> => list()
-%% }
--type text_segment() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_plugin_response() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"authConfiguration">> => list(),
-%%   <<"buildStatus">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customPluginConfiguration">> => custom_plugin_configuration(),
-%%   <<"displayName">> => string(),
-%%   <<"pluginArn">> => string(),
-%%   <<"pluginId">> => string(),
-%%   <<"serverUrl">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type get_plugin_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% hook_configuration() :: #{
-%%   <<"invocationCondition">> => document_attribute_condition(),
-%%   <<"lambdaArn">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"s3BucketName">> => string()
-%% }
--type hook_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_subscription_response() :: #{
-%%   <<"currentSubscription">> => subscription_details(),
-%%   <<"nextSubscription">> => subscription_details(),
-%%   <<"subscriptionArn">> => string()
-%% }
--type update_subscription_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% conversation() :: #{
-%%   <<"conversationId">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"title">> => string()
-%% }
--type conversation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_plugins_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"plugins">> => list(plugin())
-%% }
--type list_plugins_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_application_response() :: #{
 %%   <<"applicationArn">> => string(),
 %%   <<"applicationId">> => string()
@@ -1518,35 +806,253 @@
 
 
 %% Example:
-%% list_documents_request() :: #{
-%%   <<"dataSourceIds">> => list(string()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% create_chat_response_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"responseConfigurations">> := map(),
+%%   <<"tags">> => list(tag())
 %% }
--type list_documents_request() :: #{binary() => any()}.
+-type create_chat_response_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% chat_output() :: #{
-%%   <<"outputStream">> => list()
+%% create_chat_response_configuration_response() :: #{
+%%   <<"chatResponseConfigurationArn">> => string(),
+%%   <<"chatResponseConfigurationId">> => string()
 %% }
--type chat_output() :: #{binary() => any()}.
+-type create_chat_response_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% blocked_phrases_configuration() :: #{
-%%   <<"blockedPhrases">> => list(string()),
-%%   <<"systemMessageOverride">> => string()
+%% create_data_accessor_request() :: #{
+%%   <<"actionConfigurations">> := list(action_configuration()),
+%%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"principal">> := string(),
+%%   <<"tags">> => list(tag())
 %% }
--type blocked_phrases_configuration() :: #{binary() => any()}.
+-type create_data_accessor_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_indices_response() :: #{
-%%   <<"indices">> => list(index()),
-%%   <<"nextToken">> => string()
+%% create_data_accessor_response() :: #{
+%%   <<"dataAccessorArn">> => string(),
+%%   <<"dataAccessorId">> => string(),
+%%   <<"idcApplicationArn">> => string()
 %% }
--type list_indices_response() :: #{binary() => any()}.
+-type create_data_accessor_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_source_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := any(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
+%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
+%%   <<"roleArn">> => string(),
+%%   <<"syncSchedule">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"vpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type create_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_data_source_response() :: #{
+%%   <<"dataSourceArn">> => string(),
+%%   <<"dataSourceId">> => string()
+%% }
+-type create_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_index_request() :: #{
+%%   <<"capacityConfiguration">> => index_capacity_configuration(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"type">> => list(any())
+%% }
+-type create_index_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_index_response() :: #{
+%%   <<"indexArn">> => string(),
+%%   <<"indexId">> => string()
+%% }
+-type create_index_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_plugin_request() :: #{
+%%   <<"authConfiguration">> := list(),
+%%   <<"clientToken">> => string(),
+%%   <<"customPluginConfiguration">> => custom_plugin_configuration(),
+%%   <<"displayName">> := string(),
+%%   <<"serverUrl">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"type">> := list(any())
+%% }
+-type create_plugin_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_plugin_response() :: #{
+%%   <<"buildStatus">> => list(any()),
+%%   <<"pluginArn">> => string(),
+%%   <<"pluginId">> => string()
+%% }
+-type create_plugin_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_retriever_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"displayName">> := string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"type">> := list(any())
+%% }
+-type create_retriever_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_retriever_response() :: #{
+%%   <<"retrieverArn">> => string(),
+%%   <<"retrieverId">> => string()
+%% }
+-type create_retriever_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"principal">> := list(),
+%%   <<"type">> := list(any())
+%% }
+-type create_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_subscription_response() :: #{
+%%   <<"currentSubscription">> => subscription_details(),
+%%   <<"nextSubscription">> => subscription_details(),
+%%   <<"subscriptionArn">> => string(),
+%%   <<"subscriptionId">> => string()
+%% }
+-type create_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"userAliases">> => list(user_alias()),
+%%   <<"userId">> := string()
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_response() :: #{}
+-type create_user_response() :: #{}.
+
+
+%% Example:
+%% create_web_experience_request() :: #{
+%%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
+%%   <<"clientToken">> => string(),
+%%   <<"customizationConfiguration">> => customization_configuration(),
+%%   <<"identityProviderConfiguration">> => list(),
+%%   <<"origins">> => list(string()),
+%%   <<"roleArn">> => string(),
+%%   <<"samplePromptsControlMode">> => list(any()),
+%%   <<"subtitle">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"title">> => string(),
+%%   <<"welcomeMessage">> => string()
+%% }
+-type create_web_experience_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_web_experience_response() :: #{
+%%   <<"webExperienceArn">> => string(),
+%%   <<"webExperienceId">> => string()
+%% }
+-type create_web_experience_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% creator_mode_configuration() :: #{
+%%   <<"creatorModeControl">> => list(any())
+%% }
+-type creator_mode_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_plugin_configuration() :: #{
+%%   <<"apiSchema">> => list(),
+%%   <<"apiSchemaType">> => list(any()),
+%%   <<"description">> => string()
+%% }
+-type custom_plugin_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% customization_configuration() :: #{
+%%   <<"customCSSUrl">> => string(),
+%%   <<"faviconUrl">> => string(),
+%%   <<"fontUrl">> => string(),
+%%   <<"logoUrl">> => string()
+%% }
+-type customization_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_accessor() :: #{
+%%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataAccessorArn">> => string(),
+%%   <<"dataAccessorId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"idcApplicationArn">> => string(),
+%%   <<"principal">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type data_accessor() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_accessor_authentication_detail() :: #{
+%%   <<"authenticationConfiguration">> => list(),
+%%   <<"authenticationType">> => list(any()),
+%%   <<"externalIds">> => list(string())
+%% }
+-type data_accessor_authentication_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_accessor_idc_trusted_token_issuer_configuration() :: #{
+%%   <<"idcTrustedTokenIssuerArn">> => string()
+%% }
+-type data_accessor_idc_trusted_token_issuer_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataSourceId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type data_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1563,57 +1069,34 @@
 
 
 %% Example:
-%% list_attachments_request() :: #{
-%%   <<"conversationId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"userId">> => string()
+%% data_source_sync_job_metrics() :: #{
+%%   <<"documentsAdded">> => string(),
+%%   <<"documentsDeleted">> => string(),
+%%   <<"documentsFailed">> => string(),
+%%   <<"documentsModified">> => string(),
+%%   <<"documentsScanned">> => string()
 %% }
--type list_attachments_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_request() :: #{}
--type delete_user_request() :: #{}.
+-type data_source_sync_job_metrics() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_subscription_response() :: #{
-%%   <<"currentSubscription">> => subscription_details(),
-%%   <<"nextSubscription">> => subscription_details(),
-%%   <<"subscriptionArn">> => string(),
-%%   <<"subscriptionId">> => string()
+%% data_source_vpc_configuration() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
 %% }
--type create_subscription_response() :: #{binary() => any()}.
+-type data_source_vpc_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% rule() :: #{
-%%   <<"excludedUsersAndGroups">> => users_and_groups(),
-%%   <<"includedUsersAndGroups">> => users_and_groups(),
-%%   <<"ruleConfiguration">> => list(),
-%%   <<"ruleType">> => list(any())
+%% date_attribute_boosting_configuration() :: #{
+%%   <<"boostingDurationInSeconds">> => float(),
+%%   <<"boostingLevel">> => list(any())
 %% }
--type rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_plugins_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_plugins_request() :: #{binary() => any()}.
+-type date_attribute_boosting_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% stop_data_source_sync_job_request() :: #{}
--type stop_data_source_sync_job_request() :: #{}.
-
-%% Example:
-%% get_data_accessor_request() :: #{}
--type get_data_accessor_request() :: #{}.
-
-%% Example:
-%% delete_plugin_response() :: #{}
--type delete_plugin_response() :: #{}.
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
 
 %% Example:
 %% delete_application_response() :: #{}
@@ -1621,29 +1104,145 @@
 
 
 %% Example:
-%% score_attributes() :: #{
-%%   <<"scoreConfidence">> => list(any())
+%% delete_attachment_request() :: #{
+%%   <<"userId">> => string()
 %% }
--type score_attributes() :: #{binary() => any()}.
+-type delete_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_attachment_response() :: #{}
+-type delete_attachment_response() :: #{}.
+
+%% Example:
+%% delete_chat_controls_configuration_request() :: #{}
+-type delete_chat_controls_configuration_request() :: #{}.
+
+%% Example:
+%% delete_chat_controls_configuration_response() :: #{}
+-type delete_chat_controls_configuration_response() :: #{}.
+
+%% Example:
+%% delete_chat_response_configuration_request() :: #{}
+-type delete_chat_response_configuration_request() :: #{}.
+
+%% Example:
+%% delete_chat_response_configuration_response() :: #{}
+-type delete_chat_response_configuration_response() :: #{}.
+
+
+%% Example:
+%% delete_conversation_request() :: #{
+%%   <<"userId">> => string()
+%% }
+-type delete_conversation_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_conversation_response() :: #{}
+-type delete_conversation_response() :: #{}.
+
+%% Example:
+%% delete_data_accessor_request() :: #{}
+-type delete_data_accessor_request() :: #{}.
+
+%% Example:
+%% delete_data_accessor_response() :: #{}
+-type delete_data_accessor_response() :: #{}.
+
+%% Example:
+%% delete_data_source_request() :: #{}
+-type delete_data_source_request() :: #{}.
+
+%% Example:
+%% delete_data_source_response() :: #{}
+-type delete_data_source_response() :: #{}.
+
+
+%% Example:
+%% delete_document() :: #{
+%%   <<"documentId">> => string()
+%% }
+-type delete_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_group_request() :: #{
+%%   <<"dataSourceId">> => string()
+%% }
+-type delete_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_group_response() :: #{}
+-type delete_group_response() :: #{}.
+
+%% Example:
+%% delete_index_request() :: #{}
+-type delete_index_request() :: #{}.
+
+%% Example:
+%% delete_index_response() :: #{}
+-type delete_index_response() :: #{}.
+
+%% Example:
+%% delete_plugin_request() :: #{}
+-type delete_plugin_request() :: #{}.
+
+%% Example:
+%% delete_plugin_response() :: #{}
+-type delete_plugin_response() :: #{}.
+
+%% Example:
+%% delete_retriever_request() :: #{}
+-type delete_retriever_request() :: #{}.
+
+%% Example:
+%% delete_retriever_response() :: #{}
+-type delete_retriever_response() :: #{}.
+
+%% Example:
+%% delete_user_request() :: #{}
+-type delete_user_request() :: #{}.
 
 %% Example:
 %% delete_user_response() :: #{}
 -type delete_user_response() :: #{}.
 
+%% Example:
+%% delete_web_experience_request() :: #{}
+-type delete_web_experience_request() :: #{}.
 
 %% Example:
-%% get_media_response() :: #{
-%%   <<"mediaBytes">> => binary(),
-%%   <<"mediaMimeType">> => string()
-%% }
--type get_media_response() :: #{binary() => any()}.
+%% delete_web_experience_response() :: #{}
+-type delete_web_experience_response() :: #{}.
+
+%% Example:
+%% disassociate_permission_request() :: #{}
+-type disassociate_permission_request() :: #{}.
+
+%% Example:
+%% disassociate_permission_response() :: #{}
+-type disassociate_permission_response() :: #{}.
 
 
 %% Example:
-%% get_policy_response() :: #{
-%%   <<"policy">> => string()
+%% document() :: #{
+%%   <<"accessConfiguration">> => access_configuration(),
+%%   <<"attributes">> => list(document_attribute()),
+%%   <<"content">> => list(),
+%%   <<"contentType">> => list(any()),
+%%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
+%%   <<"id">> => string(),
+%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
+%%   <<"title">> => string()
 %% }
--type get_policy_response() :: #{binary() => any()}.
+-type document() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_acl() :: #{
+%%   <<"allowlist">> => document_acl_membership(),
+%%   <<"denyList">> => document_acl_membership()
+%% }
+-type document_acl() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1656,119 +1255,62 @@
 
 
 %% Example:
-%% blocked_phrases_configuration_update() :: #{
-%%   <<"blockedPhrasesToCreateOrUpdate">> => list(string()),
-%%   <<"blockedPhrasesToDelete">> => list(string()),
-%%   <<"systemMessageOverride">> => string()
+%% document_acl_group() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type blocked_phrases_configuration_update() :: #{binary() => any()}.
+-type document_acl_group() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_plugin_type_actions_response() :: #{
-%%   <<"items">> => list(action_summary()),
-%%   <<"nextToken">> => string()
+%% document_acl_membership() :: #{
+%%   <<"conditions">> => list(document_acl_condition()),
+%%   <<"memberRelation">> => list(any())
 %% }
--type list_plugin_type_actions_response() :: #{binary() => any()}.
+-type document_acl_membership() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_plugin_actions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% document_acl_user() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type list_plugin_actions_request() :: #{binary() => any()}.
+-type document_acl_user() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_document_content_request() :: #{
-%%   <<"dataSourceId">> => string(),
-%%   <<"outputFormat">> => list(any())
+%% document_attribute() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => list()
 %% }
--type get_document_content_request() :: #{binary() => any()}.
+-type document_attribute() :: #{binary() => any()}.
 
 
 %% Example:
-%% message_usefulness_feedback() :: #{
-%%   <<"comment">> => string(),
-%%   <<"reason">> => list(any()),
-%%   <<"submittedAt">> => non_neg_integer(),
-%%   <<"usefulness">> => list(any())
+%% document_attribute_condition() :: #{
+%%   <<"key">> => string(),
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => list()
 %% }
--type message_usefulness_feedback() :: #{binary() => any()}.
+-type document_attribute_condition() :: #{binary() => any()}.
 
 
 %% Example:
-%% action_execution_event() :: #{
-%%   <<"payload">> => map(),
-%%   <<"payloadFieldNameSeparator">> => string(),
-%%   <<"pluginId">> => string()
+%% document_attribute_configuration() :: #{
+%%   <<"name">> => string(),
+%%   <<"search">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
--type action_execution_event() :: #{binary() => any()}.
+-type document_attribute_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_application_request() :: #{
-%%   <<"attachmentsConfiguration">> => attachments_configuration(),
-%%   <<"autoSubscriptionConfiguration">> => auto_subscription_configuration(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"identityCenterInstanceArn">> => string(),
-%%   <<"personalizationConfiguration">> => personalization_configuration(),
-%%   <<"qAppsConfiguration">> => q_apps_configuration(),
-%%   <<"roleArn">> => string()
+%% document_attribute_target() :: #{
+%%   <<"attributeValueOperator">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"value">> => list()
 %% }
--type update_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_response() :: #{}
--type update_application_response() :: #{}.
-
-%% Example:
-%% delete_chat_controls_configuration_response() :: #{}
--type delete_chat_controls_configuration_response() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_permission_request() :: #{}
--type disassociate_permission_request() :: #{}.
-
-
-%% Example:
-%% search_relevant_content_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"relevantContent">> => list(relevant_content())
-%% }
--type search_relevant_content_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_anonymous_web_experience_url_response() :: #{
-%%   <<"anonymousUrl">> => string()
-%% }
--type create_anonymous_web_experience_url_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_source_details() :: #{
-%%   <<"mediaId">> => string(),
-%%   <<"mediaMimeType">> => string()
-%% }
--type image_source_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_source_response() :: #{
-%%   <<"dataSourceArn">> => string(),
-%%   <<"dataSourceId">> => string()
-%% }
--type create_data_source_response() :: #{binary() => any()}.
+-type document_attribute_target() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1783,15 +1325,69 @@
 
 
 %% Example:
-%% list_plugin_type_metadata_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% document_enrichment_configuration() :: #{
+%%   <<"inlineConfigurations">> => list(inline_document_enrichment_configuration()),
+%%   <<"postExtractionHookConfiguration">> => hook_configuration(),
+%%   <<"preExtractionHookConfiguration">> => hook_configuration()
 %% }
--type list_plugin_type_metadata_request() :: #{binary() => any()}.
+-type document_enrichment_configuration() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_web_experience_request() :: #{}
--type get_web_experience_request() :: #{}.
+%% eligible_data_source() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"indexId">> => string()
+%% }
+-type eligible_data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"kmsKeyId">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% end_of_input_event() :: #{}
+-type end_of_input_event() :: #{}.
+
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_resource_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type external_resource_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_attachment_event() :: #{
+%%   <<"attachment">> => attachment_output(),
+%%   <<"conversationId">> => string(),
+%%   <<"systemMessageId">> => string(),
+%%   <<"userMessageId">> => string()
+%% }
+-type failed_attachment_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_document() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"error">> => error_detail(),
+%%   <<"id">> => string()
+%% }
+-type failed_document() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
 
 
 %% Example:
@@ -1820,574 +1416,11 @@
 
 
 %% Example:
-%% batch_delete_document_request() :: #{
-%%   <<"dataSourceSyncId">> => string(),
-%%   <<"documents">> := list(delete_document())
-%% }
--type batch_delete_document_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% action_execution_payload_field() :: #{
-%%   <<"value">> => any()
-%% }
--type action_execution_payload_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% auth_challenge_request() :: #{
-%%   <<"authorizationUrl">> => string()
-%% }
--type auth_challenge_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% hallucination_reduction_configuration() :: #{
-%%   <<"hallucinationReductionControl">> => list(any())
-%% }
--type hallucination_reduction_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_chat_response_configuration_response() :: #{}
--type delete_chat_response_configuration_response() :: #{}.
-
-%% Example:
-%% delete_chat_controls_configuration_request() :: #{}
--type delete_chat_controls_configuration_request() :: #{}.
-
-
-%% Example:
-%% batch_put_document_response() :: #{
-%%   <<"failedDocuments">> => list(failed_document())
-%% }
--type batch_put_document_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% saml_provider_configuration() :: #{
-%%   <<"authenticationUrl">> => string()
-%% }
--type saml_provider_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_applications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_index_request() :: #{
-%%   <<"capacityConfiguration">> => index_capacity_configuration(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"type">> => list(any())
-%% }
--type create_index_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_plugin_request() :: #{
-%%   <<"authConfiguration">> => list(),
-%%   <<"customPluginConfiguration">> => custom_plugin_configuration(),
-%%   <<"displayName">> => string(),
-%%   <<"serverUrl">> => string(),
-%%   <<"state">> => list(any())
-%% }
--type update_plugin_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_index_request() :: #{
-%%   <<"capacityConfiguration">> => index_capacity_configuration(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"documentAttributeConfigurations">> => list(document_attribute_configuration())
-%% }
--type update_index_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_chat_response_configuration_response() :: #{
-%%   <<"chatResponseConfigurationArn">> => string(),
-%%   <<"chatResponseConfigurationId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"displayName">> => string(),
-%%   <<"inUseConfiguration">> => chat_response_configuration_detail(),
-%%   <<"lastUpdateConfiguration">> => chat_response_configuration_detail()
-%% }
--type get_chat_response_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_detail() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string()
-%% }
--type error_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% relevant_content() :: #{
-%%   <<"content">> => string(),
-%%   <<"documentAttributes">> => list(document_attribute()),
-%%   <<"documentId">> => string(),
-%%   <<"documentTitle">> => string(),
-%%   <<"documentUri">> => string(),
-%%   <<"scoreAttributes">> => score_attributes()
-%% }
--type relevant_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_accessor_idc_trusted_token_issuer_configuration() :: #{
-%%   <<"idcTrustedTokenIssuerArn">> => string()
-%% }
--type data_accessor_idc_trusted_token_issuer_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% orchestration_configuration() :: #{
-%%   <<"control">> => list(any())
-%% }
--type orchestration_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_response() :: #{}
--type delete_group_response() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_event() :: #{
-%%   <<"attributeFilter">> => attribute_filter(),
-%%   <<"chatMode">> => list(any()),
-%%   <<"chatModeConfiguration">> => list()
-%% }
--type configuration_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% auth_challenge_response() :: #{
-%%   <<"responseMap">> => map()
-%% }
--type auth_challenge_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"key">> => string()
-%% }
--type s3() :: #{binary() => any()}.
-
-%% Example:
-%% delete_retriever_response() :: #{}
--type delete_retriever_response() :: #{}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-%% Example:
-%% get_media_request() :: #{}
--type get_media_request() :: #{}.
-
-
-%% Example:
-%% search_relevant_content_request() :: #{
-%%   <<"attributeFilter">> => attribute_filter(),
-%%   <<"contentSource">> := list(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryText">> := string()
-%% }
--type search_relevant_content_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% video_source_details() :: #{
-%%   <<"endTimeMilliseconds">> => float(),
-%%   <<"mediaId">> => string(),
-%%   <<"mediaMimeType">> => string(),
-%%   <<"startTimeMilliseconds">> => float(),
-%%   <<"videoExtractionType">> => list(any())
-%% }
--type video_source_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_conversations_response() :: #{
-%%   <<"conversations">> => list(conversation()),
-%%   <<"nextToken">> => string()
-%% }
--type list_conversations_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_accessor_response() :: #{}
--type delete_data_accessor_response() :: #{}.
-
-
-%% Example:
-%% update_user_request() :: #{
-%%   <<"userAliasesToDelete">> => list(user_alias()),
-%%   <<"userAliasesToUpdate">> => list(user_alias())
-%% }
--type update_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% chat_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"conversationId">> => string(),
-%%   <<"inputStream">> => list(),
-%%   <<"parentMessageId">> => string(),
-%%   <<"userGroups">> => list(string()),
-%%   <<"userId">> => string()
-%% }
--type chat_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_chat_controls_configuration_request() :: #{
-%%   <<"blockedPhrasesConfigurationUpdate">> => blocked_phrases_configuration_update(),
-%%   <<"clientToken">> => string(),
-%%   <<"creatorModeConfiguration">> => creator_mode_configuration(),
-%%   <<"hallucinationReductionConfiguration">> => hallucination_reduction_configuration(),
-%%   <<"orchestrationConfiguration">> => orchestration_configuration(),
-%%   <<"responseScope">> => list(any()),
-%%   <<"topicConfigurationsToCreateOrUpdate">> => list(topic_configuration()),
-%%   <<"topicConfigurationsToDelete">> => list(topic_configuration())
-%% }
--type update_chat_controls_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_subscription_request() :: #{}
--type cancel_subscription_request() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_data_accessors_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_accessors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% action_review_payload_field() :: #{
-%%   <<"allowedFormat">> => string(),
-%%   <<"allowedValues">> => list(action_review_payload_field_allowed_value()),
-%%   <<"arrayItemJsonSchema">> => any(),
-%%   <<"displayDescription">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"displayOrder">> => integer(),
-%%   <<"required">> => [boolean()],
-%%   <<"type">> => list(any()),
-%%   <<"value">> => any()
-%% }
--type action_review_payload_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_source_request() :: #{
-%%   <<"configuration">> => any(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
-%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
-%%   <<"roleArn">> => string(),
-%%   <<"syncSchedule">> => string(),
-%%   <<"vpcConfiguration">> => data_source_vpc_configuration()
-%% }
--type update_data_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_document_request() :: #{
-%%   <<"dataSourceSyncId">> => string(),
-%%   <<"documents">> := list(document()),
-%%   <<"roleArn">> => string()
-%% }
--type batch_put_document_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_subscription_request() :: #{
-%%   <<"type">> := list(any())
-%% }
--type update_subscription_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% action_review_payload_field_allowed_value() :: #{
-%%   <<"displayValue">> => any(),
-%%   <<"value">> => any()
-%% }
--type action_review_payload_field_allowed_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_group_response() :: #{
-%%   <<"status">> => group_status_detail(),
-%%   <<"statusHistory">> => list(group_status_detail())
-%% }
--type get_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% subscription() :: #{
-%%   <<"currentSubscription">> => subscription_details(),
-%%   <<"nextSubscription">> => subscription_details(),
-%%   <<"principal">> => list(),
-%%   <<"subscriptionArn">> => string(),
-%%   <<"subscriptionId">> => string()
-%% }
--type subscription() :: #{binary() => any()}.
-
-
-%% Example:
-%% native_index_configuration() :: #{
-%%   <<"boostingOverride">> => map(),
-%%   <<"indexId">> => string(),
-%%   <<"version">> => float()
-%% }
--type native_index_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_members() :: #{
-%%   <<"memberGroups">> => list(member_group()),
-%%   <<"memberUsers">> => list(member_user()),
-%%   <<"s3PathForGroupMembers">> => s3()
-%% }
--type group_members() :: #{binary() => any()}.
-
-
-%% Example:
-%% quick_sight_configuration() :: #{
-%%   <<"clientNamespace">> => string()
-%% }
--type quick_sight_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_subscriptions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"subscriptions">> => list(subscription())
-%% }
--type list_subscriptions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_enrichment_configuration() :: #{
-%%   <<"inlineConfigurations">> => list(inline_document_enrichment_configuration()),
-%%   <<"postExtractionHookConfiguration">> => hook_configuration(),
-%%   <<"preExtractionHookConfiguration">> => hook_configuration()
-%% }
--type document_enrichment_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_source_sync_jobs_response() :: #{
-%%   <<"history">> => list(data_source_sync_job()),
-%%   <<"nextToken">> => string()
-%% }
--type list_data_source_sync_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% browser_extension_configuration() :: #{
-%%   <<"enabledBrowserExtensions">> => list(string())
-%% }
--type browser_extension_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_configuration() :: #{
-%%   <<"instructionCollection">> => instruction_collection()
-%% }
--type response_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_group_request() :: #{
-%%   <<"dataSourceId">> => string()
-%% }
--type delete_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_source_details() :: #{
-%%   <<"audioExtractionType">> => list(any()),
-%%   <<"endTimeMilliseconds">> => float(),
-%%   <<"mediaId">> => string(),
-%%   <<"mediaMimeType">> => string(),
-%%   <<"startTimeMilliseconds">> => float()
-%% }
--type audio_source_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_permission_request() :: #{
-%%   <<"actions">> := list(string()),
-%%   <<"conditions">> => list(permission_condition()),
-%%   <<"principal">> := string(),
-%%   <<"statementId">> := string()
-%% }
--type associate_permission_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_retrieval_rule() :: #{
-%%   <<"eligibleDataSources">> => list(eligible_data_source())
-%% }
--type content_retrieval_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% open_id_connect_provider_configuration() :: #{
-%%   <<"secretsArn">> => string(),
-%%   <<"secretsRole">> => string()
-%% }
--type open_id_connect_provider_configuration() :: #{binary() => any()}.
-
-
-%% Example:
 %% get_chat_controls_configuration_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type get_chat_controls_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_chat_response_configurations_response() :: #{
-%%   <<"chatResponseConfigurations">> => list(chat_response_configuration()),
-%%   <<"nextToken">> => string()
-%% }
--type list_chat_response_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% chat_response_configuration() :: #{
-%%   <<"chatResponseConfigurationArn">> => string(),
-%%   <<"chatResponseConfigurationId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"displayName">> => string(),
-%%   <<"responseConfigurationSummary">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type chat_response_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_chat_response_configuration_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"displayName">> := string(),
-%%   <<"responseConfigurations">> := map(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_chat_response_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_filter() :: #{
-%%   <<"andAllFilters">> => list(attribute_filter()),
-%%   <<"containsAll">> => document_attribute(),
-%%   <<"containsAny">> => document_attribute(),
-%%   <<"equalsTo">> => document_attribute(),
-%%   <<"greaterThan">> => document_attribute(),
-%%   <<"greaterThanOrEquals">> => document_attribute(),
-%%   <<"lessThan">> => document_attribute(),
-%%   <<"lessThanOrEquals">> => document_attribute(),
-%%   <<"notFilter">> => attribute_filter(),
-%%   <<"orAllFilters">> => list(attribute_filter())
-%% }
--type attribute_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_data_source_sync_jobs_request() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"statusFilter">> => list(any())
-%% }
--type list_data_source_sync_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_response() :: #{
-%%   <<"applications">> => list(application()),
-%%   <<"nextToken">> => string()
-%% }
--type list_applications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_accessor_authentication_detail() :: #{
-%%   <<"authenticationConfiguration">> => list(),
-%%   <<"authenticationType">> => list(any()),
-%%   <<"externalIds">> => list(string())
-%% }
--type data_accessor_authentication_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% principal_group() :: #{
-%%   <<"access">> => list(any()),
-%%   <<"membershipType">> => list(any()),
-%%   <<"name">> => string()
-%% }
--type principal_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_resource_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type external_resource_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% action_configuration() :: #{
-%%   <<"action">> => string(),
-%%   <<"filterConfiguration">> => action_filter_configuration()
-%% }
--type action_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2402,139 +1435,31 @@
 %% }
 -type get_chat_controls_configuration_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% group_summary() :: #{
-%%   <<"groupName">> => string()
-%% }
--type group_summary() :: #{binary() => any()}.
+%% get_chat_response_configuration_request() :: #{}
+-type get_chat_response_configuration_request() :: #{}.
 
 
 %% Example:
-%% create_anonymous_web_experience_url_request() :: #{
-%%   <<"sessionDurationInMinutes">> => integer()
-%% }
--type create_anonymous_web_experience_url_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% attachment_input_event() :: #{
-%%   <<"attachment">> => attachment_input()
-%% }
--type attachment_input_event() :: #{binary() => any()}.
-
-%% Example:
-%% delete_plugin_request() :: #{}
--type delete_plugin_request() :: #{}.
-
-
-%% Example:
-%% create_index_response() :: #{
-%%   <<"indexArn">> => string(),
-%%   <<"indexId">> => string()
-%% }
--type create_index_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% snippet_excerpt() :: #{
-%%   <<"text">> => string()
-%% }
--type snippet_excerpt() :: #{binary() => any()}.
-
-
-%% Example:
-%% check_document_access_request() :: #{
-%%   <<"dataSourceId">> => string()
-%% }
--type check_document_access_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% permission_condition() :: #{
-%%   <<"conditionKey">> => string(),
-%%   <<"conditionOperator">> => list(any()),
-%%   <<"conditionValues">> => list(string())
-%% }
--type permission_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% retriever() :: #{
-%%   <<"applicationId">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"retrieverId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type retriever() :: #{binary() => any()}.
-
-
-%% Example:
-%% failed_document() :: #{
-%%   <<"dataSourceId">> => string(),
-%%   <<"error">> => error_detail(),
-%%   <<"id">> => string()
-%% }
--type failed_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source() :: #{
+%% get_chat_response_configuration_response() :: #{
+%%   <<"chatResponseConfigurationArn">> => string(),
+%%   <<"chatResponseConfigurationId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"dataSourceId">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"inUseConfiguration">> => chat_response_configuration_detail(),
+%%   <<"lastUpdateConfiguration">> => chat_response_configuration_detail()
 %% }
--type data_source() :: #{binary() => any()}.
+-type get_chat_response_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_accessor_request() :: #{}
+-type get_data_accessor_request() :: #{}.
 
 
 %% Example:
-%% q_apps_configuration() :: #{
-%%   <<"qAppsControlMode">> => list(any())
-%% }
--type q_apps_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_groups_response() :: #{
-%%   <<"items">> => list(group_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_group_request() :: #{
-%%   <<"dataSourceId">> => string()
-%% }
--type get_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_configuration() :: #{
-%%   <<"accessControls">> => list(access_control()),
-%%   <<"memberRelation">> => list(any())
-%% }
--type access_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_retriever_response() :: #{}
--type update_retriever_response() :: #{}.
-
-
-%% Example:
-%% text_document_statistics() :: #{
-%%   <<"indexedTextBytes">> => float(),
-%%   <<"indexedTextDocumentCount">> => integer()
-%% }
--type text_document_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_accessor() :: #{
+%% get_data_accessor_response() :: #{
+%%   <<"actionConfigurations">> => list(action_configuration()),
+%%   <<"applicationId">> => string(),
 %%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dataAccessorArn">> => string(),
@@ -2544,61 +1469,11 @@
 %%   <<"principal">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
--type data_accessor() :: #{binary() => any()}.
+-type get_data_accessor_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_index_response() :: #{}
--type update_index_response() :: #{}.
-
-
-%% Example:
-%% update_chat_response_configuration_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"responseConfigurations">> := map()
-%% }
--type update_chat_response_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% attachment_output() :: #{
-%%   <<"attachmentId">> => string(),
-%%   <<"conversationId">> => string(),
-%%   <<"error">> => error_detail(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type attachment_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% users_and_groups() :: #{
-%%   <<"userGroups">> => list(string()),
-%%   <<"userIds">> => list(string())
-%% }
--type users_and_groups() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_document_content_response() :: #{
-%%   <<"mimeType">> => string(),
-%%   <<"presignedUrl">> => string()
-%% }
--type get_document_content_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_retriever_request() :: #{}
--type get_retriever_request() :: #{}.
-
-
-%% Example:
-%% list_groups_request() :: #{
-%%   <<"dataSourceId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"updatedEarlierThan">> := non_neg_integer()
-%% }
--type list_groups_request() :: #{binary() => any()}.
+%% get_data_source_request() :: #{}
+-type get_data_source_request() :: #{}.
 
 
 %% Example:
@@ -2625,174 +1500,38 @@
 
 
 %% Example:
-%% document_acl_group() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
+%% get_document_content_request() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"outputFormat">> => list(any())
 %% }
--type document_acl_group() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_request() :: #{}
--type get_application_request() :: #{}.
+-type get_document_content_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% date_attribute_boosting_configuration() :: #{
-%%   <<"boostingDurationInSeconds">> => float(),
-%%   <<"boostingLevel">> => list(any())
+%% get_document_content_response() :: #{
+%%   <<"mimeType">> => string(),
+%%   <<"presignedUrl">> => string()
 %% }
--type date_attribute_boosting_configuration() :: #{binary() => any()}.
+-type get_document_content_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% action_filter_configuration() :: #{
-%%   <<"documentAttributeFilter">> => attribute_filter()
+%% get_group_request() :: #{
+%%   <<"dataSourceId">> => string()
 %% }
--type action_filter_configuration() :: #{binary() => any()}.
+-type get_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_group_response() :: #{
+%%   <<"status">> => group_status_detail(),
+%%   <<"statusHistory">> => list(group_status_detail())
+%% }
+-type get_group_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_index_request() :: #{}
 -type get_index_request() :: #{}.
-
-
-%% Example:
-%% eligible_data_source() :: #{
-%%   <<"dataSourceId">> => string(),
-%%   <<"indexId">> => string()
-%% }
--type eligible_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_response() :: #{}
--type create_user_response() :: #{}.
-
-
-%% Example:
-%% retriever_content_source() :: #{
-%%   <<"retrieverId">> => string()
-%% }
--type retriever_content_source() :: #{binary() => any()}.
-
-%% Example:
-%% delete_attachment_response() :: #{}
--type delete_attachment_response() :: #{}.
-
-
-%% Example:
-%% list_subscriptions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_subscriptions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_acl_user() :: #{
-%%   <<"id">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type document_acl_user() :: #{binary() => any()}.
-
-
-%% Example:
-%% document() :: #{
-%%   <<"accessConfiguration">> => access_configuration(),
-%%   <<"attributes">> => list(document_attribute()),
-%%   <<"content">> => list(),
-%%   <<"contentType">> => list(any()),
-%%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
-%%   <<"id">> => string(),
-%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
-%%   <<"title">> => string()
-%% }
--type document() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_attachments_response() :: #{
-%%   <<"attachments">> => list(attachment()),
-%%   <<"nextToken">> => string()
-%% }
--type list_attachments_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_data_source_sync_job_response() :: #{}
--type stop_data_source_sync_job_response() :: #{}.
-
-%% Example:
-%% end_of_input_event() :: #{}
--type end_of_input_event() :: #{}.
-
-
-%% Example:
-%% saml_configuration() :: #{
-%%   <<"metadataXML">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"userGroupAttribute">> => string(),
-%%   <<"userIdAttribute">> => string()
-%% }
--type saml_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% creator_mode_configuration() :: #{
-%%   <<"creatorModeControl">> => list(any())
-%% }
--type creator_mode_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% attachments_configuration() :: #{
-%%   <<"attachmentsControlMode">> => list(any())
-%% }
--type attachments_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% index_statistics() :: #{
-%%   <<"textDocumentStatistics">> => text_document_statistics()
-%% }
--type index_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_permission_response() :: #{
-%%   <<"statement">> => string()
-%% }
--type associate_permission_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_messages_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"userId">> => string()
-%% }
--type list_messages_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_request() :: #{}
--type delete_application_request() :: #{}.
-
-
-%% Example:
-%% put_group_request() :: #{
-%%   <<"dataSourceId">> => string(),
-%%   <<"groupMembers">> := group_members(),
-%%   <<"groupName">> := string(),
-%%   <<"roleArn">> => string(),
-%%   <<"type">> := list(any())
-%% }
--type put_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_user_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"userAliases">> => list(user_alias()),
-%%   <<"userId">> := string()
-%% }
--type create_user_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2813,6 +1552,585 @@
 %% }
 -type get_index_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_media_request() :: #{}
+-type get_media_request() :: #{}.
+
+
+%% Example:
+%% get_media_response() :: #{
+%%   <<"mediaBytes">> => binary(),
+%%   <<"mediaMimeType">> => string()
+%% }
+-type get_media_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_plugin_request() :: #{}
+-type get_plugin_request() :: #{}.
+
+
+%% Example:
+%% get_plugin_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"authConfiguration">> => list(),
+%%   <<"buildStatus">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customPluginConfiguration">> => custom_plugin_configuration(),
+%%   <<"displayName">> => string(),
+%%   <<"pluginArn">> => string(),
+%%   <<"pluginId">> => string(),
+%%   <<"serverUrl">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_plugin_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_policy_request() :: #{}
+-type get_policy_request() :: #{}.
+
+
+%% Example:
+%% get_policy_response() :: #{
+%%   <<"policy">> => string()
+%% }
+-type get_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_retriever_request() :: #{}
+-type get_retriever_request() :: #{}.
+
+
+%% Example:
+%% get_retriever_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"retrieverArn">> => string(),
+%%   <<"retrieverId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_retriever_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_request() :: #{}
+-type get_user_request() :: #{}.
+
+
+%% Example:
+%% get_user_response() :: #{
+%%   <<"userAliases">> => list(user_alias())
+%% }
+-type get_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_web_experience_request() :: #{}
+-type get_web_experience_request() :: #{}.
+
+
+%% Example:
+%% get_web_experience_response() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"authenticationConfiguration">> => list(),
+%%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customizationConfiguration">> => customization_configuration(),
+%%   <<"defaultEndpoint">> => string(),
+%%   <<"error">> => error_detail(),
+%%   <<"identityProviderConfiguration">> => list(),
+%%   <<"origins">> => list(string()),
+%%   <<"roleArn">> => string(),
+%%   <<"samplePromptsControlMode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"subtitle">> => string(),
+%%   <<"title">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"webExperienceArn">> => string(),
+%%   <<"webExperienceId">> => string(),
+%%   <<"welcomeMessage">> => string()
+%% }
+-type get_web_experience_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_members() :: #{
+%%   <<"memberGroups">> => list(member_group()),
+%%   <<"memberUsers">> => list(member_user()),
+%%   <<"s3PathForGroupMembers">> => s3()
+%% }
+-type group_members() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_status_detail() :: #{
+%%   <<"errorDetail">> => error_detail(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type group_status_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_summary() :: #{
+%%   <<"groupName">> => string()
+%% }
+-type group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% hallucination_reduction_configuration() :: #{
+%%   <<"hallucinationReductionControl">> => list(any())
+%% }
+-type hallucination_reduction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% hook_configuration() :: #{
+%%   <<"invocationCondition">> => document_attribute_condition(),
+%%   <<"lambdaArn">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"s3BucketName">> => string()
+%% }
+-type hook_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% idc_auth_configuration() :: #{
+%%   <<"idcApplicationArn">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type idc_auth_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_extraction_configuration() :: #{
+%%   <<"imageExtractionStatus">> => list(any())
+%% }
+-type image_extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_source_details() :: #{
+%%   <<"mediaId">> => string(),
+%%   <<"mediaMimeType">> => string()
+%% }
+-type image_source_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% index() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"indexId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type index() :: #{binary() => any()}.
+
+
+%% Example:
+%% index_capacity_configuration() :: #{
+%%   <<"units">> => integer()
+%% }
+-type index_capacity_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% index_statistics() :: #{
+%%   <<"textDocumentStatistics">> => text_document_statistics()
+%% }
+-type index_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_document_enrichment_configuration() :: #{
+%%   <<"condition">> => document_attribute_condition(),
+%%   <<"documentContentOperator">> => list(any()),
+%%   <<"target">> => document_attribute_target()
+%% }
+-type inline_document_enrichment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% instruction_collection() :: #{
+%%   <<"customInstructions">> => string(),
+%%   <<"examples">> => string(),
+%%   <<"identity">> => string(),
+%%   <<"outputStyle">> => string(),
+%%   <<"perspective">> => string(),
+%%   <<"responseLength">> => string(),
+%%   <<"targetAudience">> => string(),
+%%   <<"tone">> => string()
+%% }
+-type instruction_collection() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kendra_index_configuration() :: #{
+%%   <<"indexId">> => string()
+%% }
+-type kendra_index_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% license_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type license_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"applications">> => list(application()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attachments_request() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type list_attachments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attachments_response() :: #{
+%%   <<"attachments">> => list(attachment()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_attachments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_chat_response_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_chat_response_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_chat_response_configurations_response() :: #{
+%%   <<"chatResponseConfigurations">> => list(chat_response_configuration()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_chat_response_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_conversations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type list_conversations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_conversations_response() :: #{
+%%   <<"conversations">> => list(conversation()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_conversations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_accessors_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_accessors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_accessors_response() :: #{
+%%   <<"dataAccessors">> => list(data_accessor()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_accessors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_sync_jobs_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"statusFilter">> => list(any())
+%% }
+-type list_data_source_sync_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_source_sync_jobs_response() :: #{
+%%   <<"history">> => list(data_source_sync_job()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_source_sync_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_data_sources_response() :: #{
+%%   <<"dataSources">> => list(data_source()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_data_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_documents_request() :: #{
+%%   <<"dataSourceIds">> => list(string()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_documents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_documents_response() :: #{
+%%   <<"documentDetailList">> => list(document_details()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_documents_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"updatedEarlierThan">> := non_neg_integer()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"items">> => list(group_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indices_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_indices_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indices_response() :: #{
+%%   <<"indices">> => list(index()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_indices_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_messages_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type list_messages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_messages_response() :: #{
+%%   <<"messages">> => list(message()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_messages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugin_actions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugin_actions_response() :: #{
+%%   <<"items">> => list(action_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugin_type_actions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_type_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugin_type_actions_response() :: #{
+%%   <<"items">> => list(action_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_type_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugin_type_metadata_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_type_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugin_type_metadata_response() :: #{
+%%   <<"items">> => list(plugin_type_metadata_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugin_type_metadata_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugins_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_plugins_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_plugins_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"plugins">> => list(plugin())
+%% }
+-type list_plugins_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrievers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_retrievers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrievers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"retrievers">> => list(retriever())
+%% }
+-type list_retrievers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscriptions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_subscriptions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_subscriptions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"subscriptions">> => list(subscription())
+%% }
+-type list_subscriptions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_web_experiences_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_web_experiences_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_web_experiences_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"webExperiences">> => list(web_experience())
+%% }
+-type list_web_experiences_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_extraction_configuration() :: #{
+%%   <<"audioExtractionConfiguration">> => audio_extraction_configuration(),
+%%   <<"imageExtractionConfiguration">> => image_extraction_configuration(),
+%%   <<"videoExtractionConfiguration">> => video_extraction_configuration()
+%% }
+-type media_extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_too_large_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type media_too_large_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_group() :: #{
+%%   <<"groupName">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type member_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_user() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"userId">> => string()
+%% }
+-type member_user() :: #{binary() => any()}.
+
 
 %% Example:
 %% message() :: #{
@@ -2827,661 +2145,1343 @@
 %% }
 -type message() :: #{binary() => any()}.
 
+
+%% Example:
+%% message_usefulness_feedback() :: #{
+%%   <<"comment">> => string(),
+%%   <<"reason">> => list(any()),
+%%   <<"submittedAt">> => non_neg_integer(),
+%%   <<"usefulness">> => list(any())
+%% }
+-type message_usefulness_feedback() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_event() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"finalTextMessage">> => string(),
+%%   <<"sourceAttributions">> => list(source_attribution()),
+%%   <<"systemMessageId">> => string(),
+%%   <<"userMessageId">> => string()
+%% }
+-type metadata_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% native_index_configuration() :: #{
+%%   <<"boostingOverride">> => map(),
+%%   <<"indexId">> => string(),
+%%   <<"version">> => float()
+%% }
+-type native_index_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% no_auth_configuration() :: #{}
+-type no_auth_configuration() :: #{}.
+
+
+%% Example:
+%% number_attribute_boosting_configuration() :: #{
+%%   <<"boostingLevel">> => list(any()),
+%%   <<"boostingType">> => list(any())
+%% }
+-type number_attribute_boosting_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth2_client_credential_configuration() :: #{
+%%   <<"authorizationUrl">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"secretArn">> => string(),
+%%   <<"tokenUrl">> => string()
+%% }
+-type o_auth2_client_credential_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_id_connect_provider_configuration() :: #{
+%%   <<"secretsArn">> => string(),
+%%   <<"secretsRole">> => string()
+%% }
+-type open_id_connect_provider_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% orchestration_configuration() :: #{
+%%   <<"control">> => list(any())
+%% }
+-type orchestration_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_condition() :: #{
+%%   <<"conditionKey">> => string(),
+%%   <<"conditionOperator">> => list(any()),
+%%   <<"conditionValues">> => list(string())
+%% }
+-type permission_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% personalization_configuration() :: #{
+%%   <<"personalizationControlMode">> => list(any())
+%% }
+-type personalization_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin() :: #{
+%%   <<"buildStatus">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"pluginId">> => string(),
+%%   <<"serverUrl">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type plugin() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin_configuration() :: #{
+%%   <<"pluginId">> => string()
+%% }
+-type plugin_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% plugin_type_metadata_summary() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type plugin_type_metadata_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% principal_group() :: #{
+%%   <<"access">> => list(any()),
+%%   <<"membershipType">> => list(any()),
+%%   <<"name">> => string()
+%% }
+-type principal_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% principal_user() :: #{
+%%   <<"access">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"membershipType">> => list(any())
+%% }
+-type principal_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_feedback_request() :: #{
+%%   <<"messageCopiedAt">> => non_neg_integer(),
+%%   <<"messageUsefulness">> => message_usefulness_feedback(),
+%%   <<"userId">> => string()
+%% }
+-type put_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_group_request() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"groupMembers">> := group_members(),
+%%   <<"groupName">> := string(),
+%%   <<"roleArn">> => string(),
+%%   <<"type">> := list(any())
+%% }
+-type put_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_group_response() :: #{}
+-type put_group_response() :: #{}.
+
+
+%% Example:
+%% q_apps_configuration() :: #{
+%%   <<"qAppsControlMode">> => list(any())
+%% }
+-type q_apps_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_sight_configuration() :: #{
+%%   <<"clientNamespace">> => string()
+%% }
+-type quick_sight_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% relevant_content() :: #{
+%%   <<"content">> => string(),
+%%   <<"documentAttributes">> => list(document_attribute()),
+%%   <<"documentId">> => string(),
+%%   <<"documentTitle">> => string(),
+%%   <<"documentUri">> => string(),
+%%   <<"scoreAttributes">> => score_attributes()
+%% }
+-type relevant_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_configuration() :: #{
+%%   <<"instructionCollection">> => instruction_collection()
+%% }
+-type response_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% retriever() :: #{
+%%   <<"applicationId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"retrieverId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type retriever() :: #{binary() => any()}.
+
+
+%% Example:
+%% retriever_content_source() :: #{
+%%   <<"retrieverId">> => string()
+%% }
+-type retriever_content_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule() :: #{
+%%   <<"excludedUsersAndGroups">> => users_and_groups(),
+%%   <<"includedUsersAndGroups">> => users_and_groups(),
+%%   <<"ruleConfiguration">> => list(),
+%%   <<"ruleType">> => list(any())
+%% }
+-type rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"key">> => string()
+%% }
+-type s3() :: #{binary() => any()}.
+
+
+%% Example:
+%% saml_configuration() :: #{
+%%   <<"metadataXML">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"userGroupAttribute">> => string(),
+%%   <<"userIdAttribute">> => string()
+%% }
+-type saml_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% saml_provider_configuration() :: #{
+%%   <<"authenticationUrl">> => string()
+%% }
+-type saml_provider_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% score_attributes() :: #{
+%%   <<"scoreConfidence">> => list(any())
+%% }
+-type score_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_relevant_content_request() :: #{
+%%   <<"attributeFilter">> => attribute_filter(),
+%%   <<"contentSource">> := list(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryText">> := string()
+%% }
+-type search_relevant_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_relevant_content_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"relevantContent">> => list(relevant_content())
+%% }
+-type search_relevant_content_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% snippet_excerpt() :: #{
+%%   <<"text">> => string()
+%% }
+-type snippet_excerpt() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_attribution() :: #{
+%%   <<"citationNumber">> => integer(),
+%%   <<"datasourceId">> => string(),
+%%   <<"documentId">> => string(),
+%%   <<"indexId">> => string(),
+%%   <<"snippet">> => string(),
+%%   <<"textMessageSegments">> => list(text_segment()),
+%%   <<"title">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"url">> => string()
+%% }
+-type source_attribution() :: #{binary() => any()}.
+
+%% Example:
+%% start_data_source_sync_job_request() :: #{}
+-type start_data_source_sync_job_request() :: #{}.
+
+
+%% Example:
+%% start_data_source_sync_job_response() :: #{
+%%   <<"executionId">> => string()
+%% }
+-type start_data_source_sync_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_data_source_sync_job_request() :: #{}
+-type stop_data_source_sync_job_request() :: #{}.
+
+%% Example:
+%% stop_data_source_sync_job_response() :: #{}
+-type stop_data_source_sync_job_response() :: #{}.
+
+
+%% Example:
+%% string_attribute_boosting_configuration() :: #{
+%%   <<"attributeValueBoosting">> => map(),
+%%   <<"boostingLevel">> => list(any())
+%% }
+-type string_attribute_boosting_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_list_attribute_boosting_configuration() :: #{
+%%   <<"boostingLevel">> => list(any())
+%% }
+-type string_list_attribute_boosting_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription() :: #{
+%%   <<"currentSubscription">> => subscription_details(),
+%%   <<"nextSubscription">> => subscription_details(),
+%%   <<"principal">> => list(),
+%%   <<"subscriptionArn">> => string(),
+%%   <<"subscriptionId">> => string()
+%% }
+-type subscription() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription_details() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type subscription_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% text_document_statistics() :: #{
+%%   <<"indexedTextBytes">> => float(),
+%%   <<"indexedTextDocumentCount">> => integer()
+%% }
+-type text_document_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_input_event() :: #{
+%%   <<"userMessage">> => string()
+%% }
+-type text_input_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_output_event() :: #{
+%%   <<"conversationId">> => string(),
+%%   <<"systemMessage">> => string(),
+%%   <<"systemMessageId">> => string(),
+%%   <<"systemMessageType">> => list(any()),
+%%   <<"userMessageId">> => string()
+%% }
+-type text_output_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_segment() :: #{
+%%   <<"beginOffset">> => integer(),
+%%   <<"endOffset">> => integer(),
+%%   <<"mediaId">> => string(),
+%%   <<"mediaMimeType">> => string(),
+%%   <<"snippetExcerpt">> => snippet_excerpt(),
+%%   <<"sourceDetails">> => list()
+%% }
+-type text_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_configuration() :: #{
+%%   <<"description">> => string(),
+%%   <<"exampleChatMessages">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"rules">> => list(rule())
+%% }
+-type topic_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"attachmentsConfiguration">> => attachments_configuration(),
+%%   <<"autoSubscriptionConfiguration">> => auto_subscription_configuration(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"personalizationConfiguration">> => personalization_configuration(),
+%%   <<"qAppsConfiguration">> => q_apps_configuration(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_response() :: #{}
+-type update_application_response() :: #{}.
+
+
+%% Example:
+%% update_chat_controls_configuration_request() :: #{
+%%   <<"blockedPhrasesConfigurationUpdate">> => blocked_phrases_configuration_update(),
+%%   <<"clientToken">> => string(),
+%%   <<"creatorModeConfiguration">> => creator_mode_configuration(),
+%%   <<"hallucinationReductionConfiguration">> => hallucination_reduction_configuration(),
+%%   <<"orchestrationConfiguration">> => orchestration_configuration(),
+%%   <<"responseScope">> => list(any()),
+%%   <<"topicConfigurationsToCreateOrUpdate">> => list(topic_configuration()),
+%%   <<"topicConfigurationsToDelete">> => list(topic_configuration())
+%% }
+-type update_chat_controls_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_chat_controls_configuration_response() :: #{}
+-type update_chat_controls_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_chat_response_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"responseConfigurations">> := map()
+%% }
+-type update_chat_response_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_chat_response_configuration_response() :: #{}
+-type update_chat_response_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_data_accessor_request() :: #{
+%%   <<"actionConfigurations">> := list(action_configuration()),
+%%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
+%%   <<"displayName">> => string()
+%% }
+-type update_data_accessor_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_accessor_response() :: #{}
+-type update_data_accessor_response() :: #{}.
+
+
+%% Example:
+%% update_data_source_request() :: #{
+%%   <<"configuration">> => any(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
+%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
+%%   <<"roleArn">> => string(),
+%%   <<"syncSchedule">> => string(),
+%%   <<"vpcConfiguration">> => data_source_vpc_configuration()
+%% }
+-type update_data_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_source_response() :: #{}
+-type update_data_source_response() :: #{}.
+
+
+%% Example:
+%% update_index_request() :: #{
+%%   <<"capacityConfiguration">> => index_capacity_configuration(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"documentAttributeConfigurations">> => list(document_attribute_configuration())
+%% }
+-type update_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_index_response() :: #{}
+-type update_index_response() :: #{}.
+
+
+%% Example:
+%% update_plugin_request() :: #{
+%%   <<"authConfiguration">> => list(),
+%%   <<"customPluginConfiguration">> => custom_plugin_configuration(),
+%%   <<"displayName">> => string(),
+%%   <<"serverUrl">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type update_plugin_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_plugin_response() :: #{}
+-type update_plugin_response() :: #{}.
+
+
+%% Example:
+%% update_retriever_request() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"displayName">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_retriever_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_retriever_response() :: #{}
+-type update_retriever_response() :: #{}.
+
+
+%% Example:
+%% update_subscription_request() :: #{
+%%   <<"type">> := list(any())
+%% }
+-type update_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_subscription_response() :: #{
+%%   <<"currentSubscription">> => subscription_details(),
+%%   <<"nextSubscription">> => subscription_details(),
+%%   <<"subscriptionArn">> => string()
+%% }
+-type update_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"userAliasesToDelete">> => list(user_alias()),
+%%   <<"userAliasesToUpdate">> => list(user_alias())
+%% }
+-type update_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_response() :: #{
+%%   <<"userAliasesAdded">> => list(user_alias()),
+%%   <<"userAliasesDeleted">> => list(user_alias()),
+%%   <<"userAliasesUpdated">> => list(user_alias())
+%% }
+-type update_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_web_experience_request() :: #{
+%%   <<"authenticationConfiguration">> => list(),
+%%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
+%%   <<"customizationConfiguration">> => customization_configuration(),
+%%   <<"identityProviderConfiguration">> => list(),
+%%   <<"origins">> => list(string()),
+%%   <<"roleArn">> => string(),
+%%   <<"samplePromptsControlMode">> => list(any()),
+%%   <<"subtitle">> => string(),
+%%   <<"title">> => string(),
+%%   <<"welcomeMessage">> => string()
+%% }
+-type update_web_experience_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_web_experience_response() :: #{}
+-type update_web_experience_response() :: #{}.
+
+
+%% Example:
+%% user_alias() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"indexId">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type user_alias() :: #{binary() => any()}.
+
+
+%% Example:
+%% users_and_groups() :: #{
+%%   <<"userGroups">> => list(string()),
+%%   <<"userIds">> => list(string())
+%% }
+-type users_and_groups() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fields">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_extraction_configuration() :: #{
+%%   <<"videoExtractionStatus">> => list(any())
+%% }
+-type video_extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_source_details() :: #{
+%%   <<"endTimeMilliseconds">> => float(),
+%%   <<"mediaId">> => string(),
+%%   <<"mediaMimeType">> => string(),
+%%   <<"startTimeMilliseconds">> => float(),
+%%   <<"videoExtractionType">> => list(any())
+%% }
+-type video_source_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_experience() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"defaultEndpoint">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"webExperienceId">> => string()
+%% }
+-type web_experience() :: #{binary() => any()}.
+
 -type associate_permission_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_delete_document_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_put_document_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type chat_errors() ::
-    external_resource_exception() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
-    license_not_found_exception().
-
--type chat_sync_errors() ::
-    external_resource_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
-    license_not_found_exception().
-
--type check_document_access_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type create_anonymous_web_experience_url_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type create_application_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_chat_response_configuration_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_data_accessor_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_data_source_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_index_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_plugin_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_retriever_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_subscription_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_user_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_web_experience_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_application_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_attachment_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    license_not_found_exception().
-
--type delete_chat_controls_configuration_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type delete_chat_response_configuration_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_conversation_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
-    license_not_found_exception().
-
--type delete_data_accessor_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_data_source_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_group_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_index_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_plugin_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_retriever_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_user_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type delete_web_experience_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type disassociate_permission_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type get_application_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type get_chat_controls_configuration_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type get_chat_response_configuration_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type get_data_accessor_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type get_data_source_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type get_document_content_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type get_group_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type get_index_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
-
--type get_media_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
     license_not_found_exception() | 
-    media_too_large_exception().
+    internal_server_exception() | 
+    external_resource_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type chat_sync_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    license_not_found_exception() | 
+    internal_server_exception() | 
+    external_resource_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type check_document_access_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type create_anonymous_web_experience_url_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type create_application_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_chat_response_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_data_accessor_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_data_source_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_index_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_plugin_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_retriever_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_subscription_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_user_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_web_experience_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_application_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_attachment_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    license_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type delete_chat_controls_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type delete_chat_response_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_conversation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    license_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_data_accessor_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_data_source_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_group_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_index_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_plugin_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_retriever_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_user_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_web_experience_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type disassociate_permission_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_application_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_chat_controls_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_chat_response_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_data_accessor_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_data_source_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_document_content_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_group_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_index_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_media_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    media_too_large_exception() | 
+    license_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_plugin_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_retriever_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_web_experience_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_applications_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_attachments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    license_not_found_exception().
+    license_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_chat_response_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_conversations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    license_not_found_exception().
+    license_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_data_accessors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_data_source_sync_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_data_sources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_documents_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_indices_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_messages_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    license_not_found_exception().
+    license_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_plugin_actions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_plugin_type_actions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_plugin_type_metadata_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_plugins_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_retrievers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_subscriptions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_web_experiences_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_feedback_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type search_relevant_content_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    license_not_found_exception().
+    license_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_data_source_sync_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_data_source_sync_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_chat_controls_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_chat_response_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_data_accessor_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_data_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_plugin_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_retriever_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_subscription_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_user_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_web_experience_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

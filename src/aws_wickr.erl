@@ -191,92 +191,60 @@
 
 
 %% Example:
-%% create_network_response() :: #{
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"networkId">> => string(),
-%%   <<"networkName">> => string()
-%% }
--type create_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_security_groups_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"sortDirection">> => list(any()),
-%%   <<"sortFields">> => string()
-%% }
--type list_security_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_networks_response() :: #{
-%%   <<"networks">> => list(network()),
-%%   <<"nextToken">> => string()
-%% }
--type list_networks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_lookup_user_uname_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"unames">> := list(string())
-%% }
--type batch_lookup_user_uname_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_security_group_response() :: #{
-%%   <<"groupId">> => string(),
-%%   <<"message">> => string(),
-%%   <<"networkId">> => string()
-%% }
--type delete_security_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_opentdf_config_response() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string(),
-%%   <<"domain">> => string(),
-%%   <<"provider">> => string()
-%% }
--type register_opentdf_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_network_settings_request() :: #{}
--type get_network_settings_request() :: #{}.
-
-
-%% Example:
-%% list_devices_for_user_response() :: #{
-%%   <<"devices">> => list(basic_device_object()),
-%%   <<"nextToken">> => string()
-%% }
--type list_devices_for_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% shredder_settings() :: #{
-%%   <<"canProcessManually">> => [boolean()],
-%%   <<"intensity">> => [integer()]
-%% }
--type shredder_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% wickr_aws_networks() :: #{
-%%   <<"networkId">> => string(),
-%%   <<"region">> => string()
-%% }
--type wickr_aws_networks() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_error() :: #{
+%% bad_request_error() :: #{
 %%   <<"message">> => string()
 %% }
--type forbidden_error() :: #{binary() => any()}.
+-type bad_request_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% basic_device_object() :: #{
+%%   <<"appId">> => string(),
+%%   <<"created">> => string(),
+%%   <<"lastLogin">> => string(),
+%%   <<"statusText">> => string(),
+%%   <<"suspend">> => [boolean()],
+%%   <<"type">> => string()
+%% }
+-type basic_device_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_user_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"users">> := list(batch_create_user_request_item())
+%% }
+-type batch_create_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_user_request_item() :: #{
+%%   <<"codeValidation">> => [boolean()],
+%%   <<"firstName">> => string(),
+%%   <<"inviteCode">> => string(),
+%%   <<"inviteCodeTtl">> => [integer()],
+%%   <<"lastName">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"username">> => string()
+%% }
+-type batch_create_user_request_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_user_response() :: #{
+%%   <<"failed">> => list(batch_user_error_response_item()),
+%%   <<"message">> => string(),
+%%   <<"successful">> => list(user())
+%% }
+-type batch_create_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_user_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"userIds">> := list(string())
+%% }
+-type batch_delete_user_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -289,72 +257,79 @@
 
 
 %% Example:
-%% get_bots_count_response() :: #{
-%%   <<"active">> => [integer()],
-%%   <<"pending">> => [integer()],
-%%   <<"total">> => [integer()]
+%% batch_device_error_response_item() :: #{
+%%   <<"appId">> => string(),
+%%   <<"field">> => string(),
+%%   <<"reason">> => string()
 %% }
--type get_bots_count_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_network_request() :: #{}
--type get_network_request() :: #{}.
+-type batch_device_error_response_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_data_retention_bot_response() :: #{
-%%   <<"message">> => string()
+%% batch_device_success_response_item() :: #{
+%%   <<"appId">> => string()
 %% }
--type delete_data_retention_bot_response() :: #{binary() => any()}.
+-type batch_device_success_response_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% setting() :: #{
-%%   <<"optionName">> => string(),
-%%   <<"type">> => string(),
-%%   <<"value">> => string()
+%% batch_lookup_user_uname_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"unames">> := list(string())
 %% }
--type setting() :: #{binary() => any()}.
+-type batch_lookup_user_uname_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_user_response() :: #{
-%%   <<"codeValidation">> => [boolean()],
-%%   <<"firstName">> => string(),
-%%   <<"inviteCode">> => string(),
-%%   <<"inviteExpiration">> => [integer()],
-%%   <<"lastName">> => string(),
-%%   <<"middleName">> => string(),
-%%   <<"modified">> => [integer()],
-%%   <<"networkId">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => [integer()],
-%%   <<"suspended">> => [boolean()],
-%%   <<"userId">> => string()
+%% batch_lookup_user_uname_response() :: #{
+%%   <<"failed">> => list(batch_uname_error_response_item()),
+%%   <<"message">> => string(),
+%%   <<"successful">> => list(batch_uname_success_response_item())
 %% }
--type update_user_response() :: #{binary() => any()}.
+-type batch_lookup_user_uname_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_oidc_info_response() :: #{
-%%   <<"openidConnectInfo">> => oidc_config_info(),
-%%   <<"tokenInfo">> => oidc_token_info()
+%% batch_reinvite_user_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"userIds">> := list(string())
 %% }
--type get_oidc_info_response() :: #{binary() => any()}.
+-type batch_reinvite_user_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_network_settings_response() :: #{
-%%   <<"settings">> => list(setting())
+%% batch_reinvite_user_response() :: #{
+%%   <<"failed">> => list(batch_user_error_response_item()),
+%%   <<"message">> => string(),
+%%   <<"successful">> => list(batch_user_success_response_item())
 %% }
--type update_network_settings_response() :: #{binary() => any()}.
+-type batch_reinvite_user_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_security_group_response() :: #{
-%%   <<"securityGroup">> => security_group()
+%% batch_reset_devices_for_user_request() :: #{
+%%   <<"appIds">> := list(string()),
+%%   <<"clientToken">> => string()
 %% }
--type get_security_group_response() :: #{binary() => any()}.
+-type batch_reset_devices_for_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_reset_devices_for_user_response() :: #{
+%%   <<"failed">> => list(batch_device_error_response_item()),
+%%   <<"message">> => string(),
+%%   <<"successful">> => list(batch_device_success_response_item())
+%% }
+-type batch_reset_devices_for_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_toggle_user_suspend_status_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"suspend">> := [boolean()],
+%%   <<"userIds">> := list(string())
+%% }
+-type batch_toggle_user_suspend_status_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -367,16 +342,153 @@
 
 
 %% Example:
-%% batch_lookup_user_uname_response() :: #{
-%%   <<"failed">> => list(batch_uname_error_response_item()),
-%%   <<"message">> => string(),
-%%   <<"successful">> => list(batch_uname_success_response_item())
+%% batch_uname_error_response_item() :: #{
+%%   <<"field">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"uname">> => string()
 %% }
--type batch_lookup_user_uname_response() :: #{binary() => any()}.
+-type batch_uname_error_response_item() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_bot_request() :: #{}
--type get_bot_request() :: #{}.
+%% batch_uname_success_response_item() :: #{
+%%   <<"uname">> => string(),
+%%   <<"username">> => string()
+%% }
+-type batch_uname_success_response_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_user_error_response_item() :: #{
+%%   <<"field">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"userId">> => string()
+%% }
+-type batch_user_error_response_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_user_success_response_item() :: #{
+%%   <<"userId">> => string()
+%% }
+-type batch_user_success_response_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% blocked_guest_user() :: #{
+%%   <<"admin">> => string(),
+%%   <<"modified">> => string(),
+%%   <<"username">> => string(),
+%%   <<"usernameHash">> => string()
+%% }
+-type blocked_guest_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% bot() :: #{
+%%   <<"botId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"groupId">> => string(),
+%%   <<"hasChallenge">> => [boolean()],
+%%   <<"lastLogin">> => string(),
+%%   <<"pubkey">> => string(),
+%%   <<"status">> => list(integer()),
+%%   <<"suspended">> => [boolean()],
+%%   <<"uname">> => string(),
+%%   <<"username">> => string()
+%% }
+-type bot() :: #{binary() => any()}.
+
+
+%% Example:
+%% calling_settings() :: #{
+%%   <<"canStart11Call">> => [boolean()],
+%%   <<"canVideoCall">> => [boolean()],
+%%   <<"forceTcpCall">> => [boolean()]
+%% }
+-type calling_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% consent_popup_config() :: #{
+%%   <<"closeButtonLabel">> => string(),
+%%   <<"content">> => string(),
+%%   <<"enabled">> => [boolean()],
+%%   <<"header">> => string()
+%% }
+-type consent_popup_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_request() :: #{
+%%   <<"challenge">> := string(),
+%%   <<"displayName">> => string(),
+%%   <<"groupId">> := string(),
+%%   <<"username">> := string()
+%% }
+-type create_bot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bot_response() :: #{
+%%   <<"botId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"groupId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"networkId">> => string(),
+%%   <<"username">> => string()
+%% }
+-type create_bot_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_retention_bot_challenge_request() :: #{}
+-type create_data_retention_bot_challenge_request() :: #{}.
+
+
+%% Example:
+%% create_data_retention_bot_challenge_response() :: #{
+%%   <<"challenge">> => string()
+%% }
+-type create_data_retention_bot_challenge_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_retention_bot_request() :: #{}
+-type create_data_retention_bot_request() :: #{}.
+
+
+%% Example:
+%% create_data_retention_bot_response() :: #{
+%%   <<"message">> => string()
+%% }
+-type create_data_retention_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_network_request() :: #{
+%%   <<"accessLevel">> := list(any()),
+%%   <<"enablePremiumFreeTrial">> => [boolean()],
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"networkName">> := string()
+%% }
+-type create_network_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_network_response() :: #{
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"networkId">> => string(),
+%%   <<"networkName">> => string()
+%% }
+-type create_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_security_group_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"name">> := string(),
+%%   <<"securityGroupSettings">> := security_group_settings_request()
+%% }
+-type create_security_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -388,6 +500,70 @@
 %% Example:
 %% delete_bot_request() :: #{}
 -type delete_bot_request() :: #{}.
+
+
+%% Example:
+%% delete_bot_response() :: #{
+%%   <<"message">> => string()
+%% }
+-type delete_bot_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_retention_bot_request() :: #{}
+-type delete_data_retention_bot_request() :: #{}.
+
+
+%% Example:
+%% delete_data_retention_bot_response() :: #{
+%%   <<"message">> => string()
+%% }
+-type delete_data_retention_bot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_network_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_network_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_network_response() :: #{
+%%   <<"message">> => string()
+%% }
+-type delete_network_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_security_group_request() :: #{}
+-type delete_security_group_request() :: #{}.
+
+
+%% Example:
+%% delete_security_group_response() :: #{
+%%   <<"groupId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"networkId">> => string()
+%% }
+-type delete_security_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"field">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type forbidden_error() :: #{binary() => any()}.
+
+%% Example:
+%% get_bot_request() :: #{}
+-type get_bot_request() :: #{}.
 
 
 %% Example:
@@ -405,105 +581,34 @@
 %% }
 -type get_bot_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_bots_count_request() :: #{}
+-type get_bots_count_request() :: #{}.
+
 
 %% Example:
-%% unauthorized_error() :: #{
-%%   <<"message">> => string()
+%% get_bots_count_response() :: #{
+%%   <<"active">> => [integer()],
+%%   <<"pending">> => [integer()],
+%%   <<"total">> => [integer()]
 %% }
--type unauthorized_error() :: #{binary() => any()}.
+-type get_bots_count_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_retention_bot_request() :: #{}
+-type get_data_retention_bot_request() :: #{}.
 
 
 %% Example:
-%% security_group_settings_request() :: #{
-%%   <<"enableGuestFederation">> => [boolean()],
-%%   <<"enableRestrictedGlobalFederation">> => [boolean()],
-%%   <<"federationMode">> => [integer()],
-%%   <<"globalFederation">> => [boolean()],
-%%   <<"lockoutThreshold">> => [integer()],
-%%   <<"permittedNetworks">> => list(string()),
-%%   <<"permittedWickrAwsNetworks">> => list(wickr_aws_networks()),
-%%   <<"permittedWickrEnterpriseNetworks">> => list(permitted_wickr_enterprise_network())
+%% get_data_retention_bot_response() :: #{
+%%   <<"botExists">> => [boolean()],
+%%   <<"botName">> => string(),
+%%   <<"isBotActive">> => [boolean()],
+%%   <<"isDataRetentionBotRegistered">> => [boolean()],
+%%   <<"isDataRetentionServiceEnabled">> => [boolean()],
+%%   <<"isPubkeyMsgAcked">> => [boolean()]
 %% }
--type security_group_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_reset_devices_for_user_request() :: #{
-%%   <<"appIds">> := list(string()),
-%%   <<"clientToken">> => string()
-%% }
--type batch_reset_devices_for_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_user_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"userIds">> := list(string())
-%% }
--type batch_delete_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_security_group_request() :: #{}
--type get_security_group_request() :: #{}.
-
-
-%% Example:
-%% consent_popup_config() :: #{
-%%   <<"closeButtonLabel">> => string(),
-%%   <<"content">> => string(),
-%%   <<"enabled">> => [boolean()],
-%%   <<"header">> => string()
-%% }
--type consent_popup_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_user_response() :: #{
-%%   <<"firstName">> => string(),
-%%   <<"isAdmin">> => [boolean()],
-%%   <<"lastActivity">> => [integer()],
-%%   <<"lastLogin">> => [integer()],
-%%   <<"lastName">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => [integer()],
-%%   <<"suspended">> => [boolean()],
-%%   <<"userId">> => string(),
-%%   <<"username">> => string()
-%% }
--type get_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_security_group_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"name">> := string(),
-%%   <<"securityGroupSettings">> := security_group_settings_request()
-%% }
--type create_security_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_toggle_user_suspend_status_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"suspend">> := [boolean()],
-%%   <<"userIds">> := list(string())
-%% }
--type batch_toggle_user_suspend_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_user_success_response_item() :: #{
-%%   <<"userId">> => string()
-%% }
--type batch_user_success_response_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_guest_users_response() :: #{
-%%   <<"guestlist">> => list(guest_user()),
-%%   <<"nextToken">> => string()
-%% }
--type list_guest_users_response() :: #{binary() => any()}.
+-type get_data_retention_bot_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_guest_user_history_count_request() :: #{}
@@ -511,172 +616,40 @@
 
 
 %% Example:
-%% delete_network_response() :: #{
-%%   <<"message">> => string()
+%% get_guest_user_history_count_response() :: #{
+%%   <<"history">> => list(guest_user_history_count())
 %% }
--type delete_network_response() :: #{binary() => any()}.
+-type get_guest_user_history_count_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_network_request() :: #{}
+-type get_network_request() :: #{}.
 
 
 %% Example:
-%% list_security_group_users_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"users">> => list(user())
+%% get_network_response() :: #{
+%%   <<"accessLevel">> => list(any()),
+%%   <<"awsAccountId">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"freeTrialExpiration">> => string(),
+%%   <<"migrationState">> => [integer()],
+%%   <<"networkArn">> => string(),
+%%   <<"networkId">> => string(),
+%%   <<"networkName">> => string(),
+%%   <<"standing">> => [integer()]
 %% }
--type list_security_group_users_response() :: #{binary() => any()}.
+-type get_network_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_network_settings_request() :: #{}
+-type get_network_settings_request() :: #{}.
 
 
 %% Example:
-%% batch_uname_error_response_item() :: #{
-%%   <<"field">> => string(),
-%%   <<"reason">> => string(),
-%%   <<"uname">> => string()
+%% get_network_settings_response() :: #{
+%%   <<"settings">> => list(setting())
 %% }
--type batch_uname_error_response_item() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_retention_bot_challenge_request() :: #{}
--type create_data_retention_bot_challenge_request() :: #{}.
-
-
-%% Example:
-%% list_security_groups_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"securityGroups">> => list(security_group())
-%% }
--type list_security_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_settings() :: #{
-%%   <<"consentPopup">> => consent_popup_config(),
-%%   <<"dataRetention">> => [boolean()],
-%%   <<"enableClientMetrics">> => [boolean()],
-%%   <<"enableTrustedDataFormat">> => [boolean()],
-%%   <<"readReceiptConfig">> => read_receipt_config()
-%% }
--type network_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_error() :: #{
-%%   <<"message">> => string()
-%% }
--type bad_request_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_retention_bot_challenge_response() :: #{
-%%   <<"challenge">> => string()
-%% }
--type create_data_retention_bot_challenge_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_users_count_response() :: #{
-%%   <<"active">> => [integer()],
-%%   <<"pending">> => [integer()],
-%%   <<"rejected">> => [integer()],
-%%   <<"remaining">> => [integer()],
-%%   <<"total">> => [integer()]
-%% }
--type get_users_count_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_security_group_request() :: #{}
--type delete_security_group_request() :: #{}.
-
-
-%% Example:
-%% list_bots_request() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"groupId">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"sortDirection">> => list(any()),
-%%   <<"sortFields">> => string(),
-%%   <<"status">> => list(integer()),
-%%   <<"username">> => string()
-%% }
--type list_bots_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_retention_bot_request() :: #{}
--type delete_data_retention_bot_request() :: #{}.
-
-
-%% Example:
-%% get_user_request() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type get_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_retention_bot_request() :: #{}
--type create_data_retention_bot_request() :: #{}.
-
-
-%% Example:
-%% delete_bot_response() :: #{
-%%   <<"message">> => string()
-%% }
--type delete_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_network_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_network_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% basic_device_object() :: #{
-%%   <<"appId">> => string(),
-%%   <<"created">> => string(),
-%%   <<"lastLogin">> => string(),
-%%   <<"statusText">> => string(),
-%%   <<"suspend">> => [boolean()],
-%%   <<"type">> => string()
-%% }
--type basic_device_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_opentdf_config_response() :: #{
-%%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string(),
-%%   <<"domain">> => string(),
-%%   <<"provider">> => string()
-%% }
--type get_opentdf_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_oidc_config_test_response() :: #{
-%%   <<"authorizationEndpoint">> => string(),
-%%   <<"endSessionEndpoint">> => string(),
-%%   <<"grantTypesSupported">> => list(string()),
-%%   <<"issuer">> => string(),
-%%   <<"logoutEndpoint">> => string(),
-%%   <<"microsoftMultiRefreshToken">> => [boolean()],
-%%   <<"responseTypesSupported">> => list(string()),
-%%   <<"revocationEndpoint">> => string(),
-%%   <<"scopesSupported">> => list(string()),
-%%   <<"tokenEndpoint">> => string(),
-%%   <<"tokenEndpointAuthMethodsSupported">> => list(string()),
-%%   <<"userinfoEndpoint">> => string()
-%% }
--type register_oidc_config_test_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_device_error_response_item() :: #{
-%%   <<"appId">> => string(),
-%%   <<"field">> => string(),
-%%   <<"reason">> => string()
-%% }
--type batch_device_error_response_item() :: #{binary() => any()}.
+-type get_network_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -694,59 +667,159 @@
 
 
 %% Example:
-%% update_network_settings_request() :: #{
-%%   <<"settings">> := network_settings()
+%% get_oidc_info_response() :: #{
+%%   <<"openidConnectInfo">> => oidc_config_info(),
+%%   <<"tokenInfo">> => oidc_token_info()
 %% }
--type update_network_settings_request() :: #{binary() => any()}.
+-type get_oidc_info_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_opentdf_config_request() :: #{}
+-type get_opentdf_config_request() :: #{}.
 
 
 %% Example:
-%% get_network_settings_response() :: #{
-%%   <<"settings">> => list(setting())
+%% get_opentdf_config_response() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"domain">> => string(),
+%%   <<"provider">> => string()
 %% }
--type get_network_settings_response() :: #{binary() => any()}.
+-type get_opentdf_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_security_group_request() :: #{}
+-type get_security_group_request() :: #{}.
 
 
 %% Example:
-%% update_guest_user_request() :: #{
-%%   <<"block">> := [boolean()]
+%% get_security_group_response() :: #{
+%%   <<"securityGroup">> => security_group()
 %% }
--type update_guest_user_request() :: #{binary() => any()}.
+-type get_security_group_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_users_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"users">> => list(user())
+%% get_user_request() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"startTime">> => [non_neg_integer()]
 %% }
--type list_users_response() :: #{binary() => any()}.
+-type get_user_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% blocked_guest_user() :: #{
-%%   <<"admin">> => string(),
-%%   <<"modified">> => string(),
+%% get_user_response() :: #{
+%%   <<"firstName">> => string(),
+%%   <<"isAdmin">> => [boolean()],
+%%   <<"lastActivity">> => [integer()],
+%%   <<"lastLogin">> => [integer()],
+%%   <<"lastName">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => [integer()],
+%%   <<"suspended">> => [boolean()],
+%%   <<"userId">> => string(),
+%%   <<"username">> => string()
+%% }
+-type get_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_users_count_request() :: #{}
+-type get_users_count_request() :: #{}.
+
+
+%% Example:
+%% get_users_count_response() :: #{
+%%   <<"active">> => [integer()],
+%%   <<"pending">> => [integer()],
+%%   <<"rejected">> => [integer()],
+%%   <<"remaining">> => [integer()],
+%%   <<"total">> => [integer()]
+%% }
+-type get_users_count_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% guest_user() :: #{
+%%   <<"billingPeriod">> => string(),
 %%   <<"username">> => string(),
 %%   <<"usernameHash">> => string()
 %% }
--type blocked_guest_user() :: #{binary() => any()}.
+-type guest_user() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_networks_request() :: #{
+%% guest_user_history_count() :: #{
+%%   <<"count">> => string(),
+%%   <<"month">> => string()
+%% }
+-type guest_user_history_count() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_blocked_guest_users_request() :: #{
+%%   <<"admin">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sortDirection">> => list(any()),
+%%   <<"sortFields">> => string(),
+%%   <<"username">> => string()
+%% }
+-type list_blocked_guest_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_blocked_guest_users_response() :: #{
+%%   <<"blocklist">> => list(blocked_guest_user()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_blocked_guest_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bots_request() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"groupId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sortDirection">> => list(any()),
+%%   <<"sortFields">> => string(),
+%%   <<"status">> => list(integer()),
+%%   <<"username">> => string()
+%% }
+-type list_bots_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bots_response() :: #{
+%%   <<"bots">> => list(bot()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_bots_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_devices_for_user_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
 %%   <<"sortDirection">> => list(any()),
 %%   <<"sortFields">> => string()
 %% }
--type list_networks_request() :: #{binary() => any()}.
+-type list_devices_for_user_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_data_retention_request() :: #{
-%%   <<"actionType">> := list(any())
+%% list_devices_for_user_response() :: #{
+%%   <<"devices">> => list(basic_device_object()),
+%%   <<"nextToken">> => string()
 %% }
--type update_data_retention_request() :: #{binary() => any()}.
+-type list_devices_for_user_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -762,55 +835,194 @@
 
 
 %% Example:
-%% validation_error() :: #{
-%%   <<"message">> => string(),
-%%   <<"reasons">> => list(error_detail())
+%% list_guest_users_response() :: #{
+%%   <<"guestlist">> => list(guest_user()),
+%%   <<"nextToken">> => string()
 %% }
--type validation_error() :: #{binary() => any()}.
+-type list_guest_users_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_create_user_response() :: #{
-%%   <<"failed">> => list(batch_user_error_response_item()),
-%%   <<"message">> => string(),
-%%   <<"successful">> => list(user())
+%% list_networks_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sortDirection">> => list(any()),
+%%   <<"sortFields">> => string()
 %% }
--type batch_create_user_response() :: #{binary() => any()}.
+-type list_networks_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_reset_devices_for_user_response() :: #{
-%%   <<"failed">> => list(batch_device_error_response_item()),
-%%   <<"message">> => string(),
-%%   <<"successful">> => list(batch_device_success_response_item())
+%% list_networks_response() :: #{
+%%   <<"networks">> => list(network()),
+%%   <<"nextToken">> => string()
 %% }
--type batch_reset_devices_for_user_response() :: #{binary() => any()}.
+-type list_networks_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% security_group() :: #{
-%%   <<"activeDirectoryGuid">> => string(),
-%%   <<"activeMembers">> => [integer()],
-%%   <<"botMembers">> => [integer()],
-%%   <<"id">> => string(),
-%%   <<"isDefault">> => [boolean()],
-%%   <<"modified">> => [integer()],
-%%   <<"name">> => string(),
-%%   <<"securityGroupSettings">> => security_group_settings()
+%% list_security_group_users_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sortDirection">> => list(any()),
+%%   <<"sortFields">> => string()
 %% }
--type security_group() :: #{binary() => any()}.
+-type list_security_group_users_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_blocked_guest_users_request() :: #{
-%%   <<"admin">> => string(),
+%% list_security_group_users_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"users">> => list(user())
+%% }
+-type list_security_group_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_groups_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sortDirection">> => list(any()),
+%%   <<"sortFields">> => string()
+%% }
+-type list_security_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_groups_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"securityGroups">> => list(security_group())
+%% }
+-type list_security_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"firstName">> => string(),
+%%   <<"groupId">> => string(),
+%%   <<"lastName">> => string(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
 %%   <<"sortDirection">> => list(any()),
 %%   <<"sortFields">> => string(),
+%%   <<"status">> => list(integer()),
 %%   <<"username">> => string()
 %% }
--type list_blocked_guest_users_request() :: #{binary() => any()}.
+-type list_users_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"users">> => list(user())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% network() :: #{
+%%   <<"accessLevel">> => list(any()),
+%%   <<"awsAccountId">> => string(),
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"freeTrialExpiration">> => string(),
+%%   <<"migrationState">> => [integer()],
+%%   <<"networkArn">> => string(),
+%%   <<"networkId">> => string(),
+%%   <<"networkName">> => string(),
+%%   <<"standing">> => [integer()]
+%% }
+-type network() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_settings() :: #{
+%%   <<"consentPopup">> => consent_popup_config(),
+%%   <<"dataRetention">> => [boolean()],
+%%   <<"enableClientMetrics">> => [boolean()],
+%%   <<"enableTrustedDataFormat">> => [boolean()],
+%%   <<"readReceiptConfig">> => read_receipt_config()
+%% }
+-type network_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% oidc_config_info() :: #{
+%%   <<"applicationId">> => [integer()],
+%%   <<"applicationName">> => string(),
+%%   <<"caCertificate">> => string(),
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"companyId">> => string(),
+%%   <<"customUsername">> => string(),
+%%   <<"extraAuthParams">> => string(),
+%%   <<"issuer">> => string(),
+%%   <<"redirectUrl">> => string(),
+%%   <<"scopes">> => string(),
+%%   <<"secret">> => string(),
+%%   <<"ssoTokenBufferMinutes">> => [integer()],
+%%   <<"userId">> => string()
+%% }
+-type oidc_config_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% oidc_token_info() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"codeChallenge">> => string(),
+%%   <<"codeVerifier">> => string(),
+%%   <<"expiresIn">> => [float()],
+%%   <<"idToken">> => string(),
+%%   <<"refreshToken">> => string(),
+%%   <<"tokenType">> => string()
+%% }
+-type oidc_token_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% password_requirements() :: #{
+%%   <<"lowercase">> => [integer()],
+%%   <<"minLength">> => [integer()],
+%%   <<"numbers">> => [integer()],
+%%   <<"symbols">> => [integer()],
+%%   <<"uppercase">> => [integer()]
+%% }
+-type password_requirements() :: #{binary() => any()}.
+
+
+%% Example:
+%% permitted_wickr_enterprise_network() :: #{
+%%   <<"domain">> => string(),
+%%   <<"networkId">> => string()
+%% }
+-type permitted_wickr_enterprise_network() :: #{binary() => any()}.
+
+
+%% Example:
+%% rate_limit_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type rate_limit_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_receipt_config() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type read_receipt_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_oidc_config_request() :: #{
+%%   <<"companyId">> := string(),
+%%   <<"customUsername">> => string(),
+%%   <<"extraAuthParams">> => string(),
+%%   <<"issuer">> := string(),
+%%   <<"scopes">> := string(),
+%%   <<"secret">> => string(),
+%%   <<"ssoTokenBufferMinutes">> => [integer()],
+%%   <<"userId">> => string()
+%% }
+-type register_oidc_config_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -834,45 +1046,6 @@
 
 
 %% Example:
-%% password_requirements() :: #{
-%%   <<"lowercase">> => [integer()],
-%%   <<"minLength">> => [integer()],
-%%   <<"numbers">> => [integer()],
-%%   <<"symbols">> => [integer()],
-%%   <<"uppercase">> => [integer()]
-%% }
--type password_requirements() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_data_retention_bot_response() :: #{
-%%   <<"message">> => string()
-%% }
--type create_data_retention_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_guest_user_response() :: #{
-%%   <<"message">> => string()
-%% }
--type update_guest_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_retention_bot_request() :: #{}
--type get_data_retention_bot_request() :: #{}.
-
-
-%% Example:
-%% list_security_group_users_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"sortDirection">> => list(any()),
-%%   <<"sortFields">> => string()
-%% }
--type list_security_group_users_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% register_oidc_config_test_request() :: #{
 %%   <<"certificate">> => string(),
 %%   <<"extraAuthParams">> => string(),
@@ -883,99 +1056,21 @@
 
 
 %% Example:
-%% permitted_wickr_enterprise_network() :: #{
-%%   <<"domain">> => string(),
-%%   <<"networkId">> => string()
+%% register_oidc_config_test_response() :: #{
+%%   <<"authorizationEndpoint">> => string(),
+%%   <<"endSessionEndpoint">> => string(),
+%%   <<"grantTypesSupported">> => list(string()),
+%%   <<"issuer">> => string(),
+%%   <<"logoutEndpoint">> => string(),
+%%   <<"microsoftMultiRefreshToken">> => [boolean()],
+%%   <<"responseTypesSupported">> => list(string()),
+%%   <<"revocationEndpoint">> => string(),
+%%   <<"scopesSupported">> => list(string()),
+%%   <<"tokenEndpoint">> => string(),
+%%   <<"tokenEndpointAuthMethodsSupported">> => list(string()),
+%%   <<"userinfoEndpoint">> => string()
 %% }
--type permitted_wickr_enterprise_network() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bots_response() :: #{
-%%   <<"bots">> => list(bot()),
-%%   <<"nextToken">> => string()
-%% }
--type list_bots_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% guest_user() :: #{
-%%   <<"billingPeriod">> => string(),
-%%   <<"username">> => string(),
-%%   <<"usernameHash">> => string()
-%% }
--type guest_user() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_network_request() :: #{
-%%   <<"accessLevel">> := list(any()),
-%%   <<"enablePremiumFreeTrial">> => [boolean()],
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"networkName">> := string()
-%% }
--type create_network_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_error() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_reinvite_user_response() :: #{
-%%   <<"failed">> => list(batch_user_error_response_item()),
-%%   <<"message">> => string(),
-%%   <<"successful">> => list(batch_user_success_response_item())
-%% }
--type batch_reinvite_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_detail() :: #{
-%%   <<"field">> => string(),
-%%   <<"reason">> => string()
-%% }
--type error_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_error() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_error() :: #{binary() => any()}.
-
-%% Example:
-%% get_bots_count_request() :: #{}
--type get_bots_count_request() :: #{}.
-
-%% Example:
-%% get_opentdf_config_request() :: #{}
--type get_opentdf_config_request() :: #{}.
-
-
-%% Example:
-%% get_network_response() :: #{
-%%   <<"accessLevel">> => list(any()),
-%%   <<"awsAccountId">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"freeTrialExpiration">> => string(),
-%%   <<"migrationState">> => [integer()],
-%%   <<"networkArn">> => string(),
-%%   <<"networkId">> => string(),
-%%   <<"networkName">> => string(),
-%%   <<"standing">> => [integer()]
-%% }
--type get_network_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_network_response() :: #{
-%%   <<"message">> => string()
-%% }
--type update_network_response() :: #{binary() => any()}.
+-type register_oidc_config_test_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -990,11 +1085,114 @@
 
 
 %% Example:
-%% guest_user_history_count() :: #{
-%%   <<"count">> => string(),
-%%   <<"month">> => string()
+%% register_opentdf_config_response() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"domain">> => string(),
+%%   <<"provider">> => string()
 %% }
--type guest_user_history_count() :: #{binary() => any()}.
+-type register_opentdf_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_group() :: #{
+%%   <<"activeDirectoryGuid">> => string(),
+%%   <<"activeMembers">> => [integer()],
+%%   <<"botMembers">> => [integer()],
+%%   <<"id">> => string(),
+%%   <<"isDefault">> => [boolean()],
+%%   <<"modified">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"securityGroupSettings">> => security_group_settings()
+%% }
+-type security_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_group_settings() :: #{
+%%   <<"alwaysReauthenticate">> => [boolean()],
+%%   <<"atakPackageValues">> => list(string()),
+%%   <<"calling">> => calling_settings(),
+%%   <<"checkForUpdates">> => [boolean()],
+%%   <<"enableAtak">> => [boolean()],
+%%   <<"enableCrashReports">> => [boolean()],
+%%   <<"enableFileDownload">> => [boolean()],
+%%   <<"enableGuestFederation">> => [boolean()],
+%%   <<"enableNotificationPreview">> => [boolean()],
+%%   <<"enableOpenAccessOption">> => [boolean()],
+%%   <<"enableRestrictedGlobalFederation">> => [boolean()],
+%%   <<"federationMode">> => [integer()],
+%%   <<"filesEnabled">> => [boolean()],
+%%   <<"forceDeviceLockout">> => [integer()],
+%%   <<"forceOpenAccess">> => [boolean()],
+%%   <<"forceReadReceipts">> => [boolean()],
+%%   <<"globalFederation">> => [boolean()],
+%%   <<"isAtoEnabled">> => [boolean()],
+%%   <<"isLinkPreviewEnabled">> => [boolean()],
+%%   <<"locationAllowMaps">> => [boolean()],
+%%   <<"locationEnabled">> => [boolean()],
+%%   <<"lockoutThreshold">> => [integer()],
+%%   <<"maxAutoDownloadSize">> => [float()],
+%%   <<"maxBor">> => [integer()],
+%%   <<"maxNonSsoSessionMinutes">> => [integer()],
+%%   <<"maxTtl">> => [float()],
+%%   <<"messageForwardingEnabled">> => [boolean()],
+%%   <<"passwordRequirements">> => password_requirements(),
+%%   <<"permittedNetworks">> => list(string()),
+%%   <<"permittedWickrAwsNetworks">> => list(wickr_aws_networks()),
+%%   <<"permittedWickrEnterpriseNetworks">> => list(permitted_wickr_enterprise_network()),
+%%   <<"presenceEnabled">> => [boolean()],
+%%   <<"quickResponses">> => list(string()),
+%%   <<"showMasterRecoveryKey">> => [boolean()],
+%%   <<"shredder">> => shredder_settings(),
+%%   <<"ssoMaxIdleMinutes">> => [integer()]
+%% }
+-type security_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_group_settings_request() :: #{
+%%   <<"enableGuestFederation">> => [boolean()],
+%%   <<"enableRestrictedGlobalFederation">> => [boolean()],
+%%   <<"federationMode">> => [integer()],
+%%   <<"globalFederation">> => [boolean()],
+%%   <<"lockoutThreshold">> => [integer()],
+%%   <<"permittedNetworks">> => list(string()),
+%%   <<"permittedWickrAwsNetworks">> => list(wickr_aws_networks()),
+%%   <<"permittedWickrEnterpriseNetworks">> => list(permitted_wickr_enterprise_network())
+%% }
+-type security_group_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% setting() :: #{
+%%   <<"optionName">> => string(),
+%%   <<"type">> => string(),
+%%   <<"value">> => string()
+%% }
+-type setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% shredder_settings() :: #{
+%%   <<"canProcessManually">> => [boolean()],
+%%   <<"intensity">> => [integer()]
+%% }
+-type shredder_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1008,48 +1206,83 @@
 
 
 %% Example:
-%% register_oidc_config_request() :: #{
-%%   <<"companyId">> := string(),
-%%   <<"customUsername">> => string(),
-%%   <<"extraAuthParams">> => string(),
-%%   <<"issuer">> := string(),
-%%   <<"scopes">> := string(),
-%%   <<"secret">> => string(),
-%%   <<"ssoTokenBufferMinutes">> => [integer()],
-%%   <<"userId">> => string()
+%% update_bot_response() :: #{
+%%   <<"message">> => string()
 %% }
--type register_oidc_config_request() :: #{binary() => any()}.
+-type update_bot_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_user_request() :: #{
-%%   <<"userDetails">> => update_user_details(),
-%%   <<"userId">> := string()
+%% update_data_retention_request() :: #{
+%%   <<"actionType">> := list(any())
 %% }
--type update_user_request() :: #{binary() => any()}.
+-type update_data_retention_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% network() :: #{
-%%   <<"accessLevel">> => list(any()),
-%%   <<"awsAccountId">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"freeTrialExpiration">> => string(),
-%%   <<"migrationState">> => [integer()],
-%%   <<"networkArn">> => string(),
-%%   <<"networkId">> => string(),
-%%   <<"networkName">> => string(),
-%%   <<"standing">> => [integer()]
+%% update_data_retention_response() :: #{
+%%   <<"message">> => string()
 %% }
--type network() :: #{binary() => any()}.
+-type update_data_retention_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_create_user_request() :: #{
+%% update_guest_user_request() :: #{
+%%   <<"block">> := [boolean()]
+%% }
+-type update_guest_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_guest_user_response() :: #{
+%%   <<"message">> => string()
+%% }
+-type update_guest_user_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"users">> := list(batch_create_user_request_item())
+%%   <<"encryptionKeyArn">> => string(),
+%%   <<"networkName">> := string()
 %% }
--type batch_create_user_request() :: #{binary() => any()}.
+-type update_network_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_response() :: #{
+%%   <<"message">> => string()
+%% }
+-type update_network_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_settings_request() :: #{
+%%   <<"settings">> := network_settings()
+%% }
+-type update_network_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_network_settings_response() :: #{
+%%   <<"settings">> => list(setting())
+%% }
+-type update_network_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_security_group_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"securityGroupSettings">> => security_group_settings()
+%% }
+-type update_security_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_security_group_response() :: #{
+%%   <<"securityGroup">> => security_group()
+%% }
+-type update_security_group_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1063,6 +1296,32 @@
 %%   <<"username">> => string()
 %% }
 -type update_user_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"userDetails">> => update_user_details(),
+%%   <<"userId">> := string()
+%% }
+-type update_user_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_user_response() :: #{
+%%   <<"codeValidation">> => [boolean()],
+%%   <<"firstName">> => string(),
+%%   <<"inviteCode">> => string(),
+%%   <<"inviteExpiration">> => [integer()],
+%%   <<"lastName">> => string(),
+%%   <<"middleName">> => string(),
+%%   <<"modified">> => [integer()],
+%%   <<"networkId">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => [integer()],
+%%   <<"suspended">> => [boolean()],
+%%   <<"userId">> => string()
+%% }
+-type update_user_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1091,673 +1350,414 @@
 
 
 %% Example:
-%% batch_device_success_response_item() :: #{
-%%   <<"appId">> => string()
-%% }
--type batch_device_success_response_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_request() :: #{
-%%   <<"challenge">> := string(),
-%%   <<"displayName">> => string(),
-%%   <<"groupId">> := string(),
-%%   <<"username">> := string()
-%% }
--type create_bot_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% read_receipt_config() :: #{
-%%   <<"status">> => list(any())
-%% }
--type read_receipt_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_users_request() :: #{
-%%   <<"firstName">> => string(),
-%%   <<"groupId">> => string(),
-%%   <<"lastName">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"sortDirection">> => list(any()),
-%%   <<"sortFields">> => string(),
-%%   <<"status">> => list(integer()),
-%%   <<"username">> => string()
-%% }
--type list_users_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% oidc_config_info() :: #{
-%%   <<"applicationId">> => [integer()],
-%%   <<"applicationName">> => string(),
-%%   <<"caCertificate">> => string(),
-%%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string(),
-%%   <<"companyId">> => string(),
-%%   <<"customUsername">> => string(),
-%%   <<"extraAuthParams">> => string(),
-%%   <<"issuer">> => string(),
-%%   <<"redirectUrl">> => string(),
-%%   <<"scopes">> => string(),
-%%   <<"secret">> => string(),
-%%   <<"ssoTokenBufferMinutes">> => [integer()],
-%%   <<"userId">> => string()
-%% }
--type oidc_config_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% calling_settings() :: #{
-%%   <<"canStart11Call">> => [boolean()],
-%%   <<"canVideoCall">> => [boolean()],
-%%   <<"forceTcpCall">> => [boolean()]
-%% }
--type calling_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bot_response() :: #{
-%%   <<"botId">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"groupId">> => string(),
+%% validation_error() :: #{
 %%   <<"message">> => string(),
+%%   <<"reasons">> => list(error_detail())
+%% }
+-type validation_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% wickr_aws_networks() :: #{
 %%   <<"networkId">> => string(),
-%%   <<"username">> => string()
+%%   <<"region">> => string()
 %% }
--type create_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_devices_for_user_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"sortDirection">> => list(any()),
-%%   <<"sortFields">> => string()
-%% }
--type list_devices_for_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_user_error_response_item() :: #{
-%%   <<"field">> => string(),
-%%   <<"reason">> => string(),
-%%   <<"userId">> => string()
-%% }
--type batch_user_error_response_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_reinvite_user_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"userIds">> := list(string())
-%% }
--type batch_reinvite_user_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_uname_success_response_item() :: #{
-%%   <<"uname">> => string(),
-%%   <<"username">> => string()
-%% }
--type batch_uname_success_response_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_user_request_item() :: #{
-%%   <<"codeValidation">> => [boolean()],
-%%   <<"firstName">> => string(),
-%%   <<"inviteCode">> => string(),
-%%   <<"inviteCodeTtl">> => [integer()],
-%%   <<"lastName">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"username">> => string()
-%% }
--type batch_create_user_request_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_network_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"encryptionKeyArn">> => string(),
-%%   <<"networkName">> := string()
-%% }
--type update_network_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bot() :: #{
-%%   <<"botId">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"groupId">> => string(),
-%%   <<"hasChallenge">> => [boolean()],
-%%   <<"lastLogin">> => string(),
-%%   <<"pubkey">> => string(),
-%%   <<"status">> => list(integer()),
-%%   <<"suspended">> => [boolean()],
-%%   <<"uname">> => string(),
-%%   <<"username">> => string()
-%% }
--type bot() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_data_retention_response() :: #{
-%%   <<"message">> => string()
-%% }
--type update_data_retention_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_security_group_response() :: #{
-%%   <<"securityGroup">> => security_group()
-%% }
--type update_security_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bot_response() :: #{
-%%   <<"message">> => string()
-%% }
--type update_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_data_retention_bot_response() :: #{
-%%   <<"botExists">> => [boolean()],
-%%   <<"botName">> => string(),
-%%   <<"isBotActive">> => [boolean()],
-%%   <<"isDataRetentionBotRegistered">> => [boolean()],
-%%   <<"isDataRetentionServiceEnabled">> => [boolean()],
-%%   <<"isPubkeyMsgAcked">> => [boolean()]
-%% }
--type get_data_retention_bot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_group_settings() :: #{
-%%   <<"forceDeviceLockout">> => [integer()],
-%%   <<"locationEnabled">> => [boolean()],
-%%   <<"presenceEnabled">> => [boolean()],
-%%   <<"enableFileDownload">> => [boolean()],
-%%   <<"lockoutThreshold">> => [integer()],
-%%   <<"isAtoEnabled">> => [boolean()],
-%%   <<"ssoMaxIdleMinutes">> => [integer()],
-%%   <<"permittedWickrAwsNetworks">> => list(wickr_aws_networks()),
-%%   <<"enableRestrictedGlobalFederation">> => [boolean()],
-%%   <<"enableCrashReports">> => [boolean()],
-%%   <<"maxNonSsoSessionMinutes">> => [integer()],
-%%   <<"enableAtak">> => [boolean()],
-%%   <<"quickResponses">> => list(string()),
-%%   <<"permittedNetworks">> => list(string()),
-%%   <<"isLinkPreviewEnabled">> => [boolean()],
-%%   <<"enableOpenAccessOption">> => [boolean()],
-%%   <<"maxTtl">> => [float()],
-%%   <<"alwaysReauthenticate">> => [boolean()],
-%%   <<"locationAllowMaps">> => [boolean()],
-%%   <<"maxAutoDownloadSize">> => [float()],
-%%   <<"checkForUpdates">> => [boolean()],
-%%   <<"calling">> => calling_settings(),
-%%   <<"federationMode">> => [integer()],
-%%   <<"permittedWickrEnterpriseNetworks">> => list(permitted_wickr_enterprise_network()),
-%%   <<"forceReadReceipts">> => [boolean()],
-%%   <<"forceOpenAccess">> => [boolean()],
-%%   <<"globalFederation">> => [boolean()],
-%%   <<"passwordRequirements">> => password_requirements(),
-%%   <<"messageForwardingEnabled">> => [boolean()],
-%%   <<"showMasterRecoveryKey">> => [boolean()],
-%%   <<"enableNotificationPreview">> => [boolean()],
-%%   <<"maxBor">> => [integer()],
-%%   <<"shredder">> => shredder_settings(),
-%%   <<"enableGuestFederation">> => [boolean()],
-%%   <<"atakPackageValues">> => list(string()),
-%%   <<"filesEnabled">> => [boolean()]
-%% }
--type security_group_settings() :: #{binary() => any()}.
-
-%% Example:
-%% get_users_count_request() :: #{}
--type get_users_count_request() :: #{}.
-
-
-%% Example:
-%% update_security_group_request() :: #{
-%%   <<"name">> => string(),
-%%   <<"securityGroupSettings">> => security_group_settings()
-%% }
--type update_security_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_blocked_guest_users_response() :: #{
-%%   <<"blocklist">> => list(blocked_guest_user()),
-%%   <<"nextToken">> => string()
-%% }
--type list_blocked_guest_users_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% oidc_token_info() :: #{
-%%   <<"accessToken">> => string(),
-%%   <<"codeChallenge">> => string(),
-%%   <<"codeVerifier">> => string(),
-%%   <<"expiresIn">> => [float()],
-%%   <<"idToken">> => string(),
-%%   <<"refreshToken">> => string(),
-%%   <<"tokenType">> => string()
-%% }
--type oidc_token_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% rate_limit_error() :: #{
-%%   <<"message">> => string()
-%% }
--type rate_limit_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_guest_user_history_count_response() :: #{
-%%   <<"history">> => list(guest_user_history_count())
-%% }
--type get_guest_user_history_count_response() :: #{binary() => any()}.
+-type wickr_aws_networks() :: #{binary() => any()}.
 
 -type batch_create_user_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type batch_delete_user_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type batch_lookup_user_uname_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type batch_reinvite_user_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type batch_reset_devices_for_user_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type batch_toggle_user_suspend_status_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type create_bot_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type create_data_retention_bot_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type create_data_retention_bot_challenge_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type create_network_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type create_security_group_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type delete_bot_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type delete_data_retention_bot_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type delete_network_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type delete_security_group_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type get_bot_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type get_bots_count_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type get_data_retention_bot_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type get_guest_user_history_count_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type get_network_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type get_network_settings_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type get_oidc_info_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type get_opentdf_config_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type get_security_group_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type get_user_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type get_users_count_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type list_blocked_guest_users_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type list_bots_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type list_devices_for_user_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type list_guest_users_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type list_networks_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type list_security_group_users_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type list_security_groups_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type list_users_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type register_oidc_config_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type register_oidc_config_test_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type register_opentdf_config_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type update_bot_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type update_data_retention_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type update_guest_user_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type update_network_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type update_network_settings_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type update_security_group_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 -type update_user_errors() ::
+    validation_error() | 
+    unauthorized_error() | 
+    resource_not_found_error() | 
     rate_limit_error() | 
     internal_server_error() | 
-    resource_not_found_error() | 
-    validation_error() | 
-    bad_request_error() | 
-    unauthorized_error() | 
-    forbidden_error().
+    forbidden_error() | 
+    bad_request_error().
 
 %%====================================================================
 %% API

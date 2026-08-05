@@ -137,25 +137,324 @@
 
 
 %% Example:
+%% activate_event_source_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type activate_event_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% api_destination() :: #{
+%%   <<"ApiDestinationArn">> => string(),
+%%   <<"ApiDestinationState">> => list(any()),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"HttpMethod">> => list(any()),
+%%   <<"InvocationEndpoint">> => string(),
+%%   <<"InvocationRateLimitPerSecond">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type api_destination() :: #{binary() => any()}.
+
+%% Example:
+%% archive() :: #{
+%%   <<"ArchiveName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EventCount">> => float(),
+%%   <<"EventSourceArn">> => string(),
+%%   <<"RetentionDays">> => integer(),
+%%   <<"SizeBytes">> => float(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type archive() :: #{binary() => any()}.
+
+%% Example:
+%% aws_vpc_configuration() :: #{
+%%   <<"AssignPublicIp">> => list(any()),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Subnets">> => list(string())
+%% }
+-type aws_vpc_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% batch_array_properties() :: #{
+%%   <<"Size">> => integer()
+%% }
+-type batch_array_properties() :: #{binary() => any()}.
+
+%% Example:
+%% batch_parameters() :: #{
+%%   <<"ArrayProperties">> => batch_array_properties(),
+%%   <<"JobDefinition">> => string(),
+%%   <<"JobName">> => string(),
+%%   <<"RetryStrategy">> => batch_retry_strategy()
+%% }
+-type batch_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% batch_retry_strategy() :: #{
+%%   <<"Attempts">> => integer()
+%% }
+-type batch_retry_strategy() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_replay_request() :: #{
 %%   <<"ReplayName">> := string()
 %% }
 -type cancel_replay_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_event_bus_request() :: #{
-%%   <<"Name">> => string()
+%% cancel_replay_response() :: #{
+%%   <<"ReplayArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
 %% }
--type describe_event_bus_request() :: #{binary() => any()}.
+-type cancel_replay_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_connection_request() :: #{
-%%   <<"AuthParameters">> => update_connection_auth_request_parameters(),
+%% capacity_provider_strategy_item() :: #{
+%%   <<"base">> => integer(),
+%%   <<"capacityProvider">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type capacity_provider_strategy_item() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% condition() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type condition() :: #{binary() => any()}.
+
+%% Example:
+%% connection() :: #{
 %%   <<"AuthorizationType">> => list(any()),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastAuthorizedTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"StateReason">> => string()
+%% }
+-type connection() :: #{binary() => any()}.
+
+%% Example:
+%% connection_api_key_auth_response_parameters() :: #{
+%%   <<"ApiKeyName">> => string()
+%% }
+-type connection_api_key_auth_response_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% connection_auth_response_parameters() :: #{
+%%   <<"ApiKeyAuthParameters">> => connection_api_key_auth_response_parameters(),
+%%   <<"BasicAuthParameters">> => connection_basic_auth_response_parameters(),
+%%   <<"InvocationHttpParameters">> => connection_http_parameters(),
+%%   <<"OAuthParameters">> => connection_o_auth_response_parameters()
+%% }
+-type connection_auth_response_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% connection_basic_auth_response_parameters() :: #{
+%%   <<"Username">> => string()
+%% }
+-type connection_basic_auth_response_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% connection_body_parameter() :: #{
+%%   <<"IsValueSecret">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type connection_body_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% connection_header_parameter() :: #{
+%%   <<"IsValueSecret">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type connection_header_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% connection_http_parameters() :: #{
+%%   <<"BodyParameters">> => list(connection_body_parameter()),
+%%   <<"HeaderParameters">> => list(connection_header_parameter()),
+%%   <<"QueryStringParameters">> => list(connection_query_string_parameter())
+%% }
+-type connection_http_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% connection_o_auth_client_response_parameters() :: #{
+%%   <<"ClientID">> => string()
+%% }
+-type connection_o_auth_client_response_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% connection_o_auth_response_parameters() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientParameters">> => connection_o_auth_client_response_parameters(),
+%%   <<"HttpMethod">> => list(any()),
+%%   <<"OAuthHttpParameters">> => connection_http_parameters()
+%% }
+-type connection_o_auth_response_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% connection_query_string_parameter() :: #{
+%%   <<"IsValueSecret">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type connection_query_string_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% create_api_destination_request() :: #{
+%%   <<"ConnectionArn">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"HttpMethod">> := list(any()),
+%%   <<"InvocationEndpoint">> := string(),
+%%   <<"InvocationRateLimitPerSecond">> => integer(),
+%%   <<"Name">> := string()
+%% }
+-type create_api_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_api_destination_response() :: #{
+%%   <<"ApiDestinationArn">> => string(),
+%%   <<"ApiDestinationState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type create_api_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_archive_request() :: #{
+%%   <<"ArchiveName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"EventPattern">> => string(),
+%%   <<"EventSourceArn">> := string(),
+%%   <<"RetentionDays">> => integer()
+%% }
+-type create_archive_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_archive_response() :: #{
+%%   <<"ArchiveArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
+%% }
+-type create_archive_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_api_key_auth_request_parameters() :: #{
+%%   <<"ApiKeyName">> => string(),
+%%   <<"ApiKeyValue">> => string()
+%% }
+-type create_connection_api_key_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_auth_request_parameters() :: #{
+%%   <<"ApiKeyAuthParameters">> => create_connection_api_key_auth_request_parameters(),
+%%   <<"BasicAuthParameters">> => create_connection_basic_auth_request_parameters(),
+%%   <<"InvocationHttpParameters">> => connection_http_parameters(),
+%%   <<"OAuthParameters">> => create_connection_o_auth_request_parameters()
+%% }
+-type create_connection_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_basic_auth_request_parameters() :: #{
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type create_connection_basic_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_o_auth_client_request_parameters() :: #{
+%%   <<"ClientID">> => string(),
+%%   <<"ClientSecret">> => string()
+%% }
+-type create_connection_o_auth_client_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_o_auth_request_parameters() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientParameters">> => create_connection_o_auth_client_request_parameters(),
+%%   <<"HttpMethod">> => list(any()),
+%%   <<"OAuthHttpParameters">> => connection_http_parameters()
+%% }
+-type create_connection_o_auth_request_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_request() :: #{
+%%   <<"AuthParameters">> := create_connection_auth_request_parameters(),
+%%   <<"AuthorizationType">> := list(any()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string()
 %% }
--type update_connection_request() :: #{binary() => any()}.
+-type create_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_response() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type create_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_bus_request() :: #{
+%%   <<"EventSourceName">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_event_bus_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_bus_response() :: #{
+%%   <<"EventBusArn">> => string()
+%% }
+-type create_event_bus_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_partner_event_source_request() :: #{
+%%   <<"Account">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_partner_event_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_partner_event_source_response() :: #{
+%%   <<"EventSourceArn">> => string()
+%% }
+-type create_partner_event_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_event_source_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type deactivate_event_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% dead_letter_config() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type dead_letter_config() :: #{binary() => any()}.
+
+%% Example:
+%% deauthorize_connection_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type deauthorize_connection_request() :: #{binary() => any()}.
 
 %% Example:
 %% deauthorize_connection_response() :: #{
@@ -168,78 +467,150 @@
 -type deauthorize_connection_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_event_bus_request() :: #{
-%%   <<"EventSourceName">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag())
+%% delete_api_destination_request() :: #{
+%%   <<"Name">> := string()
 %% }
--type create_event_bus_request() :: #{binary() => any()}.
+-type delete_api_destination_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
+%% delete_api_destination_response() :: #{
+
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type delete_api_destination_response() :: #{binary() => any()}.
 
 %% Example:
-%% batch_retry_strategy() :: #{
-%%   <<"Attempts">> => integer()
+%% delete_archive_request() :: #{
+%%   <<"ArchiveName">> := string()
 %% }
--type batch_retry_strategy() :: #{binary() => any()}.
+-type delete_archive_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_archives_response() :: #{
-%%   <<"Archives">> => list(archive()),
-%%   <<"NextToken">> => string()
+%% delete_archive_response() :: #{
+
 %% }
--type list_archives_response() :: #{binary() => any()}.
+-type delete_archive_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_partner_events_request_entry() :: #{
-%%   <<"Detail">> => string(),
-%%   <<"DetailType">> => string(),
-%%   <<"Resources">> => list(string()),
-%%   <<"Source">> => string(),
-%%   <<"Time">> => non_neg_integer()
+%% delete_connection_request() :: #{
+%%   <<"Name">> := string()
 %% }
--type put_partner_events_request_entry() :: #{binary() => any()}.
+-type delete_connection_request() :: #{binary() => any()}.
 
 %% Example:
-%% connection_query_string_parameter() :: #{
-%%   <<"IsValueSecret">> => boolean(),
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% delete_connection_response() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastAuthorizedTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
 %% }
--type connection_query_string_parameter() :: #{binary() => any()}.
+-type delete_connection_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_connection_o_auth_request_parameters() :: #{
-%%   <<"AuthorizationEndpoint">> => string(),
-%%   <<"ClientParameters">> => update_connection_o_auth_client_request_parameters(),
+%% delete_event_bus_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_event_bus_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_partner_event_source_request() :: #{
+%%   <<"Account">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type delete_partner_event_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_rule_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Force">> => boolean(),
+%%   <<"Name">> := string()
+%% }
+-type delete_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_api_destination_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type describe_api_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_api_destination_response() :: #{
+%%   <<"ApiDestinationArn">> => string(),
+%%   <<"ApiDestinationState">> => list(any()),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
 %%   <<"HttpMethod">> => list(any()),
-%%   <<"OAuthHttpParameters">> => connection_http_parameters()
+%%   <<"InvocationEndpoint">> => string(),
+%%   <<"InvocationRateLimitPerSecond">> => integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
 %% }
--type update_connection_o_auth_request_parameters() :: #{binary() => any()}.
+-type describe_api_destination_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_rule_response() :: #{
-%%   <<"RuleArn">> => string()
+%% describe_archive_request() :: #{
+%%   <<"ArchiveName">> := string()
 %% }
--type put_rule_response() :: #{binary() => any()}.
+-type describe_archive_request() :: #{binary() => any()}.
 
 %% Example:
-%% run_command_target() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Values">> => list(string())
+%% describe_archive_response() :: #{
+%%   <<"ArchiveArn">> => string(),
+%%   <<"ArchiveName">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventCount">> => float(),
+%%   <<"EventPattern">> => string(),
+%%   <<"EventSourceArn">> => string(),
+%%   <<"RetentionDays">> => integer(),
+%%   <<"SizeBytes">> => float(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string()
 %% }
--type run_command_target() :: #{binary() => any()}.
+-type describe_archive_response() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_event_pattern_exception() :: #{
-%%   <<"message">> => string()
+%% describe_connection_request() :: #{
+%%   <<"Name">> := string()
 %% }
--type invalid_event_pattern_exception() :: #{binary() => any()}.
+-type describe_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_response() :: #{
+%%   <<"AuthParameters">> => connection_auth_response_parameters(),
+%%   <<"AuthorizationType">> => list(any()),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastAuthorizedTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"SecretArn">> => string(),
+%%   <<"StateReason">> => string()
+%% }
+-type describe_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_bus_request() :: #{
+%%   <<"Name">> => string()
+%% }
+-type describe_event_bus_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_bus_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type describe_event_bus_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_source_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type describe_event_source_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_event_source_response() :: #{
@@ -253,206 +624,23 @@
 -type describe_event_source_response() :: #{binary() => any()}.
 
 %% Example:
-%% policy_length_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type policy_length_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_targets_result_entry() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"TargetId">> => string()
-%% }
--type put_targets_result_entry() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connection_request() :: #{
+%% describe_partner_event_source_request() :: #{
 %%   <<"Name">> := string()
 %% }
--type describe_connection_request() :: #{binary() => any()}.
+-type describe_partner_event_source_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_api_destination_request() :: #{
-%%   <<"Name">> := string()
+%% describe_partner_event_source_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
 %% }
--type describe_api_destination_request() :: #{binary() => any()}.
+-type describe_partner_event_source_response() :: #{binary() => any()}.
 
 %% Example:
-%% enable_rule_request() :: #{
-%%   <<"EventBusName">> => string(),
-%%   <<"Name">> := string()
+%% describe_replay_request() :: #{
+%%   <<"ReplayName">> := string()
 %% }
--type enable_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_archive_request() :: #{
-%%   <<"ArchiveName">> := string()
-%% }
--type describe_archive_request() :: #{binary() => any()}.
-
-%% Example:
-%% test_event_pattern_request() :: #{
-%%   <<"Event">> := string(),
-%%   <<"EventPattern">> := string()
-%% }
--type test_event_pattern_request() :: #{binary() => any()}.
-
-%% Example:
-%% connection_auth_response_parameters() :: #{
-%%   <<"ApiKeyAuthParameters">> => connection_api_key_auth_response_parameters(),
-%%   <<"BasicAuthParameters">> => connection_basic_auth_response_parameters(),
-%%   <<"InvocationHttpParameters">> => connection_http_parameters(),
-%%   <<"OAuthParameters">> => connection_o_auth_response_parameters()
-%% }
--type connection_auth_response_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% deactivate_event_source_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type deactivate_event_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_event_sources_response() :: #{
-%%   <<"EventSources">> => list(event_source()),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_sources_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_array_properties() :: #{
-%%   <<"Size">> => integer()
-%% }
--type batch_array_properties() :: #{binary() => any()}.
-
-%% Example:
-%% partner_event_source_account() :: #{
-%%   <<"Account">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ExpirationTime">> => non_neg_integer(),
-%%   <<"State">> => list(any())
-%% }
--type partner_event_source_account() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_o_auth_request_parameters() :: #{
-%%   <<"AuthorizationEndpoint">> => string(),
-%%   <<"ClientParameters">> => create_connection_o_auth_client_request_parameters(),
-%%   <<"HttpMethod">> => list(any()),
-%%   <<"OAuthHttpParameters">> => connection_http_parameters()
-%% }
--type create_connection_o_auth_request_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% create_partner_event_source_request() :: #{
-%%   <<"Account">> := string(),
-%%   <<"Name">> := string()
-%% }
--type create_partner_event_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_connections_response() :: #{
-%%   <<"Connections">> => list(connection()),
-%%   <<"NextToken">> => string()
-%% }
--type list_connections_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_parameters() :: #{
-%%   <<"ArrayProperties">> => batch_array_properties(),
-%%   <<"JobDefinition">> => string(),
-%%   <<"JobName">> => string(),
-%%   <<"RetryStrategy">> => batch_retry_strategy()
-%% }
--type batch_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% list_event_sources_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NamePrefix">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_sources_request() :: #{binary() => any()}.
-
-%% Example:
-%% run_command_parameters() :: #{
-%%   <<"RunCommandTargets">> => list(run_command_target())
-%% }
--type run_command_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% http_parameters() :: #{
-%%   <<"HeaderParameters">> => map(),
-%%   <<"PathParameterValues">> => list(string()),
-%%   <<"QueryStringParameters">> => map()
-%% }
--type http_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% sage_maker_pipeline_parameter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type sage_maker_pipeline_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% connection_header_parameter() :: #{
-%%   <<"IsValueSecret">> => boolean(),
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type connection_header_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_api_destination_response() :: #{
-
-%% }
--type delete_api_destination_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_event_bus_response() :: #{
-%%   <<"EventBusArn">> => string()
-%% }
--type create_event_bus_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_events_response() :: #{
-%%   <<"Entries">> => list(put_events_result_entry()),
-%%   <<"FailedEntryCount">> => integer()
-%% }
--type put_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_events_request_entry() :: #{
-%%   <<"Detail">> => string(),
-%%   <<"DetailType">> => string(),
-%%   <<"EventBusName">> => string(),
-%%   <<"Resources">> => list(string()),
-%%   <<"Source">> => string(),
-%%   <<"Time">> => non_neg_integer(),
-%%   <<"TraceHeader">> => string()
-%% }
--type put_events_request_entry() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_state_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_state_exception() :: #{binary() => any()}.
+-type describe_replay_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_replay_response() :: #{
@@ -472,10 +660,529 @@
 -type describe_replay_response() :: #{binary() => any()}.
 
 %% Example:
-%% connection_api_key_auth_response_parameters() :: #{
-%%   <<"ApiKeyName">> => string()
+%% describe_rule_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Name">> := string()
 %% }
--type connection_api_key_auth_response_parameters() :: #{binary() => any()}.
+-type describe_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EventBusName">> => string(),
+%%   <<"EventPattern">> => string(),
+%%   <<"ManagedBy">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type describe_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_rule_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type disable_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% ecs_parameters() :: #{
+%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()),
+%%   <<"EnableECSManagedTags">> => boolean(),
+%%   <<"EnableExecuteCommand">> => boolean(),
+%%   <<"Group">> => string(),
+%%   <<"LaunchType">> => list(any()),
+%%   <<"NetworkConfiguration">> => network_configuration(),
+%%   <<"PlacementConstraints">> => list(placement_constraint()),
+%%   <<"PlacementStrategy">> => list(placement_strategy()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"PropagateTags">> => list(any()),
+%%   <<"ReferenceId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TaskCount">> => integer(),
+%%   <<"TaskDefinitionArn">> => string()
+%% }
+-type ecs_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% enable_rule_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type enable_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% event_bus() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type event_bus() :: #{binary() => any()}.
+
+%% Example:
+%% event_source() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type event_source() :: #{binary() => any()}.
+
+%% Example:
+%% http_parameters() :: #{
+%%   <<"HeaderParameters">> => map(),
+%%   <<"PathParameterValues">> => list(string()),
+%%   <<"QueryStringParameters">> => map()
+%% }
+-type http_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% illegal_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type illegal_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% input_transformer() :: #{
+%%   <<"InputPathsMap">> => map(),
+%%   <<"InputTemplate">> => string()
+%% }
+-type input_transformer() :: #{binary() => any()}.
+
+%% Example:
+%% internal_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_event_pattern_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_event_pattern_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_parameters() :: #{
+%%   <<"PartitionKeyPath">> => string()
+%% }
+-type kinesis_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_api_destinations_request() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_api_destinations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_api_destinations_response() :: #{
+%%   <<"ApiDestinations">> => list(api_destination()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_api_destinations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_archives_request() :: #{
+%%   <<"EventSourceArn">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_archives_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_archives_response() :: #{
+%%   <<"Archives">> => list(archive()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_archives_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_request() :: #{
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connections_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_connections_response() :: #{
+%%   <<"Connections">> => list(connection()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connections_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_buses_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_buses_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_buses_response() :: #{
+%%   <<"EventBuses">> => list(event_bus()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_buses_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_sources_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_sources_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_sources_response() :: #{
+%%   <<"EventSources">> => list(event_source()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_event_source_accounts_request() :: #{
+%%   <<"EventSourceName">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_partner_event_source_accounts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_event_source_accounts_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PartnerEventSourceAccounts">> => list(partner_event_source_account())
+%% }
+-type list_partner_event_source_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_event_sources_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_partner_event_sources_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_partner_event_sources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PartnerEventSources">> => list(partner_event_source())
+%% }
+-type list_partner_event_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_replays_request() :: #{
+%%   <<"EventSourceArn">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type list_replays_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_replays_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Replays">> => list(replay())
+%% }
+-type list_replays_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_names_by_target_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TargetArn">> := string()
+%% }
+-type list_rule_names_by_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rule_names_by_target_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleNames">> => list(string())
+%% }
+-type list_rule_names_by_target_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_rules_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_rules_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Rules">> => list(rule())
+%% }
+-type list_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_targets_by_rule_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Rule">> := string()
+%% }
+-type list_targets_by_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_targets_by_rule_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Targets">> => list(target())
+%% }
+-type list_targets_by_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% managed_rule_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type managed_rule_exception() :: #{binary() => any()}.
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% operation_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% partner_event_source() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type partner_event_source() :: #{binary() => any()}.
+
+%% Example:
+%% partner_event_source_account() :: #{
+%%   <<"Account">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type partner_event_source_account() :: #{binary() => any()}.
+
+%% Example:
+%% placement_constraint() :: #{
+%%   <<"expression">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type placement_constraint() :: #{binary() => any()}.
+
+%% Example:
+%% placement_strategy() :: #{
+%%   <<"field">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type placement_strategy() :: #{binary() => any()}.
+
+%% Example:
+%% policy_length_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type policy_length_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% put_events_request() :: #{
+%%   <<"Entries">> := list(put_events_request_entry())
+%% }
+-type put_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_events_request_entry() :: #{
+%%   <<"Detail">> => string(),
+%%   <<"DetailType">> => string(),
+%%   <<"EventBusName">> => string(),
+%%   <<"Resources">> => list(string()),
+%%   <<"Source">> => string(),
+%%   <<"Time">> => non_neg_integer(),
+%%   <<"TraceHeader">> => string()
+%% }
+-type put_events_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% put_events_response() :: #{
+%%   <<"Entries">> => list(put_events_result_entry()),
+%%   <<"FailedEntryCount">> => integer()
+%% }
+-type put_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_events_result_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventId">> => string()
+%% }
+-type put_events_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% put_partner_events_request() :: #{
+%%   <<"Entries">> := list(put_partner_events_request_entry())
+%% }
+-type put_partner_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_partner_events_request_entry() :: #{
+%%   <<"Detail">> => string(),
+%%   <<"DetailType">> => string(),
+%%   <<"Resources">> => list(string()),
+%%   <<"Source">> => string(),
+%%   <<"Time">> => non_neg_integer()
+%% }
+-type put_partner_events_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% put_partner_events_response() :: #{
+%%   <<"Entries">> => list(put_partner_events_result_entry()),
+%%   <<"FailedEntryCount">> => integer()
+%% }
+-type put_partner_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_partner_events_result_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"EventId">> => string()
+%% }
+-type put_partner_events_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% put_permission_request() :: #{
+%%   <<"Action">> => string(),
+%%   <<"Condition">> => condition(),
+%%   <<"EventBusName">> => string(),
+%%   <<"Policy">> => string(),
+%%   <<"Principal">> => string(),
+%%   <<"StatementId">> => string()
+%% }
+-type put_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_rule_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventBusName">> => string(),
+%%   <<"EventPattern">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type put_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_rule_response() :: #{
+%%   <<"RuleArn">> => string()
+%% }
+-type put_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_targets_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Rule">> := string(),
+%%   <<"Targets">> := list(target())
+%% }
+-type put_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_targets_response() :: #{
+%%   <<"FailedEntries">> => list(put_targets_result_entry()),
+%%   <<"FailedEntryCount">> => integer()
+%% }
+-type put_targets_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_targets_result_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"TargetId">> => string()
+%% }
+-type put_targets_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_data_parameters() :: #{
+%%   <<"Database">> => string(),
+%%   <<"DbUser">> => string(),
+%%   <<"SecretManagerArn">> => string(),
+%%   <<"Sql">> => string(),
+%%   <<"StatementName">> => string(),
+%%   <<"WithEvent">> => boolean()
+%% }
+-type redshift_data_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% remove_permission_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"RemoveAllPermissions">> => boolean(),
+%%   <<"StatementId">> => string()
+%% }
+-type remove_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_targets_request() :: #{
+%%   <<"EventBusName">> => string(),
+%%   <<"Force">> => boolean(),
+%%   <<"Ids">> := list(string()),
+%%   <<"Rule">> := string()
+%% }
+-type remove_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_targets_response() :: #{
+%%   <<"FailedEntries">> => list(remove_targets_result_entry()),
+%%   <<"FailedEntryCount">> => integer()
+%% }
+-type remove_targets_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_targets_result_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"TargetId">> => string()
+%% }
+-type remove_targets_result_entry() :: #{binary() => any()}.
 
 %% Example:
 %% replay() :: #{
@@ -492,124 +1199,116 @@
 -type replay() :: #{binary() => any()}.
 
 %% Example:
-%% list_rules_request() :: #{
-%%   <<"EventBusName">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NamePrefix">> => string(),
-%%   <<"NextToken">> => string()
+%% replay_destination() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FilterArns">> => list(string())
 %% }
--type list_rules_request() :: #{binary() => any()}.
+-type replay_destination() :: #{binary() => any()}.
 
 %% Example:
-%% event_source() :: #{
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% retry_policy() :: #{
+%%   <<"MaximumEventAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer()
+%% }
+-type retry_policy() :: #{binary() => any()}.
+
+%% Example:
+%% rule() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventBusName">> => string(),
+%%   <<"EventPattern">> => string(),
+%%   <<"ManagedBy">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"ScheduleExpression">> => string(),
 %%   <<"State">> => list(any())
 %% }
--type event_source() :: #{binary() => any()}.
+-type rule() :: #{binary() => any()}.
 
 %% Example:
-%% update_connection_auth_request_parameters() :: #{
-%%   <<"ApiKeyAuthParameters">> => update_connection_api_key_auth_request_parameters(),
-%%   <<"BasicAuthParameters">> => update_connection_basic_auth_request_parameters(),
-%%   <<"InvocationHttpParameters">> => connection_http_parameters(),
-%%   <<"OAuthParameters">> => update_connection_o_auth_request_parameters()
+%% run_command_parameters() :: #{
+%%   <<"RunCommandTargets">> => list(run_command_target())
 %% }
--type update_connection_auth_request_parameters() :: #{binary() => any()}.
+-type run_command_parameters() :: #{binary() => any()}.
 
 %% Example:
-%% describe_partner_event_source_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
+%% run_command_target() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
 %% }
--type describe_partner_event_source_response() :: #{binary() => any()}.
+-type run_command_target() :: #{binary() => any()}.
 
 %% Example:
-%% delete_archive_response() :: #{
-
-%% }
--type delete_archive_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_connection_api_key_auth_request_parameters() :: #{
-%%   <<"ApiKeyName">> => string(),
-%%   <<"ApiKeyValue">> => string()
-%% }
--type update_connection_api_key_auth_request_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% create_archive_request() :: #{
-%%   <<"ArchiveName">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"EventPattern">> => string(),
-%%   <<"EventSourceArn">> := string(),
-%%   <<"RetentionDays">> => integer()
-%% }
--type create_archive_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_rule_request() :: #{
-%%   <<"EventBusName">> => string(),
-%%   <<"Force">> => boolean(),
-%%   <<"Name">> := string()
-%% }
--type delete_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_archive_request() :: #{
-%%   <<"ArchiveName">> := string()
-%% }
--type delete_archive_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_partner_event_source_accounts_request() :: #{
-%%   <<"EventSourceName">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_partner_event_source_accounts_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connection_response() :: #{
-%%   <<"AuthParameters">> => connection_auth_response_parameters(),
-%%   <<"AuthorizationType">> => list(any()),
-%%   <<"ConnectionArn">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastAuthorizedTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
+%% sage_maker_pipeline_parameter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"SecretArn">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type sage_maker_pipeline_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% sage_maker_pipeline_parameters() :: #{
+%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter())
+%% }
+-type sage_maker_pipeline_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% sqs_parameters() :: #{
+%%   <<"MessageGroupId">> => string()
+%% }
+-type sqs_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% start_replay_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Destination">> := replay_destination(),
+%%   <<"EventEndTime">> := non_neg_integer(),
+%%   <<"EventSourceArn">> := string(),
+%%   <<"EventStartTime">> := non_neg_integer(),
+%%   <<"ReplayName">> := string()
+%% }
+-type start_replay_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_replay_response() :: #{
+%%   <<"ReplayArn">> => string(),
+%%   <<"ReplayStartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
 %%   <<"StateReason">> => string()
 %% }
--type describe_connection_response() :: #{binary() => any()}.
+-type start_replay_response() :: #{binary() => any()}.
 
 %% Example:
-%% remove_targets_result_entry() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"TargetId">> => string()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type remove_targets_result_entry() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% describe_api_destination_response() :: #{
-%%   <<"ApiDestinationArn">> => string(),
-%%   <<"ApiDestinationState">> => list(any()),
-%%   <<"ConnectionArn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"HttpMethod">> => list(any()),
-%%   <<"InvocationEndpoint">> => string(),
-%%   <<"InvocationRateLimitPerSecond">> => integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type describe_api_destination_response() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% target() :: #{
@@ -633,299 +1332,30 @@
 -type target() :: #{binary() => any()}.
 
 %% Example:
-%% list_connections_request() :: #{
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"Limit">> => integer(),
-%%   <<"NamePrefix">> => string(),
-%%   <<"NextToken">> => string()
+%% test_event_pattern_request() :: #{
+%%   <<"Event">> := string(),
+%%   <<"EventPattern">> := string()
 %% }
--type list_connections_request() :: #{binary() => any()}.
+-type test_event_pattern_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_archives_request() :: #{
-%%   <<"EventSourceArn">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NamePrefix">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"State">> => list(any())
+%% test_event_pattern_response() :: #{
+%%   <<"Result">> => boolean()
 %% }
--type list_archives_request() :: #{binary() => any()}.
+-type test_event_pattern_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_archive_response() :: #{
-%%   <<"ArchiveArn">> => string(),
-%%   <<"ArchiveName">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EventCount">> => float(),
-%%   <<"EventPattern">> => string(),
-%%   <<"EventSourceArn">> => string(),
-%%   <<"RetentionDays">> => integer(),
-%%   <<"SizeBytes">> => float(),
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => string()
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type describe_archive_response() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_replays_request() :: #{
-%%   <<"EventSourceArn">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NamePrefix">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type list_replays_request() :: #{binary() => any()}.
+%% untag_resource_response() :: #{
 
-%% Example:
-%% redshift_data_parameters() :: #{
-%%   <<"Database">> => string(),
-%%   <<"DbUser">> => string(),
-%%   <<"SecretManagerArn">> => string(),
-%%   <<"Sql">> => string(),
-%%   <<"StatementName">> => string(),
-%%   <<"WithEvent">> => boolean()
 %% }
--type redshift_data_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% start_replay_response() :: #{
-%%   <<"ReplayArn">> => string(),
-%%   <<"ReplayStartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => string()
-%% }
--type start_replay_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deauthorize_connection_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type deauthorize_connection_request() :: #{binary() => any()}.
-
-%% Example:
-%% input_transformer() :: #{
-%%   <<"InputPathsMap">> => map(),
-%%   <<"InputTemplate">> => string()
-%% }
--type input_transformer() :: #{binary() => any()}.
-
-%% Example:
-%% connection_http_parameters() :: #{
-%%   <<"BodyParameters">> => list(connection_body_parameter()),
-%%   <<"HeaderParameters">> => list(connection_header_parameter()),
-%%   <<"QueryStringParameters">> => list(connection_query_string_parameter())
-%% }
--type connection_http_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% create_api_destination_request() :: #{
-%%   <<"ConnectionArn">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"HttpMethod">> := list(any()),
-%%   <<"InvocationEndpoint">> := string(),
-%%   <<"InvocationRateLimitPerSecond">> => integer(),
-%%   <<"Name">> := string()
-%% }
--type create_api_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_events_request() :: #{
-%%   <<"Entries">> := list(put_events_request_entry())
-%% }
--type put_events_request() :: #{binary() => any()}.
-
-%% Example:
-%% connection() :: #{
-%%   <<"AuthorizationType">> => list(any()),
-%%   <<"ConnectionArn">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastAuthorizedTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"StateReason">> => string()
-%% }
--type connection() :: #{binary() => any()}.
-
-%% Example:
-%% activate_event_source_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type activate_event_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% replay_destination() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"FilterArns">> => list(string())
-%% }
--type replay_destination() :: #{binary() => any()}.
-
-%% Example:
-%% list_replays_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Replays">> => list(replay())
-%% }
--type list_replays_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_event_buses_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NamePrefix">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_buses_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_source_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type describe_event_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_api_destination_response() :: #{
-%%   <<"ApiDestinationArn">> => string(),
-%%   <<"ApiDestinationState">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type create_api_destination_response() :: #{binary() => any()}.
-
-%% Example:
-%% remove_permission_request() :: #{
-%%   <<"EventBusName">> => string(),
-%%   <<"RemoveAllPermissions">> => boolean(),
-%%   <<"StatementId">> => string()
-%% }
--type remove_permission_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% sage_maker_pipeline_parameters() :: #{
-%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter())
-%% }
--type sage_maker_pipeline_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% managed_rule_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type managed_rule_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disable_rule_request() :: #{
-%%   <<"EventBusName">> => string(),
-%%   <<"Name">> := string()
-%% }
--type disable_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_connection_response() :: #{
-%%   <<"ConnectionArn">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastAuthorizedTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type update_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% sqs_parameters() :: #{
-%%   <<"MessageGroupId">> => string()
-%% }
--type sqs_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% put_permission_request() :: #{
-%%   <<"Action">> => string(),
-%%   <<"Condition">> => condition(),
-%%   <<"EventBusName">> => string(),
-%%   <<"Policy">> => string(),
-%%   <<"Principal">> => string(),
-%%   <<"StatementId">> => string()
-%% }
--type put_permission_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_api_destinations_response() :: #{
-%%   <<"ApiDestinations">> => list(api_destination()),
-%%   <<"NextToken">> => string()
-%% }
--type list_api_destinations_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_bus_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_event_bus_request() :: #{binary() => any()}.
-
-%% Example:
-%% condition() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"Value">> => string()
-%% }
--type condition() :: #{binary() => any()}.
-
-%% Example:
-%% put_partner_events_response() :: #{
-%%   <<"Entries">> => list(put_partner_events_result_entry()),
-%%   <<"FailedEntryCount">> => integer()
-%% }
--type put_partner_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% partner_event_source() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type partner_event_source() :: #{binary() => any()}.
-
-%% Example:
-%% operation_disabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type operation_disabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rule() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EventBusName">> => string(),
-%%   <<"EventPattern">> => string(),
-%%   <<"ManagedBy">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type rule() :: #{binary() => any()}.
-
-%% Example:
-%% put_events_result_entry() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"EventId">> => string()
-%% }
--type put_events_result_entry() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_api_destination_request() :: #{
@@ -939,137 +1369,6 @@
 -type update_api_destination_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_connection_api_key_auth_request_parameters() :: #{
-%%   <<"ApiKeyName">> => string(),
-%%   <<"ApiKeyValue">> => string()
-%% }
--type create_connection_api_key_auth_request_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rule_request() :: #{
-%%   <<"EventBusName">> => string(),
-%%   <<"Name">> := string()
-%% }
--type describe_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_o_auth_client_request_parameters() :: #{
-%%   <<"ClientID">> => string(),
-%%   <<"ClientSecret">> => string()
-%% }
--type create_connection_o_auth_client_request_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_provider_strategy_item() :: #{
-%%   <<"base">> => integer(),
-%%   <<"capacityProvider">> => string(),
-%%   <<"weight">> => integer()
-%% }
--type capacity_provider_strategy_item() :: #{binary() => any()}.
-
-%% Example:
-%% placement_constraint() :: #{
-%%   <<"expression">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type placement_constraint() :: #{binary() => any()}.
-
-%% Example:
-%% network_configuration() :: #{
-%%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
-%% }
--type network_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% api_destination() :: #{
-%%   <<"ApiDestinationArn">> => string(),
-%%   <<"ApiDestinationState">> => list(any()),
-%%   <<"ConnectionArn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpMethod">> => list(any()),
-%%   <<"InvocationEndpoint">> => string(),
-%%   <<"InvocationRateLimitPerSecond">> => integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type api_destination() :: #{binary() => any()}.
-
-%% Example:
-%% internal_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_rules_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Rules">> => list(rule())
-%% }
--type list_rules_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_partner_event_source_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type describe_partner_event_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_partner_event_source_response() :: #{
-%%   <<"EventSourceArn">> => string()
-%% }
--type create_partner_event_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_connection_basic_auth_request_parameters() :: #{
-%%   <<"Password">> => string(),
-%%   <<"Username">> => string()
-%% }
--type update_connection_basic_auth_request_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% list_partner_event_sources_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NamePrefix">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_partner_event_sources_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_bus_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Policy">> => string()
-%% }
--type describe_event_bus_response() :: #{binary() => any()}.
-
-%% Example:
-%% remove_targets_request() :: #{
-%%   <<"EventBusName">> => string(),
-%%   <<"Force">> => boolean(),
-%%   <<"Ids">> := list(string()),
-%%   <<"Rule">> := string()
-%% }
--type remove_targets_request() :: #{binary() => any()}.
-
-%% Example:
-%% dead_letter_config() :: #{
-%%   <<"Arn">> => string()
-%% }
--type dead_letter_config() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
 %% update_api_destination_response() :: #{
 %%   <<"ApiDestinationArn">> => string(),
 %%   <<"ApiDestinationState">> => list(any()),
@@ -1077,136 +1376,6 @@
 %%   <<"LastModifiedTime">> => non_neg_integer()
 %% }
 -type update_api_destination_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_replay_response() :: #{
-%%   <<"ReplayArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => string()
-%% }
--type cancel_replay_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_response() :: #{
-%%   <<"ConnectionArn">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastAuthorizedTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type delete_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_rule_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EventBusName">> => string(),
-%%   <<"EventPattern">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type put_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_partner_event_sources_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PartnerEventSources">> => list(partner_event_source())
-%% }
--type list_partner_event_sources_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replay_request() :: #{
-%%   <<"ReplayName">> := string()
-%% }
--type describe_replay_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_api_destinations_request() :: #{
-%%   <<"ConnectionArn">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NamePrefix">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_api_destinations_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_archive_response() :: #{
-%%   <<"ArchiveArn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => string()
-%% }
--type create_archive_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_replay_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Destination">> := replay_destination(),
-%%   <<"EventEndTime">> := non_neg_integer(),
-%%   <<"EventSourceArn">> := string(),
-%%   <<"EventStartTime">> := non_neg_integer(),
-%%   <<"ReplayName">> := string()
-%% }
--type start_replay_request() :: #{binary() => any()}.
-
-%% Example:
-%% connection_o_auth_response_parameters() :: #{
-%%   <<"AuthorizationEndpoint">> => string(),
-%%   <<"ClientParameters">> => connection_o_auth_client_response_parameters(),
-%%   <<"HttpMethod">> => list(any()),
-%%   <<"OAuthHttpParameters">> => connection_http_parameters()
-%% }
--type connection_o_auth_response_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% archive() :: #{
-%%   <<"ArchiveName">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EventCount">> => float(),
-%%   <<"EventSourceArn">> => string(),
-%%   <<"RetentionDays">> => integer(),
-%%   <<"SizeBytes">> => float(),
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => string()
-%% }
--type archive() :: #{binary() => any()}.
-
-%% Example:
-%% remove_targets_response() :: #{
-%%   <<"FailedEntries">> => list(remove_targets_result_entry()),
-%%   <<"FailedEntryCount">> => integer()
-%% }
--type remove_targets_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_response() :: #{
-%%   <<"ConnectionArn">> => string(),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LastModifiedTime">> => non_neg_integer()
-%% }
--type create_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_event_buses_response() :: #{
-%%   <<"EventBuses">> => list(event_bus()),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_buses_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_archive_request() :: #{
@@ -1218,69 +1387,6 @@
 -type update_archive_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_rule_names_by_target_request() :: #{
-%%   <<"EventBusName">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TargetArn">> := string()
-%% }
--type list_rule_names_by_target_request() :: #{binary() => any()}.
-
-%% Example:
-%% aws_vpc_configuration() :: #{
-%%   <<"AssignPublicIp">> => list(any()),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"Subnets">> => list(string())
-%% }
--type aws_vpc_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% put_partner_events_result_entry() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"EventId">> => string()
-%% }
--type put_partner_events_result_entry() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_basic_auth_request_parameters() :: #{
-%%   <<"Password">> => string(),
-%%   <<"Username">> => string()
-%% }
--type create_connection_basic_auth_request_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% put_partner_events_request() :: #{
-%%   <<"Entries">> := list(put_partner_events_request_entry())
-%% }
--type put_partner_events_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_parameters() :: #{
-%%   <<"PartitionKeyPath">> => string()
-%% }
--type kinesis_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% list_targets_by_rule_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Targets">> => list(target())
-%% }
--type list_targets_by_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_connection_request() :: #{binary() => any()}.
-
-%% Example:
 %% update_archive_response() :: #{
 %%   <<"ArchiveArn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -1290,63 +1396,27 @@
 -type update_archive_response() :: #{binary() => any()}.
 
 %% Example:
-%% test_event_pattern_response() :: #{
-%%   <<"Result">> => boolean()
+%% update_connection_api_key_auth_request_parameters() :: #{
+%%   <<"ApiKeyName">> => string(),
+%%   <<"ApiKeyValue">> => string()
 %% }
--type test_event_pattern_response() :: #{binary() => any()}.
+-type update_connection_api_key_auth_request_parameters() :: #{binary() => any()}.
 
 %% Example:
-%% illegal_status_exception() :: #{
-%%   <<"message">> => string()
+%% update_connection_auth_request_parameters() :: #{
+%%   <<"ApiKeyAuthParameters">> => update_connection_api_key_auth_request_parameters(),
+%%   <<"BasicAuthParameters">> => update_connection_basic_auth_request_parameters(),
+%%   <<"InvocationHttpParameters">> => connection_http_parameters(),
+%%   <<"OAuthParameters">> => update_connection_o_auth_request_parameters()
 %% }
--type illegal_status_exception() :: #{binary() => any()}.
+-type update_connection_auth_request_parameters() :: #{binary() => any()}.
 
 %% Example:
-%% list_targets_by_rule_request() :: #{
-%%   <<"EventBusName">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Rule">> := string()
-%% }
--type list_targets_by_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% retry_policy() :: #{
-%%   <<"MaximumEventAgeInSeconds">> => integer(),
-%%   <<"MaximumRetryAttempts">> => integer()
-%% }
--type retry_policy() :: #{binary() => any()}.
-
-%% Example:
-%% connection_body_parameter() :: #{
-%%   <<"IsValueSecret">> => boolean(),
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type connection_body_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% connection_basic_auth_response_parameters() :: #{
+%% update_connection_basic_auth_request_parameters() :: #{
+%%   <<"Password">> => string(),
 %%   <<"Username">> => string()
 %% }
--type connection_basic_auth_response_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% put_targets_request() :: #{
-%%   <<"EventBusName">> => string(),
-%%   <<"Rule">> := string(),
-%%   <<"Targets">> := list(target())
-%% }
--type put_targets_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_request() :: #{
-%%   <<"AuthParameters">> := create_connection_auth_request_parameters(),
-%%   <<"AuthorizationType">> := list(any()),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string()
-%% }
--type create_connection_request() :: #{binary() => any()}.
+-type update_connection_basic_auth_request_parameters() :: #{binary() => any()}.
 
 %% Example:
 %% update_connection_o_auth_client_request_parameters() :: #{
@@ -1356,129 +1426,59 @@
 -type update_connection_o_auth_client_request_parameters() :: #{binary() => any()}.
 
 %% Example:
-%% event_bus() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Policy">> => string()
+%% update_connection_o_auth_request_parameters() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientParameters">> => update_connection_o_auth_client_request_parameters(),
+%%   <<"HttpMethod">> => list(any()),
+%%   <<"OAuthHttpParameters">> => connection_http_parameters()
 %% }
--type event_bus() :: #{binary() => any()}.
+-type update_connection_o_auth_request_parameters() :: #{binary() => any()}.
 
 %% Example:
-%% create_connection_auth_request_parameters() :: #{
-%%   <<"ApiKeyAuthParameters">> => create_connection_api_key_auth_request_parameters(),
-%%   <<"BasicAuthParameters">> => create_connection_basic_auth_request_parameters(),
-%%   <<"InvocationHttpParameters">> => connection_http_parameters(),
-%%   <<"OAuthParameters">> => create_connection_o_auth_request_parameters()
-%% }
--type create_connection_auth_request_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% delete_api_destination_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_api_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% connection_o_auth_client_response_parameters() :: #{
-%%   <<"ClientID">> => string()
-%% }
--type connection_o_auth_client_response_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% describe_rule_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedBy">> => string(),
+%% update_connection_request() :: #{
+%%   <<"AuthParameters">> => update_connection_auth_request_parameters(),
+%%   <<"AuthorizationType">> => list(any()),
 %%   <<"Description">> => string(),
-%%   <<"EventBusName">> => string(),
-%%   <<"EventPattern">> => string(),
-%%   <<"ManagedBy">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type describe_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_partner_event_source_accounts_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PartnerEventSourceAccounts">> => list(partner_event_source_account())
-%% }
--type list_partner_event_source_accounts_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_rule_names_by_target_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RuleNames">> => list(string())
-%% }
--type list_rule_names_by_target_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_partner_event_source_request() :: #{
-%%   <<"Account">> := string(),
 %%   <<"Name">> := string()
 %% }
--type delete_partner_event_source_request() :: #{binary() => any()}.
+-type update_connection_request() :: #{binary() => any()}.
 
 %% Example:
-%% placement_strategy() :: #{
-%%   <<"field">> => string(),
-%%   <<"type">> => list(any())
+%% update_connection_response() :: #{
+%%   <<"ConnectionArn">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastAuthorizedTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
 %% }
--type placement_strategy() :: #{binary() => any()}.
-
-%% Example:
-%% ecs_parameters() :: #{
-%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()),
-%%   <<"EnableECSManagedTags">> => boolean(),
-%%   <<"EnableExecuteCommand">> => boolean(),
-%%   <<"Group">> => string(),
-%%   <<"LaunchType">> => list(any()),
-%%   <<"NetworkConfiguration">> => network_configuration(),
-%%   <<"PlacementConstraints">> => list(placement_constraint()),
-%%   <<"PlacementStrategy">> => list(placement_strategy()),
-%%   <<"PlatformVersion">> => string(),
-%%   <<"PropagateTags">> => list(any()),
-%%   <<"ReferenceId">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TaskCount">> => integer(),
-%%   <<"TaskDefinitionArn">> => string()
-%% }
--type ecs_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% put_targets_response() :: #{
-%%   <<"FailedEntries">> => list(put_targets_result_entry()),
-%%   <<"FailedEntryCount">> => integer()
-%% }
--type put_targets_response() :: #{binary() => any()}.
+-type update_connection_response() :: #{binary() => any()}.
 
 -type activate_event_source_errors() ::
-    concurrent_modification_exception() | 
-    internal_exception() | 
-    operation_disabled_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    operation_disabled_exception() | 
+    invalid_state_exception() | 
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type cancel_replay_errors() ::
-    illegal_status_exception() | 
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    illegal_status_exception() | 
+    concurrent_modification_exception().
 
 -type create_api_destination_errors() ::
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    internal_exception() | 
-    resource_not_found_exception().
+    internal_exception().
 
 -type create_archive_errors() ::
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
+    invalid_event_pattern_exception() | 
     internal_exception() | 
-    resource_not_found_exception() | 
-    invalid_event_pattern_exception().
+    concurrent_modification_exception().
 
 -type create_connection_errors() ::
     resource_already_exists_exception() | 
@@ -1486,116 +1486,116 @@
     internal_exception().
 
 -type create_event_bus_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    internal_exception() | 
-    operation_disabled_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    resource_already_exists_exception() | 
+    operation_disabled_exception() | 
+    limit_exceeded_exception() | 
+    invalid_state_exception() | 
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type create_partner_event_source_errors() ::
     resource_already_exists_exception() | 
+    operation_disabled_exception() | 
     limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
     internal_exception() | 
-    operation_disabled_exception().
+    concurrent_modification_exception().
 
 -type deactivate_event_source_errors() ::
-    concurrent_modification_exception() | 
-    internal_exception() | 
-    operation_disabled_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    operation_disabled_exception() | 
+    invalid_state_exception() | 
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type deauthorize_connection_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type delete_api_destination_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type delete_archive_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type delete_connection_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type delete_event_bus_errors() ::
-    concurrent_modification_exception() | 
-    internal_exception().
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type delete_partner_event_source_errors() ::
-    concurrent_modification_exception() | 
+    operation_disabled_exception() | 
     internal_exception() | 
-    operation_disabled_exception().
+    concurrent_modification_exception().
 
 -type delete_rule_errors() ::
-    concurrent_modification_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     managed_rule_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type describe_api_destination_errors() ::
-    internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_exception().
 
 -type describe_archive_errors() ::
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
-    internal_exception() | 
-    resource_not_found_exception().
+    internal_exception().
 
 -type describe_connection_errors() ::
-    internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_exception().
 
 -type describe_event_bus_errors() ::
-    internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_exception().
 
 -type describe_event_source_errors() ::
-    internal_exception() | 
+    resource_not_found_exception() | 
     operation_disabled_exception() | 
-    resource_not_found_exception().
+    internal_exception().
 
 -type describe_partner_event_source_errors() ::
-    internal_exception() | 
+    resource_not_found_exception() | 
     operation_disabled_exception() | 
-    resource_not_found_exception().
+    internal_exception().
 
 -type describe_replay_errors() ::
-    internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_exception().
 
 -type describe_rule_errors() ::
-    internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_exception().
 
 -type disable_rule_errors() ::
-    concurrent_modification_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     managed_rule_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type enable_rule_errors() ::
-    concurrent_modification_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     managed_rule_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type list_api_destinations_errors() ::
     internal_exception().
 
 -type list_archives_errors() ::
-    internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_exception().
 
 -type list_connections_errors() ::
     internal_exception().
@@ -1604,119 +1604,119 @@
     internal_exception().
 
 -type list_event_sources_errors() ::
-    internal_exception() | 
-    operation_disabled_exception().
+    operation_disabled_exception() | 
+    internal_exception().
 
 -type list_partner_event_source_accounts_errors() ::
-    internal_exception() | 
+    resource_not_found_exception() | 
     operation_disabled_exception() | 
-    resource_not_found_exception().
+    internal_exception().
 
 -type list_partner_event_sources_errors() ::
-    internal_exception() | 
-    operation_disabled_exception().
+    operation_disabled_exception() | 
+    internal_exception().
 
 -type list_replays_errors() ::
     internal_exception().
 
 -type list_rule_names_by_target_errors() ::
-    internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_exception().
 
 -type list_rules_errors() ::
-    internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_exception().
 
 -type list_targets_by_rule_errors() ::
-    internal_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_exception().
 
 -type put_events_errors() ::
     internal_exception().
 
 -type put_partner_events_errors() ::
-    internal_exception() | 
-    operation_disabled_exception().
+    operation_disabled_exception() | 
+    internal_exception().
 
 -type put_permission_errors() ::
-    concurrent_modification_exception() | 
-    internal_exception() | 
-    operation_disabled_exception() | 
     resource_not_found_exception() | 
-    policy_length_exceeded_exception().
+    policy_length_exceeded_exception() | 
+    operation_disabled_exception() | 
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type put_rule_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    internal_exception() | 
-    managed_rule_exception() | 
     resource_not_found_exception() | 
-    invalid_event_pattern_exception().
+    managed_rule_exception() | 
+    limit_exceeded_exception() | 
+    invalid_event_pattern_exception() | 
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type put_targets_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     managed_rule_exception() | 
-    resource_not_found_exception().
+    limit_exceeded_exception() | 
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type remove_permission_errors() ::
-    concurrent_modification_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     operation_disabled_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type remove_targets_errors() ::
-    concurrent_modification_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     managed_rule_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type start_replay_errors() ::
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    internal_exception() | 
-    resource_not_found_exception() | 
-    invalid_event_pattern_exception().
+    invalid_event_pattern_exception() | 
+    internal_exception().
 
 -type tag_resource_errors() ::
-    concurrent_modification_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     managed_rule_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type test_event_pattern_errors() ::
-    internal_exception() | 
-    invalid_event_pattern_exception().
+    invalid_event_pattern_exception() | 
+    internal_exception().
 
 -type untag_resource_errors() ::
-    concurrent_modification_exception() | 
-    internal_exception() | 
+    resource_not_found_exception() | 
     managed_rule_exception() | 
-    resource_not_found_exception().
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type update_api_destination_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type update_archive_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    internal_exception() | 
     resource_not_found_exception() | 
-    invalid_event_pattern_exception().
+    limit_exceeded_exception() | 
+    invalid_event_pattern_exception() | 
+    internal_exception() | 
+    concurrent_modification_exception().
 
 -type update_connection_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
     internal_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 %%====================================================================
 %% API

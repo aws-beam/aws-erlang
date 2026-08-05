@@ -78,12 +78,46 @@
 
 
 %% Example:
-%% set_status_input() :: #{
-%%   <<"objectIds">> := list(string()),
+%% activate_pipeline_input() :: #{
+%%   <<"parameterValues">> => list(parameter_value()),
 %%   <<"pipelineId">> := string(),
-%%   <<"status">> := string()
+%%   <<"startTimestamp">> => non_neg_integer()
 %% }
--type set_status_input() :: #{binary() => any()}.
+-type activate_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% activate_pipeline_output() :: #{
+
+%% }
+-type activate_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_input() :: #{
+%%   <<"pipelineId">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type add_tags_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_output() :: #{
+
+%% }
+-type add_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_pipeline_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"uniqueId">> := string()
+%% }
+-type create_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_pipeline_output() :: #{
+%%   <<"pipelineId">> => string()
+%% }
+-type create_pipeline_output() :: #{binary() => any()}.
 
 %% Example:
 %% deactivate_pipeline_input() :: #{
@@ -91,6 +125,219 @@
 %%   <<"pipelineId">> := string()
 %% }
 -type deactivate_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_pipeline_output() :: #{
+
+%% }
+-type deactivate_pipeline_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_input() :: #{
+%%   <<"pipelineId">> := string()
+%% }
+-type delete_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_objects_input() :: #{
+%%   <<"evaluateExpressions">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"objectIds">> := list(string()),
+%%   <<"pipelineId">> := string()
+%% }
+-type describe_objects_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_objects_output() :: #{
+%%   <<"hasMoreResults">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pipelineObjects">> => list(pipeline_object())
+%% }
+-type describe_objects_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pipelines_input() :: #{
+%%   <<"pipelineIds">> := list(string())
+%% }
+-type describe_pipelines_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pipelines_output() :: #{
+%%   <<"pipelineDescriptionList">> => list(pipeline_description())
+%% }
+-type describe_pipelines_output() :: #{binary() => any()}.
+
+%% Example:
+%% evaluate_expression_input() :: #{
+%%   <<"expression">> := string(),
+%%   <<"objectId">> := string(),
+%%   <<"pipelineId">> := string()
+%% }
+-type evaluate_expression_input() :: #{binary() => any()}.
+
+%% Example:
+%% evaluate_expression_output() :: #{
+%%   <<"evaluatedExpression">> => string()
+%% }
+-type evaluate_expression_output() :: #{binary() => any()}.
+
+%% Example:
+%% field() :: #{
+%%   <<"key">> => string(),
+%%   <<"refValue">> => string(),
+%%   <<"stringValue">> => string()
+%% }
+-type field() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_definition_input() :: #{
+%%   <<"pipelineId">> := string(),
+%%   <<"version">> => string()
+%% }
+-type get_pipeline_definition_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_pipeline_definition_output() :: #{
+%%   <<"parameterObjects">> => list(parameter_object()),
+%%   <<"parameterValues">> => list(parameter_value()),
+%%   <<"pipelineObjects">> => list(pipeline_object())
+%% }
+-type get_pipeline_definition_output() :: #{binary() => any()}.
+
+%% Example:
+%% instance_identity() :: #{
+%%   <<"document">> => string(),
+%%   <<"signature">> => string()
+%% }
+-type instance_identity() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_service_error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_input() :: #{
+%%   <<"marker">> => string()
+%% }
+-type list_pipelines_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipelines_output() :: #{
+%%   <<"hasMoreResults">> => boolean(),
+%%   <<"marker">> => string(),
+%%   <<"pipelineIdList">> => list(pipeline_id_name())
+%% }
+-type list_pipelines_output() :: #{binary() => any()}.
+
+%% Example:
+%% operator() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type operator() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_attribute() :: #{
+%%   <<"key">> => string(),
+%%   <<"stringValue">> => string()
+%% }
+-type parameter_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_object() :: #{
+%%   <<"attributes">> => list(parameter_attribute()),
+%%   <<"id">> => string()
+%% }
+-type parameter_object() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_value() :: #{
+%%   <<"id">> => string(),
+%%   <<"stringValue">> => string()
+%% }
+-type parameter_value() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_deleted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_deleted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_description() :: #{
+%%   <<"description">> => string(),
+%%   <<"fields">> => list(field()),
+%%   <<"name">> => string(),
+%%   <<"pipelineId">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type pipeline_description() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_id_name() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type pipeline_id_name() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type pipeline_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_object() :: #{
+%%   <<"fields">> => list(field()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type pipeline_object() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_task_input() :: #{
+%%   <<"hostname">> => string(),
+%%   <<"instanceIdentity">> => instance_identity(),
+%%   <<"workerGroup">> := string()
+%% }
+-type poll_for_task_input() :: #{binary() => any()}.
+
+%% Example:
+%% poll_for_task_output() :: #{
+%%   <<"taskObject">> => task_object()
+%% }
+-type poll_for_task_output() :: #{binary() => any()}.
+
+%% Example:
+%% put_pipeline_definition_input() :: #{
+%%   <<"parameterObjects">> => list(parameter_object()),
+%%   <<"parameterValues">> => list(parameter_value()),
+%%   <<"pipelineId">> := string(),
+%%   <<"pipelineObjects">> := list(pipeline_object())
+%% }
+-type put_pipeline_definition_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_pipeline_definition_output() :: #{
+%%   <<"errored">> => boolean(),
+%%   <<"validationErrors">> => list(validation_error()),
+%%   <<"validationWarnings">> => list(validation_warning())
+%% }
+-type put_pipeline_definition_output() :: #{binary() => any()}.
+
+%% Example:
+%% query() :: #{
+%%   <<"selectors">> => list(selector())
+%% }
+-type query() :: #{binary() => any()}.
 
 %% Example:
 %% query_objects_input() :: #{
@@ -103,63 +350,52 @@
 -type query_objects_input() :: #{binary() => any()}.
 
 %% Example:
-%% pipeline_deleted_exception() :: #{
-%%   <<"message">> => string()
+%% query_objects_output() :: #{
+%%   <<"hasMoreResults">> => boolean(),
+%%   <<"ids">> => list(string()),
+%%   <<"marker">> => string()
 %% }
--type pipeline_deleted_exception() :: #{binary() => any()}.
+-type query_objects_output() :: #{binary() => any()}.
 
 %% Example:
-%% create_pipeline_output() :: #{
-%%   <<"pipelineId">> => string()
-%% }
--type create_pipeline_output() :: #{binary() => any()}.
-
-%% Example:
-%% validate_pipeline_definition_output() :: #{
-%%   <<"errored">> => boolean(),
-%%   <<"validationErrors">> => list(validation_error()),
-%%   <<"validationWarnings">> => list(validation_warning())
-%% }
--type validate_pipeline_definition_output() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_object() :: #{
-%%   <<"fields">> => list(field()),
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type pipeline_object() :: #{binary() => any()}.
-
-%% Example:
-%% evaluate_expression_input() :: #{
-%%   <<"expression">> := string(),
-%%   <<"objectId">> := string(),
-%%   <<"pipelineId">> := string()
-%% }
--type evaluate_expression_input() :: #{binary() => any()}.
-
-%% Example:
-%% validate_pipeline_definition_input() :: #{
-%%   <<"parameterObjects">> => list(parameter_object()),
-%%   <<"parameterValues">> => list(parameter_value()),
+%% remove_tags_input() :: #{
 %%   <<"pipelineId">> := string(),
-%%   <<"pipelineObjects">> := list(pipeline_object())
+%%   <<"tagKeys">> := list(string())
 %% }
--type validate_pipeline_definition_input() :: #{binary() => any()}.
+-type remove_tags_input() :: #{binary() => any()}.
 
 %% Example:
-%% poll_for_task_input() :: #{
+%% remove_tags_output() :: #{
+
+%% }
+-type remove_tags_output() :: #{binary() => any()}.
+
+%% Example:
+%% report_task_progress_input() :: #{
+%%   <<"fields">> => list(field()),
+%%   <<"taskId">> := string()
+%% }
+-type report_task_progress_input() :: #{binary() => any()}.
+
+%% Example:
+%% report_task_progress_output() :: #{
+%%   <<"canceled">> => boolean()
+%% }
+-type report_task_progress_output() :: #{binary() => any()}.
+
+%% Example:
+%% report_task_runner_heartbeat_input() :: #{
 %%   <<"hostname">> => string(),
-%%   <<"instanceIdentity">> => instance_identity(),
-%%   <<"workerGroup">> := string()
+%%   <<"taskrunnerId">> := string(),
+%%   <<"workerGroup">> => string()
 %% }
--type poll_for_task_input() :: #{binary() => any()}.
+-type report_task_runner_heartbeat_input() :: #{binary() => any()}.
 
 %% Example:
-%% add_tags_output() :: #{
-
+%% report_task_runner_heartbeat_output() :: #{
+%%   <<"terminate">> => boolean()
 %% }
--type add_tags_output() :: #{binary() => any()}.
+-type report_task_runner_heartbeat_output() :: #{binary() => any()}.
 
 %% Example:
 %% selector() :: #{
@@ -169,10 +405,12 @@
 -type selector() :: #{binary() => any()}.
 
 %% Example:
-%% report_task_progress_output() :: #{
-%%   <<"canceled">> => boolean()
+%% set_status_input() :: #{
+%%   <<"objectIds">> := list(string()),
+%%   <<"pipelineId">> := string(),
+%%   <<"status">> := string()
 %% }
--type report_task_progress_output() :: #{binary() => any()}.
+-type set_status_input() :: #{binary() => any()}.
 
 %% Example:
 %% set_task_status_input() :: #{
@@ -183,62 +421,6 @@
 %%   <<"taskStatus">> := list(any())
 %% }
 -type set_task_status_input() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_input() :: #{
-%%   <<"pipelineId">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type add_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_pipeline_definition_output() :: #{
-%%   <<"parameterObjects">> => list(parameter_object()),
-%%   <<"parameterValues">> => list(parameter_value()),
-%%   <<"pipelineObjects">> => list(pipeline_object())
-%% }
--type get_pipeline_definition_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pipelines_input() :: #{
-%%   <<"pipelineIds">> := list(string())
-%% }
--type describe_pipelines_input() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_output() :: #{
-
-%% }
--type remove_tags_output() :: #{binary() => any()}.
-
-%% Example:
-%% operator() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type operator() :: #{binary() => any()}.
-
-%% Example:
-%% delete_pipeline_input() :: #{
-%%   <<"pipelineId">> := string()
-%% }
--type delete_pipeline_input() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_value() :: #{
-%%   <<"id">> => string(),
-%%   <<"stringValue">> => string()
-%% }
--type parameter_value() :: #{binary() => any()}.
-
-%% Example:
-%% create_pipeline_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"uniqueId">> := string()
-%% }
--type create_pipeline_input() :: #{binary() => any()}.
 
 %% Example:
 %% set_task_status_output() :: #{
@@ -254,57 +436,10 @@
 -type tag() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_request_exception() :: #{
+%% task_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipelines_input() :: #{
-%%   <<"marker">> => string()
-%% }
--type list_pipelines_input() :: #{binary() => any()}.
-
-%% Example:
-%% report_task_runner_heartbeat_output() :: #{
-%%   <<"terminate">> => boolean()
-%% }
--type report_task_runner_heartbeat_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pipelines_output() :: #{
-%%   <<"pipelineDescriptionList">> => list(pipeline_description())
-%% }
--type describe_pipelines_output() :: #{binary() => any()}.
-
-%% Example:
-%% field() :: #{
-%%   <<"key">> => string(),
-%%   <<"refValue">> => string(),
-%%   <<"stringValue">> => string()
-%% }
--type field() :: #{binary() => any()}.
-
-%% Example:
-%% validation_error() :: #{
-%%   <<"errors">> => list(string()),
-%%   <<"id">> => string()
-%% }
--type validation_error() :: #{binary() => any()}.
-
-%% Example:
-%% report_task_runner_heartbeat_input() :: #{
-%%   <<"hostname">> => string(),
-%%   <<"taskrunnerId">> := string(),
-%%   <<"workerGroup">> => string()
-%% }
--type report_task_runner_heartbeat_input() :: #{binary() => any()}.
-
-%% Example:
-%% evaluate_expression_output() :: #{
-%%   <<"evaluatedExpression">> => string()
-%% }
--type evaluate_expression_output() :: #{binary() => any()}.
+-type task_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% task_object() :: #{
@@ -316,27 +451,28 @@
 -type task_object() :: #{binary() => any()}.
 
 %% Example:
-%% describe_objects_output() :: #{
-%%   <<"hasMoreResults">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"pipelineObjects">> => list(pipeline_object())
-%% }
--type describe_objects_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_pipeline_definition_input() :: #{
+%% validate_pipeline_definition_input() :: #{
+%%   <<"parameterObjects">> => list(parameter_object()),
+%%   <<"parameterValues">> => list(parameter_value()),
 %%   <<"pipelineId">> := string(),
-%%   <<"version">> => string()
+%%   <<"pipelineObjects">> := list(pipeline_object())
 %% }
--type get_pipeline_definition_input() :: #{binary() => any()}.
+-type validate_pipeline_definition_input() :: #{binary() => any()}.
 
 %% Example:
-%% query_objects_output() :: #{
-%%   <<"hasMoreResults">> => boolean(),
-%%   <<"ids">> => list(string()),
-%%   <<"marker">> => string()
+%% validate_pipeline_definition_output() :: #{
+%%   <<"errored">> => boolean(),
+%%   <<"validationErrors">> => list(validation_error()),
+%%   <<"validationWarnings">> => list(validation_warning())
 %% }
--type query_objects_output() :: #{binary() => any()}.
+-type validate_pipeline_definition_output() :: #{binary() => any()}.
+
+%% Example:
+%% validation_error() :: #{
+%%   <<"errors">> => list(string()),
+%%   <<"id">> => string()
+%% }
+-type validation_error() :: #{binary() => any()}.
 
 %% Example:
 %% validation_warning() :: #{
@@ -345,250 +481,114 @@
 %% }
 -type validation_warning() :: #{binary() => any()}.
 
-%% Example:
-%% pipeline_description() :: #{
-%%   <<"description">> => string(),
-%%   <<"fields">> => list(field()),
-%%   <<"name">> => string(),
-%%   <<"pipelineId">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type pipeline_description() :: #{binary() => any()}.
-
-%% Example:
-%% internal_service_error() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_service_error() :: #{binary() => any()}.
-
-%% Example:
-%% deactivate_pipeline_output() :: #{
-
-%% }
--type deactivate_pipeline_output() :: #{binary() => any()}.
-
-%% Example:
-%% poll_for_task_output() :: #{
-%%   <<"taskObject">> => task_object()
-%% }
--type poll_for_task_output() :: #{binary() => any()}.
-
-%% Example:
-%% activate_pipeline_input() :: #{
-%%   <<"parameterValues">> => list(parameter_value()),
-%%   <<"pipelineId">> := string(),
-%%   <<"startTimestamp">> => non_neg_integer()
-%% }
--type activate_pipeline_input() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type pipeline_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_pipelines_output() :: #{
-%%   <<"hasMoreResults">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"pipelineIdList">> => list(pipeline_id_name())
-%% }
--type list_pipelines_output() :: #{binary() => any()}.
-
-%% Example:
-%% task_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type task_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_pipeline_definition_output() :: #{
-%%   <<"errored">> => boolean(),
-%%   <<"validationErrors">> => list(validation_error()),
-%%   <<"validationWarnings">> => list(validation_warning())
-%% }
--type put_pipeline_definition_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_pipeline_definition_input() :: #{
-%%   <<"parameterObjects">> => list(parameter_object()),
-%%   <<"parameterValues">> => list(parameter_value()),
-%%   <<"pipelineId">> := string(),
-%%   <<"pipelineObjects">> := list(pipeline_object())
-%% }
--type put_pipeline_definition_input() :: #{binary() => any()}.
-
-%% Example:
-%% query() :: #{
-%%   <<"selectors">> => list(selector())
-%% }
--type query() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_input() :: #{
-%%   <<"pipelineId">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type remove_tags_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_objects_input() :: #{
-%%   <<"evaluateExpressions">> => boolean(),
-%%   <<"marker">> => string(),
-%%   <<"objectIds">> := list(string()),
-%%   <<"pipelineId">> := string()
-%% }
--type describe_objects_input() :: #{binary() => any()}.
-
-%% Example:
-%% report_task_progress_input() :: #{
-%%   <<"fields">> => list(field()),
-%%   <<"taskId">> := string()
-%% }
--type report_task_progress_input() :: #{binary() => any()}.
-
-%% Example:
-%% instance_identity() :: #{
-%%   <<"document">> => string(),
-%%   <<"signature">> => string()
-%% }
--type instance_identity() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_attribute() :: #{
-%%   <<"key">> => string(),
-%%   <<"stringValue">> => string()
-%% }
--type parameter_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% activate_pipeline_output() :: #{
-
-%% }
--type activate_pipeline_output() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_object() :: #{
-%%   <<"attributes">> => list(parameter_attribute()),
-%%   <<"id">> => string()
-%% }
--type parameter_object() :: #{binary() => any()}.
-
-%% Example:
-%% pipeline_id_name() :: #{
-%%   <<"id">> => string(),
-%%   <<"name">> => string()
-%% }
--type pipeline_id_name() :: #{binary() => any()}.
-
 -type activate_pipeline_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type add_tags_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type create_pipeline_errors() ::
-    internal_service_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_service_error().
 
 -type deactivate_pipeline_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type delete_pipeline_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_service_error().
 
 -type describe_objects_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type describe_pipelines_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type evaluate_expression_errors() ::
     task_not_found_exception() | 
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type get_pipeline_definition_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type list_pipelines_errors() ::
-    internal_service_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_service_error().
 
 -type poll_for_task_errors() ::
     task_not_found_exception() | 
-    internal_service_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_service_error().
 
 -type put_pipeline_definition_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type query_objects_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type remove_tags_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type report_task_progress_errors() ::
     task_not_found_exception() | 
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type report_task_runner_heartbeat_errors() ::
-    internal_service_error() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_service_error().
 
 -type set_status_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type set_task_status_errors() ::
     task_not_found_exception() | 
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 -type validate_pipeline_definition_errors() ::
     pipeline_not_found_exception() | 
-    internal_service_error() | 
+    pipeline_deleted_exception() | 
     invalid_request_exception() | 
-    pipeline_deleted_exception().
+    internal_service_error().
 
 %%====================================================================
 %% API

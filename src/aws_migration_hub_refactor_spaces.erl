@@ -89,10 +89,294 @@
 
 
 %% Example:
-%% lambda_endpoint_summary() :: #{
-%%   <<"Arn">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type lambda_endpoint_summary() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_gateway_proxy_config() :: #{
+%%   <<"ApiGatewayId">> => string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"NlbArn">> => string(),
+%%   <<"NlbName">> => string(),
+%%   <<"ProxyUrl">> => string(),
+%%   <<"StageName">> => string(),
+%%   <<"VpcLinkId">> => string()
+%% }
+-type api_gateway_proxy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_gateway_proxy_input() :: #{
+%%   <<"EndpointType">> => string(),
+%%   <<"StageName">> => string()
+%% }
+-type api_gateway_proxy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_gateway_proxy_summary() :: #{
+%%   <<"ApiGatewayId">> => string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"NlbArn">> => string(),
+%%   <<"NlbName">> => string(),
+%%   <<"ProxyUrl">> => string(),
+%%   <<"StageName">> => string(),
+%%   <<"VpcLinkId">> => string()
+%% }
+-type api_gateway_proxy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_summary() :: #{
+%%   <<"ApiGatewayProxy">> => api_gateway_proxy_summary(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ProxyType">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcId">> => string()
+%% }
+-type application_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"ApiGatewayProxy">> => api_gateway_proxy_input(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"ProxyType">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcId">> := string()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"ApiGatewayProxy">> => api_gateway_proxy_input(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ProxyType">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcId">> => string()
+%% }
+-type create_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"NetworkFabricType">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkFabricType">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_route_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DefaultRoute">> => default_route_input(),
+%%   <<"RouteType">> := string(),
+%%   <<"ServiceIdentifier">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"UriPathRoute">> => uri_path_route_input()
+%% }
+-type create_route_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_route_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteType">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UriPathRoute">> => uri_path_route_input()
+%% }
+-type create_route_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointType">> := string(),
+%%   <<"LambdaEndpoint">> => lambda_endpoint_input(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"UrlEndpoint">> => url_endpoint_input(),
+%%   <<"VpcId">> => string()
+%% }
+-type create_service_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointType">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LambdaEndpoint">> => lambda_endpoint_input(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"UrlEndpoint">> => url_endpoint_input(),
+%%   <<"VpcId">> => string()
+%% }
+-type create_service_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_route_input() :: #{
+%%   <<"ActivationState">> => string()
+%% }
+-type default_route_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
+
+%% Example:
+%% delete_application_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string()
+%% }
+-type delete_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_request() :: #{}
+-type delete_environment_request() :: #{}.
+
+
+%% Example:
+%% delete_environment_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string()
+%% }
+-type delete_environment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{}
+-type delete_resource_policy_request() :: #{}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{}
+-type delete_resource_policy_response() :: #{}.
+
+%% Example:
+%% delete_route_request() :: #{}
+-type delete_route_request() :: #{}.
+
+
+%% Example:
+%% delete_route_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"RouteId">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"State">> => string()
+%% }
+-type delete_route_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_request() :: #{}
+-type delete_service_request() :: #{}.
+
+
+%% Example:
+%% delete_service_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"State">> => string()
+%% }
+-type delete_service_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkFabricType">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TransitGatewayId">> => string()
+%% }
+-type environment_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -109,41 +393,104 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
+%% error_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AdditionalDetails">> => map(),
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"ResourceType">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type error_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_resource_policy_response() :: #{}
--type delete_resource_policy_response() :: #{}.
-
-
-%% Example:
-%% default_route_input() :: #{
-%%   <<"ActivationState">> => string()
-%% }
--type default_route_input() :: #{binary() => any()}.
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
 
 
 %% Example:
-%% api_gateway_proxy_input() :: #{
-%%   <<"EndpointType">> => string(),
-%%   <<"StageName">> => string()
-%% }
--type api_gateway_proxy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_route_response() :: #{
+%% get_application_response() :: #{
+%%   <<"ApiGatewayProxy">> => api_gateway_proxy_config(),
 %%   <<"ApplicationId">> => string(),
 %%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"RouteId">> => string(),
-%%   <<"ServiceId">> => string(),
-%%   <<"State">> => string()
+%%   <<"Name">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"ProxyType">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VpcId">> => string()
 %% }
--type update_route_response() :: #{binary() => any()}.
+-type get_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_request() :: #{}
+-type get_environment_request() :: #{}.
+
+
+%% Example:
+%% get_environment_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkFabricType">> => string(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TransitGatewayId">> => string()
+%% }
+-type get_environment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_route_request() :: #{}
+-type get_route_request() :: #{}.
+
+
+%% Example:
+%% get_route_response() :: #{
+%%   <<"AppendSourcePath">> => boolean(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedByAccountId">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"Error">> => error_response(),
+%%   <<"IncludeChildPaths">> => boolean(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Methods">> => list(string()),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"PathResourceToId">> => map(),
+%%   <<"RouteId">> => string(),
+%%   <<"RouteType">> => string(),
+%%   <<"ServiceId">> => string(),
+%%   <<"SourcePath">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_route_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_request() :: #{}
+-type get_service_request() :: #{}.
 
 
 %% Example:
@@ -170,14 +517,150 @@
 
 
 %% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_resource_policy_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_resource_policy_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% lambda_endpoint_config() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type lambda_endpoint_config() :: #{binary() => any()}.
 
+
 %% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+%% lambda_endpoint_input() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type lambda_endpoint_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_endpoint_summary() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type lambda_endpoint_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"ApplicationSummaryList">> => list(application_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_vpcs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environment_vpcs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environment_vpcs_response() :: #{
+%%   <<"EnvironmentVpcList">> => list(environment_vpc()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environment_vpcs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_response() :: #{
+%%   <<"EnvironmentSummaryList">> => list(environment_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_routes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RouteSummaryList">> => list(route_summary())
+%% }
+-type list_routes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_services_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_services_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_services_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceSummaryList">> => list(service_summary())
+%% }
+-type list_services_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{}
+-type put_resource_policy_response() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -202,105 +685,6 @@
 %%   <<"Tags">> => map()
 %% }
 -type route_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"Error">> => error_response(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"NetworkFabricType">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"TransitGatewayId">> => string()
-%% }
--type environment_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_environment_request() :: #{}
--type get_environment_request() :: #{}.
-
-
-%% Example:
-%% lambda_endpoint_input() :: #{
-%%   <<"Arn">> => string()
-%% }
--type lambda_endpoint_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"Policy">> => string()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_environment_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"Error">> => error_response(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"NetworkFabricType">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"TransitGatewayId">> => string()
-%% }
--type get_environment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_request() :: #{}
--type get_service_request() :: #{}.
-
-
-%% Example:
-%% list_services_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_services_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_services_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceSummaryList">> => list(service_summary())
-%% }
--type list_services_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -338,79 +722,35 @@
 
 
 %% Example:
-%% create_service_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EndpointType">> := string(),
-%%   <<"LambdaEndpoint">> => lambda_endpoint_input(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"UrlEndpoint">> => url_endpoint_input(),
-%%   <<"VpcId">> => string()
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
 %% }
--type create_service_request() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
-%% error_response() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AdditionalDetails">> => map(),
-%%   <<"Code">> => string(),
+%% throttling_exception() :: #{
 %%   <<"Message">> => string(),
-%%   <<"ResourceIdentifier">> => string(),
-%%   <<"ResourceType">> => string()
+%%   <<"QuotaCode">> => string(),
+%%   <<"RetryAfterSeconds">> => integer(),
+%%   <<"ServiceCode">> => string()
 %% }
--type error_response() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_application_request() :: #{
-%%   <<"ApiGatewayProxy">> => api_gateway_proxy_input(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"ProxyType">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"VpcId">> := string()
-%% }
--type create_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environments_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_environments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_application_response() :: #{
-%%   <<"ApiGatewayProxy">> => api_gateway_proxy_input(),
-%%   <<"ApplicationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedByAccountId">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"ProxyType">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"VpcId">> => string()
-%% }
--type create_application_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{}
--type get_resource_policy_request() :: #{}.
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -421,39 +761,15 @@
 
 
 %% Example:
-%% delete_application_response() :: #{
+%% update_route_response() :: #{
 %%   <<"ApplicationId">> => string(),
 %%   <<"Arn">> => string(),
-%%   <<"EnvironmentId">> => string(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
+%%   <<"RouteId">> => string(),
+%%   <<"ServiceId">> => string(),
 %%   <<"State">> => string()
 %% }
--type delete_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% url_endpoint_config() :: #{
-%%   <<"HealthUrl">> => string(),
-%%   <<"Url">> => string()
-%% }
--type url_endpoint_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_environment_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"NetworkFabricType">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_environment_response() :: #{binary() => any()}.
+-type update_route_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -468,122 +784,11 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
+%% url_endpoint_config() :: #{
+%%   <<"HealthUrl">> => string(),
+%%   <<"Url">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_request() :: #{}
--type delete_environment_request() :: #{}.
-
-
-%% Example:
-%% list_routes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_routes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_application_response() :: #{
-%%   <<"ApiGatewayProxy">> => api_gateway_proxy_config(),
-%%   <<"ApplicationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedByAccountId">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"Error">> => error_response(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"ProxyType">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"VpcId">> => string()
-%% }
--type get_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_route_response() :: #{
-%%   <<"AppendSourcePath">> => boolean(),
-%%   <<"ApplicationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedByAccountId">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"Error">> => error_response(),
-%%   <<"IncludeChildPaths">> => boolean(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Methods">> => list(string()),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"PathResourceToId">> => map(),
-%%   <<"RouteId">> => string(),
-%%   <<"RouteType">> => string(),
-%%   <<"ServiceId">> => string(),
-%%   <<"SourcePath">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_route_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"Policy">> := string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% api_gateway_proxy_config() :: #{
-%%   <<"ApiGatewayId">> => string(),
-%%   <<"EndpointType">> => string(),
-%%   <<"NlbArn">> => string(),
-%%   <<"NlbName">> => string(),
-%%   <<"ProxyUrl">> => string(),
-%%   <<"StageName">> => string(),
-%%   <<"VpcLinkId">> => string()
-%% }
--type api_gateway_proxy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_routes_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RouteSummaryList">> => list(route_summary())
-%% }
--type list_routes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environment_vpcs_response() :: #{
-%%   <<"EnvironmentVpcList">> => list(environment_vpc()),
-%%   <<"NextToken">> => string()
-%% }
--type list_environment_vpcs_response() :: #{binary() => any()}.
+-type url_endpoint_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -595,40 +800,11 @@
 
 
 %% Example:
-%% delete_route_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"RouteId">> => string(),
-%%   <<"ServiceId">> => string(),
-%%   <<"State">> => string()
+%% url_endpoint_summary() :: #{
+%%   <<"HealthUrl">> => string(),
+%%   <<"Url">> => string()
 %% }
--type delete_route_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_resource_policy_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_resource_policy_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_route_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedByAccountId">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"RouteId">> => string(),
-%%   <<"RouteType">> => string(),
-%%   <<"ServiceId">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UriPathRoute">> => uri_path_route_input()
-%% }
--type create_route_response() :: #{binary() => any()}.
+-type url_endpoint_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -637,362 +813,186 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-%% Example:
-%% delete_service_request() :: #{}
--type delete_service_request() :: #{}.
-
-%% Example:
-%% delete_route_request() :: #{}
--type delete_route_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"RetryAfterSeconds">> => integer(),
-%%   <<"ServiceCode">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environments_response() :: #{
-%%   <<"EnvironmentSummaryList">> => list(environment_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_environments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_summary() :: #{
-%%   <<"ApiGatewayProxy">> => api_gateway_proxy_summary(),
-%%   <<"ApplicationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedByAccountId">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"Error">> => error_response(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"ProxyType">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"VpcId">> => string()
-%% }
--type application_summary() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_response() :: #{}
--type put_resource_policy_response() :: #{}.
-
-
-%% Example:
-%% list_applications_response() :: #{
-%%   <<"ApplicationSummaryList">> => list(application_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_request() :: #{}
--type delete_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% api_gateway_proxy_summary() :: #{
-%%   <<"ApiGatewayId">> => string(),
-%%   <<"EndpointType">> => string(),
-%%   <<"NlbArn">> => string(),
-%%   <<"NlbName">> => string(),
-%%   <<"ProxyUrl">> => string(),
-%%   <<"StageName">> => string(),
-%%   <<"VpcLinkId">> => string()
-%% }
--type api_gateway_proxy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_service_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ServiceId">> => string(),
-%%   <<"State">> => string()
-%% }
--type delete_service_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_route_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DefaultRoute">> => default_route_input(),
-%%   <<"RouteType">> := string(),
-%%   <<"ServiceIdentifier">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"UriPathRoute">> => uri_path_route_input()
-%% }
--type create_route_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_environment_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"NetworkFabricType">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_environment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environment_vpcs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_environment_vpcs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedByAccountId">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EndpointType">> => string(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"LambdaEndpoint">> => lambda_endpoint_input(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"ServiceId">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"UrlEndpoint">> => url_endpoint_input(),
-%%   <<"VpcId">> => string()
-%% }
--type create_service_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_request() :: #{}
--type get_application_request() :: #{}.
-
-
-%% Example:
-%% delete_environment_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => string()
-%% }
--type delete_environment_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_route_request() :: #{}
--type get_route_request() :: #{}.
-
-%% Example:
-%% delete_application_request() :: #{}
--type delete_application_request() :: #{}.
-
-
-%% Example:
-%% url_endpoint_summary() :: #{
-%%   <<"HealthUrl">> => string(),
-%%   <<"Url">> => string()
-%% }
--type url_endpoint_summary() :: #{binary() => any()}.
-
 -type create_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_environment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_route_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_environment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_route_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_application_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_environment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_route_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_applications_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_environment_vpcs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_environments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_routes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_services_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type put_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_resource_policy_exception() | 
-    access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_route_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

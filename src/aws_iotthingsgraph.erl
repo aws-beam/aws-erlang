@@ -93,110 +93,6 @@
 
 
 %% Example:
-%% delete_namespace_response() :: #{
-%%   <<"namespaceArn">> => string(),
-%%   <<"namespaceName">> => string()
-%% }
--type delete_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_namespace_response() :: #{
-%%   <<"namespaceArn">> => string(),
-%%   <<"namespaceName">> => string(),
-%%   <<"namespaceVersion">> => float(),
-%%   <<"trackingNamespaceName">> => string(),
-%%   <<"trackingNamespaceVersion">> => float()
-%% }
--type describe_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% search_flow_templates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(flow_template_summary())
-%% }
--type search_flow_templates_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_failure_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% search_things_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"things">> => list(thing())
-%% }
--type search_things_response() :: #{binary() => any()}.
-
-%% Example:
-%% upload_entity_definitions_request() :: #{
-%%   <<"deprecateExistingEntities">> => boolean(),
-%%   <<"document">> => definition_document(),
-%%   <<"syncWithPublicNamespace">> => boolean()
-%% }
--type upload_entity_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_namespace_deletion_status_response() :: #{
-%%   <<"errorCode">> => list(any()),
-%%   <<"errorMessage">> => string(),
-%%   <<"namespaceArn">> => string(),
-%%   <<"namespaceName">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_namespace_deletion_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% flow_execution_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"flowExecutionId">> => string(),
-%%   <<"flowTemplateId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"systemInstanceId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type flow_execution_summary() :: #{binary() => any()}.
-
-%% Example:
-%% system_instance_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => list(string())
-%% }
--type system_instance_filter() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% upload_entity_definitions_response() :: #{
-%%   <<"uploadId">> => string()
-%% }
--type upload_entity_definitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_system_instance_request() :: #{
-%%   <<"id">> => string()
-%% }
--type delete_system_instance_request() :: #{binary() => any()}.
-
-%% Example:
 %% associate_entity_to_thing_request() :: #{
 %%   <<"entityId">> := string(),
 %%   <<"namespaceVersion">> => float(),
@@ -205,115 +101,23 @@
 -type associate_entity_to_thing_request() :: #{binary() => any()}.
 
 %% Example:
-%% entity_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => list(string())
+%% associate_entity_to_thing_response() :: #{
+
 %% }
--type entity_filter() :: #{binary() => any()}.
+-type associate_entity_to_thing_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_system_template_request() :: #{
-%%   <<"compatibleNamespaceVersion">> => float(),
-%%   <<"definition">> := definition_document(),
-%%   <<"id">> := string()
-%% }
--type update_system_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_upload_status_response() :: #{
-%%   <<"createdDate">> => non_neg_integer(),
-%%   <<"failureReason">> => list(string()),
-%%   <<"namespaceArn">> => string(),
-%%   <<"namespaceName">> => string(),
-%%   <<"namespaceVersion">> => float(),
-%%   <<"uploadId">> => string(),
-%%   <<"uploadStatus">> => list(any())
-%% }
--type get_upload_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_system_template_revisions_request() :: #{
-%%   <<"id">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type get_system_template_revisions_request() :: #{binary() => any()}.
-
-%% Example:
-%% undeploy_system_instance_response() :: #{
-%%   <<"summary">> => system_instance_summary()
-%% }
--type undeploy_system_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_entities_request() :: #{
-%%   <<"ids">> := list(string()),
-%%   <<"namespaceVersion">> => float()
-%% }
--type get_entities_request() :: #{binary() => any()}.
-
-%% Example:
-%% search_entities_response() :: #{
-%%   <<"descriptions">> => list(entity_description()),
-%%   <<"nextToken">> => string()
-%% }
--type search_entities_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_upload_status_request() :: #{
-%%   <<"uploadId">> := string()
-%% }
--type get_upload_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_entities_response() :: #{
-%%   <<"descriptions">> => list(entity_description())
-%% }
--type get_entities_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_system_instance_response() :: #{
-%%   <<"description">> => system_instance_description()
-%% }
--type get_system_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_system_instance_request() :: #{
-%%   <<"id">> := string()
-%% }
--type get_system_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_namespace_request() :: #{
-%%   <<"namespaceName">> => string()
-%% }
--type describe_namespace_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_flow_template_response() :: #{
-%%   <<"summary">> => flow_template_summary()
-%% }
--type update_flow_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_system_template_response() :: #{
-%%   <<"description">> => system_template_description()
-%% }
--type get_system_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_system_template_request() :: #{
+%% create_flow_template_request() :: #{
 %%   <<"compatibleNamespaceVersion">> => float(),
 %%   <<"definition">> := definition_document()
 %% }
--type create_system_template_request() :: #{binary() => any()}.
+-type create_flow_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_flow_template_response() :: #{
+%%   <<"summary">> => flow_template_summary()
+%% }
+-type create_flow_template_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_system_instance_request() :: #{
@@ -328,10 +132,105 @@
 -type create_system_instance_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_system_instance_response() :: #{
+%%   <<"summary">> => system_instance_summary()
+%% }
+-type create_system_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_system_template_request() :: #{
+%%   <<"compatibleNamespaceVersion">> => float(),
+%%   <<"definition">> := definition_document()
+%% }
+-type create_system_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_system_template_response() :: #{
+%%   <<"summary">> => system_template_summary()
+%% }
+-type create_system_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% definition_document() :: #{
+%%   <<"language">> => list(any()),
+%%   <<"text">> => string()
+%% }
+-type definition_document() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flow_template_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type delete_flow_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_flow_template_response() :: #{
+
+%% }
+-type delete_flow_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_namespace_request() :: #{
+
+%% }
+-type delete_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_namespace_response() :: #{
+%%   <<"namespaceArn">> => string(),
+%%   <<"namespaceName">> => string()
+%% }
+-type delete_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_system_instance_request() :: #{
+%%   <<"id">> => string()
+%% }
+-type delete_system_instance_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_system_instance_response() :: #{
 
 %% }
 -type delete_system_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_system_template_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type delete_system_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_system_template_response() :: #{
+
+%% }
+-type delete_system_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% dependency_revision() :: #{
+%%   <<"id">> => string(),
+%%   <<"revisionNumber">> => float()
+%% }
+-type dependency_revision() :: #{binary() => any()}.
+
+%% Example:
+%% deploy_system_instance_request() :: #{
+%%   <<"id">> => string()
+%% }
+-type deploy_system_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% deploy_system_instance_response() :: #{
+%%   <<"greengrassDeploymentId">> => string(),
+%%   <<"summary">> => system_instance_summary()
+%% }
+-type deploy_system_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% deprecate_flow_template_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type deprecate_flow_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% deprecate_flow_template_response() :: #{
@@ -340,25 +239,45 @@
 -type deprecate_flow_template_response() :: #{binary() => any()}.
 
 %% Example:
-%% search_system_templates_request() :: #{
-%%   <<"filters">> => list(system_template_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% deprecate_system_template_request() :: #{
+%%   <<"id">> := string()
 %% }
--type search_system_templates_request() :: #{binary() => any()}.
+-type deprecate_system_template_request() :: #{binary() => any()}.
 
 %% Example:
-%% search_flow_executions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(flow_execution_summary())
+%% deprecate_system_template_response() :: #{
+
 %% }
--type search_flow_executions_response() :: #{binary() => any()}.
+-type deprecate_system_template_response() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% describe_namespace_request() :: #{
+%%   <<"namespaceName">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type describe_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_namespace_response() :: #{
+%%   <<"namespaceArn">> => string(),
+%%   <<"namespaceName">> => string(),
+%%   <<"namespaceVersion">> => float(),
+%%   <<"trackingNamespaceName">> => string(),
+%%   <<"trackingNamespaceVersion">> => float()
+%% }
+-type describe_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% dissociate_entity_from_thing_request() :: #{
+%%   <<"entityType">> := list(any()),
+%%   <<"thingName">> := string()
+%% }
+-type dissociate_entity_from_thing_request() :: #{binary() => any()}.
+
+%% Example:
+%% dissociate_entity_from_thing_response() :: #{
+
+%% }
+-type dissociate_entity_from_thing_response() :: #{binary() => any()}.
 
 %% Example:
 %% entity_description() :: #{
@@ -371,25 +290,68 @@
 -type entity_description() :: #{binary() => any()}.
 
 %% Example:
-%% system_template_description() :: #{
+%% entity_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => list(string())
+%% }
+-type entity_filter() :: #{binary() => any()}.
+
+%% Example:
+%% flow_execution_message() :: #{
+%%   <<"eventType">> => list(any()),
+%%   <<"messageId">> => string(),
+%%   <<"payload">> => string(),
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type flow_execution_message() :: #{binary() => any()}.
+
+%% Example:
+%% flow_execution_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"flowExecutionId">> => string(),
+%%   <<"flowTemplateId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"systemInstanceId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type flow_execution_summary() :: #{binary() => any()}.
+
+%% Example:
+%% flow_template_description() :: #{
 %%   <<"definition">> => definition_document(),
-%%   <<"summary">> => system_template_summary(),
+%%   <<"summary">> => flow_template_summary(),
 %%   <<"validatedNamespaceVersion">> => float()
 %% }
--type system_template_description() :: #{binary() => any()}.
+-type flow_template_description() :: #{binary() => any()}.
 
 %% Example:
-%% dissociate_entity_from_thing_response() :: #{
-
+%% flow_template_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => list(string())
 %% }
--type dissociate_entity_from_thing_response() :: #{binary() => any()}.
+-type flow_template_filter() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% flow_template_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"revisionNumber">> => float()
 %% }
--type tag() :: #{binary() => any()}.
+-type flow_template_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_entities_request() :: #{
+%%   <<"ids">> := list(string()),
+%%   <<"namespaceVersion">> => float()
+%% }
+-type get_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_entities_response() :: #{
+%%   <<"descriptions">> => list(entity_description())
+%% }
+-type get_entities_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_flow_template_request() :: #{
@@ -399,16 +361,53 @@
 -type get_flow_template_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_request_exception() :: #{
-%%   <<"message">> => string()
+%% get_flow_template_response() :: #{
+%%   <<"description">> => flow_template_description()
 %% }
--type invalid_request_exception() :: #{binary() => any()}.
+-type get_flow_template_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_system_template_request() :: #{
+%% get_flow_template_revisions_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_flow_template_revisions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_flow_template_revisions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(flow_template_summary())
+%% }
+-type get_flow_template_revisions_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_namespace_deletion_status_request() :: #{
+
+%% }
+-type get_namespace_deletion_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_namespace_deletion_status_response() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"namespaceArn">> => string(),
+%%   <<"namespaceName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_namespace_deletion_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_system_instance_request() :: #{
 %%   <<"id">> := string()
 %% }
--type delete_system_template_request() :: #{binary() => any()}.
+-type get_system_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_system_instance_response() :: #{
+%%   <<"description">> => system_instance_description()
+%% }
+-type get_system_instance_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_system_template_request() :: #{
@@ -418,48 +417,61 @@
 -type get_system_template_request() :: #{binary() => any()}.
 
 %% Example:
-%% thing() :: #{
-%%   <<"thingArn">> => string(),
-%%   <<"thingName">> => string()
+%% get_system_template_response() :: #{
+%%   <<"description">> => system_template_description()
 %% }
--type thing() :: #{binary() => any()}.
+-type get_system_template_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_namespace_deletion_status_request() :: #{
-
-%% }
--type get_namespace_deletion_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% search_system_instances_request() :: #{
-%%   <<"filters">> => list(system_instance_filter()),
+%% get_system_template_revisions_request() :: #{
+%%   <<"id">> := string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type search_system_instances_request() :: #{binary() => any()}.
+-type get_system_template_revisions_request() :: #{binary() => any()}.
 
 %% Example:
-%% search_flow_templates_request() :: #{
-%%   <<"filters">> => list(flow_template_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% get_system_template_revisions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(system_template_summary())
 %% }
--type search_flow_templates_request() :: #{binary() => any()}.
+-type get_system_template_revisions_response() :: #{binary() => any()}.
 
 %% Example:
-%% system_template_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"revisionNumber">> => float()
+%% get_upload_status_request() :: #{
+%%   <<"uploadId">> := string()
 %% }
--type system_template_summary() :: #{binary() => any()}.
+-type get_upload_status_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_flow_template_response() :: #{
-%%   <<"summary">> => flow_template_summary()
+%% get_upload_status_response() :: #{
+%%   <<"createdDate">> => non_neg_integer(),
+%%   <<"failureReason">> => list(string()),
+%%   <<"namespaceArn">> => string(),
+%%   <<"namespaceName">> => string(),
+%%   <<"namespaceVersion">> => float(),
+%%   <<"uploadId">> => string(),
+%%   <<"uploadStatus">> => list(any())
 %% }
--type create_flow_template_response() :: #{binary() => any()}.
+-type get_upload_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_flow_execution_messages_request() :: #{
@@ -470,6 +482,21 @@
 -type list_flow_execution_messages_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_flow_execution_messages_response() :: #{
+%%   <<"messages">> => list(flow_execution_message()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_flow_execution_messages_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"tags">> => list(tag())
@@ -477,10 +504,144 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% undeploy_system_instance_request() :: #{
-%%   <<"id">> => string()
+%% metrics_configuration() :: #{
+%%   <<"cloudMetricEnabled">> => boolean(),
+%%   <<"metricRuleRoleArn">> => string()
 %% }
--type undeploy_system_instance_request() :: #{binary() => any()}.
+-type metrics_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% search_entities_request() :: #{
+%%   <<"entityTypes">> := list(list(any())()),
+%%   <<"filters">> => list(entity_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespaceVersion">> => float(),
+%%   <<"nextToken">> => string()
+%% }
+-type search_entities_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_entities_response() :: #{
+%%   <<"descriptions">> => list(entity_description()),
+%%   <<"nextToken">> => string()
+%% }
+-type search_entities_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_flow_executions_request() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"flowExecutionId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"systemInstanceId">> := string()
+%% }
+-type search_flow_executions_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_flow_executions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(flow_execution_summary())
+%% }
+-type search_flow_executions_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_flow_templates_request() :: #{
+%%   <<"filters">> => list(flow_template_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type search_flow_templates_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_flow_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(flow_template_summary())
+%% }
+-type search_flow_templates_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_system_instances_request() :: #{
+%%   <<"filters">> => list(system_instance_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type search_system_instances_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_system_instances_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(system_instance_summary())
+%% }
+-type search_system_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_system_templates_request() :: #{
+%%   <<"filters">> => list(system_template_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type search_system_templates_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_system_templates_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"summaries">> => list(system_template_summary())
+%% }
+-type search_system_templates_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_things_request() :: #{
+%%   <<"entityId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"namespaceVersion">> => float(),
+%%   <<"nextToken">> => string()
+%% }
+-type search_things_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_things_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"things">> => list(thing())
+%% }
+-type search_things_response() :: #{binary() => any()}.
+
+%% Example:
+%% system_instance_description() :: #{
+%%   <<"definition">> => definition_document(),
+%%   <<"flowActionsRoleArn">> => string(),
+%%   <<"metricsConfiguration">> => metrics_configuration(),
+%%   <<"s3BucketName">> => string(),
+%%   <<"summary">> => system_instance_summary(),
+%%   <<"validatedDependencyRevisions">> => list(dependency_revision()),
+%%   <<"validatedNamespaceVersion">> => float()
+%% }
+-type system_instance_description() :: #{binary() => any()}.
+
+%% Example:
+%% system_instance_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => list(string())
+%% }
+-type system_instance_filter() :: #{binary() => any()}.
 
 %% Example:
 %% system_instance_summary() :: #{
@@ -497,64 +658,42 @@
 -type system_instance_summary() :: #{binary() => any()}.
 
 %% Example:
-%% create_flow_template_request() :: #{
-%%   <<"compatibleNamespaceVersion">> => float(),
-%%   <<"definition">> := definition_document()
-%% }
--type create_flow_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_flow_template_revisions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(flow_template_summary())
-%% }
--type get_flow_template_revisions_response() :: #{binary() => any()}.
-
-%% Example:
-%% search_things_request() :: #{
-%%   <<"entityId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"namespaceVersion">> => float(),
-%%   <<"nextToken">> => string()
-%% }
--type search_things_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_system_template_response() :: #{
-
-%% }
--type delete_system_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% search_entities_request() :: #{
-%%   <<"entityTypes">> := list(list(any())()),
-%%   <<"filters">> => list(entity_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"namespaceVersion">> => float(),
-%%   <<"nextToken">> => string()
-%% }
--type search_entities_request() :: #{binary() => any()}.
-
-%% Example:
-%% deprecate_system_template_response() :: #{
-
-%% }
--type deprecate_system_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% flow_template_description() :: #{
+%% system_template_description() :: #{
 %%   <<"definition">> => definition_document(),
-%%   <<"summary">> => flow_template_summary(),
+%%   <<"summary">> => system_template_summary(),
 %%   <<"validatedNamespaceVersion">> => float()
 %% }
--type flow_template_description() :: #{binary() => any()}.
+-type system_template_description() :: #{binary() => any()}.
 
 %% Example:
-%% search_system_instances_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(system_instance_summary())
+%% system_template_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => list(string())
 %% }
--type search_system_instances_response() :: #{binary() => any()}.
+-type system_template_filter() :: #{binary() => any()}.
+
+%% Example:
+%% system_template_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"revisionNumber">> => float()
+%% }
+-type system_template_summary() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
@@ -563,46 +702,11 @@
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% flow_execution_message() :: #{
-%%   <<"eventType">> => list(any()),
-%%   <<"messageId">> => string(),
-%%   <<"payload">> => string(),
-%%   <<"timestamp">> => non_neg_integer()
+%% thing() :: #{
+%%   <<"thingArn">> => string(),
+%%   <<"thingName">> => string()
 %% }
--type flow_execution_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_system_template_response() :: #{
-%%   <<"summary">> => system_template_summary()
-%% }
--type create_system_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% definition_document() :: #{
-%%   <<"language">> => list(any()),
-%%   <<"text">> => string()
-%% }
--type definition_document() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% system_instance_description() :: #{
-%%   <<"definition">> => definition_document(),
-%%   <<"flowActionsRoleArn">> => string(),
-%%   <<"metricsConfiguration">> => metrics_configuration(),
-%%   <<"s3BucketName">> => string(),
-%%   <<"summary">> => system_instance_summary(),
-%%   <<"validatedDependencyRevisions">> => list(dependency_revision()),
-%%   <<"validatedNamespaceVersion">> => float()
-%% }
--type system_instance_description() :: #{binary() => any()}.
+-type thing() :: #{binary() => any()}.
 
 %% Example:
 %% throttling_exception() :: #{
@@ -611,18 +715,29 @@
 -type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_namespace_request() :: #{
-
+%% undeploy_system_instance_request() :: #{
+%%   <<"id">> => string()
 %% }
--type delete_namespace_request() :: #{binary() => any()}.
+-type undeploy_system_instance_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_flow_template_revisions_request() :: #{
-%%   <<"id">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% undeploy_system_instance_response() :: #{
+%%   <<"summary">> => system_instance_summary()
 %% }
--type get_flow_template_revisions_request() :: #{binary() => any()}.
+-type undeploy_system_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_flow_template_request() :: #{
@@ -633,36 +748,18 @@
 -type update_flow_template_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_system_instance_response() :: #{
-%%   <<"summary">> => system_instance_summary()
+%% update_flow_template_response() :: #{
+%%   <<"summary">> => flow_template_summary()
 %% }
--type create_system_instance_response() :: #{binary() => any()}.
+-type update_flow_template_response() :: #{binary() => any()}.
 
 %% Example:
-%% system_template_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => list(string())
+%% update_system_template_request() :: #{
+%%   <<"compatibleNamespaceVersion">> => float(),
+%%   <<"definition">> := definition_document(),
+%%   <<"id">> := string()
 %% }
--type system_template_filter() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% search_system_templates_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(system_template_summary())
-%% }
--type search_system_templates_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_entity_to_thing_response() :: #{
-
-%% }
--type associate_entity_to_thing_response() :: #{binary() => any()}.
+-type update_system_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_system_template_response() :: #{
@@ -671,146 +768,49 @@
 -type update_system_template_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_system_template_revisions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(system_template_summary())
+%% upload_entity_definitions_request() :: #{
+%%   <<"deprecateExistingEntities">> => boolean(),
+%%   <<"document">> => definition_document(),
+%%   <<"syncWithPublicNamespace">> => boolean()
 %% }
--type get_system_template_revisions_response() :: #{binary() => any()}.
+-type upload_entity_definitions_request() :: #{binary() => any()}.
 
 %% Example:
-%% dissociate_entity_from_thing_request() :: #{
-%%   <<"entityType">> := list(any()),
-%%   <<"thingName">> := string()
+%% upload_entity_definitions_response() :: #{
+%%   <<"uploadId">> => string()
 %% }
--type dissociate_entity_from_thing_request() :: #{binary() => any()}.
-
-%% Example:
-%% flow_template_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"revisionNumber">> => float()
-%% }
--type flow_template_summary() :: #{binary() => any()}.
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_flow_template_request() :: #{
-%%   <<"id">> := string()
-%% }
--type delete_flow_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_flow_execution_messages_response() :: #{
-%%   <<"messages">> => list(flow_execution_message()),
-%%   <<"nextToken">> => string()
-%% }
--type list_flow_execution_messages_response() :: #{binary() => any()}.
-
-%% Example:
-%% dependency_revision() :: #{
-%%   <<"id">> => string(),
-%%   <<"revisionNumber">> => float()
-%% }
--type dependency_revision() :: #{binary() => any()}.
-
-%% Example:
-%% search_flow_executions_request() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"flowExecutionId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"systemInstanceId">> := string()
-%% }
--type search_flow_executions_request() :: #{binary() => any()}.
-
-%% Example:
-%% deprecate_flow_template_request() :: #{
-%%   <<"id">> := string()
-%% }
--type deprecate_flow_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_flow_template_response() :: #{
-%%   <<"description">> => flow_template_description()
-%% }
--type get_flow_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% flow_template_filter() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => list(string())
-%% }
--type flow_template_filter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_flow_template_response() :: #{
-
-%% }
--type delete_flow_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% deprecate_system_template_request() :: #{
-%%   <<"id">> := string()
-%% }
--type deprecate_system_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% deploy_system_instance_response() :: #{
-%%   <<"greengrassDeploymentId">> => string(),
-%%   <<"summary">> => system_instance_summary()
-%% }
--type deploy_system_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% metrics_configuration() :: #{
-%%   <<"cloudMetricEnabled">> => boolean(),
-%%   <<"metricRuleRoleArn">> => string()
-%% }
--type metrics_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% deploy_system_instance_request() :: #{
-%%   <<"id">> => string()
-%% }
--type deploy_system_instance_request() :: #{binary() => any()}.
+-type upload_entity_definitions_response() :: #{binary() => any()}.
 
 -type associate_entity_to_thing_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_flow_template_errors() ::
+    throttling_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_system_instance_errors() ::
+    throttling_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    throttling_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type create_system_template_errors() ::
-    resource_already_exists_exception() | 
     throttling_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type delete_flow_template_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_in_use_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type delete_namespace_errors() ::
@@ -819,63 +819,63 @@
 
 -type delete_system_instance_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_in_use_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type delete_system_template_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_in_use_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type deploy_system_instance_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type deprecate_flow_template_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type deprecate_system_template_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type describe_namespace_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type dissociate_entity_from_thing_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_entities_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_flow_template_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_flow_template_revisions_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_namespace_deletion_status_errors() ::
@@ -885,37 +885,37 @@
 
 -type get_system_instance_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_system_template_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_system_template_revisions_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type get_upload_status_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_flow_execution_messages_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type list_tags_for_resource_errors() ::
-    resource_already_exists_exception() | 
     throttling_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
@@ -926,8 +926,8 @@
 
 -type search_flow_executions_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type search_flow_templates_errors() ::
@@ -947,39 +947,39 @@
 
 -type search_things_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type tag_resource_errors() ::
-    resource_already_exists_exception() | 
     throttling_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type undeploy_system_instance_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type untag_resource_errors() ::
-    resource_already_exists_exception() | 
     throttling_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_flow_template_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type update_system_template_errors() ::
     throttling_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception().
 
 -type upload_entity_definitions_errors() ::

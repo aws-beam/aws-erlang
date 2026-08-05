@@ -74,73 +74,32 @@
 
 
 %% Example:
-%% update_backend_auth_request() :: #{
-%%   <<"ResourceConfig">> := update_backend_auth_resource_config(),
-%%   <<"ResourceName">> := string()
+%% backend_api_app_sync_auth_settings() :: #{
+%%   <<"CognitoUserPoolId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ExpirationTime">> => float(),
+%%   <<"OpenIDAuthTTL">> => string(),
+%%   <<"OpenIDClientId">> => string(),
+%%   <<"OpenIDIatTTL">> => string(),
+%%   <<"OpenIDIssueURL">> => string(),
+%%   <<"OpenIDProviderName">> => string()
 %% }
--type update_backend_auth_request() :: #{binary() => any()}.
+-type backend_api_app_sync_auth_settings() :: #{binary() => any()}.
 
 
 %% Example:
-%% import_backend_auth_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Status">> => string()
+%% backend_api_auth_type() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"Settings">> => backend_api_app_sync_auth_settings()
 %% }
--type import_backend_auth_response() :: #{binary() => any()}.
+-type backend_api_auth_type() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_backend_auth_forgot_password_config() :: #{
-%%   <<"DeliveryMethod">> => list(any()),
-%%   <<"EmailSettings">> => email_settings(),
-%%   <<"SmsSettings">> => sms_settings()
+%% backend_api_conflict_resolution() :: #{
+%%   <<"ResolutionStrategy">> => list(any())
 %% }
--type create_backend_auth_forgot_password_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backend_storage_resource_config() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"Imported">> => boolean(),
-%%   <<"Permissions">> => backend_storage_permissions(),
-%%   <<"ServiceName">> => list(any())
-%% }
--type get_backend_storage_resource_config() :: #{binary() => any()}.
-
-%% Example:
-%% remove_backend_config_request() :: #{}
--type remove_backend_config_request() :: #{}.
-
-
-%% Example:
-%% delete_backend_storage_request() :: #{
-%%   <<"ResourceName">> := string(),
-%%   <<"ServiceName">> := list(any())
-%% }
--type delete_backend_storage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backend_api_models_request() :: #{
-%%   <<"ResourceName">> := string()
-%% }
--type get_backend_api_models_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_backend_api_models_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Status">> => string()
-%% }
--type generate_backend_api_models_response() :: #{binary() => any()}.
+-type backend_api_conflict_resolution() :: #{binary() => any()}.
 
 
 %% Example:
@@ -156,44 +115,21 @@
 
 
 %% Example:
-%% create_backend_storage_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Status">> => string()
+%% backend_auth_apple_provider_config() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"KeyId">> => string(),
+%%   <<"PrivateKey">> => string(),
+%%   <<"TeamId">> => string()
 %% }
--type create_backend_storage_response() :: #{binary() => any()}.
+-type backend_auth_apple_provider_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_token_response() :: #{
-%%   <<"IsSuccess">> => boolean()
+%% backend_auth_social_provider_config() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string()
 %% }
--type delete_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% backend_api_auth_type() :: #{
-%%   <<"Mode">> => list(any()),
-%%   <<"Settings">> => backend_api_app_sync_auth_settings()
-%% }
--type backend_api_auth_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_auth_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Status">> => string()
-%% }
--type create_backend_auth_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_backend_job_request() :: #{}
--type get_backend_job_request() :: #{}.
+-type backend_auth_social_provider_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -211,10 +147,148 @@
 
 
 %% Example:
+%% backend_storage_permissions() :: #{
+%%   <<"Authenticated">> => list(list(any())()),
+%%   <<"UnAuthenticated">> => list(list(any())())
+%% }
+-type backend_storage_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% clone_backend_request() :: #{
 %%   <<"TargetEnvironmentName">> := string()
 %% }
 -type clone_backend_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% clone_backend_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type clone_backend_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_api_request() :: #{
+%%   <<"BackendEnvironmentName">> := string(),
+%%   <<"ResourceConfig">> := backend_api_resource_config(),
+%%   <<"ResourceName">> := string()
+%% }
+-type create_backend_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_api_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type create_backend_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_auth_forgot_password_config() :: #{
+%%   <<"DeliveryMethod">> => list(any()),
+%%   <<"EmailSettings">> => email_settings(),
+%%   <<"SmsSettings">> => sms_settings()
+%% }
+-type create_backend_auth_forgot_password_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_auth_identity_pool_config() :: #{
+%%   <<"IdentityPoolName">> => string(),
+%%   <<"UnauthenticatedLogin">> => boolean()
+%% }
+-type create_backend_auth_identity_pool_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_auth_mfa_config() :: #{
+%%   <<"MFAMode">> => list(any()),
+%%   <<"Settings">> => settings()
+%% }
+-type create_backend_auth_mfa_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_auth_o_auth_config() :: #{
+%%   <<"DomainPrefix">> => string(),
+%%   <<"OAuthGrantType">> => list(any()),
+%%   <<"OAuthScopes">> => list(list(any())()),
+%%   <<"RedirectSignInURIs">> => list(string()),
+%%   <<"RedirectSignOutURIs">> => list(string()),
+%%   <<"SocialProviderSettings">> => social_provider_settings()
+%% }
+-type create_backend_auth_o_auth_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_auth_password_policy_config() :: #{
+%%   <<"AdditionalConstraints">> => list(list(any())()),
+%%   <<"MinimumLength">> => float()
+%% }
+-type create_backend_auth_password_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_auth_request() :: #{
+%%   <<"BackendEnvironmentName">> := string(),
+%%   <<"ResourceConfig">> := create_backend_auth_resource_config(),
+%%   <<"ResourceName">> := string()
+%% }
+-type create_backend_auth_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_auth_resource_config() :: #{
+%%   <<"AuthResources">> => list(any()),
+%%   <<"IdentityPoolConfigs">> => create_backend_auth_identity_pool_config(),
+%%   <<"Service">> => list(any()),
+%%   <<"UserPoolConfigs">> => create_backend_auth_user_pool_config()
+%% }
+-type create_backend_auth_resource_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_auth_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type create_backend_auth_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_auth_user_pool_config() :: #{
+%%   <<"ForgotPassword">> => create_backend_auth_forgot_password_config(),
+%%   <<"Mfa">> => create_backend_auth_mfa_config(),
+%%   <<"OAuth">> => create_backend_auth_o_auth_config(),
+%%   <<"PasswordPolicy">> => create_backend_auth_password_policy_config(),
+%%   <<"RequiredSignUpAttributes">> => list(list(any())()),
+%%   <<"SignInMethod">> => list(any()),
+%%   <<"UserPoolName">> => string(),
+%%   <<"VerificationMessage">> => create_backend_auth_verification_message_config()
+%% }
+-type create_backend_auth_user_pool_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -224,6 +298,378 @@
 %%   <<"SmsSettings">> => sms_settings()
 %% }
 -type create_backend_auth_verification_message_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_config_request() :: #{
+%%   <<"BackendManagerAppId">> => string()
+%% }
+-type create_backend_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_config_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type create_backend_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_request() :: #{
+%%   <<"AppId">> := string(),
+%%   <<"AppName">> := string(),
+%%   <<"BackendEnvironmentName">> := string(),
+%%   <<"ResourceConfig">> => resource_config(),
+%%   <<"ResourceName">> => string()
+%% }
+-type create_backend_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type create_backend_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_storage_request() :: #{
+%%   <<"BackendEnvironmentName">> := string(),
+%%   <<"ResourceConfig">> := create_backend_storage_resource_config(),
+%%   <<"ResourceName">> := string()
+%% }
+-type create_backend_storage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_storage_resource_config() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"Permissions">> => backend_storage_permissions(),
+%%   <<"ServiceName">> => list(any())
+%% }
+-type create_backend_storage_resource_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_storage_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type create_backend_storage_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_token_request() :: #{}
+-type create_token_request() :: #{}.
+
+
+%% Example:
+%% create_token_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"ChallengeCode">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"Ttl">> => string()
+%% }
+-type create_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_backend_api_request() :: #{
+%%   <<"ResourceConfig">> => backend_api_resource_config(),
+%%   <<"ResourceName">> := string()
+%% }
+-type delete_backend_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_backend_api_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type delete_backend_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_backend_auth_request() :: #{
+%%   <<"ResourceName">> := string()
+%% }
+-type delete_backend_auth_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_backend_auth_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type delete_backend_auth_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_backend_request() :: #{}
+-type delete_backend_request() :: #{}.
+
+
+%% Example:
+%% delete_backend_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type delete_backend_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_backend_storage_request() :: #{
+%%   <<"ResourceName">> := string(),
+%%   <<"ServiceName">> := list(any())
+%% }
+-type delete_backend_storage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_backend_storage_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type delete_backend_storage_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_token_request() :: #{}
+-type delete_token_request() :: #{}.
+
+
+%% Example:
+%% delete_token_response() :: #{
+%%   <<"IsSuccess">> => boolean()
+%% }
+-type delete_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_settings() :: #{
+%%   <<"EmailMessage">> => string(),
+%%   <<"EmailSubject">> => string()
+%% }
+-type email_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_timeout_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type gateway_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_backend_api_models_request() :: #{
+%%   <<"ResourceName">> := string()
+%% }
+-type generate_backend_api_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_backend_api_models_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type generate_backend_api_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backend_api_models_request() :: #{
+%%   <<"ResourceName">> := string()
+%% }
+-type get_backend_api_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backend_api_models_response() :: #{
+%%   <<"ModelIntrospectionSchema">> => string(),
+%%   <<"Models">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_backend_api_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backend_api_request() :: #{
+%%   <<"ResourceConfig">> => backend_api_resource_config(),
+%%   <<"ResourceName">> := string()
+%% }
+-type get_backend_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backend_api_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"ResourceConfig">> => backend_api_resource_config(),
+%%   <<"ResourceName">> => string()
+%% }
+-type get_backend_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backend_auth_request() :: #{
+%%   <<"ResourceName">> := string()
+%% }
+-type get_backend_auth_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backend_auth_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"ResourceConfig">> => create_backend_auth_resource_config(),
+%%   <<"ResourceName">> => string()
+%% }
+-type get_backend_auth_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_backend_job_request() :: #{}
+-type get_backend_job_request() :: #{}.
+
+
+%% Example:
+%% get_backend_job_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"CreateTime">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"UpdateTime">> => string()
+%% }
+-type get_backend_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backend_request() :: #{
+%%   <<"BackendEnvironmentName">> => string()
+%% }
+-type get_backend_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backend_response() :: #{
+%%   <<"AmplifyFeatureFlags">> => string(),
+%%   <<"AmplifyMetaConfig">> => string(),
+%%   <<"AppId">> => string(),
+%%   <<"AppName">> => string(),
+%%   <<"BackendEnvironmentList">> => list(string()),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string()
+%% }
+-type get_backend_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backend_storage_request() :: #{
+%%   <<"ResourceName">> := string()
+%% }
+-type get_backend_storage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backend_storage_resource_config() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"Imported">> => boolean(),
+%%   <<"Permissions">> => backend_storage_permissions(),
+%%   <<"ServiceName">> => list(any())
+%% }
+-type get_backend_storage_resource_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_backend_storage_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"ResourceConfig">> => get_backend_storage_resource_config(),
+%%   <<"ResourceName">> => string()
+%% }
+-type get_backend_storage_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_token_request() :: #{}
+-type get_token_request() :: #{}.
+
+
+%% Example:
+%% get_token_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"ChallengeCode">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"Ttl">> => string()
+%% }
+-type get_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_backend_auth_request() :: #{
+%%   <<"IdentityPoolId">> => string(),
+%%   <<"NativeClientId">> := string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"WebClientId">> := string()
+%% }
+-type import_backend_auth_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_backend_auth_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type import_backend_auth_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_backend_storage_request() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"ServiceName">> := list(any())
+%% }
+-type import_backend_storage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_backend_storage_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type import_backend_storage_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -238,6 +684,103 @@
 
 
 %% Example:
+%% list_backend_jobs_response() :: #{
+%%   <<"Jobs">> => list(backend_job_resp_obj()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_backend_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_s3_buckets_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_s3_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_s3_buckets_response() :: #{
+%%   <<"Buckets">> => list(s3_bucket_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_s3_buckets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% login_auth_config_req_obj() :: #{
+%%   <<"AwsCognitoIdentityPoolId">> => string(),
+%%   <<"AwsCognitoRegion">> => string(),
+%%   <<"AwsUserPoolsId">> => string(),
+%%   <<"AwsUserPoolsWebClientId">> => string()
+%% }
+-type login_auth_config_req_obj() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_all_backends_request() :: #{
+%%   <<"CleanAmplifyApp">> => boolean()
+%% }
+-type remove_all_backends_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_all_backends_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type remove_all_backends_response() :: #{binary() => any()}.
+
+%% Example:
+%% remove_backend_config_request() :: #{}
+-type remove_backend_config_request() :: #{}.
+
+
+%% Example:
+%% remove_backend_config_response() :: #{
+%%   <<"Error">> => string()
+%% }
+-type remove_backend_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_config() :: #{}
+-type resource_config() :: #{}.
+
+
+%% Example:
+%% s3_bucket_info() :: #{
+%%   <<"CreationDate">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type s3_bucket_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% settings() :: #{
+%%   <<"MfaTypes">> => list(list(any())()),
+%%   <<"SmsMessage">> => string()
+%% }
+-type settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% sms_settings() :: #{
+%%   <<"SmsMessage">> => string()
+%% }
+-type sms_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% social_provider_settings() :: #{
 %%   <<"Facebook">> => backend_auth_social_provider_config(),
 %%   <<"Google">> => backend_auth_social_provider_config(),
@@ -245,6 +788,50 @@
 %%   <<"SignInWithApple">> => backend_auth_apple_provider_config()
 %% }
 -type social_provider_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"LimitType">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_backend_api_request() :: #{
+%%   <<"ResourceConfig">> => backend_api_resource_config(),
+%%   <<"ResourceName">> := string()
+%% }
+-type update_backend_api_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_backend_api_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"BackendEnvironmentName">> => string(),
+%%   <<"Error">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type update_backend_api_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_backend_auth_forgot_password_config() :: #{
+%%   <<"DeliveryMethod">> => list(any()),
+%%   <<"EmailSettings">> => email_settings(),
+%%   <<"SmsSettings">> => sms_settings()
+%% }
+-type update_backend_auth_forgot_password_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_backend_auth_identity_pool_config() :: #{
+%%   <<"UnauthenticatedLogin">> => boolean()
+%% }
+-type update_backend_auth_identity_pool_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -268,29 +855,19 @@
 
 
 %% Example:
-%% import_backend_storage_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Status">> => string()
-%% }
--type import_backend_storage_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_auth_password_policy_config() :: #{
+%% update_backend_auth_password_policy_config() :: #{
 %%   <<"AdditionalConstraints">> => list(list(any())()),
 %%   <<"MinimumLength">> => float()
 %% }
--type create_backend_auth_password_policy_config() :: #{binary() => any()}.
+-type update_backend_auth_password_policy_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"LimitType">> => string(),
-%%   <<"Message">> => string()
+%% update_backend_auth_request() :: #{
+%%   <<"ResourceConfig">> := update_backend_auth_resource_config(),
+%%   <<"ResourceName">> := string()
 %% }
--type too_many_requests_exception() :: #{binary() => any()}.
+-type update_backend_auth_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -301,103 +878,6 @@
 %%   <<"UserPoolConfigs">> => update_backend_auth_user_pool_config()
 %% }
 -type update_backend_auth_resource_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_token_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"ChallengeCode">> => string(),
-%%   <<"SessionId">> => string(),
-%%   <<"Ttl">> => string()
-%% }
--type get_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_bucket_info() :: #{
-%%   <<"CreationDate">> => string(),
-%%   <<"Name">> => string()
-%% }
--type s3_bucket_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_backend_config_response() :: #{
-%%   <<"Error">> => string()
-%% }
--type remove_backend_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_s3_buckets_response() :: #{
-%%   <<"Buckets">> => list(s3_bucket_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_s3_buckets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_settings() :: #{
-%%   <<"EmailMessage">> => string(),
-%%   <<"EmailSubject">> => string()
-%% }
--type email_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_backend_auth_user_pool_config() :: #{
-%%   <<"ForgotPassword">> => update_backend_auth_forgot_password_config(),
-%%   <<"Mfa">> => update_backend_auth_mfa_config(),
-%%   <<"OAuth">> => update_backend_auth_o_auth_config(),
-%%   <<"PasswordPolicy">> => update_backend_auth_password_policy_config(),
-%%   <<"VerificationMessage">> => update_backend_auth_verification_message_config()
-%% }
--type update_backend_auth_user_pool_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_backend_auth_password_policy_config() :: #{
-%%   <<"AdditionalConstraints">> => list(list(any())()),
-%%   <<"MinimumLength">> => float()
-%% }
--type update_backend_auth_password_policy_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backend_request() :: #{
-%%   <<"BackendEnvironmentName">> => string()
-%% }
--type get_backend_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% backend_api_app_sync_auth_settings() :: #{
-%%   <<"CognitoUserPoolId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ExpirationTime">> => float(),
-%%   <<"OpenIDAuthTTL">> => string(),
-%%   <<"OpenIDClientId">> => string(),
-%%   <<"OpenIDIatTTL">> => string(),
-%%   <<"OpenIDIssueURL">> => string(),
-%%   <<"OpenIDProviderName">> => string()
-%% }
--type backend_api_app_sync_auth_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_backend_api_request() :: #{
-%%   <<"ResourceConfig">> => backend_api_resource_config(),
-%%   <<"ResourceName">> := string()
-%% }
--type update_backend_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backend_jobs_response() :: #{
-%%   <<"Jobs">> => list(backend_job_resp_obj()),
-%%   <<"NextToken">> => string()
-%% }
--type list_backend_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -413,11 +893,23 @@
 
 
 %% Example:
-%% get_backend_api_request() :: #{
-%%   <<"ResourceConfig">> => backend_api_resource_config(),
-%%   <<"ResourceName">> := string()
+%% update_backend_auth_user_pool_config() :: #{
+%%   <<"ForgotPassword">> => update_backend_auth_forgot_password_config(),
+%%   <<"Mfa">> => update_backend_auth_mfa_config(),
+%%   <<"OAuth">> => update_backend_auth_o_auth_config(),
+%%   <<"PasswordPolicy">> => update_backend_auth_password_policy_config(),
+%%   <<"VerificationMessage">> => update_backend_auth_verification_message_config()
 %% }
--type get_backend_api_request() :: #{binary() => any()}.
+-type update_backend_auth_user_pool_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_backend_auth_verification_message_config() :: #{
+%%   <<"DeliveryMethod">> => list(any()),
+%%   <<"EmailSettings">> => email_settings(),
+%%   <<"SmsSettings">> => sms_settings()
+%% }
+-type update_backend_auth_verification_message_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -425,241 +917,6 @@
 %%   <<"LoginAuthConfig">> => login_auth_config_req_obj()
 %% }
 -type update_backend_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_backend_auth_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Status">> => string()
-%% }
--type delete_backend_auth_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% backend_api_conflict_resolution() :: #{
-%%   <<"ResolutionStrategy">> => list(any())
-%% }
--type backend_api_conflict_resolution() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_auth_user_pool_config() :: #{
-%%   <<"ForgotPassword">> => create_backend_auth_forgot_password_config(),
-%%   <<"Mfa">> => create_backend_auth_mfa_config(),
-%%   <<"OAuth">> => create_backend_auth_o_auth_config(),
-%%   <<"PasswordPolicy">> => create_backend_auth_password_policy_config(),
-%%   <<"RequiredSignUpAttributes">> => list(list(any())()),
-%%   <<"SignInMethod">> => list(any()),
-%%   <<"UserPoolName">> => string(),
-%%   <<"VerificationMessage">> => create_backend_auth_verification_message_config()
-%% }
--type create_backend_auth_user_pool_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% settings() :: #{
-%%   <<"MfaTypes">> => list(list(any())()),
-%%   <<"SmsMessage">> => string()
-%% }
--type settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_token_request() :: #{}
--type delete_token_request() :: #{}.
-
-
-%% Example:
-%% generate_backend_api_models_request() :: #{
-%%   <<"ResourceName">> := string()
-%% }
--type generate_backend_api_models_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backend_auth_request() :: #{
-%%   <<"ResourceName">> := string()
-%% }
--type get_backend_auth_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_storage_resource_config() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"Permissions">> => backend_storage_permissions(),
-%%   <<"ServiceName">> => list(any())
-%% }
--type create_backend_storage_resource_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_backend_api_request() :: #{
-%%   <<"ResourceConfig">> => backend_api_resource_config(),
-%%   <<"ResourceName">> := string()
-%% }
--type delete_backend_api_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% backend_auth_apple_provider_config() :: #{
-%%   <<"ClientId">> => string(),
-%%   <<"KeyId">> => string(),
-%%   <<"PrivateKey">> => string(),
-%%   <<"TeamId">> => string()
-%% }
--type backend_auth_apple_provider_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_all_backends_request() :: #{
-%%   <<"CleanAmplifyApp">> => boolean()
-%% }
--type remove_all_backends_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backend_api_models_response() :: #{
-%%   <<"ModelIntrospectionSchema">> => string(),
-%%   <<"Models">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type get_backend_api_models_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_backend_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Status">> => string()
-%% }
--type delete_backend_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Status">> => string()
-%% }
--type create_backend_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_backend_request() :: #{}
--type delete_backend_request() :: #{}.
-
-
-%% Example:
-%% create_backend_config_request() :: #{
-%%   <<"BackendManagerAppId">> => string()
-%% }
--type create_backend_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_s3_buckets_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_s3_buckets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backend_storage_request() :: #{
-%%   <<"ResourceName">> := string()
-%% }
--type get_backend_storage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_all_backends_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Status">> => string()
-%% }
--type remove_all_backends_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_api_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Status">> => string()
-%% }
--type create_backend_api_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_backend_storage_request() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"ServiceName">> := list(any())
-%% }
--type import_backend_storage_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_config() :: #{}
--type resource_config() :: #{}.
-
-
-%% Example:
-%% login_auth_config_req_obj() :: #{
-%%   <<"AwsCognitoIdentityPoolId">> => string(),
-%%   <<"AwsCognitoRegion">> => string(),
-%%   <<"AwsUserPoolsId">> => string(),
-%%   <<"AwsUserPoolsWebClientId">> => string()
-%% }
--type login_auth_config_req_obj() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_request() :: #{
-%%   <<"AppId">> := string(),
-%%   <<"AppName">> := string(),
-%%   <<"BackendEnvironmentName">> := string(),
-%%   <<"ResourceConfig">> => resource_config(),
-%%   <<"ResourceName">> => string()
-%% }
--type create_backend_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backend_storage_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"ResourceConfig">> => get_backend_storage_resource_config(),
-%%   <<"ResourceName">> => string()
-%% }
--type get_backend_storage_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_backend_storage_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Status">> => string()
-%% }
--type update_backend_storage_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -673,282 +930,11 @@
 
 
 %% Example:
-%% get_backend_job_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"CreateTime">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"UpdateTime">> => string()
-%% }
--type get_backend_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_auth_resource_config() :: #{
-%%   <<"AuthResources">> => list(any()),
-%%   <<"IdentityPoolConfigs">> => create_backend_auth_identity_pool_config(),
-%%   <<"Service">> => list(any()),
-%%   <<"UserPoolConfigs">> => create_backend_auth_user_pool_config()
-%% }
--type create_backend_auth_resource_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_auth_request() :: #{
-%%   <<"BackendEnvironmentName">> := string(),
-%%   <<"ResourceConfig">> := create_backend_auth_resource_config(),
-%%   <<"ResourceName">> := string()
-%% }
--type create_backend_auth_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_storage_request() :: #{
-%%   <<"BackendEnvironmentName">> := string(),
-%%   <<"ResourceConfig">> := create_backend_storage_resource_config(),
-%%   <<"ResourceName">> := string()
-%% }
--type create_backend_storage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% backend_auth_social_provider_config() :: #{
-%%   <<"ClientId">> => string(),
-%%   <<"ClientSecret">> => string()
-%% }
--type backend_auth_social_provider_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backend_response() :: #{
-%%   <<"AmplifyFeatureFlags">> => string(),
-%%   <<"AmplifyMetaConfig">> => string(),
-%%   <<"AppId">> => string(),
-%%   <<"AppName">> => string(),
-%%   <<"BackendEnvironmentList">> => list(string()),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string()
-%% }
--type get_backend_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sms_settings() :: #{
-%%   <<"SmsMessage">> => string()
-%% }
--type sms_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_backend_api_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Status">> => string()
-%% }
--type update_backend_api_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% backend_storage_permissions() :: #{
-%%   <<"Authenticated">> => list(list(any())()),
-%%   <<"UnAuthenticated">> => list(list(any())())
-%% }
--type backend_storage_permissions() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_timeout_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type gateway_timeout_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_config_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Status">> => string()
-%% }
--type create_backend_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_auth_identity_pool_config() :: #{
-%%   <<"IdentityPoolName">> => string(),
-%%   <<"UnauthenticatedLogin">> => boolean()
-%% }
--type create_backend_auth_identity_pool_config() :: #{binary() => any()}.
-
-
-%% Example:
 %% update_backend_job_request() :: #{
 %%   <<"Operation">> => string(),
 %%   <<"Status">> => string()
 %% }
 -type update_backend_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_auth_o_auth_config() :: #{
-%%   <<"DomainPrefix">> => string(),
-%%   <<"OAuthGrantType">> => list(any()),
-%%   <<"OAuthScopes">> => list(list(any())()),
-%%   <<"RedirectSignInURIs">> => list(string()),
-%%   <<"RedirectSignOutURIs">> => list(string()),
-%%   <<"SocialProviderSettings">> => social_provider_settings()
-%% }
--type create_backend_auth_o_auth_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_backend_auth_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"ResourceConfig">> => create_backend_auth_resource_config(),
-%%   <<"ResourceName">> => string()
-%% }
--type get_backend_auth_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_token_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"ChallengeCode">> => string(),
-%%   <<"SessionId">> => string(),
-%%   <<"Ttl">> => string()
-%% }
--type create_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_token_request() :: #{}
--type get_token_request() :: #{}.
-
-
-%% Example:
-%% get_backend_api_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"ResourceConfig">> => backend_api_resource_config(),
-%%   <<"ResourceName">> => string()
-%% }
--type get_backend_api_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_backend_storage_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Status">> => string()
-%% }
--type delete_backend_storage_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_backend_auth_request() :: #{
-%%   <<"IdentityPoolId">> => string(),
-%%   <<"NativeClientId">> := string(),
-%%   <<"UserPoolId">> := string(),
-%%   <<"WebClientId">> := string()
-%% }
--type import_backend_auth_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_backend_auth_forgot_password_config() :: #{
-%%   <<"DeliveryMethod">> => list(any()),
-%%   <<"EmailSettings">> => email_settings(),
-%%   <<"SmsSettings">> => sms_settings()
-%% }
--type update_backend_auth_forgot_password_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_backend_auth_request() :: #{
-%%   <<"ResourceName">> := string()
-%% }
--type delete_backend_auth_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_backend_storage_resource_config() :: #{
-%%   <<"Permissions">> => backend_storage_permissions(),
-%%   <<"ServiceName">> => list(any())
-%% }
--type update_backend_storage_resource_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_auth_mfa_config() :: #{
-%%   <<"MFAMode">> => list(any()),
-%%   <<"Settings">> => settings()
-%% }
--type create_backend_auth_mfa_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_backend_api_response() :: #{
-%%   <<"AppId">> => string(),
-%%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
-%%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
-%%   <<"Status">> => string()
-%% }
--type delete_backend_api_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_backend_auth_identity_pool_config() :: #{
-%%   <<"UnauthenticatedLogin">> => boolean()
-%% }
--type update_backend_auth_identity_pool_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_backend_auth_verification_message_config() :: #{
-%%   <<"DeliveryMethod">> => list(any()),
-%%   <<"EmailSettings">> => email_settings(),
-%%   <<"SmsSettings">> => sms_settings()
-%% }
--type update_backend_auth_verification_message_config() :: #{binary() => any()}.
-
-%% Example:
-%% create_token_request() :: #{}
--type create_token_request() :: #{}.
-
-
-%% Example:
-%% update_backend_storage_request() :: #{
-%%   <<"ResourceConfig">> := update_backend_storage_resource_config(),
-%%   <<"ResourceName">> := string()
-%% }
--type update_backend_storage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_api_request() :: #{
-%%   <<"BackendEnvironmentName">> := string(),
-%%   <<"ResourceConfig">> := backend_api_resource_config(),
-%%   <<"ResourceName">> := string()
-%% }
--type create_backend_api_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -966,201 +952,215 @@
 
 
 %% Example:
-%% clone_backend_response() :: #{
+%% update_backend_storage_request() :: #{
+%%   <<"ResourceConfig">> := update_backend_storage_resource_config(),
+%%   <<"ResourceName">> := string()
+%% }
+-type update_backend_storage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_backend_storage_resource_config() :: #{
+%%   <<"Permissions">> => backend_storage_permissions(),
+%%   <<"ServiceName">> => list(any())
+%% }
+-type update_backend_storage_resource_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_backend_storage_response() :: #{
 %%   <<"AppId">> => string(),
 %%   <<"BackendEnvironmentName">> => string(),
-%%   <<"Error">> => string(),
 %%   <<"JobId">> => string(),
-%%   <<"Operation">> => string(),
 %%   <<"Status">> => string()
 %% }
--type clone_backend_response() :: #{binary() => any()}.
+-type update_backend_storage_response() :: #{binary() => any()}.
 
 -type clone_backend_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type create_backend_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type create_backend_api_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type create_backend_auth_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type create_backend_config_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type create_backend_storage_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type create_token_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type delete_backend_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type delete_backend_api_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type delete_backend_auth_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type delete_backend_storage_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type delete_token_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type generate_backend_api_models_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type get_backend_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type get_backend_api_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type get_backend_api_models_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type get_backend_auth_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type get_backend_job_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type get_backend_storage_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type get_token_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type import_backend_auth_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type import_backend_storage_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type list_backend_jobs_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type list_s3_buckets_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type remove_all_backends_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type remove_backend_config_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type update_backend_api_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type update_backend_auth_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type update_backend_config_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type update_backend_job_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 -type update_backend_storage_errors() ::
-    bad_request_exception() | 
-    gateway_timeout_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    gateway_timeout_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

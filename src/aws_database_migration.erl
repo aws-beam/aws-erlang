@@ -265,6 +265,2594 @@
 
 
 %% Example:
+%% access_denied_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_fault() :: #{binary() => any()}.
+
+%% Example:
+%% account_quota() :: #{
+%%   <<"AccountQuotaName">> => string(),
+%%   <<"Max">> => float(),
+%%   <<"Used">> => float()
+%% }
+-type account_quota() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_resource_message() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type add_tags_to_resource_message() :: #{binary() => any()}.
+
+%% Example:
+%% add_tags_to_resource_response() :: #{
+
+%% }
+-type add_tags_to_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% apply_pending_maintenance_action_message() :: #{
+%%   <<"ApplyAction">> := string(),
+%%   <<"OptInType">> := string(),
+%%   <<"ReplicationInstanceArn">> := string()
+%% }
+-type apply_pending_maintenance_action_message() :: #{binary() => any()}.
+
+%% Example:
+%% apply_pending_maintenance_action_response() :: #{
+%%   <<"ResourcePendingMaintenanceActions">> => resource_pending_maintenance_actions()
+%% }
+-type apply_pending_maintenance_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% availability_zone() :: #{
+%%   <<"Name">> => string()
+%% }
+-type availability_zone() :: #{binary() => any()}.
+
+%% Example:
+%% batch_start_recommendations_error_entry() :: #{
+%%   <<"Code">> => string(),
+%%   <<"DatabaseId">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type batch_start_recommendations_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% batch_start_recommendations_request() :: #{
+%%   <<"Data">> => list(start_recommendations_request_entry())
+%% }
+-type batch_start_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_start_recommendations_response() :: #{
+%%   <<"ErrorEntries">> => list(batch_start_recommendations_error_entry())
+%% }
+-type batch_start_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_metadata_model_conversion_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"RequestIdentifier">> := string()
+%% }
+-type cancel_metadata_model_conversion_message() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_metadata_model_conversion_response() :: #{
+%%   <<"Request">> => schema_conversion_request()
+%% }
+-type cancel_metadata_model_conversion_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_metadata_model_creation_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"RequestIdentifier">> := string()
+%% }
+-type cancel_metadata_model_creation_message() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_metadata_model_creation_response() :: #{
+%%   <<"Request">> => schema_conversion_request()
+%% }
+-type cancel_metadata_model_creation_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_replication_task_assessment_run_message() :: #{
+%%   <<"ReplicationTaskAssessmentRunArn">> := string()
+%% }
+-type cancel_replication_task_assessment_run_message() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_replication_task_assessment_run_response() :: #{
+%%   <<"ReplicationTaskAssessmentRun">> => replication_task_assessment_run()
+%% }
+-type cancel_replication_task_assessment_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% certificate() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateCreationDate">> => non_neg_integer(),
+%%   <<"CertificateIdentifier">> => string(),
+%%   <<"CertificateOwner">> => string(),
+%%   <<"CertificatePem">> => string(),
+%%   <<"CertificateWallet">> => binary(),
+%%   <<"KeyLength">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SigningAlgorithm">> => string(),
+%%   <<"ValidFromDate">> => non_neg_integer(),
+%%   <<"ValidToDate">> => non_neg_integer()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+%% Example:
+%% collector_health_check() :: #{
+%%   <<"CollectorStatus">> => list(any()),
+%%   <<"LocalCollectorS3Access">> => boolean(),
+%%   <<"WebCollectorGrantedRoleBasedAccess">> => boolean(),
+%%   <<"WebCollectorS3Access">> => boolean()
+%% }
+-type collector_health_check() :: #{binary() => any()}.
+
+%% Example:
+%% collector_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type collector_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% collector_response() :: #{
+%%   <<"CollectorHealthCheck">> => collector_health_check(),
+%%   <<"CollectorName">> => string(),
+%%   <<"CollectorReferencedId">> => string(),
+%%   <<"CollectorVersion">> => string(),
+%%   <<"CreatedDate">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"InventoryData">> => inventory_data(),
+%%   <<"LastDataReceived">> => string(),
+%%   <<"ModifiedDate">> => string(),
+%%   <<"RegisteredDate">> => string(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"VersionStatus">> => list(any())
+%% }
+-type collector_response() :: #{binary() => any()}.
+
+%% Example:
+%% collector_short_info_response() :: #{
+%%   <<"CollectorName">> => string(),
+%%   <<"CollectorReferencedId">> => string()
+%% }
+-type collector_short_info_response() :: #{binary() => any()}.
+
+%% Example:
+%% compute_config() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"DnsNameServers">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MaxCapacityUnits">> => integer(),
+%%   <<"MinCapacityUnits">> => integer(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ReplicationSubnetGroupId">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type compute_config() :: #{binary() => any()}.
+
+%% Example:
+%% connection() :: #{
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointIdentifier">> => string(),
+%%   <<"LastFailureMessage">> => string(),
+%%   <<"ReplicationInstanceArn">> => string(),
+%%   <<"ReplicationInstanceIdentifier">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type connection() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_migration_message() :: #{
+%%   <<"DataMigrationName">> => string(),
+%%   <<"DataMigrationType">> := list(any()),
+%%   <<"EnableCloudwatchLogs">> => boolean(),
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"NumberOfJobs">> => integer(),
+%%   <<"SelectionRules">> => string(),
+%%   <<"ServiceAccessRoleArn">> := string(),
+%%   <<"SourceDataSettings">> => list(source_data_setting()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetDataSettings">> => list(target_data_setting())
+%% }
+-type create_data_migration_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_migration_response() :: #{
+%%   <<"DataMigration">> => data_migration()
+%% }
+-type create_data_migration_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_provider_message() :: #{
+%%   <<"DataProviderName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Engine">> := string(),
+%%   <<"Settings">> := list(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Virtual">> => boolean()
+%% }
+-type create_data_provider_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_provider_response() :: #{
+%%   <<"DataProvider">> => data_provider()
+%% }
+-type create_data_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_message() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DmsTransferSettings">> => dms_transfer_settings(),
+%%   <<"DocDbSettings">> => doc_db_settings(),
+%%   <<"DynamoDbSettings">> => dynamo_db_settings(),
+%%   <<"ElasticsearchSettings">> => elasticsearch_settings(),
+%%   <<"EndpointIdentifier">> := string(),
+%%   <<"EndpointType">> := list(any()),
+%%   <<"EngineName">> := string(),
+%%   <<"ExternalTableDefinition">> => string(),
+%%   <<"ExtraConnectionAttributes">> => string(),
+%%   <<"GcpMySQLSettings">> => gcp_my_s_q_l_settings(),
+%%   <<"IBMDb2Settings">> => i_b_m_db2_settings(),
+%%   <<"KafkaSettings">> => kafka_settings(),
+%%   <<"KinesisSettings">> => kinesis_settings(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MicrosoftSQLServerSettings">> => microsoft_s_q_l_server_settings(),
+%%   <<"MongoDbSettings">> => mongo_db_settings(),
+%%   <<"MySQLSettings">> => my_s_q_l_settings(),
+%%   <<"NeptuneSettings">> => neptune_settings(),
+%%   <<"OracleSettings">> => oracle_settings(),
+%%   <<"Password">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"PostgreSQLSettings">> => postgre_s_q_l_settings(),
+%%   <<"RedisSettings">> => redis_settings(),
+%%   <<"RedshiftSettings">> => redshift_settings(),
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"S3Settings">> => s3_settings(),
+%%   <<"ServerName">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"SslMode">> => list(any()),
+%%   <<"SybaseSettings">> => sybase_settings(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TimestreamSettings">> => timestream_settings(),
+%%   <<"Username">> => string()
+%% }
+-type create_endpoint_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_response() :: #{
+%%   <<"Endpoint">> => endpoint()
+%% }
+-type create_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_subscription_message() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"SnsTopicArn">> := string(),
+%%   <<"SourceIds">> => list(string()),
+%%   <<"SourceType">> => string(),
+%%   <<"SubscriptionName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_event_subscription_response() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type create_event_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_advisor_collector_request() :: #{
+%%   <<"CollectorName">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"S3BucketName">> := string(),
+%%   <<"ServiceAccessRoleArn">> := string()
+%% }
+-type create_fleet_advisor_collector_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_advisor_collector_response() :: #{
+%%   <<"CollectorName">> => string(),
+%%   <<"CollectorReferencedId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string()
+%% }
+-type create_fleet_advisor_collector_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_instance_profile_message() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"InstanceProfileName">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"SubnetGroupIdentifier">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSecurityGroups">> => list(string())
+%% }
+-type create_instance_profile_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_instance_profile_response() :: #{
+%%   <<"InstanceProfile">> => instance_profile()
+%% }
+-type create_instance_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_migration_project_message() :: #{
+%%   <<"Description">> => string(),
+%%   <<"InstanceProfileIdentifier">> := string(),
+%%   <<"MigrationProjectName">> => string(),
+%%   <<"SchemaConversionApplicationAttributes">> => s_capplication_attributes(),
+%%   <<"SourceDataProviderDescriptors">> := list(data_provider_descriptor_definition()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetDataProviderDescriptors">> := list(data_provider_descriptor_definition()),
+%%   <<"TransformationRules">> => string()
+%% }
+-type create_migration_project_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_migration_project_response() :: #{
+%%   <<"MigrationProject">> => migration_project()
+%% }
+-type create_migration_project_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_replication_config_message() :: #{
+%%   <<"ComputeConfig">> := compute_config(),
+%%   <<"ReplicationConfigIdentifier">> := string(),
+%%   <<"ReplicationSettings">> => string(),
+%%   <<"ReplicationType">> := list(any()),
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"SourceEndpointArn">> := string(),
+%%   <<"SupplementalSettings">> => string(),
+%%   <<"TableMappings">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetEndpointArn">> := string()
+%% }
+-type create_replication_config_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_replication_config_response() :: #{
+%%   <<"ReplicationConfig">> => replication_config()
+%% }
+-type create_replication_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_replication_instance_message() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"DnsNameServers">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"KerberosAuthenticationSettings">> => kerberos_authentication_settings(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"ReplicationInstanceClass">> := string(),
+%%   <<"ReplicationInstanceIdentifier">> := string(),
+%%   <<"ReplicationSubnetGroupIdentifier">> => string(),
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type create_replication_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_replication_instance_response() :: #{
+%%   <<"ReplicationInstance">> => replication_instance()
+%% }
+-type create_replication_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_replication_subnet_group_message() :: #{
+%%   <<"ReplicationSubnetGroupDescription">> := string(),
+%%   <<"ReplicationSubnetGroupIdentifier">> := string(),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_replication_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_replication_subnet_group_response() :: #{
+%%   <<"ReplicationSubnetGroup">> => replication_subnet_group()
+%% }
+-type create_replication_subnet_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_replication_task_message() :: #{
+%%   <<"CdcStartPosition">> => string(),
+%%   <<"CdcStartTime">> => non_neg_integer(),
+%%   <<"CdcStopPosition">> => string(),
+%%   <<"MigrationType">> := list(any()),
+%%   <<"ReplicationInstanceArn">> := string(),
+%%   <<"ReplicationTaskIdentifier">> := string(),
+%%   <<"ReplicationTaskSettings">> => string(),
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"SourceEndpointArn">> := string(),
+%%   <<"TableMappings">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetEndpointArn">> := string(),
+%%   <<"TaskData">> => string()
+%% }
+-type create_replication_task_message() :: #{binary() => any()}.
+
+%% Example:
+%% create_replication_task_response() :: #{
+%%   <<"ReplicationTask">> => replication_task()
+%% }
+-type create_replication_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% data_migration() :: #{
+%%   <<"DataMigrationArn">> => string(),
+%%   <<"DataMigrationCidrBlocks">> => list(string()),
+%%   <<"DataMigrationCreateTime">> => non_neg_integer(),
+%%   <<"DataMigrationEndTime">> => non_neg_integer(),
+%%   <<"DataMigrationName">> => string(),
+%%   <<"DataMigrationSettings">> => data_migration_settings(),
+%%   <<"DataMigrationStartTime">> => non_neg_integer(),
+%%   <<"DataMigrationStatistics">> => data_migration_statistics(),
+%%   <<"DataMigrationStatus">> => string(),
+%%   <<"DataMigrationType">> => list(any()),
+%%   <<"LastFailureMessage">> => string(),
+%%   <<"MigrationProjectArn">> => string(),
+%%   <<"PublicIpAddresses">> => list(string()),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"SourceDataSettings">> => list(source_data_setting()),
+%%   <<"StopReason">> => string(),
+%%   <<"TargetDataSettings">> => list(target_data_setting())
+%% }
+-type data_migration() :: #{binary() => any()}.
+
+%% Example:
+%% data_migration_settings() :: #{
+%%   <<"CloudwatchLogsEnabled">> => boolean(),
+%%   <<"NumberOfJobs">> => integer(),
+%%   <<"SelectionRules">> => string()
+%% }
+-type data_migration_settings() :: #{binary() => any()}.
+
+%% Example:
+%% data_migration_statistics() :: #{
+%%   <<"CDCLatency">> => integer(),
+%%   <<"ElapsedTimeMillis">> => float(),
+%%   <<"FullLoadPercentage">> => integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"StopTime">> => non_neg_integer(),
+%%   <<"TablesErrored">> => integer(),
+%%   <<"TablesLoaded">> => integer(),
+%%   <<"TablesLoading">> => integer(),
+%%   <<"TablesQueued">> => integer()
+%% }
+-type data_migration_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% data_provider() :: #{
+%%   <<"DataProviderArn">> => string(),
+%%   <<"DataProviderCreationTime">> => non_neg_integer(),
+%%   <<"DataProviderName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"Settings">> => list(),
+%%   <<"Virtual">> => boolean()
+%% }
+-type data_provider() :: #{binary() => any()}.
+
+%% Example:
+%% data_provider_descriptor() :: #{
+%%   <<"DataProviderArn">> => string(),
+%%   <<"DataProviderName">> => string(),
+%%   <<"SecretsManagerAccessRoleArn">> => string(),
+%%   <<"SecretsManagerSecretId">> => string()
+%% }
+-type data_provider_descriptor() :: #{binary() => any()}.
+
+%% Example:
+%% data_provider_descriptor_definition() :: #{
+%%   <<"DataProviderIdentifier">> => string(),
+%%   <<"SecretsManagerAccessRoleArn">> => string(),
+%%   <<"SecretsManagerSecretId">> => string()
+%% }
+-type data_provider_descriptor_definition() :: #{binary() => any()}.
+
+%% Example:
+%% database_instance_software_details_response() :: #{
+%%   <<"Engine">> => string(),
+%%   <<"EngineEdition">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"OsArchitecture">> => integer(),
+%%   <<"ServicePack">> => string(),
+%%   <<"SupportLevel">> => string(),
+%%   <<"Tooltip">> => string()
+%% }
+-type database_instance_software_details_response() :: #{binary() => any()}.
+
+%% Example:
+%% database_response() :: #{
+%%   <<"Collectors">> => list(collector_short_info_response()),
+%%   <<"DatabaseId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"NumberOfSchemas">> => float(),
+%%   <<"Server">> => server_short_info_response(),
+%%   <<"SoftwareDetails">> => database_instance_software_details_response()
+%% }
+-type database_response() :: #{binary() => any()}.
+
+%% Example:
+%% database_short_info_response() :: #{
+%%   <<"DatabaseEngine">> => string(),
+%%   <<"DatabaseId">> => string(),
+%%   <<"DatabaseIpAddress">> => string(),
+%%   <<"DatabaseName">> => string()
+%% }
+-type database_short_info_response() :: #{binary() => any()}.
+
+%% Example:
+%% default_error_details() :: #{
+%%   <<"Message">> => string()
+%% }
+-type default_error_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_certificate_message() :: #{
+%%   <<"CertificateArn">> := string()
+%% }
+-type delete_certificate_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_certificate_response() :: #{
+%%   <<"Certificate">> => certificate()
+%% }
+-type delete_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_collector_request() :: #{
+%%   <<"CollectorReferencedId">> := string()
+%% }
+-type delete_collector_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_message() :: #{
+%%   <<"EndpointArn">> := string(),
+%%   <<"ReplicationInstanceArn">> := string()
+%% }
+-type delete_connection_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_response() :: #{
+%%   <<"Connection">> => connection()
+%% }
+-type delete_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_migration_message() :: #{
+%%   <<"DataMigrationIdentifier">> := string()
+%% }
+-type delete_data_migration_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_migration_response() :: #{
+%%   <<"DataMigration">> => data_migration()
+%% }
+-type delete_data_migration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_provider_message() :: #{
+%%   <<"DataProviderIdentifier">> := string()
+%% }
+-type delete_data_provider_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_provider_response() :: #{
+%%   <<"DataProvider">> => data_provider()
+%% }
+-type delete_data_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_message() :: #{
+%%   <<"EndpointArn">> := string()
+%% }
+-type delete_endpoint_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_response() :: #{
+%%   <<"Endpoint">> => endpoint()
+%% }
+-type delete_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_subscription_message() :: #{
+%%   <<"SubscriptionName">> := string()
+%% }
+-type delete_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_subscription_response() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type delete_event_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fleet_advisor_databases_request() :: #{
+%%   <<"DatabaseIds">> := list(string())
+%% }
+-type delete_fleet_advisor_databases_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fleet_advisor_databases_response() :: #{
+%%   <<"DatabaseIds">> => list(string())
+%% }
+-type delete_fleet_advisor_databases_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_profile_message() :: #{
+%%   <<"InstanceProfileIdentifier">> := string()
+%% }
+-type delete_instance_profile_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_instance_profile_response() :: #{
+%%   <<"InstanceProfile">> => instance_profile()
+%% }
+-type delete_instance_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_migration_project_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type delete_migration_project_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_migration_project_response() :: #{
+%%   <<"MigrationProject">> => migration_project()
+%% }
+-type delete_migration_project_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_config_message() :: #{
+%%   <<"ReplicationConfigArn">> := string()
+%% }
+-type delete_replication_config_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_config_response() :: #{
+%%   <<"ReplicationConfig">> => replication_config()
+%% }
+-type delete_replication_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_instance_message() :: #{
+%%   <<"ReplicationInstanceArn">> := string()
+%% }
+-type delete_replication_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_instance_response() :: #{
+%%   <<"ReplicationInstance">> => replication_instance()
+%% }
+-type delete_replication_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_subnet_group_message() :: #{
+%%   <<"ReplicationSubnetGroupIdentifier">> := string()
+%% }
+-type delete_replication_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_subnet_group_response() :: #{
+
+%% }
+-type delete_replication_subnet_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_task_assessment_run_message() :: #{
+%%   <<"ReplicationTaskAssessmentRunArn">> := string()
+%% }
+-type delete_replication_task_assessment_run_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_task_assessment_run_response() :: #{
+%%   <<"ReplicationTaskAssessmentRun">> => replication_task_assessment_run()
+%% }
+-type delete_replication_task_assessment_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_task_message() :: #{
+%%   <<"ReplicationTaskArn">> := string()
+%% }
+-type delete_replication_task_message() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_task_response() :: #{
+%%   <<"ReplicationTask">> => replication_task()
+%% }
+-type delete_replication_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_attributes_message() :: #{
+
+%% }
+-type describe_account_attributes_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_attributes_response() :: #{
+%%   <<"AccountQuotas">> => list(account_quota()),
+%%   <<"UniqueAccountIdentifier">> => string()
+%% }
+-type describe_account_attributes_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_applicable_individual_assessments_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MigrationType">> => list(any()),
+%%   <<"ReplicationConfigArn">> => string(),
+%%   <<"ReplicationInstanceArn">> => string(),
+%%   <<"ReplicationTaskArn">> => string(),
+%%   <<"SourceEngineName">> => string(),
+%%   <<"TargetEngineName">> => string()
+%% }
+-type describe_applicable_individual_assessments_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_applicable_individual_assessments_response() :: #{
+%%   <<"IndividualAssessmentNames">> => list(string()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_applicable_individual_assessments_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificates_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_certificates_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificates_response() :: #{
+%%   <<"Certificates">> => list(certificate()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_certificates_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connections_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_connections_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connections_response() :: #{
+%%   <<"Connections">> => list(connection()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_connections_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_conversion_configuration_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type describe_conversion_configuration_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_conversion_configuration_response() :: #{
+%%   <<"ConversionConfiguration">> => string(),
+%%   <<"MigrationProjectIdentifier">> => string()
+%% }
+-type describe_conversion_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_migrations_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"WithoutSettings">> => boolean(),
+%%   <<"WithoutStatistics">> => boolean()
+%% }
+-type describe_data_migrations_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_migrations_response() :: #{
+%%   <<"DataMigrations">> => list(data_migration()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_data_migrations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_providers_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_data_providers_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_data_providers_response() :: #{
+%%   <<"DataProviders">> => list(data_provider()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_data_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_settings_message() :: #{
+%%   <<"EngineName">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_endpoint_settings_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_settings_response() :: #{
+%%   <<"EndpointSettings">> => list(endpoint_setting()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_endpoint_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_types_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_endpoint_types_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoint_types_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"SupportedEndpointTypes">> => list(supported_endpoint_type())
+%% }
+-type describe_endpoint_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoints_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_endpoints_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_endpoints_response() :: #{
+%%   <<"Endpoints">> => list(endpoint()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_versions_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_engine_versions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_engine_versions_response() :: #{
+%%   <<"EngineVersions">> => list(engine_version()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_engine_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_categories_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"SourceType">> => string()
+%% }
+-type describe_event_categories_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_categories_response() :: #{
+%%   <<"EventCategoryGroupList">> => list(event_category_group())
+%% }
+-type describe_event_categories_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_subscriptions_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SubscriptionName">> => string()
+%% }
+-type describe_event_subscriptions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_subscriptions_response() :: #{
+%%   <<"EventSubscriptionsList">> => list(event_subscription()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_event_subscriptions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_message() :: #{
+%%   <<"Duration">> => integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"SourceIdentifier">> => string(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type describe_events_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_response() :: #{
+%%   <<"Events">> => list(event()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_extension_pack_associations_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type describe_extension_pack_associations_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_extension_pack_associations_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Requests">> => list(schema_conversion_request())
+%% }
+-type describe_extension_pack_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_advisor_collectors_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_advisor_collectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_advisor_collectors_response() :: #{
+%%   <<"Collectors">> => list(collector_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_advisor_collectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_advisor_databases_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_advisor_databases_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_advisor_databases_response() :: #{
+%%   <<"Databases">> => list(database_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_advisor_databases_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_advisor_lsa_analysis_request() :: #{
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_advisor_lsa_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_advisor_lsa_analysis_response() :: #{
+%%   <<"Analysis">> => list(fleet_advisor_lsa_analysis_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_advisor_lsa_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_advisor_schema_object_summary_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_advisor_schema_object_summary_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_advisor_schema_object_summary_response() :: #{
+%%   <<"FleetAdvisorSchemaObjects">> => list(fleet_advisor_schema_object_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_advisor_schema_object_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_advisor_schemas_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_advisor_schemas_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleet_advisor_schemas_response() :: #{
+%%   <<"FleetAdvisorSchemas">> => list(schema_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleet_advisor_schemas_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_profiles_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_instance_profiles_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_profiles_response() :: #{
+%%   <<"InstanceProfiles">> => list(instance_profile()),
+%%   <<"Marker">> => string()
+%% }
+-type describe_instance_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_assessments_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type describe_metadata_model_assessments_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_assessments_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Requests">> => list(schema_conversion_request())
+%% }
+-type describe_metadata_model_assessments_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_children_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"Origin">> := list(any()),
+%%   <<"SelectionRules">> := string()
+%% }
+-type describe_metadata_model_children_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_children_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MetadataModelChildren">> => list(metadata_model_reference())
+%% }
+-type describe_metadata_model_children_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_conversions_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type describe_metadata_model_conversions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_conversions_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Requests">> => list(schema_conversion_request())
+%% }
+-type describe_metadata_model_conversions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_creations_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type describe_metadata_model_creations_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_creations_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Requests">> => list(schema_conversion_request())
+%% }
+-type describe_metadata_model_creations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_exports_as_script_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type describe_metadata_model_exports_as_script_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_exports_as_script_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Requests">> => list(schema_conversion_request())
+%% }
+-type describe_metadata_model_exports_as_script_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_exports_to_target_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type describe_metadata_model_exports_to_target_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_exports_to_target_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Requests">> => list(schema_conversion_request())
+%% }
+-type describe_metadata_model_exports_to_target_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_imports_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type describe_metadata_model_imports_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_imports_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Requests">> => list(schema_conversion_request())
+%% }
+-type describe_metadata_model_imports_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"Origin">> := list(any()),
+%%   <<"SelectionRules">> := string()
+%% }
+-type describe_metadata_model_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_response() :: #{
+%%   <<"Definition">> => string(),
+%%   <<"MetadataModelName">> => string(),
+%%   <<"MetadataModelType">> => string(),
+%%   <<"TargetMetadataModels">> => list(metadata_model_reference())
+%% }
+-type describe_metadata_model_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_migration_projects_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_migration_projects_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_migration_projects_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MigrationProjects">> => list(migration_project())
+%% }
+-type describe_migration_projects_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_orderable_replication_instances_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_orderable_replication_instances_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_orderable_replication_instances_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"OrderableReplicationInstances">> => list(orderable_replication_instance())
+%% }
+-type describe_orderable_replication_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pending_maintenance_actions_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ReplicationInstanceArn">> => string()
+%% }
+-type describe_pending_maintenance_actions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_pending_maintenance_actions_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"PendingMaintenanceActions">> => list(resource_pending_maintenance_actions())
+%% }
+-type describe_pending_maintenance_actions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recommendation_limitations_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_recommendation_limitations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recommendation_limitations_response() :: #{
+%%   <<"Limitations">> => list(limitation()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_recommendation_limitations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recommendations_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_recommendations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Recommendations">> => list(recommendation())
+%% }
+-type describe_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_refresh_schemas_status_message() :: #{
+%%   <<"EndpointArn">> := string()
+%% }
+-type describe_refresh_schemas_status_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_refresh_schemas_status_response() :: #{
+%%   <<"RefreshSchemasStatus">> => refresh_schemas_status()
+%% }
+-type describe_refresh_schemas_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_configs_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_replication_configs_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_configs_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReplicationConfigs">> => list(replication_config())
+%% }
+-type describe_replication_configs_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_instance_task_logs_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ReplicationInstanceArn">> := string()
+%% }
+-type describe_replication_instance_task_logs_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_instance_task_logs_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReplicationInstanceArn">> => string(),
+%%   <<"ReplicationInstanceTaskLogs">> => list(replication_instance_task_log())
+%% }
+-type describe_replication_instance_task_logs_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_instances_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_replication_instances_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_instances_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReplicationInstances">> => list(replication_instance())
+%% }
+-type describe_replication_instances_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_subnet_groups_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_replication_subnet_groups_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_subnet_groups_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReplicationSubnetGroups">> => list(replication_subnet_group())
+%% }
+-type describe_replication_subnet_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_table_statistics_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ReplicationConfigArn">> := string()
+%% }
+-type describe_replication_table_statistics_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_table_statistics_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReplicationConfigArn">> => string(),
+%%   <<"ReplicationTableStatistics">> => list(table_statistics())
+%% }
+-type describe_replication_table_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_task_assessment_results_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ReplicationTaskArn">> => string()
+%% }
+-type describe_replication_task_assessment_results_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_task_assessment_results_response() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"ReplicationTaskAssessmentResults">> => list(replication_task_assessment_result())
+%% }
+-type describe_replication_task_assessment_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_task_assessment_runs_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_replication_task_assessment_runs_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_task_assessment_runs_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReplicationTaskAssessmentRuns">> => list(replication_task_assessment_run())
+%% }
+-type describe_replication_task_assessment_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_task_individual_assessments_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_replication_task_individual_assessments_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_task_individual_assessments_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReplicationTaskIndividualAssessments">> => list(replication_task_individual_assessment())
+%% }
+-type describe_replication_task_individual_assessments_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_tasks_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"WithoutSettings">> => boolean()
+%% }
+-type describe_replication_tasks_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_tasks_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReplicationTasks">> => list(replication_task())
+%% }
+-type describe_replication_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replications_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_replications_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replications_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Replications">> => list(replication())
+%% }
+-type describe_replications_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_schemas_message() :: #{
+%%   <<"EndpointArn">> := string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type describe_schemas_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_schemas_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Schemas">> => list(string())
+%% }
+-type describe_schemas_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_statistics_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ReplicationTaskArn">> := string()
+%% }
+-type describe_table_statistics_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_table_statistics_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ReplicationTaskArn">> => string(),
+%%   <<"TableStatistics">> => list(table_statistics())
+%% }
+-type describe_table_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% dms_transfer_settings() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string()
+%% }
+-type dms_transfer_settings() :: #{binary() => any()}.
+
+%% Example:
+%% doc_db_data_provider_settings() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type doc_db_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
+%% doc_db_settings() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"DocsToInvestigate">> => integer(),
+%%   <<"ExtractDocId">> => boolean(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"NestingLevel">> => list(any()),
+%%   <<"Password">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ReplicateShardCollections">> => boolean(),
+%%   <<"SecretsManagerAccessRoleArn">> => string(),
+%%   <<"SecretsManagerSecretId">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"UseUpdateLookUp">> => boolean(),
+%%   <<"Username">> => string()
+%% }
+-type doc_db_settings() :: #{binary() => any()}.
+
+%% Example:
+%% dynamo_db_settings() :: #{
+%%   <<"ServiceAccessRoleArn">> => string()
+%% }
+-type dynamo_db_settings() :: #{binary() => any()}.
+
+%% Example:
+%% elasticsearch_settings() :: #{
+%%   <<"EndpointUri">> => string(),
+%%   <<"ErrorRetryDuration">> => integer(),
+%%   <<"FullLoadErrorPercentage">> => integer(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"UseNewMappingType">> => boolean()
+%% }
+-type elasticsearch_settings() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DmsTransferSettings">> => dms_transfer_settings(),
+%%   <<"DocDbSettings">> => doc_db_settings(),
+%%   <<"DynamoDbSettings">> => dynamo_db_settings(),
+%%   <<"ElasticsearchSettings">> => elasticsearch_settings(),
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointIdentifier">> => string(),
+%%   <<"EndpointType">> => list(any()),
+%%   <<"EngineDisplayName">> => string(),
+%%   <<"EngineName">> => string(),
+%%   <<"ExternalId">> => string(),
+%%   <<"ExternalTableDefinition">> => string(),
+%%   <<"ExtraConnectionAttributes">> => string(),
+%%   <<"GcpMySQLSettings">> => gcp_my_s_q_l_settings(),
+%%   <<"IBMDb2Settings">> => i_b_m_db2_settings(),
+%%   <<"IsReadOnly">> => boolean(),
+%%   <<"KafkaSettings">> => kafka_settings(),
+%%   <<"KinesisSettings">> => kinesis_settings(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LakehouseSettings">> => lakehouse_settings(),
+%%   <<"MicrosoftSQLServerSettings">> => microsoft_s_q_l_server_settings(),
+%%   <<"MongoDbSettings">> => mongo_db_settings(),
+%%   <<"MySQLSettings">> => my_s_q_l_settings(),
+%%   <<"NeptuneSettings">> => neptune_settings(),
+%%   <<"OracleSettings">> => oracle_settings(),
+%%   <<"Port">> => integer(),
+%%   <<"PostgreSQLSettings">> => postgre_s_q_l_settings(),
+%%   <<"RedisSettings">> => redis_settings(),
+%%   <<"RedshiftSettings">> => redshift_settings(),
+%%   <<"S3Settings">> => s3_settings(),
+%%   <<"ServerName">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"SslMode">> => list(any()),
+%%   <<"Status">> => string(),
+%%   <<"SybaseSettings">> => sybase_settings(),
+%%   <<"TimestreamSettings">> => timestream_settings(),
+%%   <<"Username">> => string()
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_setting() :: #{
+%%   <<"Applicability">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"EnumValues">> => list(string()),
+%%   <<"IntValueMax">> => integer(),
+%%   <<"IntValueMin">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"Sensitive">> => boolean(),
+%%   <<"Type">> => list(any()),
+%%   <<"Units">> => string()
+%% }
+-type endpoint_setting() :: #{binary() => any()}.
+
+%% Example:
+%% engine_version() :: #{
+%%   <<"AutoUpgradeDate">> => non_neg_integer(),
+%%   <<"AvailableUpgrades">> => list(string()),
+%%   <<"DeprecationDate">> => non_neg_integer(),
+%%   <<"ForceUpgradeDate">> => non_neg_integer(),
+%%   <<"LaunchDate">> => non_neg_integer(),
+%%   <<"Lifecycle">> => string(),
+%%   <<"ReleaseStatus">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type engine_version() :: #{binary() => any()}.
+
+%% Example:
+%% event() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"Message">> => string(),
+%%   <<"SourceIdentifier">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type event() :: #{binary() => any()}.
+
+%% Example:
+%% event_category_group() :: #{
+%%   <<"EventCategories">> => list(string()),
+%%   <<"SourceType">> => string()
+%% }
+-type event_category_group() :: #{binary() => any()}.
+
+%% Example:
+%% event_subscription() :: #{
+%%   <<"CustSubscriptionId">> => string(),
+%%   <<"CustomerAwsId">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategoriesList">> => list(string()),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SourceIdsList">> => list(string()),
+%%   <<"SourceType">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SubscriptionCreationTime">> => string()
+%% }
+-type event_subscription() :: #{binary() => any()}.
+
+%% Example:
+%% export_metadata_model_assessment_message() :: #{
+%%   <<"AssessmentReportTypes">> => list(list(any())()),
+%%   <<"FileName">> => string(),
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"SelectionRules">> := string()
+%% }
+-type export_metadata_model_assessment_message() :: #{binary() => any()}.
+
+%% Example:
+%% export_metadata_model_assessment_response() :: #{
+%%   <<"CsvReport">> => export_metadata_model_assessment_result_entry(),
+%%   <<"PdfReport">> => export_metadata_model_assessment_result_entry()
+%% }
+-type export_metadata_model_assessment_response() :: #{binary() => any()}.
+
+%% Example:
+%% export_metadata_model_assessment_result_entry() :: #{
+%%   <<"ObjectURL">> => string(),
+%%   <<"S3ObjectKey">> => string()
+%% }
+-type export_metadata_model_assessment_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% export_sql_details() :: #{
+%%   <<"ObjectURL">> => string(),
+%%   <<"S3ObjectKey">> => string()
+%% }
+-type export_sql_details() :: #{binary() => any()}.
+
+%% Example:
+%% failed_dependency_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type failed_dependency_fault() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% fleet_advisor_lsa_analysis_response() :: #{
+%%   <<"LsaAnalysisId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type fleet_advisor_lsa_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% fleet_advisor_schema_object_response() :: #{
+%%   <<"CodeLineCount">> => float(),
+%%   <<"CodeSize">> => float(),
+%%   <<"NumberOfObjects">> => float(),
+%%   <<"ObjectType">> => string(),
+%%   <<"SchemaId">> => string()
+%% }
+-type fleet_advisor_schema_object_response() :: #{binary() => any()}.
+
+%% Example:
+%% gcp_my_s_q_l_settings() :: #{
+%%   <<"AfterConnectScript">> => string(),
+%%   <<"CleanSourceMetadataOnMismatch">> => boolean(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"EventsPollInterval">> => integer(),
+%%   <<"MaxFileSize">> => integer(),
+%%   <<"ParallelLoadThreads">> => integer(),
+%%   <<"Password">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"SecretsManagerAccessRoleArn">> => string(),
+%%   <<"SecretsManagerSecretId">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"ServerTimezone">> => string(),
+%%   <<"TargetDbType">> => list(any()),
+%%   <<"Username">> => string()
+%% }
+-type gcp_my_s_q_l_settings() :: #{binary() => any()}.
+
+%% Example:
+%% get_target_selection_rules_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"SelectionRules">> := string()
+%% }
+-type get_target_selection_rules_message() :: #{binary() => any()}.
+
+%% Example:
+%% get_target_selection_rules_response() :: #{
+%%   <<"TargetSelectionRules">> => string()
+%% }
+-type get_target_selection_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% i_b_m_db2_settings() :: #{
+%%   <<"CurrentLsn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"KeepCsvFiles">> => boolean(),
+%%   <<"LoadTimeout">> => integer(),
+%%   <<"MaxFileSize">> => integer(),
+%%   <<"MaxKBytesPerRead">> => integer(),
+%%   <<"Password">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"SecretsManagerAccessRoleArn">> => string(),
+%%   <<"SecretsManagerSecretId">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"SetDataCaptureChanges">> => boolean(),
+%%   <<"Username">> => string(),
+%%   <<"WriteBufferSize">> => integer()
+%% }
+-type i_b_m_db2_settings() :: #{binary() => any()}.
+
+%% Example:
+%% ibm_db2_luw_data_provider_settings() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"EncryptionAlgorithm">> => integer(),
+%%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
+%%   <<"SecurityMechanism">> => integer(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type ibm_db2_luw_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
+%% ibm_db2z_os_data_provider_settings() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type ibm_db2z_os_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
+%% import_certificate_message() :: #{
+%%   <<"CertificateIdentifier">> := string(),
+%%   <<"CertificatePem">> => string(),
+%%   <<"CertificateWallet">> => binary(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type import_certificate_message() :: #{binary() => any()}.
+
+%% Example:
+%% import_certificate_response() :: #{
+%%   <<"Certificate">> => certificate()
+%% }
+-type import_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% instance_profile() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"InstanceProfileArn">> => string(),
+%%   <<"InstanceProfileCreationTime">> => non_neg_integer(),
+%%   <<"InstanceProfileName">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"SubnetGroupIdentifier">> => string(),
+%%   <<"VpcSecurityGroups">> => list(string())
+%% }
+-type instance_profile() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_resource_capacity_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_resource_capacity_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_certificate_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_certificate_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_operation_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_operation_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_resource_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subnet() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_subnet() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_data() :: #{
+%%   <<"NumberOfDatabases">> => integer(),
+%%   <<"NumberOfSchemas">> => integer()
+%% }
+-type inventory_data() :: #{binary() => any()}.
+
+%% Example:
+%% kafka_settings() :: #{
+%%   <<"Broker">> => string(),
+%%   <<"IncludeControlDetails">> => boolean(),
+%%   <<"IncludeNullAndEmpty">> => boolean(),
+%%   <<"IncludePartitionValue">> => boolean(),
+%%   <<"IncludeTableAlterOperations">> => boolean(),
+%%   <<"IncludeTransactionDetails">> => boolean(),
+%%   <<"MessageFormat">> => list(any()),
+%%   <<"MessageMaxBytes">> => integer(),
+%%   <<"NoHexPrefix">> => boolean(),
+%%   <<"PartitionIncludeSchemaTable">> => boolean(),
+%%   <<"SaslMechanism">> => list(any()),
+%%   <<"SaslPassword">> => string(),
+%%   <<"SaslUsername">> => string(),
+%%   <<"SecurityProtocol">> => list(any()),
+%%   <<"SslCaCertificateArn">> => string(),
+%%   <<"SslClientCertificateArn">> => string(),
+%%   <<"SslClientKeyArn">> => string(),
+%%   <<"SslClientKeyPassword">> => string(),
+%%   <<"SslEndpointIdentificationAlgorithm">> => list(any()),
+%%   <<"Topic">> => string(),
+%%   <<"UseLargeIntegerValue">> => boolean()
+%% }
+-type kafka_settings() :: #{binary() => any()}.
+
+%% Example:
+%% kerberos_authentication_settings() :: #{
+%%   <<"KeyCacheSecretIamArn">> => string(),
+%%   <<"KeyCacheSecretId">> => string(),
+%%   <<"Krb5FileContents">> => string()
+%% }
+-type kerberos_authentication_settings() :: #{binary() => any()}.
+
+%% Example:
+%% kinesis_settings() :: #{
+%%   <<"IncludeControlDetails">> => boolean(),
+%%   <<"IncludeNullAndEmpty">> => boolean(),
+%%   <<"IncludePartitionValue">> => boolean(),
+%%   <<"IncludeTableAlterOperations">> => boolean(),
+%%   <<"IncludeTransactionDetails">> => boolean(),
+%%   <<"MessageFormat">> => list(any()),
+%%   <<"NoHexPrefix">> => boolean(),
+%%   <<"PartitionIncludeSchemaTable">> => boolean(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"StreamArn">> => string(),
+%%   <<"UseLargeIntegerValue">> => boolean()
+%% }
+-type kinesis_settings() :: #{binary() => any()}.
+
+%% Example:
+%% kms_access_denied_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_access_denied_fault() :: #{binary() => any()}.
+
+%% Example:
+%% kms_disabled_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_disabled_fault() :: #{binary() => any()}.
+
+%% Example:
+%% kms_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_fault() :: #{binary() => any()}.
+
+%% Example:
+%% kms_invalid_state_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_invalid_state_fault() :: #{binary() => any()}.
+
+%% Example:
+%% kms_key_not_accessible_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_key_not_accessible_fault() :: #{binary() => any()}.
+
+%% Example:
+%% kms_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% kms_throttling_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type kms_throttling_fault() :: #{binary() => any()}.
+
+%% Example:
+%% lakehouse_settings() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type lakehouse_settings() :: #{binary() => any()}.
+
+%% Example:
+%% limitation() :: #{
+%%   <<"DatabaseId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EngineName">> => string(),
+%%   <<"Impact">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type limitation() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_message() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceArnList">> => list(string())
+%% }
+-type list_tags_for_resource_message() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"TagList">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% maria_db_data_provider_settings() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type maria_db_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
+%% metadata_model_reference() :: #{
+%%   <<"MetadataModelName">> => string(),
+%%   <<"SelectionRules">> => string()
+%% }
+-type metadata_model_reference() :: #{binary() => any()}.
+
+%% Example:
+%% microsoft_s_q_l_server_settings() :: #{
+%%   <<"AuthenticationMethod">> => list(any()),
+%%   <<"BcpPacketSize">> => integer(),
+%%   <<"ControlTablesFileGroup">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"ForceLobLookup">> => boolean(),
+%%   <<"Password">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"QuerySingleAlwaysOnNode">> => boolean(),
+%%   <<"ReadBackupOnly">> => boolean(),
+%%   <<"SafeguardPolicy">> => list(any()),
+%%   <<"SecretsManagerAccessRoleArn">> => string(),
+%%   <<"SecretsManagerSecretId">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"TlogAccessMode">> => list(any()),
+%%   <<"TrimSpaceInChar">> => boolean(),
+%%   <<"UseBcpFullLoad">> => boolean(),
+%%   <<"UseThirdPartyBackupDevice">> => boolean(),
+%%   <<"Username">> => string()
+%% }
+-type microsoft_s_q_l_server_settings() :: #{binary() => any()}.
+
+%% Example:
+%% microsoft_sql_server_data_provider_settings() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type microsoft_sql_server_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
+%% migration_project() :: #{
+%%   <<"Description">> => string(),
+%%   <<"InstanceProfileArn">> => string(),
+%%   <<"InstanceProfileName">> => string(),
+%%   <<"MigrationProjectArn">> => string(),
+%%   <<"MigrationProjectCreationTime">> => non_neg_integer(),
+%%   <<"MigrationProjectName">> => string(),
+%%   <<"SchemaConversionApplicationAttributes">> => s_capplication_attributes(),
+%%   <<"SourceDataProviderDescriptors">> => list(data_provider_descriptor()),
+%%   <<"TargetDataProviderDescriptors">> => list(data_provider_descriptor()),
+%%   <<"TransformationRules">> => string()
+%% }
+-type migration_project() :: #{binary() => any()}.
+
+%% Example:
+%% modify_conversion_configuration_message() :: #{
+%%   <<"ConversionConfiguration">> := string(),
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type modify_conversion_configuration_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_conversion_configuration_response() :: #{
+%%   <<"MigrationProjectIdentifier">> => string()
+%% }
+-type modify_conversion_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_data_migration_message() :: #{
+%%   <<"DataMigrationIdentifier">> := string(),
+%%   <<"DataMigrationName">> => string(),
+%%   <<"DataMigrationType">> => list(any()),
+%%   <<"EnableCloudwatchLogs">> => boolean(),
+%%   <<"NumberOfJobs">> => integer(),
+%%   <<"SelectionRules">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"SourceDataSettings">> => list(source_data_setting()),
+%%   <<"TargetDataSettings">> => list(target_data_setting())
+%% }
+-type modify_data_migration_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_data_migration_response() :: #{
+%%   <<"DataMigration">> => data_migration()
+%% }
+-type modify_data_migration_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_data_provider_message() :: #{
+%%   <<"DataProviderIdentifier">> := string(),
+%%   <<"DataProviderName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"ExactSettings">> => boolean(),
+%%   <<"Settings">> => list(),
+%%   <<"Virtual">> => boolean()
+%% }
+-type modify_data_provider_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_data_provider_response() :: #{
+%%   <<"DataProvider">> => data_provider()
+%% }
+-type modify_data_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_endpoint_message() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DmsTransferSettings">> => dms_transfer_settings(),
+%%   <<"DocDbSettings">> => doc_db_settings(),
+%%   <<"DynamoDbSettings">> => dynamo_db_settings(),
+%%   <<"ElasticsearchSettings">> => elasticsearch_settings(),
+%%   <<"EndpointArn">> := string(),
+%%   <<"EndpointIdentifier">> => string(),
+%%   <<"EndpointType">> => list(any()),
+%%   <<"EngineName">> => string(),
+%%   <<"ExactSettings">> => boolean(),
+%%   <<"ExternalTableDefinition">> => string(),
+%%   <<"ExtraConnectionAttributes">> => string(),
+%%   <<"GcpMySQLSettings">> => gcp_my_s_q_l_settings(),
+%%   <<"IBMDb2Settings">> => i_b_m_db2_settings(),
+%%   <<"KafkaSettings">> => kafka_settings(),
+%%   <<"KinesisSettings">> => kinesis_settings(),
+%%   <<"MicrosoftSQLServerSettings">> => microsoft_s_q_l_server_settings(),
+%%   <<"MongoDbSettings">> => mongo_db_settings(),
+%%   <<"MySQLSettings">> => my_s_q_l_settings(),
+%%   <<"NeptuneSettings">> => neptune_settings(),
+%%   <<"OracleSettings">> => oracle_settings(),
+%%   <<"Password">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"PostgreSQLSettings">> => postgre_s_q_l_settings(),
+%%   <<"RedisSettings">> => redis_settings(),
+%%   <<"RedshiftSettings">> => redshift_settings(),
+%%   <<"S3Settings">> => s3_settings(),
+%%   <<"ServerName">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"SslMode">> => list(any()),
+%%   <<"SybaseSettings">> => sybase_settings(),
+%%   <<"TimestreamSettings">> => timestream_settings(),
+%%   <<"Username">> => string()
+%% }
+-type modify_endpoint_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_endpoint_response() :: #{
+%%   <<"Endpoint">> => endpoint()
+%% }
+-type modify_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_event_subscription_message() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"SnsTopicArn">> => string(),
+%%   <<"SourceType">> => string(),
+%%   <<"SubscriptionName">> := string()
+%% }
+-type modify_event_subscription_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_event_subscription_response() :: #{
+%%   <<"EventSubscription">> => event_subscription()
+%% }
+-type modify_event_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_instance_profile_message() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"InstanceProfileIdentifier">> := string(),
+%%   <<"InstanceProfileName">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"NetworkType">> => string(),
+%%   <<"PubliclyAccessible">> => boolean(),
+%%   <<"SubnetGroupIdentifier">> => string(),
+%%   <<"VpcSecurityGroups">> => list(string())
+%% }
+-type modify_instance_profile_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_instance_profile_response() :: #{
+%%   <<"InstanceProfile">> => instance_profile()
+%% }
+-type modify_instance_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_migration_project_message() :: #{
+%%   <<"Description">> => string(),
+%%   <<"InstanceProfileIdentifier">> => string(),
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"MigrationProjectName">> => string(),
+%%   <<"SchemaConversionApplicationAttributes">> => s_capplication_attributes(),
+%%   <<"SourceDataProviderDescriptors">> => list(data_provider_descriptor_definition()),
+%%   <<"TargetDataProviderDescriptors">> => list(data_provider_descriptor_definition()),
+%%   <<"TransformationRules">> => string()
+%% }
+-type modify_migration_project_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_migration_project_response() :: #{
+%%   <<"MigrationProject">> => migration_project()
+%% }
+-type modify_migration_project_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_replication_config_message() :: #{
+%%   <<"ComputeConfig">> => compute_config(),
+%%   <<"ReplicationConfigArn">> := string(),
+%%   <<"ReplicationConfigIdentifier">> => string(),
+%%   <<"ReplicationSettings">> => string(),
+%%   <<"ReplicationType">> => list(any()),
+%%   <<"SourceEndpointArn">> => string(),
+%%   <<"SupplementalSettings">> => string(),
+%%   <<"TableMappings">> => string(),
+%%   <<"TargetEndpointArn">> => string()
+%% }
+-type modify_replication_config_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_replication_config_response() :: #{
+%%   <<"ReplicationConfig">> => replication_config()
+%% }
+-type modify_replication_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_replication_instance_message() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"AllowMajorVersionUpgrade">> => boolean(),
+%%   <<"ApplyImmediately">> => boolean(),
+%%   <<"AutoMinorVersionUpgrade">> => boolean(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"KerberosAuthenticationSettings">> => kerberos_authentication_settings(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ReplicationInstanceArn">> := string(),
+%%   <<"ReplicationInstanceClass">> => string(),
+%%   <<"ReplicationInstanceIdentifier">> => string(),
+%%   <<"VpcSecurityGroupIds">> => list(string())
+%% }
+-type modify_replication_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_replication_instance_response() :: #{
+%%   <<"ReplicationInstance">> => replication_instance()
+%% }
+-type modify_replication_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_replication_subnet_group_message() :: #{
+%%   <<"ReplicationSubnetGroupDescription">> => string(),
+%%   <<"ReplicationSubnetGroupIdentifier">> := string(),
+%%   <<"SubnetIds">> := list(string())
+%% }
+-type modify_replication_subnet_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_replication_subnet_group_response() :: #{
+%%   <<"ReplicationSubnetGroup">> => replication_subnet_group()
+%% }
+-type modify_replication_subnet_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_replication_task_message() :: #{
+%%   <<"CdcStartPosition">> => string(),
+%%   <<"CdcStartTime">> => non_neg_integer(),
+%%   <<"CdcStopPosition">> => string(),
+%%   <<"MigrationType">> => list(any()),
+%%   <<"ReplicationTaskArn">> := string(),
+%%   <<"ReplicationTaskIdentifier">> => string(),
+%%   <<"ReplicationTaskSettings">> => string(),
+%%   <<"TableMappings">> => string(),
+%%   <<"TaskData">> => string()
+%% }
+-type modify_replication_task_message() :: #{binary() => any()}.
+
+%% Example:
+%% modify_replication_task_response() :: #{
+%%   <<"ReplicationTask">> => replication_task()
+%% }
+-type modify_replication_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% mongo_db_data_provider_settings() :: #{
+%%   <<"AuthMechanism">> => list(any()),
+%%   <<"AuthSource">> => string(),
+%%   <<"AuthType">> => list(any()),
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type mongo_db_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
+%% mongo_db_settings() :: #{
+%%   <<"AuthMechanism">> => list(any()),
+%%   <<"AuthSource">> => string(),
+%%   <<"AuthType">> => list(any()),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DocsToInvestigate">> => string(),
+%%   <<"ExtractDocId">> => string(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"NestingLevel">> => list(any()),
+%%   <<"Password">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ReplicateShardCollections">> => boolean(),
+%%   <<"SecretsManagerAccessRoleArn">> => string(),
+%%   <<"SecretsManagerSecretId">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"UseUpdateLookUp">> => boolean(),
+%%   <<"Username">> => string()
+%% }
+-type mongo_db_settings() :: #{binary() => any()}.
+
+%% Example:
+%% move_replication_task_message() :: #{
+%%   <<"ReplicationTaskArn">> := string(),
+%%   <<"TargetReplicationInstanceArn">> := string()
+%% }
+-type move_replication_task_message() :: #{binary() => any()}.
+
+%% Example:
+%% move_replication_task_response() :: #{
+%%   <<"ReplicationTask">> => replication_task()
+%% }
+-type move_replication_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% my_s_q_l_settings() :: #{
+%%   <<"AfterConnectScript">> => string(),
+%%   <<"AuthenticationMethod">> => list(any()),
+%%   <<"CleanSourceMetadataOnMismatch">> => boolean(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"EventsPollInterval">> => integer(),
+%%   <<"ExecuteTimeout">> => integer(),
+%%   <<"MaxFileSize">> => integer(),
+%%   <<"ParallelLoadThreads">> => integer(),
+%%   <<"Password">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"SecretsManagerAccessRoleArn">> => string(),
+%%   <<"SecretsManagerSecretId">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"ServerTimezone">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"TargetDbType">> => list(any()),
+%%   <<"Username">> => string()
+%% }
+-type my_s_q_l_settings() :: #{binary() => any()}.
+
+%% Example:
+%% my_sql_data_provider_settings() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type my_sql_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
+%% neptune_settings() :: #{
+%%   <<"ErrorRetryDuration">> => integer(),
+%%   <<"IamAuthEnabled">> => boolean(),
+%%   <<"MaxFileSize">> => integer(),
+%%   <<"MaxRetryCount">> => integer(),
+%%   <<"S3BucketFolder">> => string(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string()
+%% }
+-type neptune_settings() :: #{binary() => any()}.
+
+%% Example:
+%% oracle_data_provider_settings() :: #{
+%%   <<"AsmServer">> => string(),
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
+%%   <<"SecretsManagerOracleAsmAccessRoleArn">> => string(),
+%%   <<"SecretsManagerOracleAsmSecretId">> => string(),
+%%   <<"SecretsManagerSecurityDbEncryptionAccessRoleArn">> => string(),
+%%   <<"SecretsManagerSecurityDbEncryptionSecretId">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type oracle_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
+%% oracle_settings() :: #{
+%%   <<"AccessAlternateDirectly">> => boolean(),
+%%   <<"AddSupplementalLogging">> => boolean(),
+%%   <<"AdditionalArchivedLogDestId">> => integer(),
+%%   <<"AllowSelectNestedTables">> => boolean(),
+%%   <<"ArchivedLogDestId">> => integer(),
+%%   <<"ArchivedLogsOnly">> => boolean(),
+%%   <<"AsmPassword">> => string(),
+%%   <<"AsmServer">> => string(),
+%%   <<"AsmUser">> => string(),
+%%   <<"AuthenticationMethod">> => list(any()),
+%%   <<"CharLengthSemantics">> => list(any()),
+%%   <<"ConvertTimestampWithZoneToUTC">> => boolean(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DirectPathNoLog">> => boolean(),
+%%   <<"DirectPathParallelLoad">> => boolean(),
+%%   <<"EnableHomogenousTablespace">> => boolean(),
+%%   <<"ExtraArchivedLogDestIds">> => list(integer()),
+%%   <<"FailTasksOnLobTruncation">> => boolean(),
+%%   <<"NumberDatatypeScale">> => integer(),
+%%   <<"OpenTransactionWindow">> => integer(),
+%%   <<"OraclePathPrefix">> => string(),
+%%   <<"ParallelAsmReadThreads">> => integer(),
+%%   <<"Password">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ReadAheadBlocks">> => integer(),
+%%   <<"ReadTableSpaceName">> => boolean(),
+%%   <<"ReplacePathPrefix">> => boolean(),
+%%   <<"RetryInterval">> => integer(),
+%%   <<"SecretsManagerAccessRoleArn">> => string(),
+%%   <<"SecretsManagerOracleAsmAccessRoleArn">> => string(),
+%%   <<"SecretsManagerOracleAsmSecretId">> => string(),
+%%   <<"SecretsManagerSecretId">> => string(),
+%%   <<"SecurityDbEncryption">> => string(),
+%%   <<"SecurityDbEncryptionName">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"SpatialDataOptionToGeoJsonFunctionName">> => string(),
+%%   <<"StandbyDelayTime">> => integer(),
+%%   <<"TrimSpaceInChar">> => boolean(),
+%%   <<"UseAlternateFolderForOnline">> => boolean(),
+%%   <<"UseBFile">> => boolean(),
+%%   <<"UseDirectPathFullLoad">> => boolean(),
+%%   <<"UseLogminerReader">> => boolean(),
+%%   <<"UsePathPrefix">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type oracle_settings() :: #{binary() => any()}.
+
+%% Example:
+%% orderable_replication_instance() :: #{
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"DefaultAllocatedStorage">> => integer(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"IncludedAllocatedStorage">> => integer(),
+%%   <<"MaxAllocatedStorage">> => integer(),
+%%   <<"MinAllocatedStorage">> => integer(),
+%%   <<"ReleaseStatus">> => list(any()),
+%%   <<"ReplicationInstanceClass">> => string(),
+%%   <<"StorageType">> => string()
+%% }
+-type orderable_replication_instance() :: #{binary() => any()}.
+
+%% Example:
+%% pending_maintenance_action() :: #{
+%%   <<"Action">> => string(),
+%%   <<"AutoAppliedAfterDate">> => non_neg_integer(),
+%%   <<"CurrentApplyDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ForcedApplyDate">> => non_neg_integer(),
+%%   <<"OptInStatus">> => string()
+%% }
+-type pending_maintenance_action() :: #{binary() => any()}.
+
+%% Example:
+%% postgre_s_q_l_settings() :: #{
+%%   <<"AfterConnectScript">> => string(),
+%%   <<"AuthenticationMethod">> => list(any()),
+%%   <<"BabelfishDatabaseName">> => string(),
+%%   <<"CaptureDdls">> => boolean(),
+%%   <<"DatabaseMode">> => list(any()),
+%%   <<"DatabaseName">> => string(),
+%%   <<"DdlArtifactsSchema">> => string(),
+%%   <<"DisableUnicodeSourceFilter">> => boolean(),
+%%   <<"ExecuteTimeout">> => integer(),
+%%   <<"FailTasksOnLobTruncation">> => boolean(),
+%%   <<"HeartbeatEnable">> => boolean(),
+%%   <<"HeartbeatFrequency">> => integer(),
+%%   <<"HeartbeatSchema">> => string(),
+%%   <<"MapBooleanAsBoolean">> => boolean(),
+%%   <<"MapJsonbAsClob">> => boolean(),
+%%   <<"MapLongVarcharAs">> => list(any()),
+%%   <<"MaxFileSize">> => integer(),
+%%   <<"Password">> => string(),
+%%   <<"PluginName">> => list(any()),
+%%   <<"Port">> => integer(),
+%%   <<"SecretsManagerAccessRoleArn">> => string(),
+%%   <<"SecretsManagerSecretId">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"SlotName">> => string(),
+%%   <<"TrimSpaceInChar">> => boolean(),
+%%   <<"Username">> => string()
+%% }
+-type postgre_s_q_l_settings() :: #{binary() => any()}.
+
+%% Example:
+%% postgre_sql_data_provider_settings() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type postgre_sql_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
+%% premigration_assessment_status() :: #{
+%%   <<"AssessmentProgress">> => replication_task_assessment_run_progress(),
+%%   <<"FailOnAssessmentFailure">> => boolean(),
+%%   <<"LastFailureMessage">> => string(),
+%%   <<"PremigrationAssessmentRunArn">> => string(),
+%%   <<"PremigrationAssessmentRunCreationDate">> => non_neg_integer(),
+%%   <<"ResultEncryptionMode">> => string(),
+%%   <<"ResultKmsKeyArn">> => string(),
+%%   <<"ResultLocationBucket">> => string(),
+%%   <<"ResultLocationFolder">> => string(),
+%%   <<"ResultStatistic">> => replication_task_assessment_run_result_statistic(),
+%%   <<"Status">> => string()
+%% }
+-type premigration_assessment_status() :: #{binary() => any()}.
+
+%% Example:
+%% processed_object() :: #{
+%%   <<"EndpointType">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type processed_object() :: #{binary() => any()}.
+
+%% Example:
+%% progress() :: #{
+%%   <<"ProcessedObject">> => processed_object(),
+%%   <<"ProgressPercent">> => float(),
+%%   <<"ProgressStep">> => string(),
+%%   <<"TotalObjects">> => float()
+%% }
+-type progress() :: #{binary() => any()}.
+
+%% Example:
+%% provision_data() :: #{
+%%   <<"DateNewProvisioningDataAvailable">> => non_neg_integer(),
+%%   <<"DateProvisioned">> => non_neg_integer(),
+%%   <<"IsNewProvisioningAvailable">> => boolean(),
+%%   <<"ProvisionState">> => string(),
+%%   <<"ProvisionedCapacityUnits">> => integer(),
+%%   <<"ReasonForNewProvisioningData">> => string()
+%% }
+-type provision_data() :: #{binary() => any()}.
+
+%% Example:
+%% rds_configuration() :: #{
+%%   <<"DeploymentOption">> => string(),
+%%   <<"EngineEdition">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"InstanceMemory">> => float(),
+%%   <<"InstanceType">> => string(),
+%%   <<"InstanceVcpu">> => float(),
+%%   <<"StorageIops">> => integer(),
+%%   <<"StorageSize">> => integer(),
+%%   <<"StorageType">> => string()
+%% }
+-type rds_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% rds_recommendation() :: #{
+%%   <<"RequirementsToTarget">> => rds_requirements(),
+%%   <<"TargetConfiguration">> => rds_configuration()
+%% }
+-type rds_recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% rds_requirements() :: #{
+%%   <<"DeploymentOption">> => string(),
+%%   <<"EngineEdition">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"InstanceMemory">> => float(),
+%%   <<"InstanceVcpu">> => float(),
+%%   <<"StorageIops">> => integer(),
+%%   <<"StorageSize">> => integer()
+%% }
+-type rds_requirements() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_replication_instance_message() :: #{
+%%   <<"ForceFailover">> => boolean(),
+%%   <<"ForcePlannedFailover">> => boolean(),
+%%   <<"ReplicationInstanceArn">> := string()
+%% }
+-type reboot_replication_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_replication_instance_response() :: #{
+%%   <<"ReplicationInstance">> => replication_instance()
+%% }
+-type reboot_replication_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"CreatedDate">> => string(),
+%%   <<"Data">> => recommendation_data(),
+%%   <<"DatabaseId">> => string(),
+%%   <<"EngineName">> => string(),
+%%   <<"Preferred">> => boolean(),
+%%   <<"Settings">> => recommendation_settings(),
+%%   <<"Status">> => string()
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_data() :: #{
+%%   <<"RdsEngine">> => rds_recommendation()
+%% }
+-type recommendation_data() :: #{binary() => any()}.
+
+%% Example:
+%% recommendation_settings() :: #{
+%%   <<"InstanceSizingType">> => string(),
+%%   <<"WorkloadType">> => string()
+%% }
+-type recommendation_settings() :: #{binary() => any()}.
+
+%% Example:
+%% redis_settings() :: #{
+%%   <<"AuthPassword">> => string(),
+%%   <<"AuthType">> => list(any()),
+%%   <<"AuthUserName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslCaCertificateArn">> => string(),
+%%   <<"SslSecurityProtocol">> => list(any())
+%% }
+-type redis_settings() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_data_provider_settings() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"S3AccessRoleArn">> => string(),
+%%   <<"S3Path">> => string(),
+%%   <<"ServerName">> => string()
+%% }
+-type redshift_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
 %% redshift_settings() :: #{
 %%   <<"AcceptAnyDate">> => boolean(),
 %%   <<"AfterConnectScript">> => string(),
@@ -301,463 +2889,62 @@
 -type redshift_settings() :: #{binary() => any()}.
 
 %% Example:
-%% collector_response() :: #{
-%%   <<"CollectorHealthCheck">> => collector_health_check(),
-%%   <<"CollectorName">> => string(),
-%%   <<"CollectorReferencedId">> => string(),
-%%   <<"CollectorVersion">> => string(),
-%%   <<"CreatedDate">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"InventoryData">> => inventory_data(),
-%%   <<"LastDataReceived">> => string(),
-%%   <<"ModifiedDate">> => string(),
-%%   <<"RegisteredDate">> => string(),
-%%   <<"S3BucketName">> => string(),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"VersionStatus">> => list(any())
-%% }
--type collector_response() :: #{binary() => any()}.
-
-%% Example:
-%% fleet_advisor_schema_object_response() :: #{
-%%   <<"CodeLineCount">> => float(),
-%%   <<"CodeSize">> => float(),
-%%   <<"NumberOfObjects">> => float(),
-%%   <<"ObjectType">> => string(),
-%%   <<"SchemaId">> => string()
-%% }
--type fleet_advisor_schema_object_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleet_advisor_databases_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_fleet_advisor_databases_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_table_statistics_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ReplicationTaskArn">> := string()
-%% }
--type describe_table_statistics_message() :: #{binary() => any()}.
-
-%% Example:
-%% kinesis_settings() :: #{
-%%   <<"IncludeControlDetails">> => boolean(),
-%%   <<"IncludeNullAndEmpty">> => boolean(),
-%%   <<"IncludePartitionValue">> => boolean(),
-%%   <<"IncludeTableAlterOperations">> => boolean(),
-%%   <<"IncludeTransactionDetails">> => boolean(),
-%%   <<"MessageFormat">> => list(any()),
-%%   <<"NoHexPrefix">> => boolean(),
-%%   <<"PartitionIncludeSchemaTable">> => boolean(),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"StreamArn">> => string(),
-%%   <<"UseLargeIntegerValue">> => boolean()
-%% }
--type kinesis_settings() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_resource_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_resource_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% data_provider() :: #{
-%%   <<"DataProviderArn">> => string(),
-%%   <<"DataProviderCreationTime">> => non_neg_integer(),
-%%   <<"DataProviderName">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Engine">> => string(),
-%%   <<"Settings">> => list(),
-%%   <<"Virtual">> => boolean()
-%% }
--type data_provider() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_provider_message() :: #{
-%%   <<"DataProviderIdentifier">> := string()
-%% }
--type delete_data_provider_message() :: #{binary() => any()}.
-
-%% Example:
-%% pending_maintenance_action() :: #{
-%%   <<"Action">> => string(),
-%%   <<"AutoAppliedAfterDate">> => non_neg_integer(),
-%%   <<"CurrentApplyDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ForcedApplyDate">> => non_neg_integer(),
-%%   <<"OptInStatus">> => string()
-%% }
--type pending_maintenance_action() :: #{binary() => any()}.
-
-%% Example:
-%% account_quota() :: #{
-%%   <<"AccountQuotaName">> => string(),
-%%   <<"Max">> => float(),
-%%   <<"Used">> => float()
-%% }
--type account_quota() :: #{binary() => any()}.
-
-%% Example:
-%% apply_pending_maintenance_action_message() :: #{
-%%   <<"ApplyAction">> := string(),
-%%   <<"OptInType">> := string(),
+%% refresh_schemas_message() :: #{
+%%   <<"EndpointArn">> := string(),
 %%   <<"ReplicationInstanceArn">> := string()
 %% }
--type apply_pending_maintenance_action_message() :: #{binary() => any()}.
+-type refresh_schemas_message() :: #{binary() => any()}.
 
 %% Example:
-%% upgrade_dependency_failure_fault() :: #{
-%%   <<"message">> => string()
+%% refresh_schemas_response() :: #{
+%%   <<"RefreshSchemasStatus">> => refresh_schemas_status()
 %% }
--type upgrade_dependency_failure_fault() :: #{binary() => any()}.
+-type refresh_schemas_response() :: #{binary() => any()}.
 
 %% Example:
-%% subnet_already_in_use() :: #{
-%%   <<"message">> => string()
+%% refresh_schemas_status() :: #{
+%%   <<"EndpointArn">> => string(),
+%%   <<"LastFailureMessage">> => string(),
+%%   <<"LastRefreshDate">> => non_neg_integer(),
+%%   <<"ReplicationInstanceArn">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type subnet_already_in_use() :: #{binary() => any()}.
+-type refresh_schemas_status() :: #{binary() => any()}.
 
 %% Example:
-%% describe_engine_versions_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
+%% reload_replication_tables_message() :: #{
+%%   <<"ReloadOption">> => list(any()),
+%%   <<"ReplicationConfigArn">> := string(),
+%%   <<"TablesToReload">> := list(table_to_reload())
 %% }
--type describe_engine_versions_message() :: #{binary() => any()}.
+-type reload_replication_tables_message() :: #{binary() => any()}.
 
 %% Example:
-%% describe_endpoints_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
+%% reload_replication_tables_response() :: #{
+%%   <<"ReplicationConfigArn">> => string()
 %% }
--type describe_endpoints_message() :: #{binary() => any()}.
+-type reload_replication_tables_response() :: #{binary() => any()}.
 
 %% Example:
-%% oracle_data_provider_settings() :: #{
-%%   <<"AsmServer">> => string(),
-%%   <<"CertificateArn">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"S3AccessRoleArn">> => string(),
-%%   <<"S3Path">> => string(),
-%%   <<"SecretsManagerOracleAsmAccessRoleArn">> => string(),
-%%   <<"SecretsManagerOracleAsmSecretId">> => string(),
-%%   <<"SecretsManagerSecurityDbEncryptionAccessRoleArn">> => string(),
-%%   <<"SecretsManagerSecurityDbEncryptionSecretId">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"SslMode">> => list(any())
-%% }
--type oracle_data_provider_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_orderable_replication_instances_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_orderable_replication_instances_message() :: #{binary() => any()}.
-
-%% Example:
-%% export_metadata_model_assessment_result_entry() :: #{
-%%   <<"ObjectURL">> => string(),
-%%   <<"S3ObjectKey">> => string()
-%% }
--type export_metadata_model_assessment_result_entry() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_configs_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_replication_configs_message() :: #{binary() => any()}.
-
-%% Example:
-%% resource_pending_maintenance_actions() :: #{
-%%   <<"PendingMaintenanceActionDetails">> => list(pending_maintenance_action()),
-%%   <<"ResourceIdentifier">> => string()
-%% }
--type resource_pending_maintenance_actions() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_import_message() :: #{
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"Origin">> := list(any()),
-%%   <<"Refresh">> => boolean(),
-%%   <<"SelectionRules">> := string()
-%% }
--type start_metadata_model_import_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_replication_subnet_group_response() :: #{
-%%   <<"ReplicationSubnetGroup">> => replication_subnet_group()
-%% }
--type create_replication_subnet_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleet_advisor_collectors_response() :: #{
-%%   <<"Collectors">> => list(collector_response()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_fleet_advisor_collectors_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_fault() :: #{binary() => any()}.
-
-%% Example:
-%% kms_invalid_state_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_invalid_state_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_imports_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request())
-%% }
--type describe_metadata_model_imports_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_replication_task_message() :: #{
-%%   <<"CdcStartPosition">> => string(),
-%%   <<"CdcStartTime">> => non_neg_integer(),
-%%   <<"CdcStopPosition">> => string(),
+%% reload_tables_message() :: #{
+%%   <<"ReloadOption">> => list(any()),
 %%   <<"ReplicationTaskArn">> := string(),
-%%   <<"StartReplicationTaskType">> := list(any())
+%%   <<"TablesToReload">> := list(table_to_reload())
 %% }
--type start_replication_task_message() :: #{binary() => any()}.
+-type reload_tables_message() :: #{binary() => any()}.
 
 %% Example:
-%% delete_instance_profile_response() :: #{
-%%   <<"InstanceProfile">> => instance_profile()
+%% reload_tables_response() :: #{
+%%   <<"ReplicationTaskArn">> => string()
 %% }
--type delete_instance_profile_response() :: #{binary() => any()}.
+-type reload_tables_response() :: #{binary() => any()}.
 
 %% Example:
-%% rds_recommendation() :: #{
-%%   <<"RequirementsToTarget">> => rds_requirements(),
-%%   <<"TargetConfiguration">> => rds_configuration()
+%% remove_tags_from_resource_message() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type rds_recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% instance_profile() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"InstanceProfileArn">> => string(),
-%%   <<"InstanceProfileCreationTime">> => non_neg_integer(),
-%%   <<"InstanceProfileName">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"NetworkType">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"SubnetGroupIdentifier">> => string(),
-%%   <<"VpcSecurityGroups">> => list(string())
-%% }
--type instance_profile() :: #{binary() => any()}.
-
-%% Example:
-%% lakehouse_settings() :: #{
-%%   <<"Arn">> => string()
-%% }
--type lakehouse_settings() :: #{binary() => any()}.
-
-%% Example:
-%% default_error_details() :: #{
-%%   <<"Message">> => string()
-%% }
--type default_error_details() :: #{binary() => any()}.
-
-%% Example:
-%% modify_instance_profile_response() :: #{
-%%   <<"InstanceProfile">> => instance_profile()
-%% }
--type modify_instance_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_migration_project_message() :: #{
-%%   <<"Description">> => string(),
-%%   <<"InstanceProfileIdentifier">> := string(),
-%%   <<"MigrationProjectName">> => string(),
-%%   <<"SchemaConversionApplicationAttributes">> => s_capplication_attributes(),
-%%   <<"SourceDataProviderDescriptors">> := list(data_provider_descriptor_definition()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetDataProviderDescriptors">> := list(data_provider_descriptor_definition()),
-%%   <<"TransformationRules">> => string()
-%% }
--type create_migration_project_message() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_setting() :: #{
-%%   <<"Applicability">> => string(),
-%%   <<"DefaultValue">> => string(),
-%%   <<"EnumValues">> => list(string()),
-%%   <<"IntValueMax">> => integer(),
-%%   <<"IntValueMin">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"Sensitive">> => boolean(),
-%%   <<"Type">> => list(any()),
-%%   <<"Units">> => string()
-%% }
--type endpoint_setting() :: #{binary() => any()}.
-
-%% Example:
-%% availability_zone() :: #{
-%%   <<"Name">> => string()
-%% }
--type availability_zone() :: #{binary() => any()}.
-
-%% Example:
-%% metadata_model_reference() :: #{
-%%   <<"MetadataModelName">> => string(),
-%%   <<"SelectionRules">> => string()
-%% }
--type metadata_model_reference() :: #{binary() => any()}.
-
-%% Example:
-%% replication_stats() :: #{
-%%   <<"ElapsedTimeMillis">> => float(),
-%%   <<"FreshStartDate">> => non_neg_integer(),
-%%   <<"FullLoadFinishDate">> => non_neg_integer(),
-%%   <<"FullLoadProgressPercent">> => integer(),
-%%   <<"FullLoadStartDate">> => non_neg_integer(),
-%%   <<"StartDate">> => non_neg_integer(),
-%%   <<"StopDate">> => non_neg_integer(),
-%%   <<"TablesErrored">> => integer(),
-%%   <<"TablesLoaded">> => integer(),
-%%   <<"TablesLoading">> => integer(),
-%%   <<"TablesQueued">> => integer()
-%% }
--type replication_stats() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_data() :: #{
-%%   <<"NumberOfDatabases">> => integer(),
-%%   <<"NumberOfSchemas">> => integer()
-%% }
--type inventory_data() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_task_assessment_run_message() :: #{
-%%   <<"ReplicationTaskAssessmentRunArn">> := string()
-%% }
--type delete_replication_task_assessment_run_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_message() :: #{
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"Origin">> := list(any()),
-%%   <<"SelectionRules">> := string()
-%% }
--type describe_metadata_model_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_recommendation_limitations_response() :: #{
-%%   <<"Limitations">> => list(limitation()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_recommendation_limitations_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_categories_response() :: #{
-%%   <<"EventCategoryGroupList">> => list(event_category_group())
-%% }
--type describe_event_categories_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_fleet_advisor_collector_request() :: #{
-%%   <<"CollectorName">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"S3BucketName">> := string(),
-%%   <<"ServiceAccessRoleArn">> := string()
-%% }
--type create_fleet_advisor_collector_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_conversions_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"MigrationProjectIdentifier">> := string()
-%% }
--type describe_metadata_model_conversions_message() :: #{binary() => any()}.
-
-%% Example:
-%% sybase_settings() :: #{
-%%   <<"DatabaseName">> => string(),
-%%   <<"Password">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"SecretsManagerAccessRoleArn">> => string(),
-%%   <<"SecretsManagerSecretId">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"Username">> => string()
-%% }
--type sybase_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_replication_subnet_group_message() :: #{
-%%   <<"ReplicationSubnetGroupDescription">> := string(),
-%%   <<"ReplicationSubnetGroupIdentifier">> := string(),
-%%   <<"SubnetIds">> := list(string()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_replication_subnet_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_migration_project_message() :: #{
-%%   <<"MigrationProjectIdentifier">> := string()
-%% }
--type delete_migration_project_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_fleet_advisor_databases_request() :: #{
-%%   <<"DatabaseIds">> := list(string())
-%% }
--type delete_fleet_advisor_databases_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleet_advisor_databases_response() :: #{
-%%   <<"Databases">> => list(database_response()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_fleet_advisor_databases_response() :: #{binary() => any()}.
-
-%% Example:
-%% schema_short_info_response() :: #{
-%%   <<"DatabaseId">> => string(),
-%%   <<"DatabaseIpAddress">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"SchemaId">> => string(),
-%%   <<"SchemaName">> => string()
-%% }
--type schema_short_info_response() :: #{binary() => any()}.
-
-%% Example:
-%% engine_version() :: #{
-%%   <<"AutoUpgradeDate">> => non_neg_integer(),
-%%   <<"AvailableUpgrades">> => list(string()),
-%%   <<"DeprecationDate">> => non_neg_integer(),
-%%   <<"ForceUpgradeDate">> => non_neg_integer(),
-%%   <<"LaunchDate">> => non_neg_integer(),
-%%   <<"Lifecycle">> => string(),
-%%   <<"ReleaseStatus">> => list(any()),
-%%   <<"Version">> => string()
-%% }
--type engine_version() :: #{binary() => any()}.
+-type remove_tags_from_resource_message() :: #{binary() => any()}.
 
 %% Example:
 %% remove_tags_from_resource_response() :: #{
@@ -766,154 +2953,47 @@
 -type remove_tags_from_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_replication_table_statistics_response() :: #{
-%%   <<"Marker">> => string(),
+%% replication() :: #{
+%%   <<"CdcStartPosition">> => string(),
+%%   <<"CdcStartTime">> => non_neg_integer(),
+%%   <<"CdcStopPosition">> => string(),
+%%   <<"FailureMessages">> => list(string()),
+%%   <<"IsReadOnly">> => boolean(),
+%%   <<"PremigrationAssessmentStatuses">> => list(premigration_assessment_status()),
+%%   <<"ProvisionData">> => provision_data(),
+%%   <<"RecoveryCheckpoint">> => string(),
 %%   <<"ReplicationConfigArn">> => string(),
-%%   <<"ReplicationTableStatistics">> => list(table_statistics())
+%%   <<"ReplicationConfigIdentifier">> => string(),
+%%   <<"ReplicationCreateTime">> => non_neg_integer(),
+%%   <<"ReplicationDeprovisionTime">> => non_neg_integer(),
+%%   <<"ReplicationLastStopTime">> => non_neg_integer(),
+%%   <<"ReplicationStats">> => replication_stats(),
+%%   <<"ReplicationType">> => list(any()),
+%%   <<"ReplicationUpdateTime">> => non_neg_integer(),
+%%   <<"SourceEndpointArn">> => string(),
+%%   <<"StartReplicationType">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"StopReason">> => string(),
+%%   <<"TargetEndpointArn">> => string()
 %% }
--type describe_replication_table_statistics_response() :: #{binary() => any()}.
+-type replication() :: #{binary() => any()}.
 
 %% Example:
-%% modify_event_subscription_message() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()),
-%%   <<"SnsTopicArn">> => string(),
-%%   <<"SourceType">> => string(),
-%%   <<"SubscriptionName">> := string()
+%% replication_config() :: #{
+%%   <<"ComputeConfig">> => compute_config(),
+%%   <<"IsReadOnly">> => boolean(),
+%%   <<"ReplicationConfigArn">> => string(),
+%%   <<"ReplicationConfigCreateTime">> => non_neg_integer(),
+%%   <<"ReplicationConfigIdentifier">> => string(),
+%%   <<"ReplicationConfigUpdateTime">> => non_neg_integer(),
+%%   <<"ReplicationSettings">> => string(),
+%%   <<"ReplicationType">> => list(any()),
+%%   <<"SourceEndpointArn">> => string(),
+%%   <<"SupplementalSettings">> => string(),
+%%   <<"TableMappings">> => string(),
+%%   <<"TargetEndpointArn">> => string()
 %% }
--type modify_event_subscription_message() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_export_as_script_message() :: #{
-%%   <<"FileName">> => string(),
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"Origin">> := list(any()),
-%%   <<"SelectionRules">> := string()
-%% }
--type start_metadata_model_export_as_script_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_task_assessment_results_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ReplicationTaskArn">> => string()
-%% }
--type describe_replication_task_assessment_results_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_tasks_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"WithoutSettings">> => boolean()
-%% }
--type describe_replication_tasks_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pending_maintenance_actions_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ReplicationInstanceArn">> => string()
-%% }
--type describe_pending_maintenance_actions_message() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_import_response() :: #{
-%%   <<"RequestIdentifier">> => string()
-%% }
--type start_metadata_model_import_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_replication_task_message() :: #{
-%%   <<"ReplicationTaskArn">> := string()
-%% }
--type stop_replication_task_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_instance_task_logs_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ReplicationInstanceArn">> := string()
-%% }
--type describe_replication_instance_task_logs_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_migration_response() :: #{
-%%   <<"DataMigration">> => data_migration()
-%% }
--type delete_data_migration_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_exports_to_target_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"MigrationProjectIdentifier">> := string()
-%% }
--type describe_metadata_model_exports_to_target_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_subnet_group_response() :: #{
-
-%% }
--type delete_replication_subnet_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% s_capplication_attributes() :: #{
-%%   <<"S3BucketPath">> => string(),
-%%   <<"S3BucketRoleArn">> => string()
-%% }
--type s_capplication_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_assessment_message() :: #{
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"SelectionRules">> := string()
-%% }
--type start_metadata_model_assessment_message() :: #{binary() => any()}.
-
-%% Example:
-%% move_replication_task_message() :: #{
-%%   <<"ReplicationTaskArn">> := string(),
-%%   <<"TargetReplicationInstanceArn">> := string()
-%% }
--type move_replication_task_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_replication_subnet_group_response() :: #{
-%%   <<"ReplicationSubnetGroup">> => replication_subnet_group()
-%% }
--type modify_replication_subnet_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_children_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MetadataModelChildren">> => list(metadata_model_reference())
-%% }
--type describe_metadata_model_children_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleet_advisor_lsa_analysis_response() :: #{
-%%   <<"Analysis">> => list(fleet_advisor_lsa_analysis_response()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_fleet_advisor_lsa_analysis_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_metadata_model_conversion_message() :: #{
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"RequestIdentifier">> := string()
-%% }
--type cancel_metadata_model_conversion_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleet_advisor_schema_object_summary_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_fleet_advisor_schema_object_summary_request() :: #{binary() => any()}.
+-type replication_config() :: #{binary() => any()}.
 
 %% Example:
 %% replication_instance() :: #{
@@ -947,198 +3027,25 @@
 -type replication_instance() :: #{binary() => any()}.
 
 %% Example:
-%% describe_schemas_message() :: #{
-%%   <<"EndpointArn">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
+%% replication_instance_task_log() :: #{
+%%   <<"ReplicationInstanceTaskLogSize">> => float(),
+%%   <<"ReplicationTaskArn">> => string(),
+%%   <<"ReplicationTaskName">> => string()
 %% }
--type describe_schemas_message() :: #{binary() => any()}.
+-type replication_instance_task_log() :: #{binary() => any()}.
 
 %% Example:
-%% modify_endpoint_response() :: #{
-%%   <<"Endpoint">> => endpoint()
+%% replication_pending_modified_values() :: #{
+%%   <<"AllocatedStorage">> => integer(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"MultiAZ">> => boolean(),
+%%   <<"NetworkType">> => string(),
+%%   <<"ReplicationInstanceClass">> => string()
 %% }
--type modify_endpoint_response() :: #{binary() => any()}.
+-type replication_pending_modified_values() :: #{binary() => any()}.
 
 %% Example:
-%% event_subscription() :: #{
-%%   <<"CustSubscriptionId">> => string(),
-%%   <<"CustomerAwsId">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"EventCategoriesList">> => list(string()),
-%%   <<"SnsTopicArn">> => string(),
-%%   <<"SourceIdsList">> => list(string()),
-%%   <<"SourceType">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"SubscriptionCreationTime">> => string()
-%% }
--type event_subscription() :: #{binary() => any()}.
-
-%% Example:
-%% premigration_assessment_status() :: #{
-%%   <<"AssessmentProgress">> => replication_task_assessment_run_progress(),
-%%   <<"FailOnAssessmentFailure">> => boolean(),
-%%   <<"LastFailureMessage">> => string(),
-%%   <<"PremigrationAssessmentRunArn">> => string(),
-%%   <<"PremigrationAssessmentRunCreationDate">> => non_neg_integer(),
-%%   <<"ResultEncryptionMode">> => string(),
-%%   <<"ResultKmsKeyArn">> => string(),
-%%   <<"ResultLocationBucket">> => string(),
-%%   <<"ResultLocationFolder">> => string(),
-%%   <<"ResultStatistic">> => replication_task_assessment_run_result_statistic(),
-%%   <<"Status">> => string()
-%% }
--type premigration_assessment_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_task_assessment_results_response() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"ReplicationTaskAssessmentResults">> => list(replication_task_assessment_result())
-%% }
--type describe_replication_task_assessment_results_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_providers_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_data_providers_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_certificates_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_certificates_message() :: #{binary() => any()}.
-
-%% Example:
-%% dynamo_db_settings() :: #{
-%%   <<"ServiceAccessRoleArn">> => string()
-%% }
--type dynamo_db_settings() :: #{binary() => any()}.
-
-%% Example:
-%% ibm_db2z_os_data_provider_settings() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"S3AccessRoleArn">> => string(),
-%%   <<"S3Path">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"SslMode">> => list(any())
-%% }
--type ibm_db2z_os_data_provider_settings() :: #{binary() => any()}.
-
-%% Example:
-%% subnet() :: #{
-%%   <<"SubnetAvailabilityZone">> => availability_zone(),
-%%   <<"SubnetIdentifier">> => string(),
-%%   <<"SubnetStatus">> => string()
-%% }
--type subnet() :: #{binary() => any()}.
-
-%% Example:
-%% describe_migration_projects_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_migration_projects_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_conversions_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request())
-%% }
--type describe_metadata_model_conversions_response() :: #{binary() => any()}.
-
-%% Example:
-%% elasticsearch_settings() :: #{
-%%   <<"EndpointUri">> => string(),
-%%   <<"ErrorRetryDuration">> => integer(),
-%%   <<"FullLoadErrorPercentage">> => integer(),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"UseNewMappingType">> => boolean()
-%% }
--type elasticsearch_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_instance_profile_response() :: #{
-%%   <<"InstanceProfile">> => instance_profile()
-%% }
--type create_instance_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_replication_message() :: #{
-%%   <<"CdcStartPosition">> => string(),
-%%   <<"CdcStartTime">> => non_neg_integer(),
-%%   <<"CdcStopPosition">> => string(),
-%%   <<"PremigrationAssessmentSettings">> => string(),
-%%   <<"ReplicationConfigArn">> := string(),
-%%   <<"StartReplicationType">> := string()
-%% }
--type start_replication_message() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_subnet() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_subnet() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoints_response() :: #{
-%%   <<"Endpoints">> => list(endpoint()),
-%%   <<"Marker">> => string()
-%% }
--type describe_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_message() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceArnList">> => list(string())
-%% }
--type list_tags_for_resource_message() :: #{binary() => any()}.
-
-%% Example:
-%% database_response() :: #{
-%%   <<"Collectors">> => list(collector_short_info_response()),
-%%   <<"DatabaseId">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"IpAddress">> => string(),
-%%   <<"NumberOfSchemas">> => float(),
-%%   <<"Server">> => server_short_info_response(),
-%%   <<"SoftwareDetails">> => database_instance_software_details_response()
-%% }
--type database_response() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_data() :: #{
-%%   <<"RdsEngine">> => rds_recommendation()
-%% }
--type recommendation_data() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_exports_as_script_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request())
-%% }
--type describe_metadata_model_exports_as_script_response() :: #{binary() => any()}.
-
-%% Example:
-%% doc_db_data_provider_settings() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"ServerName">> => string(),
-%%   <<"SslMode">> => list(any())
-%% }
--type doc_db_data_provider_settings() :: #{binary() => any()}.
-
-%% Example:
-%% replication_task_stats() :: #{
+%% replication_stats() :: #{
 %%   <<"ElapsedTimeMillis">> => float(),
 %%   <<"FreshStartDate">> => non_neg_integer(),
 %%   <<"FullLoadFinishDate">> => non_neg_integer(),
@@ -1151,160 +3058,25 @@
 %%   <<"TablesLoading">> => integer(),
 %%   <<"TablesQueued">> => integer()
 %% }
--type replication_task_stats() :: #{binary() => any()}.
+-type replication_stats() :: #{binary() => any()}.
 
 %% Example:
-%% server_short_info_response() :: #{
-%%   <<"IpAddress">> => string(),
-%%   <<"ServerId">> => string(),
-%%   <<"ServerName">> => string()
+%% replication_subnet_group() :: #{
+%%   <<"IsReadOnly">> => boolean(),
+%%   <<"ReplicationSubnetGroupDescription">> => string(),
+%%   <<"ReplicationSubnetGroupIdentifier">> => string(),
+%%   <<"SubnetGroupStatus">> => string(),
+%%   <<"Subnets">> => list(subnet()),
+%%   <<"SupportedNetworkTypes">> => list(string()),
+%%   <<"VpcId">> => string()
 %% }
--type server_short_info_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_applicable_individual_assessments_response() :: #{
-%%   <<"IndividualAssessmentNames">> => list(string()),
-%%   <<"Marker">> => string()
-%% }
--type describe_applicable_individual_assessments_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_data_migration_message() :: #{
-%%   <<"DataMigrationIdentifier">> := string()
-%% }
--type stop_data_migration_message() :: #{binary() => any()}.
-
-%% Example:
-%% import_certificate_response() :: #{
-%%   <<"Certificate">> => certificate()
-%% }
--type import_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% refresh_schemas_message() :: #{
-%%   <<"EndpointArn">> := string(),
-%%   <<"ReplicationInstanceArn">> := string()
-%% }
--type refresh_schemas_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_config_response() :: #{
-%%   <<"ReplicationConfig">> => replication_config()
-%% }
--type delete_replication_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% collector_health_check() :: #{
-%%   <<"CollectorStatus">> => list(any()),
-%%   <<"LocalCollectorS3Access">> => boolean(),
-%%   <<"WebCollectorGrantedRoleBasedAccess">> => boolean(),
-%%   <<"WebCollectorS3Access">> => boolean()
-%% }
--type collector_health_check() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_profiles_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_instance_profiles_message() :: #{binary() => any()}.
-
-%% Example:
-%% timestream_settings() :: #{
-%%   <<"CdcInsertsAndUpdates">> => boolean(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"EnableMagneticStoreWrites">> => boolean(),
-%%   <<"MagneticDuration">> => integer(),
-%%   <<"MemoryDuration">> => integer()
-%% }
--type timestream_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_recommendations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Recommendations">> => list(recommendation())
-%% }
--type describe_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% progress() :: #{
-%%   <<"ProcessedObject">> => processed_object(),
-%%   <<"ProgressPercent">> => float(),
-%%   <<"ProgressStep">> => string(),
-%%   <<"TotalObjects">> => float()
-%% }
--type progress() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleet_advisor_collectors_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_fleet_advisor_collectors_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_subscriptions_to_event_bridge_message() :: #{
-%%   <<"ForceMove">> => boolean()
-%% }
--type update_subscriptions_to_event_bridge_message() :: #{binary() => any()}.
-
-%% Example:
-%% start_recommendations_request() :: #{
-%%   <<"DatabaseId">> := string(),
-%%   <<"Settings">> := recommendation_settings()
-%% }
--type start_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_migration_message() :: #{
-%%   <<"DataMigrationIdentifier">> := string()
-%% }
--type delete_data_migration_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_replication_task_message() :: #{
-%%   <<"CdcStartPosition">> => string(),
-%%   <<"CdcStartTime">> => non_neg_integer(),
-%%   <<"CdcStopPosition">> => string(),
-%%   <<"MigrationType">> => list(any()),
-%%   <<"ReplicationTaskArn">> := string(),
-%%   <<"ReplicationTaskIdentifier">> => string(),
-%%   <<"ReplicationTaskSettings">> => string(),
-%%   <<"TableMappings">> => string(),
-%%   <<"TaskData">> => string()
-%% }
--type modify_replication_task_message() :: #{binary() => any()}.
+-type replication_subnet_group() :: #{binary() => any()}.
 
 %% Example:
 %% replication_subnet_group_does_not_cover_enough_a_zs() :: #{
 %%   <<"message">> => string()
 %% }
 -type replication_subnet_group_does_not_cover_enough_a_zs() :: #{binary() => any()}.
-
-%% Example:
-%% describe_extension_pack_associations_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"MigrationProjectIdentifier">> := string()
-%% }
--type describe_extension_pack_associations_message() :: #{binary() => any()}.
-
-%% Example:
-%% rds_configuration() :: #{
-%%   <<"DeploymentOption">> => string(),
-%%   <<"EngineEdition">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"InstanceMemory">> => float(),
-%%   <<"InstanceType">> => string(),
-%%   <<"InstanceVcpu">> => float(),
-%%   <<"StorageIops">> => integer(),
-%%   <<"StorageSize">> => integer(),
-%%   <<"StorageType">> => string()
-%% }
--type rds_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% replication_task() :: #{
@@ -1331,18 +3103,526 @@
 -type replication_task() :: #{binary() => any()}.
 
 %% Example:
-%% modify_data_migration_message() :: #{
-%%   <<"DataMigrationIdentifier">> := string(),
-%%   <<"DataMigrationName">> => string(),
-%%   <<"DataMigrationType">> => list(any()),
-%%   <<"EnableCloudwatchLogs">> => boolean(),
-%%   <<"NumberOfJobs">> => integer(),
-%%   <<"SelectionRules">> => string(),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"SourceDataSettings">> => list(source_data_setting()),
-%%   <<"TargetDataSettings">> => list(target_data_setting())
+%% replication_task_assessment_result() :: #{
+%%   <<"AssessmentResults">> => string(),
+%%   <<"AssessmentResultsFile">> => string(),
+%%   <<"AssessmentStatus">> => string(),
+%%   <<"ReplicationTaskArn">> => string(),
+%%   <<"ReplicationTaskIdentifier">> => string(),
+%%   <<"ReplicationTaskLastAssessmentDate">> => non_neg_integer(),
+%%   <<"S3ObjectUrl">> => string()
 %% }
--type modify_data_migration_message() :: #{binary() => any()}.
+-type replication_task_assessment_result() :: #{binary() => any()}.
+
+%% Example:
+%% replication_task_assessment_run() :: #{
+%%   <<"AssessmentProgress">> => replication_task_assessment_run_progress(),
+%%   <<"AssessmentRunName">> => string(),
+%%   <<"IsLatestTaskAssessmentRun">> => boolean(),
+%%   <<"LastFailureMessage">> => string(),
+%%   <<"ReplicationTaskArn">> => string(),
+%%   <<"ReplicationTaskAssessmentRunArn">> => string(),
+%%   <<"ReplicationTaskAssessmentRunCreationDate">> => non_neg_integer(),
+%%   <<"ResultEncryptionMode">> => string(),
+%%   <<"ResultKmsKeyArn">> => string(),
+%%   <<"ResultLocationBucket">> => string(),
+%%   <<"ResultLocationFolder">> => string(),
+%%   <<"ResultStatistic">> => replication_task_assessment_run_result_statistic(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type replication_task_assessment_run() :: #{binary() => any()}.
+
+%% Example:
+%% replication_task_assessment_run_progress() :: #{
+%%   <<"IndividualAssessmentCompletedCount">> => integer(),
+%%   <<"IndividualAssessmentCount">> => integer()
+%% }
+-type replication_task_assessment_run_progress() :: #{binary() => any()}.
+
+%% Example:
+%% replication_task_assessment_run_result_statistic() :: #{
+%%   <<"Cancelled">> => integer(),
+%%   <<"Error">> => integer(),
+%%   <<"Failed">> => integer(),
+%%   <<"Passed">> => integer(),
+%%   <<"Skipped">> => integer(),
+%%   <<"Warning">> => integer()
+%% }
+-type replication_task_assessment_run_result_statistic() :: #{binary() => any()}.
+
+%% Example:
+%% replication_task_individual_assessment() :: #{
+%%   <<"IndividualAssessmentName">> => string(),
+%%   <<"ReplicationTaskAssessmentRunArn">> => string(),
+%%   <<"ReplicationTaskIndividualAssessmentArn">> => string(),
+%%   <<"ReplicationTaskIndividualAssessmentStartDate">> => non_neg_integer(),
+%%   <<"Status">> => string()
+%% }
+-type replication_task_individual_assessment() :: #{binary() => any()}.
+
+%% Example:
+%% replication_task_stats() :: #{
+%%   <<"ElapsedTimeMillis">> => float(),
+%%   <<"FreshStartDate">> => non_neg_integer(),
+%%   <<"FullLoadFinishDate">> => non_neg_integer(),
+%%   <<"FullLoadProgressPercent">> => integer(),
+%%   <<"FullLoadStartDate">> => non_neg_integer(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"StopDate">> => non_neg_integer(),
+%%   <<"TablesErrored">> => integer(),
+%%   <<"TablesLoaded">> => integer(),
+%%   <<"TablesLoading">> => integer(),
+%%   <<"TablesQueued">> => integer()
+%% }
+-type replication_task_stats() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_fault() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceArn">> => string()
+%% }
+-type resource_already_exists_fault() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% resource_pending_maintenance_actions() :: #{
+%%   <<"PendingMaintenanceActionDetails">> => list(pending_maintenance_action()),
+%%   <<"ResourceIdentifier">> => string()
+%% }
+-type resource_pending_maintenance_actions() :: #{binary() => any()}.
+
+%% Example:
+%% resource_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% run_fleet_advisor_lsa_analysis_response() :: #{
+%%   <<"LsaAnalysisId">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type run_fleet_advisor_lsa_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% s3_access_denied_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type s3_access_denied_fault() :: #{binary() => any()}.
+
+%% Example:
+%% s3_resource_not_found_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type s3_resource_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% s3_settings() :: #{
+%%   <<"AddColumnName">> => boolean(),
+%%   <<"AddTrailingPaddingCharacter">> => boolean(),
+%%   <<"BucketFolder">> => string(),
+%%   <<"BucketName">> => string(),
+%%   <<"CannedAclForObjects">> => list(any()),
+%%   <<"CdcInsertsAndUpdates">> => boolean(),
+%%   <<"CdcInsertsOnly">> => boolean(),
+%%   <<"CdcMaxBatchInterval">> => integer(),
+%%   <<"CdcMinFileSize">> => integer(),
+%%   <<"CdcPath">> => string(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"CsvDelimiter">> => string(),
+%%   <<"CsvNoSupValue">> => string(),
+%%   <<"CsvNullValue">> => string(),
+%%   <<"CsvRowDelimiter">> => string(),
+%%   <<"DataFormat">> => list(any()),
+%%   <<"DataPageSize">> => integer(),
+%%   <<"DatePartitionDelimiter">> => list(any()),
+%%   <<"DatePartitionEnabled">> => boolean(),
+%%   <<"DatePartitionSequence">> => list(any()),
+%%   <<"DatePartitionTimezone">> => string(),
+%%   <<"DictPageSizeLimit">> => integer(),
+%%   <<"EnableStatistics">> => boolean(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"EncryptionMode">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ExternalTableDefinition">> => string(),
+%%   <<"GlueCatalogGeneration">> => boolean(),
+%%   <<"IgnoreHeaderRows">> => integer(),
+%%   <<"IncludeOpForFullLoad">> => boolean(),
+%%   <<"MaxFileSize">> => integer(),
+%%   <<"ParquetTimestampInMillisecond">> => boolean(),
+%%   <<"ParquetVersion">> => list(any()),
+%%   <<"PreserveTransactions">> => boolean(),
+%%   <<"Rfc4180">> => boolean(),
+%%   <<"RowGroupLength">> => integer(),
+%%   <<"ServerSideEncryptionKmsKeyId">> => string(),
+%%   <<"ServiceAccessRoleArn">> => string(),
+%%   <<"TimestampColumnName">> => string(),
+%%   <<"UseCsvNoSupValue">> => boolean(),
+%%   <<"UseTaskStartTimeForFullLoadTimestamp">> => boolean()
+%% }
+-type s3_settings() :: #{binary() => any()}.
+
+%% Example:
+%% s_capplication_attributes() :: #{
+%%   <<"S3BucketPath">> => string(),
+%%   <<"S3BucketRoleArn">> => string()
+%% }
+-type s_capplication_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_invalid_topic_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type s_n_s_invalid_topic_fault() :: #{binary() => any()}.
+
+%% Example:
+%% s_n_s_no_authorization_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type s_n_s_no_authorization_fault() :: #{binary() => any()}.
+
+%% Example:
+%% schema_conversion_request() :: #{
+%%   <<"Error">> => list(),
+%%   <<"ExportSqlDetails">> => export_sql_details(),
+%%   <<"MigrationProjectArn">> => string(),
+%%   <<"Progress">> => progress(),
+%%   <<"RequestIdentifier">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type schema_conversion_request() :: #{binary() => any()}.
+
+%% Example:
+%% schema_response() :: #{
+%%   <<"CodeLineCount">> => float(),
+%%   <<"CodeSize">> => float(),
+%%   <<"Complexity">> => string(),
+%%   <<"DatabaseInstance">> => database_short_info_response(),
+%%   <<"OriginalSchema">> => schema_short_info_response(),
+%%   <<"SchemaId">> => string(),
+%%   <<"SchemaName">> => string(),
+%%   <<"Server">> => server_short_info_response(),
+%%   <<"Similarity">> => float()
+%% }
+-type schema_response() :: #{binary() => any()}.
+
+%% Example:
+%% schema_short_info_response() :: #{
+%%   <<"DatabaseId">> => string(),
+%%   <<"DatabaseIpAddress">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"SchemaId">> => string(),
+%%   <<"SchemaName">> => string()
+%% }
+-type schema_short_info_response() :: #{binary() => any()}.
+
+%% Example:
+%% server_short_info_response() :: #{
+%%   <<"IpAddress">> => string(),
+%%   <<"ServerId">> => string(),
+%%   <<"ServerName">> => string()
+%% }
+-type server_short_info_response() :: #{binary() => any()}.
+
+%% Example:
+%% source_data_setting() :: #{
+%%   <<"CDCStartPosition">> => string(),
+%%   <<"CDCStartTime">> => non_neg_integer(),
+%%   <<"CDCStopTime">> => non_neg_integer(),
+%%   <<"SlotName">> => string()
+%% }
+-type source_data_setting() :: #{binary() => any()}.
+
+%% Example:
+%% start_data_migration_message() :: #{
+%%   <<"DataMigrationIdentifier">> := string(),
+%%   <<"StartType">> := list(any())
+%% }
+-type start_data_migration_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_data_migration_response() :: #{
+%%   <<"DataMigration">> => data_migration()
+%% }
+-type start_data_migration_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_extension_pack_association_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type start_extension_pack_association_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_extension_pack_association_response() :: #{
+%%   <<"RequestIdentifier">> => string()
+%% }
+-type start_extension_pack_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_assessment_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"SelectionRules">> := string()
+%% }
+-type start_metadata_model_assessment_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_assessment_response() :: #{
+%%   <<"RequestIdentifier">> => string()
+%% }
+-type start_metadata_model_assessment_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_conversion_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"SelectionRules">> := string()
+%% }
+-type start_metadata_model_conversion_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_conversion_response() :: #{
+%%   <<"RequestIdentifier">> => string()
+%% }
+-type start_metadata_model_conversion_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_creation_message() :: #{
+%%   <<"MetadataModelName">> := string(),
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"Properties">> := list(),
+%%   <<"SelectionRules">> := string()
+%% }
+-type start_metadata_model_creation_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_creation_response() :: #{
+%%   <<"RequestIdentifier">> => string()
+%% }
+-type start_metadata_model_creation_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_export_as_script_message() :: #{
+%%   <<"FileName">> => string(),
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"Origin">> := list(any()),
+%%   <<"SelectionRules">> := string()
+%% }
+-type start_metadata_model_export_as_script_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_export_as_script_response() :: #{
+%%   <<"RequestIdentifier">> => string()
+%% }
+-type start_metadata_model_export_as_script_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_export_to_target_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"OverwriteExtensionPack">> => boolean(),
+%%   <<"SelectionRules">> := string()
+%% }
+-type start_metadata_model_export_to_target_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_export_to_target_response() :: #{
+%%   <<"RequestIdentifier">> => string()
+%% }
+-type start_metadata_model_export_to_target_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_import_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"Origin">> := list(any()),
+%%   <<"Refresh">> => boolean(),
+%%   <<"SelectionRules">> := string()
+%% }
+-type start_metadata_model_import_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_import_response() :: #{
+%%   <<"RequestIdentifier">> => string()
+%% }
+-type start_metadata_model_import_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_recommendations_request() :: #{
+%%   <<"DatabaseId">> := string(),
+%%   <<"Settings">> := recommendation_settings()
+%% }
+-type start_recommendations_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_recommendations_request_entry() :: #{
+%%   <<"DatabaseId">> => string(),
+%%   <<"Settings">> => recommendation_settings()
+%% }
+-type start_recommendations_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% start_replication_message() :: #{
+%%   <<"CdcStartPosition">> => string(),
+%%   <<"CdcStartTime">> => non_neg_integer(),
+%%   <<"CdcStopPosition">> => string(),
+%%   <<"PremigrationAssessmentSettings">> => string(),
+%%   <<"ReplicationConfigArn">> := string(),
+%%   <<"StartReplicationType">> := string()
+%% }
+-type start_replication_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_replication_response() :: #{
+%%   <<"Replication">> => replication()
+%% }
+-type start_replication_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_replication_task_assessment_message() :: #{
+%%   <<"ReplicationTaskArn">> := string()
+%% }
+-type start_replication_task_assessment_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_replication_task_assessment_response() :: #{
+%%   <<"ReplicationTask">> => replication_task()
+%% }
+-type start_replication_task_assessment_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_replication_task_assessment_run_message() :: #{
+%%   <<"AssessmentRunName">> := string(),
+%%   <<"Exclude">> => list(string()),
+%%   <<"IncludeOnly">> => list(string()),
+%%   <<"ReplicationTaskArn">> := string(),
+%%   <<"ResultEncryptionMode">> => string(),
+%%   <<"ResultKmsKeyArn">> => string(),
+%%   <<"ResultLocationBucket">> := string(),
+%%   <<"ResultLocationFolder">> => string(),
+%%   <<"ServiceAccessRoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_replication_task_assessment_run_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_replication_task_assessment_run_response() :: #{
+%%   <<"ReplicationTaskAssessmentRun">> => replication_task_assessment_run()
+%% }
+-type start_replication_task_assessment_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_replication_task_message() :: #{
+%%   <<"CdcStartPosition">> => string(),
+%%   <<"CdcStartTime">> => non_neg_integer(),
+%%   <<"CdcStopPosition">> => string(),
+%%   <<"ReplicationTaskArn">> := string(),
+%%   <<"StartReplicationTaskType">> := list(any())
+%% }
+-type start_replication_task_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_replication_task_response() :: #{
+%%   <<"ReplicationTask">> => replication_task()
+%% }
+-type start_replication_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% statement_properties() :: #{
+%%   <<"Definition">> => string()
+%% }
+-type statement_properties() :: #{binary() => any()}.
+
+%% Example:
+%% stop_data_migration_message() :: #{
+%%   <<"DataMigrationIdentifier">> := string()
+%% }
+-type stop_data_migration_message() :: #{binary() => any()}.
+
+%% Example:
+%% stop_data_migration_response() :: #{
+%%   <<"DataMigration">> => data_migration()
+%% }
+-type stop_data_migration_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_replication_message() :: #{
+%%   <<"ReplicationConfigArn">> := string()
+%% }
+-type stop_replication_message() :: #{binary() => any()}.
+
+%% Example:
+%% stop_replication_response() :: #{
+%%   <<"Replication">> => replication()
+%% }
+-type stop_replication_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_replication_task_message() :: #{
+%%   <<"ReplicationTaskArn">> := string()
+%% }
+-type stop_replication_task_message() :: #{binary() => any()}.
+
+%% Example:
+%% stop_replication_task_response() :: #{
+%%   <<"ReplicationTask">> => replication_task()
+%% }
+-type stop_replication_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% storage_quota_exceeded_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type storage_quota_exceeded_fault() :: #{binary() => any()}.
+
+%% Example:
+%% subnet() :: #{
+%%   <<"SubnetAvailabilityZone">> => availability_zone(),
+%%   <<"SubnetIdentifier">> => string(),
+%%   <<"SubnetStatus">> => string()
+%% }
+-type subnet() :: #{binary() => any()}.
+
+%% Example:
+%% subnet_already_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type subnet_already_in_use() :: #{binary() => any()}.
+
+%% Example:
+%% supported_endpoint_type() :: #{
+%%   <<"EndpointType">> => list(any()),
+%%   <<"EngineDisplayName">> => string(),
+%%   <<"EngineName">> => string(),
+%%   <<"ReplicationInstanceEngineMinimumVersion">> => string(),
+%%   <<"SupportsCDC">> => boolean()
+%% }
+-type supported_endpoint_type() :: #{binary() => any()}.
+
+%% Example:
+%% sybase_ase_data_provider_settings() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"EncryptPassword">> => boolean(),
+%%   <<"Port">> => integer(),
+%%   <<"ServerName">> => string(),
+%%   <<"SslMode">> => list(any())
+%% }
+-type sybase_ase_data_provider_settings() :: #{binary() => any()}.
+
+%% Example:
+%% sybase_settings() :: #{
+%%   <<"DatabaseName">> => string(),
+%%   <<"Password">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"SecretsManagerAccessRoleArn">> => string(),
+%%   <<"SecretsManagerSecretId">> => string(),
+%%   <<"ServerName">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type sybase_settings() :: #{binary() => any()}.
 
 %% Example:
 %% table_statistics() :: #{
@@ -1378,400 +3658,11 @@
 -type table_statistics() :: #{binary() => any()}.
 
 %% Example:
-%% mongo_db_data_provider_settings() :: #{
-%%   <<"AuthMechanism">> => list(any()),
-%%   <<"AuthSource">> => string(),
-%%   <<"AuthType">> => list(any()),
-%%   <<"CertificateArn">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"ServerName">> => string(),
-%%   <<"SslMode">> => list(any())
+%% table_to_reload() :: #{
+%%   <<"SchemaName">> => string(),
+%%   <<"TableName">> => string()
 %% }
--type mongo_db_data_provider_settings() :: #{binary() => any()}.
-
-%% Example:
-%% start_recommendations_request_entry() :: #{
-%%   <<"DatabaseId">> => string(),
-%%   <<"Settings">> => recommendation_settings()
-%% }
--type start_recommendations_request_entry() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_subnet_groups_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReplicationSubnetGroups">> => list(replication_subnet_group())
-%% }
--type describe_replication_subnet_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_data_migration_response() :: #{
-%%   <<"DataMigration">> => data_migration()
-%% }
--type modify_data_migration_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_subscription_response() :: #{
-%%   <<"EventSubscription">> => event_subscription()
-%% }
--type delete_event_subscription_response() :: #{binary() => any()}.
-
-%% Example:
-%% dms_transfer_settings() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"ServiceAccessRoleArn">> => string()
-%% }
--type dms_transfer_settings() :: #{binary() => any()}.
-
-%% Example:
-%% s3_settings() :: #{
-%%   <<"CsvNullValue">> => string(),
-%%   <<"RowGroupLength">> => integer(),
-%%   <<"GlueCatalogGeneration">> => boolean(),
-%%   <<"EncodingType">> => list(any()),
-%%   <<"ServerSideEncryptionKmsKeyId">> => string(),
-%%   <<"CompressionType">> => list(any()),
-%%   <<"MaxFileSize">> => integer(),
-%%   <<"CsvDelimiter">> => string(),
-%%   <<"ParquetTimestampInMillisecond">> => boolean(),
-%%   <<"UseTaskStartTimeForFullLoadTimestamp">> => boolean(),
-%%   <<"TimestampColumnName">> => string(),
-%%   <<"DatePartitionTimezone">> => string(),
-%%   <<"EnableStatistics">> => boolean(),
-%%   <<"DatePartitionDelimiter">> => list(any()),
-%%   <<"DatePartitionSequence">> => list(any()),
-%%   <<"IgnoreHeaderRows">> => integer(),
-%%   <<"PreserveTransactions">> => boolean(),
-%%   <<"Rfc4180">> => boolean(),
-%%   <<"CdcMaxBatchInterval">> => integer(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"CdcMinFileSize">> => integer(),
-%%   <<"CdcPath">> => string(),
-%%   <<"BucketFolder">> => string(),
-%%   <<"DictPageSizeLimit">> => integer(),
-%%   <<"CdcInsertsOnly">> => boolean(),
-%%   <<"DataPageSize">> => integer(),
-%%   <<"DatePartitionEnabled">> => boolean(),
-%%   <<"ExternalTableDefinition">> => string(),
-%%   <<"AddColumnName">> => boolean(),
-%%   <<"ParquetVersion">> => list(any()),
-%%   <<"CsvRowDelimiter">> => string(),
-%%   <<"IncludeOpForFullLoad">> => boolean(),
-%%   <<"CdcInsertsAndUpdates">> => boolean(),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"EncryptionMode">> => list(any()),
-%%   <<"UseCsvNoSupValue">> => boolean(),
-%%   <<"CsvNoSupValue">> => string(),
-%%   <<"BucketName">> => string(),
-%%   <<"AddTrailingPaddingCharacter">> => boolean(),
-%%   <<"DataFormat">> => list(any()),
-%%   <<"CannedAclForObjects">> => list(any())
-%% }
--type s3_settings() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_metadata_model_conversion_response() :: #{
-%%   <<"Request">> => schema_conversion_request()
-%% }
--type cancel_metadata_model_conversion_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_replication_subnet_group_message() :: #{
-%%   <<"ReplicationSubnetGroupDescription">> => string(),
-%%   <<"ReplicationSubnetGroupIdentifier">> := string(),
-%%   <<"SubnetIds">> := list(string())
-%% }
--type modify_replication_subnet_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% schema_conversion_request() :: #{
-%%   <<"Error">> => list(),
-%%   <<"ExportSqlDetails">> => export_sql_details(),
-%%   <<"MigrationProjectArn">> => string(),
-%%   <<"Progress">> => progress(),
-%%   <<"RequestIdentifier">> => string(),
-%%   <<"Status">> => string()
-%% }
--type schema_conversion_request() :: #{binary() => any()}.
-
-%% Example:
-%% export_metadata_model_assessment_message() :: #{
-%%   <<"AssessmentReportTypes">> => list(list(any())()),
-%%   <<"FileName">> => string(),
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"SelectionRules">> := string()
-%% }
--type export_metadata_model_assessment_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connections_response() :: #{
-%%   <<"Connections">> => list(connection()),
-%%   <<"Marker">> => string()
-%% }
--type describe_connections_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_replication_config_response() :: #{
-%%   <<"ReplicationConfig">> => replication_config()
-%% }
--type modify_replication_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_attributes_message() :: #{
-
-%% }
--type describe_account_attributes_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_assessments_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request())
-%% }
--type describe_metadata_model_assessments_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_instances_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReplicationInstances">> => list(replication_instance())
-%% }
--type describe_replication_instances_response() :: #{binary() => any()}.
-
-%% Example:
-%% kms_access_denied_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_access_denied_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_replication_task_message() :: #{
-%%   <<"CdcStartPosition">> => string(),
-%%   <<"CdcStartTime">> => non_neg_integer(),
-%%   <<"CdcStopPosition">> => string(),
-%%   <<"MigrationType">> := list(any()),
-%%   <<"ReplicationInstanceArn">> := string(),
-%%   <<"ReplicationTaskIdentifier">> := string(),
-%%   <<"ReplicationTaskSettings">> => string(),
-%%   <<"ResourceIdentifier">> => string(),
-%%   <<"SourceEndpointArn">> := string(),
-%%   <<"TableMappings">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetEndpointArn">> := string(),
-%%   <<"TaskData">> => string()
-%% }
--type create_replication_task_message() :: #{binary() => any()}.
-
-%% Example:
-%% failed_dependency_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type failed_dependency_fault() :: #{binary() => any()}.
-
-%% Example:
-%% ibm_db2_luw_data_provider_settings() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"EncryptionAlgorithm">> => integer(),
-%%   <<"Port">> => integer(),
-%%   <<"S3AccessRoleArn">> => string(),
-%%   <<"S3Path">> => string(),
-%%   <<"SecurityMechanism">> => integer(),
-%%   <<"ServerName">> => string(),
-%%   <<"SslMode">> => list(any())
-%% }
--type ibm_db2_luw_data_provider_settings() :: #{binary() => any()}.
-
-%% Example:
-%% stop_replication_task_response() :: #{
-%%   <<"ReplicationTask">> => replication_task()
-%% }
--type stop_replication_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% data_migration_statistics() :: #{
-%%   <<"CDCLatency">> => integer(),
-%%   <<"ElapsedTimeMillis">> => float(),
-%%   <<"FullLoadPercentage">> => integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"StopTime">> => non_neg_integer(),
-%%   <<"TablesErrored">> => integer(),
-%%   <<"TablesLoaded">> => integer(),
-%%   <<"TablesLoading">> => integer(),
-%%   <<"TablesQueued">> => integer()
-%% }
--type data_migration_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% create_event_subscription_message() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()),
-%%   <<"SnsTopicArn">> := string(),
-%%   <<"SourceIds">> => list(string()),
-%%   <<"SourceType">> => string(),
-%%   <<"SubscriptionName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_event_subscription_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_instance_profile_message() :: #{
-%%   <<"InstanceProfileIdentifier">> := string()
-%% }
--type delete_instance_profile_message() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_creation_response() :: #{
-%%   <<"RequestIdentifier">> => string()
-%% }
--type start_metadata_model_creation_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_configs_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReplicationConfigs">> => list(replication_config())
-%% }
--type describe_replication_configs_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_subscriptions_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"SubscriptionName">> => string()
-%% }
--type describe_event_subscriptions_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_schemas_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Schemas">> => list(string())
-%% }
--type describe_schemas_response() :: #{binary() => any()}.
-
-%% Example:
-%% replication_task_assessment_run_progress() :: #{
-%%   <<"IndividualAssessmentCompletedCount">> => integer(),
-%%   <<"IndividualAssessmentCount">> => integer()
-%% }
--type replication_task_assessment_run_progress() :: #{binary() => any()}.
-
-%% Example:
-%% replication_task_individual_assessment() :: #{
-%%   <<"IndividualAssessmentName">> => string(),
-%%   <<"ReplicationTaskAssessmentRunArn">> => string(),
-%%   <<"ReplicationTaskIndividualAssessmentArn">> => string(),
-%%   <<"ReplicationTaskIndividualAssessmentStartDate">> => non_neg_integer(),
-%%   <<"Status">> => string()
-%% }
--type replication_task_individual_assessment() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_providers_response() :: #{
-%%   <<"DataProviders">> => list(data_provider()),
-%%   <<"Marker">> => string()
-%% }
--type describe_data_providers_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_provider_message() :: #{
-%%   <<"DataProviderName">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Engine">> := string(),
-%%   <<"Settings">> := list(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Virtual">> => boolean()
-%% }
--type create_data_provider_message() :: #{binary() => any()}.
-
-%% Example:
-%% reload_tables_response() :: #{
-%%   <<"ReplicationTaskArn">> => string()
-%% }
--type reload_tables_response() :: #{binary() => any()}.
-
-%% Example:
-%% microsoft_sql_server_data_provider_settings() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"S3AccessRoleArn">> => string(),
-%%   <<"S3Path">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"SslMode">> => list(any())
-%% }
--type microsoft_sql_server_data_provider_settings() :: #{binary() => any()}.
-
-%% Example:
-%% replication() :: #{
-%%   <<"CdcStartPosition">> => string(),
-%%   <<"CdcStartTime">> => non_neg_integer(),
-%%   <<"CdcStopPosition">> => string(),
-%%   <<"FailureMessages">> => list(string()),
-%%   <<"IsReadOnly">> => boolean(),
-%%   <<"PremigrationAssessmentStatuses">> => list(premigration_assessment_status()),
-%%   <<"ProvisionData">> => provision_data(),
-%%   <<"RecoveryCheckpoint">> => string(),
-%%   <<"ReplicationConfigArn">> => string(),
-%%   <<"ReplicationConfigIdentifier">> => string(),
-%%   <<"ReplicationCreateTime">> => non_neg_integer(),
-%%   <<"ReplicationDeprovisionTime">> => non_neg_integer(),
-%%   <<"ReplicationLastStopTime">> => non_neg_integer(),
-%%   <<"ReplicationStats">> => replication_stats(),
-%%   <<"ReplicationType">> => list(any()),
-%%   <<"ReplicationUpdateTime">> => non_neg_integer(),
-%%   <<"SourceEndpointArn">> => string(),
-%%   <<"StartReplicationType">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"StopReason">> => string(),
-%%   <<"TargetEndpointArn">> => string()
-%% }
--type replication() :: #{binary() => any()}.
-
-%% Example:
-%% describe_recommendations_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleet_advisor_lsa_analysis_request() :: #{
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_fleet_advisor_lsa_analysis_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_event_subscription_response() :: #{
-%%   <<"EventSubscription">> => event_subscription()
-%% }
--type create_event_subscription_response() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation_settings() :: #{
-%%   <<"InstanceSizingType">> => string(),
-%%   <<"WorkloadType">> => string()
-%% }
--type recommendation_settings() :: #{binary() => any()}.
-
-%% Example:
-%% i_b_m_db2_settings() :: #{
-%%   <<"CurrentLsn">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"KeepCsvFiles">> => boolean(),
-%%   <<"LoadTimeout">> => integer(),
-%%   <<"MaxFileSize">> => integer(),
-%%   <<"MaxKBytesPerRead">> => integer(),
-%%   <<"Password">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"SecretsManagerAccessRoleArn">> => string(),
-%%   <<"SecretsManagerSecretId">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"SetDataCaptureChanges">> => boolean(),
-%%   <<"Username">> => string(),
-%%   <<"WriteBufferSize">> => integer()
-%% }
--type i_b_m_db2_settings() :: #{binary() => any()}.
+-type table_to_reload() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -1782,841 +3673,10 @@
 -type tag() :: #{binary() => any()}.
 
 %% Example:
-%% delete_endpoint_message() :: #{
-%%   <<"EndpointArn">> := string()
-%% }
--type delete_endpoint_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_task_assessment_runs_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReplicationTaskAssessmentRuns">> => list(replication_task_assessment_run())
-%% }
--type describe_replication_task_assessment_runs_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_endpoint_response() :: #{
-%%   <<"Endpoint">> => endpoint()
-%% }
--type delete_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleet_advisor_schemas_response() :: #{
-%%   <<"FleetAdvisorSchemas">> => list(schema_response()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_fleet_advisor_schemas_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_data_provider_message() :: #{
-%%   <<"DataProviderIdentifier">> := string(),
-%%   <<"DataProviderName">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Engine">> => string(),
-%%   <<"ExactSettings">> => boolean(),
-%%   <<"Settings">> => list(),
-%%   <<"Virtual">> => boolean()
-%% }
--type modify_data_provider_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_config_message() :: #{
-%%   <<"ReplicationConfigArn">> := string()
-%% }
--type delete_replication_config_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_replication_config_message() :: #{
-%%   <<"ComputeConfig">> := compute_config(),
-%%   <<"ReplicationConfigIdentifier">> := string(),
-%%   <<"ReplicationSettings">> => string(),
-%%   <<"ReplicationType">> := list(any()),
-%%   <<"ResourceIdentifier">> => string(),
-%%   <<"SourceEndpointArn">> := string(),
-%%   <<"SupplementalSettings">> => string(),
-%%   <<"TableMappings">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetEndpointArn">> := string()
-%% }
--type create_replication_config_message() :: #{binary() => any()}.
-
-%% Example:
-%% start_data_migration_response() :: #{
-%%   <<"DataMigration">> => data_migration()
-%% }
--type start_data_migration_response() :: #{binary() => any()}.
-
-%% Example:
-%% connection() :: #{
-%%   <<"EndpointArn">> => string(),
-%%   <<"EndpointIdentifier">> => string(),
-%%   <<"LastFailureMessage">> => string(),
-%%   <<"ReplicationInstanceArn">> => string(),
-%%   <<"ReplicationInstanceIdentifier">> => string(),
-%%   <<"Status">> => string()
-%% }
--type connection() :: #{binary() => any()}.
-
-%% Example:
-%% event_category_group() :: #{
-%%   <<"EventCategories">> => list(string()),
-%%   <<"SourceType">> => string()
-%% }
--type event_category_group() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_replication_instance_response() :: #{
-%%   <<"ReplicationInstance">> => replication_instance()
-%% }
--type reboot_replication_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_settings_response() :: #{
-%%   <<"EndpointSettings">> => list(endpoint_setting()),
-%%   <<"Marker">> => string()
-%% }
--type describe_endpoint_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_replication_instance_message() :: #{
-%%   <<"ForceFailover">> => boolean(),
-%%   <<"ForcePlannedFailover">> => boolean(),
-%%   <<"ReplicationInstanceArn">> := string()
-%% }
--type reboot_replication_instance_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_task_assessment_run_response() :: #{
-%%   <<"ReplicationTaskAssessmentRun">> => replication_task_assessment_run()
-%% }
--type delete_replication_task_assessment_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_pending_maintenance_actions_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"PendingMaintenanceActions">> => list(resource_pending_maintenance_actions())
-%% }
--type describe_pending_maintenance_actions_response() :: #{binary() => any()}.
-
-%% Example:
 %% target_data_setting() :: #{
 %%   <<"TablePreparationMode">> => list(any())
 %% }
 -type target_data_setting() :: #{binary() => any()}.
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"CreatedDate">> => string(),
-%%   <<"Data">> => recommendation_data(),
-%%   <<"DatabaseId">> => string(),
-%%   <<"EngineName">> => string(),
-%%   <<"Preferred">> => boolean(),
-%%   <<"Settings">> => recommendation_settings(),
-%%   <<"Status">> => string()
-%% }
--type recommendation() :: #{binary() => any()}.
-
-%% Example:
-%% table_to_reload() :: #{
-%%   <<"SchemaName">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type table_to_reload() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_types_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"SupportedEndpointTypes">> => list(supported_endpoint_type())
-%% }
--type describe_endpoint_types_response() :: #{binary() => any()}.
-
-%% Example:
-%% neptune_settings() :: #{
-%%   <<"ErrorRetryDuration">> => integer(),
-%%   <<"IamAuthEnabled">> => boolean(),
-%%   <<"MaxFileSize">> => integer(),
-%%   <<"MaxRetryCount">> => integer(),
-%%   <<"S3BucketFolder">> => string(),
-%%   <<"S3BucketName">> => string(),
-%%   <<"ServiceAccessRoleArn">> => string()
-%% }
--type neptune_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_creations_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request())
-%% }
--type describe_metadata_model_creations_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_applicable_individual_assessments_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"MigrationType">> => list(any()),
-%%   <<"ReplicationConfigArn">> => string(),
-%%   <<"ReplicationInstanceArn">> => string(),
-%%   <<"ReplicationTaskArn">> => string(),
-%%   <<"SourceEngineName">> => string(),
-%%   <<"TargetEngineName">> => string()
-%% }
--type describe_applicable_individual_assessments_message() :: #{binary() => any()}.
-
-%% Example:
-%% export_metadata_model_assessment_response() :: #{
-%%   <<"CsvReport">> => export_metadata_model_assessment_result_entry(),
-%%   <<"PdfReport">> => export_metadata_model_assessment_result_entry()
-%% }
--type export_metadata_model_assessment_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_table_statistics_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReplicationTaskArn">> => string(),
-%%   <<"TableStatistics">> => list(table_statistics())
-%% }
--type describe_table_statistics_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_fleet_advisor_collector_response() :: #{
-%%   <<"CollectorName">> => string(),
-%%   <<"CollectorReferencedId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"S3BucketName">> => string(),
-%%   <<"ServiceAccessRoleArn">> => string()
-%% }
--type create_fleet_advisor_collector_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_data_provider_response() :: #{
-%%   <<"DataProvider">> => data_provider()
-%% }
--type modify_data_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% rds_requirements() :: #{
-%%   <<"DeploymentOption">> => string(),
-%%   <<"EngineEdition">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"InstanceMemory">> => float(),
-%%   <<"InstanceVcpu">> => float(),
-%%   <<"StorageIops">> => integer(),
-%%   <<"StorageSize">> => integer()
-%% }
--type rds_requirements() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_certificate_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_certificate_fault() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_conversion_response() :: #{
-%%   <<"RequestIdentifier">> => string()
-%% }
--type start_metadata_model_conversion_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_extension_pack_associations_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request())
-%% }
--type describe_extension_pack_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% processed_object() :: #{
-%%   <<"EndpointType">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string()
-%% }
--type processed_object() :: #{binary() => any()}.
-
-%% Example:
-%% kerberos_authentication_settings() :: #{
-%%   <<"KeyCacheSecretIamArn">> => string(),
-%%   <<"KeyCacheSecretId">> => string(),
-%%   <<"Krb5FileContents">> => string()
-%% }
--type kerberos_authentication_settings() :: #{binary() => any()}.
-
-%% Example:
-%% move_replication_task_response() :: #{
-%%   <<"ReplicationTask">> => replication_task()
-%% }
--type move_replication_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% sybase_ase_data_provider_settings() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"EncryptPassword">> => boolean(),
-%%   <<"Port">> => integer(),
-%%   <<"ServerName">> => string(),
-%%   <<"SslMode">> => list(any())
-%% }
--type sybase_ase_data_provider_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_collector_request() :: #{
-%%   <<"CollectorReferencedId">> := string()
-%% }
--type delete_collector_request() :: #{binary() => any()}.
-
-%% Example:
-%% kms_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_fault() :: #{binary() => any()}.
-
-%% Example:
-%% source_data_setting() :: #{
-%%   <<"CDCStartPosition">> => string(),
-%%   <<"CDCStartTime">> => non_neg_integer(),
-%%   <<"CDCStopTime">> => non_neg_integer(),
-%%   <<"SlotName">> => string()
-%% }
--type source_data_setting() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_creations_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"MigrationProjectIdentifier">> := string()
-%% }
--type describe_metadata_model_creations_message() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"TagList">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% redis_settings() :: #{
-%%   <<"AuthPassword">> => string(),
-%%   <<"AuthType">> => list(any()),
-%%   <<"AuthUserName">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"ServerName">> => string(),
-%%   <<"SslCaCertificateArn">> => string(),
-%%   <<"SslSecurityProtocol">> => list(any())
-%% }
--type redis_settings() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_metadata_model_creation_message() :: #{
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"RequestIdentifier">> := string()
-%% }
--type cancel_metadata_model_creation_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_instances_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_replication_instances_message() :: #{binary() => any()}.
-
-%% Example:
-%% orderable_replication_instance() :: #{
-%%   <<"AvailabilityZones">> => list(string()),
-%%   <<"DefaultAllocatedStorage">> => integer(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"IncludedAllocatedStorage">> => integer(),
-%%   <<"MaxAllocatedStorage">> => integer(),
-%%   <<"MinAllocatedStorage">> => integer(),
-%%   <<"ReleaseStatus">> => list(any()),
-%%   <<"ReplicationInstanceClass">> => string(),
-%%   <<"StorageType">> => string()
-%% }
--type orderable_replication_instance() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_attributes_response() :: #{
-%%   <<"AccountQuotas">> => list(account_quota()),
-%%   <<"UniqueAccountIdentifier">> => string()
-%% }
--type describe_account_attributes_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_message() :: #{
-%%   <<"EndpointArn">> := string(),
-%%   <<"ReplicationInstanceArn">> := string()
-%% }
--type delete_connection_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleet_advisor_schema_object_summary_response() :: #{
-%%   <<"FleetAdvisorSchemaObjects">> => list(fleet_advisor_schema_object_response()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_fleet_advisor_schema_object_summary_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_replication_task_response() :: #{
-%%   <<"ReplicationTask">> => replication_task()
-%% }
--type start_replication_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_instance_profile_message() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"InstanceProfileName">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"NetworkType">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"SubnetGroupIdentifier">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcSecurityGroups">> => list(string())
-%% }
--type create_instance_profile_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_assessments_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"MigrationProjectIdentifier">> := string()
-%% }
--type describe_metadata_model_assessments_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_refresh_schemas_status_message() :: #{
-%%   <<"EndpointArn">> := string()
-%% }
--type describe_refresh_schemas_status_message() :: #{binary() => any()}.
-
-%% Example:
-%% replication_instance_task_log() :: #{
-%%   <<"ReplicationInstanceTaskLogSize">> => float(),
-%%   <<"ReplicationTaskArn">> => string(),
-%%   <<"ReplicationTaskName">> => string()
-%% }
--type replication_instance_task_log() :: #{binary() => any()}.
-
-%% Example:
-%% insufficient_resource_capacity_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type insufficient_resource_capacity_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_exports_as_script_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"MigrationProjectIdentifier">> := string()
-%% }
--type describe_metadata_model_exports_as_script_message() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_subnet_group_message() :: #{
-%%   <<"ReplicationSubnetGroupIdentifier">> := string()
-%% }
--type delete_replication_subnet_group_message() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_to_resource_response() :: #{
-
-%% }
--type add_tags_to_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% doc_db_settings() :: #{
-%%   <<"DatabaseName">> => string(),
-%%   <<"DocsToInvestigate">> => integer(),
-%%   <<"ExtractDocId">> => boolean(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"NestingLevel">> => list(any()),
-%%   <<"Password">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"ReplicateShardCollections">> => boolean(),
-%%   <<"SecretsManagerAccessRoleArn">> => string(),
-%%   <<"SecretsManagerSecretId">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"UseUpdateLookUp">> => boolean(),
-%%   <<"Username">> => string()
-%% }
--type doc_db_settings() :: #{binary() => any()}.
-
-%% Example:
-%% kms_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_not_found_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_endpoint_message() :: #{
-%%   <<"Port">> => integer(),
-%%   <<"GcpMySQLSettings">> => gcp_my_s_q_l_settings(),
-%%   <<"OracleSettings">> => oracle_settings(),
-%%   <<"KafkaSettings">> => kafka_settings(),
-%%   <<"IBMDb2Settings">> => i_b_m_db2_settings(),
-%%   <<"DmsTransferSettings">> => dms_transfer_settings(),
-%%   <<"ExtraConnectionAttributes">> => string(),
-%%   <<"DocDbSettings">> => doc_db_settings(),
-%%   <<"Password">> => string(),
-%%   <<"TimestreamSettings">> => timestream_settings(),
-%%   <<"PostgreSQLSettings">> => postgre_s_q_l_settings(),
-%%   <<"ServerName">> => string(),
-%%   <<"EndpointIdentifier">> => string(),
-%%   <<"EndpointType">> => list(any()),
-%%   <<"EngineName">> => string(),
-%%   <<"CertificateArn">> => string(),
-%%   <<"NeptuneSettings">> => neptune_settings(),
-%%   <<"MySQLSettings">> => my_s_q_l_settings(),
-%%   <<"Username">> => string(),
-%%   <<"ExternalTableDefinition">> => string(),
-%%   <<"SslMode">> => list(any()),
-%%   <<"S3Settings">> => s3_settings(),
-%%   <<"ElasticsearchSettings">> => elasticsearch_settings(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"DynamoDbSettings">> => dynamo_db_settings(),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"MicrosoftSQLServerSettings">> => microsoft_s_q_l_server_settings(),
-%%   <<"RedshiftSettings">> => redshift_settings(),
-%%   <<"MongoDbSettings">> => mongo_db_settings(),
-%%   <<"EndpointArn">> := string(),
-%%   <<"RedisSettings">> => redis_settings(),
-%%   <<"KinesisSettings">> => kinesis_settings(),
-%%   <<"SybaseSettings">> => sybase_settings(),
-%%   <<"ExactSettings">> => boolean()
-%% }
--type modify_endpoint_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connections_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_connections_message() :: #{binary() => any()}.
-
-%% Example:
-%% s3_access_denied_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type s3_access_denied_fault() :: #{binary() => any()}.
-
-%% Example:
-%% storage_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type storage_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_event_subscription_response() :: #{
-%%   <<"EventSubscription">> => event_subscription()
-%% }
--type modify_event_subscription_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_task_individual_assessments_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_replication_task_individual_assessments_message() :: #{binary() => any()}.
-
-%% Example:
-%% data_migration() :: #{
-%%   <<"DataMigrationArn">> => string(),
-%%   <<"DataMigrationCidrBlocks">> => list(string()),
-%%   <<"DataMigrationCreateTime">> => non_neg_integer(),
-%%   <<"DataMigrationEndTime">> => non_neg_integer(),
-%%   <<"DataMigrationName">> => string(),
-%%   <<"DataMigrationSettings">> => data_migration_settings(),
-%%   <<"DataMigrationStartTime">> => non_neg_integer(),
-%%   <<"DataMigrationStatistics">> => data_migration_statistics(),
-%%   <<"DataMigrationStatus">> => string(),
-%%   <<"DataMigrationType">> => list(any()),
-%%   <<"LastFailureMessage">> => string(),
-%%   <<"MigrationProjectArn">> => string(),
-%%   <<"PublicIpAddresses">> => list(string()),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"SourceDataSettings">> => list(source_data_setting()),
-%%   <<"StopReason">> => string(),
-%%   <<"TargetDataSettings">> => list(target_data_setting())
-%% }
--type data_migration() :: #{binary() => any()}.
-
-%% Example:
-%% stop_data_migration_response() :: #{
-%%   <<"DataMigration">> => data_migration()
-%% }
--type stop_data_migration_response() :: #{binary() => any()}.
-
-%% Example:
-%% redshift_data_provider_settings() :: #{
-%%   <<"DatabaseName">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"S3AccessRoleArn">> => string(),
-%%   <<"S3Path">> => string(),
-%%   <<"ServerName">> => string()
-%% }
--type redshift_data_provider_settings() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"Port">> => integer(),
-%%   <<"GcpMySQLSettings">> => gcp_my_s_q_l_settings(),
-%%   <<"EndpointArn">> => string(),
-%%   <<"OracleSettings">> => oracle_settings(),
-%%   <<"KafkaSettings">> => kafka_settings(),
-%%   <<"IBMDb2Settings">> => i_b_m_db2_settings(),
-%%   <<"DmsTransferSettings">> => dms_transfer_settings(),
-%%   <<"ExtraConnectionAttributes">> => string(),
-%%   <<"DocDbSettings">> => doc_db_settings(),
-%%   <<"TimestreamSettings">> => timestream_settings(),
-%%   <<"PostgreSQLSettings">> => postgre_s_q_l_settings(),
-%%   <<"ExternalId">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"EndpointIdentifier">> => string(),
-%%   <<"EndpointType">> => list(any()),
-%%   <<"EngineName">> => string(),
-%%   <<"EngineDisplayName">> => string(),
-%%   <<"LakehouseSettings">> => lakehouse_settings(),
-%%   <<"CertificateArn">> => string(),
-%%   <<"NeptuneSettings">> => neptune_settings(),
-%%   <<"MySQLSettings">> => my_s_q_l_settings(),
-%%   <<"Username">> => string(),
-%%   <<"ExternalTableDefinition">> => string(),
-%%   <<"SslMode">> => list(any()),
-%%   <<"IsReadOnly">> => boolean(),
-%%   <<"S3Settings">> => s3_settings(),
-%%   <<"ElasticsearchSettings">> => elasticsearch_settings(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"DynamoDbSettings">> => dynamo_db_settings(),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"MicrosoftSQLServerSettings">> => microsoft_s_q_l_server_settings(),
-%%   <<"RedshiftSettings">> => redshift_settings(),
-%%   <<"MongoDbSettings">> => mongo_db_settings(),
-%%   <<"RedisSettings">> => redis_settings(),
-%%   <<"Status">> => string(),
-%%   <<"KinesisSettings">> => kinesis_settings(),
-%%   <<"SybaseSettings">> => sybase_settings()
-%% }
--type endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_task_individual_assessments_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReplicationTaskIndividualAssessments">> => list(replication_task_individual_assessment())
-%% }
--type describe_replication_task_individual_assessments_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_certificate_message() :: #{
-%%   <<"CertificateArn">> := string()
-%% }
--type delete_certificate_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_migration_response() :: #{
-%%   <<"DataMigration">> => data_migration()
-%% }
--type create_data_migration_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_export_to_target_message() :: #{
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"OverwriteExtensionPack">> => boolean(),
-%%   <<"SelectionRules">> := string()
-%% }
--type start_metadata_model_export_to_target_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_replication_instance_response() :: #{
-%%   <<"ReplicationInstance">> => replication_instance()
-%% }
--type create_replication_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_subscription_message() :: #{
-%%   <<"SubscriptionName">> := string()
-%% }
--type delete_event_subscription_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_children_message() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"Origin">> := list(any()),
-%%   <<"SelectionRules">> := string()
-%% }
--type describe_metadata_model_children_message() :: #{binary() => any()}.
-
-%% Example:
-%% replication_task_assessment_result() :: #{
-%%   <<"AssessmentResults">> => string(),
-%%   <<"AssessmentResultsFile">> => string(),
-%%   <<"AssessmentStatus">> => string(),
-%%   <<"ReplicationTaskArn">> => string(),
-%%   <<"ReplicationTaskIdentifier">> => string(),
-%%   <<"ReplicationTaskLastAssessmentDate">> => non_neg_integer(),
-%%   <<"S3ObjectUrl">> => string()
-%% }
--type replication_task_assessment_result() :: #{binary() => any()}.
-
-%% Example:
-%% test_connection_response() :: #{
-%%   <<"Connection">> => connection()
-%% }
--type test_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% replication_task_assessment_run_result_statistic() :: #{
-%%   <<"Cancelled">> => integer(),
-%%   <<"Error">> => integer(),
-%%   <<"Failed">> => integer(),
-%%   <<"Passed">> => integer(),
-%%   <<"Skipped">> => integer(),
-%%   <<"Warning">> => integer()
-%% }
--type replication_task_assessment_run_result_statistic() :: #{binary() => any()}.
-
-%% Example:
-%% create_replication_instance_message() :: #{
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"DnsNameServers">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"KerberosAuthenticationSettings">> => kerberos_authentication_settings(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"ReplicationInstanceClass">> := string(),
-%%   <<"ReplicationInstanceIdentifier">> := string(),
-%%   <<"ReplicationSubnetGroupIdentifier">> => string(),
-%%   <<"ResourceIdentifier">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcSecurityGroupIds">> => list(string())
-%% }
--type create_replication_instance_message() :: #{binary() => any()}.
-
-%% Example:
-%% start_replication_task_assessment_run_response() :: #{
-%%   <<"ReplicationTaskAssessmentRun">> => replication_task_assessment_run()
-%% }
--type start_replication_task_assessment_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% my_s_q_l_settings() :: #{
-%%   <<"AfterConnectScript">> => string(),
-%%   <<"AuthenticationMethod">> => list(any()),
-%%   <<"CleanSourceMetadataOnMismatch">> => boolean(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"EventsPollInterval">> => integer(),
-%%   <<"ExecuteTimeout">> => integer(),
-%%   <<"MaxFileSize">> => integer(),
-%%   <<"ParallelLoadThreads">> => integer(),
-%%   <<"Password">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"SecretsManagerAccessRoleArn">> => string(),
-%%   <<"SecretsManagerSecretId">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"ServerTimezone">> => string(),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"TargetDbType">> => list(any()),
-%%   <<"Username">> => string()
-%% }
--type my_s_q_l_settings() :: #{binary() => any()}.
-
-%% Example:
-%% certificate() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"CertificateCreationDate">> => non_neg_integer(),
-%%   <<"CertificateIdentifier">> => string(),
-%%   <<"CertificateOwner">> => string(),
-%%   <<"CertificatePem">> => string(),
-%%   <<"CertificateWallet">> => binary(),
-%%   <<"KeyLength">> => integer(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"SigningAlgorithm">> => string(),
-%%   <<"ValidFromDate">> => non_neg_integer(),
-%%   <<"ValidToDate">> => non_neg_integer()
-%% }
--type certificate() :: #{binary() => any()}.
-
-%% Example:
-%% stop_replication_message() :: #{
-%%   <<"ReplicationConfigArn">> := string()
-%% }
--type stop_replication_message() :: #{binary() => any()}.
-
-%% Example:
-%% kms_key_not_accessible_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_key_not_accessible_fault() :: #{binary() => any()}.
-
-%% Example:
-%% s_n_s_invalid_topic_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type s_n_s_invalid_topic_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_table_statistics_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"ReplicationConfigArn">> := string()
-%% }
--type describe_replication_table_statistics_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_subscriptions_response() :: #{
-%%   <<"EventSubscriptionsList">> => list(event_subscription()),
-%%   <<"Marker">> => string()
-%% }
--type describe_event_subscriptions_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_target_selection_rules_message() :: #{
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"SelectionRules">> := string()
-%% }
--type get_target_selection_rules_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replications_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Replications">> => list(replication())
-%% }
--type describe_replications_response() :: #{binary() => any()}.
-
-%% Example:
-%% event() :: #{
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"EventCategories">> => list(string()),
-%%   <<"Message">> => string(),
-%%   <<"SourceIdentifier">> => string(),
-%%   <<"SourceType">> => list(any())
-%% }
--type event() :: #{binary() => any()}.
-
-%% Example:
-%% collector_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type collector_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
 %% test_connection_message() :: #{
@@ -2626,1017 +3686,26 @@
 -type test_connection_message() :: #{binary() => any()}.
 
 %% Example:
-%% resource_already_exists_fault() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceArn">> => string()
-%% }
--type resource_already_exists_fault() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_assessment_response() :: #{
-%%   <<"RequestIdentifier">> => string()
-%% }
--type start_metadata_model_assessment_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_fleet_advisor_databases_response() :: #{
-%%   <<"DatabaseIds">> => list(string())
-%% }
--type delete_fleet_advisor_databases_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_recommendation_limitations_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_recommendation_limitations_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_metadata_model_creation_response() :: #{
-%%   <<"Request">> => schema_conversion_request()
-%% }
--type cancel_metadata_model_creation_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_migrations_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"WithoutSettings">> => boolean(),
-%%   <<"WithoutStatistics">> => boolean()
-%% }
--type describe_data_migrations_message() :: #{binary() => any()}.
-
-%% Example:
-%% statement_properties() :: #{
-%%   <<"Definition">> => string()
-%% }
--type statement_properties() :: #{binary() => any()}.
-
-%% Example:
-%% data_migration_settings() :: #{
-%%   <<"CloudwatchLogsEnabled">> => boolean(),
-%%   <<"NumberOfJobs">> => integer(),
-%%   <<"SelectionRules">> => string()
-%% }
--type data_migration_settings() :: #{binary() => any()}.
-
-%% Example:
-%% mongo_db_settings() :: #{
-%%   <<"AuthMechanism">> => list(any()),
-%%   <<"AuthSource">> => string(),
-%%   <<"AuthType">> => list(any()),
-%%   <<"DatabaseName">> => string(),
-%%   <<"DocsToInvestigate">> => string(),
-%%   <<"ExtractDocId">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"NestingLevel">> => list(any()),
-%%   <<"Password">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"ReplicateShardCollections">> => boolean(),
-%%   <<"SecretsManagerAccessRoleArn">> => string(),
-%%   <<"SecretsManagerSecretId">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"UseUpdateLookUp">> => boolean(),
-%%   <<"Username">> => string()
-%% }
--type mongo_db_settings() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_replication_task_assessment_run_message() :: #{
-%%   <<"ReplicationTaskAssessmentRunArn">> := string()
-%% }
--type cancel_replication_task_assessment_run_message() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_export_as_script_response() :: #{
-%%   <<"RequestIdentifier">> => string()
-%% }
--type start_metadata_model_export_as_script_response() :: #{binary() => any()}.
-
-%% Example:
-%% compute_config() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"DnsNameServers">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"MaxCapacityUnits">> => integer(),
-%%   <<"MinCapacityUnits">> => integer(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"ReplicationSubnetGroupId">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string())
-%% }
--type compute_config() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_to_resource_message() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type add_tags_to_resource_message() :: #{binary() => any()}.
-
-%% Example:
-%% oracle_settings() :: #{
-%%   <<"Port">> => integer(),
-%%   <<"UsePathPrefix">> => string(),
-%%   <<"ArchivedLogsOnly">> => boolean(),
-%%   <<"RetryInterval">> => integer(),
-%%   <<"ReplacePathPrefix">> => boolean(),
-%%   <<"SecretsManagerSecretId">> => string(),
-%%   <<"EnableHomogenousTablespace">> => boolean(),
-%%   <<"CharLengthSemantics">> => list(any()),
-%%   <<"NumberDatatypeScale">> => integer(),
-%%   <<"SecurityDbEncryption">> => string(),
-%%   <<"SpatialDataOptionToGeoJsonFunctionName">> => string(),
-%%   <<"FailTasksOnLobTruncation">> => boolean(),
-%%   <<"ReadAheadBlocks">> => integer(),
-%%   <<"TrimSpaceInChar">> => boolean(),
-%%   <<"Password">> => string(),
-%%   <<"AsmPassword">> => string(),
-%%   <<"UseLogminerReader">> => boolean(),
-%%   <<"AccessAlternateDirectly">> => boolean(),
-%%   <<"SecretsManagerAccessRoleArn">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"ConvertTimestampWithZoneToUTC">> => boolean(),
-%%   <<"DirectPathNoLog">> => boolean(),
-%%   <<"AddSupplementalLogging">> => boolean(),
-%%   <<"ParallelAsmReadThreads">> => integer(),
-%%   <<"SecretsManagerOracleAsmAccessRoleArn">> => string(),
-%%   <<"UseAlternateFolderForOnline">> => boolean(),
-%%   <<"OraclePathPrefix">> => string(),
-%%   <<"Username">> => string(),
-%%   <<"ExtraArchivedLogDestIds">> => list(integer()),
-%%   <<"DirectPathParallelLoad">> => boolean(),
-%%   <<"SecurityDbEncryptionName">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"UseBFile">> => boolean(),
-%%   <<"StandbyDelayTime">> => integer(),
-%%   <<"OpenTransactionWindow">> => integer(),
-%%   <<"ReadTableSpaceName">> => boolean(),
-%%   <<"AllowSelectNestedTables">> => boolean(),
-%%   <<"AuthenticationMethod">> => list(any()),
-%%   <<"ArchivedLogDestId">> => integer(),
-%%   <<"AsmUser">> => string(),
-%%   <<"AdditionalArchivedLogDestId">> => integer(),
-%%   <<"UseDirectPathFullLoad">> => boolean(),
-%%   <<"AsmServer">> => string(),
-%%   <<"SecretsManagerOracleAsmSecretId">> => string()
-%% }
--type oracle_settings() :: #{binary() => any()}.
-
-%% Example:
-%% modify_conversion_configuration_response() :: #{
-%%   <<"MigrationProjectIdentifier">> => string()
-%% }
--type modify_conversion_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_replication_response() :: #{
-%%   <<"Replication">> => replication()
-%% }
--type stop_replication_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_replication_response() :: #{
-%%   <<"Replication">> => replication()
-%% }
--type start_replication_response() :: #{binary() => any()}.
-
-%% Example:
-%% kafka_settings() :: #{
-%%   <<"Broker">> => string(),
-%%   <<"IncludeControlDetails">> => boolean(),
-%%   <<"IncludeNullAndEmpty">> => boolean(),
-%%   <<"IncludePartitionValue">> => boolean(),
-%%   <<"IncludeTableAlterOperations">> => boolean(),
-%%   <<"IncludeTransactionDetails">> => boolean(),
-%%   <<"MessageFormat">> => list(any()),
-%%   <<"MessageMaxBytes">> => integer(),
-%%   <<"NoHexPrefix">> => boolean(),
-%%   <<"PartitionIncludeSchemaTable">> => boolean(),
-%%   <<"SaslMechanism">> => list(any()),
-%%   <<"SaslPassword">> => string(),
-%%   <<"SaslUsername">> => string(),
-%%   <<"SecurityProtocol">> => list(any()),
-%%   <<"SslCaCertificateArn">> => string(),
-%%   <<"SslClientCertificateArn">> => string(),
-%%   <<"SslClientKeyArn">> => string(),
-%%   <<"SslClientKeyPassword">> => string(),
-%%   <<"SslEndpointIdentificationAlgorithm">> => list(any()),
-%%   <<"Topic">> => string(),
-%%   <<"UseLargeIntegerValue">> => boolean()
-%% }
--type kafka_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_imports_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"MigrationProjectIdentifier">> := string()
-%% }
--type describe_metadata_model_imports_message() :: #{binary() => any()}.
-
-%% Example:
-%% gcp_my_s_q_l_settings() :: #{
-%%   <<"AfterConnectScript">> => string(),
-%%   <<"CleanSourceMetadataOnMismatch">> => boolean(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"EventsPollInterval">> => integer(),
-%%   <<"MaxFileSize">> => integer(),
-%%   <<"ParallelLoadThreads">> => integer(),
-%%   <<"Password">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"SecretsManagerAccessRoleArn">> => string(),
-%%   <<"SecretsManagerSecretId">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"ServerTimezone">> => string(),
-%%   <<"TargetDbType">> => list(any()),
-%%   <<"Username">> => string()
-%% }
--type gcp_my_s_q_l_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_conversion_configuration_response() :: #{
-%%   <<"ConversionConfiguration">> => string(),
-%%   <<"MigrationProjectIdentifier">> => string()
-%% }
--type describe_conversion_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_orderable_replication_instances_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"OrderableReplicationInstances">> => list(orderable_replication_instance())
-%% }
--type describe_orderable_replication_instances_response() :: #{binary() => any()}.
-
-%% Example:
-%% limitation() :: #{
-%%   <<"DatabaseId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EngineName">> => string(),
-%%   <<"Impact">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string()
-%% }
--type limitation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_instance_message() :: #{
-%%   <<"ReplicationInstanceArn">> := string()
-%% }
--type delete_replication_instance_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_events_message() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EventCategories">> => list(string()),
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"SourceIdentifier">> => string(),
-%%   <<"SourceType">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type describe_events_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_endpoint_types_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_endpoint_types_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_migration_project_message() :: #{
-%%   <<"Description">> => string(),
-%%   <<"InstanceProfileIdentifier">> => string(),
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"MigrationProjectName">> => string(),
-%%   <<"SchemaConversionApplicationAttributes">> => s_capplication_attributes(),
-%%   <<"SourceDataProviderDescriptors">> => list(data_provider_descriptor_definition()),
-%%   <<"TargetDataProviderDescriptors">> => list(data_provider_descriptor_definition()),
-%%   <<"TransformationRules">> => string()
-%% }
--type modify_migration_project_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_replication_task_response() :: #{
-%%   <<"ReplicationTask">> => replication_task()
-%% }
--type create_replication_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_export_to_target_response() :: #{
-%%   <<"RequestIdentifier">> => string()
-%% }
--type start_metadata_model_export_to_target_response() :: #{binary() => any()}.
-
-%% Example:
-%% database_instance_software_details_response() :: #{
-%%   <<"Engine">> => string(),
-%%   <<"EngineEdition">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"OsArchitecture">> => integer(),
-%%   <<"ServicePack">> => string(),
-%%   <<"SupportLevel">> => string(),
-%%   <<"Tooltip">> => string()
-%% }
--type database_instance_software_details_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_replication_instance_response() :: #{
-%%   <<"ReplicationInstance">> => replication_instance()
-%% }
--type modify_replication_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_profiles_response() :: #{
-%%   <<"InstanceProfiles">> => list(instance_profile()),
-%%   <<"Marker">> => string()
-%% }
--type describe_instance_profiles_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_response() :: #{
+%% test_connection_response() :: #{
 %%   <<"Connection">> => connection()
 %% }
--type delete_connection_response() :: #{binary() => any()}.
+-type test_connection_response() :: #{binary() => any()}.
 
 %% Example:
-%% maria_db_data_provider_settings() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"S3AccessRoleArn">> => string(),
-%%   <<"S3Path">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"SslMode">> => list(any())
-%% }
--type maria_db_data_provider_settings() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_migration_message() :: #{
-%%   <<"DataMigrationName">> => string(),
-%%   <<"DataMigrationType">> := list(any()),
-%%   <<"EnableCloudwatchLogs">> => boolean(),
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"NumberOfJobs">> => integer(),
-%%   <<"SelectionRules">> => string(),
-%%   <<"ServiceAccessRoleArn">> := string(),
-%%   <<"SourceDataSettings">> => list(source_data_setting()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetDataSettings">> => list(target_data_setting())
-%% }
--type create_data_migration_message() :: #{binary() => any()}.
-
-%% Example:
-%% replication_subnet_group() :: #{
-%%   <<"IsReadOnly">> => boolean(),
-%%   <<"ReplicationSubnetGroupDescription">> => string(),
-%%   <<"ReplicationSubnetGroupIdentifier">> => string(),
-%%   <<"SubnetGroupStatus">> => string(),
-%%   <<"Subnets">> => list(subnet()),
-%%   <<"SupportedNetworkTypes">> => list(string()),
-%%   <<"VpcId">> => string()
-%% }
--type replication_subnet_group() :: #{binary() => any()}.
-
-%% Example:
-%% start_replication_task_assessment_response() :: #{
-%%   <<"ReplicationTask">> => replication_task()
-%% }
--type start_replication_task_assessment_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_migration_project_response() :: #{
-%%   <<"MigrationProject">> => migration_project()
-%% }
--type create_migration_project_response() :: #{binary() => any()}.
-
-%% Example:
-%% provision_data() :: #{
-%%   <<"DateNewProvisioningDataAvailable">> => non_neg_integer(),
-%%   <<"DateProvisioned">> => non_neg_integer(),
-%%   <<"IsNewProvisioningAvailable">> => boolean(),
-%%   <<"ProvisionState">> => string(),
-%%   <<"ProvisionedCapacityUnits">> => integer(),
-%%   <<"ReasonForNewProvisioningData">> => string()
-%% }
--type provision_data() :: #{binary() => any()}.
-
-%% Example:
-%% get_target_selection_rules_response() :: #{
-%%   <<"TargetSelectionRules">> => string()
-%% }
--type get_target_selection_rules_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_replication_task_assessment_run_message() :: #{
-%%   <<"AssessmentRunName">> := string(),
-%%   <<"Exclude">> => list(string()),
-%%   <<"IncludeOnly">> => list(string()),
-%%   <<"ReplicationTaskArn">> := string(),
-%%   <<"ResultEncryptionMode">> => string(),
-%%   <<"ResultKmsKeyArn">> => string(),
-%%   <<"ResultLocationBucket">> := string(),
-%%   <<"ResultLocationFolder">> => string(),
-%%   <<"ServiceAccessRoleArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_replication_task_assessment_run_message() :: #{binary() => any()}.
-
-%% Example:
-%% batch_start_recommendations_error_entry() :: #{
-%%   <<"Code">> => string(),
-%%   <<"DatabaseId">> => string(),
-%%   <<"Message">> => string()
-%% }
--type batch_start_recommendations_error_entry() :: #{binary() => any()}.
-
-%% Example:
-%% run_fleet_advisor_lsa_analysis_response() :: #{
-%%   <<"LsaAnalysisId">> => string(),
-%%   <<"Status">> => string()
-%% }
--type run_fleet_advisor_lsa_analysis_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_replication_config_response() :: #{
-%%   <<"ReplicationConfig">> => replication_config()
-%% }
--type create_replication_config_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_operation_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_operation_fault() :: #{binary() => any()}.
-
-%% Example:
-%% describe_data_migrations_response() :: #{
-%%   <<"DataMigrations">> => list(data_migration()),
-%%   <<"Marker">> => string()
-%% }
--type describe_data_migrations_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_tasks_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReplicationTasks">> => list(replication_task())
-%% }
--type describe_replication_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% refresh_schemas_response() :: #{
-%%   <<"RefreshSchemasStatus">> => refresh_schemas_status()
-%% }
--type refresh_schemas_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_extension_pack_association_message() :: #{
-%%   <<"MigrationProjectIdentifier">> := string()
-%% }
--type start_extension_pack_association_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_task_message() :: #{
-%%   <<"ReplicationTaskArn">> := string()
-%% }
--type delete_replication_task_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_replication_config_message() :: #{
-%%   <<"ComputeConfig">> => compute_config(),
-%%   <<"ReplicationConfigArn">> := string(),
-%%   <<"ReplicationConfigIdentifier">> => string(),
-%%   <<"ReplicationSettings">> => string(),
-%%   <<"ReplicationType">> => list(any()),
-%%   <<"SourceEndpointArn">> => string(),
-%%   <<"SupplementalSettings">> => string(),
-%%   <<"TableMappings">> => string(),
-%%   <<"TargetEndpointArn">> => string()
-%% }
--type modify_replication_config_message() :: #{binary() => any()}.
-
-%% Example:
-%% schema_response() :: #{
-%%   <<"CodeLineCount">> => float(),
-%%   <<"CodeSize">> => float(),
-%%   <<"Complexity">> => string(),
-%%   <<"DatabaseInstance">> => database_short_info_response(),
-%%   <<"OriginalSchema">> => schema_short_info_response(),
-%%   <<"SchemaId">> => string(),
-%%   <<"SchemaName">> => string(),
-%%   <<"Server">> => server_short_info_response(),
-%%   <<"Similarity">> => float()
-%% }
--type schema_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_replication_task_response() :: #{
-%%   <<"ReplicationTask">> => replication_task()
-%% }
--type modify_replication_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% modify_conversion_configuration_message() :: #{
-%%   <<"ConversionConfiguration">> := string(),
-%%   <<"MigrationProjectIdentifier">> := string()
-%% }
--type modify_conversion_configuration_message() :: #{binary() => any()}.
-
-%% Example:
-%% import_certificate_message() :: #{
-%%   <<"CertificateIdentifier">> := string(),
-%%   <<"CertificatePem">> => string(),
-%%   <<"CertificateWallet">> => binary(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type import_certificate_message() :: #{binary() => any()}.
-
-%% Example:
-%% postgre_sql_data_provider_settings() :: #{
-%%   <<"CertificateArn">> => string(),
+%% timestream_settings() :: #{
+%%   <<"CdcInsertsAndUpdates">> => boolean(),
 %%   <<"DatabaseName">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"S3AccessRoleArn">> => string(),
-%%   <<"S3Path">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"SslMode">> => list(any())
+%%   <<"EnableMagneticStoreWrites">> => boolean(),
+%%   <<"MagneticDuration">> => integer(),
+%%   <<"MemoryDuration">> => integer()
 %% }
--type postgre_sql_data_provider_settings() :: #{binary() => any()}.
+-type timestream_settings() :: #{binary() => any()}.
 
 %% Example:
-%% start_data_migration_message() :: #{
-%%   <<"DataMigrationIdentifier">> := string(),
-%%   <<"StartType">> := list(any())
+%% update_subscriptions_to_event_bridge_message() :: #{
+%%   <<"ForceMove">> => boolean()
 %% }
--type start_data_migration_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_instance_profile_message() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"InstanceProfileIdentifier">> := string(),
-%%   <<"InstanceProfileName">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"NetworkType">> => string(),
-%%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"SubnetGroupIdentifier">> => string(),
-%%   <<"VpcSecurityGroups">> => list(string())
-%% }
--type modify_instance_profile_message() :: #{binary() => any()}.
-
-%% Example:
-%% database_short_info_response() :: #{
-%%   <<"DatabaseEngine">> => string(),
-%%   <<"DatabaseId">> => string(),
-%%   <<"DatabaseIpAddress">> => string(),
-%%   <<"DatabaseName">> => string()
-%% }
--type database_short_info_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_conversion_message() :: #{
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"SelectionRules">> := string()
-%% }
--type start_metadata_model_conversion_message() :: #{binary() => any()}.
-
-%% Example:
-%% start_extension_pack_association_response() :: #{
-%%   <<"RequestIdentifier">> => string()
-%% }
--type start_extension_pack_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_migration_projects_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MigrationProjects">> => list(migration_project())
-%% }
--type describe_migration_projects_response() :: #{binary() => any()}.
-
-%% Example:
-%% kms_disabled_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_disabled_fault() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_message() :: #{
-%%   <<"EndpointType">> := list(any()),
-%%   <<"Port">> => integer(),
-%%   <<"GcpMySQLSettings">> => gcp_my_s_q_l_settings(),
-%%   <<"EngineName">> := string(),
-%%   <<"OracleSettings">> => oracle_settings(),
-%%   <<"KafkaSettings">> => kafka_settings(),
-%%   <<"IBMDb2Settings">> => i_b_m_db2_settings(),
-%%   <<"DmsTransferSettings">> => dms_transfer_settings(),
-%%   <<"ExtraConnectionAttributes">> => string(),
-%%   <<"DocDbSettings">> => doc_db_settings(),
-%%   <<"Password">> => string(),
-%%   <<"TimestreamSettings">> => timestream_settings(),
-%%   <<"PostgreSQLSettings">> => postgre_s_q_l_settings(),
-%%   <<"ServerName">> => string(),
-%%   <<"EndpointIdentifier">> := string(),
-%%   <<"CertificateArn">> => string(),
-%%   <<"NeptuneSettings">> => neptune_settings(),
-%%   <<"MySQLSettings">> => my_s_q_l_settings(),
-%%   <<"Username">> => string(),
-%%   <<"ResourceIdentifier">> => string(),
-%%   <<"ExternalTableDefinition">> => string(),
-%%   <<"SslMode">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"S3Settings">> => s3_settings(),
-%%   <<"ElasticsearchSettings">> => elasticsearch_settings(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"DynamoDbSettings">> => dynamo_db_settings(),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"MicrosoftSQLServerSettings">> => microsoft_s_q_l_server_settings(),
-%%   <<"RedshiftSettings">> => redshift_settings(),
-%%   <<"MongoDbSettings">> => mongo_db_settings(),
-%%   <<"RedisSettings">> => redis_settings(),
-%%   <<"KinesisSettings">> => kinesis_settings(),
-%%   <<"SybaseSettings">> => sybase_settings()
-%% }
--type create_endpoint_message() :: #{binary() => any()}.
-
-%% Example:
-%% modify_migration_project_response() :: #{
-%%   <<"MigrationProject">> => migration_project()
-%% }
--type modify_migration_project_response() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_from_resource_message() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type remove_tags_from_resource_message() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_response() :: #{
-%%   <<"Endpoint">> => endpoint()
-%% }
--type create_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% microsoft_s_q_l_server_settings() :: #{
-%%   <<"AuthenticationMethod">> => list(any()),
-%%   <<"BcpPacketSize">> => integer(),
-%%   <<"ControlTablesFileGroup">> => string(),
-%%   <<"DatabaseName">> => string(),
-%%   <<"ForceLobLookup">> => boolean(),
-%%   <<"Password">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"QuerySingleAlwaysOnNode">> => boolean(),
-%%   <<"ReadBackupOnly">> => boolean(),
-%%   <<"SafeguardPolicy">> => list(any()),
-%%   <<"SecretsManagerAccessRoleArn">> => string(),
-%%   <<"SecretsManagerSecretId">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"TlogAccessMode">> => list(any()),
-%%   <<"TrimSpaceInChar">> => boolean(),
-%%   <<"UseBcpFullLoad">> => boolean(),
-%%   <<"UseThirdPartyBackupDevice">> => boolean(),
-%%   <<"Username">> => string()
-%% }
--type microsoft_s_q_l_server_settings() :: #{binary() => any()}.
-
-%% Example:
-%% apply_pending_maintenance_action_response() :: #{
-%%   <<"ResourcePendingMaintenanceActions">> => resource_pending_maintenance_actions()
-%% }
--type apply_pending_maintenance_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_quota_exceeded_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_quota_exceeded_fault() :: #{binary() => any()}.
-
-%% Example:
-%% reload_replication_tables_response() :: #{
-%%   <<"ReplicationConfigArn">> => string()
-%% }
--type reload_replication_tables_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_subnet_groups_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_replication_subnet_groups_message() :: #{binary() => any()}.
-
-%% Example:
-%% data_provider_descriptor_definition() :: #{
-%%   <<"DataProviderIdentifier">> => string(),
-%%   <<"SecretsManagerAccessRoleArn">> => string(),
-%%   <<"SecretsManagerSecretId">> => string()
-%% }
--type data_provider_descriptor_definition() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_categories_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"SourceType">> => string()
-%% }
--type describe_event_categories_message() :: #{binary() => any()}.
-
-%% Example:
-%% postgre_s_q_l_settings() :: #{
-%%   <<"AfterConnectScript">> => string(),
-%%   <<"AuthenticationMethod">> => list(any()),
-%%   <<"BabelfishDatabaseName">> => string(),
-%%   <<"CaptureDdls">> => boolean(),
-%%   <<"DatabaseMode">> => list(any()),
-%%   <<"DatabaseName">> => string(),
-%%   <<"DdlArtifactsSchema">> => string(),
-%%   <<"DisableUnicodeSourceFilter">> => boolean(),
-%%   <<"ExecuteTimeout">> => integer(),
-%%   <<"FailTasksOnLobTruncation">> => boolean(),
-%%   <<"HeartbeatEnable">> => boolean(),
-%%   <<"HeartbeatFrequency">> => integer(),
-%%   <<"HeartbeatSchema">> => string(),
-%%   <<"MapBooleanAsBoolean">> => boolean(),
-%%   <<"MapJsonbAsClob">> => boolean(),
-%%   <<"MapLongVarcharAs">> => list(any()),
-%%   <<"MaxFileSize">> => integer(),
-%%   <<"Password">> => string(),
-%%   <<"PluginName">> => list(any()),
-%%   <<"Port">> => integer(),
-%%   <<"SecretsManagerAccessRoleArn">> => string(),
-%%   <<"SecretsManagerSecretId">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"SlotName">> => string(),
-%%   <<"TrimSpaceInChar">> => boolean(),
-%%   <<"Username">> => string()
-%% }
--type postgre_s_q_l_settings() :: #{binary() => any()}.
-
-%% Example:
-%% describe_refresh_schemas_status_response() :: #{
-%%   <<"RefreshSchemasStatus">> => refresh_schemas_status()
-%% }
--type describe_refresh_schemas_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_start_recommendations_response() :: #{
-%%   <<"ErrorEntries">> => list(batch_start_recommendations_error_entry())
-%% }
--type batch_start_recommendations_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_data_provider_response() :: #{
-%%   <<"DataProvider">> => data_provider()
-%% }
--type delete_data_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replications_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_replications_message() :: #{binary() => any()}.
-
-%% Example:
-%% reload_replication_tables_message() :: #{
-%%   <<"ReloadOption">> => list(any()),
-%%   <<"ReplicationConfigArn">> := string(),
-%%   <<"TablesToReload">> := list(table_to_reload())
-%% }
--type reload_replication_tables_message() :: #{binary() => any()}.
-
-%% Example:
-%% batch_start_recommendations_request() :: #{
-%%   <<"Data">> => list(start_recommendations_request_entry())
-%% }
--type batch_start_recommendations_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_exports_to_target_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request())
-%% }
--type describe_metadata_model_exports_to_target_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_metadata_model_creation_message() :: #{
-%%   <<"MetadataModelName">> := string(),
-%%   <<"MigrationProjectIdentifier">> := string(),
-%%   <<"Properties">> := list(),
-%%   <<"SelectionRules">> := string()
-%% }
--type start_metadata_model_creation_message() :: #{binary() => any()}.
-
-%% Example:
-%% refresh_schemas_status() :: #{
-%%   <<"EndpointArn">> => string(),
-%%   <<"LastFailureMessage">> => string(),
-%%   <<"LastRefreshDate">> => non_neg_integer(),
-%%   <<"ReplicationInstanceArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type refresh_schemas_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_engine_versions_response() :: #{
-%%   <<"EngineVersions">> => list(engine_version()),
-%%   <<"Marker">> => string()
-%% }
--type describe_engine_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% s_n_s_no_authorization_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type s_n_s_no_authorization_fault() :: #{binary() => any()}.
-
-%% Example:
-%% modify_replication_instance_message() :: #{
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"AllowMajorVersionUpgrade">> => boolean(),
-%%   <<"ApplyImmediately">> => boolean(),
-%%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"KerberosAuthenticationSettings">> => kerberos_authentication_settings(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"ReplicationInstanceArn">> := string(),
-%%   <<"ReplicationInstanceClass">> => string(),
-%%   <<"ReplicationInstanceIdentifier">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string())
-%% }
--type modify_replication_instance_message() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_instance_task_logs_response() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"ReplicationInstanceArn">> => string(),
-%%   <<"ReplicationInstanceTaskLogs">> => list(replication_instance_task_log())
-%% }
--type describe_replication_instance_task_logs_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_instance_response() :: #{
-%%   <<"ReplicationInstance">> => replication_instance()
-%% }
--type delete_replication_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_certificates_response() :: #{
-%%   <<"Certificates">> => list(certificate()),
-%%   <<"Marker">> => string()
-%% }
--type describe_certificates_response() :: #{binary() => any()}.
-
-%% Example:
-%% collector_short_info_response() :: #{
-%%   <<"CollectorName">> => string(),
-%%   <<"CollectorReferencedId">> => string()
-%% }
--type collector_short_info_response() :: #{binary() => any()}.
-
-%% Example:
-%% export_sql_details() :: #{
-%%   <<"ObjectURL">> => string(),
-%%   <<"S3ObjectKey">> => string()
-%% }
--type export_sql_details() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_security_group_membership() :: #{
-%%   <<"Status">> => string(),
-%%   <<"VpcSecurityGroupId">> => string()
-%% }
--type vpc_security_group_membership() :: #{binary() => any()}.
-
-%% Example:
-%% delete_replication_task_response() :: #{
-%%   <<"ReplicationTask">> => replication_task()
-%% }
--type delete_replication_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% replication_config() :: #{
-%%   <<"ComputeConfig">> => compute_config(),
-%%   <<"IsReadOnly">> => boolean(),
-%%   <<"ReplicationConfigArn">> => string(),
-%%   <<"ReplicationConfigCreateTime">> => non_neg_integer(),
-%%   <<"ReplicationConfigIdentifier">> => string(),
-%%   <<"ReplicationConfigUpdateTime">> => non_neg_integer(),
-%%   <<"ReplicationSettings">> => string(),
-%%   <<"ReplicationType">> => list(any()),
-%%   <<"SourceEndpointArn">> => string(),
-%%   <<"SupplementalSettings">> => string(),
-%%   <<"TableMappings">> => string(),
-%%   <<"TargetEndpointArn">> => string()
-%% }
--type replication_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metadata_model_response() :: #{
-%%   <<"Definition">> => string(),
-%%   <<"MetadataModelName">> => string(),
-%%   <<"MetadataModelType">> => string(),
-%%   <<"TargetMetadataModels">> => list(metadata_model_reference())
-%% }
--type describe_metadata_model_response() :: #{binary() => any()}.
-
-%% Example:
-%% migration_project() :: #{
-%%   <<"Description">> => string(),
-%%   <<"InstanceProfileArn">> => string(),
-%%   <<"InstanceProfileName">> => string(),
-%%   <<"MigrationProjectArn">> => string(),
-%%   <<"MigrationProjectCreationTime">> => non_neg_integer(),
-%%   <<"MigrationProjectName">> => string(),
-%%   <<"SchemaConversionApplicationAttributes">> => s_capplication_attributes(),
-%%   <<"SourceDataProviderDescriptors">> => list(data_provider_descriptor()),
-%%   <<"TargetDataProviderDescriptors">> => list(data_provider_descriptor()),
-%%   <<"TransformationRules">> => string()
-%% }
--type migration_project() :: #{binary() => any()}.
-
-%% Example:
-%% fleet_advisor_lsa_analysis_response() :: #{
-%%   <<"LsaAnalysisId">> => string(),
-%%   <<"Status">> => string()
-%% }
--type fleet_advisor_lsa_analysis_response() :: #{binary() => any()}.
-
-%% Example:
-%% kms_throttling_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type kms_throttling_fault() :: #{binary() => any()}.
-
-%% Example:
-%% delete_migration_project_response() :: #{
-%%   <<"MigrationProject">> => migration_project()
-%% }
--type delete_migration_project_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleet_advisor_schemas_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxRecords">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_fleet_advisor_schemas_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replication_task_assessment_runs_message() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
-%% }
--type describe_replication_task_assessment_runs_message() :: #{binary() => any()}.
-
-%% Example:
-%% data_provider_descriptor() :: #{
-%%   <<"DataProviderArn">> => string(),
-%%   <<"DataProviderName">> => string(),
-%%   <<"SecretsManagerAccessRoleArn">> => string(),
-%%   <<"SecretsManagerSecretId">> => string()
-%% }
--type data_provider_descriptor() :: #{binary() => any()}.
-
-%% Example:
-%% my_sql_data_provider_settings() :: #{
-%%   <<"CertificateArn">> => string(),
-%%   <<"Port">> => integer(),
-%%   <<"S3AccessRoleArn">> => string(),
-%%   <<"S3Path">> => string(),
-%%   <<"ServerName">> => string(),
-%%   <<"SslMode">> => list(any())
-%% }
--type my_sql_data_provider_settings() :: #{binary() => any()}.
-
-%% Example:
-%% replication_pending_modified_values() :: #{
-%%   <<"AllocatedStorage">> => integer(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"MultiAZ">> => boolean(),
-%%   <<"NetworkType">> => string(),
-%%   <<"ReplicationInstanceClass">> => string()
-%% }
--type replication_pending_modified_values() :: #{binary() => any()}.
-
-%% Example:
-%% s3_resource_not_found_fault() :: #{
-%%   <<"message">> => string()
-%% }
--type s3_resource_not_found_fault() :: #{binary() => any()}.
+-type update_subscriptions_to_event_bridge_message() :: #{binary() => any()}.
 
 %% Example:
 %% update_subscriptions_to_event_bridge_response() :: #{
@@ -3645,120 +3714,51 @@
 -type update_subscriptions_to_event_bridge_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_endpoint_settings_message() :: #{
-%%   <<"EngineName">> := string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxRecords">> => integer()
+%% upgrade_dependency_failure_fault() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_endpoint_settings_message() :: #{binary() => any()}.
+-type upgrade_dependency_failure_fault() :: #{binary() => any()}.
 
 %% Example:
-%% describe_events_response() :: #{
-%%   <<"Events">> => list(event()),
-%%   <<"Marker">> => string()
+%% vpc_security_group_membership() :: #{
+%%   <<"Status">> => string(),
+%%   <<"VpcSecurityGroupId">> => string()
 %% }
--type describe_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_conversion_configuration_message() :: #{
-%%   <<"MigrationProjectIdentifier">> := string()
-%% }
--type describe_conversion_configuration_message() :: #{binary() => any()}.
-
-%% Example:
-%% reload_tables_message() :: #{
-%%   <<"ReloadOption">> => list(any()),
-%%   <<"ReplicationTaskArn">> := string(),
-%%   <<"TablesToReload">> := list(table_to_reload())
-%% }
--type reload_tables_message() :: #{binary() => any()}.
-
-%% Example:
-%% start_replication_task_assessment_message() :: #{
-%%   <<"ReplicationTaskArn">> := string()
-%% }
--type start_replication_task_assessment_message() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_replication_task_assessment_run_response() :: #{
-%%   <<"ReplicationTaskAssessmentRun">> => replication_task_assessment_run()
-%% }
--type cancel_replication_task_assessment_run_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_certificate_response() :: #{
-%%   <<"Certificate">> => certificate()
-%% }
--type delete_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_data_provider_response() :: #{
-%%   <<"DataProvider">> => data_provider()
-%% }
--type create_data_provider_response() :: #{binary() => any()}.
-
-%% Example:
-%% supported_endpoint_type() :: #{
-%%   <<"EndpointType">> => list(any()),
-%%   <<"EngineDisplayName">> => string(),
-%%   <<"EngineName">> => string(),
-%%   <<"ReplicationInstanceEngineMinimumVersion">> => string(),
-%%   <<"SupportsCDC">> => boolean()
-%% }
--type supported_endpoint_type() :: #{binary() => any()}.
-
-%% Example:
-%% replication_task_assessment_run() :: #{
-%%   <<"AssessmentProgress">> => replication_task_assessment_run_progress(),
-%%   <<"AssessmentRunName">> => string(),
-%%   <<"IsLatestTaskAssessmentRun">> => boolean(),
-%%   <<"LastFailureMessage">> => string(),
-%%   <<"ReplicationTaskArn">> => string(),
-%%   <<"ReplicationTaskAssessmentRunArn">> => string(),
-%%   <<"ReplicationTaskAssessmentRunCreationDate">> => non_neg_integer(),
-%%   <<"ResultEncryptionMode">> => string(),
-%%   <<"ResultKmsKeyArn">> => string(),
-%%   <<"ResultLocationBucket">> => string(),
-%%   <<"ResultLocationFolder">> => string(),
-%%   <<"ResultStatistic">> => replication_task_assessment_run_result_statistic(),
-%%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"Status">> => string()
-%% }
--type replication_task_assessment_run() :: #{binary() => any()}.
+-type vpc_security_group_membership() :: #{binary() => any()}.
 
 -type add_tags_to_resource_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type apply_pending_maintenance_action_errors() ::
     resource_not_found_fault().
 
 -type batch_start_recommendations_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type cancel_metadata_model_conversion_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type cancel_metadata_model_creation_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type cancel_replication_task_assessment_run_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type create_data_migration_errors() ::
     resource_quota_exceeded_fault() | 
-    invalid_operation_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
-    failed_dependency_fault() | 
-    resource_not_found_fault().
+    invalid_operation_fault() | 
+    failed_dependency_fault().
 
 -type create_data_provider_errors() ::
     resource_quota_exceeded_fault() | 
@@ -3767,169 +3767,169 @@
     access_denied_fault().
 
 -type create_endpoint_errors() ::
+    s3_access_denied_fault() | 
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
-    s3_access_denied_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type create_event_subscription_errors() ::
-    kms_throttling_fault() | 
     s_n_s_no_authorization_fault() | 
-    resource_quota_exceeded_fault() | 
-    kms_disabled_fault() | 
-    resource_already_exists_fault() | 
     s_n_s_invalid_topic_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
+    resource_already_exists_fault() | 
+    kms_throttling_fault() | 
     kms_not_found_fault() | 
-    kms_access_denied_fault() | 
     kms_invalid_state_fault() | 
-    resource_not_found_fault().
+    kms_disabled_fault() | 
+    kms_access_denied_fault().
 
 -type create_fleet_advisor_collector_errors() ::
     s3_resource_not_found_fault() | 
-    resource_quota_exceeded_fault() | 
     s3_access_denied_fault() | 
-    access_denied_fault() | 
-    invalid_resource_state_fault().
+    resource_quota_exceeded_fault() | 
+    invalid_resource_state_fault() | 
+    access_denied_fault().
 
 -type create_instance_profile_errors() ::
     s3_resource_not_found_fault() | 
+    s3_access_denied_fault() | 
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
-    s3_access_denied_fault() | 
-    failed_dependency_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    failed_dependency_fault() | 
+    access_denied_fault().
 
 -type create_migration_project_errors() ::
     s3_resource_not_found_fault() | 
-    resource_quota_exceeded_fault() | 
-    resource_already_exists_fault() | 
     s3_access_denied_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
+    resource_already_exists_fault() | 
     failed_dependency_fault() | 
-    access_denied_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type create_replication_config_errors() ::
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
-    kms_key_not_accessible_fault() | 
     replication_subnet_group_does_not_cover_enough_a_zs() | 
+    kms_key_not_accessible_fault() | 
     invalid_subnet() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type create_replication_instance_errors() ::
-    resource_quota_exceeded_fault() | 
-    resource_already_exists_fault() | 
-    kms_key_not_accessible_fault() | 
     storage_quota_exceeded_fault() | 
-    insufficient_resource_capacity_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
+    resource_already_exists_fault() | 
     replication_subnet_group_does_not_cover_enough_a_zs() | 
+    kms_key_not_accessible_fault() | 
     invalid_subnet() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    insufficient_resource_capacity_fault() | 
+    access_denied_fault().
 
 -type create_replication_subnet_group_errors() ::
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     replication_subnet_group_does_not_cover_enough_a_zs() | 
     invalid_subnet() | 
-    access_denied_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type create_replication_task_errors() ::
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type delete_certificate_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
-
--type delete_connection_errors() ::
-    access_denied_fault() | 
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
-
--type delete_data_migration_errors() ::
-    failed_dependency_fault() | 
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
-
--type delete_data_provider_errors() ::
-    failed_dependency_fault() | 
-    access_denied_fault() | 
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
-
--type delete_endpoint_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
-
--type delete_event_subscription_errors() ::
-    access_denied_fault() | 
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
-
--type delete_fleet_advisor_collector_errors() ::
-    collector_not_found_fault() | 
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault().
 
+-type delete_connection_errors() ::
+    resource_not_found_fault() | 
+    invalid_resource_state_fault() | 
+    access_denied_fault().
+
+-type delete_data_migration_errors() ::
+    resource_not_found_fault() | 
+    invalid_resource_state_fault() | 
+    failed_dependency_fault().
+
+-type delete_data_provider_errors() ::
+    resource_not_found_fault() | 
+    invalid_resource_state_fault() | 
+    failed_dependency_fault() | 
+    access_denied_fault().
+
+-type delete_endpoint_errors() ::
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
+
+-type delete_event_subscription_errors() ::
+    resource_not_found_fault() | 
+    invalid_resource_state_fault() | 
+    access_denied_fault().
+
+-type delete_fleet_advisor_collector_errors() ::
+    invalid_resource_state_fault() | 
+    collector_not_found_fault() | 
+    access_denied_fault().
+
 -type delete_fleet_advisor_databases_errors() ::
+    resource_not_found_fault() | 
     invalid_operation_fault() | 
-    access_denied_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type delete_instance_profile_errors() ::
-    failed_dependency_fault() | 
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    failed_dependency_fault() | 
+    access_denied_fault().
 
 -type delete_migration_project_errors() ::
-    failed_dependency_fault() | 
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    failed_dependency_fault() | 
+    access_denied_fault().
 
 -type delete_replication_config_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type delete_replication_instance_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type delete_replication_subnet_group_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type delete_replication_task_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type delete_replication_task_assessment_run_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type describe_applicable_individual_assessments_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type describe_certificates_errors() ::
     resource_not_found_fault().
@@ -3941,14 +3941,14 @@
     resource_not_found_fault().
 
 -type describe_data_migrations_errors() ::
-    failed_dependency_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    failed_dependency_fault().
 
 -type describe_data_providers_errors() ::
+    resource_not_found_fault() | 
     failed_dependency_fault() | 
-    access_denied_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type describe_endpoints_errors() ::
     resource_not_found_fault().
@@ -3972,27 +3972,27 @@
     invalid_resource_state_fault().
 
 -type describe_instance_profiles_errors() ::
+    resource_not_found_fault() | 
     failed_dependency_fault() | 
-    access_denied_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type describe_metadata_model_errors() ::
-    access_denied_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    access_denied_fault().
 
 -type describe_metadata_model_assessments_errors() ::
     resource_not_found_fault().
 
 -type describe_metadata_model_children_errors() ::
-    access_denied_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    access_denied_fault().
 
 -type describe_metadata_model_conversions_errors() ::
     resource_not_found_fault().
 
 -type describe_metadata_model_creations_errors() ::
-    access_denied_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    access_denied_fault().
 
 -type describe_metadata_model_exports_as_script_errors() ::
     resource_not_found_fault().
@@ -4004,31 +4004,31 @@
     resource_not_found_fault().
 
 -type describe_migration_projects_errors() ::
+    resource_not_found_fault() | 
     failed_dependency_fault() | 
-    access_denied_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type describe_pending_maintenance_actions_errors() ::
     resource_not_found_fault().
 
 -type describe_recommendation_limitations_errors() ::
-    access_denied_fault() | 
-    invalid_resource_state_fault().
+    invalid_resource_state_fault() | 
+    access_denied_fault().
 
 -type describe_recommendations_errors() ::
-    access_denied_fault() | 
-    invalid_resource_state_fault().
+    invalid_resource_state_fault() | 
+    access_denied_fault().
 
 -type describe_refresh_schemas_status_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type describe_replication_configs_errors() ::
     resource_not_found_fault().
 
 -type describe_replication_instance_task_logs_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type describe_replication_instances_errors() ::
     resource_not_found_fault().
@@ -4037,8 +4037,8 @@
     resource_not_found_fault().
 
 -type describe_replication_table_statistics_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type describe_replication_task_assessment_results_errors() ::
     resource_not_found_fault().
@@ -4056,21 +4056,21 @@
     resource_not_found_fault().
 
 -type describe_schemas_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type describe_table_statistics_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type export_metadata_model_assessment_errors() ::
     resource_not_found_fault().
 
 -type get_target_selection_rules_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type import_certificate_errors() ::
     resource_quota_exceeded_fault() | 
@@ -4079,254 +4079,254 @@
     invalid_certificate_fault().
 
 -type list_tags_for_resource_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type modify_conversion_configuration_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type modify_data_migration_errors() ::
-    failed_dependency_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    failed_dependency_fault().
 
 -type modify_data_provider_errors() ::
-    failed_dependency_fault() | 
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    failed_dependency_fault() | 
+    access_denied_fault().
 
 -type modify_endpoint_errors() ::
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type modify_event_subscription_errors() ::
-    kms_throttling_fault() | 
     s_n_s_no_authorization_fault() | 
-    resource_quota_exceeded_fault() | 
-    kms_disabled_fault() | 
     s_n_s_invalid_topic_fault() | 
+    resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
+    kms_throttling_fault() | 
     kms_not_found_fault() | 
-    kms_access_denied_fault() | 
     kms_invalid_state_fault() | 
-    access_denied_fault() | 
-    resource_not_found_fault().
+    kms_disabled_fault() | 
+    kms_access_denied_fault() | 
+    access_denied_fault().
 
 -type modify_instance_profile_errors() ::
     s3_resource_not_found_fault() | 
-    kms_key_not_accessible_fault() | 
     s3_access_denied_fault() | 
-    failed_dependency_fault() | 
-    access_denied_fault() | 
+    resource_not_found_fault() | 
+    kms_key_not_accessible_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    failed_dependency_fault() | 
+    access_denied_fault().
 
 -type modify_migration_project_errors() ::
     s3_resource_not_found_fault() | 
     s3_access_denied_fault() | 
-    failed_dependency_fault() | 
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    failed_dependency_fault() | 
+    access_denied_fault().
 
 -type modify_replication_config_errors() ::
-    kms_key_not_accessible_fault() | 
+    resource_not_found_fault() | 
     replication_subnet_group_does_not_cover_enough_a_zs() | 
+    kms_key_not_accessible_fault() | 
     invalid_subnet() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type modify_replication_instance_errors() ::
-    resource_already_exists_fault() | 
-    storage_quota_exceeded_fault() | 
-    insufficient_resource_capacity_fault() | 
-    access_denied_fault() | 
     upgrade_dependency_failure_fault() | 
+    storage_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
+    resource_already_exists_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    insufficient_resource_capacity_fault() | 
+    access_denied_fault().
 
 -type modify_replication_subnet_group_errors() ::
+    subnet_already_in_use() | 
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     replication_subnet_group_does_not_cover_enough_a_zs() | 
     invalid_subnet() | 
-    access_denied_fault() | 
-    subnet_already_in_use() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type modify_replication_task_errors() ::
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    invalid_resource_state_fault().
 
 -type move_replication_task_errors() ::
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     kms_key_not_accessible_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type reboot_replication_instance_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type refresh_schemas_errors() ::
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     kms_key_not_accessible_fault() | 
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    invalid_resource_state_fault().
 
 -type reload_replication_tables_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type reload_tables_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type remove_tags_from_resource_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type run_fleet_advisor_lsa_analysis_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type start_data_migration_errors() ::
     resource_quota_exceeded_fault() | 
-    invalid_operation_fault() | 
-    failed_dependency_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    invalid_operation_fault() | 
+    failed_dependency_fault().
 
 -type start_extension_pack_association_errors() ::
     s3_resource_not_found_fault() | 
+    s3_access_denied_fault() | 
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
-    s3_access_denied_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type start_metadata_model_assessment_errors() ::
     s3_resource_not_found_fault() | 
+    s3_access_denied_fault() | 
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
-    s3_access_denied_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type start_metadata_model_conversion_errors() ::
     s3_resource_not_found_fault() | 
+    s3_access_denied_fault() | 
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
-    s3_access_denied_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type start_metadata_model_creation_errors() ::
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
-    access_denied_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type start_metadata_model_export_as_script_errors() ::
     s3_resource_not_found_fault() | 
+    s3_access_denied_fault() | 
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
-    s3_access_denied_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type start_metadata_model_export_to_target_errors() ::
     s3_resource_not_found_fault() | 
+    s3_access_denied_fault() | 
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
-    s3_access_denied_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type start_metadata_model_import_errors() ::
     s3_resource_not_found_fault() | 
+    s3_access_denied_fault() | 
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     resource_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
-    s3_access_denied_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type start_recommendations_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type start_replication_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type start_replication_task_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type start_replication_task_assessment_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type start_replication_task_assessment_run_errors() ::
     s3_resource_not_found_fault() | 
-    kms_disabled_fault() | 
-    resource_already_exists_fault() | 
-    kms_key_not_accessible_fault() | 
     s3_access_denied_fault() | 
+    resource_not_found_fault() | 
+    resource_already_exists_fault() | 
     kms_not_found_fault() | 
-    kms_fault() | 
-    kms_access_denied_fault() | 
+    kms_key_not_accessible_fault() | 
     kms_invalid_state_fault() | 
-    access_denied_fault() | 
+    kms_fault() | 
+    kms_disabled_fault() | 
+    kms_access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type stop_data_migration_errors() ::
-    failed_dependency_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    failed_dependency_fault().
 
 -type stop_replication_errors() ::
-    access_denied_fault() | 
+    resource_not_found_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type stop_replication_task_errors() ::
-    invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    resource_not_found_fault() | 
+    invalid_resource_state_fault().
 
 -type test_connection_errors() ::
     resource_quota_exceeded_fault() | 
+    resource_not_found_fault() | 
     kms_key_not_accessible_fault() | 
-    access_denied_fault() | 
     invalid_resource_state_fault() | 
-    resource_not_found_fault().
+    access_denied_fault().
 
 -type update_subscriptions_to_event_bridge_errors() ::
-    access_denied_fault() | 
-    invalid_resource_state_fault().
+    invalid_resource_state_fault() | 
+    access_denied_fault().
 
 %%====================================================================
 %% API
@@ -4420,6 +4420,11 @@ batch_start_recommendations(Client, Input, Options)
 
 %% @doc Cancels a single metadata model conversion operation that was started
 %% with `StartMetadataModelConversion'.
+%%
+%% Required permissions:
+%% `dms:CancelMetadataModelConversion'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec cancel_metadata_model_conversion(aws_client:aws_client(), cancel_metadata_model_conversion_message()) ->
     {ok, cancel_metadata_model_conversion_response(), tuple()} |
     {error, any()} |
@@ -4438,6 +4443,11 @@ cancel_metadata_model_conversion(Client, Input, Options)
 
 %% @doc Cancels a single metadata model creation operation that was started
 %% with `StartMetadataModelCreation'.
+%%
+%% Required permissions:
+%% `dms:CancelMetadataModelCreation'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec cancel_metadata_model_creation(aws_client:aws_client(), cancel_metadata_model_creation_message()) ->
     {ok, cancel_metadata_model_creation_response(), tuple()} |
     {error, any()} |
@@ -4498,6 +4508,11 @@ create_data_migration(Client, Input, Options)
 %%
 %% A data provider stores a data store
 %% type and location information about your database.
+%%
+%% Required permissions:
+%% `dms:CreateDataProvider'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec create_data_provider(aws_client:aws_client(), create_data_provider_message()) ->
     {ok, create_data_provider_response(), tuple()} |
     {error, any()} |
@@ -4613,6 +4628,11 @@ create_fleet_advisor_collector(Client, Input, Options)
     request(Client, <<"CreateFleetAdvisorCollector">>, Input, Options).
 
 %% @doc Creates the instance profile using the specified parameters.
+%%
+%% Required permissions:
+%% `dms:CreateInstanceProfile'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec create_instance_profile(aws_client:aws_client(), create_instance_profile_message()) ->
     {ok, create_instance_profile_response(), tuple()} |
     {error, any()} |
@@ -4637,6 +4657,11 @@ create_instance_profile(Client, Input, Options)
 %% https://docs.aws.amazon.com/dms/latest/APIReference/API_CreateInstanceProfile.html
 %% and CreateDataProvider:
 %% https://docs.aws.amazon.com/dms/latest/APIReference/API_CreateDataProvider.html.
+%%
+%% Required permissions:
+%% `dms:CreateMigrationProject'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec create_migration_project(aws_client:aws_client(), create_migration_project_message()) ->
     {ok, create_migration_project_response(), tuple()} |
     {error, any()} |
@@ -4815,6 +4840,11 @@ delete_data_migration(Client, Input, Options)
 
 %% @doc Deletes the specified data provider.
 %%
+%% Required permissions:
+%% `dms:DeleteDataProvider'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
+%%
 %% All migration projects associated with the data provider must be deleted
 %% or modified
 %% before you can delete the data provider.
@@ -4930,6 +4960,11 @@ delete_fleet_advisor_databases(Client, Input, Options)
 
 %% @doc Deletes the specified instance profile.
 %%
+%% Required permissions:
+%% `dms:DeleteInstanceProfile'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
+%%
 %% All migration projects associated with the instance profile must be
 %% deleted or
 %% modified before you can delete the instance profile.
@@ -4950,6 +4985,11 @@ delete_instance_profile(Client, Input, Options)
     request(Client, <<"DeleteInstanceProfile">>, Input, Options).
 
 %% @doc Deletes the specified migration project.
+%%
+%% Required permissions:
+%% `dms:DeleteMigrationProject'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 %%
 %% The migration project must be closed before you can delete it.
 -spec delete_migration_project(aws_client:aws_client(), delete_migration_project_message()) ->
@@ -5186,6 +5226,11 @@ describe_connections(Client, Input, Options)
     request(Client, <<"DescribeConnections">>, Input, Options).
 
 %% @doc Returns configuration parameters for a schema conversion project.
+%%
+%% Required permissions:
+%% `dms:DescribeConversionConfiguration'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_conversion_configuration(aws_client:aws_client(), describe_conversion_configuration_message()) ->
     {ok, describe_conversion_configuration_response(), tuple()} |
     {error, any()} |
@@ -5222,6 +5267,11 @@ describe_data_migrations(Client, Input, Options)
 %% @doc Returns a paginated list of data providers for your account in the
 %% current
 %% region.
+%%
+%% Required permissions:
+%% `dms:ListDataProviders'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_data_providers(aws_client:aws_client(), describe_data_providers_message()) ->
     {ok, describe_data_providers_response(), tuple()} |
     {error, any()} |
@@ -5375,13 +5425,16 @@ describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
 
-%% @doc Returns a paginated list of extension pack associations for the
-%% specified migration
-%% project.
+%% @doc Returns a paginated list of extension pack installation requests for
+%% a migration
+%% project, initiated by
+%% StartExtensionPackAssociation:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartExtensionPackAssociation.html.
 %%
-%% An extension pack is an add-on module that emulates functions present in a
-%% source
-%% database that are required when converting objects to the target database.
+%% Required permissions:
+%% `dms:ListExtensionPacks'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_extension_pack_associations(aws_client:aws_client(), describe_extension_pack_associations_message()) ->
     {ok, describe_extension_pack_associations_response(), tuple()} |
     {error, any()}.
@@ -5543,6 +5596,11 @@ describe_fleet_advisor_schemas(Client, Input, Options)
 %% @doc Returns a paginated list of instance profiles for your account in the
 %% current
 %% region.
+%%
+%% Required permissions:
+%% `dms:ListInstanceProfiles'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_instance_profiles(aws_client:aws_client(), describe_instance_profiles_message()) ->
     {ok, describe_instance_profiles_response(), tuple()} |
     {error, any()} |
@@ -5562,6 +5620,11 @@ describe_instance_profiles(Client, Input, Options)
 %% @doc Gets detailed information about the specified metadata model,
 %% including its definition and corresponding converted objects in the target
 %% database if applicable.
+%%
+%% Required permissions:
+%% `dms:DescribeMetadataModel'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_metadata_model(aws_client:aws_client(), describe_metadata_model_message()) ->
     {ok, describe_metadata_model_response(), tuple()} |
     {error, any()} |
@@ -5578,9 +5641,16 @@ describe_metadata_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModel">>, Input, Options).
 
-%% @doc Returns a paginated list of metadata model assessments for your
-%% account in the current
-%% region.
+%% @doc Returns a paginated list of metadata model assessment requests for a
+%% migration
+%% project, initiated by
+%% StartMetadataModelAssessment:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelAssessment.html.
+%%
+%% Required permissions:
+%% `dms:ListMetadataModelAssessments'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_metadata_model_assessments(aws_client:aws_client(), describe_metadata_model_assessments_message()) ->
     {ok, describe_metadata_model_assessments_response(), tuple()} |
     {error, any()} |
@@ -5599,6 +5669,11 @@ describe_metadata_model_assessments(Client, Input, Options)
 
 %% @doc Gets a list of child metadata models for the specified metadata model
 %% in the database hierarchy.
+%%
+%% Required permissions:
+%% `dms:DescribeMetadataModelChildren'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_metadata_model_children(aws_client:aws_client(), describe_metadata_model_children_message()) ->
     {ok, describe_metadata_model_children_response(), tuple()} |
     {error, any()} |
@@ -5615,8 +5690,20 @@ describe_metadata_model_children(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModelChildren">>, Input, Options).
 
-%% @doc Returns a paginated list of metadata model conversions for a
-%% migration project.
+%% @doc Returns a paginated list of metadata model conversion requests for a
+%% migration
+%% project, initiated by
+%% StartMetadataModelConversion:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelConversion.html.
+%%
+%% To cancel a queued or in-progress request, call
+%% CancelMetadataModelConversion:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_CancelMetadataModelConversion.html.
+%%
+%% Required permissions:
+%% `dms:ListMetadataModelConversions'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_metadata_model_conversions(aws_client:aws_client(), describe_metadata_model_conversions_message()) ->
     {ok, describe_metadata_model_conversions_response(), tuple()} |
     {error, any()} |
@@ -5634,7 +5721,19 @@ describe_metadata_model_conversions(Client, Input, Options)
     request(Client, <<"DescribeMetadataModelConversions">>, Input, Options).
 
 %% @doc Returns a paginated list of metadata model creation requests for a
-%% migration project.
+%% migration
+%% project, initiated by
+%% StartMetadataModelCreation:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelCreation.html.
+%%
+%% To cancel a queued or in-progress request, call
+%% CancelMetadataModelCreation:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_CancelMetadataModelCreation.html.
+%%
+%% Required permissions:
+%% `dms:DescribeMetadataModelCreations'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_metadata_model_creations(aws_client:aws_client(), describe_metadata_model_creations_message()) ->
     {ok, describe_metadata_model_creations_response(), tuple()} |
     {error, any()} |
@@ -5651,7 +5750,16 @@ describe_metadata_model_creations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModelCreations">>, Input, Options).
 
-%% @doc Returns a paginated list of metadata model exports.
+%% @doc Returns a paginated list of metadata model export requests for a
+%% migration
+%% project, initiated by
+%% StartMetadataModelExportAsScript:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelExportAsScript.html.
+%%
+%% Required permissions:
+%% `dms:ListMetadataModelExports'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_metadata_model_exports_as_script(aws_client:aws_client(), describe_metadata_model_exports_as_script_message()) ->
     {ok, describe_metadata_model_exports_as_script_response(), tuple()} |
     {error, any()} |
@@ -5668,7 +5776,16 @@ describe_metadata_model_exports_as_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModelExportsAsScript">>, Input, Options).
 
-%% @doc Returns a paginated list of metadata model exports.
+%% @doc Returns a paginated list of metadata model export requests for a
+%% migration
+%% project, initiated by
+%% StartMetadataModelExportToTarget:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelExportToTarget.html.
+%%
+%% Required permissions:
+%% `dms:ListMetadataModelExports'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_metadata_model_exports_to_target(aws_client:aws_client(), describe_metadata_model_exports_to_target_message()) ->
     {ok, describe_metadata_model_exports_to_target_response(), tuple()} |
     {error, any()} |
@@ -5685,7 +5802,16 @@ describe_metadata_model_exports_to_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModelExportsToTarget">>, Input, Options).
 
-%% @doc Returns a paginated list of metadata model imports.
+%% @doc Returns a paginated list of metadata model import requests for a
+%% migration
+%% project, initiated by
+%% StartMetadataModelImport:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelImport.html.
+%%
+%% Required permissions:
+%% `dms:DescribeMetadataModelImports'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_metadata_model_imports(aws_client:aws_client(), describe_metadata_model_imports_message()) ->
     {ok, describe_metadata_model_imports_response(), tuple()} |
     {error, any()} |
@@ -5705,6 +5831,11 @@ describe_metadata_model_imports(Client, Input, Options)
 %% @doc Returns a paginated list of migration projects for your account in
 %% the current
 %% region.
+%%
+%% Required permissions:
+%% `dms:ListMigrationProjects'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec describe_migration_projects(aws_client:aws_client(), describe_migration_projects_message()) ->
     {ok, describe_migration_projects_response(), tuple()} |
     {error, any()} |
@@ -6087,6 +6218,11 @@ describe_table_statistics(Client, Input, Options)
 %% DMS can
 %% save your assessment report as a comma-separated value (CSV) or a PDF
 %% file.
+%%
+%% Required permissions:
+%% `dms:ExportMetadataModelAssessment'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec export_metadata_model_assessment(aws_client:aws_client(), export_metadata_model_assessment_message()) ->
     {ok, export_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
@@ -6105,6 +6241,11 @@ export_metadata_model_assessment(Client, Input, Options)
 
 %% @doc Converts source selection rules into their target counterparts for
 %% schema conversion operations.
+%%
+%% Required permissions:
+%% `dms:GetTargetSelectionRules'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec get_target_selection_rules(aws_client:aws_client(), get_target_selection_rules_message()) ->
     {ok, get_target_selection_rules_response(), tuple()} |
     {error, any()} |
@@ -6164,6 +6305,11 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Modifies the specified schema conversion configuration using the
 %% provided parameters.
+%%
+%% Required permissions:
+%% `dms:UpdateConversionConfiguration'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec modify_conversion_configuration(aws_client:aws_client(), modify_conversion_configuration_message()) ->
     {ok, modify_conversion_configuration_response(), tuple()} |
     {error, any()} |
@@ -6198,6 +6344,11 @@ modify_data_migration(Client, Input, Options)
     request(Client, <<"ModifyDataMigration">>, Input, Options).
 
 %% @doc Modifies the specified data provider using the provided settings.
+%%
+%% Required permissions:
+%% `dms:UpdateDataProvider'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 %%
 %% You must remove the data provider from all migration projects before you
 %% can modify
@@ -6266,6 +6417,11 @@ modify_event_subscription(Client, Input, Options)
 %% @doc Modifies the specified instance profile using the provided
 %% parameters.
 %%
+%% Required permissions:
+%% `dms:UpdateInstanceProfile'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
+%%
 %% All migration projects associated with the instance profile must be
 %% deleted or
 %% modified before you can modify the instance profile.
@@ -6287,6 +6443,11 @@ modify_instance_profile(Client, Input, Options)
 
 %% @doc Modifies the specified migration project using the provided
 %% parameters.
+%%
+%% Required permissions:
+%% `dms:UpdateMigrationProject'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 %%
 %% The migration project must be closed before you can modify it.
 -spec modify_migration_project(aws_client:aws_client(), modify_migration_project_message()) ->
@@ -6582,12 +6743,34 @@ start_data_migration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDataMigration">>, Input, Options).
 
-%% @doc Applies the extension pack to your target database.
+%% @doc Queues the installation of the extension pack on your target
+%% database.
 %%
-%% An extension pack is an add-on
-%% module that emulates functions present in a source database that are
-%% required when
-%% converting objects to the target database.
+%% If other
+%% requests created by `Start*' operations are already in the migration
+%% project's
+%% queue, the installation begins after they complete.
+%%
+%% This operation requires a non-virtual target data provider.
+%%
+%% If the extension pack already exists, the operation reinstalls it. To
+%% ensure
+%% compatibility, reconvert your database objects if the version has changed
+%% since your last
+%% conversion. For more information, see Using extension packs in DMS Schema
+%% Conversion:
+%% https://docs.aws.amazon.com/dms/latest/userguide/extension-pack.html.
+%%
+%% To check the status of the request, call
+%% DescribeExtensionPackAssociations:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_DescribeExtensionPackAssociations.html
+%% using the returned
+%% `RequestIdentifier' as a filter.
+%%
+%% Required permissions:
+%% `dms:AssociateExtensionPack'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec start_extension_pack_association(aws_client:aws_client(), start_extension_pack_association_message()) ->
     {ok, start_extension_pack_association_response(), tuple()} |
     {error, any()} |
@@ -6604,14 +6787,40 @@ start_extension_pack_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartExtensionPackAssociation">>, Input, Options).
 
-%% @doc Creates a database migration assessment report by assessing the
-%% migration complexity for
-%% your source database.
+%% @doc Queues an assessment of the selected source metadata models (database
+%% objects such as
+%% tables, views, and procedures) to evaluate conversion complexity to the
+%% target database
+%% format.
 %%
-%% A database migration assessment report summarizes all of the schema
-%% conversion tasks. It also details the action items for database objects
-%% that can't be
-%% converted to the database engine of your target database instance.
+%% If other requests created by `Start*' operations are already in the
+%% migration project's queue, the assessment begins after they complete.
+%%
+%% The assessment request loads metadata models that are not yet in the
+%% metadata tree, but
+%% does not reload metadata models that are already present. If your source
+%% database has
+%% changed since the metadata was loaded, refresh the affected metadata
+%% models with
+%% StartMetadataModelImport:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelImport.html
+%% before calling this operation.
+%%
+%% To check the status of the assessment request, call
+%% DescribeMetadataModelAssessments:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_DescribeMetadataModelAssessments.html
+%% using the returned
+%% `RequestIdentifier' as a filter.
+%%
+%% To export the conversion assessment report after the request completes
+%% successfully,
+%% call ExportMetadataModelAssessment:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_ExportMetadataModelAssessment.html.
+%%
+%% Required permissions:
+%% `dms:StartMetadataModelAssessment'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec start_metadata_model_assessment(aws_client:aws_client(), start_metadata_model_assessment_message()) ->
     {ok, start_metadata_model_assessment_response(), tuple()} |
     {error, any()} |
@@ -6628,8 +6837,72 @@ start_metadata_model_assessment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelAssessment">>, Input, Options).
 
-%% @doc Converts your source database objects to a format compatible with the
+%% @doc Queues a conversion of the selected source metadata models (database
+%% objects such as
+%% tables, views, and procedures) to the target database format.
+%%
+%% If other requests created
+%% by `Start*' operations are already in the migration project's
+%% queue, the
+%% conversion begins after they complete.
+%%
+%% The conversion request loads metadata models that are not yet in the
+%% metadata tree, but
+%% does not reload metadata models that are already present. If your source
+%% database has
+%% changed since the metadata was loaded, refresh the affected metadata
+%% models with
+%% StartMetadataModelImport:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelImport.html
+%% before calling this operation.
+%%
+%% If converted objects already exist in the target metadata tree, the
+%% conversion
+%% overwrites them, including any manual edits.
+%%
+%% To check the status of the conversion request, call
+%% DescribeMetadataModelConversions:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_DescribeMetadataModelConversions.html
+%% using the returned
+%% `RequestIdentifier' as a filter.
+%%
+%% To cancel a queued or in-progress request, call
+%% CancelMetadataModelConversion:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_CancelMetadataModelConversion.html
+%% with the returned
+%% `RequestIdentifier'.
+%%
+%% After the conversion completes successfully:
+%%
+%% To export a post-conversion assessment report, call
+%% ExportMetadataModelAssessment:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_ExportMetadataModelAssessment.html.
+%%
+%% To retrieve converted code, use any of the following
+%% options:
+%%
+%% DescribeMetadataModel:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_DescribeMetadataModel.html
+%% and
+%% DescribeMetadataModelChildren:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_DescribeMetadataModelChildren.html
+%% – navigate the target metadata
+%% tree and retrieve converted definitions.
+%%
+%% StartMetadataModelExportAsScript:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelExportAsScript.html
+%% – export as data definition
+%% language (DDL) scripts to your Amazon S3 bucket.
+%%
+%% StartMetadataModelExportToTarget:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelExportToTarget.html
+%% – apply directly to your
 %% target database.
+%%
+%% Required permissions:
+%% `dms:StartMetadataModelConversion'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec start_metadata_model_conversion(aws_client:aws_client(), start_metadata_model_conversion_message()) ->
     {ok, start_metadata_model_conversion_response(), tuple()} |
     {error, any()} |
@@ -6646,11 +6919,48 @@ start_metadata_model_conversion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelConversion">>, Input, Options).
 
-%% @doc Creates source metadata model of the given type with the specified
-%% properties for schema conversion operations.
+%% @doc Queues the creation of a metadata model in the source metadata tree.
 %%
-%% This action supports only these directions: from SQL Server to Aurora
-%% PostgreSQL, or from SQL Server to RDS for PostgreSQL.
+%% If other requests
+%% created by `Start*' operations are already in the migration
+%% project's queue, the
+%% creation begins after they complete.
+%%
+%% This operation supports only Microsoft SQL Server to Aurora PostgreSQL and
+%% Microsoft SQL Server to Amazon RDS for PostgreSQL conversion paths.
+%%
+%% To check the status of the creation request, call
+%% DescribeMetadataModelCreations:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_DescribeMetadataModelCreations.html
+%% using the returned
+%% `RequestIdentifier' as a filter.
+%%
+%% To cancel a queued or in-progress request, call
+%% CancelMetadataModelCreation:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_CancelMetadataModelCreation.html
+%% with the returned
+%% `RequestIdentifier'.
+%%
+%% Calling
+%% StartMetadataModelImport:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelImport.html
+%% with `Refresh' deletes metadata models
+%% created by this operation.
+%%
+%% After the creation completes successfully:
+%%
+%% To evaluate conversion complexity, call
+%% StartMetadataModelAssessment:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelAssessment.html.
+%%
+%% To convert to the target database format, call
+%% StartMetadataModelConversion:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_StartMetadataModelConversion.html.
+%%
+%% Required permissions:
+%% `dms:StartMetadataModelCreation'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec start_metadata_model_creation(aws_client:aws_client(), start_metadata_model_creation_message()) ->
     {ok, start_metadata_model_creation_response(), tuple()} |
     {error, any()} |
@@ -6667,9 +6977,33 @@ start_metadata_model_creation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelCreation">>, Input, Options).
 
-%% @doc Saves your converted code to a file as a SQL script, and stores this
-%% file on your Amazon S3
-%% bucket.
+%% @doc Queues an export of metadata models (database objects such as tables,
+%% views, and
+%% procedures) as a data definition language (DDL) script.
+%%
+%% The script is stored as a ZIP
+%% archive in the Amazon S3 bucket associated with the migration project. If
+%% other requests
+%% created by `Start*' operations are already in the migration
+%% project's queue,
+%% the export begins after they complete.
+%%
+%% When exporting from the target metadata tree, the export applies only to
+%% metadata
+%% models created by conversion. Metadata models imported from the database
+%% are
+%% skipped.
+%%
+%% To check the status of the export request, call
+%% DescribeMetadataModelExportsAsScript:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_DescribeMetadataModelExportsAsScript.html
+%% using the returned
+%% `RequestIdentifier' as a filter.
+%%
+%% Required permissions:
+%% `dms:StartMetadataModelExportAsScripts'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec start_metadata_model_export_as_script(aws_client:aws_client(), start_metadata_model_export_as_script_message()) ->
     {ok, start_metadata_model_export_as_script_response(), tuple()} |
     {error, any()} |
@@ -6686,7 +7020,39 @@ start_metadata_model_export_as_script(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelExportAsScript">>, Input, Options).
 
-%% @doc Applies converted database objects to your target database.
+%% @doc Queues an export of the selected converted metadata models (database
+%% objects such as
+%% tables, views, and procedures) to your target database.
+%%
+%% If other requests created by
+%% `Start*' operations are already in the migration project's queue,
+%% the export
+%% begins after they complete.
+%%
+%% This operation requires a non-virtual target data provider.
+%%
+%% The export applies only metadata models created by conversion. Metadata
+%% models
+%% imported from the database are skipped.
+%%
+%% If objects with the same name already exist on the target database, the
+%% export
+%% overwrites them.
+%%
+%% The operation installs the extension pack on the target database. For more
+%% information, see Using extension packs in DMS Schema Conversion:
+%% https://docs.aws.amazon.com/dms/latest/userguide/extension-pack.html.
+%%
+%% To check the status of the export request, call
+%% DescribeMetadataModelExportsToTarget:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_DescribeMetadataModelExportsToTarget.html
+%% using the returned
+%% `RequestIdentifier' as a filter.
+%%
+%% Required permissions:
+%% `dms:StartMetadataModelExportToTarget'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec start_metadata_model_export_to_target(aws_client:aws_client(), start_metadata_model_export_to_target_message()) ->
     {ok, start_metadata_model_export_to_target_response(), tuple()} |
     {error, any()} |
@@ -6703,12 +7069,25 @@ start_metadata_model_export_to_target(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelExportToTarget">>, Input, Options).
 
-%% @doc Loads the metadata for all the dependent database objects of the
-%% parent object.
+%% @doc Queues an import of metadata models (database objects such as tables,
+%% views, and
+%% procedures) from your data provider into the metadata tree.
 %%
-%% This operation uses your project's Amazon S3 bucket as a metadata
-%% cache to improve
-%% performance.
+%% If other requests created
+%% by `Start*' operations are already in the migration project's
+%% queue, the
+%% import begins after they complete.
+%%
+%% To check the status of the import request, call
+%% DescribeMetadataModelImports:
+%% https://docs.aws.amazon.com/dms/latest/APIReference/API_DescribeMetadataModelImports.html
+%% using the returned
+%% `RequestIdentifier' as a filter.
+%%
+%% Required permissions:
+%% `dms:StartMetadataModelImport'. For more information, see
+%% Actions, resources, and condition keys for Database Migration Service:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsdatabasemigrationservice.html.
 -spec start_metadata_model_import(aws_client:aws_client(), start_metadata_model_import_message()) ->
     {ok, start_metadata_model_import_response(), tuple()} |
     {error, any()} |

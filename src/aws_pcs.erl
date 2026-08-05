@@ -74,40 +74,10 @@
 
 
 %% Example:
-%% get_queue_response() :: #{
-%%   <<"queue">> => queue()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type get_queue_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_queues_request() :: #{
-%%   <<"clusterIdentifier">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_queues_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_compute_node_group_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"clusterIdentifier">> := string(),
-%%   <<"computeNodeGroupIdentifier">> := string()
-%% }
--type delete_compute_node_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% slurm_custom_setting() :: #{
-%%   <<"parameterName">> => [string()],
-%%   <<"parameterValue">> => [string()]
-%% }
--type slurm_custom_setting() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% accounting() :: #{
@@ -117,234 +87,18 @@
 -type accounting() :: #{binary() => any()}.
 
 %% Example:
+%% accounting_request() :: #{
+%%   <<"defaultPurgeTimeInDays">> => [integer()],
+%%   <<"mode">> => list(any())
+%% }
+-type accounting_request() :: #{binary() => any()}.
+
+%% Example:
 %% cgroup_custom_setting() :: #{
 %%   <<"parameterName">> => [string()],
 %%   <<"parameterValue">> => [string()]
 %% }
 -type cgroup_custom_setting() :: #{binary() => any()}.
-
-%% Example:
-%% slurm_rest_request() :: #{
-%%   <<"mode">> => list(any())
-%% }
--type slurm_rest_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_response() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type create_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_slurm_configuration_request() :: #{
-%%   <<"accounting">> => update_accounting_request(),
-%%   <<"cgroupCustomSettings">> => list(cgroup_custom_setting()),
-%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
-%%   <<"slurmRest">> => update_slurm_rest_request(),
-%%   <<"slurmdbdCustomSettings">> => list(slurmdbd_custom_setting())
-%% }
--type update_cluster_slurm_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% compute_node_group_configuration() :: #{
-%%   <<"computeNodeGroupId">> => [string()]
-%% }
--type compute_node_group_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% networking() :: #{
-%%   <<"networkType">> => list(any()),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string())
-%% }
--type networking() :: #{binary() => any()}.
-
-%% Example:
-%% update_accounting_request() :: #{
-%%   <<"defaultPurgeTimeInDays">> => [integer()],
-%%   <<"mode">> => list(any())
-%% }
--type update_accounting_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_cluster_response() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type get_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% queue() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"clusterId">> => [string()],
-%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"errorInfo">> => list(error_info()),
-%%   <<"id">> => [string()],
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"slurmConfiguration">> => queue_slurm_configuration(),
-%%   <<"status">> => list(any())
-%% }
--type queue() :: #{binary() => any()}.
-
-%% Example:
-%% error_info() :: #{
-%%   <<"code">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type error_info() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_queue_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"clusterIdentifier">> := string(),
-%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()),
-%%   <<"queueIdentifier">> := string(),
-%%   <<"slurmConfiguration">> => update_queue_slurm_configuration_request()
-%% }
--type update_queue_request() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_slurm_configuration() :: #{
-%%   <<"accounting">> => accounting(),
-%%   <<"authKey">> => slurm_auth_key(),
-%%   <<"cgroupCustomSettings">> => list(cgroup_custom_setting()),
-%%   <<"jwtAuth">> => jwt_auth(),
-%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
-%%   <<"slurmRest">> => slurm_rest(),
-%%   <<"slurmdbdCustomSettings">> => list(slurmdbd_custom_setting())
-%% }
--type cluster_slurm_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% queue_slurm_configuration() :: #{
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
-%% }
--type queue_slurm_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_cluster_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"clusterIdentifier">> := string(),
-%%   <<"scheduler">> => update_scheduler_request(),
-%%   <<"slurmConfiguration">> => update_cluster_slurm_configuration_request()
-%% }
--type update_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_compute_node_group_response() :: #{
-%%   <<"computeNodeGroup">> => compute_node_group()
-%% }
--type get_compute_node_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% queue_summary() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"clusterId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"id">> => [string()],
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type queue_summary() :: #{binary() => any()}.
-
-%% Example:
-%% cluster_summary() :: #{
-%%   <<"arn">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"id">> => [string()],
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"name">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type cluster_summary() :: #{binary() => any()}.
-
-%% Example:
-%% scheduler_request() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"version">> => [string()]
-%% }
--type scheduler_request() :: #{binary() => any()}.
-
-%% Example:
-%% compute_node_group() :: #{
-%%   <<"amiId">> => string(),
-%%   <<"arn">> => [string()],
-%%   <<"clusterId">> => [string()],
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"customLaunchTemplate">> => custom_launch_template(),
-%%   <<"errorInfo">> => list(error_info()),
-%%   <<"iamInstanceProfileArn">> => string(),
-%%   <<"id">> => [string()],
-%%   <<"instanceConfigs">> => list(instance_config()),
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"purchaseOption">> => list(any()),
-%%   <<"scalingConfiguration">> => scaling_configuration(),
-%%   <<"slurmConfiguration">> => compute_node_group_slurm_configuration(),
-%%   <<"spotOptions">> => spot_options(),
-%%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string())
-%% }
--type compute_node_group() :: #{binary() => any()}.
-
-%% Example:
-%% create_cluster_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"clusterName">> := string(),
-%%   <<"networking">> := networking_request(),
-%%   <<"scheduler">> := scheduler_request(),
-%%   <<"size">> := list(any()),
-%%   <<"slurmConfiguration">> => cluster_slurm_configuration_request(),
-%%   <<"tags">> => map()
-%% }
--type create_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_compute_node_group_instance_response() :: #{
-%%   <<"endpoints">> => list(endpoint()),
-%%   <<"nodeID">> => [string()],
-%%   <<"sharedSecret">> => string()
-%% }
--type register_compute_node_group_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_queue_request() :: #{
-%%   <<"clusterIdentifier">> := string(),
-%%   <<"queueIdentifier">> := string()
-%% }
--type get_queue_request() :: #{binary() => any()}.
 
 %% Example:
 %% cluster() :: #{
@@ -364,208 +118,17 @@
 -type cluster() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_configuration_request() :: #{
-%%   <<"maxInstanceCount">> => [integer()],
-%%   <<"minInstanceCount">> => [integer()]
-%% }
--type scaling_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_compute_node_group_slurm_configuration_request() :: #{
+%% cluster_slurm_configuration() :: #{
+%%   <<"accounting">> => accounting(),
+%%   <<"authKey">> => slurm_auth_key(),
+%%   <<"cgroupCustomSettings">> => list(cgroup_custom_setting()),
+%%   <<"jwtAuth">> => jwt_auth(),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
+%%   <<"slurmRest">> => slurm_rest(),
+%%   <<"slurmdbdCustomSettings">> => list(slurmdbd_custom_setting())
 %% }
--type update_compute_node_group_slurm_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% jwt_auth() :: #{
-%%   <<"jwtKey">> => jwt_key()
-%% }
--type jwt_auth() :: #{binary() => any()}.
-
-%% Example:
-%% register_compute_node_group_instance_request() :: #{
-%%   <<"bootstrapId">> := string(),
-%%   <<"clusterIdentifier">> := string()
-%% }
--type register_compute_node_group_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_scheduler_request() :: #{
-%%   <<"version">> => [string()]
-%% }
--type update_scheduler_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_compute_node_groups_response() :: #{
-%%   <<"computeNodeGroups">> => list(compute_node_group_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_compute_node_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_compute_node_group_request() :: #{
-%%   <<"clusterIdentifier">> := string(),
-%%   <<"computeNodeGroupIdentifier">> := string()
-%% }
--type get_compute_node_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_compute_node_group_request() :: #{
-%%   <<"amiId">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"clusterIdentifier">> := string(),
-%%   <<"computeNodeGroupIdentifier">> := string(),
-%%   <<"customLaunchTemplate">> => custom_launch_template(),
-%%   <<"iamInstanceProfileArn">> => string(),
-%%   <<"purchaseOption">> => list(any()),
-%%   <<"scalingConfiguration">> => scaling_configuration_request(),
-%%   <<"slurmConfiguration">> => update_compute_node_group_slurm_configuration_request(),
-%%   <<"spotOptions">> => spot_options(),
-%%   <<"subnetIds">> => list([string()]())
-%% }
--type update_compute_node_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% compute_node_group_slurm_configuration_request() :: #{
-%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
-%% }
--type compute_node_group_slurm_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% spot_options() :: #{
-%%   <<"allocationStrategy">> => list(any())
-%% }
--type spot_options() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% create_queue_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"clusterIdentifier">> := string(),
-%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()),
-%%   <<"queueName">> := string(),
-%%   <<"slurmConfiguration">> => queue_slurm_configuration_request(),
-%%   <<"tags">> => map()
-%% }
--type create_queue_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_clusters_response() :: #{
-%%   <<"clusters">> => list(cluster_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_clusters_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_compute_node_group_response() :: #{
-%%   <<"computeNodeGroup">> => compute_node_group()
-%% }
--type update_compute_node_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_response() :: #{
-
-%% }
--type delete_cluster_response() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"ipv6Address">> => [string()],
-%%   <<"port">> => [string()],
-%%   <<"privateIpAddress">> => [string()],
-%%   <<"publicIpAddress">> => [string()],
-%%   <<"type">> => list(any())
-%% }
--type endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% list_clusters_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_clusters_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% compute_node_group_slurm_configuration() :: #{
-%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
-%% }
--type compute_node_group_slurm_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"clusterIdentifier">> := string()
-%% }
--type delete_cluster_request() :: #{binary() => any()}.
-
-%% Example:
-%% slurm_rest() :: #{
-%%   <<"mode">> => list(any())
-%% }
--type slurm_rest() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_slurm_rest_request() :: #{
-%%   <<"mode">> => list(any())
-%% }
--type update_slurm_rest_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% accounting_request() :: #{
-%%   <<"defaultPurgeTimeInDays">> => [integer()],
-%%   <<"mode">> => list(any())
-%% }
--type accounting_request() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_configuration() :: #{
-%%   <<"maxInstanceCount">> => [integer()],
-%%   <<"minInstanceCount">> => [integer()]
-%% }
--type scaling_configuration() :: #{binary() => any()}.
+-type cluster_slurm_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_slurm_configuration_request() :: #{
@@ -579,137 +142,58 @@
 -type cluster_slurm_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% scheduler() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"version">> => [string()]
+%% cluster_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"id">> => [string()],
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"name">> => [string()],
+%%   <<"status">> => list(any())
 %% }
--type scheduler() :: #{binary() => any()}.
+-type cluster_summary() :: #{binary() => any()}.
 
 %% Example:
-%% jwt_key() :: #{
-%%   <<"secretArn">> => [string()],
-%%   <<"secretVersion">> => [string()]
-%% }
--type jwt_key() :: #{binary() => any()}.
-
-%% Example:
-%% update_queue_slurm_configuration_request() :: #{
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
-%% }
--type update_queue_slurm_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_compute_node_group_response() :: #{
-%%   <<"computeNodeGroup">> => compute_node_group()
-%% }
--type create_compute_node_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_config() :: #{
-%%   <<"instanceType">> => [string()]
-%% }
--type instance_config() :: #{binary() => any()}.
-
-%% Example:
-%% slurmdbd_custom_setting() :: #{
-%%   <<"parameterName">> => [string()],
-%%   <<"parameterValue">> => [string()]
-%% }
--type slurmdbd_custom_setting() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% queue_slurm_configuration_request() :: #{
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
-%% }
--type queue_slurm_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_compute_node_group_response() :: #{
-
-%% }
--type delete_compute_node_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_queues_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"queues">> => list(queue_summary())
-%% }
--type list_queues_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_compute_node_groups_request() :: #{
-%%   <<"clusterIdentifier">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_compute_node_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_queue_response() :: #{
-%%   <<"queue">> => queue()
-%% }
--type update_queue_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_queue_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"clusterIdentifier">> := string(),
-%%   <<"queueIdentifier">> := string()
-%% }
--type delete_queue_request() :: #{binary() => any()}.
-
-%% Example:
-%% networking_request() :: #{
-%%   <<"networkType">> => list(any()),
-%%   <<"securityGroupIds">> => list(string()),
+%% compute_node_group() :: #{
+%%   <<"amiId">> => string(),
+%%   <<"arn">> => [string()],
+%%   <<"clusterId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"customLaunchTemplate">> => custom_launch_template(),
+%%   <<"errorInfo">> => list(error_info()),
+%%   <<"iamInstanceProfileArn">> => string(),
+%%   <<"id">> => [string()],
+%%   <<"instanceConfigs">> => list(instance_config()),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"nodeLifecycleActions">> => node_lifecycle_actions(),
+%%   <<"purchaseOption">> => list(any()),
+%%   <<"scalingConfiguration">> => scaling_configuration(),
+%%   <<"slurmConfiguration">> => compute_node_group_slurm_configuration(),
+%%   <<"spotOptions">> => spot_options(),
+%%   <<"status">> => list(any()),
 %%   <<"subnetIds">> => list(string())
 %% }
--type networking_request() :: #{binary() => any()}.
+-type compute_node_group() :: #{binary() => any()}.
 
 %% Example:
-%% create_compute_node_group_request() :: #{
-%%   <<"amiId">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"clusterIdentifier">> := string(),
-%%   <<"computeNodeGroupName">> := string(),
-%%   <<"customLaunchTemplate">> := custom_launch_template(),
-%%   <<"iamInstanceProfileArn">> := string(),
-%%   <<"instanceConfigs">> := list(instance_config()),
-%%   <<"purchaseOption">> => list(any()),
-%%   <<"scalingConfiguration">> := scaling_configuration_request(),
-%%   <<"slurmConfiguration">> => compute_node_group_slurm_configuration_request(),
-%%   <<"spotOptions">> => spot_options(),
-%%   <<"subnetIds">> := list([string()]()),
-%%   <<"tags">> => map()
+%% compute_node_group_configuration() :: #{
+%%   <<"computeNodeGroupId">> => [string()]
 %% }
--type create_compute_node_group_request() :: #{binary() => any()}.
+-type compute_node_group_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% delete_queue_response() :: #{
-
+%% compute_node_group_slurm_configuration() :: #{
+%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
--type delete_queue_response() :: #{binary() => any()}.
+-type compute_node_group_slurm_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% compute_node_group_slurm_configuration_request() :: #{
+%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%% }
+-type compute_node_group_slurm_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% compute_node_group_summary() :: #{
@@ -724,17 +208,72 @@
 -type compute_node_group_summary() :: #{binary() => any()}.
 
 %% Example:
-%% get_cluster_request() :: #{
-%%   <<"clusterIdentifier">> := string()
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type get_cluster_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% slurm_auth_key() :: #{
-%%   <<"secretArn">> => [string()],
-%%   <<"secretVersion">> => [string()]
+%% create_cluster_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"clusterName">> := string(),
+%%   <<"networking">> := networking_request(),
+%%   <<"scheduler">> := scheduler_request(),
+%%   <<"size">> := list(any()),
+%%   <<"slurmConfiguration">> => cluster_slurm_configuration_request(),
+%%   <<"tags">> => map()
 %% }
--type slurm_auth_key() :: #{binary() => any()}.
+-type create_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type create_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_compute_node_group_request() :: #{
+%%   <<"amiId">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"computeNodeGroupName">> := string(),
+%%   <<"customLaunchTemplate">> := custom_launch_template(),
+%%   <<"iamInstanceProfileArn">> := string(),
+%%   <<"instanceConfigs">> := list(instance_config()),
+%%   <<"nodeLifecycleActions">> => node_lifecycle_actions_request(),
+%%   <<"purchaseOption">> => list(any()),
+%%   <<"scalingConfiguration">> := scaling_configuration_request(),
+%%   <<"slurmConfiguration">> => compute_node_group_slurm_configuration_request(),
+%%   <<"spotOptions">> => spot_options(),
+%%   <<"subnetIds">> := list([string()]()),
+%%   <<"tags">> => map()
+%% }
+-type create_compute_node_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_compute_node_group_response() :: #{
+%%   <<"computeNodeGroup">> => compute_node_group()
+%% }
+-type create_compute_node_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_queue_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()),
+%%   <<"queueName">> := string(),
+%%   <<"slurmConfiguration">> => queue_slurm_configuration_request(),
+%%   <<"tags">> => map()
+%% }
+-type create_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_queue_response() :: #{
+%%   <<"queue">> => queue()
+%% }
+-type create_queue_response() :: #{binary() => any()}.
 
 %% Example:
 %% custom_launch_template() :: #{
@@ -744,10 +283,427 @@
 -type custom_launch_template() :: #{binary() => any()}.
 
 %% Example:
-%% create_queue_response() :: #{
+%% delete_cluster_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"clusterIdentifier">> := string()
+%% }
+-type delete_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_response() :: #{
+
+%% }
+-type delete_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_compute_node_group_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"computeNodeGroupIdentifier">> := string()
+%% }
+-type delete_compute_node_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_compute_node_group_response() :: #{
+
+%% }
+-type delete_compute_node_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_queue_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"queueIdentifier">> := string()
+%% }
+-type delete_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_queue_response() :: #{
+
+%% }
+-type delete_queue_response() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"ipv6Address">> => [string()],
+%%   <<"port">> => [string()],
+%%   <<"privateIpAddress">> => [string()],
+%%   <<"publicIpAddress">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% error_info() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type error_info() :: #{binary() => any()}.
+
+%% Example:
+%% get_cluster_request() :: #{
+%%   <<"clusterIdentifier">> := string()
+%% }
+-type get_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type get_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_compute_node_group_request() :: #{
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"computeNodeGroupIdentifier">> := string()
+%% }
+-type get_compute_node_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_compute_node_group_response() :: #{
+%%   <<"computeNodeGroup">> => compute_node_group()
+%% }
+-type get_compute_node_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_request() :: #{
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"queueIdentifier">> := string()
+%% }
+-type get_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_response() :: #{
 %%   <<"queue">> => queue()
 %% }
--type create_queue_response() :: #{binary() => any()}.
+-type get_queue_response() :: #{binary() => any()}.
+
+%% Example:
+%% instance_config() :: #{
+%%   <<"instanceType">> => [string()]
+%% }
+-type instance_config() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% jwt_auth() :: #{
+%%   <<"jwtKey">> => jwt_key()
+%% }
+-type jwt_auth() :: #{binary() => any()}.
+
+%% Example:
+%% jwt_key() :: #{
+%%   <<"secretArn">> => [string()],
+%%   <<"secretVersion">> => [string()]
+%% }
+-type jwt_key() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_clusters_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_clusters_response() :: #{
+%%   <<"clusters">> => list(cluster_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_clusters_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_compute_node_groups_request() :: #{
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_compute_node_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_compute_node_groups_response() :: #{
+%%   <<"computeNodeGroups">> => list(compute_node_group_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_compute_node_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_queues_request() :: #{
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_queues_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_queues_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"queues">> => list(queue_summary())
+%% }
+-type list_queues_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% networking() :: #{
+%%   <<"networkType">> => list(any()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
+%% }
+-type networking() :: #{binary() => any()}.
+
+%% Example:
+%% networking_request() :: #{
+%%   <<"networkType">> => list(any()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
+%% }
+-type networking_request() :: #{binary() => any()}.
+
+%% Example:
+%% node_lifecycle_actions() :: #{
+%%   <<"scriptCachingPolicy">> => list(any()),
+%%   <<"stages">> => node_lifecycle_stages()
+%% }
+-type node_lifecycle_actions() :: #{binary() => any()}.
+
+%% Example:
+%% node_lifecycle_actions_request() :: #{
+%%   <<"scriptCachingPolicy">> => list(any()),
+%%   <<"stages">> => node_lifecycle_stages()
+%% }
+-type node_lifecycle_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% node_lifecycle_script() :: #{
+%%   <<"arguments">> => list(string()),
+%%   <<"executionPolicy">> => list(any()),
+%%   <<"name">> => [string()],
+%%   <<"onError">> => list(any()),
+%%   <<"scriptSource">> => script_source()
+%% }
+-type node_lifecycle_script() :: #{binary() => any()}.
+
+%% Example:
+%% node_lifecycle_stages() :: #{
+%%   <<"nodeBootstrapped">> => list(node_lifecycle_script()),
+%%   <<"nodeReady">> => list(node_lifecycle_script())
+%% }
+-type node_lifecycle_stages() :: #{binary() => any()}.
+
+%% Example:
+%% queue() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"clusterId">> => [string()],
+%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"errorInfo">> => list(error_info()),
+%%   <<"id">> => [string()],
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"slurmConfiguration">> => queue_slurm_configuration(),
+%%   <<"status">> => list(any())
+%% }
+-type queue() :: #{binary() => any()}.
+
+%% Example:
+%% queue_slurm_configuration() :: #{
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%% }
+-type queue_slurm_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% queue_slurm_configuration_request() :: #{
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%% }
+-type queue_slurm_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% queue_summary() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"clusterId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"id">> => [string()],
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type queue_summary() :: #{binary() => any()}.
+
+%% Example:
+%% register_compute_node_group_instance_request() :: #{
+%%   <<"bootstrapId">> := string(),
+%%   <<"clusterIdentifier">> := string()
+%% }
+-type register_compute_node_group_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_compute_node_group_instance_response() :: #{
+%%   <<"clusterName">> => [string()],
+%%   <<"computeNodeGroupId">> => [string()],
+%%   <<"computeNodeGroupName">> => [string()],
+%%   <<"endpoints">> => list(endpoint()),
+%%   <<"nodeID">> => [string()],
+%%   <<"nodeLifecycleActions">> => node_lifecycle_actions(),
+%%   <<"sharedSecret">> => string()
+%% }
+-type register_compute_node_group_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_configuration() :: #{
+%%   <<"maxInstanceCount">> => [integer()],
+%%   <<"minInstanceCount">> => [integer()]
+%% }
+-type scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_configuration_request() :: #{
+%%   <<"maxInstanceCount">> => [integer()],
+%%   <<"minInstanceCount">> => [integer()]
+%% }
+-type scaling_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% scheduler() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"version">> => [string()]
+%% }
+-type scheduler() :: #{binary() => any()}.
+
+%% Example:
+%% scheduler_request() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"version">> => [string()]
+%% }
+-type scheduler_request() :: #{binary() => any()}.
+
+%% Example:
+%% script_source() :: #{
+%%   <<"checksum">> => [string()],
+%%   <<"s3VersionId">> => [string()],
+%%   <<"scriptLocation">> => [string()]
+%% }
+-type script_source() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% slurm_auth_key() :: #{
+%%   <<"secretArn">> => [string()],
+%%   <<"secretVersion">> => [string()]
+%% }
+-type slurm_auth_key() :: #{binary() => any()}.
+
+%% Example:
+%% slurm_custom_setting() :: #{
+%%   <<"parameterName">> => [string()],
+%%   <<"parameterValue">> => [string()]
+%% }
+-type slurm_custom_setting() :: #{binary() => any()}.
+
+%% Example:
+%% slurm_rest() :: #{
+%%   <<"mode">> => list(any())
+%% }
+-type slurm_rest() :: #{binary() => any()}.
+
+%% Example:
+%% slurm_rest_request() :: #{
+%%   <<"mode">> => list(any())
+%% }
+-type slurm_rest_request() :: #{binary() => any()}.
+
+%% Example:
+%% slurmdbd_custom_setting() :: #{
+%%   <<"parameterName">> => [string()],
+%%   <<"parameterValue">> => [string()]
+%% }
+-type slurmdbd_custom_setting() :: #{binary() => any()}.
+
+%% Example:
+%% spot_options() :: #{
+%%   <<"allocationStrategy">> => list(any())
+%% }
+-type spot_options() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_accounting_request() :: #{
+%%   <<"defaultPurgeTimeInDays">> => [integer()],
+%%   <<"mode">> => list(any())
+%% }
+-type update_accounting_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"scheduler">> => update_scheduler_request(),
+%%   <<"slurmConfiguration">> => update_cluster_slurm_configuration_request()
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_cluster_response() :: #{
@@ -755,110 +711,207 @@
 %% }
 -type update_cluster_response() :: #{binary() => any()}.
 
+%% Example:
+%% update_cluster_slurm_configuration_request() :: #{
+%%   <<"accounting">> => update_accounting_request(),
+%%   <<"cgroupCustomSettings">> => list(cgroup_custom_setting()),
+%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
+%%   <<"slurmRest">> => update_slurm_rest_request(),
+%%   <<"slurmdbdCustomSettings">> => list(slurmdbd_custom_setting())
+%% }
+-type update_cluster_slurm_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_compute_node_group_request() :: #{
+%%   <<"amiId">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"computeNodeGroupIdentifier">> := string(),
+%%   <<"customLaunchTemplate">> => custom_launch_template(),
+%%   <<"iamInstanceProfileArn">> => string(),
+%%   <<"nodeLifecycleActions">> => update_node_lifecycle_actions_request(),
+%%   <<"purchaseOption">> => list(any()),
+%%   <<"scalingConfiguration">> => scaling_configuration_request(),
+%%   <<"slurmConfiguration">> => update_compute_node_group_slurm_configuration_request(),
+%%   <<"spotOptions">> => spot_options(),
+%%   <<"subnetIds">> => list([string()]())
+%% }
+-type update_compute_node_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_compute_node_group_response() :: #{
+%%   <<"computeNodeGroup">> => compute_node_group()
+%% }
+-type update_compute_node_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_compute_node_group_slurm_configuration_request() :: #{
+%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%% }
+-type update_compute_node_group_slurm_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_node_lifecycle_actions_request() :: #{
+%%   <<"scriptCachingPolicy">> => list(any()),
+%%   <<"stages">> => node_lifecycle_stages()
+%% }
+-type update_node_lifecycle_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()),
+%%   <<"queueIdentifier">> := string(),
+%%   <<"slurmConfiguration">> => update_queue_slurm_configuration_request()
+%% }
+-type update_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_response() :: #{
+%%   <<"queue">> => queue()
+%% }
+-type update_queue_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_slurm_configuration_request() :: #{
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%% }
+-type update_queue_slurm_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_scheduler_request() :: #{
+%%   <<"version">> => [string()]
+%% }
+-type update_scheduler_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_slurm_rest_request() :: #{
+%%   <<"mode">> => list(any())
+%% }
+-type update_slurm_rest_request() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
 -type create_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_compute_node_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_queue_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_compute_node_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_queue_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_compute_node_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_queue_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_clusters_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_compute_node_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_queues_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
 
 -type register_compute_node_group_instance_errors() ::
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     service_quota_exceeded_exception() | 
@@ -868,30 +921,30 @@
     resource_not_found_exception().
 
 -type update_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_compute_node_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_queue_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -1227,11 +1280,11 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates a cluster configuration.
 %%
-%% You can upgrade the Slurm version, modify scheduler settings, and update
-%% accounting configuration for an existing cluster. For more information
-%% about upgrading the Slurm version, see Upgrading the Slurm version on a
-%% cluster:
-%% https://docs.aws.amazon.com/pcs/latest/userguide/working-with_clusters_upgrade.html
+%% You can update the scheduler version, modify scheduler settings, and
+%% update accounting configuration for an existing cluster. For more
+%% information about updating the scheduler version, see Updating the
+%% scheduler version on a cluster:
+%% https://docs.aws.amazon.com/pcs/latest/userguide/working-with_clusters_version_update.html
 %% in the PCS User Guide.
 %%
 %% You can only update clusters that are in `ACTIVE',

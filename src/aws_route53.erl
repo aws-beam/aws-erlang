@@ -210,134 +210,54 @@
 
 
 %% Example:
-%% create_vpc_association_authorization_request() :: #{
-%%   <<"VPC">> := vpc()
+%% account_limit() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => float()
 %% }
--type create_vpc_association_authorization_request() :: #{binary() => any()}.
+-type account_limit() :: #{binary() => any()}.
+
+%% Example:
+%% activate_key_signing_key_request() :: #{}
+-type activate_key_signing_key_request() :: #{}.
 
 
 %% Example:
-%% update_hosted_zone_comment_response() :: #{
-%%   <<"HostedZone">> => hosted_zone()
-%% }
--type update_hosted_zone_comment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_traffic_policies_request() :: #{
-%%   <<"MaxItems">> => [integer()],
-%%   <<"TrafficPolicyIdMarker">> => string()
-%% }
--type list_traffic_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_change_response() :: #{
+%% activate_key_signing_key_response() :: #{
 %%   <<"ChangeInfo">> => change_info()
 %% }
--type get_change_response() :: #{binary() => any()}.
+-type activate_key_signing_key_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% geo_location_details() :: #{
-%%   <<"ContinentCode">> => string(),
-%%   <<"ContinentName">> => string(),
-%%   <<"CountryCode">> => string(),
-%%   <<"CountryName">> => string(),
-%%   <<"SubdivisionCode">> => string(),
-%%   <<"SubdivisionName">> => string()
-%% }
--type geo_location_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_logging_config_request() :: #{}
--type get_query_logging_config_request() :: #{}.
-
-
-%% Example:
-%% delegation_set_not_reusable() :: #{
-%%   <<"message">> => string()
-%% }
--type delegation_set_not_reusable() :: #{binary() => any()}.
-
-
-%% Example:
-%% delegation_set() :: #{
-%%   <<"CallerReference">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"NameServers">> => list(string())
-%% }
--type delegation_set() :: #{binary() => any()}.
-
-
-%% Example:
-%% health_check_version_mismatch() :: #{
-%%   <<"message">> => string()
-%% }
--type health_check_version_mismatch() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_traffic_policy_version_response() :: #{
-%%   <<"Location">> => string(),
-%%   <<"TrafficPolicy">> => traffic_policy()
-%% }
--type create_traffic_policy_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_query_logging_config_response() :: #{
-%%   <<"Location">> => string(),
-%%   <<"QueryLoggingConfig">> => query_logging_config()
-%% }
--type create_query_logging_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% query_logging_config() :: #{
-%%   <<"CloudWatchLogsLogGroupArn">> => string(),
-%%   <<"HostedZoneId">> => string(),
-%%   <<"Id">> => string()
-%% }
--type query_logging_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_signing_key() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DNSKEYRecord">> => string(),
-%%   <<"DSRecord">> => string(),
-%%   <<"DigestAlgorithmMnemonic">> => string(),
-%%   <<"DigestAlgorithmType">> => integer(),
-%%   <<"DigestValue">> => string(),
-%%   <<"Flag">> => integer(),
-%%   <<"KeyTag">> => integer(),
-%%   <<"KmsArn">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
+%% alarm_identifier() :: #{
 %%   <<"Name">> => string(),
-%%   <<"PublicKey">> => string(),
-%%   <<"SigningAlgorithmMnemonic">> => string(),
-%%   <<"SigningAlgorithmType">> => integer(),
-%%   <<"Status">> => string(),
-%%   <<"StatusMessage">> => string()
+%%   <<"Region">> => list(any())
 %% }
--type key_signing_key() :: #{binary() => any()}.
+-type alarm_identifier() :: #{binary() => any()}.
 
 
 %% Example:
-%% incompatible_version() :: #{
-%%   <<"message">> => string()
+%% alias_target() :: #{
+%%   <<"DNSName">> => string(),
+%%   <<"EvaluateTargetHealth">> => boolean(),
+%%   <<"HostedZoneId">> => string()
 %% }
--type incompatible_version() :: #{binary() => any()}.
+-type alias_target() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_hosted_zones_by_vpc_response() :: #{
-%%   <<"HostedZoneSummaries">> => list(hosted_zone_summary()),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"NextToken">> => string()
+%% associate_vpc_with_hosted_zone_request() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"VPC">> := vpc()
 %% }
--type list_hosted_zones_by_vpc_response() :: #{binary() => any()}.
+-type associate_vpc_with_hosted_zone_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_vpc_with_hosted_zone_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type associate_vpc_with_hosted_zone_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -349,22 +269,125 @@
 
 
 %% Example:
-%% traffic_policy_in_use() :: #{
-%%   <<"message">> => string()
+%% change_batch() :: #{
+%%   <<"Changes">> => list(change()),
+%%   <<"Comment">> => string()
 %% }
--type traffic_policy_in_use() :: #{binary() => any()}.
-
-%% Example:
-%% get_traffic_policy_instance_request() :: #{}
--type get_traffic_policy_instance_request() :: #{}.
+-type change_batch() :: #{binary() => any()}.
 
 
 %% Example:
-%% dns_sec_status() :: #{
-%%   <<"ServeSignature">> => string(),
-%%   <<"StatusMessage">> => string()
+%% change_cidr_collection_request() :: #{
+%%   <<"Changes">> := list(cidr_collection_change()),
+%%   <<"CollectionVersion">> => float()
 %% }
--type dns_sec_status() :: #{binary() => any()}.
+-type change_cidr_collection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_cidr_collection_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type change_cidr_collection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_info() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"SubmittedAt">> => non_neg_integer()
+%% }
+-type change_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_resource_record_sets_request() :: #{
+%%   <<"ChangeBatch">> := change_batch()
+%% }
+-type change_resource_record_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_resource_record_sets_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type change_resource_record_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_tags_for_resource_request() :: #{
+%%   <<"AddTags">> => list(tag()),
+%%   <<"RemoveTagKeys">> => list(string())
+%% }
+-type change_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% change_tags_for_resource_response() :: #{}
+-type change_tags_for_resource_response() :: #{}.
+
+
+%% Example:
+%% cidr_block_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cidr_block_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cidr_block_summary() :: #{
+%%   <<"CidrBlock">> => string(),
+%%   <<"LocationName">> => string()
+%% }
+-type cidr_block_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% cidr_collection() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type cidr_collection() :: #{binary() => any()}.
+
+
+%% Example:
+%% cidr_collection_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cidr_collection_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cidr_collection_change() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"CidrList">> => list(string()),
+%%   <<"LocationName">> => string()
+%% }
+-type cidr_collection_change() :: #{binary() => any()}.
+
+
+%% Example:
+%% cidr_collection_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cidr_collection_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cidr_collection_version_mismatch_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cidr_collection_version_mismatch_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cidr_routing_config() :: #{
+%%   <<"CollectionId">> => string(),
+%%   <<"LocationName">> => string()
+%% }
+-type cidr_routing_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -382,171 +405,6 @@
 
 
 %% Example:
-%% create_hosted_zone_request() :: #{
-%%   <<"CallerReference">> := string(),
-%%   <<"DelegationSetId">> => string(),
-%%   <<"HostedZoneConfig">> => hosted_zone_config(),
-%%   <<"Name">> := string(),
-%%   <<"VPC">> => vpc()
-%% }
--type create_hosted_zone_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_input() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_traffic_policy_instance_request() :: #{}
--type delete_traffic_policy_instance_request() :: #{}.
-
-
-%% Example:
-%% hosted_zone_not_private() :: #{
-%%   <<"message">> => string()
-%% }
--type hosted_zone_not_private() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_change_batch() :: #{
-%%   <<"message">> => string(),
-%%   <<"messages">> => list(string())
-%% }
--type invalid_change_batch() :: #{binary() => any()}.
-
-%% Example:
-%% get_traffic_policy_instance_count_request() :: #{}
--type get_traffic_policy_instance_count_request() :: #{}.
-
-
-%% Example:
-%% too_many_traffic_policies() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_traffic_policies() :: #{binary() => any()}.
-
-%% Example:
-%% delete_health_check_request() :: #{}
--type delete_health_check_request() :: #{}.
-
-
-%% Example:
-%% create_traffic_policy_request() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"Document">> := string(),
-%%   <<"Name">> := string()
-%% }
--type create_traffic_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_reusable_delegation_set_limit_response() :: #{
-%%   <<"Count">> => float(),
-%%   <<"Limit">> => reusable_delegation_set_limit()
-%% }
--type get_reusable_delegation_set_limit_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_pagination_token() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_pagination_token() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_traffic_policy_instances_by_policy_response() :: #{
-%%   <<"HostedZoneIdMarker">> => string(),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
-%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
-%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance())
-%% }
--type list_traffic_policy_instances_by_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_health_check() :: #{
-%%   <<"message">> => string()
-%% }
--type no_such_health_check() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_traffic_policy_versions_for_current_policy() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_traffic_policy_versions_for_current_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_traffic_policy_instances_by_policy_request() :: #{
-%%   <<"HostedZoneIdMarker">> => string(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"TrafficPolicyId">> := string(),
-%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
-%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
-%%   <<"TrafficPolicyVersion">> := integer()
-%% }
--type list_traffic_policy_instances_by_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% hosted_zone_limit() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => float()
-%% }
--type hosted_zone_limit() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc() :: #{
-%%   <<"VPCId">> => string(),
-%%   <<"VPCRegion">> => list(any())
-%% }
--type vpc() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_traffic_policy_instance() :: #{
-%%   <<"message">> => string()
-%% }
--type no_such_traffic_policy_instance() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_record_set() :: #{
-%%   <<"AliasTarget">> => alias_target(),
-%%   <<"CidrRoutingConfig">> => cidr_routing_config(),
-%%   <<"Failover">> => list(any()),
-%%   <<"GeoLocation">> => geo_location(),
-%%   <<"GeoProximityLocation">> => geo_proximity_location(),
-%%   <<"HealthCheckId">> => string(),
-%%   <<"MultiValueAnswer">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"Region">> => list(any()),
-%%   <<"ResourceRecords">> => list(resource_record()),
-%%   <<"SetIdentifier">> => string(),
-%%   <<"TTL">> => float(),
-%%   <<"TrafficPolicyInstanceId">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Weight">> => float()
-%% }
--type resource_record_set() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_traffic_policy_instance_response() :: #{
-%%   <<"TrafficPolicyInstance">> => traffic_policy_instance()
-%% }
--type get_traffic_policy_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% collection_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -557,118 +415,56 @@
 
 
 %% Example:
-%% get_hosted_zone_limit_response() :: #{
-%%   <<"Count">> => float(),
-%%   <<"Limit">> => hosted_zone_limit()
-%% }
--type get_hosted_zone_limit_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_hosted_zone_features_response() :: #{}
--type update_hosted_zone_features_response() :: #{}.
-
-
-%% Example:
-%% get_hosted_zone_count_response() :: #{
-%%   <<"HostedZoneCount">> => float()
-%% }
--type get_hosted_zone_count_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_traffic_policy_comment_response() :: #{
-%%   <<"TrafficPolicy">> => traffic_policy()
-%% }
--type update_traffic_policy_comment_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_health_check_response() :: #{}
--type delete_health_check_response() :: #{}.
-
-
-%% Example:
-%% vpc_association_not_found() :: #{
+%% concurrent_modification() :: #{
 %%   <<"message">> => string()
 %% }
--type vpc_association_not_found() :: #{binary() => any()}.
+-type concurrent_modification() :: #{binary() => any()}.
 
 
 %% Example:
-%% delegation_set_not_available() :: #{
+%% conflicting_domain_exists() :: #{
 %%   <<"message">> => string()
 %% }
--type delegation_set_not_available() :: #{binary() => any()}.
+-type conflicting_domain_exists() :: #{binary() => any()}.
 
 
 %% Example:
-%% vpc_association_authorization_not_found() :: #{
+%% conflicting_types() :: #{
 %%   <<"message">> => string()
 %% }
--type vpc_association_authorization_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% change_tags_for_resource_response() :: #{}
--type change_tags_for_resource_response() :: #{}.
-
-%% Example:
-%% delete_reusable_delegation_set_request() :: #{}
--type delete_reusable_delegation_set_request() :: #{}.
+-type conflicting_types() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_vpc_with_hosted_zone_response() :: #{
-%%   <<"ChangeInfo">> => change_info()
+%% coordinates() :: #{
+%%   <<"Latitude">> => string(),
+%%   <<"Longitude">> => string()
 %% }
--type associate_vpc_with_hosted_zone_response() :: #{binary() => any()}.
+-type coordinates() :: #{binary() => any()}.
 
 
 %% Example:
-%% insufficient_cloud_watch_logs_resource_policy() :: #{
-%%   <<"message">> => string()
+%% create_cidr_collection_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"Name">> := string()
 %% }
--type insufficient_cloud_watch_logs_resource_policy() :: #{binary() => any()}.
+-type create_cidr_collection_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% no_such_hosted_zone() :: #{
-%%   <<"message">> => string()
+%% create_cidr_collection_response() :: #{
+%%   <<"Collection">> => cidr_collection(),
+%%   <<"Location">> => string()
 %% }
--type no_such_hosted_zone() :: #{binary() => any()}.
+-type create_cidr_collection_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_traffic_policies_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"TrafficPolicyIdMarker">> => string(),
-%%   <<"TrafficPolicySummaries">> => list(traffic_policy_summary())
+%% create_health_check_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"HealthCheckConfig">> := health_check_config()
 %% }
--type list_traffic_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_reusable_delegation_sets_response() :: #{
-%%   <<"DelegationSets">> => list(delegation_set()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"NextMarker">> => string()
-%% }
--type list_reusable_delegation_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_key_signing_key_name() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_key_signing_key_name() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_zone_vpc_association() :: #{
-%%   <<"message">> => string()
-%% }
--type public_zone_vpc_association() :: #{binary() => any()}.
+-type create_health_check_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -680,25 +476,77 @@
 
 
 %% Example:
-%% update_health_check_response() :: #{
-%%   <<"HealthCheck">> => health_check()
+%% create_hosted_zone_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"DelegationSetId">> => string(),
+%%   <<"HostedZoneConfig">> => hosted_zone_config(),
+%%   <<"Name">> := string(),
+%%   <<"VPC">> => vpc()
 %% }
--type update_health_check_response() :: #{binary() => any()}.
+-type create_hosted_zone_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% dns_sec_not_found() :: #{
-%%   <<"message">> => string()
+%% create_hosted_zone_response() :: #{
+%%   <<"ChangeInfo">> => change_info(),
+%%   <<"DelegationSet">> => delegation_set(),
+%%   <<"HostedZone">> => hosted_zone(),
+%%   <<"Location">> => string(),
+%%   <<"VPC">> => vpc()
 %% }
--type dns_sec_not_found() :: #{binary() => any()}.
+-type create_hosted_zone_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% status_report() :: #{
-%%   <<"CheckedTime">> => non_neg_integer(),
-%%   <<"Status">> => string()
+%% create_key_signing_key_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"HostedZoneId">> := string(),
+%%   <<"KeyManagementServiceArn">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Status">> := string()
 %% }
--type status_report() :: #{binary() => any()}.
+-type create_key_signing_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_key_signing_key_response() :: #{
+%%   <<"ChangeInfo">> => change_info(),
+%%   <<"KeySigningKey">> => key_signing_key(),
+%%   <<"Location">> => string()
+%% }
+-type create_key_signing_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_query_logging_config_request() :: #{
+%%   <<"CloudWatchLogsLogGroupArn">> := string(),
+%%   <<"HostedZoneId">> := string()
+%% }
+-type create_query_logging_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_query_logging_config_response() :: #{
+%%   <<"Location">> => string(),
+%%   <<"QueryLoggingConfig">> => query_logging_config()
+%% }
+-type create_query_logging_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_reusable_delegation_set_request() :: #{
+%%   <<"CallerReference">> := string(),
+%%   <<"HostedZoneId">> => string()
+%% }
+-type create_reusable_delegation_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_reusable_delegation_set_response() :: #{
+%%   <<"DelegationSet">> => delegation_set(),
+%%   <<"Location">> => string()
+%% }
+-type create_reusable_delegation_set_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -713,125 +561,145 @@
 
 
 %% Example:
-%% change_batch() :: #{
-%%   <<"Changes">> => list(change()),
-%%   <<"Comment">> => string()
+%% create_traffic_policy_instance_response() :: #{
+%%   <<"Location">> => string(),
+%%   <<"TrafficPolicyInstance">> => traffic_policy_instance()
 %% }
--type change_batch() :: #{binary() => any()}.
+-type create_traffic_policy_instance_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% reusable_delegation_set_limit() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => float()
-%% }
--type reusable_delegation_set_limit() :: #{binary() => any()}.
-
-
-%% Example:
-%% health_check_already_exists() :: #{
-%%   <<"message">> => string()
-%% }
--type health_check_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_delegation_set() :: #{
-%%   <<"message">> => string()
-%% }
--type no_such_delegation_set() :: #{binary() => any()}.
-
-
-%% Example:
-%% traffic_policy() :: #{
+%% create_traffic_policy_request() :: #{
 %%   <<"Comment">> => string(),
-%%   <<"Document">> => string(),
+%%   <<"Document">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_traffic_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_traffic_policy_response() :: #{
+%%   <<"Location">> => string(),
+%%   <<"TrafficPolicy">> => traffic_policy()
+%% }
+-type create_traffic_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_traffic_policy_version_request() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"Document">> := string()
+%% }
+-type create_traffic_policy_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_traffic_policy_version_response() :: #{
+%%   <<"Location">> => string(),
+%%   <<"TrafficPolicy">> => traffic_policy()
+%% }
+-type create_traffic_policy_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_association_authorization_request() :: #{
+%%   <<"VPC">> := vpc()
+%% }
+-type create_vpc_association_authorization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_association_authorization_response() :: #{
+%%   <<"HostedZoneId">> => string(),
+%%   <<"VPC">> => vpc()
+%% }
+-type create_vpc_association_authorization_response() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_key_signing_key_request() :: #{}
+-type deactivate_key_signing_key_request() :: #{}.
+
+
+%% Example:
+%% deactivate_key_signing_key_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type deactivate_key_signing_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delegation_set() :: #{
+%%   <<"CallerReference">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Version">> => integer()
+%%   <<"NameServers">> => list(string())
 %% }
--type traffic_policy() :: #{binary() => any()}.
-
-%% Example:
-%% get_health_check_count_request() :: #{}
--type get_health_check_count_request() :: #{}.
+-type delegation_set() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_traffic_policy_instances_request() :: #{
-%%   <<"HostedZoneIdMarker">> => string(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
-%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any())
-%% }
--type list_traffic_policy_instances_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_argument() :: #{
+%% delegation_set_already_created() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_argument() :: #{binary() => any()}.
+-type delegation_set_already_created() :: #{binary() => any()}.
 
 
 %% Example:
-%% change_tags_for_resource_request() :: #{
-%%   <<"AddTags">> => list(tag()),
-%%   <<"RemoveTagKeys">> => list(string())
-%% }
--type change_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_health_check_response() :: #{
-%%   <<"HealthCheck">> => health_check()
-%% }
--type get_health_check_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_query_logging_configs_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"QueryLoggingConfigs">> => list(query_logging_config())
-%% }
--type list_query_logging_configs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% change_cidr_collection_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type change_cidr_collection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_traffic_policy_instances() :: #{
+%% delegation_set_already_reusable() :: #{
 %%   <<"message">> => string()
 %% }
--type too_many_traffic_policy_instances() :: #{binary() => any()}.
+-type delegation_set_already_reusable() :: #{binary() => any()}.
 
 
 %% Example:
-%% cidr_collection_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type cidr_collection_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% linked_service() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ServicePrincipal">> => string()
-%% }
--type linked_service() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_traffic_policy_document() :: #{
+%% delegation_set_in_use() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_traffic_policy_document() :: #{binary() => any()}.
+-type delegation_set_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% delegation_set_not_available() :: #{
+%%   <<"message">> => string()
+%% }
+-type delegation_set_not_available() :: #{binary() => any()}.
+
+
+%% Example:
+%% delegation_set_not_reusable() :: #{
+%%   <<"message">> => string()
+%% }
+-type delegation_set_not_reusable() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cidr_collection_request() :: #{}
+-type delete_cidr_collection_request() :: #{}.
+
+%% Example:
+%% delete_cidr_collection_response() :: #{}
+-type delete_cidr_collection_response() :: #{}.
+
+%% Example:
+%% delete_health_check_request() :: #{}
+-type delete_health_check_request() :: #{}.
+
+%% Example:
+%% delete_health_check_response() :: #{}
+-type delete_health_check_response() :: #{}.
+
+%% Example:
+%% delete_hosted_zone_request() :: #{}
+-type delete_hosted_zone_request() :: #{}.
+
+
+%% Example:
+%% delete_hosted_zone_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type delete_hosted_zone_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_key_signing_key_request() :: #{}
+-type delete_key_signing_key_request() :: #{}.
 
 
 %% Example:
@@ -840,19 +708,44 @@
 %% }
 -type delete_key_signing_key_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_query_logging_config_request() :: #{}
+-type delete_query_logging_config_request() :: #{}.
 
 %% Example:
-%% concurrent_modification() :: #{
-%%   <<"message">> => string()
-%% }
--type concurrent_modification() :: #{binary() => any()}.
+%% delete_query_logging_config_response() :: #{}
+-type delete_query_logging_config_response() :: #{}.
+
+%% Example:
+%% delete_reusable_delegation_set_request() :: #{}
+-type delete_reusable_delegation_set_request() :: #{}.
+
+%% Example:
+%% delete_reusable_delegation_set_response() :: #{}
+-type delete_reusable_delegation_set_response() :: #{}.
+
+%% Example:
+%% delete_traffic_policy_instance_request() :: #{}
+-type delete_traffic_policy_instance_request() :: #{}.
+
+%% Example:
+%% delete_traffic_policy_instance_response() :: #{}
+-type delete_traffic_policy_instance_response() :: #{}.
+
+%% Example:
+%% delete_traffic_policy_request() :: #{}
+-type delete_traffic_policy_request() :: #{}.
+
+%% Example:
+%% delete_traffic_policy_response() :: #{}
+-type delete_traffic_policy_response() :: #{}.
 
 
 %% Example:
-%% list_tags_for_resources_response() :: #{
-%%   <<"ResourceTagSets">> => list(resource_tag_set())
+%% delete_vpc_association_authorization_request() :: #{
+%%   <<"VPC">> := vpc()
 %% }
--type list_tags_for_resources_response() :: #{binary() => any()}.
+-type delete_vpc_association_authorization_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_vpc_association_authorization_response() :: #{}
@@ -860,112 +753,84 @@
 
 
 %% Example:
-%% list_geo_locations_response() :: #{
-%%   <<"GeoLocationDetailsList">> => list(geo_location_details()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"NextContinentCode">> => string(),
-%%   <<"NextCountryCode">> => string(),
-%%   <<"NextSubdivisionCode">> => string()
+%% dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
 %% }
--type list_geo_locations_response() :: #{binary() => any()}.
+-type dimension() :: #{binary() => any()}.
+
+%% Example:
+%% disable_hosted_zone_dns_sec_request() :: #{}
+-type disable_hosted_zone_dns_sec_request() :: #{}.
 
 
 %% Example:
-%% list_cidr_collections_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
+%% disable_hosted_zone_dns_sec_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
 %% }
--type list_cidr_collections_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_dns_sec_request() :: #{}
--type get_dns_sec_request() :: #{}.
+-type disable_hosted_zone_dns_sec_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% too_many_vpc_association_authorizations() :: #{
+%% disassociate_vpc_from_hosted_zone_request() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"VPC">> := vpc()
+%% }
+-type disassociate_vpc_from_hosted_zone_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_vpc_from_hosted_zone_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
+%% }
+-type disassociate_vpc_from_hosted_zone_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dns_sec_not_found() :: #{
 %%   <<"message">> => string()
 %% }
--type too_many_vpc_association_authorizations() :: #{binary() => any()}.
-
-%% Example:
-%% get_hosted_zone_limit_request() :: #{}
--type get_hosted_zone_limit_request() :: #{}.
+-type dns_sec_not_found() :: #{binary() => any()}.
 
 
 %% Example:
-%% key_signing_key_with_active_status_not_found() :: #{
-%%   <<"message">> => string()
+%% dns_sec_status() :: #{
+%%   <<"ServeSignature">> => string(),
+%%   <<"StatusMessage">> => string()
 %% }
--type key_signing_key_with_active_status_not_found() :: #{binary() => any()}.
+-type dns_sec_status() :: #{binary() => any()}.
+
+%% Example:
+%% enable_hosted_zone_dns_sec_request() :: #{}
+-type enable_hosted_zone_dns_sec_request() :: #{}.
 
 
 %% Example:
-%% list_cidr_blocks_request() :: #{
-%%   <<"LocationName">> => string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
+%% enable_hosted_zone_dns_sec_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
 %% }
--type list_cidr_blocks_request() :: #{binary() => any()}.
+-type enable_hosted_zone_dns_sec_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% alias_target() :: #{
-%%   <<"DNSName">> => string(),
-%%   <<"EvaluateTargetHealth">> => boolean(),
-%%   <<"HostedZoneId">> => string()
+%% geo_location() :: #{
+%%   <<"ContinentCode">> => string(),
+%%   <<"CountryCode">> => string(),
+%%   <<"SubdivisionCode">> => string()
 %% }
--type alias_target() :: #{binary() => any()}.
+-type geo_location() :: #{binary() => any()}.
 
 
 %% Example:
-%% cidr_collection_change() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"CidrList">> => list(string()),
-%%   <<"LocationName">> => string()
+%% geo_location_details() :: #{
+%%   <<"ContinentCode">> => string(),
+%%   <<"ContinentName">> => string(),
+%%   <<"CountryCode">> => string(),
+%%   <<"CountryName">> => string(),
+%%   <<"SubdivisionCode">> => string(),
+%%   <<"SubdivisionName">> => string()
 %% }
--type cidr_collection_change() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_health_check_last_failure_reason_response() :: #{
-%%   <<"HealthCheckObservations">> => list(health_check_observation())
-%% }
--type get_health_check_last_failure_reason_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_checker_ip_ranges_response() :: #{
-%%   <<"CheckerIpRanges">> => list(string())
-%% }
--type get_checker_ip_ranges_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_traffic_policy_instances_response() :: #{
-%%   <<"HostedZoneIdMarker">> => string(),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
-%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
-%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance())
-%% }
--type list_traffic_policy_instances_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_cidr_collection_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_cidr_collection_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_signing_status() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_signing_status() :: #{binary() => any()}.
+-type geo_location_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -977,43 +842,51 @@
 %% }
 -type geo_proximity_location() :: #{binary() => any()}.
 
+%% Example:
+%% get_account_limit_request() :: #{}
+-type get_account_limit_request() :: #{}.
+
 
 %% Example:
-%% test_dns_answer_request() :: #{
-%%   <<"EDNS0ClientSubnetIP">> => string(),
-%%   <<"EDNS0ClientSubnetMask">> => string(),
-%%   <<"HostedZoneId">> := string(),
-%%   <<"RecordName">> := string(),
-%%   <<"RecordType">> := list(any()),
-%%   <<"ResolverIP">> => string()
+%% get_account_limit_response() :: #{
+%%   <<"Count">> => float(),
+%%   <<"Limit">> => account_limit()
 %% }
--type test_dns_answer_request() :: #{binary() => any()}.
+-type get_account_limit_response() :: #{binary() => any()}.
 
 %% Example:
-%% deactivate_key_signing_key_request() :: #{}
--type deactivate_key_signing_key_request() :: #{}.
+%% get_change_request() :: #{}
+-type get_change_request() :: #{}.
 
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% get_change_response() :: #{
+%%   <<"ChangeInfo">> => change_info()
 %% }
--type tag() :: #{binary() => any()}.
+-type get_change_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_checker_ip_ranges_request() :: #{}
+-type get_checker_ip_ranges_request() :: #{}.
 
 
 %% Example:
-%% delegation_set_in_use() :: #{
-%%   <<"message">> => string()
+%% get_checker_ip_ranges_response() :: #{
+%%   <<"CheckerIpRanges">> => list(string())
 %% }
--type delegation_set_in_use() :: #{binary() => any()}.
+-type get_checker_ip_ranges_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_dns_sec_request() :: #{}
+-type get_dns_sec_request() :: #{}.
 
 
 %% Example:
-%% no_such_change() :: #{
-%%   <<"message">> => string()
+%% get_dns_sec_response() :: #{
+%%   <<"KeySigningKeys">> => list(key_signing_key()),
+%%   <<"Status">> => dns_sec_status()
 %% }
--type no_such_change() :: #{binary() => any()}.
+-type get_dns_sec_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1026,105 +899,81 @@
 
 
 %% Example:
-%% list_cidr_blocks_response() :: #{
-%%   <<"CidrBlocks">> => list(cidr_block_summary()),
-%%   <<"NextToken">> => string()
+%% get_geo_location_response() :: #{
+%%   <<"GeoLocationDetails">> => geo_location_details()
 %% }
--type list_cidr_blocks_response() :: #{binary() => any()}.
+-type get_geo_location_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_health_check_count_request() :: #{}
+-type get_health_check_count_request() :: #{}.
 
 
 %% Example:
-%% cidr_block_in_use_exception() :: #{
-%%   <<"Message">> => string()
+%% get_health_check_count_response() :: #{
+%%   <<"HealthCheckCount">> => float()
 %% }
--type cidr_block_in_use_exception() :: #{binary() => any()}.
+-type get_health_check_count_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_health_check_last_failure_reason_request() :: #{}
+-type get_health_check_last_failure_reason_request() :: #{}.
 
 
 %% Example:
-%% key_signing_key_in_use() :: #{
-%%   <<"message">> => string()
+%% get_health_check_last_failure_reason_response() :: #{
+%%   <<"HealthCheckObservations">> => list(health_check_observation())
 %% }
--type key_signing_key_in_use() :: #{binary() => any()}.
+-type get_health_check_last_failure_reason_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_health_check_request() :: #{}
+-type get_health_check_request() :: #{}.
 
 
 %% Example:
-%% limits_exceeded() :: #{
-%%   <<"message">> => string()
+%% get_health_check_response() :: #{
+%%   <<"HealthCheck">> => health_check()
 %% }
--type limits_exceeded() :: #{binary() => any()}.
+-type get_health_check_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_health_check_status_request() :: #{}
+-type get_health_check_status_request() :: #{}.
 
 
 %% Example:
-%% list_traffic_policy_instances_by_hosted_zone_request() :: #{
-%%   <<"HostedZoneId">> := string(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
-%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any())
+%% get_health_check_status_response() :: #{
+%%   <<"HealthCheckObservations">> => list(health_check_observation())
 %% }
--type list_traffic_policy_instances_by_hosted_zone_request() :: #{binary() => any()}.
+-type get_health_check_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_hosted_zone_count_request() :: #{}
+-type get_hosted_zone_count_request() :: #{}.
 
 
 %% Example:
-%% no_such_query_logging_config() :: #{
-%%   <<"message">> => string()
+%% get_hosted_zone_count_response() :: #{
+%%   <<"HostedZoneCount">> => float()
 %% }
--type no_such_query_logging_config() :: #{binary() => any()}.
+-type get_hosted_zone_count_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_hosted_zone_limit_request() :: #{}
+-type get_hosted_zone_limit_request() :: #{}.
 
 
 %% Example:
-%% traffic_policy_instance_already_exists() :: #{
-%%   <<"message">> => string()
+%% get_hosted_zone_limit_response() :: #{
+%%   <<"Count">> => float(),
+%%   <<"Limit">> => hosted_zone_limit()
 %% }
--type traffic_policy_instance_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% hosted_zone_failure_reasons() :: #{
-%%   <<"AcceleratedRecovery">> => string()
-%% }
--type hosted_zone_failure_reasons() :: #{binary() => any()}.
-
+-type get_hosted_zone_limit_response() :: #{binary() => any()}.
 
 %% Example:
-%% traffic_policy_already_exists() :: #{
-%%   <<"message">> => string()
-%% }
--type traffic_policy_already_exists() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hosted_zone_request() :: #{}
--type delete_hosted_zone_request() :: #{}.
-
-
-%% Example:
-%% list_cidr_collections_response() :: #{
-%%   <<"CidrCollections">> => list(collection_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cidr_collections_response() :: #{binary() => any()}.
-
-%% Example:
-%% enable_hosted_zone_dns_sec_request() :: #{}
--type enable_hosted_zone_dns_sec_request() :: #{}.
-
-
-%% Example:
-%% list_health_checks_response() :: #{
-%%   <<"HealthChecks">> => list(health_check()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"NextMarker">> => string()
-%% }
--type list_health_checks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_traffic_policy_response() :: #{
-%%   <<"Location">> => string(),
-%%   <<"TrafficPolicy">> => traffic_policy()
-%% }
--type create_traffic_policy_response() :: #{binary() => any()}.
+%% get_hosted_zone_request() :: #{}
+-type get_hosted_zone_request() :: #{}.
 
 
 %% Example:
@@ -1135,178 +984,72 @@
 %% }
 -type get_hosted_zone_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_query_logging_config_request() :: #{}
+-type get_query_logging_config_request() :: #{}.
+
 
 %% Example:
-%% delete_hosted_zone_response() :: #{
-%%   <<"ChangeInfo">> => change_info()
+%% get_query_logging_config_response() :: #{
+%%   <<"QueryLoggingConfig">> => query_logging_config()
 %% }
--type delete_hosted_zone_response() :: #{binary() => any()}.
+-type get_query_logging_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_reusable_delegation_set_limit_request() :: #{}
+-type get_reusable_delegation_set_limit_request() :: #{}.
 
 
 %% Example:
-%% delegation_set_already_reusable() :: #{
-%%   <<"message">> => string()
+%% get_reusable_delegation_set_limit_response() :: #{
+%%   <<"Count">> => float(),
+%%   <<"Limit">> => reusable_delegation_set_limit()
 %% }
--type delegation_set_already_reusable() :: #{binary() => any()}.
+-type get_reusable_delegation_set_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_reusable_delegation_set_request() :: #{}
+-type get_reusable_delegation_set_request() :: #{}.
 
 
 %% Example:
-%% change_resource_record_sets_request() :: #{
-%%   <<"ChangeBatch">> := change_batch()
+%% get_reusable_delegation_set_response() :: #{
+%%   <<"DelegationSet">> => delegation_set()
 %% }
--type change_resource_record_sets_request() :: #{binary() => any()}.
+-type get_reusable_delegation_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_traffic_policy_instance_count_request() :: #{}
+-type get_traffic_policy_instance_count_request() :: #{}.
 
 
 %% Example:
-%% hosted_zone_owner() :: #{
-%%   <<"OwningAccount">> => string(),
-%%   <<"OwningService">> => string()
+%% get_traffic_policy_instance_count_response() :: #{
+%%   <<"TrafficPolicyInstanceCount">> => integer()
 %% }
--type hosted_zone_owner() :: #{binary() => any()}.
+-type get_traffic_policy_instance_count_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_traffic_policy_instance_request() :: #{}
+-type get_traffic_policy_instance_request() :: #{}.
 
 
 %% Example:
-%% create_query_logging_config_request() :: #{
-%%   <<"CloudWatchLogsLogGroupArn">> := string(),
-%%   <<"HostedZoneId">> := string()
+%% get_traffic_policy_instance_response() :: #{
+%%   <<"TrafficPolicyInstance">> => traffic_policy_instance()
 %% }
--type create_query_logging_config_request() :: #{binary() => any()}.
+-type get_traffic_policy_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_traffic_policy_request() :: #{}
+-type get_traffic_policy_request() :: #{}.
 
 
 %% Example:
-%% conflicting_domain_exists() :: #{
-%%   <<"message">> => string()
+%% get_traffic_policy_response() :: #{
+%%   <<"TrafficPolicy">> => traffic_policy()
 %% }
--type conflicting_domain_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% hosted_zone_already_exists() :: #{
-%%   <<"message">> => string()
-%% }
--type hosted_zone_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_hosted_zone_dns_sec_response() :: #{
-%%   <<"ChangeInfo">> => change_info()
-%% }
--type enable_hosted_zone_dns_sec_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% hosted_zone_not_found() :: #{
-%%   <<"message">> => string()
-%% }
--type hosted_zone_not_found() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_tag_set() :: #{
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type resource_tag_set() :: #{binary() => any()}.
-
-%% Example:
-%% activate_key_signing_key_request() :: #{}
--type activate_key_signing_key_request() :: #{}.
-
-
-%% Example:
-%% update_traffic_policy_comment_request() :: #{
-%%   <<"Comment">> := string()
-%% }
--type update_traffic_policy_comment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% health_check_observation() :: #{
-%%   <<"IPAddress">> => string(),
-%%   <<"Region">> => list(any()),
-%%   <<"StatusReport">> => status_report()
-%% }
--type health_check_observation() :: #{binary() => any()}.
-
-
-%% Example:
-%% alarm_identifier() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Region">> => list(any())
-%% }
--type alarm_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_health_check_request() :: #{
-%%   <<"CallerReference">> := string(),
-%%   <<"HealthCheckConfig">> := health_check_config()
-%% }
--type create_health_check_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_cloud_watch_logs_log_group() :: #{
-%%   <<"message">> => string()
-%% }
--type no_such_cloud_watch_logs_log_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% change_resource_record_sets_response() :: #{
-%%   <<"ChangeInfo">> => change_info()
-%% }
--type change_resource_record_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_vpc_association_authorization_request() :: #{
-%%   <<"VPC">> := vpc()
-%% }
--type delete_vpc_association_authorization_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_limit() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => float()
-%% }
--type account_limit() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"ResourceTagSet">> => resource_tag_set()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% change_info() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"SubmittedAt">> => non_neg_integer()
-%% }
--type change_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cidr_collection_response() :: #{}
--type delete_cidr_collection_response() :: #{}.
-
-
-%% Example:
-%% list_hosted_zones_by_name_response() :: #{
-%%   <<"DNSName">> => string(),
-%%   <<"HostedZoneId">> => string(),
-%%   <<"HostedZones">> => list(hosted_zone()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"NextDNSName">> => string(),
-%%   <<"NextHostedZoneId">> => string()
-%% }
--type list_hosted_zones_by_name_response() :: #{binary() => any()}.
+-type get_traffic_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1322,395 +1065,10 @@
 
 
 %% Example:
-%% list_hosted_zones_response() :: #{
-%%   <<"HostedZones">> => list(hosted_zone()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"NextMarker">> => string()
-%% }
--type list_hosted_zones_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_change_request() :: #{}
--type get_change_request() :: #{}.
-
-
-%% Example:
-%% invalid_vpc_id() :: #{
+%% health_check_already_exists() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_vpc_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vpc_association_authorization_response() :: #{
-%%   <<"HostedZoneId">> => string(),
-%%   <<"VPC">> => vpc()
-%% }
--type create_vpc_association_authorization_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_traffic_policy_response() :: #{}
--type delete_traffic_policy_response() :: #{}.
-
-
-%% Example:
-%% list_cidr_locations_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_cidr_locations_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_query_logging_config_response() :: #{}
--type delete_query_logging_config_response() :: #{}.
-
-
-%% Example:
-%% update_traffic_policy_instance_response() :: #{
-%%   <<"TrafficPolicyInstance">> => traffic_policy_instance()
-%% }
--type update_traffic_policy_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_traffic_policy_instance_response() :: #{
-%%   <<"Location">> => string(),
-%%   <<"TrafficPolicyInstance">> => traffic_policy_instance()
-%% }
--type create_traffic_policy_instance_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_reusable_delegation_set_response() :: #{
-%%   <<"DelegationSet">> => delegation_set(),
-%%   <<"Location">> => string()
-%% }
--type create_reusable_delegation_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_health_check_count_response() :: #{
-%%   <<"HealthCheckCount">> => float()
-%% }
--type get_health_check_count_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_association_authorizations_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_vpc_association_authorizations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_geo_locations_request() :: #{
-%%   <<"MaxItems">> => [integer()],
-%%   <<"StartContinentCode">> => string(),
-%%   <<"StartCountryCode">> => string(),
-%%   <<"StartSubdivisionCode">> => string()
-%% }
--type list_geo_locations_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_query_logging_config_request() :: #{}
--type delete_query_logging_config_request() :: #{}.
-
-%% Example:
-%% get_hosted_zone_request() :: #{}
--type get_hosted_zone_request() :: #{}.
-
-
-%% Example:
-%% update_health_check_request() :: #{
-%%   <<"AlarmIdentifier">> => alarm_identifier(),
-%%   <<"ChildHealthChecks">> => list(string()),
-%%   <<"Disabled">> => boolean(),
-%%   <<"EnableSNI">> => boolean(),
-%%   <<"FailureThreshold">> => integer(),
-%%   <<"FullyQualifiedDomainName">> => string(),
-%%   <<"HealthCheckVersion">> => float(),
-%%   <<"HealthThreshold">> => integer(),
-%%   <<"IPAddress">> => string(),
-%%   <<"InsufficientDataHealthStatus">> => list(any()),
-%%   <<"Inverted">> => boolean(),
-%%   <<"Port">> => integer(),
-%%   <<"Regions">> => list(list(any())()),
-%%   <<"ResetElements">> => list(list(any())()),
-%%   <<"ResourcePath">> => string(),
-%%   <<"SearchString">> => string()
-%% }
--type update_health_check_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_key_signing_key_response() :: #{
-%%   <<"ChangeInfo">> => change_info(),
-%%   <<"KeySigningKey">> => key_signing_key(),
-%%   <<"Location">> => string()
-%% }
--type create_key_signing_key_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_authorized_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_authorized_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_limit_request() :: #{}
--type get_account_limit_request() :: #{}.
-
-
-%% Example:
-%% geo_location() :: #{
-%%   <<"ContinentCode">> => string(),
-%%   <<"CountryCode">> => string(),
-%%   <<"SubdivisionCode">> => string()
-%% }
--type geo_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_traffic_policy_instance_count_response() :: #{
-%%   <<"TrafficPolicyInstanceCount">> => integer()
-%% }
--type get_traffic_policy_instance_count_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% hosted_zone_summary() :: #{
-%%   <<"HostedZoneId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => hosted_zone_owner()
-%% }
--type hosted_zone_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_traffic_policy_response() :: #{
-%%   <<"TrafficPolicy">> => traffic_policy()
-%% }
--type get_traffic_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_traffic_policy_versions_request() :: #{
-%%   <<"MaxItems">> => [integer()],
-%%   <<"TrafficPolicyVersionMarker">> => string()
-%% }
--type list_traffic_policy_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_association_authorizations_response() :: #{
-%%   <<"HostedZoneId">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"VPCs">> => list(vpc())
-%% }
--type list_vpc_association_authorizations_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_hosted_zone_count_request() :: #{}
--type get_hosted_zone_count_request() :: #{}.
-
-%% Example:
-%% get_reusable_delegation_set_limit_request() :: #{}
--type get_reusable_delegation_set_limit_request() :: #{}.
-
-
-%% Example:
-%% list_traffic_policy_instances_by_hosted_zone_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
-%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
-%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance())
-%% }
--type list_traffic_policy_instances_by_hosted_zone_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_domain_name() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_domain_name() :: #{binary() => any()}.
-
-
-%% Example:
-%% traffic_policy_summary() :: #{
-%%   <<"Id">> => string(),
-%%   <<"LatestVersion">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"TrafficPolicyCount">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type traffic_policy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% disable_hosted_zone_dns_sec_response() :: #{
-%%   <<"ChangeInfo">> => change_info()
-%% }
--type disable_hosted_zone_dns_sec_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_geo_location() :: #{
-%%   <<"message">> => string()
-%% }
--type no_such_geo_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% traffic_policy_instance() :: #{
-%%   <<"HostedZoneId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => string(),
-%%   <<"TTL">> => float(),
-%%   <<"TrafficPolicyId">> => string(),
-%%   <<"TrafficPolicyType">> => list(any()),
-%%   <<"TrafficPolicyVersion">> => integer()
-%% }
--type traffic_policy_instance() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cidr_collection_request() :: #{
-%%   <<"CallerReference">> := string(),
-%%   <<"Name">> := string()
-%% }
--type create_cidr_collection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_cidr_location_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_such_cidr_location_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_kms_arn() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_kms_arn() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cidr_collection_response() :: #{
-%%   <<"Collection">> => cidr_collection(),
-%%   <<"Location">> => string()
-%% }
--type create_cidr_collection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_dns_sec_response() :: #{
-%%   <<"KeySigningKeys">> => list(key_signing_key()),
-%%   <<"Status">> => dns_sec_status()
-%% }
--type get_dns_sec_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_query_logging_configs_request() :: #{
-%%   <<"HostedZoneId">> => string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
-%% }
--type list_query_logging_configs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_key_signing_key_request() :: #{
-%%   <<"CallerReference">> := string(),
-%%   <<"HostedZoneId">> := string(),
-%%   <<"KeyManagementServiceArn">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Status">> := string()
-%% }
--type create_key_signing_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resources_request() :: #{
-%%   <<"ResourceIds">> := list(string())
-%% }
--type list_tags_for_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cidr_locations_response() :: #{
-%%   <<"CidrLocations">> => list(location_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cidr_locations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_hosted_zones_by_vpc_request() :: #{
-%%   <<"MaxItems">> => [integer()],
-%%   <<"NextToken">> => string(),
-%%   <<"VPCId">> := string(),
-%%   <<"VPCRegion">> := list(any())
-%% }
--type list_hosted_zones_by_vpc_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% update_hosted_zone_comment_request() :: #{
-%%   <<"Comment">> => string()
-%% }
--type update_hosted_zone_comment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_hosted_zones_request() :: #{
-%%   <<"DelegationSetId">> => string(),
-%%   <<"HostedZoneType">> => list(any()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
-%% }
--type list_hosted_zones_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_hosted_zones() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_hosted_zones() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_geo_location_response() :: #{
-%%   <<"GeoLocationDetails">> => geo_location_details()
-%% }
--type get_geo_location_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_reusable_delegation_set_response() :: #{
-%%   <<"DelegationSet">> => delegation_set()
-%% }
--type get_reusable_delegation_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cidr_routing_config() :: #{
-%%   <<"CollectionId">> => string(),
-%%   <<"LocationName">> => string()
-%% }
--type cidr_routing_config() :: #{binary() => any()}.
+-type health_check_already_exists() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1736,31 +1094,28 @@
 %% }
 -type health_check_config() :: #{binary() => any()}.
 
-%% Example:
-%% disable_hosted_zone_dns_sec_request() :: #{}
--type disable_hosted_zone_dns_sec_request() :: #{}.
 
 %% Example:
-%% delete_reusable_delegation_set_response() :: #{}
--type delete_reusable_delegation_set_response() :: #{}.
-
-
-%% Example:
-%% key_signing_key_in_parent_d_s_record() :: #{
+%% health_check_in_use() :: #{
 %%   <<"message">> => string()
 %% }
--type key_signing_key_in_parent_d_s_record() :: #{binary() => any()}.
+-type health_check_in_use() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
+%% health_check_observation() :: #{
+%%   <<"IPAddress">> => string(),
+%%   <<"Region">> => list(any()),
+%%   <<"StatusReport">> => status_report()
+%% }
+-type health_check_observation() :: #{binary() => any()}.
+
+
+%% Example:
+%% health_check_version_mismatch() :: #{
 %%   <<"message">> => string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_health_check_status_request() :: #{}
--type get_health_check_status_request() :: #{}.
+-type health_check_version_mismatch() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1777,34 +1132,70 @@
 
 
 %% Example:
-%% list_traffic_policy_versions_response() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"MaxItems">> => [integer()],
-%%   <<"TrafficPolicies">> => list(traffic_policy()),
-%%   <<"TrafficPolicyVersionMarker">> => string()
+%% hosted_zone_already_exists() :: #{
+%%   <<"message">> => string()
 %% }
--type list_traffic_policy_versions_response() :: #{binary() => any()}.
+-type hosted_zone_already_exists() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_resource_record_sets_request() :: #{
-%%   <<"MaxItems">> => [integer()],
-%%   <<"StartRecordIdentifier">> => string(),
-%%   <<"StartRecordName">> => string(),
-%%   <<"StartRecordType">> => list(any())
+%% hosted_zone_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"PrivateZone">> => boolean()
 %% }
--type list_resource_record_sets_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cidr_collection_request() :: #{}
--type delete_cidr_collection_request() :: #{}.
+-type hosted_zone_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% location_summary() :: #{
-%%   <<"LocationName">> => string()
+%% hosted_zone_failure_reasons() :: #{
+%%   <<"AcceleratedRecovery">> => string()
 %% }
--type location_summary() :: #{binary() => any()}.
+-type hosted_zone_failure_reasons() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_zone_features() :: #{
+%%   <<"AcceleratedRecoveryStatus">> => list(any()),
+%%   <<"FailureReasons">> => hosted_zone_failure_reasons()
+%% }
+-type hosted_zone_features() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_zone_limit() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type hosted_zone_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_zone_not_empty() :: #{
+%%   <<"message">> => string()
+%% }
+-type hosted_zone_not_empty() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_zone_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type hosted_zone_not_found() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_zone_not_private() :: #{
+%%   <<"message">> => string()
+%% }
+-type hosted_zone_not_private() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_zone_owner() :: #{
+%%   <<"OwningAccount">> => string(),
+%%   <<"OwningService">> => string()
+%% }
+-type hosted_zone_owner() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1815,73 +1206,62 @@
 
 
 %% Example:
-%% cidr_collection_version_mismatch_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type cidr_collection_version_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_key_signing_key_request() :: #{}
--type delete_key_signing_key_request() :: #{}.
-
-
-%% Example:
-%% last_vpc_association() :: #{
-%%   <<"message">> => string()
-%% }
--type last_vpc_association() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_account_limit_response() :: #{
-%%   <<"Count">> => float(),
-%%   <<"Limit">> => account_limit()
-%% }
--type get_account_limit_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_reusable_delegation_sets_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => [integer()]
-%% }
--type list_reusable_delegation_sets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cidr_collection_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type cidr_collection_already_exists_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% no_such_traffic_policy() :: #{
-%%   <<"message">> => string()
-%% }
--type no_such_traffic_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_vpc_from_hosted_zone_response() :: #{
-%%   <<"ChangeInfo">> => change_info()
-%% }
--type disassociate_vpc_from_hosted_zone_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dimension() :: #{
+%% hosted_zone_summary() :: #{
+%%   <<"HostedZoneId">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Value">> => string()
+%%   <<"Owner">> => hosted_zone_owner()
 %% }
--type dimension() :: #{binary() => any()}.
+-type hosted_zone_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% prior_request_not_complete() :: #{
+%% incompatible_version() :: #{
 %%   <<"message">> => string()
 %% }
--type prior_request_not_complete() :: #{binary() => any()}.
+-type incompatible_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% insufficient_cloud_watch_logs_resource_policy() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_cloud_watch_logs_resource_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_argument() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_argument() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_change_batch() :: #{
+%%   <<"message">> => string(),
+%%   <<"messages">> => list(string())
+%% }
+-type invalid_change_batch() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_domain_name() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_domain_name() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_input() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_key_signing_key_name() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_key_signing_key_name() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1892,11 +1272,200 @@
 
 
 %% Example:
-%% disassociate_vpc_from_hosted_zone_request() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"VPC">> := vpc()
+%% invalid_kms_arn() :: #{
+%%   <<"message">> => string()
 %% }
--type disassociate_vpc_from_hosted_zone_request() :: #{binary() => any()}.
+-type invalid_kms_arn() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_pagination_token() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pagination_token() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_signing_status() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_signing_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_traffic_policy_document() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_traffic_policy_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_vpc_id() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_vpc_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_signing_key() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DNSKEYRecord">> => string(),
+%%   <<"DSRecord">> => string(),
+%%   <<"DigestAlgorithmMnemonic">> => string(),
+%%   <<"DigestAlgorithmType">> => integer(),
+%%   <<"DigestValue">> => string(),
+%%   <<"Flag">> => integer(),
+%%   <<"KeyTag">> => integer(),
+%%   <<"KmsArn">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublicKey">> => string(),
+%%   <<"SigningAlgorithmMnemonic">> => string(),
+%%   <<"SigningAlgorithmType">> => integer(),
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type key_signing_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_signing_key_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type key_signing_key_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_signing_key_in_parent_d_s_record() :: #{
+%%   <<"message">> => string()
+%% }
+-type key_signing_key_in_parent_d_s_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_signing_key_in_use() :: #{
+%%   <<"message">> => string()
+%% }
+-type key_signing_key_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_signing_key_with_active_status_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type key_signing_key_with_active_status_not_found() :: #{binary() => any()}.
+
+
+%% Example:
+%% last_vpc_association() :: #{
+%%   <<"message">> => string()
+%% }
+-type last_vpc_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% limits_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type limits_exceeded() :: #{binary() => any()}.
+
+
+%% Example:
+%% linked_service() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ServicePrincipal">> => string()
+%% }
+-type linked_service() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cidr_blocks_request() :: #{
+%%   <<"LocationName">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_blocks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cidr_blocks_response() :: #{
+%%   <<"CidrBlocks">> => list(cidr_block_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_blocks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cidr_collections_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_collections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cidr_collections_response() :: #{
+%%   <<"CidrCollections">> => list(collection_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_collections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cidr_locations_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_locations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cidr_locations_response() :: #{
+%%   <<"CidrLocations">> => list(location_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cidr_locations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_geo_locations_request() :: #{
+%%   <<"MaxItems">> => [integer()],
+%%   <<"StartContinentCode">> => string(),
+%%   <<"StartCountryCode">> => string(),
+%%   <<"StartSubdivisionCode">> => string()
+%% }
+-type list_geo_locations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_geo_locations_response() :: #{
+%%   <<"GeoLocationDetailsList">> => list(geo_location_details()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextContinentCode">> => string(),
+%%   <<"NextCountryCode">> => string(),
+%%   <<"NextSubdivisionCode">> => string()
+%% }
+-type list_geo_locations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_health_checks_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_health_checks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_health_checks_response() :: #{
+%%   <<"HealthChecks">> => list(health_check()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextMarker">> => string()
+%% }
+-type list_health_checks_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1909,102 +1478,83 @@
 
 
 %% Example:
-%% no_such_key_signing_key() :: #{
-%%   <<"message">> => string()
+%% list_hosted_zones_by_name_response() :: #{
+%%   <<"DNSName">> => string(),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"HostedZones">> => list(hosted_zone()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextDNSName">> => string(),
+%%   <<"NextHostedZoneId">> => string()
 %% }
--type no_such_key_signing_key() :: #{binary() => any()}.
+-type list_hosted_zones_by_name_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_traffic_policy_instance_request() :: #{
-%%   <<"TTL">> := float(),
-%%   <<"TrafficPolicyId">> := string(),
-%%   <<"TrafficPolicyVersion">> := integer()
+%% list_hosted_zones_by_vpc_request() :: #{
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"VPCId">> := string(),
+%%   <<"VPCRegion">> := list(any())
 %% }
--type update_traffic_policy_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_traffic_policy_request() :: #{}
--type delete_traffic_policy_request() :: #{}.
+-type list_hosted_zones_by_vpc_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% coordinates() :: #{
-%%   <<"Latitude">> => string(),
-%%   <<"Longitude">> => string()
+%% list_hosted_zones_by_vpc_response() :: #{
+%%   <<"HostedZoneSummaries">> => list(hosted_zone_summary()),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextToken">> => string()
 %% }
--type coordinates() :: #{binary() => any()}.
+-type list_hosted_zones_by_vpc_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_query_logging_config_response() :: #{
-%%   <<"QueryLoggingConfig">> => query_logging_config()
+%% list_hosted_zones_request() :: #{
+%%   <<"DelegationSetId">> => string(),
+%%   <<"HostedZoneType">> => list(any()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
 %% }
--type get_query_logging_config_response() :: #{binary() => any()}.
+-type list_hosted_zones_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% cidr_collection() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Version">> => float()
+%% list_hosted_zones_response() :: #{
+%%   <<"HostedZones">> => list(hosted_zone()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextMarker">> => string()
 %% }
--type cidr_collection() :: #{binary() => any()}.
-
-%% Example:
-%% get_traffic_policy_request() :: #{}
--type get_traffic_policy_request() :: #{}.
+-type list_hosted_zones_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% activate_key_signing_key_response() :: #{
-%%   <<"ChangeInfo">> => change_info()
+%% list_query_logging_configs_request() :: #{
+%%   <<"HostedZoneId">> => string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
 %% }
--type activate_key_signing_key_response() :: #{binary() => any()}.
+-type list_query_logging_configs_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% query_logging_config_already_exists() :: #{
-%%   <<"message">> => string()
+%% list_query_logging_configs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QueryLoggingConfigs">> => list(query_logging_config())
 %% }
--type query_logging_config_already_exists() :: #{binary() => any()}.
-
-%% Example:
-%% get_health_check_request() :: #{}
--type get_health_check_request() :: #{}.
+-type list_query_logging_configs_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_record() :: #{
-%%   <<"Value">> => string()
+%% list_resource_record_sets_request() :: #{
+%%   <<"MaxItems">> => [integer()],
+%%   <<"StartRecordIdentifier">> => string(),
+%%   <<"StartRecordName">> => string(),
+%%   <<"StartRecordType">> => list(any())
 %% }
--type resource_record() :: #{binary() => any()}.
-
-%% Example:
-%% delete_traffic_policy_instance_response() :: #{}
--type delete_traffic_policy_instance_response() :: #{}.
-
-
-%% Example:
-%% too_many_key_signing_keys() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_key_signing_keys() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_signing_key_already_exists() :: #{
-%%   <<"message">> => string()
-%% }
--type key_signing_key_already_exists() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_health_check_status_response() :: #{
-%%   <<"HealthCheckObservations">> => list(health_check_observation())
-%% }
--type get_health_check_status_response() :: #{binary() => any()}.
+-type list_resource_record_sets_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2018,92 +1568,370 @@
 %% }
 -type list_resource_record_sets_response() :: #{binary() => any()}.
 
-%% Example:
-%% get_reusable_delegation_set_request() :: #{}
--type get_reusable_delegation_set_request() :: #{}.
 
 %% Example:
-%% get_health_check_last_failure_reason_request() :: #{}
--type get_health_check_last_failure_reason_request() :: #{}.
-
-
-%% Example:
-%% hosted_zone_config() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"PrivateZone">> => boolean()
-%% }
--type hosted_zone_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_reusable_delegation_set_request() :: #{
-%%   <<"CallerReference">> := string(),
-%%   <<"HostedZoneId">> => string()
-%% }
--type create_reusable_delegation_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_vpc_with_hosted_zone_request() :: #{
-%%   <<"Comment">> => string(),
-%%   <<"VPC">> := vpc()
-%% }
--type associate_vpc_with_hosted_zone_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_health_checks_request() :: #{
+%% list_reusable_delegation_sets_request() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => [integer()]
 %% }
--type list_health_checks_request() :: #{binary() => any()}.
+-type list_reusable_delegation_sets_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflicting_types() :: #{
+%% list_reusable_delegation_sets_response() :: #{
+%%   <<"DelegationSets">> => list(delegation_set()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextMarker">> => string()
+%% }
+-type list_reusable_delegation_sets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"ResourceTagSet">> => resource_tag_set()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resources_request() :: #{
+%%   <<"ResourceIds">> := list(string())
+%% }
+-type list_tags_for_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resources_response() :: #{
+%%   <<"ResourceTagSets">> => list(resource_tag_set())
+%% }
+-type list_tags_for_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_policies_request() :: #{
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyIdMarker">> => string()
+%% }
+-type list_traffic_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_policies_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyIdMarker">> => string(),
+%%   <<"TrafficPolicySummaries">> => list(traffic_policy_summary())
+%% }
+-type list_traffic_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_policy_instances_by_hosted_zone_request() :: #{
+%%   <<"HostedZoneId">> := string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any())
+%% }
+-type list_traffic_policy_instances_by_hosted_zone_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_policy_instances_by_hosted_zone_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
+%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance())
+%% }
+-type list_traffic_policy_instances_by_hosted_zone_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_policy_instances_by_policy_request() :: #{
+%%   <<"HostedZoneIdMarker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyId">> := string(),
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
+%%   <<"TrafficPolicyVersion">> := integer()
+%% }
+-type list_traffic_policy_instances_by_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_policy_instances_by_policy_response() :: #{
+%%   <<"HostedZoneIdMarker">> => string(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
+%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance())
+%% }
+-type list_traffic_policy_instances_by_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_policy_instances_request() :: #{
+%%   <<"HostedZoneIdMarker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any())
+%% }
+-type list_traffic_policy_instances_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_policy_instances_response() :: #{
+%%   <<"HostedZoneIdMarker">> => string(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyInstanceNameMarker">> => string(),
+%%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
+%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance())
+%% }
+-type list_traffic_policy_instances_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_policy_versions_request() :: #{
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicyVersionMarker">> => string()
+%% }
+-type list_traffic_policy_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_traffic_policy_versions_response() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"TrafficPolicies">> => list(traffic_policy()),
+%%   <<"TrafficPolicyVersionMarker">> => string()
+%% }
+-type list_traffic_policy_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_association_authorizations_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_association_authorizations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_association_authorizations_response() :: #{
+%%   <<"HostedZoneId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"VPCs">> => list(vpc())
+%% }
+-type list_vpc_association_authorizations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% location_summary() :: #{
+%%   <<"LocationName">> => string()
+%% }
+-type location_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_change() :: #{
 %%   <<"message">> => string()
 %% }
--type conflicting_types() :: #{binary() => any()}.
+-type no_such_change() :: #{binary() => any()}.
 
 
 %% Example:
-%% health_check_in_use() :: #{
+%% no_such_cidr_collection_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_cidr_collection_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_cidr_location_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_such_cidr_location_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_cloud_watch_logs_log_group() :: #{
 %%   <<"message">> => string()
 %% }
--type health_check_in_use() :: #{binary() => any()}.
+-type no_such_cloud_watch_logs_log_group() :: #{binary() => any()}.
 
 
 %% Example:
-%% deactivate_key_signing_key_response() :: #{
-%%   <<"ChangeInfo">> => change_info()
-%% }
--type deactivate_key_signing_key_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_health_checks() :: #{
+%% no_such_delegation_set() :: #{
 %%   <<"message">> => string()
 %% }
--type too_many_health_checks() :: #{binary() => any()}.
+-type no_such_delegation_set() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_hosted_zone_response() :: #{
-%%   <<"ChangeInfo">> => change_info(),
-%%   <<"DelegationSet">> => delegation_set(),
-%%   <<"HostedZone">> => hosted_zone(),
-%%   <<"Location">> => string(),
-%%   <<"VPC">> => vpc()
+%% no_such_geo_location() :: #{
+%%   <<"message">> => string()
 %% }
--type create_hosted_zone_response() :: #{binary() => any()}.
+-type no_such_geo_location() :: #{binary() => any()}.
 
 
 %% Example:
-%% hosted_zone_features() :: #{
-%%   <<"AcceleratedRecoveryStatus">> => list(any()),
-%%   <<"FailureReasons">> => hosted_zone_failure_reasons()
+%% no_such_health_check() :: #{
+%%   <<"message">> => string()
 %% }
--type hosted_zone_features() :: #{binary() => any()}.
+-type no_such_health_check() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_hosted_zone() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_hosted_zone() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_key_signing_key() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_key_signing_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_query_logging_config() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_query_logging_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_traffic_policy() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_traffic_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% no_such_traffic_policy_instance() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_traffic_policy_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_authorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_authorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% prior_request_not_complete() :: #{
+%%   <<"message">> => string()
+%% }
+-type prior_request_not_complete() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_zone_vpc_association() :: #{
+%%   <<"message">> => string()
+%% }
+-type public_zone_vpc_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_logging_config() :: #{
+%%   <<"CloudWatchLogsLogGroupArn">> => string(),
+%%   <<"HostedZoneId">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type query_logging_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_logging_config_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type query_logging_config_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_record() :: #{
+%%   <<"Value">> => string()
+%% }
+-type resource_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_record_set() :: #{
+%%   <<"AliasTarget">> => alias_target(),
+%%   <<"CidrRoutingConfig">> => cidr_routing_config(),
+%%   <<"Failover">> => list(any()),
+%%   <<"GeoLocation">> => geo_location(),
+%%   <<"GeoProximityLocation">> => geo_proximity_location(),
+%%   <<"HealthCheckId">> => string(),
+%%   <<"MultiValueAnswer">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Region">> => list(any()),
+%%   <<"ResourceRecords">> => list(resource_record()),
+%%   <<"SetIdentifier">> => string(),
+%%   <<"TTL">> => float(),
+%%   <<"TrafficPolicyInstanceId">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Weight">> => float()
+%% }
+-type resource_record_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_tag_set() :: #{
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type resource_tag_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% reusable_delegation_set_limit() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type reusable_delegation_set_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% status_report() :: #{
+%%   <<"CheckedTime">> => non_neg_integer(),
+%%   <<"Status">> => string()
+%% }
+-type status_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_dns_answer_request() :: #{
+%%   <<"EDNS0ClientSubnetIP">> => string(),
+%%   <<"EDNS0ClientSubnetMask">> => string(),
+%%   <<"HostedZoneId">> := string(),
+%%   <<"RecordName">> := string(),
+%%   <<"RecordType">> := list(any()),
+%%   <<"ResolverIP">> => string()
+%% }
+-type test_dns_answer_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2119,45 +1947,161 @@
 
 
 %% Example:
-%% cidr_block_summary() :: #{
-%%   <<"CidrBlock">> => string(),
-%%   <<"LocationName">> => string()
-%% }
--type cidr_block_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delegation_set_already_created() :: #{
+%% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type delegation_set_already_created() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_traffic_policy_version_request() :: #{
+%% too_many_health_checks() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_health_checks() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_hosted_zones() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_hosted_zones() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_key_signing_keys() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_key_signing_keys() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_traffic_policies() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_traffic_policies() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_traffic_policy_instances() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_traffic_policy_instances() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_traffic_policy_versions_for_current_policy() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_traffic_policy_versions_for_current_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_vpc_association_authorizations() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_vpc_association_authorizations() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_policy() :: #{
 %%   <<"Comment">> => string(),
-%%   <<"Document">> := string()
+%%   <<"Document">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => integer()
 %% }
--type create_traffic_policy_version_request() :: #{binary() => any()}.
+-type traffic_policy() :: #{binary() => any()}.
 
 
 %% Example:
-%% hosted_zone_not_empty() :: #{
+%% traffic_policy_already_exists() :: #{
 %%   <<"message">> => string()
 %% }
--type hosted_zone_not_empty() :: #{binary() => any()}.
-
-%% Example:
-%% get_checker_ip_ranges_request() :: #{}
--type get_checker_ip_ranges_request() :: #{}.
+-type traffic_policy_already_exists() :: #{binary() => any()}.
 
 
 %% Example:
-%% change_cidr_collection_request() :: #{
-%%   <<"Changes">> := list(cidr_collection_change()),
-%%   <<"CollectionVersion">> => float()
+%% traffic_policy_in_use() :: #{
+%%   <<"message">> => string()
 %% }
--type change_cidr_collection_request() :: #{binary() => any()}.
+-type traffic_policy_in_use() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_policy_instance() :: #{
+%%   <<"HostedZoneId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string(),
+%%   <<"TTL">> => float(),
+%%   <<"TrafficPolicyId">> => string(),
+%%   <<"TrafficPolicyType">> => list(any()),
+%%   <<"TrafficPolicyVersion">> => integer()
+%% }
+-type traffic_policy_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_policy_instance_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type traffic_policy_instance_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_policy_summary() :: #{
+%%   <<"Id">> => string(),
+%%   <<"LatestVersion">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"TrafficPolicyCount">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type traffic_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_health_check_request() :: #{
+%%   <<"AlarmIdentifier">> => alarm_identifier(),
+%%   <<"ChildHealthChecks">> => list(string()),
+%%   <<"Disabled">> => boolean(),
+%%   <<"EnableSNI">> => boolean(),
+%%   <<"FailureThreshold">> => integer(),
+%%   <<"FullyQualifiedDomainName">> => string(),
+%%   <<"HealthCheckVersion">> => float(),
+%%   <<"HealthThreshold">> => integer(),
+%%   <<"IPAddress">> => string(),
+%%   <<"InsufficientDataHealthStatus">> => list(any()),
+%%   <<"Inverted">> => boolean(),
+%%   <<"Port">> => integer(),
+%%   <<"Regions">> => list(list(any())()),
+%%   <<"ResetElements">> => list(list(any())()),
+%%   <<"ResourcePath">> => string(),
+%%   <<"SearchString">> => string()
+%% }
+-type update_health_check_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_health_check_response() :: #{
+%%   <<"HealthCheck">> => health_check()
+%% }
+-type update_health_check_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_hosted_zone_comment_request() :: #{
+%%   <<"Comment">> => string()
+%% }
+-type update_hosted_zone_comment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_hosted_zone_comment_response() :: #{
+%%   <<"HostedZone">> => hosted_zone()
+%% }
+-type update_hosted_zone_comment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2166,175 +2110,231 @@
 %% }
 -type update_hosted_zone_features_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_hosted_zone_features_response() :: #{}
+-type update_hosted_zone_features_response() :: #{}.
+
+
+%% Example:
+%% update_traffic_policy_comment_request() :: #{
+%%   <<"Comment">> := string()
+%% }
+-type update_traffic_policy_comment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_traffic_policy_comment_response() :: #{
+%%   <<"TrafficPolicy">> => traffic_policy()
+%% }
+-type update_traffic_policy_comment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_traffic_policy_instance_request() :: #{
+%%   <<"TTL">> := float(),
+%%   <<"TrafficPolicyId">> := string(),
+%%   <<"TrafficPolicyVersion">> := integer()
+%% }
+-type update_traffic_policy_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_traffic_policy_instance_response() :: #{
+%%   <<"TrafficPolicyInstance">> => traffic_policy_instance()
+%% }
+-type update_traffic_policy_instance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc() :: #{
+%%   <<"VPCId">> => string(),
+%%   <<"VPCRegion">> => list(any())
+%% }
+-type vpc() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_association_authorization_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type vpc_association_authorization_not_found() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_association_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type vpc_association_not_found() :: #{binary() => any()}.
+
 -type activate_key_signing_key_errors() ::
     no_such_key_signing_key() | 
-    invalid_key_signing_key_status() | 
-    invalid_kms_arn() | 
     invalid_signing_status() | 
-    concurrent_modification() | 
-    invalid_input().
+    invalid_kms_arn() | 
+    invalid_key_signing_key_status() | 
+    invalid_input() | 
+    concurrent_modification().
 
 -type associate_vpc_with_hosted_zone_errors() ::
+    public_zone_vpc_association() | 
     prior_request_not_complete() | 
     not_authorized_exception() | 
-    invalid_vpc_id() | 
-    conflicting_domain_exists() | 
-    limits_exceeded() | 
-    public_zone_vpc_association() | 
     no_such_hosted_zone() | 
-    invalid_input().
+    limits_exceeded() | 
+    invalid_vpc_id() | 
+    invalid_input() | 
+    conflicting_domain_exists().
 
 -type change_cidr_collection_errors() ::
-    cidr_collection_version_mismatch_exception() | 
-    limits_exceeded() | 
-    cidr_block_in_use_exception() | 
     no_such_cidr_collection_exception() | 
+    limits_exceeded() | 
+    invalid_input() | 
     concurrent_modification() | 
-    invalid_input().
+    cidr_collection_version_mismatch_exception() | 
+    cidr_block_in_use_exception().
 
 -type change_resource_record_sets_errors() ::
     prior_request_not_complete() | 
     no_such_hosted_zone() | 
     no_such_health_check() | 
-    invalid_change_batch() | 
-    invalid_input().
+    invalid_input() | 
+    invalid_change_batch().
 
 -type change_tags_for_resource_errors() ::
-    prior_request_not_complete() | 
     throttling_exception() | 
+    prior_request_not_complete() | 
     no_such_hosted_zone() | 
     no_such_health_check() | 
     invalid_input().
 
 -type create_cidr_collection_errors() ::
-    cidr_collection_already_exists_exception() | 
     limits_exceeded() | 
+    invalid_input() | 
     concurrent_modification() | 
-    invalid_input().
+    cidr_collection_already_exists_exception().
 
 -type create_health_check_errors() ::
     too_many_health_checks() | 
-    health_check_already_exists() | 
-    invalid_input().
+    invalid_input() | 
+    health_check_already_exists().
 
 -type create_hosted_zone_errors() ::
     too_many_hosted_zones() | 
-    invalid_domain_name() | 
-    invalid_vpc_id() | 
-    hosted_zone_already_exists() | 
-    conflicting_domain_exists() | 
     no_such_delegation_set() | 
-    delegation_set_not_available() | 
+    invalid_vpc_id() | 
     invalid_input() | 
-    delegation_set_not_reusable().
+    invalid_domain_name() | 
+    hosted_zone_already_exists() | 
+    delegation_set_not_reusable() | 
+    delegation_set_not_available() | 
+    conflicting_domain_exists().
 
 -type create_key_signing_key_errors() ::
-    key_signing_key_already_exists() | 
     too_many_key_signing_keys() | 
-    invalid_key_signing_key_status() | 
-    invalid_kms_arn() | 
-    invalid_signing_status() | 
-    concurrent_modification() | 
-    invalid_argument() | 
-    invalid_key_signing_key_name() | 
     no_such_hosted_zone() | 
-    invalid_input().
+    key_signing_key_already_exists() | 
+    invalid_signing_status() | 
+    invalid_kms_arn() | 
+    invalid_key_signing_key_status() | 
+    invalid_key_signing_key_name() | 
+    invalid_input() | 
+    invalid_argument() | 
+    concurrent_modification().
 
 -type create_query_logging_config_errors() ::
     query_logging_config_already_exists() | 
-    no_such_cloud_watch_logs_log_group() | 
-    concurrent_modification() | 
     no_such_hosted_zone() | 
+    no_such_cloud_watch_logs_log_group() | 
+    invalid_input() | 
     insufficient_cloud_watch_logs_resource_policy() | 
-    invalid_input().
+    concurrent_modification().
 
 -type create_reusable_delegation_set_errors() ::
-    delegation_set_already_created() | 
-    hosted_zone_not_found() | 
-    delegation_set_already_reusable() | 
     limits_exceeded() | 
+    invalid_input() | 
     invalid_argument() | 
+    hosted_zone_not_found() | 
     delegation_set_not_available() | 
-    invalid_input().
+    delegation_set_already_reusable() | 
+    delegation_set_already_created().
 
 -type create_traffic_policy_errors() ::
     traffic_policy_already_exists() | 
-    invalid_traffic_policy_document() | 
     too_many_traffic_policies() | 
+    invalid_traffic_policy_document() | 
     invalid_input().
 
 -type create_traffic_policy_instance_errors() ::
-    no_such_traffic_policy() | 
     traffic_policy_instance_already_exists() | 
     too_many_traffic_policy_instances() | 
+    no_such_traffic_policy() | 
     no_such_hosted_zone() | 
     invalid_input().
 
 -type create_traffic_policy_version_errors() ::
-    no_such_traffic_policy() | 
-    concurrent_modification() | 
-    invalid_traffic_policy_document() | 
     too_many_traffic_policy_versions_for_current_policy() | 
-    invalid_input().
+    no_such_traffic_policy() | 
+    invalid_traffic_policy_document() | 
+    invalid_input() | 
+    concurrent_modification().
 
 -type create_vpc_association_authorization_errors() ::
-    invalid_vpc_id() | 
     too_many_vpc_association_authorizations() | 
-    concurrent_modification() | 
     no_such_hosted_zone() | 
-    invalid_input().
+    invalid_vpc_id() | 
+    invalid_input() | 
+    concurrent_modification().
 
 -type deactivate_key_signing_key_errors() ::
     no_such_key_signing_key() | 
-    invalid_key_signing_key_status() | 
-    key_signing_key_in_parent_d_s_record() | 
     key_signing_key_in_use() | 
+    key_signing_key_in_parent_d_s_record() | 
     invalid_signing_status() | 
-    concurrent_modification() | 
-    invalid_input().
+    invalid_key_signing_key_status() | 
+    invalid_input() | 
+    concurrent_modification().
 
 -type delete_cidr_collection_errors() ::
     no_such_cidr_collection_exception() | 
+    invalid_input() | 
     concurrent_modification() | 
-    cidr_collection_in_use_exception() | 
-    invalid_input().
+    cidr_collection_in_use_exception().
 
 -type delete_health_check_errors() ::
-    health_check_in_use() | 
     no_such_health_check() | 
-    invalid_input().
+    invalid_input() | 
+    health_check_in_use().
 
 -type delete_hosted_zone_errors() ::
-    hosted_zone_not_empty() | 
     prior_request_not_complete() | 
-    invalid_domain_name() | 
     no_such_hosted_zone() | 
-    invalid_input().
+    invalid_input() | 
+    invalid_domain_name() | 
+    hosted_zone_not_empty().
 
 -type delete_key_signing_key_errors() ::
     no_such_key_signing_key() | 
-    invalid_key_signing_key_status() | 
-    invalid_kms_arn() | 
     invalid_signing_status() | 
-    concurrent_modification() | 
-    invalid_input().
+    invalid_kms_arn() | 
+    invalid_key_signing_key_status() | 
+    invalid_input() | 
+    concurrent_modification().
 
 -type delete_query_logging_config_errors() ::
     no_such_query_logging_config() | 
-    concurrent_modification() | 
-    invalid_input().
+    invalid_input() | 
+    concurrent_modification().
 
 -type delete_reusable_delegation_set_errors() ::
-    delegation_set_in_use() | 
     no_such_delegation_set() | 
     invalid_input() | 
-    delegation_set_not_reusable().
+    delegation_set_not_reusable() | 
+    delegation_set_in_use().
 
 -type delete_traffic_policy_errors() ::
+    traffic_policy_in_use() | 
     no_such_traffic_policy() | 
-    concurrent_modification() | 
     invalid_input() | 
-    traffic_policy_in_use().
+    concurrent_modification().
 
 -type delete_traffic_policy_instance_errors() ::
     prior_request_not_complete() | 
@@ -2342,39 +2342,39 @@
     invalid_input().
 
 -type delete_vpc_association_authorization_errors() ::
-    invalid_vpc_id() | 
-    concurrent_modification() | 
-    no_such_hosted_zone() | 
     vpc_association_authorization_not_found() | 
-    invalid_input().
+    no_such_hosted_zone() | 
+    invalid_vpc_id() | 
+    invalid_input() | 
+    concurrent_modification().
 
 -type disable_hosted_zone_dns_sec_errors() ::
-    invalid_key_signing_key_status() | 
+    no_such_hosted_zone() | 
     key_signing_key_in_parent_d_s_record() | 
     invalid_kms_arn() | 
-    concurrent_modification() | 
+    invalid_key_signing_key_status() | 
+    invalid_input() | 
     invalid_argument() | 
     dns_sec_not_found() | 
-    no_such_hosted_zone() | 
-    invalid_input().
+    concurrent_modification().
 
 -type disassociate_vpc_from_hosted_zone_errors() ::
+    vpc_association_not_found() | 
+    no_such_hosted_zone() | 
     last_vpc_association() | 
     invalid_vpc_id() | 
-    no_such_hosted_zone() | 
-    vpc_association_not_found() | 
     invalid_input().
 
 -type enable_hosted_zone_dns_sec_errors() ::
-    invalid_key_signing_key_status() | 
-    hosted_zone_partially_delegated() | 
-    invalid_kms_arn() | 
-    key_signing_key_with_active_status_not_found() | 
-    concurrent_modification() | 
-    invalid_argument() | 
-    dns_sec_not_found() | 
     no_such_hosted_zone() | 
-    invalid_input().
+    key_signing_key_with_active_status_not_found() | 
+    invalid_kms_arn() | 
+    invalid_key_signing_key_status() | 
+    invalid_input() | 
+    invalid_argument() | 
+    hosted_zone_partially_delegated() | 
+    dns_sec_not_found() | 
+    concurrent_modification().
 
 -type get_account_limit_errors() ::
     invalid_input().
@@ -2384,9 +2384,9 @@
     invalid_input().
 
 -type get_dns_sec_errors() ::
-    invalid_argument() | 
     no_such_hosted_zone() | 
-    invalid_input().
+    invalid_input() | 
+    invalid_argument().
 
 -type get_geo_location_errors() ::
     no_such_geo_location() | 
@@ -2414,8 +2414,8 @@
 
 -type get_hosted_zone_limit_errors() ::
     no_such_hosted_zone() | 
-    hosted_zone_not_private() | 
-    invalid_input().
+    invalid_input() | 
+    hosted_zone_not_private().
 
 -type get_query_logging_config_errors() ::
     no_such_query_logging_config() | 
@@ -2463,8 +2463,8 @@
     delegation_set_not_reusable().
 
 -type list_hosted_zones_by_name_errors() ::
-    invalid_domain_name() | 
-    invalid_input().
+    invalid_input() | 
+    invalid_domain_name().
 
 -type list_hosted_zones_by_vpc_errors() ::
     invalid_pagination_token() | 
@@ -2483,15 +2483,15 @@
     invalid_input().
 
 -type list_tags_for_resource_errors() ::
-    prior_request_not_complete() | 
     throttling_exception() | 
+    prior_request_not_complete() | 
     no_such_hosted_zone() | 
     no_such_health_check() | 
     invalid_input().
 
 -type list_tags_for_resources_errors() ::
-    prior_request_not_complete() | 
     throttling_exception() | 
+    prior_request_not_complete() | 
     no_such_hosted_zone() | 
     no_such_health_check() | 
     invalid_input().
@@ -2504,13 +2504,13 @@
     invalid_input().
 
 -type list_traffic_policy_instances_by_hosted_zone_errors() ::
-    no_such_hosted_zone() | 
     no_such_traffic_policy_instance() | 
+    no_such_hosted_zone() | 
     invalid_input().
 
 -type list_traffic_policy_instances_by_policy_errors() ::
-    no_such_traffic_policy() | 
     no_such_traffic_policy_instance() | 
+    no_such_traffic_policy() | 
     invalid_input().
 
 -type list_traffic_policy_versions_errors() ::
@@ -2538,21 +2538,21 @@
 
 -type update_hosted_zone_features_errors() ::
     prior_request_not_complete() | 
-    limits_exceeded() | 
     no_such_hosted_zone() | 
+    limits_exceeded() | 
     invalid_input().
 
 -type update_traffic_policy_comment_errors() ::
     no_such_traffic_policy() | 
-    concurrent_modification() | 
-    invalid_input().
+    invalid_input() | 
+    concurrent_modification().
 
 -type update_traffic_policy_instance_errors() ::
-    conflicting_types() | 
     prior_request_not_complete() | 
-    no_such_traffic_policy() | 
     no_such_traffic_policy_instance() | 
-    invalid_input().
+    no_such_traffic_policy() | 
+    invalid_input() | 
+    conflicting_types().
 
 %%====================================================================
 %% API

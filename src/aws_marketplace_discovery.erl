@@ -31,410 +31,10 @@
 
 
 %% Example:
-%% eks_add_on_fulfillment_option() :: #{
-%%   <<"awsSupportedServices">> => list(aws_supported_service()),
-%%   <<"fulfillmentOptionDisplayName">> => [string()],
-%%   <<"fulfillmentOptionId">> => [string()],
-%%   <<"fulfillmentOptionName">> => [string()],
-%%   <<"fulfillmentOptionType">> => list(any()),
-%%   <<"fulfillmentOptionVersion">> => [string()],
-%%   <<"operatingSystems">> => list(eks_add_on_operating_system()),
-%%   <<"releaseNotes">> => [string()],
-%%   <<"usageInstructions">> => [string()]
-%% }
--type eks_add_on_fulfillment_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_artifact() :: #{
-%%   <<"dataClassification">> => [string()],
-%%   <<"description">> => [string()],
-%%   <<"resourceArn">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type data_artifact() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_facets_input() :: #{
-%%   <<"facetTypes">> => list(list(any())()),
-%%   <<"filters">> => list(search_filter()),
-%%   <<"nextToken">> => string(),
-%%   <<"searchText">> => string()
-%% }
--type search_facets_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% pricing_unit() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"pricingUnitType">> => list(any())
-%% }
--type pricing_unit() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_fulfillment_options_output() :: #{
-%%   <<"fulfillmentOptions">> => list(list()),
-%%   <<"nextToken">> => string()
-%% }
--type list_fulfillment_options_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_fulfillment_option() :: #{
-%%   <<"awsSupportedServices">> => list(aws_supported_service()),
-%%   <<"fulfillmentOptionDisplayName">> => [string()],
-%%   <<"fulfillmentOptionId">> => [string()],
-%%   <<"fulfillmentOptionName">> => [string()],
-%%   <<"fulfillmentOptionType">> => list(any()),
-%%   <<"fulfillmentOptionVersion">> => [string()],
-%%   <<"operatingSystems">> => list(container_operating_system()),
-%%   <<"releaseNotes">> => [string()],
-%%   <<"usageInstructions">> => [string()]
-%% }
--type container_fulfillment_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% fulfillment_option_summary() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"fulfillmentOptionType">> => list(any())
-%% }
--type fulfillment_option_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% purchase_option_badge() :: #{
-%%   <<"badgeType">> => list(any()),
-%%   <<"displayName">> => string()
-%% }
--type purchase_option_badge() :: #{binary() => any()}.
-
-
-%% Example:
-%% use_case() :: #{
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"value">> => string()
-%% }
--type use_case() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_formation_fulfillment_option() :: #{
-%%   <<"fulfillmentOptionDisplayName">> => [string()],
-%%   <<"fulfillmentOptionId">> => [string()],
-%%   <<"fulfillmentOptionName">> => [string()],
-%%   <<"fulfillmentOptionType">> => list(any()),
-%%   <<"fulfillmentOptionVersion">> => [string()],
-%%   <<"releaseNotes">> => [string()],
-%%   <<"usageInstructions">> => [string()]
-%% }
--type cloud_formation_fulfillment_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% selector() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type selector() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_listing_input() :: #{
-%%   <<"listingId">> := string()
-%% }
--type get_listing_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_facets_output() :: #{
-%%   <<"listingFacets">> => map(),
-%%   <<"nextToken">> => string(),
-%%   <<"totalResults">> => float()
-%% }
--type search_facets_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% pricing_model() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"pricingModelType">> => list(any())
-%% }
--type pricing_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% listing_summary_associated_entity() :: #{
-%%   <<"product">> => product_information()
-%% }
--type listing_summary_associated_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% support_term() :: #{
-%%   <<"id">> => string(),
-%%   <<"refundPolicy">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type support_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% renewal_term() :: #{
-%%   <<"id">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type renewal_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_purchase_options_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"purchaseOptions">> => list(purchase_option_summary())
-%% }
--type list_purchase_options_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% saas_fulfillment_option() :: #{
-%%   <<"fulfillmentOptionDisplayName">> => [string()],
-%%   <<"fulfillmentOptionId">> => [string()],
-%%   <<"fulfillmentOptionType">> => list(any()),
-%%   <<"fulfillmentUrl">> => [string()],
-%%   <<"usageInstructions">> => [string()]
-%% }
--type saas_fulfillment_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% api_fulfillment_option() :: #{
-%%   <<"awsSupportedServices">> => list(aws_supported_service()),
-%%   <<"fulfillmentOptionDisplayName">> => [string()],
-%%   <<"fulfillmentOptionId">> => [string()],
-%%   <<"fulfillmentOptionType">> => list(any()),
-%%   <<"usageInstructions">> => [string()]
-%% }
--type api_fulfillment_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% listing_associated_entity() :: #{
-%%   <<"offer">> => offer_information(),
-%%   <<"product">> => product_information()
-%% }
--type listing_associated_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% document_item() :: #{
-%%   <<"type">> => list(any()),
-%%   <<"url">> => string(),
-%%   <<"version">> => [string()]
-%% }
--type document_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% use_case_entry() :: #{
-%%   <<"useCase">> => use_case()
-%% }
--type use_case_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% listing_badge() :: #{
-%%   <<"badgeType">> => list(any()),
-%%   <<"displayName">> => string()
-%% }
--type listing_badge() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_filter() :: #{
-%%   <<"filterType">> => list(any()),
-%%   <<"filterValues">> => list(string())
-%% }
--type search_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% listing_facet() :: #{
-%%   <<"count">> => float(),
-%%   <<"displayName">> => string(),
-%%   <<"parent">> => string(),
-%%   <<"value">> => string()
-%% }
--type listing_facet() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_operating_system() :: #{
-%%   <<"operatingSystemFamilyName">> => [string()],
-%%   <<"operatingSystemName">> => [string()]
-%% }
--type container_operating_system() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_offer_set_input() :: #{
-%%   <<"offerSetId">> := string()
-%% }
--type get_offer_set_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_supported_service() :: #{
-%%   <<"description">> => [string()],
-%%   <<"displayName">> => [string()],
-%%   <<"supportedServiceType">> => [string()]
-%% }
--type aws_supported_service() :: #{binary() => any()}.
-
-
-%% Example:
-%% purchase_option_summary() :: #{
-%%   <<"associatedEntities">> => list(purchase_option_associated_entity()),
-%%   <<"availableFromTime">> => [non_neg_integer()],
-%%   <<"badges">> => list(purchase_option_badge()),
-%%   <<"catalog">> => string(),
-%%   <<"expirationTime">> => [non_neg_integer()],
-%%   <<"purchaseOptionId">> => string(),
-%%   <<"purchaseOptionName">> => string(),
-%%   <<"purchaseOptionType">> => list(any()),
-%%   <<"sellerOfRecord">> => seller_information()
-%% }
--type purchase_option_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_based_pricing_term() :: #{
-%%   <<"currencyCode">> => string(),
-%%   <<"id">> => string(),
-%%   <<"rateCards">> => list(usage_based_rate_card_item()),
-%%   <<"type">> => list(any())
-%% }
--type usage_based_pricing_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% dimension_label() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"labelType">> => list(any()),
-%%   <<"labelValue">> => string()
-%% }
--type dimension_label() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_listings_output() :: #{
-%%   <<"listingSummaries">> => list(listing_summary()),
-%%   <<"nextToken">> => string(),
-%%   <<"totalResults">> => float()
-%% }
--type search_listings_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% product_information() :: #{
-%%   <<"manufacturer">> => seller_information(),
-%%   <<"productId">> => string(),
-%%   <<"productName">> => string()
-%% }
--type product_information() :: #{binary() => any()}.
-
-
-%% Example:
-%% byol_pricing_term() :: #{
-%%   <<"id">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type byol_pricing_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% recurring_payment_term() :: #{
-%%   <<"billingPeriod">> => list(any()),
-%%   <<"currencyCode">> => string(),
-%%   <<"id">> => string(),
-%%   <<"price">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type recurring_payment_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% helm_fulfillment_option() :: #{
-%%   <<"awsSupportedServices">> => list(aws_supported_service()),
-%%   <<"fulfillmentOptionDisplayName">> => [string()],
-%%   <<"fulfillmentOptionId">> => [string()],
-%%   <<"fulfillmentOptionName">> => [string()],
-%%   <<"fulfillmentOptionType">> => list(any()),
-%%   <<"fulfillmentOptionVersion">> => [string()],
-%%   <<"operatingSystems">> => list(helm_operating_system()),
-%%   <<"releaseNotes">> => [string()],
-%%   <<"usageInstructions">> => [string()]
-%% }
--type helm_fulfillment_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% grant_item() :: #{
-%%   <<"description">> => string(),
-%%   <<"dimensionKey">> => string(),
-%%   <<"dimensionLabels">> => list(dimension_label()),
-%%   <<"displayName">> => string(),
-%%   <<"maxQuantity">> => [integer()],
-%%   <<"unit">> => string()
-%% }
--type grant_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% legal_term() :: #{
-%%   <<"documents">> => list(document_item()),
-%%   <<"id">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type legal_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% payment_schedule_term() :: #{
-%%   <<"currencyCode">> => string(),
-%%   <<"id">> => string(),
-%%   <<"schedule">> => list(schedule_item()),
-%%   <<"type">> => list(any())
-%% }
--type payment_schedule_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_based_rate_card_item() :: #{
-%%   <<"rateCard">> => list(rate_card_item())
-%% }
--type usage_based_rate_card_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_listings_input() :: #{
-%%   <<"filters">> => list(search_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchText">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type search_listings_input() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -453,61 +53,194 @@
 
 
 %% Example:
-%% review_summary() :: #{
-%%   <<"reviewSourceSummaries">> => list(review_source_summary())
+%% amazon_machine_image_operating_system() :: #{
+%%   <<"operatingSystemFamilyName">> => [string()],
+%%   <<"operatingSystemName">> => [string()],
+%%   <<"operatingSystemVersion">> => [string()]
 %% }
--type review_summary() :: #{binary() => any()}.
+-type amazon_machine_image_operating_system() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_offer_terms_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"offerTerms">> => list(list())
+%% amazon_machine_image_recommendation() :: #{
+%%   <<"instanceType">> => [string()]
 %% }
--type get_offer_terms_output() :: #{binary() => any()}.
+-type amazon_machine_image_recommendation() :: #{binary() => any()}.
 
 
 %% Example:
-%% listing_summary() :: #{
-%%   <<"associatedEntities">> => list(listing_summary_associated_entity()),
-%%   <<"badges">> => list(listing_badge()),
-%%   <<"catalog">> => string(),
-%%   <<"categories">> => list(category()),
-%%   <<"fulfillmentOptionSummaries">> => list(fulfillment_option_summary()),
-%%   <<"listingId">> => string(),
-%%   <<"listingName">> => string(),
-%%   <<"logoThumbnailUrl">> => string(),
-%%   <<"pricingModels">> => list(pricing_model()),
-%%   <<"pricingUnits">> => list(pricing_unit()),
-%%   <<"publisher">> => seller_information(),
-%%   <<"reviewSummary">> => review_summary(),
-%%   <<"shortDescription">> => string()
+%% api_fulfillment_option() :: #{
+%%   <<"awsSupportedServices">> => list(aws_supported_service()),
+%%   <<"fulfillmentOptionDisplayName">> => [string()],
+%%   <<"fulfillmentOptionId">> => [string()],
+%%   <<"fulfillmentOptionType">> => list(any()),
+%%   <<"usageInstructions">> => [string()]
 %% }
--type listing_summary() :: #{binary() => any()}.
+-type api_fulfillment_option() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
+%% aws_supported_service() :: #{
+%%   <<"description">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"supportedServiceType">> => [string()]
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type aws_supported_service() :: #{binary() => any()}.
 
 
 %% Example:
-%% professional_services_fulfillment_option() :: #{
+%% byol_pricing_term() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type byol_pricing_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% category() :: #{
+%%   <<"categoryId">> => string(),
+%%   <<"displayName">> => string()
+%% }
+-type category() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_formation_fulfillment_option() :: #{
+%%   <<"fulfillmentOptionDisplayName">> => [string()],
+%%   <<"fulfillmentOptionId">> => [string()],
+%%   <<"fulfillmentOptionName">> => [string()],
+%%   <<"fulfillmentOptionType">> => list(any()),
+%%   <<"fulfillmentOptionVersion">> => [string()],
+%%   <<"releaseNotes">> => [string()],
+%%   <<"usageInstructions">> => [string()]
+%% }
+-type cloud_formation_fulfillment_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% configurable_upfront_pricing_term() :: #{
+%%   <<"currencyCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"rateCards">> => list(configurable_upfront_rate_card_item()),
+%%   <<"type">> => list(any())
+%% }
+-type configurable_upfront_pricing_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% configurable_upfront_rate_card_item() :: #{
+%%   <<"constraints">> => constraints(),
+%%   <<"rateCard">> => list(rate_card_item()),
+%%   <<"selector">> => selector()
+%% }
+-type configurable_upfront_rate_card_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% constraints() :: #{
+%%   <<"multipleDimensionSelection">> => list(any()),
+%%   <<"quantityConfiguration">> => list(any())
+%% }
+-type constraints() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_fulfillment_option() :: #{
+%%   <<"awsSupportedServices">> => list(aws_supported_service()),
+%%   <<"fulfillmentOptionDisplayName">> => [string()],
+%%   <<"fulfillmentOptionId">> => [string()],
+%%   <<"fulfillmentOptionName">> => [string()],
+%%   <<"fulfillmentOptionType">> => list(any()),
+%%   <<"fulfillmentOptionVersion">> => [string()],
+%%   <<"operatingSystems">> => list(container_operating_system()),
+%%   <<"releaseNotes">> => [string()],
+%%   <<"usageInstructions">> => [string()]
+%% }
+-type container_fulfillment_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_operating_system() :: #{
+%%   <<"operatingSystemFamilyName">> => [string()],
+%%   <<"operatingSystemName">> => [string()]
+%% }
+-type container_operating_system() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_artifact() :: #{
+%%   <<"dataClassification">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"resourceArn">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type data_artifact() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_exchange_fulfillment_option() :: #{
+%%   <<"dataArtifacts">> => list(data_artifact()),
 %%   <<"fulfillmentOptionDisplayName">> => [string()],
 %%   <<"fulfillmentOptionId">> => [string()],
 %%   <<"fulfillmentOptionType">> => list(any())
 %% }
--type professional_services_fulfillment_option() :: #{binary() => any()}.
+-type data_exchange_fulfillment_option() :: #{binary() => any()}.
 
 
 %% Example:
-%% helm_operating_system() :: #{
+%% dimension_label() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"labelType">> => list(any()),
+%%   <<"labelValue">> => string()
+%% }
+-type dimension_label() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_item() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"url">> => string(),
+%%   <<"version">> => [string()]
+%% }
+-type document_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_image_builder_component_fulfillment_option() :: #{
+%%   <<"awsSupportedServices">> => list(aws_supported_service()),
+%%   <<"fulfillmentOptionDisplayName">> => [string()],
+%%   <<"fulfillmentOptionId">> => [string()],
+%%   <<"fulfillmentOptionName">> => [string()],
+%%   <<"fulfillmentOptionType">> => list(any()),
+%%   <<"fulfillmentOptionVersion">> => [string()],
+%%   <<"operatingSystems">> => list(container_operating_system()),
+%%   <<"releaseNotes">> => [string()],
+%%   <<"usageInstructions">> => [string()]
+%% }
+-type ec2_image_builder_component_fulfillment_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_add_on_fulfillment_option() :: #{
+%%   <<"awsSupportedServices">> => list(aws_supported_service()),
+%%   <<"fulfillmentOptionDisplayName">> => [string()],
+%%   <<"fulfillmentOptionId">> => [string()],
+%%   <<"fulfillmentOptionName">> => [string()],
+%%   <<"fulfillmentOptionType">> => list(any()),
+%%   <<"fulfillmentOptionVersion">> => [string()],
+%%   <<"operatingSystems">> => list(eks_add_on_operating_system()),
+%%   <<"releaseNotes">> => [string()],
+%%   <<"usageInstructions">> => [string()]
+%% }
+-type eks_add_on_fulfillment_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_add_on_operating_system() :: #{
 %%   <<"operatingSystemFamilyName">> => [string()],
 %%   <<"operatingSystemName">> => [string()]
 %% }
--type helm_operating_system() :: #{binary() => any()}.
+-type eks_add_on_operating_system() :: #{binary() => any()}.
 
 
 %% Example:
@@ -523,153 +256,28 @@
 
 
 %% Example:
-%% get_offer_set_output() :: #{
-%%   <<"associatedEntities">> => list(offer_set_associated_entity()),
-%%   <<"availableFromTime">> => [non_neg_integer()],
-%%   <<"badges">> => list(purchase_option_badge()),
-%%   <<"buyerNotes">> => string(),
-%%   <<"catalog">> => string(),
-%%   <<"expirationTime">> => [non_neg_integer()],
-%%   <<"offerSetId">> => string(),
-%%   <<"offerSetName">> => string(),
-%%   <<"sellerOfRecord">> => seller_information()
-%% }
--type get_offer_set_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_fulfillment_options_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"productId">> := string()
-%% }
--type list_fulfillment_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% constraints() :: #{
-%%   <<"multipleDimensionSelection">> => list(any()),
-%%   <<"quantityConfiguration">> => list(any())
-%% }
--type constraints() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% review_source_summary() :: #{
-%%   <<"averageRating">> => string(),
-%%   <<"sourceId">> => list(any()),
-%%   <<"sourceName">> => string(),
-%%   <<"sourceUrl">> => string(),
-%%   <<"totalReviews">> => float()
-%% }
--type review_source_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_offer_output() :: #{
-%%   <<"agreementProposalId">> => string(),
-%%   <<"associatedEntities">> => list(offer_associated_entity()),
-%%   <<"availableFromTime">> => [non_neg_integer()],
-%%   <<"badges">> => list(purchase_option_badge()),
-%%   <<"catalog">> => string(),
-%%   <<"expirationTime">> => [non_neg_integer()],
-%%   <<"offerId">> => string(),
-%%   <<"offerName">> => string(),
-%%   <<"pricingModel">> => pricing_model(),
-%%   <<"replacementAgreementId">> => string(),
-%%   <<"sellerOfRecord">> => seller_information()
-%% }
--type get_offer_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_offer_input() :: #{
-%%   <<"offerId">> := string()
-%% }
--type get_offer_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_exchange_fulfillment_option() :: #{
-%%   <<"dataArtifacts">> => list(data_artifact()),
-%%   <<"fulfillmentOptionDisplayName">> => [string()],
-%%   <<"fulfillmentOptionId">> => [string()],
-%%   <<"fulfillmentOptionType">> => list(any())
-%% }
--type data_exchange_fulfillment_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% configurable_upfront_rate_card_item() :: #{
-%%   <<"constraints">> => constraints(),
-%%   <<"rateCard">> => list(rate_card_item()),
-%%   <<"selector">> => selector()
-%% }
--type configurable_upfront_rate_card_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% variable_payment_term() :: #{
-%%   <<"currencyCode">> => string(),
+%% free_trial_pricing_term() :: #{
+%%   <<"duration">> => string(),
+%%   <<"grants">> => list(grant_item()),
 %%   <<"id">> => string(),
-%%   <<"maxTotalChargeAmount">> => string(),
 %%   <<"type">> => list(any())
 %% }
--type variable_payment_term() :: #{binary() => any()}.
+-type free_trial_pricing_term() :: #{binary() => any()}.
 
 
 %% Example:
-%% sage_maker_algorithm_recommendation() :: #{
-%%   <<"recommendedBatchTransformInstanceType">> => [string()],
-%%   <<"recommendedRealtimeInferenceInstanceType">> => [string()],
-%%   <<"recommendedTrainingInstanceType">> => [string()]
+%% fulfillment_option_summary() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"fulfillmentOptionType">> => list(any())
 %% }
--type sage_maker_algorithm_recommendation() :: #{binary() => any()}.
+-type fulfillment_option_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% schedule_item() :: #{
-%%   <<"chargeAmount">> => string(),
-%%   <<"chargeDate">> => [non_neg_integer()]
+%% get_listing_input() :: #{
+%%   <<"listingId">> := string()
 %% }
--type schedule_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% sage_maker_algorithm_fulfillment_option() :: #{
-%%   <<"fulfillmentOptionDisplayName">> => [string()],
-%%   <<"fulfillmentOptionId">> => [string()],
-%%   <<"fulfillmentOptionType">> => list(any()),
-%%   <<"fulfillmentOptionVersion">> => [string()],
-%%   <<"recommendation">> => sage_maker_algorithm_recommendation(),
-%%   <<"releaseNotes">> => [string()],
-%%   <<"usageInstructions">> => [string()]
-%% }
--type sage_maker_algorithm_fulfillment_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% purchase_option_associated_entity() :: #{
-%%   <<"offer">> => offer_information(),
-%%   <<"offerSet">> => offer_set_information(),
-%%   <<"product">> => product_information()
-%% }
--type purchase_option_associated_entity() :: #{binary() => any()}.
+-type get_listing_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -699,39 +307,49 @@
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
+%% get_offer_input() :: #{
+%%   <<"offerId">> := string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type get_offer_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% seller_information() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"sellerProfileId">> => string()
+%% get_offer_output() :: #{
+%%   <<"agreementProposalId">> => string(),
+%%   <<"associatedEntities">> => list(offer_associated_entity()),
+%%   <<"availableFromTime">> => [non_neg_integer()],
+%%   <<"badges">> => list(purchase_option_badge()),
+%%   <<"catalog">> => string(),
+%%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"offerId">> => string(),
+%%   <<"offerName">> => string(),
+%%   <<"pricingModel">> => pricing_model(),
+%%   <<"replacementAgreementId">> => string(),
+%%   <<"sellerOfRecord">> => seller_information()
 %% }
--type seller_information() :: #{binary() => any()}.
+-type get_offer_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% sage_maker_model_recommendation() :: #{
-%%   <<"recommendedBatchTransformInstanceType">> => [string()],
-%%   <<"recommendedRealtimeInferenceInstanceType">> => [string()]
+%% get_offer_set_input() :: #{
+%%   <<"offerSetId">> := string()
 %% }
--type sage_maker_model_recommendation() :: #{binary() => any()}.
+-type get_offer_set_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% sage_maker_model_fulfillment_option() :: #{
-%%   <<"fulfillmentOptionDisplayName">> => [string()],
-%%   <<"fulfillmentOptionId">> => [string()],
-%%   <<"fulfillmentOptionType">> => list(any()),
-%%   <<"fulfillmentOptionVersion">> => [string()],
-%%   <<"recommendation">> => sage_maker_model_recommendation(),
-%%   <<"releaseNotes">> => [string()],
-%%   <<"usageInstructions">> => [string()]
+%% get_offer_set_output() :: #{
+%%   <<"associatedEntities">> => list(offer_set_associated_entity()),
+%%   <<"availableFromTime">> => [non_neg_integer()],
+%%   <<"badges">> => list(purchase_option_badge()),
+%%   <<"buyerNotes">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"offerSetId">> => string(),
+%%   <<"offerSetName">> => string(),
+%%   <<"sellerOfRecord">> => seller_information()
 %% }
--type sage_maker_model_fulfillment_option() :: #{binary() => any()}.
+-type get_offer_set_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -744,73 +362,18 @@
 
 
 %% Example:
-%% category() :: #{
-%%   <<"categoryId">> => string(),
-%%   <<"displayName">> => string()
+%% get_offer_terms_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"offerTerms">> => list(list())
 %% }
--type category() :: #{binary() => any()}.
+-type get_offer_terms_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_purchase_options_input() :: #{
-%%   <<"filters">> => list(purchase_option_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% get_product_input() :: #{
+%%   <<"productId">> := string()
 %% }
--type list_purchase_options_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% free_trial_pricing_term() :: #{
-%%   <<"duration">> => string(),
-%%   <<"grants">> => list(grant_item()),
-%%   <<"id">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type free_trial_pricing_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% validity_term() :: #{
-%%   <<"agreementDuration">> => string(),
-%%   <<"agreementEndDate">> => [non_neg_integer()],
-%%   <<"agreementStartDate">> => [non_neg_integer()],
-%%   <<"id">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type validity_term() :: #{binary() => any()}.
-
-
-%% Example:
-%% promotional_embedded_image() :: #{
-%%   <<"description">> => string(),
-%%   <<"title">> => string(),
-%%   <<"url">> => string()
-%% }
--type promotional_embedded_image() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_image_builder_component_fulfillment_option() :: #{
-%%   <<"awsSupportedServices">> => list(aws_supported_service()),
-%%   <<"fulfillmentOptionDisplayName">> => [string()],
-%%   <<"fulfillmentOptionId">> => [string()],
-%%   <<"fulfillmentOptionName">> => [string()],
-%%   <<"fulfillmentOptionType">> => list(any()),
-%%   <<"fulfillmentOptionVersion">> => [string()],
-%%   <<"operatingSystems">> => list(container_operating_system()),
-%%   <<"releaseNotes">> => [string()],
-%%   <<"usageInstructions">> => [string()]
-%% }
--type ec2_image_builder_component_fulfillment_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% offer_associated_entity() :: #{
-%%   <<"offerSet">> => offer_set_information(),
-%%   <<"product">> => product_information()
-%% }
--type offer_associated_entity() :: #{binary() => any()}.
+-type get_product_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -834,24 +397,165 @@
 
 
 %% Example:
-%% rate_card_item() :: #{
+%% grant_item() :: #{
 %%   <<"description">> => string(),
 %%   <<"dimensionKey">> => string(),
 %%   <<"dimensionLabels">> => list(dimension_label()),
 %%   <<"displayName">> => string(),
-%%   <<"price">> => string(),
+%%   <<"maxQuantity">> => [integer()],
 %%   <<"unit">> => string()
 %% }
--type rate_card_item() :: #{binary() => any()}.
+-type grant_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% amazon_machine_image_operating_system() :: #{
-%%   <<"operatingSystemFamilyName">> => [string()],
-%%   <<"operatingSystemName">> => [string()],
-%%   <<"operatingSystemVersion">> => [string()]
+%% helm_fulfillment_option() :: #{
+%%   <<"awsSupportedServices">> => list(aws_supported_service()),
+%%   <<"fulfillmentOptionDisplayName">> => [string()],
+%%   <<"fulfillmentOptionId">> => [string()],
+%%   <<"fulfillmentOptionName">> => [string()],
+%%   <<"fulfillmentOptionType">> => list(any()),
+%%   <<"fulfillmentOptionVersion">> => [string()],
+%%   <<"operatingSystems">> => list(helm_operating_system()),
+%%   <<"releaseNotes">> => [string()],
+%%   <<"usageInstructions">> => [string()]
 %% }
--type amazon_machine_image_operating_system() :: #{binary() => any()}.
+-type helm_fulfillment_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% helm_operating_system() :: #{
+%%   <<"operatingSystemFamilyName">> => [string()],
+%%   <<"operatingSystemName">> => [string()]
+%% }
+-type helm_operating_system() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% legal_term() :: #{
+%%   <<"documents">> => list(document_item()),
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type legal_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fulfillment_options_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"productId">> := string()
+%% }
+-type list_fulfillment_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fulfillment_options_output() :: #{
+%%   <<"fulfillmentOptions">> => list(list()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fulfillment_options_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_purchase_options_input() :: #{
+%%   <<"filters">> => list(purchase_option_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_purchase_options_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_purchase_options_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"purchaseOptions">> => list(purchase_option_summary())
+%% }
+-type list_purchase_options_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_associated_entity() :: #{
+%%   <<"offer">> => offer_information(),
+%%   <<"product">> => product_information()
+%% }
+-type listing_associated_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_badge() :: #{
+%%   <<"badgeType">> => list(any()),
+%%   <<"displayName">> => string()
+%% }
+-type listing_badge() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_facet() :: #{
+%%   <<"count">> => float(),
+%%   <<"displayName">> => string(),
+%%   <<"parent">> => string(),
+%%   <<"value">> => string()
+%% }
+-type listing_facet() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_summary() :: #{
+%%   <<"associatedEntities">> => list(listing_summary_associated_entity()),
+%%   <<"badges">> => list(listing_badge()),
+%%   <<"catalog">> => string(),
+%%   <<"categories">> => list(category()),
+%%   <<"fulfillmentOptionSummaries">> => list(fulfillment_option_summary()),
+%%   <<"listingId">> => string(),
+%%   <<"listingName">> => string(),
+%%   <<"logoThumbnailUrl">> => string(),
+%%   <<"pricingModels">> => list(pricing_model()),
+%%   <<"pricingUnits">> => list(pricing_unit()),
+%%   <<"publisher">> => seller_information(),
+%%   <<"reviewSummary">> => review_summary(),
+%%   <<"shortDescription">> => string()
+%% }
+-type listing_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_summary_associated_entity() :: #{
+%%   <<"product">> => product_information()
+%% }
+-type listing_summary_associated_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% offer_associated_entity() :: #{
+%%   <<"offerSet">> => offer_set_information(),
+%%   <<"product">> => product_information()
+%% }
+-type offer_associated_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% offer_information() :: #{
+%%   <<"offerId">> => string(),
+%%   <<"offerName">> => string(),
+%%   <<"sellerOfRecord">> => seller_information()
+%% }
+-type offer_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% offer_set_associated_entity() :: #{
+%%   <<"offer">> => offer_information(),
+%%   <<"product">> => product_information()
+%% }
+-type offer_set_associated_entity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -863,19 +567,56 @@
 
 
 %% Example:
-%% seller_engagement() :: #{
-%%   <<"contentType">> => list(any()),
-%%   <<"engagementType">> => list(any()),
-%%   <<"value">> => string()
+%% payment_schedule_term() :: #{
+%%   <<"currencyCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"schedule">> => list(schedule_item()),
+%%   <<"type">> => list(any())
 %% }
--type seller_engagement() :: #{binary() => any()}.
+-type payment_schedule_term() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_product_input() :: #{
-%%   <<"productId">> := string()
+%% pricing_model() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"pricingModelType">> => list(any())
 %% }
--type get_product_input() :: #{binary() => any()}.
+-type pricing_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% pricing_unit() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"pricingUnitType">> => list(any())
+%% }
+-type pricing_unit() :: #{binary() => any()}.
+
+
+%% Example:
+%% product_information() :: #{
+%%   <<"manufacturer">> => seller_information(),
+%%   <<"productId">> => string(),
+%%   <<"productName">> => string()
+%% }
+-type product_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% professional_services_fulfillment_option() :: #{
+%%   <<"fulfillmentOptionDisplayName">> => [string()],
+%%   <<"fulfillmentOptionId">> => [string()],
+%%   <<"fulfillmentOptionType">> => list(any())
+%% }
+-type professional_services_fulfillment_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% promotional_embedded_image() :: #{
+%%   <<"description">> => string(),
+%%   <<"title">> => string(),
+%%   <<"url">> => string()
+%% }
+-type promotional_embedded_image() :: #{binary() => any()}.
 
 
 %% Example:
@@ -890,26 +631,20 @@
 
 
 %% Example:
-%% offer_set_associated_entity() :: #{
+%% purchase_option_associated_entity() :: #{
 %%   <<"offer">> => offer_information(),
+%%   <<"offerSet">> => offer_set_information(),
 %%   <<"product">> => product_information()
 %% }
--type offer_set_associated_entity() :: #{binary() => any()}.
+-type purchase_option_associated_entity() :: #{binary() => any()}.
 
 
 %% Example:
-%% amazon_machine_image_recommendation() :: #{
-%%   <<"instanceType">> => [string()]
+%% purchase_option_badge() :: #{
+%%   <<"badgeType">> => list(any()),
+%%   <<"displayName">> => string()
 %% }
--type amazon_machine_image_recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_add_on_operating_system() :: #{
-%%   <<"operatingSystemFamilyName">> => [string()],
-%%   <<"operatingSystemName">> => [string()]
-%% }
--type eks_add_on_operating_system() :: #{binary() => any()}.
+-type purchase_option_badge() :: #{binary() => any()}.
 
 
 %% Example:
@@ -921,22 +656,49 @@
 
 
 %% Example:
-%% configurable_upfront_pricing_term() :: #{
-%%   <<"currencyCode">> => string(),
-%%   <<"id">> => string(),
-%%   <<"rateCards">> => list(configurable_upfront_rate_card_item()),
-%%   <<"type">> => list(any())
+%% purchase_option_summary() :: #{
+%%   <<"associatedEntities">> => list(purchase_option_associated_entity()),
+%%   <<"availableFromTime">> => [non_neg_integer()],
+%%   <<"badges">> => list(purchase_option_badge()),
+%%   <<"catalog">> => string(),
+%%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"purchaseOptionId">> => string(),
+%%   <<"purchaseOptionName">> => string(),
+%%   <<"purchaseOptionType">> => list(any()),
+%%   <<"sellerOfRecord">> => seller_information()
 %% }
--type configurable_upfront_pricing_term() :: #{binary() => any()}.
+-type purchase_option_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% offer_information() :: #{
-%%   <<"offerId">> => string(),
-%%   <<"offerName">> => string(),
-%%   <<"sellerOfRecord">> => seller_information()
+%% rate_card_item() :: #{
+%%   <<"description">> => string(),
+%%   <<"dimensionKey">> => string(),
+%%   <<"dimensionLabels">> => list(dimension_label()),
+%%   <<"displayName">> => string(),
+%%   <<"price">> => string(),
+%%   <<"unit">> => string()
 %% }
--type offer_information() :: #{binary() => any()}.
+-type rate_card_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% recurring_payment_term() :: #{
+%%   <<"billingPeriod">> => list(any()),
+%%   <<"currencyCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"price">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type recurring_payment_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% renewal_term() :: #{
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type renewal_term() :: #{binary() => any()}.
 
 
 %% Example:
@@ -947,6 +709,244 @@
 %%   <<"value">> => string()
 %% }
 -type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% review_source_summary() :: #{
+%%   <<"averageRating">> => string(),
+%%   <<"sourceId">> => list(any()),
+%%   <<"sourceName">> => string(),
+%%   <<"sourceUrl">> => string(),
+%%   <<"totalReviews">> => float()
+%% }
+-type review_source_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% review_summary() :: #{
+%%   <<"reviewSourceSummaries">> => list(review_source_summary())
+%% }
+-type review_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% saas_fulfillment_option() :: #{
+%%   <<"fulfillmentOptionDisplayName">> => [string()],
+%%   <<"fulfillmentOptionId">> => [string()],
+%%   <<"fulfillmentOptionType">> => list(any()),
+%%   <<"fulfillmentUrl">> => [string()],
+%%   <<"usageInstructions">> => [string()]
+%% }
+-type saas_fulfillment_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_algorithm_fulfillment_option() :: #{
+%%   <<"fulfillmentOptionDisplayName">> => [string()],
+%%   <<"fulfillmentOptionId">> => [string()],
+%%   <<"fulfillmentOptionType">> => list(any()),
+%%   <<"fulfillmentOptionVersion">> => [string()],
+%%   <<"recommendation">> => sage_maker_algorithm_recommendation(),
+%%   <<"releaseNotes">> => [string()],
+%%   <<"usageInstructions">> => [string()]
+%% }
+-type sage_maker_algorithm_fulfillment_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_algorithm_recommendation() :: #{
+%%   <<"recommendedBatchTransformInstanceType">> => [string()],
+%%   <<"recommendedRealtimeInferenceInstanceType">> => [string()],
+%%   <<"recommendedTrainingInstanceType">> => [string()]
+%% }
+-type sage_maker_algorithm_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_model_fulfillment_option() :: #{
+%%   <<"fulfillmentOptionDisplayName">> => [string()],
+%%   <<"fulfillmentOptionId">> => [string()],
+%%   <<"fulfillmentOptionType">> => list(any()),
+%%   <<"fulfillmentOptionVersion">> => [string()],
+%%   <<"recommendation">> => sage_maker_model_recommendation(),
+%%   <<"releaseNotes">> => [string()],
+%%   <<"usageInstructions">> => [string()]
+%% }
+-type sage_maker_model_fulfillment_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_model_recommendation() :: #{
+%%   <<"recommendedBatchTransformInstanceType">> => [string()],
+%%   <<"recommendedRealtimeInferenceInstanceType">> => [string()]
+%% }
+-type sage_maker_model_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_item() :: #{
+%%   <<"chargeAmount">> => string(),
+%%   <<"chargeDate">> => [non_neg_integer()]
+%% }
+-type schedule_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_facets_input() :: #{
+%%   <<"facetTypes">> => list(list(any())()),
+%%   <<"filters">> => list(search_filter()),
+%%   <<"nextToken">> => string(),
+%%   <<"searchText">> => string()
+%% }
+-type search_facets_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_facets_output() :: #{
+%%   <<"listingFacets">> => map(),
+%%   <<"nextToken">> => string(),
+%%   <<"totalResults">> => float()
+%% }
+-type search_facets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_filter() :: #{
+%%   <<"filterType">> => list(any()),
+%%   <<"filterValues">> => list(string())
+%% }
+-type search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_listings_input() :: #{
+%%   <<"filters">> => list(search_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchText">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type search_listings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_listings_output() :: #{
+%%   <<"listingSummaries">> => list(listing_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"totalResults">> => float()
+%% }
+-type search_listings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% selector() :: #{
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% seller_engagement() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"engagementType">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type seller_engagement() :: #{binary() => any()}.
+
+
+%% Example:
+%% seller_information() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"sellerProfileId">> => string()
+%% }
+-type seller_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% support_term() :: #{
+%%   <<"id">> => string(),
+%%   <<"refundPolicy">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type support_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage_based_pricing_term() :: #{
+%%   <<"currencyCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"rateCards">> => list(usage_based_rate_card_item()),
+%%   <<"type">> => list(any())
+%% }
+-type usage_based_pricing_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% usage_based_rate_card_item() :: #{
+%%   <<"rateCard">> => list(rate_card_item())
+%% }
+-type usage_based_rate_card_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% use_case() :: #{
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"value">> => string()
+%% }
+-type use_case() :: #{binary() => any()}.
+
+
+%% Example:
+%% use_case_entry() :: #{
+%%   <<"useCase">> => use_case()
+%% }
+-type use_case_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validity_term() :: #{
+%%   <<"agreementDuration">> => string(),
+%%   <<"agreementEndDate">> => [non_neg_integer()],
+%%   <<"agreementStartDate">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type validity_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% variable_payment_term() :: #{
+%%   <<"currencyCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"maxTotalChargeAmount">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type variable_payment_term() :: #{binary() => any()}.
 
 -type get_listing_errors() ::
     resource_not_found_exception().

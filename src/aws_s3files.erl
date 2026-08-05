@@ -67,27 +67,53 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := list(tag())
+%% conflict_exception() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% creation_permissions() :: #{
-%%   <<"ownerGid">> => float(),
-%%   <<"ownerUid">> => float(),
-%%   <<"permissions">> => string()
+%% create_access_point_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"fileSystemId">> := string(),
+%%   <<"posixUser">> => posix_user(),
+%%   <<"rootDirectory">> => root_directory(),
+%%   <<"tags">> => list(tag())
 %% }
--type creation_permissions() :: #{binary() => any()}.
+-type create_access_point_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% root_directory() :: #{
-%%   <<"creationPermissions">> => creation_permissions(),
-%%   <<"path">> => string()
+%% create_access_point_response() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"accessPointId">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ownerId">> => string(),
+%%   <<"posixUser">> => posix_user(),
+%%   <<"rootDirectory">> => root_directory(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => list(tag())
 %% }
--type root_directory() :: #{binary() => any()}.
+-type create_access_point_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_file_system_request() :: #{
+%%   <<"acceptBucketWarning">> => [boolean()],
+%%   <<"bucket">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"prefix">> => [string()],
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_file_system_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -110,36 +136,6 @@
 
 
 %% Example:
-%% create_access_point_response() :: #{
-%%   <<"accessPointArn">> => string(),
-%%   <<"accessPointId">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"fileSystemId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"ownerId">> => string(),
-%%   <<"posixUser">> => posix_user(),
-%%   <<"rootDirectory">> => root_directory(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => list(tag())
-%% }
--type create_access_point_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_synchronization_configuration_response() :: #{}
--type put_synchronization_configuration_response() :: #{}.
-
-
-%% Example:
-%% list_mount_targets_request() :: #{
-%%   <<"accessPointId">> => string(),
-%%   <<"fileSystemId">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_mount_targets_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_mount_target_request() :: #{
 %%   <<"fileSystemId">> := string(),
 %%   <<"ipAddressType">> => list(any()),
@@ -152,36 +148,60 @@
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% create_mount_target_response() :: #{
+%%   <<"availabilityZoneId">> => string(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"ipv4Address">> => string(),
+%%   <<"ipv6Address">> => string(),
+%%   <<"mountTargetId">> => string(),
+%%   <<"networkInterfaceId">> => string(),
+%%   <<"ownerId">> => string(),
+%%   <<"securityGroups">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"subnetId">> => string(),
+%%   <<"vpcId">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type create_mount_target_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_file_systems_response() :: #{
-%%   <<"fileSystems">> => list(list_file_systems_description()),
-%%   <<"nextToken">> => [string()]
+%% creation_permissions() :: #{
+%%   <<"ownerGid">> => float(),
+%%   <<"ownerUid">> => float(),
+%%   <<"permissions">> => string()
 %% }
--type list_file_systems_response() :: #{binary() => any()}.
+-type creation_permissions() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_point_request() :: #{}
+-type delete_access_point_request() :: #{}.
+
+%% Example:
+%% delete_file_system_policy_request() :: #{}
+-type delete_file_system_policy_request() :: #{}.
 
 
 %% Example:
-%% get_synchronization_configuration_response() :: #{
-%%   <<"expirationDataRules">> => list(expiration_data_rule()),
-%%   <<"importDataRules">> => list(import_data_rule()),
-%%   <<"latestVersionNumber">> => [integer()]
+%% delete_file_system_request() :: #{
+%%   <<"forceDelete">> => [boolean()]
 %% }
--type get_synchronization_configuration_response() :: #{binary() => any()}.
+-type delete_file_system_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_mount_target_request() :: #{}
+-type delete_mount_target_request() :: #{}.
 
 
 %% Example:
-%% put_synchronization_configuration_request() :: #{
-%%   <<"expirationDataRules">> := list(expiration_data_rule()),
-%%   <<"importDataRules">> := list(import_data_rule()),
-%%   <<"latestVersionNumber">> => [integer()]
+%% expiration_data_rule() :: #{
+%%   <<"daysAfterLastAccess">> => [integer()]
 %% }
--type put_synchronization_configuration_request() :: #{binary() => any()}.
+-type expiration_data_rule() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_point_request() :: #{}
+-type get_access_point_request() :: #{}.
 
 
 %% Example:
@@ -199,28 +219,44 @@
 %% }
 -type get_access_point_response() :: #{binary() => any()}.
 
-
-%% Example:
-%% create_access_point_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"fileSystemId">> := string(),
-%%   <<"posixUser">> => posix_user(),
-%%   <<"rootDirectory">> => root_directory(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_access_point_request() :: #{binary() => any()}.
-
 %% Example:
 %% get_file_system_policy_request() :: #{}
 -type get_file_system_policy_request() :: #{}.
 
 
 %% Example:
-%% list_mount_targets_response() :: #{
-%%   <<"mountTargets">> => list(list_mount_targets_description()),
-%%   <<"nextToken">> => [string()]
+%% get_file_system_policy_response() :: #{
+%%   <<"fileSystemId">> => string(),
+%%   <<"policy">> => [string()]
 %% }
--type list_mount_targets_response() :: #{binary() => any()}.
+-type get_file_system_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_file_system_request() :: #{}
+-type get_file_system_request() :: #{}.
+
+
+%% Example:
+%% get_file_system_response() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"fileSystemArn">> => string(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ownerId">> => string(),
+%%   <<"prefix">> => [string()],
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type get_file_system_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_mount_target_request() :: #{}
+-type get_mount_target_request() :: #{}.
 
 
 %% Example:
@@ -241,65 +277,65 @@
 -type get_mount_target_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_access_point_request() :: #{}
--type get_access_point_request() :: #{}.
+%% get_synchronization_configuration_request() :: #{}
+-type get_synchronization_configuration_request() :: #{}.
 
 
 %% Example:
-%% create_mount_target_response() :: #{
-%%   <<"availabilityZoneId">> => string(),
-%%   <<"fileSystemId">> => string(),
-%%   <<"ipv4Address">> => string(),
-%%   <<"ipv6Address">> => string(),
-%%   <<"mountTargetId">> => string(),
-%%   <<"networkInterfaceId">> => string(),
-%%   <<"ownerId">> => string(),
-%%   <<"securityGroups">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"subnetId">> => string(),
-%%   <<"vpcId">> => string()
+%% get_synchronization_configuration_response() :: #{
+%%   <<"expirationDataRules">> => list(expiration_data_rule()),
+%%   <<"importDataRules">> => list(import_data_rule()),
+%%   <<"latestVersionNumber">> => [integer()]
 %% }
--type create_mount_target_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_mount_target_request() :: #{}
--type delete_mount_target_request() :: #{}.
+-type get_synchronization_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
+%% import_data_rule() :: #{
+%%   <<"prefix">> => [string()],
+%%   <<"sizeLessThan">> => [float()],
+%%   <<"trigger">> => list(any())
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type import_data_rule() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
+%% internal_server_exception() :: #{
 %%   <<"errorCode">> => string(),
 %%   <<"message">> => [string()]
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% posix_user() :: #{
-%%   <<"gid">> => float(),
-%%   <<"secondaryGids">> => list(float()),
-%%   <<"uid">> => float()
+%% list_access_points_description() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"accessPointId">> => string(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ownerId">> => string(),
+%%   <<"posixUser">> => posix_user(),
+%%   <<"rootDirectory">> => root_directory(),
+%%   <<"status">> => list(any())
 %% }
--type posix_user() :: #{binary() => any()}.
+-type list_access_points_description() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
+%% list_access_points_request() :: #{
+%%   <<"fileSystemId">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
 %% }
--type tag() :: #{binary() => any()}.
+-type list_access_points_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_points_response() :: #{
+%%   <<"accessPoints">> => list(list_access_points_description()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_access_points_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -318,6 +354,123 @@
 
 
 %% Example:
+%% list_file_systems_request() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_file_systems_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_file_systems_response() :: #{
+%%   <<"fileSystems">> => list(list_file_systems_description()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_file_systems_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_mount_targets_description() :: #{
+%%   <<"availabilityZoneId">> => string(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"ipv4Address">> => string(),
+%%   <<"ipv6Address">> => string(),
+%%   <<"mountTargetId">> => string(),
+%%   <<"networkInterfaceId">> => string(),
+%%   <<"ownerId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"subnetId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type list_mount_targets_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_mount_targets_request() :: #{
+%%   <<"accessPointId">> => string(),
+%%   <<"fileSystemId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_mount_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_mount_targets_response() :: #{
+%%   <<"mountTargets">> => list(list_mount_targets_description()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_mount_targets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% posix_user() :: #{
+%%   <<"gid">> => float(),
+%%   <<"secondaryGids">> => list(float()),
+%%   <<"uid">> => float()
+%% }
+-type posix_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_file_system_policy_request() :: #{
+%%   <<"policy">> := [string()]
+%% }
+-type put_file_system_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_file_system_policy_response() :: #{}
+-type put_file_system_policy_response() :: #{}.
+
+
+%% Example:
+%% put_synchronization_configuration_request() :: #{
+%%   <<"expirationDataRules">> := list(expiration_data_rule()),
+%%   <<"importDataRules">> := list(import_data_rule()),
+%%   <<"latestVersionNumber">> => [integer()]
+%% }
+-type put_synchronization_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_synchronization_configuration_response() :: #{}
+-type put_synchronization_configuration_response() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% root_directory() :: #{
+%%   <<"creationPermissions">> => creation_permissions(),
+%%   <<"path">> => string()
+%% }
+-type root_directory() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"errorCode">> => string(),
 %%   <<"message">> => [string()]
@@ -326,24 +479,40 @@
 
 
 %% Example:
-%% create_file_system_request() :: #{
-%%   <<"acceptBucketWarning">> => [boolean()],
-%%   <<"bucket">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"prefix">> => [string()],
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag())
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type create_file_system_request() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_access_points_response() :: #{
-%%   <<"accessPoints">> => list(list_access_points_description()),
-%%   <<"nextToken">> => [string()]
+%% tag_resource_request() :: #{
+%%   <<"tags">> := list(tag())
 %% }
--type list_access_points_response() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_mount_target_request() :: #{
+%%   <<"securityGroups">> := list(string())
+%% }
+-type update_mount_target_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -365,254 +534,85 @@
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_synchronization_configuration_request() :: #{}
--type get_synchronization_configuration_request() :: #{}.
-
-
-%% Example:
-%% put_file_system_policy_request() :: #{
-%%   <<"policy">> := [string()]
-%% }
--type put_file_system_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_file_system_policy_request() :: #{}
--type delete_file_system_policy_request() :: #{}.
-
-%% Example:
-%% delete_access_point_request() :: #{}
--type delete_access_point_request() :: #{}.
-
-%% Example:
-%% get_file_system_request() :: #{}
--type get_file_system_request() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_file_systems_request() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_file_systems_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_points_description() :: #{
-%%   <<"accessPointArn">> => string(),
-%%   <<"accessPointId">> => string(),
-%%   <<"fileSystemId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"ownerId">> => string(),
-%%   <<"posixUser">> => posix_user(),
-%%   <<"rootDirectory">> => root_directory(),
-%%   <<"status">> => list(any())
-%% }
--type list_access_points_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_mount_targets_description() :: #{
-%%   <<"availabilityZoneId">> => string(),
-%%   <<"fileSystemId">> => string(),
-%%   <<"ipv4Address">> => string(),
-%%   <<"ipv6Address">> => string(),
-%%   <<"mountTargetId">> => string(),
-%%   <<"networkInterfaceId">> => string(),
-%%   <<"ownerId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"subnetId">> => string(),
-%%   <<"vpcId">> => string()
-%% }
--type list_mount_targets_description() :: #{binary() => any()}.
-
-
-%% Example:
 %% validation_exception() :: #{
 %%   <<"errorCode">> => string(),
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_mount_target_request() :: #{}
--type get_mount_target_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% expiration_data_rule() :: #{
-%%   <<"daysAfterLastAccess">> => [integer()]
-%% }
--type expiration_data_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_mount_target_request() :: #{
-%%   <<"securityGroups">> := list(string())
-%% }
--type update_mount_target_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_data_rule() :: #{
-%%   <<"prefix">> => [string()],
-%%   <<"sizeLessThan">> => [float()],
-%%   <<"trigger">> => list(any())
-%% }
--type import_data_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_access_points_request() :: #{
-%%   <<"fileSystemId">> := string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_access_points_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_file_system_policy_response() :: #{}
--type put_file_system_policy_response() :: #{}.
-
-
-%% Example:
-%% get_file_system_response() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"fileSystemArn">> => string(),
-%%   <<"fileSystemId">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> => string(),
-%%   <<"ownerId">> => string(),
-%%   <<"prefix">> => [string()],
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type get_file_system_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_file_system_policy_response() :: #{
-%%   <<"fileSystemId">> => string(),
-%%   <<"policy">> => [string()]
-%% }
--type get_file_system_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_file_system_request() :: #{
-%%   <<"forceDelete">> => [boolean()]
-%% }
--type delete_file_system_request() :: #{binary() => any()}.
-
 -type create_access_point_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_file_system_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_mount_target_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_access_point_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_file_system_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_file_system_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type delete_mount_target_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_access_point_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_file_system_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_file_system_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_mount_target_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_synchronization_configuration_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_access_points_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_file_systems_errors() ::
     validation_exception() | 
@@ -620,39 +620,39 @@
 
 -type list_mount_targets_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type put_file_system_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type put_synchronization_configuration_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_mount_target_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 %%====================================================================
 %% API

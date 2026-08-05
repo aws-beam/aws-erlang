@@ -79,11 +79,297 @@
 
 
 %% Example:
+%% accept_domain_transfer_from_another_aws_account_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"Password">> := string()
+%% }
+-type accept_domain_transfer_from_another_aws_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% accept_domain_transfer_from_another_aws_account_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type accept_domain_transfer_from_another_aws_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_delegation_signer_to_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"SigningAttributes">> := dnssec_signing_attributes()
+%% }
+-type associate_delegation_signer_to_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_delegation_signer_to_domain_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type associate_delegation_signer_to_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% billing_record() :: #{
+%%   <<"BillDate">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"InvoiceId">> => string(),
+%%   <<"Operation">> => list(any()),
+%%   <<"Price">> => float()
+%% }
+-type billing_record() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_domain_transfer_to_another_aws_account_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type cancel_domain_transfer_to_another_aws_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_domain_transfer_to_another_aws_account_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type cancel_domain_transfer_to_another_aws_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% check_domain_availability_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"IdnLangCode">> => string()
+%% }
+-type check_domain_availability_request() :: #{binary() => any()}.
+
+%% Example:
+%% check_domain_availability_response() :: #{
+%%   <<"Availability">> => list(any())
+%% }
+-type check_domain_availability_response() :: #{binary() => any()}.
+
+%% Example:
 %% check_domain_transferability_request() :: #{
 %%   <<"AuthCode">> => string(),
 %%   <<"DomainName">> := string()
 %% }
 -type check_domain_transferability_request() :: #{binary() => any()}.
+
+%% Example:
+%% check_domain_transferability_response() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Transferability">> => domain_transferability()
+%% }
+-type check_domain_transferability_response() :: #{binary() => any()}.
+
+%% Example:
+%% consent() :: #{
+%%   <<"Currency">> => string(),
+%%   <<"MaxPrice">> => float()
+%% }
+-type consent() :: #{binary() => any()}.
+
+%% Example:
+%% contact_detail() :: #{
+%%   <<"AddressLine1">> => string(),
+%%   <<"AddressLine2">> => string(),
+%%   <<"City">> => string(),
+%%   <<"ContactType">> => list(any()),
+%%   <<"CountryCode">> => list(any()),
+%%   <<"Email">> => string(),
+%%   <<"ExtraParams">> => list(extra_param()),
+%%   <<"Fax">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"OrganizationName">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"State">> => string(),
+%%   <<"ZipCode">> => string()
+%% }
+-type contact_detail() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type delete_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type delete_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_for_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"TagsToDelete">> := list(string())
+%% }
+-type delete_tags_for_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_for_domain_response() :: #{
+
+%% }
+-type delete_tags_for_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_domain_auto_renew_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type disable_domain_auto_renew_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_domain_auto_renew_response() :: #{
+
+%% }
+-type disable_domain_auto_renew_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_domain_transfer_lock_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type disable_domain_transfer_lock_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_domain_transfer_lock_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type disable_domain_transfer_lock_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_delegation_signer_from_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"Id">> := string()
+%% }
+-type disassociate_delegation_signer_from_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_delegation_signer_from_domain_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type disassociate_delegation_signer_from_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% dnssec_key() :: #{
+%%   <<"Algorithm">> => integer(),
+%%   <<"Digest">> => string(),
+%%   <<"DigestType">> => integer(),
+%%   <<"Flags">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"KeyTag">> => integer(),
+%%   <<"PublicKey">> => string()
+%% }
+-type dnssec_key() :: #{binary() => any()}.
+
+%% Example:
+%% dnssec_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type dnssec_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% dnssec_signing_attributes() :: #{
+%%   <<"Algorithm">> => integer(),
+%%   <<"Flags">> => integer(),
+%%   <<"PublicKey">> => string()
+%% }
+-type dnssec_signing_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% domain_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type domain_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% domain_price() :: #{
+%%   <<"ChangeOwnershipPrice">> => price_with_currency(),
+%%   <<"Name">> => string(),
+%%   <<"RegistrationPrice">> => price_with_currency(),
+%%   <<"RenewalPrice">> => price_with_currency(),
+%%   <<"RestorationPrice">> => price_with_currency(),
+%%   <<"TransferPrice">> => price_with_currency()
+%% }
+-type domain_price() :: #{binary() => any()}.
+
+%% Example:
+%% domain_suggestion() :: #{
+%%   <<"Availability">> => string(),
+%%   <<"DomainName">> => string()
+%% }
+-type domain_suggestion() :: #{binary() => any()}.
+
+%% Example:
+%% domain_summary() :: #{
+%%   <<"AutoRenew">> => boolean(),
+%%   <<"DomainName">> => string(),
+%%   <<"Expiry">> => non_neg_integer(),
+%%   <<"TransferLock">> => boolean()
+%% }
+-type domain_summary() :: #{binary() => any()}.
+
+%% Example:
+%% domain_transferability() :: #{
+%%   <<"Transferable">> => list(any())
+%% }
+-type domain_transferability() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_request() :: #{
+%%   <<"message">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type duplicate_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_domain_auto_renew_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type enable_domain_auto_renew_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_domain_auto_renew_response() :: #{
+
+%% }
+-type enable_domain_auto_renew_response() :: #{binary() => any()}.
+
+%% Example:
+%% enable_domain_transfer_lock_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type enable_domain_transfer_lock_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_domain_transfer_lock_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type enable_domain_transfer_lock_response() :: #{binary() => any()}.
+
+%% Example:
+%% extra_param() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type extra_param() :: #{binary() => any()}.
+
+%% Example:
+%% filter_condition() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type filter_condition() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_reachability_status_request() :: #{
+%%   <<"domainName">> => string()
+%% }
+-type get_contact_reachability_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_contact_reachability_status_response() :: #{
+%%   <<"domainName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_contact_reachability_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_detail_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type get_domain_detail_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_domain_detail_response() :: #{
@@ -115,16 +401,18 @@
 -type get_domain_detail_response() :: #{binary() => any()}.
 
 %% Example:
-%% disable_domain_auto_renew_request() :: #{
-%%   <<"DomainName">> := string()
+%% get_domain_suggestions_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"OnlyAvailable">> := boolean(),
+%%   <<"SuggestionCount">> := integer()
 %% }
--type disable_domain_auto_renew_request() :: #{binary() => any()}.
+-type get_domain_suggestions_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_domain_response() :: #{
-%%   <<"OperationId">> => string()
+%% get_domain_suggestions_response() :: #{
+%%   <<"SuggestionsList">> => list(domain_suggestion())
 %% }
--type delete_domain_response() :: #{binary() => any()}.
+-type get_domain_suggestions_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_operation_detail_request() :: #{
@@ -133,43 +421,17 @@
 -type get_operation_detail_request() :: #{binary() => any()}.
 
 %% Example:
-%% check_domain_transferability_response() :: #{
+%% get_operation_detail_response() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
 %%   <<"Message">> => string(),
-%%   <<"Transferability">> => domain_transferability()
+%%   <<"OperationId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusFlag">> => list(any()),
+%%   <<"SubmittedDate">> => non_neg_integer(),
+%%   <<"Type">> => list(any())
 %% }
--type check_domain_transferability_response() :: #{binary() => any()}.
-
-%% Example:
-%% reject_domain_transfer_from_another_aws_account_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type reject_domain_transfer_from_another_aws_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% check_domain_availability_response() :: #{
-%%   <<"Availability">> => list(any())
-%% }
--type check_domain_availability_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_domain_nameservers_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type update_domain_nameservers_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_domain_contact_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type update_domain_contact_response() :: #{binary() => any()}.
-
-%% Example:
-%% filter_condition() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type filter_condition() :: #{binary() => any()}.
+-type get_operation_detail_response() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_input() :: #{
@@ -178,17 +440,47 @@
 -type invalid_input() :: #{binary() => any()}.
 
 %% Example:
-%% domain_transferability() :: #{
-%%   <<"Transferable">> => list(any())
+%% list_domains_request() :: #{
+%%   <<"FilterConditions">> => list(filter_condition()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"SortCondition">> => sort_condition()
 %% }
--type domain_transferability() :: #{binary() => any()}.
+-type list_domains_request() :: #{binary() => any()}.
 
 %% Example:
-%% nameserver() :: #{
-%%   <<"GlueIps">> => list(string()),
-%%   <<"Name">> => string()
+%% list_domains_response() :: #{
+%%   <<"Domains">> => list(domain_summary()),
+%%   <<"NextPageMarker">> => string()
 %% }
--type nameserver() :: #{binary() => any()}.
+-type list_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_operations_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"Status">> => list(list(any())()),
+%%   <<"SubmittedSince">> => non_neg_integer(),
+%%   <<"Type">> => list(list(any())())
+%% }
+-type list_operations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_operations_response() :: #{
+%%   <<"NextPageMarker">> => string(),
+%%   <<"Operations">> => list(operation_summary())
+%% }
+-type list_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_prices_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"Tld">> => string()
+%% }
+-type list_prices_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_prices_response() :: #{
@@ -198,73 +490,56 @@
 -type list_prices_response() :: #{binary() => any()}.
 
 %% Example:
-%% billing_record() :: #{
-%%   <<"BillDate">> => non_neg_integer(),
-%%   <<"DomainName">> => string(),
-%%   <<"InvoiceId">> => string(),
-%%   <<"Operation">> => list(any()),
-%%   <<"Price">> => float()
-%% }
--type billing_record() :: #{binary() => any()}.
-
-%% Example:
-%% dnssec_key() :: #{
-%%   <<"Algorithm">> => integer(),
-%%   <<"Digest">> => string(),
-%%   <<"DigestType">> => integer(),
-%%   <<"Flags">> => integer(),
-%%   <<"Id">> => string(),
-%%   <<"KeyTag">> => integer(),
-%%   <<"PublicKey">> => string()
-%% }
--type dnssec_key() :: #{binary() => any()}.
-
-%% Example:
-%% get_contact_reachability_status_response() :: #{
-%%   <<"domainName">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type get_contact_reachability_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% domain_summary() :: #{
-%%   <<"AutoRenew">> => boolean(),
-%%   <<"DomainName">> => string(),
-%%   <<"Expiry">> => non_neg_integer(),
-%%   <<"TransferLock">> => boolean()
-%% }
--type domain_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_detail_request() :: #{
+%% list_tags_for_domain_request() :: #{
 %%   <<"DomainName">> := string()
 %% }
--type get_domain_detail_request() :: #{binary() => any()}.
-
-%% Example:
-%% contact_detail() :: #{
-%%   <<"AddressLine1">> => string(),
-%%   <<"AddressLine2">> => string(),
-%%   <<"City">> => string(),
-%%   <<"ContactType">> => list(any()),
-%%   <<"CountryCode">> => list(any()),
-%%   <<"Email">> => string(),
-%%   <<"ExtraParams">> => list(extra_param()),
-%%   <<"Fax">> => string(),
-%%   <<"FirstName">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"OrganizationName">> => string(),
-%%   <<"PhoneNumber">> => string(),
-%%   <<"State">> => string(),
-%%   <<"ZipCode">> => string()
-%% }
--type contact_detail() :: #{binary() => any()}.
+-type list_tags_for_domain_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_domain_response() :: #{
 %%   <<"TagList">> => list(tag())
 %% }
 -type list_tags_for_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% nameserver() :: #{
+%%   <<"GlueIps">> => list(string()),
+%%   <<"Name">> => string()
+%% }
+-type nameserver() :: #{binary() => any()}.
+
+%% Example:
+%% operation_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% operation_summary() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedDate">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"OperationId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusFlag">> => list(any()),
+%%   <<"SubmittedDate">> => non_neg_integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type operation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% price_with_currency() :: #{
+%%   <<"Currency">> => string(),
+%%   <<"Price">> => float()
+%% }
+-type price_with_currency() :: #{binary() => any()}.
+
+%% Example:
+%% push_domain_request() :: #{
+%%   <<"DomainName">> := string(),
+%%   <<"Target">> := string()
+%% }
+-type push_domain_request() :: #{binary() => any()}.
 
 %% Example:
 %% register_domain_request() :: #{
@@ -284,88 +559,95 @@
 -type register_domain_request() :: #{binary() => any()}.
 
 %% Example:
-%% extra_param() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type extra_param() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tags_for_domain_response() :: #{
-
-%% }
--type delete_tags_for_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_domain_nameservers_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"FIAuthKey">> => string(),
-%%   <<"Nameservers">> := list(nameserver())
-%% }
--type update_domain_nameservers_request() :: #{binary() => any()}.
-
-%% Example:
-%% accept_domain_transfer_from_another_aws_account_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"Password">> := string()
-%% }
--type accept_domain_transfer_from_another_aws_account_request() :: #{binary() => any()}.
-
-%% Example:
 %% register_domain_response() :: #{
 %%   <<"OperationId">> => string()
 %% }
 -type register_domain_response() :: #{binary() => any()}.
 
 %% Example:
-%% operation_summary() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"LastUpdatedDate">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"OperationId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusFlag">> => list(any()),
-%%   <<"SubmittedDate">> => non_neg_integer(),
-%%   <<"Type">> => list(any())
-%% }
--type operation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% transfer_domain_to_another_aws_account_response() :: #{
-%%   <<"OperationId">> => string(),
-%%   <<"Password">> => string()
-%% }
--type transfer_domain_to_another_aws_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% operation_limit_exceeded() :: #{
-%%   <<"message">> => string()
-%% }
--type operation_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% enable_domain_auto_renew_request() :: #{
+%% reject_domain_transfer_from_another_aws_account_request() :: #{
 %%   <<"DomainName">> := string()
 %% }
--type enable_domain_auto_renew_request() :: #{binary() => any()}.
+-type reject_domain_transfer_from_another_aws_account_request() :: #{binary() => any()}.
 
 %% Example:
-%% disable_domain_transfer_lock_response() :: #{
+%% reject_domain_transfer_from_another_aws_account_response() :: #{
 %%   <<"OperationId">> => string()
 %% }
--type disable_domain_transfer_lock_response() :: #{binary() => any()}.
+-type reject_domain_transfer_from_another_aws_account_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_domain_suggestions_response() :: #{
-%%   <<"SuggestionsList">> => list(domain_suggestion())
+%% renew_domain_request() :: #{
+%%   <<"CurrentExpiryYear">> := integer(),
+%%   <<"DomainName">> := string(),
+%%   <<"DurationInYears">> => integer()
 %% }
--type get_domain_suggestions_response() :: #{binary() => any()}.
+-type renew_domain_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_tags_for_domain_response() :: #{
-
+%% renew_domain_response() :: #{
+%%   <<"OperationId">> => string()
 %% }
--type update_tags_for_domain_response() :: #{binary() => any()}.
+-type renew_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% resend_contact_reachability_email_request() :: #{
+%%   <<"domainName">> => string()
+%% }
+-type resend_contact_reachability_email_request() :: #{binary() => any()}.
+
+%% Example:
+%% resend_contact_reachability_email_response() :: #{
+%%   <<"domainName">> => string(),
+%%   <<"emailAddress">> => string(),
+%%   <<"isAlreadyVerified">> => boolean()
+%% }
+-type resend_contact_reachability_email_response() :: #{binary() => any()}.
+
+%% Example:
+%% resend_operation_authorization_request() :: #{
+%%   <<"OperationId">> := string()
+%% }
+-type resend_operation_authorization_request() :: #{binary() => any()}.
+
+%% Example:
+%% retrieve_domain_auth_code_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type retrieve_domain_auth_code_request() :: #{binary() => any()}.
+
+%% Example:
+%% retrieve_domain_auth_code_response() :: #{
+%%   <<"AuthCode">> => string()
+%% }
+-type retrieve_domain_auth_code_response() :: #{binary() => any()}.
+
+%% Example:
+%% sort_condition() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type sort_condition() :: #{binary() => any()}.
+
+%% Example:
+%% t_l_d_in_maintenance() :: #{
+%%   <<"message">> => string(),
+%%   <<"tld">> => string()
+%% }
+-type t_l_d_in_maintenance() :: #{binary() => any()}.
+
+%% Example:
+%% t_l_d_rules_violation() :: #{
+%%   <<"message">> => string()
+%% }
+-type t_l_d_rules_violation() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
 
 %% Example:
 %% transfer_domain_request() :: #{
@@ -387,30 +669,30 @@
 -type transfer_domain_request() :: #{binary() => any()}.
 
 %% Example:
-%% enable_domain_transfer_lock_request() :: #{
+%% transfer_domain_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type transfer_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% transfer_domain_to_another_aws_account_request() :: #{
+%%   <<"AccountId">> := string(),
 %%   <<"DomainName">> := string()
 %% }
--type enable_domain_transfer_lock_request() :: #{binary() => any()}.
+-type transfer_domain_to_another_aws_account_request() :: #{binary() => any()}.
 
 %% Example:
-%% disable_domain_auto_renew_response() :: #{
-
+%% transfer_domain_to_another_aws_account_response() :: #{
+%%   <<"OperationId">> => string(),
+%%   <<"Password">> => string()
 %% }
--type disable_domain_auto_renew_response() :: #{binary() => any()}.
-
-%% Example:
-%% domain_suggestion() :: #{
-%%   <<"Availability">> => string(),
-%%   <<"DomainName">> => string()
-%% }
--type domain_suggestion() :: #{binary() => any()}.
+-type transfer_domain_to_another_aws_account_response() :: #{binary() => any()}.
 
 %% Example:
-%% view_billing_response() :: #{
-%%   <<"BillingRecords">> => list(billing_record()),
-%%   <<"NextPageMarker">> => string()
+%% unsupported_t_l_d() :: #{
+%%   <<"message">> => string()
 %% }
--type view_billing_response() :: #{binary() => any()}.
+-type unsupported_t_l_d() :: #{binary() => any()}.
 
 %% Example:
 %% update_domain_contact_privacy_request() :: #{
@@ -423,202 +705,10 @@
 -type update_domain_contact_privacy_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_domain_request() :: #{
-%%   <<"DomainName">> := string()
-%% }
--type delete_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% resend_contact_reachability_email_request() :: #{
-%%   <<"domainName">> => string()
-%% }
--type resend_contact_reachability_email_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_tags_for_domain_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"TagsToUpdate">> => list(tag())
-%% }
--type update_tags_for_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% accept_domain_transfer_from_another_aws_account_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type accept_domain_transfer_from_another_aws_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_operations_request() :: #{
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any()),
-%%   <<"Status">> => list(list(any())()),
-%%   <<"SubmittedSince">> => non_neg_integer(),
-%%   <<"Type">> => list(list(any())())
-%% }
--type list_operations_request() :: #{binary() => any()}.
-
-%% Example:
-%% dnssec_signing_attributes() :: #{
-%%   <<"Algorithm">> => integer(),
-%%   <<"Flags">> => integer(),
-%%   <<"PublicKey">> => string()
-%% }
--type dnssec_signing_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% get_operation_detail_response() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"LastUpdatedDate">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"OperationId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusFlag">> => list(any()),
-%%   <<"SubmittedDate">> => non_neg_integer(),
-%%   <<"Type">> => list(any())
-%% }
--type get_operation_detail_response() :: #{binary() => any()}.
-
-%% Example:
-%% retrieve_domain_auth_code_response() :: #{
-%%   <<"AuthCode">> => string()
-%% }
--type retrieve_domain_auth_code_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% view_billing_request() :: #{
-%%   <<"End">> => non_neg_integer(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"Start">> => non_neg_integer()
-%% }
--type view_billing_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_domains_response() :: #{
-%%   <<"Domains">> => list(domain_summary()),
-%%   <<"NextPageMarker">> => string()
-%% }
--type list_domains_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_delegation_signer_to_domain_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type associate_delegation_signer_to_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% enable_domain_auto_renew_response() :: #{
-
-%% }
--type enable_domain_auto_renew_response() :: #{binary() => any()}.
-
-%% Example:
-%% renew_domain_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type renew_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_t_l_d() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_t_l_d() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_request() :: #{
-%%   <<"message">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type duplicate_request() :: #{binary() => any()}.
-
-%% Example:
-%% t_l_d_rules_violation() :: #{
-%%   <<"message">> => string()
-%% }
--type t_l_d_rules_violation() :: #{binary() => any()}.
-
-%% Example:
-%% enable_domain_transfer_lock_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type enable_domain_transfer_lock_response() :: #{binary() => any()}.
-
-%% Example:
 %% update_domain_contact_privacy_response() :: #{
 %%   <<"OperationId">> => string()
 %% }
 -type update_domain_contact_privacy_response() :: #{binary() => any()}.
-
-%% Example:
-%% t_l_d_in_maintenance() :: #{
-%%   <<"message">> => string(),
-%%   <<"tld">> => string()
-%% }
--type t_l_d_in_maintenance() :: #{binary() => any()}.
-
-%% Example:
-%% associate_delegation_signer_to_domain_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"SigningAttributes">> := dnssec_signing_attributes()
-%% }
--type associate_delegation_signer_to_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% retrieve_domain_auth_code_request() :: #{
-%%   <<"DomainName">> := string()
-%% }
--type retrieve_domain_auth_code_request() :: #{binary() => any()}.
-
-%% Example:
-%% resend_contact_reachability_email_response() :: #{
-%%   <<"domainName">> => string(),
-%%   <<"emailAddress">> => string(),
-%%   <<"isAlreadyVerified">> => boolean()
-%% }
--type resend_contact_reachability_email_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_domains_request() :: #{
-%%   <<"FilterConditions">> => list(filter_condition()),
-%%   <<"Marker">> => string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"SortCondition">> => sort_condition()
-%% }
--type list_domains_request() :: #{binary() => any()}.
-
-%% Example:
-%% dnssec_limit_exceeded() :: #{
-%%   <<"message">> => string()
-%% }
--type dnssec_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% resend_operation_authorization_request() :: #{
-%%   <<"OperationId">> := string()
-%% }
--type resend_operation_authorization_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_delegation_signer_from_domain_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type disassociate_delegation_signer_from_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_operations_response() :: #{
-%%   <<"NextPageMarker">> => string(),
-%%   <<"Operations">> => list(operation_summary())
-%% }
--type list_operations_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_domain_contact_request() :: #{
@@ -632,157 +722,67 @@
 -type update_domain_contact_request() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_domain_transfer_to_another_aws_account_request() :: #{
-%%   <<"DomainName">> := string()
+%% update_domain_contact_response() :: #{
+%%   <<"OperationId">> => string()
 %% }
--type cancel_domain_transfer_to_another_aws_account_request() :: #{binary() => any()}.
+-type update_domain_contact_response() :: #{binary() => any()}.
 
 %% Example:
-%% domain_price() :: #{
-%%   <<"ChangeOwnershipPrice">> => price_with_currency(),
-%%   <<"Name">> => string(),
-%%   <<"RegistrationPrice">> => price_with_currency(),
-%%   <<"RenewalPrice">> => price_with_currency(),
-%%   <<"RestorationPrice">> => price_with_currency(),
-%%   <<"TransferPrice">> => price_with_currency()
-%% }
--type domain_price() :: #{binary() => any()}.
-
-%% Example:
-%% renew_domain_request() :: #{
-%%   <<"CurrentExpiryYear">> := integer(),
+%% update_domain_nameservers_request() :: #{
 %%   <<"DomainName">> := string(),
-%%   <<"DurationInYears">> => integer()
+%%   <<"FIAuthKey">> => string(),
+%%   <<"Nameservers">> := list(nameserver())
 %% }
--type renew_domain_request() :: #{binary() => any()}.
+-type update_domain_nameservers_request() :: #{binary() => any()}.
 
 %% Example:
-%% check_domain_availability_request() :: #{
+%% update_domain_nameservers_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type update_domain_nameservers_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_tags_for_domain_request() :: #{
 %%   <<"DomainName">> := string(),
-%%   <<"IdnLangCode">> => string()
+%%   <<"TagsToUpdate">> => list(tag())
 %% }
--type check_domain_availability_request() :: #{binary() => any()}.
+-type update_tags_for_domain_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_tags_for_domain_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"TagsToDelete">> := list(string())
+%% update_tags_for_domain_response() :: #{
+
 %% }
--type delete_tags_for_domain_request() :: #{binary() => any()}.
+-type update_tags_for_domain_response() :: #{binary() => any()}.
 
 %% Example:
-%% push_domain_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"Target">> := string()
-%% }
--type push_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_domain_request() :: #{
-%%   <<"DomainName">> := string()
-%% }
--type list_tags_for_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% domain_limit_exceeded() :: #{
-%%   <<"message">> => string()
-%% }
--type domain_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% disable_domain_transfer_lock_request() :: #{
-%%   <<"DomainName">> := string()
-%% }
--type disable_domain_transfer_lock_request() :: #{binary() => any()}.
-
-%% Example:
-%% transfer_domain_to_another_aws_account_request() :: #{
-%%   <<"AccountId">> := string(),
-%%   <<"DomainName">> := string()
-%% }
--type transfer_domain_to_another_aws_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_contact_reachability_status_request() :: #{
-%%   <<"domainName">> => string()
-%% }
--type get_contact_reachability_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% price_with_currency() :: #{
-%%   <<"Currency">> => string(),
-%%   <<"Price">> => float()
-%% }
--type price_with_currency() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_delegation_signer_from_domain_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"Id">> := string()
-%% }
--type disassociate_delegation_signer_from_domain_request() :: #{binary() => any()}.
-
-%% Example:
-%% reject_domain_transfer_from_another_aws_account_request() :: #{
-%%   <<"DomainName">> := string()
-%% }
--type reject_domain_transfer_from_another_aws_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% consent() :: #{
-%%   <<"Currency">> => string(),
-%%   <<"MaxPrice">> => float()
-%% }
--type consent() :: #{binary() => any()}.
-
-%% Example:
-%% list_prices_request() :: #{
+%% view_billing_request() :: #{
+%%   <<"End">> => non_neg_integer(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
-%%   <<"Tld">> => string()
+%%   <<"Start">> => non_neg_integer()
 %% }
--type list_prices_request() :: #{binary() => any()}.
+-type view_billing_request() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_domain_transfer_to_another_aws_account_response() :: #{
-%%   <<"OperationId">> => string()
+%% view_billing_response() :: #{
+%%   <<"BillingRecords">> => list(billing_record()),
+%%   <<"NextPageMarker">> => string()
 %% }
--type cancel_domain_transfer_to_another_aws_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% transfer_domain_response() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type transfer_domain_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_suggestions_request() :: #{
-%%   <<"DomainName">> := string(),
-%%   <<"OnlyAvailable">> := boolean(),
-%%   <<"SuggestionCount">> := integer()
-%% }
--type get_domain_suggestions_request() :: #{binary() => any()}.
-
-%% Example:
-%% sort_condition() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type sort_condition() :: #{binary() => any()}.
+-type view_billing_response() :: #{binary() => any()}.
 
 -type accept_domain_transfer_from_another_aws_account_errors() ::
-    domain_limit_exceeded() | 
     unsupported_t_l_d() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    domain_limit_exceeded().
 
 -type associate_delegation_signer_to_domain_errors() ::
-    dnssec_limit_exceeded() | 
-    t_l_d_rules_violation() | 
-    duplicate_request() | 
     unsupported_t_l_d() | 
+    t_l_d_rules_violation() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request() | 
+    dnssec_limit_exceeded().
 
 -type cancel_domain_transfer_to_another_aws_account_errors() ::
     unsupported_t_l_d() | 
@@ -790,20 +790,20 @@
     invalid_input().
 
 -type check_domain_availability_errors() ::
-    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
+    t_l_d_in_maintenance() | 
     invalid_input().
 
 -type check_domain_transferability_errors() ::
-    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
+    t_l_d_in_maintenance() | 
     invalid_input().
 
 -type delete_domain_errors() ::
-    t_l_d_rules_violation() | 
-    duplicate_request() | 
     unsupported_t_l_d() | 
-    invalid_input().
+    t_l_d_rules_violation() | 
+    invalid_input() | 
+    duplicate_request().
 
 -type delete_tags_for_domain_errors() ::
     unsupported_t_l_d() | 
@@ -815,30 +815,30 @@
     invalid_input().
 
 -type disable_domain_transfer_lock_errors() ::
-    t_l_d_rules_violation() | 
-    duplicate_request() | 
     unsupported_t_l_d() | 
+    t_l_d_rules_violation() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type disassociate_delegation_signer_from_domain_errors() ::
-    t_l_d_rules_violation() | 
-    duplicate_request() | 
     unsupported_t_l_d() | 
+    t_l_d_rules_violation() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type enable_domain_auto_renew_errors() ::
-    t_l_d_rules_violation() | 
     unsupported_t_l_d() | 
+    t_l_d_rules_violation() | 
     invalid_input().
 
 -type enable_domain_transfer_lock_errors() ::
-    t_l_d_rules_violation() | 
-    duplicate_request() | 
     unsupported_t_l_d() | 
+    t_l_d_rules_violation() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type get_contact_reachability_status_errors() ::
     unsupported_t_l_d() | 
@@ -850,8 +850,8 @@
     invalid_input().
 
 -type get_domain_suggestions_errors() ::
-    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
+    t_l_d_in_maintenance() | 
     invalid_input().
 
 -type get_operation_detail_errors() ::
@@ -873,18 +873,18 @@
     invalid_input().
 
 -type push_domain_errors() ::
-    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
+    t_l_d_in_maintenance() | 
     operation_limit_exceeded() | 
     invalid_input().
 
 -type register_domain_errors() ::
-    domain_limit_exceeded() | 
-    t_l_d_rules_violation() | 
-    duplicate_request() | 
     unsupported_t_l_d() | 
+    t_l_d_rules_violation() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request() | 
+    domain_limit_exceeded().
 
 -type reject_domain_transfer_from_another_aws_account_errors() ::
     unsupported_t_l_d() | 
@@ -892,15 +892,15 @@
     invalid_input().
 
 -type renew_domain_errors() ::
-    t_l_d_rules_violation() | 
-    duplicate_request() | 
     unsupported_t_l_d() | 
+    t_l_d_rules_violation() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type resend_contact_reachability_email_errors() ::
-    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
+    t_l_d_in_maintenance() | 
     operation_limit_exceeded() | 
     invalid_input().
 
@@ -909,44 +909,44 @@
     invalid_input().
 
 -type retrieve_domain_auth_code_errors() ::
-    t_l_d_in_maintenance() | 
     unsupported_t_l_d() | 
+    t_l_d_in_maintenance() | 
     invalid_input().
 
 -type transfer_domain_errors() ::
-    domain_limit_exceeded() | 
-    t_l_d_rules_violation() | 
-    duplicate_request() | 
     unsupported_t_l_d() | 
+    t_l_d_rules_violation() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request() | 
+    domain_limit_exceeded().
 
 -type transfer_domain_to_another_aws_account_errors() ::
-    duplicate_request() | 
     unsupported_t_l_d() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type update_domain_contact_errors() ::
-    t_l_d_rules_violation() | 
-    duplicate_request() | 
     unsupported_t_l_d() | 
+    t_l_d_rules_violation() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type update_domain_contact_privacy_errors() ::
-    t_l_d_rules_violation() | 
-    duplicate_request() | 
     unsupported_t_l_d() | 
+    t_l_d_rules_violation() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type update_domain_nameservers_errors() ::
-    t_l_d_rules_violation() | 
-    duplicate_request() | 
     unsupported_t_l_d() | 
+    t_l_d_rules_violation() | 
     operation_limit_exceeded() | 
-    invalid_input().
+    invalid_input() | 
+    duplicate_request().
 
 -type update_tags_for_domain_errors() ::
     unsupported_t_l_d() | 

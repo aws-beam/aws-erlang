@@ -307,6 +307,489 @@
 
 
 %% Example:
+%% a_p_n_s_channel_request() :: #{
+%%   <<"BundleId">> => string(),
+%%   <<"Certificate">> => string(),
+%%   <<"DefaultAuthenticationMethod">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"PrivateKey">> => string(),
+%%   <<"TeamId">> => string(),
+%%   <<"TokenKey">> => string(),
+%%   <<"TokenKeyId">> => string()
+%% }
+-type a_p_n_s_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_p_n_s_channel_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"DefaultAuthenticationMethod">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HasCredential">> => boolean(),
+%%   <<"HasTokenKey">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"IsArchived">> => boolean(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type a_p_n_s_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_p_n_s_message() :: #{
+%%   <<"APNSPushType">> => string(),
+%%   <<"Action">> => list(any()),
+%%   <<"Badge">> => integer(),
+%%   <<"Body">> => string(),
+%%   <<"Category">> => string(),
+%%   <<"CollapseId">> => string(),
+%%   <<"Data">> => map(),
+%%   <<"MediaUrl">> => string(),
+%%   <<"PreferredAuthenticationMethod">> => string(),
+%%   <<"Priority">> => string(),
+%%   <<"RawContent">> => string(),
+%%   <<"SilentPush">> => boolean(),
+%%   <<"Sound">> => string(),
+%%   <<"Substitutions">> => map(),
+%%   <<"ThreadId">> => string(),
+%%   <<"TimeToLive">> => integer(),
+%%   <<"Title">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type a_p_n_s_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_p_n_s_push_notification_template() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Body">> => string(),
+%%   <<"MediaUrl">> => string(),
+%%   <<"RawContent">> => string(),
+%%   <<"Sound">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type a_p_n_s_push_notification_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_p_n_s_sandbox_channel_request() :: #{
+%%   <<"BundleId">> => string(),
+%%   <<"Certificate">> => string(),
+%%   <<"DefaultAuthenticationMethod">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"PrivateKey">> => string(),
+%%   <<"TeamId">> => string(),
+%%   <<"TokenKey">> => string(),
+%%   <<"TokenKeyId">> => string()
+%% }
+-type a_p_n_s_sandbox_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_p_n_s_sandbox_channel_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"DefaultAuthenticationMethod">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HasCredential">> => boolean(),
+%%   <<"HasTokenKey">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"IsArchived">> => boolean(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type a_p_n_s_sandbox_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_p_n_s_voip_channel_request() :: #{
+%%   <<"BundleId">> => string(),
+%%   <<"Certificate">> => string(),
+%%   <<"DefaultAuthenticationMethod">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"PrivateKey">> => string(),
+%%   <<"TeamId">> => string(),
+%%   <<"TokenKey">> => string(),
+%%   <<"TokenKeyId">> => string()
+%% }
+-type a_p_n_s_voip_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_p_n_s_voip_channel_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"DefaultAuthenticationMethod">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HasCredential">> => boolean(),
+%%   <<"HasTokenKey">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"IsArchived">> => boolean(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type a_p_n_s_voip_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_p_n_s_voip_sandbox_channel_request() :: #{
+%%   <<"BundleId">> => string(),
+%%   <<"Certificate">> => string(),
+%%   <<"DefaultAuthenticationMethod">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"PrivateKey">> => string(),
+%%   <<"TeamId">> => string(),
+%%   <<"TokenKey">> => string(),
+%%   <<"TokenKeyId">> => string()
+%% }
+-type a_p_n_s_voip_sandbox_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_p_n_s_voip_sandbox_channel_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"DefaultAuthenticationMethod">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HasCredential">> => boolean(),
+%%   <<"HasTokenKey">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"IsArchived">> => boolean(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type a_p_n_s_voip_sandbox_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% activities_response() :: #{
+%%   <<"Item">> => list(activity_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type activities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% activity() :: #{
+%%   <<"CUSTOM">> => custom_message_activity(),
+%%   <<"ConditionalSplit">> => conditional_split_activity(),
+%%   <<"ContactCenter">> => contact_center_activity(),
+%%   <<"Description">> => string(),
+%%   <<"EMAIL">> => email_message_activity(),
+%%   <<"Holdout">> => holdout_activity(),
+%%   <<"MultiCondition">> => multi_conditional_split_activity(),
+%%   <<"PUSH">> => push_message_activity(),
+%%   <<"RandomSplit">> => random_split_activity(),
+%%   <<"SMS">> => sms_message_activity(),
+%%   <<"Wait">> => wait_activity()
+%% }
+-type activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% activity_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CampaignId">> => string(),
+%%   <<"End">> => string(),
+%%   <<"ExecutionMetrics">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"Result">> => string(),
+%%   <<"ScheduledStart">> => string(),
+%%   <<"Start">> => string(),
+%%   <<"State">> => string(),
+%%   <<"SuccessfulEndpointCount">> => integer(),
+%%   <<"TimezonesCompletedCount">> => integer(),
+%%   <<"TimezonesTotalCount">> => integer(),
+%%   <<"TotalEndpointCount">> => integer(),
+%%   <<"TreatmentId">> => string()
+%% }
+-type activity_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ad_m_channel_request() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type ad_m_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ad_m_channel_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HasCredential">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"IsArchived">> => boolean(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type ad_m_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ad_m_message() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Body">> => string(),
+%%   <<"ConsolidationKey">> => string(),
+%%   <<"Data">> => map(),
+%%   <<"ExpiresAfter">> => string(),
+%%   <<"IconReference">> => string(),
+%%   <<"ImageIconUrl">> => string(),
+%%   <<"ImageUrl">> => string(),
+%%   <<"MD5">> => string(),
+%%   <<"RawContent">> => string(),
+%%   <<"SilentPush">> => boolean(),
+%%   <<"SmallImageIconUrl">> => string(),
+%%   <<"Sound">> => string(),
+%%   <<"Substitutions">> => map(),
+%%   <<"Title">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type ad_m_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% address_configuration() :: #{
+%%   <<"BodyOverride">> => string(),
+%%   <<"ChannelType">> => list(any()),
+%%   <<"Context">> => map(),
+%%   <<"RawContent">> => string(),
+%%   <<"Substitutions">> => map(),
+%%   <<"TitleOverride">> => string()
+%% }
+-type address_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% android_push_notification_template() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Body">> => string(),
+%%   <<"ImageIconUrl">> => string(),
+%%   <<"ImageUrl">> => string(),
+%%   <<"RawContent">> => string(),
+%%   <<"SmallImageIconUrl">> => string(),
+%%   <<"Sound">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type android_push_notification_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_date_range_kpi_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"KpiName">> => string(),
+%%   <<"KpiResult">> => base_kpi_result(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type application_date_range_kpi_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_settings_journey_limits() :: #{
+%%   <<"DailyCap">> => integer(),
+%%   <<"TimeframeCap">> => journey_timeframe_cap(),
+%%   <<"TotalCap">> => integer()
+%% }
+-type application_settings_journey_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_settings_resource() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CampaignHook">> => campaign_hook(),
+%%   <<"JourneyLimits">> => application_settings_journey_limits(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Limits">> => campaign_limits(),
+%%   <<"QuietTime">> => quiet_time()
+%% }
+-type application_settings_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% applications_response() :: #{
+%%   <<"Item">> => list(application_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_dimension() :: #{
+%%   <<"AttributeType">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type attribute_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% attributes_resource() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"AttributeType">> => string(),
+%%   <<"Attributes">> => list(string())
+%% }
+-type attributes_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestID">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% baidu_channel_request() :: #{
+%%   <<"ApiKey">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"SecretKey">> => string()
+%% }
+-type baidu_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% baidu_channel_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Credential">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HasCredential">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"IsArchived">> => boolean(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type baidu_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% baidu_message() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Body">> => string(),
+%%   <<"Data">> => map(),
+%%   <<"IconReference">> => string(),
+%%   <<"ImageIconUrl">> => string(),
+%%   <<"ImageUrl">> => string(),
+%%   <<"RawContent">> => string(),
+%%   <<"SilentPush">> => boolean(),
+%%   <<"SmallImageIconUrl">> => string(),
+%%   <<"Sound">> => string(),
+%%   <<"Substitutions">> => map(),
+%%   <<"TimeToLive">> => integer(),
+%%   <<"Title">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type baidu_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% base_kpi_result() :: #{
+%%   <<"Rows">> => list(result_row())
+%% }
+-type base_kpi_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% campaign_custom_message() :: #{
+%%   <<"Data">> => string()
+%% }
+-type campaign_custom_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% campaign_date_range_kpi_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CampaignId">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"KpiName">> => string(),
+%%   <<"KpiResult">> => base_kpi_result(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type campaign_date_range_kpi_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% campaign_email_message() :: #{
+%%   <<"Body">> => string(),
+%%   <<"FromAddress">> => string(),
+%%   <<"Headers">> => list(message_header()),
+%%   <<"HtmlBody">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type campaign_email_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% campaign_event_filter() :: #{
+%%   <<"Dimensions">> => event_dimensions(),
+%%   <<"FilterType">> => list(any())
+%% }
+-type campaign_event_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% campaign_hook() :: #{
+%%   <<"LambdaFunctionName">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"WebUrl">> => string()
+%% }
+-type campaign_hook() :: #{binary() => any()}.
+
+
+%% Example:
+%% campaign_in_app_message() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Content">> => list(in_app_message_content()),
+%%   <<"CustomConfig">> => map(),
+%%   <<"Layout">> => list(any())
+%% }
+-type campaign_in_app_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% campaign_limits() :: #{
+%%   <<"Daily">> => integer(),
+%%   <<"MaximumDuration">> => integer(),
+%%   <<"MessagesPerSecond">> => integer(),
+%%   <<"Session">> => integer(),
+%%   <<"Total">> => integer()
+%% }
+-type campaign_limits() :: #{binary() => any()}.
+
+
+%% Example:
 %% campaign_response() :: #{
 %%   <<"AdditionalTreatments">> => list(treatment_resource()),
 %%   <<"ApplicationId">> => string(),
@@ -336,9 +819,1993 @@
 %% }
 -type campaign_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% campaign_sms_message() :: #{
+%%   <<"Body">> => string(),
+%%   <<"EntityId">> => string(),
+%%   <<"MessageType">> => list(any()),
+%%   <<"OriginationNumber">> => string(),
+%%   <<"SenderId">> => string(),
+%%   <<"TemplateId">> => string()
+%% }
+-type campaign_sms_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% campaign_state() :: #{
+%%   <<"CampaignStatus">> => list(any())
+%% }
+-type campaign_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% campaigns_response() :: #{
+%%   <<"Item">> => list(campaign_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type campaigns_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HasCredential">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"IsArchived">> => boolean(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% channels_response() :: #{
+%%   <<"Channels">> => map()
+%% }
+-type channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% closed_days() :: #{
+%%   <<"CUSTOM">> => list(closed_days_rule()),
+%%   <<"EMAIL">> => list(closed_days_rule()),
+%%   <<"PUSH">> => list(closed_days_rule()),
+%%   <<"SMS">> => list(closed_days_rule()),
+%%   <<"VOICE">> => list(closed_days_rule())
+%% }
+-type closed_days() :: #{binary() => any()}.
+
+
+%% Example:
+%% closed_days_rule() :: #{
+%%   <<"EndDateTime">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"StartDateTime">> => string()
+%% }
+-type closed_days_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition() :: #{
+%%   <<"Conditions">> => list(simple_condition()),
+%%   <<"Operator">> => list(any())
+%% }
+-type condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditional_split_activity() :: #{
+%%   <<"Condition">> => condition(),
+%%   <<"EvaluationWaitTime">> => wait_time(),
+%%   <<"FalseActivity">> => string(),
+%%   <<"TrueActivity">> => string()
+%% }
+-type conditional_split_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestID">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_center_activity() :: #{
+%%   <<"NextActivity">> => string()
+%% }
+-type contact_center_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_request() :: #{
+%%   <<"CreateApplicationRequest">> := create_application_request()
+%% }
+-type create_app_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_app_response() :: #{
+%%   <<"ApplicationResponse">> => application_response()
+%% }
+-type create_app_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_campaign_request() :: #{
+%%   <<"WriteCampaignRequest">> := write_campaign_request()
+%% }
+-type create_campaign_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_campaign_response() :: #{
+%%   <<"CampaignResponse">> => campaign_response()
+%% }
+-type create_campaign_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_email_template_request() :: #{
+%%   <<"EmailTemplateRequest">> := email_template_request()
+%% }
+-type create_email_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_email_template_response() :: #{
+%%   <<"CreateTemplateMessageBody">> => create_template_message_body()
+%% }
+-type create_email_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_export_job_request() :: #{
+%%   <<"ExportJobRequest">> := export_job_request()
+%% }
+-type create_export_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_export_job_response() :: #{
+%%   <<"ExportJobResponse">> => export_job_response()
+%% }
+-type create_export_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_import_job_request() :: #{
+%%   <<"ImportJobRequest">> := import_job_request()
+%% }
+-type create_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_import_job_response() :: #{
+%%   <<"ImportJobResponse">> => import_job_response()
+%% }
+-type create_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_in_app_template_request() :: #{
+%%   <<"InAppTemplateRequest">> := in_app_template_request()
+%% }
+-type create_in_app_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_in_app_template_response() :: #{
+%%   <<"TemplateCreateMessageBody">> => template_create_message_body()
+%% }
+-type create_in_app_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_journey_request() :: #{
+%%   <<"WriteJourneyRequest">> := write_journey_request()
+%% }
+-type create_journey_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_journey_response() :: #{
+%%   <<"JourneyResponse">> => journey_response()
+%% }
+-type create_journey_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_push_template_request() :: #{
+%%   <<"PushNotificationTemplateRequest">> := push_notification_template_request()
+%% }
+-type create_push_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_push_template_response() :: #{
+%%   <<"CreateTemplateMessageBody">> => create_template_message_body()
+%% }
+-type create_push_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_configuration_request() :: #{
+%%   <<"CreateRecommenderConfiguration">> := create_recommender_configuration_shape()
+%% }
+-type create_recommender_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_configuration_response() :: #{
+%%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
+%% }
+-type create_recommender_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_configuration_shape() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RecommendationProviderIdType">> => string(),
+%%   <<"RecommendationProviderRoleArn">> => string(),
+%%   <<"RecommendationProviderUri">> => string(),
+%%   <<"RecommendationTransformerUri">> => string(),
+%%   <<"RecommendationsDisplayName">> => string(),
+%%   <<"RecommendationsPerMessage">> => integer()
+%% }
+-type create_recommender_configuration_shape() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_segment_request() :: #{
+%%   <<"WriteSegmentRequest">> := write_segment_request()
+%% }
+-type create_segment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_segment_response() :: #{
+%%   <<"SegmentResponse">> => segment_response()
+%% }
+-type create_segment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sms_template_request() :: #{
+%%   <<"SMSTemplateRequest">> := sms_template_request()
+%% }
+-type create_sms_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sms_template_response() :: #{
+%%   <<"CreateTemplateMessageBody">> => create_template_message_body()
+%% }
+-type create_sms_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_template_message_body() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestID">> => string()
+%% }
+-type create_template_message_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_voice_template_request() :: #{
+%%   <<"VoiceTemplateRequest">> := voice_template_request()
+%% }
+-type create_voice_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_voice_template_response() :: #{
+%%   <<"CreateTemplateMessageBody">> => create_template_message_body()
+%% }
+-type create_voice_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_delivery_configuration() :: #{
+%%   <<"DeliveryUri">> => string(),
+%%   <<"EndpointTypes">> => list(list(any())())
+%% }
+-type custom_delivery_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_message_activity() :: #{
+%%   <<"DeliveryUri">> => string(),
+%%   <<"EndpointTypes">> => list(list(any())()),
+%%   <<"MessageConfig">> => journey_custom_message(),
+%%   <<"NextActivity">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateVersion">> => string()
+%% }
+-type custom_message_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_button_configuration() :: #{
+%%   <<"BackgroundColor">> => string(),
+%%   <<"BorderRadius">> => integer(),
+%%   <<"ButtonAction">> => list(any()),
+%%   <<"Link">> => string(),
+%%   <<"Text">> => string(),
+%%   <<"TextColor">> => string()
+%% }
+-type default_button_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_message() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Substitutions">> => map()
+%% }
+-type default_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_push_notification_message() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Body">> => string(),
+%%   <<"Data">> => map(),
+%%   <<"SilentPush">> => boolean(),
+%%   <<"Substitutions">> => map(),
+%%   <<"Title">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type default_push_notification_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_push_notification_template() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Body">> => string(),
+%%   <<"Sound">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type default_push_notification_template() :: #{binary() => any()}.
+
+%% Example:
+%% delete_adm_channel_request() :: #{}
+-type delete_adm_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_adm_channel_response() :: #{
+%%   <<"ADMChannelResponse">> => ad_m_channel_response()
+%% }
+-type delete_adm_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_apns_channel_request() :: #{}
+-type delete_apns_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_apns_channel_response() :: #{
+%%   <<"APNSChannelResponse">> => a_p_n_s_channel_response()
+%% }
+-type delete_apns_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_apns_sandbox_channel_request() :: #{}
+-type delete_apns_sandbox_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_apns_sandbox_channel_response() :: #{
+%%   <<"APNSSandboxChannelResponse">> => a_p_n_s_sandbox_channel_response()
+%% }
+-type delete_apns_sandbox_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_apns_voip_channel_request() :: #{}
+-type delete_apns_voip_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_apns_voip_channel_response() :: #{
+%%   <<"APNSVoipChannelResponse">> => a_p_n_s_voip_channel_response()
+%% }
+-type delete_apns_voip_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_apns_voip_sandbox_channel_request() :: #{}
+-type delete_apns_voip_sandbox_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_apns_voip_sandbox_channel_response() :: #{
+%%   <<"APNSVoipSandboxChannelResponse">> => a_p_n_s_voip_sandbox_channel_response()
+%% }
+-type delete_apns_voip_sandbox_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_request() :: #{}
+-type delete_app_request() :: #{}.
+
+
+%% Example:
+%% delete_app_response() :: #{
+%%   <<"ApplicationResponse">> => application_response()
+%% }
+-type delete_app_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_baidu_channel_request() :: #{}
+-type delete_baidu_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_baidu_channel_response() :: #{
+%%   <<"BaiduChannelResponse">> => baidu_channel_response()
+%% }
+-type delete_baidu_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_campaign_request() :: #{}
+-type delete_campaign_request() :: #{}.
+
+
+%% Example:
+%% delete_campaign_response() :: #{
+%%   <<"CampaignResponse">> => campaign_response()
+%% }
+-type delete_campaign_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_email_channel_request() :: #{}
+-type delete_email_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_email_channel_response() :: #{
+%%   <<"EmailChannelResponse">> => email_channel_response()
+%% }
+-type delete_email_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_email_template_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type delete_email_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_email_template_response() :: #{
+%%   <<"MessageBody">> => message_body()
+%% }
+-type delete_email_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_request() :: #{}
+-type delete_endpoint_request() :: #{}.
+
+
+%% Example:
+%% delete_endpoint_response() :: #{
+%%   <<"EndpointResponse">> => endpoint_response()
+%% }
+-type delete_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_stream_request() :: #{}
+-type delete_event_stream_request() :: #{}.
+
+
+%% Example:
+%% delete_event_stream_response() :: #{
+%%   <<"EventStream">> => event_stream()
+%% }
+-type delete_event_stream_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gcm_channel_request() :: #{}
+-type delete_gcm_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_gcm_channel_response() :: #{
+%%   <<"GCMChannelResponse">> => g_cm_channel_response()
+%% }
+-type delete_gcm_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_in_app_template_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type delete_in_app_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_in_app_template_response() :: #{
+%%   <<"MessageBody">> => message_body()
+%% }
+-type delete_in_app_template_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_journey_request() :: #{}
 -type delete_journey_request() :: #{}.
+
+
+%% Example:
+%% delete_journey_response() :: #{
+%%   <<"JourneyResponse">> => journey_response()
+%% }
+-type delete_journey_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_push_template_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type delete_push_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_push_template_response() :: #{
+%%   <<"MessageBody">> => message_body()
+%% }
+-type delete_push_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommender_configuration_request() :: #{}
+-type delete_recommender_configuration_request() :: #{}.
+
+
+%% Example:
+%% delete_recommender_configuration_response() :: #{
+%%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
+%% }
+-type delete_recommender_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_segment_request() :: #{}
+-type delete_segment_request() :: #{}.
+
+
+%% Example:
+%% delete_segment_response() :: #{
+%%   <<"SegmentResponse">> => segment_response()
+%% }
+-type delete_segment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_sms_channel_request() :: #{}
+-type delete_sms_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_sms_channel_response() :: #{
+%%   <<"SMSChannelResponse">> => sms_channel_response()
+%% }
+-type delete_sms_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_sms_template_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type delete_sms_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_sms_template_response() :: #{
+%%   <<"MessageBody">> => message_body()
+%% }
+-type delete_sms_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_endpoints_request() :: #{}
+-type delete_user_endpoints_request() :: #{}.
+
+
+%% Example:
+%% delete_user_endpoints_response() :: #{
+%%   <<"EndpointsResponse">> => endpoints_response()
+%% }
+-type delete_user_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_voice_channel_request() :: #{}
+-type delete_voice_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_voice_channel_response() :: #{
+%%   <<"VoiceChannelResponse">> => voice_channel_response()
+%% }
+-type delete_voice_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_voice_template_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type delete_voice_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_voice_template_response() :: #{
+%%   <<"MessageBody">> => message_body()
+%% }
+-type delete_voice_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% direct_message_configuration() :: #{
+%%   <<"ADMMessage">> => ad_m_message(),
+%%   <<"APNSMessage">> => a_p_n_s_message(),
+%%   <<"BaiduMessage">> => baidu_message(),
+%%   <<"DefaultMessage">> => default_message(),
+%%   <<"DefaultPushNotificationMessage">> => default_push_notification_message(),
+%%   <<"EmailMessage">> => email_message(),
+%%   <<"GCMMessage">> => g_cm_message(),
+%%   <<"SMSMessage">> => sms_message(),
+%%   <<"VoiceMessage">> => voice_message()
+%% }
+-type direct_message_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_channel_request() :: #{
+%%   <<"ConfigurationSet">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"FromAddress">> => string(),
+%%   <<"Identity">> => string(),
+%%   <<"OrchestrationSendingRoleArn">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type email_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_channel_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ConfigurationSet">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"FromAddress">> => string(),
+%%   <<"HasCredential">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"Identity">> => string(),
+%%   <<"IsArchived">> => boolean(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"MessagesPerSecond">> => integer(),
+%%   <<"OrchestrationSendingRoleArn">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type email_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_message() :: #{
+%%   <<"Body">> => string(),
+%%   <<"FeedbackForwardingAddress">> => string(),
+%%   <<"FromAddress">> => string(),
+%%   <<"RawEmail">> => raw_email(),
+%%   <<"ReplyToAddresses">> => list(string()),
+%%   <<"SimpleEmail">> => simple_email(),
+%%   <<"Substitutions">> => map()
+%% }
+-type email_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_message_activity() :: #{
+%%   <<"MessageConfig">> => journey_email_message(),
+%%   <<"NextActivity">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateVersion">> => string()
+%% }
+-type email_message_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_template_request() :: #{
+%%   <<"DefaultSubstitutions">> => string(),
+%%   <<"Headers">> => list(message_header()),
+%%   <<"HtmlPart">> => string(),
+%%   <<"RecommenderId">> => string(),
+%%   <<"Subject">> => string(),
+%%   <<"TemplateDescription">> => string(),
+%%   <<"TextPart">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type email_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"DefaultSubstitutions">> => string(),
+%%   <<"Headers">> => list(message_header()),
+%%   <<"HtmlPart">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"RecommenderId">> => string(),
+%%   <<"Subject">> => string(),
+%%   <<"TemplateDescription">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateType">> => list(any()),
+%%   <<"TextPart">> => string(),
+%%   <<"Version">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type email_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_batch_item() :: #{
+%%   <<"Address">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"ChannelType">> => list(any()),
+%%   <<"Demographic">> => endpoint_demographic(),
+%%   <<"EffectiveDate">> => string(),
+%%   <<"EndpointStatus">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Location">> => endpoint_location(),
+%%   <<"Metrics">> => map(),
+%%   <<"OptOut">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"User">> => endpoint_user()
+%% }
+-type endpoint_batch_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_batch_request() :: #{
+%%   <<"Item">> => list(endpoint_batch_item())
+%% }
+-type endpoint_batch_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_demographic() :: #{
+%%   <<"AppVersion">> => string(),
+%%   <<"Locale">> => string(),
+%%   <<"Make">> => string(),
+%%   <<"Model">> => string(),
+%%   <<"ModelVersion">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"Timezone">> => string()
+%% }
+-type endpoint_demographic() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_item_response() :: #{
+%%   <<"Message">> => string(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type endpoint_item_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_location() :: #{
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"Latitude">> => float(),
+%%   <<"Longitude">> => float(),
+%%   <<"PostalCode">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type endpoint_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_message_result() :: #{
+%%   <<"Address">> => string(),
+%%   <<"DeliveryStatus">> => list(any()),
+%%   <<"MessageId">> => string(),
+%%   <<"StatusCode">> => integer(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"UpdatedToken">> => string()
+%% }
+-type endpoint_message_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_request() :: #{
+%%   <<"Address">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"ChannelType">> => list(any()),
+%%   <<"Demographic">> => endpoint_demographic(),
+%%   <<"EffectiveDate">> => string(),
+%%   <<"EndpointStatus">> => string(),
+%%   <<"Location">> => endpoint_location(),
+%%   <<"Metrics">> => map(),
+%%   <<"OptOut">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"User">> => endpoint_user()
+%% }
+-type endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_response() :: #{
+%%   <<"Address">> => string(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"ChannelType">> => list(any()),
+%%   <<"CohortId">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Demographic">> => endpoint_demographic(),
+%%   <<"EffectiveDate">> => string(),
+%%   <<"EndpointStatus">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Location">> => endpoint_location(),
+%%   <<"Metrics">> => map(),
+%%   <<"OptOut">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"User">> => endpoint_user()
+%% }
+-type endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_send_configuration() :: #{
+%%   <<"BodyOverride">> => string(),
+%%   <<"Context">> => map(),
+%%   <<"RawContent">> => string(),
+%%   <<"Substitutions">> => map(),
+%%   <<"TitleOverride">> => string()
+%% }
+-type endpoint_send_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_user() :: #{
+%%   <<"UserAttributes">> => map(),
+%%   <<"UserId">> => string()
+%% }
+-type endpoint_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoints_response() :: #{
+%%   <<"Item">> => list(endpoint_response())
+%% }
+-type endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% event() :: #{
+%%   <<"AppPackageName">> => string(),
+%%   <<"AppTitle">> => string(),
+%%   <<"AppVersionCode">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"ClientSdkVersion">> => string(),
+%%   <<"EventType">> => string(),
+%%   <<"Metrics">> => map(),
+%%   <<"SdkName">> => string(),
+%%   <<"Session">> => session(),
+%%   <<"Timestamp">> => string()
+%% }
+-type event() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_condition() :: #{
+%%   <<"Dimensions">> => event_dimensions(),
+%%   <<"MessageActivity">> => string()
+%% }
+-type event_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_dimensions() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"EventType">> => set_dimension(),
+%%   <<"Metrics">> => map()
+%% }
+-type event_dimensions() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_filter() :: #{
+%%   <<"Dimensions">> => event_dimensions(),
+%%   <<"FilterType">> => list(any())
+%% }
+-type event_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_item_response() :: #{
+%%   <<"Message">> => string(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type event_item_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_start_condition() :: #{
+%%   <<"EventFilter">> => event_filter(),
+%%   <<"SegmentId">> => string()
+%% }
+-type event_start_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_stream() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"DestinationStreamArn">> => string(),
+%%   <<"ExternalId">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"LastUpdatedBy">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type event_stream() :: #{binary() => any()}.
+
+
+%% Example:
+%% events_batch() :: #{
+%%   <<"Endpoint">> => public_endpoint(),
+%%   <<"Events">> => map()
+%% }
+-type events_batch() :: #{binary() => any()}.
+
+
+%% Example:
+%% events_request() :: #{
+%%   <<"BatchItem">> => map()
+%% }
+-type events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% events_response() :: #{
+%%   <<"Results">> => map()
+%% }
+-type events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_job_request() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"S3UrlPrefix">> => string(),
+%%   <<"SegmentId">> => string(),
+%%   <<"SegmentVersion">> => integer()
+%% }
+-type export_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_job_resource() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"S3UrlPrefix">> => string(),
+%%   <<"SegmentId">> => string(),
+%%   <<"SegmentVersion">> => integer()
+%% }
+-type export_job_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_job_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CompletedPieces">> => integer(),
+%%   <<"CompletionDate">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Definition">> => export_job_resource(),
+%%   <<"FailedPieces">> => integer(),
+%%   <<"Failures">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"TotalFailures">> => integer(),
+%%   <<"TotalPieces">> => integer(),
+%%   <<"TotalProcessed">> => integer(),
+%%   <<"Type">> => string()
+%% }
+-type export_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_jobs_response() :: #{
+%%   <<"Item">> => list(export_job_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type export_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestID">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% g_cm_channel_request() :: #{
+%%   <<"ApiKey">> => string(),
+%%   <<"DefaultAuthenticationMethod">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ServiceJson">> => string()
+%% }
+-type g_cm_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% g_cm_channel_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Credential">> => string(),
+%%   <<"DefaultAuthenticationMethod">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HasCredential">> => boolean(),
+%%   <<"HasFcmServiceCredentials">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"IsArchived">> => boolean(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type g_cm_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% g_cm_message() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Body">> => string(),
+%%   <<"CollapseKey">> => string(),
+%%   <<"Data">> => map(),
+%%   <<"IconReference">> => string(),
+%%   <<"ImageIconUrl">> => string(),
+%%   <<"ImageUrl">> => string(),
+%%   <<"PreferredAuthenticationMethod">> => string(),
+%%   <<"Priority">> => string(),
+%%   <<"RawContent">> => string(),
+%%   <<"RestrictedPackageName">> => string(),
+%%   <<"SilentPush">> => boolean(),
+%%   <<"SmallImageIconUrl">> => string(),
+%%   <<"Sound">> => string(),
+%%   <<"Substitutions">> => map(),
+%%   <<"TimeToLive">> => integer(),
+%%   <<"Title">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type g_cm_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% g_p_s_coordinates() :: #{
+%%   <<"Latitude">> => float(),
+%%   <<"Longitude">> => float()
+%% }
+-type g_p_s_coordinates() :: #{binary() => any()}.
+
+
+%% Example:
+%% g_p_s_point_dimension() :: #{
+%%   <<"Coordinates">> => g_p_s_coordinates(),
+%%   <<"RangeInKilometers">> => float()
+%% }
+-type g_p_s_point_dimension() :: #{binary() => any()}.
+
+%% Example:
+%% get_adm_channel_request() :: #{}
+-type get_adm_channel_request() :: #{}.
+
+
+%% Example:
+%% get_adm_channel_response() :: #{
+%%   <<"ADMChannelResponse">> => ad_m_channel_response()
+%% }
+-type get_adm_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_apns_channel_request() :: #{}
+-type get_apns_channel_request() :: #{}.
+
+
+%% Example:
+%% get_apns_channel_response() :: #{
+%%   <<"APNSChannelResponse">> => a_p_n_s_channel_response()
+%% }
+-type get_apns_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_apns_sandbox_channel_request() :: #{}
+-type get_apns_sandbox_channel_request() :: #{}.
+
+
+%% Example:
+%% get_apns_sandbox_channel_response() :: #{
+%%   <<"APNSSandboxChannelResponse">> => a_p_n_s_sandbox_channel_response()
+%% }
+-type get_apns_sandbox_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_apns_voip_channel_request() :: #{}
+-type get_apns_voip_channel_request() :: #{}.
+
+
+%% Example:
+%% get_apns_voip_channel_response() :: #{
+%%   <<"APNSVoipChannelResponse">> => a_p_n_s_voip_channel_response()
+%% }
+-type get_apns_voip_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_apns_voip_sandbox_channel_request() :: #{}
+-type get_apns_voip_sandbox_channel_request() :: #{}.
+
+
+%% Example:
+%% get_apns_voip_sandbox_channel_response() :: #{
+%%   <<"APNSVoipSandboxChannelResponse">> => a_p_n_s_voip_sandbox_channel_response()
+%% }
+-type get_apns_voip_sandbox_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_app_request() :: #{}
+-type get_app_request() :: #{}.
+
+
+%% Example:
+%% get_app_response() :: #{
+%%   <<"ApplicationResponse">> => application_response()
+%% }
+-type get_app_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_application_date_range_kpi_request() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type get_application_date_range_kpi_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_application_date_range_kpi_response() :: #{
+%%   <<"ApplicationDateRangeKpiResponse">> => application_date_range_kpi_response()
+%% }
+-type get_application_date_range_kpi_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_settings_request() :: #{}
+-type get_application_settings_request() :: #{}.
+
+
+%% Example:
+%% get_application_settings_response() :: #{
+%%   <<"ApplicationSettingsResource">> => application_settings_resource()
+%% }
+-type get_application_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_apps_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_apps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_apps_response() :: #{
+%%   <<"ApplicationsResponse">> => applications_response()
+%% }
+-type get_apps_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_baidu_channel_request() :: #{}
+-type get_baidu_channel_request() :: #{}.
+
+
+%% Example:
+%% get_baidu_channel_response() :: #{
+%%   <<"BaiduChannelResponse">> => baidu_channel_response()
+%% }
+-type get_baidu_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_campaign_activities_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_campaign_activities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_campaign_activities_response() :: #{
+%%   <<"ActivitiesResponse">> => activities_response()
+%% }
+-type get_campaign_activities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_campaign_date_range_kpi_request() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type get_campaign_date_range_kpi_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_campaign_date_range_kpi_response() :: #{
+%%   <<"CampaignDateRangeKpiResponse">> => campaign_date_range_kpi_response()
+%% }
+-type get_campaign_date_range_kpi_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_campaign_request() :: #{}
+-type get_campaign_request() :: #{}.
+
+
+%% Example:
+%% get_campaign_response() :: #{
+%%   <<"CampaignResponse">> => campaign_response()
+%% }
+-type get_campaign_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_campaign_version_request() :: #{}
+-type get_campaign_version_request() :: #{}.
+
+
+%% Example:
+%% get_campaign_version_response() :: #{
+%%   <<"CampaignResponse">> => campaign_response()
+%% }
+-type get_campaign_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_campaign_versions_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_campaign_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_campaign_versions_response() :: #{
+%%   <<"CampaignsResponse">> => campaigns_response()
+%% }
+-type get_campaign_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_campaigns_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_campaigns_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_campaigns_response() :: #{
+%%   <<"CampaignsResponse">> => campaigns_response()
+%% }
+-type get_campaigns_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_channels_request() :: #{}
+-type get_channels_request() :: #{}.
+
+
+%% Example:
+%% get_channels_response() :: #{
+%%   <<"ChannelsResponse">> => channels_response()
+%% }
+-type get_channels_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_email_channel_request() :: #{}
+-type get_email_channel_request() :: #{}.
+
+
+%% Example:
+%% get_email_channel_response() :: #{
+%%   <<"EmailChannelResponse">> => email_channel_response()
+%% }
+-type get_email_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_email_template_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type get_email_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_email_template_response() :: #{
+%%   <<"EmailTemplateResponse">> => email_template_response()
+%% }
+-type get_email_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_request() :: #{}
+-type get_endpoint_request() :: #{}.
+
+
+%% Example:
+%% get_endpoint_response() :: #{
+%%   <<"EndpointResponse">> => endpoint_response()
+%% }
+-type get_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_stream_request() :: #{}
+-type get_event_stream_request() :: #{}.
+
+
+%% Example:
+%% get_event_stream_response() :: #{
+%%   <<"EventStream">> => event_stream()
+%% }
+-type get_event_stream_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_export_job_request() :: #{}
+-type get_export_job_request() :: #{}.
+
+
+%% Example:
+%% get_export_job_response() :: #{
+%%   <<"ExportJobResponse">> => export_job_response()
+%% }
+-type get_export_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_export_jobs_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_export_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_export_jobs_response() :: #{
+%%   <<"ExportJobsResponse">> => export_jobs_response()
+%% }
+-type get_export_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_gcm_channel_request() :: #{}
+-type get_gcm_channel_request() :: #{}.
+
+
+%% Example:
+%% get_gcm_channel_response() :: #{
+%%   <<"GCMChannelResponse">> => g_cm_channel_response()
+%% }
+-type get_gcm_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_import_job_request() :: #{}
+-type get_import_job_request() :: #{}.
+
+
+%% Example:
+%% get_import_job_response() :: #{
+%%   <<"ImportJobResponse">> => import_job_response()
+%% }
+-type get_import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_import_jobs_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_import_jobs_response() :: #{
+%%   <<"ImportJobsResponse">> => import_jobs_response()
+%% }
+-type get_import_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_in_app_messages_request() :: #{}
+-type get_in_app_messages_request() :: #{}.
+
+
+%% Example:
+%% get_in_app_messages_response() :: #{
+%%   <<"InAppMessagesResponse">> => in_app_messages_response()
+%% }
+-type get_in_app_messages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_in_app_template_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type get_in_app_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_in_app_template_response() :: #{
+%%   <<"InAppTemplateResponse">> => in_app_template_response()
+%% }
+-type get_in_app_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_date_range_kpi_request() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type get_journey_date_range_kpi_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_date_range_kpi_response() :: #{
+%%   <<"JourneyDateRangeKpiResponse">> => journey_date_range_kpi_response()
+%% }
+-type get_journey_date_range_kpi_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_execution_activity_metrics_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => string()
+%% }
+-type get_journey_execution_activity_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_execution_activity_metrics_response() :: #{
+%%   <<"JourneyExecutionActivityMetricsResponse">> => journey_execution_activity_metrics_response()
+%% }
+-type get_journey_execution_activity_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_execution_metrics_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => string()
+%% }
+-type get_journey_execution_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_execution_metrics_response() :: #{
+%%   <<"JourneyExecutionMetricsResponse">> => journey_execution_metrics_response()
+%% }
+-type get_journey_execution_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_journey_request() :: #{}
+-type get_journey_request() :: #{}.
+
+
+%% Example:
+%% get_journey_response() :: #{
+%%   <<"JourneyResponse">> => journey_response()
+%% }
+-type get_journey_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_run_execution_activity_metrics_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => string()
+%% }
+-type get_journey_run_execution_activity_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_run_execution_activity_metrics_response() :: #{
+%%   <<"JourneyRunExecutionActivityMetricsResponse">> => journey_run_execution_activity_metrics_response()
+%% }
+-type get_journey_run_execution_activity_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_run_execution_metrics_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => string()
+%% }
+-type get_journey_run_execution_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_run_execution_metrics_response() :: #{
+%%   <<"JourneyRunExecutionMetricsResponse">> => journey_run_execution_metrics_response()
+%% }
+-type get_journey_run_execution_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_runs_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_journey_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_journey_runs_response() :: #{
+%%   <<"JourneyRunsResponse">> => journey_runs_response()
+%% }
+-type get_journey_runs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_push_template_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type get_push_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_push_template_response() :: #{
+%%   <<"PushNotificationTemplateResponse">> => push_notification_template_response()
+%% }
+-type get_push_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommender_configuration_request() :: #{}
+-type get_recommender_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_recommender_configuration_response() :: #{
+%%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
+%% }
+-type get_recommender_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommender_configurations_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_recommender_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommender_configurations_response() :: #{
+%%   <<"ListRecommenderConfigurationsResponse">> => list_recommender_configurations_response()
+%% }
+-type get_recommender_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segment_export_jobs_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_segment_export_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segment_export_jobs_response() :: #{
+%%   <<"ExportJobsResponse">> => export_jobs_response()
+%% }
+-type get_segment_export_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segment_import_jobs_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_segment_import_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segment_import_jobs_response() :: #{
+%%   <<"ImportJobsResponse">> => import_jobs_response()
+%% }
+-type get_segment_import_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_segment_request() :: #{}
+-type get_segment_request() :: #{}.
+
+
+%% Example:
+%% get_segment_response() :: #{
+%%   <<"SegmentResponse">> => segment_response()
+%% }
+-type get_segment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_segment_version_request() :: #{}
+-type get_segment_version_request() :: #{}.
+
+
+%% Example:
+%% get_segment_version_response() :: #{
+%%   <<"SegmentResponse">> => segment_response()
+%% }
+-type get_segment_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segment_versions_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_segment_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segment_versions_response() :: #{
+%%   <<"SegmentsResponse">> => segments_response()
+%% }
+-type get_segment_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segments_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type get_segments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segments_response() :: #{
+%%   <<"SegmentsResponse">> => segments_response()
+%% }
+-type get_segments_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_sms_channel_request() :: #{}
+-type get_sms_channel_request() :: #{}.
+
+
+%% Example:
+%% get_sms_channel_response() :: #{
+%%   <<"SMSChannelResponse">> => sms_channel_response()
+%% }
+-type get_sms_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sms_template_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type get_sms_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sms_template_response() :: #{
+%%   <<"SMSTemplateResponse">> => sms_template_response()
+%% }
+-type get_sms_template_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_endpoints_request() :: #{}
+-type get_user_endpoints_request() :: #{}.
+
+
+%% Example:
+%% get_user_endpoints_response() :: #{
+%%   <<"EndpointsResponse">> => endpoints_response()
+%% }
+-type get_user_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_channel_request() :: #{}
+-type get_voice_channel_request() :: #{}.
+
+
+%% Example:
+%% get_voice_channel_response() :: #{
+%%   <<"VoiceChannelResponse">> => voice_channel_response()
+%% }
+-type get_voice_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_voice_template_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type get_voice_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_voice_template_response() :: #{
+%%   <<"VoiceTemplateResponse">> => voice_template_response()
+%% }
+-type get_voice_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% holdout_activity() :: #{
+%%   <<"NextActivity">> => string(),
+%%   <<"Percentage">> => integer()
+%% }
+-type holdout_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_job_request() :: #{
+%%   <<"DefineSegment">> => boolean(),
+%%   <<"ExternalId">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"RegisterEndpoints">> => boolean(),
+%%   <<"RoleArn">> => string(),
+%%   <<"S3Url">> => string(),
+%%   <<"SegmentId">> => string(),
+%%   <<"SegmentName">> => string()
+%% }
+-type import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_job_resource() :: #{
+%%   <<"DefineSegment">> => boolean(),
+%%   <<"ExternalId">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"RegisterEndpoints">> => boolean(),
+%%   <<"RoleArn">> => string(),
+%%   <<"S3Url">> => string(),
+%%   <<"SegmentId">> => string(),
+%%   <<"SegmentName">> => string()
+%% }
+-type import_job_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_job_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CompletedPieces">> => integer(),
+%%   <<"CompletionDate">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Definition">> => import_job_resource(),
+%%   <<"FailedPieces">> => integer(),
+%%   <<"Failures">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"JobStatus">> => list(any()),
+%%   <<"TotalFailures">> => integer(),
+%%   <<"TotalPieces">> => integer(),
+%%   <<"TotalProcessed">> => integer(),
+%%   <<"Type">> => string()
+%% }
+-type import_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_jobs_response() :: #{
+%%   <<"Item">> => list(import_job_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type import_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_app_campaign_schedule() :: #{
+%%   <<"EndDate">> => string(),
+%%   <<"EventFilter">> => campaign_event_filter(),
+%%   <<"QuietTime">> => quiet_time()
+%% }
+-type in_app_campaign_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_app_message() :: #{
+%%   <<"Content">> => list(in_app_message_content()),
+%%   <<"CustomConfig">> => map(),
+%%   <<"Layout">> => list(any())
+%% }
+-type in_app_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_app_message_body_config() :: #{
+%%   <<"Alignment">> => list(any()),
+%%   <<"Body">> => string(),
+%%   <<"TextColor">> => string()
+%% }
+-type in_app_message_body_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_app_message_button() :: #{
+%%   <<"Android">> => override_button_configuration(),
+%%   <<"DefaultConfig">> => default_button_configuration(),
+%%   <<"IOS">> => override_button_configuration(),
+%%   <<"Web">> => override_button_configuration()
+%% }
+-type in_app_message_button() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_app_message_campaign() :: #{
+%%   <<"CampaignId">> => string(),
+%%   <<"DailyCap">> => integer(),
+%%   <<"InAppMessage">> => in_app_message(),
+%%   <<"Priority">> => integer(),
+%%   <<"Schedule">> => in_app_campaign_schedule(),
+%%   <<"SessionCap">> => integer(),
+%%   <<"TotalCap">> => integer(),
+%%   <<"TreatmentId">> => string()
+%% }
+-type in_app_message_campaign() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_app_message_content() :: #{
+%%   <<"BackgroundColor">> => string(),
+%%   <<"BodyConfig">> => in_app_message_body_config(),
+%%   <<"HeaderConfig">> => in_app_message_header_config(),
+%%   <<"ImageUrl">> => string(),
+%%   <<"PrimaryBtn">> => in_app_message_button(),
+%%   <<"SecondaryBtn">> => in_app_message_button()
+%% }
+-type in_app_message_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_app_message_header_config() :: #{
+%%   <<"Alignment">> => list(any()),
+%%   <<"Header">> => string(),
+%%   <<"TextColor">> => string()
+%% }
+-type in_app_message_header_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_app_messages_response() :: #{
+%%   <<"InAppMessageCampaigns">> => list(in_app_message_campaign())
+%% }
+-type in_app_messages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_app_template_request() :: #{
+%%   <<"Content">> => list(in_app_message_content()),
+%%   <<"CustomConfig">> => map(),
+%%   <<"Layout">> => list(any()),
+%%   <<"TemplateDescription">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type in_app_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% in_app_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Content">> => list(in_app_message_content()),
+%%   <<"CreationDate">> => string(),
+%%   <<"CustomConfig">> => map(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Layout">> => list(any()),
+%%   <<"TemplateDescription">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateType">> => list(any()),
+%%   <<"Version">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type in_app_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestID">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% item_response() :: #{
+%%   <<"EndpointItemResponse">> => endpoint_item_response(),
+%%   <<"EventsItemResponse">> => map()
+%% }
+-type item_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_channel_settings() :: #{
+%%   <<"ConnectCampaignArn">> => string(),
+%%   <<"ConnectCampaignExecutionRoleArn">> => string()
+%% }
+-type journey_channel_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_custom_message() :: #{
+%%   <<"Data">> => string()
+%% }
+-type journey_custom_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_date_range_kpi_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"JourneyId">> => string(),
+%%   <<"KpiName">> => string(),
+%%   <<"KpiResult">> => base_kpi_result(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type journey_date_range_kpi_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_email_message() :: #{
+%%   <<"FromAddress">> => string()
+%% }
+-type journey_email_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_execution_activity_metrics_response() :: #{
+%%   <<"ActivityType">> => string(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"JourneyActivityId">> => string(),
+%%   <<"JourneyId">> => string(),
+%%   <<"LastEvaluatedTime">> => string(),
+%%   <<"Metrics">> => map()
+%% }
+-type journey_execution_activity_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_execution_metrics_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"JourneyId">> => string(),
+%%   <<"LastEvaluatedTime">> => string(),
+%%   <<"Metrics">> => map()
+%% }
+-type journey_execution_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_limits() :: #{
+%%   <<"DailyCap">> => integer(),
+%%   <<"EndpointReentryCap">> => integer(),
+%%   <<"EndpointReentryInterval">> => string(),
+%%   <<"MessagesPerSecond">> => integer(),
+%%   <<"TimeframeCap">> => journey_timeframe_cap(),
+%%   <<"TotalCap">> => integer()
+%% }
+-type journey_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_push_message() :: #{
+%%   <<"TimeToLive">> => string()
+%% }
+-type journey_push_message() :: #{binary() => any()}.
 
 
 %% Example:
@@ -370,123 +2837,180 @@
 
 
 %% Example:
-%% treatment_resource() :: #{
-%%   <<"CustomDeliveryConfiguration">> => custom_delivery_configuration(),
-%%   <<"Id">> => string(),
-%%   <<"MessageConfiguration">> => message_configuration(),
-%%   <<"Schedule">> => schedule(),
-%%   <<"SizePercent">> => integer(),
-%%   <<"State">> => campaign_state(),
-%%   <<"TemplateConfiguration">> => template_configuration(),
-%%   <<"TreatmentDescription">> => string(),
-%%   <<"TreatmentName">> => string()
-%% }
--type treatment_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_user_endpoints_response() :: #{
-%%   <<"EndpointsResponse">> => endpoints_response()
-%% }
--type delete_user_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_o_t_p_message_request() :: #{
-%%   <<"VerifyOTPMessageRequestParameters">> := verify_o_t_p_message_request_parameters()
-%% }
--type verify_o_t_p_message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_campaign_activities_response() :: #{
-%%   <<"ActivitiesResponse">> => activities_response()
-%% }
--type get_campaign_activities_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% wait_time() :: #{
-%%   <<"WaitFor">> => string(),
-%%   <<"WaitUntil">> => string()
-%% }
--type wait_time() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_import_job_response() :: #{
-%%   <<"ImportJobResponse">> => import_job_response()
-%% }
--type create_import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_template_active_version_request() :: #{
-%%   <<"TemplateActiveVersionRequest">> := template_active_version_request()
-%% }
--type update_template_active_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_o_t_p_message_request_parameters() :: #{
-%%   <<"DestinationIdentity">> => string(),
-%%   <<"Otp">> => string(),
-%%   <<"ReferenceId">> => string()
-%% }
--type verify_o_t_p_message_request_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% in_app_campaign_schedule() :: #{
-%%   <<"EndDate">> => string(),
-%%   <<"EventFilter">> => campaign_event_filter(),
-%%   <<"QuietTime">> => quiet_time()
-%% }
--type in_app_campaign_schedule() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_date_range_kpi_response() :: #{
+%% journey_run_execution_activity_metrics_response() :: #{
+%%   <<"ActivityType">> => string(),
 %%   <<"ApplicationId">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"KpiName">> => string(),
-%%   <<"KpiResult">> => base_kpi_result(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
+%%   <<"JourneyActivityId">> => string(),
+%%   <<"JourneyId">> => string(),
+%%   <<"LastEvaluatedTime">> => string(),
+%%   <<"Metrics">> => map(),
+%%   <<"RunId">> => string()
 %% }
--type application_date_range_kpi_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_channels_request() :: #{}
--type get_channels_request() :: #{}.
+-type journey_run_execution_activity_metrics_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_application_date_range_kpi_request() :: #{
+%% journey_run_execution_metrics_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"JourneyId">> => string(),
+%%   <<"LastEvaluatedTime">> => string(),
+%%   <<"Metrics">> => map(),
+%%   <<"RunId">> => string()
+%% }
+-type journey_run_execution_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_run_response() :: #{
+%%   <<"CreationTime">> => string(),
+%%   <<"LastUpdateTime">> => string(),
+%%   <<"RunId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type journey_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_runs_response() :: #{
+%%   <<"Item">> => list(journey_run_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type journey_runs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_schedule() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Timezone">> => string()
+%% }
+-type journey_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_sms_message() :: #{
+%%   <<"EntityId">> => string(),
+%%   <<"MessageType">> => list(any()),
+%%   <<"OriginationNumber">> => string(),
+%%   <<"SenderId">> => string(),
+%%   <<"TemplateId">> => string()
+%% }
+-type journey_sms_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_state_request() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type journey_state_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% journey_timeframe_cap() :: #{
+%%   <<"Cap">> => integer(),
+%%   <<"Days">> => integer()
+%% }
+-type journey_timeframe_cap() :: #{binary() => any()}.
+
+
+%% Example:
+%% journeys_response() :: #{
+%%   <<"Item">> => list(journey_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type journeys_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_journeys_request() :: #{
+%%   <<"PageSize">> => string(),
+%%   <<"Token">> => string()
+%% }
+-type list_journeys_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_journeys_response() :: #{
+%%   <<"JourneysResponse">> => journeys_response()
+%% }
+-type list_journeys_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommender_configurations_response() :: #{
+%%   <<"Item">> => list(recommender_configuration_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recommender_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"TagsModel">> => tags_model()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_versions_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => string()
+%% }
+-type list_template_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_template_versions_response() :: #{
+%%   <<"TemplateVersionsResponse">> => template_versions_response()
+%% }
+-type list_template_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_templates_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
+%%   <<"Prefix">> => string(),
+%%   <<"TemplateType">> => string()
 %% }
--type get_application_date_range_kpi_request() :: #{binary() => any()}.
+-type list_templates_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% campaign_limits() :: #{
-%%   <<"Daily">> => integer(),
-%%   <<"MaximumDuration">> => integer(),
-%%   <<"MessagesPerSecond">> => integer(),
-%%   <<"Session">> => integer(),
-%%   <<"Total">> => integer()
+%% list_templates_response() :: #{
+%%   <<"TemplatesResponse">> => templates_response()
 %% }
--type campaign_limits() :: #{binary() => any()}.
+-type list_templates_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% campaign_state() :: #{
-%%   <<"CampaignStatus">> => list(any())
+%% message() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Body">> => string(),
+%%   <<"ImageIconUrl">> => string(),
+%%   <<"ImageSmallIconUrl">> => string(),
+%%   <<"ImageUrl">> => string(),
+%%   <<"JsonBody">> => string(),
+%%   <<"MediaUrl">> => string(),
+%%   <<"RawContent">> => string(),
+%%   <<"SilentPush">> => boolean(),
+%%   <<"TimeToLive">> => integer(),
+%%   <<"Title">> => string(),
+%%   <<"Url">> => string()
 %% }
--type campaign_state() :: #{binary() => any()}.
+-type message() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_body() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestID">> => string()
+%% }
+-type message_body() :: #{binary() => any()}.
 
 
 %% Example:
@@ -505,38 +3029,204 @@
 
 
 %% Example:
-%% create_push_template_response() :: #{
-%%   <<"CreateTemplateMessageBody">> => create_template_message_body()
+%% message_header() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
 %% }
--type create_push_template_response() :: #{binary() => any()}.
+-type message_header() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_apns_voip_sandbox_channel_response() :: #{
-%%   <<"APNSVoipSandboxChannelResponse">> => a_p_n_s_voip_sandbox_channel_response()
+%% message_request() :: #{
+%%   <<"Addresses">> => map(),
+%%   <<"Context">> => map(),
+%%   <<"Endpoints">> => map(),
+%%   <<"MessageConfiguration">> => direct_message_configuration(),
+%%   <<"TemplateConfiguration">> => template_configuration(),
+%%   <<"TraceId">> => string()
 %% }
--type get_apns_voip_sandbox_channel_response() :: #{binary() => any()}.
+-type message_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_campaign_response() :: #{
-%%   <<"CampaignResponse">> => campaign_response()
+%% message_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"EndpointResult">> => map(),
+%%   <<"RequestId">> => string(),
+%%   <<"Result">> => map()
 %% }
--type update_campaign_response() :: #{binary() => any()}.
+-type message_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"TagsModel">> := tags_model()
+%% message_result() :: #{
+%%   <<"DeliveryStatus">> => list(any()),
+%%   <<"MessageId">> => string(),
+%%   <<"StatusCode">> => integer(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"UpdatedToken">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type message_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% endpoints_response() :: #{
-%%   <<"Item">> => list(endpoint_response())
+%% method_not_allowed_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestID">> => string()
 %% }
--type endpoints_response() :: #{binary() => any()}.
+-type method_not_allowed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_dimension() :: #{
+%%   <<"ComparisonOperator">> => string(),
+%%   <<"Value">> => float()
+%% }
+-type metric_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_conditional_branch() :: #{
+%%   <<"Condition">> => simple_condition(),
+%%   <<"NextActivity">> => string()
+%% }
+-type multi_conditional_branch() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_conditional_split_activity() :: #{
+%%   <<"Branches">> => list(multi_conditional_branch()),
+%%   <<"DefaultActivity">> => string(),
+%%   <<"EvaluationWaitTime">> => wait_time()
+%% }
+-type multi_conditional_split_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestID">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% number_validate_request() :: #{
+%%   <<"IsoCountryCode">> => string(),
+%%   <<"PhoneNumber">> => string()
+%% }
+-type number_validate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% number_validate_response() :: #{
+%%   <<"Carrier">> => string(),
+%%   <<"City">> => string(),
+%%   <<"CleansedPhoneNumberE164">> => string(),
+%%   <<"CleansedPhoneNumberNational">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"CountryCodeIso2">> => string(),
+%%   <<"CountryCodeNumeric">> => string(),
+%%   <<"County">> => string(),
+%%   <<"OriginalCountryCodeIso2">> => string(),
+%%   <<"OriginalPhoneNumber">> => string(),
+%%   <<"PhoneType">> => string(),
+%%   <<"PhoneTypeCode">> => integer(),
+%%   <<"Timezone">> => string(),
+%%   <<"ZipCode">> => string()
+%% }
+-type number_validate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_hours() :: #{
+%%   <<"CUSTOM">> => map(),
+%%   <<"EMAIL">> => map(),
+%%   <<"PUSH">> => map(),
+%%   <<"SMS">> => map(),
+%%   <<"VOICE">> => map()
+%% }
+-type open_hours() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_hours_rule() :: #{
+%%   <<"EndTime">> => string(),
+%%   <<"StartTime">> => string()
+%% }
+-type open_hours_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% override_button_configuration() :: #{
+%%   <<"ButtonAction">> => list(any()),
+%%   <<"Link">> => string()
+%% }
+-type override_button_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% payload_too_large_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestID">> => string()
+%% }
+-type payload_too_large_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_validate_request() :: #{
+%%   <<"NumberValidateRequest">> := number_validate_request()
+%% }
+-type phone_number_validate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% phone_number_validate_response() :: #{
+%%   <<"NumberValidateResponse">> => number_validate_response()
+%% }
+-type phone_number_validate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"ChannelType">> => list(any()),
+%%   <<"Demographic">> => endpoint_demographic(),
+%%   <<"EffectiveDate">> => string(),
+%%   <<"EndpointStatus">> => string(),
+%%   <<"Location">> => endpoint_location(),
+%%   <<"Metrics">> => map(),
+%%   <<"OptOut">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"User">> => endpoint_user()
+%% }
+-type public_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% push_message_activity() :: #{
+%%   <<"MessageConfig">> => journey_push_message(),
+%%   <<"NextActivity">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateVersion">> => string()
+%% }
+-type push_message_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% push_notification_template_request() :: #{
+%%   <<"ADM">> => android_push_notification_template(),
+%%   <<"APNS">> => a_p_n_s_push_notification_template(),
+%%   <<"Baidu">> => android_push_notification_template(),
+%%   <<"Default">> => default_push_notification_template(),
+%%   <<"DefaultSubstitutions">> => string(),
+%%   <<"GCM">> => android_push_notification_template(),
+%%   <<"RecommenderId">> => string(),
+%%   <<"TemplateDescription">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type push_notification_template_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -561,79 +3251,61 @@
 
 
 %% Example:
-%% create_import_job_request() :: #{
-%%   <<"ImportJobRequest">> := import_job_request()
+%% put_event_stream_request() :: #{
+%%   <<"WriteEventStream">> := write_event_stream()
 %% }
--type create_import_job_request() :: #{binary() => any()}.
+-type put_event_stream_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_push_template_response() :: #{
-%%   <<"PushNotificationTemplateResponse">> => push_notification_template_response()
+%% put_event_stream_response() :: #{
+%%   <<"EventStream">> => event_stream()
 %% }
--type get_push_template_response() :: #{binary() => any()}.
+-type put_event_stream_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_campaign_versions_response() :: #{
-%%   <<"CampaignsResponse">> => campaigns_response()
+%% put_events_request() :: #{
+%%   <<"EventsRequest">> := events_request()
 %% }
--type get_campaign_versions_response() :: #{binary() => any()}.
+-type put_events_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_apps_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
+%% put_events_response() :: #{
+%%   <<"EventsResponse">> => events_response()
 %% }
--type get_apps_request() :: #{binary() => any()}.
+-type put_events_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% baidu_message() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Body">> => string(),
-%%   <<"Data">> => map(),
-%%   <<"IconReference">> => string(),
-%%   <<"ImageIconUrl">> => string(),
-%%   <<"ImageUrl">> => string(),
-%%   <<"RawContent">> => string(),
-%%   <<"SilentPush">> => boolean(),
-%%   <<"SmallImageIconUrl">> => string(),
-%%   <<"Sound">> => string(),
-%%   <<"Substitutions">> => map(),
-%%   <<"TimeToLive">> => integer(),
-%%   <<"Title">> => string(),
-%%   <<"Url">> => string()
+%% quiet_time() :: #{
+%%   <<"End">> => string(),
+%%   <<"Start">> => string()
 %% }
--type baidu_message() :: #{binary() => any()}.
+-type quiet_time() :: #{binary() => any()}.
 
 
 %% Example:
-%% channel_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"HasCredential">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"IsArchived">> => boolean(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Version">> => integer()
+%% random_split_activity() :: #{
+%%   <<"Branches">> => list(random_split_entry())
 %% }
--type channel_response() :: #{binary() => any()}.
+-type random_split_activity() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_campaign_version_request() :: #{}
--type get_campaign_version_request() :: #{}.
+%% random_split_entry() :: #{
+%%   <<"NextActivity">> => string(),
+%%   <<"Percentage">> => integer()
+%% }
+-type random_split_entry() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_journey_request() :: #{}
--type get_journey_request() :: #{}.
-
-%% Example:
-%% get_campaign_request() :: #{}
--type get_campaign_request() :: #{}.
+%% raw_email() :: #{
+%%   <<"Data">> => binary()
+%% }
+-type raw_email() :: #{binary() => any()}.
 
 
 %% Example:
@@ -645,175 +3317,43 @@
 
 
 %% Example:
-%% create_voice_template_request() :: #{
-%%   <<"VoiceTemplateRequest">> := voice_template_request()
+%% recommender_configuration_response() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RecommendationProviderIdType">> => string(),
+%%   <<"RecommendationProviderRoleArn">> => string(),
+%%   <<"RecommendationProviderUri">> => string(),
+%%   <<"RecommendationTransformerUri">> => string(),
+%%   <<"RecommendationsDisplayName">> => string(),
+%%   <<"RecommendationsPerMessage">> => integer()
 %% }
--type create_voice_template_request() :: #{binary() => any()}.
+-type recommender_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% simple_condition() :: #{
-%%   <<"EventCondition">> => event_condition(),
-%%   <<"SegmentCondition">> => segment_condition(),
-%%   <<"SegmentDimensions">> => segment_dimensions()
+%% remove_attributes_request() :: #{
+%%   <<"UpdateAttributesRequest">> := update_attributes_request()
 %% }
--type simple_condition() :: #{binary() => any()}.
+-type remove_attributes_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% email_template_request() :: #{
-%%   <<"DefaultSubstitutions">> => string(),
-%%   <<"Headers">> => list(message_header()),
-%%   <<"HtmlPart">> => string(),
-%%   <<"RecommenderId">> => string(),
-%%   <<"Subject">> => string(),
-%%   <<"TemplateDescription">> => string(),
-%%   <<"TextPart">> => string(),
-%%   <<"tags">> => map()
+%% remove_attributes_response() :: #{
+%%   <<"AttributesResource">> => attributes_resource()
 %% }
--type email_template_request() :: #{binary() => any()}.
+-type remove_attributes_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% event_condition() :: #{
-%%   <<"Dimensions">> => event_dimensions(),
-%%   <<"MessageActivity">> => string()
+%% result_row() :: #{
+%%   <<"GroupedBys">> => list(result_row_value()),
+%%   <<"Values">> => list(result_row_value())
 %% }
--type event_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_push_template_response() :: #{
-%%   <<"MessageBody">> => message_body()
-%% }
--type update_push_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% verification_response() :: #{
-%%   <<"Valid">> => boolean()
-%% }
--type verification_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_request() :: #{
-%%   <<"CreateApplicationRequest">> := create_application_request()
-%% }
--type create_app_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_jobs_response() :: #{
-%%   <<"Item">> => list(export_job_response()),
-%%   <<"NextToken">> => string()
-%% }
--type export_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_app_response() :: #{
-%%   <<"ApplicationResponse">> => application_response()
-%% }
--type delete_app_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conditional_split_activity() :: #{
-%%   <<"Condition">> => condition(),
-%%   <<"EvaluationWaitTime">> => wait_time(),
-%%   <<"FalseActivity">> => string(),
-%%   <<"TrueActivity">> => string()
-%% }
--type conditional_split_activity() :: #{binary() => any()}.
-
-
-%% Example:
-%% campaign_hook() :: #{
-%%   <<"LambdaFunctionName">> => string(),
-%%   <<"Mode">> => list(any()),
-%%   <<"WebUrl">> => string()
-%% }
--type campaign_hook() :: #{binary() => any()}.
-
-%% Example:
-%% delete_apns_sandbox_channel_request() :: #{}
--type delete_apns_sandbox_channel_request() :: #{}.
-
-
-%% Example:
-%% get_email_channel_response() :: #{
-%%   <<"EmailChannelResponse">> => email_channel_response()
-%% }
--type get_email_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_endpoint_response() :: #{
-%%   <<"MessageBody">> => message_body()
-%% }
--type update_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_p_n_s_channel_request() :: #{
-%%   <<"BundleId">> => string(),
-%%   <<"Certificate">> => string(),
-%%   <<"DefaultAuthenticationMethod">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"PrivateKey">> => string(),
-%%   <<"TeamId">> => string(),
-%%   <<"TokenKey">> => string(),
-%%   <<"TokenKeyId">> => string()
-%% }
--type a_p_n_s_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% open_hours_rule() :: #{
-%%   <<"EndTime">> => string(),
-%%   <<"StartTime">> => string()
-%% }
--type open_hours_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% campaigns_response() :: #{
-%%   <<"Item">> => list(campaign_response()),
-%%   <<"NextToken">> => string()
-%% }
--type campaigns_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_email_template_request() :: #{
-%%   <<"CreateNewVersion">> => boolean(),
-%%   <<"EmailTemplateRequest">> := email_template_request(),
-%%   <<"Version">> => string()
-%% }
--type update_email_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% push_notification_template_request() :: #{
-%%   <<"ADM">> => android_push_notification_template(),
-%%   <<"APNS">> => a_p_n_s_push_notification_template(),
-%%   <<"Baidu">> => android_push_notification_template(),
-%%   <<"Default">> => default_push_notification_template(),
-%%   <<"DefaultSubstitutions">> => string(),
-%%   <<"GCM">> => android_push_notification_template(),
-%%   <<"RecommenderId">> => string(),
-%%   <<"TemplateDescription">> => string(),
-%%   <<"tags">> => map()
-%% }
--type push_notification_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_in_app_template_response() :: #{
-%%   <<"TemplateCreateMessageBody">> => template_create_message_body()
-%% }
--type create_in_app_template_response() :: #{binary() => any()}.
+-type result_row() :: #{binary() => any()}.
 
 
 %% Example:
@@ -826,309 +3366,147 @@
 
 
 %% Example:
-%% journey_custom_message() :: #{
-%%   <<"Data">> => string()
+%% schedule() :: #{
+%%   <<"EndTime">> => string(),
+%%   <<"EventFilter">> => campaign_event_filter(),
+%%   <<"Frequency">> => list(any()),
+%%   <<"IsLocalTime">> => boolean(),
+%%   <<"QuietTime">> => quiet_time(),
+%%   <<"StartTime">> => string(),
+%%   <<"Timezone">> => string()
 %% }
--type journey_custom_message() :: #{binary() => any()}.
+-type schedule() :: #{binary() => any()}.
 
 
 %% Example:
-%% number_validate_request() :: #{
-%%   <<"IsoCountryCode">> => string(),
-%%   <<"PhoneNumber">> => string()
+%% segment_behaviors() :: #{
+%%   <<"Recency">> => recency_dimension()
 %% }
--type number_validate_request() :: #{binary() => any()}.
+-type segment_behaviors() :: #{binary() => any()}.
 
 
 %% Example:
-%% endpoint_batch_item() :: #{
-%%   <<"Address">> => string(),
-%%   <<"Attributes">> => map(),
-%%   <<"ChannelType">> => list(any()),
-%%   <<"Demographic">> => endpoint_demographic(),
-%%   <<"EffectiveDate">> => string(),
-%%   <<"EndpointStatus">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Location">> => endpoint_location(),
-%%   <<"Metrics">> => map(),
-%%   <<"OptOut">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"User">> => endpoint_user()
-%% }
--type endpoint_batch_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_email_channel_response() :: #{
-%%   <<"EmailChannelResponse">> => email_channel_response()
-%% }
--type update_email_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% base_kpi_result() :: #{
-%%   <<"Rows">> => list(result_row())
-%% }
--type base_kpi_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_baidu_channel_response() :: #{
-%%   <<"BaiduChannelResponse">> => baidu_channel_response()
-%% }
--type delete_baidu_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_journey_state_request() :: #{
-%%   <<"JourneyStateRequest">> := journey_state_request()
-%% }
--type update_journey_state_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_batch_request() :: #{
-%%   <<"Item">> => list(endpoint_batch_item())
-%% }
--type endpoint_batch_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% g_p_s_point_dimension() :: #{
-%%   <<"Coordinates">> => g_p_s_coordinates(),
-%%   <<"RangeInKilometers">> => float()
-%% }
--type g_p_s_point_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% quiet_time() :: #{
-%%   <<"End">> => string(),
-%%   <<"Start">> => string()
-%% }
--type quiet_time() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sms_channel_request() :: #{
-%%   <<"SMSChannelRequest">> := sms_channel_request()
-%% }
--type update_sms_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_templates_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"TemplateType">> => string()
-%% }
--type list_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% random_split_entry() :: #{
-%%   <<"NextActivity">> => string(),
-%%   <<"Percentage">> => integer()
-%% }
--type random_split_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% campaign_event_filter() :: #{
-%%   <<"Dimensions">> => event_dimensions(),
-%%   <<"FilterType">> => list(any())
-%% }
--type campaign_event_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_event_stream_request() :: #{
-%%   <<"WriteEventStream">> := write_event_stream()
-%% }
--type put_event_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% push_message_activity() :: #{
-%%   <<"MessageConfig">> => journey_push_message(),
-%%   <<"NextActivity">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateVersion">> => string()
-%% }
--type push_message_activity() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_message() :: #{
-%%   <<"Body">> => string(),
-%%   <<"LanguageCode">> => string(),
-%%   <<"OriginationNumber">> => string(),
-%%   <<"Substitutions">> => map(),
-%%   <<"VoiceId">> => string()
-%% }
--type voice_message() :: #{binary() => any()}.
-
-%% Example:
-%% get_segment_version_request() :: #{}
--type get_segment_version_request() :: #{}.
-
-%% Example:
-%% get_in_app_messages_request() :: #{}
--type get_in_app_messages_request() :: #{}.
-
-%% Example:
-%% get_segment_request() :: #{}
--type get_segment_request() :: #{}.
-
-
-%% Example:
-%% get_voice_channel_response() :: #{
-%%   <<"VoiceChannelResponse">> => voice_channel_response()
-%% }
--type get_voice_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segment_versions_response() :: #{
-%%   <<"SegmentsResponse">> => segments_response()
-%% }
--type get_segment_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestID">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_users_message_request() :: #{
-%%   <<"Context">> => map(),
-%%   <<"MessageConfiguration">> => direct_message_configuration(),
-%%   <<"TemplateConfiguration">> => template_configuration(),
-%%   <<"TraceId">> => string(),
-%%   <<"Users">> => map()
-%% }
--type send_users_message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_item_response() :: #{
-%%   <<"Message">> => string(),
-%%   <<"StatusCode">> => integer()
-%% }
--type event_item_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% in_app_message_header_config() :: #{
-%%   <<"Alignment">> => list(any()),
-%%   <<"Header">> => string(),
-%%   <<"TextColor">> => string()
-%% }
--type in_app_message_header_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_start_condition() :: #{
-%%   <<"EventFilter">> => event_filter(),
+%% segment_condition() :: #{
 %%   <<"SegmentId">> => string()
 %% }
--type event_start_condition() :: #{binary() => any()}.
+-type segment_condition() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_email_channel_request() :: #{
-%%   <<"EmailChannelRequest">> := email_channel_request()
+%% segment_demographics() :: #{
+%%   <<"AppVersion">> => set_dimension(),
+%%   <<"Channel">> => set_dimension(),
+%%   <<"DeviceType">> => set_dimension(),
+%%   <<"Make">> => set_dimension(),
+%%   <<"Model">> => set_dimension(),
+%%   <<"Platform">> => set_dimension()
 %% }
--type update_email_channel_request() :: #{binary() => any()}.
+-type segment_demographics() :: #{binary() => any()}.
 
 
 %% Example:
-%% campaign_date_range_kpi_response() :: #{
+%% segment_dimensions() :: #{
+%%   <<"Attributes">> => map(),
+%%   <<"Behavior">> => segment_behaviors(),
+%%   <<"Demographic">> => segment_demographics(),
+%%   <<"Location">> => segment_location(),
+%%   <<"Metrics">> => map(),
+%%   <<"UserAttributes">> => map()
+%% }
+-type segment_dimensions() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_group() :: #{
+%%   <<"Dimensions">> => list(segment_dimensions()),
+%%   <<"SourceSegments">> => list(segment_reference()),
+%%   <<"SourceType">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type segment_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_group_list() :: #{
+%%   <<"Groups">> => list(segment_group()),
+%%   <<"Include">> => list(any())
+%% }
+-type segment_group_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_import_resource() :: #{
+%%   <<"ChannelCounts">> => map(),
+%%   <<"ExternalId">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"RoleArn">> => string(),
+%%   <<"S3Url">> => string(),
+%%   <<"Size">> => integer()
+%% }
+-type segment_import_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_location() :: #{
+%%   <<"Country">> => set_dimension(),
+%%   <<"GPSPoint">> => g_p_s_point_dimension()
+%% }
+-type segment_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_reference() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Version">> => integer()
+%% }
+-type segment_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_response() :: #{
 %%   <<"ApplicationId">> => string(),
-%%   <<"CampaignId">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"KpiName">> => string(),
-%%   <<"KpiResult">> => base_kpi_result(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type campaign_date_range_kpi_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_create_message_body() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RequestID">> => string()
+%%   <<"CreationDate">> => string(),
+%%   <<"Dimensions">> => segment_dimensions(),
+%%   <<"Id">> => string(),
+%%   <<"ImportDefinition">> => segment_import_resource(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SegmentGroups">> => segment_group_list(),
+%%   <<"SegmentType">> => list(any()),
+%%   <<"Version">> => integer(),
+%%   <<"tags">> => map()
 %% }
--type template_create_message_body() :: #{binary() => any()}.
+-type segment_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% events_batch() :: #{
-%%   <<"Endpoint">> => public_endpoint(),
-%%   <<"Events">> => map()
+%% segments_response() :: #{
+%%   <<"Item">> => list(segment_response()),
+%%   <<"NextToken">> => string()
 %% }
--type events_batch() :: #{binary() => any()}.
+-type segments_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_export_job_response() :: #{
-%%   <<"ExportJobResponse">> => export_job_response()
+%% send_messages_request() :: #{
+%%   <<"MessageRequest">> := message_request()
 %% }
--type create_export_job_response() :: #{binary() => any()}.
+-type send_messages_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% a_p_n_s_voip_channel_request() :: #{
-%%   <<"BundleId">> => string(),
-%%   <<"Certificate">> => string(),
-%%   <<"DefaultAuthenticationMethod">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"PrivateKey">> => string(),
-%%   <<"TeamId">> => string(),
-%%   <<"TokenKey">> => string(),
-%%   <<"TokenKeyId">> => string()
+%% send_messages_response() :: #{
+%%   <<"MessageResponse">> => message_response()
 %% }
--type a_p_n_s_voip_channel_request() :: #{binary() => any()}.
+-type send_messages_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% method_not_allowed_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestID">> => string()
+%% send_o_t_p_message_request() :: #{
+%%   <<"SendOTPMessageRequestParameters">> := send_o_t_p_message_request_parameters()
 %% }
--type method_not_allowed_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_channels_response() :: #{
-%%   <<"ChannelsResponse">> => channels_response()
-%% }
--type get_channels_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_gcm_channel_request() :: #{
-%%   <<"GCMChannelRequest">> := g_cm_channel_request()
-%% }
--type update_gcm_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_sms_channel_request() :: #{}
--type get_sms_channel_request() :: #{}.
-
-
-%% Example:
-%% get_export_jobs_response() :: #{
-%%   <<"ExportJobsResponse">> => export_jobs_response()
-%% }
--type get_export_jobs_response() :: #{binary() => any()}.
+-type send_o_t_p_message_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1149,184 +3527,118 @@
 
 
 %% Example:
-%% delete_apns_sandbox_channel_response() :: #{
-%%   <<"APNSSandboxChannelResponse">> => a_p_n_s_sandbox_channel_response()
+%% send_o_t_p_message_response() :: #{
+%%   <<"MessageResponse">> => message_response()
 %% }
--type delete_apns_sandbox_channel_response() :: #{binary() => any()}.
+-type send_o_t_p_message_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% journey_run_execution_activity_metrics_response() :: #{
-%%   <<"ActivityType">> => string(),
+%% send_users_message_request() :: #{
+%%   <<"Context">> => map(),
+%%   <<"MessageConfiguration">> => direct_message_configuration(),
+%%   <<"TemplateConfiguration">> => template_configuration(),
+%%   <<"TraceId">> => string(),
+%%   <<"Users">> => map()
+%% }
+-type send_users_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_users_message_response() :: #{
 %%   <<"ApplicationId">> => string(),
-%%   <<"JourneyActivityId">> => string(),
-%%   <<"JourneyId">> => string(),
-%%   <<"LastEvaluatedTime">> => string(),
-%%   <<"Metrics">> => map(),
-%%   <<"RunId">> => string()
+%%   <<"RequestId">> => string(),
+%%   <<"Result">> => map()
 %% }
--type journey_run_execution_activity_metrics_response() :: #{binary() => any()}.
+-type send_users_message_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_apns_sandbox_channel_request() :: #{
-%%   <<"APNSSandboxChannelRequest">> := a_p_n_s_sandbox_channel_request()
+%% send_users_messages_request() :: #{
+%%   <<"SendUsersMessageRequest">> := send_users_message_request()
 %% }
--type update_apns_sandbox_channel_request() :: #{binary() => any()}.
+-type send_users_messages_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_gcm_channel_response() :: #{
-%%   <<"GCMChannelResponse">> => g_cm_channel_response()
+%% send_users_messages_response() :: #{
+%%   <<"SendUsersMessageResponse">> => send_users_message_response()
 %% }
--type delete_gcm_channel_response() :: #{binary() => any()}.
+-type send_users_messages_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% templates_response() :: #{
-%%   <<"Item">> => list(template_response()),
-%%   <<"NextToken">> => string()
-%% }
--type templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sms_channel_response() :: #{
-%%   <<"SMSChannelResponse">> => sms_channel_response()
-%% }
--type update_sms_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attributes_resource() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"AttributeType">> => string(),
-%%   <<"Attributes">> => list(string())
-%% }
--type attributes_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_recommender_configuration_response() :: #{
-%%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
-%% }
--type delete_recommender_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_voice_channel_request() :: #{
-%%   <<"VoiceChannelRequest">> := voice_channel_request()
-%% }
--type update_voice_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_in_app_template_request() :: #{
-%%   <<"CreateNewVersion">> => boolean(),
-%%   <<"InAppTemplateRequest">> := in_app_template_request(),
-%%   <<"Version">> => string()
-%% }
--type update_in_app_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_body() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestID">> => string()
-%% }
--type message_body() :: #{binary() => any()}.
-
-
-%% Example:
-%% write_journey_request() :: #{
-%%   <<"Activities">> => map(),
-%%   <<"ClosedDays">> => closed_days(),
-%%   <<"CreationDate">> => string(),
-%%   <<"JourneyChannelSettings">> => journey_channel_settings(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Limits">> => journey_limits(),
-%%   <<"LocalTime">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"OpenHours">> => open_hours(),
-%%   <<"QuietTime">> => quiet_time(),
-%%   <<"RefreshFrequency">> => string(),
-%%   <<"RefreshOnSegmentUpdate">> => boolean(),
-%%   <<"Schedule">> => journey_schedule(),
-%%   <<"SendingSchedule">> => boolean(),
-%%   <<"StartActivity">> => string(),
-%%   <<"StartCondition">> => start_condition(),
-%%   <<"State">> => list(any()),
-%%   <<"TimezoneEstimationMethods">> => list(list(any())()),
-%%   <<"WaitForQuietTime">> => boolean()
-%% }
--type write_journey_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% raw_email() :: #{
-%%   <<"Data">> => binary()
-%% }
--type raw_email() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_apns_voip_channel_response() :: #{
-%%   <<"APNSVoipChannelResponse">> => a_p_n_s_voip_channel_response()
-%% }
--type get_apns_voip_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% activity_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CampaignId">> => string(),
-%%   <<"End">> => string(),
-%%   <<"ExecutionMetrics">> => map(),
+%% session() :: #{
+%%   <<"Duration">> => integer(),
 %%   <<"Id">> => string(),
-%%   <<"Result">> => string(),
-%%   <<"ScheduledStart">> => string(),
-%%   <<"Start">> => string(),
-%%   <<"State">> => string(),
-%%   <<"SuccessfulEndpointCount">> => integer(),
-%%   <<"TimezonesCompletedCount">> => integer(),
-%%   <<"TimezonesTotalCount">> => integer(),
-%%   <<"TotalEndpointCount">> => integer(),
-%%   <<"TreatmentId">> => string()
+%%   <<"StartTimestamp">> => string(),
+%%   <<"StopTimestamp">> => string()
 %% }
--type activity_response() :: #{binary() => any()}.
+-type session() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_in_app_template_response() :: #{
-%%   <<"MessageBody">> => message_body()
+%% set_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(string())
 %% }
--type delete_in_app_template_response() :: #{binary() => any()}.
+-type set_dimension() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_apns_channel_response() :: #{
-%%   <<"APNSChannelResponse">> => a_p_n_s_channel_response()
+%% simple_condition() :: #{
+%%   <<"EventCondition">> => event_condition(),
+%%   <<"SegmentCondition">> => segment_condition(),
+%%   <<"SegmentDimensions">> => segment_dimensions()
 %% }
--type update_apns_channel_response() :: #{binary() => any()}.
+-type simple_condition() :: #{binary() => any()}.
 
 
 %% Example:
-%% open_hours() :: #{
-%%   <<"CUSTOM">> => map(),
-%%   <<"EMAIL">> => map(),
-%%   <<"PUSH">> => map(),
-%%   <<"SMS">> => map(),
-%%   <<"VOICE">> => map()
+%% simple_email() :: #{
+%%   <<"Headers">> => list(message_header()),
+%%   <<"HtmlPart">> => simple_email_part(),
+%%   <<"Subject">> => simple_email_part(),
+%%   <<"TextPart">> => simple_email_part()
 %% }
--type open_hours() :: #{binary() => any()}.
+-type simple_email() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_baidu_channel_request() :: #{}
--type get_baidu_channel_request() :: #{}.
+%% simple_email_part() :: #{
+%%   <<"Charset">> => string(),
+%%   <<"Data">> => string()
+%% }
+-type simple_email_part() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_campaign_request() :: #{}
--type delete_campaign_request() :: #{}.
+%% sms_channel_request() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"SenderId">> => string(),
+%%   <<"ShortCode">> => string()
+%% }
+-type sms_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sms_channel_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"HasCredential">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"IsArchived">> => boolean(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"PromotionalMessagesPerSecond">> => integer(),
+%%   <<"SenderId">> => string(),
+%%   <<"ShortCode">> => string(),
+%%   <<"TransactionalMessagesPerSecond">> => integer(),
+%%   <<"Version">> => integer()
+%% }
+-type sms_channel_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1355,6 +3667,92 @@
 
 
 %% Example:
+%% sms_template_request() :: #{
+%%   <<"Body">> => string(),
+%%   <<"DefaultSubstitutions">> => string(),
+%%   <<"RecommenderId">> => string(),
+%%   <<"TemplateDescription">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type sms_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sms_template_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Body">> => string(),
+%%   <<"CreationDate">> => string(),
+%%   <<"DefaultSubstitutions">> => string(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"RecommenderId">> => string(),
+%%   <<"TemplateDescription">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateType">> => list(any()),
+%%   <<"Version">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type sms_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_condition() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventStartCondition">> => event_start_condition(),
+%%   <<"SegmentStartCondition">> => segment_condition()
+%% }
+-type start_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"TagsModel">> := tags_model()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tags_model() :: #{
+%%   <<"tags">> => map()
+%% }
+-type tags_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% template() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type template() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_active_version_request() :: #{
+%%   <<"Version">> => string()
+%% }
+-type template_active_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_configuration() :: #{
+%%   <<"EmailTemplate">> => template(),
+%%   <<"InAppTemplate">> => template(),
+%%   <<"PushTemplate">> => template(),
+%%   <<"SMSTemplate">> => template(),
+%%   <<"VoiceTemplate">> => template()
+%% }
+-type template_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_create_message_body() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RequestID">> => string()
+%% }
+-type template_create_message_body() :: #{binary() => any()}.
+
+
+%% Example:
 %% template_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationDate">> => string(),
@@ -1367,112 +3765,6 @@
 %%   <<"tags">> => map()
 %% }
 -type template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_endpoint_request() :: #{
-%%   <<"EndpointRequest">> := endpoint_request()
-%% }
--type update_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_send_configuration() :: #{
-%%   <<"BodyOverride">> => string(),
-%%   <<"Context">> => map(),
-%%   <<"RawContent">> => string(),
-%%   <<"Substitutions">> => map(),
-%%   <<"TitleOverride">> => string()
-%% }
--type endpoint_send_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_events_response() :: #{
-%%   <<"EventsResponse">> => events_response()
-%% }
--type put_events_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% journeys_response() :: #{
-%%   <<"Item">> => list(journey_response()),
-%%   <<"NextToken">> => string()
-%% }
--type journeys_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% events_request() :: #{
-%%   <<"BatchItem">> => map()
-%% }
--type events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_result() :: #{
-%%   <<"DeliveryStatus">> => list(any()),
-%%   <<"MessageId">> => string(),
-%%   <<"StatusCode">> => integer(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"UpdatedToken">> => string()
-%% }
--type message_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_execution_metrics_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => string()
-%% }
--type get_journey_execution_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_import_jobs_response() :: #{
-%%   <<"ImportJobsResponse">> => import_jobs_response()
-%% }
--type get_import_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_voice_template_response() :: #{
-%%   <<"MessageBody">> => message_body()
-%% }
--type update_voice_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_apns_voip_channel_response() :: #{
-%%   <<"APNSVoipChannelResponse">> => a_p_n_s_voip_channel_response()
-%% }
--type update_apns_voip_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_settings_resource() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CampaignHook">> => campaign_hook(),
-%%   <<"JourneyLimits">> => application_settings_journey_limits(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Limits">> => campaign_limits(),
-%%   <<"QuietTime">> => quiet_time()
-%% }
--type application_settings_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recommender_configuration_response() :: #{
-%%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
-%% }
--type create_recommender_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1489,6 +3781,24 @@
 
 
 %% Example:
+%% template_versions_response() :: #{
+%%   <<"Item">> => list(template_version_response()),
+%%   <<"Message">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestID">> => string()
+%% }
+-type template_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% templates_response() :: #{
+%%   <<"Item">> => list(template_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type templates_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestID">> => string()
@@ -1497,10 +3807,81 @@
 
 
 %% Example:
-%% get_push_template_request() :: #{
-%%   <<"Version">> => string()
+%% treatment_resource() :: #{
+%%   <<"CustomDeliveryConfiguration">> => custom_delivery_configuration(),
+%%   <<"Id">> => string(),
+%%   <<"MessageConfiguration">> => message_configuration(),
+%%   <<"Schedule">> => schedule(),
+%%   <<"SizePercent">> => integer(),
+%%   <<"State">> => campaign_state(),
+%%   <<"TemplateConfiguration">> => template_configuration(),
+%%   <<"TreatmentDescription">> => string(),
+%%   <<"TreatmentName">> => string()
 %% }
--type get_push_template_request() :: #{binary() => any()}.
+-type treatment_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_adm_channel_request() :: #{
+%%   <<"ADMChannelRequest">> := ad_m_channel_request()
+%% }
+-type update_adm_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_adm_channel_response() :: #{
+%%   <<"ADMChannelResponse">> => ad_m_channel_response()
+%% }
+-type update_adm_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_apns_channel_request() :: #{
+%%   <<"APNSChannelRequest">> := a_p_n_s_channel_request()
+%% }
+-type update_apns_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_apns_channel_response() :: #{
+%%   <<"APNSChannelResponse">> => a_p_n_s_channel_response()
+%% }
+-type update_apns_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_apns_sandbox_channel_request() :: #{
+%%   <<"APNSSandboxChannelRequest">> := a_p_n_s_sandbox_channel_request()
+%% }
+-type update_apns_sandbox_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_apns_sandbox_channel_response() :: #{
+%%   <<"APNSSandboxChannelResponse">> => a_p_n_s_sandbox_channel_response()
+%% }
+-type update_apns_sandbox_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_apns_voip_channel_request() :: #{
+%%   <<"APNSVoipChannelRequest">> := a_p_n_s_voip_channel_request()
+%% }
+-type update_apns_voip_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_apns_voip_channel_response() :: #{
+%%   <<"APNSVoipChannelResponse">> => a_p_n_s_voip_channel_response()
+%% }
+-type update_apns_voip_channel_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1511,60 +3892,31 @@
 
 
 %% Example:
-%% phone_number_validate_response() :: #{
-%%   <<"NumberValidateResponse">> => number_validate_response()
+%% update_apns_voip_sandbox_channel_response() :: #{
+%%   <<"APNSVoipSandboxChannelResponse">> => a_p_n_s_voip_sandbox_channel_response()
 %% }
--type phone_number_validate_response() :: #{binary() => any()}.
+-type update_apns_voip_sandbox_channel_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% holdout_activity() :: #{
-%%   <<"NextActivity">> => string(),
-%%   <<"Percentage">> => integer()
+%% update_application_settings_request() :: #{
+%%   <<"WriteApplicationSettingsRequest">> := write_application_settings_request()
 %% }
--type holdout_activity() :: #{binary() => any()}.
+-type update_application_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_sms_template_response() :: #{
-%%   <<"MessageBody">> => message_body()
+%% update_application_settings_response() :: #{
+%%   <<"ApplicationSettingsResource">> => application_settings_resource()
 %% }
--type update_sms_template_response() :: #{binary() => any()}.
+-type update_application_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_email_template_request() :: #{
-%%   <<"Version">> => string()
+%% update_attributes_request() :: #{
+%%   <<"Blacklist">> => list(string())
 %% }
--type delete_email_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_reference() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Version">> => integer()
-%% }
--type segment_reference() :: #{binary() => any()}.
-
-%% Example:
-%% get_recommender_configuration_request() :: #{}
--type get_recommender_configuration_request() :: #{}.
-
-
-%% Example:
-%% ad_m_channel_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"HasCredential">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"IsArchived">> => boolean(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"Version">> => integer()
-%% }
--type ad_m_channel_response() :: #{binary() => any()}.
+-type update_attributes_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1572,165 +3924,6 @@
 %%   <<"BaiduChannelRequest">> := baidu_channel_request()
 %% }
 -type update_baidu_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_email_channel_request() :: #{}
--type delete_email_channel_request() :: #{}.
-
-
-%% Example:
-%% get_sms_template_request() :: #{
-%%   <<"Version">> => string()
-%% }
--type get_sms_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_voice_template_request() :: #{
-%%   <<"Version">> => string()
-%% }
--type delete_voice_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_center_activity() :: #{
-%%   <<"NextActivity">> => string()
-%% }
--type contact_center_activity() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_push_template_request() :: #{
-%%   <<"Version">> => string()
-%% }
--type delete_push_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% baidu_channel_request() :: #{
-%%   <<"ApiKey">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"SecretKey">> => string()
-%% }
--type baidu_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_job_resource() :: #{
-%%   <<"DefineSegment">> => boolean(),
-%%   <<"ExternalId">> => string(),
-%%   <<"Format">> => list(any()),
-%%   <<"RegisterEndpoints">> => boolean(),
-%%   <<"RoleArn">> => string(),
-%%   <<"S3Url">> => string(),
-%%   <<"SegmentId">> => string(),
-%%   <<"SegmentName">> => string()
-%% }
--type import_job_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_condition() :: #{
-%%   <<"SegmentId">> => string()
-%% }
--type segment_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_gcm_channel_response() :: #{
-%%   <<"GCMChannelResponse">> => g_cm_channel_response()
-%% }
--type update_gcm_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_email_template_request() :: #{
-%%   <<"EmailTemplateRequest">> := email_template_request()
-%% }
--type create_email_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_job_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CompletedPieces">> => integer(),
-%%   <<"CompletionDate">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Definition">> => import_job_resource(),
-%%   <<"FailedPieces">> => integer(),
-%%   <<"Failures">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"TotalFailures">> => integer(),
-%%   <<"TotalPieces">> => integer(),
-%%   <<"TotalProcessed">> => integer(),
-%%   <<"Type">> => string()
-%% }
--type import_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_segment_request() :: #{
-%%   <<"WriteSegmentRequest">> := write_segment_request()
-%% }
--type update_segment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_template_active_version_response() :: #{
-%%   <<"MessageBody">> => message_body()
-%% }
--type update_template_active_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% address_configuration() :: #{
-%%   <<"BodyOverride">> => string(),
-%%   <<"ChannelType">> => list(any()),
-%%   <<"Context">> => map(),
-%%   <<"RawContent">> => string(),
-%%   <<"Substitutions">> => map(),
-%%   <<"TitleOverride">> => string()
-%% }
--type address_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_channel_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"ConfigurationSet">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"FromAddress">> => string(),
-%%   <<"HasCredential">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"Identity">> => string(),
-%%   <<"IsArchived">> => boolean(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"MessagesPerSecond">> => integer(),
-%%   <<"OrchestrationSendingRoleArn">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Version">> => integer()
-%% }
--type email_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% result_row() :: #{
-%%   <<"GroupedBys">> => list(result_row_value()),
-%%   <<"Values">> => list(result_row_value())
-%% }
--type result_row() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_delivery_configuration() :: #{
-%%   <<"DeliveryUri">> => string(),
-%%   <<"EndpointTypes">> => list(list(any())())
-%% }
--type custom_delivery_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1741,88 +3934,105 @@
 
 
 %% Example:
-%% phone_number_validate_request() :: #{
-%%   <<"NumberValidateRequest">> := number_validate_request()
+%% update_campaign_request() :: #{
+%%   <<"WriteCampaignRequest">> := write_campaign_request()
 %% }
--type phone_number_validate_request() :: #{binary() => any()}.
+-type update_campaign_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_segment_response() :: #{
-%%   <<"SegmentResponse">> => segment_response()
+%% update_campaign_response() :: #{
+%%   <<"CampaignResponse">> => campaign_response()
 %% }
--type create_segment_response() :: #{binary() => any()}.
+-type update_campaign_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% g_cm_channel_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Credential">> => string(),
-%%   <<"DefaultAuthenticationMethod">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"HasCredential">> => boolean(),
-%%   <<"HasFcmServiceCredentials">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"IsArchived">> => boolean(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"Version">> => integer()
+%% update_email_channel_request() :: #{
+%%   <<"EmailChannelRequest">> := email_channel_request()
 %% }
--type g_cm_channel_response() :: #{binary() => any()}.
+-type update_email_channel_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_application_settings_response() :: #{
-%%   <<"ApplicationSettingsResource">> => application_settings_resource()
+%% update_email_channel_response() :: #{
+%%   <<"EmailChannelResponse">> => email_channel_response()
 %% }
--type get_application_settings_response() :: #{binary() => any()}.
+-type update_email_channel_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_journey_state_response() :: #{
-%%   <<"JourneyResponse">> => journey_response()
+%% update_email_template_request() :: #{
+%%   <<"CreateNewVersion">> => boolean(),
+%%   <<"EmailTemplateRequest">> := email_template_request(),
+%%   <<"Version">> => string()
 %% }
--type update_journey_state_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_app_request() :: #{}
--type get_app_request() :: #{}.
+-type update_email_template_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% default_push_notification_template() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Body">> => string(),
-%%   <<"Sound">> => string(),
-%%   <<"Title">> => string(),
-%%   <<"Url">> => string()
+%% update_email_template_response() :: #{
+%%   <<"MessageBody">> => message_body()
 %% }
--type default_push_notification_template() :: #{binary() => any()}.
+-type update_email_template_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% send_messages_request() :: #{
-%%   <<"MessageRequest">> := message_request()
+%% update_endpoint_request() :: #{
+%%   <<"EndpointRequest">> := endpoint_request()
 %% }
--type send_messages_request() :: #{binary() => any()}.
+-type update_endpoint_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% closed_days_rule() :: #{
-%%   <<"EndDateTime">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"StartDateTime">> => string()
+%% update_endpoint_response() :: #{
+%%   <<"MessageBody">> => message_body()
 %% }
--type closed_days_rule() :: #{binary() => any()}.
+-type update_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_recommender_configuration_response() :: #{
-%%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
+%% update_endpoints_batch_request() :: #{
+%%   <<"EndpointBatchRequest">> := endpoint_batch_request()
 %% }
--type get_recommender_configuration_response() :: #{binary() => any()}.
+-type update_endpoints_batch_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_endpoints_batch_response() :: #{
+%%   <<"MessageBody">> => message_body()
+%% }
+-type update_endpoints_batch_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gcm_channel_request() :: #{
+%%   <<"GCMChannelRequest">> := g_cm_channel_request()
+%% }
+-type update_gcm_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gcm_channel_response() :: #{
+%%   <<"GCMChannelResponse">> => g_cm_channel_response()
+%% }
+-type update_gcm_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_in_app_template_request() :: #{
+%%   <<"CreateNewVersion">> => boolean(),
+%%   <<"InAppTemplateRequest">> := in_app_template_request(),
+%%   <<"Version">> => string()
+%% }
+-type update_in_app_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_in_app_template_response() :: #{
+%%   <<"MessageBody">> => message_body()
+%% }
+-type update_in_app_template_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1833,93 +4043,54 @@
 
 
 %% Example:
-%% get_application_date_range_kpi_response() :: #{
-%%   <<"ApplicationDateRangeKpiResponse">> => application_date_range_kpi_response()
+%% update_journey_response() :: #{
+%%   <<"JourneyResponse">> => journey_response()
 %% }
--type get_application_date_range_kpi_response() :: #{binary() => any()}.
+-type update_journey_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% campaign_sms_message() :: #{
-%%   <<"Body">> => string(),
-%%   <<"EntityId">> => string(),
-%%   <<"MessageType">> => list(any()),
-%%   <<"OriginationNumber">> => string(),
-%%   <<"SenderId">> => string(),
-%%   <<"TemplateId">> => string()
+%% update_journey_state_request() :: #{
+%%   <<"JourneyStateRequest">> := journey_state_request()
 %% }
--type campaign_sms_message() :: #{binary() => any()}.
+-type update_journey_state_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% a_p_n_s_channel_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"DefaultAuthenticationMethod">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"HasCredential">> => boolean(),
-%%   <<"HasTokenKey">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"IsArchived">> => boolean(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"Version">> => integer()
+%% update_journey_state_response() :: #{
+%%   <<"JourneyResponse">> => journey_response()
 %% }
--type a_p_n_s_channel_response() :: #{binary() => any()}.
+-type update_journey_state_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_push_template_request() :: #{
-%%   <<"PushNotificationTemplateRequest">> := push_notification_template_request()
+%% update_push_template_request() :: #{
+%%   <<"CreateNewVersion">> => boolean(),
+%%   <<"PushNotificationTemplateRequest">> := push_notification_template_request(),
+%%   <<"Version">> => string()
 %% }
--type create_push_template_request() :: #{binary() => any()}.
+-type update_push_template_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% a_p_n_s_voip_sandbox_channel_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"DefaultAuthenticationMethod">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"HasCredential">> => boolean(),
-%%   <<"HasTokenKey">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"IsArchived">> => boolean(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"Version">> => integer()
+%% update_push_template_response() :: #{
+%%   <<"MessageBody">> => message_body()
 %% }
--type a_p_n_s_voip_sandbox_channel_response() :: #{binary() => any()}.
+-type update_push_template_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% send_o_t_p_message_request() :: #{
-%%   <<"SendOTPMessageRequestParameters">> := send_o_t_p_message_request_parameters()
+%% update_recommender_configuration_request() :: #{
+%%   <<"UpdateRecommenderConfiguration">> := update_recommender_configuration_shape()
 %% }
--type send_o_t_p_message_request() :: #{binary() => any()}.
+-type update_recommender_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% journey_execution_metrics_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"JourneyId">> => string(),
-%%   <<"LastEvaluatedTime">> => string(),
-%%   <<"Metrics">> => map()
+%% update_recommender_configuration_response() :: #{
+%%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
 %% }
--type journey_execution_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_attributes_request() :: #{
-%%   <<"Blacklist">> => list(string())
-%% }
--type update_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_voice_channel_request() :: #{}
--type get_voice_channel_request() :: #{}.
+-type update_recommender_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1938,208 +4109,75 @@
 
 
 %% Example:
-%% application_settings_journey_limits() :: #{
-%%   <<"DailyCap">> => integer(),
-%%   <<"TimeframeCap">> => journey_timeframe_cap(),
-%%   <<"TotalCap">> => integer()
+%% update_segment_request() :: #{
+%%   <<"WriteSegmentRequest">> := write_segment_request()
 %% }
--type application_settings_journey_limits() :: #{binary() => any()}.
+-type update_segment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_voice_template_response() :: #{
+%% update_segment_response() :: #{
+%%   <<"SegmentResponse">> => segment_response()
+%% }
+-type update_segment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sms_channel_request() :: #{
+%%   <<"SMSChannelRequest">> := sms_channel_request()
+%% }
+-type update_sms_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sms_channel_response() :: #{
+%%   <<"SMSChannelResponse">> => sms_channel_response()
+%% }
+-type update_sms_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sms_template_request() :: #{
+%%   <<"CreateNewVersion">> => boolean(),
+%%   <<"SMSTemplateRequest">> := sms_template_request(),
+%%   <<"Version">> => string()
+%% }
+-type update_sms_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_sms_template_response() :: #{
 %%   <<"MessageBody">> => message_body()
 %% }
--type delete_voice_template_response() :: #{binary() => any()}.
+-type update_sms_template_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% baidu_channel_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Credential">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"HasCredential">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"IsArchived">> => boolean(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"Version">> => integer()
+%% update_template_active_version_request() :: #{
+%%   <<"TemplateActiveVersionRequest">> := template_active_version_request()
 %% }
--type baidu_channel_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_gcm_channel_request() :: #{}
--type delete_gcm_channel_request() :: #{}.
+-type update_template_active_version_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestID">> => string()
+%% update_template_active_version_response() :: #{
+%%   <<"MessageBody">> => message_body()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type update_template_active_version_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% write_segment_request() :: #{
-%%   <<"Dimensions">> => segment_dimensions(),
-%%   <<"Name">> => string(),
-%%   <<"SegmentGroups">> => segment_group_list(),
-%%   <<"tags">> => map()
+%% update_voice_channel_request() :: #{
+%%   <<"VoiceChannelRequest">> := voice_channel_request()
 %% }
--type write_segment_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_apns_voip_sandbox_channel_request() :: #{}
--type delete_apns_voip_sandbox_channel_request() :: #{}.
-
-%% Example:
-%% get_export_job_request() :: #{}
--type get_export_job_request() :: #{}.
+-type update_voice_channel_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_in_app_template_response() :: #{
-%%   <<"InAppTemplateResponse">> => in_app_template_response()
+%% update_voice_channel_response() :: #{
+%%   <<"VoiceChannelResponse">> => voice_channel_response()
 %% }
--type get_in_app_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_header() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type message_header() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_campaign_response() :: #{
-%%   <<"CampaignResponse">> => campaign_response()
-%% }
--type delete_campaign_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_job_request() :: #{
-%%   <<"DefineSegment">> => boolean(),
-%%   <<"ExternalId">> => string(),
-%%   <<"Format">> => list(any()),
-%%   <<"RegisterEndpoints">> => boolean(),
-%%   <<"RoleArn">> => string(),
-%%   <<"S3Url">> => string(),
-%%   <<"SegmentId">> => string(),
-%%   <<"SegmentName">> => string()
-%% }
--type import_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_endpoint_response() :: #{
-%%   <<"EndpointResponse">> => endpoint_response()
-%% }
--type get_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% activity() :: #{
-%%   <<"CUSTOM">> => custom_message_activity(),
-%%   <<"ConditionalSplit">> => conditional_split_activity(),
-%%   <<"ContactCenter">> => contact_center_activity(),
-%%   <<"Description">> => string(),
-%%   <<"EMAIL">> => email_message_activity(),
-%%   <<"Holdout">> => holdout_activity(),
-%%   <<"MultiCondition">> => multi_conditional_split_activity(),
-%%   <<"PUSH">> => push_message_activity(),
-%%   <<"RandomSplit">> => random_split_activity(),
-%%   <<"SMS">> => sms_message_activity(),
-%%   <<"Wait">> => wait_activity()
-%% }
--type activity() :: #{binary() => any()}.
-
-
-%% Example:
-%% journey_run_execution_metrics_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"JourneyId">> => string(),
-%%   <<"LastEvaluatedTime">> => string(),
-%%   <<"Metrics">> => map(),
-%%   <<"RunId">> => string()
-%% }
--type journey_run_execution_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% voice_channel_request() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type voice_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_p_n_s_push_notification_template() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Body">> => string(),
-%%   <<"MediaUrl">> => string(),
-%%   <<"RawContent">> => string(),
-%%   <<"Sound">> => string(),
-%%   <<"Title">> => string(),
-%%   <<"Url">> => string()
-%% }
--type a_p_n_s_push_notification_template() :: #{binary() => any()}.
-
-%% Example:
-%% get_apns_channel_request() :: #{}
--type get_apns_channel_request() :: #{}.
-
-
-%% Example:
-%% get_apps_response() :: #{
-%%   <<"ApplicationsResponse">> => applications_response()
-%% }
--type get_apps_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_o_t_p_message_response() :: #{
-%%   <<"MessageResponse">> => message_response()
-%% }
--type send_o_t_p_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_apns_voip_sandbox_channel_response() :: #{
-%%   <<"APNSVoipSandboxChannelResponse">> => a_p_n_s_voip_sandbox_channel_response()
-%% }
--type delete_apns_voip_sandbox_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_export_job_response() :: #{
-%%   <<"ExportJobResponse">> => export_job_response()
-%% }
--type get_export_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% payload_too_large_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestID">> => string()
-%% }
--type payload_too_large_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_endpoint_response() :: #{
-%%   <<"EndpointResponse">> => endpoint_response()
-%% }
--type delete_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_apns_voip_channel_request() :: #{}
--type delete_apns_voip_channel_request() :: #{}.
+-type update_voice_channel_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2152,46 +4190,47 @@
 
 
 %% Example:
-%% endpoint_message_result() :: #{
-%%   <<"Address">> => string(),
-%%   <<"DeliveryStatus">> => list(any()),
-%%   <<"MessageId">> => string(),
-%%   <<"StatusCode">> => integer(),
-%%   <<"StatusMessage">> => string(),
-%%   <<"UpdatedToken">> => string()
+%% update_voice_template_response() :: #{
+%%   <<"MessageBody">> => message_body()
 %% }
--type endpoint_message_result() :: #{binary() => any()}.
+-type update_voice_template_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% write_event_stream() :: #{
-%%   <<"DestinationStreamArn">> => string(),
-%%   <<"RoleArn">> => string()
+%% verification_response() :: #{
+%%   <<"Valid">> => boolean()
 %% }
--type write_event_stream() :: #{binary() => any()}.
+-type verification_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_events_request() :: #{
-%%   <<"EventsRequest">> := events_request()
+%% verify_o_t_p_message_request() :: #{
+%%   <<"VerifyOTPMessageRequestParameters">> := verify_o_t_p_message_request_parameters()
 %% }
--type put_events_request() :: #{binary() => any()}.
+-type verify_o_t_p_message_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% segment_dimensions() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"Behavior">> => segment_behaviors(),
-%%   <<"Demographic">> => segment_demographics(),
-%%   <<"Location">> => segment_location(),
-%%   <<"Metrics">> => map(),
-%%   <<"UserAttributes">> => map()
+%% verify_o_t_p_message_request_parameters() :: #{
+%%   <<"DestinationIdentity">> => string(),
+%%   <<"Otp">> => string(),
+%%   <<"ReferenceId">> => string()
 %% }
--type segment_dimensions() :: #{binary() => any()}.
+-type verify_o_t_p_message_request_parameters() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_apns_voip_sandbox_channel_request() :: #{}
--type get_apns_voip_sandbox_channel_request() :: #{}.
+%% verify_o_t_p_message_response() :: #{
+%%   <<"VerificationResponse">> => verification_response()
+%% }
+-type verify_o_t_p_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice_channel_request() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type voice_channel_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2211,570 +4250,14 @@
 
 
 %% Example:
-%% get_segment_export_jobs_response() :: #{
-%%   <<"ExportJobsResponse">> => export_jobs_response()
-%% }
--type get_segment_export_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_p_n_s_message() :: #{
-%%   <<"APNSPushType">> => string(),
-%%   <<"Action">> => list(any()),
-%%   <<"Badge">> => integer(),
+%% voice_message() :: #{
 %%   <<"Body">> => string(),
-%%   <<"Category">> => string(),
-%%   <<"CollapseId">> => string(),
-%%   <<"Data">> => map(),
-%%   <<"MediaUrl">> => string(),
-%%   <<"PreferredAuthenticationMethod">> => string(),
-%%   <<"Priority">> => string(),
-%%   <<"RawContent">> => string(),
-%%   <<"SilentPush">> => boolean(),
-%%   <<"Sound">> => string(),
+%%   <<"LanguageCode">> => string(),
+%%   <<"OriginationNumber">> => string(),
 %%   <<"Substitutions">> => map(),
-%%   <<"ThreadId">> => string(),
-%%   <<"TimeToLive">> => integer(),
-%%   <<"Title">> => string(),
-%%   <<"Url">> => string()
+%%   <<"VoiceId">> => string()
 %% }
--type a_p_n_s_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_active_version_request() :: #{
-%%   <<"Version">> => string()
-%% }
--type template_active_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_import_job_request() :: #{}
--type get_import_job_request() :: #{}.
-
-
-%% Example:
-%% in_app_message_content() :: #{
-%%   <<"BackgroundColor">> => string(),
-%%   <<"BodyConfig">> => in_app_message_body_config(),
-%%   <<"HeaderConfig">> => in_app_message_header_config(),
-%%   <<"ImageUrl">> => string(),
-%%   <<"PrimaryBtn">> => in_app_message_button(),
-%%   <<"SecondaryBtn">> => in_app_message_button()
-%% }
--type in_app_message_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_template_versions_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => string()
-%% }
--type list_template_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"EndpointResult">> => map(),
-%%   <<"RequestId">> => string(),
-%%   <<"Result">> => map()
-%% }
--type message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_response() :: #{
-%%   <<"JourneyResponse">> => journey_response()
-%% }
--type get_journey_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_apns_voip_channel_request() :: #{}
--type get_apns_voip_channel_request() :: #{}.
-
-
-%% Example:
-%% journey_schedule() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Timezone">> => string()
-%% }
--type journey_schedule() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_email_template_response() :: #{
-%%   <<"MessageBody">> => message_body()
-%% }
--type delete_email_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_job_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CompletedPieces">> => integer(),
-%%   <<"CompletionDate">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Definition">> => export_job_resource(),
-%%   <<"FailedPieces">> => integer(),
-%%   <<"Failures">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"JobStatus">> => list(any()),
-%%   <<"TotalFailures">> => integer(),
-%%   <<"TotalPieces">> => integer(),
-%%   <<"TotalProcessed">> => integer(),
-%%   <<"Type">> => string()
-%% }
--type export_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% applications_response() :: #{
-%%   <<"Item">> => list(application_response()),
-%%   <<"NextToken">> => string()
-%% }
--type applications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sms_channel_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"HasCredential">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"IsArchived">> => boolean(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"PromotionalMessagesPerSecond">> => integer(),
-%%   <<"SenderId">> => string(),
-%%   <<"ShortCode">> => string(),
-%%   <<"TransactionalMessagesPerSecond">> => integer(),
-%%   <<"Version">> => integer()
-%% }
--type sms_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestID">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_journey_response() :: #{
-%%   <<"JourneyResponse">> => journey_response()
-%% }
--type update_journey_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% in_app_message_body_config() :: #{
-%%   <<"Alignment">> => list(any()),
-%%   <<"Body">> => string(),
-%%   <<"TextColor">> => string()
-%% }
--type in_app_message_body_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_push_template_request() :: #{
-%%   <<"CreateNewVersion">> => boolean(),
-%%   <<"PushNotificationTemplateRequest">> := push_notification_template_request(),
-%%   <<"Version">> => string()
-%% }
--type update_push_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_user_endpoints_request() :: #{}
--type get_user_endpoints_request() :: #{}.
-
-
-%% Example:
-%% get_campaign_version_response() :: #{
-%%   <<"CampaignResponse">> => campaign_response()
-%% }
--type get_campaign_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_campaign_activities_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
-%% }
--type get_campaign_activities_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_import_jobs_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
-%% }
--type get_import_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_template_versions_response() :: #{
-%%   <<"TemplateVersionsResponse">> => template_versions_response()
-%% }
--type list_template_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% journey_push_message() :: #{
-%%   <<"TimeToLive">> => string()
-%% }
--type journey_push_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segments_response() :: #{
-%%   <<"SegmentsResponse">> => segments_response()
-%% }
--type get_segments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_event_stream_response() :: #{
-%%   <<"EventStream">> => event_stream()
-%% }
--type get_event_stream_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_event_stream_response() :: #{
-%%   <<"EventStream">> => event_stream()
-%% }
--type put_event_stream_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_campaign_date_range_kpi_request() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type get_campaign_date_range_kpi_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_apns_voip_channel_response() :: #{
-%%   <<"APNSVoipChannelResponse">> => a_p_n_s_voip_channel_response()
-%% }
--type delete_apns_voip_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segment_import_jobs_response() :: #{
-%%   <<"ImportJobsResponse">> => import_jobs_response()
-%% }
--type get_segment_import_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_endpoints_batch_request() :: #{
-%%   <<"EndpointBatchRequest">> := endpoint_batch_request()
-%% }
--type update_endpoints_batch_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_versions_response() :: #{
-%%   <<"Item">> => list(template_version_response()),
-%%   <<"Message">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"RequestID">> => string()
-%% }
--type template_versions_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_baidu_channel_request() :: #{}
--type delete_baidu_channel_request() :: #{}.
-
-
-%% Example:
-%% get_sms_channel_response() :: #{
-%%   <<"SMSChannelResponse">> => sms_channel_response()
-%% }
--type get_sms_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_voice_channel_response() :: #{
-%%   <<"VoiceChannelResponse">> => voice_channel_response()
-%% }
--type delete_voice_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"TagsModel">> => tags_model()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_email_channel_response() :: #{
-%%   <<"EmailChannelResponse">> => email_channel_response()
-%% }
--type delete_email_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_application_request() :: #{
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_adm_channel_response() :: #{
-%%   <<"ADMChannelResponse">> => ad_m_channel_response()
-%% }
--type update_adm_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_user_endpoints_response() :: #{
-%%   <<"EndpointsResponse">> => endpoints_response()
-%% }
--type get_user_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_run_execution_metrics_response() :: #{
-%%   <<"JourneyRunExecutionMetricsResponse">> => journey_run_execution_metrics_response()
-%% }
--type get_journey_run_execution_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% in_app_message() :: #{
-%%   <<"Content">> => list(in_app_message_content()),
-%%   <<"CustomConfig">> => map(),
-%%   <<"Layout">> => list(any())
-%% }
--type in_app_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_location() :: #{
-%%   <<"Country">> => set_dimension(),
-%%   <<"GPSPoint">> => g_p_s_point_dimension()
-%% }
--type segment_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_attributes_request() :: #{
-%%   <<"UpdateAttributesRequest">> := update_attributes_request()
-%% }
--type remove_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_campaign_date_range_kpi_response() :: #{
-%%   <<"CampaignDateRangeKpiResponse">> => campaign_date_range_kpi_response()
-%% }
--type get_campaign_date_range_kpi_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_endpoints_batch_response() :: #{
-%%   <<"MessageBody">> => message_body()
-%% }
--type update_endpoints_batch_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_execution_metrics_response() :: #{
-%%   <<"JourneyExecutionMetricsResponse">> => journey_execution_metrics_response()
-%% }
--type get_journey_execution_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_adm_channel_response() :: #{
-%%   <<"ADMChannelResponse">> => ad_m_channel_response()
-%% }
--type get_adm_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% simple_email_part() :: #{
-%%   <<"Charset">> => string(),
-%%   <<"Data">> => string()
-%% }
--type simple_email_part() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_jobs_response() :: #{
-%%   <<"Item">> => list(import_job_response()),
-%%   <<"NextToken">> => string()
-%% }
--type import_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% condition() :: #{
-%%   <<"Conditions">> => list(simple_condition()),
-%%   <<"Operator">> => list(any())
-%% }
--type condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% journey_run_response() :: #{
-%%   <<"CreationTime">> => string(),
-%%   <<"LastUpdateTime">> => string(),
-%%   <<"RunId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type journey_run_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_runs_response() :: #{
-%%   <<"JourneyRunsResponse">> => journey_runs_response()
-%% }
--type get_journey_runs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% campaign_in_app_message() :: #{
-%%   <<"Body">> => string(),
-%%   <<"Content">> => list(in_app_message_content()),
-%%   <<"CustomConfig">> => map(),
-%%   <<"Layout">> => list(any())
-%% }
--type campaign_in_app_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segment_response() :: #{
-%%   <<"SegmentResponse">> => segment_response()
-%% }
--type get_segment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% session() :: #{
-%%   <<"Duration">> => integer(),
-%%   <<"Id">> => string(),
-%%   <<"StartTimestamp">> => string(),
-%%   <<"StopTimestamp">> => string()
-%% }
--type session() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_filter() :: #{
-%%   <<"Dimensions">> => event_dimensions(),
-%%   <<"FilterType">> => list(any())
-%% }
--type event_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_segment_request() :: #{
-%%   <<"WriteSegmentRequest">> := write_segment_request()
-%% }
--type create_segment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_location() :: #{
-%%   <<"City">> => string(),
-%%   <<"Country">> => string(),
-%%   <<"Latitude">> => float(),
-%%   <<"Longitude">> => float(),
-%%   <<"PostalCode">> => string(),
-%%   <<"Region">> => string()
-%% }
--type endpoint_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% journey_execution_activity_metrics_response() :: #{
-%%   <<"ActivityType">> => string(),
-%%   <<"ApplicationId">> => string(),
-%%   <<"JourneyActivityId">> => string(),
-%%   <<"JourneyId">> => string(),
-%%   <<"LastEvaluatedTime">> => string(),
-%%   <<"Metrics">> => map()
-%% }
--type journey_execution_activity_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% direct_message_configuration() :: #{
-%%   <<"ADMMessage">> => ad_m_message(),
-%%   <<"APNSMessage">> => a_p_n_s_message(),
-%%   <<"BaiduMessage">> => baidu_message(),
-%%   <<"DefaultMessage">> => default_message(),
-%%   <<"DefaultPushNotificationMessage">> => default_push_notification_message(),
-%%   <<"EmailMessage">> => email_message(),
-%%   <<"GCMMessage">> => g_cm_message(),
-%%   <<"SMSMessage">> => sms_message(),
-%%   <<"VoiceMessage">> => voice_message()
-%% }
--type direct_message_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommender_configurations_response() :: #{
-%%   <<"Item">> => list(recommender_configuration_response()),
-%%   <<"NextToken">> => string()
-%% }
--type list_recommender_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_dimension() :: #{
-%%   <<"ComparisonOperator">> => string(),
-%%   <<"Value">> => float()
-%% }
--type metric_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_apns_channel_response() :: #{
-%%   <<"APNSChannelResponse">> => a_p_n_s_channel_response()
-%% }
--type get_apns_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% journey_timeframe_cap() :: #{
-%%   <<"Cap">> => integer(),
-%%   <<"Days">> => integer()
-%% }
--type journey_timeframe_cap() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_dimensions() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"EventType">> => set_dimension(),
-%%   <<"Metrics">> => map()
-%% }
--type event_dimensions() :: #{binary() => any()}.
-
-
-%% Example:
-%% g_cm_channel_request() :: #{
-%%   <<"ApiKey">> => string(),
-%%   <<"DefaultAuthenticationMethod">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"ServiceJson">> => string()
-%% }
--type g_cm_channel_request() :: #{binary() => any()}.
+-type voice_message() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2787,319 +4270,6 @@
 %%   <<"tags">> => map()
 %% }
 -type voice_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_message() :: #{
-%%   <<"Body">> => string(),
-%%   <<"FeedbackForwardingAddress">> => string(),
-%%   <<"FromAddress">> => string(),
-%%   <<"RawEmail">> => raw_email(),
-%%   <<"ReplyToAddresses">> => list(string()),
-%%   <<"SimpleEmail">> => simple_email(),
-%%   <<"Substitutions">> => map()
-%% }
--type email_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_segment_response() :: #{
-%%   <<"SegmentResponse">> => segment_response()
-%% }
--type delete_segment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sms_template_response() :: #{
-%%   <<"CreateTemplateMessageBody">> => create_template_message_body()
-%% }
--type create_sms_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_export_job_request() :: #{
-%%   <<"ExportJobRequest">> := export_job_request()
-%% }
--type create_export_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_import_resource() :: #{
-%%   <<"ChannelCounts">> => map(),
-%%   <<"ExternalId">> => string(),
-%%   <<"Format">> => list(any()),
-%%   <<"RoleArn">> => string(),
-%%   <<"S3Url">> => string(),
-%%   <<"Size">> => integer()
-%% }
--type segment_import_resource() :: #{binary() => any()}.
-
-%% Example:
-%% delete_adm_channel_request() :: #{}
--type delete_adm_channel_request() :: #{}.
-
-%% Example:
-%% delete_recommender_configuration_request() :: #{}
--type delete_recommender_configuration_request() :: #{}.
-
-
-%% Example:
-%% update_apns_voip_sandbox_channel_response() :: #{
-%%   <<"APNSVoipSandboxChannelResponse">> => a_p_n_s_voip_sandbox_channel_response()
-%% }
--type update_apns_voip_sandbox_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% journey_email_message() :: #{
-%%   <<"FromAddress">> => string()
-%% }
--type journey_email_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_apns_channel_response() :: #{
-%%   <<"APNSChannelResponse">> => a_p_n_s_channel_response()
-%% }
--type delete_apns_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_p_n_s_sandbox_channel_request() :: #{
-%%   <<"BundleId">> => string(),
-%%   <<"Certificate">> => string(),
-%%   <<"DefaultAuthenticationMethod">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"PrivateKey">> => string(),
-%%   <<"TeamId">> => string(),
-%%   <<"TokenKey">> => string(),
-%%   <<"TokenKeyId">> => string()
-%% }
--type a_p_n_s_sandbox_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_group() :: #{
-%%   <<"Dimensions">> => list(segment_dimensions()),
-%%   <<"SourceSegments">> => list(segment_reference()),
-%%   <<"SourceType">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type segment_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% journey_sms_message() :: #{
-%%   <<"EntityId">> => string(),
-%%   <<"MessageType">> => list(any()),
-%%   <<"OriginationNumber">> => string(),
-%%   <<"SenderId">> => string(),
-%%   <<"TemplateId">> => string()
-%% }
--type journey_sms_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% g_p_s_coordinates() :: #{
-%%   <<"Latitude">> => float(),
-%%   <<"Longitude">> => float()
-%% }
--type g_p_s_coordinates() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_app_response() :: #{
-%%   <<"ApplicationResponse">> => application_response()
-%% }
--type get_app_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_message_activity() :: #{
-%%   <<"MessageConfig">> => journey_email_message(),
-%%   <<"NextActivity">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateVersion">> => string()
-%% }
--type email_message_activity() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_stream_request() :: #{}
--type get_event_stream_request() :: #{}.
-
-
-%% Example:
-%% get_recommender_configurations_response() :: #{
-%%   <<"ListRecommenderConfigurationsResponse">> => list_recommender_configurations_response()
-%% }
--type get_recommender_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule() :: #{
-%%   <<"EndTime">> => string(),
-%%   <<"EventFilter">> => campaign_event_filter(),
-%%   <<"Frequency">> => list(any()),
-%%   <<"IsLocalTime">> => boolean(),
-%%   <<"QuietTime">> => quiet_time(),
-%%   <<"StartTime">> => string(),
-%%   <<"Timezone">> => string()
-%% }
--type schedule() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_push_template_response() :: #{
-%%   <<"MessageBody">> => message_body()
-%% }
--type delete_push_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_p_n_s_voip_channel_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"DefaultAuthenticationMethod">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"HasCredential">> => boolean(),
-%%   <<"HasTokenKey">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"IsArchived">> => boolean(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"Version">> => integer()
-%% }
--type a_p_n_s_voip_channel_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_endpoints_request() :: #{}
--type delete_user_endpoints_request() :: #{}.
-
-
-%% Example:
-%% list_journeys_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
-%% }
--type list_journeys_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_template_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"DefaultSubstitutions">> => string(),
-%%   <<"Headers">> => list(message_header()),
-%%   <<"HtmlPart">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"RecommenderId">> => string(),
-%%   <<"Subject">> => string(),
-%%   <<"TemplateDescription">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateType">> => list(any()),
-%%   <<"TextPart">> => string(),
-%%   <<"Version">> => string(),
-%%   <<"tags">> => map()
-%% }
--type email_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_sms_template_request() :: #{
-%%   <<"CreateNewVersion">> => boolean(),
-%%   <<"SMSTemplateRequest">> := sms_template_request(),
-%%   <<"Version">> => string()
-%% }
--type update_sms_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_execution_activity_metrics_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => string()
-%% }
--type get_journey_execution_activity_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% event() :: #{
-%%   <<"AppPackageName">> => string(),
-%%   <<"AppTitle">> => string(),
-%%   <<"AppVersionCode">> => string(),
-%%   <<"Attributes">> => map(),
-%%   <<"ClientSdkVersion">> => string(),
-%%   <<"EventType">> => string(),
-%%   <<"Metrics">> => map(),
-%%   <<"SdkName">> => string(),
-%%   <<"Session">> => session(),
-%%   <<"Timestamp">> => string()
-%% }
--type event() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_p_n_s_sandbox_channel_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"DefaultAuthenticationMethod">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"HasCredential">> => boolean(),
-%%   <<"HasTokenKey">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"IsArchived">> => boolean(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"Version">> => integer()
-%% }
--type a_p_n_s_sandbox_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% activities_response() :: #{
-%%   <<"Item">> => list(activity_response()),
-%%   <<"NextToken">> => string()
-%% }
--type activities_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_app_request() :: #{}
--type delete_app_request() :: #{}.
-
-
-%% Example:
-%% send_messages_response() :: #{
-%%   <<"MessageResponse">> => message_response()
-%% }
--type send_messages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% in_app_messages_response() :: #{
-%%   <<"InAppMessageCampaigns">> => list(in_app_message_campaign())
-%% }
--type in_app_messages_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_endpoint_request() :: #{}
--type delete_endpoint_request() :: #{}.
-
-
-%% Example:
-%% get_voice_template_response() :: #{
-%%   <<"VoiceTemplateResponse">> => voice_template_response()
-%% }
--type get_voice_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_template_message_body() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"RequestID">> => string()
-%% }
--type create_template_message_body() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3119,47 +4289,33 @@
 %% }
 -type voice_template_response() :: #{binary() => any()}.
 
-%% Example:
-%% get_adm_channel_request() :: #{}
--type get_adm_channel_request() :: #{}.
-
 
 %% Example:
-%% update_apns_sandbox_channel_response() :: #{
-%%   <<"APNSSandboxChannelResponse">> => a_p_n_s_sandbox_channel_response()
+%% wait_activity() :: #{
+%%   <<"NextActivity">> => string(),
+%%   <<"WaitTime">> => wait_time()
 %% }
--type update_apns_sandbox_channel_response() :: #{binary() => any()}.
+-type wait_activity() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_import_job_response() :: #{
-%%   <<"ImportJobResponse">> => import_job_response()
+%% wait_time() :: #{
+%%   <<"WaitFor">> => string(),
+%%   <<"WaitUntil">> => string()
 %% }
--type get_import_job_response() :: #{binary() => any()}.
+-type wait_time() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_journey_run_execution_activity_metrics_response() :: #{
-%%   <<"JourneyRunExecutionActivityMetricsResponse">> => journey_run_execution_activity_metrics_response()
+%% write_application_settings_request() :: #{
+%%   <<"CampaignHook">> => campaign_hook(),
+%%   <<"CloudWatchMetricsEnabled">> => boolean(),
+%%   <<"EventTaggingEnabled">> => boolean(),
+%%   <<"JourneyLimits">> => application_settings_journey_limits(),
+%%   <<"Limits">> => campaign_limits(),
+%%   <<"QuietTime">> => quiet_time()
 %% }
--type get_journey_run_execution_activity_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_users_messages_request() :: #{
-%%   <<"SendUsersMessageRequest">> := send_users_message_request()
-%% }
--type send_users_messages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_job_request() :: #{
-%%   <<"RoleArn">> => string(),
-%%   <<"S3UrlPrefix">> => string(),
-%%   <<"SegmentId">> => string(),
-%%   <<"SegmentVersion">> => integer()
-%% }
--type export_job_request() :: #{binary() => any()}.
+-type write_application_settings_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3186,477 +4342,46 @@
 
 
 %% Example:
-%% get_baidu_channel_response() :: #{
-%%   <<"BaiduChannelResponse">> => baidu_channel_response()
-%% }
--type get_baidu_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% campaign_custom_message() :: #{
-%%   <<"Data">> => string()
-%% }
--type campaign_custom_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% email_channel_request() :: #{
-%%   <<"ConfigurationSet">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"FromAddress">> => string(),
-%%   <<"Identity">> => string(),
-%%   <<"OrchestrationSendingRoleArn">> => string(),
-%%   <<"RoleArn">> => string()
-%% }
--type email_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_campaign_request() :: #{
-%%   <<"WriteCampaignRequest">> := write_campaign_request()
-%% }
--type create_campaign_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% events_response() :: #{
-%%   <<"Results">> => map()
-%% }
--type events_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% default_button_configuration() :: #{
-%%   <<"BackgroundColor">> => string(),
-%%   <<"BorderRadius">> => integer(),
-%%   <<"ButtonAction">> => list(any()),
-%%   <<"Link">> => string(),
-%%   <<"Text">> => string(),
-%%   <<"TextColor">> => string()
-%% }
--type default_button_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% journey_runs_response() :: #{
-%%   <<"Item">> => list(journey_run_response()),
-%%   <<"NextToken">> => string()
-%% }
--type journey_runs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sms_template_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Body">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"DefaultSubstitutions">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"RecommenderId">> => string(),
-%%   <<"TemplateDescription">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateType">> => list(any()),
-%%   <<"Version">> => string(),
-%%   <<"tags">> => map()
-%% }
--type sms_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% segments_response() :: #{
-%%   <<"Item">> => list(segment_response()),
-%%   <<"NextToken">> => string()
-%% }
--type segments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% closed_days() :: #{
-%%   <<"CUSTOM">> => list(closed_days_rule()),
-%%   <<"EMAIL">> => list(closed_days_rule()),
-%%   <<"PUSH">> => list(closed_days_rule()),
-%%   <<"SMS">> => list(closed_days_rule()),
-%%   <<"VOICE">> => list(closed_days_rule())
-%% }
--type closed_days() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_event_stream_response() :: #{
-%%   <<"EventStream">> => event_stream()
-%% }
--type delete_event_stream_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_sms_template_response() :: #{
-%%   <<"MessageBody">> => message_body()
-%% }
--type delete_sms_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segment_versions_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
-%% }
--type get_segment_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% channels_response() :: #{
-%%   <<"Channels">> => map()
-%% }
--type channels_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommender_configurations_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
-%% }
--type get_recommender_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_date_range_kpi_response() :: #{
-%%   <<"JourneyDateRangeKpiResponse">> => journey_date_range_kpi_response()
-%% }
--type get_journey_date_range_kpi_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_journey_request() :: #{
-%%   <<"WriteJourneyRequest">> := write_journey_request()
-%% }
--type create_journey_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_sms_template_response() :: #{
-%%   <<"SMSTemplateResponse">> => sms_template_response()
-%% }
--type get_sms_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_demographics() :: #{
-%%   <<"AppVersion">> => set_dimension(),
-%%   <<"Channel">> => set_dimension(),
-%%   <<"DeviceType">> => set_dimension(),
-%%   <<"Make">> => set_dimension(),
-%%   <<"Model">> => set_dimension(),
-%%   <<"Platform">> => set_dimension()
-%% }
--type segment_demographics() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_voice_channel_response() :: #{
-%%   <<"VoiceChannelResponse">> => voice_channel_response()
-%% }
--type update_voice_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_users_messages_response() :: #{
-%%   <<"SendUsersMessageResponse">> => send_users_message_response()
-%% }
--type send_users_messages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_templates_response() :: #{
-%%   <<"TemplatesResponse">> => templates_response()
-%% }
--type list_templates_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% default_message() :: #{
-%%   <<"Body">> => string(),
-%%   <<"Substitutions">> => map()
-%% }
--type default_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_attributes_response() :: #{
-%%   <<"AttributesResource">> => attributes_resource()
-%% }
--type remove_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_export_jobs_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
-%% }
--type get_export_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% campaign_email_message() :: #{
-%%   <<"Body">> => string(),
-%%   <<"FromAddress">> => string(),
-%%   <<"Headers">> => list(message_header()),
-%%   <<"HtmlBody">> => string(),
-%%   <<"Title">> => string()
-%% }
--type campaign_email_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% ad_m_channel_request() :: #{
-%%   <<"ClientId">> => string(),
-%%   <<"ClientSecret">> => string(),
-%%   <<"Enabled">> => boolean()
-%% }
--type ad_m_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_apns_voip_channel_request() :: #{
-%%   <<"APNSVoipChannelRequest">> := a_p_n_s_voip_channel_request()
-%% }
--type update_apns_voip_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% create_sms_template_request() :: #{
-%%   <<"SMSTemplateRequest">> := sms_template_request()
-%% }
--type create_sms_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sms_template_request() :: #{
-%%   <<"Body">> => string(),
-%%   <<"DefaultSubstitutions">> => string(),
-%%   <<"RecommenderId">> => string(),
-%%   <<"TemplateDescription">> => string(),
-%%   <<"tags">> => map()
-%% }
--type sms_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_behaviors() :: #{
-%%   <<"Recency">> => recency_dimension()
-%% }
--type segment_behaviors() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_p_n_s_voip_sandbox_channel_request() :: #{
-%%   <<"BundleId">> => string(),
-%%   <<"Certificate">> => string(),
-%%   <<"DefaultAuthenticationMethod">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"PrivateKey">> => string(),
-%%   <<"TeamId">> => string(),
-%%   <<"TokenKey">> => string(),
-%%   <<"TokenKeyId">> => string()
-%% }
--type a_p_n_s_voip_sandbox_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_voice_template_response() :: #{
-%%   <<"CreateTemplateMessageBody">> => create_template_message_body()
-%% }
--type create_voice_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_configuration() :: #{
-%%   <<"EmailTemplate">> => template(),
-%%   <<"InAppTemplate">> => template(),
-%%   <<"PushTemplate">> => template(),
-%%   <<"SMSTemplate">> => template(),
-%%   <<"VoiceTemplate">> => template()
-%% }
--type template_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_settings_request() :: #{}
--type get_application_settings_request() :: #{}.
-
-
-%% Example:
-%% create_recommender_configuration_request() :: #{
-%%   <<"CreateRecommenderConfiguration">> := create_recommender_configuration_shape()
-%% }
--type create_recommender_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% item_response() :: #{
-%%   <<"EndpointItemResponse">> => endpoint_item_response(),
-%%   <<"EventsItemResponse">> => map()
-%% }
--type item_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestID">> => string()
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% override_button_configuration() :: #{
-%%   <<"ButtonAction">> => list(any()),
-%%   <<"Link">> => string()
-%% }
--type override_button_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_condition() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EventStartCondition">> => event_start_condition(),
-%%   <<"SegmentStartCondition">> => segment_condition()
-%% }
--type start_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_demographic() :: #{
-%%   <<"AppVersion">> => string(),
-%%   <<"Locale">> => string(),
-%%   <<"Make">> => string(),
-%%   <<"Model">> => string(),
-%%   <<"ModelVersion">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"PlatformVersion">> => string(),
-%%   <<"Timezone">> => string()
-%% }
--type endpoint_demographic() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segment_export_jobs_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
-%% }
--type get_segment_export_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_request() :: #{
-%%   <<"Addresses">> => map(),
-%%   <<"Context">> => map(),
-%%   <<"Endpoints">> => map(),
-%%   <<"MessageConfiguration">> => direct_message_configuration(),
-%%   <<"TemplateConfiguration">> => template_configuration(),
-%%   <<"TraceId">> => string()
-%% }
--type message_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_request() :: #{
-%%   <<"Address">> => string(),
-%%   <<"Attributes">> => map(),
-%%   <<"ChannelType">> => list(any()),
-%%   <<"Demographic">> => endpoint_demographic(),
-%%   <<"EffectiveDate">> => string(),
-%%   <<"EndpointStatus">> => string(),
-%%   <<"Location">> => endpoint_location(),
-%%   <<"Metrics">> => map(),
-%%   <<"OptOut">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"User">> => endpoint_user()
-%% }
--type endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_campaign_response() :: #{
-%%   <<"CampaignResponse">> => campaign_response()
-%% }
--type get_campaign_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_dimension() :: #{
-%%   <<"AttributeType">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type attribute_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_stream() :: #{
-%%   <<"ApplicationId">> => string(),
+%% write_event_stream() :: #{
 %%   <<"DestinationStreamArn">> => string(),
-%%   <<"ExternalId">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"LastUpdatedBy">> => string(),
 %%   <<"RoleArn">> => string()
 %% }
--type event_stream() :: #{binary() => any()}.
-
-%% Example:
-%% delete_apns_channel_request() :: #{}
--type delete_apns_channel_request() :: #{}.
+-type write_event_stream() :: #{binary() => any()}.
 
 
 %% Example:
-%% sms_channel_request() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"SenderId">> => string(),
-%%   <<"ShortCode">> => string()
+%% write_journey_request() :: #{
+%%   <<"Activities">> => map(),
+%%   <<"ClosedDays">> => closed_days(),
+%%   <<"CreationDate">> => string(),
+%%   <<"JourneyChannelSettings">> => journey_channel_settings(),
+%%   <<"LastModifiedDate">> => string(),
+%%   <<"Limits">> => journey_limits(),
+%%   <<"LocalTime">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"OpenHours">> => open_hours(),
+%%   <<"QuietTime">> => quiet_time(),
+%%   <<"RefreshFrequency">> => string(),
+%%   <<"RefreshOnSegmentUpdate">> => boolean(),
+%%   <<"Schedule">> => journey_schedule(),
+%%   <<"SendingSchedule">> => boolean(),
+%%   <<"StartActivity">> => string(),
+%%   <<"StartCondition">> => start_condition(),
+%%   <<"State">> => list(any()),
+%%   <<"TimezoneEstimationMethods">> => list(list(any())()),
+%%   <<"WaitForQuietTime">> => boolean()
 %% }
--type sms_channel_request() :: #{binary() => any()}.
+-type write_journey_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_campaign_versions_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
+%% write_segment_request() :: #{
+%%   <<"Dimensions">> => segment_dimensions(),
+%%   <<"Name">> => string(),
+%%   <<"SegmentGroups">> => segment_group_list(),
+%%   <<"tags">> => map()
 %% }
--type get_campaign_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recommender_configuration_response() :: #{
-%%   <<"RecommenderConfigurationResponse">> => recommender_configuration_response()
-%% }
--type update_recommender_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% set_dimension() :: #{
-%%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type set_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_adm_channel_request() :: #{
-%%   <<"ADMChannelRequest">> := ad_m_channel_request()
-%% }
--type update_adm_channel_request() :: #{binary() => any()}.
+-type write_segment_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3671,1790 +4396,1065 @@
 %% }
 -type write_treatment_resource() :: #{binary() => any()}.
 
-
-%% Example:
-%% update_segment_response() :: #{
-%%   <<"SegmentResponse">> => segment_response()
-%% }
--type update_segment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_runs_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
-%% }
--type get_journey_runs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% simple_email() :: #{
-%%   <<"Headers">> => list(message_header()),
-%%   <<"HtmlPart">> => simple_email_part(),
-%%   <<"Subject">> => simple_email_part(),
-%%   <<"TextPart">> => simple_email_part()
-%% }
--type simple_email() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_campaigns_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
-%% }
--type get_campaigns_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_voice_template_request() :: #{
-%%   <<"Version">> => string()
-%% }
--type get_voice_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_application_settings_request() :: #{
-%%   <<"WriteApplicationSettingsRequest">> := write_application_settings_request()
-%% }
--type update_application_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segment_import_jobs_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
-%% }
--type get_segment_import_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_response() :: #{
-%%   <<"Address">> => string(),
-%%   <<"ApplicationId">> => string(),
-%%   <<"Attributes">> => map(),
-%%   <<"ChannelType">> => list(any()),
-%%   <<"CohortId">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Demographic">> => endpoint_demographic(),
-%%   <<"EffectiveDate">> => string(),
-%%   <<"EndpointStatus">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Location">> => endpoint_location(),
-%%   <<"Metrics">> => map(),
-%%   <<"OptOut">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"User">> => endpoint_user()
-%% }
--type endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_conditional_split_activity() :: #{
-%%   <<"Branches">> => list(multi_conditional_branch()),
-%%   <<"DefaultActivity">> => string(),
-%%   <<"EvaluationWaitTime">> => wait_time()
-%% }
--type multi_conditional_split_activity() :: #{binary() => any()}.
-
-%% Example:
-%% delete_voice_channel_request() :: #{}
--type delete_voice_channel_request() :: #{}.
-
-
-%% Example:
-%% journey_limits() :: #{
-%%   <<"DailyCap">> => integer(),
-%%   <<"EndpointReentryCap">> => integer(),
-%%   <<"EndpointReentryInterval">> => string(),
-%%   <<"MessagesPerSecond">> => integer(),
-%%   <<"TimeframeCap">> => journey_timeframe_cap(),
-%%   <<"TotalCap">> => integer()
-%% }
--type journey_limits() :: #{binary() => any()}.
-
-%% Example:
-%% delete_segment_request() :: #{}
--type delete_segment_request() :: #{}.
-
-
-%% Example:
-%% write_application_settings_request() :: #{
-%%   <<"CampaignHook">> => campaign_hook(),
-%%   <<"CloudWatchMetricsEnabled">> => boolean(),
-%%   <<"EventTaggingEnabled">> => boolean(),
-%%   <<"JourneyLimits">> => application_settings_journey_limits(),
-%%   <<"Limits">> => campaign_limits(),
-%%   <<"QuietTime">> => quiet_time()
-%% }
--type write_application_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_in_app_messages_response() :: #{
-%%   <<"InAppMessagesResponse">> => in_app_messages_response()
-%% }
--type get_in_app_messages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% default_push_notification_message() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Body">> => string(),
-%%   <<"Data">> => map(),
-%%   <<"SilentPush">> => boolean(),
-%%   <<"Substitutions">> => map(),
-%%   <<"Title">> => string(),
-%%   <<"Url">> => string()
-%% }
--type default_push_notification_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segment_version_response() :: #{
-%%   <<"SegmentResponse">> => segment_response()
-%% }
--type get_segment_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RequestID">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tags_model() :: #{
-%%   <<"tags">> => map()
-%% }
--type tags_model() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Dimensions">> => segment_dimensions(),
-%%   <<"Id">> => string(),
-%%   <<"ImportDefinition">> => segment_import_resource(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SegmentGroups">> => segment_group_list(),
-%%   <<"SegmentType">> => list(any()),
-%%   <<"Version">> => integer(),
-%%   <<"tags">> => map()
-%% }
--type segment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_email_template_response() :: #{
-%%   <<"EmailTemplateResponse">> => email_template_response()
-%% }
--type get_email_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_campaigns_response() :: #{
-%%   <<"CampaignsResponse">> => campaigns_response()
-%% }
--type get_campaigns_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% verify_o_t_p_message_response() :: #{
-%%   <<"VerificationResponse">> => verification_response()
-%% }
--type verify_o_t_p_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% in_app_message_campaign() :: #{
-%%   <<"CampaignId">> => string(),
-%%   <<"DailyCap">> => integer(),
-%%   <<"InAppMessage">> => in_app_message(),
-%%   <<"Priority">> => integer(),
-%%   <<"Schedule">> => in_app_campaign_schedule(),
-%%   <<"SessionCap">> => integer(),
-%%   <<"TotalCap">> => integer(),
-%%   <<"TreatmentId">> => string()
-%% }
--type in_app_message_campaign() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recommender_configuration_shape() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RecommendationProviderIdType">> => string(),
-%%   <<"RecommendationProviderRoleArn">> => string(),
-%%   <<"RecommendationProviderUri">> => string(),
-%%   <<"RecommendationTransformerUri">> => string(),
-%%   <<"RecommendationsDisplayName">> => string(),
-%%   <<"RecommendationsPerMessage">> => integer()
-%% }
--type create_recommender_configuration_shape() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_email_template_request() :: #{
-%%   <<"Version">> => string()
-%% }
--type get_email_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_campaign_request() :: #{
-%%   <<"WriteCampaignRequest">> := write_campaign_request()
-%% }
--type update_campaign_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% journey_state_request() :: #{
-%%   <<"State">> => list(any())
-%% }
--type journey_state_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_email_template_response() :: #{
-%%   <<"MessageBody">> => message_body()
-%% }
--type update_email_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% android_push_notification_template() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Body">> => string(),
-%%   <<"ImageIconUrl">> => string(),
-%%   <<"ImageUrl">> => string(),
-%%   <<"RawContent">> => string(),
-%%   <<"SmallImageIconUrl">> => string(),
-%%   <<"Sound">> => string(),
-%%   <<"Title">> => string(),
-%%   <<"Url">> => string()
-%% }
--type android_push_notification_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_job_resource() :: #{
-%%   <<"RoleArn">> => string(),
-%%   <<"S3UrlPrefix">> => string(),
-%%   <<"SegmentId">> => string(),
-%%   <<"SegmentVersion">> => integer()
-%% }
--type export_job_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% template() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Version">> => string()
-%% }
--type template() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_journey_response() :: #{
-%%   <<"JourneyResponse">> => journey_response()
-%% }
--type delete_journey_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_conditional_branch() :: #{
-%%   <<"Condition">> => simple_condition(),
-%%   <<"NextActivity">> => string()
-%% }
--type multi_conditional_branch() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_stream_request() :: #{}
--type delete_event_stream_request() :: #{}.
-
-
-%% Example:
-%% update_application_settings_response() :: #{
-%%   <<"ApplicationSettingsResource">> => application_settings_resource()
-%% }
--type update_application_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_in_app_template_request() :: #{
-%%   <<"Version">> => string()
-%% }
--type get_in_app_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_adm_channel_response() :: #{
-%%   <<"ADMChannelResponse">> => ad_m_channel_response()
-%% }
--type delete_adm_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_in_app_template_response() :: #{
-%%   <<"MessageBody">> => message_body()
-%% }
--type update_in_app_template_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_apns_sandbox_channel_request() :: #{}
--type get_apns_sandbox_channel_request() :: #{}.
-
-
-%% Example:
-%% create_journey_response() :: #{
-%%   <<"JourneyResponse">> => journey_response()
-%% }
--type create_journey_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_users_message_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"Result">> => map()
-%% }
--type send_users_message_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_date_range_kpi_request() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type get_journey_date_range_kpi_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_response() :: #{
-%%   <<"ApplicationResponse">> => application_response()
-%% }
--type create_app_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_apns_sandbox_channel_response() :: #{
-%%   <<"APNSSandboxChannelResponse">> => a_p_n_s_sandbox_channel_response()
-%% }
--type get_apns_sandbox_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% random_split_activity() :: #{
-%%   <<"Branches">> => list(random_split_entry())
-%% }
--type random_split_activity() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_execution_activity_metrics_response() :: #{
-%%   <<"JourneyExecutionActivityMetricsResponse">> => journey_execution_activity_metrics_response()
-%% }
--type get_journey_execution_activity_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_group_list() :: #{
-%%   <<"Groups">> => list(segment_group()),
-%%   <<"Include">> => list(any())
-%% }
--type segment_group_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% in_app_template_request() :: #{
-%%   <<"Content">> => list(in_app_message_content()),
-%%   <<"CustomConfig">> => map(),
-%%   <<"Layout">> => list(any()),
-%%   <<"TemplateDescription">> => string(),
-%%   <<"tags">> => map()
-%% }
--type in_app_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_campaign_response() :: #{
-%%   <<"CampaignResponse">> => campaign_response()
-%% }
--type create_campaign_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_endpoint_request() :: #{}
--type get_endpoint_request() :: #{}.
-
-%% Example:
-%% get_email_channel_request() :: #{}
--type get_email_channel_request() :: #{}.
-
-
-%% Example:
-%% journey_channel_settings() :: #{
-%%   <<"ConnectCampaignArn">> => string(),
-%%   <<"ConnectCampaignExecutionRoleArn">> => string()
-%% }
--type journey_channel_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% number_validate_response() :: #{
-%%   <<"Carrier">> => string(),
-%%   <<"City">> => string(),
-%%   <<"CleansedPhoneNumberE164">> => string(),
-%%   <<"CleansedPhoneNumberNational">> => string(),
-%%   <<"Country">> => string(),
-%%   <<"CountryCodeIso2">> => string(),
-%%   <<"CountryCodeNumeric">> => string(),
-%%   <<"County">> => string(),
-%%   <<"OriginalCountryCodeIso2">> => string(),
-%%   <<"OriginalPhoneNumber">> => string(),
-%%   <<"PhoneType">> => string(),
-%%   <<"PhoneTypeCode">> => integer(),
-%%   <<"Timezone">> => string(),
-%%   <<"ZipCode">> => string()
-%% }
--type number_validate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_sms_channel_response() :: #{
-%%   <<"SMSChannelResponse">> => sms_channel_response()
-%% }
--type delete_sms_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% g_cm_message() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Body">> => string(),
-%%   <<"CollapseKey">> => string(),
-%%   <<"Data">> => map(),
-%%   <<"IconReference">> => string(),
-%%   <<"ImageIconUrl">> => string(),
-%%   <<"ImageUrl">> => string(),
-%%   <<"PreferredAuthenticationMethod">> => string(),
-%%   <<"Priority">> => string(),
-%%   <<"RawContent">> => string(),
-%%   <<"RestrictedPackageName">> => string(),
-%%   <<"SilentPush">> => boolean(),
-%%   <<"SmallImageIconUrl">> => string(),
-%%   <<"Sound">> => string(),
-%%   <<"Substitutions">> => map(),
-%%   <<"TimeToLive">> => integer(),
-%%   <<"Title">> => string(),
-%%   <<"Url">> => string()
-%% }
--type g_cm_message() :: #{binary() => any()}.
-
-%% Example:
-%% delete_sms_channel_request() :: #{}
--type delete_sms_channel_request() :: #{}.
-
-
-%% Example:
-%% list_journeys_response() :: #{
-%%   <<"JourneysResponse">> => journeys_response()
-%% }
--type list_journeys_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_gcm_channel_response() :: #{
-%%   <<"GCMChannelResponse">> => g_cm_channel_response()
-%% }
--type get_gcm_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% in_app_message_button() :: #{
-%%   <<"Android">> => override_button_configuration(),
-%%   <<"DefaultConfig">> => default_button_configuration(),
-%%   <<"IOS">> => override_button_configuration(),
-%%   <<"Web">> => override_button_configuration()
-%% }
--type in_app_message_button() :: #{binary() => any()}.
-
-
-%% Example:
-%% wait_activity() :: #{
-%%   <<"NextActivity">> => string(),
-%%   <<"WaitTime">> => wait_time()
-%% }
--type wait_activity() :: #{binary() => any()}.
-
-
-%% Example:
-%% journey_date_range_kpi_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"JourneyId">> => string(),
-%%   <<"KpiName">> => string(),
-%%   <<"KpiResult">> => base_kpi_result(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type journey_date_range_kpi_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_run_execution_metrics_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => string()
-%% }
--type get_journey_run_execution_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% endpoint_item_response() :: #{
-%%   <<"Message">> => string(),
-%%   <<"StatusCode">> => integer()
-%% }
--type endpoint_item_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_journey_run_execution_activity_metrics_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => string()
-%% }
--type get_journey_run_execution_activity_metrics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_in_app_template_request() :: #{
-%%   <<"Version">> => string()
-%% }
--type delete_in_app_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_apns_channel_request() :: #{
-%%   <<"APNSChannelRequest">> := a_p_n_s_channel_request()
-%% }
--type update_apns_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recommender_configuration_request() :: #{
-%%   <<"UpdateRecommenderConfiguration">> := update_recommender_configuration_shape()
-%% }
--type update_recommender_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_email_template_response() :: #{
-%%   <<"CreateTemplateMessageBody">> => create_template_message_body()
-%% }
--type create_email_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_in_app_template_request() :: #{
-%%   <<"InAppTemplateRequest">> := in_app_template_request()
-%% }
--type create_in_app_template_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_sms_template_request() :: #{
-%%   <<"Version">> => string()
-%% }
--type delete_sms_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_gcm_channel_request() :: #{}
--type get_gcm_channel_request() :: #{}.
-
-
-%% Example:
-%% endpoint_user() :: #{
-%%   <<"UserAttributes">> => map(),
-%%   <<"UserId">> => string()
-%% }
--type endpoint_user() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_message_activity() :: #{
-%%   <<"DeliveryUri">> => string(),
-%%   <<"EndpointTypes">> => list(list(any())()),
-%%   <<"MessageConfig">> => journey_custom_message(),
-%%   <<"NextActivity">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateVersion">> => string()
-%% }
--type custom_message_activity() :: #{binary() => any()}.
-
-
-%% Example:
-%% ad_m_message() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Body">> => string(),
-%%   <<"ConsolidationKey">> => string(),
-%%   <<"Data">> => map(),
-%%   <<"ExpiresAfter">> => string(),
-%%   <<"IconReference">> => string(),
-%%   <<"ImageIconUrl">> => string(),
-%%   <<"ImageUrl">> => string(),
-%%   <<"MD5">> => string(),
-%%   <<"RawContent">> => string(),
-%%   <<"SilentPush">> => boolean(),
-%%   <<"SmallImageIconUrl">> => string(),
-%%   <<"Sound">> => string(),
-%%   <<"Substitutions">> => map(),
-%%   <<"Title">> => string(),
-%%   <<"Url">> => string()
-%% }
--type ad_m_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segments_request() :: #{
-%%   <<"PageSize">> => string(),
-%%   <<"Token">> => string()
-%% }
--type get_segments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% in_app_template_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Content">> => list(in_app_message_content()),
-%%   <<"CreationDate">> => string(),
-%%   <<"CustomConfig">> => map(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Layout">> => list(any()),
-%%   <<"TemplateDescription">> => string(),
-%%   <<"TemplateName">> => string(),
-%%   <<"TemplateType">> => list(any()),
-%%   <<"Version">> => string(),
-%%   <<"tags">> => map()
-%% }
--type in_app_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% message() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Body">> => string(),
-%%   <<"ImageIconUrl">> => string(),
-%%   <<"ImageSmallIconUrl">> => string(),
-%%   <<"ImageUrl">> => string(),
-%%   <<"JsonBody">> => string(),
-%%   <<"MediaUrl">> => string(),
-%%   <<"RawContent">> => string(),
-%%   <<"SilentPush">> => boolean(),
-%%   <<"TimeToLive">> => integer(),
-%%   <<"Title">> => string(),
-%%   <<"Url">> => string()
-%% }
--type message() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_endpoint() :: #{
-%%   <<"Address">> => string(),
-%%   <<"Attributes">> => map(),
-%%   <<"ChannelType">> => list(any()),
-%%   <<"Demographic">> => endpoint_demographic(),
-%%   <<"EffectiveDate">> => string(),
-%%   <<"EndpointStatus">> => string(),
-%%   <<"Location">> => endpoint_location(),
-%%   <<"Metrics">> => map(),
-%%   <<"OptOut">> => string(),
-%%   <<"RequestId">> => string(),
-%%   <<"User">> => endpoint_user()
-%% }
--type public_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommender_configuration_response() :: #{
-%%   <<"Attributes">> => map(),
-%%   <<"CreationDate">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedDate">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RecommendationProviderIdType">> => string(),
-%%   <<"RecommendationProviderRoleArn">> => string(),
-%%   <<"RecommendationProviderUri">> => string(),
-%%   <<"RecommendationTransformerUri">> => string(),
-%%   <<"RecommendationsDisplayName">> => string(),
-%%   <<"RecommendationsPerMessage">> => integer()
-%% }
--type recommender_configuration_response() :: #{binary() => any()}.
-
 -type create_app_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_campaign_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_email_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_export_job_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_import_job_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_in_app_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_journey_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_push_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_recommender_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_segment_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_sms_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_voice_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_adm_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_apns_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_apns_sandbox_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_apns_voip_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_apns_voip_sandbox_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_app_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_baidu_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_campaign_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_email_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_email_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_endpoint_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_event_stream_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_gcm_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_in_app_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_journey_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_push_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_recommender_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_segment_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_sms_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_sms_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_user_endpoints_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_voice_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_voice_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_adm_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_apns_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_apns_sandbox_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_apns_voip_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_apns_voip_sandbox_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_app_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_application_date_range_kpi_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_application_settings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_apps_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_baidu_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_campaign_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_campaign_activities_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_campaign_date_range_kpi_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_campaign_version_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_campaign_versions_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_campaigns_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_channels_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_email_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_email_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_endpoint_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_event_stream_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_export_job_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_export_jobs_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_gcm_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_import_job_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_import_jobs_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_in_app_messages_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_in_app_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_journey_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_journey_date_range_kpi_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_journey_execution_activity_metrics_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_journey_execution_metrics_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_journey_run_execution_activity_metrics_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_journey_run_execution_metrics_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_journey_runs_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_push_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_recommender_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_recommender_configurations_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_segment_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_segment_export_jobs_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_segment_import_jobs_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_segment_version_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_segment_versions_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_segments_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_sms_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_sms_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_user_endpoints_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_voice_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_voice_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_journeys_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_template_versions_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_templates_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type phone_number_validate_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type put_event_stream_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type put_events_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type remove_attributes_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type send_messages_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type send_o_t_p_message_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type send_users_messages_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_adm_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_apns_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_apns_sandbox_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_apns_voip_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_apns_voip_sandbox_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_application_settings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_baidu_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_campaign_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_email_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_email_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_endpoint_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_endpoints_batch_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_gcm_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_in_app_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_journey_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_journey_state_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_push_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_recommender_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_segment_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_sms_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_sms_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_template_active_version_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_voice_channel_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_voice_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type verify_o_t_p_message_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    payload_too_large_exception() | 
     too_many_requests_exception() | 
+    payload_too_large_exception() | 
+    not_found_exception() | 
     method_not_allowed_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

@@ -63,6 +63,8 @@
          create_association/3,
          create_association_batch/2,
          create_association_batch/3,
+         create_cloud_connector/2,
+         create_cloud_connector/3,
          create_document/2,
          create_document/3,
          create_maintenance_window/2,
@@ -79,6 +81,8 @@
          delete_activation/3,
          delete_association/2,
          delete_association/3,
+         delete_cloud_connector/2,
+         delete_cloud_connector/3,
          delete_document/2,
          delete_document/3,
          delete_inventory/2,
@@ -181,6 +185,8 @@
          get_automation_execution/3,
          get_calendar_state/2,
          get_calendar_state/3,
+         get_cloud_connector/2,
+         get_cloud_connector/3,
          get_command_invocation/2,
          get_command_invocation/3,
          get_connection_status/2,
@@ -235,6 +241,8 @@
          list_association_versions/3,
          list_associations/2,
          list_associations/3,
+         list_cloud_connectors/2,
+         list_cloud_connectors/3,
          list_command_invocations/2,
          list_command_invocations/3,
          list_commands/2,
@@ -317,6 +325,8 @@
          update_association/3,
          update_association_status/2,
          update_association_status/3,
+         update_cloud_connector/2,
+         update_cloud_connector/3,
          update_document/2,
          update_document/3,
          update_document_default_version/2,
@@ -340,609 +350,18 @@
          update_resource_data_sync/2,
          update_resource_data_sync/3,
          update_service_setting/2,
-         update_service_setting/3]).
+         update_service_setting/3,
+         validate_cloud_connector/2,
+         validate_cloud_connector/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
 %% Example:
-%% get_automation_execution_result() :: #{
-%%   <<"AutomationExecution">> => automation_execution()
-%% }
--type get_automation_execution_result() :: #{binary() => any()}.
-
-%% Example:
-%% send_automation_signal_result() :: #{
-
-%% }
--type send_automation_signal_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_instance_property_filter_value() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_instance_property_filter_value() :: #{binary() => any()}.
-
-%% Example:
-%% get_maintenance_window_execution_task_invocation_request() :: #{
-%%   <<"InvocationId">> := string(),
-%%   <<"TaskId">> := string(),
-%%   <<"WindowExecutionId">> := string()
-%% }
--type get_maintenance_window_execution_task_invocation_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_default_patch_baseline_result() :: #{
-%%   <<"BaselineId">> => string()
-%% }
--type register_default_patch_baseline_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_command_invocations_request() :: #{
-%%   <<"CommandId">> => string(),
-%%   <<"Details">> => boolean(),
-%%   <<"Filters">> => list(command_filter()),
-%%   <<"InstanceId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_command_invocations_request() :: #{binary() => any()}.
-
-%% Example:
-%% compliance_string_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type compliance_string_filter() :: #{binary() => any()}.
-
-%% Example:
-%% notification_config() :: #{
-%%   <<"NotificationArn">> => string(),
-%%   <<"NotificationEvents">> => list(list(any())()),
-%%   <<"NotificationType">> => list(any())
-%% }
--type notification_config() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_target_from_maintenance_window_request() :: #{
-%%   <<"Safe">> => boolean(),
-%%   <<"WindowId">> := string(),
-%%   <<"WindowTargetId">> := string()
-%% }
--type deregister_target_from_maintenance_window_request() :: #{binary() => any()}.
-
-%% Example:
-%% parent_step_details() :: #{
-%%   <<"Action">> => string(),
-%%   <<"Iteration">> => integer(),
-%%   <<"IteratorValue">> => string(),
-%%   <<"StepExecutionId">> => string(),
-%%   <<"StepName">> => string()
-%% }
--type parent_step_details() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_maintenance_window_execution_result() :: #{
-%%   <<"WindowExecutionId">> => string()
-%% }
--type cancel_maintenance_window_execution_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_ops_item_events_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(ops_item_event_summary())
-%% }
--type list_ops_item_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inventory_deletions_request() :: #{
-%%   <<"DeletionId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_inventory_deletions_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_target_with_maintenance_window_result() :: #{
-%%   <<"WindowTargetId">> => string()
-%% }
--type register_target_with_maintenance_window_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_associations_once_result() :: #{
-
-%% }
--type start_associations_once_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_patch_baseline_request() :: #{
-%%   <<"ApprovalRules">> => patch_rule_group(),
-%%   <<"ApprovedPatches">> => list(string()),
-%%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
-%%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
-%%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"GlobalFilters">> => patch_filter_group(),
-%%   <<"Name">> := string(),
-%%   <<"OperatingSystem">> => list(any()),
-%%   <<"RejectedPatches">> => list(string()),
-%%   <<"RejectedPatchesAction">> => list(any()),
-%%   <<"Sources">> => list(patch_source()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_patch_baseline_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_token_response() :: #{
-%%   <<"AccessRequestStatus">> => list(any()),
-%%   <<"Credentials">> => credentials()
-%% }
--type get_access_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_association() :: #{
+%% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type invalid_association() :: #{binary() => any()}.
-
-%% Example:
-%% update_association_status_result() :: #{
-%%   <<"AssociationDescription">> => association_description()
-%% }
--type update_association_status_result() :: #{binary() => any()}.
-
-%% Example:
-%% node_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type node_filter() :: #{binary() => any()}.
-
-%% Example:
-%% update_maintenance_window_task_request() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"CutoffBehavior">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"LoggingInfo">> => logging_info(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"Replace">> => boolean(),
-%%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
-%%   <<"TaskParameters">> => map(),
-%%   <<"WindowId">> := string(),
-%%   <<"WindowTaskId">> := string()
-%% }
--type update_maintenance_window_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_maintenance_window_execution_request() :: #{
-%%   <<"WindowExecutionId">> := string()
-%% }
--type get_maintenance_window_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_item_attribute() :: #{
-%%   <<"DataType">> => list(any()),
-%%   <<"Name">> => string()
-%% }
--type inventory_item_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% get_default_patch_baseline_request() :: #{
-%%   <<"OperatingSystem">> => list(any())
-%% }
--type get_default_patch_baseline_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameters_result() :: #{
-%%   <<"InvalidParameters">> => list(string()),
-%%   <<"Parameters">> => list(parameter())
-%% }
--type get_parameters_result() :: #{binary() => any()}.
-
-%% Example:
-%% metadata_value() :: #{
-%%   <<"Value">> => string()
-%% }
--type metadata_value() :: #{binary() => any()}.
-
-%% Example:
-%% get_maintenance_window_task_request() :: #{
-%%   <<"WindowId">> := string(),
-%%   <<"WindowTaskId">> := string()
-%% }
--type get_maintenance_window_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_execution_preview_response() :: #{
-%%   <<"ExecutionPreviewId">> => string()
-%% }
--type start_execution_preview_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_response() :: #{
-
-%% }
--type delete_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% patch_group_patch_baseline_mapping() :: #{
-%%   <<"BaselineIdentity">> => patch_baseline_identity(),
-%%   <<"PatchGroup">> => string()
-%% }
--type patch_group_patch_baseline_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_metadata() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"AllowedPattern">> => string(),
-%%   <<"DataType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"KeyId">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"LastModifiedUser">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Policies">> => list(parameter_inline_policy()),
-%%   <<"Tier">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"Version">> => float()
-%% }
--type parameter_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% max_document_size_exceeded() :: #{
-%%   <<"Message">> => string()
-%% }
--type max_document_size_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% start_execution_preview_request() :: #{
-%%   <<"DocumentName">> := string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"ExecutionInputs">> => list()
-%% }
--type start_execution_preview_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_already_exists_exception() :: #{
-%%   <<"SyncName">> => string()
-%% }
--type resource_data_sync_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_available_patches_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Patches">> => list(patch())
-%% }
--type describe_available_patches_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_association_result() :: #{
-
-%% }
--type delete_association_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_patch_properties_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Properties">> => list(map())
-%% }
--type describe_patch_properties_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_data_sync_result() :: #{
-
-%% }
--type update_resource_data_sync_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_activations_filter() :: #{
-%%   <<"FilterKey">> => list(any()),
-%%   <<"FilterValues">> => list(string())
-%% }
--type describe_activations_filter() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item() :: #{
-%%   <<"ActualEndTime">> => non_neg_integer(),
-%%   <<"ActualStartTime">> => non_neg_integer(),
-%%   <<"Category">> => string(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Notifications">> => list(ops_item_notification()),
-%%   <<"OperationalData">> => map(),
-%%   <<"OpsItemArn">> => string(),
-%%   <<"OpsItemId">> => string(),
-%%   <<"OpsItemType">> => string(),
-%%   <<"PlannedEndTime">> => non_neg_integer(),
-%%   <<"PlannedStartTime">> => non_neg_integer(),
-%%   <<"Priority">> => integer(),
-%%   <<"RelatedOpsItems">> => list(related_ops_item()),
-%%   <<"Severity">> => string(),
-%%   <<"Source">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Title">> => string(),
-%%   <<"Version">> => string()
-%% }
--type ops_item() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_operation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_setting_result() :: #{
-%%   <<"ServiceSetting">> => service_setting()
-%% }
--type get_service_setting_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_associations_once_request() :: #{
-%%   <<"AssociationIds">> := list(string())
-%% }
--type start_associations_once_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_document_result() :: #{
-%%   <<"DocumentDescription">> => document_description()
-%% }
--type update_document_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_policy_attribute_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_policy_attribute_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_association_request() :: #{
-%%   <<"AssociationId">> => string(),
-%%   <<"AssociationVersion">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"Name">> => string()
-%% }
--type describe_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_plugin_name() :: #{
-
-%% }
--type invalid_plugin_name() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_type_name_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_type_name_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_parameter_request() :: #{
-%%   <<"AllowedPattern">> => string(),
-%%   <<"DataType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"KeyId">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Overwrite">> => boolean(),
-%%   <<"Policies">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Tier">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> := string()
-%% }
--type put_parameter_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_property_filter() :: #{
-%%   <<"key">> => list(any()),
-%%   <<"valueSet">> => list(string())
-%% }
--type instance_property_filter() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_window_execution() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => string(),
-%%   <<"WindowExecutionId">> => string(),
-%%   <<"WindowId">> => string()
-%% }
--type maintenance_window_execution() :: #{binary() => any()}.
-
-%% Example:
-%% unlabel_parameter_version_request() :: #{
-%%   <<"Labels">> := list(string()),
-%%   <<"Name">> := string(),
-%%   <<"ParameterVersion">> := float()
-%% }
--type unlabel_parameter_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_item_content_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"TypeName">> => string()
-%% }
--type invalid_item_content_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_nodes_summary_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summary">> => list(map())
-%% }
--type list_nodes_summary_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_ops_item_request() :: #{
-%%   <<"OpsItemArn">> => string(),
-%%   <<"OpsItemId">> := string()
-%% }
--type get_ops_item_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_session_request() :: #{
-%%   <<"DocumentName">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"Reason">> => string(),
-%%   <<"Target">> := string()
-%% }
--type start_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_patch_states_request() :: #{
-%%   <<"InstanceIds">> := list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_instance_patch_states_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_s3_destination() :: #{
-%%   <<"AWSKMSKeyARN">> => string(),
-%%   <<"BucketName">> => string(),
-%%   <<"DestinationDataSharing">> => resource_data_sync_destination_data_sharing(),
-%%   <<"Prefix">> => string(),
-%%   <<"Region">> => string(),
-%%   <<"SyncFormat">> => list(any())
-%% }
--type resource_data_sync_s3_destination() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ops_item_response() :: #{
-
-%% }
--type delete_ops_item_response() :: #{binary() => any()}.
-
-%% Example:
-%% incompatible_policy_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type incompatible_policy_exception() :: #{binary() => any()}.
-
-%% Example:
-%% step_execution_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type step_execution_filter() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_not_found() :: #{
-%%   <<"message">> => string()
-%% }
--type parameter_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_group() :: #{
-%%   <<"Filters">> => list(inventory_filter()),
-%%   <<"Name">> => string()
-%% }
--type inventory_group() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type ops_item_access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% malformed_resource_policy_document_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type malformed_resource_policy_document_exception() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_identity() :: #{
-%%   <<"Arn">> => string()
-%% }
--type ops_item_identity() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_result_attribute_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_result_attribute_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_parameter_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_parameter_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_task_from_maintenance_window_result() :: #{
-%%   <<"WindowId">> => string(),
-%%   <<"WindowTaskId">> => string()
-%% }
--type deregister_task_from_maintenance_window_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_ops_metadata_request() :: #{
-%%   <<"KeysToDelete">> => list(string()),
-%%   <<"MetadataToUpdate">> => map(),
-%%   <<"OpsMetadataArn">> := string()
-%% }
--type update_ops_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_target() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_target() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_result_entity() :: #{
-%%   <<"Data">> => map(),
-%%   <<"Id">> => string()
-%% }
--type inventory_result_entity() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_patch_baseline_for_patch_group_request() :: #{
-%%   <<"BaselineId">> := string(),
-%%   <<"PatchGroup">> := string()
-%% }
--type deregister_patch_baseline_for_patch_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_compliance_summaries_request() :: #{
-%%   <<"Filters">> => list(compliance_string_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resource_compliance_summaries_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_output_config() :: #{
-%%   <<"CloudWatchLogGroupName">> => string(),
-%%   <<"CloudWatchOutputEnabled">> => boolean()
-%% }
--type cloud_watch_output_config() :: #{binary() => any()}.
-
-%% Example:
-%% document_review_comment_source() :: #{
-%%   <<"Content">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type document_review_comment_source() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% account_sharing_info() :: #{
@@ -950,238 +369,6 @@
 %%   <<"SharedDocumentVersion">> => string()
 %% }
 -type account_sharing_info() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tag() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_tag() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_associations_status_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_instance_associations_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_item() :: #{
-%%   <<"LastStatus">> => list(any()),
-%%   <<"LastSuccessfulSyncTime">> => non_neg_integer(),
-%%   <<"LastSyncStatusMessage">> => string(),
-%%   <<"LastSyncTime">> => non_neg_integer(),
-%%   <<"S3Destination">> => resource_data_sync_s3_destination(),
-%%   <<"SyncCreatedTime">> => non_neg_integer(),
-%%   <<"SyncLastModifiedTime">> => non_neg_integer(),
-%%   <<"SyncName">> => string(),
-%%   <<"SyncSource">> => resource_data_sync_source_with_state(),
-%%   <<"SyncType">> => string()
-%% }
--type resource_data_sync_item() :: #{binary() => any()}.
-
-%% Example:
-%% ops_metadata_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type ops_metadata_filter() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_parameter_type() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_parameter_type() :: #{binary() => any()}.
-
-%% Example:
-%% document_parameter() :: #{
-%%   <<"DefaultValue">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type document_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% document_version_limit_exceeded() :: #{
-%%   <<"Message">> => string()
-%% }
--type document_version_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% compliance_item() :: #{
-%%   <<"ComplianceType">> => string(),
-%%   <<"Details">> => map(),
-%%   <<"ExecutionSummary">> => compliance_execution_summary(),
-%%   <<"Id">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"Severity">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Title">> => string()
-%% }
--type compliance_item() :: #{binary() => any()}.
-
-%% Example:
-%% logging_info() :: #{
-%%   <<"S3BucketName">> => string(),
-%%   <<"S3KeyPrefix">> => string(),
-%%   <<"S3Region">> => string()
-%% }
--type logging_info() :: #{binary() => any()}.
-
-%% Example:
-%% register_default_patch_baseline_request() :: #{
-%%   <<"BaselineId">> := string()
-%% }
--type register_default_patch_baseline_request() :: #{binary() => any()}.
-
-%% Example:
-%% already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resume_session_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type resume_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_targets_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Targets">> => list(maintenance_window_target())
-%% }
--type describe_maintenance_window_targets_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_parameters_request() :: #{
-%%   <<"Filters">> => list(parameters_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ParameterFilters">> => list(parameter_string_filter()),
-%%   <<"Shared">> => boolean()
-%% }
--type describe_parameters_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_policy_limit_exceeded_exception() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"LimitType">> => string(),
-%%   <<"Message">> => string()
-%% }
--type resource_policy_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% alarm() :: #{
-%%   <<"Name">> => string()
-%% }
--type alarm() :: #{binary() => any()}.
-
-%% Example:
-%% automation_execution_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type automation_execution_filter() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_deletion_summary_item() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"RemainingCount">> => integer(),
-%%   <<"Version">> => string()
-%% }
--type inventory_deletion_summary_item() :: #{binary() => any()}.
-
-%% Example:
-%% describe_association_result() :: #{
-%%   <<"AssociationDescription">> => association_description()
-%% }
--type describe_association_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_association_versions_request() :: #{
-%%   <<"AssociationId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_association_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_policy_invalid_parameter_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ParameterNames">> => list(string())
-%% }
--type resource_policy_invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% credentials() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"ExpirationTime">> => non_neg_integer(),
-%%   <<"SecretAccessKey">> => string(),
-%%   <<"SessionToken">> => string()
-%% }
--type credentials() :: #{binary() => any()}.
-
-%% Example:
-%% non_compliant_summary() :: #{
-%%   <<"NonCompliantCount">> => integer(),
-%%   <<"SeveritySummary">> => severity_summary()
-%% }
--type non_compliant_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_execution_task_invocations_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TaskId">> := string(),
-%%   <<"WindowExecutionId">> := string()
-%% }
--type describe_maintenance_window_execution_task_invocations_request() :: #{binary() => any()}.
-
-%% Example:
-%% related_ops_item() :: #{
-%%   <<"OpsItemId">> => string()
-%% }
--type related_ops_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_maintenance_window_request() :: #{
-%%   <<"WindowId">> := string()
-%% }
--type get_maintenance_window_request() :: #{binary() => any()}.
-
-%% Example:
-%% patch_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type patch_filter() :: #{binary() => any()}.
-
-%% Example:
-%% ops_result_attribute() :: #{
-%%   <<"TypeName">> => string()
-%% }
--type ops_result_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% ops_entity() :: #{
-%%   <<"Data">> => map(),
-%%   <<"Id">> => string()
-%% }
--type ops_entity() :: #{binary() => any()}.
-
-%% Example:
-%% document_reviewer_response_source() :: #{
-%%   <<"Comment">> => list(document_review_comment_source()),
-%%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"ReviewStatus">> => list(any()),
-%%   <<"Reviewer">> => string(),
-%%   <<"UpdatedTime">> => non_neg_integer()
-%% }
--type document_reviewer_response_source() :: #{binary() => any()}.
 
 %% Example:
 %% activation() :: #{
@@ -1199,72 +386,6 @@
 -type activation() :: #{binary() => any()}.
 
 %% Example:
-%% describe_available_patches_request() :: #{
-%%   <<"Filters">> => list(patch_orchestrator_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_available_patches_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_patch_baseline_request() :: #{
-%%   <<"ApprovalRules">> => patch_rule_group(),
-%%   <<"ApprovedPatches">> => list(string()),
-%%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
-%%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
-%%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
-%%   <<"BaselineId">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"GlobalFilters">> => patch_filter_group(),
-%%   <<"Name">> => string(),
-%%   <<"RejectedPatches">> => list(string()),
-%%   <<"RejectedPatchesAction">> => list(any()),
-%%   <<"Replace">> => boolean(),
-%%   <<"Sources">> => list(patch_source())
-%% }
--type update_patch_baseline_request() :: #{binary() => any()}.
-
-%% Example:
-%% association_status() :: #{
-%%   <<"AdditionalInfo">> => string(),
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"Name">> => list(any())
-%% }
--type association_status() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type inventory_filter() :: #{binary() => any()}.
-
-%% Example:
-%% update_maintenance_window_target_result() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerInformation">> => string(),
-%%   <<"Targets">> => list(target()),
-%%   <<"WindowId">> => string(),
-%%   <<"WindowTargetId">> => string()
-%% }
--type update_maintenance_window_target_result() :: #{binary() => any()}.
-
-%% Example:
-%% instance_association_output_location() :: #{
-%%   <<"S3Location">> => s3_output_location()
-%% }
--type instance_association_output_location() :: #{binary() => any()}.
-
-%% Example:
-%% associate_ops_item_related_item_response() :: #{
-%%   <<"AssociationId">> => string()
-%% }
--type associate_ops_item_related_item_response() :: #{binary() => any()}.
-
-%% Example:
 %% add_tags_to_resource_request() :: #{
 %%   <<"ResourceId">> := string(),
 %%   <<"ResourceType">> := list(any()),
@@ -1273,512 +394,36 @@
 -type add_tags_to_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% document_permission_limit() :: #{
-%%   <<"Message">> => string()
-%% }
--type document_permission_limit() :: #{binary() => any()}.
-
-%% Example:
-%% result_attribute() :: #{
-%%   <<"TypeName">> => string()
-%% }
--type result_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameter_history_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"WithDecryption">> => boolean()
-%% }
--type get_parameter_history_request() :: #{binary() => any()}.
-
-%% Example:
-%% association_execution_target() :: #{
-%%   <<"AssociationId">> => string(),
-%%   <<"AssociationVersion">> => string(),
-%%   <<"DetailedStatus">> => string(),
-%%   <<"ExecutionId">> => string(),
-%%   <<"LastExecutionDate">> => non_neg_integer(),
-%%   <<"OutputSource">> => output_source(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"Status">> => string()
-%% }
--type association_execution_target() :: #{binary() => any()}.
-
-%% Example:
-%% send_command_result() :: #{
-%%   <<"Command">> => command()
-%% }
--type send_command_result() :: #{binary() => any()}.
-
-%% Example:
-%% association_limit_exceeded() :: #{
+%% add_tags_to_resource_result() :: #{
 
 %% }
--type association_limit_exceeded() :: #{binary() => any()}.
+-type add_tags_to_resource_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_patch_properties_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OperatingSystem">> := list(any()),
-%%   <<"PatchSet">> => list(any()),
-%%   <<"Property">> := list(any())
-%% }
--type describe_patch_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_window_task_parameter_value_expression() :: #{
-%%   <<"Values">> => list(string())
-%% }
--type maintenance_window_task_parameter_value_expression() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_feature_required_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_feature_required_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_document() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_document() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_document_content() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_document_content() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_inventory_item_context_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"TypeName">> => string()
-%% }
--type unsupported_inventory_item_context_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameters() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_data_sync_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_patch_baseline_request() :: #{
-%%   <<"BaselineId">> := string()
-%% }
--type get_patch_baseline_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_delete_inventory_parameters_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_delete_inventory_parameters_exception() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_inline_policy() :: #{
-%%   <<"PolicyStatus">> => string(),
-%%   <<"PolicyText">> => string(),
-%%   <<"PolicyType">> => string()
-%% }
--type parameter_inline_policy() :: #{binary() => any()}.
-
-%% Example:
-%% association_version_info() :: #{
-%%   <<"ApplyOnlyAtCronInterval">> => boolean(),
-%%   <<"AssociationDispatchAssumeRole">> => string(),
-%%   <<"AssociationId">> => string(),
-%%   <<"AssociationName">> => string(),
-%%   <<"AssociationVersion">> => string(),
-%%   <<"CalendarNames">> => list(string()),
-%%   <<"ComplianceSeverity">> => list(any()),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputLocation">> => instance_association_output_location(),
-%%   <<"Parameters">> => map(),
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"ScheduleOffset">> => integer(),
-%%   <<"SyncCompliance">> => list(any()),
-%%   <<"TargetLocations">> => list(target_location()),
-%%   <<"TargetMaps">> => list(map()),
-%%   <<"Targets">> => list(target())
-%% }
--type association_version_info() :: #{binary() => any()}.
-
-%% Example:
-%% instance_association_status_info() :: #{
-%%   <<"AssociationId">> => string(),
-%%   <<"AssociationName">> => string(),
-%%   <<"AssociationVersion">> => string(),
-%%   <<"DetailedStatus">> => string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"ErrorCode">> => string(),
-%%   <<"ExecutionDate">> => non_neg_integer(),
-%%   <<"ExecutionSummary">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputUrl">> => instance_association_output_url(),
-%%   <<"Status">> => string()
-%% }
--type instance_association_status_info() :: #{binary() => any()}.
-
-%% Example:
-%% get_ops_summary_request() :: #{
-%%   <<"Aggregators">> => list(ops_aggregator()),
-%%   <<"Filters">> => list(ops_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResultAttributes">> => list(ops_result_attribute()),
-%%   <<"SyncName">> => string()
-%% }
--type get_ops_summary_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_document_request() :: #{
-%%   <<"Attachments">> => list(attachments_source()),
-%%   <<"Content">> := string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DocumentFormat">> => list(any()),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"TargetType">> => string(),
-%%   <<"VersionName">> => string()
-%% }
--type update_document_request() :: #{binary() => any()}.
-
-%% Example:
-%% patch_orchestrator_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type patch_orchestrator_filter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_parameters_request() :: #{
-%%   <<"Names">> := list(string())
-%% }
--type delete_parameters_request() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_string_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Option">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type parameter_string_filter() :: #{binary() => any()}.
-
-%% Example:
-%% attachment_information() :: #{
+%% alarm() :: #{
 %%   <<"Name">> => string()
 %% }
--type attachment_information() :: #{binary() => any()}.
+-type alarm() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_document_version() :: #{
-%%   <<"Message">> => string()
+%% alarm_configuration() :: #{
+%%   <<"Alarms">> => list(alarm()),
+%%   <<"IgnorePollAlarmFailure">> => boolean()
 %% }
--type invalid_document_version() :: #{binary() => any()}.
+-type alarm_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% automation_execution_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type automation_execution_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_patch_baselines_request() :: #{
-%%   <<"Filters">> => list(patch_orchestrator_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_patch_baselines_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_information_request() :: #{
-%%   <<"Filters">> => list(instance_information_string_filter()),
-%%   <<"InstanceInformationFilterList">> => list(instance_information_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_instance_information_request() :: #{binary() => any()}.
-
-%% Example:
-%% policies_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type policies_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_source_with_state() :: #{
-%%   <<"AwsOrganizationsSource">> => resource_data_sync_aws_organizations_source(),
-%%   <<"EnableAllOpsDataSources">> => boolean(),
-%%   <<"IncludeFutureRegions">> => boolean(),
-%%   <<"SourceRegions">> => list(string()),
-%%   <<"SourceType">> => string(),
-%%   <<"State">> => string()
-%% }
--type resource_data_sync_source_with_state() :: #{binary() => any()}.
-
-%% Example:
-%% association_overview() :: #{
-%%   <<"AssociationStatusAggregatedCount">> => map(),
-%%   <<"DetailedStatus">> => string(),
-%%   <<"Status">> => string()
-%% }
--type association_overview() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_aggregator() :: #{
-%%   <<"Aggregators">> => list(inventory_aggregator()),
-%%   <<"Expression">> => string(),
-%%   <<"Groups">> => list(inventory_group())
-%% }
--type inventory_aggregator() :: #{binary() => any()}.
-
-%% Example:
-%% send_automation_signal_request() :: #{
-%%   <<"AutomationExecutionId">> := string(),
-%%   <<"Payload">> => map(),
-%%   <<"SignalType">> := list(any())
-%% }
--type send_automation_signal_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_patch_state_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type instance_patch_state_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_automation_executions_result() :: #{
-%%   <<"AutomationExecutionMetadataList">> => list(automation_execution_metadata()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_automation_executions_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_ops_metadata_request() :: #{
-%%   <<"Filters">> => list(ops_metadata_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_ops_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% label_parameter_version_request() :: #{
-%%   <<"Labels">> := list(string()),
-%%   <<"Name">> := string(),
-%%   <<"ParameterVersion">> => float()
-%% }
--type label_parameter_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_document_request() :: #{
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Force">> => boolean(),
-%%   <<"Name">> := string(),
-%%   <<"VersionName">> => string()
-%% }
--type delete_document_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_connection_status_request() :: #{
-%%   <<"Target">> := string()
-%% }
--type get_connection_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_association_batch_result() :: #{
-%%   <<"Failed">> => list(failed_create_association()),
-%%   <<"Successful">> => list(association_description())
-%% }
--type create_association_batch_result() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_item_schema() :: #{
-%%   <<"Attributes">> => list(inventory_item_attribute()),
-%%   <<"DisplayName">> => string(),
-%%   <<"TypeName">> => string(),
-%%   <<"Version">> => string()
-%% }
--type inventory_item_schema() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policies_response_entry() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"PolicyHash">> => string(),
-%%   <<"PolicyId">> => string()
-%% }
--type get_resource_policies_response_entry() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_document_content() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_document_content() :: #{binary() => any()}.
-
-%% Example:
-%% create_association_batch_request() :: #{
-%%   <<"AssociationDispatchAssumeRole">> => string(),
-%%   <<"Entries">> := list(create_association_batch_request_entry())
-%% }
--type create_association_batch_request() :: #{binary() => any()}.
-
-%% Example:
-%% association_execution_does_not_exist() :: #{
-%%   <<"Message">> => string()
-%% }
--type association_execution_does_not_exist() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_window_step_functions_parameters() :: #{
-%%   <<"Input">> => string(),
-%%   <<"Name">> => string()
-%% }
--type maintenance_window_step_functions_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_invalid_configuration_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_data_sync_invalid_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% effective_patch() :: #{
-%%   <<"Patch">> => patch(),
-%%   <<"PatchStatus">> => patch_status()
-%% }
--type effective_patch() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ops_metadata_request() :: #{
-%%   <<"OpsMetadataArn">> := string()
-%% }
--type delete_ops_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_identifier() :: #{
-%%   <<"Author">> => string(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DocumentFormat">> => list(any()),
-%%   <<"DocumentType">> => list(any()),
-%%   <<"DocumentVersion">> => string(),
+%% alarm_state_information() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"PlatformTypes">> => list(list(any())()),
-%%   <<"Requires">> => list(document_requires()),
-%%   <<"ReviewStatus">> => list(any()),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetType">> => string(),
-%%   <<"VersionName">> => string()
+%%   <<"State">> => list(any())
 %% }
--type document_identifier() :: #{binary() => any()}.
+-type alarm_state_information() :: #{binary() => any()}.
 
 %% Example:
-%% total_size_limit_exceeded_exception() :: #{
+%% already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type total_size_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% ops_aggregator() :: #{
-%%   <<"AggregatorType">> => string(),
-%%   <<"Aggregators">> => list(ops_aggregator()),
-%%   <<"AttributeName">> => string(),
-%%   <<"Filters">> => list(ops_filter()),
-%%   <<"TypeName">> => string(),
-%%   <<"Values">> => map()
-%% }
--type ops_aggregator() :: #{binary() => any()}.
-
-%% Example:
-%% failure_details() :: #{
-%%   <<"Details">> => map(),
-%%   <<"FailureStage">> => string(),
-%%   <<"FailureType">> => string()
-%% }
--type failure_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_maintenance_window_request() :: #{
-%%   <<"WindowId">> := string()
-%% }
--type delete_maintenance_window_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_inventory_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"Items">> := list(inventory_item())
-%% }
--type put_inventory_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_compliance_summaries_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceComplianceSummaryItems">> => list(resource_compliance_summary_item())
-%% }
--type list_resource_compliance_summaries_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_maintenance_window_result() :: #{
-%%   <<"WindowId">> => string()
-%% }
--type create_maintenance_window_result() :: #{binary() => any()}.
-
-%% Example:
-%% ops_metadata_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type ops_metadata_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_commands_request() :: #{
-%%   <<"CommandId">> => string(),
-%%   <<"Filters">> => list(command_filter()),
-%%   <<"InstanceId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_commands_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_patch_groups_request() :: #{
-%%   <<"Filters">> => list(patch_orchestrator_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_patch_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_resource_type() :: #{
-
-%% }
--type invalid_resource_type() :: #{binary() => any()}.
-
-%% Example:
-%% compliance_summary_item() :: #{
-%%   <<"ComplianceType">> => string(),
-%%   <<"CompliantSummary">> => compliant_summary(),
-%%   <<"NonCompliantSummary">> => non_compliant_summary()
-%% }
--type compliance_summary_item() :: #{binary() => any()}.
+-type already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% associate_ops_item_related_item_request() :: #{
@@ -1790,1136 +435,16 @@
 -type associate_ops_item_related_item_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_ops_item_response() :: #{
-%%   <<"OpsItemArn">> => string(),
-%%   <<"OpsItemId">> => string()
+%% associate_ops_item_related_item_response() :: #{
+%%   <<"AssociationId">> => string()
 %% }
--type create_ops_item_response() :: #{binary() => any()}.
+-type associate_ops_item_related_item_response() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_resource_id() :: #{
+%% associated_instances() :: #{
 
 %% }
--type invalid_resource_id() :: #{binary() => any()}.
-
-%% Example:
-%% list_document_metadata_history_request() :: #{
-%%   <<"DocumentVersion">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"Metadata">> := list(any()),
-%%   <<"Name">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_document_metadata_history_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_parameters_result() :: #{
-%%   <<"DeletedParameters">> => list(string()),
-%%   <<"InvalidParameters">> => list(string())
-%% }
--type delete_parameters_result() :: #{binary() => any()}.
-
-%% Example:
-%% association_execution_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type association_execution_filter() :: #{binary() => any()}.
-
-%% Example:
-%% association_version_limit_exceeded() :: #{
-%%   <<"Message">> => string()
-%% }
--type association_version_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% list_association_versions_result() :: #{
-%%   <<"AssociationVersions">> => list(association_version_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_association_versions_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_association_request() :: #{
-%%   <<"AssociationId">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"Name">> => string()
-%% }
--type delete_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_filter_value() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_filter_value() :: #{binary() => any()}.
-
-%% Example:
-%% get_default_patch_baseline_result() :: #{
-%%   <<"BaselineId">> => string(),
-%%   <<"OperatingSystem">> => list(any())
-%% }
--type get_default_patch_baseline_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_activation_result() :: #{
-
-%% }
--type delete_activation_result() :: #{binary() => any()}.
-
-%% Example:
-%% custom_schema_count_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type custom_schema_count_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_execution_preview_request() :: #{
-%%   <<"ExecutionPreviewId">> := string()
-%% }
--type get_execution_preview_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_maintenance_window_execution_request() :: #{
-%%   <<"WindowExecutionId">> := string()
-%% }
--type cancel_maintenance_window_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_document_result() :: #{
-%%   <<"AttachmentsContent">> => list(attachment_content()),
-%%   <<"Content">> => string(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DocumentFormat">> => list(any()),
-%%   <<"DocumentType">> => list(any()),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Requires">> => list(document_requires()),
-%%   <<"ReviewStatus">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusInformation">> => string(),
-%%   <<"VersionName">> => string()
-%% }
--type get_document_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_patch_group_state_result() :: #{
-%%   <<"Instances">> => integer(),
-%%   <<"InstancesWithAvailableSecurityUpdates">> => integer(),
-%%   <<"InstancesWithCriticalNonCompliantPatches">> => integer(),
-%%   <<"InstancesWithFailedPatches">> => integer(),
-%%   <<"InstancesWithInstalledOtherPatches">> => integer(),
-%%   <<"InstancesWithInstalledPatches">> => integer(),
-%%   <<"InstancesWithInstalledPendingRebootPatches">> => integer(),
-%%   <<"InstancesWithInstalledRejectedPatches">> => integer(),
-%%   <<"InstancesWithMissingPatches">> => integer(),
-%%   <<"InstancesWithNotApplicablePatches">> => integer(),
-%%   <<"InstancesWithOtherNonCompliantPatches">> => integer(),
-%%   <<"InstancesWithSecurityNonCompliantPatches">> => integer(),
-%%   <<"InstancesWithUnreportedNotApplicablePatches">> => integer()
-%% }
--type describe_patch_group_state_result() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_version_not_found() :: #{
-%%   <<"message">> => string()
-%% }
--type parameter_version_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% start_automation_execution_request() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"ClientToken">> => string(),
-%%   <<"DocumentName">> := string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Mode">> => list(any()),
-%%   <<"Parameters">> => map(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetLocations">> => list(target_location()),
-%%   <<"TargetLocationsURL">> => string(),
-%%   <<"TargetMaps">> => list(map()),
-%%   <<"TargetParameterName">> => string(),
-%%   <<"Targets">> => list(target())
-%% }
--type start_automation_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% automation_execution_preview() :: #{
-%%   <<"Regions">> => list(string()),
-%%   <<"StepPreviews">> => map(),
-%%   <<"TargetPreviews">> => list(target_preview()),
-%%   <<"TotalAccounts">> => integer()
-%% }
--type automation_execution_preview() :: #{binary() => any()}.
-
-%% Example:
-%% list_nodes_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Nodes">> => list(node())
-%% }
--type list_nodes_result() :: #{binary() => any()}.
-
-%% Example:
-%% instance_aggregated_association_overview() :: #{
-%%   <<"DetailedStatus">> => string(),
-%%   <<"InstanceAssociationStatusAggregatedCount">> => map()
-%% }
--type instance_aggregated_association_overview() :: #{binary() => any()}.
-
-%% Example:
-%% get_inventory_schema_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Schemas">> => list(inventory_item_schema())
-%% }
--type get_inventory_schema_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_resource_data_sync_request() :: #{
-%%   <<"S3Destination">> => resource_data_sync_s3_destination(),
-%%   <<"SyncName">> := string(),
-%%   <<"SyncSource">> => resource_data_sync_source(),
-%%   <<"SyncType">> => string()
-%% }
--type create_resource_data_sync_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_patch_baseline_for_patch_group_result() :: #{
-%%   <<"BaselineId">> => string(),
-%%   <<"PatchGroup">> => string()
-%% }
--type deregister_patch_baseline_for_patch_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_session_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type terminate_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_patches_request() :: #{
-%%   <<"Filters">> => list(patch_orchestrator_filter()),
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_instance_patches_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_patch_state() :: #{
-%%   <<"AvailableSecurityUpdateCount">> => integer(),
-%%   <<"BaselineId">> => string(),
-%%   <<"CriticalNonCompliantCount">> => integer(),
-%%   <<"FailedCount">> => integer(),
-%%   <<"InstallOverrideList">> => string(),
-%%   <<"InstalledCount">> => integer(),
-%%   <<"InstalledOtherCount">> => integer(),
-%%   <<"InstalledPendingRebootCount">> => integer(),
-%%   <<"InstalledRejectedCount">> => integer(),
-%%   <<"InstanceId">> => string(),
-%%   <<"LastNoRebootInstallOperationTime">> => non_neg_integer(),
-%%   <<"MissingCount">> => integer(),
-%%   <<"NotApplicableCount">> => integer(),
-%%   <<"Operation">> => list(any()),
-%%   <<"OperationEndTime">> => non_neg_integer(),
-%%   <<"OperationStartTime">> => non_neg_integer(),
-%%   <<"OtherNonCompliantCount">> => integer(),
-%%   <<"OwnerInformation">> => string(),
-%%   <<"PatchGroup">> => string(),
-%%   <<"RebootOption">> => list(any()),
-%%   <<"SecurityNonCompliantCount">> => integer(),
-%%   <<"SnapshotId">> => string(),
-%%   <<"UnreportedNotApplicableCount">> => integer()
-%% }
--type instance_patch_state() :: #{binary() => any()}.
-
-%% Example:
-%% describe_activations_request() :: #{
-%%   <<"Filters">> => list(describe_activations_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_activations_request() :: #{binary() => any()}.
-
-%% Example:
-%% idempotent_parameter_mismatch() :: #{
-%%   <<"Message">> => string()
-%% }
--type idempotent_parameter_mismatch() :: #{binary() => any()}.
-
-%% Example:
-%% target() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type target() :: #{binary() => any()}.
-
-%% Example:
-%% get_maintenance_window_result() :: #{
-%%   <<"AllowUnassociatedTargets">> => boolean(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Cutoff">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"EndDate">> => string(),
-%%   <<"ModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"NextExecutionTime">> => string(),
-%%   <<"Schedule">> => string(),
-%%   <<"ScheduleOffset">> => integer(),
-%%   <<"ScheduleTimezone">> => string(),
-%%   <<"StartDate">> => string(),
-%%   <<"WindowId">> => string()
-%% }
--type get_maintenance_window_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_ops_metadata_request() :: #{
-%%   <<"Metadata">> => map(),
-%%   <<"ResourceId">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_ops_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% automation_execution() :: #{
-%%   <<"Parameters">> => map(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"AutomationExecutionId">> => string(),
-%%   <<"ExecutionStartTime">> => non_neg_integer(),
-%%   <<"ExecutedBy">> => string(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"CurrentAction">> => string(),
-%%   <<"TargetLocationsURL">> => string(),
-%%   <<"CurrentStepName">> => string(),
-%%   <<"Outputs">> => map(),
-%%   <<"ResolvedTargets">> => resolved_targets(),
-%%   <<"TargetParameterName">> => string(),
-%%   <<"StepExecutionsTruncated">> => boolean(),
-%%   <<"TargetLocations">> => list(target_location()),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
-%%   <<"StepExecutions">> => list(step_execution()),
-%%   <<"ExecutionEndTime">> => non_neg_integer(),
-%%   <<"DocumentName">> => string(),
-%%   <<"ScheduledTime">> => non_neg_integer(),
-%%   <<"AssociationId">> => string(),
-%%   <<"ParentAutomationExecutionId">> => string(),
-%%   <<"Runbooks">> => list(runbook()),
-%%   <<"ProgressCounters">> => progress_counters(),
-%%   <<"ChangeRequestName">> => string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Variables">> => map(),
-%%   <<"AutomationExecutionStatus">> => list(any()),
-%%   <<"Targets">> => list(target()),
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"FailureMessage">> => string(),
-%%   <<"TargetMaps">> => list(map()),
-%%   <<"Target">> => string(),
-%%   <<"OpsItemId">> => string(),
-%%   <<"AutomationSubtype">> => list(any()),
-%%   <<"Mode">> => list(any())
-%% }
--type automation_execution() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_tasks_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tasks">> => list(maintenance_window_task())
-%% }
--type describe_maintenance_window_tasks_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_association_execution_targets_result() :: #{
-%%   <<"AssociationExecutionTargets">> => list(association_execution_target()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_association_execution_targets_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_patch_groups_result() :: #{
-%%   <<"Mappings">> => list(patch_group_patch_baseline_mapping()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_patch_groups_result() :: #{binary() => any()}.
-
-%% Example:
-%% invocation_does_not_exist() :: #{
-
-%% }
--type invocation_does_not_exist() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_executions_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WindowExecutions">> => list(maintenance_window_execution())
-%% }
--type describe_maintenance_window_executions_result() :: #{binary() => any()}.
-
-%% Example:
-%% s3_output_location() :: #{
-%%   <<"OutputS3BucketName">> => string(),
-%%   <<"OutputS3KeyPrefix">> => string(),
-%%   <<"OutputS3Region">> => string()
-%% }
--type s3_output_location() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_session_response() :: #{
-%%   <<"SessionId">> => string()
-%% }
--type terminate_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_patch_baseline_request() :: #{
-%%   <<"BaselineId">> := string()
-%% }
--type delete_patch_baseline_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_document_request() :: #{
-%%   <<"DocumentFormat">> => list(any()),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"VersionName">> => string()
-%% }
--type get_document_request() :: #{binary() => any()}.
-
-%% Example:
-%% reset_service_setting_result() :: #{
-%%   <<"ServiceSetting">> => service_setting()
-%% }
--type reset_service_setting_result() :: #{binary() => any()}.
-
-%% Example:
-%% document_metadata_response_info() :: #{
-%%   <<"ReviewerResponse">> => list(document_reviewer_response_source())
-%% }
--type document_metadata_response_info() :: #{binary() => any()}.
-
-%% Example:
-%% start_access_request_request() :: #{
-%%   <<"Reason">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Targets">> := list(target())
-%% }
--type start_access_request_request() :: #{binary() => any()}.
-
-%% Example:
-%% baseline_override() :: #{
-%%   <<"ApprovalRules">> => patch_rule_group(),
-%%   <<"ApprovedPatches">> => list(string()),
-%%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
-%%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
-%%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
-%%   <<"GlobalFilters">> => patch_filter_group(),
-%%   <<"OperatingSystem">> => list(any()),
-%%   <<"RejectedPatches">> => list(string()),
-%%   <<"RejectedPatchesAction">> => list(any()),
-%%   <<"Sources">> => list(patch_source())
-%% }
--type baseline_override() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameters_by_path_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ParameterFilters">> => list(parameter_string_filter()),
-%%   <<"Path">> := string(),
-%%   <<"Recursive">> => boolean(),
-%%   <<"WithDecryption">> => boolean()
-%% }
--type get_parameters_by_path_request() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type ops_item_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% runbook() :: #{
-%%   <<"DocumentName">> => string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"TargetLocations">> => list(target_location()),
-%%   <<"TargetMaps">> => list(map()),
-%%   <<"TargetParameterName">> => string(),
-%%   <<"Targets">> => list(target())
-%% }
--type runbook() :: #{binary() => any()}.
-
-%% Example:
-%% describe_automation_step_executions_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StepExecutions">> => list(step_execution())
-%% }
--type describe_automation_step_executions_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_schedule_request() :: #{
-%%   <<"Filters">> => list(patch_orchestrator_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Targets">> => list(target()),
-%%   <<"WindowId">> => string()
-%% }
--type describe_maintenance_window_schedule_request() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type ops_item_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% register_task_with_maintenance_window_request() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"ClientToken">> => string(),
-%%   <<"CutoffBehavior">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"LoggingInfo">> => logging_info(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()),
-%%   <<"TaskArn">> := string(),
-%%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
-%%   <<"TaskParameters">> => map(),
-%%   <<"TaskType">> := list(any()),
-%%   <<"WindowId">> := string()
-%% }
--type register_task_with_maintenance_window_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_aggregator_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_aggregator_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_option_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_option_exception() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_calendar_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_calendar_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_schedule() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_schedule() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_setting_request() :: #{
-%%   <<"SettingId">> := string()
-%% }
--type get_service_setting_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_information() :: #{
-%%   <<"ActivationId">> => string(),
-%%   <<"AgentVersion">> => string(),
-%%   <<"AssociationOverview">> => instance_aggregated_association_overview(),
-%%   <<"AssociationStatus">> => string(),
-%%   <<"ComputerName">> => string(),
-%%   <<"IPAddress">> => string(),
-%%   <<"IamRole">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"IsLatestVersion">> => boolean(),
-%%   <<"LastAssociationExecutionDate">> => non_neg_integer(),
-%%   <<"LastPingDateTime">> => non_neg_integer(),
-%%   <<"LastSuccessfulAssociationExecutionDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PingStatus">> => list(any()),
-%%   <<"PlatformName">> => string(),
-%%   <<"PlatformType">> => list(any()),
-%%   <<"PlatformVersion">> => string(),
-%%   <<"RegistrationDate">> => non_neg_integer(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"SourceId">> => string(),
-%%   <<"SourceType">> => list(any())
-%% }
--type instance_information() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_role() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_role() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_tasks_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WindowId">> := string()
-%% }
--type describe_maintenance_window_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% command_filter() :: #{
-%%   <<"key">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type command_filter() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_error() :: #{
-
-%% }
--type too_many_tags_error() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_data_sync_request() :: #{
-%%   <<"SyncName">> := string(),
-%%   <<"SyncSource">> := resource_data_sync_source(),
-%%   <<"SyncType">> := string()
-%% }
--type update_resource_data_sync_request() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_summary() :: #{
-%%   <<"ActualEndTime">> => non_neg_integer(),
-%%   <<"ActualStartTime">> => non_neg_integer(),
-%%   <<"Category">> => string(),
-%%   <<"CreatedBy">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"OperationalData">> => map(),
-%%   <<"OpsItemId">> => string(),
-%%   <<"OpsItemType">> => string(),
-%%   <<"PlannedEndTime">> => non_neg_integer(),
-%%   <<"PlannedStartTime">> => non_neg_integer(),
-%%   <<"Priority">> => integer(),
-%%   <<"Severity">> => string(),
-%%   <<"Source">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Title">> => string()
-%% }
--type ops_item_summary() :: #{binary() => any()}.
-
-%% Example:
-%% register_patch_baseline_for_patch_group_result() :: #{
-%%   <<"BaselineId">> => string(),
-%%   <<"PatchGroup">> => string()
-%% }
--type register_patch_baseline_for_patch_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% ops_metadata_invalid_argument_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type ops_metadata_invalid_argument_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% describe_patch_group_state_request() :: #{
-%%   <<"PatchGroup">> := string()
-%% }
--type describe_patch_group_state_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_setting_request() :: #{
-%%   <<"SettingId">> := string(),
-%%   <<"SettingValue">> := string()
-%% }
--type update_service_setting_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_document_result() :: #{
-%%   <<"DocumentDescription">> => document_description()
-%% }
--type create_document_result() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_managed_instance_result() :: #{
-
-%% }
--type deregister_managed_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_deletion_id_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_deletion_id_exception() :: #{binary() => any()}.
-
-%% Example:
-%% compliance_item_entry() :: #{
-%%   <<"Details">> => map(),
-%%   <<"Id">> => string(),
-%%   <<"Severity">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Title">> => string()
-%% }
--type compliance_item_entry() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameter_result() :: #{
-%%   <<"Parameter">> => parameter()
-%% }
--type get_parameter_result() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_event_summary() :: #{
-%%   <<"CreatedBy">> => ops_item_identity(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Detail">> => string(),
-%%   <<"DetailType">> => string(),
-%%   <<"EventId">> => string(),
-%%   <<"OpsItemId">> => string(),
-%%   <<"Source">> => string()
-%% }
--type ops_item_event_summary() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_already_exists() :: #{
-%%   <<"message">> => string()
-%% }
--type parameter_already_exists() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_activation_id() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_activation_id() :: #{binary() => any()}.
-
-%% Example:
-%% modify_document_permission_request() :: #{
-%%   <<"AccountIdsToAdd">> => list(string()),
-%%   <<"AccountIdsToRemove">> => list(string()),
-%%   <<"Name">> := string(),
-%%   <<"PermissionType">> := list(any()),
-%%   <<"SharedDocumentVersion">> => string()
-%% }
--type modify_document_permission_request() :: #{binary() => any()}.
-
-%% Example:
-%% ops_metadata_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type ops_metadata_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% node_aggregator() :: #{
-%%   <<"AggregatorType">> => list(any()),
-%%   <<"Aggregators">> => list(node_aggregator()),
-%%   <<"AttributeName">> => list(any()),
-%%   <<"TypeName">> => list(any())
-%% }
--type node_aggregator() :: #{binary() => any()}.
-
-%% Example:
-%% send_command_request() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
-%%   <<"Comment">> => string(),
-%%   <<"DocumentHash">> => string(),
-%%   <<"DocumentHashType">> => list(any()),
-%%   <<"DocumentName">> := string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"InstanceIds">> => list(string()),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"NotificationConfig">> => notification_config(),
-%%   <<"OutputS3BucketName">> => string(),
-%%   <<"OutputS3KeyPrefix">> => string(),
-%%   <<"OutputS3Region">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()),
-%%   <<"TimeoutSeconds">> => integer()
-%% }
--type send_command_request() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_instance_id() :: #{
-
-%% }
--type duplicate_instance_id() :: #{binary() => any()}.
-
-%% Example:
-%% get_ops_metadata_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OpsMetadataArn">> := string()
-%% }
--type get_ops_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_deletion_status_item() :: #{
-%%   <<"DeletionId">> => string(),
-%%   <<"DeletionStartTime">> => non_neg_integer(),
-%%   <<"DeletionSummary">> => inventory_deletion_summary(),
-%%   <<"LastStatus">> => list(any()),
-%%   <<"LastStatusMessage">> => string(),
-%%   <<"LastStatusUpdateTime">> => non_neg_integer(),
-%%   <<"TypeName">> => string()
-%% }
--type inventory_deletion_status_item() :: #{binary() => any()}.
-
-%% Example:
-%% ops_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type ops_filter() :: #{binary() => any()}.
-
-%% Example:
-%% document_default_version_description() :: #{
-%%   <<"DefaultVersion">> => string(),
-%%   <<"DefaultVersionName">> => string(),
-%%   <<"Name">> => string()
-%% }
--type document_default_version_description() :: #{binary() => any()}.
-
-%% Example:
-%% resource_compliance_summary_item() :: #{
-%%   <<"ComplianceType">> => string(),
-%%   <<"CompliantSummary">> => compliant_summary(),
-%%   <<"ExecutionSummary">> => compliance_execution_summary(),
-%%   <<"NonCompliantSummary">> => non_compliant_summary(),
-%%   <<"OverallSeverity">> => list(any()),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type resource_compliance_summary_item() :: #{binary() => any()}.
-
-%% Example:
-%% patch() :: #{
-%%   <<"AdvisoryIds">> => list(string()),
-%%   <<"Arch">> => string(),
-%%   <<"BugzillaIds">> => list(string()),
-%%   <<"CVEIds">> => list(string()),
-%%   <<"Classification">> => string(),
-%%   <<"ContentUrl">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Epoch">> => integer(),
-%%   <<"Id">> => string(),
-%%   <<"KbNumber">> => string(),
-%%   <<"Language">> => string(),
-%%   <<"MsrcNumber">> => string(),
-%%   <<"MsrcSeverity">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Product">> => string(),
-%%   <<"ProductFamily">> => string(),
-%%   <<"Release">> => string(),
-%%   <<"ReleaseDate">> => non_neg_integer(),
-%%   <<"Repository">> => string(),
-%%   <<"Severity">> => string(),
-%%   <<"Title">> => string(),
-%%   <<"Vendor">> => string(),
-%%   <<"Version">> => string()
-%% }
--type patch() :: #{binary() => any()}.
-
-%% Example:
-%% list_commands_result() :: #{
-%%   <<"Commands">> => list(command()),
-%%   <<"NextToken">> => string()
-%% }
--type list_commands_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_calendar_state_request() :: #{
-%%   <<"AtTime">> => string(),
-%%   <<"CalendarNames">> := list(string())
-%% }
--type get_calendar_state_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_nodes_summary_request() :: #{
-%%   <<"Aggregators">> := list(node_aggregator()),
-%%   <<"Filters">> => list(node_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SyncName">> => string()
-%% }
--type list_nodes_summary_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_inventory_request() :: #{
-%%   <<"Aggregators">> => list(inventory_aggregator()),
-%%   <<"Filters">> => list(inventory_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResultAttributes">> => list(result_attribute())
-%% }
--type get_inventory_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_patch_baseline_for_patch_group_result() :: #{
-%%   <<"BaselineId">> => string(),
-%%   <<"OperatingSystem">> => list(any()),
-%%   <<"PatchGroup">> => string()
-%% }
--type get_patch_baseline_for_patch_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_execution_tasks_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WindowExecutionId">> := string()
-%% }
--type describe_maintenance_window_execution_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_maintenance_window_request() :: #{
-%%   <<"AllowUnassociatedTargets">> => boolean(),
-%%   <<"Cutoff">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"EndDate">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Replace">> => boolean(),
-%%   <<"Schedule">> => string(),
-%%   <<"ScheduleOffset">> => integer(),
-%%   <<"ScheduleTimezone">> => string(),
-%%   <<"StartDate">> => string(),
-%%   <<"WindowId">> := string()
-%% }
--type update_maintenance_window_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameter_history_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(parameter_history())
-%% }
--type get_parameter_history_result() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_target_from_maintenance_window_result() :: #{
-%%   <<"WindowId">> => string(),
-%%   <<"WindowTargetId">> => string()
-%% }
--type deregister_target_from_maintenance_window_result() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_managed_instance_request() :: #{
-%%   <<"InstanceId">> := string()
-%% }
--type deregister_managed_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% association_execution_targets_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type association_execution_targets_filter() :: #{binary() => any()}.
-
-%% Example:
-%% review_information() :: #{
-%%   <<"ReviewedTime">> => non_neg_integer(),
-%%   <<"Reviewer">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type review_information() :: #{binary() => any()}.
-
-%% Example:
-%% register_task_with_maintenance_window_result() :: #{
-%%   <<"WindowTaskId">> => string()
-%% }
--type register_task_with_maintenance_window_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_maintenance_window_request() :: #{
-%%   <<"AllowUnassociatedTargets">> := boolean(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Cutoff">> := integer(),
-%%   <<"Description">> => string(),
-%%   <<"Duration">> := integer(),
-%%   <<"EndDate">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Schedule">> := string(),
-%%   <<"ScheduleOffset">> => integer(),
-%%   <<"ScheduleTimezone">> => string(),
-%%   <<"StartDate">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_maintenance_window_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ops_items_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"OpsItemSummaries">> => list(ops_item_summary())
-%% }
--type describe_ops_items_response() :: #{binary() => any()}.
-
-%% Example:
-%% document_reviews() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Comment">> => list(document_review_comment_source())
-%% }
--type document_reviews() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_activation() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_activation() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_inventory_schema_version_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_inventory_schema_version_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_parameter_result() :: #{
-
-%% }
--type delete_parameter_result() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_organizational_unit() :: #{
-%%   <<"OrganizationalUnitId">> => string()
-%% }
--type resource_data_sync_organizational_unit() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_patch_states_result() :: #{
-%%   <<"InstancePatchStates">> => list(instance_patch_state()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_instance_patch_states_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_filter_option() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_filter_option() :: #{binary() => any()}.
-
-%% Example:
-%% ops_metadata() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"LastModifiedUser">> => string(),
-%%   <<"OpsMetadataArn">> => string(),
-%%   <<"ResourceId">> => string()
-%% }
--type ops_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_key_id() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_key_id() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_allowed_pattern_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_allowed_pattern_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_ops_metadata_result() :: #{
-%%   <<"OpsMetadataArn">> => string()
-%% }
--type update_ops_metadata_result() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_related_item_association_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type ops_item_related_item_association_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_related_item_already_exists_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"OpsItemId">> => string(),
-%%   <<"ResourceUri">> => string()
-%% }
--type ops_item_related_item_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% parameter() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"DataType">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Selector">> => string(),
-%%   <<"SourceResult">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string(),
-%%   <<"Version">> => float()
-%% }
--type parameter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_automation_step_executions_request() :: #{
-%%   <<"AutomationExecutionId">> := string(),
-%%   <<"Filters">> => list(step_execution_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ReverseOrder">> => boolean()
-%% }
--type describe_automation_step_executions_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_connection_status_response() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"Target">> => string()
-%% }
--type get_connection_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_properties_result() :: #{
-%%   <<"InstanceProperties">> => list(instance_property()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_instance_properties_result() :: #{binary() => any()}.
-
-%% Example:
-%% parameters_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type parameters_filter() :: #{binary() => any()}.
+-type associated_instances() :: #{binary() => any()}.
 
 %% Example:
 %% association() :: #{
@@ -2940,2456 +465,10 @@
 -type association() :: #{binary() => any()}.
 
 %% Example:
-%% list_nodes_request() :: #{
-%%   <<"Filters">> => list(node_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SyncName">> => string()
-%% }
--type list_nodes_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_command_invocation_request() :: #{
-%%   <<"CommandId">> := string(),
-%%   <<"InstanceId">> := string(),
-%%   <<"PluginName">> => string()
-%% }
--type get_command_invocation_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ops_items_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OpsItemFilters">> => list(ops_item_filter())
-%% }
--type describe_ops_items_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_maintenance_window_execution_result() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => string(),
-%%   <<"TaskIds">> => list(string()),
-%%   <<"WindowExecutionId">> => string()
-%% }
--type get_maintenance_window_execution_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_associations_result() :: #{
-%%   <<"Associations">> => list(association()),
-%%   <<"NextToken">> => string()
-%% }
--type list_associations_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_managed_instance_role_request() :: #{
-%%   <<"IamRole">> := string(),
-%%   <<"InstanceId">> := string()
-%% }
--type update_managed_instance_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_document_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_document_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% ops_metadata_key_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type ops_metadata_key_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_document_schema_version() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_document_schema_version() :: #{binary() => any()}.
-
-%% Example:
-%% create_activation_request() :: #{
-%%   <<"DefaultInstanceName">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ExpirationDate">> => non_neg_integer(),
-%%   <<"IamRole">> := string(),
-%%   <<"RegistrationLimit">> => integer(),
-%%   <<"RegistrationMetadata">> => list(registration_metadata_item()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_activation_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameters_request() :: #{
-%%   <<"Names">> := list(string()),
-%%   <<"WithDecryption">> => boolean()
-%% }
--type get_parameters_request() :: #{binary() => any()}.
-
-%% Example:
-%% automation_step_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type automation_step_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_deletion_summary() :: #{
-%%   <<"RemainingCount">> => integer(),
-%%   <<"SummaryItems">> => list(inventory_deletion_summary_item()),
-%%   <<"TotalCount">> => integer()
-%% }
--type inventory_deletion_summary() :: #{binary() => any()}.
-
-%% Example:
-%% document_filter() :: #{
-%%   <<"key">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type document_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_execution_tasks_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WindowExecutionTaskIdentities">> => list(maintenance_window_execution_task_identity())
-%% }
--type describe_maintenance_window_execution_tasks_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_patch_baseline_for_patch_group_request() :: #{
-%%   <<"OperatingSystem">> => list(any()),
-%%   <<"PatchGroup">> := string()
-%% }
--type get_patch_baseline_for_patch_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_command_invocation_result() :: #{
-%%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
-%%   <<"CommandId">> => string(),
-%%   <<"Comment">> => string(),
-%%   <<"DocumentName">> => string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"ExecutionElapsedTime">> => string(),
-%%   <<"ExecutionEndDateTime">> => string(),
-%%   <<"ExecutionStartDateTime">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"PluginName">> => string(),
-%%   <<"ResponseCode">> => integer(),
-%%   <<"StandardErrorContent">> => string(),
-%%   <<"StandardErrorUrl">> => string(),
-%%   <<"StandardOutputContent">> => string(),
-%%   <<"StandardOutputUrl">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => string()
-%% }
--type get_command_invocation_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_compliance_items_result() :: #{
-
-%% }
--type put_compliance_items_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_effective_patches_for_patch_baseline_request() :: #{
-%%   <<"BaselineId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_effective_patches_for_patch_baseline_request() :: #{binary() => any()}.
-
-%% Example:
-%% hierarchy_level_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type hierarchy_level_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_policy_conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_policy_conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_resource_data_sync_result() :: #{
-
-%% }
--type create_resource_data_sync_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_executions_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WindowId">> := string()
-%% }
--type describe_maintenance_window_executions_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_maintenance_window_execution_task_result() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"ServiceRole">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => string(),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskExecutionId">> => string(),
-%%   <<"TaskParameters">> => list(map()),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
-%%   <<"Type">> => list(any()),
-%%   <<"WindowExecutionId">> => string()
-%% }
--type get_maintenance_window_execution_task_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_deployable_patch_snapshot_for_instance_result() :: #{
-%%   <<"InstanceId">> => string(),
-%%   <<"Product">> => string(),
-%%   <<"SnapshotDownloadUrl">> => string(),
-%%   <<"SnapshotId">> => string()
-%% }
--type get_deployable_patch_snapshot_for_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% patch_rule_group() :: #{
-%%   <<"PatchRules">> => list(patch_rule())
-%% }
--type patch_rule_group() :: #{binary() => any()}.
-
-%% Example:
-%% registration_metadata_item() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type registration_metadata_item() :: #{binary() => any()}.
-
-%% Example:
-%% command_plugin() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Output">> => string(),
-%%   <<"OutputS3BucketName">> => string(),
-%%   <<"OutputS3KeyPrefix">> => string(),
-%%   <<"OutputS3Region">> => string(),
-%%   <<"ResponseCode">> => integer(),
-%%   <<"ResponseFinishDateTime">> => non_neg_integer(),
-%%   <<"ResponseStartDateTime">> => non_neg_integer(),
-%%   <<"StandardErrorUrl">> => string(),
-%%   <<"StandardOutputUrl">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => string()
-%% }
--type command_plugin() :: #{binary() => any()}.
-
-%% Example:
-%% get_patch_baseline_result() :: #{
-%%   <<"ApprovalRules">> => patch_rule_group(),
-%%   <<"ApprovedPatches">> => list(string()),
-%%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
-%%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
-%%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
-%%   <<"BaselineId">> => string(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"GlobalFilters">> => patch_filter_group(),
-%%   <<"ModifiedDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"OperatingSystem">> => list(any()),
-%%   <<"PatchGroups">> => list(string()),
-%%   <<"RejectedPatches">> => list(string()),
-%%   <<"RejectedPatchesAction">> => list(any()),
-%%   <<"Sources">> => list(patch_source())
-%% }
--type get_patch_baseline_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_documents_request() :: #{
-%%   <<"DocumentFilterList">> => list(document_filter()),
-%%   <<"Filters">> => list(document_key_values_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_documents_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_command_id() :: #{
-
-%% }
--type invalid_command_id() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_from_resource_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"ResourceType">> := list(any()),
-%%   <<"TagKeys">> := list(string())
-%% }
--type remove_tags_from_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_information_string_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type instance_information_string_filter() :: #{binary() => any()}.
-
-%% Example:
-%% automation_execution_inputs() :: #{
-%%   <<"Parameters">> => map(),
-%%   <<"TargetLocations">> => list(target_location()),
-%%   <<"TargetLocationsURL">> => string(),
-%%   <<"TargetMaps">> => list(map()),
-%%   <<"TargetParameterName">> => string(),
-%%   <<"Targets">> => list(target())
-%% }
--type automation_execution_inputs() :: #{binary() => any()}.
-
-%% Example:
-%% session() :: #{
-%%   <<"AccessType">> => list(any()),
-%%   <<"Details">> => string(),
-%%   <<"DocumentName">> => string(),
-%%   <<"EndDate">> => non_neg_integer(),
-%%   <<"MaxSessionDuration">> => string(),
-%%   <<"OutputUrl">> => session_manager_output_url(),
-%%   <<"Owner">> => string(),
-%%   <<"Reason">> => string(),
-%%   <<"SessionId">> => string(),
-%%   <<"StartDate">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Target">> => string()
-%% }
--type session() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policies_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type get_resource_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Policies">> => list(get_resource_policies_response_entry())
-%% }
--type get_resource_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% association_execution() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"AssociationId">> => string(),
-%%   <<"AssociationVersion">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"DetailedStatus">> => string(),
-%%   <<"ExecutionId">> => string(),
-%%   <<"LastExecutionDate">> => non_neg_integer(),
-%%   <<"ResourceCountByStatus">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information())
-%% }
--type association_execution() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_permission_type() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_permission_type() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_data_value() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type ops_item_data_value() :: #{binary() => any()}.
-
-%% Example:
-%% modify_document_permission_response() :: #{
-
-%% }
--type modify_document_permission_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_ops_metadata_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"OpsMetadataList">> => list(ops_metadata())
-%% }
--type list_ops_metadata_result() :: #{binary() => any()}.
-
-%% Example:
-%% ops_metadata_too_many_updates_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type ops_metadata_too_many_updates_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_managed_instance_role_result() :: #{
-
-%% }
--type update_managed_instance_role_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_data_sync_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceDataSyncItems">> => list(resource_data_sync_item())
-%% }
--type list_resource_data_sync_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_inventory_item_context_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_inventory_item_context_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameter_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"WithDecryption">> => boolean()
-%% }
--type get_parameter_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ops_item_request() :: #{
-%%   <<"OpsItemId">> := string()
-%% }
--type delete_ops_item_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_key_values_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type document_key_values_filter() :: #{binary() => any()}.
-
-%% Example:
-%% update_document_metadata_request() :: #{
-%%   <<"DocumentReviews">> := document_reviews(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Name">> := string()
-%% }
--type update_document_metadata_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_properties_request() :: #{
-%%   <<"FiltersWithOperator">> => list(instance_property_string_filter()),
-%%   <<"InstancePropertyFilterList">> => list(instance_property_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_instance_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_effective_instance_associations_request() :: #{
-%%   <<"InstanceId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_effective_instance_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_compliance_summaries_request() :: #{
-%%   <<"Filters">> => list(compliance_string_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_compliance_summaries_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_automation_execution_parameters_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_automation_execution_parameters_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_ops_summary_result() :: #{
-%%   <<"Entities">> => list(ops_entity()),
-%%   <<"NextToken">> => string()
-%% }
--type get_ops_summary_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_inventory_result() :: #{
-%%   <<"DeletionId">> => string(),
-%%   <<"DeletionSummary">> => inventory_deletion_summary(),
-%%   <<"TypeName">> => string()
-%% }
--type delete_inventory_result() :: #{binary() => any()}.
-
-%% Example:
-%% resume_session_response() :: #{
-%%   <<"SessionId">> => string(),
-%%   <<"StreamUrl">> => string(),
-%%   <<"TokenValue">> => string()
-%% }
--type resume_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_count_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_data_sync_count_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_document_result() :: #{
-
-%% }
--type delete_document_result() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_already_exists_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"OpsItemId">> => string()
-%% }
--type ops_item_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% service_setting_not_found() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_setting_not_found() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_document_type() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_document_type() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_aws_organizations_source() :: #{
-%%   <<"OrganizationSourceType">> => string(),
-%%   <<"OrganizationalUnits">> => list(resource_data_sync_organizational_unit())
-%% }
--type resource_data_sync_aws_organizations_source() :: #{binary() => any()}.
-
-%% Example:
-%% node_owner_info() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"OrganizationalUnitId">> => string(),
-%%   <<"OrganizationalUnitPath">> => string()
-%% }
--type node_owner_info() :: #{binary() => any()}.
-
-%% Example:
-%% get_execution_preview_response() :: #{
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"ExecutionPreview">> => list(),
-%%   <<"ExecutionPreviewId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type get_execution_preview_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_notification_config() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_notification_config() :: #{binary() => any()}.
-
-%% Example:
-%% item_size_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"TypeName">> => string()
-%% }
--type item_size_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_command_request() :: #{
-%%   <<"CommandId">> := string(),
-%%   <<"InstanceIds">> => list(string())
-%% }
--type cancel_command_request() :: #{binary() => any()}.
-
-%% Example:
-%% status_unchanged() :: #{
-
-%% }
--type status_unchanged() :: #{binary() => any()}.
-
-%% Example:
-%% get_automation_execution_request() :: #{
-%%   <<"AutomationExecutionId">> := string()
-%% }
--type get_automation_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_patch_states_for_patch_group_request() :: #{
-%%   <<"Filters">> => list(instance_patch_state_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PatchGroup">> := string()
-%% }
--type describe_instance_patch_states_for_patch_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_destination_data_sharing() :: #{
-%%   <<"DestinationDataSharingType">> => string()
-%% }
--type resource_data_sync_destination_data_sharing() :: #{binary() => any()}.
-
-%% Example:
-%% update_document_metadata_response() :: #{
-
-%% }
--type update_document_metadata_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_ops_item_response() :: #{
-%%   <<"OpsItem">> => ops_item()
-%% }
--type get_ops_item_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_association_status_request() :: #{
-%%   <<"AssociationStatus">> := association_status(),
-%%   <<"InstanceId">> := string(),
-%%   <<"Name">> := string()
-%% }
--type update_association_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_document_version_name() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_document_version_name() :: #{binary() => any()}.
-
-%% Example:
-%% document_already_exists() :: #{
-%%   <<"Message">> => string()
-%% }
--type document_already_exists() :: #{binary() => any()}.
-
-%% Example:
-%% list_document_metadata_history_response() :: #{
-%%   <<"Author">> => string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Metadata">> => document_metadata_response_info(),
-%%   <<"Name">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_document_metadata_history_response() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_window_identity() :: #{
-%%   <<"Cutoff">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"EndDate">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NextExecutionTime">> => string(),
-%%   <<"Schedule">> => string(),
-%%   <<"ScheduleOffset">> => integer(),
-%%   <<"ScheduleTimezone">> => string(),
-%%   <<"StartDate">> => string(),
-%%   <<"WindowId">> => string()
-%% }
--type maintenance_window_identity() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_output_folder() :: #{
-
-%% }
--type invalid_output_folder() :: #{binary() => any()}.
-
-%% Example:
-%% describe_parameters_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(parameter_metadata())
-%% }
--type describe_parameters_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_result() :: #{
-%%   <<"TagList">> => list(tag())
-%% }
--type list_tags_for_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% instance_association() :: #{
-%%   <<"AssociationId">> => string(),
-%%   <<"AssociationVersion">> => string(),
-%%   <<"Content">> => string(),
-%%   <<"InstanceId">> => string()
-%% }
--type instance_association() :: #{binary() => any()}.
-
-%% Example:
-%% describe_automation_executions_request() :: #{
-%%   <<"Filters">> => list(automation_execution_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_automation_executions_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_maintenance_window_result() :: #{
-%%   <<"AllowUnassociatedTargets">> => boolean(),
-%%   <<"Cutoff">> => integer(),
-%%   <<"Description">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"EndDate">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Schedule">> => string(),
-%%   <<"ScheduleOffset">> => integer(),
-%%   <<"ScheduleTimezone">> => string(),
-%%   <<"StartDate">> => string(),
-%%   <<"WindowId">> => string()
-%% }
--type update_maintenance_window_result() :: #{binary() => any()}.
-
-%% Example:
-%% instance_property_string_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type instance_property_string_filter() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_inventory_group_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_inventory_group_exception() :: #{binary() => any()}.
-
-%% Example:
-%% severity_summary() :: #{
-%%   <<"CriticalCount">> => integer(),
-%%   <<"HighCount">> => integer(),
-%%   <<"InformationalCount">> => integer(),
-%%   <<"LowCount">> => integer(),
-%%   <<"MediumCount">> => integer(),
-%%   <<"UnspecifiedCount">> => integer()
-%% }
--type severity_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_associations_request() :: #{
-%%   <<"AssociationFilterList">> => list(association_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_inventory_deletions_result() :: #{
-%%   <<"InventoryDeletions">> => list(inventory_deletion_status_item()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_inventory_deletions_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_maintenance_window_result() :: #{
-%%   <<"WindowId">> => string()
-%% }
--type delete_maintenance_window_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_sessions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(session())
-%% }
--type describe_sessions_response() :: #{binary() => any()}.
-
-%% Example:
-%% session_filter() :: #{
-%%   <<"key">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type session_filter() :: #{binary() => any()}.
-
-%% Example:
-%% create_association_request() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"ApplyOnlyAtCronInterval">> => boolean(),
-%%   <<"AssociationDispatchAssumeRole">> => string(),
-%%   <<"AssociationName">> => string(),
-%%   <<"AutomationTargetParameterName">> => string(),
-%%   <<"CalendarNames">> => list(string()),
-%%   <<"ComplianceSeverity">> => list(any()),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"InstanceId">> => string(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"OutputLocation">> => instance_association_output_location(),
-%%   <<"Parameters">> => map(),
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"ScheduleOffset">> => integer(),
-%%   <<"SyncCompliance">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetLocations">> => list(target_location()),
-%%   <<"TargetMaps">> => list(map()),
-%%   <<"Targets">> => list(target())
-%% }
--type create_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_ops_item_response() :: #{
-
-%% }
--type update_ops_item_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_command_invocations_result() :: #{
-%%   <<"CommandInvocations">> => list(command_invocation()),
-%%   <<"NextToken">> => string()
-%% }
--type list_command_invocations_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"Policy">> := string(),
-%%   <<"PolicyHash">> => string(),
-%%   <<"PolicyId">> => string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% label_parameter_version_result() :: #{
-%%   <<"InvalidLabels">> => list(string()),
-%%   <<"ParameterVersion">> => float()
-%% }
--type label_parameter_version_result() :: #{binary() => any()}.
-
-%% Example:
-%% document_description() :: #{
-%%   <<"ApprovedVersion">> => string(),
-%%   <<"AttachmentsInformation">> => list(attachment_information()),
-%%   <<"Author">> => string(),
-%%   <<"Category">> => list(string()),
-%%   <<"CategoryEnum">> => list(string()),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DefaultVersion">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DocumentFormat">> => list(any()),
-%%   <<"DocumentType">> => list(any()),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Hash">> => string(),
-%%   <<"HashType">> => list(any()),
-%%   <<"LatestVersion">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"Parameters">> => list(document_parameter()),
-%%   <<"PendingReviewVersion">> => string(),
-%%   <<"PlatformTypes">> => list(list(any())()),
-%%   <<"Requires">> => list(document_requires()),
-%%   <<"ReviewInformation">> => list(review_information()),
-%%   <<"ReviewStatus">> => list(any()),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"Sha1">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusInformation">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetType">> => string(),
-%%   <<"VersionName">> => string()
-%% }
--type document_description() :: #{binary() => any()}.
-
-%% Example:
-%% start_session_response() :: #{
-%%   <<"SessionId">> => string(),
-%%   <<"StreamUrl">> => string(),
-%%   <<"TokenValue">> => string()
-%% }
--type start_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ops_metadata_result() :: #{
-
-%% }
--type delete_ops_metadata_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_association_result() :: #{
-%%   <<"AssociationDescription">> => association_description()
-%% }
--type update_association_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_output_location() :: #{
-
-%% }
--type invalid_output_location() :: #{binary() => any()}.
-
-%% Example:
-%% instance_property() :: #{
-%%   <<"ActivationId">> => string(),
-%%   <<"AgentVersion">> => string(),
-%%   <<"Architecture">> => string(),
-%%   <<"AssociationOverview">> => instance_aggregated_association_overview(),
-%%   <<"AssociationStatus">> => string(),
-%%   <<"ComputerName">> => string(),
-%%   <<"IPAddress">> => string(),
-%%   <<"IamRole">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"InstanceRole">> => string(),
-%%   <<"InstanceState">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"KeyName">> => string(),
-%%   <<"LastAssociationExecutionDate">> => non_neg_integer(),
-%%   <<"LastPingDateTime">> => non_neg_integer(),
-%%   <<"LastSuccessfulAssociationExecutionDate">> => non_neg_integer(),
-%%   <<"LaunchTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"PingStatus">> => list(any()),
-%%   <<"PlatformName">> => string(),
-%%   <<"PlatformType">> => list(any()),
-%%   <<"PlatformVersion">> => string(),
-%%   <<"RegistrationDate">> => non_neg_integer(),
-%%   <<"ResourceType">> => string(),
-%%   <<"SourceId">> => string(),
-%%   <<"SourceType">> => list(any())
-%% }
--type instance_property() :: #{binary() => any()}.
-
-%% Example:
-%% describe_document_request() :: #{
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"VersionName">> => string()
-%% }
--type describe_document_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_inventory_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_inventory_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% compliant_summary() :: #{
-%%   <<"CompliantCount">> => integer(),
-%%   <<"SeveritySummary">> => severity_summary()
-%% }
--type compliant_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_windows_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WindowIdentities">> => list(maintenance_window_identity())
-%% }
--type describe_maintenance_windows_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_association_execution_targets_request() :: #{
-%%   <<"AssociationId">> := string(),
-%%   <<"ExecutionId">> := string(),
-%%   <<"Filters">> => list(association_execution_targets_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_association_execution_targets_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_error() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_error() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_patch_states_for_patch_group_result() :: #{
-%%   <<"InstancePatchStates">> => list(instance_patch_state()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_instance_patch_states_for_patch_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% target_location() :: #{
-%%   <<"Accounts">> => list(string()),
-%%   <<"ExcludeAccounts">> => list(string()),
-%%   <<"ExecutionRoleName">> => string(),
-%%   <<"IncludeChildOrganizationUnits">> => boolean(),
-%%   <<"Regions">> => list(string()),
-%%   <<"TargetLocationAlarmConfiguration">> => alarm_configuration(),
-%%   <<"TargetLocationMaxConcurrency">> => string(),
-%%   <<"TargetLocationMaxErrors">> => string(),
-%%   <<"Targets">> => list(target()),
-%%   <<"TargetsMaxConcurrency">> => string(),
-%%   <<"TargetsMaxErrors">> => string()
-%% }
--type target_location() :: #{binary() => any()}.
-
-%% Example:
-%% delete_activation_request() :: #{
-%%   <<"ActivationId">> := string()
-%% }
--type delete_activation_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_information_result() :: #{
-%%   <<"InstanceInformationList">> => list(instance_information()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_instance_information_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_target_maps() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_target_maps() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_data_sync_request() :: #{
-%%   <<"SyncName">> := string(),
-%%   <<"SyncType">> => string()
-%% }
--type delete_resource_data_sync_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_document_versions_result() :: #{
-%%   <<"DocumentVersions">> => list(document_version_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_document_versions_result() :: #{binary() => any()}.
-
-%% Example:
-%% ops_entity_item() :: #{
-%%   <<"CaptureTime">> => string(),
-%%   <<"Content">> => list(map())
-%% }
--type ops_entity_item() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_setting_result() :: #{
-
-%% }
--type update_service_setting_result() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_ops_item_related_item_request() :: #{
-%%   <<"AssociationId">> := string(),
-%%   <<"OpsItemId">> := string()
-%% }
--type disassociate_ops_item_related_item_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_patch_baseline_for_patch_group_request() :: #{
-%%   <<"BaselineId">> := string(),
-%%   <<"PatchGroup">> := string()
-%% }
--type register_patch_baseline_for_patch_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_updates() :: #{
-%%   <<"Message">> => string()
-%% }
--type too_many_updates() :: #{binary() => any()}.
-
-%% Example:
-%% create_association_result() :: #{
-%%   <<"AssociationDescription">> => association_description()
-%% }
--type create_association_result() :: #{binary() => any()}.
-
-%% Example:
-%% patch_rule() :: #{
-%%   <<"ApproveAfterDays">> => integer(),
-%%   <<"ApproveUntilDate">> => string(),
-%%   <<"ComplianceLevel">> => list(any()),
-%%   <<"EnableNonSecurity">> => boolean(),
-%%   <<"PatchFilterGroup">> => patch_filter_group()
-%% }
--type patch_rule() :: #{binary() => any()}.
-
-%% Example:
-%% reset_service_setting_request() :: #{
-%%   <<"SettingId">> := string()
-%% }
--type reset_service_setting_request() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_notification() :: #{
-%%   <<"Arn">> => string()
-%% }
--type ops_item_notification() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_invalid_parameter_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ParameterNames">> => list(string())
-%% }
--type ops_item_invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_document_result() :: #{
-%%   <<"Document">> => document_description()
-%% }
--type describe_document_result() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_window_target() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerInformation">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Targets">> => list(target()),
-%%   <<"WindowId">> => string(),
-%%   <<"WindowTargetId">> => string()
-%% }
--type maintenance_window_target() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_schedule_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ScheduledWindowExecutions">> => list(scheduled_window_execution())
-%% }
--type describe_maintenance_window_schedule_result() :: #{binary() => any()}.
-
-%% Example:
-%% feature_not_available_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type feature_not_available_exception() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_window_run_command_parameters() :: #{
-%%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
-%%   <<"Comment">> => string(),
-%%   <<"DocumentHash">> => string(),
-%%   <<"DocumentHashType">> => list(any()),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"NotificationConfig">> => notification_config(),
-%%   <<"OutputS3BucketName">> => string(),
-%%   <<"OutputS3KeyPrefix">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"ServiceRoleArn">> => string(),
-%%   <<"TimeoutSeconds">> => integer()
-%% }
--type maintenance_window_run_command_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% describe_effective_patches_for_patch_baseline_result() :: #{
-%%   <<"EffectivePatches">> => list(effective_patch()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_effective_patches_for_patch_baseline_result() :: #{binary() => any()}.
-
-%% Example:
-%% failed_create_association() :: #{
-%%   <<"Entry">> => create_association_batch_request_entry(),
-%%   <<"Fault">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type failed_create_association() :: #{binary() => any()}.
-
-%% Example:
-%% list_ops_item_related_items_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(ops_item_related_item_summary())
-%% }
--type list_ops_item_related_items_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_association_executions_request() :: #{
-%%   <<"AssociationId">> := string(),
-%%   <<"Filters">> => list(association_execution_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_association_executions_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_activation_result() :: #{
-%%   <<"ActivationCode">> => string(),
-%%   <<"ActivationId">> => string()
-%% }
--type create_activation_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_instance_id() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_instance_id() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_ops_item_related_item_response() :: #{
-
-%% }
--type disassociate_ops_item_related_item_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_maintenance_window_task_result() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"CutoffBehavior">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"LoggingInfo">> => logging_info(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
-%%   <<"TaskParameters">> => map(),
-%%   <<"WindowId">> => string(),
-%%   <<"WindowTaskId">> => string()
-%% }
--type update_maintenance_window_task_result() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_source() :: #{
-%%   <<"AwsOrganizationsSource">> => resource_data_sync_aws_organizations_source(),
-%%   <<"EnableAllOpsDataSources">> => boolean(),
-%%   <<"IncludeFutureRegions">> => boolean(),
-%%   <<"SourceRegions">> => list(string()),
-%%   <<"SourceType">> => string()
-%% }
--type resource_data_sync_source() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ReasonCode">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"ResourceType">> := list(any())
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_event_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type ops_item_event_filter() :: #{binary() => any()}.
-
-%% Example:
-%% patch_compliance_data() :: #{
-%%   <<"CVEIds">> => string(),
-%%   <<"Classification">> => string(),
-%%   <<"InstalledTime">> => non_neg_integer(),
-%%   <<"KBId">> => string(),
-%%   <<"Severity">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Title">> => string()
-%% }
--type patch_compliance_data() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_automation_status_update_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_automation_status_update_exception() :: #{binary() => any()}.
-
-%% Example:
-%% progress_counters() :: #{
-%%   <<"CancelledSteps">> => integer(),
-%%   <<"FailedSteps">> => integer(),
-%%   <<"SuccessSteps">> => integer(),
-%%   <<"TimedOutSteps">> => integer(),
-%%   <<"TotalSteps">> => integer()
-%% }
--type progress_counters() :: #{binary() => any()}.
-
-%% Example:
-%% attachment_content() :: #{
-%%   <<"Hash">> => string(),
-%%   <<"HashType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Size">> => float(),
-%%   <<"Url">> => string()
-%% }
--type attachment_content() :: #{binary() => any()}.
-
-%% Example:
-%% list_compliance_summaries_result() :: #{
-%%   <<"ComplianceSummaryItems">> => list(compliance_summary_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_compliance_summaries_result() :: #{binary() => any()}.
-
-%% Example:
-%% automation_execution_metadata() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"AssociationId">> => string(),
-%%   <<"AutomationExecutionId">> => string(),
-%%   <<"AutomationExecutionStatus">> => list(any()),
-%%   <<"AutomationSubtype">> => list(any()),
-%%   <<"AutomationType">> => list(any()),
-%%   <<"ChangeRequestName">> => string(),
-%%   <<"CurrentAction">> => string(),
-%%   <<"CurrentStepName">> => string(),
-%%   <<"DocumentName">> => string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"ExecutedBy">> => string(),
-%%   <<"ExecutionEndTime">> => non_neg_integer(),
-%%   <<"ExecutionStartTime">> => non_neg_integer(),
-%%   <<"FailureMessage">> => string(),
-%%   <<"LogFile">> => string(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Mode">> => list(any()),
-%%   <<"OpsItemId">> => string(),
-%%   <<"Outputs">> => map(),
-%%   <<"ParentAutomationExecutionId">> => string(),
-%%   <<"ResolvedTargets">> => resolved_targets(),
-%%   <<"Runbooks">> => list(runbook()),
-%%   <<"ScheduledTime">> => non_neg_integer(),
-%%   <<"Target">> => string(),
-%%   <<"TargetLocationsURL">> => string(),
-%%   <<"TargetMaps">> => list(map()),
-%%   <<"TargetParameterName">> => string(),
-%%   <<"Targets">> => list(target()),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information())
-%% }
--type automation_execution_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% associated_instances() :: #{
-
-%% }
--type associated_instances() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_targets_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WindowId">> := string()
-%% }
--type describe_maintenance_window_targets_request() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_window_task_invocation_parameters() :: #{
-%%   <<"Automation">> => maintenance_window_automation_parameters(),
-%%   <<"Lambda">> => maintenance_window_lambda_parameters(),
-%%   <<"RunCommand">> => maintenance_window_run_command_parameters(),
-%%   <<"StepFunctions">> => maintenance_window_step_functions_parameters()
-%% }
--type maintenance_window_task_invocation_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% output_source() :: #{
-%%   <<"OutputSourceId">> => string(),
-%%   <<"OutputSourceType">> => string()
-%% }
--type output_source() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"ServiceCode">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% register_target_with_maintenance_window_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerInformation">> => string(),
-%%   <<"ResourceType">> := list(any()),
-%%   <<"Targets">> := list(target()),
-%%   <<"WindowId">> := string()
-%% }
--type register_target_with_maintenance_window_request() :: #{binary() => any()}.
-
-%% Example:
-%% automation_definition_version_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type automation_definition_version_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_update() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_update() :: #{binary() => any()}.
-
-%% Example:
-%% list_compliance_items_result() :: #{
-%%   <<"ComplianceItems">> => list(compliance_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_compliance_items_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_maintenance_window_execution_task_invocation_result() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ExecutionId">> => string(),
-%%   <<"InvocationId">> => string(),
-%%   <<"OwnerInformation">> => string(),
-%%   <<"Parameters">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => string(),
-%%   <<"TaskExecutionId">> => string(),
-%%   <<"TaskType">> => list(any()),
-%%   <<"WindowExecutionId">> => string(),
-%%   <<"WindowTargetId">> => string()
-%% }
--type get_maintenance_window_execution_task_invocation_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_filter() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_filter() :: #{binary() => any()}.
-
-%% Example:
-%% s3_output_url() :: #{
-%%   <<"OutputUrl">> => string()
-%% }
--type s3_output_url() :: #{binary() => any()}.
-
-%% Example:
 %% association_already_exists() :: #{
 
 %% }
 -type association_already_exists() :: #{binary() => any()}.
-
-%% Example:
-%% describe_sessions_request() :: #{
-%%   <<"Filters">> => list(session_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"State">> := list(any())
-%% }
--type describe_sessions_request() :: #{binary() => any()}.
-
-%% Example:
-%% document_version_info() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DocumentFormat">> => list(any()),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"IsDefaultVersion">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"ReviewStatus">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusInformation">> => string(),
-%%   <<"VersionName">> => string()
-%% }
--type document_version_info() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_token_request() :: #{
-%%   <<"AccessRequestId">> := string()
-%% }
--type get_access_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% command_invocation() :: #{
-%%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
-%%   <<"CommandId">> => string(),
-%%   <<"CommandPlugins">> => list(command_plugin()),
-%%   <<"Comment">> => string(),
-%%   <<"DocumentName">> => string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"InstanceName">> => string(),
-%%   <<"NotificationConfig">> => notification_config(),
-%%   <<"RequestedDateTime">> => non_neg_integer(),
-%%   <<"ServiceRole">> => string(),
-%%   <<"StandardErrorUrl">> => string(),
-%%   <<"StandardOutputUrl">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => string(),
-%%   <<"TraceOutput">> => string()
-%% }
--type command_invocation() :: #{binary() => any()}.
-
-%% Example:
-%% delete_patch_baseline_result() :: #{
-%%   <<"BaselineId">> => string()
-%% }
--type delete_patch_baseline_result() :: #{binary() => any()}.
-
-%% Example:
-%% document_requires() :: #{
-%%   <<"Name">> => string(),
-%%   <<"RequireType">> => string(),
-%%   <<"Version">> => string(),
-%%   <<"VersionName">> => string()
-%% }
--type document_requires() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_filter_key() :: #{
-
-%% }
--type invalid_filter_key() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_pattern_mismatch_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type parameter_pattern_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% patch_status() :: #{
-%%   <<"ApprovalDate">> => non_neg_integer(),
-%%   <<"ComplianceLevel">> => list(any()),
-%%   <<"DeploymentStatus">> => list(any())
-%% }
--type patch_status() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_limit_exceeded_exception() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"LimitType">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"ResourceTypes">> => list(string())
-%% }
--type ops_item_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_inventory_result() :: #{
-%%   <<"Entities">> => list(inventory_result_entity()),
-%%   <<"NextToken">> => string()
-%% }
--type get_inventory_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_inventory_entries_result() :: #{
-%%   <<"CaptureTime">> => string(),
-%%   <<"Entries">> => list(map()),
-%%   <<"InstanceId">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"TypeName">> => string()
-%% }
--type list_inventory_entries_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"PolicyHash">> => string(),
-%%   <<"PolicyId">> => string()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_command_result() :: #{
-
-%% }
--type cancel_command_result() :: #{binary() => any()}.
-
-%% Example:
-%% resource_data_sync_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"SyncName">> => string(),
-%%   <<"SyncType">> => string()
-%% }
--type resource_data_sync_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% attachments_source() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type attachments_source() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_window_execution_task_invocations_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WindowExecutionTaskInvocationIdentities">> => list(maintenance_window_execution_task_invocation_identity())
-%% }
--type describe_maintenance_window_execution_task_invocations_result() :: #{binary() => any()}.
-
-%% Example:
-%% session_manager_output_url() :: #{
-%%   <<"CloudWatchOutputUrl">> => string(),
-%%   <<"S3OutputUrl">> => string()
-%% }
--type session_manager_output_url() :: #{binary() => any()}.
-
-%% Example:
-%% describe_activations_result() :: #{
-%%   <<"ActivationList">> => list(activation()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_activations_result() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_limit_exceeded() :: #{
-%%   <<"message">> => string()
-%% }
--type parameter_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% remove_tags_from_resource_result() :: #{
-
-%% }
--type remove_tags_from_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% instance_association_output_url() :: #{
-%%   <<"S3OutputUrl">> => s3_output_url()
-%% }
--type instance_association_output_url() :: #{binary() => any()}.
-
-%% Example:
-%% get_ops_metadata_result() :: #{
-%%   <<"Metadata">> => map(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceId">> => string()
-%% }
--type get_ops_metadata_result() :: #{binary() => any()}.
-
-%% Example:
-%% document_limit_exceeded() :: #{
-%%   <<"Message">> => string()
-%% }
--type document_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% target_not_connected() :: #{
-%%   <<"Message">> => string()
-%% }
--type target_not_connected() :: #{binary() => any()}.
-
-%% Example:
-%% ssm_node() :: #{
-%%   <<"CaptureTime">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"NodeType">> => list(),
-%%   <<"Owner">> => node_owner_info(),
-%%   <<"Region">> => string()
-%% }
--type ssm_node() :: #{binary() => any()}.
-
-%% Example:
-%% create_ops_metadata_result() :: #{
-%%   <<"OpsMetadataArn">> => string()
-%% }
--type create_ops_metadata_result() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_related_item_summary() :: #{
-%%   <<"AssociationId">> => string(),
-%%   <<"AssociationType">> => string(),
-%%   <<"CreatedBy">> => ops_item_identity(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"LastModifiedBy">> => ops_item_identity(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"OpsItemId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ResourceUri">> => string()
-%% }
--type ops_item_related_item_summary() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_version_label_limit_exceeded() :: #{
-%%   <<"message">> => string()
-%% }
--type parameter_version_label_limit_exceeded() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"PolicyHash">> := string(),
-%%   <<"PolicyId">> := string(),
-%%   <<"ResourceArn">> := string()
-%% }
--type delete_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_calendar_state_response() :: #{
-%%   <<"AtTime">> => string(),
-%%   <<"NextTransitionTime">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type get_calendar_state_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_compliance_items_request() :: #{
-%%   <<"Filters">> => list(compliance_string_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceIds">> => list(string()),
-%%   <<"ResourceTypes">> => list(string())
-%% }
--type list_compliance_items_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_patches_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Patches">> => list(patch_compliance_data())
-%% }
--type describe_instance_patches_result() :: #{binary() => any()}.
-
-%% Example:
-%% command() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
-%%   <<"CommandId">> => string(),
-%%   <<"Comment">> => string(),
-%%   <<"CompletedCount">> => integer(),
-%%   <<"DeliveryTimedOutCount">> => integer(),
-%%   <<"DocumentName">> => string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"ErrorCount">> => integer(),
-%%   <<"ExpiresAfter">> => non_neg_integer(),
-%%   <<"InstanceIds">> => list(string()),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"NotificationConfig">> => notification_config(),
-%%   <<"OutputS3BucketName">> => string(),
-%%   <<"OutputS3KeyPrefix">> => string(),
-%%   <<"OutputS3Region">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"RequestedDateTime">> => non_neg_integer(),
-%%   <<"ServiceRole">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => string(),
-%%   <<"TargetCount">> => integer(),
-%%   <<"Targets">> => list(target()),
-%%   <<"TimeoutSeconds">> => integer(),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information())
-%% }
--type command() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_history() :: #{
-%%   <<"AllowedPattern">> => string(),
-%%   <<"DataType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"KeyId">> => string(),
-%%   <<"Labels">> => list(string()),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"LastModifiedUser">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Policies">> => list(parameter_inline_policy()),
-%%   <<"Tier">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string(),
-%%   <<"Version">> => float()
-%% }
--type parameter_history() :: #{binary() => any()}.
-
-%% Example:
-%% get_maintenance_window_execution_task_request() :: #{
-%%   <<"TaskId">> := string(),
-%%   <<"WindowExecutionId">> := string()
-%% }
--type get_maintenance_window_execution_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_parameter_result() :: #{
-%%   <<"Tier">> => list(any()),
-%%   <<"Version">> => float()
-%% }
--type put_parameter_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_document_default_version_result() :: #{
-%%   <<"Description">> => document_default_version_description()
-%% }
--type update_document_default_version_result() :: #{binary() => any()}.
-
-%% Example:
-%% target_preview() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"TargetType">> => string()
-%% }
--type target_preview() :: #{binary() => any()}.
-
-%% Example:
-%% automation_execution_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type automation_execution_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_ops_item_related_items_request() :: #{
-%%   <<"Filters">> => list(ops_item_related_items_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OpsItemId">> => string()
-%% }
--type list_ops_item_related_items_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_ops_item_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"ActualEndTime">> => non_neg_integer(),
-%%   <<"ActualStartTime">> => non_neg_integer(),
-%%   <<"Category">> => string(),
-%%   <<"Description">> := string(),
-%%   <<"Notifications">> => list(ops_item_notification()),
-%%   <<"OperationalData">> => map(),
-%%   <<"OpsItemType">> => string(),
-%%   <<"PlannedEndTime">> => non_neg_integer(),
-%%   <<"PlannedStartTime">> => non_neg_integer(),
-%%   <<"Priority">> => integer(),
-%%   <<"RelatedOpsItems">> => list(related_ops_item()),
-%%   <<"Severity">> => string(),
-%%   <<"Source">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Title">> := string()
-%% }
--type create_ops_item_request() :: #{binary() => any()}.
-
-%% Example:
-%% sub_type_count_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type sub_type_count_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_automation_execution_result() :: #{
-%%   <<"AutomationExecutionId">> => string()
-%% }
--type start_automation_execution_result() :: #{binary() => any()}.
-
-%% Example:
-%% instance_info() :: #{
-%%   <<"AgentType">> => string(),
-%%   <<"AgentVersion">> => string(),
-%%   <<"ComputerName">> => string(),
-%%   <<"InstanceStatus">> => string(),
-%%   <<"IpAddress">> => string(),
-%%   <<"ManagedStatus">> => list(any()),
-%%   <<"PlatformName">> => string(),
-%%   <<"PlatformType">> => list(any()),
-%%   <<"PlatformVersion">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type instance_info() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_automation_signal_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_automation_signal_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_data_sync_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SyncType">> => string()
-%% }
--type list_resource_data_sync_request() :: #{binary() => any()}.
-
-%% Example:
-%% association_does_not_exist() :: #{
-%%   <<"Message">> => string()
-%% }
--type association_does_not_exist() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_task_from_maintenance_window_request() :: #{
-%%   <<"WindowId">> := string(),
-%%   <<"WindowTaskId">> := string()
-%% }
--type deregister_task_from_maintenance_window_request() :: #{binary() => any()}.
-
-%% Example:
-%% add_tags_to_resource_result() :: #{
-
-%% }
--type add_tags_to_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_policy_type_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_policy_type_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_policy_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_policy_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_association_batch_request_entry() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"ApplyOnlyAtCronInterval">> => boolean(),
-%%   <<"AssociationName">> => string(),
-%%   <<"AutomationTargetParameterName">> => string(),
-%%   <<"CalendarNames">> => list(string()),
-%%   <<"ComplianceSeverity">> => list(any()),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"InstanceId">> => string(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputLocation">> => instance_association_output_location(),
-%%   <<"Parameters">> => map(),
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"ScheduleOffset">> => integer(),
-%%   <<"SyncCompliance">> => list(any()),
-%%   <<"TargetLocations">> => list(target_location()),
-%%   <<"TargetMaps">> => list(map()),
-%%   <<"Targets">> => list(target())
-%% }
--type create_association_batch_request_entry() :: #{binary() => any()}.
-
-%% Example:
-%% service_setting() :: #{
-%%   <<"ARN">> => string(),
-%%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"LastModifiedUser">> => string(),
-%%   <<"SettingId">> => string(),
-%%   <<"SettingValue">> => string(),
-%%   <<"Status">> => string()
-%% }
--type service_setting() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_window_automation_parameters() :: #{
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Parameters">> => map()
-%% }
--type maintenance_window_automation_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% update_document_default_version_request() :: #{
-%%   <<"DocumentVersion">> := string(),
-%%   <<"Name">> := string()
-%% }
--type update_document_default_version_request() :: #{binary() => any()}.
-
-%% Example:
-%% patch_filter_group() :: #{
-%%   <<"PatchFilters">> => list(patch_filter())
-%% }
--type patch_filter_group() :: #{binary() => any()}.
-
-%% Example:
-%% put_inventory_result() :: #{
-%%   <<"Message">> => string()
-%% }
--type put_inventory_result() :: #{binary() => any()}.
-
-%% Example:
-%% resolved_targets() :: #{
-%%   <<"ParameterValues">> => list(string()),
-%%   <<"Truncated">> => boolean()
-%% }
--type resolved_targets() :: #{binary() => any()}.
-
-%% Example:
-%% describe_effective_instance_associations_result() :: #{
-%%   <<"Associations">> => list(instance_association()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_effective_instance_associations_result() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_window_execution() :: #{
-%%   <<"ExecutionTime">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"WindowId">> => string()
-%% }
--type scheduled_window_execution() :: #{binary() => any()}.
-
-%% Example:
-%% automation_definition_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type automation_definition_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% automation_definition_not_approved_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type automation_definition_not_approved_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_maintenance_window_task_result() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"CutoffBehavior">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"LoggingInfo">> => logging_info(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
-%%   <<"TaskParameters">> => map(),
-%%   <<"TaskType">> => list(any()),
-%%   <<"WindowId">> => string(),
-%%   <<"WindowTaskId">> => string()
-%% }
--type get_maintenance_window_task_result() :: #{binary() => any()}.
-
-%% Example:
-%% compliance_type_count_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type compliance_type_count_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_platform_type() :: #{
-%%   <<"Message">> => string()
-%% }
--type unsupported_platform_type() :: #{binary() => any()}.
-
-%% Example:
-%% describe_instance_associations_status_result() :: #{
-%%   <<"InstanceAssociationStatusInfos">> => list(instance_association_status_info()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_instance_associations_status_result() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_result_item() :: #{
-%%   <<"CaptureTime">> => string(),
-%%   <<"Content">> => list(map()),
-%%   <<"ContentHash">> => string(),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"TypeName">> => string()
-%% }
--type inventory_result_item() :: #{binary() => any()}.
-
-%% Example:
-%% does_not_exist_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type does_not_exist_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_document_permission_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"PermissionType">> := list(any())
-%% }
--type describe_document_permission_request() :: #{binary() => any()}.
-
-%% Example:
-%% no_longer_supported_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type no_longer_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% patch_baseline_identity() :: #{
-%%   <<"BaselineDescription">> => string(),
-%%   <<"BaselineId">> => string(),
-%%   <<"BaselineName">> => string(),
-%%   <<"DefaultBaseline">> => boolean(),
-%%   <<"OperatingSystem">> => list(any())
-%% }
--type patch_baseline_identity() :: #{binary() => any()}.
-
-%% Example:
-%% step_execution() :: #{
-%%   <<"Action">> => string(),
-%%   <<"ExecutionEndTime">> => non_neg_integer(),
-%%   <<"ExecutionStartTime">> => non_neg_integer(),
-%%   <<"FailureDetails">> => failure_details(),
-%%   <<"FailureMessage">> => string(),
-%%   <<"Inputs">> => map(),
-%%   <<"IsCritical">> => boolean(),
-%%   <<"IsEnd">> => boolean(),
-%%   <<"MaxAttempts">> => integer(),
-%%   <<"NextStep">> => string(),
-%%   <<"OnFailure">> => string(),
-%%   <<"Outputs">> => map(),
-%%   <<"OverriddenParameters">> => map(),
-%%   <<"ParentStepDetails">> => parent_step_details(),
-%%   <<"Response">> => string(),
-%%   <<"ResponseCode">> => string(),
-%%   <<"StepExecutionId">> => string(),
-%%   <<"StepName">> => string(),
-%%   <<"StepStatus">> => list(any()),
-%%   <<"TargetLocation">> => target_location(),
-%%   <<"Targets">> => list(target()),
-%%   <<"TimeoutSeconds">> => float(),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
-%%   <<"ValidNextSteps">> => list(string())
-%% }
--type step_execution() :: #{binary() => any()}.
-
-%% Example:
-%% delete_inventory_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"SchemaDeleteOption">> => list(any()),
-%%   <<"TypeName">> := string()
-%% }
--type delete_inventory_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_association_executions_result() :: #{
-%%   <<"AssociationExecutions">> => list(association_execution()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_association_executions_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_maintenance_window_target_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OwnerInformation">> => string(),
-%%   <<"Replace">> => boolean(),
-%%   <<"Targets">> => list(target()),
-%%   <<"WindowId">> := string(),
-%%   <<"WindowTargetId">> := string()
-%% }
--type update_maintenance_window_target_request() :: #{binary() => any()}.
-
-%% Example:
-%% hierarchy_type_mismatch_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type hierarchy_type_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_window_execution_task_identity() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => string(),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskExecutionId">> => string(),
-%%   <<"TaskType">> => list(any()),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
-%%   <<"WindowExecutionId">> => string()
-%% }
--type maintenance_window_execution_task_identity() :: #{binary() => any()}.
-
-%% Example:
-%% create_patch_baseline_result() :: #{
-%%   <<"BaselineId">> => string()
-%% }
--type create_patch_baseline_result() :: #{binary() => any()}.
-
-%% Example:
-%% target_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type target_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% item_content_mismatch_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"TypeName">> => string()
-%% }
--type item_content_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_association_version() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_association_version() :: #{binary() => any()}.
-
-%% Example:
-%% list_documents_result() :: #{
-%%   <<"DocumentIdentifiers">> => list(document_identifier()),
-%%   <<"NextToken">> => string()
-%% }
--type list_documents_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_access_request_response() :: #{
-%%   <<"AccessRequestId">> => string()
-%% }
--type start_access_request_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_automation_execution_request() :: #{
-%%   <<"AutomationExecutionId">> := string(),
-%%   <<"Type">> => list(any())
-%% }
--type stop_automation_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_patch_baselines_result() :: #{
-%%   <<"BaselineIdentities">> => list(patch_baseline_identity()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_patch_baselines_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_association_request() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"ApplyOnlyAtCronInterval">> => boolean(),
-%%   <<"AssociationDispatchAssumeRole">> => string(),
-%%   <<"AssociationId">> := string(),
-%%   <<"AssociationName">> => string(),
-%%   <<"AssociationVersion">> => string(),
-%%   <<"AutomationTargetParameterName">> => string(),
-%%   <<"CalendarNames">> => list(string()),
-%%   <<"ComplianceSeverity">> => list(any()),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Duration">> => integer(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OutputLocation">> => instance_association_output_location(),
-%%   <<"Parameters">> => map(),
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"ScheduleOffset">> => integer(),
-%%   <<"SyncCompliance">> => list(any()),
-%%   <<"TargetLocations">> => list(target_location()),
-%%   <<"TargetMaps">> => list(map()),
-%%   <<"Targets">> => list(target())
-%% }
--type update_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_windows_for_target_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> := list(any()),
-%%   <<"Targets">> := list(target())
-%% }
--type describe_maintenance_windows_for_target_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_instance_information_filter_value() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_instance_information_filter_value() :: #{binary() => any()}.
-
-%% Example:
-%% instance_information_filter() :: #{
-%%   <<"key">> => list(any()),
-%%   <<"valueSet">> => list(string())
-%% }
--type instance_information_filter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_data_sync_result() :: #{
-
-%% }
--type delete_resource_data_sync_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_change_request_execution_result() :: #{
-%%   <<"AutomationExecutionId">> => string()
-%% }
--type start_change_request_execution_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_windows_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_maintenance_windows_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_change_request_execution_request() :: #{
-%%   <<"AutoApprove">> => boolean(),
-%%   <<"ChangeDetails">> => string(),
-%%   <<"ChangeRequestName">> => string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"DocumentName">> := string(),
-%%   <<"DocumentVersion">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"Runbooks">> := list(runbook()),
-%%   <<"ScheduledEndTime">> => non_neg_integer(),
-%%   <<"ScheduledTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_change_request_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_ops_item_request() :: #{
-%%   <<"ActualEndTime">> => non_neg_integer(),
-%%   <<"ActualStartTime">> => non_neg_integer(),
-%%   <<"Category">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Notifications">> => list(ops_item_notification()),
-%%   <<"OperationalData">> => map(),
-%%   <<"OperationalDataToDelete">> => list(string()),
-%%   <<"OpsItemArn">> => string(),
-%%   <<"OpsItemId">> := string(),
-%%   <<"PlannedEndTime">> => non_neg_integer(),
-%%   <<"PlannedStartTime">> => non_neg_integer(),
-%%   <<"Priority">> => integer(),
-%%   <<"RelatedOpsItems">> => list(related_ops_item()),
-%%   <<"Severity">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Title">> => string()
-%% }
--type update_ops_item_request() :: #{binary() => any()}.
-
-%% Example:
-%% unlabel_parameter_version_result() :: #{
-%%   <<"InvalidLabels">> => list(string()),
-%%   <<"RemovedLabels">> => list(string())
-%% }
--type unlabel_parameter_version_result() :: #{binary() => any()}.
-
-%% Example:
-%% association_filter() :: #{
-%%   <<"key">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type association_filter() :: #{binary() => any()}.
-
-%% Example:
-%% inventory_item() :: #{
-%%   <<"CaptureTime">> => string(),
-%%   <<"Content">> => list(map()),
-%%   <<"ContentHash">> => string(),
-%%   <<"Context">> => map(),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"TypeName">> => string()
-%% }
--type inventory_item() :: #{binary() => any()}.
-
-%% Example:
-%% ops_metadata_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type ops_metadata_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stop_automation_execution_result() :: #{
-
-%% }
--type stop_automation_execution_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_deployable_patch_snapshot_for_instance_request() :: #{
-%%   <<"BaselineOverride">> => baseline_override(),
-%%   <<"InstanceId">> := string(),
-%%   <<"SnapshotId">> := string(),
-%%   <<"UseS3DualStackEndpoint">> => boolean()
-%% }
--type get_deployable_patch_snapshot_for_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_document_permission_response() :: #{
-%%   <<"AccountIds">> => list(string()),
-%%   <<"AccountSharingInfoList">> => list(account_sharing_info()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_document_permission_response() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_related_items_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type ops_item_related_items_filter() :: #{binary() => any()}.
-
-%% Example:
-%% compliance_execution_summary() :: #{
-%%   <<"ExecutionId">> => string(),
-%%   <<"ExecutionTime">> => non_neg_integer(),
-%%   <<"ExecutionType">> => string()
-%% }
--type compliance_execution_summary() :: #{binary() => any()}.
-
-%% Example:
-%% ops_item_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type ops_item_filter() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_window_filter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type maintenance_window_filter() :: #{binary() => any()}.
-
-%% Example:
-%% put_compliance_items_request() :: #{
-%%   <<"ComplianceType">> := string(),
-%%   <<"ExecutionSummary">> := compliance_execution_summary(),
-%%   <<"ItemContentHash">> => string(),
-%%   <<"Items">> := list(compliance_item_entry()),
-%%   <<"ResourceId">> := string(),
-%%   <<"ResourceType">> := string(),
-%%   <<"UploadType">> => list(any())
-%% }
--type put_compliance_items_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_next_token() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_next_token() :: #{binary() => any()}.
-
-%% Example:
-%% describe_maintenance_windows_for_target_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WindowIdentities">> => list(maintenance_window_identity_for_target())
-%% }
--type describe_maintenance_windows_for_target_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_parameters_by_path_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(parameter())
-%% }
--type get_parameters_by_path_result() :: #{binary() => any()}.
-
-%% Example:
-%% alarm_configuration() :: #{
-%%   <<"Alarms">> => list(alarm()),
-%%   <<"IgnorePollAlarmFailure">> => boolean()
-%% }
--type alarm_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% maintenance_window_task() :: #{
-%%   <<"AlarmConfiguration">> => alarm_configuration(),
-%%   <<"CutoffBehavior">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"LoggingInfo">> => logging_info(),
-%%   <<"MaxConcurrency">> => string(),
-%%   <<"MaxErrors">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskParameters">> => map(),
-%%   <<"Type">> => list(any()),
-%%   <<"WindowId">> => string(),
-%%   <<"WindowTaskId">> => string()
-%% }
--type maintenance_window_task() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_document_operation() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_document_operation() :: #{binary() => any()}.
-
-%% Example:
-%% create_document_request() :: #{
-%%   <<"Attachments">> => list(attachments_source()),
-%%   <<"Content">> := string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DocumentFormat">> => list(any()),
-%%   <<"DocumentType">> => list(any()),
-%%   <<"Name">> := string(),
-%%   <<"Requires">> => list(document_requires()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TargetType">> => string(),
-%%   <<"VersionName">> => string()
-%% }
--type create_document_request() :: #{binary() => any()}.
 
 %% Example:
 %% association_description() :: #{
@@ -5427,11 +506,3139 @@
 -type association_description() :: #{binary() => any()}.
 
 %% Example:
-%% alarm_state_information() :: #{
+%% association_does_not_exist() :: #{
+%%   <<"Message">> => string()
+%% }
+-type association_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% association_execution() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"AssociationId">> => string(),
+%%   <<"AssociationVersion">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DetailedStatus">> => string(),
+%%   <<"ExecutionId">> => string(),
+%%   <<"LastExecutionDate">> => non_neg_integer(),
+%%   <<"ResourceCountByStatus">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information())
+%% }
+-type association_execution() :: #{binary() => any()}.
+
+%% Example:
+%% association_execution_does_not_exist() :: #{
+%%   <<"Message">> => string()
+%% }
+-type association_execution_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% association_execution_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type association_execution_filter() :: #{binary() => any()}.
+
+%% Example:
+%% association_execution_target() :: #{
+%%   <<"AssociationId">> => string(),
+%%   <<"AssociationVersion">> => string(),
+%%   <<"DetailedStatus">> => string(),
+%%   <<"ExecutionId">> => string(),
+%%   <<"LastExecutionDate">> => non_neg_integer(),
+%%   <<"OutputSource">> => output_source(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type association_execution_target() :: #{binary() => any()}.
+
+%% Example:
+%% association_execution_targets_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type association_execution_targets_filter() :: #{binary() => any()}.
+
+%% Example:
+%% association_filter() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type association_filter() :: #{binary() => any()}.
+
+%% Example:
+%% association_limit_exceeded() :: #{
+
+%% }
+-type association_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% association_overview() :: #{
+%%   <<"AssociationStatusAggregatedCount">> => map(),
+%%   <<"DetailedStatus">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type association_overview() :: #{binary() => any()}.
+
+%% Example:
+%% association_status() :: #{
+%%   <<"AdditionalInfo">> => string(),
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Name">> => list(any())
+%% }
+-type association_status() :: #{binary() => any()}.
+
+%% Example:
+%% association_version_info() :: #{
+%%   <<"ApplyOnlyAtCronInterval">> => boolean(),
+%%   <<"AssociationDispatchAssumeRole">> => string(),
+%%   <<"AssociationId">> => string(),
+%%   <<"AssociationName">> => string(),
+%%   <<"AssociationVersion">> => string(),
+%%   <<"CalendarNames">> => list(string()),
+%%   <<"ComplianceSeverity">> => list(any()),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"OutputLocation">> => instance_association_output_location(),
+%%   <<"Parameters">> => map(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"ScheduleOffset">> => integer(),
+%%   <<"SyncCompliance">> => list(any()),
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"Targets">> => list(target())
+%% }
+-type association_version_info() :: #{binary() => any()}.
+
+%% Example:
+%% association_version_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type association_version_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_content() :: #{
+%%   <<"Hash">> => string(),
+%%   <<"HashType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Size">> => float(),
+%%   <<"Url">> => string()
+%% }
+-type attachment_content() :: #{binary() => any()}.
+
+%% Example:
+%% attachment_information() :: #{
+%%   <<"Name">> => string()
+%% }
+-type attachment_information() :: #{binary() => any()}.
+
+%% Example:
+%% attachments_source() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type attachments_source() :: #{binary() => any()}.
+
+%% Example:
+%% automation_definition_not_approved_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type automation_definition_not_approved_exception() :: #{binary() => any()}.
+
+%% Example:
+%% automation_definition_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type automation_definition_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% automation_definition_version_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type automation_definition_version_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% automation_execution() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"AssociationId">> => string(),
+%%   <<"AutomationExecutionId">> => string(),
+%%   <<"AutomationExecutionStatus">> => list(any()),
+%%   <<"AutomationSubtype">> => list(any()),
+%%   <<"ChangeRequestName">> => string(),
+%%   <<"CurrentAction">> => string(),
+%%   <<"CurrentStepName">> => string(),
+%%   <<"DocumentName">> => string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"ExecutedBy">> => string(),
+%%   <<"ExecutionEndTime">> => non_neg_integer(),
+%%   <<"ExecutionStartTime">> => non_neg_integer(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"OpsItemId">> => string(),
+%%   <<"Outputs">> => map(),
+%%   <<"Parameters">> => map(),
+%%   <<"ParentAutomationExecutionId">> => string(),
+%%   <<"ProgressCounters">> => progress_counters(),
+%%   <<"ResolvedTargets">> => resolved_targets(),
+%%   <<"Runbooks">> => list(runbook()),
+%%   <<"ScheduledTime">> => non_neg_integer(),
+%%   <<"StepExecutions">> => list(step_execution()),
+%%   <<"StepExecutionsTruncated">> => boolean(),
+%%   <<"Target">> => string(),
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetLocationsURL">> => string(),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"TargetParameterName">> => string(),
+%%   <<"Targets">> => list(target()),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
+%%   <<"Variables">> => map(),
+%%   <<"WarningMessage">> => string()
+%% }
+-type automation_execution() :: #{binary() => any()}.
+
+%% Example:
+%% automation_execution_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type automation_execution_filter() :: #{binary() => any()}.
+
+%% Example:
+%% automation_execution_inputs() :: #{
+%%   <<"Parameters">> => map(),
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetLocationsURL">> => string(),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"TargetParameterName">> => string(),
+%%   <<"Targets">> => list(target())
+%% }
+-type automation_execution_inputs() :: #{binary() => any()}.
+
+%% Example:
+%% automation_execution_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type automation_execution_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% automation_execution_metadata() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"AssociationId">> => string(),
+%%   <<"AutomationExecutionId">> => string(),
+%%   <<"AutomationExecutionStatus">> => list(any()),
+%%   <<"AutomationSubtype">> => list(any()),
+%%   <<"AutomationType">> => list(any()),
+%%   <<"ChangeRequestName">> => string(),
+%%   <<"CurrentAction">> => string(),
+%%   <<"CurrentStepName">> => string(),
+%%   <<"DocumentName">> => string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"ExecutedBy">> => string(),
+%%   <<"ExecutionEndTime">> => non_neg_integer(),
+%%   <<"ExecutionStartTime">> => non_neg_integer(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"LogFile">> => string(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"OpsItemId">> => string(),
+%%   <<"Outputs">> => map(),
+%%   <<"ParentAutomationExecutionId">> => string(),
+%%   <<"ResolvedTargets">> => resolved_targets(),
+%%   <<"Runbooks">> => list(runbook()),
+%%   <<"ScheduledTime">> => non_neg_integer(),
+%%   <<"Target">> => string(),
+%%   <<"TargetLocationsURL">> => string(),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"TargetParameterName">> => string(),
+%%   <<"Targets">> => list(target()),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
+%%   <<"WarningMessage">> => string()
+%% }
+-type automation_execution_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% automation_execution_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type automation_execution_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% automation_execution_preview() :: #{
+%%   <<"Regions">> => list(string()),
+%%   <<"StepPreviews">> => map(),
+%%   <<"TargetPreviews">> => list(target_preview()),
+%%   <<"TotalAccounts">> => integer()
+%% }
+-type automation_execution_preview() :: #{binary() => any()}.
+
+%% Example:
+%% automation_step_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type automation_step_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% azure_configuration() :: #{
+%%   <<"ApplicationDisplayName">> => string(),
+%%   <<"ApplicationId">> => string(),
+%%   <<"Targets">> => list(),
+%%   <<"TenantDisplayName">> => string(),
+%%   <<"TenantId">> => string()
+%% }
+-type azure_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% azure_subscription() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type azure_subscription() :: #{binary() => any()}.
+
+%% Example:
+%% baseline_override() :: #{
+%%   <<"ApprovalRules">> => patch_rule_group(),
+%%   <<"ApprovedPatches">> => list(string()),
+%%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
+%%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
+%%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
+%%   <<"GlobalFilters">> => patch_filter_group(),
+%%   <<"OperatingSystem">> => list(any()),
+%%   <<"RejectedPatches">> => list(string()),
+%%   <<"RejectedPatchesAction">> => list(any()),
+%%   <<"Sources">> => list(patch_source())
+%% }
+-type baseline_override() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_command_request() :: #{
+%%   <<"CommandId">> := string(),
+%%   <<"InstanceIds">> => list(string())
+%% }
+-type cancel_command_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_command_result() :: #{
+
+%% }
+-type cancel_command_result() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_maintenance_window_execution_request() :: #{
+%%   <<"WindowExecutionId">> := string()
+%% }
+-type cancel_maintenance_window_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_maintenance_window_execution_result() :: #{
+%%   <<"WindowExecutionId">> => string()
+%% }
+-type cancel_maintenance_window_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_connector_filter() :: #{
+%%   <<"FilterKey">> => list(any()),
+%%   <<"FilterValues">> => list(string())
+%% }
+-type cloud_connector_filter() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_connector_summary() :: #{
+%%   <<"CloudConnectorId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type cloud_connector_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_output_config() :: #{
+%%   <<"CloudWatchLogGroupName">> => string(),
+%%   <<"CloudWatchOutputEnabled">> => boolean()
+%% }
+-type cloud_watch_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% command() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
+%%   <<"CommandId">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"CompletedCount">> => integer(),
+%%   <<"DeliveryTimedOutCount">> => integer(),
+%%   <<"DocumentName">> => string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"ErrorCount">> => integer(),
+%%   <<"ExpiresAfter">> => non_neg_integer(),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"NotificationConfig">> => notification_config(),
+%%   <<"OutputS3BucketName">> => string(),
+%%   <<"OutputS3KeyPrefix">> => string(),
+%%   <<"OutputS3Region">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"RequestedDateTime">> => non_neg_integer(),
+%%   <<"ServiceRole">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => string(),
+%%   <<"TargetCount">> => integer(),
+%%   <<"Targets">> => list(target()),
+%%   <<"TimeoutSeconds">> => integer(),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information())
+%% }
+-type command() :: #{binary() => any()}.
+
+%% Example:
+%% command_filter() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type command_filter() :: #{binary() => any()}.
+
+%% Example:
+%% command_invocation() :: #{
+%%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
+%%   <<"CommandId">> => string(),
+%%   <<"CommandPlugins">> => list(command_plugin()),
+%%   <<"Comment">> => string(),
+%%   <<"DocumentName">> => string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceName">> => string(),
+%%   <<"NotificationConfig">> => notification_config(),
+%%   <<"RequestedDateTime">> => non_neg_integer(),
+%%   <<"ServiceRole">> => string(),
+%%   <<"StandardErrorUrl">> => string(),
+%%   <<"StandardOutputUrl">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => string(),
+%%   <<"TraceOutput">> => string()
+%% }
+-type command_invocation() :: #{binary() => any()}.
+
+%% Example:
+%% command_plugin() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Output">> => string(),
+%%   <<"OutputS3BucketName">> => string(),
+%%   <<"OutputS3KeyPrefix">> => string(),
+%%   <<"OutputS3Region">> => string(),
+%%   <<"ResponseCode">> => integer(),
+%%   <<"ResponseFinishDateTime">> => non_neg_integer(),
+%%   <<"ResponseStartDateTime">> => non_neg_integer(),
+%%   <<"StandardErrorUrl">> => string(),
+%%   <<"StandardOutputUrl">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => string()
+%% }
+-type command_plugin() :: #{binary() => any()}.
+
+%% Example:
+%% compliance_execution_summary() :: #{
+%%   <<"ExecutionId">> => string(),
+%%   <<"ExecutionTime">> => non_neg_integer(),
+%%   <<"ExecutionType">> => string()
+%% }
+-type compliance_execution_summary() :: #{binary() => any()}.
+
+%% Example:
+%% compliance_item() :: #{
+%%   <<"ComplianceType">> => string(),
+%%   <<"Details">> => map(),
+%%   <<"ExecutionSummary">> => compliance_execution_summary(),
+%%   <<"Id">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Severity">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type compliance_item() :: #{binary() => any()}.
+
+%% Example:
+%% compliance_item_entry() :: #{
+%%   <<"Details">> => map(),
+%%   <<"Id">> => string(),
+%%   <<"Severity">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type compliance_item_entry() :: #{binary() => any()}.
+
+%% Example:
+%% compliance_string_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type compliance_string_filter() :: #{binary() => any()}.
+
+%% Example:
+%% compliance_summary_item() :: #{
+%%   <<"ComplianceType">> => string(),
+%%   <<"CompliantSummary">> => compliant_summary(),
+%%   <<"NonCompliantSummary">> => non_compliant_summary()
+%% }
+-type compliance_summary_item() :: #{binary() => any()}.
+
+%% Example:
+%% compliance_type_count_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type compliance_type_count_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% compliant_summary() :: #{
+%%   <<"CompliantCount">> => integer(),
+%%   <<"SeveritySummary">> => severity_summary()
+%% }
+-type compliant_summary() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_activation_request() :: #{
+%%   <<"DefaultInstanceName">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"IamRole">> := string(),
+%%   <<"RegistrationLimit">> => integer(),
+%%   <<"RegistrationMetadata">> => list(registration_metadata_item()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_activation_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_activation_result() :: #{
+%%   <<"ActivationCode">> => string(),
+%%   <<"ActivationId">> => string()
+%% }
+-type create_activation_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_association_batch_request() :: #{
+%%   <<"AssociationDispatchAssumeRole">> => string(),
+%%   <<"Entries">> := list(create_association_batch_request_entry())
+%% }
+-type create_association_batch_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_association_batch_request_entry() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"ApplyOnlyAtCronInterval">> => boolean(),
+%%   <<"AssociationName">> => string(),
+%%   <<"AutomationTargetParameterName">> => string(),
+%%   <<"CalendarNames">> => list(string()),
+%%   <<"ComplianceSeverity">> => list(any()),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"InstanceId">> => string(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputLocation">> => instance_association_output_location(),
+%%   <<"Parameters">> => map(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"ScheduleOffset">> => integer(),
+%%   <<"SyncCompliance">> => list(any()),
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"Targets">> => list(target())
+%% }
+-type create_association_batch_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% create_association_batch_result() :: #{
+%%   <<"Failed">> => list(failed_create_association()),
+%%   <<"Successful">> => list(association_description())
+%% }
+-type create_association_batch_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_association_request() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"ApplyOnlyAtCronInterval">> => boolean(),
+%%   <<"AssociationDispatchAssumeRole">> => string(),
+%%   <<"AssociationName">> => string(),
+%%   <<"AutomationTargetParameterName">> => string(),
+%%   <<"CalendarNames">> => list(string()),
+%%   <<"ComplianceSeverity">> => list(any()),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"InstanceId">> => string(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"OutputLocation">> => instance_association_output_location(),
+%%   <<"Parameters">> => map(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"ScheduleOffset">> => integer(),
+%%   <<"SyncCompliance">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"Targets">> => list(target())
+%% }
+-type create_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_association_result() :: #{
+%%   <<"AssociationDescription">> => association_description()
+%% }
+-type create_association_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_cloud_connector_request() :: #{
+%%   <<"ConfigConnectorArn">> := string(),
+%%   <<"Configuration">> := list(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_cloud_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cloud_connector_result() :: #{
+%%   <<"CloudConnectorId">> => string()
+%% }
+-type create_cloud_connector_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_document_request() :: #{
+%%   <<"Attachments">> => list(attachments_source()),
+%%   <<"Content">> := string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DocumentFormat">> => list(any()),
+%%   <<"DocumentType">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"Requires">> => list(document_requires()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetType">> => string(),
+%%   <<"VersionName">> => string()
+%% }
+-type create_document_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_document_result() :: #{
+%%   <<"DocumentDescription">> => document_description()
+%% }
+-type create_document_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_maintenance_window_request() :: #{
+%%   <<"AllowUnassociatedTargets">> := boolean(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Cutoff">> := integer(),
+%%   <<"Description">> => string(),
+%%   <<"Duration">> := integer(),
+%%   <<"EndDate">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Schedule">> := string(),
+%%   <<"ScheduleOffset">> => integer(),
+%%   <<"ScheduleTimezone">> => string(),
+%%   <<"StartDate">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_maintenance_window_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_maintenance_window_result() :: #{
+%%   <<"WindowId">> => string()
+%% }
+-type create_maintenance_window_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_ops_item_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ActualEndTime">> => non_neg_integer(),
+%%   <<"ActualStartTime">> => non_neg_integer(),
+%%   <<"Category">> => string(),
+%%   <<"Description">> := string(),
+%%   <<"Notifications">> => list(ops_item_notification()),
+%%   <<"OperationalData">> => map(),
+%%   <<"OpsItemType">> => string(),
+%%   <<"PlannedEndTime">> => non_neg_integer(),
+%%   <<"PlannedStartTime">> => non_neg_integer(),
+%%   <<"Priority">> => integer(),
+%%   <<"RelatedOpsItems">> => list(related_ops_item()),
+%%   <<"Severity">> => string(),
+%%   <<"Source">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Title">> := string()
+%% }
+-type create_ops_item_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_ops_item_response() :: #{
+%%   <<"OpsItemArn">> => string(),
+%%   <<"OpsItemId">> => string()
+%% }
+-type create_ops_item_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_ops_metadata_request() :: #{
+%%   <<"Metadata">> => map(),
+%%   <<"ResourceId">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_ops_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_ops_metadata_result() :: #{
+%%   <<"OpsMetadataArn">> => string()
+%% }
+-type create_ops_metadata_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_patch_baseline_request() :: #{
+%%   <<"ApprovalRules">> => patch_rule_group(),
+%%   <<"ApprovedPatches">> => list(string()),
+%%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
+%%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
+%%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"GlobalFilters">> => patch_filter_group(),
+%%   <<"Name">> := string(),
+%%   <<"OperatingSystem">> => list(any()),
+%%   <<"RejectedPatches">> => list(string()),
+%%   <<"RejectedPatchesAction">> => list(any()),
+%%   <<"Sources">> => list(patch_source()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_patch_baseline_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_patch_baseline_result() :: #{
+%%   <<"BaselineId">> => string()
+%% }
+-type create_patch_baseline_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_data_sync_request() :: #{
+%%   <<"S3Destination">> => resource_data_sync_s3_destination(),
+%%   <<"SyncName">> := string(),
+%%   <<"SyncSource">> => resource_data_sync_source(),
+%%   <<"SyncType">> => string()
+%% }
+-type create_resource_data_sync_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_data_sync_result() :: #{
+
+%% }
+-type create_resource_data_sync_result() :: #{binary() => any()}.
+
+%% Example:
+%% credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type credentials() :: #{binary() => any()}.
+
+%% Example:
+%% custom_schema_count_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type custom_schema_count_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_activation_request() :: #{
+%%   <<"ActivationId">> := string()
+%% }
+-type delete_activation_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_activation_result() :: #{
+
+%% }
+-type delete_activation_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_association_request() :: #{
+%%   <<"AssociationId">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type delete_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_association_result() :: #{
+
+%% }
+-type delete_association_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cloud_connector_request() :: #{
+%%   <<"CloudConnectorId">> := string()
+%% }
+-type delete_cloud_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cloud_connector_result() :: #{
+%%   <<"CloudConnectorId">> => string()
+%% }
+-type delete_cloud_connector_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_document_request() :: #{
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Force">> => boolean(),
+%%   <<"Name">> := string(),
+%%   <<"VersionName">> => string()
+%% }
+-type delete_document_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_document_result() :: #{
+
+%% }
+-type delete_document_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inventory_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"SchemaDeleteOption">> => list(any()),
+%%   <<"TypeName">> := string()
+%% }
+-type delete_inventory_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inventory_result() :: #{
+%%   <<"DeletionId">> => string(),
+%%   <<"DeletionSummary">> => inventory_deletion_summary(),
+%%   <<"TypeName">> => string()
+%% }
+-type delete_inventory_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_maintenance_window_request() :: #{
+%%   <<"WindowId">> := string()
+%% }
+-type delete_maintenance_window_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_maintenance_window_result() :: #{
+%%   <<"WindowId">> => string()
+%% }
+-type delete_maintenance_window_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ops_item_request() :: #{
+%%   <<"OpsItemId">> := string()
+%% }
+-type delete_ops_item_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ops_item_response() :: #{
+
+%% }
+-type delete_ops_item_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ops_metadata_request() :: #{
+%%   <<"OpsMetadataArn">> := string()
+%% }
+-type delete_ops_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ops_metadata_result() :: #{
+
+%% }
+-type delete_ops_metadata_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parameter_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_parameter_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parameter_result() :: #{
+
+%% }
+-type delete_parameter_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parameters_request() :: #{
+%%   <<"Names">> := list(string())
+%% }
+-type delete_parameters_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_parameters_result() :: #{
+%%   <<"DeletedParameters">> => list(string()),
+%%   <<"InvalidParameters">> => list(string())
+%% }
+-type delete_parameters_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_patch_baseline_request() :: #{
+%%   <<"BaselineId">> := string()
+%% }
+-type delete_patch_baseline_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_patch_baseline_result() :: #{
+%%   <<"BaselineId">> => string()
+%% }
+-type delete_patch_baseline_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_data_sync_request() :: #{
+%%   <<"SyncName">> := string(),
+%%   <<"SyncType">> => string()
+%% }
+-type delete_resource_data_sync_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_data_sync_result() :: #{
+
+%% }
+-type delete_resource_data_sync_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"PolicyHash">> := string(),
+%%   <<"PolicyId">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_managed_instance_request() :: #{
+%%   <<"InstanceId">> := string()
+%% }
+-type deregister_managed_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_managed_instance_result() :: #{
+
+%% }
+-type deregister_managed_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_patch_baseline_for_patch_group_request() :: #{
+%%   <<"BaselineId">> := string(),
+%%   <<"PatchGroup">> := string()
+%% }
+-type deregister_patch_baseline_for_patch_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_patch_baseline_for_patch_group_result() :: #{
+%%   <<"BaselineId">> => string(),
+%%   <<"PatchGroup">> => string()
+%% }
+-type deregister_patch_baseline_for_patch_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_target_from_maintenance_window_request() :: #{
+%%   <<"Safe">> => boolean(),
+%%   <<"WindowId">> := string(),
+%%   <<"WindowTargetId">> := string()
+%% }
+-type deregister_target_from_maintenance_window_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_target_from_maintenance_window_result() :: #{
+%%   <<"WindowId">> => string(),
+%%   <<"WindowTargetId">> => string()
+%% }
+-type deregister_target_from_maintenance_window_result() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_task_from_maintenance_window_request() :: #{
+%%   <<"WindowId">> := string(),
+%%   <<"WindowTaskId">> := string()
+%% }
+-type deregister_task_from_maintenance_window_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_task_from_maintenance_window_result() :: #{
+%%   <<"WindowId">> => string(),
+%%   <<"WindowTaskId">> => string()
+%% }
+-type deregister_task_from_maintenance_window_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_activations_filter() :: #{
+%%   <<"FilterKey">> => list(any()),
+%%   <<"FilterValues">> => list(string())
+%% }
+-type describe_activations_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_activations_request() :: #{
+%%   <<"Filters">> => list(describe_activations_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_activations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_activations_result() :: #{
+%%   <<"ActivationList">> => list(activation()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_activations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_association_execution_targets_request() :: #{
+%%   <<"AssociationId">> := string(),
+%%   <<"ExecutionId">> := string(),
+%%   <<"Filters">> => list(association_execution_targets_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_association_execution_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_association_execution_targets_result() :: #{
+%%   <<"AssociationExecutionTargets">> => list(association_execution_target()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_association_execution_targets_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_association_executions_request() :: #{
+%%   <<"AssociationId">> := string(),
+%%   <<"Filters">> => list(association_execution_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_association_executions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_association_executions_result() :: #{
+%%   <<"AssociationExecutions">> => list(association_execution()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_association_executions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_association_request() :: #{
+%%   <<"AssociationId">> => string(),
+%%   <<"AssociationVersion">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type describe_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_association_result() :: #{
+%%   <<"AssociationDescription">> => association_description()
+%% }
+-type describe_association_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_automation_executions_request() :: #{
+%%   <<"Filters">> => list(automation_execution_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_automation_executions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_automation_executions_result() :: #{
+%%   <<"AutomationExecutionMetadataList">> => list(automation_execution_metadata()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_automation_executions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_automation_step_executions_request() :: #{
+%%   <<"AutomationExecutionId">> := string(),
+%%   <<"Filters">> => list(step_execution_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReverseOrder">> => boolean()
+%% }
+-type describe_automation_step_executions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_automation_step_executions_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StepExecutions">> => list(step_execution())
+%% }
+-type describe_automation_step_executions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_available_patches_request() :: #{
+%%   <<"Filters">> => list(patch_orchestrator_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_available_patches_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_available_patches_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Patches">> => list(patch())
+%% }
+-type describe_available_patches_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_document_permission_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"PermissionType">> := list(any())
+%% }
+-type describe_document_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_document_permission_response() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"AccountSharingInfoList">> => list(account_sharing_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_document_permission_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_document_request() :: #{
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"VersionName">> => string()
+%% }
+-type describe_document_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_document_result() :: #{
+%%   <<"Document">> => document_description()
+%% }
+-type describe_document_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_effective_instance_associations_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_effective_instance_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_effective_instance_associations_result() :: #{
+%%   <<"Associations">> => list(instance_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_effective_instance_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_effective_patches_for_patch_baseline_request() :: #{
+%%   <<"BaselineId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_effective_patches_for_patch_baseline_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_effective_patches_for_patch_baseline_result() :: #{
+%%   <<"EffectivePatches">> => list(effective_patch()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_effective_patches_for_patch_baseline_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_associations_status_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_associations_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_associations_status_result() :: #{
+%%   <<"InstanceAssociationStatusInfos">> => list(instance_association_status_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_associations_status_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_information_request() :: #{
+%%   <<"Filters">> => list(instance_information_string_filter()),
+%%   <<"InstanceInformationFilterList">> => list(instance_information_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_information_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_information_result() :: #{
+%%   <<"InstanceInformationList">> => list(instance_information()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_information_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_patch_states_for_patch_group_request() :: #{
+%%   <<"Filters">> => list(instance_patch_state_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PatchGroup">> := string()
+%% }
+-type describe_instance_patch_states_for_patch_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_patch_states_for_patch_group_result() :: #{
+%%   <<"InstancePatchStates">> => list(instance_patch_state()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_patch_states_for_patch_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_patch_states_request() :: #{
+%%   <<"InstanceIds">> := list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_patch_states_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_patch_states_result() :: #{
+%%   <<"InstancePatchStates">> => list(instance_patch_state()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_patch_states_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_patches_request() :: #{
+%%   <<"Filters">> => list(patch_orchestrator_filter()),
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_patches_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_patches_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Patches">> => list(patch_compliance_data())
+%% }
+-type describe_instance_patches_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_properties_request() :: #{
+%%   <<"FiltersWithOperator">> => list(instance_property_string_filter()),
+%%   <<"InstancePropertyFilterList">> => list(instance_property_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_instance_properties_result() :: #{
+%%   <<"InstanceProperties">> => list(instance_property()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_instance_properties_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inventory_deletions_request() :: #{
+%%   <<"DeletionId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_inventory_deletions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inventory_deletions_result() :: #{
+%%   <<"InventoryDeletions">> => list(inventory_deletion_status_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_inventory_deletions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_execution_task_invocations_request() :: #{
+%%   <<"Filters">> => list(maintenance_window_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TaskId">> := string(),
+%%   <<"WindowExecutionId">> := string()
+%% }
+-type describe_maintenance_window_execution_task_invocations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_execution_task_invocations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WindowExecutionTaskInvocationIdentities">> => list(maintenance_window_execution_task_invocation_identity())
+%% }
+-type describe_maintenance_window_execution_task_invocations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_execution_tasks_request() :: #{
+%%   <<"Filters">> => list(maintenance_window_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WindowExecutionId">> := string()
+%% }
+-type describe_maintenance_window_execution_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_execution_tasks_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WindowExecutionTaskIdentities">> => list(maintenance_window_execution_task_identity())
+%% }
+-type describe_maintenance_window_execution_tasks_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_executions_request() :: #{
+%%   <<"Filters">> => list(maintenance_window_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WindowId">> := string()
+%% }
+-type describe_maintenance_window_executions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_executions_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WindowExecutions">> => list(maintenance_window_execution())
+%% }
+-type describe_maintenance_window_executions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_schedule_request() :: #{
+%%   <<"Filters">> => list(patch_orchestrator_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Targets">> => list(target()),
+%%   <<"WindowId">> => string()
+%% }
+-type describe_maintenance_window_schedule_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_schedule_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduledWindowExecutions">> => list(scheduled_window_execution())
+%% }
+-type describe_maintenance_window_schedule_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_targets_request() :: #{
+%%   <<"Filters">> => list(maintenance_window_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WindowId">> := string()
+%% }
+-type describe_maintenance_window_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_targets_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Targets">> => list(maintenance_window_target())
+%% }
+-type describe_maintenance_window_targets_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_tasks_request() :: #{
+%%   <<"Filters">> => list(maintenance_window_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WindowId">> := string()
+%% }
+-type describe_maintenance_window_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_window_tasks_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tasks">> => list(maintenance_window_task())
+%% }
+-type describe_maintenance_window_tasks_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_windows_for_target_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> := list(any()),
+%%   <<"Targets">> := list(target())
+%% }
+-type describe_maintenance_windows_for_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_windows_for_target_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WindowIdentities">> => list(maintenance_window_identity_for_target())
+%% }
+-type describe_maintenance_windows_for_target_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_windows_request() :: #{
+%%   <<"Filters">> => list(maintenance_window_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_maintenance_windows_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_maintenance_windows_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WindowIdentities">> => list(maintenance_window_identity())
+%% }
+-type describe_maintenance_windows_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ops_items_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OpsItemFilters">> => list(ops_item_filter())
+%% }
+-type describe_ops_items_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ops_items_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OpsItemSummaries">> => list(ops_item_summary())
+%% }
+-type describe_ops_items_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameters_request() :: #{
+%%   <<"Filters">> => list(parameters_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterFilters">> => list(parameter_string_filter()),
+%%   <<"Shared">> => boolean()
+%% }
+-type describe_parameters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_parameters_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Parameters">> => list(parameter_metadata())
+%% }
+-type describe_parameters_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_patch_baselines_request() :: #{
+%%   <<"Filters">> => list(patch_orchestrator_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_patch_baselines_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_patch_baselines_result() :: #{
+%%   <<"BaselineIdentities">> => list(patch_baseline_identity()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_patch_baselines_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_patch_group_state_request() :: #{
+%%   <<"PatchGroup">> := string()
+%% }
+-type describe_patch_group_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_patch_group_state_result() :: #{
+%%   <<"Instances">> => integer(),
+%%   <<"InstancesWithAvailableSecurityUpdates">> => integer(),
+%%   <<"InstancesWithCriticalNonCompliantPatches">> => integer(),
+%%   <<"InstancesWithFailedPatches">> => integer(),
+%%   <<"InstancesWithInstalledOtherPatches">> => integer(),
+%%   <<"InstancesWithInstalledPatches">> => integer(),
+%%   <<"InstancesWithInstalledPendingRebootPatches">> => integer(),
+%%   <<"InstancesWithInstalledRejectedPatches">> => integer(),
+%%   <<"InstancesWithMissingPatches">> => integer(),
+%%   <<"InstancesWithNotApplicablePatches">> => integer(),
+%%   <<"InstancesWithOtherNonCompliantPatches">> => integer(),
+%%   <<"InstancesWithSecurityNonCompliantPatches">> => integer(),
+%%   <<"InstancesWithUnreportedNotApplicablePatches">> => integer()
+%% }
+-type describe_patch_group_state_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_patch_groups_request() :: #{
+%%   <<"Filters">> => list(patch_orchestrator_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_patch_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_patch_groups_result() :: #{
+%%   <<"Mappings">> => list(patch_group_patch_baseline_mapping()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_patch_groups_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_patch_properties_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OperatingSystem">> := list(any()),
+%%   <<"PatchSet">> => list(any()),
+%%   <<"Property">> := list(any())
+%% }
+-type describe_patch_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_patch_properties_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Properties">> => list(map())
+%% }
+-type describe_patch_properties_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_sessions_request() :: #{
+%%   <<"Filters">> => list(session_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"State">> := list(any())
+%% }
+-type describe_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_sessions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Sessions">> => list(session())
+%% }
+-type describe_sessions_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_ops_item_related_item_request() :: #{
+%%   <<"AssociationId">> := string(),
+%%   <<"OpsItemId">> := string()
+%% }
+-type disassociate_ops_item_related_item_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_ops_item_related_item_response() :: #{
+
+%% }
+-type disassociate_ops_item_related_item_response() :: #{binary() => any()}.
+
+%% Example:
+%% document_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type document_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% document_default_version_description() :: #{
+%%   <<"DefaultVersion">> => string(),
+%%   <<"DefaultVersionName">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type document_default_version_description() :: #{binary() => any()}.
+
+%% Example:
+%% document_description() :: #{
+%%   <<"ApprovedVersion">> => string(),
+%%   <<"AttachmentsInformation">> => list(attachment_information()),
+%%   <<"Author">> => string(),
+%%   <<"Category">> => list(string()),
+%%   <<"CategoryEnum">> => list(string()),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DefaultVersion">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DocumentFormat">> => list(any()),
+%%   <<"DocumentType">> => list(any()),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Hash">> => string(),
+%%   <<"HashType">> => list(any()),
+%%   <<"LatestVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"Parameters">> => list(document_parameter()),
+%%   <<"PendingReviewVersion">> => string(),
+%%   <<"PlatformTypes">> => list(list(any())()),
+%%   <<"Requires">> => list(document_requires()),
+%%   <<"ReviewInformation">> => list(review_information()),
+%%   <<"ReviewStatus">> => list(any()),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"Sha1">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusInformation">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetType">> => string(),
+%%   <<"VersionName">> => string()
+%% }
+-type document_description() :: #{binary() => any()}.
+
+%% Example:
+%% document_filter() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type document_filter() :: #{binary() => any()}.
+
+%% Example:
+%% document_identifier() :: #{
+%%   <<"Author">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DocumentFormat">> => list(any()),
+%%   <<"DocumentType">> => list(any()),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"PlatformTypes">> => list(list(any())()),
+%%   <<"Requires">> => list(document_requires()),
+%%   <<"ReviewStatus">> => list(any()),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetType">> => string(),
+%%   <<"VersionName">> => string()
+%% }
+-type document_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% document_key_values_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type document_key_values_filter() :: #{binary() => any()}.
+
+%% Example:
+%% document_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type document_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% document_metadata_response_info() :: #{
+%%   <<"ReviewerResponse">> => list(document_reviewer_response_source())
+%% }
+-type document_metadata_response_info() :: #{binary() => any()}.
+
+%% Example:
+%% document_parameter() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type document_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% document_permission_limit() :: #{
+%%   <<"Message">> => string()
+%% }
+-type document_permission_limit() :: #{binary() => any()}.
+
+%% Example:
+%% document_requires() :: #{
+%%   <<"Name">> => string(),
+%%   <<"RequireType">> => string(),
+%%   <<"Version">> => string(),
+%%   <<"VersionName">> => string()
+%% }
+-type document_requires() :: #{binary() => any()}.
+
+%% Example:
+%% document_review_comment_source() :: #{
+%%   <<"Content">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type document_review_comment_source() :: #{binary() => any()}.
+
+%% Example:
+%% document_reviewer_response_source() :: #{
+%%   <<"Comment">> => list(document_review_comment_source()),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"ReviewStatus">> => list(any()),
+%%   <<"Reviewer">> => string(),
+%%   <<"UpdatedTime">> => non_neg_integer()
+%% }
+-type document_reviewer_response_source() :: #{binary() => any()}.
+
+%% Example:
+%% document_reviews() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Comment">> => list(document_review_comment_source())
+%% }
+-type document_reviews() :: #{binary() => any()}.
+
+%% Example:
+%% document_version_info() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DocumentFormat">> => list(any()),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"IsDefaultVersion">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"ReviewStatus">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusInformation">> => string(),
+%%   <<"VersionName">> => string()
+%% }
+-type document_version_info() :: #{binary() => any()}.
+
+%% Example:
+%% document_version_limit_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type document_version_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% does_not_exist_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_document_content() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_document_content() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_document_version_name() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_document_version_name() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_instance_id() :: #{
+
+%% }
+-type duplicate_instance_id() :: #{binary() => any()}.
+
+%% Example:
+%% effective_patch() :: #{
+%%   <<"Patch">> => patch(),
+%%   <<"PatchStatus">> => patch_status()
+%% }
+-type effective_patch() :: #{binary() => any()}.
+
+%% Example:
+%% failed_create_association() :: #{
+%%   <<"Entry">> => create_association_batch_request_entry(),
+%%   <<"Fault">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type failed_create_association() :: #{binary() => any()}.
+
+%% Example:
+%% failure_details() :: #{
+%%   <<"Details">> => map(),
+%%   <<"FailureStage">> => string(),
+%%   <<"FailureType">> => string()
+%% }
+-type failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% feature_not_available_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type feature_not_available_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_token_request() :: #{
+%%   <<"AccessRequestId">> := string()
+%% }
+-type get_access_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_token_response() :: #{
+%%   <<"AccessRequestStatus">> => list(any()),
+%%   <<"Credentials">> => credentials()
+%% }
+-type get_access_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_automation_execution_request() :: #{
+%%   <<"AutomationExecutionId">> := string()
+%% }
+-type get_automation_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_automation_execution_result() :: #{
+%%   <<"AutomationExecution">> => automation_execution()
+%% }
+-type get_automation_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_calendar_state_request() :: #{
+%%   <<"AtTime">> => string(),
+%%   <<"CalendarNames">> := list(string())
+%% }
+-type get_calendar_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_calendar_state_response() :: #{
+%%   <<"AtTime">> => string(),
+%%   <<"NextTransitionTime">> => string(),
 %%   <<"State">> => list(any())
 %% }
--type alarm_state_information() :: #{binary() => any()}.
+-type get_calendar_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_connector_request() :: #{
+%%   <<"CloudConnectorId">> := string()
+%% }
+-type get_cloud_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_connector_result() :: #{
+%%   <<"CloudConnectorArn">> => string(),
+%%   <<"ConfigConnectorArn">> => string(),
+%%   <<"Configuration">> => list(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_cloud_connector_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_command_invocation_request() :: #{
+%%   <<"CommandId">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"PluginName">> => string()
+%% }
+-type get_command_invocation_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_command_invocation_result() :: #{
+%%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
+%%   <<"CommandId">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"DocumentName">> => string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"ExecutionElapsedTime">> => string(),
+%%   <<"ExecutionEndDateTime">> => string(),
+%%   <<"ExecutionStartDateTime">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"PluginName">> => string(),
+%%   <<"ResponseCode">> => integer(),
+%%   <<"StandardErrorContent">> => string(),
+%%   <<"StandardErrorUrl">> => string(),
+%%   <<"StandardOutputContent">> => string(),
+%%   <<"StandardOutputUrl">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => string()
+%% }
+-type get_command_invocation_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_connection_status_request() :: #{
+%%   <<"Target">> := string()
+%% }
+-type get_connection_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_connection_status_response() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"Target">> => string()
+%% }
+-type get_connection_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_default_patch_baseline_request() :: #{
+%%   <<"OperatingSystem">> => list(any())
+%% }
+-type get_default_patch_baseline_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_default_patch_baseline_result() :: #{
+%%   <<"BaselineId">> => string(),
+%%   <<"OperatingSystem">> => list(any())
+%% }
+-type get_default_patch_baseline_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployable_patch_snapshot_for_instance_request() :: #{
+%%   <<"BaselineOverride">> => baseline_override(),
+%%   <<"InstanceId">> := string(),
+%%   <<"SnapshotId">> := string(),
+%%   <<"UseS3DualStackEndpoint">> => boolean()
+%% }
+-type get_deployable_patch_snapshot_for_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployable_patch_snapshot_for_instance_result() :: #{
+%%   <<"InstanceId">> => string(),
+%%   <<"Product">> => string(),
+%%   <<"SnapshotDownloadUrl">> => string(),
+%%   <<"SnapshotId">> => string()
+%% }
+-type get_deployable_patch_snapshot_for_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_request() :: #{
+%%   <<"DocumentFormat">> => list(any()),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"VersionName">> => string()
+%% }
+-type get_document_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_result() :: #{
+%%   <<"AttachmentsContent">> => list(attachment_content()),
+%%   <<"Content">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DocumentFormat">> => list(any()),
+%%   <<"DocumentType">> => list(any()),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Requires">> => list(document_requires()),
+%%   <<"ReviewStatus">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusInformation">> => string(),
+%%   <<"VersionName">> => string()
+%% }
+-type get_document_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_execution_preview_request() :: #{
+%%   <<"ExecutionPreviewId">> := string()
+%% }
+-type get_execution_preview_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_execution_preview_response() :: #{
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"ExecutionPreview">> => list(),
+%%   <<"ExecutionPreviewId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type get_execution_preview_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_inventory_request() :: #{
+%%   <<"Aggregators">> => list(inventory_aggregator()),
+%%   <<"Filters">> => list(inventory_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResultAttributes">> => list(result_attribute())
+%% }
+-type get_inventory_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_inventory_result() :: #{
+%%   <<"Entities">> => list(inventory_result_entity()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_inventory_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_inventory_schema_request() :: #{
+%%   <<"Aggregator">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SubType">> => boolean(),
+%%   <<"TypeName">> => string()
+%% }
+-type get_inventory_schema_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_inventory_schema_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Schemas">> => list(inventory_item_schema())
+%% }
+-type get_inventory_schema_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_maintenance_window_execution_request() :: #{
+%%   <<"WindowExecutionId">> := string()
+%% }
+-type get_maintenance_window_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_maintenance_window_execution_result() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => string(),
+%%   <<"TaskIds">> => list(string()),
+%%   <<"WindowExecutionId">> => string()
+%% }
+-type get_maintenance_window_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_maintenance_window_execution_task_invocation_request() :: #{
+%%   <<"InvocationId">> := string(),
+%%   <<"TaskId">> := string(),
+%%   <<"WindowExecutionId">> := string()
+%% }
+-type get_maintenance_window_execution_task_invocation_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_maintenance_window_execution_task_invocation_result() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ExecutionId">> => string(),
+%%   <<"InvocationId">> => string(),
+%%   <<"OwnerInformation">> => string(),
+%%   <<"Parameters">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => string(),
+%%   <<"TaskExecutionId">> => string(),
+%%   <<"TaskType">> => list(any()),
+%%   <<"WindowExecutionId">> => string(),
+%%   <<"WindowTargetId">> => string()
+%% }
+-type get_maintenance_window_execution_task_invocation_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_maintenance_window_execution_task_request() :: #{
+%%   <<"TaskId">> := string(),
+%%   <<"WindowExecutionId">> := string()
+%% }
+-type get_maintenance_window_execution_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_maintenance_window_execution_task_result() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"ServiceRole">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => string(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskExecutionId">> => string(),
+%%   <<"TaskParameters">> => list(map()),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
+%%   <<"Type">> => list(any()),
+%%   <<"WindowExecutionId">> => string()
+%% }
+-type get_maintenance_window_execution_task_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_maintenance_window_request() :: #{
+%%   <<"WindowId">> := string()
+%% }
+-type get_maintenance_window_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_maintenance_window_result() :: #{
+%%   <<"AllowUnassociatedTargets">> => boolean(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Cutoff">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndDate">> => string(),
+%%   <<"ModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextExecutionTime">> => string(),
+%%   <<"Schedule">> => string(),
+%%   <<"ScheduleOffset">> => integer(),
+%%   <<"ScheduleTimezone">> => string(),
+%%   <<"StartDate">> => string(),
+%%   <<"WindowId">> => string()
+%% }
+-type get_maintenance_window_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_maintenance_window_task_request() :: #{
+%%   <<"WindowId">> := string(),
+%%   <<"WindowTaskId">> := string()
+%% }
+-type get_maintenance_window_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_maintenance_window_task_result() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"CutoffBehavior">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"LoggingInfo">> => logging_info(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"Targets">> => list(target()),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
+%%   <<"TaskParameters">> => map(),
+%%   <<"TaskType">> => list(any()),
+%%   <<"WindowId">> => string(),
+%%   <<"WindowTaskId">> => string()
+%% }
+-type get_maintenance_window_task_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_ops_item_request() :: #{
+%%   <<"OpsItemArn">> => string(),
+%%   <<"OpsItemId">> := string()
+%% }
+-type get_ops_item_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ops_item_response() :: #{
+%%   <<"OpsItem">> => ops_item()
+%% }
+-type get_ops_item_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ops_metadata_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OpsMetadataArn">> := string()
+%% }
+-type get_ops_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ops_metadata_result() :: #{
+%%   <<"Metadata">> => map(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type get_ops_metadata_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_ops_summary_request() :: #{
+%%   <<"Aggregators">> => list(ops_aggregator()),
+%%   <<"Filters">> => list(ops_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResultAttributes">> => list(ops_result_attribute()),
+%%   <<"SyncName">> => string()
+%% }
+-type get_ops_summary_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ops_summary_result() :: #{
+%%   <<"Entities">> => list(ops_entity()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ops_summary_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameter_history_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"WithDecryption">> => boolean()
+%% }
+-type get_parameter_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameter_history_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Parameters">> => list(parameter_history())
+%% }
+-type get_parameter_history_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameter_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"WithDecryption">> => boolean()
+%% }
+-type get_parameter_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameter_result() :: #{
+%%   <<"Parameter">> => parameter()
+%% }
+-type get_parameter_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_by_path_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ParameterFilters">> => list(parameter_string_filter()),
+%%   <<"Path">> := string(),
+%%   <<"Recursive">> => boolean(),
+%%   <<"WithDecryption">> => boolean()
+%% }
+-type get_parameters_by_path_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_by_path_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Parameters">> => list(parameter())
+%% }
+-type get_parameters_by_path_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_request() :: #{
+%%   <<"Names">> := list(string()),
+%%   <<"WithDecryption">> => boolean()
+%% }
+-type get_parameters_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_parameters_result() :: #{
+%%   <<"InvalidParameters">> => list(string()),
+%%   <<"Parameters">> => list(parameter())
+%% }
+-type get_parameters_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_patch_baseline_for_patch_group_request() :: #{
+%%   <<"OperatingSystem">> => list(any()),
+%%   <<"PatchGroup">> := string()
+%% }
+-type get_patch_baseline_for_patch_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_patch_baseline_for_patch_group_result() :: #{
+%%   <<"BaselineId">> => string(),
+%%   <<"OperatingSystem">> => list(any()),
+%%   <<"PatchGroup">> => string()
+%% }
+-type get_patch_baseline_for_patch_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_patch_baseline_request() :: #{
+%%   <<"BaselineId">> := string()
+%% }
+-type get_patch_baseline_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_patch_baseline_result() :: #{
+%%   <<"ApprovalRules">> => patch_rule_group(),
+%%   <<"ApprovedPatches">> => list(string()),
+%%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
+%%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
+%%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
+%%   <<"BaselineId">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"GlobalFilters">> => patch_filter_group(),
+%%   <<"ModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"OperatingSystem">> => list(any()),
+%%   <<"PatchGroups">> => list(string()),
+%%   <<"RejectedPatches">> => list(string()),
+%%   <<"RejectedPatchesAction">> => list(any()),
+%%   <<"Sources">> => list(patch_source())
+%% }
+-type get_patch_baseline_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Policies">> => list(get_resource_policies_response_entry())
+%% }
+-type get_resource_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policies_response_entry() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"PolicyHash">> => string(),
+%%   <<"PolicyId">> => string()
+%% }
+-type get_resource_policies_response_entry() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_setting_request() :: #{
+%%   <<"SettingId">> := string()
+%% }
+-type get_service_setting_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_setting_result() :: #{
+%%   <<"ServiceSetting">> => service_setting()
+%% }
+-type get_service_setting_result() :: #{binary() => any()}.
+
+%% Example:
+%% hierarchy_level_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type hierarchy_level_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% hierarchy_type_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type hierarchy_type_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% idempotent_parameter_mismatch() :: #{
+%%   <<"Message">> => string()
+%% }
+-type idempotent_parameter_mismatch() :: #{binary() => any()}.
+
+%% Example:
+%% incompatible_policy_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type incompatible_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% instance_aggregated_association_overview() :: #{
+%%   <<"DetailedStatus">> => string(),
+%%   <<"InstanceAssociationStatusAggregatedCount">> => map()
+%% }
+-type instance_aggregated_association_overview() :: #{binary() => any()}.
+
+%% Example:
+%% instance_association() :: #{
+%%   <<"AssociationId">> => string(),
+%%   <<"AssociationVersion">> => string(),
+%%   <<"Content">> => string(),
+%%   <<"InstanceId">> => string()
+%% }
+-type instance_association() :: #{binary() => any()}.
+
+%% Example:
+%% instance_association_output_location() :: #{
+%%   <<"S3Location">> => s3_output_location()
+%% }
+-type instance_association_output_location() :: #{binary() => any()}.
+
+%% Example:
+%% instance_association_output_url() :: #{
+%%   <<"S3OutputUrl">> => s3_output_url()
+%% }
+-type instance_association_output_url() :: #{binary() => any()}.
+
+%% Example:
+%% instance_association_status_info() :: #{
+%%   <<"AssociationId">> => string(),
+%%   <<"AssociationName">> => string(),
+%%   <<"AssociationVersion">> => string(),
+%%   <<"DetailedStatus">> => string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ExecutionDate">> => non_neg_integer(),
+%%   <<"ExecutionSummary">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputUrl">> => instance_association_output_url(),
+%%   <<"Status">> => string()
+%% }
+-type instance_association_status_info() :: #{binary() => any()}.
+
+%% Example:
+%% instance_info() :: #{
+%%   <<"AgentType">> => string(),
+%%   <<"AgentVersion">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"ComputerName">> => string(),
+%%   <<"InstanceStatus">> => string(),
+%%   <<"IpAddress">> => string(),
+%%   <<"ManagedStatus">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"PlatformName">> => string(),
+%%   <<"PlatformType">> => list(any()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"SourceId">> => string(),
+%%   <<"SourceLocation">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type instance_info() :: #{binary() => any()}.
+
+%% Example:
+%% instance_information() :: #{
+%%   <<"ActivationId">> => string(),
+%%   <<"AgentVersion">> => string(),
+%%   <<"AssociationOverview">> => instance_aggregated_association_overview(),
+%%   <<"AssociationStatus">> => string(),
+%%   <<"ComputerName">> => string(),
+%%   <<"IPAddress">> => string(),
+%%   <<"IamRole">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"IsLatestVersion">> => boolean(),
+%%   <<"LastAssociationExecutionDate">> => non_neg_integer(),
+%%   <<"LastPingDateTime">> => non_neg_integer(),
+%%   <<"LastSuccessfulAssociationExecutionDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PingStatus">> => list(any()),
+%%   <<"PlatformName">> => string(),
+%%   <<"PlatformType">> => list(any()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"RegistrationDate">> => non_neg_integer(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"SourceId">> => string(),
+%%   <<"SourceLocation">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type instance_information() :: #{binary() => any()}.
+
+%% Example:
+%% instance_information_filter() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"valueSet">> => list(string())
+%% }
+-type instance_information_filter() :: #{binary() => any()}.
+
+%% Example:
+%% instance_information_string_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type instance_information_string_filter() :: #{binary() => any()}.
+
+%% Example:
+%% instance_patch_state() :: #{
+%%   <<"AvailableSecurityUpdateCount">> => integer(),
+%%   <<"BaselineId">> => string(),
+%%   <<"CriticalNonCompliantCount">> => integer(),
+%%   <<"FailedCount">> => integer(),
+%%   <<"InstallOverrideList">> => string(),
+%%   <<"InstalledCount">> => integer(),
+%%   <<"InstalledOtherCount">> => integer(),
+%%   <<"InstalledPendingRebootCount">> => integer(),
+%%   <<"InstalledRejectedCount">> => integer(),
+%%   <<"InstanceId">> => string(),
+%%   <<"LastNoRebootInstallOperationTime">> => non_neg_integer(),
+%%   <<"MissingCount">> => integer(),
+%%   <<"NotApplicableCount">> => integer(),
+%%   <<"Operation">> => list(any()),
+%%   <<"OperationEndTime">> => non_neg_integer(),
+%%   <<"OperationStartTime">> => non_neg_integer(),
+%%   <<"OtherNonCompliantCount">> => integer(),
+%%   <<"OwnerInformation">> => string(),
+%%   <<"PatchGroup">> => string(),
+%%   <<"RebootOption">> => list(any()),
+%%   <<"SecurityNonCompliantCount">> => integer(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"UnreportedNotApplicableCount">> => integer()
+%% }
+-type instance_patch_state() :: #{binary() => any()}.
+
+%% Example:
+%% instance_patch_state_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type instance_patch_state_filter() :: #{binary() => any()}.
+
+%% Example:
+%% instance_property() :: #{
+%%   <<"ActivationId">> => string(),
+%%   <<"AgentVersion">> => string(),
+%%   <<"Architecture">> => string(),
+%%   <<"AssociationOverview">> => instance_aggregated_association_overview(),
+%%   <<"AssociationStatus">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"ComputerName">> => string(),
+%%   <<"IPAddress">> => string(),
+%%   <<"IamRole">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceRole">> => string(),
+%%   <<"InstanceState">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"KeyName">> => string(),
+%%   <<"LastAssociationExecutionDate">> => non_neg_integer(),
+%%   <<"LastPingDateTime">> => non_neg_integer(),
+%%   <<"LastSuccessfulAssociationExecutionDate">> => non_neg_integer(),
+%%   <<"LaunchTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PingStatus">> => list(any()),
+%%   <<"PlatformName">> => string(),
+%%   <<"PlatformType">> => list(any()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"RegistrationDate">> => non_neg_integer(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SourceId">> => string(),
+%%   <<"SourceLocation">> => string(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type instance_property() :: #{binary() => any()}.
+
+%% Example:
+%% instance_property_filter() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"valueSet">> => list(string())
+%% }
+-type instance_property_filter() :: #{binary() => any()}.
+
+%% Example:
+%% instance_property_string_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type instance_property_string_filter() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_activation() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_activation() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_activation_id() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_activation_id() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_aggregator_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_aggregator_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_allowed_pattern_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_allowed_pattern_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_association() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_association() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_association_version() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_association_version() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_automation_execution_parameters_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_automation_execution_parameters_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_automation_signal_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_automation_signal_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_automation_status_update_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_automation_status_update_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_command_id() :: #{
+
+%% }
+-type invalid_command_id() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_delete_inventory_parameters_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_delete_inventory_parameters_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_deletion_id_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_deletion_id_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_document() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_document() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_document_content() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_document_content() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_document_operation() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_document_operation() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_document_schema_version() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_document_schema_version() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_document_type() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_document_type() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_document_version() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_document_version() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_filter() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_filter() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_filter_key() :: #{
+
+%% }
+-type invalid_filter_key() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_filter_option() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_filter_option() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_filter_value() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_filter_value() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_instance_id() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_instance_id() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_instance_information_filter_value() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_instance_information_filter_value() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_instance_property_filter_value() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_instance_property_filter_value() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_inventory_group_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_inventory_group_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_inventory_item_context_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_inventory_item_context_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_inventory_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_inventory_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_item_content_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type invalid_item_content_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_key_id() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_key_id() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_notification_config() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_notification_config() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_option_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_option_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_output_folder() :: #{
+
+%% }
+-type invalid_output_folder() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_output_location() :: #{
+
+%% }
+-type invalid_output_location() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameters() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_permission_type() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_permission_type() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_plugin_name() :: #{
+
+%% }
+-type invalid_plugin_name() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_policy_attribute_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_policy_attribute_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_policy_type_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_policy_type_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_id() :: #{
+
+%% }
+-type invalid_resource_id() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_resource_type() :: #{
+
+%% }
+-type invalid_resource_type() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_result_attribute_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_result_attribute_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_role() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_role() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_schedule() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_tag() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_target() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_target_maps() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_target_maps() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_type_name_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_type_name_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_update() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_update() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_aggregator() :: #{
+%%   <<"Aggregators">> => list(inventory_aggregator()),
+%%   <<"Expression">> => string(),
+%%   <<"Groups">> => list(inventory_group())
+%% }
+-type inventory_aggregator() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_deletion_status_item() :: #{
+%%   <<"DeletionId">> => string(),
+%%   <<"DeletionStartTime">> => non_neg_integer(),
+%%   <<"DeletionSummary">> => inventory_deletion_summary(),
+%%   <<"LastStatus">> => list(any()),
+%%   <<"LastStatusMessage">> => string(),
+%%   <<"LastStatusUpdateTime">> => non_neg_integer(),
+%%   <<"TypeName">> => string()
+%% }
+-type inventory_deletion_status_item() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_deletion_summary() :: #{
+%%   <<"RemainingCount">> => integer(),
+%%   <<"SummaryItems">> => list(inventory_deletion_summary_item()),
+%%   <<"TotalCount">> => integer()
+%% }
+-type inventory_deletion_summary() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_deletion_summary_item() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"RemainingCount">> => integer(),
+%%   <<"Version">> => string()
+%% }
+-type inventory_deletion_summary_item() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type inventory_filter() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_group() :: #{
+%%   <<"Filters">> => list(inventory_filter()),
+%%   <<"Name">> => string()
+%% }
+-type inventory_group() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_item() :: #{
+%%   <<"CaptureTime">> => string(),
+%%   <<"Content">> => list(map()),
+%%   <<"ContentHash">> => string(),
+%%   <<"Context">> => map(),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type inventory_item() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_item_attribute() :: #{
+%%   <<"DataType">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type inventory_item_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_item_schema() :: #{
+%%   <<"Attributes">> => list(inventory_item_attribute()),
+%%   <<"DisplayName">> => string(),
+%%   <<"TypeName">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type inventory_item_schema() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_result_entity() :: #{
+%%   <<"Data">> => map(),
+%%   <<"Id">> => string()
+%% }
+-type inventory_result_entity() :: #{binary() => any()}.
+
+%% Example:
+%% inventory_result_item() :: #{
+%%   <<"CaptureTime">> => string(),
+%%   <<"Content">> => list(map()),
+%%   <<"ContentHash">> => string(),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type inventory_result_item() :: #{binary() => any()}.
+
+%% Example:
+%% invocation_does_not_exist() :: #{
+
+%% }
+-type invocation_does_not_exist() :: #{binary() => any()}.
+
+%% Example:
+%% item_content_mismatch_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type item_content_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% item_size_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type item_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% label_parameter_version_request() :: #{
+%%   <<"Labels">> := list(string()),
+%%   <<"Name">> := string(),
+%%   <<"ParameterVersion">> => float()
+%% }
+-type label_parameter_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% label_parameter_version_result() :: #{
+%%   <<"InvalidLabels">> => list(string()),
+%%   <<"ParameterVersion">> => float()
+%% }
+-type label_parameter_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_association_versions_request() :: #{
+%%   <<"AssociationId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_association_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_association_versions_result() :: #{
+%%   <<"AssociationVersions">> => list(association_version_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_association_versions_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_associations_request() :: #{
+%%   <<"AssociationFilterList">> => list(association_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_associations_result() :: #{
+%%   <<"Associations">> => list(association()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_cloud_connectors_request() :: #{
+%%   <<"Filters">> => list(cloud_connector_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cloud_connectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cloud_connectors_result() :: #{
+%%   <<"CloudConnectors">> => list(cloud_connector_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cloud_connectors_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_command_invocations_request() :: #{
+%%   <<"CommandId">> => string(),
+%%   <<"Details">> => boolean(),
+%%   <<"Filters">> => list(command_filter()),
+%%   <<"InstanceId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_command_invocations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_command_invocations_result() :: #{
+%%   <<"CommandInvocations">> => list(command_invocation()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_command_invocations_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_commands_request() :: #{
+%%   <<"CommandId">> => string(),
+%%   <<"Filters">> => list(command_filter()),
+%%   <<"InstanceId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_commands_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_commands_result() :: #{
+%%   <<"Commands">> => list(command()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_commands_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_compliance_items_request() :: #{
+%%   <<"Filters">> => list(compliance_string_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceIds">> => list(string()),
+%%   <<"ResourceTypes">> => list(string())
+%% }
+-type list_compliance_items_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_compliance_items_result() :: #{
+%%   <<"ComplianceItems">> => list(compliance_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_compliance_items_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_compliance_summaries_request() :: #{
+%%   <<"Filters">> => list(compliance_string_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_compliance_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_compliance_summaries_result() :: #{
+%%   <<"ComplianceSummaryItems">> => list(compliance_summary_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_compliance_summaries_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_document_metadata_history_request() :: #{
+%%   <<"DocumentVersion">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Metadata">> := list(any()),
+%%   <<"Name">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_document_metadata_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_document_metadata_history_response() :: #{
+%%   <<"Author">> => string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Metadata">> => document_metadata_response_info(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_document_metadata_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_document_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_document_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_document_versions_result() :: #{
+%%   <<"DocumentVersions">> => list(document_version_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_document_versions_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_documents_request() :: #{
+%%   <<"DocumentFilterList">> => list(document_filter()),
+%%   <<"Filters">> => list(document_key_values_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_documents_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_documents_result() :: #{
+%%   <<"DocumentIdentifiers">> => list(document_identifier()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_documents_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_inventory_entries_request() :: #{
+%%   <<"Filters">> => list(inventory_filter()),
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TypeName">> := string()
+%% }
+-type list_inventory_entries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inventory_entries_result() :: #{
+%%   <<"CaptureTime">> => string(),
+%%   <<"Entries">> => list(map()),
+%%   <<"InstanceId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type list_inventory_entries_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_nodes_request() :: #{
+%%   <<"Filters">> => list(node_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SyncName">> => string()
+%% }
+-type list_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_nodes_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Nodes">> => list(node())
+%% }
+-type list_nodes_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_nodes_summary_request() :: #{
+%%   <<"Aggregators">> := list(node_aggregator()),
+%%   <<"Filters">> => list(node_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SyncName">> => string()
+%% }
+-type list_nodes_summary_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_nodes_summary_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summary">> => list(map())
+%% }
+-type list_nodes_summary_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_ops_item_events_request() :: #{
@@ -5440,6 +3647,1980 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_ops_item_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ops_item_events_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(ops_item_event_summary())
+%% }
+-type list_ops_item_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_ops_item_related_items_request() :: #{
+%%   <<"Filters">> => list(ops_item_related_items_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OpsItemId">> => string()
+%% }
+-type list_ops_item_related_items_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ops_item_related_items_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(ops_item_related_item_summary())
+%% }
+-type list_ops_item_related_items_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_ops_metadata_request() :: #{
+%%   <<"Filters">> => list(ops_metadata_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ops_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ops_metadata_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OpsMetadataList">> => list(ops_metadata())
+%% }
+-type list_ops_metadata_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_compliance_summaries_request() :: #{
+%%   <<"Filters">> => list(compliance_string_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resource_compliance_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_compliance_summaries_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceComplianceSummaryItems">> => list(resource_compliance_summary_item())
+%% }
+-type list_resource_compliance_summaries_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_data_sync_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SyncType">> => string()
+%% }
+-type list_resource_data_sync_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_data_sync_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceDataSyncItems">> => list(resource_data_sync_item())
+%% }
+-type list_resource_data_sync_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"ResourceType">> := list(any())
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"TagList">> => list(tag())
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% logging_info() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3KeyPrefix">> => string(),
+%%   <<"S3Region">> => string()
+%% }
+-type logging_info() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_automation_parameters() :: #{
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Parameters">> => map()
+%% }
+-type maintenance_window_automation_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_execution() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => string(),
+%%   <<"WindowExecutionId">> => string(),
+%%   <<"WindowId">> => string()
+%% }
+-type maintenance_window_execution() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_execution_task_identity() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => string(),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskExecutionId">> => string(),
+%%   <<"TaskType">> => list(any()),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
+%%   <<"WindowExecutionId">> => string()
+%% }
+-type maintenance_window_execution_task_identity() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_execution_task_invocation_identity() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ExecutionId">> => string(),
+%%   <<"InvocationId">> => string(),
+%%   <<"OwnerInformation">> => string(),
+%%   <<"Parameters">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => string(),
+%%   <<"TaskExecutionId">> => string(),
+%%   <<"TaskType">> => list(any()),
+%%   <<"WindowExecutionId">> => string(),
+%%   <<"WindowTargetId">> => string()
+%% }
+-type maintenance_window_execution_task_invocation_identity() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type maintenance_window_filter() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_identity() :: #{
+%%   <<"Cutoff">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndDate">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NextExecutionTime">> => string(),
+%%   <<"Schedule">> => string(),
+%%   <<"ScheduleOffset">> => integer(),
+%%   <<"ScheduleTimezone">> => string(),
+%%   <<"StartDate">> => string(),
+%%   <<"WindowId">> => string()
+%% }
+-type maintenance_window_identity() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_identity_for_target() :: #{
+%%   <<"Name">> => string(),
+%%   <<"WindowId">> => string()
+%% }
+-type maintenance_window_identity_for_target() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_lambda_parameters() :: #{
+%%   <<"ClientContext">> => string(),
+%%   <<"Payload">> => binary(),
+%%   <<"Qualifier">> => string()
+%% }
+-type maintenance_window_lambda_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_run_command_parameters() :: #{
+%%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
+%%   <<"Comment">> => string(),
+%%   <<"DocumentHash">> => string(),
+%%   <<"DocumentHashType">> => list(any()),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"NotificationConfig">> => notification_config(),
+%%   <<"OutputS3BucketName">> => string(),
+%%   <<"OutputS3KeyPrefix">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"TimeoutSeconds">> => integer()
+%% }
+-type maintenance_window_run_command_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_step_functions_parameters() :: #{
+%%   <<"Input">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type maintenance_window_step_functions_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_target() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerInformation">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Targets">> => list(target()),
+%%   <<"WindowId">> => string(),
+%%   <<"WindowTargetId">> => string()
+%% }
+-type maintenance_window_target() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_task() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"CutoffBehavior">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"LoggingInfo">> => logging_info(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"Targets">> => list(target()),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskParameters">> => map(),
+%%   <<"Type">> => list(any()),
+%%   <<"WindowId">> => string(),
+%%   <<"WindowTaskId">> => string()
+%% }
+-type maintenance_window_task() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_task_invocation_parameters() :: #{
+%%   <<"Automation">> => maintenance_window_automation_parameters(),
+%%   <<"Lambda">> => maintenance_window_lambda_parameters(),
+%%   <<"RunCommand">> => maintenance_window_run_command_parameters(),
+%%   <<"StepFunctions">> => maintenance_window_step_functions_parameters()
+%% }
+-type maintenance_window_task_invocation_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% maintenance_window_task_parameter_value_expression() :: #{
+%%   <<"Values">> => list(string())
+%% }
+-type maintenance_window_task_parameter_value_expression() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_resource_policy_document_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type malformed_resource_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% max_document_size_exceeded() :: #{
+%%   <<"Message">> => string()
+%% }
+-type max_document_size_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% metadata_value() :: #{
+%%   <<"Value">> => string()
+%% }
+-type metadata_value() :: #{binary() => any()}.
+
+%% Example:
+%% modify_document_permission_request() :: #{
+%%   <<"AccountIdsToAdd">> => list(string()),
+%%   <<"AccountIdsToRemove">> => list(string()),
+%%   <<"Name">> := string(),
+%%   <<"PermissionType">> := list(any()),
+%%   <<"SharedDocumentVersion">> => string()
+%% }
+-type modify_document_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_document_permission_response() :: #{
+
+%% }
+-type modify_document_permission_response() :: #{binary() => any()}.
+
+%% Example:
+%% no_longer_supported_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_longer_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% node_aggregator() :: #{
+%%   <<"AggregatorType">> => list(any()),
+%%   <<"Aggregators">> => list(node_aggregator()),
+%%   <<"AttributeName">> => list(any()),
+%%   <<"TypeName">> => list(any())
+%% }
+-type node_aggregator() :: #{binary() => any()}.
+
+%% Example:
+%% node_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type node_filter() :: #{binary() => any()}.
+
+%% Example:
+%% node_owner_info() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"OrganizationalUnitId">> => string(),
+%%   <<"OrganizationalUnitPath">> => string()
+%% }
+-type node_owner_info() :: #{binary() => any()}.
+
+%% Example:
+%% non_compliant_summary() :: #{
+%%   <<"NonCompliantCount">> => integer(),
+%%   <<"SeveritySummary">> => severity_summary()
+%% }
+-type non_compliant_summary() :: #{binary() => any()}.
+
+%% Example:
+%% notification_config() :: #{
+%%   <<"NotificationArn">> => string(),
+%%   <<"NotificationEvents">> => list(list(any())()),
+%%   <<"NotificationType">> => list(any())
+%% }
+-type notification_config() :: #{binary() => any()}.
+
+%% Example:
+%% ops_aggregator() :: #{
+%%   <<"AggregatorType">> => string(),
+%%   <<"Aggregators">> => list(ops_aggregator()),
+%%   <<"AttributeName">> => string(),
+%%   <<"Filters">> => list(ops_filter()),
+%%   <<"TypeName">> => string(),
+%%   <<"Values">> => map()
+%% }
+-type ops_aggregator() :: #{binary() => any()}.
+
+%% Example:
+%% ops_entity() :: #{
+%%   <<"Data">> => map(),
+%%   <<"Id">> => string()
+%% }
+-type ops_entity() :: #{binary() => any()}.
+
+%% Example:
+%% ops_entity_item() :: #{
+%%   <<"CaptureTime">> => string(),
+%%   <<"Content">> => list(map())
+%% }
+-type ops_entity_item() :: #{binary() => any()}.
+
+%% Example:
+%% ops_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type ops_filter() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item() :: #{
+%%   <<"ActualEndTime">> => non_neg_integer(),
+%%   <<"ActualStartTime">> => non_neg_integer(),
+%%   <<"Category">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Notifications">> => list(ops_item_notification()),
+%%   <<"OperationalData">> => map(),
+%%   <<"OpsItemArn">> => string(),
+%%   <<"OpsItemId">> => string(),
+%%   <<"OpsItemType">> => string(),
+%%   <<"PlannedEndTime">> => non_neg_integer(),
+%%   <<"PlannedStartTime">> => non_neg_integer(),
+%%   <<"Priority">> => integer(),
+%%   <<"RelatedOpsItems">> => list(related_ops_item()),
+%%   <<"Severity">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type ops_item() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ops_item_access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_already_exists_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"OpsItemId">> => string()
+%% }
+-type ops_item_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ops_item_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_data_value() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type ops_item_data_value() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_event_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type ops_item_event_filter() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_event_summary() :: #{
+%%   <<"CreatedBy">> => ops_item_identity(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Detail">> => string(),
+%%   <<"DetailType">> => string(),
+%%   <<"EventId">> => string(),
+%%   <<"OpsItemId">> => string(),
+%%   <<"Source">> => string()
+%% }
+-type ops_item_event_summary() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type ops_item_filter() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_identity() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type ops_item_identity() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_invalid_parameter_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ParameterNames">> => list(string())
+%% }
+-type ops_item_invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_limit_exceeded_exception() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"LimitType">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ResourceTypes">> => list(string())
+%% }
+-type ops_item_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ops_item_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_notification() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type ops_item_notification() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_related_item_already_exists_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"OpsItemId">> => string(),
+%%   <<"ResourceUri">> => string()
+%% }
+-type ops_item_related_item_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_related_item_association_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type ops_item_related_item_association_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_related_item_summary() :: #{
+%%   <<"AssociationId">> => string(),
+%%   <<"AssociationType">> => string(),
+%%   <<"CreatedBy">> => ops_item_identity(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => ops_item_identity(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OpsItemId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ResourceUri">> => string()
+%% }
+-type ops_item_related_item_summary() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_related_items_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type ops_item_related_items_filter() :: #{binary() => any()}.
+
+%% Example:
+%% ops_item_summary() :: #{
+%%   <<"ActualEndTime">> => non_neg_integer(),
+%%   <<"ActualStartTime">> => non_neg_integer(),
+%%   <<"Category">> => string(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"OperationalData">> => map(),
+%%   <<"OpsItemId">> => string(),
+%%   <<"OpsItemType">> => string(),
+%%   <<"PlannedEndTime">> => non_neg_integer(),
+%%   <<"PlannedStartTime">> => non_neg_integer(),
+%%   <<"Priority">> => integer(),
+%%   <<"Severity">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type ops_item_summary() :: #{binary() => any()}.
+
+%% Example:
+%% ops_metadata() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"LastModifiedUser">> => string(),
+%%   <<"OpsMetadataArn">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type ops_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% ops_metadata_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type ops_metadata_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_metadata_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type ops_metadata_filter() :: #{binary() => any()}.
+
+%% Example:
+%% ops_metadata_invalid_argument_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type ops_metadata_invalid_argument_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_metadata_key_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type ops_metadata_key_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_metadata_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type ops_metadata_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_metadata_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type ops_metadata_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_metadata_too_many_updates_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type ops_metadata_too_many_updates_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ops_result_attribute() :: #{
+%%   <<"TypeName">> => string()
+%% }
+-type ops_result_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% output_source() :: #{
+%%   <<"OutputSourceId">> => string(),
+%%   <<"OutputSourceType">> => string()
+%% }
+-type output_source() :: #{binary() => any()}.
+
+%% Example:
+%% parameter() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"DataType">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Selector">> => string(),
+%%   <<"SourceResult">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type parameter() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_already_exists() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_history() :: #{
+%%   <<"AllowedPattern">> => string(),
+%%   <<"DataType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"KeyId">> => string(),
+%%   <<"Labels">> => list(string()),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"LastModifiedUser">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Policies">> => list(parameter_inline_policy()),
+%%   <<"Tier">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type parameter_history() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_inline_policy() :: #{
+%%   <<"PolicyStatus">> => string(),
+%%   <<"PolicyText">> => string(),
+%%   <<"PolicyType">> => string()
+%% }
+-type parameter_inline_policy() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_max_version_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_max_version_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_metadata() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"AllowedPattern">> => string(),
+%%   <<"DataType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"KeyId">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"LastModifiedUser">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Policies">> => list(parameter_inline_policy()),
+%%   <<"Tier">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Version">> => float()
+%% }
+-type parameter_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_pattern_mismatch_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_pattern_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_string_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Option">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type parameter_string_filter() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_version_label_limit_exceeded() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_version_label_limit_exceeded() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_version_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type parameter_version_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% parameters_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type parameters_filter() :: #{binary() => any()}.
+
+%% Example:
+%% parent_step_details() :: #{
+%%   <<"Action">> => string(),
+%%   <<"Iteration">> => integer(),
+%%   <<"IteratorValue">> => string(),
+%%   <<"StepExecutionId">> => string(),
+%%   <<"StepName">> => string()
+%% }
+-type parent_step_details() :: #{binary() => any()}.
+
+%% Example:
+%% patch() :: #{
+%%   <<"AdvisoryIds">> => list(string()),
+%%   <<"Arch">> => string(),
+%%   <<"BugzillaIds">> => list(string()),
+%%   <<"CVEIds">> => list(string()),
+%%   <<"Classification">> => string(),
+%%   <<"ContentUrl">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Epoch">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"KbNumber">> => string(),
+%%   <<"Language">> => string(),
+%%   <<"MsrcNumber">> => string(),
+%%   <<"MsrcSeverity">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Product">> => string(),
+%%   <<"ProductFamily">> => string(),
+%%   <<"Release">> => string(),
+%%   <<"ReleaseDate">> => non_neg_integer(),
+%%   <<"Repository">> => string(),
+%%   <<"Severity">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Vendor">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type patch() :: #{binary() => any()}.
+
+%% Example:
+%% patch_baseline_identity() :: #{
+%%   <<"BaselineDescription">> => string(),
+%%   <<"BaselineId">> => string(),
+%%   <<"BaselineName">> => string(),
+%%   <<"DefaultBaseline">> => boolean(),
+%%   <<"OperatingSystem">> => list(any())
+%% }
+-type patch_baseline_identity() :: #{binary() => any()}.
+
+%% Example:
+%% patch_compliance_data() :: #{
+%%   <<"CVEIds">> => string(),
+%%   <<"Classification">> => string(),
+%%   <<"InstalledTime">> => non_neg_integer(),
+%%   <<"KBId">> => string(),
+%%   <<"Severity">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type patch_compliance_data() :: #{binary() => any()}.
+
+%% Example:
+%% patch_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type patch_filter() :: #{binary() => any()}.
+
+%% Example:
+%% patch_filter_group() :: #{
+%%   <<"PatchFilters">> => list(patch_filter())
+%% }
+-type patch_filter_group() :: #{binary() => any()}.
+
+%% Example:
+%% patch_group_patch_baseline_mapping() :: #{
+%%   <<"BaselineIdentity">> => patch_baseline_identity(),
+%%   <<"PatchGroup">> => string()
+%% }
+-type patch_group_patch_baseline_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% patch_orchestrator_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type patch_orchestrator_filter() :: #{binary() => any()}.
+
+%% Example:
+%% patch_rule() :: #{
+%%   <<"ApproveAfterDays">> => integer(),
+%%   <<"ApproveUntilDate">> => string(),
+%%   <<"ComplianceLevel">> => list(any()),
+%%   <<"EnableNonSecurity">> => boolean(),
+%%   <<"PatchFilterGroup">> => patch_filter_group()
+%% }
+-type patch_rule() :: #{binary() => any()}.
+
+%% Example:
+%% patch_rule_group() :: #{
+%%   <<"PatchRules">> => list(patch_rule())
+%% }
+-type patch_rule_group() :: #{binary() => any()}.
+
+%% Example:
+%% patch_source() :: #{
+%%   <<"Configuration">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Products">> => list(string())
+%% }
+-type patch_source() :: #{binary() => any()}.
+
+%% Example:
+%% patch_status() :: #{
+%%   <<"ApprovalDate">> => non_neg_integer(),
+%%   <<"ComplianceLevel">> => list(any()),
+%%   <<"DeploymentStatus">> => list(any())
+%% }
+-type patch_status() :: #{binary() => any()}.
+
+%% Example:
+%% policies_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type policies_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% progress_counters() :: #{
+%%   <<"CancelledSteps">> => integer(),
+%%   <<"FailedSteps">> => integer(),
+%%   <<"SuccessSteps">> => integer(),
+%%   <<"TimedOutSteps">> => integer(),
+%%   <<"TotalSteps">> => integer()
+%% }
+-type progress_counters() :: #{binary() => any()}.
+
+%% Example:
+%% put_compliance_items_request() :: #{
+%%   <<"ComplianceType">> := string(),
+%%   <<"ExecutionSummary">> := compliance_execution_summary(),
+%%   <<"ItemContentHash">> => string(),
+%%   <<"Items">> := list(compliance_item_entry()),
+%%   <<"ResourceId">> := string(),
+%%   <<"ResourceType">> := string(),
+%%   <<"UploadType">> => list(any())
+%% }
+-type put_compliance_items_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_compliance_items_result() :: #{
+
+%% }
+-type put_compliance_items_result() :: #{binary() => any()}.
+
+%% Example:
+%% put_inventory_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"Items">> := list(inventory_item())
+%% }
+-type put_inventory_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_inventory_result() :: #{
+%%   <<"Message">> => string()
+%% }
+-type put_inventory_result() :: #{binary() => any()}.
+
+%% Example:
+%% put_parameter_request() :: #{
+%%   <<"AllowedPattern">> => string(),
+%%   <<"DataType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"KeyId">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Overwrite">> => boolean(),
+%%   <<"Policies">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Tier">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> := string()
+%% }
+-type put_parameter_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_parameter_result() :: #{
+%%   <<"Tier">> => list(any()),
+%%   <<"Version">> => float()
+%% }
+-type put_parameter_result() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"PolicyHash">> => string(),
+%%   <<"PolicyId">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"PolicyHash">> => string(),
+%%   <<"PolicyId">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_default_patch_baseline_request() :: #{
+%%   <<"BaselineId">> := string()
+%% }
+-type register_default_patch_baseline_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_default_patch_baseline_result() :: #{
+%%   <<"BaselineId">> => string()
+%% }
+-type register_default_patch_baseline_result() :: #{binary() => any()}.
+
+%% Example:
+%% register_patch_baseline_for_patch_group_request() :: #{
+%%   <<"BaselineId">> := string(),
+%%   <<"PatchGroup">> := string()
+%% }
+-type register_patch_baseline_for_patch_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_patch_baseline_for_patch_group_result() :: #{
+%%   <<"BaselineId">> => string(),
+%%   <<"PatchGroup">> => string()
+%% }
+-type register_patch_baseline_for_patch_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% register_target_with_maintenance_window_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerInformation">> => string(),
+%%   <<"ResourceType">> := list(any()),
+%%   <<"Targets">> := list(target()),
+%%   <<"WindowId">> := string()
+%% }
+-type register_target_with_maintenance_window_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_target_with_maintenance_window_result() :: #{
+%%   <<"WindowTargetId">> => string()
+%% }
+-type register_target_with_maintenance_window_result() :: #{binary() => any()}.
+
+%% Example:
+%% register_task_with_maintenance_window_request() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"ClientToken">> => string(),
+%%   <<"CutoffBehavior">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"LoggingInfo">> => logging_info(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"Targets">> => list(target()),
+%%   <<"TaskArn">> := string(),
+%%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
+%%   <<"TaskParameters">> => map(),
+%%   <<"TaskType">> := list(any()),
+%%   <<"WindowId">> := string()
+%% }
+-type register_task_with_maintenance_window_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_task_with_maintenance_window_result() :: #{
+%%   <<"WindowTaskId">> => string()
+%% }
+-type register_task_with_maintenance_window_result() :: #{binary() => any()}.
+
+%% Example:
+%% registration_metadata_item() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type registration_metadata_item() :: #{binary() => any()}.
+
+%% Example:
+%% related_ops_item() :: #{
+%%   <<"OpsItemId">> => string()
+%% }
+-type related_ops_item() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_resource_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"ResourceType">> := list(any()),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type remove_tags_from_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_tags_from_resource_result() :: #{
+
+%% }
+-type remove_tags_from_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% reset_service_setting_request() :: #{
+%%   <<"SettingId">> := string()
+%% }
+-type reset_service_setting_request() :: #{binary() => any()}.
+
+%% Example:
+%% reset_service_setting_result() :: #{
+%%   <<"ServiceSetting">> => service_setting()
+%% }
+-type reset_service_setting_result() :: #{binary() => any()}.
+
+%% Example:
+%% resolved_targets() :: #{
+%%   <<"ParameterValues">> => list(string()),
+%%   <<"Truncated">> => boolean()
+%% }
+-type resolved_targets() :: #{binary() => any()}.
+
+%% Example:
+%% resource_compliance_summary_item() :: #{
+%%   <<"ComplianceType">> => string(),
+%%   <<"CompliantSummary">> => compliant_summary(),
+%%   <<"ExecutionSummary">> => compliance_execution_summary(),
+%%   <<"NonCompliantSummary">> => non_compliant_summary(),
+%%   <<"OverallSeverity">> => list(any()),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type resource_compliance_summary_item() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_already_exists_exception() :: #{
+%%   <<"SyncName">> => string()
+%% }
+-type resource_data_sync_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_aws_organizations_source() :: #{
+%%   <<"OrganizationSourceType">> => string(),
+%%   <<"OrganizationalUnits">> => list(resource_data_sync_organizational_unit())
+%% }
+-type resource_data_sync_aws_organizations_source() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_data_sync_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_count_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_data_sync_count_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_destination_data_sharing() :: #{
+%%   <<"DestinationDataSharingType">> => string()
+%% }
+-type resource_data_sync_destination_data_sharing() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_invalid_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_data_sync_invalid_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_item() :: #{
+%%   <<"LastStatus">> => list(any()),
+%%   <<"LastSuccessfulSyncTime">> => non_neg_integer(),
+%%   <<"LastSyncStatusMessage">> => string(),
+%%   <<"LastSyncTime">> => non_neg_integer(),
+%%   <<"S3Destination">> => resource_data_sync_s3_destination(),
+%%   <<"SyncCreatedTime">> => non_neg_integer(),
+%%   <<"SyncLastModifiedTime">> => non_neg_integer(),
+%%   <<"SyncName">> => string(),
+%%   <<"SyncSource">> => resource_data_sync_source_with_state(),
+%%   <<"SyncType">> => string()
+%% }
+-type resource_data_sync_item() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"SyncName">> => string(),
+%%   <<"SyncType">> => string()
+%% }
+-type resource_data_sync_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_organizational_unit() :: #{
+%%   <<"OrganizationalUnitId">> => string()
+%% }
+-type resource_data_sync_organizational_unit() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_s3_destination() :: #{
+%%   <<"AWSKMSKeyARN">> => string(),
+%%   <<"BucketName">> => string(),
+%%   <<"DestinationDataSharing">> => resource_data_sync_destination_data_sharing(),
+%%   <<"Prefix">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"SyncFormat">> => list(any())
+%% }
+-type resource_data_sync_s3_destination() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_source() :: #{
+%%   <<"AwsOrganizationsSource">> => resource_data_sync_aws_organizations_source(),
+%%   <<"EnableAllOpsDataSources">> => boolean(),
+%%   <<"IncludeFutureRegions">> => boolean(),
+%%   <<"SourceRegions">> => list(string()),
+%%   <<"SourceType">> => string()
+%% }
+-type resource_data_sync_source() :: #{binary() => any()}.
+
+%% Example:
+%% resource_data_sync_source_with_state() :: #{
+%%   <<"AwsOrganizationsSource">> => resource_data_sync_aws_organizations_source(),
+%%   <<"EnableAllOpsDataSources">> => boolean(),
+%%   <<"IncludeFutureRegions">> => boolean(),
+%%   <<"SourceRegions">> => list(string()),
+%%   <<"SourceType">> => string(),
+%%   <<"State">> => string()
+%% }
+-type resource_data_sync_source_with_state() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy_conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_policy_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy_invalid_parameter_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ParameterNames">> => list(string())
+%% }
+-type resource_policy_invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy_limit_exceeded_exception() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"LimitType">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type resource_policy_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% result_attribute() :: #{
+%%   <<"TypeName">> => string()
+%% }
+-type result_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% resume_session_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type resume_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% resume_session_response() :: #{
+%%   <<"SessionId">> => string(),
+%%   <<"StreamUrl">> => string(),
+%%   <<"TokenValue">> => string()
+%% }
+-type resume_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% review_information() :: #{
+%%   <<"ReviewedTime">> => non_neg_integer(),
+%%   <<"Reviewer">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type review_information() :: #{binary() => any()}.
+
+%% Example:
+%% runbook() :: #{
+%%   <<"DocumentName">> => string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"TargetParameterName">> => string(),
+%%   <<"Targets">> => list(target())
+%% }
+-type runbook() :: #{binary() => any()}.
+
+%% Example:
+%% s3_output_location() :: #{
+%%   <<"OutputS3BucketName">> => string(),
+%%   <<"OutputS3KeyPrefix">> => string(),
+%%   <<"OutputS3Region">> => string()
+%% }
+-type s3_output_location() :: #{binary() => any()}.
+
+%% Example:
+%% s3_output_url() :: #{
+%%   <<"OutputUrl">> => string()
+%% }
+-type s3_output_url() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_window_execution() :: #{
+%%   <<"ExecutionTime">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"WindowId">> => string()
+%% }
+-type scheduled_window_execution() :: #{binary() => any()}.
+
+%% Example:
+%% send_automation_signal_request() :: #{
+%%   <<"AutomationExecutionId">> := string(),
+%%   <<"Payload">> => map(),
+%%   <<"SignalType">> := list(any())
+%% }
+-type send_automation_signal_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_automation_signal_result() :: #{
+
+%% }
+-type send_automation_signal_result() :: #{binary() => any()}.
+
+%% Example:
+%% send_command_request() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
+%%   <<"Comment">> => string(),
+%%   <<"DocumentHash">> => string(),
+%%   <<"DocumentHashType">> => list(any()),
+%%   <<"DocumentName">> := string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"NotificationConfig">> => notification_config(),
+%%   <<"OutputS3BucketName">> => string(),
+%%   <<"OutputS3KeyPrefix">> => string(),
+%%   <<"OutputS3Region">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"Targets">> => list(target()),
+%%   <<"TimeoutSeconds">> => integer()
+%% }
+-type send_command_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_command_result() :: #{
+%%   <<"Command">> => command()
+%% }
+-type send_command_result() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_setting() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"LastModifiedUser">> => string(),
+%%   <<"SettingId">> => string(),
+%%   <<"SettingValue">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type service_setting() :: #{binary() => any()}.
+
+%% Example:
+%% service_setting_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_setting_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% session() :: #{
+%%   <<"AccessType">> => list(any()),
+%%   <<"Details">> => string(),
+%%   <<"DocumentName">> => string(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"MaxSessionDuration">> => string(),
+%%   <<"OutputUrl">> => session_manager_output_url(),
+%%   <<"Owner">> => string(),
+%%   <<"Reason">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Target">> => string()
+%% }
+-type session() :: #{binary() => any()}.
+
+%% Example:
+%% session_filter() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type session_filter() :: #{binary() => any()}.
+
+%% Example:
+%% session_manager_output_url() :: #{
+%%   <<"CloudWatchOutputUrl">> => string(),
+%%   <<"S3OutputUrl">> => string()
+%% }
+-type session_manager_output_url() :: #{binary() => any()}.
+
+%% Example:
+%% severity_summary() :: #{
+%%   <<"CriticalCount">> => integer(),
+%%   <<"HighCount">> => integer(),
+%%   <<"InformationalCount">> => integer(),
+%%   <<"LowCount">> => integer(),
+%%   <<"MediumCount">> => integer(),
+%%   <<"UnspecifiedCount">> => integer()
+%% }
+-type severity_summary() :: #{binary() => any()}.
+
+%% Example:
+%% ssm_node() :: #{
+%%   <<"CaptureTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"NodeType">> => list(),
+%%   <<"Owner">> => node_owner_info(),
+%%   <<"Region">> => string()
+%% }
+-type ssm_node() :: #{binary() => any()}.
+
+%% Example:
+%% start_access_request_request() :: #{
+%%   <<"Reason">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Targets">> := list(target())
+%% }
+-type start_access_request_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_access_request_response() :: #{
+%%   <<"AccessRequestId">> => string()
+%% }
+-type start_access_request_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_associations_once_request() :: #{
+%%   <<"AssociationIds">> := list(string())
+%% }
+-type start_associations_once_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_associations_once_result() :: #{
+
+%% }
+-type start_associations_once_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_automation_execution_request() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DocumentName">> := string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Mode">> => list(any()),
+%%   <<"Parameters">> => map(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetLocationsURL">> => string(),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"TargetParameterName">> => string(),
+%%   <<"Targets">> => list(target())
+%% }
+-type start_automation_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_automation_execution_result() :: #{
+%%   <<"AutomationExecutionId">> => string()
+%% }
+-type start_automation_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_change_request_execution_request() :: #{
+%%   <<"AutoApprove">> => boolean(),
+%%   <<"ChangeDetails">> => string(),
+%%   <<"ChangeRequestName">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DocumentName">> := string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"Runbooks">> := list(runbook()),
+%%   <<"ScheduledEndTime">> => non_neg_integer(),
+%%   <<"ScheduledTime">> => non_neg_integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_change_request_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_change_request_execution_result() :: #{
+%%   <<"AutomationExecutionId">> => string()
+%% }
+-type start_change_request_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_execution_preview_request() :: #{
+%%   <<"DocumentName">> := string(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"ExecutionInputs">> => list()
+%% }
+-type start_execution_preview_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_execution_preview_response() :: #{
+%%   <<"ExecutionPreviewId">> => string()
+%% }
+-type start_execution_preview_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_session_request() :: #{
+%%   <<"DocumentName">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"Reason">> => string(),
+%%   <<"Target">> := string()
+%% }
+-type start_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_session_response() :: #{
+%%   <<"SessionId">> => string(),
+%%   <<"StreamUrl">> => string(),
+%%   <<"TokenValue">> => string()
+%% }
+-type start_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% status_unchanged() :: #{
+
+%% }
+-type status_unchanged() :: #{binary() => any()}.
+
+%% Example:
+%% step_execution() :: #{
+%%   <<"Action">> => string(),
+%%   <<"ExecutionEndTime">> => non_neg_integer(),
+%%   <<"ExecutionStartTime">> => non_neg_integer(),
+%%   <<"FailureDetails">> => failure_details(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"Inputs">> => map(),
+%%   <<"IsCritical">> => boolean(),
+%%   <<"IsEnd">> => boolean(),
+%%   <<"MaxAttempts">> => integer(),
+%%   <<"NextStep">> => string(),
+%%   <<"OnFailure">> => string(),
+%%   <<"Outputs">> => map(),
+%%   <<"OverriddenParameters">> => map(),
+%%   <<"ParentStepDetails">> => parent_step_details(),
+%%   <<"Response">> => string(),
+%%   <<"ResponseCode">> => string(),
+%%   <<"StepExecutionId">> => string(),
+%%   <<"StepName">> => string(),
+%%   <<"StepStatus">> => list(any()),
+%%   <<"TargetLocation">> => target_location(),
+%%   <<"Targets">> => list(target()),
+%%   <<"TimeoutSeconds">> => float(),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
+%%   <<"ValidNextSteps">> => list(string()),
+%%   <<"WarningMessage">> => string()
+%% }
+-type step_execution() :: #{binary() => any()}.
+
+%% Example:
+%% step_execution_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type step_execution_filter() :: #{binary() => any()}.
+
+%% Example:
+%% stop_automation_execution_request() :: #{
+%%   <<"AutomationExecutionId">> := string(),
+%%   <<"Type">> => list(any())
+%% }
+-type stop_automation_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_automation_execution_result() :: #{
+
+%% }
+-type stop_automation_execution_result() :: #{binary() => any()}.
+
+%% Example:
+%% sub_type_count_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type sub_type_count_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% target() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type target() :: #{binary() => any()}.
+
+%% Example:
+%% target_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type target_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% target_location() :: #{
+%%   <<"Accounts">> => list(string()),
+%%   <<"ExcludeAccounts">> => list(string()),
+%%   <<"ExecutionRoleName">> => string(),
+%%   <<"IncludeChildOrganizationUnits">> => boolean(),
+%%   <<"Regions">> => list(string()),
+%%   <<"TargetLocationAlarmConfiguration">> => alarm_configuration(),
+%%   <<"TargetLocationMaxConcurrency">> => string(),
+%%   <<"TargetLocationMaxErrors">> => string(),
+%%   <<"Targets">> => list(target()),
+%%   <<"TargetsMaxConcurrency">> => string(),
+%%   <<"TargetsMaxErrors">> => string()
+%% }
+-type target_location() :: #{binary() => any()}.
+
+%% Example:
+%% target_not_connected() :: #{
+%%   <<"Message">> => string()
+%% }
+-type target_not_connected() :: #{binary() => any()}.
+
+%% Example:
+%% target_preview() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"TargetType">> => string()
+%% }
+-type target_preview() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_session_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type terminate_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_session_response() :: #{
+%%   <<"SessionId">> => string()
+%% }
+-type terminate_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_error() :: #{
+
+%% }
+-type too_many_tags_error() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_updates() :: #{
+%%   <<"Message">> => string()
+%% }
+-type too_many_updates() :: #{binary() => any()}.
+
+%% Example:
+%% total_size_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type total_size_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unlabel_parameter_version_request() :: #{
+%%   <<"Labels">> := list(string()),
+%%   <<"Name">> := string(),
+%%   <<"ParameterVersion">> := float()
+%% }
+-type unlabel_parameter_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% unlabel_parameter_version_result() :: #{
+%%   <<"InvalidLabels">> => list(string()),
+%%   <<"RemovedLabels">> => list(string())
+%% }
+-type unlabel_parameter_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_calendar_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_calendar_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_feature_required_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_feature_required_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_inventory_item_context_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type unsupported_inventory_item_context_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_inventory_schema_version_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_inventory_schema_version_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operating_system() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operating_system() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_parameter_type() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_parameter_type() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_platform_type() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unsupported_platform_type() :: #{binary() => any()}.
+
+%% Example:
+%% update_association_request() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"ApplyOnlyAtCronInterval">> => boolean(),
+%%   <<"AssociationDispatchAssumeRole">> => string(),
+%%   <<"AssociationId">> := string(),
+%%   <<"AssociationName">> => string(),
+%%   <<"AssociationVersion">> => string(),
+%%   <<"AutomationTargetParameterName">> => string(),
+%%   <<"CalendarNames">> => list(string()),
+%%   <<"ComplianceSeverity">> => list(any()),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputLocation">> => instance_association_output_location(),
+%%   <<"Parameters">> => map(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"ScheduleOffset">> => integer(),
+%%   <<"SyncCompliance">> => list(any()),
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"Targets">> => list(target())
+%% }
+-type update_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_association_result() :: #{
+%%   <<"AssociationDescription">> => association_description()
+%% }
+-type update_association_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_association_status_request() :: #{
+%%   <<"AssociationStatus">> := association_status(),
+%%   <<"InstanceId">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type update_association_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_association_status_result() :: #{
+%%   <<"AssociationDescription">> => association_description()
+%% }
+-type update_association_status_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_cloud_connector_request() :: #{
+%%   <<"CloudConnectorId">> := string(),
+%%   <<"Configuration">> => list(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string()
+%% }
+-type update_cloud_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cloud_connector_result() :: #{
+%%   <<"CloudConnectorId">> => string()
+%% }
+-type update_cloud_connector_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_document_default_version_request() :: #{
+%%   <<"DocumentVersion">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type update_document_default_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_document_default_version_result() :: #{
+%%   <<"Description">> => document_default_version_description()
+%% }
+-type update_document_default_version_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_document_metadata_request() :: #{
+%%   <<"DocumentReviews">> := document_reviews(),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type update_document_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_document_metadata_response() :: #{
+
+%% }
+-type update_document_metadata_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_document_request() :: #{
+%%   <<"Attachments">> => list(attachments_source()),
+%%   <<"Content">> := string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DocumentFormat">> => list(any()),
+%%   <<"DocumentVersion">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"TargetType">> => string(),
+%%   <<"VersionName">> => string()
+%% }
+-type update_document_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_document_result() :: #{
+%%   <<"DocumentDescription">> => document_description()
+%% }
+-type update_document_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_maintenance_window_request() :: #{
+%%   <<"AllowUnassociatedTargets">> => boolean(),
+%%   <<"Cutoff">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndDate">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Replace">> => boolean(),
+%%   <<"Schedule">> => string(),
+%%   <<"ScheduleOffset">> => integer(),
+%%   <<"ScheduleTimezone">> => string(),
+%%   <<"StartDate">> => string(),
+%%   <<"WindowId">> := string()
+%% }
+-type update_maintenance_window_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_maintenance_window_result() :: #{
+%%   <<"AllowUnassociatedTargets">> => boolean(),
+%%   <<"Cutoff">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"Duration">> => integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"EndDate">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Schedule">> => string(),
+%%   <<"ScheduleOffset">> => integer(),
+%%   <<"ScheduleTimezone">> => string(),
+%%   <<"StartDate">> => string(),
+%%   <<"WindowId">> => string()
+%% }
+-type update_maintenance_window_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_maintenance_window_target_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerInformation">> => string(),
+%%   <<"Replace">> => boolean(),
+%%   <<"Targets">> => list(target()),
+%%   <<"WindowId">> := string(),
+%%   <<"WindowTargetId">> := string()
+%% }
+-type update_maintenance_window_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_maintenance_window_target_result() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OwnerInformation">> => string(),
+%%   <<"Targets">> => list(target()),
+%%   <<"WindowId">> => string(),
+%%   <<"WindowTargetId">> => string()
+%% }
+-type update_maintenance_window_target_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_maintenance_window_task_request() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"CutoffBehavior">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"LoggingInfo">> => logging_info(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"Replace">> => boolean(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"Targets">> => list(target()),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
+%%   <<"TaskParameters">> => map(),
+%%   <<"WindowId">> := string(),
+%%   <<"WindowTaskId">> := string()
+%% }
+-type update_maintenance_window_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_maintenance_window_task_result() :: #{
+%%   <<"AlarmConfiguration">> => alarm_configuration(),
+%%   <<"CutoffBehavior">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"LoggingInfo">> => logging_info(),
+%%   <<"MaxConcurrency">> => string(),
+%%   <<"MaxErrors">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"ServiceRoleArn">> => string(),
+%%   <<"Targets">> => list(target()),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
+%%   <<"TaskParameters">> => map(),
+%%   <<"WindowId">> => string(),
+%%   <<"WindowTaskId">> => string()
+%% }
+-type update_maintenance_window_task_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_managed_instance_role_request() :: #{
+%%   <<"IamRole">> := string(),
+%%   <<"InstanceId">> := string()
+%% }
+-type update_managed_instance_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_managed_instance_role_result() :: #{
+
+%% }
+-type update_managed_instance_role_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_ops_item_request() :: #{
+%%   <<"ActualEndTime">> => non_neg_integer(),
+%%   <<"ActualStartTime">> => non_neg_integer(),
+%%   <<"Category">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Notifications">> => list(ops_item_notification()),
+%%   <<"OperationalData">> => map(),
+%%   <<"OperationalDataToDelete">> => list(string()),
+%%   <<"OpsItemArn">> => string(),
+%%   <<"OpsItemId">> := string(),
+%%   <<"PlannedEndTime">> => non_neg_integer(),
+%%   <<"PlannedStartTime">> => non_neg_integer(),
+%%   <<"Priority">> => integer(),
+%%   <<"RelatedOpsItems">> => list(related_ops_item()),
+%%   <<"Severity">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type update_ops_item_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_ops_item_response() :: #{
+
+%% }
+-type update_ops_item_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_ops_metadata_request() :: #{
+%%   <<"KeysToDelete">> => list(string()),
+%%   <<"MetadataToUpdate">> => map(),
+%%   <<"OpsMetadataArn">> := string()
+%% }
+-type update_ops_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_ops_metadata_result() :: #{
+%%   <<"OpsMetadataArn">> => string()
+%% }
+-type update_ops_metadata_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_patch_baseline_request() :: #{
+%%   <<"ApprovalRules">> => patch_rule_group(),
+%%   <<"ApprovedPatches">> => list(string()),
+%%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
+%%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
+%%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
+%%   <<"BaselineId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"GlobalFilters">> => patch_filter_group(),
+%%   <<"Name">> => string(),
+%%   <<"RejectedPatches">> => list(string()),
+%%   <<"RejectedPatchesAction">> => list(any()),
+%%   <<"Replace">> => boolean(),
+%%   <<"Sources">> => list(patch_source())
+%% }
+-type update_patch_baseline_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_patch_baseline_result() :: #{
@@ -5462,201 +5643,205 @@
 -type update_patch_baseline_result() :: #{binary() => any()}.
 
 %% Example:
-%% maintenance_window_lambda_parameters() :: #{
-%%   <<"ClientContext">> => string(),
-%%   <<"Payload">> => binary(),
-%%   <<"Qualifier">> => string()
+%% update_resource_data_sync_request() :: #{
+%%   <<"SyncName">> := string(),
+%%   <<"SyncSource">> := resource_data_sync_source(),
+%%   <<"SyncType">> := string()
 %% }
--type maintenance_window_lambda_parameters() :: #{binary() => any()}.
+-type update_resource_data_sync_request() :: #{binary() => any()}.
 
 %% Example:
-%% patch_source() :: #{
-%%   <<"Configuration">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Products">> => list(string())
+%% update_resource_data_sync_result() :: #{
+
 %% }
--type patch_source() :: #{binary() => any()}.
+-type update_resource_data_sync_result() :: #{binary() => any()}.
 
 %% Example:
-%% maintenance_window_identity_for_target() :: #{
-%%   <<"Name">> => string(),
-%%   <<"WindowId">> => string()
+%% update_service_setting_request() :: #{
+%%   <<"SettingId">> := string(),
+%%   <<"SettingValue">> := string()
 %% }
--type maintenance_window_identity_for_target() :: #{binary() => any()}.
+-type update_service_setting_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_inventory_entries_request() :: #{
-%%   <<"Filters">> => list(inventory_filter()),
-%%   <<"InstanceId">> := string(),
+%% update_service_setting_result() :: #{
+
+%% }
+-type update_service_setting_result() :: #{binary() => any()}.
+
+%% Example:
+%% validate_cloud_connector_request() :: #{
+%%   <<"CloudConnectorId">> := string(),
 %%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type validate_cloud_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% validate_cloud_connector_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TypeName">> := string()
+%%   <<"ValidationFindings">> => list(validation_finding())
 %% }
--type list_inventory_entries_request() :: #{binary() => any()}.
+-type validate_cloud_connector_result() :: #{binary() => any()}.
 
 %% Example:
-%% maintenance_window_execution_task_invocation_identity() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ExecutionId">> => string(),
-%%   <<"InvocationId">> => string(),
-%%   <<"OwnerInformation">> => string(),
-%%   <<"Parameters">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => string(),
-%%   <<"TaskExecutionId">> => string(),
-%%   <<"TaskType">> => list(any()),
-%%   <<"WindowExecutionId">> => string(),
-%%   <<"WindowTargetId">> => string()
+%% validation_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ReasonCode">> => string()
 %% }
--type maintenance_window_execution_task_invocation_identity() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% parameter_max_version_limit_exceeded() :: #{
-%%   <<"message">> => string()
+%% validation_finding() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"ProviderMessage">> => string(),
+%%   <<"Scope">> => validation_finding_scope(),
+%%   <<"Type">> => list(any())
 %% }
--type parameter_max_version_limit_exceeded() :: #{binary() => any()}.
+-type validation_finding() :: #{binary() => any()}.
 
 %% Example:
-%% unsupported_operating_system() :: #{
-%%   <<"Message">> => string()
+%% validation_finding_scope() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type unsupported_operating_system() :: #{binary() => any()}.
-
-%% Example:
-%% get_inventory_schema_request() :: #{
-%%   <<"Aggregator">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SubType">> => boolean(),
-%%   <<"TypeName">> => string()
-%% }
--type get_inventory_schema_request() :: #{binary() => any()}.
+-type validation_finding_scope() :: #{binary() => any()}.
 
 -type add_tags_to_resource_errors() ::
     too_many_updates() | 
-    internal_server_error() | 
     too_many_tags_error() | 
+    invalid_resource_type() | 
     invalid_resource_id() | 
-    invalid_resource_type().
+    internal_server_error().
 
 -type associate_ops_item_related_item_errors() ::
+    ops_item_related_item_already_exists_exception() | 
+    ops_item_not_found_exception() | 
     ops_item_limit_exceeded_exception() | 
     ops_item_invalid_parameter_exception() | 
-    internal_server_error() | 
-    ops_item_related_item_already_exists_exception() | 
     ops_item_conflict_exception() | 
-    ops_item_not_found_exception().
+    internal_server_error().
 
 -type cancel_command_errors() ::
     invalid_instance_id() | 
-    internal_server_error() | 
     invalid_command_id() | 
+    internal_server_error() | 
     duplicate_instance_id().
 
 -type cancel_maintenance_window_execution_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type create_activation_errors() ::
-    internal_server_error() | 
-    invalid_parameters().
+    invalid_parameters() | 
+    internal_server_error().
 
 -type create_association_errors() ::
     unsupported_platform_type() | 
-    association_already_exists() | 
-    invalid_instance_id() | 
     invalid_target_maps() | 
-    internal_server_error() | 
-    invalid_output_location() | 
-    invalid_schedule() | 
-    invalid_document_version() | 
-    invalid_parameters() | 
-    invalid_document() | 
-    association_limit_exceeded() | 
+    invalid_target() | 
     invalid_tag() | 
-    invalid_target().
+    invalid_schedule() | 
+    invalid_parameters() | 
+    invalid_output_location() | 
+    invalid_instance_id() | 
+    invalid_document_version() | 
+    invalid_document() | 
+    internal_server_error() | 
+    association_limit_exceeded() | 
+    association_already_exists().
 
 -type create_association_batch_errors() ::
     unsupported_platform_type() | 
-    invalid_instance_id() | 
     invalid_target_maps() | 
-    internal_server_error() | 
-    invalid_output_location() | 
-    duplicate_instance_id() | 
+    invalid_target() | 
     invalid_schedule() | 
-    invalid_document_version() | 
     invalid_parameters() | 
+    invalid_output_location() | 
+    invalid_instance_id() | 
+    invalid_document_version() | 
     invalid_document() | 
-    association_limit_exceeded() | 
-    invalid_target().
+    internal_server_error() | 
+    duplicate_instance_id() | 
+    association_limit_exceeded().
+
+-type create_cloud_connector_errors() ::
+    service_quota_exceeded_exception() | 
+    internal_server_error() | 
+    conflict_exception().
 
 -type create_document_errors() ::
-    no_longer_supported_exception() | 
-    document_limit_exceeded() | 
     too_many_updates() | 
-    internal_server_error() | 
-    document_already_exists() | 
+    no_longer_supported_exception() | 
+    max_document_size_exceeded() | 
     invalid_document_schema_version() | 
     invalid_document_content() | 
-    max_document_size_exceeded().
+    internal_server_error() | 
+    document_limit_exceeded() | 
+    document_already_exists().
 
 -type create_maintenance_window_errors() ::
-    internal_server_error() | 
     resource_limit_exceeded_exception() | 
+    internal_server_error() | 
     idempotent_parameter_mismatch().
 
 -type create_ops_item_errors() ::
     ops_item_limit_exceeded_exception() | 
     ops_item_invalid_parameter_exception() | 
-    internal_server_error() | 
     ops_item_already_exists_exception() | 
-    ops_item_access_denied_exception().
+    ops_item_access_denied_exception() | 
+    internal_server_error().
 
 -type create_ops_metadata_errors() ::
-    ops_metadata_limit_exceeded_exception() | 
-    internal_server_error() | 
     ops_metadata_too_many_updates_exception() | 
+    ops_metadata_limit_exceeded_exception() | 
+    ops_metadata_invalid_argument_exception() | 
     ops_metadata_already_exists_exception() | 
-    ops_metadata_invalid_argument_exception().
+    internal_server_error().
 
 -type create_patch_baseline_errors() ::
-    internal_server_error() | 
     resource_limit_exceeded_exception() | 
+    internal_server_error() | 
     idempotent_parameter_mismatch().
 
 -type create_resource_data_sync_errors() ::
-    internal_server_error() | 
-    resource_data_sync_count_exceeded_exception() | 
     resource_data_sync_invalid_configuration_exception() | 
-    resource_data_sync_already_exists_exception().
+    resource_data_sync_count_exceeded_exception() | 
+    resource_data_sync_already_exists_exception() | 
+    internal_server_error().
 
 -type delete_activation_errors() ::
     too_many_updates() | 
-    internal_server_error() | 
+    invalid_activation_id() | 
     invalid_activation() | 
-    invalid_activation_id().
+    internal_server_error().
 
 -type delete_association_errors() ::
-    association_does_not_exist() | 
-    invalid_instance_id() | 
     too_many_updates() | 
+    invalid_instance_id() | 
+    invalid_document() | 
     internal_server_error() | 
-    invalid_document().
+    association_does_not_exist().
+
+-type delete_cloud_connector_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error() | 
+    conflict_exception().
 
 -type delete_document_errors() ::
-    invalid_document_operation() | 
-    associated_instances() | 
     too_many_updates() | 
+    invalid_document_operation() | 
+    invalid_document() | 
     internal_server_error() | 
-    invalid_document().
+    associated_instances().
 
 -type delete_inventory_errors() ::
-    internal_server_error() | 
-    invalid_inventory_request_exception() | 
+    invalid_type_name_exception() | 
     invalid_option_exception() | 
+    invalid_inventory_request_exception() | 
     invalid_delete_inventory_parameters_exception() | 
-    invalid_type_name_exception().
+    internal_server_error().
 
 -type delete_maintenance_window_errors() ::
     internal_server_error().
@@ -5666,50 +5851,50 @@
     internal_server_error().
 
 -type delete_ops_metadata_errors() ::
-    internal_server_error() | 
+    ops_metadata_not_found_exception() | 
     ops_metadata_invalid_argument_exception() | 
-    ops_metadata_not_found_exception().
+    internal_server_error().
 
 -type delete_parameter_errors() ::
-    internal_server_error() | 
-    parameter_not_found().
+    parameter_not_found() | 
+    internal_server_error().
 
 -type delete_parameters_errors() ::
     internal_server_error().
 
 -type delete_patch_baseline_errors() ::
-    internal_server_error() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    internal_server_error().
 
 -type delete_resource_data_sync_errors() ::
     resource_data_sync_not_found_exception() | 
-    internal_server_error() | 
-    resource_data_sync_invalid_configuration_exception().
+    resource_data_sync_invalid_configuration_exception() | 
+    internal_server_error().
 
 -type delete_resource_policy_errors() ::
     resource_policy_not_found_exception() | 
-    internal_server_error() | 
+    resource_policy_invalid_parameter_exception() | 
     resource_policy_conflict_exception() | 
     resource_not_found_exception() | 
-    resource_policy_invalid_parameter_exception() | 
-    malformed_resource_policy_document_exception().
+    malformed_resource_policy_document_exception() | 
+    internal_server_error().
 
 -type deregister_managed_instance_errors() ::
     invalid_instance_id() | 
     internal_server_error().
 
 -type deregister_patch_baseline_for_patch_group_errors() ::
-    internal_server_error() | 
-    invalid_resource_id().
+    invalid_resource_id() | 
+    internal_server_error().
 
 -type deregister_target_from_maintenance_window_errors() ::
     target_in_use_exception() | 
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type deregister_task_from_maintenance_window_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type describe_activations_errors() ::
     invalid_next_token() | 
@@ -5717,50 +5902,50 @@
     internal_server_error().
 
 -type describe_association_errors() ::
-    invalid_association_version() | 
-    association_does_not_exist() | 
     invalid_instance_id() | 
+    invalid_document() | 
+    invalid_association_version() | 
     internal_server_error() | 
-    invalid_document().
+    association_does_not_exist().
 
 -type describe_association_execution_targets_errors() ::
     invalid_next_token() | 
-    association_does_not_exist() | 
     internal_server_error() | 
-    association_execution_does_not_exist().
+    association_execution_does_not_exist() | 
+    association_does_not_exist().
 
 -type describe_association_executions_errors() ::
     invalid_next_token() | 
-    association_does_not_exist() | 
-    internal_server_error().
+    internal_server_error() | 
+    association_does_not_exist().
 
 -type describe_automation_executions_errors() ::
     invalid_next_token() | 
+    invalid_filter_value() | 
     invalid_filter_key() | 
-    internal_server_error() | 
-    invalid_filter_value().
+    internal_server_error().
 
 -type describe_automation_step_executions_errors() ::
     invalid_next_token() | 
+    invalid_filter_value() | 
     invalid_filter_key() | 
     internal_server_error() | 
-    invalid_filter_value() | 
     automation_execution_not_found_exception().
 
 -type describe_available_patches_errors() ::
     internal_server_error().
 
 -type describe_document_errors() ::
-    internal_server_error() | 
     invalid_document_version() | 
-    invalid_document().
+    invalid_document() | 
+    internal_server_error().
 
 -type describe_document_permission_errors() ::
-    invalid_document_operation() | 
-    invalid_next_token() | 
-    internal_server_error() | 
     invalid_permission_type() | 
-    invalid_document().
+    invalid_next_token() | 
+    invalid_document_operation() | 
+    invalid_document() | 
+    internal_server_error().
 
 -type describe_effective_instance_associations_errors() ::
     invalid_next_token() | 
@@ -5769,9 +5954,9 @@
 
 -type describe_effective_patches_for_patch_baseline_errors() ::
     unsupported_operating_system() | 
-    does_not_exist_exception() | 
+    invalid_resource_id() | 
     internal_server_error() | 
-    invalid_resource_id().
+    does_not_exist_exception().
 
 -type describe_instance_associations_status_errors() ::
     invalid_next_token() | 
@@ -5781,8 +5966,8 @@
 -type describe_instance_information_errors() ::
     invalid_next_token() | 
     invalid_instance_information_filter_value() | 
-    invalid_filter_key() | 
     invalid_instance_id() | 
+    invalid_filter_key() | 
     internal_server_error().
 
 -type describe_instance_patch_states_errors() ::
@@ -5796,46 +5981,46 @@
 
 -type describe_instance_patches_errors() ::
     invalid_next_token() | 
-    invalid_filter() | 
     invalid_instance_id() | 
+    invalid_filter() | 
     internal_server_error().
 
 -type describe_instance_properties_errors() ::
     invalid_next_token() | 
-    invalid_filter_key() | 
+    invalid_instance_property_filter_value() | 
     invalid_instance_id() | 
-    internal_server_error() | 
-    invalid_activation_id() | 
+    invalid_filter_key() | 
     invalid_document() | 
-    invalid_instance_property_filter_value().
+    invalid_activation_id() | 
+    internal_server_error().
 
 -type describe_inventory_deletions_errors() ::
     invalid_next_token() | 
-    internal_server_error() | 
-    invalid_deletion_id_exception().
+    invalid_deletion_id_exception() | 
+    internal_server_error().
 
 -type describe_maintenance_window_execution_task_invocations_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type describe_maintenance_window_execution_tasks_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type describe_maintenance_window_executions_errors() ::
     internal_server_error().
 
 -type describe_maintenance_window_schedule_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type describe_maintenance_window_targets_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type describe_maintenance_window_tasks_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type describe_maintenance_windows_errors() ::
     internal_server_error().
@@ -5848,10 +6033,10 @@
 
 -type describe_parameters_errors() ::
     invalid_next_token() | 
-    invalid_filter_key() | 
-    internal_server_error() | 
+    invalid_filter_value() | 
     invalid_filter_option() | 
-    invalid_filter_value().
+    invalid_filter_key() | 
+    internal_server_error().
 
 -type describe_patch_baselines_errors() ::
     internal_server_error().
@@ -5872,35 +6057,39 @@
     internal_server_error().
 
 -type disassociate_ops_item_related_item_errors() ::
-    ops_item_invalid_parameter_exception() | 
-    internal_server_error() | 
     ops_item_related_item_association_not_found_exception() | 
+    ops_item_not_found_exception() | 
+    ops_item_invalid_parameter_exception() | 
     ops_item_conflict_exception() | 
-    ops_item_not_found_exception().
+    internal_server_error().
 
 -type get_access_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_error() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_automation_execution_errors() ::
     internal_server_error() | 
     automation_execution_not_found_exception().
 
 -type get_calendar_state_errors() ::
-    internal_server_error() | 
-    invalid_document_type() | 
     unsupported_calendar_exception() | 
-    invalid_document().
+    invalid_document_type() | 
+    invalid_document() | 
+    internal_server_error().
+
+-type get_cloud_connector_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error().
 
 -type get_command_invocation_errors() ::
-    invalid_instance_id() | 
-    internal_server_error() | 
-    invalid_command_id() | 
     invocation_does_not_exist() | 
-    invalid_plugin_name().
+    invalid_plugin_name() | 
+    invalid_instance_id() | 
+    invalid_command_id() | 
+    internal_server_error().
 
 -type get_connection_status_errors() ::
     internal_server_error().
@@ -5910,147 +6099,150 @@
 
 -type get_deployable_patch_snapshot_for_instance_errors() ::
     unsupported_operating_system() | 
-    internal_server_error() | 
-    unsupported_feature_required_exception().
+    unsupported_feature_required_exception() | 
+    internal_server_error().
 
 -type get_document_errors() ::
-    internal_server_error() | 
     invalid_document_version() | 
-    invalid_document().
+    invalid_document() | 
+    internal_server_error().
 
 -type get_execution_preview_errors() ::
-    internal_server_error() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error().
 
 -type get_inventory_errors() ::
-    invalid_next_token() | 
-    invalid_filter() | 
-    internal_server_error() | 
-    invalid_inventory_group_exception() | 
-    invalid_aggregator_exception() | 
+    invalid_type_name_exception() | 
     invalid_result_attribute_exception() | 
-    invalid_type_name_exception().
+    invalid_next_token() | 
+    invalid_inventory_group_exception() | 
+    invalid_filter() | 
+    invalid_aggregator_exception() | 
+    internal_server_error().
 
 -type get_inventory_schema_errors() ::
+    invalid_type_name_exception() | 
     invalid_next_token() | 
-    internal_server_error() | 
-    invalid_type_name_exception().
+    internal_server_error().
 
 -type get_maintenance_window_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type get_maintenance_window_execution_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type get_maintenance_window_execution_task_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type get_maintenance_window_execution_task_invocation_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type get_maintenance_window_task_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type get_ops_item_errors() ::
-    internal_server_error() | 
     ops_item_not_found_exception() | 
-    ops_item_access_denied_exception().
+    ops_item_access_denied_exception() | 
+    internal_server_error().
 
 -type get_ops_metadata_errors() ::
-    internal_server_error() | 
+    ops_metadata_not_found_exception() | 
     ops_metadata_invalid_argument_exception() | 
-    ops_metadata_not_found_exception().
+    internal_server_error().
 
 -type get_ops_summary_errors() ::
-    invalid_next_token() | 
     resource_data_sync_not_found_exception() | 
+    invalid_type_name_exception() | 
+    invalid_next_token() | 
     invalid_filter() | 
-    internal_server_error() | 
     invalid_aggregator_exception() | 
-    invalid_type_name_exception().
+    internal_server_error().
 
 -type get_parameter_errors() ::
-    internal_server_error() | 
-    invalid_key_id() | 
     parameter_version_not_found() | 
-    parameter_not_found().
+    parameter_not_found() | 
+    invalid_key_id() | 
+    internal_server_error().
 
 -type get_parameter_history_errors() ::
+    parameter_not_found() | 
     invalid_next_token() | 
-    internal_server_error() | 
     invalid_key_id() | 
-    parameter_not_found().
+    internal_server_error().
 
 -type get_parameters_errors() ::
-    internal_server_error() | 
-    invalid_key_id().
+    invalid_key_id() | 
+    internal_server_error().
 
 -type get_parameters_by_path_errors() ::
     invalid_next_token() | 
-    invalid_filter_key() | 
-    internal_server_error() | 
     invalid_key_id() | 
+    invalid_filter_value() | 
     invalid_filter_option() | 
-    invalid_filter_value().
+    invalid_filter_key() | 
+    internal_server_error().
 
 -type get_patch_baseline_errors() ::
-    does_not_exist_exception() | 
+    invalid_resource_id() | 
     internal_server_error() | 
-    invalid_resource_id().
+    does_not_exist_exception().
 
 -type get_patch_baseline_for_patch_group_errors() ::
     internal_server_error().
 
 -type get_resource_policies_errors() ::
-    internal_server_error() | 
+    resource_policy_invalid_parameter_exception() | 
     resource_not_found_exception() | 
-    resource_policy_invalid_parameter_exception().
+    internal_server_error().
 
 -type get_service_setting_errors() ::
-    internal_server_error() | 
-    service_setting_not_found().
+    service_setting_not_found() | 
+    internal_server_error().
 
 -type label_parameter_version_errors() ::
-    parameter_version_label_limit_exceeded() | 
     too_many_updates() | 
-    internal_server_error() | 
     parameter_version_not_found() | 
-    parameter_not_found().
+    parameter_version_label_limit_exceeded() | 
+    parameter_not_found() | 
+    internal_server_error().
 
 -type list_association_versions_errors() ::
     invalid_next_token() | 
-    association_does_not_exist() | 
-    internal_server_error().
+    internal_server_error() | 
+    association_does_not_exist().
 
 -type list_associations_errors() ::
     invalid_next_token() | 
     internal_server_error().
 
+-type list_cloud_connectors_errors() ::
+    internal_server_error().
+
 -type list_command_invocations_errors() ::
     invalid_next_token() | 
-    invalid_filter_key() | 
     invalid_instance_id() | 
-    internal_server_error() | 
-    invalid_command_id().
+    invalid_filter_key() | 
+    invalid_command_id() | 
+    internal_server_error().
 
 -type list_commands_errors() ::
     invalid_next_token() | 
-    invalid_filter_key() | 
     invalid_instance_id() | 
-    internal_server_error() | 
-    invalid_command_id().
+    invalid_filter_key() | 
+    invalid_command_id() | 
+    internal_server_error().
 
 -type list_compliance_items_errors() ::
+    invalid_resource_type() | 
+    invalid_resource_id() | 
     invalid_next_token() | 
     invalid_filter() | 
-    internal_server_error() | 
-    invalid_resource_id() | 
-    invalid_resource_type().
+    internal_server_error().
 
 -type list_compliance_summaries_errors() ::
     invalid_next_token() | 
@@ -6059,14 +6251,14 @@
 
 -type list_document_metadata_history_errors() ::
     invalid_next_token() | 
-    internal_server_error() | 
     invalid_document_version() | 
-    invalid_document().
+    invalid_document() | 
+    internal_server_error().
 
 -type list_document_versions_errors() ::
     invalid_next_token() | 
-    internal_server_error() | 
-    invalid_document().
+    invalid_document() | 
+    internal_server_error().
 
 -type list_documents_errors() ::
     invalid_next_token() | 
@@ -6074,40 +6266,40 @@
     internal_server_error().
 
 -type list_inventory_entries_errors() ::
+    invalid_type_name_exception() | 
     invalid_next_token() | 
-    invalid_filter() | 
     invalid_instance_id() | 
-    internal_server_error() | 
-    invalid_type_name_exception().
+    invalid_filter() | 
+    internal_server_error().
 
 -type list_nodes_errors() ::
-    invalid_next_token() | 
+    unsupported_operation_exception() | 
     resource_data_sync_not_found_exception() | 
+    invalid_next_token() | 
     invalid_filter() | 
-    internal_server_error() | 
-    unsupported_operation_exception().
+    internal_server_error().
 
 -type list_nodes_summary_errors() ::
-    invalid_next_token() | 
+    unsupported_operation_exception() | 
     resource_data_sync_not_found_exception() | 
+    invalid_next_token() | 
     invalid_filter() | 
-    internal_server_error() | 
     invalid_aggregator_exception() | 
-    unsupported_operation_exception().
+    internal_server_error().
 
 -type list_ops_item_events_errors() ::
+    ops_item_not_found_exception() | 
     ops_item_limit_exceeded_exception() | 
     ops_item_invalid_parameter_exception() | 
-    internal_server_error() | 
-    ops_item_not_found_exception().
+    internal_server_error().
 
 -type list_ops_item_related_items_errors() ::
     ops_item_invalid_parameter_exception() | 
     internal_server_error().
 
 -type list_ops_metadata_errors() ::
-    internal_server_error() | 
-    ops_metadata_invalid_argument_exception().
+    ops_metadata_invalid_argument_exception() | 
+    internal_server_error().
 
 -type list_resource_compliance_summaries_errors() ::
     invalid_next_token() | 
@@ -6115,110 +6307,110 @@
     internal_server_error().
 
 -type list_resource_data_sync_errors() ::
+    resource_data_sync_invalid_configuration_exception() | 
     invalid_next_token() | 
-    internal_server_error() | 
-    resource_data_sync_invalid_configuration_exception().
+    internal_server_error().
 
 -type list_tags_for_resource_errors() ::
-    internal_server_error() | 
+    invalid_resource_type() | 
     invalid_resource_id() | 
-    invalid_resource_type().
+    internal_server_error().
 
 -type modify_document_permission_errors() ::
-    document_limit_exceeded() | 
-    internal_server_error() | 
     invalid_permission_type() | 
     invalid_document() | 
-    document_permission_limit().
+    internal_server_error() | 
+    document_permission_limit() | 
+    document_limit_exceeded().
 
 -type put_compliance_items_errors() ::
-    compliance_type_count_limit_exceeded_exception() | 
-    internal_server_error() | 
-    item_size_limit_exceeded_exception() | 
-    invalid_resource_id() | 
-    invalid_resource_type() | 
     total_size_limit_exceeded_exception() | 
-    invalid_item_content_exception().
+    item_size_limit_exceeded_exception() | 
+    invalid_resource_type() | 
+    invalid_resource_id() | 
+    invalid_item_content_exception() | 
+    internal_server_error() | 
+    compliance_type_count_limit_exceeded_exception().
 
 -type put_inventory_errors() ::
-    item_content_mismatch_exception() | 
+    unsupported_inventory_schema_version_exception() | 
+    unsupported_inventory_item_context_exception() | 
+    total_size_limit_exceeded_exception() | 
     sub_type_count_limit_exceeded_exception() | 
+    item_size_limit_exceeded_exception() | 
+    item_content_mismatch_exception() | 
+    invalid_type_name_exception() | 
+    invalid_item_content_exception() | 
+    invalid_inventory_item_context_exception() | 
     invalid_instance_id() | 
     internal_server_error() | 
-    item_size_limit_exceeded_exception() | 
-    invalid_inventory_item_context_exception() | 
-    unsupported_inventory_schema_version_exception() | 
-    custom_schema_count_limit_exceeded_exception() | 
-    total_size_limit_exceeded_exception() | 
-    unsupported_inventory_item_context_exception() | 
-    invalid_item_content_exception() | 
-    invalid_type_name_exception().
+    custom_schema_count_limit_exceeded_exception().
 
 -type put_parameter_errors() ::
-    parameter_max_version_limit_exceeded() | 
-    hierarchy_type_mismatch_exception() | 
-    invalid_policy_type_exception() | 
-    parameter_limit_exceeded() | 
-    parameter_pattern_mismatch_exception() | 
-    too_many_updates() | 
-    internal_server_error() | 
-    hierarchy_level_limit_exceeded_exception() | 
-    invalid_allowed_pattern_exception() | 
-    invalid_key_id() | 
-    parameter_already_exists() | 
-    policies_limit_exceeded_exception() | 
     unsupported_parameter_type() | 
+    too_many_updates() | 
+    policies_limit_exceeded_exception() | 
+    parameter_pattern_mismatch_exception() | 
+    parameter_max_version_limit_exceeded() | 
+    parameter_limit_exceeded() | 
+    parameter_already_exists() | 
+    invalid_policy_type_exception() | 
+    invalid_policy_attribute_exception() | 
+    invalid_key_id() | 
+    invalid_allowed_pattern_exception() | 
+    internal_server_error() | 
     incompatible_policy_exception() | 
-    invalid_policy_attribute_exception().
+    hierarchy_type_mismatch_exception() | 
+    hierarchy_level_limit_exceeded_exception().
 
 -type put_resource_policy_errors() ::
     resource_policy_not_found_exception() | 
-    internal_server_error() | 
+    resource_policy_limit_exceeded_exception() | 
+    resource_policy_invalid_parameter_exception() | 
     resource_policy_conflict_exception() | 
     resource_not_found_exception() | 
-    resource_policy_invalid_parameter_exception() | 
-    resource_policy_limit_exceeded_exception() | 
-    malformed_resource_policy_document_exception().
+    malformed_resource_policy_document_exception() | 
+    internal_server_error().
 
 -type register_default_patch_baseline_errors() ::
-    does_not_exist_exception() | 
+    invalid_resource_id() | 
     internal_server_error() | 
-    invalid_resource_id().
+    does_not_exist_exception().
 
 -type register_patch_baseline_for_patch_group_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error() | 
     resource_limit_exceeded_exception() | 
     invalid_resource_id() | 
+    internal_server_error() | 
+    does_not_exist_exception() | 
     already_exists_exception().
 
 -type register_target_with_maintenance_window_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error() | 
     resource_limit_exceeded_exception() | 
-    idempotent_parameter_mismatch().
+    internal_server_error() | 
+    idempotent_parameter_mismatch() | 
+    does_not_exist_exception().
 
 -type register_task_with_maintenance_window_errors() ::
-    does_not_exist_exception() | 
-    feature_not_available_exception() | 
-    internal_server_error() | 
     resource_limit_exceeded_exception() | 
-    idempotent_parameter_mismatch().
+    internal_server_error() | 
+    idempotent_parameter_mismatch() | 
+    feature_not_available_exception() | 
+    does_not_exist_exception().
 
 -type remove_tags_from_resource_errors() ::
     too_many_updates() | 
-    internal_server_error() | 
+    invalid_resource_type() | 
     invalid_resource_id() | 
-    invalid_resource_type().
+    internal_server_error().
 
 -type reset_service_setting_errors() ::
     too_many_updates() | 
-    internal_server_error() | 
-    service_setting_not_found().
+    service_setting_not_found() | 
+    internal_server_error().
 
 -type resume_session_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type send_automation_signal_errors() ::
     invalid_automation_signal_exception() | 
@@ -6228,47 +6420,47 @@
 
 -type send_command_errors() ::
     unsupported_platform_type() | 
-    invalid_instance_id() | 
-    internal_server_error() | 
+    max_document_size_exceeded() | 
+    invalid_role() | 
+    invalid_parameters() | 
     invalid_output_folder() | 
     invalid_notification_config() | 
-    duplicate_instance_id() | 
-    invalid_role() | 
+    invalid_instance_id() | 
     invalid_document_version() | 
-    invalid_parameters() | 
     invalid_document() | 
-    max_document_size_exceeded().
+    internal_server_error() | 
+    duplicate_instance_id().
 
 -type start_access_request_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
 
 -type start_associations_once_errors() ::
-    association_does_not_exist() | 
-    invalid_association().
+    invalid_association() | 
+    association_does_not_exist().
 
 -type start_automation_execution_errors() ::
-    automation_definition_not_found_exception() | 
+    invalid_target() | 
+    invalid_automation_execution_parameters_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch() | 
     automation_execution_limit_exceeded_exception() | 
     automation_definition_version_not_found_exception() | 
-    internal_server_error() | 
-    invalid_automation_execution_parameters_exception() | 
-    idempotent_parameter_mismatch() | 
-    invalid_target().
+    automation_definition_not_found_exception().
 
 -type start_change_request_execution_errors() ::
     no_longer_supported_exception() | 
-    automation_definition_not_approved_exception() | 
-    automation_definition_not_found_exception() | 
+    invalid_automation_execution_parameters_exception() | 
+    internal_server_error() | 
+    idempotent_parameter_mismatch() | 
     automation_execution_limit_exceeded_exception() | 
     automation_definition_version_not_found_exception() | 
-    internal_server_error() | 
-    invalid_automation_execution_parameters_exception() | 
-    idempotent_parameter_mismatch().
+    automation_definition_not_found_exception() | 
+    automation_definition_not_approved_exception().
 
 -type start_execution_preview_errors() ::
     validation_exception() | 
@@ -6276,8 +6468,8 @@
 
 -type start_session_errors() ::
     target_not_connected() | 
-    internal_server_error() | 
-    invalid_document().
+    invalid_document() | 
+    internal_server_error().
 
 -type stop_automation_execution_errors() ::
     invalid_automation_status_update_exception() | 
@@ -6289,104 +6481,113 @@
 
 -type unlabel_parameter_version_errors() ::
     too_many_updates() | 
-    internal_server_error() | 
     parameter_version_not_found() | 
-    parameter_not_found().
+    parameter_not_found() | 
+    internal_server_error().
 
 -type update_association_errors() ::
-    invalid_association_version() | 
-    association_does_not_exist() | 
-    invalid_update() | 
     too_many_updates() | 
+    invalid_update() | 
     invalid_target_maps() | 
-    internal_server_error() | 
-    invalid_output_location() | 
+    invalid_target() | 
     invalid_schedule() | 
-    association_version_limit_exceeded() | 
-    invalid_document_version() | 
     invalid_parameters() | 
+    invalid_output_location() | 
+    invalid_document_version() | 
     invalid_document() | 
-    invalid_target().
+    invalid_association_version() | 
+    internal_server_error() | 
+    association_version_limit_exceeded() | 
+    association_does_not_exist().
 
 -type update_association_status_errors() ::
-    association_does_not_exist() | 
-    invalid_instance_id() | 
     too_many_updates() | 
-    internal_server_error() | 
     status_unchanged() | 
-    invalid_document().
+    invalid_instance_id() | 
+    invalid_document() | 
+    internal_server_error() | 
+    association_does_not_exist().
+
+-type update_cloud_connector_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error() | 
+    conflict_exception().
 
 -type update_document_errors() ::
-    invalid_document_operation() | 
-    internal_server_error() | 
-    duplicate_document_version_name() | 
-    invalid_document_schema_version() | 
-    duplicate_document_content() | 
+    max_document_size_exceeded() | 
     invalid_document_version() | 
+    invalid_document_schema_version() | 
+    invalid_document_operation() | 
     invalid_document_content() | 
     invalid_document() | 
-    document_version_limit_exceeded() | 
-    max_document_size_exceeded().
+    internal_server_error() | 
+    duplicate_document_version_name() | 
+    duplicate_document_content() | 
+    document_version_limit_exceeded().
 
 -type update_document_default_version_errors() ::
-    internal_server_error() | 
-    invalid_document_schema_version() | 
     invalid_document_version() | 
-    invalid_document().
+    invalid_document_schema_version() | 
+    invalid_document() | 
+    internal_server_error().
 
 -type update_document_metadata_errors() ::
-    invalid_document_operation() | 
     too_many_updates() | 
-    internal_server_error() | 
     invalid_document_version() | 
-    invalid_document().
+    invalid_document_operation() | 
+    invalid_document() | 
+    internal_server_error().
 
 -type update_maintenance_window_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type update_maintenance_window_target_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type update_maintenance_window_task_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type update_managed_instance_role_errors() ::
     invalid_instance_id() | 
     internal_server_error().
 
 -type update_ops_item_errors() ::
+    ops_item_not_found_exception() | 
     ops_item_limit_exceeded_exception() | 
     ops_item_invalid_parameter_exception() | 
-    internal_server_error() | 
-    ops_item_already_exists_exception() | 
     ops_item_conflict_exception() | 
-    ops_item_not_found_exception() | 
-    ops_item_access_denied_exception().
+    ops_item_already_exists_exception() | 
+    ops_item_access_denied_exception() | 
+    internal_server_error().
 
 -type update_ops_metadata_errors() ::
-    internal_server_error() | 
     ops_metadata_too_many_updates_exception() | 
+    ops_metadata_not_found_exception() | 
     ops_metadata_key_limit_exceeded_exception() | 
     ops_metadata_invalid_argument_exception() | 
-    ops_metadata_not_found_exception().
+    internal_server_error().
 
 -type update_patch_baseline_errors() ::
-    does_not_exist_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    does_not_exist_exception().
 
 -type update_resource_data_sync_errors() ::
     resource_data_sync_not_found_exception() | 
-    internal_server_error() | 
     resource_data_sync_invalid_configuration_exception() | 
-    resource_data_sync_conflict_exception().
+    resource_data_sync_conflict_exception() | 
+    internal_server_error().
 
 -type update_service_setting_errors() ::
     too_many_updates() | 
-    internal_server_error() | 
-    service_setting_not_found().
+    service_setting_not_found() | 
+    internal_server_error().
+
+-type validate_cloud_connector_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error().
 
 %%====================================================================
 %% API
@@ -6617,6 +6818,25 @@ create_association_batch(Client, Input)
 create_association_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAssociationBatch">>, Input, Options).
+
+%% @doc Creates a cloud connector that establishes a connection between
+%% Systems Manager and a third-party
+%% cloud environment.
+-spec create_cloud_connector(aws_client:aws_client(), create_cloud_connector_request()) ->
+    {ok, create_cloud_connector_result(), tuple()} |
+    {error, any()} |
+    {error, create_cloud_connector_errors(), tuple()}.
+create_cloud_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_cloud_connector(Client, Input, []).
+
+-spec create_cloud_connector(aws_client:aws_client(), create_cloud_connector_request(), proplists:proplist()) ->
+    {ok, create_cloud_connector_result(), tuple()} |
+    {error, any()} |
+    {error, create_cloud_connector_errors(), tuple()}.
+create_cloud_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCloudConnector">>, Input, Options).
 
 %% @doc Creates a Amazon Web Services Systems Manager (SSM document).
 %%
@@ -6856,6 +7076,23 @@ delete_association(Client, Input)
 delete_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAssociation">>, Input, Options).
+
+%% @doc Deletes a cloud connector.
+-spec delete_cloud_connector(aws_client:aws_client(), delete_cloud_connector_request()) ->
+    {ok, delete_cloud_connector_result(), tuple()} |
+    {error, any()} |
+    {error, delete_cloud_connector_errors(), tuple()}.
+delete_cloud_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_cloud_connector(Client, Input, []).
+
+-spec delete_cloud_connector(aws_client:aws_client(), delete_cloud_connector_request(), proplists:proplist()) ->
+    {ok, delete_cloud_connector_result(), tuple()} |
+    {error, any()} |
+    {error, delete_cloud_connector_errors(), tuple()}.
+delete_cloud_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCloudConnector">>, Input, Options).
 
 %% @doc Deletes the Amazon Web Services Systems Manager document (SSM
 %% document) and all managed node associations to the
@@ -8020,6 +8257,23 @@ get_calendar_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCalendarState">>, Input, Options).
 
+%% @doc Returns detailed information about a cloud connector.
+-spec get_cloud_connector(aws_client:aws_client(), get_cloud_connector_request()) ->
+    {ok, get_cloud_connector_result(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_connector_errors(), tuple()}.
+get_cloud_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_cloud_connector(Client, Input, []).
+
+-spec get_cloud_connector(aws_client:aws_client(), get_cloud_connector_request(), proplists:proplist()) ->
+    {ok, get_cloud_connector_result(), tuple()} |
+    {error, any()} |
+    {error, get_cloud_connector_errors(), tuple()}.
+get_cloud_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCloudConnector">>, Input, Options).
+
 %% @doc Returns detailed information about command execution for an
 %% invocation or plugin.
 %%
@@ -8396,6 +8650,30 @@ get_ops_summary(Client, Input, Options)
 %%
 %% To get information about more than one parameter at a time, use the
 %% `GetParameters' operation.
+%%
+%% Parameter Store throughput defines the number of API transactions per
+%% second (TPS) that
+%% Systems Manager can process. This applies to `GetParameter',
+%% `GetParameters', and `PutParameter' API calls for your Amazon Web
+%% Services account and
+%% Amazon Web Services Region. By default, Parameter Store is configured with
+%% a standard throughput quota suitable
+%% for low- to moderate-volume workloads. Applications that retrieve
+%% configuration data infrequently
+%% or operate at smaller scale can use this default setting without
+%% additional cost.
+%%
+%% For higher-volume workloads, you can enable higher throughput. This
+%% increases the maximum
+%% number of supported transactions per second for your account and Region.
+%% Increased throughput
+%% supports applications and workloads that need concurrent access to
+%% multiple parameters. If you
+%% experience `ThrottlingException: Rate exceeded' errors, enable higher
+%% throughput. For
+%% more information, see Changing Parameter Store
+%% throughput:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-throughput.html.
 -spec get_parameter(aws_client:aws_client(), get_parameter_request()) ->
     {ok, get_parameter_result(), tuple()} |
     {error, any()} |
@@ -8456,6 +8734,30 @@ get_parameter_history(Client, Input, Options)
 %% parameter contains spaces
 %% between characters, the request fails with a `ValidationException'
 %% error.
+%%
+%% Parameter Store throughput defines the number of API transactions per
+%% second (TPS) that
+%% Systems Manager can process. This applies to `GetParameter',
+%% `GetParameters', and `PutParameter' API calls for your Amazon Web
+%% Services account and
+%% Amazon Web Services Region. By default, Parameter Store is configured with
+%% a standard throughput quota suitable
+%% for low- to moderate-volume workloads. Applications that retrieve
+%% configuration data infrequently
+%% or operate at smaller scale can use this default setting without
+%% additional cost.
+%%
+%% For higher-volume workloads, you can enable higher throughput. This
+%% increases the maximum
+%% number of supported transactions per second for your account and Region.
+%% Increased throughput
+%% supports applications and workloads that need concurrent access to
+%% multiple parameters. If you
+%% experience `ThrottlingException: Rate exceeded' errors, enable higher
+%% throughput. For
+%% more information, see Changing Parameter Store
+%% throughput:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-throughput.html.
 -spec get_parameters(aws_client:aws_client(), get_parameters_request()) ->
     {ok, get_parameters_result(), tuple()} |
     {error, any()} |
@@ -8710,6 +9012,24 @@ list_associations(Client, Input)
 list_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociations">>, Input, Options).
+
+%% @doc Returns a list of cloud connectors in the current Amazon Web Services
+%% account and Amazon Web Services Region.
+-spec list_cloud_connectors(aws_client:aws_client(), list_cloud_connectors_request()) ->
+    {ok, list_cloud_connectors_result(), tuple()} |
+    {error, any()} |
+    {error, list_cloud_connectors_errors(), tuple()}.
+list_cloud_connectors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cloud_connectors(Client, Input, []).
+
+-spec list_cloud_connectors(aws_client:aws_client(), list_cloud_connectors_request(), proplists:proplist()) ->
+    {ok, list_cloud_connectors_result(), tuple()} |
+    {error, any()} |
+    {error, list_cloud_connectors_errors(), tuple()}.
+list_cloud_connectors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCloudConnectors">>, Input, Options).
 
 %% @doc An invocation is copy of a command sent to a specific managed node.
 %%
@@ -9184,6 +9504,30 @@ put_inventory(Client, Input, Options)
     request(Client, <<"PutInventory">>, Input, Options).
 
 %% @doc Create or update a parameter in Parameter Store.
+%%
+%% Parameter Store throughput defines the number of API transactions per
+%% second (TPS) that
+%% Systems Manager can process. This applies to `GetParameter',
+%% `GetParameters', and `PutParameter' API calls for your Amazon Web
+%% Services account and
+%% Amazon Web Services Region. By default, Parameter Store is configured with
+%% a standard throughput quota suitable
+%% for low- to moderate-volume workloads. Applications that retrieve
+%% configuration data infrequently
+%% or operate at smaller scale can use this default setting without
+%% additional cost.
+%%
+%% For higher-volume workloads, you can enable higher throughput. This
+%% increases the maximum
+%% number of supported transactions per second for your account and Region.
+%% Increased throughput
+%% supports applications and workloads that need concurrent access to
+%% multiple parameters. If you
+%% experience `ThrottlingException: Rate exceeded' errors, enable higher
+%% throughput. For
+%% more information, see Changing Parameter Store
+%% throughput:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-throughput.html.
 -spec put_parameter(aws_client:aws_client(), put_parameter_request()) ->
     {ok, put_parameter_result(), tuple()} |
     {error, any()} |
@@ -9740,6 +10084,23 @@ update_association_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAssociationStatus">>, Input, Options).
 
+%% @doc Updates an existing cloud connector with new configuration details.
+-spec update_cloud_connector(aws_client:aws_client(), update_cloud_connector_request()) ->
+    {ok, update_cloud_connector_result(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_connector_errors(), tuple()}.
+update_cloud_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cloud_connector(Client, Input, []).
+
+-spec update_cloud_connector(aws_client:aws_client(), update_cloud_connector_request(), proplists:proplist()) ->
+    {ok, update_cloud_connector_result(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_connector_errors(), tuple()}.
+update_cloud_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCloudConnector">>, Input, Options).
+
 %% @doc Updates one or more values for an SSM document.
 -spec update_document(aws_client:aws_client(), update_document_request()) ->
     {ok, update_document_result(), tuple()} |
@@ -10112,6 +10473,23 @@ update_service_setting(Client, Input)
 update_service_setting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceSetting">>, Input, Options).
+
+%% @doc Validates the configuration and connectivity of a cloud connector.
+-spec validate_cloud_connector(aws_client:aws_client(), validate_cloud_connector_request()) ->
+    {ok, validate_cloud_connector_result(), tuple()} |
+    {error, any()} |
+    {error, validate_cloud_connector_errors(), tuple()}.
+validate_cloud_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    validate_cloud_connector(Client, Input, []).
+
+-spec validate_cloud_connector(aws_client:aws_client(), validate_cloud_connector_request(), proplists:proplist()) ->
+    {ok, validate_cloud_connector_result(), tuple()} |
+    {error, any()} |
+    {error, validate_cloud_connector_errors(), tuple()}.
+validate_cloud_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ValidateCloudConnector">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

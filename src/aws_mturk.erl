@@ -87,6 +87,19 @@
 
 
 %% Example:
+%% accept_qualification_request_request() :: #{
+%%   <<"IntegerValue">> => integer(),
+%%   <<"QualificationRequestId">> := string()
+%% }
+-type accept_qualification_request_request() :: #{binary() => any()}.
+
+%% Example:
+%% accept_qualification_request_response() :: #{
+
+%% }
+-type accept_qualification_request_response() :: #{binary() => any()}.
+
+%% Example:
 %% approve_assignment_request() :: #{
 %%   <<"AssignmentId">> := string(),
 %%   <<"OverrideRejection">> => boolean(),
@@ -95,64 +108,10 @@
 -type approve_assignment_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_hit_response() :: #{
+%% approve_assignment_response() :: #{
 
 %% }
--type delete_hit_response() :: #{binary() => any()}.
-
-%% Example:
-%% notify_workers_request() :: #{
-%%   <<"MessageText">> := string(),
-%%   <<"Subject">> := string(),
-%%   <<"WorkerIds">> := list(string())
-%% }
--type notify_workers_request() :: #{binary() => any()}.
-
-%% Example:
-%% qualification_requirement() :: #{
-%%   <<"ActionsGuarded">> => list(any()),
-%%   <<"Comparator">> => list(any()),
-%%   <<"IntegerValues">> => list(integer()),
-%%   <<"LocaleValues">> => list(locale()),
-%%   <<"QualificationTypeId">> => string(),
-%%   <<"RequiredToPreview">> => boolean()
-%% }
--type qualification_requirement() :: #{binary() => any()}.
-
-%% Example:
-%% review_policy() :: #{
-%%   <<"Parameters">> => list(policy_parameter()),
-%%   <<"PolicyName">> => string()
-%% }
--type review_policy() :: #{binary() => any()}.
-
-%% Example:
-%% delete_worker_block_request() :: #{
-%%   <<"Reason">> => string(),
-%%   <<"WorkerId">> := string()
-%% }
--type delete_worker_block_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_qualification_type_request() :: #{
-%%   <<"QualificationTypeId">> := string()
-%% }
--type get_qualification_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_qualification_type_request() :: #{
-%%   <<"AnswerKey">> => string(),
-%%   <<"AutoGranted">> => boolean(),
-%%   <<"AutoGrantedValue">> => integer(),
-%%   <<"Description">> := string(),
-%%   <<"Keywords">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"QualificationTypeStatus">> := list(any()),
-%%   <<"RetryDelayInSeconds">> => float(),
-%%   <<"Test">> => string(),
-%%   <<"TestDurationInSeconds">> => float()
-%% }
--type create_qualification_type_request() :: #{binary() => any()}.
+-type approve_assignment_response() :: #{binary() => any()}.
 
 %% Example:
 %% assignment() :: #{
@@ -172,69 +131,37 @@
 -type assignment() :: #{binary() => any()}.
 
 %% Example:
-%% reject_assignment_request() :: #{
-%%   <<"AssignmentId">> := string(),
-%%   <<"RequesterFeedback">> := string()
-%% }
--type reject_assignment_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_balance_response() :: #{
-%%   <<"AvailableBalance">> => string(),
-%%   <<"OnHoldBalance">> => string()
-%% }
--type get_account_balance_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_reviewable_hits_request() :: #{
-%%   <<"HITTypeId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_reviewable_hits_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_file_upload_url_response() :: #{
-%%   <<"FileUploadURL">> => string()
-%% }
--type get_file_upload_url_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_qualification_types_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"MustBeOwnedByCaller">> => boolean(),
-%%   <<"MustBeRequestable">> := boolean(),
-%%   <<"NextToken">> => string(),
-%%   <<"Query">> => string()
-%% }
--type list_qualification_types_request() :: #{binary() => any()}.
-
-%% Example:
-%% accept_qualification_request_request() :: #{
+%% associate_qualification_with_worker_request() :: #{
 %%   <<"IntegerValue">> => integer(),
-%%   <<"QualificationRequestId">> := string()
+%%   <<"QualificationTypeId">> := string(),
+%%   <<"SendNotification">> => boolean(),
+%%   <<"WorkerId">> := string()
 %% }
--type accept_qualification_request_request() :: #{binary() => any()}.
+-type associate_qualification_with_worker_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_hit_type_response() :: #{
-%%   <<"HITTypeId">> => string()
+%% associate_qualification_with_worker_response() :: #{
+
 %% }
--type create_hit_type_response() :: #{binary() => any()}.
+-type associate_qualification_with_worker_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_worker_block_response() :: #{
-
+%% bonus_payment() :: #{
+%%   <<"AssignmentId">> => string(),
+%%   <<"BonusAmount">> => string(),
+%%   <<"GrantTime">> => non_neg_integer(),
+%%   <<"Reason">> => string(),
+%%   <<"WorkerId">> => string()
 %% }
--type create_worker_block_response() :: #{binary() => any()}.
+-type bonus_payment() :: #{binary() => any()}.
 
 %% Example:
-%% service_fault() :: #{
-%%   <<"Message">> => string(),
-%%   <<"TurkErrorCode">> => string()
+%% create_additional_assignments_for_hit_request() :: #{
+%%   <<"HITId">> := string(),
+%%   <<"NumberOfAdditionalAssignments">> := integer(),
+%%   <<"UniqueRequestToken">> => string()
 %% }
--type service_fault() :: #{binary() => any()}.
+-type create_additional_assignments_for_hit_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_additional_assignments_for_hit_response() :: #{
@@ -243,187 +170,91 @@
 -type create_additional_assignments_for_hit_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_qualification_type_request() :: #{
-%%   <<"QualificationTypeId">> := string()
+%% create_hit_request() :: #{
+%%   <<"AssignmentDurationInSeconds">> := float(),
+%%   <<"AssignmentReviewPolicy">> => review_policy(),
+%%   <<"AutoApprovalDelayInSeconds">> => float(),
+%%   <<"Description">> := string(),
+%%   <<"HITLayoutId">> => string(),
+%%   <<"HITLayoutParameters">> => list(hit_layout_parameter()),
+%%   <<"HITReviewPolicy">> => review_policy(),
+%%   <<"Keywords">> => string(),
+%%   <<"LifetimeInSeconds">> := float(),
+%%   <<"MaxAssignments">> => integer(),
+%%   <<"QualificationRequirements">> => list(qualification_requirement()),
+%%   <<"Question">> => string(),
+%%   <<"RequesterAnnotation">> => string(),
+%%   <<"Reward">> := string(),
+%%   <<"Title">> := string(),
+%%   <<"UniqueRequestToken">> => string()
 %% }
--type delete_qualification_type_request() :: #{binary() => any()}.
+-type create_hit_request() :: #{binary() => any()}.
 
 %% Example:
-%% locale() :: #{
-%%   <<"Country">> => string(),
-%%   <<"Subdivision">> => string()
+%% create_hit_response() :: #{
+%%   <<"HIT">> => hit()
 %% }
--type locale() :: #{binary() => any()}.
+-type create_hit_response() :: #{binary() => any()}.
 
 %% Example:
-%% review_result_detail() :: #{
-%%   <<"ActionId">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"QuestionId">> => string(),
-%%   <<"SubjectId">> => string(),
-%%   <<"SubjectType">> => string(),
-%%   <<"Value">> => string()
+%% create_hit_type_request() :: #{
+%%   <<"AssignmentDurationInSeconds">> := float(),
+%%   <<"AutoApprovalDelayInSeconds">> => float(),
+%%   <<"Description">> := string(),
+%%   <<"Keywords">> => string(),
+%%   <<"QualificationRequirements">> => list(qualification_requirement()),
+%%   <<"Reward">> := string(),
+%%   <<"Title">> := string()
 %% }
--type review_result_detail() :: #{binary() => any()}.
+-type create_hit_type_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_hits_for_qualification_type_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QualificationTypeId">> := string()
+%% create_hit_type_response() :: #{
+%%   <<"HITTypeId">> => string()
 %% }
--type list_hits_for_qualification_type_request() :: #{binary() => any()}.
+-type create_hit_type_response() :: #{binary() => any()}.
 
 %% Example:
-%% send_bonus_response() :: #{
-
+%% create_hit_with_hit_type_request() :: #{
+%%   <<"AssignmentReviewPolicy">> => review_policy(),
+%%   <<"HITLayoutId">> => string(),
+%%   <<"HITLayoutParameters">> => list(hit_layout_parameter()),
+%%   <<"HITReviewPolicy">> => review_policy(),
+%%   <<"HITTypeId">> := string(),
+%%   <<"LifetimeInSeconds">> := float(),
+%%   <<"MaxAssignments">> => integer(),
+%%   <<"Question">> => string(),
+%%   <<"RequesterAnnotation">> => string(),
+%%   <<"UniqueRequestToken">> => string()
 %% }
--type send_bonus_response() :: #{binary() => any()}.
+-type create_hit_with_hit_type_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_file_upload_url_request() :: #{
-%%   <<"AssignmentId">> := string(),
-%%   <<"QuestionIdentifier">> := string()
+%% create_hit_with_hit_type_response() :: #{
+%%   <<"HIT">> => hit()
 %% }
--type get_file_upload_url_request() :: #{binary() => any()}.
+-type create_hit_with_hit_type_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_qualification_score_request() :: #{
-%%   <<"QualificationTypeId">> := string(),
-%%   <<"WorkerId">> := string()
+%% create_qualification_type_request() :: #{
+%%   <<"AnswerKey">> => string(),
+%%   <<"AutoGranted">> => boolean(),
+%%   <<"AutoGrantedValue">> => integer(),
+%%   <<"Description">> := string(),
+%%   <<"Keywords">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"QualificationTypeStatus">> := list(any()),
+%%   <<"RetryDelayInSeconds">> => float(),
+%%   <<"Test">> => string(),
+%%   <<"TestDurationInSeconds">> => float()
 %% }
--type get_qualification_score_request() :: #{binary() => any()}.
+-type create_qualification_type_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_hit_type_of_hit_request() :: #{
-%%   <<"HITId">> := string(),
-%%   <<"HITTypeId">> := string()
-%% }
--type update_hit_type_of_hit_request() :: #{binary() => any()}.
-
-%% Example:
-%% approve_assignment_response() :: #{
-
-%% }
--type approve_assignment_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_review_policy_results_for_hit_request() :: #{
-%%   <<"HITId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyLevels">> => list(list(any())()),
-%%   <<"RetrieveActions">> => boolean(),
-%%   <<"RetrieveResults">> => boolean()
-%% }
--type list_review_policy_results_for_hit_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_worker_blocks_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_worker_blocks_request() :: #{binary() => any()}.
-
-%% Example:
-%% send_bonus_request() :: #{
-%%   <<"AssignmentId">> := string(),
-%%   <<"BonusAmount">> := string(),
-%%   <<"Reason">> := string(),
-%%   <<"UniqueRequestToken">> => string(),
-%%   <<"WorkerId">> := string()
-%% }
--type send_bonus_request() :: #{binary() => any()}.
-
-%% Example:
-%% reject_assignment_response() :: #{
-
-%% }
--type reject_assignment_response() :: #{binary() => any()}.
-
-%% Example:
-%% notification_specification() :: #{
-%%   <<"Destination">> => string(),
-%%   <<"EventTypes">> => list(list(any())()),
-%%   <<"Transport">> => list(any()),
-%%   <<"Version">> => string()
-%% }
--type notification_specification() :: #{binary() => any()}.
-
-%% Example:
-%% list_bonus_payments_response() :: #{
-%%   <<"BonusPayments">> => list(bonus_payment()),
-%%   <<"NextToken">> => string(),
-%%   <<"NumResults">> => integer()
-%% }
--type list_bonus_payments_response() :: #{binary() => any()}.
-
-%% Example:
-%% send_test_event_notification_request() :: #{
-%%   <<"Notification">> := notification_specification(),
-%%   <<"TestEventType">> := list(any())
-%% }
--type send_test_event_notification_request() :: #{binary() => any()}.
-
-%% Example:
-%% notify_workers_failure_status() :: #{
-%%   <<"NotifyWorkersFailureCode">> => list(any()),
-%%   <<"NotifyWorkersFailureMessage">> => string(),
-%%   <<"WorkerId">> => string()
-%% }
--type notify_workers_failure_status() :: #{binary() => any()}.
-
-%% Example:
-%% list_hits_for_qualification_type_response() :: #{
-%%   <<"HITs">> => list(hit()),
-%%   <<"NextToken">> => string(),
-%%   <<"NumResults">> => integer()
-%% }
--type list_hits_for_qualification_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_balance_request() :: #{
-
-%% }
--type get_account_balance_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_notification_settings_response() :: #{
-
-%% }
--type update_notification_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% reject_qualification_request_response() :: #{
-
-%% }
--type reject_qualification_request_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_qualification_type_response() :: #{
+%% create_qualification_type_response() :: #{
 %%   <<"QualificationType">> => qualification_type()
 %% }
--type update_qualification_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_hit_response() :: #{
-%%   <<"HIT">> => hit()
-%% }
--type get_hit_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_assignment_response() :: #{
-%%   <<"Assignment">> => assignment(),
-%%   <<"HIT">> => hit()
-%% }
--type get_assignment_response() :: #{binary() => any()}.
-
-%% Example:
-%% reject_qualification_request_request() :: #{
-%%   <<"QualificationRequestId">> := string(),
-%%   <<"Reason">> => string()
-%% }
--type reject_qualification_request_request() :: #{binary() => any()}.
+-type create_qualification_type_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_worker_block_request() :: #{
@@ -433,75 +264,55 @@
 -type create_worker_block_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_worker_block_response() :: #{
+
+%% }
+-type create_worker_block_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hit_request() :: #{
+%%   <<"HITId">> := string()
+%% }
+-type delete_hit_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hit_response() :: #{
+
+%% }
+-type delete_hit_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_qualification_type_request() :: #{
+%%   <<"QualificationTypeId">> := string()
+%% }
+-type delete_qualification_type_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_qualification_type_response() :: #{
 
 %% }
 -type delete_qualification_type_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_worker_blocks_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NumResults">> => integer(),
-%%   <<"WorkerBlocks">> => list(worker_block())
-%% }
--type list_worker_blocks_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_qualification_with_worker_response() :: #{
-
-%% }
--type associate_qualification_with_worker_response() :: #{binary() => any()}.
-
-%% Example:
-%% qualification() :: #{
-%%   <<"GrantTime">> => non_neg_integer(),
-%%   <<"IntegerValue">> => integer(),
-%%   <<"LocaleValue">> => locale(),
-%%   <<"QualificationTypeId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"WorkerId">> => string()
-%% }
--type qualification() :: #{binary() => any()}.
-
-%% Example:
-%% update_hit_review_status_response() :: #{
-
-%% }
--type update_hit_review_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% notify_workers_response() :: #{
-%%   <<"NotifyWorkersFailureStatuses">> => list(notify_workers_failure_status())
-%% }
--type notify_workers_response() :: #{binary() => any()}.
-
-%% Example:
-%% worker_block() :: #{
+%% delete_worker_block_request() :: #{
 %%   <<"Reason">> => string(),
-%%   <<"WorkerId">> => string()
+%%   <<"WorkerId">> := string()
 %% }
--type worker_block() :: #{binary() => any()}.
+-type delete_worker_block_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_notification_settings_request() :: #{
-%%   <<"Active">> => boolean(),
-%%   <<"HITTypeId">> := string(),
-%%   <<"Notification">> => notification_specification()
+%% delete_worker_block_response() :: #{
+
 %% }
--type update_notification_settings_request() :: #{binary() => any()}.
+-type delete_worker_block_response() :: #{binary() => any()}.
 
 %% Example:
-%% request_error() :: #{
-%%   <<"Message">> => string(),
-%%   <<"TurkErrorCode">> => string()
+%% disassociate_qualification_from_worker_request() :: #{
+%%   <<"QualificationTypeId">> := string(),
+%%   <<"Reason">> => string(),
+%%   <<"WorkerId">> := string()
 %% }
--type request_error() :: #{binary() => any()}.
-
-%% Example:
-%% accept_qualification_request_response() :: #{
-
-%% }
--type accept_qualification_request_response() :: #{binary() => any()}.
+-type disassociate_qualification_from_worker_request() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_qualification_from_worker_response() :: #{
@@ -510,18 +321,80 @@
 -type disassociate_qualification_from_worker_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_qualification_requests_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QualificationTypeId">> => string()
+%% get_account_balance_request() :: #{
+
 %% }
--type list_qualification_requests_request() :: #{binary() => any()}.
+-type get_account_balance_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_expiration_for_hit_response() :: #{
-
+%% get_account_balance_response() :: #{
+%%   <<"AvailableBalance">> => string(),
+%%   <<"OnHoldBalance">> => string()
 %% }
--type update_expiration_for_hit_response() :: #{binary() => any()}.
+-type get_account_balance_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_assignment_request() :: #{
+%%   <<"AssignmentId">> := string()
+%% }
+-type get_assignment_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_assignment_response() :: #{
+%%   <<"Assignment">> => assignment(),
+%%   <<"HIT">> => hit()
+%% }
+-type get_assignment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_file_upload_url_request() :: #{
+%%   <<"AssignmentId">> := string(),
+%%   <<"QuestionIdentifier">> := string()
+%% }
+-type get_file_upload_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_file_upload_url_response() :: #{
+%%   <<"FileUploadURL">> => string()
+%% }
+-type get_file_upload_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_hit_request() :: #{
+%%   <<"HITId">> := string()
+%% }
+-type get_hit_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_hit_response() :: #{
+%%   <<"HIT">> => hit()
+%% }
+-type get_hit_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualification_score_request() :: #{
+%%   <<"QualificationTypeId">> := string(),
+%%   <<"WorkerId">> := string()
+%% }
+-type get_qualification_score_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualification_score_response() :: #{
+%%   <<"Qualification">> => qualification()
+%% }
+-type get_qualification_score_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualification_type_request() :: #{
+%%   <<"QualificationTypeId">> := string()
+%% }
+-type get_qualification_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_qualification_type_response() :: #{
+%%   <<"QualificationType">> => qualification_type()
+%% }
+-type get_qualification_type_response() :: #{binary() => any()}.
 
 %% Example:
 %% hit() :: #{
@@ -550,37 +423,28 @@
 -type hit() :: #{binary() => any()}.
 
 %% Example:
-%% get_hit_request() :: #{
-%%   <<"HITId">> := string()
+%% hit_layout_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
 %% }
--type get_hit_request() :: #{binary() => any()}.
+-type hit_layout_parameter() :: #{binary() => any()}.
 
 %% Example:
-%% policy_parameter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"MapEntries">> => list(parameter_map_entry()),
-%%   <<"Values">> => list(string())
-%% }
--type policy_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% bonus_payment() :: #{
-%%   <<"AssignmentId">> => string(),
-%%   <<"BonusAmount">> => string(),
-%%   <<"GrantTime">> => non_neg_integer(),
-%%   <<"Reason">> => string(),
-%%   <<"WorkerId">> => string()
-%% }
--type bonus_payment() :: #{binary() => any()}.
-
-%% Example:
-%% list_workers_with_qualification_type_request() :: #{
+%% list_assignments_for_hit_request() :: #{
+%%   <<"AssignmentStatuses">> => list(list(any())()),
+%%   <<"HITId">> := string(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QualificationTypeId">> := string(),
-%%   <<"Status">> => list(any())
+%%   <<"NextToken">> => string()
 %% }
--type list_workers_with_qualification_type_request() :: #{binary() => any()}.
+-type list_assignments_for_hit_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_assignments_for_hit_response() :: #{
+%%   <<"Assignments">> => list(assignment()),
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer()
+%% }
+-type list_assignments_for_hit_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_bonus_payments_request() :: #{
@@ -592,34 +456,51 @@
 -type list_bonus_payments_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_hit_request() :: #{
-%%   <<"AssignmentDurationInSeconds">> := float(),
-%%   <<"AssignmentReviewPolicy">> => review_policy(),
-%%   <<"AutoApprovalDelayInSeconds">> => float(),
-%%   <<"Description">> := string(),
-%%   <<"HITLayoutId">> => string(),
-%%   <<"HITLayoutParameters">> => list(hit_layout_parameter()),
-%%   <<"HITReviewPolicy">> => review_policy(),
-%%   <<"Keywords">> => string(),
-%%   <<"LifetimeInSeconds">> := float(),
-%%   <<"MaxAssignments">> => integer(),
-%%   <<"QualificationRequirements">> => list(qualification_requirement()),
-%%   <<"Question">> => string(),
-%%   <<"RequesterAnnotation">> => string(),
-%%   <<"Reward">> := string(),
-%%   <<"Title">> := string(),
-%%   <<"UniqueRequestToken">> => string()
+%% list_bonus_payments_response() :: #{
+%%   <<"BonusPayments">> => list(bonus_payment()),
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer()
 %% }
--type create_hit_request() :: #{binary() => any()}.
+-type list_bonus_payments_response() :: #{binary() => any()}.
 
 %% Example:
-%% associate_qualification_with_worker_request() :: #{
-%%   <<"IntegerValue">> => integer(),
-%%   <<"QualificationTypeId">> := string(),
-%%   <<"SendNotification">> => boolean(),
-%%   <<"WorkerId">> := string()
+%% list_hits_for_qualification_type_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QualificationTypeId">> := string()
 %% }
--type associate_qualification_with_worker_request() :: #{binary() => any()}.
+-type list_hits_for_qualification_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hits_for_qualification_type_response() :: #{
+%%   <<"HITs">> => list(hit()),
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer()
+%% }
+-type list_hits_for_qualification_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_hits_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hits_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_hits_response() :: #{
+%%   <<"HITs">> => list(hit()),
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer()
+%% }
+-type list_hits_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_qualification_requests_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QualificationTypeId">> => string()
+%% }
+-type list_qualification_requests_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_qualification_requests_response() :: #{
@@ -630,58 +511,33 @@
 -type list_qualification_requests_response() :: #{binary() => any()}.
 
 %% Example:
-%% hit_layout_parameter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type hit_layout_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% review_action_detail() :: #{
-%%   <<"ActionId">> => string(),
-%%   <<"ActionName">> => string(),
-%%   <<"CompleteTime">> => non_neg_integer(),
-%%   <<"ErrorCode">> => string(),
-%%   <<"Result">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TargetId">> => string(),
-%%   <<"TargetType">> => string()
-%% }
--type review_action_detail() :: #{binary() => any()}.
-
-%% Example:
-%% create_hit_with_hit_type_response() :: #{
-%%   <<"HIT">> => hit()
-%% }
--type create_hit_with_hit_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_hits_request() :: #{
+%% list_qualification_types_request() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"MustBeOwnedByCaller">> => boolean(),
+%%   <<"MustBeRequestable">> := boolean(),
+%%   <<"NextToken">> => string(),
+%%   <<"Query">> => string()
 %% }
--type list_hits_request() :: #{binary() => any()}.
+-type list_qualification_types_request() :: #{binary() => any()}.
 
 %% Example:
-%% send_test_event_notification_response() :: #{
-
-%% }
--type send_test_event_notification_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_hit_review_status_request() :: #{
-%%   <<"HITId">> := string(),
-%%   <<"Revert">> => boolean()
-%% }
--type update_hit_review_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_workers_with_qualification_type_response() :: #{
+%% list_qualification_types_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"NumResults">> => integer(),
-%%   <<"Qualifications">> => list(qualification())
+%%   <<"QualificationTypes">> => list(qualification_type())
 %% }
--type list_workers_with_qualification_type_response() :: #{binary() => any()}.
+-type list_qualification_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_review_policy_results_for_hit_request() :: #{
+%%   <<"HITId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyLevels">> => list(list(any())()),
+%%   <<"RetrieveActions">> => boolean(),
+%%   <<"RetrieveResults">> => boolean()
+%% }
+-type list_review_policy_results_for_hit_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_review_policy_results_for_hit_response() :: #{
@@ -695,33 +551,139 @@
 -type list_review_policy_results_for_hit_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_additional_assignments_for_hit_request() :: #{
-%%   <<"HITId">> := string(),
-%%   <<"NumberOfAdditionalAssignments">> := integer(),
-%%   <<"UniqueRequestToken">> => string()
+%% list_reviewable_hits_request() :: #{
+%%   <<"HITTypeId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type create_additional_assignments_for_hit_request() :: #{binary() => any()}.
+-type list_reviewable_hits_request() :: #{binary() => any()}.
 
 %% Example:
-%% review_report() :: #{
-%%   <<"ReviewActions">> => list(review_action_detail()),
-%%   <<"ReviewResults">> => list(review_result_detail())
-%% }
--type review_report() :: #{binary() => any()}.
-
-%% Example:
-%% get_assignment_request() :: #{
-%%   <<"AssignmentId">> := string()
-%% }
--type get_assignment_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_assignments_for_hit_response() :: #{
-%%   <<"Assignments">> => list(assignment()),
+%% list_reviewable_hits_response() :: #{
+%%   <<"HITs">> => list(hit()),
 %%   <<"NextToken">> => string(),
 %%   <<"NumResults">> => integer()
 %% }
--type list_assignments_for_hit_response() :: #{binary() => any()}.
+-type list_reviewable_hits_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_worker_blocks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_worker_blocks_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_worker_blocks_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer(),
+%%   <<"WorkerBlocks">> => list(worker_block())
+%% }
+-type list_worker_blocks_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workers_with_qualification_type_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QualificationTypeId">> := string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_workers_with_qualification_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workers_with_qualification_type_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NumResults">> => integer(),
+%%   <<"Qualifications">> => list(qualification())
+%% }
+-type list_workers_with_qualification_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% locale() :: #{
+%%   <<"Country">> => string(),
+%%   <<"Subdivision">> => string()
+%% }
+-type locale() :: #{binary() => any()}.
+
+%% Example:
+%% notification_specification() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"EventTypes">> => list(list(any())()),
+%%   <<"Transport">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type notification_specification() :: #{binary() => any()}.
+
+%% Example:
+%% notify_workers_failure_status() :: #{
+%%   <<"NotifyWorkersFailureCode">> => list(any()),
+%%   <<"NotifyWorkersFailureMessage">> => string(),
+%%   <<"WorkerId">> => string()
+%% }
+-type notify_workers_failure_status() :: #{binary() => any()}.
+
+%% Example:
+%% notify_workers_request() :: #{
+%%   <<"MessageText">> := string(),
+%%   <<"Subject">> := string(),
+%%   <<"WorkerIds">> := list(string())
+%% }
+-type notify_workers_request() :: #{binary() => any()}.
+
+%% Example:
+%% notify_workers_response() :: #{
+%%   <<"NotifyWorkersFailureStatuses">> => list(notify_workers_failure_status())
+%% }
+-type notify_workers_response() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_map_entry() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type parameter_map_entry() :: #{binary() => any()}.
+
+%% Example:
+%% policy_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"MapEntries">> => list(parameter_map_entry()),
+%%   <<"Values">> => list(string())
+%% }
+-type policy_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% qualification() :: #{
+%%   <<"GrantTime">> => non_neg_integer(),
+%%   <<"IntegerValue">> => integer(),
+%%   <<"LocaleValue">> => locale(),
+%%   <<"QualificationTypeId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"WorkerId">> => string()
+%% }
+-type qualification() :: #{binary() => any()}.
+
+%% Example:
+%% qualification_request() :: #{
+%%   <<"Answer">> => string(),
+%%   <<"QualificationRequestId">> => string(),
+%%   <<"QualificationTypeId">> => string(),
+%%   <<"SubmitTime">> => non_neg_integer(),
+%%   <<"Test">> => string(),
+%%   <<"WorkerId">> => string()
+%% }
+-type qualification_request() :: #{binary() => any()}.
+
+%% Example:
+%% qualification_requirement() :: #{
+%%   <<"ActionsGuarded">> => list(any()),
+%%   <<"Comparator">> => list(any()),
+%%   <<"IntegerValues">> => list(integer()),
+%%   <<"LocaleValues">> => list(locale()),
+%%   <<"QualificationTypeId">> => string(),
+%%   <<"RequiredToPreview">> => boolean()
+%% }
+-type qualification_requirement() :: #{binary() => any()}.
 
 %% Example:
 %% qualification_type() :: #{
@@ -742,56 +704,111 @@
 -type qualification_type() :: #{binary() => any()}.
 
 %% Example:
-%% qualification_request() :: #{
-%%   <<"Answer">> => string(),
-%%   <<"QualificationRequestId">> => string(),
-%%   <<"QualificationTypeId">> => string(),
-%%   <<"SubmitTime">> => non_neg_integer(),
-%%   <<"Test">> => string(),
-%%   <<"WorkerId">> => string()
+%% reject_assignment_request() :: #{
+%%   <<"AssignmentId">> := string(),
+%%   <<"RequesterFeedback">> := string()
 %% }
--type qualification_request() :: #{binary() => any()}.
+-type reject_assignment_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_qualification_score_response() :: #{
-%%   <<"Qualification">> => qualification()
+%% reject_assignment_response() :: #{
+
 %% }
--type get_qualification_score_response() :: #{binary() => any()}.
+-type reject_assignment_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_qualification_type_response() :: #{
-%%   <<"QualificationType">> => qualification_type()
+%% reject_qualification_request_request() :: #{
+%%   <<"QualificationRequestId">> := string(),
+%%   <<"Reason">> => string()
 %% }
--type create_qualification_type_response() :: #{binary() => any()}.
+-type reject_qualification_request_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_hit_type_of_hit_response() :: #{
+%% reject_qualification_request_response() :: #{
 
 %% }
--type update_hit_type_of_hit_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_hit_with_hit_type_request() :: #{
-%%   <<"AssignmentReviewPolicy">> => review_policy(),
-%%   <<"HITLayoutId">> => string(),
-%%   <<"HITLayoutParameters">> => list(hit_layout_parameter()),
-%%   <<"HITReviewPolicy">> => review_policy(),
-%%   <<"HITTypeId">> := string(),
-%%   <<"LifetimeInSeconds">> := float(),
-%%   <<"MaxAssignments">> => integer(),
-%%   <<"Question">> => string(),
-%%   <<"RequesterAnnotation">> => string(),
-%%   <<"UniqueRequestToken">> => string()
-%% }
--type create_hit_with_hit_type_request() :: #{binary() => any()}.
+-type reject_qualification_request_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_hits_response() :: #{
-%%   <<"HITs">> => list(hit()),
-%%   <<"NextToken">> => string(),
-%%   <<"NumResults">> => integer()
+%% request_error() :: #{
+%%   <<"Message">> => string(),
+%%   <<"TurkErrorCode">> => string()
 %% }
--type list_hits_response() :: #{binary() => any()}.
+-type request_error() :: #{binary() => any()}.
+
+%% Example:
+%% review_action_detail() :: #{
+%%   <<"ActionId">> => string(),
+%%   <<"ActionName">> => string(),
+%%   <<"CompleteTime">> => non_neg_integer(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"Result">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetType">> => string()
+%% }
+-type review_action_detail() :: #{binary() => any()}.
+
+%% Example:
+%% review_policy() :: #{
+%%   <<"Parameters">> => list(policy_parameter()),
+%%   <<"PolicyName">> => string()
+%% }
+-type review_policy() :: #{binary() => any()}.
+
+%% Example:
+%% review_report() :: #{
+%%   <<"ReviewActions">> => list(review_action_detail()),
+%%   <<"ReviewResults">> => list(review_result_detail())
+%% }
+-type review_report() :: #{binary() => any()}.
+
+%% Example:
+%% review_result_detail() :: #{
+%%   <<"ActionId">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"QuestionId">> => string(),
+%%   <<"SubjectId">> => string(),
+%%   <<"SubjectType">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type review_result_detail() :: #{binary() => any()}.
+
+%% Example:
+%% send_bonus_request() :: #{
+%%   <<"AssignmentId">> := string(),
+%%   <<"BonusAmount">> := string(),
+%%   <<"Reason">> := string(),
+%%   <<"UniqueRequestToken">> => string(),
+%%   <<"WorkerId">> := string()
+%% }
+-type send_bonus_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_bonus_response() :: #{
+
+%% }
+-type send_bonus_response() :: #{binary() => any()}.
+
+%% Example:
+%% send_test_event_notification_request() :: #{
+%%   <<"Notification">> := notification_specification(),
+%%   <<"TestEventType">> := list(any())
+%% }
+-type send_test_event_notification_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_test_event_notification_response() :: #{
+
+%% }
+-type send_test_event_notification_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_fault() :: #{
+%%   <<"Message">> => string(),
+%%   <<"TurkErrorCode">> => string()
+%% }
+-type service_fault() :: #{binary() => any()}.
 
 %% Example:
 %% update_expiration_for_hit_request() :: #{
@@ -801,38 +818,50 @@
 -type update_expiration_for_hit_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_hit_request() :: #{
-%%   <<"HITId">> := string()
+%% update_expiration_for_hit_response() :: #{
+
 %% }
--type delete_hit_request() :: #{binary() => any()}.
+-type update_expiration_for_hit_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_reviewable_hits_response() :: #{
-%%   <<"HITs">> => list(hit()),
-%%   <<"NextToken">> => string(),
-%%   <<"NumResults">> => integer()
+%% update_hit_review_status_request() :: #{
+%%   <<"HITId">> := string(),
+%%   <<"Revert">> => boolean()
 %% }
--type list_reviewable_hits_response() :: #{binary() => any()}.
+-type update_hit_review_status_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_qualification_type_response() :: #{
-%%   <<"QualificationType">> => qualification_type()
+%% update_hit_review_status_response() :: #{
+
 %% }
--type get_qualification_type_response() :: #{binary() => any()}.
+-type update_hit_review_status_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_hit_response() :: #{
-%%   <<"HIT">> => hit()
+%% update_hit_type_of_hit_request() :: #{
+%%   <<"HITId">> := string(),
+%%   <<"HITTypeId">> := string()
 %% }
--type create_hit_response() :: #{binary() => any()}.
+-type update_hit_type_of_hit_request() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_qualification_from_worker_request() :: #{
-%%   <<"QualificationTypeId">> := string(),
-%%   <<"Reason">> => string(),
-%%   <<"WorkerId">> := string()
+%% update_hit_type_of_hit_response() :: #{
+
 %% }
--type disassociate_qualification_from_worker_request() :: #{binary() => any()}.
+-type update_hit_type_of_hit_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_settings_request() :: #{
+%%   <<"Active">> => boolean(),
+%%   <<"HITTypeId">> := string(),
+%%   <<"Notification">> => notification_specification()
+%% }
+-type update_notification_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_settings_response() :: #{
+
+%% }
+-type update_notification_settings_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_qualification_type_request() :: #{
@@ -849,202 +878,173 @@
 -type update_qualification_type_request() :: #{binary() => any()}.
 
 %% Example:
-%% parameter_map_entry() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Values">> => list(string())
+%% update_qualification_type_response() :: #{
+%%   <<"QualificationType">> => qualification_type()
 %% }
--type parameter_map_entry() :: #{binary() => any()}.
+-type update_qualification_type_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_assignments_for_hit_request() :: #{
-%%   <<"AssignmentStatuses">> => list(list(any())()),
-%%   <<"HITId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% worker_block() :: #{
+%%   <<"Reason">> => string(),
+%%   <<"WorkerId">> => string()
 %% }
--type list_assignments_for_hit_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_qualification_types_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NumResults">> => integer(),
-%%   <<"QualificationTypes">> => list(qualification_type())
-%% }
--type list_qualification_types_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_hit_type_request() :: #{
-%%   <<"AssignmentDurationInSeconds">> := float(),
-%%   <<"AutoApprovalDelayInSeconds">> => float(),
-%%   <<"Description">> := string(),
-%%   <<"Keywords">> => string(),
-%%   <<"QualificationRequirements">> => list(qualification_requirement()),
-%%   <<"Reward">> := string(),
-%%   <<"Title">> := string()
-%% }
--type create_hit_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_worker_block_response() :: #{
-
-%% }
--type delete_worker_block_response() :: #{binary() => any()}.
+-type worker_block() :: #{binary() => any()}.
 
 -type accept_qualification_request_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type approve_assignment_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type associate_qualification_with_worker_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type create_additional_assignments_for_hit_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type create_hit_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type create_hit_type_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type create_hit_with_hit_type_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type create_qualification_type_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type create_worker_block_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type delete_hit_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type delete_qualification_type_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type delete_worker_block_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type disassociate_qualification_from_worker_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type get_account_balance_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type get_assignment_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type get_file_upload_url_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type get_hit_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type get_qualification_score_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type get_qualification_type_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type list_assignments_for_hit_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type list_bonus_payments_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type list_hits_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type list_hits_for_qualification_type_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type list_qualification_requests_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type list_qualification_types_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type list_review_policy_results_for_hit_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type list_reviewable_hits_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type list_worker_blocks_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type list_workers_with_qualification_type_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type notify_workers_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type reject_assignment_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type reject_qualification_request_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type send_bonus_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type send_test_event_notification_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type update_expiration_for_hit_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type update_hit_review_status_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type update_hit_type_of_hit_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type update_notification_settings_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 -type update_qualification_type_errors() ::
-    request_error() | 
-    service_fault().
+    service_fault() | 
+    request_error().
 
 %%====================================================================
 %% API

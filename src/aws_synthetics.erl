@@ -84,60 +84,119 @@
 
 
 %% Example:
-%% get_canary_runs_request() :: #{
-%%   <<"DryRunId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RunType">> => list(any())
-%% }
--type get_canary_runs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_failure_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type internal_failure_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stop_canary_request() :: #{}
--type stop_canary_request() :: #{}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% dependency() :: #{
-%%   <<"Reference">> => string(),
-%%   <<"Type">> => list(any())
+%% add_replica_location_input() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"VpcConfig">> => vpc_config_input()
 %% }
--type dependency() :: #{binary() => any()}.
+-type add_replica_location_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_canaries_response() :: #{
-%%   <<"Canaries">> => list(canary()),
-%%   <<"NextToken">> => string()
+%% artifact_config_input() :: #{
+%%   <<"S3Encryption">> => s3_encryption_config()
 %% }
--type describe_canaries_response() :: #{binary() => any()}.
+-type artifact_config_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_canaries_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()),
-%%   <<"NextToken">> => string()
+%% artifact_config_output() :: #{
+%%   <<"S3Encryption">> => s3_encryption_config()
 %% }
--type describe_canaries_request() :: #{binary() => any()}.
+-type artifact_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type associate_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_resource_response() :: #{}
+-type associate_resource_response() :: #{}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% base_screenshot() :: #{
+%%   <<"IgnoreCoordinates">> => list(string()),
+%%   <<"ScreenshotName">> => string()
+%% }
+-type base_screenshot() :: #{binary() => any()}.
+
+
+%% Example:
+%% browser_config() :: #{
+%%   <<"BrowserType">> => list(any())
+%% }
+-type browser_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary() :: #{
+%%   <<"ArtifactConfig">> => artifact_config_output(),
+%%   <<"ArtifactS3Location">> => string(),
+%%   <<"BrowserConfigs">> => list(browser_config()),
+%%   <<"Code">> => canary_code_output(),
+%%   <<"DryRunConfig">> => dry_run_config_output(),
+%%   <<"EngineArn">> => string(),
+%%   <<"EngineConfigs">> => list(engine_config()),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"FailureRetentionPeriodInDays">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"MultiLocationConfig">> => multi_location_config(),
+%%   <<"Name">> => string(),
+%%   <<"ProvisionedResourceCleanup">> => list(any()),
+%%   <<"RunConfig">> => canary_run_config_output(),
+%%   <<"RuntimeVersion">> => string(),
+%%   <<"Schedule">> => canary_schedule_output(),
+%%   <<"Status">> => canary_status(),
+%%   <<"SuccessRetentionPeriodInDays">> => integer(),
+%%   <<"Tags">> => map(),
+%%   <<"Timeline">> => canary_timeline(),
+%%   <<"VisualReference">> => visual_reference_output(),
+%%   <<"VisualReferences">> => list(visual_reference_output()),
+%%   <<"VpcConfig">> => vpc_config_output()
+%% }
+-type canary() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_code_input() :: #{
+%%   <<"BlueprintTypes">> => list(string()),
+%%   <<"Dependencies">> => list(dependency()),
+%%   <<"Handler">> => string(),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string(),
+%%   <<"S3Version">> => string(),
+%%   <<"ZipFile">> => binary()
+%% }
+-type canary_code_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_code_output() :: #{
+%%   <<"BlueprintTypes">> => list(string()),
+%%   <<"Dependencies">> => list(dependency()),
+%%   <<"Handler">> => string(),
+%%   <<"SourceLocationArn">> => string()
+%% }
+-type canary_code_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -146,9 +205,113 @@
 %% }
 -type canary_dry_run_config_output() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_canary_response() :: #{}
--type delete_canary_response() :: #{}.
+%% canary_last_run() :: #{
+%%   <<"CanaryName">> => string(),
+%%   <<"LastRun">> => canary_run()
+%% }
+-type canary_last_run() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_run() :: #{
+%%   <<"ArtifactS3Location">> => string(),
+%%   <<"BrowserType">> => list(any()),
+%%   <<"DryRunConfig">> => canary_dry_run_config_output(),
+%%   <<"Id">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RetryAttempt">> => integer(),
+%%   <<"ScheduledRunId">> => string(),
+%%   <<"Status">> => canary_run_status(),
+%%   <<"Timeline">> => canary_run_timeline()
+%% }
+-type canary_run() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_run_config_input() :: #{
+%%   <<"ActiveTracing">> => boolean(),
+%%   <<"EnvironmentVariables">> => map(),
+%%   <<"EphemeralStorage">> => integer(),
+%%   <<"MemoryInMB">> => integer(),
+%%   <<"TimeoutInSeconds">> => integer()
+%% }
+-type canary_run_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_run_config_output() :: #{
+%%   <<"ActiveTracing">> => boolean(),
+%%   <<"EphemeralStorage">> => integer(),
+%%   <<"MemoryInMB">> => integer(),
+%%   <<"TimeoutInSeconds">> => integer()
+%% }
+-type canary_run_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_run_status() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"StateReasonCode">> => list(any()),
+%%   <<"TestResult">> => list(any())
+%% }
+-type canary_run_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_run_timeline() :: #{
+%%   <<"Completed">> => non_neg_integer(),
+%%   <<"MetricTimestampForRunAndRetries">> => non_neg_integer(),
+%%   <<"Started">> => non_neg_integer()
+%% }
+-type canary_run_timeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_schedule_input() :: #{
+%%   <<"DurationInSeconds">> => float(),
+%%   <<"Expression">> => string(),
+%%   <<"RetryConfig">> => retry_config_input()
+%% }
+-type canary_schedule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_schedule_output() :: #{
+%%   <<"DurationInSeconds">> => float(),
+%%   <<"Expression">> => string(),
+%%   <<"RetryConfig">> => retry_config_output()
+%% }
+-type canary_schedule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_status() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"StateReasonCode">> => list(any())
+%% }
+-type canary_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% canary_timeline() :: #{
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LastStarted">> => non_neg_integer(),
+%%   <<"LastStopped">> => non_neg_integer()
+%% }
+-type canary_timeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -160,6 +323,7 @@
 %%   <<"Code">> := canary_code_input(),
 %%   <<"ExecutionRoleArn">> := string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
+%%   <<"KmsKeyArn">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"ProvisionedResourceCleanup">> => list(any()),
 %%   <<"ResourcesToReplicateTags">> => list(list(any())()),
@@ -174,12 +338,357 @@
 
 
 %% Example:
-%% visual_reference_output() :: #{
-%%   <<"BaseCanaryRunId">> => string(),
-%%   <<"BaseScreenshots">> => list(base_screenshot()),
-%%   <<"BrowserType">> => list(any())
+%% create_canary_response() :: #{
+%%   <<"Canary">> => canary()
 %% }
--type visual_reference_output() :: #{binary() => any()}.
+-type create_canary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_group_response() :: #{
+%%   <<"Group">> => group()
+%% }
+-type create_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_canary_request() :: #{
+%%   <<"DeleteLambda">> => boolean()
+%% }
+-type delete_canary_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_canary_response() :: #{}
+-type delete_canary_response() :: #{}.
+
+%% Example:
+%% delete_group_request() :: #{}
+-type delete_group_request() :: #{}.
+
+%% Example:
+%% delete_group_response() :: #{}
+-type delete_group_response() :: #{}.
+
+
+%% Example:
+%% dependency() :: #{
+%%   <<"Reference">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type dependency() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_canaries_last_run_request() :: #{
+%%   <<"BrowserType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Names">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_canaries_last_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_canaries_last_run_response() :: #{
+%%   <<"CanariesLastRun">> => list(canary_last_run()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_canaries_last_run_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_canaries_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Names">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_canaries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_canaries_response() :: #{
+%%   <<"Canaries">> => list(canary()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_canaries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_runtime_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_runtime_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_runtime_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuntimeVersions">> => list(runtime_version())
+%% }
+-type describe_runtime_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type disassociate_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_resource_response() :: #{}
+-type disassociate_resource_response() :: #{}.
+
+
+%% Example:
+%% dry_run_config_output() :: #{
+%%   <<"DryRunId">> => string(),
+%%   <<"LastDryRunExecutionStatus">> => string()
+%% }
+-type dry_run_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% engine_config() :: #{
+%%   <<"BrowserType">> => list(any()),
+%%   <<"EngineArn">> => string()
+%% }
+-type engine_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_canary_request() :: #{
+%%   <<"DryRunId">> => string()
+%% }
+-type get_canary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_canary_response() :: #{
+%%   <<"Canary">> => canary()
+%% }
+-type get_canary_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_canary_runs_request() :: #{
+%%   <<"DryRunId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RunType">> => list(any())
+%% }
+-type get_canary_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_canary_runs_response() :: #{
+%%   <<"CanaryRuns">> => list(canary_run()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_canary_runs_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_group_request() :: #{}
+-type get_group_request() :: #{}.
+
+
+%% Example:
+%% get_group_response() :: #{
+%%   <<"Group">> => group()
+%% }
+-type get_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% group() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type group() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_failure_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associated_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associated_groups_response() :: #{
+%%   <<"Groups">> => list(group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associated_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_resources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_group_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_group_resources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Resources">> => list(string())
+%% }
+-type list_group_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_groups_response() :: #{
+%%   <<"Groups">> => list(group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% multi_location_config() :: #{
+%%   <<"LocationType">> => list(any()),
+%%   <<"PrimaryLocation">> => string(),
+%%   <<"Replicas">> => list(replica()),
+%%   <<"ReplicationState">> => list(any())
+%% }
+-type multi_location_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% replica() :: #{
+%%   <<"CanaryState">> => list(any()),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Location">> => string(),
+%%   <<"ReplicationStatus">> => replication_status(),
+%%   <<"VpcConfig">> => vpc_config_output()
+%% }
+-type replica() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_status() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"StateReasonCode">> => string()
+%% }
+-type replication_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_entity_too_large_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type request_entity_too_large_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_config_input() :: #{
+%%   <<"MaxRetries">> => integer()
+%% }
+-type retry_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_config_output() :: #{
+%%   <<"MaxRetries">> => integer()
+%% }
+-type retry_config_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_version() :: #{
+%%   <<"DeprecationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ReleaseDate">> => non_neg_integer(),
+%%   <<"VersionName">> => string()
+%% }
+-type runtime_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_encryption_config() :: #{
+%%   <<"EncryptionMode">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type s3_encryption_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -202,49 +711,37 @@
 
 
 %% Example:
-%% canary_status() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => string(),
-%%   <<"StateReasonCode">> => list(any())
+%% start_canary_dry_run_response() :: #{
+%%   <<"DryRunConfig">> => dry_run_config_output()
 %% }
--type canary_status() :: #{binary() => any()}.
-
+-type start_canary_dry_run_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_runtime_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RuntimeVersions">> => list(runtime_version())
-%% }
--type describe_runtime_versions_response() :: #{binary() => any()}.
-
+%% start_canary_request() :: #{}
+-type start_canary_request() :: #{}.
 
 %% Example:
-%% canary_run_config_output() :: #{
-%%   <<"ActiveTracing">> => boolean(),
-%%   <<"EphemeralStorage">> => integer(),
-%%   <<"MemoryInMB">> => integer(),
-%%   <<"TimeoutInSeconds">> => integer()
-%% }
--type canary_run_config_output() :: #{binary() => any()}.
-
+%% start_canary_response() :: #{}
+-type start_canary_response() :: #{}.
 
 %% Example:
-%% describe_canaries_last_run_response() :: #{
-%%   <<"CanariesLastRun">> => list(canary_last_run()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_canaries_last_run_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+%% stop_canary_request() :: #{}
+-type stop_canary_request() :: #{}.
 
 %% Example:
 %% stop_canary_response() :: #{}
 -type stop_canary_response() :: #{}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
@@ -255,77 +752,14 @@
 
 
 %% Example:
-%% list_group_resources_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Resources">> => list(string())
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
 %% }
--type list_group_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_encryption_config() :: #{
-%%   <<"EncryptionMode">> => list(any()),
-%%   <<"KmsKeyArn">> => string()
-%% }
--type s3_encryption_config() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_canary_response() :: #{}
--type start_canary_response() :: #{}.
-
-
-%% Example:
-%% canary_run() :: #{
-%%   <<"ArtifactS3Location">> => string(),
-%%   <<"BrowserType">> => list(any()),
-%%   <<"DryRunConfig">> => canary_dry_run_config_output(),
-%%   <<"Id">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RetryAttempt">> => integer(),
-%%   <<"ScheduledRunId">> => string(),
-%%   <<"Status">> => canary_run_status(),
-%%   <<"Timeline">> => canary_run_timeline()
-%% }
--type canary_run() :: #{binary() => any()}.
-
-
-%% Example:
-%% canary_schedule_input() :: #{
-%%   <<"DurationInSeconds">> => float(),
-%%   <<"Expression">> => string(),
-%%   <<"RetryConfig">> => retry_config_input()
-%% }
--type canary_schedule_input() :: #{binary() => any()}.
-
-%% Example:
-%% associate_resource_response() :: #{}
--type associate_resource_response() :: #{}.
-
-
-%% Example:
-%% get_canary_response() :: #{
-%%   <<"Canary">> => canary()
-%% }
--type get_canary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% canary_run_config_input() :: #{
-%%   <<"ActiveTracing">> => boolean(),
-%%   <<"EnvironmentVariables">> => map(),
-%%   <<"EphemeralStorage">> => integer(),
-%%   <<"MemoryInMB">> => integer(),
-%%   <<"TimeoutInSeconds">> => integer()
-%% }
--type canary_run_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -338,6 +772,7 @@
 %%   <<"DryRunId">> => string(),
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
+%%   <<"KmsKeyArn">> => string(),
 %%   <<"ProvisionedResourceCleanup">> => list(any()),
 %%   <<"RemoveReplicaLocations">> => list(string()),
 %%   <<"RunConfig">> => canary_run_config_input(),
@@ -350,188 +785,16 @@
 %% }
 -type update_canary_request() :: #{binary() => any()}.
 
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% canary_run_timeline() :: #{
-%%   <<"Completed">> => non_neg_integer(),
-%%   <<"MetricTimestampForRunAndRetries">> => non_neg_integer(),
-%%   <<"Started">> => non_neg_integer()
-%% }
--type canary_run_timeline() :: #{binary() => any()}.
-
 %% Example:
 %% update_canary_response() :: #{}
 -type update_canary_response() :: #{}.
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
+%% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% canary_run_status() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => string(),
-%%   <<"StateReasonCode">> => list(any()),
-%%   <<"TestResult">> => list(any())
-%% }
--type canary_run_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% canary_last_run() :: #{
-%%   <<"CanaryName">> => string(),
-%%   <<"LastRun">> => canary_run()
-%% }
--type canary_last_run() :: #{binary() => any()}.
-
-
-%% Example:
-%% artifact_config_output() :: #{
-%%   <<"S3Encryption">> => s3_encryption_config()
-%% }
--type artifact_config_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% base_screenshot() :: #{
-%%   <<"IgnoreCoordinates">> => list(string()),
-%%   <<"ScreenshotName">> => string()
-%% }
--type base_screenshot() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_config_output() :: #{
-%%   <<"Ipv6AllowedForDualStack">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VpcId">> => string()
-%% }
--type vpc_config_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_resource_response() :: #{}
--type disassociate_resource_response() :: #{}.
-
-
-%% Example:
-%% canary_timeline() :: #{
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"LastStarted">> => non_neg_integer(),
-%%   <<"LastStopped">> => non_neg_integer()
-%% }
--type canary_timeline() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type associate_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_canary_runs_response() :: #{
-%%   <<"CanaryRuns">> => list(canary_run()),
-%%   <<"NextToken">> => string()
-%% }
--type get_canary_runs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% canary_code_output() :: #{
-%%   <<"BlueprintTypes">> => list(string()),
-%%   <<"Dependencies">> => list(dependency()),
-%%   <<"Handler">> => string(),
-%%   <<"SourceLocationArn">> => string()
-%% }
--type canary_code_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_status() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => string(),
-%%   <<"StateReasonCode">> => string()
-%% }
--type replication_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_canaries_last_run_request() :: #{
-%%   <<"BrowserType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_canaries_last_run_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type disassociate_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_runtime_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_runtime_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_location_config() :: #{
-%%   <<"LocationType">> => list(any()),
-%%   <<"PrimaryLocation">> => string(),
-%%   <<"Replicas">> => list(replica()),
-%%   <<"ReplicationState">> => list(any())
-%% }
--type multi_location_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% dry_run_config_output() :: #{
-%%   <<"DryRunId">> => string(),
-%%   <<"LastDryRunExecutionStatus">> => string()
-%% }
--type dry_run_config_output() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -544,91 +807,12 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
+%% visual_reference_output() :: #{
+%%   <<"BaseCanaryRunId">> => string(),
+%%   <<"BaseScreenshots">> => list(base_screenshot()),
+%%   <<"BrowserType">> => list(any())
 %% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_entity_too_large_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type request_entity_too_large_exception() :: #{binary() => any()}.
-
-%% Example:
-%% start_canary_request() :: #{}
--type start_canary_request() :: #{}.
-
-%% Example:
-%% delete_group_response() :: #{}
--type delete_group_response() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_replica_location_input() :: #{
-%%   <<"Location">> => string(),
-%%   <<"VpcConfig">> => vpc_config_input()
-%% }
--type add_replica_location_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% engine_config() :: #{
-%%   <<"BrowserType">> => list(any()),
-%%   <<"EngineArn">> => string()
-%% }
--type engine_config() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% runtime_version() :: #{
-%%   <<"DeprecationDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ReleaseDate">> => non_neg_integer(),
-%%   <<"VersionName">> => string()
-%% }
--type runtime_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% canary() :: #{
-%%   <<"ArtifactConfig">> => artifact_config_output(),
-%%   <<"ArtifactS3Location">> => string(),
-%%   <<"BrowserConfigs">> => list(browser_config()),
-%%   <<"Code">> => canary_code_output(),
-%%   <<"DryRunConfig">> => dry_run_config_output(),
-%%   <<"EngineArn">> => string(),
-%%   <<"EngineConfigs">> => list(engine_config()),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"FailureRetentionPeriodInDays">> => integer(),
-%%   <<"Id">> => string(),
-%%   <<"MultiLocationConfig">> => multi_location_config(),
-%%   <<"Name">> => string(),
-%%   <<"ProvisionedResourceCleanup">> => list(any()),
-%%   <<"RunConfig">> => canary_run_config_output(),
-%%   <<"RuntimeVersion">> => string(),
-%%   <<"Schedule">> => canary_schedule_output(),
-%%   <<"Status">> => canary_status(),
-%%   <<"SuccessRetentionPeriodInDays">> => integer(),
-%%   <<"Tags">> => map(),
-%%   <<"Timeline">> => canary_timeline(),
-%%   <<"VisualReference">> => visual_reference_output(),
-%%   <<"VisualReferences">> => list(visual_reference_output()),
-%%   <<"VpcConfig">> => vpc_config_output()
-%% }
--type canary() :: #{binary() => any()}.
+-type visual_reference_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -641,199 +825,19 @@
 
 
 %% Example:
-%% delete_canary_request() :: #{
-%%   <<"DeleteLambda">> => boolean()
+%% vpc_config_output() :: #{
+%%   <<"Ipv6AllowedForDualStack">> => boolean(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcId">> => string()
 %% }
--type delete_canary_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_canary_dry_run_response() :: #{
-%%   <<"DryRunConfig">> => dry_run_config_output()
-%% }
--type start_canary_dry_run_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associated_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_associated_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_group_resources_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_group_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% group() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type group() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_group_response() :: #{
-%%   <<"Group">> => group()
-%% }
--type get_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_group_request() :: #{}
--type delete_group_request() :: #{}.
-
-
-%% Example:
-%% replica() :: #{
-%%   <<"CanaryState">> => list(any()),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"Location">> => string(),
-%%   <<"ReplicationStatus">> => replication_status(),
-%%   <<"VpcConfig">> => vpc_config_output()
-%% }
--type replica() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_canary_request() :: #{
-%%   <<"DryRunId">> => string()
-%% }
--type get_canary_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% group_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type group_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associated_groups_response() :: #{
-%%   <<"Groups">> => list(group_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_associated_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% browser_config() :: #{
-%%   <<"BrowserType">> => list(any())
-%% }
--type browser_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_groups_response() :: #{
-%%   <<"Groups">> => list(group_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_group_request() :: #{}
--type get_group_request() :: #{}.
-
-
-%% Example:
-%% canary_schedule_output() :: #{
-%%   <<"DurationInSeconds">> => float(),
-%%   <<"Expression">> => string(),
-%%   <<"RetryConfig">> => retry_config_output()
-%% }
--type canary_schedule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_config_input() :: #{
-%%   <<"MaxRetries">> => integer()
-%% }
--type retry_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_canary_response() :: #{
-%%   <<"Canary">> => canary()
-%% }
--type create_canary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% canary_code_input() :: #{
-%%   <<"BlueprintTypes">> => list(string()),
-%%   <<"Dependencies">> => list(dependency()),
-%%   <<"Handler">> => string(),
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3Key">> => string(),
-%%   <<"S3Version">> => string(),
-%%   <<"ZipFile">> => binary()
-%% }
--type canary_code_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% artifact_config_input() :: #{
-%%   <<"S3Encryption">> => s3_encryption_config()
-%% }
--type artifact_config_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_group_response() :: #{
-%%   <<"Group">> => group()
-%% }
--type create_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_config_output() :: #{
-%%   <<"MaxRetries">> => integer()
-%% }
--type retry_config_output() :: #{binary() => any()}.
+-type vpc_config_output() :: #{binary() => any()}.
 
 -type associate_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_canary_errors() ::
@@ -843,20 +847,20 @@
 
 -type create_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_canary_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type describe_canaries_errors() ::
@@ -873,8 +877,8 @@
 
 -type disassociate_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_canary_errors() ::
@@ -883,24 +887,24 @@
 
 -type get_canary_runs_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_group_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type list_associated_groups_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_group_resources_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type list_groups_errors() ::
@@ -908,52 +912,52 @@
     internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type start_canary_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type start_canary_dry_run_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_canary_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_canary_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     request_entity_too_large_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

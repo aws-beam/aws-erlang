@@ -96,289 +96,56 @@
 
 
 %% Example:
-%% create_teams_channel_configuration_request() :: #{
-%%   <<"ChannelId">> := string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"ConfigurationName">> := string(),
-%%   <<"GuardrailPolicyArns">> => list(string()),
-%%   <<"IamRoleArn">> := string(),
-%%   <<"LoggingLevel">> => string(),
-%%   <<"SnsTopicArns">> => list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TeamId">> := string(),
-%%   <<"TeamName">> => string(),
-%%   <<"TenantId">> := string(),
-%%   <<"UserAuthorizationRequired">> => boolean()
-%% }
--type create_teams_channel_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_slack_workspace_authorization_fault() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_slack_workspace_authorization_fault() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_teams_channel_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TeamId">> => string()
-%% }
--type list_teams_channel_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_teams_configured_team_request() :: #{
-%%   <<"TeamId">> := string()
-%% }
--type delete_teams_configured_team_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_slack_channel_configuration_result() :: #{}
--type delete_slack_channel_configuration_result() :: #{}.
-
-
-%% Example:
-%% describe_slack_channel_configurations_request() :: #{
-%%   <<"ChatConfigurationArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_slack_channel_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_custom_action_result() :: #{
-%%   <<"CustomAction">> => custom_action()
-%% }
--type get_custom_action_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_custom_action_request() :: #{
-%%   <<"AliasName">> => string(),
-%%   <<"Attachments">> => list(custom_action_attachment()),
-%%   <<"CustomActionArn">> := string(),
-%%   <<"Definition">> := custom_action_definition()
-%% }
--type update_custom_action_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_custom_action_result() :: #{
-%%   <<"CustomActionArn">> => string()
-%% }
--type create_custom_action_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_slack_workspace_authorization_result() :: #{}
--type delete_slack_workspace_authorization_result() :: #{}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% describe_slack_workspaces_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type describe_slack_workspaces_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_account_preferences_request() :: #{
+%% account_preferences() :: #{
 %%   <<"TrainingDataCollectionEnabled">> => boolean(),
 %%   <<"UserAuthorizationRequired">> => boolean()
 %% }
--type update_account_preferences_request() :: #{binary() => any()}.
+-type account_preferences() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_slack_channel_configuration_result() :: #{
-%%   <<"ChannelConfiguration">> => slack_channel_configuration()
-%% }
--type create_slack_channel_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_teams_channel_configuration_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_teams_channel_configuration_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_actions_request() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_custom_actions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_microsoft_teams_configured_teams_result() :: #{
-%%   <<"ConfiguredTeams">> => list(configured_team()),
-%%   <<"NextToken">> => string()
-%% }
--type list_microsoft_teams_configured_teams_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_microsoft_teams_configured_teams_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_microsoft_teams_configured_teams_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_slack_channel_configuration_request() :: #{
-%%   <<"ChatConfigurationArn">> := string(),
-%%   <<"GuardrailPolicyArns">> => list(string()),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"LoggingLevel">> => string(),
-%%   <<"SlackChannelId">> := string(),
-%%   <<"SlackChannelName">> => string(),
-%%   <<"SnsTopicArns">> => list(string()),
-%%   <<"UserAuthorizationRequired">> => boolean()
-%% }
--type update_slack_channel_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_teams_channel_configuration_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type update_teams_channel_configuration_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_microsoft_teams_configured_teams_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type list_microsoft_teams_configured_teams_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_teams_configured_team_result() :: #{}
--type delete_teams_configured_team_result() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_slack_channel_configuration_request() :: #{
-%%   <<"ChatConfigurationArn">> := string()
-%% }
--type delete_slack_channel_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_custom_actions_result() :: #{
-%%   <<"CustomActions">> => list(string()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_custom_actions_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_account_preferences_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type get_account_preferences_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_microsoft_teams_user_identity_result() :: #{}
--type delete_microsoft_teams_user_identity_result() :: #{}.
-
-
-%% Example:
-%% custom_action_attachment_criteria() :: #{
-%%   <<"Operator">> => list(any()),
-%%   <<"Value">> => [string()],
-%%   <<"VariableName">> => [string()]
-%% }
--type custom_action_attachment_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_chime_webhook_configuration_result() :: #{
-%%   <<"WebhookConfiguration">> => chime_webhook_configuration()
-%% }
--type create_chime_webhook_configuration_result() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_from_configuration_result() :: #{}
--type disassociate_from_configuration_result() :: #{}.
-
-
-%% Example:
-%% update_teams_channel_configuration_request() :: #{
-%%   <<"ChannelId">> := string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"ChatConfigurationArn">> := string(),
-%%   <<"GuardrailPolicyArns">> => list(string()),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"LoggingLevel">> => string(),
-%%   <<"SnsTopicArns">> => list(string()),
-%%   <<"UserAuthorizationRequired">> => boolean()
-%% }
--type update_teams_channel_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_custom_action_request() :: #{
-%%   <<"CustomActionArn">> := string()
-%% }
--type delete_custom_action_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_chime_webhook_configurations_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WebhookConfigurations">> => list(chime_webhook_configuration())
-%% }
--type describe_chime_webhook_configurations_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_from_configuration_request() :: #{
+%% associate_to_configuration_request() :: #{
 %%   <<"ChatConfiguration">> := string(),
 %%   <<"Resource">> := string()
 %% }
--type disassociate_from_configuration_request() :: #{binary() => any()}.
+-type associate_to_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_to_configuration_result() :: #{}
+-type associate_to_configuration_result() :: #{}.
 
 
 %% Example:
-%% list_microsoft_teams_user_identities_request() :: #{
-%%   <<"ChatConfigurationArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% association_listing() :: #{
+%%   <<"Resource">> => string()
 %% }
--type list_microsoft_teams_user_identities_request() :: #{binary() => any()}.
+-type association_listing() :: #{binary() => any()}.
+
+
+%% Example:
+%% chime_webhook_configuration() :: #{
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"ConfigurationName">> => string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SnsTopicArns">> => list(string()),
+%%   <<"State">> => string(),
+%%   <<"StateReason">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WebhookDescription">> => string()
+%% }
+-type chime_webhook_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% configured_team() :: #{
+%%   <<"State">> => string(),
+%%   <<"StateReason">> => string(),
+%%   <<"TeamId">> => string(),
+%%   <<"TeamName">> => string(),
+%%   <<"TenantId">> => string()
+%% }
+-type configured_team() :: #{binary() => any()}.
 
 
 %% Example:
@@ -389,224 +156,10 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
+%% create_chime_webhook_configuration_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_slack_user_identity_result() :: #{}
--type delete_slack_user_identity_result() :: #{}.
-
-
-%% Example:
-%% teams_user_identity() :: #{
-%%   <<"AwsUserIdentity">> => string(),
-%%   <<"ChatConfigurationArn">> => string(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"TeamId">> => string(),
-%%   <<"TeamsChannelId">> => string(),
-%%   <<"TeamsTenantId">> => string(),
-%%   <<"UserId">> => string()
-%% }
--type teams_user_identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_account_preferences_result() :: #{
-%%   <<"AccountPreferences">> => account_preferences()
-%% }
--type get_account_preferences_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_account_preferences_result() :: #{
-%%   <<"AccountPreferences">> => account_preferences()
-%% }
--type update_account_preferences_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_teams_configured_team_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_teams_configured_team_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"TagKey">> => string(),
-%%   <<"TagValue">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_preferences_request() :: #{}
--type get_account_preferences_request() :: #{}.
-
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_slack_channel_configuration_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type create_slack_channel_configuration_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_action_attachment() :: #{
-%%   <<"ButtonText">> => string(),
-%%   <<"Criteria">> => list(custom_action_attachment_criteria()),
-%%   <<"NotificationType">> => string(),
-%%   <<"Variables">> => map()
-%% }
--type custom_action_attachment() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_slack_workspaces_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SlackWorkspaces">> => list(slack_workspace())
-%% }
--type describe_slack_workspaces_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_teams_channel_configuration_request() :: #{
-%%   <<"ChatConfigurationArn">> := string()
-%% }
--type delete_teams_channel_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_teams_channel_configurations_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type list_teams_channel_configurations_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_chime_webhook_configuration_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type update_chime_webhook_configuration_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_associations_result() :: #{
-%%   <<"Associations">> => list(association_listing()),
-%%   <<"NextToken">> => string()
-%% }
--type list_associations_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_teams_channel_configuration_result() :: #{
-%%   <<"ChannelConfiguration">> => teams_channel_configuration()
-%% }
--type create_teams_channel_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_microsoft_teams_user_identity_request() :: #{
-%%   <<"ChatConfigurationArn">> := string(),
-%%   <<"UserId">> := string()
-%% }
--type delete_microsoft_teams_user_identity_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_teams_channel_configuration_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type create_teams_channel_configuration_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_teams_channel_configurations_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TeamChannelConfigurations">> => list(teams_channel_configuration())
-%% }
--type list_teams_channel_configurations_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_chime_webhook_configuration_result() :: #{
-%%   <<"WebhookConfiguration">> => chime_webhook_configuration()
-%% }
--type update_chime_webhook_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_preferences() :: #{
-%%   <<"TrainingDataCollectionEnabled">> => boolean(),
-%%   <<"UserAuthorizationRequired">> => boolean()
-%% }
--type account_preferences() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_account_preferences_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type update_account_preferences_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_microsoft_teams_user_identity_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_microsoft_teams_user_identity_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% slack_workspace() :: #{
-%%   <<"SlackTeamId">> => string(),
-%%   <<"SlackTeamName">> => string(),
-%%   <<"State">> => string(),
-%%   <<"StateReason">> => string()
-%% }
--type slack_workspace() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_custom_action_request() :: #{
-%%   <<"ActionName">> := string(),
-%%   <<"AliasName">> => string(),
-%%   <<"Attachments">> => list(custom_action_attachment()),
-%%   <<"ClientToken">> => string(),
-%%   <<"Definition">> := custom_action_definition(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_custom_action_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_to_configuration_request() :: #{
-%%   <<"ChatConfiguration">> := string(),
-%%   <<"Resource">> := string()
-%% }
--type associate_to_configuration_request() :: #{binary() => any()}.
+-type create_chime_webhook_configuration_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -623,18 +176,36 @@
 
 
 %% Example:
-%% describe_slack_workspaces_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% create_chime_webhook_configuration_result() :: #{
+%%   <<"WebhookConfiguration">> => chime_webhook_configuration()
 %% }
--type describe_slack_workspaces_request() :: #{binary() => any()}.
+-type create_chime_webhook_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_teams_channel_configuration_request() :: #{
-%%   <<"ChatConfigurationArn">> := string()
+%% create_custom_action_request() :: #{
+%%   <<"ActionName">> := string(),
+%%   <<"AliasName">> => string(),
+%%   <<"Attachments">> => list(custom_action_attachment()),
+%%   <<"ClientToken">> => string(),
+%%   <<"Definition">> := custom_action_definition(),
+%%   <<"Tags">> => list(tag())
 %% }
--type get_teams_channel_configuration_request() :: #{binary() => any()}.
+-type create_custom_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_action_result() :: #{
+%%   <<"CustomActionArn">> => string()
+%% }
+-type create_custom_action_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_slack_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type create_slack_channel_configuration_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -654,42 +225,42 @@
 
 
 %% Example:
-%% update_chime_webhook_configuration_request() :: #{
-%%   <<"ChatConfigurationArn">> := string(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"LoggingLevel">> => string(),
-%%   <<"SnsTopicArns">> => list(string()),
-%%   <<"WebhookDescription">> => string(),
-%%   <<"WebhookUrl">> => string()
+%% create_slack_channel_configuration_result() :: #{
+%%   <<"ChannelConfiguration">> => slack_channel_configuration()
 %% }
--type update_chime_webhook_configuration_request() :: #{binary() => any()}.
+-type create_slack_channel_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% configured_team() :: #{
-%%   <<"State">> => string(),
-%%   <<"StateReason">> => string(),
-%%   <<"TeamId">> => string(),
-%%   <<"TeamName">> => string(),
-%%   <<"TenantId">> => string()
-%% }
--type configured_team() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_slack_user_identity_request() :: #{
-%%   <<"ChatConfigurationArn">> := string(),
-%%   <<"SlackTeamId">> := string(),
-%%   <<"SlackUserId">> := string()
-%% }
--type delete_slack_user_identity_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_slack_channel_configuration_exception() :: #{
+%% create_teams_channel_configuration_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type update_slack_channel_configuration_exception() :: #{binary() => any()}.
+-type create_teams_channel_configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_teams_channel_configuration_request() :: #{
+%%   <<"ChannelId">> := string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ConfigurationName">> := string(),
+%%   <<"GuardrailPolicyArns">> => list(string()),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SnsTopicArns">> => list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TeamId">> := string(),
+%%   <<"TeamName">> => string(),
+%%   <<"TenantId">> := string(),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type create_teams_channel_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_teams_channel_configuration_result() :: #{
+%%   <<"ChannelConfiguration">> => teams_channel_configuration()
+%% }
+-type create_teams_channel_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -704,26 +275,22 @@
 
 
 %% Example:
-%% list_associations_request() :: #{
-%%   <<"ChatConfiguration">> := string(),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => string()
+%% custom_action_attachment() :: #{
+%%   <<"ButtonText">> => string(),
+%%   <<"Criteria">> => list(custom_action_attachment_criteria()),
+%%   <<"NotificationType">> => string(),
+%%   <<"Variables">> => map()
 %% }
--type list_associations_request() :: #{binary() => any()}.
+-type custom_action_attachment() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_slack_user_identity_exception() :: #{
-%%   <<"Message">> => string()
+%% custom_action_attachment_criteria() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => [string()],
+%%   <<"VariableName">> => [string()]
 %% }
--type delete_slack_user_identity_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_chime_webhook_configurations_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type describe_chime_webhook_configurations_exception() :: #{binary() => any()}.
+-type custom_action_attachment_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -734,13 +301,6 @@
 
 
 %% Example:
-%% list_microsoft_teams_user_identities_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type list_microsoft_teams_user_identities_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% delete_chime_webhook_configuration_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -748,10 +308,89 @@
 
 
 %% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => string()
+%% delete_chime_webhook_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string()
 %% }
--type invalid_parameter_exception() :: #{binary() => any()}.
+-type delete_chime_webhook_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_chime_webhook_configuration_result() :: #{}
+-type delete_chime_webhook_configuration_result() :: #{}.
+
+
+%% Example:
+%% delete_custom_action_request() :: #{
+%%   <<"CustomActionArn">> := string()
+%% }
+-type delete_custom_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_action_result() :: #{}
+-type delete_custom_action_result() :: #{}.
+
+
+%% Example:
+%% delete_microsoft_teams_user_identity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_microsoft_teams_user_identity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_microsoft_teams_user_identity_request() :: #{
+%%   <<"ChatConfigurationArn">> := string(),
+%%   <<"UserId">> := string()
+%% }
+-type delete_microsoft_teams_user_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_microsoft_teams_user_identity_result() :: #{}
+-type delete_microsoft_teams_user_identity_result() :: #{}.
+
+
+%% Example:
+%% delete_slack_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_slack_channel_configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_slack_channel_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string()
+%% }
+-type delete_slack_channel_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_slack_channel_configuration_result() :: #{}
+-type delete_slack_channel_configuration_result() :: #{}.
+
+
+%% Example:
+%% delete_slack_user_identity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_slack_user_identity_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_slack_user_identity_request() :: #{
+%%   <<"ChatConfigurationArn">> := string(),
+%%   <<"SlackTeamId">> := string(),
+%%   <<"SlackUserId">> := string()
+%% }
+-type delete_slack_user_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_slack_user_identity_result() :: #{}
+-type delete_slack_user_identity_result() :: #{}.
+
+
+%% Example:
+%% delete_slack_workspace_authorization_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_slack_workspace_authorization_fault() :: #{binary() => any()}.
 
 
 %% Example:
@@ -761,8 +400,204 @@
 -type delete_slack_workspace_authorization_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+%% delete_slack_workspace_authorization_result() :: #{}
+-type delete_slack_workspace_authorization_result() :: #{}.
+
+
+%% Example:
+%% delete_teams_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_teams_channel_configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_teams_channel_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string()
+%% }
+-type delete_teams_channel_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_teams_channel_configuration_result() :: #{}
+-type delete_teams_channel_configuration_result() :: #{}.
+
+
+%% Example:
+%% delete_teams_configured_team_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_teams_configured_team_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_teams_configured_team_request() :: #{
+%%   <<"TeamId">> := string()
+%% }
+-type delete_teams_configured_team_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_teams_configured_team_result() :: #{}
+-type delete_teams_configured_team_result() :: #{}.
+
+
+%% Example:
+%% describe_chime_webhook_configurations_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type describe_chime_webhook_configurations_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_chime_webhook_configurations_request() :: #{
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_chime_webhook_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_chime_webhook_configurations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WebhookConfigurations">> => list(chime_webhook_configuration())
+%% }
+-type describe_chime_webhook_configurations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_slack_channel_configurations_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type describe_slack_channel_configurations_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_slack_channel_configurations_request() :: #{
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_slack_channel_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_slack_channel_configurations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SlackChannelConfigurations">> => list(slack_channel_configuration())
+%% }
+-type describe_slack_channel_configurations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_slack_user_identities_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type describe_slack_user_identities_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_slack_user_identities_request() :: #{
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_slack_user_identities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_slack_user_identities_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SlackUserIdentities">> => list(slack_user_identity())
+%% }
+-type describe_slack_user_identities_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_slack_workspaces_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type describe_slack_workspaces_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_slack_workspaces_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_slack_workspaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_slack_workspaces_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SlackWorkspaces">> => list(slack_workspace())
+%% }
+-type describe_slack_workspaces_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_from_configuration_request() :: #{
+%%   <<"ChatConfiguration">> := string(),
+%%   <<"Resource">> := string()
+%% }
+-type disassociate_from_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_from_configuration_result() :: #{}
+-type disassociate_from_configuration_result() :: #{}.
+
+
+%% Example:
+%% get_account_preferences_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type get_account_preferences_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_preferences_request() :: #{}
+-type get_account_preferences_request() :: #{}.
+
+
+%% Example:
+%% get_account_preferences_result() :: #{
+%%   <<"AccountPreferences">> => account_preferences()
+%% }
+-type get_account_preferences_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_custom_action_request() :: #{
+%%   <<"CustomActionArn">> := string()
+%% }
+-type get_custom_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_custom_action_result() :: #{
+%%   <<"CustomAction">> => custom_action()
+%% }
+-type get_custom_action_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_teams_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type get_teams_channel_configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_teams_channel_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string()
+%% }
+-type get_teams_channel_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_teams_channel_configuration_result() :: #{
+%%   <<"ChannelConfiguration">> => teams_channel_configuration()
+%% }
+-type get_teams_channel_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -773,17 +608,156 @@
 
 
 %% Example:
-%% update_custom_action_result() :: #{
-%%   <<"CustomActionArn">> => string()
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_custom_action_result() :: #{binary() => any()}.
+-type invalid_parameter_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_slack_user_identities_exception() :: #{
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associations_request() :: #{
+%%   <<"ChatConfiguration">> := string(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_associations_result() :: #{
+%%   <<"Associations">> => list(association_listing()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_actions_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_custom_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_actions_result() :: #{
+%%   <<"CustomActions">> => list(string()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_custom_actions_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microsoft_teams_configured_teams_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type describe_slack_user_identities_exception() :: #{binary() => any()}.
+-type list_microsoft_teams_configured_teams_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microsoft_teams_configured_teams_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_microsoft_teams_configured_teams_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microsoft_teams_configured_teams_result() :: #{
+%%   <<"ConfiguredTeams">> => list(configured_team()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_microsoft_teams_configured_teams_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microsoft_teams_user_identities_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type list_microsoft_teams_user_identities_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microsoft_teams_user_identities_request() :: #{
+%%   <<"ChatConfigurationArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_microsoft_teams_user_identities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_microsoft_teams_user_identities_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TeamsUserIdentities">> => list(teams_user_identity())
+%% }
+-type list_microsoft_teams_user_identities_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_teams_channel_configurations_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type list_teams_channel_configurations_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_teams_channel_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TeamId">> => string()
+%% }
+-type list_teams_channel_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_teams_channel_configurations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TeamChannelConfigurations">> => list(teams_channel_configuration())
+%% }
+-type list_teams_channel_configurations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -807,50 +781,6 @@
 
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_microsoft_teams_user_identities_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TeamsUserIdentities">> => list(teams_user_identity())
-%% }
--type list_microsoft_teams_user_identities_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% association_listing() :: #{
-%%   <<"Resource">> => string()
-%% }
--type association_listing() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_teams_channel_configuration_result() :: #{
-%%   <<"ChannelConfiguration">> => teams_channel_configuration()
-%% }
--type get_teams_channel_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% chime_webhook_configuration() :: #{
-%%   <<"ChatConfigurationArn">> => string(),
-%%   <<"ConfigurationName">> => string(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"LoggingLevel">> => string(),
-%%   <<"SnsTopicArns">> => list(string()),
-%%   <<"State">> => string(),
-%%   <<"StateReason">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"WebhookDescription">> => string()
-%% }
--type chime_webhook_configuration() :: #{binary() => any()}.
-
-
-%% Example:
 %% slack_user_identity() :: #{
 %%   <<"AwsUserIdentity">> => string(),
 %%   <<"ChatConfigurationArn">> => string(),
@@ -862,55 +792,33 @@
 
 
 %% Example:
-%% get_custom_action_request() :: #{
-%%   <<"CustomActionArn">> := string()
+%% slack_workspace() :: #{
+%%   <<"SlackTeamId">> => string(),
+%%   <<"SlackTeamName">> => string(),
+%%   <<"State">> => string(),
+%%   <<"StateReason">> => string()
 %% }
--type get_custom_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_chime_webhook_configuration_result() :: #{}
--type delete_chime_webhook_configuration_result() :: #{}.
+-type slack_workspace() :: #{binary() => any()}.
 
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
+%% tag() :: #{
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_chime_webhook_configuration_exception() :: #{
-%%   <<"Message">> => string()
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type create_chime_webhook_configuration_exception() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_teams_channel_configuration_result() :: #{}
--type delete_teams_channel_configuration_result() :: #{}.
-
-
-%% Example:
-%% describe_chime_webhook_configurations_request() :: #{
-%%   <<"ChatConfigurationArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_chime_webhook_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_slack_channel_configuration_result() :: #{
-%%   <<"ChannelConfiguration">> => slack_channel_configuration()
-%% }
--type update_slack_channel_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_teams_channel_configuration_result() :: #{
-%%   <<"ChannelConfiguration">> => teams_channel_configuration()
-%% }
--type update_teams_channel_configuration_result() :: #{binary() => any()}.
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
@@ -935,52 +843,16 @@
 
 
 %% Example:
-%% describe_slack_user_identities_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SlackUserIdentities">> => list(slack_user_identity())
-%% }
--type describe_slack_user_identities_result() :: #{binary() => any()}.
-
-%% Example:
-%% associate_to_configuration_result() :: #{}
--type associate_to_configuration_result() :: #{}.
-
-
-%% Example:
-%% delete_slack_channel_configuration_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_slack_channel_configuration_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_chime_webhook_configuration_request() :: #{
-%%   <<"ChatConfigurationArn">> := string()
-%% }
--type delete_chime_webhook_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_teams_channel_configuration_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type get_teams_channel_configuration_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_slack_user_identities_request() :: #{
+%% teams_user_identity() :: #{
+%%   <<"AwsUserIdentity">> => string(),
 %%   <<"ChatConfigurationArn">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"IamRoleArn">> => string(),
+%%   <<"TeamId">> => string(),
+%%   <<"TeamsChannelId">> => string(),
+%%   <<"TeamsTenantId">> => string(),
+%%   <<"UserId">> => string()
 %% }
--type describe_slack_user_identities_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_slack_channel_configurations_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type describe_slack_channel_configurations_exception() :: #{binary() => any()}.
+-type teams_user_identity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -991,65 +863,193 @@
 
 
 %% Example:
-%% describe_slack_channel_configurations_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SlackChannelConfigurations">> => list(slack_channel_configuration())
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_slack_channel_configurations_result() :: #{binary() => any()}.
+-type unauthorized_exception() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_custom_action_result() :: #{}
--type delete_custom_action_result() :: #{}.
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_account_preferences_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type update_account_preferences_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_preferences_request() :: #{
+%%   <<"TrainingDataCollectionEnabled">> => boolean(),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type update_account_preferences_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_preferences_result() :: #{
+%%   <<"AccountPreferences">> => account_preferences()
+%% }
+-type update_account_preferences_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_chime_webhook_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type update_chime_webhook_configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_chime_webhook_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SnsTopicArns">> => list(string()),
+%%   <<"WebhookDescription">> => string(),
+%%   <<"WebhookUrl">> => string()
+%% }
+-type update_chime_webhook_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_chime_webhook_configuration_result() :: #{
+%%   <<"WebhookConfiguration">> => chime_webhook_configuration()
+%% }
+-type update_chime_webhook_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_action_request() :: #{
+%%   <<"AliasName">> => string(),
+%%   <<"Attachments">> => list(custom_action_attachment()),
+%%   <<"CustomActionArn">> := string(),
+%%   <<"Definition">> := custom_action_definition()
+%% }
+-type update_custom_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_custom_action_result() :: #{
+%%   <<"CustomActionArn">> => string()
+%% }
+-type update_custom_action_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_slack_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type update_slack_channel_configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_slack_channel_configuration_request() :: #{
+%%   <<"ChatConfigurationArn">> := string(),
+%%   <<"GuardrailPolicyArns">> => list(string()),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SlackChannelId">> := string(),
+%%   <<"SlackChannelName">> => string(),
+%%   <<"SnsTopicArns">> => list(string()),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type update_slack_channel_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_slack_channel_configuration_result() :: #{
+%%   <<"ChannelConfiguration">> => slack_channel_configuration()
+%% }
+-type update_slack_channel_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_teams_channel_configuration_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type update_teams_channel_configuration_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_teams_channel_configuration_request() :: #{
+%%   <<"ChannelId">> := string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChatConfigurationArn">> := string(),
+%%   <<"GuardrailPolicyArns">> => list(string()),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"LoggingLevel">> => string(),
+%%   <<"SnsTopicArns">> => list(string()),
+%%   <<"UserAuthorizationRequired">> => boolean()
+%% }
+-type update_teams_channel_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_teams_channel_configuration_result() :: #{
+%%   <<"ChannelConfiguration">> => teams_channel_configuration()
+%% }
+-type update_teams_channel_configuration_result() :: #{binary() => any()}.
 
 -type associate_to_configuration_errors() ::
-    internal_service_error() | 
+    unauthorized_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_service_error().
 
 -type create_chime_webhook_configuration_errors() ::
-    create_chime_webhook_configuration_exception() | 
     limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    create_chime_webhook_configuration_exception() | 
     conflict_exception().
 
 -type create_custom_action_errors() ::
+    unauthorized_exception() | 
     limit_exceeded_exception() | 
-    internal_service_error() | 
     invalid_request_exception() | 
-    conflict_exception() | 
-    unauthorized_exception().
+    internal_service_error() | 
+    conflict_exception().
 
 -type create_microsoft_teams_channel_configuration_errors() ::
     limit_exceeded_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
     create_teams_channel_configuration_exception() | 
-    invalid_request_exception() | 
     conflict_exception().
 
 -type create_slack_channel_configuration_errors() ::
     limit_exceeded_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
     create_slack_channel_configuration_exception() | 
-    invalid_request_exception() | 
     conflict_exception().
 
 -type delete_chime_webhook_configuration_errors() ::
-    invalid_parameter_exception() | 
-    delete_chime_webhook_configuration_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    delete_chime_webhook_configuration_exception().
 
 -type delete_custom_action_errors() ::
-    internal_service_error() | 
-    invalid_request_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    invalid_request_exception() | 
+    internal_service_error().
 
 -type delete_microsoft_teams_channel_configuration_errors() ::
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
     delete_teams_channel_configuration_exception().
 
 -type delete_microsoft_teams_configured_team_errors() ::
@@ -1057,129 +1057,129 @@
     delete_teams_configured_team_exception().
 
 -type delete_microsoft_teams_user_identity_errors() ::
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    delete_microsoft_teams_user_identity_exception() | 
-    resource_not_found_exception().
+    delete_microsoft_teams_user_identity_exception().
 
 -type delete_slack_channel_configuration_errors() ::
-    delete_slack_channel_configuration_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    delete_slack_channel_configuration_exception().
 
 -type delete_slack_user_identity_errors() ::
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    delete_slack_user_identity_exception() | 
-    resource_not_found_exception().
+    delete_slack_user_identity_exception().
 
 -type delete_slack_workspace_authorization_errors() ::
     invalid_parameter_exception() | 
     delete_slack_workspace_authorization_fault().
 
 -type describe_chime_webhook_configurations_errors() ::
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
-    describe_chime_webhook_configurations_exception() | 
-    invalid_request_exception().
+    describe_chime_webhook_configurations_exception().
 
 -type describe_slack_channel_configurations_errors() ::
-    describe_slack_channel_configurations_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
-    invalid_request_exception().
+    describe_slack_channel_configurations_exception().
 
 -type describe_slack_user_identities_errors() ::
-    describe_slack_user_identities_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
-    invalid_request_exception().
+    describe_slack_user_identities_exception().
 
 -type describe_slack_workspaces_errors() ::
-    invalid_parameter_exception() | 
     invalid_request_exception() | 
+    invalid_parameter_exception() | 
     describe_slack_workspaces_exception().
 
 -type disassociate_from_configuration_errors() ::
-    internal_service_error() | 
+    unauthorized_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_service_error().
 
 -type get_account_preferences_errors() ::
     invalid_request_exception() | 
     get_account_preferences_exception().
 
 -type get_custom_action_errors() ::
-    internal_service_error() | 
-    invalid_request_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    invalid_request_exception() | 
+    internal_service_error().
 
 -type get_microsoft_teams_channel_configuration_errors() ::
-    get_teams_channel_configuration_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_exception() | 
-    invalid_request_exception().
+    get_teams_channel_configuration_exception().
 
 -type list_custom_actions_errors() ::
-    internal_service_error() | 
+    unauthorized_exception() | 
     invalid_request_exception() | 
-    unauthorized_exception().
+    internal_service_error().
 
 -type list_microsoft_teams_channel_configurations_errors() ::
-    invalid_parameter_exception() | 
     list_teams_channel_configurations_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception().
 
 -type list_microsoft_teams_configured_teams_errors() ::
-    invalid_parameter_exception() | 
+    list_microsoft_teams_configured_teams_exception() | 
     invalid_request_exception() | 
-    list_microsoft_teams_configured_teams_exception().
+    invalid_parameter_exception().
 
 -type list_microsoft_teams_user_identities_errors() ::
-    invalid_parameter_exception() | 
     list_microsoft_teams_user_identities_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_service_error().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_service_error().
 
 -type untag_resource_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_service_error().
 
 -type update_account_preferences_errors() ::
-    invalid_parameter_exception() | 
     update_account_preferences_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception().
 
 -type update_chime_webhook_configuration_errors() ::
-    invalid_parameter_exception() | 
     update_chime_webhook_configuration_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 -type update_custom_action_errors() ::
-    internal_service_error() | 
-    invalid_request_exception() | 
+    unauthorized_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    invalid_request_exception() | 
+    internal_service_error().
 
 -type update_microsoft_teams_channel_configuration_errors() ::
-    invalid_parameter_exception() | 
-    invalid_request_exception() | 
+    update_teams_channel_configuration_exception() | 
     resource_not_found_exception() | 
-    update_teams_channel_configuration_exception().
+    invalid_request_exception() | 
+    invalid_parameter_exception().
 
 -type update_slack_channel_configuration_errors() ::
-    invalid_parameter_exception() | 
     update_slack_channel_configuration_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception().
 
 %%====================================================================
 %% API

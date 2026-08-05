@@ -77,115 +77,49 @@
 
 
 %% Example:
-%% partition_key() :: #{
-%%   <<"name">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type partition_key() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_type_request() :: #{
-%%   <<"keyspaceName">> := string(),
-%%   <<"typeName">> := string()
+%% auto_scaling_policy() :: #{
+%%   <<"targetTrackingScalingPolicyConfiguration">> => target_tracking_scaling_policy_configuration()
 %% }
--type get_type_request() :: #{binary() => any()}.
+-type auto_scaling_policy() :: #{binary() => any()}.
 
 %% Example:
-%% delete_type_request() :: #{
-%%   <<"keyspaceName">> := string(),
-%%   <<"typeName">> := string()
+%% auto_scaling_settings() :: #{
+%%   <<"autoScalingDisabled">> => boolean(),
+%%   <<"maximumUnits">> => float(),
+%%   <<"minimumUnits">> => float(),
+%%   <<"scalingPolicy">> => auto_scaling_policy()
 %% }
--type delete_type_request() :: #{binary() => any()}.
+-type auto_scaling_settings() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_type_response() :: #{
-%%   <<"keyspaceArn">> => string(),
-%%   <<"typeName">> => string()
-%% }
--type delete_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_table_request() :: #{
-%%   <<"addColumns">> => list(column_definition()),
-%%   <<"autoScalingSpecification">> => auto_scaling_specification(),
-%%   <<"capacitySpecification">> => capacity_specification(),
-%%   <<"cdcSpecification">> => cdc_specification(),
-%%   <<"clientSideTimestamps">> => client_side_timestamps(),
-%%   <<"defaultTimeToLive">> => integer(),
-%%   <<"encryptionSpecification">> => encryption_specification(),
-%%   <<"keyspaceName">> := string(),
-%%   <<"pointInTimeRecovery">> => point_in_time_recovery(),
-%%   <<"replicaSpecifications">> => list(replica_specification()),
-%%   <<"tableName">> := string(),
-%%   <<"ttl">> => time_to_live(),
-%%   <<"warmThroughputSpecification">> => warm_throughput_specification()
-%% }
--type update_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_keyspace_response() :: #{
-%%   <<"resourceArn">> => string()
-%% }
--type update_keyspace_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_types_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"types">> => list(string())
-%% }
--type list_types_response() :: #{binary() => any()}.
-
-%% Example:
-%% keyspace_summary() :: #{
-%%   <<"keyspaceName">> => string(),
-%%   <<"replicationRegions">> => list(string()),
-%%   <<"replicationStrategy">> => string(),
-%%   <<"resourceArn">> => string()
-%% }
--type keyspace_summary() :: #{binary() => any()}.
-
-%% Example:
-%% replica_specification() :: #{
+%% auto_scaling_specification() :: #{
 %%   <<"readCapacityAutoScaling">> => auto_scaling_settings(),
+%%   <<"writeCapacityAutoScaling">> => auto_scaling_settings()
+%% }
+-type auto_scaling_specification() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_specification() :: #{
 %%   <<"readCapacityUnits">> => float(),
-%%   <<"region">> => string()
+%%   <<"throughputMode">> => string(),
+%%   <<"writeCapacityUnits">> => float()
 %% }
--type replica_specification() :: #{binary() => any()}.
+-type capacity_specification() :: #{binary() => any()}.
 
 %% Example:
-%% replication_specification() :: #{
-%%   <<"regionList">> => list(string()),
-%%   <<"replicationStrategy">> => string()
+%% capacity_specification_summary() :: #{
+%%   <<"lastUpdateToPayPerRequestTimestamp">> => non_neg_integer(),
+%%   <<"readCapacityUnits">> => float(),
+%%   <<"throughputMode">> => string(),
+%%   <<"writeCapacityUnits">> => float()
 %% }
--type replication_specification() :: #{binary() => any()}.
-
-%% Example:
-%% list_keyspaces_response() :: #{
-%%   <<"keyspaces">> := list(keyspace_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_keyspaces_response() :: #{binary() => any()}.
-
-%% Example:
-%% schema_definition() :: #{
-%%   <<"allColumns">> => list(column_definition()),
-%%   <<"clusteringKeys">> => list(clustering_key()),
-%%   <<"partitionKeys">> => list(partition_key()),
-%%   <<"staticColumns">> => list(static_column())
-%% }
--type schema_definition() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
+-type capacity_specification_summary() :: #{binary() => any()}.
 
 %% Example:
 %% cdc_specification() :: #{
@@ -197,35 +131,57 @@
 -type cdc_specification() :: #{binary() => any()}.
 
 %% Example:
-%% delete_table_request() :: #{
+%% cdc_specification_summary() :: #{
+%%   <<"status">> => string(),
+%%   <<"viewType">> => string()
+%% }
+-type cdc_specification_summary() :: #{binary() => any()}.
+
+%% Example:
+%% client_side_timestamps() :: #{
+%%   <<"status">> => string()
+%% }
+-type client_side_timestamps() :: #{binary() => any()}.
+
+%% Example:
+%% clustering_key() :: #{
+%%   <<"name">> => string(),
+%%   <<"orderBy">> => string()
+%% }
+-type clustering_key() :: #{binary() => any()}.
+
+%% Example:
+%% column_definition() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type column_definition() :: #{binary() => any()}.
+
+%% Example:
+%% comment() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type comment() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_keyspace_request() :: #{
 %%   <<"keyspaceName">> := string(),
-%%   <<"tableName">> := string()
+%%   <<"replicationSpecification">> => replication_specification(),
+%%   <<"tags">> => list(tag())
 %% }
--type delete_table_request() :: #{binary() => any()}.
+-type create_keyspace_request() :: #{binary() => any()}.
 
 %% Example:
-%% table_summary() :: #{
-%%   <<"keyspaceName">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"tableName">> => string()
+%% create_keyspace_response() :: #{
+%%   <<"resourceArn">> := string()
 %% }
--type table_summary() :: #{binary() => any()}.
-
-%% Example:
-%% target_tracking_scaling_policy_configuration() :: #{
-%%   <<"disableScaleIn">> => boolean(),
-%%   <<"scaleInCooldown">> => integer(),
-%%   <<"scaleOutCooldown">> => integer(),
-%%   <<"targetValue">> => float()
-%% }
--type target_tracking_scaling_policy_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_request() :: #{
-%%   <<"keyspaceName">> := string(),
-%%   <<"tableName">> := string()
-%% }
--type get_table_request() :: #{binary() => any()}.
+-type create_keyspace_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_table_request() :: #{
@@ -246,6 +202,120 @@
 %%   <<"warmThroughputSpecification">> => warm_throughput_specification()
 %% }
 -type create_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_table_response() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type create_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_type_request() :: #{
+%%   <<"fieldDefinitions">> := list(field_definition()),
+%%   <<"keyspaceName">> := string(),
+%%   <<"typeName">> := string()
+%% }
+-type create_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_type_response() :: #{
+%%   <<"keyspaceArn">> => string(),
+%%   <<"typeName">> => string()
+%% }
+-type create_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_keyspace_request() :: #{
+%%   <<"keyspaceName">> := string()
+%% }
+-type delete_keyspace_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_keyspace_response() :: #{
+
+%% }
+-type delete_keyspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_request() :: #{
+%%   <<"keyspaceName">> := string(),
+%%   <<"tableName">> := string()
+%% }
+-type delete_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_table_response() :: #{
+
+%% }
+-type delete_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_type_request() :: #{
+%%   <<"keyspaceName">> := string(),
+%%   <<"typeName">> := string()
+%% }
+-type delete_type_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_type_response() :: #{
+%%   <<"keyspaceArn">> => string(),
+%%   <<"typeName">> => string()
+%% }
+-type delete_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_specification() :: #{
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"type">> => string()
+%% }
+-type encryption_specification() :: #{binary() => any()}.
+
+%% Example:
+%% field_definition() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type field_definition() :: #{binary() => any()}.
+
+%% Example:
+%% get_keyspace_request() :: #{
+%%   <<"keyspaceName">> := string()
+%% }
+-type get_keyspace_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_keyspace_response() :: #{
+%%   <<"keyspaceName">> := string(),
+%%   <<"replicationGroupStatuses">> => list(replication_group_status()),
+%%   <<"replicationRegions">> => list(string()),
+%%   <<"replicationStrategy">> := string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type get_keyspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_auto_scaling_settings_request() :: #{
+%%   <<"keyspaceName">> := string(),
+%%   <<"tableName">> := string()
+%% }
+-type get_table_auto_scaling_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_auto_scaling_settings_response() :: #{
+%%   <<"autoScalingSpecification">> => auto_scaling_specification(),
+%%   <<"keyspaceName">> => string(),
+%%   <<"replicaSpecifications">> => list(replica_auto_scaling_specification()),
+%%   <<"resourceArn">> => string(),
+%%   <<"tableName">> => string()
+%% }
+-type get_table_auto_scaling_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_request() :: #{
+%%   <<"keyspaceName">> := string(),
+%%   <<"tableName">> := string()
+%% }
+-type get_table_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_table_response() :: #{
@@ -270,62 +340,11 @@
 -type get_table_response() :: #{binary() => any()}.
 
 %% Example:
-%% auto_scaling_policy() :: #{
-%%   <<"targetTrackingScalingPolicyConfiguration">> => target_tracking_scaling_policy_configuration()
-%% }
--type auto_scaling_policy() :: #{binary() => any()}.
-
-%% Example:
-%% client_side_timestamps() :: #{
-%%   <<"status">> => string()
-%% }
--type client_side_timestamps() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_type_request() :: #{
-%%   <<"fieldDefinitions">> := list(field_definition()),
+%% get_type_request() :: #{
 %%   <<"keyspaceName">> := string(),
 %%   <<"typeName">> := string()
 %% }
--type create_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_specification() :: #{
-%%   <<"readCapacityUnits">> => float(),
-%%   <<"throughputMode">> => string(),
-%%   <<"writeCapacityUnits">> => float()
-%% }
--type capacity_specification() :: #{binary() => any()}.
-
-%% Example:
-%% create_keyspace_request() :: #{
-%%   <<"keyspaceName">> := string(),
-%%   <<"replicationSpecification">> => replication_specification(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_keyspace_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_keyspace_request() :: #{
-%%   <<"keyspaceName">> := string()
-%% }
--type delete_keyspace_request() :: #{binary() => any()}.
-
-%% Example:
-%% auto_scaling_settings() :: #{
-%%   <<"autoScalingDisabled">> => boolean(),
-%%   <<"maximumUnits">> => float(),
-%%   <<"minimumUnits">> => float(),
-%%   <<"scalingPolicy">> => auto_scaling_policy()
-%% }
--type auto_scaling_settings() :: #{binary() => any()}.
+-type get_type_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_type_response() :: #{
@@ -342,17 +361,41 @@
 -type get_type_response() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
+%% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
+%% keyspace_summary() :: #{
+%%   <<"keyspaceName">> => string(),
+%%   <<"replicationRegions">> => list(string()),
+%%   <<"replicationStrategy">> => string(),
 %%   <<"resourceArn">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type keyspace_summary() :: #{binary() => any()}.
+
+%% Example:
+%% list_keyspaces_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_keyspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_keyspaces_response() :: #{
+%%   <<"keyspaces">> := list(keyspace_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_keyspaces_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tables_request() :: #{
+%%   <<"keyspaceName">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_tables_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_tables_response() :: #{
@@ -362,56 +405,12 @@
 -type list_tables_response() :: #{binary() => any()}.
 
 %% Example:
-%% auto_scaling_specification() :: #{
-%%   <<"readCapacityAutoScaling">> => auto_scaling_settings(),
-%%   <<"writeCapacityAutoScaling">> => auto_scaling_settings()
-%% }
--type auto_scaling_specification() :: #{binary() => any()}.
-
-%% Example:
-%% comment() :: #{
-%%   <<"message">> => [string()]
-%% }
--type comment() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% create_table_response() :: #{
+%% list_tags_for_resource_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
 %%   <<"resourceArn">> := string()
 %% }
--type create_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% point_in_time_recovery() :: #{
-%%   <<"status">> => string()
-%% }
--type point_in_time_recovery() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% field_definition() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type field_definition() :: #{binary() => any()}.
-
-%% Example:
-%% create_type_response() :: #{
-%%   <<"keyspaceArn">> => string(),
-%%   <<"typeName">> => string()
-%% }
--type create_type_response() :: #{binary() => any()}.
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -421,10 +420,53 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_keyspace_response() :: #{
-
+%% list_types_request() :: #{
+%%   <<"keyspaceName">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type delete_keyspace_response() :: #{binary() => any()}.
+-type list_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_types_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"types">> => list(string())
+%% }
+-type list_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% partition_key() :: #{
+%%   <<"name">> => string()
+%% }
+-type partition_key() :: #{binary() => any()}.
+
+%% Example:
+%% point_in_time_recovery() :: #{
+%%   <<"status">> => string()
+%% }
+-type point_in_time_recovery() :: #{binary() => any()}.
+
+%% Example:
+%% point_in_time_recovery_summary() :: #{
+%%   <<"earliestRestorableTimestamp">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type point_in_time_recovery_summary() :: #{binary() => any()}.
+
+%% Example:
+%% replica_auto_scaling_specification() :: #{
+%%   <<"autoScalingSpecification">> => auto_scaling_specification(),
+%%   <<"region">> => string()
+%% }
+-type replica_auto_scaling_specification() :: #{binary() => any()}.
+
+%% Example:
+%% replica_specification() :: #{
+%%   <<"readCapacityAutoScaling">> => auto_scaling_settings(),
+%%   <<"readCapacityUnits">> => float(),
+%%   <<"region">> => string()
+%% }
+-type replica_specification() :: #{binary() => any()}.
 
 %% Example:
 %% replica_specification_summary() :: #{
@@ -436,65 +478,26 @@
 -type replica_specification_summary() :: #{binary() => any()}.
 
 %% Example:
-%% get_table_auto_scaling_settings_request() :: #{
-%%   <<"keyspaceName">> := string(),
-%%   <<"tableName">> := string()
+%% replication_group_status() :: #{
+%%   <<"keyspaceStatus">> => string(),
+%%   <<"region">> => string(),
+%%   <<"tablesReplicationProgress">> => string()
 %% }
--type get_table_auto_scaling_settings_request() :: #{binary() => any()}.
+-type replication_group_status() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
+%% replication_specification() :: #{
+%%   <<"regionList">> => list(string()),
+%%   <<"replicationStrategy">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type replication_specification() :: #{binary() => any()}.
 
 %% Example:
-%% list_keyspaces_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceArn">> => string()
 %% }
--type list_keyspaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% point_in_time_recovery_summary() :: #{
-%%   <<"earliestRestorableTimestamp">> => non_neg_integer(),
-%%   <<"status">> => string()
-%% }
--type point_in_time_recovery_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_table_response() :: #{
-
-%% }
--type delete_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_specification_summary() :: #{
-%%   <<"lastUpdateToPayPerRequestTimestamp">> => non_neg_integer(),
-%%   <<"readCapacityUnits">> => float(),
-%%   <<"throughputMode">> => string(),
-%%   <<"writeCapacityUnits">> => float()
-%% }
--type capacity_specification_summary() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% clustering_key() :: #{
-%%   <<"name">> => string(),
-%%   <<"orderBy">> => string()
-%% }
--type clustering_key() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% restore_table_request() :: #{
@@ -513,24 +516,87 @@
 -type restore_table_request() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception() :: #{
+%% restore_table_response() :: #{
+%%   <<"restoredTableARN">> := string()
+%% }
+-type restore_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% schema_definition() :: #{
+%%   <<"allColumns">> => list(column_definition()),
+%%   <<"clusteringKeys">> => list(clustering_key()),
+%%   <<"partitionKeys">> => list(partition_key()),
+%%   <<"staticColumns">> => list(static_column())
+%% }
+-type schema_definition() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceArn">> := string()
+%% static_column() :: #{
+%%   <<"name">> => string()
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type static_column() :: #{binary() => any()}.
 
 %% Example:
-%% get_keyspace_request() :: #{
-%%   <<"keyspaceName">> := string()
+%% table_summary() :: #{
+%%   <<"keyspaceName">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"tableName">> => string()
 %% }
--type get_keyspace_request() :: #{binary() => any()}.
+-type table_summary() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_scaling_policy_configuration() :: #{
+%%   <<"disableScaleIn">> => boolean(),
+%%   <<"scaleInCooldown">> => integer(),
+%%   <<"scaleOutCooldown">> => integer(),
+%%   <<"targetValue">> => float()
+%% }
+-type target_tracking_scaling_policy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% time_to_live() :: #{
+%%   <<"status">> => string()
+%% }
+-type time_to_live() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_keyspace_request() :: #{
@@ -541,65 +607,28 @@
 -type update_keyspace_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_keyspace_response() :: #{
+%% update_keyspace_response() :: #{
+%%   <<"resourceArn">> => string()
+%% }
+-type update_keyspace_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_table_request() :: #{
+%%   <<"addColumns">> => list(column_definition()),
+%%   <<"autoScalingSpecification">> => auto_scaling_specification(),
+%%   <<"capacitySpecification">> => capacity_specification(),
+%%   <<"cdcSpecification">> => cdc_specification(),
+%%   <<"clientSideTimestamps">> => client_side_timestamps(),
+%%   <<"defaultTimeToLive">> => integer(),
+%%   <<"encryptionSpecification">> => encryption_specification(),
 %%   <<"keyspaceName">> := string(),
-%%   <<"replicationGroupStatuses">> => list(replication_group_status()),
-%%   <<"replicationRegions">> => list(string()),
-%%   <<"replicationStrategy">> := string(),
-%%   <<"resourceArn">> := string()
+%%   <<"pointInTimeRecovery">> => point_in_time_recovery(),
+%%   <<"replicaSpecifications">> => list(replica_specification()),
+%%   <<"tableName">> := string(),
+%%   <<"ttl">> => time_to_live(),
+%%   <<"warmThroughputSpecification">> => warm_throughput_specification()
 %% }
--type get_keyspace_response() :: #{binary() => any()}.
-
-%% Example:
-%% replica_auto_scaling_specification() :: #{
-%%   <<"autoScalingSpecification">> => auto_scaling_specification(),
-%%   <<"region">> => string()
-%% }
--type replica_auto_scaling_specification() :: #{binary() => any()}.
-
-%% Example:
-%% replication_group_status() :: #{
-%%   <<"keyspaceStatus">> => string(),
-%%   <<"region">> => string(),
-%%   <<"tablesReplicationProgress">> => string()
-%% }
--type replication_group_status() :: #{binary() => any()}.
-
-%% Example:
-%% restore_table_response() :: #{
-%%   <<"restoredTableARN">> := string()
-%% }
--type restore_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% warm_throughput_specification() :: #{
-%%   <<"readUnitsPerSecond">> => [float()],
-%%   <<"writeUnitsPerSecond">> => [float()]
-%% }
--type warm_throughput_specification() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_auto_scaling_settings_response() :: #{
-%%   <<"autoScalingSpecification">> => auto_scaling_specification(),
-%%   <<"keyspaceName">> => string(),
-%%   <<"replicaSpecifications">> => list(replica_auto_scaling_specification()),
-%%   <<"resourceArn">> => string(),
-%%   <<"tableName">> => string()
-%% }
--type get_table_auto_scaling_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% time_to_live() :: #{
-%%   <<"status">> => string()
-%% }
--type time_to_live() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_specification() :: #{
-%%   <<"kmsKeyIdentifier">> => string(),
-%%   <<"type">> => string()
-%% }
--type encryption_specification() :: #{binary() => any()}.
+-type update_table_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_table_response() :: #{
@@ -608,46 +637,17 @@
 -type update_table_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_types_request() :: #{
-%%   <<"keyspaceName">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type list_types_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% static_column() :: #{
-%%   <<"name">> => string()
+%% warm_throughput_specification() :: #{
+%%   <<"readUnitsPerSecond">> => [float()],
+%%   <<"writeUnitsPerSecond">> => [float()]
 %% }
--type static_column() :: #{binary() => any()}.
-
-%% Example:
-%% cdc_specification_summary() :: #{
-%%   <<"status">> => string(),
-%%   <<"viewType">> => string()
-%% }
--type cdc_specification_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_keyspace_response() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type create_keyspace_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tables_request() :: #{
-%%   <<"keyspaceName">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_tables_request() :: #{binary() => any()}.
-
-%% Example:
-%% column_definition() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type column_definition() :: #{binary() => any()}.
+-type warm_throughput_specification() :: #{binary() => any()}.
 
 %% Example:
 %% warm_throughput_specification_summary() :: #{
@@ -659,146 +659,146 @@
 
 -type create_keyspace_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_table_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_type_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_keyspace_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_table_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_type_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_keyspace_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_table_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_table_auto_scaling_settings_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_type_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_keyspaces_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tables_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_types_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type restore_table_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_keyspace_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_table_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

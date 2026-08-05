@@ -61,220 +61,18 @@
 
 
 %% Example:
-%% list_application_states_request() :: #{
-%%   <<"ApplicationIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_states_request() :: #{binary() => any()}.
-
-%% Example:
-%% task() :: #{
-%%   <<"ProgressPercent">> => integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetail">> => string()
-%% }
--type task() :: #{binary() => any()}.
-
-%% Example:
-%% resource_attribute() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type resource_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% list_source_resources_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"MigrationTaskName">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProgressUpdateStream">> := string()
-%% }
--type list_source_resources_request() :: #{binary() => any()}.
-
-%% Example:
-%% notify_application_state_request() :: #{
-%%   <<"ApplicationId">> := string(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"Status">> := list(any()),
-%%   <<"UpdateDateTime">> => non_neg_integer()
-%% }
--type notify_application_state_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_migration_tasks_result() :: #{
-%%   <<"MigrationTaskSummaryList">> => list(migration_task_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_migration_tasks_result() :: #{binary() => any()}.
-
-%% Example:
-%% notify_migration_task_state_result() :: #{
-
-%% }
--type notify_migration_task_state_result() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_discovered_resource_result() :: #{
-
-%% }
--type disassociate_discovered_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_attributes_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"MigrationTaskName">> := string(),
-%%   <<"ProgressUpdateStream">> := string(),
-%%   <<"ResourceAttributeList">> := list(resource_attribute())
-%% }
--type put_resource_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_progress_update_streams_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProgressUpdateStreamSummaryList">> => list(progress_update_stream_summary())
-%% }
--type list_progress_update_streams_result() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_attributes_result() :: #{
-
-%% }
--type put_resource_attributes_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_progress_update_stream_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"ProgressUpdateStreamName">> := string()
-%% }
--type delete_progress_update_stream_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_created_artifact_result() :: #{
-
-%% }
--type disassociate_created_artifact_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_source_resources_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SourceResourceList">> => list(source_resource())
-%% }
--type list_source_resources_result() :: #{binary() => any()}.
-
-%% Example:
-%% associate_discovered_resource_request() :: #{
-%%   <<"DiscoveredResource">> := discovered_resource(),
-%%   <<"DryRun">> => boolean(),
-%%   <<"MigrationTaskName">> := string(),
-%%   <<"ProgressUpdateStream">> := string()
-%% }
--type associate_discovered_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% unauthorized_operation() :: #{
+%% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type unauthorized_operation() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_progress_update_stream_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"ProgressUpdateStreamName">> := string()
+%% application_state() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ApplicationStatus">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer()
 %% }
--type create_progress_update_stream_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_progress_update_stream_result() :: #{
-
-%% }
--type delete_progress_update_stream_result() :: #{binary() => any()}.
-
-%% Example:
-%% dry_run_operation() :: #{
-%%   <<"Message">> => string()
-%% }
--type dry_run_operation() :: #{binary() => any()}.
-
-%% Example:
-%% list_application_states_result() :: #{
-%%   <<"ApplicationStateList">> => list(application_state()),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_states_result() :: #{binary() => any()}.
-
-%% Example:
-%% source_resource() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"StatusDetail">> => string()
-%% }
--type source_resource() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% import_migration_task_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"MigrationTaskName">> := string(),
-%%   <<"ProgressUpdateStream">> := string()
-%% }
--type import_migration_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% created_artifact() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
-%% }
--type created_artifact() :: #{binary() => any()}.
-
-%% Example:
-%% associate_source_resource_request() :: #{
-%%   <<"DryRun">> => boolean(),
-%%   <<"MigrationTaskName">> := string(),
-%%   <<"ProgressUpdateStream">> := string(),
-%%   <<"SourceResource">> := source_resource()
-%% }
--type associate_source_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_discovered_resources_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"MigrationTaskName">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProgressUpdateStream">> := string()
-%% }
--type list_discovered_resources_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_progress_update_streams_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_progress_update_streams_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_created_artifacts_result() :: #{
-%%   <<"CreatedArtifactList">> => list(created_artifact()),
-%%   <<"NextToken">> => string()
-%% }
--type list_created_artifacts_result() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_input_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-%% Example:
-%% progress_update_stream_summary() :: #{
-%%   <<"ProgressUpdateStreamName">> => string()
-%% }
--type progress_update_stream_summary() :: #{binary() => any()}.
+-type application_state() :: #{binary() => any()}.
 
 %% Example:
 %% associate_created_artifact_request() :: #{
@@ -286,43 +84,99 @@
 -type associate_created_artifact_request() :: #{binary() => any()}.
 
 %% Example:
-%% import_migration_task_result() :: #{
+%% associate_created_artifact_result() :: #{
 
 %% }
--type import_migration_task_result() :: #{binary() => any()}.
+-type associate_created_artifact_result() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_discovered_resource_request() :: #{
-%%   <<"ConfigurationId">> := string(),
+%% associate_discovered_resource_request() :: #{
+%%   <<"DiscoveredResource">> := discovered_resource(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"MigrationTaskName">> := string(),
 %%   <<"ProgressUpdateStream">> := string()
 %% }
--type disassociate_discovered_resource_request() :: #{binary() => any()}.
+-type associate_discovered_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Message">> => string()
+%% associate_discovered_resource_result() :: #{
+
 %% }
--type service_unavailable_exception() :: #{binary() => any()}.
+-type associate_discovered_resource_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_migration_task_updates_result() :: #{
-%%   <<"MigrationTaskUpdateList">> => list(migration_task_update()),
-%%   <<"NextToken">> => string()
-%% }
--type list_migration_task_updates_result() :: #{binary() => any()}.
-
-%% Example:
-%% notify_migration_task_state_request() :: #{
+%% associate_source_resource_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"MigrationTaskName">> := string(),
-%%   <<"NextUpdateSeconds">> := integer(),
 %%   <<"ProgressUpdateStream">> := string(),
-%%   <<"Task">> := task(),
-%%   <<"UpdateDateTime">> := non_neg_integer()
+%%   <<"SourceResource">> := source_resource()
 %% }
--type notify_migration_task_state_request() :: #{binary() => any()}.
+-type associate_source_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_source_resource_result() :: #{
+
+%% }
+-type associate_source_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_progress_update_stream_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ProgressUpdateStreamName">> := string()
+%% }
+-type create_progress_update_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_progress_update_stream_result() :: #{
+
+%% }
+-type create_progress_update_stream_result() :: #{binary() => any()}.
+
+%% Example:
+%% created_artifact() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type created_artifact() :: #{binary() => any()}.
+
+%% Example:
+%% delete_progress_update_stream_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ProgressUpdateStreamName">> := string()
+%% }
+-type delete_progress_update_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_progress_update_stream_result() :: #{
+
+%% }
+-type delete_progress_update_stream_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_state_request() :: #{
+%%   <<"ApplicationId">> := string()
+%% }
+-type describe_application_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_state_result() :: #{
+%%   <<"ApplicationStatus">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer()
+%% }
+-type describe_application_state_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_migration_task_request() :: #{
+%%   <<"MigrationTaskName">> := string(),
+%%   <<"ProgressUpdateStream">> := string()
+%% }
+-type describe_migration_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_migration_task_result() :: #{
+%%   <<"MigrationTask">> => migration_task()
+%% }
+-type describe_migration_task_result() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_created_artifact_request() :: #{
@@ -334,6 +188,27 @@
 -type disassociate_created_artifact_request() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_created_artifact_result() :: #{
+
+%% }
+-type disassociate_created_artifact_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_discovered_resource_request() :: #{
+%%   <<"ConfigurationId">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"MigrationTaskName">> := string(),
+%%   <<"ProgressUpdateStream">> := string()
+%% }
+-type disassociate_discovered_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_discovered_resource_result() :: #{
+
+%% }
+-type disassociate_discovered_resource_result() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_source_resource_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"MigrationTaskName">> := string(),
@@ -341,6 +216,72 @@
 %%   <<"SourceResourceName">> := string()
 %% }
 -type disassociate_source_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_source_resource_result() :: #{
+
+%% }
+-type disassociate_source_resource_result() :: #{binary() => any()}.
+
+%% Example:
+%% discovered_resource() :: #{
+%%   <<"ConfigurationId">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type discovered_resource() :: #{binary() => any()}.
+
+%% Example:
+%% dry_run_operation() :: #{
+%%   <<"Message">> => string()
+%% }
+-type dry_run_operation() :: #{binary() => any()}.
+
+%% Example:
+%% home_region_not_set_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type home_region_not_set_exception() :: #{binary() => any()}.
+
+%% Example:
+%% import_migration_task_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MigrationTaskName">> := string(),
+%%   <<"ProgressUpdateStream">> := string()
+%% }
+-type import_migration_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_migration_task_result() :: #{
+
+%% }
+-type import_migration_task_result() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_states_request() :: #{
+%%   <<"ApplicationIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_states_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_application_states_result() :: #{
+%%   <<"ApplicationStateList">> => list(application_state()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_states_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_created_artifacts_request() :: #{
@@ -352,11 +293,27 @@
 -type list_created_artifacts_request() :: #{binary() => any()}.
 
 %% Example:
-%% discovered_resource() :: #{
-%%   <<"ConfigurationId">> => string(),
-%%   <<"Description">> => string()
+%% list_created_artifacts_result() :: #{
+%%   <<"CreatedArtifactList">> => list(created_artifact()),
+%%   <<"NextToken">> => string()
 %% }
--type discovered_resource() :: #{binary() => any()}.
+-type list_created_artifacts_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_discovered_resources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MigrationTaskName">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProgressUpdateStream">> := string()
+%% }
+-type list_discovered_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_discovered_resources_result() :: #{
+%%   <<"DiscoveredResourceList">> => list(discovered_resource()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_discovered_resources_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_migration_task_updates_request() :: #{
@@ -368,23 +325,11 @@
 -type list_migration_task_updates_request() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_error() :: #{
-%%   <<"Message">> => string()
+%% list_migration_task_updates_result() :: #{
+%%   <<"MigrationTaskUpdateList">> => list(migration_task_update()),
+%%   <<"NextToken">> => string()
 %% }
--type internal_server_error() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_migration_task_request() :: #{
-%%   <<"MigrationTaskName">> := string(),
-%%   <<"ProgressUpdateStream">> := string()
-%% }
--type describe_migration_task_request() :: #{binary() => any()}.
+-type list_migration_task_updates_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_migration_tasks_request() :: #{
@@ -395,65 +340,51 @@
 -type list_migration_tasks_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_migration_task_result() :: #{
-%%   <<"MigrationTask">> => migration_task()
+%% list_migration_tasks_result() :: #{
+%%   <<"MigrationTaskSummaryList">> => list(migration_task_summary()),
+%%   <<"NextToken">> => string()
 %% }
--type describe_migration_task_result() :: #{binary() => any()}.
+-type list_migration_tasks_result() :: #{binary() => any()}.
 
 %% Example:
-%% policy_error_exception() :: #{
-%%   <<"Message">> => string()
+%% list_progress_update_streams_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type policy_error_exception() :: #{binary() => any()}.
+-type list_progress_update_streams_request() :: #{binary() => any()}.
 
 %% Example:
-%% associate_source_resource_result() :: #{
-
+%% list_progress_update_streams_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProgressUpdateStreamSummaryList">> => list(progress_update_stream_summary())
 %% }
--type associate_source_resource_result() :: #{binary() => any()}.
+-type list_progress_update_streams_result() :: #{binary() => any()}.
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RetryAfterSeconds">> => integer()
+%% list_source_resources_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MigrationTaskName">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProgressUpdateStream">> := string()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type list_source_resources_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_progress_update_stream_result() :: #{
-
+%% list_source_resources_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SourceResourceList">> => list(source_resource())
 %% }
--type create_progress_update_stream_result() :: #{binary() => any()}.
+-type list_source_resources_result() :: #{binary() => any()}.
 
 %% Example:
-%% home_region_not_set_exception() :: #{
-%%   <<"Message">> => string()
+%% migration_task() :: #{
+%%   <<"MigrationTaskName">> => string(),
+%%   <<"ProgressUpdateStream">> => string(),
+%%   <<"ResourceAttributeList">> => list(resource_attribute()),
+%%   <<"Task">> => task(),
+%%   <<"UpdateDateTime">> => non_neg_integer()
 %% }
--type home_region_not_set_exception() :: #{binary() => any()}.
-
-%% Example:
-%% associate_created_artifact_result() :: #{
-
-%% }
--type associate_created_artifact_result() :: #{binary() => any()}.
-
-%% Example:
-%% associate_discovered_resource_result() :: #{
-
-%% }
--type associate_discovered_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% notify_application_state_result() :: #{
-
-%% }
--type notify_application_state_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_state_request() :: #{
-%%   <<"ApplicationId">> := string()
-%% }
--type describe_application_state_request() :: #{binary() => any()}.
+-type migration_task() :: #{binary() => any()}.
 
 %% Example:
 %% migration_task_summary() :: #{
@@ -467,13 +398,6 @@
 -type migration_task_summary() :: #{binary() => any()}.
 
 %% Example:
-%% list_discovered_resources_result() :: #{
-%%   <<"DiscoveredResourceList">> => list(discovered_resource()),
-%%   <<"NextToken">> => string()
-%% }
--type list_discovered_resources_result() :: #{binary() => any()}.
-
-%% Example:
 %% migration_task_update() :: #{
 %%   <<"MigrationTaskState">> => task(),
 %%   <<"UpdateDateTime">> => non_neg_integer(),
@@ -482,245 +406,321 @@
 -type migration_task_update() :: #{binary() => any()}.
 
 %% Example:
-%% application_state() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"ApplicationStatus">> => list(any()),
-%%   <<"LastUpdatedTime">> => non_neg_integer()
-%% }
--type application_state() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_source_resource_result() :: #{
-
-%% }
--type disassociate_source_resource_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_state_result() :: #{
-%%   <<"ApplicationStatus">> => list(any()),
-%%   <<"LastUpdatedTime">> => non_neg_integer()
-%% }
--type describe_application_state_result() :: #{binary() => any()}.
-
-%% Example:
-%% migration_task() :: #{
-%%   <<"MigrationTaskName">> => string(),
-%%   <<"ProgressUpdateStream">> => string(),
-%%   <<"ResourceAttributeList">> => list(resource_attribute()),
-%%   <<"Task">> => task(),
+%% notify_application_state_request() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Status">> := list(any()),
 %%   <<"UpdateDateTime">> => non_neg_integer()
 %% }
--type migration_task() :: #{binary() => any()}.
+-type notify_application_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% notify_application_state_result() :: #{
+
+%% }
+-type notify_application_state_result() :: #{binary() => any()}.
+
+%% Example:
+%% notify_migration_task_state_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MigrationTaskName">> := string(),
+%%   <<"NextUpdateSeconds">> := integer(),
+%%   <<"ProgressUpdateStream">> := string(),
+%%   <<"Task">> := task(),
+%%   <<"UpdateDateTime">> := non_neg_integer()
+%% }
+-type notify_migration_task_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% notify_migration_task_state_result() :: #{
+
+%% }
+-type notify_migration_task_state_result() :: #{binary() => any()}.
+
+%% Example:
+%% policy_error_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type policy_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% progress_update_stream_summary() :: #{
+%%   <<"ProgressUpdateStreamName">> => string()
+%% }
+-type progress_update_stream_summary() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_attributes_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MigrationTaskName">> := string(),
+%%   <<"ProgressUpdateStream">> := string(),
+%%   <<"ResourceAttributeList">> := list(resource_attribute())
+%% }
+-type put_resource_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_attributes_result() :: #{
+
+%% }
+-type put_resource_attributes_result() :: #{binary() => any()}.
+
+%% Example:
+%% resource_attribute() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type resource_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% source_resource() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"StatusDetail">> => string()
+%% }
+-type source_resource() :: #{binary() => any()}.
+
+%% Example:
+%% task() :: #{
+%%   <<"ProgressPercent">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetail">> => string()
+%% }
+-type task() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RetryAfterSeconds">> => integer()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unauthorized_operation() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_operation() :: #{binary() => any()}.
 
 -type associate_created_artifact_errors() ::
-    home_region_not_set_exception() | 
+    unauthorized_operation() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 -type associate_discovered_resource_errors() ::
-    home_region_not_set_exception() | 
+    unauthorized_operation() | 
     throttling_exception() | 
-    policy_error_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    policy_error_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 -type associate_source_resource_errors() ::
+    unauthorized_operation() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 -type create_progress_update_stream_errors() ::
-    home_region_not_set_exception() | 
+    unauthorized_operation() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
     invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 -type delete_progress_update_stream_errors() ::
-    home_region_not_set_exception() | 
+    unauthorized_operation() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 -type describe_application_state_errors() ::
-    home_region_not_set_exception() | 
     throttling_exception() | 
-    policy_error_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    policy_error_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_error() | 
+    home_region_not_set_exception() | 
+    access_denied_exception().
 
 -type describe_migration_task_errors() ::
-    home_region_not_set_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_error() | 
+    home_region_not_set_exception() | 
+    access_denied_exception().
 
 -type disassociate_created_artifact_errors() ::
-    home_region_not_set_exception() | 
+    unauthorized_operation() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 -type disassociate_discovered_resource_errors() ::
-    home_region_not_set_exception() | 
+    unauthorized_operation() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 -type disassociate_source_resource_errors() ::
+    unauthorized_operation() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 -type import_migration_task_errors() ::
-    home_region_not_set_exception() | 
+    unauthorized_operation() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 -type list_application_states_errors() ::
-    home_region_not_set_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
+    access_denied_exception().
 
 -type list_created_artifacts_errors() ::
-    home_region_not_set_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_error() | 
+    home_region_not_set_exception() | 
+    access_denied_exception().
 
 -type list_discovered_resources_errors() ::
-    home_region_not_set_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_error() | 
+    home_region_not_set_exception() | 
+    access_denied_exception().
 
 -type list_migration_task_updates_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_error() | 
+    access_denied_exception().
 
 -type list_migration_tasks_errors() ::
-    home_region_not_set_exception() | 
     throttling_exception() | 
-    policy_error_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    policy_error_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_error() | 
+    home_region_not_set_exception() | 
+    access_denied_exception().
 
 -type list_progress_update_streams_errors() ::
-    home_region_not_set_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception().
+    invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
+    access_denied_exception().
 
 -type list_source_resources_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    resource_not_found_exception().
+    internal_server_error() | 
+    access_denied_exception().
 
 -type notify_application_state_errors() ::
-    home_region_not_set_exception() | 
+    unauthorized_operation() | 
     throttling_exception() | 
-    policy_error_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    policy_error_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 -type notify_migration_task_state_errors() ::
-    home_region_not_set_exception() | 
+    unauthorized_operation() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 -type put_resource_attributes_errors() ::
-    home_region_not_set_exception() | 
+    unauthorized_operation() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_error() | 
     service_unavailable_exception() | 
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
+    internal_server_error() | 
+    home_region_not_set_exception() | 
     dry_run_operation() | 
-    unauthorized_operation().
+    access_denied_exception().
 
 %%====================================================================
 %% API

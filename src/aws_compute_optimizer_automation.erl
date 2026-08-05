@@ -67,6 +67,36 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% account_info() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
+%%   <<"organizationRuleMode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type account_info() :: #{binary() => any()}.
+
+%% Example:
+%% associate_accounts_request() :: #{
+%%   <<"accountIds">> := list(string()),
+%%   <<"clientToken">> => string()
+%% }
+-type associate_accounts_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_accounts_response() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"errors">> => list([string()]())
+%% }
+-type associate_accounts_response() :: #{binary() => any()}.
+
+%% Example:
 %% automation_event() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"completedTimestamp">> => [non_neg_integer()],
@@ -87,24 +117,141 @@
 -type automation_event() :: #{binary() => any()}.
 
 %% Example:
-%% recommended_action() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"currentResourceDetails">> => list(),
-%%   <<"currentResourceSummary">> => [string()],
-%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
-%%   <<"lookBackPeriodInDays">> => [integer()],
-%%   <<"recommendedActionId">> => string(),
-%%   <<"recommendedActionType">> => list(any()),
-%%   <<"recommendedResourceDetails">> => list(),
-%%   <<"recommendedResourceSummary">> => [string()],
-%%   <<"region">> => [string()],
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceTags">> => list(tag()),
-%%   <<"resourceType">> => list(any()),
-%%   <<"restartNeeded">> => [boolean()]
+%% automation_event_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type recommended_action() :: #{binary() => any()}.
+-type automation_event_filter() :: #{binary() => any()}.
+
+%% Example:
+%% automation_event_step() :: #{
+%%   <<"completedTimestamp">> => [non_neg_integer()],
+%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
+%%   <<"eventId">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"startTimestamp">> => [non_neg_integer()],
+%%   <<"stepId">> => string(),
+%%   <<"stepStatus">> => list(any()),
+%%   <<"stepType">> => list(any())
+%% }
+-type automation_event_step() :: #{binary() => any()}.
+
+%% Example:
+%% automation_event_summary() :: #{
+%%   <<"dimensions">> => list(summary_dimension()),
+%%   <<"key">> => [string()],
+%%   <<"timePeriod">> => time_period(),
+%%   <<"total">> => summary_totals()
+%% }
+-type automation_event_summary() :: #{binary() => any()}.
+
+%% Example:
+%% automation_rule() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"createdTimestamp">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"organizationConfiguration">> => organization_configuration(),
+%%   <<"priority">> => [string()],
+%%   <<"recommendedActionTypes">> => list(list(any())()),
+%%   <<"ruleArn">> => string(),
+%%   <<"ruleId">> => string(),
+%%   <<"ruleRevision">> => [float()],
+%%   <<"ruleType">> => list(any()),
+%%   <<"schedule">> => schedule(),
+%%   <<"status">> => list(any())
+%% }
+-type automation_rule() :: #{binary() => any()}.
+
+%% Example:
+%% create_automation_rule_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"criteria">> => criteria(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"organizationConfiguration">> => organization_configuration(),
+%%   <<"priority">> => [string()],
+%%   <<"recommendedActionTypes">> := list(list(any())()),
+%%   <<"ruleType">> := list(any()),
+%%   <<"schedule">> := schedule(),
+%%   <<"status">> := list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_automation_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_automation_rule_response() :: #{
+%%   <<"createdTimestamp">> => [non_neg_integer()],
+%%   <<"criteria">> => criteria(),
+%%   <<"description">> => [string()],
+%%   <<"name">> => string(),
+%%   <<"organizationConfiguration">> => organization_configuration(),
+%%   <<"priority">> => [string()],
+%%   <<"recommendedActionTypes">> => list(list(any())()),
+%%   <<"ruleArn">> => string(),
+%%   <<"ruleId">> => string(),
+%%   <<"ruleRevision">> => [float()],
+%%   <<"ruleType">> => list(any()),
+%%   <<"schedule">> => schedule(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_automation_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% criteria() :: #{
+%%   <<"ebsVolumeSizeInGib">> => list(integer_criteria_condition()),
+%%   <<"ebsVolumeType">> => list(string_criteria_condition()),
+%%   <<"estimatedMonthlySavings">> => list(double_criteria_condition()),
+%%   <<"lookBackPeriodInDays">> => list(integer_criteria_condition()),
+%%   <<"region">> => list(string_criteria_condition()),
+%%   <<"resourceArn">> => list(string_criteria_condition()),
+%%   <<"resourceTag">> => list(resource_tags_criteria_condition()),
+%%   <<"restartNeeded">> => list(string_criteria_condition())
+%% }
+-type criteria() :: #{binary() => any()}.
+
+%% Example:
+%% delete_automation_rule_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"ruleArn">> := string(),
+%%   <<"ruleRevision">> := [float()]
+%% }
+-type delete_automation_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_automation_rule_response() :: #{
+
+%% }
+-type delete_automation_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_accounts_request() :: #{
+%%   <<"accountIds">> := list(string()),
+%%   <<"clientToken">> => string()
+%% }
+-type disassociate_accounts_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_accounts_response() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"errors">> => list([string()]())
+%% }
+-type disassociate_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% double_criteria_condition() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"values">> => list([float()]())
+%% }
+-type double_criteria_condition() :: #{binary() => any()}.
+
+%% Example:
+%% ebs_volume() :: #{
+%%   <<"configuration">> => ebs_volume_configuration()
+%% }
+-type ebs_volume() :: #{binary() => any()}.
 
 %% Example:
 %% ebs_volume_configuration() :: #{
@@ -116,86 +263,20 @@
 -type ebs_volume_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% summary_dimension() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => [string()]
+%% estimated_monthly_savings() :: #{
+%%   <<"afterDiscountSavings">> => [float()],
+%%   <<"beforeDiscountSavings">> => [float()],
+%%   <<"currency">> => [string()],
+%%   <<"savingsEstimationMode">> => list(any())
 %% }
--type summary_dimension() :: #{binary() => any()}.
+-type estimated_monthly_savings() :: #{binary() => any()}.
 
 %% Example:
-%% list_recommended_actions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"recommendedActions">> => list(recommended_action())
+%% filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type list_recommended_actions_response() :: #{binary() => any()}.
-
-%% Example:
-%% rule_preview_total() :: #{
-%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
-%%   <<"recommendedActionCount">> => [integer()]
-%% }
--type rule_preview_total() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"resourceArn">> := string(),
-%%   <<"ruleRevision">> := [float()],
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_accounts_response() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"errors">> => list([string()]())
-%% }
--type associate_accounts_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_automation_rule_preview_summaries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"previewResultSummaries">> => list(preview_result_summary())
-%% }
--type list_automation_rule_preview_summaries_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_automation_rule_preview_summaries_request() :: #{
-%%   <<"criteria">> => criteria(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"organizationScope">> => organization_scope(),
-%%   <<"recommendedActionTypes">> := list(list(any())()),
-%%   <<"ruleType">> := list(any())
-%% }
--type list_automation_rule_preview_summaries_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_automation_event_steps_request() :: #{
-%%   <<"eventId">> := string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_automation_event_steps_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% recommended_action_total() :: #{
-%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
-%%   <<"recommendedActionCount">> => [integer()]
-%% }
--type recommended_action_total() :: #{binary() => any()}.
-
-%% Example:
-%% not_management_account_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type not_management_account_exception() :: #{binary() => any()}.
+-type filter() :: #{binary() => any()}.
 
 %% Example:
 %% forbidden_exception() :: #{
@@ -204,63 +285,36 @@
 -type forbidden_exception() :: #{binary() => any()}.
 
 %% Example:
-%% organization_configuration() :: #{
-%%   <<"accountIds">> => list(string()),
-%%   <<"ruleApplyOrder">> => list(any())
+%% get_automation_event_request() :: #{
+%%   <<"eventId">> := string()
 %% }
--type organization_configuration() :: #{binary() => any()}.
+-type get_automation_event_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_automation_rule_preview_request() :: #{
-%%   <<"criteria">> => criteria(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"organizationScope">> => organization_scope(),
-%%   <<"recommendedActionTypes">> := list(list(any())()),
-%%   <<"ruleType">> := list(any())
-%% }
--type list_automation_rule_preview_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_automation_event_response() :: #{
+%% get_automation_event_response() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"completedTimestamp">> => [non_neg_integer()],
+%%   <<"createdTimestamp">> => [non_neg_integer()],
+%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
+%%   <<"eventDescription">> => [string()],
 %%   <<"eventId">> => string(),
 %%   <<"eventStatus">> => list(any()),
-%%   <<"recommendedActionId">> => string()
+%%   <<"eventStatusReason">> => [string()],
+%%   <<"eventType">> => list(any()),
+%%   <<"recommendedActionId">> => string(),
+%%   <<"region">> => [string()],
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"ruleId">> => string()
 %% }
--type start_automation_event_response() :: #{binary() => any()}.
+-type get_automation_event_response() :: #{binary() => any()}.
 
 %% Example:
-%% account_info() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
-%%   <<"organizationRuleMode">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()]
+%% get_automation_rule_request() :: #{
+%%   <<"ruleArn">> := string()
 %% }
--type account_info() :: #{binary() => any()}.
-
-%% Example:
-%% string_criteria_condition() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type string_criteria_condition() :: #{binary() => any()}.
-
-%% Example:
-%% preview_result_summary() :: #{
-%%   <<"key">> => [string()],
-%%   <<"total">> => rule_preview_total()
-%% }
--type preview_result_summary() :: #{binary() => any()}.
-
-%% Example:
-%% automation_event_summary() :: #{
-%%   <<"dimensions">> => list(summary_dimension()),
-%%   <<"key">> => [string()],
-%%   <<"timePeriod">> => time_period(),
-%%   <<"total">> => summary_totals()
-%% }
--type automation_event_summary() :: #{binary() => any()}.
+-type get_automation_rule_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_automation_rule_response() :: #{
@@ -284,27 +338,79 @@
 -type get_automation_rule_response() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_accounts_request() :: #{
-%%   <<"accountIds">> := list(string()),
-%%   <<"clientToken">> => string()
+%% get_enrollment_configuration_request() :: #{
+
 %% }
--type disassociate_accounts_request() :: #{binary() => any()}.
+-type get_enrollment_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"resourceArn">> := string(),
-%%   <<"ruleRevision">> := [float()],
-%%   <<"tagKeys">> := list([string()]())
+%% get_enrollment_configuration_response() :: #{
+%%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
+%%   <<"organizationRuleMode">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type get_enrollment_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% time_period() :: #{
-%%   <<"endTimeExclusive">> => [non_neg_integer()],
-%%   <<"startTimeInclusive">> => [non_neg_integer()]
+%% idempotency_token_in_use_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type time_period() :: #{binary() => any()}.
+-type idempotency_token_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% idempotent_parameter_mismatch_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
+
+%% Example:
+%% integer_criteria_condition() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"values">> => list([integer()]())
+%% }
+-type integer_criteria_condition() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_accounts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_response() :: #{
+%%   <<"accounts">> => list(account_info()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_automation_event_steps_request() :: #{
+%%   <<"eventId">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_automation_event_steps_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_automation_event_steps_response() :: #{
+%%   <<"automationEventSteps">> => list(automation_event_step()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automation_event_steps_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_automation_event_summaries_request() :: #{
@@ -317,42 +423,127 @@
 -type list_automation_event_summaries_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_automation_rule_response() :: #{
-%%   <<"createdTimestamp">> => [non_neg_integer()],
+%% list_automation_event_summaries_response() :: #{
+%%   <<"automationEventSummaries">> => list(automation_event_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automation_event_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_automation_events_request() :: #{
+%%   <<"endTimeExclusive">> => [non_neg_integer()],
+%%   <<"filters">> => list(automation_event_filter()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"startTimeInclusive">> => [non_neg_integer()]
+%% }
+-type list_automation_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_automation_events_response() :: #{
+%%   <<"automationEvents">> => list(automation_event()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automation_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_automation_rule_preview_request() :: #{
 %%   <<"criteria">> => criteria(),
-%%   <<"description">> => [string()],
-%%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"organizationConfiguration">> => organization_configuration(),
-%%   <<"priority">> => [string()],
-%%   <<"recommendedActionTypes">> => list(list(any())()),
-%%   <<"ruleArn">> => string(),
-%%   <<"ruleRevision">> => [float()],
-%%   <<"ruleType">> => list(any()),
-%%   <<"schedule">> => schedule(),
-%%   <<"status">> => list(any())
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"organizationScope">> => organization_scope(),
+%%   <<"recommendedActionTypes">> := list(list(any())()),
+%%   <<"ruleType">> := list(any())
 %% }
--type update_automation_rule_response() :: #{binary() => any()}.
+-type list_automation_rule_preview_request() :: #{binary() => any()}.
 
 %% Example:
-%% recommended_action_filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
+%% list_automation_rule_preview_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"previewResults">> => list(preview_result())
 %% }
--type recommended_action_filter() :: #{binary() => any()}.
+-type list_automation_rule_preview_response() :: #{binary() => any()}.
 
 %% Example:
-%% rollback_automation_event_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"eventId">> := string()
+%% list_automation_rule_preview_summaries_request() :: #{
+%%   <<"criteria">> => criteria(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"organizationScope">> => organization_scope(),
+%%   <<"recommendedActionTypes">> := list(list(any())()),
+%%   <<"ruleType">> := list(any())
 %% }
--type rollback_automation_event_request() :: #{binary() => any()}.
+-type list_automation_rule_preview_summaries_request() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
+%% list_automation_rule_preview_summaries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"previewResultSummaries">> => list(preview_result_summary())
+%% }
+-type list_automation_rule_preview_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_automation_rules_request() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_automation_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_automation_rules_response() :: #{
+%%   <<"automationRules">> => list(automation_rule()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automation_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_recommended_action_summaries_request() :: #{
+%%   <<"filters">> => list(recommended_action_filter()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_recommended_action_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_recommended_action_summaries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recommendedActionSummaries">> => list(recommended_action_summary())
+%% }
+-type list_recommended_action_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_recommended_actions_request() :: #{
+%%   <<"filters">> => list(recommended_action_filter()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_recommended_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_recommended_actions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recommendedActions">> => list(recommended_action())
+%% }
+-type list_recommended_actions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% not_management_account_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type not_management_account_exception() :: #{binary() => any()}.
 
 %% Example:
 %% opt_in_required_exception() :: #{
@@ -361,37 +552,17 @@
 -type opt_in_required_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_accounts_response() :: #{
-%%   <<"accounts">> => list(account_info()),
-%%   <<"nextToken">> => string()
-%% }
--type list_accounts_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_accounts_response() :: #{
+%% organization_configuration() :: #{
 %%   <<"accountIds">> => list(string()),
-%%   <<"errors">> => list([string()]())
+%%   <<"ruleApplyOrder">> => list(any())
 %% }
--type disassociate_accounts_response() :: #{binary() => any()}.
+-type organization_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% delete_automation_rule_response() :: #{
-
+%% organization_scope() :: #{
+%%   <<"accountIds">> => list(string())
 %% }
--type delete_automation_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% ebs_volume() :: #{
-%%   <<"configuration">> => ebs_volume_configuration()
-%% }
--type ebs_volume() :: #{binary() => any()}.
+-type organization_scope() :: #{binary() => any()}.
 
 %% Example:
 %% preview_result() :: #{
@@ -414,66 +585,193 @@
 -type preview_result() :: #{binary() => any()}.
 
 %% Example:
+%% preview_result_summary() :: #{
+%%   <<"key">> => [string()],
+%%   <<"total">> => rule_preview_total()
+%% }
+-type preview_result_summary() :: #{binary() => any()}.
+
+%% Example:
+%% recommended_action() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"currentResourceDetails">> => list(),
+%%   <<"currentResourceSummary">> => [string()],
+%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
+%%   <<"lookBackPeriodInDays">> => [integer()],
+%%   <<"recommendedActionId">> => string(),
+%%   <<"recommendedActionType">> => list(any()),
+%%   <<"recommendedResourceDetails">> => list(),
+%%   <<"recommendedResourceSummary">> => [string()],
+%%   <<"region">> => [string()],
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceTags">> => list(tag()),
+%%   <<"resourceType">> => list(any()),
+%%   <<"restartNeeded">> => [boolean()]
+%% }
+-type recommended_action() :: #{binary() => any()}.
+
+%% Example:
+%% recommended_action_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type recommended_action_filter() :: #{binary() => any()}.
+
+%% Example:
+%% recommended_action_summary() :: #{
+%%   <<"key">> => [string()],
+%%   <<"total">> => recommended_action_total()
+%% }
+-type recommended_action_summary() :: #{binary() => any()}.
+
+%% Example:
+%% recommended_action_total() :: #{
+%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
+%%   <<"recommendedActionCount">> => [integer()]
+%% }
+-type recommended_action_total() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tags_criteria_condition() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type resource_tags_criteria_condition() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_automation_event_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"eventId">> := string()
+%% }
+-type rollback_automation_event_request() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_automation_event_response() :: #{
+%%   <<"eventId">> => string(),
+%%   <<"eventStatus">> => list(any())
+%% }
+-type rollback_automation_event_response() :: #{binary() => any()}.
+
+%% Example:
+%% rule_preview_total() :: #{
+%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
+%%   <<"recommendedActionCount">> => [integer()]
+%% }
+-type rule_preview_total() :: #{binary() => any()}.
+
+%% Example:
+%% schedule() :: #{
+%%   <<"executionWindowInMinutes">> => [integer()],
+%%   <<"scheduleExpression">> => [string()],
+%%   <<"scheduleExpressionTimezone">> => [string()]
+%% }
+-type schedule() :: #{binary() => any()}.
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% criteria() :: #{
-%%   <<"ebsVolumeSizeInGib">> => list(integer_criteria_condition()),
-%%   <<"ebsVolumeType">> => list(string_criteria_condition()),
-%%   <<"estimatedMonthlySavings">> => list(double_criteria_condition()),
-%%   <<"lookBackPeriodInDays">> => list(integer_criteria_condition()),
-%%   <<"region">> => list(string_criteria_condition()),
-%%   <<"resourceArn">> => list(string_criteria_condition()),
-%%   <<"resourceTag">> => list(resource_tags_criteria_condition()),
-%%   <<"restartNeeded">> => list(string_criteria_condition())
-%% }
--type criteria() :: #{binary() => any()}.
-
-%% Example:
-%% idempotent_parameter_mismatch_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
-
-%% Example:
-%% automation_rule() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"createdTimestamp">> => [non_neg_integer()],
-%%   <<"description">> => [string()],
-%%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"organizationConfiguration">> => organization_configuration(),
-%%   <<"priority">> => [string()],
-%%   <<"recommendedActionTypes">> => list(list(any())()),
-%%   <<"ruleArn">> => string(),
-%%   <<"ruleId">> => string(),
-%%   <<"ruleRevision">> => [float()],
-%%   <<"ruleType">> => list(any()),
-%%   <<"schedule">> => schedule(),
-%%   <<"status">> => list(any())
-%% }
--type automation_rule() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_automation_event_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"recommendedActionId">> := string()
+%% }
+-type start_automation_event_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_automation_event_response() :: #{
+%%   <<"eventId">> => string(),
+%%   <<"eventStatus">> => list(any()),
+%%   <<"recommendedActionId">> => string()
+%% }
+-type start_automation_event_response() :: #{binary() => any()}.
+
+%% Example:
+%% string_criteria_condition() :: #{
+%%   <<"comparison">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type string_criteria_condition() :: #{binary() => any()}.
+
+%% Example:
+%% summary_dimension() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => [string()]
+%% }
+-type summary_dimension() :: #{binary() => any()}.
+
+%% Example:
+%% summary_totals() :: #{
+%%   <<"automationEventCount">> => [integer()],
+%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings()
+%% }
+-type summary_totals() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceArn">> := string(),
+%%   <<"ruleRevision">> := [float()],
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% time_period() :: #{
+%%   <<"endTimeExclusive">> => [non_neg_integer()],
+%%   <<"startTimeInclusive">> => [non_neg_integer()]
+%% }
+-type time_period() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resourceArn">> := string(),
+%%   <<"ruleRevision">> := [float()],
+%%   <<"tagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_automation_rule_request() :: #{
@@ -493,40 +791,22 @@
 -type update_automation_rule_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_automation_rule_request() :: #{
-%%   <<"clientToken">> => string(),
+%% update_automation_rule_response() :: #{
+%%   <<"createdTimestamp">> => [non_neg_integer()],
 %%   <<"criteria">> => criteria(),
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
+%%   <<"description">> => [string()],
+%%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
+%%   <<"name">> => string(),
 %%   <<"organizationConfiguration">> => organization_configuration(),
 %%   <<"priority">> => [string()],
-%%   <<"recommendedActionTypes">> := list(list(any())()),
-%%   <<"ruleType">> := list(any()),
-%%   <<"schedule">> := schedule(),
-%%   <<"status">> := list(any()),
-%%   <<"tags">> => list(tag())
+%%   <<"recommendedActionTypes">> => list(list(any())()),
+%%   <<"ruleArn">> => string(),
+%%   <<"ruleRevision">> => [float()],
+%%   <<"ruleType">> => list(any()),
+%%   <<"schedule">> => schedule(),
+%%   <<"status">> => list(any())
 %% }
--type create_automation_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% idempotency_token_in_use_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type idempotency_token_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% start_automation_event_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"recommendedActionId">> := string()
-%% }
--type start_automation_event_request() :: #{binary() => any()}.
+-type update_automation_rule_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_enrollment_configuration_request() :: #{
@@ -536,141 +816,6 @@
 -type update_enrollment_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_automation_rules_request() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_automation_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_automation_event_request() :: #{
-%%   <<"eventId">> := string()
-%% }
--type get_automation_event_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_enrollment_configuration_response() :: #{
-%%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
-%%   <<"organizationRuleMode">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => [string()]
-%% }
--type get_enrollment_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% estimated_monthly_savings() :: #{
-%%   <<"afterDiscountSavings">> => [float()],
-%%   <<"beforeDiscountSavings">> => [float()],
-%%   <<"currency">> => [string()],
-%%   <<"savingsEstimationMode">> => list(any())
-%% }
--type estimated_monthly_savings() :: #{binary() => any()}.
-
-%% Example:
-%% organization_scope() :: #{
-%%   <<"accountIds">> => list(string())
-%% }
--type organization_scope() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_automation_rule_request() :: #{
-%%   <<"ruleArn">> := string()
-%% }
--type get_automation_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% schedule() :: #{
-%%   <<"executionWindowInMinutes">> => [integer()],
-%%   <<"scheduleExpression">> => [string()],
-%%   <<"scheduleExpressionTimezone">> => [string()]
-%% }
--type schedule() :: #{binary() => any()}.
-
-%% Example:
-%% summary_totals() :: #{
-%%   <<"automationEventCount">> => [integer()],
-%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings()
-%% }
--type summary_totals() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_recommended_action_summaries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"recommendedActionSummaries">> => list(recommended_action_summary())
-%% }
--type list_recommended_action_summaries_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_automation_events_request() :: #{
-%%   <<"endTimeExclusive">> => [non_neg_integer()],
-%%   <<"filters">> => list(automation_event_filter()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"startTimeInclusive">> => [non_neg_integer()]
-%% }
--type list_automation_events_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_automation_event_steps_response() :: #{
-%%   <<"automationEventSteps">> => list(automation_event_step()),
-%%   <<"nextToken">> => string()
-%% }
--type list_automation_event_steps_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% automation_event_filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type automation_event_filter() :: #{binary() => any()}.
-
-%% Example:
-%% rollback_automation_event_response() :: #{
-%%   <<"eventId">> => string(),
-%%   <<"eventStatus">> => list(any())
-%% }
--type rollback_automation_event_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_automation_events_response() :: #{
-%%   <<"automationEvents">> => list(automation_event()),
-%%   <<"nextToken">> => string()
-%% }
--type list_automation_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% double_criteria_condition() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"values">> => list([float()]())
-%% }
--type double_criteria_condition() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
 %% update_enrollment_configuration_response() :: #{
 %%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
 %%   <<"status">> => list(any()),
@@ -678,396 +823,251 @@
 %% }
 -type update_enrollment_configuration_response() :: #{binary() => any()}.
 
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_automation_event_response() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"completedTimestamp">> => [non_neg_integer()],
-%%   <<"createdTimestamp">> => [non_neg_integer()],
-%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
-%%   <<"eventDescription">> => [string()],
-%%   <<"eventId">> => string(),
-%%   <<"eventStatus">> => list(any()),
-%%   <<"eventStatusReason">> => [string()],
-%%   <<"eventType">> => list(any()),
-%%   <<"recommendedActionId">> => string(),
-%%   <<"region">> => [string()],
-%%   <<"resourceArn">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"ruleId">> => string()
-%% }
--type get_automation_event_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_automation_rule_response() :: #{
-%%   <<"createdTimestamp">> => [non_neg_integer()],
-%%   <<"criteria">> => criteria(),
-%%   <<"description">> => [string()],
-%%   <<"name">> => string(),
-%%   <<"organizationConfiguration">> => organization_configuration(),
-%%   <<"priority">> => [string()],
-%%   <<"recommendedActionTypes">> => list(list(any())()),
-%%   <<"ruleArn">> => string(),
-%%   <<"ruleId">> => string(),
-%%   <<"ruleRevision">> => [float()],
-%%   <<"ruleType">> => list(any()),
-%%   <<"schedule">> => schedule(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => list(tag())
-%% }
--type create_automation_rule_response() :: #{binary() => any()}.
-
-%% Example:
-%% resource_tags_criteria_condition() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"key">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type resource_tags_criteria_condition() :: #{binary() => any()}.
-
-%% Example:
-%% delete_automation_rule_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"ruleArn">> := string(),
-%%   <<"ruleRevision">> := [float()]
-%% }
--type delete_automation_rule_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_recommended_action_summaries_request() :: #{
-%%   <<"filters">> => list(recommended_action_filter()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_recommended_action_summaries_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_automation_rule_preview_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"previewResults">> => list(preview_result())
-%% }
--type list_automation_rule_preview_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_recommended_actions_request() :: #{
-%%   <<"filters">> => list(recommended_action_filter()),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_recommended_actions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_accounts_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_accounts_request() :: #{binary() => any()}.
-
-%% Example:
-%% integer_criteria_condition() :: #{
-%%   <<"comparison">> => list(any()),
-%%   <<"values">> => list([integer()]())
-%% }
--type integer_criteria_condition() :: #{binary() => any()}.
-
-%% Example:
-%% associate_accounts_request() :: #{
-%%   <<"accountIds">> := list(string()),
-%%   <<"clientToken">> => string()
-%% }
--type associate_accounts_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_enrollment_configuration_request() :: #{
-
-%% }
--type get_enrollment_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% automation_event_step() :: #{
-%%   <<"completedTimestamp">> => [non_neg_integer()],
-%%   <<"estimatedMonthlySavings">> => estimated_monthly_savings(),
-%%   <<"eventId">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"startTimestamp">> => [non_neg_integer()],
-%%   <<"stepId">> => string(),
-%%   <<"stepStatus">> => list(any()),
-%%   <<"stepType">> => list(any())
-%% }
--type automation_event_step() :: #{binary() => any()}.
-
-%% Example:
-%% list_automation_rules_response() :: #{
-%%   <<"automationRules">> => list(automation_rule()),
-%%   <<"nextToken">> => string()
-%% }
--type list_automation_rules_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_automation_event_summaries_response() :: #{
-%%   <<"automationEventSummaries">> => list(automation_event_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_automation_event_summaries_response() :: #{binary() => any()}.
-
-%% Example:
-%% recommended_action_summary() :: #{
-%%   <<"key">> => [string()],
-%%   <<"total">> => recommended_action_total()
-%% }
--type recommended_action_summary() :: #{binary() => any()}.
-
 -type associate_accounts_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    idempotency_token_in_use_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     opt_in_required_exception() | 
+    not_management_account_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
     forbidden_exception() | 
-    not_management_account_exception().
+    access_denied_exception().
 
 -type create_automation_rule_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    idempotency_token_in_use_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type delete_automation_rule_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    idempotency_token_in_use_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type disassociate_accounts_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    idempotency_token_in_use_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     opt_in_required_exception() | 
+    not_management_account_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
     forbidden_exception() | 
-    not_management_account_exception().
+    access_denied_exception().
 
 -type get_automation_event_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type get_automation_rule_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type get_enrollment_configuration_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type list_accounts_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
+    not_management_account_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
     forbidden_exception() | 
-    not_management_account_exception().
+    access_denied_exception().
 
 -type list_automation_event_steps_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type list_automation_event_summaries_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    forbidden_exception().
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type list_automation_events_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    forbidden_exception().
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type list_automation_rule_preview_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    forbidden_exception().
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type list_automation_rule_preview_summaries_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    forbidden_exception().
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type list_automation_rules_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    forbidden_exception().
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type list_recommended_action_summaries_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    forbidden_exception().
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type list_recommended_actions_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
     opt_in_required_exception() | 
-    forbidden_exception().
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type rollback_automation_event_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    idempotency_token_in_use_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type start_automation_event_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    idempotency_token_in_use_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    idempotency_token_in_use_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    idempotency_token_in_use_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type update_automation_rule_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    idempotency_token_in_use_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
-    forbidden_exception().
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
 
 -type update_enrollment_configuration_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    idempotency_token_in_use_exception() | 
     service_unavailable_exception() | 
-    invalid_parameter_value_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    opt_in_required_exception() | 
     resource_not_found_exception() | 
+    opt_in_required_exception() | 
+    not_management_account_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
     forbidden_exception() | 
-    not_management_account_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -224,257 +224,11 @@
 
 
 %% Example:
-%% create_connect_client_add_in_result() :: #{
-%%   <<"AddInId">> => string()
+%% accept_account_link_invitation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"LinkId">> := string()
 %% }
--type create_connect_client_add_in_result() :: #{binary() => any()}.
-
-%% Example:
-%% association_state_reason() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string()
-%% }
--type association_state_reason() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_modifications_result() :: #{
-%%   <<"AccountModifications">> => list(account_modification()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_account_modifications_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_selfservice_permissions_result() :: #{
-
-%% }
--type modify_selfservice_permissions_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_workspace_bundle_result() :: #{
-
-%% }
--type update_workspace_bundle_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_workspace_change_request())
-%% }
--type start_workspaces_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_workspaces_request() :: #{
-%%   <<"StartWorkspaceRequests">> := list(start_request())
-%% }
--type start_workspaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_account_link_invitation_result() :: #{
-%%   <<"AccountLink">> => account_link()
-%% }
--type delete_account_link_invitation_result() :: #{binary() => any()}.
-
-%% Example:
-%% restore_workspace_result() :: #{
-
-%% }
--type restore_workspace_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_associations_request() :: #{
-%%   <<"AssociatedResourceTypes">> := list(list(any())()),
-%%   <<"ImageId">> := string()
-%% }
--type describe_image_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% modify_account_request() :: #{
-%%   <<"DedicatedTenancyManagementCidrRange">> => string(),
-%%   <<"DedicatedTenancySupport">> => list(any())
-%% }
--type modify_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% modify_workspace_state_request() :: #{
-%%   <<"WorkspaceId">> := string(),
-%%   <<"WorkspaceState">> := list(any())
-%% }
--type modify_workspace_state_request() :: #{binary() => any()}.
-
-%% Example:
-%% register_workspace_directory_result() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type register_workspace_directory_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tags_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type delete_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspaces_request() :: #{
-%%   <<"BundleId">> => string(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"UserName">> => string(),
-%%   <<"WorkspaceIds">> => list(string()),
-%%   <<"WorkspaceName">> => string()
-%% }
--type describe_workspaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_request() :: #{
-
-%% }
--type describe_account_request() :: #{binary() => any()}.
-
-%% Example:
-%% workspace_bundle() :: #{
-%%   <<"BundleId">> => string(),
-%%   <<"BundleType">> => list(any()),
-%%   <<"ComputeType">> => compute_type(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ImageId">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"RootStorage">> => root_storage(),
-%%   <<"State">> => list(any()),
-%%   <<"UserStorage">> => user_storage()
-%% }
--type workspace_bundle() :: #{binary() => any()}.
-
-%% Example:
-%% standby_workspaces_properties() :: #{
-%%   <<"DataReplication">> => list(any()),
-%%   <<"RecoverySnapshotTime">> => non_neg_integer(),
-%%   <<"StandbyWorkspaceId">> => string()
-%% }
--type standby_workspaces_properties() :: #{binary() => any()}.
-
-%% Example:
-%% modification_state() :: #{
-%%   <<"Resource">> => list(any()),
-%%   <<"State">> => list(any())
-%% }
--type modification_state() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connection_alias_permissions_request() :: #{
-%%   <<"AliasId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_connection_alias_permissions_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_directories_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type describe_workspace_directories_filter() :: #{binary() => any()}.
-
-%% Example:
-%% workspace_image() :: #{
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorDetails">> => list(error_details()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ImageId">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"OperatingSystem">> => operating_system(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"RequiredTenancy">> => list(any()),
-%%   <<"State">> => list(any()),
-%%   <<"Updates">> => update_result()
-%% }
--type workspace_image() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_associations_request() :: #{
-%%   <<"AssociatedResourceTypes">> := list(list(any())()),
-%%   <<"WorkspaceId">> := string()
-%% }
--type describe_workspace_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"ResourceId">> => string(),
-%%   <<"message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
-%% modify_workspace_access_properties_result() :: #{
-
-%% }
--type modify_workspace_access_properties_result() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_ip_groups_result() :: #{
-
-%% }
--type disassociate_ip_groups_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workspace_bundle_request() :: #{
-%%   <<"BundleId">> => string()
-%% }
--type delete_workspace_bundle_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_connect_client_add_in_result() :: #{
-
-%% }
--type update_connect_client_add_in_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_client_properties_request() :: #{
-%%   <<"ClientProperties">> := client_properties(),
-%%   <<"ResourceId">> := string()
-%% }
--type modify_client_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_result() :: #{
-%%   <<"Description">> => string(),
-%%   <<"UpdateAvailable">> => boolean()
-%% }
--type update_result() :: #{binary() => any()}.
-
-%% Example:
-%% associate_workspace_application_request() :: #{
-%%   <<"ApplicationId">> := string(),
-%%   <<"WorkspaceId">> := string()
-%% }
--type associate_workspace_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% saml_properties() :: #{
-%%   <<"RelayStateParameterName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UserAccessUrl">> => string()
-%% }
--type saml_properties() :: #{binary() => any()}.
-
-%% Example:
-%% rebuild_workspaces_request() :: #{
-%%   <<"RebuildWorkspaceRequests">> := list(rebuild_request())
-%% }
--type rebuild_workspaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% network_access_configuration() :: #{
-%%   <<"EniId">> => string(),
-%%   <<"EniPrivateIpAddress">> => string()
-%% }
--type network_access_configuration() :: #{binary() => any()}.
+-type accept_account_link_invitation_request() :: #{binary() => any()}.
 
 %% Example:
 %% accept_account_link_invitation_result() :: #{
@@ -483,175 +237,10 @@
 -type accept_account_link_invitation_result() :: #{binary() => any()}.
 
 %% Example:
-%% resource_unavailable_exception() :: #{
-%%   <<"ResourceId">> => string(),
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type resource_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_images_request() :: #{
-%%   <<"ImageIds">> => list(string()),
-%%   <<"ImageType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_workspace_images_request() :: #{binary() => any()}.
-
-%% Example:
-%% copy_workspace_image_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"SourceImageId">> := string(),
-%%   <<"SourceRegion">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type copy_workspace_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_ip_rules_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"UserRules">> := list(string())
-%% }
--type revoke_ip_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_request() :: #{
-%%   <<"WorkspaceId">> => string()
-%% }
--type reboot_request() :: #{binary() => any()}.
-
-%% Example:
-%% reboot_workspaces_request() :: #{
-%%   <<"RebootWorkspaceRequests">> := list(reboot_request())
-%% }
--type reboot_workspaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% failed_create_standby_workspaces_request() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"StandbyWorkspaceRequest">> => standby_workspace()
-%% }
--type failed_create_standby_workspaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connection_aliases_result() :: #{
-%%   <<"ConnectionAliases">> => list(connection_alias()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_connection_aliases_result() :: #{binary() => any()}.
-
-%% Example:
-%% access_endpoint_config() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()),
-%%   <<"InternetFallbackProtocols">> => list(list(any())())
-%% }
--type access_endpoint_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_image_permissions_result() :: #{
-%%   <<"ImageId">> => string(),
-%%   <<"ImagePermissions">> => list(image_permission()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_workspace_image_permissions_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_client_branding_result() :: #{
-
-%% }
--type delete_client_branding_result() :: #{binary() => any()}.
-
-%% Example:
-%% ios_client_branding_attributes() :: #{
-%%   <<"ForgotPasswordLink">> => string(),
-%%   <<"LoginMessage">> => map(),
-%%   <<"Logo2xUrl">> => string(),
-%%   <<"Logo3xUrl">> => string(),
-%%   <<"LogoUrl">> => string(),
-%%   <<"SupportEmail">> => string(),
-%%   <<"SupportLink">> => string()
-%% }
--type ios_client_branding_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% image_resource_association() :: #{
-%%   <<"AssociatedResourceId">> => string(),
-%%   <<"AssociatedResourceType">> => list(any()),
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"ImageId">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => association_state_reason()
-%% }
--type image_resource_association() :: #{binary() => any()}.
-
-%% Example:
-%% operating_system() :: #{
-%%   <<"Type">> => list(any())
-%% }
--type operating_system() :: #{binary() => any()}.
-
-%% Example:
-%% start_workspaces_pool_request() :: #{
-%%   <<"PoolId">> := string()
-%% }
--type start_workspaces_pool_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_associations_request() :: #{
-%%   <<"ApplicationId">> := string(),
-%%   <<"AssociatedResourceTypes">> := list(list(any())()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_application_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_workspace_bundle_request() :: #{
-%%   <<"BundleDescription">> := string(),
-%%   <<"BundleName">> := string(),
-%%   <<"ComputeType">> := compute_type(),
-%%   <<"ImageId">> := string(),
-%%   <<"RootStorage">> => root_storage(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UserStorage">> := user_storage()
-%% }
--type create_workspace_bundle_request() :: #{binary() => any()}.
-
-%% Example:
-%% related_workspace_properties() :: #{
-%%   <<"Region">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"WorkspaceId">> => string()
-%% }
--type related_workspace_properties() :: #{binary() => any()}.
-
-%% Example:
-%% workspace_resource_association() :: #{
-%%   <<"AssociatedResourceId">> => string(),
-%%   <<"AssociatedResourceType">> => list(any()),
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"StateReason">> => association_state_reason(),
-%%   <<"WorkspaceId">> => string()
-%% }
--type workspace_resource_association() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_connection_alias_request() :: #{
-%%   <<"AliasId">> := string()
-%% }
--type disassociate_connection_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% modify_workspace_creation_properties_result() :: #{
-
-%% }
--type modify_workspace_creation_properties_result() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% access_endpoint() :: #{
@@ -661,222 +250,20 @@
 -type access_endpoint() :: #{binary() => any()}.
 
 %% Example:
-%% capacity() :: #{
-%%   <<"DesiredUserSessions">> => integer()
+%% access_endpoint_config() :: #{
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"InternetFallbackProtocols">> => list(list(any())())
 %% }
--type capacity() :: #{binary() => any()}.
+-type access_endpoint_config() :: #{binary() => any()}.
 
 %% Example:
-%% describe_client_branding_result() :: #{
-%%   <<"DeviceTypeAndroid">> => default_client_branding_attributes(),
-%%   <<"DeviceTypeIos">> => ios_client_branding_attributes(),
-%%   <<"DeviceTypeLinux">> => default_client_branding_attributes(),
-%%   <<"DeviceTypeOsx">> => default_client_branding_attributes(),
-%%   <<"DeviceTypeWeb">> => default_client_branding_attributes(),
-%%   <<"DeviceTypeWindows">> => default_client_branding_attributes()
+%% account_link() :: #{
+%%   <<"AccountLinkId">> => string(),
+%%   <<"AccountLinkStatus">> => list(any()),
+%%   <<"SourceAccountId">> => string(),
+%%   <<"TargetAccountId">> => string()
 %% }
--type describe_client_branding_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workspace_image_request() :: #{
-%%   <<"ImageId">> := string()
-%% }
--type delete_workspace_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_available_management_cidr_ranges_request() :: #{
-%%   <<"ManagementCidrRangeConstraint">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_available_management_cidr_ranges_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_account_link_invitation_result() :: #{
-%%   <<"AccountLink">> => account_link()
-%% }
--type create_account_link_invitation_result() :: #{binary() => any()}.
-
-%% Example:
-%% client_properties() :: #{
-%%   <<"LogUploadEnabled">> => list(any()),
-%%   <<"ReconnectEnabled">> => list(any())
-%% }
--type client_properties() :: #{binary() => any()}.
-
-%% Example:
-%% workspace_properties() :: #{
-%%   <<"ComputeTypeName">> => list(any()),
-%%   <<"GlobalAccelerator">> => global_accelerator_for_work_space(),
-%%   <<"OperatingSystemName">> => list(any()),
-%%   <<"Protocols">> => list(list(any())()),
-%%   <<"RootVolumeSizeGib">> => integer(),
-%%   <<"RunningMode">> => list(any()),
-%%   <<"RunningModeAutoStopTimeoutInMinutes">> => integer(),
-%%   <<"UserVolumeSizeGib">> => integer()
-%% }
--type workspace_properties() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_combination_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_combination_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_account_link_invitation_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"TargetAccountId">> := string()
-%% }
--type create_account_link_invitation_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_ip_groups_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"GroupIds">> := list(string())
-%% }
--type associate_ip_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_modifications_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type describe_account_modifications_request() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_workspaces_pool_result() :: #{
-
-%% }
--type terminate_workspaces_pool_result() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_network_configuration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_network_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_account_link_invitation_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"LinkId">> := string()
-%% }
--type delete_account_link_invitation_request() :: #{binary() => any()}.
-
-%% Example:
-%% rebuild_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_workspace_change_request())
-%% }
--type rebuild_workspaces_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_workspace_bundle_result() :: #{
-%%   <<"WorkspaceBundle">> => workspace_bundle()
-%% }
--type create_workspace_bundle_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_account_links_request() :: #{
-%%   <<"LinkStatusFilter">> => list(list(any())()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_account_links_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_workspaces_pool_result() :: #{
-%%   <<"WorkspacesPool">> => workspaces_pool()
-%% }
--type update_workspaces_pool_result() :: #{binary() => any()}.
-
-%% Example:
-%% failed_workspace_change_request() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"WorkspaceId">> => string()
-%% }
--type failed_workspace_change_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_available_management_cidr_ranges_result() :: #{
-%%   <<"ManagementCidrRanges">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_available_management_cidr_ranges_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_certificate_based_auth_properties_result() :: #{
-
-%% }
--type modify_certificate_based_auth_properties_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspaces_pool_sessions_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(workspaces_pool_session())
-%% }
--type describe_workspaces_pool_sessions_result() :: #{binary() => any()}.
-
-%% Example:
-%% associate_ip_groups_result() :: #{
-
-%% }
--type associate_ip_groups_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_tags_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type create_tags_request() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_workspace_change_request())
-%% }
--type terminate_workspaces_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_workspaces_request() :: #{
-%%   <<"Workspaces">> := list(workspace_request())
-%% }
--type create_workspaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% connection_alias_permission() :: #{
-%%   <<"AllowAssociation">> => boolean(),
-%%   <<"SharedAccountId">> => string()
-%% }
--type connection_alias_permission() :: #{binary() => any()}.
-
-%% Example:
-%% modify_streaming_properties_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"StreamingProperties">> => streaming_properties()
-%% }
--type modify_streaming_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_account_link_request() :: #{
-%%   <<"LinkId">> => string(),
-%%   <<"LinkedAccountId">> => string()
-%% }
--type get_account_link_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_standby_workspaces_request() :: #{
-%%   <<"PrimaryRegion">> := string(),
-%%   <<"StandbyWorkspaces">> := list(standby_workspace())
-%% }
--type create_standby_workspaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% pending_create_standby_workspaces_request() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"UserName">> => string(),
-%%   <<"WorkspaceId">> => string()
-%% }
--type pending_create_standby_workspaces_request() :: #{binary() => any()}.
+-type account_link() :: #{binary() => any()}.
 
 %% Example:
 %% account_modification() :: #{
@@ -890,84 +277,103 @@
 -type account_modification() :: #{binary() => any()}.
 
 %% Example:
-%% certificate_based_auth_properties() :: #{
-%%   <<"CertificateAuthorityArn">> => string(),
+%% active_directory_config() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"ServiceAccountSecretArn">> => string()
+%% }
+-type active_directory_config() :: #{binary() => any()}.
+
+%% Example:
+%% application_not_supported_exception() :: #{
+
+%% }
+-type application_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% application_resource_association() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"AssociatedResourceId">> => string(),
+%%   <<"AssociatedResourceType">> => list(any()),
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => association_state_reason()
+%% }
+-type application_resource_association() :: #{binary() => any()}.
+
+%% Example:
+%% application_settings_request() :: #{
+%%   <<"SettingsGroup">> => string(),
 %%   <<"Status">> => list(any())
 %% }
--type certificate_based_auth_properties() :: #{binary() => any()}.
+-type application_settings_request() :: #{binary() => any()}.
 
 %% Example:
-%% workspaces_ip_group() :: #{
-%%   <<"groupDesc">> => string(),
-%%   <<"groupId">> => string(),
-%%   <<"groupName">> => string(),
-%%   <<"userRules">> => list(ip_rule_item())
+%% application_settings_response() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"SettingsGroup">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type workspaces_ip_group() :: #{binary() => any()}.
+-type application_settings_response() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
+%% associate_connection_alias_request() :: #{
+%%   <<"AliasId">> := string(),
+%%   <<"ResourceId">> := string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type associate_connection_alias_request() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"ResourceId">> => string(),
-%%   <<"message">> => string()
+%% associate_connection_alias_result() :: #{
+%%   <<"ConnectionIdentifier">> => string()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type associate_connection_alias_result() :: #{binary() => any()}.
 
 %% Example:
-%% accept_account_link_invitation_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"LinkId">> := string()
+%% associate_ip_groups_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"GroupIds">> := list(string())
 %% }
--type accept_account_link_invitation_request() :: #{binary() => any()}.
+-type associate_ip_groups_request() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_workspace_application_result() :: #{
+%% associate_ip_groups_result() :: #{
+
+%% }
+-type associate_ip_groups_result() :: #{binary() => any()}.
+
+%% Example:
+%% associate_workspace_application_request() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"WorkspaceId">> := string()
+%% }
+-type associate_workspace_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_workspace_application_result() :: #{
 %%   <<"Association">> => workspace_resource_association()
 %% }
--type disassociate_workspace_application_result() :: #{binary() => any()}.
+-type associate_workspace_application_result() :: #{binary() => any()}.
 
 %% Example:
-%% root_storage() :: #{
-%%   <<"Capacity">> => string()
-%% }
--type root_storage() :: #{binary() => any()}.
-
-%% Example:
-%% timeout_settings() :: #{
-%%   <<"DisconnectTimeoutInSeconds">> => integer(),
-%%   <<"IdleDisconnectTimeoutInSeconds">> => integer(),
-%%   <<"MaxUserDurationInSeconds">> => integer()
-%% }
--type timeout_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ip_group_request() :: #{
-%%   <<"GroupId">> := string()
-%% }
--type delete_ip_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% workspaces_pool_error() :: #{
+%% association_state_reason() :: #{
 %%   <<"ErrorCode">> => list(any()),
 %%   <<"ErrorMessage">> => string()
 %% }
--type workspaces_pool_error() :: #{binary() => any()}.
+-type association_state_reason() :: #{binary() => any()}.
 
 %% Example:
-%% default_workspace_creation_properties() :: #{
-%%   <<"CustomSecurityGroupId">> => string(),
-%%   <<"DefaultOu">> => string(),
-%%   <<"EnableInternetAccess">> => boolean(),
-%%   <<"EnableMaintenanceMode">> => boolean(),
-%%   <<"InstanceIamRoleArn">> => string(),
-%%   <<"UserEnabledAsLocalAdministrator">> => boolean()
+%% authorize_ip_rules_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"UserRules">> := list(ip_rule_item())
 %% }
--type default_workspace_creation_properties() :: #{binary() => any()}.
+-type authorize_ip_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% authorize_ip_rules_result() :: #{
+
+%% }
+-type authorize_ip_rules_result() :: #{binary() => any()}.
 
 %% Example:
 %% bundle_resource_association() :: #{
@@ -982,6 +388,61 @@
 -type bundle_resource_association() :: #{binary() => any()}.
 
 %% Example:
+%% capacity() :: #{
+%%   <<"DesiredUserSessions">> => integer()
+%% }
+-type capacity() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_status() :: #{
+%%   <<"ActiveUserSessions">> => integer(),
+%%   <<"ActualUserSessions">> => integer(),
+%%   <<"AvailableUserSessions">> => integer(),
+%%   <<"DesiredUserSessions">> => integer()
+%% }
+-type capacity_status() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_based_auth_properties() :: #{
+%%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type certificate_based_auth_properties() :: #{binary() => any()}.
+
+%% Example:
+%% client_properties() :: #{
+%%   <<"ClientExperiencePolicy">> => string(),
+%%   <<"LogUploadEnabled">> => list(any()),
+%%   <<"ReconnectEnabled">> => list(any())
+%% }
+-type client_properties() :: #{binary() => any()}.
+
+%% Example:
+%% client_properties_result() :: #{
+%%   <<"ClientProperties">> => client_properties(),
+%%   <<"ResourceId">> => string()
+%% }
+-type client_properties_result() :: #{binary() => any()}.
+
+%% Example:
+%% compute_not_compatible_exception() :: #{
+
+%% }
+-type compute_not_compatible_exception() :: #{binary() => any()}.
+
+%% Example:
+%% compute_type() :: #{
+%%   <<"Name">> => list(any())
+%% }
+-type compute_type() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
 %% connect_client_add_in() :: #{
 %%   <<"AddInId">> => string(),
 %%   <<"Name">> => string(),
@@ -991,264 +452,128 @@
 -type connect_client_add_in() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% describe_bundle_associations_request() :: #{
-%%   <<"AssociatedResourceTypes">> := list(list(any())()),
-%%   <<"BundleId">> := string()
-%% }
--type describe_bundle_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% operation_in_progress_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type operation_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% import_workspace_image_result() :: #{
-%%   <<"ImageId">> => string()
-%% }
--type import_workspace_image_result() :: #{binary() => any()}.
-
-%% Example:
-%% import_custom_workspace_image_result() :: #{
-%%   <<"ImageId">> => string(),
+%% connection_alias() :: #{
+%%   <<"AliasId">> => string(),
+%%   <<"Associations">> => list(connection_alias_association()),
+%%   <<"ConnectionString">> => string(),
+%%   <<"OwnerAccountId">> => string(),
 %%   <<"State">> => list(any())
 %% }
--type import_custom_workspace_image_result() :: #{binary() => any()}.
+-type connection_alias() :: #{binary() => any()}.
 
 %% Example:
-%% create_workspaces_pool_result() :: #{
-%%   <<"WorkspacesPool">> => workspaces_pool()
-%% }
--type create_workspaces_pool_result() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_workspaces_request() :: #{
-%%   <<"TerminateWorkspaceRequests">> := list(terminate_request())
-%% }
--type terminate_workspaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% custom_workspace_image_import_error_details() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type custom_workspace_image_import_error_details() :: #{binary() => any()}.
-
-%% Example:
-%% update_rules_of_ip_group_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"UserRules">> := list(ip_rule_item())
-%% }
--type update_rules_of_ip_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% deploy_workspace_applications_request() :: #{
-%%   <<"Force">> => boolean(),
-%%   <<"WorkspaceId">> := string()
-%% }
--type deploy_workspace_applications_request() :: #{binary() => any()}.
-
-%% Example:
-%% modify_account_result() :: #{
-%%   <<"Message">> => string()
-%% }
--type modify_account_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_bundles_request() :: #{
-%%   <<"BundleIds">> => list(string()),
-%%   <<"NextToken">> => string(),
-%%   <<"Owner">> => string()
-%% }
--type describe_workspace_bundles_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_request() :: #{
-%%   <<"WorkspaceId">> => string()
-%% }
--type stop_request() :: #{binary() => any()}.
-
-%% Example:
-%% global_accelerator_for_work_space() :: #{
-%%   <<"Mode">> => list(any()),
-%%   <<"PreferredProtocol">> => list(any())
-%% }
--type global_accelerator_for_work_space() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connection_aliases_request() :: #{
-%%   <<"AliasIds">> => list(string()),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
+%% connection_alias_association() :: #{
+%%   <<"AssociatedAccountId">> => string(),
+%%   <<"AssociationStatus">> => list(any()),
+%%   <<"ConnectionIdentifier">> => string(),
 %%   <<"ResourceId">> => string()
 %% }
--type describe_connection_aliases_request() :: #{binary() => any()}.
+-type connection_alias_association() :: #{binary() => any()}.
 
 %% Example:
-%% update_workspace_bundle_request() :: #{
-%%   <<"BundleId">> => string(),
-%%   <<"ImageId">> => string()
-%% }
--type update_workspace_bundle_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_workspace_image_import_request() :: #{
-%%   <<"ImageId">> := string()
-%% }
--type describe_custom_workspace_image_import_request() :: #{binary() => any()}.
-
-%% Example:
-%% account_link() :: #{
-%%   <<"AccountLinkId">> => string(),
-%%   <<"AccountLinkStatus">> => list(any()),
-%%   <<"SourceAccountId">> => string(),
-%%   <<"TargetAccountId">> => string()
-%% }
--type account_link() :: #{binary() => any()}.
-
-%% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_workspace_image_permission_result() :: #{
-
-%% }
--type update_workspace_image_permission_result() :: #{binary() => any()}.
-
-%% Example:
-%% authorize_ip_rules_request() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"UserRules">> := list(ip_rule_item())
-%% }
--type authorize_ip_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connection_alias_permissions_result() :: #{
-%%   <<"AliasId">> => string(),
-%%   <<"ConnectionAliasPermissions">> => list(connection_alias_permission()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_connection_alias_permissions_result() :: #{binary() => any()}.
-
-%% Example:
-%% user_setting() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"MaximumLength">> => integer(),
-%%   <<"Permission">> => list(any())
-%% }
--type user_setting() :: #{binary() => any()}.
-
-%% Example:
-%% reject_account_link_invitation_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"LinkId">> := string()
-%% }
--type reject_account_link_invitation_request() :: #{binary() => any()}.
-
-%% Example:
-%% deploy_workspace_applications_result() :: #{
-%%   <<"Deployment">> => work_space_application_deployment()
-%% }
--type deploy_workspace_applications_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workspace_bundle_result() :: #{
-
-%% }
--type delete_workspace_bundle_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_associations_result() :: #{
-%%   <<"Associations">> => list(workspace_resource_association())
-%% }
--type describe_workspace_associations_result() :: #{binary() => any()}.
-
-%% Example:
-%% microsoft_entra_config() :: #{
-%%   <<"ApplicationConfigSecretArn">> => string(),
-%%   <<"TenantId">> => string()
-%% }
--type microsoft_entra_config() :: #{binary() => any()}.
-
-%% Example:
-%% modify_workspace_creation_properties_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"WorkspaceCreationProperties">> := workspace_creation_properties()
-%% }
--type modify_workspace_creation_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% storage_connector() :: #{
-%%   <<"ConnectorType">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type storage_connector() :: #{binary() => any()}.
-
-%% Example:
-%% image_permission() :: #{
+%% connection_alias_permission() :: #{
+%%   <<"AllowAssociation">> => boolean(),
 %%   <<"SharedAccountId">> => string()
 %% }
--type image_permission() :: #{binary() => any()}.
+-type connection_alias_permission() :: #{binary() => any()}.
 
 %% Example:
-%% workspace_creation_properties() :: #{
-%%   <<"CustomSecurityGroupId">> => string(),
-%%   <<"DefaultOu">> => string(),
-%%   <<"EnableInternetAccess">> => boolean(),
-%%   <<"EnableMaintenanceMode">> => boolean(),
-%%   <<"InstanceIamRoleArn">> => string(),
-%%   <<"UserEnabledAsLocalAdministrator">> => boolean()
+%% copy_workspace_image_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"SourceImageId">> := string(),
+%%   <<"SourceRegion">> := string(),
+%%   <<"Tags">> => list(tag())
 %% }
--type workspace_creation_properties() :: #{binary() => any()}.
+-type copy_workspace_image_request() :: #{binary() => any()}.
 
 %% Example:
-%% error_details() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string()
+%% copy_workspace_image_result() :: #{
+%%   <<"ImageId">> => string()
 %% }
--type error_details() :: #{binary() => any()}.
+-type copy_workspace_image_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_applications_request() :: #{
-%%   <<"ApplicationIds">> => list(string()),
-%%   <<"ComputeTypeNames">> => list(list(any())()),
-%%   <<"LicenseType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OperatingSystemNames">> => list(list(any())()),
-%%   <<"Owner">> => string()
+%% create_account_link_invitation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"TargetAccountId">> := string()
 %% }
--type describe_applications_request() :: #{binary() => any()}.
+-type create_account_link_invitation_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_account_link_result() :: #{
+%% create_account_link_invitation_result() :: #{
 %%   <<"AccountLink">> => account_link()
 %% }
--type get_account_link_result() :: #{binary() => any()}.
+-type create_account_link_invitation_result() :: #{binary() => any()}.
 
 %% Example:
-%% start_workspaces_pool_result() :: #{
-
+%% create_connect_client_add_in_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"URL">> := string()
 %% }
--type start_workspaces_pool_result() :: #{binary() => any()}.
+-type create_connect_client_add_in_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_application_associations_result() :: #{
-%%   <<"Associations">> => list(application_resource_association()),
-%%   <<"NextToken">> => string()
+%% create_connect_client_add_in_result() :: #{
+%%   <<"AddInId">> => string()
 %% }
--type describe_application_associations_result() :: #{binary() => any()}.
+-type create_connect_client_add_in_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_alias_request() :: #{
+%%   <<"ConnectionString">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_connection_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_connection_alias_result() :: #{
+%%   <<"AliasId">> => string()
+%% }
+-type create_connection_alias_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_ip_group_request() :: #{
+%%   <<"GroupDesc">> => string(),
+%%   <<"GroupName">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserRules">> => list(ip_rule_item())
+%% }
+-type create_ip_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_ip_group_result() :: #{
+%%   <<"GroupId">> => string()
+%% }
+-type create_ip_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_standby_workspaces_request() :: #{
+%%   <<"PrimaryRegion">> := string(),
+%%   <<"StandbyWorkspaces">> := list(standby_workspace())
+%% }
+-type create_standby_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_standby_workspaces_result() :: #{
+%%   <<"FailedStandbyRequests">> => list(failed_create_standby_workspaces_request()),
+%%   <<"PendingStandbyRequests">> => list(pending_create_standby_workspaces_request())
+%% }
+-type create_standby_workspaces_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_tags_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type create_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_tags_result() :: #{
+
+%% }
+-type create_tags_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_updated_workspace_image_request() :: #{
@@ -1260,16 +585,37 @@
 -type create_updated_workspace_image_request() :: #{binary() => any()}.
 
 %% Example:
-%% ios_import_client_branding_attributes() :: #{
-%%   <<"ForgotPasswordLink">> => string(),
-%%   <<"LoginMessage">> => map(),
-%%   <<"Logo">> => binary(),
-%%   <<"Logo2x">> => binary(),
-%%   <<"Logo3x">> => binary(),
-%%   <<"SupportEmail">> => string(),
-%%   <<"SupportLink">> => string()
+%% create_updated_workspace_image_result() :: #{
+%%   <<"ImageId">> => string()
 %% }
--type ios_import_client_branding_attributes() :: #{binary() => any()}.
+-type create_updated_workspace_image_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_workspace_bundle_request() :: #{
+%%   <<"BundleDescription">> := string(),
+%%   <<"BundleName">> := string(),
+%%   <<"ComputeType">> := compute_type(),
+%%   <<"ImageId">> := string(),
+%%   <<"RootStorage">> => root_storage(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserStorage">> := user_storage()
+%% }
+-type create_workspace_bundle_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_workspace_bundle_result() :: #{
+%%   <<"WorkspaceBundle">> => workspace_bundle()
+%% }
+-type create_workspace_bundle_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_workspace_image_request() :: #{
+%%   <<"Description">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WorkspaceId">> := string()
+%% }
+-type create_workspace_image_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_workspace_image_result() :: #{
@@ -1285,75 +631,61 @@
 -type create_workspace_image_result() :: #{binary() => any()}.
 
 %% Example:
-%% workspace_access_properties() :: #{
-%%   <<"AccessEndpointConfig">> => access_endpoint_config(),
-%%   <<"DeviceTypeAndroid">> => list(any()),
-%%   <<"DeviceTypeChromeOs">> => list(any()),
-%%   <<"DeviceTypeIos">> => list(any()),
-%%   <<"DeviceTypeLinux">> => list(any()),
-%%   <<"DeviceTypeOsx">> => list(any()),
-%%   <<"DeviceTypeWeb">> => list(any()),
-%%   <<"DeviceTypeWindows">> => list(any()),
-%%   <<"DeviceTypeWorkSpacesThinClient">> => list(any()),
-%%   <<"DeviceTypeZeroClient">> => list(any())
+%% create_workspaces_pool_request() :: #{
+%%   <<"ApplicationSettings">> => application_settings_request(),
+%%   <<"BundleId">> := string(),
+%%   <<"Capacity">> := capacity(),
+%%   <<"Description">> := string(),
+%%   <<"DirectoryId">> := string(),
+%%   <<"PoolName">> := string(),
+%%   <<"RunningMode">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TimeoutSettings">> => timeout_settings()
 %% }
--type workspace_access_properties() :: #{binary() => any()}.
+-type create_workspaces_pool_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_account_links_result() :: #{
-%%   <<"AccountLinks">> => list(account_link()),
-%%   <<"NextToken">> => string()
+%% create_workspaces_pool_result() :: #{
+%%   <<"WorkspacesPool">> => workspaces_pool()
 %% }
--type list_account_links_result() :: #{binary() => any()}.
+-type create_workspaces_pool_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_workspace_directories_request() :: #{
-%%   <<"DirectoryIds">> => list(string()),
-%%   <<"Filters">> => list(describe_workspace_directories_filter()),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkspaceDirectoryNames">> => list(string())
+%% create_workspaces_request() :: #{
+%%   <<"Workspaces">> := list(workspace_request())
 %% }
--type describe_workspace_directories_request() :: #{binary() => any()}.
+-type create_workspaces_request() :: #{binary() => any()}.
 
 %% Example:
-%% modify_saml_properties_result() :: #{
-
+%% create_workspaces_result() :: #{
+%%   <<"FailedRequests">> => list(failed_create_workspace_request()),
+%%   <<"PendingRequests">> => list(workspace())
 %% }
--type modify_saml_properties_result() :: #{binary() => any()}.
+-type create_workspaces_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_image_associations_result() :: #{
-%%   <<"Associations">> => list(image_resource_association())
+%% custom_workspace_image_import_error_details() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
 %% }
--type describe_image_associations_result() :: #{binary() => any()}.
+-type custom_workspace_image_import_error_details() :: #{binary() => any()}.
 
 %% Example:
-%% describe_workspaces_connection_status_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WorkspacesConnectionStatus">> => list(workspace_connection_status())
+%% data_replication_settings() :: #{
+%%   <<"DataReplication">> => list(any()),
+%%   <<"RecoverySnapshotTime">> => non_neg_integer()
 %% }
--type describe_workspaces_connection_status_result() :: #{binary() => any()}.
+-type data_replication_settings() :: #{binary() => any()}.
 
 %% Example:
-%% work_space_application() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LicenseType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"SupportedComputeTypeNames">> => list(list(any())()),
-%%   <<"SupportedOperatingSystemNames">> => list(list(any())())
+%% default_client_branding_attributes() :: #{
+%%   <<"ForgotPasswordLink">> => string(),
+%%   <<"LoginMessage">> => map(),
+%%   <<"LogoUrl">> => string(),
+%%   <<"SupportEmail">> => string(),
+%%   <<"SupportLink">> => string()
 %% }
--type work_space_application() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connect_client_add_in_result() :: #{
-
-%% }
--type delete_connect_client_add_in_result() :: #{binary() => any()}.
+-type default_client_branding_attributes() :: #{binary() => any()}.
 
 %% Example:
 %% default_import_client_branding_attributes() :: #{
@@ -1366,32 +698,430 @@
 -type default_import_client_branding_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% modify_endpoint_encryption_mode_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"EndpointEncryptionMode">> := list(any())
+%% default_workspace_creation_properties() :: #{
+%%   <<"CustomSecurityGroupId">> => string(),
+%%   <<"DefaultOu">> => string(),
+%%   <<"EnableInternetAccess">> => boolean(),
+%%   <<"EnableMaintenanceMode">> => boolean(),
+%%   <<"InstanceIamRoleArn">> => string(),
+%%   <<"UserEnabledAsLocalAdministrator">> => boolean()
 %% }
--type modify_endpoint_encryption_mode_request() :: #{binary() => any()}.
+-type default_workspace_creation_properties() :: #{binary() => any()}.
 
 %% Example:
-%% create_connection_alias_result() :: #{
-%%   <<"AliasId">> => string()
+%% delete_account_link_invitation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"LinkId">> := string()
 %% }
--type create_connection_alias_result() :: #{binary() => any()}.
+-type delete_account_link_invitation_request() :: #{binary() => any()}.
 
 %% Example:
-%% modify_saml_properties_request() :: #{
-%%   <<"PropertiesToDelete">> => list(list(any())()),
+%% delete_account_link_invitation_result() :: #{
+%%   <<"AccountLink">> => account_link()
+%% }
+-type delete_account_link_invitation_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_client_branding_request() :: #{
+%%   <<"Platforms">> := list(list(any())()),
+%%   <<"ResourceId">> := string()
+%% }
+-type delete_client_branding_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_client_branding_result() :: #{
+
+%% }
+-type delete_client_branding_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connect_client_add_in_request() :: #{
+%%   <<"AddInId">> := string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type delete_connect_client_add_in_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connect_client_add_in_result() :: #{
+
+%% }
+-type delete_connect_client_add_in_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_alias_request() :: #{
+%%   <<"AliasId">> := string()
+%% }
+-type delete_connection_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connection_alias_result() :: #{
+
+%% }
+-type delete_connection_alias_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ip_group_request() :: #{
+%%   <<"GroupId">> := string()
+%% }
+-type delete_ip_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ip_group_result() :: #{
+
+%% }
+-type delete_ip_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tags_request() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"SamlProperties">> => saml_properties()
+%%   <<"TagKeys">> := list(string())
 %% }
--type modify_saml_properties_request() :: #{binary() => any()}.
+-type delete_tags_request() :: #{binary() => any()}.
 
 %% Example:
-%% ip_rule_item() :: #{
-%%   <<"ipRule">> => string(),
-%%   <<"ruleDesc">> => string()
+%% delete_tags_result() :: #{
+
 %% }
--type ip_rule_item() :: #{binary() => any()}.
+-type delete_tags_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_bundle_request() :: #{
+%%   <<"BundleId">> => string()
+%% }
+-type delete_workspace_bundle_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_bundle_result() :: #{
+
+%% }
+-type delete_workspace_bundle_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_image_request() :: #{
+%%   <<"ImageId">> := string()
+%% }
+-type delete_workspace_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workspace_image_result() :: #{
+
+%% }
+-type delete_workspace_image_result() :: #{binary() => any()}.
+
+%% Example:
+%% deploy_workspace_applications_request() :: #{
+%%   <<"Force">> => boolean(),
+%%   <<"WorkspaceId">> := string()
+%% }
+-type deploy_workspace_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% deploy_workspace_applications_result() :: #{
+%%   <<"Deployment">> => work_space_application_deployment()
+%% }
+-type deploy_workspace_applications_result() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_workspace_directory_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type deregister_workspace_directory_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_workspace_directory_result() :: #{
+
+%% }
+-type deregister_workspace_directory_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_modifications_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type describe_account_modifications_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_modifications_result() :: #{
+%%   <<"AccountModifications">> => list(account_modification()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_account_modifications_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_request() :: #{
+
+%% }
+-type describe_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_result() :: #{
+%%   <<"DedicatedTenancyAccountType">> => list(any()),
+%%   <<"DedicatedTenancyManagementCidrRange">> => string(),
+%%   <<"DedicatedTenancySupport">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type describe_account_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_associations_request() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"AssociatedResourceTypes">> := list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_application_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_associations_result() :: #{
+%%   <<"Associations">> => list(application_resource_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_application_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_applications_request() :: #{
+%%   <<"ApplicationIds">> => list(string()),
+%%   <<"ComputeTypeNames">> => list(list(any())()),
+%%   <<"LicenseType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OperatingSystemNames">> => list(list(any())()),
+%%   <<"Owner">> => string()
+%% }
+-type describe_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_applications_result() :: #{
+%%   <<"Applications">> => list(work_space_application()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_applications_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bundle_associations_request() :: #{
+%%   <<"AssociatedResourceTypes">> := list(list(any())()),
+%%   <<"BundleId">> := string()
+%% }
+-type describe_bundle_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bundle_associations_result() :: #{
+%%   <<"Associations">> => list(bundle_resource_association())
+%% }
+-type describe_bundle_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_client_branding_request() :: #{
+%%   <<"ResourceId">> := string()
+%% }
+-type describe_client_branding_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_client_branding_result() :: #{
+%%   <<"DeviceTypeAndroid">> => default_client_branding_attributes(),
+%%   <<"DeviceTypeIos">> => ios_client_branding_attributes(),
+%%   <<"DeviceTypeLinux">> => default_client_branding_attributes(),
+%%   <<"DeviceTypeOsx">> => default_client_branding_attributes(),
+%%   <<"DeviceTypeWeb">> => default_client_branding_attributes(),
+%%   <<"DeviceTypeWindows">> => default_client_branding_attributes()
+%% }
+-type describe_client_branding_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_client_properties_request() :: #{
+%%   <<"ResourceIds">> := list(string())
+%% }
+-type describe_client_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_client_properties_result() :: #{
+%%   <<"ClientPropertiesList">> => list(client_properties_result())
+%% }
+-type describe_client_properties_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connect_client_add_ins_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type describe_connect_client_add_ins_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connect_client_add_ins_result() :: #{
+%%   <<"AddIns">> => list(connect_client_add_in()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_connect_client_add_ins_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_alias_permissions_request() :: #{
+%%   <<"AliasId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_connection_alias_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_alias_permissions_result() :: #{
+%%   <<"AliasId">> => string(),
+%%   <<"ConnectionAliasPermissions">> => list(connection_alias_permission()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_connection_alias_permissions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_aliases_request() :: #{
+%%   <<"AliasIds">> => list(string()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type describe_connection_aliases_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connection_aliases_result() :: #{
+%%   <<"ConnectionAliases">> => list(connection_alias()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_connection_aliases_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_workspace_image_import_request() :: #{
+%%   <<"ImageId">> := string()
+%% }
+-type describe_custom_workspace_image_import_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_workspace_image_import_result() :: #{
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"ErrorDetails">> => list(custom_workspace_image_import_error_details()),
+%%   <<"ImageBuilderInstanceId">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"ImageSource">> => list(),
+%%   <<"InfrastructureConfigurationArn">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"ProgressPercentage">> => integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateMessage">> => string()
+%% }
+-type describe_custom_workspace_image_import_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_associations_request() :: #{
+%%   <<"AssociatedResourceTypes">> := list(list(any())()),
+%%   <<"ImageId">> := string()
+%% }
+-type describe_image_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_associations_result() :: #{
+%%   <<"Associations">> => list(image_resource_association())
+%% }
+-type describe_image_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ip_groups_request() :: #{
+%%   <<"GroupIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ip_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ip_groups_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Result">> => list(workspaces_ip_group())
+%% }
+-type describe_ip_groups_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_request() :: #{
+%%   <<"ResourceId">> := string()
+%% }
+-type describe_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_result() :: #{
+%%   <<"TagList">> => list(tag())
+%% }
+-type describe_tags_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_associations_request() :: #{
+%%   <<"AssociatedResourceTypes">> := list(list(any())()),
+%%   <<"WorkspaceId">> := string()
+%% }
+-type describe_workspace_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_associations_result() :: #{
+%%   <<"Associations">> => list(workspace_resource_association())
+%% }
+-type describe_workspace_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_bundles_request() :: #{
+%%   <<"BundleIds">> => list(string()),
+%%   <<"NextToken">> => string(),
+%%   <<"Owner">> => string()
+%% }
+-type describe_workspace_bundles_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_bundles_result() :: #{
+%%   <<"Bundles">> => list(workspace_bundle()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_workspace_bundles_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_directories_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type describe_workspace_directories_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_directories_request() :: #{
+%%   <<"DirectoryIds">> => list(string()),
+%%   <<"Filters">> => list(describe_workspace_directories_filter()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspaceDirectoryNames">> => list(string())
+%% }
+-type describe_workspace_directories_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_directories_result() :: #{
+%%   <<"Directories">> => list(workspace_directory()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_workspace_directories_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_image_permissions_request() :: #{
+%%   <<"ImageId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_workspace_image_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_image_permissions_result() :: #{
+%%   <<"ImageId">> => string(),
+%%   <<"ImagePermissions">> => list(image_permission()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_workspace_image_permissions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_images_request() :: #{
+%%   <<"ImageIds">> => list(string()),
+%%   <<"ImageType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_workspace_images_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_workspace_images_result() :: #{
@@ -1401,54 +1131,234 @@
 -type describe_workspace_images_result() :: #{binary() => any()}.
 
 %% Example:
-%% restore_workspace_request() :: #{
+%% describe_workspace_snapshots_request() :: #{
 %%   <<"WorkspaceId">> := string()
 %% }
--type restore_workspace_request() :: #{binary() => any()}.
+-type describe_workspace_snapshots_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_resource_state_exception() :: #{
-%%   <<"message">> => string()
+%% describe_workspace_snapshots_result() :: #{
+%%   <<"RebuildSnapshots">> => list(snapshot()),
+%%   <<"RestoreSnapshots">> => list(snapshot())
 %% }
--type invalid_resource_state_exception() :: #{binary() => any()}.
+-type describe_workspace_snapshots_result() :: #{binary() => any()}.
 
 %% Example:
-%% resource_creation_failed_exception() :: #{
-%%   <<"message">> => string()
+%% describe_workspaces_connection_status_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspaceIds">> => list(string())
 %% }
--type resource_creation_failed_exception() :: #{binary() => any()}.
+-type describe_workspaces_connection_status_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_updated_workspace_image_result() :: #{
-%%   <<"ImageId">> => string()
+%% describe_workspaces_connection_status_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspacesConnectionStatus">> => list(workspace_connection_status())
 %% }
--type create_updated_workspace_image_result() :: #{binary() => any()}.
+-type describe_workspaces_connection_status_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_connect_client_add_in_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"URL">> := string()
+%% describe_workspaces_pool_sessions_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PoolId">> := string(),
+%%   <<"UserId">> => string()
 %% }
--type create_connect_client_add_in_request() :: #{binary() => any()}.
+-type describe_workspaces_pool_sessions_request() :: #{binary() => any()}.
 
 %% Example:
-%% modify_workspace_properties_result() :: #{
+%% describe_workspaces_pool_sessions_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Sessions">> => list(workspaces_pool_session())
+%% }
+-type describe_workspaces_pool_sessions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspaces_pools_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type describe_workspaces_pools_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspaces_pools_request() :: #{
+%%   <<"Filters">> => list(describe_workspaces_pools_filter()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PoolIds">> => list(string())
+%% }
+-type describe_workspaces_pools_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspaces_pools_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspacesPools">> => list(workspaces_pool())
+%% }
+-type describe_workspaces_pools_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspaces_request() :: #{
+%%   <<"BundleId">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserName">> => string(),
+%%   <<"WorkspaceIds">> => list(string()),
+%%   <<"WorkspaceName">> => string()
+%% }
+-type describe_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspaces_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Workspaces">> => list(workspace())
+%% }
+-type describe_workspaces_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_connection_alias_request() :: #{
+%%   <<"AliasId">> := string()
+%% }
+-type disassociate_connection_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_connection_alias_result() :: #{
 
 %% }
--type modify_workspace_properties_result() :: #{binary() => any()}.
+-type disassociate_connection_alias_result() :: #{binary() => any()}.
 
 %% Example:
-%% application_resource_association() :: #{
-%%   <<"ApplicationId">> => string(),
+%% disassociate_ip_groups_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"GroupIds">> := list(string())
+%% }
+-type disassociate_ip_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_ip_groups_result() :: #{
+
+%% }
+-type disassociate_ip_groups_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_workspace_application_request() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"WorkspaceId">> := string()
+%% }
+-type disassociate_workspace_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_workspace_application_result() :: #{
+%%   <<"Association">> => workspace_resource_association()
+%% }
+-type disassociate_workspace_application_result() :: #{binary() => any()}.
+
+%% Example:
+%% error_details() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+%% Example:
+%% failed_create_standby_workspaces_request() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"StandbyWorkspaceRequest">> => standby_workspace()
+%% }
+-type failed_create_standby_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% failed_create_workspace_request() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"WorkspaceRequest">> => workspace_request()
+%% }
+-type failed_create_workspace_request() :: #{binary() => any()}.
+
+%% Example:
+%% failed_workspace_change_request() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"WorkspaceId">> => string()
+%% }
+-type failed_workspace_change_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_link_request() :: #{
+%%   <<"LinkId">> => string(),
+%%   <<"LinkedAccountId">> => string()
+%% }
+-type get_account_link_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_link_result() :: #{
+%%   <<"AccountLink">> => account_link()
+%% }
+-type get_account_link_result() :: #{binary() => any()}.
+
+%% Example:
+%% global_accelerator_for_directory() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"PreferredProtocol">> => list(any())
+%% }
+-type global_accelerator_for_directory() :: #{binary() => any()}.
+
+%% Example:
+%% global_accelerator_for_work_space() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"PreferredProtocol">> => list(any())
+%% }
+-type global_accelerator_for_work_space() :: #{binary() => any()}.
+
+%% Example:
+%% id_c_config() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"InstanceArn">> => string()
+%% }
+-type id_c_config() :: #{binary() => any()}.
+
+%% Example:
+%% image_permission() :: #{
+%%   <<"SharedAccountId">> => string()
+%% }
+-type image_permission() :: #{binary() => any()}.
+
+%% Example:
+%% image_resource_association() :: #{
 %%   <<"AssociatedResourceId">> => string(),
 %%   <<"AssociatedResourceType">> => list(any()),
 %%   <<"Created">> => non_neg_integer(),
+%%   <<"ImageId">> => string(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
 %%   <<"StateReason">> => association_state_reason()
 %% }
--type application_resource_association() :: #{binary() => any()}.
+-type image_resource_association() :: #{binary() => any()}.
+
+%% Example:
+%% import_client_branding_request() :: #{
+%%   <<"DeviceTypeAndroid">> => default_import_client_branding_attributes(),
+%%   <<"DeviceTypeIos">> => ios_import_client_branding_attributes(),
+%%   <<"DeviceTypeLinux">> => default_import_client_branding_attributes(),
+%%   <<"DeviceTypeOsx">> => default_import_client_branding_attributes(),
+%%   <<"DeviceTypeWeb">> => default_import_client_branding_attributes(),
+%%   <<"DeviceTypeWindows">> => default_import_client_branding_attributes(),
+%%   <<"ResourceId">> := string()
+%% }
+-type import_client_branding_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_client_branding_result() :: #{
+%%   <<"DeviceTypeAndroid">> => default_client_branding_attributes(),
+%%   <<"DeviceTypeIos">> => ios_client_branding_attributes(),
+%%   <<"DeviceTypeLinux">> => default_client_branding_attributes(),
+%%   <<"DeviceTypeOsx">> => default_client_branding_attributes(),
+%%   <<"DeviceTypeWeb">> => default_client_branding_attributes(),
+%%   <<"DeviceTypeWindows">> => default_client_branding_attributes()
+%% }
+-type import_client_branding_result() :: #{binary() => any()}.
 
 %% Example:
 %% import_custom_workspace_image_request() :: #{
@@ -1465,47 +1375,46 @@
 -type import_custom_workspace_image_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_workspaces_pool_sessions_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PoolId">> := string(),
-%%   <<"UserId">> => string()
+%% import_custom_workspace_image_result() :: #{
+%%   <<"ImageId">> => string(),
+%%   <<"State">> => list(any())
 %% }
--type describe_workspaces_pool_sessions_request() :: #{binary() => any()}.
+-type import_custom_workspace_image_result() :: #{binary() => any()}.
 
 %% Example:
-%% delete_client_branding_request() :: #{
-%%   <<"Platforms">> := list(list(any())()),
-%%   <<"ResourceId">> := string()
+%% import_workspace_image_request() :: #{
+%%   <<"Applications">> => list(list(any())()),
+%%   <<"Ec2ImageId">> := string(),
+%%   <<"ImageDescription">> := string(),
+%%   <<"ImageName">> := string(),
+%%   <<"IngestionProcess">> := list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type delete_client_branding_request() :: #{binary() => any()}.
+-type import_workspace_image_request() :: #{binary() => any()}.
 
 %% Example:
-%% modify_streaming_properties_result() :: #{
-
+%% import_workspace_image_result() :: #{
+%%   <<"ImageId">> => string()
 %% }
--type modify_streaming_properties_result() :: #{binary() => any()}.
-
-%% Example:
-%% data_replication_settings() :: #{
-%%   <<"DataReplication">> => list(any()),
-%%   <<"RecoverySnapshotTime">> => non_neg_integer()
-%% }
--type data_replication_settings() :: #{binary() => any()}.
+-type import_workspace_image_result() :: #{binary() => any()}.
 
 %% Example:
-%% describe_workspaces_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Workspaces">> => list(workspace())
+%% incompatible_applications_exception() :: #{
+
 %% }
--type describe_workspaces_result() :: #{binary() => any()}.
+-type incompatible_applications_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_create_workspace_request()),
-%%   <<"PendingRequests">> => list(workspace())
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type create_workspaces_result() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_combination_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_combination_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_parameter_values_exception() :: #{
@@ -1514,28 +1423,218 @@
 -type invalid_parameter_values_exception() :: #{binary() => any()}.
 
 %% Example:
-%% default_client_branding_attributes() :: #{
+%% invalid_resource_state_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_resource_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ios_client_branding_attributes() :: #{
 %%   <<"ForgotPasswordLink">> => string(),
 %%   <<"LoginMessage">> => map(),
+%%   <<"Logo2xUrl">> => string(),
+%%   <<"Logo3xUrl">> => string(),
 %%   <<"LogoUrl">> => string(),
 %%   <<"SupportEmail">> => string(),
 %%   <<"SupportLink">> => string()
 %% }
--type default_client_branding_attributes() :: #{binary() => any()}.
+-type ios_client_branding_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% active_directory_config() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"ServiceAccountSecretArn">> => string()
+%% ios_import_client_branding_attributes() :: #{
+%%   <<"ForgotPasswordLink">> => string(),
+%%   <<"LoginMessage">> => map(),
+%%   <<"Logo">> => binary(),
+%%   <<"Logo2x">> => binary(),
+%%   <<"Logo3x">> => binary(),
+%%   <<"SupportEmail">> => string(),
+%%   <<"SupportLink">> => string()
 %% }
--type active_directory_config() :: #{binary() => any()}.
+-type ios_import_client_branding_attributes() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_workspace_application_request() :: #{
-%%   <<"ApplicationId">> := string(),
-%%   <<"WorkspaceId">> := string()
+%% ip_rule_item() :: #{
+%%   <<"ipRule">> => string(),
+%%   <<"ruleDesc">> => string()
 %% }
--type disassociate_workspace_application_request() :: #{binary() => any()}.
+-type ip_rule_item() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_links_request() :: #{
+%%   <<"LinkStatusFilter">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_links_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_account_links_result() :: #{
+%%   <<"AccountLinks">> => list(account_link()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_links_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_management_cidr_ranges_request() :: #{
+%%   <<"ManagementCidrRangeConstraint">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_available_management_cidr_ranges_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_management_cidr_ranges_result() :: #{
+%%   <<"ManagementCidrRanges">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_available_management_cidr_ranges_result() :: #{binary() => any()}.
+
+%% Example:
+%% microsoft_entra_config() :: #{
+%%   <<"ApplicationConfigSecretArn">> => string(),
+%%   <<"TenantId">> => string()
+%% }
+-type microsoft_entra_config() :: #{binary() => any()}.
+
+%% Example:
+%% migrate_workspace_request() :: #{
+%%   <<"BundleId">> := string(),
+%%   <<"SourceWorkspaceId">> := string()
+%% }
+-type migrate_workspace_request() :: #{binary() => any()}.
+
+%% Example:
+%% migrate_workspace_result() :: #{
+%%   <<"SourceWorkspaceId">> => string(),
+%%   <<"TargetWorkspaceId">> => string()
+%% }
+-type migrate_workspace_result() :: #{binary() => any()}.
+
+%% Example:
+%% modification_state() :: #{
+%%   <<"Resource">> => list(any()),
+%%   <<"State">> => list(any())
+%% }
+-type modification_state() :: #{binary() => any()}.
+
+%% Example:
+%% modify_account_request() :: #{
+%%   <<"DedicatedTenancyManagementCidrRange">> => string(),
+%%   <<"DedicatedTenancySupport">> => list(any())
+%% }
+-type modify_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_account_result() :: #{
+%%   <<"Message">> => string()
+%% }
+-type modify_account_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_certificate_based_auth_properties_request() :: #{
+%%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
+%%   <<"PropertiesToDelete">> => list(list(any())()),
+%%   <<"ResourceId">> := string()
+%% }
+-type modify_certificate_based_auth_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_certificate_based_auth_properties_result() :: #{
+
+%% }
+-type modify_certificate_based_auth_properties_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_client_properties_request() :: #{
+%%   <<"ClientProperties">> := client_properties(),
+%%   <<"ResourceId">> := string()
+%% }
+-type modify_client_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_client_properties_result() :: #{
+
+%% }
+-type modify_client_properties_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_endpoint_encryption_mode_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"EndpointEncryptionMode">> := list(any())
+%% }
+-type modify_endpoint_encryption_mode_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_endpoint_encryption_mode_response() :: #{
+
+%% }
+-type modify_endpoint_encryption_mode_response() :: #{binary() => any()}.
+
+%% Example:
+%% modify_saml_properties_request() :: #{
+%%   <<"PropertiesToDelete">> => list(list(any())()),
+%%   <<"ResourceId">> := string(),
+%%   <<"SamlProperties">> => saml_properties()
+%% }
+-type modify_saml_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_saml_properties_result() :: #{
+
+%% }
+-type modify_saml_properties_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_selfservice_permissions_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"SelfservicePermissions">> := selfservice_permissions()
+%% }
+-type modify_selfservice_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_selfservice_permissions_result() :: #{
+
+%% }
+-type modify_selfservice_permissions_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_streaming_properties_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"StreamingProperties">> => streaming_properties()
+%% }
+-type modify_streaming_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_streaming_properties_result() :: #{
+
+%% }
+-type modify_streaming_properties_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_workspace_access_properties_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"WorkspaceAccessProperties">> := workspace_access_properties()
+%% }
+-type modify_workspace_access_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_workspace_access_properties_result() :: #{
+
+%% }
+-type modify_workspace_access_properties_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_workspace_creation_properties_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"WorkspaceCreationProperties">> := workspace_creation_properties()
+%% }
+-type modify_workspace_creation_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_workspace_creation_properties_result() :: #{
+
+%% }
+-type modify_workspace_creation_properties_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_workspace_properties_request() :: #{
@@ -1546,16 +1645,543 @@
 -type modify_workspace_properties_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_tags_result() :: #{
+%% modify_workspace_properties_result() :: #{
 
 %% }
--type create_tags_result() :: #{binary() => any()}.
+-type modify_workspace_properties_result() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_exception() :: #{
+%% modify_workspace_state_request() :: #{
+%%   <<"WorkspaceId">> := string(),
+%%   <<"WorkspaceState">> := list(any())
+%% }
+-type modify_workspace_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_workspace_state_result() :: #{
+
+%% }
+-type modify_workspace_state_result() :: #{binary() => any()}.
+
+%% Example:
+%% network_access_configuration() :: #{
+%%   <<"EniId">> => string(),
+%%   <<"EniPrivateIpAddress">> => string()
+%% }
+-type network_access_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% operating_system() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type operating_system() :: #{binary() => any()}.
+
+%% Example:
+%% operating_system_not_compatible_exception() :: #{
+
+%% }
+-type operating_system_not_compatible_exception() :: #{binary() => any()}.
+
+%% Example:
+%% operation_in_progress_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type operation_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_supported_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type operation_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% pending_create_standby_workspaces_request() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"UserName">> => string(),
+%%   <<"WorkspaceId">> => string()
+%% }
+-type pending_create_standby_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_request() :: #{
+%%   <<"WorkspaceId">> => string()
+%% }
+-type reboot_request() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_workspaces_request() :: #{
+%%   <<"RebootWorkspaceRequests">> := list(reboot_request())
+%% }
+-type reboot_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% reboot_workspaces_result() :: #{
+%%   <<"FailedRequests">> => list(failed_workspace_change_request())
+%% }
+-type reboot_workspaces_result() :: #{binary() => any()}.
+
+%% Example:
+%% rebuild_request() :: #{
+%%   <<"WorkspaceId">> => string()
+%% }
+-type rebuild_request() :: #{binary() => any()}.
+
+%% Example:
+%% rebuild_workspaces_request() :: #{
+%%   <<"RebuildWorkspaceRequests">> := list(rebuild_request())
+%% }
+-type rebuild_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% rebuild_workspaces_result() :: #{
+%%   <<"FailedRequests">> => list(failed_workspace_change_request())
+%% }
+-type rebuild_workspaces_result() :: #{binary() => any()}.
+
+%% Example:
+%% register_workspace_directory_request() :: #{
+%%   <<"ActiveDirectoryConfig">> => active_directory_config(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"EnableSelfService">> => boolean(),
+%%   <<"IdcInstanceArn">> => string(),
+%%   <<"MicrosoftEntraConfig">> => microsoft_entra_config(),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Tenancy">> => list(any()),
+%%   <<"UserIdentityType">> => list(any()),
+%%   <<"WorkspaceDirectoryDescription">> => string(),
+%%   <<"WorkspaceDirectoryName">> => string(),
+%%   <<"WorkspaceType">> => list(any())
+%% }
+-type register_workspace_directory_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_workspace_directory_result() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type register_workspace_directory_result() :: #{binary() => any()}.
+
+%% Example:
+%% reject_account_link_invitation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"LinkId">> := string()
+%% }
+-type reject_account_link_invitation_request() :: #{binary() => any()}.
+
+%% Example:
+%% reject_account_link_invitation_result() :: #{
+%%   <<"AccountLink">> => account_link()
+%% }
+-type reject_account_link_invitation_result() :: #{binary() => any()}.
+
+%% Example:
+%% related_workspace_properties() :: #{
+%%   <<"Region">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"WorkspaceId">> => string()
+%% }
+-type related_workspace_properties() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_associated_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_associated_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_creation_failed_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_creation_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"ResourceId">> => string(),
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"ResourceId">> => string(),
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_unavailable_exception() :: #{
+%%   <<"ResourceId">> => string(),
+%%   <<"message">> => string()
+%% }
+-type resource_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restore_workspace_request() :: #{
+%%   <<"WorkspaceId">> := string()
+%% }
+-type restore_workspace_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_workspace_result() :: #{
+
+%% }
+-type restore_workspace_result() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_ip_rules_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"UserRules">> := list(string())
+%% }
+-type revoke_ip_rules_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_ip_rules_result() :: #{
+
+%% }
+-type revoke_ip_rules_result() :: #{binary() => any()}.
+
+%% Example:
+%% root_storage() :: #{
+%%   <<"Capacity">> => string()
+%% }
+-type root_storage() :: #{binary() => any()}.
+
+%% Example:
+%% saml_properties() :: #{
+%%   <<"RelayStateParameterName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UserAccessUrl">> => string()
+%% }
+-type saml_properties() :: #{binary() => any()}.
+
+%% Example:
+%% selfservice_permissions() :: #{
+%%   <<"ChangeComputeType">> => list(any()),
+%%   <<"IncreaseVolumeSize">> => list(any()),
+%%   <<"RebuildWorkspace">> => list(any()),
+%%   <<"RestartWorkspace">> => list(any()),
+%%   <<"SwitchRunningMode">> => list(any())
+%% }
+-type selfservice_permissions() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot() :: #{
+%%   <<"SnapshotTime">> => non_neg_integer()
+%% }
+-type snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% standby_workspace() :: #{
+%%   <<"DataReplication">> => list(any()),
+%%   <<"DirectoryId">> => string(),
+%%   <<"PrimaryWorkspaceId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VolumeEncryptionKey">> => string()
+%% }
+-type standby_workspace() :: #{binary() => any()}.
+
+%% Example:
+%% standby_workspaces_properties() :: #{
+%%   <<"DataReplication">> => list(any()),
+%%   <<"RecoverySnapshotTime">> => non_neg_integer(),
+%%   <<"StandbyWorkspaceId">> => string()
+%% }
+-type standby_workspaces_properties() :: #{binary() => any()}.
+
+%% Example:
+%% start_request() :: #{
+%%   <<"WorkspaceId">> => string()
+%% }
+-type start_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_workspaces_pool_request() :: #{
+%%   <<"PoolId">> := string()
+%% }
+-type start_workspaces_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_workspaces_pool_result() :: #{
+
+%% }
+-type start_workspaces_pool_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_workspaces_request() :: #{
+%%   <<"StartWorkspaceRequests">> := list(start_request())
+%% }
+-type start_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_workspaces_result() :: #{
+%%   <<"FailedRequests">> => list(failed_workspace_change_request())
+%% }
+-type start_workspaces_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_request() :: #{
+%%   <<"WorkspaceId">> => string()
+%% }
+-type stop_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_workspaces_pool_request() :: #{
+%%   <<"PoolId">> := string()
+%% }
+-type stop_workspaces_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_workspaces_pool_result() :: #{
+
+%% }
+-type stop_workspaces_pool_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_workspaces_request() :: #{
+%%   <<"StopWorkspaceRequests">> := list(stop_request())
+%% }
+-type stop_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_workspaces_result() :: #{
+%%   <<"FailedRequests">> => list(failed_workspace_change_request())
+%% }
+-type stop_workspaces_result() :: #{binary() => any()}.
+
+%% Example:
+%% storage_connector() :: #{
+%%   <<"ConnectorType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type storage_connector() :: #{binary() => any()}.
+
+%% Example:
+%% streaming_properties() :: #{
+%%   <<"GlobalAccelerator">> => global_accelerator_for_directory(),
+%%   <<"StorageConnectors">> => list(storage_connector()),
+%%   <<"StreamingExperiencePreferredProtocol">> => list(any()),
+%%   <<"UserSettings">> => list(user_setting())
+%% }
+-type streaming_properties() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_request() :: #{
+%%   <<"WorkspaceId">> => string()
+%% }
+-type terminate_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_workspaces_pool_request() :: #{
+%%   <<"PoolId">> := string()
+%% }
+-type terminate_workspaces_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_workspaces_pool_result() :: #{
+
+%% }
+-type terminate_workspaces_pool_result() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_workspaces_pool_session_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type terminate_workspaces_pool_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_workspaces_pool_session_result() :: #{
+
+%% }
+-type terminate_workspaces_pool_session_result() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_workspaces_request() :: #{
+%%   <<"TerminateWorkspaceRequests">> := list(terminate_request())
+%% }
+-type terminate_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_workspaces_result() :: #{
+%%   <<"FailedRequests">> => list(failed_workspace_change_request())
+%% }
+-type terminate_workspaces_result() :: #{binary() => any()}.
+
+%% Example:
+%% timeout_settings() :: #{
+%%   <<"DisconnectTimeoutInSeconds">> => integer(),
+%%   <<"IdleDisconnectTimeoutInSeconds">> => integer(),
+%%   <<"MaxUserDurationInSeconds">> => integer()
+%% }
+-type timeout_settings() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_network_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_network_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_workspace_configuration_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_workspace_configuration_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_connect_client_add_in_request() :: #{
+%%   <<"AddInId">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"URL">> => string()
+%% }
+-type update_connect_client_add_in_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_connect_client_add_in_result() :: #{
+
+%% }
+-type update_connect_client_add_in_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_alias_permission_request() :: #{
+%%   <<"AliasId">> := string(),
+%%   <<"ConnectionAliasPermission">> := connection_alias_permission()
+%% }
+-type update_connection_alias_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_connection_alias_permission_result() :: #{
+
+%% }
+-type update_connection_alias_permission_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_result() :: #{
+%%   <<"Description">> => string(),
+%%   <<"UpdateAvailable">> => boolean()
+%% }
+-type update_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_rules_of_ip_group_request() :: #{
+%%   <<"GroupId">> := string(),
+%%   <<"UserRules">> := list(ip_rule_item())
+%% }
+-type update_rules_of_ip_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_rules_of_ip_group_result() :: #{
+
+%% }
+-type update_rules_of_ip_group_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_bundle_request() :: #{
+%%   <<"BundleId">> => string(),
+%%   <<"ImageId">> => string()
+%% }
+-type update_workspace_bundle_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_bundle_result() :: #{
+
+%% }
+-type update_workspace_bundle_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_image_permission_request() :: #{
+%%   <<"AllowCopyImage">> := boolean(),
+%%   <<"ImageId">> := string(),
+%%   <<"SharedAccountId">> := string()
+%% }
+-type update_workspace_image_permission_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspace_image_permission_result() :: #{
+
+%% }
+-type update_workspace_image_permission_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspaces_pool_request() :: #{
+%%   <<"ApplicationSettings">> => application_settings_request(),
+%%   <<"BundleId">> => string(),
+%%   <<"Capacity">> => capacity(),
+%%   <<"Description">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"PoolId">> := string(),
+%%   <<"RunningMode">> => list(any()),
+%%   <<"TimeoutSettings">> => timeout_settings()
+%% }
+-type update_workspaces_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workspaces_pool_result() :: #{
+%%   <<"WorkspacesPool">> => workspaces_pool()
+%% }
+-type update_workspaces_pool_result() :: #{binary() => any()}.
+
+%% Example:
+%% user_setting() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"MaximumLength">> => integer(),
+%%   <<"Permission">> => list(any())
+%% }
+-type user_setting() :: #{binary() => any()}.
+
+%% Example:
+%% user_storage() :: #{
+%%   <<"Capacity">> => string()
+%% }
+-type user_storage() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% work_space_application() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LicenseType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"SupportedComputeTypeNames">> => list(list(any())()),
+%%   <<"SupportedOperatingSystemNames">> => list(list(any())())
+%% }
+-type work_space_application() :: #{binary() => any()}.
+
+%% Example:
+%% work_space_application_deployment() :: #{
+%%   <<"Associations">> => list(workspace_resource_association())
+%% }
+-type work_space_application_deployment() :: #{binary() => any()}.
 
 %% Example:
 %% workspace() :: #{
@@ -1583,111 +2209,36 @@
 -type workspace() :: #{binary() => any()}.
 
 %% Example:
-%% selfservice_permissions() :: #{
-%%   <<"ChangeComputeType">> => list(any()),
-%%   <<"IncreaseVolumeSize">> => list(any()),
-%%   <<"RebuildWorkspace">> => list(any()),
-%%   <<"RestartWorkspace">> => list(any()),
-%%   <<"SwitchRunningMode">> => list(any())
+%% workspace_access_properties() :: #{
+%%   <<"AccessEndpointConfig">> => access_endpoint_config(),
+%%   <<"DeviceTypeAndroid">> => list(any()),
+%%   <<"DeviceTypeChromeOs">> => list(any()),
+%%   <<"DeviceTypeIos">> => list(any()),
+%%   <<"DeviceTypeLinux">> => list(any()),
+%%   <<"DeviceTypeOsx">> => list(any()),
+%%   <<"DeviceTypeWeb">> => list(any()),
+%%   <<"DeviceTypeWindows">> => list(any()),
+%%   <<"DeviceTypeWorkSpacesThinClient">> => list(any()),
+%%   <<"DeviceTypeZeroClient">> => list(any())
 %% }
--type selfservice_permissions() :: #{binary() => any()}.
+-type workspace_access_properties() :: #{binary() => any()}.
 
 %% Example:
-%% workspaces_default_role_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% workspace_bundle() :: #{
+%%   <<"BundleId">> => string(),
+%%   <<"BundleType">> => list(any()),
+%%   <<"ComputeType">> => compute_type(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"RootStorage">> => root_storage(),
+%%   <<"State">> => list(any()),
+%%   <<"UserStorage">> => user_storage()
 %% }
--type workspaces_default_role_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_client_properties_result() :: #{
-%%   <<"ClientPropertiesList">> => list(client_properties_result())
-%% }
--type describe_client_properties_result() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_workspaces_pool_request() :: #{
-%%   <<"PoolId">> := string()
-%% }
--type terminate_workspaces_pool_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_connection_alias_permission_request() :: #{
-%%   <<"AliasId">> := string(),
-%%   <<"ConnectionAliasPermission">> := connection_alias_permission()
-%% }
--type update_connection_alias_permission_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_snapshots_result() :: #{
-%%   <<"RebuildSnapshots">> => list(snapshot()),
-%%   <<"RestoreSnapshots">> => list(snapshot())
-%% }
--type describe_workspace_snapshots_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ip_groups_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Result">> => list(workspaces_ip_group())
-%% }
--type describe_ip_groups_result() :: #{binary() => any()}.
-
-%% Example:
-%% import_workspace_image_request() :: #{
-%%   <<"Applications">> => list(list(any())()),
-%%   <<"Ec2ImageId">> := string(),
-%%   <<"ImageDescription">> := string(),
-%%   <<"ImageName">> := string(),
-%%   <<"IngestionProcess">> := list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type import_workspace_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_connection_alias_request() :: #{
-%%   <<"ConnectionString">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_connection_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% revoke_ip_rules_result() :: #{
-
-%% }
--type revoke_ip_rules_result() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot() :: #{
-%%   <<"SnapshotTime">> => non_neg_integer()
-%% }
--type snapshot() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspaces_pools_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type describe_workspaces_pools_filter() :: #{binary() => any()}.
-
-%% Example:
-%% import_client_branding_result() :: #{
-%%   <<"DeviceTypeAndroid">> => default_client_branding_attributes(),
-%%   <<"DeviceTypeIos">> => ios_client_branding_attributes(),
-%%   <<"DeviceTypeLinux">> => default_client_branding_attributes(),
-%%   <<"DeviceTypeOsx">> => default_client_branding_attributes(),
-%%   <<"DeviceTypeWeb">> => default_client_branding_attributes(),
-%%   <<"DeviceTypeWindows">> => default_client_branding_attributes()
-%% }
--type import_client_branding_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_ip_group_request() :: #{
-%%   <<"GroupDesc">> => string(),
-%%   <<"GroupName">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UserRules">> => list(ip_rule_item())
-%% }
--type create_ip_group_request() :: #{binary() => any()}.
+-type workspace_bundle() :: #{binary() => any()}.
 
 %% Example:
 %% workspace_connection_status() :: #{
@@ -1699,153 +2250,15 @@
 -type workspace_connection_status() :: #{binary() => any()}.
 
 %% Example:
-%% delete_tags_result() :: #{
-
+%% workspace_creation_properties() :: #{
+%%   <<"CustomSecurityGroupId">> => string(),
+%%   <<"DefaultOu">> => string(),
+%%   <<"EnableInternetAccess">> => boolean(),
+%%   <<"EnableMaintenanceMode">> => boolean(),
+%%   <<"InstanceIamRoleArn">> => string(),
+%%   <<"UserEnabledAsLocalAdministrator">> => boolean()
 %% }
--type delete_tags_result() :: #{binary() => any()}.
-
-%% Example:
-%% register_workspace_directory_request() :: #{
-%%   <<"ActiveDirectoryConfig">> => active_directory_config(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"EnableSelfService">> => boolean(),
-%%   <<"IdcInstanceArn">> => string(),
-%%   <<"MicrosoftEntraConfig">> => microsoft_entra_config(),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Tenancy">> => list(any()),
-%%   <<"UserIdentityType">> => list(any()),
-%%   <<"WorkspaceDirectoryDescription">> => string(),
-%%   <<"WorkspaceDirectoryName">> => string(),
-%%   <<"WorkspaceType">> => list(any())
-%% }
--type register_workspace_directory_request() :: #{binary() => any()}.
-
-%% Example:
-%% compute_type() :: #{
-%%   <<"Name">> => list(any())
-%% }
--type compute_type() :: #{binary() => any()}.
-
-%% Example:
-%% update_workspace_image_permission_request() :: #{
-%%   <<"AllowCopyImage">> := boolean(),
-%%   <<"ImageId">> := string(),
-%%   <<"SharedAccountId">> := string()
-%% }
--type update_workspace_image_permission_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_alias_result() :: #{
-
-%% }
--type delete_connection_alias_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_workspace_image_request() :: #{
-%%   <<"Description">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"WorkspaceId">> := string()
-%% }
--type create_workspace_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% modify_endpoint_encryption_mode_response() :: #{
-
-%% }
--type modify_endpoint_encryption_mode_response() :: #{binary() => any()}.
-
-%% Example:
-%% application_settings_request() :: #{
-%%   <<"SettingsGroup">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type application_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% copy_workspace_image_result() :: #{
-%%   <<"ImageId">> => string()
-%% }
--type copy_workspace_image_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_workspace_access_properties_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"WorkspaceAccessProperties">> := workspace_access_properties()
-%% }
--type modify_workspace_access_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% user_storage() :: #{
-%%   <<"Capacity">> => string()
-%% }
--type user_storage() :: #{binary() => any()}.
-
-%% Example:
-%% migrate_workspace_request() :: #{
-%%   <<"BundleId">> := string(),
-%%   <<"SourceWorkspaceId">> := string()
-%% }
--type migrate_workspace_request() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_status() :: #{
-%%   <<"ActiveUserSessions">> => integer(),
-%%   <<"ActualUserSessions">> => integer(),
-%%   <<"AvailableUserSessions">> => integer(),
-%%   <<"DesiredUserSessions">> => integer()
-%% }
--type capacity_status() :: #{binary() => any()}.
-
-%% Example:
-%% associate_workspace_application_result() :: #{
-%%   <<"Association">> => workspace_resource_association()
-%% }
--type associate_workspace_application_result() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_workspace_directory_result() :: #{
-
-%% }
--type deregister_workspace_directory_result() :: #{binary() => any()}.
-
-%% Example:
-%% resource_associated_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_associated_exception() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_workspaces_pool_request() :: #{
-%%   <<"ApplicationSettings">> => application_settings_request(),
-%%   <<"BundleId">> => string(),
-%%   <<"Capacity">> => capacity(),
-%%   <<"Description">> => string(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"PoolId">> := string(),
-%%   <<"RunningMode">> => list(any()),
-%%   <<"TimeoutSettings">> => timeout_settings()
-%% }
--type update_workspaces_pool_request() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_workspaces_pool_session_result() :: #{
-
-%% }
--type terminate_workspaces_pool_session_result() :: #{binary() => any()}.
+-type workspace_creation_properties() :: #{binary() => any()}.
 
 %% Example:
 %% workspace_directory() :: #{
@@ -1882,97 +2295,76 @@
 -type workspace_directory() :: #{binary() => any()}.
 
 %% Example:
-%% id_c_config() :: #{
-%%   <<"ApplicationArn">> => string(),
-%%   <<"InstanceArn">> => string()
-%% }
--type id_c_config() :: #{binary() => any()}.
-
-%% Example:
-%% stop_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_workspace_change_request())
-%% }
--type stop_workspaces_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_client_properties_result() :: #{
-
-%% }
--type modify_client_properties_result() :: #{binary() => any()}.
-
-%% Example:
-%% standby_workspace() :: #{
-%%   <<"DataReplication">> => list(any()),
-%%   <<"DirectoryId">> => string(),
-%%   <<"PrimaryWorkspaceId">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VolumeEncryptionKey">> => string()
-%% }
--type standby_workspace() :: #{binary() => any()}.
-
-%% Example:
-%% create_standby_workspaces_result() :: #{
-%%   <<"FailedStandbyRequests">> => list(failed_create_standby_workspaces_request()),
-%%   <<"PendingStandbyRequests">> => list(pending_create_standby_workspaces_request())
-%% }
--type create_standby_workspaces_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_result() :: #{
-%%   <<"DedicatedTenancyAccountType">> => list(any()),
-%%   <<"DedicatedTenancyManagementCidrRange">> => string(),
-%%   <<"DedicatedTenancySupport">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type describe_account_result() :: #{binary() => any()}.
-
-%% Example:
-%% associate_connection_alias_result() :: #{
-%%   <<"ConnectionIdentifier">> => string()
-%% }
--type associate_connection_alias_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workspace_image_result() :: #{
-
-%% }
--type delete_workspace_image_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ip_group_result() :: #{
-
-%% }
--type delete_ip_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connect_client_add_in_request() :: #{
-%%   <<"AddInId">> := string(),
-%%   <<"ResourceId">> := string()
-%% }
--type delete_connect_client_add_in_request() :: #{binary() => any()}.
-
-%% Example:
-%% modify_certificate_based_auth_properties_request() :: #{
-%%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
-%%   <<"PropertiesToDelete">> => list(list(any())()),
-%%   <<"ResourceId">> := string()
-%% }
--type modify_certificate_based_auth_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_bundle_associations_result() :: #{
-%%   <<"Associations">> => list(bundle_resource_association())
-%% }
--type describe_bundle_associations_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_connect_client_add_in_request() :: #{
-%%   <<"AddInId">> := string(),
+%% workspace_image() :: #{
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorDetails">> => list(error_details()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ImageId">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"URL">> => string()
+%%   <<"OperatingSystem">> => operating_system(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"RequiredTenancy">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"Updates">> => update_result()
 %% }
--type update_connect_client_add_in_request() :: #{binary() => any()}.
+-type workspace_image() :: #{binary() => any()}.
+
+%% Example:
+%% workspace_properties() :: #{
+%%   <<"ComputeTypeName">> => list(any()),
+%%   <<"GlobalAccelerator">> => global_accelerator_for_work_space(),
+%%   <<"OperatingSystemName">> => list(any()),
+%%   <<"Protocols">> => list(list(any())()),
+%%   <<"RootVolumeSizeGib">> => integer(),
+%%   <<"RunningMode">> => list(any()),
+%%   <<"RunningModeAutoStopTimeoutInMinutes">> => integer(),
+%%   <<"UserVolumeSizeGib">> => integer()
+%% }
+-type workspace_properties() :: #{binary() => any()}.
+
+%% Example:
+%% workspace_request() :: #{
+%%   <<"BundleId">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"Ipv6Address">> => string(),
+%%   <<"RootVolumeEncryptionEnabled">> => boolean(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserName">> => string(),
+%%   <<"UserVolumeEncryptionEnabled">> => boolean(),
+%%   <<"VolumeEncryptionKey">> => string(),
+%%   <<"WorkspaceName">> => string(),
+%%   <<"WorkspaceProperties">> => workspace_properties()
+%% }
+-type workspace_request() :: #{binary() => any()}.
+
+%% Example:
+%% workspace_resource_association() :: #{
+%%   <<"AssociatedResourceId">> => string(),
+%%   <<"AssociatedResourceType">> => list(any()),
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => association_state_reason(),
+%%   <<"WorkspaceId">> => string()
+%% }
+-type workspace_resource_association() :: #{binary() => any()}.
+
+%% Example:
+%% workspaces_default_role_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type workspaces_default_role_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% workspaces_ip_group() :: #{
+%%   <<"groupDesc">> => string(),
+%%   <<"groupId">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"userRules">> => list(ip_rule_item())
+%% }
+-type workspaces_ip_group() :: #{binary() => any()}.
 
 %% Example:
 %% workspaces_pool() :: #{
@@ -1993,166 +2385,11 @@
 -type workspaces_pool() :: #{binary() => any()}.
 
 %% Example:
-%% streaming_properties() :: #{
-%%   <<"GlobalAccelerator">> => global_accelerator_for_directory(),
-%%   <<"StorageConnectors">> => list(storage_connector()),
-%%   <<"StreamingExperiencePreferredProtocol">> => list(any()),
-%%   <<"UserSettings">> => list(user_setting())
+%% workspaces_pool_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string()
 %% }
--type streaming_properties() :: #{binary() => any()}.
-
-%% Example:
-%% incompatible_applications_exception() :: #{
-
-%% }
--type incompatible_applications_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_custom_workspace_image_import_result() :: #{
-%%   <<"Created">> => non_neg_integer(),
-%%   <<"ErrorDetails">> => list(custom_workspace_image_import_error_details()),
-%%   <<"ImageBuilderInstanceId">> => string(),
-%%   <<"ImageId">> => string(),
-%%   <<"ImageSource">> => list(),
-%%   <<"InfrastructureConfigurationArn">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"ProgressPercentage">> => integer(),
-%%   <<"State">> => list(any()),
-%%   <<"StateMessage">> => string()
-%% }
--type describe_custom_workspace_image_import_result() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_request() :: #{
-%%   <<"WorkspaceId">> => string()
-%% }
--type terminate_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_workspaces_pool_request() :: #{
-%%   <<"ApplicationSettings">> => application_settings_request(),
-%%   <<"BundleId">> := string(),
-%%   <<"Capacity">> := capacity(),
-%%   <<"Description">> := string(),
-%%   <<"DirectoryId">> := string(),
-%%   <<"PoolName">> := string(),
-%%   <<"RunningMode">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TimeoutSettings">> => timeout_settings()
-%% }
--type create_workspaces_pool_request() :: #{binary() => any()}.
-
-%% Example:
-%% compute_not_compatible_exception() :: #{
-
-%% }
--type compute_not_compatible_exception() :: #{binary() => any()}.
-
-%% Example:
-%% rebuild_request() :: #{
-%%   <<"WorkspaceId">> => string()
-%% }
--type rebuild_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_client_properties_request() :: #{
-%%   <<"ResourceIds">> := list(string())
-%% }
--type describe_client_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_workspace_directory_request() :: #{
-%%   <<"DirectoryId">> := string()
-%% }
--type deregister_workspace_directory_request() :: #{binary() => any()}.
-
-%% Example:
-%% operating_system_not_compatible_exception() :: #{
-
-%% }
--type operating_system_not_compatible_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_rules_of_ip_group_result() :: #{
-
-%% }
--type update_rules_of_ip_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tags_result() :: #{
-%%   <<"TagList">> => list(tag())
-%% }
--type describe_tags_result() :: #{binary() => any()}.
-
-%% Example:
-%% modify_selfservice_permissions_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"SelfservicePermissions">> := selfservice_permissions()
-%% }
--type modify_selfservice_permissions_request() :: #{binary() => any()}.
-
-%% Example:
-%% modify_workspace_state_result() :: #{
-
-%% }
--type modify_workspace_state_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_bundles_result() :: #{
-%%   <<"Bundles">> => list(workspace_bundle()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_workspace_bundles_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_request() :: #{
-%%   <<"WorkspaceId">> => string()
-%% }
--type start_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_ip_groups_request() :: #{
-%%   <<"GroupIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_ip_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_connection_alias_permission_result() :: #{
-
-%% }
--type update_connection_alias_permission_result() :: #{binary() => any()}.
-
-%% Example:
-%% work_space_application_deployment() :: #{
-%%   <<"Associations">> => list(workspace_resource_association())
-%% }
--type work_space_application_deployment() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_workspace_configuration_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_workspace_configuration_exception() :: #{binary() => any()}.
-
-%% Example:
-%% application_not_supported_exception() :: #{
-
-%% }
--type application_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stop_workspaces_pool_result() :: #{
-
-%% }
--type stop_workspaces_pool_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tags_request() :: #{
-%%   <<"ResourceId">> := string()
-%% }
--type describe_tags_request() :: #{binary() => any()}.
+-type workspaces_pool_error() :: #{binary() => any()}.
 
 %% Example:
 %% workspaces_pool_session() :: #{
@@ -2168,431 +2405,195 @@
 %% }
 -type workspaces_pool_session() :: #{binary() => any()}.
 
-%% Example:
-%% reboot_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_workspace_change_request())
-%% }
--type reboot_workspaces_result() :: #{binary() => any()}.
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% operation_not_supported_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"reason">> => string()
-%% }
--type operation_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_ip_groups_request() :: #{
-%%   <<"DirectoryId">> := string(),
-%%   <<"GroupIds">> := list(string())
-%% }
--type disassociate_ip_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% connection_alias_association() :: #{
-%%   <<"AssociatedAccountId">> => string(),
-%%   <<"AssociationStatus">> => list(any()),
-%%   <<"ConnectionIdentifier">> => string(),
-%%   <<"ResourceId">> => string()
-%% }
--type connection_alias_association() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_image_permissions_request() :: #{
-%%   <<"ImageId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_workspace_image_permissions_request() :: #{binary() => any()}.
-
-%% Example:
-%% global_accelerator_for_directory() :: #{
-%%   <<"Mode">> => list(any()),
-%%   <<"PreferredProtocol">> => list(any())
-%% }
--type global_accelerator_for_directory() :: #{binary() => any()}.
-
-%% Example:
-%% failed_create_workspace_request() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"WorkspaceRequest">> => workspace_request()
-%% }
--type failed_create_workspace_request() :: #{binary() => any()}.
-
-%% Example:
-%% authorize_ip_rules_result() :: #{
-
-%% }
--type authorize_ip_rules_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspaces_pools_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WorkspacesPools">> => list(workspaces_pool())
-%% }
--type describe_workspaces_pools_result() :: #{binary() => any()}.
-
-%% Example:
-%% connection_alias() :: #{
-%%   <<"AliasId">> => string(),
-%%   <<"Associations">> => list(connection_alias_association()),
-%%   <<"ConnectionString">> => string(),
-%%   <<"OwnerAccountId">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type connection_alias() :: #{binary() => any()}.
-
-%% Example:
-%% stop_workspaces_pool_request() :: #{
-%%   <<"PoolId">> := string()
-%% }
--type stop_workspaces_pool_request() :: #{binary() => any()}.
-
-%% Example:
-%% workspace_request() :: #{
-%%   <<"BundleId">> => string(),
-%%   <<"DirectoryId">> => string(),
-%%   <<"Ipv6Address">> => string(),
-%%   <<"RootVolumeEncryptionEnabled">> => boolean(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UserName">> => string(),
-%%   <<"UserVolumeEncryptionEnabled">> => boolean(),
-%%   <<"VolumeEncryptionKey">> => string(),
-%%   <<"WorkspaceName">> => string(),
-%%   <<"WorkspaceProperties">> => workspace_properties()
-%% }
--type workspace_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspaces_connection_status_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WorkspaceIds">> => list(string())
-%% }
--type describe_workspaces_connection_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connection_alias_request() :: #{
-%%   <<"AliasId">> := string()
-%% }
--type delete_connection_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_workspaces_pool_session_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type terminate_workspaces_pool_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connect_client_add_ins_result() :: #{
-%%   <<"AddIns">> => list(connect_client_add_in()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_connect_client_add_ins_result() :: #{binary() => any()}.
-
-%% Example:
-%% application_settings_response() :: #{
-%%   <<"S3BucketName">> => string(),
-%%   <<"SettingsGroup">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type application_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_directories_result() :: #{
-%%   <<"Directories">> => list(workspace_directory()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_workspace_directories_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_client_branding_request() :: #{
-%%   <<"ResourceId">> := string()
-%% }
--type describe_client_branding_request() :: #{binary() => any()}.
-
-%% Example:
-%% client_properties_result() :: #{
-%%   <<"ClientProperties">> => client_properties(),
-%%   <<"ResourceId">> => string()
-%% }
--type client_properties_result() :: #{binary() => any()}.
-
-%% Example:
-%% reject_account_link_invitation_result() :: #{
-%%   <<"AccountLink">> => account_link()
-%% }
--type reject_account_link_invitation_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_applications_result() :: #{
-%%   <<"Applications">> => list(work_space_application()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_applications_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_snapshots_request() :: #{
-%%   <<"WorkspaceId">> := string()
-%% }
--type describe_workspace_snapshots_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_connection_alias_result() :: #{
-
-%% }
--type disassociate_connection_alias_result() :: #{binary() => any()}.
-
-%% Example:
-%% stop_workspaces_request() :: #{
-%%   <<"StopWorkspaceRequests">> := list(stop_request())
-%% }
--type stop_workspaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_connect_client_add_ins_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceId">> := string()
-%% }
--type describe_connect_client_add_ins_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspaces_pools_request() :: #{
-%%   <<"Filters">> => list(describe_workspaces_pools_filter()),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PoolIds">> => list(string())
-%% }
--type describe_workspaces_pools_request() :: #{binary() => any()}.
-
-%% Example:
-%% import_client_branding_request() :: #{
-%%   <<"DeviceTypeAndroid">> => default_import_client_branding_attributes(),
-%%   <<"DeviceTypeIos">> => ios_import_client_branding_attributes(),
-%%   <<"DeviceTypeLinux">> => default_import_client_branding_attributes(),
-%%   <<"DeviceTypeOsx">> => default_import_client_branding_attributes(),
-%%   <<"DeviceTypeWeb">> => default_import_client_branding_attributes(),
-%%   <<"DeviceTypeWindows">> => default_import_client_branding_attributes(),
-%%   <<"ResourceId">> := string()
-%% }
--type import_client_branding_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_connection_alias_request() :: #{
-%%   <<"AliasId">> := string(),
-%%   <<"ResourceId">> := string()
-%% }
--type associate_connection_alias_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_ip_group_result() :: #{
-%%   <<"GroupId">> => string()
-%% }
--type create_ip_group_result() :: #{binary() => any()}.
-
-%% Example:
-%% migrate_workspace_result() :: #{
-%%   <<"SourceWorkspaceId">> => string(),
-%%   <<"TargetWorkspaceId">> => string()
-%% }
--type migrate_workspace_result() :: #{binary() => any()}.
-
 -type accept_account_link_invitation_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_connection_alias_errors() ::
-    operation_not_supported_exception() | 
+    resource_not_found_exception() | 
     resource_associated_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    operation_not_supported_exception() | 
     invalid_resource_state_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type associate_ip_groups_errors() ::
-    operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    operation_not_supported_exception() | 
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type associate_workspace_application_errors() ::
-    operation_not_supported_exception() | 
-    resource_already_exists_exception() | 
-    application_not_supported_exception() | 
-    operating_system_not_compatible_exception() | 
-    compute_not_compatible_exception() | 
-    incompatible_applications_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    resource_already_exists_exception() | 
+    operation_not_supported_exception() | 
+    operating_system_not_compatible_exception() | 
+    invalid_parameter_values_exception() | 
+    incompatible_applications_exception() | 
+    compute_not_compatible_exception() | 
+    application_not_supported_exception() | 
+    access_denied_exception().
 
 -type authorize_ip_rules_errors() ::
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type copy_workspace_image_errors() ::
-    operation_not_supported_exception() | 
-    resource_already_exists_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    resource_limit_exceeded_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
-    resource_unavailable_exception().
+    resource_limit_exceeded_exception() | 
+    resource_already_exists_exception() | 
+    operation_not_supported_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type create_account_link_invitation_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_connect_client_add_in_errors() ::
-    resource_already_exists_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
     resource_creation_failed_exception() | 
-    resource_not_found_exception().
+    resource_already_exists_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type create_connection_alias_errors() ::
-    operation_not_supported_exception() | 
+    resource_limit_exceeded_exception() | 
     resource_already_exists_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    operation_not_supported_exception() | 
     invalid_resource_state_exception() | 
-    resource_limit_exceeded_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type create_ip_group_errors() ::
-    resource_already_exists_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    resource_limit_exceeded_exception() | 
     resource_creation_failed_exception() | 
-    resource_limit_exceeded_exception().
+    resource_already_exists_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type create_standby_workspaces_errors() ::
-    operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    operation_not_supported_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type create_tags_errors() ::
-    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_values_exception().
 
 -type create_updated_workspace_image_errors() ::
-    operation_not_supported_exception() | 
-    resource_already_exists_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_already_exists_exception() | 
+    operation_not_supported_exception() | 
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type create_workspace_bundle_errors() ::
-    resource_already_exists_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    resource_limit_exceeded_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
-    resource_unavailable_exception().
+    resource_limit_exceeded_exception() | 
+    resource_already_exists_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type create_workspace_image_errors() ::
-    operation_not_supported_exception() | 
-    resource_already_exists_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_already_exists_exception() | 
+    operation_not_supported_exception() | 
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type create_workspaces_errors() ::
-    invalid_parameter_values_exception() | 
-    resource_limit_exceeded_exception().
+    resource_limit_exceeded_exception() | 
+    invalid_parameter_values_exception().
 
 -type create_workspaces_pool_errors() ::
-    operation_not_supported_exception() | 
-    resource_already_exists_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_already_exists_exception() | 
+    operation_not_supported_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type delete_account_link_invitation_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_client_branding_errors() ::
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_connect_client_add_in_errors() ::
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_connection_alias_errors() ::
-    operation_not_supported_exception() | 
+    resource_not_found_exception() | 
     resource_associated_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    operation_not_supported_exception() | 
     invalid_resource_state_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type delete_ip_group_errors() ::
+    resource_not_found_exception() | 
     resource_associated_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_tags_errors() ::
-    invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_values_exception().
 
 -type delete_workspace_bundle_errors() ::
+    resource_not_found_exception() | 
     resource_associated_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_workspace_image_errors() ::
     resource_associated_exception() | 
-    access_denied_exception() | 
-    invalid_resource_state_exception().
+    invalid_resource_state_exception() | 
+    access_denied_exception().
 
 -type deploy_workspace_applications_errors() ::
-    operation_not_supported_exception() | 
-    incompatible_applications_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    operation_not_supported_exception() | 
+    invalid_parameter_values_exception() | 
+    incompatible_applications_exception() | 
+    access_denied_exception().
 
 -type deregister_workspace_directory_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
     invalid_resource_state_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type describe_account_errors() ::
     access_denied_exception().
@@ -2601,71 +2602,71 @@
     access_denied_exception().
 
 -type describe_application_associations_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_applications_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_bundle_associations_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_client_branding_errors() ::
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_client_properties_errors() ::
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_connect_client_add_ins_errors() ::
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_connection_alias_permissions_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_connection_aliases_errors() ::
     operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type describe_custom_workspace_image_import_errors() ::
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type describe_image_associations_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_ip_groups_errors() ::
-    access_denied_exception() | 
-    invalid_parameter_values_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type describe_tags_errors() ::
     resource_not_found_exception().
 
 -type describe_workspace_associations_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_workspace_bundles_errors() ::
     invalid_parameter_values_exception().
@@ -2674,170 +2675,170 @@
     invalid_parameter_values_exception().
 
 -type describe_workspace_image_permissions_errors() ::
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_workspace_images_errors() ::
     access_denied_exception().
 
 -type describe_workspace_snapshots_errors() ::
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_workspaces_errors() ::
-    invalid_parameter_values_exception() | 
-    resource_unavailable_exception().
+    resource_unavailable_exception() | 
+    invalid_parameter_values_exception().
 
 -type describe_workspaces_connection_status_errors() ::
     invalid_parameter_values_exception().
 
 -type describe_workspaces_pool_sessions_errors() ::
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_workspaces_pools_errors() ::
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_connection_alias_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
     invalid_resource_state_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type disassociate_ip_groups_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
     invalid_resource_state_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type disassociate_workspace_application_errors() ::
-    operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    operation_not_supported_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type get_account_link_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type import_client_branding_errors() ::
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type import_custom_workspace_image_errors() ::
-    operation_not_supported_exception() | 
-    resource_already_exists_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_already_exists_exception() | 
+    operation_not_supported_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type import_workspace_image_errors() ::
-    operation_not_supported_exception() | 
-    resource_already_exists_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_already_exists_exception() | 
+    operation_not_supported_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type list_account_links_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_available_management_cidr_ranges_errors() ::
-    access_denied_exception() | 
-    invalid_parameter_values_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type migrate_workspace_errors() ::
-    operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    operation_in_progress_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
-    resource_unavailable_exception().
+    operation_not_supported_exception() | 
+    operation_in_progress_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type modify_account_errors() ::
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
-    resource_unavailable_exception().
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type modify_certificate_based_auth_properties_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type modify_client_properties_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type modify_endpoint_encryption_mode_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type modify_saml_properties_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type modify_selfservice_permissions_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type modify_streaming_properties_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type modify_workspace_access_properties_errors() ::
-    operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception().
+    operation_not_supported_exception() | 
+    invalid_parameter_values_exception() | 
+    invalid_parameter_combination_exception() | 
+    access_denied_exception().
 
 -type modify_workspace_creation_properties_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type modify_workspace_properties_errors() ::
     unsupported_workspace_configuration_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
-    operation_in_progress_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
-    resource_unavailable_exception().
+    operation_in_progress_exception() | 
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type modify_workspace_state_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    invalid_parameter_values_exception() | 
     invalid_resource_state_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_values_exception().
 
 -type reboot_workspaces_errors() ::
     operation_not_supported_exception().
@@ -2846,108 +2847,108 @@
     operation_not_supported_exception().
 
 -type register_workspace_directory_errors() ::
-    operation_not_supported_exception() | 
-    resource_already_exists_exception() | 
-    access_denied_exception() | 
     workspaces_default_role_not_found_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
-    resource_limit_exceeded_exception() | 
+    unsupported_network_configuration_exception() | 
     resource_not_found_exception() | 
-    unsupported_network_configuration_exception().
+    resource_limit_exceeded_exception() | 
+    resource_already_exists_exception() | 
+    operation_not_supported_exception() | 
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type reject_account_link_invitation_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type restore_workspace_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type revoke_ip_rules_errors() ::
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    resource_not_found_exception() | 
     invalid_resource_state_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type start_workspaces_pool_errors() ::
-    operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
+    operation_not_supported_exception() | 
     operation_in_progress_exception() | 
-    resource_not_found_exception().
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type stop_workspaces_pool_errors() ::
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
+    resource_not_found_exception() | 
     operation_in_progress_exception() | 
-    resource_not_found_exception().
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type terminate_workspaces_pool_errors() ::
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
+    resource_not_found_exception() | 
     operation_in_progress_exception() | 
-    resource_not_found_exception().
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type terminate_workspaces_pool_session_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
     operation_in_progress_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type update_connect_client_add_in_errors() ::
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_values_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_connection_alias_permission_errors() ::
-    operation_not_supported_exception() | 
-    resource_associated_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_associated_exception() | 
+    operation_not_supported_exception() | 
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type update_rules_of_ip_group_errors() ::
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type update_workspace_bundle_errors() ::
-    operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
-    resource_unavailable_exception().
+    operation_not_supported_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type update_workspace_image_permission_errors() ::
-    operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
+    resource_unavailable_exception() | 
     resource_not_found_exception() | 
-    resource_unavailable_exception().
+    operation_not_supported_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 -type update_workspaces_pool_errors() ::
-    operation_not_supported_exception() | 
-    access_denied_exception() | 
-    invalid_parameter_values_exception() | 
-    invalid_resource_state_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
+    operation_not_supported_exception() | 
     operation_in_progress_exception() | 
-    resource_not_found_exception().
+    invalid_resource_state_exception() | 
+    invalid_parameter_values_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -3349,7 +3350,17 @@ create_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkspaces">>, Input, Options).
 
-%% @doc Creates a pool of WorkSpaces.
+%% @doc
+%% End of support notice: On December 31, 2027, Amazon Web Services will end
+%% support for Amazon WorkSpaces Pools.
+%%
+%% After December 31, 2027,
+%% you will no longer be able to access the Amazon WorkSpaces Pools console
+%% or Amazon WorkSpaces Pools resources. For more information, see
+%% Amazon WorkSpaces Pools end of support:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html.
+%%
+%% Creates a pool of WorkSpaces.
 -spec create_workspaces_pool(aws_client:aws_client(), create_workspaces_pool_request()) ->
     {ok, create_workspaces_pool_result(), tuple()} |
     {error, any()} |
@@ -4028,8 +4039,18 @@ describe_workspaces_connection_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspacesConnectionStatus">>, Input, Options).
 
-%% @doc Retrieves a list that describes the streaming sessions for a
-%% specified pool.
+%% @doc
+%% End of support notice: On December 31, 2027, Amazon Web Services will end
+%% support for Amazon WorkSpaces Pools.
+%%
+%% After December 31, 2027,
+%% you will no longer be able to access the Amazon WorkSpaces Pools console
+%% or Amazon WorkSpaces Pools resources. For more information, see
+%% Amazon WorkSpaces Pools end of support:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html.
+%%
+%% Retrieves a list that describes the streaming sessions for a specified
+%% pool.
 -spec describe_workspaces_pool_sessions(aws_client:aws_client(), describe_workspaces_pool_sessions_request()) ->
     {ok, describe_workspaces_pool_sessions_result(), tuple()} |
     {error, any()} |
@@ -4046,7 +4067,17 @@ describe_workspaces_pool_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkspacesPoolSessions">>, Input, Options).
 
-%% @doc Describes the specified WorkSpaces Pools.
+%% @doc
+%% End of support notice: On December 31, 2027, Amazon Web Services will end
+%% support for Amazon WorkSpaces Pools.
+%%
+%% After December 31, 2027,
+%% you will no longer be able to access the Amazon WorkSpaces Pools console
+%% or Amazon WorkSpaces Pools resources. For more information, see
+%% Amazon WorkSpaces Pools end of support:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html.
+%%
+%% Describes the specified WorkSpaces Pools.
 -spec describe_workspaces_pools(aws_client:aws_client(), describe_workspaces_pools_request()) ->
     {ok, describe_workspaces_pools_result(), tuple()} |
     {error, any()} |
@@ -4717,7 +4748,17 @@ start_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartWorkspaces">>, Input, Options).
 
-%% @doc Starts the specified pool.
+%% @doc
+%% End of support notice: On December 31, 2027, Amazon Web Services will end
+%% support for Amazon WorkSpaces Pools.
+%%
+%% After December 31, 2027,
+%% you will no longer be able to access the Amazon WorkSpaces Pools console
+%% or Amazon WorkSpaces Pools resources. For more information, see
+%% Amazon WorkSpaces Pools end of support:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html.
+%%
+%% Starts the specified pool.
 %%
 %% You cannot start a pool unless it has a running mode of
 %% `AutoStop' and a state of `STOPPED'.
@@ -4757,7 +4798,17 @@ stop_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopWorkspaces">>, Input, Options).
 
-%% @doc Stops the specified pool.
+%% @doc
+%% End of support notice: On December 31, 2027, Amazon Web Services will end
+%% support for Amazon WorkSpaces Pools.
+%%
+%% After December 31, 2027,
+%% you will no longer be able to access the Amazon WorkSpaces Pools console
+%% or Amazon WorkSpaces Pools resources. For more information, see
+%% Amazon WorkSpaces Pools end of support:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html.
+%%
+%% Stops the specified pool.
 %%
 %% You cannot stop a WorkSpace pool unless it has a running mode of
 %% `AutoStop'
@@ -4834,7 +4885,17 @@ terminate_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateWorkspaces">>, Input, Options).
 
-%% @doc Terminates the specified pool.
+%% @doc
+%% End of support notice: On December 31, 2027, Amazon Web Services will end
+%% support for Amazon WorkSpaces Pools.
+%%
+%% After December 31, 2027,
+%% you will no longer be able to access the Amazon WorkSpaces Pools console
+%% or Amazon WorkSpaces Pools resources. For more information, see
+%% Amazon WorkSpaces Pools end of support:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html.
+%%
+%% Terminates the specified pool.
 -spec terminate_workspaces_pool(aws_client:aws_client(), terminate_workspaces_pool_request()) ->
     {ok, terminate_workspaces_pool_result(), tuple()} |
     {error, any()} |
@@ -4851,7 +4912,17 @@ terminate_workspaces_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateWorkspacesPool">>, Input, Options).
 
-%% @doc Terminates the pool session.
+%% @doc
+%% End of support notice: On December 31, 2027, Amazon Web Services will end
+%% support for Amazon WorkSpaces Pools.
+%%
+%% After December 31, 2027,
+%% you will no longer be able to access the Amazon WorkSpaces Pools console
+%% or Amazon WorkSpaces Pools resources. For more information, see
+%% Amazon WorkSpaces Pools end of support:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html.
+%%
+%% Terminates the pool session.
 -spec terminate_workspaces_pool_session(aws_client:aws_client(), terminate_workspaces_pool_session_request()) ->
     {ok, terminate_workspaces_pool_session_result(), tuple()} |
     {error, any()} |
@@ -5026,7 +5097,17 @@ update_workspace_image_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateWorkspaceImagePermission">>, Input, Options).
 
-%% @doc Updates the specified pool.
+%% @doc
+%% End of support notice: On December 31, 2027, Amazon Web Services will end
+%% support for Amazon WorkSpaces Pools.
+%%
+%% After December 31, 2027,
+%% you will no longer be able to access the Amazon WorkSpaces Pools console
+%% or Amazon WorkSpaces Pools resources. For more information, see
+%% Amazon WorkSpaces Pools end of support:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/wsp-pools-end-of-support.html.
+%%
+%% Updates the specified pool.
 -spec update_workspaces_pool(aws_client:aws_client(), update_workspaces_pool_request()) ->
     {ok, update_workspaces_pool_result(), tuple()} |
     {error, any()} |

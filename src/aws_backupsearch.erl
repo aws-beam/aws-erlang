@@ -51,10 +51,27 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% backup_creation_time_filter() :: #{
+%%   <<"CreatedAfter">> => [non_neg_integer()],
+%%   <<"CreatedBefore">> => [non_neg_integer()]
+%% }
+-type backup_creation_time_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -64,10 +81,6 @@
 %%   <<"RecoveryPointsScannedCount">> => [integer()]
 %% }
 -type current_search_progress() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -81,11 +94,110 @@
 
 
 %% Example:
+%% ebs_result_item() :: #{
+%%   <<"BackupResourceArn">> => [string()],
+%%   <<"BackupVaultName">> => [string()],
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"FilePath">> => string(),
+%%   <<"FileSize">> => [float()],
+%%   <<"FileSystemIdentifier">> => [string()],
+%%   <<"LastModifiedTime">> => [non_neg_integer()],
+%%   <<"SourceResourceArn">> => [string()]
+%% }
+-type ebs_result_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_job_summary() :: #{
+%%   <<"CompletionTime">> => [non_neg_integer()],
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"ExportJobArn">> => string(),
+%%   <<"ExportJobIdentifier">> => string(),
+%%   <<"SearchJobArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type export_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_search_job_input() :: #{}
+-type get_search_job_input() :: #{}.
+
+
+%% Example:
+%% get_search_job_output() :: #{
+%%   <<"CompletionTime">> => [non_neg_integer()],
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"CurrentSearchProgress">> => current_search_progress(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"ItemFilters">> => item_filters(),
+%%   <<"Name">> => [string()],
+%%   <<"SearchJobArn">> => string(),
+%%   <<"SearchJobIdentifier">> => string(),
+%%   <<"SearchScope">> => search_scope(),
+%%   <<"SearchScopeSummary">> => search_scope_summary(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type get_search_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_search_result_export_job_input() :: #{}
+-type get_search_result_export_job_input() :: #{}.
+
+
+%% Example:
+%% get_search_result_export_job_output() :: #{
+%%   <<"CompletionTime">> => [non_neg_integer()],
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"ExportJobArn">> => string(),
+%%   <<"ExportJobIdentifier">> => string(),
+%%   <<"ExportSpecification">> => list(),
+%%   <<"SearchJobArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type get_search_result_export_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% item_filters() :: #{
+%%   <<"EBSItemFilters">> => list(ebs_item_filter()),
+%%   <<"S3ItemFilters">> => list(s3_item_filter())
+%% }
+-type item_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_search_job_backups_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_search_job_backups_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_search_job_backups_output() :: #{
 %%   <<"NextToken">> => [string()],
 %%   <<"Results">> => list(search_job_backups_result())
 %% }
 -type list_search_job_backups_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_search_job_results_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_search_job_results_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -106,16 +218,11 @@
 
 
 %% Example:
-%% start_search_job_output() :: #{
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"SearchJobArn">> => string(),
-%%   <<"SearchJobIdentifier">> => string()
+%% list_search_jobs_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"SearchJobs">> => list(search_job_summary())
 %% }
--type start_search_job_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_search_job_output() :: #{}
--type stop_search_job_output() :: #{}.
+-type list_search_jobs_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -127,32 +234,49 @@
 %% }
 -type list_search_result_export_jobs_input() :: #{binary() => any()}.
 
-%% Example:
-%% stop_search_job_input() :: #{}
--type stop_search_job_input() :: #{}.
-
 
 %% Example:
-%% search_scope_summary() :: #{
-%%   <<"TotalItemsToScanCount">> => [float()],
-%%   <<"TotalRecoveryPointsToScanCount">> => [integer()]
+%% list_search_result_export_jobs_output() :: #{
+%%   <<"ExportJobs">> => list(export_job_summary()),
+%%   <<"NextToken">> => [string()]
 %% }
--type search_scope_summary() :: #{binary() => any()}.
+-type list_search_result_export_jobs_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list([string()]())
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_search_jobs_output() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"SearchJobs">> => list(search_job_summary())
+%% long_condition() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => [float()]
 %% }
--type list_search_jobs_output() :: #{binary() => any()}.
+-type long_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_export_specification() :: #{
+%%   <<"DestinationBucket">> => [string()],
+%%   <<"DestinationPrefix">> => [string()]
+%% }
+-type s3_export_specification() :: #{binary() => any()}.
 
 
 %% Example:
@@ -181,59 +305,16 @@
 
 
 %% Example:
-%% backup_creation_time_filter() :: #{
-%%   <<"CreatedAfter">> => [non_neg_integer()],
-%%   <<"CreatedBefore">> => [non_neg_integer()]
-%% }
--type backup_creation_time_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% time_condition() :: #{
-%%   <<"Operator">> => list(any()),
-%%   <<"Value">> => [non_neg_integer()]
-%% }
--type time_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_search_job_output() :: #{
-%%   <<"CompletionTime">> => [non_neg_integer()],
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"CurrentSearchProgress">> => current_search_progress(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"ItemFilters">> => item_filters(),
-%%   <<"Name">> => [string()],
-%%   <<"SearchJobArn">> => string(),
-%%   <<"SearchJobIdentifier">> => string(),
-%%   <<"SearchScope">> => search_scope(),
-%%   <<"SearchScopeSummary">> => search_scope_summary(),
+%% search_job_backups_result() :: #{
+%%   <<"BackupCreationTime">> => [non_neg_integer()],
+%%   <<"BackupResourceArn">> => [string()],
+%%   <<"IndexCreationTime">> => [non_neg_integer()],
+%%   <<"ResourceType">> => list(any()),
+%%   <<"SourceResourceArn">> => [string()],
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => [string()]
 %% }
--type get_search_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_search_result_export_job_input() :: #{}
--type get_search_result_export_job_input() :: #{}.
+-type search_job_backups_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -251,16 +332,22 @@
 
 
 %% Example:
-%% search_job_backups_result() :: #{
-%%   <<"BackupCreationTime">> => [non_neg_integer()],
-%%   <<"BackupResourceArn">> => [string()],
-%%   <<"IndexCreationTime">> => [non_neg_integer()],
-%%   <<"ResourceType">> => list(any()),
-%%   <<"SourceResourceArn">> => [string()],
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => [string()]
+%% search_scope() :: #{
+%%   <<"BackupResourceArns">> => list(string()),
+%%   <<"BackupResourceCreationTime">> => backup_creation_time_filter(),
+%%   <<"BackupResourceTags">> => map(),
+%%   <<"BackupResourceTypes">> => list(list(any())()),
+%%   <<"SourceResourceArns">> => list([string()]())
 %% }
--type search_job_backups_result() :: #{binary() => any()}.
+-type search_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_scope_summary() :: #{
+%%   <<"TotalItemsToScanCount">> => [float()],
+%%   <<"TotalRecoveryPointsToScanCount">> => [integer()]
+%% }
+-type search_scope_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -272,56 +359,6 @@
 %%   <<"serviceCode">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_search_job_results_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_search_job_results_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_search_result_export_jobs_output() :: #{
-%%   <<"ExportJobs">> => list(export_job_summary()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_search_result_export_jobs_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_search_result_export_job_output() :: #{
-%%   <<"CompletionTime">> => [non_neg_integer()],
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"ExportJobArn">> => string(),
-%%   <<"ExportJobIdentifier">> => string(),
-%%   <<"ExportSpecification">> => list(),
-%%   <<"SearchJobArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => [string()]
-%% }
--type get_search_result_export_job_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_job_summary() :: #{
-%%   <<"CompletionTime">> => [non_neg_integer()],
-%%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"ExportJobArn">> => string(),
-%%   <<"ExportJobIdentifier">> => string(),
-%%   <<"SearchJobArn">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => [string()]
-%% }
--type export_job_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -337,112 +374,12 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% string_condition() :: #{
-%%   <<"Operator">> => list(any()),
-%%   <<"Value">> => [string()]
-%% }
--type string_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_export_specification() :: #{
-%%   <<"DestinationBucket">> => [string()],
-%%   <<"DestinationPrefix">> => [string()]
-%% }
--type s3_export_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_search_job_backups_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_search_job_backups_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_search_result_export_job_output() :: #{
-%%   <<"ExportJobArn">> => string(),
-%%   <<"ExportJobIdentifier">> => string()
-%% }
--type start_search_result_export_job_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% search_scope() :: #{
-%%   <<"BackupResourceArns">> => list(string()),
-%%   <<"BackupResourceCreationTime">> => backup_creation_time_filter(),
-%%   <<"BackupResourceTags">> => map(),
-%%   <<"BackupResourceTypes">> => list(list(any())()),
-%%   <<"SourceResourceArns">> => list([string()]())
-%% }
--type search_scope() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% ebs_result_item() :: #{
-%%   <<"BackupResourceArn">> => [string()],
-%%   <<"BackupVaultName">> => [string()],
+%% start_search_job_output() :: #{
 %%   <<"CreationTime">> => [non_neg_integer()],
-%%   <<"FilePath">> => string(),
-%%   <<"FileSize">> => [float()],
-%%   <<"FileSystemIdentifier">> => [string()],
-%%   <<"LastModifiedTime">> => [non_neg_integer()],
-%%   <<"SourceResourceArn">> => [string()]
+%%   <<"SearchJobArn">> => string(),
+%%   <<"SearchJobIdentifier">> => string()
 %% }
--type ebs_result_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_search_job_input() :: #{}
--type get_search_job_input() :: #{}.
-
-
-%% Example:
-%% item_filters() :: #{
-%%   <<"EBSItemFilters">> => list(ebs_item_filter()),
-%%   <<"S3ItemFilters">> => list(s3_item_filter())
-%% }
--type item_filters() :: #{binary() => any()}.
+-type start_search_job_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -457,11 +394,74 @@
 
 
 %% Example:
-%% long_condition() :: #{
-%%   <<"Operator">> => list(any()),
-%%   <<"Value">> => [float()]
+%% start_search_result_export_job_output() :: #{
+%%   <<"ExportJobArn">> => string(),
+%%   <<"ExportJobIdentifier">> => string()
 %% }
--type long_condition() :: #{binary() => any()}.
+-type start_search_result_export_job_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_search_job_input() :: #{}
+-type stop_search_job_input() :: #{}.
+
+%% Example:
+%% stop_search_job_output() :: #{}
+-type stop_search_job_output() :: #{}.
+
+
+%% Example:
+%% string_condition() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => [string()]
+%% }
+-type string_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_condition() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => [non_neg_integer()]
+%% }
+-type time_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list([string()]())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type get_search_job_errors() ::
     resource_not_found_exception().

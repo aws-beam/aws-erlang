@@ -243,36 +243,315 @@
 
 
 %% Example:
-%% organization_kubernetes_configuration() :: #{
-%%   <<"AuditLogs">> => organization_kubernetes_audit_logs_configuration()
+%% accept_administrator_invitation_request() :: #{
+%%   <<"AdministratorId">> := string(),
+%%   <<"InvitationId">> := string()
 %% }
--type organization_kubernetes_configuration() :: #{binary() => any()}.
+-type accept_administrator_invitation_request() :: #{binary() => any()}.
+
+%% Example:
+%% accept_administrator_invitation_response() :: #{}
+-type accept_administrator_invitation_response() :: #{}.
 
 
 %% Example:
-%% resource_data() :: #{
-%%   <<"AccessKey">> => access_key(),
-%%   <<"AutoscalingAutoScalingGroup">> => autoscaling_auto_scaling_group(),
-%%   <<"CloudformationStack">> => cloudformation_stack(),
-%%   <<"Container">> => container_finding_resource(),
-%%   <<"Ec2Image">> => ec2_image(),
-%%   <<"Ec2Instance">> => ec2_instance(),
-%%   <<"Ec2LaunchTemplate">> => ec2_launch_template(),
-%%   <<"Ec2NetworkInterface">> => ec2_network_interface(),
-%%   <<"Ec2Vpc">> => ec2_vpc(),
-%%   <<"EcsCluster">> => ecs_cluster(),
-%%   <<"EcsTask">> => ecs_task(),
-%%   <<"EksCluster">> => eks_cluster(),
-%%   <<"IamInstanceProfile">> => iam_instance_profile_v2(),
-%%   <<"KubernetesWorkload">> => kubernetes_workload(),
-%%   <<"S3Bucket">> => s3_bucket(),
-%%   <<"S3Object">> => s3_object()
+%% accept_invitation_request() :: #{
+%%   <<"InvitationId">> := string(),
+%%   <<"MasterId">> := string()
 %% }
--type resource_data() :: #{binary() => any()}.
+-type accept_invitation_request() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_from_master_account_request() :: #{}
--type disassociate_from_master_account_request() :: #{}.
+%% accept_invitation_response() :: #{}
+-type accept_invitation_response() :: #{}.
+
+
+%% Example:
+%% access_control_list() :: #{
+%%   <<"AllowsPublicReadAccess">> => boolean(),
+%%   <<"AllowsPublicWriteAccess">> => boolean()
+%% }
+-type access_control_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_key() :: #{
+%%   <<"PrincipalId">> => string(),
+%%   <<"UserName">> => string(),
+%%   <<"UserType">> => string()
+%% }
+-type access_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_key_details() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"PrincipalId">> => string(),
+%%   <<"UserName">> => string(),
+%%   <<"UserType">> => string()
+%% }
+-type access_key_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% account() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Uid">> => string()
+%% }
+-type account() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_detail() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Email">> => string()
+%% }
+-type account_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_free_trial_info() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"DataSources">> => data_sources_free_trial(),
+%%   <<"Features">> => list(free_trial_feature_configuration_result())
+%% }
+-type account_free_trial_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_level_permissions() :: #{
+%%   <<"BlockPublicAccess">> => block_public_access()
+%% }
+-type account_level_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_statistics() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"LastGeneratedAt">> => non_neg_integer(),
+%%   <<"TotalFindings">> => integer()
+%% }
+-type account_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% action() :: #{
+%%   <<"ActionType">> => string(),
+%%   <<"AwsApiCallAction">> => aws_api_call_action(),
+%%   <<"DnsRequestAction">> => dns_request_action(),
+%%   <<"KubernetesApiCallAction">> => kubernetes_api_call_action(),
+%%   <<"KubernetesPermissionCheckedDetails">> => kubernetes_permission_checked_details(),
+%%   <<"KubernetesRoleBindingDetails">> => kubernetes_role_binding_details(),
+%%   <<"KubernetesRoleDetails">> => kubernetes_role_details(),
+%%   <<"NetworkConnectionAction">> => network_connection_action(),
+%%   <<"PortProbeAction">> => port_probe_action(),
+%%   <<"RdsLoginAttemptAction">> => rds_login_attempt_action()
+%% }
+-type action() :: #{binary() => any()}.
+
+
+%% Example:
+%% actor() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Process">> => actor_process(),
+%%   <<"Session">> => session(),
+%%   <<"User">> => user()
+%% }
+-type actor() :: #{binary() => any()}.
+
+
+%% Example:
+%% actor_process() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Sha256">> => string()
+%% }
+-type actor_process() :: #{binary() => any()}.
+
+
+%% Example:
+%% additional_info() :: #{
+%%   <<"DeviceName">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% addon_details() :: #{
+%%   <<"AddonStatus">> => string(),
+%%   <<"AddonVersion">> => string()
+%% }
+-type addon_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% admin_account() :: #{
+%%   <<"AdminAccountId">> => string(),
+%%   <<"AdminStatus">> => list(any())
+%% }
+-type admin_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% administrator() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"InvitationId">> => string(),
+%%   <<"InvitedAt">> => string(),
+%%   <<"RelationshipStatus">> => string()
+%% }
+-type administrator() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_details() :: #{
+%%   <<"Version">> => string()
+%% }
+-type agent_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomaly() :: #{
+%%   <<"Profiles">> => map(),
+%%   <<"Unusual">> => anomaly_unusual()
+%% }
+-type anomaly() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomaly_object() :: #{
+%%   <<"Observations">> => observations(),
+%%   <<"ProfileSubtype">> => list(any()),
+%%   <<"ProfileType">> => list(any())
+%% }
+-type anomaly_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomaly_unusual() :: #{
+%%   <<"Behavior">> => map()
+%% }
+-type anomaly_unusual() :: #{binary() => any()}.
+
+
+%% Example:
+%% archive_findings_request() :: #{
+%%   <<"FindingIds">> := list(string())
+%% }
+-type archive_findings_request() :: #{binary() => any()}.
+
+%% Example:
+%% archive_findings_response() :: #{}
+-type archive_findings_response() :: #{}.
+
+
+%% Example:
+%% autonomous_system() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Number">> => integer()
+%% }
+-type autonomous_system() :: #{binary() => any()}.
+
+
+%% Example:
+%% autoscaling_auto_scaling_group() :: #{
+%%   <<"Ec2InstanceUids">> => list(string())
+%% }
+-type autoscaling_auto_scaling_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_api_call_action() :: #{
+%%   <<"AffectedResources">> => map(),
+%%   <<"Api">> => string(),
+%%   <<"CallerType">> => string(),
+%%   <<"DomainDetails">> => domain_details(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"RemoteAccountDetails">> => remote_account_details(),
+%%   <<"RemoteIpDetails">> => remote_ip_details(),
+%%   <<"ServiceName">> => string(),
+%%   <<"UserAgent">> => string()
+%% }
+-type aws_api_call_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_guardrail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type bedrock_guardrail() :: #{binary() => any()}.
+
+
+%% Example:
+%% bedrock_guardrail_details() :: #{
+%%   <<"ContentPolicyFilters">> => list(content_policy_filter()),
+%%   <<"GuardrailAction">> => list(any()),
+%%   <<"GuardrailArn">> => string(),
+%%   <<"GuardrailSource">> => list(any()),
+%%   <<"GuardrailVersion">> => string(),
+%%   <<"Guardrails">> => list(bedrock_guardrail())
+%% }
+-type bedrock_guardrail_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% block_public_access() :: #{
+%%   <<"BlockPublicAcls">> => boolean(),
+%%   <<"BlockPublicPolicy">> => boolean(),
+%%   <<"IgnorePublicAcls">> => boolean(),
+%%   <<"RestrictPublicBuckets">> => boolean()
+%% }
+-type block_public_access() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_level_permissions() :: #{
+%%   <<"AccessControlList">> => access_control_list(),
+%%   <<"BlockPublicAccess">> => block_public_access(),
+%%   <<"BucketPolicy">> => bucket_policy()
+%% }
+-type bucket_level_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_policy() :: #{
+%%   <<"AllowsPublicReadAccess">> => boolean(),
+%%   <<"AllowsPublicWriteAccess">> => boolean()
+%% }
+-type bucket_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% city() :: #{
+%%   <<"CityName">> => string()
+%% }
+-type city() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_details() :: #{
+%%   <<"Account">> => string(),
+%%   <<"Provider">> => list(any()),
+%%   <<"Region">> => string()
+%% }
+-type cloud_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -283,129 +562,38 @@
 
 
 %% Example:
-%% organization() :: #{
-%%   <<"Asn">> => string(),
-%%   <<"AsnOrg">> => string(),
-%%   <<"Isp">> => string(),
-%%   <<"Org">> => string()
+%% cloudformation_stack() :: #{
+%%   <<"Ec2InstanceUids">> => list(string())
 %% }
--type organization() :: #{binary() => any()}.
+-type cloudformation_stack() :: #{binary() => any()}.
 
 
 %% Example:
-%% instance_details() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"IamInstanceProfile">> => iam_instance_profile(),
-%%   <<"ImageDescription">> => string(),
-%%   <<"ImageId">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"InstanceState">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"LaunchTime">> => string(),
-%%   <<"NetworkInterfaces">> => list(network_interface()),
-%%   <<"OutpostArn">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"ProductCodes">> => list(product_code()),
-%%   <<"Tags">> => list(tag())
+%% condition() :: #{
+%%   <<"Eq">> => list(string()),
+%%   <<"Equals">> => list(string()),
+%%   <<"GreaterThan">> => float(),
+%%   <<"GreaterThanOrEqual">> => float(),
+%%   <<"Gt">> => integer(),
+%%   <<"Gte">> => integer(),
+%%   <<"LessThan">> => float(),
+%%   <<"LessThanOrEqual">> => float(),
+%%   <<"Lt">> => integer(),
+%%   <<"Lte">> => integer(),
+%%   <<"Matches">> => list(string()),
+%%   <<"Neq">> => list(string()),
+%%   <<"NotEquals">> => list(string()),
+%%   <<"NotMatches">> => list(string())
 %% }
--type instance_details() :: #{binary() => any()}.
+-type condition() :: #{binary() => any()}.
 
 
 %% Example:
-%% ebs_snapshot_details() :: #{
-%%   <<"SnapshotArn">> => string()
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
 %% }
--type ebs_snapshot_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_image_details() :: #{
-%%   <<"ImageArn">> => string()
-%% }
--type ec2_image_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% malware_scan() :: #{
-%%   <<"ResourceArn">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"ScanCompletedAt">> => non_neg_integer(),
-%%   <<"ScanId">> => string(),
-%%   <<"ScanResultStatus">> => list(any()),
-%%   <<"ScanStartedAt">> => non_neg_integer(),
-%%   <<"ScanStatus">> => list(any()),
-%%   <<"ScanType">> => list(any())
-%% }
--type malware_scan() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_data_source_configuration() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"DataSources">> => data_source_configurations_result(),
-%%   <<"Features">> => list(member_features_configuration_result())
-%% }
--type member_data_source_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_sources_free_trial() :: #{
-%%   <<"CloudTrail">> => data_source_free_trial(),
-%%   <<"DnsLogs">> => data_source_free_trial(),
-%%   <<"FlowLogs">> => data_source_free_trial(),
-%%   <<"Kubernetes">> => kubernetes_data_source_free_trial(),
-%%   <<"MalwareProtection">> => malware_protection_data_source_free_trial(),
-%%   <<"S3Logs">> => data_source_free_trial()
-%% }
--type data_sources_free_trial() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_usage_statistics_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Unit">> => string(),
-%%   <<"UsageCriteria">> := usage_criteria(),
-%%   <<"UsageStatisticType">> := list(any())
-%% }
--type get_usage_statistics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_data_source_result() :: #{
-%%   <<"DataSource">> => list(any()),
-%%   <<"Total">> => total()
-%% }
--type usage_data_source_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_resource_criteria() :: #{
-%%   <<"Exclude">> => map(),
-%%   <<"Include">> => map()
-%% }
--type scan_resource_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% decline_invitations_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
-%% }
--type decline_invitations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% malware_protection_plan_tagging_action() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type malware_protection_plan_tagging_action() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -422,127 +610,356 @@
 
 
 %% Example:
-%% remote_ip_details() :: #{
-%%   <<"City">> => city(),
-%%   <<"Country">> => country(),
-%%   <<"GeoLocation">> => geo_location(),
-%%   <<"IpAddressV4">> => string(),
-%%   <<"IpAddressV6">> => string(),
-%%   <<"Organization">> => organization()
+%% container_finding_resource() :: #{
+%%   <<"Image">> => string(),
+%%   <<"ImageUid">> => string()
 %% }
--type remote_ip_details() :: #{binary() => any()}.
+-type container_finding_resource() :: #{binary() => any()}.
 
 
 %% Example:
-%% recovery_point_details() :: #{
-%%   <<"BackupVaultName">> => string(),
-%%   <<"RecoveryPointArn">> => string()
+%% container_instance_details() :: #{
+%%   <<"CompatibleContainerInstances">> => float(),
+%%   <<"CoveredContainerInstances">> => float()
 %% }
--type recovery_point_details() :: #{binary() => any()}.
-
-%% Example:
-%% disable_organization_admin_account_response() :: #{}
--type disable_organization_admin_account_response() :: #{}.
+-type container_instance_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% kubernetes_data_source_free_trial() :: #{
-%%   <<"AuditLogs">> => data_source_free_trial()
+%% content_policy_filter() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Confidence">> => list(any()),
+%%   <<"Type">> => list(any())
 %% }
--type kubernetes_data_source_free_trial() :: #{binary() => any()}.
+-type content_policy_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% organization_ebs_volumes_result() :: #{
-%%   <<"AutoEnable">> => boolean()
+%% continuous_scan_details() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type organization_ebs_volumes_result() :: #{binary() => any()}.
+-type continuous_scan_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% administrator() :: #{
+%% country() :: #{
+%%   <<"CountryCode">> => string(),
+%%   <<"CountryName">> => string()
+%% }
+-type country() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_ec2_instance_details() :: #{
+%%   <<"AgentDetails">> => agent_details(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"ManagementType">> => list(any())
+%% }
+-type coverage_ec2_instance_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_ecs_cluster_details() :: #{
+%%   <<"ClusterName">> => string(),
+%%   <<"ContainerInstanceDetails">> => container_instance_details(),
+%%   <<"FargateDetails">> => fargate_details()
+%% }
+-type coverage_ecs_cluster_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_eks_cluster_details() :: #{
+%%   <<"AddonDetails">> => addon_details(),
+%%   <<"ClusterName">> => string(),
+%%   <<"CompatibleNodes">> => float(),
+%%   <<"CoveredNodes">> => float(),
+%%   <<"ManagementType">> => list(any())
+%% }
+-type coverage_eks_cluster_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_filter_condition() :: #{
+%%   <<"Equals">> => list(string()),
+%%   <<"NotEquals">> => list(string())
+%% }
+-type coverage_filter_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_filter_criteria() :: #{
+%%   <<"FilterCriterion">> => list(coverage_filter_criterion())
+%% }
+-type coverage_filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_filter_criterion() :: #{
+%%   <<"CriterionKey">> => list(any()),
+%%   <<"FilterCondition">> => coverage_filter_condition()
+%% }
+-type coverage_filter_criterion() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_resource() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"InvitationId">> => string(),
-%%   <<"InvitedAt">> => string(),
-%%   <<"RelationshipStatus">> => string()
+%%   <<"CoverageStatus">> => list(any()),
+%%   <<"DetectorId">> => string(),
+%%   <<"Issue">> => string(),
+%%   <<"ResourceDetails">> => coverage_resource_details(),
+%%   <<"ResourceId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type administrator() :: #{binary() => any()}.
+-type coverage_resource() :: #{binary() => any()}.
 
 
 %% Example:
-%% usage_statistics() :: #{
-%%   <<"SumByAccount">> => list(usage_account_result()),
-%%   <<"SumByDataSource">> => list(usage_data_source_result()),
-%%   <<"SumByFeature">> => list(usage_feature_result()),
-%%   <<"SumByResource">> => list(usage_resource_result()),
-%%   <<"TopAccountsByFeature">> => list(usage_top_accounts_result()),
-%%   <<"TopResources">> => list(usage_resource_result())
+%% coverage_resource_details() :: #{
+%%   <<"Ec2InstanceDetails">> => coverage_ec2_instance_details(),
+%%   <<"EcsClusterDetails">> => coverage_ecs_cluster_details(),
+%%   <<"EksClusterDetails">> => coverage_eks_cluster_details(),
+%%   <<"ResourceType">> => list(any())
 %% }
--type usage_statistics() :: #{binary() => any()}.
+-type coverage_resource_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% filter_condition() :: #{
-%%   <<"EqualsValue">> => string(),
-%%   <<"GreaterThan">> => float(),
-%%   <<"LessThan">> => float()
+%% coverage_sort_criteria() :: #{
+%%   <<"AttributeName">> => list(any()),
+%%   <<"OrderBy">> => list(any())
 %% }
--type filter_condition() :: #{binary() => any()}.
+-type coverage_sort_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% additional_info() :: #{
-%%   <<"DeviceName">> => string(),
-%%   <<"VersionId">> => string()
+%% coverage_statistics() :: #{
+%%   <<"CountByCoverageStatus">> => map(),
+%%   <<"CountByResourceType">> => map()
 %% }
--type additional_info() :: #{binary() => any()}.
+-type coverage_statistics() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_trusted_entity_set_request() :: #{
-%%   <<"Activate">> => boolean(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_trusted_entity_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_malware_protection_plan_response() :: #{
-%%   <<"Actions">> => malware_protection_plan_actions(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ProtectedResource">> => create_protected_resource(),
-%%   <<"Role">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReasons">> => list(malware_protection_plan_status_reason()),
+%% create_detector_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DataSources">> => data_source_configurations(),
+%%   <<"Enable">> := boolean(),
+%%   <<"Features">> => list(detector_feature_configuration()),
+%%   <<"FindingPublishingFrequency">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
--type get_malware_protection_plan_response() :: #{binary() => any()}.
+-type create_detector_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_organization_configuration_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% create_detector_response() :: #{
+%%   <<"DetectorId">> => string(),
+%%   <<"UnprocessedDataSources">> => unprocessed_data_sources_result()
 %% }
--type describe_organization_configuration_request() :: #{binary() => any()}.
+-type create_detector_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_bucket_detail() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DefaultServerSideEncryption">> => default_server_side_encryption(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => owner(),
-%%   <<"PublicAccess">> => public_access(),
-%%   <<"S3ObjectDetails">> => list(s3_object_detail()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> => string()
+%% create_filter_request() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"FindingCriteria">> := finding_criteria(),
+%%   <<"Name">> := string(),
+%%   <<"Rank">> => integer(),
+%%   <<"Tags">> => map()
 %% }
--type s3_bucket_detail() :: #{binary() => any()}.
+-type create_filter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_filter_response() :: #{
+%%   <<"Name">> => string()
+%% }
+-type create_filter_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_investigation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"TriggerPrompt">> := string()
+%% }
+-type create_investigation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_investigation_response() :: #{
+%%   <<"InvestigationId">> => string()
+%% }
+-type create_investigation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ip_set_request() :: #{
+%%   <<"Activate">> := boolean(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Format">> := list(any()),
+%%   <<"Location">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_ip_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ip_set_response() :: #{
+%%   <<"IpSetId">> => string()
+%% }
+-type create_ip_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_malware_protection_plan_request() :: #{
+%%   <<"Actions">> => malware_protection_plan_actions(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ProtectedResource">> := create_protected_resource(),
+%%   <<"Role">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_malware_protection_plan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_malware_protection_plan_response() :: #{
+%%   <<"MalwareProtectionPlanId">> => string()
+%% }
+-type create_malware_protection_plan_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_members_request() :: #{
+%%   <<"AccountDetails">> := list(account_detail())
+%% }
+-type create_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_members_response() :: #{
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
+%% }
+-type create_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_protected_resource() :: #{
+%%   <<"S3Bucket">> => create_s3_bucket_resource()
+%% }
+-type create_protected_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_publishing_destination_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DestinationProperties">> := destination_properties(),
+%%   <<"DestinationType">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_publishing_destination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_publishing_destination_response() :: #{
+%%   <<"DestinationId">> => string()
+%% }
+-type create_publishing_destination_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_s3_bucket_resource() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"ObjectPrefixes">> => list(string())
+%% }
+-type create_s3_bucket_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_sample_findings_request() :: #{
+%%   <<"FindingTypes">> => list(string())
+%% }
+-type create_sample_findings_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_sample_findings_response() :: #{}
+-type create_sample_findings_response() :: #{}.
+
+
+%% Example:
+%% create_threat_entity_set_request() :: #{
+%%   <<"Activate">> := boolean(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Format">> := list(any()),
+%%   <<"Location">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_threat_entity_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_threat_entity_set_response() :: #{
+%%   <<"ThreatEntitySetId">> => string()
+%% }
+-type create_threat_entity_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_threat_intel_set_request() :: #{
+%%   <<"Activate">> := boolean(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Format">> := list(any()),
+%%   <<"Location">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_threat_intel_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_threat_intel_set_response() :: #{
+%%   <<"ThreatIntelSetId">> => string()
+%% }
+-type create_threat_intel_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trusted_entity_set_request() :: #{
+%%   <<"Activate">> := boolean(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Format">> := list(any()),
+%%   <<"Location">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_trusted_entity_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trusted_entity_set_response() :: #{
+%%   <<"TrustedEntitySetId">> => string()
+%% }
+-type create_trusted_entity_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_configurations() :: #{
+%%   <<"Kubernetes">> => kubernetes_configuration(),
+%%   <<"MalwareProtection">> => malware_protection_configuration(),
+%%   <<"S3Logs">> => s3_logs_configuration()
+%% }
+-type data_source_configurations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -558,102 +975,205 @@
 
 
 %% Example:
-%% list_ip_sets_request() :: #{
+%% data_source_free_trial() :: #{
+%%   <<"FreeTrialDaysRemaining">> => integer()
+%% }
+-type data_source_free_trial() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_sources_free_trial() :: #{
+%%   <<"CloudTrail">> => data_source_free_trial(),
+%%   <<"DnsLogs">> => data_source_free_trial(),
+%%   <<"FlowLogs">> => data_source_free_trial(),
+%%   <<"Kubernetes">> => kubernetes_data_source_free_trial(),
+%%   <<"MalwareProtection">> => malware_protection_data_source_free_trial(),
+%%   <<"S3Logs">> => data_source_free_trial()
+%% }
+-type data_sources_free_trial() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_statistics() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"LastGeneratedAt">> => non_neg_integer(),
+%%   <<"Severity">> => float(),
+%%   <<"TotalFindings">> => integer()
+%% }
+-type date_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% decline_invitations_request() :: #{
+%%   <<"AccountIds">> := list(string())
+%% }
+-type decline_invitations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% decline_invitations_response() :: #{
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
+%% }
+-type decline_invitations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_server_side_encryption() :: #{
+%%   <<"EncryptionType">> => string(),
+%%   <<"KmsMasterKeyArn">> => string()
+%% }
+-type default_server_side_encryption() :: #{binary() => any()}.
+
+%% Example:
+%% delete_detector_request() :: #{}
+-type delete_detector_request() :: #{}.
+
+%% Example:
+%% delete_detector_response() :: #{}
+-type delete_detector_response() :: #{}.
+
+%% Example:
+%% delete_filter_request() :: #{}
+-type delete_filter_request() :: #{}.
+
+%% Example:
+%% delete_filter_response() :: #{}
+-type delete_filter_response() :: #{}.
+
+
+%% Example:
+%% delete_invitations_request() :: #{
+%%   <<"AccountIds">> := list(string())
+%% }
+-type delete_invitations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_invitations_response() :: #{
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
+%% }
+-type delete_invitations_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ip_set_request() :: #{}
+-type delete_ip_set_request() :: #{}.
+
+%% Example:
+%% delete_ip_set_response() :: #{}
+-type delete_ip_set_response() :: #{}.
+
+%% Example:
+%% delete_malware_protection_plan_request() :: #{}
+-type delete_malware_protection_plan_request() :: #{}.
+
+
+%% Example:
+%% delete_members_request() :: #{
+%%   <<"AccountIds">> := list(string())
+%% }
+-type delete_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_members_response() :: #{
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
+%% }
+-type delete_members_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_publishing_destination_request() :: #{}
+-type delete_publishing_destination_request() :: #{}.
+
+%% Example:
+%% delete_publishing_destination_response() :: #{}
+-type delete_publishing_destination_response() :: #{}.
+
+%% Example:
+%% delete_threat_entity_set_request() :: #{}
+-type delete_threat_entity_set_request() :: #{}.
+
+%% Example:
+%% delete_threat_entity_set_response() :: #{}
+-type delete_threat_entity_set_response() :: #{}.
+
+%% Example:
+%% delete_threat_intel_set_request() :: #{}
+-type delete_threat_intel_set_request() :: #{}.
+
+%% Example:
+%% delete_threat_intel_set_response() :: #{}
+-type delete_threat_intel_set_response() :: #{}.
+
+%% Example:
+%% delete_trusted_entity_set_request() :: #{}
+-type delete_trusted_entity_set_request() :: #{}.
+
+%% Example:
+%% delete_trusted_entity_set_response() :: #{}
+-type delete_trusted_entity_set_response() :: #{}.
+
+
+%% Example:
+%% describe_malware_scans_request() :: #{
+%%   <<"FilterCriteria">> => filter_criteria(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortCriteria">> => sort_criteria()
+%% }
+-type describe_malware_scans_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_malware_scans_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Scans">> => list(scan())
+%% }
+-type describe_malware_scans_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_organization_configuration_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
--type list_ip_sets_request() :: #{binary() => any()}.
+-type describe_organization_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_findings_statistics_request() :: #{
-%%   <<"FindingCriteria">> => finding_criteria(),
-%%   <<"FindingStatisticTypes">> => list(list(any())()),
-%%   <<"GroupBy">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"OrderBy">> => list(any())
+%% describe_organization_configuration_response() :: #{
+%%   <<"AutoEnable">> => boolean(),
+%%   <<"AutoEnableOrganizationMembers">> => list(any()),
+%%   <<"DataSources">> => organization_data_source_configurations_result(),
+%%   <<"Features">> => list(organization_feature_configuration_result()),
+%%   <<"MemberAccountLimitReached">> => boolean(),
+%%   <<"NextToken">> => string()
 %% }
--type get_findings_statistics_request() :: #{binary() => any()}.
+-type describe_organization_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_publishing_destination_request() :: #{}
+-type describe_publishing_destination_request() :: #{}.
 
 
 %% Example:
-%% get_members_response() :: #{
-%%   <<"Members">> => list(member()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
-%% }
--type get_members_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_member_detectors_request() :: #{
-%%   <<"AccountIds">> := list(string())
-%% }
--type get_member_detectors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% admin_account() :: #{
-%%   <<"AdminAccountId">> => string(),
-%%   <<"AdminStatus">> => list(any())
-%% }
--type admin_account() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_launch_template() :: #{
-%%   <<"Ec2InstanceUids">> => list(string()),
-%%   <<"Version">> => string()
-%% }
--type ec2_launch_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% sequence() :: #{
-%%   <<"Actors">> => list(actor()),
-%%   <<"AdditionalSequenceTypes">> => list(string()),
-%%   <<"Description">> => string(),
-%%   <<"Endpoints">> => list(network_endpoint()),
-%%   <<"Resources">> => list(resource_v2()),
-%%   <<"SequenceIndicators">> => list(indicator()),
-%%   <<"Signals">> => list(signal()),
-%%   <<"Uid">> => string()
-%% }
--type sequence() :: #{binary() => any()}.
-
-
-%% Example:
-%% investigation_summary() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Confidence">> => list(any()),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InvestigationId">> => string(),
-%%   <<"RiskLevel">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer(),
+%% describe_publishing_destination_response() :: #{
+%%   <<"DestinationId">> => string(),
+%%   <<"DestinationProperties">> => destination_properties(),
+%%   <<"DestinationType">> => list(any()),
+%%   <<"PublishingFailureStartTimestamp">> => float(),
 %%   <<"Status">> => list(any()),
-%%   <<"Title">> => string(),
-%%   <<"TriggerPrompt">> => string()
+%%   <<"Tags">> => map()
 %% }
--type investigation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% archive_findings_response() :: #{}
--type archive_findings_response() :: #{}.
+-type describe_publishing_destination_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% accept_administrator_invitation_request() :: #{
-%%   <<"AdministratorId">> := string(),
-%%   <<"InvitationId">> := string()
+%% destination() :: #{
+%%   <<"DestinationId">> => string(),
+%%   <<"DestinationType">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type accept_administrator_invitation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_condition_pair() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type scan_condition_pair() :: #{binary() => any()}.
+-type destination() :: #{binary() => any()}.
 
 
 %% Example:
@@ -665,95 +1185,319 @@
 
 
 %% Example:
+%% detection() :: #{
+%%   <<"Anomaly">> => anomaly(),
+%%   <<"Sequence">> => sequence()
+%% }
+-type detection() :: #{binary() => any()}.
+
+
+%% Example:
+%% detector_additional_configuration() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type detector_additional_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% detector_additional_configuration_result() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type detector_additional_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% detector_feature_configuration() :: #{
+%%   <<"AdditionalConfiguration">> => list(detector_additional_configuration()),
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type detector_feature_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% detector_feature_configuration_result() :: #{
+%%   <<"AdditionalConfiguration">> => list(detector_additional_configuration_result()),
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type detector_feature_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% disable_organization_admin_account_request() :: #{
+%%   <<"AdminAccountId">> := string()
+%% }
+-type disable_organization_admin_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_organization_admin_account_response() :: #{}
+-type disable_organization_admin_account_response() :: #{}.
+
+%% Example:
+%% disassociate_from_administrator_account_request() :: #{}
+-type disassociate_from_administrator_account_request() :: #{}.
+
+%% Example:
+%% disassociate_from_administrator_account_response() :: #{}
+-type disassociate_from_administrator_account_response() :: #{}.
+
+%% Example:
+%% disassociate_from_master_account_request() :: #{}
+-type disassociate_from_master_account_request() :: #{}.
+
+%% Example:
+%% disassociate_from_master_account_response() :: #{}
+-type disassociate_from_master_account_response() :: #{}.
+
+
+%% Example:
+%% disassociate_members_request() :: #{
+%%   <<"AccountIds">> := list(string())
+%% }
+-type disassociate_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_members_response() :: #{
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
+%% }
+-type disassociate_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dns_logs_configuration_result() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type dns_logs_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% dns_request_action() :: #{
+%%   <<"Blocked">> => boolean(),
+%%   <<"Domain">> => string(),
+%%   <<"DomainWithSuffix">> => string(),
+%%   <<"Protocol">> => string(),
+%%   <<"VpcOwnerAccountId">> => string()
+%% }
+-type dns_request_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_details() :: #{
+%%   <<"Domain">> => string()
+%% }
+-type domain_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_snapshot() :: #{
+%%   <<"DeviceName">> => string()
+%% }
+-type ebs_snapshot() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_snapshot_details() :: #{
+%%   <<"SnapshotArn">> => string()
+%% }
+-type ebs_snapshot_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% ebs_volume_details() :: #{
 %%   <<"ScannedVolumeDetails">> => list(volume_detail()),
 %%   <<"SkippedVolumeDetails">> => list(volume_detail())
 %% }
 -type ebs_volume_details() :: #{binary() => any()}.
 
-%% Example:
-%% delete_threat_intel_set_response() :: #{}
--type delete_threat_intel_set_response() :: #{}.
-
 
 %% Example:
-%% kubernetes_audit_logs_configuration() :: #{
-%%   <<"Enable">> => boolean()
+%% ebs_volume_scan_details() :: #{
+%%   <<"ScanCompletedAt">> => non_neg_integer(),
+%%   <<"ScanDetections">> => scan_detections(),
+%%   <<"ScanId">> => string(),
+%%   <<"ScanStartedAt">> => non_neg_integer(),
+%%   <<"ScanType">> => list(any()),
+%%   <<"Sources">> => list(string()),
+%%   <<"TriggerFindingId">> => string()
 %% }
--type kubernetes_audit_logs_configuration() :: #{binary() => any()}.
+-type ebs_volume_scan_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% cloudformation_stack() :: #{
+%% ebs_volumes_result() :: #{
+%%   <<"Reason">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type ebs_volumes_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_image() :: #{
 %%   <<"Ec2InstanceUids">> => list(string())
 %% }
--type cloudformation_stack() :: #{binary() => any()}.
+-type ec2_image() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_threat_entity_set_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ErrorDetails">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Format">> => list(any()),
-%%   <<"Location">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%% ec2_image_details() :: #{
+%%   <<"ImageArn">> => string()
 %% }
--type get_threat_entity_set_response() :: #{binary() => any()}.
+-type ec2_image_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% kubernetes_workload_details() :: #{
-%%   <<"Containers">> => list(container()),
-%%   <<"HostIPC">> => boolean(),
-%%   <<"HostNetwork">> => boolean(),
-%%   <<"HostPID">> => boolean(),
+%% ec2_instance() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"Ec2NetworkInterfaceUids">> => list(string()),
+%%   <<"IamInstanceProfile">> => iam_instance_profile(),
+%%   <<"ImageDescription">> => string(),
+%%   <<"InstanceState">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"OutpostArn">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"ProductCodes">> => list(product_code())
+%% }
+-type ec2_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_launch_template() :: #{
+%%   <<"Ec2InstanceUids">> => list(string()),
+%%   <<"Version">> => string()
+%% }
+-type ec2_launch_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_network_interface() :: #{
+%%   <<"Ipv6Addresses">> => list(string()),
+%%   <<"PrivateIpAddresses">> => list(private_ip_address_details()),
+%%   <<"PublicIp">> => string(),
+%%   <<"SecurityGroups">> => list(security_group()),
+%%   <<"SubNetId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type ec2_network_interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_vpc() :: #{
+%%   <<"Ec2InstanceUids">> => list(string())
+%% }
+-type ec2_vpc() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_cluster() :: #{
+%%   <<"Ec2InstanceUids">> => list(string()),
+%%   <<"Status">> => list(any())
+%% }
+-type ecs_cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_cluster_details() :: #{
+%%   <<"ActiveServicesCount">> => integer(),
+%%   <<"Arn">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Namespace">> => string(),
-%%   <<"ServiceAccountName">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"Uid">> => string(),
+%%   <<"RegisteredContainerInstancesCount">> => integer(),
+%%   <<"RunningTasksCount">> => integer(),
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TaskDetails">> => ecs_task_details()
+%% }
+-type ecs_cluster_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_task() :: #{
+%%   <<"ContainerUids">> => list(string()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"LaunchType">> => list(any()),
+%%   <<"TaskDefinitionArn">> => string()
+%% }
+-type ecs_task() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_task_details() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Containers">> => list(container()),
+%%   <<"DefinitionArn">> => string(),
+%%   <<"Group">> => string(),
+%%   <<"LaunchType">> => string(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"StartedBy">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TaskCreatedAt">> => non_neg_integer(),
+%%   <<"Version">> => string(),
 %%   <<"Volumes">> => list(volume())
 %% }
--type kubernetes_workload_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_administrator_account_request() :: #{}
--type get_administrator_account_request() :: #{}.
+-type ecs_task_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% process_details() :: #{
-%%   <<"Euid">> => integer(),
-%%   <<"ExecutablePath">> => string(),
-%%   <<"ExecutableSha256">> => string(),
-%%   <<"Lineage">> => list(lineage_object()),
+%% eks_cluster() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Ec2InstanceUids">> => list(string()),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcId">> => string()
+%% }
+-type eks_cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_cluster_details() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"NamespacePid">> => integer(),
-%%   <<"ParentUuid">> => string(),
-%%   <<"Pid">> => integer(),
-%%   <<"Pwd">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"User">> => string(),
-%%   <<"UserId">> => integer(),
-%%   <<"Uuid">> => string()
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcId">> => string()
 %% }
--type process_details() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type eks_cluster_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_publishing_destinations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% enable_organization_admin_account_request() :: #{
+%%   <<"AdminAccountId">> := string()
 %% }
--type list_publishing_destinations_request() :: #{binary() => any()}.
+-type enable_organization_admin_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_organization_admin_account_response() :: #{}
+-type enable_organization_admin_account_response() :: #{}.
+
+
+%% Example:
+%% evidence() :: #{
+%%   <<"ThreatIntelligenceDetails">> => list(threat_intelligence_detail())
+%% }
+-type evidence() :: #{binary() => any()}.
+
+
+%% Example:
+%% fargate_details() :: #{
+%%   <<"Issues">> => list(string()),
+%%   <<"ManagementType">> => list(any())
+%% }
+-type fargate_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_condition() :: #{
+%%   <<"EqualsValue">> => string(),
+%%   <<"GreaterThan">> => float(),
+%%   <<"LessThan">> => float()
+%% }
+-type filter_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -772,249 +1516,95 @@
 
 
 %% Example:
-%% network_connection_action() :: #{
-%%   <<"Blocked">> => boolean(),
-%%   <<"ConnectionDirection">> => string(),
-%%   <<"LocalIpDetails">> => local_ip_details(),
-%%   <<"LocalNetworkInterface">> => string(),
-%%   <<"LocalPortDetails">> => local_port_details(),
-%%   <<"Protocol">> => string(),
-%%   <<"RemoteIpDetails">> => remote_ip_details(),
-%%   <<"RemotePortDetails">> => remote_port_details()
-%% }
--type network_connection_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_malware_protection_plan_response() :: #{
-%%   <<"MalwareProtectionPlanId">> => string()
-%% }
--type create_malware_protection_plan_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_level_permissions() :: #{
-%%   <<"BlockPublicAccess">> => block_public_access()
-%% }
--type account_level_permissions() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_filter_condition() :: #{
-%%   <<"Equals">> => list(string()),
-%%   <<"NotEquals">> => list(string())
-%% }
--type coverage_filter_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% malware_protection_configuration() :: #{
-%%   <<"ScanEc2InstanceWithFindings">> => scan_ec2_instance_with_findings()
-%% }
--type malware_protection_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% local_port_details() :: #{
-%%   <<"Port">> => integer(),
-%%   <<"PortName">> => string()
-%% }
--type local_port_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_monitoring_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
-%% }
--type start_monitoring_members_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% malware_protection_configuration_result() :: #{
-%%   <<"ScanEc2InstanceWithFindings">> => scan_ec2_instance_with_findings_result(),
-%%   <<"ServiceRole">> => string()
-%% }
--type malware_protection_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_configuration_recovery_point() :: #{
-%%   <<"BackupVaultName">> => string(),
-%%   <<"ContinuousScanDetails">> => scan_configuration_continuous_scan_details()
-%% }
--type scan_configuration_recovery_point() :: #{binary() => any()}.
-
-
-%% Example:
-%% kubernetes_api_call_action() :: #{
-%%   <<"Namespace">> => string(),
-%%   <<"Parameters">> => string(),
-%%   <<"RemoteIpDetails">> => remote_ip_details(),
-%%   <<"RequestUri">> => string(),
-%%   <<"Resource">> => string(),
-%%   <<"ResourceName">> => string(),
-%%   <<"SourceIps">> => list(string()),
-%%   <<"StatusCode">> => integer(),
-%%   <<"Subresource">> => string(),
-%%   <<"UserAgent">> => string(),
-%%   <<"Verb">> => string()
-%% }
--type kubernetes_api_call_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% detector_feature_configuration_result() :: #{
-%%   <<"AdditionalConfiguration">> => list(detector_additional_configuration_result()),
-%%   <<"Name">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type detector_feature_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% highest_severity_threat_details() :: #{
-%%   <<"Count">> => integer(),
-%%   <<"Severity">> => string(),
-%%   <<"ThreatName">> => string()
-%% }
--type highest_severity_threat_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_filter_criterion() :: #{
-%%   <<"CriterionKey">> => list(any()),
-%%   <<"FilterCondition">> => coverage_filter_condition()
-%% }
--type coverage_filter_criterion() :: #{binary() => any()}.
-
-
-%% Example:
-%% organization_malware_protection_configuration() :: #{
-%%   <<"ScanEc2InstanceWithFindings">> => organization_scan_ec2_instance_with_findings()
-%% }
--type organization_malware_protection_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_access_configuration() :: #{
-%%   <<"PublicAclAccess">> => list(any()),
-%%   <<"PublicAclIgnoreBehavior">> => list(any()),
-%%   <<"PublicBucketRestrictBehavior">> => list(any()),
-%%   <<"PublicPolicyAccess">> => list(any())
-%% }
--type public_access_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% rds_db_user_details() :: #{
-%%   <<"Application">> => string(),
-%%   <<"AuthMethod">> => string(),
-%%   <<"Database">> => string(),
-%%   <<"Ssl">> => string(),
-%%   <<"User">> => string()
-%% }
--type rds_db_user_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_threat_entity_set_request() :: #{}
--type delete_threat_entity_set_request() :: #{}.
-
-
-%% Example:
-%% autoscaling_auto_scaling_group() :: #{
-%%   <<"Ec2InstanceUids">> => list(string())
-%% }
--type autoscaling_auto_scaling_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_vpc() :: #{
-%%   <<"Ec2InstanceUids">> => list(string())
-%% }
--type ec2_vpc() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_ec2_instance_with_findings() :: #{
-%%   <<"EbsVolumes">> => boolean()
-%% }
--type scan_ec2_instance_with_findings() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_protected_resource() :: #{
-%%   <<"S3Bucket">> => update_s3_bucket_resource()
-%% }
--type update_protected_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% invitation() :: #{
+%% finding() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"InvitationId">> => string(),
-%%   <<"InvitedAt">> => string(),
-%%   <<"RelationshipStatus">> => string()
-%% }
--type invitation() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_from_master_account_response() :: #{}
--type disassociate_from_master_account_response() :: #{}.
-
-
-%% Example:
-%% lambda_details() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedAttackSequenceArn">> => string(),
+%%   <<"Confidence">> => float(),
+%%   <<"CreatedAt">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"FunctionArn">> => string(),
-%%   <<"FunctionName">> => string(),
-%%   <<"FunctionVersion">> => string(),
-%%   <<"LastModifiedAt">> => non_neg_integer(),
-%%   <<"RevisionId">> => string(),
-%%   <<"Role">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcConfig">> => vpc_config()
+%%   <<"Id">> => string(),
+%%   <<"Partition">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"Resource">> => resource(),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"Service">> => service(),
+%%   <<"Severity">> => float(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"UpdatedAt">> => string()
 %% }
--type lambda_details() :: #{binary() => any()}.
+-type finding() :: #{binary() => any()}.
 
 
 %% Example:
-%% rds_limitless_db_details() :: #{
-%%   <<"DbClusterIdentifier">> => string(),
-%%   <<"DbShardGroupArn">> => string(),
-%%   <<"DbShardGroupIdentifier">> => string(),
-%%   <<"DbShardGroupResourceId">> => string(),
-%%   <<"Engine">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"Tags">> => list(tag())
+%% finding_criteria() :: #{
+%%   <<"Criterion">> => map()
 %% }
--type rds_limitless_db_details() :: #{binary() => any()}.
+-type finding_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_publishing_destination_response() :: #{
-%%   <<"DestinationId">> => string(),
-%%   <<"DestinationProperties">> => destination_properties(),
-%%   <<"DestinationType">> => list(any()),
-%%   <<"PublishingFailureStartTimestamp">> => float(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
+%% finding_statistics() :: #{
+%%   <<"CountBySeverity">> => map(),
+%%   <<"GroupedByAccount">> => list(account_statistics()),
+%%   <<"GroupedByDate">> => list(date_statistics()),
+%%   <<"GroupedByFindingType">> => list(finding_type_statistics()),
+%%   <<"GroupedByResource">> => list(resource_statistics()),
+%%   <<"GroupedBySeverity">> => list(severity_statistics())
 %% }
--type describe_publishing_destination_response() :: #{binary() => any()}.
+-type finding_statistics() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_malware_scans_request() :: #{
-%%   <<"FilterCriteria">> => filter_criteria(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortCriteria">> => sort_criteria()
+%% finding_type_statistics() :: #{
+%%   <<"FindingType">> => string(),
+%%   <<"LastGeneratedAt">> => non_neg_integer(),
+%%   <<"TotalFindings">> => integer()
 %% }
--type describe_malware_scans_request() :: #{binary() => any()}.
+-type finding_type_statistics() :: #{binary() => any()}.
+
 
 %% Example:
-%% update_publishing_destination_response() :: #{}
--type update_publishing_destination_response() :: #{}.
+%% flow_logs_configuration_result() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type flow_logs_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% free_trial_feature_configuration_result() :: #{
+%%   <<"FreeTrialDaysRemaining">> => integer(),
+%%   <<"Name">> => list(any())
+%% }
+-type free_trial_feature_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% geo_location() :: #{
+%%   <<"Lat">> => float(),
+%%   <<"Lon">> => float()
+%% }
+-type geo_location() :: #{binary() => any()}.
+
+%% Example:
+%% get_administrator_account_request() :: #{}
+-type get_administrator_account_request() :: #{}.
+
+
+%% Example:
+%% get_administrator_account_response() :: #{
+%%   <<"Administrator">> => administrator()
+%% }
+-type get_administrator_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_coverage_statistics_request() :: #{
+%%   <<"FilterCriteria">> => coverage_filter_criteria(),
+%%   <<"StatisticsType">> := list(list(any())())
+%% }
+-type get_coverage_statistics_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1023,167 +1613,42 @@
 %% }
 -type get_coverage_statistics_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% network_interface() :: #{
-%%   <<"Ipv6Addresses">> => list(string()),
-%%   <<"NetworkInterfaceId">> => string(),
-%%   <<"PrivateDnsName">> => string(),
-%%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddresses">> => list(private_ip_address_details()),
-%%   <<"PublicDnsName">> => string(),
-%%   <<"PublicIp">> => string(),
-%%   <<"SecurityGroups">> => list(security_group()),
-%%   <<"SubnetId">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type network_interface() :: #{binary() => any()}.
+%% get_detector_request() :: #{}
+-type get_detector_request() :: #{}.
 
 
 %% Example:
-%% organization_additional_configuration() :: #{
-%%   <<"AutoEnable">> => list(any()),
-%%   <<"Name">> => list(any())
+%% get_detector_response() :: #{
+%%   <<"CreatedAt">> => string(),
+%%   <<"DataSources">> => data_source_configurations_result(),
+%%   <<"Features">> => list(detector_feature_configuration_result()),
+%%   <<"FindingPublishingFrequency">> => list(any()),
+%%   <<"ServiceRole">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => string()
 %% }
--type organization_additional_configuration() :: #{binary() => any()}.
+-type get_detector_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_filter_request() :: #{}
+-type get_filter_request() :: #{}.
 
 
 %% Example:
 %% get_filter_response() :: #{
 %%   <<"Action">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"FindingCriteria">> => finding_criteria(),
 %%   <<"Name">> => string(),
 %%   <<"Rank">> => integer(),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"Version">> => float()
 %% }
 -type get_filter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% organization_s3_logs_configuration() :: #{
-%%   <<"AutoEnable">> => boolean()
-%% }
--type organization_s3_logs_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_findings_statistics_response() :: #{
-%%   <<"FindingStatistics">> => finding_statistics(),
-%%   <<"NextToken">> => string()
-%% }
--type get_findings_statistics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% remote_port_details() :: #{
-%%   <<"Port">> => integer(),
-%%   <<"PortName">> => string()
-%% }
--type remote_port_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_trusted_entity_set_request() :: #{}
--type delete_trusted_entity_set_request() :: #{}.
-
-%% Example:
-%% update_ip_set_response() :: #{}
--type update_ip_set_response() :: #{}.
-
-
-%% Example:
-%% network_geo_location() :: #{
-%%   <<"City">> => string(),
-%%   <<"Country">> => string(),
-%%   <<"Latitude">> => float(),
-%%   <<"Longitude">> => float()
-%% }
--type network_geo_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_object() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type s3_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_response() :: #{
-%%   <<"FindingIds">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_findings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_sort_criteria() :: #{
-%%   <<"AttributeName">> => list(any()),
-%%   <<"OrderBy">> => list(any())
-%% }
--type coverage_sort_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_filter_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type create_filter_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_threat_intel_set_request() :: #{}
--type delete_threat_intel_set_request() :: #{}.
-
-
-%% Example:
-%% update_malware_scan_settings_request() :: #{
-%%   <<"EbsSnapshotPreservation">> => list(any()),
-%%   <<"ScanResourceCriteria">> => scan_resource_criteria()
-%% }
--type update_malware_scan_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ip_set_request() :: #{}
--type delete_ip_set_request() :: #{}.
-
-
-%% Example:
-%% list_detectors_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_detectors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_logs_configuration_result() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type s3_logs_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% service() :: #{
-%%   <<"Action">> => action(),
-%%   <<"AdditionalInfo">> => service_additional_info(),
-%%   <<"Archived">> => boolean(),
-%%   <<"Count">> => integer(),
-%%   <<"Detection">> => detection(),
-%%   <<"DetectorId">> => string(),
-%%   <<"EbsVolumeScanDetails">> => ebs_volume_scan_details(),
-%%   <<"EventFirstSeen">> => string(),
-%%   <<"EventLastSeen">> => string(),
-%%   <<"Evidence">> => evidence(),
-%%   <<"FeatureName">> => string(),
-%%   <<"MalwareScanDetails">> => malware_scan_details(),
-%%   <<"ResourceRole">> => string(),
-%%   <<"RuntimeDetails">> => runtime_details(),
-%%   <<"ServiceName">> => string(),
-%%   <<"UserFeedback">> => string()
-%% }
--type service() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1195,225 +1660,89 @@
 
 
 %% Example:
-%% agent_details() :: #{
-%%   <<"Version">> => string()
+%% get_findings_response() :: #{
+%%   <<"Findings">> => list(finding())
 %% }
--type agent_details() :: #{binary() => any()}.
+-type get_findings_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_trusted_entity_set_request() :: #{
-%%   <<"Activate">> := boolean(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Format">> := list(any()),
-%%   <<"Location">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
+%% get_findings_statistics_request() :: #{
+%%   <<"FindingCriteria">> => finding_criteria(),
+%%   <<"FindingStatisticTypes">> => list(list(any())()),
+%%   <<"GroupBy">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"OrderBy">> => list(any())
 %% }
--type create_trusted_entity_set_request() :: #{binary() => any()}.
+-type get_findings_statistics_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_publishing_destination_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DestinationProperties">> := destination_properties(),
-%%   <<"DestinationType">> := list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_publishing_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_trusted_entity_set_request() :: #{}
--type get_trusted_entity_set_request() :: #{}.
-
-
-%% Example:
-%% account_detail() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Email">> => string()
-%% }
--type account_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% host_path() :: #{
-%%   <<"Path">> => string()
-%% }
--type host_path() :: #{binary() => any()}.
-
-
-%% Example:
-%% volume_detail() :: #{
-%%   <<"DeviceName">> => string(),
-%%   <<"EncryptionType">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"SnapshotArn">> => string(),
-%%   <<"VolumeArn">> => string(),
-%%   <<"VolumeSizeInGB">> => integer(),
-%%   <<"VolumeType">> => string()
-%% }
--type volume_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_access() :: #{
-%%   <<"EffectivePermission">> => string(),
-%%   <<"PermissionConfiguration">> => permission_configuration()
-%% }
--type public_access() :: #{binary() => any()}.
-
-
-%% Example:
-%% country() :: #{
-%%   <<"CountryCode">> => string(),
-%%   <<"CountryName">> => string()
-%% }
--type country() :: #{binary() => any()}.
-
-
-%% Example:
-%% total() :: #{
-%%   <<"Amount">> => string(),
-%%   <<"Unit">> => string()
-%% }
--type total() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% detector_feature_configuration() :: #{
-%%   <<"AdditionalConfiguration">> => list(detector_additional_configuration()),
-%%   <<"Name">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type detector_feature_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_statistics() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"LastGeneratedAt">> => non_neg_integer(),
-%%   <<"TotalFindings">> => integer()
-%% }
--type account_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% scanned_resource() :: #{
-%%   <<"ResourceDetails">> => scanned_resource_details(),
-%%   <<"ScanStatusReason">> => list(any()),
-%%   <<"ScannedResourceArn">> => string(),
-%%   <<"ScannedResourceStatus">> => list(any()),
-%%   <<"ScannedResourceType">> => list(any())
-%% }
--type scanned_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% disable_organization_admin_account_request() :: #{
-%%   <<"AdminAccountId">> := string()
-%% }
--type disable_organization_admin_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_ip_set_request() :: #{
-%%   <<"Activate">> => boolean(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_ip_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% impersonated_user() :: #{
-%%   <<"Groups">> => list(string()),
-%%   <<"Username">> => string()
-%% }
--type impersonated_user() :: #{binary() => any()}.
-
-%% Example:
-%% delete_publishing_destination_request() :: #{}
--type delete_publishing_destination_request() :: #{}.
-
-
-%% Example:
-%% delete_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
-%% }
--type delete_members_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_threat_entity_set_request() :: #{
-%%   <<"Activate">> := boolean(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Format">> := list(any()),
-%%   <<"Location">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_threat_entity_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invite_members_request() :: #{
-%%   <<"AccountIds">> := list(string()),
-%%   <<"DisableEmailNotification">> => boolean(),
-%%   <<"Message">> => string()
-%% }
--type invite_members_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ebs_snapshot() :: #{
-%%   <<"DeviceName">> => string()
-%% }
--type ebs_snapshot() :: #{binary() => any()}.
-
-
-%% Example:
-%% permission_configuration() :: #{
-%%   <<"AccountLevelPermissions">> => account_level_permissions(),
-%%   <<"BucketLevelPermissions">> => bucket_level_permissions()
-%% }
--type permission_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_investigations_response() :: #{
-%%   <<"Investigations">> => list(investigation_summary()),
+%% get_findings_statistics_response() :: #{
+%%   <<"FindingStatistics">> => finding_statistics(),
 %%   <<"NextToken">> => string()
 %% }
--type list_investigations_response() :: #{binary() => any()}.
+-type get_findings_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_investigation_request() :: #{}
+-type get_investigation_request() :: #{}.
 
 
 %% Example:
-%% list_malware_scans_filter_criterion() :: #{
-%%   <<"FilterCondition">> => filter_condition(),
-%%   <<"ListMalwareScansCriterionKey">> => list(any())
+%% get_investigation_response() :: #{
+%%   <<"Investigation">> => investigation()
 %% }
--type list_malware_scans_filter_criterion() :: #{binary() => any()}.
+-type get_investigation_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_threat_intel_set_response() :: #{}
--type update_threat_intel_set_response() :: #{}.
+%% get_invitations_count_request() :: #{}
+-type get_invitations_count_request() :: #{}.
 
 
 %% Example:
-%% network_connection() :: #{
-%%   <<"Direction">> => list(any())
+%% get_invitations_count_response() :: #{
+%%   <<"InvitationsCount">> => integer()
 %% }
--type network_connection() :: #{binary() => any()}.
+-type get_invitations_count_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ip_set_request() :: #{}
+-type get_ip_set_request() :: #{}.
+
+
+%% Example:
+%% get_ip_set_response() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"Location">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_ip_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_malware_protection_plan_request() :: #{}
+-type get_malware_protection_plan_request() :: #{}.
+
+
+%% Example:
+%% get_malware_protection_plan_response() :: #{
+%%   <<"Actions">> => malware_protection_plan_actions(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ProtectedResource">> => create_protected_resource(),
+%%   <<"Role">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReasons">> => list(malware_protection_plan_status_reason()),
+%%   <<"Tags">> => map()
+%% }
+-type get_malware_protection_plan_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_malware_scan_request() :: #{}
+-type get_malware_scan_request() :: #{}.
 
 
 %% Example:
@@ -1440,289 +1769,55 @@
 
 
 %% Example:
-%% organization_kubernetes_audit_logs_configuration_result() :: #{
-%%   <<"AutoEnable">> => boolean()
+%% get_malware_scan_result_details() :: #{
+%%   <<"FailedFileCount">> => float(),
+%%   <<"ScanResultStatus">> => list(any()),
+%%   <<"SkippedFileCount">> => float(),
+%%   <<"ThreatFoundFileCount">> => float(),
+%%   <<"Threats">> => list(scan_result_threat()),
+%%   <<"TotalBytes">> => float(),
+%%   <<"TotalFileCount">> => float(),
+%%   <<"UniqueThreatCount">> => float()
 %% }
--type organization_kubernetes_audit_logs_configuration_result() :: #{binary() => any()}.
+-type get_malware_scan_result_details() :: #{binary() => any()}.
+
+%% Example:
+%% get_malware_scan_settings_request() :: #{}
+-type get_malware_scan_settings_request() :: #{}.
 
 
 %% Example:
-%% member_features_configuration_result() :: #{
-%%   <<"AdditionalConfiguration">> => list(member_additional_configuration_result()),
-%%   <<"Name">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%% get_malware_scan_settings_response() :: #{
+%%   <<"EbsSnapshotPreservation">> => list(any()),
+%%   <<"ScanResourceCriteria">> => scan_resource_criteria()
 %% }
--type member_features_configuration_result() :: #{binary() => any()}.
+-type get_malware_scan_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_master_account_request() :: #{}
+-type get_master_account_request() :: #{}.
 
 
 %% Example:
-%% continuous_scan_details() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
+%% get_master_account_response() :: #{
+%%   <<"Master">> => master()
 %% }
--type continuous_scan_details() :: #{binary() => any()}.
+-type get_master_account_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% autonomous_system() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Number">> => integer()
+%% get_member_detectors_request() :: #{
+%%   <<"AccountIds">> := list(string())
 %% }
--type autonomous_system() :: #{binary() => any()}.
+-type get_member_detectors_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% kubernetes_audit_logs_configuration_result() :: #{
-%%   <<"Status">> => list(any())
+%% get_member_detectors_response() :: #{
+%%   <<"MemberDataSourceConfigurations">> => list(member_data_source_configuration()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
--type kubernetes_audit_logs_configuration_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_trusted_entity_set_response() :: #{}
--type update_trusted_entity_set_response() :: #{}.
-
-
-%% Example:
-%% update_threat_entity_set_request() :: #{
-%%   <<"Activate">> => boolean(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_threat_entity_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_threat_intel_sets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ThreatIntelSetIds">> => list(string())
-%% }
--type list_threat_intel_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% observations() :: #{
-%%   <<"Text">> => list(string())
-%% }
--type observations() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_trusted_entity_sets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TrustedEntitySetIds">> => list(string())
-%% }
--type list_trusted_entity_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% organization_data_source_configurations_result() :: #{
-%%   <<"Kubernetes">> => organization_kubernetes_configuration_result(),
-%%   <<"MalwareProtection">> => organization_malware_protection_configuration_result(),
-%%   <<"S3Logs">> => organization_s3_logs_configuration_result()
-%% }
--type organization_data_source_configurations_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% archive_findings_request() :: #{
-%%   <<"FindingIds">> := list(string())
-%% }
--type archive_findings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_ec2_instance_with_findings_result() :: #{
-%%   <<"EbsVolumes">> => ebs_volumes_result()
-%% }
--type scan_ec2_instance_with_findings_result() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_from_administrator_account_response() :: #{}
--type disassociate_from_administrator_account_response() :: #{}.
-
-
-%% Example:
-%% coverage_resource() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"CoverageStatus">> => list(any()),
-%%   <<"DetectorId">> => string(),
-%%   <<"Issue">> => string(),
-%%   <<"ResourceDetails">> => coverage_resource_details(),
-%%   <<"ResourceId">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type coverage_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_filter_response() :: #{
-%%   <<"Name">> => string()
-%% }
--type update_filter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% kubernetes_user_details() :: #{
-%%   <<"Groups">> => list(string()),
-%%   <<"ImpersonatedUser">> => impersonated_user(),
-%%   <<"SessionName">> => list(string()),
-%%   <<"Uid">> => string(),
-%%   <<"Username">> => string()
-%% }
--type kubernetes_user_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% threats_detected_item_count() :: #{
-%%   <<"Files">> => integer()
-%% }
--type threats_detected_item_count() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_result_details() :: #{
-%%   <<"ScanResult">> => list(any())
-%% }
--type scan_result_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_v2() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"CloudPartition">> => string(),
-%%   <<"Data">> => resource_data(),
-%%   <<"Name">> => string(),
-%%   <<"Region">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Service">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Uid">> => string()
-%% }
--type resource_v2() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_organization_configuration_response() :: #{
-%%   <<"AutoEnable">> => boolean(),
-%%   <<"AutoEnableOrganizationMembers">> => list(any()),
-%%   <<"DataSources">> => organization_data_source_configurations_result(),
-%%   <<"Features">> => list(organization_feature_configuration_result()),
-%%   <<"MemberAccountLimitReached">> => boolean(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_organization_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_malware_scans_filter_criteria() :: #{
-%%   <<"ListMalwareScansFilterCriterion">> => list(list_malware_scans_filter_criterion())
-%% }
--type list_malware_scans_filter_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_malware_scan_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"ScanConfiguration">> => start_malware_scan_configuration()
-%% }
--type start_malware_scan_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% organization_feature_configuration() :: #{
-%%   <<"AdditionalConfiguration">> => list(organization_additional_configuration()),
-%%   <<"AutoEnable">> => list(any()),
-%%   <<"Name">> => list(any())
-%% }
--type organization_feature_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_malware_protection_plan_request() :: #{}
--type delete_malware_protection_plan_request() :: #{}.
-
-
-%% Example:
-%% create_detector_response() :: #{
-%%   <<"DetectorId">> => string(),
-%%   <<"UnprocessedDataSources">> => unprocessed_data_sources_result()
-%% }
--type create_detector_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% detector_additional_configuration_result() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type detector_additional_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% unarchive_findings_request() :: #{
-%%   <<"FindingIds">> := list(string())
-%% }
--type unarchive_findings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_investigation_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"TriggerPrompt">> := string()
-%% }
--type create_investigation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% dns_request_action() :: #{
-%%   <<"Blocked">> => boolean(),
-%%   <<"Domain">> => string(),
-%%   <<"DomainWithSuffix">> => string(),
-%%   <<"Protocol">> => string(),
-%%   <<"VpcOwnerAccountId">> => string()
-%% }
--type dns_request_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_filter_request() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"FindingCriteria">> := finding_criteria(),
-%%   <<"Name">> := string(),
-%%   <<"Rank">> => integer(),
-%%   <<"Tags">> => map()
-%% }
--type create_filter_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_investigations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortCriteria">> => investigation_sort_criteria()
-%% }
--type list_investigations_request() :: #{binary() => any()}.
+-type get_member_detectors_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1733,42 +1828,11 @@
 
 
 %% Example:
-%% service_additional_info() :: #{
-%%   <<"Type">> => string(),
-%%   <<"Value">> => string()
+%% get_members_response() :: #{
+%%   <<"Members">> => list(member()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
--type service_additional_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_publishing_destination_response() :: #{}
--type delete_publishing_destination_response() :: #{}.
-
-
-%% Example:
-%% create_members_request() :: #{
-%%   <<"AccountDetails">> := list(account_detail())
-%% }
--type create_members_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_detector_response() :: #{}
--type update_detector_response() :: #{}.
-
-
-%% Example:
-%% list_ip_sets_response() :: #{
-%%   <<"IpSetIds">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_ip_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_account_result() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Total">> => total()
-%% }
--type usage_account_result() :: #{binary() => any()}.
+-type get_members_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1779,97 +1843,41 @@
 
 
 %% Example:
-%% container_instance_details() :: #{
-%%   <<"CompatibleContainerInstances">> => float(),
-%%   <<"CoveredContainerInstances">> => float()
-%% }
--type container_instance_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% organization_scan_ec2_instance_with_findings() :: #{
-%%   <<"EbsVolumes">> => organization_ebs_volumes()
-%% }
--type organization_scan_ec2_instance_with_findings() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_bucket() :: #{
-%%   <<"AccountPublicAccess">> => public_access_configuration(),
-%%   <<"BucketPublicAccess">> => public_access_configuration(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EffectivePermission">> => string(),
-%%   <<"EncryptionKeyArn">> => string(),
-%%   <<"EncryptionType">> => string(),
-%%   <<"OwnerId">> => string(),
-%%   <<"PublicReadAccess">> => list(any()),
-%%   <<"PublicWriteAccess">> => list(any()),
-%%   <<"S3ObjectUids">> => list(string())
-%% }
--type s3_bucket() :: #{binary() => any()}.
-
-
-%% Example:
-%% master() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"InvitationId">> => string(),
-%%   <<"InvitedAt">> => string(),
-%%   <<"RelationshipStatus">> => string()
-%% }
--type master() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_detector_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DataSources">> => data_source_configurations(),
-%%   <<"Enable">> := boolean(),
-%%   <<"Features">> => list(detector_feature_configuration()),
-%%   <<"FindingPublishingFrequency">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_detector_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_threat_entity_set_response() :: #{}
--type update_threat_entity_set_response() :: #{}.
-
-
-%% Example:
-%% remote_account_details() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Affiliated">> => boolean()
-%% }
--type remote_account_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_members_request() :: #{
+%% get_remaining_free_trial_days_request() :: #{
 %%   <<"AccountIds">> := list(string())
 %% }
--type disassociate_members_request() :: #{binary() => any()}.
+-type get_remaining_free_trial_days_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_trusted_entity_set_response() :: #{
-%%   <<"TrustedEntitySetId">> => string()
+%% get_remaining_free_trial_days_response() :: #{
+%%   <<"Accounts">> => list(account_free_trial_info()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
--type create_trusted_entity_set_response() :: #{binary() => any()}.
+-type get_remaining_free_trial_days_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_threat_entity_set_request() :: #{}
+-type get_threat_entity_set_request() :: #{}.
 
 
 %% Example:
-%% get_findings_response() :: #{
-%%   <<"Findings">> => list(finding())
+%% get_threat_entity_set_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ErrorDetails">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"Location">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
--type get_findings_response() :: #{binary() => any()}.
+-type get_threat_entity_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_threat_intel_set_request() :: #{}
+-type get_threat_intel_set_request() :: #{}.
 
 
 %% Example:
@@ -1883,707 +1891,9 @@
 %% }
 -type get_threat_intel_set_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% list_threat_entity_sets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_threat_entity_sets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% organization_kubernetes_audit_logs_configuration() :: #{
-%%   <<"AutoEnable">> => boolean()
-%% }
--type organization_kubernetes_audit_logs_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_ec2_instance_details() :: #{
-%%   <<"AgentDetails">> => agent_details(),
-%%   <<"ClusterArn">> => string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"ManagementType">> => list(any())
-%% }
--type coverage_ec2_instance_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_threat_intel_set_request() :: #{
-%%   <<"Activate">> => boolean(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_threat_intel_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bucket_policy() :: #{
-%%   <<"AllowsPublicReadAccess">> => boolean(),
-%%   <<"AllowsPublicWriteAccess">> => boolean()
-%% }
--type bucket_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_key() :: #{
-%%   <<"PrincipalId">> => string(),
-%%   <<"UserName">> => string(),
-%%   <<"UserType">> => string()
-%% }
--type access_key() :: #{binary() => any()}.
-
-%% Example:
-%% get_malware_protection_plan_request() :: #{}
--type get_malware_protection_plan_request() :: #{}.
-
-
-%% Example:
-%% flow_logs_configuration_result() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type flow_logs_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_members_request() :: #{
-%%   <<"AccountIds">> := list(string())
-%% }
--type delete_members_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invite_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
-%% }
--type invite_members_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_malware_scan_settings_response() :: #{
-%%   <<"EbsSnapshotPreservation">> => list(any()),
-%%   <<"ScanResourceCriteria">> => scan_resource_criteria()
-%% }
--type get_malware_scan_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_features_configuration() :: #{
-%%   <<"AdditionalConfiguration">> => list(member_additional_configuration()),
-%%   <<"Name">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type member_features_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_malware_scans_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Scans">> => list(scan())
-%% }
--type describe_malware_scans_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_network_interface() :: #{
-%%   <<"Ipv6Addresses">> => list(string()),
-%%   <<"PrivateIpAddresses">> => list(private_ip_address_details()),
-%%   <<"PublicIp">> => string(),
-%%   <<"SecurityGroups">> => list(security_group()),
-%%   <<"SubNetId">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type ec2_network_interface() :: #{binary() => any()}.
-
-
-%% Example:
-%% ecs_task_details() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Containers">> => list(container()),
-%%   <<"DefinitionArn">> => string(),
-%%   <<"Group">> => string(),
-%%   <<"LaunchType">> => string(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"StartedBy">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TaskCreatedAt">> => non_neg_integer(),
-%%   <<"Version">> => string(),
-%%   <<"Volumes">> => list(volume())
-%% }
--type ecs_task_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% signal() :: #{
-%%   <<"ActorIds">> => list(string()),
-%%   <<"Count">> => integer(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EndpointIds">> => list(string()),
-%%   <<"FirstSeenAt">> => non_neg_integer(),
-%%   <<"LastSeenAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceUids">> => list(string()),
-%%   <<"Severity">> => float(),
-%%   <<"SignalIndicators">> => list(indicator()),
-%%   <<"Type">> => list(any()),
-%%   <<"Uid">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type signal() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_malware_scan_result_details() :: #{
-%%   <<"FailedFileCount">> => float(),
-%%   <<"ScanResultStatus">> => list(any()),
-%%   <<"SkippedFileCount">> => float(),
-%%   <<"ThreatFoundFileCount">> => float(),
-%%   <<"Threats">> => list(scan_result_threat()),
-%%   <<"TotalBytes">> => float(),
-%%   <<"TotalFileCount">> => float(),
-%%   <<"UniqueThreatCount">> => float()
-%% }
--type get_malware_scan_result_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_malware_protection_plan_request() :: #{
-%%   <<"Actions">> => malware_protection_plan_actions(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ProtectedResource">> := create_protected_resource(),
-%%   <<"Role">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_malware_protection_plan_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% account() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Uid">> => string()
-%% }
--type account() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_logs_configuration() :: #{
-%%   <<"Enable">> => boolean()
-%% }
--type s3_logs_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_publishing_destination_response() :: #{
-%%   <<"DestinationId">> => string()
-%% }
--type create_publishing_destination_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_threat_entity_sets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ThreatEntitySetIds">> => list(string())
-%% }
--type list_threat_entity_sets_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_detector_response() :: #{}
--type delete_detector_response() :: #{}.
-
-
-%% Example:
-%% eks_cluster() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Ec2InstanceUids">> => list(string()),
-%%   <<"Status">> => list(any()),
-%%   <<"VpcId">> => string()
-%% }
--type eks_cluster() :: #{binary() => any()}.
-
-%% Example:
-%% describe_publishing_destination_request() :: #{}
--type describe_publishing_destination_request() :: #{}.
-
-
-%% Example:
-%% vpc_config() :: #{
-%%   <<"SecurityGroups">> => list(security_group()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VpcId">> => string()
-%% }
--type vpc_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_statistics() :: #{
-%%   <<"CountByCoverageStatus">> => map(),
-%%   <<"CountByResourceType">> => map()
-%% }
--type coverage_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_configuration() :: #{
-%%   <<"IncrementalScanDetails">> => incremental_scan_details(),
-%%   <<"RecoveryPoint">> => scan_configuration_recovery_point(),
-%%   <<"Role">> => string(),
-%%   <<"TriggerDetails">> => trigger_details()
-%% }
--type scan_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_malware_scan_configuration() :: #{
-%%   <<"IncrementalScanDetails">> => incremental_scan_details(),
-%%   <<"RecoveryPoint">> => recovery_point(),
-%%   <<"Role">> => string()
-%% }
--type start_malware_scan_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% product() :: #{
-%%   <<"Feature">> => string(),
-%%   <<"Name">> => string()
-%% }
--type product() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"AssociatedAttackSequenceArn">> => string(),
-%%   <<"Confidence">> => float(),
-%%   <<"CreatedAt">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Partition">> => string(),
-%%   <<"Region">> => string(),
-%%   <<"Resource">> => resource(),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"Service">> => service(),
-%%   <<"Severity">> => float(),
-%%   <<"Title">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"UpdatedAt">> => string()
-%% }
--type finding() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_eks_cluster_details() :: #{
-%%   <<"AddonDetails">> => addon_details(),
-%%   <<"ClusterName">> => string(),
-%%   <<"CompatibleNodes">> => float(),
-%%   <<"CoveredNodes">> => float(),
-%%   <<"ManagementType">> => list(any())
-%% }
--type coverage_eks_cluster_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_resource_details() :: #{
-%%   <<"Ec2InstanceDetails">> => coverage_ec2_instance_details(),
-%%   <<"EcsClusterDetails">> => coverage_ecs_cluster_details(),
-%%   <<"EksClusterDetails">> => coverage_eks_cluster_details(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type coverage_resource_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% volume_mount() :: #{
-%%   <<"MountPath">> => string(),
-%%   <<"Name">> => string()
-%% }
--type volume_mount() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_malware_protection_plans_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_malware_protection_plans_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_findings_request() :: #{
-%%   <<"FindingCriteria">> => finding_criteria(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortCriteria">> => sort_criteria()
-%% }
--type list_findings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% kubernetes_configuration() :: #{
-%%   <<"AuditLogs">> => kubernetes_audit_logs_configuration()
-%% }
--type kubernetes_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_publishing_destinations_response() :: #{
-%%   <<"Destinations">> => list(destination()),
-%%   <<"NextToken">> => string()
-%% }
--type list_publishing_destinations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_endpoint() :: #{
-%%   <<"AutonomousSystem">> => autonomous_system(),
-%%   <<"Connection">> => network_connection(),
-%%   <<"Domain">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Ip">> => string(),
-%%   <<"Location">> => network_geo_location(),
-%%   <<"Port">> => integer()
-%% }
--type network_endpoint() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_additional_configuration() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type member_additional_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_filter_request() :: #{}
--type get_filter_request() :: #{}.
-
-%% Example:
-%% get_threat_intel_set_request() :: #{}
--type get_threat_intel_set_request() :: #{}.
-
-
-%% Example:
-%% trigger_details() :: #{
-%%   <<"Description">> => string(),
-%%   <<"GuardDutyFindingId">> => string(),
-%%   <<"TriggerType">> => list(any())
-%% }
--type trigger_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_malware_protection_plan_request() :: #{
-%%   <<"Actions">> => malware_protection_plan_actions(),
-%%   <<"ProtectedResource">> => update_protected_resource(),
-%%   <<"Role">> => string()
-%% }
--type update_malware_protection_plan_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_filter_response() :: #{}
--type delete_filter_response() :: #{}.
-
-
-%% Example:
-%% create_threat_entity_set_response() :: #{
-%%   <<"ThreatEntitySetId">> => string()
-%% }
--type create_threat_entity_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
-%% }
--type disassociate_members_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% incremental_scan_details() :: #{
-%%   <<"BaselineResourceArn">> => string()
-%% }
--type incremental_scan_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% security_group() :: #{
-%%   <<"GroupId">> => string(),
-%%   <<"GroupName">> => string()
-%% }
--type security_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_coverage_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Resources">> => list(coverage_resource())
-%% }
--type list_coverage_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% condition() :: #{
-%%   <<"Eq">> => list(string()),
-%%   <<"Equals">> => list(string()),
-%%   <<"GreaterThan">> => float(),
-%%   <<"GreaterThanOrEqual">> => float(),
-%%   <<"Gt">> => integer(),
-%%   <<"Gte">> => integer(),
-%%   <<"LessThan">> => float(),
-%%   <<"LessThanOrEqual">> => float(),
-%%   <<"Lt">> => integer(),
-%%   <<"Lte">> => integer(),
-%%   <<"Matches">> => list(string()),
-%%   <<"Neq">> => list(string()),
-%%   <<"NotEquals">> => list(string()),
-%%   <<"NotMatches">> => list(string())
-%% }
--type condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_threat_intel_sets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_threat_intel_sets_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_malware_scan_settings_response() :: #{}
--type update_malware_scan_settings_response() :: #{}.
-
-%% Example:
-%% update_organization_configuration_response() :: #{}
--type update_organization_configuration_response() :: #{}.
-
-
-%% Example:
-%% container_finding_resource() :: #{
-%%   <<"Image">> => string(),
-%%   <<"ImageUid">> => string()
-%% }
--type container_finding_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% lineage_object() :: #{
-%%   <<"Euid">> => integer(),
-%%   <<"ExecutablePath">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"NamespacePid">> => integer(),
-%%   <<"ParentUuid">> => string(),
-%%   <<"Pid">> => integer(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"UserId">> => integer(),
-%%   <<"Uuid">> => string()
-%% }
--type lineage_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% ec2_instance() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"Ec2NetworkInterfaceUids">> => list(string()),
-%%   <<"IamInstanceProfile">> => iam_instance_profile(),
-%%   <<"ImageDescription">> => string(),
-%%   <<"InstanceState">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"OutpostArn">> => string(),
-%%   <<"Platform">> => string(),
-%%   <<"ProductCodes">> => list(product_code())
-%% }
--type ec2_instance() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_malware_scans_request() :: #{
-%%   <<"FilterCriteria">> => list_malware_scans_filter_criteria(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SortCriteria">> => sort_criteria()
-%% }
--type list_malware_scans_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% detection() :: #{
-%%   <<"Anomaly">> => anomaly(),
-%%   <<"Sequence">> => sequence()
-%% }
--type detection() :: #{binary() => any()}.
-
-%% Example:
-%% update_findings_feedback_response() :: #{}
--type update_findings_feedback_response() :: #{}.
-
-
-%% Example:
-%% session() :: #{
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Issuer">> => string(),
-%%   <<"MfaStatus">> => list(any()),
-%%   <<"Uid">> => string()
-%% }
--type session() :: #{binary() => any()}.
-
-
-%% Example:
-%% ebs_volumes_result() :: #{
-%%   <<"Reason">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type ebs_volumes_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% product_code() :: #{
-%%   <<"Code">> => string(),
-%%   <<"ProductType">> => string()
-%% }
--type product_code() :: #{binary() => any()}.
-
-
-%% Example:
-%% malware_scan_details() :: #{
-%%   <<"ScanCategory">> => list(any()),
-%%   <<"ScanConfiguration">> => malware_protection_findings_scan_configuration(),
-%%   <<"ScanId">> => string(),
-%%   <<"ScanType">> => list(any()),
-%%   <<"Threats">> => list(threat()),
-%%   <<"UniqueThreatCount">> => integer()
-%% }
--type malware_scan_details() :: #{binary() => any()}.
-
-%% Example:
-%% accept_invitation_response() :: #{}
--type accept_invitation_response() :: #{}.
-
-
-%% Example:
-%% resource_statistics() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"LastGeneratedAt">> => non_neg_integer(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"TotalFindings">> => integer()
-%% }
--type resource_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_sample_findings_request() :: #{
-%%   <<"FindingTypes">> => list(string())
-%% }
--type create_sample_findings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% decline_invitations_request() :: #{
-%%   <<"AccountIds">> := list(string())
-%% }
--type decline_invitations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% organization_s3_logs_configuration_result() :: #{
-%%   <<"AutoEnable">> => boolean()
-%% }
--type organization_s3_logs_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_free_trial_info() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"DataSources">> => data_sources_free_trial(),
-%%   <<"Features">> => list(free_trial_feature_configuration_result())
-%% }
--type account_free_trial_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_master_account_response() :: #{
-%%   <<"Master">> => master()
-%% }
--type get_master_account_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unprocessed_data_sources_result() :: #{
-%%   <<"MalwareProtection">> => malware_protection_configuration_result()
-%% }
--type unprocessed_data_sources_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_member_detectors_response() :: #{
-%%   <<"MemberDataSourceConfigurations">> => list(member_data_source_configuration()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
-%% }
--type get_member_detectors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_configuration_continuous_scan_details() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type scan_configuration_continuous_scan_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_type_statistics() :: #{
-%%   <<"FindingType">> => string(),
-%%   <<"LastGeneratedAt">> => non_neg_integer(),
-%%   <<"TotalFindings">> => integer()
-%% }
--type finding_type_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_api_call_action() :: #{
-%%   <<"AffectedResources">> => map(),
-%%   <<"Api">> => string(),
-%%   <<"CallerType">> => string(),
-%%   <<"DomainDetails">> => domain_details(),
-%%   <<"ErrorCode">> => string(),
-%%   <<"RemoteAccountDetails">> => remote_account_details(),
-%%   <<"RemoteIpDetails">> => remote_ip_details(),
-%%   <<"ServiceName">> => string(),
-%%   <<"UserAgent">> => string()
-%% }
--type aws_api_call_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% kubernetes_role_details() :: #{
-%%   <<"Kind">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Uid">> => string()
-%% }
--type kubernetes_role_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% eks_cluster_details() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VpcId">> => string()
-%% }
--type eks_cluster_details() :: #{binary() => any()}.
+%% get_trusted_entity_set_request() :: #{}
+-type get_trusted_entity_set_request() :: #{}.
 
 
 %% Example:
@@ -2602,55 +1912,104 @@
 
 
 %% Example:
-%% kubernetes_workload() :: #{
-%%   <<"ContainerUids">> => list(string()),
-%%   <<"KubernetesResourcesTypes">> => list(any()),
-%%   <<"Namespace">> => string()
+%% get_usage_statistics_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Unit">> => string(),
+%%   <<"UsageCriteria">> := usage_criteria(),
+%%   <<"UsageStatisticType">> := list(any())
 %% }
--type kubernetes_workload() :: #{binary() => any()}.
+-type get_usage_statistics_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% organization_malware_protection_configuration_result() :: #{
-%%   <<"ScanEc2InstanceWithFindings">> => organization_scan_ec2_instance_with_findings_result()
+%% get_usage_statistics_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UsageStatistics">> => usage_statistics()
 %% }
--type organization_malware_protection_configuration_result() :: #{binary() => any()}.
+-type get_usage_statistics_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% investigation_sort_criteria() :: #{
-%%   <<"AttributeName">> => list(any()),
-%%   <<"OrderBy">> => list(any())
+%% highest_severity_threat_details() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Severity">> => string(),
+%%   <<"ThreatName">> => string()
 %% }
--type investigation_sort_criteria() :: #{binary() => any()}.
+-type highest_severity_threat_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_invitations_request() :: #{
-%%   <<"AccountIds">> := list(string())
+%% host_path() :: #{
+%%   <<"Path">> => string()
 %% }
--type delete_invitations_request() :: #{binary() => any()}.
+-type host_path() :: #{binary() => any()}.
 
 
 %% Example:
-%% organization_ebs_volumes() :: #{
-%%   <<"AutoEnable">> => boolean()
+%% iam_instance_profile() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
 %% }
--type organization_ebs_volumes() :: #{binary() => any()}.
+-type iam_instance_profile() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_detector_response() :: #{
-%%   <<"CreatedAt">> => string(),
-%%   <<"DataSources">> => data_source_configurations_result(),
-%%   <<"Features">> => list(detector_feature_configuration_result()),
-%%   <<"FindingPublishingFrequency">> => list(any()),
-%%   <<"ServiceRole">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => string()
+%% iam_instance_profile_v2() :: #{
+%%   <<"Ec2InstanceUids">> => list(string())
 %% }
--type get_detector_response() :: #{binary() => any()}.
+-type iam_instance_profile_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% impersonated_user() :: #{
+%%   <<"Groups">> => list(string()),
+%%   <<"Username">> => string()
+%% }
+-type impersonated_user() :: #{binary() => any()}.
+
+
+%% Example:
+%% incremental_scan_details() :: #{
+%%   <<"BaselineResourceArn">> => string()
+%% }
+-type incremental_scan_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% indicator() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Title">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type indicator() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_details() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"IamInstanceProfile">> => iam_instance_profile(),
+%%   <<"ImageDescription">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceState">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"LaunchTime">> => string(),
+%%   <<"NetworkInterfaces">> => list(network_interface()),
+%%   <<"OutpostArn">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"ProductCodes">> => list(product_code()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type instance_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2673,338 +2032,70 @@
 
 
 %% Example:
-%% update_filter_request() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"FindingCriteria">> => finding_criteria(),
-%%   <<"Rank">> => integer()
+%% investigation_metadata() :: #{
+%%   <<"Product">> => product(),
+%%   <<"Version">> => string()
 %% }
--type update_filter_request() :: #{binary() => any()}.
+-type investigation_metadata() :: #{binary() => any()}.
 
 
 %% Example:
-%% kubernetes_details() :: #{
-%%   <<"KubernetesUserDetails">> => kubernetes_user_details(),
-%%   <<"KubernetesWorkloadDetails">> => kubernetes_workload_details()
-%% }
--type kubernetes_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% anomaly_object() :: #{
-%%   <<"Observations">> => observations(),
-%%   <<"ProfileSubtype">> => list(any()),
-%%   <<"ProfileType">> => list(any())
-%% }
--type anomaly_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_file_path() :: #{
-%%   <<"FileName">> => string(),
-%%   <<"FilePath">> => string(),
-%%   <<"Hash">> => string(),
-%%   <<"VolumeArn">> => string()
-%% }
--type scan_file_path() :: #{binary() => any()}.
-
-%% Example:
-%% get_malware_scan_request() :: #{}
--type get_malware_scan_request() :: #{}.
-
-
-%% Example:
-%% organization_kubernetes_configuration_result() :: #{
-%%   <<"AuditLogs">> => organization_kubernetes_audit_logs_configuration_result()
-%% }
--type organization_kubernetes_configuration_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_detector_request() :: #{}
--type get_detector_request() :: #{}.
-
-
-%% Example:
-%% malware_protection_plan_actions() :: #{
-%%   <<"Tagging">> => malware_protection_plan_tagging_action()
-%% }
--type malware_protection_plan_actions() :: #{binary() => any()}.
-
-
-%% Example:
-%% anomaly() :: #{
-%%   <<"Profiles">> => map(),
-%%   <<"Unusual">> => anomaly_unusual()
-%% }
--type anomaly() :: #{binary() => any()}.
-
-
-%% Example:
-%% organization_additional_configuration_result() :: #{
-%%   <<"AutoEnable">> => list(any()),
-%%   <<"Name">> => list(any())
-%% }
--type organization_additional_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_organization_configuration_request() :: #{
-%%   <<"AutoEnable">> => boolean(),
-%%   <<"AutoEnableOrganizationMembers">> => list(any()),
-%%   <<"DataSources">> => organization_data_source_configurations(),
-%%   <<"Features">> => list(organization_feature_configuration())
-%% }
--type update_organization_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% enable_organization_admin_account_request() :: #{
-%%   <<"AdminAccountId">> := string()
-%% }
--type enable_organization_admin_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% addon_details() :: #{
-%%   <<"AddonStatus">> => string(),
-%%   <<"AddonVersion">> => string()
-%% }
--type addon_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% kubernetes_configuration_result() :: #{
-%%   <<"AuditLogs">> => kubernetes_audit_logs_configuration_result()
-%% }
--type kubernetes_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% geo_location() :: #{
-%%   <<"Lat">> => float(),
-%%   <<"Lon">> => float()
-%% }
--type geo_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% action() :: #{
-%%   <<"ActionType">> => string(),
-%%   <<"AwsApiCallAction">> => aws_api_call_action(),
-%%   <<"DnsRequestAction">> => dns_request_action(),
-%%   <<"KubernetesApiCallAction">> => kubernetes_api_call_action(),
-%%   <<"KubernetesPermissionCheckedDetails">> => kubernetes_permission_checked_details(),
-%%   <<"KubernetesRoleBindingDetails">> => kubernetes_role_binding_details(),
-%%   <<"KubernetesRoleDetails">> => kubernetes_role_details(),
-%%   <<"NetworkConnectionAction">> => network_connection_action(),
-%%   <<"PortProbeAction">> => port_probe_action(),
-%%   <<"RdsLoginAttemptAction">> => rds_login_attempt_action()
-%% }
--type action() :: #{binary() => any()}.
-
-
-%% Example:
-%% threat_intelligence_detail() :: #{
-%%   <<"ThreatFileSha256">> => string(),
-%%   <<"ThreatListName">> => string(),
-%%   <<"ThreatNames">> => list(string())
-%% }
--type threat_intelligence_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_threat_intel_set_request() :: #{
-%%   <<"Activate">> := boolean(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Format">> := list(any()),
-%%   <<"Location">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_threat_intel_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% login_attribute() :: #{
-%%   <<"Application">> => string(),
-%%   <<"FailedLoginAttempts">> => integer(),
-%%   <<"SuccessfulLoginAttempts">> => integer(),
-%%   <<"User">> => string()
-%% }
--type login_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% delete_threat_entity_set_response() :: #{}
--type delete_threat_entity_set_response() :: #{}.
-
-
-%% Example:
-%% malware_protection_plan_summary() :: #{
-%%   <<"MalwareProtectionPlanId">> => string()
-%% }
--type malware_protection_plan_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_member_detectors_request() :: #{
-%%   <<"AccountIds">> := list(string()),
-%%   <<"DataSources">> => data_source_configurations(),
-%%   <<"Features">> => list(member_features_configuration())
-%% }
--type update_member_detectors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_additional_configuration_result() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type member_additional_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_invitations_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
-%% }
--type delete_invitations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_malware_scans_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Scans">> => list(malware_scan())
-%% }
--type list_malware_scans_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% actor_process() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"Sha256">> => string()
-%% }
--type actor_process() :: #{binary() => any()}.
-
-
-%% Example:
-%% port_probe_action() :: #{
-%%   <<"Blocked">> => boolean(),
-%%   <<"PortProbeDetails">> => list(port_probe_detail())
-%% }
--type port_probe_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_organization_admin_accounts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_organization_admin_accounts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sort_criteria() :: #{
-%%   <<"AttributeName">> => string(),
+%% investigation_sort_criteria() :: #{
+%%   <<"AttributeName">> => list(any()),
 %%   <<"OrderBy">> => list(any())
 %% }
--type sort_criteria() :: #{binary() => any()}.
+-type investigation_sort_criteria() :: #{binary() => any()}.
 
 
 %% Example:
-%% malware_protection_findings_scan_configuration() :: #{
-%%   <<"IncrementalScanDetails">> => incremental_scan_details(),
-%%   <<"TriggerType">> => list(any())
-%% }
--type malware_protection_findings_scan_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% threat() :: #{
-%%   <<"Count">> => float(),
-%%   <<"Hash">> => string(),
-%%   <<"ItemDetails">> => list(item_details()),
-%%   <<"ItemPaths">> => list(item_path()),
-%%   <<"Name">> => string(),
-%%   <<"Source">> => string()
-%% }
--type threat() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ip_set_request() :: #{
-%%   <<"Activate">> := boolean(),
-%%   <<"ClientToken">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Format">> := list(any()),
-%%   <<"Location">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_ip_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% volume() :: #{
-%%   <<"HostPath">> => host_path(),
-%%   <<"Name">> => string()
-%% }
--type volume() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_protected_resource() :: #{
-%%   <<"S3Bucket">> => create_s3_bucket_resource()
-%% }
--type create_protected_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% usage_top_account_result() :: #{
+%% investigation_summary() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"Total">> => total()
-%% }
--type usage_top_account_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_invitations_count_request() :: #{}
--type get_invitations_count_request() :: #{}.
-
-
-%% Example:
-%% list_malware_protection_plans_response() :: #{
-%%   <<"MalwareProtectionPlans">> => list(malware_protection_plan_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_malware_protection_plans_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ip_set_response() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Format">> => list(any()),
-%%   <<"Location">> => string(),
-%%   <<"Name">> => string(),
+%%   <<"Confidence">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InvestigationId">> => string(),
+%%   <<"RiskLevel">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
+%%   <<"Title">> => string(),
+%%   <<"TriggerPrompt">> => string()
 %% }
--type get_ip_set_response() :: #{binary() => any()}.
+-type investigation_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% city() :: #{
-%%   <<"CityName">> => string()
+%% invitation() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"InvitationId">> => string(),
+%%   <<"InvitedAt">> => string(),
+%%   <<"RelationshipStatus">> => string()
 %% }
--type city() :: #{binary() => any()}.
+-type invitation() :: #{binary() => any()}.
+
+
+%% Example:
+%% invite_members_request() :: #{
+%%   <<"AccountIds">> := list(string()),
+%%   <<"DisableEmailNotification">> => boolean(),
+%%   <<"Message">> => string()
+%% }
+-type invite_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invite_members_response() :: #{
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
+%% }
+-type invite_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% item_details() :: #{
+%%   <<"AdditionalInfo">> => additional_info(),
+%%   <<"Hash">> => string(),
+%%   <<"ItemPath">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type item_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3016,166 +2107,159 @@
 
 
 %% Example:
-%% accept_invitation_request() :: #{
-%%   <<"InvitationId">> := string(),
-%%   <<"MasterId">> := string()
+%% kubernetes_api_call_action() :: #{
+%%   <<"Namespace">> => string(),
+%%   <<"Parameters">> => string(),
+%%   <<"RemoteIpDetails">> => remote_ip_details(),
+%%   <<"RequestUri">> => string(),
+%%   <<"Resource">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"SourceIps">> => list(string()),
+%%   <<"StatusCode">> => integer(),
+%%   <<"Subresource">> => string(),
+%%   <<"UserAgent">> => string(),
+%%   <<"Verb">> => string()
 %% }
--type accept_invitation_request() :: #{binary() => any()}.
+-type kubernetes_api_call_action() :: #{binary() => any()}.
 
 
 %% Example:
-%% ecs_cluster() :: #{
-%%   <<"Ec2InstanceUids">> => list(string()),
+%% kubernetes_audit_logs_configuration() :: #{
+%%   <<"Enable">> => boolean()
+%% }
+-type kubernetes_audit_logs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% kubernetes_audit_logs_configuration_result() :: #{
 %%   <<"Status">> => list(any())
 %% }
--type ecs_cluster() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type kubernetes_audit_logs_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% severity_statistics() :: #{
-%%   <<"LastGeneratedAt">> => non_neg_integer(),
-%%   <<"Severity">> => float(),
-%%   <<"TotalFindings">> => integer()
+%% kubernetes_configuration() :: #{
+%%   <<"AuditLogs">> => kubernetes_audit_logs_configuration()
 %% }
--type severity_statistics() :: #{binary() => any()}.
+-type kubernetes_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% anomaly_unusual() :: #{
-%%   <<"Behavior">> => map()
+%% kubernetes_configuration_result() :: #{
+%%   <<"AuditLogs">> => kubernetes_audit_logs_configuration_result()
 %% }
--type anomaly_unusual() :: #{binary() => any()}.
+-type kubernetes_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_members_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OnlyAssociated">> => string()
+%% kubernetes_data_source_free_trial() :: #{
+%%   <<"AuditLogs">> => data_source_free_trial()
 %% }
--type list_members_request() :: #{binary() => any()}.
+-type kubernetes_data_source_free_trial() :: #{binary() => any()}.
 
 
 %% Example:
-%% fargate_details() :: #{
-%%   <<"Issues">> => list(string()),
-%%   <<"ManagementType">> => list(any())
+%% kubernetes_details() :: #{
+%%   <<"KubernetesUserDetails">> => kubernetes_user_details(),
+%%   <<"KubernetesWorkloadDetails">> => kubernetes_workload_details()
 %% }
--type fargate_details() :: #{binary() => any()}.
+-type kubernetes_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% malware_protection_plan_status_reason() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
+%% kubernetes_permission_checked_details() :: #{
+%%   <<"Allowed">> => boolean(),
+%%   <<"Namespace">> => string(),
+%%   <<"Resource">> => string(),
+%%   <<"Verb">> => string()
 %% }
--type malware_protection_plan_status_reason() :: #{binary() => any()}.
+-type kubernetes_permission_checked_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_members_response() :: #{
-%%   <<"Members">> => list(member()),
-%%   <<"NextToken">> => string()
+%% kubernetes_role_binding_details() :: #{
+%%   <<"Kind">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleRefKind">> => string(),
+%%   <<"RoleRefName">> => string(),
+%%   <<"Uid">> => string()
 %% }
--type list_members_response() :: #{binary() => any()}.
+-type kubernetes_role_binding_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% block_public_access() :: #{
-%%   <<"BlockPublicAcls">> => boolean(),
-%%   <<"BlockPublicPolicy">> => boolean(),
-%%   <<"IgnorePublicAcls">> => boolean(),
-%%   <<"RestrictPublicBuckets">> => boolean()
+%% kubernetes_role_details() :: #{
+%%   <<"Kind">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Uid">> => string()
 %% }
--type block_public_access() :: #{binary() => any()}.
+-type kubernetes_role_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_detectors_response() :: #{
-%%   <<"DetectorIds">> => list(string()),
-%%   <<"NextToken">> => string()
+%% kubernetes_user_details() :: #{
+%%   <<"Groups">> => list(string()),
+%%   <<"ImpersonatedUser">> => impersonated_user(),
+%%   <<"SessionName">> => list(string()),
+%%   <<"Uid">> => string(),
+%%   <<"Username">> => string()
 %% }
--type list_detectors_response() :: #{binary() => any()}.
+-type kubernetes_user_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% free_trial_feature_configuration_result() :: #{
-%%   <<"FreeTrialDaysRemaining">> => integer(),
-%%   <<"Name">> => list(any())
+%% kubernetes_workload() :: #{
+%%   <<"ContainerUids">> => list(string()),
+%%   <<"KubernetesResourcesTypes">> => list(any()),
+%%   <<"Namespace">> => string()
 %% }
--type free_trial_feature_configuration_result() :: #{binary() => any()}.
+-type kubernetes_workload() :: #{binary() => any()}.
 
 
 %% Example:
-%% send_object_malware_scan_request() :: #{
-%%   <<"S3Object">> => s3_object_for_send_object_malware_scan()
+%% kubernetes_workload_details() :: #{
+%%   <<"Containers">> => list(container()),
+%%   <<"HostIPC">> => boolean(),
+%%   <<"HostNetwork">> => boolean(),
+%%   <<"HostPID">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"ServiceAccountName">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Uid">> => string(),
+%%   <<"Volumes">> => list(volume())
 %% }
--type send_object_malware_scan_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_investigation_request() :: #{}
--type get_investigation_request() :: #{}.
+-type kubernetes_workload_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_investigation_response() :: #{
-%%   <<"Investigation">> => investigation()
+%% lambda_details() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionName">> => string(),
+%%   <<"FunctionVersion">> => string(),
+%%   <<"LastModifiedAt">> => non_neg_integer(),
+%%   <<"RevisionId">> => string(),
+%%   <<"Role">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcConfig">> => vpc_config()
 %% }
--type get_investigation_response() :: #{binary() => any()}.
+-type lambda_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% organization_feature_statistics() :: #{
-%%   <<"AdditionalConfiguration">> => list(organization_feature_statistics_additional_configuration()),
-%%   <<"EnabledAccountsCount">> => integer(),
-%%   <<"Name">> => list(any())
+%% lineage_object() :: #{
+%%   <<"Euid">> => integer(),
+%%   <<"ExecutablePath">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"NamespacePid">> => integer(),
+%%   <<"ParentUuid">> => string(),
+%%   <<"Pid">> => integer(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"UserId">> => integer(),
+%%   <<"Uuid">> => string()
 %% }
--type organization_feature_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% local_ip_details() :: #{
-%%   <<"IpAddressV4">> => string(),
-%%   <<"IpAddressV6">> => string()
-%% }
--type local_ip_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_remaining_free_trial_days_request() :: #{
-%%   <<"AccountIds">> := list(string())
-%% }
--type get_remaining_free_trial_days_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scanned_item_count() :: #{
-%%   <<"Files">> => integer(),
-%%   <<"TotalGb">> => integer(),
-%%   <<"Volumes">> => integer()
-%% }
--type scanned_item_count() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-%% Example:
-%% get_master_account_request() :: #{}
--type get_master_account_request() :: #{}.
-
-
-%% Example:
-%% organization_feature_configuration_result() :: #{
-%%   <<"AdditionalConfiguration">> => list(organization_additional_configuration_result()),
-%%   <<"AutoEnable">> => list(any()),
-%%   <<"Name">> => list(any())
-%% }
--type organization_feature_configuration_result() :: #{binary() => any()}.
+-type lineage_object() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3189,28 +2273,735 @@
 
 
 %% Example:
-%% get_remaining_free_trial_days_response() :: #{
-%%   <<"Accounts">> => list(account_free_trial_info()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
+%% list_coverage_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Resources">> => list(coverage_resource())
 %% }
--type get_remaining_free_trial_days_response() :: #{binary() => any()}.
+-type list_coverage_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% destination() :: #{
-%%   <<"DestinationId">> => string(),
-%%   <<"DestinationType">> => list(any()),
+%% list_detectors_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_detectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_detectors_response() :: #{
+%%   <<"DetectorIds">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_detectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_filters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_filters_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_filters_response() :: #{
+%%   <<"FilterNames">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_filters_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_request() :: #{
+%%   <<"FindingCriteria">> => finding_criteria(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortCriteria">> => sort_criteria()
+%% }
+-type list_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_findings_response() :: #{
+%%   <<"FindingIds">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_investigations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortCriteria">> => investigation_sort_criteria()
+%% }
+-type list_investigations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_investigations_response() :: #{
+%%   <<"Investigations">> => list(investigation_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_investigations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invitations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invitations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invitations_response() :: #{
+%%   <<"Invitations">> => list(invitation()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invitations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ip_sets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ip_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ip_sets_response() :: #{
+%%   <<"IpSetIds">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ip_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_malware_protection_plans_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_malware_protection_plans_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_malware_protection_plans_response() :: #{
+%%   <<"MalwareProtectionPlans">> => list(malware_protection_plan_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_malware_protection_plans_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_malware_scans_filter_criteria() :: #{
+%%   <<"ListMalwareScansFilterCriterion">> => list(list_malware_scans_filter_criterion())
+%% }
+-type list_malware_scans_filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_malware_scans_filter_criterion() :: #{
+%%   <<"FilterCondition">> => filter_condition(),
+%%   <<"ListMalwareScansCriterionKey">> => list(any())
+%% }
+-type list_malware_scans_filter_criterion() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_malware_scans_request() :: #{
+%%   <<"FilterCriteria">> => list_malware_scans_filter_criteria(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortCriteria">> => sort_criteria()
+%% }
+-type list_malware_scans_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_malware_scans_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Scans">> => list(malware_scan())
+%% }
+-type list_malware_scans_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OnlyAssociated">> => string()
+%% }
+-type list_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_response() :: #{
+%%   <<"Members">> => list(member()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_admin_accounts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_organization_admin_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_admin_accounts_response() :: #{
+%%   <<"AdminAccounts">> => list(admin_account()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_organization_admin_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_publishing_destinations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_publishing_destinations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_publishing_destinations_response() :: #{
+%%   <<"Destinations">> => list(destination()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_publishing_destinations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_entity_sets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_threat_entity_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_entity_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ThreatEntitySetIds">> => list(string())
+%% }
+-type list_threat_entity_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_intel_sets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_threat_intel_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_intel_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ThreatIntelSetIds">> => list(string())
+%% }
+-type list_threat_intel_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trusted_entity_sets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_trusted_entity_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trusted_entity_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrustedEntitySetIds">> => list(string())
+%% }
+-type list_trusted_entity_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% local_ip_details() :: #{
+%%   <<"IpAddressV4">> => string(),
+%%   <<"IpAddressV6">> => string()
+%% }
+-type local_ip_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% local_port_details() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"PortName">> => string()
+%% }
+-type local_port_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% login_attribute() :: #{
+%%   <<"Application">> => string(),
+%%   <<"FailedLoginAttempts">> => integer(),
+%%   <<"SuccessfulLoginAttempts">> => integer(),
+%%   <<"User">> => string()
+%% }
+-type login_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_protection_configuration() :: #{
+%%   <<"ScanEc2InstanceWithFindings">> => scan_ec2_instance_with_findings()
+%% }
+-type malware_protection_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_protection_configuration_result() :: #{
+%%   <<"ScanEc2InstanceWithFindings">> => scan_ec2_instance_with_findings_result(),
+%%   <<"ServiceRole">> => string()
+%% }
+-type malware_protection_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_protection_data_source_free_trial() :: #{
+%%   <<"ScanEc2InstanceWithFindings">> => data_source_free_trial()
+%% }
+-type malware_protection_data_source_free_trial() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_protection_findings_scan_configuration() :: #{
+%%   <<"IncrementalScanDetails">> => incremental_scan_details(),
+%%   <<"TriggerType">> => list(any())
+%% }
+-type malware_protection_findings_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_protection_plan_actions() :: #{
+%%   <<"Tagging">> => malware_protection_plan_tagging_action()
+%% }
+-type malware_protection_plan_actions() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_protection_plan_status_reason() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type malware_protection_plan_status_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_protection_plan_summary() :: #{
+%%   <<"MalwareProtectionPlanId">> => string()
+%% }
+-type malware_protection_plan_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_protection_plan_tagging_action() :: #{
 %%   <<"Status">> => list(any())
 %% }
--type destination() :: #{binary() => any()}.
+-type malware_protection_plan_tagging_action() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
+%% malware_scan() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"ScanCompletedAt">> => non_neg_integer(),
+%%   <<"ScanId">> => string(),
+%%   <<"ScanResultStatus">> => list(any()),
+%%   <<"ScanStartedAt">> => non_neg_integer(),
+%%   <<"ScanStatus">> => list(any()),
+%%   <<"ScanType">> => list(any())
 %% }
--type internal_server_error_exception() :: #{binary() => any()}.
+-type malware_scan() :: #{binary() => any()}.
+
+
+%% Example:
+%% malware_scan_details() :: #{
+%%   <<"ScanCategory">> => list(any()),
+%%   <<"ScanConfiguration">> => malware_protection_findings_scan_configuration(),
+%%   <<"ScanId">> => string(),
+%%   <<"ScanType">> => list(any()),
+%%   <<"Threats">> => list(threat()),
+%%   <<"UniqueThreatCount">> => integer()
+%% }
+-type malware_scan_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% master() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"InvitationId">> => string(),
+%%   <<"InvitedAt">> => string(),
+%%   <<"RelationshipStatus">> => string()
+%% }
+-type master() :: #{binary() => any()}.
+
+
+%% Example:
+%% member() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AdministratorId">> => string(),
+%%   <<"DetectorId">> => string(),
+%%   <<"Email">> => string(),
+%%   <<"InvitedAt">> => string(),
+%%   <<"MasterId">> => string(),
+%%   <<"RelationshipStatus">> => string(),
+%%   <<"UpdatedAt">> => string()
+%% }
+-type member() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_additional_configuration() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type member_additional_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_additional_configuration_result() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type member_additional_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_data_source_configuration() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"DataSources">> => data_source_configurations_result(),
+%%   <<"Features">> => list(member_features_configuration_result())
+%% }
+-type member_data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_features_configuration() :: #{
+%%   <<"AdditionalConfiguration">> => list(member_additional_configuration()),
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type member_features_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_features_configuration_result() :: #{
+%%   <<"AdditionalConfiguration">> => list(member_additional_configuration_result()),
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type member_features_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% model_detail() :: #{
+%%   <<"ModelId">> => string()
+%% }
+-type model_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_connection() :: #{
+%%   <<"Direction">> => list(any())
+%% }
+-type network_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_connection_action() :: #{
+%%   <<"Blocked">> => boolean(),
+%%   <<"ConnectionDirection">> => string(),
+%%   <<"LocalIpDetails">> => local_ip_details(),
+%%   <<"LocalNetworkInterface">> => string(),
+%%   <<"LocalPortDetails">> => local_port_details(),
+%%   <<"Protocol">> => string(),
+%%   <<"RemoteIpDetails">> => remote_ip_details(),
+%%   <<"RemotePortDetails">> => remote_port_details()
+%% }
+-type network_connection_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_endpoint() :: #{
+%%   <<"AutonomousSystem">> => autonomous_system(),
+%%   <<"Connection">> => network_connection(),
+%%   <<"Domain">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Ip">> => string(),
+%%   <<"Location">> => network_geo_location(),
+%%   <<"Port">> => integer()
+%% }
+-type network_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_geo_location() :: #{
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"Latitude">> => float(),
+%%   <<"Longitude">> => float()
+%% }
+-type network_geo_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"Ipv6Addresses">> => list(string()),
+%%   <<"NetworkInterfaceId">> => string(),
+%%   <<"PrivateDnsName">> => string(),
+%%   <<"PrivateIpAddress">> => string(),
+%%   <<"PrivateIpAddresses">> => list(private_ip_address_details()),
+%%   <<"PublicDnsName">> => string(),
+%%   <<"PublicIp">> => string(),
+%%   <<"SecurityGroups">> => list(security_group()),
+%%   <<"SubnetId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+
+%% Example:
+%% observations() :: #{
+%%   <<"Number">> => list(float()),
+%%   <<"Text">> => list(string())
+%% }
+-type observations() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization() :: #{
+%%   <<"Asn">> => string(),
+%%   <<"AsnOrg">> => string(),
+%%   <<"Isp">> => string(),
+%%   <<"Org">> => string()
+%% }
+-type organization() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_additional_configuration() :: #{
+%%   <<"AutoEnable">> => list(any()),
+%%   <<"Name">> => list(any())
+%% }
+-type organization_additional_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_additional_configuration_result() :: #{
+%%   <<"AutoEnable">> => list(any()),
+%%   <<"Name">> => list(any())
+%% }
+-type organization_additional_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_data_source_configurations() :: #{
+%%   <<"Kubernetes">> => organization_kubernetes_configuration(),
+%%   <<"MalwareProtection">> => organization_malware_protection_configuration(),
+%%   <<"S3Logs">> => organization_s3_logs_configuration()
+%% }
+-type organization_data_source_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_data_source_configurations_result() :: #{
+%%   <<"Kubernetes">> => organization_kubernetes_configuration_result(),
+%%   <<"MalwareProtection">> => organization_malware_protection_configuration_result(),
+%%   <<"S3Logs">> => organization_s3_logs_configuration_result()
+%% }
+-type organization_data_source_configurations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_details() :: #{
+%%   <<"OrganizationStatistics">> => organization_statistics(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type organization_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_ebs_volumes() :: #{
+%%   <<"AutoEnable">> => boolean()
+%% }
+-type organization_ebs_volumes() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_ebs_volumes_result() :: #{
+%%   <<"AutoEnable">> => boolean()
+%% }
+-type organization_ebs_volumes_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_feature_configuration() :: #{
+%%   <<"AdditionalConfiguration">> => list(organization_additional_configuration()),
+%%   <<"AutoEnable">> => list(any()),
+%%   <<"Name">> => list(any())
+%% }
+-type organization_feature_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_feature_configuration_result() :: #{
+%%   <<"AdditionalConfiguration">> => list(organization_additional_configuration_result()),
+%%   <<"AutoEnable">> => list(any()),
+%%   <<"Name">> => list(any())
+%% }
+-type organization_feature_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_feature_statistics() :: #{
+%%   <<"AdditionalConfiguration">> => list(organization_feature_statistics_additional_configuration()),
+%%   <<"EnabledAccountsCount">> => integer(),
+%%   <<"Name">> => list(any())
+%% }
+-type organization_feature_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_feature_statistics_additional_configuration() :: #{
+%%   <<"EnabledAccountsCount">> => integer(),
+%%   <<"Name">> => list(any())
+%% }
+-type organization_feature_statistics_additional_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_kubernetes_audit_logs_configuration() :: #{
+%%   <<"AutoEnable">> => boolean()
+%% }
+-type organization_kubernetes_audit_logs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_kubernetes_audit_logs_configuration_result() :: #{
+%%   <<"AutoEnable">> => boolean()
+%% }
+-type organization_kubernetes_audit_logs_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_kubernetes_configuration() :: #{
+%%   <<"AuditLogs">> => organization_kubernetes_audit_logs_configuration()
+%% }
+-type organization_kubernetes_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_kubernetes_configuration_result() :: #{
+%%   <<"AuditLogs">> => organization_kubernetes_audit_logs_configuration_result()
+%% }
+-type organization_kubernetes_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_malware_protection_configuration() :: #{
+%%   <<"ScanEc2InstanceWithFindings">> => organization_scan_ec2_instance_with_findings()
+%% }
+-type organization_malware_protection_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_malware_protection_configuration_result() :: #{
+%%   <<"ScanEc2InstanceWithFindings">> => organization_scan_ec2_instance_with_findings_result()
+%% }
+-type organization_malware_protection_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_s3_logs_configuration() :: #{
+%%   <<"AutoEnable">> => boolean()
+%% }
+-type organization_s3_logs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_s3_logs_configuration_result() :: #{
+%%   <<"AutoEnable">> => boolean()
+%% }
+-type organization_s3_logs_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_scan_ec2_instance_with_findings() :: #{
+%%   <<"EbsVolumes">> => organization_ebs_volumes()
+%% }
+-type organization_scan_ec2_instance_with_findings() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_scan_ec2_instance_with_findings_result() :: #{
+%%   <<"EbsVolumes">> => organization_ebs_volumes_result()
+%% }
+-type organization_scan_ec2_instance_with_findings_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_statistics() :: #{
+%%   <<"ActiveAccountsCount">> => integer(),
+%%   <<"CountByFeature">> => list(organization_feature_statistics()),
+%%   <<"EnabledAccountsCount">> => integer(),
+%%   <<"MemberAccountsCount">> => integer(),
+%%   <<"TotalAccountsCount">> => integer()
+%% }
+-type organization_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner() :: #{
+%%   <<"Id">> => string()
+%% }
+-type owner() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_configuration() :: #{
+%%   <<"AccountLevelPermissions">> => account_level_permissions(),
+%%   <<"BucketLevelPermissions">> => bucket_level_permissions()
+%% }
+-type permission_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% port_probe_action() :: #{
+%%   <<"Blocked">> => boolean(),
+%%   <<"PortProbeDetails">> => list(port_probe_detail())
+%% }
+-type port_probe_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% port_probe_detail() :: #{
+%%   <<"LocalIpDetails">> => local_ip_details(),
+%%   <<"LocalPortDetails">> => local_port_details(),
+%%   <<"RemoteIpDetails">> => remote_ip_details()
+%% }
+-type port_probe_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3222,10 +3013,233 @@
 
 
 %% Example:
-%% get_invitations_count_response() :: #{
-%%   <<"InvitationsCount">> => integer()
+%% process_details() :: #{
+%%   <<"Euid">> => integer(),
+%%   <<"ExecutablePath">> => string(),
+%%   <<"ExecutableSha256">> => string(),
+%%   <<"Lineage">> => list(lineage_object()),
+%%   <<"Name">> => string(),
+%%   <<"NamespacePid">> => integer(),
+%%   <<"ParentUuid">> => string(),
+%%   <<"Pid">> => integer(),
+%%   <<"Pwd">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"User">> => string(),
+%%   <<"UserId">> => integer(),
+%%   <<"Uuid">> => string()
 %% }
--type get_invitations_count_response() :: #{binary() => any()}.
+-type process_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% product() :: #{
+%%   <<"Feature">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type product() :: #{binary() => any()}.
+
+
+%% Example:
+%% product_code() :: #{
+%%   <<"Code">> => string(),
+%%   <<"ProductType">> => string()
+%% }
+-type product_code() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_access() :: #{
+%%   <<"EffectivePermission">> => string(),
+%%   <<"PermissionConfiguration">> => permission_configuration()
+%% }
+-type public_access() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_access_configuration() :: #{
+%%   <<"PublicAclAccess">> => list(any()),
+%%   <<"PublicAclIgnoreBehavior">> => list(any()),
+%%   <<"PublicBucketRestrictBehavior">> => list(any()),
+%%   <<"PublicPolicyAccess">> => list(any())
+%% }
+-type public_access_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_db_instance_details() :: #{
+%%   <<"DbClusterIdentifier">> => string(),
+%%   <<"DbInstanceArn">> => string(),
+%%   <<"DbInstanceIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type rds_db_instance_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_db_user_details() :: #{
+%%   <<"Application">> => string(),
+%%   <<"AuthMethod">> => string(),
+%%   <<"Database">> => string(),
+%%   <<"Ssl">> => string(),
+%%   <<"User">> => string()
+%% }
+-type rds_db_user_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_limitless_db_details() :: #{
+%%   <<"DbClusterIdentifier">> => string(),
+%%   <<"DbShardGroupArn">> => string(),
+%%   <<"DbShardGroupIdentifier">> => string(),
+%%   <<"DbShardGroupResourceId">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type rds_limitless_db_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_login_attempt_action() :: #{
+%%   <<"LoginAttributes">> => list(login_attribute()),
+%%   <<"RemoteIpDetails">> => remote_ip_details()
+%% }
+-type rds_login_attempt_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"ContinuousScanDetails">> => continuous_scan_details()
+%% }
+-type recovery_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_point_details() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"ContinuousScanDetails">> => scan_configuration_continuous_scan_details(),
+%%   <<"RecoveryPointArn">> => string()
+%% }
+-type recovery_point_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_account_details() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Affiliated">> => boolean()
+%% }
+-type remote_account_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_ip_details() :: #{
+%%   <<"City">> => city(),
+%%   <<"Country">> => country(),
+%%   <<"GeoLocation">> => geo_location(),
+%%   <<"IpAddressV4">> => string(),
+%%   <<"IpAddressV6">> => string(),
+%%   <<"Organization">> => organization()
+%% }
+-type remote_ip_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_port_details() :: #{
+%%   <<"Port">> => integer(),
+%%   <<"PortName">> => string()
+%% }
+-type remote_port_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"AccessKeyDetails">> => access_key_details(),
+%%   <<"BedrockGuardrailDetails">> => bedrock_guardrail_details(),
+%%   <<"ContainerDetails">> => container(),
+%%   <<"EbsSnapshotDetails">> => ebs_snapshot_details(),
+%%   <<"EbsVolumeDetails">> => ebs_volume_details(),
+%%   <<"Ec2ImageDetails">> => ec2_image_details(),
+%%   <<"EcsClusterDetails">> => ecs_cluster_details(),
+%%   <<"EksClusterDetails">> => eks_cluster_details(),
+%%   <<"InstanceDetails">> => instance_details(),
+%%   <<"KubernetesDetails">> => kubernetes_details(),
+%%   <<"LambdaDetails">> => lambda_details(),
+%%   <<"ModelDetails">> => list(model_detail()),
+%%   <<"RdsDbInstanceDetails">> => rds_db_instance_details(),
+%%   <<"RdsDbUserDetails">> => rds_db_user_details(),
+%%   <<"RdsLimitlessDbDetails">> => rds_limitless_db_details(),
+%%   <<"RecoveryPointDetails">> => recovery_point_details(),
+%%   <<"ResourceType">> => string(),
+%%   <<"S3BucketDetails">> => list(s3_bucket_detail())
+%% }
+-type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_data() :: #{
+%%   <<"AccessKey">> => access_key(),
+%%   <<"AutoscalingAutoScalingGroup">> => autoscaling_auto_scaling_group(),
+%%   <<"CloudformationStack">> => cloudformation_stack(),
+%%   <<"Container">> => container_finding_resource(),
+%%   <<"Ec2Image">> => ec2_image(),
+%%   <<"Ec2Instance">> => ec2_instance(),
+%%   <<"Ec2LaunchTemplate">> => ec2_launch_template(),
+%%   <<"Ec2NetworkInterface">> => ec2_network_interface(),
+%%   <<"Ec2Vpc">> => ec2_vpc(),
+%%   <<"EcsCluster">> => ecs_cluster(),
+%%   <<"EcsTask">> => ecs_task(),
+%%   <<"EksCluster">> => eks_cluster(),
+%%   <<"IamInstanceProfile">> => iam_instance_profile_v2(),
+%%   <<"KubernetesWorkload">> => kubernetes_workload(),
+%%   <<"S3Bucket">> => s3_bucket(),
+%%   <<"S3Object">> => s3_object()
+%% }
+-type resource_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_details() :: #{
+%%   <<"InstanceArn">> => string()
+%% }
+-type resource_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_statistics() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"LastGeneratedAt">> => non_neg_integer(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"TotalFindings">> => integer()
+%% }
+-type resource_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_v2() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CloudPartition">> => string(),
+%%   <<"Data">> => resource_data(),
+%%   <<"Name">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Service">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Uid">> => string()
+%% }
+-type resource_v2() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3263,225 +3277,85 @@
 
 
 %% Example:
-%% evidence() :: #{
-%%   <<"ThreatIntelligenceDetails">> => list(threat_intelligence_detail())
+%% runtime_details() :: #{
+%%   <<"Context">> => runtime_context(),
+%%   <<"Process">> => process_details()
 %% }
--type evidence() :: #{binary() => any()}.
+-type runtime_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% scan_threat_name() :: #{
-%%   <<"FilePaths">> => list(scan_file_path()),
-%%   <<"ItemCount">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"Severity">> => string()
+%% s3_bucket() :: #{
+%%   <<"AccountPublicAccess">> => public_access_configuration(),
+%%   <<"BucketPublicAccess">> => public_access_configuration(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EffectivePermission">> => string(),
+%%   <<"EncryptionKeyArn">> => string(),
+%%   <<"EncryptionType">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"PublicReadAccess">> => list(any()),
+%%   <<"PublicWriteAccess">> => list(any()),
+%%   <<"S3ObjectUids">> => list(string())
 %% }
--type scan_threat_name() :: #{binary() => any()}.
+-type s3_bucket() :: #{binary() => any()}.
 
 
 %% Example:
-%% usage_resource_result() :: #{
-%%   <<"Resource">> => string(),
-%%   <<"Total">> => total()
-%% }
--type usage_resource_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_filter_criteria() :: #{
-%%   <<"FilterCriterion">> => list(coverage_filter_criterion())
-%% }
--type coverage_filter_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_threat_intel_set_response() :: #{
-%%   <<"ThreatIntelSetId">> => string()
-%% }
--type create_threat_intel_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% user() :: #{
-%%   <<"Account">> => account(),
-%%   <<"CredentialUid">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"Uid">> => string()
-%% }
--type user() :: #{binary() => any()}.
-
-
-%% Example:
-%% coverage_ecs_cluster_details() :: #{
-%%   <<"ClusterName">> => string(),
-%%   <<"ContainerInstanceDetails">> => container_instance_details(),
-%%   <<"FargateDetails">> => fargate_details()
-%% }
--type coverage_ecs_cluster_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_invitations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_invitations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_criteria() :: #{
-%%   <<"Criterion">> => map()
-%% }
--type finding_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_detections() :: #{
-%%   <<"HighestSeverityThreatDetails">> => highest_severity_threat_details(),
-%%   <<"ScannedItemCount">> => scanned_item_count(),
-%%   <<"ThreatDetectedByName">> => threat_detected_by_name(),
-%%   <<"ThreatsDetectedItemCount">> => threats_detected_item_count()
-%% }
--type scan_detections() :: #{binary() => any()}.
-
-
-%% Example:
-%% kubernetes_permission_checked_details() :: #{
-%%   <<"Allowed">> => boolean(),
-%%   <<"Namespace">> => string(),
-%%   <<"Resource">> => string(),
-%%   <<"Verb">> => string()
-%% }
--type kubernetes_permission_checked_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% investigation_metadata() :: #{
-%%   <<"Product">> => product(),
-%%   <<"Version">> => string()
-%% }
--type investigation_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_monitoring_members_request() :: #{
-%%   <<"AccountIds">> := list(string())
-%% }
--type start_monitoring_members_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_sample_findings_response() :: #{}
--type create_sample_findings_response() :: #{}.
-
-
-%% Example:
-%% update_findings_feedback_request() :: #{
-%%   <<"Comments">> => string(),
-%%   <<"Feedback">> := list(any()),
-%%   <<"FindingIds">> := list(string())
-%% }
--type update_findings_feedback_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_s3_bucket_resource() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"ObjectPrefixes">> => list(string())
-%% }
--type create_s3_bucket_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam_instance_profile_v2() :: #{
-%%   <<"Ec2InstanceUids">> => list(string())
-%% }
--type iam_instance_profile_v2() :: #{binary() => any()}.
-
-
-%% Example:
-%% rds_login_attempt_action() :: #{
-%%   <<"LoginAttributes">> => list(login_attribute()),
-%%   <<"RemoteIpDetails">> => remote_ip_details()
-%% }
--type rds_login_attempt_action() :: #{binary() => any()}.
-
-%% Example:
-%% send_object_malware_scan_response() :: #{}
--type send_object_malware_scan_response() :: #{}.
-
-
-%% Example:
-%% actor() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Process">> => actor_process(),
-%%   <<"Session">> => session(),
-%%   <<"User">> => user()
-%% }
--type actor() :: #{binary() => any()}.
-
-
-%% Example:
-%% member() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"AdministratorId">> => string(),
-%%   <<"DetectorId">> => string(),
-%%   <<"Email">> => string(),
-%%   <<"InvitedAt">> => string(),
-%%   <<"MasterId">> => string(),
-%%   <<"RelationshipStatus">> => string(),
-%%   <<"UpdatedAt">> => string()
-%% }
--type member() :: #{binary() => any()}.
-
-%% Example:
-%% get_ip_set_request() :: #{}
--type get_ip_set_request() :: #{}.
-
-
-%% Example:
-%% usage_feature_result() :: #{
-%%   <<"Feature">> => list(any()),
-%%   <<"Total">> => total()
-%% }
--type usage_feature_result() :: #{binary() => any()}.
-
-%% Example:
-%% enable_organization_admin_account_response() :: #{}
--type enable_organization_admin_account_response() :: #{}.
-
-
-%% Example:
-%% finding_statistics() :: #{
-%%   <<"CountBySeverity">> => map(),
-%%   <<"GroupedByAccount">> => list(account_statistics()),
-%%   <<"GroupedByDate">> => list(date_statistics()),
-%%   <<"GroupedByFindingType">> => list(finding_type_statistics()),
-%%   <<"GroupedByResource">> => list(resource_statistics()),
-%%   <<"GroupedBySeverity">> => list(severity_statistics())
-%% }
--type finding_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% organization_scan_ec2_instance_with_findings_result() :: #{
-%%   <<"EbsVolumes">> => organization_ebs_volumes_result()
-%% }
--type organization_scan_ec2_instance_with_findings_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% ecs_cluster_details() :: #{
-%%   <<"ActiveServicesCount">> => integer(),
+%% s3_bucket_detail() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DefaultServerSideEncryption">> => default_server_side_encryption(),
 %%   <<"Name">> => string(),
-%%   <<"RegisteredContainerInstancesCount">> => integer(),
-%%   <<"RunningTasksCount">> => integer(),
-%%   <<"Status">> => string(),
+%%   <<"Owner">> => owner(),
+%%   <<"PublicAccess">> => public_access(),
+%%   <<"S3ObjectDetails">> => list(s3_object_detail()),
 %%   <<"Tags">> => list(tag()),
-%%   <<"TaskDetails">> => ecs_task_details()
+%%   <<"Type">> => string()
 %% }
--type ecs_cluster_details() :: #{binary() => any()}.
+-type s3_bucket_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_logs_configuration() :: #{
+%%   <<"Enable">> => boolean()
+%% }
+-type s3_logs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_logs_configuration_result() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type s3_logs_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type s3_object() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object_detail() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Hash">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"ObjectArn">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type s3_object_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_object_for_send_object_malware_scan() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type s3_object_for_send_object_malware_scan() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3506,32 +3380,93 @@
 
 
 %% Example:
-%% s3_object_for_send_object_malware_scan() :: #{
-%%   <<"Bucket">> => string(),
+%% scan_condition() :: #{
+%%   <<"MapEquals">> => list(scan_condition_pair())
+%% }
+-type scan_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_condition_pair() :: #{
 %%   <<"Key">> => string(),
-%%   <<"VersionId">> => string()
+%%   <<"Value">> => string()
 %% }
--type s3_object_for_send_object_malware_scan() :: #{binary() => any()}.
+-type scan_condition_pair() :: #{binary() => any()}.
 
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => string()
+%% scan_configuration() :: #{
+%%   <<"IncrementalScanDetails">> => incremental_scan_details(),
+%%   <<"RecoveryPoint">> => scan_configuration_recovery_point(),
+%%   <<"Role">> => string(),
+%%   <<"TriggerDetails">> => trigger_details()
 %% }
--type bad_request_exception() :: #{binary() => any()}.
+-type scan_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_trusted_entity_sets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% scan_configuration_continuous_scan_details() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type list_trusted_entity_sets_request() :: #{binary() => any()}.
+-type scan_configuration_continuous_scan_details() :: #{binary() => any()}.
+
 
 %% Example:
-%% get_malware_scan_settings_request() :: #{}
--type get_malware_scan_settings_request() :: #{}.
+%% scan_configuration_recovery_point() :: #{
+%%   <<"BackupVaultName">> => string(),
+%%   <<"ContinuousScanDetails">> => scan_configuration_continuous_scan_details()
+%% }
+-type scan_configuration_recovery_point() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_detections() :: #{
+%%   <<"HighestSeverityThreatDetails">> => highest_severity_threat_details(),
+%%   <<"ScannedItemCount">> => scanned_item_count(),
+%%   <<"ThreatDetectedByName">> => threat_detected_by_name(),
+%%   <<"ThreatsDetectedItemCount">> => threats_detected_item_count()
+%% }
+-type scan_detections() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_ec2_instance_with_findings() :: #{
+%%   <<"EbsVolumes">> => boolean()
+%% }
+-type scan_ec2_instance_with_findings() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_ec2_instance_with_findings_result() :: #{
+%%   <<"EbsVolumes">> => ebs_volumes_result()
+%% }
+-type scan_ec2_instance_with_findings_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_file_path() :: #{
+%%   <<"FileName">> => string(),
+%%   <<"FilePath">> => string(),
+%%   <<"Hash">> => string(),
+%%   <<"VolumeArn">> => string()
+%% }
+-type scan_file_path() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_resource_criteria() :: #{
+%%   <<"Exclude">> => map(),
+%%   <<"Include">> => map()
+%% }
+-type scan_resource_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_result_details() :: #{
+%%   <<"ScanResult">> => list(any())
+%% }
+-type scan_result_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3546,118 +3481,198 @@
 
 
 %% Example:
-%% organization_statistics() :: #{
-%%   <<"ActiveAccountsCount">> => integer(),
-%%   <<"CountByFeature">> => list(organization_feature_statistics()),
-%%   <<"EnabledAccountsCount">> => integer(),
-%%   <<"MemberAccountsCount">> => integer(),
-%%   <<"TotalAccountsCount">> => integer()
-%% }
--type organization_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_details() :: #{
-%%   <<"Domain">> => string()
-%% }
--type domain_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% kubernetes_role_binding_details() :: #{
-%%   <<"Kind">> => string(),
+%% scan_threat_name() :: #{
+%%   <<"FilePaths">> => list(scan_file_path()),
+%%   <<"ItemCount">> => integer(),
 %%   <<"Name">> => string(),
-%%   <<"RoleRefKind">> => string(),
-%%   <<"RoleRefName">> => string(),
+%%   <<"Severity">> => string()
+%% }
+-type scan_threat_name() :: #{binary() => any()}.
+
+
+%% Example:
+%% scanned_item_count() :: #{
+%%   <<"Files">> => integer(),
+%%   <<"TotalGb">> => integer(),
+%%   <<"Volumes">> => integer()
+%% }
+-type scanned_item_count() :: #{binary() => any()}.
+
+
+%% Example:
+%% scanned_resource() :: #{
+%%   <<"ResourceDetails">> => scanned_resource_details(),
+%%   <<"ScanStatusReason">> => list(any()),
+%%   <<"ScannedResourceArn">> => string(),
+%%   <<"ScannedResourceStatus">> => list(any()),
+%%   <<"ScannedResourceType">> => list(any())
+%% }
+-type scanned_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% scanned_resource_details() :: #{
+%%   <<"EbsSnapshot">> => ebs_snapshot(),
+%%   <<"EbsVolume">> => volume_detail()
+%% }
+-type scanned_resource_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_context() :: #{
+%%   <<"AllowPrivilegeEscalation">> => boolean(),
+%%   <<"Privileged">> => boolean()
+%% }
+-type security_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_group() :: #{
+%%   <<"GroupId">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type security_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_object_malware_scan_request() :: #{
+%%   <<"S3Object">> => s3_object_for_send_object_malware_scan()
+%% }
+-type send_object_malware_scan_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_object_malware_scan_response() :: #{}
+-type send_object_malware_scan_response() :: #{}.
+
+
+%% Example:
+%% sequence() :: #{
+%%   <<"Actors">> => list(actor()),
+%%   <<"AdditionalSequenceTypes">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"Endpoints">> => list(network_endpoint()),
+%%   <<"Resources">> => list(resource_v2()),
+%%   <<"SequenceIndicators">> => list(indicator()),
+%%   <<"Signals">> => list(signal()),
 %%   <<"Uid">> => string()
 %% }
--type kubernetes_role_binding_details() :: #{binary() => any()}.
+-type sequence() :: #{binary() => any()}.
 
 
 %% Example:
-%% malware_protection_data_source_free_trial() :: #{
-%%   <<"ScanEc2InstanceWithFindings">> => data_source_free_trial()
+%% service() :: #{
+%%   <<"Action">> => action(),
+%%   <<"AdditionalInfo">> => service_additional_info(),
+%%   <<"Archived">> => boolean(),
+%%   <<"Count">> => integer(),
+%%   <<"Detection">> => detection(),
+%%   <<"DetectorId">> => string(),
+%%   <<"EbsVolumeScanDetails">> => ebs_volume_scan_details(),
+%%   <<"EventFirstSeen">> => string(),
+%%   <<"EventLastSeen">> => string(),
+%%   <<"Evidence">> => evidence(),
+%%   <<"FeatureName">> => string(),
+%%   <<"MalwareScanDetails">> => malware_scan_details(),
+%%   <<"ResourceRole">> => string(),
+%%   <<"RuntimeDetails">> => runtime_details(),
+%%   <<"ServiceName">> => string(),
+%%   <<"UserFeedback">> => string()
 %% }
--type malware_protection_data_source_free_trial() :: #{binary() => any()}.
+-type service() :: #{binary() => any()}.
 
 
 %% Example:
-%% ebs_volume_scan_details() :: #{
-%%   <<"ScanCompletedAt">> => non_neg_integer(),
-%%   <<"ScanDetections">> => scan_detections(),
-%%   <<"ScanId">> => string(),
-%%   <<"ScanStartedAt">> => non_neg_integer(),
-%%   <<"ScanType">> => list(any()),
-%%   <<"Sources">> => list(string()),
-%%   <<"TriggerFindingId">> => string()
+%% service_additional_info() :: #{
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
 %% }
--type ebs_volume_scan_details() :: #{binary() => any()}.
+-type service_additional_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% organization_data_source_configurations() :: #{
-%%   <<"Kubernetes">> => organization_kubernetes_configuration(),
-%%   <<"MalwareProtection">> => organization_malware_protection_configuration(),
-%%   <<"S3Logs">> => organization_s3_logs_configuration()
+%% session() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Issuer">> => string(),
+%%   <<"MfaStatus">> => list(any()),
+%%   <<"Uid">> => string()
 %% }
--type organization_data_source_configurations() :: #{binary() => any()}.
+-type session() :: #{binary() => any()}.
 
 
 %% Example:
-%% unprocessed_account() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Result">> => string()
+%% severity_statistics() :: #{
+%%   <<"LastGeneratedAt">> => non_neg_integer(),
+%%   <<"Severity">> => float(),
+%%   <<"TotalFindings">> => integer()
 %% }
--type unprocessed_account() :: #{binary() => any()}.
+-type severity_statistics() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_member_detectors_response() :: #{
+%% signal() :: #{
+%%   <<"ActorIds">> => list(string()),
+%%   <<"Count">> => integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EndpointIds">> => list(string()),
+%%   <<"FirstSeenAt">> => non_neg_integer(),
+%%   <<"LastSeenAt">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceUids">> => list(string()),
+%%   <<"Severity">> => float(),
+%%   <<"SignalIndicators">> => list(indicator()),
+%%   <<"Type">> => list(any()),
+%%   <<"Uid">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type signal() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort_criteria() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"OrderBy">> => list(any())
+%% }
+-type sort_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_malware_scan_configuration() :: #{
+%%   <<"IncrementalScanDetails">> => incremental_scan_details(),
+%%   <<"RecoveryPoint">> => recovery_point(),
+%%   <<"Role">> => string()
+%% }
+-type start_malware_scan_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_malware_scan_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"ScanConfiguration">> => start_malware_scan_configuration()
+%% }
+-type start_malware_scan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_malware_scan_response() :: #{
+%%   <<"ScanId">> => string()
+%% }
+-type start_malware_scan_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_monitoring_members_request() :: #{
+%%   <<"AccountIds">> := list(string())
+%% }
+-type start_monitoring_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_monitoring_members_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
--type update_member_detectors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_details() :: #{
-%%   <<"InstanceArn">> => string()
-%% }
--type resource_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% dns_logs_configuration_result() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type dns_logs_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_publishing_destination_request() :: #{
-%%   <<"DestinationProperties">> => destination_properties()
-%% }
--type update_publishing_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% accept_administrator_invitation_response() :: #{}
--type accept_administrator_invitation_response() :: #{}.
-
-
-%% Example:
-%% ecs_task() :: #{
-%%   <<"ContainerUids">> => list(string()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"LaunchType">> => list(any()),
-%%   <<"TaskDefinitionArn">> => string()
-%% }
--type ecs_task() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ip_set_response() :: #{
-%%   <<"IpSetId">> => string()
-%% }
--type create_ip_set_response() :: #{binary() => any()}.
+-type start_monitoring_members_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3668,35 +3683,41 @@
 
 
 %% Example:
-%% organization_feature_statistics_additional_configuration() :: #{
-%%   <<"EnabledAccountsCount">> => integer(),
-%%   <<"Name">> => list(any())
+%% stop_monitoring_members_response() :: #{
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
--type organization_feature_statistics_additional_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_trusted_entity_set_response() :: #{}
--type delete_trusted_entity_set_response() :: #{}.
+-type stop_monitoring_members_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% rds_db_instance_details() :: #{
-%%   <<"DbClusterIdentifier">> => string(),
-%%   <<"DbInstanceArn">> => string(),
-%%   <<"DbInstanceIdentifier">> => string(),
-%%   <<"DbiResourceId">> => string(),
-%%   <<"Engine">> => string(),
-%%   <<"EngineVersion">> => string(),
-%%   <<"Tags">> => list(tag())
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type rds_db_instance_details() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 
 %% Example:
-%% scan_condition() :: #{
-%%   <<"MapEquals">> => list(scan_condition_pair())
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
 %% }
--type scan_condition() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% threat() :: #{
+%%   <<"Count">> => float(),
+%%   <<"Hash">> => string(),
+%%   <<"ItemDetails">> => list(item_details()),
+%%   <<"ItemPaths">> => list(item_path()),
+%%   <<"Name">> => string(),
+%%   <<"Source">> => string()
+%% }
+-type threat() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3710,56 +3731,73 @@
 
 
 %% Example:
-%% bucket_level_permissions() :: #{
-%%   <<"AccessControlList">> => access_control_list(),
-%%   <<"BlockPublicAccess">> => block_public_access(),
-%%   <<"BucketPolicy">> => bucket_policy()
+%% threat_intelligence_detail() :: #{
+%%   <<"ThreatFileSha256">> => string(),
+%%   <<"ThreatListName">> => string(),
+%%   <<"ThreatNames">> => list(string())
 %% }
--type bucket_level_permissions() :: #{binary() => any()}.
+-type threat_intelligence_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_organization_admin_accounts_response() :: #{
-%%   <<"AdminAccounts">> => list(admin_account()),
-%%   <<"NextToken">> => string()
+%% threats_detected_item_count() :: #{
+%%   <<"Files">> => integer()
 %% }
--type list_organization_admin_accounts_response() :: #{binary() => any()}.
+-type threats_detected_item_count() :: #{binary() => any()}.
 
 
 %% Example:
-%% usage_top_accounts_result() :: #{
-%%   <<"Accounts">> => list(usage_top_account_result()),
-%%   <<"Feature">> => list(any())
+%% total() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Unit">> => string()
 %% }
--type usage_top_accounts_result() :: #{binary() => any()}.
+-type total() :: #{binary() => any()}.
 
 
 %% Example:
-%% port_probe_detail() :: #{
-%%   <<"LocalIpDetails">> => local_ip_details(),
-%%   <<"LocalPortDetails">> => local_port_details(),
-%%   <<"RemoteIpDetails">> => remote_ip_details()
+%% trigger_details() :: #{
+%%   <<"Description">> => string(),
+%%   <<"GuardDutyFindingId">> => string(),
+%%   <<"TriggerType">> => list(any())
 %% }
--type port_probe_detail() :: #{binary() => any()}.
+-type trigger_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% iam_instance_profile() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
+%% unarchive_findings_request() :: #{
+%%   <<"FindingIds">> := list(string())
 %% }
--type iam_instance_profile() :: #{binary() => any()}.
+-type unarchive_findings_request() :: #{binary() => any()}.
+
+%% Example:
+%% unarchive_findings_response() :: #{}
+-type unarchive_findings_response() :: #{}.
 
 
 %% Example:
-%% stop_monitoring_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
+%% unprocessed_account() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Result">> => string()
 %% }
--type stop_monitoring_members_response() :: #{binary() => any()}.
+-type unprocessed_account() :: #{binary() => any()}.
+
 
 %% Example:
-%% disassociate_from_administrator_account_request() :: #{}
--type disassociate_from_administrator_account_request() :: #{}.
+%% unprocessed_data_sources_result() :: #{
+%%   <<"MalwareProtection">> => malware_protection_configuration_result()
+%% }
+-type unprocessed_data_sources_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -3771,176 +3809,179 @@
 %% }
 -type update_detector_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_detector_response() :: #{}
+-type update_detector_response() :: #{}.
+
 
 %% Example:
-%% security_context() :: #{
-%%   <<"AllowPrivilegeEscalation">> => boolean(),
-%%   <<"Privileged">> => boolean()
+%% update_filter_request() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"FindingCriteria">> => finding_criteria(),
+%%   <<"Rank">> => integer()
 %% }
--type security_context() :: #{binary() => any()}.
+-type update_filter_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% default_server_side_encryption() :: #{
-%%   <<"EncryptionType">> => string(),
-%%   <<"KmsMasterKeyArn">> => string()
+%% update_filter_response() :: #{
+%%   <<"Name">> => string()
 %% }
--type default_server_side_encryption() :: #{binary() => any()}.
+-type update_filter_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% date_statistics() :: #{
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"LastGeneratedAt">> => non_neg_integer(),
-%%   <<"Severity">> => float(),
-%%   <<"TotalFindings">> => integer()
+%% update_findings_feedback_request() :: #{
+%%   <<"Comments">> => string(),
+%%   <<"Feedback">> := list(any()),
+%%   <<"FindingIds">> := list(string())
 %% }
--type date_statistics() :: #{binary() => any()}.
+-type update_findings_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_findings_feedback_response() :: #{}
+-type update_findings_feedback_response() :: #{}.
 
 
 %% Example:
-%% access_control_list() :: #{
-%%   <<"AllowsPublicReadAccess">> => boolean(),
-%%   <<"AllowsPublicWriteAccess">> => boolean()
+%% update_ip_set_request() :: #{
+%%   <<"Activate">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"Name">> => string()
 %% }
--type access_control_list() :: #{binary() => any()}.
+-type update_ip_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_ip_set_response() :: #{}
+-type update_ip_set_response() :: #{}.
 
 
 %% Example:
-%% data_source_configurations() :: #{
-%%   <<"Kubernetes">> => kubernetes_configuration(),
-%%   <<"MalwareProtection">> => malware_protection_configuration(),
-%%   <<"S3Logs">> => s3_logs_configuration()
+%% update_malware_protection_plan_request() :: #{
+%%   <<"Actions">> => malware_protection_plan_actions(),
+%%   <<"ProtectedResource">> => update_protected_resource(),
+%%   <<"Role">> => string()
 %% }
--type data_source_configurations() :: #{binary() => any()}.
+-type update_malware_protection_plan_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_administrator_account_response() :: #{
-%%   <<"Administrator">> => administrator()
+%% update_malware_scan_settings_request() :: #{
+%%   <<"EbsSnapshotPreservation">> => list(any()),
+%%   <<"ScanResourceCriteria">> => scan_resource_criteria()
 %% }
--type get_administrator_account_response() :: #{binary() => any()}.
+-type update_malware_scan_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_malware_scan_settings_response() :: #{}
+-type update_malware_scan_settings_response() :: #{}.
 
 
 %% Example:
-%% data_source_free_trial() :: #{
-%%   <<"FreeTrialDaysRemaining">> => integer()
+%% update_member_detectors_request() :: #{
+%%   <<"AccountIds">> := list(string()),
+%%   <<"DataSources">> => data_source_configurations(),
+%%   <<"Features">> => list(member_features_configuration())
 %% }
--type data_source_free_trial() :: #{binary() => any()}.
+-type update_member_detectors_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% scanned_resource_details() :: #{
-%%   <<"EbsSnapshot">> => ebs_snapshot(),
-%%   <<"EbsVolume">> => volume_detail()
-%% }
--type scanned_resource_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% detector_additional_configuration() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type detector_additional_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_details() :: #{
-%%   <<"Account">> => string(),
-%%   <<"Provider">> => list(any()),
-%%   <<"Region">> => string()
-%% }
--type cloud_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_filters_response() :: #{
-%%   <<"FilterNames">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_filters_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_malware_scan_response() :: #{
-%%   <<"ScanId">> => string()
-%% }
--type start_malware_scan_response() :: #{binary() => any()}.
-
-%% Example:
-%% unarchive_findings_response() :: #{}
--type unarchive_findings_response() :: #{}.
-
-
-%% Example:
-%% create_members_response() :: #{
+%% update_member_detectors_response() :: #{
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
--type create_members_response() :: #{binary() => any()}.
+-type update_member_detectors_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% s3_object_detail() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Hash">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"ObjectArn">> => string(),
-%%   <<"VersionId">> => string()
+%% update_organization_configuration_request() :: #{
+%%   <<"AutoEnable">> => boolean(),
+%%   <<"AutoEnableOrganizationMembers">> => list(any()),
+%%   <<"DataSources">> => organization_data_source_configurations(),
+%%   <<"Features">> => list(organization_feature_configuration())
 %% }
--type s3_object_detail() :: #{binary() => any()}.
+-type update_organization_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_threat_entity_set_request() :: #{}
--type get_threat_entity_set_request() :: #{}.
+%% update_organization_configuration_response() :: #{}
+-type update_organization_configuration_response() :: #{}.
 
 
 %% Example:
-%% access_key_details() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"PrincipalId">> => string(),
-%%   <<"UserName">> => string(),
-%%   <<"UserType">> => string()
+%% update_protected_resource() :: #{
+%%   <<"S3Bucket">> => update_s3_bucket_resource()
 %% }
--type access_key_details() :: #{binary() => any()}.
+-type update_protected_resource() :: #{binary() => any()}.
 
 
 %% Example:
-%% ec2_image() :: #{
-%%   <<"Ec2InstanceUids">> => list(string())
+%% update_publishing_destination_request() :: #{
+%%   <<"DestinationProperties">> => destination_properties()
 %% }
--type ec2_image() :: #{binary() => any()}.
+-type update_publishing_destination_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_filter_request() :: #{}
--type delete_filter_request() :: #{}.
+%% update_publishing_destination_response() :: #{}
+-type update_publishing_destination_response() :: #{}.
 
 
 %% Example:
-%% owner() :: #{
-%%   <<"Id">> => string()
+%% update_s3_bucket_resource() :: #{
+%%   <<"ObjectPrefixes">> => list(string())
 %% }
--type owner() :: #{binary() => any()}.
+-type update_s3_bucket_resource() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_coverage_statistics_request() :: #{
-%%   <<"FilterCriteria">> => coverage_filter_criteria(),
-%%   <<"StatisticsType">> := list(list(any())())
+%% update_threat_entity_set_request() :: #{
+%%   <<"Activate">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"Name">> => string()
 %% }
--type get_coverage_statistics_request() :: #{binary() => any()}.
+-type update_threat_entity_set_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_ip_set_response() :: #{}
--type delete_ip_set_response() :: #{}.
+%% update_threat_entity_set_response() :: #{}
+-type update_threat_entity_set_response() :: #{}.
 
 
 %% Example:
-%% runtime_details() :: #{
-%%   <<"Context">> => runtime_context(),
-%%   <<"Process">> => process_details()
+%% update_threat_intel_set_request() :: #{
+%%   <<"Activate">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"Name">> => string()
 %% }
--type runtime_details() :: #{binary() => any()}.
+-type update_threat_intel_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_threat_intel_set_response() :: #{}
+-type update_threat_intel_set_response() :: #{}.
+
+
+%% Example:
+%% update_trusted_entity_set_request() :: #{
+%%   <<"Activate">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_trusted_entity_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_trusted_entity_set_response() :: #{}
+-type update_trusted_entity_set_response() :: #{}.
+
+
+%% Example:
+%% usage_account_result() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Total">> => total()
+%% }
+-type usage_account_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3954,485 +3995,487 @@
 
 
 %% Example:
-%% item_details() :: #{
-%%   <<"AdditionalInfo">> => additional_info(),
-%%   <<"Hash">> => string(),
-%%   <<"ItemPath">> => string(),
-%%   <<"ResourceArn">> => string()
+%% usage_data_source_result() :: #{
+%%   <<"DataSource">> => list(any()),
+%%   <<"Total">> => total()
 %% }
--type item_details() :: #{binary() => any()}.
+-type usage_data_source_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% recovery_point() :: #{
-%%   <<"BackupVaultName">> => string(),
-%%   <<"ContinuousScanDetails">> => continuous_scan_details()
+%% usage_feature_result() :: #{
+%%   <<"Feature">> => list(any()),
+%%   <<"Total">> => total()
 %% }
--type recovery_point() :: #{binary() => any()}.
+-type usage_feature_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_usage_statistics_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UsageStatistics">> => usage_statistics()
+%% usage_resource_result() :: #{
+%%   <<"Resource">> => string(),
+%%   <<"Total">> => total()
 %% }
--type get_usage_statistics_response() :: #{binary() => any()}.
+-type usage_resource_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_filters_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% usage_statistics() :: #{
+%%   <<"SumByAccount">> => list(usage_account_result()),
+%%   <<"SumByDataSource">> => list(usage_data_source_result()),
+%%   <<"SumByFeature">> => list(usage_feature_result()),
+%%   <<"SumByResource">> => list(usage_resource_result()),
+%%   <<"TopAccountsByFeature">> => list(usage_top_accounts_result()),
+%%   <<"TopResources">> => list(usage_resource_result())
 %% }
--type list_filters_request() :: #{binary() => any()}.
+-type usage_statistics() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_s3_bucket_resource() :: #{
-%%   <<"ObjectPrefixes">> => list(string())
+%% usage_top_account_result() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Total">> => total()
 %% }
--type update_s3_bucket_resource() :: #{binary() => any()}.
+-type usage_top_account_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_investigation_response() :: #{
-%%   <<"InvestigationId">> => string()
+%% usage_top_accounts_result() :: #{
+%%   <<"Accounts">> => list(usage_top_account_result()),
+%%   <<"Feature">> => list(any())
 %% }
--type create_investigation_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_detector_request() :: #{}
--type delete_detector_request() :: #{}.
+-type usage_top_accounts_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_invitations_response() :: #{
-%%   <<"Invitations">> => list(invitation()),
-%%   <<"NextToken">> => string()
+%% user() :: #{
+%%   <<"Account">> => account(),
+%%   <<"CredentialUid">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Uid">> => string()
 %% }
--type list_invitations_response() :: #{binary() => any()}.
+-type user() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource() :: #{
-%%   <<"AccessKeyDetails">> => access_key_details(),
-%%   <<"ContainerDetails">> => container(),
-%%   <<"EbsSnapshotDetails">> => ebs_snapshot_details(),
-%%   <<"EbsVolumeDetails">> => ebs_volume_details(),
-%%   <<"Ec2ImageDetails">> => ec2_image_details(),
-%%   <<"EcsClusterDetails">> => ecs_cluster_details(),
-%%   <<"EksClusterDetails">> => eks_cluster_details(),
-%%   <<"InstanceDetails">> => instance_details(),
-%%   <<"KubernetesDetails">> => kubernetes_details(),
-%%   <<"LambdaDetails">> => lambda_details(),
-%%   <<"RdsDbInstanceDetails">> => rds_db_instance_details(),
-%%   <<"RdsDbUserDetails">> => rds_db_user_details(),
-%%   <<"RdsLimitlessDbDetails">> => rds_limitless_db_details(),
-%%   <<"RecoveryPointDetails">> => recovery_point_details(),
-%%   <<"ResourceType">> => string(),
-%%   <<"S3BucketDetails">> => list(s3_bucket_detail())
+%% volume() :: #{
+%%   <<"HostPath">> => host_path(),
+%%   <<"Name">> => string()
 %% }
--type resource() :: #{binary() => any()}.
+-type volume() :: #{binary() => any()}.
 
 
 %% Example:
-%% indicator() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Title">> => string(),
-%%   <<"Values">> => list(string())
+%% volume_detail() :: #{
+%%   <<"DeviceName">> => string(),
+%%   <<"EncryptionType">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"SnapshotArn">> => string(),
+%%   <<"VolumeArn">> => string(),
+%%   <<"VolumeSizeInGB">> => integer(),
+%%   <<"VolumeType">> => string()
 %% }
--type indicator() :: #{binary() => any()}.
+-type volume_detail() :: #{binary() => any()}.
 
 
 %% Example:
-%% organization_details() :: #{
-%%   <<"OrganizationStatistics">> => organization_statistics(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%% volume_mount() :: #{
+%%   <<"MountPath">> => string(),
+%%   <<"Name">> => string()
 %% }
--type organization_details() :: #{binary() => any()}.
+-type volume_mount() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_config() :: #{
+%%   <<"SecurityGroups">> => list(security_group()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_config() :: #{binary() => any()}.
 
 -type accept_administrator_invitation_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type accept_invitation_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type archive_findings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type create_detector_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type create_filter_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type create_investigation_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    bad_request_exception() | 
     access_denied_exception().
 
 -type create_ip_set_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    bad_request_exception() | 
     access_denied_exception().
 
 -type create_malware_protection_plan_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
-    access_denied_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_members_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type create_publishing_destination_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type create_sample_findings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type create_threat_entity_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type create_threat_intel_set_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    bad_request_exception() | 
     access_denied_exception().
 
 -type create_trusted_entity_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type decline_invitations_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type delete_detector_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type delete_filter_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type delete_invitations_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type delete_ip_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type delete_malware_protection_plan_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_error_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_members_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type delete_publishing_destination_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type delete_threat_entity_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type delete_threat_intel_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type delete_trusted_entity_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type describe_malware_scans_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type describe_organization_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type describe_publishing_destination_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type disable_organization_admin_account_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type disassociate_from_administrator_account_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type disassociate_from_master_account_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type disassociate_members_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type enable_organization_admin_account_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_administrator_account_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_coverage_statistics_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_detector_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_filter_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_findings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_findings_statistics_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_investigation_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_error_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_invitations_count_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_ip_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_malware_protection_plan_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_error_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_malware_scan_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_error_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_malware_scan_settings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_master_account_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_member_detectors_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_members_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_organization_statistics_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_remaining_free_trial_days_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_threat_entity_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_threat_intel_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_trusted_entity_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type get_usage_statistics_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type invite_members_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_coverage_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_detectors_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_filters_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_findings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_investigations_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    bad_request_exception() | 
     access_denied_exception().
 
 -type list_invitations_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_ip_sets_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_malware_protection_plans_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    bad_request_exception() | 
     access_denied_exception().
 
 -type list_malware_scans_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_members_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_organization_admin_accounts_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_publishing_destinations_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    bad_request_exception() | 
     access_denied_exception().
 
 -type list_threat_entity_sets_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_threat_intel_sets_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type list_trusted_entity_sets_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type send_object_malware_scan_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    bad_request_exception() | 
     access_denied_exception().
 
 -type start_malware_scan_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type start_monitoring_members_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type stop_monitoring_members_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    bad_request_exception() | 
     access_denied_exception().
 
 -type unarchive_findings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    bad_request_exception() | 
     access_denied_exception().
 
 -type update_detector_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type update_filter_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type update_findings_feedback_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type update_ip_set_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    bad_request_exception() | 
     access_denied_exception().
 
 -type update_malware_protection_plan_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_error_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_malware_scan_settings_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type update_member_detectors_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type update_organization_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type update_publishing_destination_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type update_threat_entity_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 -type update_threat_intel_set_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
+    bad_request_exception() | 
     access_denied_exception().
 
 -type update_trusted_entity_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

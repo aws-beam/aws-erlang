@@ -165,258 +165,90 @@
 
 
 %% Example:
-%% described_certificate() :: #{
-%%   <<"ActiveDate">> => non_neg_integer(),
-%%   <<"Arn">> => string(),
-%%   <<"Certificate">> => string(),
-%%   <<"CertificateChain">> => string(),
-%%   <<"CertificateId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"InactiveDate">> => non_neg_integer(),
-%%   <<"NotAfterDate">> => non_neg_integer(),
-%%   <<"NotBeforeDate">> => non_neg_integer(),
-%%   <<"Serial">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> => list(any()),
-%%   <<"Usage">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type described_certificate() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% workflow_detail() :: #{
-%%   <<"ExecutionRole">> => string(),
-%%   <<"WorkflowId">> => string()
+%% as2_async_mdn_connector_config() :: #{
+%%   <<"ServerIds">> => list(string()),
+%%   <<"Url">> => string()
 %% }
--type workflow_detail() :: #{binary() => any()}.
+-type as2_async_mdn_connector_config() :: #{binary() => any()}.
 
 %% Example:
-%% describe_security_policy_request() :: #{
-%%   <<"SecurityPolicyName">> := string()
+%% as2_connector_config() :: #{
+%%   <<"AsyncMdnConfig">> => as2_async_mdn_connector_config(),
+%%   <<"BasicAuthSecretId">> => string(),
+%%   <<"Compression">> => list(any()),
+%%   <<"EncryptionAlgorithm">> => list(any()),
+%%   <<"LocalProfileId">> => string(),
+%%   <<"MdnResponse">> => list(any()),
+%%   <<"MdnSigningAlgorithm">> => list(any()),
+%%   <<"MessageSubject">> => string(),
+%%   <<"PartnerProfileId">> => string(),
+%%   <<"PreserveContentType">> => list(any()),
+%%   <<"SigningAlgorithm">> => list(any())
 %% }
--type describe_security_policy_request() :: #{binary() => any()}.
+-type as2_connector_config() :: #{binary() => any()}.
 
 %% Example:
-%% create_workflow_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"OnExceptionSteps">> => list(workflow_step()),
-%%   <<"Steps">> := list(workflow_step()),
-%%   <<"Tags">> => list(tag())
+%% cfn_user_properties() :: #{
+%%   <<"SshPublicKeys">> => list(string())
 %% }
--type create_workflow_request() :: #{binary() => any()}.
+-type cfn_user_properties() :: #{binary() => any()}.
 
 %% Example:
-%% update_certificate_request() :: #{
-%%   <<"ActiveDate">> => non_neg_integer(),
-%%   <<"CertificateId">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"InactiveDate">> => non_neg_integer()
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type update_certificate_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
-%% described_access() :: #{
-%%   <<"ExternalId">> => string(),
+%% connector_file_transfer_result() :: #{
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"FilePath">> => string(),
+%%   <<"StatusCode">> => list(any())
+%% }
+-type connector_file_transfer_result() :: #{binary() => any()}.
+
+%% Example:
+%% connector_vpc_lattice_egress_config() :: #{
+%%   <<"PortNumber">> => integer(),
+%%   <<"ResourceConfigurationArn">> => string()
+%% }
+-type connector_vpc_lattice_egress_config() :: #{binary() => any()}.
+
+%% Example:
+%% copy_step_details() :: #{
+%%   <<"DestinationFileLocation">> => input_file_location(),
+%%   <<"Name">> => string(),
+%%   <<"OverwriteExisting">> => list(any()),
+%%   <<"SourceFileLocation">> => string()
+%% }
+-type copy_step_details() :: #{binary() => any()}.
+
+%% Example:
+%% create_access_request() :: #{
+%%   <<"ExternalId">> := string(),
 %%   <<"HomeDirectory">> => string(),
 %%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
 %%   <<"HomeDirectoryType">> => list(any()),
 %%   <<"Policy">> => string(),
 %%   <<"PosixProfile">> => posix_profile(),
-%%   <<"Role">> => string()
+%%   <<"Role">> := string(),
+%%   <<"ServerId">> := string()
 %% }
--type described_access() :: #{binary() => any()}.
+-type create_access_request() :: #{binary() => any()}.
 
 %% Example:
-%% described_connector_vpc_lattice_egress_config() :: #{
-%%   <<"PortNumber">> => integer(),
-%%   <<"ResourceConfigurationArn">> => string()
-%% }
--type described_connector_vpc_lattice_egress_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_access_response() :: #{
-%%   <<"Access">> => described_access(),
+%% create_access_response() :: #{
+%%   <<"ExternalId">> => string(),
 %%   <<"ServerId">> => string()
 %% }
--type describe_access_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_agreement_request() :: #{
-%%   <<"AgreementId">> := string(),
-%%   <<"ServerId">> := string()
-%% }
--type describe_agreement_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_server_response() :: #{
-%%   <<"ServerId">> => string()
-%% }
--type update_server_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_profile_request() :: #{
-%%   <<"ProfileId">> := string()
-%% }
--type describe_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_access_request() :: #{
-%%   <<"ExternalId">> := string(),
-%%   <<"ServerId">> := string()
-%% }
--type describe_access_request() :: #{binary() => any()}.
-
-%% Example:
-%% described_web_app_customization() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"FaviconFile">> => binary(),
-%%   <<"LogoFile">> => binary(),
-%%   <<"Title">> => string(),
-%%   <<"WebAppId">> => string()
-%% }
--type described_web_app_customization() :: #{binary() => any()}.
-
-%% Example:
-%% describe_server_request() :: #{
-%%   <<"ServerId">> := string()
-%% }
--type describe_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% listed_server() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Domain">> => list(any()),
-%%   <<"EndpointType">> => list(any()),
-%%   <<"IdentityProviderType">> => list(any()),
-%%   <<"LoggingRole">> => string(),
-%%   <<"ServerId">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"UserCount">> => integer()
-%% }
--type listed_server() :: #{binary() => any()}.
-
-%% Example:
-%% list_connectors_response() :: #{
-%%   <<"Connectors">> => list(listed_connector()),
-%%   <<"NextToken">> => string()
-%% }
--type list_connectors_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_server_request() :: #{
-%%   <<"Certificate">> => string(),
-%%   <<"EndpointDetails">> => endpoint_details(),
-%%   <<"EndpointType">> => list(any()),
-%%   <<"HostKey">> => string(),
-%%   <<"IdentityProviderDetails">> => identity_provider_details(),
-%%   <<"IdentityProviderType">> => list(any()),
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"LoggingRole">> => string(),
-%%   <<"PostAuthenticationLoginBanner">> => string(),
-%%   <<"PreAuthenticationLoginBanner">> => string(),
-%%   <<"ProtocolDetails">> => protocol_details(),
-%%   <<"Protocols">> => list(list(any())()),
-%%   <<"S3StorageOptions">> => s3_storage_options(),
-%%   <<"SecurityPolicyName">> => string(),
-%%   <<"ServerId">> := string(),
-%%   <<"StructuredLogDestinations">> => list(string()),
-%%   <<"WorkflowDetails">> => workflow_details()
-%% }
--type update_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% test_identity_provider_request() :: #{
-%%   <<"ServerId">> := string(),
-%%   <<"ServerProtocol">> => list(any()),
-%%   <<"SourceIp">> => string(),
-%%   <<"UserName">> := string(),
-%%   <<"UserPassword">> => string()
-%% }
--type test_identity_provider_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_execution_request() :: #{
-%%   <<"ExecutionId">> := string(),
-%%   <<"WorkflowId">> := string()
-%% }
--type describe_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_response() :: #{
-%%   <<"ServerId">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type update_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_profile_request() :: #{
-%%   <<"ProfileId">> := string()
-%% }
--type delete_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_details() :: #{
-%%   <<"OnPartialUpload">> => list(workflow_detail()),
-%%   <<"OnUpload">> => list(workflow_detail())
-%% }
--type workflow_details() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workflow_response() :: #{
-%%   <<"Workflow">> => described_workflow()
-%% }
--type describe_workflow_response() :: #{binary() => any()}.
-
-%% Example:
-%% listed_profile() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"As2Id">> => string(),
-%%   <<"ProfileId">> => string(),
-%%   <<"ProfileType">> => list(any())
-%% }
--type listed_profile() :: #{binary() => any()}.
-
-%% Example:
-%% update_web_app_customization_request() :: #{
-%%   <<"FaviconFile">> => binary(),
-%%   <<"LogoFile">> => binary(),
-%%   <<"Title">> => string(),
-%%   <<"WebAppId">> := string()
-%% }
--type update_web_app_customization_request() :: #{binary() => any()}.
-
-%% Example:
-%% custom_directories_type() :: #{
-%%   <<"FailedFilesDirectory">> => string(),
-%%   <<"MdnFilesDirectory">> => string(),
-%%   <<"PayloadFilesDirectory">> => string(),
-%%   <<"StatusFilesDirectory">> => string(),
-%%   <<"TemporaryFilesDirectory">> => string()
-%% }
--type custom_directories_type() :: #{binary() => any()}.
-
-%% Example:
-%% identity_provider_details() :: #{
-%%   <<"DirectoryId">> => string(),
-%%   <<"Function">> => string(),
-%%   <<"InvocationRole">> => string(),
-%%   <<"SftpAuthenticationMethods">> => list(any()),
-%%   <<"Url">> => string()
-%% }
--type identity_provider_details() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workflow_request() :: #{
-%%   <<"WorkflowId">> := string()
-%% }
--type delete_workflow_request() :: #{binary() => any()}.
+-type create_access_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_agreement_request() :: #{
@@ -435,223 +267,45 @@
 -type create_agreement_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_profiles_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileType">> => list(any())
+%% create_agreement_response() :: #{
+%%   <<"AgreementId">> => string()
 %% }
--type list_profiles_request() :: #{binary() => any()}.
+-type create_agreement_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_connector_response() :: #{
-%%   <<"Connector">> => described_connector()
-%% }
--type describe_connector_response() :: #{binary() => any()}.
-
-%% Example:
-%% send_workflow_step_state_response() :: #{
-
-%% }
--type send_workflow_step_state_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_step_details() :: #{
-%%   <<"Name">> => string(),
-%%   <<"SourceFileLocation">> => string()
-%% }
--type delete_step_details() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_details() :: #{
-%%   <<"AddressAllocationIds">> => list(string()),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VpcEndpointId">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type endpoint_details() :: #{binary() => any()}.
-
-%% Example:
-%% update_connector_request() :: #{
-%%   <<"AccessRole">> => string(),
+%% create_connector_request() :: #{
+%%   <<"AccessRole">> := string(),
 %%   <<"As2Config">> => as2_connector_config(),
-%%   <<"ConnectorId">> := string(),
 %%   <<"EgressConfig">> => list(),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"LoggingRole">> => string(),
 %%   <<"SecurityPolicyName">> => string(),
 %%   <<"SftpConfig">> => sftp_connector_config(),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Url">> => string()
 %% }
--type update_connector_request() :: #{binary() => any()}.
+-type create_connector_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_remote_delete_response() :: #{
-%%   <<"DeleteId">> => string()
+%% create_connector_response() :: #{
+%%   <<"ConnectorId">> => string()
 %% }
--type start_remote_delete_response() :: #{binary() => any()}.
+-type create_connector_response() :: #{binary() => any()}.
 
 %% Example:
-%% described_web_app_vpc_config() :: #{
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VpcEndpointId">> => string(),
-%%   <<"VpcId">> => string()
+%% create_profile_request() :: #{
+%%   <<"As2Id">> := string(),
+%%   <<"CertificateIds">> => list(string()),
+%%   <<"ProfileType">> := list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type described_web_app_vpc_config() :: #{binary() => any()}.
+-type create_profile_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_web_app_customization_request() :: #{
-%%   <<"WebAppId">> := string()
+%% create_profile_response() :: #{
+%%   <<"ProfileId">> => string()
 %% }
--type describe_web_app_customization_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_access_response() :: #{
-%%   <<"ExternalId">> => string(),
-%%   <<"ServerId">> => string()
-%% }
--type create_access_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_agreement_response() :: #{
-%%   <<"Agreement">> => described_agreement()
-%% }
--type describe_agreement_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_servers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_servers_request() :: #{binary() => any()}.
-
-%% Example:
-%% execution_error() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type execution_error() :: #{binary() => any()}.
-
-%% Example:
-%% update_agreement_response() :: #{
-%%   <<"AgreementId">> => string()
-%% }
--type update_agreement_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_metadata() :: #{
-%%   <<"UserDetails">> => user_details()
-%% }
--type service_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% user_details() :: #{
-%%   <<"ServerId">> => string(),
-%%   <<"SessionId">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type user_details() :: #{binary() => any()}.
-
-%% Example:
-%% connector_file_transfer_result() :: #{
-%%   <<"FailureCode">> => string(),
-%%   <<"FailureMessage">> => string(),
-%%   <<"FilePath">> => string(),
-%%   <<"StatusCode">> => list(any())
-%% }
--type connector_file_transfer_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_web_app_response() :: #{
-%%   <<"WebAppId">> => string()
-%% }
--type create_web_app_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_execution_response() :: #{
-%%   <<"Execution">> => described_execution(),
-%%   <<"WorkflowId">> => string()
-%% }
--type describe_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% posix_profile() :: #{
-%%   <<"Gid">> => float(),
-%%   <<"SecondaryGids">> => list(float()),
-%%   <<"Uid">> => float()
-%% }
--type posix_profile() :: #{binary() => any()}.
-
-%% Example:
-%% import_certificate_response() :: #{
-%%   <<"CertificateId">> => string()
-%% }
--type import_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_server_request() :: #{
-%%   <<"ServerId">> := string()
-%% }
--type start_server_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_connectors_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_connectors_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_server_response() :: #{
-%%   <<"Server">> => described_server()
-%% }
--type describe_server_response() :: #{binary() => any()}.
-
-%% Example:
-%% sftp_connector_connection_details() :: #{
-%%   <<"HostKey">> => string()
-%% }
--type sftp_connector_connection_details() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_certificates_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_certificates_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_agreement_request() :: #{
-%%   <<"AgreementId">> := string(),
-%%   <<"ServerId">> := string()
-%% }
--type delete_agreement_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workflow_request() :: #{
-%%   <<"WorkflowId">> := string()
-%% }
--type describe_workflow_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_access_request() :: #{
-%%   <<"ExternalId">> := string(),
-%%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
-%%   <<"HomeDirectoryType">> => list(any()),
-%%   <<"Policy">> => string(),
-%%   <<"PosixProfile">> => posix_profile(),
-%%   <<"Role">> => string(),
-%%   <<"ServerId">> := string()
-%% }
--type update_access_request() :: #{binary() => any()}.
+-type create_profile_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_server_request() :: #{
@@ -677,39 +331,32 @@
 -type create_server_request() :: #{binary() => any()}.
 
 %% Example:
-%% logging_configuration() :: #{
-%%   <<"LogGroupName">> => string(),
-%%   <<"LoggingRole">> => string()
+%% create_server_response() :: #{
+%%   <<"ServerId">> => string()
 %% }
--type logging_configuration() :: #{binary() => any()}.
+-type create_server_response() :: #{binary() => any()}.
 
 %% Example:
-%% import_ssh_public_key_response() :: #{
+%% create_user_request() :: #{
+%%   <<"HomeDirectory">> => string(),
+%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
+%%   <<"HomeDirectoryType">> => list(any()),
+%%   <<"Policy">> => string(),
+%%   <<"PosixProfile">> => posix_profile(),
+%%   <<"Role">> := string(),
+%%   <<"ServerId">> := string(),
+%%   <<"SshPublicKeyBody">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserName">> := string()
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_response() :: #{
 %%   <<"ServerId">> => string(),
-%%   <<"SshPublicKeyId">> => string(),
 %%   <<"UserName">> => string()
 %% }
--type import_ssh_public_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_web_app_customization_response() :: #{
-%%   <<"WebAppCustomization">> => described_web_app_customization()
-%% }
--type describe_web_app_customization_response() :: #{binary() => any()}.
-
-%% Example:
-%% described_security_policy() :: #{
-%%   <<"Fips">> => boolean(),
-%%   <<"Protocols">> => list(list(any())()),
-%%   <<"SecurityPolicyName">> => string(),
-%%   <<"SshCiphers">> => list(string()),
-%%   <<"SshHostKeyAlgorithms">> => list(string()),
-%%   <<"SshKexs">> => list(string()),
-%%   <<"SshMacs">> => list(string()),
-%%   <<"TlsCiphers">> => list(string()),
-%%   <<"Type">> => list(any())
-%% }
--type described_security_policy() :: #{binary() => any()}.
+-type create_user_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_web_app_request() :: #{
@@ -723,28 +370,42 @@
 -type create_web_app_request() :: #{binary() => any()}.
 
 %% Example:
-%% listed_user() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryType">> => list(any()),
-%%   <<"Role">> => string(),
-%%   <<"SshPublicKeyCount">> => integer(),
-%%   <<"UserName">> => string()
+%% create_web_app_response() :: #{
+%%   <<"WebAppId">> => string()
 %% }
--type listed_user() :: #{binary() => any()}.
+-type create_web_app_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_host_key_response() :: #{
-%%   <<"HostKeyId">> => string(),
-%%   <<"ServerId">> => string()
+%% create_workflow_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"OnExceptionSteps">> => list(workflow_step()),
+%%   <<"Steps">> := list(workflow_step()),
+%%   <<"Tags">> => list(tag())
 %% }
--type update_host_key_response() :: #{binary() => any()}.
+-type create_workflow_request() :: #{binary() => any()}.
 
 %% Example:
-%% cfn_user_properties() :: #{
-%%   <<"SshPublicKeys">> => list(string())
+%% create_workflow_response() :: #{
+%%   <<"WorkflowId">> => string()
 %% }
--type cfn_user_properties() :: #{binary() => any()}.
+-type create_workflow_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_directories_type() :: #{
+%%   <<"FailedFilesDirectory">> => string(),
+%%   <<"MdnFilesDirectory">> => string(),
+%%   <<"PayloadFilesDirectory">> => string(),
+%%   <<"StatusFilesDirectory">> => string(),
+%%   <<"TemporaryFilesDirectory">> => string()
+%% }
+-type custom_directories_type() :: #{binary() => any()}.
+
+%% Example:
+%% custom_http_header() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type custom_http_header() :: #{binary() => any()}.
 
 %% Example:
 %% custom_step_details() :: #{
@@ -756,207 +417,14 @@
 -type custom_step_details() :: #{binary() => any()}.
 
 %% Example:
-%% create_profile_request() :: #{
-%%   <<"As2Id">> := string(),
-%%   <<"CertificateIds">> => list(string()),
-%%   <<"ProfileType">> := list(any()),
-%%   <<"Tags">> => list(tag())
+%% decrypt_step_details() :: #{
+%%   <<"DestinationFileLocation">> => input_file_location(),
+%%   <<"Name">> => string(),
+%%   <<"OverwriteExisting">> => list(any()),
+%%   <<"SourceFileLocation">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type create_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_file_transfer_results_request() :: #{
-%%   <<"ConnectorId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TransferId">> := string()
-%% }
--type list_file_transfer_results_request() :: #{binary() => any()}.
-
-%% Example:
-%% described_user() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
-%%   <<"HomeDirectoryType">> => list(any()),
-%%   <<"Policy">> => string(),
-%%   <<"PosixProfile">> => posix_profile(),
-%%   <<"Role">> => string(),
-%%   <<"SshPublicKeys">> => list(ssh_public_key()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UserName">> => string()
-%% }
--type described_user() :: #{binary() => any()}.
-
-%% Example:
-%% list_accesses_response() :: #{
-%%   <<"Accesses">> => list(listed_access()),
-%%   <<"NextToken">> => string(),
-%%   <<"ServerId">> => string()
-%% }
--type list_accesses_response() :: #{binary() => any()}.
-
-%% Example:
-%% as2_connector_config() :: #{
-%%   <<"AsyncMdnConfig">> => as2_async_mdn_connector_config(),
-%%   <<"BasicAuthSecretId">> => string(),
-%%   <<"Compression">> => list(any()),
-%%   <<"EncryptionAlgorithm">> => list(any()),
-%%   <<"LocalProfileId">> => string(),
-%%   <<"MdnResponse">> => list(any()),
-%%   <<"MdnSigningAlgorithm">> => list(any()),
-%%   <<"MessageSubject">> => string(),
-%%   <<"PartnerProfileId">> => string(),
-%%   <<"PreserveContentType">> => list(any()),
-%%   <<"SigningAlgorithm">> => list(any())
-%% }
--type as2_connector_config() :: #{binary() => any()}.
-
-%% Example:
-%% described_host_key() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"DateImported">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"HostKeyFingerprint">> => string(),
-%%   <<"HostKeyId">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> => string()
-%% }
--type described_host_key() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Resource">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% listed_access() :: #{
-%%   <<"ExternalId">> => string(),
-%%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryType">> => list(any()),
-%%   <<"Role">> => string()
-%% }
--type listed_access() :: #{binary() => any()}.
-
-%% Example:
-%% update_profile_request() :: #{
-%%   <<"CertificateIds">> => list(string()),
-%%   <<"ProfileId">> := string()
-%% }
--type update_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_executions_response() :: #{
-%%   <<"Executions">> => list(listed_execution()),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkflowId">> => string()
-%% }
--type list_executions_response() :: #{binary() => any()}.
-
-%% Example:
-%% import_host_key_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"HostKeyBody">> := string(),
-%%   <<"ServerId">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type import_host_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_host_key_request() :: #{
-%%   <<"HostKeyId">> := string(),
-%%   <<"ServerId">> := string()
-%% }
--type describe_host_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% create_server_response() :: #{
-%%   <<"ServerId">> => string()
-%% }
--type create_server_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_input_file_location() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Key">> => string()
-%% }
--type s3_input_file_location() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% connector_vpc_lattice_egress_config() :: #{
-%%   <<"PortNumber">> => integer(),
-%%   <<"ResourceConfigurationArn">> => string()
-%% }
--type connector_vpc_lattice_egress_config() :: #{binary() => any()}.
-
-%% Example:
-%% start_remote_delete_request() :: #{
-%%   <<"ConnectorId">> := string(),
-%%   <<"DeletePath">> := string()
-%% }
--type start_remote_delete_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_file_transfer_response() :: #{
-%%   <<"TransferId">> => string()
-%% }
--type start_file_transfer_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_certificate_request() :: #{
-%%   <<"CertificateId">> := string()
-%% }
--type describe_certificate_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_profile_response() :: #{
-%%   <<"ProfileId">> => string()
-%% }
--type create_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% listed_connector() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ConnectorId">> => string(),
-%%   <<"Url">> => string()
-%% }
--type listed_connector() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ServerId">> => string(),
-%%   <<"Users">> => list(listed_user())
-%% }
--type list_users_response() :: #{binary() => any()}.
+-type decrypt_step_details() :: #{binary() => any()}.
 
 %% Example:
 %% delete_access_request() :: #{
@@ -966,11 +434,228 @@
 -type delete_access_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_workflows_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% delete_agreement_request() :: #{
+%%   <<"AgreementId">> := string(),
+%%   <<"ServerId">> := string()
 %% }
--type list_workflows_request() :: #{binary() => any()}.
+-type delete_agreement_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_certificate_request() :: #{
+%%   <<"CertificateId">> := string()
+%% }
+-type delete_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connector_request() :: #{
+%%   <<"ConnectorId">> := string()
+%% }
+-type delete_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_host_key_request() :: #{
+%%   <<"HostKeyId">> := string(),
+%%   <<"ServerId">> := string()
+%% }
+-type delete_host_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_profile_request() :: #{
+%%   <<"ProfileId">> := string()
+%% }
+-type delete_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_server_request() :: #{
+%%   <<"ServerId">> := string()
+%% }
+-type delete_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ssh_public_key_request() :: #{
+%%   <<"ServerId">> := string(),
+%%   <<"SshPublicKeyId">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type delete_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_step_details() :: #{
+%%   <<"Name">> => string(),
+%%   <<"SourceFileLocation">> => string()
+%% }
+-type delete_step_details() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{
+%%   <<"ServerId">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_app_customization_request() :: #{
+%%   <<"WebAppId">> := string()
+%% }
+-type delete_web_app_customization_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_web_app_request() :: #{
+%%   <<"WebAppId">> := string()
+%% }
+-type delete_web_app_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_request() :: #{
+%%   <<"WorkflowId">> := string()
+%% }
+-type delete_workflow_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_access_request() :: #{
+%%   <<"ExternalId">> := string(),
+%%   <<"ServerId">> := string()
+%% }
+-type describe_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_access_response() :: #{
+%%   <<"Access">> => described_access(),
+%%   <<"ServerId">> => string()
+%% }
+-type describe_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_agreement_request() :: #{
+%%   <<"AgreementId">> := string(),
+%%   <<"ServerId">> := string()
+%% }
+-type describe_agreement_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_agreement_response() :: #{
+%%   <<"Agreement">> => described_agreement()
+%% }
+-type describe_agreement_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_request() :: #{
+%%   <<"CertificateId">> := string()
+%% }
+-type describe_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_certificate_response() :: #{
+%%   <<"Certificate">> => described_certificate()
+%% }
+-type describe_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connector_request() :: #{
+%%   <<"ConnectorId">> := string()
+%% }
+-type describe_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_connector_response() :: #{
+%%   <<"Connector">> => described_connector()
+%% }
+-type describe_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_execution_request() :: #{
+%%   <<"ExecutionId">> := string(),
+%%   <<"WorkflowId">> := string()
+%% }
+-type describe_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_execution_response() :: #{
+%%   <<"Execution">> => described_execution(),
+%%   <<"WorkflowId">> => string()
+%% }
+-type describe_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_host_key_request() :: #{
+%%   <<"HostKeyId">> := string(),
+%%   <<"ServerId">> := string()
+%% }
+-type describe_host_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_host_key_response() :: #{
+%%   <<"HostKey">> => described_host_key()
+%% }
+-type describe_host_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_profile_request() :: #{
+%%   <<"ProfileId">> := string()
+%% }
+-type describe_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_profile_response() :: #{
+%%   <<"Profile">> => described_profile()
+%% }
+-type describe_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_security_policy_request() :: #{
+%%   <<"SecurityPolicyName">> := string()
+%% }
+-type describe_security_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_security_policy_response() :: #{
+%%   <<"SecurityPolicy">> => described_security_policy()
+%% }
+-type describe_security_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_server_request() :: #{
+%%   <<"ServerId">> := string()
+%% }
+-type describe_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_server_response() :: #{
+%%   <<"Server">> => described_server()
+%% }
+-type describe_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_request() :: #{
+%%   <<"ServerId">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type describe_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_response() :: #{
+%%   <<"ServerId">> => string(),
+%%   <<"User">> => described_user()
+%% }
+-type describe_user_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_web_app_customization_request() :: #{
+%%   <<"WebAppId">> := string()
+%% }
+-type describe_web_app_customization_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_web_app_customization_response() :: #{
+%%   <<"WebAppCustomization">> => described_web_app_customization()
+%% }
+-type describe_web_app_customization_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_web_app_request() :: #{
+%%   <<"WebAppId">> := string()
+%% }
+-type describe_web_app_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_web_app_response() :: #{
@@ -979,17 +664,92 @@
 -type describe_web_app_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_access_request() :: #{
-%%   <<"ExternalId">> := string(),
+%% describe_workflow_request() :: #{
+%%   <<"WorkflowId">> := string()
+%% }
+-type describe_workflow_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workflow_response() :: #{
+%%   <<"Workflow">> => described_workflow()
+%% }
+-type describe_workflow_response() :: #{binary() => any()}.
+
+%% Example:
+%% described_access() :: #{
+%%   <<"ExternalId">> => string(),
 %%   <<"HomeDirectory">> => string(),
 %%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
 %%   <<"HomeDirectoryType">> => list(any()),
 %%   <<"Policy">> => string(),
 %%   <<"PosixProfile">> => posix_profile(),
-%%   <<"Role">> := string(),
-%%   <<"ServerId">> := string()
+%%   <<"Role">> => string()
 %% }
--type create_access_request() :: #{binary() => any()}.
+-type described_access() :: #{binary() => any()}.
+
+%% Example:
+%% described_agreement() :: #{
+%%   <<"AccessRole">> => string(),
+%%   <<"AgreementId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"BaseDirectory">> => string(),
+%%   <<"CustomDirectories">> => custom_directories_type(),
+%%   <<"Description">> => string(),
+%%   <<"EnforceMessageSigning">> => list(any()),
+%%   <<"LocalProfileId">> => string(),
+%%   <<"PartnerProfileId">> => string(),
+%%   <<"PreserveFilename">> => list(any()),
+%%   <<"ServerId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type described_agreement() :: #{binary() => any()}.
+
+%% Example:
+%% described_certificate() :: #{
+%%   <<"ActiveDate">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"Certificate">> => string(),
+%%   <<"CertificateChain">> => string(),
+%%   <<"CertificateId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"InactiveDate">> => non_neg_integer(),
+%%   <<"NotAfterDate">> => non_neg_integer(),
+%%   <<"NotBeforeDate">> => non_neg_integer(),
+%%   <<"Serial">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => list(any()),
+%%   <<"Usage">> => list(any())
+%% }
+-type described_certificate() :: #{binary() => any()}.
+
+%% Example:
+%% described_connector() :: #{
+%%   <<"AccessRole">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"As2Config">> => as2_connector_config(),
+%%   <<"ConnectorId">> => string(),
+%%   <<"EgressConfig">> => list(),
+%%   <<"EgressType">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"LoggingRole">> => string(),
+%%   <<"SecurityPolicyName">> => string(),
+%%   <<"ServiceManagedEgressIpAddresses">> => list(string()),
+%%   <<"SftpConfig">> => sftp_connector_config(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Url">> => string()
+%% }
+-type described_connector() :: #{binary() => any()}.
+
+%% Example:
+%% described_connector_vpc_lattice_egress_config() :: #{
+%%   <<"PortNumber">> => integer(),
+%%   <<"ResourceConfigurationArn">> => string()
+%% }
+-type described_connector_vpc_lattice_egress_config() :: #{binary() => any()}.
 
 %% Example:
 %% described_execution() :: #{
@@ -1005,91 +765,16 @@
 -type described_execution() :: #{binary() => any()}.
 
 %% Example:
-%% create_connector_response() :: #{
-%%   <<"ConnectorId">> => string()
-%% }
--type create_connector_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
+%% described_host_key() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag())
+%%   <<"DateImported">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"HostKeyFingerprint">> => string(),
+%%   <<"HostKeyId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> => string()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_security_policy_response() :: #{
-%%   <<"SecurityPolicy">> => described_security_policy()
-%% }
--type describe_security_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% workflow_step() :: #{
-%%   <<"CopyStepDetails">> => copy_step_details(),
-%%   <<"CustomStepDetails">> => custom_step_details(),
-%%   <<"DecryptStepDetails">> => decrypt_step_details(),
-%%   <<"DeleteStepDetails">> => delete_step_details(),
-%%   <<"TagStepDetails">> => tag_step_details(),
-%%   <<"Type">> => list(any())
-%% }
--type workflow_step() :: #{binary() => any()}.
-
-%% Example:
-%% update_web_app_vpc_config() :: #{
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type update_web_app_vpc_config() :: #{binary() => any()}.
-
-%% Example:
-%% listed_web_app() :: #{
-%%   <<"AccessEndpoint">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"EndpointType">> => list(any()),
-%%   <<"WebAppEndpoint">> => string(),
-%%   <<"WebAppId">> => string()
-%% }
--type listed_web_app() :: #{binary() => any()}.
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_file_transfer_results_response() :: #{
-%%   <<"FileTransferResults">> => list(connector_file_transfer_result()),
-%%   <<"NextToken">> => string()
-%% }
--type list_file_transfer_results_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_step_details() :: #{
-%%   <<"Name">> => string(),
-%%   <<"SourceFileLocation">> => string(),
-%%   <<"Tags">> => list(s3_tag())
-%% }
--type tag_step_details() :: #{binary() => any()}.
-
-%% Example:
-%% describe_web_app_request() :: #{
-%%   <<"WebAppId">> := string()
-%% }
--type describe_web_app_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_agreement_response() :: #{
-%%   <<"AgreementId">> => string()
-%% }
--type create_agreement_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_web_app_customization_request() :: #{
-%%   <<"WebAppId">> := string()
-%% }
--type delete_web_app_customization_request() :: #{binary() => any()}.
+-type described_host_key() :: #{binary() => any()}.
 
 %% Example:
 %% described_identity_center_config() :: #{
@@ -1100,16 +785,29 @@
 -type described_identity_center_config() :: #{binary() => any()}.
 
 %% Example:
-%% update_web_app_identity_center_config() :: #{
-%%   <<"Role">> => string()
+%% described_profile() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"As2Id">> => string(),
+%%   <<"CertificateIds">> => list(string()),
+%%   <<"ProfileId">> => string(),
+%%   <<"ProfileType">> => list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type update_web_app_identity_center_config() :: #{binary() => any()}.
+-type described_profile() :: #{binary() => any()}.
 
 %% Example:
-%% describe_connector_request() :: #{
-%%   <<"ConnectorId">> := string()
+%% described_security_policy() :: #{
+%%   <<"Fips">> => boolean(),
+%%   <<"Protocols">> => list(list(any())()),
+%%   <<"SecurityPolicyName">> => string(),
+%%   <<"SshCiphers">> => list(string()),
+%%   <<"SshHostKeyAlgorithms">> => list(string()),
+%%   <<"SshKexs">> => list(string()),
+%%   <<"SshMacs">> => list(string()),
+%%   <<"TlsCiphers">> => list(string()),
+%%   <<"Type">> => list(any())
 %% }
--type describe_connector_request() :: #{binary() => any()}.
+-type described_security_policy() :: #{binary() => any()}.
 
 %% Example:
 %% described_server() :: #{
@@ -1140,58 +838,102 @@
 -type described_server() :: #{binary() => any()}.
 
 %% Example:
-%% list_agreements_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServerId">> := string()
-%% }
--type list_agreements_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_request() :: #{
-%%   <<"ServerId">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type delete_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% described_profile() :: #{
+%% described_user() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"As2Id">> => string(),
-%%   <<"CertificateIds">> => list(string()),
-%%   <<"ProfileId">> => string(),
-%%   <<"ProfileType">> => list(any()),
-%%   <<"Tags">> => list(tag())
+%%   <<"HomeDirectory">> => string(),
+%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
+%%   <<"HomeDirectoryType">> => list(any()),
+%%   <<"Policy">> => string(),
+%%   <<"PosixProfile">> => posix_profile(),
+%%   <<"Role">> => string(),
+%%   <<"SshPublicKeys">> => list(ssh_public_key()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserName">> => string()
 %% }
--type described_profile() :: #{binary() => any()}.
+-type described_user() :: #{binary() => any()}.
 
 %% Example:
-%% stop_server_request() :: #{
-%%   <<"ServerId">> := string()
+%% described_web_app() :: #{
+%%   <<"AccessEndpoint">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"DescribedEndpointDetails">> => list(),
+%%   <<"DescribedIdentityProviderDetails">> => list(),
+%%   <<"EndpointType">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WebAppEndpoint">> => string(),
+%%   <<"WebAppEndpointPolicy">> => list(any()),
+%%   <<"WebAppId">> => string(),
+%%   <<"WebAppUnits">> => list()
 %% }
--type stop_server_request() :: #{binary() => any()}.
+-type described_web_app() :: #{binary() => any()}.
 
 %% Example:
-%% delete_host_key_request() :: #{
-%%   <<"HostKeyId">> := string(),
-%%   <<"ServerId">> := string()
+%% described_web_app_customization() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FaviconFile">> => binary(),
+%%   <<"LogoFile">> => binary(),
+%%   <<"Title">> => string(),
+%%   <<"WebAppId">> => string()
 %% }
--type delete_host_key_request() :: #{binary() => any()}.
+-type described_web_app_customization() :: #{binary() => any()}.
 
 %% Example:
-%% test_identity_provider_response() :: #{
+%% described_web_app_vpc_config() :: #{
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type described_web_app_vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% described_workflow() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"OnExceptionSteps">> => list(workflow_step()),
+%%   <<"Steps">> => list(workflow_step()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WorkflowId">> => string()
+%% }
+-type described_workflow() :: #{binary() => any()}.
+
+%% Example:
+%% efs_file_location() :: #{
+%%   <<"FileSystemId">> => string(),
+%%   <<"Path">> => string()
+%% }
+-type efs_file_location() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_details() :: #{
+%%   <<"AddressAllocationIds">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type endpoint_details() :: #{binary() => any()}.
+
+%% Example:
+%% execution_error() :: #{
 %%   <<"Message">> => string(),
-%%   <<"Response">> => string(),
-%%   <<"StatusCode">> => integer(),
-%%   <<"Url">> => string()
+%%   <<"Type">> => list(any())
 %% }
--type test_identity_provider_response() :: #{binary() => any()}.
+-type execution_error() :: #{binary() => any()}.
 
 %% Example:
-%% delete_web_app_request() :: #{
-%%   <<"WebAppId">> := string()
+%% execution_results() :: #{
+%%   <<"OnExceptionSteps">> => list(execution_step_result()),
+%%   <<"Steps">> => list(execution_step_result())
 %% }
--type delete_web_app_request() :: #{binary() => any()}.
+-type execution_results() :: #{binary() => any()}.
+
+%% Example:
+%% execution_step_result() :: #{
+%%   <<"Error">> => execution_error(),
+%%   <<"Outputs">> => string(),
+%%   <<"StepType">> => list(any())
+%% }
+-type execution_step_result() :: #{binary() => any()}.
 
 %% Example:
 %% file_location() :: #{
@@ -1201,87 +943,12 @@
 -type file_location() :: #{binary() => any()}.
 
 %% Example:
-%% listed_execution() :: #{
-%%   <<"ExecutionId">> => string(),
-%%   <<"InitialFileLocation">> => file_location(),
-%%   <<"ServiceMetadata">> => service_metadata(),
-%%   <<"Status">> => list(any())
-%% }
--type listed_execution() :: #{binary() => any()}.
-
-%% Example:
-%% send_workflow_step_state_request() :: #{
-%%   <<"ExecutionId">> := string(),
-%%   <<"Status">> := list(any()),
-%%   <<"Token">> := string(),
-%%   <<"WorkflowId">> := string()
-%% }
--type send_workflow_step_state_request() :: #{binary() => any()}.
-
-%% Example:
-%% custom_http_header() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type custom_http_header() :: #{binary() => any()}.
-
-%% Example:
-%% import_host_key_response() :: #{
-%%   <<"HostKeyId">> => string(),
-%%   <<"ServerId">> => string()
-%% }
--type import_host_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% test_connection_response() :: #{
-%%   <<"ConnectorId">> => string(),
-%%   <<"SftpConnectionDetails">> => sftp_connector_connection_details(),
-%%   <<"Status">> => string(),
-%%   <<"StatusMessage">> => string()
-%% }
--type test_connection_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_response() :: #{
-%%   <<"ServerId">> => string(),
-%%   <<"User">> => described_user()
-%% }
--type describe_user_response() :: #{binary() => any()}.
-
-%% Example:
-%% input_file_location() :: #{
-%%   <<"EfsFileLocation">> => efs_file_location(),
-%%   <<"S3FileLocation">> => s3_input_file_location()
-%% }
--type input_file_location() :: #{binary() => any()}.
-
-%% Example:
-%% update_web_app_request() :: #{
-%%   <<"AccessEndpoint">> => string(),
-%%   <<"EndpointDetails">> => list(),
-%%   <<"IdentityProviderDetails">> => list(),
-%%   <<"WebAppId">> := string(),
-%%   <<"WebAppUnits">> => list()
-%% }
--type update_web_app_request() :: #{binary() => any()}.
-
-%% Example:
-%% import_ssh_public_key_request() :: #{
-%%   <<"ServerId">> := string(),
-%%   <<"SshPublicKeyBody">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type import_ssh_public_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% decrypt_step_details() :: #{
-%%   <<"DestinationFileLocation">> => input_file_location(),
-%%   <<"Name">> => string(),
-%%   <<"OverwriteExisting">> => list(any()),
-%%   <<"SourceFileLocation">> => string(),
+%% home_directory_map_entry() :: #{
+%%   <<"Entry">> => string(),
+%%   <<"Target">> => string(),
 %%   <<"Type">> => list(any())
 %% }
--type decrypt_step_details() :: #{binary() => any()}.
+-type home_directory_map_entry() :: #{binary() => any()}.
 
 %% Example:
 %% identity_center_config() :: #{
@@ -1291,31 +958,14 @@
 -type identity_center_config() :: #{binary() => any()}.
 
 %% Example:
-%% resource_exists_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Resource">> => string(),
-%%   <<"ResourceType">> => string()
+%% identity_provider_details() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"Function">> => string(),
+%%   <<"InvocationRole">> => string(),
+%%   <<"SftpAuthenticationMethods">> => list(any()),
+%%   <<"Url">> => string()
 %% }
--type resource_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% listed_host_key() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"DateImported">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Fingerprint">> => string(),
-%%   <<"HostKeyId">> => string(),
-%%   <<"Type">> => string()
-%% }
--type listed_host_key() :: #{binary() => any()}.
-
-%% Example:
-%% execution_step_result() :: #{
-%%   <<"Error">> => execution_error(),
-%%   <<"Outputs">> => string(),
-%%   <<"StepType">> => list(any())
-%% }
--type execution_step_result() :: #{binary() => any()}.
+-type identity_provider_details() :: #{binary() => any()}.
 
 %% Example:
 %% import_certificate_request() :: #{
@@ -1331,10 +981,189 @@
 -type import_certificate_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_workflow_response() :: #{
+%% import_certificate_response() :: #{
+%%   <<"CertificateId">> => string()
+%% }
+-type import_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% import_host_key_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"HostKeyBody">> := string(),
+%%   <<"ServerId">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type import_host_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_host_key_response() :: #{
+%%   <<"HostKeyId">> => string(),
+%%   <<"ServerId">> => string()
+%% }
+-type import_host_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% import_ssh_public_key_request() :: #{
+%%   <<"ServerId">> := string(),
+%%   <<"SshPublicKeyBody">> := string(),
+%%   <<"UserName">> := string()
+%% }
+-type import_ssh_public_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_ssh_public_key_response() :: #{
+%%   <<"ServerId">> => string(),
+%%   <<"SshPublicKeyId">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type import_ssh_public_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% input_file_location() :: #{
+%%   <<"EfsFileLocation">> => efs_file_location(),
+%%   <<"S3FileLocation">> => s3_input_file_location()
+%% }
+-type input_file_location() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_error() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_accesses_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServerId">> := string()
+%% }
+-type list_accesses_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_accesses_response() :: #{
+%%   <<"Accesses">> => list(listed_access()),
+%%   <<"NextToken">> => string(),
+%%   <<"ServerId">> => string()
+%% }
+-type list_accesses_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_agreements_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServerId">> := string()
+%% }
+-type list_agreements_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_agreements_response() :: #{
+%%   <<"Agreements">> => list(listed_agreement()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_agreements_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_certificates_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_certificates_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_certificates_response() :: #{
+%%   <<"Certificates">> => list(listed_certificate()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_certificates_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_connectors_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_connectors_response() :: #{
+%%   <<"Connectors">> => list(listed_connector()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_executions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkflowId">> := string()
+%% }
+-type list_executions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_executions_response() :: #{
+%%   <<"Executions">> => list(listed_execution()),
+%%   <<"NextToken">> => string(),
 %%   <<"WorkflowId">> => string()
 %% }
--type create_workflow_response() :: #{binary() => any()}.
+-type list_executions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_transfer_results_request() :: #{
+%%   <<"ConnectorId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TransferId">> := string()
+%% }
+-type list_file_transfer_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_file_transfer_results_response() :: #{
+%%   <<"FileTransferResults">> => list(connector_file_transfer_result()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_file_transfer_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_host_keys_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServerId">> := string()
+%% }
+-type list_host_keys_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_host_keys_response() :: #{
+%%   <<"HostKeys">> => list(listed_host_key()),
+%%   <<"NextToken">> => string(),
+%%   <<"ServerId">> => string()
+%% }
+-type list_host_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileType">> => list(any())
+%% }
+-type list_profiles_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Profiles">> => list(listed_profile())
+%% }
+-type list_profiles_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_security_policies_request() :: #{
@@ -1344,12 +1173,477 @@
 -type list_security_policies_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_security_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecurityPolicyNames">> => list(string())
+%% }
+-type list_security_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_servers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_servers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_servers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Servers">> => list(listed_server())
+%% }
+-type list_servers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServerId">> := string()
+%% }
+-type list_users_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_users_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ServerId">> => string(),
+%%   <<"Users">> => list(listed_user())
+%% }
+-type list_users_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_web_apps_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_web_apps_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_web_apps_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WebApps">> => list(listed_web_app())
+%% }
+-type list_web_apps_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflows_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_workflows_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workflows_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Workflows">> => list(listed_workflow())
+%% }
+-type list_workflows_response() :: #{binary() => any()}.
+
+%% Example:
+%% listed_access() :: #{
+%%   <<"ExternalId">> => string(),
+%%   <<"HomeDirectory">> => string(),
+%%   <<"HomeDirectoryType">> => list(any()),
+%%   <<"Role">> => string()
+%% }
+-type listed_access() :: #{binary() => any()}.
+
+%% Example:
+%% listed_agreement() :: #{
+%%   <<"AgreementId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LocalProfileId">> => string(),
+%%   <<"PartnerProfileId">> => string(),
+%%   <<"ServerId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type listed_agreement() :: #{binary() => any()}.
+
+%% Example:
+%% listed_certificate() :: #{
+%%   <<"ActiveDate">> => non_neg_integer(),
+%%   <<"Arn">> => string(),
+%%   <<"CertificateId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"InactiveDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Usage">> => list(any())
+%% }
+-type listed_certificate() :: #{binary() => any()}.
+
+%% Example:
+%% listed_connector() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ConnectorId">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type listed_connector() :: #{binary() => any()}.
+
+%% Example:
+%% listed_execution() :: #{
+%%   <<"ExecutionId">> => string(),
+%%   <<"InitialFileLocation">> => file_location(),
+%%   <<"ServiceMetadata">> => service_metadata(),
+%%   <<"Status">> => list(any())
+%% }
+-type listed_execution() :: #{binary() => any()}.
+
+%% Example:
+%% listed_host_key() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DateImported">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Fingerprint">> => string(),
+%%   <<"HostKeyId">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type listed_host_key() :: #{binary() => any()}.
+
+%% Example:
+%% listed_profile() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"As2Id">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"ProfileType">> => list(any())
+%% }
+-type listed_profile() :: #{binary() => any()}.
+
+%% Example:
+%% listed_server() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Domain">> => list(any()),
+%%   <<"EndpointType">> => list(any()),
+%%   <<"IdentityProviderType">> => list(any()),
+%%   <<"LoggingRole">> => string(),
+%%   <<"ServerId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"UserCount">> => integer()
+%% }
+-type listed_server() :: #{binary() => any()}.
+
+%% Example:
+%% listed_user() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"HomeDirectory">> => string(),
+%%   <<"HomeDirectoryType">> => list(any()),
+%%   <<"Role">> => string(),
+%%   <<"SshPublicKeyCount">> => integer(),
+%%   <<"UserName">> => string()
+%% }
+-type listed_user() :: #{binary() => any()}.
+
+%% Example:
+%% listed_web_app() :: #{
+%%   <<"AccessEndpoint">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"EndpointType">> => list(any()),
+%%   <<"WebAppEndpoint">> => string(),
+%%   <<"WebAppId">> => string()
+%% }
+-type listed_web_app() :: #{binary() => any()}.
+
+%% Example:
+%% listed_workflow() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"WorkflowId">> => string()
+%% }
+-type listed_workflow() :: #{binary() => any()}.
+
+%% Example:
+%% logging_configuration() :: #{
+%%   <<"LogGroupName">> => string(),
+%%   <<"LoggingRole">> => string()
+%% }
+-type logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% posix_profile() :: #{
+%%   <<"Gid">> => float(),
+%%   <<"SecondaryGids">> => list(float()),
+%%   <<"Uid">> => float()
+%% }
+-type posix_profile() :: #{binary() => any()}.
+
+%% Example:
+%% protocol_details() :: #{
+%%   <<"As2Transports">> => list(list(any())()),
+%%   <<"PassiveIp">> => string(),
+%%   <<"SetStatOption">> => list(any()),
+%%   <<"TlsSessionResumptionMode">> => list(any())
+%% }
+-type protocol_details() :: #{binary() => any()}.
+
+%% Example:
+%% resource_exists_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Resource">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Resource">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_file_location() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Etag">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type s3_file_location() :: #{binary() => any()}.
+
+%% Example:
+%% s3_input_file_location() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Key">> => string()
+%% }
+-type s3_input_file_location() :: #{binary() => any()}.
+
+%% Example:
+%% s3_storage_options() :: #{
+%%   <<"DirectoryListingOptimization">> => list(any())
+%% }
+-type s3_storage_options() :: #{binary() => any()}.
+
+%% Example:
+%% s3_tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type s3_tag() :: #{binary() => any()}.
+
+%% Example:
+%% send_workflow_step_state_request() :: #{
+%%   <<"ExecutionId">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"Token">> := string(),
+%%   <<"WorkflowId">> := string()
+%% }
+-type send_workflow_step_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% send_workflow_step_state_response() :: #{
+
+%% }
+-type send_workflow_step_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% service_metadata() :: #{
+%%   <<"UserDetails">> => user_details()
+%% }
+-type service_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+%% Example:
+%% sftp_connector_config() :: #{
+%%   <<"MaxConcurrentConnections">> => integer(),
+%%   <<"TrustedHostKeys">> => list(string()),
+%%   <<"UserSecretId">> => string()
+%% }
+-type sftp_connector_config() :: #{binary() => any()}.
+
+%% Example:
+%% sftp_connector_connection_details() :: #{
+%%   <<"HostKey">> => string()
+%% }
+-type sftp_connector_connection_details() :: #{binary() => any()}.
+
+%% Example:
 %% ssh_public_key() :: #{
 %%   <<"DateImported">> => non_neg_integer(),
 %%   <<"SshPublicKeyBody">> => string(),
 %%   <<"SshPublicKeyId">> => string()
 %% }
 -type ssh_public_key() :: #{binary() => any()}.
+
+%% Example:
+%% start_directory_listing_request() :: #{
+%%   <<"ConnectorId">> := string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"OutputDirectoryPath">> := string(),
+%%   <<"RemoteDirectoryPath">> := string()
+%% }
+-type start_directory_listing_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_directory_listing_response() :: #{
+%%   <<"ListingId">> => string(),
+%%   <<"OutputFileName">> => string()
+%% }
+-type start_directory_listing_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_file_transfer_request() :: #{
+%%   <<"ConnectorId">> := string(),
+%%   <<"CustomHttpHeaders">> => list(custom_http_header()),
+%%   <<"LocalDirectoryPath">> => string(),
+%%   <<"RemoteDirectoryPath">> => string(),
+%%   <<"RetrieveFilePaths">> => list(string()),
+%%   <<"SendFilePaths">> => list(string())
+%% }
+-type start_file_transfer_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_file_transfer_response() :: #{
+%%   <<"TransferId">> => string()
+%% }
+-type start_file_transfer_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_remote_delete_request() :: #{
+%%   <<"ConnectorId">> := string(),
+%%   <<"DeletePath">> := string()
+%% }
+-type start_remote_delete_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_remote_delete_response() :: #{
+%%   <<"DeleteId">> => string()
+%% }
+-type start_remote_delete_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_remote_move_request() :: #{
+%%   <<"ConnectorId">> := string(),
+%%   <<"SourcePath">> := string(),
+%%   <<"TargetPath">> := string()
+%% }
+-type start_remote_move_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_remote_move_response() :: #{
+%%   <<"MoveId">> => string()
+%% }
+-type start_remote_move_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_server_request() :: #{
+%%   <<"ServerId">> := string()
+%% }
+-type start_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_server_request() :: #{
+%%   <<"ServerId">> := string()
+%% }
+-type stop_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_step_details() :: #{
+%%   <<"Name">> => string(),
+%%   <<"SourceFileLocation">> => string(),
+%%   <<"Tags">> => list(s3_tag())
+%% }
+-type tag_step_details() :: #{binary() => any()}.
+
+%% Example:
+%% test_connection_request() :: #{
+%%   <<"ConnectorId">> := string()
+%% }
+-type test_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_connection_response() :: #{
+%%   <<"ConnectorId">> => string(),
+%%   <<"SftpConnectionDetails">> => sftp_connector_connection_details(),
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => string()
+%% }
+-type test_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% test_identity_provider_request() :: #{
+%%   <<"ServerId">> := string(),
+%%   <<"ServerProtocol">> => list(any()),
+%%   <<"SourceIp">> => string(),
+%%   <<"UserName">> := string(),
+%%   <<"UserPassword">> => string()
+%% }
+-type test_identity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_identity_provider_response() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Response">> => string(),
+%%   <<"StatusCode">> => integer(),
+%%   <<"Url">> => string()
+%% }
+-type test_identity_provider_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"RetryAfterSeconds">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_access_request() :: #{
+%%   <<"ExternalId">> := string(),
+%%   <<"HomeDirectory">> => string(),
+%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
+%%   <<"HomeDirectoryType">> => list(any()),
+%%   <<"Policy">> => string(),
+%%   <<"PosixProfile">> => posix_profile(),
+%%   <<"Role">> => string(),
+%%   <<"ServerId">> := string()
+%% }
+-type update_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_access_response() :: #{
+%%   <<"ExternalId">> => string(),
+%%   <<"ServerId">> => string()
+%% }
+-type update_access_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_agreement_request() :: #{
@@ -1368,274 +1662,45 @@
 -type update_agreement_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_web_apps_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% update_agreement_response() :: #{
+%%   <<"AgreementId">> => string()
 %% }
--type list_web_apps_request() :: #{binary() => any()}.
+-type update_agreement_response() :: #{binary() => any()}.
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
+%% update_certificate_request() :: #{
+%%   <<"ActiveDate">> => non_neg_integer(),
+%%   <<"CertificateId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"InactiveDate">> => non_neg_integer()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type update_certificate_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_certificate_request() :: #{
-%%   <<"CertificateId">> := string()
+%% update_certificate_response() :: #{
+%%   <<"CertificateId">> => string()
 %% }
--type delete_certificate_request() :: #{binary() => any()}.
+-type update_certificate_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_connector_request() :: #{
-%%   <<"AccessRole">> := string(),
+%% update_connector_request() :: #{
+%%   <<"AccessRole">> => string(),
 %%   <<"As2Config">> => as2_connector_config(),
+%%   <<"ConnectorId">> := string(),
 %%   <<"EgressConfig">> => list(),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"LoggingRole">> => string(),
 %%   <<"SecurityPolicyName">> => string(),
 %%   <<"SftpConfig">> => sftp_connector_config(),
-%%   <<"Tags">> => list(tag()),
 %%   <<"Url">> => string()
 %% }
--type create_connector_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_security_policies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SecurityPolicyNames">> => list(string())
-%% }
--type list_security_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_certificate_response() :: #{
-%%   <<"Certificate">> => described_certificate()
-%% }
--type describe_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% listed_agreement() :: #{
-%%   <<"AgreementId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LocalProfileId">> => string(),
-%%   <<"PartnerProfileId">> => string(),
-%%   <<"ServerId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type listed_agreement() :: #{binary() => any()}.
-
-%% Example:
-%% start_remote_move_request() :: #{
-%%   <<"ConnectorId">> := string(),
-%%   <<"SourcePath">> := string(),
-%%   <<"TargetPath">> := string()
-%% }
--type start_remote_move_request() :: #{binary() => any()}.
-
-%% Example:
-%% efs_file_location() :: #{
-%%   <<"FileSystemId">> => string(),
-%%   <<"Path">> => string()
-%% }
--type efs_file_location() :: #{binary() => any()}.
-
-%% Example:
-%% s3_storage_options() :: #{
-%%   <<"DirectoryListingOptimization">> => list(any())
-%% }
--type s3_storage_options() :: #{binary() => any()}.
-
-%% Example:
-%% web_app_vpc_config() :: #{
-%%   <<"IpAddressType">> => list(any()),
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string()),
-%%   <<"VpcId">> => string()
-%% }
--type web_app_vpc_config() :: #{binary() => any()}.
-
-%% Example:
-%% internal_service_error() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_service_error() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_request() :: #{
-%%   <<"ServerId">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type describe_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_accesses_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServerId">> := string()
-%% }
--type list_accesses_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_access_response() :: #{
-%%   <<"ExternalId">> => string(),
-%%   <<"ServerId">> => string()
-%% }
--type update_access_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_profile_response() :: #{
-%%   <<"ProfileId">> => string()
-%% }
--type update_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_user_request() :: #{
-%%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
-%%   <<"HomeDirectoryType">> => list(any()),
-%%   <<"Policy">> => string(),
-%%   <<"PosixProfile">> => posix_profile(),
-%%   <<"Role">> => string(),
-%%   <<"ServerId">> := string(),
-%%   <<"UserName">> := string()
-%% }
--type update_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_profiles_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Profiles">> => list(listed_profile())
-%% }
--type list_profiles_response() :: #{binary() => any()}.
-
-%% Example:
-%% listed_workflow() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"WorkflowId">> => string()
-%% }
--type listed_workflow() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_host_keys_response() :: #{
-%%   <<"HostKeys">> => list(listed_host_key()),
-%%   <<"NextToken">> => string(),
-%%   <<"ServerId">> => string()
-%% }
--type list_host_keys_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_web_apps_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WebApps">> => list(listed_web_app())
-%% }
--type list_web_apps_response() :: #{binary() => any()}.
+-type update_connector_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_connector_response() :: #{
 %%   <<"ConnectorId">> => string()
 %% }
 -type update_connector_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_file_location() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Etag">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type s3_file_location() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"RetryAfterSeconds">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% described_workflow() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"OnExceptionSteps">> => list(workflow_step()),
-%%   <<"Steps">> => list(workflow_step()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"WorkflowId">> => string()
-%% }
--type described_workflow() :: #{binary() => any()}.
-
-%% Example:
-%% list_servers_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Servers">> => list(listed_server())
-%% }
--type list_servers_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_host_keys_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServerId">> := string()
-%% }
--type list_host_keys_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_users_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServerId">> := string()
-%% }
--type list_users_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_directory_listing_request() :: #{
-%%   <<"ConnectorId">> := string(),
-%%   <<"MaxItems">> => integer(),
-%%   <<"OutputDirectoryPath">> := string(),
-%%   <<"RemoteDirectoryPath">> := string()
-%% }
--type start_directory_listing_request() :: #{binary() => any()}.
-
-%% Example:
-%% listed_certificate() :: #{
-%%   <<"ActiveDate">> => non_neg_integer(),
-%%   <<"Arn">> => string(),
-%%   <<"CertificateId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"InactiveDate">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"Usage">> => list(any())
-%% }
--type listed_certificate() :: #{binary() => any()}.
-
-%% Example:
-%% start_remote_move_response() :: #{
-%%   <<"MoveId">> => string()
-%% }
--type start_remote_move_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_connector_request() :: #{
-%%   <<"ConnectorId">> := string()
-%% }
--type delete_connector_request() :: #{binary() => any()}.
-
-%% Example:
-%% home_directory_map_entry() :: #{
-%%   <<"Entry">> => string(),
-%%   <<"Target">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type home_directory_map_entry() :: #{binary() => any()}.
 
 %% Example:
 %% update_connector_vpc_lattice_egress_config() :: #{
@@ -1653,133 +1718,103 @@
 -type update_host_key_request() :: #{binary() => any()}.
 
 %% Example:
-%% described_agreement() :: #{
-%%   <<"AccessRole">> => string(),
-%%   <<"AgreementId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"BaseDirectory">> => string(),
-%%   <<"CustomDirectories">> => custom_directories_type(),
-%%   <<"Description">> => string(),
-%%   <<"EnforceMessageSigning">> => list(any()),
-%%   <<"LocalProfileId">> => string(),
-%%   <<"PartnerProfileId">> => string(),
-%%   <<"PreserveFilename">> => list(any()),
-%%   <<"ServerId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag())
+%% update_host_key_response() :: #{
+%%   <<"HostKeyId">> => string(),
+%%   <<"ServerId">> => string()
 %% }
--type described_agreement() :: #{binary() => any()}.
+-type update_host_key_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_agreements_response() :: #{
-%%   <<"Agreements">> => list(listed_agreement()),
-%%   <<"NextToken">> => string()
+%% update_profile_request() :: #{
+%%   <<"CertificateIds">> => list(string()),
+%%   <<"ProfileId">> := string()
 %% }
--type list_agreements_response() :: #{binary() => any()}.
+-type update_profile_request() :: #{binary() => any()}.
 
 %% Example:
-%% sftp_connector_config() :: #{
-%%   <<"MaxConcurrentConnections">> => integer(),
-%%   <<"TrustedHostKeys">> => list(string()),
-%%   <<"UserSecretId">> => string()
+%% update_profile_response() :: #{
+%%   <<"ProfileId">> => string()
 %% }
--type sftp_connector_config() :: #{binary() => any()}.
+-type update_profile_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_host_key_response() :: #{
-%%   <<"HostKey">> => described_host_key()
-%% }
--type describe_host_key_response() :: #{binary() => any()}.
-
-%% Example:
-%% described_web_app() :: #{
-%%   <<"AccessEndpoint">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"DescribedEndpointDetails">> => list(),
-%%   <<"DescribedIdentityProviderDetails">> => list(),
+%% update_server_request() :: #{
+%%   <<"Certificate">> => string(),
+%%   <<"EndpointDetails">> => endpoint_details(),
 %%   <<"EndpointType">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"WebAppEndpoint">> => string(),
-%%   <<"WebAppEndpointPolicy">> => list(any()),
-%%   <<"WebAppId">> => string(),
-%%   <<"WebAppUnits">> => list()
-%% }
--type described_web_app() :: #{binary() => any()}.
-
-%% Example:
-%% s3_tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type s3_tag() :: #{binary() => any()}.
-
-%% Example:
-%% list_workflows_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Workflows">> => list(listed_workflow())
-%% }
--type list_workflows_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_ssh_public_key_request() :: #{
+%%   <<"HostKey">> => string(),
+%%   <<"IdentityProviderDetails">> => identity_provider_details(),
+%%   <<"IdentityProviderType">> => list(any()),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"LoggingRole">> => string(),
+%%   <<"PostAuthenticationLoginBanner">> => string(),
+%%   <<"PreAuthenticationLoginBanner">> => string(),
+%%   <<"ProtocolDetails">> => protocol_details(),
+%%   <<"Protocols">> => list(list(any())()),
+%%   <<"S3StorageOptions">> => s3_storage_options(),
+%%   <<"SecurityPolicyName">> => string(),
 %%   <<"ServerId">> := string(),
-%%   <<"SshPublicKeyId">> := string(),
+%%   <<"StructuredLogDestinations">> => list(string()),
+%%   <<"WorkflowDetails">> => workflow_details()
+%% }
+-type update_server_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_server_response() :: #{
+%%   <<"ServerId">> => string()
+%% }
+-type update_server_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_user_request() :: #{
+%%   <<"HomeDirectory">> => string(),
+%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
+%%   <<"HomeDirectoryType">> => list(any()),
+%%   <<"Policy">> => string(),
+%%   <<"PosixProfile">> => posix_profile(),
+%%   <<"Role">> => string(),
+%%   <<"ServerId">> := string(),
 %%   <<"UserName">> := string()
 %% }
--type delete_ssh_public_key_request() :: #{binary() => any()}.
+-type update_user_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_directory_listing_response() :: #{
-%%   <<"ListingId">> => string(),
-%%   <<"OutputFileName">> => string()
-%% }
--type start_directory_listing_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_response() :: #{
+%% update_user_response() :: #{
 %%   <<"ServerId">> => string(),
 %%   <<"UserName">> => string()
 %% }
--type create_user_response() :: #{binary() => any()}.
+-type update_user_response() :: #{binary() => any()}.
 
 %% Example:
-%% as2_async_mdn_connector_config() :: #{
-%%   <<"ServerIds">> => list(string()),
-%%   <<"Url">> => string()
+%% update_web_app_customization_request() :: #{
+%%   <<"FaviconFile">> => binary(),
+%%   <<"LogoFile">> => binary(),
+%%   <<"Title">> => string(),
+%%   <<"WebAppId">> := string()
 %% }
--type as2_async_mdn_connector_config() :: #{binary() => any()}.
+-type update_web_app_customization_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_certificate_response() :: #{
-%%   <<"CertificateId">> => string()
+%% update_web_app_customization_response() :: #{
+%%   <<"WebAppId">> => string()
 %% }
--type update_certificate_response() :: #{binary() => any()}.
+-type update_web_app_customization_response() :: #{binary() => any()}.
 
 %% Example:
-%% copy_step_details() :: #{
-%%   <<"DestinationFileLocation">> => input_file_location(),
-%%   <<"Name">> => string(),
-%%   <<"OverwriteExisting">> => list(any()),
-%%   <<"SourceFileLocation">> => string()
+%% update_web_app_identity_center_config() :: #{
+%%   <<"Role">> => string()
 %% }
--type copy_step_details() :: #{binary() => any()}.
+-type update_web_app_identity_center_config() :: #{binary() => any()}.
 
 %% Example:
-%% start_file_transfer_request() :: #{
-%%   <<"ConnectorId">> := string(),
-%%   <<"CustomHttpHeaders">> => list(custom_http_header()),
-%%   <<"LocalDirectoryPath">> => string(),
-%%   <<"RemoteDirectoryPath">> => string(),
-%%   <<"RetrieveFilePaths">> => list(string()),
-%%   <<"SendFilePaths">> => list(string())
+%% update_web_app_request() :: #{
+%%   <<"AccessEndpoint">> => string(),
+%%   <<"EndpointDetails">> => list(),
+%%   <<"IdentityProviderDetails">> => list(),
+%%   <<"WebAppId">> := string(),
+%%   <<"WebAppUnits">> => list()
 %% }
--type start_file_transfer_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_profile_response() :: #{
-%%   <<"Profile">> => described_profile()
-%% }
--type describe_profile_response() :: #{binary() => any()}.
+-type update_web_app_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_web_app_response() :: #{
@@ -1788,574 +1823,539 @@
 -type update_web_app_response() :: #{binary() => any()}.
 
 %% Example:
-%% execution_results() :: #{
-%%   <<"OnExceptionSteps">> => list(execution_step_result()),
-%%   <<"Steps">> => list(execution_step_result())
-%% }
--type execution_results() :: #{binary() => any()}.
-
-%% Example:
-%% described_connector() :: #{
-%%   <<"AccessRole">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"As2Config">> => as2_connector_config(),
-%%   <<"ConnectorId">> => string(),
-%%   <<"EgressConfig">> => list(),
-%%   <<"EgressType">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
+%% update_web_app_vpc_config() :: #{
 %%   <<"IpAddressType">> => list(any()),
-%%   <<"LoggingRole">> => string(),
-%%   <<"SecurityPolicyName">> => string(),
-%%   <<"ServiceManagedEgressIpAddresses">> => list(string()),
-%%   <<"SftpConfig">> => sftp_connector_config(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Url">> => string()
+%%   <<"SubnetIds">> => list(string())
 %% }
--type described_connector() :: #{binary() => any()}.
+-type update_web_app_vpc_config() :: #{binary() => any()}.
 
 %% Example:
-%% list_certificates_response() :: #{
-%%   <<"Certificates">> => list(listed_certificate()),
-%%   <<"NextToken">> => string()
+%% user_details() :: #{
+%%   <<"ServerId">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"UserName">> => string()
 %% }
--type list_certificates_response() :: #{binary() => any()}.
+-type user_details() :: #{binary() => any()}.
 
 %% Example:
-%% list_executions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkflowId">> := string()
+%% web_app_vpc_config() :: #{
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcId">> => string()
 %% }
--type list_executions_request() :: #{binary() => any()}.
+-type web_app_vpc_config() :: #{binary() => any()}.
 
 %% Example:
-%% test_connection_request() :: #{
-%%   <<"ConnectorId">> := string()
+%% workflow_detail() :: #{
+%%   <<"ExecutionRole">> => string(),
+%%   <<"WorkflowId">> => string()
 %% }
--type test_connection_request() :: #{binary() => any()}.
+-type workflow_detail() :: #{binary() => any()}.
 
 %% Example:
-%% delete_server_request() :: #{
-%%   <<"ServerId">> := string()
+%% workflow_details() :: #{
+%%   <<"OnPartialUpload">> => list(workflow_detail()),
+%%   <<"OnUpload">> => list(workflow_detail())
 %% }
--type delete_server_request() :: #{binary() => any()}.
+-type workflow_details() :: #{binary() => any()}.
 
 %% Example:
-%% protocol_details() :: #{
-%%   <<"As2Transports">> => list(list(any())()),
-%%   <<"PassiveIp">> => string(),
-%%   <<"SetStatOption">> => list(any()),
-%%   <<"TlsSessionResumptionMode">> => list(any())
+%% workflow_step() :: #{
+%%   <<"CopyStepDetails">> => copy_step_details(),
+%%   <<"CustomStepDetails">> => custom_step_details(),
+%%   <<"DecryptStepDetails">> => decrypt_step_details(),
+%%   <<"DeleteStepDetails">> => delete_step_details(),
+%%   <<"TagStepDetails">> => tag_step_details(),
+%%   <<"Type">> => list(any())
 %% }
--type protocol_details() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_request() :: #{
-%%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
-%%   <<"HomeDirectoryType">> => list(any()),
-%%   <<"Policy">> => string(),
-%%   <<"PosixProfile">> => posix_profile(),
-%%   <<"Role">> := string(),
-%%   <<"ServerId">> := string(),
-%%   <<"SshPublicKeyBody">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UserName">> := string()
-%% }
--type create_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_web_app_customization_response() :: #{
-%%   <<"WebAppId">> => string()
-%% }
--type update_web_app_customization_response() :: #{binary() => any()}.
+-type workflow_step() :: #{binary() => any()}.
 
 -type create_access_errors() ::
-    internal_service_error() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_exists_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type create_agreement_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_exists_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type create_connector_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_exists_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type create_profile_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type create_server_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_exists_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type create_user_errors() ::
-    internal_service_error() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_exists_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type create_web_app_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type create_workflow_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception().
+    resource_exists_exception() | 
+    invalid_request_exception() | 
+    internal_service_error() | 
+    access_denied_exception().
 
 -type delete_access_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type delete_agreement_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type delete_certificate_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type delete_connector_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type delete_host_key_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type delete_profile_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type delete_server_errors() ::
-    internal_service_error() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type delete_ssh_public_key_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type delete_user_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type delete_web_app_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type delete_web_app_customization_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    invalid_request_exception() | 
+    internal_service_error() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workflow_errors() ::
-    internal_service_error() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type describe_access_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type describe_agreement_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type describe_certificate_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type describe_connector_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type describe_execution_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type describe_host_key_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type describe_profile_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type describe_security_policy_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type describe_server_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type describe_user_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type describe_web_app_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type describe_web_app_customization_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type describe_workflow_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type import_certificate_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type import_host_key_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_exists_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type import_ssh_public_key_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_exists_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type list_accesses_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
-    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_next_token_exception() | 
+    internal_service_error().
 
 -type list_agreements_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
-    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_next_token_exception() | 
+    internal_service_error().
 
 -type list_certificates_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
-    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_next_token_exception() | 
+    internal_service_error().
 
 -type list_connectors_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
-    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_next_token_exception() | 
+    internal_service_error().
 
 -type list_executions_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
-    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_next_token_exception() | 
+    internal_service_error().
 
 -type list_file_transfer_results_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type list_host_keys_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
-    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_next_token_exception() | 
+    internal_service_error().
 
 -type list_profiles_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
-    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_next_token_exception() | 
+    internal_service_error().
 
 -type list_security_policies_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    invalid_request_exception() | 
     invalid_next_token_exception() | 
-    invalid_request_exception().
+    internal_service_error().
 
 -type list_servers_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    invalid_request_exception() | 
     invalid_next_token_exception() | 
-    invalid_request_exception().
+    internal_service_error().
 
 -type list_tags_for_resource_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    invalid_request_exception() | 
     invalid_next_token_exception() | 
-    invalid_request_exception().
+    internal_service_error().
 
 -type list_users_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
-    invalid_next_token_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    invalid_next_token_exception() | 
+    internal_service_error().
 
 -type list_web_apps_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
+    invalid_request_exception() | 
     invalid_next_token_exception() | 
-    invalid_request_exception().
+    internal_service_error().
 
 -type list_workflows_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    invalid_request_exception() | 
     invalid_next_token_exception() | 
-    invalid_request_exception().
+    internal_service_error().
 
 -type send_workflow_step_state_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type start_directory_listing_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type start_file_transfer_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type start_remote_delete_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type start_remote_move_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type start_server_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type stop_server_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type tag_resource_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type test_connection_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type test_identity_provider_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type untag_resource_errors() ::
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type update_access_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_exists_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type update_agreement_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_exists_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type update_certificate_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type update_connector_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_exists_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type update_host_key_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type update_profile_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type update_server_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
-    resource_exists_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    resource_exists_exception() | 
+    invalid_request_exception() | 
+    internal_service_error() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_user_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
     service_unavailable_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception().
+    internal_service_error().
 
 -type update_web_app_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    invalid_request_exception() | 
+    internal_service_error() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_web_app_customization_errors() ::
     throttling_exception() | 
-    internal_service_error() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    invalid_request_exception() | 
+    internal_service_error() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

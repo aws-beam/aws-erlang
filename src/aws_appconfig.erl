@@ -259,12 +259,43 @@
 
 
 %% Example:
-%% list_extensions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NextToken">> => string()
+%% account_settings() :: #{
+%%   <<"DeletionProtection">> => deletion_protection_settings(),
+%%   <<"VendedMetrics">> => vended_metrics_settings()
 %% }
--type list_extensions_request() :: #{binary() => any()}.
+-type account_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% action() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Uri">> => string()
+%% }
+-type action() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_invocation() :: #{
+%%   <<"ActionName">> => string(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ExtensionIdentifier">> => string(),
+%%   <<"InvocationId">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Uri">> => string()
+%% }
+-type action_invocation() :: #{binary() => any()}.
+
+
+%% Example:
+%% application() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type application() :: #{binary() => any()}.
 
 
 %% Example:
@@ -276,66 +307,224 @@
 
 
 %% Example:
-%% stop_deployment_request() :: #{
-%%   <<"AllowRevert">> => boolean()
-%% }
--type stop_deployment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployments_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_deployments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% extension() :: #{
-%%   <<"Actions">> => map(),
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
+%% applied_extension() :: #{
+%%   <<"ExtensionAssociationId">> => string(),
+%%   <<"ExtensionId">> => string(),
 %%   <<"Parameters">> => map(),
 %%   <<"VersionNumber">> => integer()
 %% }
--type extension() :: #{binary() => any()}.
+-type applied_extension() :: #{binary() => any()}.
 
 
 %% Example:
-%% deployment_summary() :: #{
-%%   <<"CompletedAt">> => non_neg_integer(),
-%%   <<"ConfigurationName">> => string(),
-%%   <<"ConfigurationProfileId">> => string(),
-%%   <<"ConfigurationVersion">> => string(),
-%%   <<"DeploymentDurationInMinutes">> => integer(),
-%%   <<"DeploymentNumber">> => integer(),
-%%   <<"FinalBakeTimeInMinutes">> => integer(),
-%%   <<"GrowthFactor">> => float(),
-%%   <<"GrowthType">> => list(any()),
-%%   <<"PercentageComplete">> => float(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"VersionLabel">> => string()
+%% bad_request_exception() :: #{
+%%   <<"Details">> => list(),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
--type deployment_summary() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% extension_associations() :: #{
-%%   <<"Items">> => list(extension_association_summary()),
+%% configuration() :: #{
+%%   <<"ConfigurationVersion">> => string(),
+%%   <<"Content">> => binary(),
+%%   <<"ContentType">> => string()
+%% }
+-type configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_profile() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RetrievalRoleArn">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Validators">> => list(validator())
+%% }
+-type configuration_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_profile_summary() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"ValidatorTypes">> => list(list(any())())
+%% }
+-type configuration_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_profiles() :: #{
+%%   <<"Items">> => list(configuration_profile_summary()),
 %%   <<"NextToken">> => string()
 %% }
--type extension_associations() :: #{binary() => any()}.
+-type configuration_profiles() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_configuration_profile_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LocationUri">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"RetrievalRoleArn">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => string(),
+%%   <<"Validators">> => list(validator())
+%% }
+-type create_configuration_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_deployment_strategy_request() :: #{
+%%   <<"DeploymentDurationInMinutes">> := integer(),
+%%   <<"Description">> => string(),
+%%   <<"FinalBakeTimeInMinutes">> => integer(),
+%%   <<"GrowthFactor">> := float(),
+%%   <<"GrowthType">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"ReplicateTo">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_deployment_strategy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_environment_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Monitors">> => list(monitor()),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_experiment_definition_request() :: #{
+%%   <<"AudienceDescription">> => string(),
+%%   <<"AudienceRule">> := string(),
+%%   <<"ConfigurationProfileIdentifier">> := string(),
+%%   <<"Control">> := treatment_input(),
+%%   <<"EnvironmentIdentifier">> := string(),
+%%   <<"FlagKey">> := string(),
+%%   <<"Hypothesis">> => string(),
+%%   <<"LaunchCriteria">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"Treatments">> := list(treatment_input())
+%% }
+-type create_experiment_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_extension_association_request() :: #{
+%%   <<"ExtensionIdentifier">> := string(),
+%%   <<"ExtensionVersionNumber">> => integer(),
+%%   <<"Parameters">> => map(),
+%%   <<"ResourceIdentifier">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_extension_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_extension_request() :: #{
+%%   <<"Actions">> := map(),
+%%   <<"Description">> => string(),
+%%   <<"LatestVersionNumber">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"Parameters">> => map(),
+%%   <<"Tags">> => map()
+%% }
+-type create_extension_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_hosted_configuration_version_request() :: #{
+%%   <<"Content">> := binary(),
+%%   <<"ContentType">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"LatestVersionNumber">> => integer(),
+%%   <<"VersionLabel">> => string()
+%% }
+-type create_hosted_configuration_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
+
+%% Example:
+%% delete_configuration_profile_request() :: #{
+%%   <<"DeletionProtectionCheck">> => list(any())
+%% }
+-type delete_configuration_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_deployment_strategy_request() :: #{}
+-type delete_deployment_strategy_request() :: #{}.
+
+
+%% Example:
+%% delete_environment_request() :: #{
+%%   <<"DeletionProtectionCheck">> => list(any())
+%% }
+-type delete_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_experiment_definition_request() :: #{
+%%   <<"DeleteType">> => list(any())
+%% }
+-type delete_experiment_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_extension_association_request() :: #{}
+-type delete_extension_association_request() :: #{}.
+
+
+%% Example:
+%% delete_extension_request() :: #{
+%%   <<"VersionNumber">> => integer()
+%% }
+-type delete_extension_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_hosted_configuration_version_request() :: #{}
+-type delete_hosted_configuration_version_request() :: #{}.
+
+
+%% Example:
+%% deletion_protection_settings() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"ProtectionPeriodInMinutes">> => integer()
+%% }
+-type deletion_protection_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -367,76 +556,92 @@
 
 
 %% Example:
-%% invalid_configuration_detail() :: #{
-%%   <<"Constraint">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"Reason">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"Value">> => string()
+%% deployment_event() :: #{
+%%   <<"ActionInvocations">> => list(action_invocation()),
+%%   <<"Description">> => string(),
+%%   <<"EventType">> => list(any()),
+%%   <<"OccurredAt">> => non_neg_integer(),
+%%   <<"TriggeredBy">> => list(any())
 %% }
--type invalid_configuration_detail() :: #{binary() => any()}.
+-type deployment_event() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_experiment_runs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_experiment_runs_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_deployment_strategy_request() :: #{}
--type delete_deployment_strategy_request() :: #{}.
-
-
-%% Example:
-%% experiment_definitions() :: #{
-%%   <<"Items">> => list(experiment_definition_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type experiment_definitions() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_experiment_run_request() :: #{
-%%   <<"DeploymentParameters">> => deployment_parameters(),
-%%   <<"Result">> => experiment_run_result()
-%% }
--type stop_experiment_run_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configuration_request() :: #{
-%%   <<"ClientConfigurationVersion">> => string(),
-%%   <<"ClientId">> := string()
-%% }
--type get_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_configuration_request() :: #{
-%%   <<"ConfigurationVersion">> := string()
-%% }
--type validate_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_tags() :: #{
+%% deployment_parameters() :: #{
+%%   <<"DynamicExtensionParameters">> => map(),
 %%   <<"Tags">> => map()
 %% }
--type resource_tags() :: #{binary() => any()}.
+-type deployment_parameters() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_hosted_configuration_version_request() :: #{
-%%   <<"Content">> := binary(),
-%%   <<"ContentType">> := string(),
+%% deployment_strategies() :: #{
+%%   <<"Items">> => list(deployment_strategy()),
+%%   <<"NextToken">> => string()
+%% }
+-type deployment_strategies() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_strategy() :: #{
+%%   <<"DeploymentDurationInMinutes">> => integer(),
 %%   <<"Description">> => string(),
-%%   <<"LatestVersionNumber">> => integer(),
+%%   <<"FinalBakeTimeInMinutes">> => integer(),
+%%   <<"GrowthFactor">> => float(),
+%%   <<"GrowthType">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReplicateTo">> => list(any())
+%% }
+-type deployment_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_summary() :: #{
+%%   <<"CompletedAt">> => non_neg_integer(),
+%%   <<"ConfigurationName">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
+%%   <<"ConfigurationVersion">> => string(),
+%%   <<"DeploymentDurationInMinutes">> => integer(),
+%%   <<"DeploymentNumber">> => integer(),
+%%   <<"FinalBakeTimeInMinutes">> => integer(),
+%%   <<"GrowthFactor">> => float(),
+%%   <<"GrowthType">> => list(any()),
+%%   <<"PercentageComplete">> => float(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => list(any()),
 %%   <<"VersionLabel">> => string()
 %% }
--type create_hosted_configuration_version_request() :: #{binary() => any()}.
+-type deployment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployments() :: #{
+%%   <<"Items">> => list(deployment_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type deployments() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Monitors">> => list(monitor()),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type environment() :: #{binary() => any()}.
+
+
+%% Example:
+%% environments() :: #{
+%%   <<"Items">> => list(environment()),
+%%   <<"NextToken">> => string()
+%% }
+-type environments() :: #{binary() => any()}.
 
 
 %% Example:
@@ -460,9 +665,530 @@
 %% }
 -type experiment_definition() :: #{binary() => any()}.
 
+
+%% Example:
+%% experiment_definition_snapshot() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"AudienceDescription">> => string(),
+%%   <<"AudienceRule">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
+%%   <<"Control">> => treatment(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"FlagKey">> => string(),
+%%   <<"Hypothesis">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LaunchCriteria">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Treatments">> => list(treatment())
+%% }
+-type experiment_definition_snapshot() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_definition_summary() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EnvironmentId">> => string(),
+%%   <<"FlagKey">> => string(),
+%%   <<"Hypothesis">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type experiment_definition_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_definitions() :: #{
+%%   <<"Items">> => list(experiment_definition_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type experiment_definitions() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_run() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"ExperimentDefinitionId">> => string(),
+%%   <<"ExperimentDefinitionSnapshot">> => experiment_definition_snapshot(),
+%%   <<"ExposurePercentage">> => float(),
+%%   <<"Result">> => experiment_run_result(),
+%%   <<"Run">> => integer(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TreatmentOverrides">> => list(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type experiment_run() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_run_event() :: #{
+%%   <<"AssociatedDeployment">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EventType">> => list(any()),
+%%   <<"ExposurePercentage">> => float(),
+%%   <<"OccurredAt">> => non_neg_integer(),
+%%   <<"TreatmentOverrides">> => list(),
+%%   <<"TriggeredBy">> => list(any())
+%% }
+-type experiment_run_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_run_events() :: #{
+%%   <<"Items">> => list(experiment_run_event()),
+%%   <<"NextToken">> => string()
+%% }
+-type experiment_run_events() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_run_result() :: #{
+%%   <<"ExecutiveSummary">> => string(),
+%%   <<"ReasonsNotToLaunch">> => string(),
+%%   <<"ReasonsToLaunch">> => string()
+%% }
+-type experiment_run_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_run_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"ExperimentDefinitionId">> => string(),
+%%   <<"Run">> => integer(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type experiment_run_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% experiment_runs() :: #{
+%%   <<"Items">> => list(experiment_run_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type experiment_runs() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension() :: #{
+%%   <<"Actions">> => map(),
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type extension() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension_association() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ExtensionArn">> => string(),
+%%   <<"ExtensionVersionNumber">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"Parameters">> => map(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type extension_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension_association_summary() :: #{
+%%   <<"ExtensionArn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type extension_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension_associations() :: #{
+%%   <<"Items">> => list(extension_association_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type extension_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% extension_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type extension_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% extensions() :: #{
+%%   <<"Items">> => list(extension_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type extensions() :: #{binary() => any()}.
+
+
+%% Example:
+%% flag_value() :: #{
+%%   <<"AttributeValues">> => map(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type flag_value() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_request() :: #{}
+-type get_application_request() :: #{}.
+
+%% Example:
+%% get_configuration_profile_request() :: #{}
+-type get_configuration_profile_request() :: #{}.
+
+
+%% Example:
+%% get_configuration_request() :: #{
+%%   <<"ClientConfigurationVersion">> => string(),
+%%   <<"ClientId">> := string()
+%% }
+-type get_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_request() :: #{}
+-type get_deployment_request() :: #{}.
+
+%% Example:
+%% get_deployment_strategy_request() :: #{}
+-type get_deployment_strategy_request() :: #{}.
+
 %% Example:
 %% get_environment_request() :: #{}
 -type get_environment_request() :: #{}.
+
+%% Example:
+%% get_experiment_definition_request() :: #{}
+-type get_experiment_definition_request() :: #{}.
+
+%% Example:
+%% get_experiment_run_request() :: #{}
+-type get_experiment_run_request() :: #{}.
+
+%% Example:
+%% get_extension_association_request() :: #{}
+-type get_extension_association_request() :: #{}.
+
+
+%% Example:
+%% get_extension_request() :: #{
+%%   <<"VersionNumber">> => integer()
+%% }
+-type get_extension_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_hosted_configuration_version_request() :: #{}
+-type get_hosted_configuration_version_request() :: #{}.
+
+
+%% Example:
+%% hosted_configuration_version() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
+%%   <<"Content">> => binary(),
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"VersionLabel">> => string(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type hosted_configuration_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_configuration_version_summary() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ConfigurationProfileId">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"VersionLabel">> => string(),
+%%   <<"VersionNumber">> => integer()
+%% }
+-type hosted_configuration_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% hosted_configuration_versions() :: #{
+%%   <<"Items">> => list(hosted_configuration_version_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type hosted_configuration_versions() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_configuration_detail() :: #{
+%%   <<"Constraint">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"Reason">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type invalid_configuration_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type list_configuration_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_strategies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_deployment_strategies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployments_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_environments_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_environments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiment_definitions_request() :: #{
+%%   <<"ApplicationIdentifier">> => string(),
+%%   <<"ConfigurationProfileIdentifier">> => string(),
+%%   <<"EnvironmentIdentifier">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_experiment_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiment_run_events_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_experiment_run_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_experiment_runs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_experiment_runs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_extension_associations_request() :: #{
+%%   <<"ExtensionIdentifier">> => string(),
+%%   <<"ExtensionVersionNumber">> => integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceIdentifier">> => string()
+%% }
+-type list_extension_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_extensions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_extensions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_hosted_configuration_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"VersionLabel">> => string()
+%% }
+-type list_hosted_configuration_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% monitor() :: #{
+%%   <<"AlarmArn">> => string(),
+%%   <<"AlarmRoleArn">> => string()
+%% }
+-type monitor() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Dynamic">> => boolean(),
+%%   <<"Required">> => boolean()
+%% }
+-type parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% payload_too_large_exception() :: #{
+%%   <<"Limit">> => float(),
+%%   <<"Measure">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"Size">> => float()
+%% }
+-type payload_too_large_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_tags() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type resource_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_deployment_request() :: #{
+%%   <<"ConfigurationProfileId">> := string(),
+%%   <<"ConfigurationVersion">> := string(),
+%%   <<"DeploymentStrategyId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"DynamicExtensionParameters">> => map(),
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LatestDeploymentNumber">> => integer(),
+%%   <<"Tags">> => map()
+%% }
+-type start_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_experiment_run_request() :: #{
+%%   <<"DeploymentParameters">> => deployment_parameters(),
+%%   <<"Description">> => string(),
+%%   <<"ExposurePercentage">> => float(),
+%%   <<"Tags">> => map(),
+%%   <<"TreatmentOverrides">> => list()
+%% }
+-type start_experiment_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_deployment_request() :: #{
+%%   <<"AllowRevert">> => boolean()
+%% }
+-type stop_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_experiment_run_request() :: #{
+%%   <<"DeploymentParameters">> => deployment_parameters(),
+%%   <<"Result">> => experiment_run_result()
+%% }
+-type stop_experiment_run_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% treatment() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FlagValue">> => flag_value(),
+%%   <<"Key">> => string(),
+%%   <<"Weight">> => float()
+%% }
+-type treatment() :: #{binary() => any()}.
+
+
+%% Example:
+%% treatment_input() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FlagValue">> => flag_value(),
+%%   <<"Weight">> => float()
+%% }
+-type treatment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_account_settings_request() :: #{
+%%   <<"DeletionProtection">> => deletion_protection_settings(),
+%%   <<"VendedMetrics">> => vended_metrics_settings()
+%% }
+-type update_account_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_application_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -488,322 +1214,12 @@
 
 
 %% Example:
-%% deployment_strategy() :: #{
-%%   <<"DeploymentDurationInMinutes">> => integer(),
+%% update_environment_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"FinalBakeTimeInMinutes">> => integer(),
-%%   <<"GrowthFactor">> => float(),
-%%   <<"GrowthType">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ReplicateTo">> => list(any())
-%% }
--type deployment_strategy() :: #{binary() => any()}.
-
-
-%% Example:
-%% deletion_protection_settings() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"ProtectionPeriodInMinutes">> => integer()
-%% }
--type deletion_protection_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration() :: #{
-%%   <<"ConfigurationVersion">> => string(),
-%%   <<"Content">> => binary(),
-%%   <<"ContentType">> => string()
-%% }
--type configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% extension_association_summary() :: #{
-%%   <<"ExtensionArn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type extension_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% hosted_configuration_versions() :: #{
-%%   <<"Items">> => list(hosted_configuration_version_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type hosted_configuration_versions() :: #{binary() => any()}.
-
-
-%% Example:
-%% applied_extension() :: #{
-%%   <<"ExtensionAssociationId">> => string(),
-%%   <<"ExtensionId">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"VersionNumber">> => integer()
-%% }
--type applied_extension() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% monitor() :: #{
-%%   <<"AlarmArn">> => string(),
-%%   <<"AlarmRoleArn">> => string()
-%% }
--type monitor() :: #{binary() => any()}.
-
-
-%% Example:
-%% treatment_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FlagValue">> => flag_value(),
-%%   <<"Weight">> => float()
-%% }
--type treatment_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% extension_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"VersionNumber">> => integer()
-%% }
--type extension_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_hosted_configuration_version_request() :: #{}
--type delete_hosted_configuration_version_request() :: #{}.
-
-
-%% Example:
-%% update_experiment_run_request() :: #{
-%%   <<"DeploymentParameters">> => deployment_parameters(),
-%%   <<"Description">> => string(),
-%%   <<"ExposurePercentage">> => float(),
-%%   <<"TreatmentOverrides">> => list()
-%% }
--type update_experiment_run_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceName">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% payload_too_large_exception() :: #{
-%%   <<"Limit">> => float(),
-%%   <<"Measure">> => list(any()),
-%%   <<"Message">> => string(),
-%%   <<"Size">> => float()
-%% }
--type payload_too_large_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
 %%   <<"Monitors">> => list(monitor()),
-%%   <<"Name">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type environment() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_deployment_request() :: #{}
--type get_deployment_request() :: #{}.
-
-
-%% Example:
-%% delete_configuration_profile_request() :: #{
-%%   <<"DeletionProtectionCheck">> => list(any())
-%% }
--type delete_configuration_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% application() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
 %%   <<"Name">> => string()
 %% }
--type application() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_extension_association_request() :: #{
-%%   <<"Parameters">> => map()
-%% }
--type update_extension_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_definition_summary() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"ConfigurationProfileId">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"FlagKey">> => string(),
-%%   <<"Hypothesis">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type experiment_definition_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% parameter() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Dynamic">> => boolean(),
-%%   <<"Required">> => boolean()
-%% }
--type parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_deployment_strategy_request() :: #{
-%%   <<"DeploymentDurationInMinutes">> := integer(),
-%%   <<"Description">> => string(),
-%%   <<"FinalBakeTimeInMinutes">> => integer(),
-%%   <<"GrowthFactor">> := float(),
-%%   <<"GrowthType">> => list(any()),
-%%   <<"Name">> := string(),
-%%   <<"ReplicateTo">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_deployment_strategy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_parameters() :: #{
-%%   <<"DynamicExtensionParameters">> => map(),
-%%   <<"Tags">> => map()
-%% }
--type deployment_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_profile() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"KmsKeyIdentifier">> => string(),
-%%   <<"LocationUri">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RetrievalRoleArn">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"Validators">> => list(validator())
-%% }
--type configuration_profile() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_application_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_environments_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_environments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_extension_request() :: #{
-%%   <<"VersionNumber">> => integer()
-%% }
--type get_extension_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_run_summary() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"ExperimentDefinitionId">> => string(),
-%%   <<"Run">> => integer(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type experiment_run_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_hosted_configuration_version_request() :: #{}
--type get_hosted_configuration_version_request() :: #{}.
-
-
-%% Example:
-%% action_invocation() :: #{
-%%   <<"ActionName">> => string(),
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ExtensionIdentifier">> => string(),
-%%   <<"InvocationId">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Uri">> => string()
-%% }
--type action_invocation() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_account_settings_request() :: #{
-%%   <<"DeletionProtection">> => deletion_protection_settings(),
-%%   <<"VendedMetrics">> => vended_metrics_settings()
-%% }
--type update_account_settings_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% environments() :: #{
-%%   <<"Items">> => list(environment()),
-%%   <<"NextToken">> => string()
-%% }
--type environments() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_run_events() :: #{
-%%   <<"Items">> => list(experiment_run_event()),
-%%   <<"NextToken">> => string()
-%% }
--type experiment_run_events() :: #{binary() => any()}.
+-type update_environment_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -817,316 +1233,22 @@
 %% }
 -type update_experiment_definition_request() :: #{binary() => any()}.
 
-%% Example:
-%% get_configuration_profile_request() :: #{}
--type get_configuration_profile_request() :: #{}.
 
 %% Example:
-%% get_deployment_strategy_request() :: #{}
--type get_deployment_strategy_request() :: #{}.
-
-
-%% Example:
-%% deployment_strategies() :: #{
-%%   <<"Items">> => list(deployment_strategy()),
-%%   <<"NextToken">> => string()
-%% }
--type deployment_strategies() :: #{binary() => any()}.
-
-%% Example:
-%% get_experiment_run_request() :: #{}
--type get_experiment_run_request() :: #{}.
-
-
-%% Example:
-%% hosted_configuration_version_summary() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"ConfigurationProfileId">> => string(),
-%%   <<"ContentType">> => string(),
+%% update_experiment_run_request() :: #{
+%%   <<"DeploymentParameters">> => deployment_parameters(),
 %%   <<"Description">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"VersionLabel">> => string(),
-%%   <<"VersionNumber">> => integer()
-%% }
--type hosted_configuration_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_application_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string()
-%% }
--type update_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_profiles_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Type">> => string()
-%% }
--type list_configuration_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_environment_request() :: #{
-%%   <<"DeletionProtectionCheck">> => list(any())
-%% }
--type delete_environment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_experiment_definition_request() :: #{
-%%   <<"DeleteType">> => list(any())
-%% }
--type delete_experiment_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_experiment_definition_request() :: #{}
--type get_experiment_definition_request() :: #{}.
-
-
-%% Example:
-%% create_extension_association_request() :: #{
-%%   <<"ExtensionIdentifier">> := string(),
-%%   <<"ExtensionVersionNumber">> => integer(),
-%%   <<"Parameters">> => map(),
-%%   <<"ResourceIdentifier">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_extension_association_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_profiles() :: #{
-%%   <<"Items">> => list(configuration_profile_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type configuration_profiles() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_experiment_definition_request() :: #{
-%%   <<"AudienceDescription">> => string(),
-%%   <<"AudienceRule">> := string(),
-%%   <<"ConfigurationProfileIdentifier">> := string(),
-%%   <<"Control">> := treatment_input(),
-%%   <<"EnvironmentIdentifier">> := string(),
-%%   <<"FlagKey">> := string(),
-%%   <<"Hypothesis">> => string(),
-%%   <<"LaunchCriteria">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"Treatments">> := list(treatment_input())
-%% }
--type create_experiment_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% action() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Uri">> => string()
-%% }
--type action() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_run_event() :: #{
-%%   <<"AssociatedDeployment">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EventType">> => list(any()),
 %%   <<"ExposurePercentage">> => float(),
-%%   <<"OccurredAt">> => non_neg_integer(),
-%%   <<"TreatmentOverrides">> => list(),
-%%   <<"TriggeredBy">> => list(any())
+%%   <<"TreatmentOverrides">> => list()
 %% }
--type experiment_run_event() :: #{binary() => any()}.
+-type update_experiment_run_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% experiment_run_result() :: #{
-%%   <<"ExecutiveSummary">> => string(),
-%%   <<"ReasonsNotToLaunch">> => string(),
-%%   <<"ReasonsToLaunch">> => string()
+%% update_extension_association_request() :: #{
+%%   <<"Parameters">> => map()
 %% }
--type experiment_run_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% treatment() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FlagValue">> => flag_value(),
-%%   <<"Key">> => string(),
-%%   <<"Weight">> => float()
-%% }
--type treatment() :: #{binary() => any()}.
-
-
-%% Example:
-%% extensions() :: #{
-%%   <<"Items">> => list(extension_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type extensions() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_experiment_run_events_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_experiment_run_events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_experiment_definitions_request() :: #{
-%%   <<"ApplicationIdentifier">> => string(),
-%%   <<"ConfigurationProfileIdentifier">> => string(),
-%%   <<"EnvironmentIdentifier">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_experiment_definitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_settings() :: #{
-%%   <<"DeletionProtection">> => deletion_protection_settings(),
-%%   <<"VendedMetrics">> => vended_metrics_settings()
-%% }
--type account_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_configuration_profile_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"KmsKeyIdentifier">> => string(),
-%%   <<"LocationUri">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"RetrievalRoleArn">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => string(),
-%%   <<"Validators">> => list(validator())
-%% }
--type create_configuration_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_extension_associations_request() :: #{
-%%   <<"ExtensionIdentifier">> => string(),
-%%   <<"ExtensionVersionNumber">> => integer(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceIdentifier">> => string()
-%% }
--type list_extension_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_extension_association_request() :: #{}
--type get_extension_association_request() :: #{}.
-
-
-%% Example:
-%% experiment_runs() :: #{
-%%   <<"Items">> => list(experiment_run_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type experiment_runs() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_extension_request() :: #{
-%%   <<"Actions">> := map(),
-%%   <<"Description">> => string(),
-%%   <<"LatestVersionNumber">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"Parameters">> => map(),
-%%   <<"Tags">> => map()
-%% }
--type create_extension_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deployment_strategies_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_deployment_strategies_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_extension_association_request() :: #{}
--type delete_extension_association_request() :: #{}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Details">> => list(),
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% experiment_definition_snapshot() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"AudienceDescription">> => string(),
-%%   <<"AudienceRule">> => string(),
-%%   <<"ConfigurationProfileId">> => string(),
-%%   <<"Control">> => treatment(),
-%%   <<"EnvironmentId">> => string(),
-%%   <<"FlagKey">> => string(),
-%%   <<"Hypothesis">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LaunchCriteria">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Treatments">> => list(treatment())
-%% }
--type experiment_definition_snapshot() :: #{binary() => any()}.
-
-
-%% Example:
-%% hosted_configuration_version() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"ConfigurationProfileId">> => string(),
-%%   <<"Content">> => binary(),
-%%   <<"ContentType">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"VersionLabel">> => string(),
-%%   <<"VersionNumber">> => integer()
-%% }
--type hosted_configuration_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% validator() :: #{
-%%   <<"Content">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type validator() :: #{binary() => any()}.
+-type update_extension_association_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1140,77 +1262,18 @@
 
 
 %% Example:
-%% create_environment_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Monitors">> => list(monitor()),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
+%% validate_configuration_request() :: #{
+%%   <<"ConfigurationVersion">> := string()
 %% }
--type create_environment_request() :: #{binary() => any()}.
+-type validate_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% experiment_run() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EndedAt">> => non_neg_integer(),
-%%   <<"ExperimentDefinitionId">> => string(),
-%%   <<"ExperimentDefinitionSnapshot">> => experiment_definition_snapshot(),
-%%   <<"ExposurePercentage">> => float(),
-%%   <<"Result">> => experiment_run_result(),
-%%   <<"Run">> => integer(),
-%%   <<"StartedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TreatmentOverrides">> => list(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%% validator() :: #{
+%%   <<"Content">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type experiment_run() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployment_event() :: #{
-%%   <<"ActionInvocations">> => list(action_invocation()),
-%%   <<"Description">> => string(),
-%%   <<"EventType">> => list(any()),
-%%   <<"OccurredAt">> => non_neg_integer(),
-%%   <<"TriggeredBy">> => list(any())
-%% }
--type deployment_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_environment_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Monitors">> => list(monitor()),
-%%   <<"Name">> => string()
-%% }
--type update_environment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% flag_value() :: #{
-%%   <<"AttributeValues">> => map(),
-%%   <<"Enabled">> => boolean()
-%% }
--type flag_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_experiment_run_request() :: #{
-%%   <<"DeploymentParameters">> => deployment_parameters(),
-%%   <<"Description">> => string(),
-%%   <<"ExposurePercentage">> => float(),
-%%   <<"Tags">> => map(),
-%%   <<"TreatmentOverrides">> => list()
-%% }
--type start_experiment_run_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_extension_request() :: #{
-%%   <<"VersionNumber">> => integer()
-%% }
--type delete_extension_request() :: #{binary() => any()}.
+-type validator() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1219,359 +1282,297 @@
 %% }
 -type vended_metrics_settings() :: #{binary() => any()}.
 
-
-%% Example:
-%% configuration_profile_summary() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LocationUri">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"ValidatorTypes">> => list(list(any())())
-%% }
--type configuration_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% deployments() :: #{
-%%   <<"Items">> => list(deployment_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type deployments() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_request() :: #{}
--type get_application_request() :: #{}.
-
-
-%% Example:
-%% start_deployment_request() :: #{
-%%   <<"ConfigurationProfileId">> := string(),
-%%   <<"ConfigurationVersion">> := string(),
-%%   <<"DeploymentStrategyId">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"DynamicExtensionParameters">> => map(),
-%%   <<"KmsKeyIdentifier">> => string(),
-%%   <<"LatestDeploymentNumber">> => integer(),
-%%   <<"Tags">> => map()
-%% }
--type start_deployment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_hosted_configuration_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"VersionLabel">> => string()
-%% }
--type list_hosted_configuration_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% extension_association() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ExtensionArn">> => string(),
-%%   <<"ExtensionVersionNumber">> => integer(),
-%%   <<"Id">> => string(),
-%%   <<"Parameters">> => map(),
-%%   <<"ResourceArn">> => string()
-%% }
--type extension_association() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_request() :: #{}
--type delete_application_request() :: #{}.
-
 -type create_application_errors() ::
-    bad_request_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    bad_request_exception().
 
 -type create_configuration_profile_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception().
 
 -type create_deployment_strategy_errors() ::
-    bad_request_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
-    service_quota_exceeded_exception().
+    bad_request_exception().
 
 -type create_environment_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception().
 
 -type create_experiment_definition_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_extension_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_extension_association_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception().
 
 -type create_hosted_configuration_version_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    payload_too_large_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    payload_too_large_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_application_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type delete_configuration_profile_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_deployment_strategy_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type delete_environment_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_experiment_definition_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type delete_extension_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type delete_extension_association_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type delete_hosted_configuration_version_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_account_settings_errors() ::
-    bad_request_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    bad_request_exception().
 
 -type get_application_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_configuration_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_configuration_profile_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_deployment_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_deployment_strategy_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_environment_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_experiment_definition_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_experiment_run_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_extension_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_extension_association_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type get_hosted_configuration_version_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type list_applications_errors() ::
-    bad_request_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    bad_request_exception().
 
 -type list_configuration_profiles_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type list_deployment_strategies_errors() ::
-    bad_request_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    bad_request_exception().
 
 -type list_deployments_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type list_environments_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type list_experiment_definitions_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type list_experiment_run_events_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type list_experiment_runs_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type list_extension_associations_errors() ::
-    bad_request_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    bad_request_exception().
 
 -type list_extensions_errors() ::
-    bad_request_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    bad_request_exception().
 
 -type list_hosted_configuration_versions_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type start_deployment_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type start_experiment_run_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type stop_deployment_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type stop_experiment_run_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type update_account_settings_errors() ::
-    bad_request_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    bad_request_exception().
 
 -type update_application_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type update_configuration_profile_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type update_deployment_strategy_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type update_environment_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type update_experiment_definition_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_experiment_run_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_extension_errors() ::
-    bad_request_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type update_extension_association_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type validate_configuration_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API
@@ -3425,6 +3426,10 @@ start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 %% An experiment run delivers treatments to the target audience and collects
 %% metrics. You can start multiple experiment runs from the same experiment
 %% definition.
+%%
+%% Billing for this experiment begins when you call this operation and
+%% continues until the experiment is stopped. For pricing details, see
+%% AppConfig pricing: https://aws.amazon.com/systems-manager/pricing/.
 -spec start_experiment_run(aws_client:aws_client(), binary() | list(), binary() | list(), start_experiment_run_request()) ->
     {ok, experiment_run(), tuple()} |
     {error, any()} |

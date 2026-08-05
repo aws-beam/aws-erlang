@@ -137,204 +137,35 @@
 
 
 %% Example:
-%% query_logging_configuration_metadata() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"destinations">> => list(logging_destination()),
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"status">> => query_logging_configuration_status(),
-%%   <<"workspace">> => string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type query_logging_configuration_metadata() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_scraper_logging_configuration_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_scraper_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_alert_manager_definition_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"data">> => binary()
-%% }
--type put_alert_manager_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_configuration() :: #{
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string())
-%% }
--type vpc_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workspace_configuration_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"limitsPerLabelSet">> => list(limits_per_label_set()),
-%%   <<"outOfOrderTimeWindowInSeconds">> => [integer()],
-%%   <<"retentionPeriodInDays">> => [integer()],
-%%   <<"ruleQueryOffsetInSeconds">> => [integer()]
-%% }
--type update_workspace_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_query_logging_configuration_response() :: #{
-%%   <<"queryLoggingConfiguration">> => query_logging_configuration_metadata()
-%% }
--type describe_query_logging_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_scraper_request() :: #{
-%%   <<"alias">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"destination">> => list(),
-%%   <<"roleConfiguration">> => role_configuration(),
-%%   <<"scrapeConfiguration">> => list()
-%% }
--type update_scraper_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rule_groups_namespaces_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"ruleGroupsNamespaces">> => list(rule_groups_namespace_summary())
-%% }
--type list_rule_groups_namespaces_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% list_scrapers_request() :: #{
-%%   <<"filters">> => map(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_scrapers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_query_logging_configuration_response() :: #{
-%%   <<"status">> => query_logging_configuration_status()
-%% }
--type create_query_logging_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule_groups_namespace_status() :: #{
-%%   <<"statusCode">> => string(),
-%%   <<"statusReason">> => [string()]
-%% }
--type rule_groups_namespace_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_query_logging_configuration_request() :: #{}
--type describe_query_logging_configuration_request() :: #{}.
-
-
-%% Example:
-%% rule_groups_namespace_description() :: #{
-%%   <<"arn">> => string(),
+%% alert_manager_definition_description() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"data">> => binary(),
 %%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"name">> => string(),
-%%   <<"status">> => rule_groups_namespace_status(),
-%%   <<"tags">> => map()
+%%   <<"status">> => alert_manager_definition_status()
 %% }
--type rule_groups_namespace_description() :: #{binary() => any()}.
+-type alert_manager_definition_description() :: #{binary() => any()}.
 
 
 %% Example:
-%% workspace_status() :: #{
-%%   <<"statusCode">> => string()
+%% alert_manager_definition_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
 %% }
--type workspace_status() :: #{binary() => any()}.
+-type alert_manager_definition_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_scraper_logging_configuration_response() :: #{
-%%   <<"loggingDestination">> => list(),
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"scraperComponents">> => list(scraper_component()),
-%%   <<"scraperId">> => string(),
-%%   <<"status">> => scraper_logging_configuration_status()
+%% amp_configuration() :: #{
+%%   <<"workspaceArn">> => string()
 %% }
--type describe_scraper_logging_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% scraper_status() :: #{
-%%   <<"statusCode">> => string()
-%% }
--type scraper_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% workspace_summary() :: #{
-%%   <<"alias">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"status">> => workspace_status(),
-%%   <<"tags">> => map(),
-%%   <<"workspaceId">> => string()
-%% }
--type workspace_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_scraper_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"scraperId">> => string(),
-%%   <<"status">> => scraper_status(),
-%%   <<"tags">> => map()
-%% }
--type create_scraper_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% logging_configuration_metadata() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"logGroupArn">> => string(),
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"status">> => logging_configuration_status(),
-%%   <<"workspace">> => string()
-%% }
--type logging_configuration_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% describe_workspace_configuration_request() :: #{}
--type describe_workspace_configuration_request() :: #{}.
-
-
-%% Example:
-%% update_logging_configuration_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"logGroupArn">> => string()
-%% }
--type update_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_scraper_logging_configuration_response() :: #{
-%%   <<"status">> => scraper_logging_configuration_status()
-%% }
--type update_scraper_logging_configuration_response() :: #{binary() => any()}.
+-type amp_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -355,11 +186,132 @@
 
 
 %% Example:
-%% query_logging_configuration_status() :: #{
-%%   <<"statusCode">> => string(),
+%% anomaly_detector_status() :: #{
+%%   <<"statusCode">> => list(any()),
 %%   <<"statusReason">> => [string()]
 %% }
--type query_logging_configuration_status() :: #{binary() => any()}.
+-type anomaly_detector_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomaly_detector_summary() :: #{
+%%   <<"alias">> => string(),
+%%   <<"anomalyDetectorId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"status">> => anomaly_detector_status(),
+%%   <<"tags">> => map()
+%% }
+-type anomaly_detector_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_configuration() :: #{
+%%   <<"datasetArn">> => string()
+%% }
+-type cloud_watch_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_log_destination() :: #{
+%%   <<"logGroupArn">> => string()
+%% }
+-type cloud_watch_log_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_config() :: #{
+%%   <<"options">> => map()
+%% }
+-type component_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_alert_manager_definition_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"data">> => binary()
+%% }
+-type create_alert_manager_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_alert_manager_definition_response() :: #{
+%%   <<"status">> => alert_manager_definition_status()
+%% }
+-type create_alert_manager_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_anomaly_detector_request() :: #{
+%%   <<"alias">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"evaluationIntervalInSeconds">> => integer(),
+%%   <<"labels">> => map(),
+%%   <<"missingDataAction">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type create_anomaly_detector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_anomaly_detector_response() :: #{
+%%   <<"anomalyDetectorId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"status">> => anomaly_detector_status(),
+%%   <<"tags">> => map()
+%% }
+-type create_anomaly_detector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"logGroupArn">> => string()
+%% }
+-type create_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_logging_configuration_response() :: #{
+%%   <<"status">> => logging_configuration_status()
+%% }
+-type create_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_query_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"destinations">> := list(logging_destination())
+%% }
+-type create_query_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_query_logging_configuration_response() :: #{
+%%   <<"status">> => query_logging_configuration_status()
+%% }
+-type create_query_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_rule_groups_namespace_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"data">> => binary(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_rule_groups_namespace_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -373,11 +325,48 @@
 
 
 %% Example:
-%% anomaly_detector_status() :: #{
-%%   <<"statusCode">> => list(any()),
-%%   <<"statusReason">> => [string()]
+%% create_scraper_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"destination">> := list(),
+%%   <<"exporters">> => list(list()),
+%%   <<"roleConfiguration">> => role_configuration(),
+%%   <<"scrapeConfiguration">> := list(),
+%%   <<"source">> := list(),
+%%   <<"tags">> => map()
 %% }
--type anomaly_detector_status() :: #{binary() => any()}.
+-type create_scraper_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_scraper_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"scraperId">> => string(),
+%%   <<"status">> => scraper_status(),
+%%   <<"tags">> => map()
+%% }
+-type create_scraper_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_workspace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workspace_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"status">> => workspace_status(),
+%%   <<"tags">> => map(),
+%%   <<"workspaceId">> => string()
+%% }
+-type create_workspace_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -388,107 +377,32 @@
 
 
 %% Example:
-%% create_logging_configuration_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"logGroupArn">> => string()
-%% }
--type create_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_rule_groups_namespace_response() :: #{
-%%   <<"ruleGroupsNamespace">> => rule_groups_namespace_description()
-%% }
--type describe_rule_groups_namespace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_rule_groups_namespace_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => rule_groups_namespace_status(),
-%%   <<"tags">> => map()
-%% }
--type put_rule_groups_namespace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_log_destination() :: #{
-%%   <<"logGroupArn">> => string()
-%% }
--type cloud_watch_log_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_scraper_response() :: #{
-%%   <<"arn">> => string(),
-%%   <<"scraperId">> => string(),
-%%   <<"status">> => scraper_status(),
-%%   <<"tags">> => map()
-%% }
--type update_scraper_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workspace_configuration_response() :: #{
-%%   <<"status">> => workspace_configuration_status()
-%% }
--type update_workspace_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_anomaly_detector_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"configuration">> := list(),
-%%   <<"evaluationIntervalInSeconds">> => integer(),
-%%   <<"labels">> => map(),
-%%   <<"missingDataAction">> => list()
-%% }
--type put_anomaly_detector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_workspace_alias_request() :: #{
-%%   <<"alias">> => string(),
+%% delete_anomaly_detector_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
--type update_workspace_alias_request() :: #{binary() => any()}.
+-type delete_anomaly_detector_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_workspace_response() :: #{
-%%   <<"workspace">> => workspace_description()
+%% delete_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string()
 %% }
--type describe_workspace_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_default_scraper_configuration_request() :: #{}
--type get_default_scraper_configuration_request() :: #{}.
+-type delete_logging_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% workspace_configuration_description() :: #{
-%%   <<"limitsPerLabelSet">> => list(limits_per_label_set()),
-%%   <<"outOfOrderTimeWindowInSeconds">> => [integer()],
-%%   <<"retentionPeriodInDays">> => [integer()],
-%%   <<"ruleQueryOffsetInSeconds">> => [integer()],
-%%   <<"status">> => workspace_configuration_status()
+%% delete_query_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string()
 %% }
--type workspace_configuration_description() :: #{binary() => any()}.
+-type delete_query_logging_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_workspace_configuration_response() :: #{
-%%   <<"workspaceConfiguration">> => workspace_configuration_description()
+%% delete_resource_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"revisionId">> => [string()]
 %% }
--type describe_workspace_configuration_response() :: #{binary() => any()}.
+-type delete_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -497,34 +411,49 @@
 %% }
 -type delete_rule_groups_namespace_request() :: #{binary() => any()}.
 
-%% Example:
-%% describe_rule_groups_namespace_request() :: #{}
--type describe_rule_groups_namespace_request() :: #{}.
-
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
+%% delete_scraper_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type delete_scraper_logging_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_logging_configuration_response() :: #{
-%%   <<"status">> => logging_configuration_status()
+%% delete_scraper_request() :: #{
+%%   <<"clientToken">> => string()
 %% }
--type create_logging_configuration_response() :: #{binary() => any()}.
+-type delete_scraper_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
+%% delete_scraper_response() :: #{
+%%   <<"scraperId">> => string(),
+%%   <<"status">> => scraper_status()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type delete_scraper_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workspace_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_workspace_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_alert_manager_definition_request() :: #{}
+-type describe_alert_manager_definition_request() :: #{}.
+
+
+%% Example:
+%% describe_alert_manager_definition_response() :: #{
+%%   <<"alertManagerDefinition">> => alert_manager_definition_description()
+%% }
+-type describe_alert_manager_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_anomaly_detector_request() :: #{}
+-type describe_anomaly_detector_request() :: #{}.
 
 
 %% Example:
@@ -539,30 +468,64 @@
 
 
 %% Example:
-%% logging_destination() :: #{
-%%   <<"cloudWatchLogs">> => cloud_watch_log_destination(),
-%%   <<"filters">> => logging_filter()
+%% describe_logging_configuration_response() :: #{
+%%   <<"loggingConfiguration">> => logging_configuration_metadata()
 %% }
--type logging_destination() :: #{binary() => any()}.
+-type describe_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_logging_configuration_request() :: #{}
+-type describe_query_logging_configuration_request() :: #{}.
 
 
 %% Example:
-%% logging_configuration_status() :: #{
-%%   <<"statusCode">> => string(),
-%%   <<"statusReason">> => [string()]
+%% describe_query_logging_configuration_response() :: #{
+%%   <<"queryLoggingConfiguration">> => query_logging_configuration_metadata()
 %% }
--type logging_configuration_status() :: #{binary() => any()}.
+-type describe_query_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_request() :: #{}
+-type describe_resource_policy_request() :: #{}.
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
+%% describe_resource_policy_response() :: #{
+%%   <<"policyDocument">> => [string()],
+%%   <<"policyStatus">> => string(),
+%%   <<"revisionId">> => [string()]
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type describe_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_rule_groups_namespace_request() :: #{}
+-type describe_rule_groups_namespace_request() :: #{}.
+
+
+%% Example:
+%% describe_rule_groups_namespace_response() :: #{
+%%   <<"ruleGroupsNamespace">> => rule_groups_namespace_description()
+%% }
+-type describe_rule_groups_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scraper_logging_configuration_request() :: #{}
+-type describe_scraper_logging_configuration_request() :: #{}.
+
+
+%% Example:
+%% describe_scraper_logging_configuration_response() :: #{
+%%   <<"loggingDestination">> => list(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"scraperComponents">> => list(scraper_component()),
+%%   <<"scraperId">> => string(),
+%%   <<"status">> => scraper_logging_configuration_status()
+%% }
+-type describe_scraper_logging_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scraper_request() :: #{}
+-type describe_scraper_request() :: #{}.
 
 
 %% Example:
@@ -571,26 +534,27 @@
 %% }
 -type describe_scraper_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% component_config() :: #{
-%%   <<"options">> => map()
-%% }
--type component_config() :: #{binary() => any()}.
+%% describe_workspace_configuration_request() :: #{}
+-type describe_workspace_configuration_request() :: #{}.
 
 
 %% Example:
-%% delete_query_logging_configuration_request() :: #{
-%%   <<"clientToken">> => string()
+%% describe_workspace_configuration_response() :: #{
+%%   <<"workspaceConfiguration">> => workspace_configuration_description()
 %% }
--type delete_query_logging_configuration_request() :: #{binary() => any()}.
+-type describe_workspace_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_workspace_request() :: #{}
+-type describe_workspace_request() :: #{}.
 
 
 %% Example:
-%% delete_scraper_request() :: #{
-%%   <<"clientToken">> => string()
+%% describe_workspace_response() :: #{
+%%   <<"workspace">> => workspace_description()
 %% }
--type delete_scraper_request() :: #{binary() => any()}.
+-type describe_workspace_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -602,8 +566,93 @@
 -type eks_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_workspace_request() :: #{}
--type describe_workspace_request() :: #{}.
+%% get_default_scraper_configuration_request() :: #{}
+-type get_default_scraper_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_default_scraper_configuration_response() :: #{
+%%   <<"configuration">> => [binary()]
+%% }
+-type get_default_scraper_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% limits_per_label_set() :: #{
+%%   <<"labelSet">> => map(),
+%%   <<"limits">> => limits_per_label_set_entry()
+%% }
+-type limits_per_label_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% limits_per_label_set_entry() :: #{
+%%   <<"maxSeries">> => [float()]
+%% }
+-type limits_per_label_set_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_anomaly_detectors_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_anomaly_detectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_anomaly_detectors_response() :: #{
+%%   <<"anomalyDetectors">> => list(anomaly_detector_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_anomaly_detectors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rule_groups_namespaces_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_rule_groups_namespaces_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rule_groups_namespaces_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"ruleGroupsNamespaces">> => list(rule_groups_namespace_summary())
+%% }
+-type list_rule_groups_namespaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scrapers_request() :: #{
+%%   <<"filters">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_scrapers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scrapers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scrapers">> => list(scraper_summary())
+%% }
+-type list_scrapers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
@@ -614,36 +663,200 @@
 
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
+%% list_workspaces_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type list_workspaces_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_query_logging_configuration_request() :: #{
+%% list_workspaces_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workspaces">> => list(workspace_summary())
+%% }
+-type list_workspaces_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_configuration_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"logGroupArn">> => string(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"status">> => logging_configuration_status(),
+%%   <<"workspace">> => string()
+%% }
+-type logging_configuration_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_configuration_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type logging_configuration_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_destination() :: #{
+%%   <<"cloudWatchLogs">> => cloud_watch_log_destination(),
+%%   <<"filters">> => logging_filter()
+%% }
+-type logging_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_filter() :: #{
+%%   <<"qspThreshold">> => [float()]
+%% }
+-type logging_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_search_exporter_configuration() :: #{
+%%   <<"domainArn">> => string()
+%% }
+-type open_search_exporter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_alert_manager_definition_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"destinations">> := list(logging_destination())
+%%   <<"data">> => binary()
 %% }
--type update_query_logging_configuration_request() :: #{binary() => any()}.
+-type put_alert_manager_definition_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_anomaly_detector_response() :: #{
+%% put_alert_manager_definition_response() :: #{
+%%   <<"status">> => alert_manager_definition_status()
+%% }
+-type put_alert_manager_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_anomaly_detector_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"evaluationIntervalInSeconds">> => integer(),
+%%   <<"labels">> => map(),
+%%   <<"missingDataAction">> => list()
+%% }
+-type put_anomaly_detector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_anomaly_detector_response() :: #{
 %%   <<"anomalyDetectorId">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"status">> => anomaly_detector_status(),
 %%   <<"tags">> => map()
 %% }
--type create_anomaly_detector_response() :: #{binary() => any()}.
+-type put_anomaly_detector_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_workspace_request() :: #{
-%%   <<"clientToken">> => string()
+%% put_resource_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"policyDocument">> := [string()],
+%%   <<"revisionId">> => [string()]
 %% }
--type delete_workspace_request() :: #{binary() => any()}.
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"policyStatus">> => string(),
+%%   <<"revisionId">> => [string()]
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_rule_groups_namespace_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"data">> => binary()
+%% }
+-type put_rule_groups_namespace_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_rule_groups_namespace_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => rule_groups_namespace_status(),
+%%   <<"tags">> => map()
+%% }
+-type put_rule_groups_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_logging_configuration_metadata() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"destinations">> => list(logging_destination()),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"status">> => query_logging_configuration_status(),
+%%   <<"workspace">> => string()
+%% }
+-type query_logging_configuration_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_logging_configuration_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type query_logging_configuration_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% random_cut_forest_configuration() :: #{
+%%   <<"ignoreNearExpectedFromAbove">> => list(),
+%%   <<"ignoreNearExpectedFromBelow">> => list(),
+%%   <<"query">> => string(),
+%%   <<"sampleSize">> => [integer()],
+%%   <<"shingleSize">> => [integer()]
+%% }
+-type random_cut_forest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% role_configuration() :: #{
+%%   <<"sourceRoleArn">> => string(),
+%%   <<"targetRoleArn">> => string()
+%% }
+-type role_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_groups_namespace_description() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"data">> => binary(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => rule_groups_namespace_status(),
+%%   <<"tags">> => map()
+%% }
+-type rule_groups_namespace_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_groups_namespace_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type rule_groups_namespace_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -659,21 +872,245 @@
 
 
 %% Example:
-%% create_rule_groups_namespace_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"data">> => binary(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
+%% scraper_component() :: #{
+%%   <<"config">> => component_config(),
+%%   <<"type">> => string()
 %% }
--type create_rule_groups_namespace_request() :: #{binary() => any()}.
+-type scraper_component() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_alert_manager_definition_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"data">> => binary()
+%% scraper_description() :: #{
+%%   <<"alias">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"destination">> => list(),
+%%   <<"exporters">> => list(list()),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"roleArn">> => string(),
+%%   <<"roleConfiguration">> => role_configuration(),
+%%   <<"scrapeConfiguration">> => list(),
+%%   <<"scraperId">> => string(),
+%%   <<"source">> => list(),
+%%   <<"status">> => scraper_status(),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map()
 %% }
--type create_alert_manager_definition_request() :: #{binary() => any()}.
+-type scraper_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% scraper_logging_configuration_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type scraper_logging_configuration_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% scraper_status() :: #{
+%%   <<"statusCode">> => string()
+%% }
+-type scraper_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% scraper_summary() :: #{
+%%   <<"alias">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"destination">> => list(),
+%%   <<"exporters">> => list(list()),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"roleArn">> => string(),
+%%   <<"roleConfiguration">> => role_configuration(),
+%%   <<"scraperId">> => string(),
+%%   <<"source">> => list(),
+%%   <<"status">> => scraper_status(),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type scraper_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"logGroupArn">> => string()
+%% }
+-type update_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_logging_configuration_response() :: #{
+%%   <<"status">> => logging_configuration_status()
+%% }
+-type update_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_query_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"destinations">> := list(logging_destination())
+%% }
+-type update_query_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_query_logging_configuration_response() :: #{
+%%   <<"status">> => query_logging_configuration_status()
+%% }
+-type update_query_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scraper_logging_configuration_request() :: #{
+%%   <<"loggingDestination">> := list(),
+%%   <<"scraperComponents">> => list(scraper_component())
+%% }
+-type update_scraper_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scraper_logging_configuration_response() :: #{
+%%   <<"status">> => scraper_logging_configuration_status()
+%% }
+-type update_scraper_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scraper_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"destination">> => list(),
+%%   <<"exporters">> => list(list()),
+%%   <<"roleConfiguration">> => role_configuration(),
+%%   <<"scrapeConfiguration">> => list()
+%% }
+-type update_scraper_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scraper_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"scraperId">> => string(),
+%%   <<"status">> => scraper_status(),
+%%   <<"tags">> => map()
+%% }
+-type update_scraper_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_alias_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"clientToken">> => string()
+%% }
+-type update_workspace_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"limitsPerLabelSet">> => list(limits_per_label_set()),
+%%   <<"outOfOrderTimeWindowInSeconds">> => [integer()],
+%%   <<"retentionPeriodInDays">> => [integer()],
+%%   <<"ruleQueryOffsetInSeconds">> => [integer()]
+%% }
+-type update_workspace_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_workspace_configuration_response() :: #{
+%%   <<"status">> => workspace_configuration_status()
+%% }
+-type update_workspace_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_configuration() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
+%% }
+-type vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_configuration_description() :: #{
+%%   <<"limitsPerLabelSet">> => list(limits_per_label_set()),
+%%   <<"outOfOrderTimeWindowInSeconds">> => [integer()],
+%%   <<"retentionPeriodInDays">> => [integer()],
+%%   <<"ruleQueryOffsetInSeconds">> => [integer()],
+%%   <<"status">> => workspace_configuration_status()
+%% }
+-type workspace_configuration_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% workspace_configuration_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type workspace_configuration_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -691,767 +1128,348 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
+%% workspace_status() :: #{
+%%   <<"statusCode">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type workspace_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_workspace_response() :: #{
+%% workspace_summary() :: #{
+%%   <<"alias">> => string(),
 %%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"status">> => workspace_status(),
 %%   <<"tags">> => map(),
 %%   <<"workspaceId">> => string()
 %% }
--type create_workspace_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% anomaly_detector_summary() :: #{
-%%   <<"alias">> => string(),
-%%   <<"anomalyDetectorId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"status">> => anomaly_detector_status(),
-%%   <<"tags">> => map()
-%% }
--type anomaly_detector_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workspaces_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workspaces">> => list(workspace_summary())
-%% }
--type list_workspaces_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_query_logging_configuration_response() :: #{
-%%   <<"status">> => query_logging_configuration_status()
-%% }
--type update_query_logging_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_default_scraper_configuration_response() :: #{
-%%   <<"configuration">> => [binary()]
-%% }
--type get_default_scraper_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"policyDocument">> := [string()],
-%%   <<"revisionId">> => [string()]
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scraper_description() :: #{
-%%   <<"alias">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"destination">> => list(),
-%%   <<"lastModifiedAt">> => [non_neg_integer()],
-%%   <<"roleArn">> => string(),
-%%   <<"roleConfiguration">> => role_configuration(),
-%%   <<"scrapeConfiguration">> => list(),
-%%   <<"scraperId">> => string(),
-%%   <<"source">> => list(),
-%%   <<"status">> => scraper_status(),
-%%   <<"statusReason">> => string(),
-%%   <<"tags">> => map()
-%% }
--type scraper_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scraper_logging_configuration_request() :: #{}
--type describe_scraper_logging_configuration_request() :: #{}.
-
-
-%% Example:
-%% workspace_configuration_status() :: #{
-%%   <<"statusCode">> => string(),
-%%   <<"statusReason">> => [string()]
-%% }
--type workspace_configuration_status() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% role_configuration() :: #{
-%%   <<"sourceRoleArn">> => string(),
-%%   <<"targetRoleArn">> => string()
-%% }
--type role_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_alert_manager_definition_response() :: #{
-%%   <<"status">> => alert_manager_definition_status()
-%% }
--type put_alert_manager_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% logging_filter() :: #{
-%%   <<"qspThreshold">> => [float()]
-%% }
--type logging_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% alert_manager_definition_description() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"data">> => binary(),
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"status">> => alert_manager_definition_status()
-%% }
--type alert_manager_definition_description() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_scraper_response() :: #{
-%%   <<"scraperId">> => string(),
-%%   <<"status">> => scraper_status()
-%% }
--type delete_scraper_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_workspaces_request() :: #{
-%%   <<"alias">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_workspaces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_anomaly_detectors_request() :: #{
-%%   <<"alias">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_anomaly_detectors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scraper_logging_configuration_status() :: #{
-%%   <<"statusCode">> => string(),
-%%   <<"statusReason">> => [string()]
-%% }
--type scraper_logging_configuration_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_anomaly_detector_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_anomaly_detector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_scraper_logging_configuration_request() :: #{
-%%   <<"loggingDestination">> := list(),
-%%   <<"scraperComponents">> => list(scraper_component())
-%% }
--type update_scraper_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_logging_configuration_response() :: #{
-%%   <<"loggingConfiguration">> => logging_configuration_metadata()
-%% }
--type describe_logging_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_resource_policy_response() :: #{
-%%   <<"policyDocument">> => [string()],
-%%   <<"policyStatus">> => string(),
-%%   <<"revisionId">> => [string()]
-%% }
--type describe_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% amp_configuration() :: #{
-%%   <<"workspaceArn">> => string()
-%% }
--type amp_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_scraper_request() :: #{
-%%   <<"alias">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"destination">> := list(),
-%%   <<"roleConfiguration">> => role_configuration(),
-%%   <<"scrapeConfiguration">> := list(),
-%%   <<"source">> := list(),
-%%   <<"tags">> => map()
-%% }
--type create_scraper_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_alert_manager_definition_response() :: #{
-%%   <<"status">> => alert_manager_definition_status()
-%% }
--type create_alert_manager_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% scraper_component() :: #{
-%%   <<"config">> => component_config(),
-%%   <<"type">> => string()
-%% }
--type scraper_component() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"policyStatus">> => string(),
-%%   <<"revisionId">> => [string()]
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_alert_manager_definition_request() :: #{}
--type describe_alert_manager_definition_request() :: #{}.
-
-
-%% Example:
-%% describe_alert_manager_definition_response() :: #{
-%%   <<"alertManagerDefinition">> => alert_manager_definition_description()
-%% }
--type describe_alert_manager_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% limits_per_label_set_entry() :: #{
-%%   <<"maxSeries">> => [float()]
-%% }
--type limits_per_label_set_entry() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scraper_request() :: #{}
--type describe_scraper_request() :: #{}.
-
-
-%% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"revisionId">> => [string()]
-%% }
--type delete_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_logging_configuration_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_anomaly_detector_response() :: #{
-%%   <<"anomalyDetectorId">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"status">> => anomaly_detector_status(),
-%%   <<"tags">> => map()
-%% }
--type put_anomaly_detector_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_anomaly_detectors_response() :: #{
-%%   <<"anomalyDetectors">> => list(anomaly_detector_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_anomaly_detectors_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_rule_groups_namespace_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"data">> => binary()
-%% }
--type put_rule_groups_namespace_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_query_logging_configuration_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"destinations">> := list(logging_destination())
-%% }
--type create_query_logging_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% random_cut_forest_configuration() :: #{
-%%   <<"ignoreNearExpectedFromAbove">> => list(),
-%%   <<"ignoreNearExpectedFromBelow">> => list(),
-%%   <<"query">> => string(),
-%%   <<"sampleSize">> => [integer()],
-%%   <<"shingleSize">> => [integer()]
-%% }
--type random_cut_forest_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_scrapers_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"scrapers">> => list(scraper_summary())
-%% }
--type list_scrapers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_logging_configuration_response() :: #{
-%%   <<"status">> => logging_configuration_status()
-%% }
--type update_logging_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_anomaly_detector_request() :: #{
-%%   <<"alias">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"configuration">> := list(),
-%%   <<"evaluationIntervalInSeconds">> => integer(),
-%%   <<"labels">> => map(),
-%%   <<"missingDataAction">> => list(),
-%%   <<"tags">> => map()
-%% }
--type create_anomaly_detector_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rule_groups_namespaces_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_rule_groups_namespaces_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% alert_manager_definition_status() :: #{
-%%   <<"statusCode">> => string(),
-%%   <<"statusReason">> => [string()]
-%% }
--type alert_manager_definition_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_anomaly_detector_request() :: #{}
--type describe_anomaly_detector_request() :: #{}.
-
-
-%% Example:
-%% limits_per_label_set() :: #{
-%%   <<"labelSet">> => map(),
-%%   <<"limits">> => limits_per_label_set_entry()
-%% }
--type limits_per_label_set() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_policy_request() :: #{}
--type describe_resource_policy_request() :: #{}.
-
-
-%% Example:
-%% create_workspace_request() :: #{
-%%   <<"alias">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_workspace_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scraper_summary() :: #{
-%%   <<"alias">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"destination">> => list(),
-%%   <<"lastModifiedAt">> => [non_neg_integer()],
-%%   <<"roleArn">> => string(),
-%%   <<"roleConfiguration">> => role_configuration(),
-%%   <<"scraperId">> => string(),
-%%   <<"source">> => list(),
-%%   <<"status">> => scraper_status(),
-%%   <<"statusReason">> => string(),
-%%   <<"tags">> => map()
-%% }
--type scraper_summary() :: #{binary() => any()}.
+-type workspace_summary() :: #{binary() => any()}.
 
 -type create_alert_manager_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_anomaly_detector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_query_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_rule_groups_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_scraper_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workspace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_alert_manager_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_anomaly_detector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_query_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_rule_groups_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_scraper_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_scraper_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workspace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_alert_manager_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_anomaly_detector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_query_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_rule_groups_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_scraper_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_scraper_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_workspace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_workspace_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_default_scraper_configuration_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_anomaly_detectors_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_rule_groups_namespaces_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_scrapers_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_workspaces_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type put_alert_manager_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_anomaly_detector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_rule_groups_namespace_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_query_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_scraper_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_scraper_logging_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_workspace_alias_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_workspace_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -1654,16 +1672,16 @@ create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The `CreateScraper' operation creates a scraper to collect
-%% metrics.
+%% @doc Creates a scraper to collect metrics from Prometheus-compatible
+%% sources.
 %%
-%% A scraper pulls metrics from Prometheus-compatible sources and sends them
-%% to your Amazon Managed Service for Prometheus workspace. You can configure
-%% scrapers to collect metrics from Amazon EKS clusters, Amazon MSK clusters,
-%% or from VPC-based sources that support DNS-based service discovery.
-%% Scrapers are flexible, and can be configured to control what metrics are
-%% collected, the frequency of collection, what transformations are applied
-%% to the metrics, and more.
+%% The scraper sends the collected metrics to Amazon Managed Service for
+%% Prometheus workspaces or CloudWatch datasets. You can configure scrapers
+%% to collect metrics from Amazon EKS clusters, Amazon MSK clusters, or from
+%% VPC-based sources that support DNS-based service discovery. Scrapers are
+%% flexible. You can configure a scraper to control which metrics to collect,
+%% the frequency of collection, which transformations to apply to the
+%% metrics, and more.
 %%
 %% An IAM role will be created for you that Amazon Managed Service for
 %% Prometheus uses to access the metrics in your source. You must configure

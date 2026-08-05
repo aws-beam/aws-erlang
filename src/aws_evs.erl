@@ -61,19 +61,34 @@
 
 
 %% Example:
-%% vm_entitlement() :: #{
-%%   <<"connectorId">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"errorDetail">> => error_detail(),
-%%   <<"lastSyncedAt">> => [non_neg_integer()],
-%%   <<"startedAt">> => [non_neg_integer()],
-%%   <<"status">> => list(any()),
-%%   <<"stoppedAt">> => [non_neg_integer()],
-%%   <<"type">> => list(any()),
-%%   <<"vmId">> => string(),
-%%   <<"vmName">> => string()
+%% associate_eip_to_vlan_request() :: #{
+%%   <<"allocationId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"environmentId">> := string(),
+%%   <<"vlanName">> := [string()]
 %% }
--type vm_entitlement() :: #{binary() => any()}.
+-type associate_eip_to_vlan_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_eip_to_vlan_response() :: #{
+%%   <<"vlan">> => vlan()
+%% }
+-type associate_eip_to_vlan_response() :: #{binary() => any()}.
+
+%% Example:
+%% check() :: #{
+%%   <<"id">> => [string()],
+%%   <<"impairedSince">> => [non_neg_integer()],
+%%   <<"result">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type check() :: #{binary() => any()}.
+
+%% Example:
+%% connectivity_info() :: #{
+%%   <<"privateRouteServerPeerings">> => list(string())
+%% }
+-type connectivity_info() :: #{binary() => any()}.
 
 %% Example:
 %% connector() :: #{
@@ -92,69 +107,6 @@
 -type connector() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% check() :: #{
-%%   <<"id">> => [string()],
-%%   <<"impairedSince">> => [non_neg_integer()],
-%%   <<"result">> => list(any()),
-%%   <<"type">> => list(any())
-%% }
--type check() :: #{binary() => any()}.
-
-%% Example:
-%% associate_eip_to_vlan_request() :: #{
-%%   <<"allocationId">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"environmentId">> := string(),
-%%   <<"vlanName">> := [string()]
-%% }
--type associate_eip_to_vlan_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_environment_connector_request() :: #{
-%%   <<"applianceFqdn">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"secretIdentifier">> => string()
-%% }
--type update_environment_connector_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_environment_hosts_response() :: #{
-%%   <<"environmentHosts">> => list(host()),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_hosts_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_environment_vlans_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_vlans_request() :: #{binary() => any()}.
-
-%% Example:
-%% host_info_for_create() :: #{
-%%   <<"dedicatedHostId">> => string(),
-%%   <<"hostName">> => string(),
-%%   <<"instanceType">> => list(any()),
-%%   <<"keyName">> => string(),
-%%   <<"placementGroupId">> => string()
-%% }
--type host_info_for_create() :: #{binary() => any()}.
-
-%% Example:
 %% connector_check() :: #{
 %%   <<"impairedSince">> => [non_neg_integer()],
 %%   <<"lastCheckAttempt">> => [non_neg_integer()],
@@ -164,81 +116,20 @@
 -type connector_check() :: #{binary() => any()}.
 
 %% Example:
-%% delete_environment_host_response() :: #{
-%%   <<"environmentSummary">> => environment_summary(),
-%%   <<"host">> => host()
-%% }
--type delete_environment_host_response() :: #{binary() => any()}.
-
-%% Example:
-%% environment_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"environmentArn">> => string(),
-%%   <<"environmentId">> => string(),
-%%   <<"environmentName">> => string(),
-%%   <<"environmentState">> => list(any()),
-%%   <<"environmentStatus">> => list(any()),
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"vcfVersion">> => list(any())
-%% }
--type environment_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_environment_request() :: #{
-
-%% }
--type get_environment_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_environment_host_request() :: #{
+%% create_entitlement_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"connectorId">> := string(),
+%%   <<"entitlementType">> := list(any()),
 %%   <<"environmentId">> := string(),
-%%   <<"esxVersion">> => string(),
-%%   <<"host">> := host_info_for_create()
+%%   <<"vmIds">> := list(string())
 %% }
--type create_environment_host_request() :: #{binary() => any()}.
+-type create_entitlement_request() :: #{binary() => any()}.
 
 %% Example:
-%% network_interface() :: #{
-%%   <<"networkInterfaceId">> => string()
+%% create_entitlement_response() :: #{
+%%   <<"entitlements">> => list(vm_entitlement())
 %% }
--type network_interface() :: #{binary() => any()}.
-
-%% Example:
-%% initial_vlans() :: #{
-%%   <<"edgeVTep">> => initial_vlan_info(),
-%%   <<"expansionVlan1">> => initial_vlan_info(),
-%%   <<"expansionVlan2">> => initial_vlan_info(),
-%%   <<"hcx">> => initial_vlan_info(),
-%%   <<"hcxNetworkAclId">> => string(),
-%%   <<"isHcxPublic">> => [boolean()],
-%%   <<"nsxUplink">> => initial_vlan_info(),
-%%   <<"vMotion">> => initial_vlan_info(),
-%%   <<"vSan">> => initial_vlan_info(),
-%%   <<"vTep">> => initial_vlan_info(),
-%%   <<"vmManagement">> => initial_vlan_info(),
-%%   <<"vmkManagement">> => initial_vlan_info()
-%% }
--type initial_vlans() :: #{binary() => any()}.
-
-%% Example:
-%% initial_vlan_info() :: #{
-%%   <<"cidr">> => string()
-%% }
--type initial_vlan_info() :: #{binary() => any()}.
-
-%% Example:
-%% list_environment_connectors_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_connectors_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_policy_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type tag_policy_exception() :: #{binary() => any()}.
+-type create_entitlement_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_environment_connector_request() :: #{
@@ -250,57 +141,117 @@
 -type create_environment_connector_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_environment_connector_response() :: #{
+%%   <<"connector">> => connector()
+%% }
+-type create_environment_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_environment_host_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"environmentId">> := string(),
+%%   <<"esxVersion">> => string(),
+%%   <<"host">> := host_info_for_create()
+%% }
+-type create_environment_host_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_environment_host_response() :: #{
+%%   <<"environmentSummary">> => environment_summary(),
+%%   <<"host">> => host()
+%% }
+-type create_environment_host_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_environment_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"connectivityInfo">> => connectivity_info(),
+%%   <<"environmentName">> => string(),
+%%   <<"hosts">> => list(host_info_for_create()),
+%%   <<"initialVlans">> := initial_vlans(),
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"licenseInfo">> => list(license_info()),
+%%   <<"serviceAccessSecurityGroups">> => service_access_security_groups(),
+%%   <<"serviceAccessSubnetId">> := string(),
+%%   <<"siteId">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"termsAccepted">> := [boolean()],
+%%   <<"vcfHostnames">> => vcf_hostnames(),
+%%   <<"vcfVersion">> := list(any()),
+%%   <<"vpcId">> := string()
+%% }
+-type create_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_environment_response() :: #{
+%%   <<"environment">> => environment()
+%% }
+-type create_environment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_entitlement_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"connectorId">> := string(),
+%%   <<"entitlementType">> := list(any()),
+%%   <<"environmentId">> := string(),
+%%   <<"vmIds">> := list(string())
+%% }
+-type delete_entitlement_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_entitlement_response() :: #{
 %%   <<"entitlements">> => list(vm_entitlement())
 %% }
 -type delete_entitlement_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_environment_response() :: #{
+%% delete_environment_connector_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_environment_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_connector_response() :: #{
+%%   <<"connector">> => connector(),
+%%   <<"environmentSummary">> => environment_summary()
+%% }
+-type delete_environment_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_host_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"environmentId">> := string(),
+%%   <<"hostName">> := string()
+%% }
+-type delete_environment_host_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_host_response() :: #{
+%%   <<"environmentSummary">> => environment_summary(),
+%%   <<"host">> => host()
+%% }
+-type delete_environment_host_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_environment_response() :: #{
 %%   <<"environment">> => environment()
 %% }
--type get_environment_response() :: #{binary() => any()}.
+-type delete_environment_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
+%% disassociate_eip_from_vlan_request() :: #{
+%%   <<"associationId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"environmentId">> := string(),
+%%   <<"vlanName">> := [string()]
 %% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% vcf_version_info() :: #{
-%%   <<"defaultEsxVersion">> => [string()],
-%%   <<"instanceTypes">> => list(list(any())()),
-%%   <<"status">> => [string()],
-%%   <<"vcfVersion">> => list(any())
-%% }
--type vcf_version_info() :: #{binary() => any()}.
-
-%% Example:
-%% service_access_security_groups() :: #{
-%%   <<"securityGroups">> => list(string())
-%% }
--type service_access_security_groups() :: #{binary() => any()}.
-
-%% Example:
-%% associate_eip_to_vlan_response() :: #{
-%%   <<"vlan">> => vlan()
-%% }
--type associate_eip_to_vlan_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_entitlement_response() :: #{
-%%   <<"entitlements">> => list(vm_entitlement())
-%% }
--type create_entitlement_response() :: #{binary() => any()}.
-
-%% Example:
-%% instance_type_esx_versions_info() :: #{
-%%   <<"esxVersions">> => list([string()]()),
-%%   <<"instanceType">> => list(any())
-%% }
--type instance_type_esx_versions_info() :: #{binary() => any()}.
+-type disassociate_eip_from_vlan_request() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_eip_from_vlan_response() :: #{
@@ -309,18 +260,12 @@
 -type disassociate_eip_from_vlan_response() :: #{binary() => any()}.
 
 %% Example:
-%% connectivity_info() :: #{
-%%   <<"privateRouteServerPeerings">> => list(string())
+%% eip_association() :: #{
+%%   <<"allocationId">> => string(),
+%%   <<"associationId">> => string(),
+%%   <<"ipAddress">> => string()
 %% }
--type connectivity_info() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type eip_association() :: #{binary() => any()}.
 
 %% Example:
 %% environment() :: #{
@@ -348,35 +293,167 @@
 -type environment() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
+%% environment_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"environmentArn">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"environmentName">> => string(),
+%%   <<"environmentState">> => list(any()),
+%%   <<"environmentStatus">> => list(any()),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"vcfVersion">> => list(any())
+%% }
+-type environment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% error_detail() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()]
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+%% Example:
+%% get_depot_url_request() :: #{
+%%   <<"rotate">> => [boolean()]
+%% }
+-type get_depot_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_depot_url_response() :: #{
+%%   <<"depotUrl">> => [string()],
+%%   <<"token">> => [string()]
+%% }
+-type get_depot_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_request() :: #{
+
+%% }
+-type get_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_environment_response() :: #{
+%%   <<"environment">> => environment()
+%% }
+-type get_environment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_versions_request() :: #{
+
+%% }
+-type get_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_versions_response() :: #{
+%%   <<"instanceTypeEsxVersions">> => list(instance_type_esx_versions_info()),
+%%   <<"vcfVersions">> => list(vcf_version_info())
+%% }
+-type get_versions_response() :: #{binary() => any()}.
+
+%% Example:
+%% host() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"dedicatedHostId">> => string(),
+%%   <<"ec2InstanceId">> => [string()],
+%%   <<"hostName">> => string(),
+%%   <<"hostState">> => list(any()),
+%%   <<"instanceType">> => list(any()),
+%%   <<"ipAddress">> => string(),
+%%   <<"keyName">> => string(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"networkInterfaces">> => list(network_interface()),
+%%   <<"placementGroupId">> => string(),
+%%   <<"stateDetails">> => string()
+%% }
+-type host() :: #{binary() => any()}.
+
+%% Example:
+%% host_info_for_create() :: #{
+%%   <<"dedicatedHostId">> => string(),
+%%   <<"hostName">> => string(),
+%%   <<"instanceType">> => list(any()),
+%%   <<"keyName">> => string(),
+%%   <<"placementGroupId">> => string()
+%% }
+-type host_info_for_create() :: #{binary() => any()}.
+
+%% Example:
+%% initial_vlan_info() :: #{
+%%   <<"cidr">> => string()
+%% }
+-type initial_vlan_info() :: #{binary() => any()}.
+
+%% Example:
+%% initial_vlans() :: #{
+%%   <<"edgeVTep">> => initial_vlan_info(),
+%%   <<"expansionVlan1">> => initial_vlan_info(),
+%%   <<"expansionVlan2">> => initial_vlan_info(),
+%%   <<"hcx">> => initial_vlan_info(),
+%%   <<"hcxNetworkAclId">> => string(),
+%%   <<"isHcxPublic">> => [boolean()],
+%%   <<"nsxUplink">> => initial_vlan_info(),
+%%   <<"vMotion">> => initial_vlan_info(),
+%%   <<"vSan">> => initial_vlan_info(),
+%%   <<"vTep">> => initial_vlan_info(),
+%%   <<"vmManagement">> => initial_vlan_info(),
+%%   <<"vmkManagement">> => initial_vlan_info()
+%% }
+-type initial_vlans() :: #{binary() => any()}.
+
+%% Example:
+%% instance_type_esx_versions_info() :: #{
+%%   <<"esxVersions">> => list([string()]()),
+%%   <<"instanceType">> => list(any())
+%% }
+-type instance_type_esx_versions_info() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_vm_entitlements_response() :: #{
-%%   <<"entitlements">> => list(vm_entitlement()),
+%% license_info() :: #{
+%%   <<"solutionKey">> => string(),
+%%   <<"vsanKey">> => string()
+%% }
+-type license_info() :: #{binary() => any()}.
+
+%% Example:
+%% list_environment_connectors_request() :: #{
+%%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type list_vm_entitlements_response() :: #{binary() => any()}.
+-type list_environment_connectors_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_environment_connector_response() :: #{
-%%   <<"connector">> => connector()
+%% list_environment_connectors_response() :: #{
+%%   <<"connectors">> => list(connector()),
+%%   <<"nextToken">> => string()
 %% }
--type create_environment_connector_response() :: #{binary() => any()}.
+-type list_environment_connectors_response() :: #{binary() => any()}.
 
 %% Example:
-%% secret() :: #{
-%%   <<"secretArn">> => [string()]
+%% list_environment_hosts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type secret() :: #{binary() => any()}.
+-type list_environment_hosts_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% list_environment_hosts_response() :: #{
+%%   <<"environmentHosts">> => list(host()),
+%%   <<"nextToken">> => string()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type list_environment_hosts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_environment_vlans_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_environment_vlans_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_environment_vlans_response() :: #{
@@ -394,12 +471,139 @@
 -type list_environments_request() :: #{binary() => any()}.
 
 %% Example:
-%% eip_association() :: #{
-%%   <<"allocationId">> => string(),
-%%   <<"associationId">> => string(),
-%%   <<"ipAddress">> => string()
+%% list_environments_response() :: #{
+%%   <<"environmentSummaries">> => list(environment_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type eip_association() :: #{binary() => any()}.
+-type list_environments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_vm_entitlements_request() :: #{
+%%   <<"connectorId">> := string(),
+%%   <<"entitlementType">> := list(any()),
+%%   <<"environmentId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_vm_entitlements_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_vm_entitlements_response() :: #{
+%%   <<"entitlements">> => list(vm_entitlement()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_vm_entitlements_response() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"networkInterfaceId">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% secret() :: #{
+%%   <<"secretArn">> => [string()]
+%% }
+-type secret() :: #{binary() => any()}.
+
+%% Example:
+%% service_access_security_groups() :: #{
+%%   <<"securityGroups">> => list(string())
+%% }
+-type service_access_security_groups() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_policy_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type tag_policy_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_environment_connector_request() :: #{
+%%   <<"applianceFqdn">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"secretIdentifier">> => string()
+%% }
+-type update_environment_connector_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_environment_connector_response() :: #{
+%%   <<"connector">> => connector()
+%% }
+-type update_environment_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception_field() :: #{
@@ -423,196 +627,13 @@
 -type vcf_hostnames() :: #{binary() => any()}.
 
 %% Example:
-%% delete_environment_connector_response() :: #{
-%%   <<"connector">> => connector(),
-%%   <<"environmentSummary">> => environment_summary()
+%% vcf_version_info() :: #{
+%%   <<"defaultEsxVersion">> => [string()],
+%%   <<"instanceTypes">> => list(list(any())()),
+%%   <<"status">> => [string()],
+%%   <<"vcfVersion">> => list(any())
 %% }
--type delete_environment_connector_response() :: #{binary() => any()}.
-
-%% Example:
-%% license_info() :: #{
-%%   <<"solutionKey">> => string(),
-%%   <<"vsanKey">> => string()
-%% }
--type license_info() :: #{binary() => any()}.
-
-%% Example:
-%% host() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"dedicatedHostId">> => string(),
-%%   <<"ec2InstanceId">> => [string()],
-%%   <<"hostName">> => string(),
-%%   <<"hostState">> => list(any()),
-%%   <<"instanceType">> => list(any()),
-%%   <<"ipAddress">> => string(),
-%%   <<"keyName">> => string(),
-%%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"networkInterfaces">> => list(network_interface()),
-%%   <<"placementGroupId">> => string(),
-%%   <<"stateDetails">> => string()
-%% }
--type host() :: #{binary() => any()}.
-
-%% Example:
-%% list_environment_hosts_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_hosts_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_environment_response() :: #{
-%%   <<"environment">> => environment()
-%% }
--type create_environment_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_environment_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_connector_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_environment_connector_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_depot_url_response() :: #{
-%%   <<"depotUrl">> => [string()],
-%%   <<"token">> => [string()]
-%% }
--type get_depot_url_response() :: #{binary() => any()}.
-
-%% Example:
-%% error_detail() :: #{
-%%   <<"errorCode">> => [string()],
-%%   <<"errorMessage">> => [string()]
-%% }
--type error_detail() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_eip_from_vlan_request() :: #{
-%%   <<"associationId">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"environmentId">> := string(),
-%%   <<"vlanName">> := [string()]
-%% }
--type disassociate_eip_from_vlan_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_environment_host_response() :: #{
-%%   <<"environmentSummary">> => environment_summary(),
-%%   <<"host">> => host()
-%% }
--type create_environment_host_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_environment_connector_response() :: #{
-%%   <<"connector">> => connector()
-%% }
--type update_environment_connector_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_entitlement_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"connectorId">> := string(),
-%%   <<"entitlementType">> := list(any()),
-%%   <<"environmentId">> := string(),
-%%   <<"vmIds">> := list(string())
-%% }
--type delete_entitlement_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_environments_response() :: #{
-%%   <<"environmentSummaries">> => list(environment_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_environments_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_environment_connectors_response() :: #{
-%%   <<"connectors">> => list(connector()),
-%%   <<"nextToken">> => string()
-%% }
--type list_environment_connectors_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_depot_url_request() :: #{
-%%   <<"rotate">> => [boolean()]
-%% }
--type get_depot_url_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_vm_entitlements_request() :: #{
-%%   <<"connectorId">> := string(),
-%%   <<"entitlementType">> := list(any()),
-%%   <<"environmentId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_vm_entitlements_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_environment_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"connectivityInfo">> => connectivity_info(),
-%%   <<"environmentName">> => string(),
-%%   <<"hosts">> => list(host_info_for_create()),
-%%   <<"initialVlans">> := initial_vlans(),
-%%   <<"kmsKeyId">> => [string()],
-%%   <<"licenseInfo">> => list(license_info()),
-%%   <<"serviceAccessSecurityGroups">> => service_access_security_groups(),
-%%   <<"serviceAccessSubnetId">> := string(),
-%%   <<"siteId">> => [string()],
-%%   <<"tags">> => map(),
-%%   <<"termsAccepted">> := [boolean()],
-%%   <<"vcfHostnames">> => vcf_hostnames(),
-%%   <<"vcfVersion">> := list(any()),
-%%   <<"vpcId">> := string()
-%% }
--type create_environment_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_versions_response() :: #{
-%%   <<"instanceTypeEsxVersions">> => list(instance_type_esx_versions_info()),
-%%   <<"vcfVersions">> => list(vcf_version_info())
-%% }
--type get_versions_response() :: #{binary() => any()}.
+-type vcf_version_info() :: #{binary() => any()}.
 
 %% Example:
 %% vlan() :: #{
@@ -632,66 +653,45 @@
 -type vlan() :: #{binary() => any()}.
 
 %% Example:
-%% get_versions_request() :: #{
-
+%% vm_entitlement() :: #{
+%%   <<"connectorId">> => string(),
+%%   <<"environmentId">> => string(),
+%%   <<"errorDetail">> => error_detail(),
+%%   <<"lastSyncedAt">> => [non_neg_integer()],
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"stoppedAt">> => [non_neg_integer()],
+%%   <<"type">> => list(any()),
+%%   <<"vmId">> => string(),
+%%   <<"vmName">> => string()
 %% }
--type get_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_response() :: #{
-%%   <<"environment">> => environment()
-%% }
--type delete_environment_response() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_environment_host_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"environmentId">> := string(),
-%%   <<"hostName">> := string()
-%% }
--type delete_environment_host_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_entitlement_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"connectorId">> := string(),
-%%   <<"entitlementType">> := list(any()),
-%%   <<"environmentId">> := string(),
-%%   <<"vmIds">> := list(string())
-%% }
--type create_entitlement_request() :: #{binary() => any()}.
+-type vm_entitlement() :: #{binary() => any()}.
 
 -type associate_eip_to_vlan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type create_entitlement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type create_environment_errors() ::
     validation_exception().
 
 -type create_environment_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type create_environment_host_errors() ::
-    throttling_exception() | 
-    validation_exception().
+    validation_exception() | 
+    throttling_exception().
 
 -type delete_entitlement_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type delete_environment_errors() ::
@@ -699,8 +699,8 @@
     resource_not_found_exception().
 
 -type delete_environment_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type delete_environment_host_errors() ::
@@ -708,13 +708,13 @@
     resource_not_found_exception().
 
 -type disassociate_eip_from_vlan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type get_depot_url_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 -type get_environment_errors() ::
@@ -749,17 +749,17 @@
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
+    tag_policy_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    tag_policy_exception().
+    resource_not_found_exception().
 
 -type untag_resource_errors() ::
-    resource_not_found_exception() | 
-    tag_policy_exception().
+    tag_policy_exception() | 
+    resource_not_found_exception().
 
 -type update_environment_connector_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception().
 
 %%====================================================================

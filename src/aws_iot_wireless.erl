@@ -318,120 +318,12 @@
 
 
 %% Example:
-%% get_resource_log_level_request() :: #{
-%%   <<"ResourceType">> := string()
+%% abp_v1_0_x() :: #{
+%%   <<"DevAddr">> => string(),
+%%   <<"FCntStart">> => integer(),
+%%   <<"SessionKeys">> => session_keys_abp_v1_0_x()
 %% }
--type get_resource_log_level_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_destinations_response() :: #{
-%%   <<"DestinationList">> => list(destinations()),
-%%   <<"NextToken">> => string()
-%% }
--type list_destinations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% summary_metric_configuration() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type summary_metric_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_status_resource_type_event_configuration() :: #{
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_connection_status_resource_type_event_configuration()
-%% }
--type connection_status_resource_type_event_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_wireless_device_with_multicast_group_request() :: #{
-%%   <<"WirelessDeviceId">> := string()
-%% }
--type associate_wireless_device_with_multicast_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% position_solver_configurations() :: #{
-%%   <<"SemtechGnss">> => semtech_gnss_configuration()
-%% }
--type position_solver_configurations() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_single_wireless_device_import_task_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DestinationName">> := string(),
-%%   <<"DeviceName">> => string(),
-%%   <<"Positioning">> => list(any()),
-%%   <<"Sidewalk">> := sidewalk_single_start_import_info(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_single_wireless_device_import_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_position_configurations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PositionConfigurationList">> => list(position_configuration_item())
-%% }
--type list_position_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_data_to_multicast_group_request() :: #{
-%%   <<"PayloadData">> := string(),
-%%   <<"WirelessMetadata">> := multicast_wireless_metadata()
-%% }
--type send_data_to_multicast_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_destination_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type create_destination_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resource_position_request() :: #{
-%%   <<"GeoJsonPayload">> => binary(),
-%%   <<"ResourceType">> := list(any())
-%% }
--type update_resource_position_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_network_analyzer_configuration_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type create_network_analyzer_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_wireless_device_request() :: #{
-%%   <<"IdentifierType">> := list(any())
-%% }
--type get_wireless_device_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_fuota_task_request() :: #{
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_start_fuota_task()
-%% }
--type start_fuota_task_request() :: #{binary() => any()}.
+-type abp_v1_0_x() :: #{binary() => any()}.
 
 
 %% Example:
@@ -444,285 +336,95 @@
 
 
 %% Example:
-%% lo_ra_w_a_n_connection_status_event_notification_configurations() :: #{
-%%   <<"GatewayEuiEventTopic">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type lo_ra_w_a_n_connection_status_event_notification_configurations() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% summary_metric_query() :: #{
-%%   <<"AggregationPeriod">> => list(any()),
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"EndTimestamp">> => non_neg_integer(),
-%%   <<"MetricName">> => list(any()),
-%%   <<"QueryId">> => string(),
-%%   <<"StartTimestamp">> => non_neg_integer()
+%% accuracy() :: #{
+%%   <<"HorizontalAccuracy">> => float(),
+%%   <<"VerticalAccuracy">> => float()
 %% }
--type summary_metric_query() :: #{binary() => any()}.
+-type accuracy() :: #{binary() => any()}.
 
 
 %% Example:
-%% lo_ra_w_a_n_multicast_session() :: #{
-%%   <<"DlDr">> => integer(),
-%%   <<"DlFreq">> => integer(),
-%%   <<"PingSlotPeriod">> => integer(),
-%%   <<"SessionStartTime">> => non_neg_integer(),
-%%   <<"SessionTimeout">> => integer()
+%% advanced_configuration() :: #{
+%%   <<"WiFiCellular">> => wi_fi_cellular()
 %% }
--type lo_ra_w_a_n_multicast_session() :: #{binary() => any()}.
+-type advanced_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_multicast_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_multicast_get(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => string()
+%% application_config() :: #{
+%%   <<"DestinationName">> => string(),
+%%   <<"FPort">> => integer(),
+%%   <<"Type">> => list(any())
 %% }
--type get_multicast_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_device_profile_request() :: #{}
--type get_device_profile_request() :: #{}.
+-type application_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% network_analyzer_configurations() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type network_analyzer_configurations() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_wireless_gateway_request() :: #{
+%% associate_aws_account_with_partner_account_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LoRaWAN">> := lo_ra_w_a_n_gateway(),
-%%   <<"Name">> => string(),
+%%   <<"Sidewalk">> := sidewalk_account_info(),
 %%   <<"Tags">> => list(tag())
 %% }
--type create_wireless_gateway_request() :: #{binary() => any()}.
+-type associate_aws_account_with_partner_account_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_destination_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Expression">> := string(),
-%%   <<"ExpressionType">> := list(any()),
-%%   <<"Name">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_bulk_associate_wireless_device_with_multicast_group_response() :: #{}
--type start_bulk_associate_wireless_device_with_multicast_group_response() :: #{}.
-
-%% Example:
-%% start_bulk_disassociate_wireless_device_from_multicast_group_response() :: #{}
--type start_bulk_disassociate_wireless_device_from_multicast_group_response() :: #{}.
-
-
-%% Example:
-%% downlink_queue_message() :: #{
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_send_data_to_device(),
-%%   <<"MessageId">> => string(),
-%%   <<"ReceivedAt">> => string(),
-%%   <<"TransmitMode">> => integer()
-%% }
--type downlink_queue_message() :: #{binary() => any()}.
-
-%% Example:
-%% get_service_profile_request() :: #{}
--type get_service_profile_request() :: #{}.
-
-
-%% Example:
-%% get_position_request() :: #{
-%%   <<"ResourceType">> := list(any())
-%% }
--type get_position_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_device_profile_response() :: #{
+%% associate_aws_account_with_partner_account_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_device_profile(),
-%%   <<"Name">> => string(),
-%%   <<"Sidewalk">> => sidewalk_get_device_profile()
+%%   <<"Sidewalk">> => sidewalk_account_info()
 %% }
--type get_device_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_network_analyzer_configuration_request() :: #{}
--type get_network_analyzer_configuration_request() :: #{}.
+-type associate_aws_account_with_partner_account_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_wireless_device_import_task_request() :: #{
-%%   <<"Sidewalk">> := sidewalk_update_import_info()
+%% associate_multicast_group_with_fuota_task_request() :: #{
+%%   <<"MulticastGroupId">> := string()
 %% }
--type update_wireless_device_import_task_request() :: #{binary() => any()}.
+-type associate_multicast_group_with_fuota_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+%% associate_multicast_group_with_fuota_task_response() :: #{}
+-type associate_multicast_group_with_fuota_task_response() :: #{}.
 
 
 %% Example:
-%% send_data_to_wireless_device_request() :: #{
-%%   <<"PayloadData">> := string(),
-%%   <<"TransmitMode">> := integer(),
-%%   <<"WirelessMetadata">> => wireless_metadata()
+%% associate_wireless_device_with_fuota_task_request() :: #{
+%%   <<"WirelessDeviceId">> := string()
 %% }
--type send_data_to_wireless_device_request() :: #{binary() => any()}.
+-type associate_wireless_device_with_fuota_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_wireless_device_with_fuota_task_response() :: #{}
+-type associate_wireless_device_with_fuota_task_response() :: #{}.
 
 
 %% Example:
-%% abp_v1_0_x() :: #{
-%%   <<"DevAddr">> => string(),
-%%   <<"FCntStart">> => integer(),
-%%   <<"SessionKeys">> => session_keys_abp_v1_0_x()
+%% associate_wireless_device_with_multicast_group_request() :: #{
+%%   <<"WirelessDeviceId">> := string()
 %% }
--type abp_v1_0_x() :: #{binary() => any()}.
+-type associate_wireless_device_with_multicast_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_wireless_device_with_multicast_group_response() :: #{}
+-type associate_wireless_device_with_multicast_group_response() :: #{}.
 
 
 %% Example:
-%% sidewalk_update_import_info() :: #{
-%%   <<"DeviceCreationFile">> => string()
+%% associate_wireless_device_with_thing_request() :: #{
+%%   <<"ThingArn">> := string()
 %% }
--type sidewalk_update_import_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% proximity_resource_type_event_configuration() :: #{
-%%   <<"Sidewalk">> => sidewalk_resource_type_event_configuration()
-%% }
--type proximity_resource_type_event_configuration() :: #{binary() => any()}.
-
+-type associate_wireless_device_with_thing_request() :: #{binary() => any()}.
 
 %% Example:
-%% wireless_metadata() :: #{
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_send_data_to_device(),
-%%   <<"Sidewalk">> => sidewalk_send_data_to_device()
-%% }
--type wireless_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_network_analyzer_configuration_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"MulticastGroups">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"TraceContent">> => trace_content(),
-%%   <<"WirelessDevices">> => list(string()),
-%%   <<"WirelessGateways">> => list(string())
-%% }
--type get_network_analyzer_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_event_configuration_by_resource_types_response() :: #{
-%%   <<"ConnectionStatus">> => connection_status_resource_type_event_configuration(),
-%%   <<"DeviceRegistrationState">> => device_registration_state_resource_type_event_configuration(),
-%%   <<"Join">> => join_resource_type_event_configuration(),
-%%   <<"MessageDeliveryStatus">> => message_delivery_status_resource_type_event_configuration(),
-%%   <<"Proximity">> => proximity_resource_type_event_configuration()
-%% }
--type get_event_configuration_by_resource_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_position_response() :: #{
-%%   <<"GeoJsonPayload">> => binary()
-%% }
--type get_resource_position_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_wireless_device_response() :: #{
-%%   <<"Result">> => string()
-%% }
--type test_wireless_device_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% device_registration_state_event_configuration() :: #{
-%%   <<"Sidewalk">> => sidewalk_event_notification_configurations(),
-%%   <<"WirelessDeviceIdEventTopic">> => list(any())
-%% }
--type device_registration_state_event_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_wireless_gateway_request() :: #{}
--type delete_wireless_gateway_request() :: #{}.
-
-
-%% Example:
-%% get_destination_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Expression">> => string(),
-%%   <<"ExpressionType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"RoleArn">> => string()
-%% }
--type get_destination_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lo_ra_w_a_n_fuota_task_get_info() :: #{
-%%   <<"RfRegion">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type lo_ra_w_a_n_fuota_task_get_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_delivery_status_event_configuration() :: #{
-%%   <<"Sidewalk">> => sidewalk_event_notification_configurations(),
-%%   <<"WirelessDeviceIdEventTopic">> => list(any())
-%% }
--type message_delivery_status_event_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% global_identity() :: #{
-%%   <<"GeranCid">> => integer(),
-%%   <<"Lac">> => integer()
-%% }
--type global_identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_wireless_gateway_certificate_response() :: #{
-%%   <<"IotCertificateId">> => string(),
-%%   <<"LoRaWANNetworkServerCertificateId">> => string()
-%% }
--type get_wireless_gateway_certificate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_position_estimate_response() :: #{
-%%   <<"GeoJsonPayload">> => binary()
-%% }
--type get_position_estimate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_metric_configuration_request() :: #{
-%%   <<"SummaryMetric">> => summary_metric_configuration()
-%% }
--type update_metric_configuration_request() :: #{binary() => any()}.
+%% associate_wireless_device_with_thing_response() :: #{}
+-type associate_wireless_device_with_thing_response() :: #{}.
 
 
 %% Example:
@@ -733,10 +435,70 @@
 
 
 %% Example:
-%% get_resource_log_level_response() :: #{
-%%   <<"LogLevel">> => list(any())
+%% associate_wireless_gateway_with_certificate_response() :: #{
+%%   <<"IotCertificateId">> => string()
 %% }
--type get_resource_log_level_response() :: #{binary() => any()}.
+-type associate_wireless_gateway_with_certificate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_wireless_gateway_with_thing_request() :: #{
+%%   <<"ThingArn">> := string()
+%% }
+-type associate_wireless_gateway_with_thing_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_wireless_gateway_with_thing_response() :: #{}
+-type associate_wireless_gateway_with_thing_response() :: #{}.
+
+
+%% Example:
+%% beaconing() :: #{
+%%   <<"DataRate">> => integer(),
+%%   <<"Frequencies">> => list(integer())
+%% }
+-type beaconing() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_multicast_group_session_request() :: #{}
+-type cancel_multicast_group_session_request() :: #{}.
+
+%% Example:
+%% cancel_multicast_group_session_response() :: #{}
+-type cancel_multicast_group_session_response() :: #{}.
+
+
+%% Example:
+%% cdma_local_id() :: #{
+%%   <<"CdmaChannel">> => integer(),
+%%   <<"PnOffset">> => integer()
+%% }
+-type cdma_local_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% cdma_nmr_obj() :: #{
+%%   <<"BaseStationId">> => integer(),
+%%   <<"CdmaChannel">> => integer(),
+%%   <<"PilotPower">> => integer(),
+%%   <<"PnOffset">> => integer()
+%% }
+-type cdma_nmr_obj() :: #{binary() => any()}.
+
+
+%% Example:
+%% cdma_obj() :: #{
+%%   <<"BaseLat">> => float(),
+%%   <<"BaseLng">> => float(),
+%%   <<"BaseStationId">> => integer(),
+%%   <<"CdmaLocalId">> => cdma_local_id(),
+%%   <<"CdmaNmr">> => list(cdma_nmr_obj()),
+%%   <<"NetworkId">> => integer(),
+%%   <<"PilotPower">> => integer(),
+%%   <<"RegistrationZone">> => integer(),
+%%   <<"SystemId">> => integer()
+%% }
+-type cdma_obj() :: #{binary() => any()}.
 
 
 %% Example:
@@ -751,36 +513,365 @@
 
 
 %% Example:
-%% list_multicast_groups_by_fuota_task_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% certificate_list() :: #{
+%%   <<"SigningAlg">> => list(any()),
+%%   <<"Value">> => string()
 %% }
--type list_multicast_groups_by_fuota_task_request() :: #{binary() => any()}.
+-type certificate_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connection_status_event_configuration() :: #{
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_connection_status_event_notification_configurations(),
+%%   <<"WirelessGatewayIdEventTopic">> => list(any())
+%% }
+-type connection_status_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% connection_status_resource_type_event_configuration() :: #{
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_connection_status_resource_type_event_configuration()
+%% }
+-type connection_status_resource_type_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_destination_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Expression">> := string(),
+%%   <<"ExpressionType">> := list(any()),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_destination_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_destination_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_destination_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_device_profile_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_device_profile(),
+%%   <<"Name">> => string(),
+%%   <<"Sidewalk">> => sidewalk_create_device_profile(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_device_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_device_profile_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_device_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_fuota_task_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Descriptor">> => string(),
+%%   <<"FirmwareUpdateImage">> := string(),
+%%   <<"FirmwareUpdateRole">> := string(),
+%%   <<"FragmentIntervalMS">> => integer(),
+%%   <<"FragmentSizeBytes">> => integer(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_fuota_task(),
+%%   <<"Name">> => string(),
+%%   <<"RedundancyPercent">> => integer(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_fuota_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_fuota_task_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_fuota_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multicast_group_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LoRaWAN">> := lo_ra_w_a_n_multicast(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_multicast_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_multicast_group_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_multicast_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_network_analyzer_configuration_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"MulticastGroups">> => list(string()),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TraceContent">> => trace_content(),
+%%   <<"WirelessDevices">> => list(string()),
+%%   <<"WirelessGateways">> => list(string())
+%% }
+-type create_network_analyzer_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_network_analyzer_configuration_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type create_network_analyzer_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_profile_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_service_profile(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_service_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_service_profile_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_service_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_wireless_device_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DestinationName">> := string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_device(),
+%%   <<"Name">> => string(),
+%%   <<"Positioning">> => list(any()),
+%%   <<"Sidewalk">> => sidewalk_create_wireless_device(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any())
+%% }
+-type create_wireless_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_wireless_device_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_wireless_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_wireless_gateway_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LoRaWAN">> := lo_ra_w_a_n_gateway(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_wireless_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_wireless_gateway_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_wireless_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_wireless_gateway_task_definition_request() :: #{
+%%   <<"AutoCreateTasks">> := boolean(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Update">> => update_wireless_gateway_task_create()
+%% }
+-type create_wireless_gateway_task_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_wireless_gateway_task_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_wireless_gateway_task_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_wireless_gateway_task_request() :: #{
+%%   <<"WirelessGatewayTaskDefinitionId">> := string()
+%% }
+-type create_wireless_gateway_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_wireless_gateway_task_response() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"WirelessGatewayTaskDefinitionId">> => string()
+%% }
+-type create_wireless_gateway_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dak_certificate_metadata() :: #{
+%%   <<"ApId">> => string(),
+%%   <<"CertificateId">> => string(),
+%%   <<"DeviceTypeId">> => string(),
+%%   <<"FactorySupport">> => boolean(),
+%%   <<"MaxAllowedSignature">> => integer()
+%% }
+-type dak_certificate_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_session_parameters_multicast() :: #{
+%%   <<"DlDr">> => integer(),
+%%   <<"DlFreq">> => integer()
+%% }
+-type default_session_parameters_multicast() :: #{binary() => any()}.
+
+%% Example:
+%% delete_destination_request() :: #{}
+-type delete_destination_request() :: #{}.
+
+%% Example:
+%% delete_destination_response() :: #{}
+-type delete_destination_response() :: #{}.
+
+%% Example:
+%% delete_device_profile_request() :: #{}
+-type delete_device_profile_request() :: #{}.
+
+%% Example:
+%% delete_device_profile_response() :: #{}
+-type delete_device_profile_response() :: #{}.
+
+%% Example:
+%% delete_fuota_task_request() :: #{}
+-type delete_fuota_task_request() :: #{}.
+
+%% Example:
+%% delete_fuota_task_response() :: #{}
+-type delete_fuota_task_response() :: #{}.
+
+%% Example:
+%% delete_multicast_group_request() :: #{}
+-type delete_multicast_group_request() :: #{}.
+
+%% Example:
+%% delete_multicast_group_response() :: #{}
+-type delete_multicast_group_response() :: #{}.
+
+%% Example:
+%% delete_network_analyzer_configuration_request() :: #{}
+-type delete_network_analyzer_configuration_request() :: #{}.
+
+%% Example:
+%% delete_network_analyzer_configuration_response() :: #{}
+-type delete_network_analyzer_configuration_response() :: #{}.
+
+
+%% Example:
+%% delete_queued_messages_request() :: #{
+%%   <<"MessageId">> := string(),
+%%   <<"WirelessDeviceType">> => list(any())
+%% }
+-type delete_queued_messages_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_queued_messages_response() :: #{}
+-type delete_queued_messages_response() :: #{}.
+
+%% Example:
+%% delete_service_profile_request() :: #{}
+-type delete_service_profile_request() :: #{}.
 
 %% Example:
 %% delete_service_profile_response() :: #{}
 -type delete_service_profile_response() :: #{}.
 
+%% Example:
+%% delete_wireless_device_import_task_request() :: #{}
+-type delete_wireless_device_import_task_request() :: #{}.
 
 %% Example:
-%% get_service_profile_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_get_service_profile_info(),
-%%   <<"Name">> => string()
+%% delete_wireless_device_import_task_response() :: #{}
+-type delete_wireless_device_import_task_response() :: #{}.
+
+%% Example:
+%% delete_wireless_device_request() :: #{}
+-type delete_wireless_device_request() :: #{}.
+
+%% Example:
+%% delete_wireless_device_response() :: #{}
+-type delete_wireless_device_response() :: #{}.
+
+%% Example:
+%% delete_wireless_gateway_request() :: #{}
+-type delete_wireless_gateway_request() :: #{}.
+
+%% Example:
+%% delete_wireless_gateway_response() :: #{}
+-type delete_wireless_gateway_response() :: #{}.
+
+%% Example:
+%% delete_wireless_gateway_task_definition_request() :: #{}
+-type delete_wireless_gateway_task_definition_request() :: #{}.
+
+%% Example:
+%% delete_wireless_gateway_task_definition_response() :: #{}
+-type delete_wireless_gateway_task_definition_response() :: #{}.
+
+%% Example:
+%% delete_wireless_gateway_task_request() :: #{}
+-type delete_wireless_gateway_task_request() :: #{}.
+
+%% Example:
+%% delete_wireless_gateway_task_response() :: #{}
+-type delete_wireless_gateway_task_response() :: #{}.
+
+
+%% Example:
+%% deregister_wireless_device_request() :: #{
+%%   <<"WirelessDeviceType">> => list(any())
 %% }
--type get_service_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sidewalk_event_notification_configurations() :: #{
-%%   <<"AmazonIdEventTopic">> => list(any())
-%% }
--type sidewalk_event_notification_configurations() :: #{binary() => any()}.
+-type deregister_wireless_device_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_log_levels_by_resource_types_response() :: #{}
--type update_log_levels_by_resource_types_response() :: #{}.
+%% deregister_wireless_device_response() :: #{}
+-type deregister_wireless_device_response() :: #{}.
 
 
 %% Example:
@@ -796,24 +887,6 @@
 
 
 %% Example:
-%% imported_sidewalk_device() :: #{
-%%   <<"LastUpdateTime">> => non_neg_integer(),
-%%   <<"OnboardingStatus">> => list(any()),
-%%   <<"OnboardingStatusReason">> => string(),
-%%   <<"SidewalkManufacturingSn">> => string()
-%% }
--type imported_sidewalk_device() :: #{binary() => any()}.
-
-
-%% Example:
-%% gateway_list_item() :: #{
-%%   <<"DownlinkFrequency">> => integer(),
-%%   <<"GatewayId">> => string()
-%% }
--type gateway_list_item() :: #{binary() => any()}.
-
-
-%% Example:
 %% device_profile() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
@@ -823,121 +896,211 @@
 
 
 %% Example:
-%% sidewalk_update_account() :: #{
-%%   <<"AppServerPrivateKey">> => string()
-%% }
--type sidewalk_update_account() :: #{binary() => any()}.
-
-%% Example:
-%% delete_network_analyzer_configuration_response() :: #{}
--type delete_network_analyzer_configuration_response() :: #{}.
-
-
-%% Example:
-%% create_multicast_group_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_multicast_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% join_event_configuration() :: #{
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_join_event_notification_configurations(),
+%% device_registration_state_event_configuration() :: #{
+%%   <<"Sidewalk">> => sidewalk_event_notification_configurations(),
 %%   <<"WirelessDeviceIdEventTopic">> => list(any())
 %% }
--type join_event_configuration() :: #{binary() => any()}.
+-type device_registration_state_event_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_position_configuration_request() :: #{
-%%   <<"ResourceType">> := list(any())
+%% device_registration_state_resource_type_event_configuration() :: #{
+%%   <<"Sidewalk">> => sidewalk_resource_type_event_configuration()
 %% }
--type get_position_configuration_request() :: #{binary() => any()}.
+-type device_registration_state_resource_type_event_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_metric_configuration_response() :: #{
-%%   <<"SummaryMetric">> => summary_metric_configuration()
+%% dimension() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
 %% }
--type get_metric_configuration_response() :: #{binary() => any()}.
+-type dimension() :: #{binary() => any()}.
 
 
 %% Example:
-%% lo_ra_w_a_n_update_gateway_task_create() :: #{
-%%   <<"CurrentVersion">> => lo_ra_w_a_n_gateway_version(),
-%%   <<"SigKeyCrc">> => float(),
-%%   <<"UpdateSignature">> => string(),
-%%   <<"UpdateVersion">> => lo_ra_w_a_n_gateway_version()
+%% disassociate_aws_account_from_partner_account_request() :: #{
+%%   <<"PartnerType">> := list(any())
 %% }
--type lo_ra_w_a_n_update_gateway_task_create() :: #{binary() => any()}.
-
+-type disassociate_aws_account_from_partner_account_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_wireless_gateway_task_definitions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TaskDefinitionType">> => list(any())
-%% }
--type list_wireless_gateway_task_definitions_request() :: #{binary() => any()}.
-
+%% disassociate_aws_account_from_partner_account_response() :: #{}
+-type disassociate_aws_account_from_partner_account_response() :: #{}.
 
 %% Example:
-%% update_wireless_gateway_task_entry() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_update_gateway_task_entry()
-%% }
--type update_wireless_gateway_task_entry() :: #{binary() => any()}.
-
+%% disassociate_multicast_group_from_fuota_task_request() :: #{}
+-type disassociate_multicast_group_from_fuota_task_request() :: #{}.
 
 %% Example:
-%% participating_gateways_multicast() :: #{
-%%   <<"GatewayList">> => list(string()),
-%%   <<"TransmissionInterval">> => integer()
-%% }
--type participating_gateways_multicast() :: #{binary() => any()}.
-
+%% disassociate_multicast_group_from_fuota_task_response() :: #{}
+-type disassociate_multicast_group_from_fuota_task_response() :: #{}.
 
 %% Example:
-%% trace_content() :: #{
-%%   <<"LogLevel">> => list(any()),
-%%   <<"MulticastFrameInfo">> => list(any()),
-%%   <<"WirelessDeviceFrameInfo">> => list(any())
-%% }
--type trace_content() :: #{binary() => any()}.
+%% disassociate_wireless_device_from_fuota_task_request() :: #{}
+-type disassociate_wireless_device_from_fuota_task_request() :: #{}.
+
+%% Example:
+%% disassociate_wireless_device_from_fuota_task_response() :: #{}
+-type disassociate_wireless_device_from_fuota_task_response() :: #{}.
+
+%% Example:
+%% disassociate_wireless_device_from_multicast_group_request() :: #{}
+-type disassociate_wireless_device_from_multicast_group_request() :: #{}.
 
 %% Example:
 %% disassociate_wireless_device_from_multicast_group_response() :: #{}
 -type disassociate_wireless_device_from_multicast_group_response() :: #{}.
 
 %% Example:
-%% associate_multicast_group_with_fuota_task_response() :: #{}
--type associate_multicast_group_with_fuota_task_response() :: #{}.
+%% disassociate_wireless_device_from_thing_request() :: #{}
+-type disassociate_wireless_device_from_thing_request() :: #{}.
 
 %% Example:
-%% delete_queued_messages_response() :: #{}
--type delete_queued_messages_response() :: #{}.
+%% disassociate_wireless_device_from_thing_response() :: #{}
+-type disassociate_wireless_device_from_thing_response() :: #{}.
 
 %% Example:
-%% get_multicast_group_request() :: #{}
--type get_multicast_group_request() :: #{}.
+%% disassociate_wireless_gateway_from_certificate_request() :: #{}
+-type disassociate_wireless_gateway_from_certificate_request() :: #{}.
 
 %% Example:
-%% get_wireless_gateway_task_definition_request() :: #{}
--type get_wireless_gateway_task_definition_request() :: #{}.
+%% disassociate_wireless_gateway_from_certificate_response() :: #{}
+-type disassociate_wireless_gateway_from_certificate_response() :: #{}.
 
 %% Example:
-%% delete_fuota_task_response() :: #{}
--type delete_fuota_task_response() :: #{}.
+%% disassociate_wireless_gateway_from_thing_request() :: #{}
+-type disassociate_wireless_gateway_from_thing_request() :: #{}.
+
+%% Example:
+%% disassociate_wireless_gateway_from_thing_response() :: #{}
+-type disassociate_wireless_gateway_from_thing_response() :: #{}.
 
 
 %% Example:
-%% accuracy() :: #{
-%%   <<"HorizontalAccuracy">> => float(),
-%%   <<"VerticalAccuracy">> => float()
+%% downlink_queue_message() :: #{
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_send_data_to_device(),
+%%   <<"MessageId">> => string(),
+%%   <<"ReceivedAt">> => string(),
+%%   <<"TransmitMode">> => integer()
 %% }
--type accuracy() :: #{binary() => any()}.
+-type downlink_queue_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_configuration_item() :: #{
+%%   <<"Events">> => event_notification_item_configurations(),
+%%   <<"Identifier">> => string(),
+%%   <<"IdentifierType">> => list(any()),
+%%   <<"PartnerType">> => list(any())
+%% }
+-type event_configuration_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_notification_item_configurations() :: #{
+%%   <<"ConnectionStatus">> => connection_status_event_configuration(),
+%%   <<"DeviceRegistrationState">> => device_registration_state_event_configuration(),
+%%   <<"Join">> => join_event_configuration(),
+%%   <<"MessageDeliveryStatus">> => message_delivery_status_event_configuration(),
+%%   <<"Proximity">> => proximity_event_configuration()
+%% }
+-type event_notification_item_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% f_ports() :: #{
+%%   <<"Applications">> => list(application_config()),
+%%   <<"ClockSync">> => integer(),
+%%   <<"Fuota">> => integer(),
+%%   <<"Multicast">> => integer(),
+%%   <<"Positioning">> => positioning()
+%% }
+-type f_ports() :: #{binary() => any()}.
+
+
+%% Example:
+%% fuota_task() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type fuota_task() :: #{binary() => any()}.
+
+
+%% Example:
+%% fuota_task_event_log_option() :: #{
+%%   <<"Event">> => list(any()),
+%%   <<"LogLevel">> => list(any())
+%% }
+-type fuota_task_event_log_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% fuota_task_log_option() :: #{
+%%   <<"Events">> => list(fuota_task_event_log_option()),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type fuota_task_log_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_list_item() :: #{
+%%   <<"DownlinkFrequency">> => integer(),
+%%   <<"GatewayId">> => string()
+%% }
+-type gateway_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_destination_request() :: #{}
+-type get_destination_request() :: #{}.
+
+
+%% Example:
+%% get_destination_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Expression">> => string(),
+%%   <<"ExpressionType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type get_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_device_profile_request() :: #{}
+-type get_device_profile_request() :: #{}.
+
+
+%% Example:
+%% get_device_profile_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_device_profile(),
+%%   <<"Name">> => string(),
+%%   <<"Sidewalk">> => sidewalk_get_device_profile()
+%% }
+-type get_device_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_configuration_by_resource_types_request() :: #{}
+-type get_event_configuration_by_resource_types_request() :: #{}.
+
+
+%% Example:
+%% get_event_configuration_by_resource_types_response() :: #{
+%%   <<"ConnectionStatus">> => connection_status_resource_type_event_configuration(),
+%%   <<"DeviceRegistrationState">> => device_registration_state_resource_type_event_configuration(),
+%%   <<"Join">> => join_resource_type_event_configuration(),
+%%   <<"MessageDeliveryStatus">> => message_delivery_status_resource_type_event_configuration(),
+%%   <<"Proximity">> => proximity_resource_type_event_configuration()
+%% }
+-type get_event_configuration_by_resource_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_fuota_task_request() :: #{}
+-type get_fuota_task_request() :: #{}.
 
 
 %% Example:
@@ -958,316 +1121,145 @@
 %% }
 -type get_fuota_task_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_log_levels_by_resource_types_request() :: #{}
+-type get_log_levels_by_resource_types_request() :: #{}.
+
 
 %% Example:
-%% wireless_gateway_statistics() :: #{
+%% get_log_levels_by_resource_types_response() :: #{
+%%   <<"DefaultLogLevel">> => list(any()),
+%%   <<"FuotaTaskLogOptions">> => list(fuota_task_log_option()),
+%%   <<"WirelessDeviceLogOptions">> => list(wireless_device_log_option()),
+%%   <<"WirelessGatewayLogOptions">> => list(wireless_gateway_log_option())
+%% }
+-type get_log_levels_by_resource_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_metric_configuration_request() :: #{}
+-type get_metric_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_metric_configuration_response() :: #{
+%%   <<"SummaryMetric">> => summary_metric_configuration()
+%% }
+-type get_metric_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_metrics_request() :: #{
+%%   <<"SummaryMetricQueries">> => list(summary_metric_query())
+%% }
+-type get_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_metrics_response() :: #{
+%%   <<"SummaryMetricQueryResults">> => list(summary_metric_query_result())
+%% }
+-type get_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_multicast_group_request() :: #{}
+-type get_multicast_group_request() :: #{}.
+
+
+%% Example:
+%% get_multicast_group_response() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"LastUplinkReceivedAt">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_gateway(),
-%%   <<"Name">> => string()
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_multicast_get(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
 %% }
--type wireless_gateway_statistics() :: #{binary() => any()}.
+-type get_multicast_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_multicast_group_session_request() :: #{}
+-type get_multicast_group_session_request() :: #{}.
 
 
 %% Example:
-%% sidewalk_device_metadata() :: #{
-%%   <<"BatteryLevel">> => list(any()),
-%%   <<"DeviceState">> => list(any()),
-%%   <<"Event">> => list(any()),
-%%   <<"Rssi">> => integer()
+%% get_multicast_group_session_response() :: #{
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_multicast_session()
 %% }
--type sidewalk_device_metadata() :: #{binary() => any()}.
+-type get_multicast_group_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_network_analyzer_configuration_request() :: #{}
+-type get_network_analyzer_configuration_request() :: #{}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_fuota_task_response() :: #{}
--type update_fuota_task_response() :: #{}.
-
-
-%% Example:
-%% sidewalk_list_devices_for_import_info() :: #{
-%%   <<"Positioning">> => sidewalk_positioning()
-%% }
--type sidewalk_list_devices_for_import_info() :: #{binary() => any()}.
-
-%% Example:
-%% put_position_configuration_response() :: #{}
--type put_position_configuration_response() :: #{}.
-
-
-%% Example:
-%% lo_ra_w_a_n_update_gateway_task_entry() :: #{
-%%   <<"CurrentVersion">> => lo_ra_w_a_n_gateway_version(),
-%%   <<"UpdateVersion">> => lo_ra_w_a_n_gateway_version()
-%% }
--type lo_ra_w_a_n_update_gateway_task_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_queued_messages_request() :: #{
-%%   <<"MessageId">> := string(),
-%%   <<"WirelessDeviceType">> => list(any())
-%% }
--type delete_queued_messages_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_configuration_by_resource_types_request() :: #{}
--type get_event_configuration_by_resource_types_request() :: #{}.
-
-
-%% Example:
-%% list_partner_accounts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_partner_accounts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_event_configuration_request() :: #{
-%%   <<"IdentifierType">> := list(any()),
-%%   <<"PartnerType">> => list(any())
-%% }
--type get_resource_event_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_network_analyzer_configuration_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
+%% get_network_analyzer_configuration_response() :: #{
+%%   <<"Arn">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"MulticastGroups">> => list(string()),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()),
+%%   <<"Name">> => string(),
 %%   <<"TraceContent">> => trace_content(),
 %%   <<"WirelessDevices">> => list(string()),
 %%   <<"WirelessGateways">> => list(string())
 %% }
--type create_network_analyzer_configuration_request() :: #{binary() => any()}.
+-type get_network_analyzer_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_queued_messages_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"WirelessDeviceType">> => list(any())
+%% get_partner_account_request() :: #{
+%%   <<"PartnerType">> := list(any())
 %% }
--type list_queued_messages_request() :: #{binary() => any()}.
+-type get_partner_account_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_fuota_tasks_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% get_partner_account_response() :: #{
+%%   <<"AccountLinked">> => boolean(),
+%%   <<"Sidewalk">> => sidewalk_account_info_with_fingerprint()
 %% }
--type list_fuota_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_wireless_device_from_fuota_task_response() :: #{}
--type disassociate_wireless_device_from_fuota_task_response() :: #{}.
+-type get_partner_account_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% otaa_v1_1() :: #{
-%%   <<"AppKey">> => string(),
-%%   <<"JoinEui">> => string(),
-%%   <<"NwkKey">> => string()
-%% }
--type otaa_v1_1() :: #{binary() => any()}.
-
-%% Example:
-%% update_network_analyzer_configuration_response() :: #{}
--type update_network_analyzer_configuration_response() :: #{}.
-
-%% Example:
-%% disassociate_wireless_gateway_from_certificate_request() :: #{}
--type disassociate_wireless_gateway_from_certificate_request() :: #{}.
-
-%% Example:
-%% update_position_response() :: #{}
--type update_position_response() :: #{}.
-
-%% Example:
-%% associate_wireless_gateway_with_thing_response() :: #{}
--type associate_wireless_gateway_with_thing_response() :: #{}.
-
-
-%% Example:
-%% lo_ra_w_a_n_update_device() :: #{
-%%   <<"AbpV1_0_x">> => update_abp_v1_0_x(),
-%%   <<"AbpV1_1">> => update_abp_v1_1(),
-%%   <<"DeviceProfileId">> => string(),
-%%   <<"FPorts">> => update_f_ports(),
-%%   <<"ServiceProfileId">> => string()
-%% }
--type lo_ra_w_a_n_update_device() :: #{binary() => any()}.
-
-%% Example:
-%% delete_wireless_gateway_response() :: #{}
--type delete_wireless_gateway_response() :: #{}.
-
-
-%% Example:
-%% get_resource_position_request() :: #{
+%% get_position_configuration_request() :: #{
 %%   <<"ResourceType">> := list(any())
 %% }
--type get_resource_position_request() :: #{binary() => any()}.
+-type get_position_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_position_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> => list(any())
+%% get_position_configuration_response() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"Solvers">> => position_solver_details()
 %% }
--type list_position_configurations_request() :: #{binary() => any()}.
+-type get_position_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% gsm_local_id() :: #{
-%%   <<"Bcch">> => integer(),
-%%   <<"Bsic">> => integer()
+%% get_position_estimate_request() :: #{
+%%   <<"AdvancedConfiguration">> => advanced_configuration(),
+%%   <<"CellTowers">> => cell_towers(),
+%%   <<"Gnss">> => gnss(),
+%%   <<"Ip">> => ip(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"WiFiAccessPoints">> => list(wi_fi_access_point())
 %% }
--type gsm_local_id() :: #{binary() => any()}.
+-type get_position_estimate_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_wireless_device_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DestinationName">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_update_device(),
-%%   <<"Name">> => string(),
-%%   <<"Positioning">> => list(any()),
-%%   <<"Sidewalk">> => sidewalk_update_wireless_device()
+%% get_position_estimate_response() :: #{
+%%   <<"GeoJsonPayload">> => binary()
 %% }
--type update_wireless_device_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_profile_request() :: #{}
--type delete_service_profile_request() :: #{}.
-
-%% Example:
-%% delete_wireless_device_import_task_request() :: #{}
--type delete_wireless_device_import_task_request() :: #{}.
-
-%% Example:
-%% update_resource_position_response() :: #{}
--type update_resource_position_response() :: #{}.
-
-%% Example:
-%% disassociate_wireless_device_from_multicast_group_request() :: #{}
--type disassociate_wireless_device_from_multicast_group_request() :: #{}.
+-type get_position_estimate_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_wireless_device_import_task_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
+%% get_position_request() :: #{
+%%   <<"ResourceType">> := list(any())
 %% }
--type start_wireless_device_import_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_wireless_device_import_tasks_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WirelessDeviceImportTaskList">> => list(wireless_device_import_task())
-%% }
--type list_wireless_device_import_tasks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_profile() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type service_profile() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_wireless_device_response() :: #{}
--type deregister_wireless_device_response() :: #{}.
-
-
-%% Example:
-%% update_multicast_group_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_multicast(),
-%%   <<"Name">> => string()
-%% }
--type update_multicast_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_multicast_group_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LoRaWAN">> := lo_ra_w_a_n_multicast(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_multicast_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_fuota_task_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_fuota_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_service_profile_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_service_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_wireless_gateways_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WirelessGatewayList">> => list(wireless_gateway_statistics())
-%% }
--type list_wireless_gateways_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_wireless_devices_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WirelessDeviceList">> => list(wireless_device_statistics())
-%% }
--type list_wireless_devices_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lo_ra_w_a_n_gateway() :: #{
-%%   <<"Beaconing">> => beaconing(),
-%%   <<"GatewayEui">> => string(),
-%%   <<"JoinEuiFilters">> => list(list(string())()),
-%%   <<"MaxEirp">> => float(),
-%%   <<"NetIdFilters">> => list(string()),
-%%   <<"RfRegion">> => string(),
-%%   <<"SubBands">> => list(integer())
-%% }
--type lo_ra_w_a_n_gateway() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_aws_account_with_partner_account_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Sidewalk">> := sidewalk_account_info(),
-%%   <<"Tags">> => list(tag())
-%% }
--type associate_aws_account_with_partner_account_request() :: #{binary() => any()}.
+-type get_position_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1283,11 +1275,426 @@
 
 
 %% Example:
-%% wcdma_local_id() :: #{
-%%   <<"Psc">> => integer(),
-%%   <<"Uarfcndl">> => integer()
+%% get_resource_event_configuration_request() :: #{
+%%   <<"IdentifierType">> := list(any()),
+%%   <<"PartnerType">> => list(any())
 %% }
--type wcdma_local_id() :: #{binary() => any()}.
+-type get_resource_event_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_event_configuration_response() :: #{
+%%   <<"ConnectionStatus">> => connection_status_event_configuration(),
+%%   <<"DeviceRegistrationState">> => device_registration_state_event_configuration(),
+%%   <<"Join">> => join_event_configuration(),
+%%   <<"MessageDeliveryStatus">> => message_delivery_status_event_configuration(),
+%%   <<"Proximity">> => proximity_event_configuration()
+%% }
+-type get_resource_event_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_log_level_request() :: #{
+%%   <<"ResourceType">> := string()
+%% }
+-type get_resource_log_level_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_log_level_response() :: #{
+%%   <<"LogLevel">> => list(any())
+%% }
+-type get_resource_log_level_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_position_request() :: #{
+%%   <<"ResourceType">> := list(any())
+%% }
+-type get_resource_position_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_position_response() :: #{
+%%   <<"GeoJsonPayload">> => binary()
+%% }
+-type get_resource_position_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_endpoint_request() :: #{
+%%   <<"ServiceType">> => list(any())
+%% }
+-type get_service_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_endpoint_response() :: #{
+%%   <<"ServerTrust">> => string(),
+%%   <<"ServiceEndpoint">> => string(),
+%%   <<"ServiceType">> => list(any())
+%% }
+-type get_service_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_service_profile_request() :: #{}
+-type get_service_profile_request() :: #{}.
+
+
+%% Example:
+%% get_service_profile_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_get_service_profile_info(),
+%%   <<"Name">> => string()
+%% }
+-type get_service_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_wireless_device_import_task_request() :: #{}
+-type get_wireless_device_import_task_request() :: #{}.
+
+
+%% Example:
+%% get_wireless_device_import_task_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DestinationName">> => string(),
+%%   <<"FailedImportedDeviceCount">> => float(),
+%%   <<"Id">> => string(),
+%%   <<"InitializedImportedDeviceCount">> => float(),
+%%   <<"OnboardedImportedDeviceCount">> => float(),
+%%   <<"PendingImportedDeviceCount">> => float(),
+%%   <<"Positioning">> => list(any()),
+%%   <<"Sidewalk">> => sidewalk_get_start_import_info(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type get_wireless_device_import_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_wireless_device_request() :: #{
+%%   <<"IdentifierType">> := list(any())
+%% }
+-type get_wireless_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_wireless_device_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DestinationName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_device(),
+%%   <<"Name">> => string(),
+%%   <<"Positioning">> => list(any()),
+%%   <<"Sidewalk">> => sidewalk_device(),
+%%   <<"ThingArn">> => string(),
+%%   <<"ThingName">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type get_wireless_device_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_wireless_device_statistics_request() :: #{}
+-type get_wireless_device_statistics_request() :: #{}.
+
+
+%% Example:
+%% get_wireless_device_statistics_response() :: #{
+%%   <<"LastUplinkReceivedAt">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_device_metadata(),
+%%   <<"Sidewalk">> => sidewalk_device_metadata(),
+%%   <<"WirelessDeviceId">> => string()
+%% }
+-type get_wireless_device_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_wireless_gateway_certificate_request() :: #{}
+-type get_wireless_gateway_certificate_request() :: #{}.
+
+
+%% Example:
+%% get_wireless_gateway_certificate_response() :: #{
+%%   <<"IotCertificateId">> => string(),
+%%   <<"LoRaWANNetworkServerCertificateId">> => string()
+%% }
+-type get_wireless_gateway_certificate_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_wireless_gateway_firmware_information_request() :: #{}
+-type get_wireless_gateway_firmware_information_request() :: #{}.
+
+
+%% Example:
+%% get_wireless_gateway_firmware_information_response() :: #{
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_gateway_current_version()
+%% }
+-type get_wireless_gateway_firmware_information_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_wireless_gateway_request() :: #{
+%%   <<"IdentifierType">> := list(any())
+%% }
+-type get_wireless_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_wireless_gateway_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_gateway(),
+%%   <<"Name">> => string(),
+%%   <<"ThingArn">> => string(),
+%%   <<"ThingName">> => string()
+%% }
+-type get_wireless_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_wireless_gateway_statistics_request() :: #{}
+-type get_wireless_gateway_statistics_request() :: #{}.
+
+
+%% Example:
+%% get_wireless_gateway_statistics_response() :: #{
+%%   <<"ConnectionStatus">> => list(any()),
+%%   <<"LastUplinkReceivedAt">> => string(),
+%%   <<"WirelessGatewayId">> => string()
+%% }
+-type get_wireless_gateway_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_wireless_gateway_task_definition_request() :: #{}
+-type get_wireless_gateway_task_definition_request() :: #{}.
+
+
+%% Example:
+%% get_wireless_gateway_task_definition_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AutoCreateTasks">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Update">> => update_wireless_gateway_task_create()
+%% }
+-type get_wireless_gateway_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_wireless_gateway_task_request() :: #{}
+-type get_wireless_gateway_task_request() :: #{}.
+
+
+%% Example:
+%% get_wireless_gateway_task_response() :: #{
+%%   <<"LastUplinkReceivedAt">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskCreatedAt">> => string(),
+%%   <<"WirelessGatewayId">> => string(),
+%%   <<"WirelessGatewayTaskDefinitionId">> => string()
+%% }
+-type get_wireless_gateway_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% global_identity() :: #{
+%%   <<"GeranCid">> => integer(),
+%%   <<"Lac">> => integer()
+%% }
+-type global_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% gnss() :: #{
+%%   <<"AssistAltitude">> => float(),
+%%   <<"AssistPosition">> => list(float()),
+%%   <<"CaptureTime">> => float(),
+%%   <<"CaptureTimeAccuracy">> => float(),
+%%   <<"Payload">> => string(),
+%%   <<"Use2DSolver">> => boolean()
+%% }
+-type gnss() :: #{binary() => any()}.
+
+
+%% Example:
+%% gsm_local_id() :: #{
+%%   <<"Bcch">> => integer(),
+%%   <<"Bsic">> => integer()
+%% }
+-type gsm_local_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% gsm_nmr_obj() :: #{
+%%   <<"Bcch">> => integer(),
+%%   <<"Bsic">> => integer(),
+%%   <<"GlobalIdentity">> => global_identity(),
+%%   <<"RxLevel">> => integer()
+%% }
+-type gsm_nmr_obj() :: #{binary() => any()}.
+
+
+%% Example:
+%% gsm_obj() :: #{
+%%   <<"GeranCid">> => integer(),
+%%   <<"GsmLocalId">> => gsm_local_id(),
+%%   <<"GsmNmr">> => list(gsm_nmr_obj()),
+%%   <<"GsmTimingAdvance">> => integer(),
+%%   <<"Lac">> => integer(),
+%%   <<"Mcc">> => integer(),
+%%   <<"Mnc">> => integer(),
+%%   <<"RxLevel">> => integer()
+%% }
+-type gsm_obj() :: #{binary() => any()}.
+
+
+%% Example:
+%% imported_sidewalk_device() :: #{
+%%   <<"LastUpdateTime">> => non_neg_integer(),
+%%   <<"OnboardingStatus">> => list(any()),
+%%   <<"OnboardingStatusReason">> => string(),
+%%   <<"SidewalkManufacturingSn">> => string()
+%% }
+-type imported_sidewalk_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% imported_wireless_device() :: #{
+%%   <<"Sidewalk">> => imported_sidewalk_device()
+%% }
+-type imported_wireless_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip() :: #{
+%%   <<"IpAddress">> => string()
+%% }
+-type ip() :: #{binary() => any()}.
+
+
+%% Example:
+%% join_event_configuration() :: #{
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_join_event_notification_configurations(),
+%%   <<"WirelessDeviceIdEventTopic">> => list(any())
+%% }
+-type join_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% join_resource_type_event_configuration() :: #{
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_join_resource_type_event_configuration()
+%% }
+-type join_resource_type_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_destinations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_destinations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_destinations_response() :: #{
+%%   <<"DestinationList">> => list(destinations()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_destinations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_profiles_request() :: #{
+%%   <<"DeviceProfileType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_device_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_device_profiles_response() :: #{
+%%   <<"DeviceProfileList">> => list(device_profile()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_device_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_devices_for_wireless_device_import_task_request() :: #{
+%%   <<"Id">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_devices_for_wireless_device_import_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_devices_for_wireless_device_import_task_response() :: #{
+%%   <<"DestinationName">> => string(),
+%%   <<"ImportedWirelessDeviceList">> => list(imported_wireless_device()),
+%%   <<"NextToken">> => string(),
+%%   <<"Positioning">> => list(any()),
+%%   <<"Sidewalk">> => sidewalk_list_devices_for_import_info()
+%% }
+-type list_devices_for_wireless_device_import_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> := list(any())
+%% }
+-type list_event_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_configurations_response() :: #{
+%%   <<"EventConfigurationsList">> => list(event_configuration_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fuota_tasks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_fuota_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fuota_tasks_response() :: #{
+%%   <<"FuotaTaskList">> => list(fuota_task()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_fuota_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multicast_groups_by_fuota_task_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multicast_groups_by_fuota_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multicast_groups_by_fuota_task_response() :: #{
+%%   <<"MulticastGroupList">> => list(multicast_group_by_fuota_task()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multicast_groups_by_fuota_task_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1299,13 +1706,219 @@
 
 
 %% Example:
-%% session_keys_abp_v1_1() :: #{
-%%   <<"AppSKey">> => string(),
-%%   <<"FNwkSIntKey">> => string(),
-%%   <<"NwkSEncKey">> => string(),
-%%   <<"SNwkSIntKey">> => string()
+%% list_multicast_groups_response() :: #{
+%%   <<"MulticastGroupList">> => list(multicast_group()),
+%%   <<"NextToken">> => string()
 %% }
--type session_keys_abp_v1_1() :: #{binary() => any()}.
+-type list_multicast_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_analyzer_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_network_analyzer_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_analyzer_configurations_response() :: #{
+%%   <<"NetworkAnalyzerConfigurationList">> => list(network_analyzer_configurations()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_network_analyzer_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_partner_accounts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_partner_accounts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_partner_accounts_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Sidewalk">> => list(sidewalk_account_info_with_fingerprint())
+%% }
+-type list_partner_accounts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_position_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type list_position_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_position_configurations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PositionConfigurationList">> => list(position_configuration_item())
+%% }
+-type list_position_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queued_messages_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"WirelessDeviceType">> => list(any())
+%% }
+-type list_queued_messages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queued_messages_response() :: #{
+%%   <<"DownlinkQueueMessagesList">> => list(downlink_queue_message()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_queued_messages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_profiles_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_service_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_profiles_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceProfileList">> => list(service_profile())
+%% }
+-type list_service_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_wireless_device_import_tasks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_wireless_device_import_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_wireless_device_import_tasks_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WirelessDeviceImportTaskList">> => list(wireless_device_import_task())
+%% }
+-type list_wireless_device_import_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_wireless_devices_request() :: #{
+%%   <<"DestinationName">> => string(),
+%%   <<"DeviceProfileId">> => string(),
+%%   <<"FuotaTaskId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MulticastGroupId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceProfileId">> => string(),
+%%   <<"WirelessDeviceType">> => list(any())
+%% }
+-type list_wireless_devices_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_wireless_devices_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WirelessDeviceList">> => list(wireless_device_statistics())
+%% }
+-type list_wireless_devices_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_wireless_gateway_task_definitions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TaskDefinitionType">> => list(any())
+%% }
+-type list_wireless_gateway_task_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_wireless_gateway_task_definitions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TaskDefinitions">> => list(update_wireless_gateway_task_entry())
+%% }
+-type list_wireless_gateway_task_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_wireless_gateways_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_wireless_gateways_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_wireless_gateways_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WirelessGatewayList">> => list(wireless_gateway_statistics())
+%% }
+-type list_wireless_gateways_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_connection_status_event_notification_configurations() :: #{
+%%   <<"GatewayEuiEventTopic">> => list(any())
+%% }
+-type lo_ra_w_a_n_connection_status_event_notification_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_connection_status_resource_type_event_configuration() :: #{
+%%   <<"WirelessGatewayEventTopic">> => list(any())
+%% }
+-type lo_ra_w_a_n_connection_status_resource_type_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_device() :: #{
+%%   <<"AbpV1_0_x">> => abp_v1_0_x(),
+%%   <<"AbpV1_1">> => abp_v1_1(),
+%%   <<"DevEui">> => string(),
+%%   <<"DeviceProfileId">> => string(),
+%%   <<"FPorts">> => f_ports(),
+%%   <<"OtaaV1_0_x">> => otaa_v1_0_x(),
+%%   <<"OtaaV1_1">> => otaa_v1_1(),
+%%   <<"ServiceProfileId">> => string()
+%% }
+-type lo_ra_w_a_n_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_device_metadata() :: #{
+%%   <<"DataRate">> => integer(),
+%%   <<"DevEui">> => string(),
+%%   <<"FPort">> => integer(),
+%%   <<"Frequency">> => integer(),
+%%   <<"Gateways">> => list(lo_ra_w_a_n_gateway_metadata()),
+%%   <<"PublicGateways">> => list(lo_ra_w_a_n_public_gateway_metadata()),
+%%   <<"Timestamp">> => string()
+%% }
+-type lo_ra_w_a_n_device_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1334,742 +1947,38 @@
 
 
 %% Example:
-%% update_abp_v1_0_x() :: #{
-%%   <<"FCntStart">> => integer()
+%% lo_ra_w_a_n_fuota_task() :: #{
+%%   <<"RfRegion">> => list(any())
 %% }
--type update_abp_v1_0_x() :: #{binary() => any()}.
+-type lo_ra_w_a_n_fuota_task() :: #{binary() => any()}.
 
-%% Example:
-%% update_multicast_group_response() :: #{}
--type update_multicast_group_response() :: #{}.
-
-%% Example:
-%% disassociate_multicast_group_from_fuota_task_response() :: #{}
--type disassociate_multicast_group_from_fuota_task_response() :: #{}.
-
-
-%% Example:
-%% positioning() :: #{
-%%   <<"ClockSync">> => integer(),
-%%   <<"Gnss">> => integer(),
-%%   <<"Stream">> => integer()
-%% }
--type positioning() :: #{binary() => any()}.
-
-
-%% Example:
-%% cdma_local_id() :: #{
-%%   <<"CdmaChannel">> => integer(),
-%%   <<"PnOffset">> => integer()
-%% }
--type cdma_local_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% wcdma_nmr_obj() :: #{
-%%   <<"PathLoss">> => integer(),
-%%   <<"Psc">> => integer(),
-%%   <<"Rscp">> => integer(),
-%%   <<"Uarfcndl">> => integer(),
-%%   <<"UtranCid">> => integer()
-%% }
--type wcdma_nmr_obj() :: #{binary() => any()}.
-
-
-%% Example:
-%% gsm_nmr_obj() :: #{
-%%   <<"Bcch">> => integer(),
-%%   <<"Bsic">> => integer(),
-%%   <<"GlobalIdentity">> => global_identity(),
-%%   <<"RxLevel">> => integer()
-%% }
--type gsm_nmr_obj() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% lte_local_id() :: #{
-%%   <<"Earfcn">> => integer(),
-%%   <<"Pci">> => integer()
-%% }
--type lte_local_id() :: #{binary() => any()}.
-
-%% Example:
-%% associate_wireless_device_with_multicast_group_response() :: #{}
--type associate_wireless_device_with_multicast_group_response() :: #{}.
-
-%% Example:
-%% get_metric_configuration_request() :: #{}
--type get_metric_configuration_request() :: #{}.
-
-
-%% Example:
-%% get_wireless_gateway_task_response() :: #{
-%%   <<"LastUplinkReceivedAt">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TaskCreatedAt">> => string(),
-%%   <<"WirelessGatewayId">> => string(),
-%%   <<"WirelessGatewayTaskDefinitionId">> => string()
-%% }
--type get_wireless_gateway_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_aws_account_from_partner_account_request() :: #{
-%%   <<"PartnerType">> := list(any())
-%% }
--type disassociate_aws_account_from_partner_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_metrics_request() :: #{
-%%   <<"SummaryMetricQueries">> => list(summary_metric_query())
-%% }
--type get_metrics_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_wireless_device_request() :: #{}
--type delete_wireless_device_request() :: #{}.
-
-%% Example:
-%% delete_fuota_task_request() :: #{}
--type delete_fuota_task_request() :: #{}.
-
-
-%% Example:
-%% get_wireless_gateway_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_gateway(),
-%%   <<"Name">> => string(),
-%%   <<"ThingArn">> => string(),
-%%   <<"ThingName">> => string()
-%% }
--type get_wireless_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_wireless_gateway_firmware_information_response() :: #{
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_gateway_current_version()
-%% }
--type get_wireless_gateway_firmware_information_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_fuota_task_request() :: #{}
--type get_fuota_task_request() :: #{}.
-
-%% Example:
-%% update_wireless_device_import_task_response() :: #{}
--type update_wireless_device_import_task_response() :: #{}.
-
-
-%% Example:
-%% get_partner_account_response() :: #{
-%%   <<"AccountLinked">> => boolean(),
-%%   <<"Sidewalk">> => sidewalk_account_info_with_fingerprint()
-%% }
--type get_partner_account_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lo_ra_w_a_n_device() :: #{
-%%   <<"AbpV1_0_x">> => abp_v1_0_x(),
-%%   <<"AbpV1_1">> => abp_v1_1(),
-%%   <<"DevEui">> => string(),
-%%   <<"DeviceProfileId">> => string(),
-%%   <<"FPorts">> => f_ports(),
-%%   <<"OtaaV1_0_x">> => otaa_v1_0_x(),
-%%   <<"OtaaV1_1">> => otaa_v1_1(),
-%%   <<"ServiceProfileId">> => string()
-%% }
--type lo_ra_w_a_n_device() :: #{binary() => any()}.
-
-%% Example:
-%% delete_destination_response() :: #{}
--type delete_destination_response() :: #{}.
-
-
-%% Example:
-%% wi_fi_access_point() :: #{
-%%   <<"MacAddress">> => string(),
-%%   <<"Rss">> => integer()
-%% }
--type wi_fi_access_point() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_wireless_gateway_with_thing_request() :: #{
-%%   <<"ThingArn">> := string()
-%% }
--type associate_wireless_gateway_with_thing_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% gnss() :: #{
-%%   <<"AssistAltitude">> => float(),
-%%   <<"AssistPosition">> => list(float()),
-%%   <<"CaptureTime">> => float(),
-%%   <<"CaptureTimeAccuracy">> => float(),
-%%   <<"Payload">> => string(),
-%%   <<"Use2DSolver">> => boolean()
-%% }
--type gnss() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resource_event_configuration_request() :: #{
-%%   <<"ConnectionStatus">> => connection_status_event_configuration(),
-%%   <<"DeviceRegistrationState">> => device_registration_state_event_configuration(),
-%%   <<"IdentifierType">> := list(any()),
-%%   <<"Join">> => join_event_configuration(),
-%%   <<"MessageDeliveryStatus">> => message_delivery_status_event_configuration(),
-%%   <<"PartnerType">> => list(any()),
-%%   <<"Proximity">> => proximity_event_configuration()
-%% }
--type update_resource_event_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_device_profile_response() :: #{}
--type delete_device_profile_response() :: #{}.
-
-%% Example:
-%% get_log_levels_by_resource_types_request() :: #{}
--type get_log_levels_by_resource_types_request() :: #{}.
-
-
-%% Example:
-%% lo_ra_w_a_n_send_data_to_device() :: #{
-%%   <<"FPort">> => integer(),
-%%   <<"ParticipatingGateways">> => participating_gateways()
-%% }
--type lo_ra_w_a_n_send_data_to_device() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_aws_account_from_partner_account_response() :: #{}
--type disassociate_aws_account_from_partner_account_response() :: #{}.
-
-%% Example:
-%% sidewalk_create_device_profile() :: #{}
--type sidewalk_create_device_profile() :: #{}.
-
-%% Example:
-%% disassociate_wireless_gateway_from_certificate_response() :: #{}
--type disassociate_wireless_gateway_from_certificate_response() :: #{}.
-
-
-%% Example:
-%% create_fuota_task_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Descriptor">> => string(),
-%%   <<"FirmwareUpdateImage">> := string(),
-%%   <<"FirmwareUpdateRole">> := string(),
-%%   <<"FragmentIntervalMS">> => integer(),
-%%   <<"FragmentSizeBytes">> => integer(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_fuota_task(),
-%%   <<"Name">> => string(),
-%%   <<"RedundancyPercent">> => integer(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_fuota_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tdscdma_nmr_obj() :: #{
-%%   <<"CellParams">> => integer(),
-%%   <<"PathLoss">> => integer(),
-%%   <<"Rscp">> => integer(),
-%%   <<"Uarfcn">> => integer(),
-%%   <<"UtranCid">> => integer()
-%% }
--type tdscdma_nmr_obj() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_wireless_gateway_request() :: #{
-%%   <<"IdentifierType">> := list(any())
-%% }
--type get_wireless_gateway_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sidewalk_account_info_with_fingerprint() :: #{
-%%   <<"AmazonId">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"Fingerprint">> => string()
-%% }
--type sidewalk_account_info_with_fingerprint() :: #{binary() => any()}.
-
-%% Example:
-%% update_wireless_gateway_response() :: #{}
--type update_wireless_gateway_response() :: #{}.
-
-
-%% Example:
-%% tdscdma_obj() :: #{
-%%   <<"Lac">> => integer(),
-%%   <<"Mcc">> => integer(),
-%%   <<"Mnc">> => integer(),
-%%   <<"PathLoss">> => integer(),
-%%   <<"Rscp">> => integer(),
-%%   <<"TdscdmaLocalId">> => tdscdma_local_id(),
-%%   <<"TdscdmaNmr">> => list(tdscdma_nmr_obj()),
-%%   <<"TdscdmaTimingAdvance">> => integer(),
-%%   <<"UtranCid">> => integer()
-%% }
--type tdscdma_obj() :: #{binary() => any()}.
-
-
-%% Example:
-%% lo_ra_w_a_n_device_metadata() :: #{
-%%   <<"DataRate">> => integer(),
-%%   <<"DevEui">> => string(),
-%%   <<"FPort">> => integer(),
-%%   <<"Frequency">> => integer(),
-%%   <<"Gateways">> => list(lo_ra_w_a_n_gateway_metadata()),
-%%   <<"PublicGateways">> => list(lo_ra_w_a_n_public_gateway_metadata()),
-%%   <<"Timestamp">> => string()
-%% }
--type lo_ra_w_a_n_device_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_data_to_multicast_group_response() :: #{
-%%   <<"MessageId">> => string()
-%% }
--type send_data_to_multicast_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_multicast_group_from_fuota_task_request() :: #{}
--type disassociate_multicast_group_from_fuota_task_request() :: #{}.
-
-
-%% Example:
-%% list_devices_for_wireless_device_import_task_request() :: #{
-%%   <<"Id">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_devices_for_wireless_device_import_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_wireless_device_response() :: #{}
--type update_wireless_device_response() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_destinations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_destinations_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_wireless_device_from_thing_response() :: #{}
--type disassociate_wireless_device_from_thing_response() :: #{}.
-
 
 %% Example:
-%% sidewalk_create_wireless_device() :: #{
-%%   <<"DeviceProfileId">> => string(),
-%%   <<"Positioning">> => sidewalk_positioning(),
-%%   <<"SidewalkManufacturingSn">> => string()
+%% lo_ra_w_a_n_fuota_task_get_info() :: #{
+%%   <<"RfRegion">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type sidewalk_create_wireless_device() :: #{binary() => any()}.
+-type lo_ra_w_a_n_fuota_task_get_info() :: #{binary() => any()}.
 
-%% Example:
-%% delete_wireless_gateway_task_definition_response() :: #{}
--type delete_wireless_gateway_task_definition_response() :: #{}.
-
-%% Example:
-%% delete_wireless_gateway_task_definition_request() :: #{}
--type delete_wireless_gateway_task_definition_request() :: #{}.
-
-
-%% Example:
-%% update_event_configuration_by_resource_types_request() :: #{
-%%   <<"ConnectionStatus">> => connection_status_resource_type_event_configuration(),
-%%   <<"DeviceRegistrationState">> => device_registration_state_resource_type_event_configuration(),
-%%   <<"Join">> => join_resource_type_event_configuration(),
-%%   <<"MessageDeliveryStatus">> => message_delivery_status_resource_type_event_configuration(),
-%%   <<"Proximity">> => proximity_resource_type_event_configuration()
-%% }
--type update_event_configuration_by_resource_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_event_configuration_response() :: #{
-%%   <<"ConnectionStatus">> => connection_status_event_configuration(),
-%%   <<"DeviceRegistrationState">> => device_registration_state_event_configuration(),
-%%   <<"Join">> => join_event_configuration(),
-%%   <<"MessageDeliveryStatus">> => message_delivery_status_event_configuration(),
-%%   <<"Proximity">> => proximity_event_configuration()
-%% }
--type get_resource_event_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_data_to_wireless_device_response() :: #{
-%%   <<"MessageId">> => string()
-%% }
--type send_data_to_wireless_device_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_status_event_configuration() :: #{
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_connection_status_event_notification_configurations(),
-%%   <<"WirelessGatewayIdEventTopic">> => list(any())
-%% }
--type connection_status_event_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_aws_account_with_partner_account_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Sidewalk">> => sidewalk_account_info()
-%% }
--type associate_aws_account_with_partner_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_destination_request() :: #{}
--type delete_destination_request() :: #{}.
-
-
-%% Example:
-%% event_configuration_item() :: #{
-%%   <<"Events">> => event_notification_item_configurations(),
-%%   <<"Identifier">> => string(),
-%%   <<"IdentifierType">> => list(any()),
-%%   <<"PartnerType">> => list(any())
-%% }
--type event_configuration_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_abp_v1_1() :: #{
-%%   <<"FCntStart">> => integer()
-%% }
--type update_abp_v1_1() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_profiles_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_service_profiles_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_wireless_gateway_from_thing_request() :: #{}
--type disassociate_wireless_gateway_from_thing_request() :: #{}.
-
-
-%% Example:
-%% imported_wireless_device() :: #{
-%%   <<"Sidewalk">> => imported_sidewalk_device()
-%% }
--type imported_wireless_device() :: #{binary() => any()}.
-
-%% Example:
-%% get_wireless_gateway_task_request() :: #{}
--type get_wireless_gateway_task_request() :: #{}.
-
-
-%% Example:
-%% wireless_gateway_event_log_option() :: #{
-%%   <<"Event">> => list(any()),
-%%   <<"LogLevel">> => list(any())
-%% }
--type wireless_gateway_event_log_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_wireless_gateway_task_request() :: #{
-%%   <<"WirelessGatewayTaskDefinitionId">> := string()
-%% }
--type create_wireless_gateway_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% semtech_gnss_configuration() :: #{
-%%   <<"Fec">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type semtech_gnss_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_wireless_device_from_thing_request() :: #{}
--type disassociate_wireless_device_from_thing_request() :: #{}.
-
-
-%% Example:
-%% list_multicast_groups_by_fuota_task_response() :: #{
-%%   <<"MulticastGroupList">> => list(multicast_group_by_fuota_task()),
-%%   <<"NextToken">> => string()
-%% }
--type list_multicast_groups_by_fuota_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_log_level_response() :: #{}
--type put_resource_log_level_response() :: #{}.
-
-
-%% Example:
-%% get_service_endpoint_request() :: #{
-%%   <<"ServiceType">> => list(any())
-%% }
--type get_service_endpoint_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_profiles_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceProfileList">> => list(service_profile())
-%% }
--type list_service_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_wireless_device_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DestinationName">> := string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_device(),
-%%   <<"Name">> => string(),
-%%   <<"Positioning">> => list(any()),
-%%   <<"Sidewalk">> => sidewalk_create_wireless_device(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Type">> := list(any())
-%% }
--type create_wireless_device_request() :: #{binary() => any()}.
-
 
 %% Example:
-%% lo_ra_w_a_n_join_event_notification_configurations() :: #{
-%%   <<"DevEuiEventTopic">> => list(any())
+%% lo_ra_w_a_n_gateway() :: #{
+%%   <<"Beaconing">> => beaconing(),
+%%   <<"GatewayEui">> => string(),
+%%   <<"JoinEuiFilters">> => list(list(string())()),
+%%   <<"MaxEirp">> => float(),
+%%   <<"NetIdFilters">> => list(string()),
+%%   <<"RfRegion">> => string(),
+%%   <<"SubBands">> => list(integer())
 %% }
--type lo_ra_w_a_n_join_event_notification_configurations() :: #{binary() => any()}.
+-type lo_ra_w_a_n_gateway() :: #{binary() => any()}.
 
 
 %% Example:
-%% wireless_device_statistics() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"DestinationName">> => string(),
-%%   <<"FuotaDeviceStatus">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"LastUplinkReceivedAt">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_list_device(),
-%%   <<"McGroupId">> => integer(),
-%%   <<"MulticastDeviceStatus">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Positioning">> => list(any()),
-%%   <<"Sidewalk">> => sidewalk_list_device(),
-%%   <<"Type">> => list(any())
+%% lo_ra_w_a_n_gateway_current_version() :: #{
+%%   <<"CurrentVersion">> => lo_ra_w_a_n_gateway_version()
 %% }
--type wireless_device_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_devices_for_wireless_device_import_task_response() :: #{
-%%   <<"DestinationName">> => string(),
-%%   <<"ImportedWirelessDeviceList">> => list(imported_wireless_device()),
-%%   <<"NextToken">> => string(),
-%%   <<"Positioning">> => list(any()),
-%%   <<"Sidewalk">> => sidewalk_list_devices_for_import_info()
-%% }
--type list_devices_for_wireless_device_import_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lo_ra_w_a_n_connection_status_resource_type_event_configuration() :: #{
-%%   <<"WirelessGatewayEventTopic">> => list(any())
-%% }
--type lo_ra_w_a_n_connection_status_resource_type_event_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_log_level_request() :: #{
-%%   <<"LogLevel">> := list(any()),
-%%   <<"ResourceType">> := string()
-%% }
--type put_resource_log_level_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tdscdma_local_id() :: #{
-%%   <<"CellParams">> => integer(),
-%%   <<"Uarfcn">> => integer()
-%% }
--type tdscdma_local_id() :: #{binary() => any()}.
-
-
-%% Example:
-%% dak_certificate_metadata() :: #{
-%%   <<"ApId">> => string(),
-%%   <<"CertificateId">> => string(),
-%%   <<"DeviceTypeId">> => string(),
-%%   <<"FactorySupport">> => boolean(),
-%%   <<"MaxAllowedSignature">> => integer()
-%% }
--type dak_certificate_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_configurations_response() :: #{
-%%   <<"EventConfigurationsList">> => list(event_configuration_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_metric_configuration_response() :: #{}
--type update_metric_configuration_response() :: #{}.
-
-
-%% Example:
-%% create_service_profile_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_service_profile(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_service_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% fuota_task_log_option() :: #{
-%%   <<"Events">> => list(fuota_task_event_log_option()),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type fuota_task_log_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% wireless_gateway_log_option() :: #{
-%%   <<"Events">> => list(wireless_gateway_event_log_option()),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type wireless_gateway_log_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_destination_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Expression">> => string(),
-%%   <<"ExpressionType">> => list(any()),
-%%   <<"RoleArn">> => string()
-%% }
--type update_destination_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% position_configuration_item() :: #{
-%%   <<"Destination">> => string(),
-%%   <<"ResourceIdentifier">> => string(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Solvers">> => position_solver_details()
-%% }
--type position_configuration_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_device_profile_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_device_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_partner_account_request() :: #{
-%%   <<"PartnerType">> := list(any()),
-%%   <<"Sidewalk">> := sidewalk_update_account()
-%% }
--type update_partner_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_multicast_group_session_request() :: #{
-%%   <<"LoRaWAN">> := lo_ra_w_a_n_multicast_session()
-%% }
--type start_multicast_group_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_wireless_gateway_task_definitions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TaskDefinitions">> => list(update_wireless_gateway_task_entry())
-%% }
--type list_wireless_gateway_task_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_metrics_response() :: #{
-%%   <<"SummaryMetricQueryResults">> => list(summary_metric_query_result())
-%% }
--type get_metrics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_notification_item_configurations() :: #{
-%%   <<"ConnectionStatus">> => connection_status_event_configuration(),
-%%   <<"DeviceRegistrationState">> => device_registration_state_event_configuration(),
-%%   <<"Join">> => join_event_configuration(),
-%%   <<"MessageDeliveryStatus">> => message_delivery_status_event_configuration(),
-%%   <<"Proximity">> => proximity_event_configuration()
-%% }
--type event_notification_item_configurations() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_wireless_device_from_fuota_task_request() :: #{}
--type disassociate_wireless_device_from_fuota_task_request() :: #{}.
-
-%% Example:
-%% get_multicast_group_session_request() :: #{}
--type get_multicast_group_session_request() :: #{}.
+-type lo_ra_w_a_n_gateway_current_version() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2082,107 +1991,12 @@
 
 
 %% Example:
-%% list_wireless_device_import_tasks_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% lo_ra_w_a_n_gateway_version() :: #{
+%%   <<"Model">> => string(),
+%%   <<"PackageVersion">> => string(),
+%%   <<"Station">> => string()
 %% }
--type list_wireless_device_import_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_multicast_group_session_request() :: #{}
--type cancel_multicast_group_session_request() :: #{}.
-
-%% Example:
-%% test_wireless_device_request() :: #{}
--type test_wireless_device_request() :: #{}.
-
-%% Example:
-%% get_wireless_gateway_statistics_request() :: #{}
--type get_wireless_gateway_statistics_request() :: #{}.
-
-
-%% Example:
-%% fuota_task() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type fuota_task() :: #{binary() => any()}.
-
-%% Example:
-%% get_wireless_device_statistics_request() :: #{}
--type get_wireless_device_statistics_request() :: #{}.
-
-
-%% Example:
-%% message_delivery_status_resource_type_event_configuration() :: #{
-%%   <<"Sidewalk">> => sidewalk_resource_type_event_configuration()
-%% }
--type message_delivery_status_resource_type_event_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% lo_ra_w_a_n_start_fuota_task() :: #{
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type lo_ra_w_a_n_start_fuota_task() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_wireless_gateway_task_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_wireless_gateway_task_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_log_levels_by_resource_types_request() :: #{
-%%   <<"DefaultLogLevel">> => list(any()),
-%%   <<"FuotaTaskLogOptions">> => list(fuota_task_log_option()),
-%%   <<"WirelessDeviceLogOptions">> => list(wireless_device_log_option()),
-%%   <<"WirelessGatewayLogOptions">> => list(wireless_gateway_log_option())
-%% }
--type update_log_levels_by_resource_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sidewalk_positioning() :: #{
-%%   <<"DestinationName">> => string()
-%% }
--type sidewalk_positioning() :: #{binary() => any()}.
-
-%% Example:
-%% reset_all_resource_log_levels_request() :: #{}
--type reset_all_resource_log_levels_request() :: #{}.
-
-
-%% Example:
-%% update_position_request() :: #{
-%%   <<"Position">> := list(float()),
-%%   <<"ResourceType">> := list(any())
-%% }
--type update_position_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_multicast_group_session_response() :: #{}
--type cancel_multicast_group_session_response() :: #{}.
-
-
-%% Example:
-%% create_wireless_gateway_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_wireless_gateway_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_position_configuration_response() :: #{
-%%   <<"Destination">> => string(),
-%%   <<"Solvers">> => position_solver_details()
-%% }
--type get_position_configuration_response() :: #{binary() => any()}.
+-type lo_ra_w_a_n_gateway_version() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2215,26 +2029,932 @@
 
 
 %% Example:
-%% list_network_analyzer_configurations_response() :: #{
-%%   <<"NetworkAnalyzerConfigurationList">> => list(network_analyzer_configurations()),
-%%   <<"NextToken">> => string()
+%% lo_ra_w_a_n_join_event_notification_configurations() :: #{
+%%   <<"DevEuiEventTopic">> => list(any())
 %% }
--type list_network_analyzer_configurations_response() :: #{binary() => any()}.
+-type lo_ra_w_a_n_join_event_notification_configurations() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_network_analyzer_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% lo_ra_w_a_n_join_resource_type_event_configuration() :: #{
+%%   <<"WirelessDeviceEventTopic">> => list(any())
 %% }
--type list_network_analyzer_configurations_request() :: #{binary() => any()}.
+-type lo_ra_w_a_n_join_resource_type_event_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
+%% lo_ra_w_a_n_list_device() :: #{
+%%   <<"DevEui">> => string()
+%% }
+-type lo_ra_w_a_n_list_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_multicast() :: #{
+%%   <<"DefaultSessionParameters">> => default_session_parameters_multicast(),
+%%   <<"DlClass">> => list(any()),
+%%   <<"ParticipatingGateways">> => participating_gateways_multicast(),
+%%   <<"RfRegion">> => list(any())
+%% }
+-type lo_ra_w_a_n_multicast() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_multicast_get() :: #{
+%%   <<"DefaultSessionParameters">> => default_session_parameters_multicast(),
+%%   <<"DlClass">> => list(any()),
+%%   <<"NumberOfDevicesInGroup">> => integer(),
+%%   <<"NumberOfDevicesRequested">> => integer(),
+%%   <<"ParticipatingGateways">> => participating_gateways_multicast(),
+%%   <<"RfRegion">> => list(any())
+%% }
+-type lo_ra_w_a_n_multicast_get() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_multicast_metadata() :: #{
+%%   <<"FPort">> => integer()
+%% }
+-type lo_ra_w_a_n_multicast_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_multicast_session() :: #{
+%%   <<"DlDr">> => integer(),
+%%   <<"DlFreq">> => integer(),
+%%   <<"PingSlotPeriod">> => integer(),
+%%   <<"SessionStartTime">> => non_neg_integer(),
+%%   <<"SessionTimeout">> => integer()
+%% }
+-type lo_ra_w_a_n_multicast_session() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_public_gateway_metadata() :: #{
+%%   <<"DlAllowed">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"ProviderNetId">> => string(),
+%%   <<"RfRegion">> => string(),
+%%   <<"Rssi">> => float(),
+%%   <<"Snr">> => float()
+%% }
+-type lo_ra_w_a_n_public_gateway_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_send_data_to_device() :: #{
+%%   <<"FPort">> => integer(),
+%%   <<"ParticipatingGateways">> => participating_gateways()
+%% }
+-type lo_ra_w_a_n_send_data_to_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_service_profile() :: #{
+%%   <<"AddGwMetadata">> => boolean(),
+%%   <<"DrMax">> => integer(),
+%%   <<"DrMin">> => integer(),
+%%   <<"NbTransMax">> => integer(),
+%%   <<"NbTransMin">> => integer(),
+%%   <<"PrAllowed">> => boolean(),
+%%   <<"RaAllowed">> => boolean(),
+%%   <<"TxPowerIndexMax">> => integer(),
+%%   <<"TxPowerIndexMin">> => integer()
+%% }
+-type lo_ra_w_a_n_service_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_start_fuota_task() :: #{
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type lo_ra_w_a_n_start_fuota_task() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_update_device() :: #{
+%%   <<"AbpV1_0_x">> => update_abp_v1_0_x(),
+%%   <<"AbpV1_1">> => update_abp_v1_1(),
+%%   <<"DeviceProfileId">> => string(),
+%%   <<"FPorts">> => update_f_ports(),
+%%   <<"ServiceProfileId">> => string()
+%% }
+-type lo_ra_w_a_n_update_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_update_gateway_task_create() :: #{
+%%   <<"CurrentVersion">> => lo_ra_w_a_n_gateway_version(),
+%%   <<"SigKeyCrc">> => float(),
+%%   <<"UpdateSignature">> => string(),
+%%   <<"UpdateVersion">> => lo_ra_w_a_n_gateway_version()
+%% }
+-type lo_ra_w_a_n_update_gateway_task_create() :: #{binary() => any()}.
+
+
+%% Example:
+%% lo_ra_w_a_n_update_gateway_task_entry() :: #{
+%%   <<"CurrentVersion">> => lo_ra_w_a_n_gateway_version(),
+%%   <<"UpdateVersion">> => lo_ra_w_a_n_gateway_version()
+%% }
+-type lo_ra_w_a_n_update_gateway_task_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% lte_local_id() :: #{
+%%   <<"Earfcn">> => integer(),
+%%   <<"Pci">> => integer()
+%% }
+-type lte_local_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% lte_nmr_obj() :: #{
+%%   <<"Earfcn">> => integer(),
+%%   <<"EutranCid">> => integer(),
+%%   <<"Pci">> => integer(),
+%%   <<"Rsrp">> => integer(),
+%%   <<"Rsrq">> => float()
+%% }
+-type lte_nmr_obj() :: #{binary() => any()}.
+
+
+%% Example:
+%% lte_obj() :: #{
+%%   <<"EutranCid">> => integer(),
+%%   <<"LteLocalId">> => lte_local_id(),
+%%   <<"LteNmr">> => list(lte_nmr_obj()),
+%%   <<"LteTimingAdvance">> => integer(),
+%%   <<"Mcc">> => integer(),
+%%   <<"Mnc">> => integer(),
+%%   <<"NrCapable">> => boolean(),
+%%   <<"Rsrp">> => integer(),
+%%   <<"Rsrq">> => float(),
+%%   <<"Tac">> => integer()
+%% }
+-type lte_obj() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_delivery_status_event_configuration() :: #{
+%%   <<"Sidewalk">> => sidewalk_event_notification_configurations(),
+%%   <<"WirelessDeviceIdEventTopic">> => list(any())
+%% }
+-type message_delivery_status_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_delivery_status_resource_type_event_configuration() :: #{
+%%   <<"Sidewalk">> => sidewalk_resource_type_event_configuration()
+%% }
+-type message_delivery_status_resource_type_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_query_value() :: #{
+%%   <<"Avg">> => float(),
+%%   <<"Max">> => float(),
+%%   <<"Min">> => float(),
+%%   <<"P90">> => float(),
+%%   <<"Std">> => float(),
+%%   <<"Sum">> => float()
+%% }
+-type metric_query_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_group() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type multicast_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_group_by_fuota_task() :: #{
+%%   <<"Id">> => string()
+%% }
+-type multicast_group_by_fuota_task() :: #{binary() => any()}.
+
+
+%% Example:
+%% multicast_wireless_metadata() :: #{
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_multicast_metadata()
+%% }
+-type multicast_wireless_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_analyzer_configurations() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type network_analyzer_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% otaa_v1_0_x() :: #{
+%%   <<"AppEui">> => string(),
+%%   <<"AppKey">> => string(),
+%%   <<"GenAppKey">> => string(),
+%%   <<"JoinEui">> => string()
+%% }
+-type otaa_v1_0_x() :: #{binary() => any()}.
+
+
+%% Example:
+%% otaa_v1_1() :: #{
+%%   <<"AppKey">> => string(),
+%%   <<"JoinEui">> => string(),
+%%   <<"NwkKey">> => string()
+%% }
+-type otaa_v1_1() :: #{binary() => any()}.
+
+
+%% Example:
+%% participating_gateways() :: #{
+%%   <<"DownlinkMode">> => list(any()),
+%%   <<"GatewayList">> => list(gateway_list_item()),
+%%   <<"TransmissionInterval">> => integer()
+%% }
+-type participating_gateways() :: #{binary() => any()}.
+
+
+%% Example:
+%% participating_gateways_multicast() :: #{
+%%   <<"GatewayList">> => list(string()),
+%%   <<"TransmissionInterval">> => integer()
+%% }
+-type participating_gateways_multicast() :: #{binary() => any()}.
+
+
+%% Example:
+%% position_configuration_item() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Solvers">> => position_solver_details()
+%% }
+-type position_configuration_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% position_solver_configurations() :: #{
+%%   <<"SemtechGnss">> => semtech_gnss_configuration()
+%% }
+-type position_solver_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% position_solver_details() :: #{
+%%   <<"SemtechGnss">> => semtech_gnss_detail()
+%% }
+-type position_solver_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% positioning() :: #{
+%%   <<"ClockSync">> => integer(),
+%%   <<"Gnss">> => integer(),
+%%   <<"Stream">> => integer()
+%% }
+-type positioning() :: #{binary() => any()}.
+
+
+%% Example:
+%% proximity_event_configuration() :: #{
+%%   <<"Sidewalk">> => sidewalk_event_notification_configurations(),
+%%   <<"WirelessDeviceIdEventTopic">> => list(any())
+%% }
+-type proximity_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% proximity_resource_type_event_configuration() :: #{
+%%   <<"Sidewalk">> => sidewalk_resource_type_event_configuration()
+%% }
+-type proximity_resource_type_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_position_configuration_request() :: #{
+%%   <<"Destination">> => string(),
+%%   <<"ResourceType">> := list(any()),
+%%   <<"Solvers">> => position_solver_configurations()
+%% }
+-type put_position_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_position_configuration_response() :: #{}
+-type put_position_configuration_response() :: #{}.
+
+
+%% Example:
+%% put_resource_log_level_request() :: #{
+%%   <<"LogLevel">> := list(any()),
+%%   <<"ResourceType">> := string()
+%% }
+-type put_resource_log_level_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_log_level_response() :: #{}
+-type put_resource_log_level_response() :: #{}.
+
+%% Example:
+%% reset_all_resource_log_levels_request() :: #{}
+-type reset_all_resource_log_levels_request() :: #{}.
+
+%% Example:
+%% reset_all_resource_log_levels_response() :: #{}
+-type reset_all_resource_log_levels_response() :: #{}.
+
+
+%% Example:
+%% reset_resource_log_level_request() :: #{
+%%   <<"ResourceType">> := string()
+%% }
+-type reset_resource_log_level_request() :: #{binary() => any()}.
+
+%% Example:
+%% reset_resource_log_level_response() :: #{}
+-type reset_resource_log_level_response() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% semtech_gnss_configuration() :: #{
+%%   <<"Fec">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type semtech_gnss_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% semtech_gnss_detail() :: #{
+%%   <<"Fec">> => list(any()),
+%%   <<"Provider">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type semtech_gnss_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_data_to_multicast_group_request() :: #{
+%%   <<"PayloadData">> := string(),
+%%   <<"WirelessMetadata">> := multicast_wireless_metadata()
+%% }
+-type send_data_to_multicast_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_data_to_multicast_group_response() :: #{
+%%   <<"MessageId">> => string()
+%% }
+-type send_data_to_multicast_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_data_to_wireless_device_request() :: #{
+%%   <<"PayloadData">> := string(),
+%%   <<"TransmitMode">> := integer(),
+%%   <<"WirelessMetadata">> => wireless_metadata()
+%% }
+-type send_data_to_wireless_device_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_data_to_wireless_device_response() :: #{
+%%   <<"MessageId">> => string()
+%% }
+-type send_data_to_wireless_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_profile() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type service_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_keys_abp_v1_0_x() :: #{
+%%   <<"AppSKey">> => string(),
+%%   <<"NwkSKey">> => string()
+%% }
+-type session_keys_abp_v1_0_x() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_keys_abp_v1_1() :: #{
+%%   <<"AppSKey">> => string(),
+%%   <<"FNwkSIntKey">> => string(),
+%%   <<"NwkSEncKey">> => string(),
+%%   <<"SNwkSIntKey">> => string()
+%% }
+-type session_keys_abp_v1_1() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_account_info() :: #{
+%%   <<"AmazonId">> => string(),
+%%   <<"AppServerPrivateKey">> => string()
+%% }
+-type sidewalk_account_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_account_info_with_fingerprint() :: #{
+%%   <<"AmazonId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"Fingerprint">> => string()
+%% }
+-type sidewalk_account_info_with_fingerprint() :: #{binary() => any()}.
+
+%% Example:
+%% sidewalk_create_device_profile() :: #{}
+-type sidewalk_create_device_profile() :: #{}.
+
+
+%% Example:
+%% sidewalk_create_wireless_device() :: #{
+%%   <<"DeviceProfileId">> => string(),
+%%   <<"Positioning">> => sidewalk_positioning(),
+%%   <<"SidewalkManufacturingSn">> => string()
+%% }
+-type sidewalk_create_wireless_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_device() :: #{
+%%   <<"AmazonId">> => string(),
+%%   <<"CertificateId">> => string(),
+%%   <<"DeviceCertificates">> => list(certificate_list()),
+%%   <<"DeviceProfileId">> => string(),
+%%   <<"Positioning">> => sidewalk_positioning(),
+%%   <<"PrivateKeys">> => list(certificate_list()),
+%%   <<"SidewalkId">> => string(),
+%%   <<"SidewalkManufacturingSn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type sidewalk_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_device_metadata() :: #{
+%%   <<"BatteryLevel">> => list(any()),
+%%   <<"DeviceState">> => list(any()),
+%%   <<"Event">> => list(any()),
+%%   <<"Rssi">> => integer()
+%% }
+-type sidewalk_device_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_event_notification_configurations() :: #{
+%%   <<"AmazonIdEventTopic">> => list(any())
+%% }
+-type sidewalk_event_notification_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_get_device_profile() :: #{
+%%   <<"ApplicationServerPublicKey">> => string(),
+%%   <<"DakCertificateMetadata">> => list(dak_certificate_metadata()),
+%%   <<"QualificationStatus">> => boolean()
+%% }
+-type sidewalk_get_device_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_get_start_import_info() :: #{
+%%   <<"DeviceCreationFileList">> => list(string()),
+%%   <<"Positioning">> => sidewalk_positioning(),
+%%   <<"Role">> => string()
+%% }
+-type sidewalk_get_start_import_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_list_device() :: #{
+%%   <<"AmazonId">> => string(),
+%%   <<"DeviceCertificates">> => list(certificate_list()),
+%%   <<"DeviceProfileId">> => string(),
+%%   <<"Positioning">> => sidewalk_positioning(),
+%%   <<"SidewalkId">> => string(),
+%%   <<"SidewalkManufacturingSn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type sidewalk_list_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_list_devices_for_import_info() :: #{
+%%   <<"Positioning">> => sidewalk_positioning()
+%% }
+-type sidewalk_list_devices_for_import_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_positioning() :: #{
+%%   <<"DestinationName">> => string()
+%% }
+-type sidewalk_positioning() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_resource_type_event_configuration() :: #{
+%%   <<"WirelessDeviceEventTopic">> => list(any())
+%% }
+-type sidewalk_resource_type_event_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_send_data_to_device() :: #{
+%%   <<"AckModeRetryDurationSecs">> => integer(),
+%%   <<"MessageType">> => list(any()),
+%%   <<"Seq">> => integer()
+%% }
+-type sidewalk_send_data_to_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_single_start_import_info() :: #{
+%%   <<"Positioning">> => sidewalk_positioning(),
+%%   <<"SidewalkManufacturingSn">> => string()
+%% }
+-type sidewalk_single_start_import_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_start_import_info() :: #{
+%%   <<"DeviceCreationFile">> => string(),
+%%   <<"Positioning">> => sidewalk_positioning(),
+%%   <<"Role">> => string()
+%% }
+-type sidewalk_start_import_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_update_account() :: #{
+%%   <<"AppServerPrivateKey">> => string()
+%% }
+-type sidewalk_update_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_update_import_info() :: #{
+%%   <<"DeviceCreationFile">> => string()
+%% }
+-type sidewalk_update_import_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% sidewalk_update_wireless_device() :: #{
+%%   <<"Positioning">> => sidewalk_positioning()
+%% }
+-type sidewalk_update_wireless_device() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_bulk_associate_wireless_device_with_multicast_group_request() :: #{
+%%   <<"QueryString">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_bulk_associate_wireless_device_with_multicast_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_bulk_associate_wireless_device_with_multicast_group_response() :: #{}
+-type start_bulk_associate_wireless_device_with_multicast_group_response() :: #{}.
+
+
+%% Example:
+%% start_bulk_disassociate_wireless_device_from_multicast_group_request() :: #{
+%%   <<"QueryString">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_bulk_disassociate_wireless_device_from_multicast_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_bulk_disassociate_wireless_device_from_multicast_group_response() :: #{}
+-type start_bulk_disassociate_wireless_device_from_multicast_group_response() :: #{}.
+
+
+%% Example:
+%% start_fuota_task_request() :: #{
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_start_fuota_task()
+%% }
+-type start_fuota_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_fuota_task_response() :: #{}
+-type start_fuota_task_response() :: #{}.
+
+
+%% Example:
+%% start_multicast_group_session_request() :: #{
+%%   <<"LoRaWAN">> := lo_ra_w_a_n_multicast_session()
+%% }
+-type start_multicast_group_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_multicast_group_session_response() :: #{}
+-type start_multicast_group_session_response() :: #{}.
+
+
+%% Example:
+%% start_single_wireless_device_import_task_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DestinationName">> := string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"Positioning">> => list(any()),
+%%   <<"Sidewalk">> := sidewalk_single_start_import_info(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_single_wireless_device_import_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_single_wireless_device_import_task_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type start_single_wireless_device_import_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_wireless_device_import_task_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DestinationName">> := string(),
+%%   <<"Positioning">> => list(any()),
+%%   <<"Sidewalk">> := sidewalk_start_import_info(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type start_wireless_device_import_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_wireless_device_import_task_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type start_wireless_device_import_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% summary_metric_configuration() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type summary_metric_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% summary_metric_query() :: #{
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"MetricName">> => list(any()),
+%%   <<"QueryId">> => string(),
+%%   <<"StartTimestamp">> => non_neg_integer()
+%% }
+-type summary_metric_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% summary_metric_query_result() :: #{
+%%   <<"AggregationPeriod">> => list(any()),
+%%   <<"Dimensions">> => list(dimension()),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"Error">> => string(),
+%%   <<"MetricName">> => list(any()),
+%%   <<"QueryId">> => string(),
+%%   <<"QueryStatus">> => list(any()),
+%%   <<"StartTimestamp">> => non_neg_integer(),
+%%   <<"Timestamps">> => list(non_neg_integer()),
+%%   <<"Unit">> => string(),
+%%   <<"Values">> => list(metric_query_value())
+%% }
+-type summary_metric_query_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% tdscdma_local_id() :: #{
+%%   <<"CellParams">> => integer(),
+%%   <<"Uarfcn">> => integer()
+%% }
+-type tdscdma_local_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% tdscdma_nmr_obj() :: #{
+%%   <<"CellParams">> => integer(),
+%%   <<"PathLoss">> => integer(),
+%%   <<"Rscp">> => integer(),
+%%   <<"Uarfcn">> => integer(),
+%%   <<"UtranCid">> => integer()
+%% }
+-type tdscdma_nmr_obj() :: #{binary() => any()}.
+
+
+%% Example:
+%% tdscdma_obj() :: #{
+%%   <<"Lac">> => integer(),
+%%   <<"Mcc">> => integer(),
+%%   <<"Mnc">> => integer(),
+%%   <<"PathLoss">> => integer(),
+%%   <<"Rscp">> => integer(),
+%%   <<"TdscdmaLocalId">> => tdscdma_local_id(),
+%%   <<"TdscdmaNmr">> => list(tdscdma_nmr_obj()),
+%%   <<"TdscdmaTimingAdvance">> => integer(),
+%%   <<"UtranCid">> => integer()
+%% }
+-type tdscdma_obj() :: #{binary() => any()}.
+
+%% Example:
+%% test_wireless_device_request() :: #{}
+-type test_wireless_device_request() :: #{}.
+
+
+%% Example:
+%% test_wireless_device_response() :: #{
+%%   <<"Result">> => string()
+%% }
+-type test_wireless_device_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% trace_content() :: #{
+%%   <<"LogLevel">> => list(any()),
+%%   <<"MulticastFrameInfo">> => list(any()),
+%%   <<"WirelessDeviceFrameInfo">> => list(any())
+%% }
+-type trace_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_abp_v1_0_x() :: #{
+%%   <<"FCntStart">> => integer()
+%% }
+-type update_abp_v1_0_x() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_abp_v1_1() :: #{
+%%   <<"FCntStart">> => integer()
+%% }
+-type update_abp_v1_1() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_destination_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Expression">> => string(),
+%%   <<"ExpressionType">> => list(any()),
+%%   <<"RoleArn">> => string()
+%% }
+-type update_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_destination_response() :: #{}
+-type update_destination_response() :: #{}.
+
+
+%% Example:
+%% update_event_configuration_by_resource_types_request() :: #{
+%%   <<"ConnectionStatus">> => connection_status_resource_type_event_configuration(),
+%%   <<"DeviceRegistrationState">> => device_registration_state_resource_type_event_configuration(),
+%%   <<"Join">> => join_resource_type_event_configuration(),
+%%   <<"MessageDeliveryStatus">> => message_delivery_status_resource_type_event_configuration(),
+%%   <<"Proximity">> => proximity_resource_type_event_configuration()
+%% }
+-type update_event_configuration_by_resource_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_event_configuration_by_resource_types_response() :: #{}
+-type update_event_configuration_by_resource_types_response() :: #{}.
+
+
+%% Example:
+%% update_f_ports() :: #{
+%%   <<"Applications">> => list(application_config()),
+%%   <<"Positioning">> => positioning()
+%% }
+-type update_f_ports() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_fuota_task_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Descriptor">> => string(),
+%%   <<"FirmwareUpdateImage">> => string(),
+%%   <<"FirmwareUpdateRole">> => string(),
+%%   <<"FragmentIntervalMS">> => integer(),
+%%   <<"FragmentSizeBytes">> => integer(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_fuota_task(),
+%%   <<"Name">> => string(),
+%%   <<"RedundancyPercent">> => integer()
+%% }
+-type update_fuota_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_fuota_task_response() :: #{}
+-type update_fuota_task_response() :: #{}.
+
+
+%% Example:
+%% update_log_levels_by_resource_types_request() :: #{
+%%   <<"DefaultLogLevel">> => list(any()),
+%%   <<"FuotaTaskLogOptions">> => list(fuota_task_log_option()),
+%%   <<"WirelessDeviceLogOptions">> => list(wireless_device_log_option()),
+%%   <<"WirelessGatewayLogOptions">> => list(wireless_gateway_log_option())
+%% }
+-type update_log_levels_by_resource_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_log_levels_by_resource_types_response() :: #{}
+-type update_log_levels_by_resource_types_response() :: #{}.
+
+
+%% Example:
+%% update_metric_configuration_request() :: #{
+%%   <<"SummaryMetric">> => summary_metric_configuration()
+%% }
+-type update_metric_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_metric_configuration_response() :: #{}
+-type update_metric_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_multicast_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_multicast(),
+%%   <<"Name">> => string()
+%% }
+-type update_multicast_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_multicast_group_response() :: #{}
+-type update_multicast_group_response() :: #{}.
 
 
 %% Example:
@@ -2250,147 +2970,177 @@
 %% }
 -type update_network_analyzer_configuration_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_network_analyzer_configuration_response() :: #{}
+-type update_network_analyzer_configuration_response() :: #{}.
+
 
 %% Example:
-%% start_single_wireless_device_import_task_response() :: #{
+%% update_partner_account_request() :: #{
+%%   <<"PartnerType">> := list(any()),
+%%   <<"Sidewalk">> := sidewalk_update_account()
+%% }
+-type update_partner_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_partner_account_response() :: #{}
+-type update_partner_account_response() :: #{}.
+
+
+%% Example:
+%% update_position_request() :: #{
+%%   <<"Position">> := list(float()),
+%%   <<"ResourceType">> := list(any())
+%% }
+-type update_position_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_position_response() :: #{}
+-type update_position_response() :: #{}.
+
+
+%% Example:
+%% update_resource_event_configuration_request() :: #{
+%%   <<"ConnectionStatus">> => connection_status_event_configuration(),
+%%   <<"DeviceRegistrationState">> => device_registration_state_event_configuration(),
+%%   <<"IdentifierType">> := list(any()),
+%%   <<"Join">> => join_event_configuration(),
+%%   <<"MessageDeliveryStatus">> => message_delivery_status_event_configuration(),
+%%   <<"PartnerType">> => list(any()),
+%%   <<"Proximity">> => proximity_event_configuration()
+%% }
+-type update_resource_event_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_event_configuration_response() :: #{}
+-type update_resource_event_configuration_response() :: #{}.
+
+
+%% Example:
+%% update_resource_position_request() :: #{
+%%   <<"GeoJsonPayload">> => binary(),
+%%   <<"ResourceType">> := list(any())
+%% }
+-type update_resource_position_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_position_response() :: #{}
+-type update_resource_position_response() :: #{}.
+
+
+%% Example:
+%% update_wireless_device_import_task_request() :: #{
+%%   <<"Sidewalk">> := sidewalk_update_import_info()
+%% }
+-type update_wireless_device_import_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_wireless_device_import_task_response() :: #{}
+-type update_wireless_device_import_task_response() :: #{}.
+
+
+%% Example:
+%% update_wireless_device_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DestinationName">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_update_device(),
+%%   <<"Name">> => string(),
+%%   <<"Positioning">> => list(any()),
+%%   <<"Sidewalk">> => sidewalk_update_wireless_device()
+%% }
+-type update_wireless_device_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_wireless_device_response() :: #{}
+-type update_wireless_device_response() :: #{}.
+
+
+%% Example:
+%% update_wireless_gateway_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"JoinEuiFilters">> => list(list(string())()),
+%%   <<"MaxEirp">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"NetIdFilters">> => list(string())
+%% }
+-type update_wireless_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_wireless_gateway_response() :: #{}
+-type update_wireless_gateway_response() :: #{}.
+
+
+%% Example:
+%% update_wireless_gateway_task_create() :: #{
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_update_gateway_task_create(),
+%%   <<"UpdateDataRole">> => string(),
+%%   <<"UpdateDataSource">> => string()
+%% }
+-type update_wireless_gateway_task_create() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_wireless_gateway_task_entry() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
+%%   <<"Id">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_update_gateway_task_entry()
 %% }
--type start_single_wireless_device_import_task_response() :: #{binary() => any()}.
+-type update_wireless_gateway_task_entry() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_wireless_device_with_thing_request() :: #{
-%%   <<"ThingArn">> := string()
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type associate_wireless_device_with_thing_request() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% gsm_obj() :: #{
-%%   <<"GeranCid">> => integer(),
-%%   <<"GsmLocalId">> => gsm_local_id(),
-%%   <<"GsmNmr">> => list(gsm_nmr_obj()),
-%%   <<"GsmTimingAdvance">> => integer(),
+%% wcdma_local_id() :: #{
+%%   <<"Psc">> => integer(),
+%%   <<"Uarfcndl">> => integer()
+%% }
+-type wcdma_local_id() :: #{binary() => any()}.
+
+
+%% Example:
+%% wcdma_nmr_obj() :: #{
+%%   <<"PathLoss">> => integer(),
+%%   <<"Psc">> => integer(),
+%%   <<"Rscp">> => integer(),
+%%   <<"Uarfcndl">> => integer(),
+%%   <<"UtranCid">> => integer()
+%% }
+-type wcdma_nmr_obj() :: #{binary() => any()}.
+
+
+%% Example:
+%% wcdma_obj() :: #{
 %%   <<"Lac">> => integer(),
 %%   <<"Mcc">> => integer(),
 %%   <<"Mnc">> => integer(),
-%%   <<"RxLevel">> => integer()
+%%   <<"PathLoss">> => integer(),
+%%   <<"Rscp">> => integer(),
+%%   <<"UtranCid">> => integer(),
+%%   <<"WcdmaLocalId">> => wcdma_local_id(),
+%%   <<"WcdmaNmr">> => list(wcdma_nmr_obj())
 %% }
--type gsm_obj() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type wcdma_obj() :: #{binary() => any()}.
 
 
 %% Example:
-%% beaconing() :: #{
-%%   <<"DataRate">> => integer(),
-%%   <<"Frequencies">> => list(integer())
+%% wi_fi_access_point() :: #{
+%%   <<"MacAddress">> => string(),
+%%   <<"Rss">> => integer()
 %% }
--type beaconing() :: #{binary() => any()}.
-
-%% Example:
-%% associate_wireless_device_with_fuota_task_response() :: #{}
--type associate_wireless_device_with_fuota_task_response() :: #{}.
+-type wi_fi_access_point() :: #{binary() => any()}.
 
 
 %% Example:
-%% ip() :: #{
-%%   <<"IpAddress">> => string()
+%% wi_fi_cellular() :: #{
+%%   <<"ConfidencePercent">> => integer()
 %% }
--type ip() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> := list(any())
-%% }
--type list_event_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_position_estimate_request() :: #{
-%%   <<"AdvancedConfiguration">> => advanced_configuration(),
-%%   <<"CellTowers">> => cell_towers(),
-%%   <<"Gnss">> => gnss(),
-%%   <<"Ip">> => ip(),
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"WiFiAccessPoints">> => list(wi_fi_access_point())
-%% }
--type get_position_estimate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% participating_gateways() :: #{
-%%   <<"DownlinkMode">> => list(any()),
-%%   <<"GatewayList">> => list(gateway_list_item()),
-%%   <<"TransmissionInterval">> => integer()
-%% }
--type participating_gateways() :: #{binary() => any()}.
-
-%% Example:
-%% get_destination_request() :: #{}
--type get_destination_request() :: #{}.
-
-
-%% Example:
-%% lo_ra_w_a_n_fuota_task() :: #{
-%%   <<"RfRegion">> => list(any())
-%% }
--type lo_ra_w_a_n_fuota_task() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_wireless_device_import_task_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DestinationName">> => string(),
-%%   <<"FailedImportedDeviceCount">> => float(),
-%%   <<"Id">> => string(),
-%%   <<"InitializedImportedDeviceCount">> => float(),
-%%   <<"OnboardedImportedDeviceCount">> => float(),
-%%   <<"PendingImportedDeviceCount">> => float(),
-%%   <<"Positioning">> => list(any()),
-%%   <<"Sidewalk">> => sidewalk_get_start_import_info(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type get_wireless_device_import_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_wireless_gateway_task_response() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"WirelessGatewayTaskDefinitionId">> => string()
-%% }
--type create_wireless_gateway_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lo_ra_w_a_n_public_gateway_metadata() :: #{
-%%   <<"DlAllowed">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"ProviderNetId">> => string(),
-%%   <<"RfRegion">> => string(),
-%%   <<"Rssi">> => float(),
-%%   <<"Snr">> => float()
-%% }
--type lo_ra_w_a_n_public_gateway_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_wireless_gateway_from_thing_response() :: #{}
--type disassociate_wireless_gateway_from_thing_response() :: #{}.
-
-
-%% Example:
-%% advanced_configuration() :: #{
-%%   <<"WiFiCellular">> => wi_fi_cellular()
-%% }
--type advanced_configuration() :: #{binary() => any()}.
+-type wi_fi_cellular() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2399,16 +3149,6 @@
 %%   <<"LogLevel">> => list(any())
 %% }
 -type wireless_device_event_log_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_wireless_gateway_task_definition_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AutoCreateTasks">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"Update">> => update_wireless_gateway_task_create()
-%% }
--type get_wireless_gateway_task_definition_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2430,396 +3170,6 @@
 
 
 %% Example:
-%% otaa_v1_0_x() :: #{
-%%   <<"AppEui">> => string(),
-%%   <<"AppKey">> => string(),
-%%   <<"GenAppKey">> => string(),
-%%   <<"JoinEui">> => string()
-%% }
--type otaa_v1_0_x() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_wireless_gateway_statistics_response() :: #{
-%%   <<"ConnectionStatus">> => list(any()),
-%%   <<"LastUplinkReceivedAt">> => string(),
-%%   <<"WirelessGatewayId">> => string()
-%% }
--type get_wireless_gateway_statistics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% multicast_group_by_fuota_task() :: #{
-%%   <<"Id">> => string()
-%% }
--type multicast_group_by_fuota_task() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_partner_accounts_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Sidewalk">> => list(sidewalk_account_info_with_fingerprint())
-%% }
--type list_partner_accounts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_service_endpoint_response() :: #{
-%%   <<"ServerTrust">> => string(),
-%%   <<"ServiceEndpoint">> => string(),
-%%   <<"ServiceType">> => list(any())
-%% }
--type get_service_endpoint_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_destination_response() :: #{}
--type update_destination_response() :: #{}.
-
-
-%% Example:
-%% reset_resource_log_level_request() :: #{
-%%   <<"ResourceType">> := string()
-%% }
--type reset_resource_log_level_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_queued_messages_response() :: #{
-%%   <<"DownlinkQueueMessagesList">> => list(downlink_queue_message()),
-%%   <<"NextToken">> => string()
-%% }
--type list_queued_messages_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lo_ra_w_a_n_gateway_current_version() :: #{
-%%   <<"CurrentVersion">> => lo_ra_w_a_n_gateway_version()
-%% }
--type lo_ra_w_a_n_gateway_current_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_f_ports() :: #{
-%%   <<"Applications">> => list(application_config()),
-%%   <<"Positioning">> => positioning()
-%% }
--type update_f_ports() :: #{binary() => any()}.
-
-
-%% Example:
-%% fuota_task_event_log_option() :: #{
-%%   <<"Event">> => list(any()),
-%%   <<"LogLevel">> => list(any())
-%% }
--type fuota_task_event_log_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_multicast_group_response() :: #{}
--type delete_multicast_group_response() :: #{}.
-
-
-%% Example:
-%% lo_ra_w_a_n_multicast_metadata() :: #{
-%%   <<"FPort">> => integer()
-%% }
--type lo_ra_w_a_n_multicast_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_wireless_device_with_fuota_task_request() :: #{
-%%   <<"WirelessDeviceId">> := string()
-%% }
--type associate_wireless_device_with_fuota_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% wcdma_obj() :: #{
-%%   <<"Lac">> => integer(),
-%%   <<"Mcc">> => integer(),
-%%   <<"Mnc">> => integer(),
-%%   <<"PathLoss">> => integer(),
-%%   <<"Rscp">> => integer(),
-%%   <<"UtranCid">> => integer(),
-%%   <<"WcdmaLocalId">> => wcdma_local_id(),
-%%   <<"WcdmaNmr">> => list(wcdma_nmr_obj())
-%% }
--type wcdma_obj() :: #{binary() => any()}.
-
-
-%% Example:
-%% wi_fi_cellular() :: #{
-%%   <<"ConfidencePercent">> => integer()
-%% }
--type wi_fi_cellular() :: #{binary() => any()}.
-
-%% Example:
-%% get_wireless_gateway_firmware_information_request() :: #{}
--type get_wireless_gateway_firmware_information_request() :: #{}.
-
-
-%% Example:
-%% associate_wireless_gateway_with_certificate_response() :: #{
-%%   <<"IotCertificateId">> => string()
-%% }
--type associate_wireless_gateway_with_certificate_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_partner_account_response() :: #{}
--type update_partner_account_response() :: #{}.
-
-
-%% Example:
-%% lo_ra_w_a_n_multicast() :: #{
-%%   <<"DlClass">> => list(any()),
-%%   <<"ParticipatingGateways">> => participating_gateways_multicast(),
-%%   <<"RfRegion">> => list(any())
-%% }
--type lo_ra_w_a_n_multicast() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_bulk_associate_wireless_device_with_multicast_group_request() :: #{
-%%   <<"QueryString">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_bulk_associate_wireless_device_with_multicast_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_keys_abp_v1_0_x() :: #{
-%%   <<"AppSKey">> => string(),
-%%   <<"NwkSKey">> => string()
-%% }
--type session_keys_abp_v1_0_x() :: #{binary() => any()}.
-
-
-%% Example:
-%% sidewalk_start_import_info() :: #{
-%%   <<"DeviceCreationFile">> => string(),
-%%   <<"Positioning">> => sidewalk_positioning(),
-%%   <<"Role">> => string()
-%% }
--type sidewalk_start_import_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% lo_ra_w_a_n_multicast_get() :: #{
-%%   <<"DlClass">> => list(any()),
-%%   <<"NumberOfDevicesInGroup">> => integer(),
-%%   <<"NumberOfDevicesRequested">> => integer(),
-%%   <<"ParticipatingGateways">> => participating_gateways_multicast(),
-%%   <<"RfRegion">> => list(any())
-%% }
--type lo_ra_w_a_n_multicast_get() :: #{binary() => any()}.
-
-
-%% Example:
-%% sidewalk_device() :: #{
-%%   <<"AmazonId">> => string(),
-%%   <<"CertificateId">> => string(),
-%%   <<"DeviceCertificates">> => list(certificate_list()),
-%%   <<"DeviceProfileId">> => string(),
-%%   <<"Positioning">> => sidewalk_positioning(),
-%%   <<"PrivateKeys">> => list(certificate_list()),
-%%   <<"SidewalkId">> => string(),
-%%   <<"SidewalkManufacturingSn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type sidewalk_device() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate_list() :: #{
-%%   <<"SigningAlg">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type certificate_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_log_levels_by_resource_types_response() :: #{
-%%   <<"DefaultLogLevel">> => list(any()),
-%%   <<"FuotaTaskLogOptions">> => list(fuota_task_log_option()),
-%%   <<"WirelessDeviceLogOptions">> => list(wireless_device_log_option()),
-%%   <<"WirelessGatewayLogOptions">> => list(wireless_gateway_log_option())
-%% }
--type get_log_levels_by_resource_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% dimension() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_multicast_groups_response() :: #{
-%%   <<"MulticastGroupList">> => list(multicast_group()),
-%%   <<"NextToken">> => string()
-%% }
--type list_multicast_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cdma_nmr_obj() :: #{
-%%   <<"BaseStationId">> => integer(),
-%%   <<"CdmaChannel">> => integer(),
-%%   <<"PilotPower">> => integer(),
-%%   <<"PnOffset">> => integer()
-%% }
--type cdma_nmr_obj() :: #{binary() => any()}.
-
-
-%% Example:
-%% semtech_gnss_detail() :: #{
-%%   <<"Fec">> => list(any()),
-%%   <<"Provider">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type semtech_gnss_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% f_ports() :: #{
-%%   <<"Applications">> => list(application_config()),
-%%   <<"ClockSync">> => integer(),
-%%   <<"Fuota">> => integer(),
-%%   <<"Multicast">> => integer(),
-%%   <<"Positioning">> => positioning()
-%% }
--type f_ports() :: #{binary() => any()}.
-
-
-%% Example:
-%% lte_nmr_obj() :: #{
-%%   <<"Earfcn">> => integer(),
-%%   <<"EutranCid">> => integer(),
-%%   <<"Pci">> => integer(),
-%%   <<"Rsrp">> => integer(),
-%%   <<"Rsrq">> => float()
-%% }
--type lte_nmr_obj() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_position_configuration_request() :: #{
-%%   <<"Destination">> => string(),
-%%   <<"ResourceType">> := list(any()),
-%%   <<"Solvers">> => position_solver_configurations()
-%% }
--type put_position_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_bulk_disassociate_wireless_device_from_multicast_group_request() :: #{
-%%   <<"QueryString">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_bulk_disassociate_wireless_device_from_multicast_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_partner_account_request() :: #{
-%%   <<"PartnerType">> := list(any())
-%% }
--type get_partner_account_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_wireless_gateway_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"JoinEuiFilters">> => list(list(string())()),
-%%   <<"MaxEirp">> => float(),
-%%   <<"Name">> => string(),
-%%   <<"NetIdFilters">> => list(string())
-%% }
--type update_wireless_gateway_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_wireless_gateway_task_definition_request() :: #{
-%%   <<"AutoCreateTasks">> := boolean(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"Update">> => update_wireless_gateway_task_create()
-%% }
--type create_wireless_gateway_task_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_config() :: #{
-%%   <<"DestinationName">> => string(),
-%%   <<"FPort">> => integer(),
-%%   <<"Type">> => list(any())
-%% }
--type application_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% multicast_wireless_metadata() :: #{
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_multicast_metadata()
-%% }
--type multicast_wireless_metadata() :: #{binary() => any()}.
-
-%% Example:
-%% delete_wireless_gateway_task_request() :: #{}
--type delete_wireless_gateway_task_request() :: #{}.
-
-
-%% Example:
-%% create_device_profile_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_device_profile(),
-%%   <<"Name">> => string(),
-%%   <<"Sidewalk">> => sidewalk_create_device_profile(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_device_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_wireless_device_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DestinationName">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_device(),
-%%   <<"Name">> => string(),
-%%   <<"Positioning">> => list(any()),
-%%   <<"Sidewalk">> => sidewalk_device(),
-%%   <<"ThingArn">> => string(),
-%%   <<"ThingName">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type get_wireless_device_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% wireless_device_log_option() :: #{
 %%   <<"Events">> => list(wireless_device_event_log_option()),
 %%   <<"LogLevel">> => list(any()),
@@ -2829,1201 +3179,861 @@
 
 
 %% Example:
-%% summary_metric_query_result() :: #{
-%%   <<"AggregationPeriod">> => list(any()),
-%%   <<"Dimensions">> => list(dimension()),
-%%   <<"EndTimestamp">> => non_neg_integer(),
-%%   <<"Error">> => string(),
-%%   <<"MetricName">> => list(any()),
-%%   <<"QueryId">> => string(),
-%%   <<"QueryStatus">> => list(any()),
-%%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"Timestamps">> => list(non_neg_integer()),
-%%   <<"Unit">> => string(),
-%%   <<"Values">> => list(metric_query_value())
-%% }
--type summary_metric_query_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_wireless_device_import_task_request() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DestinationName">> := string(),
-%%   <<"Positioning">> => list(any()),
-%%   <<"Sidewalk">> := sidewalk_start_import_info(),
-%%   <<"Tags">> => list(tag())
-%% }
--type start_wireless_device_import_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sidewalk_account_info() :: #{
-%%   <<"AmazonId">> => string(),
-%%   <<"AppServerPrivateKey">> => string()
-%% }
--type sidewalk_account_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_wireless_device_import_task_response() :: #{}
--type delete_wireless_device_import_task_response() :: #{}.
-
-
-%% Example:
-%% list_fuota_tasks_response() :: #{
-%%   <<"FuotaTaskList">> => list(fuota_task()),
-%%   <<"NextToken">> => string()
-%% }
--type list_fuota_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_multicast_group_request() :: #{}
--type delete_multicast_group_request() :: #{}.
-
-
-%% Example:
-%% multicast_group() :: #{
+%% wireless_device_statistics() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"DestinationName">> => string(),
+%%   <<"FuotaDeviceStatus">> => list(any()),
 %%   <<"Id">> => string(),
+%%   <<"LastUplinkReceivedAt">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_list_device(),
+%%   <<"McGroupId">> => integer(),
+%%   <<"MulticastDeviceStatus">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Positioning">> => list(any()),
+%%   <<"Sidewalk">> => sidewalk_list_device(),
+%%   <<"Type">> => list(any())
+%% }
+-type wireless_device_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% wireless_gateway_event_log_option() :: #{
+%%   <<"Event">> => list(any()),
+%%   <<"LogLevel">> => list(any())
+%% }
+-type wireless_gateway_event_log_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% wireless_gateway_log_option() :: #{
+%%   <<"Events">> => list(wireless_gateway_event_log_option()),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type wireless_gateway_log_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% wireless_gateway_statistics() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastUplinkReceivedAt">> => string(),
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_gateway(),
 %%   <<"Name">> => string()
 %% }
--type multicast_group() :: #{binary() => any()}.
+-type wireless_gateway_statistics() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_wireless_devices_request() :: #{
-%%   <<"DestinationName">> => string(),
-%%   <<"DeviceProfileId">> => string(),
-%%   <<"FuotaTaskId">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MulticastGroupId">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"ServiceProfileId">> => string(),
-%%   <<"WirelessDeviceType">> => list(any())
+%% wireless_metadata() :: #{
+%%   <<"LoRaWAN">> => lo_ra_w_a_n_send_data_to_device(),
+%%   <<"Sidewalk">> => sidewalk_send_data_to_device()
 %% }
--type list_wireless_devices_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lo_ra_w_a_n_gateway_version() :: #{
-%%   <<"Model">> => string(),
-%%   <<"PackageVersion">> => string(),
-%%   <<"Station">> => string()
-%% }
--type lo_ra_w_a_n_gateway_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_wireless_gateway_task_create() :: #{
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_update_gateway_task_create(),
-%%   <<"UpdateDataRole">> => string(),
-%%   <<"UpdateDataSource">> => string()
-%% }
--type update_wireless_gateway_task_create() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_multicast_group_with_fuota_task_request() :: #{
-%%   <<"MulticastGroupId">> := string()
-%% }
--type associate_multicast_group_with_fuota_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% metric_query_value() :: #{
-%%   <<"Avg">> => float(),
-%%   <<"Max">> => float(),
-%%   <<"Min">> => float(),
-%%   <<"P90">> => float(),
-%%   <<"Std">> => float(),
-%%   <<"Sum">> => float()
-%% }
--type metric_query_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% sidewalk_update_wireless_device() :: #{
-%%   <<"Positioning">> => sidewalk_positioning()
-%% }
--type sidewalk_update_wireless_device() :: #{binary() => any()}.
-
-%% Example:
-%% delete_network_analyzer_configuration_request() :: #{}
--type delete_network_analyzer_configuration_request() :: #{}.
-
-
-%% Example:
-%% lo_ra_w_a_n_join_resource_type_event_configuration() :: #{
-%%   <<"WirelessDeviceEventTopic">> => list(any())
-%% }
--type lo_ra_w_a_n_join_resource_type_event_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% deregister_wireless_device_request() :: #{
-%%   <<"WirelessDeviceType">> => list(any())
-%% }
--type deregister_wireless_device_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_device_profiles_request() :: #{
-%%   <<"DeviceProfileType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_device_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_device_profiles_response() :: #{
-%%   <<"DeviceProfileList">> => list(device_profile()),
-%%   <<"NextToken">> => string()
-%% }
--type list_device_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sidewalk_single_start_import_info() :: #{
-%%   <<"Positioning">> => sidewalk_positioning(),
-%%   <<"SidewalkManufacturingSn">> => string()
-%% }
--type sidewalk_single_start_import_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_wireless_device_response() :: #{}
--type delete_wireless_device_response() :: #{}.
-
-
-%% Example:
-%% create_wireless_device_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
-%% }
--type create_wireless_device_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% position_solver_details() :: #{
-%%   <<"SemtechGnss">> => semtech_gnss_detail()
-%% }
--type position_solver_details() :: #{binary() => any()}.
-
-%% Example:
-%% associate_wireless_device_with_thing_response() :: #{}
--type associate_wireless_device_with_thing_response() :: #{}.
-
-
-%% Example:
-%% sidewalk_get_device_profile() :: #{
-%%   <<"ApplicationServerPublicKey">> => string(),
-%%   <<"DakCertificateMetadata">> => list(dak_certificate_metadata()),
-%%   <<"QualificationStatus">> => boolean()
-%% }
--type sidewalk_get_device_profile() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_event_configuration_response() :: #{}
--type update_resource_event_configuration_response() :: #{}.
-
-
-%% Example:
-%% sidewalk_send_data_to_device() :: #{
-%%   <<"AckModeRetryDurationSecs">> => integer(),
-%%   <<"MessageType">> => list(any()),
-%%   <<"Seq">> => integer()
-%% }
--type sidewalk_send_data_to_device() :: #{binary() => any()}.
-
-%% Example:
-%% reset_resource_log_level_response() :: #{}
--type reset_resource_log_level_response() :: #{}.
-
-
-%% Example:
-%% lo_ra_w_a_n_list_device() :: #{
-%%   <<"DevEui">> => string()
-%% }
--type lo_ra_w_a_n_list_device() :: #{binary() => any()}.
-
-
-%% Example:
-%% proximity_event_configuration() :: #{
-%%   <<"Sidewalk">> => sidewalk_event_notification_configurations(),
-%%   <<"WirelessDeviceIdEventTopic">> => list(any())
-%% }
--type proximity_event_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_wireless_device_statistics_response() :: #{
-%%   <<"LastUplinkReceivedAt">> => string(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_device_metadata(),
-%%   <<"Sidewalk">> => sidewalk_device_metadata(),
-%%   <<"WirelessDeviceId">> => string()
-%% }
--type get_wireless_device_statistics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lo_ra_w_a_n_service_profile() :: #{
-%%   <<"AddGwMetadata">> => boolean(),
-%%   <<"DrMax">> => integer(),
-%%   <<"DrMin">> => integer(),
-%%   <<"NbTransMax">> => integer(),
-%%   <<"NbTransMin">> => integer(),
-%%   <<"PrAllowed">> => boolean(),
-%%   <<"RaAllowed">> => boolean(),
-%%   <<"TxPowerIndexMax">> => integer(),
-%%   <<"TxPowerIndexMin">> => integer()
-%% }
--type lo_ra_w_a_n_service_profile() :: #{binary() => any()}.
-
-
-%% Example:
-%% sidewalk_resource_type_event_configuration() :: #{
-%%   <<"WirelessDeviceEventTopic">> => list(any())
-%% }
--type sidewalk_resource_type_event_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_wireless_gateway_task_response() :: #{}
--type delete_wireless_gateway_task_response() :: #{}.
-
-
-%% Example:
-%% sidewalk_list_device() :: #{
-%%   <<"AmazonId">> => string(),
-%%   <<"DeviceCertificates">> => list(certificate_list()),
-%%   <<"DeviceProfileId">> => string(),
-%%   <<"Positioning">> => sidewalk_positioning(),
-%%   <<"SidewalkId">> => string(),
-%%   <<"SidewalkManufacturingSn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type sidewalk_list_device() :: #{binary() => any()}.
-
-%% Example:
-%% reset_all_resource_log_levels_response() :: #{}
--type reset_all_resource_log_levels_response() :: #{}.
-
-
-%% Example:
-%% device_registration_state_resource_type_event_configuration() :: #{
-%%   <<"Sidewalk">> => sidewalk_resource_type_event_configuration()
-%% }
--type device_registration_state_resource_type_event_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_fuota_task_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Descriptor">> => string(),
-%%   <<"FirmwareUpdateImage">> => string(),
-%%   <<"FirmwareUpdateRole">> => string(),
-%%   <<"FragmentIntervalMS">> => integer(),
-%%   <<"FragmentSizeBytes">> => integer(),
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_fuota_task(),
-%%   <<"Name">> => string(),
-%%   <<"RedundancyPercent">> => integer()
-%% }
--type update_fuota_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_device_profile_request() :: #{}
--type delete_device_profile_request() :: #{}.
-
-
-%% Example:
-%% lte_obj() :: #{
-%%   <<"EutranCid">> => integer(),
-%%   <<"LteLocalId">> => lte_local_id(),
-%%   <<"LteNmr">> => list(lte_nmr_obj()),
-%%   <<"LteTimingAdvance">> => integer(),
-%%   <<"Mcc">> => integer(),
-%%   <<"Mnc">> => integer(),
-%%   <<"NrCapable">> => boolean(),
-%%   <<"Rsrp">> => integer(),
-%%   <<"Rsrq">> => float(),
-%%   <<"Tac">> => integer()
-%% }
--type lte_obj() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceName">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_event_configuration_by_resource_types_response() :: #{}
--type update_event_configuration_by_resource_types_response() :: #{}.
-
-
-%% Example:
-%% list_wireless_gateways_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_wireless_gateways_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_fuota_task_response() :: #{}
--type start_fuota_task_response() :: #{}.
-
-%% Example:
-%% start_multicast_group_session_response() :: #{}
--type start_multicast_group_session_response() :: #{}.
-
-
-%% Example:
-%% join_resource_type_event_configuration() :: #{
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_join_resource_type_event_configuration()
-%% }
--type join_resource_type_event_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_wireless_device_import_task_request() :: #{}
--type get_wireless_device_import_task_request() :: #{}.
-
-
-%% Example:
-%% get_multicast_group_session_response() :: #{
-%%   <<"LoRaWAN">> => lo_ra_w_a_n_multicast_session()
-%% }
--type get_multicast_group_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sidewalk_get_start_import_info() :: #{
-%%   <<"DeviceCreationFileList">> => list(string()),
-%%   <<"Positioning">> => sidewalk_positioning(),
-%%   <<"Role">> => string()
-%% }
--type sidewalk_get_start_import_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% cdma_obj() :: #{
-%%   <<"BaseLat">> => float(),
-%%   <<"BaseLng">> => float(),
-%%   <<"BaseStationId">> => integer(),
-%%   <<"CdmaLocalId">> => cdma_local_id(),
-%%   <<"CdmaNmr">> => list(cdma_nmr_obj()),
-%%   <<"NetworkId">> => integer(),
-%%   <<"PilotPower">> => integer(),
-%%   <<"RegistrationZone">> => integer(),
-%%   <<"SystemId">> => integer()
-%% }
--type cdma_obj() :: #{binary() => any()}.
-
-%% Example:
-%% get_wireless_gateway_certificate_request() :: #{}
--type get_wireless_gateway_certificate_request() :: #{}.
+-type wireless_metadata() :: #{binary() => any()}.
 
 -type associate_aws_account_with_partner_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_multicast_group_with_fuota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_wireless_device_with_fuota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_wireless_device_with_multicast_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_wireless_device_with_thing_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_wireless_gateway_with_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type associate_wireless_gateway_with_thing_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type cancel_multicast_group_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_device_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_fuota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_multicast_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_network_analyzer_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_service_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_wireless_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_wireless_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_wireless_gateway_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_wireless_gateway_task_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_device_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_fuota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_multicast_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_network_analyzer_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_queued_messages_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_service_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_wireless_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_wireless_device_import_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_wireless_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_wireless_gateway_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_wireless_gateway_task_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type deregister_wireless_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type disassociate_aws_account_from_partner_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type disassociate_multicast_group_from_fuota_task_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_wireless_device_from_fuota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_wireless_device_from_multicast_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_wireless_device_from_thing_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_wireless_gateway_from_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type disassociate_wireless_gateway_from_thing_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_device_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_event_configuration_by_resource_types_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_fuota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_log_levels_by_resource_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_metric_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_metrics_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_multicast_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_multicast_group_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_network_analyzer_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_partner_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_position_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_position_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_position_estimate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_event_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_log_level_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_position_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_service_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_wireless_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_wireless_device_import_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_wireless_device_statistics_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_wireless_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_wireless_gateway_certificate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_wireless_gateway_firmware_information_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_wireless_gateway_statistics_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_wireless_gateway_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_wireless_gateway_task_definition_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_destinations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_device_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_devices_for_wireless_device_import_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_event_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_fuota_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_multicast_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_multicast_groups_by_fuota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_network_analyzer_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_partner_accounts_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_position_configurations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_queued_messages_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_service_profiles_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type list_wireless_device_import_tasks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_wireless_devices_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_wireless_gateway_task_definitions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_wireless_gateways_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type put_position_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_resource_log_level_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type reset_all_resource_log_levels_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type reset_resource_log_level_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type send_data_to_multicast_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type send_data_to_wireless_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type start_bulk_associate_wireless_device_with_multicast_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_bulk_disassociate_wireless_device_from_multicast_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_fuota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_multicast_group_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_single_wireless_device_import_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_wireless_device_import_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type test_wireless_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_event_configuration_by_resource_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_fuota_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_log_levels_by_resource_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_metric_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_multicast_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_network_analyzer_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_partner_account_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_position_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_resource_event_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_resource_position_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_wireless_device_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_wireless_device_import_task_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_wireless_gateway_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -74,6 +74,13 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% apply_pending_maintenance_action_input() :: #{
 %%   <<"applyAction">> := string(),
 %%   <<"applyOn">> => string(),
@@ -84,167 +91,10 @@
 
 
 %% Example:
-%% cluster_snapshot_in_list() :: #{
-%%   <<"clusterArn">> => [string()],
-%%   <<"snapshotArn">> => [string()],
-%%   <<"snapshotCreationTime">> => [string()],
-%%   <<"snapshotName">> => [string()],
-%%   <<"status">> => string()
+%% apply_pending_maintenance_action_output() :: #{
+%%   <<"resourcePendingMaintenanceAction">> => resource_pending_maintenance_action()
 %% }
--type cluster_snapshot_in_list() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cluster_input() :: #{
-%%   <<"adminUserPassword">> => string(),
-%%   <<"authType">> => string(),
-%%   <<"backupRetentionPeriod">> => [integer()],
-%%   <<"clientToken">> => [string()],
-%%   <<"preferredBackupWindow">> => [string()],
-%%   <<"preferredMaintenanceWindow">> => [string()],
-%%   <<"shardCapacity">> => [integer()],
-%%   <<"shardCount">> => [integer()],
-%%   <<"shardInstanceCount">> => [integer()],
-%%   <<"subnetIds">> => list([string()]()),
-%%   <<"vpcSecurityGroupIds">> => list([string()]())
-%% }
--type update_cluster_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cluster_snapshot_output() :: #{
-%%   <<"snapshot">> := cluster_snapshot()
-%% }
--type create_cluster_snapshot_output() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% restore_cluster_from_snapshot_output() :: #{
-%%   <<"cluster">> := cluster()
-%% }
--type restore_cluster_from_snapshot_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_cluster_output() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type start_cluster_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cluster_input() :: #{
-%%   <<"adminUserName">> := [string()],
-%%   <<"adminUserPassword">> := string(),
-%%   <<"authType">> := string(),
-%%   <<"backupRetentionPeriod">> => [integer()],
-%%   <<"clientToken">> => [string()],
-%%   <<"clusterName">> := [string()],
-%%   <<"kmsKeyId">> => [string()],
-%%   <<"preferredBackupWindow">> => [string()],
-%%   <<"preferredMaintenanceWindow">> => [string()],
-%%   <<"shardCapacity">> := [integer()],
-%%   <<"shardCount">> := [integer()],
-%%   <<"shardInstanceCount">> => [integer()],
-%%   <<"subnetIds">> => list([string()]()),
-%%   <<"tags">> => map(),
-%%   <<"vpcSecurityGroupIds">> => list([string()]())
-%% }
--type create_cluster_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% copy_cluster_snapshot_input() :: #{
-%%   <<"copyTags">> => [boolean()],
-%%   <<"kmsKeyId">> => [string()],
-%%   <<"tags">> => map(),
-%%   <<"targetSnapshotName">> := [string()]
-%% }
--type copy_cluster_snapshot_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_cluster_input() :: #{}
--type get_cluster_input() :: #{}.
-
-
-%% Example:
-%% list_cluster_snapshots_input() :: #{
-%%   <<"clusterArn">> => [string()],
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"snapshotType">> => [string()]
-%% }
--type list_cluster_snapshots_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_cluster_input() :: #{}
--type stop_cluster_input() :: #{}.
-
-
-%% Example:
-%% list_clusters_output() :: #{
-%%   <<"clusters">> => list(cluster_in_list()),
-%%   <<"nextToken">> => string()
-%% }
--type list_clusters_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_pending_maintenance_actions_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourcePendingMaintenanceActions">> => list(resource_pending_maintenance_action())
-%% }
--type list_pending_maintenance_actions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_cluster_output() :: #{
-%%   <<"cluster">> => cluster()
-%% }
--type stop_cluster_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_cluster_output() :: #{
-%%   <<"cluster">> := cluster()
-%% }
--type delete_cluster_output() :: #{binary() => any()}.
+-type apply_pending_maintenance_action_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -271,47 +121,12 @@
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
+%% cluster_in_list() :: #{
+%%   <<"clusterArn">> => [string()],
+%%   <<"clusterName">> => [string()],
+%%   <<"status">> => string()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cluster_output() :: #{
-%%   <<"cluster">> := cluster()
-%% }
--type get_cluster_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_clusters_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_clusters_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cluster_output() :: #{
-%%   <<"cluster">> := cluster()
-%% }
--type update_cluster_output() :: #{binary() => any()}.
+-type cluster_in_list() :: #{binary() => any()}.
 
 
 %% Example:
@@ -330,9 +145,158 @@
 %% }
 -type cluster_snapshot() :: #{binary() => any()}.
 
+
+%% Example:
+%% cluster_snapshot_in_list() :: #{
+%%   <<"clusterArn">> => [string()],
+%%   <<"snapshotArn">> => [string()],
+%%   <<"snapshotCreationTime">> => [string()],
+%%   <<"snapshotName">> => [string()],
+%%   <<"status">> => string()
+%% }
+-type cluster_snapshot_in_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_cluster_snapshot_input() :: #{
+%%   <<"copyTags">> => [boolean()],
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"targetSnapshotName">> := [string()]
+%% }
+-type copy_cluster_snapshot_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_cluster_snapshot_output() :: #{
+%%   <<"snapshot">> => cluster_snapshot()
+%% }
+-type copy_cluster_snapshot_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cluster_input() :: #{
+%%   <<"adminUserName">> := [string()],
+%%   <<"adminUserPassword">> := string(),
+%%   <<"authType">> := string(),
+%%   <<"backupRetentionPeriod">> => [integer()],
+%%   <<"clientToken">> => [string()],
+%%   <<"clusterName">> := [string()],
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"preferredBackupWindow">> => [string()],
+%%   <<"preferredMaintenanceWindow">> => [string()],
+%%   <<"shardCapacity">> := [integer()],
+%%   <<"shardCount">> := [integer()],
+%%   <<"shardInstanceCount">> => [integer()],
+%%   <<"subnetIds">> => list([string()]()),
+%%   <<"tags">> => map(),
+%%   <<"vpcSecurityGroupIds">> => list([string()]())
+%% }
+-type create_cluster_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cluster_output() :: #{
+%%   <<"cluster">> := cluster()
+%% }
+-type create_cluster_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cluster_snapshot_input() :: #{
+%%   <<"clusterArn">> := [string()],
+%%   <<"snapshotName">> := [string()],
+%%   <<"tags">> => map()
+%% }
+-type create_cluster_snapshot_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cluster_snapshot_output() :: #{
+%%   <<"snapshot">> := cluster_snapshot()
+%% }
+-type create_cluster_snapshot_output() :: #{binary() => any()}.
+
 %% Example:
 %% delete_cluster_input() :: #{}
 -type delete_cluster_input() :: #{}.
+
+
+%% Example:
+%% delete_cluster_output() :: #{
+%%   <<"cluster">> := cluster()
+%% }
+-type delete_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_snapshot_input() :: #{}
+-type delete_cluster_snapshot_input() :: #{}.
+
+
+%% Example:
+%% delete_cluster_snapshot_output() :: #{
+%%   <<"snapshot">> := cluster_snapshot()
+%% }
+-type delete_cluster_snapshot_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_cluster_input() :: #{}
+-type get_cluster_input() :: #{}.
+
+
+%% Example:
+%% get_cluster_output() :: #{
+%%   <<"cluster">> := cluster()
+%% }
+-type get_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_cluster_snapshot_input() :: #{}
+-type get_cluster_snapshot_input() :: #{}.
+
+
+%% Example:
+%% get_cluster_snapshot_output() :: #{
+%%   <<"snapshot">> := cluster_snapshot()
+%% }
+-type get_cluster_snapshot_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_pending_maintenance_action_input() :: #{}
+-type get_pending_maintenance_action_input() :: #{}.
+
+
+%% Example:
+%% get_pending_maintenance_action_output() :: #{
+%%   <<"resourcePendingMaintenanceAction">> => resource_pending_maintenance_action()
+%% }
+-type get_pending_maintenance_action_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cluster_snapshots_input() :: #{
+%%   <<"clusterArn">> => [string()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"snapshotType">> => [string()]
+%% }
+-type list_cluster_snapshots_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -344,57 +308,35 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
+%% list_clusters_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type list_clusters_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_cluster_output() :: #{
-%%   <<"cluster">> := cluster()
+%% list_clusters_output() :: #{
+%%   <<"clusters">> => list(cluster_in_list()),
+%%   <<"nextToken">> => string()
 %% }
--type create_cluster_output() :: #{binary() => any()}.
+-type list_clusters_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% shard() :: #{
-%%   <<"createTime">> => [string()],
-%%   <<"shardId">> => [string()],
-%%   <<"status">> => string()
+%% list_pending_maintenance_actions_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
 %% }
--type shard() :: #{binary() => any()}.
+-type list_pending_maintenance_actions_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
+%% list_pending_maintenance_actions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourcePendingMaintenanceActions">> => list(resource_pending_maintenance_action())
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% delete_cluster_snapshot_output() :: #{
-%%   <<"snapshot">> := cluster_snapshot()
-%% }
--type delete_cluster_snapshot_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_snapshot_input() :: #{}
--type delete_cluster_snapshot_input() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
+-type list_pending_maintenance_actions_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
@@ -402,11 +344,31 @@
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
 %% }
--type throttling_exception() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pending_maintenance_action_details() :: #{
+%%   <<"action">> => [string()],
+%%   <<"autoAppliedAfterDate">> => [string()],
+%%   <<"currentApplyDate">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"forcedApplyDate">> => [string()],
+%%   <<"optInStatus">> => [string()]
+%% }
+-type pending_maintenance_action_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -415,22 +377,6 @@
 %%   <<"resourceArn">> => [string()]
 %% }
 -type resource_pending_maintenance_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% apply_pending_maintenance_action_output() :: #{
-%%   <<"resourcePendingMaintenanceAction">> => resource_pending_maintenance_action()
-%% }
--type apply_pending_maintenance_action_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cluster_snapshot_input() :: #{
-%%   <<"clusterArn">> := [string()],
-%%   <<"snapshotName">> := [string()],
-%%   <<"tags">> => map()
-%% }
--type create_cluster_snapshot_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -445,206 +391,260 @@
 %% }
 -type restore_cluster_from_snapshot_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% restore_cluster_from_snapshot_output() :: #{
+%%   <<"cluster">> := cluster()
+%% }
+-type restore_cluster_from_snapshot_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% shard() :: #{
+%%   <<"createTime">> => [string()],
+%%   <<"shardId">> => [string()],
+%%   <<"status">> => string()
+%% }
+-type shard() :: #{binary() => any()}.
+
 %% Example:
 %% start_cluster_input() :: #{}
 -type start_cluster_input() :: #{}.
 
 
 %% Example:
-%% get_pending_maintenance_action_output() :: #{
-%%   <<"resourcePendingMaintenanceAction">> => resource_pending_maintenance_action()
+%% start_cluster_output() :: #{
+%%   <<"cluster">> => cluster()
 %% }
--type get_pending_maintenance_action_output() :: #{binary() => any()}.
+-type start_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_cluster_input() :: #{}
+-type stop_cluster_input() :: #{}.
 
 
 %% Example:
-%% cluster_in_list() :: #{
-%%   <<"clusterArn">> => [string()],
-%%   <<"clusterName">> => [string()],
-%%   <<"status">> => string()
+%% stop_cluster_output() :: #{
+%%   <<"cluster">> => cluster()
 %% }
--type cluster_in_list() :: #{binary() => any()}.
-
-%% Example:
-%% get_cluster_snapshot_input() :: #{}
--type get_cluster_snapshot_input() :: #{}.
-
-%% Example:
-%% get_pending_maintenance_action_input() :: #{}
--type get_pending_maintenance_action_input() :: #{}.
+-type stop_cluster_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_cluster_snapshot_output() :: #{
-%%   <<"snapshot">> := cluster_snapshot()
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type get_cluster_snapshot_output() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
-%% copy_cluster_snapshot_output() :: #{
-%%   <<"snapshot">> => cluster_snapshot()
+%% throttling_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
 %% }
--type copy_cluster_snapshot_output() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_pending_maintenance_actions_input() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type list_pending_maintenance_actions_input() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
-%% pending_maintenance_action_details() :: #{
-%%   <<"action">> => [string()],
-%%   <<"autoAppliedAfterDate">> => [string()],
-%%   <<"currentApplyDate">> => [string()],
-%%   <<"description">> => [string()],
-%%   <<"forcedApplyDate">> => [string()],
-%%   <<"optInStatus">> => [string()]
+%% update_cluster_input() :: #{
+%%   <<"adminUserPassword">> => string(),
+%%   <<"authType">> => string(),
+%%   <<"backupRetentionPeriod">> => [integer()],
+%%   <<"clientToken">> => [string()],
+%%   <<"preferredBackupWindow">> => [string()],
+%%   <<"preferredMaintenanceWindow">> => [string()],
+%%   <<"shardCapacity">> => [integer()],
+%%   <<"shardCount">> => [integer()],
+%%   <<"shardInstanceCount">> => [integer()],
+%%   <<"subnetIds">> => list([string()]()),
+%%   <<"vpcSecurityGroupIds">> => list([string()]())
 %% }
--type pending_maintenance_action_details() :: #{binary() => any()}.
+-type update_cluster_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cluster_output() :: #{
+%%   <<"cluster">> := cluster()
+%% }
+-type update_cluster_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type apply_pending_maintenance_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type copy_cluster_snapshot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_cluster_snapshot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_cluster_snapshot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_cluster_snapshot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_pending_maintenance_action_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_cluster_snapshots_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_clusters_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_pending_maintenance_actions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type restore_cluster_from_snapshot_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type stop_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_cluster_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

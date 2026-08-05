@@ -70,17 +70,67 @@
 
 
 %% Example:
-%% get_repository_policy_request() :: #{
+%% authorization_data() :: #{
+%%   <<"authorizationToken">> => string(),
+%%   <<"expiresAt">> => non_neg_integer()
+%% }
+-type authorization_data() :: #{binary() => any()}.
+
+%% Example:
+%% batch_check_layer_availability_request() :: #{
+%%   <<"layerDigests">> := list(string()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string()
 %% }
--type get_repository_policy_request() :: #{binary() => any()}.
+-type batch_check_layer_availability_request() :: #{binary() => any()}.
 
 %% Example:
-%% upload_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% batch_check_layer_availability_response() :: #{
+%%   <<"failures">> => list(layer_failure()),
+%%   <<"layers">> => list(layer())
 %% }
--type upload_not_found_exception() :: #{binary() => any()}.
+-type batch_check_layer_availability_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_image_request() :: #{
+%%   <<"imageIds">> := list(image_identifier()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type batch_delete_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_delete_image_response() :: #{
+%%   <<"failures">> => list(image_failure()),
+%%   <<"imageIds">> => list(image_identifier())
+%% }
+-type batch_delete_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% complete_layer_upload_request() :: #{
+%%   <<"layerDigests">> := list(string()),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string(),
+%%   <<"uploadId">> := string()
+%% }
+-type complete_layer_upload_request() :: #{binary() => any()}.
+
+%% Example:
+%% complete_layer_upload_response() :: #{
+%%   <<"layerDigest">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type complete_layer_upload_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_repository_request() :: #{
+%%   <<"catalogData">> => repository_catalog_data_input(),
+%%   <<"repositoryName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_repository_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_repository_response() :: #{
@@ -90,49 +140,49 @@
 -type create_repository_response() :: #{binary() => any()}.
 
 %% Example:
-%% image_digest_does_not_match_exception() :: #{
-%%   <<"message">> => string()
+%% delete_repository_policy_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
 %% }
--type image_digest_does_not_match_exception() :: #{binary() => any()}.
+-type delete_repository_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
+%% delete_repository_policy_response() :: #{
+%%   <<"policyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type delete_repository_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% image_already_exists_exception() :: #{
-%%   <<"message">> => string()
+%% delete_repository_request() :: #{
+%%   <<"force">> => boolean(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
 %% }
--type image_already_exists_exception() :: #{binary() => any()}.
+-type delete_repository_request() :: #{binary() => any()}.
 
 %% Example:
-%% layer_failure() :: #{
-%%   <<"failureCode">> => list(any()),
-%%   <<"failureReason">> => string(),
-%%   <<"layerDigest">> => string()
+%% delete_repository_response() :: #{
+%%   <<"repository">> => repository()
 %% }
--type layer_failure() :: #{binary() => any()}.
+-type delete_repository_response() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% describe_image_tags_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% image_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type image_not_found_exception() :: #{binary() => any()}.
+-type describe_image_tags_request() :: #{binary() => any()}.
 
 %% Example:
-%% registry_not_found_exception() :: #{
-%%   <<"message">> => string()
+%% describe_image_tags_response() :: #{
+%%   <<"imageTagDetails">> => list(image_tag_detail()),
+%%   <<"nextToken">> => string()
 %% }
--type registry_not_found_exception() :: #{binary() => any()}.
+-type describe_image_tags_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_images_request() :: #{
@@ -145,19 +195,11 @@
 -type describe_images_request() :: #{binary() => any()}.
 
 %% Example:
-%% set_repository_policy_response() :: #{
-%%   <<"policyText">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
+%% describe_images_response() :: #{
+%%   <<"imageDetails">> => list(image_detail()),
+%%   <<"nextToken">> => string()
 %% }
--type set_repository_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% initiate_layer_upload_request() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type initiate_layer_upload_request() :: #{binary() => any()}.
+-type describe_images_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_registries_request() :: #{
@@ -167,89 +209,11 @@
 -type describe_registries_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_repository_catalog_data_response() :: #{
-%%   <<"catalogData">> => repository_catalog_data()
+%% describe_registries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"registries">> => list(registry())
 %% }
--type get_repository_catalog_data_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_check_layer_availability_response() :: #{
-%%   <<"failures">> => list(layer_failure()),
-%%   <<"layers">> => list(layer())
-%% }
--type batch_check_layer_availability_response() :: #{binary() => any()}.
-
-%% Example:
-%% layers_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type layers_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_policy_request() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type delete_repository_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% repository_not_empty_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_not_empty_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_tag_parameter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_tag_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_repository_catalog_data_request() :: #{
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type get_repository_catalog_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% repository_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% repository_policy_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_policy_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_repository_policy_response() :: #{
-%%   <<"policyText">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type get_repository_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% layer_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type layer_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_images_response() :: #{
-%%   <<"imageDetails">> => list(image_detail()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_images_response() :: #{binary() => any()}.
+-type describe_registries_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_repositories_request() :: #{
@@ -261,186 +225,17 @@
 -type describe_repositories_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_image_request() :: #{
-%%   <<"imageDigest">> => string(),
-%%   <<"imageManifest">> := string(),
-%%   <<"imageManifestMediaType">> => string(),
-%%   <<"imageTag">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type put_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% complete_layer_upload_request() :: #{
-%%   <<"layerDigests">> := list(string()),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string(),
-%%   <<"uploadId">> := string()
-%% }
--type complete_layer_upload_request() :: #{binary() => any()}.
-
-%% Example:
-%% set_repository_policy_request() :: #{
-%%   <<"force">> => boolean(),
-%%   <<"policyText">> := string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type set_repository_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% registry_alias() :: #{
-%%   <<"defaultRegistryAlias">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"primaryRegistryAlias">> => boolean(),
-%%   <<"status">> => list(any())
-%% }
--type registry_alias() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_command_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unsupported_command_exception() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_image_request() :: #{
-%%   <<"imageIds">> := list(image_identifier()),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type batch_delete_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% complete_layer_upload_response() :: #{
-%%   <<"layerDigest">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"uploadId">> => string()
-%% }
--type complete_layer_upload_response() :: #{binary() => any()}.
-
-%% Example:
-%% image_failure() :: #{
-%%   <<"failureCode">> => list(any()),
-%%   <<"failureReason">> => string(),
-%%   <<"imageId">> => image_identifier()
-%% }
--type image_failure() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_layer_part_exception() :: #{
-%%   <<"lastValidByteReceived">> => float(),
-%%   <<"message">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"uploadId">> => string()
-%% }
--type invalid_layer_part_exception() :: #{binary() => any()}.
-
-%% Example:
-%% image_tag_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type image_tag_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_image_response() :: #{
-%%   <<"image">> => image()
-%% }
--type put_image_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% put_repository_catalog_data_response() :: #{
-%%   <<"catalogData">> => repository_catalog_data()
-%% }
--type put_repository_catalog_data_response() :: #{binary() => any()}.
-
-%% Example:
-%% repository() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryArn">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"repositoryUri">> => string()
-%% }
--type repository() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_request() :: #{
-%%   <<"force">> => boolean(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type delete_repository_request() :: #{binary() => any()}.
-
-%% Example:
-%% layer() :: #{
-%%   <<"layerAvailability">> => list(any()),
-%%   <<"layerDigest">> => string(),
-%%   <<"layerSize">> => float(),
-%%   <<"mediaType">> => string()
-%% }
--type layer() :: #{binary() => any()}.
-
-%% Example:
-%% layer_part_too_small_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type layer_part_too_small_exception() :: #{binary() => any()}.
-
-%% Example:
-%% registry_catalog_data() :: #{
-%%   <<"displayName">> => string()
-%% }
--type registry_catalog_data() :: #{binary() => any()}.
-
-%% Example:
-%% referenced_images_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type referenced_images_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% repository_catalog_data() :: #{
-%%   <<"aboutText">> => string(),
-%%   <<"architectures">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"logoUrl">> => string(),
-%%   <<"marketplaceCertified">> => boolean(),
-%%   <<"operatingSystems">> => list(string()),
-%%   <<"usageText">> => string()
-%% }
--type repository_catalog_data() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_tags_request() :: #{
-%%   <<"maxResults">> => integer(),
+%% describe_repositories_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
+%%   <<"repositories">> => list(repository())
 %% }
--type describe_image_tags_request() :: #{binary() => any()}.
+-type describe_repositories_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_authorization_token_response() :: #{
-%%   <<"authorizationData">> => authorization_data()
+%% empty_upload_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_authorization_token_response() :: #{binary() => any()}.
+-type empty_upload_exception() :: #{binary() => any()}.
 
 %% Example:
 %% get_authorization_token_request() :: #{
@@ -449,51 +244,50 @@
 -type get_authorization_token_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_registries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"registries">> => list(registry())
+%% get_authorization_token_response() :: #{
+%%   <<"authorizationData">> => authorization_data()
 %% }
--type describe_registries_response() :: #{binary() => any()}.
-
-%% Example:
-%% repository_catalog_data_input() :: #{
-%%   <<"aboutText">> => string(),
-%%   <<"architectures">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"logoImageBlob">> => binary(),
-%%   <<"operatingSystems">> => list(string()),
-%%   <<"usageText">> => string()
-%% }
--type repository_catalog_data_input() :: #{binary() => any()}.
-
-%% Example:
-%% upload_layer_part_response() :: #{
-%%   <<"lastByteReceived">> => float(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string(),
-%%   <<"uploadId">> => string()
-%% }
--type upload_layer_part_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_registry_catalog_data_request() :: #{
-%%   <<"displayName">> => string()
-%% }
--type put_registry_catalog_data_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_repository_request() :: #{
-%%   <<"catalogData">> => repository_catalog_data_input(),
-%%   <<"repositoryName">> := string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_repository_request() :: #{binary() => any()}.
+-type get_authorization_token_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_registry_catalog_data_request() :: #{
 
 %% }
 -type get_registry_catalog_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_registry_catalog_data_response() :: #{
+%%   <<"registryCatalogData">> => registry_catalog_data()
+%% }
+-type get_registry_catalog_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_catalog_data_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_repository_catalog_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_catalog_data_response() :: #{
+%%   <<"catalogData">> => repository_catalog_data()
+%% }
+-type get_repository_catalog_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_policy_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_repository_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_repository_policy_response() :: #{
+%%   <<"policyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type get_repository_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% image() :: #{
@@ -506,149 +300,10 @@
 -type image() :: #{binary() => any()}.
 
 %% Example:
-%% delete_repository_policy_response() :: #{
-%%   <<"policyText">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> => string()
-%% }
--type delete_repository_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_registry_catalog_data_response() :: #{
-%%   <<"registryCatalogData">> => registry_catalog_data()
-%% }
--type get_registry_catalog_data_response() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_image_response() :: #{
-%%   <<"failures">> => list(image_failure()),
-%%   <<"imageIds">> => list(image_identifier())
-%% }
--type batch_delete_image_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
+%% image_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_layer_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_layer_exception() :: #{binary() => any()}.
-
-%% Example:
-%% referenced_image_detail() :: #{
-%%   <<"artifactMediaType">> => string(),
-%%   <<"imageDigest">> => string(),
-%%   <<"imageManifestMediaType">> => string(),
-%%   <<"imagePushedAt">> => non_neg_integer(),
-%%   <<"imageSizeInBytes">> => float()
-%% }
--type referenced_image_detail() :: #{binary() => any()}.
-
-%% Example:
-%% image_tag_detail() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"imageDetail">> => referenced_image_detail(),
-%%   <<"imageTag">> => string()
-%% }
--type image_tag_detail() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_check_layer_availability_request() :: #{
-%%   <<"layerDigests">> := list(string()),
-%%   <<"registryId">> => string(),
-%%   <<"repositoryName">> := string()
-%% }
--type batch_check_layer_availability_request() :: #{binary() => any()}.
-
-%% Example:
-%% repository_catalog_data_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_catalog_data_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% image_identifier() :: #{
-%%   <<"imageDigest">> => string(),
-%%   <<"imageTag">> => string()
-%% }
--type image_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% repository_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type repository_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% registry() :: #{
-%%   <<"aliases">> => list(registry_alias()),
-%%   <<"registryArn">> => string(),
-%%   <<"registryId">> => string(),
-%%   <<"registryUri">> => string(),
-%%   <<"verified">> => boolean()
-%% }
--type registry() :: #{binary() => any()}.
-
-%% Example:
-%% delete_repository_response() :: #{
-%%   <<"repository">> => repository()
-%% }
--type delete_repository_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_repositories_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"repositories">> => list(repository())
-%% }
--type describe_repositories_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_registry_catalog_data_response() :: #{
-%%   <<"registryCatalogData">> => registry_catalog_data()
-%% }
--type put_registry_catalog_data_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_tags_response() :: #{
-%%   <<"imageTagDetails">> => list(image_tag_detail()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_image_tags_response() :: #{binary() => any()}.
-
-%% Example:
-%% authorization_data() :: #{
-%%   <<"authorizationToken">> => string(),
-%%   <<"expiresAt">> => non_neg_integer()
-%% }
--type authorization_data() :: #{binary() => any()}.
+-type image_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% image_detail() :: #{
@@ -664,10 +319,52 @@
 -type image_detail() :: #{binary() => any()}.
 
 %% Example:
-%% empty_upload_exception() :: #{
+%% image_digest_does_not_match_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type empty_upload_exception() :: #{binary() => any()}.
+-type image_digest_does_not_match_exception() :: #{binary() => any()}.
+
+%% Example:
+%% image_failure() :: #{
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"imageId">> => image_identifier()
+%% }
+-type image_failure() :: #{binary() => any()}.
+
+%% Example:
+%% image_identifier() :: #{
+%%   <<"imageDigest">> => string(),
+%%   <<"imageTag">> => string()
+%% }
+-type image_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% image_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type image_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% image_tag_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type image_tag_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% image_tag_detail() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"imageDetail">> => referenced_image_detail(),
+%%   <<"imageTag">> => string()
+%% }
+-type image_tag_detail() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_layer_upload_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type initiate_layer_upload_request() :: #{binary() => any()}.
 
 %% Example:
 %% initiate_layer_upload_response() :: #{
@@ -675,6 +372,116 @@
 %%   <<"uploadId">> => string()
 %% }
 -type initiate_layer_upload_response() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_layer_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_layer_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_layer_part_exception() :: #{
+%%   <<"lastValidByteReceived">> => float(),
+%%   <<"message">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type invalid_layer_part_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_tag_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% layer() :: #{
+%%   <<"layerAvailability">> => list(any()),
+%%   <<"layerDigest">> => string(),
+%%   <<"layerSize">> => float(),
+%%   <<"mediaType">> => string()
+%% }
+-type layer() :: #{binary() => any()}.
+
+%% Example:
+%% layer_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type layer_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% layer_failure() :: #{
+%%   <<"failureCode">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"layerDigest">> => string()
+%% }
+-type layer_failure() :: #{binary() => any()}.
+
+%% Example:
+%% layer_part_too_small_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type layer_part_too_small_exception() :: #{binary() => any()}.
+
+%% Example:
+%% layers_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type layers_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_image_request() :: #{
+%%   <<"imageDigest">> => string(),
+%%   <<"imageManifest">> := string(),
+%%   <<"imageManifestMediaType">> => string(),
+%%   <<"imageTag">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type put_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_image_response() :: #{
+%%   <<"image">> => image()
+%% }
+-type put_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_registry_catalog_data_request() :: #{
+%%   <<"displayName">> => string()
+%% }
+-type put_registry_catalog_data_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_registry_catalog_data_response() :: #{
+%%   <<"registryCatalogData">> => registry_catalog_data()
+%% }
+-type put_registry_catalog_data_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_repository_catalog_data_request() :: #{
@@ -685,10 +492,188 @@
 -type put_repository_catalog_data_request() :: #{binary() => any()}.
 
 %% Example:
+%% put_repository_catalog_data_response() :: #{
+%%   <<"catalogData">> => repository_catalog_data()
+%% }
+-type put_repository_catalog_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% referenced_image_detail() :: #{
+%%   <<"artifactMediaType">> => string(),
+%%   <<"imageDigest">> => string(),
+%%   <<"imageManifestMediaType">> => string(),
+%%   <<"imagePushedAt">> => non_neg_integer(),
+%%   <<"imageSizeInBytes">> => float()
+%% }
+-type referenced_image_detail() :: #{binary() => any()}.
+
+%% Example:
+%% referenced_images_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type referenced_images_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% registry() :: #{
+%%   <<"aliases">> => list(registry_alias()),
+%%   <<"registryArn">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"registryUri">> => string(),
+%%   <<"verified">> => boolean()
+%% }
+-type registry() :: #{binary() => any()}.
+
+%% Example:
+%% registry_alias() :: #{
+%%   <<"defaultRegistryAlias">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"primaryRegistryAlias">> => boolean(),
+%%   <<"status">> => list(any())
+%% }
+-type registry_alias() :: #{binary() => any()}.
+
+%% Example:
+%% registry_catalog_data() :: #{
+%%   <<"displayName">> => string()
+%% }
+-type registry_catalog_data() :: #{binary() => any()}.
+
+%% Example:
+%% registry_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type registry_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryArn">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"repositoryUri">> => string()
+%% }
+-type repository() :: #{binary() => any()}.
+
+%% Example:
+%% repository_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_catalog_data() :: #{
+%%   <<"aboutText">> => string(),
+%%   <<"architectures">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"logoUrl">> => string(),
+%%   <<"marketplaceCertified">> => boolean(),
+%%   <<"operatingSystems">> => list(string()),
+%%   <<"usageText">> => string()
+%% }
+-type repository_catalog_data() :: #{binary() => any()}.
+
+%% Example:
+%% repository_catalog_data_input() :: #{
+%%   <<"aboutText">> => string(),
+%%   <<"architectures">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"logoImageBlob">> => binary(),
+%%   <<"operatingSystems">> => list(string()),
+%%   <<"usageText">> => string()
+%% }
+-type repository_catalog_data_input() :: #{binary() => any()}.
+
+%% Example:
+%% repository_catalog_data_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_catalog_data_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_not_empty_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_not_empty_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% repository_policy_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type repository_policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% set_repository_policy_request() :: #{
+%%   <<"force">> => boolean(),
+%%   <<"policyText">> := string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> := string()
+%% }
+-type set_repository_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_repository_policy_response() :: #{
+%%   <<"policyText">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string()
+%% }
+-type set_repository_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type too_many_tags_exception() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_command_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unsupported_command_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% upload_layer_part_request() :: #{
@@ -701,169 +686,184 @@
 %% }
 -type upload_layer_part_request() :: #{binary() => any()}.
 
+%% Example:
+%% upload_layer_part_response() :: #{
+%%   <<"lastByteReceived">> => float(),
+%%   <<"registryId">> => string(),
+%%   <<"repositoryName">> => string(),
+%%   <<"uploadId">> => string()
+%% }
+-type upload_layer_part_response() :: #{binary() => any()}.
+
+%% Example:
+%% upload_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type upload_not_found_exception() :: #{binary() => any()}.
+
 -type batch_check_layer_availability_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
     unsupported_command_exception() | 
-    registry_not_found_exception().
+    server_exception() | 
+    repository_not_found_exception() | 
+    registry_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type batch_delete_image_errors() ::
-    repository_not_found_exception() | 
+    unsupported_command_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    unsupported_command_exception().
+    repository_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type complete_layer_upload_errors() ::
-    empty_upload_exception() | 
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_layer_exception() | 
-    invalid_parameter_exception() | 
-    layer_part_too_small_exception() | 
+    upload_not_found_exception() | 
     unsupported_command_exception() | 
-    layer_already_exists_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
     registry_not_found_exception() | 
-    upload_not_found_exception().
+    layer_part_too_small_exception() | 
+    layer_already_exists_exception() | 
+    invalid_parameter_exception() | 
+    invalid_layer_exception() | 
+    empty_upload_exception().
 
 -type create_repository_errors() ::
-    too_many_tags_exception() | 
-    limit_exceeded_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
     unsupported_command_exception() | 
+    too_many_tags_exception() | 
+    server_exception() | 
     repository_already_exists_exception() | 
-    invalid_tag_parameter_exception().
+    limit_exceeded_exception() | 
+    invalid_tag_parameter_exception() | 
+    invalid_parameter_exception().
 
 -type delete_repository_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
     unsupported_command_exception() | 
-    repository_not_empty_exception().
+    server_exception() | 
+    repository_not_found_exception() | 
+    repository_not_empty_exception() | 
+    invalid_parameter_exception().
 
 -type delete_repository_policy_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
     unsupported_command_exception() | 
-    repository_policy_not_found_exception().
+    server_exception() | 
+    repository_policy_not_found_exception() | 
+    repository_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type describe_image_tags_errors() ::
-    repository_not_found_exception() | 
+    unsupported_command_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    unsupported_command_exception().
+    repository_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type describe_images_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
     unsupported_command_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
+    invalid_parameter_exception() | 
     image_not_found_exception().
 
 -type describe_registries_errors() ::
+    unsupported_command_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    unsupported_command_exception().
+    invalid_parameter_exception().
 
 -type describe_repositories_errors() ::
-    repository_not_found_exception() | 
+    unsupported_command_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    unsupported_command_exception().
+    repository_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type get_authorization_token_errors() ::
+    unsupported_command_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    unsupported_command_exception().
+    invalid_parameter_exception().
 
 -type get_registry_catalog_data_errors() ::
-    server_exception() | 
-    unsupported_command_exception().
+    unsupported_command_exception() | 
+    server_exception().
 
 -type get_repository_catalog_data_errors() ::
-    repository_not_found_exception() | 
+    unsupported_command_exception() | 
     server_exception() | 
+    repository_not_found_exception() | 
     repository_catalog_data_not_found_exception() | 
-    invalid_parameter_exception() | 
-    unsupported_command_exception().
+    invalid_parameter_exception().
 
 -type get_repository_policy_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
     unsupported_command_exception() | 
-    repository_policy_not_found_exception().
+    server_exception() | 
+    repository_policy_not_found_exception() | 
+    repository_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type initiate_layer_upload_errors() ::
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
     unsupported_command_exception() | 
-    registry_not_found_exception().
+    server_exception() | 
+    repository_not_found_exception() | 
+    registry_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type list_tags_for_resource_errors() ::
-    repository_not_found_exception() | 
+    unsupported_command_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    unsupported_command_exception().
+    repository_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type put_image_errors() ::
-    limit_exceeded_exception() | 
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
-    referenced_images_not_found_exception() | 
-    image_tag_already_exists_exception() | 
     unsupported_command_exception() | 
-    layers_not_found_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
     registry_not_found_exception() | 
-    image_already_exists_exception() | 
-    image_digest_does_not_match_exception().
+    referenced_images_not_found_exception() | 
+    limit_exceeded_exception() | 
+    layers_not_found_exception() | 
+    invalid_parameter_exception() | 
+    image_tag_already_exists_exception() | 
+    image_digest_does_not_match_exception() | 
+    image_already_exists_exception().
 
 -type put_registry_catalog_data_errors() ::
+    unsupported_command_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    unsupported_command_exception().
+    invalid_parameter_exception().
 
 -type put_repository_catalog_data_errors() ::
-    repository_not_found_exception() | 
+    unsupported_command_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    unsupported_command_exception().
+    repository_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type set_repository_policy_errors() ::
-    repository_not_found_exception() | 
+    unsupported_command_exception() | 
     server_exception() | 
-    invalid_parameter_exception() | 
-    unsupported_command_exception().
+    repository_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type tag_resource_errors() ::
-    too_many_tags_exception() | 
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
     unsupported_command_exception() | 
-    invalid_tag_parameter_exception().
+    too_many_tags_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
+    invalid_tag_parameter_exception() | 
+    invalid_parameter_exception().
 
 -type untag_resource_errors() ::
-    too_many_tags_exception() | 
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
     unsupported_command_exception() | 
-    invalid_tag_parameter_exception().
+    too_many_tags_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
+    invalid_tag_parameter_exception() | 
+    invalid_parameter_exception().
 
 -type upload_layer_part_errors() ::
-    limit_exceeded_exception() | 
-    repository_not_found_exception() | 
-    server_exception() | 
-    invalid_parameter_exception() | 
-    invalid_layer_part_exception() | 
+    upload_not_found_exception() | 
     unsupported_command_exception() | 
+    server_exception() | 
+    repository_not_found_exception() | 
     registry_not_found_exception() | 
-    upload_not_found_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_layer_part_exception().
 
 %%====================================================================
 %% API

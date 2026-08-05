@@ -45,36 +45,128 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
+
+%% Example:
+%% aws_vpc_configuration() :: #{
+%%   <<"AssignPublicIp">> => string(),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Subnets">> => list(string())
+%% }
+-type aws_vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_strategy_item() :: #{
+%%   <<"base">> => integer(),
+%%   <<"capacityProvider">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type capacity_provider_strategy_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schedule_group_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_schedule_group_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schedule_group_output() :: #{
+%%   <<"ScheduleGroupArn">> := string()
+%% }
+-type create_schedule_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schedule_input() :: #{
+%%   <<"ActionAfterCompletion">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"FlexibleTimeWindow">> := flexible_time_window(),
+%%   <<"GroupName">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"ScheduleExpression">> := string(),
+%%   <<"ScheduleExpressionTimezone">> => string(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"Target">> := target()
+%% }
+-type create_schedule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schedule_output() :: #{
+%%   <<"ScheduleArn">> := string()
+%% }
+-type create_schedule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% dead_letter_config() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type dead_letter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_schedule_group_input() :: #{
+%%   <<"ClientToken">> => string()
+%% }
+-type delete_schedule_group_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_schedule_group_output() :: #{}
 -type delete_schedule_group_output() :: #{}.
+
+
+%% Example:
+%% delete_schedule_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"GroupName">> => string()
+%% }
+-type delete_schedule_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_schedule_output() :: #{}
 -type delete_schedule_output() :: #{}.
 
-%% Example:
-%% get_schedule_group_input() :: #{}
--type get_schedule_group_input() :: #{}.
-
 
 %% Example:
-%% schedule_group_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"LastModificationDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => string()
+%% ecs_parameters() :: #{
+%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()),
+%%   <<"EnableECSManagedTags">> => boolean(),
+%%   <<"EnableExecuteCommand">> => boolean(),
+%%   <<"Group">> => string(),
+%%   <<"LaunchType">> => string(),
+%%   <<"NetworkConfiguration">> => network_configuration(),
+%%   <<"PlacementConstraints">> => list(placement_constraint()),
+%%   <<"PlacementStrategy">> => list(placement_strategy()),
+%%   <<"PlatformVersion">> => string(),
+%%   <<"PropagateTags">> => string(),
+%%   <<"ReferenceId">> => string(),
+%%   <<"Tags">> => list(map()),
+%%   <<"TaskCount">> => integer(),
+%%   <<"TaskDefinitionArn">> => string()
 %% }
--type schedule_group_summary() :: #{binary() => any()}.
+-type ecs_parameters() :: #{binary() => any()}.
 
 
 %% Example:
-%% sage_maker_pipeline_parameter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
+%% event_bridge_parameters() :: #{
+%%   <<"DetailType">> => string(),
+%%   <<"Source">> => string()
 %% }
--type sage_maker_pipeline_parameter() :: #{binary() => any()}.
+-type event_bridge_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -84,12 +176,27 @@
 %% }
 -type flexible_time_window() :: #{binary() => any()}.
 
+%% Example:
+%% get_schedule_group_input() :: #{}
+-type get_schedule_group_input() :: #{}.
+
 
 %% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => list(tag())
+%% get_schedule_group_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModificationDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string()
 %% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
+-type get_schedule_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_schedule_input() :: #{
+%%   <<"GroupName">> => string()
+%% }
+-type get_schedule_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -114,18 +221,174 @@
 
 
 %% Example:
-%% delete_schedule_input() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"GroupName">> => string()
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type delete_schedule_input() :: #{binary() => any()}.
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_schedule_output() :: #{
-%%   <<"ScheduleArn">> := string()
+%% kinesis_parameters() :: #{
+%%   <<"PartitionKey">> => string()
 %% }
--type update_schedule_output() :: #{binary() => any()}.
+-type kinesis_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schedule_groups_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_schedule_groups_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schedule_groups_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduleGroups">> := list(schedule_group_summary())
+%% }
+-type list_schedule_groups_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schedules_input() :: #{
+%%   <<"GroupName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NamePrefix">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"State">> => string()
+%% }
+-type list_schedules_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schedules_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Schedules">> := list(schedule_summary())
+%% }
+-type list_schedules_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% placement_constraint() :: #{
+%%   <<"expression">> => string(),
+%%   <<"type">> => string()
+%% }
+-type placement_constraint() :: #{binary() => any()}.
+
+
+%% Example:
+%% placement_strategy() :: #{
+%%   <<"field">> => string(),
+%%   <<"type">> => string()
+%% }
+-type placement_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_policy() :: #{
+%%   <<"MaximumEventAgeInSeconds">> => integer(),
+%%   <<"MaximumRetryAttempts">> => integer()
+%% }
+-type retry_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_pipeline_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type sage_maker_pipeline_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% sage_maker_pipeline_parameters() :: #{
+%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter())
+%% }
+-type sage_maker_pipeline_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModificationDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string()
+%% }
+-type schedule_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"GroupName">> => string(),
+%%   <<"LastModificationDate">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => string(),
+%%   <<"Target">> => target_summary()
+%% }
+-type schedule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sqs_parameters() :: #{
+%%   <<"MessageGroupId">> => string()
+%% }
+-type sqs_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
 
 
 %% Example:
@@ -145,58 +408,28 @@
 
 
 %% Example:
-%% get_schedule_group_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"LastModificationDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => string()
-%% }
--type get_schedule_group_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_schedule_groups_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ScheduleGroups">> := list(schedule_group_summary())
-%% }
--type list_schedule_groups_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% target_summary() :: #{
 %%   <<"Arn">> => string()
 %% }
 -type target_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
 
 
 %% Example:
@@ -218,150 +451,10 @@
 
 
 %% Example:
-%% sage_maker_pipeline_parameters() :: #{
-%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter())
+%% update_schedule_output() :: #{
+%%   <<"ScheduleArn">> := string()
 %% }
--type sage_maker_pipeline_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% sqs_parameters() :: #{
-%%   <<"MessageGroupId">> => string()
-%% }
--type sqs_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% schedule_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"GroupName">> => string(),
-%%   <<"LastModificationDate">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"State">> => string(),
-%%   <<"Target">> => target_summary()
-%% }
--type schedule_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_bridge_parameters() :: #{
-%%   <<"DetailType">> => string(),
-%%   <<"Source">> => string()
-%% }
--type event_bridge_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_schedule_input() :: #{
-%%   <<"ActionAfterCompletion">> => string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"EndDate">> => non_neg_integer(),
-%%   <<"FlexibleTimeWindow">> := flexible_time_window(),
-%%   <<"GroupName">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"ScheduleExpression">> := string(),
-%%   <<"ScheduleExpressionTimezone">> => string(),
-%%   <<"StartDate">> => non_neg_integer(),
-%%   <<"State">> => string(),
-%%   <<"Target">> := target()
-%% }
--type create_schedule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_schedule_group_input() :: #{
-%%   <<"ClientToken">> => string()
-%% }
--type delete_schedule_group_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_schedule_input() :: #{
-%%   <<"GroupName">> => string()
-%% }
--type get_schedule_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% capacity_provider_strategy_item() :: #{
-%%   <<"base">> => integer(),
-%%   <<"capacityProvider">> => string(),
-%%   <<"weight">> => integer()
-%% }
--type capacity_provider_strategy_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% placement_constraint() :: #{
-%%   <<"expression">> => string(),
-%%   <<"type">> => string()
-%% }
--type placement_constraint() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_configuration() :: #{
-%%   <<"awsvpcConfiguration">> => aws_vpc_configuration()
-%% }
--type network_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_schedule_group_output() :: #{
-%%   <<"ScheduleGroupArn">> := string()
-%% }
--type create_schedule_group_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_schedule_groups_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NamePrefix">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_schedule_groups_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_schedules_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Schedules">> := list(schedule_summary())
-%% }
--type list_schedules_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% dead_letter_config() :: #{
-%%   <<"Arn">> => string()
-%% }
--type dead_letter_config() :: #{binary() => any()}.
+-type update_schedule_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -370,176 +463,83 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% list_schedules_input() :: #{
-%%   <<"GroupName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NamePrefix">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"State">> => string()
-%% }
--type list_schedules_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_schedule_output() :: #{
-%%   <<"ScheduleArn">> := string()
-%% }
--type create_schedule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% aws_vpc_configuration() :: #{
-%%   <<"AssignPublicIp">> => string(),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"Subnets">> => list(string())
-%% }
--type aws_vpc_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_parameters() :: #{
-%%   <<"PartitionKey">> => string()
-%% }
--type kinesis_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_schedule_group_input() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_schedule_group_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_policy() :: #{
-%%   <<"MaximumEventAgeInSeconds">> => integer(),
-%%   <<"MaximumRetryAttempts">> => integer()
-%% }
--type retry_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% placement_strategy() :: #{
-%%   <<"field">> => string(),
-%%   <<"type">> => string()
-%% }
--type placement_strategy() :: #{binary() => any()}.
-
-
-%% Example:
-%% ecs_parameters() :: #{
-%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()),
-%%   <<"EnableECSManagedTags">> => boolean(),
-%%   <<"EnableExecuteCommand">> => boolean(),
-%%   <<"Group">> => string(),
-%%   <<"LaunchType">> => string(),
-%%   <<"NetworkConfiguration">> => network_configuration(),
-%%   <<"PlacementConstraints">> => list(placement_constraint()),
-%%   <<"PlacementStrategy">> => list(placement_strategy()),
-%%   <<"PlatformVersion">> => string(),
-%%   <<"PropagateTags">> => string(),
-%%   <<"ReferenceId">> => string(),
-%%   <<"Tags">> => list(map()),
-%%   <<"TaskCount">> => integer(),
-%%   <<"TaskDefinitionArn">> => string()
-%% }
--type ecs_parameters() :: #{binary() => any()}.
-
 -type create_schedule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_schedule_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_schedule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_schedule_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_schedule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_schedule_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_schedule_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_schedules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_schedule_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 %%====================================================================

@@ -146,877 +146,16 @@
 
 
 %% Example:
-%% update_fleet_output() :: #{
-%%   <<"fleet">> => fleet()
-%% }
--type update_fleet_output() :: #{binary() => any()}.
-
-%% Example:
-%% project_source_version() :: #{
-%%   <<"sourceIdentifier">> => string(),
-%%   <<"sourceVersion">> => string()
-%% }
--type project_source_version() :: #{binary() => any()}.
-
-%% Example:
-%% phase_context() :: #{
-%%   <<"message">> => string(),
-%%   <<"statusCode">> => string()
-%% }
--type phase_context() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_sandboxes_input() :: #{
-%%   <<"ids">> := list(string())
-%% }
--type batch_get_sandboxes_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_fleet_output() :: #{
-
-%% }
--type delete_fleet_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_curated_environment_images_input() :: #{
-
-%% }
--type list_curated_environment_images_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_command_executions_for_sandbox_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sandboxId">> := string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_command_executions_for_sandbox_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_report_group_input() :: #{
-%%   <<"arn">> := string(),
-%%   <<"deleteReports">> => boolean()
-%% }
--type delete_report_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_build_batches_input() :: #{
-%%   <<"ids">> := list(string())
-%% }
--type batch_get_build_batches_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_report_groups_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_report_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_builds_for_project_output() :: #{
-%%   <<"ids">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_builds_for_project_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_build_batch_input() :: #{
-%%   <<"id">> := string()
-%% }
--type stop_build_batch_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_build_batches_for_project_input() :: #{
-%%   <<"filter">> => build_batch_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"projectName">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_build_batches_for_project_input() :: #{binary() => any()}.
-
-%% Example:
-%% command_execution() :: #{
-%%   <<"command">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"exitCode">> => string(),
-%%   <<"id">> => string(),
-%%   <<"logs">> => logs_location(),
-%%   <<"sandboxArn">> => string(),
-%%   <<"sandboxId">> => string(),
-%%   <<"standardErrContent">> => string(),
-%%   <<"standardOutputContent">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"submitTime">> => non_neg_integer(),
-%%   <<"type">> => list(any())
-%% }
--type command_execution() :: #{binary() => any()}.
-
-%% Example:
-%% delete_build_batch_input() :: #{
-%%   <<"id">> := string()
-%% }
--type delete_build_batch_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_command_executions_output() :: #{
-%%   <<"commandExecutions">> => list(command_execution()),
-%%   <<"commandExecutionsNotFound">> => list(string())
-%% }
--type batch_get_command_executions_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_webhook_output() :: #{
-
-%% }
--type delete_webhook_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_sandbox_output() :: #{
-%%   <<"sandbox">> => sandbox()
-%% }
--type stop_sandbox_output() :: #{binary() => any()}.
-
-%% Example:
-%% git_submodules_config() :: #{
-%%   <<"fetchSubmodules">> => boolean()
-%% }
--type git_submodules_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_build_batches_output() :: #{
-%%   <<"ids">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_build_batches_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_sandbox_connection_input() :: #{
-%%   <<"sandboxId">> := string()
-%% }
--type start_sandbox_connection_input() :: #{binary() => any()}.
-
-%% Example:
-%% proxy_configuration() :: #{
-%%   <<"defaultBehavior">> => list(any()),
-%%   <<"orderedProxyRules">> => list(fleet_proxy_rule())
-%% }
--type proxy_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% logs_config() :: #{
-%%   <<"cloudWatchLogs">> => cloud_watch_logs_config(),
-%%   <<"s3Logs">> => s3_logs_config()
-%% }
--type logs_config() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_output() :: #{
-%%   <<"policy">> => string()
-%% }
--type get_resource_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_fleets_output() :: #{
-%%   <<"fleets">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_fleets_output() :: #{binary() => any()}.
-
-%% Example:
-%% build() :: #{
-%%   <<"buildStatus">> => list(any()),
-%%   <<"buildNumber">> => float(),
-%%   <<"buildBatchArn">> => string(),
-%%   <<"exportedEnvironmentVariables">> => list(exported_environment_variable()),
-%%   <<"environment">> => project_environment(),
-%%   <<"projectName">> => string(),
-%%   <<"reportArns">> => list(string()),
-%%   <<"sourceVersion">> => string(),
-%%   <<"id">> => string(),
-%%   <<"debugSession">> => debug_session(),
-%%   <<"networkInterface">> => network_interface(),
-%%   <<"vpcConfig">> => vpc_config(),
-%%   <<"encryptionKey">> => string(),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()),
-%%   <<"secondarySourceVersions">> => list(project_source_version()),
-%%   <<"queuedTimeoutInMinutes">> => integer(),
-%%   <<"initiator">> => string(),
-%%   <<"buildComplete">> => boolean(),
-%%   <<"currentPhase">> => string(),
-%%   <<"secondaryArtifacts">> => list(build_artifacts()),
-%%   <<"phases">> => list(build_phase()),
-%%   <<"arn">> => string(),
-%%   <<"resolvedSourceVersion">> => string(),
-%%   <<"autoRetryConfig">> => auto_retry_config(),
-%%   <<"timeoutInMinutes">> => integer(),
-%%   <<"secondarySources">> => list(project_source()),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"serviceRole">> => string(),
-%%   <<"source">> => project_source(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"artifacts">> => build_artifacts(),
-%%   <<"logs">> => logs_location(),
-%%   <<"cache">> => project_cache()
-%% }
--type build() :: #{binary() => any()}.
-
-%% Example:
-%% update_project_input() :: #{
-%%   <<"artifacts">> => project_artifacts(),
-%%   <<"autoRetryLimit">> => integer(),
-%%   <<"badgeEnabled">> => boolean(),
-%%   <<"buildBatchConfig">> => project_build_batch_config(),
-%%   <<"cache">> => project_cache(),
-%%   <<"concurrentBuildLimit">> => integer(),
-%%   <<"description">> => string(),
-%%   <<"encryptionKey">> => string(),
-%%   <<"environment">> => project_environment(),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()),
-%%   <<"logsConfig">> => logs_config(),
-%%   <<"name">> := string(),
-%%   <<"queuedTimeoutInMinutes">> => integer(),
-%%   <<"secondaryArtifacts">> => list(project_artifacts()),
-%%   <<"secondarySourceVersions">> => list(project_source_version()),
-%%   <<"secondarySources">> => list(project_source()),
-%%   <<"serviceRole">> => string(),
-%%   <<"source">> => project_source(),
-%%   <<"sourceVersion">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"timeoutInMinutes">> => integer(),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type update_project_input() :: #{binary() => any()}.
-
-%% Example:
-%% build_group() :: #{
-%%   <<"currentBuildSummary">> => build_summary(),
-%%   <<"dependsOn">> => list(string()),
-%%   <<"identifier">> => string(),
-%%   <<"ignoreFailure">> => boolean(),
-%%   <<"priorBuildSummaryList">> => list(build_summary())
-%% }
--type build_group() :: #{binary() => any()}.
-
-%% Example:
-%% list_builds_for_project_input() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"projectName">> := string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_builds_for_project_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_builds_input() :: #{
-%%   <<"ids">> := list(string())
-%% }
--type batch_get_builds_input() :: #{binary() => any()}.
-
-%% Example:
-%% stop_build_batch_output() :: #{
-%%   <<"buildBatch">> => build_batch()
-%% }
--type stop_build_batch_output() :: #{binary() => any()}.
-
-%% Example:
-%% project_file_system_location() :: #{
-%%   <<"identifier">> => string(),
-%%   <<"location">> => string(),
-%%   <<"mountOptions">> => string(),
-%%   <<"mountPoint">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type project_file_system_location() :: #{binary() => any()}.
-
-%% Example:
-%% list_reports_input() :: #{
-%%   <<"filter">> => report_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_reports_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_source_credentials_input() :: #{
-
-%% }
--type list_source_credentials_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_report_groups_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reportGroups">> => list(string())
-%% }
--type list_report_groups_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_shared_projects_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_shared_projects_input() :: #{binary() => any()}.
-
-%% Example:
-%% environment_variable() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type environment_variable() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_logs_config() :: #{
-%%   <<"groupName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"streamName">> => string()
-%% }
--type cloud_watch_logs_config() :: #{binary() => any()}.
-
-%% Example:
-%% docker_server_status() :: #{
-%%   <<"message">> => string(),
-%%   <<"status">> => string()
-%% }
--type docker_server_status() :: #{binary() => any()}.
-
-%% Example:
-%% network_interface() :: #{
-%%   <<"networkInterfaceId">> => string(),
-%%   <<"subnetId">> => string()
-%% }
--type network_interface() :: #{binary() => any()}.
-
-%% Example:
-%% retry_build_output() :: #{
-%%   <<"build">> => build()
-%% }
--type retry_build_output() :: #{binary() => any()}.
-
-%% Example:
-%% report_with_raw_data() :: #{
-%%   <<"data">> => string(),
-%%   <<"reportArn">> => string()
-%% }
--type report_with_raw_data() :: #{binary() => any()}.
-
-%% Example:
-%% sandbox_session_phase() :: #{
-%%   <<"contexts">> => list(phase_context()),
-%%   <<"durationInSeconds">> => float(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"phaseStatus">> => list(any()),
-%%   <<"phaseType">> => string(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type sandbox_session_phase() :: #{binary() => any()}.
-
-%% Example:
-%% create_report_group_output() :: #{
-%%   <<"reportGroup">> => report_group()
-%% }
--type create_report_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_fleet_input() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_fleet_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_webhook_output() :: #{
-%%   <<"webhook">> => webhook()
-%% }
--type update_webhook_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_report_group_trend_input() :: #{
-%%   <<"numOfReports">> => integer(),
-%%   <<"reportGroupArn">> := string(),
-%%   <<"trendField">> := list(any())
-%% }
--type get_report_group_trend_input() :: #{binary() => any()}.
-
-%% Example:
-%% project_artifacts() :: #{
-%%   <<"artifactIdentifier">> => string(),
-%%   <<"bucketOwnerAccess">> => list(any()),
-%%   <<"encryptionDisabled">> => boolean(),
-%%   <<"location">> => string(),
-%%   <<"name">> => string(),
-%%   <<"namespaceType">> => list(any()),
-%%   <<"overrideArtifactName">> => boolean(),
-%%   <<"packaging">> => list(any()),
-%%   <<"path">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type project_artifacts() :: #{binary() => any()}.
-
-%% Example:
-%% exported_environment_variable() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => string()
-%% }
--type exported_environment_variable() :: #{binary() => any()}.
-
-%% Example:
-%% list_shared_projects_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"projects">> => list(string())
-%% }
--type list_shared_projects_output() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_builds_output() :: #{
-%%   <<"builds">> => list(build()),
-%%   <<"buildsNotFound">> => list(string())
-%% }
--type batch_get_builds_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_project_output() :: #{
-%%   <<"project">> => project()
-%% }
--type create_project_output() :: #{binary() => any()}.
-
-%% Example:
-%% stop_build_output() :: #{
-%%   <<"build">> => build()
-%% }
--type stop_build_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_report_output() :: #{
-
-%% }
--type delete_report_output() :: #{binary() => any()}.
-
-%% Example:
-%% environment_platform() :: #{
-%%   <<"languages">> => list(environment_language()),
-%%   <<"platform">> => list(any())
-%% }
--type environment_platform() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_output() :: #{
-%%   <<"resourceArn">> => string()
-%% }
--type put_resource_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_builds_input() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_builds_input() :: #{binary() => any()}.
-
-%% Example:
-%% account_suspended_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type account_suspended_exception() :: #{binary() => any()}.
-
-%% Example:
-%% report_export_config() :: #{
-%%   <<"exportConfigType">> => list(any()),
-%%   <<"s3Destination">> => s3_report_export_config()
-%% }
--type report_export_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_code_coverages_input() :: #{
-%%   <<"maxLineCoveragePercentage">> => float(),
-%%   <<"maxResults">> => integer(),
-%%   <<"minLineCoveragePercentage">> => float(),
-%%   <<"nextToken">> => string(),
-%%   <<"reportArn">> := string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type describe_code_coverages_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_source_credentials_input() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_source_credentials_input() :: #{binary() => any()}.
-
-%% Example:
-%% code_coverage_report_summary() :: #{
-%%   <<"branchCoveragePercentage">> => float(),
-%%   <<"branchesCovered">> => integer(),
-%%   <<"branchesMissed">> => integer(),
-%%   <<"lineCoveragePercentage">> => float(),
-%%   <<"linesCovered">> => integer(),
-%%   <<"linesMissed">> => integer()
-%% }
--type code_coverage_report_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_input() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type delete_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% project_cache() :: #{
-%%   <<"cacheNamespace">> => string(),
-%%   <<"location">> => string(),
-%%   <<"modes">> => list(list(any())()),
-%%   <<"type">> => list(any())
-%% }
--type project_cache() :: #{binary() => any()}.
-
-%% Example:
-%% start_command_execution_output() :: #{
-%%   <<"commandExecution">> => command_execution()
-%% }
--type start_command_execution_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_command_executions_for_sandbox_output() :: #{
-%%   <<"commandExecutions">> => list(command_execution()),
-%%   <<"nextToken">> => string()
-%% }
--type list_command_executions_for_sandbox_output() :: #{binary() => any()}.
-
-%% Example:
-%% build_not_deleted() :: #{
-%%   <<"id">> => string(),
-%%   <<"statusCode">> => string()
-%% }
--type build_not_deleted() :: #{binary() => any()}.
-
-%% Example:
-%% test_case() :: #{
-%%   <<"durationInNanoSeconds">> => float(),
-%%   <<"expired">> => non_neg_integer(),
-%%   <<"message">> => string(),
-%%   <<"name">> => string(),
-%%   <<"prefix">> => string(),
-%%   <<"reportArn">> => string(),
-%%   <<"status">> => string(),
-%%   <<"testRawDataPath">> => string(),
-%%   <<"testSuiteName">> => string()
-%% }
--type test_case() :: #{binary() => any()}.
-
-%% Example:
-%% update_project_visibility_input() :: #{
-%%   <<"projectArn">> := string(),
-%%   <<"projectVisibility">> := list(any()),
-%%   <<"resourceAccessRole">> => string()
-%% }
--type update_project_visibility_input() :: #{binary() => any()}.
-
-%% Example:
-%% fleet_status() :: #{
-%%   <<"context">> => list(any()),
-%%   <<"message">> => string(),
-%%   <<"statusCode">> => list(any())
-%% }
--type fleet_status() :: #{binary() => any()}.
-
-%% Example:
-%% delete_build_batch_output() :: #{
-%%   <<"buildsDeleted">> => list(string()),
-%%   <<"buildsNotDeleted">> => list(build_not_deleted()),
-%%   <<"statusCode">> => string()
-%% }
--type delete_build_batch_output() :: #{binary() => any()}.
-
-%% Example:
-%% build_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"buildStatus">> => list(any()),
-%%   <<"primaryArtifact">> => resolved_artifact(),
-%%   <<"requestedOn">> => non_neg_integer(),
-%%   <<"secondaryArtifacts">> => list(resolved_artifact())
-%% }
--type build_summary() :: #{binary() => any()}.
-
-%% Example:
-%% import_source_credentials_input() :: #{
-%%   <<"authType">> := list(any()),
-%%   <<"serverType">> := list(any()),
-%%   <<"shouldOverwrite">> => boolean(),
-%%   <<"token">> := string(),
-%%   <<"username">> => string()
-%% }
--type import_source_credentials_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_reports_output() :: #{
-%%   <<"reports">> => list(report()),
-%%   <<"reportsNotFound">> => list(string())
-%% }
--type batch_get_reports_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_reports_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reports">> => list(string())
-%% }
--type list_reports_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_webhook_output() :: #{
-%%   <<"webhook">> => webhook()
-%% }
--type create_webhook_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_command_execution_input() :: #{
-%%   <<"command">> := string(),
-%%   <<"sandboxId">> := string(),
-%%   <<"type">> => list(any())
-%% }
--type start_command_execution_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_report_group_output() :: #{
-
-%% }
--type delete_report_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_build_input() :: #{
-%%   <<"cacheOverride">> => project_cache(),
-%%   <<"imagePullCredentialsTypeOverride">> => list(any()),
-%%   <<"idempotencyToken">> => string(),
-%%   <<"sourceAuthOverride">> => source_auth(),
-%%   <<"projectName">> := string(),
-%%   <<"encryptionKeyOverride">> => string(),
-%%   <<"logsConfigOverride">> => logs_config(),
-%%   <<"timeoutInMinutesOverride">> => integer(),
-%%   <<"sourceVersion">> => string(),
-%%   <<"secondarySourcesOverride">> => list(project_source()),
-%%   <<"reportBuildStatusOverride">> => boolean(),
-%%   <<"fleetOverride">> => project_fleet(),
-%%   <<"secondarySourcesVersionOverride">> => list(project_source_version()),
-%%   <<"sourceLocationOverride">> => string(),
-%%   <<"autoRetryLimitOverride">> => integer(),
-%%   <<"gitCloneDepthOverride">> => integer(),
-%%   <<"buildspecOverride">> => string(),
-%%   <<"privilegedModeOverride">> => boolean(),
-%%   <<"debugSessionEnabled">> => boolean(),
-%%   <<"imageOverride">> => string(),
-%%   <<"certificateOverride">> => string(),
-%%   <<"hostKernelOverride">> => list(any()),
-%%   <<"artifactsOverride">> => project_artifacts(),
-%%   <<"environmentTypeOverride">> => list(any()),
-%%   <<"sourceTypeOverride">> => list(any()),
-%%   <<"secondaryArtifactsOverride">> => list(project_artifacts()),
-%%   <<"gitSubmodulesConfigOverride">> => git_submodules_config(),
-%%   <<"computeTypeOverride">> => list(any()),
-%%   <<"serviceRoleOverride">> => string(),
-%%   <<"buildStatusConfigOverride">> => build_status_config(),
-%%   <<"insecureSslOverride">> => boolean(),
-%%   <<"queuedTimeoutInMinutesOverride">> => integer(),
-%%   <<"registryCredentialOverride">> => registry_credential(),
-%%   <<"environmentVariablesOverride">> => list(environment_variable())
-%% }
--type start_build_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_reports_for_report_group_input() :: #{
-%%   <<"filter">> => report_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"reportGroupArn">> := string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_reports_for_report_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_builds_input() :: #{
-%%   <<"ids">> := list(string())
-%% }
--type batch_delete_builds_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_curated_environment_images_output() :: #{
-%%   <<"platforms">> => list(environment_platform())
-%% }
--type list_curated_environment_images_output() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_code_coverages_output() :: #{
-%%   <<"codeCoverages">> => list(code_coverage()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_code_coverages_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_shared_report_groups_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reportGroups">> => list(string())
-%% }
--type list_shared_report_groups_output() :: #{binary() => any()}.
-
-%% Example:
-%% retry_build_batch_output() :: #{
-%%   <<"buildBatch">> => build_batch()
-%% }
--type retry_build_batch_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
 %% account_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type account_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% retry_build_batch_input() :: #{
-%%   <<"id">> => string(),
-%%   <<"idempotencyToken">> => string(),
-%%   <<"retryType">> => list(any())
+%% account_suspended_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type retry_build_batch_input() :: #{binary() => any()}.
-
-%% Example:
-%% debug_session() :: #{
-%%   <<"sessionEnabled">> => boolean(),
-%%   <<"sessionTarget">> => string()
-%% }
--type debug_session() :: #{binary() => any()}.
-
-%% Example:
-%% project() :: #{
-%%   <<"arn">> => string(),
-%%   <<"artifacts">> => project_artifacts(),
-%%   <<"autoRetryLimit">> => integer(),
-%%   <<"badge">> => project_badge(),
-%%   <<"buildBatchConfig">> => project_build_batch_config(),
-%%   <<"cache">> => project_cache(),
-%%   <<"concurrentBuildLimit">> => integer(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"encryptionKey">> => string(),
-%%   <<"environment">> => project_environment(),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()),
-%%   <<"lastModified">> => non_neg_integer(),
-%%   <<"logsConfig">> => logs_config(),
-%%   <<"name">> => string(),
-%%   <<"projectVisibility">> => list(any()),
-%%   <<"publicProjectAlias">> => string(),
-%%   <<"queuedTimeoutInMinutes">> => integer(),
-%%   <<"resourceAccessRole">> => string(),
-%%   <<"secondaryArtifacts">> => list(project_artifacts()),
-%%   <<"secondarySourceVersions">> => list(project_source_version()),
-%%   <<"secondarySources">> => list(project_source()),
-%%   <<"serviceRole">> => string(),
-%%   <<"source">> => project_source(),
-%%   <<"sourceVersion">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"timeoutInMinutes">> => integer(),
-%%   <<"vpcConfig">> => vpc_config(),
-%%   <<"webhook">> => webhook()
-%% }
--type project() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_input() :: #{
-%%   <<"policy">> := string(),
-%%   <<"resourceArn">> := string()
-%% }
--type put_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_projects_output() :: #{
-%%   <<"projects">> => list(project()),
-%%   <<"projectsNotFound">> => list(string())
-%% }
--type batch_get_projects_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_projects_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"projects">> => list(string())
-%% }
--type list_projects_output() :: #{binary() => any()}.
-
-%% Example:
-%% start_sandbox_output() :: #{
-%%   <<"sandbox">> => sandbox()
-%% }
--type start_sandbox_output() :: #{binary() => any()}.
-
-%% Example:
-%% project_build_batch_config() :: #{
-%%   <<"batchReportMode">> => list(any()),
-%%   <<"combineArtifacts">> => boolean(),
-%%   <<"restrictions">> => batch_restrictions(),
-%%   <<"serviceRole">> => string(),
-%%   <<"timeoutInMins">> => integer()
-%% }
--type project_build_batch_config() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_build_batches_output() :: #{
-%%   <<"buildBatches">> => list(build_batch()),
-%%   <<"buildBatchesNotFound">> => list(string())
-%% }
--type batch_get_build_batches_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_report_group_output() :: #{
-%%   <<"reportGroup">> => report_group()
-%% }
--type update_report_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalidate_project_cache_input() :: #{
-%%   <<"projectName">> := string()
-%% }
--type invalidate_project_cache_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_sandbox_connection_output() :: #{
-%%   <<"ssmSession">> => s_smsession()
-%% }
--type start_sandbox_connection_output() :: #{binary() => any()}.
-
-%% Example:
-%% target_tracking_scaling_configuration() :: #{
-%%   <<"metricType">> => list(any()),
-%%   <<"targetValue">> => float()
-%% }
--type target_tracking_scaling_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_test_cases_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"testCases">> => list(test_case())
-%% }
--type describe_test_cases_output() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_config() :: #{
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnets">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type vpc_config() :: #{binary() => any()}.
+-type account_suspended_exception() :: #{binary() => any()}.
 
 %% Example:
 %% auto_retry_config() :: #{
@@ -1028,279 +167,43 @@
 -type auto_retry_config() :: #{binary() => any()}.
 
 %% Example:
-%% s3_logs_config() :: #{
-%%   <<"bucketOwnerAccess">> => list(any()),
-%%   <<"encryptionDisabled">> => boolean(),
-%%   <<"location">> => string(),
-%%   <<"status">> => list(any())
+%% batch_delete_builds_input() :: #{
+%%   <<"ids">> := list(string())
 %% }
--type s3_logs_config() :: #{binary() => any()}.
+-type batch_delete_builds_input() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_input_exception() :: #{
-%%   <<"message">> => string()
+%% batch_delete_builds_output() :: #{
+%%   <<"buildsDeleted">> => list(string()),
+%%   <<"buildsNotDeleted">> => list(build_not_deleted())
 %% }
--type invalid_input_exception() :: #{binary() => any()}.
+-type batch_delete_builds_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_source_credentials_output() :: #{
-%%   <<"sourceCredentialsInfos">> => list(source_credentials_info())
+%% batch_get_build_batches_input() :: #{
+%%   <<"ids">> := list(string())
 %% }
--type list_source_credentials_output() :: #{binary() => any()}.
+-type batch_get_build_batches_input() :: #{binary() => any()}.
 
 %% Example:
-%% update_project_visibility_output() :: #{
-%%   <<"projectArn">> => string(),
-%%   <<"projectVisibility">> => list(any()),
-%%   <<"publicProjectAlias">> => string()
+%% batch_get_build_batches_output() :: #{
+%%   <<"buildBatches">> => list(build_batch()),
+%%   <<"buildBatchesNotFound">> => list(string())
 %% }
--type update_project_visibility_output() :: #{binary() => any()}.
+-type batch_get_build_batches_output() :: #{binary() => any()}.
 
 %% Example:
-%% start_build_output() :: #{
-%%   <<"build">> => build()
+%% batch_get_builds_input() :: #{
+%%   <<"ids">> := list(string())
 %% }
--type start_build_output() :: #{binary() => any()}.
+-type batch_get_builds_input() :: #{binary() => any()}.
 
 %% Example:
-%% o_auth_provider_exception() :: #{
-%%   <<"message">> => string()
+%% batch_get_builds_output() :: #{
+%%   <<"builds">> => list(build()),
+%%   <<"buildsNotFound">> => list(string())
 %% }
--type o_auth_provider_exception() :: #{binary() => any()}.
-
-%% Example:
-%% build_status_config() :: #{
-%%   <<"context">> => string(),
-%%   <<"targetUrl">> => string()
-%% }
--type build_status_config() :: #{binary() => any()}.
-
-%% Example:
-%% s3_report_export_config() :: #{
-%%   <<"bucket">> => string(),
-%%   <<"bucketOwner">> => string(),
-%%   <<"encryptionDisabled">> => boolean(),
-%%   <<"encryptionKey">> => string(),
-%%   <<"packaging">> => list(any()),
-%%   <<"path">> => string()
-%% }
--type s3_report_export_config() :: #{binary() => any()}.
-
-%% Example:
-%% start_build_batch_output() :: #{
-%%   <<"buildBatch">> => build_batch()
-%% }
--type start_build_batch_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_fleet_output() :: #{
-%%   <<"fleet">> => fleet()
-%% }
--type create_fleet_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_webhook_input() :: #{
-%%   <<"branchFilter">> => string(),
-%%   <<"buildType">> => list(any()),
-%%   <<"filterGroups">> => list(list(webhook_filter())()),
-%%   <<"manualCreation">> => boolean(),
-%%   <<"projectName">> := string(),
-%%   <<"pullRequestBuildPolicy">> => pull_request_build_policy(),
-%%   <<"scopeConfiguration">> => scope_configuration()
-%% }
--type create_webhook_input() :: #{binary() => any()}.
-
-%% Example:
-%% stop_sandbox_input() :: #{
-%%   <<"id">> := string()
-%% }
--type stop_sandbox_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_report_input() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_report_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_fleets_output() :: #{
-%%   <<"fleets">> => list(fleet()),
-%%   <<"fleetsNotFound">> => list(string())
-%% }
--type batch_get_fleets_output() :: #{binary() => any()}.
-
-%% Example:
-%% project_source() :: #{
-%%   <<"auth">> => source_auth(),
-%%   <<"buildStatusConfig">> => build_status_config(),
-%%   <<"buildspec">> => string(),
-%%   <<"gitCloneDepth">> => integer(),
-%%   <<"gitSubmodulesConfig">> => git_submodules_config(),
-%%   <<"insecureSsl">> => boolean(),
-%%   <<"location">> => string(),
-%%   <<"reportBuildStatus">> => boolean(),
-%%   <<"sourceIdentifier">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type project_source() :: #{binary() => any()}.
-
-%% Example:
-%% create_project_input() :: #{
-%%   <<"artifacts">> := project_artifacts(),
-%%   <<"autoRetryLimit">> => integer(),
-%%   <<"badgeEnabled">> => boolean(),
-%%   <<"buildBatchConfig">> => project_build_batch_config(),
-%%   <<"cache">> => project_cache(),
-%%   <<"concurrentBuildLimit">> => integer(),
-%%   <<"description">> => string(),
-%%   <<"encryptionKey">> => string(),
-%%   <<"environment">> := project_environment(),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()),
-%%   <<"logsConfig">> => logs_config(),
-%%   <<"name">> := string(),
-%%   <<"queuedTimeoutInMinutes">> => integer(),
-%%   <<"secondaryArtifacts">> => list(project_artifacts()),
-%%   <<"secondarySourceVersions">> => list(project_source_version()),
-%%   <<"secondarySources">> => list(project_source()),
-%%   <<"serviceRole">> := string(),
-%%   <<"source">> := project_source(),
-%%   <<"sourceVersion">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"timeoutInMinutes">> => integer(),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type create_project_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_fleets_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_fleets_input() :: #{binary() => any()}.
-
-%% Example:
-%% source_credentials_info() :: #{
-%%   <<"arn">> => string(),
-%%   <<"authType">> => list(any()),
-%%   <<"resource">> => string(),
-%%   <<"serverType">> => list(any())
-%% }
--type source_credentials_info() :: #{binary() => any()}.
-
-%% Example:
-%% update_fleet_input() :: #{
-%%   <<"arn">> := string(),
-%%   <<"baseCapacity">> => integer(),
-%%   <<"computeConfiguration">> => compute_configuration(),
-%%   <<"computeType">> => list(any()),
-%%   <<"environmentType">> => list(any()),
-%%   <<"fleetServiceRole">> => string(),
-%%   <<"imageId">> => string(),
-%%   <<"overflowBehavior">> => list(any()),
-%%   <<"proxyConfiguration">> => proxy_configuration(),
-%%   <<"scalingConfiguration">> => scaling_configuration_input(),
-%%   <<"tags">> => list(tag()),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type update_fleet_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_fleet_input() :: #{
-%%   <<"baseCapacity">> := integer(),
-%%   <<"computeConfiguration">> => compute_configuration(),
-%%   <<"computeType">> := list(any()),
-%%   <<"environmentType">> := list(any()),
-%%   <<"fleetServiceRole">> => string(),
-%%   <<"imageId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"overflowBehavior">> => list(any()),
-%%   <<"proxyConfiguration">> => proxy_configuration(),
-%%   <<"scalingConfiguration">> => scaling_configuration_input(),
-%%   <<"tags">> => list(tag()),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type create_fleet_input() :: #{binary() => any()}.
-
-%% Example:
-%% webhook_filter() :: #{
-%%   <<"excludeMatchedPattern">> => boolean(),
-%%   <<"pattern">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type webhook_filter() :: #{binary() => any()}.
-
-%% Example:
-%% build_batch_phase() :: #{
-%%   <<"contexts">> => list(phase_context()),
-%%   <<"durationInSeconds">> => float(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"phaseStatus">> => list(any()),
-%%   <<"phaseType">> => list(any()),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type build_batch_phase() :: #{binary() => any()}.
-
-%% Example:
-%% sandbox() :: #{
-%%   <<"arn">> => string(),
-%%   <<"currentSession">> => sandbox_session(),
-%%   <<"encryptionKey">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"environment">> => project_environment(),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()),
-%%   <<"id">> => string(),
-%%   <<"logConfig">> => logs_config(),
-%%   <<"projectName">> => string(),
-%%   <<"queuedTimeoutInMinutes">> => integer(),
-%%   <<"requestTime">> => non_neg_integer(),
-%%   <<"secondarySourceVersions">> => list(project_source_version()),
-%%   <<"secondarySources">> => list(project_source()),
-%%   <<"serviceRole">> => string(),
-%%   <<"source">> => project_source(),
-%%   <<"sourceVersion">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"timeoutInMinutes">> => integer(),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type sandbox() :: #{binary() => any()}.
-
-%% Example:
-%% logs_location() :: #{
-%%   <<"cloudWatchLogs">> => cloud_watch_logs_config(),
-%%   <<"cloudWatchLogsArn">> => string(),
-%%   <<"deepLink">> => string(),
-%%   <<"groupName">> => string(),
-%%   <<"s3DeepLink">> => string(),
-%%   <<"s3Logs">> => s3_logs_config(),
-%%   <<"s3LogsArn">> => string(),
-%%   <<"streamName">> => string()
-%% }
--type logs_location() :: #{binary() => any()}.
-
-%% Example:
-%% fleet_proxy_rule() :: #{
-%%   <<"effect">> => list(any()),
-%%   <<"entities">> => list(string()),
-%%   <<"type">> => list(any())
-%% }
--type fleet_proxy_rule() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_output() :: #{
-
-%% }
--type delete_resource_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% scope_configuration() :: #{
-%%   <<"domain">> => string(),
-%%   <<"name">> => string(),
-%%   <<"scope">> => list(any())
-%% }
--type scope_configuration() :: #{binary() => any()}.
+-type batch_get_builds_output() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_command_executions_input() :: #{
@@ -1310,26 +213,134 @@
 -type batch_get_command_executions_input() :: #{binary() => any()}.
 
 %% Example:
-%% code_coverage() :: #{
-%%   <<"branchCoveragePercentage">> => float(),
-%%   <<"branchesCovered">> => integer(),
-%%   <<"branchesMissed">> => integer(),
-%%   <<"expired">> => non_neg_integer(),
-%%   <<"filePath">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lineCoveragePercentage">> => float(),
-%%   <<"linesCovered">> => integer(),
-%%   <<"linesMissed">> => integer(),
-%%   <<"reportARN">> => string()
+%% batch_get_command_executions_output() :: #{
+%%   <<"commandExecutions">> => list(command_execution()),
+%%   <<"commandExecutionsNotFound">> => list(string())
 %% }
--type code_coverage() :: #{binary() => any()}.
+-type batch_get_command_executions_output() :: #{binary() => any()}.
 
 %% Example:
-%% registry_credential() :: #{
-%%   <<"credential">> => string(),
-%%   <<"credentialProvider">> => list(any())
+%% batch_get_fleets_input() :: #{
+%%   <<"names">> := list(string())
 %% }
--type registry_credential() :: #{binary() => any()}.
+-type batch_get_fleets_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_fleets_output() :: #{
+%%   <<"fleets">> => list(fleet()),
+%%   <<"fleetsNotFound">> => list(string())
+%% }
+-type batch_get_fleets_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_projects_input() :: #{
+%%   <<"names">> := list(string())
+%% }
+-type batch_get_projects_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_projects_output() :: #{
+%%   <<"projects">> => list(project()),
+%%   <<"projectsNotFound">> => list(string())
+%% }
+-type batch_get_projects_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_report_groups_input() :: #{
+%%   <<"reportGroupArns">> := list(string())
+%% }
+-type batch_get_report_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_report_groups_output() :: #{
+%%   <<"reportGroups">> => list(report_group()),
+%%   <<"reportGroupsNotFound">> => list(string())
+%% }
+-type batch_get_report_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_reports_input() :: #{
+%%   <<"reportArns">> := list(string())
+%% }
+-type batch_get_reports_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_reports_output() :: #{
+%%   <<"reports">> => list(report()),
+%%   <<"reportsNotFound">> => list(string())
+%% }
+-type batch_get_reports_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_sandboxes_input() :: #{
+%%   <<"ids">> := list(string())
+%% }
+-type batch_get_sandboxes_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_sandboxes_output() :: #{
+%%   <<"sandboxes">> => list(sandbox()),
+%%   <<"sandboxesNotFound">> => list(string())
+%% }
+-type batch_get_sandboxes_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_restrictions() :: #{
+%%   <<"computeTypesAllowed">> => list(string()),
+%%   <<"fleetsAllowed">> => list(string()),
+%%   <<"maximumBuildsAllowed">> => integer()
+%% }
+-type batch_restrictions() :: #{binary() => any()}.
+
+%% Example:
+%% build() :: #{
+%%   <<"arn">> => string(),
+%%   <<"artifacts">> => build_artifacts(),
+%%   <<"autoRetryConfig">> => auto_retry_config(),
+%%   <<"buildBatchArn">> => string(),
+%%   <<"buildComplete">> => boolean(),
+%%   <<"buildNumber">> => float(),
+%%   <<"buildStatus">> => list(any()),
+%%   <<"cache">> => project_cache(),
+%%   <<"currentPhase">> => string(),
+%%   <<"debugSession">> => debug_session(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"environment">> => project_environment(),
+%%   <<"exportedEnvironmentVariables">> => list(exported_environment_variable()),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()),
+%%   <<"id">> => string(),
+%%   <<"initiator">> => string(),
+%%   <<"logs">> => logs_location(),
+%%   <<"networkInterface">> => network_interface(),
+%%   <<"phases">> => list(build_phase()),
+%%   <<"projectName">> => string(),
+%%   <<"queuedTimeoutInMinutes">> => integer(),
+%%   <<"reportArns">> => list(string()),
+%%   <<"resolvedSourceVersion">> => string(),
+%%   <<"secondaryArtifacts">> => list(build_artifacts()),
+%%   <<"secondarySourceVersions">> => list(project_source_version()),
+%%   <<"secondarySources">> => list(project_source()),
+%%   <<"serviceRole">> => string(),
+%%   <<"source">> => project_source(),
+%%   <<"sourceVersion">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"timeoutInMinutes">> => integer(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type build() :: #{binary() => any()}.
+
+%% Example:
+%% build_artifacts() :: #{
+%%   <<"artifactIdentifier">> => string(),
+%%   <<"bucketOwnerAccess">> => list(any()),
+%%   <<"encryptionDisabled">> => boolean(),
+%%   <<"location">> => string(),
+%%   <<"md5sum">> => string(),
+%%   <<"overrideArtifactName">> => boolean(),
+%%   <<"sha256sum">> => string()
+%% }
+-type build_artifacts() :: #{binary() => any()}.
 
 %% Example:
 %% build_batch() :: #{
@@ -1368,215 +379,38 @@
 -type build_batch() :: #{binary() => any()}.
 
 %% Example:
-%% list_sandboxes_for_project_output() :: #{
-%%   <<"ids">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_sandboxes_for_project_output() :: #{binary() => any()}.
-
-%% Example:
-%% resolved_artifact() :: #{
-%%   <<"identifier">> => string(),
-%%   <<"location">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type resolved_artifact() :: #{binary() => any()}.
-
-%% Example:
-%% list_shared_report_groups_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_shared_report_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_project_output() :: #{
-%%   <<"project">> => project()
-%% }
--type update_project_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_report_group_input() :: #{
-%%   <<"exportConfig">> := report_export_config(),
-%%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"type">> := list(any())
-%% }
--type create_report_group_input() :: #{binary() => any()}.
-
-%% Example:
-%% s_smsession() :: #{
-%%   <<"sessionId">> => string(),
-%%   <<"streamUrl">> => string(),
-%%   <<"tokenValue">> => string()
-%% }
--type s_smsession() :: #{binary() => any()}.
-
-%% Example:
-%% list_sandboxes_output() :: #{
-%%   <<"ids">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_sandboxes_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_build_batches_input() :: #{
-%%   <<"filter">> => build_batch_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_build_batches_input() :: #{binary() => any()}.
-
-%% Example:
-%% test_case_filter() :: #{
-%%   <<"keyword">> => string(),
-%%   <<"status">> => string()
-%% }
--type test_case_filter() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_input() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type get_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_sandbox_input() :: #{
-%%   <<"idempotencyToken">> => string(),
-%%   <<"projectName">> => string()
-%% }
--type start_sandbox_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_projects_input() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => list(any()),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_projects_input() :: #{binary() => any()}.
-
-%% Example:
 %% build_batch_filter() :: #{
 %%   <<"status">> => list(any())
 %% }
 -type build_batch_filter() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_projects_input() :: #{
-%%   <<"names">> := list(string())
+%% build_batch_phase() :: #{
+%%   <<"contexts">> => list(phase_context()),
+%%   <<"durationInSeconds">> => float(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"phaseStatus">> => list(any()),
+%%   <<"phaseType">> => list(any()),
+%%   <<"startTime">> => non_neg_integer()
 %% }
--type batch_get_projects_input() :: #{binary() => any()}.
+-type build_batch_phase() :: #{binary() => any()}.
 
 %% Example:
-%% batch_restrictions() :: #{
-%%   <<"computeTypesAllowed">> => list(string()),
-%%   <<"fleetsAllowed">> => list(string()),
-%%   <<"maximumBuildsAllowed">> => integer()
+%% build_group() :: #{
+%%   <<"currentBuildSummary">> => build_summary(),
+%%   <<"dependsOn">> => list(string()),
+%%   <<"identifier">> => string(),
+%%   <<"ignoreFailure">> => boolean(),
+%%   <<"priorBuildSummaryList">> => list(build_summary())
 %% }
--type batch_restrictions() :: #{binary() => any()}.
+-type build_group() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_fleets_input() :: #{
-%%   <<"names">> := list(string())
+%% build_not_deleted() :: #{
+%%   <<"id">> => string(),
+%%   <<"statusCode">> => string()
 %% }
--type batch_get_fleets_input() :: #{binary() => any()}.
-
-%% Example:
-%% report_filter() :: #{
-%%   <<"status">> => list(any())
-%% }
--type report_filter() :: #{binary() => any()}.
-
-%% Example:
-%% list_sandboxes_for_project_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"projectName">> := string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_sandboxes_for_project_input() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_configuration_input() :: #{
-%%   <<"maxCapacity">> => integer(),
-%%   <<"scalingType">> => list(any()),
-%%   <<"targetTrackingScalingConfigs">> => list(target_tracking_scaling_configuration())
-%% }
--type scaling_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% project_fleet() :: #{
-%%   <<"fleetArn">> => string()
-%% }
--type project_fleet() :: #{binary() => any()}.
-
-%% Example:
-%% delete_webhook_input() :: #{
-%%   <<"projectName">> := string()
-%% }
--type delete_webhook_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_project_output() :: #{
-
-%% }
--type delete_project_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_sandboxes_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type list_sandboxes_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_project_input() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_project_input() :: #{binary() => any()}.
-
-%% Example:
-%% pull_request_build_policy() :: #{
-%%   <<"approverRoles">> => list(list(any())()),
-%%   <<"requiresCommentApproval">> => list(any())
-%% }
--type pull_request_build_policy() :: #{binary() => any()}.
-
-%% Example:
-%% describe_test_cases_input() :: #{
-%%   <<"filter">> => test_case_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"reportArn">> := string()
-%% }
--type describe_test_cases_input() :: #{binary() => any()}.
-
-%% Example:
-%% environment_image() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"versions">> => list(string())
-%% }
--type environment_image() :: #{binary() => any()}.
-
-%% Example:
-%% batch_delete_builds_output() :: #{
-%%   <<"buildsDeleted">> => list(string()),
-%%   <<"buildsNotDeleted">> => list(build_not_deleted())
-%% }
--type batch_delete_builds_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_report_group_input() :: #{
-%%   <<"arn">> := string(),
-%%   <<"exportConfig">> => report_export_config(),
-%%   <<"tags">> => list(tag())
-%% }
--type update_report_group_input() :: #{binary() => any()}.
+-type build_not_deleted() :: #{binary() => any()}.
 
 %% Example:
 %% build_phase() :: #{
@@ -1590,11 +424,464 @@
 -type build_phase() :: #{binary() => any()}.
 
 %% Example:
-%% list_build_batches_for_project_output() :: #{
-%%   <<"ids">> => list(string()),
+%% build_status_config() :: #{
+%%   <<"context">> => string(),
+%%   <<"targetUrl">> => string()
+%% }
+-type build_status_config() :: #{binary() => any()}.
+
+%% Example:
+%% build_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"buildStatus">> => list(any()),
+%%   <<"primaryArtifact">> => resolved_artifact(),
+%%   <<"requestedOn">> => non_neg_integer(),
+%%   <<"secondaryArtifacts">> => list(resolved_artifact())
+%% }
+-type build_summary() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs_config() :: #{
+%%   <<"groupName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"streamName">> => string()
+%% }
+-type cloud_watch_logs_config() :: #{binary() => any()}.
+
+%% Example:
+%% code_coverage() :: #{
+%%   <<"branchCoveragePercentage">> => float(),
+%%   <<"branchesCovered">> => integer(),
+%%   <<"branchesMissed">> => integer(),
+%%   <<"expired">> => non_neg_integer(),
+%%   <<"filePath">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lineCoveragePercentage">> => float(),
+%%   <<"linesCovered">> => integer(),
+%%   <<"linesMissed">> => integer(),
+%%   <<"reportARN">> => string()
+%% }
+-type code_coverage() :: #{binary() => any()}.
+
+%% Example:
+%% code_coverage_report_summary() :: #{
+%%   <<"branchCoveragePercentage">> => float(),
+%%   <<"branchesCovered">> => integer(),
+%%   <<"branchesMissed">> => integer(),
+%%   <<"lineCoveragePercentage">> => float(),
+%%   <<"linesCovered">> => integer(),
+%%   <<"linesMissed">> => integer()
+%% }
+-type code_coverage_report_summary() :: #{binary() => any()}.
+
+%% Example:
+%% command_execution() :: #{
+%%   <<"command">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"exitCode">> => string(),
+%%   <<"id">> => string(),
+%%   <<"logs">> => logs_location(),
+%%   <<"sandboxArn">> => string(),
+%%   <<"sandboxId">> => string(),
+%%   <<"standardErrContent">> => string(),
+%%   <<"standardOutputContent">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"submitTime">> => non_neg_integer(),
+%%   <<"type">> => list(any())
+%% }
+-type command_execution() :: #{binary() => any()}.
+
+%% Example:
+%% compute_configuration() :: #{
+%%   <<"disk">> => float(),
+%%   <<"instanceType">> => string(),
+%%   <<"machineType">> => list(any()),
+%%   <<"memory">> => float(),
+%%   <<"vCpu">> => float()
+%% }
+-type compute_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_input() :: #{
+%%   <<"baseCapacity">> := integer(),
+%%   <<"computeConfiguration">> => compute_configuration(),
+%%   <<"computeType">> := list(any()),
+%%   <<"environmentType">> := list(any()),
+%%   <<"fleetServiceRole">> => string(),
+%%   <<"imageId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"overflowBehavior">> => list(any()),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
+%%   <<"scalingConfiguration">> => scaling_configuration_input(),
+%%   <<"tags">> => list(tag()),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type create_fleet_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_fleet_output() :: #{
+%%   <<"fleet">> => fleet()
+%% }
+-type create_fleet_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_input() :: #{
+%%   <<"artifacts">> := project_artifacts(),
+%%   <<"autoRetryLimit">> => integer(),
+%%   <<"badgeEnabled">> => boolean(),
+%%   <<"buildBatchConfig">> => project_build_batch_config(),
+%%   <<"cache">> => project_cache(),
+%%   <<"concurrentBuildLimit">> => integer(),
+%%   <<"description">> => string(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"environment">> := project_environment(),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()),
+%%   <<"logsConfig">> => logs_config(),
+%%   <<"name">> := string(),
+%%   <<"queuedTimeoutInMinutes">> => integer(),
+%%   <<"secondaryArtifacts">> => list(project_artifacts()),
+%%   <<"secondarySourceVersions">> => list(project_source_version()),
+%%   <<"secondarySources">> => list(project_source()),
+%%   <<"serviceRole">> := string(),
+%%   <<"source">> := project_source(),
+%%   <<"sourceVersion">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"timeoutInMinutes">> => integer(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type create_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_output() :: #{
+%%   <<"project">> => project()
+%% }
+-type create_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_report_group_input() :: #{
+%%   <<"exportConfig">> := report_export_config(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"type">> := list(any())
+%% }
+-type create_report_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_report_group_output() :: #{
+%%   <<"reportGroup">> => report_group()
+%% }
+-type create_report_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_webhook_input() :: #{
+%%   <<"branchFilter">> => string(),
+%%   <<"buildType">> => list(any()),
+%%   <<"filterGroups">> => list(list(webhook_filter())()),
+%%   <<"manualCreation">> => boolean(),
+%%   <<"projectName">> := string(),
+%%   <<"pullRequestBuildPolicy">> => pull_request_build_policy(),
+%%   <<"scopeConfiguration">> => scope_configuration()
+%% }
+-type create_webhook_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_webhook_output() :: #{
+%%   <<"webhook">> => webhook()
+%% }
+-type create_webhook_output() :: #{binary() => any()}.
+
+%% Example:
+%% debug_session() :: #{
+%%   <<"sessionEnabled">> => boolean(),
+%%   <<"sessionTarget">> => string()
+%% }
+-type debug_session() :: #{binary() => any()}.
+
+%% Example:
+%% delete_build_batch_input() :: #{
+%%   <<"id">> := string()
+%% }
+-type delete_build_batch_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_build_batch_output() :: #{
+%%   <<"buildsDeleted">> => list(string()),
+%%   <<"buildsNotDeleted">> => list(build_not_deleted()),
+%%   <<"statusCode">> => string()
+%% }
+-type delete_build_batch_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fleet_input() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_fleet_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fleet_output() :: #{
+
+%% }
+-type delete_fleet_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_input() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_output() :: #{
+
+%% }
+-type delete_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_report_group_input() :: #{
+%%   <<"arn">> := string(),
+%%   <<"deleteReports">> => boolean()
+%% }
+-type delete_report_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_report_group_output() :: #{
+
+%% }
+-type delete_report_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_report_input() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_report_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_report_output() :: #{
+
+%% }
+-type delete_report_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_input() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type delete_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_output() :: #{
+
+%% }
+-type delete_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_source_credentials_input() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_source_credentials_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_source_credentials_output() :: #{
+%%   <<"arn">> => string()
+%% }
+-type delete_source_credentials_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_webhook_input() :: #{
+%%   <<"projectName">> := string()
+%% }
+-type delete_webhook_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_webhook_output() :: #{
+
+%% }
+-type delete_webhook_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_code_coverages_input() :: #{
+%%   <<"maxLineCoveragePercentage">> => float(),
+%%   <<"maxResults">> => integer(),
+%%   <<"minLineCoveragePercentage">> => float(),
+%%   <<"nextToken">> => string(),
+%%   <<"reportArn">> := string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type describe_code_coverages_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_code_coverages_output() :: #{
+%%   <<"codeCoverages">> => list(code_coverage()),
 %%   <<"nextToken">> => string()
 %% }
--type list_build_batches_for_project_output() :: #{binary() => any()}.
+-type describe_code_coverages_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_test_cases_input() :: #{
+%%   <<"filter">> => test_case_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reportArn">> := string()
+%% }
+-type describe_test_cases_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_test_cases_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testCases">> => list(test_case())
+%% }
+-type describe_test_cases_output() :: #{binary() => any()}.
+
+%% Example:
+%% docker_server() :: #{
+%%   <<"computeType">> => list(any()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => docker_server_status()
+%% }
+-type docker_server() :: #{binary() => any()}.
+
+%% Example:
+%% docker_server_status() :: #{
+%%   <<"message">> => string(),
+%%   <<"status">> => string()
+%% }
+-type docker_server_status() :: #{binary() => any()}.
+
+%% Example:
+%% environment_image() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"versions">> => list(string())
+%% }
+-type environment_image() :: #{binary() => any()}.
+
+%% Example:
+%% environment_language() :: #{
+%%   <<"images">> => list(environment_image()),
+%%   <<"language">> => list(any())
+%% }
+-type environment_language() :: #{binary() => any()}.
+
+%% Example:
+%% environment_platform() :: #{
+%%   <<"languages">> => list(environment_language()),
+%%   <<"platform">> => list(any())
+%% }
+-type environment_platform() :: #{binary() => any()}.
+
+%% Example:
+%% environment_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type environment_variable() :: #{binary() => any()}.
+
+%% Example:
+%% exported_environment_variable() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type exported_environment_variable() :: #{binary() => any()}.
+
+%% Example:
+%% fleet() :: #{
+%%   <<"arn">> => string(),
+%%   <<"baseCapacity">> => integer(),
+%%   <<"computeConfiguration">> => compute_configuration(),
+%%   <<"computeType">> => list(any()),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"environmentType">> => list(any()),
+%%   <<"fleetServiceRole">> => string(),
+%%   <<"id">> => string(),
+%%   <<"imageId">> => string(),
+%%   <<"lastModified">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"overflowBehavior">> => list(any()),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
+%%   <<"scalingConfiguration">> => scaling_configuration_output(),
+%%   <<"status">> => fleet_status(),
+%%   <<"tags">> => list(tag()),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type fleet() :: #{binary() => any()}.
+
+%% Example:
+%% fleet_proxy_rule() :: #{
+%%   <<"effect">> => list(any()),
+%%   <<"entities">> => list(string()),
+%%   <<"type">> => list(any())
+%% }
+-type fleet_proxy_rule() :: #{binary() => any()}.
+
+%% Example:
+%% fleet_status() :: #{
+%%   <<"context">> => list(any()),
+%%   <<"message">> => string(),
+%%   <<"statusCode">> => list(any())
+%% }
+-type fleet_status() :: #{binary() => any()}.
+
+%% Example:
+%% get_report_group_trend_input() :: #{
+%%   <<"numOfReports">> => integer(),
+%%   <<"reportGroupArn">> := string(),
+%%   <<"trendField">> := list(any())
+%% }
+-type get_report_group_trend_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_report_group_trend_output() :: #{
+%%   <<"rawData">> => list(report_with_raw_data()),
+%%   <<"stats">> => report_group_trend_stats()
+%% }
+-type get_report_group_trend_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_input() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type get_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_output() :: #{
+%%   <<"policy">> => string()
+%% }
+-type get_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% git_submodules_config() :: #{
+%%   <<"fetchSubmodules">> => boolean()
+%% }
+-type git_submodules_config() :: #{binary() => any()}.
+
+%% Example:
+%% import_source_credentials_input() :: #{
+%%   <<"authType">> := list(any()),
+%%   <<"serverType">> := list(any()),
+%%   <<"shouldOverwrite">> => boolean(),
+%%   <<"token">> := string(),
+%%   <<"username">> => string()
+%% }
+-type import_source_credentials_input() :: #{binary() => any()}.
+
+%% Example:
+%% import_source_credentials_output() :: #{
+%%   <<"arn">> => string()
+%% }
+-type import_source_credentials_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalidate_project_cache_input() :: #{
+%%   <<"projectName">> := string()
+%% }
+-type invalidate_project_cache_input() :: #{binary() => any()}.
 
 %% Example:
 %% invalidate_project_cache_output() :: #{
@@ -1603,11 +890,677 @@
 -type invalidate_project_cache_output() :: #{binary() => any()}.
 
 %% Example:
+%% list_build_batches_for_project_input() :: #{
+%%   <<"filter">> => build_batch_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectName">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_build_batches_for_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_build_batches_for_project_output() :: #{
+%%   <<"ids">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_build_batches_for_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_build_batches_input() :: #{
+%%   <<"filter">> => build_batch_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_build_batches_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_build_batches_output() :: #{
+%%   <<"ids">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_build_batches_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_builds_for_project_input() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"projectName">> := string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_builds_for_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_builds_for_project_output() :: #{
+%%   <<"ids">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_builds_for_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_builds_input() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_builds_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_builds_output() :: #{
+%%   <<"ids">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_builds_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_command_executions_for_sandbox_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sandboxId">> := string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_command_executions_for_sandbox_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_command_executions_for_sandbox_output() :: #{
+%%   <<"commandExecutions">> => list(command_execution()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_command_executions_for_sandbox_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_curated_environment_images_input() :: #{
+
+%% }
+-type list_curated_environment_images_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_curated_environment_images_output() :: #{
+%%   <<"platforms">> => list(environment_platform())
+%% }
+-type list_curated_environment_images_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleets_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_fleets_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_fleets_output() :: #{
+%%   <<"fleets">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleets_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_input() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_projects_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"projects">> => list(string())
+%% }
+-type list_projects_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_report_groups_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_report_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_report_groups_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reportGroups">> => list(string())
+%% }
+-type list_report_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_reports_for_report_group_input() :: #{
+%%   <<"filter">> => report_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"reportGroupArn">> := string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_reports_for_report_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_reports_for_report_group_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reports">> => list(string())
+%% }
+-type list_reports_for_report_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_reports_input() :: #{
+%%   <<"filter">> => report_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_reports_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_reports_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reports">> => list(string())
+%% }
+-type list_reports_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_sandboxes_for_project_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectName">> := string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_sandboxes_for_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_sandboxes_for_project_output() :: #{
+%%   <<"ids">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sandboxes_for_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_sandboxes_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_sandboxes_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_sandboxes_output() :: #{
+%%   <<"ids">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sandboxes_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_shared_projects_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_shared_projects_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_shared_projects_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"projects">> => list(string())
+%% }
+-type list_shared_projects_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_shared_report_groups_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_shared_report_groups_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_shared_report_groups_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reportGroups">> => list(string())
+%% }
+-type list_shared_report_groups_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_source_credentials_input() :: #{
+
+%% }
+-type list_source_credentials_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_source_credentials_output() :: #{
+%%   <<"sourceCredentialsInfos">> => list(source_credentials_info())
+%% }
+-type list_source_credentials_output() :: #{binary() => any()}.
+
+%% Example:
+%% logs_config() :: #{
+%%   <<"cloudWatchLogs">> => cloud_watch_logs_config(),
+%%   <<"s3Logs">> => s3_logs_config()
+%% }
+-type logs_config() :: #{binary() => any()}.
+
+%% Example:
+%% logs_location() :: #{
+%%   <<"cloudWatchLogs">> => cloud_watch_logs_config(),
+%%   <<"cloudWatchLogsArn">> => string(),
+%%   <<"deepLink">> => string(),
+%%   <<"groupName">> => string(),
+%%   <<"s3DeepLink">> => string(),
+%%   <<"s3Logs">> => s3_logs_config(),
+%%   <<"s3LogsArn">> => string(),
+%%   <<"streamName">> => string()
+%% }
+-type logs_location() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"networkInterfaceId">> => string(),
+%%   <<"subnetId">> => string()
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% o_auth_provider_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type o_auth_provider_exception() :: #{binary() => any()}.
+
+%% Example:
+%% phase_context() :: #{
+%%   <<"message">> => string(),
+%%   <<"statusCode">> => string()
+%% }
+-type phase_context() :: #{binary() => any()}.
+
+%% Example:
+%% project() :: #{
+%%   <<"arn">> => string(),
+%%   <<"artifacts">> => project_artifacts(),
+%%   <<"autoRetryLimit">> => integer(),
+%%   <<"badge">> => project_badge(),
+%%   <<"buildBatchConfig">> => project_build_batch_config(),
+%%   <<"cache">> => project_cache(),
+%%   <<"concurrentBuildLimit">> => integer(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"environment">> => project_environment(),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()),
+%%   <<"lastModified">> => non_neg_integer(),
+%%   <<"logsConfig">> => logs_config(),
+%%   <<"name">> => string(),
+%%   <<"projectVisibility">> => list(any()),
+%%   <<"publicProjectAlias">> => string(),
+%%   <<"queuedTimeoutInMinutes">> => integer(),
+%%   <<"resourceAccessRole">> => string(),
+%%   <<"secondaryArtifacts">> => list(project_artifacts()),
+%%   <<"secondarySourceVersions">> => list(project_source_version()),
+%%   <<"secondarySources">> => list(project_source()),
+%%   <<"serviceRole">> => string(),
+%%   <<"source">> => project_source(),
+%%   <<"sourceVersion">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"timeoutInMinutes">> => integer(),
+%%   <<"vpcConfig">> => vpc_config(),
+%%   <<"webhook">> => webhook()
+%% }
+-type project() :: #{binary() => any()}.
+
+%% Example:
+%% project_artifacts() :: #{
+%%   <<"artifactIdentifier">> => string(),
+%%   <<"bucketOwnerAccess">> => list(any()),
+%%   <<"encryptionDisabled">> => boolean(),
+%%   <<"location">> => string(),
+%%   <<"name">> => string(),
+%%   <<"namespaceType">> => list(any()),
+%%   <<"overrideArtifactName">> => boolean(),
+%%   <<"packaging">> => list(any()),
+%%   <<"path">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type project_artifacts() :: #{binary() => any()}.
+
+%% Example:
+%% project_badge() :: #{
+%%   <<"badgeEnabled">> => boolean(),
+%%   <<"badgeRequestUrl">> => string()
+%% }
+-type project_badge() :: #{binary() => any()}.
+
+%% Example:
+%% project_build_batch_config() :: #{
+%%   <<"batchReportMode">> => list(any()),
+%%   <<"combineArtifacts">> => boolean(),
+%%   <<"restrictions">> => batch_restrictions(),
+%%   <<"serviceRole">> => string(),
+%%   <<"timeoutInMins">> => integer()
+%% }
+-type project_build_batch_config() :: #{binary() => any()}.
+
+%% Example:
+%% project_cache() :: #{
+%%   <<"cacheNamespace">> => string(),
+%%   <<"location">> => string(),
+%%   <<"modes">> => list(list(any())()),
+%%   <<"type">> => list(any())
+%% }
+-type project_cache() :: #{binary() => any()}.
+
+%% Example:
+%% project_environment() :: #{
+%%   <<"certificate">> => string(),
+%%   <<"computeConfiguration">> => compute_configuration(),
+%%   <<"computeType">> => list(any()),
+%%   <<"dockerServer">> => docker_server(),
+%%   <<"environmentVariables">> => list(environment_variable()),
+%%   <<"fleet">> => project_fleet(),
+%%   <<"hostKernel">> => list(any()),
+%%   <<"image">> => string(),
+%%   <<"imagePullCredentialsType">> => list(any()),
+%%   <<"privilegedMode">> => boolean(),
+%%   <<"registryCredential">> => registry_credential(),
+%%   <<"type">> => list(any())
+%% }
+-type project_environment() :: #{binary() => any()}.
+
+%% Example:
+%% project_file_system_location() :: #{
+%%   <<"identifier">> => string(),
+%%   <<"location">> => string(),
+%%   <<"mountOptions">> => string(),
+%%   <<"mountPoint">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type project_file_system_location() :: #{binary() => any()}.
+
+%% Example:
+%% project_fleet() :: #{
+%%   <<"fleetArn">> => string()
+%% }
+-type project_fleet() :: #{binary() => any()}.
+
+%% Example:
+%% project_source() :: #{
+%%   <<"auth">> => source_auth(),
+%%   <<"buildStatusConfig">> => build_status_config(),
+%%   <<"buildspec">> => string(),
+%%   <<"gitCloneDepth">> => integer(),
+%%   <<"gitSubmodulesConfig">> => git_submodules_config(),
+%%   <<"insecureSsl">> => boolean(),
+%%   <<"location">> => string(),
+%%   <<"reportBuildStatus">> => boolean(),
+%%   <<"sourceIdentifier">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type project_source() :: #{binary() => any()}.
+
+%% Example:
+%% project_source_version() :: #{
+%%   <<"sourceIdentifier">> => string(),
+%%   <<"sourceVersion">> => string()
+%% }
+-type project_source_version() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_configuration() :: #{
+%%   <<"defaultBehavior">> => list(any()),
+%%   <<"orderedProxyRules">> => list(fleet_proxy_rule())
+%% }
+-type proxy_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% pull_request_build_policy() :: #{
+%%   <<"approverRoles">> => list(list(any())()),
+%%   <<"requiresCommentApproval">> => list(any())
+%% }
+-type pull_request_build_policy() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_input() :: #{
+%%   <<"policy">> := string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type put_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_output() :: #{
+%%   <<"resourceArn">> => string()
+%% }
+-type put_resource_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% registry_credential() :: #{
+%%   <<"credential">> => string(),
+%%   <<"credentialProvider">> => list(any())
+%% }
+-type registry_credential() :: #{binary() => any()}.
+
+%% Example:
+%% report() :: #{
+%%   <<"arn">> => string(),
+%%   <<"codeCoverageSummary">> => code_coverage_report_summary(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"executionId">> => string(),
+%%   <<"expired">> => non_neg_integer(),
+%%   <<"exportConfig">> => report_export_config(),
+%%   <<"name">> => string(),
+%%   <<"reportGroupArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"testSummary">> => test_report_summary(),
+%%   <<"truncated">> => boolean(),
+%%   <<"type">> => list(any())
+%% }
+-type report() :: #{binary() => any()}.
+
+%% Example:
+%% report_export_config() :: #{
+%%   <<"exportConfigType">> => list(any()),
+%%   <<"s3Destination">> => s3_report_export_config()
+%% }
+-type report_export_config() :: #{binary() => any()}.
+
+%% Example:
+%% report_filter() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type report_filter() :: #{binary() => any()}.
+
+%% Example:
+%% report_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"created">> => non_neg_integer(),
+%%   <<"exportConfig">> => report_export_config(),
+%%   <<"lastModified">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => list(tag()),
+%%   <<"type">> => list(any())
+%% }
+-type report_group() :: #{binary() => any()}.
+
+%% Example:
+%% report_group_trend_stats() :: #{
+%%   <<"average">> => string(),
+%%   <<"max">> => string(),
+%%   <<"min">> => string()
+%% }
+-type report_group_trend_stats() :: #{binary() => any()}.
+
+%% Example:
+%% report_with_raw_data() :: #{
+%%   <<"data">> => string(),
+%%   <<"reportArn">> => string()
+%% }
+-type report_with_raw_data() :: #{binary() => any()}.
+
+%% Example:
+%% resolved_artifact() :: #{
+%%   <<"identifier">> => string(),
+%%   <<"location">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type resolved_artifact() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% retry_build_batch_input() :: #{
+%%   <<"id">> => string(),
+%%   <<"idempotencyToken">> => string(),
+%%   <<"retryType">> => list(any())
+%% }
+-type retry_build_batch_input() :: #{binary() => any()}.
+
+%% Example:
+%% retry_build_batch_output() :: #{
+%%   <<"buildBatch">> => build_batch()
+%% }
+-type retry_build_batch_output() :: #{binary() => any()}.
+
+%% Example:
 %% retry_build_input() :: #{
 %%   <<"id">> => string(),
 %%   <<"idempotencyToken">> => string()
 %% }
 -type retry_build_input() :: #{binary() => any()}.
+
+%% Example:
+%% retry_build_output() :: #{
+%%   <<"build">> => build()
+%% }
+-type retry_build_output() :: #{binary() => any()}.
+
+%% Example:
+%% s3_logs_config() :: #{
+%%   <<"bucketOwnerAccess">> => list(any()),
+%%   <<"encryptionDisabled">> => boolean(),
+%%   <<"location">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type s3_logs_config() :: #{binary() => any()}.
+
+%% Example:
+%% s3_report_export_config() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"bucketOwner">> => string(),
+%%   <<"encryptionDisabled">> => boolean(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"packaging">> => list(any()),
+%%   <<"path">> => string()
+%% }
+-type s3_report_export_config() :: #{binary() => any()}.
+
+%% Example:
+%% s_smsession() :: #{
+%%   <<"sessionId">> => string(),
+%%   <<"streamUrl">> => string(),
+%%   <<"tokenValue">> => string()
+%% }
+-type s_smsession() :: #{binary() => any()}.
+
+%% Example:
+%% sandbox() :: #{
+%%   <<"arn">> => string(),
+%%   <<"currentSession">> => sandbox_session(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"environment">> => project_environment(),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()),
+%%   <<"id">> => string(),
+%%   <<"logConfig">> => logs_config(),
+%%   <<"projectName">> => string(),
+%%   <<"queuedTimeoutInMinutes">> => integer(),
+%%   <<"requestTime">> => non_neg_integer(),
+%%   <<"secondarySourceVersions">> => list(project_source_version()),
+%%   <<"secondarySources">> => list(project_source()),
+%%   <<"serviceRole">> => string(),
+%%   <<"source">> => project_source(),
+%%   <<"sourceVersion">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"timeoutInMinutes">> => integer(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type sandbox() :: #{binary() => any()}.
+
+%% Example:
+%% sandbox_session() :: #{
+%%   <<"currentPhase">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"id">> => string(),
+%%   <<"logs">> => logs_location(),
+%%   <<"networkInterface">> => network_interface(),
+%%   <<"phases">> => list(sandbox_session_phase()),
+%%   <<"resolvedSourceVersion">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => string()
+%% }
+-type sandbox_session() :: #{binary() => any()}.
+
+%% Example:
+%% sandbox_session_phase() :: #{
+%%   <<"contexts">> => list(phase_context()),
+%%   <<"durationInSeconds">> => float(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"phaseStatus">> => list(any()),
+%%   <<"phaseType">> => string(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type sandbox_session_phase() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_configuration_input() :: #{
+%%   <<"maxCapacity">> => integer(),
+%%   <<"scalingType">> => list(any()),
+%%   <<"targetTrackingScalingConfigs">> => list(target_tracking_scaling_configuration())
+%% }
+-type scaling_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% scaling_configuration_output() :: #{
+%%   <<"desiredCapacity">> => integer(),
+%%   <<"maxCapacity">> => integer(),
+%%   <<"scalingType">> => list(any()),
+%%   <<"targetTrackingScalingConfigs">> => list(target_tracking_scaling_configuration())
+%% }
+-type scaling_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% scope_configuration() :: #{
+%%   <<"domain">> => string(),
+%%   <<"name">> => string(),
+%%   <<"scope">> => list(any())
+%% }
+-type scope_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% source_auth() :: #{
+%%   <<"resource">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type source_auth() :: #{binary() => any()}.
+
+%% Example:
+%% source_credentials_info() :: #{
+%%   <<"arn">> => string(),
+%%   <<"authType">> => list(any()),
+%%   <<"resource">> => string(),
+%%   <<"serverType">> => list(any())
+%% }
+-type source_credentials_info() :: #{binary() => any()}.
 
 %% Example:
 %% start_build_batch_input() :: #{
@@ -1646,70 +1599,106 @@
 -type start_build_batch_input() :: #{binary() => any()}.
 
 %% Example:
-%% environment_language() :: #{
-%%   <<"images">> => list(environment_image()),
-%%   <<"language">> => list(any())
+%% start_build_batch_output() :: #{
+%%   <<"buildBatch">> => build_batch()
 %% }
--type environment_language() :: #{binary() => any()}.
+-type start_build_batch_output() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_sandboxes_output() :: #{
-%%   <<"sandboxes">> => list(sandbox()),
-%%   <<"sandboxesNotFound">> => list(string())
+%% start_build_input() :: #{
+%%   <<"artifactsOverride">> => project_artifacts(),
+%%   <<"autoRetryLimitOverride">> => integer(),
+%%   <<"buildStatusConfigOverride">> => build_status_config(),
+%%   <<"buildspecOverride">> => string(),
+%%   <<"cacheOverride">> => project_cache(),
+%%   <<"certificateOverride">> => string(),
+%%   <<"computeTypeOverride">> => list(any()),
+%%   <<"debugSessionEnabled">> => boolean(),
+%%   <<"encryptionKeyOverride">> => string(),
+%%   <<"environmentTypeOverride">> => list(any()),
+%%   <<"environmentVariablesOverride">> => list(environment_variable()),
+%%   <<"fleetOverride">> => project_fleet(),
+%%   <<"gitCloneDepthOverride">> => integer(),
+%%   <<"gitSubmodulesConfigOverride">> => git_submodules_config(),
+%%   <<"hostKernelOverride">> => list(any()),
+%%   <<"idempotencyToken">> => string(),
+%%   <<"imageOverride">> => string(),
+%%   <<"imagePullCredentialsTypeOverride">> => list(any()),
+%%   <<"insecureSslOverride">> => boolean(),
+%%   <<"logsConfigOverride">> => logs_config(),
+%%   <<"privilegedModeOverride">> => boolean(),
+%%   <<"projectName">> := string(),
+%%   <<"queuedTimeoutInMinutesOverride">> => integer(),
+%%   <<"registryCredentialOverride">> => registry_credential(),
+%%   <<"reportBuildStatusOverride">> => boolean(),
+%%   <<"secondaryArtifactsOverride">> => list(project_artifacts()),
+%%   <<"secondarySourcesOverride">> => list(project_source()),
+%%   <<"secondarySourcesVersionOverride">> => list(project_source_version()),
+%%   <<"serviceRoleOverride">> => string(),
+%%   <<"sourceAuthOverride">> => source_auth(),
+%%   <<"sourceLocationOverride">> => string(),
+%%   <<"sourceTypeOverride">> => list(any()),
+%%   <<"sourceVersion">> => string(),
+%%   <<"timeoutInMinutesOverride">> => integer()
 %% }
--type batch_get_sandboxes_output() :: #{binary() => any()}.
+-type start_build_input() :: #{binary() => any()}.
 
 %% Example:
-%% sandbox_session() :: #{
-%%   <<"currentPhase">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"id">> => string(),
-%%   <<"logs">> => logs_location(),
-%%   <<"networkInterface">> => network_interface(),
-%%   <<"phases">> => list(sandbox_session_phase()),
-%%   <<"resolvedSourceVersion">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => string()
+%% start_build_output() :: #{
+%%   <<"build">> => build()
 %% }
--type sandbox_session() :: #{binary() => any()}.
+-type start_build_output() :: #{binary() => any()}.
 
 %% Example:
-%% scaling_configuration_output() :: #{
-%%   <<"desiredCapacity">> => integer(),
-%%   <<"maxCapacity">> => integer(),
-%%   <<"scalingType">> => list(any()),
-%%   <<"targetTrackingScalingConfigs">> => list(target_tracking_scaling_configuration())
-%% }
--type scaling_configuration_output() :: #{binary() => any()}.
-
-%% Example:
-%% report() :: #{
-%%   <<"arn">> => string(),
-%%   <<"codeCoverageSummary">> => code_coverage_report_summary(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"executionId">> => string(),
-%%   <<"expired">> => non_neg_integer(),
-%%   <<"exportConfig">> => report_export_config(),
-%%   <<"name">> => string(),
-%%   <<"reportGroupArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"testSummary">> => test_report_summary(),
-%%   <<"truncated">> => boolean(),
+%% start_command_execution_input() :: #{
+%%   <<"command">> := string(),
+%%   <<"sandboxId">> := string(),
 %%   <<"type">> => list(any())
 %% }
--type report() :: #{binary() => any()}.
+-type start_command_execution_input() :: #{binary() => any()}.
 
 %% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string()
+%% start_command_execution_output() :: #{
+%%   <<"commandExecution">> => command_execution()
 %% }
--type resource_already_exists_exception() :: #{binary() => any()}.
+-type start_command_execution_output() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_reports_input() :: #{
-%%   <<"reportArns">> := list(string())
+%% start_sandbox_connection_input() :: #{
+%%   <<"sandboxId">> := string()
 %% }
--type batch_get_reports_input() :: #{binary() => any()}.
+-type start_sandbox_connection_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_sandbox_connection_output() :: #{
+%%   <<"ssmSession">> => s_smsession()
+%% }
+-type start_sandbox_connection_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_sandbox_input() :: #{
+%%   <<"idempotencyToken">> => string(),
+%%   <<"projectName">> => string()
+%% }
+-type start_sandbox_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_sandbox_output() :: #{
+%%   <<"sandbox">> => sandbox()
+%% }
+-type start_sandbox_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_build_batch_input() :: #{
+%%   <<"id">> := string()
+%% }
+-type stop_build_batch_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_build_batch_output() :: #{
+%%   <<"buildBatch">> => build_batch()
+%% }
+-type stop_build_batch_output() :: #{binary() => any()}.
 
 %% Example:
 %% stop_build_input() :: #{
@@ -1718,22 +1707,57 @@
 -type stop_build_input() :: #{binary() => any()}.
 
 %% Example:
-%% build_artifacts() :: #{
-%%   <<"artifactIdentifier">> => string(),
-%%   <<"bucketOwnerAccess">> => list(any()),
-%%   <<"encryptionDisabled">> => boolean(),
-%%   <<"location">> => string(),
-%%   <<"md5sum">> => string(),
-%%   <<"overrideArtifactName">> => boolean(),
-%%   <<"sha256sum">> => string()
+%% stop_build_output() :: #{
+%%   <<"build">> => build()
 %% }
--type build_artifacts() :: #{binary() => any()}.
+-type stop_build_output() :: #{binary() => any()}.
 
 %% Example:
-%% import_source_credentials_output() :: #{
-%%   <<"arn">> => string()
+%% stop_sandbox_input() :: #{
+%%   <<"id">> := string()
 %% }
--type import_source_credentials_output() :: #{binary() => any()}.
+-type stop_sandbox_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_sandbox_output() :: #{
+%%   <<"sandbox">> => sandbox()
+%% }
+-type stop_sandbox_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% target_tracking_scaling_configuration() :: #{
+%%   <<"metricType">> => list(any()),
+%%   <<"targetValue">> => float()
+%% }
+-type target_tracking_scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% test_case() :: #{
+%%   <<"durationInNanoSeconds">> => float(),
+%%   <<"expired">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"name">> => string(),
+%%   <<"prefix">> => string(),
+%%   <<"reportArn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"testRawDataPath">> => string(),
+%%   <<"testSuiteName">> => string()
+%% }
+-type test_case() :: #{binary() => any()}.
+
+%% Example:
+%% test_case_filter() :: #{
+%%   <<"keyword">> => string(),
+%%   <<"status">> => string()
+%% }
+-type test_case_filter() :: #{binary() => any()}.
 
 %% Example:
 %% test_report_summary() :: #{
@@ -1742,6 +1766,117 @@
 %%   <<"total">> => integer()
 %% }
 -type test_report_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_input() :: #{
+%%   <<"arn">> := string(),
+%%   <<"baseCapacity">> => integer(),
+%%   <<"computeConfiguration">> => compute_configuration(),
+%%   <<"computeType">> => list(any()),
+%%   <<"environmentType">> => list(any()),
+%%   <<"fleetServiceRole">> => string(),
+%%   <<"imageId">> => string(),
+%%   <<"overflowBehavior">> => list(any()),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
+%%   <<"scalingConfiguration">> => scaling_configuration_input(),
+%%   <<"tags">> => list(tag()),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type update_fleet_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_output() :: #{
+%%   <<"fleet">> => fleet()
+%% }
+-type update_fleet_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_input() :: #{
+%%   <<"artifacts">> => project_artifacts(),
+%%   <<"autoRetryLimit">> => integer(),
+%%   <<"badgeEnabled">> => boolean(),
+%%   <<"buildBatchConfig">> => project_build_batch_config(),
+%%   <<"cache">> => project_cache(),
+%%   <<"concurrentBuildLimit">> => integer(),
+%%   <<"description">> => string(),
+%%   <<"encryptionKey">> => string(),
+%%   <<"environment">> => project_environment(),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()),
+%%   <<"logsConfig">> => logs_config(),
+%%   <<"name">> := string(),
+%%   <<"queuedTimeoutInMinutes">> => integer(),
+%%   <<"secondaryArtifacts">> => list(project_artifacts()),
+%%   <<"secondarySourceVersions">> => list(project_source_version()),
+%%   <<"secondarySources">> => list(project_source()),
+%%   <<"serviceRole">> => string(),
+%%   <<"source">> => project_source(),
+%%   <<"sourceVersion">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"timeoutInMinutes">> => integer(),
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type update_project_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_output() :: #{
+%%   <<"project">> => project()
+%% }
+-type update_project_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_visibility_input() :: #{
+%%   <<"projectArn">> := string(),
+%%   <<"projectVisibility">> := list(any()),
+%%   <<"resourceAccessRole">> => string()
+%% }
+-type update_project_visibility_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_visibility_output() :: #{
+%%   <<"projectArn">> => string(),
+%%   <<"projectVisibility">> => list(any()),
+%%   <<"publicProjectAlias">> => string()
+%% }
+-type update_project_visibility_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_report_group_input() :: #{
+%%   <<"arn">> := string(),
+%%   <<"exportConfig">> => report_export_config(),
+%%   <<"tags">> => list(tag())
+%% }
+-type update_report_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_report_group_output() :: #{
+%%   <<"reportGroup">> => report_group()
+%% }
+-type update_report_group_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_webhook_input() :: #{
+%%   <<"branchFilter">> => string(),
+%%   <<"buildType">> => list(any()),
+%%   <<"filterGroups">> => list(list(webhook_filter())()),
+%%   <<"projectName">> := string(),
+%%   <<"pullRequestBuildPolicy">> => pull_request_build_policy(),
+%%   <<"rotateSecret">> => boolean()
+%% }
+-type update_webhook_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_webhook_output() :: #{
+%%   <<"webhook">> => webhook()
+%% }
+-type update_webhook_output() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_config() :: #{
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnets">> => list(string()),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_config() :: #{binary() => any()}.
 
 %% Example:
 %% webhook() :: #{
@@ -1761,147 +1896,12 @@
 -type webhook() :: #{binary() => any()}.
 
 %% Example:
-%% batch_get_report_groups_output() :: #{
-%%   <<"reportGroups">> => list(report_group()),
-%%   <<"reportGroupsNotFound">> => list(string())
-%% }
--type batch_get_report_groups_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_webhook_input() :: #{
-%%   <<"branchFilter">> => string(),
-%%   <<"buildType">> => list(any()),
-%%   <<"filterGroups">> => list(list(webhook_filter())()),
-%%   <<"projectName">> := string(),
-%%   <<"pullRequestBuildPolicy">> => pull_request_build_policy(),
-%%   <<"rotateSecret">> => boolean()
-%% }
--type update_webhook_input() :: #{binary() => any()}.
-
-%% Example:
-%% fleet() :: #{
-%%   <<"arn">> => string(),
-%%   <<"baseCapacity">> => integer(),
-%%   <<"computeConfiguration">> => compute_configuration(),
-%%   <<"computeType">> => list(any()),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"environmentType">> => list(any()),
-%%   <<"fleetServiceRole">> => string(),
-%%   <<"id">> => string(),
-%%   <<"imageId">> => string(),
-%%   <<"lastModified">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"overflowBehavior">> => list(any()),
-%%   <<"proxyConfiguration">> => proxy_configuration(),
-%%   <<"scalingConfiguration">> => scaling_configuration_output(),
-%%   <<"status">> => fleet_status(),
-%%   <<"tags">> => list(tag()),
-%%   <<"vpcConfig">> => vpc_config()
-%% }
--type fleet() :: #{binary() => any()}.
-
-%% Example:
-%% project_badge() :: #{
-%%   <<"badgeEnabled">> => boolean(),
-%%   <<"badgeRequestUrl">> => string()
-%% }
--type project_badge() :: #{binary() => any()}.
-
-%% Example:
-%% get_report_group_trend_output() :: #{
-%%   <<"rawData">> => list(report_with_raw_data()),
-%%   <<"stats">> => report_group_trend_stats()
-%% }
--type get_report_group_trend_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_reports_for_report_group_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reports">> => list(string())
-%% }
--type list_reports_for_report_group_output() :: #{binary() => any()}.
-
-%% Example:
-%% project_environment() :: #{
-%%   <<"certificate">> => string(),
-%%   <<"computeConfiguration">> => compute_configuration(),
-%%   <<"computeType">> => list(any()),
-%%   <<"dockerServer">> => docker_server(),
-%%   <<"environmentVariables">> => list(environment_variable()),
-%%   <<"fleet">> => project_fleet(),
-%%   <<"hostKernel">> => list(any()),
-%%   <<"image">> => string(),
-%%   <<"imagePullCredentialsType">> => list(any()),
-%%   <<"privilegedMode">> => boolean(),
-%%   <<"registryCredential">> => registry_credential(),
+%% webhook_filter() :: #{
+%%   <<"excludeMatchedPattern">> => boolean(),
+%%   <<"pattern">> => string(),
 %%   <<"type">> => list(any())
 %% }
--type project_environment() :: #{binary() => any()}.
-
-%% Example:
-%% docker_server() :: #{
-%%   <<"computeType">> => list(any()),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => docker_server_status()
-%% }
--type docker_server() :: #{binary() => any()}.
-
-%% Example:
-%% list_builds_output() :: #{
-%%   <<"ids">> => list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type list_builds_output() :: #{binary() => any()}.
-
-%% Example:
-%% batch_get_report_groups_input() :: #{
-%%   <<"reportGroupArns">> := list(string())
-%% }
--type batch_get_report_groups_input() :: #{binary() => any()}.
-
-%% Example:
-%% compute_configuration() :: #{
-%%   <<"disk">> => float(),
-%%   <<"instanceType">> => string(),
-%%   <<"machineType">> => list(any()),
-%%   <<"memory">> => float(),
-%%   <<"vCpu">> => float()
-%% }
--type compute_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% report_group() :: #{
-%%   <<"arn">> => string(),
-%%   <<"created">> => non_neg_integer(),
-%%   <<"exportConfig">> => report_export_config(),
-%%   <<"lastModified">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => list(tag()),
-%%   <<"type">> => list(any())
-%% }
--type report_group() :: #{binary() => any()}.
-
-%% Example:
-%% source_auth() :: #{
-%%   <<"resource">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type source_auth() :: #{binary() => any()}.
-
-%% Example:
-%% report_group_trend_stats() :: #{
-%%   <<"average">> => string(),
-%%   <<"max">> => string(),
-%%   <<"min">> => string()
-%% }
--type report_group_trend_stats() :: #{binary() => any()}.
-
-%% Example:
-%% delete_source_credentials_output() :: #{
-%%   <<"arn">> => string()
-%% }
--type delete_source_credentials_output() :: #{binary() => any()}.
+-type webhook_filter() :: #{binary() => any()}.
 
 -type batch_delete_builds_errors() ::
     invalid_input_exception().
@@ -1946,10 +1946,10 @@
     account_limit_exceeded_exception().
 
 -type create_webhook_errors() ::
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     o_auth_provider_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    invalid_input_exception().
 
 -type delete_build_batch_errors() ::
     invalid_input_exception().
@@ -1970,28 +1970,28 @@
     invalid_input_exception().
 
 -type delete_source_credentials_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type delete_webhook_errors() ::
+    resource_not_found_exception() | 
     o_auth_provider_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    invalid_input_exception().
 
 -type describe_code_coverages_errors() ::
     invalid_input_exception().
 
 -type describe_test_cases_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type get_report_group_trend_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type get_resource_policy_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type import_source_credentials_errors() ::
     resource_already_exists_exception() | 
@@ -1999,26 +1999,26 @@
     account_limit_exceeded_exception().
 
 -type invalidate_project_cache_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type list_build_batches_errors() ::
     invalid_input_exception().
 
 -type list_build_batches_for_project_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type list_builds_errors() ::
     invalid_input_exception().
 
 -type list_builds_for_project_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type list_command_executions_for_sandbox_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type list_fleets_errors() ::
     invalid_input_exception().
@@ -2033,15 +2033,15 @@
     invalid_input_exception().
 
 -type list_reports_for_report_group_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type list_sandboxes_errors() ::
     invalid_input_exception().
 
 -type list_sandboxes_for_project_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type list_shared_projects_errors() ::
     invalid_input_exception().
@@ -2053,73 +2053,73 @@
     invalid_input_exception().
 
 -type put_resource_policy_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type retry_build_errors() ::
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    account_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    account_limit_exceeded_exception().
 
 -type retry_build_batch_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type start_build_errors() ::
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    account_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    account_limit_exceeded_exception().
 
 -type start_build_batch_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type start_command_execution_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type start_sandbox_errors() ::
-    invalid_input_exception() | 
     resource_not_found_exception() | 
+    invalid_input_exception() | 
     account_suspended_exception().
 
 -type start_sandbox_connection_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type stop_build_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type stop_build_batch_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type stop_sandbox_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type update_fleet_errors() ::
+    resource_not_found_exception() | 
     invalid_input_exception() | 
-    account_limit_exceeded_exception() | 
-    resource_not_found_exception().
+    account_limit_exceeded_exception().
 
 -type update_project_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type update_project_visibility_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type update_report_group_errors() ::
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_input_exception().
 
 -type update_webhook_errors() ::
+    resource_not_found_exception() | 
     o_auth_provider_exception() | 
-    invalid_input_exception() | 
-    resource_not_found_exception().
+    invalid_input_exception().
 
 %%====================================================================
 %% API

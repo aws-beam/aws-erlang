@@ -90,542 +90,10 @@
 
 
 %% Example:
-%% readiness_check_summary() :: #{
-%%   <<"Readiness">> => list(any()),
-%%   <<"ReadinessCheckName">> => string()
-%% }
--type readiness_check_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_set_request() :: #{
-%%   <<"ResourceSetName">> := string(),
-%%   <<"ResourceSetType">> := string(),
-%%   <<"Resources">> := list(resource()),
-%%   <<"Tags">> => map()
-%% }
--type create_resource_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recovery_group_response() :: #{
-%%   <<"Cells">> => list(string()),
-%%   <<"RecoveryGroupArn">> => string(),
-%%   <<"RecoveryGroupName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_recovery_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cell_response() :: #{
-%%   <<"CellArn">> => string(),
-%%   <<"CellName">> => string(),
-%%   <<"Cells">> => list(string()),
-%%   <<"ParentReadinessScopes">> => list(string()),
-%%   <<"Tags">> => map()
-%% }
--type create_cell_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cell_request() :: #{}
--type delete_cell_request() :: #{}.
-
-%% Example:
-%% get_recovery_group_request() :: #{}
--type get_recovery_group_request() :: #{}.
-
-
-%% Example:
-%% list_readiness_checks_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_readiness_checks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% dns_target_resource() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"HostedZoneArn">> => string(),
-%%   <<"RecordSetId">> => string(),
-%%   <<"RecordType">> => string(),
-%%   <<"TargetResource">> => target_resource()
-%% }
--type dns_target_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% r53_resource_record() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"RecordSetId">> => string()
-%% }
--type r53_resource_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cells_response() :: #{
-%%   <<"Cells">> => list(cell_output()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cells_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_set_request() :: #{}
--type delete_resource_set_request() :: #{}.
-
-
-%% Example:
-%% create_cross_account_authorization_response() :: #{
-%%   <<"CrossAccountAuthorization">> => string()
-%% }
--type create_cross_account_authorization_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% recovery_group_output() :: #{
-%%   <<"Cells">> => list(string()),
-%%   <<"RecoveryGroupArn">> => string(),
-%%   <<"RecoveryGroupName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type recovery_group_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_sets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_resource_sets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_set_output() :: #{
-%%   <<"ResourceSetArn">> => string(),
-%%   <<"ResourceSetName">> => string(),
-%%   <<"ResourceSetType">> => string(),
-%%   <<"Resources">> => list(resource()),
-%%   <<"Tags">> => map()
-%% }
--type resource_set_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cross_account_authorization_request() :: #{
-%%   <<"CrossAccountAuthorization">> := string()
-%% }
--type create_cross_account_authorization_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recovery_group_readiness_summary_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Readiness">> => list(any()),
-%%   <<"ReadinessChecks">> => list(readiness_check_summary())
-%% }
--type get_recovery_group_readiness_summary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recovery_group_response() :: #{
-%%   <<"Cells">> => list(string()),
-%%   <<"RecoveryGroupArn">> => string(),
-%%   <<"RecoveryGroupName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type update_recovery_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rules_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type list_rules_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_cell_request() :: #{}
--type get_cell_request() :: #{}.
-
-
-%% Example:
-%% update_readiness_check_response() :: #{
-%%   <<"ReadinessCheckArn">> => string(),
-%%   <<"ReadinessCheckName">> => string(),
-%%   <<"ResourceSet">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type update_readiness_check_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_resource() :: #{
-%%   <<"NLBResource">> => n_lb_resource(),
-%%   <<"R53Resource">> => r53_resource_record()
-%% }
--type target_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recovery_group_readiness_summary_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_recovery_group_readiness_summary_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cell_readiness_summary_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Readiness">> => list(any()),
-%%   <<"ReadinessChecks">> => list(readiness_check_summary())
-%% }
--type get_cell_readiness_summary_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cells_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_cells_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resources_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resources_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cross_account_authorization_request() :: #{}
--type delete_cross_account_authorization_request() :: #{}.
-
-
-%% Example:
-%% list_readiness_checks_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ReadinessChecks">> => list(readiness_check_output())
-%% }
--type list_readiness_checks_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_readiness_check_request() :: #{
-%%   <<"ReadinessCheckName">> := string(),
-%%   <<"ResourceSetName">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_readiness_check_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_readiness_check_request() :: #{
-%%   <<"ResourceSetName">> := string()
-%% }
--type update_readiness_check_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_readiness_check_status_response() :: #{
-%%   <<"Messages">> => list(message()),
-%%   <<"NextToken">> => string(),
-%%   <<"Readiness">> => list(any()),
-%%   <<"Resources">> => list(resource_result())
-%% }
--type get_readiness_check_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recovery_group_request() :: #{
-%%   <<"Cells">> := list(string())
-%% }
--type update_recovery_group_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"RecommendationText">> => string()
-%% }
--type recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_architecture_recommendations_response() :: #{
-%%   <<"LastAuditTimestamp">> => non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Recommendations">> => list(recommendation())
-%% }
--type get_architecture_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_readiness_check_status_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_readiness_check_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_readiness_check_response() :: #{
-%%   <<"ReadinessCheckArn">> => string(),
-%%   <<"ReadinessCheckName">> => string(),
-%%   <<"ResourceSet">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_readiness_check_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cross_account_authorizations_response() :: #{
-%%   <<"CrossAccountAuthorizations">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cross_account_authorizations_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_set_request() :: #{}
--type get_resource_set_request() :: #{}.
-
-
-%% Example:
-%% update_cell_response() :: #{
-%%   <<"CellArn">> => string(),
-%%   <<"CellName">> => string(),
-%%   <<"Cells">> => list(string()),
-%%   <<"ParentReadinessScopes">> => list(string()),
-%%   <<"Tags">> => map()
-%% }
--type update_cell_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_readiness_check_response() :: #{
-%%   <<"ReadinessCheckArn">> => string(),
-%%   <<"ReadinessCheckName">> => string(),
-%%   <<"ResourceSet">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_readiness_check_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_set_response() :: #{
-%%   <<"ResourceSetArn">> => string(),
-%%   <<"ResourceSetName">> => string(),
-%%   <<"ResourceSetType">> => string(),
-%%   <<"Resources">> => list(resource()),
-%%   <<"Tags">> => map()
-%% }
--type create_resource_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% readiness_check_output() :: #{
-%%   <<"ReadinessCheckArn">> => string(),
-%%   <<"ReadinessCheckName">> => string(),
-%%   <<"ResourceSet">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type readiness_check_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recovery_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_recovery_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_architecture_recommendations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_architecture_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_set_response() :: #{
-%%   <<"ResourceSetArn">> => string(),
-%%   <<"ResourceSetName">> => string(),
-%%   <<"ResourceSetType">> => string(),
-%%   <<"Resources">> => list(resource()),
-%%   <<"Tags">> => map()
-%% }
--type get_resource_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_sets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceSets">> => list(resource_set_output())
-%% }
--type list_resource_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cross_account_authorization_response() :: #{}
--type delete_cross_account_authorization_response() :: #{}.
-
-
-%% Example:
-%% get_cell_readiness_summary_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_cell_readiness_summary_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_readiness_check_resource_status_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Readiness">> => list(any()),
-%%   <<"Rules">> => list(rule_result())
-%% }
--type get_readiness_check_resource_status_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cell_response() :: #{
-%%   <<"CellArn">> => string(),
-%%   <<"CellName">> => string(),
-%%   <<"Cells">> => list(string()),
-%%   <<"ParentReadinessScopes">> => list(string()),
-%%   <<"Tags">> => map()
-%% }
--type get_cell_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rules_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Rules">> => list(list_rules_output())
-%% }
--type list_rules_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% update_resource_set_request() :: #{
-%%   <<"ResourceSetType">> := string(),
-%%   <<"Resources">> := list(resource())
-%% }
--type update_resource_set_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recovery_group_response() :: #{
-%%   <<"Cells">> => list(string()),
-%%   <<"RecoveryGroupArn">> => string(),
-%%   <<"RecoveryGroupName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_recovery_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule_result() :: #{
-%%   <<"LastCheckedTimestamp">> => non_neg_integer(),
-%%   <<"Messages">> => list(message()),
-%%   <<"Readiness">> => list(any()),
-%%   <<"RuleId">> => string()
-%% }
--type rule_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resources_request() :: #{}
--type list_tags_for_resources_request() :: #{}.
-
-
-%% Example:
-%% get_readiness_check_resource_status_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_readiness_check_resource_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rules_output() :: #{
-%%   <<"ResourceType">> => string(),
-%%   <<"RuleDescription">> => string(),
-%%   <<"RuleId">> => string()
-%% }
--type list_rules_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_readiness_check_request() :: #{}
--type delete_readiness_check_request() :: #{}.
-
-
-%% Example:
-%% n_lb_resource() :: #{
-%%   <<"Arn">> => string()
-%% }
--type n_lb_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -640,12 +108,10 @@
 
 
 %% Example:
-%% create_recovery_group_request() :: #{
-%%   <<"Cells">> => list(string()),
-%%   <<"RecoveryGroupName">> := string(),
-%%   <<"Tags">> => map()
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type create_recovery_group_request() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -658,10 +124,289 @@
 
 
 %% Example:
-%% update_cell_request() :: #{
-%%   <<"Cells">> := list(string())
+%% create_cell_response() :: #{
+%%   <<"CellArn">> => string(),
+%%   <<"CellName">> => string(),
+%%   <<"Cells">> => list(string()),
+%%   <<"ParentReadinessScopes">> => list(string()),
+%%   <<"Tags">> => map()
 %% }
--type update_cell_request() :: #{binary() => any()}.
+-type create_cell_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cross_account_authorization_request() :: #{
+%%   <<"CrossAccountAuthorization">> := string()
+%% }
+-type create_cross_account_authorization_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cross_account_authorization_response() :: #{
+%%   <<"CrossAccountAuthorization">> => string()
+%% }
+-type create_cross_account_authorization_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_readiness_check_request() :: #{
+%%   <<"ReadinessCheckName">> := string(),
+%%   <<"ResourceSetName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_readiness_check_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_readiness_check_response() :: #{
+%%   <<"ReadinessCheckArn">> => string(),
+%%   <<"ReadinessCheckName">> => string(),
+%%   <<"ResourceSet">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_readiness_check_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recovery_group_request() :: #{
+%%   <<"Cells">> => list(string()),
+%%   <<"RecoveryGroupName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_recovery_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recovery_group_response() :: #{
+%%   <<"Cells">> => list(string()),
+%%   <<"RecoveryGroupArn">> => string(),
+%%   <<"RecoveryGroupName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_recovery_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_set_request() :: #{
+%%   <<"ResourceSetName">> := string(),
+%%   <<"ResourceSetType">> := string(),
+%%   <<"Resources">> := list(resource()),
+%%   <<"Tags">> => map()
+%% }
+-type create_resource_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_set_response() :: #{
+%%   <<"ResourceSetArn">> => string(),
+%%   <<"ResourceSetName">> => string(),
+%%   <<"ResourceSetType">> => string(),
+%%   <<"Resources">> => list(resource()),
+%%   <<"Tags">> => map()
+%% }
+-type create_resource_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cell_request() :: #{}
+-type delete_cell_request() :: #{}.
+
+%% Example:
+%% delete_cross_account_authorization_request() :: #{}
+-type delete_cross_account_authorization_request() :: #{}.
+
+%% Example:
+%% delete_cross_account_authorization_response() :: #{}
+-type delete_cross_account_authorization_response() :: #{}.
+
+%% Example:
+%% delete_readiness_check_request() :: #{}
+-type delete_readiness_check_request() :: #{}.
+
+%% Example:
+%% delete_recovery_group_request() :: #{}
+-type delete_recovery_group_request() :: #{}.
+
+%% Example:
+%% delete_resource_set_request() :: #{}
+-type delete_resource_set_request() :: #{}.
+
+
+%% Example:
+%% dns_target_resource() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"HostedZoneArn">> => string(),
+%%   <<"RecordSetId">> => string(),
+%%   <<"RecordType">> => string(),
+%%   <<"TargetResource">> => target_resource()
+%% }
+-type dns_target_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_architecture_recommendations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_architecture_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_architecture_recommendations_response() :: #{
+%%   <<"LastAuditTimestamp">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Recommendations">> => list(recommendation())
+%% }
+-type get_architecture_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cell_readiness_summary_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_cell_readiness_summary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cell_readiness_summary_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Readiness">> => list(any()),
+%%   <<"ReadinessChecks">> => list(readiness_check_summary())
+%% }
+-type get_cell_readiness_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_cell_request() :: #{}
+-type get_cell_request() :: #{}.
+
+
+%% Example:
+%% get_cell_response() :: #{
+%%   <<"CellArn">> => string(),
+%%   <<"CellName">> => string(),
+%%   <<"Cells">> => list(string()),
+%%   <<"ParentReadinessScopes">> => list(string()),
+%%   <<"Tags">> => map()
+%% }
+-type get_cell_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_readiness_check_request() :: #{}
+-type get_readiness_check_request() :: #{}.
+
+
+%% Example:
+%% get_readiness_check_resource_status_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_readiness_check_resource_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_readiness_check_resource_status_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Readiness">> => list(any()),
+%%   <<"Rules">> => list(rule_result())
+%% }
+-type get_readiness_check_resource_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_readiness_check_response() :: #{
+%%   <<"ReadinessCheckArn">> => string(),
+%%   <<"ReadinessCheckName">> => string(),
+%%   <<"ResourceSet">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_readiness_check_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_readiness_check_status_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_readiness_check_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_readiness_check_status_response() :: #{
+%%   <<"Messages">> => list(message()),
+%%   <<"NextToken">> => string(),
+%%   <<"Readiness">> => list(any()),
+%%   <<"Resources">> => list(resource_result())
+%% }
+-type get_readiness_check_status_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_group_readiness_summary_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_recovery_group_readiness_summary_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_group_readiness_summary_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Readiness">> => list(any()),
+%%   <<"ReadinessChecks">> => list(readiness_check_summary())
+%% }
+-type get_recovery_group_readiness_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_recovery_group_request() :: #{}
+-type get_recovery_group_request() :: #{}.
+
+
+%% Example:
+%% get_recovery_group_response() :: #{
+%%   <<"Cells">> => list(string()),
+%%   <<"RecoveryGroupArn">> => string(),
+%%   <<"RecoveryGroupName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_recovery_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_set_request() :: #{}
+-type get_resource_set_request() :: #{}.
+
+
+%% Example:
+%% get_resource_set_response() :: #{
+%%   <<"ResourceSetArn">> => string(),
+%%   <<"ResourceSetName">> => string(),
+%%   <<"ResourceSetType">> => string(),
+%%   <<"Resources">> => list(resource()),
+%%   <<"Tags">> => map()
+%% }
+-type get_resource_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cells_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cells_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cells_response() :: #{
+%%   <<"Cells">> => list(cell_output()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cells_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -670,6 +415,173 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_cross_account_authorizations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cross_account_authorizations_response() :: #{
+%%   <<"CrossAccountAuthorizations">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cross_account_authorizations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_readiness_checks_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_readiness_checks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_readiness_checks_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReadinessChecks">> => list(readiness_check_output())
+%% }
+-type list_readiness_checks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recovery_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecoveryGroups">> => list(recovery_group_output())
+%% }
+-type list_recovery_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_sets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resource_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceSets">> => list(resource_set_output())
+%% }
+-type list_resource_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rules_output() :: #{
+%%   <<"ResourceType">> => string(),
+%%   <<"RuleDescription">> => string(),
+%%   <<"RuleId">> => string()
+%% }
+-type list_rules_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rules_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type list_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rules_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Rules">> => list(list_rules_output())
+%% }
+-type list_rules_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resources_request() :: #{}
+-type list_tags_for_resources_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resources_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% message() :: #{
+%%   <<"MessageText">> => string()
+%% }
+-type message() :: #{binary() => any()}.
+
+
+%% Example:
+%% n_lb_resource() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type n_lb_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% r53_resource_record() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"RecordSetId">> => string()
+%% }
+-type r53_resource_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% readiness_check_output() :: #{
+%%   <<"ReadinessCheckArn">> => string(),
+%%   <<"ReadinessCheckName">> => string(),
+%%   <<"ResourceSet">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type readiness_check_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% readiness_check_summary() :: #{
+%%   <<"Readiness">> => list(any()),
+%%   <<"ReadinessCheckName">> => string()
+%% }
+-type readiness_check_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"RecommendationText">> => string()
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_group_output() :: #{
+%%   <<"Cells">> => list(string()),
+%%   <<"RecoveryGroupArn">> => string(),
+%%   <<"RecoveryGroupName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type recovery_group_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource() :: #{
+%%   <<"ComponentId">> => string(),
+%%   <<"DnsTargetResource">> => dns_target_resource(),
+%%   <<"ReadinessScopes">> => list(string()),
+%%   <<"ResourceArn">> => string()
+%% }
+-type resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -683,6 +595,120 @@
 
 
 %% Example:
+%% resource_set_output() :: #{
+%%   <<"ResourceSetArn">> => string(),
+%%   <<"ResourceSetName">> => string(),
+%%   <<"ResourceSetType">> => string(),
+%%   <<"Resources">> => list(resource()),
+%%   <<"Tags">> => map()
+%% }
+-type resource_set_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_result() :: #{
+%%   <<"LastCheckedTimestamp">> => non_neg_integer(),
+%%   <<"Messages">> => list(message()),
+%%   <<"Readiness">> => list(any()),
+%%   <<"RuleId">> => string()
+%% }
+-type rule_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% target_resource() :: #{
+%%   <<"NLBResource">> => n_lb_resource(),
+%%   <<"R53Resource">> => r53_resource_record()
+%% }
+-type target_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cell_request() :: #{
+%%   <<"Cells">> := list(string())
+%% }
+-type update_cell_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cell_response() :: #{
+%%   <<"CellArn">> => string(),
+%%   <<"CellName">> => string(),
+%%   <<"Cells">> => list(string()),
+%%   <<"ParentReadinessScopes">> => list(string()),
+%%   <<"Tags">> => map()
+%% }
+-type update_cell_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_readiness_check_request() :: #{
+%%   <<"ResourceSetName">> := string()
+%% }
+-type update_readiness_check_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_readiness_check_response() :: #{
+%%   <<"ReadinessCheckArn">> => string(),
+%%   <<"ReadinessCheckName">> => string(),
+%%   <<"ResourceSet">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_readiness_check_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_group_request() :: #{
+%%   <<"Cells">> := list(string())
+%% }
+-type update_recovery_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_group_response() :: #{
+%%   <<"Cells">> => list(string()),
+%%   <<"RecoveryGroupArn">> => string(),
+%%   <<"RecoveryGroupName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_recovery_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resource_set_request() :: #{
+%%   <<"ResourceSetType">> := string(),
+%%   <<"Resources">> := list(resource())
+%% }
+-type update_resource_set_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_resource_set_response() :: #{
 %%   <<"ResourceSetArn">> => string(),
 %%   <<"ResourceSetName">> => string(),
@@ -692,249 +718,223 @@
 %% }
 -type update_resource_set_response() :: #{binary() => any()}.
 
-%% Example:
-%% get_readiness_check_request() :: #{}
--type get_readiness_check_request() :: #{}.
 
 %% Example:
-%% delete_recovery_group_request() :: #{}
--type delete_recovery_group_request() :: #{}.
-
-
-%% Example:
-%% list_recovery_groups_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RecoveryGroups">> => list(recovery_group_output())
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_recovery_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% message() :: #{
-%%   <<"MessageText">> => string()
-%% }
--type message() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource() :: #{
-%%   <<"ComponentId">> => string(),
-%%   <<"DnsTargetResource">> => dns_target_resource(),
-%%   <<"ReadinessScopes">> => list(string()),
-%%   <<"ResourceArn">> => string()
-%% }
--type resource() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type create_cell_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_cross_account_authorization_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_readiness_check_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_recovery_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_resource_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_cell_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_cross_account_authorization_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_readiness_check_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_recovery_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_resource_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_architecture_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_cell_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_cell_readiness_summary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_readiness_check_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_readiness_check_resource_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_readiness_check_status_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_recovery_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_recovery_group_readiness_summary_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_cells_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_cross_account_authorizations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_readiness_checks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_recovery_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_resource_sets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_rules_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resources_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_cell_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_readiness_check_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_recovery_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_resource_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

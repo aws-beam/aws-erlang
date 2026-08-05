@@ -217,57 +217,30 @@
 
 
 %% Example:
-%% describe_stack_resource_drifts_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StackResourceDrifts">> => list(stack_resource_drift())
+%% account_gate_result() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
 %% }
--type describe_stack_resource_drifts_output() :: #{binary() => any()}.
+-type account_gate_result() :: #{binary() => any()}.
 
 %% Example:
-%% stale_request_exception() :: #{
-%%   <<"Message">> => string()
+%% account_limit() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => integer()
 %% }
--type stale_request_exception() :: #{binary() => any()}.
+-type account_limit() :: #{binary() => any()}.
 
 %% Example:
-%% generated_template_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% activate_organizations_access_input() :: #{
+
 %% }
--type generated_template_not_found_exception() :: #{binary() => any()}.
+-type activate_organizations_access_input() :: #{binary() => any()}.
 
 %% Example:
-%% register_publisher_input() :: #{
-%%   <<"AcceptTermsAndConditions">> => boolean(),
-%%   <<"ConnectionArn">> => string()
-%% }
--type register_publisher_input() :: #{binary() => any()}.
+%% activate_organizations_access_output() :: #{
 
-%% Example:
-%% list_stack_resources_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StackResourceSummaries">> => list(stack_resource_summary())
 %% }
--type list_stack_resources_output() :: #{binary() => any()}.
-
-%% Example:
-%% set_stack_policy_input() :: #{
-%%   <<"StackName">> := string(),
-%%   <<"StackPolicyBody">> => string(),
-%%   <<"StackPolicyURL">> => string()
-%% }
--type set_stack_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_stack_refactor_output() :: #{
-%%   <<"StackRefactorId">> => string()
-%% }
--type create_stack_refactor_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_stack_policy_input() :: #{
-%%   <<"StackName">> := string()
-%% }
--type get_stack_policy_input() :: #{binary() => any()}.
+-type activate_organizations_access_output() :: #{binary() => any()}.
 
 %% Example:
 %% activate_type_input() :: #{
@@ -285,843 +258,16 @@
 -type activate_type_input() :: #{binary() => any()}.
 
 %% Example:
-%% stack_refactor_summary() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ExecutionStatus">> => list(any()),
-%%   <<"ExecutionStatusReason">> => string(),
-%%   <<"StackRefactorId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
+%% activate_type_output() :: #{
+%%   <<"Arn">> => string()
 %% }
--type stack_refactor_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_hook_result_input() :: #{
-%%   <<"HookResultId">> => string()
-%% }
--type get_hook_result_input() :: #{binary() => any()}.
-
-%% Example:
-%% stack_resource_summary() :: #{
-%%   <<"DriftInformation">> => stack_resource_drift_information_summary(),
-%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"ModuleInfo">> => module_info(),
-%%   <<"PhysicalResourceId">> => string(),
-%%   <<"ResourceStatus">> => list(any()),
-%%   <<"ResourceStatusReason">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type stack_resource_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_scan_resources_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceIdentifier">> => string(),
-%%   <<"ResourceScanId">> := string(),
-%%   <<"ResourceTypePrefix">> => string(),
-%%   <<"TagKey">> => string(),
-%%   <<"TagValue">> => string()
-%% }
--type list_resource_scan_resources_input() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_update_stack_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"StackName">> := string()
-%% }
--type cancel_update_stack_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_generated_template_input() :: #{
-%%   <<"AddResources">> => list(resource_definition()),
-%%   <<"GeneratedTemplateName">> := string(),
-%%   <<"NewGeneratedTemplateName">> => string(),
-%%   <<"RefreshAllResources">> => boolean(),
-%%   <<"RemoveResources">> => list(string()),
-%%   <<"TemplateConfiguration">> => template_configuration()
-%% }
--type update_generated_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% rollback_stack_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DeploymentConfig">> => deployment_config(),
-%%   <<"RetainExceptOnCreate">> => boolean(),
-%%   <<"RoleARN">> => string(),
-%%   <<"StackName">> := string()
-%% }
--type rollback_stack_input() :: #{binary() => any()}.
-
-%% Example:
-%% test_type_input() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"LogDeliveryBucket">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"TypeName">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type test_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_set_operation_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"OperationId">> := string(),
-%%   <<"StackSetName">> := string()
-%% }
--type describe_stack_set_operation_input() :: #{binary() => any()}.
-
-%% Example:
-%% property_difference() :: #{
-%%   <<"ActualValue">> => string(),
-%%   <<"DifferenceType">> => list(any()),
-%%   <<"ExpectedValue">> => string(),
-%%   <<"PropertyPath">> => string()
-%% }
--type property_difference() :: #{binary() => any()}.
-
-%% Example:
-%% change() :: #{
-%%   <<"HookInvocationCount">> => integer(),
-%%   <<"ResourceChange">> => resource_change(),
-%%   <<"Type">> => list(any())
-%% }
--type change() :: #{binary() => any()}.
-
-%% Example:
-%% stack_set_operation_summary() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"EndTimestamp">> => non_neg_integer(),
-%%   <<"OperationId">> => string(),
-%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDetails">> => stack_set_operation_status_details(),
-%%   <<"StatusReason">> => string()
-%% }
--type stack_set_operation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_resources_input() :: #{
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"PhysicalResourceId">> => string(),
-%%   <<"StackName">> => string()
-%% }
--type describe_stack_resources_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stack_instances_input() :: #{
-%%   <<"Accounts">> => list(string()),
-%%   <<"CallAs">> => list(any()),
-%%   <<"DeploymentTargets">> => deployment_targets(),
-%%   <<"OperationId">> => string(),
-%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
-%%   <<"Regions">> := list(string()),
-%%   <<"RetainStacks">> := boolean(),
-%%   <<"StackSetName">> := string()
-%% }
--type delete_stack_instances_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_stacks_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StackSummaries">> => list(stack_summary())
-%% }
--type list_stacks_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_generated_template_input() :: #{
-%%   <<"GeneratedTemplateName">> := string()
-%% }
--type delete_generated_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_imports_input() :: #{
-%%   <<"ExportName">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_imports_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_stack_set_input() :: #{
-%%   <<"Accounts">> => list(string()),
-%%   <<"AdministrationRoleARN">> => string(),
-%%   <<"AutoDeployment">> => auto_deployment(),
-%%   <<"CallAs">> => list(any()),
-%%   <<"Capabilities">> => list(list(any())()),
-%%   <<"DeploymentTargets">> => deployment_targets(),
-%%   <<"Description">> => string(),
-%%   <<"ExecutionRoleName">> => string(),
-%%   <<"ManagedExecution">> => managed_execution(),
-%%   <<"OperationId">> => string(),
-%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
-%%   <<"Parameters">> => list(parameter()),
-%%   <<"PermissionModel">> => list(any()),
-%%   <<"Regions">> => list(string()),
-%%   <<"StackSetName">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TemplateBody">> => string(),
-%%   <<"TemplateURL">> => string(),
-%%   <<"UsePreviousTemplate">> => boolean()
-%% }
--type update_stack_set_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_instance_resource_drifts_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OperationId">> := string(),
-%%   <<"StackInstanceAccount">> := string(),
-%%   <<"StackInstanceRegion">> := string(),
-%%   <<"StackInstanceResourceDriftStatuses">> => list(list(any())()),
-%%   <<"StackSetName">> := string()
-%% }
--type list_stack_instance_resource_drifts_input() :: #{binary() => any()}.
-
-%% Example:
-%% parameter_constraints() :: #{
-%%   <<"AllowedValues">> => list(string())
-%% }
--type parameter_constraints() :: #{binary() => any()}.
-
-%% Example:
-%% stack_set_operation_status_details() :: #{
-%%   <<"FailedStackInstancesCount">> => integer()
-%% }
--type stack_set_operation_status_details() :: #{binary() => any()}.
-
-%% Example:
-%% account_gate_result() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type account_gate_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_change_set_output() :: #{
-
-%% }
--type delete_change_set_output() :: #{binary() => any()}.
-
-%% Example:
-%% stack_event() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DetailedStatus">> => list(any()),
-%%   <<"EventId">> => string(),
-%%   <<"HookFailureMode">> => list(any()),
-%%   <<"HookInvocationId">> => string(),
-%%   <<"HookInvocationPoint">> => list(any()),
-%%   <<"HookStatus">> => list(any()),
-%%   <<"HookStatusReason">> => string(),
-%%   <<"HookType">> => string(),
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"OperationId">> => string(),
-%%   <<"PhysicalResourceId">> => string(),
-%%   <<"ResourceProperties">> => string(),
-%%   <<"ResourceStatus">> => list(any()),
-%%   <<"ResourceStatusReason">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"StackId">> => string(),
-%%   <<"StackName">> => string(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type stack_event() :: #{binary() => any()}.
-
-%% Example:
-%% resource_mapping() :: #{
-%%   <<"Destination">> => resource_location(),
-%%   <<"Source">> => resource_location()
-%% }
--type resource_mapping() :: #{binary() => any()}.
-
-%% Example:
-%% create_stack_refactor_input() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EnableStackCreation">> => boolean(),
-%%   <<"ResourceMappings">> => list(resource_mapping()),
-%%   <<"StackDefinitions">> := list(stack_definition())
-%% }
--type create_stack_refactor_input() :: #{binary() => any()}.
-
-%% Example:
-%% physical_resource_id_context_key_value_pair() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type physical_resource_id_context_key_value_pair() :: #{binary() => any()}.
-
-%% Example:
-%% get_template_output() :: #{
-%%   <<"StagesAvailable">> => list(list(any())()),
-%%   <<"TemplateBody">> => string()
-%% }
--type get_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% resource_definition() :: #{
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"ResourceIdentifier">> => map(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_definition() :: #{binary() => any()}.
-
-%% Example:
-%% resource_to_import() :: #{
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"ResourceIdentifier">> => map(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_to_import() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_drift_detection_status_input() :: #{
-%%   <<"StackDriftDetectionId">> := string()
-%% }
--type describe_stack_drift_detection_status_input() :: #{binary() => any()}.
+-type activate_type_output() :: #{binary() => any()}.
 
 %% Example:
 %% already_exists_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_stack_output() :: #{
-%%   <<"OperationId">> => string(),
-%%   <<"StackId">> => string()
-%% }
--type update_stack_output() :: #{binary() => any()}.
-
-%% Example:
-%% template_parameter() :: #{
-%%   <<"DefaultValue">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"NoEcho">> => boolean(),
-%%   <<"ParameterKey">> => string()
-%% }
--type template_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% list_generated_templates_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_generated_templates_input() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_config() :: #{
-%%   <<"DisableRollback">> => boolean(),
-%%   <<"Mode">> => list(any())
-%% }
--type deployment_config() :: #{binary() => any()}.
-
-%% Example:
-%% scanned_resource_identifier() :: #{
-%%   <<"ResourceIdentifier">> => map(),
-%%   <<"ResourceType">> => string()
-%% }
--type scanned_resource_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% type_version_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IsDefaultVersion">> => boolean(),
-%%   <<"PublicVersionNumber">> => string(),
-%%   <<"TimeCreated">> => non_neg_integer(),
-%%   <<"Type">> => list(any()),
-%%   <<"TypeName">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type type_version_summary() :: #{binary() => any()}.
-
-%% Example:
-%% warnings() :: #{
-%%   <<"UnrecognizedResourceTypes">> => list(string())
-%% }
--type warnings() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_resources_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_resources_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stack_refactor_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type stack_refactor_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% managed_execution() :: #{
-%%   <<"Active">> => boolean()
-%% }
--type managed_execution() :: #{binary() => any()}.
-
-%% Example:
-%% describe_change_set_hooks_output() :: #{
-%%   <<"ChangeSetId">> => string(),
-%%   <<"ChangeSetName">> => string(),
-%%   <<"Hooks">> => list(change_set_hook()),
-%%   <<"NextToken">> => string(),
-%%   <<"StackId">> => string(),
-%%   <<"StackName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_change_set_hooks_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_instance_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"StackInstanceAccount">> := string(),
-%%   <<"StackInstanceRegion">> := string(),
-%%   <<"StackSetName">> := string()
-%% }
--type describe_stack_instance_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_hook_results_output() :: #{
-%%   <<"HookResults">> => list(hook_result_summary()),
-%%   <<"NextToken">> => string(),
-%%   <<"TargetId">> => string(),
-%%   <<"TargetType">> => list(any())
-%% }
--type list_hook_results_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_operation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_template_summary_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"StackName">> => string(),
-%%   <<"StackSetName">> => string(),
-%%   <<"TemplateBody">> => string(),
-%%   <<"TemplateSummaryConfig">> => template_summary_config(),
-%%   <<"TemplateURL">> => string()
-%% }
--type get_template_summary_input() :: #{binary() => any()}.
-
-%% Example:
-%% resource_target_definition() :: #{
-%%   <<"AfterValue">> => string(),
-%%   <<"AfterValueFrom">> => list(any()),
-%%   <<"Attribute">> => list(any()),
-%%   <<"AttributeChangeType">> => list(any()),
-%%   <<"BeforeValue">> => string(),
-%%   <<"BeforeValueFrom">> => list(any()),
-%%   <<"Drift">> => live_resource_drift(),
-%%   <<"Name">> => string(),
-%%   <<"Path">> => string(),
-%%   <<"RequiresRecreation">> => list(any())
-%% }
--type resource_target_definition() :: #{binary() => any()}.
-
-%% Example:
-%% register_publisher_output() :: #{
-%%   <<"PublisherId">> => string()
-%% }
--type register_publisher_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_set_operation_results_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"Filters">> => list(operation_result_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OperationId">> := string(),
-%%   <<"StackSetName">> := string()
-%% }
--type list_stack_set_operation_results_input() :: #{binary() => any()}.
-
-%% Example:
-%% hook_result_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type hook_result_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% detect_stack_resource_drift_input() :: #{
-%%   <<"LogicalResourceId">> := string(),
-%%   <<"StackName">> := string()
-%% }
--type detect_stack_resource_drift_input() :: #{binary() => any()}.
-
-%% Example:
-%% stack_resource_detail() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DriftInformation">> => stack_resource_drift_information(),
-%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"Metadata">> => string(),
-%%   <<"ModuleInfo">> => module_info(),
-%%   <<"PhysicalResourceId">> => string(),
-%%   <<"ResourceStatus">> => list(any()),
-%%   <<"ResourceStatusReason">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"StackId">> => string(),
-%%   <<"StackName">> => string()
-%% }
--type stack_resource_detail() :: #{binary() => any()}.
-
-%% Example:
-%% stack_refactor_action() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"Detection">> => list(any()),
-%%   <<"DetectionReason">> => string(),
-%%   <<"Entity">> => list(any()),
-%%   <<"PhysicalResourceId">> => string(),
-%%   <<"ResourceIdentifier">> => string(),
-%%   <<"ResourceMapping">> => resource_mapping(),
-%%   <<"TagResources">> => list(tag()),
-%%   <<"UntagResources">> => list(string())
-%% }
--type stack_refactor_action() :: #{binary() => any()}.
-
-%% Example:
-%% stack_instance_summary() :: #{
-%%   <<"Account">> => string(),
-%%   <<"DriftStatus">> => list(any()),
-%%   <<"LastDriftCheckTimestamp">> => non_neg_integer(),
-%%   <<"LastOperationId">> => string(),
-%%   <<"OrganizationalUnitId">> => string(),
-%%   <<"Region">> => string(),
-%%   <<"StackId">> => string(),
-%%   <<"StackInstanceStatus">> => stack_instance_comprehensive_status(),
-%%   <<"StackSetId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type stack_instance_summary() :: #{binary() => any()}.
-
-%% Example:
-%% live_resource_drift() :: #{
-%%   <<"ActualValue">> => string(),
-%%   <<"DriftDetectionTimestamp">> => non_neg_integer(),
-%%   <<"PreviousValue">> => string()
-%% }
--type live_resource_drift() :: #{binary() => any()}.
-
-%% Example:
-%% update_termination_protection_input() :: #{
-%%   <<"EnableTerminationProtection">> := boolean(),
-%%   <<"StackName">> := string()
-%% }
--type update_termination_protection_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stack_instances_output() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type delete_stack_instances_output() :: #{binary() => any()}.
-
-%% Example:
-%% stack_instance_comprehensive_status() :: #{
-%%   <<"DetailedStatus">> => list(any())
-%% }
--type stack_instance_comprehensive_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_set_output() :: #{
-%%   <<"StackSet">> => stack_set()
-%% }
--type describe_stack_set_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_publisher_input() :: #{
-%%   <<"PublisherId">> => string()
-%% }
--type describe_publisher_input() :: #{binary() => any()}.
-
-%% Example:
-%% logging_config() :: #{
-%%   <<"LogGroupName">> => string(),
-%%   <<"LogRoleArn">> => string()
-%% }
--type logging_config() :: #{binary() => any()}.
-
-%% Example:
-%% name_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type name_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_resource_drifts_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StackName">> := string(),
-%%   <<"StackResourceDriftStatusFilters">> => list(list(any())())
-%% }
--type describe_stack_resource_drifts_input() :: #{binary() => any()}.
-
-%% Example:
-%% scanned_resource() :: #{
-%%   <<"ManagedByStack">> => boolean(),
-%%   <<"ResourceIdentifier">> => map(),
-%%   <<"ResourceType">> => string()
-%% }
--type scanned_resource() :: #{binary() => any()}.
-
-%% Example:
-%% warning_property() :: #{
-%%   <<"Description">> => string(),
-%%   <<"PropertyPath">> => string(),
-%%   <<"Required">> => boolean()
-%% }
--type warning_property() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_scans_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ScanTypeFilter">> => list(any())
-%% }
--type list_resource_scans_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_scan_output() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"PercentageCompleted">> => float(),
-%%   <<"ResourceScanId">> => string(),
-%%   <<"ResourceTypes">> => list(string()),
-%%   <<"ResourcesRead">> => integer(),
-%%   <<"ResourcesScanned">> => integer(),
-%%   <<"ScanFilters">> => list(scan_filter()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type describe_resource_scan_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_events_input() :: #{
-%%   <<"ChangeSetName">> => string(),
-%%   <<"Filters">> => event_filter(),
-%%   <<"NextToken">> => string(),
-%%   <<"OperationId">> => string(),
-%%   <<"StackName">> => string()
-%% }
--type describe_events_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stack_set_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"StackSetName">> := string()
-%% }
--type delete_stack_set_input() :: #{binary() => any()}.
-
-%% Example:
-%% operation_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type operation_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stack_set_operation_result_summary() :: #{
-%%   <<"Account">> => string(),
-%%   <<"AccountGateResult">> => account_gate_result(),
-%%   <<"OrganizationalUnitId">> => string(),
-%%   <<"Region">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type stack_set_operation_result_summary() :: #{binary() => any()}.
-
-%% Example:
-%% stack_instance() :: #{
-%%   <<"Account">> => string(),
-%%   <<"DriftStatus">> => list(any()),
-%%   <<"LastDriftCheckTimestamp">> => non_neg_integer(),
-%%   <<"LastOperationId">> => string(),
-%%   <<"OrganizationalUnitId">> => string(),
-%%   <<"ParameterOverrides">> => list(parameter()),
-%%   <<"Region">> => string(),
-%%   <<"StackId">> => string(),
-%%   <<"StackInstanceStatus">> => stack_instance_comprehensive_status(),
-%%   <<"StackSetId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type stack_instance() :: #{binary() => any()}.
-
-%% Example:
-%% list_type_versions_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TypeVersionSummaries">> => list(type_version_summary())
-%% }
--type list_type_versions_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_events_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StackEvents">> => list(stack_event())
-%% }
--type describe_stack_events_output() :: #{binary() => any()}.
-
-%% Example:
-%% type_summary() :: #{
-%%   <<"DefaultVersionId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IsActivated">> => boolean(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"LatestPublicVersion">> => string(),
-%%   <<"OriginalTypeName">> => string(),
-%%   <<"PublicVersionNumber">> => string(),
-%%   <<"PublisherId">> => string(),
-%%   <<"PublisherIdentity">> => list(any()),
-%%   <<"PublisherName">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"TypeArn">> => string(),
-%%   <<"TypeName">> => string()
-%% }
--type type_summary() :: #{binary() => any()}.
-
-%% Example:
-%% import_stacks_to_stack_set_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"OperationId">> => string(),
-%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
-%%   <<"OrganizationalUnitIds">> => list(string()),
-%%   <<"StackIds">> => list(string()),
-%%   <<"StackIdsUrl">> => string(),
-%%   <<"StackSetName">> := string()
-%% }
--type import_stacks_to_stack_set_input() :: #{binary() => any()}.
-
-%% Example:
-%% detect_stack_drift_output() :: #{
-%%   <<"StackDriftDetectionId">> => string()
-%% }
--type detect_stack_drift_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_type_registration_input() :: #{
-%%   <<"RegistrationToken">> := string()
-%% }
--type describe_type_registration_input() :: #{binary() => any()}.
-
-%% Example:
-%% resource_location() :: #{
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"StackName">> => string()
-%% }
--type resource_location() :: #{binary() => any()}.
-
-%% Example:
-%% test_type_output() :: #{
-%%   <<"TypeVersionArn">> => string()
-%% }
--type test_type_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_type_registrations_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RegistrationStatusFilter">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"TypeArn">> => string(),
-%%   <<"TypeName">> => string()
-%% }
--type list_type_registrations_input() :: #{binary() => any()}.
-
-%% Example:
-%% created_but_modified_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type created_but_modified_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deactivate_type_output() :: #{
-
-%% }
--type deactivate_type_output() :: #{binary() => any()}.
-
-%% Example:
-%% operation_status_check_failed_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type operation_status_check_failed_exception() :: #{binary() => any()}.
-
-%% Example:
-%% detect_stack_set_drift_output() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type detect_stack_set_drift_output() :: #{binary() => any()}.
-
-%% Example:
-%% deactivate_organizations_access_input() :: #{
-
-%% }
--type deactivate_organizations_access_input() :: #{binary() => any()}.
-
-%% Example:
-%% execute_change_set_output() :: #{
-
-%% }
--type execute_change_set_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_stack_output() :: #{
-%%   <<"OperationId">> => string(),
-%%   <<"StackId">> => string()
-%% }
--type create_stack_output() :: #{binary() => any()}.
-
-%% Example:
-%% stack() :: #{
-%%   <<"Capabilities">> => list(list(any())()),
-%%   <<"ChangeSetId">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DeletionMode">> => list(any()),
-%%   <<"DeletionTime">> => non_neg_integer(),
-%%   <<"DeploymentConfig">> => deployment_config(),
-%%   <<"Description">> => string(),
-%%   <<"DetailedStatus">> => list(any()),
-%%   <<"DisableRollback">> => boolean(),
-%%   <<"DriftInformation">> => stack_drift_information(),
-%%   <<"EnableTerminationProtection">> => boolean(),
-%%   <<"LastOperations">> => list(operation_entry()),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"NotificationARNs">> => list(string()),
-%%   <<"Outputs">> => list(output()),
-%%   <<"Parameters">> => list(parameter()),
-%%   <<"ParentId">> => string(),
-%%   <<"RetainExceptOnCreate">> => boolean(),
-%%   <<"RoleARN">> => string(),
-%%   <<"RollbackConfiguration">> => rollback_configuration(),
-%%   <<"RootId">> => string(),
-%%   <<"StackId">> => string(),
-%%   <<"StackName">> => string(),
-%%   <<"StackStatus">> => list(any()),
-%%   <<"StackStatusReason">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TimeoutInMinutes">> => integer()
-%% }
--type stack() :: #{binary() => any()}.
-
-%% Example:
-%% stack_set_auto_deployment_target_summary() :: #{
-%%   <<"OrganizationalUnitId">> => string(),
-%%   <<"Regions">> => list(string())
-%% }
--type stack_set_auto_deployment_target_summary() :: #{binary() => any()}.
-
-%% Example:
-%% set_type_default_version_input() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"TypeName">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type set_type_default_version_input() :: #{binary() => any()}.
 
 %% Example:
 %% annotation() :: #{
@@ -1135,27 +281,26 @@
 -type annotation() :: #{binary() => any()}.
 
 %% Example:
-%% describe_generated_template_output() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"GeneratedTemplateId">> => string(),
-%%   <<"GeneratedTemplateName">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Progress">> => template_progress(),
-%%   <<"Resources">> => list(resource_detail()),
-%%   <<"StackId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string(),
-%%   <<"TemplateConfiguration">> => template_configuration(),
-%%   <<"TotalWarnings">> => integer()
+%% auto_deployment() :: #{
+%%   <<"DependsOn">> => list(string()),
+%%   <<"Enabled">> => boolean(),
+%%   <<"RetainStacksOnAccountRemoval">> => boolean()
 %% }
--type describe_generated_template_output() :: #{binary() => any()}.
+-type auto_deployment() :: #{binary() => any()}.
 
 %% Example:
-%% list_resource_scan_related_resources_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RelatedResources">> => list(scanned_resource())
+%% batch_describe_type_configurations_error() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"TypeConfigurationIdentifier">> => type_configuration_identifier()
 %% }
--type list_resource_scan_related_resources_output() :: #{binary() => any()}.
+-type batch_describe_type_configurations_error() :: #{binary() => any()}.
+
+%% Example:
+%% batch_describe_type_configurations_input() :: #{
+%%   <<"TypeConfigurationIdentifiers">> := list(type_configuration_identifier())
+%% }
+-type batch_describe_type_configurations_input() :: #{binary() => any()}.
 
 %% Example:
 %% batch_describe_type_configurations_output() :: #{
@@ -1166,42 +311,44 @@
 -type batch_describe_type_configurations_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_stack_sets_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
+%% c_f_n_registry_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_stack_sets_input() :: #{binary() => any()}.
+-type c_f_n_registry_exception() :: #{binary() => any()}.
 
 %% Example:
-%% signal_resource_input() :: #{
-%%   <<"LogicalResourceId">> := string(),
-%%   <<"StackName">> := string(),
-%%   <<"Status">> := list(any()),
-%%   <<"UniqueId">> := string()
+%% cancel_update_stack_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"StackName">> := string()
 %% }
--type signal_resource_input() :: #{binary() => any()}.
+-type cancel_update_stack_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_stacks_input() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StackStatusFilter">> => list(list(any())())
+%% change() :: #{
+%%   <<"HookInvocationCount">> => integer(),
+%%   <<"ResourceChange">> => resource_change(),
+%%   <<"Type">> => list(any())
 %% }
--type list_stacks_input() :: #{binary() => any()}.
+-type change() :: #{binary() => any()}.
 
 %% Example:
-%% stack_drift_information() :: #{
-%%   <<"LastCheckTimestamp">> => non_neg_integer(),
-%%   <<"StackDriftStatus">> => list(any())
+%% change_set_hook() :: #{
+%%   <<"FailureMode">> => list(any()),
+%%   <<"InvocationPoint">> => list(any()),
+%%   <<"TargetDetails">> => change_set_hook_target_details(),
+%%   <<"TypeConfigurationVersionId">> => string(),
+%%   <<"TypeName">> => string(),
+%%   <<"TypeVersionId">> => string()
 %% }
--type stack_drift_information() :: #{binary() => any()}.
+-type change_set_hook() :: #{binary() => any()}.
 
 %% Example:
-%% scan_filter() :: #{
-%%   <<"Types">> => list(string())
+%% change_set_hook_resource_target_details() :: #{
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"ResourceAction">> => list(any()),
+%%   <<"ResourceType">> => string()
 %% }
--type scan_filter() :: #{binary() => any()}.
+-type change_set_hook_resource_target_details() :: #{binary() => any()}.
 
 %% Example:
 %% change_set_hook_target_details() :: #{
@@ -1211,195 +358,49 @@
 -type change_set_hook_target_details() :: #{binary() => any()}.
 
 %% Example:
-%% list_stack_set_operations_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StackSetName">> := string()
+%% change_set_not_found_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type list_stack_set_operations_input() :: #{binary() => any()}.
+-type change_set_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% template_summary_config() :: #{
-%%   <<"TreatUnrecognizedResourceTypesAsWarnings">> => boolean()
-%% }
--type template_summary_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_type_registrations_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RegistrationTokenList">> => list(string())
-%% }
--type list_type_registrations_output() :: #{binary() => any()}.
-
-%% Example:
-%% hook_target() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"TargetId">> => string(),
-%%   <<"TargetType">> => list(any()),
-%%   <<"TargetTypeName">> => string()
-%% }
--type hook_target() :: #{binary() => any()}.
-
-%% Example:
-%% stack_summary() :: #{
+%% change_set_summary() :: #{
+%%   <<"ChangeSetId">> => string(),
+%%   <<"ChangeSetName">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DeletionTime">> => non_neg_integer(),
-%%   <<"DriftInformation">> => stack_drift_information_summary(),
-%%   <<"LastOperations">> => list(operation_entry()),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"ParentId">> => string(),
-%%   <<"RootId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"ExecutionStatus">> => list(any()),
+%%   <<"ImportExistingResources">> => boolean(),
+%%   <<"IncludeNestedStacks">> => boolean(),
+%%   <<"ParentChangeSetId">> => string(),
+%%   <<"RootChangeSetId">> => string(),
 %%   <<"StackId">> => string(),
 %%   <<"StackName">> => string(),
-%%   <<"StackStatus">> => list(any()),
-%%   <<"StackStatusReason">> => string(),
-%%   <<"TemplateDescription">> => string()
-%% }
--type stack_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_hook_results_input() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TargetId">> => string(),
-%%   <<"TargetType">> => list(any()),
-%%   <<"TypeArn">> => string()
-%% }
--type list_hook_results_input() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% operation_in_progress_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type operation_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_resources_input() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StackName">> := string()
-%% }
--type list_stack_resources_input() :: #{binary() => any()}.
-
-%% Example:
-%% execute_change_set_input() :: #{
-%%   <<"ChangeSetName">> := string(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DisableRollback">> => boolean(),
-%%   <<"RetainExceptOnCreate">> => boolean(),
-%%   <<"StackName">> => string()
-%% }
--type execute_change_set_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_change_set_input() :: #{
-%%   <<"ChangeSetName">> := string(),
-%%   <<"StackName">> => string()
-%% }
--type delete_change_set_input() :: #{binary() => any()}.
-
-%% Example:
-%% resource_drift_ignored_attribute() :: #{
-%%   <<"Path">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type resource_drift_ignored_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% type_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type type_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% set_type_configuration_input() :: #{
-%%   <<"Configuration">> := string(),
-%%   <<"ConfigurationAlias">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"TypeArn">> => string(),
-%%   <<"TypeName">> => string()
-%% }
--type set_type_configuration_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_generated_template_input() :: #{
-%%   <<"GeneratedTemplateName">> := string(),
-%%   <<"Resources">> => list(resource_definition()),
-%%   <<"StackName">> => string(),
-%%   <<"TemplateConfiguration">> => template_configuration()
-%% }
--type create_generated_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_publisher_output() :: #{
-%%   <<"IdentityProvider">> => list(any()),
-%%   <<"PublisherId">> => string(),
-%%   <<"PublisherProfile">> => string(),
-%%   <<"PublisherStatus">> => list(any())
-%% }
--type describe_publisher_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_set_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"StackSetName">> := string()
-%% }
--type describe_stack_set_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_refactors_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StackRefactorSummaries">> => list(stack_refactor_summary())
-%% }
--type list_stack_refactors_output() :: #{binary() => any()}.
-
-%% Example:
-%% activate_type_output() :: #{
-%%   <<"Arn">> => string()
-%% }
--type activate_type_output() :: #{binary() => any()}.
-
-%% Example:
-%% publish_type_input() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"PublicVersionNumber">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"TypeName">> => string()
-%% }
--type publish_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% insufficient_capabilities_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type insufficient_capabilities_exception() :: #{binary() => any()}.
-
-%% Example:
-%% template_summary() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"GeneratedTemplateId">> => string(),
-%%   <<"GeneratedTemplateName">> => string(),
-%%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"NumberOfResources">> => integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
 %% }
--type template_summary() :: #{binary() => any()}.
+-type change_set_summary() :: #{binary() => any()}.
 
 %% Example:
-%% change_set_hook_resource_target_details() :: #{
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"ResourceAction">> => list(any()),
-%%   <<"ResourceType">> => string()
+%% concurrent_resources_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type change_set_hook_resource_target_details() :: #{binary() => any()}.
+-type concurrent_resources_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% continue_update_rollback_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ResourcesToSkip">> => list(string()),
+%%   <<"RoleARN">> => string(),
+%%   <<"StackName">> := string()
+%% }
+-type continue_update_rollback_input() :: #{binary() => any()}.
+
+%% Example:
+%% continue_update_rollback_output() :: #{
+
+%% }
+-type continue_update_rollback_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_change_set_input() :: #{
@@ -1429,6 +430,53 @@
 -type create_change_set_input() :: #{binary() => any()}.
 
 %% Example:
+%% create_change_set_output() :: #{
+%%   <<"Id">> => string(),
+%%   <<"StackId">> => string()
+%% }
+-type create_change_set_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_generated_template_input() :: #{
+%%   <<"GeneratedTemplateName">> := string(),
+%%   <<"Resources">> => list(resource_definition()),
+%%   <<"StackName">> => string(),
+%%   <<"TemplateConfiguration">> => template_configuration()
+%% }
+-type create_generated_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_generated_template_output() :: #{
+%%   <<"GeneratedTemplateId">> => string()
+%% }
+-type create_generated_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_stack_input() :: #{
+%%   <<"Capabilities">> => list(list(any())()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DeploymentConfig">> => deployment_config(),
+%%   <<"DisableRollback">> => boolean(),
+%%   <<"DisableValidation">> => boolean(),
+%%   <<"EnableTerminationProtection">> => boolean(),
+%%   <<"NotificationARNs">> => list(string()),
+%%   <<"OnFailure">> => list(any()),
+%%   <<"Parameters">> => list(parameter()),
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"RetainExceptOnCreate">> => boolean(),
+%%   <<"RoleARN">> => string(),
+%%   <<"RollbackConfiguration">> => rollback_configuration(),
+%%   <<"StackName">> := string(),
+%%   <<"StackPolicyBody">> => string(),
+%%   <<"StackPolicyURL">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TemplateBody">> => string(),
+%%   <<"TemplateURL">> => string(),
+%%   <<"TimeoutInMinutes">> => integer()
+%% }
+-type create_stack_input() :: #{binary() => any()}.
+
+%% Example:
 %% create_stack_instances_input() :: #{
 %%   <<"Accounts">> => list(string()),
 %%   <<"CallAs">> => list(any()),
@@ -1442,230 +490,76 @@
 -type create_stack_instances_input() :: #{binary() => any()}.
 
 %% Example:
-%% estimate_template_cost_output() :: #{
-%%   <<"Url">> => string()
-%% }
--type estimate_template_cost_output() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_change_set_status_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_change_set_status_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_identifier_summary() :: #{
-%%   <<"LogicalResourceIds">> => list(string()),
-%%   <<"ResourceIdentifiers">> => list(string()),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_identifier_summary() :: #{binary() => any()}.
-
-%% Example:
-%% import_stacks_to_stack_set_output() :: #{
+%% create_stack_instances_output() :: #{
 %%   <<"OperationId">> => string()
 %% }
--type import_stacks_to_stack_set_output() :: #{binary() => any()}.
+-type create_stack_instances_output() :: #{binary() => any()}.
 
 %% Example:
-%% stack_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%% create_stack_output() :: #{
+%%   <<"OperationId">> => string(),
+%%   <<"StackId">> => string()
 %% }
--type stack_not_found_exception() :: #{binary() => any()}.
+-type create_stack_output() :: #{binary() => any()}.
 
 %% Example:
-%% parameter() :: #{
-%%   <<"ParameterKey">> => string(),
-%%   <<"ParameterValue">> => string(),
-%%   <<"ResolvedValue">> => string(),
-%%   <<"UsePreviousValue">> => boolean()
-%% }
--type parameter() :: #{binary() => any()}.
-
-%% Example:
-%% stack_set_not_empty_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type stack_set_not_empty_exception() :: #{binary() => any()}.
-
-%% Example:
-%% validate_template_input() :: #{
-%%   <<"TemplateBody">> => string(),
-%%   <<"TemplateURL">> => string()
-%% }
--type validate_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% stack_set_operation_preferences() :: #{
-%%   <<"ConcurrencyMode">> => list(any()),
-%%   <<"FailureToleranceCount">> => integer(),
-%%   <<"FailureTolerancePercentage">> => integer(),
-%%   <<"MaxConcurrentCount">> => integer(),
-%%   <<"MaxConcurrentPercentage">> => integer(),
-%%   <<"RegionConcurrencyType">> => list(any()),
-%%   <<"RegionOrder">> => list(string())
-%% }
--type stack_set_operation_preferences() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_state_transition_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_state_transition_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stack_instance_resource_drifts_summary() :: #{
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"PhysicalResourceId">> => string(),
-%%   <<"PhysicalResourceIdContext">> => list(physical_resource_id_context_key_value_pair()),
-%%   <<"PropertyDifferences">> => list(property_difference()),
-%%   <<"ResourceType">> => string(),
-%%   <<"StackId">> => string(),
-%%   <<"StackResourceDriftStatus">> => list(any()),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type stack_instance_resource_drifts_summary() :: #{binary() => any()}.
-
-%% Example:
-%% type_configuration_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type type_configuration_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_stack_set_output() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type update_stack_set_output() :: #{binary() => any()}.
-
-%% Example:
-%% account_limit() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => integer()
-%% }
--type account_limit() :: #{binary() => any()}.
-
-%% Example:
-%% resource_scan_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_scan_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stack_definition() :: #{
-%%   <<"StackName">> => string(),
-%%   <<"TemplateBody">> => string(),
-%%   <<"TemplateURL">> => string()
-%% }
--type stack_definition() :: #{binary() => any()}.
-
-%% Example:
-%% activate_organizations_access_input() :: #{
-
-%% }
--type activate_organizations_access_input() :: #{binary() => any()}.
-
-%% Example:
-%% stop_stack_set_operation_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"OperationId">> := string(),
-%%   <<"StackSetName">> := string()
-%% }
--type stop_stack_set_operation_input() :: #{binary() => any()}.
-
-%% Example:
-%% validate_template_output() :: #{
-%%   <<"Capabilities">> => list(list(any())()),
-%%   <<"CapabilitiesReason">> => string(),
-%%   <<"DeclaredTransforms">> => list(string()),
+%% create_stack_refactor_input() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Parameters">> => list(template_parameter())
+%%   <<"EnableStackCreation">> => boolean(),
+%%   <<"ResourceMappings">> => list(resource_mapping()),
+%%   <<"StackDefinitions">> := list(stack_definition())
 %% }
--type validate_template_output() :: #{binary() => any()}.
+-type create_stack_refactor_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_stack_instance_output() :: #{
-%%   <<"StackInstance">> => stack_instance()
+%% create_stack_refactor_output() :: #{
+%%   <<"StackRefactorId">> => string()
 %% }
--type describe_stack_instance_output() :: #{binary() => any()}.
+-type create_stack_refactor_output() :: #{binary() => any()}.
 
 %% Example:
-%% update_stack_input() :: #{
+%% create_stack_set_input() :: #{
+%%   <<"AdministrationRoleARN">> => string(),
+%%   <<"AutoDeployment">> => auto_deployment(),
+%%   <<"CallAs">> => list(any()),
 %%   <<"Capabilities">> => list(list(any())()),
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"DeploymentConfig">> => deployment_config(),
-%%   <<"DisableRollback">> => boolean(),
-%%   <<"DisableValidation">> => boolean(),
-%%   <<"NotificationARNs">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"ExecutionRoleName">> => string(),
+%%   <<"ManagedExecution">> => managed_execution(),
 %%   <<"Parameters">> => list(parameter()),
-%%   <<"ResourceTypes">> => list(string()),
-%%   <<"RetainExceptOnCreate">> => boolean(),
-%%   <<"RoleARN">> => string(),
-%%   <<"RollbackConfiguration">> => rollback_configuration(),
-%%   <<"StackName">> := string(),
-%%   <<"StackPolicyBody">> => string(),
-%%   <<"StackPolicyDuringUpdateBody">> => string(),
-%%   <<"StackPolicyDuringUpdateURL">> => string(),
-%%   <<"StackPolicyURL">> => string(),
+%%   <<"PermissionModel">> => list(any()),
+%%   <<"StackId">> => string(),
+%%   <<"StackSetName">> := string(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TemplateBody">> => string(),
-%%   <<"TemplateURL">> => string(),
-%%   <<"UsePreviousTemplate">> => boolean()
-%% }
--type update_stack_input() :: #{binary() => any()}.
-
-%% Example:
-%% resource_scan_in_progress_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_scan_in_progress_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_set_operations_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_set_operation_summary())
-%% }
--type list_stack_set_operations_output() :: #{binary() => any()}.
-
-%% Example:
-%% operation_event() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DetailedStatus">> => list(any()),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EventId">> => string(),
-%%   <<"EventType">> => list(any()),
-%%   <<"HookFailureMode">> => list(any()),
-%%   <<"HookInvocationPoint">> => list(any()),
-%%   <<"HookStatus">> => list(any()),
-%%   <<"HookStatusReason">> => string(),
-%%   <<"HookType">> => string(),
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"OperationId">> => string(),
-%%   <<"OperationStatus">> => list(any()),
-%%   <<"OperationType">> => list(any()),
-%%   <<"PhysicalResourceId">> => string(),
-%%   <<"ResourceProperties">> => string(),
-%%   <<"ResourceStatus">> => list(any()),
-%%   <<"ResourceStatusReason">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"StackId">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"ValidationFailureMode">> => list(any()),
-%%   <<"ValidationName">> => string(),
-%%   <<"ValidationPath">> => string(),
-%%   <<"ValidationStatus">> => list(any()),
-%%   <<"ValidationStatusReason">> => string()
-%% }
--type operation_event() :: #{binary() => any()}.
-
-%% Example:
-%% estimate_template_cost_input() :: #{
-%%   <<"Parameters">> => list(parameter()),
-%%   <<"TemplateBody">> => string(),
 %%   <<"TemplateURL">> => string()
 %% }
--type estimate_template_cost_input() :: #{binary() => any()}.
+-type create_stack_set_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_stack_set_output() :: #{
+%%   <<"StackSetId">> => string()
+%% }
+-type create_stack_set_output() :: #{binary() => any()}.
+
+%% Example:
+%% created_but_modified_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type created_but_modified_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_organizations_access_input() :: #{
+
+%% }
+-type deactivate_organizations_access_input() :: #{binary() => any()}.
+
+%% Example:
+%% deactivate_organizations_access_output() :: #{
+
+%% }
+-type deactivate_organizations_access_output() :: #{binary() => any()}.
 
 %% Example:
 %% deactivate_type_input() :: #{
@@ -1676,23 +570,146 @@
 -type deactivate_type_input() :: #{binary() => any()}.
 
 %% Example:
-%% rollback_stack_output() :: #{
-%%   <<"OperationId">> => string(),
-%%   <<"StackId">> => string()
+%% deactivate_type_output() :: #{
+
 %% }
--type rollback_stack_output() :: #{binary() => any()}.
+-type deactivate_type_output() :: #{binary() => any()}.
 
 %% Example:
-%% type_configuration_details() :: #{
-%%   <<"Alias">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"Configuration">> => string(),
-%%   <<"IsDefaultConfiguration">> => boolean(),
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"TypeArn">> => string(),
-%%   <<"TypeName">> => string()
+%% delete_change_set_input() :: #{
+%%   <<"ChangeSetName">> := string(),
+%%   <<"StackName">> => string()
 %% }
--type type_configuration_details() :: #{binary() => any()}.
+-type delete_change_set_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_change_set_output() :: #{
+
+%% }
+-type delete_change_set_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_generated_template_input() :: #{
+%%   <<"GeneratedTemplateName">> := string()
+%% }
+-type delete_generated_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stack_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DeletionMode">> => list(any()),
+%%   <<"DeploymentConfig">> => deployment_config(),
+%%   <<"RetainResources">> => list(string()),
+%%   <<"RoleARN">> => string(),
+%%   <<"StackName">> := string()
+%% }
+-type delete_stack_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stack_instances_input() :: #{
+%%   <<"Accounts">> => list(string()),
+%%   <<"CallAs">> => list(any()),
+%%   <<"DeploymentTargets">> => deployment_targets(),
+%%   <<"OperationId">> => string(),
+%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
+%%   <<"Regions">> := list(string()),
+%%   <<"RetainStacks">> := boolean(),
+%%   <<"StackSetName">> := string()
+%% }
+-type delete_stack_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stack_instances_output() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type delete_stack_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stack_set_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"StackSetName">> := string()
+%% }
+-type delete_stack_set_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stack_set_output() :: #{
+
+%% }
+-type delete_stack_set_output() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_config() :: #{
+%%   <<"DisableRollback">> => boolean(),
+%%   <<"Mode">> => list(any())
+%% }
+-type deployment_config() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_targets() :: #{
+%%   <<"AccountFilterType">> => list(any()),
+%%   <<"Accounts">> => list(string()),
+%%   <<"AccountsUrl">> => string(),
+%%   <<"OrganizationalUnitIds">> => list(string())
+%% }
+-type deployment_targets() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_type_input() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"TypeName">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type deregister_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_type_output() :: #{
+
+%% }
+-type deregister_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_limits_input() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type describe_account_limits_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_limits_output() :: #{
+%%   <<"AccountLimits">> => list(account_limit()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_account_limits_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_change_set_hooks_input() :: #{
+%%   <<"ChangeSetName">> := string(),
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackName">> => string()
+%% }
+-type describe_change_set_hooks_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_change_set_hooks_output() :: #{
+%%   <<"ChangeSetId">> => string(),
+%%   <<"ChangeSetName">> => string(),
+%%   <<"Hooks">> => list(change_set_hook()),
+%%   <<"NextToken">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StackName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_change_set_hooks_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_change_set_input() :: #{
+%%   <<"ChangeSetName">> := string(),
+%%   <<"IncludePropertyValues">> => boolean(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackName">> => string()
+%% }
+-type describe_change_set_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_change_set_output() :: #{
@@ -1724,6 +741,174 @@
 -type describe_change_set_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_events_input() :: #{
+%%   <<"ChangeSetName">> => string(),
+%%   <<"Filters">> => event_filter(),
+%%   <<"NextToken">> => string(),
+%%   <<"OperationId">> => string(),
+%%   <<"StackName">> => string()
+%% }
+-type describe_events_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_events_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"OperationEvents">> => list(operation_event())
+%% }
+-type describe_events_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_generated_template_input() :: #{
+%%   <<"GeneratedTemplateName">> := string()
+%% }
+-type describe_generated_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_generated_template_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"GeneratedTemplateId">> => string(),
+%%   <<"GeneratedTemplateName">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Progress">> => template_progress(),
+%%   <<"Resources">> => list(resource_detail()),
+%%   <<"StackId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"TemplateConfiguration">> => template_configuration(),
+%%   <<"TotalWarnings">> => integer()
+%% }
+-type describe_generated_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_organizations_access_input() :: #{
+%%   <<"CallAs">> => list(any())
+%% }
+-type describe_organizations_access_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_organizations_access_output() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type describe_organizations_access_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_publisher_input() :: #{
+%%   <<"PublisherId">> => string()
+%% }
+-type describe_publisher_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_publisher_output() :: #{
+%%   <<"IdentityProvider">> => list(any()),
+%%   <<"PublisherId">> => string(),
+%%   <<"PublisherProfile">> => string(),
+%%   <<"PublisherStatus">> => list(any())
+%% }
+-type describe_publisher_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_scan_input() :: #{
+%%   <<"ResourceScanId">> := string()
+%% }
+-type describe_resource_scan_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_scan_output() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"PercentageCompleted">> => float(),
+%%   <<"ResourceScanId">> => string(),
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"ResourcesRead">> => integer(),
+%%   <<"ResourcesScanned">> => integer(),
+%%   <<"ScanFilters">> => list(scan_filter()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type describe_resource_scan_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_drift_detection_status_input() :: #{
+%%   <<"StackDriftDetectionId">> := string()
+%% }
+-type describe_stack_drift_detection_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_drift_detection_status_output() :: #{
+%%   <<"DetectionStatus">> => list(any()),
+%%   <<"DetectionStatusReason">> => string(),
+%%   <<"DriftedStackResourceCount">> => integer(),
+%%   <<"StackDriftDetectionId">> => string(),
+%%   <<"StackDriftStatus">> => list(any()),
+%%   <<"StackId">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type describe_stack_drift_detection_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_events_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackName">> := string()
+%% }
+-type describe_stack_events_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_events_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackEvents">> => list(stack_event())
+%% }
+-type describe_stack_events_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_instance_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"StackInstanceAccount">> := string(),
+%%   <<"StackInstanceRegion">> := string(),
+%%   <<"StackSetName">> := string()
+%% }
+-type describe_stack_instance_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_instance_output() :: #{
+%%   <<"StackInstance">> => stack_instance()
+%% }
+-type describe_stack_instance_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_refactor_input() :: #{
+%%   <<"StackRefactorId">> := string()
+%% }
+-type describe_stack_refactor_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_refactor_output() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ExecutionStatus">> => list(any()),
+%%   <<"ExecutionStatusReason">> => string(),
+%%   <<"StackIds">> => list(string()),
+%%   <<"StackRefactorId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type describe_stack_refactor_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_resource_drifts_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackName">> := string(),
+%%   <<"StackResourceDriftStatusFilters">> => list(list(any())())
+%% }
+-type describe_stack_resource_drifts_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_resource_drifts_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackResourceDrifts">> => list(stack_resource_drift())
+%% }
+-type describe_stack_resource_drifts_output() :: #{binary() => any()}.
+
+%% Example:
 %% describe_stack_resource_input() :: #{
 %%   <<"LogicalResourceId">> := string(),
 %%   <<"StackName">> := string()
@@ -1731,25 +916,76 @@
 -type describe_stack_resource_input() :: #{binary() => any()}.
 
 %% Example:
-%% event_filter() :: #{
-%%   <<"FailedEvents">> => boolean()
+%% describe_stack_resource_output() :: #{
+%%   <<"StackResourceDetail">> => stack_resource_detail()
 %% }
--type event_filter() :: #{binary() => any()}.
+-type describe_stack_resource_output() :: #{binary() => any()}.
 
 %% Example:
-%% required_activated_type() :: #{
-%%   <<"OriginalTypeName">> => string(),
+%% describe_stack_resources_input() :: #{
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"StackName">> => string()
+%% }
+-type describe_stack_resources_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_resources_output() :: #{
+%%   <<"StackResources">> => list(stack_resource())
+%% }
+-type describe_stack_resources_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_set_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"StackSetName">> := string()
+%% }
+-type describe_stack_set_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_set_operation_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"OperationId">> := string(),
+%%   <<"StackSetName">> := string()
+%% }
+-type describe_stack_set_operation_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_set_operation_output() :: #{
+%%   <<"StackSetOperation">> => stack_set_operation()
+%% }
+-type describe_stack_set_operation_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stack_set_output() :: #{
+%%   <<"StackSet">> => stack_set()
+%% }
+-type describe_stack_set_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stacks_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackName">> => string()
+%% }
+-type describe_stacks_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stacks_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Stacks">> => list(stack())
+%% }
+-type describe_stacks_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_type_input() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"PublicVersionNumber">> => string(),
 %%   <<"PublisherId">> => string(),
-%%   <<"SupportedMajorVersions">> => list(integer()),
-%%   <<"TypeNameAlias">> => string()
+%%   <<"Type">> => list(any()),
+%%   <<"TypeName">> => string(),
+%%   <<"VersionId">> => string()
 %% }
--type required_activated_type() :: #{binary() => any()}.
-
-%% Example:
-%% update_generated_template_output() :: #{
-%%   <<"GeneratedTemplateId">> => string()
-%% }
--type update_generated_template_output() :: #{binary() => any()}.
+-type describe_type_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_type_output() :: #{
@@ -1784,328 +1020,39 @@
 -type describe_type_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_template_input() :: #{
-%%   <<"ChangeSetName">> => string(),
-%%   <<"StackName">> => string(),
-%%   <<"TemplateStage">> => list(any())
+%% describe_type_registration_input() :: #{
+%%   <<"RegistrationToken">> := string()
 %% }
--type get_template_input() :: #{binary() => any()}.
+-type describe_type_registration_input() :: #{binary() => any()}.
 
 %% Example:
-%% module_info() :: #{
-%%   <<"LogicalIdHierarchy">> => string(),
-%%   <<"TypeHierarchy">> => string()
-%% }
--type module_info() :: #{binary() => any()}.
-
-%% Example:
-%% stack_set_drift_detection_details() :: #{
-%%   <<"DriftDetectionStatus">> => list(any()),
-%%   <<"DriftStatus">> => list(any()),
-%%   <<"DriftedStackInstancesCount">> => integer(),
-%%   <<"FailedStackInstancesCount">> => integer(),
-%%   <<"InProgressStackInstancesCount">> => integer(),
-%%   <<"InSyncStackInstancesCount">> => integer(),
-%%   <<"LastDriftCheckTimestamp">> => non_neg_integer(),
-%%   <<"TotalStackInstancesCount">> => integer()
-%% }
--type stack_set_drift_detection_details() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_limits_output() :: #{
-%%   <<"AccountLimits">> => list(account_limit()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_account_limits_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_scan_related_resources_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceScanId">> := string(),
-%%   <<"Resources">> := list(scanned_resource_identifier())
-%% }
--type list_resource_scan_related_resources_input() :: #{binary() => any()}.
-
-%% Example:
-%% type_configuration_identifier() :: #{
-%%   <<"Type">> => list(any()),
+%% describe_type_registration_output() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ProgressStatus">> => list(any()),
 %%   <<"TypeArn">> => string(),
-%%   <<"TypeConfigurationAlias">> => string(),
-%%   <<"TypeConfigurationArn">> => string(),
-%%   <<"TypeName">> => string()
+%%   <<"TypeVersionArn">> => string()
 %% }
--type type_configuration_identifier() :: #{binary() => any()}.
+-type describe_type_registration_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_types_input() :: #{
-%%   <<"DeprecatedStatus">> => list(any()),
-%%   <<"Filters">> => type_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProvisioningType">> => list(any()),
-%%   <<"Type">> => list(any()),
-%%   <<"Visibility">> => list(any())
-%% }
--type list_types_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_resource_output() :: #{
-%%   <<"StackResourceDetail">> => stack_resource_detail()
-%% }
--type describe_stack_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% stack_set_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type stack_set_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stack_drift_information_summary() :: #{
-%%   <<"LastCheckTimestamp">> => non_neg_integer(),
-%%   <<"StackDriftStatus">> => list(any())
-%% }
--type stack_drift_information_summary() :: #{binary() => any()}.
-
-%% Example:
-%% describe_organizations_access_output() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type describe_organizations_access_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_generated_templates_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(template_summary())
-%% }
--type list_generated_templates_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_stack_policy_output() :: #{
-%%   <<"StackPolicyBody">> => string()
-%% }
--type get_stack_policy_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_events_input() :: #{
-%%   <<"NextToken">> => string(),
+%% detect_stack_drift_input() :: #{
+%%   <<"LogicalResourceIds">> => list(string()),
 %%   <<"StackName">> := string()
 %% }
--type describe_stack_events_input() :: #{binary() => any()}.
+-type detect_stack_drift_input() :: #{binary() => any()}.
 
 %% Example:
-%% parameter_declaration() :: #{
-%%   <<"DefaultValue">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"NoEcho">> => boolean(),
-%%   <<"ParameterConstraints">> => parameter_constraints(),
-%%   <<"ParameterKey">> => string(),
-%%   <<"ParameterType">> => string()
+%% detect_stack_drift_output() :: #{
+%%   <<"StackDriftDetectionId">> => string()
 %% }
--type parameter_declaration() :: #{binary() => any()}.
+-type detect_stack_drift_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_stack_sets_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_set_summary())
+%% detect_stack_resource_drift_input() :: #{
+%%   <<"LogicalResourceId">> := string(),
+%%   <<"StackName">> := string()
 %% }
--type list_stack_sets_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_organizations_access_input() :: #{
-%%   <<"CallAs">> => list(any())
-%% }
--type describe_organizations_access_input() :: #{binary() => any()}.
-
-%% Example:
-%% operation_entry() :: #{
-%%   <<"OperationId">> => string(),
-%%   <<"OperationType">> => list(any())
-%% }
--type operation_entry() :: #{binary() => any()}.
-
-%% Example:
-%% list_exports_input() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_exports_input() :: #{binary() => any()}.
-
-%% Example:
-%% stack_instance_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type stack_instance_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_type_versions_input() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"DeprecatedStatus">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PublisherId">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"TypeName">> => string()
-%% }
--type list_type_versions_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_scan_resources_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Resources">> => list(scanned_resource())
-%% }
--type list_resource_scan_resources_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_exports_output() :: #{
-%%   <<"Exports">> => list(export()),
-%%   <<"NextToken">> => string()
-%% }
--type list_exports_output() :: #{binary() => any()}.
-
-%% Example:
-%% type_filters() :: #{
-%%   <<"Category">> => list(any()),
-%%   <<"PublisherId">> => string(),
-%%   <<"TypeNamePrefix">> => string()
-%% }
--type type_filters() :: #{binary() => any()}.
-
-%% Example:
-%% describe_generated_template_input() :: #{
-%%   <<"GeneratedTemplateName">> := string()
-%% }
--type describe_generated_template_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_change_sets_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(change_set_summary())
-%% }
--type list_change_sets_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_stack_instances_output() :: #{
-%%   <<"OperationId">> => string()
-%% }
--type create_stack_instances_output() :: #{binary() => any()}.
-
-%% Example:
-%% set_type_default_version_output() :: #{
-
-%% }
--type set_type_default_version_output() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_type_output() :: #{
-
-%% }
--type deregister_type_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_resource_scans_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceScanSummaries">> => list(resource_scan_summary())
-%% }
--type list_resource_scans_output() :: #{binary() => any()}.
-
-%% Example:
-%% publish_type_output() :: #{
-%%   <<"PublicTypeArn">> => string()
-%% }
--type publish_type_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_stack_set_output() :: #{
-%%   <<"StackSetId">> => string()
-%% }
--type create_stack_set_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_type_input() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"PublicVersionNumber">> => string(),
-%%   <<"PublisherId">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"TypeName">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type describe_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% start_resource_scan_output() :: #{
-%%   <<"ResourceScanId">> => string()
-%% }
--type start_resource_scan_output() :: #{binary() => any()}.
-
-%% Example:
-%% stack_resource_drift_information() :: #{
-%%   <<"LastCheckTimestamp">> => non_neg_integer(),
-%%   <<"StackResourceDriftStatus">> => list(any())
-%% }
--type stack_resource_drift_information() :: #{binary() => any()}.
-
-%% Example:
-%% describe_change_set_input() :: #{
-%%   <<"ChangeSetName">> := string(),
-%%   <<"IncludePropertyValues">> => boolean(),
-%%   <<"NextToken">> => string(),
-%%   <<"StackName">> => string()
-%% }
--type describe_change_set_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_describe_type_configurations_error() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"TypeConfigurationIdentifier">> => type_configuration_identifier()
-%% }
--type batch_describe_type_configurations_error() :: #{binary() => any()}.
-
-%% Example:
-%% stop_stack_set_operation_output() :: #{
-
-%% }
--type stop_stack_set_operation_output() :: #{binary() => any()}.
-
-%% Example:
-%% warning_detail() :: #{
-%%   <<"Properties">> => list(warning_property()),
-%%   <<"Type">> => list(any())
-%% }
--type warning_detail() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_resources_output() :: #{
-%%   <<"StackResources">> => list(stack_resource())
-%% }
--type describe_stack_resources_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_set_auto_deployment_targets_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StackSetName">> := string()
-%% }
--type list_stack_set_auto_deployment_targets_input() :: #{binary() => any()}.
-
-%% Example:
-%% stack_resource_drift() :: #{
-%%   <<"ActualProperties">> => string(),
-%%   <<"DriftStatusReason">> => string(),
-%%   <<"ExpectedProperties">> => string(),
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"ModuleInfo">> => module_info(),
-%%   <<"PhysicalResourceId">> => string(),
-%%   <<"PhysicalResourceIdContext">> => list(physical_resource_id_context_key_value_pair()),
-%%   <<"PropertyDifferences">> => list(property_difference()),
-%%   <<"ResourceType">> => string(),
-%%   <<"StackId">> => string(),
-%%   <<"StackResourceDriftStatus">> => list(any()),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type stack_resource_drift() :: #{binary() => any()}.
+-type detect_stack_resource_drift_input() :: #{binary() => any()}.
 
 %% Example:
 %% detect_stack_resource_drift_output() :: #{
@@ -2114,73 +1061,172 @@
 -type detect_stack_resource_drift_output() :: #{binary() => any()}.
 
 %% Example:
-%% create_stack_input() :: #{
-%%   <<"Capabilities">> => list(list(any())()),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DeploymentConfig">> => deployment_config(),
-%%   <<"DisableRollback">> => boolean(),
-%%   <<"DisableValidation">> => boolean(),
-%%   <<"EnableTerminationProtection">> => boolean(),
-%%   <<"NotificationARNs">> => list(string()),
-%%   <<"OnFailure">> => list(any()),
-%%   <<"Parameters">> => list(parameter()),
-%%   <<"ResourceTypes">> => list(string()),
-%%   <<"RetainExceptOnCreate">> => boolean(),
-%%   <<"RoleARN">> => string(),
-%%   <<"RollbackConfiguration">> => rollback_configuration(),
-%%   <<"StackName">> := string(),
-%%   <<"StackPolicyBody">> => string(),
-%%   <<"StackPolicyURL">> => string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TemplateBody">> => string(),
-%%   <<"TemplateURL">> => string(),
-%%   <<"TimeoutInMinutes">> => integer()
+%% detect_stack_set_drift_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"OperationId">> => string(),
+%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
+%%   <<"StackSetName">> := string()
 %% }
--type create_stack_input() :: #{binary() => any()}.
+-type detect_stack_set_drift_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_change_set_hooks_input() :: #{
+%% detect_stack_set_drift_output() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type detect_stack_set_drift_output() :: #{binary() => any()}.
+
+%% Example:
+%% estimate_template_cost_input() :: #{
+%%   <<"Parameters">> => list(parameter()),
+%%   <<"TemplateBody">> => string(),
+%%   <<"TemplateURL">> => string()
+%% }
+-type estimate_template_cost_input() :: #{binary() => any()}.
+
+%% Example:
+%% estimate_template_cost_output() :: #{
+%%   <<"Url">> => string()
+%% }
+-type estimate_template_cost_output() :: #{binary() => any()}.
+
+%% Example:
+%% event_filter() :: #{
+%%   <<"FailedEvents">> => boolean()
+%% }
+-type event_filter() :: #{binary() => any()}.
+
+%% Example:
+%% execute_change_set_input() :: #{
 %%   <<"ChangeSetName">> := string(),
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"NextToken">> => string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DisableRollback">> => boolean(),
+%%   <<"RetainExceptOnCreate">> => boolean(),
 %%   <<"StackName">> => string()
 %% }
--type describe_change_set_hooks_input() :: #{binary() => any()}.
+-type execute_change_set_input() :: #{binary() => any()}.
 
 %% Example:
-%% continue_update_rollback_output() :: #{
+%% execute_change_set_output() :: #{
 
 %% }
--type continue_update_rollback_output() :: #{binary() => any()}.
+-type execute_change_set_output() :: #{binary() => any()}.
 
 %% Example:
-%% resource_scan_summary() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"PercentageCompleted">> => float(),
-%%   <<"ResourceScanId">> => string(),
-%%   <<"ScanType">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer(),
+%% execute_stack_refactor_input() :: #{
+%%   <<"StackRefactorId">> := string()
+%% }
+-type execute_stack_refactor_input() :: #{binary() => any()}.
+
+%% Example:
+%% export() :: #{
+%%   <<"ExportingStackId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type export() :: #{binary() => any()}.
+
+%% Example:
+%% generated_template_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type generated_template_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_generated_template_input() :: #{
+%%   <<"Format">> => list(any()),
+%%   <<"GeneratedTemplateName">> := string()
+%% }
+-type get_generated_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_generated_template_output() :: #{
 %%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
+%%   <<"TemplateBody">> => string()
 %% }
--type resource_scan_summary() :: #{binary() => any()}.
+-type get_generated_template_output() :: #{binary() => any()}.
 
 %% Example:
-%% change_set_hook() :: #{
+%% get_hook_result_input() :: #{
+%%   <<"HookResultId">> => string()
+%% }
+-type get_hook_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_hook_result_output() :: #{
+%%   <<"Annotations">> => list(annotation()),
 %%   <<"FailureMode">> => list(any()),
+%%   <<"HookResultId">> => string(),
+%%   <<"HookStatusReason">> => string(),
 %%   <<"InvocationPoint">> => list(any()),
-%%   <<"TargetDetails">> => change_set_hook_target_details(),
+%%   <<"InvokedAt">> => non_neg_integer(),
+%%   <<"OriginalTypeName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Target">> => hook_target(),
+%%   <<"TypeArn">> => string(),
 %%   <<"TypeConfigurationVersionId">> => string(),
 %%   <<"TypeName">> => string(),
 %%   <<"TypeVersionId">> => string()
 %% }
--type change_set_hook() :: #{binary() => any()}.
+-type get_hook_result_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_resource_scan_input() :: #{
-%%   <<"ResourceScanId">> := string()
+%% get_stack_policy_input() :: #{
+%%   <<"StackName">> := string()
 %% }
--type describe_resource_scan_input() :: #{binary() => any()}.
+-type get_stack_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_stack_policy_output() :: #{
+%%   <<"StackPolicyBody">> => string()
+%% }
+-type get_stack_policy_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_input() :: #{
+%%   <<"ChangeSetName">> => string(),
+%%   <<"StackName">> => string(),
+%%   <<"TemplateStage">> => list(any())
+%% }
+-type get_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_output() :: #{
+%%   <<"StagesAvailable">> => list(list(any())()),
+%%   <<"TemplateBody">> => string()
+%% }
+-type get_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_summary_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"StackName">> => string(),
+%%   <<"StackSetName">> => string(),
+%%   <<"TemplateBody">> => string(),
+%%   <<"TemplateSummaryConfig">> => template_summary_config(),
+%%   <<"TemplateURL">> => string()
+%% }
+-type get_template_summary_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_template_summary_output() :: #{
+%%   <<"Capabilities">> => list(list(any())()),
+%%   <<"CapabilitiesReason">> => string(),
+%%   <<"DeclaredTransforms">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"Metadata">> => string(),
+%%   <<"Parameters">> => list(parameter_declaration()),
+%%   <<"ResourceIdentifierSummaries">> => list(resource_identifier_summary()),
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"Version">> => string(),
+%%   <<"Warnings">> => warnings()
+%% }
+-type get_template_summary_output() :: #{binary() => any()}.
+
+%% Example:
+%% hook_result_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type hook_result_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% hook_result_summary() :: #{
@@ -2201,46 +1247,574 @@
 -type hook_result_summary() :: #{binary() => any()}.
 
 %% Example:
-%% resource_change_detail() :: #{
-%%   <<"CausingEntity">> => string(),
-%%   <<"ChangeSource">> => list(any()),
-%%   <<"Evaluation">> => list(any()),
-%%   <<"Target">> => resource_target_definition()
+%% hook_target() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetType">> => list(any()),
+%%   <<"TargetTypeName">> => string()
 %% }
--type resource_change_detail() :: #{binary() => any()}.
+-type hook_target() :: #{binary() => any()}.
 
 %% Example:
-%% start_resource_scan_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"ScanFilters">> => list(scan_filter())
+%% import_stacks_to_stack_set_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"OperationId">> => string(),
+%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
+%%   <<"OrganizationalUnitIds">> => list(string()),
+%%   <<"StackIds">> => list(string()),
+%%   <<"StackIdsUrl">> => string(),
+%%   <<"StackSetName">> := string()
 %% }
--type start_resource_scan_input() :: #{binary() => any()}.
+-type import_stacks_to_stack_set_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_stack_drift_detection_status_output() :: #{
-%%   <<"DetectionStatus">> => list(any()),
-%%   <<"DetectionStatusReason">> => string(),
-%%   <<"DriftedStackResourceCount">> => integer(),
-%%   <<"StackDriftDetectionId">> => string(),
-%%   <<"StackDriftStatus">> => list(any()),
-%%   <<"StackId">> => string(),
-%%   <<"Timestamp">> => non_neg_integer()
+%% import_stacks_to_stack_set_output() :: #{
+%%   <<"OperationId">> => string()
 %% }
--type describe_stack_drift_detection_status_output() :: #{binary() => any()}.
+-type import_stacks_to_stack_set_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_stacks_input() :: #{
+%% insufficient_capabilities_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type insufficient_capabilities_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_change_set_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_change_set_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_transition_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_state_transition_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_change_sets_input() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StackName">> => string()
+%%   <<"StackName">> := string()
 %% }
--type describe_stacks_input() :: #{binary() => any()}.
+-type list_change_sets_input() :: #{binary() => any()}.
 
 %% Example:
-%% template_configuration() :: #{
-%%   <<"DeletionPolicy">> => list(any()),
-%%   <<"UpdateReplacePolicy">> => list(any())
+%% list_change_sets_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(change_set_summary())
 %% }
--type template_configuration() :: #{binary() => any()}.
+-type list_change_sets_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_exports_input() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_exports_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_exports_output() :: #{
+%%   <<"Exports">> => list(export()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_exports_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_generated_templates_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_generated_templates_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_generated_templates_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(template_summary())
+%% }
+-type list_generated_templates_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_hook_results_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetType">> => list(any()),
+%%   <<"TypeArn">> => string()
+%% }
+-type list_hook_results_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_hook_results_output() :: #{
+%%   <<"HookResults">> => list(hook_result_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetType">> => list(any())
+%% }
+-type list_hook_results_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_imports_input() :: #{
+%%   <<"ExportName">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_imports_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_imports_output() :: #{
+%%   <<"Imports">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_imports_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_scan_related_resources_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceScanId">> := string(),
+%%   <<"Resources">> := list(scanned_resource_identifier())
+%% }
+-type list_resource_scan_related_resources_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_scan_related_resources_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RelatedResources">> => list(scanned_resource())
+%% }
+-type list_resource_scan_related_resources_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_scan_resources_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"ResourceScanId">> := string(),
+%%   <<"ResourceTypePrefix">> => string(),
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string()
+%% }
+-type list_resource_scan_resources_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_scan_resources_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Resources">> => list(scanned_resource())
+%% }
+-type list_resource_scan_resources_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_scans_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ScanTypeFilter">> => list(any())
+%% }
+-type list_resource_scans_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_scans_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceScanSummaries">> => list(resource_scan_summary())
+%% }
+-type list_resource_scans_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_instance_resource_drifts_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OperationId">> := string(),
+%%   <<"StackInstanceAccount">> := string(),
+%%   <<"StackInstanceRegion">> := string(),
+%%   <<"StackInstanceResourceDriftStatuses">> => list(list(any())()),
+%%   <<"StackSetName">> := string()
+%% }
+-type list_stack_instance_resource_drifts_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_instance_resource_drifts_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(stack_instance_resource_drifts_summary())
+%% }
+-type list_stack_instance_resource_drifts_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_instances_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"Filters">> => list(stack_instance_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackInstanceAccount">> => string(),
+%%   <<"StackInstanceRegion">> => string(),
+%%   <<"StackSetName">> := string()
+%% }
+-type list_stack_instances_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_instances_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(stack_instance_summary())
+%% }
+-type list_stack_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_refactor_actions_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackRefactorId">> := string()
+%% }
+-type list_stack_refactor_actions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_refactor_actions_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackRefactorActions">> => list(stack_refactor_action())
+%% }
+-type list_stack_refactor_actions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_refactors_input() :: #{
+%%   <<"ExecutionStatusFilter">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_stack_refactors_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_refactors_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackRefactorSummaries">> => list(stack_refactor_summary())
+%% }
+-type list_stack_refactors_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_resources_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackName">> := string()
+%% }
+-type list_stack_resources_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_resources_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackResourceSummaries">> => list(stack_resource_summary())
+%% }
+-type list_stack_resources_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_set_auto_deployment_targets_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackSetName">> := string()
+%% }
+-type list_stack_set_auto_deployment_targets_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_set_auto_deployment_targets_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(stack_set_auto_deployment_target_summary())
+%% }
+-type list_stack_set_auto_deployment_targets_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_set_operation_results_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"Filters">> => list(operation_result_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OperationId">> := string(),
+%%   <<"StackSetName">> := string()
+%% }
+-type list_stack_set_operation_results_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_set_operation_results_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(stack_set_operation_result_summary())
+%% }
+-type list_stack_set_operation_results_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_set_operations_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackSetName">> := string()
+%% }
+-type list_stack_set_operations_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_set_operations_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(stack_set_operation_summary())
+%% }
+-type list_stack_set_operations_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_sets_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_stack_sets_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_sets_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Summaries">> => list(stack_set_summary())
+%% }
+-type list_stack_sets_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stacks_input() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackStatusFilter">> => list(list(any())())
+%% }
+-type list_stacks_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_stacks_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StackSummaries">> => list(stack_summary())
+%% }
+-type list_stacks_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_type_registrations_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RegistrationStatusFilter">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"TypeArn">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type list_type_registrations_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_type_registrations_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RegistrationTokenList">> => list(string())
+%% }
+-type list_type_registrations_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_type_versions_input() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DeprecatedStatus">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PublisherId">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"TypeName">> => string()
+%% }
+-type list_type_versions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_type_versions_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TypeVersionSummaries">> => list(type_version_summary())
+%% }
+-type list_type_versions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_types_input() :: #{
+%%   <<"DeprecatedStatus">> => list(any()),
+%%   <<"Filters">> => type_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProvisioningType">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type list_types_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_types_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TypeSummaries">> => list(type_summary())
+%% }
+-type list_types_output() :: #{binary() => any()}.
+
+%% Example:
+%% live_resource_drift() :: #{
+%%   <<"ActualValue">> => string(),
+%%   <<"DriftDetectionTimestamp">> => non_neg_integer(),
+%%   <<"PreviousValue">> => string()
+%% }
+-type live_resource_drift() :: #{binary() => any()}.
+
+%% Example:
+%% logging_config() :: #{
+%%   <<"LogGroupName">> => string(),
+%%   <<"LogRoleArn">> => string()
+%% }
+-type logging_config() :: #{binary() => any()}.
+
+%% Example:
+%% managed_execution() :: #{
+%%   <<"Active">> => boolean()
+%% }
+-type managed_execution() :: #{binary() => any()}.
+
+%% Example:
+%% module_info() :: #{
+%%   <<"LogicalIdHierarchy">> => string(),
+%%   <<"TypeHierarchy">> => string()
+%% }
+-type module_info() :: #{binary() => any()}.
+
+%% Example:
+%% name_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type name_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% operation_entry() :: #{
+%%   <<"OperationId">> => string(),
+%%   <<"OperationType">> => list(any())
+%% }
+-type operation_entry() :: #{binary() => any()}.
+
+%% Example:
+%% operation_event() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DetailedStatus">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EventId">> => string(),
+%%   <<"EventType">> => list(any()),
+%%   <<"HookFailureMode">> => list(any()),
+%%   <<"HookInvocationPoint">> => list(any()),
+%%   <<"HookStatus">> => list(any()),
+%%   <<"HookStatusReason">> => string(),
+%%   <<"HookType">> => string(),
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"OperationId">> => string(),
+%%   <<"OperationStatus">> => list(any()),
+%%   <<"OperationType">> => list(any()),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"ResourceProperties">> => string(),
+%%   <<"ResourceStatus">> => list(any()),
+%%   <<"ResourceStatusReason">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"ValidationFailureMode">> => list(any()),
+%%   <<"ValidationName">> => string(),
+%%   <<"ValidationPath">> => string(),
+%%   <<"ValidationStatus">> => list(any()),
+%%   <<"ValidationStatusReason">> => string()
+%% }
+-type operation_event() :: #{binary() => any()}.
+
+%% Example:
+%% operation_id_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_id_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% operation_in_progress_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% operation_result_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => string()
+%% }
+-type operation_result_filter() :: #{binary() => any()}.
+
+%% Example:
+%% operation_status_check_failed_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_status_check_failed_exception() :: #{binary() => any()}.
+
+%% Example:
+%% output() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ExportName">> => string(),
+%%   <<"OutputKey">> => string(),
+%%   <<"OutputValue">> => string()
+%% }
+-type output() :: #{binary() => any()}.
+
+%% Example:
+%% parameter() :: #{
+%%   <<"ParameterKey">> => string(),
+%%   <<"ParameterValue">> => string(),
+%%   <<"ResolvedValue">> => string(),
+%%   <<"UsePreviousValue">> => boolean()
+%% }
+-type parameter() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_constraints() :: #{
+%%   <<"AllowedValues">> => list(string())
+%% }
+-type parameter_constraints() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_declaration() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"NoEcho">> => boolean(),
+%%   <<"ParameterConstraints">> => parameter_constraints(),
+%%   <<"ParameterKey">> => string(),
+%%   <<"ParameterType">> => string()
+%% }
+-type parameter_declaration() :: #{binary() => any()}.
+
+%% Example:
+%% physical_resource_id_context_key_value_pair() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type physical_resource_id_context_key_value_pair() :: #{binary() => any()}.
+
+%% Example:
+%% property_difference() :: #{
+%%   <<"ActualValue">> => string(),
+%%   <<"DifferenceType">> => list(any()),
+%%   <<"ExpectedValue">> => string(),
+%%   <<"PropertyPath">> => string()
+%% }
+-type property_difference() :: #{binary() => any()}.
+
+%% Example:
+%% publish_type_input() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"PublicVersionNumber">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"TypeName">> => string()
+%% }
+-type publish_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% publish_type_output() :: #{
+%%   <<"PublicTypeArn">> => string()
+%% }
+-type publish_type_output() :: #{binary() => any()}.
 
 %% Example:
 %% record_handler_progress_input() :: #{
@@ -2255,28 +1829,537 @@
 -type record_handler_progress_input() :: #{binary() => any()}.
 
 %% Example:
-%% update_termination_protection_output() :: #{
-%%   <<"StackId">> => string()
+%% record_handler_progress_output() :: #{
+
 %% }
--type update_termination_protection_output() :: #{binary() => any()}.
+-type record_handler_progress_output() :: #{binary() => any()}.
 
 %% Example:
-%% change_set_summary() :: #{
+%% register_publisher_input() :: #{
+%%   <<"AcceptTermsAndConditions">> => boolean(),
+%%   <<"ConnectionArn">> => string()
+%% }
+-type register_publisher_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_publisher_output() :: #{
+%%   <<"PublisherId">> => string()
+%% }
+-type register_publisher_output() :: #{binary() => any()}.
+
+%% Example:
+%% register_type_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"LoggingConfig">> => logging_config(),
+%%   <<"SchemaHandlerPackage">> := string(),
+%%   <<"Type">> => list(any()),
+%%   <<"TypeName">> := string()
+%% }
+-type register_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% register_type_output() :: #{
+%%   <<"RegistrationToken">> => string()
+%% }
+-type register_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% required_activated_type() :: #{
+%%   <<"OriginalTypeName">> => string(),
+%%   <<"PublisherId">> => string(),
+%%   <<"SupportedMajorVersions">> => list(integer()),
+%%   <<"TypeNameAlias">> => string()
+%% }
+-type required_activated_type() :: #{binary() => any()}.
+
+%% Example:
+%% resource_change() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"AfterContext">> => string(),
+%%   <<"BeforeContext">> => string(),
 %%   <<"ChangeSetId">> => string(),
-%%   <<"ChangeSetName">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"ExecutionStatus">> => list(any()),
-%%   <<"ImportExistingResources">> => boolean(),
-%%   <<"IncludeNestedStacks">> => boolean(),
-%%   <<"ParentChangeSetId">> => string(),
-%%   <<"RootChangeSetId">> => string(),
-%%   <<"StackId">> => string(),
-%%   <<"StackName">> => string(),
+%%   <<"Details">> => list(resource_change_detail()),
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"ModuleInfo">> => module_info(),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"PolicyAction">> => list(any()),
+%%   <<"PreviousDeploymentContext">> => string(),
+%%   <<"Replacement">> => list(any()),
+%%   <<"ResourceDriftIgnoredAttributes">> => list(resource_drift_ignored_attribute()),
+%%   <<"ResourceDriftStatus">> => list(any()),
+%%   <<"ResourceType">> => string(),
+%%   <<"Scope">> => list(list(any())())
+%% }
+-type resource_change() :: #{binary() => any()}.
+
+%% Example:
+%% resource_change_detail() :: #{
+%%   <<"CausingEntity">> => string(),
+%%   <<"ChangeSource">> => list(any()),
+%%   <<"Evaluation">> => list(any()),
+%%   <<"Target">> => resource_target_definition()
+%% }
+-type resource_change_detail() :: #{binary() => any()}.
+
+%% Example:
+%% resource_definition() :: #{
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"ResourceIdentifier">> => map(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_definition() :: #{binary() => any()}.
+
+%% Example:
+%% resource_detail() :: #{
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"ResourceIdentifier">> => map(),
+%%   <<"ResourceStatus">> => list(any()),
+%%   <<"ResourceStatusReason">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Warnings">> => list(warning_detail())
+%% }
+-type resource_detail() :: #{binary() => any()}.
+
+%% Example:
+%% resource_drift_ignored_attribute() :: #{
+%%   <<"Path">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type resource_drift_ignored_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% resource_identifier_summary() :: #{
+%%   <<"LogicalResourceIds">> => list(string()),
+%%   <<"ResourceIdentifiers">> => list(string()),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_identifier_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resource_location() :: #{
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"StackName">> => string()
+%% }
+-type resource_location() :: #{binary() => any()}.
+
+%% Example:
+%% resource_mapping() :: #{
+%%   <<"Destination">> => resource_location(),
+%%   <<"Source">> => resource_location()
+%% }
+-type resource_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% resource_scan_in_progress_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_scan_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_scan_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_scan_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_scan_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_scan_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_scan_summary() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"PercentageCompleted">> => float(),
+%%   <<"ResourceScanId">> => string(),
+%%   <<"ScanType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
 %% }
--type change_set_summary() :: #{binary() => any()}.
+-type resource_scan_summary() :: #{binary() => any()}.
+
+%% Example:
+%% resource_target_definition() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"AfterValueFrom">> => list(any()),
+%%   <<"Attribute">> => list(any()),
+%%   <<"AttributeChangeType">> => list(any()),
+%%   <<"BeforeValue">> => string(),
+%%   <<"BeforeValueFrom">> => list(any()),
+%%   <<"Drift">> => live_resource_drift(),
+%%   <<"Name">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"RequiresRecreation">> => list(any())
+%% }
+-type resource_target_definition() :: #{binary() => any()}.
+
+%% Example:
+%% resource_to_import() :: #{
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"ResourceIdentifier">> => map(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_to_import() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_configuration() :: #{
+%%   <<"MonitoringTimeInMinutes">> => integer(),
+%%   <<"RollbackTriggers">> => list(rollback_trigger())
+%% }
+-type rollback_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_stack_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DeploymentConfig">> => deployment_config(),
+%%   <<"RetainExceptOnCreate">> => boolean(),
+%%   <<"RoleARN">> => string(),
+%%   <<"StackName">> := string()
+%% }
+-type rollback_stack_input() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_stack_output() :: #{
+%%   <<"OperationId">> => string(),
+%%   <<"StackId">> => string()
+%% }
+-type rollback_stack_output() :: #{binary() => any()}.
+
+%% Example:
+%% rollback_trigger() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type rollback_trigger() :: #{binary() => any()}.
+
+%% Example:
+%% scan_filter() :: #{
+%%   <<"Types">> => list(string())
+%% }
+-type scan_filter() :: #{binary() => any()}.
+
+%% Example:
+%% scanned_resource() :: #{
+%%   <<"ManagedByStack">> => boolean(),
+%%   <<"ResourceIdentifier">> => map(),
+%%   <<"ResourceType">> => string()
+%% }
+-type scanned_resource() :: #{binary() => any()}.
+
+%% Example:
+%% scanned_resource_identifier() :: #{
+%%   <<"ResourceIdentifier">> => map(),
+%%   <<"ResourceType">> => string()
+%% }
+-type scanned_resource_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% set_stack_policy_input() :: #{
+%%   <<"StackName">> := string(),
+%%   <<"StackPolicyBody">> => string(),
+%%   <<"StackPolicyURL">> => string()
+%% }
+-type set_stack_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_type_configuration_input() :: #{
+%%   <<"Configuration">> := string(),
+%%   <<"ConfigurationAlias">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"TypeArn">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type set_type_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_type_configuration_output() :: #{
+%%   <<"ConfigurationArn">> => string()
+%% }
+-type set_type_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% set_type_default_version_input() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"TypeName">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type set_type_default_version_input() :: #{binary() => any()}.
+
+%% Example:
+%% set_type_default_version_output() :: #{
+
+%% }
+-type set_type_default_version_output() :: #{binary() => any()}.
+
+%% Example:
+%% signal_resource_input() :: #{
+%%   <<"LogicalResourceId">> := string(),
+%%   <<"StackName">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"UniqueId">> := string()
+%% }
+-type signal_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% stack() :: #{
+%%   <<"Capabilities">> => list(list(any())()),
+%%   <<"ChangeSetId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeletionMode">> => list(any()),
+%%   <<"DeletionTime">> => non_neg_integer(),
+%%   <<"DeploymentConfig">> => deployment_config(),
+%%   <<"Description">> => string(),
+%%   <<"DetailedStatus">> => list(any()),
+%%   <<"DisableRollback">> => boolean(),
+%%   <<"DriftInformation">> => stack_drift_information(),
+%%   <<"EnableTerminationProtection">> => boolean(),
+%%   <<"LastOperations">> => list(operation_entry()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"NotificationARNs">> => list(string()),
+%%   <<"Outputs">> => list(output()),
+%%   <<"Parameters">> => list(parameter()),
+%%   <<"ParentId">> => string(),
+%%   <<"RetainExceptOnCreate">> => boolean(),
+%%   <<"RoleARN">> => string(),
+%%   <<"RollbackConfiguration">> => rollback_configuration(),
+%%   <<"RootId">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StackName">> => string(),
+%%   <<"StackStatus">> => list(any()),
+%%   <<"StackStatusReason">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TimeoutInMinutes">> => integer()
+%% }
+-type stack() :: #{binary() => any()}.
+
+%% Example:
+%% stack_definition() :: #{
+%%   <<"StackName">> => string(),
+%%   <<"TemplateBody">> => string(),
+%%   <<"TemplateURL">> => string()
+%% }
+-type stack_definition() :: #{binary() => any()}.
+
+%% Example:
+%% stack_drift_information() :: #{
+%%   <<"LastCheckTimestamp">> => non_neg_integer(),
+%%   <<"StackDriftStatus">> => list(any())
+%% }
+-type stack_drift_information() :: #{binary() => any()}.
+
+%% Example:
+%% stack_drift_information_summary() :: #{
+%%   <<"LastCheckTimestamp">> => non_neg_integer(),
+%%   <<"StackDriftStatus">> => list(any())
+%% }
+-type stack_drift_information_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stack_event() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DetailedStatus">> => list(any()),
+%%   <<"EventId">> => string(),
+%%   <<"HookFailureMode">> => list(any()),
+%%   <<"HookInvocationId">> => string(),
+%%   <<"HookInvocationPoint">> => list(any()),
+%%   <<"HookStatus">> => list(any()),
+%%   <<"HookStatusReason">> => string(),
+%%   <<"HookType">> => string(),
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"OperationId">> => string(),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"ResourceProperties">> => string(),
+%%   <<"ResourceStatus">> => list(any()),
+%%   <<"ResourceStatusReason">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StackName">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type stack_event() :: #{binary() => any()}.
+
+%% Example:
+%% stack_instance() :: #{
+%%   <<"Account">> => string(),
+%%   <<"DriftStatus">> => list(any()),
+%%   <<"LastDriftCheckTimestamp">> => non_neg_integer(),
+%%   <<"LastOperationId">> => string(),
+%%   <<"OrganizationalUnitId">> => string(),
+%%   <<"ParameterOverrides">> => list(parameter()),
+%%   <<"Region">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StackInstanceStatus">> => stack_instance_comprehensive_status(),
+%%   <<"StackSetId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type stack_instance() :: #{binary() => any()}.
+
+%% Example:
+%% stack_instance_comprehensive_status() :: #{
+%%   <<"DetailedStatus">> => list(any())
+%% }
+-type stack_instance_comprehensive_status() :: #{binary() => any()}.
+
+%% Example:
+%% stack_instance_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => string()
+%% }
+-type stack_instance_filter() :: #{binary() => any()}.
+
+%% Example:
+%% stack_instance_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type stack_instance_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stack_instance_resource_drifts_summary() :: #{
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"PhysicalResourceIdContext">> => list(physical_resource_id_context_key_value_pair()),
+%%   <<"PropertyDifferences">> => list(property_difference()),
+%%   <<"ResourceType">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StackResourceDriftStatus">> => list(any()),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type stack_instance_resource_drifts_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stack_instance_summary() :: #{
+%%   <<"Account">> => string(),
+%%   <<"DriftStatus">> => list(any()),
+%%   <<"LastDriftCheckTimestamp">> => non_neg_integer(),
+%%   <<"LastOperationId">> => string(),
+%%   <<"OrganizationalUnitId">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StackInstanceStatus">> => stack_instance_comprehensive_status(),
+%%   <<"StackSetId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type stack_instance_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stack_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type stack_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stack_refactor_action() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"Detection">> => list(any()),
+%%   <<"DetectionReason">> => string(),
+%%   <<"Entity">> => list(any()),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"ResourceMapping">> => resource_mapping(),
+%%   <<"TagResources">> => list(tag()),
+%%   <<"UntagResources">> => list(string())
+%% }
+-type stack_refactor_action() :: #{binary() => any()}.
+
+%% Example:
+%% stack_refactor_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type stack_refactor_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% stack_refactor_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ExecutionStatus">> => list(any()),
+%%   <<"ExecutionStatusReason">> => string(),
+%%   <<"StackRefactorId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type stack_refactor_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stack_resource() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DriftInformation">> => stack_resource_drift_information(),
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"ModuleInfo">> => module_info(),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"ResourceStatus">> => list(any()),
+%%   <<"ResourceStatusReason">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StackName">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type stack_resource() :: #{binary() => any()}.
+
+%% Example:
+%% stack_resource_detail() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DriftInformation">> => stack_resource_drift_information(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"Metadata">> => string(),
+%%   <<"ModuleInfo">> => module_info(),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"ResourceStatus">> => list(any()),
+%%   <<"ResourceStatusReason">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StackName">> => string()
+%% }
+-type stack_resource_detail() :: #{binary() => any()}.
+
+%% Example:
+%% stack_resource_drift() :: #{
+%%   <<"ActualProperties">> => string(),
+%%   <<"DriftStatusReason">> => string(),
+%%   <<"ExpectedProperties">> => string(),
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"ModuleInfo">> => module_info(),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"PhysicalResourceIdContext">> => list(physical_resource_id_context_key_value_pair()),
+%%   <<"PropertyDifferences">> => list(property_difference()),
+%%   <<"ResourceType">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StackResourceDriftStatus">> => list(any()),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type stack_resource_drift() :: #{binary() => any()}.
+
+%% Example:
+%% stack_resource_drift_information() :: #{
+%%   <<"LastCheckTimestamp">> => non_neg_integer(),
+%%   <<"StackResourceDriftStatus">> => list(any())
+%% }
+-type stack_resource_drift_information() :: #{binary() => any()}.
+
+%% Example:
+%% stack_resource_drift_information_summary() :: #{
+%%   <<"LastCheckTimestamp">> => non_neg_integer(),
+%%   <<"StackResourceDriftStatus">> => list(any())
+%% }
+-type stack_resource_drift_information_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stack_resource_summary() :: #{
+%%   <<"DriftInformation">> => stack_resource_drift_information_summary(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"ModuleInfo">> => module_info(),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"ResourceStatus">> => list(any()),
+%%   <<"ResourceStatusReason">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type stack_resource_summary() :: #{binary() => any()}.
 
 %% Example:
 %% stack_set() :: #{
@@ -2301,401 +2384,36 @@
 -type stack_set() :: #{binary() => any()}.
 
 %% Example:
-%% record_handler_progress_output() :: #{
-
+%% stack_set_auto_deployment_target_summary() :: #{
+%%   <<"OrganizationalUnitId">> => string(),
+%%   <<"Regions">> => list(string())
 %% }
--type record_handler_progress_output() :: #{binary() => any()}.
+-type stack_set_auto_deployment_target_summary() :: #{binary() => any()}.
 
 %% Example:
-%% describe_events_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"OperationEvents">> => list(operation_event())
-%% }
--type describe_events_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_stack_instances_input() :: #{
-%%   <<"Accounts">> => list(string()),
-%%   <<"CallAs">> => list(any()),
-%%   <<"DeploymentTargets">> => deployment_targets(),
-%%   <<"OperationId">> => string(),
-%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
-%%   <<"ParameterOverrides">> => list(parameter()),
-%%   <<"Regions">> := list(string()),
-%%   <<"StackSetName">> := string()
-%% }
--type update_stack_instances_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_generated_template_output() :: #{
-%%   <<"GeneratedTemplateId">> => string()
-%% }
--type create_generated_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% resource_scan_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_scan_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stack_resource_drift_information_summary() :: #{
-%%   <<"LastCheckTimestamp">> => non_neg_integer(),
-%%   <<"StackResourceDriftStatus">> => list(any())
-%% }
--type stack_resource_drift_information_summary() :: #{binary() => any()}.
-
-%% Example:
-%% create_change_set_output() :: #{
-%%   <<"Id">> => string(),
-%%   <<"StackId">> => string()
-%% }
--type create_change_set_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_instances_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"Filters">> => list(stack_instance_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StackInstanceAccount">> => string(),
-%%   <<"StackInstanceRegion">> => string(),
-%%   <<"StackSetName">> := string()
-%% }
--type list_stack_instances_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_limits_input() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type describe_account_limits_input() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_type_input() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"TypeName">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type deregister_type_input() :: #{binary() => any()}.
-
-%% Example:
-%% deactivate_organizations_access_output() :: #{
-
-%% }
--type deactivate_organizations_access_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_refactor_actions_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StackRefactorActions">> => list(stack_refactor_action())
-%% }
--type list_stack_refactor_actions_output() :: #{binary() => any()}.
-
-%% Example:
-%% token_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type token_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_refactor_input() :: #{
-%%   <<"StackRefactorId">> := string()
-%% }
--type describe_stack_refactor_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_describe_type_configurations_input() :: #{
-%%   <<"TypeConfigurationIdentifiers">> := list(type_configuration_identifier())
-%% }
--type batch_describe_type_configurations_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_types_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TypeSummaries">> => list(type_summary())
-%% }
--type list_types_output() :: #{binary() => any()}.
-
-%% Example:
-%% set_type_configuration_output() :: #{
-%%   <<"ConfigurationArn">> => string()
-%% }
--type set_type_configuration_output() :: #{binary() => any()}.
-
-%% Example:
-%% template_progress() :: #{
-%%   <<"ResourcesFailed">> => integer(),
-%%   <<"ResourcesPending">> => integer(),
-%%   <<"ResourcesProcessing">> => integer(),
-%%   <<"ResourcesSucceeded">> => integer()
-%% }
--type template_progress() :: #{binary() => any()}.
-
-%% Example:
-%% get_template_summary_output() :: #{
-%%   <<"Capabilities">> => list(list(any())()),
-%%   <<"CapabilitiesReason">> => string(),
-%%   <<"DeclaredTransforms">> => list(string()),
-%%   <<"Description">> => string(),
-%%   <<"Metadata">> => string(),
-%%   <<"Parameters">> => list(parameter_declaration()),
-%%   <<"ResourceIdentifierSummaries">> => list(resource_identifier_summary()),
-%%   <<"ResourceTypes">> => list(string()),
-%%   <<"Version">> => string(),
-%%   <<"Warnings">> => warnings()
-%% }
--type get_template_summary_output() :: #{binary() => any()}.
-
-%% Example:
-%% stack_set_summary() :: #{
-%%   <<"AutoDeployment">> => auto_deployment(),
-%%   <<"Description">> => string(),
+%% stack_set_drift_detection_details() :: #{
+%%   <<"DriftDetectionStatus">> => list(any()),
 %%   <<"DriftStatus">> => list(any()),
+%%   <<"DriftedStackInstancesCount">> => integer(),
+%%   <<"FailedStackInstancesCount">> => integer(),
+%%   <<"InProgressStackInstancesCount">> => integer(),
+%%   <<"InSyncStackInstancesCount">> => integer(),
 %%   <<"LastDriftCheckTimestamp">> => non_neg_integer(),
-%%   <<"ManagedExecution">> => managed_execution(),
-%%   <<"PermissionModel">> => list(any()),
-%%   <<"StackSetId">> => string(),
-%%   <<"StackSetName">> => string(),
-%%   <<"Status">> => list(any())
+%%   <<"TotalStackInstancesCount">> => integer()
 %% }
--type stack_set_summary() :: #{binary() => any()}.
+-type stack_set_drift_detection_details() :: #{binary() => any()}.
 
 %% Example:
-%% stack_instance_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => string()
-%% }
--type stack_instance_filter() :: #{binary() => any()}.
-
-%% Example:
-%% continue_update_rollback_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"ResourcesToSkip">> => list(string()),
-%%   <<"RoleARN">> => string(),
-%%   <<"StackName">> := string()
-%% }
--type continue_update_rollback_input() :: #{binary() => any()}.
-
-%% Example:
-%% operation_id_already_exists_exception() :: #{
+%% stack_set_not_empty_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type operation_id_already_exists_exception() :: #{binary() => any()}.
+-type stack_set_not_empty_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_type_registration_output() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ProgressStatus">> => list(any()),
-%%   <<"TypeArn">> => string(),
-%%   <<"TypeVersionArn">> => string()
-%% }
--type describe_type_registration_output() :: #{binary() => any()}.
-
-%% Example:
-%% activate_organizations_access_output() :: #{
-
-%% }
--type activate_organizations_access_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_instance_resource_drifts_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_instance_resource_drifts_summary())
-%% }
--type list_stack_instance_resource_drifts_output() :: #{binary() => any()}.
-
-%% Example:
-%% rollback_configuration() :: #{
-%%   <<"MonitoringTimeInMinutes">> => integer(),
-%%   <<"RollbackTriggers">> => list(rollback_trigger())
-%% }
--type rollback_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_change_sets_input() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StackName">> := string()
-%% }
--type list_change_sets_input() :: #{binary() => any()}.
-
-%% Example:
-%% rollback_trigger() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Type">> => string()
-%% }
--type rollback_trigger() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_instances_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_instance_summary())
-%% }
--type list_stack_instances_output() :: #{binary() => any()}.
-
-%% Example:
-%% detect_stack_set_drift_input() :: #{
-%%   <<"CallAs">> => list(any()),
-%%   <<"OperationId">> => string(),
-%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
-%%   <<"StackSetName">> := string()
-%% }
--type detect_stack_set_drift_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_set_operation_results_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_set_operation_result_summary())
-%% }
--type list_stack_set_operation_results_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_generated_template_output() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"TemplateBody">> => string()
-%% }
--type get_generated_template_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_stack_set_input() :: #{
-%%   <<"AdministrationRoleARN">> => string(),
-%%   <<"AutoDeployment">> => auto_deployment(),
-%%   <<"CallAs">> => list(any()),
-%%   <<"Capabilities">> => list(list(any())()),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"ExecutionRoleName">> => string(),
-%%   <<"ManagedExecution">> => managed_execution(),
-%%   <<"Parameters">> => list(parameter()),
-%%   <<"PermissionModel">> => list(any()),
-%%   <<"StackId">> => string(),
-%%   <<"StackSetName">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TemplateBody">> => string(),
-%%   <<"TemplateURL">> => string()
-%% }
--type create_stack_set_input() :: #{binary() => any()}.
-
-%% Example:
-%% operation_result_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Values">> => string()
-%% }
--type operation_result_filter() :: #{binary() => any()}.
-
-%% Example:
-%% get_hook_result_output() :: #{
-%%   <<"Annotations">> => list(annotation()),
-%%   <<"FailureMode">> => list(any()),
-%%   <<"HookResultId">> => string(),
-%%   <<"HookStatusReason">> => string(),
-%%   <<"InvocationPoint">> => list(any()),
-%%   <<"InvokedAt">> => non_neg_integer(),
-%%   <<"OriginalTypeName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Target">> => hook_target(),
-%%   <<"TypeArn">> => string(),
-%%   <<"TypeConfigurationVersionId">> => string(),
-%%   <<"TypeName">> => string(),
-%%   <<"TypeVersionId">> => string()
-%% }
--type get_hook_result_output() :: #{binary() => any()}.
-
-%% Example:
-%% execute_stack_refactor_input() :: #{
-%%   <<"StackRefactorId">> := string()
-%% }
--type execute_stack_refactor_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stack_refactor_output() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ExecutionStatus">> => list(any()),
-%%   <<"ExecutionStatusReason">> => string(),
-%%   <<"StackIds">> => list(string()),
-%%   <<"StackRefactorId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => string()
-%% }
--type describe_stack_refactor_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_refactors_input() :: #{
-%%   <<"ExecutionStatusFilter">> => list(list(any())()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_stack_refactors_input() :: #{binary() => any()}.
-
-%% Example:
-%% change_set_not_found_exception() :: #{
+%% stack_set_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type change_set_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stack_set_output() :: #{
-
-%% }
--type delete_stack_set_output() :: #{binary() => any()}.
-
-%% Example:
-%% resource_change() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"AfterContext">> => string(),
-%%   <<"BeforeContext">> => string(),
-%%   <<"ChangeSetId">> => string(),
-%%   <<"Details">> => list(resource_change_detail()),
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"ModuleInfo">> => module_info(),
-%%   <<"PhysicalResourceId">> => string(),
-%%   <<"PolicyAction">> => list(any()),
-%%   <<"PreviousDeploymentContext">> => string(),
-%%   <<"Replacement">> => list(any()),
-%%   <<"ResourceDriftIgnoredAttributes">> => list(resource_drift_ignored_attribute()),
-%%   <<"ResourceDriftStatus">> => list(any()),
-%%   <<"ResourceType">> => string(),
-%%   <<"Scope">> => list(list(any())())
-%% }
--type resource_change() :: #{binary() => any()}.
-
-%% Example:
-%% deployment_targets() :: #{
-%%   <<"AccountFilterType">> => list(any()),
-%%   <<"Accounts">> => list(string()),
-%%   <<"AccountsUrl">> => string(),
-%%   <<"OrganizationalUnitIds">> => list(string())
-%% }
--type deployment_targets() :: #{binary() => any()}.
-
-%% Example:
-%% detect_stack_drift_input() :: #{
-%%   <<"LogicalResourceIds">> => list(string()),
-%%   <<"StackName">> := string()
-%% }
--type detect_stack_drift_input() :: #{binary() => any()}.
-
-%% Example:
-%% stack_resource() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DriftInformation">> => stack_resource_drift_information(),
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"ModuleInfo">> => module_info(),
-%%   <<"PhysicalResourceId">> => string(),
-%%   <<"ResourceStatus">> => list(any()),
-%%   <<"ResourceStatusReason">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"StackId">> => string(),
-%%   <<"StackName">> => string(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type stack_resource() :: #{binary() => any()}.
+-type stack_set_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
 %% stack_set_operation() :: #{
@@ -2717,25 +2435,310 @@
 -type stack_set_operation() :: #{binary() => any()}.
 
 %% Example:
-%% register_type_output() :: #{
-%%   <<"RegistrationToken">> => string()
+%% stack_set_operation_preferences() :: #{
+%%   <<"ConcurrencyMode">> => list(any()),
+%%   <<"FailureToleranceCount">> => integer(),
+%%   <<"FailureTolerancePercentage">> => integer(),
+%%   <<"MaxConcurrentCount">> => integer(),
+%%   <<"MaxConcurrentPercentage">> => integer(),
+%%   <<"RegionConcurrencyType">> => list(any()),
+%%   <<"RegionOrder">> => list(string())
 %% }
--type register_type_output() :: #{binary() => any()}.
+-type stack_set_operation_preferences() :: #{binary() => any()}.
 
 %% Example:
-%% export() :: #{
-%%   <<"ExportingStackId">> => string(),
-%%   <<"Name">> => string(),
+%% stack_set_operation_result_summary() :: #{
+%%   <<"Account">> => string(),
+%%   <<"AccountGateResult">> => account_gate_result(),
+%%   <<"OrganizationalUnitId">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type stack_set_operation_result_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stack_set_operation_status_details() :: #{
+%%   <<"FailedStackInstancesCount">> => integer()
+%% }
+-type stack_set_operation_status_details() :: #{binary() => any()}.
+
+%% Example:
+%% stack_set_operation_summary() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"CreationTimestamp">> => non_neg_integer(),
+%%   <<"EndTimestamp">> => non_neg_integer(),
+%%   <<"OperationId">> => string(),
+%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDetails">> => stack_set_operation_status_details(),
+%%   <<"StatusReason">> => string()
+%% }
+-type stack_set_operation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stack_set_summary() :: #{
+%%   <<"AutoDeployment">> => auto_deployment(),
+%%   <<"Description">> => string(),
+%%   <<"DriftStatus">> => list(any()),
+%%   <<"LastDriftCheckTimestamp">> => non_neg_integer(),
+%%   <<"ManagedExecution">> => managed_execution(),
+%%   <<"PermissionModel">> => list(any()),
+%%   <<"StackSetId">> => string(),
+%%   <<"StackSetName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type stack_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stack_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeletionTime">> => non_neg_integer(),
+%%   <<"DriftInformation">> => stack_drift_information_summary(),
+%%   <<"LastOperations">> => list(operation_entry()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"ParentId">> => string(),
+%%   <<"RootId">> => string(),
+%%   <<"StackId">> => string(),
+%%   <<"StackName">> => string(),
+%%   <<"StackStatus">> => list(any()),
+%%   <<"StackStatusReason">> => string(),
+%%   <<"TemplateDescription">> => string()
+%% }
+-type stack_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stale_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type stale_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% start_resource_scan_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ScanFilters">> => list(scan_filter())
+%% }
+-type start_resource_scan_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_resource_scan_output() :: #{
+%%   <<"ResourceScanId">> => string()
+%% }
+-type start_resource_scan_output() :: #{binary() => any()}.
+
+%% Example:
+%% stop_stack_set_operation_input() :: #{
+%%   <<"CallAs">> => list(any()),
+%%   <<"OperationId">> := string(),
+%%   <<"StackSetName">> := string()
+%% }
+-type stop_stack_set_operation_input() :: #{binary() => any()}.
+
+%% Example:
+%% stop_stack_set_operation_output() :: #{
+
+%% }
+-type stop_stack_set_operation_output() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
 %%   <<"Value">> => string()
 %% }
--type export() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% get_generated_template_input() :: #{
-%%   <<"Format">> => list(any()),
-%%   <<"GeneratedTemplateName">> := string()
+%% template_configuration() :: #{
+%%   <<"DeletionPolicy">> => list(any()),
+%%   <<"UpdateReplacePolicy">> => list(any())
 %% }
--type get_generated_template_input() :: #{binary() => any()}.
+-type template_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% template_parameter() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"NoEcho">> => boolean(),
+%%   <<"ParameterKey">> => string()
+%% }
+-type template_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% template_progress() :: #{
+%%   <<"ResourcesFailed">> => integer(),
+%%   <<"ResourcesPending">> => integer(),
+%%   <<"ResourcesProcessing">> => integer(),
+%%   <<"ResourcesSucceeded">> => integer()
+%% }
+-type template_progress() :: #{binary() => any()}.
+
+%% Example:
+%% template_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"GeneratedTemplateId">> => string(),
+%%   <<"GeneratedTemplateName">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"NumberOfResources">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type template_summary() :: #{binary() => any()}.
+
+%% Example:
+%% template_summary_config() :: #{
+%%   <<"TreatUnrecognizedResourceTypesAsWarnings">> => boolean()
+%% }
+-type template_summary_config() :: #{binary() => any()}.
+
+%% Example:
+%% test_type_input() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"LogDeliveryBucket">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"TypeName">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type test_type_input() :: #{binary() => any()}.
+
+%% Example:
+%% test_type_output() :: #{
+%%   <<"TypeVersionArn">> => string()
+%% }
+-type test_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% token_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type token_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% type_configuration_details() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"Configuration">> => string(),
+%%   <<"IsDefaultConfiguration">> => boolean(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"TypeArn">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type type_configuration_details() :: #{binary() => any()}.
+
+%% Example:
+%% type_configuration_identifier() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"TypeArn">> => string(),
+%%   <<"TypeConfigurationAlias">> => string(),
+%%   <<"TypeConfigurationArn">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type type_configuration_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% type_configuration_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type type_configuration_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% type_filters() :: #{
+%%   <<"Category">> => list(any()),
+%%   <<"PublisherId">> => string(),
+%%   <<"TypeNamePrefix">> => string()
+%% }
+-type type_filters() :: #{binary() => any()}.
+
+%% Example:
+%% type_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type type_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% type_summary() :: #{
+%%   <<"DefaultVersionId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsActivated">> => boolean(),
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"LatestPublicVersion">> => string(),
+%%   <<"OriginalTypeName">> => string(),
+%%   <<"PublicVersionNumber">> => string(),
+%%   <<"PublisherId">> => string(),
+%%   <<"PublisherIdentity">> => list(any()),
+%%   <<"PublisherName">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"TypeArn">> => string(),
+%%   <<"TypeName">> => string()
+%% }
+-type type_summary() :: #{binary() => any()}.
+
+%% Example:
+%% type_version_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsDefaultVersion">> => boolean(),
+%%   <<"PublicVersionNumber">> => string(),
+%%   <<"TimeCreated">> => non_neg_integer(),
+%%   <<"Type">> => list(any()),
+%%   <<"TypeName">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type type_version_summary() :: #{binary() => any()}.
+
+%% Example:
+%% update_generated_template_input() :: #{
+%%   <<"AddResources">> => list(resource_definition()),
+%%   <<"GeneratedTemplateName">> := string(),
+%%   <<"NewGeneratedTemplateName">> => string(),
+%%   <<"RefreshAllResources">> => boolean(),
+%%   <<"RemoveResources">> => list(string()),
+%%   <<"TemplateConfiguration">> => template_configuration()
+%% }
+-type update_generated_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_generated_template_output() :: #{
+%%   <<"GeneratedTemplateId">> => string()
+%% }
+-type update_generated_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_stack_input() :: #{
+%%   <<"Capabilities">> => list(list(any())()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"DeploymentConfig">> => deployment_config(),
+%%   <<"DisableRollback">> => boolean(),
+%%   <<"DisableValidation">> => boolean(),
+%%   <<"NotificationARNs">> => list(string()),
+%%   <<"Parameters">> => list(parameter()),
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"RetainExceptOnCreate">> => boolean(),
+%%   <<"RoleARN">> => string(),
+%%   <<"RollbackConfiguration">> => rollback_configuration(),
+%%   <<"StackName">> := string(),
+%%   <<"StackPolicyBody">> => string(),
+%%   <<"StackPolicyDuringUpdateBody">> => string(),
+%%   <<"StackPolicyDuringUpdateURL">> => string(),
+%%   <<"StackPolicyURL">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TemplateBody">> => string(),
+%%   <<"TemplateURL">> => string(),
+%%   <<"UsePreviousTemplate">> => boolean()
+%% }
+-type update_stack_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_stack_instances_input() :: #{
+%%   <<"Accounts">> => list(string()),
+%%   <<"CallAs">> => list(any()),
+%%   <<"DeploymentTargets">> => deployment_targets(),
+%%   <<"OperationId">> => string(),
+%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
+%%   <<"ParameterOverrides">> => list(parameter()),
+%%   <<"Regions">> := list(string()),
+%%   <<"StackSetName">> := string()
+%% }
+-type update_stack_instances_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_stack_instances_output() :: #{
@@ -2744,107 +2747,104 @@
 -type update_stack_instances_output() :: #{binary() => any()}.
 
 %% Example:
-%% list_stack_set_auto_deployment_targets_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_set_auto_deployment_target_summary())
+%% update_stack_output() :: #{
+%%   <<"OperationId">> => string(),
+%%   <<"StackId">> => string()
 %% }
--type list_stack_set_auto_deployment_targets_output() :: #{binary() => any()}.
+-type update_stack_output() :: #{binary() => any()}.
 
 %% Example:
-%% output() :: #{
+%% update_stack_set_input() :: #{
+%%   <<"Accounts">> => list(string()),
+%%   <<"AdministrationRoleARN">> => string(),
+%%   <<"AutoDeployment">> => auto_deployment(),
+%%   <<"CallAs">> => list(any()),
+%%   <<"Capabilities">> => list(list(any())()),
+%%   <<"DeploymentTargets">> => deployment_targets(),
 %%   <<"Description">> => string(),
-%%   <<"ExportName">> => string(),
-%%   <<"OutputKey">> => string(),
-%%   <<"OutputValue">> => string()
+%%   <<"ExecutionRoleName">> => string(),
+%%   <<"ManagedExecution">> => managed_execution(),
+%%   <<"OperationId">> => string(),
+%%   <<"OperationPreferences">> => stack_set_operation_preferences(),
+%%   <<"Parameters">> => list(parameter()),
+%%   <<"PermissionModel">> => list(any()),
+%%   <<"Regions">> => list(string()),
+%%   <<"StackSetName">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TemplateBody">> => string(),
+%%   <<"TemplateURL">> => string(),
+%%   <<"UsePreviousTemplate">> => boolean()
 %% }
--type output() :: #{binary() => any()}.
+-type update_stack_set_input() :: #{binary() => any()}.
 
 %% Example:
-%% c_f_n_registry_exception() :: #{
-%%   <<"Message">> => string()
+%% update_stack_set_output() :: #{
+%%   <<"OperationId">> => string()
 %% }
--type c_f_n_registry_exception() :: #{binary() => any()}.
+-type update_stack_set_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_stacks_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Stacks">> => list(stack())
-%% }
--type describe_stacks_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stack_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"DeletionMode">> => list(any()),
-%%   <<"DeploymentConfig">> => deployment_config(),
-%%   <<"RetainResources">> => list(string()),
-%%   <<"RoleARN">> => string(),
+%% update_termination_protection_input() :: #{
+%%   <<"EnableTerminationProtection">> := boolean(),
 %%   <<"StackName">> := string()
 %% }
--type delete_stack_input() :: #{binary() => any()}.
+-type update_termination_protection_input() :: #{binary() => any()}.
 
 %% Example:
-%% resource_detail() :: #{
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"ResourceIdentifier">> => map(),
-%%   <<"ResourceStatus">> => list(any()),
-%%   <<"ResourceStatusReason">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"Warnings">> => list(warning_detail())
+%% update_termination_protection_output() :: #{
+%%   <<"StackId">> => string()
 %% }
--type resource_detail() :: #{binary() => any()}.
+-type update_termination_protection_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_stack_set_operation_output() :: #{
-%%   <<"StackSetOperation">> => stack_set_operation()
+%% validate_template_input() :: #{
+%%   <<"TemplateBody">> => string(),
+%%   <<"TemplateURL">> => string()
 %% }
--type describe_stack_set_operation_output() :: #{binary() => any()}.
+-type validate_template_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_imports_output() :: #{
-%%   <<"Imports">> => list(string()),
-%%   <<"NextToken">> => string()
+%% validate_template_output() :: #{
+%%   <<"Capabilities">> => list(list(any())()),
+%%   <<"CapabilitiesReason">> => string(),
+%%   <<"DeclaredTransforms">> => list(string()),
+%%   <<"Description">> => string(),
+%%   <<"Parameters">> => list(template_parameter())
 %% }
--type list_imports_output() :: #{binary() => any()}.
+-type validate_template_output() :: #{binary() => any()}.
 
 %% Example:
-%% register_type_input() :: #{
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"ExecutionRoleArn">> => string(),
-%%   <<"LoggingConfig">> => logging_config(),
-%%   <<"SchemaHandlerPackage">> := string(),
-%%   <<"Type">> => list(any()),
-%%   <<"TypeName">> := string()
+%% warning_detail() :: #{
+%%   <<"Properties">> => list(warning_property()),
+%%   <<"Type">> => list(any())
 %% }
--type register_type_input() :: #{binary() => any()}.
+-type warning_detail() :: #{binary() => any()}.
 
 %% Example:
-%% auto_deployment() :: #{
-%%   <<"DependsOn">> => list(string()),
-%%   <<"Enabled">> => boolean(),
-%%   <<"RetainStacksOnAccountRemoval">> => boolean()
+%% warning_property() :: #{
+%%   <<"Description">> => string(),
+%%   <<"PropertyPath">> => string(),
+%%   <<"Required">> => boolean()
 %% }
--type auto_deployment() :: #{binary() => any()}.
+-type warning_property() :: #{binary() => any()}.
 
 %% Example:
-%% list_stack_refactor_actions_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StackRefactorId">> := string()
+%% warnings() :: #{
+%%   <<"UnrecognizedResourceTypes">> => list(string())
 %% }
--type list_stack_refactor_actions_input() :: #{binary() => any()}.
+-type warnings() :: #{binary() => any()}.
 
 -type activate_organizations_access_errors() ::
     operation_not_found_exception() | 
     invalid_operation_exception().
 
 -type activate_type_errors() ::
-    c_f_n_registry_exception() | 
-    type_not_found_exception().
+    type_not_found_exception() | 
+    c_f_n_registry_exception().
 
 -type batch_describe_type_configurations_errors() ::
-    c_f_n_registry_exception() | 
-    type_configuration_not_found_exception().
+    type_configuration_not_found_exception() | 
+    c_f_n_registry_exception().
 
 -type cancel_update_stack_errors() ::
     token_already_exists_exception().
@@ -2869,50 +2869,50 @@
     already_exists_exception().
 
 -type create_stack_instances_errors() ::
-    operation_id_already_exists_exception() | 
-    limit_exceeded_exception() | 
+    stale_request_exception() | 
     stack_set_not_found_exception() | 
     operation_in_progress_exception() | 
-    invalid_operation_exception() | 
-    stale_request_exception().
+    operation_id_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_operation_exception().
 
 -type create_stack_set_errors() ::
+    name_already_exists_exception() | 
     limit_exceeded_exception() | 
-    created_but_modified_exception() | 
-    name_already_exists_exception().
+    created_but_modified_exception().
 
 -type deactivate_organizations_access_errors() ::
     operation_not_found_exception() | 
     invalid_operation_exception().
 
 -type deactivate_type_errors() ::
-    c_f_n_registry_exception() | 
-    type_not_found_exception().
+    type_not_found_exception() | 
+    c_f_n_registry_exception().
 
 -type delete_change_set_errors() ::
     invalid_change_set_status_exception().
 
 -type delete_generated_template_errors() ::
-    concurrent_resources_limit_exceeded_exception() | 
-    generated_template_not_found_exception().
+    generated_template_not_found_exception() | 
+    concurrent_resources_limit_exceeded_exception().
 
 -type delete_stack_errors() ::
     token_already_exists_exception().
 
 -type delete_stack_instances_errors() ::
-    operation_id_already_exists_exception() | 
+    stale_request_exception() | 
     stack_set_not_found_exception() | 
     operation_in_progress_exception() | 
-    invalid_operation_exception() | 
-    stale_request_exception().
+    operation_id_already_exists_exception() | 
+    invalid_operation_exception().
 
 -type delete_stack_set_errors() ::
     stack_set_not_empty_exception() | 
     operation_in_progress_exception().
 
 -type deregister_type_errors() ::
-    c_f_n_registry_exception() | 
-    type_not_found_exception().
+    type_not_found_exception() | 
+    c_f_n_registry_exception().
 
 -type describe_change_set_errors() ::
     change_set_not_found_exception().
@@ -2934,8 +2934,8 @@
     resource_scan_not_found_exception().
 
 -type describe_stack_instance_errors() ::
-    stack_instance_not_found_exception() | 
-    stack_set_not_found_exception().
+    stack_set_not_found_exception() | 
+    stack_instance_not_found_exception().
 
 -type describe_stack_refactor_errors() ::
     stack_refactor_not_found_exception().
@@ -2948,8 +2948,8 @@
     operation_not_found_exception().
 
 -type describe_type_errors() ::
-    c_f_n_registry_exception() | 
-    type_not_found_exception().
+    type_not_found_exception() | 
+    c_f_n_registry_exception().
 
 -type describe_type_registration_errors() ::
     c_f_n_registry_exception().
@@ -2960,10 +2960,10 @@
     invalid_operation_exception().
 
 -type execute_change_set_errors() ::
-    change_set_not_found_exception() | 
     token_already_exists_exception() | 
     invalid_change_set_status_exception() | 
-    insufficient_capabilities_exception().
+    insufficient_capabilities_exception() | 
+    change_set_not_found_exception().
 
 -type get_generated_template_errors() ::
     generated_template_not_found_exception().
@@ -2978,28 +2978,28 @@
     stack_set_not_found_exception().
 
 -type import_stacks_to_stack_set_errors() ::
-    operation_id_already_exists_exception() | 
-    limit_exceeded_exception() | 
+    stale_request_exception() | 
     stack_set_not_found_exception() | 
     stack_not_found_exception() | 
     operation_in_progress_exception() | 
-    invalid_operation_exception() | 
-    stale_request_exception().
+    operation_id_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_operation_exception().
 
 -type list_hook_results_errors() ::
     hook_result_not_found_exception().
 
 -type list_resource_scan_related_resources_errors() ::
-    resource_scan_in_progress_exception() | 
-    resource_scan_not_found_exception().
+    resource_scan_not_found_exception() | 
+    resource_scan_in_progress_exception().
 
 -type list_resource_scan_resources_errors() ::
-    resource_scan_in_progress_exception() | 
-    resource_scan_not_found_exception().
+    resource_scan_not_found_exception() | 
+    resource_scan_in_progress_exception().
 
 -type list_stack_instance_resource_drifts_errors() ::
-    stack_instance_not_found_exception() | 
     stack_set_not_found_exception() | 
+    stack_instance_not_found_exception() | 
     operation_not_found_exception().
 
 -type list_stack_instances_errors() ::
@@ -3025,12 +3025,12 @@
     c_f_n_registry_exception().
 
 -type publish_type_errors() ::
-    c_f_n_registry_exception() | 
-    type_not_found_exception().
+    type_not_found_exception() | 
+    c_f_n_registry_exception().
 
 -type record_handler_progress_errors() ::
-    invalid_state_transition_exception() | 
-    operation_status_check_failed_exception().
+    operation_status_check_failed_exception() | 
+    invalid_state_transition_exception().
 
 -type register_publisher_errors() ::
     c_f_n_registry_exception().
@@ -3042,12 +3042,12 @@
     token_already_exists_exception().
 
 -type set_type_configuration_errors() ::
-    c_f_n_registry_exception() | 
-    type_not_found_exception().
+    type_not_found_exception() | 
+    c_f_n_registry_exception().
 
 -type set_type_default_version_errors() ::
-    c_f_n_registry_exception() | 
-    type_not_found_exception().
+    type_not_found_exception() | 
+    c_f_n_registry_exception().
 
 -type start_resource_scan_errors() ::
     resource_scan_limit_exceeded_exception() | 
@@ -3059,33 +3059,33 @@
     invalid_operation_exception().
 
 -type test_type_errors() ::
-    c_f_n_registry_exception() | 
-    type_not_found_exception().
+    type_not_found_exception() | 
+    c_f_n_registry_exception().
 
 -type update_generated_template_errors() ::
     limit_exceeded_exception() | 
-    already_exists_exception() | 
-    generated_template_not_found_exception().
+    generated_template_not_found_exception() | 
+    already_exists_exception().
 
 -type update_stack_errors() ::
     token_already_exists_exception() | 
     insufficient_capabilities_exception().
 
 -type update_stack_instances_errors() ::
-    operation_id_already_exists_exception() | 
-    stack_instance_not_found_exception() | 
+    stale_request_exception() | 
     stack_set_not_found_exception() | 
+    stack_instance_not_found_exception() | 
     operation_in_progress_exception() | 
-    invalid_operation_exception() | 
-    stale_request_exception().
+    operation_id_already_exists_exception() | 
+    invalid_operation_exception().
 
 -type update_stack_set_errors() ::
-    operation_id_already_exists_exception() | 
-    stack_instance_not_found_exception() | 
+    stale_request_exception() | 
     stack_set_not_found_exception() | 
+    stack_instance_not_found_exception() | 
     operation_in_progress_exception() | 
-    invalid_operation_exception() | 
-    stale_request_exception().
+    operation_id_already_exists_exception() | 
+    invalid_operation_exception().
 
 %%====================================================================
 %% API

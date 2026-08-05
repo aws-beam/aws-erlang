@@ -91,138 +91,29 @@
 
 
 %% Example:
-%% update_protection_group_request() :: #{
-%%   <<"Aggregation">> := list(any()),
-%%   <<"Members">> => list(string()),
-%%   <<"Pattern">> := list(any()),
-%%   <<"ProtectionGroupId">> := string(),
-%%   <<"ResourceType">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_protection_group_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_subscription_request() :: #{
-
+%% access_denied_for_dependency_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type create_subscription_request() :: #{binary() => any()}.
+-type access_denied_for_dependency_exception() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag())
+%% application_layer_automatic_response_configuration() :: #{
+%%   <<"Action">> => response_action(),
+%%   <<"Status">> => list(any())
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type application_layer_automatic_response_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% list_resources_in_protection_group_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArns">> => list(string())
-%% }
--type list_resources_in_protection_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_subscription_request() :: #{
-
-%% }
--type describe_subscription_request() :: #{binary() => any()}.
-
-%% Example:
-%% disable_proactive_engagement_request() :: #{
-
-%% }
--type disable_proactive_engagement_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscription_request() :: #{
-
-%% }
--type delete_subscription_request() :: #{binary() => any()}.
-
-%% Example:
-%% attack_vector_description() :: #{
-%%   <<"VectorType">> => string()
-%% }
--type attack_vector_description() :: #{binary() => any()}.
-
-%% Example:
-%% update_emergency_contact_settings_request() :: #{
-%%   <<"EmergencyContactList">> => list(emergency_contact())
-%% }
--type update_emergency_contact_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_protection_group_response() :: #{
-%%   <<"ProtectionGroup">> => protection_group()
-%% }
--type describe_protection_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_protection_group_response() :: #{
-
-%% }
--type delete_protection_group_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_protection_group_request() :: #{
-%%   <<"ProtectionGroupId">> := string()
-%% }
--type describe_protection_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% inclusion_protection_filters() :: #{
-%%   <<"ProtectionNames">> => list(string()),
-%%   <<"ResourceArns">> => list(string()),
-%%   <<"ResourceTypes">> => list(list(any())())
-%% }
--type inclusion_protection_filters() :: #{binary() => any()}.
-
-%% Example:
-%% protection_group_arbitrary_pattern_limits() :: #{
-%%   <<"MaxMembers">> => float()
-%% }
--type protection_group_arbitrary_pattern_limits() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_health_check_request() :: #{
-%%   <<"HealthCheckArn">> := string(),
-%%   <<"ProtectionId">> := string()
-%% }
--type disassociate_health_check_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_drt_log_bucket_request() :: #{
+%% associate_drt_log_bucket_request() :: #{
 %%   <<"LogBucket">> := string()
 %% }
--type disassociate_drt_log_bucket_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_attacks_request() :: #{
-%%   <<"EndTime">> => time_range(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArns">> => list(string()),
-%%   <<"StartTime">> => time_range()
-%% }
--type list_attacks_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_emergency_contact_settings_response() :: #{
-%%   <<"EmergencyContactList">> => list(emergency_contact())
-%% }
--type describe_emergency_contact_settings_response() :: #{binary() => any()}.
-
-%% Example:
-%% response_action() :: #{
-%%   <<"Block">> => block_action(),
-%%   <<"Count">> => count_action()
-%% }
--type response_action() :: #{binary() => any()}.
+-type associate_drt_log_bucket_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_drt_log_bucket_response() :: #{
@@ -231,92 +122,41 @@
 -type associate_drt_log_bucket_response() :: #{binary() => any()}.
 
 %% Example:
-%% count_action() :: #{
-
+%% associate_drt_role_request() :: #{
+%%   <<"RoleArn">> := string()
 %% }
--type count_action() :: #{binary() => any()}.
+-type associate_drt_role_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_operation_exception() :: #{
-%%   <<"message">> => string()
+%% associate_drt_role_response() :: #{
+
 %% }
--type invalid_operation_exception() :: #{binary() => any()}.
+-type associate_drt_role_response() :: #{binary() => any()}.
 
 %% Example:
-%% protection_limits() :: #{
-%%   <<"ProtectedResourceTypeLimits">> => list(limit())
+%% associate_health_check_request() :: #{
+%%   <<"HealthCheckArn">> := string(),
+%%   <<"ProtectionId">> := string()
 %% }
--type protection_limits() :: #{binary() => any()}.
+-type associate_health_check_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_protections_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Protections">> => list(protection())
+%% associate_health_check_response() :: #{
+
 %% }
--type list_protections_response() :: #{binary() => any()}.
+-type associate_health_check_response() :: #{binary() => any()}.
 
 %% Example:
-%% contributor() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => float()
+%% associate_proactive_engagement_details_request() :: #{
+%%   <<"EmergencyContactList">> := list(emergency_contact())
 %% }
--type contributor() :: #{binary() => any()}.
+-type associate_proactive_engagement_details_request() :: #{binary() => any()}.
 
 %% Example:
-%% protection_group() :: #{
-%%   <<"Aggregation">> => list(any()),
-%%   <<"Members">> => list(string()),
-%%   <<"Pattern">> => list(any()),
-%%   <<"ProtectionGroupArn">> => string(),
-%%   <<"ProtectionGroupId">> => string(),
-%%   <<"ResourceType">> => list(any())
-%% }
--type protection_group() :: #{binary() => any()}.
-
-%% Example:
-%% limit() :: #{
-%%   <<"Max">> => float(),
-%%   <<"Type">> => string()
-%% }
--type limit() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_subscription_state_response() :: #{
-%%   <<"SubscriptionState">> => list(any())
-%% }
--type get_subscription_state_response() :: #{binary() => any()}.
-
-%% Example:
-%% locked_subscription_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type locked_subscription_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_protection_groups_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProtectionGroups">> => list(protection_group())
-%% }
--type list_protection_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% protection_group_pattern_type_limits() :: #{
-%%   <<"ArbitraryPatternLimits">> => protection_group_arbitrary_pattern_limits()
-%% }
--type protection_group_pattern_type_limits() :: #{binary() => any()}.
-
-%% Example:
-%% describe_attack_statistics_request() :: #{
+%% associate_proactive_engagement_details_response() :: #{
 
 %% }
--type describe_attack_statistics_request() :: #{binary() => any()}.
+-type associate_proactive_engagement_details_response() :: #{binary() => any()}.
 
 %% Example:
 %% attack_detail() :: #{
@@ -332,80 +172,37 @@
 -type attack_detail() :: #{binary() => any()}.
 
 %% Example:
-%% create_protection_response() :: #{
-%%   <<"ProtectionId">> => string()
+%% attack_property() :: #{
+%%   <<"AttackLayer">> => list(any()),
+%%   <<"AttackPropertyIdentifier">> => list(any()),
+%%   <<"TopContributors">> => list(contributor()),
+%%   <<"Total">> => float(),
+%%   <<"Unit">> => list(any())
 %% }
--type create_protection_response() :: #{binary() => any()}.
+-type attack_property() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceType">> => string()
+%% attack_statistics_data_item() :: #{
+%%   <<"AttackCount">> => float(),
+%%   <<"AttackVolume">> => attack_volume()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type attack_statistics_data_item() :: #{binary() => any()}.
 
 %% Example:
-%% block_action() :: #{
-
+%% attack_summary() :: #{
+%%   <<"AttackId">> => string(),
+%%   <<"AttackVectors">> => list(attack_vector_description()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type block_action() :: #{binary() => any()}.
+-type attack_summary() :: #{binary() => any()}.
 
 %% Example:
-%% get_subscription_state_request() :: #{
-
+%% attack_vector_description() :: #{
+%%   <<"VectorType">> => string()
 %% }
--type get_subscription_state_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% enable_proactive_engagement_response() :: #{
-
-%% }
--type enable_proactive_engagement_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_drt_access_request() :: #{
-
-%% }
--type describe_drt_access_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_protection_groups_request() :: #{
-%%   <<"InclusionFilters">> => inclusion_protection_group_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_protection_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% protection() :: #{
-%%   <<"ApplicationLayerAutomaticResponseConfiguration">> => application_layer_automatic_response_configuration(),
-%%   <<"HealthCheckIds">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ProtectionArn">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type protection() :: #{binary() => any()}.
-
-%% Example:
-%% list_attacks_response() :: #{
-%%   <<"AttackSummaries">> => list(attack_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_attacks_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_subscription_response() :: #{
-%%   <<"Subscription">> => subscription()
-%% }
--type describe_subscription_response() :: #{binary() => any()}.
+-type attack_vector_description() :: #{binary() => any()}.
 
 %% Example:
 %% attack_volume() :: #{
@@ -416,17 +213,29 @@
 -type attack_volume() :: #{binary() => any()}.
 
 %% Example:
-%% describe_attack_statistics_response() :: #{
-%%   <<"DataItems">> => list(attack_statistics_data_item()),
-%%   <<"TimeRange">> => time_range()
+%% attack_volume_statistics() :: #{
+%%   <<"Max">> => float()
 %% }
--type describe_attack_statistics_response() :: #{binary() => any()}.
+-type attack_volume_statistics() :: #{binary() => any()}.
 
 %% Example:
-%% enable_application_layer_automatic_response_response() :: #{
+%% block_action() :: #{
 
 %% }
--type enable_application_layer_automatic_response_response() :: #{binary() => any()}.
+-type block_action() :: #{binary() => any()}.
+
+%% Example:
+%% contributor() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => float()
+%% }
+-type contributor() :: #{binary() => any()}.
+
+%% Example:
+%% count_action() :: #{
+
+%% }
+-type count_action() :: #{binary() => any()}.
 
 %% Example:
 %% create_protection_group_request() :: #{
@@ -440,16 +249,273 @@
 -type create_protection_group_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_protection_group_response() :: #{
+
+%% }
+-type create_protection_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_protection_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_protection_response() :: #{
+%%   <<"ProtectionId">> => string()
+%% }
+-type create_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_subscription_request() :: #{
+
+%% }
+-type create_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_subscription_response() :: #{
+
+%% }
+-type create_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_protection_group_request() :: #{
+%%   <<"ProtectionGroupId">> := string()
+%% }
+-type delete_protection_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_protection_group_response() :: #{
+
+%% }
+-type delete_protection_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_protection_request() :: #{
+%%   <<"ProtectionId">> := string()
+%% }
+-type delete_protection_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_protection_response() :: #{
 
 %% }
 -type delete_protection_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_subscription_request() :: #{
+
+%% }
+-type delete_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscription_response() :: #{
+
+%% }
+-type delete_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attack_request() :: #{
+%%   <<"AttackId">> := string()
+%% }
+-type describe_attack_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attack_response() :: #{
+%%   <<"Attack">> => attack_detail()
+%% }
+-type describe_attack_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attack_statistics_request() :: #{
+
+%% }
+-type describe_attack_statistics_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attack_statistics_response() :: #{
+%%   <<"DataItems">> => list(attack_statistics_data_item()),
+%%   <<"TimeRange">> => time_range()
+%% }
+-type describe_attack_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_drt_access_request() :: #{
+
+%% }
+-type describe_drt_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_drt_access_response() :: #{
+%%   <<"LogBucketList">> => list(string()),
+%%   <<"RoleArn">> => string()
+%% }
+-type describe_drt_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_emergency_contact_settings_request() :: #{
+
+%% }
+-type describe_emergency_contact_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_emergency_contact_settings_response() :: #{
+%%   <<"EmergencyContactList">> => list(emergency_contact())
+%% }
+-type describe_emergency_contact_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_protection_group_request() :: #{
+%%   <<"ProtectionGroupId">> := string()
+%% }
+-type describe_protection_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_protection_group_response() :: #{
+%%   <<"ProtectionGroup">> => protection_group()
+%% }
+-type describe_protection_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_protection_request() :: #{
+%%   <<"ProtectionId">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type describe_protection_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_protection_response() :: #{
+%%   <<"Protection">> => protection()
+%% }
+-type describe_protection_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscription_request() :: #{
+
+%% }
+-type describe_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscription_response() :: #{
+%%   <<"Subscription">> => subscription()
+%% }
+-type describe_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_application_layer_automatic_response_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type disable_application_layer_automatic_response_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_application_layer_automatic_response_response() :: #{
+
+%% }
+-type disable_application_layer_automatic_response_response() :: #{binary() => any()}.
+
+%% Example:
+%% disable_proactive_engagement_request() :: #{
+
+%% }
+-type disable_proactive_engagement_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_proactive_engagement_response() :: #{
+
+%% }
+-type disable_proactive_engagement_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_drt_log_bucket_request() :: #{
+%%   <<"LogBucket">> := string()
+%% }
+-type disassociate_drt_log_bucket_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_drt_log_bucket_response() :: #{
+
+%% }
+-type disassociate_drt_log_bucket_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_drt_role_request() :: #{
+
+%% }
+-type disassociate_drt_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_drt_role_response() :: #{
+
+%% }
+-type disassociate_drt_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_health_check_request() :: #{
+%%   <<"HealthCheckArn">> := string(),
+%%   <<"ProtectionId">> := string()
+%% }
+-type disassociate_health_check_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_health_check_response() :: #{
+
+%% }
+-type disassociate_health_check_response() :: #{binary() => any()}.
+
+%% Example:
+%% emergency_contact() :: #{
+%%   <<"ContactNotes">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"PhoneNumber">> => string()
+%% }
+-type emergency_contact() :: #{binary() => any()}.
+
+%% Example:
+%% enable_application_layer_automatic_response_request() :: #{
+%%   <<"Action">> := response_action(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type enable_application_layer_automatic_response_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_application_layer_automatic_response_response() :: #{
+
+%% }
+-type enable_application_layer_automatic_response_response() :: #{binary() => any()}.
+
+%% Example:
 %% enable_proactive_engagement_request() :: #{
 
 %% }
 -type enable_proactive_engagement_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_proactive_engagement_response() :: #{
+
+%% }
+-type enable_proactive_engagement_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_state_request() :: #{
+
+%% }
+-type get_subscription_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_subscription_state_response() :: #{
+%%   <<"SubscriptionState">> => list(any())
+%% }
+-type get_subscription_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% inclusion_protection_filters() :: #{
+%%   <<"ProtectionNames">> => list(string()),
+%%   <<"ResourceArns">> => list(string()),
+%%   <<"ResourceTypes">> => list(list(any())())
+%% }
+-type inclusion_protection_filters() :: #{binary() => any()}.
 
 %% Example:
 %% inclusion_protection_group_filters() :: #{
@@ -461,159 +527,22 @@
 -type inclusion_protection_group_filters() :: #{binary() => any()}.
 
 %% Example:
-%% describe_protection_request() :: #{
-%%   <<"ProtectionId">> => string(),
-%%   <<"ResourceArn">> => string()
-%% }
--type describe_protection_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_proactive_engagement_details_response() :: #{
-
-%% }
--type associate_proactive_engagement_details_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_health_check_response() :: #{
-
-%% }
--type associate_health_check_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_drt_log_bucket_request() :: #{
-%%   <<"LogBucket">> := string()
-%% }
--type associate_drt_log_bucket_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_subscription_response() :: #{
-
-%% }
--type update_subscription_response() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-%% Example:
-%% optimistic_lock_exception() :: #{
+%% internal_error_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type optimistic_lock_exception() :: #{binary() => any()}.
+-type internal_error_exception() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_drt_role_response() :: #{
-
-%% }
--type disassociate_drt_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% disable_application_layer_automatic_response_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type disable_application_layer_automatic_response_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_proactive_engagement_details_request() :: #{
-%%   <<"EmergencyContactList">> := list(emergency_contact())
-%% }
--type associate_proactive_engagement_details_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_subscription_response() :: #{
-
-%% }
--type create_subscription_response() :: #{binary() => any()}.
-
-%% Example:
-%% sub_resource_summary() :: #{
-%%   <<"AttackVectors">> => list(summarized_attack_vector()),
-%%   <<"Counters">> => list(summarized_counter()),
-%%   <<"Id">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type sub_resource_summary() :: #{binary() => any()}.
-
-%% Example:
-%% disable_proactive_engagement_response() :: #{
-
-%% }
--type disable_proactive_engagement_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_resource_exception() :: #{
+%% invalid_operation_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_resource_exception() :: #{binary() => any()}.
+-type invalid_operation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_drt_role_request() :: #{
-
-%% }
--type disassociate_drt_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% disable_application_layer_automatic_response_response() :: #{
-
-%% }
--type disable_application_layer_automatic_response_response() :: #{binary() => any()}.
-
-%% Example:
-%% attack_summary() :: #{
-%%   <<"AttackId">> => string(),
-%%   <<"AttackVectors">> => list(attack_vector_description()),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ResourceArn">> => string(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type attack_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_layer_automatic_response_response() :: #{
-
-%% }
--type update_application_layer_automatic_response_response() :: #{binary() => any()}.
-
-%% Example:
-%% time_range() :: #{
-%%   <<"FromInclusive">> => non_neg_integer(),
-%%   <<"ToExclusive">> => non_neg_integer()
-%% }
--type time_range() :: #{binary() => any()}.
-
-%% Example:
-%% delete_protection_request() :: #{
-%%   <<"ProtectionId">> := string()
-%% }
--type delete_protection_request() :: #{binary() => any()}.
-
-%% Example:
-%% summarized_attack_vector() :: #{
-%%   <<"VectorCounters">> => list(summarized_counter()),
-%%   <<"VectorType">> => string()
-%% }
--type summarized_attack_vector() :: #{binary() => any()}.
-
-%% Example:
-%% describe_attack_request() :: #{
-%%   <<"AttackId">> := string()
-%% }
--type describe_attack_request() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
+%% invalid_pagination_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type invalid_pagination_token_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_parameter_exception() :: #{
@@ -624,57 +553,151 @@
 -type invalid_parameter_exception() :: #{binary() => any()}.
 
 %% Example:
-%% describe_emergency_contact_settings_request() :: #{
-
+%% invalid_resource_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type describe_emergency_contact_settings_request() :: #{binary() => any()}.
+-type invalid_resource_exception() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_response() :: #{
-
+%% limit() :: #{
+%%   <<"Max">> => float(),
+%%   <<"Type">> => string()
 %% }
--type tag_resource_response() :: #{binary() => any()}.
+-type limit() :: #{binary() => any()}.
 
 %% Example:
-%% attack_property() :: #{
-%%   <<"AttackLayer">> => list(any()),
-%%   <<"AttackPropertyIdentifier">> => list(any()),
-%%   <<"TopContributors">> => list(contributor()),
-%%   <<"Total">> => float(),
-%%   <<"Unit">> => list(any())
+%% limits_exceeded_exception() :: #{
+%%   <<"Limit">> => float(),
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
 %% }
--type attack_property() :: #{binary() => any()}.
+-type limits_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% create_protection_group_response() :: #{
-
+%% list_attacks_request() :: #{
+%%   <<"EndTime">> => time_range(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArns">> => list(string()),
+%%   <<"StartTime">> => time_range()
 %% }
--type create_protection_group_response() :: #{binary() => any()}.
+-type list_attacks_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_protection_group_request() :: #{
+%% list_attacks_response() :: #{
+%%   <<"AttackSummaries">> => list(attack_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attacks_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_protection_groups_request() :: #{
+%%   <<"InclusionFilters">> => inclusion_protection_group_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_protection_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_protection_groups_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProtectionGroups">> => list(protection_group())
+%% }
+-type list_protection_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_protections_request() :: #{
+%%   <<"InclusionFilters">> => inclusion_protection_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_protections_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_protections_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Protections">> => list(protection())
+%% }
+-type list_protections_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_in_protection_group_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
 %%   <<"ProtectionGroupId">> := string()
 %% }
--type delete_protection_group_request() :: #{binary() => any()}.
+-type list_resources_in_protection_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% attack_statistics_data_item() :: #{
-%%   <<"AttackCount">> => float(),
-%%   <<"AttackVolume">> => attack_volume()
+%% list_resources_in_protection_group_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArns">> => list(string())
 %% }
--type attack_statistics_data_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscription_response() :: #{
-
-%% }
--type delete_subscription_response() :: #{binary() => any()}.
+-type list_resources_in_protection_group_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"ResourceARN">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% locked_subscription_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type locked_subscription_exception() :: #{binary() => any()}.
+
+%% Example:
+%% mitigation() :: #{
+%%   <<"MitigationName">> => string()
+%% }
+-type mitigation() :: #{binary() => any()}.
+
+%% Example:
+%% no_associated_role_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_associated_role_exception() :: #{binary() => any()}.
+
+%% Example:
+%% optimistic_lock_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type optimistic_lock_exception() :: #{binary() => any()}.
+
+%% Example:
+%% protection() :: #{
+%%   <<"ApplicationLayerAutomaticResponseConfiguration">> => application_layer_automatic_response_configuration(),
+%%   <<"HealthCheckIds">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ProtectionArn">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type protection() :: #{binary() => any()}.
+
+%% Example:
+%% protection_group() :: #{
+%%   <<"Aggregation">> => list(any()),
+%%   <<"Members">> => list(string()),
+%%   <<"Pattern">> => list(any()),
+%%   <<"ProtectionGroupArn">> => string(),
+%%   <<"ProtectionGroupId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type protection_group() :: #{binary() => any()}.
+
+%% Example:
+%% protection_group_arbitrary_pattern_limits() :: #{
+%%   <<"MaxMembers">> => float()
+%% }
+-type protection_group_arbitrary_pattern_limits() :: #{binary() => any()}.
 
 %% Example:
 %% protection_group_limits() :: #{
@@ -684,10 +707,46 @@
 -type protection_group_limits() :: #{binary() => any()}.
 
 %% Example:
-%% update_subscription_request() :: #{
-%%   <<"AutoRenew">> => list(any())
+%% protection_group_pattern_type_limits() :: #{
+%%   <<"ArbitraryPatternLimits">> => protection_group_arbitrary_pattern_limits()
 %% }
--type update_subscription_request() :: #{binary() => any()}.
+-type protection_group_pattern_type_limits() :: #{binary() => any()}.
+
+%% Example:
+%% protection_limits() :: #{
+%%   <<"ProtectedResourceTypeLimits">> => list(limit())
+%% }
+-type protection_limits() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% response_action() :: #{
+%%   <<"Block">> => block_action(),
+%%   <<"Count">> => count_action()
+%% }
+-type response_action() :: #{binary() => any()}.
+
+%% Example:
+%% sub_resource_summary() :: #{
+%%   <<"AttackVectors">> => list(summarized_attack_vector()),
+%%   <<"Counters">> => list(summarized_counter()),
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type sub_resource_summary() :: #{binary() => any()}.
 
 %% Example:
 %% subscription() :: #{
@@ -703,18 +762,6 @@
 -type subscription() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_health_check_response() :: #{
-
-%% }
--type disassociate_health_check_response() :: #{binary() => any()}.
-
-%% Example:
-%% attack_volume_statistics() :: #{
-%%   <<"Max">> => float()
-%% }
--type attack_volume_statistics() :: #{binary() => any()}.
-
-%% Example:
 %% subscription_limits() :: #{
 %%   <<"ProtectionGroupLimits">> => protection_group_limits(),
 %%   <<"ProtectionLimits">> => protection_limits()
@@ -722,51 +769,11 @@
 -type subscription_limits() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_drt_log_bucket_response() :: #{
-
+%% summarized_attack_vector() :: #{
+%%   <<"VectorCounters">> => list(summarized_counter()),
+%%   <<"VectorType">> => string()
 %% }
--type disassociate_drt_log_bucket_response() :: #{binary() => any()}.
-
-%% Example:
-%% emergency_contact() :: #{
-%%   <<"ContactNotes">> => string(),
-%%   <<"EmailAddress">> => string(),
-%%   <<"PhoneNumber">> => string()
-%% }
--type emergency_contact() :: #{binary() => any()}.
-
-%% Example:
-%% describe_attack_response() :: #{
-%%   <<"Attack">> => attack_detail()
-%% }
--type describe_attack_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_for_dependency_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_for_dependency_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_drt_access_response() :: #{
-%%   <<"LogBucketList">> => list(string()),
-%%   <<"RoleArn">> => string()
-%% }
--type describe_drt_access_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_resources_in_protection_group_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProtectionGroupId">> := string()
-%% }
--type list_resources_in_protection_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% no_associated_role_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type no_associated_role_exception() :: #{binary() => any()}.
+-type summarized_attack_vector() :: #{binary() => any()}.
 
 %% Example:
 %% summarized_counter() :: #{
@@ -780,57 +787,44 @@
 -type summarized_counter() :: #{binary() => any()}.
 
 %% Example:
-%% associate_drt_role_response() :: #{
-
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type associate_drt_role_response() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceType">> => string()
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := list(tag())
 %% }
--type resource_already_exists_exception() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% limits_exceeded_exception() :: #{
-%%   <<"Limit">> => float(),
-%%   <<"Type">> => string(),
-%%   <<"message">> => string()
+%% tag_resource_response() :: #{
+
 %% }
--type limits_exceeded_exception() :: #{binary() => any()}.
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_protection_response() :: #{
-%%   <<"Protection">> => protection()
+%% time_range() :: #{
+%%   <<"FromInclusive">> => non_neg_integer(),
+%%   <<"ToExclusive">> => non_neg_integer()
 %% }
--type describe_protection_response() :: #{binary() => any()}.
+-type time_range() :: #{binary() => any()}.
 
 %% Example:
-%% associate_health_check_request() :: #{
-%%   <<"HealthCheckArn">> := string(),
-%%   <<"ProtectionId">> := string()
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type associate_health_check_request() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% associate_drt_role_request() :: #{
-%%   <<"RoleArn">> := string()
-%% }
--type associate_drt_role_request() :: #{binary() => any()}.
-
-%% Example:
-%% enable_application_layer_automatic_response_request() :: #{
-%%   <<"Action">> := response_action(),
-%%   <<"ResourceArn">> := string()
-%% }
--type enable_application_layer_automatic_response_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_protection_group_response() :: #{
+%% untag_resource_response() :: #{
 
 %% }
--type update_protection_group_response() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_application_layer_automatic_response_request() :: #{
@@ -840,37 +834,16 @@
 -type update_application_layer_automatic_response_request() :: #{binary() => any()}.
 
 %% Example:
-%% application_layer_automatic_response_configuration() :: #{
-%%   <<"Action">> => response_action(),
-%%   <<"Status">> => list(any())
+%% update_application_layer_automatic_response_response() :: #{
+
 %% }
--type application_layer_automatic_response_configuration() :: #{binary() => any()}.
+-type update_application_layer_automatic_response_response() :: #{binary() => any()}.
 
 %% Example:
-%% mitigation() :: #{
-%%   <<"MitigationName">> => string()
+%% update_emergency_contact_settings_request() :: #{
+%%   <<"EmergencyContactList">> => list(emergency_contact())
 %% }
--type mitigation() :: #{binary() => any()}.
-
-%% Example:
-%% internal_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_error_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_protection_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_protection_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_pagination_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_pagination_token_exception() :: #{binary() => any()}.
+-type update_emergency_contact_settings_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_emergency_contact_settings_response() :: #{
@@ -879,82 +852,109 @@
 -type update_emergency_contact_settings_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_protections_request() :: #{
-%%   <<"InclusionFilters">> => inclusion_protection_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% update_protection_group_request() :: #{
+%%   <<"Aggregation">> := list(any()),
+%%   <<"Members">> => list(string()),
+%%   <<"Pattern">> := list(any()),
+%%   <<"ProtectionGroupId">> := string(),
+%%   <<"ResourceType">> => list(any())
 %% }
--type list_protections_request() :: #{binary() => any()}.
+-type update_protection_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_protection_group_response() :: #{
+
+%% }
+-type update_protection_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_subscription_request() :: #{
+%%   <<"AutoRenew">> => list(any())
+%% }
+-type update_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_subscription_response() :: #{
+
+%% }
+-type update_subscription_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type associate_drt_log_bucket_errors() ::
-    internal_error_exception() | 
-    limits_exceeded_exception() | 
-    no_associated_role_exception() | 
-    access_denied_for_dependency_exception() | 
-    invalid_parameter_exception() | 
-    optimistic_lock_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    optimistic_lock_exception() | 
+    no_associated_role_exception() | 
+    limits_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception() | 
+    access_denied_for_dependency_exception().
 
 -type associate_drt_role_errors() ::
-    internal_error_exception() | 
-    access_denied_for_dependency_exception() | 
-    invalid_parameter_exception() | 
-    optimistic_lock_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    optimistic_lock_exception() | 
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception() | 
+    access_denied_for_dependency_exception().
 
 -type associate_health_check_errors() ::
-    internal_error_exception() | 
-    limits_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    invalid_resource_exception() | 
+    resource_not_found_exception() | 
     optimistic_lock_exception() | 
-    resource_not_found_exception().
+    limits_exceeded_exception() | 
+    invalid_resource_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type associate_proactive_engagement_details_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    optimistic_lock_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    optimistic_lock_exception() | 
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type create_protection_errors() ::
-    internal_error_exception() | 
-    limits_exceeded_exception() | 
-    resource_already_exists_exception() | 
-    invalid_parameter_exception() | 
-    invalid_resource_exception() | 
-    optimistic_lock_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    resource_already_exists_exception() | 
+    optimistic_lock_exception() | 
+    limits_exceeded_exception() | 
+    invalid_resource_exception() | 
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type create_protection_group_errors() ::
-    internal_error_exception() | 
-    limits_exceeded_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
-    invalid_parameter_exception() | 
     optimistic_lock_exception() | 
-    resource_not_found_exception().
+    limits_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type create_subscription_errors() ::
-    internal_error_exception() | 
-    resource_already_exists_exception().
+    resource_already_exists_exception() | 
+    internal_error_exception().
 
 -type delete_protection_errors() ::
-    internal_error_exception() | 
+    resource_not_found_exception() | 
     optimistic_lock_exception() | 
-    resource_not_found_exception().
+    internal_error_exception().
 
 -type delete_protection_group_errors() ::
-    internal_error_exception() | 
+    resource_not_found_exception() | 
     optimistic_lock_exception() | 
-    resource_not_found_exception().
+    internal_error_exception().
 
 -type delete_subscription_errors() ::
-    internal_error_exception() | 
     resource_not_found_exception() | 
-    locked_subscription_exception().
+    locked_subscription_exception() | 
+    internal_error_exception().
 
 -type describe_attack_errors() ::
     internal_error_exception() | 
@@ -964,141 +964,141 @@
     internal_error_exception().
 
 -type describe_drt_access_errors() ::
-    internal_error_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_error_exception().
 
 -type describe_emergency_contact_settings_errors() ::
-    internal_error_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_error_exception().
 
 -type describe_protection_errors() ::
-    internal_error_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    resource_not_found_exception().
+    internal_error_exception().
 
 -type describe_protection_group_errors() ::
-    internal_error_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_error_exception().
 
 -type describe_subscription_errors() ::
-    internal_error_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_error_exception().
 
 -type disable_application_layer_automatic_response_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    optimistic_lock_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    optimistic_lock_exception() | 
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type disable_proactive_engagement_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    optimistic_lock_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    optimistic_lock_exception() | 
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type disassociate_drt_log_bucket_errors() ::
-    internal_error_exception() | 
-    no_associated_role_exception() | 
-    access_denied_for_dependency_exception() | 
-    optimistic_lock_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    optimistic_lock_exception() | 
+    no_associated_role_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception() | 
+    access_denied_for_dependency_exception().
 
 -type disassociate_drt_role_errors() ::
-    internal_error_exception() | 
-    optimistic_lock_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    optimistic_lock_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type disassociate_health_check_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    invalid_resource_exception() | 
+    resource_not_found_exception() | 
     optimistic_lock_exception() | 
-    resource_not_found_exception().
+    invalid_resource_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type enable_application_layer_automatic_response_errors() ::
-    internal_error_exception() | 
+    resource_not_found_exception() | 
+    optimistic_lock_exception() | 
     limits_exceeded_exception() | 
     invalid_parameter_exception() | 
-    optimistic_lock_exception() | 
-    resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type enable_proactive_engagement_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    optimistic_lock_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    optimistic_lock_exception() | 
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type get_subscription_state_errors() ::
     internal_error_exception().
 
 -type list_attacks_errors() ::
-    internal_error_exception() | 
     invalid_parameter_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type list_protection_groups_errors() ::
+    resource_not_found_exception() | 
     invalid_pagination_token_exception() | 
-    internal_error_exception() | 
-    resource_not_found_exception().
+    internal_error_exception().
 
 -type list_protections_errors() ::
+    resource_not_found_exception() | 
     invalid_pagination_token_exception() | 
-    internal_error_exception() | 
-    resource_not_found_exception().
+    internal_error_exception().
 
 -type list_resources_in_protection_group_errors() ::
+    resource_not_found_exception() | 
     invalid_pagination_token_exception() | 
-    internal_error_exception() | 
-    resource_not_found_exception().
+    internal_error_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_error_exception() | 
+    resource_not_found_exception() | 
     invalid_resource_exception() | 
-    resource_not_found_exception().
+    internal_error_exception().
 
 -type tag_resource_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_resource_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type untag_resource_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     invalid_resource_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type update_application_layer_automatic_response_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    optimistic_lock_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    optimistic_lock_exception() | 
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    internal_error_exception().
 
 -type update_emergency_contact_settings_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     optimistic_lock_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type update_protection_group_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
     optimistic_lock_exception() | 
-    resource_not_found_exception().
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type update_subscription_errors() ::
-    internal_error_exception() | 
-    invalid_parameter_exception() | 
-    optimistic_lock_exception() | 
     resource_not_found_exception() | 
-    locked_subscription_exception().
+    optimistic_lock_exception() | 
+    locked_subscription_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 %%====================================================================
 %% API

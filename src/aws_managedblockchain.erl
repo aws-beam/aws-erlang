@@ -95,40 +95,10 @@
 
 
 %% Example:
-%% voting_policy() :: #{
-%%   <<"ApprovalThresholdPolicy">> => approval_threshold_policy()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type voting_policy() :: #{binary() => any()}.
-
-%% Example:
-%% reject_invitation_output() :: #{}
--type reject_invitation_output() :: #{}.
-
-
-%% Example:
-%% create_proposal_output() :: #{
-%%   <<"ProposalId">> => string()
-%% }
--type create_proposal_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_node_output() :: #{}
--type update_node_output() :: #{}.
-
-
-%% Example:
-%% node_ethereum_attributes() :: #{
-%%   <<"HttpEndpoint">> => string(),
-%%   <<"WebSocketEndpoint">> => string()
-%% }
--type node_ethereum_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -146,74 +116,15 @@
 
 
 %% Example:
-%% list_proposal_votes_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% accessor_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"NetworkType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
 %% }
--type list_proposal_votes_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_fabric_attributes() :: #{
-%%   <<"Edition">> => list(any()),
-%%   <<"OrderingServiceEndpoint">> => string()
-%% }
--type network_fabric_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_proposals_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_proposals_input() :: #{binary() => any()}.
-
-%% Example:
-%% vote_on_proposal_output() :: #{}
--type vote_on_proposal_output() :: #{}.
-
-
-%% Example:
-%% create_member_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"InvitationId">> := string(),
-%%   <<"MemberConfiguration">> := member_configuration()
-%% }
--type create_member_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_members_output() :: #{
-%%   <<"Members">> => list(member_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_members_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% proposal_actions() :: #{
-%%   <<"Invitations">> => list(invite_action()),
-%%   <<"Removals">> => list(remove_action())
-%% }
--type proposal_actions() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_framework_configuration() :: #{
-%%   <<"Fabric">> => network_fabric_configuration()
-%% }
--type network_framework_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% get_proposal_output() :: #{
-%%   <<"Proposal">> => proposal()
-%% }
--type get_proposal_output() :: #{binary() => any()}.
+-type accessor_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -226,120 +137,38 @@
 
 
 %% Example:
-%% invitation() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"ExpirationDate">> => non_neg_integer(),
-%%   <<"InvitationId">> => string(),
-%%   <<"NetworkSummary">> => network_summary(),
-%%   <<"Status">> => list(any())
-%% }
--type invitation() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_accessor_output() :: #{
-%%   <<"Accessor">> => accessor()
-%% }
--type get_accessor_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_accessor_input() :: #{}
--type get_accessor_input() :: #{}.
-
-
-%% Example:
-%% list_accessors_input() :: #{
-%%   <<"MaxResults">> => integer(),
+%% create_accessor_input() :: #{
+%%   <<"AccessorType">> := list(any()),
+%%   <<"ClientRequestToken">> := string(),
 %%   <<"NetworkType">> => list(any()),
-%%   <<"NextToken">> => string()
-%% }
--type list_accessors_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_fabric_log_publishing_configuration() :: #{
-%%   <<"ChaincodeLogs">> => log_configurations(),
-%%   <<"PeerLogs">> => log_configurations()
-%% }
--type node_fabric_log_publishing_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_fabric_attributes() :: #{
-%%   <<"PeerEndpoint">> => string(),
-%%   <<"PeerEventEndpoint">> => string()
-%% }
--type node_fabric_attributes() :: #{binary() => any()}.
-
-%% Example:
-%% internal_service_error_exception() :: #{}
--type internal_service_error_exception() :: #{}.
-
-
-%% Example:
-%% network_fabric_configuration() :: #{
-%%   <<"Edition">> => list(any())
-%% }
--type network_fabric_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_networks_input() :: #{
-%%   <<"Framework">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_networks_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_configuration() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FrameworkConfiguration">> => member_framework_configuration(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"LogPublishingConfiguration">> => member_log_publishing_configuration(),
-%%   <<"Name">> => string(),
 %%   <<"Tags">> => map()
 %% }
--type member_configuration() :: #{binary() => any()}.
+-type create_accessor_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
+%% create_accessor_output() :: #{
+%%   <<"AccessorId">> => string(),
+%%   <<"BillingToken">> => string(),
+%%   <<"NetworkType">> => list(any())
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type create_accessor_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% member_fabric_log_publishing_configuration() :: #{
-%%   <<"CaLogs">> => log_configurations()
+%% create_member_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"InvitationId">> := string(),
+%%   <<"MemberConfiguration">> := member_configuration()
 %% }
--type member_fabric_log_publishing_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% reject_invitation_input() :: #{}
--type reject_invitation_input() :: #{}.
+-type create_member_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_nodes_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"MemberId">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
+%% create_member_output() :: #{
+%%   <<"MemberId">> => string()
 %% }
--type list_nodes_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_framework_attributes() :: #{
-%%   <<"Fabric">> => member_fabric_attributes()
-%% }
--type member_framework_attributes() :: #{binary() => any()}.
+-type create_member_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -356,9 +185,30 @@
 %% }
 -type create_network_input() :: #{binary() => any()}.
 
+
 %% Example:
-%% update_member_output() :: #{}
--type update_member_output() :: #{}.
+%% create_network_output() :: #{
+%%   <<"MemberId">> => string(),
+%%   <<"NetworkId">> => string()
+%% }
+-type create_network_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_node_input() :: #{
+%%   <<"ClientRequestToken">> := string(),
+%%   <<"MemberId">> => string(),
+%%   <<"NodeConfiguration">> := node_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type create_node_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_node_output() :: #{
+%%   <<"NodeId">> => string()
+%% }
+-type create_node_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -371,17 +221,65 @@
 %% }
 -type create_proposal_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_proposal_output() :: #{
+%%   <<"ProposalId">> => string()
+%% }
+-type create_proposal_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_accessor_input() :: #{}
+-type delete_accessor_input() :: #{}.
+
+%% Example:
+%% delete_accessor_output() :: #{}
+-type delete_accessor_output() :: #{}.
+
+%% Example:
+%% delete_member_input() :: #{}
+-type delete_member_input() :: #{}.
+
 %% Example:
 %% delete_member_output() :: #{}
 -type delete_member_output() :: #{}.
 
 
 %% Example:
-%% list_proposal_votes_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProposalVotes">> => list(vote_summary())
+%% delete_node_input() :: #{
+%%   <<"MemberId">> => string()
 %% }
--type list_proposal_votes_output() :: #{binary() => any()}.
+-type delete_node_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_node_output() :: #{}
+-type delete_node_output() :: #{}.
+
+%% Example:
+%% get_accessor_input() :: #{}
+-type get_accessor_input() :: #{}.
+
+
+%% Example:
+%% get_accessor_output() :: #{
+%%   <<"Accessor">> => accessor()
+%% }
+-type get_accessor_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_member_input() :: #{}
+-type get_member_input() :: #{}.
+
+
+%% Example:
+%% get_member_output() :: #{
+%%   <<"Member">> => member()
+%% }
+-type get_member_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_network_input() :: #{}
+-type get_network_input() :: #{}.
 
 
 %% Example:
@@ -392,23 +290,128 @@
 
 
 %% Example:
-%% update_node_input() :: #{
-%%   <<"LogPublishingConfiguration">> => node_log_publishing_configuration(),
+%% get_node_input() :: #{
 %%   <<"MemberId">> => string()
 %% }
--type update_node_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_member_input() :: #{}
--type delete_member_input() :: #{}.
+-type get_node_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceName">> => string()
+%% get_node_output() :: #{
+%%   <<"Node">> => node()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type get_node_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_proposal_input() :: #{}
+-type get_proposal_input() :: #{}.
+
+
+%% Example:
+%% get_proposal_output() :: #{
+%%   <<"Proposal">> => proposal()
+%% }
+-type get_proposal_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% illegal_action_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type illegal_action_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_error_exception() :: #{}
+-type internal_service_error_exception() :: #{}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invitation() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"InvitationId">> => string(),
+%%   <<"NetworkSummary">> => network_summary(),
+%%   <<"Status">> => list(any())
+%% }
+-type invitation() :: #{binary() => any()}.
+
+
+%% Example:
+%% invite_action() :: #{
+%%   <<"Principal">> => string()
+%% }
+-type invite_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_accessors_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NetworkType">> => list(any()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accessors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_accessors_output() :: #{
+%%   <<"Accessors">> => list(accessor_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_accessors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invitations_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invitations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_invitations_output() :: #{
+%%   <<"Invitations">> => list(invitation()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_invitations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_input() :: #{
+%%   <<"IsOwned">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_members_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_members_output() :: #{
+%%   <<"Members">> => list(member_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_members_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_networks_input() :: #{
+%%   <<"Framework">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_networks_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -420,10 +423,78 @@
 
 
 %% Example:
-%% update_member_input() :: #{
-%%   <<"LogPublishingConfiguration">> => member_log_publishing_configuration()
+%% list_nodes_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MemberId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type update_member_input() :: #{binary() => any()}.
+-type list_nodes_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_nodes_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Nodes">> => list(node_summary())
+%% }
+-type list_nodes_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_proposal_votes_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_proposal_votes_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_proposal_votes_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProposalVotes">> => list(vote_summary())
+%% }
+-type list_proposal_votes_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_proposals_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_proposals_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_proposals_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Proposals">> => list(proposal_summary())
+%% }
+-type list_proposals_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_configuration() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_configurations() :: #{
+%%   <<"Cloudwatch">> => log_configuration()
+%% }
+-type log_configurations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -446,49 +517,40 @@
 
 
 %% Example:
-%% invalid_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_log_publishing_configuration() :: #{
-%%   <<"Fabric">> => node_fabric_log_publishing_configuration()
-%% }
--type node_log_publishing_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% invite_action() :: #{
-%%   <<"Principal">> => string()
-%% }
--type invite_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_accessor_input() :: #{}
--type delete_accessor_input() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
+%% member() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FrameworkAttributes">> => member_framework_attributes(),
+%%   <<"Id">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"LogPublishingConfiguration">> => member_log_publishing_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkId">> => string(),
+%%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type member() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_member_output() :: #{
-%%   <<"Member">> => member()
+%% member_configuration() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FrameworkConfiguration">> => member_framework_configuration(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"LogPublishingConfiguration">> => member_log_publishing_configuration(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
 %% }
--type get_member_output() :: #{binary() => any()}.
+-type member_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_fabric_attributes() :: #{
+%%   <<"AdminUsername">> => string(),
+%%   <<"CaEndpoint">> => string()
+%% }
+-type member_fabric_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -500,47 +562,174 @@
 
 
 %% Example:
-%% list_members_input() :: #{
-%%   <<"IsOwned">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"Status">> => list(any())
+%% member_fabric_log_publishing_configuration() :: #{
+%%   <<"CaLogs">> => log_configurations()
 %% }
--type list_members_input() :: #{binary() => any()}.
+-type member_fabric_log_publishing_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% vote_on_proposal_input() :: #{
-%%   <<"Vote">> := list(any()),
-%%   <<"VoterMemberId">> := string()
+%% member_framework_attributes() :: #{
+%%   <<"Fabric">> => member_fabric_attributes()
 %% }
--type vote_on_proposal_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_proposal_input() :: #{}
--type get_proposal_input() :: #{}.
+-type member_framework_attributes() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_accessor_output() :: #{
-%%   <<"AccessorId">> => string(),
-%%   <<"BillingToken">> => string(),
-%%   <<"NetworkType">> => list(any())
+%% member_framework_configuration() :: #{
+%%   <<"Fabric">> => member_fabric_configuration()
 %% }
--type create_accessor_output() :: #{binary() => any()}.
+-type member_framework_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% accessor_summary() :: #{
+%% member_log_publishing_configuration() :: #{
+%%   <<"Fabric">> => member_fabric_log_publishing_configuration()
+%% }
+-type member_log_publishing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"NetworkType">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
+%%   <<"IsOwned">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
 %% }
--type accessor_summary() :: #{binary() => any()}.
+-type member_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% network() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Framework">> => list(any()),
+%%   <<"FrameworkAttributes">> => network_framework_attributes(),
+%%   <<"FrameworkVersion">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"VotingPolicy">> => voting_policy(),
+%%   <<"VpcEndpointServiceName">> => string()
+%% }
+-type network() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_ethereum_attributes() :: #{
+%%   <<"ChainId">> => string()
+%% }
+-type network_ethereum_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_fabric_attributes() :: #{
+%%   <<"Edition">> => list(any()),
+%%   <<"OrderingServiceEndpoint">> => string()
+%% }
+-type network_fabric_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_fabric_configuration() :: #{
+%%   <<"Edition">> => list(any())
+%% }
+-type network_fabric_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_framework_attributes() :: #{
+%%   <<"Ethereum">> => network_ethereum_attributes(),
+%%   <<"Fabric">> => network_fabric_attributes()
+%% }
+-type network_framework_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_framework_configuration() :: #{
+%%   <<"Fabric">> => network_fabric_configuration()
+%% }
+-type network_framework_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Framework">> => list(any()),
+%%   <<"FrameworkVersion">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type network_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_configuration() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"LogPublishingConfiguration">> => node_log_publishing_configuration(),
+%%   <<"StateDB">> => list(any())
+%% }
+-type node_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_ethereum_attributes() :: #{
+%%   <<"HttpEndpoint">> => string(),
+%%   <<"WebSocketEndpoint">> => string()
+%% }
+-type node_ethereum_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_fabric_attributes() :: #{
+%%   <<"PeerEndpoint">> => string(),
+%%   <<"PeerEventEndpoint">> => string()
+%% }
+-type node_fabric_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_fabric_log_publishing_configuration() :: #{
+%%   <<"ChaincodeLogs">> => log_configurations(),
+%%   <<"PeerLogs">> => log_configurations()
+%% }
+-type node_fabric_log_publishing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_framework_attributes() :: #{
+%%   <<"Ethereum">> => node_ethereum_attributes(),
+%%   <<"Fabric">> => node_fabric_attributes()
+%% }
+-type node_framework_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_log_publishing_configuration() :: #{
+%%   <<"Fabric">> => node_fabric_log_publishing_configuration()
+%% }
+-type node_log_publishing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type node_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -564,58 +753,11 @@
 
 
 %% Example:
-%% get_node_input() :: #{
-%%   <<"MemberId">> => string()
+%% proposal_actions() :: #{
+%%   <<"Invitations">> => list(invite_action()),
+%%   <<"Removals">> => list(remove_action())
 %% }
--type get_node_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% network_framework_attributes() :: #{
-%%   <<"Ethereum">> => network_ethereum_attributes(),
-%%   <<"Fabric">> => network_fabric_attributes()
-%% }
--type network_framework_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% remove_action() :: #{
-%%   <<"MemberId">> => string()
-%% }
--type remove_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% network() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Framework">> => list(any()),
-%%   <<"FrameworkAttributes">> => network_framework_attributes(),
-%%   <<"FrameworkVersion">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"VotingPolicy">> => voting_policy(),
-%%   <<"VpcEndpointServiceName">> => string()
-%% }
--type network() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type proposal_actions() :: #{binary() => any()}.
 
 
 %% Example:
@@ -631,149 +773,20 @@
 %% }
 -type proposal_summary() :: #{binary() => any()}.
 
+%% Example:
+%% reject_invitation_input() :: #{}
+-type reject_invitation_input() :: #{}.
 
 %% Example:
-%% node_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type node_summary() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{}
--type throttling_exception() :: #{}.
+%% reject_invitation_output() :: #{}
+-type reject_invitation_output() :: #{}.
 
 
 %% Example:
-%% delete_node_input() :: #{
+%% remove_action() :: #{
 %%   <<"MemberId">> => string()
 %% }
--type delete_node_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_accessor_input() :: #{
-%%   <<"AccessorType">> := list(any()),
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"NetworkType">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_accessor_input() :: #{binary() => any()}.
-
-%% Example:
-%% get_network_input() :: #{}
--type get_network_input() :: #{}.
-
-
-%% Example:
-%% list_invitations_output() :: #{
-%%   <<"Invitations">> => list(invitation()),
-%%   <<"NextToken">> => string()
-%% }
--type list_invitations_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_accessor_output() :: #{}
--type delete_accessor_output() :: #{}.
-
-
-%% Example:
-%% network_ethereum_attributes() :: #{
-%%   <<"ChainId">> => string()
-%% }
--type network_ethereum_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% member() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"FrameworkAttributes">> => member_framework_attributes(),
-%%   <<"Id">> => string(),
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"LogPublishingConfiguration">> => member_log_publishing_configuration(),
-%%   <<"Name">> => string(),
-%%   <<"NetworkId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type member() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_node_output() :: #{
-%%   <<"NodeId">> => string()
-%% }
--type create_node_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% network_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Framework">> => list(any()),
-%%   <<"FrameworkVersion">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type network_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"IsOwned">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type member_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_configuration() :: #{
-%%   <<"AvailabilityZone">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"LogPublishingConfiguration">> => node_log_publishing_configuration(),
-%%   <<"StateDB">> => list(any())
-%% }
--type node_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_member_input() :: #{}
--type get_member_input() :: #{}.
-
-
-%% Example:
-%% member_fabric_attributes() :: #{
-%%   <<"AdminUsername">> => string(),
-%%   <<"CaEndpoint">> => string()
-%% }
--type member_fabric_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_configurations() :: #{
-%%   <<"Cloudwatch">> => log_configuration()
-%% }
--type log_configurations() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_invitations_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_invitations_input() :: #{binary() => any()}.
+-type remove_action() :: #{binary() => any()}.
 
 
 %% Example:
@@ -784,42 +797,18 @@
 
 
 %% Example:
-%% create_node_input() :: #{
-%%   <<"ClientRequestToken">> := string(),
-%%   <<"MemberId">> => string(),
-%%   <<"NodeConfiguration">> := node_configuration(),
-%%   <<"Tags">> => map()
-%% }
--type create_node_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_configuration() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type log_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% illegal_action_exception() :: #{
+%% resource_limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
--type illegal_action_exception() :: #{binary() => any()}.
+-type resource_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% member_log_publishing_configuration() :: #{
-%%   <<"Fabric">> => member_fabric_log_publishing_configuration()
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceName">> => string()
 %% }
--type member_log_publishing_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_nodes_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Nodes">> => list(node_summary())
-%% }
--type list_nodes_output() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -830,30 +819,18 @@
 
 
 %% Example:
-%% create_member_output() :: #{
-%%   <<"MemberId">> => string()
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
 %% }
--type create_member_output() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_node_output() :: #{}
--type delete_node_output() :: #{}.
-
-
-%% Example:
-%% list_accessors_output() :: #{
-%%   <<"Accessors">> => list(accessor_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_accessors_output() :: #{binary() => any()}.
-
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 %% Example:
-%% node_framework_attributes() :: #{
-%%   <<"Ethereum">> => node_ethereum_attributes(),
-%%   <<"Fabric">> => node_fabric_attributes()
-%% }
--type node_framework_attributes() :: #{binary() => any()}.
+%% throttling_exception() :: #{}
+-type throttling_exception() :: #{}.
 
 
 %% Example:
@@ -865,33 +842,49 @@
 
 
 %% Example:
-%% create_network_output() :: #{
-%%   <<"MemberId">> => string(),
-%%   <<"NetworkId">> => string()
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
 %% }
--type create_network_output() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
-%% list_proposals_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Proposals">> => list(proposal_summary())
+%% update_member_input() :: #{
+%%   <<"LogPublishingConfiguration">> => member_log_publishing_configuration()
 %% }
--type list_proposals_output() :: #{binary() => any()}.
+-type update_member_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_member_output() :: #{}
+-type update_member_output() :: #{}.
 
 
 %% Example:
-%% get_node_output() :: #{
-%%   <<"Node">> => node()
+%% update_node_input() :: #{
+%%   <<"LogPublishingConfiguration">> => node_log_publishing_configuration(),
+%%   <<"MemberId">> => string()
 %% }
--type get_node_output() :: #{binary() => any()}.
+-type update_node_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_node_output() :: #{}
+-type update_node_output() :: #{}.
 
 
 %% Example:
-%% member_framework_configuration() :: #{
-%%   <<"Fabric">> => member_fabric_configuration()
+%% vote_on_proposal_input() :: #{
+%%   <<"Vote">> := list(any()),
+%%   <<"VoterMemberId">> := string()
 %% }
--type member_framework_configuration() :: #{binary() => any()}.
+-type vote_on_proposal_input() :: #{binary() => any()}.
+
+%% Example:
+%% vote_on_proposal_output() :: #{}
+-type vote_on_proposal_output() :: #{}.
 
 
 %% Example:
@@ -902,206 +895,213 @@
 %% }
 -type vote_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% voting_policy() :: #{
+%%   <<"ApprovalThresholdPolicy">> => approval_threshold_policy()
+%% }
+-type voting_policy() :: #{binary() => any()}.
+
 -type create_accessor_errors() ::
     too_many_tags_exception() | 
-    resource_already_exists_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
     resource_limit_exceeded_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_member_errors() ::
     too_many_tags_exception() | 
-    resource_not_ready_exception() | 
-    resource_already_exists_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_request_exception() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    resource_limit_exceeded_exception() | 
+    resource_already_exists_exception() | 
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_network_errors() ::
     too_many_tags_exception() | 
-    resource_already_exists_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
     resource_limit_exceeded_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_node_errors() ::
     too_many_tags_exception() | 
-    resource_not_ready_exception() | 
-    resource_already_exists_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    resource_limit_exceeded_exception() | 
-    invalid_request_exception() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    resource_limit_exceeded_exception() | 
+    resource_already_exists_exception() | 
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type create_proposal_errors() ::
     too_many_tags_exception() | 
-    resource_not_ready_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type delete_accessor_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type delete_member_errors() ::
-    resource_not_ready_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type delete_node_errors() ::
-    resource_not_ready_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
+    resource_not_ready_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_accessor_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_member_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_network_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_node_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_proposal_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_accessors_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_invitations_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     resource_limit_exceeded_exception() | 
     invalid_request_exception() | 
-    resource_not_found_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_members_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_networks_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_nodes_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_proposal_votes_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
     invalid_request_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_proposals_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_not_ready_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type reject_invitation_errors() ::
-    illegal_action_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    illegal_action_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
     resource_not_ready_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type untag_resource_errors() ::
     resource_not_ready_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
     internal_service_error_exception().
 
 -type update_member_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type update_node_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type vote_on_proposal_errors() ::
-    illegal_action_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    internal_service_error_exception().
+    invalid_request_exception() | 
+    internal_service_error_exception() | 
+    illegal_action_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

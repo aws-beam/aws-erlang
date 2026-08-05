@@ -1,7 +1,39 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-
+%% @doc
+%% For information about using the Amazon S3 API—including authentication,
+%% signing requests, code examples, and error handling—see the Amazon S3
+%% Developer Guide:
+%% https://docs.aws.amazon.com/AmazonS3/latest/developerguide/Welcome.html.
+%%
+%% Welcome to the Amazon S3 API Reference. This guide explains the Amazon
+%% Simple Storage Service (Amazon S3)
+%% application programming interface (API).
+%%
+%% Welcome to the Amazon S3 API Reference. This guide explains the Amazon
+%% Simple Storage Service (Amazon S3)
+%% application programming interface (API).
+%%
+%% You can use any toolkit that supports HTTP to use the REST API. You can
+%% even use a browser
+%% to fetch objects, as long as they are anonymously readable.
+%%
+%% The REST API uses the standard HTTP headers and status codes, so that
+%% standard browsers and toolkits work as expected. In some areas, we have
+%% added functionality to HTTP (for example, we added headers to support
+%% access control). In these cases, we have done our best to add the new
+%% functionality in a way that matched the style of standard HTTP usage.
+%%
+%% The current version of the Amazon S3 API is `2006-03-01'.
+%%
+%% Amazon S3 supports the REST API.
+%%
+%% Support for SOAP over HTTP is deprecated, but it is still available over
+%% HTTPS.
+%% However, new Amazon S3 features will not be supported for SOAP. We
+%% recommend that
+%% you use either this REST API or the Amazon Web Services SDKs.
 -module(aws_s3).
 
 -export([abort_multipart_upload/4,
@@ -280,88 +312,191 @@
 
 
 %% Example:
-%% error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"VersionId">> => string()
+%% abac_status() :: #{
+%%   <<"Status">> => list(any())
 %% }
--type error() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_prefix() :: #{}
--type invalid_prefix() :: #{}.
+-type abac_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_bucket_policy_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ConfirmRemoveSelfBucketAccess">> => boolean(),
-%%   <<"ContentMD5">> => string(),
+%% abort_incomplete_multipart_upload() :: #{
+%%   <<"DaysAfterInitiation">> => integer()
+%% }
+-type abort_incomplete_multipart_upload() :: #{binary() => any()}.
+
+
+%% Example:
+%% abort_multipart_upload_output() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type abort_multipart_upload_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% abort_multipart_upload_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Policy">> := string()
+%%   <<"IfMatchInitiatedTime">> => non_neg_integer(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"UploadId">> := string()
 %% }
--type put_bucket_policy_request() :: #{binary() => any()}.
+-type abort_multipart_upload_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_bucket_logging_request() :: #{
-%%   <<"BucketLoggingStatus">> := bucket_logging_status(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string()
+%% accelerate_configuration() :: #{
+%%   <<"Status">> => list(any())
 %% }
--type put_bucket_logging_request() :: #{binary() => any()}.
+-type accelerate_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% inventory_s3_bucket_destination() :: #{
-%%   <<"AccountId">> => string(),
+%% access_control_policy() :: #{
+%%   <<"Grants">> => list(grant()),
+%%   <<"Owner">> => owner()
+%% }
+-type access_control_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_control_translation() :: #{
+%%   <<"Owner">> => list(any())
+%% }
+-type access_control_translation() :: #{binary() => any()}.
+
+%% Example:
+%% access_denied() :: #{}
+-type access_denied() :: #{}.
+
+
+%% Example:
+%% analytics_and_operator() :: #{
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type analytics_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_configuration() :: #{
+%%   <<"Filter">> => list(),
+%%   <<"Id">> => string(),
+%%   <<"StorageClassAnalysis">> => storage_class_analysis()
+%% }
+-type analytics_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_export_destination() :: #{
+%%   <<"S3BucketDestination">> => analytics_s3_bucket_destination()
+%% }
+-type analytics_export_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% analytics_s3_bucket_destination() :: #{
 %%   <<"Bucket">> => string(),
-%%   <<"Encryption">> => inventory_encryption(),
+%%   <<"BucketAccountId">> => string(),
 %%   <<"Format">> => list(any()),
 %%   <<"Prefix">> => string()
 %% }
--type inventory_s3_bucket_destination() :: #{binary() => any()}.
+-type analytics_s3_bucket_destination() :: #{binary() => any()}.
 
 
 %% Example:
-%% records_event() :: #{
-%%   <<"Payload">> => binary()
+%% annotation_entry() :: #{
+%%   <<"AnnotationName">> => string(),
+%%   <<"ChecksumAlgorithm">> => list(list(any())()),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"Size">> => float()
 %% }
--type records_event() :: #{binary() => any()}.
+-type annotation_entry() :: #{binary() => any()}.
+
+%% Example:
+%% annotation_limit_exceeded() :: #{}
+-type annotation_limit_exceeded() :: #{}.
+
+%% Example:
+%% annotation_name_too_long() :: #{}
+-type annotation_name_too_long() :: #{}.
 
 
 %% Example:
-%% list_bucket_metrics_configurations_output() :: #{
-%%   <<"ContinuationToken">> => string(),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"MetricsConfigurationList">> => list(metrics_configuration()),
-%%   <<"NextContinuationToken">> => string()
+%% annotation_table_configuration() :: #{
+%%   <<"ConfigurationState">> => list(any()),
+%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration(),
+%%   <<"Role">> => string()
 %% }
--type list_bucket_metrics_configurations_output() :: #{binary() => any()}.
+-type annotation_table_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_object_request() :: #{
-%%   <<"BypassGovernanceRetention">> => boolean(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"IfMatch">> => string(),
-%%   <<"IfMatchLastModifiedTime">> => non_neg_integer(),
-%%   <<"IfMatchSize">> => float(),
-%%   <<"MFA">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"VersionId">> => string()
+%% annotation_table_configuration_result() :: #{
+%%   <<"ConfigurationState">> => list(any()),
+%%   <<"Error">> => error_details(),
+%%   <<"Role">> => string(),
+%%   <<"TableArn">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableStatus">> => string()
 %% }
--type delete_object_request() :: #{binary() => any()}.
+-type annotation_table_configuration_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_bucket_accelerate_configuration_output() :: #{
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"Status">> => list(any())
+%% annotation_table_configuration_updates() :: #{
+%%   <<"ConfigurationState">> => list(any()),
+%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration(),
+%%   <<"Role">> => string()
 %% }
--type get_bucket_accelerate_configuration_output() :: #{binary() => any()}.
+-type annotation_table_configuration_updates() :: #{binary() => any()}.
+
+
+%% Example:
+%% blocked_encryption_types() :: #{
+%%   <<"EncryptionType">> => list(list(any())())
+%% }
+-type blocked_encryption_types() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket() :: #{
+%%   <<"BucketArn">> => string(),
+%%   <<"BucketRegion">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type bucket() :: #{binary() => any()}.
+
+%% Example:
+%% bucket_already_exists() :: #{}
+-type bucket_already_exists() :: #{}.
+
+%% Example:
+%% bucket_already_owned_by_you() :: #{}
+-type bucket_already_owned_by_you() :: #{}.
+
+
+%% Example:
+%% bucket_info() :: #{
+%%   <<"DataRedundancy">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type bucket_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_lifecycle_configuration() :: #{
+%%   <<"Rules">> => list(lifecycle_rule())
+%% }
+-type bucket_lifecycle_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% bucket_logging_status() :: #{
+%%   <<"LoggingEnabled">> => logging_enabled()
+%% }
+-type bucket_logging_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -372,86 +507,195 @@
 
 
 %% Example:
-%% get_bucket_ownership_controls_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
+%% c_o_r_s_rule() :: #{
+%%   <<"AllowedHeaders">> => list(string()),
+%%   <<"AllowedMethods">> => list(string()),
+%%   <<"AllowedOrigins">> => list(string()),
+%%   <<"ExposeHeaders">> => list(string()),
+%%   <<"ID">> => string(),
+%%   <<"MaxAgeSeconds">> => integer()
 %% }
--type get_bucket_ownership_controls_request() :: #{binary() => any()}.
+-type c_o_r_s_rule() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_bucket_metrics_configurations_request() :: #{
-%%   <<"ContinuationToken">> => string(),
-%%   <<"ExpectedBucketOwner">> => string()
+%% checksum() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string()
 %% }
--type list_bucket_metrics_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% no_such_key() :: #{}
--type no_such_key() :: #{}.
+-type checksum() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_bucket_policy_output() :: #{
-%%   <<"Policy">> => string()
+%% common_prefix() :: #{
+%%   <<"Prefix">> => string()
 %% }
--type get_bucket_policy_output() :: #{binary() => any()}.
+-type common_prefix() :: #{binary() => any()}.
 
 
 %% Example:
-%% encryption_configuration() :: #{
-%%   <<"ReplicaKmsKeyID">> => string()
-%% }
--type encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_versioning_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"MFA">> => string(),
-%%   <<"VersioningConfiguration">> := versioning_configuration()
-%% }
--type put_bucket_versioning_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_torrent_output() :: #{
-%%   <<"Body">> => binary(),
-%%   <<"RequestCharged">> => list(any())
-%% }
--type get_object_torrent_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bucket_metadata_inventory_table_configuration_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"InventoryTableConfiguration">> := inventory_table_configuration_updates()
-%% }
--type update_bucket_metadata_inventory_table_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_object_tagging_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
+%% complete_multipart_upload_output() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"Expiration">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
 %%   <<"VersionId">> => string()
 %% }
--type delete_object_tagging_request() :: #{binary() => any()}.
+-type complete_multipart_upload_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% inventory_configuration() :: #{
-%%   <<"Destination">> => inventory_destination(),
-%%   <<"Filter">> => inventory_filter(),
-%%   <<"Id">> => string(),
-%%   <<"IncludedObjectVersions">> => list(any()),
-%%   <<"IsEnabled">> => boolean(),
-%%   <<"OptionalFields">> => list(list(any())()),
-%%   <<"Schedule">> => inventory_schedule()
+%% complete_multipart_upload_request() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"IfMatch">> => string(),
+%%   <<"IfNoneMatch">> => string(),
+%%   <<"MpuObjectSize">> => float(),
+%%   <<"MultipartUpload">> => completed_multipart_upload(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"UploadId">> := string()
 %% }
--type inventory_configuration() :: #{binary() => any()}.
+-type complete_multipart_upload_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% completed_multipart_upload() :: #{
+%%   <<"Parts">> => list(completed_part())
+%% }
+-type completed_multipart_upload() :: #{binary() => any()}.
+
+
+%% Example:
+%% completed_part() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"PartNumber">> => integer()
+%% }
+-type completed_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition() :: #{
+%%   <<"HttpErrorCodeReturnedEquals">> => string(),
+%%   <<"KeyPrefixEquals">> => string()
+%% }
+-type condition() :: #{binary() => any()}.
+
+%% Example:
+%% continuation_event() :: #{}
+-type continuation_event() :: #{}.
+
+
+%% Example:
+%% copy_object_output() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"CopyObjectResult">> => copy_object_result(),
+%%   <<"CopySourceVersionId">> => string(),
+%%   <<"Expiration">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type copy_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_object_request() :: #{
+%%   <<"ACL">> => list(any()),
+%%   <<"AnnotationDirective">> => list(any()),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"CacheControl">> => string(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"CopySource">> := string(),
+%%   <<"CopySourceIfMatch">> => string(),
+%%   <<"CopySourceIfModifiedSince">> => non_neg_integer(),
+%%   <<"CopySourceIfNoneMatch">> => string(),
+%%   <<"CopySourceIfUnmodifiedSince">> => non_neg_integer(),
+%%   <<"CopySourceSSECustomerAlgorithm">> => string(),
+%%   <<"CopySourceSSECustomerKey">> => string(),
+%%   <<"CopySourceSSECustomerKeyMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ExpectedSourceBucketOwner">> => string(),
+%%   <<"Expires">> => string(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"GrantRead">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"GrantWriteACP">> => string(),
+%%   <<"IfMatch">> => string(),
+%%   <<"IfNoneMatch">> => string(),
+%%   <<"Metadata">> => map(),
+%%   <<"MetadataDirective">> => list(any()),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"Tagging">> => string(),
+%%   <<"TaggingDirective">> => list(any()),
+%%   <<"WebsiteRedirectLocation">> => string()
+%% }
+-type copy_object_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -474,541 +718,6 @@
 
 
 %% Example:
-%% public_access_block_configuration() :: #{
-%%   <<"BlockPublicAcls">> => boolean(),
-%%   <<"BlockPublicPolicy">> => boolean(),
-%%   <<"IgnorePublicAcls">> => boolean(),
-%%   <<"RestrictPublicBuckets">> => boolean()
-%% }
--type public_access_block_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_accelerate_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"RequestPayer">> => list(any())
-%% }
--type get_bucket_accelerate_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% inventory_schedule() :: #{
-%%   <<"Frequency">> => list(any())
-%% }
--type inventory_schedule() :: #{binary() => any()}.
-
-
-%% Example:
-%% write_get_object_response_request() :: #{
-%%   <<"ContentRange">> => string(),
-%%   <<"StorageClass">> => list(any()),
-%%   <<"Expiration">> => string(),
-%%   <<"RequestToken">> := string(),
-%%   <<"ErrorCode">> => string(),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"Body">> => binary(),
-%%   <<"AcceptRanges">> => string(),
-%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"VersionId">> => string(),
-%%   <<"PartsCount">> => integer(),
-%%   <<"ContentLength">> => float(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"CacheControl">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"RequestRoute">> := string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ObjectLockMode">> => list(any()),
-%%   <<"StatusCode">> => integer(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"Metadata">> => map(),
-%%   <<"ReplicationStatus">> => list(any()),
-%%   <<"Expires">> => string(),
-%%   <<"ContentLanguage">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"TagCount">> => integer(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"Restore">> => string(),
-%%   <<"DeleteMarker">> => boolean(),
-%%   <<"ContentEncoding">> => string(),
-%%   <<"ContentDisposition">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"MissingMeta">> => integer(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"ServerSideEncryption">> => list(any()),
-%%   <<"SSECustomerAlgorithm">> => string()
-%% }
--type write_get_object_response_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_grant() :: #{
-%%   <<"Grantee">> => grantee(),
-%%   <<"Permission">> => list(any())
-%% }
--type target_grant() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_website_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type delete_bucket_website_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_ownership_controls_output() :: #{
-%%   <<"OwnershipControls">> => ownership_controls()
-%% }
--type get_bucket_ownership_controls_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% ownership_controls_rule() :: #{
-%%   <<"ObjectOwnership">> => list(any())
-%% }
--type ownership_controls_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_request_payment_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_request_payment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_public_access_block_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"PublicAccessBlockConfiguration">> := public_access_block_configuration()
-%% }
--type put_public_access_block_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_tagging_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type get_object_tagging_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% abort_incomplete_multipart_upload() :: #{
-%%   <<"DaysAfterInitiation">> => integer()
-%% }
--type abort_incomplete_multipart_upload() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_rule() :: #{
-%%   <<"AbortIncompleteMultipartUpload">> => abort_incomplete_multipart_upload(),
-%%   <<"Expiration">> => lifecycle_expiration(),
-%%   <<"Filter">> => lifecycle_rule_filter(),
-%%   <<"ID">> => string(),
-%%   <<"NoncurrentVersionExpiration">> => noncurrent_version_expiration(),
-%%   <<"NoncurrentVersionTransitions">> => list(noncurrent_version_transition()),
-%%   <<"Prefix">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Transitions">> => list(transition())
-%% }
--type lifecycle_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_object_encryption_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"ObjectEncryption">> := list(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type update_object_encryption_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% annotation_table_configuration_updates() :: #{
-%%   <<"ConfigurationState">> => list(any()),
-%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration(),
-%%   <<"Role">> => string()
-%% }
--type annotation_table_configuration_updates() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_public_access_block_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type delete_public_access_block_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_policy_status_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_policy_status_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_versions_request() :: #{
-%%   <<"Delimiter">> => string(),
-%%   <<"EncodingType">> => list(any()),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"KeyMarker">> => string(),
-%%   <<"MaxKeys">> => integer(),
-%%   <<"OptionalObjectAttributes">> => list(list(any())()),
-%%   <<"Prefix">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"VersionIdMarker">> => string()
-%% }
--type list_object_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% annotation_limit_exceeded() :: #{}
--type annotation_limit_exceeded() :: #{}.
-
-
-%% Example:
-%% versioning_configuration() :: #{
-%%   <<"MFADelete">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type versioning_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete() :: #{
-%%   <<"Objects">> => list(object_identifier()),
-%%   <<"Quiet">> => boolean()
-%% }
--type delete() :: #{binary() => any()}.
-
-
-%% Example:
-%% upload_part_output() :: #{
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"SSECustomerAlgorithm">> => string(),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ServerSideEncryption">> => list(any())
-%% }
--type upload_part_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_cors_request() :: #{
-%%   <<"CORSConfiguration">> := c_o_r_s_configuration(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type put_bucket_cors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_analytics_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Id">> := string()
-%% }
--type delete_bucket_analytics_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% head_bucket_output() :: #{
-%%   <<"AccessPointAlias">> => boolean(),
-%%   <<"BucketArn">> => string(),
-%%   <<"BucketLocationName">> => string(),
-%%   <<"BucketLocationType">> => list(any()),
-%%   <<"BucketRegion">> => string()
-%% }
--type head_bucket_output() :: #{binary() => any()}.
-
-%% Example:
-%% annotation_name_too_long() :: #{}
--type annotation_name_too_long() :: #{}.
-
-
-%% Example:
-%% get_bucket_intelligent_tiering_configuration_output() :: #{
-%%   <<"IntelligentTieringConfiguration">> => intelligent_tiering_configuration()
-%% }
--type get_bucket_intelligent_tiering_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_configuration() :: #{
-%%   <<"Events">> => list(list(any())()),
-%%   <<"Filter">> => notification_configuration_filter(),
-%%   <<"Id">> => string(),
-%%   <<"QueueArn">> => string()
-%% }
--type queue_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_abac_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_abac_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_rule() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type filter_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_credentials() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"SecretAccessKey">> => string(),
-%%   <<"SessionToken">> => string()
-%% }
--type session_credentials() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_logging_output() :: #{
-%%   <<"LoggingEnabled">> => logging_enabled()
-%% }
--type get_bucket_logging_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% redirect() :: #{
-%%   <<"HostName">> => string(),
-%%   <<"HttpRedirectCode">> => string(),
-%%   <<"Protocol">> => list(any()),
-%%   <<"ReplaceKeyPrefixWith">> => string(),
-%%   <<"ReplaceKeyWith">> => string()
-%% }
--type redirect() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_selection_criteria() :: #{
-%%   <<"ReplicaModifications">> => replica_modifications(),
-%%   <<"SseKmsEncryptedObjects">> => sse_kms_encrypted_objects()
-%% }
--type source_selection_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% head_object_output() :: #{
-%%   <<"ContentRange">> => string(),
-%%   <<"StorageClass">> => list(any()),
-%%   <<"Expiration">> => string(),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"AcceptRanges">> => string(),
-%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"VersionId">> => string(),
-%%   <<"PartsCount">> => integer(),
-%%   <<"ContentLength">> => float(),
-%%   <<"WebsiteRedirectLocation">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"CacheControl">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ObjectLockMode">> => list(any()),
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"Metadata">> => map(),
-%%   <<"ReplicationStatus">> => list(any()),
-%%   <<"Expires">> => string(),
-%%   <<"ContentLanguage">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"TagCount">> => integer(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"ArchiveStatus">> => list(any()),
-%%   <<"Restore">> => string(),
-%%   <<"DeleteMarker">> => boolean(),
-%%   <<"ContentEncoding">> => string(),
-%%   <<"ContentDisposition">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumType">> => list(any()),
-%%   <<"ContentType">> => string(),
-%%   <<"MissingMeta">> => integer(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"ServerSideEncryption">> => list(any()),
-%%   <<"SSECustomerAlgorithm">> => string()
-%% }
--type head_object_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_tagging_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type delete_bucket_tagging_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stats_event() :: #{
-%%   <<"Details">> => stats()
-%% }
--type stats_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_replication_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"ReplicationConfiguration">> := replication_configuration(),
-%%   <<"Token">> => string()
-%% }
--type put_bucket_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_object_lock_configuration_output() :: #{
-%%   <<"RequestCharged">> => list(any())
-%% }
--type put_object_lock_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_retention_output() :: #{
-%%   <<"Retention">> => object_lock_retention()
-%% }
--type get_object_retention_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% common_prefix() :: #{
-%%   <<"Prefix">> => string()
-%% }
--type common_prefix() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_acl_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_acl_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bucket_metadata_table_configuration_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"MetadataTableConfiguration">> := metadata_table_configuration()
-%% }
--type create_bucket_metadata_table_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_export_destination() :: #{
-%%   <<"S3BucketDestination">> => analytics_s3_bucket_destination()
-%% }
--type analytics_export_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bucket_inventory_configurations_output() :: #{
-%%   <<"ContinuationToken">> => string(),
-%%   <<"InventoryConfigurationList">> => list(inventory_configuration()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"NextContinuationToken">> => string()
-%% }
--type list_bucket_inventory_configurations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_object_legal_hold_output() :: #{
-%%   <<"RequestCharged">> => list(any())
-%% }
--type put_object_legal_hold_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% inventory_filter() :: #{
-%%   <<"Prefix">> => string()
-%% }
--type inventory_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_object_retention_output() :: #{
-%%   <<"RequestCharged">> => list(any())
-%% }
--type put_object_retention_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_object_acl_request() :: #{
-%%   <<"ACL">> => list(any()),
-%%   <<"AccessControlPolicy">> => access_control_policy(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"GrantFullControl">> => string(),
-%%   <<"GrantRead">> => string(),
-%%   <<"GrantReadACP">> => string(),
-%%   <<"GrantWrite">> => string(),
-%%   <<"GrantWriteACP">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type put_object_acl_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% journal_table_configuration() :: #{
-%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration(),
-%%   <<"RecordExpiration">> => record_expiration()
-%% }
--type journal_table_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_object_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"RestoreRequest">> => restore_request(),
-%%   <<"VersionId">> => string()
-%% }
--type restore_object_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% copy_part_result() :: #{
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
@@ -1027,261 +736,57 @@
 
 
 %% Example:
-%% lambda_function_configuration() :: #{
-%%   <<"Events">> => list(list(any())()),
-%%   <<"Filter">> => notification_configuration_filter(),
-%%   <<"Id">> => string(),
-%%   <<"LambdaFunctionArn">> => string()
+%% create_bucket_configuration() :: #{
+%%   <<"Bucket">> => bucket_info(),
+%%   <<"Location">> => location_info(),
+%%   <<"LocationConstraint">> => list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type lambda_function_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% object_not_in_active_tier_error() :: #{}
--type object_not_in_active_tier_error() :: #{}.
+-type create_bucket_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_objects_request() :: #{
-%%   <<"Delimiter">> => string(),
-%%   <<"EncodingType">> => list(any()),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxKeys">> => integer(),
-%%   <<"OptionalObjectAttributes">> => list(list(any())()),
-%%   <<"Prefix">> => string(),
-%%   <<"RequestPayer">> => list(any())
-%% }
--type list_objects_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_inventory_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Id">> := string()
-%% }
--type get_bucket_inventory_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_serialization() :: #{
-%%   <<"CSV">> => csv_input(),
-%%   <<"CompressionType">> => list(any()),
-%%   <<"JSON">> => json_input(),
-%%   <<"Parquet">> => parquet_input()
-%% }
--type input_serialization() :: #{binary() => any()}.
-
-
-%% Example:
-%% upload_part_request() :: #{
-%%   <<"Body">> => binary(),
+%% create_bucket_metadata_configuration_request() :: #{
 %%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ContentLength">> => float(),
 %%   <<"ContentMD5">> => string(),
 %%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"PartNumber">> := integer(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"SSECustomerAlgorithm">> => string(),
-%%   <<"SSECustomerKey">> => string(),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"UploadId">> := string()
+%%   <<"MetadataConfiguration">> := metadata_configuration()
 %% }
--type upload_part_request() :: #{binary() => any()}.
+-type create_bucket_metadata_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% grantee() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"EmailAddress">> => string(),
-%%   <<"ID">> => string(),
-%%   <<"Type">> => list(any()),
-%%   <<"URI">> => string()
+%% create_bucket_metadata_table_configuration_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"MetadataTableConfiguration">> := metadata_table_configuration()
 %% }
--type grantee() :: #{binary() => any()}.
+-type create_bucket_metadata_table_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_bucket_metadata_configuration_result() :: #{
-%%   <<"MetadataConfigurationResult">> => metadata_configuration_result()
+%% create_bucket_output() :: #{
+%%   <<"BucketArn">> => string(),
+%%   <<"Location">> => string()
 %% }
--type get_bucket_metadata_configuration_result() :: #{binary() => any()}.
+-type create_bucket_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_bucket_metadata_table_configuration_result() :: #{
-%%   <<"Error">> => error_details(),
-%%   <<"MetadataTableConfigurationResult">> => metadata_table_configuration_result(),
-%%   <<"Status">> => string()
+%% create_bucket_request() :: #{
+%%   <<"ACL">> => list(any()),
+%%   <<"BucketNamespace">> => list(any()),
+%%   <<"CreateBucketConfiguration">> => create_bucket_configuration(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"GrantRead">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"GrantWrite">> => string(),
+%%   <<"GrantWriteACP">> => string(),
+%%   <<"ObjectLockEnabledForBucket">> => boolean(),
+%%   <<"ObjectOwnership">> => list(any())
 %% }
--type get_bucket_metadata_table_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_legal_hold_output() :: #{
-%%   <<"LegalHold">> => object_lock_legal_hold()
-%% }
--type get_object_legal_hold_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% deleted_object() :: #{
-%%   <<"DeleteMarker">> => boolean(),
-%%   <<"DeleteMarkerVersionId">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type deleted_object() :: #{binary() => any()}.
-
-
-%% Example:
-%% progress() :: #{
-%%   <<"BytesProcessed">> => float(),
-%%   <<"BytesReturned">> => float(),
-%%   <<"BytesScanned">> => float()
-%% }
--type progress() :: #{binary() => any()}.
-
-%% Example:
-%% idempotency_parameter_mismatch() :: #{}
--type idempotency_parameter_mismatch() :: #{}.
-
-%% Example:
-%% too_many_parts() :: #{}
--type too_many_parts() :: #{}.
-
-%% Example:
-%% access_denied() :: #{}
--type access_denied() :: #{}.
-
-
-%% Example:
-%% get_bucket_inventory_configuration_output() :: #{
-%%   <<"InventoryConfiguration">> => inventory_configuration()
-%% }
--type get_bucket_inventory_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% sse_kms_encryption() :: #{
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"KMSKeyArn">> => string()
-%% }
--type sse_kms_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_object_output() :: #{
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ChecksumType">> => list(any()),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"Expiration">> => string(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"SSECustomerAlgorithm">> => string(),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"SSEKMSEncryptionContext">> => string(),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ServerSideEncryption">> => list(any()),
-%%   <<"Size">> => float(),
-%%   <<"VersionId">> => string()
-%% }
--type put_object_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bucket_analytics_configurations_request() :: #{
-%%   <<"ContinuationToken">> => string(),
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type list_bucket_analytics_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% topic_configuration() :: #{
-%%   <<"Events">> => list(list(any())()),
-%%   <<"Filter">> => notification_configuration_filter(),
-%%   <<"Id">> => string(),
-%%   <<"TopicArn">> => string()
-%% }
--type topic_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_versioning_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_versioning_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_versions_output() :: #{
-%%   <<"CommonPrefixes">> => list(common_prefix()),
-%%   <<"DeleteMarkers">> => list(delete_marker_entry()),
-%%   <<"Delimiter">> => string(),
-%%   <<"EncodingType">> => list(any()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"KeyMarker">> => string(),
-%%   <<"MaxKeys">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NextKeyMarker">> => string(),
-%%   <<"NextVersionIdMarker">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"VersionIdMarker">> => string(),
-%%   <<"Versions">> => list(object_version())
-%% }
--type list_object_versions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_lifecycle_configuration_output() :: #{
-%%   <<"Rules">> => list(lifecycle_rule()),
-%%   <<"TransitionDefaultMinimumObjectSize">> => list(any())
-%% }
--type get_bucket_lifecycle_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% sse_kms_encrypted_objects() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type sse_kms_encrypted_objects() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_policy_status_output() :: #{
-%%   <<"PolicyStatus">> => policy_status()
-%% }
--type get_bucket_policy_status_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_configuration_result() :: #{
-%%   <<"AnnotationTableConfigurationResult">> => annotation_table_configuration_result(),
-%%   <<"DestinationResult">> => destination_result(),
-%%   <<"InventoryTableConfigurationResult">> => inventory_table_configuration_result(),
-%%   <<"JournalTableConfigurationResult">> => journal_table_configuration_result()
-%% }
--type metadata_configuration_result() :: #{binary() => any()}.
+-type create_bucket_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1302,695 +807,6 @@
 %%   <<"UploadId">> => string()
 %% }
 -type create_multipart_upload_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_acl_output() :: #{
-%%   <<"Grants">> => list(grant()),
-%%   <<"Owner">> => owner()
-%% }
--type get_bucket_acl_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_lock_rule() :: #{
-%%   <<"DefaultRetention">> => default_retention()
-%% }
--type object_lock_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% blocked_encryption_types() :: #{
-%%   <<"EncryptionType">> => list(list(any())())
-%% }
--type blocked_encryption_types() :: #{binary() => any()}.
-
-
-%% Example:
-%% location_info() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type location_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_ownership_controls_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type delete_bucket_ownership_controls_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_location_output() :: #{
-%%   <<"LocationConstraint">> => list(any())
-%% }
--type get_bucket_location_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_rule_filter() :: #{
-%%   <<"And">> => replication_rule_and_operator(),
-%%   <<"Prefix">> => string(),
-%%   <<"Tag">> => tag()
-%% }
--type replication_rule_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_inventory_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Id">> := string()
-%% }
--type delete_bucket_inventory_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% logging_enabled() :: #{
-%%   <<"TargetBucket">> => string(),
-%%   <<"TargetGrants">> => list(target_grant()),
-%%   <<"TargetObjectKeyFormat">> => target_object_key_format(),
-%%   <<"TargetPrefix">> => string()
-%% }
--type logging_enabled() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_marker_entry() :: #{
-%%   <<"IsLatest">> => boolean(),
-%%   <<"Key">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"Owner">> => owner(),
-%%   <<"VersionId">> => string()
-%% }
--type delete_marker_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_tables_destination() :: #{
-%%   <<"TableBucketArn">> => string(),
-%%   <<"TableName">> => string()
-%% }
--type s3_tables_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% select_parameters() :: #{
-%%   <<"Expression">> => string(),
-%%   <<"ExpressionType">> => list(any()),
-%%   <<"InputSerialization">> => input_serialization(),
-%%   <<"OutputSerialization">> => output_serialization()
-%% }
--type select_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% bucket_already_owned_by_you() :: #{}
--type bucket_already_owned_by_you() :: #{}.
-
-
-%% Example:
-%% update_bucket_metadata_annotation_table_configuration_request() :: #{
-%%   <<"AnnotationTableConfiguration">> := annotation_table_configuration_updates(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type update_bucket_metadata_annotation_table_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_policy_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type delete_bucket_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_multipart_uploads_request() :: #{
-%%   <<"Delimiter">> => string(),
-%%   <<"EncodingType">> => list(any()),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"KeyMarker">> => string(),
-%%   <<"MaxUploads">> => integer(),
-%%   <<"Prefix">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"UploadIdMarker">> => string()
-%% }
--type list_multipart_uploads_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_annotation_name() :: #{}
--type invalid_annotation_name() :: #{}.
-
-
-%% Example:
-%% put_object_request() :: #{
-%%   <<"StorageClass">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"SSECustomerKey">> => string(),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"Body">> => binary(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
-%%   <<"ACL">> => list(any()),
-%%   <<"WriteOffsetBytes">> => float(),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
-%%   <<"GrantRead">> => string(),
-%%   <<"ContentLength">> => float(),
-%%   <<"Tagging">> => string(),
-%%   <<"WebsiteRedirectLocation">> => string(),
-%%   <<"CacheControl">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"GrantFullControl">> => string(),
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ObjectLockMode">> => list(any()),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"Metadata">> => map(),
-%%   <<"GrantWriteACP">> => string(),
-%%   <<"Expires">> => string(),
-%%   <<"ContentLanguage">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"IfMatch">> => string(),
-%%   <<"ContentEncoding">> => string(),
-%%   <<"ContentDisposition">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"SSEKMSEncryptionContext">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"GrantReadACP">> => string(),
-%%   <<"ServerSideEncryption">> => list(any()),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"IfNoneMatch">> => string(),
-%%   <<"SSECustomerAlgorithm">> => string()
-%% }
--type put_object_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_version() :: #{
-%%   <<"ChecksumAlgorithm">> => list(list(any())()),
-%%   <<"ChecksumType">> => list(any()),
-%%   <<"ETag">> => string(),
-%%   <<"IsLatest">> => boolean(),
-%%   <<"Key">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"Owner">> => owner(),
-%%   <<"RestoreStatus">> => restore_status(),
-%%   <<"Size">> => float(),
-%%   <<"StorageClass">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type object_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% noncurrent_version_expiration() :: #{
-%%   <<"NewerNoncurrentVersions">> => integer(),
-%%   <<"NoncurrentDays">> => integer()
-%% }
--type noncurrent_version_expiration() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_write_offset() :: #{}
--type invalid_write_offset() :: #{}.
-
-
-%% Example:
-%% s3_tables_destination_result() :: #{
-%%   <<"TableArn">> => string(),
-%%   <<"TableBucketArn">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"TableNamespace">> => string()
-%% }
--type s3_tables_destination_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_legal_hold_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type get_object_legal_hold_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type delete_bucket_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_notification_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"NotificationConfiguration">> := notification_configuration(),
-%%   <<"SkipDestinationValidation">> => boolean()
-%% }
--type put_bucket_notification_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scan_range() :: #{
-%%   <<"End">> => float(),
-%%   <<"Start">> => float()
-%% }
--type scan_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_object_legal_hold_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"LegalHold">> => object_lock_legal_hold(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type put_object_legal_hold_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_analytics_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Id">> := string()
-%% }
--type get_bucket_analytics_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% restore_object_output() :: #{
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"RestoreOutputPath">> => string()
-%% }
--type restore_object_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_session_request() :: #{
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"SSEKMSEncryptionContext">> => string(),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ServerSideEncryption">> => list(any()),
-%%   <<"SessionMode">> => list(any())
-%% }
--type create_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% json_input() :: #{
-%%   <<"Type">> => list(any())
-%% }
--type json_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% journal_table_configuration_updates() :: #{
-%%   <<"RecordExpiration">> => record_expiration()
-%% }
--type journal_table_configuration_updates() :: #{binary() => any()}.
-
-
-%% Example:
-%% metrics() :: #{
-%%   <<"EventThreshold">> => replication_time_value(),
-%%   <<"Status">> => list(any())
-%% }
--type metrics() :: #{binary() => any()}.
-
-%% Example:
-%% no_such_annotation() :: #{}
--type no_such_annotation() :: #{}.
-
-
-%% Example:
-%% replica_modifications() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type replica_modifications() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_encryption_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_encryption_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_time_value() :: #{
-%%   <<"Minutes">> => integer()
-%% }
--type replication_time_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% upload_part_copy_request() :: #{
-%%   <<"CopySource">> := string(),
-%%   <<"CopySourceIfMatch">> => string(),
-%%   <<"CopySourceIfModifiedSince">> => non_neg_integer(),
-%%   <<"CopySourceIfNoneMatch">> => string(),
-%%   <<"CopySourceIfUnmodifiedSince">> => non_neg_integer(),
-%%   <<"CopySourceRange">> => string(),
-%%   <<"CopySourceSSECustomerAlgorithm">> => string(),
-%%   <<"CopySourceSSECustomerKey">> => string(),
-%%   <<"CopySourceSSECustomerKeyMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"ExpectedSourceBucketOwner">> => string(),
-%%   <<"PartNumber">> := integer(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"SSECustomerAlgorithm">> => string(),
-%%   <<"SSECustomerKey">> => string(),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"UploadId">> := string()
-%% }
--type upload_part_copy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% policy_status() :: #{
-%%   <<"IsPublic">> => boolean()
-%% }
--type policy_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_table_configuration() :: #{
-%%   <<"S3TablesDestination">> => s3_tables_destination()
-%% }
--type metadata_table_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_replication_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_replication_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bucket_analytics_configurations_output() :: #{
-%%   <<"AnalyticsConfigurationList">> => list(analytics_configuration()),
-%%   <<"ContinuationToken">> => string(),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"NextContinuationToken">> => string()
-%% }
--type list_bucket_analytics_configurations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_configuration() :: #{
-%%   <<"Role">> => string(),
-%%   <<"Rules">> => list(replication_rule())
-%% }
--type replication_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_tagging_output() :: #{
-%%   <<"TagSet">> => list(tag())
-%% }
--type get_bucket_tagging_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_identifier() :: #{
-%%   <<"ETag">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Size">> => float(),
-%%   <<"VersionId">> => string()
-%% }
--type object_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bucket_metadata_configuration_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"MetadataConfiguration">> := metadata_configuration()
-%% }
--type create_bucket_metadata_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% intelligent_tiering_and_operator() :: #{
-%%   <<"Prefix">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type intelligent_tiering_and_operator() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_table_configuration_result() :: #{
-%%   <<"S3TablesDestinationResult">> => s3_tables_destination_result()
-%% }
--type metadata_table_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% copy_object_output() :: #{
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"CopyObjectResult">> => copy_object_result(),
-%%   <<"CopySourceVersionId">> => string(),
-%%   <<"Expiration">> => string(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"SSECustomerAlgorithm">> => string(),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"SSEKMSEncryptionContext">> => string(),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ServerSideEncryption">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type copy_object_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_website_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_website_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% json_output() :: #{
-%%   <<"RecordDelimiter">> => string()
-%% }
--type json_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_intelligent_tiering_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Id">> := string()
-%% }
--type get_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% grant() :: #{
-%%   <<"Grantee">> => grantee(),
-%%   <<"Permission">> => list(any())
-%% }
--type grant() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_configuration_filter() :: #{
-%%   <<"Key">> => s3_key_filter()
-%% }
--type notification_configuration_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_session_output() :: #{
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"Credentials">> => session_credentials(),
-%%   <<"SSEKMSEncryptionContext">> => string(),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ServerSideEncryption">> => list(any())
-%% }
--type create_session_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_object_annotation_output() :: #{
-%%   <<"AnnotationName">> => string(),
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ChecksumType">> => list(any()),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"ObjectVersionId">> => string(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"ServerSideEncryption">> => list(any())
-%% }
--type put_object_annotation_output() :: #{binary() => any()}.
-
-%% Example:
-%% parquet_input() :: #{}
--type parquet_input() :: #{}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_tagging_output() :: #{
-%%   <<"TagSet">> => list(tag()),
-%%   <<"VersionId">> => string()
-%% }
--type get_object_tagging_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_attributes_output() :: #{
-%%   <<"Checksum">> => checksum(),
-%%   <<"DeleteMarker">> => boolean(),
-%%   <<"ETag">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"ObjectParts">> => get_object_attributes_parts(),
-%%   <<"ObjectSize">> => float(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"StorageClass">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type get_object_attributes_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_encryption_output() :: #{
-%%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration()
-%% }
--type get_bucket_encryption_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_cors_output() :: #{
-%%   <<"CORSRules">> => list(c_o_r_s_rule())
-%% }
--type get_bucket_cors_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% noncurrent_version_transition() :: #{
-%%   <<"NewerNoncurrentVersions">> => integer(),
-%%   <<"NoncurrentDays">> => integer(),
-%%   <<"StorageClass">> => list(any())
-%% }
--type noncurrent_version_transition() :: #{binary() => any()}.
-
-
-%% Example:
-%% bucket_info() :: #{
-%%   <<"DataRedundancy">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type bucket_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_object_tagging_output() :: #{
-%%   <<"VersionId">> => string()
-%% }
--type delete_object_tagging_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% annotation_entry() :: #{
-%%   <<"AnnotationName">> => string(),
-%%   <<"ChecksumAlgorithm">> => list(list(any())()),
-%%   <<"ETag">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"ReplicationStatus">> => list(any()),
-%%   <<"Size">> => float()
-%% }
--type annotation_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% abort_multipart_upload_output() :: #{
-%%   <<"RequestCharged">> => list(any())
-%% }
--type abort_multipart_upload_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_annotations_output() :: #{
-%%   <<"AnnotationCount">> => integer(),
-%%   <<"AnnotationPrefix">> => string(),
-%%   <<"Annotations">> => list(annotation_entry()),
-%%   <<"Bucket">> => string(),
-%%   <<"ContinuationToken">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"MaxAnnotationResults">> => integer(),
-%%   <<"NextContinuationToken">> => string(),
-%%   <<"ObjectVersionId">> => string(),
-%%   <<"RequestCharged">> => list(any())
-%% }
--type list_object_annotations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% select_object_content_output() :: #{
-%%   <<"Payload">> => list()
-%% }
--type select_object_content_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_rule_filter() :: #{
-%%   <<"And">> => lifecycle_rule_and_operator(),
-%%   <<"ObjectSizeGreaterThan">> => float(),
-%%   <<"ObjectSizeLessThan">> => float(),
-%%   <<"Prefix">> => string(),
-%%   <<"Tag">> => tag()
-%% }
--type lifecycle_rule_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_intelligent_tiering_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Id">> := string()
-%% }
--type delete_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_lifecycle_configuration_output() :: #{
-%%   <<"TransitionDefaultMinimumObjectSize">> => list(any())
-%% }
--type put_bucket_lifecycle_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_object_annotation_output() :: #{
-%%   <<"ObjectVersionId">> => string(),
-%%   <<"RequestCharged">> => list(any())
-%% }
--type delete_object_annotation_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2029,6 +845,28 @@
 
 
 %% Example:
+%% create_session_output() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"Credentials">> => session_credentials(),
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any())
+%% }
+-type create_session_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_session_request() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"SessionMode">> => list(any())
+%% }
+-type create_session_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% csv_input() :: #{
 %%   <<"AllowQuotedRecordDelimiter">> => boolean(),
 %%   <<"Comments">> => string(),
@@ -2042,486 +880,14 @@
 
 
 %% Example:
-%% stats() :: #{
-%%   <<"BytesProcessed">> => float(),
-%%   <<"BytesReturned">> => float(),
-%%   <<"BytesScanned">> => float()
+%% csv_output() :: #{
+%%   <<"FieldDelimiter">> => string(),
+%%   <<"QuoteCharacter">> => string(),
+%%   <<"QuoteEscapeCharacter">> => string(),
+%%   <<"QuoteFields">> => list(any()),
+%%   <<"RecordDelimiter">> => string()
 %% }
--type stats() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_buckets_output() :: #{
-%%   <<"Buckets">> => list(bucket()),
-%%   <<"ContinuationToken">> => string(),
-%%   <<"Owner">> => owner(),
-%%   <<"Prefix">> => string()
-%% }
--type list_buckets_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bucket_configuration() :: #{
-%%   <<"Bucket">> => bucket_info(),
-%%   <<"Location">> => location_info(),
-%%   <<"LocationConstraint">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_bucket_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% bucket_already_exists() :: #{}
--type bucket_already_exists() :: #{}.
-
-
-%% Example:
-%% server_side_encryption_rule() :: #{
-%%   <<"ApplyServerSideEncryptionByDefault">> => server_side_encryption_by_default(),
-%%   <<"BlockedEncryptionTypes">> => blocked_encryption_types(),
-%%   <<"BucketKeyEnabled">> => boolean()
-%% }
--type server_side_encryption_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bucket_intelligent_tiering_configurations_output() :: #{
-%%   <<"ContinuationToken">> => string(),
-%%   <<"IntelligentTieringConfigurationList">> => list(intelligent_tiering_configuration()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"NextContinuationToken">> => string()
-%% }
--type list_bucket_intelligent_tiering_configurations_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% initiator() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"ID">> => string()
-%% }
--type initiator() :: #{binary() => any()}.
-
-
-%% Example:
-%% select_object_content_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Expression">> := string(),
-%%   <<"ExpressionType">> := list(any()),
-%%   <<"InputSerialization">> := input_serialization(),
-%%   <<"OutputSerialization">> := output_serialization(),
-%%   <<"RequestProgress">> => request_progress(),
-%%   <<"SSECustomerAlgorithm">> => string(),
-%%   <<"SSECustomerKey">> => string(),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"ScanRange">> => scan_range()
-%% }
--type select_object_content_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% completed_part() :: #{
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"PartNumber">> => integer()
-%% }
--type completed_part() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_s3_bucket_destination() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"BucketAccountId">> => string(),
-%%   <<"Format">> => list(any()),
-%%   <<"Prefix">> => string()
-%% }
--type analytics_s3_bucket_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption() :: #{
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"KMSContext">> => string(),
-%%   <<"KMSKeyId">> => string()
-%% }
--type encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_encryption_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type delete_bucket_encryption_request() :: #{binary() => any()}.
-
-%% Example:
-%% continuation_event() :: #{}
--type continuation_event() :: #{}.
-
-
-%% Example:
-%% s3_key_filter() :: #{
-%%   <<"FilterRules">> => list(filter_rule())
-%% }
--type s3_key_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% journal_table_configuration_result() :: #{
-%%   <<"Error">> => error_details(),
-%%   <<"RecordExpiration">> => record_expiration(),
-%%   <<"TableArn">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"TableStatus">> => string()
-%% }
--type journal_table_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_metrics_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Id">> := string()
-%% }
--type delete_bucket_metrics_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% intelligent_tiering_configuration() :: #{
-%%   <<"Filter">> => intelligent_tiering_filter(),
-%%   <<"Id">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tierings">> => list(tiering())
-%% }
--type intelligent_tiering_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% redirect_all_requests_to() :: #{
-%%   <<"HostName">> => string(),
-%%   <<"Protocol">> => list(any())
-%% }
--type redirect_all_requests_to() :: #{binary() => any()}.
-
-
-%% Example:
-%% tagging() :: #{
-%%   <<"TagSet">> => list(tag())
-%% }
--type tagging() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_payment_configuration() :: #{
-%%   <<"Payer">> => list(any())
-%% }
--type request_payment_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_details() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type error_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_control_translation() :: #{
-%%   <<"Owner">> => list(any())
-%% }
--type access_control_translation() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_request_payment_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"RequestPaymentConfiguration">> := request_payment_configuration()
-%% }
--type put_bucket_request_payment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_side_encryption_by_default() :: #{
-%%   <<"KMSMasterKeyID">> => string(),
-%%   <<"SSEAlgorithm">> => list(any())
-%% }
--type server_side_encryption_by_default() :: #{binary() => any()}.
-
-%% Example:
-%% rename_object_output() :: #{}
--type rename_object_output() :: #{}.
-
-
-%% Example:
-%% website_configuration() :: #{
-%%   <<"ErrorDocument">> => error_document(),
-%%   <<"IndexDocument">> => index_document(),
-%%   <<"RedirectAllRequestsTo">> => redirect_all_requests_to(),
-%%   <<"RoutingRules">> => list(routing_rule())
-%% }
--type website_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_location() :: #{
-%%   <<"S3">> => s3_location()
-%% }
--type output_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_metadata_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type delete_bucket_metadata_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_object_key_format() :: #{
-%%   <<"PartitionedPrefix">> => partitioned_prefix(),
-%%   <<"SimplePrefix">> => simple_prefix()
-%% }
--type target_object_key_format() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_class_analysis() :: #{
-%%   <<"DataExport">> => storage_class_analysis_data_export()
-%% }
--type storage_class_analysis() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_attributes_parts() :: #{
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"MaxParts">> => integer(),
-%%   <<"NextPartNumberMarker">> => string(),
-%%   <<"PartNumberMarker">> => string(),
-%%   <<"Parts">> => list(object_part()),
-%%   <<"TotalPartsCount">> => integer()
-%% }
--type get_object_attributes_parts() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_objects_v2_output() :: #{
-%%   <<"CommonPrefixes">> => list(common_prefix()),
-%%   <<"Contents">> => list(object()),
-%%   <<"ContinuationToken">> => string(),
-%%   <<"Delimiter">> => string(),
-%%   <<"EncodingType">> => list(any()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"KeyCount">> => integer(),
-%%   <<"MaxKeys">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NextContinuationToken">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"StartAfter">> => string()
-%% }
--type list_objects_v2_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% condition() :: #{
-%%   <<"HttpErrorCodeReturnedEquals">> => string(),
-%%   <<"KeyPrefixEquals">> => string()
-%% }
--type condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_output() :: #{
-%%   <<"ContentRange">> => string(),
-%%   <<"StorageClass">> => list(any()),
-%%   <<"Expiration">> => string(),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"Body">> => binary(),
-%%   <<"AcceptRanges">> => string(),
-%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"VersionId">> => string(),
-%%   <<"PartsCount">> => integer(),
-%%   <<"ContentLength">> => float(),
-%%   <<"WebsiteRedirectLocation">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"CacheControl">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ObjectLockMode">> => list(any()),
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"Metadata">> => map(),
-%%   <<"ReplicationStatus">> => list(any()),
-%%   <<"Expires">> => string(),
-%%   <<"ContentLanguage">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"TagCount">> => integer(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"Restore">> => string(),
-%%   <<"DeleteMarker">> => boolean(),
-%%   <<"ContentEncoding">> => string(),
-%%   <<"ContentDisposition">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumType">> => list(any()),
-%%   <<"ContentType">> => string(),
-%%   <<"MissingMeta">> => integer(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"ServerSideEncryption">> => list(any()),
-%%   <<"SSECustomerAlgorithm">> => string()
-%% }
--type get_object_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"AccessControlList">> => list(grant()),
-%%   <<"BucketName">> => string(),
-%%   <<"CannedACL">> => list(any()),
-%%   <<"Encryption">> => encryption(),
-%%   <<"Prefix">> => string(),
-%%   <<"StorageClass">> => list(any()),
-%%   <<"Tagging">> => tagging(),
-%%   <<"UserMetadata">> => list(metadata_entry())
-%% }
--type s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_bucket_metadata_journal_table_configuration_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"JournalTableConfiguration">> := journal_table_configuration_updates()
-%% }
--type update_bucket_metadata_journal_table_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% object() :: #{
-%%   <<"ChecksumAlgorithm">> => list(list(any())()),
-%%   <<"ChecksumType">> => list(any()),
-%%   <<"ETag">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"Owner">> => owner(),
-%%   <<"RestoreStatus">> => restore_status(),
-%%   <<"Size">> => float(),
-%%   <<"StorageClass">> => list(any())
-%% }
--type object() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_object_annotation_request() :: #{
-%%   <<"AnnotationName">> := string(),
-%%   <<"AnnotationPayload">> := binary(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"ObjectIfMatch">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type put_object_annotation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% progress_event() :: #{
-%%   <<"Details">> => progress()
-%% }
--type progress_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% complete_multipart_upload_output() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ChecksumType">> => list(any()),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"Expiration">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"Location">> => string(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ServerSideEncryption">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type complete_multipart_upload_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_metadata_table_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_metadata_table_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% server_side_encryption_configuration() :: #{
-%%   <<"Rules">> => list(server_side_encryption_rule())
-%% }
--type server_side_encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_acl_output() :: #{
-%%   <<"Grants">> => list(grant()),
-%%   <<"Owner">> => owner(),
-%%   <<"RequestCharged">> => list(any())
-%% }
--type get_object_acl_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_encryption_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"ServerSideEncryptionConfiguration">> := server_side_encryption_configuration()
-%% }
--type put_bucket_encryption_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% abac_status() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type abac_status() :: #{binary() => any()}.
+-type csv_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2534,134 +900,63 @@
 
 
 %% Example:
-%% ownership_controls() :: #{
-%%   <<"Rules">> => list(ownership_controls_rule())
+%% delete() :: #{
+%%   <<"Objects">> => list(object_identifier()),
+%%   <<"Quiet">> => boolean()
 %% }
--type ownership_controls() :: #{binary() => any()}.
+-type delete() :: #{binary() => any()}.
 
 
 %% Example:
-%% notification_configuration() :: #{
-%%   <<"EventBridgeConfiguration">> => event_bridge_configuration(),
-%%   <<"LambdaFunctionConfigurations">> => list(lambda_function_configuration()),
-%%   <<"QueueConfigurations">> => list(queue_configuration()),
-%%   <<"TopicConfigurations">> => list(topic_configuration())
+%% delete_bucket_analytics_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
 %% }
--type notification_configuration() :: #{binary() => any()}.
+-type delete_bucket_analytics_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% object_lock_configuration() :: #{
-%%   <<"ObjectLockEnabled">> => list(any()),
-%%   <<"Rule">> => object_lock_rule()
-%% }
--type object_lock_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_abac_request() :: #{
-%%   <<"AbacStatus">> := abac_status(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
+%% delete_bucket_cors_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
--type put_bucket_abac_request() :: #{binary() => any()}.
+-type delete_bucket_cors_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% rename_object_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"DestinationIfMatch">> => string(),
-%%   <<"DestinationIfModifiedSince">> => non_neg_integer(),
-%%   <<"DestinationIfNoneMatch">> => string(),
-%%   <<"DestinationIfUnmodifiedSince">> => non_neg_integer(),
-%%   <<"RenameSource">> := string(),
-%%   <<"SourceIfMatch">> => string(),
-%%   <<"SourceIfModifiedSince">> => non_neg_integer(),
-%%   <<"SourceIfNoneMatch">> => string(),
-%%   <<"SourceIfUnmodifiedSince">> => non_neg_integer()
-%% }
--type rename_object_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_metadata_configuration_output() :: #{
-%%   <<"GetBucketMetadataConfigurationResult">> => get_bucket_metadata_configuration_result()
-%% }
--type get_bucket_metadata_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_lifecycle_configuration_request() :: #{
+%% delete_bucket_encryption_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
--type get_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+-type delete_bucket_encryption_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_objects_output() :: #{
-%%   <<"Deleted">> => list(deleted_object()),
-%%   <<"Errors">> => list(error()),
-%%   <<"RequestCharged">> => list(any())
+%% delete_bucket_intelligent_tiering_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
 %% }
--type delete_objects_output() :: #{binary() => any()}.
+-type delete_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_object_acl_output() :: #{
-%%   <<"RequestCharged">> => list(any())
+%% delete_bucket_inventory_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
 %% }
--type put_object_acl_output() :: #{binary() => any()}.
+-type delete_bucket_inventory_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_objects_output() :: #{
-%%   <<"CommonPrefixes">> => list(common_prefix()),
-%%   <<"Contents">> => list(object()),
-%%   <<"Delimiter">> => string(),
-%%   <<"EncodingType">> => list(any()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"Marker">> => string(),
-%%   <<"MaxKeys">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NextMarker">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"RequestCharged">> => list(any())
+%% delete_bucket_lifecycle_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
 %% }
--type list_objects_output() :: #{binary() => any()}.
+-type delete_bucket_lifecycle_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% checksum() :: #{
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ChecksumType">> => list(any()),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"ChecksumXXHASH64">> => string()
+%% delete_bucket_metadata_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
 %% }
--type checksum() :: #{binary() => any()}.
-
-%% Example:
-%% event_bridge_configuration() :: #{}
--type event_bridge_configuration() :: #{}.
-
-
-%% Example:
-%% get_bucket_versioning_output() :: #{
-%%   <<"MFADelete">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type get_bucket_versioning_output() :: #{binary() => any()}.
-
-%% Example:
-%% no_such_bucket() :: #{}
--type no_such_bucket() :: #{}.
+-type delete_bucket_metadata_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2672,114 +967,137 @@
 
 
 %% Example:
-%% get_bucket_metrics_configuration_request() :: #{
+%% delete_bucket_metrics_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Id">> := string()
 %% }
--type get_bucket_metrics_configuration_request() :: #{binary() => any()}.
+-type delete_bucket_metrics_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_bucket_policy_request() :: #{
+%% delete_bucket_ownership_controls_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
--type get_bucket_policy_request() :: #{binary() => any()}.
+-type delete_bucket_ownership_controls_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% bucket_logging_status() :: #{
-%%   <<"LoggingEnabled">> => logging_enabled()
-%% }
--type bucket_logging_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_lock_configuration_request() :: #{
+%% delete_bucket_policy_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
--type get_object_lock_configuration_request() :: #{binary() => any()}.
+-type delete_bucket_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% metadata_configuration() :: #{
-%%   <<"AnnotationTableConfiguration">> => annotation_table_configuration(),
-%%   <<"InventoryTableConfiguration">> => inventory_table_configuration(),
-%%   <<"JournalTableConfiguration">> => journal_table_configuration()
+%% delete_bucket_replication_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
 %% }
--type metadata_configuration() :: #{binary() => any()}.
+-type delete_bucket_replication_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% copy_object_request() :: #{
-%%   <<"StorageClass">> => list(any()),
-%%   <<"SSECustomerKey">> => string(),
-%%   <<"ExpectedSourceBucketOwner">> => string(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"CopySourceIfMatch">> => string(),
-%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
-%%   <<"ACL">> => list(any()),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
-%%   <<"TaggingDirective">> => list(any()),
-%%   <<"GrantRead">> => string(),
-%%   <<"CopySourceIfUnmodifiedSince">> => non_neg_integer(),
-%%   <<"Tagging">> => string(),
-%%   <<"WebsiteRedirectLocation">> => string(),
-%%   <<"AnnotationDirective">> => list(any()),
-%%   <<"CacheControl">> => string(),
-%%   <<"CopySourceSSECustomerKeyMD5">> => string(),
-%%   <<"GrantFullControl">> => string(),
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ObjectLockMode">> => list(any()),
-%%   <<"CopySourceSSECustomerKey">> => string(),
+%% delete_bucket_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_tagging_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_bucket_website_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type delete_bucket_website_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_marker_entry() :: #{
+%%   <<"IsLatest">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Owner">> => owner(),
+%%   <<"VersionId">> => string()
+%% }
+-type delete_marker_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_marker_replication() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_marker_replication() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_object_annotation_output() :: #{
+%%   <<"ObjectVersionId">> => string(),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type delete_object_annotation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_object_annotation_request() :: #{
+%%   <<"AnnotationName">> := string(),
 %%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"CopySourceIfModifiedSince">> => non_neg_integer(),
-%%   <<"Metadata">> => map(),
-%%   <<"GrantWriteACP">> => string(),
-%%   <<"Expires">> => string(),
-%%   <<"ContentLanguage">> => string(),
-%%   <<"IfMatch">> => string(),
-%%   <<"CopySourceSSECustomerAlgorithm">> => string(),
-%%   <<"ContentEncoding">> => string(),
-%%   <<"ContentDisposition">> => string(),
-%%   <<"CopySource">> := string(),
-%%   <<"SSEKMSEncryptionContext">> => string(),
-%%   <<"ContentType">> => string(),
-%%   <<"MetadataDirective">> => list(any()),
-%%   <<"GrantReadACP">> => string(),
-%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"ObjectIfMatch">> => string(),
 %%   <<"RequestPayer">> => list(any()),
-%%   <<"IfNoneMatch">> => string(),
-%%   <<"SSECustomerAlgorithm">> => string(),
-%%   <<"CopySourceIfNoneMatch">> => string()
+%%   <<"VersionId">> => string()
 %% }
--type copy_object_request() :: #{binary() => any()}.
+-type delete_object_annotation_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_directory_buckets_request() :: #{
-%%   <<"ContinuationToken">> => string(),
-%%   <<"MaxDirectoryBuckets">> => integer()
+%% delete_object_output() :: #{
+%%   <<"DeleteMarker">> => boolean(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"VersionId">> => string()
 %% }
--type list_directory_buckets_request() :: #{binary() => any()}.
+-type delete_object_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_bucket_ownership_controls_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
+%% delete_object_request() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
 %%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"OwnershipControls">> := ownership_controls()
+%%   <<"IfMatch">> => string(),
+%%   <<"IfMatchLastModifiedTime">> => non_neg_integer(),
+%%   <<"IfMatchSize">> => float(),
+%%   <<"MFA">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
 %% }
--type put_bucket_ownership_controls_request() :: #{binary() => any()}.
+-type delete_object_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_bucket_lifecycle_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
+%% delete_object_tagging_output() :: #{
+%%   <<"VersionId">> => string()
 %% }
--type delete_bucket_lifecycle_request() :: #{binary() => any()}.
+-type delete_object_tagging_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_object_tagging_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type delete_object_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_objects_output() :: #{
+%%   <<"Deleted">> => list(deleted_object()),
+%%   <<"Errors">> => list(error()),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type delete_objects_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2795,336 +1113,20 @@
 
 
 %% Example:
-%% get_public_access_block_output() :: #{
-%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration()
-%% }
--type get_public_access_block_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_metadata_configuration_request() :: #{
+%% delete_public_access_block_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
--type get_bucket_metadata_configuration_request() :: #{binary() => any()}.
+-type delete_public_access_block_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% restore_status() :: #{
-%%   <<"IsRestoreInProgress">> => boolean(),
-%%   <<"RestoreExpiryDate">> => non_neg_integer()
-%% }
--type restore_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% analytics_and_operator() :: #{
-%%   <<"Prefix">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type analytics_and_operator() :: #{binary() => any()}.
-
-
-%% Example:
-%% bucket() :: #{
-%%   <<"BucketArn">> => string(),
-%%   <<"BucketRegion">> => string(),
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"Name">> => string()
-%% }
--type bucket() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_marker_replication() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type delete_marker_replication() :: #{binary() => any()}.
-
-
-%% Example:
-%% inventory_encryption() :: #{
-%%   <<"SSEKMS">> => sse_kms(),
-%%   <<"SSES3">> => sse_s3()
-%% }
--type inventory_encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bucket_request() :: #{
-%%   <<"ACL">> => list(any()),
-%%   <<"BucketNamespace">> => list(any()),
-%%   <<"CreateBucketConfiguration">> => create_bucket_configuration(),
-%%   <<"GrantFullControl">> => string(),
-%%   <<"GrantRead">> => string(),
-%%   <<"GrantReadACP">> => string(),
-%%   <<"GrantWrite">> => string(),
-%%   <<"GrantWriteACP">> => string(),
-%%   <<"ObjectLockEnabledForBucket">> => boolean(),
-%%   <<"ObjectOwnership">> => list(any())
-%% }
--type create_bucket_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_class_analysis_data_export() :: #{
-%%   <<"Destination">> => analytics_export_destination(),
-%%   <<"OutputSchemaVersion">> => list(any())
-%% }
--type storage_class_analysis_data_export() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_accelerate_configuration_request() :: #{
-%%   <<"AccelerateConfiguration">> := accelerate_configuration(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type put_bucket_accelerate_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% c_o_r_s_rule() :: #{
-%%   <<"AllowedHeaders">> => list(string()),
-%%   <<"AllowedMethods">> => list(string()),
-%%   <<"AllowedOrigins">> => list(string()),
-%%   <<"ExposeHeaders">> => list(string()),
-%%   <<"ID">> => string(),
-%%   <<"MaxAgeSeconds">> => integer()
-%% }
--type c_o_r_s_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_acl_request() :: #{
-%%   <<"ACL">> => list(any()),
-%%   <<"AccessControlPolicy">> => access_control_policy(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"GrantFullControl">> => string(),
-%%   <<"GrantRead">> => string(),
-%%   <<"GrantReadACP">> => string(),
-%%   <<"GrantWrite">> => string(),
-%%   <<"GrantWriteACP">> => string()
-%% }
--type put_bucket_acl_request() :: #{binary() => any()}.
-
-%% Example:
-%% simple_prefix() :: #{}
--type simple_prefix() :: #{}.
-
-
-%% Example:
-%% existing_object_replication() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type existing_object_replication() :: #{binary() => any()}.
-
-
-%% Example:
-%% transition() :: #{
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"Days">> => integer(),
-%%   <<"StorageClass">> => list(any())
-%% }
--type transition() :: #{binary() => any()}.
-
-
-%% Example:
-%% index_document() :: #{
-%%   <<"Suffix">> => string()
-%% }
--type index_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% intelligent_tiering_filter() :: #{
-%%   <<"And">> => intelligent_tiering_and_operator(),
-%%   <<"Prefix">> => string(),
-%%   <<"Tag">> => tag()
-%% }
--type intelligent_tiering_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_torrent_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"RequestPayer">> => list(any())
-%% }
--type get_object_torrent_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_metrics_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"MetricsConfiguration">> := metrics_configuration()
-%% }
--type put_bucket_metrics_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_object_retention_request() :: #{
-%%   <<"BypassGovernanceRetention">> => boolean(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"Retention">> => object_lock_retention(),
+%% deleted_object() :: #{
+%%   <<"DeleteMarker">> => boolean(),
+%%   <<"DeleteMarkerVersionId">> => string(),
+%%   <<"Key">> => string(),
 %%   <<"VersionId">> => string()
 %% }
--type put_object_retention_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_buckets_request() :: #{
-%%   <<"BucketRegion">> => string(),
-%%   <<"ContinuationToken">> => string(),
-%%   <<"MaxBuckets">> => integer(),
-%%   <<"Prefix">> => string()
-%% }
--type list_buckets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% part() :: #{
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"PartNumber">> => integer(),
-%%   <<"Size">> => float()
-%% }
--type part() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_tagging_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_tagging_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% record_expiration() :: #{
-%%   <<"Days">> => integer(),
-%%   <<"Expiration">> => list(any())
-%% }
--type record_expiration() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_part() :: #{
-%%   <<"ChecksumCRC32">> => string(),
-%%   <<"ChecksumCRC32C">> => string(),
-%%   <<"ChecksumCRC64NVME">> => string(),
-%%   <<"ChecksumMD5">> => string(),
-%%   <<"ChecksumSHA1">> => string(),
-%%   <<"ChecksumSHA256">> => string(),
-%%   <<"ChecksumSHA512">> => string(),
-%%   <<"ChecksumXXHASH128">> => string(),
-%%   <<"ChecksumXXHASH3">> => string(),
-%%   <<"ChecksumXXHASH64">> => string(),
-%%   <<"PartNumber">> => integer(),
-%%   <<"Size">> => float()
-%% }
--type object_part() :: #{binary() => any()}.
-
-%% Example:
-%% end_event() :: #{}
--type end_event() :: #{}.
-
-
-%% Example:
-%% metadata_entry() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type metadata_entry() :: #{binary() => any()}.
-
-%% Example:
-%% sse_s3() :: #{}
--type sse_s3() :: #{}.
-
-
-%% Example:
-%% get_bucket_logging_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_logging_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_acl_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type get_object_acl_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_rule() :: #{
-%%   <<"DeleteMarkerReplication">> => delete_marker_replication(),
-%%   <<"Destination">> => destination(),
-%%   <<"ExistingObjectReplication">> => existing_object_replication(),
-%%   <<"Filter">> => replication_rule_filter(),
-%%   <<"ID">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"Priority">> => integer(),
-%%   <<"SourceSelectionCriteria">> => source_selection_criteria(),
-%%   <<"Status">> => list(any())
-%% }
--type replication_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% inventory_table_configuration() :: #{
-%%   <<"ConfigurationState">> => list(any()),
-%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration()
-%% }
--type inventory_table_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_objects_v2_request() :: #{
-%%   <<"ContinuationToken">> => string(),
-%%   <<"Delimiter">> => string(),
-%%   <<"EncodingType">> => list(any()),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"FetchOwner">> => boolean(),
-%%   <<"MaxKeys">> => integer(),
-%%   <<"OptionalObjectAttributes">> => list(list(any())()),
-%%   <<"Prefix">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"StartAfter">> => string()
-%% }
--type list_objects_v2_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_bucket_output() :: #{
-%%   <<"BucketArn">> => string(),
-%%   <<"Location">> => string()
-%% }
--type create_bucket_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_intelligent_tiering_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"IntelligentTieringConfiguration">> := intelligent_tiering_configuration()
-%% }
--type put_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
+-type deleted_object() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3141,6 +1143,83 @@
 
 
 %% Example:
+%% destination_result() :: #{
+%%   <<"TableBucketArn">> => string(),
+%%   <<"TableBucketType">> => list(any()),
+%%   <<"TableNamespace">> => string()
+%% }
+-type destination_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"KMSContext">> => string(),
+%%   <<"KMSKeyId">> => string()
+%% }
+-type encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"ReplicaKmsKeyID">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_type_mismatch() :: #{}
+-type encryption_type_mismatch() :: #{}.
+
+%% Example:
+%% end_event() :: #{}
+-type end_event() :: #{}.
+
+
+%% Example:
+%% error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type error() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_details() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_document() :: #{
+%%   <<"Key">> => string()
+%% }
+-type error_document() :: #{binary() => any()}.
+
+%% Example:
+%% event_bridge_configuration() :: #{}
+-type event_bridge_configuration() :: #{}.
+
+
+%% Example:
+%% existing_object_replication() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type existing_object_replication() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_rule() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type filter_rule() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_bucket_abac_output() :: #{
 %%   <<"AbacStatus">> => abac_status()
 %% }
@@ -3148,51 +1227,357 @@
 
 
 %% Example:
-%% head_bucket_request() :: #{
+%% get_bucket_abac_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
--type head_bucket_request() :: #{binary() => any()}.
+-type get_bucket_abac_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% lifecycle_expiration() :: #{
-%%   <<"Date">> => non_neg_integer(),
-%%   <<"Days">> => integer(),
-%%   <<"ExpiredObjectDeleteMarker">> => boolean()
+%% get_bucket_accelerate_configuration_output() :: #{
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type lifecycle_expiration() :: #{binary() => any()}.
+-type get_bucket_accelerate_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_control_policy() :: #{
+%% get_bucket_accelerate_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any())
+%% }
+-type get_bucket_accelerate_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_acl_output() :: #{
 %%   <<"Grants">> => list(grant()),
 %%   <<"Owner">> => owner()
 %% }
--type access_control_policy() :: #{binary() => any()}.
+-type get_bucket_acl_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_bucket_analytics_configuration_request() :: #{
-%%   <<"AnalyticsConfiguration">> := analytics_configuration(),
+%% get_bucket_acl_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_analytics_configuration_output() :: #{
+%%   <<"AnalyticsConfiguration">> => analytics_configuration()
+%% }
+-type get_bucket_analytics_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_analytics_configuration_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Id">> := string()
 %% }
--type put_bucket_analytics_configuration_request() :: #{binary() => any()}.
+-type get_bucket_analytics_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% object_lock_retention() :: #{
-%%   <<"Mode">> => list(any()),
-%%   <<"RetainUntilDate">> => non_neg_integer()
+%% get_bucket_cors_output() :: #{
+%%   <<"CORSRules">> => list(c_o_r_s_rule())
 %% }
--type object_lock_retention() :: #{binary() => any()}.
+-type get_bucket_cors_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_object_tagging_output() :: #{
+%% get_bucket_cors_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_cors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_encryption_output() :: #{
+%%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration()
+%% }
+-type get_bucket_encryption_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_encryption_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_encryption_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_intelligent_tiering_configuration_output() :: #{
+%%   <<"IntelligentTieringConfiguration">> => intelligent_tiering_configuration()
+%% }
+-type get_bucket_intelligent_tiering_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_intelligent_tiering_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type get_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_inventory_configuration_output() :: #{
+%%   <<"InventoryConfiguration">> => inventory_configuration()
+%% }
+-type get_bucket_inventory_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_inventory_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type get_bucket_inventory_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_lifecycle_configuration_output() :: #{
+%%   <<"Rules">> => list(lifecycle_rule()),
+%%   <<"TransitionDefaultMinimumObjectSize">> => list(any())
+%% }
+-type get_bucket_lifecycle_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_lifecycle_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_location_output() :: #{
+%%   <<"LocationConstraint">> => list(any())
+%% }
+-type get_bucket_location_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_location_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_location_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_logging_output() :: #{
+%%   <<"LoggingEnabled">> => logging_enabled()
+%% }
+-type get_bucket_logging_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_logging_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_logging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_metadata_configuration_output() :: #{
+%%   <<"GetBucketMetadataConfigurationResult">> => get_bucket_metadata_configuration_result()
+%% }
+-type get_bucket_metadata_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_metadata_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_metadata_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_metadata_configuration_result() :: #{
+%%   <<"MetadataConfigurationResult">> => metadata_configuration_result()
+%% }
+-type get_bucket_metadata_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_metadata_table_configuration_output() :: #{
+%%   <<"GetBucketMetadataTableConfigurationResult">> => get_bucket_metadata_table_configuration_result()
+%% }
+-type get_bucket_metadata_table_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_metadata_table_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_metadata_table_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_metadata_table_configuration_result() :: #{
+%%   <<"Error">> => error_details(),
+%%   <<"MetadataTableConfigurationResult">> => metadata_table_configuration_result(),
+%%   <<"Status">> => string()
+%% }
+-type get_bucket_metadata_table_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_metrics_configuration_output() :: #{
+%%   <<"MetricsConfiguration">> => metrics_configuration()
+%% }
+-type get_bucket_metrics_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_metrics_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type get_bucket_metrics_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_notification_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_notification_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_ownership_controls_output() :: #{
+%%   <<"OwnershipControls">> => ownership_controls()
+%% }
+-type get_bucket_ownership_controls_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_ownership_controls_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_ownership_controls_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_policy_output() :: #{
+%%   <<"Policy">> => string()
+%% }
+-type get_bucket_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_policy_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_policy_status_output() :: #{
+%%   <<"PolicyStatus">> => policy_status()
+%% }
+-type get_bucket_policy_status_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_policy_status_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_policy_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_replication_output() :: #{
+%%   <<"ReplicationConfiguration">> => replication_configuration()
+%% }
+-type get_bucket_replication_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_replication_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_request_payment_output() :: #{
+%%   <<"Payer">> => list(any())
+%% }
+-type get_bucket_request_payment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_request_payment_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_request_payment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_tagging_output() :: #{
+%%   <<"TagSet">> => list(tag())
+%% }
+-type get_bucket_tagging_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_tagging_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_versioning_output() :: #{
+%%   <<"MFADelete">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_bucket_versioning_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_versioning_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_versioning_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_website_output() :: #{
+%%   <<"ErrorDocument">> => error_document(),
+%%   <<"IndexDocument">> => index_document(),
+%%   <<"RedirectAllRequestsTo">> => redirect_all_requests_to(),
+%%   <<"RoutingRules">> => list(routing_rule())
+%% }
+-type get_bucket_website_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_bucket_website_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_bucket_website_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_acl_output() :: #{
+%%   <<"Grants">> => list(grant()),
+%%   <<"Owner">> => owner(),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type get_object_acl_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_acl_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
 %%   <<"VersionId">> => string()
 %% }
--type put_object_tagging_output() :: #{binary() => any()}.
+-type get_object_acl_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3221,20 +1606,6 @@
 
 
 %% Example:
-%% upload_part_copy_output() :: #{
-%%   <<"BucketKeyEnabled">> => boolean(),
-%%   <<"CopyPartResult">> => copy_part_result(),
-%%   <<"CopySourceVersionId">> => string(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"SSECustomerAlgorithm">> => string(),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ServerSideEncryption">> => list(any())
-%% }
--type upload_part_copy_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% get_object_annotation_request() :: #{
 %%   <<"AnnotationName">> := string(),
 %%   <<"ChecksumMode">> => list(any()),
@@ -3246,350 +1617,124 @@
 
 
 %% Example:
-%% get_bucket_location_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_location_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% multipart_upload() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ChecksumType">> => list(any()),
-%%   <<"Initiated">> => non_neg_integer(),
-%%   <<"Initiator">> => initiator(),
-%%   <<"Key">> => string(),
-%%   <<"Owner">> => owner(),
-%%   <<"StorageClass">> => list(any()),
-%%   <<"UploadId">> => string()
-%% }
--type multipart_upload() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_tagging_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Tagging">> := tagging()
-%% }
--type put_bucket_tagging_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% partitioned_prefix() :: #{
-%%   <<"PartitionDateSource">> => list(any())
-%% }
--type partitioned_prefix() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bucket_inventory_configurations_request() :: #{
-%%   <<"ContinuationToken">> => string(),
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type list_bucket_inventory_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_multipart_uploads_output() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"CommonPrefixes">> => list(common_prefix()),
-%%   <<"Delimiter">> => string(),
-%%   <<"EncodingType">> => list(any()),
-%%   <<"IsTruncated">> => boolean(),
-%%   <<"KeyMarker">> => string(),
-%%   <<"MaxUploads">> => integer(),
-%%   <<"NextKeyMarker">> => string(),
-%%   <<"NextUploadIdMarker">> => string(),
-%%   <<"Prefix">> => string(),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"UploadIdMarker">> => string(),
-%%   <<"Uploads">> => list(multipart_upload())
-%% }
--type list_multipart_uploads_output() :: #{binary() => any()}.
-
-%% Example:
-%% encryption_type_mismatch() :: #{}
--type encryption_type_mismatch() :: #{}.
-
-
-%% Example:
-%% sse_kms() :: #{
-%%   <<"KeyId">> => string()
-%% }
--type sse_kms() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_object_lock_configuration_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ContentMD5">> => string(),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"ObjectLockConfiguration">> => object_lock_configuration(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"Token">> => string()
-%% }
--type put_object_lock_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_object_output() :: #{
+%% get_object_attributes_output() :: #{
+%%   <<"Checksum">> => checksum(),
 %%   <<"DeleteMarker">> => boolean(),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"ObjectParts">> => get_object_attributes_parts(),
+%%   <<"ObjectSize">> => float(),
 %%   <<"RequestCharged">> => list(any()),
+%%   <<"StorageClass">> => list(any()),
 %%   <<"VersionId">> => string()
 %% }
--type delete_object_output() :: #{binary() => any()}.
+-type get_object_attributes_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% completed_multipart_upload() :: #{
-%%   <<"Parts">> => list(completed_part())
-%% }
--type completed_multipart_upload() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_parts_output() :: #{
-%%   <<"AbortDate">> => non_neg_integer(),
-%%   <<"AbortRuleId">> => string(),
-%%   <<"Bucket">> => string(),
-%%   <<"ChecksumAlgorithm">> => list(any()),
-%%   <<"ChecksumType">> => list(any()),
-%%   <<"Initiator">> => initiator(),
+%% get_object_attributes_parts() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Key">> => string(),
 %%   <<"MaxParts">> => integer(),
 %%   <<"NextPartNumberMarker">> => string(),
-%%   <<"Owner">> => owner(),
 %%   <<"PartNumberMarker">> => string(),
-%%   <<"Parts">> => list(part()),
-%%   <<"RequestCharged">> => list(any()),
-%%   <<"StorageClass">> => list(any()),
-%%   <<"UploadId">> => string()
+%%   <<"Parts">> => list(object_part()),
+%%   <<"TotalPartsCount">> => integer()
 %% }
--type list_parts_output() :: #{binary() => any()}.
+-type get_object_attributes_parts() :: #{binary() => any()}.
 
 
 %% Example:
-%% csv_output() :: #{
-%%   <<"FieldDelimiter">> => string(),
-%%   <<"QuoteCharacter">> => string(),
-%%   <<"QuoteEscapeCharacter">> => string(),
-%%   <<"QuoteFields">> => list(any()),
-%%   <<"RecordDelimiter">> => string()
-%% }
--type csv_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_analytics_configuration_output() :: #{
-%%   <<"AnalyticsConfiguration">> => analytics_configuration()
-%% }
--type get_bucket_analytics_configuration_output() :: #{binary() => any()}.
-
-%% Example:
-%% not_found() :: #{}
--type not_found() :: #{}.
-
-
-%% Example:
-%% replication_rule_and_operator() :: #{
-%%   <<"Prefix">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type replication_rule_and_operator() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_retention_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type get_object_retention_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_object_encryption_response() :: #{
-%%   <<"RequestCharged">> => list(any())
-%% }
--type update_object_encryption_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% abort_multipart_upload_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"IfMatchInitiatedTime">> => non_neg_integer(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"UploadId">> := string()
-%% }
--type abort_multipart_upload_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tiering() :: #{
-%%   <<"AccessTier">> => list(any()),
-%%   <<"Days">> => integer()
-%% }
--type tiering() :: #{binary() => any()}.
-
-
-%% Example:
-%% head_object_request() :: #{
-%%   <<"ChecksumMode">> => list(any()),
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"IfMatch">> => string(),
-%%   <<"IfModifiedSince">> => non_neg_integer(),
-%%   <<"IfNoneMatch">> => string(),
-%%   <<"IfUnmodifiedSince">> => non_neg_integer(),
-%%   <<"PartNumber">> => integer(),
-%%   <<"Range">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"ResponseCacheControl">> => string(),
-%%   <<"ResponseContentDisposition">> => string(),
-%%   <<"ResponseContentEncoding">> => string(),
-%%   <<"ResponseContentLanguage">> => string(),
-%%   <<"ResponseContentType">> => string(),
-%%   <<"ResponseExpires">> => non_neg_integer(),
-%%   <<"SSECustomerAlgorithm">> => string(),
-%%   <<"SSECustomerKey">> => string(),
-%%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"VersionId">> => string()
-%% }
--type head_object_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_public_access_block_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_public_access_block_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% inventory_table_configuration_updates() :: #{
-%%   <<"ConfigurationState">> => list(any()),
-%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration()
-%% }
--type inventory_table_configuration_updates() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_metadata_table_configuration_output() :: #{
-%%   <<"GetBucketMetadataTableConfigurationResult">> => get_bucket_metadata_table_configuration_result()
-%% }
--type get_bucket_metadata_table_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_cors_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_cors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% glacier_job_parameters() :: #{
-%%   <<"Tier">> => list(any())
-%% }
--type glacier_job_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% no_such_upload() :: #{}
--type no_such_upload() :: #{}.
-
-
-%% Example:
-%% inventory_destination() :: #{
-%%   <<"S3BucketDestination">> => inventory_s3_bucket_destination()
-%% }
--type inventory_destination() :: #{binary() => any()}.
-
-%% Example:
-%% unsupported_media_type() :: #{}
--type unsupported_media_type() :: #{}.
-
-
-%% Example:
-%% list_parts_request() :: #{
+%% get_object_attributes_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"MaxParts">> => integer(),
+%%   <<"ObjectAttributes">> := list(list(any())()),
 %%   <<"PartNumberMarker">> => string(),
 %%   <<"RequestPayer">> => list(any()),
 %%   <<"SSECustomerAlgorithm">> => string(),
 %%   <<"SSECustomerKey">> => string(),
 %%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"UploadId">> := string()
+%%   <<"VersionId">> => string()
 %% }
--type list_parts_request() :: #{binary() => any()}.
+-type get_object_attributes_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% object_lock_legal_hold() :: #{
-%%   <<"Status">> => list(any())
+%% get_object_legal_hold_output() :: #{
+%%   <<"LegalHold">> => object_lock_legal_hold()
 %% }
--type object_lock_legal_hold() :: #{binary() => any()}.
+-type get_object_legal_hold_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% replication_time() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"Time">> => replication_time_value()
-%% }
--type replication_time() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_metrics_configuration_output() :: #{
-%%   <<"MetricsConfiguration">> => metrics_configuration()
-%% }
--type get_bucket_metrics_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% metadata_table_encryption_configuration() :: #{
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"SseAlgorithm">> => list(any())
-%% }
--type metadata_table_encryption_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_directory_buckets_output() :: #{
-%%   <<"Buckets">> => list(bucket()),
-%%   <<"ContinuationToken">> => string()
-%% }
--type list_directory_buckets_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% request_progress() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type request_progress() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_lifecycle_configuration_request() :: #{
-%%   <<"ChecksumAlgorithm">> => list(any()),
+%% get_object_legal_hold_request() :: #{
 %%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"LifecycleConfiguration">> => bucket_lifecycle_configuration(),
-%%   <<"TransitionDefaultMinimumObjectSize">> => list(any())
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
 %% }
--type put_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+-type get_object_legal_hold_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% output_serialization() :: #{
-%%   <<"CSV">> => csv_output(),
-%%   <<"JSON">> => json_output()
+%% get_object_lock_configuration_output() :: #{
+%%   <<"ObjectLockConfiguration">> => object_lock_configuration()
 %% }
--type output_serialization() :: #{binary() => any()}.
+-type get_object_lock_configuration_output() :: #{binary() => any()}.
+
 
 %% Example:
-%% invalid_request() :: #{}
--type invalid_request() :: #{}.
+%% get_object_lock_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_object_lock_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_output() :: #{
+%%   <<"AcceptRanges">> => string(),
+%%   <<"Body">> => binary(),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"CacheControl">> => string(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentRange">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"DeleteMarker">> => boolean(),
+%%   <<"ETag">> => string(),
+%%   <<"Expiration">> => string(),
+%%   <<"Expires">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Metadata">> => map(),
+%%   <<"MissingMeta">> => integer(),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
+%%   <<"PartsCount">> => integer(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"Restore">> => string(),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"TagCount">> => integer(),
+%%   <<"VersionId">> => string(),
+%%   <<"WebsiteRedirectLocation">> => string()
+%% }
+-type get_object_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3618,6 +1763,599 @@
 
 
 %% Example:
+%% get_object_retention_output() :: #{
+%%   <<"Retention">> => object_lock_retention()
+%% }
+-type get_object_retention_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_retention_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_retention_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_tagging_output() :: #{
+%%   <<"TagSet">> => list(tag()),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_tagging_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_tagging_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type get_object_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_torrent_output() :: #{
+%%   <<"Body">> => binary(),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type get_object_torrent_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_torrent_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any())
+%% }
+-type get_object_torrent_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_access_block_output() :: #{
+%%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration()
+%% }
+-type get_public_access_block_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_public_access_block_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type get_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% glacier_job_parameters() :: #{
+%%   <<"Tier">> => list(any())
+%% }
+-type glacier_job_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% grant() :: #{
+%%   <<"Grantee">> => grantee(),
+%%   <<"Permission">> => list(any())
+%% }
+-type grant() :: #{binary() => any()}.
+
+
+%% Example:
+%% grantee() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"ID">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"URI">> => string()
+%% }
+-type grantee() :: #{binary() => any()}.
+
+
+%% Example:
+%% head_bucket_output() :: #{
+%%   <<"AccessPointAlias">> => boolean(),
+%%   <<"BucketArn">> => string(),
+%%   <<"BucketLocationName">> => string(),
+%%   <<"BucketLocationType">> => list(any()),
+%%   <<"BucketRegion">> => string()
+%% }
+-type head_bucket_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% head_bucket_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type head_bucket_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% head_object_output() :: #{
+%%   <<"AcceptRanges">> => string(),
+%%   <<"ArchiveStatus">> => list(any()),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"CacheControl">> => string(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentRange">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"DeleteMarker">> => boolean(),
+%%   <<"ETag">> => string(),
+%%   <<"Expiration">> => string(),
+%%   <<"Expires">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Metadata">> => map(),
+%%   <<"MissingMeta">> => integer(),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
+%%   <<"PartsCount">> => integer(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"Restore">> => string(),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"TagCount">> => integer(),
+%%   <<"VersionId">> => string(),
+%%   <<"WebsiteRedirectLocation">> => string()
+%% }
+-type head_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% head_object_request() :: #{
+%%   <<"ChecksumMode">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"IfMatch">> => string(),
+%%   <<"IfModifiedSince">> => non_neg_integer(),
+%%   <<"IfNoneMatch">> => string(),
+%%   <<"IfUnmodifiedSince">> => non_neg_integer(),
+%%   <<"PartNumber">> => integer(),
+%%   <<"Range">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"ResponseCacheControl">> => string(),
+%%   <<"ResponseContentDisposition">> => string(),
+%%   <<"ResponseContentEncoding">> => string(),
+%%   <<"ResponseContentLanguage">> => string(),
+%%   <<"ResponseContentType">> => string(),
+%%   <<"ResponseExpires">> => non_neg_integer(),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type head_object_request() :: #{binary() => any()}.
+
+%% Example:
+%% idempotency_parameter_mismatch() :: #{}
+-type idempotency_parameter_mismatch() :: #{}.
+
+
+%% Example:
+%% index_document() :: #{
+%%   <<"Suffix">> => string()
+%% }
+-type index_document() :: #{binary() => any()}.
+
+
+%% Example:
+%% initiator() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"ID">> => string()
+%% }
+-type initiator() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_serialization() :: #{
+%%   <<"CSV">> => csv_input(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"JSON">> => json_input(),
+%%   <<"Parquet">> => parquet_input()
+%% }
+-type input_serialization() :: #{binary() => any()}.
+
+
+%% Example:
+%% intelligent_tiering_and_operator() :: #{
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type intelligent_tiering_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% intelligent_tiering_configuration() :: #{
+%%   <<"Filter">> => intelligent_tiering_filter(),
+%%   <<"Id">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tierings">> => list(tiering())
+%% }
+-type intelligent_tiering_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% intelligent_tiering_filter() :: #{
+%%   <<"And">> => intelligent_tiering_and_operator(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tag">> => tag()
+%% }
+-type intelligent_tiering_filter() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_annotation_name() :: #{}
+-type invalid_annotation_name() :: #{}.
+
+
+%% Example:
+%% invalid_object_state() :: #{
+%%   <<"AccessTier">> => list(any()),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type invalid_object_state() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_prefix() :: #{}
+-type invalid_prefix() :: #{}.
+
+%% Example:
+%% invalid_request() :: #{}
+-type invalid_request() :: #{}.
+
+%% Example:
+%% invalid_write_offset() :: #{}
+-type invalid_write_offset() :: #{}.
+
+
+%% Example:
+%% inventory_configuration() :: #{
+%%   <<"Destination">> => inventory_destination(),
+%%   <<"Filter">> => inventory_filter(),
+%%   <<"Id">> => string(),
+%%   <<"IncludedObjectVersions">> => list(any()),
+%%   <<"IsEnabled">> => boolean(),
+%%   <<"OptionalFields">> => list(list(any())()),
+%%   <<"Schedule">> => inventory_schedule()
+%% }
+-type inventory_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_destination() :: #{
+%%   <<"S3BucketDestination">> => inventory_s3_bucket_destination()
+%% }
+-type inventory_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_encryption() :: #{
+%%   <<"SSEKMS">> => sse_kms(),
+%%   <<"SSES3">> => sse_s3()
+%% }
+-type inventory_encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_filter() :: #{
+%%   <<"Prefix">> => string()
+%% }
+-type inventory_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_s3_bucket_destination() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"Encryption">> => inventory_encryption(),
+%%   <<"Format">> => list(any()),
+%%   <<"Prefix">> => string()
+%% }
+-type inventory_s3_bucket_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_schedule() :: #{
+%%   <<"Frequency">> => list(any())
+%% }
+-type inventory_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_table_configuration() :: #{
+%%   <<"ConfigurationState">> => list(any()),
+%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration()
+%% }
+-type inventory_table_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_table_configuration_result() :: #{
+%%   <<"ConfigurationState">> => list(any()),
+%%   <<"Error">> => error_details(),
+%%   <<"TableArn">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableStatus">> => string()
+%% }
+-type inventory_table_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% inventory_table_configuration_updates() :: #{
+%%   <<"ConfigurationState">> => list(any()),
+%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration()
+%% }
+-type inventory_table_configuration_updates() :: #{binary() => any()}.
+
+
+%% Example:
+%% journal_table_configuration() :: #{
+%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration(),
+%%   <<"RecordExpiration">> => record_expiration()
+%% }
+-type journal_table_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% journal_table_configuration_result() :: #{
+%%   <<"Error">> => error_details(),
+%%   <<"RecordExpiration">> => record_expiration(),
+%%   <<"TableArn">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableStatus">> => string()
+%% }
+-type journal_table_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% journal_table_configuration_updates() :: #{
+%%   <<"RecordExpiration">> => record_expiration()
+%% }
+-type journal_table_configuration_updates() :: #{binary() => any()}.
+
+
+%% Example:
+%% json_input() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type json_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% json_output() :: #{
+%%   <<"RecordDelimiter">> => string()
+%% }
+-type json_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function_configuration() :: #{
+%%   <<"Events">> => list(list(any())()),
+%%   <<"Filter">> => notification_configuration_filter(),
+%%   <<"Id">> => string(),
+%%   <<"LambdaFunctionArn">> => string()
+%% }
+-type lambda_function_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_expiration() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Days">> => integer(),
+%%   <<"ExpiredObjectDeleteMarker">> => boolean()
+%% }
+-type lifecycle_expiration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule() :: #{
+%%   <<"AbortIncompleteMultipartUpload">> => abort_incomplete_multipart_upload(),
+%%   <<"Expiration">> => lifecycle_expiration(),
+%%   <<"Filter">> => lifecycle_rule_filter(),
+%%   <<"ID">> => string(),
+%%   <<"NoncurrentVersionExpiration">> => noncurrent_version_expiration(),
+%%   <<"NoncurrentVersionTransitions">> => list(noncurrent_version_transition()),
+%%   <<"Prefix">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Transitions">> => list(transition())
+%% }
+-type lifecycle_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule_and_operator() :: #{
+%%   <<"ObjectSizeGreaterThan">> => float(),
+%%   <<"ObjectSizeLessThan">> => float(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type lifecycle_rule_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_rule_filter() :: #{
+%%   <<"And">> => lifecycle_rule_and_operator(),
+%%   <<"ObjectSizeGreaterThan">> => float(),
+%%   <<"ObjectSizeLessThan">> => float(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tag">> => tag()
+%% }
+-type lifecycle_rule_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_analytics_configurations_output() :: #{
+%%   <<"AnalyticsConfigurationList">> => list(analytics_configuration()),
+%%   <<"ContinuationToken">> => string(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"NextContinuationToken">> => string()
+%% }
+-type list_bucket_analytics_configurations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_analytics_configurations_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type list_bucket_analytics_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_intelligent_tiering_configurations_output() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"IntelligentTieringConfigurationList">> => list(intelligent_tiering_configuration()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"NextContinuationToken">> => string()
+%% }
+-type list_bucket_intelligent_tiering_configurations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_intelligent_tiering_configurations_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type list_bucket_intelligent_tiering_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_inventory_configurations_output() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"InventoryConfigurationList">> => list(inventory_configuration()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"NextContinuationToken">> => string()
+%% }
+-type list_bucket_inventory_configurations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_inventory_configurations_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type list_bucket_inventory_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_metrics_configurations_output() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"MetricsConfigurationList">> => list(metrics_configuration()),
+%%   <<"NextContinuationToken">> => string()
+%% }
+-type list_bucket_metrics_configurations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_bucket_metrics_configurations_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type list_bucket_metrics_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_buckets_output() :: #{
+%%   <<"Buckets">> => list(bucket()),
+%%   <<"ContinuationToken">> => string(),
+%%   <<"Owner">> => owner(),
+%%   <<"Prefix">> => string()
+%% }
+-type list_buckets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_buckets_request() :: #{
+%%   <<"BucketRegion">> => string(),
+%%   <<"ContinuationToken">> => string(),
+%%   <<"MaxBuckets">> => integer(),
+%%   <<"Prefix">> => string()
+%% }
+-type list_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_directory_buckets_output() :: #{
+%%   <<"Buckets">> => list(bucket()),
+%%   <<"ContinuationToken">> => string()
+%% }
+-type list_directory_buckets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_directory_buckets_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"MaxDirectoryBuckets">> => integer()
+%% }
+-type list_directory_buckets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multipart_uploads_output() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"CommonPrefixes">> => list(common_prefix()),
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"KeyMarker">> => string(),
+%%   <<"MaxUploads">> => integer(),
+%%   <<"NextKeyMarker">> => string(),
+%%   <<"NextUploadIdMarker">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"UploadIdMarker">> => string(),
+%%   <<"Uploads">> => list(multipart_upload())
+%% }
+-type list_multipart_uploads_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multipart_uploads_request() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"KeyMarker">> => string(),
+%%   <<"MaxUploads">> => integer(),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"UploadIdMarker">> => string()
+%% }
+-type list_multipart_uploads_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_annotations_output() :: #{
+%%   <<"AnnotationCount">> => integer(),
+%%   <<"AnnotationPrefix">> => string(),
+%%   <<"Annotations">> => list(annotation_entry()),
+%%   <<"Bucket">> => string(),
+%%   <<"ContinuationToken">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"MaxAnnotationResults">> => integer(),
+%%   <<"NextContinuationToken">> => string(),
+%%   <<"ObjectVersionId">> => string(),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type list_object_annotations_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_object_annotations_request() :: #{
 %%   <<"AnnotationPrefix">> => string(),
 %%   <<"ContinuationToken">> => string(),
@@ -3630,6 +2368,218 @@
 
 
 %% Example:
+%% list_object_versions_output() :: #{
+%%   <<"CommonPrefixes">> => list(common_prefix()),
+%%   <<"DeleteMarkers">> => list(delete_marker_entry()),
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"KeyMarker">> => string(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextKeyMarker">> => string(),
+%%   <<"NextVersionIdMarker">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"VersionIdMarker">> => string(),
+%%   <<"Versions">> => list(object_version())
+%% }
+-type list_object_versions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_versions_request() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"KeyMarker">> => string(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"OptionalObjectAttributes">> => list(list(any())()),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionIdMarker">> => string()
+%% }
+-type list_object_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objects_output() :: #{
+%%   <<"CommonPrefixes">> => list(common_prefix()),
+%%   <<"Contents">> => list(object()),
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type list_objects_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objects_request() :: #{
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"OptionalObjectAttributes">> => list(list(any())()),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestPayer">> => list(any())
+%% }
+-type list_objects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objects_v2_output() :: #{
+%%   <<"CommonPrefixes">> => list(common_prefix()),
+%%   <<"Contents">> => list(object()),
+%%   <<"ContinuationToken">> => string(),
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"KeyCount">> => integer(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextContinuationToken">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"StartAfter">> => string()
+%% }
+-type list_objects_v2_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_objects_v2_request() :: #{
+%%   <<"ContinuationToken">> => string(),
+%%   <<"Delimiter">> => string(),
+%%   <<"EncodingType">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"FetchOwner">> => boolean(),
+%%   <<"MaxKeys">> => integer(),
+%%   <<"OptionalObjectAttributes">> => list(list(any())()),
+%%   <<"Prefix">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"StartAfter">> => string()
+%% }
+-type list_objects_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_parts_output() :: #{
+%%   <<"AbortDate">> => non_neg_integer(),
+%%   <<"AbortRuleId">> => string(),
+%%   <<"Bucket">> => string(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"Initiator">> => initiator(),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"MaxParts">> => integer(),
+%%   <<"NextPartNumberMarker">> => string(),
+%%   <<"Owner">> => owner(),
+%%   <<"PartNumberMarker">> => string(),
+%%   <<"Parts">> => list(part()),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"UploadId">> => string()
+%% }
+-type list_parts_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_parts_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"MaxParts">> => integer(),
+%%   <<"PartNumberMarker">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"UploadId">> := string()
+%% }
+-type list_parts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% location_info() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type location_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_enabled() :: #{
+%%   <<"TargetBucket">> => string(),
+%%   <<"TargetGrants">> => list(target_grant()),
+%%   <<"TargetObjectKeyFormat">> => target_object_key_format(),
+%%   <<"TargetPrefix">> => string()
+%% }
+-type logging_enabled() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_configuration() :: #{
+%%   <<"AnnotationTableConfiguration">> => annotation_table_configuration(),
+%%   <<"InventoryTableConfiguration">> => inventory_table_configuration(),
+%%   <<"JournalTableConfiguration">> => journal_table_configuration()
+%% }
+-type metadata_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_configuration_result() :: #{
+%%   <<"AnnotationTableConfigurationResult">> => annotation_table_configuration_result(),
+%%   <<"DestinationResult">> => destination_result(),
+%%   <<"InventoryTableConfigurationResult">> => inventory_table_configuration_result(),
+%%   <<"JournalTableConfigurationResult">> => journal_table_configuration_result()
+%% }
+-type metadata_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_entry() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type metadata_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_table_configuration() :: #{
+%%   <<"S3TablesDestination">> => s3_tables_destination()
+%% }
+-type metadata_table_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_table_configuration_result() :: #{
+%%   <<"S3TablesDestinationResult">> => s3_tables_destination_result()
+%% }
+-type metadata_table_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_table_encryption_configuration() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"SseAlgorithm">> => list(any())
+%% }
+-type metadata_table_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics() :: #{
+%%   <<"EventThreshold">> => replication_time_value(),
+%%   <<"Status">> => list(any())
+%% }
+-type metrics() :: #{binary() => any()}.
+
+
+%% Example:
 %% metrics_and_operator() :: #{
 %%   <<"AccessPointArn">> => string(),
 %%   <<"Prefix">> => string(),
@@ -3639,47 +2589,509 @@
 
 
 %% Example:
-%% get_bucket_website_output() :: #{
-%%   <<"ErrorDocument">> => error_document(),
-%%   <<"IndexDocument">> => index_document(),
-%%   <<"RedirectAllRequestsTo">> => redirect_all_requests_to(),
-%%   <<"RoutingRules">> => list(routing_rule())
+%% metrics_configuration() :: #{
+%%   <<"Filter">> => list(),
+%%   <<"Id">> => string()
 %% }
--type get_bucket_website_output() :: #{binary() => any()}.
+-type metrics_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_bucket_request_payment_output() :: #{
-%%   <<"Payer">> => list(any())
+%% multipart_upload() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"Initiated">> => non_neg_integer(),
+%%   <<"Initiator">> => initiator(),
+%%   <<"Key">> => string(),
+%%   <<"Owner">> => owner(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"UploadId">> => string()
 %% }
--type get_bucket_request_payment_output() :: #{binary() => any()}.
+-type multipart_upload() :: #{binary() => any()}.
+
+%% Example:
+%% no_such_annotation() :: #{}
+-type no_such_annotation() :: #{}.
+
+%% Example:
+%% no_such_bucket() :: #{}
+-type no_such_bucket() :: #{}.
+
+%% Example:
+%% no_such_key() :: #{}
+-type no_such_key() :: #{}.
+
+%% Example:
+%% no_such_upload() :: #{}
+-type no_such_upload() :: #{}.
 
 
 %% Example:
-%% bucket_lifecycle_configuration() :: #{
-%%   <<"Rules">> => list(lifecycle_rule())
+%% noncurrent_version_expiration() :: #{
+%%   <<"NewerNoncurrentVersions">> => integer(),
+%%   <<"NoncurrentDays">> => integer()
 %% }
--type bucket_lifecycle_configuration() :: #{binary() => any()}.
+-type noncurrent_version_expiration() :: #{binary() => any()}.
 
 
 %% Example:
-%% routing_rule() :: #{
-%%   <<"Condition">> => condition(),
-%%   <<"Redirect">> => redirect()
-%% }
--type routing_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_object_state() :: #{
-%%   <<"AccessTier">> => list(any()),
+%% noncurrent_version_transition() :: #{
+%%   <<"NewerNoncurrentVersions">> => integer(),
+%%   <<"NoncurrentDays">> => integer(),
 %%   <<"StorageClass">> => list(any())
 %% }
--type invalid_object_state() :: #{binary() => any()}.
+-type noncurrent_version_transition() :: #{binary() => any()}.
+
+%% Example:
+%% not_found() :: #{}
+-type not_found() :: #{}.
 
 
 %% Example:
-%% complete_multipart_upload_request() :: #{
+%% notification_configuration() :: #{
+%%   <<"EventBridgeConfiguration">> => event_bridge_configuration(),
+%%   <<"LambdaFunctionConfigurations">> => list(lambda_function_configuration()),
+%%   <<"QueueConfigurations">> => list(queue_configuration()),
+%%   <<"TopicConfigurations">> => list(topic_configuration())
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_configuration_filter() :: #{
+%%   <<"Key">> => s3_key_filter()
+%% }
+-type notification_configuration_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% object() :: #{
+%%   <<"ChecksumAlgorithm">> => list(list(any())()),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"ETag">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Owner">> => owner(),
+%%   <<"RestoreStatus">> => restore_status(),
+%%   <<"Size">> => float(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type object() :: #{binary() => any()}.
+
+%% Example:
+%% object_already_in_active_tier_error() :: #{}
+-type object_already_in_active_tier_error() :: #{}.
+
+
+%% Example:
+%% object_identifier() :: #{
+%%   <<"ETag">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Size">> => float(),
+%%   <<"VersionId">> => string()
+%% }
+-type object_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lock_configuration() :: #{
+%%   <<"ObjectLockEnabled">> => list(any()),
+%%   <<"Rule">> => object_lock_rule()
+%% }
+-type object_lock_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lock_legal_hold() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type object_lock_legal_hold() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lock_retention() :: #{
+%%   <<"Mode">> => list(any()),
+%%   <<"RetainUntilDate">> => non_neg_integer()
+%% }
+-type object_lock_retention() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_lock_rule() :: #{
+%%   <<"DefaultRetention">> => default_retention()
+%% }
+-type object_lock_rule() :: #{binary() => any()}.
+
+%% Example:
+%% object_not_in_active_tier_error() :: #{}
+-type object_not_in_active_tier_error() :: #{}.
+
+
+%% Example:
+%% object_part() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"PartNumber">> => integer(),
+%%   <<"Size">> => float()
+%% }
+-type object_part() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_version() :: #{
+%%   <<"ChecksumAlgorithm">> => list(list(any())()),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"ETag">> => string(),
+%%   <<"IsLatest">> => boolean(),
+%%   <<"Key">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Owner">> => owner(),
+%%   <<"RestoreStatus">> => restore_status(),
+%%   <<"Size">> => float(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type object_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_location() :: #{
+%%   <<"S3">> => s3_location()
+%% }
+-type output_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_serialization() :: #{
+%%   <<"CSV">> => csv_output(),
+%%   <<"JSON">> => json_output()
+%% }
+-type output_serialization() :: #{binary() => any()}.
+
+
+%% Example:
+%% owner() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"ID">> => string()
+%% }
+-type owner() :: #{binary() => any()}.
+
+
+%% Example:
+%% ownership_controls() :: #{
+%%   <<"Rules">> => list(ownership_controls_rule())
+%% }
+-type ownership_controls() :: #{binary() => any()}.
+
+
+%% Example:
+%% ownership_controls_rule() :: #{
+%%   <<"ObjectOwnership">> => list(any())
+%% }
+-type ownership_controls_rule() :: #{binary() => any()}.
+
+%% Example:
+%% parquet_input() :: #{}
+-type parquet_input() :: #{}.
+
+
+%% Example:
+%% part() :: #{
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"PartNumber">> => integer(),
+%%   <<"Size">> => float()
+%% }
+-type part() :: #{binary() => any()}.
+
+
+%% Example:
+%% partitioned_prefix() :: #{
+%%   <<"PartitionDateSource">> => list(any())
+%% }
+-type partitioned_prefix() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_status() :: #{
+%%   <<"IsPublic">> => boolean()
+%% }
+-type policy_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% progress() :: #{
+%%   <<"BytesProcessed">> => float(),
+%%   <<"BytesReturned">> => float(),
+%%   <<"BytesScanned">> => float()
+%% }
+-type progress() :: #{binary() => any()}.
+
+
+%% Example:
+%% progress_event() :: #{
+%%   <<"Details">> => progress()
+%% }
+-type progress_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_access_block_configuration() :: #{
+%%   <<"BlockPublicAcls">> => boolean(),
+%%   <<"BlockPublicPolicy">> => boolean(),
+%%   <<"IgnorePublicAcls">> => boolean(),
+%%   <<"RestrictPublicBuckets">> => boolean()
+%% }
+-type public_access_block_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_abac_request() :: #{
+%%   <<"AbacStatus">> := abac_status(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type put_bucket_abac_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_accelerate_configuration_request() :: #{
+%%   <<"AccelerateConfiguration">> := accelerate_configuration(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type put_bucket_accelerate_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_acl_request() :: #{
+%%   <<"ACL">> => list(any()),
+%%   <<"AccessControlPolicy">> => access_control_policy(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"GrantRead">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"GrantWrite">> => string(),
+%%   <<"GrantWriteACP">> => string()
+%% }
+-type put_bucket_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_analytics_configuration_request() :: #{
+%%   <<"AnalyticsConfiguration">> := analytics_configuration(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type put_bucket_analytics_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_cors_request() :: #{
+%%   <<"CORSConfiguration">> := c_o_r_s_configuration(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type put_bucket_cors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_encryption_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ServerSideEncryptionConfiguration">> := server_side_encryption_configuration()
+%% }
+-type put_bucket_encryption_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_intelligent_tiering_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"IntelligentTieringConfiguration">> := intelligent_tiering_configuration()
+%% }
+-type put_bucket_intelligent_tiering_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_inventory_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"InventoryConfiguration">> := inventory_configuration()
+%% }
+-type put_bucket_inventory_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_lifecycle_configuration_output() :: #{
+%%   <<"TransitionDefaultMinimumObjectSize">> => list(any())
+%% }
+-type put_bucket_lifecycle_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_lifecycle_configuration_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"LifecycleConfiguration">> => bucket_lifecycle_configuration(),
+%%   <<"TransitionDefaultMinimumObjectSize">> => list(any())
+%% }
+-type put_bucket_lifecycle_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_logging_request() :: #{
+%%   <<"BucketLoggingStatus">> := bucket_logging_status(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type put_bucket_logging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_metrics_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"MetricsConfiguration">> := metrics_configuration()
+%% }
+-type put_bucket_metrics_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_notification_configuration_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"NotificationConfiguration">> := notification_configuration(),
+%%   <<"SkipDestinationValidation">> => boolean()
+%% }
+-type put_bucket_notification_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_ownership_controls_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"OwnershipControls">> := ownership_controls()
+%% }
+-type put_bucket_ownership_controls_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_policy_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ConfirmRemoveSelfBucketAccess">> => boolean(),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Policy">> := string()
+%% }
+-type put_bucket_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_replication_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ReplicationConfiguration">> := replication_configuration(),
+%%   <<"Token">> => string()
+%% }
+-type put_bucket_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_request_payment_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPaymentConfiguration">> := request_payment_configuration()
+%% }
+-type put_bucket_request_payment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_tagging_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Tagging">> := tagging()
+%% }
+-type put_bucket_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_versioning_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"MFA">> => string(),
+%%   <<"VersioningConfiguration">> := versioning_configuration()
+%% }
+-type put_bucket_versioning_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_bucket_website_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"WebsiteConfiguration">> := website_configuration()
+%% }
+-type put_bucket_website_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_acl_output() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type put_object_acl_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_acl_request() :: #{
+%%   <<"ACL">> => list(any()),
+%%   <<"AccessControlPolicy">> => access_control_policy(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"GrantRead">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"GrantWrite">> => string(),
+%%   <<"GrantWriteACP">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_annotation_output() :: #{
+%%   <<"AnnotationName">> => string(),
 %%   <<"ChecksumCRC32">> => string(),
 %%   <<"ChecksumCRC32C">> => string(),
 %%   <<"ChecksumCRC64NVME">> => string(),
@@ -3691,28 +3103,361 @@
 %%   <<"ChecksumXXHASH128">> => string(),
 %%   <<"ChecksumXXHASH3">> => string(),
 %%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"ObjectVersionId">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"ServerSideEncryption">> => list(any())
+%% }
+-type put_object_annotation_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_annotation_request() :: #{
+%%   <<"AnnotationName">> := string(),
+%%   <<"AnnotationPayload">> := binary(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ContentMD5">> => string(),
 %%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ObjectIfMatch">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_annotation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_legal_hold_output() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type put_object_legal_hold_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_legal_hold_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"LegalHold">> => object_lock_legal_hold(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_legal_hold_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_lock_configuration_output() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type put_object_lock_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_lock_configuration_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ObjectLockConfiguration">> => object_lock_configuration(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"Token">> => string()
+%% }
+-type put_object_lock_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_output() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumType">> => list(any()),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"Expiration">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"Size">> => float(),
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_request() :: #{
+%%   <<"ACL">> => list(any()),
+%%   <<"Body">> => binary(),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"CacheControl">> => string(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Expires">> => string(),
+%%   <<"GrantFullControl">> => string(),
+%%   <<"GrantRead">> => string(),
+%%   <<"GrantReadACP">> => string(),
+%%   <<"GrantWriteACP">> => string(),
 %%   <<"IfMatch">> => string(),
 %%   <<"IfNoneMatch">> => string(),
-%%   <<"MpuObjectSize">> => float(),
-%%   <<"MultipartUpload">> => completed_multipart_upload(),
+%%   <<"Metadata">> => map(),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
 %%   <<"RequestPayer">> => list(any()),
 %%   <<"SSECustomerAlgorithm">> => string(),
 %%   <<"SSECustomerKey">> => string(),
 %%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"UploadId">> := string()
+%%   <<"SSEKMSEncryptionContext">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"Tagging">> => string(),
+%%   <<"WebsiteRedirectLocation">> => string(),
+%%   <<"WriteOffsetBytes">> => float()
 %% }
--type complete_multipart_upload_request() :: #{binary() => any()}.
+-type put_object_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_bucket_website_request() :: #{
+%% put_object_retention_output() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type put_object_retention_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_retention_request() :: #{
+%%   <<"BypassGovernanceRetention">> => boolean(),
 %%   <<"ChecksumAlgorithm">> => list(any()),
 %%   <<"ContentMD5">> => string(),
 %%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"WebsiteConfiguration">> := website_configuration()
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"Retention">> => object_lock_retention(),
+%%   <<"VersionId">> => string()
 %% }
--type put_bucket_website_request() :: #{binary() => any()}.
+-type put_object_retention_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_tagging_output() :: #{
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_tagging_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_object_tagging_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"Tagging">> := tagging(),
+%%   <<"VersionId">> => string()
+%% }
+-type put_object_tagging_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_public_access_block_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"PublicAccessBlockConfiguration">> := public_access_block_configuration()
+%% }
+-type put_public_access_block_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% queue_configuration() :: #{
+%%   <<"Events">> => list(list(any())()),
+%%   <<"Filter">> => notification_configuration_filter(),
+%%   <<"Id">> => string(),
+%%   <<"QueueArn">> => string()
+%% }
+-type queue_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% record_expiration() :: #{
+%%   <<"Days">> => integer(),
+%%   <<"Expiration">> => list(any())
+%% }
+-type record_expiration() :: #{binary() => any()}.
+
+
+%% Example:
+%% records_event() :: #{
+%%   <<"Payload">> => binary()
+%% }
+-type records_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% redirect() :: #{
+%%   <<"HostName">> => string(),
+%%   <<"HttpRedirectCode">> => string(),
+%%   <<"Protocol">> => list(any()),
+%%   <<"ReplaceKeyPrefixWith">> => string(),
+%%   <<"ReplaceKeyWith">> => string()
+%% }
+-type redirect() :: #{binary() => any()}.
+
+
+%% Example:
+%% redirect_all_requests_to() :: #{
+%%   <<"HostName">> => string(),
+%%   <<"Protocol">> => list(any())
+%% }
+-type redirect_all_requests_to() :: #{binary() => any()}.
+
+%% Example:
+%% rename_object_output() :: #{}
+-type rename_object_output() :: #{}.
+
+
+%% Example:
+%% rename_object_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DestinationIfMatch">> => string(),
+%%   <<"DestinationIfModifiedSince">> => non_neg_integer(),
+%%   <<"DestinationIfNoneMatch">> => string(),
+%%   <<"DestinationIfUnmodifiedSince">> => non_neg_integer(),
+%%   <<"RenameSource">> := string(),
+%%   <<"SourceIfMatch">> => string(),
+%%   <<"SourceIfModifiedSince">> => non_neg_integer(),
+%%   <<"SourceIfNoneMatch">> => string(),
+%%   <<"SourceIfUnmodifiedSince">> => non_neg_integer()
+%% }
+-type rename_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replica_modifications() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type replica_modifications() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_configuration() :: #{
+%%   <<"Role">> => string(),
+%%   <<"Rules">> => list(replication_rule())
+%% }
+-type replication_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule() :: #{
+%%   <<"DeleteMarkerReplication">> => delete_marker_replication(),
+%%   <<"Destination">> => destination(),
+%%   <<"ExistingObjectReplication">> => existing_object_replication(),
+%%   <<"Filter">> => replication_rule_filter(),
+%%   <<"ID">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"Priority">> => integer(),
+%%   <<"SourceSelectionCriteria">> => source_selection_criteria(),
+%%   <<"Status">> => list(any())
+%% }
+-type replication_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule_and_operator() :: #{
+%%   <<"Prefix">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type replication_rule_and_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule_filter() :: #{
+%%   <<"And">> => replication_rule_and_operator(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tag">> => tag()
+%% }
+-type replication_rule_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_time() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"Time">> => replication_time_value()
+%% }
+-type replication_time() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_time_value() :: #{
+%%   <<"Minutes">> => integer()
+%% }
+-type replication_time_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_payment_configuration() :: #{
+%%   <<"Payer">> => list(any())
+%% }
+-type request_payment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_progress() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type request_progress() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_object_output() :: #{
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"RestoreOutputPath">> => string()
+%% }
+-type restore_object_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% restore_object_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"RestoreRequest">> => restore_request(),
+%%   <<"VersionId">> => string()
+%% }
+-type restore_object_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3729,187 +3474,474 @@
 
 
 %% Example:
-%% analytics_configuration() :: #{
-%%   <<"Filter">> => list(),
-%%   <<"Id">> => string(),
-%%   <<"StorageClassAnalysis">> => storage_class_analysis()
+%% restore_status() :: #{
+%%   <<"IsRestoreInProgress">> => boolean(),
+%%   <<"RestoreExpiryDate">> => non_neg_integer()
 %% }
--type analytics_configuration() :: #{binary() => any()}.
+-type restore_status() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_bucket_replication_request() :: #{
+%% routing_rule() :: #{
+%%   <<"Condition">> => condition(),
+%%   <<"Redirect">> => redirect()
+%% }
+-type routing_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_key_filter() :: #{
+%%   <<"FilterRules">> => list(filter_rule())
+%% }
+-type s3_key_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"AccessControlList">> => list(grant()),
+%%   <<"BucketName">> => string(),
+%%   <<"CannedACL">> => list(any()),
+%%   <<"Encryption">> => encryption(),
+%%   <<"Prefix">> => string(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"Tagging">> => tagging(),
+%%   <<"UserMetadata">> => list(metadata_entry())
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_tables_destination() :: #{
+%%   <<"TableBucketArn">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type s3_tables_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_tables_destination_result() :: #{
+%%   <<"TableArn">> => string(),
+%%   <<"TableBucketArn">> => string(),
+%%   <<"TableName">> => string(),
+%%   <<"TableNamespace">> => string()
+%% }
+-type s3_tables_destination_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_range() :: #{
+%%   <<"End">> => float(),
+%%   <<"Start">> => float()
+%% }
+-type scan_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% select_object_content_output() :: #{
+%%   <<"Payload">> => list()
+%% }
+-type select_object_content_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% select_object_content_request() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Expression">> := string(),
+%%   <<"ExpressionType">> := list(any()),
+%%   <<"InputSerialization">> := input_serialization(),
+%%   <<"OutputSerialization">> := output_serialization(),
+%%   <<"RequestProgress">> => request_progress(),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"ScanRange">> => scan_range()
+%% }
+-type select_object_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% select_parameters() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"ExpressionType">> => list(any()),
+%%   <<"InputSerialization">> => input_serialization(),
+%%   <<"OutputSerialization">> => output_serialization()
+%% }
+-type select_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_side_encryption_by_default() :: #{
+%%   <<"KMSMasterKeyID">> => string(),
+%%   <<"SSEAlgorithm">> => list(any())
+%% }
+-type server_side_encryption_by_default() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_side_encryption_configuration() :: #{
+%%   <<"Rules">> => list(server_side_encryption_rule())
+%% }
+-type server_side_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_side_encryption_rule() :: #{
+%%   <<"ApplyServerSideEncryptionByDefault">> => server_side_encryption_by_default(),
+%%   <<"BlockedEncryptionTypes">> => blocked_encryption_types(),
+%%   <<"BucketKeyEnabled">> => boolean()
+%% }
+-type server_side_encryption_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type session_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% simple_prefix() :: #{}
+-type simple_prefix() :: #{}.
+
+
+%% Example:
+%% source_selection_criteria() :: #{
+%%   <<"ReplicaModifications">> => replica_modifications(),
+%%   <<"SseKmsEncryptedObjects">> => sse_kms_encrypted_objects()
+%% }
+-type source_selection_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% sse_kms() :: #{
+%%   <<"KeyId">> => string()
+%% }
+-type sse_kms() :: #{binary() => any()}.
+
+
+%% Example:
+%% sse_kms_encrypted_objects() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type sse_kms_encrypted_objects() :: #{binary() => any()}.
+
+
+%% Example:
+%% sse_kms_encryption() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"KMSKeyArn">> => string()
+%% }
+-type sse_kms_encryption() :: #{binary() => any()}.
+
+%% Example:
+%% sse_s3() :: #{}
+-type sse_s3() :: #{}.
+
+
+%% Example:
+%% stats() :: #{
+%%   <<"BytesProcessed">> => float(),
+%%   <<"BytesReturned">> => float(),
+%%   <<"BytesScanned">> => float()
+%% }
+-type stats() :: #{binary() => any()}.
+
+
+%% Example:
+%% stats_event() :: #{
+%%   <<"Details">> => stats()
+%% }
+-type stats_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_class_analysis() :: #{
+%%   <<"DataExport">> => storage_class_analysis_data_export()
+%% }
+-type storage_class_analysis() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_class_analysis_data_export() :: #{
+%%   <<"Destination">> => analytics_export_destination(),
+%%   <<"OutputSchemaVersion">> => list(any())
+%% }
+-type storage_class_analysis_data_export() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tagging() :: #{
+%%   <<"TagSet">> => list(tag())
+%% }
+-type tagging() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_grant() :: #{
+%%   <<"Grantee">> => grantee(),
+%%   <<"Permission">> => list(any())
+%% }
+-type target_grant() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_object_key_format() :: #{
+%%   <<"PartitionedPrefix">> => partitioned_prefix(),
+%%   <<"SimplePrefix">> => simple_prefix()
+%% }
+-type target_object_key_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% tiering() :: #{
+%%   <<"AccessTier">> => list(any()),
+%%   <<"Days">> => integer()
+%% }
+-type tiering() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_parts() :: #{}
+-type too_many_parts() :: #{}.
+
+
+%% Example:
+%% topic_configuration() :: #{
+%%   <<"Events">> => list(list(any())()),
+%%   <<"Filter">> => notification_configuration_filter(),
+%%   <<"Id">> => string(),
+%%   <<"TopicArn">> => string()
+%% }
+-type topic_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% transition() :: #{
+%%   <<"Date">> => non_neg_integer(),
+%%   <<"Days">> => integer(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type transition() :: #{binary() => any()}.
+
+%% Example:
+%% unsupported_media_type() :: #{}
+-type unsupported_media_type() :: #{}.
+
+
+%% Example:
+%% update_bucket_metadata_annotation_table_configuration_request() :: #{
+%%   <<"AnnotationTableConfiguration">> := annotation_table_configuration_updates(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
 %%   <<"ExpectedBucketOwner">> => string()
 %% }
--type delete_bucket_replication_request() :: #{binary() => any()}.
+-type update_bucket_metadata_annotation_table_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_object_tagging_request() :: #{
+%% update_bucket_metadata_inventory_table_configuration_request() :: #{
 %%   <<"ChecksumAlgorithm">> => list(any()),
 %%   <<"ContentMD5">> => string(),
 %%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"InventoryTableConfiguration">> := inventory_table_configuration_updates()
+%% }
+-type update_bucket_metadata_inventory_table_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_bucket_metadata_journal_table_configuration_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"JournalTableConfiguration">> := journal_table_configuration_updates()
+%% }
+-type update_bucket_metadata_journal_table_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_object_encryption_request() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"ObjectEncryption">> := list(),
 %%   <<"RequestPayer">> => list(any()),
-%%   <<"Tagging">> := tagging(),
 %%   <<"VersionId">> => string()
 %% }
--type put_object_tagging_request() :: #{binary() => any()}.
+-type update_object_encryption_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_object_annotation_request() :: #{
-%%   <<"AnnotationName">> := string(),
+%% update_object_encryption_response() :: #{
+%%   <<"RequestCharged">> => list(any())
+%% }
+-type update_object_encryption_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_part_copy_output() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"CopyPartResult">> => copy_part_result(),
+%%   <<"CopySourceVersionId">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any())
+%% }
+-type upload_part_copy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% upload_part_copy_request() :: #{
+%%   <<"CopySource">> := string(),
+%%   <<"CopySourceIfMatch">> => string(),
+%%   <<"CopySourceIfModifiedSince">> => non_neg_integer(),
+%%   <<"CopySourceIfNoneMatch">> => string(),
+%%   <<"CopySourceIfUnmodifiedSince">> => non_neg_integer(),
+%%   <<"CopySourceRange">> => string(),
+%%   <<"CopySourceSSECustomerAlgorithm">> => string(),
+%%   <<"CopySourceSSECustomerKey">> => string(),
+%%   <<"CopySourceSSECustomerKeyMD5">> => string(),
 %%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"ObjectIfMatch">> => string(),
-%%   <<"RequestPayer">> => list(any()),
-%%   <<"VersionId">> => string()
-%% }
--type delete_object_annotation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_replication_output() :: #{
-%%   <<"ReplicationConfiguration">> => replication_configuration()
-%% }
--type get_bucket_replication_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_bucket_intelligent_tiering_configurations_request() :: #{
-%%   <<"ContinuationToken">> => string(),
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type list_bucket_intelligent_tiering_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bucket_notification_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type get_bucket_notification_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_bucket_cors_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string()
-%% }
--type delete_bucket_cors_request() :: #{binary() => any()}.
-
-%% Example:
-%% object_already_in_active_tier_error() :: #{}
--type object_already_in_active_tier_error() :: #{}.
-
-
-%% Example:
-%% get_object_lock_configuration_output() :: #{
-%%   <<"ObjectLockConfiguration">> => object_lock_configuration()
-%% }
--type get_object_lock_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_result() :: #{
-%%   <<"TableBucketArn">> => string(),
-%%   <<"TableBucketType">> => list(any()),
-%%   <<"TableNamespace">> => string()
-%% }
--type destination_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% annotation_table_configuration_result() :: #{
-%%   <<"ConfigurationState">> => list(any()),
-%%   <<"Error">> => error_details(),
-%%   <<"Role">> => string(),
-%%   <<"TableArn">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"TableStatus">> => string()
-%% }
--type annotation_table_configuration_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_attributes_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"MaxParts">> => integer(),
-%%   <<"ObjectAttributes">> := list(list(any())()),
-%%   <<"PartNumberMarker">> => string(),
+%%   <<"ExpectedSourceBucketOwner">> => string(),
+%%   <<"PartNumber">> := integer(),
 %%   <<"RequestPayer">> => list(any()),
 %%   <<"SSECustomerAlgorithm">> => string(),
 %%   <<"SSECustomerKey">> => string(),
 %%   <<"SSECustomerKeyMD5">> => string(),
-%%   <<"VersionId">> => string()
+%%   <<"UploadId">> := string()
 %% }
--type get_object_attributes_request() :: #{binary() => any()}.
+-type upload_part_copy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% owner() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"ID">> => string()
+%% upload_part_output() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any())
 %% }
--type owner() :: #{binary() => any()}.
+-type upload_part_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% metrics_configuration() :: #{
-%%   <<"Filter">> => list(),
-%%   <<"Id">> => string()
+%% upload_part_request() :: #{
+%%   <<"Body">> => binary(),
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentMD5">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"PartNumber">> := integer(),
+%%   <<"RequestPayer">> => list(any()),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKey">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"UploadId">> := string()
 %% }
--type metrics_configuration() :: #{binary() => any()}.
+-type upload_part_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% accelerate_configuration() :: #{
+%% versioning_configuration() :: #{
+%%   <<"MFADelete">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
--type accelerate_configuration() :: #{binary() => any()}.
+-type versioning_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% inventory_table_configuration_result() :: #{
-%%   <<"ConfigurationState">> => list(any()),
-%%   <<"Error">> => error_details(),
-%%   <<"TableArn">> => string(),
-%%   <<"TableName">> => string(),
-%%   <<"TableStatus">> => string()
+%% website_configuration() :: #{
+%%   <<"ErrorDocument">> => error_document(),
+%%   <<"IndexDocument">> => index_document(),
+%%   <<"RedirectAllRequestsTo">> => redirect_all_requests_to(),
+%%   <<"RoutingRules">> => list(routing_rule())
 %% }
--type inventory_table_configuration_result() :: #{binary() => any()}.
+-type website_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% annotation_table_configuration() :: #{
-%%   <<"ConfigurationState">> => list(any()),
-%%   <<"EncryptionConfiguration">> => metadata_table_encryption_configuration(),
-%%   <<"Role">> => string()
+%% write_get_object_response_request() :: #{
+%%   <<"AcceptRanges">> => string(),
+%%   <<"Body">> => binary(),
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"CacheControl">> => string(),
+%%   <<"ChecksumCRC32">> => string(),
+%%   <<"ChecksumCRC32C">> => string(),
+%%   <<"ChecksumCRC64NVME">> => string(),
+%%   <<"ChecksumMD5">> => string(),
+%%   <<"ChecksumSHA1">> => string(),
+%%   <<"ChecksumSHA256">> => string(),
+%%   <<"ChecksumSHA512">> => string(),
+%%   <<"ChecksumXXHASH128">> => string(),
+%%   <<"ChecksumXXHASH3">> => string(),
+%%   <<"ChecksumXXHASH64">> => string(),
+%%   <<"ContentDisposition">> => string(),
+%%   <<"ContentEncoding">> => string(),
+%%   <<"ContentLanguage">> => string(),
+%%   <<"ContentLength">> => float(),
+%%   <<"ContentRange">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"DeleteMarker">> => boolean(),
+%%   <<"ETag">> => string(),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"Expiration">> => string(),
+%%   <<"Expires">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Metadata">> => map(),
+%%   <<"MissingMeta">> => integer(),
+%%   <<"ObjectLockLegalHoldStatus">> => list(any()),
+%%   <<"ObjectLockMode">> => list(any()),
+%%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
+%%   <<"PartsCount">> => integer(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"RequestRoute">> := string(),
+%%   <<"RequestToken">> := string(),
+%%   <<"Restore">> => string(),
+%%   <<"SSECustomerAlgorithm">> => string(),
+%%   <<"SSECustomerKeyMD5">> => string(),
+%%   <<"SSEKMSKeyId">> => string(),
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"StatusCode">> => integer(),
+%%   <<"StorageClass">> => list(any()),
+%%   <<"TagCount">> => integer(),
+%%   <<"VersionId">> => string()
 %% }
--type annotation_table_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% error_document() :: #{
-%%   <<"Key">> => string()
-%% }
--type error_document() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_bucket_inventory_configuration_request() :: #{
-%%   <<"ExpectedBucketOwner">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"InventoryConfiguration">> := inventory_configuration()
-%% }
--type put_bucket_inventory_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_rule_and_operator() :: #{
-%%   <<"ObjectSizeGreaterThan">> => float(),
-%%   <<"ObjectSizeLessThan">> => float(),
-%%   <<"Prefix">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type lifecycle_rule_and_operator() :: #{binary() => any()}.
+-type write_get_object_response_request() :: #{binary() => any()}.
 
 -type abort_multipart_upload_errors() ::
     no_such_upload().
@@ -3918,27 +3950,27 @@
     object_not_in_active_tier_error().
 
 -type create_bucket_errors() ::
-    bucket_already_exists() | 
-    bucket_already_owned_by_you().
+    bucket_already_owned_by_you() | 
+    bucket_already_exists().
 
 -type create_session_errors() ::
     no_such_bucket().
 
 -type delete_object_annotation_errors() ::
-    no_such_bucket() | 
-    no_such_key().
+    no_such_key() | 
+    no_such_bucket().
 
 -type get_object_errors() ::
-    invalid_object_state() | 
-    no_such_key().
+    no_such_key() | 
+    invalid_object_state().
 
 -type get_object_acl_errors() ::
     no_such_key().
 
 -type get_object_annotation_errors() ::
+    no_such_key() | 
     no_such_bucket() | 
-    no_such_annotation() | 
-    no_such_key().
+    no_such_annotation().
 
 -type get_object_attributes_errors() ::
     no_such_key().
@@ -3950,8 +3982,8 @@
     not_found().
 
 -type list_object_annotations_errors() ::
-    no_such_bucket() | 
     no_such_key() | 
+    no_such_bucket() | 
     invalid_prefix().
 
 -type list_objects_errors() ::
@@ -3961,22 +3993,22 @@
     no_such_bucket().
 
 -type put_object_errors() ::
-    invalid_request() | 
-    encryption_type_mismatch() | 
+    too_many_parts() | 
     invalid_write_offset() | 
-    too_many_parts().
+    invalid_request() | 
+    encryption_type_mismatch().
 
 -type put_object_acl_errors() ::
     no_such_key().
 
 -type put_object_annotation_errors() ::
-    invalid_request() | 
     unsupported_media_type() | 
+    no_such_key() | 
     no_such_bucket() | 
+    invalid_request() | 
     invalid_annotation_name() | 
     annotation_name_too_long() | 
-    annotation_limit_exceeded() | 
-    no_such_key().
+    annotation_limit_exceeded().
 
 -type rename_object_errors() ::
     idempotency_parameter_mismatch().
@@ -3985,9 +4017,9 @@
     object_already_in_active_tier_error().
 
 -type update_object_encryption_errors() ::
+    no_such_key() | 
     invalid_request() | 
-    access_denied() | 
-    no_such_key().
+    access_denied().
 
 %%====================================================================
 %% API
@@ -4662,47 +4694,47 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
                | Options2],
 
     HeadersMapping = [
-                       {<<"x-amz-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
-                       {<<"x-amz-copy-source-server-side-encryption-customer-algorithm">>, <<"CopySourceSSECustomerAlgorithm">>},
-                       {<<"x-amz-server-side-encryption-customer-key">>, <<"SSECustomerKey">>},
-                       {<<"x-amz-copy-source">>, <<"CopySource">>},
-                       {<<"x-amz-grant-full-control">>, <<"GrantFullControl">>},
                        {<<"x-amz-acl">>, <<"ACL">>},
+                       {<<"x-amz-object-annotation-directive">>, <<"AnnotationDirective">>},
+                       {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
+                       {<<"Cache-Control">>, <<"CacheControl">>},
+                       {<<"x-amz-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
+                       {<<"Content-Disposition">>, <<"ContentDisposition">>},
+                       {<<"Content-Encoding">>, <<"ContentEncoding">>},
+                       {<<"Content-Language">>, <<"ContentLanguage">>},
+                       {<<"Content-Type">>, <<"ContentType">>},
+                       {<<"x-amz-copy-source">>, <<"CopySource">>},
+                       {<<"x-amz-copy-source-if-match">>, <<"CopySourceIfMatch">>},
+                       {<<"x-amz-copy-source-if-modified-since">>, <<"CopySourceIfModifiedSince">>},
+                       {<<"x-amz-copy-source-if-none-match">>, <<"CopySourceIfNoneMatch">>},
+                       {<<"x-amz-copy-source-if-unmodified-since">>, <<"CopySourceIfUnmodifiedSince">>},
+                       {<<"x-amz-copy-source-server-side-encryption-customer-algorithm">>, <<"CopySourceSSECustomerAlgorithm">>},
+                       {<<"x-amz-copy-source-server-side-encryption-customer-key">>, <<"CopySourceSSECustomerKey">>},
+                       {<<"x-amz-copy-source-server-side-encryption-customer-key-MD5">>, <<"CopySourceSSECustomerKeyMD5">>},
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
+                       {<<"x-amz-source-expected-bucket-owner">>, <<"ExpectedSourceBucketOwner">>},
+                       {<<"Expires">>, <<"Expires">>},
+                       {<<"x-amz-grant-full-control">>, <<"GrantFullControl">>},
+                       {<<"x-amz-grant-read">>, <<"GrantRead">>},
+                       {<<"x-amz-grant-read-acp">>, <<"GrantReadACP">>},
+                       {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
+                       {<<"If-Match">>, <<"IfMatch">>},
+                       {<<"If-None-Match">>, <<"IfNoneMatch">>},
+                       {<<"x-amz-metadata-directive">>, <<"MetadataDirective">>},
+                       {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
+                       {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
                        {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>},
-                       {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
-                       {<<"Content-Type">>, <<"ContentType">>},
-                       {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
-                       {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
-                       {<<"x-amz-tagging">>, <<"Tagging">>},
-                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
-                       {<<"x-amz-copy-source-server-side-encryption-customer-key">>, <<"CopySourceSSECustomerKey">>},
-                       {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>},
-                       {<<"Content-Language">>, <<"ContentLanguage">>},
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
-                       {<<"Content-Encoding">>, <<"ContentEncoding">>},
-                       {<<"x-amz-object-annotation-directive">>, <<"AnnotationDirective">>},
-                       {<<"x-amz-copy-source-server-side-encryption-customer-key-MD5">>, <<"CopySourceSSECustomerKeyMD5">>},
-                       {<<"If-Match">>, <<"IfMatch">>},
-                       {<<"x-amz-copy-source-if-match">>, <<"CopySourceIfMatch">>},
-                       {<<"x-amz-copy-source-if-unmodified-since">>, <<"CopySourceIfUnmodifiedSince">>},
-                       {<<"Expires">>, <<"Expires">>},
-                       {<<"If-None-Match">>, <<"IfNoneMatch">>},
-                       {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
+                       {<<"x-amz-server-side-encryption-customer-key">>, <<"SSECustomerKey">>},
+                       {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
                        {<<"x-amz-server-side-encryption-context">>, <<"SSEKMSEncryptionContext">>},
-                       {<<"Cache-Control">>, <<"CacheControl">>},
-                       {<<"x-amz-source-expected-bucket-owner">>, <<"ExpectedSourceBucketOwner">>},
-                       {<<"x-amz-metadata-directive">>, <<"MetadataDirective">>},
-                       {<<"x-amz-storage-class">>, <<"StorageClass">>},
-                       {<<"x-amz-copy-source-if-modified-since">>, <<"CopySourceIfModifiedSince">>},
-                       {<<"x-amz-grant-read">>, <<"GrantRead">>},
-                       {<<"x-amz-tagging-directive">>, <<"TaggingDirective">>},
-                       {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
-                       {<<"Content-Disposition">>, <<"ContentDisposition">>},
-                       {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
-                       {<<"x-amz-copy-source-if-none-match">>, <<"CopySourceIfNoneMatch">>},
                        {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
-                       {<<"x-amz-grant-read-acp">>, <<"GrantReadACP">>}
+                       {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+                       {<<"x-amz-storage-class">>, <<"StorageClass">>},
+                       {<<"x-amz-tagging">>, <<"Tagging">>},
+                       {<<"x-amz-tagging-directive">>, <<"TaggingDirective">>},
+                       {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -10107,47 +10139,47 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
-            {<<"x-amz-delete-marker">>, <<"DeleteMarker">>},
-            {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
-            {<<"x-amz-restore">>, <<"Restore">>},
-            {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
-            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
-            {<<"Content-Type">>, <<"ContentType">>},
-            {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
-            {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
-            {<<"x-amz-version-id">>, <<"VersionId">>},
             {<<"accept-ranges">>, <<"AcceptRanges">>},
-            {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>},
-            {<<"Content-Language">>, <<"ContentLanguage">>},
-            {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
-            {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
-            {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
-            {<<"Content-Encoding">>, <<"ContentEncoding">>},
-            {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
-            {<<"ETag">>, <<"ETag">>},
-            {<<"Last-Modified">>, <<"LastModified">>},
-            {<<"Content-Range">>, <<"ContentRange">>},
-            {<<"Expires">>, <<"Expires">>},
-            {<<"x-amz-tagging-count">>, <<"TagCount">>},
-            {<<"x-amz-expiration">>, <<"Expiration">>},
-            {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
+            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"Cache-Control">>, <<"CacheControl">>},
-            {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
-            {<<"x-amz-storage-class">>, <<"StorageClass">>},
-            {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
-            {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
-            {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
-            {<<"Content-Length">>, <<"ContentLength">>},
-            {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
-            {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
-            {<<"Content-Disposition">>, <<"ContentDisposition">>},
-            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
-            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
-            {<<"x-amz-mp-parts-count">>, <<"PartsCount">>},
-            {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
             {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
-            {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>}
+            {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+            {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
+            {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
+            {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+            {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+            {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
+            {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
+            {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
+            {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
+            {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
+            {<<"Content-Disposition">>, <<"ContentDisposition">>},
+            {<<"Content-Encoding">>, <<"ContentEncoding">>},
+            {<<"Content-Language">>, <<"ContentLanguage">>},
+            {<<"Content-Length">>, <<"ContentLength">>},
+            {<<"Content-Range">>, <<"ContentRange">>},
+            {<<"Content-Type">>, <<"ContentType">>},
+            {<<"x-amz-delete-marker">>, <<"DeleteMarker">>},
+            {<<"ETag">>, <<"ETag">>},
+            {<<"x-amz-expiration">>, <<"Expiration">>},
+            {<<"Expires">>, <<"Expires">>},
+            {<<"Last-Modified">>, <<"LastModified">>},
+            {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
+            {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
+            {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
+            {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
+            {<<"x-amz-mp-parts-count">>, <<"PartsCount">>},
+            {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
+            {<<"x-amz-restore">>, <<"Restore">>},
+            {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
+            {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
+            {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
+            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+            {<<"x-amz-storage-class">>, <<"StorageClass">>},
+            {<<"x-amz-tagging-count">>, <<"TagCount">>},
+            {<<"x-amz-version-id">>, <<"VersionId">>},
+            {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -11497,48 +11529,48 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
         Body0 = #{},
         ResponseHeadersParams =
           [
-            {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
-            {<<"x-amz-delete-marker">>, <<"DeleteMarker">>},
-            {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
-            {<<"x-amz-restore">>, <<"Restore">>},
-            {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
-            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
-            {<<"Content-Type">>, <<"ContentType">>},
-            {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
-            {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
-            {<<"x-amz-version-id">>, <<"VersionId">>},
             {<<"accept-ranges">>, <<"AcceptRanges">>},
-            {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>},
-            {<<"Content-Language">>, <<"ContentLanguage">>},
-            {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
-            {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
-            {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
-            {<<"Content-Encoding">>, <<"ContentEncoding">>},
-            {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
-            {<<"ETag">>, <<"ETag">>},
             {<<"x-amz-archive-status">>, <<"ArchiveStatus">>},
-            {<<"Last-Modified">>, <<"LastModified">>},
-            {<<"Content-Range">>, <<"ContentRange">>},
-            {<<"Expires">>, <<"Expires">>},
-            {<<"x-amz-tagging-count">>, <<"TagCount">>},
-            {<<"x-amz-expiration">>, <<"Expiration">>},
-            {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
+            {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
             {<<"Cache-Control">>, <<"CacheControl">>},
-            {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
-            {<<"x-amz-storage-class">>, <<"StorageClass">>},
-            {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
-            {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
-            {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
-            {<<"Content-Length">>, <<"ContentLength">>},
-            {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
-            {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
-            {<<"Content-Disposition">>, <<"ContentDisposition">>},
-            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
-            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
-            {<<"x-amz-mp-parts-count">>, <<"PartsCount">>},
-            {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
             {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
-            {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>}
+            {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+            {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
+            {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
+            {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+            {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+            {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
+            {<<"x-amz-checksum-type">>, <<"ChecksumType">>},
+            {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
+            {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
+            {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
+            {<<"Content-Disposition">>, <<"ContentDisposition">>},
+            {<<"Content-Encoding">>, <<"ContentEncoding">>},
+            {<<"Content-Language">>, <<"ContentLanguage">>},
+            {<<"Content-Length">>, <<"ContentLength">>},
+            {<<"Content-Range">>, <<"ContentRange">>},
+            {<<"Content-Type">>, <<"ContentType">>},
+            {<<"x-amz-delete-marker">>, <<"DeleteMarker">>},
+            {<<"ETag">>, <<"ETag">>},
+            {<<"x-amz-expiration">>, <<"Expiration">>},
+            {<<"Expires">>, <<"Expires">>},
+            {<<"Last-Modified">>, <<"LastModified">>},
+            {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
+            {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
+            {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
+            {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
+            {<<"x-amz-mp-parts-count">>, <<"PartsCount">>},
+            {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
+            {<<"x-amz-restore">>, <<"Restore">>},
+            {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
+            {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
+            {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
+            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+            {<<"x-amz-storage-class">>, <<"StorageClass">>},
+            {<<"x-amz-tagging-count">>, <<"TagCount">>},
+            {<<"x-amz-version-id">>, <<"VersionId">>},
+            {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -15614,48 +15646,48 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
                | Options2],
 
     HeadersMapping = [
-                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
-                       {<<"x-amz-server-side-encryption-customer-key">>, <<"SSECustomerKey">>},
-                       {<<"x-amz-grant-full-control">>, <<"GrantFullControl">>},
                        {<<"x-amz-acl">>, <<"ACL">>},
+                       {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
+                       {<<"Cache-Control">>, <<"CacheControl">>},
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
+                       {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
                        {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+                       {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
+                       {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
+                       {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+                       {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+                       {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
+                       {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
+                       {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
+                       {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
+                       {<<"Content-Disposition">>, <<"ContentDisposition">>},
+                       {<<"Content-Encoding">>, <<"ContentEncoding">>},
+                       {<<"Content-Language">>, <<"ContentLanguage">>},
+                       {<<"Content-Length">>, <<"ContentLength">>},
+                       {<<"Content-MD5">>, <<"ContentMD5">>},
+                       {<<"Content-Type">>, <<"ContentType">>},
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
+                       {<<"Expires">>, <<"Expires">>},
+                       {<<"x-amz-grant-full-control">>, <<"GrantFullControl">>},
+                       {<<"x-amz-grant-read">>, <<"GrantRead">>},
+                       {<<"x-amz-grant-read-acp">>, <<"GrantReadACP">>},
+                       {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
+                       {<<"If-Match">>, <<"IfMatch">>},
+                       {<<"If-None-Match">>, <<"IfNoneMatch">>},
+                       {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
+                       {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
                        {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>},
-                       {<<"x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
-                       {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
-                       {<<"Content-Type">>, <<"ContentType">>},
-                       {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
-                       {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
-                       {<<"x-amz-tagging">>, <<"Tagging">>},
-                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
-                       {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>},
-                       {<<"Content-Language">>, <<"ContentLanguage">>},
-                       {<<"x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
-                       {<<"x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
-                       {<<"Content-Encoding">>, <<"ContentEncoding">>},
-                       {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
-                       {<<"If-Match">>, <<"IfMatch">>},
-                       {<<"x-amz-write-offset-bytes">>, <<"WriteOffsetBytes">>},
-                       {<<"Expires">>, <<"Expires">>},
-                       {<<"Content-MD5">>, <<"ContentMD5">>},
-                       {<<"If-None-Match">>, <<"IfNoneMatch">>},
-                       {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
+                       {<<"x-amz-server-side-encryption-customer-key">>, <<"SSECustomerKey">>},
+                       {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
                        {<<"x-amz-server-side-encryption-context">>, <<"SSEKMSEncryptionContext">>},
-                       {<<"Cache-Control">>, <<"CacheControl">>},
-                       {<<"x-amz-checksum-md5">>, <<"ChecksumMD5">>},
-                       {<<"x-amz-storage-class">>, <<"StorageClass">>},
-                       {<<"x-amz-grant-read">>, <<"GrantRead">>},
-                       {<<"x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
-                       {<<"Content-Length">>, <<"ContentLength">>},
-                       {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
-                       {<<"x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
-                       {<<"Content-Disposition">>, <<"ContentDisposition">>},
-                       {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
                        {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
-                       {<<"x-amz-grant-read-acp">>, <<"GrantReadACP">>},
-                       {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
-                       {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>}
+                       {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+                       {<<"x-amz-storage-class">>, <<"StorageClass">>},
+                       {<<"x-amz-tagging">>, <<"Tagging">>},
+                       {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>},
+                       {<<"x-amz-write-offset-bytes">>, <<"WriteOffsetBytes">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -17361,8 +17393,6 @@ update_bucket_metadata_journal_table_configuration(Client, Bucket, Input0, Optio
 %% following
 %% permissions:
 %%
-%% `s3:PutObject'
-%%
 %% `s3:UpdateObjectEncryption'
 %%
 %% `kms:Encrypt'
@@ -18250,50 +18280,50 @@ write_get_object_response(Client, Input0, Options0) ->
                | Options2],
 
     HeadersMapping = [
-                       {<<"x-amz-fwd-error-message">>, <<"ErrorMessage">>},
+                       {<<"x-amz-fwd-header-accept-ranges">>, <<"AcceptRanges">>},
+                       {<<"x-amz-fwd-header-x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
+                       {<<"x-amz-fwd-header-Cache-Control">>, <<"CacheControl">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
                        {<<"x-amz-fwd-header-x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-md5">>, <<"ChecksumMD5">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
+                       {<<"x-amz-fwd-header-Content-Disposition">>, <<"ContentDisposition">>},
+                       {<<"x-amz-fwd-header-Content-Encoding">>, <<"ContentEncoding">>},
+                       {<<"x-amz-fwd-header-Content-Language">>, <<"ContentLanguage">>},
+                       {<<"Content-Length">>, <<"ContentLength">>},
+                       {<<"x-amz-fwd-header-Content-Range">>, <<"ContentRange">>},
+                       {<<"x-amz-fwd-header-Content-Type">>, <<"ContentType">>},
                        {<<"x-amz-fwd-header-x-amz-delete-marker">>, <<"DeleteMarker">>},
+                       {<<"x-amz-fwd-header-ETag">>, <<"ETag">>},
+                       {<<"x-amz-fwd-error-code">>, <<"ErrorCode">>},
+                       {<<"x-amz-fwd-error-message">>, <<"ErrorMessage">>},
+                       {<<"x-amz-fwd-header-x-amz-expiration">>, <<"Expiration">>},
+                       {<<"x-amz-fwd-header-Expires">>, <<"Expires">>},
+                       {<<"x-amz-fwd-header-Last-Modified">>, <<"LastModified">>},
+                       {<<"x-amz-fwd-header-x-amz-missing-meta">>, <<"MissingMeta">>},
+                       {<<"x-amz-fwd-header-x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
+                       {<<"x-amz-fwd-header-x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
                        {<<"x-amz-fwd-header-x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
+                       {<<"x-amz-fwd-header-x-amz-mp-parts-count">>, <<"PartsCount">>},
+                       {<<"x-amz-fwd-header-x-amz-replication-status">>, <<"ReplicationStatus">>},
+                       {<<"x-amz-fwd-header-x-amz-request-charged">>, <<"RequestCharged">>},
+                       {<<"x-amz-request-route">>, <<"RequestRoute">>},
                        {<<"x-amz-request-token">>, <<"RequestToken">>},
                        {<<"x-amz-fwd-header-x-amz-restore">>, <<"Restore">>},
-                       {<<"x-amz-request-route">>, <<"RequestRoute">>},
-                       {<<"x-amz-fwd-header-x-amz-checksum-sha512">>, <<"ChecksumSHA512">>},
-                       {<<"x-amz-fwd-status">>, <<"StatusCode">>},
-                       {<<"x-amz-fwd-header-x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
-                       {<<"x-amz-fwd-header-Content-Type">>, <<"ContentType">>},
-                       {<<"x-amz-fwd-header-x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
-                       {<<"x-amz-fwd-header-x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
-                       {<<"x-amz-fwd-header-x-amz-version-id">>, <<"VersionId">>},
-                       {<<"x-amz-fwd-header-accept-ranges">>, <<"AcceptRanges">>},
-                       {<<"x-amz-fwd-header-Content-Language">>, <<"ContentLanguage">>},
-                       {<<"x-amz-fwd-header-x-amz-checksum-crc64nvme">>, <<"ChecksumCRC64NVME">>},
                        {<<"x-amz-fwd-header-x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
-                       {<<"x-amz-fwd-header-x-amz-checksum-xxhash3">>, <<"ChecksumXXHASH3">>},
-                       {<<"x-amz-fwd-header-Content-Encoding">>, <<"ContentEncoding">>},
-                       {<<"x-amz-fwd-header-x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
-                       {<<"x-amz-fwd-header-ETag">>, <<"ETag">>},
-                       {<<"x-amz-fwd-header-Last-Modified">>, <<"LastModified">>},
-                       {<<"x-amz-fwd-error-code">>, <<"ErrorCode">>},
-                       {<<"x-amz-fwd-header-Content-Range">>, <<"ContentRange">>},
-                       {<<"x-amz-fwd-header-Expires">>, <<"Expires">>},
-                       {<<"x-amz-fwd-header-x-amz-tagging-count">>, <<"TagCount">>},
-                       {<<"x-amz-fwd-header-x-amz-expiration">>, <<"Expiration">>},
-                       {<<"x-amz-fwd-header-x-amz-replication-status">>, <<"ReplicationStatus">>},
-                       {<<"x-amz-fwd-header-Cache-Control">>, <<"CacheControl">>},
-                       {<<"x-amz-fwd-header-x-amz-checksum-md5">>, <<"ChecksumMD5">>},
-                       {<<"x-amz-fwd-header-x-amz-storage-class">>, <<"StorageClass">>},
-                       {<<"x-amz-fwd-header-x-amz-checksum-xxhash64">>, <<"ChecksumXXHASH64">>},
-                       {<<"x-amz-fwd-header-x-amz-missing-meta">>, <<"MissingMeta">>},
-                       {<<"Content-Length">>, <<"ContentLength">>},
-                       {<<"x-amz-fwd-header-x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
-                       {<<"x-amz-fwd-header-x-amz-checksum-xxhash128">>, <<"ChecksumXXHASH128">>},
-                       {<<"x-amz-fwd-header-Content-Disposition">>, <<"ContentDisposition">>},
-                       {<<"x-amz-fwd-header-x-amz-request-charged">>, <<"RequestCharged">>},
-                       {<<"x-amz-fwd-header-x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
-                       {<<"x-amz-fwd-header-x-amz-mp-parts-count">>, <<"PartsCount">>},
+                       {<<"x-amz-fwd-header-x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
                        {<<"x-amz-fwd-header-x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
-                       {<<"x-amz-fwd-header-x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
-                       {<<"x-amz-fwd-header-x-amz-checksum-sha1">>, <<"ChecksumSHA1">>}
+                       {<<"x-amz-fwd-header-x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+                       {<<"x-amz-fwd-status">>, <<"StatusCode">>},
+                       {<<"x-amz-fwd-header-x-amz-storage-class">>, <<"StorageClass">>},
+                       {<<"x-amz-fwd-header-x-amz-tagging-count">>, <<"TagCount">>},
+                       {<<"x-amz-fwd-header-x-amz-version-id">>, <<"VersionId">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 

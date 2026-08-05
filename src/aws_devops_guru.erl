@@ -104,42 +104,91 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_health() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Insight">> => account_insight_health()
+%% }
+-type account_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_insight_health() :: #{
+%%   <<"OpenProactiveInsights">> => integer(),
+%%   <<"OpenReactiveInsights">> => integer()
+%% }
+-type account_insight_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_notification_channel_request() :: #{
+%%   <<"Config">> := notification_channel_config()
+%% }
+-type add_notification_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_notification_channel_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type add_notification_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% amazon_code_guru_profiler_integration() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type amazon_code_guru_profiler_integration() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomalous_log_group() :: #{
+%%   <<"ImpactEndTime">> => non_neg_integer(),
+%%   <<"ImpactStartTime">> => non_neg_integer(),
+%%   <<"LogAnomalyShowcases">> => list(log_anomaly_showcase()),
+%%   <<"LogGroupName">> => string(),
+%%   <<"NumberOfLogLinesScanned">> => integer()
+%% }
+-type anomalous_log_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomaly_reported_time_range() :: #{
+%%   <<"CloseTime">> => non_neg_integer(),
+%%   <<"OpenTime">> => non_neg_integer()
+%% }
+-type anomaly_reported_time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomaly_resource() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type anomaly_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomaly_source_details() :: #{
+%%   <<"CloudWatchMetrics">> => list(cloud_watch_metrics_detail()),
+%%   <<"PerformanceInsightsMetrics">> => list(performance_insights_metrics_detail())
+%% }
+-type anomaly_source_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% anomaly_source_metadata() :: #{
 %%   <<"Source">> => string(),
 %%   <<"SourceResourceName">> => string(),
 %%   <<"SourceResourceType">> => string()
 %% }
 -type anomaly_source_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_integration_config() :: #{
-%%   <<"KMSServerSideEncryption">> => kms_server_side_encryption_integration(),
-%%   <<"LogsAnomalyDetection">> => logs_anomaly_detection_integration(),
-%%   <<"OpsCenter">> => ops_center_integration()
-%% }
--type service_integration_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_resource_collection_response() :: #{}
--type update_resource_collection_response() :: #{}.
-
-
-%% Example:
-%% list_organization_insights_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProactiveInsights">> => list(proactive_organization_insight_summary()),
-%%   <<"ReactiveInsights">> => list(reactive_organization_insight_summary())
-%% }
--type list_organization_insights_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% performance_insights_stat() :: #{
-%%   <<"Type">> => string(),
-%%   <<"Value">> => float()
-%% }
--type performance_insights_stat() :: #{binary() => any()}.
 
 
 %% Example:
@@ -151,35 +200,174 @@
 
 
 %% Example:
-%% put_feedback_request() :: #{
+%% cloud_formation_collection() :: #{
+%%   <<"StackNames">> => list(string())
+%% }
+-type cloud_formation_collection() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_formation_collection_filter() :: #{
+%%   <<"StackNames">> => list(string())
+%% }
+-type cloud_formation_collection_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_formation_cost_estimation_resource_collection_filter() :: #{
+%%   <<"StackNames">> => list(string())
+%% }
+-type cloud_formation_cost_estimation_resource_collection_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_formation_health() :: #{
+%%   <<"AnalyzedResourceCount">> => float(),
+%%   <<"Insight">> => insight_health(),
+%%   <<"StackName">> => string()
+%% }
+-type cloud_formation_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_metrics_data_summary() :: #{
+%%   <<"StatusCode">> => list(any()),
+%%   <<"TimestampMetricValuePairList">> => list(timestamp_metric_value_pair())
+%% }
+-type cloud_watch_metrics_data_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_metrics_detail() :: #{
+%%   <<"Dimensions">> => list(cloud_watch_metrics_dimension()),
+%%   <<"MetricDataSummary">> => cloud_watch_metrics_data_summary(),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"Period">> => integer(),
+%%   <<"Stat">> => list(any()),
+%%   <<"Unit">> => string()
+%% }
+-type cloud_watch_metrics_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_metrics_dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type cloud_watch_metrics_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cost_estimation_resource_collection_filter() :: #{
+%%   <<"CloudFormation">> => cloud_formation_cost_estimation_resource_collection_filter(),
+%%   <<"Tags">> => list(tag_cost_estimation_resource_collection_filter())
+%% }
+-type cost_estimation_resource_collection_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% cost_estimation_time_range() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type cost_estimation_time_range() :: #{binary() => any()}.
+
+%% Example:
+%% delete_insight_request() :: #{}
+-type delete_insight_request() :: #{}.
+
+%% Example:
+%% delete_insight_response() :: #{}
+-type delete_insight_response() :: #{}.
+
+%% Example:
+%% describe_account_health_request() :: #{}
+-type describe_account_health_request() :: #{}.
+
+
+%% Example:
+%% describe_account_health_response() :: #{
+%%   <<"AnalyzedResourceCount">> => float(),
+%%   <<"MetricsAnalyzed">> => integer(),
+%%   <<"OpenProactiveInsights">> => integer(),
+%%   <<"OpenReactiveInsights">> => integer(),
+%%   <<"ResourceHours">> => float()
+%% }
+-type describe_account_health_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_account_overview_request() :: #{
+%%   <<"FromTime">> := non_neg_integer(),
+%%   <<"ToTime">> => non_neg_integer()
+%% }
+-type describe_account_overview_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_account_overview_response() :: #{
+%%   <<"MeanTimeToRecoverInMilliseconds">> => float(),
+%%   <<"ProactiveInsights">> => integer(),
+%%   <<"ReactiveInsights">> => integer()
+%% }
+-type describe_account_overview_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_anomaly_request() :: #{
+%%   <<"AccountId">> => string()
+%% }
+-type describe_anomaly_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_anomaly_response() :: #{
+%%   <<"ProactiveAnomaly">> => proactive_anomaly(),
+%%   <<"ReactiveAnomaly">> => reactive_anomaly()
+%% }
+-type describe_anomaly_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_event_sources_config_request() :: #{}
+-type describe_event_sources_config_request() :: #{}.
+
+
+%% Example:
+%% describe_event_sources_config_response() :: #{
+%%   <<"EventSources">> => event_sources_config()
+%% }
+-type describe_event_sources_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_feedback_request() :: #{
+%%   <<"InsightId">> => string()
+%% }
+-type describe_feedback_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_feedback_response() :: #{
 %%   <<"InsightFeedback">> => insight_feedback()
 %% }
--type put_feedback_request() :: #{binary() => any()}.
+-type describe_feedback_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_insight_health() :: #{
-%%   <<"OpenProactiveInsights">> => integer(),
-%%   <<"OpenReactiveInsights">> => integer()
+%% describe_insight_request() :: #{
+%%   <<"AccountId">> => string()
 %% }
--type service_insight_health() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_insights_any_status_filter() :: #{
-%%   <<"StartTimeRange">> => start_time_range(),
-%%   <<"Type">> => list(any())
-%% }
--type list_insights_any_status_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_insights_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StatusFilter">> := list_insights_status_filter()
-%% }
--type list_insights_request() :: #{binary() => any()}.
+-type describe_insight_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -191,33 +379,21 @@
 
 
 %% Example:
-%% performance_insights_metric_dimension_group() :: #{
-%%   <<"Dimensions">> => list(string()),
-%%   <<"Group">> => string(),
-%%   <<"Limit">> => integer()
+%% describe_organization_health_request() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"OrganizationalUnitIds">> => list(string())
 %% }
--type performance_insights_metric_dimension_group() :: #{binary() => any()}.
+-type describe_organization_health_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% add_notification_channel_request() :: #{
-%%   <<"Config">> := notification_channel_config()
+%% describe_organization_health_response() :: #{
+%%   <<"MetricsAnalyzed">> => integer(),
+%%   <<"OpenProactiveInsights">> => integer(),
+%%   <<"OpenReactiveInsights">> => integer(),
+%%   <<"ResourceHours">> => float()
 %% }
--type add_notification_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_anomalies_for_insight_filters() :: #{
-%%   <<"ServiceCollection">> => service_collection()
-%% }
--type list_anomalies_for_insight_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% performance_insights_reference_scalar() :: #{
-%%   <<"Value">> => float()
-%% }
--type performance_insights_reference_scalar() :: #{binary() => any()}.
+-type describe_organization_health_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -231,49 +407,133 @@
 
 
 %% Example:
-%% account_insight_health() :: #{
-%%   <<"OpenProactiveInsights">> => integer(),
-%%   <<"OpenReactiveInsights">> => integer()
+%% describe_organization_overview_response() :: #{
+%%   <<"ProactiveInsights">> => integer(),
+%%   <<"ReactiveInsights">> => integer()
 %% }
--type account_insight_health() :: #{binary() => any()}.
+-type describe_organization_overview_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% recommendation_related_event() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Resources">> => list(recommendation_related_event_resource())
+%% describe_organization_resource_collection_health_request() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationResourceCollectionType">> := list(any()),
+%%   <<"OrganizationalUnitIds">> => list(string())
 %% }
--type recommendation_related_event() :: #{binary() => any()}.
+-type describe_organization_resource_collection_health_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% reactive_insight() :: #{
-%%   <<"Description">> => string(),
+%% describe_organization_resource_collection_health_response() :: #{
+%%   <<"Account">> => list(account_health()),
+%%   <<"CloudFormation">> => list(cloud_formation_health()),
+%%   <<"NextToken">> => string(),
+%%   <<"Service">> => list(service_health()),
+%%   <<"Tags">> => list(tag_health())
+%% }
+-type describe_organization_resource_collection_health_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_resource_collection_health_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type describe_resource_collection_health_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_resource_collection_health_response() :: #{
+%%   <<"CloudFormation">> => list(cloud_formation_health()),
+%%   <<"NextToken">> => string(),
+%%   <<"Service">> => list(service_health()),
+%%   <<"Tags">> => list(tag_health())
+%% }
+-type describe_resource_collection_health_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_integration_request() :: #{}
+-type describe_service_integration_request() :: #{}.
+
+
+%% Example:
+%% describe_service_integration_response() :: #{
+%%   <<"ServiceIntegration">> => service_integration_config()
+%% }
+-type describe_service_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% end_time_range() :: #{
+%%   <<"FromTime">> => non_neg_integer(),
+%%   <<"ToTime">> => non_neg_integer()
+%% }
+-type end_time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% event() :: #{
+%%   <<"DataSource">> => list(any()),
+%%   <<"EventClass">> => list(any()),
+%%   <<"EventSource">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"InsightTimeRange">> => insight_time_range(),
 %%   <<"Name">> => string(),
 %%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"Severity">> => list(any()),
-%%   <<"SsmOpsItemId">> => string(),
-%%   <<"Status">> => list(any())
+%%   <<"Resources">> => list(event_resource()),
+%%   <<"Time">> => non_neg_integer()
 %% }
--type reactive_insight() :: #{binary() => any()}.
+-type event() :: #{binary() => any()}.
 
 
 %% Example:
-%% proactive_organization_insight_summary() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"InsightTimeRange">> => insight_time_range(),
+%% event_resource() :: #{
+%%   <<"Arn">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"OrganizationalUnitId">> => string(),
-%%   <<"PredictionTimeRange">> => prediction_time_range(),
-%%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"ServiceCollection">> => service_collection(),
-%%   <<"Severity">> => list(any()),
-%%   <<"Status">> => list(any())
+%%   <<"Type">> => string()
 %% }
--type proactive_organization_insight_summary() :: #{binary() => any()}.
+-type event_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_sources_config() :: #{
+%%   <<"AmazonCodeGuruProfiler">> => amazon_code_guru_profiler_integration()
+%% }
+-type event_sources_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_time_range() :: #{
+%%   <<"FromTime">> => non_neg_integer(),
+%%   <<"ToTime">> => non_neg_integer()
+%% }
+-type event_time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cost_estimation_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type get_cost_estimation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cost_estimation_response() :: #{
+%%   <<"Costs">> => list(service_resource_cost()),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceCollection">> => cost_estimation_resource_collection_filter(),
+%%   <<"Status">> => list(any()),
+%%   <<"TimeRange">> => cost_estimation_time_range(),
+%%   <<"TotalCost">> => float()
+%% }
+-type get_cost_estimation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_collection_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type get_resource_collection_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -285,30 +545,416 @@
 
 
 %% Example:
-%% recommendation_related_cloud_watch_metrics_source_detail() :: #{
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string()
+%% insight_feedback() :: #{
+%%   <<"Feedback">> => list(any()),
+%%   <<"Id">> => string()
 %% }
--type recommendation_related_cloud_watch_metrics_source_detail() :: #{binary() => any()}.
-
-%% Example:
-%% update_event_sources_config_response() :: #{}
--type update_event_sources_config_response() :: #{}.
+-type insight_feedback() :: #{binary() => any()}.
 
 
 %% Example:
-%% recommendation_related_anomaly_source_detail() :: #{
-%%   <<"CloudWatchMetrics">> => list(recommendation_related_cloud_watch_metrics_source_detail())
+%% insight_health() :: #{
+%%   <<"MeanTimeToRecoverInMilliseconds">> => float(),
+%%   <<"OpenProactiveInsights">> => integer(),
+%%   <<"OpenReactiveInsights">> => integer()
 %% }
--type recommendation_related_anomaly_source_detail() :: #{binary() => any()}.
+-type insight_health() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_account_overview_request() :: #{
-%%   <<"FromTime">> := non_neg_integer(),
-%%   <<"ToTime">> => non_neg_integer()
+%% insight_time_range() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type describe_account_overview_request() :: #{binary() => any()}.
+-type insight_time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RetryAfterSeconds">> => integer()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_server_side_encryption_integration() :: #{
+%%   <<"KMSKeyId">> => string(),
+%%   <<"OptInStatus">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type kms_server_side_encryption_integration() :: #{binary() => any()}.
+
+
+%% Example:
+%% kms_server_side_encryption_integration_config() :: #{
+%%   <<"KMSKeyId">> => string(),
+%%   <<"OptInStatus">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type kms_server_side_encryption_integration_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_anomalies_for_insight_filters() :: #{
+%%   <<"ServiceCollection">> => service_collection()
+%% }
+-type list_anomalies_for_insight_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_anomalies_for_insight_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Filters">> => list_anomalies_for_insight_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTimeRange">> => start_time_range()
+%% }
+-type list_anomalies_for_insight_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_anomalies_for_insight_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProactiveAnomalies">> => list(proactive_anomaly_summary()),
+%%   <<"ReactiveAnomalies">> => list(reactive_anomaly_summary())
+%% }
+-type list_anomalies_for_insight_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_anomalous_log_groups_request() :: #{
+%%   <<"InsightId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_anomalous_log_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_anomalous_log_groups_response() :: #{
+%%   <<"AnomalousLogGroups">> => list(anomalous_log_group()),
+%%   <<"InsightId">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_anomalous_log_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_events_filters() :: #{
+%%   <<"DataSource">> => list(any()),
+%%   <<"EventClass">> => list(any()),
+%%   <<"EventSource">> => string(),
+%%   <<"EventTimeRange">> => event_time_range(),
+%%   <<"InsightId">> => string(),
+%%   <<"ResourceCollection">> => resource_collection()
+%% }
+-type list_events_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_events_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Filters">> := list_events_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_events_response() :: #{
+%%   <<"Events">> => list(event()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_any_status_filter() :: #{
+%%   <<"StartTimeRange">> => start_time_range(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_insights_any_status_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_closed_status_filter() :: #{
+%%   <<"EndTimeRange">> => end_time_range(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_insights_closed_status_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_ongoing_status_filter() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type list_insights_ongoing_status_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusFilter">> := list_insights_status_filter()
+%% }
+-type list_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProactiveInsights">> => list(proactive_insight_summary()),
+%%   <<"ReactiveInsights">> => list(reactive_insight_summary())
+%% }
+-type list_insights_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_insights_status_filter() :: #{
+%%   <<"Any">> => list_insights_any_status_filter(),
+%%   <<"Closed">> => list_insights_closed_status_filter(),
+%%   <<"Ongoing">> => list_insights_ongoing_status_filter()
+%% }
+-type list_insights_status_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_monitored_resources_filters() :: #{
+%%   <<"ResourcePermission">> => list(any()),
+%%   <<"ResourceTypeFilters">> => list(list(any())())
+%% }
+-type list_monitored_resources_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_monitored_resources_request() :: #{
+%%   <<"Filters">> => list_monitored_resources_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitored_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_monitored_resources_response() :: #{
+%%   <<"MonitoredResourceIdentifiers">> => list(monitored_resource_identifier()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_monitored_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_channels_request() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_notification_channels_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_channels_response() :: #{
+%%   <<"Channels">> => list(notification_channel()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_notification_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_insights_request() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OrganizationalUnitIds">> => list(string()),
+%%   <<"StatusFilter">> := list_insights_status_filter()
+%% }
+-type list_organization_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_organization_insights_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProactiveInsights">> => list(proactive_organization_insight_summary()),
+%%   <<"ReactiveInsights">> => list(reactive_organization_insight_summary())
+%% }
+-type list_organization_insights_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"InsightId">> := string(),
+%%   <<"Locale">> => list(any()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Recommendations">> => list(recommendation())
+%% }
+-type list_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_anomaly_class() :: #{
+%%   <<"Explanation">> => string(),
+%%   <<"LogAnomalyToken">> => string(),
+%%   <<"LogAnomalyType">> => list(any()),
+%%   <<"LogEventId">> => string(),
+%%   <<"LogEventTimestamp">> => non_neg_integer(),
+%%   <<"LogStreamName">> => string(),
+%%   <<"NumberOfLogLinesOccurrences">> => integer()
+%% }
+-type log_anomaly_class() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_anomaly_showcase() :: #{
+%%   <<"LogAnomalyClasses">> => list(log_anomaly_class())
+%% }
+-type log_anomaly_showcase() :: #{binary() => any()}.
+
+
+%% Example:
+%% logs_anomaly_detection_integration() :: #{
+%%   <<"OptInStatus">> => list(any())
+%% }
+-type logs_anomaly_detection_integration() :: #{binary() => any()}.
+
+
+%% Example:
+%% logs_anomaly_detection_integration_config() :: #{
+%%   <<"OptInStatus">> => list(any())
+%% }
+-type logs_anomaly_detection_integration_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitored_resource_identifier() :: #{
+%%   <<"LastUpdated">> => non_neg_integer(),
+%%   <<"MonitoredResourceName">> => string(),
+%%   <<"ResourceCollection">> => resource_collection(),
+%%   <<"ResourcePermission">> => list(any()),
+%%   <<"Type">> => string()
+%% }
+-type monitored_resource_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_channel() :: #{
+%%   <<"Config">> => notification_channel_config(),
+%%   <<"Id">> => string()
+%% }
+-type notification_channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_channel_config() :: #{
+%%   <<"Filters">> => notification_filter_config(),
+%%   <<"Sns">> => sns_channel_config()
+%% }
+-type notification_channel_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_filter_config() :: #{
+%%   <<"MessageTypes">> => list(list(any())()),
+%%   <<"Severities">> => list(list(any())())
+%% }
+-type notification_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% ops_center_integration() :: #{
+%%   <<"OptInStatus">> => list(any())
+%% }
+-type ops_center_integration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ops_center_integration_config() :: #{
+%%   <<"OptInStatus">> => list(any())
+%% }
+-type ops_center_integration_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_insights_metric_dimension_group() :: #{
+%%   <<"Dimensions">> => list(string()),
+%%   <<"Group">> => string(),
+%%   <<"Limit">> => integer()
+%% }
+-type performance_insights_metric_dimension_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_insights_metric_query() :: #{
+%%   <<"Filter">> => map(),
+%%   <<"GroupBy">> => performance_insights_metric_dimension_group(),
+%%   <<"Metric">> => string()
+%% }
+-type performance_insights_metric_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_insights_metrics_detail() :: #{
+%%   <<"MetricDisplayName">> => string(),
+%%   <<"MetricQuery">> => performance_insights_metric_query(),
+%%   <<"ReferenceData">> => list(performance_insights_reference_data()),
+%%   <<"StatsAtAnomaly">> => list(performance_insights_stat()),
+%%   <<"StatsAtBaseline">> => list(performance_insights_stat()),
+%%   <<"Unit">> => string()
+%% }
+-type performance_insights_metrics_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_insights_reference_comparison_values() :: #{
+%%   <<"ReferenceMetric">> => performance_insights_reference_metric(),
+%%   <<"ReferenceScalar">> => performance_insights_reference_scalar()
+%% }
+-type performance_insights_reference_comparison_values() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_insights_reference_data() :: #{
+%%   <<"ComparisonValues">> => performance_insights_reference_comparison_values(),
+%%   <<"Name">> => string()
+%% }
+-type performance_insights_reference_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_insights_reference_metric() :: #{
+%%   <<"MetricQuery">> => performance_insights_metric_query()
+%% }
+-type performance_insights_reference_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_insights_reference_scalar() :: #{
+%%   <<"Value">> => float()
+%% }
+-type performance_insights_reference_scalar() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_insights_stat() :: #{
+%%   <<"Type">> => string(),
+%%   <<"Value">> => float()
+%% }
+-type performance_insights_stat() :: #{binary() => any()}.
+
+
+%% Example:
+%% prediction_time_range() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type prediction_time_range() :: #{binary() => any()}.
 
 
 %% Example:
@@ -329,1103 +975,6 @@
 %%   <<"UpdateTime">> => non_neg_integer()
 %% }
 -type proactive_anomaly() :: #{binary() => any()}.
-
-%% Example:
-%% remove_notification_channel_request() :: #{}
--type remove_notification_channel_request() :: #{}.
-
-
-%% Example:
-%% list_insights_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProactiveInsights">> => list(proactive_insight_summary()),
-%%   <<"ReactiveInsights">> => list(reactive_insight_summary())
-%% }
--type list_insights_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_health() :: #{
-%%   <<"AnalyzedResourceCount">> => float(),
-%%   <<"Insight">> => service_insight_health(),
-%%   <<"ServiceName">> => list(any())
-%% }
--type service_health() :: #{binary() => any()}.
-
-
-%% Example:
-%% kms_server_side_encryption_integration() :: #{
-%%   <<"KMSKeyId">> => string(),
-%%   <<"OptInStatus">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type kms_server_side_encryption_integration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_monitored_resources_request() :: #{
-%%   <<"Filters">> => list_monitored_resources_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_monitored_resources_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% proactive_insight() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"InsightTimeRange">> => insight_time_range(),
-%%   <<"Name">> => string(),
-%%   <<"PredictionTimeRange">> => prediction_time_range(),
-%%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"Severity">> => list(any()),
-%%   <<"SsmOpsItemId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type proactive_insight() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cost_estimation_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type get_cost_estimation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% anomalous_log_group() :: #{
-%%   <<"ImpactEndTime">> => non_neg_integer(),
-%%   <<"ImpactStartTime">> => non_neg_integer(),
-%%   <<"LogAnomalyShowcases">> => list(log_anomaly_showcase()),
-%%   <<"LogGroupName">> => string(),
-%%   <<"NumberOfLogLinesScanned">> => integer()
-%% }
--type anomalous_log_group() :: #{binary() => any()}.
-
-%% Example:
-%% put_feedback_response() :: #{}
--type put_feedback_response() :: #{}.
-
-
-%% Example:
-%% proactive_insight_summary() :: #{
-%%   <<"AssociatedResourceArns">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"InsightTimeRange">> => insight_time_range(),
-%%   <<"Name">> => string(),
-%%   <<"PredictionTimeRange">> => prediction_time_range(),
-%%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"ServiceCollection">> => service_collection(),
-%%   <<"Severity">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type proactive_insight_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_anomaly_response() :: #{
-%%   <<"ProactiveAnomaly">> => proactive_anomaly(),
-%%   <<"ReactiveAnomaly">> => reactive_anomaly()
-%% }
--type describe_anomaly_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_resource_collection_filter() :: #{
-%%   <<"CloudFormation">> => update_cloud_formation_collection_filter(),
-%%   <<"Tags">> => list(update_tag_collection_filter())
-%% }
--type update_resource_collection_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% cost_estimation_time_range() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type cost_estimation_time_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_events_filters() :: #{
-%%   <<"DataSource">> => list(any()),
-%%   <<"EventClass">> => list(any()),
-%%   <<"EventSource">> => string(),
-%%   <<"EventTimeRange">> => event_time_range(),
-%%   <<"InsightId">> => string(),
-%%   <<"ResourceCollection">> => resource_collection()
-%% }
--type list_events_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% kms_server_side_encryption_integration_config() :: #{
-%%   <<"KMSKeyId">> => string(),
-%%   <<"OptInStatus">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type kms_server_side_encryption_integration_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_organization_insights_filters() :: #{
-%%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"ServiceCollection">> => service_collection(),
-%%   <<"Severities">> => list(list(any())()),
-%%   <<"Statuses">> => list(list(any())())
-%% }
--type search_organization_insights_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% performance_insights_reference_metric() :: #{
-%%   <<"MetricQuery">> => performance_insights_metric_query()
-%% }
--type performance_insights_reference_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_insights_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProactiveInsights">> => list(proactive_insight_summary()),
-%%   <<"ReactiveInsights">> => list(reactive_insight_summary())
-%% }
--type search_insights_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ops_center_integration_config() :: #{
-%%   <<"OptInStatus">> => list(any())
-%% }
--type ops_center_integration_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_metrics_data_summary() :: #{
-%%   <<"StatusCode">> => list(any()),
-%%   <<"TimestampMetricValuePairList">> => list(timestamp_metric_value_pair())
-%% }
--type cloud_watch_metrics_data_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_tag_collection_filter() :: #{
-%%   <<"AppBoundaryKey">> => string(),
-%%   <<"TagValues">> => list(string())
-%% }
--type update_tag_collection_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_events_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Filters">> := list_events_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_events_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_channel() :: #{
-%%   <<"Config">> => notification_channel_config(),
-%%   <<"Id">> => string()
-%% }
--type notification_channel() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_integration_request() :: #{
-%%   <<"ServiceIntegration">> := update_service_integration_config()
-%% }
--type update_service_integration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_collection() :: #{
-%%   <<"AppBoundaryKey">> => string(),
-%%   <<"TagValues">> => list(string())
-%% }
--type tag_collection() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cost_estimation_response() :: #{
-%%   <<"Costs">> => list(service_resource_cost()),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceCollection">> => cost_estimation_resource_collection_filter(),
-%%   <<"Status">> => list(any()),
-%%   <<"TimeRange">> => cost_estimation_time_range(),
-%%   <<"TotalCost">> => float()
-%% }
--type get_cost_estimation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_insights_ongoing_status_filter() :: #{
-%%   <<"Type">> => list(any())
-%% }
--type list_insights_ongoing_status_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% anomaly_reported_time_range() :: #{
-%%   <<"CloseTime">> => non_neg_integer(),
-%%   <<"OpenTime">> => non_neg_integer()
-%% }
--type anomaly_reported_time_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_formation_health() :: #{
-%%   <<"AnalyzedResourceCount">> => float(),
-%%   <<"Insight">> => insight_health(),
-%%   <<"StackName">> => string()
-%% }
--type cloud_formation_health() :: #{binary() => any()}.
-
-
-%% Example:
-%% reactive_organization_insight_summary() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"InsightTimeRange">> => insight_time_range(),
-%%   <<"Name">> => string(),
-%%   <<"OrganizationalUnitId">> => string(),
-%%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"ServiceCollection">> => service_collection(),
-%%   <<"Severity">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type reactive_organization_insight_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% amazon_code_guru_profiler_integration() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type amazon_code_guru_profiler_integration() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ResourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% remove_notification_channel_response() :: #{}
--type remove_notification_channel_response() :: #{}.
-
-
-%% Example:
-%% list_notification_channels_response() :: #{
-%%   <<"Channels">> => list(notification_channel()),
-%%   <<"NextToken">> => string()
-%% }
--type list_notification_channels_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reactive_insight_summary() :: #{
-%%   <<"AssociatedResourceArns">> => list(string()),
-%%   <<"Id">> => string(),
-%%   <<"InsightTimeRange">> => insight_time_range(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"ServiceCollection">> => service_collection(),
-%%   <<"Severity">> => list(any()),
-%%   <<"Status">> => list(any())
-%% }
--type reactive_insight_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_sources_config() :: #{
-%%   <<"AmazonCodeGuruProfiler">> => amazon_code_guru_profiler_integration()
-%% }
--type event_sources_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_formation_cost_estimation_resource_collection_filter() :: #{
-%%   <<"StackNames">> => list(string())
-%% }
--type cloud_formation_cost_estimation_resource_collection_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% prediction_time_range() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type prediction_time_range() :: #{binary() => any()}.
-
-%% Example:
-%% describe_service_integration_request() :: #{}
--type describe_service_integration_request() :: #{}.
-
-
-%% Example:
-%% log_anomaly_showcase() :: #{
-%%   <<"LogAnomalyClasses">> => list(log_anomaly_class())
-%% }
--type log_anomaly_showcase() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_collection() :: #{
-%%   <<"ServiceNames">> => list(list(any())())
-%% }
--type service_collection() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_notification_channel_response() :: #{
-%%   <<"Id">> => string()
-%% }
--type add_notification_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_resource_collection_health_response() :: #{
-%%   <<"CloudFormation">> => list(cloud_formation_health()),
-%%   <<"NextToken">> => string(),
-%%   <<"Service">> => list(service_health()),
-%%   <<"Tags">> => list(tag_health())
-%% }
--type describe_resource_collection_health_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"Category">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Link">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Reason">> => string(),
-%%   <<"RelatedAnomalies">> => list(recommendation_related_anomaly()),
-%%   <<"RelatedEvents">> => list(recommendation_related_event())
-%% }
--type recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% reactive_anomaly() :: #{
-%%   <<"AnomalyReportedTimeRange">> => anomaly_reported_time_range(),
-%%   <<"AnomalyResources">> => list(anomaly_resource()),
-%%   <<"AnomalyTimeRange">> => anomaly_time_range(),
-%%   <<"AssociatedInsightId">> => string(),
-%%   <<"CausalAnomalyId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"Severity">> => list(any()),
-%%   <<"SourceDetails">> => anomaly_source_details(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type reactive_anomaly() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_organization_insights_request() :: #{
-%%   <<"AccountIds">> := list(string()),
-%%   <<"Filters">> => search_organization_insights_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTimeRange">> := start_time_range(),
-%%   <<"Type">> := list(any())
-%% }
--type search_organization_insights_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cloud_formation_collection_filter() :: #{
-%%   <<"StackNames">> => list(string())
-%% }
--type update_cloud_formation_collection_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% performance_insights_reference_comparison_values() :: #{
-%%   <<"ReferenceMetric">> => performance_insights_reference_metric(),
-%%   <<"ReferenceScalar">> => performance_insights_reference_scalar()
-%% }
--type performance_insights_reference_comparison_values() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_account_health_response() :: #{
-%%   <<"AnalyzedResourceCount">> => float(),
-%%   <<"MetricsAnalyzed">> => integer(),
-%%   <<"OpenProactiveInsights">> => integer(),
-%%   <<"OpenReactiveInsights">> => integer(),
-%%   <<"ResourceHours">> => float()
-%% }
--type describe_account_health_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% anomaly_source_details() :: #{
-%%   <<"CloudWatchMetrics">> => list(cloud_watch_metrics_detail()),
-%%   <<"PerformanceInsightsMetrics">> => list(performance_insights_metrics_detail())
-%% }
--type anomaly_source_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% timestamp_metric_value_pair() :: #{
-%%   <<"MetricValue">> => float(),
-%%   <<"Timestamp">> => non_neg_integer()
-%% }
--type timestamp_metric_value_pair() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_insight_request() :: #{
-%%   <<"AccountId">> => string()
-%% }
--type describe_insight_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_monitored_resources_response() :: #{
-%%   <<"MonitoredResourceIdentifiers">> => list(monitored_resource_identifier()),
-%%   <<"NextToken">> => string()
-%% }
--type list_monitored_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_insights_request() :: #{
-%%   <<"Filters">> => search_insights_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTimeRange">> := start_time_range(),
-%%   <<"Type">> := list(any())
-%% }
--type search_insights_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_collection_filter() :: #{
-%%   <<"AppBoundaryKey">> => string(),
-%%   <<"TagValues">> => list(string())
-%% }
--type tag_collection_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% performance_insights_reference_data() :: #{
-%%   <<"ComparisonValues">> => performance_insights_reference_comparison_values(),
-%%   <<"Name">> => string()
-%% }
--type performance_insights_reference_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_account_overview_response() :: #{
-%%   <<"MeanTimeToRecoverInMilliseconds">> => float(),
-%%   <<"ProactiveInsights">> => integer(),
-%%   <<"ReactiveInsights">> => integer()
-%% }
--type describe_account_overview_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reactive_anomaly_summary() :: #{
-%%   <<"AnomalyReportedTimeRange">> => anomaly_reported_time_range(),
-%%   <<"AnomalyResources">> => list(anomaly_resource()),
-%%   <<"AnomalyTimeRange">> => anomaly_time_range(),
-%%   <<"AssociatedInsightId">> => string(),
-%%   <<"CausalAnomalyId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"Severity">> => list(any()),
-%%   <<"SourceDetails">> => anomaly_source_details(),
-%%   <<"Status">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type reactive_anomaly_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_insights_filters() :: #{
-%%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"ServiceCollection">> => service_collection(),
-%%   <<"Severities">> => list(list(any())()),
-%%   <<"Statuses">> => list(list(any())())
-%% }
--type search_insights_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_event_sources_config_response() :: #{
-%%   <<"EventSources">> => event_sources_config()
-%% }
--type describe_event_sources_config_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_metrics_detail() :: #{
-%%   <<"Dimensions">> => list(cloud_watch_metrics_dimension()),
-%%   <<"MetricDataSummary">> => cloud_watch_metrics_data_summary(),
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string(),
-%%   <<"Period">> => integer(),
-%%   <<"Stat">> => list(any()),
-%%   <<"Unit">> => string()
-%% }
--type cloud_watch_metrics_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_organization_insights_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProactiveInsights">> => list(proactive_insight_summary()),
-%%   <<"ReactiveInsights">> => list(reactive_insight_summary())
-%% }
--type search_organization_insights_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_formation_collection_filter() :: #{
-%%   <<"StackNames">> => list(string())
-%% }
--type cloud_formation_collection_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_related_anomaly() :: #{
-%%   <<"AnomalyId">> => string(),
-%%   <<"Resources">> => list(recommendation_related_anomaly_resource()),
-%%   <<"SourceDetails">> => list(recommendation_related_anomaly_source_detail())
-%% }
--type recommendation_related_anomaly() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_cost_estimation_resource_collection_filter() :: #{
-%%   <<"AppBoundaryKey">> => string(),
-%%   <<"TagValues">> => list(string())
-%% }
--type tag_cost_estimation_resource_collection_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_anomalous_log_groups_request() :: #{
-%%   <<"InsightId">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_anomalous_log_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_events_response() :: #{
-%%   <<"Events">> => list(event()),
-%%   <<"NextToken">> => string()
-%% }
--type list_events_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_insights_closed_status_filter() :: #{
-%%   <<"EndTimeRange">> => end_time_range(),
-%%   <<"Type">> => list(any())
-%% }
--type list_insights_closed_status_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% anomaly_resource() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string()
-%% }
--type anomaly_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_related_anomaly_resource() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string()
-%% }
--type recommendation_related_anomaly_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_anomaly_class() :: #{
-%%   <<"Explanation">> => string(),
-%%   <<"LogAnomalyToken">> => string(),
-%%   <<"LogAnomalyType">> => list(any()),
-%%   <<"LogEventId">> => string(),
-%%   <<"LogEventTimestamp">> => non_neg_integer(),
-%%   <<"LogStreamName">> => string(),
-%%   <<"NumberOfLogLinesOccurrences">> => integer()
-%% }
--type log_anomaly_class() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"RetryAfterSeconds">> => integer()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_time_range() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type insight_time_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% end_time_range() :: #{
-%%   <<"FromTime">> => non_neg_integer(),
-%%   <<"ToTime">> => non_neg_integer()
-%% }
--type end_time_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_organization_resource_collection_health_response() :: #{
-%%   <<"Account">> => list(account_health()),
-%%   <<"CloudFormation">> => list(cloud_formation_health()),
-%%   <<"NextToken">> => string(),
-%%   <<"Service">> => list(service_health()),
-%%   <<"Tags">> => list(tag_health())
-%% }
--type describe_organization_resource_collection_health_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_event_sources_config_request() :: #{}
--type describe_event_sources_config_request() :: #{}.
-
-
-%% Example:
-%% event_resource() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string()
-%% }
--type event_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% logs_anomaly_detection_integration() :: #{
-%%   <<"OptInStatus">> => list(any())
-%% }
--type logs_anomaly_detection_integration() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_organization_overview_response() :: #{
-%%   <<"ProactiveInsights">> => integer(),
-%%   <<"ReactiveInsights">> => integer()
-%% }
--type describe_organization_overview_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% event() :: #{
-%%   <<"DataSource">> => list(any()),
-%%   <<"EventClass">> => list(any()),
-%%   <<"EventSource">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"Resources">> => list(event_resource()),
-%%   <<"Time">> => non_neg_integer()
-%% }
--type event() :: #{binary() => any()}.
-
-
-%% Example:
-%% performance_insights_metric_query() :: #{
-%%   <<"Filter">> => map(),
-%%   <<"GroupBy">> => performance_insights_metric_dimension_group(),
-%%   <<"Metric">> => string()
-%% }
--type performance_insights_metric_query() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_collection_filter() :: #{
-%%   <<"CloudFormation">> => cloud_formation_collection_filter(),
-%%   <<"Tags">> => list(tag_collection_filter())
-%% }
--type resource_collection_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_organization_resource_collection_health_request() :: #{
-%%   <<"AccountIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationResourceCollectionType">> := list(any()),
-%%   <<"OrganizationalUnitIds">> => list(string())
-%% }
--type describe_organization_resource_collection_health_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_anomalies_for_insight_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProactiveAnomalies">> => list(proactive_anomaly_summary()),
-%%   <<"ReactiveAnomalies">> => list(reactive_anomaly_summary())
-%% }
--type list_anomalies_for_insight_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_health() :: #{
-%%   <<"AnalyzedResourceCount">> => float(),
-%%   <<"AppBoundaryKey">> => string(),
-%%   <<"Insight">> => insight_health(),
-%%   <<"TagValue">> => string()
-%% }
--type tag_health() :: #{binary() => any()}.
-
-
-%% Example:
-%% cost_estimation_resource_collection_filter() :: #{
-%%   <<"CloudFormation">> => cloud_formation_cost_estimation_resource_collection_filter(),
-%%   <<"Tags">> => list(tag_cost_estimation_resource_collection_filter())
-%% }
--type cost_estimation_resource_collection_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_health_request() :: #{}
--type describe_account_health_request() :: #{}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_insight_response() :: #{}
--type delete_insight_response() :: #{}.
-
-
-%% Example:
-%% update_resource_collection_request() :: #{
-%%   <<"Action">> := list(any()),
-%%   <<"ResourceCollection">> := update_resource_collection_filter()
-%% }
--type update_resource_collection_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_cost_estimation_response() :: #{}
--type start_cost_estimation_response() :: #{}.
-
-
-%% Example:
-%% list_notification_channels_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type list_notification_channels_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_event_sources_config_request() :: #{
-%%   <<"EventSources">> => event_sources_config()
-%% }
--type update_event_sources_config_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_related_event_resource() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Type">> => string()
-%% }
--type recommendation_related_event_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_formation_collection() :: #{
-%%   <<"StackNames">> => list(string())
-%% }
--type cloud_formation_collection() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()),
-%%   <<"Message">> => string(),
-%%   <<"Reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_insight_request() :: #{}
--type delete_insight_request() :: #{}.
-
-
-%% Example:
-%% list_anomalous_log_groups_response() :: #{
-%%   <<"AnomalousLogGroups">> => list(anomalous_log_group()),
-%%   <<"InsightId">> => string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_anomalous_log_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sns_channel_config() :: #{
-%%   <<"TopicArn">> => string()
-%% }
--type sns_channel_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% logs_anomaly_detection_integration_config() :: #{
-%%   <<"OptInStatus">> => list(any())
-%% }
--type logs_anomaly_detection_integration_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_metrics_dimension() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type cloud_watch_metrics_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_service_integration_response() :: #{
-%%   <<"ServiceIntegration">> => service_integration_config()
-%% }
--type describe_service_integration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% performance_insights_metrics_detail() :: #{
-%%   <<"MetricDisplayName">> => string(),
-%%   <<"MetricQuery">> => performance_insights_metric_query(),
-%%   <<"ReferenceData">> => list(performance_insights_reference_data()),
-%%   <<"StatsAtAnomaly">> => list(performance_insights_stat()),
-%%   <<"StatsAtBaseline">> => list(performance_insights_stat()),
-%%   <<"Unit">> => string()
-%% }
--type performance_insights_metrics_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string(),
-%%   <<"QuotaCode">> => string(),
-%%   <<"RetryAfterSeconds">> => integer(),
-%%   <<"ServiceCode">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_feedback_response() :: #{
-%%   <<"InsightFeedback">> => insight_feedback()
-%% }
--type describe_feedback_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_cost_estimation_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ResourceCollection">> := cost_estimation_resource_collection_filter()
-%% }
--type start_cost_estimation_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_integration_response() :: #{}
--type update_service_integration_response() :: #{}.
-
-
-%% Example:
-%% get_resource_collection_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type get_resource_collection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_health() :: #{
-%%   <<"MeanTimeToRecoverInMilliseconds">> => float(),
-%%   <<"OpenProactiveInsights">> => integer(),
-%%   <<"OpenReactiveInsights">> => integer()
-%% }
--type insight_health() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_anomaly_request() :: #{
-%%   <<"AccountId">> => string()
-%% }
--type describe_anomaly_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_service_integration_config() :: #{
-%%   <<"KMSServerSideEncryption">> => kms_server_side_encryption_integration_config(),
-%%   <<"LogsAnomalyDetection">> => logs_anomaly_detection_integration_config(),
-%%   <<"OpsCenter">> => ops_center_integration_config()
-%% }
--type update_service_integration_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_feedback_request() :: #{
-%%   <<"InsightId">> => string()
-%% }
--type describe_feedback_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_time_range() :: #{
-%%   <<"FromTime">> => non_neg_integer(),
-%%   <<"ToTime">> => non_neg_integer()
-%% }
--type start_time_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_channel_config() :: #{
-%%   <<"Filters">> => notification_filter_config(),
-%%   <<"Sns">> => sns_channel_config()
-%% }
--type notification_channel_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_time_range() :: #{
-%%   <<"FromTime">> => non_neg_integer(),
-%%   <<"ToTime">> => non_neg_integer()
-%% }
--type event_time_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_monitored_resources_filters() :: #{
-%%   <<"ResourcePermission">> => list(any()),
-%%   <<"ResourceTypeFilters">> => list(list(any())())
-%% }
--type list_monitored_resources_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_organization_insights_request() :: #{
-%%   <<"AccountIds">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"OrganizationalUnitIds">> => list(string()),
-%%   <<"StatusFilter">> := list_insights_status_filter()
-%% }
--type list_organization_insights_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% notification_filter_config() :: #{
-%%   <<"MessageTypes">> => list(list(any())()),
-%%   <<"Severities">> => list(list(any())())
-%% }
--type notification_filter_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_organization_health_response() :: #{
-%%   <<"MetricsAnalyzed">> => integer(),
-%%   <<"OpenProactiveInsights">> => integer(),
-%%   <<"OpenReactiveInsights">> => integer(),
-%%   <<"ResourceHours">> => float()
-%% }
--type describe_organization_health_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendations_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Recommendations">> => list(recommendation())
-%% }
--type list_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_insights_status_filter() :: #{
-%%   <<"Any">> => list_insights_any_status_filter(),
-%%   <<"Closed">> => list_insights_closed_status_filter(),
-%%   <<"Ongoing">> => list_insights_ongoing_status_filter()
-%% }
--type list_insights_status_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight_feedback() :: #{
-%%   <<"Feedback">> => list(any()),
-%%   <<"Id">> => string()
-%% }
--type insight_feedback() :: #{binary() => any()}.
-
-
-%% Example:
-%% ops_center_integration() :: #{
-%%   <<"OptInStatus">> => list(any())
-%% }
--type ops_center_integration() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_resource_cost() :: #{
-%%   <<"Cost">> => float(),
-%%   <<"Count">> => integer(),
-%%   <<"State">> => list(any()),
-%%   <<"Type">> => string(),
-%%   <<"UnitCost">> => float()
-%% }
--type service_resource_cost() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_collection() :: #{
-%%   <<"CloudFormation">> => cloud_formation_collection(),
-%%   <<"Tags">> => list(tag_collection())
-%% }
--type resource_collection() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1449,267 +998,718 @@
 
 
 %% Example:
-%% list_anomalies_for_insight_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Filters">> => list_anomalies_for_insight_filters(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StartTimeRange">> => start_time_range()
-%% }
--type list_anomalies_for_insight_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_health() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"Insight">> => account_insight_health()
-%% }
--type account_health() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_organization_health_request() :: #{
-%%   <<"AccountIds">> => list(string()),
-%%   <<"OrganizationalUnitIds">> => list(string())
-%% }
--type describe_organization_health_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendations_request() :: #{
-%%   <<"AccountId">> => string(),
-%%   <<"InsightId">> := string(),
-%%   <<"Locale">> => list(any()),
-%%   <<"NextToken">> => string()
-%% }
--type list_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_resource_collection_health_request() :: #{
-%%   <<"NextToken">> => string()
-%% }
--type describe_resource_collection_health_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% monitored_resource_identifier() :: #{
-%%   <<"LastUpdated">> => non_neg_integer(),
-%%   <<"MonitoredResourceName">> => string(),
+%% proactive_insight() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"InsightTimeRange">> => insight_time_range(),
+%%   <<"Name">> => string(),
+%%   <<"PredictionTimeRange">> => prediction_time_range(),
 %%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"ResourcePermission">> => list(any()),
+%%   <<"Severity">> => list(any()),
+%%   <<"SsmOpsItemId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type proactive_insight() :: #{binary() => any()}.
+
+
+%% Example:
+%% proactive_insight_summary() :: #{
+%%   <<"AssociatedResourceArns">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"InsightTimeRange">> => insight_time_range(),
+%%   <<"Name">> => string(),
+%%   <<"PredictionTimeRange">> => prediction_time_range(),
+%%   <<"ResourceCollection">> => resource_collection(),
+%%   <<"ServiceCollection">> => service_collection(),
+%%   <<"Severity">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type proactive_insight_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% proactive_organization_insight_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"InsightTimeRange">> => insight_time_range(),
+%%   <<"Name">> => string(),
+%%   <<"OrganizationalUnitId">> => string(),
+%%   <<"PredictionTimeRange">> => prediction_time_range(),
+%%   <<"ResourceCollection">> => resource_collection(),
+%%   <<"ServiceCollection">> => service_collection(),
+%%   <<"Severity">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type proactive_organization_insight_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_feedback_request() :: #{
+%%   <<"InsightFeedback">> => insight_feedback()
+%% }
+-type put_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_feedback_response() :: #{}
+-type put_feedback_response() :: #{}.
+
+
+%% Example:
+%% reactive_anomaly() :: #{
+%%   <<"AnomalyReportedTimeRange">> => anomaly_reported_time_range(),
+%%   <<"AnomalyResources">> => list(anomaly_resource()),
+%%   <<"AnomalyTimeRange">> => anomaly_time_range(),
+%%   <<"AssociatedInsightId">> => string(),
+%%   <<"CausalAnomalyId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceCollection">> => resource_collection(),
+%%   <<"Severity">> => list(any()),
+%%   <<"SourceDetails">> => anomaly_source_details(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type reactive_anomaly() :: #{binary() => any()}.
+
+
+%% Example:
+%% reactive_anomaly_summary() :: #{
+%%   <<"AnomalyReportedTimeRange">> => anomaly_reported_time_range(),
+%%   <<"AnomalyResources">> => list(anomaly_resource()),
+%%   <<"AnomalyTimeRange">> => anomaly_time_range(),
+%%   <<"AssociatedInsightId">> => string(),
+%%   <<"CausalAnomalyId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceCollection">> => resource_collection(),
+%%   <<"Severity">> => list(any()),
+%%   <<"SourceDetails">> => anomaly_source_details(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type reactive_anomaly_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% reactive_insight() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"InsightTimeRange">> => insight_time_range(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceCollection">> => resource_collection(),
+%%   <<"Severity">> => list(any()),
+%%   <<"SsmOpsItemId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type reactive_insight() :: #{binary() => any()}.
+
+
+%% Example:
+%% reactive_insight_summary() :: #{
+%%   <<"AssociatedResourceArns">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"InsightTimeRange">> => insight_time_range(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceCollection">> => resource_collection(),
+%%   <<"ServiceCollection">> => service_collection(),
+%%   <<"Severity">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type reactive_insight_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% reactive_organization_insight_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"InsightTimeRange">> => insight_time_range(),
+%%   <<"Name">> => string(),
+%%   <<"OrganizationalUnitId">> => string(),
+%%   <<"ResourceCollection">> => resource_collection(),
+%%   <<"ServiceCollection">> => service_collection(),
+%%   <<"Severity">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type reactive_organization_insight_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Link">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Reason">> => string(),
+%%   <<"RelatedAnomalies">> => list(recommendation_related_anomaly()),
+%%   <<"RelatedEvents">> => list(recommendation_related_event())
+%% }
+-type recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_related_anomaly() :: #{
+%%   <<"AnomalyId">> => string(),
+%%   <<"Resources">> => list(recommendation_related_anomaly_resource()),
+%%   <<"SourceDetails">> => list(recommendation_related_anomaly_source_detail())
+%% }
+-type recommendation_related_anomaly() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_related_anomaly_resource() :: #{
+%%   <<"Name">> => string(),
 %%   <<"Type">> => string()
 %% }
--type monitored_resource_identifier() :: #{binary() => any()}.
+-type recommendation_related_anomaly_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_related_anomaly_source_detail() :: #{
+%%   <<"CloudWatchMetrics">> => list(recommendation_related_cloud_watch_metrics_source_detail())
+%% }
+-type recommendation_related_anomaly_source_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_related_cloud_watch_metrics_source_detail() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string()
+%% }
+-type recommendation_related_cloud_watch_metrics_source_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_related_event() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Resources">> => list(recommendation_related_event_resource())
+%% }
+-type recommendation_related_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_related_event_resource() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type recommendation_related_event_resource() :: #{binary() => any()}.
+
+%% Example:
+%% remove_notification_channel_request() :: #{}
+-type remove_notification_channel_request() :: #{}.
+
+%% Example:
+%% remove_notification_channel_response() :: #{}
+-type remove_notification_channel_response() :: #{}.
+
+
+%% Example:
+%% resource_collection() :: #{
+%%   <<"CloudFormation">> => cloud_formation_collection(),
+%%   <<"Tags">> => list(tag_collection())
+%% }
+-type resource_collection() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_collection_filter() :: #{
+%%   <<"CloudFormation">> => cloud_formation_collection_filter(),
+%%   <<"Tags">> => list(tag_collection_filter())
+%% }
+-type resource_collection_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_insights_filters() :: #{
+%%   <<"ResourceCollection">> => resource_collection(),
+%%   <<"ServiceCollection">> => service_collection(),
+%%   <<"Severities">> => list(list(any())()),
+%%   <<"Statuses">> => list(list(any())())
+%% }
+-type search_insights_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_insights_request() :: #{
+%%   <<"Filters">> => search_insights_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTimeRange">> := start_time_range(),
+%%   <<"Type">> := list(any())
+%% }
+-type search_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_insights_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProactiveInsights">> => list(proactive_insight_summary()),
+%%   <<"ReactiveInsights">> => list(reactive_insight_summary())
+%% }
+-type search_insights_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_organization_insights_filters() :: #{
+%%   <<"ResourceCollection">> => resource_collection(),
+%%   <<"ServiceCollection">> => service_collection(),
+%%   <<"Severities">> => list(list(any())()),
+%%   <<"Statuses">> => list(list(any())())
+%% }
+-type search_organization_insights_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_organization_insights_request() :: #{
+%%   <<"AccountIds">> := list(string()),
+%%   <<"Filters">> => search_organization_insights_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTimeRange">> := start_time_range(),
+%%   <<"Type">> := list(any())
+%% }
+-type search_organization_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_organization_insights_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProactiveInsights">> => list(proactive_insight_summary()),
+%%   <<"ReactiveInsights">> => list(reactive_insight_summary())
+%% }
+-type search_organization_insights_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_collection() :: #{
+%%   <<"ServiceNames">> => list(list(any())())
+%% }
+-type service_collection() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_health() :: #{
+%%   <<"AnalyzedResourceCount">> => float(),
+%%   <<"Insight">> => service_insight_health(),
+%%   <<"ServiceName">> => list(any())
+%% }
+-type service_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_insight_health() :: #{
+%%   <<"OpenProactiveInsights">> => integer(),
+%%   <<"OpenReactiveInsights">> => integer()
+%% }
+-type service_insight_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_integration_config() :: #{
+%%   <<"KMSServerSideEncryption">> => kms_server_side_encryption_integration(),
+%%   <<"LogsAnomalyDetection">> => logs_anomaly_detection_integration(),
+%%   <<"OpsCenter">> => ops_center_integration()
+%% }
+-type service_integration_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_resource_cost() :: #{
+%%   <<"Cost">> => float(),
+%%   <<"Count">> => integer(),
+%%   <<"State">> => list(any()),
+%%   <<"Type">> => string(),
+%%   <<"UnitCost">> => float()
+%% }
+-type service_resource_cost() :: #{binary() => any()}.
+
+
+%% Example:
+%% sns_channel_config() :: #{
+%%   <<"TopicArn">> => string()
+%% }
+-type sns_channel_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_cost_estimation_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ResourceCollection">> := cost_estimation_resource_collection_filter()
+%% }
+-type start_cost_estimation_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_cost_estimation_response() :: #{}
+-type start_cost_estimation_response() :: #{}.
+
+
+%% Example:
+%% start_time_range() :: #{
+%%   <<"FromTime">> => non_neg_integer(),
+%%   <<"ToTime">> => non_neg_integer()
+%% }
+-type start_time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_collection() :: #{
+%%   <<"AppBoundaryKey">> => string(),
+%%   <<"TagValues">> => list(string())
+%% }
+-type tag_collection() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_collection_filter() :: #{
+%%   <<"AppBoundaryKey">> => string(),
+%%   <<"TagValues">> => list(string())
+%% }
+-type tag_collection_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_cost_estimation_resource_collection_filter() :: #{
+%%   <<"AppBoundaryKey">> => string(),
+%%   <<"TagValues">> => list(string())
+%% }
+-type tag_cost_estimation_resource_collection_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_health() :: #{
+%%   <<"AnalyzedResourceCount">> => float(),
+%%   <<"AppBoundaryKey">> => string(),
+%%   <<"Insight">> => insight_health(),
+%%   <<"TagValue">> => string()
+%% }
+-type tag_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"QuotaCode">> => string(),
+%%   <<"RetryAfterSeconds">> => integer(),
+%%   <<"ServiceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% timestamp_metric_value_pair() :: #{
+%%   <<"MetricValue">> => float(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type timestamp_metric_value_pair() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cloud_formation_collection_filter() :: #{
+%%   <<"StackNames">> => list(string())
+%% }
+-type update_cloud_formation_collection_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_sources_config_request() :: #{
+%%   <<"EventSources">> => event_sources_config()
+%% }
+-type update_event_sources_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_event_sources_config_response() :: #{}
+-type update_event_sources_config_response() :: #{}.
+
+
+%% Example:
+%% update_resource_collection_filter() :: #{
+%%   <<"CloudFormation">> => update_cloud_formation_collection_filter(),
+%%   <<"Tags">> => list(update_tag_collection_filter())
+%% }
+-type update_resource_collection_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resource_collection_request() :: #{
+%%   <<"Action">> := list(any()),
+%%   <<"ResourceCollection">> := update_resource_collection_filter()
+%% }
+-type update_resource_collection_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_collection_response() :: #{}
+-type update_resource_collection_response() :: #{}.
+
+
+%% Example:
+%% update_service_integration_config() :: #{
+%%   <<"KMSServerSideEncryption">> => kms_server_side_encryption_integration_config(),
+%%   <<"LogsAnomalyDetection">> => logs_anomaly_detection_integration_config(),
+%%   <<"OpsCenter">> => ops_center_integration_config()
+%% }
+-type update_service_integration_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_service_integration_request() :: #{
+%%   <<"ServiceIntegration">> := update_service_integration_config()
+%% }
+-type update_service_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_integration_response() :: #{}
+-type update_service_integration_response() :: #{}.
+
+
+%% Example:
+%% update_tag_collection_filter() :: #{
+%%   <<"AppBoundaryKey">> => string(),
+%%   <<"TagValues">> => list(string())
+%% }
+-type update_tag_collection_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Fields">> => list(validation_exception_field()),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type add_notification_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_insight_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type describe_account_health_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_account_overview_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_anomaly_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_event_sources_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_feedback_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_insight_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type describe_organization_health_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_organization_overview_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_organization_resource_collection_health_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_resource_collection_health_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type describe_service_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_cost_estimation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_collection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_anomalies_for_insight_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_anomalous_log_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_insights_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_monitored_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_notification_channels_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_organization_insights_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type put_feedback_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type remove_notification_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type search_insights_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type search_organization_insights_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_cost_estimation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_event_sources_config_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_resource_collection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_service_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

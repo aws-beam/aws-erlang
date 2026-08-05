@@ -215,163 +215,18 @@
 
 
 %% Example:
-%% update_playback_restriction_policy_request() :: #{
-%%   <<"allowedCountries">> => list(string()),
-%%   <<"allowedOrigins">> => list(string()),
-%%   <<"arn">> := string(),
-%%   <<"enableStrictOriginEnforcement">> => boolean(),
-%%   <<"name">> => string()
+%% access_denied_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
--type update_playback_restriction_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_channel_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_stream_key_response() :: #{
-%%   <<"streamKey">> => stream_key()
-%% }
--type create_stream_key_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingest_configuration() :: #{
-%%   <<"audio">> => audio_configuration(),
-%%   <<"video">> => video_configuration()
-%% }
--type ingest_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream_session_summary() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"hasErrorEvent">> => boolean(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"streamId">> => string()
-%% }
--type stream_session_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_channel_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_ad_configurations_response() :: #{
-%%   <<"adConfigurations">> => list(ad_configuration_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_ad_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% recording_configuration() :: #{
-%%   <<"arn">> => string(),
-%%   <<"destinationConfiguration">> => destination_configuration(),
-%%   <<"name">> => string(),
-%%   <<"recordingReconnectWindowSeconds">> => integer(),
-%%   <<"renditionConfiguration">> => rendition_configuration(),
-%%   <<"state">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"thumbnailConfiguration">> => thumbnail_configuration()
-%% }
--type recording_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_response() :: #{
-%%   <<"channel">> => channel(),
-%%   <<"streamKey">> => stream_key()
-%% }
--type create_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_playback_key_pair_request() :: #{
-%%   <<"name">> => string(),
-%%   <<"publicKeyMaterial">> := string(),
-%%   <<"tags">> => map()
-%% }
--type import_playback_key_pair_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stream_response() :: #{
-%%   <<"stream">> => stream()
-%% }
--type get_stream_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% get_stream_key_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_stream_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% playback_restriction_policy() :: #{
-%%   <<"allowedCountries">> => list(string()),
-%%   <<"allowedOrigins">> => list(string()),
-%%   <<"arn">> => string(),
-%%   <<"enableStrictOriginEnforcement">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type playback_restriction_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_playback_restriction_policy_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_playback_restriction_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ad_configuration_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"mediaTailorPlaybackConfigurations">> => list(media_tailor_playback_configuration()),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type ad_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_ad_configuration_request() :: #{
-%%   <<"arn">> := string(),
-%%   <<"mediaTailorPlaybackConfigurations">> => list(media_tailor_playback_configuration()),
-%%   <<"name">> => string()
-%% }
--type update_ad_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_stream_sessions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"streamSessions">> := list(stream_session_summary())
-%% }
--type list_stream_sessions_response() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -379,65 +234,48 @@
 %%   <<"arn">> => string(),
 %%   <<"mediaTailorPlaybackConfigurations">> => list(media_tailor_playback_configuration()),
 %%   <<"name">> => string(),
+%%   <<"postRollConfiguration">> => post_roll_configuration(),
 %%   <<"tags">> => map()
 %% }
 -type ad_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% playback_key_pair_summary() :: #{
+%% ad_configuration_summary() :: #{
 %%   <<"arn">> => string(),
+%%   <<"mediaTailorPlaybackConfigurations">> => list(media_tailor_playback_configuration()),
 %%   <<"name">> => string(),
+%%   <<"postRollConfiguration">> => post_roll_configuration(),
 %%   <<"tags">> => map()
 %% }
--type playback_key_pair_summary() :: #{binary() => any()}.
+-type ad_configuration_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_playback_key_pair_request() :: #{
-%%   <<"arn">> := string()
+%% audio_configuration() :: #{
+%%   <<"channels">> => float(),
+%%   <<"codec">> => string(),
+%%   <<"sampleRate">> => float(),
+%%   <<"targetBitrate">> => float(),
+%%   <<"track">> => string()
 %% }
--type get_playback_key_pair_request() :: #{binary() => any()}.
+-type audio_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_playback_restriction_policy_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_playback_restriction_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ad_configuration_response() :: #{
-%%   <<"adConfiguration">> => ad_configuration()
-%% }
--type create_ad_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_playback_key_pairs_response() :: #{
-%%   <<"keyPairs">> := list(playback_key_pair_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_playback_key_pairs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% recording_configuration_summary() :: #{
+%% batch_error() :: #{
 %%   <<"arn">> => string(),
-%%   <<"destinationConfiguration">> => destination_configuration(),
-%%   <<"name">> => string(),
-%%   <<"state">> => string(),
-%%   <<"tags">> => map()
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
 %% }
--type recording_configuration_summary() :: #{binary() => any()}.
+-type batch_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_playback_restriction_policy_response() :: #{
-%%   <<"playbackRestrictionPolicy">> => playback_restriction_policy()
+%% batch_get_channel_request() :: #{
+%%   <<"arns">> := list(string())
 %% }
--type update_playback_restriction_policy_response() :: #{binary() => any()}.
+-type batch_get_channel_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -456,71 +294,35 @@
 
 
 %% Example:
-%% create_recording_configuration_response() :: #{
-%%   <<"recordingConfiguration">> => recording_configuration()
+%% batch_get_stream_key_request() :: #{
+%%   <<"arns">> := list(string())
 %% }
--type create_recording_configuration_response() :: #{binary() => any()}.
+-type batch_get_stream_key_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% import_playback_key_pair_response() :: #{
-%%   <<"keyPair">> => playback_key_pair()
+%% batch_get_stream_key_response() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"errors">> => list(batch_error()),
+%%   <<"streamKeys">> => list(stream_key()),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
--type import_playback_key_pair_response() :: #{binary() => any()}.
+-type batch_get_stream_key_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_ad_configurations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_ad_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_playback_key_pair_response() :: #{}
--type delete_playback_key_pair_response() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_stream_keys_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"streamKeys">> := list(stream_key_summary())
-%% }
--type list_stream_keys_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_streams_request() :: #{
-%%   <<"filterBy">> => stream_filters(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_streams_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stream_session_request() :: #{
-%%   <<"channelArn">> := string(),
-%%   <<"streamId">> => string()
-%% }
--type get_stream_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream_key() :: #{
-%%   <<"arn">> => string(),
+%% batch_start_viewer_session_revocation_error() :: #{
 %%   <<"channelArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"value">> => string()
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"viewerId">> => string()
 %% }
--type stream_key() :: #{binary() => any()}.
+-type batch_start_viewer_session_revocation_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -531,418 +333,17 @@
 
 
 %% Example:
-%% create_recording_configuration_request() :: #{
-%%   <<"destinationConfiguration">> := destination_configuration(),
-%%   <<"name">> => string(),
-%%   <<"recordingReconnectWindowSeconds">> => integer(),
-%%   <<"renditionConfiguration">> => rendition_configuration(),
-%%   <<"tags">> => map(),
-%%   <<"thumbnailConfiguration">> => thumbnail_configuration()
-%% }
--type create_recording_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_stream_key_request() :: #{
-%%   <<"channelArn">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_stream_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ad_configuration_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_ad_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% playback_key_pair() :: #{
-%%   <<"arn">> => string(),
-%%   <<"fingerprint">> => string(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type playback_key_pair() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_stream_key_request() :: #{
-%%   <<"arns">> := list(string())
-%% }
--type batch_get_stream_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% playback_restriction_policy_summary() :: #{
-%%   <<"allowedCountries">> => list(string()),
-%%   <<"allowedOrigins">> => list(string()),
-%%   <<"arn">> => string(),
-%%   <<"enableStrictOriginEnforcement">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type playback_restriction_policy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_summary() :: #{
-%%   <<"adConfigurationArn">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"authorized">> => boolean(),
-%%   <<"insecureIngest">> => boolean(),
-%%   <<"latencyMode">> => string(),
-%%   <<"name">> => string(),
-%%   <<"playbackRestrictionPolicyArn">> => string(),
-%%   <<"preset">> => list(any()),
-%%   <<"recordingConfigurationArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any())
-%% }
--type channel_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_recording_configuration_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_recording_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_ad_configuration_response() :: #{
-%%   <<"adConfiguration">> => ad_configuration()
-%% }
--type get_ad_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
+%% batch_start_viewer_session_revocation_response() :: #{
 %%   <<"accessControlAllowOrigin">> => string(),
 %%   <<"accessControlExposeHeaders">> => string(),
 %%   <<"cacheControl">> => string(),
 %%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
+%%   <<"errors">> => list(batch_start_viewer_session_revocation_error()),
 %%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
 %%   <<"xContentTypeOptions">> => string(),
 %%   <<"xFrameOptions">> => string()
 %% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_ad_configuration_response() :: #{
-%%   <<"adConfiguration">> => ad_configuration()
-%% }
--type update_ad_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_streams_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"streams">> := list(stream_summary())
-%% }
--type list_streams_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recording_configuration_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_recording_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recording_configurations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"recordingConfigurations">> := list(recording_configuration_summary())
-%% }
--type list_recording_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream_session() :: #{
-%%   <<"channel">> => channel(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"ingestConfiguration">> => ingest_configuration(),
-%%   <<"ingestConfigurations">> => ingest_configurations(),
-%%   <<"recordingConfiguration">> => recording_configuration(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"streamId">> => string(),
-%%   <<"truncatedEvents">> => list(stream_event())
-%% }
--type stream_session() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_channel_request() :: #{
-%%   <<"arns">> := list(string())
-%% }
--type batch_get_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_stream_key_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_stream_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_destination_configuration() :: #{
-%%   <<"bucketName">> => string()
-%% }
--type s3_destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_playback_restriction_policy_response() :: #{
-%%   <<"playbackRestrictionPolicy">> => playback_restriction_policy()
-%% }
--type get_playback_restriction_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_request() :: #{
-%%   <<"adConfigurationArn">> => string(),
-%%   <<"authorized">> => boolean(),
-%%   <<"containerFormat">> => string(),
-%%   <<"insecureIngest">> => boolean(),
-%%   <<"latencyMode">> => string(),
-%%   <<"multitrackInputConfiguration">> => multitrack_input_configuration(),
-%%   <<"name">> => string(),
-%%   <<"playbackRestrictionPolicyArn">> => string(),
-%%   <<"preset">> => list(any()),
-%%   <<"recordingConfigurationArn">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any())
-%% }
--type create_channel_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream_event() :: #{
-%%   <<"code">> => string(),
-%%   <<"eventTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type stream_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> := map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channels_response() :: #{
-%%   <<"channels">> := list(channel_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_channels_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% media_tailor_playback_configuration() :: #{
-%%   <<"playbackConfigurationArn">> => string()
-%% }
--type media_tailor_playback_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_channel_request() :: #{
-%%   <<"adConfigurationArn">> => string(),
-%%   <<"arn">> := string(),
-%%   <<"authorized">> => boolean(),
-%%   <<"containerFormat">> => string(),
-%%   <<"insecureIngest">> => boolean(),
-%%   <<"latencyMode">> => string(),
-%%   <<"multitrackInputConfiguration">> => multitrack_input_configuration(),
-%%   <<"name">> => string(),
-%%   <<"playbackRestrictionPolicyArn">> => string(),
-%%   <<"preset">> => list(any()),
-%%   <<"recordingConfigurationArn">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type update_channel_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_stream_response() :: #{}
--type stop_stream_response() :: #{}.
-
-
-%% Example:
-%% stream_unavailable() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type stream_unavailable() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_playback_key_pair_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_playback_key_pair_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_playback_restriction_policy_response() :: #{
-%%   <<"playbackRestrictionPolicy">> => playback_restriction_policy()
-%% }
--type create_playback_restriction_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_stream_sessions_request() :: #{
-%%   <<"channelArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_stream_sessions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_playback_restriction_policies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_playback_restriction_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recording_configuration_response() :: #{
-%%   <<"recordingConfiguration">> => recording_configuration()
-%% }
--type get_recording_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_playback_key_pair_response() :: #{
-%%   <<"keyPair">> => playback_key_pair()
-%% }
--type get_playback_key_pair_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stream_request() :: #{
-%%   <<"channelArn">> := string()
-%% }
--type get_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_stream_keys_request() :: #{
-%%   <<"channelArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_stream_keys_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% audio_configuration() :: #{
-%%   <<"channels">> => float(),
-%%   <<"codec">> => string(),
-%%   <<"sampleRate">> => float(),
-%%   <<"targetBitrate">> => float(),
-%%   <<"track">> => string()
-%% }
--type audio_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% put_metadata_request() :: #{
-%%   <<"channelArn">> := string(),
-%%   <<"metadata">> := string()
-%% }
--type put_metadata_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% thumbnail_configuration() :: #{
-%%   <<"recordingMode">> => string(),
-%%   <<"resolution">> => list(any()),
-%%   <<"storage">> => list(string()),
-%%   <<"targetIntervalSeconds">> => float()
-%% }
--type thumbnail_configuration() :: #{binary() => any()}.
+-type batch_start_viewer_session_revocation_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -952,71 +353,6 @@
 %%   <<"viewerSessionVersionsLessThanOrEqualTo">> => integer()
 %% }
 -type batch_start_viewer_session_revocation_viewer_session() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% rendition_configuration() :: #{
-%%   <<"renditionSelection">> => string(),
-%%   <<"renditions">> => list(list(any())())
-%% }
--type rendition_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% ingest_configurations() :: #{
-%%   <<"audioConfigurations">> => list(audio_configuration()),
-%%   <<"videoConfigurations">> => list(video_configuration())
-%% }
--type ingest_configurations() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_stream_key_response() :: #{
-%%   <<"streamKey">> => stream_key()
-%% }
--type get_stream_key_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"exceptionMessage">> => string(),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xAmznErrorType">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_playback_restriction_policies_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"playbackRestrictionPolicies">> => list(playback_restriction_policy_summary())
-%% }
--type list_playback_restriction_policies_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1042,100 +378,7 @@
 
 
 %% Example:
-%% stream_summary() :: #{
-%%   <<"channelArn">> => string(),
-%%   <<"health">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"state">> => string(),
-%%   <<"streamId">> => string(),
-%%   <<"viewerCount">> => float()
-%% }
--type stream_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% insert_ad_break_response() :: #{
-%%   <<"adBreakId">> => string()
-%% }
--type insert_ad_break_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_start_viewer_session_revocation_response() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"errors">> => list(batch_start_viewer_session_revocation_error()),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
-%% }
--type batch_start_viewer_session_revocation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_ad_configuration_request() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_ad_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_start_viewer_session_revocation_error() :: #{
-%%   <<"channelArn">> => string(),
-%%   <<"code">> => string(),
-%%   <<"message">> => string(),
-%%   <<"viewerId">> => string()
-%% }
--type batch_start_viewer_session_revocation_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_stream_request() :: #{
-%%   <<"channelArn">> := string()
-%% }
--type stop_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_channel_response() :: #{
-%%   <<"channel">> => channel()
-%% }
--type get_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream_filters() :: #{
-%%   <<"health">> => string()
-%% }
--type stream_filters() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream() :: #{
-%%   <<"channelArn">> => string(),
-%%   <<"health">> => string(),
-%%   <<"playbackUrl">> => string(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"state">> => string(),
-%%   <<"streamId">> => string(),
-%%   <<"viewerCount">> => float()
-%% }
--type stream() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_viewer_session_revocation_request() :: #{
-%%   <<"channelArn">> := string(),
-%%   <<"viewerId">> := string(),
-%%   <<"viewerSessionVersionsLessThanOrEqualTo">> => integer()
-%% }
--type start_viewer_session_revocation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable() :: #{
+%% channel_not_broadcasting() :: #{
 %%   <<"accessControlAllowOrigin">> => string(),
 %%   <<"accessControlExposeHeaders">> => string(),
 %%   <<"cacheControl">> => string(),
@@ -1146,52 +389,378 @@
 %%   <<"xContentTypeOptions">> => string(),
 %%   <<"xFrameOptions">> => string()
 %% }
--type service_unavailable() :: #{binary() => any()}.
+-type channel_not_broadcasting() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_channel_response() :: #{
+%% channel_summary() :: #{
+%%   <<"adConfigurationArn">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"authorized">> => boolean(),
+%%   <<"insecureIngest">> => boolean(),
+%%   <<"latencyMode">> => string(),
+%%   <<"name">> => string(),
+%%   <<"playbackRestrictionPolicyArn">> => string(),
+%%   <<"preset">> => list(any()),
+%%   <<"recordingConfigurationArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type channel_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ad_configuration_request() :: #{
+%%   <<"mediaTailorPlaybackConfigurations">> := list(media_tailor_playback_configuration()),
+%%   <<"name">> => string(),
+%%   <<"postRollConfiguration">> => post_roll_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type create_ad_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_ad_configuration_response() :: #{
+%%   <<"adConfiguration">> => ad_configuration()
+%% }
+-type create_ad_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_request() :: #{
+%%   <<"adConfigurationArn">> => string(),
+%%   <<"authorized">> => boolean(),
+%%   <<"containerFormat">> => string(),
+%%   <<"insecureIngest">> => boolean(),
+%%   <<"latencyMode">> => string(),
+%%   <<"multitrackInputConfiguration">> => multitrack_input_configuration(),
+%%   <<"name">> => string(),
+%%   <<"playbackRestrictionPolicyArn">> => string(),
+%%   <<"preset">> => list(any()),
+%%   <<"recordingConfigurationArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any())
+%% }
+-type create_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_response() :: #{
+%%   <<"channel">> => channel(),
+%%   <<"streamKey">> => stream_key()
+%% }
+-type create_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_playback_restriction_policy_request() :: #{
+%%   <<"allowedCountries">> => list(string()),
+%%   <<"allowedOrigins">> => list(string()),
+%%   <<"enableStrictOriginEnforcement">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_playback_restriction_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_playback_restriction_policy_response() :: #{
+%%   <<"playbackRestrictionPolicy">> => playback_restriction_policy()
+%% }
+-type create_playback_restriction_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recording_configuration_request() :: #{
+%%   <<"destinationConfiguration">> := destination_configuration(),
+%%   <<"name">> => string(),
+%%   <<"recordingReconnectWindowSeconds">> => integer(),
+%%   <<"renditionConfiguration">> => rendition_configuration(),
+%%   <<"tags">> => map(),
+%%   <<"thumbnailConfiguration">> => thumbnail_configuration()
+%% }
+-type create_recording_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recording_configuration_response() :: #{
+%%   <<"recordingConfiguration">> => recording_configuration()
+%% }
+-type create_recording_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_stream_key_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_stream_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_stream_key_response() :: #{
+%%   <<"streamKey">> => stream_key()
+%% }
+-type create_stream_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_ad_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_ad_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_channel_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_playback_key_pair_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_playback_key_pair_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_playback_key_pair_response() :: #{}
+-type delete_playback_key_pair_response() :: #{}.
+
+
+%% Example:
+%% delete_playback_restriction_policy_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_playback_restriction_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recording_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_recording_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_stream_key_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_stream_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_configuration() :: #{
+%%   <<"s3">> => s3_destination_configuration()
+%% }
+-type destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_ad_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_ad_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_ad_configuration_response() :: #{
+%%   <<"adConfiguration">> => ad_configuration()
+%% }
+-type get_ad_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_channel_response() :: #{
 %%   <<"channel">> => channel()
 %% }
--type update_channel_response() :: #{binary() => any()}.
+-type get_channel_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_error() :: #{
-%%   <<"arn">> => string(),
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
+%% get_playback_key_pair_request() :: #{
+%%   <<"arn">> := string()
 %% }
--type batch_error() :: #{binary() => any()}.
-
-%% Example:
-%% start_viewer_session_revocation_response() :: #{}
--type start_viewer_session_revocation_response() :: #{}.
+-type get_playback_key_pair_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% video_configuration() :: #{
-%%   <<"avcLevel">> => string(),
-%%   <<"avcProfile">> => string(),
-%%   <<"codec">> => string(),
-%%   <<"encoder">> => string(),
-%%   <<"level">> => string(),
-%%   <<"profile">> => string(),
-%%   <<"targetBitrate">> => float(),
-%%   <<"targetFramerate">> => float(),
-%%   <<"track">> => string(),
-%%   <<"videoHeight">> => float(),
-%%   <<"videoWidth">> => float()
+%% get_playback_key_pair_response() :: #{
+%%   <<"keyPair">> => playback_key_pair()
 %% }
--type video_configuration() :: #{binary() => any()}.
+-type get_playback_key_pair_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_playback_key_pairs_request() :: #{
+%% get_playback_restriction_policy_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_playback_restriction_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_playback_restriction_policy_response() :: #{
+%%   <<"playbackRestrictionPolicy">> => playback_restriction_policy()
+%% }
+-type get_playback_restriction_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recording_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_recording_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recording_configuration_response() :: #{
+%%   <<"recordingConfiguration">> => recording_configuration()
+%% }
+-type get_recording_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_stream_key_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_stream_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_stream_key_response() :: #{
+%%   <<"streamKey">> => stream_key()
+%% }
+-type get_stream_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_stream_request() :: #{
+%%   <<"channelArn">> := string()
+%% }
+-type get_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_stream_response() :: #{
+%%   <<"stream">> => stream()
+%% }
+-type get_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_stream_session_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"streamId">> => string()
+%% }
+-type get_stream_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_stream_session_response() :: #{
+%%   <<"streamSession">> => stream_session()
+%% }
+-type get_stream_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_playback_key_pair_request() :: #{
+%%   <<"name">> => string(),
+%%   <<"publicKeyMaterial">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type import_playback_key_pair_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_playback_key_pair_response() :: #{
+%%   <<"keyPair">> => playback_key_pair()
+%% }
+-type import_playback_key_pair_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingest_configuration() :: #{
+%%   <<"audio">> => audio_configuration(),
+%%   <<"video">> => video_configuration()
+%% }
+-type ingest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingest_configurations() :: #{
+%%   <<"audioConfigurations">> => list(audio_configuration()),
+%%   <<"videoConfigurations">> => list(video_configuration())
+%% }
+-type ingest_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% insert_ad_break_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"durationSeconds">> := integer()
+%% }
+-type insert_ad_break_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% insert_ad_break_response() :: #{
+%%   <<"adBreakId">> => string()
+%% }
+-type insert_ad_break_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ad_configurations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
--type list_playback_key_pairs_request() :: #{binary() => any()}.
+-type list_ad_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_ad_configurations_response() :: #{
+%%   <<"adConfigurations">> => list(ad_configuration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_ad_configurations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1207,10 +776,128 @@
 
 
 %% Example:
-%% get_stream_session_response() :: #{
-%%   <<"streamSession">> => stream_session()
+%% list_channels_response() :: #{
+%%   <<"channels">> := list(channel_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type get_stream_session_response() :: #{binary() => any()}.
+-type list_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_playback_key_pairs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_playback_key_pairs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_playback_key_pairs_response() :: #{
+%%   <<"keyPairs">> := list(playback_key_pair_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_playback_key_pairs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_playback_restriction_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_playback_restriction_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_playback_restriction_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"playbackRestrictionPolicies">> => list(playback_restriction_policy_summary())
+%% }
+-type list_playback_restriction_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recording_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_recording_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recording_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recordingConfigurations">> := list(recording_configuration_summary())
+%% }
+-type list_recording_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_keys_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_stream_keys_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_keys_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"streamKeys">> := list(stream_key_summary())
+%% }
+-type list_stream_keys_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_sessions_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_stream_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_stream_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"streamSessions">> := list(stream_session_summary())
+%% }
+-type list_stream_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streams_request() :: #{
+%%   <<"filterBy">> => stream_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_streams_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streams_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"streams">> := list(stream_summary())
+%% }
+-type list_streams_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> := map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_tailor_playback_configuration() :: #{
+%%   <<"playbackConfigurationArn">> => string()
+%% }
+-type media_tailor_playback_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1220,59 +907,6 @@
 %%   <<"policy">> => list(any())
 %% }
 -type multitrack_input_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% insert_ad_break_request() :: #{
-%%   <<"channelArn">> := string(),
-%%   <<"durationSeconds">> := integer()
-%% }
--type insert_ad_break_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stream_key_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"channelArn">> => string(),
-%%   <<"tags">> => map()
-%% }
--type stream_key_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% srt() :: #{
-%%   <<"endpoint">> => string(),
-%%   <<"passphrase">> => string()
-%% }
--type srt() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_ad_configuration_request() :: #{
-%%   <<"mediaTailorPlaybackConfigurations">> := list(media_tailor_playback_configuration()),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_ad_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_playback_restriction_policy_request() :: #{
-%%   <<"allowedCountries">> => list(string()),
-%%   <<"allowedOrigins">> => list(string()),
-%%   <<"enableStrictOriginEnforcement">> => boolean(),
-%%   <<"name">> => string(),
-%%   <<"tags">> => map()
-%% }
--type create_playback_restriction_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recording_configurations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_recording_configurations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1291,29 +925,99 @@
 
 
 %% Example:
-%% destination_configuration() :: #{
-%%   <<"s3">> => s3_destination_configuration()
+%% playback_key_pair() :: #{
+%%   <<"arn">> => string(),
+%%   <<"fingerprint">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
 %% }
--type destination_configuration() :: #{binary() => any()}.
+-type playback_key_pair() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_stream_key_response() :: #{
-%%   <<"accessControlAllowOrigin">> => string(),
-%%   <<"accessControlExposeHeaders">> => string(),
-%%   <<"cacheControl">> => string(),
-%%   <<"contentSecurityPolicy">> => string(),
-%%   <<"errors">> => list(batch_error()),
-%%   <<"streamKeys">> => list(stream_key()),
-%%   <<"strictTransportSecurity">> => string(),
-%%   <<"xContentTypeOptions">> => string(),
-%%   <<"xFrameOptions">> => string()
+%% playback_key_pair_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
 %% }
--type batch_get_stream_key_response() :: #{binary() => any()}.
+-type playback_key_pair_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% channel_not_broadcasting() :: #{
+%% playback_restriction_policy() :: #{
+%%   <<"allowedCountries">> => list(string()),
+%%   <<"allowedOrigins">> => list(string()),
+%%   <<"arn">> => string(),
+%%   <<"enableStrictOriginEnforcement">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type playback_restriction_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% playback_restriction_policy_summary() :: #{
+%%   <<"allowedCountries">> => list(string()),
+%%   <<"allowedOrigins">> => list(string()),
+%%   <<"arn">> => string(),
+%%   <<"enableStrictOriginEnforcement">> => boolean(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type playback_restriction_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_roll_configuration() :: #{
+%%   <<"durationSeconds">> => integer(),
+%%   <<"enabled">> => boolean()
+%% }
+-type post_roll_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_metadata_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"metadata">> := string()
+%% }
+-type put_metadata_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% recording_configuration() :: #{
+%%   <<"arn">> => string(),
+%%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"name">> => string(),
+%%   <<"recordingReconnectWindowSeconds">> => integer(),
+%%   <<"renditionConfiguration">> => rendition_configuration(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"thumbnailConfiguration">> => thumbnail_configuration()
+%% }
+-type recording_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% recording_configuration_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"name">> => string(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type recording_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% rendition_configuration() :: #{
+%%   <<"renditionSelection">> => string(),
+%%   <<"renditions">> => list(list(any())())
+%% }
+-type rendition_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
 %%   <<"accessControlAllowOrigin">> => string(),
 %%   <<"accessControlExposeHeaders">> => string(),
 %%   <<"cacheControl">> => string(),
@@ -1324,197 +1028,505 @@
 %%   <<"xContentTypeOptions">> => string(),
 %%   <<"xFrameOptions">> => string()
 %% }
--type channel_not_broadcasting() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_destination_configuration() :: #{
+%%   <<"bucketName">> => string()
+%% }
+-type s3_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type service_unavailable() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"passphrase">> => string()
+%% }
+-type srt() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_viewer_session_revocation_request() :: #{
+%%   <<"channelArn">> := string(),
+%%   <<"viewerId">> := string(),
+%%   <<"viewerSessionVersionsLessThanOrEqualTo">> => integer()
+%% }
+-type start_viewer_session_revocation_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_viewer_session_revocation_response() :: #{}
+-type start_viewer_session_revocation_response() :: #{}.
+
+
+%% Example:
+%% stop_stream_request() :: #{
+%%   <<"channelArn">> := string()
+%% }
+-type stop_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_stream_response() :: #{}
+-type stop_stream_response() :: #{}.
+
+
+%% Example:
+%% stream() :: #{
+%%   <<"channelArn">> => string(),
+%%   <<"health">> => string(),
+%%   <<"playbackUrl">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"state">> => string(),
+%%   <<"streamId">> => string(),
+%%   <<"viewerCount">> => float()
+%% }
+-type stream() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_event() :: #{
+%%   <<"code">> => string(),
+%%   <<"eventTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type stream_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_filters() :: #{
+%%   <<"health">> => string()
+%% }
+-type stream_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_key() :: #{
+%%   <<"arn">> => string(),
+%%   <<"channelArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"value">> => string()
+%% }
+-type stream_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_key_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"channelArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type stream_key_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_session() :: #{
+%%   <<"channel">> => channel(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"ingestConfiguration">> => ingest_configuration(),
+%%   <<"ingestConfigurations">> => ingest_configurations(),
+%%   <<"recordingConfiguration">> => recording_configuration(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"streamId">> => string(),
+%%   <<"truncatedEvents">> => list(stream_event())
+%% }
+-type stream_session() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_session_summary() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"hasErrorEvent">> => boolean(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"streamId">> => string()
+%% }
+-type stream_session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_summary() :: #{
+%%   <<"channelArn">> => string(),
+%%   <<"health">> => string(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"state">> => string(),
+%%   <<"streamId">> => string(),
+%%   <<"viewerCount">> => float()
+%% }
+-type stream_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% stream_unavailable() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type stream_unavailable() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% thumbnail_configuration() :: #{
+%%   <<"recordingMode">> => string(),
+%%   <<"resolution">> => list(any()),
+%%   <<"storage">> => list(string()),
+%%   <<"targetIntervalSeconds">> => float()
+%% }
+-type thumbnail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_ad_configuration_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"mediaTailorPlaybackConfigurations">> => list(media_tailor_playback_configuration()),
+%%   <<"name">> => string(),
+%%   <<"postRollConfiguration">> => post_roll_configuration()
+%% }
+-type update_ad_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ad_configuration_response() :: #{
+%%   <<"adConfiguration">> => ad_configuration()
+%% }
+-type update_ad_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_request() :: #{
+%%   <<"adConfigurationArn">> => string(),
+%%   <<"arn">> := string(),
+%%   <<"authorized">> => boolean(),
+%%   <<"containerFormat">> => string(),
+%%   <<"insecureIngest">> => boolean(),
+%%   <<"latencyMode">> => string(),
+%%   <<"multitrackInputConfiguration">> => multitrack_input_configuration(),
+%%   <<"name">> => string(),
+%%   <<"playbackRestrictionPolicyArn">> => string(),
+%%   <<"preset">> => list(any()),
+%%   <<"recordingConfigurationArn">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type update_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_response() :: #{
+%%   <<"channel">> => channel()
+%% }
+-type update_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_playback_restriction_policy_request() :: #{
+%%   <<"allowedCountries">> => list(string()),
+%%   <<"allowedOrigins">> => list(string()),
+%%   <<"arn">> := string(),
+%%   <<"enableStrictOriginEnforcement">> => boolean(),
+%%   <<"name">> => string()
+%% }
+-type update_playback_restriction_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_playback_restriction_policy_response() :: #{
+%%   <<"playbackRestrictionPolicy">> => playback_restriction_policy()
+%% }
+-type update_playback_restriction_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"exceptionMessage">> => string(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xAmznErrorType">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_configuration() :: #{
+%%   <<"avcLevel">> => string(),
+%%   <<"avcProfile">> => string(),
+%%   <<"codec">> => string(),
+%%   <<"encoder">> => string(),
+%%   <<"level">> => string(),
+%%   <<"profile">> => string(),
+%%   <<"targetBitrate">> => float(),
+%%   <<"targetFramerate">> => float(),
+%%   <<"track">> => string(),
+%%   <<"videoHeight">> => float(),
+%%   <<"videoWidth">> => float()
+%% }
+-type video_configuration() :: #{binary() => any()}.
 
 -type batch_get_channel_errors() ::
-    service_unavailable() | 
     validation_exception() | 
+    service_unavailable() | 
     access_denied_exception().
 
 -type batch_get_stream_key_errors() ::
-    service_unavailable() | 
     validation_exception() | 
+    service_unavailable() | 
     access_denied_exception().
 
 -type batch_start_viewer_session_revocation_errors() ::
-    pending_verification() | 
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
+    pending_verification() | 
     access_denied_exception().
 
 -type create_ad_configuration_errors() ::
-    pending_verification() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_channel_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type create_playback_restriction_policy_errors() ::
-    pending_verification() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type create_recording_configuration_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_stream_key_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type delete_ad_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_channel_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_playback_key_pair_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type delete_playback_restriction_policy_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_recording_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_stream_key_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type get_ad_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_channel_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_playback_key_pair_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_playback_restriction_policy_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    pending_verification() | 
+    access_denied_exception().
 
 -type get_recording_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_stream_errors() ::
-    channel_not_broadcasting() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    channel_not_broadcasting() | 
+    access_denied_exception().
 
 -type get_stream_key_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type get_stream_session_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type import_playback_key_pair_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type insert_ad_break_errors() ::
-    channel_not_broadcasting() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    channel_not_broadcasting() | 
+    access_denied_exception().
 
 -type list_ad_configurations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_channels_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_playback_key_pairs_errors() ::
     validation_exception() | 
     access_denied_exception().
 
 -type list_playback_restriction_policies_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type list_recording_configurations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_stream_keys_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_stream_sessions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    access_denied_exception().
 
 -type list_streams_errors() ::
     validation_exception() | 
@@ -1522,64 +1534,64 @@
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type put_metadata_errors() ::
-    channel_not_broadcasting() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    channel_not_broadcasting() | 
+    access_denied_exception().
 
 -type start_viewer_session_revocation_errors() ::
-    pending_verification() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    pending_verification() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type stop_stream_errors() ::
-    channel_not_broadcasting() | 
     validation_exception() | 
-    access_denied_exception() | 
     stream_unavailable() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    channel_not_broadcasting() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_ad_configuration_errors() ::
-    pending_verification() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_channel_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_playback_restriction_policy_errors() ::
-    pending_verification() | 
     validation_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -167,193 +167,6 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
-%% Example:
-%% put_configuration_set_tracking_options_response() :: #{}
--type put_configuration_set_tracking_options_response() :: #{}.
-
-
-%% Example:
-%% tracking_options() :: #{
-%%   <<"CustomRedirectDomain">> => string()
-%% }
--type tracking_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_email_identity_response() :: #{
-%%   <<"DkimAttributes">> => dkim_attributes(),
-%%   <<"FeedbackForwardingStatus">> => boolean(),
-%%   <<"IdentityType">> => list(any()),
-%%   <<"MailFromAttributes">> => mail_from_attributes(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"VerifiedForSendingStatus">> => boolean()
-%% }
--type get_email_identity_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_email_identity_dkim_attributes_response() :: #{}
--type put_email_identity_dkim_attributes_response() :: #{}.
-
-%% Example:
-%% delete_configuration_set_response() :: #{}
--type delete_configuration_set_response() :: #{}.
-
-
-%% Example:
-%% list_deliverability_test_reports_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type list_deliverability_test_reports_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_account_sending_attributes_request() :: #{
-%%   <<"SendingEnabled">> => boolean()
-%% }
--type put_account_sending_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_account_response() :: #{
-%%   <<"DedicatedIpAutoWarmupEnabled">> => boolean(),
-%%   <<"EnforcementStatus">> => string(),
-%%   <<"ProductionAccessEnabled">> => boolean(),
-%%   <<"SendQuota">> => send_quota(),
-%%   <<"SendingEnabled">> => boolean()
-%% }
--type get_account_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_deliverability_test_report_request() :: #{}
--type get_deliverability_test_report_request() :: #{}.
-
-
-%% Example:
-%% volume_statistics() :: #{
-%%   <<"InboxRawCount">> => float(),
-%%   <<"ProjectedInbox">> => float(),
-%%   <<"ProjectedSpam">> => float(),
-%%   <<"SpamRawCount">> => float()
-%% }
--type volume_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_email_identities_response() :: #{
-%%   <<"EmailIdentities">> => list(identity_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_email_identities_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_dedicated_ip_pool_response() :: #{}
--type create_dedicated_ip_pool_response() :: #{}.
-
-%% Example:
-%% put_configuration_set_reputation_options_response() :: #{}
--type put_configuration_set_reputation_options_response() :: #{}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% put_email_identity_feedback_attributes_request() :: #{
-%%   <<"EmailForwardingEnabled">> => boolean()
-%% }
--type put_email_identity_feedback_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% isp_placement() :: #{
-%%   <<"IspName">> => string(),
-%%   <<"PlacementStatistics">> => placement_statistics()
-%% }
--type isp_placement() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_deliverability_test_reports_response() :: #{
-%%   <<"DeliverabilityTestReports">> => list(deliverability_test_report()),
-%%   <<"NextToken">> => string()
-%% }
--type list_deliverability_test_reports_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% kinesis_firehose_destination() :: #{
-%%   <<"DeliveryStreamArn">> => string(),
-%%   <<"IamRoleArn">> => string()
-%% }
--type kinesis_firehose_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_account_dedicated_ip_warmup_attributes_response() :: #{}
--type put_account_dedicated_ip_warmup_attributes_response() :: #{}.
-
-
-%% Example:
-%% send_quota() :: #{
-%%   <<"Max24HourSend">> => float(),
-%%   <<"MaxSendRate">> => float(),
-%%   <<"SentLast24Hours">> => float()
-%% }
--type send_quota() :: #{binary() => any()}.
-
-
-%% Example:
-%% dkim_attributes() :: #{
-%%   <<"SigningEnabled">> => boolean(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tokens">> => list(string())
-%% }
--type dkim_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_email_identity_response() :: #{
-%%   <<"DkimAttributes">> => dkim_attributes(),
-%%   <<"IdentityType">> => list(any()),
-%%   <<"VerifiedForSendingStatus">> => boolean()
-%% }
--type create_email_identity_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sending_paused_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type sending_paused_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_deliverability_dashboard_option_request() :: #{
-%%   <<"DashboardEnabled">> := boolean(),
-%%   <<"SubscribedDomains">> => list(domain_deliverability_tracking_option())
-%% }
--type put_deliverability_dashboard_option_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_configuration_set_delivery_options_response() :: #{}
--type put_configuration_set_delivery_options_response() :: #{}.
-
 
 %% Example:
 %% account_suspended_exception() :: #{
@@ -363,109 +176,17 @@
 
 
 %% Example:
-%% email_content() :: #{
-%%   <<"Raw">> => raw_message(),
-%%   <<"Simple">> => message(),
-%%   <<"Template">> => template()
-%% }
--type email_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_deliverability_dashboard_options_response() :: #{
-%%   <<"AccountStatus">> => list(any()),
-%%   <<"ActiveSubscribedDomains">> => list(domain_deliverability_tracking_option()),
-%%   <<"DashboardEnabled">> => boolean(),
-%%   <<"PendingExpirationSubscribedDomains">> => list(domain_deliverability_tracking_option()),
-%%   <<"SubscriptionExpiryDate">> => non_neg_integer()
-%% }
--type get_deliverability_dashboard_options_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_deliverability_campaign_request() :: #{}
--type get_domain_deliverability_campaign_request() :: #{}.
-
-%% Example:
-%% delete_configuration_set_event_destination_response() :: #{}
--type delete_configuration_set_event_destination_response() :: #{}.
-
-%% Example:
-%% delete_email_identity_request() :: #{}
--type delete_email_identity_request() :: #{}.
-
-
-%% Example:
-%% cloud_watch_dimension_configuration() :: #{
-%%   <<"DefaultDimensionValue">> => string(),
-%%   <<"DimensionName">> => string(),
-%%   <<"DimensionValueSource">> => list(any())
-%% }
--type cloud_watch_dimension_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
+%% already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type too_many_requests_exception() :: #{binary() => any()}.
+-type already_exists_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_deliverability_test_report_response() :: #{
-%%   <<"DeliverabilityTestStatus">> => list(any()),
-%%   <<"ReportId">> => string()
+%% bad_request_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type create_deliverability_test_report_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_destination_definition() :: #{
-%%   <<"CloudWatchDestination">> => cloud_watch_destination(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
-%%   <<"MatchingEventTypes">> => list(list(any())()),
-%%   <<"PinpointDestination">> => pinpoint_destination(),
-%%   <<"SnsDestination">> => sns_destination()
-%% }
--type event_destination_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_deliverability_campaigns_response() :: #{
-%%   <<"DomainDeliverabilityCampaigns">> => list(domain_deliverability_campaign()),
-%%   <<"NextToken">> => string()
-%% }
--type list_domain_deliverability_campaigns_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configuration_set_request() :: #{}
--type delete_configuration_set_request() :: #{}.
-
-
-%% Example:
-%% send_email_response() :: #{
-%%   <<"MessageId">> => string()
-%% }
--type send_email_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_dedicated_ip_pool_request() :: #{}
--type delete_dedicated_ip_pool_request() :: #{}.
-
-
-%% Example:
-%% cloud_watch_destination() :: #{
-%%   <<"DimensionConfigurations">> => list(cloud_watch_dimension_configuration())
-%% }
--type cloud_watch_destination() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -478,274 +199,70 @@
 
 
 %% Example:
-%% mail_from_domain_not_verified_exception() :: #{
+%% body() :: #{
+%%   <<"Html">> => content(),
+%%   <<"Text">> => content()
+%% }
+-type body() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_destination() :: #{
+%%   <<"DimensionConfigurations">> => list(cloud_watch_dimension_configuration())
+%% }
+-type cloud_watch_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_dimension_configuration() :: #{
+%%   <<"DefaultDimensionValue">> => string(),
+%%   <<"DimensionName">> => string(),
+%%   <<"DimensionValueSource">> => list(any())
+%% }
+-type cloud_watch_dimension_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% concurrent_modification_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type mail_from_domain_not_verified_exception() :: #{binary() => any()}.
+-type concurrent_modification_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% overall_volume() :: #{
-%%   <<"DomainIspPlacements">> => list(domain_isp_placement()),
-%%   <<"ReadRatePercent">> => float(),
-%%   <<"VolumeStatistics">> => volume_statistics()
+%% content() :: #{
+%%   <<"Charset">> => string(),
+%%   <<"Data">> => string()
 %% }
--type overall_volume() :: #{binary() => any()}.
+-type content() :: #{binary() => any()}.
 
 
 %% Example:
-%% domain_isp_placement() :: #{
-%%   <<"InboxPercentage">> => float(),
-%%   <<"InboxRawCount">> => float(),
-%%   <<"IspName">> => string(),
-%%   <<"SpamPercentage">> => float(),
-%%   <<"SpamRawCount">> => float()
+%% create_configuration_set_event_destination_request() :: #{
+%%   <<"EventDestination">> := event_destination_definition(),
+%%   <<"EventDestinationName">> := string()
 %% }
--type domain_isp_placement() :: #{binary() => any()}.
+-type create_configuration_set_event_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_configuration_set_event_destination_response() :: #{}
+-type create_configuration_set_event_destination_response() :: #{}.
 
 
 %% Example:
-%% dedicated_ip() :: #{
-%%   <<"Ip">> => string(),
-%%   <<"PoolName">> => string(),
-%%   <<"WarmupPercentage">> => integer(),
-%%   <<"WarmupStatus">> => list(any())
+%% create_configuration_set_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"DeliveryOptions">> => delivery_options(),
+%%   <<"ReputationOptions">> => reputation_options(),
+%%   <<"SendingOptions">> => sending_options(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrackingOptions">> => tracking_options()
 %% }
--type dedicated_ip() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_blacklist_reports_request() :: #{
-%%   <<"BlacklistItemNames">> := list(string())
-%% }
--type get_blacklist_reports_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% mail_from_attributes() :: #{
-%%   <<"BehaviorOnMxFailure">> => list(any()),
-%%   <<"MailFromDomain">> => string(),
-%%   <<"MailFromDomainStatus">> => list(any())
-%% }
--type mail_from_attributes() :: #{binary() => any()}.
+-type create_configuration_set_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_configuration_set_response() :: #{}
 -type create_configuration_set_response() :: #{}.
-
-
-%% Example:
-%% reputation_options() :: #{
-%%   <<"LastFreshStart">> => non_neg_integer(),
-%%   <<"ReputationMetricsEnabled">> => boolean()
-%% }
--type reputation_options() :: #{binary() => any()}.
-
-%% Example:
-%% put_deliverability_dashboard_option_response() :: #{}
--type put_deliverability_dashboard_option_response() :: #{}.
-
-
-%% Example:
-%% create_email_identity_request() :: #{
-%%   <<"EmailIdentity">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_email_identity_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% inbox_placement_tracking_option() :: #{
-%%   <<"Global">> => boolean(),
-%%   <<"TrackedIsps">> => list(string())
-%% }
--type inbox_placement_tracking_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_destination() :: #{
-%%   <<"CloudWatchDestination">> => cloud_watch_destination(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
-%%   <<"MatchingEventTypes">> => list(list(any())()),
-%%   <<"Name">> => string(),
-%%   <<"PinpointDestination">> => pinpoint_destination(),
-%%   <<"SnsDestination">> => sns_destination()
-%% }
--type event_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_configuration_set_event_destination_request() :: #{
-%%   <<"EventDestination">> := event_destination_definition()
-%% }
--type update_configuration_set_event_destination_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_tag() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type message_tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_deliverability_campaigns_request() :: #{
-%%   <<"EndDate">> := non_neg_integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"StartDate">> := non_neg_integer()
-%% }
--type list_domain_deliverability_campaigns_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_configuration_set_event_destinations_request() :: #{}
--type get_configuration_set_event_destinations_request() :: #{}.
-
-
-%% Example:
-%% get_domain_statistics_report_request() :: #{
-%%   <<"EndDate">> := non_neg_integer(),
-%%   <<"StartDate">> := non_neg_integer()
-%% }
--type get_domain_statistics_report_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_account_dedicated_ip_warmup_attributes_request() :: #{
-%%   <<"AutoWarmupEnabled">> => boolean()
-%% }
--type put_account_dedicated_ip_warmup_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_dedicated_ip_in_pool_response() :: #{}
--type put_dedicated_ip_in_pool_response() :: #{}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% placement_statistics() :: #{
-%%   <<"DkimPercentage">> => float(),
-%%   <<"InboxPercentage">> => float(),
-%%   <<"MissingPercentage">> => float(),
-%%   <<"SpamPercentage">> => float(),
-%%   <<"SpfPercentage">> => float()
-%% }
--type placement_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% identity_info() :: #{
-%%   <<"IdentityName">> => string(),
-%%   <<"IdentityType">> => list(any()),
-%%   <<"SendingEnabled">> => boolean()
-%% }
--type identity_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_sets_response() :: #{
-%%   <<"ConfigurationSets">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_configuration_sets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_dedicated_ip_pools_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type list_dedicated_ip_pools_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configuration_set_event_destinations_response() :: #{
-%%   <<"EventDestinations">> => list(event_destination())
-%% }
--type get_configuration_set_event_destinations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_deliverability_campaign_response() :: #{
-%%   <<"DomainDeliverabilityCampaign">> => domain_deliverability_campaign()
-%% }
--type get_domain_deliverability_campaign_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_sets_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
-%% }
--type list_configuration_sets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_dedicated_ips_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PoolName">> => string()
-%% }
--type get_dedicated_ips_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% raw_message() :: #{
-%%   <<"Data">> => binary()
-%% }
--type raw_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_dedicated_ip_in_pool_request() :: #{
-%%   <<"DestinationPoolName">> := string()
-%% }
--type put_dedicated_ip_in_pool_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_email_identity_dkim_attributes_request() :: #{
-%%   <<"SigningEnabled">> => boolean()
-%% }
--type put_email_identity_dkim_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_configuration_set_sending_options_response() :: #{}
--type put_configuration_set_sending_options_response() :: #{}.
-
-%% Example:
-%% delete_dedicated_ip_pool_response() :: #{}
--type delete_dedicated_ip_pool_response() :: #{}.
-
-
-%% Example:
-%% put_configuration_set_tracking_options_request() :: #{
-%%   <<"CustomRedirectDomain">> => string()
-%% }
--type put_configuration_set_tracking_options_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -755,40 +272,9 @@
 %% }
 -type create_dedicated_ip_pool_request() :: #{binary() => any()}.
 
-
 %% Example:
-%% get_dedicated_ip_response() :: #{
-%%   <<"DedicatedIp">> => dedicated_ip()
-%% }
--type get_dedicated_ip_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configuration_set_event_destination_request() :: #{}
--type delete_configuration_set_event_destination_request() :: #{}.
-
-%% Example:
-%% create_configuration_set_event_destination_response() :: #{}
--type create_configuration_set_event_destination_response() :: #{}.
-
-
-%% Example:
-%% put_configuration_set_delivery_options_request() :: #{
-%%   <<"SendingPoolName">> => string(),
-%%   <<"TlsPolicy">> => list(any())
-%% }
--type put_configuration_set_delivery_options_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_email_identity_mail_from_attributes_request() :: #{
-%%   <<"BehaviorOnMxFailure">> => list(any()),
-%%   <<"MailFromDomain">> => string()
-%% }
--type put_email_identity_mail_from_attributes_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_email_identity_response() :: #{}
--type delete_email_identity_response() :: #{}.
+%% create_dedicated_ip_pool_response() :: #{}
+-type create_dedicated_ip_pool_response() :: #{}.
 
 
 %% Example:
@@ -802,6 +288,31 @@
 
 
 %% Example:
+%% create_deliverability_test_report_response() :: #{
+%%   <<"DeliverabilityTestStatus">> => list(any()),
+%%   <<"ReportId">> => string()
+%% }
+-type create_deliverability_test_report_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_email_identity_request() :: #{
+%%   <<"EmailIdentity">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_email_identity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_email_identity_response() :: #{
+%%   <<"DkimAttributes">> => dkim_attributes(),
+%%   <<"IdentityType">> => list(any()),
+%%   <<"VerifiedForSendingStatus">> => boolean()
+%% }
+-type create_email_identity_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% daily_volume() :: #{
 %%   <<"DomainIspPlacements">> => list(domain_isp_placement()),
 %%   <<"StartDate">> => non_neg_integer(),
@@ -809,37 +320,67 @@
 %% }
 -type daily_volume() :: #{binary() => any()}.
 
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
 
 %% Example:
-%% sending_options() :: #{
-%%   <<"SendingEnabled">> => boolean()
+%% dedicated_ip() :: #{
+%%   <<"Ip">> => string(),
+%%   <<"PoolName">> => string(),
+%%   <<"WarmupPercentage">> => integer(),
+%%   <<"WarmupStatus">> => list(any())
 %% }
--type sending_options() :: #{binary() => any()}.
+-type dedicated_ip() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_set_event_destination_request() :: #{}
+-type delete_configuration_set_event_destination_request() :: #{}.
+
+%% Example:
+%% delete_configuration_set_event_destination_response() :: #{}
+-type delete_configuration_set_event_destination_response() :: #{}.
+
+%% Example:
+%% delete_configuration_set_request() :: #{}
+-type delete_configuration_set_request() :: #{}.
+
+%% Example:
+%% delete_configuration_set_response() :: #{}
+-type delete_configuration_set_response() :: #{}.
+
+%% Example:
+%% delete_dedicated_ip_pool_request() :: #{}
+-type delete_dedicated_ip_pool_request() :: #{}.
+
+%% Example:
+%% delete_dedicated_ip_pool_response() :: #{}
+-type delete_dedicated_ip_pool_response() :: #{}.
+
+%% Example:
+%% delete_email_identity_request() :: #{}
+-type delete_email_identity_request() :: #{}.
+
+%% Example:
+%% delete_email_identity_response() :: #{}
+-type delete_email_identity_response() :: #{}.
 
 
 %% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"message">> => string()
+%% deliverability_test_report() :: #{
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"DeliverabilityTestStatus">> => list(any()),
+%%   <<"FromEmailAddress">> => string(),
+%%   <<"ReportId">> => string(),
+%%   <<"ReportName">> => string(),
+%%   <<"Subject">> => string()
 %% }
--type concurrent_modification_exception() :: #{binary() => any()}.
+-type deliverability_test_report() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_blacklist_reports_response() :: #{
-%%   <<"BlacklistReport">> => map()
+%% delivery_options() :: #{
+%%   <<"SendingPoolName">> => string(),
+%%   <<"TlsPolicy">> => list(any())
 %% }
--type get_blacklist_reports_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type delivery_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -852,152 +393,12 @@
 
 
 %% Example:
-%% body() :: #{
-%%   <<"Html">> => content(),
-%%   <<"Text">> => content()
+%% dkim_attributes() :: #{
+%%   <<"SigningEnabled">> => boolean(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tokens">> => list(string())
 %% }
--type body() :: #{binary() => any()}.
-
-%% Example:
-%% get_deliverability_dashboard_options_request() :: #{}
--type get_deliverability_dashboard_options_request() :: #{}.
-
-
-%% Example:
-%% get_domain_statistics_report_response() :: #{
-%%   <<"DailyVolumes">> => list(daily_volume()),
-%%   <<"OverallVolume">> => overall_volume()
-%% }
--type get_domain_statistics_report_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_account_sending_attributes_response() :: #{}
--type put_account_sending_attributes_response() :: #{}.
-
-
-%% Example:
-%% message_rejected() :: #{
-%%   <<"message">> => string()
-%% }
--type message_rejected() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_dedicated_ip_pools_response() :: #{
-%%   <<"DedicatedIpPools">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_dedicated_ip_pools_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_configuration_set_request() :: #{}
--type get_configuration_set_request() :: #{}.
-
-%% Example:
-%% put_email_identity_mail_from_attributes_response() :: #{}
--type put_email_identity_mail_from_attributes_response() :: #{}.
-
-
-%% Example:
-%% create_configuration_set_event_destination_request() :: #{
-%%   <<"EventDestination">> := event_destination_definition(),
-%%   <<"EventDestinationName">> := string()
-%% }
--type create_configuration_set_event_destination_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_deliverability_tracking_option() :: #{
-%%   <<"Domain">> => string(),
-%%   <<"InboxPlacementTrackingOption">> => inbox_placement_tracking_option(),
-%%   <<"SubscriptionStartDate">> => non_neg_integer()
-%% }
--type domain_deliverability_tracking_option() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_configuration_set_sending_options_request() :: #{
-%%   <<"SendingEnabled">> => boolean()
-%% }
--type put_configuration_set_sending_options_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delivery_options() :: #{
-%%   <<"SendingPoolName">> => string(),
-%%   <<"TlsPolicy">> => list(any())
-%% }
--type delivery_options() :: #{binary() => any()}.
-
-%% Example:
-%% update_configuration_set_event_destination_response() :: #{}
--type update_configuration_set_event_destination_response() :: #{}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% content() :: #{
-%%   <<"Charset">> => string(),
-%%   <<"Data">> => string()
-%% }
--type content() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_configuration_set_response() :: #{
-%%   <<"ConfigurationSetName">> => string(),
-%%   <<"DeliveryOptions">> => delivery_options(),
-%%   <<"ReputationOptions">> => reputation_options(),
-%%   <<"SendingOptions">> => sending_options(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrackingOptions">> => tracking_options()
-%% }
--type get_configuration_set_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% template() :: #{
-%%   <<"TemplateArn">> => string(),
-%%   <<"TemplateData">> => string()
-%% }
--type template() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_email_request() :: #{
-%%   <<"ConfigurationSetName">> => string(),
-%%   <<"Content">> := email_content(),
-%%   <<"Destination">> := destination(),
-%%   <<"EmailTags">> => list(message_tag()),
-%%   <<"FeedbackForwardingEmailAddress">> => string(),
-%%   <<"FromEmailAddress">> => string(),
-%%   <<"ReplyToAddresses">> => list(string())
-%% }
--type send_email_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_dedicated_ip_warmup_attributes_response() :: #{}
--type put_dedicated_ip_warmup_attributes_response() :: #{}.
-
-
-%% Example:
-%% put_dedicated_ip_warmup_attributes_request() :: #{
-%%   <<"WarmupPercentage">> := integer()
-%% }
--type put_dedicated_ip_warmup_attributes_request() :: #{binary() => any()}.
+-type dkim_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1019,9 +420,115 @@
 %% }
 -type domain_deliverability_campaign() :: #{binary() => any()}.
 
+
+%% Example:
+%% domain_deliverability_tracking_option() :: #{
+%%   <<"Domain">> => string(),
+%%   <<"InboxPlacementTrackingOption">> => inbox_placement_tracking_option(),
+%%   <<"SubscriptionStartDate">> => non_neg_integer()
+%% }
+-type domain_deliverability_tracking_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_isp_placement() :: #{
+%%   <<"InboxPercentage">> => float(),
+%%   <<"InboxRawCount">> => float(),
+%%   <<"IspName">> => string(),
+%%   <<"SpamPercentage">> => float(),
+%%   <<"SpamRawCount">> => float()
+%% }
+-type domain_isp_placement() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_content() :: #{
+%%   <<"Raw">> => raw_message(),
+%%   <<"Simple">> => message(),
+%%   <<"Template">> => template()
+%% }
+-type email_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_destination() :: #{
+%%   <<"CloudWatchDestination">> => cloud_watch_destination(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
+%%   <<"MatchingEventTypes">> => list(list(any())()),
+%%   <<"Name">> => string(),
+%%   <<"PinpointDestination">> => pinpoint_destination(),
+%%   <<"SnsDestination">> => sns_destination()
+%% }
+-type event_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_destination_definition() :: #{
+%%   <<"CloudWatchDestination">> => cloud_watch_destination(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
+%%   <<"MatchingEventTypes">> => list(list(any())()),
+%%   <<"PinpointDestination">> => pinpoint_destination(),
+%%   <<"SnsDestination">> => sns_destination()
+%% }
+-type event_destination_definition() :: #{binary() => any()}.
+
 %% Example:
 %% get_account_request() :: #{}
 -type get_account_request() :: #{}.
+
+
+%% Example:
+%% get_account_response() :: #{
+%%   <<"DedicatedIpAutoWarmupEnabled">> => boolean(),
+%%   <<"EnforcementStatus">> => string(),
+%%   <<"ProductionAccessEnabled">> => boolean(),
+%%   <<"SendQuota">> => send_quota(),
+%%   <<"SendingEnabled">> => boolean()
+%% }
+-type get_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_blacklist_reports_request() :: #{
+%%   <<"BlacklistItemNames">> := list(string())
+%% }
+-type get_blacklist_reports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_blacklist_reports_response() :: #{
+%%   <<"BlacklistReport">> => map()
+%% }
+-type get_blacklist_reports_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_configuration_set_event_destinations_request() :: #{}
+-type get_configuration_set_event_destinations_request() :: #{}.
+
+
+%% Example:
+%% get_configuration_set_event_destinations_response() :: #{
+%%   <<"EventDestinations">> => list(event_destination())
+%% }
+-type get_configuration_set_event_destinations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_configuration_set_request() :: #{}
+-type get_configuration_set_request() :: #{}.
+
+
+%% Example:
+%% get_configuration_set_response() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"DeliveryOptions">> => delivery_options(),
+%%   <<"ReputationOptions">> => reputation_options(),
+%%   <<"SendingOptions">> => sending_options(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrackingOptions">> => tracking_options()
+%% }
+-type get_configuration_set_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_dedicated_ip_request() :: #{}
@@ -1029,60 +536,46 @@
 
 
 %% Example:
-%% list_email_identities_request() :: #{
+%% get_dedicated_ip_response() :: #{
+%%   <<"DedicatedIp">> => dedicated_ip()
+%% }
+-type get_dedicated_ip_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dedicated_ips_request() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PageSize">> => integer()
+%%   <<"PageSize">> => integer(),
+%%   <<"PoolName">> => string()
 %% }
--type list_email_identities_request() :: #{binary() => any()}.
+-type get_dedicated_ips_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_configuration_set_reputation_options_request() :: #{
-%%   <<"ReputationMetricsEnabled">> => boolean()
+%% get_dedicated_ips_response() :: #{
+%%   <<"DedicatedIps">> => list(dedicated_ip()),
+%%   <<"NextToken">> => string()
 %% }
--type put_configuration_set_reputation_options_request() :: #{binary() => any()}.
+-type get_dedicated_ips_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_deliverability_dashboard_options_request() :: #{}
+-type get_deliverability_dashboard_options_request() :: #{}.
 
 
 %% Example:
-%% create_configuration_set_request() :: #{
-%%   <<"ConfigurationSetName">> := string(),
-%%   <<"DeliveryOptions">> => delivery_options(),
-%%   <<"ReputationOptions">> => reputation_options(),
-%%   <<"SendingOptions">> => sending_options(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TrackingOptions">> => tracking_options()
+%% get_deliverability_dashboard_options_response() :: #{
+%%   <<"AccountStatus">> => list(any()),
+%%   <<"ActiveSubscribedDomains">> => list(domain_deliverability_tracking_option()),
+%%   <<"DashboardEnabled">> => boolean(),
+%%   <<"PendingExpirationSubscribedDomains">> => list(domain_deliverability_tracking_option()),
+%%   <<"SubscriptionExpiryDate">> => non_neg_integer()
 %% }
--type create_configuration_set_request() :: #{binary() => any()}.
-
+-type get_deliverability_dashboard_options_response() :: #{binary() => any()}.
 
 %% Example:
-%% sns_destination() :: #{
-%%   <<"TopicArn">> => string()
-%% }
--type sns_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% pinpoint_destination() :: #{
-%%   <<"ApplicationArn">> => string()
-%% }
--type pinpoint_destination() :: #{binary() => any()}.
-
-%% Example:
-%% put_email_identity_feedback_attributes_response() :: #{}
--type put_email_identity_feedback_attributes_response() :: #{}.
-
-
-%% Example:
-%% deliverability_test_report() :: #{
-%%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"DeliverabilityTestStatus">> => list(any()),
-%%   <<"FromEmailAddress">> => string(),
-%%   <<"ReportId">> => string(),
-%%   <<"ReportName">> => string(),
-%%   <<"Subject">> => string()
-%% }
--type deliverability_test_report() :: #{binary() => any()}.
+%% get_deliverability_test_report_request() :: #{}
+-type get_deliverability_test_report_request() :: #{}.
 
 
 %% Example:
@@ -1096,16 +589,199 @@
 -type get_deliverability_test_report_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_domain_deliverability_campaign_request() :: #{}
+-type get_domain_deliverability_campaign_request() :: #{}.
+
+
+%% Example:
+%% get_domain_deliverability_campaign_response() :: #{
+%%   <<"DomainDeliverabilityCampaign">> => domain_deliverability_campaign()
+%% }
+-type get_domain_deliverability_campaign_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_domain_statistics_report_request() :: #{
+%%   <<"EndDate">> := non_neg_integer(),
+%%   <<"StartDate">> := non_neg_integer()
+%% }
+-type get_domain_statistics_report_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_domain_statistics_report_response() :: #{
+%%   <<"DailyVolumes">> => list(daily_volume()),
+%%   <<"OverallVolume">> => overall_volume()
+%% }
+-type get_domain_statistics_report_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_email_identity_request() :: #{}
 -type get_email_identity_request() :: #{}.
 
 
 %% Example:
-%% get_dedicated_ips_response() :: #{
-%%   <<"DedicatedIps">> => list(dedicated_ip()),
+%% get_email_identity_response() :: #{
+%%   <<"DkimAttributes">> => dkim_attributes(),
+%%   <<"FeedbackForwardingStatus">> => boolean(),
+%%   <<"IdentityType">> => list(any()),
+%%   <<"MailFromAttributes">> => mail_from_attributes(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"VerifiedForSendingStatus">> => boolean()
+%% }
+-type get_email_identity_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_info() :: #{
+%%   <<"IdentityName">> => string(),
+%%   <<"IdentityType">> => list(any()),
+%%   <<"SendingEnabled">> => boolean()
+%% }
+-type identity_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% inbox_placement_tracking_option() :: #{
+%%   <<"Global">> => boolean(),
+%%   <<"TrackedIsps">> => list(string())
+%% }
+-type inbox_placement_tracking_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% isp_placement() :: #{
+%%   <<"IspName">> => string(),
+%%   <<"PlacementStatistics">> => placement_statistics()
+%% }
+-type isp_placement() :: #{binary() => any()}.
+
+
+%% Example:
+%% kinesis_firehose_destination() :: #{
+%%   <<"DeliveryStreamArn">> => string(),
+%%   <<"IamRoleArn">> => string()
+%% }
+-type kinesis_firehose_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_sets_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_configuration_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_sets_response() :: #{
+%%   <<"ConfigurationSets">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
--type get_dedicated_ips_response() :: #{binary() => any()}.
+-type list_configuration_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dedicated_ip_pools_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_dedicated_ip_pools_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dedicated_ip_pools_response() :: #{
+%%   <<"DedicatedIpPools">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dedicated_ip_pools_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deliverability_test_reports_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_deliverability_test_reports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deliverability_test_reports_response() :: #{
+%%   <<"DeliverabilityTestReports">> => list(deliverability_test_report()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_deliverability_test_reports_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_deliverability_campaigns_request() :: #{
+%%   <<"EndDate">> := non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"StartDate">> := non_neg_integer()
+%% }
+-type list_domain_deliverability_campaigns_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_deliverability_campaigns_response() :: #{
+%%   <<"DomainDeliverabilityCampaigns">> => list(domain_deliverability_campaign()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domain_deliverability_campaigns_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_email_identities_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_email_identities_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_email_identities_response() :: #{
+%%   <<"EmailIdentities">> => list(identity_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_email_identities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% mail_from_attributes() :: #{
+%%   <<"BehaviorOnMxFailure">> => list(any()),
+%%   <<"MailFromDomain">> => string(),
+%%   <<"MailFromDomainStatus">> => list(any())
+%% }
+-type mail_from_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% mail_from_domain_not_verified_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type mail_from_domain_not_verified_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1115,235 +791,559 @@
 %% }
 -type message() :: #{binary() => any()}.
 
+
+%% Example:
+%% message_rejected() :: #{
+%%   <<"message">> => string()
+%% }
+-type message_rejected() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_tag() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type message_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% overall_volume() :: #{
+%%   <<"DomainIspPlacements">> => list(domain_isp_placement()),
+%%   <<"ReadRatePercent">> => float(),
+%%   <<"VolumeStatistics">> => volume_statistics()
+%% }
+-type overall_volume() :: #{binary() => any()}.
+
+
+%% Example:
+%% pinpoint_destination() :: #{
+%%   <<"ApplicationArn">> => string()
+%% }
+-type pinpoint_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% placement_statistics() :: #{
+%%   <<"DkimPercentage">> => float(),
+%%   <<"InboxPercentage">> => float(),
+%%   <<"MissingPercentage">> => float(),
+%%   <<"SpamPercentage">> => float(),
+%%   <<"SpfPercentage">> => float()
+%% }
+-type placement_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_account_dedicated_ip_warmup_attributes_request() :: #{
+%%   <<"AutoWarmupEnabled">> => boolean()
+%% }
+-type put_account_dedicated_ip_warmup_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_dedicated_ip_warmup_attributes_response() :: #{}
+-type put_account_dedicated_ip_warmup_attributes_response() :: #{}.
+
+
+%% Example:
+%% put_account_sending_attributes_request() :: #{
+%%   <<"SendingEnabled">> => boolean()
+%% }
+-type put_account_sending_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_sending_attributes_response() :: #{}
+-type put_account_sending_attributes_response() :: #{}.
+
+
+%% Example:
+%% put_configuration_set_delivery_options_request() :: #{
+%%   <<"SendingPoolName">> => string(),
+%%   <<"TlsPolicy">> => list(any())
+%% }
+-type put_configuration_set_delivery_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_configuration_set_delivery_options_response() :: #{}
+-type put_configuration_set_delivery_options_response() :: #{}.
+
+
+%% Example:
+%% put_configuration_set_reputation_options_request() :: #{
+%%   <<"ReputationMetricsEnabled">> => boolean()
+%% }
+-type put_configuration_set_reputation_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_configuration_set_reputation_options_response() :: #{}
+-type put_configuration_set_reputation_options_response() :: #{}.
+
+
+%% Example:
+%% put_configuration_set_sending_options_request() :: #{
+%%   <<"SendingEnabled">> => boolean()
+%% }
+-type put_configuration_set_sending_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_configuration_set_sending_options_response() :: #{}
+-type put_configuration_set_sending_options_response() :: #{}.
+
+
+%% Example:
+%% put_configuration_set_tracking_options_request() :: #{
+%%   <<"CustomRedirectDomain">> => string()
+%% }
+-type put_configuration_set_tracking_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_configuration_set_tracking_options_response() :: #{}
+-type put_configuration_set_tracking_options_response() :: #{}.
+
+
+%% Example:
+%% put_dedicated_ip_in_pool_request() :: #{
+%%   <<"DestinationPoolName">> := string()
+%% }
+-type put_dedicated_ip_in_pool_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_dedicated_ip_in_pool_response() :: #{}
+-type put_dedicated_ip_in_pool_response() :: #{}.
+
+
+%% Example:
+%% put_dedicated_ip_warmup_attributes_request() :: #{
+%%   <<"WarmupPercentage">> := integer()
+%% }
+-type put_dedicated_ip_warmup_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_dedicated_ip_warmup_attributes_response() :: #{}
+-type put_dedicated_ip_warmup_attributes_response() :: #{}.
+
+
+%% Example:
+%% put_deliverability_dashboard_option_request() :: #{
+%%   <<"DashboardEnabled">> := boolean(),
+%%   <<"SubscribedDomains">> => list(domain_deliverability_tracking_option())
+%% }
+-type put_deliverability_dashboard_option_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_deliverability_dashboard_option_response() :: #{}
+-type put_deliverability_dashboard_option_response() :: #{}.
+
+
+%% Example:
+%% put_email_identity_dkim_attributes_request() :: #{
+%%   <<"SigningEnabled">> => boolean()
+%% }
+-type put_email_identity_dkim_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_email_identity_dkim_attributes_response() :: #{}
+-type put_email_identity_dkim_attributes_response() :: #{}.
+
+
+%% Example:
+%% put_email_identity_feedback_attributes_request() :: #{
+%%   <<"EmailForwardingEnabled">> => boolean()
+%% }
+-type put_email_identity_feedback_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_email_identity_feedback_attributes_response() :: #{}
+-type put_email_identity_feedback_attributes_response() :: #{}.
+
+
+%% Example:
+%% put_email_identity_mail_from_attributes_request() :: #{
+%%   <<"BehaviorOnMxFailure">> => list(any()),
+%%   <<"MailFromDomain">> => string()
+%% }
+-type put_email_identity_mail_from_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_email_identity_mail_from_attributes_response() :: #{}
+-type put_email_identity_mail_from_attributes_response() :: #{}.
+
+
+%% Example:
+%% raw_message() :: #{
+%%   <<"Data">> => binary()
+%% }
+-type raw_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% reputation_options() :: #{
+%%   <<"LastFreshStart">> => non_neg_integer(),
+%%   <<"ReputationMetricsEnabled">> => boolean()
+%% }
+-type reputation_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_email_request() :: #{
+%%   <<"ConfigurationSetName">> => string(),
+%%   <<"Content">> := email_content(),
+%%   <<"Destination">> := destination(),
+%%   <<"EmailTags">> => list(message_tag()),
+%%   <<"FeedbackForwardingEmailAddress">> => string(),
+%%   <<"FromEmailAddress">> => string(),
+%%   <<"ReplyToAddresses">> => list(string())
+%% }
+-type send_email_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_email_response() :: #{
+%%   <<"MessageId">> => string()
+%% }
+-type send_email_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_quota() :: #{
+%%   <<"Max24HourSend">> => float(),
+%%   <<"MaxSendRate">> => float(),
+%%   <<"SentLast24Hours">> => float()
+%% }
+-type send_quota() :: #{binary() => any()}.
+
+
+%% Example:
+%% sending_options() :: #{
+%%   <<"SendingEnabled">> => boolean()
+%% }
+-type sending_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% sending_paused_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type sending_paused_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% sns_destination() :: #{
+%%   <<"TopicArn">> => string()
+%% }
+-type sns_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% template() :: #{
+%%   <<"TemplateArn">> => string(),
+%%   <<"TemplateData">> => string()
+%% }
+-type template() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tracking_options() :: #{
+%%   <<"CustomRedirectDomain">> => string()
+%% }
+-type tracking_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_configuration_set_event_destination_request() :: #{
+%%   <<"EventDestination">> := event_destination_definition()
+%% }
+-type update_configuration_set_event_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_configuration_set_event_destination_response() :: #{}
+-type update_configuration_set_event_destination_response() :: #{}.
+
+
+%% Example:
+%% volume_statistics() :: #{
+%%   <<"InboxRawCount">> => float(),
+%%   <<"ProjectedInbox">> => float(),
+%%   <<"ProjectedSpam">> => float(),
+%%   <<"SpamRawCount">> => float()
+%% }
+-type volume_statistics() :: #{binary() => any()}.
+
 -type create_configuration_set_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
+    not_found_exception() | 
     limit_exceeded_exception() | 
     concurrent_modification_exception() | 
-    not_found_exception() | 
-    too_many_requests_exception() | 
+    bad_request_exception() | 
     already_exists_exception().
 
 -type create_configuration_set_event_destination_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    bad_request_exception() | 
     already_exists_exception().
 
 -type create_dedicated_ip_pool_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     limit_exceeded_exception() | 
     concurrent_modification_exception() | 
-    too_many_requests_exception() | 
+    bad_request_exception() | 
     already_exists_exception().
 
 -type create_deliverability_test_report_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    message_rejected() | 
-    concurrent_modification_exception() | 
-    not_found_exception() | 
-    mail_from_domain_not_verified_exception() | 
     too_many_requests_exception() | 
-    account_suspended_exception() | 
-    sending_paused_exception().
+    sending_paused_exception() | 
+    not_found_exception() | 
+    message_rejected() | 
+    mail_from_domain_not_verified_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    bad_request_exception() | 
+    account_suspended_exception().
 
 -type create_email_identity_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     limit_exceeded_exception() | 
     concurrent_modification_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type delete_configuration_set_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type delete_configuration_set_event_destination_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type delete_dedicated_ip_pool_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type delete_email_identity_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type get_account_errors() ::
-    bad_request_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    bad_request_exception().
 
 -type get_blacklist_reports_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_configuration_set_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_configuration_set_event_destinations_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_dedicated_ip_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_dedicated_ips_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_deliverability_dashboard_options_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     limit_exceeded_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_deliverability_test_report_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_domain_deliverability_campaign_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_domain_statistics_report_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type get_email_identity_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type list_configuration_sets_errors() ::
-    bad_request_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    bad_request_exception().
 
 -type list_dedicated_ip_pools_errors() ::
-    bad_request_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    bad_request_exception().
 
 -type list_deliverability_test_reports_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type list_domain_deliverability_campaigns_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type list_email_identities_errors() ::
-    bad_request_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type put_account_dedicated_ip_warmup_attributes_errors() ::
-    bad_request_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    bad_request_exception().
 
 -type put_account_sending_attributes_errors() ::
-    bad_request_exception() | 
-    too_many_requests_exception().
+    too_many_requests_exception() | 
+    bad_request_exception().
 
 -type put_configuration_set_delivery_options_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type put_configuration_set_reputation_options_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type put_configuration_set_sending_options_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type put_configuration_set_tracking_options_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type put_dedicated_ip_in_pool_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type put_dedicated_ip_warmup_attributes_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type put_deliverability_dashboard_option_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    bad_request_exception() | 
     already_exists_exception().
 
 -type put_email_identity_dkim_attributes_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type put_email_identity_feedback_attributes_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type put_email_identity_mail_from_attributes_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 -type send_email_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    message_rejected() | 
-    not_found_exception() | 
-    mail_from_domain_not_verified_exception() | 
     too_many_requests_exception() | 
-    account_suspended_exception() | 
-    sending_paused_exception().
+    sending_paused_exception() | 
+    not_found_exception() | 
+    message_rejected() | 
+    mail_from_domain_not_verified_exception() | 
+    limit_exceeded_exception() | 
+    bad_request_exception() | 
+    account_suspended_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    concurrent_modification_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    concurrent_modification_exception() | 
+    bad_request_exception().
 
 -type update_configuration_set_event_destination_errors() ::
-    bad_request_exception() | 
+    too_many_requests_exception() | 
     not_found_exception() | 
-    too_many_requests_exception().
+    bad_request_exception().
 
 %%====================================================================
 %% API

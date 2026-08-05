@@ -109,21 +109,39 @@
 
 
 %% Example:
-%% create_index_output() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"State">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type create_index_output() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_property() :: #{
-%%   <<"Data">> => [any()],
-%%   <<"LastReportedAt">> => [non_neg_integer()],
-%%   <<"Name">> => [string()]
+%% associate_default_view_input() :: #{
+%%   <<"ViewArn">> := [string()]
 %% }
--type resource_property() :: #{binary() => any()}.
+-type associate_default_view_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_default_view_output() :: #{
+%%   <<"ViewArn">> => [string()]
+%% }
+-type associate_default_view_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_view_error() :: #{
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"ViewArn">> => [string()]
+%% }
+-type batch_get_view_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_view_input() :: #{
+%%   <<"ViewArns">> => list([string()]())
+%% }
+-type batch_get_view_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -135,26 +153,27 @@
 
 
 %% Example:
-%% unauthorized_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
--type unauthorized_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_view_output() :: #{
-%%   <<"View">> => view()
+%% create_index_input() :: #{
+%%   <<"ClientToken">> => [string()],
+%%   <<"Tags">> => map()
 %% }
--type create_view_output() :: #{binary() => any()}.
+-type create_index_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_indexes_for_members_input() :: #{
-%%   <<"AccountIdList">> := list(string()),
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
+%% create_index_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"State">> => string()
 %% }
--type list_indexes_for_members_input() :: #{binary() => any()}.
+-type create_index_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -167,40 +186,60 @@
 
 
 %% Example:
-%% included_property() :: #{
-%%   <<"Name">> => [string()]
+%% create_resource_explorer_setup_output() :: #{
+%%   <<"TaskId">> => [string()]
 %% }
--type included_property() :: #{binary() => any()}.
+-type create_resource_explorer_setup_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()],
-%%   <<"QueryString">> := string(),
-%%   <<"ViewArn">> => [string()]
-%% }
--type search_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% view() :: #{
+%% create_view_input() :: #{
+%%   <<"ClientToken">> => [string()],
 %%   <<"Filters">> => search_filter(),
 %%   <<"IncludedProperties">> => list(included_property()),
-%%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"Owner">> => [string()],
 %%   <<"Scope">> => [string()],
-%%   <<"ViewArn">> => [string()],
-%%   <<"ViewName">> => string()
+%%   <<"Tags">> => map(),
+%%   <<"ViewName">> := string()
 %% }
--type view() :: #{binary() => any()}.
+-type create_view_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_default_view_input() :: #{
-%%   <<"ViewArn">> := [string()]
+%% create_view_output() :: #{
+%%   <<"View">> => view()
 %% }
--type associate_default_view_input() :: #{binary() => any()}.
+-type create_view_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_index_input() :: #{
+%%   <<"Arn">> := [string()]
+%% }
+-type delete_index_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_index_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"State">> => string()
+%% }
+-type delete_index_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_explorer_setup_input() :: #{
+%%   <<"DeleteInAllRegions">> => [boolean()],
+%%   <<"RegionList">> => list([string()]())
+%% }
+-type delete_resource_explorer_setup_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_explorer_setup_output() :: #{
+%%   <<"TaskId">> => [string()]
+%% }
+-type delete_resource_explorer_setup_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -211,35 +250,6 @@
 
 
 %% Example:
-%% list_streaming_access_for_services_output() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"StreamingAccessForServices">> => list(streaming_access_details())
-%% }
--type list_streaming_access_for_services_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_view() :: #{
-%%   <<"Filters">> => search_filter(),
-%%   <<"IncludedProperties">> => list(included_property()),
-%%   <<"ScopeType">> => [string()],
-%%   <<"ServiceLinkedRecorder">> => service_linked_recorder_info(),
-%%   <<"ServiceViewArn">> => [string()],
-%%   <<"ServiceViewName">> => string(),
-%%   <<"StreamingAccessForService">> => [string()]
-%% }
--type service_view() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_views_output() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"Views">> => list([string()]())
-%% }
--type list_views_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% delete_view_output() :: #{
 %%   <<"ViewArn">> => [string()]
 %% }
@@ -247,41 +257,25 @@
 
 
 %% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => map()
+%% error_details() :: #{
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
 %% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
+-type error_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_count() :: #{
-%%   <<"Complete">> => [boolean()],
-%%   <<"TotalResources">> => [float()]
+%% get_account_level_service_configuration_output() :: #{
+%%   <<"OrgConfiguration">> => org_configuration()
 %% }
--type resource_count() :: #{binary() => any()}.
+-type get_account_level_service_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_view_input() :: #{
-%%   <<"ViewArns">> => list([string()]())
+%% get_default_view_output() :: #{
+%%   <<"ViewArn">> => [string()]
 %% }
--type batch_get_view_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_views_output() :: #{
-%%   <<"ManagedViews">> => list([string()]()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_managed_views_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_supported_resource_types_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_supported_resource_types_input() :: #{binary() => any()}.
+-type get_default_view_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -299,27 +293,78 @@
 
 
 %% Example:
-%% search_output() :: #{
-%%   <<"Count">> => resource_count(),
+%% get_managed_view_input() :: #{
+%%   <<"ManagedViewArn">> := [string()]
+%% }
+-type get_managed_view_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_managed_view_output() :: #{
+%%   <<"ManagedView">> => managed_view()
+%% }
+-type get_managed_view_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_explorer_setup_input() :: #{
+%%   <<"MaxResults">> => [integer()],
 %%   <<"NextToken">> => [string()],
-%%   <<"Resources">> => list(resource()),
-%%   <<"ViewArn">> => [string()]
+%%   <<"TaskId">> := [string()]
 %% }
--type search_output() :: #{binary() => any()}.
+-type get_resource_explorer_setup_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_resource_explorer_setup_output() :: #{
-%%   <<"TaskId">> => [string()]
+%% get_resource_explorer_setup_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Regions">> => list(region_status())
 %% }
--type delete_resource_explorer_setup_output() :: #{binary() => any()}.
+-type get_resource_explorer_setup_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% search_filter() :: #{
-%%   <<"FilterString">> => [string()]
+%% get_service_index_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Type">> => string()
 %% }
--type search_filter() :: #{binary() => any()}.
+-type get_service_index_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_view_input() :: #{
+%%   <<"ServiceViewArn">> := [string()]
+%% }
+-type get_service_view_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_view_output() :: #{
+%%   <<"View">> => service_view()
+%% }
+-type get_service_view_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_view_input() :: #{
+%%   <<"ViewArn">> := [string()]
+%% }
+-type get_view_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_view_output() :: #{
+%%   <<"Tags">> => map(),
+%%   <<"View">> => view()
+%% }
+-type get_view_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% included_property() :: #{
+%%   <<"Name">> => [string()]
+%% }
+-type included_property() :: #{binary() => any()}.
 
 
 %% Example:
@@ -332,34 +377,28 @@
 
 
 %% Example:
-%% list_resources_input() :: #{
-%%   <<"Filters">> => search_filter(),
+%% index_status() :: #{
+%%   <<"ErrorDetails">> => error_details(),
+%%   <<"Index">> => index(),
+%%   <<"Status">> => string()
+%% }
+-type index_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_indexes_for_members_input() :: #{
+%%   <<"AccountIdList">> := list(string()),
 %%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()],
-%%   <<"ViewArn">> => [string()]
+%%   <<"NextToken">> => [string()]
 %% }
--type list_resources_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_resource_explorer_setup_output() :: #{
-%%   <<"TaskId">> => [string()]
-%% }
--type create_resource_explorer_setup_output() :: #{binary() => any()}.
+-type list_indexes_for_members_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -368,50 +407,6 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_indexes_for_members_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_managed_views_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()],
-%%   <<"ServicePrincipal">> => [string()]
-%% }
--type list_managed_views_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_view_error() :: #{
-%%   <<"ErrorMessage">> => [string()],
-%%   <<"ViewArn">> => [string()]
-%% }
--type batch_get_view_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_view_input() :: #{
-%%   <<"Filters">> => search_filter(),
-%%   <<"IncludedProperties">> => list(included_property()),
-%%   <<"ViewArn">> := [string()]
-%% }
--type update_view_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"Value">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_explorer_setup_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()],
-%%   <<"TaskId">> := [string()]
-%% }
--type get_resource_explorer_setup_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -425,18 +420,123 @@
 
 
 %% Example:
-%% error_details() :: #{
-%%   <<"Code">> => [string()],
-%%   <<"Message">> => [string()]
+%% list_indexes_output() :: #{
+%%   <<"Indexes">> => list(index()),
+%%   <<"NextToken">> => [string()]
 %% }
--type error_details() :: #{binary() => any()}.
+-type list_indexes_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_service_view_output() :: #{
-%%   <<"View">> => service_view()
+%% list_managed_views_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"ServicePrincipal">> => [string()]
 %% }
--type get_service_view_output() :: #{binary() => any()}.
+-type list_managed_views_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_managed_views_output() :: #{
+%%   <<"ManagedViews">> => list([string()]()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_managed_views_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_input() :: #{
+%%   <<"Filters">> => search_filter(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"ViewArn">> => [string()]
+%% }
+-type list_resources_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Resources">> => list(resource()),
+%%   <<"ViewArn">> => [string()]
+%% }
+-type list_resources_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_indexes_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"Regions">> => list([string()]())
+%% }
+-type list_service_indexes_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_indexes_output() :: #{
+%%   <<"Indexes">> => list(index()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_service_indexes_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_views_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_service_views_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_views_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"ServiceViews">> => list([string()]())
+%% }
+-type list_service_views_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streaming_access_for_services_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_streaming_access_for_services_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streaming_access_for_services_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"StreamingAccessForServices">> => list(streaming_access_details())
+%% }
+-type list_streaming_access_for_services_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_supported_resource_types_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_supported_resource_types_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_supported_resource_types_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"ResourceTypes">> => list(supported_resource_type())
+%% }
+-type list_supported_resource_types_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_input() :: #{}
+-type list_tags_for_resource_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -448,11 +548,37 @@
 
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"Name">> => [string()],
-%%   <<"ValidationIssue">> => [string()]
+%% list_views_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Views">> => list([string()]())
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type list_views_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_view() :: #{
+%%   <<"Filters">> => search_filter(),
+%%   <<"IncludedProperties">> => list(included_property()),
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"ManagedViewArn">> => [string()],
+%%   <<"ManagedViewName">> => [string()],
+%%   <<"Owner">> => [string()],
+%%   <<"ResourcePolicy">> => [string()],
+%%   <<"Scope">> => [string()],
+%%   <<"TrustedService">> => [string()],
+%%   <<"Version">> => [string()]
+%% }
+-type managed_view() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_index() :: #{
+%%   <<"AccountId">> => [string()],
+%%   <<"Arn">> => [string()],
+%%   <<"Region">> => [string()],
+%%   <<"Type">> => string()
+%% }
+-type member_index() :: #{binary() => any()}.
 
 
 %% Example:
@@ -473,332 +599,6 @@
 
 
 %% Example:
-%% tag_resource_input() :: #{
-%%   <<"Tags">> => map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_indexes_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()],
-%%   <<"Regions">> => list([string()]())
-%% }
--type list_service_indexes_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_managed_view_input() :: #{
-%%   <<"ManagedViewArn">> := [string()]
-%% }
--type get_managed_view_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_default_view_output() :: #{
-%%   <<"ViewArn">> => [string()]
-%% }
--type associate_default_view_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_output() :: #{}
--type tag_resource_output() :: #{}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_index_output() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"State">> => string()
-%% }
--type delete_index_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% streaming_access_details() :: #{
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"ServicePrincipal">> => [string()]
-%% }
--type streaming_access_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% view_status() :: #{
-%%   <<"ErrorDetails">> => error_details(),
-%%   <<"Status">> => string(),
-%%   <<"View">> => view()
-%% }
--type view_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_service_index_output() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"Type">> => string()
-%% }
--type get_service_index_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_linked_recorder_info() :: #{
-%%   <<"RecorderName">> => [string()],
-%%   <<"RecorderType">> => string(),
-%%   <<"ServicePrincipal">> => [string()]
-%% }
--type service_linked_recorder_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_index_type_input() :: #{
-%%   <<"Arn">> := [string()],
-%%   <<"Type">> := string()
-%% }
--type update_index_type_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_explorer_setup_input() :: #{
-%%   <<"DeleteInAllRegions">> => [boolean()],
-%%   <<"RegionList">> => list([string()]())
-%% }
--type delete_resource_explorer_setup_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list([string()]())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_view_input() :: #{
-%%   <<"ClientToken">> => [string()],
-%%   <<"Filters">> => search_filter(),
-%%   <<"IncludedProperties">> => list(included_property()),
-%%   <<"Scope">> => [string()],
-%%   <<"Tags">> => map(),
-%%   <<"ViewName">> := string()
-%% }
--type create_view_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_service_view_input() :: #{
-%%   <<"ServiceViewArn">> := [string()]
-%% }
--type get_service_view_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_view_input() :: #{
-%%   <<"ViewArn">> := [string()]
-%% }
--type get_view_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_explorer_setup_output() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"Regions">> => list(region_status())
-%% }
--type get_resource_explorer_setup_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"FieldList">> => list(validation_exception_field()),
-%%   <<"Message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_input() :: #{}
--type list_tags_for_resource_input() :: #{}.
-
-
-%% Example:
-%% delete_index_input() :: #{
-%%   <<"Arn">> := [string()]
-%% }
--type delete_index_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% supported_resource_type() :: #{
-%%   <<"CFNResourceTypes">> => list([string()]()),
-%%   <<"ResourceType">> => [string()],
-%%   <<"Service">> => [string()]
-%% }
--type supported_resource_type() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_output() :: #{}
--type untag_resource_output() :: #{}.
-
-
-%% Example:
-%% update_view_output() :: #{
-%%   <<"View">> => view()
-%% }
--type update_view_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_views_output() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"ServiceViews">> => list([string()]())
-%% }
--type list_service_views_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_account_level_service_configuration_output() :: #{
-%%   <<"OrgConfiguration">> => org_configuration()
-%% }
--type get_account_level_service_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_views_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_service_views_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_indexes_output() :: #{
-%%   <<"Indexes">> => list(index()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_indexes_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_streaming_access_for_services_input() :: #{
-%%   <<"MaxResults">> => [integer()],
-%%   <<"NextToken">> => [string()]
-%% }
--type list_streaming_access_for_services_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_view_output() :: #{
-%%   <<"Tags">> => map(),
-%%   <<"View">> => view()
-%% }
--type get_view_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_supported_resource_types_output() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"ResourceTypes">> => list(supported_resource_type())
-%% }
--type list_supported_resource_types_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_index_input() :: #{
-%%   <<"ClientToken">> => [string()],
-%%   <<"Tags">> => map()
-%% }
--type create_index_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_index_type_output() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"State">> => string(),
-%%   <<"Type">> => string()
-%% }
--type update_index_type_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% index_status() :: #{
-%%   <<"ErrorDetails">> => error_details(),
-%%   <<"Index">> => index(),
-%%   <<"Status">> => string()
-%% }
--type index_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_service_indexes_output() :: #{
-%%   <<"Indexes">> => list(index()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_service_indexes_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% member_index() :: #{
-%%   <<"AccountId">> => [string()],
-%%   <<"Arn">> => [string()],
-%%   <<"Region">> => [string()],
-%%   <<"Type">> => string()
-%% }
--type member_index() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_default_view_output() :: #{
-%%   <<"ViewArn">> => [string()]
-%% }
--type get_default_view_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resources_output() :: #{
-%%   <<"NextToken">> => [string()],
-%%   <<"Resources">> => list(resource()),
-%%   <<"ViewArn">> => [string()]
-%% }
--type list_resources_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% managed_view() :: #{
-%%   <<"Filters">> => search_filter(),
-%%   <<"IncludedProperties">> => list(included_property()),
-%%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"ManagedViewArn">> => [string()],
-%%   <<"ManagedViewName">> => [string()],
-%%   <<"Owner">> => [string()],
-%%   <<"ResourcePolicy">> => [string()],
-%%   <<"Scope">> => [string()],
-%%   <<"TrustedService">> => [string()],
-%%   <<"Version">> => [string()]
-%% }
--type managed_view() :: #{binary() => any()}.
-
-
-%% Example:
 %% resource() :: #{
 %%   <<"Arn">> => [string()],
 %%   <<"CfnResourceType">> => [string()],
@@ -813,238 +613,438 @@
 
 
 %% Example:
-%% get_managed_view_output() :: #{
-%%   <<"ManagedView">> => managed_view()
+%% resource_count() :: #{
+%%   <<"Complete">> => [boolean()],
+%%   <<"TotalResources">> => [float()]
 %% }
--type get_managed_view_output() :: #{binary() => any()}.
+-type resource_count() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_property() :: #{
+%%   <<"Data">> => [any()],
+%%   <<"LastReportedAt">> => [non_neg_integer()],
+%%   <<"Name">> => [string()]
+%% }
+-type resource_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_filter() :: #{
+%%   <<"FilterString">> => [string()]
+%% }
+-type search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"QueryString">> := string(),
+%%   <<"ViewArn">> => [string()]
+%% }
+-type search_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_output() :: #{
+%%   <<"Count">> => resource_count(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Resources">> => list(resource()),
+%%   <<"ViewArn">> => [string()]
+%% }
+-type search_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_linked_recorder_info() :: #{
+%%   <<"RecorderName">> => [string()],
+%%   <<"RecorderType">> => string(),
+%%   <<"ServicePrincipal">> => [string()]
+%% }
+-type service_linked_recorder_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"Value">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_view() :: #{
+%%   <<"Filters">> => search_filter(),
+%%   <<"IncludedProperties">> => list(included_property()),
+%%   <<"ScopeType">> => [string()],
+%%   <<"ServiceLinkedRecorder">> => service_linked_recorder_info(),
+%%   <<"ServiceViewArn">> => [string()],
+%%   <<"ServiceViewName">> => string(),
+%%   <<"StreamingAccessForService">> => [string()]
+%% }
+-type service_view() :: #{binary() => any()}.
+
+
+%% Example:
+%% streaming_access_details() :: #{
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"ServicePrincipal">> => [string()]
+%% }
+-type streaming_access_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% supported_resource_type() :: #{
+%%   <<"CFNResourceTypes">> => list([string()]()),
+%%   <<"ResourceType">> => [string()],
+%%   <<"Service">> => [string()]
+%% }
+-type supported_resource_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list([string()]())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_index_type_input() :: #{
+%%   <<"Arn">> := [string()],
+%%   <<"Type">> := string()
+%% }
+-type update_index_type_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_index_type_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"State">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type update_index_type_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_view_input() :: #{
+%%   <<"Filters">> => search_filter(),
+%%   <<"IncludedProperties">> => list(included_property()),
+%%   <<"ViewArn">> := [string()]
+%% }
+-type update_view_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_view_output() :: #{
+%%   <<"View">> => view()
+%% }
+-type update_view_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"FieldList">> => list(validation_exception_field()),
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"Name">> => [string()],
+%%   <<"ValidationIssue">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% view() :: #{
+%%   <<"Filters">> => search_filter(),
+%%   <<"IncludedProperties">> => list(included_property()),
+%%   <<"LastUpdatedAt">> => [non_neg_integer()],
+%%   <<"Owner">> => [string()],
+%%   <<"Scope">> => [string()],
+%%   <<"ViewArn">> => [string()],
+%%   <<"ViewName">> => string()
+%% }
+-type view() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_status() :: #{
+%%   <<"ErrorDetails">> => error_details(),
+%%   <<"Status">> => string(),
+%%   <<"View">> => view()
+%% }
+-type view_status() :: #{binary() => any()}.
 
 -type associate_default_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type batch_get_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_resource_explorer_setup_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_resource_explorer_setup_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type disassociate_default_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_account_level_service_configuration_errors() ::
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_default_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_managed_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_resource_explorer_setup_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_index_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_service_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_indexes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_indexes_for_members_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_managed_views_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_resources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_service_indexes_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_service_views_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_streaming_access_for_services_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_supported_resource_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_views_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type search_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_index_type_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_view_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

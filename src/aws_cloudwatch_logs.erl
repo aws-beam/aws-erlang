@@ -301,167 +301,10 @@
 
 
 %% Example:
-%% invalid_sequence_token_exception() :: #{
-%%   <<"expectedSequenceToken">> => string(),
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_sequence_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_anomalies_response() :: #{
-%%   <<"anomalies">> => list(anomaly()),
-%%   <<"nextToken">> => string()
-%% }
--type list_anomalies_response() :: #{binary() => any()}.
-
-%% Example:
-%% add_key_entry() :: #{
-%%   <<"key">> => string(),
-%%   <<"overwriteIfExists">> => boolean(),
-%%   <<"value">> => string()
-%% }
--type add_key_entry() :: #{binary() => any()}.
-
-%% Example:
-%% update_scheduled_query_response() :: #{
-%%   <<"creationTime">> => float(),
-%%   <<"description">> => string(),
-%%   <<"destinationConfiguration">> => destination_configuration(),
-%%   <<"endTimeOffset">> => float(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"lastExecutionStatus">> => list(any()),
-%%   <<"lastTriggeredTime">> => float(),
-%%   <<"lastUpdatedTime">> => float(),
-%%   <<"logGroupIdentifiers">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"queryLanguage">> => list(any()),
-%%   <<"queryString">> => string(),
-%%   <<"scheduleEndTime">> => float(),
-%%   <<"scheduleExpression">> => string(),
-%%   <<"scheduleStartTime">> => float(),
-%%   <<"scheduleType">> => list(any()),
-%%   <<"scheduledQueryArn">> => string(),
-%%   <<"startTimeOffset">> => float(),
-%%   <<"state">> => list(any()),
-%%   <<"timezone">> => string()
-%% }
--type update_scheduled_query_response() :: #{binary() => any()}.
-
-%% Example:
-%% trim_string() :: #{
-%%   <<"withKeys">> => list(string())
-%% }
--type trim_string() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_policies_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"policyScope">> => list(any()),
-%%   <<"resourceArn">> => string()
-%% }
--type describe_resource_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_source_to_s3_table_integration_request() :: #{
-%%   <<"dataSource">> := data_source(),
-%%   <<"integrationArn">> := string()
-%% }
--type associate_source_to_s3_table_integration_request() :: #{binary() => any()}.
-
-%% Example:
-%% delivery() :: #{
-%%   <<"arn">> => string(),
-%%   <<"deliveryDestinationArn">> => string(),
-%%   <<"deliveryDestinationType">> => list(any()),
-%%   <<"deliverySourceName">> => string(),
-%%   <<"fieldDelimiter">> => string(),
-%%   <<"id">> => string(),
-%%   <<"recordFields">> => list(string()),
-%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration(),
-%%   <<"tags">> => map()
-%% }
--type delivery() :: #{binary() => any()}.
-
-%% Example:
-%% rejected_entity_info() :: #{
-%%   <<"errorType">> => list(any())
-%% }
--type rejected_entity_info() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_response() :: #{
-
-%% }
--type delete_integration_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_log_groups_request() :: #{
-%%   <<"accountIdentifiers">> => list(string()),
-%%   <<"includeLinkedAccounts">> => boolean(),
-%%   <<"limit">> => integer(),
-%%   <<"logGroupClass">> => list(any()),
-%%   <<"logGroupIdentifiers">> => list(string()),
-%%   <<"logGroupNamePattern">> => string(),
-%%   <<"logGroupNamePrefix">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_log_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% parse_cloudfront() :: #{
-%%   <<"source">> => string()
-%% }
--type parse_cloudfront() :: #{binary() => any()}.
-
-%% Example:
-%% copy_value() :: #{
-%%   <<"entries">> => list(copy_value_entry())
-%% }
--type copy_value() :: #{binary() => any()}.
-
-%% Example:
-%% delete_query_definition_request() :: #{
-%%   <<"queryDefinitionId">> := string()
-%% }
--type delete_query_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_log_anomaly_detector_request() :: #{
-%%   <<"anomalyDetectorArn">> := string()
-%% }
--type get_log_anomaly_detector_request() :: #{binary() => any()}.
-
-%% Example:
-%% trigger_history_record() :: #{
-%%   <<"destinations">> => list(scheduled_query_destination()),
-%%   <<"errorMessage">> => string(),
-%%   <<"executionStatus">> => list(any()),
-%%   <<"queryId">> => string(),
-%%   <<"triggeredTimestamp">> => float()
-%% }
--type trigger_history_record() :: #{binary() => any()}.
-
-%% Example:
-%% put_bearer_token_authentication_request() :: #{
-%%   <<"bearerTokenAuthenticationEnabled">> := boolean(),
-%%   <<"logGroupIdentifier">> := string()
-%% }
--type put_bearer_token_authentication_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_delivery_destination_policy_request() :: #{
-%%   <<"deliveryDestinationName">> := string(),
-%%   <<"deliveryDestinationPolicy">> := string()
-%% }
--type put_delivery_destination_policy_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
 %% account_policy() :: #{
@@ -476,27 +319,169 @@
 -type account_policy() :: #{binary() => any()}.
 
 %% Example:
-%% create_lookup_table_request() :: #{
+%% add_key_entry() :: #{
+%%   <<"key">> => string(),
+%%   <<"overwriteIfExists">> => boolean(),
+%%   <<"value">> => string()
+%% }
+-type add_key_entry() :: #{binary() => any()}.
+
+%% Example:
+%% add_keys() :: #{
+%%   <<"entries">> => list(add_key_entry())
+%% }
+-type add_keys() :: #{binary() => any()}.
+
+%% Example:
+%% aggregate_log_group_summary() :: #{
+%%   <<"groupingIdentifiers">> => list(grouping_identifier()),
+%%   <<"logGroupCount">> => integer()
+%% }
+-type aggregate_log_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% anomaly() :: #{
+%%   <<"active">> => boolean(),
+%%   <<"anomalyDetectorArn">> => string(),
+%%   <<"anomalyId">> => string(),
 %%   <<"description">> => string(),
+%%   <<"firstSeen">> => float(),
+%%   <<"histogram">> => map(),
+%%   <<"isPatternLevelSuppression">> => boolean(),
+%%   <<"lastSeen">> => float(),
+%%   <<"logGroupArnList">> => list(string()),
+%%   <<"logSamples">> => list(log_event()),
+%%   <<"patternId">> => string(),
+%%   <<"patternRegex">> => string(),
+%%   <<"patternString">> => string(),
+%%   <<"patternTokens">> => list(pattern_token()),
+%%   <<"priority">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"suppressed">> => boolean(),
+%%   <<"suppressedDate">> => float(),
+%%   <<"suppressedUntil">> => float()
+%% }
+-type anomaly() :: #{binary() => any()}.
+
+%% Example:
+%% anomaly_detector() :: #{
+%%   <<"anomalyDetectorArn">> => string(),
+%%   <<"anomalyDetectorStatus">> => list(any()),
+%%   <<"anomalyVisibilityTime">> => float(),
+%%   <<"creationTimeStamp">> => float(),
+%%   <<"detectorName">> => string(),
+%%   <<"evaluationFrequency">> => list(any()),
+%%   <<"filterPattern">> => string(),
 %%   <<"kmsKeyId">> => string(),
-%%   <<"lookupTableName">> := string(),
-%%   <<"tableBody">> := string(),
+%%   <<"lastModifiedTimeStamp">> => float(),
+%%   <<"logGroupArnList">> => list(string())
+%% }
+-type anomaly_detector() :: #{binary() => any()}.
+
+%% Example:
+%% associate_kms_key_request() :: #{
+%%   <<"kmsKeyId">> := string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"resourceIdentifier">> => string()
+%% }
+-type associate_kms_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_source_to_s3_table_integration_request() :: #{
+%%   <<"dataSource">> := data_source(),
+%%   <<"integrationArn">> := string()
+%% }
+-type associate_source_to_s3_table_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_source_to_s3_table_integration_response() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type associate_source_to_s3_table_integration_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_export_task_request() :: #{
+%%   <<"taskId">> := string()
+%% }
+-type cancel_export_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_import_task_request() :: #{
+%%   <<"importId">> := string()
+%% }
+-type cancel_import_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_import_task_response() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"importId">> => string(),
+%%   <<"importStatistics">> => import_statistics(),
+%%   <<"importStatus">> => list(any()),
+%%   <<"lastUpdatedTime">> => float()
+%% }
+-type cancel_import_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_template() :: #{
+%%   <<"allowedActionForAllowVendedLogsDeliveryForResource">> => string(),
+%%   <<"allowedFieldDelimiters">> => list(string()),
+%%   <<"allowedFields">> => list(record_field()),
+%%   <<"allowedOutputFormats">> => list(list(any())()),
+%%   <<"allowedSuffixPathFields">> => list(string()),
+%%   <<"defaultDeliveryConfigValues">> => configuration_template_delivery_config_values(),
+%%   <<"deliveryDestinationType">> => list(any()),
+%%   <<"deliverySourceConfiguration">> => list(delivery_source_configuration_schema()),
+%%   <<"logType">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"s3TablesIntegration">> => s3_tables_integration(),
+%%   <<"service">> => string()
+%% }
+-type configuration_template() :: #{binary() => any()}.
+
+%% Example:
+%% configuration_template_delivery_config_values() :: #{
+%%   <<"fieldDelimiter">> => string(),
+%%   <<"recordFields">> => list(string()),
+%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration()
+%% }
+-type configuration_template_delivery_config_values() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% copy_value() :: #{
+%%   <<"entries">> => list(copy_value_entry())
+%% }
+-type copy_value() :: #{binary() => any()}.
+
+%% Example:
+%% copy_value_entry() :: #{
+%%   <<"overwriteIfExists">> => boolean(),
+%%   <<"source">> => string(),
+%%   <<"target">> => string()
+%% }
+-type copy_value_entry() :: #{binary() => any()}.
+
+%% Example:
+%% create_delivery_request() :: #{
+%%   <<"deliveryDestinationArn">> := string(),
+%%   <<"deliverySourceName">> := string(),
+%%   <<"fieldDelimiter">> => string(),
+%%   <<"recordFields">> => list(string()),
+%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration(),
 %%   <<"tags">> => map()
 %% }
--type create_lookup_table_request() :: #{binary() => any()}.
+-type create_delivery_request() :: #{binary() => any()}.
 
 %% Example:
-%% open_search_data_source() :: #{
-%%   <<"dataSourceName">> => string(),
-%%   <<"status">> => open_search_resource_status()
+%% create_delivery_response() :: #{
+%%   <<"delivery">> => delivery()
 %% }
--type open_search_data_source() :: #{binary() => any()}.
-
-%% Example:
-%% delete_index_policy_response() :: #{
-
-%% }
--type delete_index_policy_response() :: #{binary() => any()}.
+-type create_delivery_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_export_task_request() :: #{
@@ -511,292 +496,44 @@
 -type create_export_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_lookup_tables_request() :: #{
-%%   <<"lookupTableNamePrefix">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% create_export_task_response() :: #{
+%%   <<"taskId">> => string()
 %% }
--type describe_lookup_tables_request() :: #{binary() => any()}.
+-type create_export_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% tag_log_group_request() :: #{
-%%   <<"logGroupName">> := string(),
-%%   <<"tags">> := map()
+%% create_import_task_request() :: #{
+%%   <<"importFilter">> => import_filter(),
+%%   <<"importRoleArn">> := string(),
+%%   <<"importSourceArn">> := string()
 %% }
--type tag_log_group_request() :: #{binary() => any()}.
+-type create_import_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_log_groups_for_query_response() :: #{
-%%   <<"logGroupIdentifiers">> => list(string()),
-%%   <<"nextToken">> => string()
+%% create_import_task_response() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"importDestinationArn">> => string(),
+%%   <<"importId">> => string()
 %% }
--type list_log_groups_for_query_response() :: #{binary() => any()}.
+-type create_import_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% type_converter() :: #{
-%%   <<"entries">> => list(type_converter_entry())
-%% }
--type type_converter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_query_definitions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryDefinitionNamePrefix">> => string(),
-%%   <<"queryLanguage">> => list(any())
-%% }
--type describe_query_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_log_group_response() :: #{
+%% create_log_anomaly_detector_request() :: #{
+%%   <<"anomalyVisibilityTime">> => float(),
+%%   <<"detectorName">> => string(),
+%%   <<"evaluationFrequency">> => list(any()),
+%%   <<"filterPattern">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"logGroupArnList">> := list(string()),
 %%   <<"tags">> => map()
 %% }
--type list_tags_log_group_response() :: #{binary() => any()}.
+-type create_log_anomaly_detector_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_destination_response() :: #{
-%%   <<"destination">> => destination()
+%% create_log_anomaly_detector_response() :: #{
+%%   <<"anomalyDetectorArn">> => string()
 %% }
--type put_destination_response() :: #{binary() => any()}.
-
-%% Example:
-%% filter_log_events_response() :: #{
-%%   <<"events">> => list(filtered_log_event()),
-%%   <<"nextToken">> => string(),
-%%   <<"searchedLogStreams">> => list(searched_log_stream())
-%% }
--type filter_log_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% open_search_resource_config() :: #{
-%%   <<"applicationArn">> => string(),
-%%   <<"dashboardViewerPrincipals">> => list(string()),
-%%   <<"dataSourceRoleArn">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"retentionDays">> => integer()
-%% }
--type open_search_resource_config() :: #{binary() => any()}.
-
-%% Example:
-%% put_destination_request() :: #{
-%%   <<"destinationName">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"targetArn">> := string()
-%% }
--type put_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% log_field_type() :: #{
-%%   <<"element">> => log_field_type(),
-%%   <<"fields">> => list(log_fields_list_item()),
-%%   <<"type">> => string()
-%% }
--type log_field_type() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_results_response() :: #{
-%%   <<"encryptionKey">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryLanguage">> => list(any()),
-%%   <<"results">> => list(list(result_field())()),
-%%   <<"statistics">> => query_statistics(),
-%%   <<"status">> => list(any())
-%% }
--type get_query_results_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_queries_request() :: #{
-%%   <<"logGroupName">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryLanguage">> => list(any()),
-%%   <<"status">> => list(any())
-%% }
--type describe_queries_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_account_policy_response() :: #{
-%%   <<"accountPolicy">> => account_policy()
-%% }
--type put_account_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_transformer_request() :: #{
-%%   <<"logGroupIdentifier">> := string()
-%% }
--type get_transformer_request() :: #{binary() => any()}.
-
-%% Example:
-%% entity() :: #{
-%%   <<"attributes">> => map(),
-%%   <<"keyAttributes">> => map()
-%% }
--type entity() :: #{binary() => any()}.
-
-%% Example:
-%% substitute_string_entry() :: #{
-%%   <<"from">> => string(),
-%%   <<"source">> => string(),
-%%   <<"to">> => string()
-%% }
--type substitute_string_entry() :: #{binary() => any()}.
-
-%% Example:
-%% list_sources_for_s3_table_integration_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sources">> => list(s3_table_integration_source())
-%% }
--type list_sources_for_s3_table_integration_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_lookup_table_request() :: #{
-%%   <<"lookupTableArn">> := string()
-%% }
--type get_lookup_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% type_converter_entry() :: #{
-%%   <<"key">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type type_converter_entry() :: #{binary() => any()}.
-
-%% Example:
-%% split_string_entry() :: #{
-%%   <<"delimiter">> => string(),
-%%   <<"source">> => string()
-%% }
--type split_string_entry() :: #{binary() => any()}.
-
-%% Example:
-%% copy_value_entry() :: #{
-%%   <<"overwriteIfExists">> => boolean(),
-%%   <<"source">> => string(),
-%%   <<"target">> => string()
-%% }
--type copy_value_entry() :: #{binary() => any()}.
-
-%% Example:
-%% list_aggregate_log_group_summaries_request() :: #{
-%%   <<"accountIdentifiers">> => list(string()),
-%%   <<"dataSources">> => list(data_source_filter()),
-%%   <<"groupBy">> := list(any()),
-%%   <<"includeLinkedAccounts">> => boolean(),
-%%   <<"limit">> => integer(),
-%%   <<"logGroupClass">> => list(any()),
-%%   <<"logGroupNamePattern">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_aggregate_log_group_summaries_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_queries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"queries">> => list(query_info())
-%% }
--type describe_queries_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_query_request() :: #{
-%%   <<"identifier">> := string()
-%% }
--type delete_scheduled_query_request() :: #{binary() => any()}.
-
-%% Example:
-%% query_parameter() :: #{
-%%   <<"defaultValue">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string()
-%% }
--type query_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% put_log_events_request() :: #{
-%%   <<"entity">> => entity(),
-%%   <<"logEvents">> := list(input_log_event()),
-%%   <<"logGroupName">> := string(),
-%%   <<"logStreamName">> := string(),
-%%   <<"sequenceToken">> => string()
-%% }
--type put_log_events_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_account_policy_request() :: #{
-%%   <<"policyDocument">> := string(),
-%%   <<"policyName">> := string(),
-%%   <<"policyType">> := list(any()),
-%%   <<"scope">> => list(any()),
-%%   <<"selectionCriteria">> => string()
-%% }
--type put_account_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_already_accepted_exception() :: #{
-%%   <<"expectedSequenceToken">> => string(),
-%%   <<"message">> => string()
-%% }
--type data_already_accepted_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_lookup_tables_response() :: #{
-%%   <<"lookupTables">> => list(lookup_table()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_lookup_tables_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_scheduled_query_response() :: #{
-%%   <<"scheduledQueryArn">> => string(),
-%%   <<"state">> => list(any())
-%% }
--type create_scheduled_query_response() :: #{binary() => any()}.
-
-%% Example:
-%% export_task_execution_info() :: #{
-%%   <<"completionTime">> => float(),
-%%   <<"creationTime">> => float()
-%% }
--type export_task_execution_info() :: #{binary() => any()}.
-
-%% Example:
-%% put_data_protection_policy_request() :: #{
-%%   <<"logGroupIdentifier">> := string(),
-%%   <<"policyDocument">> := string()
-%% }
--type put_data_protection_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_query_results_request() :: #{
-%%   <<"maxItems">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryId">> := string()
-%% }
--type get_query_results_request() :: #{binary() => any()}.
-
-%% Example:
-%% substitute_string() :: #{
-%%   <<"entries">> => list(substitute_string_entry())
-%% }
--type substitute_string() :: #{binary() => any()}.
-
-%% Example:
-%% get_delivery_request() :: #{
-%%   <<"id">> := string()
-%% }
--type get_delivery_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_query_response() :: #{
-
-%% }
--type delete_scheduled_query_response() :: #{binary() => any()}.
-
-%% Example:
-%% live_tail_session_metadata() :: #{
-%%   <<"sampled">> => boolean()
-%% }
--type live_tail_session_metadata() :: #{binary() => any()}.
+-type create_log_anomaly_detector_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_log_group_request() :: #{
@@ -809,84 +546,6 @@
 -type create_log_group_request() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_source_from_s3_table_integration_response() :: #{
-%%   <<"identifier">> => string()
-%% }
--type disassociate_source_from_s3_table_integration_response() :: #{binary() => any()}.
-
-%% Example:
-%% fields_data() :: #{
-%%   <<"data">> => binary()
-%% }
--type fields_data() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_query_destination() :: #{
-%%   <<"destinationIdentifier">> => string(),
-%%   <<"destinationType">> => list(any()),
-%%   <<"errorMessage">> => string(),
-%%   <<"processedIdentifier">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type scheduled_query_destination() :: #{binary() => any()}.
-
-%% Example:
-%% open_search_encryption_policy() :: #{
-%%   <<"policyName">> => string(),
-%%   <<"status">> => open_search_resource_status()
-%% }
--type open_search_encryption_policy() :: #{binary() => any()}.
-
-%% Example:
-%% put_delivery_destination_request() :: #{
-%%   <<"deliveryDestinationConfiguration">> => delivery_destination_configuration(),
-%%   <<"deliveryDestinationType">> => list(any()),
-%%   <<"name">> := string(),
-%%   <<"outputFormat">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type put_delivery_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_delivery_source_response() :: #{
-%%   <<"deliverySource">> => delivery_source()
-%% }
--type get_delivery_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% subscription_filter() :: #{
-%%   <<"applyOnTransformedLogs">> => boolean(),
-%%   <<"creationTime">> => float(),
-%%   <<"destinationArn">> => string(),
-%%   <<"distribution">> => list(any()),
-%%   <<"emitSystemFields">> => list(string()),
-%%   <<"fieldSelectionCriteria">> => string(),
-%%   <<"filterName">> => string(),
-%%   <<"filterPattern">> => string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type subscription_filter() :: #{binary() => any()}.
-
-%% Example:
-%% describe_export_tasks_response() :: #{
-%%   <<"exportTasks">> => list(export_task()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_export_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% live_tail_session_start() :: #{
-%%   <<"logEventFilterPattern">> => string(),
-%%   <<"logGroupIdentifiers">> => list(string()),
-%%   <<"logStreamNamePrefixes">> => list(string()),
-%%   <<"logStreamNames">> => list(string()),
-%%   <<"requestId">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type live_tail_session_start() :: #{binary() => any()}.
-
-%% Example:
 %% create_log_stream_request() :: #{
 %%   <<"logGroupName">> := string(),
 %%   <<"logStreamName">> := string()
@@ -894,94 +553,22 @@
 -type create_log_stream_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_import_task_batches_response() :: #{
-%%   <<"importBatches">> => list(import_batch()),
-%%   <<"importId">> => string(),
-%%   <<"importSourceArn">> => string(),
-%%   <<"nextToken">> => string()
+%% create_lookup_table_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lookupTableName">> := string(),
+%%   <<"queryId">> => string(),
+%%   <<"tableBody">> => string(),
+%%   <<"tags">> => map()
 %% }
--type describe_import_task_batches_response() :: #{binary() => any()}.
+-type create_lookup_table_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_log_record_response() :: #{
-%%   <<"logRecord">> => map()
+%% create_lookup_table_response() :: #{
+%%   <<"createdAt">> => float(),
+%%   <<"lookupTableArn">> => string()
 %% }
--type get_log_record_response() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_operation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_log_groups_response() :: #{
-%%   <<"logGroups">> => list(log_group_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_log_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_integration_request() :: #{
-%%   <<"integrationName">> := string(),
-%%   <<"integrationType">> := list(any()),
-%%   <<"resourceConfig">> := list()
-%% }
--type put_integration_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_delivery_response() :: #{
-%%   <<"delivery">> => delivery()
-%% }
--type create_delivery_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_policies_response() :: #{
-%%   <<"accountPolicies">> => list(account_policy()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_account_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_delivery_configuration_response() :: #{
-
-%% }
--type update_delivery_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_log_group_deletion_protection_request() :: #{
-%%   <<"deletionProtectionEnabled">> := boolean(),
-%%   <<"logGroupIdentifier">> := string()
-%% }
--type put_log_group_deletion_protection_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_sources_for_s3_table_integration_request() :: #{
-%%   <<"integrationArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_sources_for_s3_table_integration_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_scheduled_queries_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"scheduleType">> => list(any()),
-%%   <<"state">> => list(any())
-%% }
--type list_scheduled_queries_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_anomaly_request() :: #{
-%%   <<"anomalyDetectorArn">> := string(),
-%%   <<"anomalyId">> => string(),
-%%   <<"baseline">> => boolean(),
-%%   <<"patternId">> => string(),
-%%   <<"suppressionPeriod">> => suppression_period(),
-%%   <<"suppressionType">> => list(any())
-%% }
--type update_anomaly_request() :: #{binary() => any()}.
+-type create_lookup_table_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_scheduled_query_request() :: #{
@@ -1004,30 +591,308 @@
 -type create_scheduled_query_request() :: #{binary() => any()}.
 
 %% Example:
-%% parse_w_a_f() :: #{
+%% create_scheduled_query_response() :: #{
+%%   <<"scheduledQueryArn">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type create_scheduled_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% csv() :: #{
+%%   <<"columns">> => list(string()),
+%%   <<"delimiter">> => string(),
+%%   <<"destination">> => string(),
+%%   <<"quoteCharacter">> => string(),
 %%   <<"source">> => string()
 %% }
--type parse_w_a_f() :: #{binary() => any()}.
+-type csv() :: #{binary() => any()}.
 
 %% Example:
-%% put_retention_policy_request() :: #{
+%% data_already_accepted_exception() :: #{
+%%   <<"expectedSequenceToken">> => string(),
+%%   <<"message">> => string()
+%% }
+-type data_already_accepted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% data_source() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% data_source_filter() :: #{
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type data_source_filter() :: #{binary() => any()}.
+
+%% Example:
+%% date_time_converter() :: #{
+%%   <<"locale">> => string(),
+%%   <<"matchPatterns">> => list(string()),
+%%   <<"source">> => string(),
+%%   <<"sourceTimezone">> => string(),
+%%   <<"target">> => string(),
+%%   <<"targetFormat">> => string(),
+%%   <<"targetTimezone">> => string()
+%% }
+-type date_time_converter() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_policy_request() :: #{
+%%   <<"policyName">> := string(),
+%%   <<"policyType">> := list(any())
+%% }
+-type delete_account_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_protection_policy_request() :: #{
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type delete_data_protection_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_delivery_destination_policy_request() :: #{
+%%   <<"deliveryDestinationName">> := string()
+%% }
+-type delete_delivery_destination_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_delivery_destination_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_delivery_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_delivery_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type delete_delivery_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_delivery_source_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type delete_delivery_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_destination_request() :: #{
+%%   <<"destinationName">> := string()
+%% }
+-type delete_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_policy_request() :: #{
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type delete_index_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_policy_response() :: #{
+
+%% }
+-type delete_index_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_request() :: #{
+%%   <<"force">> => boolean(),
+%%   <<"integrationName">> := string()
+%% }
+-type delete_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_integration_response() :: #{
+
+%% }
+-type delete_integration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_keys() :: #{
+%%   <<"withKeys">> => list(string())
+%% }
+-type delete_keys() :: #{binary() => any()}.
+
+%% Example:
+%% delete_log_anomaly_detector_request() :: #{
+%%   <<"anomalyDetectorArn">> := string()
+%% }
+-type delete_log_anomaly_detector_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_log_group_request() :: #{
+%%   <<"logGroupName">> := string()
+%% }
+-type delete_log_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_log_stream_request() :: #{
 %%   <<"logGroupName">> := string(),
-%%   <<"retentionInDays">> := integer()
+%%   <<"logStreamName">> := string()
 %% }
--type put_retention_policy_request() :: #{binary() => any()}.
+-type delete_log_stream_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_query_request() :: #{
-%%   <<"endTime">> := float(),
-%%   <<"limit">> => integer(),
-%%   <<"logGroupIdentifiers">> => list(string()),
-%%   <<"logGroupName">> => string(),
-%%   <<"logGroupNames">> => list(string()),
-%%   <<"queryLanguage">> => list(any()),
-%%   <<"queryString">> := string(),
-%%   <<"startTime">> := float()
+%% delete_lookup_table_request() :: #{
+%%   <<"lookupTableArn">> := string()
 %% }
--type start_query_request() :: #{binary() => any()}.
+-type delete_lookup_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_filter_request() :: #{
+%%   <<"filterName">> := string(),
+%%   <<"logGroupName">> := string()
+%% }
+-type delete_metric_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_query_definition_request() :: #{
+%%   <<"queryDefinitionId">> := string()
+%% }
+-type delete_query_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_query_definition_response() :: #{
+%%   <<"success">> => boolean()
+%% }
+-type delete_query_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"expectedRevisionId">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"resourceArn">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_retention_policy_request() :: #{
+%%   <<"logGroupName">> := string()
+%% }
+-type delete_retention_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_query_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type delete_scheduled_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_query_response() :: #{
+
+%% }
+-type delete_scheduled_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subscription_filter_request() :: #{
+%%   <<"filterName">> := string(),
+%%   <<"logGroupName">> := string()
+%% }
+-type delete_subscription_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_syslog_configuration_request() :: #{
+%%   <<"logGroupIdentifier">> := string(),
+%%   <<"vpcEndpointId">> => string()
+%% }
+-type delete_syslog_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_transformer_request() :: #{
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type delete_transformer_request() :: #{binary() => any()}.
+
+%% Example:
+%% delivery() :: #{
+%%   <<"arn">> => string(),
+%%   <<"deliveryDestinationArn">> => string(),
+%%   <<"deliveryDestinationType">> => list(any()),
+%%   <<"deliverySourceName">> => string(),
+%%   <<"fieldDelimiter">> => string(),
+%%   <<"id">> => string(),
+%%   <<"recordFields">> => list(string()),
+%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type delivery() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_destination() :: #{
+%%   <<"arn">> => string(),
+%%   <<"deliveryDestinationConfiguration">> => delivery_destination_configuration(),
+%%   <<"deliveryDestinationType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"outputFormat">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type delivery_destination() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_destination_configuration() :: #{
+%%   <<"destinationResourceArn">> => string()
+%% }
+-type delivery_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_source() :: #{
+%%   <<"arn">> => string(),
+%%   <<"deliverySourceConfiguration">> => map(),
+%%   <<"logType">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceArns">> => list(string()),
+%%   <<"service">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type delivery_source() :: #{binary() => any()}.
+
+%% Example:
+%% delivery_source_configuration_schema() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"keyName">> => string(),
+%%   <<"maxValue">> => float(),
+%%   <<"minValue">> => float(),
+%%   <<"supportedValues">> => list(string()),
+%%   <<"valueType">> => list(any())
+%% }
+-type delivery_source_configuration_schema() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_policies_request() :: #{
+%%   <<"accountIdentifiers">> => list(string()),
+%%   <<"nextToken">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"policyType">> := list(any())
+%% }
+-type describe_account_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_policies_response() :: #{
+%%   <<"accountPolicies">> => list(account_policy()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_account_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configuration_templates_request() :: #{
+%%   <<"deliveryDestinationTypes">> => list(list(any())()),
+%%   <<"limit">> => integer(),
+%%   <<"logTypes">> => list(string()),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceTypes">> => list(string()),
+%%   <<"service">> => string()
+%% }
+-type describe_configuration_templates_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configuration_templates_response() :: #{
+%%   <<"configurationTemplates">> => list(configuration_template()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_configuration_templates_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_deliveries_request() :: #{
@@ -1037,32 +902,187 @@
 -type describe_deliveries_request() :: #{binary() => any()}.
 
 %% Example:
-%% session_timeout_exception() :: #{
-%%   <<"message">> => string()
+%% describe_deliveries_response() :: #{
+%%   <<"deliveries">> => list(delivery()),
+%%   <<"nextToken">> => string()
 %% }
--type session_timeout_exception() :: #{binary() => any()}.
+-type describe_deliveries_response() :: #{binary() => any()}.
 
 %% Example:
-%% import_statistics() :: #{
-%%   <<"bytesImported">> => float()
+%% describe_delivery_destinations_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type import_statistics() :: #{binary() => any()}.
+-type describe_delivery_destinations_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_log_group_fields_response() :: #{
-%%   <<"logGroupFields">> => list(log_group_field())
+%% describe_delivery_destinations_response() :: #{
+%%   <<"deliveryDestinations">> => list(delivery_destination()),
+%%   <<"nextToken">> => string()
 %% }
--type get_log_group_fields_response() :: #{binary() => any()}.
+-type describe_delivery_destinations_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_log_anomaly_detector_request() :: #{
-%%   <<"anomalyDetectorArn">> := string(),
-%%   <<"anomalyVisibilityTime">> => float(),
-%%   <<"enabled">> := boolean(),
-%%   <<"evaluationFrequency">> => list(any()),
-%%   <<"filterPattern">> => string()
+%% describe_delivery_sources_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type update_log_anomaly_detector_request() :: #{binary() => any()}.
+-type describe_delivery_sources_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_delivery_sources_response() :: #{
+%%   <<"deliverySources">> => list(delivery_source()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_delivery_sources_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_destinations_request() :: #{
+%%   <<"DestinationNamePrefix">> => string(),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_destinations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_destinations_response() :: #{
+%%   <<"destinations">> => list(destination()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_destinations_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_tasks_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"statusCode">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type describe_export_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_export_tasks_response() :: #{
+%%   <<"exportTasks">> => list(export_task()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_export_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_field_indexes_request() :: #{
+%%   <<"logGroupIdentifiers">> := list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_field_indexes_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_field_indexes_response() :: #{
+%%   <<"fieldIndexes">> => list(field_index()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_field_indexes_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_import_task_batches_request() :: #{
+%%   <<"batchImportStatus">> => list(list(any())()),
+%%   <<"importId">> := string(),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_import_task_batches_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_import_task_batches_response() :: #{
+%%   <<"importBatches">> => list(import_batch()),
+%%   <<"importId">> => string(),
+%%   <<"importSourceArn">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_import_task_batches_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_import_tasks_request() :: #{
+%%   <<"importId">> => string(),
+%%   <<"importSourceArn">> => string(),
+%%   <<"importStatus">> => list(any()),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_import_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_import_tasks_response() :: #{
+%%   <<"imports">> => list(import()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_import_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_index_policies_request() :: #{
+%%   <<"logGroupIdentifiers">> := list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_index_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_index_policies_response() :: #{
+%%   <<"indexPolicies">> => list(index_policy()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_index_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_groups_request() :: #{
+%%   <<"accountIdentifiers">> => list(string()),
+%%   <<"includeLinkedAccounts">> => boolean(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupIdentifiers">> => list(string()),
+%%   <<"logGroupNamePattern">> => string(),
+%%   <<"logGroupNamePrefix">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_log_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_groups_response() :: #{
+%%   <<"logGroups">> => list(log_group()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_log_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_streams_request() :: #{
+%%   <<"descending">> => boolean(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamNamePrefix">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"orderBy">> => list(any())
+%% }
+-type describe_log_streams_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_log_streams_response() :: #{
+%%   <<"logStreams">> => list(log_stream()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_log_streams_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lookup_tables_request() :: #{
+%%   <<"lookupTableNamePrefix">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_lookup_tables_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_lookup_tables_response() :: #{
+%%   <<"lookupTables">> => list(lookup_table()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_lookup_tables_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_metric_filters_request() :: #{
@@ -1076,26 +1096,148 @@
 -type describe_metric_filters_request() :: #{binary() => any()}.
 
 %% Example:
-%% session_streaming_exception() :: #{
+%% describe_metric_filters_response() :: #{
+%%   <<"metricFilters">> => list(metric_filter()),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_metric_filters_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_queries_request() :: #{
+%%   <<"logGroupName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryLanguage">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type describe_queries_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_queries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"queries">> => list(query_info())
+%% }
+-type describe_queries_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_definitions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryDefinitionNamePrefix">> => string(),
+%%   <<"queryLanguage">> => list(any())
+%% }
+-type describe_query_definitions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_query_definitions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"queryDefinitions">> => list(query_definition())
+%% }
+-type describe_query_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policies_request() :: #{
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyScope">> => list(any()),
+%%   <<"resourceArn">> => string()
+%% }
+-type describe_resource_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policies_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourcePolicies">> => list(resource_policy())
+%% }
+-type describe_resource_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscription_filters_request() :: #{
+%%   <<"filterNamePrefix">> => string(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupName">> := string(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_subscription_filters_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_subscription_filters_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"subscriptionFilters">> => list(subscription_filter())
+%% }
+-type describe_subscription_filters_response() :: #{binary() => any()}.
+
+%% Example:
+%% destination() :: #{
+%%   <<"accessPolicy">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => float(),
+%%   <<"destinationName">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"targetArn">> => string()
+%% }
+-type destination() :: #{binary() => any()}.
+
+%% Example:
+%% destination_configuration() :: #{
+%%   <<"lookupTableConfiguration">> => lookup_table_configuration(),
+%%   <<"s3Configuration">> => s3_configuration()
+%% }
+-type destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_kms_key_request() :: #{
+%%   <<"logGroupName">> => string(),
+%%   <<"resourceIdentifier">> => string()
+%% }
+-type disassociate_kms_key_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_source_from_s3_table_integration_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type disassociate_source_from_s3_table_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_source_from_s3_table_integration_response() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type disassociate_source_from_s3_table_integration_response() :: #{binary() => any()}.
+
+%% Example:
+%% entity() :: #{
+%%   <<"attributes">> => map(),
+%%   <<"keyAttributes">> => map()
+%% }
+-type entity() :: #{binary() => any()}.
+
+%% Example:
+%% export_task() :: #{
+%%   <<"destination">> => string(),
+%%   <<"destinationPrefix">> => string(),
+%%   <<"executionInfo">> => export_task_execution_info(),
+%%   <<"from">> => float(),
+%%   <<"logGroupName">> => string(),
+%%   <<"status">> => export_task_status(),
+%%   <<"taskId">> => string(),
+%%   <<"taskName">> => string(),
+%%   <<"to">> => float()
+%% }
+-type export_task() :: #{binary() => any()}.
+
+%% Example:
+%% export_task_execution_info() :: #{
+%%   <<"completionTime">> => float(),
+%%   <<"creationTime">> => float()
+%% }
+-type export_task_execution_info() :: #{binary() => any()}.
+
+%% Example:
+%% export_task_status() :: #{
+%%   <<"code">> => list(any()),
 %%   <<"message">> => string()
 %% }
--type session_streaming_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_data_protection_policy_response() :: #{
-%%   <<"lastUpdatedTime">> => float(),
-%%   <<"logGroupIdentifier">> => string(),
-%%   <<"policyDocument">> => string()
-%% }
--type put_data_protection_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% integration_summary() :: #{
-%%   <<"integrationName">> => string(),
-%%   <<"integrationStatus">> => list(any()),
-%%   <<"integrationType">> => list(any())
-%% }
--type integration_summary() :: #{binary() => any()}.
+-type export_task_status() :: #{binary() => any()}.
 
 %% Example:
 %% field_index() :: #{
@@ -1107,6 +1249,990 @@
 %%   <<"type">> => list(any())
 %% }
 -type field_index() :: #{binary() => any()}.
+
+%% Example:
+%% fields_data() :: #{
+%%   <<"data">> => binary()
+%% }
+-type fields_data() :: #{binary() => any()}.
+
+%% Example:
+%% filter_log_events_request() :: #{
+%%   <<"endTime">> => float(),
+%%   <<"filterPattern">> => string(),
+%%   <<"interleaved">> => boolean(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamNamePrefix">> => string(),
+%%   <<"logStreamNames">> => list(string()),
+%%   <<"nextToken">> => string(),
+%%   <<"startFromHead">> => boolean(),
+%%   <<"startTime">> => float(),
+%%   <<"unmask">> => boolean()
+%% }
+-type filter_log_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% filter_log_events_response() :: #{
+%%   <<"events">> => list(filtered_log_event()),
+%%   <<"nextToken">> => string(),
+%%   <<"searchedLogStreams">> => list(searched_log_stream())
+%% }
+-type filter_log_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% filtered_log_event() :: #{
+%%   <<"eventId">> => string(),
+%%   <<"ingestionTime">> => float(),
+%%   <<"logStreamName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"timestamp">> => float()
+%% }
+-type filtered_log_event() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_protection_policy_request() :: #{
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type get_data_protection_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_protection_policy_response() :: #{
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"policyDocument">> => string()
+%% }
+-type get_data_protection_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_destination_policy_request() :: #{
+%%   <<"deliveryDestinationName">> := string()
+%% }
+-type get_delivery_destination_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_destination_policy_response() :: #{
+%%   <<"policy">> => policy()
+%% }
+-type get_delivery_destination_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_destination_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_delivery_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_destination_response() :: #{
+%%   <<"deliveryDestination">> => delivery_destination()
+%% }
+-type get_delivery_destination_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_request() :: #{
+%%   <<"id">> := string()
+%% }
+-type get_delivery_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_response() :: #{
+%%   <<"delivery">> => delivery()
+%% }
+-type get_delivery_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_source_request() :: #{
+%%   <<"name">> := string()
+%% }
+-type get_delivery_source_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_delivery_source_response() :: #{
+%%   <<"deliverySource">> => delivery_source()
+%% }
+-type get_delivery_source_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_request() :: #{
+%%   <<"integrationName">> := string()
+%% }
+-type get_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_integration_response() :: #{
+%%   <<"integrationDetails">> => list(),
+%%   <<"integrationName">> => string(),
+%%   <<"integrationStatus">> => list(any()),
+%%   <<"integrationType">> => list(any())
+%% }
+-type get_integration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_anomaly_detector_request() :: #{
+%%   <<"anomalyDetectorArn">> := string()
+%% }
+-type get_log_anomaly_detector_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_anomaly_detector_response() :: #{
+%%   <<"anomalyDetectorStatus">> => list(any()),
+%%   <<"anomalyVisibilityTime">> => float(),
+%%   <<"creationTimeStamp">> => float(),
+%%   <<"detectorName">> => string(),
+%%   <<"evaluationFrequency">> => list(any()),
+%%   <<"filterPattern">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastModifiedTimeStamp">> => float(),
+%%   <<"logGroupArnList">> => list(string())
+%% }
+-type get_log_anomaly_detector_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_events_request() :: #{
+%%   <<"endTime">> => float(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamName">> := string(),
+%%   <<"nextToken">> => string(),
+%%   <<"startFromHead">> => boolean(),
+%%   <<"startTime">> => float(),
+%%   <<"unmask">> => boolean()
+%% }
+-type get_log_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_events_response() :: #{
+%%   <<"events">> => list(output_log_event()),
+%%   <<"nextBackwardToken">> => string(),
+%%   <<"nextForwardToken">> => string()
+%% }
+-type get_log_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_fields_request() :: #{
+%%   <<"dataSourceName">> := string(),
+%%   <<"dataSourceType">> := string()
+%% }
+-type get_log_fields_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_fields_response() :: #{
+%%   <<"logFields">> => list(log_fields_list_item())
+%% }
+-type get_log_fields_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_group_fields_request() :: #{
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"time">> => float()
+%% }
+-type get_log_group_fields_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_group_fields_response() :: #{
+%%   <<"logGroupFields">> => list(log_group_field())
+%% }
+-type get_log_group_fields_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_object_request() :: #{
+%%   <<"logObjectPointer">> := string(),
+%%   <<"unmask">> => boolean()
+%% }
+-type get_log_object_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_object_response() :: #{
+%%   <<"fieldStream">> => list()
+%% }
+-type get_log_object_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_record_request() :: #{
+%%   <<"logRecordPointer">> := string(),
+%%   <<"unmask">> => boolean()
+%% }
+-type get_log_record_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_log_record_response() :: #{
+%%   <<"logRecord">> => map()
+%% }
+-type get_log_record_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_lookup_table_request() :: #{
+%%   <<"lookupTableArn">> := string()
+%% }
+-type get_lookup_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_lookup_table_response() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"lookupTableArn">> => string(),
+%%   <<"lookupTableName">> => string(),
+%%   <<"sizeBytes">> => float(),
+%%   <<"tableBody">> => string()
+%% }
+-type get_lookup_table_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_results_request() :: #{
+%%   <<"maxItems">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryId">> := string()
+%% }
+-type get_query_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_results_response() :: #{
+%%   <<"encryptionKey">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryLanguage">> => list(any()),
+%%   <<"results">> => list(list(result_field())()),
+%%   <<"statistics">> => query_statistics(),
+%%   <<"status">> => list(any())
+%% }
+-type get_query_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_query_history_request() :: #{
+%%   <<"endTime">> := float(),
+%%   <<"executionStatuses">> => list(list(any())()),
+%%   <<"identifier">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"startTime">> := float()
+%% }
+-type get_scheduled_query_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_query_history_response() :: #{
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"scheduledQueryArn">> => string(),
+%%   <<"triggerHistory">> => list(trigger_history_record())
+%% }
+-type get_scheduled_query_history_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_query_request() :: #{
+%%   <<"identifier">> := string()
+%% }
+-type get_scheduled_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_query_response() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"description">> => string(),
+%%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"endTimeOffset">> => float(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"lastExecutionStatus">> => list(any()),
+%%   <<"lastTriggeredTime">> => float(),
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"logGroupIdentifiers">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"queryLanguage">> => list(any()),
+%%   <<"queryString">> => string(),
+%%   <<"scheduleEndTime">> => float(),
+%%   <<"scheduleExpression">> => string(),
+%%   <<"scheduleStartTime">> => float(),
+%%   <<"scheduleType">> => list(any()),
+%%   <<"scheduledQueryArn">> => string(),
+%%   <<"startTimeOffset">> => float(),
+%%   <<"state">> => list(any()),
+%%   <<"timezone">> => string()
+%% }
+-type get_scheduled_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_storage_tier_policy_request() :: #{
+
+%% }
+-type get_storage_tier_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_storage_tier_policy_response() :: #{
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"storageTier">> => list(any())
+%% }
+-type get_storage_tier_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_transformer_request() :: #{
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type get_transformer_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_transformer_response() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"lastModifiedTime">> => float(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"transformerConfig">> => list(processor())
+%% }
+-type get_transformer_response() :: #{binary() => any()}.
+
+%% Example:
+%% grok() :: #{
+%%   <<"match">> => string(),
+%%   <<"source">> => string()
+%% }
+-type grok() :: #{binary() => any()}.
+
+%% Example:
+%% grouping_identifier() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type grouping_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% import() :: #{
+%%   <<"creationTime">> => float(),
+%%   <<"errorMessage">> => string(),
+%%   <<"importDestinationArn">> => string(),
+%%   <<"importFilter">> => import_filter(),
+%%   <<"importId">> => string(),
+%%   <<"importSourceArn">> => string(),
+%%   <<"importStatistics">> => import_statistics(),
+%%   <<"importStatus">> => list(any()),
+%%   <<"lastUpdatedTime">> => float()
+%% }
+-type import() :: #{binary() => any()}.
+
+%% Example:
+%% import_batch() :: #{
+%%   <<"batchId">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type import_batch() :: #{binary() => any()}.
+
+%% Example:
+%% import_filter() :: #{
+%%   <<"endEventTime">> => float(),
+%%   <<"startEventTime">> => float()
+%% }
+-type import_filter() :: #{binary() => any()}.
+
+%% Example:
+%% import_statistics() :: #{
+%%   <<"bytesImported">> => float()
+%% }
+-type import_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% index_policy() :: #{
+%%   <<"lastUpdateTime">> => float(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"policyDocument">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"source">> => list(any())
+%% }
+-type index_policy() :: #{binary() => any()}.
+
+%% Example:
+%% input_log_event() :: #{
+%%   <<"message">> => string(),
+%%   <<"timestamp">> => float()
+%% }
+-type input_log_event() :: #{binary() => any()}.
+
+%% Example:
+%% integration_summary() :: #{
+%%   <<"integrationName">> => string(),
+%%   <<"integrationStatus">> => list(any()),
+%%   <<"integrationType">> => list(any())
+%% }
+-type integration_summary() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_streaming_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_streaming_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_sequence_token_exception() :: #{
+%%   <<"expectedSequenceToken">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_sequence_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_aggregate_log_group_summaries_request() :: #{
+%%   <<"accountIdentifiers">> => list(string()),
+%%   <<"dataSources">> => list(data_source_filter()),
+%%   <<"groupBy">> := list(any()),
+%%   <<"includeLinkedAccounts">> => boolean(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupNamePattern">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_aggregate_log_group_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_aggregate_log_group_summaries_response() :: #{
+%%   <<"aggregateLogGroupSummaries">> => list(aggregate_log_group_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_aggregate_log_group_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_anomalies_request() :: #{
+%%   <<"anomalyDetectorArn">> => string(),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"suppressionState">> => list(any())
+%% }
+-type list_anomalies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_anomalies_response() :: #{
+%%   <<"anomalies">> => list(anomaly()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_anomalies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_integrations_request() :: #{
+%%   <<"integrationNamePrefix">> => string(),
+%%   <<"integrationStatus">> => list(any()),
+%%   <<"integrationType">> => list(any())
+%% }
+-type list_integrations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_integrations_response() :: #{
+%%   <<"integrationSummaries">> => list(integration_summary())
+%% }
+-type list_integrations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_anomaly_detectors_request() :: #{
+%%   <<"filterLogGroupArn">> => string(),
+%%   <<"limit">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_log_anomaly_detectors_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_anomaly_detectors_response() :: #{
+%%   <<"anomalyDetectors">> => list(anomaly_detector()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_log_anomaly_detectors_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_groups_for_query_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queryId">> := string()
+%% }
+-type list_log_groups_for_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_groups_for_query_response() :: #{
+%%   <<"logGroupIdentifiers">> => list(string()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_log_groups_for_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_groups_request() :: #{
+%%   <<"accountIdentifiers">> => list(string()),
+%%   <<"dataSources">> => list(data_source_filter()),
+%%   <<"fieldIndexNames">> => list(string()),
+%%   <<"includeLinkedAccounts">> => boolean(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupNamePattern">> => string(),
+%%   <<"logGroupTags">> => list(tag_filter()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_log_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_log_groups_response() :: #{
+%%   <<"logGroups">> => list(log_group_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_log_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_queries_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"scheduleType">> => list(any()),
+%%   <<"state">> => list(any())
+%% }
+-type list_scheduled_queries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_queries_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scheduledQueries">> => list(scheduled_query_summary())
+%% }
+-type list_scheduled_queries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_sources_for_s3_table_integration_request() :: #{
+%%   <<"integrationArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sources_for_s3_table_integration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_sources_for_s3_table_integration_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sources">> => list(s3_table_integration_source())
+%% }
+-type list_sources_for_s3_table_integration_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_syslog_configurations_request() :: #{
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"vpcEndpointId">> => string()
+%% }
+-type list_syslog_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_syslog_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"syslogConfigurations">> => list(syslog_configuration())
+%% }
+-type list_syslog_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_log_group_request() :: #{
+%%   <<"logGroupName">> := string()
+%% }
+-type list_tags_log_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_log_group_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_log_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_to_map() :: #{
+%%   <<"flatten">> => boolean(),
+%%   <<"flattenedElement">> => list(any()),
+%%   <<"key">> => string(),
+%%   <<"source">> => string(),
+%%   <<"target">> => string(),
+%%   <<"valueKey">> => string()
+%% }
+-type list_to_map() :: #{binary() => any()}.
+
+%% Example:
+%% live_tail_session_log_event() :: #{
+%%   <<"ingestionTime">> => float(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"logStreamName">> => string(),
+%%   <<"message">> => string(),
+%%   <<"timestamp">> => float()
+%% }
+-type live_tail_session_log_event() :: #{binary() => any()}.
+
+%% Example:
+%% live_tail_session_metadata() :: #{
+%%   <<"sampled">> => boolean()
+%% }
+-type live_tail_session_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% live_tail_session_start() :: #{
+%%   <<"logEventFilterPattern">> => string(),
+%%   <<"logGroupIdentifiers">> => list(string()),
+%%   <<"logStreamNamePrefixes">> => list(string()),
+%%   <<"logStreamNames">> => list(string()),
+%%   <<"requestId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type live_tail_session_start() :: #{binary() => any()}.
+
+%% Example:
+%% live_tail_session_update() :: #{
+%%   <<"sessionMetadata">> => live_tail_session_metadata(),
+%%   <<"sessionResults">> => list(live_tail_session_log_event())
+%% }
+-type live_tail_session_update() :: #{binary() => any()}.
+
+%% Example:
+%% log_event() :: #{
+%%   <<"message">> => string(),
+%%   <<"timestamp">> => float()
+%% }
+-type log_event() :: #{binary() => any()}.
+
+%% Example:
+%% log_field_type() :: #{
+%%   <<"element">> => log_field_type(),
+%%   <<"fields">> => list(log_fields_list_item()),
+%%   <<"type">> => string()
+%% }
+-type log_field_type() :: #{binary() => any()}.
+
+%% Example:
+%% log_fields_list_item() :: #{
+%%   <<"logFieldName">> => string(),
+%%   <<"logFieldType">> => log_field_type()
+%% }
+-type log_fields_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% log_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"bearerTokenAuthenticationEnabled">> => boolean(),
+%%   <<"creationTime">> => float(),
+%%   <<"dataProtectionStatus">> => list(any()),
+%%   <<"deletionProtectionEnabled">> => boolean(),
+%%   <<"inheritedProperties">> => list(list(any())()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"logGroupArn">> => string(),
+%%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupName">> => string(),
+%%   <<"metricFilterCount">> => integer(),
+%%   <<"retentionInDays">> => integer(),
+%%   <<"storedBytes">> => float()
+%% }
+-type log_group() :: #{binary() => any()}.
+
+%% Example:
+%% log_group_field() :: #{
+%%   <<"name">> => string(),
+%%   <<"percent">> => integer()
+%% }
+-type log_group_field() :: #{binary() => any()}.
+
+%% Example:
+%% log_group_summary() :: #{
+%%   <<"logGroupArn">> => string(),
+%%   <<"logGroupClass">> => list(any()),
+%%   <<"logGroupName">> => string()
+%% }
+-type log_group_summary() :: #{binary() => any()}.
+
+%% Example:
+%% log_stream() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => float(),
+%%   <<"firstEventTimestamp">> => float(),
+%%   <<"lastEventTimestamp">> => float(),
+%%   <<"lastIngestionTime">> => float(),
+%%   <<"logStreamName">> => string(),
+%%   <<"storedBytes">> => float(),
+%%   <<"uploadSequenceToken">> => string()
+%% }
+-type log_stream() :: #{binary() => any()}.
+
+%% Example:
+%% lookup_table() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"lookupTableArn">> => string(),
+%%   <<"lookupTableName">> => string(),
+%%   <<"recordsCount">> => float(),
+%%   <<"sizeBytes">> => float(),
+%%   <<"tableFields">> => list(string())
+%% }
+-type lookup_table() :: #{binary() => any()}.
+
+%% Example:
+%% lookup_table_configuration() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tableName">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type lookup_table_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% lower_case_string() :: #{
+%%   <<"withKeys">> => list(string())
+%% }
+-type lower_case_string() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_query_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"queryCompileError">> => query_compile_error()
+%% }
+-type malformed_query_exception() :: #{binary() => any()}.
+
+%% Example:
+%% metric_filter() :: #{
+%%   <<"applyOnTransformedLogs">> => boolean(),
+%%   <<"creationTime">> => float(),
+%%   <<"emitSystemFieldDimensions">> => list(string()),
+%%   <<"fieldSelectionCriteria">> => string(),
+%%   <<"filterName">> => string(),
+%%   <<"filterPattern">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"metricTransformations">> => list(metric_transformation())
+%% }
+-type metric_filter() :: #{binary() => any()}.
+
+%% Example:
+%% metric_filter_match_record() :: #{
+%%   <<"eventMessage">> => string(),
+%%   <<"eventNumber">> => float(),
+%%   <<"extractedValues">> => map()
+%% }
+-type metric_filter_match_record() :: #{binary() => any()}.
+
+%% Example:
+%% metric_transformation() :: #{
+%%   <<"defaultValue">> => float(),
+%%   <<"dimensions">> => map(),
+%%   <<"metricName">> => string(),
+%%   <<"metricNamespace">> => string(),
+%%   <<"metricValue">> => string(),
+%%   <<"unit">> => list(any())
+%% }
+-type metric_transformation() :: #{binary() => any()}.
+
+%% Example:
+%% move_key_entry() :: #{
+%%   <<"overwriteIfExists">> => boolean(),
+%%   <<"source">> => string(),
+%%   <<"target">> => string()
+%% }
+-type move_key_entry() :: #{binary() => any()}.
+
+%% Example:
+%% move_keys() :: #{
+%%   <<"entries">> => list(move_key_entry())
+%% }
+-type move_keys() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_application() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"applicationEndpoint">> => string(),
+%%   <<"applicationId">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_application() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_collection() :: #{
+%%   <<"collectionArn">> => string(),
+%%   <<"collectionEndpoint">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_collection() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_data_access_policy() :: #{
+%%   <<"policyName">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_data_access_policy() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_data_source() :: #{
+%%   <<"dataSourceName">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_encryption_policy() :: #{
+%%   <<"policyName">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_encryption_policy() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_integration_details() :: #{
+%%   <<"accessPolicy">> => open_search_data_access_policy(),
+%%   <<"application">> => open_search_application(),
+%%   <<"collection">> => open_search_collection(),
+%%   <<"dataSource">> => open_search_data_source(),
+%%   <<"encryptionPolicy">> => open_search_encryption_policy(),
+%%   <<"lifecyclePolicy">> => open_search_lifecycle_policy(),
+%%   <<"networkPolicy">> => open_search_network_policy(),
+%%   <<"workspace">> => open_search_workspace()
+%% }
+-type open_search_integration_details() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_lifecycle_policy() :: #{
+%%   <<"policyName">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_lifecycle_policy() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_network_policy() :: #{
+%%   <<"policyName">> => string(),
+%%   <<"status">> => open_search_resource_status()
+%% }
+-type open_search_network_policy() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_resource_config() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"dashboardViewerPrincipals">> => list(string()),
+%%   <<"dataSourceRoleArn">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"retentionDays">> => integer()
+%% }
+-type open_search_resource_config() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_resource_status() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string()
+%% }
+-type open_search_resource_status() :: #{binary() => any()}.
+
+%% Example:
+%% open_search_workspace() :: #{
+%%   <<"status">> => open_search_resource_status(),
+%%   <<"workspaceId">> => string()
+%% }
+-type open_search_workspace() :: #{binary() => any()}.
+
+%% Example:
+%% operation_aborted_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type operation_aborted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% output_log_event() :: #{
+%%   <<"ingestionTime">> => float(),
+%%   <<"message">> => string(),
+%%   <<"timestamp">> => float()
+%% }
+-type output_log_event() :: #{binary() => any()}.
+
+%% Example:
+%% parse_cloudfront() :: #{
+%%   <<"source">> => string()
+%% }
+-type parse_cloudfront() :: #{binary() => any()}.
+
+%% Example:
+%% parse_json() :: #{
+%%   <<"destination">> => string(),
+%%   <<"source">> => string()
+%% }
+-type parse_json() :: #{binary() => any()}.
+
+%% Example:
+%% parse_key_value() :: #{
+%%   <<"destination">> => string(),
+%%   <<"fieldDelimiter">> => string(),
+%%   <<"keyPrefix">> => string(),
+%%   <<"keyValueDelimiter">> => string(),
+%%   <<"nonMatchValue">> => string(),
+%%   <<"overwriteIfExists">> => boolean(),
+%%   <<"source">> => string()
+%% }
+-type parse_key_value() :: #{binary() => any()}.
+
+%% Example:
+%% parse_postgres() :: #{
+%%   <<"source">> => string()
+%% }
+-type parse_postgres() :: #{binary() => any()}.
+
+%% Example:
+%% parse_route53() :: #{
+%%   <<"source">> => string()
+%% }
+-type parse_route53() :: #{binary() => any()}.
+
+%% Example:
+%% parse_to_o_c_s_f() :: #{
+%%   <<"eventSource">> => list(any()),
+%%   <<"mappingVersion">> => string(),
+%%   <<"ocsfVersion">> => list(any()),
+%%   <<"source">> => string()
+%% }
+-type parse_to_o_c_s_f() :: #{binary() => any()}.
+
+%% Example:
+%% parse_vpc() :: #{
+%%   <<"source">> => string()
+%% }
+-type parse_vpc() :: #{binary() => any()}.
+
+%% Example:
+%% parse_w_a_f() :: #{
+%%   <<"source">> => string()
+%% }
+-type parse_w_a_f() :: #{binary() => any()}.
+
+%% Example:
+%% pattern_token() :: #{
+%%   <<"dynamicTokenPosition">> => integer(),
+%%   <<"enumerations">> => map(),
+%%   <<"inferredTokenName">> => string(),
+%%   <<"isDynamic">> => boolean(),
+%%   <<"tokenString">> => string()
+%% }
+-type pattern_token() :: #{binary() => any()}.
+
+%% Example:
+%% policy() :: #{
+%%   <<"deliveryDestinationPolicy">> => string()
+%% }
+-type policy() :: #{binary() => any()}.
 
 %% Example:
 %% processor() :: #{
@@ -1137,356 +2263,49 @@
 -type processor() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string())
+%% put_account_policy_request() :: #{
+%%   <<"policyDocument">> := string(),
+%%   <<"policyName">> := string(),
+%%   <<"policyType">> := list(any()),
+%%   <<"scope">> => list(any()),
+%%   <<"selectionCriteria">> => string()
 %% }
--type untag_resource_request() :: #{binary() => any()}.
+-type put_account_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% put_index_policy_response() :: #{
-%%   <<"indexPolicy">> => index_policy()
+%% put_account_policy_response() :: #{
+%%   <<"accountPolicy">> => account_policy()
 %% }
--type put_index_policy_response() :: #{binary() => any()}.
+-type put_account_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% configuration_template() :: #{
-%%   <<"allowedActionForAllowVendedLogsDeliveryForResource">> => string(),
-%%   <<"allowedFieldDelimiters">> => list(string()),
-%%   <<"allowedFields">> => list(record_field()),
-%%   <<"allowedOutputFormats">> => list(list(any())()),
-%%   <<"allowedSuffixPathFields">> => list(string()),
-%%   <<"defaultDeliveryConfigValues">> => configuration_template_delivery_config_values(),
-%%   <<"deliveryDestinationType">> => list(any()),
-%%   <<"deliverySourceConfiguration">> => list(delivery_source_configuration_schema()),
-%%   <<"logType">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"s3TablesIntegration">> => s3_tables_integration(),
-%%   <<"service">> => string()
-%% }
--type configuration_template() :: #{binary() => any()}.
-
-%% Example:
-%% put_integration_response() :: #{
-%%   <<"integrationName">> => string(),
-%%   <<"integrationStatus">> => list(any())
-%% }
--type put_integration_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_destinations_response() :: #{
-%%   <<"destinations">> => list(destination()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_destinations_response() :: #{binary() => any()}.
-
-%% Example:
-%% live_tail_session_update() :: #{
-%%   <<"sessionMetadata">> => live_tail_session_metadata(),
-%%   <<"sessionResults">> => list(live_tail_session_log_event())
-%% }
--type live_tail_session_update() :: #{binary() => any()}.
-
-%% Example:
-%% get_transformer_response() :: #{
-%%   <<"creationTime">> => float(),
-%%   <<"lastModifiedTime">> => float(),
-%%   <<"logGroupIdentifier">> => string(),
-%%   <<"transformerConfig">> => list(processor())
-%% }
--type get_transformer_response() :: #{binary() => any()}.
-
-%% Example:
-%% transformed_log_record() :: #{
-%%   <<"eventMessage">> => string(),
-%%   <<"eventNumber">> => float(),
-%%   <<"transformedEventMessage">> => string()
-%% }
--type transformed_log_record() :: #{binary() => any()}.
-
-%% Example:
-%% query_compile_error_location() :: #{
-%%   <<"endCharOffset">> => integer(),
-%%   <<"startCharOffset">> => integer()
-%% }
--type query_compile_error_location() :: #{binary() => any()}.
-
-%% Example:
-%% list_log_groups_request() :: #{
-%%   <<"accountIdentifiers">> => list(string()),
-%%   <<"dataSources">> => list(data_source_filter()),
-%%   <<"fieldIndexNames">> => list(string()),
-%%   <<"includeLinkedAccounts">> => boolean(),
-%%   <<"limit">> => integer(),
-%%   <<"logGroupClass">> => list(any()),
-%%   <<"logGroupNamePattern">> => string(),
-%%   <<"logGroupTags">> => list(tag_filter()),
-%%   <<"nextToken">> => string()
-%% }
--type list_log_groups_request() :: #{binary() => any()}.
-
-%% Example:
-%% operation_aborted_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type operation_aborted_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_integrations_request() :: #{
-%%   <<"integrationNamePrefix">> => string(),
-%%   <<"integrationStatus">> => list(any()),
-%%   <<"integrationType">> => list(any())
-%% }
--type list_integrations_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_import_task_response() :: #{
-%%   <<"creationTime">> => float(),
-%%   <<"importDestinationArn">> => string(),
-%%   <<"importId">> => string()
-%% }
--type create_import_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% delivery_source_configuration_schema() :: #{
-%%   <<"defaultValue">> => string(),
-%%   <<"keyName">> => string(),
-%%   <<"maxValue">> => float(),
-%%   <<"minValue">> => float(),
-%%   <<"supportedValues">> => list(string()),
-%%   <<"valueType">> => list(any())
-%% }
--type delivery_source_configuration_schema() :: #{binary() => any()}.
-
-%% Example:
-%% describe_query_definitions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"queryDefinitions">> => list(query_definition())
-%% }
--type describe_query_definitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_delivery_response() :: #{
-%%   <<"delivery">> => delivery()
-%% }
--type get_delivery_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_log_fields_request() :: #{
-%%   <<"dataSourceName">> := string(),
-%%   <<"dataSourceType">> := string()
-%% }
--type get_log_fields_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_syslog_configuration_request() :: #{
-%%   <<"logGroupIdentifier">> := string(),
-%%   <<"vpcEndpointId">> => string()
-%% }
--type put_syslog_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_subscription_filters_request() :: #{
-%%   <<"filterNamePrefix">> => string(),
-%%   <<"limit">> => integer(),
-%%   <<"logGroupName">> := string(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_subscription_filters_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_destination_policy_request() :: #{
-%%   <<"accessPolicy">> := string(),
-%%   <<"destinationName">> := string(),
-%%   <<"forceUpdate">> => boolean()
-%% }
--type put_destination_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_integration_response() :: #{
-%%   <<"integrationDetails">> => list(),
-%%   <<"integrationName">> => string(),
-%%   <<"integrationStatus">> => list(any()),
-%%   <<"integrationType">> => list(any())
-%% }
--type get_integration_response() :: #{binary() => any()}.
-
-%% Example:
-%% lower_case_string() :: #{
-%%   <<"withKeys">> => list(string())
-%% }
--type lower_case_string() :: #{binary() => any()}.
-
-%% Example:
-%% input_log_event() :: #{
-%%   <<"message">> => string(),
-%%   <<"timestamp">> => float()
-%% }
--type input_log_event() :: #{binary() => any()}.
-
-%% Example:
-%% get_scheduled_query_request() :: #{
-%%   <<"identifier">> := string()
-%% }
--type get_scheduled_query_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_retention_policy_request() :: #{
-%%   <<"logGroupName">> := string()
-%% }
--type delete_retention_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% malformed_query_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"queryCompileError">> => query_compile_error()
-%% }
--type malformed_query_exception() :: #{binary() => any()}.
-
-%% Example:
-%% live_tail_session_log_event() :: #{
-%%   <<"ingestionTime">> => float(),
-%%   <<"logGroupIdentifier">> => string(),
-%%   <<"logStreamName">> => string(),
-%%   <<"message">> => string(),
-%%   <<"timestamp">> => float()
-%% }
--type live_tail_session_log_event() :: #{binary() => any()}.
-
-%% Example:
-%% delete_lookup_table_request() :: #{
-%%   <<"lookupTableArn">> := string()
-%% }
--type delete_lookup_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% aggregate_log_group_summary() :: #{
-%%   <<"groupingIdentifiers">> => list(grouping_identifier()),
-%%   <<"logGroupCount">> => integer()
-%% }
--type aggregate_log_group_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_aggregate_log_group_summaries_response() :: #{
-%%   <<"aggregateLogGroupSummaries">> => list(aggregate_log_group_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_aggregate_log_group_summaries_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_delivery_configuration() :: #{
-%%   <<"enableHiveCompatiblePath">> => boolean(),
-%%   <<"suffixPath">> => string()
-%% }
--type s3_delivery_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_delivery_destination_request() :: #{
-%%   <<"name">> := string()
-%% }
--type get_delivery_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_integration_request() :: #{
-%%   <<"force">> => boolean(),
-%%   <<"integrationName">> := string()
-%% }
--type delete_integration_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_index_policies_request() :: #{
-%%   <<"logGroupIdentifiers">> := list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_index_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_import_task_request() :: #{
-%%   <<"importId">> := string()
-%% }
--type cancel_import_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_field_indexes_request() :: #{
-%%   <<"logGroupIdentifiers">> := list(string()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_field_indexes_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_log_anomaly_detector_request() :: #{
-%%   <<"anomalyDetectorArn">> := string()
-%% }
--type delete_log_anomaly_detector_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_kms_key_request() :: #{
-%%   <<"logGroupName">> => string(),
-%%   <<"resourceIdentifier">> => string()
-%% }
--type disassociate_kms_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_transformer_request() :: #{
+%% put_bearer_token_authentication_request() :: #{
+%%   <<"bearerTokenAuthenticationEnabled">> := boolean(),
 %%   <<"logGroupIdentifier">> := string()
 %% }
--type delete_transformer_request() :: #{binary() => any()}.
+-type put_bearer_token_authentication_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_export_tasks_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"statusCode">> => list(any()),
-%%   <<"taskId">> => string()
+%% put_data_protection_policy_request() :: #{
+%%   <<"logGroupIdentifier">> := string(),
+%%   <<"policyDocument">> := string()
 %% }
--type describe_export_tasks_request() :: #{binary() => any()}.
+-type put_data_protection_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% open_search_collection() :: #{
-%%   <<"collectionArn">> => string(),
-%%   <<"collectionEndpoint">> => string(),
-%%   <<"status">> => open_search_resource_status()
+%% put_data_protection_policy_response() :: #{
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"logGroupIdentifier">> => string(),
+%%   <<"policyDocument">> => string()
 %% }
--type open_search_collection() :: #{binary() => any()}.
+-type put_data_protection_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_log_anomaly_detector_response() :: #{
-%%   <<"anomalyDetectorStatus">> => list(any()),
-%%   <<"anomalyVisibilityTime">> => float(),
-%%   <<"creationTimeStamp">> => float(),
-%%   <<"detectorName">> => string(),
-%%   <<"evaluationFrequency">> => list(any()),
-%%   <<"filterPattern">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"lastModifiedTimeStamp">> => float(),
-%%   <<"logGroupArnList">> => list(string())
+%% put_delivery_destination_policy_request() :: #{
+%%   <<"deliveryDestinationName">> := string(),
+%%   <<"deliveryDestinationPolicy">> := string()
 %% }
--type get_log_anomaly_detector_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_query_definition_response() :: #{
-%%   <<"success">> => boolean()
-%% }
--type delete_query_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_log_streams_response() :: #{
-%%   <<"logStreams">> => list(log_stream()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_log_streams_response() :: #{binary() => any()}.
+-type put_delivery_destination_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_delivery_destination_policy_response() :: #{
@@ -1495,176 +2314,20 @@
 -type put_delivery_destination_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% export_task_status() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"message">> => string()
+%% put_delivery_destination_request() :: #{
+%%   <<"deliveryDestinationConfiguration">> => delivery_destination_configuration(),
+%%   <<"deliveryDestinationType">> => list(any()),
+%%   <<"name">> := string(),
+%%   <<"outputFormat">> => list(any()),
+%%   <<"tags">> => map()
 %% }
--type export_task_status() :: #{binary() => any()}.
+-type put_delivery_destination_request() :: #{binary() => any()}.
 
 %% Example:
-%% delivery_destination_configuration() :: #{
-%%   <<"destinationResourceArn">> => string()
+%% put_delivery_destination_response() :: #{
+%%   <<"deliveryDestination">> => delivery_destination()
 %% }
--type delivery_destination_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% lookup_table() :: #{
-%%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"lastUpdatedTime">> => float(),
-%%   <<"lookupTableArn">> => string(),
-%%   <<"lookupTableName">> => string(),
-%%   <<"recordsCount">> => float(),
-%%   <<"sizeBytes">> => float(),
-%%   <<"tableFields">> => list(string())
-%% }
--type lookup_table() :: #{binary() => any()}.
-
-%% Example:
-%% suppression_period() :: #{
-%%   <<"suppressionUnit">> => list(any()),
-%%   <<"value">> => integer()
-%% }
--type suppression_period() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% pattern_token() :: #{
-%%   <<"dynamicTokenPosition">> => integer(),
-%%   <<"enumerations">> => map(),
-%%   <<"inferredTokenName">> => string(),
-%%   <<"isDynamic">> => boolean(),
-%%   <<"tokenString">> => string()
-%% }
--type pattern_token() :: #{binary() => any()}.
-
-%% Example:
-%% delete_log_stream_request() :: #{
-%%   <<"logGroupName">> := string(),
-%%   <<"logStreamName">> := string()
-%% }
--type delete_log_stream_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_index_policy_request() :: #{
-%%   <<"logGroupIdentifier">> := string()
-%% }
--type delete_index_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% test_transformer_response() :: #{
-%%   <<"transformedLogs">> => list(transformed_log_record())
-%% }
--type test_transformer_response() :: #{binary() => any()}.
-
-%% Example:
-%% open_search_data_access_policy() :: #{
-%%   <<"policyName">> => string(),
-%%   <<"status">> => open_search_resource_status()
-%% }
--type open_search_data_access_policy() :: #{binary() => any()}.
-
-%% Example:
-%% create_export_task_response() :: #{
-%%   <<"taskId">> => string()
-%% }
--type create_export_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_storage_tier_policy_request() :: #{
-
-%% }
--type get_storage_tier_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_delivery_destinations_response() :: #{
-%%   <<"deliveryDestinations">> => list(delivery_destination()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_delivery_destinations_response() :: #{binary() => any()}.
-
-%% Example:
-%% csv() :: #{
-%%   <<"columns">> => list(string()),
-%%   <<"delimiter">> => string(),
-%%   <<"destination">> => string(),
-%%   <<"quoteCharacter">> => string(),
-%%   <<"source">> => string()
-%% }
--type csv() :: #{binary() => any()}.
-
-%% Example:
-%% rename_key_entry() :: #{
-%%   <<"key">> => string(),
-%%   <<"overwriteIfExists">> => boolean(),
-%%   <<"renameTo">> => string()
-%% }
--type rename_key_entry() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_source_from_s3_table_integration_request() :: #{
-%%   <<"identifier">> := string()
-%% }
--type disassociate_source_from_s3_table_integration_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_kms_key_request() :: #{
-%%   <<"kmsKeyId">> := string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"resourceIdentifier">> => string()
-%% }
--type associate_kms_key_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_log_record_request() :: #{
-%%   <<"logRecordPointer">> := string(),
-%%   <<"unmask">> => boolean()
-%% }
--type get_log_record_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_delivery_destination_policy_request() :: #{
-%%   <<"deliveryDestinationName">> := string()
-%% }
--type delete_delivery_destination_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% metric_filter_match_record() :: #{
-%%   <<"eventMessage">> => string(),
-%%   <<"eventNumber">> => float(),
-%%   <<"extractedValues">> => map()
-%% }
--type metric_filter_match_record() :: #{binary() => any()}.
-
-%% Example:
-%% stop_query_request() :: #{
-%%   <<"queryId">> := string()
-%% }
--type stop_query_request() :: #{binary() => any()}.
-
-%% Example:
-%% open_search_workspace() :: #{
-%%   <<"status">> => open_search_resource_status(),
-%%   <<"workspaceId">> => string()
-%% }
--type open_search_workspace() :: #{binary() => any()}.
-
-%% Example:
-%% stop_query_response() :: #{
-%%   <<"success">> => boolean()
-%% }
--type stop_query_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_log_anomaly_detector_response() :: #{
-%%   <<"anomalyDetectorArn">> => string()
-%% }
--type create_log_anomaly_detector_response() :: #{binary() => any()}.
+-type put_delivery_destination_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_delivery_source_request() :: #{
@@ -1677,85 +2340,86 @@
 -type put_delivery_source_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_scheduled_query_response() :: #{
-%%   <<"creationTime">> => float(),
-%%   <<"description">> => string(),
-%%   <<"destinationConfiguration">> => destination_configuration(),
-%%   <<"endTimeOffset">> => float(),
-%%   <<"executionRoleArn">> => string(),
-%%   <<"lastExecutionStatus">> => list(any()),
-%%   <<"lastTriggeredTime">> => float(),
-%%   <<"lastUpdatedTime">> => float(),
-%%   <<"logGroupIdentifiers">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"queryLanguage">> => list(any()),
-%%   <<"queryString">> => string(),
-%%   <<"scheduleEndTime">> => float(),
-%%   <<"scheduleExpression">> => string(),
-%%   <<"scheduleStartTime">> => float(),
-%%   <<"scheduleType">> => list(any()),
-%%   <<"scheduledQueryArn">> => string(),
-%%   <<"startTimeOffset">> => float(),
-%%   <<"state">> => list(any()),
-%%   <<"timezone">> => string()
+%% put_delivery_source_response() :: #{
+%%   <<"deliverySource">> => delivery_source()
 %% }
--type get_scheduled_query_response() :: #{binary() => any()}.
+-type put_delivery_source_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_field_indexes_response() :: #{
-%%   <<"fieldIndexes">> => list(field_index()),
-%%   <<"nextToken">> => string()
+%% put_destination_policy_request() :: #{
+%%   <<"accessPolicy">> := string(),
+%%   <<"destinationName">> := string(),
+%%   <<"forceUpdate">> => boolean()
 %% }
--type describe_field_indexes_response() :: #{binary() => any()}.
+-type put_destination_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% log_group_field() :: #{
-%%   <<"name">> => string(),
-%%   <<"percent">> => integer()
+%% put_destination_request() :: #{
+%%   <<"destinationName">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"targetArn">> := string()
 %% }
--type log_group_field() :: #{binary() => any()}.
+-type put_destination_request() :: #{binary() => any()}.
 
 %% Example:
-%% open_search_network_policy() :: #{
-%%   <<"policyName">> => string(),
-%%   <<"status">> => open_search_resource_status()
+%% put_destination_response() :: #{
+%%   <<"destination">> => destination()
 %% }
--type open_search_network_policy() :: #{binary() => any()}.
+-type put_destination_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_transformer_request() :: #{
+%% put_index_policy_request() :: #{
 %%   <<"logGroupIdentifier">> := string(),
-%%   <<"transformerConfig">> := list(processor())
+%%   <<"policyDocument">> := string()
 %% }
--type put_transformer_request() :: #{binary() => any()}.
+-type put_index_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% log_stream() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => float(),
-%%   <<"firstEventTimestamp">> => float(),
-%%   <<"lastEventTimestamp">> => float(),
-%%   <<"lastIngestionTime">> => float(),
-%%   <<"logStreamName">> => string(),
-%%   <<"storedBytes">> => float(),
-%%   <<"uploadSequenceToken">> => string()
+%% put_index_policy_response() :: #{
+%%   <<"indexPolicy">> => index_policy()
 %% }
--type log_stream() :: #{binary() => any()}.
+-type put_index_policy_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_syslog_configurations_request() :: #{
-%%   <<"logGroupIdentifier">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"vpcEndpointId">> => string()
+%% put_integration_request() :: #{
+%%   <<"integrationName">> := string(),
+%%   <<"integrationType">> := list(any()),
+%%   <<"resourceConfig">> := list()
 %% }
--type list_syslog_configurations_request() :: #{binary() => any()}.
+-type put_integration_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% put_integration_response() :: #{
+%%   <<"integrationName">> => string(),
+%%   <<"integrationStatus">> => list(any())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type put_integration_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_log_events_request() :: #{
+%%   <<"entity">> => entity(),
+%%   <<"logEvents">> := list(input_log_event()),
+%%   <<"logGroupName">> := string(),
+%%   <<"logStreamName">> := string(),
+%%   <<"sequenceToken">> => string()
+%% }
+-type put_log_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_log_events_response() :: #{
+%%   <<"nextSequenceToken">> => string(),
+%%   <<"rejectedEntityInfo">> => rejected_entity_info(),
+%%   <<"rejectedLogEventsInfo">> => rejected_log_events_info()
+%% }
+-type put_log_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_log_group_deletion_protection_request() :: #{
+%%   <<"deletionProtectionEnabled">> := boolean(),
+%%   <<"logGroupIdentifier">> := string()
+%% }
+-type put_log_group_deletion_protection_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_metric_filter_request() :: #{
@@ -1770,142 +2434,58 @@
 -type put_metric_filter_request() :: #{binary() => any()}.
 
 %% Example:
+%% put_query_definition_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"logGroupNames">> => list(string()),
+%%   <<"name">> := string(),
+%%   <<"parameters">> => list(query_parameter()),
+%%   <<"queryDefinitionId">> => string(),
+%%   <<"queryLanguage">> => list(any()),
+%%   <<"queryString">> := string()
+%% }
+-type put_query_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_query_definition_response() :: #{
+%%   <<"queryDefinitionId">> => string()
+%% }
+-type put_query_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"expectedRevisionId">> => string(),
+%%   <<"policyDocument">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"resourceArn">> => string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"resourcePolicy">> => resource_policy(),
+%%   <<"revisionId">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_retention_policy_request() :: #{
+%%   <<"logGroupName">> := string(),
+%%   <<"retentionInDays">> := integer()
+%% }
+-type put_retention_policy_request() :: #{binary() => any()}.
+
+%% Example:
 %% put_storage_tier_policy_request() :: #{
 %%   <<"storageTier">> := list(any())
 %% }
 -type put_storage_tier_policy_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_integration_request() :: #{
-%%   <<"integrationName">> := string()
-%% }
--type get_integration_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_index_policies_response() :: #{
-%%   <<"indexPolicies">> => list(index_policy()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_index_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_import_task_response() :: #{
-%%   <<"creationTime">> => float(),
-%%   <<"importId">> => string(),
-%%   <<"importStatistics">> => import_statistics(),
-%%   <<"importStatus">> => list(any()),
-%%   <<"lastUpdatedTime">> => float()
-%% }
--type cancel_import_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% filter_log_events_request() :: #{
-%%   <<"endTime">> => float(),
-%%   <<"filterPattern">> => string(),
-%%   <<"interleaved">> => boolean(),
-%%   <<"limit">> => integer(),
-%%   <<"logGroupIdentifier">> => string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"logStreamNamePrefix">> => string(),
-%%   <<"logStreamNames">> => list(string()),
-%%   <<"nextToken">> => string(),
-%%   <<"startFromHead">> => boolean(),
-%%   <<"startTime">> => float(),
-%%   <<"unmask">> => boolean()
-%% }
--type filter_log_events_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_deliveries_response() :: #{
-%%   <<"deliveries">> => list(delivery()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_deliveries_response() :: #{binary() => any()}.
-
-%% Example:
-%% grok() :: #{
-%%   <<"match">> => string(),
-%%   <<"source">> => string()
-%% }
--type grok() :: #{binary() => any()}.
-
-%% Example:
-%% log_group_summary() :: #{
-%%   <<"logGroupArn">> => string(),
-%%   <<"logGroupClass">> => list(any()),
-%%   <<"logGroupName">> => string()
-%% }
--type log_group_summary() :: #{binary() => any()}.
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_destination_request() :: #{
-%%   <<"destinationName">> := string()
-%% }
--type delete_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% parse_key_value() :: #{
-%%   <<"destination">> => string(),
-%%   <<"fieldDelimiter">> => string(),
-%%   <<"keyPrefix">> => string(),
-%%   <<"keyValueDelimiter">> => string(),
-%%   <<"nonMatchValue">> => string(),
-%%   <<"overwriteIfExists">> => boolean(),
-%%   <<"source">> => string()
-%% }
--type parse_key_value() :: #{binary() => any()}.
-
-%% Example:
-%% log_fields_list_item() :: #{
-%%   <<"logFieldName">> => string(),
-%%   <<"logFieldType">> => log_field_type()
-%% }
--type log_fields_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_account_policy_request() :: #{
-%%   <<"policyName">> := string(),
-%%   <<"policyType">> := list(any())
-%% }
--type delete_account_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_lookup_table_response() :: #{
-%%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
+%% put_storage_tier_policy_response() :: #{
 %%   <<"lastUpdatedTime">> => float(),
-%%   <<"lookupTableArn">> => string(),
-%%   <<"lookupTableName">> => string(),
-%%   <<"sizeBytes">> => float(),
-%%   <<"tableBody">> => string()
+%%   <<"storageTier">> => list(any())
 %% }
--type get_lookup_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_log_groups_response() :: #{
-%%   <<"logGroups">> => list(log_group()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_log_groups_response() :: #{binary() => any()}.
-
-%% Example:
-%% upper_case_string() :: #{
-%%   <<"withKeys">> => list(string())
-%% }
--type upper_case_string() :: #{binary() => any()}.
-
-%% Example:
-%% untag_log_group_request() :: #{
-%%   <<"logGroupName">> := string(),
-%%   <<"tags">> := list(string())
-%% }
--type untag_log_group_request() :: #{binary() => any()}.
+-type put_storage_tier_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_subscription_filter_request() :: #{
@@ -1922,25 +2502,186 @@
 -type put_subscription_filter_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_delivery_sources_response() :: #{
-%%   <<"deliverySources">> => list(delivery_source()),
-%%   <<"nextToken">> => string()
+%% put_syslog_configuration_request() :: #{
+%%   <<"logGroupIdentifier">> := string(),
+%%   <<"vpcEndpointId">> => string()
 %% }
--type describe_delivery_sources_response() :: #{binary() => any()}.
+-type put_syslog_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_live_tail_response() :: #{
-%%   <<"responseStream">> => list()
+%% put_transformer_request() :: #{
+%%   <<"logGroupIdentifier">> := string(),
+%%   <<"transformerConfig">> := list(processor())
 %% }
--type start_live_tail_response() :: #{binary() => any()}.
+-type put_transformer_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_log_groups_for_query_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"queryId">> := string()
+%% query_compile_error() :: #{
+%%   <<"location">> => query_compile_error_location(),
+%%   <<"message">> => string()
 %% }
--type list_log_groups_for_query_request() :: #{binary() => any()}.
+-type query_compile_error() :: #{binary() => any()}.
+
+%% Example:
+%% query_compile_error_location() :: #{
+%%   <<"endCharOffset">> => integer(),
+%%   <<"startCharOffset">> => integer()
+%% }
+-type query_compile_error_location() :: #{binary() => any()}.
+
+%% Example:
+%% query_definition() :: #{
+%%   <<"lastModified">> => float(),
+%%   <<"logGroupNames">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"parameters">> => list(query_parameter()),
+%%   <<"queryDefinitionId">> => string(),
+%%   <<"queryLanguage">> => list(any()),
+%%   <<"queryString">> => string()
+%% }
+-type query_definition() :: #{binary() => any()}.
+
+%% Example:
+%% query_info() :: #{
+%%   <<"bytesScanned">> => float(),
+%%   <<"createTime">> => float(),
+%%   <<"logGroupName">> => string(),
+%%   <<"queryDuration">> => float(),
+%%   <<"queryId">> => string(),
+%%   <<"queryLanguage">> => list(any()),
+%%   <<"queryString">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"userIdentity">> => string()
+%% }
+-type query_info() :: #{binary() => any()}.
+
+%% Example:
+%% query_parameter() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string()
+%% }
+-type query_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% query_statistics() :: #{
+%%   <<"bytesScanned">> => float(),
+%%   <<"estimatedBytesSkipped">> => float(),
+%%   <<"estimatedRecordsSkipped">> => float(),
+%%   <<"logGroupsScanned">> => float(),
+%%   <<"recordsMatched">> => float(),
+%%   <<"recordsScanned">> => float()
+%% }
+-type query_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% record_field() :: #{
+%%   <<"mandatory">> => boolean(),
+%%   <<"name">> => string()
+%% }
+-type record_field() :: #{binary() => any()}.
+
+%% Example:
+%% rejected_entity_info() :: #{
+%%   <<"errorType">> => list(any())
+%% }
+-type rejected_entity_info() :: #{binary() => any()}.
+
+%% Example:
+%% rejected_log_events_info() :: #{
+%%   <<"expiredLogEventEndIndex">> => integer(),
+%%   <<"tooNewLogEventStartIndex">> => integer(),
+%%   <<"tooOldLogEventEndIndex">> => integer()
+%% }
+-type rejected_log_events_info() :: #{binary() => any()}.
+
+%% Example:
+%% rename_key_entry() :: #{
+%%   <<"key">> => string(),
+%%   <<"overwriteIfExists">> => boolean(),
+%%   <<"renameTo">> => string()
+%% }
+-type rename_key_entry() :: #{binary() => any()}.
+
+%% Example:
+%% rename_keys() :: #{
+%%   <<"entries">> => list(rename_key_entry())
+%% }
+-type rename_keys() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy() :: #{
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"policyDocument">> => string(),
+%%   <<"policyName">> => string(),
+%%   <<"policyScope">> => list(any()),
+%%   <<"resourceArn">> => string(),
+%%   <<"revisionId">> => string()
+%% }
+-type resource_policy() :: #{binary() => any()}.
+
+%% Example:
+%% result_field() :: #{
+%%   <<"field">> => string(),
+%%   <<"value">> => string()
+%% }
+-type result_field() :: #{binary() => any()}.
+
+%% Example:
+%% s3_configuration() :: #{
+%%   <<"destinationIdentifier">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"ownerAccountId">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type s3_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_delivery_configuration() :: #{
+%%   <<"enableHiveCompatiblePath">> => boolean(),
+%%   <<"suffixPath">> => string()
+%% }
+-type s3_delivery_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_table_integration_source() :: #{
+%%   <<"createdTimeStamp">> => float(),
+%%   <<"dataSource">> => data_source(),
+%%   <<"identifier">> => string(),
+%%   <<"parentSourceIdentifier">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string()
+%% }
+-type s3_table_integration_source() :: #{binary() => any()}.
+
+%% Example:
+%% s3_tables_integration() :: #{
+%%   <<"datasourceName">> => string(),
+%%   <<"datasourceType">> => string()
+%% }
+-type s3_tables_integration() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_query_destination() :: #{
+%%   <<"destinationIdentifier">> => string(),
+%%   <<"destinationType">> => list(any()),
+%%   <<"errorMessage">> => string(),
+%%   <<"processedIdentifier">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type scheduled_query_destination() :: #{binary() => any()}.
 
 %% Example:
 %% scheduled_query_summary() :: #{
@@ -1959,261 +2700,48 @@
 -type scheduled_query_summary() :: #{binary() => any()}.
 
 %% Example:
-%% open_search_lifecycle_policy() :: #{
-%%   <<"policyName">> => string(),
-%%   <<"status">> => open_search_resource_status()
+%% searched_log_stream() :: #{
+%%   <<"logStreamName">> => string(),
+%%   <<"searchedCompletely">> => boolean()
 %% }
--type open_search_lifecycle_policy() :: #{binary() => any()}.
+-type searched_log_stream() :: #{binary() => any()}.
 
 %% Example:
-%% delivery_destination() :: #{
-%%   <<"arn">> => string(),
-%%   <<"deliveryDestinationConfiguration">> => delivery_destination_configuration(),
-%%   <<"deliveryDestinationType">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"outputFormat">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type delivery_destination() :: #{binary() => any()}.
-
-%% Example:
-%% list_to_map() :: #{
-%%   <<"flatten">> => boolean(),
-%%   <<"flattenedElement">> => list(any()),
-%%   <<"key">> => string(),
-%%   <<"source">> => string(),
-%%   <<"target">> => string(),
-%%   <<"valueKey">> => string()
-%% }
--type list_to_map() :: #{binary() => any()}.
-
-%% Example:
-%% query_compile_error() :: #{
-%%   <<"location">> => query_compile_error_location(),
+%% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type query_compile_error() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% get_delivery_destination_response() :: #{
-%%   <<"deliveryDestination">> => delivery_destination()
-%% }
--type get_delivery_destination_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_log_anomaly_detector_request() :: #{
-%%   <<"anomalyVisibilityTime">> => float(),
-%%   <<"detectorName">> => string(),
-%%   <<"evaluationFrequency">> => list(any()),
-%%   <<"filterPattern">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"logGroupArnList">> := list(string()),
-%%   <<"tags">> => map()
-%% }
--type create_log_anomaly_detector_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_syslog_configurations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"syslogConfigurations">> => list(syslog_configuration())
-%% }
--type list_syslog_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_delivery_destination_policy_response() :: #{
-%%   <<"policy">> => policy()
-%% }
--type get_delivery_destination_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_import_task_batches_request() :: #{
-%%   <<"batchImportStatus">> => list(list(any())()),
-%%   <<"importId">> := string(),
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_import_task_batches_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_scheduled_query_history_request() :: #{
-%%   <<"endTime">> := float(),
-%%   <<"executionStatuses">> => list(list(any())()),
-%%   <<"identifier">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"startTime">> := float()
-%% }
--type get_scheduled_query_history_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_delivery_configuration_request() :: #{
-%%   <<"fieldDelimiter">> => string(),
-%%   <<"id">> := string(),
-%%   <<"recordFields">> => list(string()),
-%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration()
-%% }
--type update_delivery_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_log_group_fields_request() :: #{
-%%   <<"logGroupIdentifier">> => string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"time">> => float()
-%% }
--type get_log_group_fields_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_query_definition_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"logGroupNames">> => list(string()),
-%%   <<"name">> := string(),
-%%   <<"parameters">> => list(query_parameter()),
-%%   <<"queryDefinitionId">> => string(),
-%%   <<"queryLanguage">> => list(any()),
-%%   <<"queryString">> := string()
-%% }
--type put_query_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% export_task() :: #{
-%%   <<"destination">> => string(),
-%%   <<"destinationPrefix">> => string(),
-%%   <<"executionInfo">> => export_task_execution_info(),
-%%   <<"from">> => float(),
-%%   <<"logGroupName">> => string(),
-%%   <<"status">> => export_task_status(),
-%%   <<"taskId">> => string(),
-%%   <<"taskName">> => string(),
-%%   <<"to">> => float()
-%% }
--type export_task() :: #{binary() => any()}.
-
-%% Example:
-%% create_lookup_table_response() :: #{
-%%   <<"createdAt">> => float(),
-%%   <<"lookupTableArn">> => string()
-%% }
--type create_lookup_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% metric_transformation() :: #{
-%%   <<"defaultValue">> => float(),
-%%   <<"dimensions">> => map(),
-%%   <<"metricName">> => string(),
-%%   <<"metricNamespace">> => string(),
-%%   <<"metricValue">> => string(),
-%%   <<"unit">> => list(any())
-%% }
--type metric_transformation() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
+%% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type service_unavailable_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_log_group_request() :: #{
-%%   <<"logGroupName">> := string()
+%% session_streaming_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_tags_log_group_request() :: #{binary() => any()}.
+-type session_streaming_exception() :: #{binary() => any()}.
 
 %% Example:
-%% resource_policy() :: #{
-%%   <<"lastUpdatedTime">> => float(),
-%%   <<"policyDocument">> => string(),
-%%   <<"policyName">> => string(),
-%%   <<"policyScope">> => list(any()),
-%%   <<"resourceArn">> => string(),
-%%   <<"revisionId">> => string()
+%% session_timeout_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type resource_policy() :: #{binary() => any()}.
+-type session_timeout_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_syslog_configuration_request() :: #{
-%%   <<"logGroupIdentifier">> := string(),
-%%   <<"vpcEndpointId">> => string()
+%% split_string() :: #{
+%%   <<"entries">> => list(split_string_entry())
 %% }
--type delete_syslog_configuration_request() :: #{binary() => any()}.
+-type split_string() :: #{binary() => any()}.
 
 %% Example:
-%% anomaly() :: #{
-%%   <<"active">> => boolean(),
-%%   <<"anomalyDetectorArn">> => string(),
-%%   <<"anomalyId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"firstSeen">> => float(),
-%%   <<"histogram">> => map(),
-%%   <<"isPatternLevelSuppression">> => boolean(),
-%%   <<"lastSeen">> => float(),
-%%   <<"logGroupArnList">> => list(string()),
-%%   <<"logSamples">> => list(log_event()),
-%%   <<"patternId">> => string(),
-%%   <<"patternRegex">> => string(),
-%%   <<"patternString">> => string(),
-%%   <<"patternTokens">> => list(pattern_token()),
-%%   <<"priority">> => string(),
-%%   <<"state">> => list(any()),
-%%   <<"suppressed">> => boolean(),
-%%   <<"suppressedDate">> => float(),
-%%   <<"suppressedUntil">> => float()
+%% split_string_entry() :: #{
+%%   <<"delimiter">> => string(),
+%%   <<"source">> => string()
 %% }
--type anomaly() :: #{binary() => any()}.
-
-%% Example:
-%% list_anomalies_request() :: #{
-%%   <<"anomalyDetectorArn">> => string(),
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"suppressionState">> => list(any())
-%% }
--type list_anomalies_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_delivery_destination_response() :: #{
-%%   <<"deliveryDestination">> => delivery_destination()
-%% }
--type put_delivery_destination_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_delivery_sources_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_delivery_sources_request() :: #{binary() => any()}.
-
-%% Example:
-%% rename_keys() :: #{
-%%   <<"entries">> => list(rename_key_entry())
-%% }
--type rename_keys() :: #{binary() => any()}.
-
-%% Example:
-%% create_import_task_request() :: #{
-%%   <<"importFilter">> => import_filter(),
-%%   <<"importRoleArn">> := string(),
-%%   <<"importSourceArn">> := string()
-%% }
--type create_import_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_query_response() :: #{
-%%   <<"queryId">> => string()
-%% }
--type start_query_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_lookup_table_response() :: #{
-%%   <<"lastUpdatedTime">> => float(),
-%%   <<"lookupTableArn">> => string()
-%% }
--type update_lookup_table_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_log_object_response() :: #{
-%%   <<"fieldStream">> => list()
-%% }
--type get_log_object_response() :: #{binary() => any()}.
+-type split_string_entry() :: #{binary() => any()}.
 
 %% Example:
 %% start_live_tail_request() :: #{
@@ -2225,47 +2753,256 @@
 -type start_live_tail_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_log_fields_response() :: #{
-%%   <<"logFields">> => list(log_fields_list_item())
+%% start_live_tail_response() :: #{
+%%   <<"responseStream">> => list()
 %% }
--type get_log_fields_response() :: #{binary() => any()}.
+-type start_live_tail_response() :: #{binary() => any()}.
 
 %% Example:
-%% filtered_log_event() :: #{
-%%   <<"eventId">> => string(),
-%%   <<"ingestionTime">> => float(),
-%%   <<"logStreamName">> => string(),
+%% start_query_request() :: #{
+%%   <<"endTime">> := float(),
+%%   <<"limit">> => integer(),
+%%   <<"logGroupIdentifiers">> => list(string()),
+%%   <<"logGroupName">> => string(),
+%%   <<"logGroupNames">> => list(string()),
+%%   <<"queryLanguage">> => list(any()),
+%%   <<"queryString">> := string(),
+%%   <<"startTime">> := float()
+%% }
+-type start_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_query_response() :: #{
+%%   <<"queryId">> => string()
+%% }
+-type start_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_query_request() :: #{
+%%   <<"queryId">> := string()
+%% }
+-type stop_query_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_query_response() :: #{
+%%   <<"success">> => boolean()
+%% }
+-type stop_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% subscription_filter() :: #{
+%%   <<"applyOnTransformedLogs">> => boolean(),
+%%   <<"creationTime">> => float(),
+%%   <<"destinationArn">> => string(),
+%%   <<"distribution">> => list(any()),
+%%   <<"emitSystemFields">> => list(string()),
+%%   <<"fieldSelectionCriteria">> => string(),
+%%   <<"filterName">> => string(),
+%%   <<"filterPattern">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"roleArn">> => string()
+%% }
+-type subscription_filter() :: #{binary() => any()}.
+
+%% Example:
+%% substitute_string() :: #{
+%%   <<"entries">> => list(substitute_string_entry())
+%% }
+-type substitute_string() :: #{binary() => any()}.
+
+%% Example:
+%% substitute_string_entry() :: #{
+%%   <<"from">> => string(),
+%%   <<"source">> => string(),
+%%   <<"to">> => string()
+%% }
+-type substitute_string_entry() :: #{binary() => any()}.
+
+%% Example:
+%% suppression_period() :: #{
+%%   <<"suppressionUnit">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type suppression_period() :: #{binary() => any()}.
+
+%% Example:
+%% syslog_configuration() :: #{
+%%   <<"createdAt">> => float(),
+%%   <<"logGroupArn">> => string(),
+%%   <<"sourceType">> => list(any()),
+%%   <<"vpcEndpointId">> => string()
+%% }
+-type syslog_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% tag_filter() :: #{
+%%   <<"key">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type tag_filter() :: #{binary() => any()}.
+
+%% Example:
+%% tag_log_group_request() :: #{
+%%   <<"logGroupName">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_log_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_metric_filter_request() :: #{
+%%   <<"filterPattern">> := string(),
+%%   <<"logEventMessages">> := list(string())
+%% }
+-type test_metric_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_metric_filter_response() :: #{
+%%   <<"matches">> => list(metric_filter_match_record())
+%% }
+-type test_metric_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% test_transformer_request() :: #{
+%%   <<"logEventMessages">> := list(string()),
+%%   <<"transformerConfig">> := list(processor())
+%% }
+-type test_transformer_request() :: #{binary() => any()}.
+
+%% Example:
+%% test_transformer_response() :: #{
+%%   <<"transformedLogs">> => list(transformed_log_record())
+%% }
+-type test_transformer_response() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% too_many_tags_exception() :: #{
 %%   <<"message">> => string(),
-%%   <<"timestamp">> => float()
+%%   <<"resourceName">> => string()
 %% }
--type filtered_log_event() :: #{binary() => any()}.
+-type too_many_tags_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_data_protection_policy_request() :: #{
-%%   <<"logGroupIdentifier">> := string()
+%% transformed_log_record() :: #{
+%%   <<"eventMessage">> => string(),
+%%   <<"eventNumber">> => float(),
+%%   <<"transformedEventMessage">> => string()
 %% }
--type delete_data_protection_policy_request() :: #{binary() => any()}.
+-type transformed_log_record() :: #{binary() => any()}.
 
 %% Example:
-%% policy() :: #{
-%%   <<"deliveryDestinationPolicy">> => string()
+%% trigger_history_record() :: #{
+%%   <<"destinations">> => list(scheduled_query_destination()),
+%%   <<"errorMessage">> => string(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"queryId">> => string(),
+%%   <<"triggeredTimestamp">> => float()
 %% }
--type policy() :: #{binary() => any()}.
+-type trigger_history_record() :: #{binary() => any()}.
 
 %% Example:
-%% associate_source_to_s3_table_integration_response() :: #{
-%%   <<"identifier">> => string()
+%% trim_string() :: #{
+%%   <<"withKeys">> => list(string())
 %% }
--type associate_source_to_s3_table_integration_response() :: #{binary() => any()}.
+-type trim_string() :: #{binary() => any()}.
 
 %% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"expectedRevisionId">> => string(),
-%%   <<"policyDocument">> => string(),
-%%   <<"policyName">> => string(),
-%%   <<"resourceArn">> => string()
+%% type_converter() :: #{
+%%   <<"entries">> => list(type_converter_entry())
 %% }
--type put_resource_policy_request() :: #{binary() => any()}.
+-type type_converter() :: #{binary() => any()}.
+
+%% Example:
+%% type_converter_entry() :: #{
+%%   <<"key">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type type_converter_entry() :: #{binary() => any()}.
+
+%% Example:
+%% unrecognized_client_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unrecognized_client_exception() :: #{binary() => any()}.
+
+%% Example:
+%% untag_log_group_request() :: #{
+%%   <<"logGroupName">> := string(),
+%%   <<"tags">> := list(string())
+%% }
+-type untag_log_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_anomaly_request() :: #{
+%%   <<"anomalyDetectorArn">> := string(),
+%%   <<"anomalyId">> => string(),
+%%   <<"baseline">> => boolean(),
+%%   <<"patternId">> => string(),
+%%   <<"suppressionPeriod">> => suppression_period(),
+%%   <<"suppressionType">> => list(any())
+%% }
+-type update_anomaly_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_delivery_configuration_request() :: #{
+%%   <<"fieldDelimiter">> => string(),
+%%   <<"id">> := string(),
+%%   <<"recordFields">> => list(string()),
+%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration()
+%% }
+-type update_delivery_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_delivery_configuration_response() :: #{
+
+%% }
+-type update_delivery_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_log_anomaly_detector_request() :: #{
+%%   <<"anomalyDetectorArn">> := string(),
+%%   <<"anomalyVisibilityTime">> => float(),
+%%   <<"enabled">> := boolean(),
+%%   <<"evaluationFrequency">> => list(any()),
+%%   <<"filterPattern">> => string()
+%% }
+-type update_log_anomaly_detector_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_lookup_table_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"lookupTableArn">> := string(),
+%%   <<"queryId">> => string(),
+%%   <<"tableBody">> => string()
+%% }
+-type update_lookup_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_lookup_table_response() :: #{
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"lookupTableArn">> => string()
+%% }
+-type update_lookup_table_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_scheduled_query_request() :: #{
@@ -2287,170 +3024,35 @@
 -type update_scheduled_query_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_delivery_source_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_delivery_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% data_source_filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type data_source_filter() :: #{binary() => any()}.
-
-%% Example:
-%% get_storage_tier_policy_response() :: #{
-%%   <<"lastUpdatedTime">> => float(),
-%%   <<"storageTier">> => list(any())
-%% }
--type get_storage_tier_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-%% Example:
-%% import_filter() :: #{
-%%   <<"endEventTime">> => float(),
-%%   <<"startEventTime">> => float()
-%% }
--type import_filter() :: #{binary() => any()}.
-
-%% Example:
-%% open_search_integration_details() :: #{
-%%   <<"accessPolicy">> => open_search_data_access_policy(),
-%%   <<"application">> => open_search_application(),
-%%   <<"collection">> => open_search_collection(),
-%%   <<"dataSource">> => open_search_data_source(),
-%%   <<"encryptionPolicy">> => open_search_encryption_policy(),
-%%   <<"lifecyclePolicy">> => open_search_lifecycle_policy(),
-%%   <<"networkPolicy">> => open_search_network_policy(),
-%%   <<"workspace">> => open_search_workspace()
-%% }
--type open_search_integration_details() :: #{binary() => any()}.
-
-%% Example:
-%% move_key_entry() :: #{
-%%   <<"overwriteIfExists">> => boolean(),
-%%   <<"source">> => string(),
-%%   <<"target">> => string()
-%% }
--type move_key_entry() :: #{binary() => any()}.
-
-%% Example:
-%% get_log_events_request() :: #{
-%%   <<"endTime">> => float(),
-%%   <<"limit">> => integer(),
-%%   <<"logGroupIdentifier">> => string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"logStreamName">> := string(),
-%%   <<"nextToken">> => string(),
-%%   <<"startFromHead">> => boolean(),
-%%   <<"startTime">> => float(),
-%%   <<"unmask">> => boolean()
-%% }
--type get_log_events_request() :: #{binary() => any()}.
-
-%% Example:
-%% parse_to_o_c_s_f() :: #{
-%%   <<"eventSource">> => list(any()),
-%%   <<"mappingVersion">> => string(),
-%%   <<"ocsfVersion">> => list(any()),
-%%   <<"source">> => string()
-%% }
--type parse_to_o_c_s_f() :: #{binary() => any()}.
-
-%% Example:
-%% add_keys() :: #{
-%%   <<"entries">> => list(add_key_entry())
-%% }
--type add_keys() :: #{binary() => any()}.
-
-%% Example:
-%% rejected_log_events_info() :: #{
-%%   <<"expiredLogEventEndIndex">> => integer(),
-%%   <<"tooNewLogEventStartIndex">> => integer(),
-%%   <<"tooOldLogEventEndIndex">> => integer()
-%% }
--type rejected_log_events_info() :: #{binary() => any()}.
-
-%% Example:
-%% list_scheduled_queries_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"scheduledQueries">> => list(scheduled_query_summary())
-%% }
--type list_scheduled_queries_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_protection_policy_request() :: #{
-%%   <<"logGroupIdentifier">> := string()
-%% }
--type get_data_protection_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_table_integration_source() :: #{
-%%   <<"createdTimeStamp">> => float(),
-%%   <<"dataSource">> => data_source(),
-%%   <<"identifier">> => string(),
-%%   <<"parentSourceIdentifier">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string()
-%% }
--type s3_table_integration_source() :: #{binary() => any()}.
-
-%% Example:
-%% get_log_events_response() :: #{
-%%   <<"events">> => list(output_log_event()),
-%%   <<"nextBackwardToken">> => string(),
-%%   <<"nextForwardToken">> => string()
-%% }
--type get_log_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% output_log_event() :: #{
-%%   <<"ingestionTime">> => float(),
-%%   <<"message">> => string(),
-%%   <<"timestamp">> => float()
-%% }
--type output_log_event() :: #{binary() => any()}.
-
-%% Example:
-%% searched_log_stream() :: #{
-%%   <<"logStreamName">> => string(),
-%%   <<"searchedCompletely">> => boolean()
-%% }
--type searched_log_stream() :: #{binary() => any()}.
-
-%% Example:
-%% describe_account_policies_request() :: #{
-%%   <<"accountIdentifiers">> => list(string()),
-%%   <<"nextToken">> => string(),
-%%   <<"policyName">> => string(),
-%%   <<"policyType">> := list(any())
-%% }
--type describe_account_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% metric_filter() :: #{
-%%   <<"applyOnTransformedLogs">> => boolean(),
+%% update_scheduled_query_response() :: #{
 %%   <<"creationTime">> => float(),
-%%   <<"emitSystemFieldDimensions">> => list(string()),
-%%   <<"fieldSelectionCriteria">> => string(),
-%%   <<"filterName">> => string(),
-%%   <<"filterPattern">> => string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"metricTransformations">> => list(metric_transformation())
+%%   <<"description">> => string(),
+%%   <<"destinationConfiguration">> => destination_configuration(),
+%%   <<"endTimeOffset">> => float(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"lastExecutionStatus">> => list(any()),
+%%   <<"lastTriggeredTime">> => float(),
+%%   <<"lastUpdatedTime">> => float(),
+%%   <<"logGroupIdentifiers">> => list(string()),
+%%   <<"name">> => string(),
+%%   <<"queryLanguage">> => list(any()),
+%%   <<"queryString">> => string(),
+%%   <<"scheduleEndTime">> => float(),
+%%   <<"scheduleExpression">> => string(),
+%%   <<"scheduleStartTime">> => float(),
+%%   <<"scheduleType">> => list(any()),
+%%   <<"scheduledQueryArn">> => string(),
+%%   <<"startTimeOffset">> => float(),
+%%   <<"state">> => list(any()),
+%%   <<"timezone">> => string()
 %% }
--type metric_filter() :: #{binary() => any()}.
+-type update_scheduled_query_response() :: #{binary() => any()}.
+
+%% Example:
+%% upper_case_string() :: #{
+%%   <<"withKeys">> => list(string())
+%% }
+-type upper_case_string() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
@@ -2458,707 +3060,118 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% destination() :: #{
-%%   <<"accessPolicy">> => string(),
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => float(),
-%%   <<"destinationName">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"targetArn">> => string()
-%% }
--type destination() :: #{binary() => any()}.
-
-%% Example:
-%% put_log_events_response() :: #{
-%%   <<"nextSequenceToken">> => string(),
-%%   <<"rejectedEntityInfo">> => rejected_entity_info(),
-%%   <<"rejectedLogEventsInfo">> => rejected_log_events_info()
-%% }
--type put_log_events_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_delivery_source_response() :: #{
-%%   <<"deliverySource">> => delivery_source()
-%% }
--type put_delivery_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% syslog_configuration() :: #{
-%%   <<"createdAt">> => float(),
-%%   <<"logGroupArn">> => string(),
-%%   <<"sourceType">> => list(any()),
-%%   <<"vpcEndpointId">> => string()
-%% }
--type syslog_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_delivery_request() :: #{
-%%   <<"id">> := string()
-%% }
--type delete_delivery_request() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% log_group() :: #{
-%%   <<"arn">> => string(),
-%%   <<"bearerTokenAuthenticationEnabled">> => boolean(),
-%%   <<"creationTime">> => float(),
-%%   <<"dataProtectionStatus">> => list(any()),
-%%   <<"deletionProtectionEnabled">> => boolean(),
-%%   <<"inheritedProperties">> => list(list(any())()),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"logGroupArn">> => string(),
-%%   <<"logGroupClass">> => list(any()),
-%%   <<"logGroupName">> => string(),
-%%   <<"metricFilterCount">> => integer(),
-%%   <<"retentionInDays">> => integer(),
-%%   <<"storedBytes">> => float()
-%% }
--type log_group() :: #{binary() => any()}.
-
-%% Example:
-%% list_log_anomaly_detectors_request() :: #{
-%%   <<"filterLogGroupArn">> => string(),
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_log_anomaly_detectors_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_log_streams_request() :: #{
-%%   <<"descending">> => boolean(),
-%%   <<"limit">> => integer(),
-%%   <<"logGroupIdentifier">> => string(),
-%%   <<"logGroupName">> => string(),
-%%   <<"logStreamNamePrefix">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"orderBy">> => list(any())
-%% }
--type describe_log_streams_request() :: #{binary() => any()}.
-
-%% Example:
-%% s3_configuration() :: #{
-%%   <<"destinationIdentifier">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"ownerAccountId">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type s3_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_lookup_table_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"lookupTableArn">> := string(),
-%%   <<"tableBody">> := string()
-%% }
--type update_lookup_table_request() :: #{binary() => any()}.
-
-%% Example:
-%% result_field() :: #{
-%%   <<"field">> => string(),
-%%   <<"value">> => string()
-%% }
--type result_field() :: #{binary() => any()}.
-
-%% Example:
-%% s3_tables_integration() :: #{
-%%   <<"datasourceName">> => string(),
-%%   <<"datasourceType">> => string()
-%% }
--type s3_tables_integration() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"resourcePolicy">> => resource_policy(),
-%%   <<"revisionId">> => string()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_delivery_source_request() :: #{
-%%   <<"name">> := string()
-%% }
--type get_delivery_source_request() :: #{binary() => any()}.
-
-%% Example:
-%% date_time_converter() :: #{
-%%   <<"locale">> => string(),
-%%   <<"matchPatterns">> => list(string()),
-%%   <<"source">> => string(),
-%%   <<"sourceTimezone">> => string(),
-%%   <<"target">> => string(),
-%%   <<"targetFormat">> => string(),
-%%   <<"targetTimezone">> => string()
-%% }
--type date_time_converter() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_metric_filter_request() :: #{
-%%   <<"filterName">> := string(),
-%%   <<"logGroupName">> := string()
-%% }
--type delete_metric_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_resource_policies_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourcePolicies">> => list(resource_policy())
-%% }
--type describe_resource_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_subscription_filters_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"subscriptionFilters">> => list(subscription_filter())
-%% }
--type describe_subscription_filters_response() :: #{binary() => any()}.
-
-%% Example:
-%% query_statistics() :: #{
-%%   <<"bytesScanned">> => float(),
-%%   <<"estimatedBytesSkipped">> => float(),
-%%   <<"estimatedRecordsSkipped">> => float(),
-%%   <<"logGroupsScanned">> => float(),
-%%   <<"recordsMatched">> => float(),
-%%   <<"recordsScanned">> => float()
-%% }
--type query_statistics() :: #{binary() => any()}.
-
-%% Example:
-%% get_data_protection_policy_response() :: #{
-%%   <<"lastUpdatedTime">> => float(),
-%%   <<"logGroupIdentifier">> => string(),
-%%   <<"policyDocument">> => string()
-%% }
--type get_data_protection_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% open_search_resource_status() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string()
-%% }
--type open_search_resource_status() :: #{binary() => any()}.
-
-%% Example:
-%% delivery_source() :: #{
-%%   <<"arn">> => string(),
-%%   <<"deliverySourceConfiguration">> => map(),
-%%   <<"logType">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceArns">> => list(string()),
-%%   <<"service">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type delivery_source() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"expectedRevisionId">> => string(),
-%%   <<"policyName">> => string(),
-%%   <<"resourceArn">> => string()
-%% }
--type delete_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_log_object_request() :: #{
-%%   <<"logObjectPointer">> := string(),
-%%   <<"unmask">> => boolean()
-%% }
--type get_log_object_request() :: #{binary() => any()}.
-
-%% Example:
-%% anomaly_detector() :: #{
-%%   <<"anomalyDetectorArn">> => string(),
-%%   <<"anomalyDetectorStatus">> => list(any()),
-%%   <<"anomalyVisibilityTime">> => float(),
-%%   <<"creationTimeStamp">> => float(),
-%%   <<"detectorName">> => string(),
-%%   <<"evaluationFrequency">> => list(any()),
-%%   <<"filterPattern">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"lastModifiedTimeStamp">> => float(),
-%%   <<"logGroupArnList">> => list(string())
-%% }
--type anomaly_detector() :: #{binary() => any()}.
-
-%% Example:
-%% test_transformer_request() :: #{
-%%   <<"logEventMessages">> := list(string()),
-%%   <<"transformerConfig">> := list(processor())
-%% }
--type test_transformer_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_log_anomaly_detectors_response() :: #{
-%%   <<"anomalyDetectors">> => list(anomaly_detector()),
-%%   <<"nextToken">> => string()
-%% }
--type list_log_anomaly_detectors_response() :: #{binary() => any()}.
-
-%% Example:
-%% parse_route53() :: #{
-%%   <<"source">> => string()
-%% }
--type parse_route53() :: #{binary() => any()}.
-
-%% Example:
-%% delete_delivery_destination_request() :: #{
-%%   <<"name">> := string()
-%% }
--type delete_delivery_destination_request() :: #{binary() => any()}.
-
-%% Example:
-%% internal_streaming_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_streaming_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_filter() :: #{
-%%   <<"key">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type tag_filter() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_export_task_request() :: #{
-%%   <<"taskId">> := string()
-%% }
--type cancel_export_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% data_source() :: #{
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type data_source() :: #{binary() => any()}.
-
-%% Example:
-%% describe_configuration_templates_response() :: #{
-%%   <<"configurationTemplates">> => list(configuration_template()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_configuration_templates_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_import_tasks_request() :: #{
-%%   <<"importId">> => string(),
-%%   <<"importSourceArn">> => string(),
-%%   <<"importStatus">> => list(any()),
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_import_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_subscription_filter_request() :: #{
-%%   <<"filterName">> := string(),
-%%   <<"logGroupName">> := string()
-%% }
--type delete_subscription_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_destinations_request() :: #{
-%%   <<"DestinationNamePrefix">> => string(),
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_destinations_request() :: #{binary() => any()}.
-
-%% Example:
-%% test_metric_filter_response() :: #{
-%%   <<"matches">> => list(metric_filter_match_record())
-%% }
--type test_metric_filter_response() :: #{binary() => any()}.
-
-%% Example:
-%% move_keys() :: #{
-%%   <<"entries">> => list(move_key_entry())
-%% }
--type move_keys() :: #{binary() => any()}.
-
-%% Example:
-%% parse_json() :: #{
-%%   <<"destination">> => string(),
-%%   <<"source">> => string()
-%% }
--type parse_json() :: #{binary() => any()}.
-
-%% Example:
-%% open_search_application() :: #{
-%%   <<"applicationArn">> => string(),
-%%   <<"applicationEndpoint">> => string(),
-%%   <<"applicationId">> => string(),
-%%   <<"status">> => open_search_resource_status()
-%% }
--type open_search_application() :: #{binary() => any()}.
-
-%% Example:
-%% query_definition() :: #{
-%%   <<"lastModified">> => float(),
-%%   <<"logGroupNames">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"parameters">> => list(query_parameter()),
-%%   <<"queryDefinitionId">> => string(),
-%%   <<"queryLanguage">> => list(any()),
-%%   <<"queryString">> => string()
-%% }
--type query_definition() :: #{binary() => any()}.
-
-%% Example:
-%% delete_keys() :: #{
-%%   <<"withKeys">> => list(string())
-%% }
--type delete_keys() :: #{binary() => any()}.
-
-%% Example:
-%% get_delivery_destination_policy_request() :: #{
-%%   <<"deliveryDestinationName">> := string()
-%% }
--type get_delivery_destination_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_delivery_destinations_request() :: #{
-%%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type describe_delivery_destinations_request() :: #{binary() => any()}.
-
-%% Example:
-%% import() :: #{
-%%   <<"creationTime">> => float(),
-%%   <<"errorMessage">> => string(),
-%%   <<"importDestinationArn">> => string(),
-%%   <<"importFilter">> => import_filter(),
-%%   <<"importId">> => string(),
-%%   <<"importSourceArn">> => string(),
-%%   <<"importStatistics">> => import_statistics(),
-%%   <<"importStatus">> => list(any()),
-%%   <<"lastUpdatedTime">> => float()
-%% }
--type import() :: #{binary() => any()}.
-
-%% Example:
-%% create_delivery_request() :: #{
-%%   <<"deliveryDestinationArn">> := string(),
-%%   <<"deliverySourceName">> := string(),
-%%   <<"fieldDelimiter">> => string(),
-%%   <<"recordFields">> => list(string()),
-%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration(),
-%%   <<"tags">> => map()
-%% }
--type create_delivery_request() :: #{binary() => any()}.
-
-%% Example:
-%% record_field() :: #{
-%%   <<"mandatory">> => boolean(),
-%%   <<"name">> => string()
-%% }
--type record_field() :: #{binary() => any()}.
-
-%% Example:
-%% delete_log_group_request() :: #{
-%%   <<"logGroupName">> := string()
-%% }
--type delete_log_group_request() :: #{binary() => any()}.
-
-%% Example:
-%% test_metric_filter_request() :: #{
-%%   <<"filterPattern">> := string(),
-%%   <<"logEventMessages">> := list(string())
-%% }
--type test_metric_filter_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_storage_tier_policy_response() :: #{
-%%   <<"lastUpdatedTime">> => float(),
-%%   <<"storageTier">> => list(any())
-%% }
--type put_storage_tier_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% grouping_identifier() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type grouping_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% parse_postgres() :: #{
-%%   <<"source">> => string()
-%% }
--type parse_postgres() :: #{binary() => any()}.
-
-%% Example:
-%% query_info() :: #{
-%%   <<"bytesScanned">> => float(),
-%%   <<"createTime">> => float(),
-%%   <<"logGroupName">> => string(),
-%%   <<"queryDuration">> => float(),
-%%   <<"queryId">> => string(),
-%%   <<"queryLanguage">> => list(any()),
-%%   <<"queryString">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"userIdentity">> => string()
-%% }
--type query_info() :: #{binary() => any()}.
-
-%% Example:
-%% configuration_template_delivery_config_values() :: #{
-%%   <<"fieldDelimiter">> => string(),
-%%   <<"recordFields">> => list(string()),
-%%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration()
-%% }
--type configuration_template_delivery_config_values() :: #{binary() => any()}.
-
-%% Example:
-%% parse_vpc() :: #{
-%%   <<"source">> => string()
-%% }
--type parse_vpc() :: #{binary() => any()}.
-
-%% Example:
-%% put_index_policy_request() :: #{
-%%   <<"logGroupIdentifier">> := string(),
-%%   <<"policyDocument">> := string()
-%% }
--type put_index_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% split_string() :: #{
-%%   <<"entries">> => list(split_string_entry())
-%% }
--type split_string() :: #{binary() => any()}.
-
-%% Example:
-%% unrecognized_client_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unrecognized_client_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_scheduled_query_history_response() :: #{
-%%   <<"name">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"scheduledQueryArn">> => string(),
-%%   <<"triggerHistory">> => list(trigger_history_record())
-%% }
--type get_scheduled_query_history_response() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceName">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% import_batch() :: #{
-%%   <<"batchId">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type import_batch() :: #{binary() => any()}.
-
-%% Example:
-%% describe_import_tasks_response() :: #{
-%%   <<"imports">> => list(import()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_import_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% destination_configuration() :: #{
-%%   <<"s3Configuration">> => s3_configuration()
-%% }
--type destination_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% describe_configuration_templates_request() :: #{
-%%   <<"deliveryDestinationTypes">> => list(list(any())()),
-%%   <<"limit">> => integer(),
-%%   <<"logTypes">> => list(string()),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceTypes">> => list(string()),
-%%   <<"service">> => string()
-%% }
--type describe_configuration_templates_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_metric_filters_response() :: #{
-%%   <<"metricFilters">> => list(metric_filter()),
-%%   <<"nextToken">> => string()
-%% }
--type describe_metric_filters_response() :: #{binary() => any()}.
-
-%% Example:
-%% index_policy() :: #{
-%%   <<"lastUpdateTime">> => float(),
-%%   <<"logGroupIdentifier">> => string(),
-%%   <<"policyDocument">> => string(),
-%%   <<"policyName">> => string(),
-%%   <<"source">> => list(any())
-%% }
--type index_policy() :: #{binary() => any()}.
-
-%% Example:
-%% log_event() :: #{
-%%   <<"message">> => string(),
-%%   <<"timestamp">> => float()
-%% }
--type log_event() :: #{binary() => any()}.
-
-%% Example:
-%% list_integrations_response() :: #{
-%%   <<"integrationSummaries">> => list(integration_summary())
-%% }
--type list_integrations_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_query_definition_response() :: #{
-%%   <<"queryDefinitionId">> => string()
-%% }
--type put_query_definition_response() :: #{binary() => any()}.
-
 -type associate_kms_key_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type associate_source_to_s3_table_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type cancel_export_task_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     invalid_operation_exception().
 
 -type cancel_import_task_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    access_denied_exception().
 
 -type create_delivery_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception().
-
--type create_export_task_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    service_unavailable_exception() | 
-    resource_not_found_exception() | 
-    operation_aborted_exception().
-
--type create_import_task_errors() ::
-    throttling_exception() | 
-    validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
-    invalid_operation_exception().
+    access_denied_exception().
+
+-type create_export_task_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    resource_already_exists_exception() | 
+    operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
+
+-type create_import_task_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_log_anomaly_detector_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type create_log_group_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    operation_aborted_exception().
+    resource_already_exists_exception() | 
+    operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type create_log_stream_errors() ::
-    resource_already_exists_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    resource_already_exists_exception() | 
+    invalid_parameter_exception().
 
 -type create_lookup_table_errors() ::
+    validation_exception() | 
+    service_unavailable_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    validation_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception().
+    access_denied_exception().
 
 -type create_scheduled_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_account_policy_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type delete_data_protection_policy_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type delete_delivery_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
 -type delete_delivery_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
@@ -3171,248 +3184,248 @@
     conflict_exception().
 
 -type delete_delivery_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
 -type delete_destination_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type delete_index_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type delete_integration_errors() ::
     validation_exception() | 
-    invalid_parameter_exception() | 
-    service_unavailable_exception() | 
-    resource_not_found_exception().
-
--type delete_log_anomaly_detector_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    invalid_parameter_exception().
+
+-type delete_log_anomaly_detector_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type delete_log_group_errors() ::
     validation_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type delete_log_stream_errors() ::
     validation_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type delete_lookup_table_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception().
 
 -type delete_metric_filter_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type delete_query_definition_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type delete_resource_policy_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type delete_retention_policy_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type delete_scheduled_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_subscription_filter_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type delete_syslog_configuration_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception() | 
-    invalid_operation_exception().
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    access_denied_exception().
 
 -type delete_transformer_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception() | 
+    invalid_parameter_exception() | 
     invalid_operation_exception().
 
 -type describe_account_policies_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type describe_configuration_templates_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception().
 
 -type describe_deliveries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception().
 
 -type describe_delivery_destinations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception().
 
 -type describe_delivery_sources_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception().
 
 -type describe_destinations_errors() ::
-    invalid_parameter_exception() | 
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    invalid_parameter_exception().
 
 -type describe_export_tasks_errors() ::
-    invalid_parameter_exception() | 
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    invalid_parameter_exception().
 
 -type describe_field_indexes_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type describe_import_task_batches_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    access_denied_exception().
 
 -type describe_import_tasks_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    access_denied_exception().
 
 -type describe_index_policies_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type describe_log_groups_errors() ::
-    invalid_parameter_exception() | 
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    invalid_parameter_exception().
 
 -type describe_log_streams_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type describe_lookup_tables_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception().
 
 -type describe_metric_filters_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type describe_queries_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type describe_query_definitions_errors() ::
-    invalid_parameter_exception() | 
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    invalid_parameter_exception().
 
 -type describe_resource_policies_errors() ::
-    invalid_parameter_exception() | 
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    invalid_parameter_exception().
 
 -type describe_subscription_filters_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type disassociate_kms_key_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type disassociate_source_from_s3_table_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type filter_log_events_errors() ::
-    invalid_parameter_exception() | 
-    service_unavailable_exception() | 
-    resource_not_found_exception().
-
--type get_data_protection_policy_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    invalid_parameter_exception().
+
+-type get_data_protection_policy_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type get_delivery_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type get_delivery_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
@@ -3423,176 +3436,176 @@
     resource_not_found_exception().
 
 -type get_delivery_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type get_integration_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type get_log_anomaly_detector_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type get_log_events_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type get_log_fields_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type get_log_group_fields_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type get_log_object_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    access_denied_exception().
 
 -type get_log_record_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type get_lookup_table_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception().
 
 -type get_query_results_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type get_scheduled_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_scheduled_query_history_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_storage_tier_policy_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception().
 
 -type get_transformer_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
+    invalid_parameter_exception() | 
     invalid_operation_exception().
 
 -type list_aggregate_log_group_summaries_errors() ::
     validation_exception() | 
-    invalid_parameter_exception() | 
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    invalid_parameter_exception().
 
 -type list_anomalies_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type list_integrations_errors() ::
-    invalid_parameter_exception() | 
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    invalid_parameter_exception().
 
 -type list_log_anomaly_detectors_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type list_log_groups_errors() ::
-    invalid_parameter_exception() | 
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    invalid_parameter_exception().
 
 -type list_log_groups_for_query_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception().
 
 -type list_scheduled_queries_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sources_for_s3_table_integration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_syslog_configurations_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type list_tags_log_group_errors() ::
     service_unavailable_exception() | 
     resource_not_found_exception().
 
 -type put_account_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type put_bearer_token_authentication_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception() | 
-    invalid_operation_exception().
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    access_denied_exception().
 
 -type put_data_protection_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type put_delivery_destination_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
@@ -3605,191 +3618,191 @@
     conflict_exception().
 
 -type put_delivery_source_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
 -type put_destination_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type put_destination_policy_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type put_index_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type put_integration_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    invalid_parameter_exception() | 
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type put_log_events_errors() ::
     unrecognized_client_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    data_already_accepted_exception() | 
-    invalid_sequence_token_exception().
+    invalid_sequence_token_exception() | 
+    invalid_parameter_exception() | 
+    data_already_accepted_exception().
 
 -type put_log_group_deletion_protection_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception() | 
-    invalid_operation_exception().
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    access_denied_exception().
 
 -type put_metric_filter_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
     invalid_operation_exception().
 
 -type put_query_definition_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type put_resource_policy_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
-    service_unavailable_exception() | 
-    resource_not_found_exception() | 
-    operation_aborted_exception().
-
--type put_retention_policy_errors() ::
-    invalid_parameter_exception() | 
-    service_unavailable_exception() | 
-    resource_not_found_exception() | 
-    operation_aborted_exception().
-
--type put_storage_tier_policy_errors() ::
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
-    service_unavailable_exception() | 
-    resource_not_found_exception() | 
-    operation_aborted_exception().
-
--type put_subscription_filter_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
+
+-type put_retention_policy_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
+
+-type put_storage_tier_policy_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception().
+
+-type put_subscription_filter_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
     invalid_operation_exception().
 
 -type put_syslog_configuration_errors() ::
     throttling_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception() | 
-    invalid_operation_exception().
+    invalid_parameter_exception() | 
+    invalid_operation_exception() | 
+    access_denied_exception().
 
 -type put_transformer_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     operation_aborted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
     invalid_operation_exception().
 
 -type start_live_tail_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception() | 
-    invalid_operation_exception().
+    invalid_operation_exception() | 
+    access_denied_exception().
 
 -type start_query_errors() ::
-    limit_exceeded_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    malformed_query_exception().
+    malformed_query_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
 
 -type stop_query_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type tag_log_group_errors() ::
-    invalid_parameter_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type test_metric_filter_errors() ::
-    invalid_parameter_exception() | 
-    service_unavailable_exception().
+    service_unavailable_exception() | 
+    invalid_parameter_exception().
 
 -type test_transformer_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
+    invalid_parameter_exception() | 
     invalid_operation_exception().
 
 -type untag_log_group_errors() ::
     resource_not_found_exception().
 
 -type untag_resource_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type update_anomaly_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type update_delivery_configuration_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_log_anomaly_detector_errors() ::
-    invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    operation_aborted_exception().
+    operation_aborted_exception() | 
+    invalid_parameter_exception().
 
 -type update_lookup_table_errors() ::
     validation_exception() | 
-    invalid_parameter_exception() | 
-    access_denied_exception() | 
     service_unavailable_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception().
 
 -type update_scheduled_query_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -4284,16 +4297,21 @@ create_log_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogStream">>, Input, Options).
 
-%% @doc Creates a lookup table by uploading CSV data.
+%% @doc Creates a lookup table by uploading CSV data or from CloudWatch Logs
+%% query
+%% results.
 %%
-%% You can use lookup tables to enrich log
-%% data in CloudWatch Logs Insights queries with reference data such as user
-%% details, application
-%% names, or error descriptions.
+%% You can use lookup tables to enrich log data in CloudWatch Logs queries
+%% with
+%% reference data such as user details, application names, or error
+%% descriptions.
 %%
-%% The table name must be unique within your account and Region. The CSV
-%% content must include
-%% a header row with column names, use UTF-8 encoding, and not exceed 10 MB.
+%% The table name must be unique within your account and Region. You must
+%% specify either
+%% `tableBody' or `queryId', but not both. If you use
+%% `tableBody', the CSV content must include a header row with column
+%% names, use
+%% UTF-8 encoding, and not exceed 10 MB.
 -spec create_lookup_table(aws_client:aws_client(), create_lookup_table_request()) ->
     {ok, create_lookup_table_response(), tuple()} |
     {error, any()} |
@@ -5996,7 +6014,7 @@ get_scheduled_query_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetScheduledQueryHistory">>, Input, Options).
 
-%% @doc Returns the storage tier policy for your account.
+%% @doc Returns the storage tier policy for the account.
 -spec get_storage_tier_policy(aws_client:aws_client(), get_storage_tier_policy_request()) ->
     {ok, get_storage_tier_policy_response(), tuple()} |
     {error, any()} |
@@ -7602,12 +7620,12 @@ put_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRetentionPolicy">>, Input, Options).
 
-%% @doc Sets the storage tier policy for your account.
+%% @doc Sets the storage tier policy for the account.
 %%
 %% When you set the storage tier to
-%% `INTELLIGENT_TIERING', CloudWatch Logs automatically moves your log
-%% data between
-%% storage tiers based on access patterns to optimize costs.
+%% `INTELLIGENT_TIERING', the service automatically moves log data to the
+%% most
+%% cost-effective storage tier based on access frequency.
 -spec put_storage_tier_policy(aws_client:aws_client(), put_storage_tier_policy_request()) ->
     {ok, put_storage_tier_policy_response(), tuple()} |
     {error, any()} |
@@ -8247,14 +8265,16 @@ update_log_anomaly_detector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLogAnomalyDetector">>, Input, Options).
 
-%% @doc Updates an existing lookup table by replacing all of its CSV content.
+%% @doc Updates an existing lookup table by replacing all of its content with
+%% new CSV data or
+%% CloudWatch Logs query results.
 %%
-%% After the update
-%% completes, queries that use this table will use the new data.
+%% After the update completes, queries that use this table
+%% use the new data.
 %%
-%% This is a full replacement operation. All existing content is replaced
-%% with the new CSV
-%% data.
+%% This is a full replacement operation. All existing content is replaced.
+%% You must specify
+%% either `tableBody' or `queryId', but not both.
 -spec update_lookup_table(aws_client:aws_client(), update_lookup_table_request()) ->
     {ok, update_lookup_table_response(), tuple()} |
     {error, any()} |

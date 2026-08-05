@@ -107,12 +107,273 @@
 
 
 %% Example:
-%% step_adjustment() :: #{
-%%   <<"MetricIntervalLowerBound">> => float(),
-%%   <<"MetricIntervalUpperBound">> => float(),
-%%   <<"ScalingAdjustment">> => integer()
+%% alarm() :: #{
+%%   <<"AlarmARN">> => string(),
+%%   <<"AlarmName">> => string()
 %% }
--type step_adjustment() :: #{binary() => any()}.
+-type alarm() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_forecast() :: #{
+%%   <<"Timestamps">> => list(non_neg_integer()),
+%%   <<"Values">> => list(float())
+%% }
+-type capacity_forecast() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_update_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_update_exception() :: #{binary() => any()}.
+
+%% Example:
+%% customized_metric_specification() :: #{
+%%   <<"Dimensions">> => list(metric_dimension()),
+%%   <<"MetricName">> => string(),
+%%   <<"Metrics">> => list(target_tracking_metric_data_query()),
+%%   <<"Namespace">> => string(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Unit">> => string()
+%% }
+-type customized_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scaling_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type delete_scaling_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scaling_policy_response() :: #{
+
+%% }
+-type delete_scaling_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_action_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ScheduledActionName">> := string(),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type delete_scheduled_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_action_response() :: #{
+
+%% }
+-type delete_scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_scalable_target_request() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type deregister_scalable_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_scalable_target_response() :: #{
+
+%% }
+-type deregister_scalable_target_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scalable_targets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceIds">> => list(string()),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type describe_scalable_targets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scalable_targets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScalableTargets">> => list(scalable_target())
+%% }
+-type describe_scalable_targets_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_activities_request() :: #{
+%%   <<"IncludeNotScaledActivities">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type describe_scaling_activities_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_activities_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScalingActivities">> => list(scaling_activity())
+%% }
+-type describe_scaling_activities_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyNames">> => list(string()),
+%%   <<"ResourceId">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type describe_scaling_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scaling_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScalingPolicies">> => list(scaling_policy())
+%% }
+-type describe_scaling_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scheduled_actions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ScheduledActionNames">> => list(string()),
+%%   <<"ServiceNamespace">> := list(any())
+%% }
+-type describe_scheduled_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_scheduled_actions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ScheduledActions">> => list(scheduled_action())
+%% }
+-type describe_scheduled_actions_response() :: #{binary() => any()}.
+
+%% Example:
+%% failed_resource_access_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type failed_resource_access_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_predictive_scaling_forecast_request() :: #{
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"PolicyName">> := string(),
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ServiceNamespace">> := list(any()),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_predictive_scaling_forecast_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_predictive_scaling_forecast_response() :: #{
+%%   <<"CapacityForecast">> => capacity_forecast(),
+%%   <<"LoadForecast">> => list(load_forecast()),
+%%   <<"UpdateTime">> => non_neg_integer()
+%% }
+-type get_predictive_scaling_forecast_response() :: #{binary() => any()}.
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% load_forecast() :: #{
+%%   <<"MetricSpecification">> => predictive_scaling_metric_specification(),
+%%   <<"Timestamps">> => list(non_neg_integer()),
+%%   <<"Values">> => list(float())
+%% }
+-type load_forecast() :: #{binary() => any()}.
+
+%% Example:
+%% metric_dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type metric_dimension() :: #{binary() => any()}.
+
+%% Example:
+%% not_scaled_reason() :: #{
+%%   <<"Code">> => string(),
+%%   <<"CurrentCapacity">> => integer(),
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer()
+%% }
+-type not_scaled_reason() :: #{binary() => any()}.
+
+%% Example:
+%% object_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type object_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% predefined_metric_specification() :: #{
+%%   <<"PredefinedMetricType">> => list(any()),
+%%   <<"ResourceLabel">> => string()
+%% }
+-type predefined_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_customized_metric_specification() :: #{
+%%   <<"MetricDataQueries">> => list(predictive_scaling_metric_data_query())
+%% }
+-type predictive_scaling_customized_metric_specification() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_metric() :: #{
+%%   <<"Dimensions">> => list(predictive_scaling_metric_dimension()),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string()
+%% }
+-type predictive_scaling_metric() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_metric_data_query() :: #{
+%%   <<"Expression">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"MetricStat">> => predictive_scaling_metric_stat(),
+%%   <<"ReturnData">> => boolean()
+%% }
+-type predictive_scaling_metric_data_query() :: #{binary() => any()}.
+
+%% Example:
+%% predictive_scaling_metric_dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type predictive_scaling_metric_dimension() :: #{binary() => any()}.
 
 %% Example:
 %% predictive_scaling_metric_specification() :: #{
@@ -127,140 +388,22 @@
 -type predictive_scaling_metric_specification() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := map()
+%% predictive_scaling_metric_stat() :: #{
+%%   <<"Metric">> => predictive_scaling_metric(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type predictive_scaling_metric_stat() :: #{binary() => any()}.
 
 %% Example:
-%% get_predictive_scaling_forecast_request() :: #{
-%%   <<"EndTime">> := non_neg_integer(),
-%%   <<"PolicyName">> := string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"ScalableDimension">> := list(any()),
-%%   <<"ServiceNamespace">> := list(any()),
-%%   <<"StartTime">> := non_neg_integer()
+%% predictive_scaling_policy_configuration() :: #{
+%%   <<"MaxCapacityBreachBehavior">> => list(any()),
+%%   <<"MaxCapacityBuffer">> => integer(),
+%%   <<"MetricSpecifications">> => list(predictive_scaling_metric_specification()),
+%%   <<"Mode">> => list(any()),
+%%   <<"SchedulingBufferTime">> => integer()
 %% }
--type get_predictive_scaling_forecast_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scaling_policies_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"PolicyNames">> => list(string()),
-%%   <<"ResourceId">> => string(),
-%%   <<"ScalableDimension">> => list(any()),
-%%   <<"ServiceNamespace">> := list(any())
-%% }
--type describe_scaling_policies_request() :: #{binary() => any()}.
-
-%% Example:
-%% predictive_scaling_metric_dimension() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type predictive_scaling_metric_dimension() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_action_response() :: #{
-
-%% }
--type delete_scheduled_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% predictive_scaling_predefined_scaling_metric_specification() :: #{
-%%   <<"PredefinedMetricType">> => string(),
-%%   <<"ResourceLabel">> => string()
-%% }
--type predictive_scaling_predefined_scaling_metric_specification() :: #{binary() => any()}.
-
-%% Example:
-%% alarm() :: #{
-%%   <<"AlarmARN">> => string(),
-%%   <<"AlarmName">> => string()
-%% }
--type alarm() :: #{binary() => any()}.
-
-%% Example:
-%% target_tracking_scaling_policy_configuration() :: #{
-%%   <<"CustomizedMetricSpecification">> => customized_metric_specification(),
-%%   <<"DisableScaleIn">> => boolean(),
-%%   <<"PredefinedMetricSpecification">> => predefined_metric_specification(),
-%%   <<"ScaleInCooldown">> => integer(),
-%%   <<"ScaleOutCooldown">> => integer(),
-%%   <<"TargetValue">> => float()
-%% }
--type target_tracking_scaling_policy_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_predictive_scaling_forecast_response() :: #{
-%%   <<"CapacityForecast">> => capacity_forecast(),
-%%   <<"LoadForecast">> => list(load_forecast()),
-%%   <<"UpdateTime">> => non_neg_integer()
-%% }
--type get_predictive_scaling_forecast_response() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_scalable_target_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"ScalableDimension">> := list(any()),
-%%   <<"ServiceNamespace">> := list(any())
-%% }
--type deregister_scalable_target_request() :: #{binary() => any()}.
-
-%% Example:
-%% scaling_policy() :: #{
-%%   <<"Alarms">> => list(alarm()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"PolicyARN">> => string(),
-%%   <<"PolicyName">> => string(),
-%%   <<"PolicyType">> => list(any()),
-%%   <<"PredictiveScalingPolicyConfiguration">> => predictive_scaling_policy_configuration(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ScalableDimension">> => list(any()),
-%%   <<"ServiceNamespace">> => list(any()),
-%%   <<"StepScalingPolicyConfiguration">> => step_scaling_policy_configuration(),
-%%   <<"TargetTrackingScalingPolicyConfiguration">> => target_tracking_scaling_policy_configuration()
-%% }
--type scaling_policy() :: #{binary() => any()}.
-
-%% Example:
-%% internal_service_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_service_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scheduled_actions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ScheduledActions">> => list(scheduled_action())
-%% }
--type describe_scheduled_actions_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scheduled_actions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ScalableDimension">> => list(any()),
-%%   <<"ScheduledActionNames">> => list(string()),
-%%   <<"ServiceNamespace">> := list(any())
-%% }
--type describe_scheduled_actions_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
+-type predictive_scaling_policy_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% predictive_scaling_predefined_load_metric_specification() :: #{
@@ -270,30 +413,77 @@
 -type predictive_scaling_predefined_load_metric_specification() :: #{binary() => any()}.
 
 %% Example:
-%% customized_metric_specification() :: #{
-%%   <<"Dimensions">> => list(metric_dimension()),
-%%   <<"MetricName">> => string(),
-%%   <<"Metrics">> => list(target_tracking_metric_data_query()),
-%%   <<"Namespace">> => string(),
-%%   <<"Statistic">> => list(any()),
-%%   <<"Unit">> => string()
+%% predictive_scaling_predefined_metric_pair_specification() :: #{
+%%   <<"PredefinedMetricType">> => string(),
+%%   <<"ResourceLabel">> => string()
 %% }
--type customized_metric_specification() :: #{binary() => any()}.
+-type predictive_scaling_predefined_metric_pair_specification() :: #{binary() => any()}.
 
 %% Example:
-%% describe_scaling_activities_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ScalingActivities">> => list(scaling_activity())
+%% predictive_scaling_predefined_scaling_metric_specification() :: #{
+%%   <<"PredefinedMetricType">> => string(),
+%%   <<"ResourceLabel">> => string()
 %% }
--type describe_scaling_activities_response() :: #{binary() => any()}.
+-type predictive_scaling_predefined_scaling_metric_specification() :: #{binary() => any()}.
 
 %% Example:
-%% suspended_state() :: #{
-%%   <<"DynamicScalingInSuspended">> => boolean(),
-%%   <<"DynamicScalingOutSuspended">> => boolean(),
-%%   <<"ScheduledScalingSuspended">> => boolean()
+%% put_scaling_policy_request() :: #{
+%%   <<"PolicyName">> := string(),
+%%   <<"PolicyType">> => list(any()),
+%%   <<"PredictiveScalingPolicyConfiguration">> => predictive_scaling_policy_configuration(),
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ServiceNamespace">> := list(any()),
+%%   <<"StepScalingPolicyConfiguration">> => step_scaling_policy_configuration(),
+%%   <<"TargetTrackingScalingPolicyConfiguration">> => target_tracking_scaling_policy_configuration()
 %% }
--type suspended_state() :: #{binary() => any()}.
+-type put_scaling_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_scaling_policy_response() :: #{
+%%   <<"Alarms">> => list(alarm()),
+%%   <<"PolicyARN">> => string()
+%% }
+-type put_scaling_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_scheduled_action_request() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ResourceId">> := string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ScalableTargetAction">> => scalable_target_action(),
+%%   <<"Schedule">> => string(),
+%%   <<"ScheduledActionName">> := string(),
+%%   <<"ServiceNamespace">> := list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Timezone">> => string()
+%% }
+-type put_scheduled_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_scheduled_action_response() :: #{
+
+%% }
+-type put_scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% register_scalable_target_request() :: #{
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer(),
+%%   <<"ResourceId">> := string(),
+%%   <<"RoleARN">> => string(),
+%%   <<"ScalableDimension">> := list(any()),
+%%   <<"ServiceNamespace">> := list(any()),
+%%   <<"SuspendedState">> => suspended_state(),
+%%   <<"Tags">> => map()
+%% }
+-type register_scalable_target_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_scalable_target_response() :: #{
+%%   <<"ScalableTargetARN">> => string()
+%% }
+-type register_scalable_target_response() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -303,49 +493,26 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% load_forecast() :: #{
-%%   <<"MetricSpecification">> => predictive_scaling_metric_specification(),
-%%   <<"Timestamps">> => list(non_neg_integer()),
-%%   <<"Values">> => list(float())
-%% }
--type load_forecast() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% target_tracking_metric_stat() :: #{
-%%   <<"Metric">> => target_tracking_metric(),
-%%   <<"Stat">> => string(),
-%%   <<"Unit">> => string()
-%% }
--type target_tracking_metric_stat() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_action() :: #{
+%% scalable_target() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer(),
+%%   <<"PredictedCapacity">> => integer(),
 %%   <<"ResourceId">> => string(),
+%%   <<"RoleARN">> => string(),
 %%   <<"ScalableDimension">> => list(any()),
-%%   <<"ScalableTargetAction">> => scalable_target_action(),
-%%   <<"Schedule">> => string(),
-%%   <<"ScheduledActionARN">> => string(),
-%%   <<"ScheduledActionName">> => string(),
+%%   <<"ScalableTargetARN">> => string(),
 %%   <<"ServiceNamespace">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Timezone">> => string()
+%%   <<"SuspendedState">> => suspended_state()
 %% }
--type scheduled_action() :: #{binary() => any()}.
+-type scalable_target() :: #{binary() => any()}.
 
 %% Example:
-%% predictive_scaling_predefined_metric_pair_specification() :: #{
-%%   <<"PredefinedMetricType">> => string(),
-%%   <<"ResourceLabel">> => string()
+%% scalable_target_action() :: #{
+%%   <<"MaxCapacity">> => integer(),
+%%   <<"MinCapacity">> => integer()
 %% }
--type predictive_scaling_predefined_metric_pair_specification() :: #{binary() => any()}.
+-type scalable_target_action() :: #{binary() => any()}.
 
 %% Example:
 %% scaling_activity() :: #{
@@ -365,23 +532,44 @@
 -type scaling_activity() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
+%% scaling_policy() :: #{
+%%   <<"Alarms">> => list(alarm()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"PolicyARN">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"PolicyType">> => list(any()),
+%%   <<"PredictiveScalingPolicyConfiguration">> => predictive_scaling_policy_configuration(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ServiceNamespace">> => list(any()),
+%%   <<"StepScalingPolicyConfiguration">> => step_scaling_policy_configuration(),
+%%   <<"TargetTrackingScalingPolicyConfiguration">> => target_tracking_scaling_policy_configuration()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type scaling_policy() :: #{binary() => any()}.
 
 %% Example:
-%% register_scalable_target_request() :: #{
-%%   <<"MaxCapacity">> => integer(),
-%%   <<"MinCapacity">> => integer(),
-%%   <<"ResourceId">> := string(),
-%%   <<"RoleARN">> => string(),
-%%   <<"ScalableDimension">> := list(any()),
-%%   <<"ServiceNamespace">> := list(any()),
-%%   <<"SuspendedState">> => suspended_state(),
-%%   <<"Tags">> => map()
+%% scheduled_action() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ScalableDimension">> => list(any()),
+%%   <<"ScalableTargetAction">> => scalable_target_action(),
+%%   <<"Schedule">> => string(),
+%%   <<"ScheduledActionARN">> => string(),
+%%   <<"ScheduledActionName">> => string(),
+%%   <<"ServiceNamespace">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Timezone">> => string()
 %% }
--type register_scalable_target_request() :: #{binary() => any()}.
+-type scheduled_action() :: #{binary() => any()}.
+
+%% Example:
+%% step_adjustment() :: #{
+%%   <<"MetricIntervalLowerBound">> => float(),
+%%   <<"MetricIntervalUpperBound">> => float(),
+%%   <<"ScalingAdjustment">> => integer()
+%% }
+-type step_adjustment() :: #{binary() => any()}.
 
 %% Example:
 %% step_scaling_policy_configuration() :: #{
@@ -394,134 +582,19 @@
 -type step_scaling_policy_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% describe_scaling_activities_request() :: #{
-%%   <<"IncludeNotScaledActivities">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceId">> => string(),
-%%   <<"ScalableDimension">> => list(any()),
-%%   <<"ServiceNamespace">> := list(any())
+%% suspended_state() :: #{
+%%   <<"DynamicScalingInSuspended">> => boolean(),
+%%   <<"DynamicScalingOutSuspended">> => boolean(),
+%%   <<"ScheduledScalingSuspended">> => boolean()
 %% }
--type describe_scaling_activities_request() :: #{binary() => any()}.
+-type suspended_state() :: #{binary() => any()}.
 
 %% Example:
-%% target_tracking_metric() :: #{
-%%   <<"Dimensions">> => list(target_tracking_metric_dimension()),
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string()
+%% tag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := map()
 %% }
--type target_tracking_metric() :: #{binary() => any()}.
-
-%% Example:
-%% metric_dimension() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type metric_dimension() :: #{binary() => any()}.
-
-%% Example:
-%% predictive_scaling_customized_metric_specification() :: #{
-%%   <<"MetricDataQueries">> => list(predictive_scaling_metric_data_query())
-%% }
--type predictive_scaling_customized_metric_specification() :: #{binary() => any()}.
-
-%% Example:
-%% put_scaling_policy_response() :: #{
-%%   <<"Alarms">> => list(alarm()),
-%%   <<"PolicyARN">> => string()
-%% }
--type put_scaling_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% predictive_scaling_metric_data_query() :: #{
-%%   <<"Expression">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Label">> => string(),
-%%   <<"MetricStat">> => predictive_scaling_metric_stat(),
-%%   <<"ReturnData">> => boolean()
-%% }
--type predictive_scaling_metric_data_query() :: #{binary() => any()}.
-
-%% Example:
-%% scalable_target_action() :: #{
-%%   <<"MaxCapacity">> => integer(),
-%%   <<"MinCapacity">> => integer()
-%% }
--type scalable_target_action() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scalable_targets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceIds">> => list(string()),
-%%   <<"ScalableDimension">> => list(any()),
-%%   <<"ServiceNamespace">> := list(any())
-%% }
--type describe_scalable_targets_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scaling_policies_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ScalingPolicies">> => list(scaling_policy())
-%% }
--type describe_scaling_policies_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scaling_policy_request() :: #{
-%%   <<"PolicyName">> := string(),
-%%   <<"ResourceId">> := string(),
-%%   <<"ScalableDimension">> := list(any()),
-%%   <<"ServiceNamespace">> := list(any())
-%% }
--type delete_scaling_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_scheduled_action_request() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ResourceId">> := string(),
-%%   <<"ScalableDimension">> := list(any()),
-%%   <<"ScalableTargetAction">> => scalable_target_action(),
-%%   <<"Schedule">> => string(),
-%%   <<"ScheduledActionName">> := string(),
-%%   <<"ServiceNamespace">> := list(any()),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Timezone">> => string()
-%% }
--type put_scheduled_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% object_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type object_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% put_scheduled_action_response() :: #{
-
-%% }
--type put_scheduled_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% predefined_metric_specification() :: #{
-%%   <<"PredefinedMetricType">> => list(any()),
-%%   <<"ResourceLabel">> => string()
-%% }
--type predefined_metric_specification() :: #{binary() => any()}.
-
-%% Example:
-%% scalable_target() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"MaxCapacity">> => integer(),
-%%   <<"MinCapacity">> => integer(),
-%%   <<"PredictedCapacity">> => integer(),
-%%   <<"ResourceId">> => string(),
-%%   <<"RoleARN">> => string(),
-%%   <<"ScalableDimension">> => list(any()),
-%%   <<"ScalableTargetARN">> => string(),
-%%   <<"ServiceNamespace">> => list(any()),
-%%   <<"SuspendedState">> => suspended_state()
-%% }
--type scalable_target() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
@@ -530,88 +603,12 @@
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% predictive_scaling_policy_configuration() :: #{
-%%   <<"MaxCapacityBreachBehavior">> => list(any()),
-%%   <<"MaxCapacityBuffer">> => integer(),
-%%   <<"MetricSpecifications">> => list(predictive_scaling_metric_specification()),
-%%   <<"Mode">> => list(any()),
-%%   <<"SchedulingBufferTime">> => integer()
+%% target_tracking_metric() :: #{
+%%   <<"Dimensions">> => list(target_tracking_metric_dimension()),
+%%   <<"MetricName">> => string(),
+%%   <<"Namespace">> => string()
 %% }
--type predictive_scaling_policy_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_update_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_update_exception() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceARN">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_scaling_policy_request() :: #{
-%%   <<"PolicyName">> := string(),
-%%   <<"PolicyType">> => list(any()),
-%%   <<"PredictiveScalingPolicyConfiguration">> => predictive_scaling_policy_configuration(),
-%%   <<"ResourceId">> := string(),
-%%   <<"ScalableDimension">> := list(any()),
-%%   <<"ServiceNamespace">> := list(any()),
-%%   <<"StepScalingPolicyConfiguration">> => step_scaling_policy_configuration(),
-%%   <<"TargetTrackingScalingPolicyConfiguration">> => target_tracking_scaling_policy_configuration()
-%% }
--type put_scaling_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scaling_policy_response() :: #{
-
-%% }
--type delete_scaling_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_action_request() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"ScalableDimension">> := list(any()),
-%%   <<"ScheduledActionName">> := string(),
-%%   <<"ServiceNamespace">> := list(any())
-%% }
--type delete_scheduled_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% target_tracking_metric_dimension() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type target_tracking_metric_dimension() :: #{binary() => any()}.
-
-%% Example:
-%% predictive_scaling_metric_stat() :: #{
-%%   <<"Metric">> => predictive_scaling_metric(),
-%%   <<"Stat">> => string(),
-%%   <<"Unit">> => string()
-%% }
--type predictive_scaling_metric_stat() :: #{binary() => any()}.
-
-%% Example:
-%% describe_scalable_targets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ScalableTargets">> => list(scalable_target())
-%% }
--type describe_scalable_targets_response() :: #{binary() => any()}.
+-type target_tracking_metric() :: #{binary() => any()}.
 
 %% Example:
 %% target_tracking_metric_data_query() :: #{
@@ -624,34 +621,30 @@
 -type target_tracking_metric_data_query() :: #{binary() => any()}.
 
 %% Example:
-%% capacity_forecast() :: #{
-%%   <<"Timestamps">> => list(non_neg_integer()),
-%%   <<"Values">> => list(float())
+%% target_tracking_metric_dimension() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
 %% }
--type capacity_forecast() :: #{binary() => any()}.
+-type target_tracking_metric_dimension() :: #{binary() => any()}.
 
 %% Example:
-%% not_scaled_reason() :: #{
-%%   <<"Code">> => string(),
-%%   <<"CurrentCapacity">> => integer(),
-%%   <<"MaxCapacity">> => integer(),
-%%   <<"MinCapacity">> => integer()
+%% target_tracking_metric_stat() :: #{
+%%   <<"Metric">> => target_tracking_metric(),
+%%   <<"Stat">> => string(),
+%%   <<"Unit">> => string()
 %% }
--type not_scaled_reason() :: #{binary() => any()}.
+-type target_tracking_metric_stat() :: #{binary() => any()}.
 
 %% Example:
-%% predictive_scaling_metric() :: #{
-%%   <<"Dimensions">> => list(predictive_scaling_metric_dimension()),
-%%   <<"MetricName">> => string(),
-%%   <<"Namespace">> => string()
+%% target_tracking_scaling_policy_configuration() :: #{
+%%   <<"CustomizedMetricSpecification">> => customized_metric_specification(),
+%%   <<"DisableScaleIn">> => boolean(),
+%%   <<"PredefinedMetricSpecification">> => predefined_metric_specification(),
+%%   <<"ScaleInCooldown">> => integer(),
+%%   <<"ScaleOutCooldown">> => integer(),
+%%   <<"TargetValue">> => float()
 %% }
--type predictive_scaling_metric() :: #{binary() => any()}.
-
-%% Example:
-%% deregister_scalable_target_response() :: #{
-
-%% }
--type deregister_scalable_target_response() :: #{binary() => any()}.
+-type target_tracking_scaling_policy_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% too_many_tags_exception() :: #{
@@ -661,59 +654,66 @@
 -type too_many_tags_exception() :: #{binary() => any()}.
 
 %% Example:
-%% failed_resource_access_exception() :: #{
-%%   <<"Message">> => string()
+%% untag_resource_request() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
 %% }
--type failed_resource_access_exception() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% register_scalable_target_response() :: #{
-%%   <<"ScalableTargetARN">> => string()
+%% untag_resource_response() :: #{
+
 %% }
--type register_scalable_target_response() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type delete_scaling_policy_errors() ::
     validation_exception() | 
-    concurrent_update_exception() | 
     object_not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    concurrent_update_exception().
 
 -type delete_scheduled_action_errors() ::
     validation_exception() | 
-    concurrent_update_exception() | 
     object_not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    concurrent_update_exception().
 
 -type deregister_scalable_target_errors() ::
     validation_exception() | 
-    concurrent_update_exception() | 
     object_not_found_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    concurrent_update_exception().
 
 -type describe_scalable_targets_errors() ::
     validation_exception() | 
-    concurrent_update_exception() | 
     invalid_next_token_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    concurrent_update_exception().
 
 -type describe_scaling_activities_errors() ::
     validation_exception() | 
-    concurrent_update_exception() | 
     invalid_next_token_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    concurrent_update_exception().
 
 -type describe_scaling_policies_errors() ::
-    failed_resource_access_exception() | 
     validation_exception() | 
-    concurrent_update_exception() | 
     invalid_next_token_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    failed_resource_access_exception() | 
+    concurrent_update_exception().
 
 -type describe_scheduled_actions_errors() ::
     validation_exception() | 
-    concurrent_update_exception() | 
     invalid_next_token_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    concurrent_update_exception().
 
 -type get_predictive_scaling_forecast_errors() ::
     validation_exception() | 
@@ -723,29 +723,29 @@
     resource_not_found_exception().
 
 -type put_scaling_policy_errors() ::
-    failed_resource_access_exception() | 
-    limit_exceeded_exception() | 
     validation_exception() | 
-    concurrent_update_exception() | 
     object_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    internal_service_exception() | 
+    failed_resource_access_exception() | 
+    concurrent_update_exception().
 
 -type put_scheduled_action_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    concurrent_update_exception() | 
     object_not_found_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    internal_service_exception() | 
+    concurrent_update_exception().
 
 -type register_scalable_target_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    concurrent_update_exception() | 
-    internal_service_exception().
+    limit_exceeded_exception() | 
+    internal_service_exception() | 
+    concurrent_update_exception().
 
 -type tag_resource_errors() ::
-    too_many_tags_exception() | 
     validation_exception() | 
+    too_many_tags_exception() | 
     resource_not_found_exception().
 
 -type untag_resource_errors() ::

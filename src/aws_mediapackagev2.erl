@@ -107,22 +107,17 @@
 
 
 %% Example:
-%% put_channel_policy_request() :: #{
-%%   <<"Policy">> := string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type put_channel_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_request() :: #{}
--type delete_channel_request() :: #{}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% input_switch_configuration() :: #{
-%%   <<"MQCSInputSwitching">> => [boolean()],
-%%   <<"PreferredInput">> => [integer()]
+%% cancel_harvest_job_request() :: #{
+%%   <<"ETag">> => string()
 %% }
--type input_switch_configuration() :: #{binary() => any()}.
+-type cancel_harvest_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_harvest_job_response() :: #{}
@@ -130,48 +125,22 @@
 
 
 %% Example:
-%% dash_program_information() :: #{
-%%   <<"Copyright">> => [string()],
-%%   <<"LanguageCode">> => [string()],
-%%   <<"MoreInformationUrl">> => [string()],
-%%   <<"Source">> => [string()],
-%%   <<"Title">> => [string()]
+%% cdn_auth_configuration() :: #{
+%%   <<"CdnIdentifierSecretArns">> => list(string()),
+%%   <<"SecretsRoleArn">> => [string()]
 %% }
--type dash_program_information() :: #{binary() => any()}.
-
-%% Example:
-%% get_channel_request() :: #{}
--type get_channel_request() :: #{}.
-
-%% Example:
-%% put_channel_policy_response() :: #{}
--type put_channel_policy_response() :: #{}.
+-type cdn_auth_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_origin_endpoint_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"ContainerType">> := list(any()),
-%%   <<"DashManifests">> => list(create_dash_manifest_configuration()),
+%% channel_group_list_configuration() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
-%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
-%%   <<"HlsManifests">> => list(create_hls_manifest_configuration()),
-%%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()),
-%%   <<"MssManifests">> => list(create_mss_manifest_configuration()),
-%%   <<"OriginEndpointName">> := string(),
-%%   <<"Segment">> => segment(),
-%%   <<"StartoverWindowSeconds">> => [integer()],
-%%   <<"Tags">> => map(),
-%%   <<"UriSeparator">> => list(any())
+%%   <<"ModifiedAt">> => [non_neg_integer()]
 %% }
--type create_origin_endpoint_request() :: #{binary() => any()}.
+-type channel_group_list_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -182,17 +151,56 @@
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
 %%   <<"InputType">> => list(any()),
-%%   <<"ModifiedAt">> => [non_neg_integer()]
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OutputLockingMode">> => list(any())
 %% }
 -type channel_list_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% harvester_schedule_configuration() :: #{
-%%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"StartTime">> => [non_neg_integer()]
+%% conflict_exception() :: #{
+%%   <<"ConflictExceptionType">> => list(any()),
+%%   <<"Message">> => [string()]
 %% }
--type harvester_schedule_configuration() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_group_request() :: #{
+%%   <<"ChannelGroupName">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_group_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"EgressDomain">> => [string()],
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_group_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_request() :: #{
+%%   <<"ChannelName">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
+%%   <<"InputType">> => list(any()),
+%%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
+%%   <<"OutputLockingMode">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -208,80 +216,10 @@
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
 %%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
+%%   <<"OutputLockingMode">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type create_channel_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_dash_manifest_configuration() :: #{
-%%   <<"ManifestName">> => string(),
-%%   <<"Url">> => [string()]
-%% }
--type list_dash_manifest_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% channel_group_list_configuration() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => [string()],
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Description">> => string(),
-%%   <<"ModifiedAt">> => [non_neg_integer()]
-%% }
--type channel_group_list_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_response() :: #{}
--type delete_channel_response() :: #{}.
-
-
-%% Example:
-%% list_hls_manifest_configuration() :: #{
-%%   <<"ChildManifestName">> => string(),
-%%   <<"ManifestName">> => string(),
-%%   <<"Url">> => [string()]
-%% }
--type list_hls_manifest_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_origin_endpoint_response() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"ContainerType">> => list(any()),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DashManifests">> => list(get_dash_manifest_configuration()),
-%%   <<"Description">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
-%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()),
-%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()),
-%%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"MssManifests">> => list(get_mss_manifest_configuration()),
-%%   <<"OriginEndpointName">> => string(),
-%%   <<"Segment">> => segment(),
-%%   <<"StartoverWindowSeconds">> => [integer()],
-%%   <<"Tags">> => map(),
-%%   <<"UriSeparator">> => list(any())
-%% }
--type create_origin_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_hls_manifest_configuration() :: #{
-%%   <<"ChildManifestName">> => string(),
-%%   <<"FilterConfiguration">> => filter_configuration(),
-%%   <<"ManifestName">> => string(),
-%%   <<"ManifestWindowSeconds">> => [integer()],
-%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
-%%   <<"ScteHls">> => scte_hls(),
-%%   <<"StartTag">> => start_tag(),
-%%   <<"UriPathType">> => list(any()),
-%%   <<"UrlEncodeChildManifest">> => [boolean()]
-%% }
--type create_hls_manifest_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -311,161 +249,6 @@
 
 
 %% Example:
-%% dash_dvb_font_download() :: #{
-%%   <<"FontFamily">> => [string()],
-%%   <<"MimeType">> => [string()],
-%%   <<"Url">> => [string()]
-%% }
--type dash_dvb_font_download() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_origin_endpoint_request() :: #{
-%%   <<"ContainerType">> := list(any()),
-%%   <<"DashManifests">> => list(create_dash_manifest_configuration()),
-%%   <<"Description">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
-%%   <<"HlsManifests">> => list(create_hls_manifest_configuration()),
-%%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()),
-%%   <<"MssManifests">> => list(create_mss_manifest_configuration()),
-%%   <<"Segment">> => segment(),
-%%   <<"StartoverWindowSeconds">> => [integer()],
-%%   <<"UriSeparator">> => list(any())
-%% }
--type update_origin_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_policy_request() :: #{}
--type delete_channel_policy_request() :: #{}.
-
-
-%% Example:
-%% harvested_dash_manifest() :: #{
-%%   <<"ManifestName">> => string()
-%% }
--type harvested_dash_manifest() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_origin_endpoint_policy_request() :: #{
-%%   <<"CdnAuthConfiguration">> => cdn_auth_configuration(),
-%%   <<"Policy">> := string()
-%% }
--type put_origin_endpoint_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% dash_utc_timing() :: #{
-%%   <<"TimingMode">> => list(any()),
-%%   <<"TimingSource">> => [string()]
-%% }
--type dash_utc_timing() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_harvest_jobs_request() :: #{
-%%   <<"ChannelName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()],
-%%   <<"OriginEndpointName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type list_harvest_jobs_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_origin_endpoint_response() :: #{}
--type delete_origin_endpoint_response() :: #{}.
-
-%% Example:
-%% delete_origin_endpoint_request() :: #{}
--type delete_origin_endpoint_request() :: #{}.
-
-
-%% Example:
-%% get_mss_manifest_configuration() :: #{
-%%   <<"FilterConfiguration">> => filter_configuration(),
-%%   <<"ManifestLayout">> => list(any()),
-%%   <<"ManifestName">> => string(),
-%%   <<"ManifestWindowSeconds">> => [integer()],
-%%   <<"Url">> => [string()]
-%% }
--type get_mss_manifest_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_low_latency_hls_manifest_configuration() :: #{
-%%   <<"ChildManifestName">> => string(),
-%%   <<"FilterConfiguration">> => filter_configuration(),
-%%   <<"ManifestName">> => string(),
-%%   <<"ManifestWindowSeconds">> => [integer()],
-%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
-%%   <<"ScteHls">> => scte_hls(),
-%%   <<"StartTag">> => start_tag(),
-%%   <<"UriPathType">> => list(any()),
-%%   <<"Url">> => [string()],
-%%   <<"UrlEncodeChildManifest">> => [boolean()]
-%% }
--type get_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_hls_manifest_configuration() :: #{
-%%   <<"ChildManifestName">> => string(),
-%%   <<"FilterConfiguration">> => filter_configuration(),
-%%   <<"ManifestName">> => string(),
-%%   <<"ManifestWindowSeconds">> => [integer()],
-%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
-%%   <<"ScteHls">> => scte_hls(),
-%%   <<"StartTag">> => start_tag(),
-%%   <<"UriPathType">> => list(any()),
-%%   <<"Url">> => [string()],
-%%   <<"UrlEncodeChildManifest">> => [boolean()]
-%% }
--type get_hls_manifest_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_groups_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_channel_groups_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment() :: #{
-%%   <<"Encryption">> => encryption(),
-%%   <<"IncludeIframeOnlyStreams">> => [boolean()],
-%%   <<"Scte">> => scte(),
-%%   <<"SegmentDurationSeconds">> => [integer()],
-%%   <<"SegmentName">> => [string()],
-%%   <<"TsIncludeDvbSubtitles">> => [boolean()],
-%%   <<"TsUseAudioRenditionGroup">> => [boolean()]
-%% }
--type segment() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_origin_endpoints_response() :: #{
-%%   <<"Items">> => list(origin_endpoint_list_configuration()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_origin_endpoints_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_group_request() :: #{}
--type delete_channel_group_request() :: #{}.
-
-
-%% Example:
 %% create_harvest_job_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
@@ -479,107 +262,107 @@
 
 
 %% Example:
-%% harvested_low_latency_hls_manifest() :: #{
-%%   <<"ManifestName">> => string()
-%% }
--type harvested_low_latency_hls_manifest() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_tag() :: #{
-%%   <<"Precise">> => [boolean()],
-%%   <<"TimeOffset">> => [float()]
-%% }
--type start_tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% force_endpoint_error_configuration() :: #{
-%%   <<"EndpointErrorConditions">> => list(list(any())())
-%% }
--type force_endpoint_error_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_header_configuration() :: #{
-%%   <<"PublishMQCS">> => [boolean()]
-%% }
--type output_header_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% put_origin_endpoint_policy_response() :: #{}
--type put_origin_endpoint_policy_response() :: #{}.
-
-
-%% Example:
-%% list_mss_manifest_configuration() :: #{
-%%   <<"ManifestName">> => string(),
-%%   <<"Url">> => [string()]
-%% }
--type list_mss_manifest_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% dash_ttml_configuration() :: #{
-%%   <<"TtmlProfile">> => list(any())
-%% }
--type dash_ttml_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"ConflictExceptionType">> => list(any()),
-%%   <<"Message">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceTypeNotFound">> => list(any())
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% cdn_auth_configuration() :: #{
-%%   <<"CdnIdentifierSecretArns">> => list(string()),
-%%   <<"SecretsRoleArn">> => [string()]
-%% }
--type cdn_auth_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% dash_subtitle_configuration() :: #{
-%%   <<"TtmlConfiguration">> => dash_ttml_configuration()
-%% }
--type dash_subtitle_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_group_request() :: #{
-%%   <<"ChannelGroupName">> := string(),
-%%   <<"ClientToken">> => string(),
+%% create_harvest_job_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
+%%   <<"Destination">> => destination(),
+%%   <<"ETag">> => string(),
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"HarvestJobName">> => string(),
+%%   <<"HarvestedManifests">> => harvested_manifests(),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"ScheduleConfiguration">> => harvester_schedule_configuration(),
+%%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
--type create_channel_group_request() :: #{binary() => any()}.
+-type create_harvest_job_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% dash_dvb_metrics_reporting() :: #{
-%%   <<"Probability">> => [integer()],
-%%   <<"ReportingUrl">> => [string()]
+%% create_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
+%%   <<"ScteHls">> => scte_hls(),
+%%   <<"StartTag">> => start_tag(),
+%%   <<"UriPathType">> => list(any()),
+%%   <<"UrlEncodeChildManifest">> => [boolean()]
 %% }
--type dash_dvb_metrics_reporting() :: #{binary() => any()}.
+-type create_hls_manifest_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()]
+%% create_low_latency_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
+%%   <<"ScteHls">> => scte_hls(),
+%%   <<"StartTag">> => start_tag(),
+%%   <<"UriPathType">> => list(any()),
+%%   <<"UrlEncodeChildManifest">> => [boolean()]
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type create_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_mss_manifest_configuration() :: #{
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestLayout">> => list(any()),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()]
+%% }
+-type create_mss_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_endpoint_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ContainerType">> := list(any()),
+%%   <<"DashManifests">> => list(create_dash_manifest_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
+%%   <<"HlsManifests">> => list(create_hls_manifest_configuration()),
+%%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()),
+%%   <<"MssManifests">> => list(create_mss_manifest_configuration()),
+%%   <<"OriginEndpointName">> := string(),
+%%   <<"Segment">> => segment(),
+%%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"Tags">> => map(),
+%%   <<"UriSeparator">> => list(any())
+%% }
+-type create_origin_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_origin_endpoint_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ContainerType">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DashManifests">> => list(get_dash_manifest_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
+%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()),
+%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MssManifests">> => list(get_mss_manifest_configuration()),
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"Segment">> => segment(),
+%%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"Tags">> => map(),
+%%   <<"UriSeparator">> => list(any())
+%% }
+-type create_origin_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -591,28 +374,22 @@
 %% }
 -type dash_base_url() :: #{binary() => any()}.
 
-%% Example:
-%% delete_origin_endpoint_policy_response() :: #{}
--type delete_origin_endpoint_policy_response() :: #{}.
 
 %% Example:
-%% get_origin_endpoint_policy_request() :: #{}
--type get_origin_endpoint_policy_request() :: #{}.
-
-%% Example:
-%% delete_channel_policy_response() :: #{}
--type delete_channel_policy_response() :: #{}.
-
-
-%% Example:
-%% reset_origin_endpoint_state_response() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"OriginEndpointName">> => string(),
-%%   <<"ResetAt">> => [non_neg_integer()]
+%% dash_dvb_font_download() :: #{
+%%   <<"FontFamily">> => [string()],
+%%   <<"MimeType">> => [string()],
+%%   <<"Url">> => [string()]
 %% }
--type reset_origin_endpoint_state_response() :: #{binary() => any()}.
+-type dash_dvb_font_download() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_dvb_metrics_reporting() :: #{
+%%   <<"Probability">> => [integer()],
+%%   <<"ReportingUrl">> => [string()]
+%% }
+-type dash_dvb_metrics_reporting() :: #{binary() => any()}.
 
 
 %% Example:
@@ -624,23 +401,83 @@
 
 
 %% Example:
-%% update_channel_group_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ETag">> => string()
+%% dash_program_information() :: #{
+%%   <<"Copyright">> => [string()],
+%%   <<"LanguageCode">> => [string()],
+%%   <<"MoreInformationUrl">> => [string()],
+%%   <<"Source">> => [string()],
+%%   <<"Title">> => [string()]
 %% }
--type update_channel_group_request() :: #{binary() => any()}.
+-type dash_program_information() :: #{binary() => any()}.
 
 
 %% Example:
-%% speke_key_provider() :: #{
-%%   <<"CertificateArn">> => [string()],
-%%   <<"DrmSystems">> => list(list(any())()),
-%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
-%%   <<"ResourceId">> => [string()],
-%%   <<"RoleArn">> => [string()],
-%%   <<"Url">> => [string()]
+%% dash_subtitle_configuration() :: #{
+%%   <<"TtmlConfiguration">> => dash_ttml_configuration()
 %% }
--type speke_key_provider() :: #{binary() => any()}.
+-type dash_subtitle_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_ttml_configuration() :: #{
+%%   <<"TtmlProfile">> => list(any())
+%% }
+-type dash_ttml_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dash_utc_timing() :: #{
+%%   <<"TimingMode">> => list(any()),
+%%   <<"TimingSource">> => [string()]
+%% }
+-type dash_utc_timing() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_group_request() :: #{}
+-type delete_channel_group_request() :: #{}.
+
+%% Example:
+%% delete_channel_group_response() :: #{}
+-type delete_channel_group_response() :: #{}.
+
+%% Example:
+%% delete_channel_policy_request() :: #{}
+-type delete_channel_policy_request() :: #{}.
+
+%% Example:
+%% delete_channel_policy_response() :: #{}
+-type delete_channel_policy_response() :: #{}.
+
+%% Example:
+%% delete_channel_request() :: #{}
+-type delete_channel_request() :: #{}.
+
+%% Example:
+%% delete_channel_response() :: #{}
+-type delete_channel_response() :: #{}.
+
+%% Example:
+%% delete_origin_endpoint_policy_request() :: #{}
+-type delete_origin_endpoint_policy_request() :: #{}.
+
+%% Example:
+%% delete_origin_endpoint_policy_response() :: #{}
+-type delete_origin_endpoint_policy_response() :: #{}.
+
+%% Example:
+%% delete_origin_endpoint_request() :: #{}
+-type delete_origin_endpoint_request() :: #{}.
+
+%% Example:
+%% delete_origin_endpoint_response() :: #{}
+-type delete_origin_endpoint_response() :: #{}.
+
+
+%% Example:
+%% destination() :: #{
+%%   <<"S3Destination">> => s3_destination_config()
+%% }
+-type destination() :: #{binary() => any()}.
 
 
 %% Example:
@@ -655,28 +492,20 @@
 
 
 %% Example:
-%% ingest_endpoint() :: #{
-%%   <<"Id">> => [string()],
-%%   <<"Url">> => [string()]
+%% encryption_contract_configuration() :: #{
+%%   <<"PresetSpeke20Audio">> => list(any()),
+%%   <<"PresetSpeke20Video">> => list(any())
 %% }
--type ingest_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% delete_channel_group_response() :: #{}
--type delete_channel_group_response() :: #{}.
+-type encryption_contract_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_channel_request() :: #{
-%%   <<"ChannelName">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
-%%   <<"InputType">> => list(any()),
-%%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
-%%   <<"Tags">> => map()
+%% encryption_method() :: #{
+%%   <<"CmafEncryptionMethod">> => list(any()),
+%%   <<"IsmEncryptionMethod">> => list(any()),
+%%   <<"TsEncryptionMethod">> => list(any())
 %% }
--type create_channel_request() :: #{binary() => any()}.
+-type encryption_method() :: #{binary() => any()}.
 
 
 %% Example:
@@ -692,10 +521,32 @@
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
+%% force_endpoint_error_configuration() :: #{
+%%   <<"EndpointErrorConditions">> => list(list(any())())
+%% }
+-type force_endpoint_error_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_group_request() :: #{}
+-type get_channel_group_request() :: #{}.
+
+
+%% Example:
+%% get_channel_group_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"EgressDomain">> => [string()],
+%%   <<"ModifiedAt">> => [non_neg_integer()],
 %%   <<"Tags">> => map()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type get_channel_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_policy_request() :: #{}
+-type get_channel_policy_request() :: #{}.
 
 
 %% Example:
@@ -705,6 +556,30 @@
 %%   <<"Policy">> => string()
 %% }
 -type get_channel_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_request() :: #{}
+-type get_channel_request() :: #{}.
+
+
+%% Example:
+%% get_channel_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"ChannelName">> => [string()],
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"IngestEndpoints">> => list(ingest_endpoint()),
+%%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
+%%   <<"InputType">> => list(any()),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
+%%   <<"OutputLockingMode">> => list(any()),
+%%   <<"ResetAt">> => [non_neg_integer()],
+%%   <<"Tags">> => map()
+%% }
+-type get_channel_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -733,6 +608,223 @@
 %% }
 -type get_dash_manifest_configuration() :: #{binary() => any()}.
 
+%% Example:
+%% get_harvest_job_request() :: #{}
+-type get_harvest_job_request() :: #{}.
+
+
+%% Example:
+%% get_harvest_job_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"Destination">> => destination(),
+%%   <<"ETag">> => string(),
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"HarvestJobName">> => string(),
+%%   <<"HarvestedManifests">> => harvested_manifests(),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"ScheduleConfiguration">> => harvester_schedule_configuration(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_harvest_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
+%%   <<"ScteHls">> => scte_hls(),
+%%   <<"StartTag">> => start_tag(),
+%%   <<"UriPathType">> => list(any()),
+%%   <<"Url">> => [string()],
+%%   <<"UrlEncodeChildManifest">> => [boolean()]
+%% }
+-type get_hls_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_low_latency_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
+%%   <<"ScteHls">> => scte_hls(),
+%%   <<"StartTag">> => start_tag(),
+%%   <<"UriPathType">> => list(any()),
+%%   <<"Url">> => [string()],
+%%   <<"UrlEncodeChildManifest">> => [boolean()]
+%% }
+-type get_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_mss_manifest_configuration() :: #{
+%%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"ManifestLayout">> => list(any()),
+%%   <<"ManifestName">> => string(),
+%%   <<"ManifestWindowSeconds">> => [integer()],
+%%   <<"Url">> => [string()]
+%% }
+-type get_mss_manifest_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_origin_endpoint_policy_request() :: #{}
+-type get_origin_endpoint_policy_request() :: #{}.
+
+
+%% Example:
+%% get_origin_endpoint_policy_response() :: #{
+%%   <<"CdnAuthConfiguration">> => cdn_auth_configuration(),
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type get_origin_endpoint_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_origin_endpoint_request() :: #{}
+-type get_origin_endpoint_request() :: #{}.
+
+
+%% Example:
+%% get_origin_endpoint_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ContainerType">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DashManifests">> => list(get_dash_manifest_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
+%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
+%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()),
+%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MssManifests">> => list(get_mss_manifest_configuration()),
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"ResetAt">> => [non_neg_integer()],
+%%   <<"Segment">> => segment(),
+%%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"Tags">> => map(),
+%%   <<"UriSeparator">> => list(any())
+%% }
+-type get_origin_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% harvest_job() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"Destination">> => destination(),
+%%   <<"ETag">> => string(),
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"HarvestJobName">> => string(),
+%%   <<"HarvestedManifests">> => harvested_manifests(),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"ScheduleConfiguration">> => harvester_schedule_configuration(),
+%%   <<"Status">> => list(any())
+%% }
+-type harvest_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% harvested_dash_manifest() :: #{
+%%   <<"ManifestName">> => string()
+%% }
+-type harvested_dash_manifest() :: #{binary() => any()}.
+
+
+%% Example:
+%% harvested_hls_manifest() :: #{
+%%   <<"ManifestName">> => string()
+%% }
+-type harvested_hls_manifest() :: #{binary() => any()}.
+
+
+%% Example:
+%% harvested_low_latency_hls_manifest() :: #{
+%%   <<"ManifestName">> => string()
+%% }
+-type harvested_low_latency_hls_manifest() :: #{binary() => any()}.
+
+
+%% Example:
+%% harvested_manifests() :: #{
+%%   <<"DashManifests">> => list(harvested_dash_manifest()),
+%%   <<"HlsManifests">> => list(harvested_hls_manifest()),
+%%   <<"LowLatencyHlsManifests">> => list(harvested_low_latency_hls_manifest())
+%% }
+-type harvested_manifests() :: #{binary() => any()}.
+
+
+%% Example:
+%% harvester_schedule_configuration() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type harvester_schedule_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingest_endpoint() :: #{
+%%   <<"Id">> => [string()],
+%%   <<"Url">> => [string()]
+%% }
+-type ingest_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_switch_configuration() :: #{
+%%   <<"MQCSInputSwitching">> => [boolean()],
+%%   <<"PreferredInput">> => [integer()]
+%% }
+-type input_switch_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_channel_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channel_groups_response() :: #{
+%%   <<"Items">> => list(channel_group_list_configuration()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_channel_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_channels_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_channels_response() :: #{
@@ -741,19 +833,275 @@
 %% }
 -type list_channels_response() :: #{binary() => any()}.
 
-%% Example:
-%% delete_origin_endpoint_policy_request() :: #{}
--type delete_origin_endpoint_policy_request() :: #{}.
-
 
 %% Example:
-%% create_mss_manifest_configuration() :: #{
-%%   <<"FilterConfiguration">> => filter_configuration(),
-%%   <<"ManifestLayout">> => list(any()),
+%% list_dash_manifest_configuration() :: #{
 %%   <<"ManifestName">> => string(),
-%%   <<"ManifestWindowSeconds">> => [integer()]
+%%   <<"Url">> => [string()]
 %% }
--type create_mss_manifest_configuration() :: #{binary() => any()}.
+-type list_dash_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harvest_jobs_request() :: #{
+%%   <<"ChannelName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_harvest_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_harvest_jobs_response() :: #{
+%%   <<"Items">> => list(harvest_job()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_harvest_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"ManifestName">> => string(),
+%%   <<"Url">> => [string()]
+%% }
+-type list_hls_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_low_latency_hls_manifest_configuration() :: #{
+%%   <<"ChildManifestName">> => string(),
+%%   <<"ManifestName">> => string(),
+%%   <<"Url">> => [string()]
+%% }
+-type list_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_mss_manifest_configuration() :: #{
+%%   <<"ManifestName">> => string(),
+%%   <<"Url">> => [string()]
+%% }
+-type list_mss_manifest_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_endpoints_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_origin_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_origin_endpoints_response() :: #{
+%%   <<"Items">> => list(origin_endpoint_list_configuration()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_origin_endpoints_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% origin_endpoint_list_configuration() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ContainerType">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DashManifests">> => list(list_dash_manifest_configuration()),
+%%   <<"Description">> => string(),
+%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
+%%   <<"HlsManifests">> => list(list_hls_manifest_configuration()),
+%%   <<"LowLatencyHlsManifests">> => list(list_low_latency_hls_manifest_configuration()),
+%%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MssManifests">> => list(list_mss_manifest_configuration()),
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"UriSeparator">> => list(any())
+%% }
+-type origin_endpoint_list_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_header_configuration() :: #{
+%%   <<"PublishMQCS">> => [boolean()]
+%% }
+-type output_header_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_channel_policy_request() :: #{
+%%   <<"Policy">> := string()
+%% }
+-type put_channel_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_channel_policy_response() :: #{}
+-type put_channel_policy_response() :: #{}.
+
+
+%% Example:
+%% put_origin_endpoint_policy_request() :: #{
+%%   <<"CdnAuthConfiguration">> => cdn_auth_configuration(),
+%%   <<"Policy">> := string()
+%% }
+-type put_origin_endpoint_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_origin_endpoint_policy_response() :: #{}
+-type put_origin_endpoint_policy_response() :: #{}.
+
+%% Example:
+%% reset_channel_state_request() :: #{}
+-type reset_channel_state_request() :: #{}.
+
+
+%% Example:
+%% reset_channel_state_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => [string()],
+%%   <<"ChannelName">> => [string()],
+%%   <<"ResetAt">> => [non_neg_integer()]
+%% }
+-type reset_channel_state_response() :: #{binary() => any()}.
+
+%% Example:
+%% reset_origin_endpoint_state_request() :: #{}
+-type reset_origin_endpoint_state_request() :: #{}.
+
+
+%% Example:
+%% reset_origin_endpoint_state_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"ChannelGroupName">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"OriginEndpointName">> => string(),
+%%   <<"ResetAt">> => [non_neg_integer()]
+%% }
+-type reset_origin_endpoint_state_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceTypeNotFound">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_destination_config() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"DestinationPath">> => string()
+%% }
+-type s3_destination_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte() :: #{
+%%   <<"CustomAdTypes">> => list(list(any())()),
+%%   <<"ScteFilter">> => list(list(any())()),
+%%   <<"ScteInSegments">> => list(any())
+%% }
+-type scte() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte_dash() :: #{
+%%   <<"AdMarkerDash">> => list(any()),
+%%   <<"ScteInManifests">> => list(any())
+%% }
+-type scte_dash() :: #{binary() => any()}.
+
+
+%% Example:
+%% scte_hls() :: #{
+%%   <<"AdMarkerHls">> => list(any()),
+%%   <<"ScteInManifests">> => list(any())
+%% }
+-type scte_hls() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment() :: #{
+%%   <<"Encryption">> => encryption(),
+%%   <<"IncludeIframeOnlyStreams">> => [boolean()],
+%%   <<"OutputTimestampMode">> => list(any()),
+%%   <<"Scte">> => scte(),
+%%   <<"SegmentDurationSeconds">> => [integer()],
+%%   <<"SegmentName">> => [string()],
+%%   <<"TsIncludeDvbSubtitles">> => [boolean()],
+%%   <<"TsUseAudioRenditionGroup">> => [boolean()]
+%% }
+-type segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% speke_key_provider() :: #{
+%%   <<"CertificateArn">> => [string()],
+%%   <<"DrmSystems">> => list(list(any())()),
+%%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
+%%   <<"ResourceId">> => [string()],
+%%   <<"RoleArn">> => [string()],
+%%   <<"Url">> => [string()]
+%% }
+-type speke_key_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_tag() :: #{
+%%   <<"Precise">> => [boolean()],
+%%   <<"TimeOffset">> => [float()]
+%% }
+-type start_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_group_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ETag">> => string()
+%% }
+-type update_channel_group_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -781,228 +1129,6 @@
 
 
 %% Example:
-%% encryption_contract_configuration() :: #{
-%%   <<"PresetSpeke20Audio">> => list(any()),
-%%   <<"PresetSpeke20Video">> => list(any())
-%% }
--type encryption_contract_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% harvested_hls_manifest() :: #{
-%%   <<"ManifestName">> => string()
-%% }
--type harvested_hls_manifest() :: #{binary() => any()}.
-
-
-%% Example:
-%% scte_dash() :: #{
-%%   <<"AdMarkerDash">> => list(any()),
-%%   <<"ScteInManifests">> => list(any())
-%% }
--type scte_dash() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_channel_groups_response() :: #{
-%%   <<"Items">> => list(channel_group_list_configuration()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_channel_groups_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_harvest_job_request() :: #{
-%%   <<"ETag">> => string()
-%% }
--type cancel_harvest_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_method() :: #{
-%%   <<"CmafEncryptionMethod">> => list(any()),
-%%   <<"IsmEncryptionMethod">> => list(any()),
-%%   <<"TsEncryptionMethod">> => list(any())
-%% }
--type encryption_method() :: #{binary() => any()}.
-
-
-%% Example:
-%% scte_hls() :: #{
-%%   <<"AdMarkerHls">> => list(any()),
-%%   <<"ScteInManifests">> => list(any())
-%% }
--type scte_hls() :: #{binary() => any()}.
-
-%% Example:
-%% reset_origin_endpoint_state_request() :: #{}
--type reset_origin_endpoint_state_request() :: #{}.
-
-%% Example:
-%% get_harvest_job_request() :: #{}
--type get_harvest_job_request() :: #{}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ValidationExceptionType">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% destination() :: #{
-%%   <<"S3Destination">> => s3_destination_config()
-%% }
--type destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_low_latency_hls_manifest_configuration() :: #{
-%%   <<"ChildManifestName">> => string(),
-%%   <<"ManifestName">> => string(),
-%%   <<"Url">> => [string()]
-%% }
--type list_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_harvest_job_response() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Description">> => string(),
-%%   <<"Destination">> => destination(),
-%%   <<"ETag">> => string(),
-%%   <<"ErrorMessage">> => [string()],
-%%   <<"HarvestJobName">> => string(),
-%%   <<"HarvestedManifests">> => harvested_manifests(),
-%%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"OriginEndpointName">> => string(),
-%%   <<"ScheduleConfiguration">> => harvester_schedule_configuration(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type get_harvest_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% harvest_job() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Description">> => string(),
-%%   <<"Destination">> => destination(),
-%%   <<"ETag">> => string(),
-%%   <<"ErrorMessage">> => [string()],
-%%   <<"HarvestJobName">> => string(),
-%%   <<"HarvestedManifests">> => harvested_manifests(),
-%%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"OriginEndpointName">> => string(),
-%%   <<"ScheduleConfiguration">> => harvester_schedule_configuration(),
-%%   <<"Status">> => list(any())
-%% }
--type harvest_job() :: #{binary() => any()}.
-
-%% Example:
-%% get_channel_group_request() :: #{}
--type get_channel_group_request() :: #{}.
-
-
-%% Example:
-%% scte() :: #{
-%%   <<"CustomAdTypes">> => list(list(any())()),
-%%   <<"ScteFilter">> => list(list(any())()),
-%%   <<"ScteInSegments">> => list(any())
-%% }
--type scte() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_channel_response() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => [string()],
-%%   <<"ChannelName">> => [string()],
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Description">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"IngestEndpoints">> => list(ingest_endpoint()),
-%%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
-%%   <<"InputType">> => list(any()),
-%%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
-%%   <<"ResetAt">> => [non_neg_integer()],
-%%   <<"Tags">> => map()
-%% }
--type get_channel_response() :: #{binary() => any()}.
-
-%% Example:
-%% reset_channel_state_request() :: #{}
--type reset_channel_state_request() :: #{}.
-
-
-%% Example:
-%% create_harvest_job_response() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Description">> => string(),
-%%   <<"Destination">> => destination(),
-%%   <<"ETag">> => string(),
-%%   <<"ErrorMessage">> => [string()],
-%%   <<"HarvestJobName">> => string(),
-%%   <<"HarvestedManifests">> => harvested_manifests(),
-%%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"OriginEndpointName">> => string(),
-%%   <<"ScheduleConfiguration">> => harvester_schedule_configuration(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_harvest_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_harvest_jobs_response() :: #{
-%%   <<"Items">> => list(harvest_job()),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_harvest_jobs_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_origin_endpoint_request() :: #{}
--type get_origin_endpoint_request() :: #{}.
-
-
-%% Example:
 %% update_channel_response() :: #{
 %%   <<"Arn">> => [string()],
 %%   <<"ChannelGroupName">> => [string()],
@@ -1015,95 +1141,27 @@
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
 %%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
+%%   <<"OutputLockingMode">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
 -type update_channel_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% origin_endpoint_list_configuration() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"ContainerType">> => list(any()),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DashManifests">> => list(list_dash_manifest_configuration()),
+%% update_origin_endpoint_request() :: #{
+%%   <<"ContainerType">> := list(any()),
+%%   <<"DashManifests">> => list(create_dash_manifest_configuration()),
 %%   <<"Description">> => string(),
+%%   <<"ETag">> => string(),
 %%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
-%%   <<"HlsManifests">> => list(list_hls_manifest_configuration()),
-%%   <<"LowLatencyHlsManifests">> => list(list_low_latency_hls_manifest_configuration()),
-%%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"MssManifests">> => list(list_mss_manifest_configuration()),
-%%   <<"OriginEndpointName">> => string(),
+%%   <<"HlsManifests">> => list(create_hls_manifest_configuration()),
+%%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()),
+%%   <<"MssManifests">> => list(create_mss_manifest_configuration()),
+%%   <<"Segment">> => segment(),
+%%   <<"StartoverWindowSeconds">> => [integer()],
 %%   <<"UriSeparator">> => list(any())
 %% }
--type origin_endpoint_list_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% get_channel_policy_request() :: #{}
--type get_channel_policy_request() :: #{}.
-
-
-%% Example:
-%% reset_channel_state_response() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => [string()],
-%%   <<"ChannelName">> => [string()],
-%%   <<"ResetAt">> => [non_neg_integer()]
-%% }
--type reset_channel_state_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_channel_group_response() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => [string()],
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Description">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"EgressDomain">> => [string()],
-%%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"Tags">> => map()
-%% }
--type get_channel_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_low_latency_hls_manifest_configuration() :: #{
-%%   <<"ChildManifestName">> => string(),
-%%   <<"FilterConfiguration">> => filter_configuration(),
-%%   <<"ManifestName">> => string(),
-%%   <<"ManifestWindowSeconds">> => [integer()],
-%%   <<"ProgramDateTimeIntervalSeconds">> => [integer()],
-%%   <<"ScteHls">> => scte_hls(),
-%%   <<"StartTag">> => start_tag(),
-%%   <<"UriPathType">> => list(any()),
-%%   <<"UrlEncodeChildManifest">> => [boolean()]
-%% }
--type create_low_latency_hls_manifest_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_channel_group_response() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => [string()],
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"Description">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"EgressDomain">> => [string()],
-%%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"Tags">> => map()
-%% }
--type create_channel_group_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% harvested_manifests() :: #{
-%%   <<"DashManifests">> => list(harvested_dash_manifest()),
-%%   <<"HlsManifests">> => list(harvested_hls_manifest()),
-%%   <<"LowLatencyHlsManifests">> => list(harvested_low_latency_hls_manifest())
-%% }
--type harvested_manifests() :: #{binary() => any()}.
+-type update_origin_endpoint_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1131,245 +1189,193 @@
 
 
 %% Example:
-%% list_channels_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
+%% validation_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ValidationExceptionType">> => list(any())
 %% }
--type list_channels_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_origin_endpoints_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => [string()]
-%% }
--type list_origin_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_destination_config() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"DestinationPath">> => string()
-%% }
--type s3_destination_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_origin_endpoint_policy_response() :: #{
-%%   <<"CdnAuthConfiguration">> => cdn_auth_configuration(),
-%%   <<"ChannelGroupName">> => string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"OriginEndpointName">> => string(),
-%%   <<"Policy">> => string()
-%% }
--type get_origin_endpoint_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_origin_endpoint_response() :: #{
-%%   <<"Arn">> => [string()],
-%%   <<"ChannelGroupName">> => string(),
-%%   <<"ChannelName">> => string(),
-%%   <<"ContainerType">> => list(any()),
-%%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DashManifests">> => list(get_dash_manifest_configuration()),
-%%   <<"Description">> => string(),
-%%   <<"ETag">> => string(),
-%%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
-%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()),
-%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()),
-%%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"MssManifests">> => list(get_mss_manifest_configuration()),
-%%   <<"OriginEndpointName">> => string(),
-%%   <<"ResetAt">> => [non_neg_integer()],
-%%   <<"Segment">> => segment(),
-%%   <<"StartoverWindowSeconds">> => [integer()],
-%%   <<"Tags">> => map(),
-%%   <<"UriSeparator">> => list(any())
-%% }
--type get_origin_endpoint_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 -type cancel_harvest_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_channel_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_harvest_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_origin_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_channel_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_channel_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_origin_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_origin_endpoint_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_channel_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_channel_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_harvest_job_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_origin_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_origin_endpoint_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_channel_groups_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_channels_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_harvest_jobs_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_origin_endpoints_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception().
 
 -type put_channel_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type put_origin_endpoint_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type reset_channel_state_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type reset_origin_endpoint_state_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception().
@@ -1378,29 +1384,29 @@
     validation_exception().
 
 -type update_channel_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_channel_group_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_origin_endpoint_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

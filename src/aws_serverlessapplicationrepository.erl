@@ -84,27 +84,6 @@
 
 
 %% Example:
-%% list_application_dependencies_response() :: #{
-%%   <<"Dependencies">> => list(application_dependency_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_dependencies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cloud_formation_template_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CreationTime">> => string(),
-%%   <<"ExpirationTime">> => string(),
-%%   <<"SemanticVersion">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TemplateId">> => string(),
-%%   <<"TemplateUrl">> => string()
-%% }
--type get_cloud_formation_template_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% application_dependency_summary() :: #{
 %%   <<"ApplicationId">> => string(),
 %%   <<"SemanticVersion">> => string()
@@ -113,34 +92,83 @@
 
 
 %% Example:
-%% forbidden_exception() :: #{
+%% application_policy_statement() :: #{
+%%   <<"Actions">> => list(string()),
+%%   <<"PrincipalOrgIDs">> => list(string()),
+%%   <<"Principals">> => list(string()),
+%%   <<"StatementId">> => string()
+%% }
+-type application_policy_statement() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_summary() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Author">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"HomePageUrl">> => string(),
+%%   <<"Labels">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"SpdxLicenseId">> => string()
+%% }
+-type application_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"Message">> => string()
 %% }
--type forbidden_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_cloud_formation_template_request() :: #{}
--type get_cloud_formation_template_request() :: #{}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% parameter_definition() :: #{
-%%   <<"AllowedPattern">> => string(),
-%%   <<"AllowedValues">> => list(string()),
-%%   <<"ConstraintDescription">> => string(),
-%%   <<"DefaultValue">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"MaxLength">> => integer(),
-%%   <<"MaxValue">> => integer(),
-%%   <<"MinLength">> => integer(),
-%%   <<"MinValue">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"NoEcho">> => boolean(),
-%%   <<"ReferencedByResources">> => list(string()),
-%%   <<"Type">> => string()
+%% conflict_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
 %% }
--type parameter_definition() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"Author">> := string(),
+%%   <<"Description">> := string(),
+%%   <<"HomePageUrl">> => string(),
+%%   <<"Labels">> => list(string()),
+%%   <<"LicenseBody">> => string(),
+%%   <<"LicenseUrl">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"ReadmeBody">> => string(),
+%%   <<"ReadmeUrl">> => string(),
+%%   <<"SemanticVersion">> => string(),
+%%   <<"SourceCodeArchiveUrl">> => string(),
+%%   <<"SourceCodeUrl">> => string(),
+%%   <<"SpdxLicenseId">> => string(),
+%%   <<"TemplateBody">> => string(),
+%%   <<"TemplateUrl">> => string()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_application_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Author">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"HomePageUrl">> => string(),
+%%   <<"IsVerifiedAuthor">> => boolean(),
+%%   <<"Labels">> => list(string()),
+%%   <<"LicenseUrl">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReadmeUrl">> => string(),
+%%   <<"SpdxLicenseId">> => string(),
+%%   <<"VerifiedAuthorUrl">> => string(),
+%%   <<"Version">> => version()
+%% }
+-type create_application_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -169,88 +197,38 @@
 
 
 %% Example:
-%% get_application_policy_response() :: #{
-%%   <<"Statements">> => list(application_policy_statement())
+%% create_cloud_formation_change_set_request() :: #{
+%%   <<"Capabilities">> => list(string()),
+%%   <<"ChangeSetName">> => string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"NotificationArns">> => list(string()),
+%%   <<"ParameterOverrides">> => list(parameter_value()),
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"RollbackConfiguration">> => rollback_configuration(),
+%%   <<"SemanticVersion">> => string(),
+%%   <<"StackName">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TemplateId">> => string()
 %% }
--type get_application_policy_response() :: #{binary() => any()}.
+-type create_cloud_formation_change_set_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% version_summary() :: #{
+%% create_cloud_formation_change_set_response() :: #{
 %%   <<"ApplicationId">> => string(),
-%%   <<"CreationTime">> => string(),
+%%   <<"ChangeSetId">> => string(),
 %%   <<"SemanticVersion">> => string(),
-%%   <<"SourceCodeUrl">> => string()
+%%   <<"StackId">> => string()
 %% }
--type version_summary() :: #{binary() => any()}.
+-type create_cloud_formation_change_set_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% parameter_value() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
+%% create_cloud_formation_template_request() :: #{
+%%   <<"SemanticVersion">> => string()
 %% }
--type parameter_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_application_policy_request() :: #{
-%%   <<"Statements">> := list(application_policy_statement())
-%% }
--type put_application_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_application_request() :: #{
-%%   <<"Author">> := string(),
-%%   <<"Description">> := string(),
-%%   <<"HomePageUrl">> => string(),
-%%   <<"Labels">> => list(string()),
-%%   <<"LicenseBody">> => string(),
-%%   <<"LicenseUrl">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"ReadmeBody">> => string(),
-%%   <<"ReadmeUrl">> => string(),
-%%   <<"SemanticVersion">> => string(),
-%%   <<"SourceCodeArchiveUrl">> => string(),
-%%   <<"SourceCodeUrl">> => string(),
-%%   <<"SpdxLicenseId">> => string(),
-%%   <<"TemplateBody">> => string(),
-%%   <<"TemplateUrl">> => string()
-%% }
--type create_application_request() :: #{binary() => any()}.
+-type create_cloud_formation_template_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -265,9 +243,39 @@
 %% }
 -type create_cloud_formation_template_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_application_request() :: #{}
+-type delete_application_request() :: #{}.
+
 
 %% Example:
-%% create_application_response() :: #{
+%% forbidden_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_policy_request() :: #{}
+-type get_application_policy_request() :: #{}.
+
+
+%% Example:
+%% get_application_policy_response() :: #{
+%%   <<"Statements">> => list(application_policy_statement())
+%% }
+-type get_application_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_application_request() :: #{
+%%   <<"SemanticVersion">> => string()
+%% }
+-type get_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_application_response() :: #{
 %%   <<"ApplicationId">> => string(),
 %%   <<"Author">> => string(),
 %%   <<"CreationTime">> => string(),
@@ -282,7 +290,32 @@
 %%   <<"VerifiedAuthorUrl">> => string(),
 %%   <<"Version">> => version()
 %% }
--type create_application_response() :: #{binary() => any()}.
+-type get_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_cloud_formation_template_request() :: #{}
+-type get_cloud_formation_template_request() :: #{}.
+
+
+%% Example:
+%% get_cloud_formation_template_response() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"CreationTime">> => string(),
+%%   <<"ExpirationTime">> => string(),
+%%   <<"SemanticVersion">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TemplateId">> => string(),
+%%   <<"TemplateUrl">> => string()
+%% }
+-type get_cloud_formation_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -295,18 +328,131 @@
 
 
 %% Example:
-%% version() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"CreationTime">> => string(),
-%%   <<"ParameterDefinitions">> => list(parameter_definition()),
-%%   <<"RequiredCapabilities">> => list(list(any())()),
-%%   <<"ResourcesSupported">> => boolean(),
-%%   <<"SemanticVersion">> => string(),
-%%   <<"SourceCodeArchiveUrl">> => string(),
-%%   <<"SourceCodeUrl">> => string(),
-%%   <<"TemplateUrl">> => string()
+%% list_application_dependencies_response() :: #{
+%%   <<"Dependencies">> => list(application_dependency_summary()),
+%%   <<"NextToken">> => string()
 %% }
--type version() :: #{binary() => any()}.
+-type list_application_dependencies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_application_versions_request() :: #{
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_application_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_application_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Versions">> => list(version_summary())
+%% }
+-type list_application_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_request() :: #{
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_applications_response() :: #{
+%%   <<"Applications">> => list(application_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_definition() :: #{
+%%   <<"AllowedPattern">> => string(),
+%%   <<"AllowedValues">> => list(string()),
+%%   <<"ConstraintDescription">> => string(),
+%%   <<"DefaultValue">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"MaxLength">> => integer(),
+%%   <<"MaxValue">> => integer(),
+%%   <<"MinLength">> => integer(),
+%%   <<"MinValue">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NoEcho">> => boolean(),
+%%   <<"ReferencedByResources">> => list(string()),
+%%   <<"Type">> => string()
+%% }
+-type parameter_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_value() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type parameter_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_application_policy_request() :: #{
+%%   <<"Statements">> := list(application_policy_statement())
+%% }
+-type put_application_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_application_policy_response() :: #{
+%%   <<"Statements">> => list(application_policy_statement())
+%% }
+-type put_application_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% rollback_configuration() :: #{
+%%   <<"MonitoringTimeInMinutes">> => integer(),
+%%   <<"RollbackTriggers">> => list(rollback_trigger())
+%% }
+-type rollback_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rollback_trigger() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type rollback_trigger() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unshare_application_request() :: #{
+%%   <<"OrganizationId">> := string()
+%% }
+-type unshare_application_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -341,272 +487,126 @@
 
 
 %% Example:
-%% get_application_response() :: #{
+%% version() :: #{
 %%   <<"ApplicationId">> => string(),
-%%   <<"Author">> => string(),
 %%   <<"CreationTime">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"HomePageUrl">> => string(),
-%%   <<"IsVerifiedAuthor">> => boolean(),
-%%   <<"Labels">> => list(string()),
-%%   <<"LicenseUrl">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ReadmeUrl">> => string(),
-%%   <<"SpdxLicenseId">> => string(),
-%%   <<"VerifiedAuthorUrl">> => string(),
-%%   <<"Version">> => version()
-%% }
--type get_application_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_request() :: #{
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_application_policy_request() :: #{}
--type get_application_policy_request() :: #{}.
-
-
-%% Example:
-%% create_cloud_formation_change_set_request() :: #{
-%%   <<"Capabilities">> => list(string()),
-%%   <<"ChangeSetName">> => string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"NotificationArns">> => list(string()),
-%%   <<"ParameterOverrides">> => list(parameter_value()),
-%%   <<"ResourceTypes">> => list(string()),
-%%   <<"RollbackConfiguration">> => rollback_configuration(),
+%%   <<"ParameterDefinitions">> => list(parameter_definition()),
+%%   <<"RequiredCapabilities">> => list(list(any())()),
+%%   <<"ResourcesSupported">> => boolean(),
 %%   <<"SemanticVersion">> => string(),
-%%   <<"StackName">> := string(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"TemplateId">> => string()
+%%   <<"SourceCodeArchiveUrl">> => string(),
+%%   <<"SourceCodeUrl">> => string(),
+%%   <<"TemplateUrl">> => string()
 %% }
--type create_cloud_formation_change_set_request() :: #{binary() => any()}.
+-type version() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_policy_statement() :: #{
-%%   <<"Actions">> => list(string()),
-%%   <<"PrincipalOrgIDs">> => list(string()),
-%%   <<"Principals">> => list(string()),
-%%   <<"StatementId">> => string()
-%% }
--type application_policy_statement() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_application_versions_request() :: #{
-%%   <<"MaxItems">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_application_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% application_summary() :: #{
+%% version_summary() :: #{
 %%   <<"ApplicationId">> => string(),
-%%   <<"Author">> => string(),
 %%   <<"CreationTime">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"HomePageUrl">> => string(),
-%%   <<"Labels">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"SpdxLicenseId">> => string()
-%% }
--type application_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% unshare_application_request() :: #{
-%%   <<"OrganizationId">> := string()
-%% }
--type unshare_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_applications_response() :: #{
-%%   <<"Applications">> => list(application_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_applications_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_application_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_summary())
-%% }
--type list_application_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% rollback_configuration() :: #{
-%%   <<"MonitoringTimeInMinutes">> => integer(),
-%%   <<"RollbackTriggers">> => list(rollback_trigger())
-%% }
--type rollback_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% rollback_trigger() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Type">> => string()
-%% }
--type rollback_trigger() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_application_policy_response() :: #{
-%%   <<"Statements">> => list(application_policy_statement())
-%% }
--type put_application_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_application_request() :: #{
-%%   <<"SemanticVersion">> => string()
-%% }
--type get_application_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cloud_formation_template_request() :: #{
-%%   <<"SemanticVersion">> => string()
-%% }
--type create_cloud_formation_template_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_request() :: #{}
--type delete_application_request() :: #{}.
-
-
-%% Example:
-%% create_cloud_formation_change_set_response() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"ChangeSetId">> => string(),
 %%   <<"SemanticVersion">> => string(),
-%%   <<"StackId">> => string()
+%%   <<"SourceCodeUrl">> => string()
 %% }
--type create_cloud_formation_change_set_response() :: #{binary() => any()}.
+-type version_summary() :: #{binary() => any()}.
 
 -type create_application_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_application_version_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_cloud_formation_change_set_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type create_cloud_formation_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_application_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_application_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_application_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_cloud_formation_template_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_application_dependencies_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_application_versions_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_applications_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type put_application_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type unshare_application_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_application_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
-    conflict_exception() | 
     too_many_requests_exception() | 
-    forbidden_exception().
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

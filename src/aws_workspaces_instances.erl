@@ -37,75 +37,98 @@
 
 
 %% Example:
-%% ena_srd_specification_request() :: #{
-%%   <<"EnaSrdEnabled">> => [boolean()],
-%%   <<"EnaSrdUdpSpecification">> => ena_srd_udp_specification_request()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()]
 %% }
--type ena_srd_specification_request() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
-%% instance_network_performance_options_request() :: #{
-%%   <<"BandwidthWeighting">> => list(any())
-%% }
--type instance_network_performance_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% ec2_managed_instance() :: #{
-%%   <<"InstanceId">> => [string()]
-%% }
--type ec2_managed_instance() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag()),
+%% associate_volume_request() :: #{
+%%   <<"Device">> := string(),
+%%   <<"VolumeId">> := string(),
 %%   <<"WorkspaceInstanceId">> := string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% spot_market_options() :: #{
-%%   <<"BlockDurationMinutes">> => integer(),
-%%   <<"InstanceInterruptionBehavior">> => list(any()),
-%%   <<"MaxPrice">> => string(),
-%%   <<"SpotInstanceType">> => list(any()),
-%%   <<"ValidUntilUtc">> => [non_neg_integer()]
-%% }
--type spot_market_options() :: #{binary() => any()}.
-
-%% Example:
-%% instance_metadata_options_request() :: #{
-%%   <<"HttpEndpoint">> => list(any()),
-%%   <<"HttpProtocolIpv6">> => list(any()),
-%%   <<"HttpPutResponseHopLimit">> => integer(),
-%%   <<"HttpTokens">> => list(any()),
-%%   <<"InstanceMetadataTags">> => list(any())
-%% }
--type instance_metadata_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_volume_response() :: #{
-
-%% }
--type disassociate_volume_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_volume_request() :: #{
-%%   <<"VolumeId">> := string()
-%% }
--type delete_volume_request() :: #{binary() => any()}.
-
-%% Example:
-%% instance_market_options_request() :: #{
-%%   <<"MarketType">> => list(any()),
-%%   <<"SpotOptions">> => spot_market_options()
-%% }
--type instance_market_options_request() :: #{binary() => any()}.
+-type associate_volume_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_volume_response() :: #{
 
 %% }
 -type associate_volume_response() :: #{binary() => any()}.
+
+%% Example:
+%% billing_configuration() :: #{
+%%   <<"BillingMode">> => list(any())
+%% }
+-type billing_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% block_device_mapping_request() :: #{
+%%   <<"DeviceName">> => string(),
+%%   <<"Ebs">> => ebs_block_device(),
+%%   <<"NoDevice">> => string(),
+%%   <<"VirtualName">> => string()
+%% }
+-type block_device_mapping_request() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_specification() :: #{
+%%   <<"CapacityReservationPreference">> => list(any()),
+%%   <<"CapacityReservationTarget">> => capacity_reservation_target()
+%% }
+-type capacity_reservation_specification() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_target() :: #{
+%%   <<"CapacityReservationId">> => string(),
+%%   <<"CapacityReservationResourceGroupArn">> => string()
+%% }
+-type capacity_reservation_target() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% connection_tracking_specification_request() :: #{
+%%   <<"TcpEstablishedTimeout">> => integer(),
+%%   <<"UdpStreamTimeout">> => integer(),
+%%   <<"UdpTimeout">> => integer()
+%% }
+-type connection_tracking_specification_request() :: #{binary() => any()}.
+
+%% Example:
+%% cpu_options_request() :: #{
+%%   <<"AmdSevSnp">> => list(any()),
+%%   <<"CoreCount">> => integer(),
+%%   <<"ThreadsPerCore">> => integer()
+%% }
+-type cpu_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_volume_request() :: #{
+%%   <<"AvailabilityZone">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Encrypted">> => [boolean()],
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"SizeInGB">> => integer(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"Throughput">> => integer(),
+%%   <<"VolumeType">> => list(any())
+%% }
+-type create_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_volume_response() :: #{
+%%   <<"VolumeId">> => string()
+%% }
+-type create_volume_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_workspace_instance_request() :: #{
@@ -117,67 +140,10 @@
 -type create_workspace_instance_request() :: #{binary() => any()}.
 
 %% Example:
-%% untag_resource_response() :: #{
-
+%% create_workspace_instance_response() :: #{
+%%   <<"WorkspaceInstanceId">> => string()
 %% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_workspace_instances_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"WorkspaceInstances">> => list(workspace_instance())
-%% }
--type list_workspace_instances_response() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_reservation_target() :: #{
-%%   <<"CapacityReservationId">> => string(),
-%%   <<"CapacityReservationResourceGroupArn">> => string()
-%% }
--type capacity_reservation_target() :: #{binary() => any()}.
-
-%% Example:
-%% cpu_options_request() :: #{
-%%   <<"AmdSevSnp">> => list(any()),
-%%   <<"CoreCount">> => integer(),
-%%   <<"ThreadsPerCore">> => integer()
-%% }
--type cpu_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% connection_tracking_specification_request() :: #{
-%%   <<"TcpEstablishedTimeout">> => integer(),
-%%   <<"UdpStreamTimeout">> => integer(),
-%%   <<"UdpTimeout">> => integer()
-%% }
--type connection_tracking_specification_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()),
-%%   <<"WorkspaceInstanceId">> := string()
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% ipv6_prefix_specification_request() :: #{
-%%   <<"Ipv6Prefix">> => string()
-%% }
--type ipv6_prefix_specification_request() :: #{binary() => any()}.
-
-%% Example:
-%% enclave_options_request() :: #{
-%%   <<"Enabled">> => [boolean()]
-%% }
--type enclave_options_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_volume_request() :: #{
-%%   <<"Device">> := string(),
-%%   <<"VolumeId">> := string(),
-%%   <<"WorkspaceInstanceId">> := string()
-%% }
--type associate_volume_request() :: #{binary() => any()}.
+-type create_workspace_instance_response() :: #{binary() => any()}.
 
 %% Example:
 %% credit_specification_request() :: #{
@@ -186,22 +152,16 @@
 -type credit_specification_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_workspace_instance_request() :: #{
-%%   <<"WorkspaceInstanceId">> := string()
+%% delete_volume_request() :: #{
+%%   <<"VolumeId">> := string()
 %% }
--type get_workspace_instance_request() :: #{binary() => any()}.
+-type delete_volume_request() :: #{binary() => any()}.
 
 %% Example:
-%% ena_srd_udp_specification_request() :: #{
-%%   <<"EnaSrdUdpEnabled">> => [boolean()]
-%% }
--type ena_srd_udp_specification_request() :: #{binary() => any()}.
+%% delete_volume_response() :: #{
 
-%% Example:
-%% region() :: #{
-%%   <<"RegionName">> => string()
 %% }
--type region() :: #{binary() => any()}.
+-type delete_volume_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_workspace_instance_request() :: #{
@@ -210,46 +170,10 @@
 -type delete_workspace_instance_request() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
+%% delete_workspace_instance_response() :: #{
 
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()]
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% ipv4_prefix_specification_request() :: #{
-%%   <<"Ipv4Prefix">> => string()
-%% }
--type ipv4_prefix_specification_request() :: #{binary() => any()}.
-
-%% Example:
-%% private_ip_address_specification() :: #{
-%%   <<"Primary">> => [boolean()],
-%%   <<"PrivateIpAddress">> => string()
-%% }
--type private_ip_address_specification() :: #{binary() => any()}.
-
-%% Example:
-%% hibernation_options_request() :: #{
-%%   <<"Configured">> => [boolean()]
-%% }
--type hibernation_options_request() :: #{binary() => any()}.
+-type delete_workspace_instance_response() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_volume_request() :: #{
@@ -261,22 +185,60 @@
 -type disassociate_volume_request() :: #{binary() => any()}.
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"QuotaCode">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()],
-%%   <<"ServiceCode">> => [string()]
+%% disassociate_volume_response() :: #{
+
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type disassociate_volume_response() :: #{binary() => any()}.
 
 %% Example:
-%% private_dns_name_options_request() :: #{
-%%   <<"EnableResourceNameDnsAAAARecord">> => [boolean()],
-%%   <<"EnableResourceNameDnsARecord">> => [boolean()],
-%%   <<"HostnameType">> => list(any())
+%% ebs_block_device() :: #{
+%%   <<"Encrypted">> => [boolean()],
+%%   <<"Iops">> => integer(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"Throughput">> => integer(),
+%%   <<"VolumeSize">> => integer(),
+%%   <<"VolumeType">> => list(any())
 %% }
--type private_dns_name_options_request() :: #{binary() => any()}.
+-type ebs_block_device() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_instance_error() :: #{
+%%   <<"EC2ErrorCode">> => [string()],
+%%   <<"EC2ErrorMessage">> => [string()],
+%%   <<"EC2ExceptionType">> => [string()]
+%% }
+-type ec2_instance_error() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_managed_instance() :: #{
+%%   <<"InstanceId">> => [string()]
+%% }
+-type ec2_managed_instance() :: #{binary() => any()}.
+
+%% Example:
+%% ena_srd_specification_request() :: #{
+%%   <<"EnaSrdEnabled">> => [boolean()],
+%%   <<"EnaSrdUdpSpecification">> => ena_srd_udp_specification_request()
+%% }
+-type ena_srd_specification_request() :: #{binary() => any()}.
+
+%% Example:
+%% ena_srd_udp_specification_request() :: #{
+%%   <<"EnaSrdUdpEnabled">> => [boolean()]
+%% }
+-type ena_srd_udp_specification_request() :: #{binary() => any()}.
+
+%% Example:
+%% enclave_options_request() :: #{
+%%   <<"Enabled">> => [boolean()]
+%% }
+-type enclave_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_workspace_instance_request() :: #{
+%%   <<"WorkspaceInstanceId">> := string()
+%% }
+-type get_workspace_instance_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_workspace_instance_response() :: #{
@@ -290,12 +252,134 @@
 -type get_workspace_instance_response() :: #{binary() => any()}.
 
 %% Example:
-%% workspace_instance() :: #{
-%%   <<"EC2ManagedInstance">> => ec2_managed_instance(),
-%%   <<"ProvisionState">> => list(any()),
-%%   <<"WorkspaceInstanceId">> => string()
+%% hibernation_options_request() :: #{
+%%   <<"Configured">> => [boolean()]
 %% }
--type workspace_instance() :: #{binary() => any()}.
+-type hibernation_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% iam_instance_profile_specification() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type iam_instance_profile_specification() :: #{binary() => any()}.
+
+%% Example:
+%% instance_configuration_filter() :: #{
+%%   <<"BillingMode">> => list(any()),
+%%   <<"PlatformType">> => list(any()),
+%%   <<"Tenancy">> => list(any())
+%% }
+-type instance_configuration_filter() :: #{binary() => any()}.
+
+%% Example:
+%% instance_ipv6_address() :: #{
+%%   <<"Ipv6Address">> => string(),
+%%   <<"IsPrimaryIpv6">> => [boolean()]
+%% }
+-type instance_ipv6_address() :: #{binary() => any()}.
+
+%% Example:
+%% instance_maintenance_options_request() :: #{
+%%   <<"AutoRecovery">> => list(any())
+%% }
+-type instance_maintenance_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_market_options_request() :: #{
+%%   <<"MarketType">> => list(any()),
+%%   <<"SpotOptions">> => spot_market_options()
+%% }
+-type instance_market_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_metadata_options_request() :: #{
+%%   <<"HttpEndpoint">> => list(any()),
+%%   <<"HttpProtocolIpv6">> => list(any()),
+%%   <<"HttpPutResponseHopLimit">> => integer(),
+%%   <<"HttpTokens">> => list(any()),
+%%   <<"InstanceMetadataTags">> => list(any())
+%% }
+-type instance_metadata_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_network_interface_specification() :: #{
+%%   <<"AssociateCarrierIpAddress">> => [boolean()],
+%%   <<"AssociatePublicIpAddress">> => [boolean()],
+%%   <<"ConnectionTrackingSpecification">> => connection_tracking_specification_request(),
+%%   <<"Description">> => string(),
+%%   <<"DeviceIndex">> => integer(),
+%%   <<"EnaSrdSpecification">> => ena_srd_specification_request(),
+%%   <<"Groups">> => list(string()),
+%%   <<"InterfaceType">> => list(any()),
+%%   <<"Ipv4PrefixCount">> => integer(),
+%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_request()),
+%%   <<"Ipv6AddressCount">> => integer(),
+%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()),
+%%   <<"Ipv6PrefixCount">> => integer(),
+%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_request()),
+%%   <<"NetworkCardIndex">> => integer(),
+%%   <<"NetworkInterfaceId">> => string(),
+%%   <<"PrimaryIpv6">> => [boolean()],
+%%   <<"PrivateIpAddress">> => string(),
+%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()),
+%%   <<"SecondaryPrivateIpAddressCount">> => integer(),
+%%   <<"SubnetId">> => string()
+%% }
+-type instance_network_interface_specification() :: #{binary() => any()}.
+
+%% Example:
+%% instance_network_performance_options_request() :: #{
+%%   <<"BandwidthWeighting">> => list(any())
+%% }
+-type instance_network_performance_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_type_info() :: #{
+%%   <<"InstanceType">> => string(),
+%%   <<"SupportedInstanceConfigurations">> => list(supported_instance_configuration())
+%% }
+-type instance_type_info() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"RetryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ipv4_prefix_specification_request() :: #{
+%%   <<"Ipv4Prefix">> => string()
+%% }
+-type ipv4_prefix_specification_request() :: #{binary() => any()}.
+
+%% Example:
+%% ipv6_prefix_specification_request() :: #{
+%%   <<"Ipv6Prefix">> => string()
+%% }
+-type ipv6_prefix_specification_request() :: #{binary() => any()}.
+
+%% Example:
+%% license_configuration_request() :: #{
+%%   <<"LicenseConfigurationArn">> => string()
+%% }
+-type license_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_types_request() :: #{
+%%   <<"InstanceConfigurationFilter">> => instance_configuration_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_instance_types_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_instance_types_response() :: #{
+%%   <<"InstanceTypes">> => list(instance_type_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_instance_types_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_regions_request() :: #{
@@ -305,19 +389,17 @@
 -type list_regions_request() :: #{binary() => any()}.
 
 %% Example:
-%% block_device_mapping_request() :: #{
-%%   <<"DeviceName">> => string(),
-%%   <<"Ebs">> => ebs_block_device(),
-%%   <<"NoDevice">> => string(),
-%%   <<"VirtualName">> => string()
+%% list_regions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Regions">> => list(region())
 %% }
--type block_device_mapping_request() :: #{binary() => any()}.
+-type list_regions_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_volume_response() :: #{
-%%   <<"VolumeId">> => string()
+%% list_tags_for_resource_request() :: #{
+%%   <<"WorkspaceInstanceId">> := string()
 %% }
--type create_volume_response() :: #{binary() => any()}.
+-type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -326,18 +408,19 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"Name">> => [string()],
-%%   <<"Reason">> => [string()]
+%% list_workspace_instances_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProvisionStates">> => list(list(any())())
 %% }
--type validation_exception_field() :: #{binary() => any()}.
+-type list_workspace_instances_request() :: #{binary() => any()}.
 
 %% Example:
-%% billing_configuration() :: #{
-%%   <<"BillingMode">> => list(any())
+%% list_workspace_instances_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"WorkspaceInstances">> => list(workspace_instance())
 %% }
--type billing_configuration() :: #{binary() => any()}.
+-type list_workspace_instances_response() :: #{binary() => any()}.
 
 %% Example:
 %% managed_instance_request() :: #{
@@ -377,24 +460,6 @@
 -type managed_instance_request() :: #{binary() => any()}.
 
 %% Example:
-%% ebs_block_device() :: #{
-%%   <<"Encrypted">> => [boolean()],
-%%   <<"Iops">> => integer(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"Throughput">> => integer(),
-%%   <<"VolumeSize">> => integer(),
-%%   <<"VolumeType">> => list(any())
-%% }
--type ebs_block_device() :: #{binary() => any()}.
-
-%% Example:
-%% capacity_reservation_specification() :: #{
-%%   <<"CapacityReservationPreference">> => list(any()),
-%%   <<"CapacityReservationTarget">> => capacity_reservation_target()
-%% }
--type capacity_reservation_specification() :: #{binary() => any()}.
-
-%% Example:
 %% placement() :: #{
 %%   <<"Affinity">> => string(),
 %%   <<"AvailabilityZone">> => string(),
@@ -408,66 +473,59 @@
 -type placement() :: #{binary() => any()}.
 
 %% Example:
-%% list_workspace_instances_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ProvisionStates">> => list(list(any())())
+%% private_dns_name_options_request() :: #{
+%%   <<"EnableResourceNameDnsAAAARecord">> => [boolean()],
+%%   <<"EnableResourceNameDnsARecord">> => [boolean()],
+%%   <<"HostnameType">> => list(any())
 %% }
--type list_workspace_instances_request() :: #{binary() => any()}.
+-type private_dns_name_options_request() :: #{binary() => any()}.
 
 %% Example:
-%% internal_server_exception() :: #{
+%% private_ip_address_specification() :: #{
+%%   <<"Primary">> => [boolean()],
+%%   <<"PrivateIpAddress">> => string()
+%% }
+-type private_ip_address_specification() :: #{binary() => any()}.
+
+%% Example:
+%% region() :: #{
+%%   <<"RegionName">> => string()
+%% }
+-type region() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
 %%   <<"Message">> => [string()],
-%%   <<"RetryAfterSeconds">> => [integer()]
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
-%% delete_volume_response() :: #{
-
+%% run_instances_monitoring_enabled() :: #{
+%%   <<"Enabled">> => [boolean()]
 %% }
--type delete_volume_response() :: #{binary() => any()}.
+-type run_instances_monitoring_enabled() :: #{binary() => any()}.
 
 %% Example:
-%% delete_workspace_instance_response() :: #{
-
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"QuotaCode">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()],
+%%   <<"ServiceCode">> => [string()]
 %% }
--type delete_workspace_instance_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_workspace_instance_response() :: #{
-%%   <<"WorkspaceInstanceId">> => string()
-%% }
--type create_workspace_instance_response() :: #{binary() => any()}.
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
-%% workspace_instance_error() :: #{
-%%   <<"ErrorCode">> => [string()],
-%%   <<"ErrorMessage">> => [string()]
+%% spot_market_options() :: #{
+%%   <<"BlockDurationMinutes">> => integer(),
+%%   <<"InstanceInterruptionBehavior">> => list(any()),
+%%   <<"MaxPrice">> => string(),
+%%   <<"SpotInstanceType">> => list(any()),
+%%   <<"ValidUntilUtc">> => [non_neg_integer()]
 %% }
--type workspace_instance_error() :: #{binary() => any()}.
-
-%% Example:
-%% iam_instance_profile_specification() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Name">> => string()
-%% }
--type iam_instance_profile_specification() :: #{binary() => any()}.
-
-%% Example:
-%% tag_specification() :: #{
-%%   <<"ResourceType">> => list(any()),
-%%   <<"Tags">> => list(tag())
-%% }
--type tag_specification() :: #{binary() => any()}.
-
-%% Example:
-%% list_instance_types_request() :: #{
-%%   <<"InstanceConfigurationFilter">> => instance_configuration_filter(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_instance_types_request() :: #{binary() => any()}.
+-type spot_market_options() :: #{binary() => any()}.
 
 %% Example:
 %% supported_instance_configuration() :: #{
@@ -478,23 +536,18 @@
 -type supported_instance_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% license_configuration_request() :: #{
-%%   <<"LicenseConfigurationArn">> => string()
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
 %% }
--type license_configuration_request() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
-%% instance_type_info() :: #{
-%%   <<"InstanceType">> => string(),
-%%   <<"SupportedInstanceConfigurations">> => list(supported_instance_configuration())
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := list(tag()),
+%%   <<"WorkspaceInstanceId">> := string()
 %% }
--type instance_type_info() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
@@ -503,33 +556,11 @@
 -type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_volume_request() :: #{
-%%   <<"AvailabilityZone">> := string(),
-%%   <<"ClientToken">> => string(),
-%%   <<"Encrypted">> => [boolean()],
-%%   <<"Iops">> => integer(),
-%%   <<"KmsKeyId">> => string(),
-%%   <<"SizeInGB">> => integer(),
-%%   <<"SnapshotId">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()),
-%%   <<"Throughput">> => integer(),
-%%   <<"VolumeType">> => list(any())
+%% tag_specification() :: #{
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Tags">> => list(tag())
 %% }
--type create_volume_request() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"FieldList">> => list(validation_exception_field()),
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"WorkspaceInstanceId">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type tag_specification() :: #{binary() => any()}.
 
 %% Example:
 %% throttling_exception() :: #{
@@ -541,173 +572,142 @@
 -type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% ec2_instance_error() :: #{
-%%   <<"EC2ErrorCode">> => [string()],
-%%   <<"EC2ErrorMessage">> => [string()],
-%%   <<"EC2ExceptionType">> => [string()]
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string()),
+%%   <<"WorkspaceInstanceId">> := string()
 %% }
--type ec2_instance_error() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% instance_configuration_filter() :: #{
-%%   <<"BillingMode">> => list(any()),
-%%   <<"PlatformType">> => list(any()),
-%%   <<"Tenancy">> => list(any())
+%% untag_resource_response() :: #{
+
 %% }
--type instance_configuration_filter() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_regions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Regions">> => list(region())
+%% validation_exception() :: #{
+%%   <<"FieldList">> => list(validation_exception_field()),
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => list(any())
 %% }
--type list_regions_response() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% instance_maintenance_options_request() :: #{
-%%   <<"AutoRecovery">> => list(any())
+%% validation_exception_field() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"Reason">> => [string()]
 %% }
--type instance_maintenance_options_request() :: #{binary() => any()}.
+-type validation_exception_field() :: #{binary() => any()}.
 
 %% Example:
-%% list_instance_types_response() :: #{
-%%   <<"InstanceTypes">> => list(instance_type_info()),
-%%   <<"NextToken">> => string()
+%% workspace_instance() :: #{
+%%   <<"EC2ManagedInstance">> => ec2_managed_instance(),
+%%   <<"ProvisionState">> => list(any()),
+%%   <<"WorkspaceInstanceId">> => string()
 %% }
--type list_instance_types_response() :: #{binary() => any()}.
+-type workspace_instance() :: #{binary() => any()}.
 
 %% Example:
-%% run_instances_monitoring_enabled() :: #{
-%%   <<"Enabled">> => [boolean()]
+%% workspace_instance_error() :: #{
+%%   <<"ErrorCode">> => [string()],
+%%   <<"ErrorMessage">> => [string()]
 %% }
--type run_instances_monitoring_enabled() :: #{binary() => any()}.
-
-%% Example:
-%% instance_ipv6_address() :: #{
-%%   <<"Ipv6Address">> => string(),
-%%   <<"IsPrimaryIpv6">> => [boolean()]
-%% }
--type instance_ipv6_address() :: #{binary() => any()}.
-
-%% Example:
-%% instance_network_interface_specification() :: #{
-%%   <<"AssociateCarrierIpAddress">> => [boolean()],
-%%   <<"AssociatePublicIpAddress">> => [boolean()],
-%%   <<"ConnectionTrackingSpecification">> => connection_tracking_specification_request(),
-%%   <<"Description">> => string(),
-%%   <<"DeviceIndex">> => integer(),
-%%   <<"EnaSrdSpecification">> => ena_srd_specification_request(),
-%%   <<"Groups">> => list(string()),
-%%   <<"InterfaceType">> => list(any()),
-%%   <<"Ipv4PrefixCount">> => integer(),
-%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_request()),
-%%   <<"Ipv6AddressCount">> => integer(),
-%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()),
-%%   <<"Ipv6PrefixCount">> => integer(),
-%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_request()),
-%%   <<"NetworkCardIndex">> => integer(),
-%%   <<"NetworkInterfaceId">> => string(),
-%%   <<"PrimaryIpv6">> => [boolean()],
-%%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()),
-%%   <<"SecondaryPrivateIpAddressCount">> => integer(),
-%%   <<"SubnetId">> => string()
-%% }
--type instance_network_interface_specification() :: #{binary() => any()}.
+-type workspace_instance_error() :: #{binary() => any()}.
 
 -type associate_volume_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_volume_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_workspace_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_volume_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_workspace_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_volume_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_workspace_instance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_instance_types_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_regions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_workspace_instances_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

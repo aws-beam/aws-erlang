@@ -107,282 +107,18 @@
 
 
 %% Example:
-%% list_resource_telemetry_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceIdentifierPrefix">> => string(),
-%%   <<"ResourceTags">> => map(),
-%%   <<"ResourceTypes">> => list(list(any())()),
-%%   <<"TelemetryConfigurationState">> => map()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"amznErrorType">> => [string()]
 %% }
--type list_resource_telemetry_input() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_telemetry_rule_input() :: #{
-%%   <<"Rule">> := telemetry_rule(),
-%%   <<"RuleName">> := string(),
-%%   <<"Tags">> => map()
+%% action_condition() :: #{
+%%   <<"Action">> => list(any())
 %% }
--type create_telemetry_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% pipeline_output() :: #{
-%%   <<"Error">> => pipeline_output_error(),
-%%   <<"Record">> => record()
-%% }
--type pipeline_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% telemetry_pipeline_configuration() :: #{
-%%   <<"Body">> => string()
-%% }
--type telemetry_pipeline_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_telemetry_rule_output() :: #{
-%%   <<"CreatedTimeStamp">> => [float()],
-%%   <<"HomeRegion">> => string(),
-%%   <<"IsReplicated">> => boolean(),
-%%   <<"LastUpdateTimeStamp">> => [float()],
-%%   <<"RegionStatuses">> => list(region_status()),
-%%   <<"RuleArn">> => string(),
-%%   <<"RuleName">> => string(),
-%%   <<"TelemetryRule">> => telemetry_rule()
-%% }
--type get_telemetry_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% telemetry_pipeline_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"ConfigurationSummary">> => configuration_summary(),
-%%   <<"CreatedTimeStamp">> => [float()],
-%%   <<"LastUpdateTimeStamp">> => [float()],
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type telemetry_pipeline_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_telemetry_evaluation_input() :: #{
-%%   <<"AllRegions">> => boolean(),
-%%   <<"Regions">> => list(string())
-%% }
--type start_telemetry_evaluation_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% test_telemetry_pipeline_output() :: #{
-%%   <<"Results">> => list(pipeline_output())
-%% }
--type test_telemetry_pipeline_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_metrics_configuration() :: #{
-%%   <<"MetricsSelectionCriteria">> => string()
-%% }
--type source_metrics_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_s3_table_integration_input() :: #{
-%%   <<"Arn">> := string()
-%% }
--type get_s3_table_integration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_telemetry_evaluation_status_for_organization_output() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"HomeRegion">> => string(),
-%%   <<"RegionStatuses">> => list(region_status()),
-%%   <<"Status">> => list(any())
-%% }
--type get_telemetry_evaluation_status_for_organization_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_centralization_rule_for_organization_output() :: #{
-%%   <<"RuleArn">> => string()
-%% }
--type update_centralization_rule_for_organization_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_to_match() :: #{
-%%   <<"Method">> => [string()],
-%%   <<"QueryString">> => [string()],
-%%   <<"SingleHeader">> => single_header(),
-%%   <<"UriPath">> => [string()]
-%% }
--type field_to_match() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_centralization_rule_for_organization_output() :: #{
-%%   <<"RuleArn">> => string()
-%% }
--type create_centralization_rule_for_organization_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% logs_encryption_configuration() :: #{
-%%   <<"EncryptionConflictResolutionStrategy">> => list(any()),
-%%   <<"EncryptionStrategy">> => list(any()),
-%%   <<"KmsKeyArn">> => string()
-%% }
--type logs_encryption_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_telemetry_pipeline_output() :: #{}
--type update_telemetry_pipeline_output() :: #{}.
-
-
-%% Example:
-%% get_telemetry_evaluation_status_output() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"HomeRegion">> => string(),
-%%   <<"RegionStatuses">> => list(region_status()),
-%%   <<"Status">> => list(any())
-%% }
--type get_telemetry_evaluation_status_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_telemetry_rule_for_organization_output() :: #{
-%%   <<"RuleArn">> => string()
-%% }
--type create_telemetry_rule_for_organization_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_telemetry_rule_for_organization_input() :: #{
-%%   <<"RuleIdentifier">> := string()
-%% }
--type get_telemetry_rule_for_organization_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% telemetry_destination_configuration() :: #{
-%%   <<"CloudtrailParameters">> => cloudtrail_parameters(),
-%%   <<"DestinationPattern">> => [string()],
-%%   <<"DestinationType">> => list(any()),
-%%   <<"ELBLoadBalancerLoggingParameters">> => e_lb_load_balancer_logging_parameters(),
-%%   <<"LogDeliveryParameters">> => log_delivery_parameters(),
-%%   <<"MskMonitoringParameters">> => msk_monitoring_parameters(),
-%%   <<"RetentionInDays">> => integer(),
-%%   <<"VPCFlowLogParameters">> => vpc_flow_log_parameters(),
-%%   <<"WAFLoggingParameters">> => w_a_f_logging_parameters()
-%% }
--type telemetry_destination_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_centralization_rule_for_organization_output() :: #{
-%%   <<"CentralizationRule">> => centralization_rule(),
-%%   <<"CreatedRegion">> => string(),
-%%   <<"CreatedTimeStamp">> => [float()],
-%%   <<"CreatorAccountId">> => [string()],
-%%   <<"FailureReason">> => list(any()),
-%%   <<"LastUpdateTimeStamp">> => [float()],
-%%   <<"RuleArn">> => string(),
-%%   <<"RuleHealth">> => list(any()),
-%%   <<"RuleName">> => string()
-%% }
--type get_centralization_rule_for_organization_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% integration_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type integration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_logs_configuration() :: #{
-%%   <<"DataSourceSelectionCriteria">> => string(),
-%%   <<"EncryptedLogGroupStrategy">> => list(any()),
-%%   <<"LogGroupSelectionCriteria">> => string()
-%% }
--type source_logs_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_summary() :: #{
-%%   <<"DataSources">> => list(data_source()),
-%%   <<"ProcessorCount">> => [integer()],
-%%   <<"Processors">> => list([string()]()),
-%%   <<"Sinks">> => list([string()]()),
-%%   <<"Sources">> => list(source())
-%% }
--type configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_state_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type invalid_state_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_telemetry_rule_input() :: #{
-%%   <<"RuleIdentifier">> := string()
-%% }
--type get_telemetry_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_telemetry_pipeline_input() :: #{
-%%   <<"Configuration">> := telemetry_pipeline_configuration(),
-%%   <<"Name">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_telemetry_pipeline_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_telemetry_pipeline_input() :: #{
-%%   <<"PipelineIdentifier">> := string()
-%% }
--type delete_telemetry_pipeline_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_centralization_rule_for_organization_input() :: #{
-%%   <<"RuleIdentifier">> := string()
-%% }
--type delete_centralization_rule_for_organization_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_group_name_configuration() :: #{
-%%   <<"LogGroupNamePattern">> => string()
-%% }
--type log_group_name_configuration() :: #{binary() => any()}.
+-type action_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -394,6 +130,37 @@
 
 
 %% Example:
+%% advanced_field_selector() :: #{
+%%   <<"EndsWith">> => list([string()]()),
+%%   <<"Equals">> => list([string()]()),
+%%   <<"Field">> => [string()],
+%%   <<"NotEndsWith">> => list([string()]()),
+%%   <<"NotEquals">> => list([string()]()),
+%%   <<"NotStartsWith">> => list([string()]()),
+%%   <<"StartsWith">> => list([string()]())
+%% }
+-type advanced_field_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% centralization_rule() :: #{
+%%   <<"Destination">> => centralization_rule_destination(),
+%%   <<"Source">> => centralization_rule_source()
+%% }
+-type centralization_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% centralization_rule_destination() :: #{
+%%   <<"Account">> => string(),
+%%   <<"DestinationLogsConfiguration">> => destination_logs_configuration(),
+%%   <<"DestinationMetricsConfiguration">> => destination_metrics_configuration(),
+%%   <<"Region">> => string()
+%% }
+-type centralization_rule_destination() :: #{binary() => any()}.
+
+
+%% Example:
 %% centralization_rule_source() :: #{
 %%   <<"Regions">> => list(string()),
 %%   <<"Scope">> => string(),
@@ -401,307 +168,6 @@
 %%   <<"SourceMetricsConfiguration">> => source_metrics_configuration()
 %% }
 -type centralization_rule_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_telemetry_rule_for_organization_output() :: #{
-%%   <<"CreatedTimeStamp">> => [float()],
-%%   <<"HomeRegion">> => string(),
-%%   <<"IsReplicated">> => boolean(),
-%%   <<"LastUpdateTimeStamp">> => [float()],
-%%   <<"RegionStatuses">> => list(region_status()),
-%%   <<"RuleArn">> => string(),
-%%   <<"RuleName">> => string(),
-%%   <<"TelemetryRule">> => telemetry_rule()
-%% }
--type get_telemetry_rule_for_organization_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_telemetry_enrichment_status_output() :: #{
-%%   <<"AwsResourceExplorerManagedViewArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type get_telemetry_enrichment_status_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% telemetry_configuration() :: #{
-%%   <<"AccountIdentifier">> => string(),
-%%   <<"LastUpdateTimeStamp">> => [float()],
-%%   <<"ResourceIdentifier">> => string(),
-%%   <<"ResourceTags">> => map(),
-%%   <<"ResourceType">> => list(any()),
-%%   <<"TelemetryConfigurationState">> => map(),
-%%   <<"TelemetrySourceType">> => list(any())
-%% }
--type telemetry_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_telemetry_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TelemetryConfigurations">> => list(telemetry_configuration())
-%% }
--type list_resource_telemetry_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()]
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_s3_table_integration_output() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTimeStamp">> => [float()],
-%%   <<"DestinationTableBucketArn">> => string(),
-%%   <<"Encryption">> => encryption(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type get_s3_table_integration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% msk_monitoring_parameters() :: #{
-%%   <<"EnhancedMonitoring">> => list(any())
-%% }
--type msk_monitoring_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_telemetry_rule_for_organization_output() :: #{
-%%   <<"RuleArn">> => string()
-%% }
--type update_telemetry_rule_for_organization_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_delivery_parameters() :: #{
-%%   <<"LogTypes">> => list(list(any())())
-%% }
--type log_delivery_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_centralization_rule_for_organization_input() :: #{
-%%   <<"Rule">> := centralization_rule(),
-%%   <<"RuleIdentifier">> := string()
-%% }
--type update_centralization_rule_for_organization_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"QuotaCode">> => [string()],
-%%   <<"ResourceId">> => [string()],
-%%   <<"ResourceType">> => [string()],
-%%   <<"ServiceCode">> => [string()],
-%%   <<"amznErrorType">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_logs_configuration() :: #{
-%%   <<"BackupConfiguration">> => logs_backup_configuration(),
-%%   <<"LogGroupNameConfiguration">> => log_group_name_configuration(),
-%%   <<"LogsEncryptionConfiguration">> => logs_encryption_configuration()
-%% }
--type destination_logs_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_s3_table_integrations_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_s3_table_integrations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_telemetry_rules_for_organization_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TelemetryRuleSummaries">> => list(telemetry_rule_summary())
-%% }
--type list_telemetry_rules_for_organization_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_telemetry_for_organization_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TelemetryConfigurations">> => list(telemetry_configuration())
-%% }
--type list_resource_telemetry_for_organization_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_telemetry_evaluation_for_organization_input() :: #{
-%%   <<"AllRegions">> => boolean(),
-%%   <<"Regions">> => list(string())
-%% }
--type start_telemetry_evaluation_for_organization_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption() :: #{
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"SseAlgorithm">> => list(any())
-%% }
--type encryption() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_centralization_rule_for_organization_input() :: #{
-%%   <<"Rule">> := centralization_rule(),
-%%   <<"RuleName">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_centralization_rule_for_organization_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_telemetry_rule_for_organization_input() :: #{
-%%   <<"Rule">> := telemetry_rule(),
-%%   <<"RuleIdentifier">> := string()
-%% }
--type update_telemetry_rule_for_organization_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% observabilityadmin_record() :: #{
-%%   <<"Data">> => [string()],
-%%   <<"Type">> => list(any())
-%% }
--type observabilityadmin_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_telemetry_rules_for_organization_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RuleNamePrefix">> => [string()],
-%%   <<"SourceAccountIds">> => list(string()),
-%%   <<"SourceOrganizationUnitIds">> => list(string())
-%% }
--type list_telemetry_rules_for_organization_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_error() :: #{
-%%   <<"FieldMap">> => map(),
-%%   <<"Message">> => [string()],
-%%   <<"Reason">> => [string()]
-%% }
--type validation_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% logs_backup_configuration() :: #{
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"Region">> => string()
-%% }
--type logs_backup_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% telemetry_pipeline() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Configuration">> => telemetry_pipeline_configuration(),
-%%   <<"CreatedTimeStamp">> => [float()],
-%%   <<"LastUpdateTimeStamp">> => [float()],
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => telemetry_pipeline_status_reason(),
-%%   <<"Tags">> => map()
-%% }
--type telemetry_pipeline() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloudtrail_parameters() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector())
-%% }
--type cloudtrail_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_resource_telemetry_for_organization_input() :: #{
-%%   <<"AccountIdentifiers">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceIdentifierPrefix">> => string(),
-%%   <<"ResourceTags">> => map(),
-%%   <<"ResourceTypes">> => list(list(any())()),
-%%   <<"TelemetryConfigurationState">> => map()
-%% }
--type list_resource_telemetry_for_organization_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% e_lb_load_balancer_logging_parameters() :: #{
-%%   <<"FieldDelimiter">> => [string()],
-%%   <<"OutputFormat">> => list(any())
-%% }
--type e_lb_load_balancer_logging_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% condition() :: #{
-%%   <<"ActionCondition">> => action_condition(),
-%%   <<"LabelNameCondition">> => label_name_condition()
-%% }
--type condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% region_status() :: #{
-%%   <<"FailureReason">> => [string()],
-%%   <<"Region">> => string(),
-%%   <<"RuleArn">> => string(),
-%%   <<"Status">> => [string()]
-%% }
--type region_status() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_centralization_rules_for_organization_output() :: #{
-%%   <<"CentralizationRuleSummaries">> => list(centralization_rule_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_centralization_rules_for_organization_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"Behavior">> => list(any()),
-%%   <<"Conditions">> => list(condition()),
-%%   <<"Requirement">> => list(any())
-%% }
--type filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -721,110 +187,54 @@
 
 
 %% Example:
-%% update_telemetry_pipeline_input() :: #{
-%%   <<"Configuration">> := telemetry_pipeline_configuration(),
-%%   <<"PipelineIdentifier">> := string()
+%% cloudtrail_parameters() :: #{
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector())
 %% }
--type update_telemetry_pipeline_input() :: #{binary() => any()}.
+-type cloudtrail_parameters() :: #{binary() => any()}.
 
 
 %% Example:
-%% metrics_backup_configuration() :: #{
-%%   <<"Region">> => string()
+%% condition() :: #{
+%%   <<"ActionCondition">> => action_condition(),
+%%   <<"LabelNameCondition">> => label_name_condition()
 %% }
--type metrics_backup_configuration() :: #{binary() => any()}.
+-type condition() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_s3_table_integrations_output() :: #{
-%%   <<"IntegrationSummaries">> => list(integration_summary()),
-%%   <<"NextToken">> => string()
+%% configuration_summary() :: #{
+%%   <<"DataSources">> => list(data_source()),
+%%   <<"ProcessorCount">> => [integer()],
+%%   <<"Processors">> => list([string()]()),
+%%   <<"Sinks">> => list([string()]()),
+%%   <<"Sources">> => list(source())
 %% }
--type list_s3_table_integrations_output() :: #{binary() => any()}.
+-type configuration_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_telemetry_rule_output() :: #{
+%% conflict_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_centralization_rule_for_organization_input() :: #{
+%%   <<"Rule">> := centralization_rule(),
+%%   <<"RuleName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_centralization_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_centralization_rule_for_organization_output() :: #{
 %%   <<"RuleArn">> => string()
 %% }
--type update_telemetry_rule_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_telemetry_enrichment_output() :: #{
-%%   <<"Status">> => list(any())
-%% }
--type stop_telemetry_enrichment_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% source() :: #{
-%%   <<"Type">> => [string()]
-%% }
--type source() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"amznErrorType">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_telemetry_pipeline_configuration_input() :: #{
-%%   <<"Configuration">> := telemetry_pipeline_configuration()
-%% }
--type validate_telemetry_pipeline_configuration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => [string()],
-%%   <<"amznErrorType">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_flow_log_parameters() :: #{
-%%   <<"LogFormat">> => [string()],
-%%   <<"MaxAggregationInterval">> => [integer()],
-%%   <<"TrafficType">> => [string()]
-%% }
--type vpc_flow_log_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% validate_telemetry_pipeline_configuration_output() :: #{
-%%   <<"Errors">> => list(validation_error())
-%% }
--type validate_telemetry_pipeline_configuration_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_input() :: #{
-%%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_centralization_rule_for_organization_input() :: #{
-%%   <<"RuleIdentifier">> := string()
-%% }
--type get_centralization_rule_for_organization_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_telemetry_rule_input() :: #{
-%%   <<"Rule">> := telemetry_rule(),
-%%   <<"RuleIdentifier">> := string()
-%% }
--type update_telemetry_rule_input() :: #{binary() => any()}.
+-type create_centralization_rule_for_organization_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -837,44 +247,6 @@
 
 
 %% Example:
-%% list_telemetry_rules_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RuleNamePrefix">> => [string()]
-%% }
--type list_telemetry_rules_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% logging_filter() :: #{
-%%   <<"DefaultBehavior">> => list(any()),
-%%   <<"Filters">> => list(filter())
-%% }
--type logging_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_telemetry_enrichment_output() :: #{
-%%   <<"AwsResourceExplorerManagedViewArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type start_telemetry_enrichment_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% telemetry_rule_summary() :: #{
-%%   <<"CreatedTimeStamp">> => [float()],
-%%   <<"LastUpdateTimeStamp">> => [float()],
-%%   <<"ResourceType">> => list(any()),
-%%   <<"RuleArn">> => string(),
-%%   <<"RuleName">> => string(),
-%%   <<"TelemetrySourceTypes">> => list(list(any())()),
-%%   <<"TelemetryType">> => list(any())
-%% }
--type telemetry_rule_summary() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_s3_table_integration_output() :: #{
 %%   <<"Arn">> => string()
 %% }
@@ -882,32 +254,19 @@
 
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"Errors">> => list(validation_error()),
-%%   <<"Message">> => [string()]
+%% create_telemetry_pipeline_input() :: #{
+%%   <<"Configuration">> := telemetry_pipeline_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
 %% }
--type validation_exception() :: #{binary() => any()}.
+-type create_telemetry_pipeline_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"ResourceARN">> := string()
+%% create_telemetry_pipeline_output() :: #{
+%%   <<"Arn">> => string()
 %% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% label_name_condition() :: #{
-%%   <<"LabelName">> => [string()]
-%% }
--type label_name_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% single_header() :: #{
-%%   <<"Name">> => [string()]
-%% }
--type single_header() :: #{binary() => any()}.
+-type create_telemetry_pipeline_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -920,16 +279,82 @@
 
 
 %% Example:
-%% advanced_field_selector() :: #{
-%%   <<"EndsWith">> => list([string()]()),
-%%   <<"Equals">> => list([string()]()),
-%%   <<"Field">> => [string()],
-%%   <<"NotEndsWith">> => list([string()]()),
-%%   <<"NotEquals">> => list([string()]()),
-%%   <<"NotStartsWith">> => list([string()]()),
-%%   <<"StartsWith">> => list([string()]())
+%% create_telemetry_rule_for_organization_output() :: #{
+%%   <<"RuleArn">> => string()
 %% }
--type advanced_field_selector() :: #{binary() => any()}.
+-type create_telemetry_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_telemetry_rule_input() :: #{
+%%   <<"Rule">> := telemetry_rule(),
+%%   <<"RuleName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_telemetry_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_telemetry_rule_output() :: #{
+%%   <<"RuleArn">> => string()
+%% }
+-type create_telemetry_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source() :: #{
+%%   <<"Name">> => [string()],
+%%   <<"Type">> => [string()]
+%% }
+-type data_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_centralization_rule_for_organization_input() :: #{
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type delete_centralization_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_s3_table_integration_input() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type delete_s3_table_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_telemetry_pipeline_input() :: #{
+%%   <<"PipelineIdentifier">> := string()
+%% }
+-type delete_telemetry_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_telemetry_pipeline_output() :: #{}
+-type delete_telemetry_pipeline_output() :: #{}.
+
+
+%% Example:
+%% delete_telemetry_rule_for_organization_input() :: #{
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type delete_telemetry_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_telemetry_rule_input() :: #{
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type delete_telemetry_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_logs_configuration() :: #{
+%%   <<"BackupConfiguration">> => logs_backup_configuration(),
+%%   <<"LogGroupNameConfiguration">> => log_group_name_configuration(),
+%%   <<"LogsEncryptionConfiguration">> => logs_encryption_configuration()
+%% }
+-type destination_logs_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -940,13 +365,582 @@
 
 
 %% Example:
-%% centralization_rule_destination() :: #{
-%%   <<"Account">> => string(),
-%%   <<"DestinationLogsConfiguration">> => destination_logs_configuration(),
-%%   <<"DestinationMetricsConfiguration">> => destination_metrics_configuration(),
+%% e_lb_load_balancer_logging_parameters() :: #{
+%%   <<"FieldDelimiter">> => [string()],
+%%   <<"OutputFormat">> => list(any())
+%% }
+-type e_lb_load_balancer_logging_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"SseAlgorithm">> => list(any())
+%% }
+-type encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_to_match() :: #{
+%%   <<"Method">> => [string()],
+%%   <<"QueryString">> => [string()],
+%%   <<"SingleHeader">> => single_header(),
+%%   <<"UriPath">> => [string()]
+%% }
+-type field_to_match() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Behavior">> => list(any()),
+%%   <<"Conditions">> => list(condition()),
+%%   <<"Requirement">> => list(any())
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_centralization_rule_for_organization_input() :: #{
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type get_centralization_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_centralization_rule_for_organization_output() :: #{
+%%   <<"CentralizationRule">> => centralization_rule(),
+%%   <<"CreatedRegion">> => string(),
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"CreatorAccountId">> => [string()],
+%%   <<"FailureReason">> => list(any()),
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"RuleArn">> => string(),
+%%   <<"RuleHealth">> => list(any()),
+%%   <<"RuleName">> => string()
+%% }
+-type get_centralization_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_s3_table_integration_input() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type get_s3_table_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_s3_table_integration_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"DestinationTableBucketArn">> => string(),
+%%   <<"Encryption">> => encryption(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_s3_table_integration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_telemetry_enrichment_status_output() :: #{
+%%   <<"AwsResourceExplorerManagedViewArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_telemetry_enrichment_status_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_telemetry_evaluation_status_for_organization_output() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"HomeRegion">> => string(),
+%%   <<"RegionStatuses">> => list(region_status()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_telemetry_evaluation_status_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_telemetry_evaluation_status_output() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"HomeRegion">> => string(),
+%%   <<"RegionStatuses">> => list(region_status()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_telemetry_evaluation_status_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_telemetry_pipeline_input() :: #{
+%%   <<"PipelineIdentifier">> := string()
+%% }
+-type get_telemetry_pipeline_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_telemetry_pipeline_output() :: #{
+%%   <<"Pipeline">> => telemetry_pipeline()
+%% }
+-type get_telemetry_pipeline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_telemetry_rule_for_organization_input() :: #{
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type get_telemetry_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_telemetry_rule_for_organization_output() :: #{
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"HomeRegion">> => string(),
+%%   <<"IsReplicated">> => boolean(),
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"RegionStatuses">> => list(region_status()),
+%%   <<"RuleArn">> => string(),
+%%   <<"RuleName">> => string(),
+%%   <<"TelemetryRule">> => telemetry_rule()
+%% }
+-type get_telemetry_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_telemetry_rule_input() :: #{
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type get_telemetry_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_telemetry_rule_output() :: #{
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"HomeRegion">> => string(),
+%%   <<"IsReplicated">> => boolean(),
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"RegionStatuses">> => list(region_status()),
+%%   <<"RuleArn">> => string(),
+%%   <<"RuleName">> => string(),
+%%   <<"TelemetryRule">> => telemetry_rule()
+%% }
+-type get_telemetry_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% integration_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type integration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"amznErrorType">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% label_name_condition() :: #{
+%%   <<"LabelName">> => [string()]
+%% }
+-type label_name_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_centralization_rules_for_organization_input() :: #{
+%%   <<"AllRegions">> => [boolean()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RuleNamePrefix">> => [string()]
+%% }
+-type list_centralization_rules_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_centralization_rules_for_organization_output() :: #{
+%%   <<"CentralizationRuleSummaries">> => list(centralization_rule_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_centralization_rules_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_telemetry_for_organization_input() :: #{
+%%   <<"AccountIdentifiers">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceIdentifierPrefix">> => string(),
+%%   <<"ResourceTags">> => map(),
+%%   <<"ResourceTypes">> => list(list(any())()),
+%%   <<"TelemetryConfigurationState">> => map()
+%% }
+-type list_resource_telemetry_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_telemetry_for_organization_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TelemetryConfigurations">> => list(telemetry_configuration())
+%% }
+-type list_resource_telemetry_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_telemetry_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceIdentifierPrefix">> => string(),
+%%   <<"ResourceTags">> => map(),
+%%   <<"ResourceTypes">> => list(list(any())()),
+%%   <<"TelemetryConfigurationState">> => map()
+%% }
+-type list_resource_telemetry_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_telemetry_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TelemetryConfigurations">> => list(telemetry_configuration())
+%% }
+-type list_resource_telemetry_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_s3_table_integrations_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_s3_table_integrations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_s3_table_integrations_output() :: #{
+%%   <<"IntegrationSummaries">> => list(integration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_s3_table_integrations_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"ResourceARN">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_telemetry_pipelines_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_telemetry_pipelines_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_telemetry_pipelines_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineSummaries">> => list(telemetry_pipeline_summary())
+%% }
+-type list_telemetry_pipelines_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_telemetry_rules_for_organization_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RuleNamePrefix">> => [string()],
+%%   <<"SourceAccountIds">> => list(string()),
+%%   <<"SourceOrganizationUnitIds">> => list(string())
+%% }
+-type list_telemetry_rules_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_telemetry_rules_for_organization_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TelemetryRuleSummaries">> => list(telemetry_rule_summary())
+%% }
+-type list_telemetry_rules_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_telemetry_rules_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RuleNamePrefix">> => [string()]
+%% }
+-type list_telemetry_rules_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_telemetry_rules_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TelemetryRuleSummaries">> => list(telemetry_rule_summary())
+%% }
+-type list_telemetry_rules_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_delivery_parameters() :: #{
+%%   <<"LogTypes">> => list(list(any())())
+%% }
+-type log_delivery_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_group_name_configuration() :: #{
+%%   <<"LogGroupNamePattern">> => string()
+%% }
+-type log_group_name_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_filter() :: #{
+%%   <<"DefaultBehavior">> => list(any()),
+%%   <<"Filters">> => list(filter())
+%% }
+-type logging_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% logs_backup_configuration() :: #{
+%%   <<"KmsKeyArn">> => string(),
 %%   <<"Region">> => string()
 %% }
--type centralization_rule_destination() :: #{binary() => any()}.
+-type logs_backup_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% logs_encryption_configuration() :: #{
+%%   <<"EncryptionConflictResolutionStrategy">> => list(any()),
+%%   <<"EncryptionScope">> => list(any()),
+%%   <<"EncryptionStrategy">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type logs_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% metrics_backup_configuration() :: #{
+%%   <<"Region">> => string()
+%% }
+-type metrics_backup_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% msk_monitoring_parameters() :: #{
+%%   <<"EnhancedMonitoring">> => list(any())
+%% }
+-type msk_monitoring_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% observabilityadmin_record() :: #{
+%%   <<"Data">> => [string()],
+%%   <<"Type">> => list(any())
+%% }
+-type observabilityadmin_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_output() :: #{
+%%   <<"Error">> => pipeline_output_error(),
+%%   <<"Record">> => record()
+%% }
+-type pipeline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_output_error() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type pipeline_output_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% region_status() :: #{
+%%   <<"FailureReason">> => [string()],
+%%   <<"Region">> => string(),
+%%   <<"RuleArn">> => string(),
+%%   <<"Status">> => [string()]
+%% }
+-type region_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"QuotaCode">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()],
+%%   <<"ServiceCode">> => [string()],
+%%   <<"amznErrorType">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% single_header() :: #{
+%%   <<"Name">> => [string()]
+%% }
+-type single_header() :: #{binary() => any()}.
+
+
+%% Example:
+%% source() :: #{
+%%   <<"Type">> => [string()]
+%% }
+-type source() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_logs_configuration() :: #{
+%%   <<"DataSourceSelectionCriteria">> => string(),
+%%   <<"EncryptedLogGroupStrategy">> => list(any()),
+%%   <<"LogGroupSelectionCriteria">> => string()
+%% }
+-type source_logs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_metrics_configuration() :: #{
+%%   <<"MetricsSelectionCriteria">> => string()
+%% }
+-type source_metrics_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_telemetry_enrichment_output() :: #{
+%%   <<"AwsResourceExplorerManagedViewArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type start_telemetry_enrichment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_telemetry_evaluation_for_organization_input() :: #{
+%%   <<"AllRegions">> => boolean(),
+%%   <<"Regions">> => list(string())
+%% }
+-type start_telemetry_evaluation_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_telemetry_evaluation_input() :: #{
+%%   <<"AllRegions">> => boolean(),
+%%   <<"Regions">> => list(string())
+%% }
+-type start_telemetry_evaluation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_telemetry_enrichment_output() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type stop_telemetry_enrichment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_configuration() :: #{
+%%   <<"AccountIdentifier">> => string(),
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"ResourceTags">> => map(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"TelemetryConfigurationState">> => map(),
+%%   <<"TelemetrySourceType">> => list(any())
+%% }
+-type telemetry_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_destination_configuration() :: #{
+%%   <<"CloudtrailParameters">> => cloudtrail_parameters(),
+%%   <<"DestinationPattern">> => [string()],
+%%   <<"DestinationType">> => list(any()),
+%%   <<"ELBLoadBalancerLoggingParameters">> => e_lb_load_balancer_logging_parameters(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"LogDeliveryParameters">> => log_delivery_parameters(),
+%%   <<"MskMonitoringParameters">> => msk_monitoring_parameters(),
+%%   <<"RetentionInDays">> => integer(),
+%%   <<"VPCFlowLogParameters">> => vpc_flow_log_parameters(),
+%%   <<"WAFLoggingParameters">> => w_a_f_logging_parameters()
+%% }
+-type telemetry_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_pipeline() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Configuration">> => telemetry_pipeline_configuration(),
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => telemetry_pipeline_status_reason(),
+%%   <<"Tags">> => map()
+%% }
+-type telemetry_pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_pipeline_configuration() :: #{
+%%   <<"Body">> => string()
+%% }
+-type telemetry_pipeline_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_pipeline_status_reason() :: #{
+%%   <<"Description">> => [string()]
+%% }
+-type telemetry_pipeline_status_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% telemetry_pipeline_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ConfigurationSummary">> => configuration_summary(),
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type telemetry_pipeline_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -965,136 +959,16 @@
 
 
 %% Example:
-%% delete_s3_table_integration_input() :: #{
-%%   <<"Arn">> := string()
+%% telemetry_rule_summary() :: #{
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"ResourceType">> => list(any()),
+%%   <<"RuleArn">> => string(),
+%%   <<"RuleName">> => string(),
+%%   <<"TelemetrySourceTypes">> => list(list(any())()),
+%%   <<"TelemetryType">> => list(any())
 %% }
--type delete_s3_table_integration_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% telemetry_pipeline_status_reason() :: #{
-%%   <<"Description">> => [string()]
-%% }
--type telemetry_pipeline_status_reason() :: #{binary() => any()}.
-
-
-%% Example:
-%% action_condition() :: #{
-%%   <<"Action">> => list(any())
-%% }
--type action_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_telemetry_rule_input() :: #{
-%%   <<"RuleIdentifier">> := string()
-%% }
--type delete_telemetry_rule_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_source() :: #{
-%%   <<"Name">> => [string()],
-%%   <<"Type">> => [string()]
-%% }
--type data_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_telemetry_rule_for_organization_input() :: #{
-%%   <<"RuleIdentifier">> := string()
-%% }
--type delete_telemetry_rule_for_organization_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_telemetry_pipelines_input() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_telemetry_pipelines_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_telemetry_pipeline_output() :: #{
-%%   <<"Pipeline">> => telemetry_pipeline()
-%% }
--type get_telemetry_pipeline_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_telemetry_rule_output() :: #{
-%%   <<"RuleArn">> => string()
-%% }
--type create_telemetry_rule_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_telemetry_pipeline_output() :: #{}
--type delete_telemetry_pipeline_output() :: #{}.
-
-
-%% Example:
-%% w_a_f_logging_parameters() :: #{
-%%   <<"LogType">> => list(any()),
-%%   <<"LoggingFilter">> => logging_filter(),
-%%   <<"RedactedFields">> => list(field_to_match())
-%% }
--type w_a_f_logging_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_telemetry_pipeline_output() :: #{
-%%   <<"Arn">> => string()
-%% }
--type create_telemetry_pipeline_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_telemetry_pipelines_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"PipelineSummaries">> => list(telemetry_pipeline_summary())
-%% }
--type list_telemetry_pipelines_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_telemetry_rules_output() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TelemetryRuleSummaries">> => list(telemetry_rule_summary())
-%% }
--type list_telemetry_rules_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% centralization_rule() :: #{
-%%   <<"Destination">> => centralization_rule_destination(),
-%%   <<"Source">> => centralization_rule_source()
-%% }
--type centralization_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% pipeline_output_error() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type pipeline_output_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_telemetry_pipeline_input() :: #{
-%%   <<"PipelineIdentifier">> := string()
-%% }
--type get_telemetry_pipeline_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_centralization_rules_for_organization_input() :: #{
-%%   <<"AllRegions">> => [boolean()],
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RuleNamePrefix">> => [string()]
-%% }
--type list_centralization_rules_for_organization_input() :: #{binary() => any()}.
+-type telemetry_rule_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1105,278 +979,406 @@
 %% }
 -type test_telemetry_pipeline_input() :: #{binary() => any()}.
 
+
+%% Example:
+%% test_telemetry_pipeline_output() :: #{
+%%   <<"Results">> => list(pipeline_output())
+%% }
+-type test_telemetry_pipeline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceARN">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_centralization_rule_for_organization_input() :: #{
+%%   <<"Rule">> := centralization_rule(),
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type update_centralization_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_centralization_rule_for_organization_output() :: #{
+%%   <<"RuleArn">> => string()
+%% }
+-type update_centralization_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_telemetry_pipeline_input() :: #{
+%%   <<"Configuration">> := telemetry_pipeline_configuration(),
+%%   <<"PipelineIdentifier">> := string()
+%% }
+-type update_telemetry_pipeline_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_telemetry_pipeline_output() :: #{}
+-type update_telemetry_pipeline_output() :: #{}.
+
+
+%% Example:
+%% update_telemetry_rule_for_organization_input() :: #{
+%%   <<"Rule">> := telemetry_rule(),
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type update_telemetry_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_telemetry_rule_for_organization_output() :: #{
+%%   <<"RuleArn">> => string()
+%% }
+-type update_telemetry_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_telemetry_rule_input() :: #{
+%%   <<"Rule">> := telemetry_rule(),
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type update_telemetry_rule_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_telemetry_rule_output() :: #{
+%%   <<"RuleArn">> => string()
+%% }
+-type update_telemetry_rule_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_telemetry_pipeline_configuration_input() :: #{
+%%   <<"Configuration">> := telemetry_pipeline_configuration()
+%% }
+-type validate_telemetry_pipeline_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validate_telemetry_pipeline_configuration_output() :: #{
+%%   <<"Errors">> => list(validation_error())
+%% }
+-type validate_telemetry_pipeline_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_error() :: #{
+%%   <<"FieldMap">> => map(),
+%%   <<"Message">> => [string()],
+%%   <<"Reason">> => [string()]
+%% }
+-type validation_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Errors">> => list(validation_error()),
+%%   <<"Message">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_flow_log_parameters() :: #{
+%%   <<"LogFormat">> => [string()],
+%%   <<"MaxAggregationInterval">> => [integer()],
+%%   <<"TrafficType">> => [string()]
+%% }
+-type vpc_flow_log_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% w_a_f_logging_parameters() :: #{
+%%   <<"LogType">> => list(any()),
+%%   <<"LoggingFilter">> => logging_filter(),
+%%   <<"RedactedFields">> => list(field_to_match())
+%% }
+-type w_a_f_logging_parameters() :: #{binary() => any()}.
+
 -type create_centralization_rule_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type create_s3_table_integration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type create_telemetry_pipeline_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type create_telemetry_rule_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type create_telemetry_rule_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type delete_centralization_rule_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_s3_table_integration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
     too_many_requests_exception() | 
-    invalid_state_exception().
+    service_quota_exceeded_exception() | 
+    invalid_state_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_telemetry_pipeline_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type delete_telemetry_rule_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_telemetry_rule_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_centralization_rule_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_s3_table_integration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_telemetry_enrichment_status_errors() ::
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_telemetry_evaluation_status_errors() ::
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type get_telemetry_evaluation_status_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type get_telemetry_pipeline_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_telemetry_rule_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_telemetry_rule_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_centralization_rules_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type list_resource_telemetry_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type list_resource_telemetry_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type list_s3_table_integrations_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_telemetry_pipelines_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type list_telemetry_rules_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type list_telemetry_rules_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type start_telemetry_enrichment_errors() ::
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type start_telemetry_evaluation_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type start_telemetry_evaluation_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type stop_telemetry_enrichment_errors() ::
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type stop_telemetry_evaluation_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type stop_telemetry_evaluation_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type test_telemetry_pipeline_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_centralization_rule_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_telemetry_pipeline_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_telemetry_rule_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type update_telemetry_rule_for_organization_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    too_many_requests_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    too_many_requests_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type validate_telemetry_pipeline_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     internal_server_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 %%====================================================================
 %% API

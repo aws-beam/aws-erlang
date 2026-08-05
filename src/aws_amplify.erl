@@ -144,6 +144,56 @@
 
 
 %% Example:
+%% artifact() :: #{
+%%   <<"artifactFileName">> => string(),
+%%   <<"artifactId">> => string()
+%% }
+-type artifact() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_branch_creation_config() :: #{
+%%   <<"basicAuthCredentials">> => string(),
+%%   <<"buildSpec">> => string(),
+%%   <<"enableAutoBuild">> => boolean(),
+%%   <<"enableBasicAuth">> => boolean(),
+%%   <<"enablePerformanceMode">> => boolean(),
+%%   <<"enablePullRequestPreview">> => boolean(),
+%%   <<"environmentVariables">> => map(),
+%%   <<"framework">> => string(),
+%%   <<"pullRequestEnvironmentName">> => string(),
+%%   <<"stage">> => list(any())
+%% }
+-type auto_branch_creation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% backend() :: #{
+%%   <<"stackArn">> => string()
+%% }
+-type backend() :: #{binary() => any()}.
+
+
+%% Example:
+%% backend_environment() :: #{
+%%   <<"backendEnvironmentArn">> => string(),
+%%   <<"createTime">> => non_neg_integer(),
+%%   <<"deploymentArtifacts">> => string(),
+%%   <<"environmentName">> => string(),
+%%   <<"stackName">> => string(),
+%%   <<"updateTime">> => non_neg_integer()
+%% }
+-type backend_environment() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% branch() :: #{
 %%   <<"activeJobId">> => string(),
 %%   <<"associatedResources">> => list(string()),
@@ -180,44 +230,27 @@
 
 
 %% Example:
-%% start_job_result() :: #{
-%%   <<"jobSummary">> => job_summary()
+%% cache_config() :: #{
+%%   <<"type">> => list(any())
 %% }
--type start_job_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_association_request() :: #{}
--type get_domain_association_request() :: #{}.
+-type cache_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% certificate() :: #{
+%%   <<"certificateVerificationDNSRecord">> => string(),
+%%   <<"customCertificateArn">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type certificate() :: #{binary() => any()}.
 
 
 %% Example:
-%% internal_failure_exception() :: #{
-%%   <<"message">> => string()
+%% certificate_settings() :: #{
+%%   <<"customCertificateArn">> => string(),
+%%   <<"type">> => list(any())
 %% }
--type internal_failure_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_access_logs_result() :: #{
-%%   <<"logUrl">> => string()
-%% }
--type generate_access_logs_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% sub_domain() :: #{
-%%   <<"dnsRecord">> => string(),
-%%   <<"subDomainSetting">> => sub_domain_setting(),
-%%   <<"verified">> => boolean()
-%% }
--type sub_domain() :: #{binary() => any()}.
+-type certificate_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -249,10 +282,26 @@
 
 
 %% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => string()
+%% create_app_result() :: #{
+%%   <<"app">> => app()
 %% }
--type unauthorized_exception() :: #{binary() => any()}.
+-type create_app_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_environment_request() :: #{
+%%   <<"deploymentArtifacts">> => string(),
+%%   <<"environmentName">> := string(),
+%%   <<"stackName">> => string()
+%% }
+-type create_backend_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backend_environment_result() :: #{
+%%   <<"backendEnvironment">> => backend_environment()
+%% }
+-type create_backend_environment_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -282,29 +331,26 @@
 
 
 %% Example:
-%% list_jobs_result() :: #{
-%%   <<"jobSummaries">> => list(job_summary()),
-%%   <<"nextToken">> => string()
+%% create_branch_result() :: #{
+%%   <<"branch">> => branch()
 %% }
--type list_jobs_result() :: #{binary() => any()}.
+-type create_branch_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_backend_environment_result() :: #{
-%%   <<"backendEnvironment">> => backend_environment()
+%% create_deployment_request() :: #{
+%%   <<"fileMap">> => map()
 %% }
--type create_backend_environment_result() :: #{binary() => any()}.
+-type create_deployment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_domain_association_request() :: #{
-%%   <<"autoSubDomainCreationPatterns">> => list(string()),
-%%   <<"autoSubDomainIAMRole">> => string(),
-%%   <<"certificateSettings">> => certificate_settings(),
-%%   <<"enableAutoSubDomain">> => boolean(),
-%%   <<"subDomainSettings">> => list(sub_domain_setting())
+%% create_deployment_result() :: #{
+%%   <<"fileUploadUrls">> => map(),
+%%   <<"jobId">> => string(),
+%%   <<"zipUploadUrl">> => string()
 %% }
--type update_domain_association_request() :: #{binary() => any()}.
+-type create_deployment_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -318,24 +364,20 @@
 %% }
 -type create_domain_association_request() :: #{binary() => any()}.
 
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
 
 %% Example:
-%% list_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% create_domain_association_result() :: #{
+%%   <<"domainAssociation">> => domain_association()
 %% }
--type list_jobs_request() :: #{binary() => any()}.
+-type create_domain_association_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% backend() :: #{
-%%   <<"stackArn">> => string()
+%% create_webhook_request() :: #{
+%%   <<"branchName">> := string(),
+%%   <<"description">> => string()
 %% }
--type backend() :: #{binary() => any()}.
+-type create_webhook_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -346,82 +388,28 @@
 
 
 %% Example:
-%% create_deployment_request() :: #{
-%%   <<"fileMap">> => map()
+%% custom_rule() :: #{
+%%   <<"condition">> => string(),
+%%   <<"source">> => string(),
+%%   <<"status">> => string(),
+%%   <<"target">> => string()
 %% }
--type create_deployment_request() :: #{binary() => any()}.
+-type custom_rule() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_request() :: #{}
+-type delete_app_request() :: #{}.
 
 
 %% Example:
-%% delete_job_result() :: #{
-%%   <<"jobSummary">> => job_summary()
+%% delete_app_result() :: #{
+%%   <<"app">> => app()
 %% }
--type delete_job_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% generate_access_logs_request() :: #{
-%%   <<"domainName">> := string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"startTime">> => non_neg_integer()
-%% }
--type generate_access_logs_request() :: #{binary() => any()}.
-
+-type delete_app_result() :: #{binary() => any()}.
 
 %% Example:
-%% list_branches_result() :: #{
-%%   <<"branches">> => list(branch()),
-%%   <<"nextToken">> => string()
-%% }
--type list_branches_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_artifact_url_request() :: #{}
--type get_artifact_url_request() :: #{}.
-
-%% Example:
-%% stop_job_request() :: #{}
--type stop_job_request() :: #{}.
-
-%% Example:
-%% delete_domain_association_request() :: #{}
--type delete_domain_association_request() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_backend_environments_result() :: #{
-%%   <<"backendEnvironments">> => list(backend_environment()),
-%%   <<"nextToken">> => string()
-%% }
--type list_backend_environments_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_webhook_request() :: #{}
--type delete_webhook_request() :: #{}.
-
-
-%% Example:
-%% list_apps_result() :: #{
-%%   <<"apps">> => list(app()),
-%%   <<"nextToken">> => string()
-%% }
--type list_apps_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_backend_environment_request() :: #{
-%%   <<"deploymentArtifacts">> => string(),
-%%   <<"environmentName">> := string(),
-%%   <<"stackName">> => string()
-%% }
--type create_backend_environment_request() :: #{binary() => any()}.
+%% delete_backend_environment_request() :: #{}
+-type delete_backend_environment_request() :: #{}.
 
 
 %% Example:
@@ -430,48 +418,56 @@
 %% }
 -type delete_backend_environment_result() :: #{binary() => any()}.
 
+%% Example:
+%% delete_branch_request() :: #{}
+-type delete_branch_request() :: #{}.
+
 
 %% Example:
-%% get_job_result() :: #{
-%%   <<"job">> => job()
+%% delete_branch_result() :: #{
+%%   <<"branch">> => branch()
 %% }
--type get_job_result() :: #{binary() => any()}.
+-type delete_branch_result() :: #{binary() => any()}.
 
 %% Example:
-%% get_app_request() :: #{}
--type get_app_request() :: #{}.
+%% delete_domain_association_request() :: #{}
+-type delete_domain_association_request() :: #{}.
 
 
 %% Example:
-%% job_summary() :: #{
-%%   <<"commitId">> => string(),
-%%   <<"commitMessage">> => string(),
-%%   <<"commitTime">> => non_neg_integer(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"jobArn">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"jobType">> => list(any()),
-%%   <<"sourceUrl">> => string(),
-%%   <<"sourceUrlType">> => list(any()),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any())
+%% delete_domain_association_result() :: #{
+%%   <<"domainAssociation">> => domain_association()
 %% }
--type job_summary() :: #{binary() => any()}.
+-type delete_domain_association_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_job_request() :: #{}
+-type delete_job_request() :: #{}.
 
 
 %% Example:
-%% sub_domain_setting() :: #{
-%%   <<"branchName">> => string(),
-%%   <<"prefix">> => string()
+%% delete_job_result() :: #{
+%%   <<"jobSummary">> => job_summary()
 %% }
--type sub_domain_setting() :: #{binary() => any()}.
+-type delete_job_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_webhook_request() :: #{}
+-type delete_webhook_request() :: #{}.
 
 
 %% Example:
-%% update_app_result() :: #{
-%%   <<"app">> => app()
+%% delete_webhook_result() :: #{
+%%   <<"webhook">> => webhook()
 %% }
--type update_app_result() :: #{binary() => any()}.
+-type delete_webhook_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% dependent_service_failure_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dependent_service_failure_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -492,66 +488,259 @@
 
 
 %% Example:
+%% generate_access_logs_request() :: #{
+%%   <<"domainName">> := string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type generate_access_logs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% generate_access_logs_result() :: #{
+%%   <<"logUrl">> => string()
+%% }
+-type generate_access_logs_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_app_request() :: #{}
+-type get_app_request() :: #{}.
+
+
+%% Example:
+%% get_app_result() :: #{
+%%   <<"app">> => app()
+%% }
+-type get_app_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_artifact_url_request() :: #{}
+-type get_artifact_url_request() :: #{}.
+
+
+%% Example:
+%% get_artifact_url_result() :: #{
+%%   <<"artifactId">> => string(),
+%%   <<"artifactUrl">> => string()
+%% }
+-type get_artifact_url_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_backend_environment_request() :: #{}
+-type get_backend_environment_request() :: #{}.
+
+
+%% Example:
 %% get_backend_environment_result() :: #{
 %%   <<"backendEnvironment">> => backend_environment()
 %% }
 -type get_backend_environment_result() :: #{binary() => any()}.
 
+%% Example:
+%% get_branch_request() :: #{}
+-type get_branch_request() :: #{}.
+
 
 %% Example:
-%% start_deployment_result() :: #{
-%%   <<"jobSummary">> => job_summary()
+%% get_branch_result() :: #{
+%%   <<"branch">> => branch()
 %% }
--type start_deployment_result() :: #{binary() => any()}.
+-type get_branch_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_association_request() :: #{}
+-type get_domain_association_request() :: #{}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"code">> => string(),
-%%   <<"message">> => string()
+%% get_domain_association_result() :: #{
+%%   <<"domainAssociation">> => domain_association()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type get_domain_association_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_request() :: #{}
+-type get_job_request() :: #{}.
 
 
 %% Example:
-%% dependent_service_failure_exception() :: #{
-%%   <<"message">> => string()
+%% get_job_result() :: #{
+%%   <<"job">> => job()
 %% }
--type dependent_service_failure_exception() :: #{binary() => any()}.
+-type get_job_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_webhook_request() :: #{}
+-type get_webhook_request() :: #{}.
 
 
 %% Example:
-%% delete_webhook_result() :: #{
+%% get_webhook_result() :: #{
 %%   <<"webhook">> => webhook()
 %% }
--type delete_webhook_result() :: #{binary() => any()}.
+-type get_webhook_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% production_branch() :: #{
-%%   <<"branchName">> => string(),
-%%   <<"lastDeployTime">> => non_neg_integer(),
-%%   <<"status">> => string(),
-%%   <<"thumbnailUrl">> => string()
+%% internal_failure_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type production_branch() :: #{binary() => any()}.
+-type internal_failure_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_deployment_result() :: #{
-%%   <<"fileUploadUrls">> => map(),
+%% job() :: #{
+%%   <<"steps">> => list(step()),
+%%   <<"summary">> => job_summary()
+%% }
+-type job() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_config() :: #{
+%%   <<"buildComputeType">> => list(any())
+%% }
+-type job_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_summary() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"commitMessage">> => string(),
+%%   <<"commitTime">> => non_neg_integer(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"jobArn">> => string(),
 %%   <<"jobId">> => string(),
-%%   <<"zipUploadUrl">> => string()
+%%   <<"jobType">> => list(any()),
+%%   <<"sourceUrl">> => string(),
+%%   <<"sourceUrlType">> => list(any()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any())
 %% }
--type create_deployment_result() :: #{binary() => any()}.
+-type job_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_webhook_request() :: #{
-%%   <<"branchName">> => string(),
-%%   <<"description">> => string()
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_webhook_request() :: #{binary() => any()}.
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_apps_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_apps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_apps_result() :: #{
+%%   <<"apps">> => list(app()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_apps_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_artifacts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_artifacts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_artifacts_result() :: #{
+%%   <<"artifacts">> => list(artifact()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_artifacts_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backend_environments_request() :: #{
+%%   <<"environmentName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_backend_environments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backend_environments_result() :: #{
+%%   <<"backendEnvironments">> => list(backend_environment()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_backend_environments_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_branches_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_branches_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_branches_result() :: #{
+%%   <<"branches">> => list(branch()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_branches_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domain_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_associations_result() :: #{
+%%   <<"domainAssociations">> => list(domain_association()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domain_associations_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_result() :: #{
+%%   <<"jobSummaries">> => list(job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_webhooks_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_webhooks_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -570,65 +759,37 @@
 
 
 %% Example:
-%% create_webhook_request() :: #{
-%%   <<"branchName">> := string(),
-%%   <<"description">> => string()
+%% production_branch() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"lastDeployTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"thumbnailUrl">> => string()
 %% }
--type create_webhook_request() :: #{binary() => any()}.
+-type production_branch() :: #{binary() => any()}.
 
 
 %% Example:
-%% backend_environment() :: #{
-%%   <<"backendEnvironmentArn">> => string(),
-%%   <<"createTime">> => non_neg_integer(),
-%%   <<"deploymentArtifacts">> => string(),
-%%   <<"environmentName">> => string(),
-%%   <<"stackName">> => string(),
-%%   <<"updateTime">> => non_neg_integer()
+%% resource_not_found_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
 %% }
--type backend_environment() :: #{binary() => any()}.
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% start_deployment_request() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"sourceUrl">> => string(),
+%%   <<"sourceUrlType">> => list(any())
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type start_deployment_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% waf_configuration() :: #{
-%%   <<"statusReason">> => string(),
-%%   <<"wafStatus">> => list(any()),
-%%   <<"webAclArn">> => string()
+%% start_deployment_result() :: #{
+%%   <<"jobSummary">> => job_summary()
 %% }
--type waf_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_app_result() :: #{
-%%   <<"app">> => app()
-%% }
--type delete_app_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_branch_result() :: #{
-%%   <<"branch">> => branch()
-%% }
--type update_branch_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_branch_request() :: #{}
--type get_branch_request() :: #{}.
-
-
-%% Example:
-%% list_domain_associations_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_domain_associations_request() :: #{binary() => any()}.
+-type start_deployment_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -644,92 +805,62 @@
 
 
 %% Example:
-%% cache_config() :: #{
-%%   <<"type">> => list(any())
+%% start_job_result() :: #{
+%%   <<"jobSummary">> => job_summary()
 %% }
--type cache_config() :: #{binary() => any()}.
+-type start_job_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_backend_environments_request() :: #{
-%%   <<"environmentName">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% step() :: #{
+%%   <<"artifactsUrl">> => string(),
+%%   <<"context">> => string(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"logUrl">> => string(),
+%%   <<"screenshots">> => map(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"stepName">> => string(),
+%%   <<"testArtifactsUrl">> => string(),
+%%   <<"testConfigUrl">> => string()
 %% }
--type list_backend_environments_request() :: #{binary() => any()}.
+-type step() :: #{binary() => any()}.
 
 %% Example:
-%% delete_backend_environment_request() :: #{}
--type delete_backend_environment_request() :: #{}.
+%% stop_job_request() :: #{}
+-type stop_job_request() :: #{}.
 
 
 %% Example:
-%% custom_rule() :: #{
-%%   <<"condition">> => string(),
-%%   <<"source">> => string(),
-%%   <<"status">> => string(),
-%%   <<"target">> => string()
+%% stop_job_result() :: #{
+%%   <<"jobSummary">> => job_summary()
 %% }
--type custom_rule() :: #{binary() => any()}.
+-type stop_job_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_branch_result() :: #{
-%%   <<"branch">> => branch()
+%% sub_domain() :: #{
+%%   <<"dnsRecord">> => string(),
+%%   <<"subDomainSetting">> => sub_domain_setting(),
+%%   <<"verified">> => boolean()
 %% }
--type create_branch_result() :: #{binary() => any()}.
+-type sub_domain() :: #{binary() => any()}.
 
 
 %% Example:
-%% certificate() :: #{
-%%   <<"certificateVerificationDNSRecord">> => string(),
-%%   <<"customCertificateArn">> => string(),
-%%   <<"type">> => list(any())
+%% sub_domain_setting() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"prefix">> => string()
 %% }
--type certificate() :: #{binary() => any()}.
-
-%% Example:
-%% delete_branch_request() :: #{}
--type delete_branch_request() :: #{}.
-
-%% Example:
-%% get_webhook_request() :: #{}
--type get_webhook_request() :: #{}.
-
-%% Example:
-%% delete_app_request() :: #{}
--type delete_app_request() :: #{}.
+-type sub_domain_setting() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_config() :: #{
-%%   <<"buildComputeType">> => list(any())
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type job_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_branch_request() :: #{
-%%   <<"backend">> => backend(),
-%%   <<"backendEnvironmentArn">> => string(),
-%%   <<"basicAuthCredentials">> => string(),
-%%   <<"buildSpec">> => string(),
-%%   <<"computeRoleArn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"enableAutoBuild">> => boolean(),
-%%   <<"enableBasicAuth">> => boolean(),
-%%   <<"enableNotification">> => boolean(),
-%%   <<"enablePerformanceMode">> => boolean(),
-%%   <<"enablePullRequestPreview">> => boolean(),
-%%   <<"enableSkewProtection">> => boolean(),
-%%   <<"environmentVariables">> => map(),
-%%   <<"framework">> => string(),
-%%   <<"pullRequestEnvironmentName">> => string(),
-%%   <<"stage">> => list(any()),
-%%   <<"ttl">> => string()
-%% }
--type update_branch_request() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -737,41 +868,21 @@
 
 
 %% Example:
-%% update_domain_association_result() :: #{
-%%   <<"domainAssociation">> => domain_association()
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_domain_association_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_job_request() :: #{}
--type delete_job_request() :: #{}.
+-type unauthorized_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_domain_association_result() :: #{
-%%   <<"domainAssociation">> => domain_association()
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type get_domain_association_result() :: #{binary() => any()}.
+-type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% job() :: #{
-%%   <<"steps">> => list(step()),
-%%   <<"summary">> => job_summary()
-%% }
--type job() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_artifacts_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_artifacts_request() :: #{binary() => any()}.
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -800,166 +911,85 @@
 %% }
 -type update_app_request() :: #{binary() => any()}.
 
-%% Example:
-%% get_job_request() :: #{}
--type get_job_request() :: #{}.
-
 
 %% Example:
-%% certificate_settings() :: #{
-%%   <<"customCertificateArn">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type certificate_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_apps_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_apps_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_app_result() :: #{
+%% update_app_result() :: #{
 %%   <<"app">> => app()
 %% }
--type get_app_result() :: #{binary() => any()}.
+-type update_app_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_domain_association_result() :: #{
-%%   <<"domainAssociation">> => domain_association()
-%% }
--type delete_domain_association_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% artifact() :: #{
-%%   <<"artifactFileName">> => string(),
-%%   <<"artifactId">> => string()
-%% }
--type artifact() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_artifacts_result() :: #{
-%%   <<"artifacts">> => list(artifact()),
-%%   <<"nextToken">> => string()
-%% }
--type list_artifacts_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_webhook_result() :: #{
-%%   <<"webhook">> => webhook()
-%% }
--type get_webhook_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% step() :: #{
-%%   <<"artifactsUrl">> => string(),
-%%   <<"context">> => string(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"logUrl">> => string(),
-%%   <<"screenshots">> => map(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusReason">> => string(),
-%%   <<"stepName">> => string(),
-%%   <<"testArtifactsUrl">> => string(),
-%%   <<"testConfigUrl">> => string()
-%% }
--type step() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_webhooks_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_webhooks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_branch_result() :: #{
-%%   <<"branch">> => branch()
-%% }
--type get_branch_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_branch_result() :: #{
-%%   <<"branch">> => branch()
-%% }
--type delete_branch_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_app_result() :: #{
-%%   <<"app">> => app()
-%% }
--type create_app_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_backend_environment_request() :: #{}
--type get_backend_environment_request() :: #{}.
-
-
-%% Example:
-%% auto_branch_creation_config() :: #{
+%% update_branch_request() :: #{
+%%   <<"backend">> => backend(),
+%%   <<"backendEnvironmentArn">> => string(),
 %%   <<"basicAuthCredentials">> => string(),
 %%   <<"buildSpec">> => string(),
+%%   <<"computeRoleArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
 %%   <<"enableAutoBuild">> => boolean(),
 %%   <<"enableBasicAuth">> => boolean(),
+%%   <<"enableNotification">> => boolean(),
 %%   <<"enablePerformanceMode">> => boolean(),
 %%   <<"enablePullRequestPreview">> => boolean(),
+%%   <<"enableSkewProtection">> => boolean(),
 %%   <<"environmentVariables">> => map(),
 %%   <<"framework">> => string(),
 %%   <<"pullRequestEnvironmentName">> => string(),
-%%   <<"stage">> => list(any())
+%%   <<"stage">> => list(any()),
+%%   <<"ttl">> => string()
 %% }
--type auto_branch_creation_config() :: #{binary() => any()}.
+-type update_branch_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_branches_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% update_branch_result() :: #{
+%%   <<"branch">> => branch()
 %% }
--type list_branches_request() :: #{binary() => any()}.
+-type update_branch_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_artifact_url_result() :: #{
-%%   <<"artifactId">> => string(),
-%%   <<"artifactUrl">> => string()
+%% update_domain_association_request() :: #{
+%%   <<"autoSubDomainCreationPatterns">> => list(string()),
+%%   <<"autoSubDomainIAMRole">> => string(),
+%%   <<"certificateSettings">> => certificate_settings(),
+%%   <<"enableAutoSubDomain">> => boolean(),
+%%   <<"subDomainSettings">> => list(sub_domain_setting())
 %% }
--type get_artifact_url_result() :: #{binary() => any()}.
+-type update_domain_association_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_domain_associations_result() :: #{
-%%   <<"domainAssociations">> => list(domain_association()),
-%%   <<"nextToken">> => string()
+%% update_domain_association_result() :: #{
+%%   <<"domainAssociation">> => domain_association()
 %% }
--type list_domain_associations_result() :: #{binary() => any()}.
+-type update_domain_association_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_webhook_request() :: #{
+%%   <<"branchName">> => string(),
+%%   <<"description">> => string()
+%% }
+-type update_webhook_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_webhook_result() :: #{
+%%   <<"webhook">> => webhook()
+%% }
+-type update_webhook_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% waf_configuration() :: #{
+%%   <<"statusReason">> => string(),
+%%   <<"wafStatus">> => list(any()),
+%%   <<"webAclArn">> => string()
+%% }
+-type waf_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -975,273 +1005,243 @@
 %% }
 -type webhook() :: #{binary() => any()}.
 
-
-%% Example:
-%% stop_job_result() :: #{
-%%   <<"jobSummary">> => job_summary()
-%% }
--type stop_job_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_deployment_request() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"sourceUrl">> => string(),
-%%   <<"sourceUrlType">> => list(any())
-%% }
--type start_deployment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_association_result() :: #{
-%%   <<"domainAssociation">> => domain_association()
-%% }
--type create_domain_association_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_webhook_result() :: #{
-%%   <<"webhook">> => webhook()
-%% }
--type update_webhook_result() :: #{binary() => any()}.
-
 -type create_app_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    dependent_service_failure_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    dependent_service_failure_exception() | 
+    bad_request_exception().
 
 -type create_backend_environment_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type create_branch_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    dependent_service_failure_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    dependent_service_failure_exception() | 
+    bad_request_exception().
 
 -type create_deployment_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type create_domain_association_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    dependent_service_failure_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    dependent_service_failure_exception() | 
+    bad_request_exception().
 
 -type create_webhook_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
-    dependent_service_failure_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    dependent_service_failure_exception() | 
+    bad_request_exception().
 
 -type delete_app_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
-    dependent_service_failure_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    dependent_service_failure_exception() | 
+    bad_request_exception().
 
 -type delete_backend_environment_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
-    dependent_service_failure_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    dependent_service_failure_exception() | 
+    bad_request_exception().
 
 -type delete_branch_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
-    dependent_service_failure_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    dependent_service_failure_exception() | 
+    bad_request_exception().
 
 -type delete_domain_association_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
-    dependent_service_failure_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    dependent_service_failure_exception() | 
+    bad_request_exception().
 
 -type delete_job_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type delete_webhook_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type generate_access_logs_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_app_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_artifact_url_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_backend_environment_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_branch_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_domain_association_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_job_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type get_webhook_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_apps_errors() ::
-    bad_request_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_artifacts_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_backend_environments_errors() ::
-    bad_request_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_branches_errors() ::
-    bad_request_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_domain_associations_errors() ::
-    bad_request_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_jobs_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
     resource_not_found_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type list_webhooks_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type start_deployment_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type start_job_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type stop_job_errors() ::
-    bad_request_exception() | 
-    limit_exceeded_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
     resource_not_found_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
     resource_not_found_exception() | 
-    internal_failure_exception().
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type update_app_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    bad_request_exception().
 
 -type update_branch_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
-    dependent_service_failure_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    dependent_service_failure_exception() | 
+    bad_request_exception().
 
 -type update_domain_association_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
-    dependent_service_failure_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    dependent_service_failure_exception() | 
+    bad_request_exception().
 
 -type update_webhook_errors() ::
-    bad_request_exception() | 
-    not_found_exception() | 
-    dependent_service_failure_exception() | 
     unauthorized_exception() | 
-    internal_failure_exception().
+    not_found_exception() | 
+    internal_failure_exception() | 
+    dependent_service_failure_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

@@ -8,6 +8,8 @@
          batch_associate_scram_secret/4,
          batch_disassociate_scram_secret/3,
          batch_disassociate_scram_secret/4,
+         create_channel/3,
+         create_channel/4,
          create_cluster/2,
          create_cluster/3,
          create_cluster_v2/2,
@@ -20,6 +22,8 @@
          create_topic/4,
          create_vpc_connection/2,
          create_vpc_connection/3,
+         delete_channel/4,
+         delete_channel/5,
          delete_cluster/3,
          delete_cluster/4,
          delete_cluster_policy/3,
@@ -32,6 +36,9 @@
          delete_topic/5,
          delete_vpc_connection/3,
          delete_vpc_connection/4,
+         describe_channel/3,
+         describe_channel/5,
+         describe_channel/6,
          describe_cluster/2,
          describe_cluster/4,
          describe_cluster/5,
@@ -71,6 +78,9 @@
          get_compatible_kafka_versions/1,
          get_compatible_kafka_versions/3,
          get_compatible_kafka_versions/4,
+         list_channels/2,
+         list_channels/4,
+         list_channels/5,
          list_client_vpc_connections/2,
          list_client_vpc_connections/4,
          list_client_vpc_connections/5,
@@ -129,6 +139,8 @@
          update_broker_storage/4,
          update_broker_type/3,
          update_broker_type/4,
+         update_channel/4,
+         update_channel/5,
          update_cluster_configuration/3,
          update_cluster_configuration/4,
          update_cluster_kafka_version/3,
@@ -160,194 +172,201 @@
 %% }
 -type amazon_msk_cluster() :: #{binary() => any()}.
 
-%% Example:
-%% describe_cluster_request() :: #{}
--type describe_cluster_request() :: #{}.
-
 
 %% Example:
-%% describe_vpc_connection_response() :: #{
-%%   <<"Authentication">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"State">> => list(any()),
-%%   <<"Subnets">> => list(string()),
-%%   <<"Tags">> => map(),
-%%   <<"TargetClusterArn">> => string(),
-%%   <<"VpcConnectionArn">> => string(),
-%%   <<"VpcId">> => string()
+%% apache_kafka_cluster() :: #{
+%%   <<"ApacheKafkaClusterId">> => string(),
+%%   <<"BootstrapBrokerString">> => string()
 %% }
--type describe_vpc_connection_response() :: #{binary() => any()}.
+-type apache_kafka_cluster() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_client_vpc_connections_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_client_vpc_connections_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_v2_request() :: #{}
--type describe_cluster_v2_request() :: #{}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% provisioned_request() :: #{
-%%   <<"BrokerNodeGroupInfo">> => broker_node_group_info(),
-%%   <<"ClientAuthentication">> => client_authentication(),
-%%   <<"ConfigurationInfo">> => configuration_info(),
-%%   <<"EncryptionInfo">> => encryption_info(),
-%%   <<"EnhancedMonitoring">> => list(any()),
-%%   <<"KafkaVersion">> => string(),
-%%   <<"LoggingInfo">> => logging_info(),
-%%   <<"NumberOfBrokerNodes">> => integer(),
-%%   <<"OpenMonitoring">> => open_monitoring_info(),
-%%   <<"Rebalancing">> => rebalancing(),
-%%   <<"StorageMode">> => list(any())
-%% }
--type provisioned_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% serverless_connectivity_info() :: #{
-%%   <<"NetworkType">> => list(any())
-%% }
--type serverless_connectivity_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% compatible_kafka_version() :: #{
-%%   <<"SourceVersion">> => string(),
-%%   <<"TargetVersions">> => list(string())
-%% }
--type compatible_kafka_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_compatible_kafka_versions_response() :: #{
-%%   <<"CompatibleKafkaVersions">> => list(compatible_kafka_version())
-%% }
--type get_compatible_kafka_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% topic_replication_update() :: #{
-%%   <<"CopyAccessControlListsForTopics">> => boolean(),
-%%   <<"CopyTopicConfigurations">> => boolean(),
-%%   <<"DetectAndCopyNewTopics">> => boolean(),
-%%   <<"TopicsToExclude">> => list(string()),
-%%   <<"TopicsToReplicate">> => list(string())
-%% }
--type topic_replication_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_cluster_client_authentication() :: #{
-%%   <<"MTLS">> => kafka_cluster_m_t_l_s_authentication(),
-%%   <<"SaslScram">> => kafka_cluster_sasl_scram_authentication()
-%% }
--type kafka_cluster_client_authentication() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vpc_connection_response() :: #{
-%%   <<"Authentication">> => string(),
-%%   <<"ClientSubnets">> => list(string()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"VpcConnectionArn">> => string(),
-%%   <<"VpcId">> => string()
-%% }
--type create_vpc_connection_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_broker_storage_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterOperationArn">> => string()
-%% }
--type update_broker_storage_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_broker_type_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterOperationArn">> => string()
-%% }
--type update_broker_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
+%% bad_request_exception() :: #{
 %%   <<"InvalidParameter">> => string(),
 %%   <<"Message">> => string()
 %% }
--type unauthorized_exception() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_storage_request() :: #{
-%%   <<"CurrentVersion">> := string(),
+%% batch_associate_scram_secret_request() :: #{
+%%   <<"SecretArnList">> := list(string())
+%% }
+-type batch_associate_scram_secret_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_associate_scram_secret_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"UnprocessedScramSecrets">> => list(unprocessed_scram_secret())
+%% }
+-type batch_associate_scram_secret_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_scram_secret_request() :: #{
+%%   <<"SecretArnList">> := list(string())
+%% }
+-type batch_disassociate_scram_secret_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_scram_secret_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"UnprocessedScramSecrets">> => list(unprocessed_scram_secret())
+%% }
+-type batch_disassociate_scram_secret_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% broker_count_update_info() :: #{
+%%   <<"CreatedBrokerIds">> => list(float()),
+%%   <<"DeletedBrokerIds">> => list(float())
+%% }
+-type broker_count_update_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% broker_ebs_volume_info() :: #{
+%%   <<"KafkaBrokerNodeId">> => string(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
-%%   <<"StorageMode">> => list(any()),
 %%   <<"VolumeSizeGB">> => integer()
 %% }
--type update_storage_request() :: #{binary() => any()}.
+-type broker_ebs_volume_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_vpc_connections_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"VpcConnections">> => list(vpc_connection())
+%% broker_logs() :: #{
+%%   <<"CloudWatchLogs">> => cloud_watch_logs(),
+%%   <<"Firehose">> => firehose(),
+%%   <<"S3">> => s3()
 %% }
--type list_vpc_connections_response() :: #{binary() => any()}.
+-type broker_logs() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_configuration_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"ServerProperties">> := binary()
+%% broker_node_group_info() :: #{
+%%   <<"BrokerAZDistribution">> => list(any()),
+%%   <<"ClientSubnets">> => list(string()),
+%%   <<"ConnectivityInfo">> => connectivity_info(),
+%%   <<"InstanceType">> => string(),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"StorageInfo">> => storage_info(),
+%%   <<"ZoneIds">> => list(string())
 %% }
--type update_configuration_request() :: #{binary() => any()}.
+-type broker_node_group_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% prometheus() :: #{
-%%   <<"JmxExporter">> => jmx_exporter(),
-%%   <<"NodeExporter">> => node_exporter()
+%% broker_node_info() :: #{
+%%   <<"AttachedENIId">> => string(),
+%%   <<"BrokerId">> => float(),
+%%   <<"ClientSubnet">> => string(),
+%%   <<"ClientVpcIpAddress">> => string(),
+%%   <<"CurrentBrokerSoftwareInfo">> => broker_software_info(),
+%%   <<"Endpoints">> => list(string())
 %% }
--type prometheus() :: #{binary() => any()}.
+-type broker_node_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_cluster_response() :: #{
-%%   <<"ClusterInfo">> => cluster_info()
+%% broker_software_info() :: #{
+%%   <<"ConfigurationArn">> => string(),
+%%   <<"ConfigurationRevision">> => float(),
+%%   <<"KafkaVersion">> => string()
 %% }
--type describe_cluster_response() :: #{binary() => any()}.
+-type broker_software_info() :: #{binary() => any()}.
 
 
 %% Example:
-%% serverless_client_authentication() :: #{
-%%   <<"Sasl">> => serverless_sasl()
+%% catalog() :: #{
+%%   <<"CatalogArn">> => string(),
+%%   <<"WarehouseLocation">> => string()
 %% }
--type serverless_client_authentication() :: #{binary() => any()}.
+-type catalog() :: #{binary() => any()}.
 
 
 %% Example:
-%% open_monitoring() :: #{
-%%   <<"Prometheus">> => prometheus()
+%% channel_info() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ClusterOperationArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DestinationType">> => list(any()),
+%%   <<"Status">> => list(any())
 %% }
--type open_monitoring() :: #{binary() => any()}.
+-type channel_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_logging_info() :: #{
+%%   <<"CloudWatchLogs">> => cloud_watch_logs(),
+%%   <<"Firehose">> => firehose(),
+%%   <<"S3">> => s3()
+%% }
+-type channel_logging_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_state_info() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type channel_state_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_authentication() :: #{
+%%   <<"Sasl">> => sasl(),
+%%   <<"Tls">> => tls(),
+%%   <<"Unauthenticated">> => unauthenticated()
+%% }
+-type client_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_vpc_connection() :: #{
+%%   <<"Authentication">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Owner">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"VpcConnectionArn">> => string()
+%% }
+-type client_vpc_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logs() :: #{
+%%   <<"Enabled">> := boolean(),
+%%   <<"LogGroup">> => string()
+%% }
+-type cloud_watch_logs() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster() :: #{
+%%   <<"ActiveOperationArn">> => string(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterName">> => string(),
+%%   <<"ClusterType">> => list(any()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CurrentVersion">> => string(),
+%%   <<"Provisioned">> => provisioned(),
+%%   <<"Serverless">> => serverless(),
+%%   <<"State">> => list(any()),
+%%   <<"StateInfo">> => state_info(),
+%%   <<"Tags">> => map()
+%% }
+-type cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster_connectivity_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type cluster_connectivity_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -378,6 +397,24 @@
 
 
 %% Example:
+%% cluster_operation_info() :: #{
+%%   <<"ClientRequestId">> => string(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ErrorInfo">> => error_info(),
+%%   <<"OperationArn">> => string(),
+%%   <<"OperationState">> => string(),
+%%   <<"OperationSteps">> => list(cluster_operation_step()),
+%%   <<"OperationType">> => string(),
+%%   <<"SourceClusterInfo">> => mutable_cluster_info(),
+%%   <<"TargetClusterInfo">> => mutable_cluster_info(),
+%%   <<"VpcConnectionInfo">> => vpc_connection_info()
+%% }
+-type cluster_operation_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% cluster_operation_step() :: #{
 %%   <<"StepInfo">> => cluster_operation_step_info(),
 %%   <<"StepName">> => string()
@@ -386,28 +423,45 @@
 
 
 %% Example:
-%% create_cluster_response() :: #{
+%% cluster_operation_step_info() :: #{
+%%   <<"StepStatus">> => string()
+%% }
+-type cluster_operation_step_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster_operation_v2() :: #{
 %%   <<"ClusterArn">> => string(),
-%%   <<"ClusterName">> => string(),
-%%   <<"State">> => list(any())
+%%   <<"ClusterType">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ErrorInfo">> => error_info(),
+%%   <<"OperationArn">> => string(),
+%%   <<"OperationState">> => string(),
+%%   <<"OperationType">> => string(),
+%%   <<"Provisioned">> => cluster_operation_v2_provisioned(),
+%%   <<"Serverless">> => cluster_operation_v2_serverless(),
+%%   <<"StartTime">> => non_neg_integer()
 %% }
--type create_cluster_response() :: #{binary() => any()}.
+-type cluster_operation_v2() :: #{binary() => any()}.
 
 
 %% Example:
-%% kafka_request_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
+%% cluster_operation_v2_provisioned() :: #{
+%%   <<"OperationSteps">> => list(cluster_operation_step()),
+%%   <<"SourceClusterInfo">> => mutable_cluster_info(),
+%%   <<"TargetClusterInfo">> => mutable_cluster_info(),
+%%   <<"VpcConnectionInfo">> => vpc_connection_info()
 %% }
--type kafka_request_exception() :: #{binary() => any()}.
+-type cluster_operation_v2_provisioned() :: #{binary() => any()}.
 
 
 %% Example:
-%% replicator_cloud_watch_logs() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"LogGroup">> => string()
+%% cluster_operation_v2_serverless() :: #{
+%%   <<"SourceClusterInfo">> => serverless_connectivity_info(),
+%%   <<"TargetClusterInfo">> => serverless_connectivity_info(),
+%%   <<"VpcConnectionInfo">> => vpc_connection_info_serverless()
 %% }
--type replicator_cloud_watch_logs() :: #{binary() => any()}.
+-type cluster_operation_v2_serverless() :: #{binary() => any()}.
 
 
 %% Example:
@@ -424,132 +478,11 @@
 
 
 %% Example:
-%% update_replication_info_request() :: #{
-%%   <<"ConsumerGroupReplication">> => consumer_group_replication_update(),
-%%   <<"CurrentVersion">> := string(),
-%%   <<"LogDelivery">> => log_delivery(),
-%%   <<"SourceKafkaClusterArn">> => string(),
-%%   <<"SourceKafkaClusterId">> => string(),
-%%   <<"TargetKafkaClusterArn">> => string(),
-%%   <<"TargetKafkaClusterId">> => string(),
-%%   <<"TopicReplication">> => topic_replication_update()
+%% compatible_kafka_version() :: #{
+%%   <<"SourceVersion">> => string(),
+%%   <<"TargetVersions">> => list(string())
 %% }
--type update_replication_info_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% logging_info() :: #{
-%%   <<"BrokerLogs">> := broker_logs()
-%% }
--type logging_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configurations_response() :: #{
-%%   <<"Configurations">> => list(configuration()),
-%%   <<"NextToken">> => string()
-%% }
--type list_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_client_vpc_connections_response() :: #{
-%%   <<"ClientVpcConnections">> => list(client_vpc_connection()),
-%%   <<"NextToken">> => string()
-%% }
--type list_client_vpc_connections_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_security_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterOperationArn">> => string()
-%% }
--type update_security_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% reboot_broker_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterOperationArn">> => string()
-%% }
--type reboot_broker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_connectivity_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterOperationArn">> => string()
-%% }
--type update_connectivity_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cluster_operations_v2_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_cluster_operations_v2_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_cluster_summary() :: #{
-%%   <<"AmazonMskCluster">> => amazon_msk_cluster(),
-%%   <<"ApacheKafkaCluster">> => apache_kafka_cluster(),
-%%   <<"KafkaClusterAlias">> => string()
-%% }
--type kafka_cluster_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% broker_logs() :: #{
-%%   <<"CloudWatchLogs">> => cloud_watch_logs(),
-%%   <<"Firehose">> => firehose(),
-%%   <<"S3">> => s3()
-%% }
--type broker_logs() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cluster_configuration_request() :: #{
-%%   <<"ConfigurationInfo">> := configuration_info(),
-%%   <<"CurrentVersion">> := string()
-%% }
--type update_cluster_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_storage_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterOperationArn">> => string()
-%% }
--type update_storage_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_topic_request() :: #{
-%%   <<"Configs">> => string(),
-%%   <<"PartitionCount">> := integer(),
-%%   <<"ReplicationFactor">> := integer(),
-%%   <<"TopicName">> := string()
-%% }
--type create_topic_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_cluster_client_vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type kafka_cluster_client_vpc_config() :: #{binary() => any()}.
+-type compatible_kafka_version() :: #{binary() => any()}.
 
 
 %% Example:
@@ -566,87 +499,6 @@
 
 
 %% Example:
-%% create_replicator_response() :: #{
-%%   <<"ReplicatorArn">> => string(),
-%%   <<"ReplicatorName">> => string(),
-%%   <<"ReplicatorState">> => list(any())
-%% }
--type create_replicator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% client_vpc_connection() :: #{
-%%   <<"Authentication">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Owner">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"VpcConnectionArn">> => string()
-%% }
--type client_vpc_connection() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_identity() :: #{
-%%   <<"PrincipalId">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type user_identity() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_topic_request() :: #{
-%%   <<"Configs">> => string(),
-%%   <<"PartitionCount">> => integer()
-%% }
--type update_topic_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_clusters_v2_request() :: #{
-%%   <<"ClusterNameFilter">> => string(),
-%%   <<"ClusterTypeFilter">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_clusters_v2_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_replication_info_response() :: #{
-%%   <<"ReplicatorArn">> => string(),
-%%   <<"ReplicatorState">> => list(any())
-%% }
--type update_replication_info_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_state_info() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type replication_state_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% public_access() :: #{
-%%   <<"Type">> => string()
-%% }
--type public_access() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_timeout_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
-%% }
--type kafka_timeout_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_topic_request() :: #{}
--type describe_topic_request() :: #{}.
-
-
-%% Example:
 %% configuration_info() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Revision">> => float()
@@ -655,138 +507,29 @@
 
 
 %% Example:
-%% error_info() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorString">> => string()
-%% }
--type error_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_cluster_m_t_l_s_authentication() :: #{
-%%   <<"SecretArn">> => string()
-%% }
--type kafka_cluster_m_t_l_s_authentication() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_rebalancing_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterOperationArn">> => string()
-%% }
--type update_rebalancing_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_policy_response() :: #{}
--type delete_cluster_policy_response() :: #{}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_connection() :: #{
-%%   <<"Authentication">> => string(),
+%% configuration_revision() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"TargetClusterArn">> => string(),
-%%   <<"VpcConnectionArn">> => string(),
-%%   <<"VpcId">> => string()
+%%   <<"Description">> => string(),
+%%   <<"Revision">> => float()
 %% }
--type vpc_connection() :: #{binary() => any()}.
+-type configuration_revision() :: #{binary() => any()}.
 
 
 %% Example:
-%% replication_info_summary() :: #{
-%%   <<"SourceKafkaClusterAlias">> => string(),
-%%   <<"TargetKafkaClusterAlias">> => string()
-%% }
--type replication_info_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_vpc_connection_request() :: #{
-%%   <<"Authentication">> := string(),
-%%   <<"ClientSubnets">> := list(string()),
-%%   <<"SecurityGroups">> := list(string()),
-%%   <<"Tags">> => map(),
-%%   <<"TargetClusterArn">> := string(),
-%%   <<"VpcId">> := string()
-%% }
--type create_vpc_connection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% serverless_sasl() :: #{
-%%   <<"Iam">> => iam()
-%% }
--type serverless_sasl() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
+%% conflict_exception() :: #{
 %%   <<"InvalidParameter">> => string(),
 %%   <<"Message">> => string()
 %% }
--type too_many_requests_exception() :: #{binary() => any()}.
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% node_exporter_info() :: #{
-%%   <<"EnabledInBroker">> => boolean()
+%% connectivity_info() :: #{
+%%   <<"NetworkType">> => list(any()),
+%%   <<"PublicAccess">> => public_access(),
+%%   <<"VpcConnectivity">> => vpc_connectivity()
 %% }
--type node_exporter_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_replicator_request() :: #{
-%%   <<"CurrentVersion">> => string()
-%% }
--type delete_replicator_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_associate_scram_secret_request() :: #{
-%%   <<"SecretArnList">> := list(string())
-%% }
--type batch_associate_scram_secret_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_replicator_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"KafkaClusters">> := list(kafka_cluster()),
-%%   <<"LogDelivery">> => log_delivery(),
-%%   <<"ReplicationInfoList">> := list(replication_info()),
-%%   <<"ReplicatorName">> := string(),
-%%   <<"ServiceExecutionRoleArn">> := string(),
-%%   <<"Tags">> => map()
-%% }
--type create_replicator_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_replicator_request() :: #{}
--type describe_replicator_request() :: #{}.
-
-
-%% Example:
-%% list_cluster_operations_response() :: #{
-%%   <<"ClusterOperationInfoList">> => list(cluster_operation_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cluster_operations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configurations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_configurations_request() :: #{binary() => any()}.
+-type connectivity_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -801,185 +544,21 @@
 
 
 %% Example:
-%% replication_info_description() :: #{
-%%   <<"ConsumerGroupReplication">> => consumer_group_replication(),
-%%   <<"SourceKafkaClusterAlias">> => string(),
-%%   <<"TargetCompressionType">> => list(any()),
-%%   <<"TargetKafkaClusterAlias">> => string(),
-%%   <<"TopicReplication">> => topic_replication()
+%% consumer_group_replication_update() :: #{
+%%   <<"ConsumerGroupsToExclude">> => list(string()),
+%%   <<"ConsumerGroupsToReplicate">> => list(string()),
+%%   <<"DetectAndCopyNewConsumerGroups">> => boolean(),
+%%   <<"SynchroniseConsumerGroupOffsets">> => boolean()
 %% }
--type replication_info_description() :: #{binary() => any()}.
+-type consumer_group_replication_update() :: #{binary() => any()}.
 
 
 %% Example:
-%% node_info() :: #{
-%%   <<"AddedToClusterTime">> => string(),
-%%   <<"BrokerNodeInfo">> => broker_node_info(),
-%%   <<"ControllerNodeInfo">> => controller_node_info(),
-%%   <<"InstanceType">> => string(),
-%%   <<"NodeARN">> => string(),
-%%   <<"NodeType">> => list(any()),
-%%   <<"ZookeeperNodeInfo">> => zookeeper_node_info()
+%% controller_moved_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
 %% }
--type node_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_cluster() :: #{
-%%   <<"AmazonMskCluster">> => amazon_msk_cluster(),
-%%   <<"ApacheKafkaCluster">> => apache_kafka_cluster(),
-%%   <<"ClientAuthentication">> => kafka_cluster_client_authentication(),
-%%   <<"EncryptionInTransit">> => kafka_cluster_encryption_in_transit(),
-%%   <<"VpcConfig">> => kafka_cluster_client_vpc_config()
-%% }
--type kafka_cluster() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_broker_count_request() :: #{
-%%   <<"CurrentVersion">> := string(),
-%%   <<"TargetNumberOfBrokerNodes">> := integer()
-%% }
--type update_broker_count_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_configuration_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type delete_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cluster_configuration_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterOperationArn">> => string()
-%% }
--type update_cluster_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_topic_response() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"TopicArn">> => string(),
-%%   <<"TopicName">> => string()
-%% }
--type create_topic_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% topic_partition_info() :: #{
-%%   <<"Isr">> => list(integer()),
-%%   <<"Leader">> => integer(),
-%%   <<"Partition">> => integer(),
-%%   <<"Replicas">> => list(integer())
-%% }
--type topic_partition_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% topic_replication() :: #{
-%%   <<"CopyAccessControlListsForTopics">> => boolean(),
-%%   <<"CopyTopicConfigurations">> => boolean(),
-%%   <<"DetectAndCopyNewTopics">> => boolean(),
-%%   <<"StartingPosition">> => replication_starting_position(),
-%%   <<"TopicNameConfiguration">> => replication_topic_name_configuration(),
-%%   <<"TopicsToExclude">> => list(string()),
-%%   <<"TopicsToReplicate">> => list(string())
-%% }
--type topic_replication() :: #{binary() => any()}.
-
-%% Example:
-%% delete_vpc_connection_request() :: #{}
--type delete_vpc_connection_request() :: #{}.
-
-
-%% Example:
-%% update_cluster_kafka_version_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterOperationArn">> => string()
-%% }
--type update_cluster_kafka_version_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_vpc_connections_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_vpc_connections_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_operation_v2_provisioned() :: #{
-%%   <<"OperationSteps">> => list(cluster_operation_step()),
-%%   <<"SourceClusterInfo">> => mutable_cluster_info(),
-%%   <<"TargetClusterInfo">> => mutable_cluster_info(),
-%%   <<"VpcConnectionInfo">> => vpc_connection_info()
-%% }
--type cluster_operation_v2_provisioned() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_starting_position() :: #{
-%%   <<"Type">> => list(any())
-%% }
--type replication_starting_position() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cluster_v2_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterName">> => string(),
-%%   <<"ClusterType">> => list(any()),
-%%   <<"State">> => list(any())
-%% }
--type create_cluster_v2_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% node_exporter() :: #{
-%%   <<"EnabledInBroker">> => boolean()
-%% }
--type node_exporter() :: #{binary() => any()}.
-
-
-%% Example:
-%% jmx_exporter() :: #{
-%%   <<"EnabledInBroker">> => boolean()
-%% }
--type jmx_exporter() :: #{binary() => any()}.
-
-
-%% Example:
-%% connectivity_info() :: #{
-%%   <<"NetworkType">> => list(any()),
-%%   <<"PublicAccess">> => public_access(),
-%%   <<"VpcConnectivity">> => vpc_connectivity()
-%% }
--type connectivity_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% tls() :: #{
-%%   <<"CertificateAuthorityArnList">> => list(string()),
-%%   <<"Enabled">> => boolean()
-%% }
--type tls() :: #{binary() => any()}.
-
-
-%% Example:
-%% broker_node_group_info() :: #{
-%%   <<"BrokerAZDistribution">> => list(any()),
-%%   <<"ClientSubnets">> => list(string()),
-%%   <<"ConnectivityInfo">> => connectivity_info(),
-%%   <<"InstanceType">> => string(),
-%%   <<"SecurityGroups">> => list(string()),
-%%   <<"StorageInfo">> => storage_info(),
-%%   <<"ZoneIds">> => list(string())
-%% }
--type broker_node_group_info() :: #{binary() => any()}.
+-type controller_moved_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -990,11 +569,24 @@
 
 
 %% Example:
-%% topic_exists_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
+%% create_channel_request() :: #{
+%%   <<"ChannelName">> := string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"IcebergDestinationConfiguration">> => iceberg_destination_configuration(),
+%%   <<"LoggingInfo">> => channel_logging_info(),
+%%   <<"S3DestinationConfiguration">> => s3_destination_configuration(),
+%%   <<"Tags">> => map(),
+%%   <<"TopicConfigurationList">> := list(topic_configuration())
 %% }
--type topic_exists_exception() :: #{binary() => any()}.
+-type create_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type create_channel_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1017,247 +609,32 @@
 
 
 %% Example:
-%% describe_topic_response() :: #{
-%%   <<"Configs">> => string(),
-%%   <<"PartitionCount">> => integer(),
-%%   <<"ReplicationFactor">> => integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"TopicArn">> => string(),
-%%   <<"TopicName">> => string()
+%% create_cluster_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterName">> => string(),
+%%   <<"State">> => list(any())
 %% }
--type describe_topic_response() :: #{binary() => any()}.
+-type create_cluster_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% conflict_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
+%% create_cluster_v2_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"Provisioned">> => provisioned_request(),
+%%   <<"Serverless">> => serverless_request(),
+%%   <<"Tags">> => map()
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type create_cluster_v2_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% kafka_cluster_encryption_in_transit() :: #{
-%%   <<"EncryptionType">> => list(any()),
-%%   <<"RootCaCertificate">> => string()
-%% }
--type kafka_cluster_encryption_in_transit() :: #{binary() => any()}.
-
-%% Example:
-%% delete_configuration_request() :: #{}
--type delete_configuration_request() :: #{}.
-
-
-%% Example:
-%% replicator_s3() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"Prefix">> => string()
-%% }
--type replicator_s3() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_cluster_operation_v2_response() :: #{
-%%   <<"ClusterOperationInfo">> => cluster_operation_v2()
-%% }
--type describe_cluster_operation_v2_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_cluster_policy_request() :: #{}
--type get_cluster_policy_request() :: #{}.
-
-
-%% Example:
-%% open_monitoring_info() :: #{
-%%   <<"Prometheus">> => prometheus_info()
-%% }
--type open_monitoring_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster() :: #{
-%%   <<"ActiveOperationArn">> => string(),
+%% create_cluster_v2_response() :: #{
 %%   <<"ClusterArn">> => string(),
 %%   <<"ClusterName">> => string(),
 %%   <<"ClusterType">> => list(any()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CurrentVersion">> => string(),
-%%   <<"Provisioned">> => provisioned(),
-%%   <<"Serverless">> => serverless(),
-%%   <<"State">> => list(any()),
-%%   <<"StateInfo">> => state_info(),
-%%   <<"Tags">> => map()
+%%   <<"State">> => list(any())
 %% }
--type cluster() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_connection_info_serverless() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Owner">> => string(),
-%%   <<"UserIdentity">> => user_identity(),
-%%   <<"VpcConnectionArn">> => string()
-%% }
--type vpc_connection_info_serverless() :: #{binary() => any()}.
-
-
-%% Example:
-%% apache_kafka_cluster() :: #{
-%%   <<"ApacheKafkaClusterId">> => string(),
-%%   <<"BootstrapBrokerString">> => string()
-%% }
--type apache_kafka_cluster() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_connectivity_scram() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type vpc_connectivity_scram() :: #{binary() => any()}.
-
-
-%% Example:
-%% reboot_broker_request() :: #{
-%%   <<"BrokerIds">> := list(string())
-%% }
--type reboot_broker_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_in_transit() :: #{
-%%   <<"ClientBroker">> => list(any()),
-%%   <<"InCluster">> => boolean()
-%% }
--type encryption_in_transit() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_compatible_kafka_versions_request() :: #{
-%%   <<"ClusterArn">> => string()
-%% }
--type get_compatible_kafka_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_bootstrap_brokers_response() :: #{
-%%   <<"BootstrapBrokerString">> => string(),
-%%   <<"BootstrapBrokerStringIpv6">> => string(),
-%%   <<"BootstrapBrokerStringPublicSaslIam">> => string(),
-%%   <<"BootstrapBrokerStringPublicSaslScram">> => string(),
-%%   <<"BootstrapBrokerStringPublicTls">> => string(),
-%%   <<"BootstrapBrokerStringSaslIam">> => string(),
-%%   <<"BootstrapBrokerStringSaslIamIpv6">> => string(),
-%%   <<"BootstrapBrokerStringSaslScram">> => string(),
-%%   <<"BootstrapBrokerStringSaslScramIpv6">> => string(),
-%%   <<"BootstrapBrokerStringTls">> => string(),
-%%   <<"BootstrapBrokerStringTlsIpv6">> => string(),
-%%   <<"BootstrapBrokerStringVpcConnectivitySaslIam">> => string(),
-%%   <<"BootstrapBrokerStringVpcConnectivitySaslScram">> => string(),
-%%   <<"BootstrapBrokerStringVpcConnectivityTls">> => string()
-%% }
--type get_bootstrap_brokers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% jmx_exporter_info() :: #{
-%%   <<"EnabledInBroker">> => boolean()
-%% }
--type jmx_exporter_info() :: #{binary() => any()}.
-
-%% Example:
-%% describe_configuration_revision_request() :: #{}
--type describe_configuration_revision_request() :: #{}.
-
-
-%% Example:
-%% vpc_connectivity_iam() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type vpc_connectivity_iam() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_broker_storage_request() :: #{
-%%   <<"CurrentVersion">> := string(),
-%%   <<"TargetBrokerEBSVolumeInfo">> := list(broker_ebs_volume_info())
-%% }
--type update_broker_storage_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_kafka_versions_response() :: #{
-%%   <<"KafkaVersions">> => list(kafka_version()),
-%%   <<"NextToken">> => string()
-%% }
--type list_kafka_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_topics_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TopicNameFilter">> => string()
-%% }
--type list_topics_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_replicator_response() :: #{
-%%   <<"ReplicatorArn">> => string(),
-%%   <<"ReplicatorState">> => list(any())
-%% }
--type delete_replicator_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_cluster_kafka_version_request() :: #{
-%%   <<"ConfigurationInfo">> => configuration_info(),
-%%   <<"CurrentVersion">> := string(),
-%%   <<"TargetKafkaVersion">> := string()
-%% }
--type update_cluster_kafka_version_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type vpc_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_nodes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_nodes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_clusters_v2_response() :: #{
-%%   <<"ClusterInfoList">> => list(cluster()),
-%%   <<"NextToken">> => string()
-%% }
--type list_clusters_v2_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_security_request() :: #{
-%%   <<"ClientAuthentication">> => client_authentication(),
-%%   <<"CurrentVersion">> := string(),
-%%   <<"EncryptionInfo">> => encryption_info()
-%% }
--type update_security_request() :: #{binary() => any()}.
+-type create_cluster_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1268,126 +645,6 @@
 %%   <<"ServerProperties">> := binary()
 %% }
 -type create_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% reassignment_in_progress_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
-%% }
--type reassignment_in_progress_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_topics_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Topics">> => list(topic_info())
-%% }
--type list_topics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_topic_name_configuration() :: #{
-%%   <<"Type">> => list(any())
-%% }
--type replication_topic_name_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_connectivity_client_authentication() :: #{
-%%   <<"Sasl">> => vpc_connectivity_sasl(),
-%%   <<"Tls">> => vpc_connectivity_tls()
-%% }
--type vpc_connectivity_client_authentication() :: #{binary() => any()}.
-
-
-%% Example:
-%% serverless_request() :: #{
-%%   <<"ClientAuthentication">> => serverless_client_authentication(),
-%%   <<"VpcConfigs">> => list(vpc_config())
-%% }
--type serverless_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_cluster_policy_request() :: #{}
--type delete_cluster_policy_request() :: #{}.
-
-
-%% Example:
-%% list_replicators_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ReplicatorNameFilter">> => string()
-%% }
--type list_replicators_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_connectivity_tls() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type vpc_connectivity_tls() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_clusters_response() :: #{
-%%   <<"ClusterInfoList">> => list(cluster_info()),
-%%   <<"NextToken">> => string()
-%% }
--type list_clusters_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_topic_partitions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_topic_partitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_cluster_policy_response() :: #{
-%%   <<"CurrentVersion">> => string()
-%% }
--type put_cluster_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_cluster_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type delete_cluster_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_revisions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Revisions">> => list(configuration_revision())
-%% }
--type list_configuration_revisions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% storage_info() :: #{
-%%   <<"EbsStorageInfo">> => ebs_storage_info()
-%% }
--type storage_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1402,197 +659,99 @@
 
 
 %% Example:
-%% list_kafka_versions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_kafka_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_monitoring_request() :: #{
-%%   <<"CurrentVersion">> := string(),
-%%   <<"EnhancedMonitoring">> => list(any()),
-%%   <<"LoggingInfo">> => logging_info(),
-%%   <<"OpenMonitoring">> => open_monitoring_info()
-%% }
--type update_monitoring_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% iam() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type iam() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_cluster_operation_response() :: #{
-%%   <<"ClusterOperationInfo">> => cluster_operation_info()
-%% }
--type describe_cluster_operation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_cluster_policy_response() :: #{
-%%   <<"CurrentVersion">> => string(),
-%%   <<"Policy">> => string()
-%% }
--type get_cluster_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% consumer_group_replication_update() :: #{
-%%   <<"ConsumerGroupsToExclude">> => list(string()),
-%%   <<"ConsumerGroupsToReplicate">> => list(string()),
-%%   <<"DetectAndCopyNewConsumerGroups">> => boolean(),
-%%   <<"SynchroniseConsumerGroupOffsets">> => boolean()
-%% }
--type consumer_group_replication_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% reject_client_vpc_connection_request() :: #{
-%%   <<"VpcConnectionArn">> := string()
-%% }
--type reject_client_vpc_connection_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthenticated() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type unauthenticated() :: #{binary() => any()}.
-
-
-%% Example:
-%% firehose() :: #{
-%%   <<"DeliveryStream">> => string(),
-%%   <<"Enabled">> := boolean()
-%% }
--type firehose() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_operation_request() :: #{}
--type describe_cluster_operation_request() :: #{}.
-
-
-%% Example:
-%% topic_info() :: #{
-%%   <<"OutOfSyncReplicaCount">> => integer(),
-%%   <<"PartitionCount">> => integer(),
-%%   <<"ReplicationFactor">> => integer(),
-%%   <<"TopicArn">> => string(),
-%%   <<"TopicName">> => string()
-%% }
--type topic_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_clusters_request() :: #{
-%%   <<"ClusterNameFilter">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_clusters_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_configuration_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"LatestRevision">> => configuration_revision()
-%% }
--type update_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_logs() :: #{
-%%   <<"Enabled">> := boolean(),
-%%   <<"LogGroup">> => string()
-%% }
--type cloud_watch_logs() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_configuration_revision_response() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
+%% create_replicator_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Revision">> => float(),
-%%   <<"ServerProperties">> => binary()
+%%   <<"KafkaClusters">> := list(kafka_cluster()),
+%%   <<"LogDelivery">> => log_delivery(),
+%%   <<"ReplicationInfoList">> := list(replication_info()),
+%%   <<"ReplicatorName">> := string(),
+%%   <<"ServiceExecutionRoleArn">> := string(),
+%%   <<"Tags">> => map()
 %% }
--type describe_configuration_revision_response() :: #{binary() => any()}.
+-type create_replicator_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% vpc_connection_info() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Owner">> => string(),
-%%   <<"UserIdentity">> => user_identity(),
-%%   <<"VpcConnectionArn">> => string()
+%% create_replicator_response() :: #{
+%%   <<"ReplicatorArn">> => string(),
+%%   <<"ReplicatorName">> => string(),
+%%   <<"ReplicatorState">> => list(any())
 %% }
--type vpc_connection_info() :: #{binary() => any()}.
+-type create_replicator_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_connectivity_request() :: #{
-%%   <<"ConnectivityInfo">> => connectivity_info(),
-%%   <<"CurrentVersion">> := string(),
-%%   <<"ZookeeperAccess">> => zookeeper_access()
+%% create_topic_request() :: #{
+%%   <<"Configs">> => string(),
+%%   <<"PartitionCount">> := integer(),
+%%   <<"ReplicationFactor">> := integer(),
+%%   <<"TopicName">> := string()
 %% }
--type update_connectivity_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_vpc_connection_request() :: #{}
--type describe_vpc_connection_request() :: #{}.
+-type create_topic_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% broker_node_info() :: #{
-%%   <<"AttachedENIId">> => string(),
-%%   <<"BrokerId">> => float(),
-%%   <<"ClientSubnet">> => string(),
-%%   <<"ClientVpcIpAddress">> => string(),
-%%   <<"CurrentBrokerSoftwareInfo">> => broker_software_info(),
-%%   <<"Endpoints">> => list(string())
-%% }
--type broker_node_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% zookeeper_node_info() :: #{
-%%   <<"AttachedENIId">> => string(),
-%%   <<"ClientVpcIpAddress">> => string(),
-%%   <<"Endpoints">> => list(string()),
-%%   <<"ZookeeperId">> => float(),
-%%   <<"ZookeeperVersion">> => string()
-%% }
--type zookeeper_node_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_rebalancing_request() :: #{
-%%   <<"CurrentVersion">> := string(),
-%%   <<"Rebalancing">> := rebalancing()
-%% }
--type update_rebalancing_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_topic_response() :: #{
+%% create_topic_response() :: #{
 %%   <<"Status">> => list(any()),
 %%   <<"TopicArn">> => string(),
 %%   <<"TopicName">> => string()
 %% }
--type update_topic_response() :: #{binary() => any()}.
+-type create_topic_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% ebs_storage_info() :: #{
-%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
-%%   <<"VolumeSize">> => integer()
+%% create_vpc_connection_request() :: #{
+%%   <<"Authentication">> := string(),
+%%   <<"ClientSubnets">> := list(string()),
+%%   <<"SecurityGroups">> := list(string()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetClusterArn">> := string(),
+%%   <<"VpcId">> := string()
 %% }
--type ebs_storage_info() :: #{binary() => any()}.
+-type create_vpc_connection_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_connection_response() :: #{
+%%   <<"Authentication">> => string(),
+%%   <<"ClientSubnets">> => list(string()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"VpcConnectionArn">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type create_vpc_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dead_letter_queue_s3() :: #{
+%%   <<"BucketArn">> => string(),
+%%   <<"ErrorOutputPrefix">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type dead_letter_queue_s3() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_request() :: #{}
+-type delete_channel_request() :: #{}.
+
+
+%% Example:
+%% delete_channel_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type delete_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_policy_request() :: #{}
+-type delete_cluster_policy_request() :: #{}.
+
+%% Example:
+%% delete_cluster_policy_response() :: #{}
+-type delete_cluster_policy_response() :: #{}.
 
 
 %% Example:
@@ -1603,59 +762,134 @@
 
 
 %% Example:
-%% provisioned_throughput() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"VolumeThroughput">> => integer()
-%% }
--type provisioned_throughput() :: #{binary() => any()}.
-
-
-%% Example:
-%% encryption_at_rest() :: #{
-%%   <<"DataVolumeKMSKeyId">> => string()
-%% }
--type encryption_at_rest() :: #{binary() => any()}.
-
-
-%% Example:
-%% replicator_log_delivery() :: #{
-%%   <<"CloudWatchLogs">> => replicator_cloud_watch_logs(),
-%%   <<"Firehose">> => replicator_firehose(),
-%%   <<"S3">> => replicator_s3()
-%% }
--type replicator_log_delivery() :: #{binary() => any()}.
-
-
-%% Example:
-%% replicator_firehose() :: #{
-%%   <<"DeliveryStream">> => string(),
-%%   <<"Enabled">> => boolean()
-%% }
--type replicator_firehose() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_broker_count_response() :: #{
+%% delete_cluster_response() :: #{
 %%   <<"ClusterArn">> => string(),
-%%   <<"ClusterOperationArn">> => string()
+%%   <<"State">> => list(any())
 %% }
--type update_broker_count_response() :: #{binary() => any()}.
+-type delete_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_configuration_request() :: #{}
+-type delete_configuration_request() :: #{}.
 
 
 %% Example:
-%% unknown_topic_or_partition_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
+%% delete_configuration_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"State">> => list(any())
 %% }
--type unknown_topic_or_partition_exception() :: #{binary() => any()}.
+-type delete_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_cluster_policy_request() :: #{
-%%   <<"CurrentVersion">> => string(),
-%%   <<"Policy">> := string()
+%% delete_replicator_request() :: #{
+%%   <<"CurrentVersion">> => string()
 %% }
--type put_cluster_policy_request() :: #{binary() => any()}.
+-type delete_replicator_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_replicator_response() :: #{
+%%   <<"ReplicatorArn">> => string(),
+%%   <<"ReplicatorState">> => list(any())
+%% }
+-type delete_replicator_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_topic_request() :: #{}
+-type delete_topic_request() :: #{}.
+
+
+%% Example:
+%% delete_topic_response() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type delete_topic_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_connection_request() :: #{}
+-type delete_vpc_connection_request() :: #{}.
+
+
+%% Example:
+%% delete_vpc_connection_response() :: #{
+%%   <<"State">> => list(any()),
+%%   <<"VpcConnectionArn">> => string()
+%% }
+-type delete_vpc_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_channel_request() :: #{}
+-type describe_channel_request() :: #{}.
+
+
+%% Example:
+%% describe_channel_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ClusterOperationArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DestinationType">> => list(any()),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"IcebergDestinationConfiguration">> => iceberg_destination_configuration(),
+%%   <<"LoggingInfo">> => channel_logging_info(),
+%%   <<"S3DestinationConfiguration">> => s3_destination_configuration(),
+%%   <<"StateInfo">> => channel_state_info(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TopicConfigurationList">> => list(topic_configuration())
+%% }
+-type describe_channel_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_operation_request() :: #{}
+-type describe_cluster_operation_request() :: #{}.
+
+
+%% Example:
+%% describe_cluster_operation_response() :: #{
+%%   <<"ClusterOperationInfo">> => cluster_operation_info()
+%% }
+-type describe_cluster_operation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_operation_v2_request() :: #{}
+-type describe_cluster_operation_v2_request() :: #{}.
+
+
+%% Example:
+%% describe_cluster_operation_v2_response() :: #{
+%%   <<"ClusterOperationInfo">> => cluster_operation_v2()
+%% }
+-type describe_cluster_operation_v2_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_request() :: #{}
+-type describe_cluster_request() :: #{}.
+
+
+%% Example:
+%% describe_cluster_response() :: #{
+%%   <<"ClusterInfo">> => cluster_info()
+%% }
+-type describe_cluster_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_v2_request() :: #{}
+-type describe_cluster_v2_request() :: #{}.
+
+
+%% Example:
+%% describe_cluster_v2_response() :: #{
+%%   <<"ClusterInfo">> => cluster()
+%% }
+-type describe_cluster_v2_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_configuration_request() :: #{}
+-type describe_configuration_request() :: #{}.
 
 
 %% Example:
@@ -1670,125 +904,24 @@
 %% }
 -type describe_configuration_response() :: #{binary() => any()}.
 
+%% Example:
+%% describe_configuration_revision_request() :: #{}
+-type describe_configuration_revision_request() :: #{}.
+
 
 %% Example:
-%% client_authentication() :: #{
-%%   <<"Sasl">> => sasl(),
-%%   <<"Tls">> => tls(),
-%%   <<"Unauthenticated">> => unauthenticated()
+%% describe_configuration_revision_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Revision">> => float(),
+%%   <<"ServerProperties">> => binary()
 %% }
--type client_authentication() :: #{binary() => any()}.
-
-
-%% Example:
-%% provisioned() :: #{
-%%   <<"BrokerNodeGroupInfo">> => broker_node_group_info(),
-%%   <<"ClientAuthentication">> => client_authentication(),
-%%   <<"CurrentBrokerSoftwareInfo">> => broker_software_info(),
-%%   <<"CustomerActionStatus">> => list(any()),
-%%   <<"EncryptionInfo">> => encryption_info(),
-%%   <<"EnhancedMonitoring">> => list(any()),
-%%   <<"LoggingInfo">> => logging_info(),
-%%   <<"NumberOfBrokerNodes">> => integer(),
-%%   <<"OpenMonitoring">> => open_monitoring_info(),
-%%   <<"Rebalancing">> => rebalancing(),
-%%   <<"StorageMode">> => list(any()),
-%%   <<"ZookeeperConnectString">> => string(),
-%%   <<"ZookeeperConnectStringTls">> => string()
-%% }
--type provisioned() :: #{binary() => any()}.
-
+-type describe_configuration_revision_response() :: #{binary() => any()}.
 
 %% Example:
-%% sasl() :: #{
-%%   <<"Iam">> => iam(),
-%%   <<"Scram">> => scram()
-%% }
--type sasl() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3() :: #{
-%%   <<"Bucket">> => string(),
-%%   <<"Enabled">> := boolean(),
-%%   <<"Prefix">> => string()
-%% }
--type s3() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_connectivity_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
-%% }
--type cluster_connectivity_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cluster_operations_v2_response() :: #{
-%%   <<"ClusterOperationInfoList">> => list(cluster_operation_v2_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_cluster_operations_v2_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% zookeeper_access() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type zookeeper_access() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% log_delivery() :: #{
-%%   <<"ReplicatorLogDelivery">> => replicator_log_delivery()
-%% }
--type log_delivery() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_topic_response() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"TopicArn">> => string(),
-%%   <<"TopicName">> => string()
-%% }
--type delete_topic_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_replicators_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Replicators">> => list(replicator_summary())
-%% }
--type list_replicators_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_cluster_operations_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_cluster_operations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% kafka_cluster_sasl_scram_authentication() :: #{
-%%   <<"Mechanism">> => list(any()),
-%%   <<"SecretArn">> => string()
-%% }
--type kafka_cluster_sasl_scram_authentication() :: #{binary() => any()}.
+%% describe_replicator_request() :: #{}
+-type describe_replicator_request() :: #{}.
 
 
 %% Example:
@@ -1812,11 +945,261 @@
 
 
 %% Example:
-%% not_controller_exception() :: #{
+%% describe_topic_partitions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_topic_partitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_topic_partitions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Partitions">> => list(topic_partition_info())
+%% }
+-type describe_topic_partitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_topic_request() :: #{}
+-type describe_topic_request() :: #{}.
+
+
+%% Example:
+%% describe_topic_response() :: #{
+%%   <<"Configs">> => string(),
+%%   <<"PartitionCount">> => integer(),
+%%   <<"ReplicationFactor">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type describe_topic_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_vpc_connection_request() :: #{}
+-type describe_vpc_connection_request() :: #{}.
+
+
+%% Example:
+%% describe_vpc_connection_response() :: #{
+%%   <<"Authentication">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"State">> => list(any()),
+%%   <<"Subnets">> => list(string()),
+%%   <<"Tags">> => map(),
+%%   <<"TargetClusterArn">> => string(),
+%%   <<"VpcConnectionArn">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type describe_vpc_connection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_table() :: #{
+%%   <<"DestinationDatabaseName">> => string(),
+%%   <<"DestinationTableName">> => string(),
+%%   <<"PartitionSpec">> => partition_spec()
+%% }
+-type destination_table() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_storage_info() :: #{
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"VolumeSize">> => integer()
+%% }
+-type ebs_storage_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_at_rest() :: #{
+%%   <<"DataVolumeKMSKeyId">> => string()
+%% }
+-type encryption_at_rest() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_in_transit() :: #{
+%%   <<"ClientBroker">> => list(any()),
+%%   <<"InCluster">> => boolean()
+%% }
+-type encryption_in_transit() :: #{binary() => any()}.
+
+
+%% Example:
+%% encryption_info() :: #{
+%%   <<"EncryptionAtRest">> => encryption_at_rest(),
+%%   <<"EncryptionInTransit">> => encryption_in_transit()
+%% }
+-type encryption_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_info() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorString">> => string()
+%% }
+-type error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% firehose() :: #{
+%%   <<"DeliveryStream">> => string(),
+%%   <<"Enabled">> := boolean()
+%% }
+-type firehose() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
 %%   <<"InvalidParameter">> => string(),
 %%   <<"Message">> => string()
 %% }
--type not_controller_exception() :: #{binary() => any()}.
+-type forbidden_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_bootstrap_brokers_request() :: #{}
+-type get_bootstrap_brokers_request() :: #{}.
+
+
+%% Example:
+%% get_bootstrap_brokers_response() :: #{
+%%   <<"BootstrapBrokerString">> => string(),
+%%   <<"BootstrapBrokerStringIpv6">> => string(),
+%%   <<"BootstrapBrokerStringPublicSaslIam">> => string(),
+%%   <<"BootstrapBrokerStringPublicSaslScram">> => string(),
+%%   <<"BootstrapBrokerStringPublicTls">> => string(),
+%%   <<"BootstrapBrokerStringSaslIam">> => string(),
+%%   <<"BootstrapBrokerStringSaslIamIpv6">> => string(),
+%%   <<"BootstrapBrokerStringSaslScram">> => string(),
+%%   <<"BootstrapBrokerStringSaslScramIpv6">> => string(),
+%%   <<"BootstrapBrokerStringTls">> => string(),
+%%   <<"BootstrapBrokerStringTlsIpv6">> => string(),
+%%   <<"BootstrapBrokerStringVpcConnectivitySaslIam">> => string(),
+%%   <<"BootstrapBrokerStringVpcConnectivitySaslScram">> => string(),
+%%   <<"BootstrapBrokerStringVpcConnectivityTls">> => string()
+%% }
+-type get_bootstrap_brokers_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_cluster_policy_request() :: #{}
+-type get_cluster_policy_request() :: #{}.
+
+
+%% Example:
+%% get_cluster_policy_response() :: #{
+%%   <<"CurrentVersion">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type get_cluster_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_compatible_kafka_versions_request() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type get_compatible_kafka_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_compatible_kafka_versions_response() :: #{
+%%   <<"CompatibleKafkaVersions">> => list(compatible_kafka_version())
+%% }
+-type get_compatible_kafka_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% group_subscribed_to_topic_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type group_subscribed_to_topic_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type iam() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_destination_configuration() :: #{
+%%   <<"AppendOnly">> => boolean(),
+%%   <<"Catalog">> => catalog(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"DataFreshnessInSeconds">> => integer(),
+%%   <<"DeadLetterQueueS3">> => dead_letter_queue_s3(),
+%%   <<"DestinationTableList">> => list(destination_table()),
+%%   <<"SchemaEvolution">> => schema_evolution(),
+%%   <<"ServiceExecutionRoleArn">> => string(),
+%%   <<"TableCreation">> => table_creation()
+%% }
+-type iceberg_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% iceberg_destination_update() :: #{
+%%   <<"DataFreshnessInSeconds">> => integer()
+%% }
+-type iceberg_destination_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% jmx_exporter() :: #{
+%%   <<"EnabledInBroker">> => boolean()
+%% }
+-type jmx_exporter() :: #{binary() => any()}.
+
+
+%% Example:
+%% jmx_exporter_info() :: #{
+%%   <<"EnabledInBroker">> => boolean()
+%% }
+-type jmx_exporter_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster() :: #{
+%%   <<"AmazonMskCluster">> => amazon_msk_cluster(),
+%%   <<"ApacheKafkaCluster">> => apache_kafka_cluster(),
+%%   <<"ClientAuthentication">> => kafka_cluster_client_authentication(),
+%%   <<"EncryptionInTransit">> => kafka_cluster_encryption_in_transit(),
+%%   <<"VpcConfig">> => kafka_cluster_client_vpc_config()
+%% }
+-type kafka_cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_client_authentication() :: #{
+%%   <<"MTLS">> => kafka_cluster_m_t_l_s_authentication(),
+%%   <<"SaslScram">> => kafka_cluster_sasl_scram_authentication()
+%% }
+-type kafka_cluster_client_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_client_vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type kafka_cluster_client_vpc_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1832,6 +1215,54 @@
 
 
 %% Example:
+%% kafka_cluster_encryption_in_transit() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"RootCaCertificate">> => string()
+%% }
+-type kafka_cluster_encryption_in_transit() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_m_t_l_s_authentication() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type kafka_cluster_m_t_l_s_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_sasl_scram_authentication() :: #{
+%%   <<"Mechanism">> => list(any()),
+%%   <<"SecretArn">> => string()
+%% }
+-type kafka_cluster_sasl_scram_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_summary() :: #{
+%%   <<"AmazonMskCluster">> => amazon_msk_cluster(),
+%%   <<"ApacheKafkaCluster">> => apache_kafka_cluster(),
+%%   <<"KafkaClusterAlias">> => string()
+%% }
+-type kafka_cluster_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_request_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type kafka_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_timeout_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type kafka_timeout_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% kafka_version() :: #{
 %%   <<"Status">> => list(any()),
 %%   <<"Version">> => string()
@@ -1840,104 +1271,258 @@
 
 
 %% Example:
-%% delete_vpc_connection_response() :: #{
-%%   <<"State">> => list(any()),
-%%   <<"VpcConnectionArn">> => string()
+%% list_channels_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TopicNameFilter">> => string()
 %% }
--type delete_vpc_connection_response() :: #{binary() => any()}.
+-type list_channels_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% controller_moved_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
+%% list_channels_response() :: #{
+%%   <<"Channels">> => list(channel_info()),
+%%   <<"NextToken">> => string()
 %% }
--type controller_moved_exception() :: #{binary() => any()}.
+-type list_channels_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% encryption_info() :: #{
-%%   <<"EncryptionAtRest">> => encryption_at_rest(),
-%%   <<"EncryptionInTransit">> => encryption_in_transit()
+%% list_client_vpc_connections_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type encryption_info() :: #{binary() => any()}.
-
-%% Example:
-%% describe_configuration_request() :: #{}
--type describe_configuration_request() :: #{}.
+-type list_client_vpc_connections_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% cluster_operation_info() :: #{
-%%   <<"ClientRequestId">> => string(),
-%%   <<"ClusterArn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ErrorInfo">> => error_info(),
-%%   <<"OperationArn">> => string(),
-%%   <<"OperationState">> => string(),
-%%   <<"OperationSteps">> => list(cluster_operation_step()),
-%%   <<"OperationType">> => string(),
-%%   <<"SourceClusterInfo">> => mutable_cluster_info(),
-%%   <<"TargetClusterInfo">> => mutable_cluster_info(),
-%%   <<"VpcConnectionInfo">> => vpc_connection_info()
+%% list_client_vpc_connections_response() :: #{
+%%   <<"ClientVpcConnections">> => list(client_vpc_connection()),
+%%   <<"NextToken">> => string()
 %% }
--type cluster_operation_info() :: #{binary() => any()}.
+-type list_client_vpc_connections_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
+%% list_cluster_operations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type bad_request_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_bootstrap_brokers_request() :: #{}
--type get_bootstrap_brokers_request() :: #{}.
+-type list_cluster_operations_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_disassociate_scram_secret_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"UnprocessedScramSecrets">> => list(unprocessed_scram_secret())
+%% list_cluster_operations_response() :: #{
+%%   <<"ClusterOperationInfoList">> => list(cluster_operation_info()),
+%%   <<"NextToken">> => string()
 %% }
--type batch_disassociate_scram_secret_response() :: #{binary() => any()}.
+-type list_cluster_operations_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% describe_cluster_v2_response() :: #{
-%%   <<"ClusterInfo">> => cluster()
+%% list_cluster_operations_v2_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type describe_cluster_v2_response() :: #{binary() => any()}.
+-type list_cluster_operations_v2_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% prometheus_info() :: #{
-%%   <<"JmxExporter">> => jmx_exporter_info(),
-%%   <<"NodeExporter">> => node_exporter_info()
+%% list_cluster_operations_v2_response() :: #{
+%%   <<"ClusterOperationInfoList">> => list(cluster_operation_v2_summary()),
+%%   <<"NextToken">> => string()
 %% }
--type prometheus_info() :: #{binary() => any()}.
-
-%% Example:
-%% describe_cluster_operation_v2_request() :: #{}
--type describe_cluster_operation_v2_request() :: #{}.
+-type list_cluster_operations_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% configuration_revision() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Revision">> => float()
+%% list_clusters_request() :: #{
+%%   <<"ClusterNameFilter">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type configuration_revision() :: #{binary() => any()}.
+-type list_clusters_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% scram() :: #{
-%%   <<"Enabled">> => boolean()
+%% list_clusters_response() :: #{
+%%   <<"ClusterInfoList">> => list(cluster_info()),
+%%   <<"NextToken">> => string()
 %% }
--type scram() :: #{binary() => any()}.
+-type list_clusters_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_clusters_v2_request() :: #{
+%%   <<"ClusterNameFilter">> => string(),
+%%   <<"ClusterTypeFilter">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_clusters_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_clusters_v2_response() :: #{
+%%   <<"ClusterInfoList">> => list(cluster()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_clusters_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_revisions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_revisions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_revisions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Revisions">> => list(configuration_revision())
+%% }
+-type list_configuration_revisions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configurations_response() :: #{
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_kafka_versions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_kafka_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_kafka_versions_response() :: #{
+%%   <<"KafkaVersions">> => list(kafka_version()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_kafka_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_nodes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_nodes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_nodes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NodeInfoList">> => list(node_info())
+%% }
+-type list_nodes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_replicators_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReplicatorNameFilter">> => string()
+%% }
+-type list_replicators_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_replicators_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Replicators">> => list(replicator_summary())
+%% }
+-type list_replicators_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scram_secrets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_scram_secrets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_scram_secrets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SecretArnList">> => list(string())
+%% }
+-type list_scram_secrets_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_topics_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TopicNameFilter">> => string()
+%% }
+-type list_topics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_topics_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Topics">> => list(topic_info())
+%% }
+-type list_topics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_connections_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_vpc_connections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_connections_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"VpcConnections">> => list(vpc_connection())
+%% }
+-type list_vpc_connections_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_delivery() :: #{
+%%   <<"ReplicatorLogDelivery">> => replicator_log_delivery()
+%% }
+-type log_delivery() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging_info() :: #{
+%%   <<"BrokerLogs">> := broker_logs()
+%% }
+-type logging_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1962,12 +1547,165 @@
 
 
 %% Example:
-%% broker_ebs_volume_info() :: #{
-%%   <<"KafkaBrokerNodeId">> => string(),
-%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
-%%   <<"VolumeSizeGB">> => integer()
+%% node_exporter() :: #{
+%%   <<"EnabledInBroker">> => boolean()
 %% }
--type broker_ebs_volume_info() :: #{binary() => any()}.
+-type node_exporter() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_exporter_info() :: #{
+%%   <<"EnabledInBroker">> => boolean()
+%% }
+-type node_exporter_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_info() :: #{
+%%   <<"AddedToClusterTime">> => string(),
+%%   <<"BrokerNodeInfo">> => broker_node_info(),
+%%   <<"ControllerNodeInfo">> => controller_node_info(),
+%%   <<"InstanceType">> => string(),
+%%   <<"NodeARN">> => string(),
+%%   <<"NodeType">> => list(any()),
+%%   <<"ZookeeperNodeInfo">> => zookeeper_node_info()
+%% }
+-type node_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_controller_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type not_controller_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_monitoring() :: #{
+%%   <<"Prometheus">> => prometheus()
+%% }
+-type open_monitoring() :: #{binary() => any()}.
+
+
+%% Example:
+%% open_monitoring_info() :: #{
+%%   <<"Prometheus">> => prometheus_info()
+%% }
+-type open_monitoring_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% partition_source() :: #{
+%%   <<"SourceName">> => string()
+%% }
+-type partition_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% partition_spec() :: #{
+%%   <<"PartitionStrategy">> => list(any()),
+%%   <<"SourceList">> => list(partition_source())
+%% }
+-type partition_spec() :: #{binary() => any()}.
+
+
+%% Example:
+%% prometheus() :: #{
+%%   <<"JmxExporter">> => jmx_exporter(),
+%%   <<"NodeExporter">> => node_exporter()
+%% }
+-type prometheus() :: #{binary() => any()}.
+
+
+%% Example:
+%% prometheus_info() :: #{
+%%   <<"JmxExporter">> => jmx_exporter_info(),
+%%   <<"NodeExporter">> => node_exporter_info()
+%% }
+-type prometheus_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned() :: #{
+%%   <<"BrokerNodeGroupInfo">> => broker_node_group_info(),
+%%   <<"ClientAuthentication">> => client_authentication(),
+%%   <<"CurrentBrokerSoftwareInfo">> => broker_software_info(),
+%%   <<"CustomerActionStatus">> => list(any()),
+%%   <<"EncryptionInfo">> => encryption_info(),
+%%   <<"EnhancedMonitoring">> => list(any()),
+%%   <<"LoggingInfo">> => logging_info(),
+%%   <<"NumberOfBrokerNodes">> => integer(),
+%%   <<"OpenMonitoring">> => open_monitoring_info(),
+%%   <<"Rebalancing">> => rebalancing(),
+%%   <<"StorageMode">> => list(any()),
+%%   <<"ZookeeperConnectString">> => string(),
+%%   <<"ZookeeperConnectStringTls">> => string()
+%% }
+-type provisioned() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_request() :: #{
+%%   <<"BrokerNodeGroupInfo">> => broker_node_group_info(),
+%%   <<"ClientAuthentication">> => client_authentication(),
+%%   <<"ConfigurationInfo">> => configuration_info(),
+%%   <<"EncryptionInfo">> => encryption_info(),
+%%   <<"EnhancedMonitoring">> => list(any()),
+%%   <<"KafkaVersion">> => string(),
+%%   <<"LoggingInfo">> => logging_info(),
+%%   <<"NumberOfBrokerNodes">> => integer(),
+%%   <<"OpenMonitoring">> => open_monitoring_info(),
+%%   <<"Rebalancing">> => rebalancing(),
+%%   <<"StorageMode">> => list(any())
+%% }
+-type provisioned_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% provisioned_throughput() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"VolumeThroughput">> => integer()
+%% }
+-type provisioned_throughput() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_access() :: #{
+%%   <<"Type">> => string()
+%% }
+-type public_access() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_cluster_policy_request() :: #{
+%%   <<"CurrentVersion">> => string(),
+%%   <<"Policy">> := string()
+%% }
+-type put_cluster_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_cluster_policy_response() :: #{
+%%   <<"CurrentVersion">> => string()
+%% }
+-type put_cluster_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% reassignment_in_progress_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type reassignment_in_progress_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1978,38 +1716,131 @@
 
 
 %% Example:
-%% list_scram_secrets_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SecretArnList">> => list(string())
+%% reboot_broker_request() :: #{
+%%   <<"BrokerIds">> := list(string())
 %% }
--type list_scram_secrets_response() :: #{binary() => any()}.
+-type reboot_broker_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_associate_scram_secret_response() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"UnprocessedScramSecrets">> => list(unprocessed_scram_secret())
-%% }
--type batch_associate_scram_secret_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_monitoring_response() :: #{
+%% reboot_broker_response() :: #{
 %%   <<"ClusterArn">> => string(),
 %%   <<"ClusterOperationArn">> => string()
 %% }
--type update_monitoring_response() :: #{binary() => any()}.
+-type reboot_broker_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% vpc_connectivity() :: #{
-%%   <<"ClientAuthentication">> => vpc_connectivity_client_authentication()
+%% record_converter() :: #{
+%%   <<"ValueConverter">> => list(any())
 %% }
--type vpc_connectivity() :: #{binary() => any()}.
+-type record_converter() :: #{binary() => any()}.
+
+
+%% Example:
+%% record_schema() :: #{
+%%   <<"GsrArn">> => string()
+%% }
+-type record_schema() :: #{binary() => any()}.
+
+
+%% Example:
+%% reject_client_vpc_connection_request() :: #{
+%%   <<"VpcConnectionArn">> := string()
+%% }
+-type reject_client_vpc_connection_request() :: #{binary() => any()}.
 
 %% Example:
 %% reject_client_vpc_connection_response() :: #{}
 -type reject_client_vpc_connection_response() :: #{}.
+
+
+%% Example:
+%% replication_info() :: #{
+%%   <<"ConsumerGroupReplication">> => consumer_group_replication(),
+%%   <<"SourceKafkaClusterArn">> => string(),
+%%   <<"SourceKafkaClusterId">> => string(),
+%%   <<"TargetCompressionType">> => list(any()),
+%%   <<"TargetKafkaClusterArn">> => string(),
+%%   <<"TargetKafkaClusterId">> => string(),
+%%   <<"TopicReplication">> => topic_replication()
+%% }
+-type replication_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_info_description() :: #{
+%%   <<"ConsumerGroupReplication">> => consumer_group_replication(),
+%%   <<"SourceKafkaClusterAlias">> => string(),
+%%   <<"TargetCompressionType">> => list(any()),
+%%   <<"TargetKafkaClusterAlias">> => string(),
+%%   <<"TopicReplication">> => topic_replication()
+%% }
+-type replication_info_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_info_summary() :: #{
+%%   <<"SourceKafkaClusterAlias">> => string(),
+%%   <<"TargetKafkaClusterAlias">> => string()
+%% }
+-type replication_info_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_starting_position() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type replication_starting_position() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_state_info() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type replication_state_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_topic_name_configuration() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type replication_topic_name_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% replicator_cloud_watch_logs() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogGroup">> => string()
+%% }
+-type replicator_cloud_watch_logs() :: #{binary() => any()}.
+
+
+%% Example:
+%% replicator_firehose() :: #{
+%%   <<"DeliveryStream">> => string(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type replicator_firehose() :: #{binary() => any()}.
+
+
+%% Example:
+%% replicator_log_delivery() :: #{
+%%   <<"CloudWatchLogs">> => replicator_cloud_watch_logs(),
+%%   <<"Firehose">> => replicator_firehose(),
+%%   <<"S3">> => replicator_s3()
+%% }
+-type replicator_log_delivery() :: #{binary() => any()}.
+
+
+%% Example:
+%% replicator_s3() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"Prefix">> => string()
+%% }
+-type replicator_s3() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2028,142 +1859,63 @@
 
 
 %% Example:
-%% state_info() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
+%% s3() :: #{
+%%   <<"Bucket">> => string(),
+%%   <<"Enabled">> := boolean(),
+%%   <<"Prefix">> => string()
 %% }
--type state_info() :: #{binary() => any()}.
+-type s3() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_scram_secrets_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% s3_destination_configuration() :: #{
+%%   <<"DataFreshnessInSeconds">> => integer(),
+%%   <<"DeadLetterQueueS3">> => dead_letter_queue_s3(),
+%%   <<"ServiceExecutionRoleArn">> => string(),
+%%   <<"Storage">> => s3_storage()
 %% }
--type list_scram_secrets_request() :: #{binary() => any()}.
+-type s3_destination_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_disassociate_scram_secret_request() :: #{
-%%   <<"SecretArnList">> := list(string())
+%% s3_destination_update() :: #{
+%%   <<"DataFreshnessInSeconds">> => integer()
 %% }
--type batch_disassociate_scram_secret_request() :: #{binary() => any()}.
+-type s3_destination_update() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_broker_type_request() :: #{
-%%   <<"CurrentVersion">> := string(),
-%%   <<"TargetInstanceType">> := string()
+%% s3_storage() :: #{
+%%   <<"BucketArn">> => string(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"OutputKeyTemplate">> => string(),
+%%   <<"OutputPrefix">> => string(),
+%%   <<"StorageClass">> => list(any())
 %% }
--type update_broker_type_request() :: #{binary() => any()}.
+-type s3_storage() :: #{binary() => any()}.
 
 
 %% Example:
-%% unprocessed_scram_secret() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"SecretArn">> => string()
+%% sasl() :: #{
+%%   <<"Iam">> => iam(),
+%%   <<"Scram">> => scram()
 %% }
--type unprocessed_scram_secret() :: #{binary() => any()}.
+-type sasl() :: #{binary() => any()}.
 
 
 %% Example:
-%% vpc_connectivity_sasl() :: #{
-%%   <<"Iam">> => vpc_connectivity_iam(),
-%%   <<"Scram">> => vpc_connectivity_scram()
+%% schema_evolution() :: #{
+%%   <<"EnableSchemaEvolution">> => boolean()
 %% }
--type vpc_connectivity_sasl() :: #{binary() => any()}.
+-type schema_evolution() :: #{binary() => any()}.
 
 
 %% Example:
-%% replication_info() :: #{
-%%   <<"ConsumerGroupReplication">> => consumer_group_replication(),
-%%   <<"SourceKafkaClusterArn">> => string(),
-%%   <<"SourceKafkaClusterId">> => string(),
-%%   <<"TargetCompressionType">> => list(any()),
-%%   <<"TargetKafkaClusterArn">> => string(),
-%%   <<"TargetKafkaClusterId">> => string(),
-%%   <<"TopicReplication">> => topic_replication()
+%% scram() :: #{
+%%   <<"Enabled">> => boolean()
 %% }
--type replication_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_operation_v2() :: #{
-%%   <<"ClusterArn">> => string(),
-%%   <<"ClusterType">> => list(any()),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ErrorInfo">> => error_info(),
-%%   <<"OperationArn">> => string(),
-%%   <<"OperationState">> => string(),
-%%   <<"OperationType">> => string(),
-%%   <<"Provisioned">> => cluster_operation_v2_provisioned(),
-%%   <<"Serverless">> => cluster_operation_v2_serverless(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type cluster_operation_v2() :: #{binary() => any()}.
-
-
-%% Example:
-%% broker_count_update_info() :: #{
-%%   <<"CreatedBrokerIds">> => list(float()),
-%%   <<"DeletedBrokerIds">> => list(float())
-%% }
--type broker_count_update_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_nodes_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NodeInfoList">> => list(node_info())
-%% }
--type list_nodes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_topic_partitions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Partitions">> => list(topic_partition_info())
-%% }
--type describe_topic_partitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_configuration_revisions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_configuration_revisions_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_topic_request() :: #{}
--type delete_topic_request() :: #{}.
-
-
-%% Example:
-%% cluster_operation_v2_serverless() :: #{
-%%   <<"SourceClusterInfo">> => serverless_connectivity_info(),
-%%   <<"TargetClusterInfo">> => serverless_connectivity_info(),
-%%   <<"VpcConnectionInfo">> => vpc_connection_info_serverless()
-%% }
--type cluster_operation_v2_serverless() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_cluster_v2_request() :: #{
-%%   <<"ClusterName">> := string(),
-%%   <<"Provisioned">> => provisioned_request(),
-%%   <<"Serverless">> => serverless_request(),
-%%   <<"Tags">> => map()
-%% }
--type create_cluster_v2_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cluster_operation_step_info() :: #{
-%%   <<"StepStatus">> => string()
-%% }
--type cluster_operation_step_info() :: #{binary() => any()}.
+-type scram() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2176,491 +1928,1051 @@
 
 
 %% Example:
-%% group_subscribed_to_topic_exception() :: #{
-%%   <<"InvalidParameter">> => string(),
-%%   <<"Message">> => string()
+%% serverless_client_authentication() :: #{
+%%   <<"Sasl">> => serverless_sasl()
 %% }
--type group_subscribed_to_topic_exception() :: #{binary() => any()}.
+-type serverless_client_authentication() :: #{binary() => any()}.
 
 
 %% Example:
-%% broker_software_info() :: #{
-%%   <<"ConfigurationArn">> => string(),
-%%   <<"ConfigurationRevision">> => float(),
-%%   <<"KafkaVersion">> => string()
+%% serverless_connectivity_info() :: #{
+%%   <<"NetworkType">> => list(any())
 %% }
--type broker_software_info() :: #{binary() => any()}.
+-type serverless_connectivity_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% serverless_request() :: #{
+%%   <<"ClientAuthentication">> => serverless_client_authentication(),
+%%   <<"VpcConfigs">> => list(vpc_config())
+%% }
+-type serverless_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% serverless_sasl() :: #{
+%%   <<"Iam">> => iam()
+%% }
+-type serverless_sasl() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% state_info() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type state_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_info() :: #{
+%%   <<"EbsStorageInfo">> => ebs_storage_info()
+%% }
+-type storage_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% table_creation() :: #{
+%%   <<"EnableTableCreation">> => boolean()
+%% }
+-type table_creation() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tls() :: #{
+%%   <<"CertificateAuthorityArnList">> => list(string()),
+%%   <<"Enabled">> => boolean()
+%% }
+-type tls() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_configuration() :: #{
+%%   <<"RecordConverter">> => record_converter(),
+%%   <<"RecordSchema">> => record_schema(),
+%%   <<"TopicArn">> => string()
+%% }
+-type topic_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_exists_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type topic_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_info() :: #{
+%%   <<"OutOfSyncReplicaCount">> => integer(),
+%%   <<"PartitionCount">> => integer(),
+%%   <<"ReplicationFactor">> => integer(),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type topic_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_partition_info() :: #{
+%%   <<"Isr">> => list(integer()),
+%%   <<"Leader">> => integer(),
+%%   <<"Partition">> => integer(),
+%%   <<"Replicas">> => list(integer())
+%% }
+-type topic_partition_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_replication() :: #{
+%%   <<"CopyAccessControlListsForTopics">> => boolean(),
+%%   <<"CopyTopicConfigurations">> => boolean(),
+%%   <<"DetectAndCopyNewTopics">> => boolean(),
+%%   <<"StartingPosition">> => replication_starting_position(),
+%%   <<"TopicNameConfiguration">> => replication_topic_name_configuration(),
+%%   <<"TopicsToExclude">> => list(string()),
+%%   <<"TopicsToReplicate">> => list(string())
+%% }
+-type topic_replication() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_replication_update() :: #{
+%%   <<"CopyAccessControlListsForTopics">> => boolean(),
+%%   <<"CopyTopicConfigurations">> => boolean(),
+%%   <<"DetectAndCopyNewTopics">> => boolean(),
+%%   <<"TopicsToExclude">> => list(string()),
+%%   <<"TopicsToReplicate">> => list(string())
+%% }
+-type topic_replication_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthenticated() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type unauthenticated() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unknown_topic_or_partition_exception() :: #{
+%%   <<"InvalidParameter">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type unknown_topic_or_partition_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unprocessed_scram_secret() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"SecretArn">> => string()
+%% }
+-type unprocessed_scram_secret() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_broker_count_request() :: #{
+%%   <<"CurrentVersion">> := string(),
+%%   <<"TargetNumberOfBrokerNodes">> := integer()
+%% }
+-type update_broker_count_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_broker_count_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_broker_count_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_broker_storage_request() :: #{
+%%   <<"CurrentVersion">> := string(),
+%%   <<"TargetBrokerEBSVolumeInfo">> := list(broker_ebs_volume_info())
+%% }
+-type update_broker_storage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_broker_storage_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_broker_storage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_broker_type_request() :: #{
+%%   <<"CurrentVersion">> := string(),
+%%   <<"TargetInstanceType">> := string()
+%% }
+-type update_broker_type_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_broker_type_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_broker_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_request() :: #{
+%%   <<"IcebergDestinationUpdate">> => iceberg_destination_update(),
+%%   <<"S3DestinationUpdate">> => s3_destination_update()
+%% }
+-type update_channel_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_response() :: #{
+%%   <<"ChannelArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cluster_configuration_request() :: #{
+%%   <<"ConfigurationInfo">> := configuration_info(),
+%%   <<"CurrentVersion">> := string()
+%% }
+-type update_cluster_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cluster_configuration_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_cluster_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cluster_kafka_version_request() :: #{
+%%   <<"ConfigurationInfo">> => configuration_info(),
+%%   <<"CurrentVersion">> := string(),
+%%   <<"TargetKafkaVersion">> := string()
+%% }
+-type update_cluster_kafka_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cluster_kafka_version_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_cluster_kafka_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configuration_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"ServerProperties">> := binary()
+%% }
+-type update_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_configuration_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"LatestRevision">> => configuration_revision()
+%% }
+-type update_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connectivity_request() :: #{
+%%   <<"ConnectivityInfo">> => connectivity_info(),
+%%   <<"CurrentVersion">> := string(),
+%%   <<"ZookeeperAccess">> => zookeeper_access()
+%% }
+-type update_connectivity_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_connectivity_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_connectivity_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_monitoring_request() :: #{
+%%   <<"CurrentVersion">> := string(),
+%%   <<"EnhancedMonitoring">> => list(any()),
+%%   <<"LoggingInfo">> => logging_info(),
+%%   <<"OpenMonitoring">> => open_monitoring_info()
+%% }
+-type update_monitoring_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_monitoring_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_monitoring_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_rebalancing_request() :: #{
+%%   <<"CurrentVersion">> := string(),
+%%   <<"Rebalancing">> := rebalancing()
+%% }
+-type update_rebalancing_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_rebalancing_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_rebalancing_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_replication_info_request() :: #{
+%%   <<"ConsumerGroupReplication">> => consumer_group_replication_update(),
+%%   <<"CurrentVersion">> := string(),
+%%   <<"LogDelivery">> => log_delivery(),
+%%   <<"SourceKafkaClusterArn">> => string(),
+%%   <<"SourceKafkaClusterId">> => string(),
+%%   <<"TargetKafkaClusterArn">> => string(),
+%%   <<"TargetKafkaClusterId">> => string(),
+%%   <<"TopicReplication">> => topic_replication_update()
+%% }
+-type update_replication_info_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_replication_info_response() :: #{
+%%   <<"ReplicatorArn">> => string(),
+%%   <<"ReplicatorState">> => list(any())
+%% }
+-type update_replication_info_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_security_request() :: #{
+%%   <<"ClientAuthentication">> => client_authentication(),
+%%   <<"CurrentVersion">> := string(),
+%%   <<"EncryptionInfo">> => encryption_info()
+%% }
+-type update_security_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_security_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_security_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_storage_request() :: #{
+%%   <<"CurrentVersion">> := string(),
+%%   <<"ProvisionedThroughput">> => provisioned_throughput(),
+%%   <<"StorageMode">> => list(any()),
+%%   <<"VolumeSizeGB">> => integer()
+%% }
+-type update_storage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_storage_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_storage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_topic_request() :: #{
+%%   <<"Configs">> => string(),
+%%   <<"PartitionCount">> => integer()
+%% }
+-type update_topic_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_topic_response() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"TopicArn">> => string(),
+%%   <<"TopicName">> => string()
+%% }
+-type update_topic_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_identity() :: #{
+%%   <<"PrincipalId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type user_identity() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type vpc_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connection() :: #{
+%%   <<"Authentication">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"TargetClusterArn">> => string(),
+%%   <<"VpcConnectionArn">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connection_info() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Owner">> => string(),
+%%   <<"UserIdentity">> => user_identity(),
+%%   <<"VpcConnectionArn">> => string()
+%% }
+-type vpc_connection_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connection_info_serverless() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Owner">> => string(),
+%%   <<"UserIdentity">> => user_identity(),
+%%   <<"VpcConnectionArn">> => string()
+%% }
+-type vpc_connection_info_serverless() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connectivity() :: #{
+%%   <<"ClientAuthentication">> => vpc_connectivity_client_authentication()
+%% }
+-type vpc_connectivity() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connectivity_client_authentication() :: #{
+%%   <<"Sasl">> => vpc_connectivity_sasl(),
+%%   <<"Tls">> => vpc_connectivity_tls()
+%% }
+-type vpc_connectivity_client_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connectivity_iam() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type vpc_connectivity_iam() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connectivity_sasl() :: #{
+%%   <<"Iam">> => vpc_connectivity_iam(),
+%%   <<"Scram">> => vpc_connectivity_scram()
+%% }
+-type vpc_connectivity_sasl() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connectivity_scram() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type vpc_connectivity_scram() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_connectivity_tls() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type vpc_connectivity_tls() :: #{binary() => any()}.
+
+
+%% Example:
+%% zookeeper_access() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type zookeeper_access() :: #{binary() => any()}.
+
+
+%% Example:
+%% zookeeper_node_info() :: #{
+%%   <<"AttachedENIId">> => string(),
+%%   <<"ClientVpcIpAddress">> => string(),
+%%   <<"Endpoints">> => list(string()),
+%%   <<"ZookeeperId">> => float(),
+%%   <<"ZookeeperVersion">> => string()
+%% }
+-type zookeeper_node_info() :: #{binary() => any()}.
 
 -type batch_associate_scram_secret_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type batch_disassociate_scram_secret_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
+
+-type create_channel_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_cluster_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_cluster_v2_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_replicator_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    conflict_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_topic_errors() ::
-    group_subscribed_to_topic_exception() | 
-    bad_request_exception() | 
-    controller_moved_exception() | 
-    not_controller_exception() | 
-    internal_server_error_exception() | 
-    cluster_connectivity_exception() | 
     unknown_topic_or_partition_exception() | 
-    service_unavailable_exception() | 
-    reassignment_in_progress_exception() | 
-    conflict_exception() | 
+    unauthorized_exception() | 
     topic_exists_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    reassignment_in_progress_exception() | 
+    not_controller_exception() | 
     kafka_timeout_exception() | 
-    forbidden_exception() | 
     kafka_request_exception() | 
-    unauthorized_exception().
+    internal_server_error_exception() | 
+    group_subscribed_to_topic_exception() | 
+    forbidden_exception() | 
+    controller_moved_exception() | 
+    conflict_exception() | 
+    cluster_connectivity_exception() | 
+    bad_request_exception().
 
 -type create_vpc_connection_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    service_unavailable_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
+
+-type delete_channel_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_cluster_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_cluster_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_replicator_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_topic_errors() ::
-    group_subscribed_to_topic_exception() | 
-    bad_request_exception() | 
-    controller_moved_exception() | 
-    not_controller_exception() | 
-    internal_server_error_exception() | 
-    cluster_connectivity_exception() | 
     unknown_topic_or_partition_exception() | 
     reassignment_in_progress_exception() | 
     not_found_exception() | 
+    not_controller_exception() | 
     kafka_timeout_exception() | 
+    kafka_request_exception() | 
+    internal_server_error_exception() | 
+    group_subscribed_to_topic_exception() | 
     forbidden_exception() | 
-    kafka_request_exception().
+    controller_moved_exception() | 
+    cluster_connectivity_exception() | 
+    bad_request_exception().
 
 -type delete_vpc_connection_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
+
+-type describe_channel_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type describe_cluster_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_cluster_operation_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_cluster_operation_v2_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_cluster_v2_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_configuration_revision_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_replicator_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_topic_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_topic_partitions_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_vpc_connection_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type get_bootstrap_brokers_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     internal_server_error_exception() | 
-    conflict_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type get_cluster_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type get_compatible_kafka_versions_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
+
+-type list_channels_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_client_vpc_connections_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_cluster_operations_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_cluster_operations_v2_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_clusters_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_clusters_v2_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_configuration_revisions_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_configurations_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_kafka_versions_errors() ::
-    bad_request_exception() | 
+    unauthorized_exception() | 
     internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_nodes_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type list_replicators_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_scram_secrets_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    bad_request_exception().
 
 -type list_topics_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_vpc_connections_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type put_cluster_policy_errors() ::
-    bad_request_exception() | 
     internal_server_error_exception() | 
-    forbidden_exception().
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type reboot_broker_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type reject_client_vpc_connection_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
-    not_found_exception().
+    bad_request_exception().
 
 -type update_broker_count_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_broker_storage_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_broker_type_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
+
+-type update_channel_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_cluster_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_cluster_kafka_version_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_configuration_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_connectivity_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_monitoring_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_rebalancing_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_replication_info_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_security_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_storage_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_topic_errors() ::
-    group_subscribed_to_topic_exception() | 
-    bad_request_exception() | 
-    controller_moved_exception() | 
-    not_controller_exception() | 
-    internal_server_error_exception() | 
-    cluster_connectivity_exception() | 
     unknown_topic_or_partition_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     reassignment_in_progress_exception() | 
     not_found_exception() | 
+    not_controller_exception() | 
     kafka_timeout_exception() | 
-    forbidden_exception() | 
     kafka_request_exception() | 
-    unauthorized_exception().
+    internal_server_error_exception() | 
+    group_subscribed_to_topic_exception() | 
+    forbidden_exception() | 
+    controller_moved_exception() | 
+    cluster_connectivity_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API
@@ -2715,6 +3027,41 @@ batch_disassociate_scram_secret(Client, ClusterArn, Input) ->
 batch_disassociate_scram_secret(Client, ClusterArn, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a Channel that streams records from an Amazon MSK Express
+%% cluster topic to Amazon S3 or Apache Iceberg.
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_request()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
+create_channel(Client, ClusterArn, Input) ->
+    create_channel(Client, ClusterArn, Input, []).
+
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_request(), proplists:proplist()) ->
+    {ok, create_channel_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
+create_channel(Client, ClusterArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/channels"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2919,6 +3266,44 @@ create_vpc_connection(Client, Input) ->
 create_vpc_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/vpc-connection"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the channel specified by channelArn from the cluster
+%% specified by clusterArn.
+%%
+%% The channel transitions through DELETING and is removed when the
+%% asynchronous delete completes.
+-spec delete_channel(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_request()) ->
+    {ok, delete_channel_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_errors(), tuple()}.
+delete_channel(Client, ChannelArn, ClusterArn, Input) ->
+    delete_channel(Client, ChannelArn, ClusterArn, Input, []).
+
+-spec delete_channel(aws_client:aws_client(), binary() | list(), binary() | list(), delete_channel_request(), proplists:proplist()) ->
+    {ok, delete_channel_response(), tuple()} |
+    {error, any()} |
+    {error, delete_channel_errors(), tuple()}.
+delete_channel(Client, ChannelArn, ClusterArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3145,6 +3530,43 @@ delete_vpc_connection(Client, Arn, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the current configuration and state of a channel.
+-spec describe_channel(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_channel_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_errors(), tuple()}.
+describe_channel(Client, ChannelArn, ClusterArn)
+  when is_map(Client) ->
+    describe_channel(Client, ChannelArn, ClusterArn, #{}, #{}).
+
+-spec describe_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_channel_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_errors(), tuple()}.
+describe_channel(Client, ChannelArn, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_channel(Client, ChannelArn, ClusterArn, QueryMap, HeadersMap, []).
+
+-spec describe_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_channel_response(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_errors(), tuple()}.
+describe_channel(Client, ChannelArn, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/channels/", aws_util:encode_uri(ChannelArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a description of the MSK cluster whose Amazon Resource Name
 %% (ARN) is specified in the request.
@@ -3641,6 +4063,49 @@ get_compatible_kafka_versions(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"clusterArn">>, maps:get(<<"clusterArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the list of channels in a cluster.
+-spec list_channels(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
+list_channels(Client, ClusterArn)
+  when is_map(Client) ->
+    list_channels(Client, ClusterArn, #{}, #{}).
+
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
+list_channels(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channels(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_channels_response(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
+list_channels(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/channels"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"topicNameFilter">>, maps:get(<<"topicNameFilter">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -4493,6 +4958,43 @@ update_broker_type(Client, ClusterArn, Input) ->
 update_broker_type(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/type"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the destination configuration of an existing channel.
+%%
+%% Exactly one of icebergDestinationUpdate or s3DestinationUpdate must be
+%% supplied.
+-spec update_channel(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_request()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
+update_channel(Client, ChannelArn, ClusterArn, Input) ->
+    update_channel(Client, ChannelArn, ClusterArn, Input, []).
+
+-spec update_channel(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_request(), proplists:proplist()) ->
+    {ok, update_channel_response(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
+update_channel(Client, ChannelArn, ClusterArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

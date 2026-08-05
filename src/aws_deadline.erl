@@ -328,114 +328,83 @@
 
 
 %% Example:
-%% list_fleet_members_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% accelerator_capabilities() :: #{
+%%   <<"count">> => accelerator_count_range(),
+%%   <<"selections">> => list(accelerator_selection())
 %% }
--type list_fleet_members_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_queue_fleet_association_response() :: #{}
--type update_queue_fleet_association_response() :: #{}.
+-type accelerator_capabilities() :: #{binary() => any()}.
 
 
 %% Example:
-%% host_configuration() :: #{
-%%   <<"scriptBody">> => string(),
-%%   <<"scriptTimeoutSeconds">> => integer()
+%% accelerator_count_range() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
 %% }
--type host_configuration() :: #{binary() => any()}.
+-type accelerator_count_range() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_steps_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% accelerator_selection() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"runtime">> => string()
 %% }
--type list_steps_request() :: #{binary() => any()}.
+-type accelerator_selection() :: #{binary() => any()}.
 
 
 %% Example:
-%% windows_user() :: #{
-%%   <<"passwordArn">> => string(),
-%%   <<"user">> => string()
+%% accelerator_total_memory_mi_b_range() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
 %% }
--type windows_user() :: #{binary() => any()}.
-
-%% Example:
-%% priority_fifo_scheduling_configuration() :: #{}
--type priority_fifo_scheduling_configuration() :: #{}.
+-type accelerator_total_memory_mi_b_range() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_sessions_statistics_aggregation_response() :: #{
-%%   <<"aggregationId">> => string()
-%% }
--type start_sessions_statistics_aggregation_response() :: #{binary() => any()}.
-
-%% Example:
-%% assume_queue_role_for_user_request() :: #{}
--type assume_queue_role_for_user_request() :: #{}.
-
-
-%% Example:
-%% fleet_attribute_capability() :: #{
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type fleet_attribute_capability() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_volume_response() :: #{
-%%   <<"attachedWorkerId">> => string(),
-%%   <<"availabilityZoneId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"expiresAt">> => non_neg_integer(),
-%%   <<"farmId">> => string(),
-%%   <<"fleetId">> => string(),
-%%   <<"iops">> => integer(),
-%%   <<"lastAssignedAt">> => non_neg_integer(),
-%%   <<"lastReleasedAt">> => non_neg_integer(),
-%%   <<"sizeGiB">> => integer(),
-%%   <<"state">> => list(any()),
-%%   <<"throughputMiB">> => integer(),
-%%   <<"volumeId">> => string(),
-%%   <<"volumeType">> => list(any())
-%% }
--type get_volume_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_details_error() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"jobId">> => string(),
+%% access_denied_exception() :: #{
+%%   <<"context">> => map(),
 %%   <<"message">> => string()
 %% }
--type job_details_error() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_queue_environment_response() :: #{
-%%   <<"queueEnvironmentId">> => string()
+%% acquired_limit() :: #{
+%%   <<"count">> => integer(),
+%%   <<"limitId">> => string()
 %% }
--type create_queue_environment_response() :: #{binary() => any()}.
+-type acquired_limit() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_queue_environments_response() :: #{
-%%   <<"environments">> => list(queue_environment_summary()),
-%%   <<"nextToken">> => string()
+%% assigned_environment_enter_session_action_definition() :: #{
+%%   <<"environmentId">> => string()
 %% }
--type list_queue_environments_response() :: #{binary() => any()}.
+-type assigned_environment_enter_session_action_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% fixed_budget_schedule() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"startTime">> => non_neg_integer()
+%% assigned_environment_exit_session_action_definition() :: #{
+%%   <<"environmentId">> => string()
 %% }
--type fixed_budget_schedule() :: #{binary() => any()}.
+-type assigned_environment_exit_session_action_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% assigned_session() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionActions">> => list(assigned_session_action())
+%% }
+-type assigned_session() :: #{binary() => any()}.
+
+
+%% Example:
+%% assigned_session_action() :: #{
+%%   <<"definition">> => list(),
+%%   <<"sessionActionId">> => string()
+%% }
+-type assigned_session_action() :: #{binary() => any()}.
 
 
 %% Example:
@@ -446,86 +415,22 @@
 
 
 %% Example:
-%% get_queue_response() :: #{
-%%   <<"allowedStorageProfileIds">> => list(string()),
-%%   <<"blockedReason">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"defaultBudgetAction">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"farmId">> => string(),
-%%   <<"jobAttachmentSettings">> => job_attachment_settings(),
-%%   <<"jobRunAsUser">> => job_run_as_user(),
-%%   <<"queueId">> => string(),
-%%   <<"requiredFileSystemLocationNames">> => list(string()),
-%%   <<"roleArn">> => string(),
-%%   <<"schedulingConfiguration">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_queue_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> => map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_task_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"failureRetryCount">> => integer(),
-%%   <<"latestSessionActionId">> => string(),
+%% assigned_task_run_session_action_definition() :: #{
 %%   <<"parameters">> => map(),
-%%   <<"runStatus">> => list(any()),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"targetRunStatus">> => list(any()),
-%%   <<"taskId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_fleet_request() :: #{
-%%   <<"clientToken">> => string()
-%% }
--type delete_fleet_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_enter_session_action_definition_summary() :: #{
-%%   <<"environmentId">> => string()
-%% }
--type environment_enter_session_action_definition_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_task_identifier() :: #{
-%%   <<"farmId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"queueId">> => string(),
 %%   <<"stepId">> => string(),
 %%   <<"taskId">> => string()
 %% }
--type batch_get_task_identifier() :: #{binary() => any()}.
+-type assigned_task_run_session_action_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_queues_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"principalId">> => string(),
-%%   <<"status">> => list(any())
+%% associate_member_to_farm_request() :: #{
+%%   <<"identityCenterRegion">> => string(),
+%%   <<"identityStoreId">> := string(),
+%%   <<"membershipLevel">> := list(any()),
+%%   <<"principalType">> := list(any())
 %% }
--type list_queues_request() :: #{binary() => any()}.
+-type associate_member_to_farm_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_member_to_farm_response() :: #{}
@@ -533,99 +438,121 @@
 
 
 %% Example:
-%% budget_action_to_remove() :: #{
-%%   <<"thresholdPercentage">> => float(),
-%%   <<"type">> => list(any())
+%% associate_member_to_fleet_request() :: #{
+%%   <<"identityCenterRegion">> => string(),
+%%   <<"identityStoreId">> := string(),
+%%   <<"membershipLevel">> := list(any()),
+%%   <<"principalType">> := list(any())
 %% }
--type budget_action_to_remove() :: #{binary() => any()}.
+-type associate_member_to_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_member_to_fleet_response() :: #{}
+-type associate_member_to_fleet_response() :: #{}.
 
 
 %% Example:
-%% task_run_session_action_definition_summary() :: #{
-%%   <<"parameters">> => map(),
-%%   <<"stepId">> => string(),
-%%   <<"taskId">> => string()
+%% associate_member_to_job_request() :: #{
+%%   <<"identityCenterRegion">> => string(),
+%%   <<"identityStoreId">> := string(),
+%%   <<"membershipLevel">> := list(any()),
+%%   <<"principalType">> := list(any())
 %% }
--type task_run_session_action_definition_summary() :: #{binary() => any()}.
+-type associate_member_to_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_member_to_job_response() :: #{}
+-type associate_member_to_job_response() :: #{}.
 
 
 %% Example:
-%% session_summary() :: #{
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"fleetId">> => string(),
-%%   <<"lifecycleStatus">> => list(any()),
-%%   <<"sessionId">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"targetLifecycleStatus">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"workerId">> => string()
+%% associate_member_to_queue_request() :: #{
+%%   <<"identityCenterRegion">> => string(),
+%%   <<"identityStoreId">> := string(),
+%%   <<"membershipLevel">> := list(any()),
+%%   <<"principalType">> := list(any())
 %% }
--type session_summary() :: #{binary() => any()}.
+-type associate_member_to_queue_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_monitor_request() :: #{}
--type delete_monitor_request() :: #{}.
+%% associate_member_to_queue_response() :: #{}
+-type associate_member_to_queue_response() :: #{}.
 
 %% Example:
-%% disassociate_member_from_farm_request() :: #{}
--type disassociate_member_from_farm_request() :: #{}.
+%% assume_fleet_role_for_read_request() :: #{}
+-type assume_fleet_role_for_read_request() :: #{}.
 
 
 %% Example:
-%% search_tasks_request() :: #{
-%%   <<"filterExpressions">> => search_grouped_filter_expressions(),
-%%   <<"itemOffset">> := integer(),
-%%   <<"jobId">> => string(),
-%%   <<"pageSize">> => integer(),
-%%   <<"queueIds">> := list(string()),
-%%   <<"sortExpressions">> => list(list())
+%% assume_fleet_role_for_read_response() :: #{
+%%   <<"credentials">> => aws_credentials()
 %% }
--type search_tasks_request() :: #{binary() => any()}.
+-type assume_fleet_role_for_read_response() :: #{binary() => any()}.
+
+%% Example:
+%% assume_fleet_role_for_worker_request() :: #{}
+-type assume_fleet_role_for_worker_request() :: #{}.
 
 
 %% Example:
-%% get_session_response() :: #{
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"fleetId">> => string(),
-%%   <<"hostProperties">> => host_properties_response(),
-%%   <<"lifecycleStatus">> => list(any()),
-%%   <<"log">> => log_configuration(),
-%%   <<"sessionId">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"targetLifecycleStatus">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"workerId">> => string(),
-%%   <<"workerLog">> => log_configuration()
+%% assume_fleet_role_for_worker_response() :: #{
+%%   <<"credentials">> => aws_credentials()
 %% }
--type get_session_response() :: #{binary() => any()}.
+-type assume_fleet_role_for_worker_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_budget_response() :: #{}
--type delete_budget_response() :: #{}.
+%% assume_queue_role_for_read_request() :: #{}
+-type assume_queue_role_for_read_request() :: #{}.
 
 
 %% Example:
-%% list_monitors_response() :: #{
-%%   <<"monitors">> => list(monitor_summary()),
-%%   <<"nextToken">> => string()
+%% assume_queue_role_for_read_response() :: #{
+%%   <<"credentials">> => aws_credentials()
 %% }
--type list_monitors_response() :: #{binary() => any()}.
+-type assume_queue_role_for_read_response() :: #{binary() => any()}.
+
+%% Example:
+%% assume_queue_role_for_user_request() :: #{}
+-type assume_queue_role_for_user_request() :: #{}.
 
 
 %% Example:
-%% update_queue_limit_association_request() :: #{
-%%   <<"status">> := list(any())
+%% assume_queue_role_for_user_response() :: #{
+%%   <<"credentials">> => aws_credentials()
 %% }
--type update_queue_limit_association_request() :: #{binary() => any()}.
+-type assume_queue_role_for_user_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_job_response() :: #{
-%%   <<"jobId">> => string()
+%% assume_queue_role_for_worker_request() :: #{
+%%   <<"queueId">> := string()
 %% }
--type create_job_response() :: #{binary() => any()}.
+-type assume_queue_role_for_worker_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% assume_queue_role_for_worker_response() :: #{
+%%   <<"credentials">> => aws_credentials()
+%% }
+-type assume_queue_role_for_worker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% attachments() :: #{
+%%   <<"fileSystem">> => list(any()),
+%%   <<"manifests">> => list(manifest_properties())
+%% }
+-type attachments() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_credentials() :: #{
+%%   <<"accessKeyId">> => string(),
+%%   <<"expiration">> => non_neg_integer(),
+%%   <<"secretAccessKey">> => string(),
+%%   <<"sessionToken">> => string()
+%% }
+-type aws_credentials() :: #{binary() => any()}.
 
 
 %% Example:
@@ -633,63 +560,6 @@
 %%   <<"identifiers">> := list(list())
 %% }
 -type batch_get_job_entity_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_step_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"targetTaskRunStatus">> := list(any())
-%% }
--type update_step_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_volume_request() :: #{}
--type delete_volume_request() :: #{}.
-
-
-%% Example:
-%% list_session_actions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"taskId">> => string()
-%% }
--type list_session_actions_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_queue_fleet_association_request() :: #{}
--type delete_queue_fleet_association_request() :: #{}.
-
-
-%% Example:
-%% list_volumes_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"volumes">> => list(volume_summary())
-%% }
--type list_volumes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% vpc_configuration() :: #{
-%%   <<"resourceConfigurationArns">> => list(string())
-%% }
--type vpc_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_step_request() :: #{
-%%   <<"identifiers">> := list(batch_get_step_identifier())
-%% }
--type batch_get_step_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% string_list_filter_expression() :: #{
-%%   <<"name">> => string(),
-%%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string())
-%% }
--type string_list_filter_expression() :: #{binary() => any()}.
 
 
 %% Example:
@@ -701,1427 +571,23 @@
 
 
 %% Example:
-%% create_budget_response() :: #{
-%%   <<"budgetId">> => string()
-%% }
--type create_budget_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% updated_session_action_info() :: #{
-%%   <<"completedStatus">> => list(any()),
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"manifests">> => list(task_run_manifest_properties_request()),
-%%   <<"processExitCode">> => integer(),
-%%   <<"progressMessage">> => string(),
-%%   <<"progressPercent">> => float(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type updated_session_action_info() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_member_from_queue_response() :: #{}
--type disassociate_member_from_queue_response() :: #{}.
-
-
-%% Example:
-%% priority_balanced_scheduling_configuration() :: #{
-%%   <<"renderingTaskBuffer">> => integer()
-%% }
--type priority_balanced_scheduling_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% batch_get_job_request() :: #{
-%%   <<"identifiers">> := list(batch_get_job_identifier())
-%% }
--type batch_get_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_queue_fleet_associations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"queueFleetAssociations">> => list(queue_fleet_association_summary())
-%% }
--type list_queue_fleet_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sessions_for_worker_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_sessions_for_worker_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_job_response() :: #{
-%%   <<"errors">> => list(batch_get_job_error()),
-%%   <<"jobs">> => list(batch_get_job_item())
-%% }
--type batch_get_job_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_limit_request() :: #{}
--type get_limit_request() :: #{}.
-
-%% Example:
-%% get_task_request() :: #{}
--type get_task_request() :: #{}.
-
-
-%% Example:
-%% list_available_metered_products_response() :: #{
-%%   <<"meteredProducts">> => list(metered_product_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_available_metered_products_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_fleet_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"configuration">> := list(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> := string(),
-%%   <<"hostConfiguration">> => host_configuration(),
-%%   <<"maxWorkerCount">> := integer(),
-%%   <<"minWorkerCount">> => integer(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_fleet_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_managed_ec2_instance_market_options() :: #{
-%%   <<"type">> => list(any())
-%% }
--type service_managed_ec2_instance_market_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% fleet_capabilities() :: #{
-%%   <<"amounts">> => list(fleet_amount_capability()),
-%%   <<"attributes">> => list(fleet_attribute_capability())
-%% }
--type fleet_capabilities() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_required_capabilities() :: #{
-%%   <<"amounts">> => list(step_amount_capability()),
-%%   <<"attributes">> => list(step_attribute_capability())
-%% }
--type step_required_capabilities() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"principalId">> => string()
-%% }
--type list_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_limit_association_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"limitId">> => string(),
-%%   <<"queueId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type queue_limit_association_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_storage_profile_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"fileSystemLocationsToAdd">> => list(file_system_location()),
-%%   <<"fileSystemLocationsToRemove">> => list(file_system_location()),
-%%   <<"osFamily">> => list(any())
-%% }
--type update_storage_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% v_cpu_count_range() :: #{
-%%   <<"max">> => integer(),
-%%   <<"min">> => integer()
-%% }
--type v_cpu_count_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_session_identifier() :: #{
+%% batch_get_job_error() :: #{
+%%   <<"code">> => list(any()),
 %%   <<"farmId">> => string(),
 %%   <<"jobId">> => string(),
-%%   <<"queueId">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type batch_get_session_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"jobs">> := list(batch_update_job_item())
-%% }
--type batch_update_job_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_limit_response() :: #{}
--type update_limit_response() :: #{}.
-
-%% Example:
-%% disassociate_member_from_fleet_response() :: #{}
--type disassociate_member_from_fleet_response() :: #{}.
-
-
-%% Example:
-%% task_run_manifest_properties_request() :: #{
-%%   <<"outputManifestHash">> => string(),
-%%   <<"outputManifestPath">> => string()
-%% }
--type task_run_manifest_properties_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_worker_request() :: #{}
--type get_worker_request() :: #{}.
-
-%% Example:
-%% get_monitor_request() :: #{}
--type get_monitor_request() :: #{}.
-
-%% Example:
-%% delete_fleet_response() :: #{}
--type delete_fleet_response() :: #{}.
-
-
-%% Example:
-%% budget_summary() :: #{
-%%   <<"approximateDollarLimit">> => float(),
-%%   <<"budgetId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"usageTrackingResource">> => list(),
-%%   <<"usages">> => consumed_usages()
-%% }
--type budget_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_worker_request() :: #{
-%%   <<"capabilities">> => worker_capabilities(),
-%%   <<"hostProperties">> => host_properties_request(),
-%%   <<"status">> => list(any())
-%% }
--type update_worker_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_volume_request() :: #{}
--type get_volume_request() :: #{}.
-
-
-%% Example:
-%% search_workers_request() :: #{
-%%   <<"filterExpressions">> => search_grouped_filter_expressions(),
-%%   <<"fleetIds">> := list(string()),
-%%   <<"itemOffset">> := integer(),
-%%   <<"pageSize">> => integer(),
-%%   <<"sortExpressions">> => list(list())
-%% }
--type search_workers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_term_filter_expression() :: #{
-%%   <<"matchType">> => list(any()),
-%%   <<"searchTerm">> => string()
-%% }
--type search_term_filter_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% customer_managed_fleet_configuration() :: #{
-%%   <<"autoScalingConfiguration">> => customer_managed_auto_scaling_configuration(),
-%%   <<"mode">> => list(any()),
-%%   <<"storageProfileId">> => string(),
-%%   <<"tagPropagationMode">> => list(any()),
-%%   <<"workerCapabilities">> => customer_managed_worker_capabilities()
-%% }
--type customer_managed_fleet_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_license_endpoints_response() :: #{
-%%   <<"licenseEndpoints">> => list(license_endpoint_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_license_endpoints_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_managed_ec2_fleet_configuration() :: #{
-%%   <<"autoScalingConfiguration">> => service_managed_ec2_auto_scaling_configuration(),
-%%   <<"instanceCapabilities">> => service_managed_ec2_instance_capabilities(),
-%%   <<"instanceMarketOptions">> => service_managed_ec2_instance_market_options(),
-%%   <<"persistentVolumeConfiguration">> => persistent_volume_configuration(),
-%%   <<"storageProfileId">> => string(),
-%%   <<"vpcConfiguration">> => vpc_configuration()
-%% }
--type service_managed_ec2_fleet_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_task_response() :: #{
-%%   <<"errors">> => list(batch_update_task_error())
-%% }
--type batch_update_task_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% string_filter_expression() :: #{
-%%   <<"name">> => string(),
-%%   <<"operator">> => list(any()),
-%%   <<"value">> => string()
-%% }
--type string_filter_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_run_manifest_properties_response() :: #{
-%%   <<"outputManifestHash">> => string(),
-%%   <<"outputManifestPath">> => string()
-%% }
--type task_run_manifest_properties_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% worker_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"farmId">> => string(),
-%%   <<"fleetId">> => string(),
-%%   <<"hostProperties">> => host_properties_response(),
-%%   <<"log">> => log_configuration(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"workerId">> => string()
-%% }
--type worker_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% memory_mi_b_range() :: #{
-%%   <<"max">> => integer(),
-%%   <<"min">> => integer()
-%% }
--type memory_mi_b_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% manifest_properties() :: #{
-%%   <<"fileSystemLocationName">> => string(),
-%%   <<"inputManifestHash">> => string(),
-%%   <<"inputManifestPath">> => string(),
-%%   <<"outputRelativeDirectories">> => list(string()),
-%%   <<"rootPath">> => string(),
-%%   <<"rootPathFormat">> => list(any())
-%% }
--type manifest_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sessions_for_worker_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sessions">> => list(worker_session_summary())
-%% }
--type list_sessions_for_worker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_fleets_request() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"principalId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_fleets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_budgets_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_budgets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% worker_attribute_capability() :: #{
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type worker_attribute_capability() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_exit_session_action_definition() :: #{
-%%   <<"environmentId">> => string()
-%% }
--type environment_exit_session_action_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"failureRetryCount">> => integer(),
-%%   <<"latestSessionActionId">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"runStatus">> => list(any()),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"targetRunStatus">> => list(any()),
-%%   <<"taskId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type task_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% dependency_counts() :: #{
-%%   <<"consumersResolved">> => integer(),
-%%   <<"consumersUnresolved">> => integer(),
-%%   <<"dependenciesResolved">> => integer(),
-%%   <<"dependenciesUnresolved">> => integer()
-%% }
--type dependency_counts() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_search_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"jobId">> => string(),
-%%   <<"lifecycleStatus">> => list(any()),
-%%   <<"lifecycleStatusMessage">> => string(),
-%%   <<"name">> => string(),
-%%   <<"parameterSpace">> => parameter_space(),
-%%   <<"queueId">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"stepId">> => string(),
-%%   <<"targetTaskRunStatus">> => list(any()),
-%%   <<"taskFailureRetryCount">> => integer(),
-%%   <<"taskRunStatus">> => list(any()),
-%%   <<"taskRunStatusCounts">> => map(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type step_search_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_steps_response() :: #{
-%%   <<"nextItemOffset">> => integer(),
-%%   <<"steps">> => list(step_search_summary()),
-%%   <<"totalResults">> => integer()
-%% }
--type search_steps_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_monitor_response() :: #{}
--type delete_monitor_response() :: #{}.
-
-%% Example:
-%% associate_member_to_fleet_response() :: #{}
--type associate_member_to_fleet_response() :: #{}.
-
-
-%% Example:
-%% step_amount_capability() :: #{
-%%   <<"max">> => float(),
-%%   <<"min">> => float(),
-%%   <<"name">> => string(),
-%%   <<"value">> => float()
-%% }
--type step_amount_capability() :: #{binary() => any()}.
-
-
-%% Example:
-%% assume_queue_role_for_worker_response() :: #{
-%%   <<"credentials">> => aws_credentials()
-%% }
--type assume_queue_role_for_worker_response() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_member_from_queue_request() :: #{}
--type disassociate_member_from_queue_request() :: #{}.
-
-
-%% Example:
-%% date_time_filter_expression() :: #{
-%%   <<"dateTime">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"operator">> => list(any())
-%% }
--type date_time_filter_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_workers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_jobs_response() :: #{
-%%   <<"jobs">> => list(job_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_job_request() :: #{
-%%   <<"attachments">> => attachments(),
-%%   <<"clientToken">> => string(),
-%%   <<"descriptionOverride">> => string(),
-%%   <<"maxFailedTasksCount">> => integer(),
-%%   <<"maxRetriesPerTask">> => integer(),
-%%   <<"maxWorkerCount">> => integer(),
-%%   <<"nameOverride">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"priority">> := integer(),
-%%   <<"sourceJobId">> => string(),
-%%   <<"storageProfileId">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"targetTaskRunStatus">> => list(any()),
-%%   <<"template">> => string(),
-%%   <<"templateType">> => list(any())
-%% }
--type create_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_limits_response() :: #{
-%%   <<"limits">> => list(limit_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_limits_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_monitors_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_monitors_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_step_dependencies_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_step_dependencies_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_storage_profile_response() :: #{}
--type update_storage_profile_response() :: #{}.
-
-
-%% Example:
-%% list_fleets_response() :: #{
-%%   <<"fleets">> => list(fleet_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_fleets_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% license_endpoint_summary() :: #{
-%%   <<"licenseEndpointId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"vpcId">> => string()
-%% }
--type license_endpoint_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_monitor_settings_request() :: #{
-%%   <<"settings">> := map()
-%% }
--type update_monitor_settings_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_monitor_settings_request() :: #{}
--type get_monitor_settings_request() :: #{}.
-
-
-%% Example:
-%% ec2_ebs_volume() :: #{
-%%   <<"iops">> => integer(),
-%%   <<"sizeGiB">> => integer(),
-%%   <<"throughputMiB">> => integer()
-%% }
--type ec2_ebs_volume() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_queue_request() :: #{
-%%   <<"allowedStorageProfileIdsToAdd">> => list(string()),
-%%   <<"allowedStorageProfileIdsToRemove">> => list(string()),
-%%   <<"clientToken">> => string(),
-%%   <<"defaultBudgetAction">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"jobAttachmentSettings">> => job_attachment_settings(),
-%%   <<"jobRunAsUser">> => job_run_as_user(),
-%%   <<"requiredFileSystemLocationNamesToAdd">> => list(string()),
-%%   <<"requiredFileSystemLocationNamesToRemove">> => list(string()),
-%%   <<"roleArn">> => string(),
-%%   <<"schedulingConfiguration">> => list()
-%% }
--type update_queue_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_worker_schedule_request() :: #{
-%%   <<"updatedSessionActions">> => map()
-%% }
--type update_worker_schedule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_members_response() :: #{
-%%   <<"members">> => list(job_member()),
-%%   <<"nextToken">> => string()
-%% }
--type list_job_members_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_queue_limit_association_request() :: #{
-%%   <<"limitId">> := string(),
-%%   <<"queueId">> := string()
-%% }
--type create_queue_limit_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_monitor_response() :: #{}
--type update_monitor_response() :: #{}.
-
-
-%% Example:
-%% storage_profile_summary() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"osFamily">> => list(any()),
-%%   <<"storageProfileId">> => string()
-%% }
--type storage_profile_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_monitor_response() :: #{
-%%   <<"identityCenterApplicationArn">> => string(),
-%%   <<"monitorId">> => string()
-%% }
--type create_monitor_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_metered_product_response() :: #{}
--type delete_metered_product_response() :: #{}.
-
-%% Example:
-%% get_session_request() :: #{}
--type get_session_request() :: #{}.
-
-%% Example:
-%% delete_queue_limit_association_response() :: #{}
--type delete_queue_limit_association_response() :: #{}.
-
-
-%% Example:
-%% get_storage_profile_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"fileSystemLocations">> => list(file_system_location()),
-%%   <<"osFamily">> => list(any()),
-%%   <<"storageProfileId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_storage_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_task_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"tasks">> := list(batch_update_task_item())
-%% }
--type batch_update_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_managed_ec2_instance_capabilities() :: #{
-%%   <<"acceleratorCapabilities">> => accelerator_capabilities(),
-%%   <<"allowedInstanceTypes">> => list(string()),
-%%   <<"cpuArchitectureType">> => list(any()),
-%%   <<"customAmounts">> => list(fleet_amount_capability()),
-%%   <<"customAttributes">> => list(fleet_attribute_capability()),
-%%   <<"excludedInstanceTypes">> => list(string()),
-%%   <<"memoryMiB">> => memory_mi_b_range(),
-%%   <<"osFamily">> => list(any()),
-%%   <<"rootEbsVolume">> => ec2_ebs_volume(),
-%%   <<"vCpuCount">> => v_cpu_count_range()
-%% }
--type service_managed_ec2_instance_capabilities() :: #{binary() => any()}.
-
-
-%% Example:
-%% volume_summary() :: #{
-%%   <<"attachedWorkerId">> => string(),
-%%   <<"availabilityZoneId">> => string(),
-%%   <<"farmId">> => string(),
-%%   <<"fleetId">> => string(),
-%%   <<"sizeGiB">> => integer(),
-%%   <<"state">> => list(any()),
-%%   <<"volumeId">> => string()
-%% }
--type volume_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% task_search_summary() :: #{
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"failureRetryCount">> => integer(),
-%%   <<"jobId">> => string(),
-%%   <<"latestSessionActionId">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"queueId">> => string(),
-%%   <<"runStatus">> => list(any()),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"stepId">> => string(),
-%%   <<"targetRunStatus">> => list(any()),
-%%   <<"taskId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type task_search_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_session_actions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sessionActions">> => list(session_action_summary())
-%% }
--type list_session_actions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_budget_action() :: #{
-%%   <<"description">> => string(),
-%%   <<"thresholdPercentage">> => float(),
-%%   <<"type">> => list(any())
-%% }
--type response_budget_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_budget_request() :: #{
-%%   <<"actionsToAdd">> => list(budget_action_to_add()),
-%%   <<"actionsToRemove">> => list(budget_action_to_remove()),
-%%   <<"approximateDollarLimit">> => float(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"schedule">> => list(),
-%%   <<"status">> => list(any())
-%% }
--type update_budget_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_attribute_capability() :: #{
-%%   <<"allOf">> => list(string()),
-%%   <<"anyOf">> => list(string()),
-%%   <<"name">> => string()
-%% }
--type step_attribute_capability() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_queue_limit_association_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"limitId">> => string(),
-%%   <<"queueId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_queue_limit_association_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_details_entity() :: #{
-%%   <<"dependencies">> => list(string()),
-%%   <<"jobId">> => string(),
-%%   <<"schemaVersion">> => string(),
-%%   <<"stepId">> => string(),
-%%   <<"template">> => any()
-%% }
--type step_details_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_step_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"dependencyCounts">> => dependency_counts(),
-%%   <<"description">> => string(),
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"lifecycleStatus">> => list(any()),
-%%   <<"lifecycleStatusMessage">> => string(),
-%%   <<"name">> => string(),
-%%   <<"parameterSpace">> => parameter_space(),
-%%   <<"requiredCapabilities">> => step_required_capabilities(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"stepId">> => string(),
-%%   <<"targetTaskRunStatus">> => list(any()),
-%%   <<"taskFailureRetryCount">> => integer(),
-%%   <<"taskRunStatus">> => list(any()),
-%%   <<"taskRunStatusCounts">> => map(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_step_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% queue_summary() :: #{
-%%   <<"blockedReason">> => list(any()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"defaultBudgetAction">> => list(any()),
-%%   <<"displayName">> => string(),
-%%   <<"farmId">> => string(),
-%%   <<"queueId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type queue_summary() :: #{binary() => any()}.
-
-%% Example:
-%% put_metered_product_request() :: #{}
--type put_metered_product_request() :: #{}.
-
-%% Example:
-%% scheduling_max_priority_override_always_schedule_first() :: #{}
--type scheduling_max_priority_override_always_schedule_first() :: #{}.
-
-%% Example:
-%% delete_storage_profile_response() :: #{}
--type delete_storage_profile_response() :: #{}.
-
-
-%% Example:
-%% list_queue_limit_associations_request() :: #{
-%%   <<"limitId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
+%%   <<"message">> => string(),
 %%   <<"queueId">> => string()
 %% }
--type list_queue_limit_associations_request() :: #{binary() => any()}.
+-type batch_get_job_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_worker_schedule_response() :: #{
-%%   <<"assignedSessions">> => map(),
-%%   <<"cancelSessionActions">> => map(),
-%%   <<"desiredWorkerStatus">> => list(any()),
-%%   <<"updateIntervalSeconds">> => integer()
-%% }
--type update_worker_schedule_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% assigned_task_run_session_action_definition() :: #{
-%%   <<"parameters">> => map(),
-%%   <<"stepId">> => string(),
-%%   <<"taskId">> => string()
-%% }
--type assigned_task_run_session_action_definition() :: #{binary() => any()}.
-
-%% Example:
-%% create_queue_fleet_association_response() :: #{}
--type create_queue_fleet_association_response() :: #{}.
-
-%% Example:
-%% delete_queue_environment_request() :: #{}
--type delete_queue_environment_request() :: #{}.
-
-
-%% Example:
-%% batch_get_step_item() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"dependencyCounts">> => dependency_counts(),
-%%   <<"description">> => string(),
-%%   <<"endedAt">> => non_neg_integer(),
+%% batch_get_job_identifier() :: #{
 %%   <<"farmId">> => string(),
 %%   <<"jobId">> => string(),
-%%   <<"lifecycleStatus">> => list(any()),
-%%   <<"lifecycleStatusMessage">> => string(),
-%%   <<"name">> => string(),
-%%   <<"parameterSpace">> => parameter_space(),
-%%   <<"queueId">> => string(),
-%%   <<"requiredCapabilities">> => step_required_capabilities(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"stepId">> => string(),
-%%   <<"targetTaskRunStatus">> => list(any()),
-%%   <<"taskFailureRetryCount">> => integer(),
-%%   <<"taskRunStatus">> => list(any()),
-%%   <<"taskRunStatusCounts">> => map(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type batch_get_step_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_member() :: #{
-%%   <<"farmId">> => string(),
-%%   <<"identityStoreId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"membershipLevel">> => list(any()),
-%%   <<"principalId">> => string(),
-%%   <<"principalType">> => list(any()),
 %%   <<"queueId">> => string()
 %% }
--type job_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_license_endpoint_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"securityGroupIds">> := list(string()),
-%%   <<"subnetIds">> := list(string()),
-%%   <<"tags">> => map(),
-%%   <<"vpcId">> := string()
-%% }
--type create_license_endpoint_request() :: #{binary() => any()}.
-
-%% Example:
-%% assume_queue_role_for_read_request() :: #{}
--type assume_queue_role_for_read_request() :: #{}.
-
-
-%% Example:
-%% search_grouped_filter_expressions() :: #{
-%%   <<"filters">> => list(list()),
-%%   <<"operator">> => list(any())
-%% }
--type search_grouped_filter_expressions() :: #{binary() => any()}.
-
-%% Example:
-%% delete_worker_request() :: #{}
--type delete_worker_request() :: #{}.
-
-
-%% Example:
-%% job_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"jobId">> => string(),
-%%   <<"lifecycleStatus">> => list(any()),
-%%   <<"lifecycleStatusMessage">> => string(),
-%%   <<"maxFailedTasksCount">> => integer(),
-%%   <<"maxRetriesPerTask">> => integer(),
-%%   <<"maxWorkerCount">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"priority">> => integer(),
-%%   <<"sourceJobId">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"targetTaskRunStatus">> => list(any()),
-%%   <<"taskFailureRetryCount">> => integer(),
-%%   <<"taskRunStatus">> => list(any()),
-%%   <<"taskRunStatusCounts">> => map(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type job_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_farm_request() :: #{
-%%   <<"costScaleFactor">> => float(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string()
-%% }
--type update_farm_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_parameter_definitions_response() :: #{
-%%   <<"jobParameterDefinitions">> => list(any()),
-%%   <<"nextToken">> => string()
-%% }
--type list_job_parameter_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_job_item() :: #{
-%%   <<"description">> => string(),
-%%   <<"farmId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"lifecycleStatus">> => list(any()),
-%%   <<"maxFailedTasksCount">> => integer(),
-%%   <<"maxRetriesPerTask">> => integer(),
-%%   <<"maxWorkerCount">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"priority">> => integer(),
-%%   <<"queueId">> => string(),
-%%   <<"targetTaskRunStatus">> => list(any())
-%% }
--type batch_update_job_item() :: #{binary() => any()}.
-
-%% Example:
-%% update_monitor_settings_response() :: #{}
--type update_monitor_settings_response() :: #{}.
-
-
-%% Example:
-%% search_jobs_request() :: #{
-%%   <<"filterExpressions">> => search_grouped_filter_expressions(),
-%%   <<"itemOffset">> := integer(),
-%%   <<"pageSize">> => integer(),
-%%   <<"queueIds">> := list(string()),
-%%   <<"sortExpressions">> => list(list())
-%% }
--type search_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_storage_profile_response() :: #{
-%%   <<"storageProfileId">> => string()
-%% }
--type create_storage_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sessions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sessions">> => list(session_summary())
-%% }
--type list_sessions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_details_entity() :: #{
-%%   <<"jobAttachmentSettings">> => job_attachment_settings(),
-%%   <<"jobId">> => string(),
-%%   <<"jobRunAsUser">> => job_run_as_user(),
-%%   <<"logGroupName">> => string(),
-%%   <<"parameters">> => map(),
-%%   <<"pathMappingRules">> => list(path_mapping_rule()),
-%%   <<"queueRoleArn">> => string(),
-%%   <<"schemaVersion">> => string()
-%% }
--type job_details_entity() :: #{binary() => any()}.
-
-%% Example:
-%% update_task_response() :: #{}
--type update_task_response() :: #{}.
-
-
-%% Example:
-%% list_storage_profiles_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"storageProfiles">> => list(storage_profile_summary())
-%% }
--type list_storage_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_monitor_settings_response() :: #{
-%%   <<"settings">> => map()
-%% }
--type get_monitor_settings_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_worker_response() :: #{
-%%   <<"workerId">> => string()
-%% }
--type create_worker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_session_item() :: #{
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"farmId">> => string(),
-%%   <<"fleetId">> => string(),
-%%   <<"hostProperties">> => host_properties_response(),
-%%   <<"jobId">> => string(),
-%%   <<"lifecycleStatus">> => list(any()),
-%%   <<"log">> => log_configuration(),
-%%   <<"queueId">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"targetLifecycleStatus">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"workerId">> => string(),
-%%   <<"workerLog">> => log_configuration()
-%% }
--type batch_get_session_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% assigned_environment_enter_session_action_definition() :: #{
-%%   <<"environmentId">> => string()
-%% }
--type assigned_environment_enter_session_action_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"context">> => map(),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any()),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_worker_response() :: #{}
--type delete_worker_response() :: #{}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"context">> => map(),
-%%   <<"message">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% accelerator_capabilities() :: #{
-%%   <<"count">> => accelerator_count_range(),
-%%   <<"selections">> => list(accelerator_selection())
-%% }
--type accelerator_capabilities() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_task_item() :: #{
-%%   <<"farmId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"queueId">> => string(),
-%%   <<"stepId">> => string(),
-%%   <<"targetRunStatus">> => list(any()),
-%%   <<"taskId">> => string()
-%% }
--type batch_update_task_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% posix_user() :: #{
-%%   <<"group">> => string(),
-%%   <<"user">> => string()
-%% }
--type posix_user() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_details_entity() :: #{
-%%   <<"environmentId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"schemaVersion">> => string(),
-%%   <<"template">> => any()
-%% }
--type environment_details_entity() :: #{binary() => any()}.
-
-%% Example:
-%% get_queue_environment_request() :: #{}
--type get_queue_environment_request() :: #{}.
-
-
-%% Example:
-%% host_properties_response() :: #{
-%%   <<"ec2InstanceArn">> => string(),
-%%   <<"ec2InstanceType">> => string(),
-%%   <<"hostName">> => string(),
-%%   <<"ipAddresses">> => ip_addresses()
-%% }
--type host_properties_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_job_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"lifecycleStatus">> => list(any()),
-%%   <<"maxFailedTasksCount">> => integer(),
-%%   <<"maxRetriesPerTask">> => integer(),
-%%   <<"maxWorkerCount">> => integer(),
-%%   <<"name">> => string(),
-%%   <<"priority">> => integer(),
-%%   <<"targetTaskRunStatus">> => list(any())
-%% }
--type update_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% consumed_usages() :: #{
-%%   <<"approximateDollarUsage">> => [float()]
-%% }
--type consumed_usages() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_storage_profiles_for_queue_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"storageProfiles">> => list(storage_profile_summary())
-%% }
--type list_storage_profiles_for_queue_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_session_action_response() :: #{
-%%   <<"acquiredLimits">> => list(acquired_limit()),
-%%   <<"definition">> => list(),
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"manifests">> => list(task_run_manifest_properties_response()),
-%%   <<"processExitCode">> => integer(),
-%%   <<"progressMessage">> => string(),
-%%   <<"progressPercent">> => float(),
-%%   <<"sessionActionId">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"workerUpdatedAt">> => non_neg_integer()
-%% }
--type get_session_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_queue_request() :: #{}
--type get_queue_request() :: #{}.
-
-
-%% Example:
-%% get_sessions_statistics_aggregation_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"statistics">> => list(statistics()),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string()
-%% }
--type get_sessions_statistics_aggregation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_fleet_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"configuration">> => list(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"hostConfiguration">> => host_configuration(),
-%%   <<"maxWorkerCount">> => integer(),
-%%   <<"minWorkerCount">> => integer(),
-%%   <<"roleArn">> => string()
-%% }
--type update_fleet_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_task_request() :: #{
-%%   <<"identifiers">> := list(batch_get_task_identifier())
-%% }
--type batch_get_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_metered_products_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_metered_products_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_fleet_request() :: #{}
--type get_fleet_request() :: #{}.
-
-
-%% Example:
-%% search_workers_response() :: #{
-%%   <<"nextItemOffset">> => integer(),
-%%   <<"totalResults">> => integer(),
-%%   <<"workers">> => list(worker_search_summary())
-%% }
--type search_workers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"context">> => map(),
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"reason">> => list(any()),
-%%   <<"resourceId">> => string(),
-%%   <<"resourceType">> => string(),
-%%   <<"serviceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_details_identifiers() :: #{
-%%   <<"jobId">> => string()
-%% }
--type job_details_identifiers() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_step_response() :: #{
-%%   <<"errors">> => list(batch_get_step_error()),
-%%   <<"steps">> => list(batch_get_step_item())
-%% }
--type batch_get_step_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_farm_response() :: #{
-%%   <<"costScaleFactor">> => float(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"farmId">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_farm_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_parameter() :: #{
-%%   <<"chunks">> => step_parameter_chunks(),
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type step_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_attachment_details_entity() :: #{
-%%   <<"attachments">> => attachments(),
-%%   <<"jobId">> => string()
-%% }
--type job_attachment_details_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_action_summary() :: #{
-%%   <<"definition">> => list(),
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"manifests">> => list(task_run_manifest_properties_response()),
-%%   <<"progressPercent">> => float(),
-%%   <<"sessionActionId">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any()),
-%%   <<"workerUpdatedAt">> => non_neg_integer()
-%% }
--type session_action_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_queue_fleet_association_response() :: #{}
--type delete_queue_fleet_association_response() :: #{}.
-
-%% Example:
-%% delete_farm_response() :: #{}
--type delete_farm_response() :: #{}.
-
-
-%% Example:
-%% stats() :: #{
-%%   <<"avg">> => float(),
-%%   <<"max">> => float(),
-%%   <<"min">> => float(),
-%%   <<"sum">> => float()
-%% }
--type stats() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_license_endpoint_response() :: #{
-%%   <<"licenseEndpointId">> => string()
-%% }
--type create_license_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_limit_response() :: #{
-%%   <<"amountRequirementName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"currentCount">> => integer(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"farmId">> => string(),
-%%   <<"limitId">> => string(),
-%%   <<"maxCount">> => integer(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type get_limit_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% assume_queue_role_for_worker_request() :: #{
-%%   <<"queueId">> := string()
-%% }
--type assume_queue_role_for_worker_request() :: #{binary() => any()}.
+-type batch_get_job_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2156,149 +622,40 @@
 
 
 %% Example:
-%% update_queue_environment_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"priority">> => integer(),
-%%   <<"template">> => string(),
-%%   <<"templateType">> => list(any())
+%% batch_get_job_request() :: #{
+%%   <<"identifiers">> := list(batch_get_job_identifier())
 %% }
--type update_queue_environment_request() :: #{binary() => any()}.
+-type batch_get_job_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% fleet_summary() :: #{
-%%   <<"autoScalingStatus">> => list(any()),
-%%   <<"configuration">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"farmId">> => string(),
-%%   <<"fleetId">> => string(),
-%%   <<"maxWorkerCount">> => integer(),
-%%   <<"minWorkerCount">> => integer(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"targetWorkerCount">> => integer(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"workerCount">> => integer()
+%% batch_get_job_response() :: #{
+%%   <<"errors">> => list(batch_get_job_error()),
+%%   <<"jobs">> => list(batch_get_job_item())
 %% }
--type fleet_summary() :: #{binary() => any()}.
+-type batch_get_job_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_job_members_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_job_members_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_job_identifier() :: #{
+%% batch_get_session_action_error() :: #{
+%%   <<"code">> => list(any()),
 %%   <<"farmId">> => string(),
 %%   <<"jobId">> => string(),
-%%   <<"queueId">> => string()
+%%   <<"message">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionActionId">> => string()
 %% }
--type batch_get_job_identifier() :: #{binary() => any()}.
+-type batch_get_session_action_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_session_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"targetLifecycleStatus">> := list(any())
+%% batch_get_session_action_identifier() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionActionId">> => string()
 %% }
--type update_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% persistent_volume_configuration() :: #{
-%%   <<"iops">> => integer(),
-%%   <<"lastUsedTtlHours">> => integer(),
-%%   <<"mountPath">> => string(),
-%%   <<"sizeGiB">> => integer(),
-%%   <<"throughputMiB">> => integer()
-%% }
--type persistent_volume_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_queue_limit_associations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"queueLimitAssociations">> => list(queue_limit_association_summary())
-%% }
--type list_queue_limit_associations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% assume_queue_role_for_read_response() :: #{
-%%   <<"credentials">> => aws_credentials()
-%% }
--type assume_queue_role_for_read_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_budget_request() :: #{}
--type get_budget_request() :: #{}.
-
-%% Example:
-%% update_budget_response() :: #{}
--type update_budget_response() :: #{}.
-
-
-%% Example:
-%% assume_queue_role_for_user_response() :: #{
-%%   <<"credentials">> => aws_credentials()
-%% }
--type assume_queue_role_for_user_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_sort_expression() :: #{
-%%   <<"name">> => string(),
-%%   <<"sortOrder">> => list(any())
-%% }
--type field_sort_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_member_to_job_request() :: #{
-%%   <<"identityCenterRegion">> => string(),
-%%   <<"identityStoreId">> := string(),
-%%   <<"membershipLevel">> := list(any()),
-%%   <<"principalType">> := list(any())
-%% }
--type associate_member_to_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% parameter_space() :: #{
-%%   <<"combination">> => string(),
-%%   <<"parameters">> => list(step_parameter())
-%% }
--type parameter_space() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_metered_products_response() :: #{
-%%   <<"meteredProducts">> => list(metered_product_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_metered_products_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_volumes_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_volumes_request() :: #{binary() => any()}.
+-type batch_get_session_action_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2323,68 +680,76 @@
 
 
 %% Example:
-%% list_sessions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% batch_get_session_action_request() :: #{
+%%   <<"identifiers">> := list(batch_get_session_action_identifier())
 %% }
--type list_sessions_request() :: #{binary() => any()}.
+-type batch_get_session_action_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% assume_fleet_role_for_read_response() :: #{
-%%   <<"credentials">> => aws_credentials()
+%% batch_get_session_action_response() :: #{
+%%   <<"errors">> => list(batch_get_session_action_error()),
+%%   <<"sessionActions">> => list(batch_get_session_action_item())
 %% }
--type assume_fleet_role_for_read_response() :: #{binary() => any()}.
+-type batch_get_session_action_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% assigned_session() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"logConfiguration">> => log_configuration(),
-%%   <<"queueId">> => string(),
-%%   <<"sessionActions">> => list(assigned_session_action())
-%% }
--type assigned_session() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => string(),
-%%   <<"name">> => string()
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_jobs_response() :: #{
-%%   <<"jobs">> => list(job_search_summary()),
-%%   <<"nextItemOffset">> => integer(),
-%%   <<"totalResults">> => integer()
-%% }
--type search_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_summary() :: #{
-%%   <<"amountRequirementName">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"currentCount">> => integer(),
-%%   <<"displayName">> => string(),
+%% batch_get_session_error() :: #{
+%%   <<"code">> => list(any()),
 %%   <<"farmId">> => string(),
-%%   <<"limitId">> => string(),
-%%   <<"maxCount">> => integer(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionId">> => string()
 %% }
--type limit_summary() :: #{binary() => any()}.
+-type batch_get_session_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% environment_exit_session_action_definition_summary() :: #{
-%%   <<"environmentId">> => string()
+%% batch_get_session_identifier() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionId">> => string()
 %% }
--type environment_exit_session_action_definition_summary() :: #{binary() => any()}.
+-type batch_get_session_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_session_item() :: #{
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"farmId">> => string(),
+%%   <<"fleetId">> => string(),
+%%   <<"hostProperties">> => host_properties_response(),
+%%   <<"jobId">> => string(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"log">> => log_configuration(),
+%%   <<"queueId">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"targetLifecycleStatus">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"workerId">> => string(),
+%%   <<"workerLog">> => log_configuration()
+%% }
+-type batch_get_session_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_session_request() :: #{
+%%   <<"identifiers">> := list(batch_get_session_identifier())
+%% }
+-type batch_get_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_session_response() :: #{
+%%   <<"errors">> => list(batch_get_session_error()),
+%%   <<"sessions">> => list(batch_get_session_item())
+%% }
+-type batch_get_session_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2400,122 +765,127 @@
 
 
 %% Example:
-%% update_task_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"targetRunStatus">> := list(any())
-%% }
--type update_task_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% acquired_limit() :: #{
-%%   <<"count">> => integer(),
-%%   <<"limitId">> => string()
-%% }
--type acquired_limit() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_queue_request() :: #{
-%%   <<"allowedStorageProfileIds">> => list(string()),
-%%   <<"clientToken">> => string(),
-%%   <<"defaultBudgetAction">> => list(any()),
-%%   <<"description">> => string(),
-%%   <<"displayName">> := string(),
-%%   <<"jobAttachmentSettings">> => job_attachment_settings(),
-%%   <<"jobRunAsUser">> => job_run_as_user(),
-%%   <<"requiredFileSystemLocationNames">> => list(string()),
-%%   <<"roleArn">> => string(),
-%%   <<"schedulingConfiguration">> => list(),
-%%   <<"tags">> => map()
-%% }
--type create_queue_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucketName">> => string(),
-%%   <<"key">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_storage_profiles_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_storage_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% sync_input_job_attachments_session_action_definition() :: #{
+%% batch_get_step_identifier() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"queueId">> => string(),
 %%   <<"stepId">> => string()
 %% }
--type sync_input_job_attachments_session_action_definition() :: #{binary() => any()}.
+-type batch_get_step_identifier() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_queue_members_response() :: #{
-%%   <<"members">> => list(queue_member()),
-%%   <<"nextToken">> => string()
-%% }
--type list_queue_members_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_queue_environment_response() :: #{
+%% batch_get_step_item() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
+%%   <<"dependencyCounts">> => dependency_counts(),
+%%   <<"description">> => string(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"lifecycleStatusMessage">> => string(),
 %%   <<"name">> => string(),
-%%   <<"priority">> => integer(),
-%%   <<"queueEnvironmentId">> => string(),
-%%   <<"template">> => string(),
-%%   <<"templateType">> => list(any()),
+%%   <<"parameterSpace">> => parameter_space(),
+%%   <<"queueId">> => string(),
+%%   <<"requiredCapabilities">> => step_required_capabilities(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"stepId">> => string(),
+%%   <<"targetTaskRunStatus">> => list(any()),
+%%   <<"taskFailureRetryCount">> => integer(),
+%%   <<"taskRunStatus">> => list(any()),
+%%   <<"taskRunStatusCounts">> => map(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
--type get_queue_environment_response() :: #{binary() => any()}.
+-type batch_get_step_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_monitor_request() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"subdomain">> => string()
+%% batch_get_step_request() :: #{
+%%   <<"identifiers">> := list(batch_get_step_identifier())
 %% }
--type update_monitor_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_farm_request() :: #{}
--type get_farm_request() :: #{}.
+-type batch_get_step_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_queue_environment_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"priority">> := integer(),
-%%   <<"template">> := string(),
-%%   <<"templateType">> := list(any())
+%% batch_get_step_response() :: #{
+%%   <<"errors">> => list(batch_get_step_error()),
+%%   <<"steps">> => list(batch_get_step_item())
 %% }
--type create_queue_environment_request() :: #{binary() => any()}.
+-type batch_get_step_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% queue_environment_summary() :: #{
-%%   <<"name">> => string(),
-%%   <<"priority">> => integer(),
-%%   <<"queueEnvironmentId">> => string()
+%% batch_get_task_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"stepId">> => string(),
+%%   <<"taskId">> => string()
 %% }
--type queue_environment_summary() :: #{binary() => any()}.
+-type batch_get_task_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_farm_members_response() :: #{
-%%   <<"members">> => list(farm_member()),
-%%   <<"nextToken">> => string()
+%% batch_get_task_identifier() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"stepId">> => string(),
+%%   <<"taskId">> => string()
 %% }
--type list_farm_members_response() :: #{binary() => any()}.
+-type batch_get_task_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_task_item() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"failureRetryCount">> => integer(),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"latestSessionActionId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"queueId">> => string(),
+%%   <<"runStatus">> => list(any()),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"stepId">> => string(),
+%%   <<"targetRunStatus">> => list(any()),
+%%   <<"taskId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type batch_get_task_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_task_request() :: #{
+%%   <<"identifiers">> := list(batch_get_task_identifier())
+%% }
+-type batch_get_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_task_response() :: #{
+%%   <<"errors">> => list(batch_get_task_error()),
+%%   <<"tasks">> => list(batch_get_task_item())
+%% }
+-type batch_get_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_worker_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"farmId">> => string(),
+%%   <<"fleetId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"workerId">> => string()
+%% }
+-type batch_get_worker_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2525,10 +895,6 @@
 %%   <<"workerId">> => string()
 %% }
 -type batch_get_worker_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_member_from_job_request() :: #{}
--type disassociate_member_from_job_request() :: #{}.
 
 
 %% Example:
@@ -2548,13 +914,54 @@
 
 
 %% Example:
-%% step_details_error() :: #{
+%% batch_get_worker_request() :: #{
+%%   <<"identifiers">> := list(batch_get_worker_identifier())
+%% }
+-type batch_get_worker_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_worker_response() :: #{
+%%   <<"errors">> => list(batch_get_worker_error()),
+%%   <<"workers">> => list(batch_get_worker_item())
+%% }
+-type batch_get_worker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_job_error() :: #{
 %%   <<"code">> => list(any()),
+%%   <<"farmId">> => string(),
 %%   <<"jobId">> => string(),
 %%   <<"message">> => string(),
-%%   <<"stepId">> => string()
+%%   <<"queueId">> => string()
 %% }
--type step_details_error() :: #{binary() => any()}.
+-type batch_update_job_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_job_item() :: #{
+%%   <<"description">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"maxFailedTasksCount">> => integer(),
+%%   <<"maxRetriesPerTask">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"queueId">> => string(),
+%%   <<"targetTaskRunStatus">> => list(any())
+%% }
+-type batch_update_job_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"jobs">> := list(batch_update_job_item())
+%% }
+-type batch_update_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2578,53 +985,129 @@
 
 
 %% Example:
-%% environment_enter_session_action_definition() :: #{
-%%   <<"environmentId">> => string()
-%% }
--type environment_enter_session_action_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_steps_request() :: #{
-%%   <<"filterExpressions">> => search_grouped_filter_expressions(),
-%%   <<"itemOffset">> := integer(),
-%%   <<"jobId">> => string(),
-%%   <<"pageSize">> => integer(),
-%%   <<"queueIds">> := list(string()),
-%%   <<"sortExpressions">> => list(list())
-%% }
--type search_steps_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_fleet_response() :: #{}
--type update_fleet_response() :: #{}.
-
-%% Example:
-%% update_job_response() :: #{}
--type update_job_response() :: #{}.
-
-
-%% Example:
-%% get_license_endpoint_response() :: #{
-%%   <<"dnsName">> => string(),
-%%   <<"licenseEndpointId">> => string(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
-%% }
--type get_license_endpoint_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_session_action_identifier() :: #{
+%% batch_update_task_item() :: #{
 %%   <<"farmId">> => string(),
 %%   <<"jobId">> => string(),
 %%   <<"queueId">> => string(),
-%%   <<"sessionActionId">> => string()
+%%   <<"stepId">> => string(),
+%%   <<"targetRunStatus">> => list(any()),
+%%   <<"taskId">> => string()
 %% }
--type batch_get_session_action_identifier() :: #{binary() => any()}.
+-type batch_update_task_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_task_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"tasks">> := list(batch_update_task_item())
+%% }
+-type batch_update_task_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_task_response() :: #{
+%%   <<"errors">> => list(batch_update_task_error())
+%% }
+-type batch_update_task_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% budget_action_to_add() :: #{
+%%   <<"description">> => string(),
+%%   <<"thresholdPercentage">> => float(),
+%%   <<"type">> => list(any())
+%% }
+-type budget_action_to_add() :: #{binary() => any()}.
+
+
+%% Example:
+%% budget_action_to_remove() :: #{
+%%   <<"thresholdPercentage">> => float(),
+%%   <<"type">> => list(any())
+%% }
+-type budget_action_to_remove() :: #{binary() => any()}.
+
+
+%% Example:
+%% budget_summary() :: #{
+%%   <<"approximateDollarLimit">> => float(),
+%%   <<"budgetId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"usageTrackingResource">> => list(),
+%%   <<"usages">> => consumed_usages()
+%% }
+-type budget_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"context">> => map(),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any()),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% consumed_usages() :: #{
+%%   <<"approximateDollarUsage">> => [float()]
+%% }
+-type consumed_usages() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_job_template_request() :: #{
+%%   <<"targetS3Location">> := s3_location()
+%% }
+-type copy_job_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% copy_job_template_response() :: #{
+%%   <<"templateType">> => list(any())
+%% }
+-type copy_job_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_budget_request() :: #{
+%%   <<"actions">> := list(budget_action_to_add()),
+%%   <<"approximateDollarLimit">> := float(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"schedule">> := list(),
+%%   <<"tags">> => map(),
+%%   <<"usageTrackingResource">> := list()
+%% }
+-type create_budget_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_budget_response() :: #{
+%%   <<"budgetId">> => string()
+%% }
+-type create_budget_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_farm_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"costScaleFactor">> => float(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_farm_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2635,39 +1118,127 @@
 
 
 %% Example:
-%% batch_get_session_request() :: #{
-%%   <<"identifiers">> := list(batch_get_session_identifier())
+%% create_fleet_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"hostConfiguration">> => host_configuration(),
+%%   <<"maxWorkerCount">> := integer(),
+%%   <<"minWorkerCount">> => integer(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
 %% }
--type batch_get_session_request() :: #{binary() => any()}.
+-type create_fleet_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_worker_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"farmId">> => string(),
-%%   <<"fleetId">> => string(),
-%%   <<"hostProperties">> => host_properties_response(),
-%%   <<"log">> => log_configuration(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"workerId">> => string()
+%% create_fleet_response() :: #{
+%%   <<"fleetId">> => string()
 %% }
--type get_worker_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_volume_response() :: #{}
--type delete_volume_response() :: #{}.
+-type create_fleet_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_run_as_user() :: #{
-%%   <<"posix">> => posix_user(),
-%%   <<"runAs">> => list(any()),
-%%   <<"windows">> => windows_user()
+%% create_job_request() :: #{
+%%   <<"attachments">> => attachments(),
+%%   <<"clientToken">> => string(),
+%%   <<"descriptionOverride">> => string(),
+%%   <<"maxFailedTasksCount">> => integer(),
+%%   <<"maxRetriesPerTask">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
+%%   <<"nameOverride">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"priority">> := integer(),
+%%   <<"sourceJobId">> => string(),
+%%   <<"storageProfileId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targetTaskRunStatus">> => list(any()),
+%%   <<"template">> => string(),
+%%   <<"templateType">> => list(any())
 %% }
--type job_run_as_user() :: #{binary() => any()}.
+-type create_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_job_response() :: #{
+%%   <<"jobId">> => string()
+%% }
+-type create_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_license_endpoint_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"securityGroupIds">> := list(string()),
+%%   <<"subnetIds">> := list(string()),
+%%   <<"tags">> => map(),
+%%   <<"vpcId">> := string()
+%% }
+-type create_license_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_license_endpoint_response() :: #{
+%%   <<"licenseEndpointId">> => string()
+%% }
+-type create_license_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_limit_request() :: #{
+%%   <<"amountRequirementName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"maxCount">> := integer()
+%% }
+-type create_limit_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_limit_response() :: #{
+%%   <<"limitId">> => string()
+%% }
+-type create_limit_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_monitor_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"identityCenterInstanceArn">> := string(),
+%%   <<"identityCenterRegion">> => string(),
+%%   <<"roleArn">> := string(),
+%%   <<"subdomain">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_monitor_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_monitor_response() :: #{
+%%   <<"identityCenterApplicationArn">> => string(),
+%%   <<"monitorId">> => string()
+%% }
+-type create_monitor_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_queue_environment_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"priority">> := integer(),
+%%   <<"template">> := string(),
+%%   <<"templateType">> := list(any())
+%% }
+-type create_queue_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_queue_environment_response() :: #{
+%%   <<"queueEnvironmentId">> => string()
+%% }
+-type create_queue_environment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2677,147 +1248,45 @@
 %% }
 -type create_queue_fleet_association_request() :: #{binary() => any()}.
 
+%% Example:
+%% create_queue_fleet_association_response() :: #{}
+-type create_queue_fleet_association_response() :: #{}.
+
 
 %% Example:
-%% attachments() :: #{
-%%   <<"fileSystem">> => list(any()),
-%%   <<"manifests">> => list(manifest_properties())
+%% create_queue_limit_association_request() :: #{
+%%   <<"limitId">> := string(),
+%%   <<"queueId">> := string()
 %% }
--type attachments() :: #{binary() => any()}.
+-type create_queue_limit_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_queue_limit_association_response() :: #{}
+-type create_queue_limit_association_response() :: #{}.
 
 
 %% Example:
-%% task_run_session_action_definition() :: #{
-%%   <<"parameters">> => map(),
-%%   <<"stepId">> => string(),
-%%   <<"taskId">> => string()
+%% create_queue_request() :: #{
+%%   <<"allowedStorageProfileIds">> => list(string()),
+%%   <<"clientToken">> => string(),
+%%   <<"defaultBudgetAction">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"displayName">> := string(),
+%%   <<"jobAttachmentSettings">> => job_attachment_settings(),
+%%   <<"jobRunAsUser">> => job_run_as_user(),
+%%   <<"requiredFileSystemLocationNames">> => list(string()),
+%%   <<"roleArn">> => string(),
+%%   <<"schedulingConfiguration">> => list(),
+%%   <<"tags">> => map()
 %% }
--type task_run_session_action_definition() :: #{binary() => any()}.
+-type create_queue_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_worker_request() :: #{
-%%   <<"identifiers">> := list(batch_get_worker_identifier())
+%% create_queue_response() :: #{
+%%   <<"queueId">> => string()
 %% }
--type batch_get_worker_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% accelerator_total_memory_mi_b_range() :: #{
-%%   <<"max">> => integer(),
-%%   <<"min">> => integer()
-%% }
--type accelerator_total_memory_mi_b_range() :: #{binary() => any()}.
-
-%% Example:
-%% put_metered_product_response() :: #{}
--type put_metered_product_response() :: #{}.
-
-%% Example:
-%% delete_limit_response() :: #{}
--type delete_limit_response() :: #{}.
-
-
-%% Example:
-%% step_dependency() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"stepId">> => string()
-%% }
--type step_dependency() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_member_to_fleet_request() :: #{
-%%   <<"identityCenterRegion">> => string(),
-%%   <<"identityStoreId">> := string(),
-%%   <<"membershipLevel">> := list(any()),
-%%   <<"principalType">> := list(any())
-%% }
--type associate_member_to_fleet_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_jobs_first() :: #{
-%%   <<"userIdentityId">> => string()
-%% }
--type user_jobs_first() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_task_response() :: #{
-%%   <<"errors">> => list(batch_get_task_error()),
-%%   <<"tasks">> => list(batch_get_task_item())
-%% }
--type batch_get_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_action_request() :: #{}
--type get_session_action_request() :: #{}.
-
-
-%% Example:
-%% list_steps_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"steps">> => list(step_summary())
-%% }
--type list_steps_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workers_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workers">> => list(worker_summary())
-%% }
--type list_workers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_sessions_statistics_aggregation_request() :: #{
-%%   <<"endTime">> := non_neg_integer(),
-%%   <<"groupBy">> := list(list(any())()),
-%%   <<"period">> => list(any()),
-%%   <<"resourceIds">> := list(),
-%%   <<"startTime">> := non_neg_integer(),
-%%   <<"statistics">> := list(list(any())()),
-%%   <<"timezone">> => string()
-%% }
--type start_sessions_statistics_aggregation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_farm_members_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_farm_members_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_details_error() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"environmentId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"message">> => string()
-%% }
--type environment_details_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_step_consumers_response() :: #{
-%%   <<"consumers">> => list(step_consumer()),
-%%   <<"nextToken">> => string()
-%% }
--type list_step_consumers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_member_to_queue_request() :: #{
-%%   <<"identityCenterRegion">> => string(),
-%%   <<"identityStoreId">> := string(),
-%%   <<"membershipLevel">> := list(any()),
-%%   <<"principalType">> := list(any())
-%% }
--type associate_member_to_queue_request() :: #{binary() => any()}.
+-type create_queue_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2831,20 +1300,46 @@
 
 
 %% Example:
-%% search_tasks_response() :: #{
-%%   <<"nextItemOffset">> => integer(),
-%%   <<"tasks">> => list(task_search_summary()),
-%%   <<"totalResults">> => integer()
+%% create_storage_profile_response() :: #{
+%%   <<"storageProfileId">> => string()
 %% }
--type search_tasks_response() :: #{binary() => any()}.
+-type create_storage_profile_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% worker_amount_capability() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => [float()]
+%% create_worker_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"hostProperties">> => host_properties_request(),
+%%   <<"tags">> => map()
 %% }
--type worker_amount_capability() :: #{binary() => any()}.
+-type create_worker_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_worker_response() :: #{
+%%   <<"workerId">> => string()
+%% }
+-type create_worker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% customer_managed_auto_scaling_configuration() :: #{
+%%   <<"scaleOutWorkersPerMinute">> => integer(),
+%%   <<"standbyWorkerCount">> => integer(),
+%%   <<"workerIdleDurationSeconds">> => integer()
+%% }
+-type customer_managed_auto_scaling_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% customer_managed_fleet_configuration() :: #{
+%%   <<"autoScalingConfiguration">> => customer_managed_auto_scaling_configuration(),
+%%   <<"mode">> => list(any()),
+%%   <<"storageProfileId">> => string(),
+%%   <<"tagPropagationMode">> => list(any()),
+%%   <<"workerCapabilities">> => customer_managed_worker_capabilities()
+%% }
+-type customer_managed_fleet_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2863,56 +1358,283 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"context">> => map(),
+%% date_time_filter_expression() :: #{
+%%   <<"dateTime">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"operator">> => list(any())
+%% }
+-type date_time_filter_expression() :: #{binary() => any()}.
+
+%% Example:
+%% delete_budget_request() :: #{}
+-type delete_budget_request() :: #{}.
+
+%% Example:
+%% delete_budget_response() :: #{}
+-type delete_budget_response() :: #{}.
+
+%% Example:
+%% delete_farm_request() :: #{}
+-type delete_farm_request() :: #{}.
+
+%% Example:
+%% delete_farm_response() :: #{}
+-type delete_farm_response() :: #{}.
+
+
+%% Example:
+%% delete_fleet_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fleet_response() :: #{}
+-type delete_fleet_response() :: #{}.
+
+%% Example:
+%% delete_license_endpoint_request() :: #{}
+-type delete_license_endpoint_request() :: #{}.
+
+%% Example:
+%% delete_license_endpoint_response() :: #{}
+-type delete_license_endpoint_response() :: #{}.
+
+%% Example:
+%% delete_limit_request() :: #{}
+-type delete_limit_request() :: #{}.
+
+%% Example:
+%% delete_limit_response() :: #{}
+-type delete_limit_response() :: #{}.
+
+%% Example:
+%% delete_metered_product_request() :: #{}
+-type delete_metered_product_request() :: #{}.
+
+%% Example:
+%% delete_metered_product_response() :: #{}
+-type delete_metered_product_response() :: #{}.
+
+%% Example:
+%% delete_monitor_request() :: #{}
+-type delete_monitor_request() :: #{}.
+
+%% Example:
+%% delete_monitor_response() :: #{}
+-type delete_monitor_response() :: #{}.
+
+%% Example:
+%% delete_queue_environment_request() :: #{}
+-type delete_queue_environment_request() :: #{}.
+
+%% Example:
+%% delete_queue_environment_response() :: #{}
+-type delete_queue_environment_response() :: #{}.
+
+%% Example:
+%% delete_queue_fleet_association_request() :: #{}
+-type delete_queue_fleet_association_request() :: #{}.
+
+%% Example:
+%% delete_queue_fleet_association_response() :: #{}
+-type delete_queue_fleet_association_response() :: #{}.
+
+%% Example:
+%% delete_queue_limit_association_request() :: #{}
+-type delete_queue_limit_association_request() :: #{}.
+
+%% Example:
+%% delete_queue_limit_association_response() :: #{}
+-type delete_queue_limit_association_response() :: #{}.
+
+%% Example:
+%% delete_queue_request() :: #{}
+-type delete_queue_request() :: #{}.
+
+%% Example:
+%% delete_queue_response() :: #{}
+-type delete_queue_response() :: #{}.
+
+%% Example:
+%% delete_storage_profile_request() :: #{}
+-type delete_storage_profile_request() :: #{}.
+
+%% Example:
+%% delete_storage_profile_response() :: #{}
+-type delete_storage_profile_response() :: #{}.
+
+%% Example:
+%% delete_volume_request() :: #{}
+-type delete_volume_request() :: #{}.
+
+%% Example:
+%% delete_volume_response() :: #{}
+-type delete_volume_response() :: #{}.
+
+%% Example:
+%% delete_worker_request() :: #{}
+-type delete_worker_request() :: #{}.
+
+%% Example:
+%% delete_worker_response() :: #{}
+-type delete_worker_response() :: #{}.
+
+
+%% Example:
+%% dependency_counts() :: #{
+%%   <<"consumersResolved">> => integer(),
+%%   <<"consumersUnresolved">> => integer(),
+%%   <<"dependenciesResolved">> => integer(),
+%%   <<"dependenciesUnresolved">> => integer()
+%% }
+-type dependency_counts() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_member_from_farm_request() :: #{}
+-type disassociate_member_from_farm_request() :: #{}.
+
+%% Example:
+%% disassociate_member_from_farm_response() :: #{}
+-type disassociate_member_from_farm_response() :: #{}.
+
+%% Example:
+%% disassociate_member_from_fleet_request() :: #{}
+-type disassociate_member_from_fleet_request() :: #{}.
+
+%% Example:
+%% disassociate_member_from_fleet_response() :: #{}
+-type disassociate_member_from_fleet_response() :: #{}.
+
+%% Example:
+%% disassociate_member_from_job_request() :: #{}
+-type disassociate_member_from_job_request() :: #{}.
+
+%% Example:
+%% disassociate_member_from_job_response() :: #{}
+-type disassociate_member_from_job_response() :: #{}.
+
+%% Example:
+%% disassociate_member_from_queue_request() :: #{}
+-type disassociate_member_from_queue_request() :: #{}.
+
+%% Example:
+%% disassociate_member_from_queue_response() :: #{}
+-type disassociate_member_from_queue_response() :: #{}.
+
+
+%% Example:
+%% ec2_ebs_volume() :: #{
+%%   <<"iops">> => integer(),
+%%   <<"sizeGiB">> => integer(),
+%%   <<"throughputMiB">> => integer()
+%% }
+-type ec2_ebs_volume() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_details_entity() :: #{
+%%   <<"environmentId">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"schemaVersion">> => string(),
+%%   <<"template">> => any()
+%% }
+-type environment_details_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_details_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"environmentId">> => string(),
+%%   <<"jobId">> => string(),
 %%   <<"message">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type environment_details_error() :: #{binary() => any()}.
 
 
 %% Example:
-%% assigned_environment_exit_session_action_definition() :: #{
+%% environment_details_identifiers() :: #{
+%%   <<"environmentId">> => string(),
+%%   <<"jobId">> => string()
+%% }
+-type environment_details_identifiers() :: #{binary() => any()}.
+
+
+%% Example:
+%% environment_enter_session_action_definition() :: #{
 %%   <<"environmentId">> => string()
 %% }
--type assigned_environment_exit_session_action_definition() :: #{binary() => any()}.
+-type environment_enter_session_action_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% ip_addresses() :: #{
-%%   <<"ipV4Addresses">> => list(string()),
-%%   <<"ipV6Addresses">> => list(string())
+%% environment_enter_session_action_definition_summary() :: #{
+%%   <<"environmentId">> => string()
 %% }
--type ip_addresses() :: #{binary() => any()}.
+-type environment_enter_session_action_definition_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_sessions_statistics_aggregation_request() :: #{
-%%   <<"aggregationId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% environment_exit_session_action_definition() :: #{
+%%   <<"environmentId">> => string()
 %% }
--type get_sessions_statistics_aggregation_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type environment_exit_session_action_definition() :: #{binary() => any()}.
 
 
 %% Example:
-%% copy_job_template_response() :: #{
-%%   <<"templateType">> => list(any())
+%% environment_exit_session_action_definition_summary() :: #{
+%%   <<"environmentId">> => string()
 %% }
--type copy_job_template_response() :: #{binary() => any()}.
+-type environment_exit_session_action_definition_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% aws_credentials() :: #{
-%%   <<"accessKeyId">> => string(),
-%%   <<"expiration">> => non_neg_integer(),
-%%   <<"secretAccessKey">> => string(),
-%%   <<"sessionToken">> => string()
+%% farm_member() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"identityStoreId">> => string(),
+%%   <<"membershipLevel">> => list(any()),
+%%   <<"principalId">> => string(),
+%%   <<"principalType">> => list(any())
 %% }
--type aws_credentials() :: #{binary() => any()}.
+-type farm_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% farm_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type farm_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_sort_expression() :: #{
+%%   <<"name">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type field_sort_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% file_system_location() :: #{
+%%   <<"name">> => string(),
+%%   <<"path">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type file_system_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% fixed_budget_schedule() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"startTime">> => non_neg_integer()
+%% }
+-type fixed_budget_schedule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2925,99 +1647,128 @@
 
 
 %% Example:
-%% batch_get_session_action_request() :: #{
-%%   <<"identifiers">> := list(batch_get_session_action_identifier())
+%% fleet_attribute_capability() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type batch_get_session_action_request() :: #{binary() => any()}.
+-type fleet_attribute_capability() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_update_job_error() :: #{
-%%   <<"code">> => list(any()),
+%% fleet_capabilities() :: #{
+%%   <<"amounts">> => list(fleet_amount_capability()),
+%%   <<"attributes">> => list(fleet_attribute_capability())
+%% }
+-type fleet_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% fleet_member() :: #{
 %%   <<"farmId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"message">> => string(),
-%%   <<"queueId">> => string()
+%%   <<"fleetId">> => string(),
+%%   <<"identityStoreId">> => string(),
+%%   <<"membershipLevel">> => list(any()),
+%%   <<"principalId">> => string(),
+%%   <<"principalType">> => list(any())
 %% }
--type batch_update_job_error() :: #{binary() => any()}.
+-type fleet_member() :: #{binary() => any()}.
 
 
 %% Example:
-%% customer_managed_auto_scaling_configuration() :: #{
-%%   <<"scaleOutWorkersPerMinute">> => integer(),
-%%   <<"standbyWorkerCount">> => integer(),
-%%   <<"workerIdleDurationSeconds">> => integer()
-%% }
--type customer_managed_auto_scaling_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_queue_fleet_association_response() :: #{
+%% fleet_summary() :: #{
+%%   <<"autoScalingStatus">> => list(any()),
+%%   <<"configuration">> => list(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"farmId">> => string(),
 %%   <<"fleetId">> => string(),
-%%   <<"queueId">> => string(),
+%%   <<"maxWorkerCount">> => integer(),
+%%   <<"minWorkerCount">> => integer(),
 %%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"targetWorkerCount">> => integer(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"workerCount">> => integer()
+%% }
+-type fleet_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_budget_request() :: #{}
+-type get_budget_request() :: #{}.
+
+
+%% Example:
+%% get_budget_response() :: #{
+%%   <<"actions">> => list(response_budget_action()),
+%%   <<"approximateDollarLimit">> => float(),
+%%   <<"budgetId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"queueStoppedAt">> => non_neg_integer(),
+%%   <<"schedule">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"usageTrackingResource">> => list(),
+%%   <<"usages">> => consumed_usages()
+%% }
+-type get_budget_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_farm_request() :: #{}
+-type get_farm_request() :: #{}.
+
+
+%% Example:
+%% get_farm_response() :: #{
+%%   <<"costScaleFactor">> => float(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
--type get_queue_fleet_association_response() :: #{binary() => any()}.
+-type get_farm_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_fleet_request() :: #{}
+-type get_fleet_request() :: #{}.
 
 
 %% Example:
-%% create_budget_request() :: #{
-%%   <<"actions">> := list(budget_action_to_add()),
-%%   <<"approximateDollarLimit">> := float(),
-%%   <<"clientToken">> => string(),
+%% get_fleet_response() :: #{
+%%   <<"autoScalingStatus">> => list(any()),
+%%   <<"capabilities">> => fleet_capabilities(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
-%%   <<"displayName">> := string(),
-%%   <<"schedule">> := list(),
-%%   <<"tags">> => map(),
-%%   <<"usageTrackingResource">> := list()
-%% }
--type create_budget_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_budgets_response() :: #{
-%%   <<"budgets">> => list(budget_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_budgets_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_storage_profile_request() :: #{}
--type delete_storage_profile_request() :: #{}.
-
-
-%% Example:
-%% statistics() :: #{
-%%   <<"aggregationEndTime">> => non_neg_integer(),
-%%   <<"aggregationStartTime">> => non_neg_integer(),
-%%   <<"costInUsd">> => stats(),
-%%   <<"count">> => integer(),
-%%   <<"fleetId">> => string(),
-%%   <<"instanceType">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"jobName">> => string(),
-%%   <<"licenseProduct">> => string(),
-%%   <<"queueId">> => string(),
-%%   <<"runtimeInSeconds">> => stats(),
-%%   <<"usageType">> => list(any()),
-%%   <<"userId">> => string()
-%% }
--type statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_worker_error() :: #{
-%%   <<"code">> => list(any()),
+%%   <<"displayName">> => string(),
 %%   <<"farmId">> => string(),
 %%   <<"fleetId">> => string(),
-%%   <<"message">> => string(),
-%%   <<"workerId">> => string()
+%%   <<"hostConfiguration">> => host_configuration(),
+%%   <<"maxWorkerCount">> => integer(),
+%%   <<"minWorkerCount">> => integer(),
+%%   <<"roleArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"targetWorkerCount">> => integer(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"workerCount">> => integer()
 %% }
--type batch_get_worker_error() :: #{binary() => any()}.
+-type get_fleet_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_request() :: #{}
+-type get_job_request() :: #{}.
 
 
 %% Example:
@@ -3049,146 +1800,46 @@
 -type get_job_response() :: #{binary() => any()}.
 
 %% Example:
-%% get_storage_profile_request() :: #{}
--type get_storage_profile_request() :: #{}.
+%% get_license_endpoint_request() :: #{}
+-type get_license_endpoint_request() :: #{}.
 
 
 %% Example:
-%% create_limit_request() :: #{
-%%   <<"amountRequirementName">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> := string(),
-%%   <<"maxCount">> := integer()
+%% get_license_endpoint_response() :: #{
+%%   <<"dnsName">> => string(),
+%%   <<"licenseEndpointId">> => string(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcId">> => string()
 %% }
--type create_limit_request() :: #{binary() => any()}.
+-type get_license_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_queue_environment_response() :: #{}
--type update_queue_environment_response() :: #{}.
+%% get_limit_request() :: #{}
+-type get_limit_request() :: #{}.
 
 
 %% Example:
-%% queue_fleet_association_summary() :: #{
+%% get_limit_response() :: #{
+%%   <<"amountRequirementName">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
-%%   <<"fleetId">> => string(),
-%%   <<"queueId">> => string(),
-%%   <<"status">> => list(any()),
+%%   <<"currentCount">> => integer(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"limitId">> => string(),
+%%   <<"maxCount">> => integer(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
--type queue_fleet_association_summary() :: #{binary() => any()}.
+-type get_limit_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_limit_request() :: #{}
--type delete_limit_request() :: #{}.
-
-
-%% Example:
-%% service_managed_ec2_auto_scaling_configuration() :: #{
-%%   <<"scaleOutWorkersPerMinute">> => integer(),
-%%   <<"standbyWorkerCount">> => integer(),
-%%   <<"workerIdleDurationSeconds">> => integer()
-%% }
--type service_managed_ec2_auto_scaling_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"context">> => map(),
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => string(),
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-%% Example:
-%% disassociate_member_from_fleet_request() :: #{}
--type disassociate_member_from_fleet_request() :: #{}.
-
-%% Example:
-%% assume_fleet_role_for_read_request() :: #{}
--type assume_fleet_role_for_read_request() :: #{}.
-
-%% Example:
-%% update_step_response() :: #{}
--type update_step_response() :: #{}.
-
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"retryAfterSeconds">> => integer()
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% environment_details_identifiers() :: #{
-%%   <<"environmentId">> => string(),
-%%   <<"jobId">> => string()
-%% }
--type environment_details_identifiers() :: #{binary() => any()}.
-
-%% Example:
-%% get_step_request() :: #{}
--type get_step_request() :: #{}.
-
-%% Example:
-%% get_job_request() :: #{}
--type get_job_request() :: #{}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"context">> => map(),
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => string(),
-%%   <<"retryAfterSeconds">> => integer(),
-%%   <<"serviceCode">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% assume_fleet_role_for_worker_response() :: #{
-%%   <<"credentials">> => aws_credentials()
-%% }
--type assume_fleet_role_for_worker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_attachment_details_error() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"jobId">> => string(),
-%%   <<"message">> => string()
-%% }
--type job_attachment_details_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_license_endpoint_response() :: #{}
--type delete_license_endpoint_response() :: #{}.
-
-%% Example:
-%% update_farm_response() :: #{}
--type update_farm_response() :: #{}.
-
-%% Example:
-%% associate_member_to_job_response() :: #{}
--type associate_member_to_job_response() :: #{}.
-
-
-%% Example:
-%% list_queue_environments_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_queue_environments_request() :: #{binary() => any()}.
+%% get_monitor_request() :: #{}
+-type get_monitor_request() :: #{}.
 
 
 %% Example:
@@ -3208,217 +1859,419 @@
 %% }
 -type get_monitor_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_monitor_settings_request() :: #{}
+-type get_monitor_settings_request() :: #{}.
+
 
 %% Example:
-%% assigned_session_action() :: #{
-%%   <<"definition">> => list(),
-%%   <<"sessionActionId">> => string()
+%% get_monitor_settings_response() :: #{
+%%   <<"settings">> => map()
 %% }
--type assigned_session_action() :: #{binary() => any()}.
+-type get_monitor_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_environment_request() :: #{}
+-type get_queue_environment_request() :: #{}.
 
 
 %% Example:
-%% batch_get_job_error() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"farmId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"message">> => string(),
-%%   <<"queueId">> => string()
-%% }
--type batch_get_job_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% parameter_sort_expression() :: #{
+%% get_queue_environment_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
 %%   <<"name">> => string(),
-%%   <<"sortOrder">> => list(any())
+%%   <<"priority">> => integer(),
+%%   <<"queueEnvironmentId">> => string(),
+%%   <<"template">> => string(),
+%%   <<"templateType">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
--type parameter_sort_expression() :: #{binary() => any()}.
+-type get_queue_environment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_fleet_association_request() :: #{}
+-type get_queue_fleet_association_request() :: #{}.
 
 
 %% Example:
-%% batch_get_task_item() :: #{
+%% get_queue_fleet_association_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"fleetId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_queue_fleet_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_limit_association_request() :: #{}
+-type get_queue_limit_association_request() :: #{}.
+
+
+%% Example:
+%% get_queue_limit_association_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"limitId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_queue_limit_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_queue_request() :: #{}
+-type get_queue_request() :: #{}.
+
+
+%% Example:
+%% get_queue_response() :: #{
+%%   <<"allowedStorageProfileIds">> => list(string()),
+%%   <<"blockedReason">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"defaultBudgetAction">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"jobAttachmentSettings">> => job_attachment_settings(),
+%%   <<"jobRunAsUser">> => job_run_as_user(),
+%%   <<"queueId">> => string(),
+%%   <<"requiredFileSystemLocationNames">> => list(string()),
+%%   <<"roleArn">> => string(),
+%%   <<"schedulingConfiguration">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_queue_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_action_request() :: #{}
+-type get_session_action_request() :: #{}.
+
+
+%% Example:
+%% get_session_action_response() :: #{
+%%   <<"acquiredLimits">> => list(acquired_limit()),
+%%   <<"definition">> => list(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"manifests">> => list(task_run_manifest_properties_response()),
+%%   <<"processExitCode">> => integer(),
+%%   <<"progressMessage">> => string(),
+%%   <<"progressPercent">> => float(),
+%%   <<"sessionActionId">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"workerUpdatedAt">> => non_neg_integer()
+%% }
+-type get_session_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_request() :: #{}
+-type get_session_request() :: #{}.
+
+
+%% Example:
+%% get_session_response() :: #{
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"fleetId">> => string(),
+%%   <<"hostProperties">> => host_properties_response(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"log">> => log_configuration(),
+%%   <<"sessionId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"targetLifecycleStatus">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"workerId">> => string(),
+%%   <<"workerLog">> => log_configuration()
+%% }
+-type get_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sessions_statistics_aggregation_request() :: #{
+%%   <<"aggregationId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_sessions_statistics_aggregation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_sessions_statistics_aggregation_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"statistics">> => list(statistics()),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string()
+%% }
+-type get_sessions_statistics_aggregation_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_step_request() :: #{}
+-type get_step_request() :: #{}.
+
+
+%% Example:
+%% get_step_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"dependencyCounts">> => dependency_counts(),
+%%   <<"description">> => string(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"lifecycleStatusMessage">> => string(),
+%%   <<"name">> => string(),
+%%   <<"parameterSpace">> => parameter_space(),
+%%   <<"requiredCapabilities">> => step_required_capabilities(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"stepId">> => string(),
+%%   <<"targetTaskRunStatus">> => list(any()),
+%%   <<"taskFailureRetryCount">> => integer(),
+%%   <<"taskRunStatus">> => list(any()),
+%%   <<"taskRunStatusCounts">> => map(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_step_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_storage_profile_for_queue_request() :: #{}
+-type get_storage_profile_for_queue_request() :: #{}.
+
+
+%% Example:
+%% get_storage_profile_for_queue_response() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"fileSystemLocations">> => list(file_system_location()),
+%%   <<"osFamily">> => list(any()),
+%%   <<"storageProfileId">> => string()
+%% }
+-type get_storage_profile_for_queue_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_storage_profile_request() :: #{}
+-type get_storage_profile_request() :: #{}.
+
+
+%% Example:
+%% get_storage_profile_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"fileSystemLocations">> => list(file_system_location()),
+%%   <<"osFamily">> => list(any()),
+%%   <<"storageProfileId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_storage_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_task_request() :: #{}
+-type get_task_request() :: #{}.
+
+
+%% Example:
+%% get_task_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"endedAt">> => non_neg_integer(),
 %%   <<"failureRetryCount">> => integer(),
-%%   <<"farmId">> => string(),
-%%   <<"jobId">> => string(),
 %%   <<"latestSessionActionId">> => string(),
 %%   <<"parameters">> => map(),
-%%   <<"queueId">> => string(),
 %%   <<"runStatus">> => list(any()),
 %%   <<"startedAt">> => non_neg_integer(),
-%%   <<"stepId">> => string(),
 %%   <<"targetRunStatus">> => list(any()),
 %%   <<"taskId">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
--type batch_get_task_item() :: #{binary() => any()}.
+-type get_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_volume_request() :: #{}
+-type get_volume_request() :: #{}.
 
 
 %% Example:
-%% list_available_metered_products_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_available_metered_products_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_session_response() :: #{}
--type update_session_response() :: #{}.
-
-
-%% Example:
-%% list_tasks_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_tasks_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% accelerator_selection() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"runtime">> => string()
-%% }
--type accelerator_selection() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_session_action_response() :: #{
-%%   <<"errors">> => list(batch_get_session_action_error()),
-%%   <<"sessionActions">> => list(batch_get_session_action_item())
-%% }
--type batch_get_session_action_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_queues_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"queues">> => list(queue_summary())
-%% }
--type list_queues_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_session_error() :: #{
-%%   <<"code">> => list(any()),
+%% get_volume_response() :: #{
+%%   <<"attachedWorkerId">> => string(),
+%%   <<"availabilityZoneId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"expiresAt">> => non_neg_integer(),
 %%   <<"farmId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"message">> => string(),
-%%   <<"queueId">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type batch_get_session_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_queue_environment_response() :: #{}
--type delete_queue_environment_response() :: #{}.
-
-
-%% Example:
-%% list_license_endpoints_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_license_endpoints_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_queue_fleet_associations_request() :: #{
 %%   <<"fleetId">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"queueId">> => string()
+%%   <<"iops">> => integer(),
+%%   <<"lastAssignedAt">> => non_neg_integer(),
+%%   <<"lastReleasedAt">> => non_neg_integer(),
+%%   <<"sizeGiB">> => integer(),
+%%   <<"state">> => list(any()),
+%%   <<"throughputMiB">> => integer(),
+%%   <<"volumeId">> => string(),
+%%   <<"volumeType">> => list(any())
 %% }
--type list_queue_fleet_associations_request() :: #{binary() => any()}.
+-type get_volume_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_worker_request() :: #{}
+-type get_worker_request() :: #{}.
 
 
 %% Example:
-%% update_limit_request() :: #{
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"maxCount">> => integer()
+%% get_worker_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"fleetId">> => string(),
+%%   <<"hostProperties">> => host_properties_response(),
+%%   <<"log">> => log_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"workerId">> => string()
 %% }
--type update_limit_request() :: #{binary() => any()}.
+-type get_worker_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_queue_fleet_association_request() :: #{
-%%   <<"status">> := list(any())
+%% host_configuration() :: #{
+%%   <<"scriptBody">> => string(),
+%%   <<"scriptTimeoutSeconds">> => integer()
 %% }
--type update_queue_fleet_association_request() :: #{binary() => any()}.
+-type host_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% metered_product_summary() :: #{
-%%   <<"family">> => string(),
-%%   <<"port">> => integer(),
-%%   <<"productId">> => string(),
-%%   <<"vendor">> => string()
+%% host_properties_request() :: #{
+%%   <<"hostName">> => string(),
+%%   <<"ipAddresses">> => ip_addresses()
 %% }
--type metered_product_summary() :: #{binary() => any()}.
-
-%% Example:
-%% update_queue_response() :: #{}
--type update_queue_response() :: #{}.
+-type host_properties_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% queue_member() :: #{
+%% host_properties_response() :: #{
+%%   <<"ec2InstanceArn">> => string(),
+%%   <<"ec2InstanceType">> => string(),
+%%   <<"hostName">> => string(),
+%%   <<"ipAddresses">> => ip_addresses()
+%% }
+-type host_properties_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"retryAfterSeconds">> => integer()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ip_addresses() :: #{
+%%   <<"ipV4Addresses">> => list(string()),
+%%   <<"ipV6Addresses">> => list(string())
+%% }
+-type ip_addresses() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_attachment_details_entity() :: #{
+%%   <<"attachments">> => attachments(),
+%%   <<"jobId">> => string()
+%% }
+-type job_attachment_details_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_attachment_details_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string()
+%% }
+-type job_attachment_details_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_attachment_details_identifiers() :: #{
+%%   <<"jobId">> => string()
+%% }
+-type job_attachment_details_identifiers() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_attachment_settings() :: #{
+%%   <<"rootPrefix">> => string(),
+%%   <<"s3BucketName">> => string()
+%% }
+-type job_attachment_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_details_entity() :: #{
+%%   <<"jobAttachmentSettings">> => job_details_job_attachment_settings(),
+%%   <<"jobId">> => string(),
+%%   <<"jobRunAsUser">> => job_run_as_user(),
+%%   <<"logGroupName">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"pathMappingRules">> => list(path_mapping_rule()),
+%%   <<"queueRoleArn">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type job_details_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_details_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string()
+%% }
+-type job_details_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_details_identifiers() :: #{
+%%   <<"jobId">> => string()
+%% }
+-type job_details_identifiers() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_details_job_attachment_settings() :: #{
+%%   <<"rootPrefix">> => string(),
+%%   <<"s3BucketName">> => string()
+%% }
+-type job_details_job_attachment_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_member() :: #{
 %%   <<"farmId">> => string(),
 %%   <<"identityStoreId">> => string(),
+%%   <<"jobId">> => string(),
 %%   <<"membershipLevel">> => list(any()),
 %%   <<"principalId">> => string(),
 %%   <<"principalType">> => list(any()),
 %%   <<"queueId">> => string()
 %% }
--type queue_member() :: #{binary() => any()}.
-
-%% Example:
-%% delete_farm_request() :: #{}
--type delete_farm_request() :: #{}.
-
-%% Example:
-%% delete_queue_request() :: #{}
--type delete_queue_request() :: #{}.
-
-%% Example:
-%% delete_budget_request() :: #{}
--type delete_budget_request() :: #{}.
+-type job_member() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_worker_response() :: #{
-%%   <<"hostConfiguration">> => host_configuration(),
-%%   <<"log">> => log_configuration()
+%% job_run_as_user() :: #{
+%%   <<"posix">> => posix_user(),
+%%   <<"runAs">> => list(any()),
+%%   <<"windows">> => windows_user()
 %% }
--type update_worker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% sync_input_job_attachments_session_action_definition_summary() :: #{
-%%   <<"stepId">> => string()
-%% }
--type sync_input_job_attachments_session_action_definition_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_limit_response() :: #{
-%%   <<"limitId">> => string()
-%% }
--type create_limit_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_parameter_chunks() :: #{
-%%   <<"defaultTaskCount">> => integer(),
-%%   <<"rangeConstraint">> => list(any()),
-%%   <<"targetRuntimeSeconds">> => integer()
-%% }
--type step_parameter_chunks() :: #{binary() => any()}.
+-type job_run_as_user() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3449,32 +2302,626 @@
 
 
 %% Example:
-%% batch_get_step_identifier() :: #{
-%%   <<"farmId">> => string(),
+%% job_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"endedAt">> => non_neg_integer(),
 %%   <<"jobId">> => string(),
-%%   <<"queueId">> => string(),
-%%   <<"stepId">> => string()
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"lifecycleStatusMessage">> => string(),
+%%   <<"maxFailedTasksCount">> => integer(),
+%%   <<"maxRetriesPerTask">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"sourceJobId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"targetTaskRunStatus">> => list(any()),
+%%   <<"taskFailureRetryCount">> => integer(),
+%%   <<"taskRunStatus">> => list(any()),
+%%   <<"taskRunStatusCounts">> => map(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
--type batch_get_step_identifier() :: #{binary() => any()}.
+-type job_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_session_response() :: #{
-%%   <<"errors">> => list(batch_get_session_error()),
-%%   <<"sessions">> => list(batch_get_session_item())
+%% license_endpoint_summary() :: #{
+%%   <<"licenseEndpointId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"vpcId">> => string()
 %% }
--type batch_get_session_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_storage_profile_for_queue_request() :: #{}
--type get_storage_profile_for_queue_request() :: #{}.
+-type license_endpoint_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% copy_job_template_request() :: #{
-%%   <<"targetS3Location">> := s3_location()
+%% limit_summary() :: #{
+%%   <<"amountRequirementName">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"currentCount">> => integer(),
+%%   <<"displayName">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"limitId">> => string(),
+%%   <<"maxCount">> => integer(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
--type copy_job_template_request() :: #{binary() => any()}.
+-type limit_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_available_metered_products_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_available_metered_products_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_available_metered_products_response() :: #{
+%%   <<"meteredProducts">> => list(metered_product_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_available_metered_products_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_budgets_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_budgets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_budgets_response() :: #{
+%%   <<"budgets">> => list(budget_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_budgets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_farm_members_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_farm_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_farm_members_response() :: #{
+%%   <<"members">> => list(farm_member()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_farm_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_farms_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principalId">> => string()
+%% }
+-type list_farms_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_farms_response() :: #{
+%%   <<"farms">> => list(farm_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_farms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fleet_members_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleet_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fleet_members_response() :: #{
+%%   <<"members">> => list(fleet_member()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleet_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fleets_request() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principalId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_fleets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_fleets_response() :: #{
+%%   <<"fleets">> => list(fleet_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_fleets_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_members_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_members_response() :: #{
+%%   <<"members">> => list(job_member()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_parameter_definitions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_parameter_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_job_parameter_definitions_response() :: #{
+%%   <<"jobParameterDefinitions">> => list(any()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_job_parameter_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principalId">> => string()
+%% }
+-type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_jobs_response() :: #{
+%%   <<"jobs">> => list(job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_license_endpoints_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_license_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_license_endpoints_response() :: #{
+%%   <<"licenseEndpoints">> => list(license_endpoint_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_license_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_limits_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_limits_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_limits_response() :: #{
+%%   <<"limits">> => list(limit_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_limits_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metered_products_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metered_products_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metered_products_response() :: #{
+%%   <<"meteredProducts">> => list(metered_product_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_metered_products_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_monitors_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_monitors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_monitors_response() :: #{
+%%   <<"monitors">> => list(monitor_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_monitors_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_environments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_queue_environments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_environments_response() :: #{
+%%   <<"environments">> => list(queue_environment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_queue_environments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_fleet_associations_request() :: #{
+%%   <<"fleetId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queueId">> => string()
+%% }
+-type list_queue_fleet_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_fleet_associations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"queueFleetAssociations">> => list(queue_fleet_association_summary())
+%% }
+-type list_queue_fleet_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_limit_associations_request() :: #{
+%%   <<"limitId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"queueId">> => string()
+%% }
+-type list_queue_limit_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_limit_associations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"queueLimitAssociations">> => list(queue_limit_association_summary())
+%% }
+-type list_queue_limit_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_members_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_queue_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queue_members_response() :: #{
+%%   <<"members">> => list(queue_member()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_queue_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queues_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principalId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_queues_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_queues_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"queues">> => list(queue_summary())
+%% }
+-type list_queues_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_session_actions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"taskId">> => string()
+%% }
+-type list_session_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_session_actions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessionActions">> => list(session_action_summary())
+%% }
+-type list_session_actions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_for_worker_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sessions_for_worker_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_for_worker_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessions">> => list(worker_session_summary())
+%% }
+-type list_sessions_for_worker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessions">> => list(session_summary())
+%% }
+-type list_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_step_consumers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_step_consumers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_step_consumers_response() :: #{
+%%   <<"consumers">> => list(step_consumer()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_step_consumers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_step_dependencies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_step_dependencies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_step_dependencies_response() :: #{
+%%   <<"dependencies">> => list(step_dependency()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_step_dependencies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_steps_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_steps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_steps_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"steps">> => list(step_summary())
+%% }
+-type list_steps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_profiles_for_queue_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_storage_profiles_for_queue_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_profiles_for_queue_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"storageProfiles">> => list(storage_profile_summary())
+%% }
+-type list_storage_profiles_for_queue_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_storage_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_storage_profiles_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"storageProfiles">> => list(storage_profile_summary())
+%% }
+-type list_storage_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tasks_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tasks_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tasks">> => list(task_summary())
+%% }
+-type list_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_volumes_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_volumes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_volumes_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"volumes">> => list(volume_summary())
+%% }
+-type list_volumes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_workers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workers">> => list(worker_summary())
+%% }
+-type list_workers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% log_configuration() :: #{
+%%   <<"error">> => string(),
+%%   <<"logDriver">> => string(),
+%%   <<"options">> => map(),
+%%   <<"parameters">> => map()
+%% }
+-type log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% manifest_properties() :: #{
+%%   <<"fileSystemLocationName">> => string(),
+%%   <<"inputManifestHash">> => string(),
+%%   <<"inputManifestPath">> => string(),
+%%   <<"outputRelativeDirectories">> => list(string()),
+%%   <<"rootPath">> => string(),
+%%   <<"rootPathFormat">> => list(any())
+%% }
+-type manifest_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_mi_b_range() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type memory_mi_b_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% metered_product_summary() :: #{
+%%   <<"family">> => string(),
+%%   <<"port">> => integer(),
+%%   <<"productId">> => string(),
+%%   <<"vendor">> => string()
+%% }
+-type metered_product_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% monitor_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"identityCenterApplicationArn">> => string(),
+%%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"identityCenterRegion">> => string(),
+%%   <<"monitorId">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"subdomain">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"url">> => string()
+%% }
+-type monitor_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_filter_expression() :: #{
+%%   <<"name">> => string(),
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type parameter_filter_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_sort_expression() :: #{
+%%   <<"name">> => string(),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type parameter_sort_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% parameter_space() :: #{
+%%   <<"combination">> => string(),
+%%   <<"parameters">> => list(step_parameter())
+%% }
+-type parameter_space() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3487,107 +2934,485 @@
 
 
 %% Example:
-%% create_worker_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"hostProperties">> => host_properties_request(),
-%%   <<"tags">> => map()
+%% persistent_volume_configuration() :: #{
+%%   <<"iops">> => integer(),
+%%   <<"lastUsedTtlHours">> => integer(),
+%%   <<"mountPath">> => string(),
+%%   <<"sizeGiB">> => integer(),
+%%   <<"throughputMiB">> => integer()
 %% }
--type create_worker_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_member_from_job_response() :: #{}
--type disassociate_member_from_job_response() :: #{}.
+-type persistent_volume_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% job_attachment_details_identifiers() :: #{
-%%   <<"jobId">> => string()
+%% posix_user() :: #{
+%%   <<"group">> => string(),
+%%   <<"user">> => string()
 %% }
--type job_attachment_details_identifiers() :: #{binary() => any()}.
-
-%% Example:
-%% get_queue_fleet_association_request() :: #{}
--type get_queue_fleet_association_request() :: #{}.
+-type posix_user() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_session_action_error() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"farmId">> => string(),
-%%   <<"jobId">> => string(),
-%%   <<"message">> => string(),
+%% priority_balanced_scheduling_configuration() :: #{
+%%   <<"renderingTaskBuffer">> => integer()
+%% }
+-type priority_balanced_scheduling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% priority_fifo_scheduling_configuration() :: #{}
+-type priority_fifo_scheduling_configuration() :: #{}.
+
+%% Example:
+%% put_metered_product_request() :: #{}
+-type put_metered_product_request() :: #{}.
+
+%% Example:
+%% put_metered_product_response() :: #{}
+-type put_metered_product_response() :: #{}.
+
+
+%% Example:
+%% queue_environment_summary() :: #{
+%%   <<"name">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"queueEnvironmentId">> => string()
+%% }
+-type queue_environment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% queue_fleet_association_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"fleetId">> => string(),
 %%   <<"queueId">> => string(),
-%%   <<"sessionActionId">> => string()
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
--type batch_get_session_action_error() :: #{binary() => any()}.
-
-%% Example:
-%% delete_license_endpoint_request() :: #{}
--type delete_license_endpoint_request() :: #{}.
+-type queue_fleet_association_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% budget_action_to_add() :: #{
+%% queue_limit_association_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"limitId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type queue_limit_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% queue_member() :: #{
+%%   <<"farmId">> => string(),
+%%   <<"identityStoreId">> => string(),
+%%   <<"membershipLevel">> => list(any()),
+%%   <<"principalId">> => string(),
+%%   <<"principalType">> => list(any()),
+%%   <<"queueId">> => string()
+%% }
+-type queue_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% queue_summary() :: #{
+%%   <<"blockedReason">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"defaultBudgetAction">> => list(any()),
+%%   <<"displayName">> => string(),
+%%   <<"farmId">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type queue_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"context">> => map(),
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_budget_action() :: #{
 %%   <<"description">> => string(),
 %%   <<"thresholdPercentage">> => float(),
 %%   <<"type">> => list(any())
 %% }
--type budget_action_to_add() :: #{binary() => any()}.
+-type response_budget_action() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_monitor_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"displayName">> := string(),
-%%   <<"identityCenterInstanceArn">> := string(),
-%%   <<"identityCenterRegion">> => string(),
-%%   <<"roleArn">> := string(),
-%%   <<"subdomain">> := string(),
-%%   <<"tags">> => map()
+%% s3_location() :: #{
+%%   <<"bucketName">> => string(),
+%%   <<"key">> => string()
 %% }
--type create_monitor_request() :: #{binary() => any()}.
+-type s3_location() :: #{binary() => any()}.
 
 %% Example:
-%% delete_metered_product_request() :: #{}
--type delete_metered_product_request() :: #{}.
+%% scheduling_max_priority_override_always_schedule_first() :: #{}
+-type scheduling_max_priority_override_always_schedule_first() :: #{}.
+
+%% Example:
+%% scheduling_min_priority_override_always_schedule_last() :: #{}
+-type scheduling_min_priority_override_always_schedule_last() :: #{}.
 
 
 %% Example:
-%% list_tasks_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(task_summary())
+%% search_grouped_filter_expressions() :: #{
+%%   <<"filters">> => list(list()),
+%%   <<"operator">> => list(any())
 %% }
--type list_tasks_response() :: #{binary() => any()}.
+-type search_grouped_filter_expressions() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_budget_response() :: #{
-%%   <<"actions">> => list(response_budget_action()),
-%%   <<"approximateDollarLimit">> => float(),
-%%   <<"budgetId">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"queueStoppedAt">> => non_neg_integer(),
-%%   <<"schedule">> => list(),
+%% search_jobs_request() :: #{
+%%   <<"filterExpressions">> => search_grouped_filter_expressions(),
+%%   <<"itemOffset">> := integer(),
+%%   <<"pageSize">> => integer(),
+%%   <<"queueIds">> := list(string()),
+%%   <<"sortExpressions">> => list(list())
+%% }
+-type search_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_jobs_response() :: #{
+%%   <<"jobs">> => list(job_search_summary()),
+%%   <<"nextItemOffset">> => integer(),
+%%   <<"totalResults">> => integer()
+%% }
+-type search_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_steps_request() :: #{
+%%   <<"filterExpressions">> => search_grouped_filter_expressions(),
+%%   <<"itemOffset">> := integer(),
+%%   <<"jobId">> => string(),
+%%   <<"pageSize">> => integer(),
+%%   <<"queueIds">> := list(string()),
+%%   <<"sortExpressions">> => list(list())
+%% }
+-type search_steps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_steps_response() :: #{
+%%   <<"nextItemOffset">> => integer(),
+%%   <<"steps">> => list(step_search_summary()),
+%%   <<"totalResults">> => integer()
+%% }
+-type search_steps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_tasks_request() :: #{
+%%   <<"filterExpressions">> => search_grouped_filter_expressions(),
+%%   <<"itemOffset">> := integer(),
+%%   <<"jobId">> => string(),
+%%   <<"pageSize">> => integer(),
+%%   <<"queueIds">> := list(string()),
+%%   <<"sortExpressions">> => list(list())
+%% }
+-type search_tasks_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_tasks_response() :: #{
+%%   <<"nextItemOffset">> => integer(),
+%%   <<"tasks">> => list(task_search_summary()),
+%%   <<"totalResults">> => integer()
+%% }
+-type search_tasks_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_term_filter_expression() :: #{
+%%   <<"matchType">> => list(any()),
+%%   <<"searchTerm">> => string()
+%% }
+-type search_term_filter_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_workers_request() :: #{
+%%   <<"filterExpressions">> => search_grouped_filter_expressions(),
+%%   <<"fleetIds">> := list(string()),
+%%   <<"itemOffset">> := integer(),
+%%   <<"pageSize">> => integer(),
+%%   <<"sortExpressions">> => list(list())
+%% }
+-type search_workers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_workers_response() :: #{
+%%   <<"nextItemOffset">> => integer(),
+%%   <<"totalResults">> => integer(),
+%%   <<"workers">> => list(worker_search_summary())
+%% }
+-type search_workers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_managed_ec2_auto_scaling_configuration() :: #{
+%%   <<"scaleOutWorkersPerMinute">> => integer(),
+%%   <<"standbyWorkerCount">> => integer(),
+%%   <<"workerIdleDurationSeconds">> => integer()
+%% }
+-type service_managed_ec2_auto_scaling_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_managed_ec2_fleet_configuration() :: #{
+%%   <<"autoScalingConfiguration">> => service_managed_ec2_auto_scaling_configuration(),
+%%   <<"instanceCapabilities">> => service_managed_ec2_instance_capabilities(),
+%%   <<"instanceMarketOptions">> => service_managed_ec2_instance_market_options(),
+%%   <<"persistentVolumeConfiguration">> => persistent_volume_configuration(),
+%%   <<"storageProfileId">> => string(),
+%%   <<"vpcConfiguration">> => vpc_configuration()
+%% }
+-type service_managed_ec2_fleet_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_managed_ec2_instance_capabilities() :: #{
+%%   <<"acceleratorCapabilities">> => accelerator_capabilities(),
+%%   <<"allowedInstanceTypes">> => list(string()),
+%%   <<"cpuArchitectureType">> => list(any()),
+%%   <<"customAmounts">> => list(fleet_amount_capability()),
+%%   <<"customAttributes">> => list(fleet_attribute_capability()),
+%%   <<"excludedInstanceTypes">> => list(string()),
+%%   <<"memoryMiB">> => memory_mi_b_range(),
+%%   <<"osFamily">> => list(any()),
+%%   <<"rootEbsVolume">> => ec2_ebs_volume(),
+%%   <<"vCpuCount">> => v_cpu_count_range()
+%% }
+-type service_managed_ec2_instance_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_managed_ec2_instance_market_options() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type service_managed_ec2_instance_market_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"context">> => map(),
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"reason">> => list(any()),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_action_summary() :: #{
+%%   <<"definition">> => list(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"manifests">> => list(task_run_manifest_properties_response()),
+%%   <<"progressPercent">> => float(),
+%%   <<"sessionActionId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
+%%   <<"workerUpdatedAt">> => non_neg_integer()
+%% }
+-type session_action_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_summary() :: #{
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"fleetId">> => string(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"sessionId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"targetLifecycleStatus">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string(),
-%%   <<"usageTrackingResource">> => list(),
-%%   <<"usages">> => consumed_usages()
+%%   <<"workerId">> => string()
 %% }
--type get_budget_response() :: #{binary() => any()}.
+-type session_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% associate_member_to_farm_request() :: #{
-%%   <<"identityCenterRegion">> => string(),
-%%   <<"identityStoreId">> := string(),
-%%   <<"membershipLevel">> := list(any()),
-%%   <<"principalType">> := list(any())
+%% start_sessions_statistics_aggregation_request() :: #{
+%%   <<"endTime">> := non_neg_integer(),
+%%   <<"groupBy">> := list(list(any())()),
+%%   <<"period">> => list(any()),
+%%   <<"resourceIds">> := list(),
+%%   <<"startTime">> := non_neg_integer(),
+%%   <<"statistics">> := list(list(any())()),
+%%   <<"timezone">> => string()
 %% }
--type associate_member_to_farm_request() :: #{binary() => any()}.
+-type start_sessions_statistics_aggregation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_sessions_statistics_aggregation_response() :: #{
+%%   <<"aggregationId">> => string()
+%% }
+-type start_sessions_statistics_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% statistics() :: #{
+%%   <<"aggregationEndTime">> => non_neg_integer(),
+%%   <<"aggregationStartTime">> => non_neg_integer(),
+%%   <<"costInUsd">> => stats(),
+%%   <<"count">> => integer(),
+%%   <<"fleetId">> => string(),
+%%   <<"instanceType">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"licenseProduct">> => string(),
+%%   <<"queueId">> => string(),
+%%   <<"runtimeInSeconds">> => stats(),
+%%   <<"usageType">> => list(any()),
+%%   <<"userId">> => string()
+%% }
+-type statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% stats() :: #{
+%%   <<"avg">> => float(),
+%%   <<"max">> => float(),
+%%   <<"min">> => float(),
+%%   <<"sum">> => float()
+%% }
+-type stats() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_amount_capability() :: #{
+%%   <<"max">> => float(),
+%%   <<"min">> => float(),
+%%   <<"name">> => string(),
+%%   <<"value">> => float()
+%% }
+-type step_amount_capability() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_attribute_capability() :: #{
+%%   <<"allOf">> => list(string()),
+%%   <<"anyOf">> => list(string()),
+%%   <<"name">> => string()
+%% }
+-type step_attribute_capability() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_consumer() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"stepId">> => string()
+%% }
+-type step_consumer() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_dependency() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"stepId">> => string()
+%% }
+-type step_dependency() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_details_entity() :: #{
+%%   <<"dependencies">> => list(string()),
+%%   <<"jobId">> => string(),
+%%   <<"schemaVersion">> => string(),
+%%   <<"stepId">> => string(),
+%%   <<"template">> => any()
+%% }
+-type step_details_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_details_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => string(),
+%%   <<"stepId">> => string()
+%% }
+-type step_details_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_details_identifiers() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"stepId">> => string()
+%% }
+-type step_details_identifiers() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_parameter() :: #{
+%%   <<"chunks">> => step_parameter_chunks(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type step_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_parameter_chunks() :: #{
+%%   <<"defaultTaskCount">> => integer(),
+%%   <<"rangeConstraint">> => list(any()),
+%%   <<"targetRuntimeSeconds">> => integer()
+%% }
+-type step_parameter_chunks() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_required_capabilities() :: #{
+%%   <<"amounts">> => list(step_amount_capability()),
+%%   <<"attributes">> => list(step_attribute_capability())
+%% }
+-type step_required_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% step_search_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"jobId">> => string(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"lifecycleStatusMessage">> => string(),
+%%   <<"name">> => string(),
+%%   <<"parameterSpace">> => parameter_space(),
+%%   <<"queueId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"stepId">> => string(),
+%%   <<"targetTaskRunStatus">> => list(any()),
+%%   <<"taskFailureRetryCount">> => integer(),
+%%   <<"taskRunStatus">> => list(any()),
+%%   <<"taskRunStatusCounts">> => map(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type step_search_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3612,33 +3437,285 @@
 
 
 %% Example:
-%% create_farm_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"costScaleFactor">> => float(),
-%%   <<"description">> => string(),
-%%   <<"displayName">> := string(),
-%%   <<"kmsKeyArn">> => string(),
+%% storage_profile_summary() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"osFamily">> => list(any()),
+%%   <<"storageProfileId">> => string()
+%% }
+-type storage_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_filter_expression() :: #{
+%%   <<"name">> => string(),
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type string_filter_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% string_list_filter_expression() :: #{
+%%   <<"name">> => string(),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type string_list_filter_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% sync_input_job_attachments_session_action_definition() :: #{
+%%   <<"stepId">> => string()
+%% }
+-type sync_input_job_attachments_session_action_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% sync_input_job_attachments_session_action_definition_summary() :: #{
+%%   <<"stepId">> => string()
+%% }
+-type sync_input_job_attachments_session_action_definition_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
 %%   <<"tags">> => map()
 %% }
--type create_farm_request() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
 
 
 %% Example:
-%% host_properties_request() :: #{
-%%   <<"hostName">> => string(),
-%%   <<"ipAddresses">> => ip_addresses()
+%% task_run_manifest_properties_request() :: #{
+%%   <<"outputManifestHash">> => string(),
+%%   <<"outputManifestPath">> => string()
 %% }
--type host_properties_request() :: #{binary() => any()}.
+-type task_run_manifest_properties_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% log_configuration() :: #{
-%%   <<"error">> => string(),
-%%   <<"logDriver">> => string(),
-%%   <<"options">> => map(),
-%%   <<"parameters">> => map()
+%% task_run_manifest_properties_response() :: #{
+%%   <<"outputManifestHash">> => string(),
+%%   <<"outputManifestPath">> => string()
 %% }
--type log_configuration() :: #{binary() => any()}.
+-type task_run_manifest_properties_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_run_session_action_definition() :: #{
+%%   <<"parameters">> => map(),
+%%   <<"stepId">> => string(),
+%%   <<"taskId">> => string()
+%% }
+-type task_run_session_action_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_run_session_action_definition_summary() :: #{
+%%   <<"parameters">> => map(),
+%%   <<"stepId">> => string(),
+%%   <<"taskId">> => string()
+%% }
+-type task_run_session_action_definition_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_search_summary() :: #{
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"failureRetryCount">> => integer(),
+%%   <<"jobId">> => string(),
+%%   <<"latestSessionActionId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"queueId">> => string(),
+%%   <<"runStatus">> => list(any()),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"stepId">> => string(),
+%%   <<"targetRunStatus">> => list(any()),
+%%   <<"taskId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type task_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% task_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"failureRetryCount">> => integer(),
+%%   <<"latestSessionActionId">> => string(),
+%%   <<"parameters">> => map(),
+%%   <<"runStatus">> => list(any()),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"targetRunStatus">> => list(any()),
+%%   <<"taskId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
+%% }
+-type task_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"context">> => map(),
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => string(),
+%%   <<"retryAfterSeconds">> => integer(),
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_budget_request() :: #{
+%%   <<"actionsToAdd">> => list(budget_action_to_add()),
+%%   <<"actionsToRemove">> => list(budget_action_to_remove()),
+%%   <<"approximateDollarLimit">> => float(),
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"schedule">> => list(),
+%%   <<"status">> => list(any())
+%% }
+-type update_budget_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_budget_response() :: #{}
+-type update_budget_response() :: #{}.
+
+
+%% Example:
+%% update_farm_request() :: #{
+%%   <<"costScaleFactor">> => float(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string()
+%% }
+-type update_farm_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_farm_response() :: #{}
+-type update_farm_response() :: #{}.
+
+
+%% Example:
+%% update_fleet_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"hostConfiguration">> => host_configuration(),
+%%   <<"maxWorkerCount">> => integer(),
+%%   <<"minWorkerCount">> => integer(),
+%%   <<"roleArn">> => string()
+%% }
+-type update_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_response() :: #{}
+-type update_fleet_response() :: #{}.
+
+
+%% Example:
+%% update_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"lifecycleStatus">> => list(any()),
+%%   <<"maxFailedTasksCount">> => integer(),
+%%   <<"maxRetriesPerTask">> => integer(),
+%%   <<"maxWorkerCount">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"targetTaskRunStatus">> => list(any())
+%% }
+-type update_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_job_response() :: #{}
+-type update_job_response() :: #{}.
+
+
+%% Example:
+%% update_limit_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"maxCount">> => integer()
+%% }
+-type update_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_limit_response() :: #{}
+-type update_limit_response() :: #{}.
+
+
+%% Example:
+%% update_monitor_request() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"subdomain">> => string()
+%% }
+-type update_monitor_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitor_response() :: #{}
+-type update_monitor_response() :: #{}.
+
+
+%% Example:
+%% update_monitor_settings_request() :: #{
+%%   <<"settings">> := map()
+%% }
+-type update_monitor_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_monitor_settings_response() :: #{}
+-type update_monitor_settings_response() :: #{}.
+
+
+%% Example:
+%% update_queue_environment_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"priority">> => integer(),
+%%   <<"template">> => string(),
+%%   <<"templateType">> => list(any())
+%% }
+-type update_queue_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_environment_response() :: #{}
+-type update_queue_environment_response() :: #{}.
+
+
+%% Example:
+%% update_queue_fleet_association_request() :: #{
+%%   <<"status">> := list(any())
+%% }
+-type update_queue_fleet_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_fleet_association_response() :: #{}
+-type update_queue_fleet_association_response() :: #{}.
+
+
+%% Example:
+%% update_queue_limit_association_request() :: #{
+%%   <<"status">> := list(any())
+%% }
+-type update_queue_limit_association_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_queue_limit_association_response() :: #{}
@@ -3646,138 +3723,177 @@
 
 
 %% Example:
-%% list_fleet_members_response() :: #{
-%%   <<"members">> => list(fleet_member()),
-%%   <<"nextToken">> => string()
-%% }
--type list_fleet_members_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% file_system_location() :: #{
-%%   <<"name">> => string(),
-%%   <<"path">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type file_system_location() :: #{binary() => any()}.
-
-%% Example:
-%% delete_queue_response() :: #{}
--type delete_queue_response() :: #{}.
-
-
-%% Example:
-%% list_limits_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_limits_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_fleet_response() :: #{
-%%   <<"fleetId">> => string()
-%% }
--type create_fleet_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_queue_limit_association_response() :: #{}
--type create_queue_limit_association_response() :: #{}.
-
-
-%% Example:
-%% worker_session_summary() :: #{
-%%   <<"endedAt">> => non_neg_integer(),
-%%   <<"jobId">> => string(),
-%%   <<"lifecycleStatus">> => list(any()),
-%%   <<"queueId">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"startedAt">> => non_neg_integer(),
-%%   <<"targetLifecycleStatus">> => list(any())
-%% }
--type worker_session_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_job_parameter_definitions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_job_parameter_definitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_consumer() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"stepId">> => string()
-%% }
--type step_consumer() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_storage_profiles_for_queue_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_storage_profiles_for_queue_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_fleet_response() :: #{
-%%   <<"autoScalingStatus">> => list(any()),
-%%   <<"capabilities">> => fleet_capabilities(),
-%%   <<"configuration">> => list(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
+%% update_queue_request() :: #{
+%%   <<"allowedStorageProfileIdsToAdd">> => list(string()),
+%%   <<"allowedStorageProfileIdsToRemove">> => list(string()),
+%%   <<"clientToken">> => string(),
+%%   <<"defaultBudgetAction">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
+%%   <<"jobAttachmentSettings">> => job_attachment_settings(),
+%%   <<"jobRunAsUser">> => job_run_as_user(),
+%%   <<"requiredFileSystemLocationNamesToAdd">> => list(string()),
+%%   <<"requiredFileSystemLocationNamesToRemove">> => list(string()),
+%%   <<"roleArn">> => string(),
+%%   <<"schedulingConfiguration">> => list()
+%% }
+-type update_queue_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_response() :: #{}
+-type update_queue_response() :: #{}.
+
+
+%% Example:
+%% update_session_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"targetLifecycleStatus">> := list(any())
+%% }
+-type update_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_session_response() :: #{}
+-type update_session_response() :: #{}.
+
+
+%% Example:
+%% update_step_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"targetTaskRunStatus">> := list(any())
+%% }
+-type update_step_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_step_response() :: #{}
+-type update_step_response() :: #{}.
+
+
+%% Example:
+%% update_storage_profile_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"fileSystemLocationsToAdd">> => list(file_system_location()),
+%%   <<"fileSystemLocationsToRemove">> => list(file_system_location()),
+%%   <<"osFamily">> => list(any())
+%% }
+-type update_storage_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_storage_profile_response() :: #{}
+-type update_storage_profile_response() :: #{}.
+
+
+%% Example:
+%% update_task_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"targetRunStatus">> := list(any())
+%% }
+-type update_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_task_response() :: #{}
+-type update_task_response() :: #{}.
+
+
+%% Example:
+%% update_worker_request() :: #{
+%%   <<"capabilities">> => worker_capabilities(),
+%%   <<"hostProperties">> => host_properties_request(),
+%%   <<"status">> => list(any())
+%% }
+-type update_worker_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_worker_response() :: #{
+%%   <<"hostConfiguration">> => host_configuration(),
+%%   <<"log">> => log_configuration()
+%% }
+-type update_worker_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_worker_schedule_request() :: #{
+%%   <<"updatedSessionActions">> => map()
+%% }
+-type update_worker_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_worker_schedule_response() :: #{
+%%   <<"assignedSessions">> => map(),
+%%   <<"cancelSessionActions">> => map(),
+%%   <<"desiredWorkerStatus">> => list(any()),
+%%   <<"updateIntervalSeconds">> => integer()
+%% }
+-type update_worker_schedule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_session_action_info() :: #{
+%%   <<"completedStatus">> => list(any()),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"manifests">> => list(task_run_manifest_properties_request()),
+%%   <<"processExitCode">> => integer(),
+%%   <<"progressMessage">> => string(),
+%%   <<"progressPercent">> => float(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type updated_session_action_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_jobs_first() :: #{
+%%   <<"userIdentityId">> => string()
+%% }
+-type user_jobs_first() :: #{binary() => any()}.
+
+
+%% Example:
+%% v_cpu_count_range() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type v_cpu_count_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"context">> => map(),
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => string(),
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => string(),
+%%   <<"name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% volume_summary() :: #{
+%%   <<"attachedWorkerId">> => string(),
+%%   <<"availabilityZoneId">> => string(),
 %%   <<"farmId">> => string(),
 %%   <<"fleetId">> => string(),
-%%   <<"hostConfiguration">> => host_configuration(),
-%%   <<"maxWorkerCount">> => integer(),
-%%   <<"minWorkerCount">> => integer(),
-%%   <<"roleArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"statusMessage">> => string(),
-%%   <<"targetWorkerCount">> => integer(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"workerCount">> => integer()
+%%   <<"sizeGiB">> => integer(),
+%%   <<"state">> => list(any()),
+%%   <<"volumeId">> => string()
 %% }
--type get_fleet_response() :: #{binary() => any()}.
-
-%% Example:
-%% associate_member_to_queue_response() :: #{}
--type associate_member_to_queue_response() :: #{}.
+-type volume_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_queue_members_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% vpc_configuration() :: #{
+%%   <<"resourceConfigurationArns">> => list(string())
 %% }
--type list_queue_members_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_queue_limit_association_request() :: #{}
--type get_queue_limit_association_request() :: #{}.
-
-%% Example:
-%% delete_queue_limit_association_request() :: #{}
--type delete_queue_limit_association_request() :: #{}.
-
-
-%% Example:
-%% farm_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"farmId">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
-%% }
--type farm_summary() :: #{binary() => any()}.
+-type vpc_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3794,101 +3910,27 @@
 
 
 %% Example:
-%% monitor_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdBy">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"identityCenterApplicationArn">> => string(),
-%%   <<"identityCenterInstanceArn">> => string(),
-%%   <<"identityCenterRegion">> => string(),
-%%   <<"monitorId">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"subdomain">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string(),
-%%   <<"url">> => string()
+%% windows_user() :: #{
+%%   <<"passwordArn">> => string(),
+%%   <<"user">> => string()
 %% }
--type monitor_summary() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_member_from_farm_response() :: #{}
--type disassociate_member_from_farm_response() :: #{}.
-
-%% Example:
-%% get_license_endpoint_request() :: #{}
--type get_license_endpoint_request() :: #{}.
+-type windows_user() :: #{binary() => any()}.
 
 
 %% Example:
-%% parameter_filter_expression() :: #{
+%% worker_amount_capability() :: #{
 %%   <<"name">> => string(),
-%%   <<"operator">> => list(any()),
-%%   <<"value">> => string()
+%%   <<"value">> => [float()]
 %% }
--type parameter_filter_expression() :: #{binary() => any()}.
+-type worker_amount_capability() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_farms_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"principalId">> => string()
+%% worker_attribute_capability() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
 %% }
--type list_farms_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% accelerator_count_range() :: #{
-%%   <<"max">> => integer(),
-%%   <<"min">> => integer()
-%% }
--type accelerator_count_range() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_step_consumers_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_step_consumers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% step_details_identifiers() :: #{
-%%   <<"jobId">> => string(),
-%%   <<"stepId">> => string()
-%% }
--type step_details_identifiers() :: #{binary() => any()}.
-
-%% Example:
-%% assume_fleet_role_for_worker_request() :: #{}
--type assume_fleet_role_for_worker_request() :: #{}.
-
-
-%% Example:
-%% batch_get_worker_response() :: #{
-%%   <<"errors">> => list(batch_get_worker_error()),
-%%   <<"workers">> => list(batch_get_worker_item())
-%% }
--type batch_get_worker_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% farm_member() :: #{
-%%   <<"farmId">> => string(),
-%%   <<"identityStoreId">> => string(),
-%%   <<"membershipLevel">> => list(any()),
-%%   <<"principalId">> => string(),
-%%   <<"principalType">> => list(any())
-%% }
--type farm_member() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_queue_response() :: #{
-%%   <<"queueId">> => string()
-%% }
--type create_queue_response() :: #{binary() => any()}.
+-type worker_attribute_capability() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3914,964 +3956,930 @@
 
 
 %% Example:
-%% list_farms_response() :: #{
-%%   <<"farms">> => list(farm_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_farms_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_task_error() :: #{
-%%   <<"code">> => list(any()),
-%%   <<"farmId">> => string(),
+%% worker_session_summary() :: #{
+%%   <<"endedAt">> => non_neg_integer(),
 %%   <<"jobId">> => string(),
-%%   <<"message">> => string(),
+%%   <<"lifecycleStatus">> => list(any()),
 %%   <<"queueId">> => string(),
-%%   <<"stepId">> => string(),
-%%   <<"taskId">> => string()
+%%   <<"sessionId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"targetLifecycleStatus">> => list(any())
 %% }
--type batch_get_task_error() :: #{binary() => any()}.
+-type worker_session_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_step_dependencies_response() :: #{
-%%   <<"dependencies">> => list(step_dependency()),
-%%   <<"nextToken">> => string()
-%% }
--type list_step_dependencies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_attachment_settings() :: #{
-%%   <<"rootPrefix">> => string(),
-%%   <<"s3BucketName">> => string()
-%% }
--type job_attachment_settings() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_storage_profile_for_queue_response() :: #{
-%%   <<"displayName">> => string(),
-%%   <<"fileSystemLocations">> => list(file_system_location()),
-%%   <<"osFamily">> => list(any()),
-%%   <<"storageProfileId">> => string()
-%% }
--type get_storage_profile_for_queue_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% fleet_member() :: #{
+%% worker_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
 %%   <<"farmId">> => string(),
 %%   <<"fleetId">> => string(),
-%%   <<"identityStoreId">> => string(),
-%%   <<"membershipLevel">> => list(any()),
-%%   <<"principalId">> => string(),
-%%   <<"principalType">> => list(any())
+%%   <<"hostProperties">> => host_properties_response(),
+%%   <<"log">> => log_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string(),
+%%   <<"workerId">> => string()
 %% }
--type fleet_member() :: #{binary() => any()}.
-
-%% Example:
-%% scheduling_min_priority_override_always_schedule_last() :: #{}
--type scheduling_min_priority_override_always_schedule_last() :: #{}.
+-type worker_summary() :: #{binary() => any()}.
 
 -type associate_member_to_farm_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type associate_member_to_fleet_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type associate_member_to_job_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type associate_member_to_queue_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type assume_fleet_role_for_read_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type assume_fleet_role_for_worker_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type assume_queue_role_for_read_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type assume_queue_role_for_user_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type assume_queue_role_for_worker_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_get_job_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type batch_get_job_entity_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type batch_get_session_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type batch_get_session_action_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type batch_get_step_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type batch_get_task_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type batch_get_worker_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type batch_update_job_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type batch_update_task_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type copy_job_template_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_budget_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_farm_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_fleet_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_job_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_license_endpoint_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_limit_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_monitor_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    service_quota_exceeded_exception().
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_queue_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_queue_environment_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_queue_fleet_association_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_queue_limit_association_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_storage_profile_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_worker_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_budget_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type delete_farm_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type delete_fleet_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_license_endpoint_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_limit_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type delete_metered_product_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type delete_monitor_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type delete_queue_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_queue_environment_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type delete_queue_fleet_association_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_queue_limit_association_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_storage_profile_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type delete_volume_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_worker_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_member_from_farm_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type disassociate_member_from_fleet_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type disassociate_member_from_job_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type disassociate_member_from_queue_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_budget_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_farm_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_fleet_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_job_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_license_endpoint_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_limit_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_monitor_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_monitor_settings_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_queue_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_queue_environment_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_queue_fleet_association_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_queue_limit_association_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_session_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_session_action_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_sessions_statistics_aggregation_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_step_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_storage_profile_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_storage_profile_for_queue_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_task_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_volume_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type get_worker_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_available_metered_products_errors() ::
     throttling_exception() | 
     internal_server_error_exception().
 
 -type list_budgets_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_farm_members_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_farms_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type list_fleet_members_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_fleets_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_job_members_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_job_parameter_definitions_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_jobs_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_license_endpoints_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_limits_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_metered_products_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_monitors_errors() ::
+    validation_exception() | 
     throttling_exception() | 
     internal_server_error_exception() | 
-    validation_exception() | 
     access_denied_exception().
 
 -type list_queue_environments_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_queue_fleet_associations_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_error_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_queue_limit_associations_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_error_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_queue_members_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_queues_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_session_actions_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_sessions_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_sessions_for_worker_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_step_consumers_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_step_dependencies_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_steps_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_storage_profiles_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_storage_profiles_for_queue_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_tasks_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_volumes_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type list_workers_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type put_metered_product_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type search_jobs_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type search_steps_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type search_tasks_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type search_workers_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type start_sessions_statistics_aggregation_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_budget_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_farm_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_fleet_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_job_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_limit_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_monitor_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_monitor_settings_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_queue_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_queue_environment_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_queue_fleet_association_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_queue_limit_association_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_session_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_step_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_storage_profile_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_task_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_worker_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_worker_schedule_errors() ::
-    throttling_exception() | 
-    internal_server_error_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

@@ -212,250 +212,68 @@
 
 
 %% Example:
-%% theme() :: #{
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"StackName">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"ThemeFaviconURL">> => string(),
-%%   <<"ThemeFooterLinks">> => list(theme_footer_link()),
-%%   <<"ThemeOrganizationLogoURL">> => string(),
-%%   <<"ThemeStyling">> => list(any()),
-%%   <<"ThemeTitleText">> => string()
+%% access_endpoint() :: #{
+%%   <<"EndpointType">> => list(any()),
+%%   <<"VpceId">> => string()
 %% }
--type theme() :: #{binary() => any()}.
+-type access_endpoint() :: #{binary() => any()}.
 
 %% Example:
-%% describe_app_block_builders_result() :: #{
-%%   <<"AppBlockBuilders">> => list(app_block_builder()),
-%%   <<"NextToken">> => string()
+%% admin_app_license_usage_record() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"LicenseType">> => string(),
+%%   <<"OwnerAWSAccountId">> => string(),
+%%   <<"SubscriptionFirstUsedDate">> => non_neg_integer(),
+%%   <<"SubscriptionLastUsedDate">> => non_neg_integer(),
+%%   <<"UserArn">> => string(),
+%%   <<"UserId">> => string()
 %% }
--type describe_app_block_builders_result() :: #{binary() => any()}.
+-type admin_app_license_usage_record() :: #{binary() => any()}.
 
 %% Example:
-%% describe_usage_report_subscriptions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%% agent_access_config() :: #{
+%%   <<"S3BucketArn">> => string(),
+%%   <<"ScreenImageFormat">> => list(any()),
+%%   <<"ScreenResolution">> => list(any()),
+%%   <<"ScreenshotsUploadEnabled">> => boolean(),
+%%   <<"Settings">> => list(agent_access_setting()),
+%%   <<"UserControlMode">> => list(any())
 %% }
--type describe_usage_report_subscriptions_request() :: #{binary() => any()}.
+-type agent_access_config() :: #{binary() => any()}.
 
 %% Example:
-%% image_builder() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()),
-%%   <<"AppstreamAgentVersion">> => string(),
+%% agent_access_config_for_update() :: #{
+%%   <<"S3BucketArn">> => string(),
+%%   <<"ScreenImageFormat">> => list(any()),
+%%   <<"ScreenResolution">> => list(any()),
+%%   <<"ScreenshotsUploadEnabled">> => boolean(),
+%%   <<"Settings">> => list(agent_access_setting()),
+%%   <<"UserControlMode">> => list(any())
+%% }
+-type agent_access_config_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% agent_access_setting() :: #{
+%%   <<"AgentAction">> => list(any()),
+%%   <<"Permission">> => list(any())
+%% }
+-type agent_access_setting() :: #{binary() => any()}.
+
+%% Example:
+%% app_block() :: #{
+%%   <<"AppBlockErrors">> => list(error_details()),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"DisableIMDSV1">> => boolean(),
 %%   <<"DisplayName">> => string(),
-%%   <<"DomainJoinInfo">> => domain_join_info(),
-%%   <<"EnableDefaultInternetAccess">> => boolean(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"ImageArn">> => string(),
-%%   <<"ImageBuilderErrors">> => list(resource_error()),
-%%   <<"InstanceType">> => string(),
-%%   <<"LatestAppstreamAgentVersion">> => list(any()),
 %%   <<"Name">> => string(),
-%%   <<"NetworkAccessConfiguration">> => network_access_configuration(),
-%%   <<"Platform">> => list(any()),
-%%   <<"RootVolumeConfig">> => volume_config(),
-%%   <<"State">> => list(any()),
-%%   <<"StateChangeReason">> => image_builder_state_change_reason(),
-%%   <<"VpcConfig">> => vpc_config()
+%%   <<"PackagingType">> => list(any()),
+%%   <<"PostSetupScriptDetails">> => script_details(),
+%%   <<"SetupScriptDetails">> => script_details(),
+%%   <<"SourceS3Location">> => s3_location(),
+%%   <<"State">> => list(any())
 %% }
--type image_builder() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_license_usage_request() :: #{
-%%   <<"BillingPeriod">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_app_license_usage_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_image_builder_result() :: #{
-%%   <<"ImageBuilder">> => image_builder()
-%% }
--type start_image_builder_result() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_image_result() :: #{
-%%   <<"Image">> => image()
-%% }
--type delete_image_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_fleet_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% batch_disassociate_user_stack_request() :: #{
-%%   <<"UserStackAssociations">> := list(user_stack_association())
-%% }
--type batch_disassociate_user_stack_request() :: #{binary() => any()}.
-
-%% Example:
-%% user_stack_association() :: #{
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"SendEmailNotification">> => boolean(),
-%%   <<"StackName">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type user_stack_association() :: #{binary() => any()}.
-
-%% Example:
-%% disable_user_result() :: #{
-
-%% }
--type disable_user_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_application_result() :: #{
-%%   <<"Application">> => application()
-%% }
--type create_application_result() :: #{binary() => any()}.
-
-%% Example:
-%% dry_run_operation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type dry_run_operation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_app_block_builder_app_block_result() :: #{
-
-%% }
--type disassociate_app_block_builder_app_block_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_entitlement_result() :: #{
-%%   <<"Entitlement">> => entitlement()
-%% }
--type create_entitlement_result() :: #{binary() => any()}.
-
-%% Example:
-%% drain_session_instance_result() :: #{
-
-%% }
--type drain_session_instance_result() :: #{binary() => any()}.
-
-%% Example:
-%% stop_app_block_builder_result() :: #{
-%%   <<"AppBlockBuilder">> => app_block_builder()
-%% }
--type stop_app_block_builder_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_streaming_url_result() :: #{
-%%   <<"Expires">> => non_neg_integer(),
-%%   <<"StreamingURL">> => string()
-%% }
--type create_streaming_url_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_blocks_result() :: #{
-%%   <<"AppBlocks">> => list(app_block()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_app_blocks_result() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_software_from_image_builder_result() :: #{
-
-%% }
--type disassociate_software_from_image_builder_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_app_block_builder_request() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()),
-%%   <<"Description">> => string(),
-%%   <<"DisableIMDSV1">> => boolean(),
-%%   <<"DisplayName">> => string(),
-%%   <<"EnableDefaultInternetAccess">> => boolean(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"InstanceType">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Platform">> := list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"VpcConfig">> := vpc_config()
-%% }
--type create_app_block_builder_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_fleet_result() :: #{
-
-%% }
--type stop_fleet_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_license_usage_result() :: #{
-%%   <<"AppLicenseUsages">> => list(admin_app_license_usage_record()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_app_license_usage_result() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_directory_config_request() :: #{
-%%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
-%%   <<"DirectoryName">> := string(),
-%%   <<"OrganizationalUnitDistinguishedNames">> => list(string()),
-%%   <<"ServiceAccountCredentials">> => service_account_credentials()
-%% }
--type update_directory_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_stack_request() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()),
-%%   <<"AgentAccessConfig">> => agent_access_config(),
-%%   <<"ApplicationSettings">> => application_settings(),
-%%   <<"ContentRedirection">> => content_redirection(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"EmbedHostDomains">> => list(string()),
-%%   <<"FeedbackURL">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"RedirectURL">> => string(),
-%%   <<"StorageConnectors">> => list(storage_connector()),
-%%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
-%%   <<"Tags">> => map(),
-%%   <<"UserSettings">> => list(user_setting())
-%% }
--type create_stack_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_stack_request() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()),
-%%   <<"AgentAccessConfig">> => agent_access_config_for_update(),
-%%   <<"ApplicationSettings">> => application_settings(),
-%%   <<"AttributesToDelete">> => list(list(any())()),
-%%   <<"ContentRedirection">> => content_redirection(),
-%%   <<"DeleteStorageConnectors">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"EmbedHostDomains">> => list(string()),
-%%   <<"FeedbackURL">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"RedirectURL">> => string(),
-%%   <<"StorageConnectors">> => list(storage_connector()),
-%%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
-%%   <<"UserSettings">> => list(user_setting())
-%% }
--type update_stack_request() :: #{binary() => any()}.
+-type app_block() :: #{binary() => any()}.
 
 %% Example:
 %% app_block_builder() :: #{
@@ -478,23 +296,343 @@
 -type app_block_builder() :: #{binary() => any()}.
 
 %% Example:
-%% describe_theme_for_stack_request() :: #{
-%%   <<"StackName">> := string()
+%% app_block_builder_app_block_association() :: #{
+%%   <<"AppBlockArn">> => string(),
+%%   <<"AppBlockBuilderName">> => string()
 %% }
--type describe_theme_for_stack_request() :: #{binary() => any()}.
+-type app_block_builder_app_block_association() :: #{binary() => any()}.
 
 %% Example:
-%% resource_in_use_exception() :: #{
+%% app_block_builder_state_change_reason() :: #{
+%%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
 %% }
--type resource_in_use_exception() :: #{binary() => any()}.
+-type app_block_builder_state_change_reason() :: #{binary() => any()}.
 
 %% Example:
-%% describe_images_result() :: #{
-%%   <<"Images">> => list(image()),
-%%   <<"NextToken">> => string()
+%% application() :: #{
+%%   <<"AppBlockArn">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"IconS3Location">> => s3_location(),
+%%   <<"IconURL">> => string(),
+%%   <<"InstanceFamilies">> => list(string()),
+%%   <<"LaunchParameters">> => string(),
+%%   <<"LaunchPath">> => string(),
+%%   <<"Metadata">> => map(),
+%%   <<"Name">> => string(),
+%%   <<"Platforms">> => list(list(any())()),
+%%   <<"WorkingDirectory">> => string()
 %% }
--type describe_images_result() :: #{binary() => any()}.
+-type application() :: #{binary() => any()}.
+
+%% Example:
+%% application_config() :: #{
+%%   <<"AbsoluteAppPath">> => string(),
+%%   <<"AbsoluteIconPath">> => string(),
+%%   <<"AbsoluteManifestPath">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LaunchParameters">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"WorkingDirectory">> => string()
+%% }
+-type application_config() :: #{binary() => any()}.
+
+%% Example:
+%% application_fleet_association() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"FleetName">> => string()
+%% }
+-type application_fleet_association() :: #{binary() => any()}.
+
+%% Example:
+%% application_settings() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"SettingsGroup">> => string()
+%% }
+-type application_settings() :: #{binary() => any()}.
+
+%% Example:
+%% application_settings_response() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"SettingsGroup">> => string()
+%% }
+-type application_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_app_block_builder_app_block_request() :: #{
+%%   <<"AppBlockArn">> := string(),
+%%   <<"AppBlockBuilderName">> := string()
+%% }
+-type associate_app_block_builder_app_block_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_app_block_builder_app_block_result() :: #{
+%%   <<"AppBlockBuilderAppBlockAssociation">> => app_block_builder_app_block_association()
+%% }
+-type associate_app_block_builder_app_block_result() :: #{binary() => any()}.
+
+%% Example:
+%% associate_application_fleet_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"FleetName">> := string()
+%% }
+-type associate_application_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_application_fleet_result() :: #{
+%%   <<"ApplicationFleetAssociation">> => application_fleet_association()
+%% }
+-type associate_application_fleet_result() :: #{binary() => any()}.
+
+%% Example:
+%% associate_application_to_entitlement_request() :: #{
+%%   <<"ApplicationIdentifier">> := string(),
+%%   <<"EntitlementName">> := string(),
+%%   <<"StackName">> := string()
+%% }
+-type associate_application_to_entitlement_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_application_to_entitlement_result() :: #{
+
+%% }
+-type associate_application_to_entitlement_result() :: #{binary() => any()}.
+
+%% Example:
+%% associate_fleet_request() :: #{
+%%   <<"FleetName">> := string(),
+%%   <<"StackName">> := string()
+%% }
+-type associate_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_fleet_result() :: #{
+
+%% }
+-type associate_fleet_result() :: #{binary() => any()}.
+
+%% Example:
+%% associate_software_to_image_builder_request() :: #{
+%%   <<"ImageBuilderName">> := string(),
+%%   <<"SoftwareNames">> := list(string())
+%% }
+-type associate_software_to_image_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_software_to_image_builder_result() :: #{
+
+%% }
+-type associate_software_to_image_builder_result() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_user_stack_request() :: #{
+%%   <<"UserStackAssociations">> := list(user_stack_association())
+%% }
+-type batch_associate_user_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_user_stack_result() :: #{
+%%   <<"errors">> => list(user_stack_association_error())
+%% }
+-type batch_associate_user_stack_result() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_user_stack_request() :: #{
+%%   <<"UserStackAssociations">> := list(user_stack_association())
+%% }
+-type batch_disassociate_user_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_user_stack_result() :: #{
+%%   <<"errors">> => list(user_stack_association_error())
+%% }
+-type batch_disassociate_user_stack_result() :: #{binary() => any()}.
+
+%% Example:
+%% certificate_based_auth_properties() :: #{
+%%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type certificate_based_auth_properties() :: #{binary() => any()}.
+
+%% Example:
+%% compute_capacity() :: #{
+%%   <<"DesiredInstances">> => integer(),
+%%   <<"DesiredSessions">> => integer()
+%% }
+-type compute_capacity() :: #{binary() => any()}.
+
+%% Example:
+%% compute_capacity_status() :: #{
+%%   <<"ActiveUserSessions">> => integer(),
+%%   <<"ActualUserSessions">> => integer(),
+%%   <<"Available">> => integer(),
+%%   <<"AvailableUserSessions">> => integer(),
+%%   <<"Desired">> => integer(),
+%%   <<"DesiredUserSessions">> => integer(),
+%%   <<"DrainModeActiveUserSessions">> => integer(),
+%%   <<"DrainModeUnusedUserSessions">> => integer(),
+%%   <<"Draining">> => integer(),
+%%   <<"InUse">> => integer(),
+%%   <<"Running">> => integer()
+%% }
+-type compute_capacity_status() :: #{binary() => any()}.
+
+%% Example:
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% content_redirection() :: #{
+%%   <<"HostToClient">> => url_redirection_config()
+%% }
+-type content_redirection() :: #{binary() => any()}.
+
+%% Example:
+%% copy_image_request() :: #{
+%%   <<"DestinationImageDescription">> => string(),
+%%   <<"DestinationImageName">> := string(),
+%%   <<"DestinationRegion">> := string(),
+%%   <<"SourceImageName">> := string()
+%% }
+-type copy_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% copy_image_response() :: #{
+%%   <<"DestinationImageName">> => string()
+%% }
+-type copy_image_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_block_builder_request() :: #{
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"Description">> => string(),
+%%   <<"DisableIMDSV1">> => boolean(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EnableDefaultInternetAccess">> => boolean(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"InstanceType">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Platform">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"VpcConfig">> := vpc_config()
+%% }
+-type create_app_block_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_block_builder_result() :: #{
+%%   <<"AppBlockBuilder">> => app_block_builder()
+%% }
+-type create_app_block_builder_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_block_builder_streaming_url_request() :: #{
+%%   <<"AppBlockBuilderName">> := string(),
+%%   <<"Validity">> => float()
+%% }
+-type create_app_block_builder_streaming_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_block_builder_streaming_url_result() :: #{
+%%   <<"Expires">> => non_neg_integer(),
+%%   <<"StreamingURL">> => string()
+%% }
+-type create_app_block_builder_streaming_url_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_block_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"PackagingType">> => list(any()),
+%%   <<"PostSetupScriptDetails">> => script_details(),
+%%   <<"SetupScriptDetails">> => script_details(),
+%%   <<"SourceS3Location">> := s3_location(),
+%%   <<"Tags">> => map()
+%% }
+-type create_app_block_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_app_block_result() :: #{
+%%   <<"AppBlock">> => app_block()
+%% }
+-type create_app_block_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_request() :: #{
+%%   <<"AppBlockArn">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IconS3Location">> := s3_location(),
+%%   <<"InstanceFamilies">> := list(string()),
+%%   <<"LaunchParameters">> => string(),
+%%   <<"LaunchPath">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Platforms">> := list(list(any())()),
+%%   <<"Tags">> => map(),
+%%   <<"WorkingDirectory">> => string()
+%% }
+-type create_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_application_result() :: #{
+%%   <<"Application">> => application()
+%% }
+-type create_application_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_directory_config_request() :: #{
+%%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
+%%   <<"DirectoryName">> := string(),
+%%   <<"OrganizationalUnitDistinguishedNames">> := list(string()),
+%%   <<"ServiceAccountCredentials">> => service_account_credentials()
+%% }
+-type create_directory_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_directory_config_result() :: #{
+%%   <<"DirectoryConfig">> => directory_config()
+%% }
+-type create_directory_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_entitlement_request() :: #{
+%%   <<"AppVisibility">> := list(any()),
+%%   <<"Attributes">> := list(entitlement_attribute()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"StackName">> := string()
+%% }
+-type create_entitlement_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_entitlement_result() :: #{
+%%   <<"Entitlement">> => entitlement()
+%% }
+-type create_entitlement_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_export_image_task_request() :: #{
+%%   <<"AmiDescription">> => string(),
+%%   <<"AmiName">> := string(),
+%%   <<"IamRoleArn">> := string(),
+%%   <<"ImageName">> := string(),
+%%   <<"TagSpecifications">> => map()
+%% }
+-type create_export_image_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_export_image_task_result() :: #{
+%%   <<"ExportImageTask">> => export_image_task()
+%% }
+-type create_export_image_task_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_fleet_request() :: #{
@@ -526,609 +664,10 @@
 -type create_fleet_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_associated_stacks_request() :: #{
-%%   <<"FleetName">> := string(),
-%%   <<"NextToken">> => string()
-%% }
--type list_associated_stacks_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_builders_result() :: #{
-%%   <<"ImageBuilders">> => list(image_builder()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_image_builders_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_theme_for_stack_result() :: #{
-
-%% }
--type delete_theme_for_stack_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_usage_report_subscription_request() :: #{
-
-%% }
--type delete_usage_report_subscription_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_images_request() :: #{
-%%   <<"Arns">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()),
-%%   <<"NextToken">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type describe_images_request() :: #{binary() => any()}.
-
-%% Example:
-%% copy_image_request() :: #{
-%%   <<"DestinationImageDescription">> => string(),
-%%   <<"DestinationImageName">> := string(),
-%%   <<"DestinationRegion">> := string(),
-%%   <<"SourceImageName">> := string()
-%% }
--type copy_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_app_block_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"PackagingType">> => list(any()),
-%%   <<"PostSetupScriptDetails">> => script_details(),
-%%   <<"SetupScriptDetails">> => script_details(),
-%%   <<"SourceS3Location">> := s3_location(),
-%%   <<"Tags">> => map()
-%% }
--type create_app_block_request() :: #{binary() => any()}.
-
-%% Example:
-%% network_access_configuration() :: #{
-%%   <<"EniId">> => string(),
-%%   <<"EniIpv6Addresses">> => list(string()),
-%%   <<"EniPrivateIpAddress">> => string()
-%% }
--type network_access_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_application_from_entitlement_result() :: #{
-
-%% }
--type disassociate_application_from_entitlement_result() :: #{binary() => any()}.
-
-%% Example:
-%% image_permissions() :: #{
-%%   <<"allowFleet">> => boolean(),
-%%   <<"allowImageBuilder">> => boolean()
-%% }
--type image_permissions() :: #{binary() => any()}.
-
-%% Example:
-%% application_fleet_association() :: #{
-%%   <<"ApplicationArn">> => string(),
-%%   <<"FleetName">> => string()
-%% }
--type application_fleet_association() :: #{binary() => any()}.
-
-%% Example:
-%% image_state_change_reason() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type image_state_change_reason() :: #{binary() => any()}.
-
-%% Example:
-%% associate_app_block_builder_app_block_result() :: #{
-%%   <<"AppBlockBuilderAppBlockAssociation">> => app_block_builder_app_block_association()
-%% }
--type associate_app_block_builder_app_block_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_app_block_builder_request() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()),
-%%   <<"AttributesToDelete">> => list(list(any())()),
-%%   <<"Description">> => string(),
-%%   <<"DisableIMDSV1">> => boolean(),
-%%   <<"DisplayName">> => string(),
-%%   <<"EnableDefaultInternetAccess">> => boolean(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"Platform">> => list(any()),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type update_app_block_builder_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_theme_for_stack_result() :: #{
-%%   <<"Theme">> => theme()
-%% }
--type describe_theme_for_stack_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_image_permissions_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"SharedAccountId">> := string()
-%% }
--type delete_image_permissions_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_image_builder_result() :: #{
-%%   <<"ImageBuilder">> => image_builder()
-%% }
--type create_image_builder_result() :: #{binary() => any()}.
-
-%% Example:
-%% associate_application_fleet_result() :: #{
-%%   <<"ApplicationFleetAssociation">> => application_fleet_association()
-%% }
--type associate_application_fleet_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_stack_result() :: #{
-%%   <<"Stack">> => stack()
-%% }
--type create_stack_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_app_block_builder_streaming_url_request() :: #{
-%%   <<"AppBlockBuilderName">> := string(),
-%%   <<"Validity">> => float()
-%% }
--type create_app_block_builder_streaming_url_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_builders_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_image_builders_request() :: #{binary() => any()}.
-
-%% Example:
-%% expire_session_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type expire_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_application_fleet_associations_request() :: #{
-%%   <<"ApplicationArn">> => string(),
-%%   <<"FleetName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_application_fleet_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_users_request() :: #{
-%%   <<"AuthenticationType">> := list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_users_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_permissions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SharedAwsAccountIds">> => list(string())
-%% }
--type describe_image_permissions_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_updated_image_result() :: #{
-%%   <<"canUpdateImage">> => boolean(),
-%%   <<"image">> => image()
-%% }
--type create_updated_image_result() :: #{binary() => any()}.
-
-%% Example:
-%% request_limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type request_limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_available_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_available_exception() :: #{binary() => any()}.
-
-%% Example:
-%% app_block_builder_state_change_reason() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type app_block_builder_state_change_reason() :: #{binary() => any()}.
-
-%% Example:
-%% update_directory_config_result() :: #{
-%%   <<"DirectoryConfig">> => directory_config()
-%% }
--type update_directory_config_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_export_image_task_request() :: #{
-%%   <<"AmiDescription">> => string(),
-%%   <<"AmiName">> := string(),
-%%   <<"IamRoleArn">> := string(),
-%%   <<"ImageName">> := string(),
-%%   <<"TagSpecifications">> => map()
-%% }
--type create_export_image_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_app_block_result() :: #{
-%%   <<"AppBlock">> => app_block()
-%% }
--type create_app_block_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_blocks_request() :: #{
-%%   <<"Arns">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_app_blocks_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_application_fleet_result() :: #{
-
-%% }
--type disassociate_application_fleet_result() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% url_redirection_config() :: #{
-%%   <<"AllowedUrls">> => list(string()),
-%%   <<"DeniedUrls">> => list(string()),
-%%   <<"Enabled">> => boolean()
-%% }
--type url_redirection_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_app_block_builder_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_app_block_builder_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_fleet_result() :: #{
-
-%% }
--type disassociate_fleet_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_usage_report_subscription_result() :: #{
-
-%% }
--type delete_usage_report_subscription_result() :: #{binary() => any()}.
-
-%% Example:
-%% access_endpoint() :: #{
-%%   <<"EndpointType">> => list(any()),
-%%   <<"VpceId">> => string()
-%% }
--type access_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_result() :: #{
-
-%% }
--type create_user_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_app_block_builder_result() :: #{
-
-%% }
--type delete_app_block_builder_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_entitlement_result() :: #{
-
-%% }
--type delete_entitlement_result() :: #{binary() => any()}.
-
-%% Example:
-%% associate_application_to_entitlement_request() :: #{
-%%   <<"ApplicationIdentifier">> := string(),
-%%   <<"EntitlementName">> := string(),
-%%   <<"StackName">> := string()
-%% }
--type associate_application_to_entitlement_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameter_combination_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_parameter_combination_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_app_block_builder_streaming_url_result() :: #{
-%%   <<"Expires">> => non_neg_integer(),
-%%   <<"StreamingURL">> => string()
-%% }
--type create_app_block_builder_streaming_url_result() :: #{binary() => any()}.
-
-%% Example:
-%% stop_fleet_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type stop_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_fleet_result() :: #{
+%% create_fleet_result() :: #{
 %%   <<"Fleet">> => fleet()
 %% }
--type update_fleet_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stack_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_stack_request() :: #{binary() => any()}.
-
-%% Example:
-%% stack() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()),
-%%   <<"AgentAccessConfig">> => agent_access_config(),
-%%   <<"ApplicationSettings">> => application_settings_response(),
-%%   <<"Arn">> => string(),
-%%   <<"ContentRedirection">> => content_redirection(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"EmbedHostDomains">> => list(string()),
-%%   <<"FeedbackURL">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"RedirectURL">> => string(),
-%%   <<"StackErrors">> => list(stack_error()),
-%%   <<"StorageConnectors">> => list(storage_connector()),
-%%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
-%%   <<"UserSettings">> => list(user_setting())
-%% }
--type stack() :: #{binary() => any()}.
-
-%% Example:
-%% enable_user_result() :: #{
-
-%% }
--type enable_user_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_app_block_result() :: #{
-
-%% }
--type delete_app_block_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_usage_report_subscription_request() :: #{
-
-%% }
--type create_usage_report_subscription_request() :: #{binary() => any()}.
-
-%% Example:
-%% software_associations() :: #{
-%%   <<"DeploymentError">> => list(error_details()),
-%%   <<"SoftwareName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type software_associations() :: #{binary() => any()}.
-
-%% Example:
-%% stop_image_builder_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type stop_image_builder_request() :: #{binary() => any()}.
-
-%% Example:
-%% compute_capacity_status() :: #{
-%%   <<"ActiveUserSessions">> => integer(),
-%%   <<"ActualUserSessions">> => integer(),
-%%   <<"Available">> => integer(),
-%%   <<"AvailableUserSessions">> => integer(),
-%%   <<"Desired">> => integer(),
-%%   <<"DesiredUserSessions">> => integer(),
-%%   <<"DrainModeActiveUserSessions">> => integer(),
-%%   <<"DrainModeUnusedUserSessions">> => integer(),
-%%   <<"Draining">> => integer(),
-%%   <<"InUse">> => integer(),
-%%   <<"Running">> => integer()
-%% }
--type compute_capacity_status() :: #{binary() => any()}.
-
-%% Example:
-%% describe_directory_configs_result() :: #{
-%%   <<"DirectoryConfigs">> => list(directory_config()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_directory_configs_result() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_application_from_entitlement_request() :: #{
-%%   <<"ApplicationIdentifier">> := string(),
-%%   <<"EntitlementName">> := string(),
-%%   <<"StackName">> := string()
-%% }
--type disassociate_application_from_entitlement_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_application_fleet_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"FleetName">> := string()
-%% }
--type associate_application_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_software_to_image_builder_request() :: #{
-%%   <<"ImageBuilderName">> := string(),
-%%   <<"SoftwareNames">> := list(string())
-%% }
--type associate_software_to_image_builder_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_software_from_image_builder_request() :: #{
-%%   <<"ImageBuilderName">> := string(),
-%%   <<"SoftwareNames">> := list(string())
-%% }
--type disassociate_software_from_image_builder_request() :: #{binary() => any()}.
-
-%% Example:
-%% certificate_based_auth_properties() :: #{
-%%   <<"CertificateAuthorityArn">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type certificate_based_auth_properties() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% compute_capacity() :: #{
-%%   <<"DesiredInstances">> => integer(),
-%%   <<"DesiredSessions">> => integer()
-%% }
--type compute_capacity() :: #{binary() => any()}.
-
-%% Example:
-%% update_theme_for_stack_request() :: #{
-%%   <<"AttributesToDelete">> => list(list(any())()),
-%%   <<"FaviconS3Location">> => s3_location(),
-%%   <<"FooterLinks">> => list(theme_footer_link()),
-%%   <<"OrganizationLogoS3Location">> => s3_location(),
-%%   <<"StackName">> := string(),
-%%   <<"State">> => list(any()),
-%%   <<"ThemeStyling">> => list(any()),
-%%   <<"TitleText">> => string()
-%% }
--type update_theme_for_stack_request() :: #{binary() => any()}.
-
-%% Example:
-%% fleet_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string()
-%% }
--type fleet_error() :: #{binary() => any()}.
-
-%% Example:
-%% create_updated_image_request() :: #{
-%%   <<"dryRun">> => boolean(),
-%%   <<"existingImageName">> := string(),
-%%   <<"newImageDescription">> => string(),
-%%   <<"newImageDisplayName">> => string(),
-%%   <<"newImageName">> := string(),
-%%   <<"newImageTags">> => map()
-%% }
--type create_updated_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% associate_application_to_entitlement_result() :: #{
-
-%% }
--type associate_application_to_entitlement_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stacks_request() :: #{
-%%   <<"Names">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_stacks_request() :: #{binary() => any()}.
-
-%% Example:
-%% app_block() :: #{
-%%   <<"AppBlockErrors">> => list(error_details()),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"PackagingType">> => list(any()),
-%%   <<"PostSetupScriptDetails">> => script_details(),
-%%   <<"SetupScriptDetails">> => script_details(),
-%%   <<"SourceS3Location">> => s3_location(),
-%%   <<"State">> => list(any())
-%% }
--type app_block() :: #{binary() => any()}.
-
-%% Example:
-%% list_export_image_tasks_request() :: #{
-%%   <<"Filters">> => list(filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_export_image_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_fleet_request() :: #{
-%%   <<"AttributesToDelete">> => list(list(any())()),
-%%   <<"ComputeCapacity">> => compute_capacity(),
-%%   <<"DeleteVpcConfig">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"DisableIMDSV1">> => boolean(),
-%%   <<"DisconnectTimeoutInSeconds">> => integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DomainJoinInfo">> => domain_join_info(),
-%%   <<"EnableDefaultInternetAccess">> => boolean(),
-%%   <<"IamRoleArn">> => string(),
-%%   <<"IdleDisconnectTimeoutInSeconds">> => integer(),
-%%   <<"ImageArn">> => string(),
-%%   <<"ImageName">> => string(),
-%%   <<"InstanceType">> => string(),
-%%   <<"MaxConcurrentSessions">> => integer(),
-%%   <<"MaxSessionsPerInstance">> => integer(),
-%%   <<"MaxUserDurationInSeconds">> => integer(),
-%%   <<"Name">> => string(),
-%%   <<"Platform">> => list(any()),
-%%   <<"RootVolumeConfig">> => volume_config(),
-%%   <<"SessionScriptS3Location">> => s3_location(),
-%%   <<"StreamView">> => list(any()),
-%%   <<"UsbDeviceFilterStrings">> => list(string()),
-%%   <<"VpcConfig">> => vpc_config()
-%% }
--type update_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% usage_report_subscription() :: #{
-%%   <<"LastGeneratedReportDate">> => non_neg_integer(),
-%%   <<"S3BucketName">> => string(),
-%%   <<"Schedule">> => list(any()),
-%%   <<"SubscriptionErrors">> => list(last_report_generation_execution_error())
-%% }
--type usage_report_subscription() :: #{binary() => any()}.
-
-%% Example:
-%% list_export_image_tasks_result() :: #{
-%%   <<"ExportImageTasks">> => list(export_image_task()),
-%%   <<"NextToken">> => string()
-%% }
--type list_export_image_tasks_result() :: #{binary() => any()}.
-
-%% Example:
-%% update_entitlement_result() :: #{
-%%   <<"Entitlement">> => entitlement()
-%% }
--type update_entitlement_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_block_builder_app_block_associations_request() :: #{
-%%   <<"AppBlockArn">> => string(),
-%%   <<"AppBlockBuilderName">> => string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_app_block_builder_app_block_associations_request() :: #{binary() => any()}.
+-type create_fleet_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_image_builder_request() :: #{
@@ -1153,338 +692,10 @@
 -type create_image_builder_request() :: #{binary() => any()}.
 
 %% Example:
-%% application() :: #{
-%%   <<"AppBlockArn">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"IconS3Location">> => s3_location(),
-%%   <<"IconURL">> => string(),
-%%   <<"InstanceFamilies">> => list(string()),
-%%   <<"LaunchParameters">> => string(),
-%%   <<"LaunchPath">> => string(),
-%%   <<"Metadata">> => map(),
-%%   <<"Name">> => string(),
-%%   <<"Platforms">> => list(list(any())()),
-%%   <<"WorkingDirectory">> => string()
-%% }
--type application() :: #{binary() => any()}.
-
-%% Example:
-%% user_setting() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"MaximumLength">> => integer(),
-%%   <<"Permission">> => list(any())
-%% }
--type user_setting() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_application_fleet_request() :: #{
-%%   <<"ApplicationArn">> := string(),
-%%   <<"FleetName">> := string()
-%% }
--type disassociate_application_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_entitled_applications_request() :: #{
-%%   <<"EntitlementName">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StackName">> := string()
-%% }
--type list_entitled_applications_request() :: #{binary() => any()}.
-
-%% Example:
-%% expire_session_result() :: #{
-
-%% }
--type expire_session_result() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()),
-%%   <<"SubnetIds">> => list(string())
-%% }
--type vpc_config() :: #{binary() => any()}.
-
-%% Example:
-%% entitlement_attribute() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Value">> => string()
-%% }
--type entitlement_attribute() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_stack_associations_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UserStackAssociations">> => list(user_stack_association())
-%% }
--type describe_user_stack_associations_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_directory_configs_request() :: #{
-%%   <<"DirectoryNames">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_directory_configs_request() :: #{binary() => any()}.
-
-%% Example:
-%% drain_session_instance_request() :: #{
-%%   <<"SessionId">> := string()
-%% }
--type drain_session_instance_request() :: #{binary() => any()}.
-
-%% Example:
-%% storage_connector() :: #{
-%%   <<"ConnectorType">> => list(any()),
-%%   <<"Domains">> => list(string()),
-%%   <<"DomainsRequireAdminConsent">> => list(string()),
-%%   <<"ResourceIdentifier">> => string()
-%% }
--type storage_connector() :: #{binary() => any()}.
-
-%% Example:
-%% copy_image_response() :: #{
-%%   <<"DestinationImageName">> => string()
-%% }
--type copy_image_response() :: #{binary() => any()}.
-
-%% Example:
-%% error_details() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorMessage">> => string()
-%% }
--type error_details() :: #{binary() => any()}.
-
-%% Example:
-%% describe_applications_request() :: #{
-%%   <<"Arns">> => list(string()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_applications_request() :: #{binary() => any()}.
-
-%% Example:
-%% agent_access_setting() :: #{
-%%   <<"AgentAction">> => list(any()),
-%%   <<"Permission">> => list(any())
-%% }
--type agent_access_setting() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_application_request() :: #{
-%%   <<"AppBlockArn">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IconS3Location">> := s3_location(),
-%%   <<"InstanceFamilies">> := list(string()),
-%%   <<"LaunchParameters">> => string(),
-%%   <<"LaunchPath">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Platforms">> := list(list(any())()),
-%%   <<"Tags">> => map(),
-%%   <<"WorkingDirectory">> => string()
-%% }
--type create_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_fleet_result() :: #{
-
-%% }
--type delete_fleet_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_fleet_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type start_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_image_builder_result() :: #{
+%% create_image_builder_result() :: #{
 %%   <<"ImageBuilder">> => image_builder()
 %% }
--type delete_image_builder_result() :: #{binary() => any()}.
-
-%% Example:
-%% resource_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ErrorTimestamp">> => non_neg_integer()
-%% }
--type resource_error() :: #{binary() => any()}.
-
-%% Example:
-%% operation_not_permitted_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type operation_not_permitted_exception() :: #{binary() => any()}.
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"S3Bucket">> => string(),
-%%   <<"S3Key">> => string()
-%% }
--type s3_location() :: #{binary() => any()}.
-
-%% Example:
-%% delete_app_block_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_app_block_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_theme_for_stack_result() :: #{
-%%   <<"Theme">> => theme()
-%% }
--type update_theme_for_stack_result() :: #{binary() => any()}.
-
-%% Example:
-%% stop_app_block_builder_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type stop_app_block_builder_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_image_permissions_request() :: #{
-%%   <<"ImagePermissions">> := image_permissions(),
-%%   <<"Name">> := string(),
-%%   <<"SharedAccountId">> := string()
-%% }
--type update_image_permissions_request() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_app_block_builder_app_block_request() :: #{
-%%   <<"AppBlockArn">> := string(),
-%%   <<"AppBlockBuilderName">> := string()
-%% }
--type disassociate_app_block_builder_app_block_request() :: #{binary() => any()}.
-
-%% Example:
-%% app_block_builder_app_block_association() :: #{
-%%   <<"AppBlockArn">> => string(),
-%%   <<"AppBlockBuilderName">> => string()
-%% }
--type app_block_builder_app_block_association() :: #{binary() => any()}.
-
-%% Example:
-%% associate_fleet_result() :: #{
-
-%% }
--type associate_fleet_result() :: #{binary() => any()}.
-
-%% Example:
-%% session() :: #{
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"ConnectionState">> => list(any()),
-%%   <<"FleetName">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"InstanceDrainStatus">> => list(any()),
-%%   <<"InstanceId">> => string(),
-%%   <<"MaxExpirationTime">> => non_neg_integer(),
-%%   <<"NetworkAccessConfiguration">> => network_access_configuration(),
-%%   <<"StackName">> => string(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"UserId">> => string()
-%% }
--type session() :: #{binary() => any()}.
-
-%% Example:
-%% update_stack_result() :: #{
-%%   <<"Stack">> => stack()
-%% }
--type update_stack_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_entitled_applications_result() :: #{
-%%   <<"EntitledApplications">> => list(entitled_application()),
-%%   <<"NextToken">> => string()
-%% }
--type list_entitled_applications_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_export_image_task_result() :: #{
-%%   <<"ExportImageTask">> => export_image_task()
-%% }
--type get_export_image_task_result() :: #{binary() => any()}.
-
-%% Example:
-%% streaming_experience_settings() :: #{
-%%   <<"PreferredProtocol">> => list(any())
-%% }
--type streaming_experience_settings() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_request() :: #{
-%%   <<"AuthenticationType">> := list(any()),
-%%   <<"UserName">> := string()
-%% }
--type delete_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_software_associations_request() :: #{
-%%   <<"AssociatedResource">> := string(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type describe_software_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type filter() :: #{binary() => any()}.
-
-%% Example:
-%% entitlement_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type entitlement_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_directory_config_result() :: #{
-
-%% }
--type delete_directory_config_result() :: #{binary() => any()}.
-
-%% Example:
-%% get_export_image_task_request() :: #{
-%%   <<"TaskId">> => string()
-%% }
--type get_export_image_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_role_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_role_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_image_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_image_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_streaming_url_request() :: #{
-%%   <<"ApplicationId">> => string(),
-%%   <<"FleetName">> := string(),
-%%   <<"SessionContext">> => string(),
-%%   <<"StackName">> := string(),
-%%   <<"UserId">> := string(),
-%%   <<"Validity">> => float()
-%% }
--type create_streaming_url_request() :: #{binary() => any()}.
+-type create_image_builder_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_image_builder_streaming_url_request() :: #{
@@ -1494,401 +705,11 @@
 -type create_image_builder_streaming_url_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_application_request() :: #{
-%%   <<"AppBlockArn">> => string(),
-%%   <<"AttributesToDelete">> => list(list(any())()),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IconS3Location">> => s3_location(),
-%%   <<"LaunchParameters">> => string(),
-%%   <<"LaunchPath">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"WorkingDirectory">> => string()
-%% }
--type update_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_image_builder_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_image_builder_request() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_account_status_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_account_status_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_associated_fleets_request() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"StackName">> := string()
-%% }
--type list_associated_fleets_request() :: #{binary() => any()}.
-
-%% Example:
-%% stack_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string()
-%% }
--type stack_error() :: #{binary() => any()}.
-
-%% Example:
-%% list_associated_fleets_result() :: #{
-%%   <<"Names">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_associated_fleets_result() :: #{binary() => any()}.
-
-%% Example:
-%% batch_disassociate_user_stack_result() :: #{
-%%   <<"errors">> => list(user_stack_association_error())
-%% }
--type batch_disassociate_user_stack_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_result() :: #{
-
-%% }
--type delete_application_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_export_image_task_result() :: #{
-%%   <<"ExportImageTask">> => export_image_task()
-%% }
--type create_export_image_task_result() :: #{binary() => any()}.
-
-%% Example:
-%% batch_associate_user_stack_request() :: #{
-%%   <<"UserStackAssociations">> := list(user_stack_association())
-%% }
--type batch_associate_user_stack_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_users_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user())
-%% }
--type describe_users_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_stacks_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Stacks">> => list(stack())
-%% }
--type describe_stacks_result() :: #{binary() => any()}.
-
-%% Example:
-%% image_builder_state_change_reason() :: #{
-%%   <<"Code">> => list(any()),
-%%   <<"Message">> => string()
-%% }
--type image_builder_state_change_reason() :: #{binary() => any()}.
-
-%% Example:
-%% update_application_result() :: #{
-%%   <<"Application">> => application()
-%% }
--type update_application_result() :: #{binary() => any()}.
-
-%% Example:
-%% theme_footer_link() :: #{
-%%   <<"DisplayName">> => string(),
-%%   <<"FooterLinkURL">> => string()
-%% }
--type theme_footer_link() :: #{binary() => any()}.
-
-%% Example:
-%% export_image_task() :: #{
-%%   <<"AmiDescription">> => string(),
-%%   <<"AmiId">> => string(),
-%%   <<"AmiName">> => string(),
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"ErrorDetails">> => list(error_details()),
-%%   <<"ImageArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"TagSpecifications">> => map(),
-%%   <<"TaskId">> => string()
-%% }
--type export_image_task() :: #{binary() => any()}.
-
-%% Example:
-%% entitlement() :: #{
-%%   <<"AppVisibility">> => list(any()),
-%%   <<"Attributes">> => list(entitlement_attribute()),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string(),
-%%   <<"StackName">> => string()
-%% }
--type entitlement() :: #{binary() => any()}.
-
-%% Example:
-%% image() :: #{
-%%   <<"Applications">> => list(application()),
-%%   <<"AppstreamAgentVersion">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"BaseImageArn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"DynamicAppProvidersEnabled">> => list(any()),
-%%   <<"ImageBuilderName">> => string(),
-%%   <<"ImageBuilderSupported">> => boolean(),
-%%   <<"ImageErrors">> => list(resource_error()),
-%%   <<"ImagePermissions">> => image_permissions(),
-%%   <<"ImageSharedWithOthers">> => list(any()),
-%%   <<"ImageType">> => list(any()),
-%%   <<"LatestAppstreamAgentVersion">> => list(any()),
-%%   <<"ManagedSoftwareIncluded">> => boolean(),
-%%   <<"Name">> => string(),
-%%   <<"Platform">> => list(any()),
-%%   <<"PublicBaseImageReleasedDate">> => non_neg_integer(),
-%%   <<"State">> => list(any()),
-%%   <<"StateChangeReason">> => image_state_change_reason(),
-%%   <<"SupportedInstanceFamilies">> => list(string()),
-%%   <<"Visibility">> => list(any())
-%% }
--type image() :: #{binary() => any()}.
-
-%% Example:
-%% associate_software_to_image_builder_result() :: #{
-
-%% }
--type associate_software_to_image_builder_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_entitlements_result() :: #{
-%%   <<"Entitlements">> => list(entitlement()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_entitlements_result() :: #{binary() => any()}.
-
-%% Example:
-%% shared_image_permissions() :: #{
-%%   <<"imagePermissions">> => image_permissions(),
-%%   <<"sharedAccountId">> => string()
-%% }
--type shared_image_permissions() :: #{binary() => any()}.
-
-%% Example:
-%% application_settings() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"SettingsGroup">> => string()
-%% }
--type application_settings() :: #{binary() => any()}.
-
-%% Example:
-%% incompatible_image_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type incompatible_image_exception() :: #{binary() => any()}.
-
-%% Example:
 %% create_image_builder_streaming_url_result() :: #{
 %%   <<"Expires">> => non_neg_integer(),
 %%   <<"StreamingURL">> => string()
 %% }
 -type create_image_builder_streaming_url_result() :: #{binary() => any()}.
-
-%% Example:
-%% create_fleet_result() :: #{
-%%   <<"Fleet">> => fleet()
-%% }
--type create_fleet_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_software_associations_result() :: #{
-%%   <<"AssociatedResource">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SoftwareAssociations">> => list(software_associations())
-%% }
--type describe_software_associations_result() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_block_builder_app_block_associations_result() :: #{
-%%   <<"AppBlockBuilderAppBlockAssociations">> => list(app_block_builder_app_block_association()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_app_block_builder_app_block_associations_result() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% directory_config() :: #{
-%%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"DirectoryName">> => string(),
-%%   <<"OrganizationalUnitDistinguishedNames">> => list(string()),
-%%   <<"ServiceAccountCredentials">> => service_account_credentials()
-%% }
--type directory_config() :: #{binary() => any()}.
-
-%% Example:
-%% batch_associate_user_stack_result() :: #{
-%%   <<"errors">> => list(user_stack_association_error())
-%% }
--type batch_associate_user_stack_result() :: #{binary() => any()}.
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_image_permissions_result() :: #{
-%%   <<"Name">> => string(),
-%%   <<"NextToken">> => string(),
-%%   <<"SharedImagePermissionsList">> => list(shared_image_permissions())
-%% }
--type describe_image_permissions_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_user_result() :: #{
-
-%% }
--type delete_user_result() :: #{binary() => any()}.
-
-%% Example:
-%% associate_app_block_builder_app_block_request() :: #{
-%%   <<"AppBlockArn">> := string(),
-%%   <<"AppBlockBuilderName">> := string()
-%% }
--type associate_app_block_builder_app_block_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_app_block_builder_result() :: #{
-%%   <<"AppBlockBuilder">> => app_block_builder()
-%% }
--type create_app_block_builder_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"ResourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% service_account_credentials() :: #{
-%%   <<"AccountName">> => string(),
-%%   <<"AccountPassword">> => string()
-%% }
--type service_account_credentials() :: #{binary() => any()}.
-
-%% Example:
-%% start_fleet_result() :: #{
-
-%% }
--type start_fleet_result() :: #{binary() => any()}.
-
-%% Example:
-%% enable_user_request() :: #{
-%%   <<"AuthenticationType">> := list(any()),
-%%   <<"UserName">> := string()
-%% }
--type enable_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% script_details() :: #{
-%%   <<"ExecutableParameters">> => string(),
-%%   <<"ExecutablePath">> => string(),
-%%   <<"ScriptS3Location">> => s3_location(),
-%%   <<"TimeoutInSeconds">> => integer()
-%% }
--type script_details() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_fleet_request() :: #{
-%%   <<"FleetName">> := string(),
-%%   <<"StackName">> := string()
-%% }
--type disassociate_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_entitlement_request() :: #{
-%%   <<"Name">> := string(),
-%%   <<"StackName">> := string()
-%% }
--type delete_entitlement_request() :: #{binary() => any()}.
-
-%% Example:
-%% runtime_validation_config() :: #{
-%%   <<"IntendedInstanceType">> => string()
-%% }
--type runtime_validation_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_stack_result() :: #{
-
-%% }
--type delete_stack_result() :: #{binary() => any()}.
-
-%% Example:
-%% user() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"FirstName">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"Status">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type user() :: #{binary() => any()}.
-
-%% Example:
-%% volume_config() :: #{
-%%   <<"VolumeSizeInGb">> => integer()
-%% }
--type volume_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_sessions_request() :: #{
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"FleetName">> := string(),
-%%   <<"InstanceId">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StackName">> := string(),
-%%   <<"UserId">> => string()
-%% }
--type describe_sessions_request() :: #{binary() => any()}.
-
-%% Example:
-%% content_redirection() :: #{
-%%   <<"HostToClient">> => url_redirection_config()
-%% }
--type content_redirection() :: #{binary() => any()}.
-
-%% Example:
-%% agent_access_config_for_update() :: #{
-%%   <<"S3BucketArn">> => string(),
-%%   <<"ScreenImageFormat">> => list(any()),
-%%   <<"ScreenResolution">> => list(any()),
-%%   <<"ScreenshotsUploadEnabled">> => boolean(),
-%%   <<"Settings">> => list(agent_access_setting()),
-%%   <<"UserControlMode">> => list(any())
-%% }
--type agent_access_config_for_update() :: #{binary() => any()}.
-
-%% Example:
-%% create_usage_report_subscription_result() :: #{
-%%   <<"S3BucketName">> => string(),
-%%   <<"Schedule">> => list(any())
-%% }
--type create_usage_report_subscription_result() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_imported_image_request() :: #{
@@ -1907,203 +728,53 @@
 -type create_imported_image_request() :: #{binary() => any()}.
 
 %% Example:
-%% start_software_deployment_to_image_builder_result() :: #{
-
+%% create_imported_image_result() :: #{
+%%   <<"Image">> => image()
 %% }
--type start_software_deployment_to_image_builder_result() :: #{binary() => any()}.
+-type create_imported_image_result() :: #{binary() => any()}.
 
 %% Example:
-%% create_directory_config_result() :: #{
-%%   <<"DirectoryConfig">> => directory_config()
-%% }
--type create_directory_config_result() :: #{binary() => any()}.
-
-%% Example:
-%% last_report_generation_execution_error() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string()
-%% }
--type last_report_generation_execution_error() :: #{binary() => any()}.
-
-%% Example:
-%% describe_fleets_result() :: #{
-%%   <<"Fleets">> => list(fleet()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_fleets_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_theme_for_stack_request() :: #{
-%%   <<"StackName">> := string()
-%% }
--type delete_theme_for_stack_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_usage_report_subscriptions_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"UsageReportSubscriptions">> => list(usage_report_subscription())
-%% }
--type describe_usage_report_subscriptions_result() :: #{binary() => any()}.
-
-%% Example:
-%% list_associated_stacks_result() :: #{
-%%   <<"Names">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_associated_stacks_result() :: #{binary() => any()}.
-
-%% Example:
-%% associate_fleet_request() :: #{
-%%   <<"FleetName">> := string(),
-%%   <<"StackName">> := string()
-%% }
--type associate_fleet_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_app_block_builders_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type describe_app_block_builders_request() :: #{binary() => any()}.
-
-%% Example:
-%% application_config() :: #{
-%%   <<"AbsoluteAppPath">> => string(),
-%%   <<"AbsoluteIconPath">> => string(),
-%%   <<"AbsoluteManifestPath">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"LaunchParameters">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"WorkingDirectory">> => string()
-%% }
--type application_config() :: #{binary() => any()}.
-
-%% Example:
-%% describe_user_stack_associations_request() :: #{
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"StackName">> => string(),
-%%   <<"UserName">> => string()
-%% }
--type describe_user_stack_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% stop_image_builder_result() :: #{
-%%   <<"ImageBuilder">> => image_builder()
-%% }
--type stop_image_builder_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_app_block_builder_result() :: #{
-%%   <<"AppBlockBuilder">> => app_block_builder()
-%% }
--type start_app_block_builder_result() :: #{binary() => any()}.
-
-%% Example:
-%% start_image_builder_request() :: #{
-%%   <<"AppstreamAgentVersion">> => string(),
-%%   <<"Name">> := string()
-%% }
--type start_image_builder_request() :: #{binary() => any()}.
-
-%% Example:
-%% start_app_block_builder_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type start_app_block_builder_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_app_block_builder_result() :: #{
-%%   <<"AppBlockBuilder">> => app_block_builder()
-%% }
--type update_app_block_builder_result() :: #{binary() => any()}.
-
-%% Example:
-%% delete_image_permissions_result() :: #{
-
-%% }
--type delete_image_permissions_result() :: #{binary() => any()}.
-
-%% Example:
-%% entitlement_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type entitlement_already_exists_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_entitlement_request() :: #{
-%%   <<"AppVisibility">> => list(any()),
-%%   <<"Attributes">> => list(entitlement_attribute()),
+%% create_stack_request() :: #{
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"AgentAccessConfig">> => agent_access_config(),
+%%   <<"ApplicationSettings">> => application_settings(),
+%%   <<"ContentRedirection">> => content_redirection(),
 %%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EmbedHostDomains">> => list(string()),
+%%   <<"FeedbackURL">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"StackName">> := string()
+%%   <<"RedirectURL">> => string(),
+%%   <<"StorageConnectors">> => list(storage_connector()),
+%%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
+%%   <<"Tags">> => map(),
+%%   <<"UserSettings">> => list(user_setting())
 %% }
--type update_entitlement_request() :: #{binary() => any()}.
+-type create_stack_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_application_fleet_associations_result() :: #{
-%%   <<"ApplicationFleetAssociations">> => list(application_fleet_association()),
-%%   <<"NextToken">> => string()
+%% create_stack_result() :: #{
+%%   <<"Stack">> => stack()
 %% }
--type describe_application_fleet_associations_result() :: #{binary() => any()}.
+-type create_stack_result() :: #{binary() => any()}.
 
 %% Example:
-%% admin_app_license_usage_record() :: #{
-%%   <<"BillingPeriod">> => string(),
-%%   <<"LicenseType">> => string(),
-%%   <<"OwnerAWSAccountId">> => string(),
-%%   <<"SubscriptionFirstUsedDate">> => non_neg_integer(),
-%%   <<"SubscriptionLastUsedDate">> => non_neg_integer(),
-%%   <<"UserArn">> => string(),
-%%   <<"UserId">> => string()
+%% create_streaming_url_request() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"FleetName">> := string(),
+%%   <<"SessionContext">> => string(),
+%%   <<"StackName">> := string(),
+%%   <<"UserId">> := string(),
+%%   <<"Validity">> => float()
 %% }
--type admin_app_license_usage_record() :: #{binary() => any()}.
+-type create_streaming_url_request() :: #{binary() => any()}.
 
 %% Example:
-%% agent_access_config() :: #{
-%%   <<"S3BucketArn">> => string(),
-%%   <<"ScreenImageFormat">> => list(any()),
-%%   <<"ScreenResolution">> => list(any()),
-%%   <<"ScreenshotsUploadEnabled">> => boolean(),
-%%   <<"Settings">> => list(agent_access_setting()),
-%%   <<"UserControlMode">> => list(any())
+%% create_streaming_url_result() :: #{
+%%   <<"Expires">> => non_neg_integer(),
+%%   <<"StreamingURL">> => string()
 %% }
--type agent_access_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_image_permissions_result() :: #{
-
-%% }
--type update_image_permissions_result() :: #{binary() => any()}.
-
-%% Example:
-%% disable_user_request() :: #{
-%%   <<"AuthenticationType">> := list(any()),
-%%   <<"UserName">> := string()
-%% }
--type disable_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_theme_for_stack_result() :: #{
-%%   <<"Theme">> => theme()
-%% }
--type create_theme_for_stack_result() :: #{binary() => any()}.
-
-%% Example:
-%% application_settings_response() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"S3BucketName">> => string(),
-%%   <<"SettingsGroup">> => string()
-%% }
--type application_settings_response() :: #{binary() => any()}.
+-type create_streaming_url_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_theme_for_stack_request() :: #{
@@ -2117,11 +788,339 @@
 -type create_theme_for_stack_request() :: #{binary() => any()}.
 
 %% Example:
-%% domain_join_info() :: #{
-%%   <<"DirectoryName">> => string(),
-%%   <<"OrganizationalUnitDistinguishedName">> => string()
+%% create_theme_for_stack_result() :: #{
+%%   <<"Theme">> => theme()
 %% }
--type domain_join_info() :: #{binary() => any()}.
+-type create_theme_for_stack_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_updated_image_request() :: #{
+%%   <<"dryRun">> => boolean(),
+%%   <<"existingImageName">> := string(),
+%%   <<"newImageDescription">> => string(),
+%%   <<"newImageDisplayName">> => string(),
+%%   <<"newImageName">> := string(),
+%%   <<"newImageTags">> => map()
+%% }
+-type create_updated_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_updated_image_result() :: #{
+%%   <<"canUpdateImage">> => boolean(),
+%%   <<"image">> => image()
+%% }
+-type create_updated_image_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_usage_report_subscription_request() :: #{
+
+%% }
+-type create_usage_report_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_usage_report_subscription_result() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"Schedule">> => list(any())
+%% }
+-type create_usage_report_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_request() :: #{
+%%   <<"AuthenticationType">> := list(any()),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"MessageAction">> => list(any()),
+%%   <<"UserName">> := string()
+%% }
+-type create_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_user_result() :: #{
+
+%% }
+-type create_user_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_block_builder_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_app_block_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_block_builder_result() :: #{
+
+%% }
+-type delete_app_block_builder_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_block_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_app_block_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_app_block_result() :: #{
+
+%% }
+-type delete_app_block_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_application_result() :: #{
+
+%% }
+-type delete_application_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_directory_config_request() :: #{
+%%   <<"DirectoryName">> := string()
+%% }
+-type delete_directory_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_directory_config_result() :: #{
+
+%% }
+-type delete_directory_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_entitlement_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"StackName">> := string()
+%% }
+-type delete_entitlement_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_entitlement_result() :: #{
+
+%% }
+-type delete_entitlement_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fleet_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_fleet_result() :: #{
+
+%% }
+-type delete_fleet_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_builder_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_image_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_builder_result() :: #{
+%%   <<"ImageBuilder">> => image_builder()
+%% }
+-type delete_image_builder_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_permissions_request() :: #{
+%%   <<"Name">> := string(),
+%%   <<"SharedAccountId">> := string()
+%% }
+-type delete_image_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_permissions_result() :: #{
+
+%% }
+-type delete_image_permissions_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_image_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_image_result() :: #{
+%%   <<"Image">> => image()
+%% }
+-type delete_image_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stack_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_stack_result() :: #{
+
+%% }
+-type delete_stack_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_theme_for_stack_request() :: #{
+%%   <<"StackName">> := string()
+%% }
+-type delete_theme_for_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_theme_for_stack_result() :: #{
+
+%% }
+-type delete_theme_for_stack_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_usage_report_subscription_request() :: #{
+
+%% }
+-type delete_usage_report_subscription_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_usage_report_subscription_result() :: #{
+
+%% }
+-type delete_usage_report_subscription_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_request() :: #{
+%%   <<"AuthenticationType">> := list(any()),
+%%   <<"UserName">> := string()
+%% }
+-type delete_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_user_result() :: #{
+
+%% }
+-type delete_user_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_block_builder_app_block_associations_request() :: #{
+%%   <<"AppBlockArn">> => string(),
+%%   <<"AppBlockBuilderName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_app_block_builder_app_block_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_block_builder_app_block_associations_result() :: #{
+%%   <<"AppBlockBuilderAppBlockAssociations">> => list(app_block_builder_app_block_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_app_block_builder_app_block_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_block_builders_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Names">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_app_block_builders_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_block_builders_result() :: #{
+%%   <<"AppBlockBuilders">> => list(app_block_builder()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_app_block_builders_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_blocks_request() :: #{
+%%   <<"Arns">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_app_blocks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_blocks_result() :: #{
+%%   <<"AppBlocks">> => list(app_block()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_app_blocks_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_license_usage_request() :: #{
+%%   <<"BillingPeriod">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_app_license_usage_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_license_usage_result() :: #{
+%%   <<"AppLicenseUsages">> => list(admin_app_license_usage_record()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_app_license_usage_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_fleet_associations_request() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"FleetName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_application_fleet_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_application_fleet_associations_result() :: #{
+%%   <<"ApplicationFleetAssociations">> => list(application_fleet_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_application_fleet_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_applications_request() :: #{
+%%   <<"Arns">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_applications_result() :: #{
+%%   <<"Applications">> => list(application()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_applications_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_directory_configs_request() :: #{
+%%   <<"DirectoryNames">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_directory_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_directory_configs_result() :: #{
+%%   <<"DirectoryConfigs">> => list(directory_config()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_directory_configs_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entitlements_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackName">> := string()
+%% }
+-type describe_entitlements_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_entitlements_result() :: #{
+%%   <<"Entitlements">> => list(entitlement()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_entitlements_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fleets_request() :: #{
@@ -2129,6 +1128,373 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleets_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_fleets_result() :: #{
+%%   <<"Fleets">> => list(fleet()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_fleets_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_builders_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Names">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_image_builders_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_builders_result() :: #{
+%%   <<"ImageBuilders">> => list(image_builder()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_image_builders_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_permissions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SharedAwsAccountIds">> => list(string())
+%% }
+-type describe_image_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_permissions_result() :: #{
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SharedImagePermissionsList">> => list(shared_image_permissions())
+%% }
+-type describe_image_permissions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_images_request() :: #{
+%%   <<"Arns">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"Names">> => list(string()),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_images_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_images_result() :: #{
+%%   <<"Images">> => list(image()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_images_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_sessions_request() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"FleetName">> := string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackName">> := string(),
+%%   <<"UserId">> => string()
+%% }
+-type describe_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_sessions_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Sessions">> => list(session())
+%% }
+-type describe_sessions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_software_associations_request() :: #{
+%%   <<"AssociatedResource">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_software_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_software_associations_result() :: #{
+%%   <<"AssociatedResource">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SoftwareAssociations">> => list(software_associations())
+%% }
+-type describe_software_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stacks_request() :: #{
+%%   <<"Names">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_stacks_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_stacks_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Stacks">> => list(stack())
+%% }
+-type describe_stacks_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_theme_for_stack_request() :: #{
+%%   <<"StackName">> := string()
+%% }
+-type describe_theme_for_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_theme_for_stack_result() :: #{
+%%   <<"Theme">> => theme()
+%% }
+-type describe_theme_for_stack_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_usage_report_subscriptions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_usage_report_subscriptions_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_usage_report_subscriptions_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UsageReportSubscriptions">> => list(usage_report_subscription())
+%% }
+-type describe_usage_report_subscriptions_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_stack_associations_request() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StackName">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type describe_user_stack_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_user_stack_associations_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserStackAssociations">> => list(user_stack_association())
+%% }
+-type describe_user_stack_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_users_request() :: #{
+%%   <<"AuthenticationType">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_users_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_users_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Users">> => list(user())
+%% }
+-type describe_users_result() :: #{binary() => any()}.
+
+%% Example:
+%% directory_config() :: #{
+%%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DirectoryName">> => string(),
+%%   <<"OrganizationalUnitDistinguishedNames">> => list(string()),
+%%   <<"ServiceAccountCredentials">> => service_account_credentials()
+%% }
+-type directory_config() :: #{binary() => any()}.
+
+%% Example:
+%% disable_user_request() :: #{
+%%   <<"AuthenticationType">> := list(any()),
+%%   <<"UserName">> := string()
+%% }
+-type disable_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_user_result() :: #{
+
+%% }
+-type disable_user_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_app_block_builder_app_block_request() :: #{
+%%   <<"AppBlockArn">> := string(),
+%%   <<"AppBlockBuilderName">> := string()
+%% }
+-type disassociate_app_block_builder_app_block_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_app_block_builder_app_block_result() :: #{
+
+%% }
+-type disassociate_app_block_builder_app_block_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_application_fleet_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"FleetName">> := string()
+%% }
+-type disassociate_application_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_application_fleet_result() :: #{
+
+%% }
+-type disassociate_application_fleet_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_application_from_entitlement_request() :: #{
+%%   <<"ApplicationIdentifier">> := string(),
+%%   <<"EntitlementName">> := string(),
+%%   <<"StackName">> := string()
+%% }
+-type disassociate_application_from_entitlement_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_application_from_entitlement_result() :: #{
+
+%% }
+-type disassociate_application_from_entitlement_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_fleet_request() :: #{
+%%   <<"FleetName">> := string(),
+%%   <<"StackName">> := string()
+%% }
+-type disassociate_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_fleet_result() :: #{
+
+%% }
+-type disassociate_fleet_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_software_from_image_builder_request() :: #{
+%%   <<"ImageBuilderName">> := string(),
+%%   <<"SoftwareNames">> := list(string())
+%% }
+-type disassociate_software_from_image_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_software_from_image_builder_result() :: #{
+
+%% }
+-type disassociate_software_from_image_builder_result() :: #{binary() => any()}.
+
+%% Example:
+%% domain_join_info() :: #{
+%%   <<"DirectoryName">> => string(),
+%%   <<"OrganizationalUnitDistinguishedName">> => string()
+%% }
+-type domain_join_info() :: #{binary() => any()}.
+
+%% Example:
+%% drain_session_instance_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type drain_session_instance_request() :: #{binary() => any()}.
+
+%% Example:
+%% drain_session_instance_result() :: #{
+
+%% }
+-type drain_session_instance_result() :: #{binary() => any()}.
+
+%% Example:
+%% dry_run_operation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type dry_run_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_user_request() :: #{
+%%   <<"AuthenticationType">> := list(any()),
+%%   <<"UserName">> := string()
+%% }
+-type enable_user_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_user_result() :: #{
+
+%% }
+-type enable_user_result() :: #{binary() => any()}.
+
+%% Example:
+%% entitled_application() :: #{
+%%   <<"ApplicationIdentifier">> => string()
+%% }
+-type entitled_application() :: #{binary() => any()}.
+
+%% Example:
+%% entitlement() :: #{
+%%   <<"AppVisibility">> => list(any()),
+%%   <<"Attributes">> => list(entitlement_attribute()),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"StackName">> => string()
+%% }
+-type entitlement() :: #{binary() => any()}.
+
+%% Example:
+%% entitlement_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entitlement_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% entitlement_attribute() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type entitlement_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% entitlement_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type entitlement_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% error_details() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type error_details() :: #{binary() => any()}.
+
+%% Example:
+%% expire_session_request() :: #{
+%%   <<"SessionId">> := string()
+%% }
+-type expire_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% expire_session_result() :: #{
+
+%% }
+-type expire_session_result() :: #{binary() => any()}.
+
+%% Example:
+%% export_image_task() :: #{
+%%   <<"AmiDescription">> => string(),
+%%   <<"AmiId">> => string(),
+%%   <<"AmiName">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"ErrorDetails">> => list(error_details()),
+%%   <<"ImageArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"TagSpecifications">> => map(),
+%%   <<"TaskId">> => string()
+%% }
+-type export_image_task() :: #{binary() => any()}.
+
+%% Example:
+%% filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type filter() :: #{binary() => any()}.
 
 %% Example:
 %% fleet() :: #{
@@ -2163,33 +1529,708 @@
 -type fleet() :: #{binary() => any()}.
 
 %% Example:
-%% describe_entitlements_request() :: #{
-%%   <<"MaxResults">> => integer(),
+%% fleet_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type fleet_error() :: #{binary() => any()}.
+
+%% Example:
+%% get_export_image_task_request() :: #{
+%%   <<"TaskId">> => string()
+%% }
+-type get_export_image_task_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_export_image_task_result() :: #{
+%%   <<"ExportImageTask">> => export_image_task()
+%% }
+-type get_export_image_task_result() :: #{binary() => any()}.
+
+%% Example:
+%% image() :: #{
+%%   <<"Applications">> => list(application()),
+%%   <<"AppstreamAgentVersion">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"BaseImageArn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DynamicAppProvidersEnabled">> => list(any()),
+%%   <<"ImageBuilderName">> => string(),
+%%   <<"ImageBuilderSupported">> => boolean(),
+%%   <<"ImageErrors">> => list(resource_error()),
+%%   <<"ImagePermissions">> => image_permissions(),
+%%   <<"ImageSharedWithOthers">> => list(any()),
+%%   <<"ImageType">> => list(any()),
+%%   <<"LatestAppstreamAgentVersion">> => list(any()),
+%%   <<"ManagedSoftwareIncluded">> => boolean(),
 %%   <<"Name">> => string(),
+%%   <<"Platform">> => list(any()),
+%%   <<"PublicBaseImageReleasedDate">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"StateChangeReason">> => image_state_change_reason(),
+%%   <<"SupportedInstanceFamilies">> => list(string()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type image() :: #{binary() => any()}.
+
+%% Example:
+%% image_builder() :: #{
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"AppstreamAgentVersion">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisableIMDSV1">> => boolean(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DomainJoinInfo">> => domain_join_info(),
+%%   <<"EnableDefaultInternetAccess">> => boolean(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"ImageArn">> => string(),
+%%   <<"ImageBuilderErrors">> => list(resource_error()),
+%%   <<"InstanceType">> => string(),
+%%   <<"LatestAppstreamAgentVersion">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"NetworkAccessConfiguration">> => network_access_configuration(),
+%%   <<"Platform">> => list(any()),
+%%   <<"RootVolumeConfig">> => volume_config(),
+%%   <<"State">> => list(any()),
+%%   <<"StateChangeReason">> => image_builder_state_change_reason(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type image_builder() :: #{binary() => any()}.
+
+%% Example:
+%% image_builder_state_change_reason() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type image_builder_state_change_reason() :: #{binary() => any()}.
+
+%% Example:
+%% image_permissions() :: #{
+%%   <<"allowFleet">> => boolean(),
+%%   <<"allowImageBuilder">> => boolean()
+%% }
+-type image_permissions() :: #{binary() => any()}.
+
+%% Example:
+%% image_state_change_reason() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type image_state_change_reason() :: #{binary() => any()}.
+
+%% Example:
+%% incompatible_image_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type incompatible_image_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_account_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_account_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameter_combination_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameter_combination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_role_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_role_exception() :: #{binary() => any()}.
+
+%% Example:
+%% last_report_generation_execution_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type last_report_generation_execution_error() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_associated_fleets_request() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"StackName">> := string()
 %% }
--type describe_entitlements_request() :: #{binary() => any()}.
+-type list_associated_fleets_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_applications_result() :: #{
-%%   <<"Applications">> => list(application()),
+%% list_associated_fleets_result() :: #{
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
--type describe_applications_result() :: #{binary() => any()}.
+-type list_associated_fleets_result() :: #{binary() => any()}.
 
 %% Example:
-%% entitled_application() :: #{
-%%   <<"ApplicationIdentifier">> => string()
+%% list_associated_stacks_request() :: #{
+%%   <<"FleetName">> := string(),
+%%   <<"NextToken">> => string()
 %% }
--type entitled_application() :: #{binary() => any()}.
+-type list_associated_stacks_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_sessions_result() :: #{
+%% list_associated_stacks_result() :: #{
+%%   <<"Names">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_associated_stacks_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_entitled_applications_request() :: #{
+%%   <<"EntitlementName">> := string(),
+%%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(session())
+%%   <<"StackName">> := string()
 %% }
--type describe_sessions_result() :: #{binary() => any()}.
+-type list_entitled_applications_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_entitled_applications_result() :: #{
+%%   <<"EntitledApplications">> => list(entitled_application()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_entitled_applications_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_export_image_tasks_request() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_export_image_tasks_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_export_image_tasks_result() :: #{
+%%   <<"ExportImageTasks">> => list(export_image_task()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_export_image_tasks_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% network_access_configuration() :: #{
+%%   <<"EniId">> => string(),
+%%   <<"EniIpv6Addresses">> => list(string()),
+%%   <<"EniPrivateIpAddress">> => string()
+%% }
+-type network_access_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_permitted_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_not_permitted_exception() :: #{binary() => any()}.
+
+%% Example:
+%% request_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type request_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ErrorTimestamp">> => non_neg_integer()
+%% }
+-type resource_error() :: #{binary() => any()}.
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_available_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_available_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% runtime_validation_config() :: #{
+%%   <<"IntendedInstanceType">> => string()
+%% }
+-type runtime_validation_config() :: #{binary() => any()}.
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3Key">> => string()
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% script_details() :: #{
+%%   <<"ExecutableParameters">> => string(),
+%%   <<"ExecutablePath">> => string(),
+%%   <<"ScriptS3Location">> => s3_location(),
+%%   <<"TimeoutInSeconds">> => integer()
+%% }
+-type script_details() :: #{binary() => any()}.
+
+%% Example:
+%% service_account_credentials() :: #{
+%%   <<"AccountName">> => string(),
+%%   <<"AccountPassword">> => string()
+%% }
+-type service_account_credentials() :: #{binary() => any()}.
+
+%% Example:
+%% session() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"FleetName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"InstanceDrainStatus">> => list(any()),
+%%   <<"InstanceId">> => string(),
+%%   <<"MaxExpirationTime">> => non_neg_integer(),
+%%   <<"NetworkAccessConfiguration">> => network_access_configuration(),
+%%   <<"StackName">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"UserId">> => string()
+%% }
+-type session() :: #{binary() => any()}.
+
+%% Example:
+%% shared_image_permissions() :: #{
+%%   <<"imagePermissions">> => image_permissions(),
+%%   <<"sharedAccountId">> => string()
+%% }
+-type shared_image_permissions() :: #{binary() => any()}.
+
+%% Example:
+%% software_associations() :: #{
+%%   <<"DeploymentError">> => list(error_details()),
+%%   <<"SoftwareName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type software_associations() :: #{binary() => any()}.
+
+%% Example:
+%% stack() :: #{
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"AgentAccessConfig">> => agent_access_config(),
+%%   <<"ApplicationSettings">> => application_settings_response(),
+%%   <<"Arn">> => string(),
+%%   <<"ContentRedirection">> => content_redirection(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EmbedHostDomains">> => list(string()),
+%%   <<"FeedbackURL">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"RedirectURL">> => string(),
+%%   <<"StackErrors">> => list(stack_error()),
+%%   <<"StorageConnectors">> => list(storage_connector()),
+%%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
+%%   <<"UserSettings">> => list(user_setting())
+%% }
+-type stack() :: #{binary() => any()}.
+
+%% Example:
+%% stack_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type stack_error() :: #{binary() => any()}.
+
+%% Example:
+%% start_app_block_builder_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type start_app_block_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_app_block_builder_result() :: #{
+%%   <<"AppBlockBuilder">> => app_block_builder()
+%% }
+-type start_app_block_builder_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_fleet_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type start_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_fleet_result() :: #{
+
+%% }
+-type start_fleet_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_image_builder_request() :: #{
+%%   <<"AppstreamAgentVersion">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type start_image_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_image_builder_result() :: #{
+%%   <<"ImageBuilder">> => image_builder()
+%% }
+-type start_image_builder_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_software_deployment_to_image_builder_request() :: #{
+%%   <<"ImageBuilderName">> := string(),
+%%   <<"RetryFailedDeployments">> => boolean()
+%% }
+-type start_software_deployment_to_image_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_software_deployment_to_image_builder_result() :: #{
+
+%% }
+-type start_software_deployment_to_image_builder_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_app_block_builder_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type stop_app_block_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_app_block_builder_result() :: #{
+%%   <<"AppBlockBuilder">> => app_block_builder()
+%% }
+-type stop_app_block_builder_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_fleet_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type stop_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_fleet_result() :: #{
+
+%% }
+-type stop_fleet_result() :: #{binary() => any()}.
+
+%% Example:
+%% stop_image_builder_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type stop_image_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_image_builder_result() :: #{
+%%   <<"ImageBuilder">> => image_builder()
+%% }
+-type stop_image_builder_result() :: #{binary() => any()}.
+
+%% Example:
+%% storage_connector() :: #{
+%%   <<"ConnectorType">> => list(any()),
+%%   <<"Domains">> => list(string()),
+%%   <<"DomainsRequireAdminConsent">> => list(string()),
+%%   <<"ResourceIdentifier">> => string()
+%% }
+-type storage_connector() :: #{binary() => any()}.
+
+%% Example:
+%% streaming_experience_settings() :: #{
+%%   <<"PreferredProtocol">> => list(any())
+%% }
+-type streaming_experience_settings() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% theme() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"StackName">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"ThemeFaviconURL">> => string(),
+%%   <<"ThemeFooterLinks">> => list(theme_footer_link()),
+%%   <<"ThemeOrganizationLogoURL">> => string(),
+%%   <<"ThemeStyling">> => list(any()),
+%%   <<"ThemeTitleText">> => string()
+%% }
+-type theme() :: #{binary() => any()}.
+
+%% Example:
+%% theme_footer_link() :: #{
+%%   <<"DisplayName">> => string(),
+%%   <<"FooterLinkURL">> => string()
+%% }
+-type theme_footer_link() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_app_block_builder_request() :: #{
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"AttributesToDelete">> => list(list(any())()),
+%%   <<"Description">> => string(),
+%%   <<"DisableIMDSV1">> => boolean(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EnableDefaultInternetAccess">> => boolean(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Platform">> => list(any()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type update_app_block_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_app_block_builder_result() :: #{
+%%   <<"AppBlockBuilder">> => app_block_builder()
+%% }
+-type update_app_block_builder_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_request() :: #{
+%%   <<"AppBlockArn">> => string(),
+%%   <<"AttributesToDelete">> => list(list(any())()),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IconS3Location">> => s3_location(),
+%%   <<"LaunchParameters">> => string(),
+%%   <<"LaunchPath">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"WorkingDirectory">> => string()
+%% }
+-type update_application_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_application_result() :: #{
+%%   <<"Application">> => application()
+%% }
+-type update_application_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_directory_config_request() :: #{
+%%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
+%%   <<"DirectoryName">> := string(),
+%%   <<"OrganizationalUnitDistinguishedNames">> => list(string()),
+%%   <<"ServiceAccountCredentials">> => service_account_credentials()
+%% }
+-type update_directory_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_directory_config_result() :: #{
+%%   <<"DirectoryConfig">> => directory_config()
+%% }
+-type update_directory_config_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_entitlement_request() :: #{
+%%   <<"AppVisibility">> => list(any()),
+%%   <<"Attributes">> => list(entitlement_attribute()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"StackName">> := string()
+%% }
+-type update_entitlement_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_entitlement_result() :: #{
+%%   <<"Entitlement">> => entitlement()
+%% }
+-type update_entitlement_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_request() :: #{
+%%   <<"AttributesToDelete">> => list(list(any())()),
+%%   <<"ComputeCapacity">> => compute_capacity(),
+%%   <<"DeleteVpcConfig">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"DisableIMDSV1">> => boolean(),
+%%   <<"DisconnectTimeoutInSeconds">> => integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"DomainJoinInfo">> => domain_join_info(),
+%%   <<"EnableDefaultInternetAccess">> => boolean(),
+%%   <<"IamRoleArn">> => string(),
+%%   <<"IdleDisconnectTimeoutInSeconds">> => integer(),
+%%   <<"ImageArn">> => string(),
+%%   <<"ImageName">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"MaxConcurrentSessions">> => integer(),
+%%   <<"MaxSessionsPerInstance">> => integer(),
+%%   <<"MaxUserDurationInSeconds">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"Platform">> => list(any()),
+%%   <<"RootVolumeConfig">> => volume_config(),
+%%   <<"SessionScriptS3Location">> => s3_location(),
+%%   <<"StreamView">> => list(any()),
+%%   <<"UsbDeviceFilterStrings">> => list(string()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type update_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_fleet_result() :: #{
+%%   <<"Fleet">> => fleet()
+%% }
+-type update_fleet_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_permissions_request() :: #{
+%%   <<"ImagePermissions">> := image_permissions(),
+%%   <<"Name">> := string(),
+%%   <<"SharedAccountId">> := string()
+%% }
+-type update_image_permissions_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_permissions_result() :: #{
+
+%% }
+-type update_image_permissions_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_stack_request() :: #{
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"AgentAccessConfig">> => agent_access_config_for_update(),
+%%   <<"ApplicationSettings">> => application_settings(),
+%%   <<"AttributesToDelete">> => list(list(any())()),
+%%   <<"ContentRedirection">> => content_redirection(),
+%%   <<"DeleteStorageConnectors">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"EmbedHostDomains">> => list(string()),
+%%   <<"FeedbackURL">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RedirectURL">> => string(),
+%%   <<"StorageConnectors">> => list(storage_connector()),
+%%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
+%%   <<"UserSettings">> => list(user_setting())
+%% }
+-type update_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_stack_result() :: #{
+%%   <<"Stack">> => stack()
+%% }
+-type update_stack_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_theme_for_stack_request() :: #{
+%%   <<"AttributesToDelete">> => list(list(any())()),
+%%   <<"FaviconS3Location">> => s3_location(),
+%%   <<"FooterLinks">> => list(theme_footer_link()),
+%%   <<"OrganizationLogoS3Location">> => s3_location(),
+%%   <<"StackName">> := string(),
+%%   <<"State">> => list(any()),
+%%   <<"ThemeStyling">> => list(any()),
+%%   <<"TitleText">> => string()
+%% }
+-type update_theme_for_stack_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_theme_for_stack_result() :: #{
+%%   <<"Theme">> => theme()
+%% }
+-type update_theme_for_stack_result() :: #{binary() => any()}.
+
+%% Example:
+%% url_redirection_config() :: #{
+%%   <<"AllowedUrls">> => list(string()),
+%%   <<"DeniedUrls">> => list(string()),
+%%   <<"Enabled">> => boolean()
+%% }
+-type url_redirection_config() :: #{binary() => any()}.
+
+%% Example:
+%% usage_report_subscription() :: #{
+%%   <<"LastGeneratedReportDate">> => non_neg_integer(),
+%%   <<"S3BucketName">> => string(),
+%%   <<"Schedule">> => list(any()),
+%%   <<"SubscriptionErrors">> => list(last_report_generation_execution_error())
+%% }
+-type usage_report_subscription() :: #{binary() => any()}.
+
+%% Example:
+%% user() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type user() :: #{binary() => any()}.
+
+%% Example:
+%% user_setting() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"MaximumLength">> => integer(),
+%%   <<"Permission">> => list(any())
+%% }
+-type user_setting() :: #{binary() => any()}.
+
+%% Example:
+%% user_stack_association() :: #{
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"SendEmailNotification">> => boolean(),
+%%   <<"StackName">> => string(),
+%%   <<"UserName">> => string()
+%% }
+-type user_stack_association() :: #{binary() => any()}.
 
 %% Example:
 %% user_stack_association_error() :: #{
@@ -2200,93 +2241,52 @@
 -type user_stack_association_error() :: #{binary() => any()}.
 
 %% Example:
-%% create_imported_image_result() :: #{
-%%   <<"Image">> => image()
+%% volume_config() :: #{
+%%   <<"VolumeSizeInGb">> => integer()
 %% }
--type create_imported_image_result() :: #{binary() => any()}.
+-type volume_config() :: #{binary() => any()}.
 
 %% Example:
-%% start_software_deployment_to_image_builder_request() :: #{
-%%   <<"ImageBuilderName">> := string(),
-%%   <<"RetryFailedDeployments">> => boolean()
+%% vpc_config() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
--type start_software_deployment_to_image_builder_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_application_request() :: #{
-%%   <<"Name">> := string()
-%% }
--type delete_application_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_user_request() :: #{
-%%   <<"AuthenticationType">> := list(any()),
-%%   <<"FirstName">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"MessageAction">> => list(any()),
-%%   <<"UserName">> := string()
-%% }
--type create_user_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_entitlement_request() :: #{
-%%   <<"AppVisibility">> := list(any()),
-%%   <<"Attributes">> := list(entitlement_attribute()),
-%%   <<"Description">> => string(),
-%%   <<"Name">> := string(),
-%%   <<"StackName">> := string()
-%% }
--type create_entitlement_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_directory_config_request() :: #{
-%%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
-%%   <<"DirectoryName">> := string(),
-%%   <<"OrganizationalUnitDistinguishedNames">> := list(string()),
-%%   <<"ServiceAccountCredentials">> => service_account_credentials()
-%% }
--type create_directory_config_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_directory_config_request() :: #{
-%%   <<"DirectoryName">> := string()
-%% }
--type delete_directory_config_request() :: #{binary() => any()}.
+-type vpc_config() :: #{binary() => any()}.
 
 -type associate_app_block_builder_app_block_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception().
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_combination_exception() | 
+    concurrent_modification_exception().
 
 -type associate_application_fleet_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception().
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_combination_exception() | 
+    concurrent_modification_exception().
 
 -type associate_application_to_entitlement_errors() ::
-    limit_exceeded_exception() | 
-    entitlement_not_found_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    limit_exceeded_exception() | 
+    entitlement_not_found_exception().
 
 -type associate_fleet_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    incompatible_image_exception() | 
-    invalid_account_status_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    limit_exceeded_exception() | 
+    invalid_account_status_exception() | 
+    incompatible_image_exception() | 
+    concurrent_modification_exception().
 
 -type associate_software_to_image_builder_errors() ::
-    concurrent_modification_exception() | 
-    incompatible_image_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception().
+    operation_not_permitted_exception() | 
+    invalid_parameter_combination_exception() | 
+    incompatible_image_exception() | 
+    concurrent_modification_exception().
 
 -type batch_associate_user_stack_errors() ::
     operation_not_permitted_exception() | 
@@ -2297,212 +2297,212 @@
     invalid_parameter_combination_exception().
 
 -type copy_image_errors() ::
+    resource_not_found_exception() | 
+    resource_not_available_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    incompatible_image_exception() | 
     invalid_account_status_exception() | 
-    resource_not_found_exception() | 
-    resource_not_available_exception().
+    incompatible_image_exception().
 
 -type create_app_block_errors() ::
     resource_already_exists_exception() | 
+    operation_not_permitted_exception() | 
     limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    operation_not_permitted_exception().
+    concurrent_modification_exception().
 
 -type create_app_block_builder_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception() | 
     resource_not_available_exception() | 
-    request_limit_exceeded_exception().
+    resource_already_exists_exception() | 
+    request_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_role_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_account_status_exception() | 
+    concurrent_modification_exception().
 
 -type create_app_block_builder_streaming_url_errors() ::
-    operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    operation_not_permitted_exception().
 
 -type create_application_errors() ::
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    limit_exceeded_exception() | 
+    concurrent_modification_exception().
 
 -type create_directory_config_errors() ::
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    limit_exceeded_exception() | 
+    invalid_role_exception() | 
+    invalid_account_status_exception().
 
 -type create_entitlement_errors() ::
-    entitlement_already_exists_exception() | 
-    limit_exceeded_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    limit_exceeded_exception() | 
+    entitlement_already_exists_exception().
 
 -type create_export_image_task_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    resource_not_available_exception().
+    resource_not_available_exception() | 
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_role_exception() | 
+    invalid_account_status_exception() | 
+    concurrent_modification_exception().
 
 -type create_fleet_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    incompatible_image_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception() | 
     resource_not_available_exception() | 
-    request_limit_exceeded_exception().
+    resource_already_exists_exception() | 
+    request_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_role_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_account_status_exception() | 
+    incompatible_image_exception() | 
+    concurrent_modification_exception().
 
 -type create_image_builder_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    incompatible_image_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception() | 
     resource_not_available_exception() | 
-    request_limit_exceeded_exception().
+    resource_already_exists_exception() | 
+    request_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_role_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_account_status_exception() | 
+    incompatible_image_exception() | 
+    concurrent_modification_exception().
 
 -type create_image_builder_streaming_url_errors() ::
-    operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    operation_not_permitted_exception().
 
 -type create_imported_image_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    incompatible_image_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
+    resource_already_exists_exception() | 
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_role_exception() | 
     invalid_parameter_combination_exception() | 
+    invalid_account_status_exception() | 
+    incompatible_image_exception() | 
     dry_run_operation_exception().
 
 -type create_stack_errors() ::
-    resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception().
+    resource_already_exists_exception() | 
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_role_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_account_status_exception() | 
+    concurrent_modification_exception().
 
 -type create_streaming_url_errors() ::
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception() | 
-    resource_not_available_exception().
+    resource_not_available_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_parameter_combination_exception().
 
 -type create_theme_for_stack_errors() ::
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_account_status_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    limit_exceeded_exception() | 
+    invalid_account_status_exception() | 
+    concurrent_modification_exception().
 
 -type create_updated_image_errors() ::
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    incompatible_image_exception() | 
-    invalid_account_status_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    limit_exceeded_exception() | 
+    invalid_account_status_exception() | 
+    incompatible_image_exception() | 
+    concurrent_modification_exception().
 
 -type create_usage_report_subscription_errors() ::
     limit_exceeded_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception().
+    invalid_role_exception() | 
+    invalid_account_status_exception().
 
 -type create_user_errors() ::
     resource_already_exists_exception() | 
-    limit_exceeded_exception() | 
-    invalid_account_status_exception() | 
     operation_not_permitted_exception() | 
-    invalid_parameter_combination_exception().
+    limit_exceeded_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_account_status_exception().
 
 -type delete_app_block_errors() ::
-    concurrent_modification_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    concurrent_modification_exception().
 
 -type delete_app_block_builder_errors() ::
-    concurrent_modification_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    operation_not_permitted_exception() | 
+    concurrent_modification_exception().
 
 -type delete_application_errors() ::
-    concurrent_modification_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    operation_not_permitted_exception() | 
+    concurrent_modification_exception().
 
 -type delete_directory_config_errors() ::
     resource_not_found_exception() | 
     resource_in_use_exception().
 
 -type delete_entitlement_errors() ::
-    concurrent_modification_exception() | 
-    entitlement_not_found_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    entitlement_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type delete_fleet_errors() ::
-    concurrent_modification_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    concurrent_modification_exception().
 
 -type delete_image_errors() ::
-    concurrent_modification_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    operation_not_permitted_exception() | 
+    concurrent_modification_exception().
 
 -type delete_image_builder_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type delete_image_permissions_errors() ::
     resource_not_found_exception() | 
     resource_not_available_exception().
 
 -type delete_stack_errors() ::
-    concurrent_modification_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    operation_not_permitted_exception() | 
+    concurrent_modification_exception().
 
 -type delete_theme_for_stack_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type delete_usage_report_subscription_errors() ::
-    invalid_account_status_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_account_status_exception().
 
 -type delete_user_errors() ::
     resource_not_found_exception().
@@ -2512,16 +2512,16 @@
     invalid_parameter_combination_exception().
 
 -type describe_app_block_builders_errors() ::
-    operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    operation_not_permitted_exception().
 
 -type describe_app_blocks_errors() ::
-    operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    operation_not_permitted_exception().
 
 -type describe_app_license_usage_errors() ::
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
+    operation_not_permitted_exception() | 
     invalid_parameter_combination_exception().
 
 -type describe_application_fleet_associations_errors() ::
@@ -2529,16 +2529,16 @@
     invalid_parameter_combination_exception().
 
 -type describe_applications_errors() ::
-    operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    operation_not_permitted_exception().
 
 -type describe_directory_configs_errors() ::
     resource_not_found_exception().
 
 -type describe_entitlements_errors() ::
-    entitlement_not_found_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    entitlement_not_found_exception().
 
 -type describe_fleets_errors() ::
     resource_not_found_exception().
@@ -2557,77 +2557,77 @@
     invalid_parameter_combination_exception().
 
 -type describe_software_associations_errors() ::
-    operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    operation_not_permitted_exception().
 
 -type describe_stacks_errors() ::
     resource_not_found_exception().
 
 -type describe_theme_for_stack_errors() ::
-    operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    operation_not_permitted_exception().
 
 -type describe_usage_report_subscriptions_errors() ::
-    invalid_account_status_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_account_status_exception().
 
 -type describe_user_stack_associations_errors() ::
     operation_not_permitted_exception() | 
     invalid_parameter_combination_exception().
 
 -type describe_users_errors() ::
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
+    operation_not_permitted_exception() | 
     invalid_parameter_combination_exception().
 
 -type disable_user_errors() ::
     resource_not_found_exception().
 
 -type disassociate_app_block_builder_app_block_errors() ::
-    concurrent_modification_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception().
+    operation_not_permitted_exception() | 
+    invalid_parameter_combination_exception() | 
+    concurrent_modification_exception().
 
 -type disassociate_application_fleet_errors() ::
-    concurrent_modification_exception() | 
     operation_not_permitted_exception() | 
-    invalid_parameter_combination_exception().
+    invalid_parameter_combination_exception() | 
+    concurrent_modification_exception().
 
 -type disassociate_application_from_entitlement_errors() ::
-    entitlement_not_found_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    entitlement_not_found_exception().
 
 -type disassociate_fleet_errors() ::
-    concurrent_modification_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    operation_not_permitted_exception() | 
+    concurrent_modification_exception().
 
 -type disassociate_software_from_image_builder_errors() ::
-    concurrent_modification_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception().
+    operation_not_permitted_exception() | 
+    invalid_parameter_combination_exception() | 
+    concurrent_modification_exception().
 
 -type drain_session_instance_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type enable_user_errors() ::
-    invalid_account_status_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_account_status_exception().
 
 -type get_export_image_task_errors() ::
-    operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    operation_not_permitted_exception().
 
 -type list_entitled_applications_errors() ::
-    entitlement_not_found_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    entitlement_not_found_exception().
 
 -type list_export_image_tasks_errors() ::
     operation_not_permitted_exception().
@@ -2636,125 +2636,125 @@
     resource_not_found_exception().
 
 -type start_app_block_builder_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_account_status_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
     resource_not_available_exception() | 
-    request_limit_exceeded_exception().
+    request_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_account_status_exception() | 
+    concurrent_modification_exception().
 
 -type start_fleet_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
     resource_not_available_exception() | 
-    request_limit_exceeded_exception().
+    request_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_role_exception() | 
+    invalid_account_status_exception() | 
+    concurrent_modification_exception().
 
 -type start_image_builder_errors() ::
-    concurrent_modification_exception() | 
-    incompatible_image_exception() | 
-    invalid_account_status_exception() | 
     resource_not_found_exception() | 
-    resource_not_available_exception().
+    resource_not_available_exception() | 
+    invalid_account_status_exception() | 
+    incompatible_image_exception() | 
+    concurrent_modification_exception().
 
 -type start_software_deployment_to_image_builder_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type stop_app_block_builder_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type stop_fleet_errors() ::
-    concurrent_modification_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type stop_image_builder_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type tag_resource_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    invalid_account_status_exception() | 
-    resource_not_found_exception().
+    invalid_account_status_exception().
 
 -type untag_resource_errors() ::
     resource_not_found_exception().
 
 -type update_app_block_builder_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception() | 
     resource_not_available_exception() | 
+    resource_in_use_exception() | 
     request_limit_exceeded_exception() | 
-    resource_in_use_exception().
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_role_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_account_status_exception() | 
+    concurrent_modification_exception().
 
 -type update_application_errors() ::
-    concurrent_modification_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    concurrent_modification_exception().
 
 -type update_directory_config_errors() ::
-    concurrent_modification_exception() | 
-    incompatible_image_exception() | 
-    invalid_role_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    operation_not_permitted_exception() | 
+    invalid_role_exception() | 
+    incompatible_image_exception() | 
+    concurrent_modification_exception().
 
 -type update_entitlement_errors() ::
-    concurrent_modification_exception() | 
-    entitlement_not_found_exception() | 
+    resource_not_found_exception() | 
     operation_not_permitted_exception() | 
-    resource_not_found_exception().
+    entitlement_not_found_exception() | 
+    concurrent_modification_exception().
 
 -type update_fleet_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    incompatible_image_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception() | 
     resource_not_available_exception() | 
+    resource_in_use_exception() | 
     request_limit_exceeded_exception() | 
-    resource_in_use_exception().
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_role_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_account_status_exception() | 
+    incompatible_image_exception() | 
+    concurrent_modification_exception().
 
 -type update_image_permissions_errors() ::
-    limit_exceeded_exception() | 
     resource_not_found_exception() | 
-    resource_not_available_exception().
+    resource_not_available_exception() | 
+    limit_exceeded_exception().
 
 -type update_stack_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    incompatible_image_exception() | 
-    invalid_account_status_exception() | 
-    invalid_role_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_role_exception() | 
     invalid_parameter_combination_exception() | 
-    resource_in_use_exception().
+    invalid_account_status_exception() | 
+    incompatible_image_exception() | 
+    concurrent_modification_exception().
 
 -type update_theme_for_stack_errors() ::
-    limit_exceeded_exception() | 
-    concurrent_modification_exception() | 
-    invalid_account_status_exception() | 
-    operation_not_permitted_exception() | 
     resource_not_found_exception() | 
-    invalid_parameter_combination_exception().
+    operation_not_permitted_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_account_status_exception() | 
+    concurrent_modification_exception().
 
 %%====================================================================
 %% API

@@ -139,26 +139,25 @@
 
 
 %% Example:
-%% get_linked_whats_app_business_account_output() :: #{
-%%   <<"account">> => linked_whats_app_business_account()
+%% access_denied_by_meta_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_linked_whats_app_business_account_output() :: #{binary() => any()}.
+-type access_denied_by_meta_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_whats_app_flow_assets_input() :: #{
-%%   <<"flowId">> := string(),
-%%   <<"flowJson">> := binary(),
-%%   <<"id">> := string()
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type update_whats_app_flow_assets_input() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% send_whats_app_message_output() :: #{
-%%   <<"messageId">> => [string()]
+%% associate_whats_app_business_account_input() :: #{
+%%   <<"setupFinalization">> => whats_app_setup_finalization(),
+%%   <<"signupCallback">> => whats_app_signup_callback()
 %% }
--type send_whats_app_message_output() :: #{binary() => any()}.
+-type associate_whats_app_business_account_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -168,6 +167,183 @@
 %%   <<"statusCode">> => [integer()]
 %% }
 -type associate_whats_app_business_account_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_flow_input() :: #{
+%%   <<"categories">> := list(list(any())()),
+%%   <<"cloneFlowId">> => string(),
+%%   <<"flowJson">> => binary(),
+%%   <<"flowName">> := string(),
+%%   <<"id">> := string(),
+%%   <<"publish">> => [boolean()]
+%% }
+-type create_whats_app_flow_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_flow_output() :: #{
+%%   <<"flowId">> => string(),
+%%   <<"validationErrors">> => list(string())
+%% }
+-type create_whats_app_flow_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_message_template_from_library_input() :: #{
+%%   <<"id">> := string(),
+%%   <<"metaLibraryTemplate">> := meta_library_template()
+%% }
+-type create_whats_app_message_template_from_library_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_message_template_from_library_output() :: #{
+%%   <<"category">> => string(),
+%%   <<"metaTemplateId">> => string(),
+%%   <<"templateStatus">> => [string()]
+%% }
+-type create_whats_app_message_template_from_library_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_message_template_input() :: #{
+%%   <<"id">> := string(),
+%%   <<"templateDefinition">> := binary()
+%% }
+-type create_whats_app_message_template_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_message_template_media_input() :: #{
+%%   <<"id">> := string(),
+%%   <<"sourceS3File">> => s3_file()
+%% }
+-type create_whats_app_message_template_media_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_message_template_media_output() :: #{
+%%   <<"metaHeaderHandle">> => [string()]
+%% }
+-type create_whats_app_message_template_media_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_message_template_output() :: #{
+%%   <<"category">> => string(),
+%%   <<"metaTemplateId">> => string(),
+%%   <<"templateStatus">> => [string()]
+%% }
+-type create_whats_app_message_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_whats_app_flow_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"id">> := string()
+%% }
+-type delete_whats_app_flow_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_whats_app_flow_output() :: #{}
+-type delete_whats_app_flow_output() :: #{}.
+
+
+%% Example:
+%% delete_whats_app_message_media_input() :: #{
+%%   <<"mediaId">> := string(),
+%%   <<"originationPhoneNumberId">> := string()
+%% }
+-type delete_whats_app_message_media_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_whats_app_message_media_output() :: #{
+%%   <<"success">> => [boolean()]
+%% }
+-type delete_whats_app_message_media_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_whats_app_message_template_input() :: #{
+%%   <<"deleteAllLanguages">> => boolean(),
+%%   <<"id">> := string(),
+%%   <<"metaTemplateId">> => string(),
+%%   <<"templateName">> := string()
+%% }
+-type delete_whats_app_message_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_whats_app_message_template_output() :: #{}
+-type delete_whats_app_message_template_output() :: #{}.
+
+
+%% Example:
+%% dependency_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dependency_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% deprecate_whats_app_flow_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"id">> := string()
+%% }
+-type deprecate_whats_app_flow_input() :: #{binary() => any()}.
+
+%% Example:
+%% deprecate_whats_app_flow_output() :: #{}
+-type deprecate_whats_app_flow_output() :: #{}.
+
+
+%% Example:
+%% disassociate_whats_app_business_account_input() :: #{
+%%   <<"id">> := string()
+%% }
+-type disassociate_whats_app_business_account_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_whats_app_business_account_output() :: #{}
+-type disassociate_whats_app_business_account_output() :: #{}.
+
+
+%% Example:
+%% get_linked_whats_app_business_account_input() :: #{
+%%   <<"id">> := string()
+%% }
+-type get_linked_whats_app_business_account_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_linked_whats_app_business_account_output() :: #{
+%%   <<"account">> => linked_whats_app_business_account()
+%% }
+-type get_linked_whats_app_business_account_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_linked_whats_app_business_account_phone_number_input() :: #{
+%%   <<"id">> := string()
+%% }
+-type get_linked_whats_app_business_account_phone_number_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_linked_whats_app_business_account_phone_number_output() :: #{
+%%   <<"linkedWhatsAppBusinessAccountId">> => string(),
+%%   <<"phoneNumber">> => whats_app_phone_number_detail()
+%% }
+-type get_linked_whats_app_business_account_phone_number_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_flow_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"id">> := string()
+%% }
+-type get_whats_app_flow_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -189,125 +365,39 @@
 
 
 %% Example:
+%% get_whats_app_flow_preview_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"id">> := string(),
+%%   <<"invalidate">> => [boolean()]
+%% }
+-type get_whats_app_flow_preview_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_flow_preview_output() :: #{
+%%   <<"flowId">> => string(),
+%%   <<"preview">> => meta_flow_preview_info()
+%% }
+-type get_whats_app_flow_preview_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_message_media_input() :: #{
+%%   <<"destinationS3File">> => s3_file(),
+%%   <<"destinationS3PresignedUrl">> => s3_presigned_url(),
+%%   <<"mediaId">> := string(),
+%%   <<"metadataOnly">> => [boolean()],
+%%   <<"originationPhoneNumberId">> := string()
+%% }
+-type get_whats_app_message_media_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_whats_app_message_media_output() :: #{
 %%   <<"fileSize">> => [float()],
 %%   <<"mimeType">> => [string()]
 %% }
 -type get_whats_app_message_media_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% dependency_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type dependency_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_whats_app_message_template_input() :: #{
-%%   <<"ctaUrlLinkTrackingOptedOut">> => boolean(),
-%%   <<"id">> := string(),
-%%   <<"metaTemplateId">> => string(),
-%%   <<"parameterFormat">> => string(),
-%%   <<"templateCategory">> => string(),
-%%   <<"templateComponents">> => binary(),
-%%   <<"templateLanguageCode">> => string(),
-%%   <<"templateName">> => string()
-%% }
--type update_whats_app_message_template_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_whats_app_message_template_input() :: #{
-%%   <<"deleteAllLanguages">> => boolean(),
-%%   <<"id">> := string(),
-%%   <<"metaTemplateId">> => string(),
-%%   <<"templateName">> := string()
-%% }
--type delete_whats_app_message_template_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_whats_app_flow_input() :: #{
-%%   <<"categories">> := list(list(any())()),
-%%   <<"cloneFlowId">> => string(),
-%%   <<"flowJson">> => binary(),
-%%   <<"flowName">> := string(),
-%%   <<"id">> := string(),
-%%   <<"publish">> => [boolean()]
-%% }
--type create_whats_app_flow_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% whats_app_signup_callback_result() :: #{
-%%   <<"associateInProgressToken">> => string(),
-%%   <<"linkedAccountsWithIncompleteSetup">> => map()
-%% }
--type whats_app_signup_callback_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% meta_flow_health_entity() :: #{
-%%   <<"canSendMessage">> => string(),
-%%   <<"entityType">> => string(),
-%%   <<"id">> => [string()]
-%% }
--type meta_flow_health_entity() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_linked_whats_app_business_account_phone_number_output() :: #{
-%%   <<"linkedWhatsAppBusinessAccountId">> => string(),
-%%   <<"phoneNumber">> => whats_app_phone_number_detail()
-%% }
--type get_linked_whats_app_business_account_phone_number_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_by_meta_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_by_meta_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_whats_app_message_media_input() :: #{
-%%   <<"mediaId">> := string(),
-%%   <<"originationPhoneNumberId">> := string()
-%% }
--type delete_whats_app_message_media_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_whats_app_business_account_event_destinations_input() :: #{
-%%   <<"eventDestinations">> := list(whats_app_business_account_event_destination()),
-%%   <<"id">> := string()
-%% }
--type put_whats_app_business_account_event_destinations_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% meta_flow_asset() :: #{
-%%   <<"assetType">> => string(),
-%%   <<"downloadUrl">> => string(),
-%%   <<"name">> => string()
-%% }
--type meta_flow_asset() :: #{binary() => any()}.
-
-%% Example:
-%% deprecate_whats_app_flow_output() :: #{}
--type deprecate_whats_app_flow_output() :: #{}.
-
-
-%% Example:
-%% update_whats_app_flow_input() :: #{
-%%   <<"categories">> => list(list(any())()),
-%%   <<"flowId">> := string(),
-%%   <<"flowName">> => string(),
-%%   <<"id">> := string()
-%% }
--type update_whats_app_flow_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -321,19 +411,92 @@
 
 
 %% Example:
-%% meta_flow_application_info() :: #{
-%%   <<"id">> => string(),
-%%   <<"link">> => string(),
-%%   <<"name">> => string()
-%% }
--type meta_flow_application_info() :: #{binary() => any()}.
-
-
-%% Example:
 %% get_whats_app_message_template_output() :: #{
 %%   <<"template">> => string()
 %% }
 -type get_whats_app_message_template_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_service_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameters_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameters_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% library_template_body_inputs() :: #{
+%%   <<"addContactNumber">> => boolean(),
+%%   <<"addLearnMoreLink">> => boolean(),
+%%   <<"addSecurityRecommendation">> => boolean(),
+%%   <<"addTrackPackageLink">> => boolean(),
+%%   <<"codeExpirationMinutes">> => integer()
+%% }
+-type library_template_body_inputs() :: #{binary() => any()}.
+
+
+%% Example:
+%% library_template_button_input() :: #{
+%%   <<"otpType">> => string(),
+%%   <<"phoneNumber">> => string(),
+%%   <<"supportedApps">> => list(map()),
+%%   <<"type">> => string(),
+%%   <<"url">> => map(),
+%%   <<"zeroTapTermsAccepted">> => boolean()
+%% }
+-type library_template_button_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% library_template_button_list() :: #{
+%%   <<"otpType">> => string(),
+%%   <<"phoneNumber">> => string(),
+%%   <<"supportedApps">> => list(map()),
+%%   <<"text">> => string(),
+%%   <<"type">> => string(),
+%%   <<"url">> => string(),
+%%   <<"zeroTapTermsAccepted">> => boolean()
+%% }
+-type library_template_button_list() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% linked_whats_app_business_account() :: #{
+%%   <<"arn">> => string(),
+%%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()),
+%%   <<"id">> => string(),
+%%   <<"linkDate">> => non_neg_integer(),
+%%   <<"marketingMessagesOnboardingStatus">> => string(),
+%%   <<"phoneNumbers">> => list(whats_app_phone_number_summary()),
+%%   <<"registrationStatus">> => list(any()),
+%%   <<"wabaId">> => string(),
+%%   <<"wabaName">> => string()
+%% }
+-type linked_whats_app_business_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% linked_whats_app_business_account_id_meta_data() :: #{
+%%   <<"accountName">> => string(),
+%%   <<"registrationStatus">> => list(any()),
+%%   <<"unregisteredWhatsAppPhoneNumbers">> => list(whats_app_phone_number_detail()),
+%%   <<"wabaId">> => string()
+%% }
+-type linked_whats_app_business_account_id_meta_data() :: #{binary() => any()}.
 
 
 %% Example:
@@ -359,10 +522,18 @@
 
 
 %% Example:
-%% internal_service_exception() :: #{
-%%   <<"message">> => string()
+%% list_linked_whats_app_business_accounts_output() :: #{
+%%   <<"linkedAccounts">> => list(linked_whats_app_business_account_summary()),
+%%   <<"nextToken">> => string()
 %% }
--type internal_service_exception() :: #{binary() => any()}.
+-type list_linked_whats_app_business_accounts_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -371,269 +542,6 @@
 %%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% associate_whats_app_business_account_input() :: #{
-%%   <<"setupFinalization">> => whats_app_setup_finalization(),
-%%   <<"signupCallback">> => whats_app_signup_callback()
-%% }
--type associate_whats_app_business_account_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_file() :: #{
-%%   <<"bucketName">> => [string()],
-%%   <<"key">> => [string()]
-%% }
--type s3_file() :: #{binary() => any()}.
-
-
-%% Example:
-%% disassociate_whats_app_business_account_input() :: #{
-%%   <<"id">> := string()
-%% }
--type disassociate_whats_app_business_account_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_whats_app_message_template_from_library_output() :: #{
-%%   <<"category">> => string(),
-%%   <<"metaTemplateId">> => string(),
-%%   <<"templateStatus">> => [string()]
-%% }
--type create_whats_app_message_template_from_library_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_whats_app_flow_preview_output() :: #{
-%%   <<"flowId">> => string(),
-%%   <<"preview">> => meta_flow_preview_info()
-%% }
--type get_whats_app_flow_preview_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_whats_app_message_template_output() :: #{}
--type update_whats_app_message_template_output() :: #{}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_whats_app_template_library_output() :: #{
-%%   <<"metaLibraryTemplates">> => list(meta_library_template_definition()),
-%%   <<"nextToken">> => string()
-%% }
--type list_whats_app_template_library_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_whats_app_message_template_output() :: #{
-%%   <<"category">> => string(),
-%%   <<"metaTemplateId">> => string(),
-%%   <<"templateStatus">> => [string()]
-%% }
--type create_whats_app_message_template_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_linked_whats_app_business_account_input() :: #{
-%%   <<"id">> := string()
-%% }
--type get_linked_whats_app_business_account_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% library_template_body_inputs() :: #{
-%%   <<"addContactNumber">> => boolean(),
-%%   <<"addLearnMoreLink">> => boolean(),
-%%   <<"addSecurityRecommendation">> => boolean(),
-%%   <<"addTrackPackageLink">> => boolean(),
-%%   <<"codeExpirationMinutes">> => integer()
-%% }
--type library_template_body_inputs() :: #{binary() => any()}.
-
-
-%% Example:
-%% linked_whats_app_business_account() :: #{
-%%   <<"arn">> => string(),
-%%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()),
-%%   <<"id">> => string(),
-%%   <<"linkDate">> => non_neg_integer(),
-%%   <<"marketingMessagesOnboardingStatus">> => string(),
-%%   <<"phoneNumbers">> => list(whats_app_phone_number_summary()),
-%%   <<"registrationStatus">> => list(any()),
-%%   <<"wabaId">> => string(),
-%%   <<"wabaName">> => string()
-%% }
--type linked_whats_app_business_account() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => [string()],
-%%   <<"value">> => [string()]
-%% }
--type tag() :: #{binary() => any()}.
-
-
-%% Example:
-%% waba_phone_number_setup_finalization() :: #{
-%%   <<"dataLocalizationRegion">> => string(),
-%%   <<"id">> => string(),
-%%   <<"tags">> => list(tag()),
-%%   <<"twoFactorPin">> => string()
-%% }
--type waba_phone_number_setup_finalization() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttled_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttled_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% template_summary() :: #{
-%%   <<"metaTemplateId">> => string(),
-%%   <<"templateCategory">> => string(),
-%%   <<"templateLanguage">> => string(),
-%%   <<"templateName">> => string(),
-%%   <<"templateQualityScore">> => string(),
-%%   <<"templateStatus">> => string()
-%% }
--type template_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_whats_app_flow_input() :: #{
-%%   <<"flowId">> := string(),
-%%   <<"id">> := string()
-%% }
--type get_whats_app_flow_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_whats_app_flow_assets_output() :: #{
-%%   <<"validationErrors">> => list(string())
-%% }
--type update_whats_app_flow_assets_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% publish_whats_app_flow_input() :: #{
-%%   <<"flowId">> := string(),
-%%   <<"id">> := string()
-%% }
--type publish_whats_app_flow_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_whats_app_message_template_media_input() :: #{
-%%   <<"id">> := string(),
-%%   <<"sourceS3File">> => s3_file()
-%% }
--type create_whats_app_message_template_media_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_whats_app_message_template_from_library_input() :: #{
-%%   <<"id">> := string(),
-%%   <<"metaLibraryTemplate">> := meta_library_template()
-%% }
--type create_whats_app_message_template_from_library_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_whats_app_message_templates_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"templates">> => list(template_summary())
-%% }
--type list_whats_app_message_templates_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameters_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameters_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_whats_app_message_input() :: #{
-%%   <<"message">> := binary(),
-%%   <<"metaApiVersion">> := [string()],
-%%   <<"originationPhoneNumberId">> := string()
-%% }
--type send_whats_app_message_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% whats_app_setup_finalization() :: #{
-%%   <<"associateInProgressToken">> => string(),
-%%   <<"phoneNumberParent">> => string(),
-%%   <<"phoneNumbers">> => list(waba_phone_number_setup_finalization()),
-%%   <<"waba">> => waba_setup_finalization()
-%% }
--type whats_app_setup_finalization() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag())
-%% }
--type tag_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% library_template_button_input() :: #{
-%%   <<"otpType">> => string(),
-%%   <<"phoneNumber">> => string(),
-%%   <<"supportedApps">> => list(map()),
-%%   <<"type">> => string(),
-%%   <<"url">> => map(),
-%%   <<"zeroTapTermsAccepted">> => boolean()
-%% }
--type library_template_button_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% post_whats_app_message_media_output() :: #{
-%%   <<"mediaId">> => string()
-%% }
--type post_whats_app_message_media_output() :: #{binary() => any()}.
-
-%% Example:
-%% put_whats_app_business_account_event_destinations_output() :: #{}
--type put_whats_app_business_account_event_destinations_output() :: #{}.
-
-
-%% Example:
-%% get_whats_app_message_media_input() :: #{
-%%   <<"destinationS3File">> => s3_file(),
-%%   <<"destinationS3PresignedUrl">> => s3_presigned_url(),
-%%   <<"mediaId">> := string(),
-%%   <<"metadataOnly">> => [boolean()],
-%%   <<"originationPhoneNumberId">> := string()
-%% }
--type get_whats_app_message_media_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_whats_app_template_library_input() :: #{
-%%   <<"filters">> => map(),
-%%   <<"id">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_whats_app_template_library_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -647,39 +555,11 @@
 
 
 %% Example:
-%% tag_resource_output() :: #{
-%%   <<"statusCode">> => [integer()]
+%% list_whats_app_flow_assets_output() :: #{
+%%   <<"flowAssets">> => list(meta_flow_asset()),
+%%   <<"nextToken">> => string()
 %% }
--type tag_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_whats_app_flow_preview_input() :: #{
-%%   <<"flowId">> := string(),
-%%   <<"id">> := string(),
-%%   <<"invalidate">> => [boolean()]
-%% }
--type get_whats_app_flow_preview_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_whats_app_message_media_output() :: #{
-%%   <<"success">> => [boolean()]
-%% }
--type delete_whats_app_message_media_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% library_template_button_list() :: #{
-%%   <<"otpType">> => string(),
-%%   <<"phoneNumber">> => string(),
-%%   <<"supportedApps">> => list(map()),
-%%   <<"text">> => string(),
-%%   <<"type">> => string(),
-%%   <<"url">> => string(),
-%%   <<"zeroTapTermsAccepted">> => boolean()
-%% }
--type library_template_button_list() :: #{binary() => any()}.
+-type list_whats_app_flow_assets_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -692,38 +572,89 @@
 
 
 %% Example:
-%% list_whats_app_flow_assets_output() :: #{
-%%   <<"flowAssets">> => list(meta_flow_asset()),
+%% list_whats_app_flows_output() :: #{
+%%   <<"flows">> => list(meta_flow_summary()),
 %%   <<"nextToken">> => string()
 %% }
--type list_whats_app_flow_assets_output() :: #{binary() => any()}.
+-type list_whats_app_flows_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
+%% list_whats_app_message_templates_input() :: #{
+%%   <<"id">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% publish_whats_app_flow_output() :: #{}
--type publish_whats_app_flow_output() :: #{}.
+-type list_whats_app_message_templates_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% untag_resource_input() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list([string()]())
+%% list_whats_app_message_templates_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"templates">> => list(template_summary())
 %% }
--type untag_resource_input() :: #{binary() => any()}.
+-type list_whats_app_message_templates_output() :: #{binary() => any()}.
+
 
 %% Example:
-%% disassociate_whats_app_business_account_output() :: #{}
--type disassociate_whats_app_business_account_output() :: #{}.
+%% list_whats_app_template_library_input() :: #{
+%%   <<"filters">> => map(),
+%%   <<"id">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_whats_app_template_library_input() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_whats_app_message_template_output() :: #{}
--type delete_whats_app_message_template_output() :: #{}.
+%% list_whats_app_template_library_output() :: #{
+%%   <<"metaLibraryTemplates">> => list(meta_library_template_definition()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_whats_app_template_library_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% meta_flow_application_info() :: #{
+%%   <<"id">> => string(),
+%%   <<"link">> => string(),
+%%   <<"name">> => string()
+%% }
+-type meta_flow_application_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% meta_flow_asset() :: #{
+%%   <<"assetType">> => string(),
+%%   <<"downloadUrl">> => string(),
+%%   <<"name">> => string()
+%% }
+-type meta_flow_asset() :: #{binary() => any()}.
+
+
+%% Example:
+%% meta_flow_health_entity() :: #{
+%%   <<"canSendMessage">> => string(),
+%%   <<"entityType">> => string(),
+%%   <<"id">> => [string()]
+%% }
+-type meta_flow_health_entity() :: #{binary() => any()}.
+
+
+%% Example:
+%% meta_flow_health_status() :: #{
+%%   <<"canSendMessage">> => string(),
+%%   <<"entities">> => list(meta_flow_health_entity())
+%% }
+-type meta_flow_health_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% meta_flow_preview_info() :: #{
+%%   <<"expiresAt">> => string(),
+%%   <<"previewUrl">> => string()
+%% }
+-type meta_flow_preview_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -738,146 +669,6 @@
 
 
 %% Example:
-%% deprecate_whats_app_flow_input() :: #{
-%%   <<"flowId">> := string(),
-%%   <<"id">> := string()
-%% }
--type deprecate_whats_app_flow_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_input() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_whats_app_message_templates_input() :: #{
-%%   <<"id">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_whats_app_message_templates_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_output() :: #{
-%%   <<"statusCode">> => [integer()]
-%% }
--type untag_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_whats_app_message_template_input() :: #{
-%%   <<"id">> := string(),
-%%   <<"templateDefinition">> := binary()
-%% }
--type create_whats_app_message_template_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% linked_whats_app_business_account_id_meta_data() :: #{
-%%   <<"accountName">> => string(),
-%%   <<"registrationStatus">> => list(any()),
-%%   <<"unregisteredWhatsAppPhoneNumbers">> => list(whats_app_phone_number_detail()),
-%%   <<"wabaId">> => string()
-%% }
--type linked_whats_app_business_account_id_meta_data() :: #{binary() => any()}.
-
-
-%% Example:
-%% whats_app_phone_number_detail() :: #{
-%%   <<"arn">> => string(),
-%%   <<"dataLocalizationRegion">> => string(),
-%%   <<"displayPhoneNumber">> => string(),
-%%   <<"displayPhoneNumberName">> => string(),
-%%   <<"metaPhoneNumberId">> => string(),
-%%   <<"phoneNumber">> => string(),
-%%   <<"phoneNumberId">> => string(),
-%%   <<"qualityRating">> => string()
-%% }
--type whats_app_phone_number_detail() :: #{binary() => any()}.
-
-%% Example:
-%% update_whats_app_flow_output() :: #{}
--type update_whats_app_flow_output() :: #{}.
-
-
-%% Example:
-%% whats_app_phone_number_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"dataLocalizationRegion">> => string(),
-%%   <<"displayPhoneNumber">> => string(),
-%%   <<"displayPhoneNumberName">> => string(),
-%%   <<"metaPhoneNumberId">> => string(),
-%%   <<"phoneNumber">> => string(),
-%%   <<"phoneNumberId">> => string(),
-%%   <<"qualityRating">> => string()
-%% }
--type whats_app_phone_number_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_whats_app_flow_output() :: #{}
--type delete_whats_app_flow_output() :: #{}.
-
-
-%% Example:
-%% whats_app_business_account_event_destination() :: #{
-%%   <<"eventDestinationArn">> => string(),
-%%   <<"roleArn">> => string()
-%% }
--type whats_app_business_account_event_destination() :: #{binary() => any()}.
-
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% whats_app_signup_callback() :: #{
-%%   <<"accessToken">> => [string()],
-%%   <<"callbackUrl">> => [string()]
-%% }
--type whats_app_signup_callback() :: #{binary() => any()}.
-
-
-%% Example:
-%% post_whats_app_message_media_input() :: #{
-%%   <<"originationPhoneNumberId">> := string(),
-%%   <<"sourceS3File">> => s3_file(),
-%%   <<"sourceS3PresignedUrl">> => s3_presigned_url()
-%% }
--type post_whats_app_message_media_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_whats_app_flows_output() :: #{
-%%   <<"flows">> => list(meta_flow_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_whats_app_flows_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_linked_whats_app_business_accounts_output() :: #{
-%%   <<"linkedAccounts">> => list(linked_whats_app_business_account_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_linked_whats_app_business_accounts_output() :: #{binary() => any()}.
-
-
-%% Example:
 %% meta_flow_whats_app_business_account_info() :: #{
 %%   <<"currency">> => string(),
 %%   <<"id">> => string(),
@@ -889,11 +680,15 @@
 
 
 %% Example:
-%% s3_presigned_url() :: #{
-%%   <<"headers">> => map(),
-%%   <<"url">> => [string()]
+%% meta_library_template() :: #{
+%%   <<"libraryTemplateBodyInputs">> => library_template_body_inputs(),
+%%   <<"libraryTemplateButtonInputs">> => list(library_template_button_input()),
+%%   <<"libraryTemplateName">> => string(),
+%%   <<"templateCategory">> => string(),
+%%   <<"templateLanguage">> => string(),
+%%   <<"templateName">> => string()
 %% }
--type s3_presigned_url() :: #{binary() => any()}.
+-type meta_library_template() :: #{binary() => any()}.
 
 
 %% Example:
@@ -914,45 +709,204 @@
 
 
 %% Example:
-%% delete_whats_app_flow_input() :: #{
+%% post_whats_app_message_media_input() :: #{
+%%   <<"originationPhoneNumberId">> := string(),
+%%   <<"sourceS3File">> => s3_file(),
+%%   <<"sourceS3PresignedUrl">> => s3_presigned_url()
+%% }
+-type post_whats_app_message_media_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% post_whats_app_message_media_output() :: #{
+%%   <<"mediaId">> => string()
+%% }
+-type post_whats_app_message_media_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% publish_whats_app_flow_input() :: #{
 %%   <<"flowId">> := string(),
 %%   <<"id">> := string()
 %% }
--type delete_whats_app_flow_input() :: #{binary() => any()}.
+-type publish_whats_app_flow_input() :: #{binary() => any()}.
+
+%% Example:
+%% publish_whats_app_flow_output() :: #{}
+-type publish_whats_app_flow_output() :: #{}.
 
 
 %% Example:
-%% create_whats_app_flow_output() :: #{
-%%   <<"flowId">> => string(),
-%%   <<"validationErrors">> => list(string())
-%% }
--type create_whats_app_flow_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_linked_whats_app_business_account_phone_number_input() :: #{
+%% put_whats_app_business_account_event_destinations_input() :: #{
+%%   <<"eventDestinations">> := list(whats_app_business_account_event_destination()),
 %%   <<"id">> := string()
 %% }
--type get_linked_whats_app_business_account_phone_number_input() :: #{binary() => any()}.
+-type put_whats_app_business_account_event_destinations_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_whats_app_business_account_event_destinations_output() :: #{}
+-type put_whats_app_business_account_event_destinations_output() :: #{}.
 
 
 %% Example:
-%% meta_library_template() :: #{
-%%   <<"libraryTemplateBodyInputs">> => library_template_body_inputs(),
-%%   <<"libraryTemplateButtonInputs">> => list(library_template_button_input()),
-%%   <<"libraryTemplateName">> => string(),
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_file() :: #{
+%%   <<"bucketName">> => [string()],
+%%   <<"key">> => [string()]
+%% }
+-type s3_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_presigned_url() :: #{
+%%   <<"headers">> => map(),
+%%   <<"url">> => [string()]
+%% }
+-type s3_presigned_url() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_whats_app_message_input() :: #{
+%%   <<"message">> := binary(),
+%%   <<"metaApiVersion">> := [string()],
+%%   <<"originationPhoneNumberId">> := string()
+%% }
+-type send_whats_app_message_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_whats_app_message_output() :: #{
+%%   <<"messageId">> => [string()]
+%% }
+-type send_whats_app_message_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tags">> := list(tag())
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_output() :: #{
+%%   <<"statusCode">> => [integer()]
+%% }
+-type tag_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% template_summary() :: #{
+%%   <<"metaTemplateId">> => string(),
 %%   <<"templateCategory">> => string(),
 %%   <<"templateLanguage">> => string(),
-%%   <<"templateName">> => string()
+%%   <<"templateName">> => string(),
+%%   <<"templateQualityScore">> => string(),
+%%   <<"templateStatus">> => string()
 %% }
--type meta_library_template() :: #{binary() => any()}.
+-type template_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_whats_app_message_template_media_output() :: #{
-%%   <<"metaHeaderHandle">> => [string()]
+%% throttled_request_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type create_whats_app_message_template_media_output() :: #{binary() => any()}.
+-type throttled_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"tagKeys">> := list([string()]())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_output() :: #{
+%%   <<"statusCode">> => [integer()]
+%% }
+-type untag_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_whats_app_flow_assets_input() :: #{
+%%   <<"flowId">> := string(),
+%%   <<"flowJson">> := binary(),
+%%   <<"id">> := string()
+%% }
+-type update_whats_app_flow_assets_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_whats_app_flow_assets_output() :: #{
+%%   <<"validationErrors">> => list(string())
+%% }
+-type update_whats_app_flow_assets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_whats_app_flow_input() :: #{
+%%   <<"categories">> => list(list(any())()),
+%%   <<"flowId">> := string(),
+%%   <<"flowName">> => string(),
+%%   <<"id">> := string()
+%% }
+-type update_whats_app_flow_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_whats_app_flow_output() :: #{}
+-type update_whats_app_flow_output() :: #{}.
+
+
+%% Example:
+%% update_whats_app_message_template_input() :: #{
+%%   <<"ctaUrlLinkTrackingOptedOut">> => boolean(),
+%%   <<"id">> := string(),
+%%   <<"metaTemplateId">> => string(),
+%%   <<"parameterFormat">> => string(),
+%%   <<"templateCategory">> => string(),
+%%   <<"templateComponents">> => binary(),
+%%   <<"templateLanguageCode">> => string(),
+%%   <<"templateName">> => string()
+%% }
+-type update_whats_app_message_template_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_whats_app_message_template_output() :: #{}
+-type update_whats_app_message_template_output() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% waba_phone_number_setup_finalization() :: #{
+%%   <<"dataLocalizationRegion">> => string(),
+%%   <<"id">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"twoFactorPin">> => string()
+%% }
+-type waba_phone_number_setup_finalization() :: #{binary() => any()}.
 
 
 %% Example:
@@ -965,246 +919,292 @@
 
 
 %% Example:
-%% meta_flow_health_status() :: #{
-%%   <<"canSendMessage">> => string(),
-%%   <<"entities">> => list(meta_flow_health_entity())
+%% whats_app_business_account_event_destination() :: #{
+%%   <<"eventDestinationArn">> => string(),
+%%   <<"roleArn">> => string()
 %% }
--type meta_flow_health_status() :: #{binary() => any()}.
+-type whats_app_business_account_event_destination() :: #{binary() => any()}.
 
 
 %% Example:
-%% meta_flow_preview_info() :: #{
-%%   <<"expiresAt">> => string(),
-%%   <<"previewUrl">> => string()
+%% whats_app_phone_number_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dataLocalizationRegion">> => string(),
+%%   <<"displayPhoneNumber">> => string(),
+%%   <<"displayPhoneNumberName">> => string(),
+%%   <<"metaPhoneNumberId">> => string(),
+%%   <<"phoneNumber">> => string(),
+%%   <<"phoneNumberId">> => string(),
+%%   <<"qualityRating">> => string()
 %% }
--type meta_flow_preview_info() :: #{binary() => any()}.
+-type whats_app_phone_number_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_phone_number_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dataLocalizationRegion">> => string(),
+%%   <<"displayPhoneNumber">> => string(),
+%%   <<"displayPhoneNumberName">> => string(),
+%%   <<"metaPhoneNumberId">> => string(),
+%%   <<"phoneNumber">> => string(),
+%%   <<"phoneNumberId">> => string(),
+%%   <<"qualityRating">> => string()
+%% }
+-type whats_app_phone_number_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_setup_finalization() :: #{
+%%   <<"associateInProgressToken">> => string(),
+%%   <<"phoneNumberParent">> => string(),
+%%   <<"phoneNumbers">> => list(waba_phone_number_setup_finalization()),
+%%   <<"waba">> => waba_setup_finalization()
+%% }
+-type whats_app_setup_finalization() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_signup_callback() :: #{
+%%   <<"accessToken">> => [string()],
+%%   <<"callbackUrl">> => [string()]
+%% }
+-type whats_app_signup_callback() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_signup_callback_result() :: #{
+%%   <<"associateInProgressToken">> => string(),
+%%   <<"linkedAccountsWithIncompleteSetup">> => map()
+%% }
+-type whats_app_signup_callback_result() :: #{binary() => any()}.
 
 -type associate_whats_app_business_account_errors() ::
+    throttled_request_exception() | 
     limit_exceeded_exception() | 
     invalid_parameters_exception() | 
-    throttled_request_exception() | 
     dependency_exception().
 
 -type create_whats_app_flow_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type create_whats_app_message_template_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type create_whats_app_message_template_from_library_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type create_whats_app_message_template_media_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type delete_whats_app_flow_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type delete_whats_app_message_media_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type delete_whats_app_message_template_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type deprecate_whats_app_flow_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type disassociate_whats_app_business_account_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     dependency_exception().
 
 -type get_linked_whats_app_business_account_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
     dependency_exception().
 
 -type get_linked_whats_app_business_account_phone_number_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
     dependency_exception().
 
 -type get_whats_app_flow_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type get_whats_app_flow_preview_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type get_whats_app_message_media_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type get_whats_app_message_template_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type list_linked_whats_app_business_accounts_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception().
 
 -type list_tags_for_resource_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception().
 
 -type list_whats_app_flow_assets_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type list_whats_app_flows_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type list_whats_app_message_templates_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type list_whats_app_template_library_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type post_whats_app_message_media_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type publish_whats_app_flow_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type put_whats_app_business_account_event_destinations_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception().
 
 -type send_whats_app_message_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
     dependency_exception().
 
 -type tag_resource_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception().
 
 -type untag_resource_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception().
 
 -type update_whats_app_flow_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type update_whats_app_flow_assets_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type update_whats_app_message_template_errors() ::
-    invalid_parameters_exception() | 
     throttled_request_exception() | 
     resource_not_found_exception() | 
+    invalid_parameters_exception() | 
     internal_service_exception() | 
-    access_denied_by_meta_exception() | 
-    dependency_exception().
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 %%====================================================================
 %% API

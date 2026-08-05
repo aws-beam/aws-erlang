@@ -94,23 +94,18 @@
 
 
 %% Example:
-%% get_resource_policies_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"resourcePolicies">> := list(resource_policy())
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_resource_policies_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_response_plan_output() :: #{}
--type update_response_plan_output() :: #{}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_timeline_events_output() :: #{
-%%   <<"eventSummaries">> := list(event_summary()),
-%%   <<"nextToken">> => string()
+%% add_region_action() :: #{
+%%   <<"regionName">> => string(),
+%%   <<"sseKmsKeyId">> => string()
 %% }
--type list_timeline_events_output() :: #{binary() => any()}.
+-type add_region_action() :: #{binary() => any()}.
 
 
 %% Example:
@@ -121,88 +116,13 @@
 %% }
 -type batch_get_incident_findings_error() :: #{binary() => any()}.
 
-%% Example:
-%% delete_replication_set_output() :: #{}
--type delete_replication_set_output() :: #{}.
-
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% batch_get_incident_findings_input() :: #{
+%%   <<"findingIds">> := list(string()),
+%%   <<"incidentRecordArn">> := string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_related_items_input() :: #{
-%%   <<"incidentRecordArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_related_items_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_timeline_event_output() :: #{}
--type delete_timeline_event_output() :: #{}.
-
-
-%% Example:
-%% list_replication_sets_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_replication_sets_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% related_item() :: #{
-%%   <<"generatedId">> => string(),
-%%   <<"identifier">> => item_identifier(),
-%%   <<"title">> => [string()]
-%% }
--type related_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% incident_record_source() :: #{
-%%   <<"createdBy">> => string(),
-%%   <<"invokedBy">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"source">> => string()
-%% }
--type incident_record_source() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% start_incident_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"impact">> => integer(),
-%%   <<"relatedItems">> => list(related_item()),
-%%   <<"responsePlanArn">> := string(),
-%%   <<"title">> => string(),
-%%   <<"triggerDetails">> => trigger_details()
-%% }
--type start_incident_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_incident_record_input() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_incident_record_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_deletion_protection_input() :: #{
-%%   <<"arn">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"deletionProtected">> := [boolean()]
-%% }
--type update_deletion_protection_input() :: #{binary() => any()}.
+-type batch_get_incident_findings_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -214,120 +134,12 @@
 
 
 %% Example:
-%% delete_region_action() :: #{
-%%   <<"regionName">> => string()
+%% cloud_formation_stack_update() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"stackArn">> => string(),
+%%   <<"startTime">> => [non_neg_integer()]
 %% }
--type delete_region_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% finding_summary() :: #{
-%%   <<"id">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()]
-%% }
--type finding_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_response_plan_output() :: #{
-%%   <<"arn">> := string()
-%% }
--type create_response_plan_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_incident_findings_input() :: #{
-%%   <<"incidentRecordArn">> := string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_incident_findings_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_response_plan_input() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_response_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_incident_output() :: #{
-%%   <<"incidentRecordArn">> := string()
-%% }
--type start_incident_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_output() :: #{
-%%   <<"policyId">> := string()
-%% }
--type put_resource_policy_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% timeline_event() :: #{
-%%   <<"eventData">> => string(),
-%%   <<"eventId">> => string(),
-%%   <<"eventReferences">> => list(list()),
-%%   <<"eventTime">> => [non_neg_integer()],
-%%   <<"eventType">> => string(),
-%%   <<"eventUpdatedTime">> => [non_neg_integer()],
-%%   <<"incidentRecordArn">> => string()
-%% }
--type timeline_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_replication_set_input() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_replication_set_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_resource_policy_input() :: #{
-%%   <<"policyId">> := string(),
-%%   <<"resourceArn">> := string()
-%% }
--type delete_resource_policy_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_deletion_protection_output() :: #{}
--type update_deletion_protection_output() :: #{}.
-
-
-%% Example:
-%% pager_duty_incident_detail() :: #{
-%%   <<"autoResolve">> => [boolean()],
-%%   <<"id">> => [string()],
-%%   <<"secretId">> => [string()]
-%% }
--type pager_duty_incident_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_replication_set_input() :: #{
-%%   <<"actions">> := list(list()),
-%%   <<"arn">> := string(),
-%%   <<"clientToken">> => string()
-%% }
--type update_replication_set_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_incident_findings_input() :: #{
-%%   <<"findingIds">> := list(string()),
-%%   <<"incidentRecordArn">> := string()
-%% }
--type batch_get_incident_findings_input() :: #{binary() => any()}.
+-type cloud_formation_stack_update() :: #{binary() => any()}.
 
 
 %% Example:
@@ -341,51 +153,6 @@
 
 
 %% Example:
-%% list_incident_records_output() :: #{
-%%   <<"incidentRecordSummaries">> := list(incident_record_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_incident_records_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_incident_record_output() :: #{}
--type update_incident_record_output() :: #{}.
-
-
-%% Example:
-%% update_response_plan_input() :: #{
-%%   <<"actions">> => list(list()),
-%%   <<"arn">> := string(),
-%%   <<"chatChannel">> => list(),
-%%   <<"clientToken">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"engagements">> => list(string()),
-%%   <<"incidentTemplateDedupeString">> => string(),
-%%   <<"incidentTemplateImpact">> => integer(),
-%%   <<"incidentTemplateNotificationTargets">> => list(list()),
-%%   <<"incidentTemplateSummary">> => string(),
-%%   <<"incidentTemplateTags">> => map(),
-%%   <<"incidentTemplateTitle">> => string(),
-%%   <<"integrations">> => list(list())
-%% }
--type update_response_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% replication_set() :: #{
-%%   <<"arn">> => string(),
-%%   <<"createdBy">> => string(),
-%%   <<"createdTime">> => [non_neg_integer()],
-%%   <<"deletionProtected">> => [boolean()],
-%%   <<"lastModifiedBy">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"regionMap">> => map(),
-%%   <<"status">> => string()
-%% }
--type replication_set() :: #{binary() => any()}.
-
-
-%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"resourceIdentifier">> => [string()],
@@ -396,165 +163,129 @@
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"resourceIdentifier">> => [string()],
-%%   <<"resourceType">> => string()
+%% create_replication_set_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"regions">> := map(),
+%%   <<"tags">> => map()
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type create_replication_set_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_incident_record_output() :: #{
-%%   <<"incidentRecord">> := incident_record()
+%% create_replication_set_output() :: #{
+%%   <<"arn">> := string()
 %% }
--type get_incident_record_output() :: #{binary() => any()}.
+-type create_replication_set_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_resource_policy_input() :: #{
-%%   <<"policy">> := string(),
-%%   <<"resourceArn">> := string()
-%% }
--type put_resource_policy_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policies_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceArn">> := string()
-%% }
--type get_resource_policies_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% item_identifier() :: #{
-%%   <<"type">> => string(),
-%%   <<"value">> => list()
-%% }
--type item_identifier() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_replication_sets_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"replicationSetArns">> := list(string())
-%% }
--type list_replication_sets_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceIdentifier">> => [string()],
-%%   <<"resourceType">> => string(),
-%%   <<"serviceCode">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_incident_findings_output() :: #{
-%%   <<"findings">> => list(finding_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_incident_findings_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% pager_duty_incident_configuration() :: #{
-%%   <<"serviceId">> => [string()]
-%% }
--type pager_duty_incident_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_timeline_event_output() :: #{}
--type update_timeline_event_output() :: #{}.
-
-
-%% Example:
-%% update_incident_record_input() :: #{
-%%   <<"arn">> := string(),
+%% create_response_plan_input() :: #{
+%%   <<"actions">> => list(list()),
 %%   <<"chatChannel">> => list(),
 %%   <<"clientToken">> => string(),
-%%   <<"impact">> => integer(),
-%%   <<"notificationTargets">> => list(list()),
-%%   <<"status">> => string(),
-%%   <<"summary">> => string(),
-%%   <<"title">> => string()
+%%   <<"displayName">> => string(),
+%%   <<"engagements">> => list(string()),
+%%   <<"incidentTemplate">> := incident_template(),
+%%   <<"integrations">> => list(list()),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
 %% }
--type update_incident_record_input() :: #{binary() => any()}.
+-type create_response_plan_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% finding() :: #{
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"details">> => list(),
-%%   <<"id">> => string(),
-%%   <<"lastModifiedTime">> => [non_neg_integer()]
+%% create_response_plan_output() :: #{
+%%   <<"arn">> := string()
 %% }
--type finding() :: #{binary() => any()}.
+-type create_response_plan_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_related_items_input() :: #{
+%% create_timeline_event_input() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"incidentRecordArn">> := string(),
-%%   <<"relatedItemsUpdate">> := list()
+%%   <<"eventData">> := string(),
+%%   <<"eventReferences">> => list(list()),
+%%   <<"eventTime">> := [non_neg_integer()],
+%%   <<"eventType">> := string(),
+%%   <<"incidentRecordArn">> := string()
 %% }
--type update_related_items_input() :: #{binary() => any()}.
+-type create_timeline_event_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> := map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% pager_duty_configuration() :: #{
-%%   <<"name">> => [string()],
-%%   <<"pagerDutyIncidentConfiguration">> => pager_duty_incident_configuration(),
-%%   <<"secretId">> => [string()]
-%% }
--type pager_duty_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% trigger_details() :: #{
-%%   <<"rawData">> => string(),
-%%   <<"source">> => string(),
-%%   <<"timestamp">> => [non_neg_integer()],
-%%   <<"triggerArn">> => string()
-%% }
--type trigger_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_timeline_event_input() :: #{
+%% create_timeline_event_output() :: #{
 %%   <<"eventId">> := string(),
 %%   <<"incidentRecordArn">> := string()
 %% }
--type get_timeline_event_input() :: #{binary() => any()}.
+-type create_timeline_event_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_response_plans_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% delete_incident_record_input() :: #{
+%%   <<"arn">> := string()
 %% }
--type list_response_plans_input() :: #{binary() => any()}.
+-type delete_incident_record_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_incident_record_output() :: #{}
+-type delete_incident_record_output() :: #{}.
 
 
 %% Example:
-%% filter() :: #{
-%%   <<"condition">> => list(),
-%%   <<"key">> => [string()]
+%% delete_region_action() :: #{
+%%   <<"regionName">> => string()
 %% }
--type filter() :: #{binary() => any()}.
+-type delete_region_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_replication_set_input() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_replication_set_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_replication_set_output() :: #{}
+-type delete_replication_set_output() :: #{}.
+
+
+%% Example:
+%% delete_resource_policy_input() :: #{
+%%   <<"policyId">> := string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type delete_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_output() :: #{}
+-type delete_resource_policy_output() :: #{}.
+
+
+%% Example:
+%% delete_response_plan_input() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_response_plan_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_response_plan_output() :: #{}
+-type delete_response_plan_output() :: #{}.
+
+
+%% Example:
+%% delete_timeline_event_input() :: #{
+%%   <<"eventId">> := string(),
+%%   <<"incidentRecordArn">> := string()
+%% }
+-type delete_timeline_event_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_timeline_event_output() :: #{}
+-type delete_timeline_event_output() :: #{}.
+
+%% Example:
+%% empty_chat_channel() :: #{}
+-type empty_chat_channel() :: #{}.
 
 
 %% Example:
@@ -570,30 +301,81 @@
 
 
 %% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
+%% filter() :: #{
+%%   <<"condition">> => list(),
+%%   <<"key">> => [string()]
 %% }
--type internal_server_exception() :: #{binary() => any()}.
+-type filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_policy() :: #{
-%%   <<"policyDocument">> => string(),
-%%   <<"policyId">> => string(),
-%%   <<"ramResourceShareRegion">> => [string()]
+%% finding() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"details">> => list(),
+%%   <<"id">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()]
 %% }
--type resource_policy() :: #{binary() => any()}.
+-type finding() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_timeline_event_output() :: #{
-%%   <<"event">> := timeline_event()
+%% finding_summary() :: #{
+%%   <<"id">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()]
 %% }
--type get_timeline_event_output() :: #{binary() => any()}.
+-type finding_summary() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_resource_policy_output() :: #{}
--type delete_resource_policy_output() :: #{}.
+%% get_incident_record_input() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_incident_record_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_incident_record_output() :: #{
+%%   <<"incidentRecord">> := incident_record()
+%% }
+-type get_incident_record_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_replication_set_input() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_replication_set_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_replication_set_output() :: #{
+%%   <<"replicationSet">> := replication_set()
+%% }
+-type get_replication_set_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policies_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type get_resource_policies_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policies_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourcePolicies">> := list(resource_policy())
+%% }
+-type get_resource_policies_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_response_plan_input() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_response_plan_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -611,259 +393,18 @@
 
 
 %% Example:
-%% list_timeline_events_input() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"incidentRecordArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"sortBy">> => string(),
-%%   <<"sortOrder">> => string()
-%% }
--type list_timeline_events_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% incident_record_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => [non_neg_integer()],
-%%   <<"impact">> => integer(),
-%%   <<"incidentRecordSource">> => incident_record_source(),
-%%   <<"resolvedTime">> => [non_neg_integer()],
-%%   <<"status">> => string(),
-%%   <<"title">> => string()
-%% }
--type incident_record_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-%% Example:
-%% update_related_items_output() :: #{}
--type update_related_items_output() :: #{}.
-
-
-%% Example:
-%% region_info() :: #{
-%%   <<"sseKmsKeyId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"statusMessage">> => [string()],
-%%   <<"statusUpdateDateTime">> => [non_neg_integer()]
-%% }
--type region_info() :: #{binary() => any()}.
-
-
-%% Example:
-%% ssm_automation() :: #{
-%%   <<"documentName">> => [string()],
-%%   <<"documentVersion">> => [string()],
-%%   <<"dynamicParameters">> => map(),
-%%   <<"parameters">> => map(),
-%%   <<"roleArn">> => string(),
-%%   <<"targetAccount">> => string()
-%% }
--type ssm_automation() :: #{binary() => any()}.
-
-
-%% Example:
-%% region_map_input_value() :: #{
-%%   <<"sseKmsKeyId">> => string()
-%% }
--type region_map_input_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% create_replication_set_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"regions">> := map(),
-%%   <<"tags">> => map()
-%% }
--type create_replication_set_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_timeline_event_output() :: #{
+%% get_timeline_event_input() :: #{
 %%   <<"eventId">> := string(),
 %%   <<"incidentRecordArn">> := string()
 %% }
--type create_timeline_event_output() :: #{binary() => any()}.
+-type get_timeline_event_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string(),
-%%   <<"quotaCode">> => [string()],
-%%   <<"serviceCode">> => string()
+%% get_timeline_event_output() :: #{
+%%   <<"event">> := timeline_event()
 %% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% incident_template() :: #{
-%%   <<"dedupeString">> => string(),
-%%   <<"impact">> => integer(),
-%%   <<"incidentTags">> => map(),
-%%   <<"notificationTargets">> => list(list()),
-%%   <<"summary">> => string(),
-%%   <<"title">> => string()
-%% }
--type incident_template() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_incident_records_input() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_incident_records_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_plan_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"name">> => string()
-%% }
--type response_plan_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_region_action() :: #{
-%%   <<"regionName">> => string(),
-%%   <<"sseKmsKeyId">> => string()
-%% }
--type add_region_action() :: #{binary() => any()}.
-
-%% Example:
-%% delete_response_plan_output() :: #{}
--type delete_response_plan_output() :: #{}.
-
-
-%% Example:
-%% list_response_plans_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"responsePlanSummaries">> := list(response_plan_summary())
-%% }
--type list_response_plans_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_response_plan_input() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_response_plan_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_timeline_event_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"eventData">> => string(),
-%%   <<"eventId">> := string(),
-%%   <<"eventReferences">> => list(list()),
-%%   <<"eventTime">> => [non_neg_integer()],
-%%   <<"eventType">> => string(),
-%%   <<"incidentRecordArn">> := string()
-%% }
--type update_timeline_event_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_replication_set_input() :: #{
-%%   <<"arn">> := string()
-%% }
--type delete_replication_set_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_related_items_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"relatedItems">> := list(related_item())
-%% }
--type list_related_items_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_replication_set_output() :: #{}
--type update_replication_set_output() :: #{}.
-
-
-%% Example:
-%% create_timeline_event_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"eventData">> := string(),
-%%   <<"eventReferences">> => list(list()),
-%%   <<"eventTime">> := [non_neg_integer()],
-%%   <<"eventType">> := string(),
-%%   <<"incidentRecordArn">> := string()
-%% }
--type create_timeline_event_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_replication_set_output() :: #{
-%%   <<"replicationSet">> := replication_set()
-%% }
--type get_replication_set_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_incident_record_input() :: #{
-%%   <<"arn">> := string()
-%% }
--type get_incident_record_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_response_plan_input() :: #{
-%%   <<"actions">> => list(list()),
-%%   <<"chatChannel">> => list(),
-%%   <<"clientToken">> => string(),
-%%   <<"displayName">> => string(),
-%%   <<"engagements">> => list(string()),
-%%   <<"incidentTemplate">> := incident_template(),
-%%   <<"integrations">> => list(list()),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_response_plan_input() :: #{binary() => any()}.
-
-%% Example:
-%% empty_chat_channel() :: #{}
--type empty_chat_channel() :: #{}.
-
-
-%% Example:
-%% cloud_formation_stack_update() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"stackArn">> => string(),
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type cloud_formation_stack_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_replication_set_output() :: #{
-%%   <<"arn">> := string()
-%% }
--type create_replication_set_output() :: #{binary() => any()}.
+-type get_timeline_event_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -885,238 +426,697 @@
 %% }
 -type incident_record() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_incident_record_output() :: #{}
--type delete_incident_record_output() :: #{}.
+%% incident_record_source() :: #{
+%%   <<"createdBy">> => string(),
+%%   <<"invokedBy">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"source">> => string()
+%% }
+-type incident_record_source() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_timeline_event_input() :: #{
-%%   <<"eventId">> := string(),
+%% incident_record_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"impact">> => integer(),
+%%   <<"incidentRecordSource">> => incident_record_source(),
+%%   <<"resolvedTime">> => [non_neg_integer()],
+%%   <<"status">> => string(),
+%%   <<"title">> => string()
+%% }
+-type incident_record_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% incident_template() :: #{
+%%   <<"dedupeString">> => string(),
+%%   <<"impact">> => integer(),
+%%   <<"incidentTags">> => map(),
+%%   <<"notificationTargets">> => list(list()),
+%%   <<"summary">> => string(),
+%%   <<"title">> => string()
+%% }
+-type incident_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% item_identifier() :: #{
+%%   <<"type">> => string(),
+%%   <<"value">> => list()
+%% }
+-type item_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_incident_findings_input() :: #{
+%%   <<"incidentRecordArn">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_incident_findings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_incident_findings_output() :: #{
+%%   <<"findings">> => list(finding_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_incident_findings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_incident_records_input() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_incident_records_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_incident_records_output() :: #{
+%%   <<"incidentRecordSummaries">> := list(incident_record_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_incident_records_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_related_items_input() :: #{
+%%   <<"incidentRecordArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_related_items_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_related_items_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"relatedItems">> := list(related_item())
+%% }
+-type list_related_items_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_replication_sets_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_replication_sets_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_replication_sets_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"replicationSetArns">> := list(string())
+%% }
+-type list_replication_sets_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_response_plans_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_response_plans_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_response_plans_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"responsePlanSummaries">> := list(response_plan_summary())
+%% }
+-type list_response_plans_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> := map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_timeline_events_input() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"incidentRecordArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => string(),
+%%   <<"sortOrder">> => string()
+%% }
+-type list_timeline_events_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_timeline_events_output() :: #{
+%%   <<"eventSummaries">> := list(event_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_timeline_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% pager_duty_configuration() :: #{
+%%   <<"name">> => [string()],
+%%   <<"pagerDutyIncidentConfiguration">> => pager_duty_incident_configuration(),
+%%   <<"secretId">> => [string()]
+%% }
+-type pager_duty_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% pager_duty_incident_configuration() :: #{
+%%   <<"serviceId">> => [string()]
+%% }
+-type pager_duty_incident_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% pager_duty_incident_detail() :: #{
+%%   <<"autoResolve">> => [boolean()],
+%%   <<"id">> => [string()],
+%%   <<"secretId">> => [string()]
+%% }
+-type pager_duty_incident_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_input() :: #{
+%%   <<"policy">> := string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type put_resource_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_output() :: #{
+%%   <<"policyId">> := string()
+%% }
+-type put_resource_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% region_info() :: #{
+%%   <<"sseKmsKeyId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusMessage">> => [string()],
+%%   <<"statusUpdateDateTime">> => [non_neg_integer()]
+%% }
+-type region_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% region_map_input_value() :: #{
+%%   <<"sseKmsKeyId">> => string()
+%% }
+-type region_map_input_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% related_item() :: #{
+%%   <<"generatedId">> => string(),
+%%   <<"identifier">> => item_identifier(),
+%%   <<"title">> => [string()]
+%% }
+-type related_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_set() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdBy">> => string(),
+%%   <<"createdTime">> => [non_neg_integer()],
+%%   <<"deletionProtected">> => [boolean()],
+%%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
+%%   <<"regionMap">> => map(),
+%%   <<"status">> => string()
+%% }
+-type replication_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceIdentifier">> => [string()],
+%%   <<"resourceType">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_policy() :: #{
+%%   <<"policyDocument">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"ramResourceShareRegion">> => [string()]
+%% }
+-type resource_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_plan_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"name">> => string()
+%% }
+-type response_plan_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceIdentifier">> => [string()],
+%%   <<"resourceType">> => string(),
+%%   <<"serviceCode">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ssm_automation() :: #{
+%%   <<"documentName">> => [string()],
+%%   <<"documentVersion">> => [string()],
+%%   <<"dynamicParameters">> => map(),
+%%   <<"parameters">> => map(),
+%%   <<"roleArn">> => string(),
+%%   <<"targetAccount">> => string()
+%% }
+-type ssm_automation() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_incident_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"impact">> => integer(),
+%%   <<"relatedItems">> => list(related_item()),
+%%   <<"responsePlanArn">> := string(),
+%%   <<"title">> => string(),
+%%   <<"triggerDetails">> => trigger_details()
+%% }
+-type start_incident_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_incident_output() :: #{
 %%   <<"incidentRecordArn">> := string()
 %% }
--type delete_timeline_event_input() :: #{binary() => any()}.
+-type start_incident_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"quotaCode">> => [string()],
+%%   <<"serviceCode">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% timeline_event() :: #{
+%%   <<"eventData">> => string(),
+%%   <<"eventId">> => string(),
+%%   <<"eventReferences">> => list(list()),
+%%   <<"eventTime">> => [non_neg_integer()],
+%%   <<"eventType">> => string(),
+%%   <<"eventUpdatedTime">> => [non_neg_integer()],
+%%   <<"incidentRecordArn">> => string()
+%% }
+-type timeline_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% trigger_details() :: #{
+%%   <<"rawData">> => string(),
+%%   <<"source">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()],
+%%   <<"triggerArn">> => string()
+%% }
+-type trigger_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_deletion_protection_input() :: #{
+%%   <<"arn">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"deletionProtected">> := [boolean()]
+%% }
+-type update_deletion_protection_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_deletion_protection_output() :: #{}
+-type update_deletion_protection_output() :: #{}.
+
+
+%% Example:
+%% update_incident_record_input() :: #{
+%%   <<"arn">> := string(),
+%%   <<"chatChannel">> => list(),
+%%   <<"clientToken">> => string(),
+%%   <<"impact">> => integer(),
+%%   <<"notificationTargets">> => list(list()),
+%%   <<"status">> => string(),
+%%   <<"summary">> => string(),
+%%   <<"title">> => string()
+%% }
+-type update_incident_record_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_incident_record_output() :: #{}
+-type update_incident_record_output() :: #{}.
+
+
+%% Example:
+%% update_related_items_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"incidentRecordArn">> := string(),
+%%   <<"relatedItemsUpdate">> := list()
+%% }
+-type update_related_items_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_related_items_output() :: #{}
+-type update_related_items_output() :: #{}.
+
+
+%% Example:
+%% update_replication_set_input() :: #{
+%%   <<"actions">> := list(list()),
+%%   <<"arn">> := string(),
+%%   <<"clientToken">> => string()
+%% }
+-type update_replication_set_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_replication_set_output() :: #{}
+-type update_replication_set_output() :: #{}.
+
+
+%% Example:
+%% update_response_plan_input() :: #{
+%%   <<"actions">> => list(list()),
+%%   <<"arn">> := string(),
+%%   <<"chatChannel">> => list(),
+%%   <<"clientToken">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"engagements">> => list(string()),
+%%   <<"incidentTemplateDedupeString">> => string(),
+%%   <<"incidentTemplateImpact">> => integer(),
+%%   <<"incidentTemplateNotificationTargets">> => list(list()),
+%%   <<"incidentTemplateSummary">> => string(),
+%%   <<"incidentTemplateTags">> => map(),
+%%   <<"incidentTemplateTitle">> => string(),
+%%   <<"integrations">> => list(list())
+%% }
+-type update_response_plan_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_response_plan_output() :: #{}
+-type update_response_plan_output() :: #{}.
+
+
+%% Example:
+%% update_timeline_event_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"eventData">> => string(),
+%%   <<"eventId">> := string(),
+%%   <<"eventReferences">> => list(list()),
+%%   <<"eventTime">> => [non_neg_integer()],
+%%   <<"eventType">> => string(),
+%%   <<"incidentRecordArn">> := string()
+%% }
+-type update_timeline_event_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_timeline_event_output() :: #{}
+-type update_timeline_event_output() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type batch_get_incident_findings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type create_replication_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_response_plan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_timeline_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_incident_record_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_replication_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_response_plan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type delete_timeline_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_incident_record_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_replication_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_policies_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_response_plan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_timeline_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_incident_findings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_incident_records_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_related_items_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_replication_sets_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_response_plans_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_timeline_events_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type put_resource_policy_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type start_incident_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_deletion_protection_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type update_incident_record_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_related_items_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_replication_set_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_response_plan_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_timeline_event_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

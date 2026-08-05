@@ -154,17 +154,183 @@
 
 
 %% Example:
-%% payment_session() :: #{
-%%   <<"availableLimits">> => available_limits(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"expiryTimeInMinutes">> => [integer()],
-%%   <<"limits">> => session_limits(),
-%%   <<"paymentManagerArn">> => string(),
-%%   <<"paymentSessionId">> => string(),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"userId">> => string()
+%% a2a_descriptor() :: #{
+%%   <<"agentCard">> => agent_card_definition()
 %% }
--type payment_session() :: #{binary() => any()}.
+-type a2a_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_b_test_results() :: #{
+%%   <<"analysisTimestamp">> => [non_neg_integer()],
+%%   <<"evaluatorMetrics">> => list(evaluator_metric())
+%% }
+-type a_b_test_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_b_test_summary() :: #{
+%%   <<"abTestArn">> => string(),
+%%   <<"abTestId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"gatewayArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type a_b_test_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% actor_summary() :: #{
+%%   <<"actorId">> => string()
+%% }
+-type actor_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% affected_session() :: #{
+%%   <<"explanation">> => [string()],
+%%   <<"failureSpans">> => list(failure_span_detail()),
+%%   <<"fixType">> => [string()],
+%%   <<"recommendation">> => [string()],
+%%   <<"sessionId">> => [string()]
+%% }
+-type affected_session() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_card_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type agent_card_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_skills_descriptor() :: #{
+%%   <<"skillDefinition">> => skill_definition(),
+%%   <<"skillMd">> => skill_md_definition()
+%% }
+-type agent_skills_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% amount() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type amount() :: #{binary() => any()}.
+
+
+%% Example:
+%% automation_stream() :: #{
+%%   <<"streamEndpoint">> => string(),
+%%   <<"streamStatus">> => list(any())
+%% }
+-type automation_stream() :: #{binary() => any()}.
+
+
+%% Example:
+%% automation_stream_update() :: #{
+%%   <<"streamStatus">> => list(any())
+%% }
+-type automation_stream_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% available_limits() :: #{
+%%   <<"availableSpendAmount">> => amount(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type available_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% basic_auth() :: #{
+%%   <<"secretArn">> => string()
+%% }
+-type basic_auth() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_memory_records_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"records">> := list(memory_record_create_input())
+%% }
+-type batch_create_memory_records_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_memory_records_output() :: #{
+%%   <<"failedRecords">> => list(memory_record_output()),
+%%   <<"successfulRecords">> => list(memory_record_output())
+%% }
+-type batch_create_memory_records_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_memory_records_input() :: #{
+%%   <<"records">> := list(memory_record_delete_input())
+%% }
+-type batch_delete_memory_records_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_memory_records_output() :: #{
+%%   <<"failedRecords">> => list(memory_record_output()),
+%%   <<"successfulRecords">> => list(memory_record_output())
+%% }
+-type batch_delete_memory_records_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_evaluation_summary() :: #{
+%%   <<"batchEvaluationArn">> => string(),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"batchEvaluationName">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"errorDetails">> => list([string()]()),
+%%   <<"evaluationResults">> => evaluation_job_results(),
+%%   <<"evaluators">> => list(evaluator()),
+%%   <<"insights">> => list(insight()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type batch_evaluation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_evaluation_trace_config() :: #{
+%%   <<"batchEvaluationArn">> => string()
+%% }
+-type batch_evaluation_trace_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_memory_records_input() :: #{
+%%   <<"records">> := list(memory_record_update_input())
+%% }
+-type batch_update_memory_records_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_memory_records_output() :: #{
+%%   <<"failedRecords">> => list(memory_record_output()),
+%%   <<"successfulRecords">> => list(memory_record_output())
+%% }
+-type batch_update_memory_records_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -176,6 +342,14 @@
 
 
 %% Example:
+%% branch_filter() :: #{
+%%   <<"includeParentBranches">> => [boolean()],
+%%   <<"name">> => string()
+%% }
+-type branch_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% browser_enterprise_policy() :: #{
 %%   <<"location">> => list(),
 %%   <<"type">> => list(any())
@@ -184,20 +358,280 @@
 
 
 %% Example:
-%% tool_description_output() :: #{
-%%   <<"explanation">> => string(),
-%%   <<"recommendedToolDescription">> => string(),
-%%   <<"toolName">> => string()
+%% browser_extension() :: #{
+%%   <<"location">> => list()
 %% }
--type tool_description_output() :: #{binary() => any()}.
+-type browser_extension() :: #{binary() => any()}.
 
 
 %% Example:
-%% harness_remote_mcp_config() :: #{
-%%   <<"headers">> => map(),
-%%   <<"url">> => string()
+%% browser_profile_configuration() :: #{
+%%   <<"profileIdentifier">> => string()
 %% }
--type harness_remote_mcp_config() :: #{binary() => any()}.
+-type browser_profile_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% browser_session_stream() :: #{
+%%   <<"automationStream">> => automation_stream(),
+%%   <<"liveViewStream">> => live_view_stream()
+%% }
+-type browser_session_stream() :: #{binary() => any()}.
+
+
+%% Example:
+%% browser_session_summary() :: #{
+%%   <<"browserIdentifier">> => [string()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type browser_session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% certificate() :: #{
+%%   <<"location">> => list()
+%% }
+-type certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_filter_config() :: #{
+%%   <<"sessionIds">> => list([string()]()),
+%%   <<"timeRange">> => session_filter_config()
+%% }
+-type cloud_watch_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logs_filter() :: #{
+%%   <<"key">> => [string()],
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => list()
+%% }
+-type cloud_watch_logs_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logs_rule() :: #{
+%%   <<"filters">> => list(cloud_watch_logs_filter())
+%% }
+-type cloud_watch_logs_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logs_source() :: #{
+%%   <<"filterConfig">> => cloud_watch_filter_config(),
+%%   <<"logGroupNames">> => list([string()]()),
+%%   <<"serviceNames">> => list([string()]())
+%% }
+-type cloud_watch_logs_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logs_trace_config() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"logGroupArns">> => list([string()]()),
+%%   <<"rule">> => cloud_watch_logs_rule(),
+%%   <<"serviceNames">> => list(string()),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type cloud_watch_logs_trace_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_output_config() :: #{
+%%   <<"logGroupName">> => [string()],
+%%   <<"logStreamName">> => [string()]
+%% }
+-type cloud_watch_output_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_interpreter_result() :: #{
+%%   <<"content">> => list(content_block()),
+%%   <<"isError">> => [boolean()],
+%%   <<"structuredContent">> => tool_result_structured_content()
+%% }
+-type code_interpreter_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_interpreter_session_summary() :: #{
+%%   <<"codeInterpreterIdentifier">> => [string()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type code_interpreter_session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% coinbase_cdp_token_request_input() :: #{
+%%   <<"includeWalletAuthToken">> => [boolean()],
+%%   <<"requestBody">> => string(),
+%%   <<"requestHost">> => string(),
+%%   <<"requestMethod">> => list(any()),
+%%   <<"requestPath">> => string()
+%% }
+-type coinbase_cdp_token_request_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% coinbase_cdp_token_response_output() :: #{
+%%   <<"bearerToken">> => string(),
+%%   <<"walletAuthToken">> => string()
+%% }
+-type coinbase_cdp_token_response_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% complete_resource_token_auth_request() :: #{
+%%   <<"sessionUri">> := string(),
+%%   <<"userIdentifier">> := list()
+%% }
+-type complete_resource_token_auth_request() :: #{binary() => any()}.
+
+%% Example:
+%% complete_resource_token_auth_response() :: #{}
+-type complete_resource_token_auth_response() :: #{}.
+
+
+%% Example:
+%% confidence_interval() :: #{
+%%   <<"lower">> => [float()],
+%%   <<"upper">> => [float()]
+%% }
+-type confidence_interval() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_bundle_ref() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"bundleVersion">> => string()
+%% }
+-type configuration_bundle_ref() :: #{binary() => any()}.
+
+
+%% Example:
+%% configuration_bundle_tool_entry() :: #{
+%%   <<"toolDescriptionJsonPath">> => [string()],
+%%   <<"toolName">> => string()
+%% }
+-type configuration_bundle_tool_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_block() :: #{
+%%   <<"data">> => [binary()],
+%%   <<"description">> => [string()],
+%%   <<"mimeType">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"resource">> => resource_content(),
+%%   <<"size">> => [float()],
+%%   <<"text">> => [string()],
+%%   <<"type">> => list(any()),
+%%   <<"uri">> => [string()]
+%% }
+-type content_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% content_delta_event() :: #{
+%%   <<"stderr">> => [string()],
+%%   <<"stdout">> => [string()]
+%% }
+-type content_delta_event() :: #{binary() => any()}.
+
+%% Example:
+%% content_start_event() :: #{}
+-type content_start_event() :: #{}.
+
+
+%% Example:
+%% content_stop_event() :: #{
+%%   <<"exitCode">> => [integer()],
+%%   <<"status">> => list(any())
+%% }
+-type content_stop_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_stats() :: #{
+%%   <<"mean">> => [float()],
+%%   <<"sampleSize">> => [integer()],
+%%   <<"variantName">> => [string()]
+%% }
+-type control_stats() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversational() :: #{
+%%   <<"content">> => list(),
+%%   <<"role">> => list(any())
+%% }
+-type conversational() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_b_test_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"enableOnCreate">> => [boolean()],
+%%   <<"evaluationConfig">> := list(),
+%%   <<"gatewayArn">> := string(),
+%%   <<"gatewayFilter">> => gateway_filter(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"variants">> := list(variant())
+%% }
+-type create_a_b_test_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_a_b_test_response() :: #{
+%%   <<"abTestArn">> => string(),
+%%   <<"abTestId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_a_b_test_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_input() :: #{
+%%   <<"actorId">> := string(),
+%%   <<"branch">> => branch(),
+%%   <<"clientToken">> => [string()],
+%%   <<"eventTimestamp">> := [non_neg_integer()],
+%%   <<"extractionMode">> => list(any()),
+%%   <<"metadata">> => map(),
+%%   <<"payload">> := list(list()),
+%%   <<"sessionId">> => string()
+%% }
+-type create_event_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_output() :: #{
+%%   <<"event">> => event()
+%% }
+-type create_event_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -214,25 +648,226 @@
 
 
 %% Example:
-%% conversational() :: #{
-%%   <<"content">> => list(),
-%%   <<"role">> => list(any())
+%% create_payment_instrument_response() :: #{
+%%   <<"paymentInstrument">> => payment_instrument()
 %% }
--type conversational() :: #{binary() => any()}.
+-type create_payment_instrument_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% live_view_stream() :: #{
-%%   <<"streamEndpoint">> => string()
+%% create_payment_session_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"expiryTimeInMinutes">> := [integer()],
+%%   <<"limits">> => session_limits(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"userId">> => string()
 %% }
--type live_view_stream() :: #{binary() => any()}.
+-type create_payment_session_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% recommendation_evaluator_reference() :: #{
-%%   <<"evaluatorArn">> => string()
+%% create_payment_session_response() :: #{
+%%   <<"paymentSession">> => payment_session()
 %% }
--type recommendation_evaluator_reference() :: #{binary() => any()}.
+-type create_payment_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% crypto_x402_payment_input() :: #{
+%%   <<"payload">> => any(),
+%%   <<"version">> => [string()]
+%% }
+-type crypto_x402_payment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% crypto_x402_payment_output() :: #{
+%%   <<"payload">> => any(),
+%%   <<"version">> => [string()]
+%% }
+-type crypto_x402_payment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_descriptor() :: #{
+%%   <<"inlineContent">> => string()
+%% }
+-type custom_descriptor() :: #{binary() => any()}.
+
+%% Example:
+%% delete_a_b_test_request() :: #{}
+-type delete_a_b_test_request() :: #{}.
+
+
+%% Example:
+%% delete_a_b_test_response() :: #{
+%%   <<"abTestArn">> => string(),
+%%   <<"abTestId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_a_b_test_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_batch_evaluation_request() :: #{}
+-type delete_batch_evaluation_request() :: #{}.
+
+
+%% Example:
+%% delete_batch_evaluation_response() :: #{
+%%   <<"batchEvaluationArn">> => string(),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_batch_evaluation_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_input() :: #{}
+-type delete_event_input() :: #{}.
+
+
+%% Example:
+%% delete_event_output() :: #{
+%%   <<"eventId">> => string()
+%% }
+-type delete_event_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_memory_record_input() :: #{}
+-type delete_memory_record_input() :: #{}.
+
+
+%% Example:
+%% delete_memory_record_output() :: #{
+%%   <<"memoryRecordId">> => string()
+%% }
+-type delete_memory_record_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_payment_instrument_request() :: #{
+%%   <<"paymentConnectorId">> := string(),
+%%   <<"paymentInstrumentId">> := string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type delete_payment_instrument_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_payment_instrument_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type delete_payment_instrument_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_payment_session_request() :: #{
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"paymentSessionId">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type delete_payment_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_payment_session_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type delete_payment_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommendation_request() :: #{}
+-type delete_recommendation_request() :: #{}.
+
+
+%% Example:
+%% delete_recommendation_response() :: #{
+%%   <<"recommendationId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% descriptors() :: #{
+%%   <<"a2a">> => a2a_descriptor(),
+%%   <<"agentSkills">> => agent_skills_descriptor(),
+%%   <<"custom">> => custom_descriptor(),
+%%   <<"mcp">> => mcp_descriptor()
+%% }
+-type descriptors() :: #{binary() => any()}.
+
+
+%% Example:
+%% duplicate_id_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type duplicate_id_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% efs_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"fileSystemArn">> => string(),
+%%   <<"mountPath">> => string()
+%% }
+-type efs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% embedded_crypto_wallet() :: #{
+%%   <<"linkedAccounts">> => list(list()),
+%%   <<"network">> => list(any()),
+%%   <<"redirectUrl">> => [string()],
+%%   <<"walletAddress">> => [string()]
+%% }
+-type embedded_crypto_wallet() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_request() :: #{
+%%   <<"evaluationInput">> := list(),
+%%   <<"evaluationReferenceInputs">> => list(evaluation_reference_input()),
+%%   <<"evaluationTarget">> => list()
+%% }
+-type evaluate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluate_response() :: #{
+%%   <<"evaluationResults">> => list(evaluation_result_content())
+%% }
+-type evaluate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_expected_trajectory() :: #{
+%%   <<"toolNames">> => list(string())
+%% }
+-type evaluation_expected_trajectory() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_job_results() :: #{
+%%   <<"evaluatorSummaries">> => list(evaluator_summary()),
+%%   <<"numberOfSessionsCompleted">> => [integer()],
+%%   <<"numberOfSessionsFailed">> => [integer()],
+%%   <<"numberOfSessionsIgnored">> => [integer()],
+%%   <<"numberOfSessionsInProgress">> => [integer()],
+%%   <<"totalNumberOfSessions">> => [integer()]
+%% }
+-type evaluation_job_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_reference_input() :: #{
+%%   <<"assertions">> => list(list()),
+%%   <<"context">> => list(),
+%%   <<"expectedResponse">> => list(),
+%%   <<"expectedTrajectory">> => evaluation_expected_trajectory()
+%% }
+-type evaluation_reference_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -253,291 +888,50 @@
 
 
 %% Example:
-%% batch_update_memory_records_input() :: #{
-%%   <<"records">> := list(memory_record_update_input())
+%% evaluator() :: #{
+%%   <<"evaluatorId">> => string()
 %% }
--type batch_update_memory_records_input() :: #{binary() => any()}.
+-type evaluator() :: #{binary() => any()}.
 
 
 %% Example:
-%% root_cause_cluster() :: #{
-%%   <<"affectedSessionCount">> => [integer()],
-%%   <<"affectedSessions">> => list(affected_session()),
-%%   <<"clusterId">> => [integer()],
-%%   <<"name">> => [string()],
-%%   <<"recommendation">> => [string()],
-%%   <<"rootCause">> => [string()]
+%% evaluator_metric() :: #{
+%%   <<"controlStats">> => control_stats(),
+%%   <<"evaluatorArn">> => [string()],
+%%   <<"variantResults">> => list(variant_result())
 %% }
--type root_cause_cluster() :: #{binary() => any()}.
+-type evaluator_metric() :: #{binary() => any()}.
 
 
 %% Example:
-%% retrieve_memory_records_output() :: #{
-%%   <<"memoryRecordSummaries">> => list(memory_record_summary()),
-%%   <<"nextToken">> => string()
+%% evaluator_statistics() :: #{
+%%   <<"averageScore">> => [float()]
 %% }
--type retrieve_memory_records_output() :: #{binary() => any()}.
+-type evaluator_statistics() :: #{binary() => any()}.
 
 
 %% Example:
-%% automation_stream() :: #{
-%%   <<"streamEndpoint">> => string(),
-%%   <<"streamStatus">> => list(any())
+%% evaluator_summary() :: #{
+%%   <<"evaluatorId">> => [string()],
+%%   <<"statistics">> => evaluator_statistics(),
+%%   <<"totalEvaluated">> => [integer()],
+%%   <<"totalFailed">> => [integer()]
 %% }
--type automation_stream() :: #{binary() => any()}.
+-type evaluator_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% a2a_descriptor() :: #{
-%%   <<"agentCard">> => agent_card_definition()
-%% }
--type a2a_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% mouse_drag_arguments() :: #{
-%%   <<"button">> => list(any()),
-%%   <<"endX">> => [integer()],
-%%   <<"endY">> => [integer()],
-%%   <<"startX">> => [integer()],
-%%   <<"startY">> => [integer()]
-%% }
--type mouse_drag_arguments() :: #{binary() => any()}.
-
-%% Example:
-%% stop_batch_evaluation_request() :: #{}
--type stop_batch_evaluation_request() :: #{}.
-
-
-%% Example:
-%% key_press_result() :: #{
-%%   <<"error">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type key_press_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_memory_records_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"records">> := list(memory_record_create_input())
-%% }
--type batch_create_memory_records_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% ground_truth_turn() :: #{
-%%   <<"expectedResponse">> => list(),
-%%   <<"input">> => list()
-%% }
--type ground_truth_turn() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_evaluation_config() :: #{
-%%   <<"evaluators">> => list(recommendation_evaluator_reference())
-%% }
--type recommendation_evaluation_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_summary() :: #{
+%% event() :: #{
 %%   <<"actorId">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"branch">> => branch(),
+%%   <<"eventId">> => string(),
+%%   <<"eventTimestamp">> => [non_neg_integer()],
+%%   <<"memoryId">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"payload">> => list(list()),
 %%   <<"sessionId">> => string()
 %% }
--type session_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% mouse_scroll_result() :: #{
-%%   <<"error">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type mouse_scroll_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% inline_ground_truth() :: #{
-%%   <<"assertions">> => list(list()),
-%%   <<"expectedTrajectory">> => evaluation_expected_trajectory(),
-%%   <<"turns">> => list(ground_truth_turn())
-%% }
--type inline_ground_truth() :: #{binary() => any()}.
-
-
-%% Example:
-%% duplicate_id_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type duplicate_id_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% memory_record_output() :: #{
-%%   <<"errorCode">> => [integer()],
-%%   <<"errorMessage">> => [string()],
-%%   <<"memoryRecordId">> => string(),
-%%   <<"requestIdentifier">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type memory_record_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_actors_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_actors_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_code_interpreter_request() :: #{
-%%   <<"arguments">> => tool_arguments(),
-%%   <<"name">> := list(any()),
-%%   <<"sessionId">> => string(),
-%%   <<"traceId">> => [string()],
-%%   <<"traceParent">> => [string()]
-%% }
--type invoke_code_interpreter_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% per_variant_online_evaluation_config() :: #{
-%%   <<"name">> => string(),
-%%   <<"onlineEvaluationConfigArn">> => string()
-%% }
--type per_variant_online_evaluation_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% retryable_conflict_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type retryable_conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% proxy_configuration() :: #{
-%%   <<"bypass">> => proxy_bypass(),
-%%   <<"proxies">> => list(list())
-%% }
--type proxy_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_browser_sessions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_browser_sessions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% custom_descriptor() :: #{
-%%   <<"inlineContent">> => string()
-%% }
--type custom_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_agent_runtime_command_request_body() :: #{
-%%   <<"command">> => [string()],
-%%   <<"timeout">> => [integer()]
-%% }
--type invoke_agent_runtime_command_request_body() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_browser_request() :: #{
-%%   <<"action">> := list(),
-%%   <<"sessionId">> := string()
-%% }
--type invoke_browser_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_output_config() :: #{
-%%   <<"logGroupName">> => [string()],
-%%   <<"logStreamName">> => [string()]
-%% }
--type cloud_watch_output_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_intent_affected_session() :: #{
-%%   <<"sessionId">> => [string()],
-%%   <<"userMessages">> => list([string()]())
-%% }
--type user_intent_affected_session() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_payment_instruments_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"paymentInstruments">> => list(payment_instrument_summary())
-%% }
--type list_payment_instruments_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_stop_event() :: #{
-%%   <<"exitCode">> => [integer()],
-%%   <<"status">> => list(any())
-%% }
--type content_stop_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% memory_record_create_input() :: #{
-%%   <<"content">> => list(),
-%%   <<"memoryStrategyId">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"namespaces">> => list(string()),
-%%   <<"requestIdentifier">> => string(),
-%%   <<"timestamp">> => [non_neg_integer()]
-%% }
--type memory_record_create_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% extraction_job_filter_input() :: #{
-%%   <<"actorId">> => [string()],
-%%   <<"sessionId">> => [string()],
-%%   <<"status">> => list(any()),
-%%   <<"strategyId">> => [string()]
-%% }
--type extraction_job_filter_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_memory_records_input() :: #{
-%%   <<"records">> := list(memory_record_delete_input())
-%% }
--type batch_delete_memory_records_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_access_token_for_j_w_t_response() :: #{
-%%   <<"workloadAccessToken">> => string()
-%% }
--type get_workload_access_token_for_j_w_t_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_access_token_request() :: #{
-%%   <<"workloadName">> := string()
-%% }
--type get_workload_access_token_request() :: #{binary() => any()}.
+-type event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -550,178 +944,12 @@
 
 
 %% Example:
-%% harness_content_block_start_event() :: #{
-%%   <<"contentBlockIndex">> => [integer()],
-%%   <<"start">> => list()
+%% execution_summary_affected_session() :: #{
+%%   <<"approachTaken">> => [string()],
+%%   <<"finalOutcome">> => [string()],
+%%   <<"sessionId">> => [string()]
 %% }
--type harness_content_block_start_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluator_statistics() :: #{
-%%   <<"averageScore">> => [float()]
-%% }
--type evaluator_statistics() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_agent_runtime_command_response() :: #{
-%%   <<"baggage">> => [string()],
-%%   <<"contentType">> => [string()],
-%%   <<"runtimeSessionId">> => string(),
-%%   <<"statusCode">> => integer(),
-%%   <<"stream">> => list(),
-%%   <<"traceId">> => [string()],
-%%   <<"traceParent">> => [string()],
-%%   <<"traceState">> => [string()]
-%% }
--type invoke_agent_runtime_command_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_skill_aws_skills_source() :: #{
-%%   <<"paths">> => list(string())
-%% }
--type harness_skill_aws_skills_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% external_proxy() :: #{
-%%   <<"credentials">> => list(),
-%%   <<"domainPatterns">> => list(string()),
-%%   <<"port">> => [integer()],
-%%   <<"server">> => string()
-%% }
--type external_proxy() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_skill_s3_source() :: #{
-%%   <<"uri">> => string()
-%% }
--type harness_skill_s3_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_a_b_test_response() :: #{
-%%   <<"abTestArn">> => string(),
-%%   <<"abTestId">> => string(),
-%%   <<"executionStatus">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type update_a_b_test_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_api_key_request() :: #{
-%%   <<"resourceCredentialProviderName">> := string(),
-%%   <<"workloadIdentityToken">> := string()
-%% }
--type get_resource_api_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_interpreter_session_summary() :: #{
-%%   <<"codeInterpreterIdentifier">> => [string()],
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type code_interpreter_session_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% control_stats() :: #{
-%%   <<"mean">> => [float()],
-%%   <<"sampleSize">> => [integer()],
-%%   <<"variantName">> => [string()]
-%% }
--type control_stats() :: #{binary() => any()}.
-
-
-%% Example:
-%% failure_category_cluster() :: #{
-%%   <<"affectedSessionCount">> => [integer()],
-%%   <<"clusterId">> => [integer()],
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"subCategories">> => list(failure_sub_category_cluster())
-%% }
--type failure_category_cluster() :: #{binary() => any()}.
-
-
-%% Example:
-%% complete_resource_token_auth_request() :: #{
-%%   <<"sessionUri">> := string(),
-%%   <<"userIdentifier">> := list()
-%% }
--type complete_resource_token_auth_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_recommendation_request() :: #{}
--type get_recommendation_request() :: #{}.
-
-
-%% Example:
-%% memory_record_update_input() :: #{
-%%   <<"content">> => list(),
-%%   <<"memoryRecordId">> => string(),
-%%   <<"memoryStrategyId">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"namespaces">> => list(string()),
-%%   <<"timestamp">> => [non_neg_integer()]
-%% }
--type memory_record_update_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% mouse_click_result() :: #{
-%%   <<"error">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type mouse_click_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_a_b_test_response() :: #{
-%%   <<"abTestArn">> => string(),
-%%   <<"abTestId">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"executionStatus">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type create_a_b_test_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_batch_evaluations_response() :: #{
-%%   <<"batchEvaluations">> => list(batch_evaluation_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_batch_evaluations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_agent_core_gateway_config() :: #{
-%%   <<"gatewayArn">> => string(),
-%%   <<"outboundAuth">> => list()
-%% }
--type harness_agent_core_gateway_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_logs_trace_config() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"logGroupArns">> => list([string()]()),
-%%   <<"rule">> => cloud_watch_logs_rule(),
-%%   <<"serviceNames">> => list(string()),
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type cloud_watch_logs_trace_config() :: #{binary() => any()}.
+-type execution_summary_affected_session() :: #{binary() => any()}.
 
 
 %% Example:
@@ -736,509 +964,37 @@
 
 
 %% Example:
-%% harness_skill_git_source() :: #{
-%%   <<"auth">> => harness_skill_git_auth(),
-%%   <<"path">> => [string()],
-%%   <<"url">> => string()
+%% execution_summary_clustering_result_content() :: #{
+%%   <<"executionSummaries">> => list(execution_summary_cluster())
 %% }
--type harness_skill_git_source() :: #{binary() => any()}.
+-type execution_summary_clustering_result_content() :: #{binary() => any()}.
 
 
 %% Example:
-%% stop_browser_session_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"sessionId">> := string(),
-%%   <<"traceId">> => [string()],
-%%   <<"traceParent">> => [string()]
+%% external_proxy() :: #{
+%%   <<"credentials">> => list(),
+%%   <<"domainPatterns">> => list(string()),
+%%   <<"port">> => [integer()],
+%%   <<"server">> => string()
 %% }
--type stop_browser_session_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_memory_record_input() :: #{}
--type delete_memory_record_input() :: #{}.
+-type external_proxy() :: #{binary() => any()}.
 
 
 %% Example:
-%% linked_account_developer_jwt() :: #{
-%%   <<"kid">> => string(),
-%%   <<"sub">> => [string()]
-%% }
--type linked_account_developer_jwt() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_runtime_session_response() :: #{
-%%   <<"runtimeSessionId">> => string(),
-%%   <<"statusCode">> => integer()
-%% }
--type stop_runtime_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% variant_configuration() :: #{
-%%   <<"configurationBundle">> => configuration_bundle_ref(),
-%%   <<"target">> => target_ref()
-%% }
--type variant_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_payment_session_request() :: #{
-%%   <<"agentName">> => string(),
-%%   <<"paymentManagerArn">> := string(),
-%%   <<"paymentSessionId">> := string(),
-%%   <<"userId">> => string()
-%% }
--type get_payment_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% mouse_drag_result() :: #{
-%%   <<"error">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type mouse_drag_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_browser_response() :: #{
-%%   <<"result">> => list(),
-%%   <<"sessionId">> => string()
-%% }
--type invoke_browser_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_payment_instrument_response() :: #{
-%%   <<"status">> => list(any())
-%% }
--type delete_payment_instrument_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_access_token_response() :: #{
-%%   <<"workloadAccessToken">> => string()
-%% }
--type get_workload_access_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_description_input() :: #{
-%%   <<"toolDescription">> => list(),
-%%   <<"toolName">> => string()
-%% }
--type tool_description_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_memory_extraction_jobs_output() :: #{
-%%   <<"jobs">> => list(extraction_job_metadata()),
-%%   <<"nextToken">> => string()
-%% }
--type list_memory_extraction_jobs_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_a_b_test_request() :: #{}
--type delete_a_b_test_request() :: #{}.
-
-
-%% Example:
-%% tool_arguments() :: #{
-%%   <<"clearContext">> => [boolean()],
-%%   <<"code">> => string(),
-%%   <<"command">> => string(),
-%%   <<"content">> => list(input_content_block()),
-%%   <<"directoryPath">> => string(),
-%%   <<"language">> => list(any()),
-%%   <<"path">> => string(),
-%%   <<"paths">> => list(string()),
-%%   <<"runtime">> => list(any()),
-%%   <<"taskId">> => string()
-%% }
--type tool_arguments() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_block() :: #{
-%%   <<"data">> => [binary()],
-%%   <<"description">> => [string()],
-%%   <<"mimeType">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"resource">> => resource_content(),
-%%   <<"size">> => [float()],
-%%   <<"text">> => [string()],
-%%   <<"type">> => list(any()),
-%%   <<"uri">> => [string()]
-%% }
--type content_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% coinbase_cdp_token_response_output() :: #{
-%%   <<"bearerToken">> => string(),
-%%   <<"walletAuthToken">> => string()
-%% }
--type coinbase_cdp_token_response_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_memory_extraction_jobs_input() :: #{
-%%   <<"filter">> => extraction_job_filter_input(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_memory_extraction_jobs_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% payment_instrument_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"paymentConnectorId">> => string(),
-%%   <<"paymentInstrumentId">> => string(),
-%%   <<"paymentInstrumentType">> => list(any()),
-%%   <<"paymentManagerArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"userId">> => string()
-%% }
--type payment_instrument_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_browser_session_request() :: #{
-%%   <<"sessionId">> := string()
-%% }
--type get_browser_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% view_port() :: #{
-%%   <<"height">> => integer(),
-%%   <<"width">> => integer()
-%% }
--type view_port() :: #{binary() => any()}.
-
-
-%% Example:
-%% input_content_block() :: #{
-%%   <<"blob">> => binary(),
-%%   <<"path">> => string(),
-%%   <<"text">> => string()
-%% }
--type input_content_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% process_payment_request() :: #{
-%%   <<"agentName">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"paymentInput">> := list(),
-%%   <<"paymentInstrumentId">> := string(),
-%%   <<"paymentManagerArn">> := string(),
-%%   <<"paymentSessionId">> := string(),
-%%   <<"paymentType">> := list(any()),
-%%   <<"userId">> => string()
-%% }
--type process_payment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_message() :: #{
-%%   <<"content">> => list(list()),
-%%   <<"role">> => list(any())
-%% }
--type harness_message() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_batch_evaluation_response() :: #{
-%%   <<"batchEvaluationArn">> => string(),
-%%   <<"batchEvaluationId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_batch_evaluation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_update_memory_records_output() :: #{
-%%   <<"failedRecords">> => list(memory_record_output()),
-%%   <<"successfulRecords">> => list(memory_record_output())
-%% }
--type batch_update_memory_records_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_payment_token_request() :: #{
-%%   <<"paymentTokenRequest">> := list(),
-%%   <<"resourceCredentialProviderName">> := string(),
-%%   <<"workloadIdentityToken">> := string()
-%% }
--type get_resource_payment_token_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_tool_result_block() :: #{
-%%   <<"content">> => list(list()),
-%%   <<"status">> => list(any()),
-%%   <<"toolUseId">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type harness_tool_result_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_tool_use_block_start() :: #{
-%%   <<"name">> => string(),
-%%   <<"serverName">> => [string()],
-%%   <<"toolUseId">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type harness_tool_use_block_start() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_code_interpreter_session_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"sessionId">> := string(),
-%%   <<"traceId">> => [string()],
-%%   <<"traceParent">> => [string()]
-%% }
--type stop_code_interpreter_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_memory_extraction_job_input() :: #{
-%%   <<"clientToken">> => [string()],
-%%   <<"extractionJob">> := extraction_job()
-%% }
--type start_memory_extraction_job_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_filter_config() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type session_filter_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_filter_config() :: #{
-%%   <<"sessionIds">> => list([string()]()),
-%%   <<"timeRange">> => session_filter_config()
-%% }
--type cloud_watch_filter_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% affected_session() :: #{
-%%   <<"explanation">> => [string()],
-%%   <<"failureSpans">> => list(failure_span_detail()),
-%%   <<"fixType">> => [string()],
-%%   <<"recommendation">> => [string()],
-%%   <<"sessionId">> => [string()]
-%% }
--type affected_session() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_shortcut_result() :: #{
-%%   <<"error">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type key_shortcut_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_recommendation_response() :: #{
-%%   <<"recommendationId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_recommendation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_inline_function_config() :: #{
-%%   <<"description">> => string(),
-%%   <<"inputSchema">> => any()
-%% }
--type harness_inline_function_config() :: #{binary() => any()}.
-
-%% Example:
-%% content_start_event() :: #{}
--type content_start_event() :: #{}.
-
-
-%% Example:
-%% get_payment_session_response() :: #{
-%%   <<"paymentSession">> => payment_session()
-%% }
--type get_payment_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttled_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type throttled_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_browser_session_response() :: #{
-%%   <<"browserIdentifier">> => [string()],
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"sessionId">> => string(),
-%%   <<"streams">> => browser_session_stream()
-%% }
--type start_browser_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_result_configuration_bundle() :: #{
-%%   <<"bundleArn">> => string(),
-%%   <<"versionId">> => string()
-%% }
--type recommendation_result_configuration_bundle() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_browser_session_request() :: #{
-%%   <<"certificates">> => list(certificate()),
-%%   <<"clientToken">> => string(),
-%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
-%%   <<"extensions">> => list(browser_extension()),
-%%   <<"name">> => string(),
-%%   <<"profileConfiguration">> => browser_profile_configuration(),
-%%   <<"proxyConfiguration">> => proxy_configuration(),
-%%   <<"sessionTimeoutSeconds">> => integer(),
-%%   <<"traceId">> => [string()],
-%%   <<"traceParent">> => [string()],
-%%   <<"viewPort">> => view_port()
-%% }
--type start_browser_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% branch_filter() :: #{
-%%   <<"includeParentBranches">> => [boolean()],
-%%   <<"name">> => string()
-%% }
--type branch_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_memory_extraction_job_output() :: #{
+%% extraction_job() :: #{
 %%   <<"jobId">> => [string()]
 %% }
--type start_memory_extraction_job_output() :: #{binary() => any()}.
+-type extraction_job() :: #{binary() => any()}.
 
 
 %% Example:
-%% evaluation_reference_input() :: #{
-%%   <<"assertions">> => list(list()),
-%%   <<"context">> => list(),
-%%   <<"expectedResponse">> => list(),
-%%   <<"expectedTrajectory">> => evaluation_expected_trajectory()
+%% extraction_job_filter_input() :: #{
+%%   <<"actorId">> => [string()],
+%%   <<"sessionId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"strategyId">> => [string()]
 %% }
--type evaluation_reference_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_a_b_test_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"enableOnCreate">> => [boolean()],
-%%   <<"evaluationConfig">> := list(),
-%%   <<"gatewayArn">> := string(),
-%%   <<"gatewayFilter">> => gateway_filter(),
-%%   <<"name">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"variants">> := list(variant())
-%% }
--type create_a_b_test_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_oauth2_token_request() :: #{
-%%   <<"audiences">> => list(string()),
-%%   <<"customParameters">> => map(),
-%%   <<"customState">> => string(),
-%%   <<"forceAuthentication">> => [boolean()],
-%%   <<"oauth2Flow">> := list(any()),
-%%   <<"resourceCredentialProviderName">> := string(),
-%%   <<"resourceOauth2ReturnUrl">> => string(),
-%%   <<"resources">> => list(string()),
-%%   <<"scopes">> := list(string()),
-%%   <<"sessionUri">> => string(),
-%%   <<"workloadIdentityToken">> := string()
-%% }
--type get_resource_oauth2_token_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% screenshot_arguments() :: #{
-%%   <<"format">> => list(any())
-%% }
--type screenshot_arguments() :: #{binary() => any()}.
-
-
-%% Example:
-%% conflict_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type conflict_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_memory_records_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"memoryStrategyId">> => string(),
-%%   <<"metadataFilters">> => list(memory_metadata_filter_expression()),
-%%   <<"namespace">> => string(),
-%%   <<"namespacePath">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_memory_records_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% amount() :: #{
-%%   <<"currency">> => list(any()),
-%%   <<"value">> => [string()]
-%% }
--type amount() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_recommendation_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> := string(),
-%%   <<"recommendationConfig">> := list(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := list(any())
-%% }
--type start_recommendation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_token_usage() :: #{
-%%   <<"cacheReadInputTokens">> => [integer()],
-%%   <<"cacheWriteInputTokens">> => [integer()],
-%%   <<"inputTokens">> => [integer()],
-%%   <<"outputTokens">> => [integer()],
-%%   <<"totalTokens">> => [integer()]
-%% }
--type harness_token_usage() :: #{binary() => any()}.
+-type extraction_job_filter_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1255,45 +1011,41 @@
 
 
 %% Example:
-%% mouse_move_arguments() :: #{
-%%   <<"x">> => [integer()],
-%%   <<"y">> => [integer()]
+%% failure_analysis_result_content() :: #{
+%%   <<"failures">> => list(failure_category_cluster())
 %% }
--type mouse_move_arguments() :: #{binary() => any()}.
+-type failure_analysis_result_content() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_payment_instrument_balance_response() :: #{
-%%   <<"paymentInstrumentId">> => string(),
-%%   <<"tokenBalance">> => token_balance()
+%% failure_category_cluster() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"clusterId">> => [integer()],
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"subCategories">> => list(failure_sub_category_cluster())
 %% }
--type get_payment_instrument_balance_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_input() :: #{}
--type get_event_input() :: #{}.
-
-
-%% Example:
-%% update_a_b_test_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"description">> => string(),
-%%   <<"evaluationConfig">> => list(),
-%%   <<"executionStatus">> => list(any()),
-%%   <<"gatewayFilter">> => gateway_filter(),
-%%   <<"name">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"variants">> => list(variant())
-%% }
--type update_a_b_test_request() :: #{binary() => any()}.
+-type failure_category_cluster() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_workload_access_token_for_j_w_t_request() :: #{
-%%   <<"userToken">> := string(),
-%%   <<"workloadName">> := string()
+%% failure_span_detail() :: #{
+%%   <<"signals">> => list(insights_failure_signal()),
+%%   <<"spanId">> => [string()],
+%%   <<"traceId">> => [string()]
 %% }
--type get_workload_access_token_for_j_w_t_request() :: #{binary() => any()}.
+-type failure_span_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% failure_sub_category_cluster() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"clusterId">> => [integer()],
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"rootCauses">> => list(root_cause_cluster())
+%% }
+-type failure_sub_category_cluster() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1305,436 +1057,14 @@
 
 
 %% Example:
-%% tool_description_recommendation_result() :: #{
-%%   <<"configurationBundle">> => recommendation_result_configuration_bundle(),
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"tools">> => list(tool_description_output())
-%% }
--type tool_description_recommendation_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% a_b_test_summary() :: #{
-%%   <<"abTestArn">> => string(),
-%%   <<"abTestId">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"executionStatus">> => list(any()),
-%%   <<"gatewayArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type a_b_test_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% stripe_privy_token_response_output() :: #{
-%%   <<"appId">> => string(),
-%%   <<"authorizationSignature">> => string(),
-%%   <<"basicAuthToken">> => string(),
-%%   <<"requestExpiry">> => [float()]
-%% }
--type stripe_privy_token_response_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_recommendation_request() :: #{}
--type delete_recommendation_request() :: #{}.
-
-
-%% Example:
-%% registry_record_summary() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"descriptorType">> => list(any()),
-%%   <<"descriptors">> => descriptors(),
-%%   <<"name">> => string(),
-%%   <<"recordArn">> => string(),
-%%   <<"recordId">> => string(),
-%%   <<"registryArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"version">> => string()
-%% }
--type registry_record_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluator_metric() :: #{
-%%   <<"controlStats">> => control_stats(),
-%%   <<"evaluatorArn">> => [string()],
-%%   <<"variantResults">> => list(variant_result())
-%% }
--type evaluator_metric() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_logs_filter() :: #{
-%%   <<"key">> => [string()],
-%%   <<"operator">> => list(any()),
-%%   <<"value">> => list()
-%% }
--type cloud_watch_logs_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_type_arguments() :: #{
-%%   <<"text">> => [string()]
-%% }
--type key_type_arguments() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_registry_records_response() :: #{
-%%   <<"registryRecords">> => list(registry_record_summary())
-%% }
--type search_registry_records_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_code_interpreter_session_response() :: #{
-%%   <<"codeInterpreterIdentifier">> => [string()],
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"sessionId">> => string()
-%% }
--type start_code_interpreter_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_oauth2_token_response() :: #{
-%%   <<"accessToken">> => string(),
-%%   <<"authorizationUrl">> => string(),
-%%   <<"sessionStatus">> => list(any()),
-%%   <<"sessionUri">> => string()
-%% }
--type get_resource_oauth2_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_browser_stream_response() :: #{
-%%   <<"browserIdentifier">> => [string()],
-%%   <<"sessionId">> => string(),
-%%   <<"streams">> => browser_session_stream(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type update_browser_stream_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_code_interpreter_session_request() :: #{
-%%   <<"certificates">> => list(certificate()),
-%%   <<"clientToken">> => string(),
-%%   <<"name">> => string(),
-%%   <<"sessionTimeoutSeconds">> => integer(),
-%%   <<"traceId">> => [string()],
-%%   <<"traceParent">> => [string()]
-%% }
--type start_code_interpreter_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_tool_result_block_start() :: #{
-%%   <<"status">> => list(any()),
-%%   <<"toolUseId">> => string()
-%% }
--type harness_tool_result_block_start() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_agent_card_request() :: #{
-%%   <<"qualifier">> => [string()],
-%%   <<"runtimeSessionId">> => string()
-%% }
--type get_agent_card_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% mouse_move_result() :: #{
-%%   <<"error">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type mouse_move_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_agent_core_browser_config() :: #{
-%%   <<"browserArn">> => string()
-%% }
--type harness_agent_core_browser_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% memory_record_summary() :: #{
-%%   <<"content">> => list(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"memoryRecordId">> => string(),
-%%   <<"memoryStrategyId">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"namespaces">> => list(string()),
-%%   <<"score">> => [float()]
-%% }
--type memory_record_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_events_output() :: #{
-%%   <<"events">> => list(event()),
-%%   <<"nextToken">> => string()
-%% }
--type list_events_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_payment_session_response() :: #{
-%%   <<"paymentSession">> => payment_session()
-%% }
--type create_payment_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_type_result() :: #{
-%%   <<"error">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type key_type_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% save_browser_session_profile_request() :: #{
-%%   <<"browserIdentifier">> := [string()],
-%%   <<"clientToken">> => string(),
-%%   <<"sessionId">> := string(),
-%%   <<"traceId">> => [string()],
-%%   <<"traceParent">> => [string()]
-%% }
--type save_browser_session_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_batch_evaluation_response() :: #{
-%%   <<"batchEvaluationArn">> => string(),
-%%   <<"batchEvaluationId">> => string(),
-%%   <<"description">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type stop_batch_evaluation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% message_metadata() :: #{
-%%   <<"eventId">> => [string()],
-%%   <<"messageIndex">> => [integer()]
-%% }
--type message_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_create_memory_records_output() :: #{
-%%   <<"failedRecords">> => list(memory_record_output()),
-%%   <<"successfulRecords">> => list(memory_record_output())
-%% }
--type batch_create_memory_records_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_payment_instrument_balance_request() :: #{
-%%   <<"agentName">> => string(),
-%%   <<"chain">> := list(any()),
-%%   <<"paymentConnectorId">> := string(),
-%%   <<"paymentInstrumentId">> := string(),
-%%   <<"paymentManagerArn">> := string(),
-%%   <<"token">> := list(any()),
-%%   <<"userId">> => string()
-%% }
--type get_payment_instrument_balance_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% retrieve_memory_records_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"namespace">> => string(),
-%%   <<"namespacePath">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"searchCriteria">> := search_criteria()
-%% }
--type retrieve_memory_records_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_agent_runtime_command_request() :: #{
-%%   <<"accept">> => string(),
-%%   <<"accountId">> => [string()],
-%%   <<"baggage">> => [string()],
-%%   <<"body">> := invoke_agent_runtime_command_request_body(),
-%%   <<"contentType">> => string(),
-%%   <<"qualifier">> => [string()],
-%%   <<"runtimeSessionId">> => string(),
-%%   <<"traceId">> => [string()],
-%%   <<"traceParent">> => [string()],
-%%   <<"traceState">> => [string()]
-%% }
--type invoke_agent_runtime_command_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_input_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type invalid_input_exception() :: #{binary() => any()}.
-
-
-%% Example:
 %% gateway_filter() :: #{
 %%   <<"targetPaths">> => list(string())
 %% }
 -type gateway_filter() :: #{binary() => any()}.
 
-
 %% Example:
-%% get_code_interpreter_session_request() :: #{
-%%   <<"sessionId">> := string()
-%% }
--type get_code_interpreter_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_bundle_tool_entry() :: #{
-%%   <<"toolDescriptionJsonPath">> => [string()],
-%%   <<"toolName">> => string()
-%% }
--type configuration_bundle_tool_entry() :: #{binary() => any()}.
-
-
-%% Example:
-%% stripe_privy_token_request_input() :: #{
-%%   <<"includeAuthorizationSignature">> => [boolean()],
-%%   <<"requestBody">> => string(),
-%%   <<"requestHost">> => string(),
-%%   <<"requestPath">> => string()
-%% }
--type stripe_privy_token_request_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% browser_session_summary() :: #{
-%%   <<"browserIdentifier">> => [string()],
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type browser_session_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% response_chunk() :: #{
-%%   <<"contentDelta">> => content_delta_event(),
-%%   <<"contentStart">> => content_start_event(),
-%%   <<"contentStop">> => content_stop_event()
-%% }
--type response_chunk() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_browser_session_response() :: #{
-%%   <<"browserIdentifier">> => [string()],
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"sessionId">> => string()
-%% }
--type stop_browser_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_gemini_model_config() :: #{
-%%   <<"apiKeyArn">> => string(),
-%%   <<"maxTokens">> => integer(),
-%%   <<"modelId">> => string(),
-%%   <<"temperature">> => float(),
-%%   <<"topK">> => integer(),
-%%   <<"topP">> => float()
-%% }
--type harness_gemini_model_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_harness_request() :: #{
-%%   <<"actorId">> => [string()],
-%%   <<"allowedTools">> => list(string()),
-%%   <<"harnessArn">> := string(),
-%%   <<"maxIterations">> => [integer()],
-%%   <<"maxTokens">> => [integer()],
-%%   <<"messages">> := list(harness_message()),
-%%   <<"model">> => list(),
-%%   <<"qualifier">> => string(),
-%%   <<"runtimeSessionId">> := string(),
-%%   <<"runtimeUserId">> => [string()],
-%%   <<"skills">> => list(list()),
-%%   <<"systemPrompt">> => list(list()),
-%%   <<"timeoutSeconds">> => [integer()],
-%%   <<"tools">> => list(harness_tool())
-%% }
--type invoke_harness_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_press_arguments() :: #{
-%%   <<"key">> => [string()],
-%%   <<"presses">> => [integer()]
-%% }
--type key_press_arguments() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_content_block_delta_event() :: #{
-%%   <<"contentBlockIndex">> => [integer()],
-%%   <<"delta">> => list()
-%% }
--type harness_content_block_delta_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_result_structured_content() :: #{
-%%   <<"executionTime">> => [float()],
-%%   <<"exitCode">> => [integer()],
-%%   <<"stderr">> => [string()],
-%%   <<"stdout">> => [string()],
-%%   <<"taskId">> => [string()],
-%%   <<"taskStatus">> => list(any())
-%% }
--type tool_result_structured_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_logs_source() :: #{
-%%   <<"filterConfig">> => cloud_watch_filter_config(),
-%%   <<"logGroupNames">> => list([string()]()),
-%%   <<"serviceNames">> => list([string()]())
-%% }
--type cloud_watch_logs_source() :: #{binary() => any()}.
+%% get_a_b_test_request() :: #{}
+-type get_a_b_test_request() :: #{}.
 
 
 %% Example:
@@ -1763,775 +1093,11 @@
 
 
 %% Example:
-%% harness_metadata_event() :: #{
-%%   <<"metrics">> => harness_stream_metrics(),
-%%   <<"usage">> => harness_token_usage()
-%% }
--type harness_metadata_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_skill_git_auth() :: #{
-%%   <<"credentialArn">> => string(),
-%%   <<"username">> => [string()]
-%% }
--type harness_skill_git_auth() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_content_block_stop_event() :: #{
-%%   <<"contentBlockIndex">> => [integer()]
-%% }
--type harness_content_block_stop_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_location() :: #{
-%%   <<"bucket">> => [string()],
-%%   <<"prefix">> => [string()],
-%%   <<"versionId">> => [string()]
-%% }
--type s3_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% o_auth2_authentication() :: #{
-%%   <<"emailAddress">> => string(),
-%%   <<"name">> => [string()],
-%%   <<"sub">> => [string()],
-%%   <<"username">> => [string()]
-%% }
--type o_auth2_authentication() :: #{binary() => any()}.
-
-
-%% Example:
-%% basic_auth() :: #{
-%%   <<"secretArn">> => string()
-%% }
--type basic_auth() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_a_b_tests_response() :: #{
-%%   <<"abTests">> => list(a_b_test_summary()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_a_b_tests_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_prompt_recommendation_config() :: #{
-%%   <<"agentTraces">> => list(),
-%%   <<"evaluationConfig">> => recommendation_evaluation_config(),
-%%   <<"systemPrompt">> => list()
-%% }
--type system_prompt_recommendation_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_evaluation_trace_config() :: #{
-%%   <<"batchEvaluationArn">> => string()
-%% }
--type batch_evaluation_trace_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% proxy_bypass() :: #{
-%%   <<"domainPatterns">> => list(string())
-%% }
--type proxy_bypass() :: #{binary() => any()}.
-
-
-%% Example:
-%% failure_sub_category_cluster() :: #{
-%%   <<"affectedSessionCount">> => [integer()],
-%%   <<"clusterId">> => [integer()],
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()],
-%%   <<"rootCauses">> => list(root_cause_cluster())
-%% }
--type failure_sub_category_cluster() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution_summary_clustering_result_content() :: #{
-%%   <<"executionSummaries">> => list(execution_summary_cluster())
-%% }
--type execution_summary_clustering_result_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% tools_definition() :: #{
-%%   <<"inlineContent">> => string(),
-%%   <<"protocolVersion">> => string()
-%% }
--type tools_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% o_auth_credential_provider() :: #{
-%%   <<"customParameters">> => map(),
-%%   <<"defaultReturnUrl">> => string(),
-%%   <<"grantType">> => list(any()),
-%%   <<"providerArn">> => string(),
-%%   <<"scopes">> => list(string())
-%% }
--type o_auth_credential_provider() :: #{binary() => any()}.
-
-
-%% Example:
-%% save_browser_session_profile_response() :: #{
-%%   <<"browserIdentifier">> => [string()],
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"profileIdentifier">> => string(),
-%%   <<"sessionId">> => string()
-%% }
--type save_browser_session_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_event_output() :: #{
-%%   <<"eventId">> => string()
-%% }
--type delete_event_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% span_context() :: #{
-%%   <<"sessionId">> => [string()],
-%%   <<"spanId">> => [string()],
-%%   <<"traceId">> => [string()]
-%% }
--type span_context() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluate_response() :: #{
-%%   <<"evaluationResults">> => list(evaluation_result_content())
-%% }
--type evaluate_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_memory_record_input() :: #{}
--type get_memory_record_input() :: #{}.
-
-
-%% Example:
-%% server_definition() :: #{
-%%   <<"inlineContent">> => string(),
-%%   <<"schemaVersion">> => string()
-%% }
--type server_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_access_token_for_user_id_request() :: #{
-%%   <<"userId">> := string(),
-%%   <<"workloadName">> := string()
-%% }
--type get_workload_access_token_for_user_id_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% failure_span_detail() :: #{
-%%   <<"signals">> => list(insights_failure_signal()),
-%%   <<"spanId">> => [string()],
-%%   <<"traceId">> => [string()]
-%% }
--type failure_span_detail() :: #{binary() => any()}.
-
-%% Example:
-%% delete_batch_evaluation_request() :: #{}
--type delete_batch_evaluation_request() :: #{}.
-
-
-%% Example:
-%% mcp_descriptor() :: #{
-%%   <<"server">> => server_definition(),
-%%   <<"tools">> => tools_definition()
-%% }
--type mcp_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_tool() :: #{
-%%   <<"config">> => list(),
-%%   <<"name">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type harness_tool() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% configuration_bundle_ref() :: #{
-%%   <<"bundleArn">> => string(),
-%%   <<"bundleVersion">> => string()
-%% }
--type configuration_bundle_ref() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_intent_clustering_result_content() :: #{
-%%   <<"userIntents">> => list(user_intent_cluster())
-%% }
--type user_intent_clustering_result_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_memory_record_output() :: #{
-%%   <<"memoryRecord">> => memory_record()
-%% }
--type get_memory_record_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_tool_use_block() :: #{
-%%   <<"input">> => any(),
-%%   <<"name">> => string(),
-%%   <<"serverName">> => [string()],
-%%   <<"toolUseId">> => string(),
-%%   <<"type">> => list(any())
-%% }
--type harness_tool_use_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_registry_records_request() :: #{
-%%   <<"filters">> => any(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"registryIds">> := list(string()),
-%%   <<"searchQuery">> := [string()]
-%% }
--type search_registry_records_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_payment_sessions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"paymentSessions">> => list(payment_session_summary())
-%% }
--type list_payment_sessions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_runtime_session_request() :: #{
-%%   <<"clientToken">> => string(),
+%% get_agent_card_request() :: #{
 %%   <<"qualifier">> => [string()],
-%%   <<"runtimeSessionId">> := string()
+%%   <<"runtimeSessionId">> => string()
 %% }
--type stop_runtime_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% certificate() :: #{
-%%   <<"location">> => list()
-%% }
--type certificate() :: #{binary() => any()}.
-
-%% Example:
-%% get_batch_evaluation_request() :: #{}
--type get_batch_evaluation_request() :: #{}.
-
-
-%% Example:
-%% tool_description_text_input() :: #{
-%%   <<"tools">> => list(tool_description_input())
-%% }
--type tool_description_text_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_payment_token_response() :: #{
-%%   <<"paymentTokenResponse">> => list()
-%% }
--type get_resource_payment_token_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% failure_analysis_result_content() :: #{
-%%   <<"failures">> => list(failure_category_cluster())
-%% }
--type failure_analysis_result_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_filter() :: #{
-%%   <<"eventFilter">> => list(any())
-%% }
--type session_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% event() :: #{
-%%   <<"actorId">> => string(),
-%%   <<"branch">> => branch(),
-%%   <<"eventId">> => string(),
-%%   <<"eventTimestamp">> => [non_neg_integer()],
-%%   <<"memoryId">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"payload">> => list(list()),
-%%   <<"sessionId">> => string()
-%% }
--type event() :: #{binary() => any()}.
-
-
-%% Example:
-%% screenshot_result() :: #{
-%%   <<"data">> => [binary()],
-%%   <<"error">> => [string()],
-%%   <<"status">> => list(any())
-%% }
--type screenshot_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_events_input() :: #{
-%%   <<"filter">> => filter_input(),
-%%   <<"includePayloads">> => [boolean()],
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_events_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% skill_definition() :: #{
-%%   <<"inlineContent">> => string(),
-%%   <<"schemaVersion">> => string()
-%% }
--type skill_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_message_stop_event() :: #{
-%%   <<"stopReason">> => list(any())
-%% }
--type harness_message_stop_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% memory_record() :: #{
-%%   <<"content">> => list(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"memoryRecordId">> => string(),
-%%   <<"memoryStrategyId">> => string(),
-%%   <<"metadata">> => map(),
-%%   <<"namespaces">> => list(string())
-%% }
--type memory_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_message_start_event() :: #{
-%%   <<"role">> => list(any())
-%% }
--type harness_message_start_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% user_intent_cluster() :: #{
-%%   <<"affectedSessionCount">> => [integer()],
-%%   <<"affectedSessions">> => list(user_intent_affected_session()),
-%%   <<"clusterId">> => [integer()],
-%%   <<"description">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type user_intent_cluster() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_input() :: #{
-%%   <<"actorId">> := string(),
-%%   <<"branch">> => branch(),
-%%   <<"clientToken">> => [string()],
-%%   <<"eventTimestamp">> := [non_neg_integer()],
-%%   <<"extractionMode">> => list(any()),
-%%   <<"metadata">> => map(),
-%%   <<"payload">> := list(list()),
-%%   <<"sessionId">> => string()
-%% }
--type create_event_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% confidence_interval() :: #{
-%%   <<"lower">> => [float()],
-%%   <<"upper">> => [float()]
-%% }
--type confidence_interval() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_batch_evaluations_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_batch_evaluations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_reasoning_text_block() :: #{
-%%   <<"signature">> => [string()],
-%%   <<"text">> => [string()]
-%% }
--type harness_reasoning_text_block() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_payment_instrument_request() :: #{
-%%   <<"paymentConnectorId">> := string(),
-%%   <<"paymentInstrumentId">> := string(),
-%%   <<"paymentManagerArn">> := string(),
-%%   <<"userId">> => string()
-%% }
--type delete_payment_instrument_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_batch_evaluation_request() :: #{
-%%   <<"batchEvaluationName">> := string(),
-%%   <<"clientToken">> => string(),
-%%   <<"dataSourceConfig">> := list(),
-%%   <<"description">> => string(),
-%%   <<"evaluationMetadata">> => list(),
-%%   <<"evaluators">> => list(evaluator()),
-%%   <<"insights">> => list(insight()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"tags">> => map()
-%% }
--type start_batch_evaluation_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_payment_session_request() :: #{
-%%   <<"paymentManagerArn">> := string(),
-%%   <<"paymentSessionId">> := string(),
-%%   <<"userId">> => string()
-%% }
--type delete_payment_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% token_usage() :: #{
-%%   <<"inputTokens">> => [integer()],
-%%   <<"outputTokens">> => [integer()],
-%%   <<"totalTokens">> => [integer()]
-%% }
--type token_usage() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_agent_runtime_response() :: #{
-%%   <<"baggage">> => [string()],
-%%   <<"contentType">> => [string()],
-%%   <<"mcpProtocolVersion">> => [string()],
-%%   <<"mcpSessionId">> => string(),
-%%   <<"response">> => binary(),
-%%   <<"runtimeSessionId">> => string(),
-%%   <<"statusCode">> => integer(),
-%%   <<"traceId">> => [string()],
-%%   <<"traceParent">> => [string()],
-%%   <<"traceState">> => [string()]
-%% }
--type invoke_agent_runtime_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% mouse_click_arguments() :: #{
-%%   <<"button">> => list(any()),
-%%   <<"clickCount">> => [integer()],
-%%   <<"x">> => [integer()],
-%%   <<"y">> => [integer()]
-%% }
--type mouse_click_arguments() :: #{binary() => any()}.
-
-
-%% Example:
-%% secrets_manager_location() :: #{
-%%   <<"secretArn">> => string()
-%% }
--type secrets_manager_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_tool_use_block_delta() :: #{
-%%   <<"input">> => string()
-%% }
--type harness_tool_use_block_delta() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_metadata_shape() :: #{
-%%   <<"groundTruth">> => list(),
-%%   <<"metadata">> => map(),
-%%   <<"sessionId">> => [string()],
-%%   <<"testScenarioId">> => [string()]
-%% }
--type session_metadata_shape() :: #{binary() => any()}.
-
-
-%% Example:
-%% embedded_crypto_wallet() :: #{
-%%   <<"linkedAccounts">> => list(list()),
-%%   <<"network">> => list(any()),
-%%   <<"redirectUrl">> => [string()],
-%%   <<"walletAddress">> => [string()]
-%% }
--type embedded_crypto_wallet() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluator() :: #{
-%%   <<"evaluatorId">> => string()
-%% }
--type evaluator() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_agent_runtime_request() :: #{
-%%   <<"accept">> => string(),
-%%   <<"accountId">> => [string()],
-%%   <<"baggage">> => [string()],
-%%   <<"contentType">> => string(),
-%%   <<"mcpProtocolVersion">> => string(),
-%%   <<"mcpSessionId">> => string(),
-%%   <<"payload">> := binary(),
-%%   <<"qualifier">> => [string()],
-%%   <<"runtimeSessionId">> => string(),
-%%   <<"runtimeUserId">> => string(),
-%%   <<"traceId">> => [string()],
-%%   <<"traceParent">> => [string()],
-%%   <<"traceState">> => [string()]
-%% }
--type invoke_agent_runtime_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_lite_llm_model_config() :: #{
-%%   <<"additionalParams">> => [any()],
-%%   <<"apiBase">> => string(),
-%%   <<"apiKeyArn">> => string(),
-%%   <<"maxTokens">> => integer(),
-%%   <<"modelId">> => string(),
-%%   <<"temperature">> => float(),
-%%   <<"topP">> => float()
-%% }
--type harness_lite_llm_model_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_browser_session_response() :: #{
-%%   <<"browserIdentifier">> => [string()],
-%%   <<"certificates">> => list(certificate()),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
-%%   <<"extensions">> => list(browser_extension()),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"profileConfiguration">> => browser_profile_configuration(),
-%%   <<"proxyConfiguration">> => proxy_configuration(),
-%%   <<"sessionId">> => string(),
-%%   <<"sessionReplayArtifact">> => [string()],
-%%   <<"sessionTimeoutSeconds">> => integer(),
-%%   <<"status">> => list(any()),
-%%   <<"streams">> => browser_session_stream(),
-%%   <<"viewPort">> => view_port()
-%% }
--type get_browser_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% key_shortcut_arguments() :: #{
-%%   <<"keys">> => list([string()]())
-%% }
--type key_shortcut_arguments() :: #{binary() => any()}.
-
-%% Example:
-%% complete_resource_token_auth_response() :: #{}
--type complete_resource_token_auth_response() :: #{}.
-
-
-%% Example:
-%% memory_record_delete_input() :: #{
-%%   <<"memoryRecordId">> => string()
-%% }
--type memory_record_delete_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_content() :: #{
-%%   <<"blob">> => [binary()],
-%%   <<"mimeType">> => [string()],
-%%   <<"text">> => [string()],
-%%   <<"type">> => list(any()),
-%%   <<"uri">> => [string()]
-%% }
--type resource_content() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_bedrock_model_config() :: #{
-%%   <<"additionalParams">> => [any()],
-%%   <<"apiFormat">> => list(any()),
-%%   <<"maxTokens">> => integer(),
-%%   <<"modelId">> => string(),
-%%   <<"temperature">> => float(),
-%%   <<"topP">> => float()
-%% }
--type harness_bedrock_model_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% variant_result() :: #{
-%%   <<"absoluteChange">> => [float()],
-%%   <<"confidenceInterval">> => confidence_interval(),
-%%   <<"isSignificant">> => [boolean()],
-%%   <<"mean">> => [float()],
-%%   <<"pValue">> => [float()],
-%%   <<"percentChange">> => [float()],
-%%   <<"sampleSize">> => [integer()],
-%%   <<"variantName">> => [string()]
-%% }
--type variant_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% token_balance() :: #{
-%%   <<"amount">> => [string()],
-%%   <<"chain">> => list(any()),
-%%   <<"decimals">> => [integer()],
-%%   <<"network">> => list(any()),
-%%   <<"token">> => list(any())
-%% }
--type token_balance() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_browser_sessions_response() :: #{
-%%   <<"items">> => list(browser_session_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_browser_sessions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% browser_extension() :: #{
-%%   <<"location">> => list()
-%% }
--type browser_extension() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_open_ai_model_config() :: #{
-%%   <<"additionalParams">> => [any()],
-%%   <<"apiFormat">> => list(any()),
-%%   <<"apiKeyArn">> => string(),
-%%   <<"maxTokens">> => integer(),
-%%   <<"modelId">> => string(),
-%%   <<"temperature">> => float(),
-%%   <<"topP">> => float()
-%% }
--type harness_open_ai_model_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% mouse_scroll_arguments() :: #{
-%%   <<"deltaX">> => [integer()],
-%%   <<"deltaY">> => [integer()],
-%%   <<"x">> => [integer()],
-%%   <<"y">> => [integer()]
-%% }
--type mouse_scroll_arguments() :: #{binary() => any()}.
-
-
-%% Example:
-%% system_prompt_configuration_bundle() :: #{
-%%   <<"bundleArn">> => string(),
-%%   <<"systemPromptJsonPath">> => [string()],
-%%   <<"versionId">> => string()
-%% }
--type system_prompt_configuration_bundle() :: #{binary() => any()}.
-
-
-%% Example:
-%% crypto_x402_payment_input() :: #{
-%%   <<"payload">> => any(),
-%%   <<"version">> => [string()]
-%% }
--type crypto_x402_payment_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_code_interpreter_session_response() :: #{
-%%   <<"codeInterpreterIdentifier">> => [string()],
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"sessionId">> => string()
-%% }
--type stop_code_interpreter_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_a_b_test_response() :: #{
-%%   <<"abTestArn">> => string(),
-%%   <<"abTestId">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type delete_a_b_test_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cloud_watch_logs_rule() :: #{
-%%   <<"filters">> => list(cloud_watch_logs_filter())
-%% }
--type cloud_watch_logs_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% coinbase_cdp_token_request_input() :: #{
-%%   <<"includeWalletAuthToken">> => [boolean()],
-%%   <<"requestBody">> => string(),
-%%   <<"requestHost">> => string(),
-%%   <<"requestMethod">> => list(any()),
-%%   <<"requestPath">> => string()
-%% }
--type coinbase_cdp_token_request_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_event_output() :: #{
-%%   <<"event">> => event()
-%% }
--type get_event_output() :: #{binary() => any()}.
+-type get_agent_card_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2542,566 +1108,9 @@
 %% }
 -type get_agent_card_response() :: #{binary() => any()}.
 
-
 %% Example:
-%% system_prompt_recommendation_result() :: #{
-%%   <<"configurationBundle">> => recommendation_result_configuration_bundle(),
-%%   <<"errorCode">> => string(),
-%%   <<"errorMessage">> => string(),
-%%   <<"explanation">> => string(),
-%%   <<"recommendedSystemPrompt">> => string()
-%% }
--type system_prompt_recommendation_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_batch_evaluation_response() :: #{
-%%   <<"batchEvaluationArn">> => string(),
-%%   <<"batchEvaluationId">> => string(),
-%%   <<"batchEvaluationName">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"evaluators">> => list(evaluator()),
-%%   <<"insights">> => list(insight()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"outputConfig">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type start_batch_evaluation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_description_configuration_bundle() :: #{
-%%   <<"bundleArn">> => string(),
-%%   <<"tools">> => list(configuration_bundle_tool_entry()),
-%%   <<"versionId">> => string()
-%% }
--type tool_description_configuration_bundle() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_expected_trajectory() :: #{
-%%   <<"toolNames">> => list(string())
-%% }
--type evaluation_expected_trajectory() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sessions_output() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"sessionSummaries">> => list(session_summary())
-%% }
--type list_sessions_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluation_job_results() :: #{
-%%   <<"evaluatorSummaries">> => list(evaluator_summary()),
-%%   <<"numberOfSessionsCompleted">> => [integer()],
-%%   <<"numberOfSessionsFailed">> => [integer()],
-%%   <<"numberOfSessionsIgnored">> => [integer()],
-%%   <<"numberOfSessionsInProgress">> => [integer()],
-%%   <<"totalNumberOfSessions">> => [integer()]
-%% }
--type evaluation_job_results() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_card_definition() :: #{
-%%   <<"inlineContent">> => string(),
-%%   <<"schemaVersion">> => string()
-%% }
--type agent_card_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_a_b_tests_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_a_b_tests_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_code_interpreter_session_response() :: #{
-%%   <<"certificates">> => list(certificate()),
-%%   <<"codeInterpreterIdentifier">> => [string()],
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"name">> => string(),
-%%   <<"sessionId">> => string(),
-%%   <<"sessionTimeoutSeconds">> => integer(),
-%%   <<"status">> => list(any())
-%% }
--type get_code_interpreter_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_harness_response() :: #{
-%%   <<"stream">> => list()
-%% }
--type invoke_harness_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_payment_instrument_response() :: #{
-%%   <<"paymentInstrument">> => payment_instrument()
-%% }
--type get_payment_instrument_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_actors_output() :: #{
-%%   <<"actorSummaries">> => list(actor_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_actors_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workload_access_token_for_user_id_response() :: #{
-%%   <<"workloadAccessToken">> => string()
-%% }
--type get_workload_access_token_for_user_id_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_payment_instruments_request() :: #{
-%%   <<"agentName">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"paymentConnectorId">> => string(),
-%%   <<"paymentManagerArn">> := string(),
-%%   <<"userId">> => string()
-%% }
--type list_payment_instruments_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_summary() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"recommendationArn">> => string(),
-%%   <<"recommendationId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type recommendation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_input() :: #{}
--type delete_event_input() :: #{}.
-
-
-%% Example:
-%% linked_account_email() :: #{
-%%   <<"emailAddress">> => string()
-%% }
--type linked_account_email() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_interpreter_sessions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type list_code_interpreter_sessions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% automation_stream_update() :: #{
-%%   <<"streamStatus">> => list(any())
-%% }
--type automation_stream_update() :: #{binary() => any()}.
-
-
-%% Example:
-%% code_interpreter_result() :: #{
-%%   <<"content">> => list(content_block()),
-%%   <<"isError">> => [boolean()],
-%%   <<"structuredContent">> => tool_result_structured_content()
-%% }
--type code_interpreter_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% skill_md_definition() :: #{
-%%   <<"inlineContent">> => string()
-%% }
--type skill_md_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_payment_instrument_request() :: #{
-%%   <<"agentName">> => string(),
-%%   <<"paymentConnectorId">> => string(),
-%%   <<"paymentInstrumentId">> := string(),
-%%   <<"paymentManagerArn">> := string(),
-%%   <<"userId">> => string()
-%% }
--type get_payment_instrument_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% insight() :: #{
-%%   <<"insightId">> => string()
-%% }
--type insight() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_stream_metrics() :: #{
-%%   <<"latencyMs">> => [float()]
-%% }
--type harness_stream_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluate_request() :: #{
-%%   <<"evaluationInput">> := list(),
-%%   <<"evaluationReferenceInputs">> => list(evaluation_reference_input()),
-%%   <<"evaluationTarget">> => list()
-%% }
--type evaluate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_api_key_response() :: #{
-%%   <<"apiKey">> => string()
-%% }
--type get_resource_api_key_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% process_payment_response() :: #{
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"paymentInstrumentId">> => string(),
-%%   <<"paymentManagerArn">> => string(),
-%%   <<"paymentOutput">> => list(),
-%%   <<"paymentSessionId">> => string(),
-%%   <<"paymentType">> => list(any()),
-%%   <<"processPaymentId">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type process_payment_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% invoke_code_interpreter_response() :: #{
-%%   <<"sessionId">> => string(),
-%%   <<"stream">> => list()
-%% }
--type invoke_code_interpreter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"recommendationSummaries">> => list(recommendation_summary())
-%% }
--type list_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% content_delta_event() :: #{
-%%   <<"stderr">> => [string()],
-%%   <<"stdout">> => [string()]
-%% }
--type content_delta_event() :: #{binary() => any()}.
-
-
-%% Example:
-%% browser_session_stream() :: #{
-%%   <<"automationStream">> => automation_stream(),
-%%   <<"liveViewStream">> => live_view_stream()
-%% }
--type browser_session_stream() :: #{binary() => any()}.
-
-
-%% Example:
-%% actor_summary() :: #{
-%%   <<"actorId">> => string()
-%% }
--type actor_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% descriptors() :: #{
-%%   <<"a2a">> => a2a_descriptor(),
-%%   <<"agentSkills">> => agent_skills_descriptor(),
-%%   <<"custom">> => custom_descriptor(),
-%%   <<"mcp">> => mcp_descriptor()
-%% }
--type descriptors() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_output() :: #{
-%%   <<"event">> => event()
-%% }
--type create_event_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% available_limits() :: #{
-%%   <<"availableSpendAmount">> => amount(),
-%%   <<"updatedAt">> => non_neg_integer()
-%% }
--type available_limits() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_criteria() :: #{
-%%   <<"memoryStrategyId">> => string(),
-%%   <<"metadataFilters">> => list(memory_metadata_filter_expression()),
-%%   <<"searchQuery">> => string(),
-%%   <<"topK">> => [integer()]
-%% }
--type search_criteria() :: #{binary() => any()}.
-
-
-%% Example:
-%% execution_summary_affected_session() :: #{
-%%   <<"approachTaken">> => [string()],
-%%   <<"finalOutcome">> => [string()],
-%%   <<"sessionId">> => [string()]
-%% }
--type execution_summary_affected_session() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_payment_session_request() :: #{
-%%   <<"agentName">> => string(),
-%%   <<"clientToken">> => string(),
-%%   <<"expiryTimeInMinutes">> := [integer()],
-%%   <<"limits">> => session_limits(),
-%%   <<"paymentManagerArn">> := string(),
-%%   <<"userId">> => string()
-%% }
--type create_payment_session_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_payment_sessions_request() :: #{
-%%   <<"agentName">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"paymentManagerArn">> := string(),
-%%   <<"userId">> => string()
-%% }
--type list_payment_sessions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_code_interpreter_sessions_response() :: #{
-%%   <<"items">> => list(code_interpreter_session_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_code_interpreter_sessions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_browser_stream_request() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"sessionId">> := string(),
-%%   <<"streamUpdate">> := list()
-%% }
--type update_browser_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_payment_session_response() :: #{
-%%   <<"status">> => list(any())
-%% }
--type delete_payment_session_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_evaluation_summary() :: #{
-%%   <<"batchEvaluationArn">> => string(),
-%%   <<"batchEvaluationId">> => string(),
-%%   <<"batchEvaluationName">> => string(),
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"errorDetails">> => list([string()]()),
-%%   <<"evaluationResults">> => evaluation_job_results(),
-%%   <<"evaluators">> => list(evaluator()),
-%%   <<"insights">> => list(insight()),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type batch_evaluation_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_a_b_test_request() :: #{}
--type get_a_b_test_request() :: #{}.
-
-
-%% Example:
-%% get_recommendation_response() :: #{
-%%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"kmsKeyArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"recommendationArn">> => string(),
-%%   <<"recommendationConfig">> => list(),
-%%   <<"recommendationId">> => string(),
-%%   <<"recommendationResult">> => list(),
-%%   <<"status">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"updatedAt">> => [non_neg_integer()]
-%% }
--type get_recommendation_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% online_evaluation_config_source() :: #{
-%%   <<"onlineEvaluationConfigArn">> => string(),
-%%   <<"timeRange">> => session_filter_config()
-%% }
--type online_evaluation_config_source() :: #{binary() => any()}.
-
-
-%% Example:
-%% tool_description_recommendation_config() :: #{
-%%   <<"agentTraces">> => list(),
-%%   <<"toolDescription">> => list()
-%% }
--type tool_description_recommendation_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% linked_account_sms() :: #{
-%%   <<"phoneNumber">> => string()
-%% }
--type linked_account_sms() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_skills_descriptor() :: #{
-%%   <<"skillDefinition">> => skill_definition(),
-%%   <<"skillMd">> => skill_md_definition()
-%% }
--type agent_skills_descriptor() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_memory_records_output() :: #{
-%%   <<"memoryRecordSummaries">> => list(memory_record_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_memory_records_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_memory_record_output() :: #{
-%%   <<"memoryRecordId">> => string()
-%% }
--type delete_memory_record_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% crypto_x402_payment_output() :: #{
-%%   <<"payload">> => any(),
-%%   <<"version">> => [string()]
-%% }
--type crypto_x402_payment_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_ref() :: #{
-%%   <<"name">> => string()
-%% }
--type target_ref() :: #{binary() => any()}.
-
-
-%% Example:
-%% harness_agent_core_code_interpreter_config() :: #{
-%%   <<"codeInterpreterArn">> => string()
-%% }
--type harness_agent_core_code_interpreter_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_payment_instrument_response() :: #{
-%%   <<"paymentInstrument">> => payment_instrument()
-%% }
--type create_payment_instrument_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% variant() :: #{
-%%   <<"name">> => string(),
-%%   <<"variantConfiguration">> => variant_configuration(),
-%%   <<"weight">> => [integer()]
-%% }
--type variant() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_delete_memory_records_output() :: #{
-%%   <<"failedRecords">> => list(memory_record_output()),
-%%   <<"successfulRecords">> => list(memory_record_output())
-%% }
--type batch_delete_memory_records_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% evaluator_summary() :: #{
-%%   <<"evaluatorId">> => [string()],
-%%   <<"statistics">> => evaluator_statistics(),
-%%   <<"totalEvaluated">> => [integer()],
-%%   <<"totalFailed">> => [integer()]
-%% }
--type evaluator_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_sessions_input() :: #{
-%%   <<"filter">> => session_filter(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_sessions_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% session_limits() :: #{
-%%   <<"maxSpendAmount">> => amount()
-%% }
--type session_limits() :: #{binary() => any()}.
-
-
-%% Example:
-%% insights_failure_signal() :: #{
-%%   <<"category">> => list(any()),
-%%   <<"confidence">> => [float()],
-%%   <<"evidence">> => [string()]
-%% }
--type insights_failure_signal() :: #{binary() => any()}.
-
-
-%% Example:
-%% memory_metadata_filter_expression() :: #{
-%%   <<"left">> => list(),
-%%   <<"operator">> => list(any()),
-%%   <<"right">> => list()
-%% }
--type memory_metadata_filter_expression() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommendations_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"statusFilter">> => list(any())
-%% }
--type list_recommendations_request() :: #{binary() => any()}.
+%% get_batch_evaluation_request() :: #{}
+-type get_batch_evaluation_request() :: #{}.
 
 
 %% Example:
@@ -3128,25 +1137,1189 @@
 
 
 %% Example:
-%% browser_profile_configuration() :: #{
-%%   <<"profileIdentifier">> => string()
+%% get_browser_session_request() :: #{
+%%   <<"sessionId">> := string()
 %% }
--type browser_profile_configuration() :: #{binary() => any()}.
+-type get_browser_session_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% start_recommendation_response() :: #{
+%% get_browser_session_response() :: #{
+%%   <<"browserIdentifier">> => [string()],
+%%   <<"certificates">> => list(certificate()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
+%%   <<"extensions">> => list(browser_extension()),
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"profileConfiguration">> => browser_profile_configuration(),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
+%%   <<"sessionId">> => string(),
+%%   <<"sessionReplayArtifact">> => [string()],
+%%   <<"sessionTimeoutSeconds">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"streams">> => browser_session_stream(),
+%%   <<"viewPort">> => view_port()
+%% }
+-type get_browser_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_interpreter_session_request() :: #{
+%%   <<"sessionId">> := string()
+%% }
+-type get_code_interpreter_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_interpreter_session_response() :: #{
+%%   <<"certificates">> => list(certificate()),
+%%   <<"codeInterpreterIdentifier">> => [string()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"name">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"sessionTimeoutSeconds">> => integer(),
+%%   <<"status">> => list(any())
+%% }
+-type get_code_interpreter_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_input() :: #{}
+-type get_event_input() :: #{}.
+
+
+%% Example:
+%% get_event_output() :: #{
+%%   <<"event">> => event()
+%% }
+-type get_event_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_memory_record_input() :: #{}
+-type get_memory_record_input() :: #{}.
+
+
+%% Example:
+%% get_memory_record_output() :: #{
+%%   <<"memoryRecord">> => memory_record()
+%% }
+-type get_memory_record_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_instrument_balance_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"chain">> := list(any()),
+%%   <<"paymentConnectorId">> := string(),
+%%   <<"paymentInstrumentId">> := string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"token">> := list(any()),
+%%   <<"userId">> => string()
+%% }
+-type get_payment_instrument_balance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_instrument_balance_response() :: #{
+%%   <<"paymentInstrumentId">> => string(),
+%%   <<"tokenBalance">> => token_balance()
+%% }
+-type get_payment_instrument_balance_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_instrument_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"paymentInstrumentId">> := string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type get_payment_instrument_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_instrument_response() :: #{
+%%   <<"paymentInstrument">> => payment_instrument()
+%% }
+-type get_payment_instrument_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_session_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"paymentSessionId">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type get_payment_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_payment_session_response() :: #{
+%%   <<"paymentSession">> => payment_session()
+%% }
+-type get_payment_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommendation_request() :: #{}
+-type get_recommendation_request() :: #{}.
+
+
+%% Example:
+%% get_recommendation_response() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"recommendationArn">> => string(),
 %%   <<"recommendationConfig">> => list(),
 %%   <<"recommendationId">> => string(),
+%%   <<"recommendationResult">> => list(),
 %%   <<"status">> => list(any()),
 %%   <<"type">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
--type start_recommendation_response() :: #{binary() => any()}.
+-type get_recommendation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_api_key_request() :: #{
+%%   <<"resourceCredentialProviderName">> := string(),
+%%   <<"workloadIdentityToken">> := string()
+%% }
+-type get_resource_api_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_api_key_response() :: #{
+%%   <<"apiKey">> => string()
+%% }
+-type get_resource_api_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_oauth2_token_request() :: #{
+%%   <<"audiences">> => list(string()),
+%%   <<"customParameters">> => map(),
+%%   <<"customState">> => string(),
+%%   <<"forceAuthentication">> => [boolean()],
+%%   <<"oauth2Flow">> := list(any()),
+%%   <<"resourceCredentialProviderName">> := string(),
+%%   <<"resourceOauth2ReturnUrl">> => string(),
+%%   <<"resources">> => list(string()),
+%%   <<"scopes">> := list(string()),
+%%   <<"sessionUri">> => string(),
+%%   <<"workloadIdentityToken">> := string()
+%% }
+-type get_resource_oauth2_token_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_oauth2_token_response() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"authorizationUrl">> => string(),
+%%   <<"sessionStatus">> => list(any()),
+%%   <<"sessionUri">> => string()
+%% }
+-type get_resource_oauth2_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_payment_token_request() :: #{
+%%   <<"paymentTokenRequest">> := list(),
+%%   <<"resourceCredentialProviderName">> := string(),
+%%   <<"workloadIdentityToken">> := string()
+%% }
+-type get_resource_payment_token_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_payment_token_response() :: #{
+%%   <<"paymentTokenResponse">> => list()
+%% }
+-type get_resource_payment_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_access_token_for_j_w_t_request() :: #{
+%%   <<"userToken">> := string(),
+%%   <<"workloadName">> := string()
+%% }
+-type get_workload_access_token_for_j_w_t_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_access_token_for_j_w_t_response() :: #{
+%%   <<"workloadAccessToken">> => string()
+%% }
+-type get_workload_access_token_for_j_w_t_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_access_token_for_user_id_request() :: #{
+%%   <<"userId">> := string(),
+%%   <<"workloadName">> := string()
+%% }
+-type get_workload_access_token_for_user_id_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_access_token_for_user_id_response() :: #{
+%%   <<"workloadAccessToken">> => string()
+%% }
+-type get_workload_access_token_for_user_id_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_access_token_request() :: #{
+%%   <<"workloadName">> := string()
+%% }
+-type get_workload_access_token_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workload_access_token_response() :: #{
+%%   <<"workloadAccessToken">> => string()
+%% }
+-type get_workload_access_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ground_truth_turn() :: #{
+%%   <<"expectedResponse">> => list(),
+%%   <<"input">> => list()
+%% }
+-type ground_truth_turn() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_agent_core_browser_config() :: #{
+%%   <<"browserArn">> => string()
+%% }
+-type harness_agent_core_browser_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_agent_core_code_interpreter_config() :: #{
+%%   <<"codeInterpreterArn">> => string()
+%% }
+-type harness_agent_core_code_interpreter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_agent_core_gateway_config() :: #{
+%%   <<"gatewayArn">> => string(),
+%%   <<"outboundAuth">> => list()
+%% }
+-type harness_agent_core_gateway_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_bedrock_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiFormat">> => list(any()),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type harness_bedrock_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_content_block_delta_event() :: #{
+%%   <<"contentBlockIndex">> => [integer()],
+%%   <<"delta">> => list()
+%% }
+-type harness_content_block_delta_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_content_block_start_event() :: #{
+%%   <<"contentBlockIndex">> => [integer()],
+%%   <<"start">> => list()
+%% }
+-type harness_content_block_start_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_content_block_stop_event() :: #{
+%%   <<"contentBlockIndex">> => [integer()]
+%% }
+-type harness_content_block_stop_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_gemini_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topK">> => integer(),
+%%   <<"topP">> => float()
+%% }
+-type harness_gemini_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_inline_function_config() :: #{
+%%   <<"description">> => string(),
+%%   <<"inputSchema">> => any()
+%% }
+-type harness_inline_function_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_lite_llm_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiBase">> => string(),
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type harness_lite_llm_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_message() :: #{
+%%   <<"content">> => list(list()),
+%%   <<"role">> => list(any())
+%% }
+-type harness_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_message_start_event() :: #{
+%%   <<"role">> => list(any())
+%% }
+-type harness_message_start_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_message_stop_event() :: #{
+%%   <<"stopReason">> => list(any())
+%% }
+-type harness_message_stop_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_metadata_event() :: #{
+%%   <<"metrics">> => harness_stream_metrics(),
+%%   <<"usage">> => harness_token_usage()
+%% }
+-type harness_metadata_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_open_ai_model_config() :: #{
+%%   <<"additionalParams">> => [any()],
+%%   <<"apiFormat">> => list(any()),
+%%   <<"apiKeyArn">> => string(),
+%%   <<"maxTokens">> => integer(),
+%%   <<"modelId">> => string(),
+%%   <<"temperature">> => float(),
+%%   <<"topP">> => float()
+%% }
+-type harness_open_ai_model_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_reasoning_text_block() :: #{
+%%   <<"signature">> => [string()],
+%%   <<"text">> => [string()]
+%% }
+-type harness_reasoning_text_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_remote_mcp_config() :: #{
+%%   <<"headers">> => map(),
+%%   <<"url">> => string()
+%% }
+-type harness_remote_mcp_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_aws_skills_source() :: #{
+%%   <<"paths">> => list(string())
+%% }
+-type harness_skill_aws_skills_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_git_auth() :: #{
+%%   <<"credentialArn">> => string(),
+%%   <<"username">> => [string()]
+%% }
+-type harness_skill_git_auth() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_git_source() :: #{
+%%   <<"auth">> => harness_skill_git_auth(),
+%%   <<"path">> => [string()],
+%%   <<"url">> => string()
+%% }
+-type harness_skill_git_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_skill_s3_source() :: #{
+%%   <<"uri">> => string()
+%% }
+-type harness_skill_s3_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_stream_metrics() :: #{
+%%   <<"latencyMs">> => [float()]
+%% }
+-type harness_stream_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_token_usage() :: #{
+%%   <<"cacheReadInputTokens">> => [integer()],
+%%   <<"cacheWriteInputTokens">> => [integer()],
+%%   <<"inputTokens">> => [integer()],
+%%   <<"outputTokens">> => [integer()],
+%%   <<"totalTokens">> => [integer()]
+%% }
+-type harness_token_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool() :: #{
+%%   <<"config">> => list(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type harness_tool() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool_result_block() :: #{
+%%   <<"content">> => list(list()),
+%%   <<"status">> => list(any()),
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type harness_tool_result_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool_result_block_start() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"toolUseId">> => string()
+%% }
+-type harness_tool_result_block_start() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool_result_metadata_block_delta() :: #{
+%%   <<"metadata">> => string()
+%% }
+-type harness_tool_result_metadata_block_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool_use_block() :: #{
+%%   <<"input">> => any(),
+%%   <<"name">> => string(),
+%%   <<"serverName">> => [string()],
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type harness_tool_use_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool_use_block_delta() :: #{
+%%   <<"input">> => string()
+%% }
+-type harness_tool_use_block_delta() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_tool_use_block_start() :: #{
+%%   <<"name">> => string(),
+%%   <<"serverName">> => [string()],
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type harness_tool_use_block_start() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_ground_truth() :: #{
+%%   <<"assertions">> => list(list()),
+%%   <<"expectedTrajectory">> => evaluation_expected_trajectory(),
+%%   <<"turns">> => list(ground_truth_turn())
+%% }
+-type inline_ground_truth() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_content_block() :: #{
+%%   <<"blob">> => binary(),
+%%   <<"path">> => string(),
+%%   <<"text">> => string()
+%% }
+-type input_content_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight() :: #{
+%%   <<"insightId">> => string()
+%% }
+-type insight() :: #{binary() => any()}.
+
+
+%% Example:
+%% insights_failure_signal() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"confidence">> => [float()],
+%%   <<"evidence">> => [string()]
+%% }
+-type insights_failure_signal() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_input_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_input_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_agent_runtime_command_request() :: #{
+%%   <<"accept">> => string(),
+%%   <<"accountId">> => [string()],
+%%   <<"baggage">> => [string()],
+%%   <<"body">> := invoke_agent_runtime_command_request_body(),
+%%   <<"contentType">> => string(),
+%%   <<"qualifier">> => [string()],
+%%   <<"runtimeSessionId">> => string(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()],
+%%   <<"traceState">> => [string()]
+%% }
+-type invoke_agent_runtime_command_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_agent_runtime_command_request_body() :: #{
+%%   <<"command">> => [string()],
+%%   <<"timeout">> => [integer()]
+%% }
+-type invoke_agent_runtime_command_request_body() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_agent_runtime_command_response() :: #{
+%%   <<"baggage">> => [string()],
+%%   <<"contentType">> => [string()],
+%%   <<"runtimeSessionId">> => string(),
+%%   <<"statusCode">> => integer(),
+%%   <<"stream">> => list(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()],
+%%   <<"traceState">> => [string()]
+%% }
+-type invoke_agent_runtime_command_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_agent_runtime_request() :: #{
+%%   <<"accept">> => string(),
+%%   <<"accountId">> => [string()],
+%%   <<"baggage">> => [string()],
+%%   <<"contentType">> => string(),
+%%   <<"mcpMethod">> => string(),
+%%   <<"mcpName">> => string(),
+%%   <<"mcpProtocolVersion">> => string(),
+%%   <<"mcpSessionId">> => string(),
+%%   <<"payload">> := binary(),
+%%   <<"qualifier">> => [string()],
+%%   <<"runtimeSessionId">> => string(),
+%%   <<"runtimeUserId">> => string(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()],
+%%   <<"traceState">> => [string()]
+%% }
+-type invoke_agent_runtime_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_agent_runtime_response() :: #{
+%%   <<"baggage">> => [string()],
+%%   <<"contentType">> => [string()],
+%%   <<"mcpProtocolVersion">> => [string()],
+%%   <<"mcpSessionId">> => string(),
+%%   <<"response">> => binary(),
+%%   <<"runtimeSessionId">> => string(),
+%%   <<"statusCode">> => integer(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()],
+%%   <<"traceState">> => [string()]
+%% }
+-type invoke_agent_runtime_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_browser_request() :: #{
+%%   <<"action">> := list(),
+%%   <<"sessionId">> := string()
+%% }
+-type invoke_browser_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_browser_response() :: #{
+%%   <<"result">> => list(),
+%%   <<"sessionId">> => string()
+%% }
+-type invoke_browser_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_code_interpreter_request() :: #{
+%%   <<"arguments">> => tool_arguments(),
+%%   <<"name">> := list(any()),
+%%   <<"sessionId">> => string(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()]
+%% }
+-type invoke_code_interpreter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_code_interpreter_response() :: #{
+%%   <<"sessionId">> => string(),
+%%   <<"stream">> => list()
+%% }
+-type invoke_code_interpreter_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_harness_request() :: #{
+%%   <<"actorId">> => [string()],
+%%   <<"allowedTools">> => list(string()),
+%%   <<"baggage">> => [string()],
+%%   <<"harnessArn">> := string(),
+%%   <<"maxIterations">> => [integer()],
+%%   <<"maxTokens">> => [integer()],
+%%   <<"messages">> := list(harness_message()),
+%%   <<"model">> => list(),
+%%   <<"qualifier">> => string(),
+%%   <<"runtimeSessionId">> := string(),
+%%   <<"runtimeUserId">> => [string()],
+%%   <<"skills">> => list(list()),
+%%   <<"systemPrompt">> => list(list()),
+%%   <<"timeoutSeconds">> => [integer()],
+%%   <<"tools">> => list(harness_tool()),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()],
+%%   <<"traceState">> => [string()]
+%% }
+-type invoke_harness_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_harness_response() :: #{
+%%   <<"stream">> => list()
+%% }
+-type invoke_harness_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_press_arguments() :: #{
+%%   <<"key">> => [string()],
+%%   <<"presses">> => [integer()]
+%% }
+-type key_press_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_press_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type key_press_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_shortcut_arguments() :: #{
+%%   <<"keys">> => list([string()]())
+%% }
+-type key_shortcut_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_shortcut_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type key_shortcut_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_type_arguments() :: #{
+%%   <<"text">> => [string()]
+%% }
+-type key_type_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_type_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type key_type_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% linked_account_developer_jwt() :: #{
+%%   <<"kid">> => string(),
+%%   <<"sub">> => [string()]
+%% }
+-type linked_account_developer_jwt() :: #{binary() => any()}.
+
+
+%% Example:
+%% linked_account_email() :: #{
+%%   <<"emailAddress">> => string()
+%% }
+-type linked_account_email() :: #{binary() => any()}.
+
+
+%% Example:
+%% linked_account_sms() :: #{
+%%   <<"phoneNumber">> => string()
+%% }
+-type linked_account_sms() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_b_tests_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_a_b_tests_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_a_b_tests_response() :: #{
+%%   <<"abTests">> => list(a_b_test_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_a_b_tests_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actors_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_actors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actors_output() :: #{
+%%   <<"actorSummaries">> => list(actor_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_actors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_batch_evaluations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_batch_evaluations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_batch_evaluations_response() :: #{
+%%   <<"batchEvaluations">> => list(batch_evaluation_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_batch_evaluations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_browser_sessions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_browser_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_browser_sessions_response() :: #{
+%%   <<"items">> => list(browser_session_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_browser_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_interpreter_sessions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_code_interpreter_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_code_interpreter_sessions_response() :: #{
+%%   <<"items">> => list(code_interpreter_session_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_code_interpreter_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_events_input() :: #{
+%%   <<"filter">> => filter_input(),
+%%   <<"includePayloads">> => [boolean()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_events_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_events_output() :: #{
+%%   <<"events">> => list(event()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_events_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memory_extraction_jobs_input() :: #{
+%%   <<"filter">> => extraction_job_filter_input(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_memory_extraction_jobs_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memory_extraction_jobs_output() :: #{
+%%   <<"jobs">> => list(extraction_job_metadata()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_memory_extraction_jobs_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memory_records_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"memoryStrategyId">> => string(),
+%%   <<"metadataFilters">> => list(memory_metadata_filter_expression()),
+%%   <<"namespace">> => string(),
+%%   <<"namespacePath">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_memory_records_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memory_records_output() :: #{
+%%   <<"memoryRecordSummaries">> => list(memory_record_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_memory_records_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_instruments_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type list_payment_instruments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_instruments_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"paymentInstruments">> => list(payment_instrument_summary())
+%% }
+-type list_payment_instruments_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_sessions_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"userId">> => string()
+%% }
+-type list_payment_sessions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_payment_sessions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"paymentSessions">> => list(payment_session_summary())
+%% }
+-type list_payment_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"statusFilter">> => list(any())
+%% }
+-type list_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommendations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationSummaries">> => list(recommendation_summary())
+%% }
+-type list_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_input() :: #{
+%%   <<"filter">> => session_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sessions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessionSummaries">> => list(session_summary())
+%% }
+-type list_sessions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% live_view_stream() :: #{
+%%   <<"streamEndpoint">> => string()
+%% }
+-type live_view_stream() :: #{binary() => any()}.
+
+
+%% Example:
+%% mcp_descriptor() :: #{
+%%   <<"server">> => server_definition(),
+%%   <<"tools">> => tools_definition()
+%% }
+-type mcp_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_metadata_filter_expression() :: #{
+%%   <<"left">> => list(),
+%%   <<"operator">> => list(any()),
+%%   <<"right">> => list()
+%% }
+-type memory_metadata_filter_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_record() :: #{
+%%   <<"content">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"memoryRecordId">> => string(),
+%%   <<"memoryStrategyId">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"namespaces">> => list(string())
+%% }
+-type memory_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_record_create_input() :: #{
+%%   <<"content">> => list(),
+%%   <<"memoryStrategyId">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"namespaces">> => list(string()),
+%%   <<"requestIdentifier">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type memory_record_create_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_record_delete_input() :: #{
+%%   <<"memoryRecordId">> => string()
+%% }
+-type memory_record_delete_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_record_output() :: #{
+%%   <<"errorCode">> => [integer()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"memoryRecordId">> => string(),
+%%   <<"requestIdentifier">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type memory_record_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_record_summary() :: #{
+%%   <<"content">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"memoryRecordId">> => string(),
+%%   <<"memoryStrategyId">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"namespaces">> => list(string()),
+%%   <<"score">> => [float()]
+%% }
+-type memory_record_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_record_update_input() :: #{
+%%   <<"content">> => list(),
+%%   <<"memoryRecordId">> => string(),
+%%   <<"memoryStrategyId">> => string(),
+%%   <<"metadata">> => map(),
+%%   <<"namespaces">> => list(string()),
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type memory_record_update_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_metadata() :: #{
+%%   <<"eventId">> => [string()],
+%%   <<"messageIndex">> => [integer()]
+%% }
+-type message_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% mouse_click_arguments() :: #{
+%%   <<"button">> => list(any()),
+%%   <<"clickCount">> => [integer()],
+%%   <<"x">> => [integer()],
+%%   <<"y">> => [integer()]
+%% }
+-type mouse_click_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% mouse_click_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type mouse_click_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% mouse_drag_arguments() :: #{
+%%   <<"button">> => list(any()),
+%%   <<"endX">> => [integer()],
+%%   <<"endY">> => [integer()],
+%%   <<"startX">> => [integer()],
+%%   <<"startY">> => [integer()]
+%% }
+-type mouse_drag_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% mouse_drag_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type mouse_drag_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% mouse_move_arguments() :: #{
+%%   <<"x">> => [integer()],
+%%   <<"y">> => [integer()]
+%% }
+-type mouse_move_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% mouse_move_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type mouse_move_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% mouse_scroll_arguments() :: #{
+%%   <<"deltaX">> => [integer()],
+%%   <<"deltaY">> => [integer()],
+%%   <<"x">> => [integer()],
+%%   <<"y">> => [integer()]
+%% }
+-type mouse_scroll_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% mouse_scroll_result() :: #{
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type mouse_scroll_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth2_authentication() :: #{
+%%   <<"emailAddress">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"sub">> => [string()],
+%%   <<"username">> => [string()]
+%% }
+-type o_auth2_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth_credential_provider() :: #{
+%%   <<"customParameters">> => map(),
+%%   <<"defaultReturnUrl">> => string(),
+%%   <<"grantType">> => list(any()),
+%%   <<"providerArn">> => string(),
+%%   <<"scopes">> => list(string())
+%% }
+-type o_auth_credential_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% online_evaluation_config_source() :: #{
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"timeRange">> => session_filter_config()
+%% }
+-type online_evaluation_config_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3165,18 +2338,31 @@
 
 
 %% Example:
-%% extraction_job() :: #{
-%%   <<"jobId">> => [string()]
+%% payment_instrument_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"paymentInstrumentId">> => string(),
+%%   <<"paymentInstrumentType">> => list(any()),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"userId">> => string()
 %% }
--type extraction_job() :: #{binary() => any()}.
+-type payment_instrument_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% a_b_test_results() :: #{
-%%   <<"analysisTimestamp">> => [non_neg_integer()],
-%%   <<"evaluatorMetrics">> => list(evaluator_metric())
+%% payment_session() :: #{
+%%   <<"availableLimits">> => available_limits(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"expiryTimeInMinutes">> => [integer()],
+%%   <<"limits">> => session_limits(),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentSessionId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"userId">> => string()
 %% }
--type a_b_test_results() :: #{binary() => any()}.
+-type payment_session() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3192,550 +2378,1400 @@
 
 
 %% Example:
+%% per_variant_online_evaluation_config() :: #{
+%%   <<"name">> => string(),
+%%   <<"onlineEvaluationConfigArn">> => string()
+%% }
+-type per_variant_online_evaluation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% process_payment_request() :: #{
+%%   <<"agentName">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"paymentInput">> := list(),
+%%   <<"paymentInstrumentId">> := string(),
+%%   <<"paymentManagerArn">> := string(),
+%%   <<"paymentSessionId">> := string(),
+%%   <<"paymentType">> := list(any()),
+%%   <<"userId">> => string()
+%% }
+-type process_payment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% process_payment_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"paymentInstrumentId">> => string(),
+%%   <<"paymentManagerArn">> => string(),
+%%   <<"paymentOutput">> => list(),
+%%   <<"paymentSessionId">> => string(),
+%%   <<"paymentType">> => list(any()),
+%%   <<"processPaymentId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type process_payment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% proxy_bypass() :: #{
+%%   <<"domainPatterns">> => list(string())
+%% }
+-type proxy_bypass() :: #{binary() => any()}.
+
+
+%% Example:
+%% proxy_configuration() :: #{
+%%   <<"bypass">> => proxy_bypass(),
+%%   <<"proxies">> => list(list())
+%% }
+-type proxy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_evaluation_config() :: #{
+%%   <<"evaluators">> => list(recommendation_evaluator_reference())
+%% }
+-type recommendation_evaluation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_evaluator_reference() :: #{
+%%   <<"evaluatorArn">> => string()
+%% }
+-type recommendation_evaluator_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_result_configuration_bundle() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"versionId">> => string()
+%% }
+-type recommendation_result_configuration_bundle() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"recommendationArn">> => string(),
+%%   <<"recommendationId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type recommendation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_record_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"descriptorType">> => list(any()),
+%%   <<"descriptors">> => descriptors(),
+%%   <<"name">> => string(),
+%%   <<"recordArn">> => string(),
+%%   <<"recordId">> => string(),
+%%   <<"registryArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type registry_record_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_content() :: #{
+%%   <<"blob">> => [binary()],
+%%   <<"mimeType">> => [string()],
+%%   <<"text">> => [string()],
+%%   <<"type">> => list(any()),
+%%   <<"uri">> => [string()]
+%% }
+-type resource_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_chunk() :: #{
+%%   <<"contentDelta">> => content_delta_event(),
+%%   <<"contentStart">> => content_start_event(),
+%%   <<"contentStop">> => content_stop_event()
+%% }
+-type response_chunk() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_memory_records_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"namespace">> => string(),
+%%   <<"namespacePath">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"searchCriteria">> := search_criteria()
+%% }
+-type retrieve_memory_records_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieve_memory_records_output() :: #{
+%%   <<"memoryRecordSummaries">> => list(memory_record_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type retrieve_memory_records_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% retryable_conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type retryable_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% root_cause_cluster() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"affectedSessions">> => list(affected_session()),
+%%   <<"clusterId">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"recommendation">> => [string()],
+%%   <<"rootCause">> => [string()]
+%% }
+-type root_cause_cluster() :: #{binary() => any()}.
+
+
+%% Example:
 %% runtime_client_error() :: #{
 %%   <<"message">> => string()
 %% }
 -type runtime_client_error() :: #{binary() => any()}.
 
+
+%% Example:
+%% s3_files_configuration() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"fileSystemArn">> => string(),
+%%   <<"mountPath">> => string()
+%% }
+-type s3_files_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_location() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"prefix">> => [string()],
+%%   <<"versionId">> => [string()]
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% save_browser_session_profile_request() :: #{
+%%   <<"browserIdentifier">> := [string()],
+%%   <<"clientToken">> => string(),
+%%   <<"sessionId">> := string(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()]
+%% }
+-type save_browser_session_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% save_browser_session_profile_response() :: #{
+%%   <<"browserIdentifier">> => [string()],
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"profileIdentifier">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type save_browser_session_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% screenshot_arguments() :: #{
+%%   <<"format">> => list(any())
+%% }
+-type screenshot_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% screenshot_result() :: #{
+%%   <<"data">> => [binary()],
+%%   <<"error">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type screenshot_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_criteria() :: #{
+%%   <<"memoryStrategyId">> => string(),
+%%   <<"metadataFilters">> => list(memory_metadata_filter_expression()),
+%%   <<"searchQuery">> => string(),
+%%   <<"topK">> => [integer()]
+%% }
+-type search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_registry_records_request() :: #{
+%%   <<"filters">> => any(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"registryIds">> := list(string()),
+%%   <<"searchQuery">> := [string()]
+%% }
+-type search_registry_records_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_registry_records_response() :: #{
+%%   <<"registryRecords">> => list(registry_record_summary())
+%% }
+-type search_registry_records_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_location() :: #{
+%%   <<"secretArn">> => string()
+%% }
+-type secrets_manager_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type server_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_filter() :: #{
+%%   <<"eventFilter">> => list(any())
+%% }
+-type session_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_filter_config() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type session_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_limits() :: #{
+%%   <<"maxSpendAmount">> => amount()
+%% }
+-type session_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_metadata_shape() :: #{
+%%   <<"groundTruth">> => list(),
+%%   <<"metadata">> => map(),
+%%   <<"sessionId">> => [string()],
+%%   <<"testScenarioId">> => [string()]
+%% }
+-type session_metadata_shape() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_summary() :: #{
+%%   <<"actorId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"sessionId">> => string()
+%% }
+-type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% skill_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"schemaVersion">> => string()
+%% }
+-type skill_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% skill_md_definition() :: #{
+%%   <<"inlineContent">> => string()
+%% }
+-type skill_md_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% span_context() :: #{
+%%   <<"sessionId">> => [string()],
+%%   <<"spanId">> => [string()],
+%%   <<"traceId">> => [string()]
+%% }
+-type span_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_batch_evaluation_request() :: #{
+%%   <<"batchEvaluationName">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"dataSourceConfig">> := list(),
+%%   <<"description">> => string(),
+%%   <<"evaluationMetadata">> => list(),
+%%   <<"evaluators">> => list(evaluator()),
+%%   <<"insights">> => list(insight()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type start_batch_evaluation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_batch_evaluation_response() :: #{
+%%   <<"batchEvaluationArn">> => string(),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"batchEvaluationName">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"evaluators">> => list(evaluator()),
+%%   <<"insights">> => list(insight()),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"outputConfig">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type start_batch_evaluation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_browser_session_request() :: #{
+%%   <<"certificates">> => list(certificate()),
+%%   <<"clientToken">> => string(),
+%%   <<"enterprisePolicies">> => list(browser_enterprise_policy()),
+%%   <<"extensions">> => list(browser_extension()),
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"name">> => string(),
+%%   <<"profileConfiguration">> => browser_profile_configuration(),
+%%   <<"proxyConfiguration">> => proxy_configuration(),
+%%   <<"sessionTimeoutSeconds">> => integer(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()],
+%%   <<"viewPort">> => view_port()
+%% }
+-type start_browser_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_browser_session_response() :: #{
+%%   <<"browserIdentifier">> => [string()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"sessionId">> => string(),
+%%   <<"streams">> => browser_session_stream()
+%% }
+-type start_browser_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_code_interpreter_session_request() :: #{
+%%   <<"certificates">> => list(certificate()),
+%%   <<"clientToken">> => string(),
+%%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"name">> => string(),
+%%   <<"sessionTimeoutSeconds">> => integer(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()]
+%% }
+-type start_code_interpreter_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_code_interpreter_session_response() :: #{
+%%   <<"codeInterpreterIdentifier">> => [string()],
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"sessionId">> => string()
+%% }
+-type start_code_interpreter_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_memory_extraction_job_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"extractionJob">> := extraction_job()
+%% }
+-type start_memory_extraction_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_memory_extraction_job_output() :: #{
+%%   <<"jobId">> => [string()]
+%% }
+-type start_memory_extraction_job_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_recommendation_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"name">> := string(),
+%%   <<"recommendationConfig">> := list(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any())
+%% }
+-type start_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_recommendation_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"recommendationArn">> => string(),
+%%   <<"recommendationConfig">> => list(),
+%%   <<"recommendationId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type start_recommendation_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_batch_evaluation_request() :: #{}
+-type stop_batch_evaluation_request() :: #{}.
+
+
+%% Example:
+%% stop_batch_evaluation_response() :: #{
+%%   <<"batchEvaluationArn">> => string(),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type stop_batch_evaluation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_browser_session_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"sessionId">> := string(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()]
+%% }
+-type stop_browser_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_browser_session_response() :: #{
+%%   <<"browserIdentifier">> => [string()],
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"sessionId">> => string()
+%% }
+-type stop_browser_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_code_interpreter_session_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"sessionId">> := string(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()]
+%% }
+-type stop_code_interpreter_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_code_interpreter_session_response() :: #{
+%%   <<"codeInterpreterIdentifier">> => [string()],
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"sessionId">> => string()
+%% }
+-type stop_code_interpreter_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_runtime_session_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"qualifier">> => [string()],
+%%   <<"runtimeSessionId">> := string()
+%% }
+-type stop_runtime_session_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_runtime_session_response() :: #{
+%%   <<"runtimeSessionId">> => string(),
+%%   <<"statusCode">> => integer()
+%% }
+-type stop_runtime_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% stripe_privy_token_request_input() :: #{
+%%   <<"includeAuthorizationSignature">> => [boolean()],
+%%   <<"requestBody">> => string(),
+%%   <<"requestHost">> => string(),
+%%   <<"requestPath">> => string()
+%% }
+-type stripe_privy_token_request_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stripe_privy_token_response_output() :: #{
+%%   <<"appId">> => string(),
+%%   <<"authorizationSignature">> => string(),
+%%   <<"basicAuthToken">> => string(),
+%%   <<"requestExpiry">> => [float()]
+%% }
+-type stripe_privy_token_response_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_prompt_configuration_bundle() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"systemPromptJsonPath">> => [string()],
+%%   <<"versionId">> => string()
+%% }
+-type system_prompt_configuration_bundle() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_prompt_recommendation_config() :: #{
+%%   <<"agentTraces">> => list(),
+%%   <<"evaluationConfig">> => recommendation_evaluation_config(),
+%%   <<"systemPrompt">> => list()
+%% }
+-type system_prompt_recommendation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% system_prompt_recommendation_result() :: #{
+%%   <<"configurationBundle">> => recommendation_result_configuration_bundle(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"explanation">> => string(),
+%%   <<"recommendedSystemPrompt">> => string()
+%% }
+-type system_prompt_recommendation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_ref() :: #{
+%%   <<"name">> => string()
+%% }
+-type target_ref() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttled_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type throttled_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_balance() :: #{
+%%   <<"amount">> => [string()],
+%%   <<"chain">> => list(any()),
+%%   <<"decimals">> => [integer()],
+%%   <<"network">> => list(any()),
+%%   <<"token">> => list(any())
+%% }
+-type token_balance() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_usage() :: #{
+%%   <<"inputTokens">> => [integer()],
+%%   <<"outputTokens">> => [integer()],
+%%   <<"totalTokens">> => [integer()]
+%% }
+-type token_usage() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_arguments() :: #{
+%%   <<"clearContext">> => [boolean()],
+%%   <<"code">> => string(),
+%%   <<"command">> => string(),
+%%   <<"content">> => list(input_content_block()),
+%%   <<"directoryPath">> => string(),
+%%   <<"language">> => list(any()),
+%%   <<"path">> => string(),
+%%   <<"paths">> => list(string()),
+%%   <<"runtime">> => list(any()),
+%%   <<"taskId">> => string()
+%% }
+-type tool_arguments() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_description_configuration_bundle() :: #{
+%%   <<"bundleArn">> => string(),
+%%   <<"tools">> => list(configuration_bundle_tool_entry()),
+%%   <<"versionId">> => string()
+%% }
+-type tool_description_configuration_bundle() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_description_input() :: #{
+%%   <<"toolDescription">> => list(),
+%%   <<"toolName">> => string()
+%% }
+-type tool_description_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_description_output() :: #{
+%%   <<"explanation">> => string(),
+%%   <<"recommendedToolDescription">> => string(),
+%%   <<"toolName">> => string()
+%% }
+-type tool_description_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_description_recommendation_config() :: #{
+%%   <<"agentTraces">> => list(),
+%%   <<"toolDescription">> => list()
+%% }
+-type tool_description_recommendation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_description_recommendation_result() :: #{
+%%   <<"configurationBundle">> => recommendation_result_configuration_bundle(),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"tools">> => list(tool_description_output())
+%% }
+-type tool_description_recommendation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_description_text_input() :: #{
+%%   <<"tools">> => list(tool_description_input())
+%% }
+-type tool_description_text_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_result_structured_content() :: #{
+%%   <<"executionTime">> => [float()],
+%%   <<"exitCode">> => [integer()],
+%%   <<"stderr">> => [string()],
+%%   <<"stdout">> => [string()],
+%%   <<"taskId">> => [string()],
+%%   <<"taskStatus">> => list(any())
+%% }
+-type tool_result_structured_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% tools_definition() :: #{
+%%   <<"inlineContent">> => string(),
+%%   <<"protocolVersion">> => string()
+%% }
+-type tools_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_a_b_test_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"evaluationConfig">> => list(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"gatewayFilter">> => gateway_filter(),
+%%   <<"name">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"variants">> => list(variant())
+%% }
+-type update_a_b_test_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_a_b_test_response() :: #{
+%%   <<"abTestArn">> => string(),
+%%   <<"abTestId">> => string(),
+%%   <<"executionStatus">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_a_b_test_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_browser_stream_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"sessionId">> := string(),
+%%   <<"streamUpdate">> := list()
+%% }
+-type update_browser_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_browser_stream_response() :: #{
+%%   <<"browserIdentifier">> => [string()],
+%%   <<"sessionId">> => string(),
+%%   <<"streams">> => browser_session_stream(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_browser_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_intent_affected_session() :: #{
+%%   <<"sessionId">> => [string()],
+%%   <<"userMessages">> => list([string()]())
+%% }
+-type user_intent_affected_session() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_intent_cluster() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"affectedSessions">> => list(user_intent_affected_session()),
+%%   <<"clusterId">> => [integer()],
+%%   <<"description">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type user_intent_cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_intent_clustering_result_content() :: #{
+%%   <<"userIntents">> => list(user_intent_cluster())
+%% }
+-type user_intent_clustering_result_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% variant() :: #{
+%%   <<"name">> => string(),
+%%   <<"variantConfiguration">> => variant_configuration(),
+%%   <<"weight">> => [integer()]
+%% }
+-type variant() :: #{binary() => any()}.
+
+
+%% Example:
+%% variant_configuration() :: #{
+%%   <<"configurationBundle">> => configuration_bundle_ref(),
+%%   <<"target">> => target_ref()
+%% }
+-type variant_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% variant_result() :: #{
+%%   <<"absoluteChange">> => [float()],
+%%   <<"confidenceInterval">> => confidence_interval(),
+%%   <<"isSignificant">> => [boolean()],
+%%   <<"mean">> => [float()],
+%%   <<"pValue">> => [float()],
+%%   <<"percentChange">> => [float()],
+%%   <<"sampleSize">> => [integer()],
+%%   <<"variantName">> => [string()]
+%% }
+-type variant_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_port() :: #{
+%%   <<"height">> => integer(),
+%%   <<"width">> => integer()
+%% }
+-type view_port() :: #{binary() => any()}.
+
 -type batch_create_memory_records_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    access_denied_exception().
 
 -type batch_delete_memory_records_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    access_denied_exception().
 
 -type batch_update_memory_records_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    access_denied_exception().
 
 -type complete_resource_token_auth_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_a_b_test_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type create_event_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
     throttled_exception() | 
-    retryable_conflict_exception().
+    service_quota_exceeded_exception() | 
+    service_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type create_payment_instrument_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_payment_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_a_b_test_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_batch_evaluation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type delete_event_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type delete_memory_record_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type delete_payment_instrument_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_payment_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type delete_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type evaluate_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    duplicate_id_exception() | 
     conflict_exception() | 
-    unauthorized_exception() | 
-    duplicate_id_exception().
+    access_denied_exception().
 
 -type get_a_b_test_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_agent_card_errors() ::
-    runtime_client_error() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    runtime_client_error() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
-    retryable_conflict_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_batch_evaluation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_browser_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_code_interpreter_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_event_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_memory_record_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type get_payment_instrument_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_payment_instrument_balance_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_payment_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type get_resource_api_key_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_resource_oauth2_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_resource_payment_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_workload_access_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_workload_access_token_for_j_w_t_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_workload_access_token_for_user_id_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type invoke_agent_runtime_errors() ::
-    runtime_client_error() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    runtime_client_error() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
-    retryable_conflict_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type invoke_agent_runtime_command_errors() ::
-    runtime_client_error() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    runtime_client_error() | 
+    retryable_conflict_exception() | 
     resource_not_found_exception() | 
-    retryable_conflict_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type invoke_browser_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
-    service_quota_exceeded_exception() | 
-    resource_not_found_exception().
-
--type invoke_code_interpreter_errors() ::
     throttling_exception() | 
-    validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type invoke_code_interpreter_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type invoke_harness_errors() ::
-    runtime_client_error() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    runtime_client_error() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_a_b_tests_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_actors_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type list_batch_evaluations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type list_browser_sessions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_code_interpreter_sessions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    access_denied_exception().
 
 -type list_events_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type list_memory_extraction_jobs_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    access_denied_exception().
 
 -type list_memory_records_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type list_payment_instruments_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_payment_sessions_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_recommendations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_sessions_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type process_payment_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type retrieve_memory_records_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    invalid_input_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    invalid_input_exception() | 
+    access_denied_exception().
 
 -type save_browser_session_profile_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type search_registry_records_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    unauthorized_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_batch_evaluation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type start_browser_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_code_interpreter_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_memory_extraction_job_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    service_exception() | 
+    throttled_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
-    throttled_exception().
+    access_denied_exception().
 
 -type start_recommendation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_batch_evaluation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type stop_browser_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_code_interpreter_session_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type stop_runtime_session_errors() ::
-    runtime_client_error() | 
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception() | 
-    conflict_exception() | 
+    runtime_client_error() | 
     retryable_conflict_exception() | 
-    unauthorized_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_a_b_test_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
-    unauthorized_exception().
+    access_denied_exception().
 
 -type update_browser_stream_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API
@@ -5081,6 +5117,8 @@ invoke_agent_runtime(Client, AgentRuntimeArn, Input0, Options0) ->
                        {<<"Accept">>, <<"accept">>},
                        {<<"baggage">>, <<"baggage">>},
                        {<<"Content-Type">>, <<"contentType">>},
+                       {<<"Mcp-Method">>, <<"mcpMethod">>},
+                       {<<"Mcp-Name">>, <<"mcpName">>},
                        {<<"Mcp-Protocol-Version">>, <<"mcpProtocolVersion">>},
                        {<<"Mcp-Session-Id">>, <<"mcpSessionId">>},
                        {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>},
@@ -5374,8 +5412,12 @@ invoke_harness(Client, Input0, Options0) ->
                | Options2],
 
     HeadersMapping = [
+                       {<<"baggage">>, <<"baggage">>},
                        {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>},
-                       {<<"X-Amzn-Bedrock-AgentCore-Runtime-User-Id">>, <<"runtimeUserId">>}
+                       {<<"X-Amzn-Bedrock-AgentCore-Runtime-User-Id">>, <<"runtimeUserId">>},
+                       {<<"X-Amzn-Trace-Id">>, <<"traceId">>},
+                       {<<"traceparent">>, <<"traceParent">>},
+                       {<<"tracestate">>, <<"traceState">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 

@@ -3,6 +3,11 @@
 
 %% @doc DataSync
 %%
+%% In addition to the Amazon Web Services Management Console and Amazon Web
+%% Services Command Line Interface,
+%% you can use the DataSync API to configure and manage DataSync with the
+%% Amazon Web Services SDKs: http://aws.amazon.com/developer/tools/.
+%%
 %% DataSync is an online data movement service that simplifies data
 %% migration and helps you quickly, easily, and securely transfer your file
 %% or object data to,
@@ -127,33 +132,203 @@
 
 
 %% Example:
-%% update_location_azure_blob_request() :: #{
-%%   <<"AccessTier">> => list(any()),
-%%   <<"AgentArns">> => list(string()),
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"BlobType">> => list(any()),
-%%   <<"CmkSecretConfig">> => cmk_secret_config(),
-%%   <<"CustomSecretConfig">> => custom_secret_config(),
-%%   <<"LocationArn">> := string(),
-%%   <<"SasConfiguration">> => azure_blob_sas_configuration(),
-%%   <<"Subdirectory">> => string()
+%% agent_list_entry() :: #{
+%%   <<"AgentArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Platform">> => platform(),
+%%   <<"Status">> => list(any())
 %% }
--type update_location_azure_blob_request() :: #{binary() => any()}.
+-type agent_list_entry() :: #{binary() => any()}.
 
 %% Example:
-%% start_task_execution_response() :: #{
-%%   <<"TaskExecutionArn">> => string()
+%% azure_blob_sas_configuration() :: #{
+%%   <<"Token">> => string()
 %% }
--type start_task_execution_response() :: #{binary() => any()}.
+-type azure_blob_sas_configuration() :: #{binary() => any()}.
 
 %% Example:
-%% private_link_config() :: #{
-%%   <<"PrivateLinkEndpoint">> => string(),
+%% cancel_task_execution_request() :: #{
+%%   <<"TaskExecutionArn">> := string()
+%% }
+-type cancel_task_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_task_execution_response() :: #{
+
+%% }
+-type cancel_task_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% cmk_secret_config() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"SecretArn">> => string()
+%% }
+-type cmk_secret_config() :: #{binary() => any()}.
+
+%% Example:
+%% create_agent_request() :: #{
+%%   <<"ActivationKey">> := string(),
+%%   <<"AgentName">> => string(),
 %%   <<"SecurityGroupArns">> => list(string()),
 %%   <<"SubnetArns">> => list(string()),
+%%   <<"Tags">> => list(tag_list_entry()),
 %%   <<"VpcEndpointId">> => string()
 %% }
--type private_link_config() :: #{binary() => any()}.
+-type create_agent_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_agent_response() :: #{
+%%   <<"AgentArn">> => string()
+%% }
+-type create_agent_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_azure_blob_request() :: #{
+%%   <<"AccessTier">> => list(any()),
+%%   <<"AgentArns">> => list(string()),
+%%   <<"AuthenticationType">> := list(any()),
+%%   <<"BlobType">> => list(any()),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"ContainerUrl">> := string(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"SasConfiguration">> => azure_blob_sas_configuration(),
+%%   <<"Subdirectory">> => string(),
+%%   <<"Tags">> => list(tag_list_entry())
+%% }
+-type create_location_azure_blob_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_azure_blob_response() :: #{
+%%   <<"LocationArn">> => string()
+%% }
+-type create_location_azure_blob_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_efs_request() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"Ec2Config">> := ec2_config(),
+%%   <<"EfsFilesystemArn">> := string(),
+%%   <<"FileSystemAccessRoleArn">> => string(),
+%%   <<"InTransitEncryption">> => list(any()),
+%%   <<"Subdirectory">> => string(),
+%%   <<"Tags">> => list(tag_list_entry())
+%% }
+-type create_location_efs_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_efs_response() :: #{
+%%   <<"LocationArn">> => string()
+%% }
+-type create_location_efs_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_fsx_lustre_request() :: #{
+%%   <<"FsxFilesystemArn">> := string(),
+%%   <<"SecurityGroupArns">> := list(string()),
+%%   <<"Subdirectory">> => string(),
+%%   <<"Tags">> => list(tag_list_entry())
+%% }
+-type create_location_fsx_lustre_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_fsx_lustre_response() :: #{
+%%   <<"LocationArn">> => string()
+%% }
+-type create_location_fsx_lustre_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_fsx_ontap_request() :: #{
+%%   <<"Protocol">> := fsx_protocol(),
+%%   <<"SecurityGroupArns">> := list(string()),
+%%   <<"StorageVirtualMachineArn">> := string(),
+%%   <<"Subdirectory">> => string(),
+%%   <<"Tags">> => list(tag_list_entry())
+%% }
+-type create_location_fsx_ontap_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_fsx_ontap_response() :: #{
+%%   <<"LocationArn">> => string()
+%% }
+-type create_location_fsx_ontap_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_fsx_open_zfs_request() :: #{
+%%   <<"FsxFilesystemArn">> := string(),
+%%   <<"Protocol">> := fsx_protocol(),
+%%   <<"SecurityGroupArns">> := list(string()),
+%%   <<"Subdirectory">> => string(),
+%%   <<"Tags">> => list(tag_list_entry())
+%% }
+-type create_location_fsx_open_zfs_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_fsx_open_zfs_response() :: #{
+%%   <<"LocationArn">> => string()
+%% }
+-type create_location_fsx_open_zfs_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_fsx_windows_request() :: #{
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"Domain">> => string(),
+%%   <<"FsxFilesystemArn">> := string(),
+%%   <<"Password">> => string(),
+%%   <<"SecurityGroupArns">> := list(string()),
+%%   <<"Subdirectory">> => string(),
+%%   <<"Tags">> => list(tag_list_entry()),
+%%   <<"User">> := string()
+%% }
+-type create_location_fsx_windows_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_fsx_windows_response() :: #{
+%%   <<"LocationArn">> => string()
+%% }
+-type create_location_fsx_windows_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_hdfs_request() :: #{
+%%   <<"AgentArns">> := list(string()),
+%%   <<"AuthenticationType">> := list(any()),
+%%   <<"BlockSize">> => integer(),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"KerberosKeytab">> => binary(),
+%%   <<"KerberosKrb5Conf">> => binary(),
+%%   <<"KerberosPrincipal">> => string(),
+%%   <<"KmsKeyProviderUri">> => string(),
+%%   <<"NameNodes">> := list(hdfs_name_node()),
+%%   <<"QopConfiguration">> => qop_configuration(),
+%%   <<"ReplicationFactor">> => integer(),
+%%   <<"SimpleUser">> => string(),
+%%   <<"Subdirectory">> => string(),
+%%   <<"Tags">> => list(tag_list_entry())
+%% }
+-type create_location_hdfs_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_hdfs_response() :: #{
+%%   <<"LocationArn">> => string()
+%% }
+-type create_location_hdfs_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_nfs_request() :: #{
+%%   <<"MountOptions">> => nfs_mount_options(),
+%%   <<"OnPremConfig">> := on_prem_config(),
+%%   <<"ServerHostname">> := string(),
+%%   <<"Subdirectory">> := string(),
+%%   <<"Tags">> => list(tag_list_entry())
+%% }
+-type create_location_nfs_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_location_nfs_response() :: #{
+%%   <<"LocationArn">> => string()
+%% }
+-type create_location_nfs_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_location_object_storage_request() :: #{
@@ -173,201 +348,53 @@
 -type create_location_object_storage_request() :: #{binary() => any()}.
 
 %% Example:
-%% task_execution_files_failed_detail() :: #{
-%%   <<"Delete">> => float(),
-%%   <<"Prepare">> => float(),
-%%   <<"Transfer">> => float(),
-%%   <<"Verify">> => float()
-%% }
--type task_execution_files_failed_detail() :: #{binary() => any()}.
-
-%% Example:
-%% fsx_protocol_nfs() :: #{
-%%   <<"MountOptions">> => nfs_mount_options()
-%% }
--type fsx_protocol_nfs() :: #{binary() => any()}.
-
-%% Example:
-%% task_schedule_details() :: #{
-%%   <<"DisabledBy">> => list(any()),
-%%   <<"DisabledReason">> => string(),
-%%   <<"StatusUpdateTime">> => non_neg_integer()
-%% }
--type task_schedule_details() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag_list_entry())
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_location_fsx_open_zfs_request() :: #{
-%%   <<"LocationArn">> := string()
-%% }
--type describe_location_fsx_open_zfs_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_task_request() :: #{
-%%   <<"TaskArn">> := string()
-%% }
--type describe_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% cancel_task_execution_request() :: #{
-%%   <<"TaskExecutionArn">> := string()
-%% }
--type cancel_task_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_location_fsx_ontap_request() :: #{
-%%   <<"LocationArn">> := string(),
-%%   <<"Protocol">> => fsx_update_protocol(),
-%%   <<"Subdirectory">> => string()
-%% }
--type update_location_fsx_ontap_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_location_fsx_lustre_response() :: #{
+%% create_location_object_storage_response() :: #{
 %%   <<"LocationArn">> => string()
 %% }
--type create_location_fsx_lustre_response() :: #{binary() => any()}.
+-type create_location_object_storage_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_agents_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_agents_request() :: #{binary() => any()}.
-
-%% Example:
-%% nfs_mount_options() :: #{
-%%   <<"Version">> => list(any())
-%% }
--type nfs_mount_options() :: #{binary() => any()}.
-
-%% Example:
-%% fsx_update_protocol() :: #{
-%%   <<"NFS">> => fsx_protocol_nfs(),
-%%   <<"SMB">> => fsx_update_protocol_smb()
-%% }
--type fsx_update_protocol() :: #{binary() => any()}.
-
-%% Example:
-%% update_task_execution_request() :: #{
-%%   <<"Options">> := options(),
-%%   <<"TaskExecutionArn">> := string()
-%% }
--type update_task_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_location_fsx_windows_response() :: #{
-%%   <<"CmkSecretConfig">> => cmk_secret_config(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CustomSecretConfig">> => custom_secret_config(),
-%%   <<"Domain">> => string(),
-%%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string(),
-%%   <<"ManagedSecretConfig">> => managed_secret_config(),
-%%   <<"SecurityGroupArns">> => list(string()),
-%%   <<"User">> => string()
-%% }
--type describe_location_fsx_windows_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_location_nfs_request() :: #{
-%%   <<"LocationArn">> := string()
-%% }
--type describe_location_nfs_request() :: #{binary() => any()}.
-
-%% Example:
-%% cmk_secret_config() :: #{
-%%   <<"KmsKeyArn">> => string(),
-%%   <<"SecretArn">> => string()
-%% }
--type cmk_secret_config() :: #{binary() => any()}.
-
-%% Example:
-%% list_agents_response() :: #{
-%%   <<"Agents">> => list(agent_list_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_agents_response() :: #{binary() => any()}.
-
-%% Example:
-%% filter_rule() :: #{
-%%   <<"FilterType">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type filter_rule() :: #{binary() => any()}.
-
-%% Example:
-%% create_agent_request() :: #{
-%%   <<"ActivationKey">> := string(),
-%%   <<"AgentName">> => string(),
-%%   <<"SecurityGroupArns">> => list(string()),
-%%   <<"SubnetArns">> => list(string()),
-%%   <<"Tags">> => list(tag_list_entry()),
-%%   <<"VpcEndpointId">> => string()
-%% }
--type create_agent_request() :: #{binary() => any()}.
-
-%% Example:
-%% report_destination() :: #{
-%%   <<"S3">> => report_destination_s3()
-%% }
--type report_destination() :: #{binary() => any()}.
-
-%% Example:
-%% create_location_nfs_request() :: #{
-%%   <<"MountOptions">> => nfs_mount_options(),
-%%   <<"OnPremConfig">> := on_prem_config(),
-%%   <<"ServerHostname">> := string(),
-%%   <<"Subdirectory">> := string(),
+%% create_location_s3_request() :: #{
+%%   <<"AgentArns">> => list(string()),
+%%   <<"S3BucketArn">> := string(),
+%%   <<"S3Config">> := s3_config(),
+%%   <<"S3StorageClass">> => list(any()),
+%%   <<"Subdirectory">> => string(),
 %%   <<"Tags">> => list(tag_list_entry())
 %% }
--type create_location_nfs_request() :: #{binary() => any()}.
+-type create_location_s3_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_location_fsx_ontap_request() :: #{
-%%   <<"LocationArn">> := string()
+%% create_location_s3_response() :: #{
+%%   <<"LocationArn">> => string()
 %% }
--type describe_location_fsx_ontap_request() :: #{binary() => any()}.
+-type create_location_s3_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_location_hdfs_request() :: #{
-%%   <<"AgentArns">> => list(string()),
+%% create_location_smb_request() :: #{
+%%   <<"AgentArns">> := list(string()),
 %%   <<"AuthenticationType">> => list(any()),
-%%   <<"BlockSize">> => integer(),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"DnsIpAddresses">> => list(string()),
+%%   <<"Domain">> => string(),
 %%   <<"KerberosKeytab">> => binary(),
 %%   <<"KerberosKrb5Conf">> => binary(),
 %%   <<"KerberosPrincipal">> => string(),
-%%   <<"KmsKeyProviderUri">> => string(),
-%%   <<"LocationArn">> := string(),
-%%   <<"NameNodes">> => list(hdfs_name_node()),
-%%   <<"QopConfiguration">> => qop_configuration(),
-%%   <<"ReplicationFactor">> => integer(),
-%%   <<"SimpleUser">> => string(),
-%%   <<"Subdirectory">> => string()
+%%   <<"MountOptions">> => smb_mount_options(),
+%%   <<"Password">> => string(),
+%%   <<"ServerHostname">> := string(),
+%%   <<"Subdirectory">> := string(),
+%%   <<"Tags">> => list(tag_list_entry()),
+%%   <<"User">> => string()
 %% }
--type update_location_hdfs_request() :: #{binary() => any()}.
+-type create_location_smb_request() :: #{binary() => any()}.
 
 %% Example:
-%% location_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
+%% create_location_smb_response() :: #{
+%%   <<"LocationArn">> => string()
 %% }
--type location_filter() :: #{binary() => any()}.
+-type create_location_smb_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_task_request() :: #{
@@ -387,34 +414,29 @@
 -type create_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% task_schedule() :: #{
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"Status">> => list(any())
+%% create_task_response() :: #{
+%%   <<"TaskArn">> => string()
 %% }
--type task_schedule() :: #{binary() => any()}.
+-type create_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% report_result() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorDetail">> => string(),
-%%   <<"Status">> => list(any())
+%% custom_secret_config() :: #{
+%%   <<"SecretAccessRoleArn">> => string(),
+%%   <<"SecretArn">> => string()
 %% }
--type report_result() :: #{binary() => any()}.
+-type custom_secret_config() :: #{binary() => any()}.
 
 %% Example:
-%% task_list_entry() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"TaskArn">> => string(),
-%%   <<"TaskMode">> => list(any())
+%% delete_agent_request() :: #{
+%%   <<"AgentArn">> := string()
 %% }
--type task_list_entry() :: #{binary() => any()}.
+-type delete_agent_request() :: #{binary() => any()}.
 
 %% Example:
-%% cancel_task_execution_response() :: #{
+%% delete_agent_response() :: #{
 
 %% }
--type cancel_task_execution_response() :: #{binary() => any()}.
+-type delete_agent_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_location_request() :: #{
@@ -423,127 +445,28 @@
 -type delete_location_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_location_object_storage_request() :: #{
-%%   <<"LocationArn">> := string()
+%% delete_location_response() :: #{
+
 %% }
--type describe_location_object_storage_request() :: #{binary() => any()}.
+-type delete_location_response() :: #{binary() => any()}.
 
 %% Example:
-%% task_execution_folders_failed_detail() :: #{
-%%   <<"Delete">> => float(),
-%%   <<"List">> => float(),
-%%   <<"Prepare">> => float(),
-%%   <<"Transfer">> => float(),
-%%   <<"Verify">> => float()
+%% delete_task_request() :: #{
+%%   <<"TaskArn">> := string()
 %% }
--type task_execution_folders_failed_detail() :: #{binary() => any()}.
+-type delete_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_location_nfs_response() :: #{
+%% delete_task_response() :: #{
 
 %% }
--type update_location_nfs_response() :: #{binary() => any()}.
+-type delete_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_location_fsx_lustre_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string(),
-%%   <<"SecurityGroupArns">> => list(string())
+%% describe_agent_request() :: #{
+%%   <<"AgentArn">> := string()
 %% }
--type describe_location_fsx_lustre_response() :: #{binary() => any()}.
-
-%% Example:
-%% task_execution_result_detail() :: #{
-%%   <<"ErrorCode">> => string(),
-%%   <<"ErrorDetail">> => string(),
-%%   <<"PrepareDuration">> => float(),
-%%   <<"PrepareStatus">> => list(any()),
-%%   <<"TotalDuration">> => float(),
-%%   <<"TransferDuration">> => float(),
-%%   <<"TransferStatus">> => list(any()),
-%%   <<"VerifyDuration">> => float(),
-%%   <<"VerifyStatus">> => list(any())
-%% }
--type task_execution_result_detail() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"Keys">> := list(string()),
-%%   <<"ResourceArn">> := string()
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_location_efs_response() :: #{
-%%   <<"AccessPointArn">> => string(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Ec2Config">> => ec2_config(),
-%%   <<"FileSystemAccessRoleArn">> => string(),
-%%   <<"InTransitEncryption">> => list(any()),
-%%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string()
-%% }
--type describe_location_efs_response() :: #{binary() => any()}.
-
-%% Example:
-%% managed_secret_config() :: #{
-%%   <<"SecretArn">> => string()
-%% }
--type managed_secret_config() :: #{binary() => any()}.
-
-%% Example:
-%% qop_configuration() :: #{
-%%   <<"DataTransferProtection">> => list(any()),
-%%   <<"RpcProtection">> => list(any())
-%% }
--type qop_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% update_location_smb_response() :: #{
-
-%% }
--type update_location_smb_response() :: #{binary() => any()}.
-
-%% Example:
-%% fsx_protocol() :: #{
-%%   <<"NFS">> => fsx_protocol_nfs(),
-%%   <<"SMB">> => fsx_protocol_smb()
-%% }
--type fsx_protocol() :: #{binary() => any()}.
-
-%% Example:
-%% report_overrides() :: #{
-%%   <<"Deleted">> => report_override(),
-%%   <<"Skipped">> => report_override(),
-%%   <<"Transferred">> => report_override(),
-%%   <<"Verified">> => report_override()
-%% }
--type report_overrides() :: #{binary() => any()}.
-
-%% Example:
-%% agent_list_entry() :: #{
-%%   <<"AgentArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Platform">> => platform(),
-%%   <<"Status">> => list(any())
-%% }
--type agent_list_entry() :: #{binary() => any()}.
-
-%% Example:
-%% create_location_azure_blob_request() :: #{
-%%   <<"AccessTier">> => list(any()),
-%%   <<"AgentArns">> => list(string()),
-%%   <<"AuthenticationType">> := list(any()),
-%%   <<"BlobType">> => list(any()),
-%%   <<"CmkSecretConfig">> => cmk_secret_config(),
-%%   <<"ContainerUrl">> := string(),
-%%   <<"CustomSecretConfig">> => custom_secret_config(),
-%%   <<"SasConfiguration">> => azure_blob_sas_configuration(),
-%%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry())
-%% }
--type create_location_azure_blob_request() :: #{binary() => any()}.
+-type describe_agent_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_agent_response() :: #{
@@ -559,87 +482,64 @@
 -type describe_agent_response() :: #{binary() => any()}.
 
 %% Example:
-%% options() :: #{
-%%   <<"Atime">> => list(any()),
-%%   <<"BytesPerSecond">> => float(),
-%%   <<"Gid">> => list(any()),
-%%   <<"LogLevel">> => list(any()),
-%%   <<"Mtime">> => list(any()),
-%%   <<"ObjectTags">> => list(any()),
-%%   <<"OverwriteMode">> => list(any()),
-%%   <<"PosixPermissions">> => list(any()),
-%%   <<"PreserveDeletedFiles">> => list(any()),
-%%   <<"PreserveDevices">> => list(any()),
-%%   <<"SecurityDescriptorCopyFlags">> => list(any()),
-%%   <<"TaskQueueing">> => list(any()),
-%%   <<"TransferMode">> => list(any()),
-%%   <<"Uid">> => list(any()),
-%%   <<"VerifyMode">> => list(any())
+%% describe_location_azure_blob_request() :: #{
+%%   <<"LocationArn">> := string()
 %% }
--type options() :: #{binary() => any()}.
+-type describe_location_azure_blob_request() :: #{binary() => any()}.
 
 %% Example:
-%% task_report_config() :: #{
-%%   <<"Destination">> => report_destination(),
-%%   <<"ObjectVersionIds">> => list(any()),
-%%   <<"OutputType">> => list(any()),
-%%   <<"Overrides">> => report_overrides(),
-%%   <<"ReportLevel">> => list(any())
-%% }
--type task_report_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_location_fsx_lustre_response() :: #{
-
-%% }
--type update_location_fsx_lustre_response() :: #{binary() => any()}.
-
-%% Example:
-%% s3_manifest_config() :: #{
-%%   <<"BucketAccessRoleArn">> => string(),
-%%   <<"ManifestObjectPath">> => string(),
-%%   <<"ManifestObjectVersionId">> => string(),
-%%   <<"S3BucketArn">> => string()
-%% }
--type s3_manifest_config() :: #{binary() => any()}.
-
-%% Example:
-%% update_location_smb_request() :: #{
+%% describe_location_azure_blob_response() :: #{
+%%   <<"AccessTier">> => list(any()),
 %%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
+%%   <<"BlobType">> => list(any()),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
-%%   <<"DnsIpAddresses">> => list(string()),
-%%   <<"Domain">> => string(),
-%%   <<"KerberosKeytab">> => binary(),
-%%   <<"KerberosKrb5Conf">> => binary(),
-%%   <<"KerberosPrincipal">> => string(),
-%%   <<"LocationArn">> := string(),
-%%   <<"MountOptions">> => smb_mount_options(),
-%%   <<"Password">> => string(),
-%%   <<"ServerHostname">> => string(),
-%%   <<"Subdirectory">> => string(),
-%%   <<"User">> => string()
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config()
 %% }
--type update_location_smb_request() :: #{binary() => any()}.
+-type describe_location_azure_blob_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_agent_response() :: #{
-%%   <<"AgentArn">> => string()
+%% describe_location_efs_request() :: #{
+%%   <<"LocationArn">> := string()
 %% }
--type create_agent_response() :: #{binary() => any()}.
+-type describe_location_efs_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_azure_blob_response() :: #{
-%%   <<"LocationArn">> => string()
+%% describe_location_efs_response() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Ec2Config">> => ec2_config(),
+%%   <<"FileSystemAccessRoleArn">> => string(),
+%%   <<"InTransitEncryption">> => list(any()),
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationUri">> => string()
 %% }
--type create_location_azure_blob_response() :: #{binary() => any()}.
+-type describe_location_efs_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_nfs_response() :: #{
-%%   <<"LocationArn">> => string()
+%% describe_location_fsx_lustre_request() :: #{
+%%   <<"LocationArn">> := string()
 %% }
--type create_location_nfs_response() :: #{binary() => any()}.
+-type describe_location_fsx_lustre_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_location_fsx_lustre_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"SecurityGroupArns">> => list(string())
+%% }
+-type describe_location_fsx_lustre_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_location_fsx_ontap_request() :: #{
+%%   <<"LocationArn">> := string()
+%% }
+-type describe_location_fsx_ontap_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_location_fsx_ontap_response() :: #{
@@ -654,109 +554,197 @@
 -type describe_location_fsx_ontap_response() :: #{binary() => any()}.
 
 %% Example:
-%% tag_list_entry() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% describe_location_fsx_open_zfs_request() :: #{
+%%   <<"LocationArn">> := string()
 %% }
--type tag_list_entry() :: #{binary() => any()}.
+-type describe_location_fsx_open_zfs_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_task_response() :: #{
-
+%% describe_location_fsx_open_zfs_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"Protocol">> => fsx_protocol(),
+%%   <<"SecurityGroupArns">> => list(string())
 %% }
--type update_task_response() :: #{binary() => any()}.
+-type describe_location_fsx_open_zfs_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_location_efs_response() :: #{
-
+%% describe_location_fsx_windows_request() :: #{
+%%   <<"LocationArn">> := string()
 %% }
--type update_location_efs_response() :: #{binary() => any()}.
+-type describe_location_fsx_windows_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_agent_response() :: #{
-
-%% }
--type update_agent_response() :: #{binary() => any()}.
-
-%% Example:
-%% fsx_update_protocol_smb() :: #{
+%% describe_location_fsx_windows_response() :: #{
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"Domain">> => string(),
-%%   <<"MountOptions">> => smb_mount_options(),
-%%   <<"Password">> => string(),
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config(),
+%%   <<"SecurityGroupArns">> => list(string()),
 %%   <<"User">> => string()
 %% }
--type fsx_update_protocol_smb() :: #{binary() => any()}.
+-type describe_location_fsx_windows_response() :: #{binary() => any()}.
 
 %% Example:
-%% report_override() :: #{
-%%   <<"ReportLevel">> => list(any())
+%% describe_location_hdfs_request() :: #{
+%%   <<"LocationArn">> := string()
 %% }
--type report_override() :: #{binary() => any()}.
+-type describe_location_hdfs_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_request_exception() :: #{
-%%   <<"datasyncErrorCode">> => string(),
-%%   <<"errorCode">> => string(),
-%%   <<"message">> => string()
+%% describe_location_hdfs_response() :: #{
+%%   <<"AgentArns">> => list(string()),
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"BlockSize">> => integer(),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"KerberosPrincipal">> => string(),
+%%   <<"KmsKeyProviderUri">> => string(),
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config(),
+%%   <<"NameNodes">> => list(hdfs_name_node()),
+%%   <<"QopConfiguration">> => qop_configuration(),
+%%   <<"ReplicationFactor">> => integer(),
+%%   <<"SimpleUser">> => string()
 %% }
--type invalid_request_exception() :: #{binary() => any()}.
+-type describe_location_hdfs_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_task_executions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"TaskExecutions">> => list(task_execution_list_entry())
+%% describe_location_nfs_request() :: #{
+%%   <<"LocationArn">> := string()
 %% }
--type list_task_executions_response() :: #{binary() => any()}.
+-type describe_location_nfs_request() :: #{binary() => any()}.
 
 %% Example:
-%% on_prem_config() :: #{
-%%   <<"AgentArns">> => list(string())
+%% describe_location_nfs_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"MountOptions">> => nfs_mount_options(),
+%%   <<"OnPremConfig">> => on_prem_config()
 %% }
--type on_prem_config() :: #{binary() => any()}.
+-type describe_location_nfs_response() :: #{binary() => any()}.
 
 %% Example:
-%% platform() :: #{
-%%   <<"Version">> => string()
+%% describe_location_object_storage_request() :: #{
+%%   <<"LocationArn">> := string()
 %% }
--type platform() :: #{binary() => any()}.
+-type describe_location_object_storage_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_fsx_open_zfs_response() :: #{
-%%   <<"LocationArn">> => string()
+%% describe_location_object_storage_response() :: #{
+%%   <<"AccessKey">> => string(),
+%%   <<"AgentArns">> => list(string()),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config(),
+%%   <<"ServerCertificate">> => binary(),
+%%   <<"ServerPort">> => integer(),
+%%   <<"ServerProtocol">> => list(any())
 %% }
--type create_location_fsx_open_zfs_response() :: #{binary() => any()}.
+-type describe_location_object_storage_response() :: #{binary() => any()}.
 
 %% Example:
-%% s3_config() :: #{
-%%   <<"BucketAccessRoleArn">> => string()
+%% describe_location_s3_request() :: #{
+%%   <<"LocationArn">> := string()
 %% }
--type s3_config() :: #{binary() => any()}.
+-type describe_location_s3_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_task_executions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"TaskArn">> => string()
+%% describe_location_s3_response() :: #{
+%%   <<"AgentArns">> => list(string()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"S3Config">> => s3_config(),
+%%   <<"S3StorageClass">> => list(any())
 %% }
--type list_task_executions_request() :: #{binary() => any()}.
+-type describe_location_s3_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_fsx_ontap_request() :: #{
-%%   <<"Protocol">> := fsx_protocol(),
-%%   <<"SecurityGroupArns">> := list(string()),
-%%   <<"StorageVirtualMachineArn">> := string(),
-%%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry())
+%% describe_location_smb_request() :: #{
+%%   <<"LocationArn">> := string()
 %% }
--type create_location_fsx_ontap_request() :: #{binary() => any()}.
+-type describe_location_smb_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_hdfs_response() :: #{
-%%   <<"LocationArn">> => string()
+%% describe_location_smb_response() :: #{
+%%   <<"AgentArns">> => list(string()),
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"DnsIpAddresses">> => list(string()),
+%%   <<"Domain">> => string(),
+%%   <<"KerberosPrincipal">> => string(),
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationUri">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config(),
+%%   <<"MountOptions">> => smb_mount_options(),
+%%   <<"User">> => string()
 %% }
--type create_location_hdfs_response() :: #{binary() => any()}.
+-type describe_location_smb_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_execution_request() :: #{
+%%   <<"TaskExecutionArn">> := string()
+%% }
+-type describe_task_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_execution_response() :: #{
+%%   <<"BytesCompressed">> => float(),
+%%   <<"BytesTransferred">> => float(),
+%%   <<"BytesWritten">> => float(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EstimatedBytesToTransfer">> => float(),
+%%   <<"EstimatedFilesToDelete">> => float(),
+%%   <<"EstimatedFilesToTransfer">> => float(),
+%%   <<"EstimatedFoldersToDelete">> => float(),
+%%   <<"EstimatedFoldersToTransfer">> => float(),
+%%   <<"Excludes">> => list(filter_rule()),
+%%   <<"FilesDeleted">> => float(),
+%%   <<"FilesFailed">> => task_execution_files_failed_detail(),
+%%   <<"FilesListed">> => task_execution_files_listed_detail(),
+%%   <<"FilesPrepared">> => float(),
+%%   <<"FilesSkipped">> => float(),
+%%   <<"FilesTransferred">> => float(),
+%%   <<"FilesVerified">> => float(),
+%%   <<"FoldersDeleted">> => float(),
+%%   <<"FoldersFailed">> => task_execution_folders_failed_detail(),
+%%   <<"FoldersListed">> => task_execution_folders_listed_detail(),
+%%   <<"FoldersPrepared">> => float(),
+%%   <<"FoldersSkipped">> => float(),
+%%   <<"FoldersTransferred">> => float(),
+%%   <<"FoldersVerified">> => float(),
+%%   <<"Includes">> => list(filter_rule()),
+%%   <<"LaunchTime">> => non_neg_integer(),
+%%   <<"ManifestConfig">> => manifest_config(),
+%%   <<"Options">> => options(),
+%%   <<"ReportResult">> => report_result(),
+%%   <<"Result">> => task_execution_result_detail(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskExecutionArn">> => string(),
+%%   <<"TaskMode">> => list(any()),
+%%   <<"TaskReportConfig">> => task_report_config()
+%% }
+-type describe_task_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_task_request() :: #{
+%%   <<"TaskArn">> := string()
+%% }
+-type describe_task_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_task_response() :: #{
@@ -784,69 +772,97 @@
 -type describe_task_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_smb_response() :: #{
-%%   <<"LocationArn">> => string()
+%% ec2_config() :: #{
+%%   <<"SecurityGroupArns">> => list(string()),
+%%   <<"SubnetArn">> => string()
 %% }
--type create_location_smb_response() :: #{binary() => any()}.
+-type ec2_config() :: #{binary() => any()}.
 
 %% Example:
-%% describe_location_fsx_lustre_request() :: #{
-%%   <<"LocationArn">> := string()
+%% filter_rule() :: #{
+%%   <<"FilterType">> => list(any()),
+%%   <<"Value">> => string()
 %% }
--type describe_location_fsx_lustre_request() :: #{binary() => any()}.
+-type filter_rule() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_s3_response() :: #{
-%%   <<"LocationArn">> => string()
+%% fsx_protocol() :: #{
+%%   <<"NFS">> => fsx_protocol_nfs(),
+%%   <<"SMB">> => fsx_protocol_smb()
 %% }
--type create_location_s3_response() :: #{binary() => any()}.
+-type fsx_protocol() :: #{binary() => any()}.
 
 %% Example:
-%% task_execution_list_entry() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"TaskExecutionArn">> => string(),
-%%   <<"TaskMode">> => list(any())
+%% fsx_protocol_nfs() :: #{
+%%   <<"MountOptions">> => nfs_mount_options()
 %% }
--type task_execution_list_entry() :: #{binary() => any()}.
+-type fsx_protocol_nfs() :: #{binary() => any()}.
 
 %% Example:
-%% update_location_fsx_open_zfs_response() :: #{
-
+%% fsx_protocol_smb() :: #{
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"Domain">> => string(),
+%%   <<"ManagedSecretConfig">> => managed_secret_config(),
+%%   <<"MountOptions">> => smb_mount_options(),
+%%   <<"Password">> => string(),
+%%   <<"User">> => string()
 %% }
--type update_location_fsx_open_zfs_response() :: #{binary() => any()}.
+-type fsx_protocol_smb() :: #{binary() => any()}.
 
 %% Example:
-%% update_location_object_storage_response() :: #{
-
+%% fsx_update_protocol() :: #{
+%%   <<"NFS">> => fsx_protocol_nfs(),
+%%   <<"SMB">> => fsx_update_protocol_smb()
 %% }
--type update_location_object_storage_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_location_nfs_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string(),
-%%   <<"MountOptions">> => nfs_mount_options(),
-%%   <<"OnPremConfig">> => on_prem_config()
-%% }
--type describe_location_nfs_response() :: #{binary() => any()}.
+-type fsx_update_protocol() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag_list_entry())
+%% fsx_update_protocol_smb() :: #{
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"Domain">> => string(),
+%%   <<"MountOptions">> => smb_mount_options(),
+%%   <<"Password">> => string(),
+%%   <<"User">> => string()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
+-type fsx_update_protocol_smb() :: #{binary() => any()}.
 
 %% Example:
-%% describe_location_fsx_open_zfs_response() :: #{
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string(),
-%%   <<"Protocol">> => fsx_protocol(),
-%%   <<"SecurityGroupArns">> => list(string())
+%% hdfs_name_node() :: #{
+%%   <<"Hostname">> => string(),
+%%   <<"Port">> => integer()
 %% }
--type describe_location_fsx_open_zfs_response() :: #{binary() => any()}.
+-type hdfs_name_node() :: #{binary() => any()}.
+
+%% Example:
+%% internal_exception() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"message">> => string()
+%% }
+-type internal_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"datasyncErrorCode">> => string(),
+%%   <<"errorCode">> => string(),
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_agents_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_agents_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_agents_response() :: #{
+%%   <<"Agents">> => list(agent_list_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_agents_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_locations_request() :: #{
@@ -857,59 +873,250 @@
 -type list_locations_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_s3_request() :: #{
-%%   <<"AgentArns">> => list(string()),
-%%   <<"S3BucketArn">> := string(),
-%%   <<"S3Config">> := s3_config(),
-%%   <<"S3StorageClass">> => list(any()),
-%%   <<"Subdirectory">> => string(),
+%% list_locations_response() :: #{
+%%   <<"Locations">> => list(location_list_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_locations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"NextToken">> => string(),
 %%   <<"Tags">> => list(tag_list_entry())
 %% }
--type create_location_s3_request() :: #{binary() => any()}.
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_efs_request() :: #{
-%%   <<"AccessPointArn">> => string(),
-%%   <<"Ec2Config">> := ec2_config(),
-%%   <<"EfsFilesystemArn">> := string(),
-%%   <<"FileSystemAccessRoleArn">> => string(),
-%%   <<"InTransitEncryption">> => list(any()),
-%%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry())
+%% list_task_executions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TaskArn">> => string()
 %% }
--type create_location_efs_request() :: #{binary() => any()}.
+-type list_task_executions_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_agent_response() :: #{
-
+%% list_task_executions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TaskExecutions">> => list(task_execution_list_entry())
 %% }
--type delete_agent_response() :: #{binary() => any()}.
+-type list_task_executions_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_task_request() :: #{
-%%   <<"CloudWatchLogGroupArn">> => string(),
-%%   <<"Excludes">> => list(filter_rule()),
-%%   <<"Includes">> => list(filter_rule()),
-%%   <<"ManifestConfig">> => manifest_config(),
-%%   <<"Name">> => string(),
-%%   <<"Options">> => options(),
-%%   <<"Schedule">> => task_schedule(),
-%%   <<"TaskArn">> := string(),
-%%   <<"TaskReportConfig">> => task_report_config()
+%% list_tasks_request() :: #{
+%%   <<"Filters">> => list(task_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
 %% }
--type update_task_request() :: #{binary() => any()}.
+-type list_tasks_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_location_azure_blob_response() :: #{
-
+%% list_tasks_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tasks">> => list(task_list_entry())
 %% }
--type update_location_azure_blob_response() :: #{binary() => any()}.
+-type list_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% location_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type location_filter() :: #{binary() => any()}.
+
+%% Example:
+%% location_list_entry() :: #{
+%%   <<"LocationArn">> => string(),
+%%   <<"LocationUri">> => string()
+%% }
+-type location_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% managed_secret_config() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type managed_secret_config() :: #{binary() => any()}.
+
+%% Example:
+%% manifest_config() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Format">> => list(any()),
+%%   <<"Source">> => source_manifest_config()
+%% }
+-type manifest_config() :: #{binary() => any()}.
+
+%% Example:
+%% nfs_mount_options() :: #{
+%%   <<"Version">> => list(any())
+%% }
+-type nfs_mount_options() :: #{binary() => any()}.
+
+%% Example:
+%% on_prem_config() :: #{
+%%   <<"AgentArns">> => list(string())
+%% }
+-type on_prem_config() :: #{binary() => any()}.
+
+%% Example:
+%% options() :: #{
+%%   <<"Atime">> => list(any()),
+%%   <<"BytesPerSecond">> => float(),
+%%   <<"Gid">> => list(any()),
+%%   <<"LogLevel">> => list(any()),
+%%   <<"Mtime">> => list(any()),
+%%   <<"ObjectTags">> => list(any()),
+%%   <<"OverwriteMode">> => list(any()),
+%%   <<"PosixPermissions">> => list(any()),
+%%   <<"PreserveDeletedFiles">> => list(any()),
+%%   <<"PreserveDevices">> => list(any()),
+%%   <<"SecurityDescriptorCopyFlags">> => list(any()),
+%%   <<"TaskQueueing">> => list(any()),
+%%   <<"TransferMode">> => list(any()),
+%%   <<"Uid">> => list(any()),
+%%   <<"VerifyMode">> => list(any())
+%% }
+-type options() :: #{binary() => any()}.
+
+%% Example:
+%% platform() :: #{
+%%   <<"Version">> => string()
+%% }
+-type platform() :: #{binary() => any()}.
+
+%% Example:
+%% private_link_config() :: #{
+%%   <<"PrivateLinkEndpoint">> => string(),
+%%   <<"SecurityGroupArns">> => list(string()),
+%%   <<"SubnetArns">> => list(string()),
+%%   <<"VpcEndpointId">> => string()
+%% }
+-type private_link_config() :: #{binary() => any()}.
+
+%% Example:
+%% qop_configuration() :: #{
+%%   <<"DataTransferProtection">> => list(any()),
+%%   <<"RpcProtection">> => list(any())
+%% }
+-type qop_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% report_destination() :: #{
+%%   <<"S3">> => report_destination_s3()
+%% }
+-type report_destination() :: #{binary() => any()}.
+
+%% Example:
+%% report_destination_s3() :: #{
+%%   <<"BucketAccessRoleArn">> => string(),
+%%   <<"S3BucketArn">> => string(),
+%%   <<"Subdirectory">> => string()
+%% }
+-type report_destination_s3() :: #{binary() => any()}.
+
+%% Example:
+%% report_override() :: #{
+%%   <<"ReportLevel">> => list(any())
+%% }
+-type report_override() :: #{binary() => any()}.
+
+%% Example:
+%% report_overrides() :: #{
+%%   <<"Deleted">> => report_override(),
+%%   <<"Skipped">> => report_override(),
+%%   <<"Transferred">> => report_override(),
+%%   <<"Verified">> => report_override()
+%% }
+-type report_overrides() :: #{binary() => any()}.
+
+%% Example:
+%% report_result() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorDetail">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type report_result() :: #{binary() => any()}.
+
+%% Example:
+%% s3_config() :: #{
+%%   <<"BucketAccessRoleArn">> => string()
+%% }
+-type s3_config() :: #{binary() => any()}.
+
+%% Example:
+%% s3_manifest_config() :: #{
+%%   <<"BucketAccessRoleArn">> => string(),
+%%   <<"ManifestObjectPath">> => string(),
+%%   <<"ManifestObjectVersionId">> => string(),
+%%   <<"S3BucketArn">> => string()
+%% }
+-type s3_manifest_config() :: #{binary() => any()}.
+
+%% Example:
+%% smb_mount_options() :: #{
+%%   <<"Version">> => list(any())
+%% }
+-type smb_mount_options() :: #{binary() => any()}.
 
 %% Example:
 %% source_manifest_config() :: #{
 %%   <<"S3">> => s3_manifest_config()
 %% }
 -type source_manifest_config() :: #{binary() => any()}.
+
+%% Example:
+%% start_task_execution_request() :: #{
+%%   <<"Excludes">> => list(filter_rule()),
+%%   <<"Includes">> => list(filter_rule()),
+%%   <<"ManifestConfig">> => manifest_config(),
+%%   <<"OverrideOptions">> => options(),
+%%   <<"Tags">> => list(tag_list_entry()),
+%%   <<"TaskArn">> := string(),
+%%   <<"TaskReportConfig">> => task_report_config()
+%% }
+-type start_task_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_task_execution_response() :: #{
+%%   <<"TaskExecutionArn">> => string()
+%% }
+-type start_task_execution_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag_list_entry() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag_list_entry() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := list(tag_list_entry())
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{
+
+%% }
+-type tag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% task_execution_files_failed_detail() :: #{
+%%   <<"Delete">> => float(),
+%%   <<"Prepare">> => float(),
+%%   <<"Transfer">> => float(),
+%%   <<"Verify">> => float()
+%% }
+-type task_execution_files_failed_detail() :: #{binary() => any()}.
 
 %% Example:
 %% task_execution_files_listed_detail() :: #{
@@ -919,139 +1126,131 @@
 -type task_execution_files_listed_detail() :: #{binary() => any()}.
 
 %% Example:
-%% describe_location_smb_request() :: #{
-%%   <<"LocationArn">> := string()
+%% task_execution_folders_failed_detail() :: #{
+%%   <<"Delete">> => float(),
+%%   <<"List">> => float(),
+%%   <<"Prepare">> => float(),
+%%   <<"Transfer">> => float(),
+%%   <<"Verify">> => float()
 %% }
--type describe_location_smb_request() :: #{binary() => any()}.
+-type task_execution_folders_failed_detail() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_fsx_open_zfs_request() :: #{
-%%   <<"FsxFilesystemArn">> := string(),
-%%   <<"Protocol">> := fsx_protocol(),
-%%   <<"SecurityGroupArns">> := list(string()),
-%%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry())
+%% task_execution_folders_listed_detail() :: #{
+%%   <<"AtDestinationForDelete">> => float(),
+%%   <<"AtSource">> => float()
 %% }
--type create_location_fsx_open_zfs_request() :: #{binary() => any()}.
+-type task_execution_folders_listed_detail() :: #{binary() => any()}.
 
 %% Example:
-%% describe_task_execution_response() :: #{
-%%   <<"Result">> => task_execution_result_detail(),
-%%   <<"BytesWritten">> => float(),
-%%   <<"EstimatedFoldersToDelete">> => float(),
-%%   <<"StartTime">> => non_neg_integer(),
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"FilesTransferred">> => float(),
-%%   <<"FilesVerified">> => float(),
-%%   <<"FilesPrepared">> => float(),
-%%   <<"FoldersFailed">> => task_execution_folders_failed_detail(),
-%%   <<"FilesFailed">> => task_execution_files_failed_detail(),
-%%   <<"EstimatedBytesToTransfer">> => float(),
-%%   <<"FoldersDeleted">> => float(),
-%%   <<"FilesSkipped">> => float(),
-%%   <<"Options">> => options(),
-%%   <<"FoldersVerified">> => float(),
-%%   <<"FilesListed">> => task_execution_files_listed_detail(),
-%%   <<"EstimatedFoldersToTransfer">> => float(),
-%%   <<"EstimatedFilesToTransfer">> => float(),
-%%   <<"ReportResult">> => report_result(),
-%%   <<"BytesTransferred">> => float(),
-%%   <<"EstimatedFilesToDelete">> => float(),
-%%   <<"FoldersPrepared">> => float(),
-%%   <<"FoldersListed">> => task_execution_folders_listed_detail(),
-%%   <<"BytesCompressed">> => float(),
-%%   <<"ManifestConfig">> => manifest_config(),
-%%   <<"Includes">> => list(filter_rule()),
-%%   <<"TaskExecutionArn">> => string(),
-%%   <<"Excludes">> => list(filter_rule()),
-%%   <<"FoldersTransferred">> => float(),
-%%   <<"TaskReportConfig">> => task_report_config(),
-%%   <<"TaskMode">> => list(any()),
+%% task_execution_list_entry() :: #{
 %%   <<"Status">> => list(any()),
-%%   <<"LaunchTime">> => non_neg_integer(),
-%%   <<"FilesDeleted">> => float(),
-%%   <<"FoldersSkipped">> => float()
+%%   <<"TaskExecutionArn">> => string(),
+%%   <<"TaskMode">> => list(any())
 %% }
--type describe_task_execution_response() :: #{binary() => any()}.
+-type task_execution_list_entry() :: #{binary() => any()}.
 
 %% Example:
-%% update_location_s3_response() :: #{
-
+%% task_execution_result_detail() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorDetail">> => string(),
+%%   <<"PrepareDuration">> => float(),
+%%   <<"PrepareStatus">> => list(any()),
+%%   <<"TotalDuration">> => float(),
+%%   <<"TransferDuration">> => float(),
+%%   <<"TransferStatus">> => list(any()),
+%%   <<"VerifyDuration">> => float(),
+%%   <<"VerifyStatus">> => list(any())
 %% }
--type update_location_s3_response() :: #{binary() => any()}.
+-type task_execution_result_detail() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_fsx_windows_response() :: #{
-%%   <<"LocationArn">> => string()
+%% task_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => list(string())
 %% }
--type create_location_fsx_windows_response() :: #{binary() => any()}.
+-type task_filter() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_fsx_windows_request() :: #{
-%%   <<"CmkSecretConfig">> => cmk_secret_config(),
-%%   <<"CustomSecretConfig">> => custom_secret_config(),
-%%   <<"Domain">> => string(),
-%%   <<"FsxFilesystemArn">> := string(),
-%%   <<"Password">> => string(),
-%%   <<"SecurityGroupArns">> := list(string()),
-%%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry()),
-%%   <<"User">> := string()
+%% task_list_entry() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TaskArn">> => string(),
+%%   <<"TaskMode">> => list(any())
 %% }
--type create_location_fsx_windows_request() :: #{binary() => any()}.
+-type task_list_entry() :: #{binary() => any()}.
 
 %% Example:
-%% update_task_execution_response() :: #{
-
+%% task_report_config() :: #{
+%%   <<"Destination">> => report_destination(),
+%%   <<"ObjectVersionIds">> => list(any()),
+%%   <<"OutputType">> => list(any()),
+%%   <<"Overrides">> => report_overrides(),
+%%   <<"ReportLevel">> => list(any())
 %% }
--type update_task_execution_response() :: #{binary() => any()}.
+-type task_report_config() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_smb_request() :: #{
-%%   <<"AgentArns">> := list(string()),
+%% task_schedule() :: #{
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type task_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% task_schedule_details() :: #{
+%%   <<"DisabledBy">> => list(any()),
+%%   <<"DisabledReason">> => string(),
+%%   <<"StatusUpdateTime">> => non_neg_integer()
+%% }
+-type task_schedule_details() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"Keys">> := list(string()),
+%%   <<"ResourceArn">> := string()
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{
+
+%% }
+-type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_agent_request() :: #{
+%%   <<"AgentArn">> := string(),
+%%   <<"Name">> => string()
+%% }
+-type update_agent_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_agent_response() :: #{
+
+%% }
+-type update_agent_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_azure_blob_request() :: #{
+%%   <<"AccessTier">> => list(any()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
+%%   <<"BlobType">> => list(any()),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
-%%   <<"DnsIpAddresses">> => list(string()),
-%%   <<"Domain">> => string(),
-%%   <<"KerberosKeytab">> => binary(),
-%%   <<"KerberosKrb5Conf">> => binary(),
-%%   <<"KerberosPrincipal">> => string(),
-%%   <<"MountOptions">> => smb_mount_options(),
-%%   <<"Password">> => string(),
-%%   <<"ServerHostname">> := string(),
-%%   <<"Subdirectory">> := string(),
-%%   <<"Tags">> => list(tag_list_entry()),
-%%   <<"User">> => string()
-%% }
--type create_location_smb_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_location_response() :: #{
-
-%% }
--type delete_location_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_agent_request() :: #{
-%%   <<"AgentArn">> := string()
-%% }
--type describe_agent_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_location_fsx_lustre_request() :: #{
 %%   <<"LocationArn">> := string(),
+%%   <<"SasConfiguration">> => azure_blob_sas_configuration(),
 %%   <<"Subdirectory">> => string()
 %% }
--type update_location_fsx_lustre_request() :: #{binary() => any()}.
+-type update_location_azure_blob_request() :: #{binary() => any()}.
 
 %% Example:
-%% report_destination_s3() :: #{
-%%   <<"BucketAccessRoleArn">> => string(),
-%%   <<"S3BucketArn">> => string(),
-%%   <<"Subdirectory">> => string()
+%% update_location_azure_blob_response() :: #{
+
 %% }
--type report_destination_s3() :: #{binary() => any()}.
+-type update_location_azure_blob_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_location_efs_request() :: #{
@@ -1064,114 +1263,31 @@
 -type update_location_efs_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_location_azure_blob_request() :: #{
-%%   <<"LocationArn">> := string()
-%% }
--type describe_location_azure_blob_request() :: #{binary() => any()}.
-
-%% Example:
-%% azure_blob_sas_configuration() :: #{
-%%   <<"Token">> => string()
-%% }
--type azure_blob_sas_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% location_list_entry() :: #{
-%%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string()
-%% }
--type location_list_entry() :: #{binary() => any()}.
-
-%% Example:
-%% internal_exception() :: #{
-%%   <<"errorCode">> => string(),
-%%   <<"message">> => string()
-%% }
--type internal_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_location_s3_request() :: #{
-%%   <<"LocationArn">> := string()
-%% }
--type describe_location_s3_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
+%% update_location_efs_response() :: #{
 
 %% }
--type tag_resource_response() :: #{binary() => any()}.
+-type update_location_efs_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_hdfs_request() :: #{
-%%   <<"AgentArns">> := list(string()),
-%%   <<"AuthenticationType">> := list(any()),
-%%   <<"BlockSize">> => integer(),
-%%   <<"CmkSecretConfig">> => cmk_secret_config(),
-%%   <<"CustomSecretConfig">> => custom_secret_config(),
-%%   <<"KerberosKeytab">> => binary(),
-%%   <<"KerberosKrb5Conf">> => binary(),
-%%   <<"KerberosPrincipal">> => string(),
-%%   <<"KmsKeyProviderUri">> => string(),
-%%   <<"NameNodes">> := list(hdfs_name_node()),
-%%   <<"QopConfiguration">> => qop_configuration(),
-%%   <<"ReplicationFactor">> => integer(),
-%%   <<"SimpleUser">> => string(),
-%%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry())
-%% }
--type create_location_hdfs_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_location_hdfs_response() :: #{
-
-%% }
--type update_location_hdfs_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_agent_request() :: #{
-%%   <<"AgentArn">> := string(),
-%%   <<"Name">> => string()
-%% }
--type update_agent_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_agent_request() :: #{
-%%   <<"AgentArn">> := string()
-%% }
--type delete_agent_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_task_request() :: #{
-%%   <<"TaskArn">> := string()
-%% }
--type delete_task_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_location_nfs_request() :: #{
+%% update_location_fsx_lustre_request() :: #{
 %%   <<"LocationArn">> := string(),
-%%   <<"MountOptions">> => nfs_mount_options(),
-%%   <<"OnPremConfig">> => on_prem_config(),
-%%   <<"ServerHostname">> => string(),
 %%   <<"Subdirectory">> => string()
 %% }
--type update_location_nfs_request() :: #{binary() => any()}.
+-type update_location_fsx_lustre_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_fsx_lustre_request() :: #{
-%%   <<"FsxFilesystemArn">> := string(),
-%%   <<"SecurityGroupArns">> := list(string()),
-%%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry())
+%% update_location_fsx_lustre_response() :: #{
+
 %% }
--type create_location_fsx_lustre_request() :: #{binary() => any()}.
+-type update_location_fsx_lustre_response() :: #{binary() => any()}.
 
 %% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ResourceArn">> := string()
+%% update_location_fsx_ontap_request() :: #{
+%%   <<"LocationArn">> := string(),
+%%   <<"Protocol">> => fsx_update_protocol(),
+%%   <<"Subdirectory">> => string()
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type update_location_fsx_ontap_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_location_fsx_ontap_response() :: #{
@@ -1180,19 +1296,18 @@
 -type update_location_fsx_ontap_response() :: #{binary() => any()}.
 
 %% Example:
-%% create_task_response() :: #{
-%%   <<"TaskArn">> => string()
-%% }
--type create_task_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_location_s3_request() :: #{
+%% update_location_fsx_open_zfs_request() :: #{
 %%   <<"LocationArn">> := string(),
-%%   <<"S3Config">> => s3_config(),
-%%   <<"S3StorageClass">> => list(any()),
+%%   <<"Protocol">> => fsx_protocol(),
 %%   <<"Subdirectory">> => string()
 %% }
--type update_location_s3_request() :: #{binary() => any()}.
+-type update_location_fsx_open_zfs_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_fsx_open_zfs_response() :: #{
+
+%% }
+-type update_location_fsx_open_zfs_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_location_fsx_windows_request() :: #{
@@ -1205,6 +1320,54 @@
 %%   <<"User">> => string()
 %% }
 -type update_location_fsx_windows_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_fsx_windows_response() :: #{
+
+%% }
+-type update_location_fsx_windows_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_hdfs_request() :: #{
+%%   <<"AgentArns">> => list(string()),
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"BlockSize">> => integer(),
+%%   <<"CmkSecretConfig">> => cmk_secret_config(),
+%%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"KerberosKeytab">> => binary(),
+%%   <<"KerberosKrb5Conf">> => binary(),
+%%   <<"KerberosPrincipal">> => string(),
+%%   <<"KmsKeyProviderUri">> => string(),
+%%   <<"LocationArn">> := string(),
+%%   <<"NameNodes">> => list(hdfs_name_node()),
+%%   <<"QopConfiguration">> => qop_configuration(),
+%%   <<"ReplicationFactor">> => integer(),
+%%   <<"SimpleUser">> => string(),
+%%   <<"Subdirectory">> => string()
+%% }
+-type update_location_hdfs_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_hdfs_response() :: #{
+
+%% }
+-type update_location_hdfs_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_nfs_request() :: #{
+%%   <<"LocationArn">> := string(),
+%%   <<"MountOptions">> => nfs_mount_options(),
+%%   <<"OnPremConfig">> => on_prem_config(),
+%%   <<"ServerHostname">> => string(),
+%%   <<"Subdirectory">> => string()
+%% }
+-type update_location_nfs_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_location_nfs_response() :: #{
+
+%% }
+-type update_location_nfs_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_location_object_storage_request() :: #{
@@ -1223,454 +1386,296 @@
 -type update_location_object_storage_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tasks_request() :: #{
-%%   <<"Filters">> => list(task_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_tasks_request() :: #{binary() => any()}.
-
-%% Example:
-%% fsx_protocol_smb() :: #{
-%%   <<"CmkSecretConfig">> => cmk_secret_config(),
-%%   <<"CustomSecretConfig">> => custom_secret_config(),
-%%   <<"Domain">> => string(),
-%%   <<"ManagedSecretConfig">> => managed_secret_config(),
-%%   <<"MountOptions">> => smb_mount_options(),
-%%   <<"Password">> => string(),
-%%   <<"User">> => string()
-%% }
--type fsx_protocol_smb() :: #{binary() => any()}.
-
-%% Example:
-%% describe_task_execution_request() :: #{
-%%   <<"TaskExecutionArn">> := string()
-%% }
--type describe_task_execution_request() :: #{binary() => any()}.
-
-%% Example:
-%% hdfs_name_node() :: #{
-%%   <<"Hostname">> => string(),
-%%   <<"Port">> => integer()
-%% }
--type hdfs_name_node() :: #{binary() => any()}.
-
-%% Example:
-%% smb_mount_options() :: #{
-%%   <<"Version">> => list(any())
-%% }
--type smb_mount_options() :: #{binary() => any()}.
-
-%% Example:
-%% list_locations_response() :: #{
-%%   <<"Locations">> => list(location_list_entry()),
-%%   <<"NextToken">> => string()
-%% }
--type list_locations_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_location_hdfs_request() :: #{
-%%   <<"LocationArn">> := string()
-%% }
--type describe_location_hdfs_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_location_efs_request() :: #{
-%%   <<"LocationArn">> := string()
-%% }
--type describe_location_efs_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tasks_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Tasks">> => list(task_list_entry())
-%% }
--type list_tasks_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_location_fsx_windows_response() :: #{
+%% update_location_object_storage_response() :: #{
 
 %% }
--type update_location_fsx_windows_response() :: #{binary() => any()}.
+-type update_location_object_storage_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_location_azure_blob_response() :: #{
-%%   <<"AccessTier">> => list(any()),
-%%   <<"AgentArns">> => list(string()),
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"BlobType">> => list(any()),
-%%   <<"CmkSecretConfig">> => cmk_secret_config(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CustomSecretConfig">> => custom_secret_config(),
-%%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string(),
-%%   <<"ManagedSecretConfig">> => managed_secret_config()
-%% }
--type describe_location_azure_blob_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_location_efs_response() :: #{
-%%   <<"LocationArn">> => string()
-%% }
--type create_location_efs_response() :: #{binary() => any()}.
-
-%% Example:
-%% task_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type task_filter() :: #{binary() => any()}.
-
-%% Example:
-%% update_location_fsx_open_zfs_request() :: #{
+%% update_location_s3_request() :: #{
 %%   <<"LocationArn">> := string(),
-%%   <<"Protocol">> => fsx_protocol(),
+%%   <<"S3Config">> => s3_config(),
+%%   <<"S3StorageClass">> => list(any()),
 %%   <<"Subdirectory">> => string()
 %% }
--type update_location_fsx_open_zfs_request() :: #{binary() => any()}.
+-type update_location_s3_request() :: #{binary() => any()}.
 
 %% Example:
-%% ec2_config() :: #{
-%%   <<"SecurityGroupArns">> => list(string()),
-%%   <<"SubnetArn">> => string()
+%% update_location_s3_response() :: #{
+
 %% }
--type ec2_config() :: #{binary() => any()}.
+-type update_location_s3_response() :: #{binary() => any()}.
 
 %% Example:
-%% describe_location_hdfs_response() :: #{
-%%   <<"AgentArns">> => list(string()),
-%%   <<"AuthenticationType">> => list(any()),
-%%   <<"BlockSize">> => integer(),
-%%   <<"CmkSecretConfig">> => cmk_secret_config(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CustomSecretConfig">> => custom_secret_config(),
-%%   <<"KerberosPrincipal">> => string(),
-%%   <<"KmsKeyProviderUri">> => string(),
-%%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string(),
-%%   <<"ManagedSecretConfig">> => managed_secret_config(),
-%%   <<"NameNodes">> => list(hdfs_name_node()),
-%%   <<"QopConfiguration">> => qop_configuration(),
-%%   <<"ReplicationFactor">> => integer(),
-%%   <<"SimpleUser">> => string()
-%% }
--type describe_location_hdfs_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_location_fsx_windows_request() :: #{
-%%   <<"LocationArn">> := string()
-%% }
--type describe_location_fsx_windows_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_location_object_storage_response() :: #{
-%%   <<"LocationArn">> => string()
-%% }
--type create_location_object_storage_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_location_object_storage_response() :: #{
-%%   <<"AccessKey">> => string(),
-%%   <<"AgentArns">> => list(string()),
-%%   <<"CmkSecretConfig">> => cmk_secret_config(),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"CustomSecretConfig">> => custom_secret_config(),
-%%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string(),
-%%   <<"ManagedSecretConfig">> => managed_secret_config(),
-%%   <<"ServerCertificate">> => binary(),
-%%   <<"ServerPort">> => integer(),
-%%   <<"ServerProtocol">> => list(any())
-%% }
--type describe_location_object_storage_response() :: #{binary() => any()}.
-
-%% Example:
-%% describe_location_smb_response() :: #{
+%% update_location_smb_request() :: #{
 %%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
-%%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"DnsIpAddresses">> => list(string()),
 %%   <<"Domain">> => string(),
+%%   <<"KerberosKeytab">> => binary(),
+%%   <<"KerberosKrb5Conf">> => binary(),
 %%   <<"KerberosPrincipal">> => string(),
-%%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string(),
-%%   <<"ManagedSecretConfig">> => managed_secret_config(),
+%%   <<"LocationArn">> := string(),
 %%   <<"MountOptions">> => smb_mount_options(),
+%%   <<"Password">> => string(),
+%%   <<"ServerHostname">> => string(),
+%%   <<"Subdirectory">> => string(),
 %%   <<"User">> => string()
 %% }
--type describe_location_smb_response() :: #{binary() => any()}.
+-type update_location_smb_request() :: #{binary() => any()}.
 
 %% Example:
-%% manifest_config() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Format">> => list(any()),
-%%   <<"Source">> => source_manifest_config()
-%% }
--type manifest_config() :: #{binary() => any()}.
-
-%% Example:
-%% delete_task_response() :: #{
+%% update_location_smb_response() :: #{
 
 %% }
--type delete_task_response() :: #{binary() => any()}.
+-type update_location_smb_response() :: #{binary() => any()}.
 
 %% Example:
-%% custom_secret_config() :: #{
-%%   <<"SecretAccessRoleArn">> => string(),
-%%   <<"SecretArn">> => string()
+%% update_task_execution_request() :: #{
+%%   <<"Options">> := options(),
+%%   <<"TaskExecutionArn">> := string()
 %% }
--type custom_secret_config() :: #{binary() => any()}.
+-type update_task_execution_request() :: #{binary() => any()}.
 
 %% Example:
-%% describe_location_s3_response() :: #{
-%%   <<"AgentArns">> => list(string()),
-%%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"LocationArn">> => string(),
-%%   <<"LocationUri">> => string(),
-%%   <<"S3Config">> => s3_config(),
-%%   <<"S3StorageClass">> => list(any())
+%% update_task_execution_response() :: #{
+
 %% }
--type describe_location_s3_response() :: #{binary() => any()}.
+-type update_task_execution_response() :: #{binary() => any()}.
 
 %% Example:
-%% task_execution_folders_listed_detail() :: #{
-%%   <<"AtDestinationForDelete">> => float(),
-%%   <<"AtSource">> => float()
-%% }
--type task_execution_folders_listed_detail() :: #{binary() => any()}.
-
-%% Example:
-%% start_task_execution_request() :: #{
+%% update_task_request() :: #{
+%%   <<"CloudWatchLogGroupArn">> => string(),
 %%   <<"Excludes">> => list(filter_rule()),
 %%   <<"Includes">> => list(filter_rule()),
 %%   <<"ManifestConfig">> => manifest_config(),
-%%   <<"OverrideOptions">> => options(),
-%%   <<"Tags">> => list(tag_list_entry()),
+%%   <<"Name">> => string(),
+%%   <<"Options">> => options(),
+%%   <<"Schedule">> => task_schedule(),
 %%   <<"TaskArn">> := string(),
 %%   <<"TaskReportConfig">> => task_report_config()
 %% }
--type start_task_execution_request() :: #{binary() => any()}.
+-type update_task_request() :: #{binary() => any()}.
 
 %% Example:
-%% create_location_fsx_ontap_response() :: #{
-%%   <<"LocationArn">> => string()
+%% update_task_response() :: #{
+
 %% }
--type create_location_fsx_ontap_response() :: #{binary() => any()}.
+-type update_task_response() :: #{binary() => any()}.
 
 -type cancel_task_execution_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_agent_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_location_azure_blob_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_location_efs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_location_fsx_lustre_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_location_fsx_ontap_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_location_fsx_open_zfs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_location_fsx_windows_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_location_hdfs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_location_nfs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_location_object_storage_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_location_s3_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_location_smb_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type create_task_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type delete_agent_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type delete_location_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type delete_task_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_agent_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_location_azure_blob_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_location_efs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_location_fsx_lustre_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_location_fsx_ontap_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_location_fsx_open_zfs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_location_fsx_windows_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_location_hdfs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_location_nfs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_location_object_storage_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_location_s3_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_location_smb_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_task_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type describe_task_execution_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type list_agents_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type list_locations_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type list_tags_for_resource_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type list_task_executions_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type list_tasks_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type start_task_execution_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type tag_resource_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type untag_resource_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_agent_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_location_azure_blob_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_location_efs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_location_fsx_lustre_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_location_fsx_ontap_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_location_fsx_open_zfs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_location_fsx_windows_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_location_hdfs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_location_nfs_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_location_object_storage_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_location_s3_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_location_smb_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_task_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 -type update_task_execution_errors() ::
-    internal_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    internal_exception().
 
 %%====================================================================
 %% API

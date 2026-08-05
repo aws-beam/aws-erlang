@@ -289,6 +289,1197 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_profile_key_request() :: #{
+%%   <<"KeyName">> := string(),
+%%   <<"ProfileId">> := string(),
+%%   <<"Values">> := list(string())
+%% }
+-type add_profile_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_profile_key_response() :: #{
+%%   <<"KeyName">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type add_profile_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% additional_search_key() :: #{
+%%   <<"KeyName">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type additional_search_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% address() :: #{
+%%   <<"Address1">> => string(),
+%%   <<"Address2">> => string(),
+%%   <<"Address3">> => string(),
+%%   <<"Address4">> => string(),
+%%   <<"City">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"County">> => string(),
+%%   <<"PostalCode">> => string(),
+%%   <<"Province">> => string(),
+%%   <<"State">> => string()
+%% }
+-type address() :: #{binary() => any()}.
+
+
+%% Example:
+%% address_dimension() :: #{
+%%   <<"City">> => profile_dimension(),
+%%   <<"Country">> => profile_dimension(),
+%%   <<"County">> => profile_dimension(),
+%%   <<"PostalCode">> => profile_dimension(),
+%%   <<"Province">> => profile_dimension(),
+%%   <<"State">> => profile_dimension()
+%% }
+-type address_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% appflow_integration() :: #{
+%%   <<"Batches">> => list(batch()),
+%%   <<"FlowDefinition">> => flow_definition()
+%% }
+-type appflow_integration() :: #{binary() => any()}.
+
+
+%% Example:
+%% appflow_integration_workflow_attributes() :: #{
+%%   <<"ConnectorProfileName">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SourceConnectorType">> => list(any())
+%% }
+-type appflow_integration_workflow_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% appflow_integration_workflow_metrics() :: #{
+%%   <<"RecordsProcessed">> => float(),
+%%   <<"StepsCompleted">> => float(),
+%%   <<"TotalSteps">> => float()
+%% }
+-type appflow_integration_workflow_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% appflow_integration_workflow_step() :: #{
+%%   <<"BatchRecordsEndTime">> => string(),
+%%   <<"BatchRecordsStartTime">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExecutionMessage">> => string(),
+%%   <<"FlowName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"RecordsProcessed">> => float(),
+%%   <<"Status">> => list(any())
+%% }
+-type appflow_integration_workflow_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_details() :: #{
+%%   <<"Attributes">> => list(attribute_item()),
+%%   <<"Expression">> => string()
+%% }
+-type attribute_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type attribute_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_item() :: #{
+%%   <<"Name">> => string()
+%% }
+-type attribute_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_types_selector() :: #{
+%%   <<"Address">> => list(string()),
+%%   <<"AttributeMatchingModel">> => list(any()),
+%%   <<"EmailAddress">> => list(string()),
+%%   <<"PhoneNumber">> => list(string())
+%% }
+-type attribute_types_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_value_item() :: #{
+%%   <<"Value">> => string()
+%% }
+-type attribute_value_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_merging() :: #{
+%%   <<"ConflictResolution">> => conflict_resolution(),
+%%   <<"Consolidation">> => consolidation(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"MinAllowedConfidenceScoreForMerging">> => float()
+%% }
+-type auto_merging() :: #{binary() => any()}.
+
+
+%% Example:
+%% bad_request_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type batch() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_calculated_attribute_for_profile_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ProfileId">> => string()
+%% }
+-type batch_get_calculated_attribute_for_profile_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_calculated_attribute_for_profile_request() :: #{
+%%   <<"ConditionOverrides">> => condition_overrides(),
+%%   <<"ProfileIds">> := list(string())
+%% }
+-type batch_get_calculated_attribute_for_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_calculated_attribute_for_profile_response() :: #{
+%%   <<"CalculatedAttributeValues">> => list(calculated_attribute_value()),
+%%   <<"ConditionOverrides">> => condition_overrides(),
+%%   <<"Errors">> => list(batch_get_calculated_attribute_for_profile_error())
+%% }
+-type batch_get_calculated_attribute_for_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_profile_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"ProfileId">> => string()
+%% }
+-type batch_get_profile_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_profile_request() :: #{
+%%   <<"ProfileIds">> := list(string())
+%% }
+-type batch_get_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_profile_response() :: #{
+%%   <<"Errors">> => list(batch_get_profile_error()),
+%%   <<"Profiles">> => list(profile())
+%% }
+-type batch_get_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_profile_object_error_item() :: #{
+%%   <<"Code">> => integer(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type batch_put_profile_object_error_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_profile_object_request() :: #{
+%%   <<"Items">> := list(batch_put_profile_object_request_item()),
+%%   <<"ObjectTypeName">> := string()
+%% }
+-type batch_put_profile_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_profile_object_request_item() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Object">> => string()
+%% }
+-type batch_put_profile_object_request_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_profile_object_response() :: #{
+%%   <<"Failed">> => list(batch_put_profile_object_error_item()),
+%%   <<"Successful">> => list(batch_put_profile_object_response_item())
+%% }
+-type batch_put_profile_object_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_profile_object_response_item() :: #{
+%%   <<"Id">> => string(),
+%%   <<"ProfileObjectUniqueKey">> => string()
+%% }
+-type batch_put_profile_object_response_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculated_attribute_dimension() :: #{
+%%   <<"ConditionOverrides">> => condition_overrides(),
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type calculated_attribute_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculated_attribute_value() :: #{
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDataPartial">> => string(),
+%%   <<"LastObjectTimestamp">> => non_neg_integer(),
+%%   <<"ProfileId">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type calculated_attribute_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% catalog_item() :: #{
+%%   <<"AdditionalInformation">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"Category">> => string(),
+%%   <<"Code">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ImageLink">> => string(),
+%%   <<"Link">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Price">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type catalog_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% condition_overrides() :: #{
+%%   <<"Range">> => range_override()
+%% }
+-type condition_overrides() :: #{binary() => any()}.
+
+
+%% Example:
+%% conditions() :: #{
+%%   <<"ObjectCount">> => integer(),
+%%   <<"Range">> => range(),
+%%   <<"Threshold">> => threshold()
+%% }
+-type conditions() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_resolution() :: #{
+%%   <<"ConflictResolvingModel">> => list(any()),
+%%   <<"SourceName">> => string()
+%% }
+-type conflict_resolution() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_operator() :: #{
+%%   <<"Marketo">> => list(any()),
+%%   <<"S3">> => list(any()),
+%%   <<"Salesforce">> => list(any()),
+%%   <<"ServiceNow">> => list(any()),
+%%   <<"Zendesk">> => list(any())
+%% }
+-type connector_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% consolidation() :: #{
+%%   <<"MatchingAttributesList">> => list(list(string())())
+%% }
+-type consolidation() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_preference() :: #{
+%%   <<"ContactType">> => list(any()),
+%%   <<"KeyName">> => string(),
+%%   <<"KeyValue">> => string(),
+%%   <<"ProfileId">> => string()
+%% }
+-type contact_preference() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_calculated_attribute_definition_request() :: #{
+%%   <<"AttributeDetails">> := attribute_details(),
+%%   <<"Conditions">> => conditions(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Filter">> => filter(),
+%%   <<"Statistic">> := list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UseHistoricalData">> => boolean()
+%% }
+-type create_calculated_attribute_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_calculated_attribute_definition_response() :: #{
+%%   <<"AttributeDetails">> => attribute_details(),
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"Conditions">> => conditions(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Filter">> => filter(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Readiness">> => readiness(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UseHistoricalData">> => boolean()
+%% }
+-type create_calculated_attribute_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_layout_request() :: #{
+%%   <<"Description">> := string(),
+%%   <<"DisplayName">> := string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Layout">> := string(),
+%%   <<"LayoutType">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_domain_layout_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_layout_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Layout">> => string(),
+%%   <<"LayoutDefinitionName">> => string(),
+%%   <<"LayoutType">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string()
+%% }
+-type create_domain_layout_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_request() :: #{
+%%   <<"DataStore">> => data_store_request(),
+%%   <<"DeadLetterQueueUrl">> => string(),
+%%   <<"DefaultEncryptionKey">> => string(),
+%%   <<"DefaultExpirationDays">> := integer(),
+%%   <<"Matching">> => matching_request(),
+%%   <<"RuleBasedMatching">> => rule_based_matching_request(),
+%%   <<"Tags">> => map()
+%% }
+-type create_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_domain_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataStore">> => data_store_response(),
+%%   <<"DeadLetterQueueUrl">> => string(),
+%%   <<"DefaultEncryptionKey">> => string(),
+%%   <<"DefaultExpirationDays">> => integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Matching">> => matching_response(),
+%%   <<"RuleBasedMatching">> => rule_based_matching_response(),
+%%   <<"Tags">> => map()
+%% }
+-type create_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_stream_request() :: #{
+%%   <<"Tags">> => map(),
+%%   <<"Uri">> := string()
+%% }
+-type create_event_stream_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_stream_response() :: #{
+%%   <<"EventStreamArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_stream_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_trigger_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerConditions">> := list(event_trigger_condition()),
+%%   <<"EventTriggerLimits">> => event_trigger_limits(),
+%%   <<"ObjectTypeName">> := string(),
+%%   <<"SegmentFilter">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_trigger_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_event_trigger_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
+%%   <<"EventTriggerLimits">> => event_trigger_limits(),
+%%   <<"EventTriggerName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SegmentFilter">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_event_trigger_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_integration_workflow_request() :: #{
+%%   <<"IntegrationConfig">> := integration_config(),
+%%   <<"ObjectTypeName">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"WorkflowType">> := list(any())
+%% }
+-type create_integration_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_integration_workflow_response() :: #{
+%%   <<"Message">> => string(),
+%%   <<"WorkflowId">> => string()
+%% }
+-type create_integration_workflow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profile_request() :: #{
+%%   <<"AccountNumber">> => string(),
+%%   <<"AdditionalInformation">> => string(),
+%%   <<"Address">> => address(),
+%%   <<"Attributes">> => map(),
+%%   <<"BillingAddress">> => address(),
+%%   <<"BirthDate">> => string(),
+%%   <<"BusinessEmailAddress">> => string(),
+%%   <<"BusinessName">> => string(),
+%%   <<"BusinessPhoneNumber">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"EngagementPreferences">> => engagement_preferences(),
+%%   <<"FirstName">> => string(),
+%%   <<"Gender">> => list(any()),
+%%   <<"GenderString">> => string(),
+%%   <<"HomePhoneNumber">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"MailingAddress">> => address(),
+%%   <<"MiddleName">> => string(),
+%%   <<"MobilePhoneNumber">> => string(),
+%%   <<"PartyType">> => list(any()),
+%%   <<"PartyTypeString">> => string(),
+%%   <<"PersonalEmailAddress">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"ProfileType">> => list(any()),
+%%   <<"ShippingAddress">> => address()
+%% }
+-type create_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_profile_response() :: #{
+%%   <<"ProfileId">> => string()
+%% }
+-type create_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_filter_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RecommenderFilterExpression">> := string(),
+%%   <<"RecommenderSchemaName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_filter_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_filter_response() :: #{
+%%   <<"RecommenderFilterArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_filter_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RecommenderConfig">> => recommender_config(),
+%%   <<"RecommenderRecipeName">> := list(any()),
+%%   <<"RecommenderSchemaName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_response() :: #{
+%%   <<"RecommenderArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_schema_request() :: #{
+%%   <<"Fields">> := map(),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_schema_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recommender_schema_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Fields">> => map(),
+%%   <<"RecommenderSchemaArn">> => string(),
+%%   <<"RecommenderSchemaName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_recommender_schema_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_segment_definition_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> := string(),
+%%   <<"SegmentGroups">> => segment_group(),
+%%   <<"SegmentSort">> => segment_sort(),
+%%   <<"SegmentSqlQuery">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_segment_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_segment_definition_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"SegmentDefinitionArn">> => string(),
+%%   <<"SegmentDefinitionName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_segment_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_segment_estimate_request() :: #{
+%%   <<"SegmentQuery">> => segment_group_structure(),
+%%   <<"SegmentSqlQuery">> => string()
+%% }
+-type create_segment_estimate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_segment_estimate_response() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"EstimateId">> => string(),
+%%   <<"StatusCode">> => integer()
+%% }
+-type create_segment_estimate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_segment_snapshot_request() :: #{
+%%   <<"DataFormat">> := list(any()),
+%%   <<"DestinationUri">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type create_segment_snapshot_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_segment_snapshot_response() :: #{
+%%   <<"SnapshotId">> => string()
+%% }
+-type create_segment_snapshot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_upload_job_request() :: #{
+%%   <<"DataExpiry">> => integer(),
+%%   <<"DisplayName">> := string(),
+%%   <<"Fields">> := map(),
+%%   <<"UniqueKey">> := string()
+%% }
+-type create_upload_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_upload_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type create_upload_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_store_request() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type data_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_store_response() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Readiness">> => readiness()
+%% }
+-type data_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list([string()]())
+%% }
+-type date_dimension() :: #{binary() => any()}.
+
+%% Example:
+%% delete_calculated_attribute_definition_request() :: #{}
+-type delete_calculated_attribute_definition_request() :: #{}.
+
+%% Example:
+%% delete_calculated_attribute_definition_response() :: #{}
+-type delete_calculated_attribute_definition_response() :: #{}.
+
+%% Example:
+%% delete_domain_layout_request() :: #{}
+-type delete_domain_layout_request() :: #{}.
+
+
+%% Example:
+%% delete_domain_layout_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_domain_layout_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_domain_object_type_request() :: #{}
+-type delete_domain_object_type_request() :: #{}.
+
+%% Example:
+%% delete_domain_object_type_response() :: #{}
+-type delete_domain_object_type_response() :: #{}.
+
+%% Example:
+%% delete_domain_request() :: #{}
+-type delete_domain_request() :: #{}.
+
+
+%% Example:
+%% delete_domain_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_event_stream_request() :: #{}
+-type delete_event_stream_request() :: #{}.
+
+%% Example:
+%% delete_event_stream_response() :: #{}
+-type delete_event_stream_response() :: #{}.
+
+%% Example:
+%% delete_event_trigger_request() :: #{}
+-type delete_event_trigger_request() :: #{}.
+
+
+%% Example:
+%% delete_event_trigger_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_event_trigger_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_integration_request() :: #{
+%%   <<"Uri">> := string()
+%% }
+-type delete_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_integration_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_key_request() :: #{
+%%   <<"KeyName">> := string(),
+%%   <<"ProfileId">> := string(),
+%%   <<"Values">> := list(string())
+%% }
+-type delete_profile_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_key_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_profile_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_object_request() :: #{
+%%   <<"ObjectTypeName">> := string(),
+%%   <<"ProfileId">> := string(),
+%%   <<"ProfileObjectUniqueKey">> := string()
+%% }
+-type delete_profile_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_object_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_profile_object_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_profile_object_type_request() :: #{}
+-type delete_profile_object_type_request() :: #{}.
+
+
+%% Example:
+%% delete_profile_object_type_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_profile_object_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_request() :: #{
+%%   <<"ProfileId">> := string()
+%% }
+-type delete_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_profile_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommender_filter_request() :: #{}
+-type delete_recommender_filter_request() :: #{}.
+
+
+%% Example:
+%% delete_recommender_filter_response() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type delete_recommender_filter_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_recommender_request() :: #{}
+-type delete_recommender_request() :: #{}.
+
+%% Example:
+%% delete_recommender_response() :: #{}
+-type delete_recommender_response() :: #{}.
+
+%% Example:
+%% delete_recommender_schema_request() :: #{}
+-type delete_recommender_schema_request() :: #{}.
+
+%% Example:
+%% delete_recommender_schema_response() :: #{}
+-type delete_recommender_schema_response() :: #{}.
+
+%% Example:
+%% delete_segment_definition_request() :: #{}
+-type delete_segment_definition_request() :: #{}.
+
+
+%% Example:
+%% delete_segment_definition_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_segment_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workflow_request() :: #{}
+-type delete_workflow_request() :: #{}.
+
+%% Example:
+%% delete_workflow_response() :: #{}
+-type delete_workflow_response() :: #{}.
+
+
+%% Example:
+%% destination_summary() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"UnhealthySince">> => non_neg_integer(),
+%%   <<"Uri">> => string()
+%% }
+-type destination_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% detect_profile_object_type_request() :: #{
+%%   <<"Objects">> := list(string())
+%% }
+-type detect_profile_object_type_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% detect_profile_object_type_response() :: #{
+%%   <<"DetectedProfileObjectTypes">> => list(detected_profile_object_type())
+%% }
+-type detect_profile_object_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% detected_profile_object_type() :: #{
+%%   <<"Fields">> => map(),
+%%   <<"Keys">> => map(),
+%%   <<"SourceLastUpdatedTimestampFormat">> => string()
+%% }
+-type detected_profile_object_type() :: #{binary() => any()}.
+
+
+%% Example:
+%% diversity_column() :: #{
+%%   <<"CapType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type diversity_column() :: #{binary() => any()}.
+
+
+%% Example:
+%% diversity_config() :: #{
+%%   <<"DiversityColumns">> => list(diversity_column())
+%% }
+-type diversity_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_object_type_field() :: #{
+%%   <<"ContentType">> => list(any()),
+%%   <<"FeatureType">> => list(any()),
+%%   <<"Source">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type domain_object_type_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_object_types_list_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type domain_object_types_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_stats() :: #{
+%%   <<"MeteringProfileCount">> => float(),
+%%   <<"ObjectCount">> => float(),
+%%   <<"ProfileCount">> => float(),
+%%   <<"TotalSize">> => float()
+%% }
+-type domain_stats() :: #{binary() => any()}.
+
+
+%% Example:
+%% engagement_preferences() :: #{
+%%   <<"Email">> => list(contact_preference()),
+%%   <<"Phone">> => list(contact_preference())
+%% }
+-type engagement_preferences() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_parameters() :: #{
+%%   <<"EventType">> => string(),
+%%   <<"EventValueThreshold">> => float(),
+%%   <<"EventWeight">> => float()
+%% }
+-type event_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_stream_destination_details() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UnhealthySince">> => non_neg_integer(),
+%%   <<"Uri">> => string()
+%% }
+-type event_stream_destination_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_stream_summary() :: #{
+%%   <<"DestinationSummary">> => destination_summary(),
+%%   <<"DomainName">> => string(),
+%%   <<"EventStreamArn">> => string(),
+%%   <<"EventStreamName">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StoppedSince">> => non_neg_integer(),
+%%   <<"Tags">> => map()
+%% }
+-type event_stream_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_trigger_condition() :: #{
+%%   <<"EventTriggerDimensions">> => list(event_trigger_dimension()),
+%%   <<"LogicalOperator">> => list(any())
+%% }
+-type event_trigger_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_trigger_dimension() :: #{
+%%   <<"ObjectAttributes">> => list(object_attribute())
+%% }
+-type event_trigger_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_trigger_limits() :: #{
+%%   <<"EventExpiration">> => float(),
+%%   <<"Periods">> => list(period())
+%% }
+-type event_trigger_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_trigger_summary_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type event_trigger_summary_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% events_config() :: #{
+%%   <<"EventParametersList">> => list(event_parameters())
+%% }
+-type events_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% exporting_config() :: #{
+%%   <<"S3Exporting">> => s3_exporting_config()
+%% }
+-type exporting_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% exporting_location() :: #{
+%%   <<"S3Exporting">> => s3_exporting_location()
+%% }
+-type exporting_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% extra_length_value_profile_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type extra_length_value_profile_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_source_profile_ids() :: #{
+%%   <<"AccountNumber">> => string(),
+%%   <<"AdditionalInformation">> => string(),
+%%   <<"Address">> => string(),
+%%   <<"Attributes">> => map(),
+%%   <<"BillingAddress">> => string(),
+%%   <<"BirthDate">> => string(),
+%%   <<"BusinessEmailAddress">> => string(),
+%%   <<"BusinessName">> => string(),
+%%   <<"BusinessPhoneNumber">> => string(),
+%%   <<"EmailAddress">> => string(),
+%%   <<"EngagementPreferences">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"Gender">> => string(),
+%%   <<"HomePhoneNumber">> => string(),
+%%   <<"LastName">> => string(),
+%%   <<"MailingAddress">> => string(),
+%%   <<"MiddleName">> => string(),
+%%   <<"MobilePhoneNumber">> => string(),
+%%   <<"PartyType">> => string(),
+%%   <<"PersonalEmailAddress">> => string(),
+%%   <<"PhoneNumber">> => string(),
+%%   <<"ProfileType">> => string(),
+%%   <<"ShippingAddress">> => string()
+%% }
+-type field_source_profile_ids() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter() :: #{
+%%   <<"Groups">> => list(filter_group()),
+%%   <<"Include">> => list(any())
+%% }
+-type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_attribute_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type filter_attribute_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_dimension() :: #{
+%%   <<"Attributes">> => map()
+%% }
+-type filter_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% filter_group() :: #{
+%%   <<"Dimensions">> => list(filter_dimension()),
+%%   <<"Type">> => list(any())
+%% }
+-type filter_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_definition() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FlowName">> => string(),
+%%   <<"KmsArn">> => string(),
+%%   <<"SourceFlowConfig">> => source_flow_config(),
+%%   <<"Tasks">> => list(task()),
+%%   <<"TriggerConfig">> => trigger_config()
+%% }
+-type flow_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% found_by_key_value() :: #{
+%%   <<"KeyName">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type found_by_key_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_auto_merging_preview_request() :: #{
+%%   <<"ConflictResolution">> := conflict_resolution(),
+%%   <<"Consolidation">> := consolidation(),
+%%   <<"MinAllowedConfidenceScoreForMerging">> => float()
+%% }
+-type get_auto_merging_preview_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_auto_merging_preview_response() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"NumberOfMatchesInSample">> => float(),
+%%   <<"NumberOfProfilesInSample">> => float(),
+%%   <<"NumberOfProfilesWillBeMerged">> => float()
+%% }
+-type get_auto_merging_preview_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_calculated_attribute_definition_request() :: #{}
+-type get_calculated_attribute_definition_request() :: #{}.
+
+
+%% Example:
+%% get_calculated_attribute_definition_response() :: #{
+%%   <<"AttributeDetails">> => attribute_details(),
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"Conditions">> => conditions(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Filter">> => filter(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Readiness">> => readiness(),
+%%   <<"Statistic">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UseHistoricalData">> => boolean()
+%% }
+-type get_calculated_attribute_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_calculated_attribute_for_profile_request() :: #{}
+-type get_calculated_attribute_for_profile_request() :: #{}.
+
+
+%% Example:
+%% get_calculated_attribute_for_profile_response() :: #{
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDataPartial">> => string(),
+%%   <<"LastObjectTimestamp">> => non_neg_integer(),
+%%   <<"Value">> => string()
+%% }
+-type get_calculated_attribute_for_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_layout_request() :: #{}
+-type get_domain_layout_request() :: #{}.
+
+
+%% Example:
 %% get_domain_layout_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -302,6 +1493,1195 @@
 %%   <<"Version">> => string()
 %% }
 -type get_domain_layout_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_object_type_request() :: #{}
+-type get_domain_object_type_request() :: #{}.
+
+
+%% Example:
+%% get_domain_object_type_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"Fields">> => map(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_domain_object_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_request() :: #{}
+-type get_domain_request() :: #{}.
+
+
+%% Example:
+%% get_domain_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataStore">> => data_store_response(),
+%%   <<"DeadLetterQueueUrl">> => string(),
+%%   <<"DefaultEncryptionKey">> => string(),
+%%   <<"DefaultExpirationDays">> => integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Matching">> => matching_response(),
+%%   <<"RuleBasedMatching">> => rule_based_matching_response(),
+%%   <<"Stats">> => domain_stats(),
+%%   <<"Tags">> => map()
+%% }
+-type get_domain_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_stream_request() :: #{}
+-type get_event_stream_request() :: #{}.
+
+
+%% Example:
+%% get_event_stream_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DestinationDetails">> => event_stream_destination_details(),
+%%   <<"DomainName">> => string(),
+%%   <<"EventStreamArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StoppedSince">> => non_neg_integer(),
+%%   <<"Tags">> => map()
+%% }
+-type get_event_stream_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_trigger_request() :: #{}
+-type get_event_trigger_request() :: #{}.
+
+
+%% Example:
+%% get_event_trigger_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
+%%   <<"EventTriggerLimits">> => event_trigger_limits(),
+%%   <<"EventTriggerName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SegmentFilter">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type get_event_trigger_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_resolution_job_request() :: #{}
+-type get_identity_resolution_job_request() :: #{}.
+
+
+%% Example:
+%% get_identity_resolution_job_response() :: #{
+%%   <<"AutoMerging">> => auto_merging(),
+%%   <<"DomainName">> => string(),
+%%   <<"ExportingLocation">> => exporting_location(),
+%%   <<"JobEndTime">> => non_neg_integer(),
+%%   <<"JobExpirationTime">> => non_neg_integer(),
+%%   <<"JobId">> => string(),
+%%   <<"JobStartTime">> => non_neg_integer(),
+%%   <<"JobStats">> => job_stats(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_identity_resolution_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_integration_request() :: #{
+%%   <<"Uri">> := string()
+%% }
+-type get_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_integration_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"EventTriggerNames">> => list(string()),
+%%   <<"IsUnstructured">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"ObjectTypeNames">> => map(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Scope">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Uri">> => string(),
+%%   <<"WorkflowId">> => string()
+%% }
+-type get_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_matches_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_matches_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_matches_response() :: #{
+%%   <<"MatchGenerationDate">> => non_neg_integer(),
+%%   <<"Matches">> => list(match_item()),
+%%   <<"NextToken">> => string(),
+%%   <<"PotentialMatches">> => integer()
+%% }
+-type get_matches_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_type_attribute_statistics_percentiles() :: #{
+%%   <<"P25">> => float(),
+%%   <<"P5">> => float(),
+%%   <<"P50">> => float(),
+%%   <<"P75">> => float(),
+%%   <<"P95">> => float()
+%% }
+-type get_object_type_attribute_statistics_percentiles() :: #{binary() => any()}.
+
+%% Example:
+%% get_object_type_attribute_statistics_request() :: #{}
+-type get_object_type_attribute_statistics_request() :: #{}.
+
+
+%% Example:
+%% get_object_type_attribute_statistics_response() :: #{
+%%   <<"CalculatedAt">> => non_neg_integer(),
+%%   <<"Statistics">> => get_object_type_attribute_statistics_stats()
+%% }
+-type get_object_type_attribute_statistics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_object_type_attribute_statistics_stats() :: #{
+%%   <<"Average">> => float(),
+%%   <<"Maximum">> => float(),
+%%   <<"Minimum">> => float(),
+%%   <<"Percentiles">> => get_object_type_attribute_statistics_percentiles(),
+%%   <<"StandardDeviation">> => float()
+%% }
+-type get_object_type_attribute_statistics_stats() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_history_record_request() :: #{}
+-type get_profile_history_record_request() :: #{}.
+
+
+%% Example:
+%% get_profile_history_record_response() :: #{
+%%   <<"ActionType">> => list(any()),
+%%   <<"Content">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"PerformedBy">> => string(),
+%%   <<"ProfileObjectUniqueKey">> => string()
+%% }
+-type get_profile_history_record_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_object_type_request() :: #{}
+-type get_profile_object_type_request() :: #{}.
+
+
+%% Example:
+%% get_profile_object_type_response() :: #{
+%%   <<"AllowProfileCreation">> => boolean(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"ExpirationDays">> => integer(),
+%%   <<"Fields">> => map(),
+%%   <<"Keys">> => map(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"MaxAvailableProfileObjectCount">> => integer(),
+%%   <<"MaxProfileObjectCount">> => integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SourceLastUpdatedTimestampFormat">> => string(),
+%%   <<"SourcePriority">> => integer(),
+%%   <<"Tags">> => map(),
+%%   <<"TemplateId">> => string()
+%% }
+-type get_profile_object_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_object_type_template_request() :: #{}
+-type get_profile_object_type_template_request() :: #{}.
+
+
+%% Example:
+%% get_profile_object_type_template_response() :: #{
+%%   <<"AllowProfileCreation">> => boolean(),
+%%   <<"Fields">> => map(),
+%%   <<"Keys">> => map(),
+%%   <<"SourceLastUpdatedTimestampFormat">> => string(),
+%%   <<"SourceName">> => string(),
+%%   <<"SourceObject">> => string(),
+%%   <<"TemplateId">> => string()
+%% }
+-type get_profile_object_type_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_profile_recommendations_request() :: #{
+%%   <<"CandidateIds">> => list(string()),
+%%   <<"Context">> => map(),
+%%   <<"DiversityConfig">> => recommendation_diversity_config(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetadataConfig">> => metadata_config(),
+%%   <<"RecommenderFilters">> => list(recommender_filter()),
+%%   <<"RecommenderName">> := string(),
+%%   <<"RecommenderPromotionalFilters">> => list(recommender_promotional_filter())
+%% }
+-type get_profile_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_profile_recommendations_response() :: #{
+%%   <<"Recommendations">> => list(recommendation())
+%% }
+-type get_profile_recommendations_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommender_filter_request() :: #{}
+-type get_recommender_filter_request() :: #{}.
+
+
+%% Example:
+%% get_recommender_filter_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FailureReason">> => [string()],
+%%   <<"RecommenderFilterExpression">> => string(),
+%%   <<"RecommenderFilterName">> => string(),
+%%   <<"RecommenderSchemaName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_recommender_filter_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommender_request() :: #{
+%%   <<"TrainingMetricsCount">> => integer()
+%% }
+-type get_recommender_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recommender_response() :: #{
+%%   <<"ActiveRecommenderVersionName">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FailureReason">> => [string()],
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"LatestRecommenderUpdate">> => recommender_update(),
+%%   <<"RecommenderConfig">> => recommender_config(),
+%%   <<"RecommenderName">> => string(),
+%%   <<"RecommenderRecipeName">> => list(any()),
+%%   <<"RecommenderSchemaName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"TrainingMetrics">> => list(training_metrics())
+%% }
+-type get_recommender_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_recommender_schema_request() :: #{}
+-type get_recommender_schema_request() :: #{}.
+
+
+%% Example:
+%% get_recommender_schema_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Fields">> => map(),
+%%   <<"RecommenderSchemaName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_recommender_schema_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_segment_definition_request() :: #{}
+-type get_segment_definition_request() :: #{}.
+
+
+%% Example:
+%% get_segment_definition_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"SegmentDefinitionArn">> => string(),
+%%   <<"SegmentDefinitionName">> => string(),
+%%   <<"SegmentGroups">> => segment_group(),
+%%   <<"SegmentSort">> => segment_sort(),
+%%   <<"SegmentSqlQuery">> => string(),
+%%   <<"SegmentType">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type get_segment_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_segment_estimate_request() :: #{}
+-type get_segment_estimate_request() :: #{}.
+
+
+%% Example:
+%% get_segment_estimate_response() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"Estimate">> => string(),
+%%   <<"EstimateId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusCode">> => integer()
+%% }
+-type get_segment_estimate_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segment_membership_request() :: #{
+%%   <<"ProfileIds">> := list(string())
+%% }
+-type get_segment_membership_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_segment_membership_response() :: #{
+%%   <<"Failures">> => list(profile_query_failures()),
+%%   <<"LastComputedAt">> => non_neg_integer(),
+%%   <<"Profiles">> => list(profile_query_result()),
+%%   <<"SegmentDefinitionName">> => string()
+%% }
+-type get_segment_membership_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_segment_snapshot_request() :: #{}
+-type get_segment_snapshot_request() :: #{}.
+
+
+%% Example:
+%% get_segment_snapshot_response() :: #{
+%%   <<"DataFormat">> => list(any()),
+%%   <<"DestinationUri">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"SnapshotId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type get_segment_snapshot_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_similar_profiles_request() :: #{
+%%   <<"MatchType">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchKey">> := string(),
+%%   <<"SearchValue">> := string()
+%% }
+-type get_similar_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_similar_profiles_response() :: #{
+%%   <<"ConfidenceScore">> => float(),
+%%   <<"MatchId">> => string(),
+%%   <<"MatchType">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileIds">> => list(string()),
+%%   <<"RuleLevel">> => integer()
+%% }
+-type get_similar_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_upload_job_path_request() :: #{}
+-type get_upload_job_path_request() :: #{}.
+
+
+%% Example:
+%% get_upload_job_path_response() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Url">> => string(),
+%%   <<"ValidUntil">> => non_neg_integer()
+%% }
+-type get_upload_job_path_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_upload_job_request() :: #{}
+-type get_upload_job_request() :: #{}.
+
+
+%% Example:
+%% get_upload_job_response() :: #{
+%%   <<"CompletedAt">> => non_neg_integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataExpiry">> => integer(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Fields">> => map(),
+%%   <<"JobId">> => string(),
+%%   <<"ResultsSummary">> => results_summary(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any()),
+%%   <<"UniqueKey">> => string()
+%% }
+-type get_upload_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_workflow_request() :: #{}
+-type get_workflow_request() :: #{}.
+
+
+%% Example:
+%% get_workflow_response() :: #{
+%%   <<"Attributes">> => workflow_attributes(),
+%%   <<"ErrorDescription">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Metrics">> => workflow_metrics(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"WorkflowId">> => string(),
+%%   <<"WorkflowType">> => list(any())
+%% }
+-type get_workflow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workflow_steps_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_workflow_steps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workflow_steps_response() :: #{
+%%   <<"Items">> => list(workflow_step_item()),
+%%   <<"NextToken">> => string(),
+%%   <<"WorkflowId">> => string(),
+%%   <<"WorkflowType">> => list(any())
+%% }
+-type get_workflow_steps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% group() :: #{
+%%   <<"Dimensions">> => list(list()),
+%%   <<"SourceSegments">> => list(source_segment()),
+%%   <<"SourceType">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type group() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_resolution_job() :: #{
+%%   <<"DomainName">> => string(),
+%%   <<"ExportingLocation">> => exporting_location(),
+%%   <<"JobEndTime">> => non_neg_integer(),
+%%   <<"JobId">> => string(),
+%%   <<"JobStartTime">> => non_neg_integer(),
+%%   <<"JobStats">> => job_stats(),
+%%   <<"Message">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type identity_resolution_job() :: #{binary() => any()}.
+
+
+%% Example:
+%% incremental_pull_config() :: #{
+%%   <<"DatetimeTypeFieldName">> => string()
+%% }
+-type incremental_pull_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% inference_config() :: #{
+%%   <<"MinProvisionedTPS">> => integer()
+%% }
+-type inference_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% integration_config() :: #{
+%%   <<"AppflowIntegration">> => appflow_integration()
+%% }
+-type integration_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_schedule() :: #{
+%%   <<"DayOfTheWeek">> => list(any()),
+%%   <<"Time">> => string()
+%% }
+-type job_schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% job_stats() :: #{
+%%   <<"NumberOfMatchesFound">> => float(),
+%%   <<"NumberOfMergesDone">> => float(),
+%%   <<"NumberOfProfilesReviewed">> => float()
+%% }
+-type job_stats() :: #{binary() => any()}.
+
+
+%% Example:
+%% layout_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"LayoutDefinitionName">> => string(),
+%%   <<"LayoutType">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type layout_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_integrations_request() :: #{
+%%   <<"IncludeHidden">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Uri">> := string()
+%% }
+-type list_account_integrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_account_integrations_response() :: #{
+%%   <<"Items">> => list(list_integration_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_account_integrations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attribute_definition_item() :: #{
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UseHistoricalData">> => boolean()
+%% }
+-type list_calculated_attribute_definition_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attribute_definitions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_calculated_attribute_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attribute_definitions_response() :: #{
+%%   <<"Items">> => list(list_calculated_attribute_definition_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_calculated_attribute_definitions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attribute_for_profile_item() :: #{
+%%   <<"CalculatedAttributeName">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDataPartial">> => string(),
+%%   <<"LastObjectTimestamp">> => non_neg_integer(),
+%%   <<"Value">> => string()
+%% }
+-type list_calculated_attribute_for_profile_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attributes_for_profile_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_calculated_attributes_for_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_calculated_attributes_for_profile_response() :: #{
+%%   <<"Items">> => list(list_calculated_attribute_for_profile_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_calculated_attributes_for_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Tags">> => map()
+%% }
+-type list_domain_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_layouts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domain_layouts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_layouts_response() :: #{
+%%   <<"Items">> => list(layout_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domain_layouts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_object_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domain_object_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_object_types_response() :: #{
+%%   <<"Items">> => list(domain_object_types_list_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domain_object_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domains_response() :: #{
+%%   <<"Items">> => list(list_domain_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_domains_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_streams_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_streams_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_streams_response() :: #{
+%%   <<"Items">> => list(event_stream_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_streams_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_triggers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_triggers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_triggers_response() :: #{
+%%   <<"Items">> => list(event_trigger_summary_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_triggers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_resolution_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_resolution_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_identity_resolution_jobs_response() :: #{
+%%   <<"IdentityResolutionJobsList">> => list(identity_resolution_job()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_resolution_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integration_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"EventTriggerNames">> => list(string()),
+%%   <<"IsUnstructured">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"ObjectTypeNames">> => map(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Scope">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Uri">> => string(),
+%%   <<"WorkflowId">> => string()
+%% }
+-type list_integration_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integrations_request() :: #{
+%%   <<"IncludeHidden">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_integrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_integrations_response() :: #{
+%%   <<"Items">> => list(list_integration_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_integrations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_type_attribute_item() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer()
+%% }
+-type list_object_type_attribute_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_type_attribute_values_item() :: #{
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Value">> => string()
+%% }
+-type list_object_type_attribute_values_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_type_attribute_values_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_object_type_attribute_values_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_type_attribute_values_response() :: #{
+%%   <<"Items">> => list(list_object_type_attribute_values_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_object_type_attribute_values_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_type_attributes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_object_type_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_object_type_attributes_response() :: #{
+%%   <<"Items">> => list(list_object_type_attribute_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_object_type_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_history_records_request() :: #{
+%%   <<"ActionType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"PerformedBy">> => string(),
+%%   <<"ProfileId">> := string()
+%% }
+-type list_profile_history_records_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_history_records_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileHistoryRecords">> => list(profile_history_record())
+%% }
+-type list_profile_history_records_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_type_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"MaxAvailableProfileObjectCount">> => integer(),
+%%   <<"MaxProfileObjectCount">> => integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SourcePriority">> => integer(),
+%%   <<"Tags">> => map()
+%% }
+-type list_profile_object_type_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_type_template_item() :: #{
+%%   <<"SourceName">> => string(),
+%%   <<"SourceObject">> => string(),
+%%   <<"TemplateId">> => string()
+%% }
+-type list_profile_object_type_template_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_type_templates_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_profile_object_type_templates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_type_templates_response() :: #{
+%%   <<"Items">> => list(list_profile_object_type_template_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_profile_object_type_templates_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_types_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_profile_object_types_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_object_types_response() :: #{
+%%   <<"Items">> => list(list_profile_object_type_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_profile_object_types_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_objects_item() :: #{
+%%   <<"Object">> => string(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"ProfileObjectUniqueKey">> => string()
+%% }
+-type list_profile_objects_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_objects_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectFilter">> => object_filter(),
+%%   <<"ObjectTypeName">> := string(),
+%%   <<"ProfileId">> := string()
+%% }
+-type list_profile_objects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_objects_response() :: #{
+%%   <<"Items">> => list(list_profile_objects_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_profile_objects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommender_filters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recommender_filters_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommender_filters_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecommenderFilters">> => list(recommender_filter_summary())
+%% }
+-type list_recommender_filters_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommender_recipes_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recommender_recipes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommender_recipes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecommenderRecipes">> => list(recommender_recipe())
+%% }
+-type list_recommender_recipes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommender_schemas_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recommender_schemas_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommender_schemas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RecommenderSchemas">> => list(recommender_schema_summary())
+%% }
+-type list_recommender_schemas_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommenders_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_recommenders_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recommenders_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Recommenders">> => list(recommender_summary())
+%% }
+-type list_recommenders_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rule_based_matches_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_rule_based_matches_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_rule_based_matches_response() :: #{
+%%   <<"MatchIds">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_rule_based_matches_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_segment_definitions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_segment_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_segment_definitions_response() :: #{
+%%   <<"Items">> => list(segment_definition_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_segment_definitions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_upload_jobs_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_upload_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_upload_jobs_response() :: #{
+%%   <<"Items">> => list(upload_job_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_upload_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflows_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusDescription">> => string(),
+%%   <<"WorkflowId">> => string(),
+%%   <<"WorkflowType">> => list(any())
+%% }
+-type list_workflows_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflows_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueryEndDate">> => non_neg_integer(),
+%%   <<"QueryStartDate">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"WorkflowType">> => list(any())
+%% }
+-type list_workflows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflows_response() :: #{
+%%   <<"Items">> => list(list_workflows_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_workflows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% marketo_source_properties() :: #{
+%%   <<"Object">> => string()
+%% }
+-type marketo_source_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_item() :: #{
+%%   <<"ConfidenceScore">> => float(),
+%%   <<"MatchId">> => string(),
+%%   <<"ProfileIds">> => list(string())
+%% }
+-type match_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% matching_request() :: #{
+%%   <<"AutoMerging">> => auto_merging(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ExportingConfig">> => exporting_config(),
+%%   <<"JobSchedule">> => job_schedule()
+%% }
+-type matching_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% matching_response() :: #{
+%%   <<"AutoMerging">> => auto_merging(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ExportingConfig">> => exporting_config(),
+%%   <<"JobSchedule">> => job_schedule()
+%% }
+-type matching_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% matching_rule() :: #{
+%%   <<"Rule">> => list(string())
+%% }
+-type matching_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_profiles_request() :: #{
+%%   <<"FieldSourceProfileIds">> => field_source_profile_ids(),
+%%   <<"MainProfileId">> := string(),
+%%   <<"ProfileIdsToBeMerged">> := list(string())
+%% }
+-type merge_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% merge_profiles_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type merge_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_config() :: #{
+%%   <<"MetadataColumns">> => list(string())
+%% }
+-type metadata_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_attribute() :: #{
+%%   <<"ComparisonOperator">> => list(any()),
+%%   <<"FieldName">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type object_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_filter() :: #{
+%%   <<"KeyName">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type object_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_type_field() :: #{
+%%   <<"ContentType">> => list(any()),
+%%   <<"Source">> => string(),
+%%   <<"Target">> => string()
+%% }
+-type object_type_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% object_type_key() :: #{
+%%   <<"FieldNames">> => list(string()),
+%%   <<"StandardIdentifiers">> => list(list(any())())
+%% }
+-type object_type_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% period() :: #{
+%%   <<"MaxInvocationsPerProfile">> => integer(),
+%%   <<"Unit">> => list(any()),
+%%   <<"Unlimited">> => boolean(),
+%%   <<"Value">> => integer()
+%% }
+-type period() :: #{binary() => any()}.
 
 
 %% Example:
@@ -336,85 +2716,181 @@
 %% }
 -type profile() :: #{binary() => any()}.
 
+%% Example:
+%% profile_attribute_values_request() :: #{}
+-type profile_attribute_values_request() :: #{}.
+
 
 %% Example:
-%% integration_config() :: #{
-%%   <<"AppflowIntegration">> => appflow_integration()
+%% profile_attribute_values_response() :: #{
+%%   <<"AttributeName">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"Items">> => list(attribute_value_item()),
+%%   <<"StatusCode">> => integer()
 %% }
--type integration_config() :: #{binary() => any()}.
+-type profile_attribute_values_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_profile_object_type_item() :: #{
+%% profile_attributes() :: #{
+%%   <<"AccountNumber">> => profile_dimension(),
+%%   <<"AdditionalInformation">> => extra_length_value_profile_dimension(),
+%%   <<"Address">> => address_dimension(),
+%%   <<"Attributes">> => map(),
+%%   <<"BillingAddress">> => address_dimension(),
+%%   <<"BirthDate">> => date_dimension(),
+%%   <<"BusinessEmailAddress">> => profile_dimension(),
+%%   <<"BusinessName">> => profile_dimension(),
+%%   <<"BusinessPhoneNumber">> => profile_dimension(),
+%%   <<"EmailAddress">> => profile_dimension(),
+%%   <<"FirstName">> => profile_dimension(),
+%%   <<"GenderString">> => profile_dimension(),
+%%   <<"HomePhoneNumber">> => profile_dimension(),
+%%   <<"LastName">> => profile_dimension(),
+%%   <<"MailingAddress">> => address_dimension(),
+%%   <<"MiddleName">> => profile_dimension(),
+%%   <<"MobilePhoneNumber">> => profile_dimension(),
+%%   <<"PartyTypeString">> => profile_dimension(),
+%%   <<"PersonalEmailAddress">> => profile_dimension(),
+%%   <<"PhoneNumber">> => profile_dimension(),
+%%   <<"ProfileType">> => profile_type_dimension(),
+%%   <<"ShippingAddress">> => address_dimension()
+%% }
+-type profile_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type profile_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_history_record() :: #{
+%%   <<"ActionType">> => list(any()),
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"MaxAvailableProfileObjectCount">> => integer(),
-%%   <<"MaxProfileObjectCount">> => integer(),
 %%   <<"ObjectTypeName">> => string(),
-%%   <<"SourcePriority">> => integer(),
+%%   <<"PerformedBy">> => string(),
+%%   <<"ProfileObjectUniqueKey">> => string()
+%% }
+-type profile_history_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_query_failures() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ProfileId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type profile_query_failures() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_query_result() :: #{
+%%   <<"Profile">> => profile(),
+%%   <<"ProfileId">> => string(),
+%%   <<"QueryResult">> => list(any())
+%% }
+-type profile_query_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_type_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(list(any())())
+%% }
+-type profile_type_dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_domain_object_type_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"Fields">> := map(),
 %%   <<"Tags">> => map()
 %% }
--type list_profile_object_type_item() :: #{binary() => any()}.
+-type put_domain_object_type_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% auto_merging() :: #{
-%%   <<"ConflictResolution">> => conflict_resolution(),
-%%   <<"Consolidation">> => consolidation(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"MinAllowedConfidenceScoreForMerging">> => float()
-%% }
--type auto_merging() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_trigger_limits() :: #{
-%%   <<"EventExpiration">> => float(),
-%%   <<"Periods">> => list(period())
-%% }
--type event_trigger_limits() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_segment_estimate_request() :: #{
-%%   <<"SegmentQuery">> => segment_group_structure(),
-%%   <<"SegmentSqlQuery">> => string()
-%% }
--type create_segment_estimate_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_calculated_attribute_definition_response() :: #{
-%%   <<"AttributeDetails">> => attribute_details(),
-%%   <<"CalculatedAttributeName">> => string(),
-%%   <<"Conditions">> => conditions(),
+%% put_domain_object_type_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Filter">> => filter(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Readiness">> => readiness(),
-%%   <<"Statistic">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UseHistoricalData">> => boolean()
-%% }
--type create_calculated_attribute_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_request() :: #{}
--type get_domain_request() :: #{}.
-
-
-%% Example:
-%% create_segment_snapshot_request() :: #{
-%%   <<"DataFormat">> := list(any()),
-%%   <<"DestinationUri">> => string(),
 %%   <<"EncryptionKey">> => string(),
-%%   <<"RoleArn">> => string()
+%%   <<"Fields">> => map(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"Tags">> => map()
 %% }
--type create_segment_snapshot_request() :: #{binary() => any()}.
+-type put_domain_object_type_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_integration_request() :: #{
+%%   <<"EventTriggerNames">> => list(string()),
+%%   <<"FlowDefinition">> => flow_definition(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"ObjectTypeNames">> => map(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Scope">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Uri">> => string()
+%% }
+-type put_integration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_integration_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"EventTriggerNames">> => list(string()),
+%%   <<"IsUnstructured">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"ObjectTypeNames">> => map(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Scope">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Uri">> => string(),
+%%   <<"WorkflowId">> => string()
+%% }
+-type put_integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_profile_object_request() :: #{
+%%   <<"Object">> := string(),
+%%   <<"ObjectTypeName">> := string()
+%% }
+-type put_profile_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_profile_object_response() :: #{
+%%   <<"ProfileObjectUniqueKey">> => string()
+%% }
+-type put_profile_object_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_profile_object_type_request() :: #{
+%%   <<"AllowProfileCreation">> => boolean(),
+%%   <<"Description">> := string(),
+%%   <<"EncryptionKey">> => string(),
+%%   <<"ExpirationDays">> => integer(),
+%%   <<"Fields">> => map(),
+%%   <<"Keys">> => map(),
+%%   <<"MaxProfileObjectCount">> => integer(),
+%%   <<"SourceLastUpdatedTimestampFormat">> => string(),
+%%   <<"SourcePriority">> => integer(),
+%%   <<"Tags">> => map(),
+%%   <<"TemplateId">> => string()
+%% }
+-type put_profile_object_type_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -439,111 +2915,6 @@
 
 
 %% Example:
-%% batch_put_profile_object_response_item() :: #{
-%%   <<"Id">> => string(),
-%%   <<"ProfileObjectUniqueKey">> => string()
-%% }
--type batch_put_profile_object_response_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% date_dimension() :: #{
-%%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list([string()]())
-%% }
--type date_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_profile_object_request_item() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Object">> => string()
-%% }
--type batch_put_profile_object_request_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_domain_response() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_profile_object_response() :: #{
-%%   <<"ProfileObjectUniqueKey">> => string()
-%% }
--type put_profile_object_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_schedule() :: #{
-%%   <<"DayOfTheWeek">> => list(any()),
-%%   <<"Time">> => string()
-%% }
--type job_schedule() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_integration_response() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_integration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% task() :: #{
-%%   <<"ConnectorOperator">> => connector_operator(),
-%%   <<"DestinationField">> => string(),
-%%   <<"SourceFields">> => list(string()),
-%%   <<"TaskProperties">> => map(),
-%%   <<"TaskType">> => list(any())
-%% }
--type task() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_domain_request() :: #{
-%%   <<"DataStore">> => data_store_request(),
-%%   <<"DeadLetterQueueUrl">> => string(),
-%%   <<"DefaultEncryptionKey">> => string(),
-%%   <<"DefaultExpirationDays">> => integer(),
-%%   <<"Matching">> => matching_request(),
-%%   <<"RuleBasedMatching">> => rule_based_matching_request(),
-%%   <<"Tags">> => map()
-%% }
--type update_domain_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% scheduled_trigger_properties() :: #{
-%%   <<"DataPullMode">> => list(any()),
-%%   <<"FirstExecutionFrom">> => non_neg_integer(),
-%%   <<"ScheduleEndTime">> => non_neg_integer(),
-%%   <<"ScheduleExpression">> => string(),
-%%   <<"ScheduleOffset">> => float(),
-%%   <<"ScheduleStartTime">> => non_neg_integer(),
-%%   <<"Timezone">> => string()
-%% }
--type scheduled_trigger_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_type_attribute_values_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_object_type_attribute_values_request() :: #{binary() => any()}.
-
-
-%% Example:
 %% range() :: #{
 %%   <<"TimestampFormat">> => string(),
 %%   <<"TimestampSource">> => string(),
@@ -555,55 +2926,88 @@
 
 
 %% Example:
-%% profile_query_result() :: #{
-%%   <<"Profile">> => profile(),
-%%   <<"ProfileId">> => string(),
-%%   <<"QueryResult">> => list(any())
+%% range_override() :: #{
+%%   <<"End">> => integer(),
+%%   <<"Start">> => integer(),
+%%   <<"Unit">> => list(any())
 %% }
--type profile_query_result() :: #{binary() => any()}.
+-type range_override() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_profile_key_response() :: #{
-%%   <<"Message">> => string()
+%% readiness() :: #{
+%%   <<"Message">> => string(),
+%%   <<"ProgressPercentage">> => integer()
 %% }
--type delete_profile_key_response() :: #{binary() => any()}.
+-type readiness() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_profile_object_type_template_item() :: #{
-%%   <<"SourceName">> => string(),
-%%   <<"SourceObject">> => string(),
-%%   <<"TemplateId">> => string()
+%% recommendation() :: #{
+%%   <<"CatalogItem">> => catalog_item(),
+%%   <<"Score">> => float()
 %% }
--type list_profile_object_type_template_item() :: #{binary() => any()}.
+-type recommendation() :: #{binary() => any()}.
 
 
 %% Example:
-%% attribute_details() :: #{
-%%   <<"Attributes">> => list(attribute_item()),
-%%   <<"Expression">> => string()
+%% recommendation_diversity_config() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Values">> => map()
 %% }
--type attribute_details() :: #{binary() => any()}.
+-type recommendation_diversity_config() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_recommender_schemas_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RecommenderSchemas">> => list(recommender_schema_summary())
+%% recommender_config() :: #{
+%%   <<"DiversityConfig">> => diversity_config(),
+%%   <<"EventsConfig">> => events_config(),
+%%   <<"ExcludedColumns">> => map(),
+%%   <<"IncludedColumns">> => map(),
+%%   <<"InferenceConfig">> => inference_config(),
+%%   <<"TrainingFrequency">> => integer()
 %% }
--type list_recommender_schemas_response() :: #{binary() => any()}.
+-type recommender_config() :: #{binary() => any()}.
+
 
 %% Example:
-%% delete_domain_object_type_request() :: #{}
--type delete_domain_object_type_request() :: #{}.
+%% recommender_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => map()
+%% }
+-type recommender_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% detect_profile_object_type_response() :: #{
-%%   <<"DetectedProfileObjectTypes">> => list(detected_profile_object_type())
+%% recommender_filter_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FailureReason">> => [string()],
+%%   <<"RecommenderFilterExpression">> => string(),
+%%   <<"RecommenderFilterName">> => string(),
+%%   <<"RecommenderSchemaName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
 %% }
--type detect_profile_object_type_response() :: #{binary() => any()}.
+-type recommender_filter_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommender_promotional_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"PercentPromotedItems">> => integer(),
+%%   <<"PromotionName">> => string(),
+%%   <<"Values">> => map()
+%% }
+-type recommender_promotional_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommender_recipe() :: #{
+%%   <<"description">> => [string()],
+%%   <<"name">> => list(any())
+%% }
+-type recommender_recipe() :: #{binary() => any()}.
 
 
 %% Example:
@@ -616,342 +3020,6 @@
 
 
 %% Example:
-%% list_identity_resolution_jobs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_identity_resolution_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_profile_recommendations_response() :: #{
-%%   <<"Recommendations">> => list(recommendation())
-%% }
--type get_profile_recommendations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% job_stats() :: #{
-%%   <<"NumberOfMatchesFound">> => float(),
-%%   <<"NumberOfMergesDone">> => float(),
-%%   <<"NumberOfProfilesReviewed">> => float()
-%% }
--type job_stats() :: #{binary() => any()}.
-
-
-%% Example:
-%% marketo_source_properties() :: #{
-%%   <<"Object">> => string()
-%% }
--type marketo_source_properties() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_layout_request() :: #{}
--type get_domain_layout_request() :: #{}.
-
-
-%% Example:
-%% list_upload_jobs_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_upload_jobs_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_profile_object_type_response() :: #{
-%%   <<"AllowProfileCreation">> => boolean(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EncryptionKey">> => string(),
-%%   <<"ExpirationDays">> => integer(),
-%%   <<"Fields">> => map(),
-%%   <<"Keys">> => map(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"MaxAvailableProfileObjectCount">> => integer(),
-%%   <<"MaxProfileObjectCount">> => integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"SourceLastUpdatedTimestampFormat">> => string(),
-%%   <<"SourcePriority">> => integer(),
-%%   <<"Tags">> => map(),
-%%   <<"TemplateId">> => string()
-%% }
--type get_profile_object_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recommender_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RecommenderConfig">> => recommender_config(),
-%%   <<"RecommenderRecipeName">> := list(any()),
-%%   <<"RecommenderSchemaName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_recommender_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_item() :: #{
-%%   <<"Name">> => string()
-%% }
--type attribute_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommender_request() :: #{
-%%   <<"TrainingMetricsCount">> => integer()
-%% }
--type get_recommender_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_calculated_attribute_for_profile_request() :: #{}
--type get_calculated_attribute_for_profile_request() :: #{}.
-
-
-%% Example:
-%% conflict_resolution() :: #{
-%%   <<"ConflictResolvingModel">> => list(any()),
-%%   <<"SourceName">> => string()
-%% }
--type conflict_resolution() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recommender_response() :: #{
-%%   <<"RecommenderName">> => string()
-%% }
--type update_recommender_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_history_record() :: #{
-%%   <<"ActionType">> => list(any()),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"PerformedBy">> => string(),
-%%   <<"ProfileObjectUniqueKey">> => string()
-%% }
--type profile_history_record() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_profile_request() :: #{
-%%   <<"ProfileId">> := string()
-%% }
--type delete_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_segment_definition_request() :: #{}
--type delete_segment_definition_request() :: #{}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% event_trigger_condition() :: #{
-%%   <<"EventTriggerDimensions">> => list(event_trigger_dimension()),
-%%   <<"LogicalOperator">> => list(any())
-%% }
--type event_trigger_condition() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_stats() :: #{
-%%   <<"MeteringProfileCount">> => float(),
-%%   <<"ObjectCount">> => float(),
-%%   <<"ProfileCount">> => float(),
-%%   <<"TotalSize">> => float()
-%% }
--type domain_stats() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workflow_request() :: #{}
--type delete_workflow_request() :: #{}.
-
-
-%% Example:
-%% list_account_integrations_request() :: #{
-%%   <<"IncludeHidden">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Uri">> := string()
-%% }
--type list_account_integrations_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_recommender_schema_response() :: #{}
--type delete_recommender_schema_response() :: #{}.
-
-
-%% Example:
-%% delete_event_trigger_response() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_event_trigger_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_filter() :: #{
-%%   <<"KeyName">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type object_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recommender_filter_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RecommenderFilterExpression">> := string(),
-%%   <<"RecommenderSchemaName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_recommender_filter_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_type_attribute_statistics_stats() :: #{
-%%   <<"Average">> => float(),
-%%   <<"Maximum">> => float(),
-%%   <<"Minimum">> => float(),
-%%   <<"Percentiles">> => get_object_type_attribute_statistics_percentiles(),
-%%   <<"StandardDeviation">> => float()
-%% }
--type get_object_type_attribute_statistics_stats() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_source_properties() :: #{
-%%   <<"BucketName">> => string(),
-%%   <<"BucketPrefix">> => string()
-%% }
--type s3_source_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_definition_item() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"SegmentDefinitionArn">> => string(),
-%%   <<"SegmentDefinitionName">> => string(),
-%%   <<"SegmentType">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type segment_definition_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% found_by_key_value() :: #{
-%%   <<"KeyName">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type found_by_key_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_domain_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataStore">> => data_store_response(),
-%%   <<"DeadLetterQueueUrl">> => string(),
-%%   <<"DefaultEncryptionKey">> => string(),
-%%   <<"DefaultExpirationDays">> => integer(),
-%%   <<"DomainName">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Matching">> => matching_response(),
-%%   <<"RuleBasedMatching">> => rule_based_matching_response(),
-%%   <<"Tags">> => map()
-%% }
--type update_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% merge_profiles_response() :: #{
-%%   <<"Message">> => string()
-%% }
--type merge_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_profile_response() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_segment_definitions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_segment_definitions_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_resolution_job_request() :: #{}
--type get_identity_resolution_job_request() :: #{}.
-
-%% Example:
-%% start_recommender_response() :: #{}
--type start_recommender_response() :: #{}.
-
-
-%% Example:
-%% appflow_integration_workflow_step() :: #{
-%%   <<"BatchRecordsEndTime">> => string(),
-%%   <<"BatchRecordsStartTime">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"ExecutionMessage">> => string(),
-%%   <<"FlowName">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"RecordsProcessed">> => float(),
-%%   <<"Status">> => list(any())
-%% }
--type appflow_integration_workflow_step() :: #{binary() => any()}.
-
-
-%% Example:
-%% detect_profile_object_type_request() :: #{
-%%   <<"Objects">> := list(string())
-%% }
--type detect_profile_object_type_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% calculated_attribute_value() :: #{
-%%   <<"CalculatedAttributeName">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IsDataPartial">> => string(),
-%%   <<"LastObjectTimestamp">> => non_neg_integer(),
-%%   <<"ProfileId">> => string(),
-%%   <<"Value">> => string()
-%% }
--type calculated_attribute_value() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_object_type_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EncryptionKey">> => string(),
-%%   <<"Fields">> => map(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_domain_object_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_domain_layout_response() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_domain_layout_response() :: #{binary() => any()}.
-
-
-%% Example:
 %% recommender_schema_summary() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Fields">> => map(),
@@ -959,433 +3027,6 @@
 %%   <<"Status">> => list(any())
 %% }
 -type recommender_schema_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_recommender_schema_request() :: #{}
--type get_recommender_schema_request() :: #{}.
-
-
-%% Example:
-%% address_dimension() :: #{
-%%   <<"City">> => profile_dimension(),
-%%   <<"Country">> => profile_dimension(),
-%%   <<"County">> => profile_dimension(),
-%%   <<"PostalCode">> => profile_dimension(),
-%%   <<"Province">> => profile_dimension(),
-%%   <<"State">> => profile_dimension()
-%% }
--type address_dimension() :: #{binary() => any()}.
-
-%% Example:
-%% get_object_type_attribute_statistics_request() :: #{}
--type get_object_type_attribute_statistics_request() :: #{}.
-
-
-%% Example:
-%% exporting_location() :: #{
-%%   <<"S3Exporting">> => s3_exporting_location()
-%% }
--type exporting_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_type_attribute_values_response() :: #{
-%%   <<"Items">> => list(list_object_type_attribute_values_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_object_type_attribute_values_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_sort() :: #{
-%%   <<"Attributes">> => list(sort_attribute())
-%% }
--type segment_sort() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommender_filter_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"FailureReason">> => [string()],
-%%   <<"RecommenderFilterExpression">> => string(),
-%%   <<"RecommenderFilterName">> => string(),
-%%   <<"RecommenderSchemaName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type get_recommender_filter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_type_dimension() :: #{
-%%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(list(any())())
-%% }
--type profile_type_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_similar_profiles_response() :: #{
-%%   <<"ConfidenceScore">> => float(),
-%%   <<"MatchId">> => string(),
-%%   <<"MatchType">> => list(any()),
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileIds">> => list(string()),
-%%   <<"RuleLevel">> => integer()
-%% }
--type get_similar_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_integration_request() :: #{
-%%   <<"EventTriggerNames">> => list(string()),
-%%   <<"FlowDefinition">> => flow_definition(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"ObjectTypeNames">> => map(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Scope">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Uri">> => string()
-%% }
--type put_integration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_upload_job_response() :: #{
-%%   <<"CompletedAt">> => non_neg_integer(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataExpiry">> => integer(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Fields">> => map(),
-%%   <<"JobId">> => string(),
-%%   <<"ResultsSummary">> => results_summary(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusReason">> => list(any()),
-%%   <<"UniqueKey">> => string()
-%% }
--type get_upload_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_object_types_response() :: #{
-%%   <<"Items">> => list(domain_object_types_list_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_domain_object_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_parameters() :: #{
-%%   <<"EventType">> => string(),
-%%   <<"EventValueThreshold">> => float(),
-%%   <<"EventWeight">> => float()
-%% }
--type event_parameters() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recommender_schema_request() :: #{
-%%   <<"Fields">> := map(),
-%%   <<"Tags">> => map()
-%% }
--type create_recommender_schema_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_layout_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Layout">> => string(),
-%%   <<"LayoutDefinitionName">> => string(),
-%%   <<"LayoutType">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Version">> => string()
-%% }
--type create_domain_layout_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% flow_definition() :: #{
-%%   <<"Description">> => string(),
-%%   <<"FlowName">> => string(),
-%%   <<"KmsArn">> => string(),
-%%   <<"SourceFlowConfig">> => source_flow_config(),
-%%   <<"Tasks">> => list(task()),
-%%   <<"TriggerConfig">> => trigger_config()
-%% }
--type flow_definition() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_type_attribute_statistics_percentiles() :: #{
-%%   <<"P25">> => float(),
-%%   <<"P5">> => float(),
-%%   <<"P50">> => float(),
-%%   <<"P75">> => float(),
-%%   <<"P95">> => float()
-%% }
--type get_object_type_attribute_statistics_percentiles() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_triggers_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_triggers_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rule_based_matches_response() :: #{
-%%   <<"MatchIds">> => list(string()),
-%%   <<"NextToken">> => string()
-%% }
--type list_rule_based_matches_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% appflow_integration_workflow_attributes() :: #{
-%%   <<"ConnectorProfileName">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SourceConnectorType">> => list(any())
-%% }
--type appflow_integration_workflow_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_profile_key_response() :: #{
-%%   <<"KeyName">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type add_profile_key_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_group() :: #{
-%%   <<"Dimensions">> => list(filter_dimension()),
-%%   <<"Type">> => list(any())
-%% }
--type filter_group() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_identity_resolution_jobs_response() :: #{
-%%   <<"IdentityResolutionJobsList">> => list(identity_resolution_job()),
-%%   <<"NextToken">> => string()
-%% }
--type list_identity_resolution_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_calculated_attribute_for_profile_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"ProfileId">> => string()
-%% }
--type batch_get_calculated_attribute_for_profile_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% condition_overrides() :: #{
-%%   <<"Range">> => range_override()
-%% }
--type condition_overrides() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% catalog_item() :: #{
-%%   <<"AdditionalInformation">> => string(),
-%%   <<"Attributes">> => map(),
-%%   <<"Category">> => string(),
-%%   <<"Code">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"ImageLink">> => string(),
-%%   <<"Link">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Price">> => string(),
-%%   <<"Type">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
-%% }
--type catalog_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% matching_rule() :: #{
-%%   <<"Rule">> => list(string())
-%% }
--type matching_rule() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_value_item() :: #{
-%%   <<"Value">> => string()
-%% }
--type attribute_value_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_integration_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DomainName">> => string(),
-%%   <<"EventTriggerNames">> => list(string()),
-%%   <<"IsUnstructured">> => boolean(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"ObjectTypeNames">> => map(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Scope">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Uri">> => string(),
-%%   <<"WorkflowId">> => string()
-%% }
--type put_integration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% zendesk_source_properties() :: #{
-%%   <<"Object">> => string()
-%% }
--type zendesk_source_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_integration_workflow_request() :: #{
-%%   <<"IntegrationConfig">> := integration_config(),
-%%   <<"ObjectTypeName">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => map(),
-%%   <<"WorkflowType">> := list(any())
-%% }
--type create_integration_workflow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_identity_resolution_job_response() :: #{
-%%   <<"AutoMerging">> => auto_merging(),
-%%   <<"DomainName">> => string(),
-%%   <<"ExportingLocation">> => exporting_location(),
-%%   <<"JobEndTime">> => non_neg_integer(),
-%%   <<"JobExpirationTime">> => non_neg_integer(),
-%%   <<"JobId">> => string(),
-%%   <<"JobStartTime">> => non_neg_integer(),
-%%   <<"JobStats">> => job_stats(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Message">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type get_identity_resolution_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_similar_profiles_request() :: #{
-%%   <<"MatchType">> := list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SearchKey">> := string(),
-%%   <<"SearchValue">> := string()
-%% }
--type get_similar_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% trigger_properties() :: #{
-%%   <<"Scheduled">> => scheduled_trigger_properties()
-%% }
--type trigger_properties() :: #{binary() => any()}.
-
-%% Example:
-%% get_upload_job_path_request() :: #{}
--type get_upload_job_path_request() :: #{}.
-
-
-%% Example:
-%% metadata_config() :: #{
-%%   <<"MetadataColumns">> => list(string())
-%% }
--type metadata_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_triggers_response() :: #{
-%%   <<"Items">> => list(event_trigger_summary_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_triggers_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_profile_history_record_request() :: #{}
--type get_profile_history_record_request() :: #{}.
-
-
-%% Example:
-%% range_override() :: #{
-%%   <<"End">> => integer(),
-%%   <<"Start">> => integer(),
-%%   <<"Unit">> => list(any())
-%% }
--type range_override() :: #{binary() => any()}.
-
-%% Example:
-%% get_calculated_attribute_definition_request() :: #{}
--type get_calculated_attribute_definition_request() :: #{}.
-
-%% Example:
-%% get_workflow_request() :: #{}
--type get_workflow_request() :: #{}.
-
-
-%% Example:
-%% create_calculated_attribute_definition_request() :: #{
-%%   <<"AttributeDetails">> := attribute_details(),
-%%   <<"Conditions">> => conditions(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Filter">> => filter(),
-%%   <<"Statistic">> := list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UseHistoricalData">> => boolean()
-%% }
--type create_calculated_attribute_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_calculated_attribute_definition_item() :: #{
-%%   <<"CalculatedAttributeName">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UseHistoricalData">> => boolean()
-%% }
--type list_calculated_attribute_definition_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_integrations_request() :: #{
-%%   <<"IncludeHidden">> => boolean(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_integrations_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_calculated_attribute_definition_response() :: #{}
--type delete_calculated_attribute_definition_response() :: #{}.
 
 
 %% Example:
@@ -1406,50 +3047,309 @@
 
 
 %% Example:
-%% workflow_step_item() :: #{
-%%   <<"AppflowIntegration">> => appflow_integration_workflow_step()
-%% }
--type workflow_step_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recommender_schema_response() :: #{
+%% recommender_update() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Fields">> => map(),
-%%   <<"RecommenderSchemaArn">> => string(),
-%%   <<"RecommenderSchemaName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_recommender_schema_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_type_field() :: #{
-%%   <<"ContentType">> => list(any()),
-%%   <<"Source">> => string(),
-%%   <<"Target">> => string()
-%% }
--type object_type_field() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_recommender_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RecommenderConfig">> => recommender_config(),
-%%   <<"RecommenderVersionName">> => string()
-%% }
--type update_recommender_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_item() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DomainName">> => string(),
+%%   <<"FailureReason">> => [string()],
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"RecommenderConfig">> => recommender_config(),
+%%   <<"RecommenderVersionName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type recommender_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% results_summary() :: #{
+%%   <<"CreatedRecords">> => float(),
+%%   <<"FailedRecords">> => float(),
+%%   <<"UpdatedRecords">> => float()
+%% }
+-type results_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_based_matching_request() :: #{
+%%   <<"AttributeTypesSelector">> => attribute_types_selector(),
+%%   <<"ConflictResolution">> => conflict_resolution(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ExportingConfig">> => exporting_config(),
+%%   <<"MatchingRules">> => list(matching_rule()),
+%%   <<"MaxAllowedRuleLevelForMatching">> => integer(),
+%%   <<"MaxAllowedRuleLevelForMerging">> => integer()
+%% }
+-type rule_based_matching_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_based_matching_response() :: #{
+%%   <<"AttributeTypesSelector">> => attribute_types_selector(),
+%%   <<"ConflictResolution">> => conflict_resolution(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"ExportingConfig">> => exporting_config(),
+%%   <<"MatchingRules">> => list(matching_rule()),
+%%   <<"MaxAllowedRuleLevelForMatching">> => integer(),
+%%   <<"MaxAllowedRuleLevelForMerging">> => integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type rule_based_matching_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_exporting_config() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3KeyName">> => string()
+%% }
+-type s3_exporting_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_exporting_location() :: #{
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3KeyName">> => string()
+%% }
+-type s3_exporting_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_source_properties() :: #{
+%%   <<"BucketName">> => string(),
+%%   <<"BucketPrefix">> => string()
+%% }
+-type s3_source_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% salesforce_source_properties() :: #{
+%%   <<"EnableDynamicFieldUpdate">> => boolean(),
+%%   <<"IncludeDeletedRecords">> => boolean(),
+%%   <<"Object">> => string()
+%% }
+-type salesforce_source_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduled_trigger_properties() :: #{
+%%   <<"DataPullMode">> => list(any()),
+%%   <<"FirstExecutionFrom">> => non_neg_integer(),
+%%   <<"ScheduleEndTime">> => non_neg_integer(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"ScheduleOffset">> => float(),
+%%   <<"ScheduleStartTime">> => non_neg_integer(),
+%%   <<"Timezone">> => string()
+%% }
+-type scheduled_trigger_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_profiles_request() :: #{
+%%   <<"AdditionalSearchKeys">> => list(additional_search_key()),
+%%   <<"KeyName">> := string(),
+%%   <<"LogicalOperator">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Values">> := list(string())
+%% }
+-type search_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_profiles_response() :: #{
+%%   <<"Items">> => list(profile()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_definition_item() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"SegmentDefinitionArn">> => string(),
+%%   <<"SegmentDefinitionName">> => string(),
+%%   <<"SegmentType">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
--type list_domain_item() :: #{binary() => any()}.
+-type segment_definition_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_group() :: #{
+%%   <<"Groups">> => list(group()),
+%%   <<"Include">> => list(any())
+%% }
+-type segment_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_group_structure() :: #{
+%%   <<"Groups">> => list(group()),
+%%   <<"Include">> => list(any())
+%% }
+-type segment_group_structure() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_sort() :: #{
+%%   <<"Attributes">> => list(sort_attribute())
+%% }
+-type segment_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_now_source_properties() :: #{
+%%   <<"Object">> => string()
+%% }
+-type service_now_source_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% sort_attribute() :: #{
+%%   <<"DataType">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Order">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type sort_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_connector_properties() :: #{
+%%   <<"Marketo">> => marketo_source_properties(),
+%%   <<"S3">> => s3_source_properties(),
+%%   <<"Salesforce">> => salesforce_source_properties(),
+%%   <<"ServiceNow">> => service_now_source_properties(),
+%%   <<"Zendesk">> => zendesk_source_properties()
+%% }
+-type source_connector_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_flow_config() :: #{
+%%   <<"ConnectorProfileName">> => string(),
+%%   <<"ConnectorType">> => list(any()),
+%%   <<"IncrementalPullConfig">> => incremental_pull_config(),
+%%   <<"SourceConnectorProperties">> => source_connector_properties()
+%% }
+-type source_flow_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_segment() :: #{
+%%   <<"SegmentDefinitionName">> => string()
+%% }
+-type source_segment() :: #{binary() => any()}.
+
+%% Example:
+%% start_recommender_request() :: #{}
+-type start_recommender_request() :: #{}.
+
+%% Example:
+%% start_recommender_response() :: #{}
+-type start_recommender_response() :: #{}.
+
+%% Example:
+%% start_upload_job_request() :: #{}
+-type start_upload_job_request() :: #{}.
+
+%% Example:
+%% start_upload_job_response() :: #{}
+-type start_upload_job_response() :: #{}.
+
+%% Example:
+%% stop_recommender_request() :: #{}
+-type stop_recommender_request() :: #{}.
+
+%% Example:
+%% stop_recommender_response() :: #{}
+-type stop_recommender_response() :: #{}.
+
+%% Example:
+%% stop_upload_job_request() :: #{}
+-type stop_upload_job_request() :: #{}.
+
+%% Example:
+%% stop_upload_job_response() :: #{}
+-type stop_upload_job_response() :: #{}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% task() :: #{
+%%   <<"ConnectorOperator">> => connector_operator(),
+%%   <<"DestinationField">> => string(),
+%%   <<"SourceFields">> => list(string()),
+%%   <<"TaskProperties">> => map(),
+%%   <<"TaskType">> => list(any())
+%% }
+-type task() :: #{binary() => any()}.
+
+
+%% Example:
+%% threshold() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type threshold() :: #{binary() => any()}.
+
+
+%% Example:
+%% throttling_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% training_metrics() :: #{
+%%   <<"Metrics">> => map(),
+%%   <<"RecommenderVersionName">> => string(),
+%%   <<"Time">> => non_neg_integer()
+%% }
+-type training_metrics() :: #{binary() => any()}.
+
+
+%% Example:
+%% trigger_config() :: #{
+%%   <<"TriggerProperties">> => trigger_properties(),
+%%   <<"TriggerType">> => list(any())
+%% }
+-type trigger_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% trigger_properties() :: #{
+%%   <<"Scheduled">> => scheduled_trigger_properties()
+%% }
+-type trigger_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -1469,171 +3369,12 @@
 
 
 %% Example:
-%% list_object_type_attributes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_object_type_attributes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_type_attribute_item() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer()
-%% }
--type list_object_type_attribute_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_integration_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DomainName">> => string(),
-%%   <<"EventTriggerNames">> => list(string()),
-%%   <<"IsUnstructured">> => boolean(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"ObjectTypeNames">> => map(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Scope">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Uri">> => string(),
-%%   <<"WorkflowId">> => string()
-%% }
--type get_integration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_profile_object_response() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_profile_object_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_request() :: #{}
--type delete_domain_request() :: #{}.
-
-
-%% Example:
-%% delete_profile_key_request() :: #{
-%%   <<"KeyName">> := string(),
-%%   <<"ProfileId">> := string(),
-%%   <<"Values">> := list(string())
-%% }
--type delete_profile_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% calculated_attribute_dimension() :: #{
-%%   <<"ConditionOverrides">> => condition_overrides(),
-%%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type calculated_attribute_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_attributes() :: #{
-%%   <<"AppflowIntegration">> => appflow_integration_workflow_attributes()
-%% }
--type workflow_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% match_item() :: #{
-%%   <<"ConfidenceScore">> => float(),
-%%   <<"MatchId">> => string(),
-%%   <<"ProfileIds">> => list(string())
-%% }
--type match_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_profile_request() :: #{
-%%   <<"AccountNumber">> => string(),
-%%   <<"AdditionalInformation">> => string(),
-%%   <<"Address">> => address(),
-%%   <<"Attributes">> => map(),
-%%   <<"BillingAddress">> => address(),
-%%   <<"BirthDate">> => string(),
-%%   <<"BusinessEmailAddress">> => string(),
-%%   <<"BusinessName">> => string(),
-%%   <<"BusinessPhoneNumber">> => string(),
-%%   <<"EmailAddress">> => string(),
-%%   <<"EngagementPreferences">> => engagement_preferences(),
-%%   <<"FirstName">> => string(),
-%%   <<"Gender">> => list(any()),
-%%   <<"GenderString">> => string(),
-%%   <<"HomePhoneNumber">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"MailingAddress">> => address(),
-%%   <<"MiddleName">> => string(),
-%%   <<"MobilePhoneNumber">> => string(),
-%%   <<"PartyType">> => list(any()),
-%%   <<"PartyTypeString">> => string(),
-%%   <<"PersonalEmailAddress">> => string(),
-%%   <<"PhoneNumber">> => string(),
-%%   <<"ProfileType">> => list(any()),
-%%   <<"ShippingAddress">> => address()
-%% }
--type create_profile_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workflow_response() :: #{}
--type delete_workflow_response() :: #{}.
-
-
-%% Example:
-%% get_profile_recommendations_request() :: #{
-%%   <<"CandidateIds">> => list(string()),
-%%   <<"Context">> => map(),
-%%   <<"DiversityConfig">> => recommendation_diversity_config(),
-%%   <<"MaxResults">> => integer(),
-%%   <<"MetadataConfig">> => metadata_config(),
-%%   <<"RecommenderFilters">> => list(recommender_filter()),
-%%   <<"RecommenderName">> := string(),
-%%   <<"RecommenderPromotionalFilters">> => list(recommender_promotional_filter())
-%% }
--type get_profile_recommendations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segment_definition_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
+%% update_calculated_attribute_definition_request() :: #{
+%%   <<"Conditions">> => conditions(),
 %%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"SegmentDefinitionArn">> => string(),
-%%   <<"SegmentDefinitionName">> => string(),
-%%   <<"SegmentGroups">> => segment_group(),
-%%   <<"SegmentSort">> => segment_sort(),
-%%   <<"SegmentSqlQuery">> => string(),
-%%   <<"SegmentType">> => list(any()),
-%%   <<"Tags">> => map()
+%%   <<"DisplayName">> => string()
 %% }
--type get_segment_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule_based_matching_response() :: #{
-%%   <<"AttributeTypesSelector">> => attribute_types_selector(),
-%%   <<"ConflictResolution">> => conflict_resolution(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"ExportingConfig">> => exporting_config(),
-%%   <<"MatchingRules">> => list(matching_rule()),
-%%   <<"MaxAllowedRuleLevelForMatching">> => integer(),
-%%   <<"MaxAllowedRuleLevelForMerging">> => integer(),
-%%   <<"Status">> => list(any())
-%% }
--type rule_based_matching_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_object_type_field() :: #{
-%%   <<"ContentType">> => list(any()),
-%%   <<"FeatureType">> => list(any()),
-%%   <<"Source">> => string(),
-%%   <<"Target">> => string()
-%% }
--type domain_object_type_field() :: #{binary() => any()}.
+-type update_calculated_attribute_definition_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1655,59 +3396,85 @@
 
 
 %% Example:
-%% additional_search_key() :: #{
-%%   <<"KeyName">> => string(),
-%%   <<"Values">> => list(string())
+%% update_domain_layout_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"Layout">> => string(),
+%%   <<"LayoutType">> => list(any())
 %% }
--type additional_search_key() :: #{binary() => any()}.
+-type update_domain_layout_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% profile_query_failures() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ProfileId">> => string(),
-%%   <<"Status">> => integer()
+%% update_domain_layout_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Layout">> => string(),
+%%   <<"LayoutDefinitionName">> => string(),
+%%   <<"LayoutType">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Version">> => string()
 %% }
--type profile_query_failures() :: #{binary() => any()}.
+-type update_domain_layout_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_group_structure() :: #{
-%%   <<"Groups">> => list(group()),
-%%   <<"Include">> => list(any())
-%% }
--type segment_group_structure() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_integration_request() :: #{
-%%   <<"Uri">> := string()
-%% }
--type delete_integration_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_upload_job_request() :: #{}
--type stop_upload_job_request() :: #{}.
-
-
-%% Example:
-%% create_domain_request() :: #{
+%% update_domain_request() :: #{
 %%   <<"DataStore">> => data_store_request(),
 %%   <<"DeadLetterQueueUrl">> => string(),
 %%   <<"DefaultEncryptionKey">> => string(),
-%%   <<"DefaultExpirationDays">> := integer(),
+%%   <<"DefaultExpirationDays">> => integer(),
 %%   <<"Matching">> => matching_request(),
 %%   <<"RuleBasedMatching">> => rule_based_matching_request(),
 %%   <<"Tags">> => map()
 %% }
--type create_domain_request() :: #{binary() => any()}.
+-type update_domain_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_domain_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataStore">> => data_store_response(),
+%%   <<"DeadLetterQueueUrl">> => string(),
+%%   <<"DefaultEncryptionKey">> => string(),
+%%   <<"DefaultExpirationDays">> => integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Matching">> => matching_response(),
+%%   <<"RuleBasedMatching">> => rule_based_matching_response(),
+%%   <<"Tags">> => map()
+%% }
+-type update_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_trigger_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
+%%   <<"EventTriggerLimits">> => event_trigger_limits(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SegmentFilter">> => string()
+%% }
+-type update_event_trigger_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_event_trigger_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
+%%   <<"EventTriggerLimits">> => event_trigger_limits(),
+%%   <<"EventTriggerName">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"SegmentFilter">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_event_trigger_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1743,1043 +3510,26 @@
 
 
 %% Example:
-%% get_calculated_attribute_for_profile_response() :: #{
-%%   <<"CalculatedAttributeName">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IsDataPartial">> => string(),
-%%   <<"LastObjectTimestamp">> => non_neg_integer(),
-%%   <<"Value">> => string()
-%% }
--type get_calculated_attribute_for_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% engagement_preferences() :: #{
-%%   <<"Email">> => list(contact_preference()),
-%%   <<"Phone">> => list(contact_preference())
-%% }
--type engagement_preferences() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_rule_based_matches_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_rule_based_matches_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommender_schema_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Fields">> => map(),
-%%   <<"RecommenderSchemaName">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type get_recommender_schema_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_trigger_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EventTriggerConditions">> := list(event_trigger_condition()),
-%%   <<"EventTriggerLimits">> => event_trigger_limits(),
-%%   <<"ObjectTypeName">> := string(),
-%%   <<"SegmentFilter">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_event_trigger_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_dimension() :: #{
-%%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type profile_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_profile_object_request() :: #{
-%%   <<"Items">> := list(batch_put_profile_object_request_item()),
-%%   <<"ObjectTypeName">> := string()
-%% }
--type batch_put_profile_object_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_calculated_attribute_for_profile_response() :: #{
-%%   <<"CalculatedAttributeValues">> => list(calculated_attribute_value()),
-%%   <<"ConditionOverrides">> => condition_overrides(),
-%%   <<"Errors">> => list(batch_get_calculated_attribute_for_profile_error())
-%% }
--type batch_get_calculated_attribute_for_profile_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_recommender_filter_request() :: #{}
--type delete_recommender_filter_request() :: #{}.
-
-
-%% Example:
-%% list_event_streams_response() :: #{
-%%   <<"Items">> => list(event_stream_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_streams_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_type_attributes_response() :: #{
-%%   <<"Items">> => list(list_object_type_attribute_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_object_type_attributes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_objects_response() :: #{
-%%   <<"Items">> => list(list_profile_objects_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_profile_objects_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_recommender_request() :: #{}
--type delete_recommender_request() :: #{}.
-
-%% Example:
-%% delete_domain_object_type_response() :: #{}
--type delete_domain_object_type_response() :: #{}.
-
-
-%% Example:
-%% recommendation() :: #{
-%%   <<"CatalogItem">> => catalog_item(),
-%%   <<"Score">> => float()
-%% }
--type recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflows_item() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusDescription">> => string(),
-%%   <<"WorkflowId">> => string(),
-%%   <<"WorkflowType">> => list(any())
-%% }
--type list_workflows_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% merge_profiles_request() :: #{
-%%   <<"FieldSourceProfileIds">> => field_source_profile_ids(),
-%%   <<"MainProfileId">> := string(),
-%%   <<"ProfileIdsToBeMerged">> := list(string())
-%% }
--type merge_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% appflow_integration_workflow_metrics() :: #{
-%%   <<"RecordsProcessed">> => float(),
-%%   <<"StepsCompleted">> => float(),
-%%   <<"TotalSteps">> => float()
-%% }
--type appflow_integration_workflow_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_event_trigger_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
-%%   <<"EventTriggerLimits">> => event_trigger_limits(),
-%%   <<"EventTriggerName">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"SegmentFilter">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type get_event_trigger_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_response() :: #{
-%%   <<"Items">> => list(list_domain_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_upload_job_response() :: #{
-%%   <<"JobId">> => string()
-%% }
--type create_upload_job_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_profile_object_type_template_response() :: #{
-%%   <<"AllowProfileCreation">> => boolean(),
-%%   <<"Fields">> => map(),
-%%   <<"Keys">> => map(),
-%%   <<"SourceLastUpdatedTimestampFormat">> => string(),
-%%   <<"SourceName">> => string(),
-%%   <<"SourceObject">> => string(),
-%%   <<"TemplateId">> => string()
-%% }
--type get_profile_object_type_template_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_object_type_attribute_values_item() :: #{
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Value">> => string()
-%% }
--type list_object_type_attribute_values_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_profile_response() :: #{
+%% update_profile_response() :: #{
 %%   <<"ProfileId">> => string()
 %% }
--type create_profile_response() :: #{binary() => any()}.
+-type update_profile_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_matches_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_matches_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_object_types_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_profile_object_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflows_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"QueryEndDate">> => non_neg_integer(),
-%%   <<"QueryStartDate">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"WorkflowType">> => list(any())
-%% }
--type list_workflows_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_profile_response() :: #{
-%%   <<"Errors">> => list(batch_get_profile_error()),
-%%   <<"Profiles">> => list(profile())
-%% }
--type batch_get_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_object_type_attribute_statistics_response() :: #{
-%%   <<"CalculatedAt">> => non_neg_integer(),
-%%   <<"Statistics">> => get_object_type_attribute_statistics_stats()
-%% }
--type get_object_type_attribute_statistics_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% diversity_column() :: #{
-%%   <<"CapType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Target">> => string()
-%% }
--type diversity_column() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommender_recipes_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_recommender_recipes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% exporting_config() :: #{
-%%   <<"S3Exporting">> => s3_exporting_config()
-%% }
--type exporting_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_store_response() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Readiness">> => readiness()
-%% }
--type data_store_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% destination_summary() :: #{
-%%   <<"Status">> => list(any()),
-%%   <<"UnhealthySince">> => non_neg_integer(),
-%%   <<"Uri">> => string()
-%% }
--type destination_summary() :: #{binary() => any()}.
-
-%% Example:
-%% delete_recommender_response() :: #{}
--type delete_recommender_response() :: #{}.
-
-
-%% Example:
-%% update_domain_layout_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
+%% update_recommender_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Layout">> => string(),
-%%   <<"LayoutDefinitionName">> => string(),
-%%   <<"LayoutType">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Version">> => string()
-%% }
--type update_domain_layout_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_event_stream_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DestinationDetails">> => event_stream_destination_details(),
-%%   <<"DomainName">> => string(),
-%%   <<"EventStreamArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"StoppedSince">> => non_neg_integer(),
-%%   <<"Tags">> => map()
-%% }
--type get_event_stream_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_exporting_location() :: #{
-%%   <<"S3BucketName">> => string(),
-%%   <<"S3KeyName">> => string()
-%% }
--type s3_exporting_location() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_segment_definition_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"SegmentDefinitionArn">> => string(),
-%%   <<"SegmentDefinitionName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_segment_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% matching_response() :: #{
-%%   <<"AutoMerging">> => auto_merging(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"ExportingConfig">> => exporting_config(),
-%%   <<"JobSchedule">> => job_schedule()
-%% }
--type matching_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% conditions() :: #{
-%%   <<"ObjectCount">> => integer(),
-%%   <<"Range">> => range(),
-%%   <<"Threshold">> => threshold()
-%% }
--type conditions() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_segment() :: #{
-%%   <<"SegmentDefinitionName">> => string()
-%% }
--type source_segment() :: #{binary() => any()}.
-
-%% Example:
-%% start_recommender_request() :: #{}
--type start_recommender_request() :: #{}.
-
-%% Example:
-%% stop_recommender_response() :: #{}
--type stop_recommender_response() :: #{}.
-
-
-%% Example:
-%% list_domain_object_types_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_domain_object_types_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_auto_merging_preview_request() :: #{
-%%   <<"ConflictResolution">> := conflict_resolution(),
-%%   <<"Consolidation">> := consolidation(),
-%%   <<"MinAllowedConfidenceScoreForMerging">> => float()
-%% }
--type get_auto_merging_preview_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommender_update() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"FailureReason">> => [string()],
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"RecommenderConfig">> => recommender_config(),
-%%   <<"RecommenderVersionName">> => string(),
-%%   <<"Status">> => list(any())
+%%   <<"RecommenderVersionName">> => string()
 %% }
--type recommender_update() :: #{binary() => any()}.
+-type update_recommender_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
+%% update_recommender_response() :: #{
+%%   <<"RecommenderName">> => string()
 %% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% source_connector_properties() :: #{
-%%   <<"Marketo">> => marketo_source_properties(),
-%%   <<"S3">> => s3_source_properties(),
-%%   <<"Salesforce">> => salesforce_source_properties(),
-%%   <<"ServiceNow">> => service_now_source_properties(),
-%%   <<"Zendesk">> => zendesk_source_properties()
-%% }
--type source_connector_properties() :: #{binary() => any()}.
-
-%% Example:
-%% start_upload_job_response() :: #{}
--type start_upload_job_response() :: #{}.
-
-
-%% Example:
-%% training_metrics() :: #{
-%%   <<"Metrics">> => map(),
-%%   <<"RecommenderVersionName">> => string(),
-%%   <<"Time">> => non_neg_integer()
-%% }
--type training_metrics() :: #{binary() => any()}.
-
-
-%% Example:
-%% events_config() :: #{
-%%   <<"EventParametersList">> => list(event_parameters())
-%% }
--type events_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommender_filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"Values">> => map()
-%% }
--type recommender_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_integration_request() :: #{
-%%   <<"Uri">> := string()
-%% }
--type get_integration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_trigger_dimension() :: #{
-%%   <<"ObjectAttributes">> => list(object_attribute())
-%% }
--type event_trigger_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_calculated_attribute_definitions_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_calculated_attribute_definitions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% consolidation() :: #{
-%%   <<"MatchingAttributesList">> => list(list(string())())
-%% }
--type consolidation() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_domain_layout_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"Layout">> => string(),
-%%   <<"LayoutType">> => list(any())
-%% }
--type update_domain_layout_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% rule_based_matching_request() :: #{
-%%   <<"AttributeTypesSelector">> => attribute_types_selector(),
-%%   <<"ConflictResolution">> => conflict_resolution(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"ExportingConfig">> => exporting_config(),
-%%   <<"MatchingRules">> => list(matching_rule()),
-%%   <<"MaxAllowedRuleLevelForMatching">> => integer(),
-%%   <<"MaxAllowedRuleLevelForMerging">> => integer()
-%% }
--type rule_based_matching_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% object_type_key() :: #{
-%%   <<"FieldNames">> => list(string()),
-%%   <<"StandardIdentifiers">> => list(list(any())())
-%% }
--type object_type_key() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_matches_response() :: #{
-%%   <<"MatchGenerationDate">> => non_neg_integer(),
-%%   <<"Matches">> => list(match_item()),
-%%   <<"NextToken">> => string(),
-%%   <<"PotentialMatches">> => integer()
-%% }
--type get_matches_response() :: #{binary() => any()}.
-
-%% Example:
-%% start_upload_job_request() :: #{}
--type start_upload_job_request() :: #{}.
-
-
-%% Example:
-%% update_event_trigger_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
-%%   <<"EventTriggerLimits">> => event_trigger_limits(),
-%%   <<"EventTriggerName">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"SegmentFilter">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type update_event_trigger_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_segment_snapshot_response() :: #{
-%%   <<"SnapshotId">> => string()
-%% }
--type create_segment_snapshot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"Groups">> => list(filter_group()),
-%%   <<"Include">> => list(any())
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segment_snapshot_response() :: #{
-%%   <<"DataFormat">> => list(any()),
-%%   <<"DestinationUri">> => string(),
-%%   <<"EncryptionKey">> => string(),
-%%   <<"RoleArn">> => string(),
-%%   <<"SnapshotId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string()
-%% }
--type get_segment_snapshot_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommender_filters_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_recommender_filters_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_objects_item() :: #{
-%%   <<"Object">> => string(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"ProfileObjectUniqueKey">> => string()
-%% }
--type list_profile_objects_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_calculated_attributes_for_profile_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_calculated_attributes_for_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_domain_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataStore">> => data_store_response(),
-%%   <<"DeadLetterQueueUrl">> => string(),
-%%   <<"DefaultEncryptionKey">> => string(),
-%%   <<"DefaultExpirationDays">> => integer(),
-%%   <<"DomainName">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Matching">> => matching_response(),
-%%   <<"RuleBasedMatching">> => rule_based_matching_response(),
-%%   <<"Stats">> => domain_stats(),
-%%   <<"Tags">> => map()
-%% }
--type get_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% field_source_profile_ids() :: #{
-%%   <<"AccountNumber">> => string(),
-%%   <<"AdditionalInformation">> => string(),
-%%   <<"Address">> => string(),
-%%   <<"Attributes">> => map(),
-%%   <<"BillingAddress">> => string(),
-%%   <<"BirthDate">> => string(),
-%%   <<"BusinessEmailAddress">> => string(),
-%%   <<"BusinessName">> => string(),
-%%   <<"BusinessPhoneNumber">> => string(),
-%%   <<"EmailAddress">> => string(),
-%%   <<"EngagementPreferences">> => string(),
-%%   <<"FirstName">> => string(),
-%%   <<"Gender">> => string(),
-%%   <<"HomePhoneNumber">> => string(),
-%%   <<"LastName">> => string(),
-%%   <<"MailingAddress">> => string(),
-%%   <<"MiddleName">> => string(),
-%%   <<"MobilePhoneNumber">> => string(),
-%%   <<"PartyType">> => string(),
-%%   <<"PersonalEmailAddress">> => string(),
-%%   <<"PhoneNumber">> => string(),
-%%   <<"ProfileType">> => string(),
-%%   <<"ShippingAddress">> => string()
-%% }
--type field_source_profile_ids() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_stream_destination_details() :: #{
-%%   <<"Message">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UnhealthySince">> => non_neg_integer(),
-%%   <<"Uri">> => string()
-%% }
--type event_stream_destination_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_recommender_filter_response() :: #{
-%%   <<"Message">> => [string()]
-%% }
--type delete_recommender_filter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter_attribute_dimension() :: #{
-%%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type filter_attribute_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_history_records_request() :: #{
-%%   <<"ActionType">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"PerformedBy">> => string(),
-%%   <<"ProfileId">> := string()
-%% }
--type list_profile_history_records_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% segment_group() :: #{
-%%   <<"Groups">> => list(group()),
-%%   <<"Include">> => list(any())
-%% }
--type segment_group() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_trigger_request() :: #{}
--type delete_event_trigger_request() :: #{}.
-
-
-%% Example:
-%% search_profiles_request() :: #{
-%%   <<"AdditionalSearchKeys">> => list(additional_search_key()),
-%%   <<"KeyName">> := string(),
-%%   <<"LogicalOperator">> => list(any()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"Values">> := list(string())
-%% }
--type search_profiles_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_segment_definitions_response() :: #{
-%%   <<"Items">> => list(segment_definition_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_segment_definitions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segment_estimate_response() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"Estimate">> => string(),
-%%   <<"EstimateId">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusCode">> => integer()
-%% }
--type get_segment_estimate_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_profile_object_type_request() :: #{}
--type get_profile_object_type_request() :: #{}.
-
-
-%% Example:
-%% recommender_filter_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"FailureReason">> => [string()],
-%%   <<"RecommenderFilterExpression">> => string(),
-%%   <<"RecommenderFilterName">> => string(),
-%%   <<"RecommenderSchemaName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type recommender_filter_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domains_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_domains_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_event_stream_request() :: #{}
--type get_event_stream_request() :: #{}.
-
-
-%% Example:
-%% source_flow_config() :: #{
-%%   <<"ConnectorProfileName">> => string(),
-%%   <<"ConnectorType">> => list(any()),
-%%   <<"IncrementalPullConfig">> => incremental_pull_config(),
-%%   <<"SourceConnectorProperties">> => source_connector_properties()
-%% }
--type source_flow_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_trigger_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
-%%   <<"EventTriggerLimits">> => event_trigger_limits(),
-%%   <<"EventTriggerName">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"SegmentFilter">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_event_trigger_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommendation_diversity_config() :: #{
-%%   <<"Enabled">> => boolean(),
-%%   <<"Values">> => map()
-%% }
--type recommendation_diversity_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommender_recipe() :: #{
-%%   <<"description">> => [string()],
-%%   <<"name">> => list(any())
-%% }
--type recommender_recipe() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recommender_response() :: #{
-%%   <<"RecommenderArn">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_recommender_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_domain_object_type_request() :: #{}
--type get_domain_object_type_request() :: #{}.
-
-
-%% Example:
-%% object_attribute() :: #{
-%%   <<"ComparisonOperator">> => list(any()),
-%%   <<"FieldName">> => string(),
-%%   <<"Source">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type object_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% value_range() :: #{
-%%   <<"End">> => integer(),
-%%   <<"Start">> => integer()
-%% }
--type value_range() :: #{binary() => any()}.
-
-%% Example:
-%% get_segment_snapshot_request() :: #{}
--type get_segment_snapshot_request() :: #{}.
-
-
-%% Example:
-%% list_recommender_schemas_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_recommender_schemas_request() :: #{binary() => any()}.
-
-%% Example:
-%% stop_recommender_request() :: #{}
--type stop_recommender_request() :: #{}.
-
-
-%% Example:
-%% salesforce_source_properties() :: #{
-%%   <<"EnableDynamicFieldUpdate">> => boolean(),
-%%   <<"IncludeDeletedRecords">> => boolean(),
-%%   <<"Object">> => string()
-%% }
--type salesforce_source_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_steps_response() :: #{
-%%   <<"Items">> => list(workflow_step_item()),
-%%   <<"NextToken">> => string(),
-%%   <<"WorkflowId">> => string(),
-%%   <<"WorkflowType">> => list(any())
-%% }
--type get_workflow_steps_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_domain_object_type_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EncryptionKey">> => string(),
-%%   <<"Fields">> := map(),
-%%   <<"Tags">> => map()
-%% }
--type put_domain_object_type_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_layout_request() :: #{
-%%   <<"Description">> := string(),
-%%   <<"DisplayName">> := string(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"Layout">> := string(),
-%%   <<"LayoutType">> := list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_domain_layout_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_calculated_attributes_for_profile_response() :: #{
-%%   <<"Items">> => list(list_calculated_attribute_for_profile_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_calculated_attributes_for_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_steps_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type get_workflow_steps_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_segment_membership_request() :: #{
-%%   <<"ProfileIds">> := list(string())
-%% }
--type get_segment_membership_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_calculated_attribute_definition_request() :: #{}
--type delete_calculated_attribute_definition_request() :: #{}.
-
-
-%% Example:
-%% filter_dimension() :: #{
-%%   <<"Attributes">> => map()
-%% }
--type filter_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_auto_merging_preview_response() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"NumberOfMatchesInSample">> => float(),
-%%   <<"NumberOfProfilesInSample">> => float(),
-%%   <<"NumberOfProfilesWillBeMerged">> => float()
-%% }
--type get_auto_merging_preview_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% inference_config() :: #{
-%%   <<"MinProvisionedTPS">> => integer()
-%% }
--type inference_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_profiles_response() :: #{
-%%   <<"Items">> => list(profile()),
-%%   <<"NextToken">> => string()
-%% }
--type search_profiles_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_integration_workflow_response() :: #{
-%%   <<"Message">> => string(),
-%%   <<"WorkflowId">> => string()
-%% }
--type create_integration_workflow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_calculated_attribute_definition_request() :: #{
-%%   <<"Conditions">> => conditions(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string()
-%% }
--type update_calculated_attribute_definition_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_segment_definition_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> := string(),
-%%   <<"SegmentGroups">> => segment_group(),
-%%   <<"SegmentSort">> => segment_sort(),
-%%   <<"SegmentSqlQuery">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_segment_definition_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
-
-
-%% Example:
-%% identity_resolution_job() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"ExportingLocation">> => exporting_location(),
-%%   <<"JobEndTime">> => non_neg_integer(),
-%%   <<"JobId">> => string(),
-%%   <<"JobStartTime">> => non_neg_integer(),
-%%   <<"JobStats">> => job_stats(),
-%%   <<"Message">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type identity_resolution_job() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_calculated_attribute_for_profile_request() :: #{
-%%   <<"ConditionOverrides">> => condition_overrides(),
-%%   <<"ProfileIds">> := list(string())
-%% }
--type batch_get_calculated_attribute_for_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_profile_object_error_item() :: #{
-%%   <<"Code">> => integer(),
-%%   <<"Id">> => string(),
-%%   <<"Message">> => string()
-%% }
--type batch_put_profile_object_error_item() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_stream_response() :: #{}
--type delete_event_stream_response() :: #{}.
-
-
-%% Example:
-%% attribute_types_selector() :: #{
-%%   <<"Address">> => list(string()),
-%%   <<"AttributeMatchingModel">> => list(any()),
-%%   <<"EmailAddress">> => list(string()),
-%%   <<"PhoneNumber">> => list(string())
-%% }
--type attribute_types_selector() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommender_filters_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RecommenderFilters">> => list(recommender_filter_summary())
-%% }
--type list_recommender_filters_response() :: #{binary() => any()}.
+-type update_recommender_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2796,576 +3546,18 @@
 
 
 %% Example:
-%% list_recommenders_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Recommenders">> => list(recommender_summary())
+%% value_range() :: #{
+%%   <<"End">> => integer(),
+%%   <<"Start">> => integer()
 %% }
--type list_recommenders_response() :: #{binary() => any()}.
+-type value_range() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_profile_response() :: #{
-%%   <<"ProfileId">> => string()
+%% workflow_attributes() :: #{
+%%   <<"AppflowIntegration">> => appflow_integration_workflow_attributes()
 %% }
--type update_profile_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_upload_job_path_response() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Url">> => string(),
-%%   <<"ValidUntil">> => non_neg_integer()
-%% }
--type get_upload_job_path_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_profile_object_type_request() :: #{
-%%   <<"AllowProfileCreation">> => boolean(),
-%%   <<"Description">> := string(),
-%%   <<"EncryptionKey">> => string(),
-%%   <<"ExpirationDays">> => integer(),
-%%   <<"Fields">> => map(),
-%%   <<"Keys">> => map(),
-%%   <<"MaxProfileObjectCount">> => integer(),
-%%   <<"SourceLastUpdatedTimestampFormat">> => string(),
-%%   <<"SourcePriority">> => integer(),
-%%   <<"Tags">> => map(),
-%%   <<"TemplateId">> => string()
-%% }
--type put_profile_object_type_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommender_config() :: #{
-%%   <<"DiversityConfig">> => diversity_config(),
-%%   <<"EventsConfig">> => events_config(),
-%%   <<"ExcludedColumns">> => map(),
-%%   <<"IncludedColumns">> => map(),
-%%   <<"InferenceConfig">> => inference_config(),
-%%   <<"TrainingFrequency">> => integer()
-%% }
--type recommender_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch() :: #{
-%%   <<"EndTime">> => non_neg_integer(),
-%%   <<"StartTime">> => non_neg_integer()
-%% }
--type batch() :: #{binary() => any()}.
-
-%% Example:
-%% delete_recommender_schema_request() :: #{}
--type delete_recommender_schema_request() :: #{}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% get_segment_membership_response() :: #{
-%%   <<"Failures">> => list(profile_query_failures()),
-%%   <<"LastComputedAt">> => non_neg_integer(),
-%%   <<"Profiles">> => list(profile_query_result()),
-%%   <<"SegmentDefinitionName">> => string()
-%% }
--type get_segment_membership_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% contact_preference() :: #{
-%%   <<"ContactType">> => list(any()),
-%%   <<"KeyName">> => string(),
-%%   <<"KeyValue">> => string(),
-%%   <<"ProfileId">> => string()
-%% }
--type contact_preference() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_exporting_config() :: #{
-%%   <<"S3BucketName">> => string(),
-%%   <<"S3KeyName">> => string()
-%% }
--type s3_exporting_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% attribute_dimension() :: #{
-%%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type attribute_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% group() :: #{
-%%   <<"Dimensions">> => list(list()),
-%%   <<"SourceSegments">> => list(source_segment()),
-%%   <<"SourceType">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type group() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_domain_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DataStore">> => data_store_response(),
-%%   <<"DeadLetterQueueUrl">> => string(),
-%%   <<"DefaultEncryptionKey">> => string(),
-%%   <<"DefaultExpirationDays">> => integer(),
-%%   <<"DomainName">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Matching">> => matching_response(),
-%%   <<"RuleBasedMatching">> => rule_based_matching_response(),
-%%   <<"Tags">> => map()
-%% }
--type create_domain_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_objects_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"ObjectFilter">> => object_filter(),
-%%   <<"ObjectTypeName">> := string(),
-%%   <<"ProfileId">> := string()
-%% }
--type list_profile_objects_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_upload_job_request() :: #{
-%%   <<"DataExpiry">> => integer(),
-%%   <<"DisplayName">> := string(),
-%%   <<"Fields">> := map(),
-%%   <<"UniqueKey">> := string()
-%% }
--type create_upload_job_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_object_type_templates_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_profile_object_type_templates_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_trigger_summary_item() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EventTriggerName">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type event_trigger_summary_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_stream_request() :: #{
-%%   <<"Tags">> => map(),
-%%   <<"Uri">> := string()
-%% }
--type create_event_stream_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommender_recipes_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"RecommenderRecipes">> => list(recommender_recipe())
-%% }
--type list_recommender_recipes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% threshold() :: #{
-%%   <<"Operator">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type threshold() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_profile_history_record_response() :: #{
-%%   <<"ActionType">> => list(any()),
-%%   <<"Content">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"PerformedBy">> => string(),
-%%   <<"ProfileObjectUniqueKey">> => string()
-%% }
--type get_profile_history_record_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% data_store_request() :: #{
-%%   <<"Enabled">> => boolean()
-%% }
--type data_store_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% detected_profile_object_type() :: #{
-%%   <<"Fields">> => map(),
-%%   <<"Keys">> => map(),
-%%   <<"SourceLastUpdatedTimestampFormat">> => string()
-%% }
--type detected_profile_object_type() :: #{binary() => any()}.
-
-
-%% Example:
-%% recommender_promotional_filter() :: #{
-%%   <<"Name">> => string(),
-%%   <<"PercentPromotedItems">> => integer(),
-%%   <<"PromotionName">> => string(),
-%%   <<"Values">> => map()
-%% }
--type recommender_promotional_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_upload_jobs_response() :: #{
-%%   <<"Items">> => list(upload_job_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_upload_jobs_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_get_profile_request() :: #{
-%%   <<"ProfileIds">> := list(string())
-%% }
--type batch_get_profile_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_segment_definition_response() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_segment_definition_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_profile_object_type_request() :: #{}
--type delete_profile_object_type_request() :: #{}.
-
-
-%% Example:
-%% update_event_trigger_request() :: #{
-%%   <<"Description">> => string(),
-%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
-%%   <<"EventTriggerLimits">> => event_trigger_limits(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"SegmentFilter">> => string()
-%% }
--type update_event_trigger_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% bad_request_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type bad_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% period() :: #{
-%%   <<"MaxInvocationsPerProfile">> => integer(),
-%%   <<"Unit">> => list(any()),
-%%   <<"Unlimited">> => boolean(),
-%%   <<"Value">> => integer()
-%% }
--type period() :: #{binary() => any()}.
-
-
-%% Example:
-%% connector_operator() :: #{
-%%   <<"Marketo">> => list(any()),
-%%   <<"S3">> => list(any()),
-%%   <<"Salesforce">> => list(any()),
-%%   <<"ServiceNow">> => list(any()),
-%%   <<"Zendesk">> => list(any())
-%% }
--type connector_operator() :: #{binary() => any()}.
-
-%% Example:
-%% profile_attribute_values_request() :: #{}
--type profile_attribute_values_request() :: #{}.
-
-%% Example:
-%% get_event_trigger_request() :: #{}
--type get_event_trigger_request() :: #{}.
-
-
-%% Example:
-%% put_profile_object_request() :: #{
-%%   <<"Object">> := string(),
-%%   <<"ObjectTypeName">> := string()
-%% }
--type put_profile_object_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_history_records_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"ProfileHistoryRecords">> => list(profile_history_record())
-%% }
--type list_profile_history_records_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_event_stream_request() :: #{}
--type delete_event_stream_request() :: #{}.
-
-
-%% Example:
-%% layout_item() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IsDefault">> => boolean(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"LayoutDefinitionName">> => string(),
-%%   <<"LayoutType">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type layout_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% appflow_integration() :: #{
-%%   <<"Batches">> => list(batch()),
-%%   <<"FlowDefinition">> => flow_definition()
-%% }
--type appflow_integration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_layouts_response() :: #{
-%%   <<"Items">> => list(layout_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_domain_layouts_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_calculated_attribute_for_profile_item() :: #{
-%%   <<"CalculatedAttributeName">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"IsDataPartial">> => string(),
-%%   <<"LastObjectTimestamp">> => non_neg_integer(),
-%%   <<"Value">> => string()
-%% }
--type list_calculated_attribute_for_profile_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_streams_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_streams_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% address() :: #{
-%%   <<"Address1">> => string(),
-%%   <<"Address2">> => string(),
-%%   <<"Address3">> => string(),
-%%   <<"Address4">> => string(),
-%%   <<"City">> => string(),
-%%   <<"Country">> => string(),
-%%   <<"County">> => string(),
-%%   <<"PostalCode">> => string(),
-%%   <<"Province">> => string(),
-%%   <<"State">> => string()
-%% }
--type address() :: #{binary() => any()}.
-
-
-%% Example:
-%% batch_put_profile_object_response() :: #{
-%%   <<"Failed">> => list(batch_put_profile_object_error_item()),
-%%   <<"Successful">> => list(batch_put_profile_object_response_item())
-%% }
--type batch_put_profile_object_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_attribute_values_response() :: #{
-%%   <<"AttributeName">> => string(),
-%%   <<"DomainName">> => string(),
-%%   <<"Items">> => list(attribute_value_item()),
-%%   <<"StatusCode">> => integer()
-%% }
--type profile_attribute_values_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_profile_object_request() :: #{
-%%   <<"ObjectTypeName">> := string(),
-%%   <<"ProfileId">> := string(),
-%%   <<"ProfileObjectUniqueKey">> := string()
-%% }
--type delete_profile_object_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_calculated_attribute_definitions_response() :: #{
-%%   <<"Items">> => list(list_calculated_attribute_definition_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_calculated_attribute_definitions_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_segment_estimate_request() :: #{}
--type get_segment_estimate_request() :: #{}.
-
-
-%% Example:
-%% sort_attribute() :: #{
-%%   <<"DataType">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"Order">> => list(any()),
-%%   <<"Type">> => list(any())
-%% }
--type sort_attribute() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflows_response() :: #{
-%%   <<"Items">> => list(list_workflows_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_workflows_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% readiness() :: #{
-%%   <<"Message">> => string(),
-%%   <<"ProgressPercentage">> => integer()
-%% }
--type readiness() :: #{binary() => any()}.
-
-
-%% Example:
-%% extra_length_value_profile_dimension() :: #{
-%%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string())
-%% }
--type extra_length_value_profile_dimension() :: #{binary() => any()}.
-
-
-%% Example:
-%% domain_object_types_list_item() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type domain_object_types_list_item() :: #{binary() => any()}.
-
-
-%% Example:
-%% results_summary() :: #{
-%%   <<"CreatedRecords">> => float(),
-%%   <<"FailedRecords">> => float(),
-%%   <<"UpdatedRecords">> => float()
-%% }
--type results_summary() :: #{binary() => any()}.
-
-%% Example:
-%% get_segment_definition_request() :: #{}
--type get_segment_definition_request() :: #{}.
-
-
-%% Example:
-%% list_profile_object_type_templates_response() :: #{
-%%   <<"Items">> => list(list_profile_object_type_template_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_profile_object_type_templates_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_recommender_filter_request() :: #{}
--type get_recommender_filter_request() :: #{}.
-
-
-%% Example:
-%% delete_profile_object_type_response() :: #{
-%%   <<"Message">> => string()
-%% }
--type delete_profile_object_type_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_account_integrations_response() :: #{
-%%   <<"Items">> => list(list_integration_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_account_integrations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_now_source_properties() :: #{
-%%   <<"Object">> => string()
-%% }
--type service_now_source_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_recommender_response() :: #{
-%%   <<"ActiveRecommenderVersionName">> => string(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"FailureReason">> => [string()],
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"LatestRecommenderUpdate">> => recommender_update(),
-%%   <<"RecommenderConfig">> => recommender_config(),
-%%   <<"RecommenderName">> => string(),
-%%   <<"RecommenderRecipeName">> => list(any()),
-%%   <<"RecommenderSchemaName">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"TrainingMetrics">> => list(training_metrics())
-%% }
--type get_recommender_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_integration_item() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"DomainName">> => string(),
-%%   <<"EventTriggerNames">> => list(string()),
-%%   <<"IsUnstructured">> => boolean(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"ObjectTypeNames">> => map(),
-%%   <<"RoleArn">> => string(),
-%%   <<"Scope">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"Uri">> => string(),
-%%   <<"WorkflowId">> => string()
-%% }
--type list_integration_item() :: #{binary() => any()}.
-
-%% Example:
-%% get_profile_object_type_template_request() :: #{}
--type get_profile_object_type_template_request() :: #{}.
+-type workflow_attributes() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3374,952 +3566,760 @@
 %% }
 -type workflow_metrics() :: #{binary() => any()}.
 
-%% Example:
-%% stop_upload_job_response() :: #{}
--type stop_upload_job_response() :: #{}.
-
 
 %% Example:
-%% incremental_pull_config() :: #{
-%%   <<"DatetimeTypeFieldName">> => string()
+%% workflow_step_item() :: #{
+%%   <<"AppflowIntegration">> => appflow_integration_workflow_step()
 %% }
--type incremental_pull_config() :: #{binary() => any()}.
+-type workflow_step_item() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_get_profile_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string(),
-%%   <<"ProfileId">> => string()
+%% zendesk_source_properties() :: #{
+%%   <<"Object">> => string()
 %% }
--type batch_get_profile_error() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_domain_layouts_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_domain_layouts_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_event_stream_response() :: #{
-%%   <<"EventStreamArn">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_event_stream_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_upload_job_request() :: #{}
--type get_upload_job_request() :: #{}.
-
-
-%% Example:
-%% trigger_config() :: #{
-%%   <<"TriggerProperties">> => trigger_properties(),
-%%   <<"TriggerType">> => list(any())
-%% }
--type trigger_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% add_profile_key_request() :: #{
-%%   <<"KeyName">> := string(),
-%%   <<"ProfileId">> := string(),
-%%   <<"Values">> := list(string())
-%% }
--type add_profile_key_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% matching_request() :: #{
-%%   <<"AutoMerging">> => auto_merging(),
-%%   <<"Enabled">> => boolean(),
-%%   <<"ExportingConfig">> => exporting_config(),
-%%   <<"JobSchedule">> => job_schedule()
-%% }
--type matching_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% profile_attributes() :: #{
-%%   <<"AccountNumber">> => profile_dimension(),
-%%   <<"AdditionalInformation">> => extra_length_value_profile_dimension(),
-%%   <<"Address">> => address_dimension(),
-%%   <<"Attributes">> => map(),
-%%   <<"BillingAddress">> => address_dimension(),
-%%   <<"BirthDate">> => date_dimension(),
-%%   <<"BusinessEmailAddress">> => profile_dimension(),
-%%   <<"BusinessName">> => profile_dimension(),
-%%   <<"BusinessPhoneNumber">> => profile_dimension(),
-%%   <<"EmailAddress">> => profile_dimension(),
-%%   <<"FirstName">> => profile_dimension(),
-%%   <<"GenderString">> => profile_dimension(),
-%%   <<"HomePhoneNumber">> => profile_dimension(),
-%%   <<"LastName">> => profile_dimension(),
-%%   <<"MailingAddress">> => address_dimension(),
-%%   <<"MiddleName">> => profile_dimension(),
-%%   <<"MobilePhoneNumber">> => profile_dimension(),
-%%   <<"PartyTypeString">> => profile_dimension(),
-%%   <<"PersonalEmailAddress">> => profile_dimension(),
-%%   <<"PhoneNumber">> => profile_dimension(),
-%%   <<"ProfileType">> => profile_type_dimension(),
-%%   <<"ShippingAddress">> => address_dimension()
-%% }
--type profile_attributes() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_recommenders_request() :: #{
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_recommenders_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_recommender_filter_response() :: #{
-%%   <<"RecommenderFilterArn">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_recommender_filter_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_calculated_attribute_definition_response() :: #{
-%%   <<"AttributeDetails">> => attribute_details(),
-%%   <<"CalculatedAttributeName">> => string(),
-%%   <<"Conditions">> => conditions(),
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Filter">> => filter(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Readiness">> => readiness(),
-%%   <<"Statistic">> => list(any()),
-%%   <<"Status">> => list(any()),
-%%   <<"Tags">> => map(),
-%%   <<"UseHistoricalData">> => boolean()
-%% }
--type get_calculated_attribute_definition_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% diversity_config() :: #{
-%%   <<"DiversityColumns">> => list(diversity_column())
-%% }
--type diversity_config() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_segment_estimate_response() :: #{
-%%   <<"DomainName">> => string(),
-%%   <<"EstimateId">> => string(),
-%%   <<"StatusCode">> => integer()
-%% }
--type create_segment_estimate_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_profile_object_types_response() :: #{
-%%   <<"Items">> => list(list_profile_object_type_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_profile_object_types_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_domain_object_type_response() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"EncryptionKey">> => string(),
-%%   <<"Fields">> => map(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"ObjectTypeName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type put_domain_object_type_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_domain_layout_request() :: #{}
--type delete_domain_layout_request() :: #{}.
-
-
-%% Example:
-%% list_integrations_response() :: #{
-%%   <<"Items">> => list(list_integration_item()),
-%%   <<"NextToken">> => string()
-%% }
--type list_integrations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_response() :: #{
-%%   <<"Attributes">> => workflow_attributes(),
-%%   <<"ErrorDescription">> => string(),
-%%   <<"LastUpdatedAt">> => non_neg_integer(),
-%%   <<"Metrics">> => workflow_metrics(),
-%%   <<"StartDate">> => non_neg_integer(),
-%%   <<"Status">> => list(any()),
-%%   <<"WorkflowId">> => string(),
-%%   <<"WorkflowType">> => list(any())
-%% }
--type get_workflow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_stream_summary() :: #{
-%%   <<"DestinationSummary">> => destination_summary(),
-%%   <<"DomainName">> => string(),
-%%   <<"EventStreamArn">> => string(),
-%%   <<"EventStreamName">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"StoppedSince">> => non_neg_integer(),
-%%   <<"Tags">> => map()
-%% }
--type event_stream_summary() :: #{binary() => any()}.
+-type zendesk_source_properties() :: #{binary() => any()}.
 
 -type add_profile_key_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type batch_get_calculated_attribute_for_profile_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type batch_get_profile_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type batch_put_profile_object_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_calculated_attribute_definition_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_domain_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_domain_layout_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_event_stream_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_event_trigger_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_integration_workflow_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_profile_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_recommender_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_recommender_filter_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_recommender_schema_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_segment_definition_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_segment_estimate_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_segment_snapshot_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type create_upload_job_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_calculated_attribute_definition_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_domain_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_domain_layout_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_domain_object_type_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_event_stream_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_event_trigger_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_integration_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_profile_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_profile_key_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_profile_object_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_profile_object_type_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_recommender_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_recommender_filter_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_recommender_schema_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_segment_definition_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_workflow_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type detect_profile_object_type_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_auto_merging_preview_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_calculated_attribute_definition_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_calculated_attribute_for_profile_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_domain_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_domain_layout_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_domain_object_type_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_event_stream_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_event_trigger_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_identity_resolution_job_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_integration_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_matches_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_object_type_attribute_statistics_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_profile_history_record_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_profile_object_type_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_profile_object_type_template_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_profile_recommendations_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_recommender_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_recommender_filter_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_recommender_schema_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_segment_definition_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_segment_estimate_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_segment_membership_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_segment_snapshot_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_similar_profiles_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_upload_job_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_upload_job_path_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_workflow_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_workflow_steps_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_account_integrations_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_calculated_attribute_definitions_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_calculated_attributes_for_profile_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_domain_layouts_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_domain_object_types_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_domains_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_event_streams_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_event_triggers_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_identity_resolution_jobs_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_integrations_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_object_type_attribute_values_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_object_type_attributes_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_profile_attribute_values_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_profile_history_records_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_profile_object_type_templates_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_profile_object_types_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_profile_objects_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_recommender_filters_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_recommender_recipes_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_recommender_schemas_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_recommenders_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_rule_based_matches_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_segment_definitions_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type list_upload_jobs_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_workflows_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type merge_profiles_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type put_domain_object_type_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type put_integration_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type put_profile_object_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type put_profile_object_type_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type search_profiles_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type start_recommender_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type start_upload_job_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type stop_recommender_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type stop_upload_job_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception().
 
 -type update_calculated_attribute_definition_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_domain_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_domain_layout_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_event_trigger_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_profile_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type update_recommender_errors() ::
-    bad_request_exception() | 
     throttling_exception() | 
-    access_denied_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    bad_request_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

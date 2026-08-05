@@ -154,10 +154,1068 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% association() :: #{
+%%   <<"customDomainCertificateArn">> => string(),
+%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
+%%   <<"customDomainName">> => string(),
+%%   <<"workgroupName">> => string()
+%% }
+-type association() :: #{binary() => any()}.
+
+%% Example:
+%% config_parameter() :: #{
+%%   <<"parameterKey">> => string(),
+%%   <<"parameterValue">> => string()
+%% }
+-type config_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% convert_recovery_point_to_snapshot_request() :: #{
+%%   <<"recoveryPointId">> := [string()],
+%%   <<"retentionPeriod">> => [integer()],
+%%   <<"snapshotName">> := [string()],
+%%   <<"tags">> => list(tag())
+%% }
+-type convert_recovery_point_to_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% convert_recovery_point_to_snapshot_response() :: #{
+%%   <<"snapshot">> => snapshot()
+%% }
+-type convert_recovery_point_to_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_domain_association_request() :: #{
+%%   <<"customDomainCertificateArn">> := string(),
+%%   <<"customDomainName">> := string(),
+%%   <<"workgroupName">> := string()
+%% }
+-type create_custom_domain_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_domain_association_response() :: #{
+%%   <<"customDomainCertificateArn">> => string(),
+%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
+%%   <<"customDomainName">> => string(),
+%%   <<"workgroupName">> => string()
+%% }
+-type create_custom_domain_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_access_request() :: #{
+%%   <<"endpointName">> := [string()],
+%%   <<"ownerAccount">> => string(),
+%%   <<"subnetIds">> := list(string()),
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"workgroupName">> := [string()]
+%% }
+-type create_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_endpoint_access_response() :: #{
+%%   <<"endpoint">> => endpoint_access()
+%% }
+-type create_endpoint_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_namespace_request() :: #{
+%%   <<"adminPasswordSecretKmsKeyId">> => string(),
+%%   <<"adminUserPassword">> => string(),
+%%   <<"adminUsername">> => string(),
+%%   <<"dbName">> => [string()],
+%%   <<"defaultIamRoleArn">> => [string()],
+%%   <<"iamRoles">> => list(string()),
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"logExports">> => list(string()),
+%%   <<"manageAdminPassword">> => [boolean()],
+%%   <<"namespaceName">> := string(),
+%%   <<"redshiftIdcApplicationArn">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_namespace_response() :: #{
+%%   <<"namespace">> => namespace()
+%% }
+-type create_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_reservation_request() :: #{
+%%   <<"capacity">> := integer(),
+%%   <<"clientToken">> => [string()],
+%%   <<"offeringId">> := string()
+%% }
+-type create_reservation_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_reservation_response() :: #{
+%%   <<"reservation">> => reservation()
+%% }
+-type create_reservation_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_scheduled_action_request() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"namespaceName">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"schedule">> := list(),
+%%   <<"scheduledActionDescription">> => [string()],
+%%   <<"scheduledActionName">> := string(),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"targetAction">> := list()
+%% }
+-type create_scheduled_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_scheduled_action_response() :: #{
+%%   <<"scheduledAction">> => scheduled_action_response()
+%% }
+-type create_scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_copy_configuration_request() :: #{
+%%   <<"destinationKmsKeyId">> => string(),
+%%   <<"destinationRegion">> := [string()],
+%%   <<"namespaceName">> := string(),
+%%   <<"snapshotRetentionPeriod">> => [integer()]
+%% }
+-type create_snapshot_copy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_copy_configuration_response() :: #{
+%%   <<"snapshotCopyConfiguration">> => snapshot_copy_configuration()
+%% }
+-type create_snapshot_copy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_request() :: #{
+%%   <<"namespaceName">> := [string()],
+%%   <<"retentionPeriod">> => [integer()],
+%%   <<"snapshotName">> := [string()],
+%%   <<"tags">> => list(tag())
+%% }
+-type create_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_response() :: #{
+%%   <<"snapshot">> => snapshot()
+%% }
+-type create_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_schedule_action_parameters() :: #{
+%%   <<"namespaceName">> => string(),
+%%   <<"retentionPeriod">> => [integer()],
+%%   <<"snapshotNamePrefix">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_snapshot_schedule_action_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% create_usage_limit_request() :: #{
+%%   <<"amount">> := [float()],
+%%   <<"breachAction">> => string(),
+%%   <<"period">> => string(),
+%%   <<"resourceArn">> := [string()],
+%%   <<"usageType">> := string()
+%% }
+-type create_usage_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_usage_limit_response() :: #{
+%%   <<"usageLimit">> => usage_limit()
+%% }
+-type create_usage_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_workgroup_request() :: #{
+%%   <<"baseCapacity">> => [integer()],
+%%   <<"configParameters">> => list(config_parameter()),
+%%   <<"enhancedVpcRouting">> => [boolean()],
+%%   <<"extraComputeForAutomaticOptimization">> => [boolean()],
+%%   <<"ipAddressType">> => string(),
+%%   <<"maxCapacity">> => [integer()],
+%%   <<"namespaceName">> := string(),
+%%   <<"port">> => [integer()],
+%%   <<"pricePerformanceTarget">> => performance_target(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"tags">> => list(tag()),
+%%   <<"trackName">> => string(),
+%%   <<"workgroupName">> := string()
+%% }
+-type create_workgroup_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_workgroup_response() :: #{
+%%   <<"workgroup">> => workgroup()
+%% }
+-type create_workgroup_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_domain_association_request() :: #{
+%%   <<"customDomainName">> := string(),
+%%   <<"workgroupName">> := string()
+%% }
+-type delete_custom_domain_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_domain_association_response() :: #{
+
+%% }
+-type delete_custom_domain_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_access_request() :: #{
+%%   <<"endpointName">> := [string()]
+%% }
+-type delete_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_access_response() :: #{
+%%   <<"endpoint">> => endpoint_access()
+%% }
+-type delete_endpoint_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_namespace_request() :: #{
+%%   <<"finalSnapshotName">> => [string()],
+%%   <<"finalSnapshotRetentionPeriod">> => [integer()],
+%%   <<"namespaceName">> := string()
+%% }
+-type delete_namespace_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_namespace_response() :: #{
 %%   <<"namespace">> => namespace()
 %% }
 -type delete_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"resourceArn">> := [string()]
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_policy_response() :: #{
+
+%% }
+-type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_action_request() :: #{
+%%   <<"scheduledActionName">> := string()
+%% }
+-type delete_scheduled_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_scheduled_action_response() :: #{
+%%   <<"scheduledAction">> => scheduled_action_response()
+%% }
+-type delete_scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_copy_configuration_request() :: #{
+%%   <<"snapshotCopyConfigurationId">> := [string()]
+%% }
+-type delete_snapshot_copy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_copy_configuration_response() :: #{
+%%   <<"snapshotCopyConfiguration">> => snapshot_copy_configuration()
+%% }
+-type delete_snapshot_copy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_request() :: #{
+%%   <<"snapshotName">> := [string()]
+%% }
+-type delete_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_response() :: #{
+%%   <<"snapshot">> => snapshot()
+%% }
+-type delete_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_usage_limit_request() :: #{
+%%   <<"usageLimitId">> := [string()]
+%% }
+-type delete_usage_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_usage_limit_response() :: #{
+%%   <<"usageLimit">> => usage_limit()
+%% }
+-type delete_usage_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workgroup_request() :: #{
+%%   <<"workgroupName">> := string()
+%% }
+-type delete_workgroup_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_workgroup_response() :: #{
+%%   <<"workgroup">> => workgroup()
+%% }
+-type delete_workgroup_response() :: #{binary() => any()}.
+
+%% Example:
+%% dry_run_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type dry_run_exception() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint() :: #{
+%%   <<"address">> => [string()],
+%%   <<"port">> => [integer()],
+%%   <<"vpcEndpoints">> => list(vpc_endpoint())
+%% }
+-type endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% endpoint_access() :: #{
+%%   <<"address">> => [string()],
+%%   <<"endpointArn">> => [string()],
+%%   <<"endpointCreateTime">> => [non_neg_integer()],
+%%   <<"endpointName">> => [string()],
+%%   <<"endpointStatus">> => [string()],
+%%   <<"port">> => [integer()],
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcEndpoint">> => vpc_endpoint(),
+%%   <<"vpcSecurityGroups">> => list(vpc_security_group_membership()),
+%%   <<"workgroupName">> => [string()]
+%% }
+-type endpoint_access() :: #{binary() => any()}.
+
+%% Example:
+%% get_credentials_request() :: #{
+%%   <<"customDomainName">> => string(),
+%%   <<"dbName">> => string(),
+%%   <<"durationSeconds">> => [integer()],
+%%   <<"workgroupName">> => string()
+%% }
+-type get_credentials_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_credentials_response() :: #{
+%%   <<"dbPassword">> => string(),
+%%   <<"dbUser">> => string(),
+%%   <<"expiration">> => [non_neg_integer()],
+%%   <<"nextRefreshTime">> => [non_neg_integer()]
+%% }
+-type get_credentials_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_domain_association_request() :: #{
+%%   <<"customDomainName">> := string(),
+%%   <<"workgroupName">> := string()
+%% }
+-type get_custom_domain_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_domain_association_response() :: #{
+%%   <<"customDomainCertificateArn">> => string(),
+%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
+%%   <<"customDomainName">> => string(),
+%%   <<"workgroupName">> => string()
+%% }
+-type get_custom_domain_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_access_request() :: #{
+%%   <<"endpointName">> := [string()]
+%% }
+-type get_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_access_response() :: #{
+%%   <<"endpoint">> => endpoint_access()
+%% }
+-type get_endpoint_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_center_auth_token_request() :: #{
+%%   <<"workgroupNames">> := list(string())
+%% }
+-type get_identity_center_auth_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_center_auth_token_response() :: #{
+%%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"token">> => [string()]
+%% }
+-type get_identity_center_auth_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_namespace_request() :: #{
+%%   <<"namespaceName">> := string()
+%% }
+-type get_namespace_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_namespace_response() :: #{
+%%   <<"namespace">> => namespace()
+%% }
+-type get_namespace_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_recovery_point_request() :: #{
+%%   <<"recoveryPointId">> := [string()]
+%% }
+-type get_recovery_point_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_recovery_point_response() :: #{
+%%   <<"recoveryPoint">> => recovery_point()
+%% }
+-type get_recovery_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_reservation_offering_request() :: #{
+%%   <<"offeringId">> := string()
+%% }
+-type get_reservation_offering_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_reservation_offering_response() :: #{
+%%   <<"reservationOffering">> => reservation_offering()
+%% }
+-type get_reservation_offering_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_reservation_request() :: #{
+%%   <<"reservationId">> := string()
+%% }
+-type get_reservation_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_reservation_response() :: #{
+%%   <<"reservation">> => reservation()
+%% }
+-type get_reservation_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"resourceArn">> := [string()]
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"resourcePolicy">> => resource_policy()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_action_request() :: #{
+%%   <<"scheduledActionName">> := string()
+%% }
+-type get_scheduled_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_scheduled_action_response() :: #{
+%%   <<"scheduledAction">> => scheduled_action_response()
+%% }
+-type get_scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_snapshot_request() :: #{
+%%   <<"ownerAccount">> => [string()],
+%%   <<"snapshotArn">> => [string()],
+%%   <<"snapshotName">> => [string()]
+%% }
+-type get_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_snapshot_response() :: #{
+%%   <<"snapshot">> => snapshot()
+%% }
+-type get_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_restore_status_request() :: #{
+%%   <<"tableRestoreRequestId">> := [string()]
+%% }
+-type get_table_restore_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_restore_status_response() :: #{
+%%   <<"tableRestoreStatus">> => table_restore_status()
+%% }
+-type get_table_restore_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_track_request() :: #{
+%%   <<"trackName">> := string()
+%% }
+-type get_track_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_track_response() :: #{
+%%   <<"track">> => serverless_track()
+%% }
+-type get_track_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_limit_request() :: #{
+%%   <<"usageLimitId">> := [string()]
+%% }
+-type get_usage_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_limit_response() :: #{
+%%   <<"usageLimit">> => usage_limit()
+%% }
+-type get_usage_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_workgroup_request() :: #{
+%%   <<"workgroupName">> := string()
+%% }
+-type get_workgroup_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_workgroup_response() :: #{
+%%   <<"workgroup">> => workgroup()
+%% }
+-type get_workgroup_response() :: #{binary() => any()}.
+
+%% Example:
+%% insufficient_capacity_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type insufficient_capacity_exception() :: #{binary() => any()}.
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_pagination_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type invalid_pagination_exception() :: #{binary() => any()}.
+
+%% Example:
+%% ipv6_cidr_block_not_found_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type ipv6_cidr_block_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_domain_associations_request() :: #{
+%%   <<"customDomainCertificateArn">> => string(),
+%%   <<"customDomainName">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_domain_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_custom_domain_associations_response() :: #{
+%%   <<"associations">> => list(association()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_domain_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_access_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"ownerAccount">> => string(),
+%%   <<"vpcId">> => [string()],
+%%   <<"workgroupName">> => [string()]
+%% }
+-type list_endpoint_access_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_endpoint_access_response() :: #{
+%%   <<"endpoints">> => list(endpoint_access()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_endpoint_access_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_managed_workgroups_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sourceArn">> => string()
+%% }
+-type list_managed_workgroups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_managed_workgroups_response() :: #{
+%%   <<"managedWorkgroups">> => list(managed_workgroup_list_item()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_managed_workgroups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_namespaces_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_namespaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_namespaces_response() :: #{
+%%   <<"namespaces">> => list(namespace()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_namespaces_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_recovery_points_request() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"namespaceArn">> => [string()],
+%%   <<"namespaceName">> => string(),
+%%   <<"nextToken">> => [string()],
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type list_recovery_points_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_recovery_points_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"recoveryPoints">> => list(recovery_point())
+%% }
+-type list_recovery_points_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_reservation_offerings_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_reservation_offerings_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_reservation_offerings_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reservationOfferingsList">> => list(reservation_offering())
+%% }
+-type list_reservation_offerings_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_reservations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_reservations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_reservations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"reservationsList">> => list(reservation())
+%% }
+-type list_reservations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_actions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"namespaceName">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_scheduled_actions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_scheduled_actions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"scheduledActions">> => list(scheduled_action_association())
+%% }
+-type list_scheduled_actions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_snapshot_copy_configurations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"namespaceName">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_snapshot_copy_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_snapshot_copy_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"snapshotCopyConfigurations">> => list(snapshot_copy_configuration())
+%% }
+-type list_snapshot_copy_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_snapshots_request() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"namespaceArn">> => [string()],
+%%   <<"namespaceName">> => [string()],
+%%   <<"nextToken">> => [string()],
+%%   <<"ownerAccount">> => [string()],
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type list_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_snapshots_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"snapshots">> => list(snapshot())
+%% }
+-type list_snapshots_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_table_restore_status_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"namespaceName">> => [string()],
+%%   <<"nextToken">> => string(),
+%%   <<"workgroupName">> => [string()]
+%% }
+-type list_table_restore_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_table_restore_status_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tableRestoreStatuses">> => list(table_restore_status())
+%% }
+-type list_table_restore_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"resourceArn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tracks_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_tracks_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_tracks_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tracks">> => list(serverless_track())
+%% }
+-type list_tracks_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_usage_limits_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> => [string()],
+%%   <<"usageType">> => string()
+%% }
+-type list_usage_limits_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_usage_limits_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"usageLimits">> => list(usage_limit())
+%% }
+-type list_usage_limits_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_workgroups_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"ownerAccount">> => string()
+%% }
+-type list_workgroups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_workgroups_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"workgroups">> => list(workgroup())
+%% }
+-type list_workgroups_response() :: #{binary() => any()}.
+
+%% Example:
+%% managed_workgroup_list_item() :: #{
+%%   <<"creationDate">> => [non_neg_integer()],
+%%   <<"managedWorkgroupId">> => [string()],
+%%   <<"managedWorkgroupName">> => string(),
+%%   <<"sourceArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type managed_workgroup_list_item() :: #{binary() => any()}.
+
+%% Example:
+%% namespace() :: #{
+%%   <<"adminPasswordSecretArn">> => [string()],
+%%   <<"adminPasswordSecretKmsKeyId">> => string(),
+%%   <<"adminUsername">> => string(),
+%%   <<"catalogArn">> => [string()],
+%%   <<"creationDate">> => [non_neg_integer()],
+%%   <<"dbName">> => [string()],
+%%   <<"defaultIamRoleArn">> => [string()],
+%%   <<"iamRoles">> => list(string()),
+%%   <<"kmsKeyId">> => [string()],
+%%   <<"lakehouseRegistrationStatus">> => [string()],
+%%   <<"logExports">> => list(string()),
+%%   <<"namespaceArn">> => [string()],
+%%   <<"namespaceId">> => [string()],
+%%   <<"namespaceName">> => string(),
+%%   <<"status">> => string()
+%% }
+-type namespace() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface() :: #{
+%%   <<"availabilityZone">> => [string()],
+%%   <<"ipv6Address">> => [string()],
+%%   <<"networkInterfaceId">> => [string()],
+%%   <<"privateIpAddress">> => [string()],
+%%   <<"subnetId">> => [string()]
+%% }
+-type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% performance_target() :: #{
+%%   <<"level">> => [integer()],
+%%   <<"status">> => string()
+%% }
+-type performance_target() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"policy">> := [string()],
+%%   <<"resourceArn">> := [string()]
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"resourcePolicy">> => resource_policy()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% recovery_point() :: #{
+%%   <<"namespaceArn">> => [string()],
+%%   <<"namespaceName">> => string(),
+%%   <<"recoveryPointCreateTime">> => [non_neg_integer()],
+%%   <<"recoveryPointId">> => [string()],
+%%   <<"totalSizeInMegaBytes">> => [float()],
+%%   <<"workgroupName">> => string()
+%% }
+-type recovery_point() :: #{binary() => any()}.
+
+%% Example:
+%% reservation() :: #{
+%%   <<"capacity">> => integer(),
+%%   <<"endDate">> => [non_neg_integer()],
+%%   <<"offering">> => reservation_offering(),
+%%   <<"reservationArn">> => string(),
+%%   <<"reservationId">> => string(),
+%%   <<"startDate">> => [non_neg_integer()],
+%%   <<"status">> => string()
+%% }
+-type reservation() :: #{binary() => any()}.
+
+%% Example:
+%% reservation_offering() :: #{
+%%   <<"currencyCode">> => string(),
+%%   <<"duration">> => integer(),
+%%   <<"hourlyCharge">> => float(),
+%%   <<"offeringId">> => string(),
+%%   <<"offeringType">> => string(),
+%%   <<"upfrontCharge">> => float()
+%% }
+-type reservation_offering() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy() :: #{
+%%   <<"policy">> => [string()],
+%%   <<"resourceArn">> => [string()]
+%% }
+-type resource_policy() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_recovery_point_request() :: #{
+%%   <<"maintainIntegration">> => [boolean()],
+%%   <<"namespaceName">> := string(),
+%%   <<"recoveryPointId">> := [string()],
+%%   <<"workgroupName">> := string()
+%% }
+-type restore_from_recovery_point_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_recovery_point_response() :: #{
+%%   <<"namespace">> => namespace(),
+%%   <<"recoveryPointId">> => [string()]
+%% }
+-type restore_from_recovery_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_snapshot_request() :: #{
+%%   <<"adminPasswordSecretKmsKeyId">> => string(),
+%%   <<"maintainIntegration">> => [boolean()],
+%%   <<"manageAdminPassword">> => [boolean()],
+%%   <<"namespaceName">> := string(),
+%%   <<"ownerAccount">> => [string()],
+%%   <<"snapshotArn">> => [string()],
+%%   <<"snapshotName">> => [string()],
+%%   <<"workgroupName">> := string()
+%% }
+-type restore_from_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_from_snapshot_response() :: #{
+%%   <<"namespace">> => namespace(),
+%%   <<"ownerAccount">> => [string()],
+%%   <<"snapshotName">> => [string()]
+%% }
+-type restore_from_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_recovery_point_request() :: #{
+%%   <<"activateCaseSensitiveIdentifier">> => [boolean()],
+%%   <<"namespaceName">> := [string()],
+%%   <<"newTableName">> := [string()],
+%%   <<"recoveryPointId">> := [string()],
+%%   <<"sourceDatabaseName">> := [string()],
+%%   <<"sourceSchemaName">> => [string()],
+%%   <<"sourceTableName">> := [string()],
+%%   <<"targetDatabaseName">> => [string()],
+%%   <<"targetSchemaName">> => [string()],
+%%   <<"workgroupName">> := [string()]
+%% }
+-type restore_table_from_recovery_point_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_recovery_point_response() :: #{
+%%   <<"tableRestoreStatus">> => table_restore_status()
+%% }
+-type restore_table_from_recovery_point_response() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_snapshot_request() :: #{
+%%   <<"activateCaseSensitiveIdentifier">> => [boolean()],
+%%   <<"namespaceName">> := [string()],
+%%   <<"newTableName">> := [string()],
+%%   <<"snapshotName">> := [string()],
+%%   <<"sourceDatabaseName">> := [string()],
+%%   <<"sourceSchemaName">> => [string()],
+%%   <<"sourceTableName">> := [string()],
+%%   <<"targetDatabaseName">> => [string()],
+%%   <<"targetSchemaName">> => [string()],
+%%   <<"workgroupName">> := [string()]
+%% }
+-type restore_table_from_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_table_from_snapshot_response() :: #{
+%%   <<"tableRestoreStatus">> => table_restore_status()
+%% }
+-type restore_table_from_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_action_association() :: #{
+%%   <<"namespaceName">> => string(),
+%%   <<"scheduledActionName">> => string()
+%% }
+-type scheduled_action_association() :: #{binary() => any()}.
+
+%% Example:
+%% scheduled_action_response() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"namespaceName">> => string(),
+%%   <<"nextInvocations">> => list([non_neg_integer()]()),
+%%   <<"roleArn">> => string(),
+%%   <<"schedule">> => list(),
+%%   <<"scheduledActionDescription">> => [string()],
+%%   <<"scheduledActionName">> => string(),
+%%   <<"scheduledActionUuid">> => [string()],
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"state">> => string(),
+%%   <<"targetAction">> => list()
+%% }
+-type scheduled_action_response() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_track() :: #{
+%%   <<"trackName">> => string(),
+%%   <<"updateTargets">> => list(update_target()),
+%%   <<"workgroupVersion">> => [string()]
+%% }
+-type serverless_track() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot() :: #{
+%%   <<"accountsWithProvisionedRestoreAccess">> => list([string()]()),
+%%   <<"accountsWithRestoreAccess">> => list([string()]()),
+%%   <<"actualIncrementalBackupSizeInMegaBytes">> => [float()],
+%%   <<"adminPasswordSecretArn">> => [string()],
+%%   <<"adminPasswordSecretKmsKeyId">> => string(),
+%%   <<"adminUsername">> => [string()],
+%%   <<"backupProgressInMegaBytes">> => [float()],
+%%   <<"currentBackupRateInMegaBytesPerSecond">> => [float()],
+%%   <<"elapsedTimeInSeconds">> => [float()],
+%%   <<"estimatedSecondsToCompletion">> => [float()],
+%%   <<"kmsKeyId">> => string(),
+%%   <<"namespaceArn">> => [string()],
+%%   <<"namespaceName">> => [string()],
+%%   <<"ownerAccount">> => [string()],
+%%   <<"snapshotArn">> => [string()],
+%%   <<"snapshotCreateTime">> => [non_neg_integer()],
+%%   <<"snapshotName">> => [string()],
+%%   <<"snapshotRemainingDays">> => [integer()],
+%%   <<"snapshotRetentionPeriod">> => [integer()],
+%%   <<"snapshotRetentionStartTime">> => [non_neg_integer()],
+%%   <<"status">> => string(),
+%%   <<"totalBackupSizeInMegaBytes">> => [float()]
+%% }
+-type snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_copy_configuration() :: #{
+%%   <<"destinationKmsKeyId">> => string(),
+%%   <<"destinationRegion">> => [string()],
+%%   <<"namespaceName">> => string(),
+%%   <<"snapshotCopyConfigurationArn">> => [string()],
+%%   <<"snapshotCopyConfigurationId">> => [string()],
+%%   <<"snapshotRetentionPeriod">> => [integer()]
+%% }
+-type snapshot_copy_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% table_restore_status() :: #{
@@ -181,35 +1239,11 @@
 -type table_restore_status() :: #{binary() => any()}.
 
 %% Example:
-%% get_track_response() :: #{
-%%   <<"track">> => serverless_track()
+%% tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
 %% }
--type get_track_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_reservation_offering_request() :: #{
-%%   <<"offeringId">> := string()
-%% }
--type get_reservation_offering_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_endpoint_access_request() :: #{
-%%   <<"endpointName">> := [string()],
-%%   <<"vpcSecurityGroupIds">> => list(string())
-%% }
--type update_endpoint_access_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_center_auth_token_request() :: #{
-%%   <<"workgroupNames">> := list(string())
-%% }
--type get_identity_center_auth_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_snapshot_request() :: #{
-%%   <<"snapshotName">> := [string()]
-%% }
--type delete_snapshot_request() :: #{binary() => any()}.
+-type tag() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -219,261 +1253,24 @@
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% delete_resource_policy_response() :: #{
+%% tag_resource_response() :: #{
 
 %% }
--type delete_resource_policy_response() :: #{binary() => any()}.
+-type tag_resource_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_snapshot_copy_configuration_request() :: #{
-%%   <<"snapshotCopyConfigurationId">> := [string()]
-%% }
--type delete_snapshot_copy_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_reservation_response() :: #{
-%%   <<"reservation">> => reservation()
-%% }
--type get_reservation_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_usage_limit_response() :: #{
-%%   <<"usageLimit">> => usage_limit()
-%% }
--type get_usage_limit_response() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_action_association() :: #{
-%%   <<"namespaceName">> => string(),
-%%   <<"scheduledActionName">> => string()
-%% }
--type scheduled_action_association() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_restore_status_request() :: #{
-%%   <<"tableRestoreRequestId">> := [string()]
-%% }
--type get_table_restore_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_reservation_request() :: #{
-%%   <<"reservationId">> := string()
-%% }
--type get_reservation_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_usage_limit_request() :: #{
-%%   <<"amount">> => [float()],
-%%   <<"breachAction">> => string(),
-%%   <<"usageLimitId">> := [string()]
-%% }
--type update_usage_limit_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_action_response() :: #{
-%%   <<"scheduledAction">> => scheduled_action_response()
-%% }
--type delete_scheduled_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{
-
-%% }
--type untag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_custom_domain_association_request() :: #{
-%%   <<"customDomainName">> := string(),
-%%   <<"workgroupName">> := string()
-%% }
--type get_custom_domain_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_snapshot_request() :: #{
-%%   <<"retentionPeriod">> => [integer()],
-%%   <<"snapshotName">> := [string()]
-%% }
--type update_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_namespaces_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
-%% }
--type list_namespaces_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_usage_limit_request() :: #{
-%%   <<"usageLimitId">> := [string()]
-%% }
--type delete_usage_limit_request() :: #{binary() => any()}.
-
-%% Example:
-%% ipv6_cidr_block_not_found_exception() :: #{
+%% throttling_exception() :: #{
+%%   <<"code">> => [string()],
 %%   <<"message">> => [string()]
 %% }
--type ipv6_cidr_block_not_found_exception() :: #{binary() => any()}.
+-type throttling_exception() :: #{binary() => any()}.
 
 %% Example:
-%% list_managed_workgroups_response() :: #{
-%%   <<"managedWorkgroups">> => list(managed_workgroup_list_item()),
-%%   <<"nextToken">> => string()
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceName">> => string()
 %% }
--type list_managed_workgroups_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_request() :: #{
-%%   <<"namespaceName">> := [string()],
-%%   <<"retentionPeriod">> => [integer()],
-%%   <<"snapshotName">> := [string()],
-%%   <<"tags">> => list(tag())
-%% }
--type create_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_reservations_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_reservations_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_snapshot_copy_configuration_response() :: #{
-%%   <<"snapshotCopyConfiguration">> => snapshot_copy_configuration()
-%% }
--type delete_snapshot_copy_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% config_parameter() :: #{
-%%   <<"parameterKey">> => string(),
-%%   <<"parameterValue">> => string()
-%% }
--type config_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% restore_table_from_recovery_point_response() :: #{
-%%   <<"tableRestoreStatus">> => table_restore_status()
-%% }
--type restore_table_from_recovery_point_response() :: #{binary() => any()}.
-
-%% Example:
-%% restore_from_snapshot_request() :: #{
-%%   <<"adminPasswordSecretKmsKeyId">> => string(),
-%%   <<"manageAdminPassword">> => [boolean()],
-%%   <<"namespaceName">> := string(),
-%%   <<"ownerAccount">> => [string()],
-%%   <<"snapshotArn">> => [string()],
-%%   <<"snapshotName">> => [string()],
-%%   <<"workgroupName">> := string()
-%% }
--type restore_from_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_response() :: #{
-%%   <<"snapshot">> => snapshot()
-%% }
--type create_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% network_interface() :: #{
-%%   <<"availabilityZone">> => [string()],
-%%   <<"ipv6Address">> => [string()],
-%%   <<"networkInterfaceId">> => [string()],
-%%   <<"privateIpAddress">> => [string()],
-%%   <<"subnetId">> => [string()]
-%% }
--type network_interface() :: #{binary() => any()}.
-
-%% Example:
-%% get_snapshot_response() :: #{
-%%   <<"snapshot">> => snapshot()
-%% }
--type get_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_domain_association_request() :: #{
-%%   <<"customDomainName">> := string(),
-%%   <<"workgroupName">> := string()
-%% }
--type delete_custom_domain_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workgroup_response() :: #{
-%%   <<"workgroup">> => workgroup()
-%% }
--type delete_workgroup_response() :: #{binary() => any()}.
-
-%% Example:
-%% restore_table_from_snapshot_response() :: #{
-%%   <<"tableRestoreStatus">> => table_restore_status()
-%% }
--type restore_table_from_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% restore_from_snapshot_response() :: #{
-%%   <<"namespace">> => namespace(),
-%%   <<"ownerAccount">> => [string()],
-%%   <<"snapshotName">> => [string()]
-%% }
--type restore_from_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"resourcePolicy">> => resource_policy()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_workgroup_request() :: #{
-%%   <<"workgroupName">> := string()
-%% }
--type delete_workgroup_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_usage_limit_request() :: #{
-%%   <<"amount">> := [float()],
-%%   <<"breachAction">> => string(),
-%%   <<"period">> => string(),
-%%   <<"resourceArn">> := [string()],
-%%   <<"usageType">> := string()
-%% }
--type create_usage_limit_request() :: #{binary() => any()}.
-
-%% Example:
-%% restore_from_recovery_point_response() :: #{
-%%   <<"namespace">> => namespace(),
-%%   <<"recoveryPointId">> => [string()]
-%% }
--type restore_from_recovery_point_response() :: #{binary() => any()}.
-
-%% Example:
-%% scheduled_action_response() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"namespaceName">> => string(),
-%%   <<"nextInvocations">> => list([non_neg_integer()]()),
-%%   <<"roleArn">> => string(),
-%%   <<"schedule">> => list(),
-%%   <<"scheduledActionDescription">> => [string()],
-%%   <<"scheduledActionName">> => string(),
-%%   <<"scheduledActionUuid">> => [string()],
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"state">> => string(),
-%%   <<"targetAction">> => list()
-%% }
--type scheduled_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_reservation_response() :: #{
-%%   <<"reservation">> => reservation()
-%% }
--type create_reservation_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_table_restore_status_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tableRestoreStatuses">> => list(table_restore_status())
-%% }
--type list_table_restore_status_response() :: #{binary() => any()}.
+-type too_many_tags_exception() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -483,29 +1280,10 @@
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
-%% update_lakehouse_configuration_response() :: #{
-%%   <<"catalogArn">> => [string()],
-%%   <<"lakehouseIdcApplicationArn">> => [string()],
-%%   <<"lakehouseRegistrationStatus">> => [string()],
-%%   <<"namespaceName">> => string()
-%% }
--type update_lakehouse_configuration_response() :: #{binary() => any()}.
+%% untag_resource_response() :: #{
 
-%% Example:
-%% update_usage_limit_response() :: #{
-%%   <<"usageLimit">> => usage_limit()
 %% }
--type update_usage_limit_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_access_request() :: #{
-%%   <<"endpointName">> := [string()],
-%%   <<"ownerAccount">> => string(),
-%%   <<"subnetIds">> := list(string()),
-%%   <<"vpcSecurityGroupIds">> => list(string()),
-%%   <<"workgroupName">> := [string()]
-%% }
--type create_endpoint_access_request() :: #{binary() => any()}.
+-type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_custom_domain_association_request() :: #{
@@ -516,61 +1294,26 @@
 -type update_custom_domain_association_request() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_pagination_exception() :: #{
-%%   <<"message">> => [string()]
+%% update_custom_domain_association_response() :: #{
+%%   <<"customDomainCertificateArn">> => string(),
+%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
+%%   <<"customDomainName">> => string(),
+%%   <<"workgroupName">> => string()
 %% }
--type invalid_pagination_exception() :: #{binary() => any()}.
+-type update_custom_domain_association_response() :: #{binary() => any()}.
 
 %% Example:
-%% update_scheduled_action_response() :: #{
-%%   <<"scheduledAction">> => scheduled_action_response()
+%% update_endpoint_access_request() :: #{
+%%   <<"endpointName">> := [string()],
+%%   <<"vpcSecurityGroupIds">> => list(string())
 %% }
--type update_scheduled_action_response() :: #{binary() => any()}.
+-type update_endpoint_access_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_track_request() :: #{
-%%   <<"trackName">> := string()
+%% update_endpoint_access_response() :: #{
+%%   <<"endpoint">> => endpoint_access()
 %% }
--type get_track_request() :: #{binary() => any()}.
-
-%% Example:
-%% restore_table_from_recovery_point_request() :: #{
-%%   <<"activateCaseSensitiveIdentifier">> => [boolean()],
-%%   <<"namespaceName">> := [string()],
-%%   <<"newTableName">> := [string()],
-%%   <<"recoveryPointId">> := [string()],
-%%   <<"sourceDatabaseName">> := [string()],
-%%   <<"sourceSchemaName">> => [string()],
-%%   <<"sourceTableName">> := [string()],
-%%   <<"targetDatabaseName">> => [string()],
-%%   <<"targetSchemaName">> => [string()],
-%%   <<"workgroupName">> := [string()]
-%% }
--type restore_table_from_recovery_point_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_recovery_point_response() :: #{
-%%   <<"recoveryPoint">> => recovery_point()
-%% }
--type get_recovery_point_response() :: #{binary() => any()}.
-
-%% Example:
-%% insufficient_capacity_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type insufficient_capacity_exception() :: #{binary() => any()}.
-
-%% Example:
-%% create_scheduled_action_response() :: #{
-%%   <<"scheduledAction">> => scheduled_action_response()
-%% }
--type create_scheduled_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_namespace_response() :: #{
-%%   <<"namespace">> => namespace()
-%% }
--type get_namespace_response() :: #{binary() => any()}.
+-type update_endpoint_access_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_lakehouse_configuration_request() :: #{
@@ -584,74 +1327,33 @@
 -type update_lakehouse_configuration_request() :: #{binary() => any()}.
 
 %% Example:
-%% get_recovery_point_request() :: #{
-%%   <<"recoveryPointId">> := [string()]
+%% update_lakehouse_configuration_response() :: #{
+%%   <<"catalogArn">> => [string()],
+%%   <<"lakehouseIdcApplicationArn">> => [string()],
+%%   <<"lakehouseRegistrationStatus">> => [string()],
+%%   <<"namespaceName">> => string()
 %% }
--type get_recovery_point_request() :: #{binary() => any()}.
+-type update_lakehouse_configuration_response() :: #{binary() => any()}.
 
 %% Example:
-%% serverless_track() :: #{
-%%   <<"trackName">> => string(),
-%%   <<"updateTargets">> => list(update_target()),
-%%   <<"workgroupVersion">> => [string()]
-%% }
--type serverless_track() :: #{binary() => any()}.
-
-%% Example:
-%% list_scheduled_actions_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"namespaceName">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_scheduled_actions_request() :: #{binary() => any()}.
-
-%% Example:
-%% dry_run_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type dry_run_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_workgroup_request() :: #{
-%%   <<"workgroupName">> := string()
-%% }
--type get_workgroup_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_usage_limit_request() :: #{
-%%   <<"usageLimitId">> := [string()]
-%% }
--type get_usage_limit_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_endpoint_access_request() :: #{
-%%   <<"endpointName">> := [string()]
-%% }
--type get_endpoint_access_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_namespace_request() :: #{
+%% update_namespace_request() :: #{
 %%   <<"adminPasswordSecretKmsKeyId">> => string(),
 %%   <<"adminUserPassword">> => string(),
 %%   <<"adminUsername">> => string(),
-%%   <<"dbName">> => [string()],
 %%   <<"defaultIamRoleArn">> => [string()],
 %%   <<"iamRoles">> => list(string()),
 %%   <<"kmsKeyId">> => [string()],
 %%   <<"logExports">> => list(string()),
 %%   <<"manageAdminPassword">> => [boolean()],
-%%   <<"namespaceName">> := string(),
-%%   <<"redshiftIdcApplicationArn">> => string(),
-%%   <<"tags">> => list(tag())
+%%   <<"namespaceName">> := string()
 %% }
--type create_namespace_request() :: #{binary() => any()}.
+-type update_namespace_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_tracks_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%% update_namespace_response() :: #{
+%%   <<"namespace">> => namespace()
 %% }
--type list_tracks_request() :: #{binary() => any()}.
+-type update_namespace_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_scheduled_action_request() :: #{
@@ -667,24 +1369,114 @@
 -type update_scheduled_action_request() :: #{binary() => any()}.
 
 %% Example:
-%% list_endpoint_access_response() :: #{
-%%   <<"endpoints">> => list(endpoint_access()),
-%%   <<"nextToken">> => [string()]
+%% update_scheduled_action_response() :: #{
+%%   <<"scheduledAction">> => scheduled_action_response()
 %% }
--type list_endpoint_access_response() :: #{binary() => any()}.
+-type update_scheduled_action_response() :: #{binary() => any()}.
 
 %% Example:
-%% conflict_exception() :: #{
+%% update_snapshot_copy_configuration_request() :: #{
+%%   <<"snapshotCopyConfigurationId">> := [string()],
+%%   <<"snapshotRetentionPeriod">> => [integer()]
+%% }
+-type update_snapshot_copy_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_copy_configuration_response() :: #{
+%%   <<"snapshotCopyConfiguration">> => snapshot_copy_configuration()
+%% }
+-type update_snapshot_copy_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_request() :: #{
+%%   <<"retentionPeriod">> => [integer()],
+%%   <<"snapshotName">> := [string()]
+%% }
+-type update_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_response() :: #{
+%%   <<"snapshot">> => snapshot()
+%% }
+-type update_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_target() :: #{
+%%   <<"trackName">> => string(),
+%%   <<"workgroupVersion">> => [string()]
+%% }
+-type update_target() :: #{binary() => any()}.
+
+%% Example:
+%% update_usage_limit_request() :: #{
+%%   <<"amount">> => [float()],
+%%   <<"breachAction">> => string(),
+%%   <<"usageLimitId">> := [string()]
+%% }
+-type update_usage_limit_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_usage_limit_response() :: #{
+%%   <<"usageLimit">> => usage_limit()
+%% }
+-type update_usage_limit_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_workgroup_request() :: #{
+%%   <<"baseCapacity">> => [integer()],
+%%   <<"configParameters">> => list(config_parameter()),
+%%   <<"enhancedVpcRouting">> => [boolean()],
+%%   <<"extraComputeForAutomaticOptimization">> => [boolean()],
+%%   <<"ipAddressType">> => string(),
+%%   <<"maxCapacity">> => [integer()],
+%%   <<"port">> => [integer()],
+%%   <<"pricePerformanceTarget">> => performance_target(),
+%%   <<"publiclyAccessible">> => [boolean()],
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"trackName">> => string(),
+%%   <<"workgroupName">> := string()
+%% }
+-type update_workgroup_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_workgroup_response() :: #{
+%%   <<"workgroup">> => workgroup()
+%% }
+-type update_workgroup_response() :: #{binary() => any()}.
+
+%% Example:
+%% usage_limit() :: #{
+%%   <<"amount">> => [float()],
+%%   <<"breachAction">> => string(),
+%%   <<"period">> => string(),
+%%   <<"resourceArn">> => [string()],
+%%   <<"usageLimitArn">> => [string()],
+%%   <<"usageLimitId">> => [string()],
+%%   <<"usageType">> => string()
+%% }
+-type usage_limit() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
--type conflict_exception() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceName">> => string()
+%% vpc_endpoint() :: #{
+%%   <<"networkInterfaces">> => list(network_interface()),
+%%   <<"vpcEndpointId">> => [string()],
+%%   <<"vpcId">> => [string()]
 %% }
--type resource_not_found_exception() :: #{binary() => any()}.
+-type vpc_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% vpc_security_group_membership() :: #{
+%%   <<"status">> => [string()],
+%%   <<"vpcSecurityGroupId">> => string()
+%% }
+-type vpc_security_group_membership() :: #{binary() => any()}.
 
 %% Example:
 %% workgroup() :: #{
@@ -717,1034 +1509,244 @@
 %% }
 -type workgroup() :: #{binary() => any()}.
 
-%% Example:
-%% tag() :: #{
-%%   <<"key">> => string(),
-%%   <<"value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
-
-%% Example:
-%% list_usage_limits_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"usageLimits">> => list(usage_limit())
-%% }
--type list_usage_limits_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_identity_center_auth_token_response() :: #{
-%%   <<"expirationTime">> => [non_neg_integer()],
-%%   <<"token">> => [string()]
-%% }
--type get_identity_center_auth_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_snapshots_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"snapshots">> => list(snapshot())
-%% }
--type list_snapshots_response() :: #{binary() => any()}.
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% convert_recovery_point_to_snapshot_request() :: #{
-%%   <<"recoveryPointId">> := [string()],
-%%   <<"retentionPeriod">> => [integer()],
-%%   <<"snapshotName">> := [string()],
-%%   <<"tags">> => list(tag())
-%% }
--type convert_recovery_point_to_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_managed_workgroups_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"sourceArn">> => string()
-%% }
--type list_managed_workgroups_request() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot_copy_configuration() :: #{
-%%   <<"destinationKmsKeyId">> => string(),
-%%   <<"destinationRegion">> => [string()],
-%%   <<"namespaceName">> => string(),
-%%   <<"snapshotCopyConfigurationArn">> => [string()],
-%%   <<"snapshotCopyConfigurationId">> => [string()],
-%%   <<"snapshotRetentionPeriod">> => [integer()]
-%% }
--type snapshot_copy_configuration() :: #{binary() => any()}.
-
-%% Example:
-%% list_recovery_points_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"recoveryPoints">> => list(recovery_point())
-%% }
--type list_recovery_points_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_scheduled_actions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"scheduledActions">> => list(scheduled_action_association())
-%% }
--type list_scheduled_actions_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_table_restore_status_response() :: #{
-%%   <<"tableRestoreStatus">> => table_restore_status()
-%% }
--type get_table_restore_status_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_endpoint_access_response() :: #{
-%%   <<"endpoint">> => endpoint_access()
-%% }
--type delete_endpoint_access_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_reservation_offerings_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_reservation_offerings_request() :: #{binary() => any()}.
-
-%% Example:
-%% restore_table_from_snapshot_request() :: #{
-%%   <<"activateCaseSensitiveIdentifier">> => [boolean()],
-%%   <<"namespaceName">> := [string()],
-%%   <<"newTableName">> := [string()],
-%%   <<"snapshotName">> := [string()],
-%%   <<"sourceDatabaseName">> := [string()],
-%%   <<"sourceSchemaName">> => [string()],
-%%   <<"sourceTableName">> := [string()],
-%%   <<"targetDatabaseName">> => [string()],
-%%   <<"targetSchemaName">> => [string()],
-%%   <<"workgroupName">> := [string()]
-%% }
--type restore_table_from_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% association() :: #{
-%%   <<"customDomainCertificateArn">> => string(),
-%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
-%%   <<"customDomainName">> => string(),
-%%   <<"workgroupName">> => string()
-%% }
--type association() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_schedule_action_parameters() :: #{
-%%   <<"namespaceName">> => string(),
-%%   <<"retentionPeriod">> => [integer()],
-%%   <<"snapshotNamePrefix">> => string(),
-%%   <<"tags">> => list(tag())
-%% }
--type create_snapshot_schedule_action_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% list_table_restore_status_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"namespaceName">> => [string()],
-%%   <<"nextToken">> => string(),
-%%   <<"workgroupName">> => [string()]
-%% }
--type list_table_restore_status_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag())
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_endpoint_access_request() :: #{
-%%   <<"endpointName">> := [string()]
-%% }
--type delete_endpoint_access_request() :: #{binary() => any()}.
-
-%% Example:
-%% reservation() :: #{
-%%   <<"capacity">> => integer(),
-%%   <<"endDate">> => [non_neg_integer()],
-%%   <<"offering">> => reservation_offering(),
-%%   <<"reservationArn">> => string(),
-%%   <<"reservationId">> => string(),
-%%   <<"startDate">> => [non_neg_integer()],
-%%   <<"status">> => string()
-%% }
--type reservation() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_endpoint() :: #{
-%%   <<"networkInterfaces">> => list(network_interface()),
-%%   <<"vpcEndpointId">> => [string()],
-%%   <<"vpcId">> => [string()]
-%% }
--type vpc_endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_copy_configuration_request() :: #{
-%%   <<"destinationKmsKeyId">> => string(),
-%%   <<"destinationRegion">> := [string()],
-%%   <<"namespaceName">> := string(),
-%%   <<"snapshotRetentionPeriod">> => [integer()]
-%% }
--type create_snapshot_copy_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_snapshots_request() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"maxResults">> => [integer()],
-%%   <<"namespaceArn">> => [string()],
-%%   <<"namespaceName">> => [string()],
-%%   <<"nextToken">> => [string()],
-%%   <<"ownerAccount">> => [string()],
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type list_snapshots_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_resource_policy_request() :: #{
-%%   <<"resourceArn">> := [string()]
-%% }
--type get_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_workgroup_response() :: #{
-%%   <<"workgroup">> => workgroup()
-%% }
--type create_workgroup_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_scheduled_action_request() :: #{
-%%   <<"enabled">> => [boolean()],
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"namespaceName">> := string(),
-%%   <<"roleArn">> := string(),
-%%   <<"schedule">> := list(),
-%%   <<"scheduledActionDescription">> => [string()],
-%%   <<"scheduledActionName">> := string(),
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"targetAction">> := list()
-%% }
--type create_scheduled_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_workgroup_request() :: #{
-%%   <<"baseCapacity">> => [integer()],
-%%   <<"configParameters">> => list(config_parameter()),
-%%   <<"enhancedVpcRouting">> => [boolean()],
-%%   <<"extraComputeForAutomaticOptimization">> => [boolean()],
-%%   <<"ipAddressType">> => string(),
-%%   <<"maxCapacity">> => [integer()],
-%%   <<"namespaceName">> := string(),
-%%   <<"port">> => [integer()],
-%%   <<"pricePerformanceTarget">> => performance_target(),
-%%   <<"publiclyAccessible">> => [boolean()],
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"tags">> => list(tag()),
-%%   <<"trackName">> => string(),
-%%   <<"workgroupName">> := string()
-%% }
--type create_workgroup_request() :: #{binary() => any()}.
-
-%% Example:
-%% convert_recovery_point_to_snapshot_response() :: #{
-%%   <<"snapshot">> => snapshot()
-%% }
--type convert_recovery_point_to_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_reservation_offering_response() :: #{
-%%   <<"reservationOffering">> => reservation_offering()
-%% }
--type get_reservation_offering_response() :: #{binary() => any()}.
-
-%% Example:
-%% restore_from_recovery_point_request() :: #{
-%%   <<"namespaceName">> := string(),
-%%   <<"recoveryPointId">> := [string()],
-%%   <<"workgroupName">> := string()
-%% }
--type restore_from_recovery_point_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_endpoint_access_response() :: #{
-%%   <<"endpoint">> => endpoint_access()
-%% }
--type update_endpoint_access_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_usage_limits_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string(),
-%%   <<"resourceArn">> => [string()],
-%%   <<"usageType">> => string()
-%% }
--type list_usage_limits_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_domain_association_response() :: #{
-%%   <<"customDomainCertificateArn">> => string(),
-%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
-%%   <<"customDomainName">> => string(),
-%%   <<"workgroupName">> => string()
-%% }
--type create_custom_domain_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint() :: #{
-%%   <<"address">> => [string()],
-%%   <<"port">> => [integer()],
-%%   <<"vpcEndpoints">> => list(vpc_endpoint())
-%% }
--type endpoint() :: #{binary() => any()}.
-
-%% Example:
-%% update_custom_domain_association_response() :: #{
-%%   <<"customDomainCertificateArn">> => string(),
-%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
-%%   <<"customDomainName">> => string(),
-%%   <<"workgroupName">> => string()
-%% }
--type update_custom_domain_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-%% Example:
-%% resource_policy() :: #{
-%%   <<"policy">> => [string()],
-%%   <<"resourceArn">> => [string()]
-%% }
--type resource_policy() :: #{binary() => any()}.
-
-%% Example:
-%% list_reservation_offerings_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reservationOfferingsList">> => list(reservation_offering())
-%% }
--type list_reservation_offerings_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_scheduled_action_response() :: #{
-%%   <<"scheduledAction">> => scheduled_action_response()
-%% }
--type get_scheduled_action_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_custom_domain_association_response() :: #{
-
-%% }
--type delete_custom_domain_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_credentials_request() :: #{
-%%   <<"customDomainName">> => string(),
-%%   <<"dbName">> => string(),
-%%   <<"durationSeconds">> => [integer()],
-%%   <<"workgroupName">> => string()
-%% }
--type get_credentials_request() :: #{binary() => any()}.
-
-%% Example:
-%% snapshot() :: #{
-%%   <<"accountsWithProvisionedRestoreAccess">> => list([string()]()),
-%%   <<"accountsWithRestoreAccess">> => list([string()]()),
-%%   <<"actualIncrementalBackupSizeInMegaBytes">> => [float()],
-%%   <<"adminPasswordSecretArn">> => [string()],
-%%   <<"adminPasswordSecretKmsKeyId">> => string(),
-%%   <<"adminUsername">> => [string()],
-%%   <<"backupProgressInMegaBytes">> => [float()],
-%%   <<"currentBackupRateInMegaBytesPerSecond">> => [float()],
-%%   <<"elapsedTimeInSeconds">> => [float()],
-%%   <<"estimatedSecondsToCompletion">> => [float()],
-%%   <<"kmsKeyId">> => string(),
-%%   <<"namespaceArn">> => [string()],
-%%   <<"namespaceName">> => [string()],
-%%   <<"ownerAccount">> => [string()],
-%%   <<"snapshotArn">> => [string()],
-%%   <<"snapshotCreateTime">> => [non_neg_integer()],
-%%   <<"snapshotName">> => [string()],
-%%   <<"snapshotRemainingDays">> => [integer()],
-%%   <<"snapshotRetentionPeriod">> => [integer()],
-%%   <<"snapshotRetentionStartTime">> => [non_neg_integer()],
-%%   <<"status">> => string(),
-%%   <<"totalBackupSizeInMegaBytes">> => [float()]
-%% }
--type snapshot() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_domain_associations_response() :: #{
-%%   <<"associations">> => list(association()),
-%%   <<"nextToken">> => string()
-%% }
--type list_custom_domain_associations_response() :: #{binary() => any()}.
-
-%% Example:
-%% managed_workgroup_list_item() :: #{
-%%   <<"creationDate">> => [non_neg_integer()],
-%%   <<"managedWorkgroupId">> => [string()],
-%%   <<"managedWorkgroupName">> => string(),
-%%   <<"sourceArn">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type managed_workgroup_list_item() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"policy">> := [string()],
-%%   <<"resourceArn">> := [string()]
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_snapshot_copy_configuration_response() :: #{
-%%   <<"snapshotCopyConfiguration">> => snapshot_copy_configuration()
-%% }
--type create_snapshot_copy_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"code">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_reservations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"reservationsList">> => list(reservation())
-%% }
--type list_reservations_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_custom_domain_association_response() :: #{
-%%   <<"customDomainCertificateArn">> => string(),
-%%   <<"customDomainCertificateExpiryTime">> => [non_neg_integer()],
-%%   <<"customDomainName">> => string(),
-%%   <<"workgroupName">> => string()
-%% }
--type get_custom_domain_association_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_recovery_points_request() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"maxResults">> => [integer()],
-%%   <<"namespaceArn">> => [string()],
-%%   <<"namespaceName">> => string(),
-%%   <<"nextToken">> => [string()],
-%%   <<"startTime">> => [non_neg_integer()]
-%% }
--type list_recovery_points_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_custom_domain_associations_request() :: #{
-%%   <<"customDomainCertificateArn">> => string(),
-%%   <<"customDomainName">> => string(),
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
-%% }
--type list_custom_domain_associations_request() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{
-
-%% }
--type tag_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_workgroup_response() :: #{
-%%   <<"workgroup">> => workgroup()
-%% }
--type update_workgroup_response() :: #{binary() => any()}.
-
-%% Example:
-%% create_namespace_response() :: #{
-%%   <<"namespace">> => namespace()
-%% }
--type create_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% usage_limit() :: #{
-%%   <<"amount">> => [float()],
-%%   <<"breachAction">> => string(),
-%%   <<"period">> => string(),
-%%   <<"resourceArn">> => [string()],
-%%   <<"usageLimitArn">> => [string()],
-%%   <<"usageLimitId">> => [string()],
-%%   <<"usageType">> => string()
-%% }
--type usage_limit() :: #{binary() => any()}.
-
-%% Example:
-%% get_snapshot_request() :: #{
-%%   <<"ownerAccount">> => [string()],
-%%   <<"snapshotArn">> => [string()],
-%%   <<"snapshotName">> => [string()]
-%% }
--type get_snapshot_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_reservation_request() :: #{
-%%   <<"capacity">> := integer(),
-%%   <<"clientToken">> => [string()],
-%%   <<"offeringId">> := string()
-%% }
--type create_reservation_request() :: #{binary() => any()}.
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"message">> => [string()]
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
-%%   <<"resourceArn">> := string()
-%% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_credentials_response() :: #{
-%%   <<"dbPassword">> => string(),
-%%   <<"dbUser">> => string(),
-%%   <<"expiration">> => [non_neg_integer()],
-%%   <<"nextRefreshTime">> => [non_neg_integer()]
-%% }
--type get_credentials_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_scheduled_action_request() :: #{
-%%   <<"scheduledActionName">> := string()
-%% }
--type get_scheduled_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_target() :: #{
-%%   <<"trackName">> => string(),
-%%   <<"workgroupVersion">> => [string()]
-%% }
--type update_target() :: #{binary() => any()}.
-
-%% Example:
-%% create_custom_domain_association_request() :: #{
-%%   <<"customDomainCertificateArn">> := string(),
-%%   <<"customDomainName">> := string(),
-%%   <<"workgroupName">> := string()
-%% }
--type create_custom_domain_association_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_namespaces_response() :: #{
-%%   <<"namespaces">> => list(namespace()),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_namespaces_response() :: #{binary() => any()}.
-
-%% Example:
-%% throttling_exception() :: #{
-%%   <<"code">> => [string()],
-%%   <<"message">> => [string()]
-%% }
--type throttling_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_endpoint_access_response() :: #{
-%%   <<"endpoint">> => endpoint_access()
-%% }
--type get_endpoint_access_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_namespace_request() :: #{
-%%   <<"finalSnapshotName">> => [string()],
-%%   <<"finalSnapshotRetentionPeriod">> => [integer()],
-%%   <<"namespaceName">> := string()
-%% }
--type delete_namespace_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_namespace_request() :: #{
-%%   <<"adminPasswordSecretKmsKeyId">> => string(),
-%%   <<"adminUserPassword">> => string(),
-%%   <<"adminUsername">> => string(),
-%%   <<"defaultIamRoleArn">> => [string()],
-%%   <<"iamRoles">> => list(string()),
-%%   <<"kmsKeyId">> => [string()],
-%%   <<"logExports">> => list(string()),
-%%   <<"manageAdminPassword">> => [boolean()],
-%%   <<"namespaceName">> := string()
-%% }
--type update_namespace_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_snapshot_copy_configuration_response() :: #{
-%%   <<"snapshotCopyConfiguration">> => snapshot_copy_configuration()
-%% }
--type update_snapshot_copy_configuration_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_snapshot_copy_configurations_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"namespaceName">> => string(),
-%%   <<"nextToken">> => string()
-%% }
--type list_snapshot_copy_configurations_request() :: #{binary() => any()}.
-
-%% Example:
-%% create_endpoint_access_response() :: #{
-%%   <<"endpoint">> => endpoint_access()
-%% }
--type create_endpoint_access_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_snapshot_copy_configurations_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"snapshotCopyConfigurations">> => list(snapshot_copy_configuration())
-%% }
--type list_snapshot_copy_configurations_response() :: #{binary() => any()}.
-
-%% Example:
-%% update_snapshot_response() :: #{
-%%   <<"snapshot">> => snapshot()
-%% }
--type update_snapshot_response() :: #{binary() => any()}.
-
-%% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"resourcePolicy">> => resource_policy()
-%% }
--type put_resource_policy_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_usage_limit_response() :: #{
-%%   <<"usageLimit">> => usage_limit()
-%% }
--type delete_usage_limit_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_scheduled_action_request() :: #{
-%%   <<"scheduledActionName">> := string()
-%% }
--type delete_scheduled_action_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_workgroup_request() :: #{
-%%   <<"baseCapacity">> => [integer()],
-%%   <<"configParameters">> => list(config_parameter()),
-%%   <<"enhancedVpcRouting">> => [boolean()],
-%%   <<"extraComputeForAutomaticOptimization">> => [boolean()],
-%%   <<"ipAddressType">> => string(),
-%%   <<"maxCapacity">> => [integer()],
-%%   <<"port">> => [integer()],
-%%   <<"pricePerformanceTarget">> => performance_target(),
-%%   <<"publiclyAccessible">> => [boolean()],
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string()),
-%%   <<"trackName">> => string(),
-%%   <<"workgroupName">> := string()
-%% }
--type update_workgroup_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_resource_policy_request() :: #{
-%%   <<"resourceArn">> := [string()]
-%% }
--type delete_resource_policy_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_namespace_response() :: #{
-%%   <<"namespace">> => namespace()
-%% }
--type update_namespace_response() :: #{binary() => any()}.
-
-%% Example:
-%% endpoint_access() :: #{
-%%   <<"address">> => [string()],
-%%   <<"endpointArn">> => [string()],
-%%   <<"endpointCreateTime">> => [non_neg_integer()],
-%%   <<"endpointName">> => [string()],
-%%   <<"endpointStatus">> => [string()],
-%%   <<"port">> => [integer()],
-%%   <<"subnetIds">> => list(string()),
-%%   <<"vpcEndpoint">> => vpc_endpoint(),
-%%   <<"vpcSecurityGroups">> => list(vpc_security_group_membership()),
-%%   <<"workgroupName">> => [string()]
-%% }
--type endpoint_access() :: #{binary() => any()}.
-
-%% Example:
-%% create_usage_limit_response() :: #{
-%%   <<"usageLimit">> => usage_limit()
-%% }
--type create_usage_limit_response() :: #{binary() => any()}.
-
-%% Example:
-%% performance_target() :: #{
-%%   <<"level">> => [integer()],
-%%   <<"status">> => string()
-%% }
--type performance_target() :: #{binary() => any()}.
-
-%% Example:
-%% list_tracks_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"tracks">> => list(serverless_track())
-%% }
--type list_tracks_response() :: #{binary() => any()}.
-
-%% Example:
-%% namespace() :: #{
-%%   <<"adminPasswordSecretArn">> => [string()],
-%%   <<"adminPasswordSecretKmsKeyId">> => string(),
-%%   <<"adminUsername">> => string(),
-%%   <<"catalogArn">> => [string()],
-%%   <<"creationDate">> => [non_neg_integer()],
-%%   <<"dbName">> => [string()],
-%%   <<"defaultIamRoleArn">> => [string()],
-%%   <<"iamRoles">> => list(string()),
-%%   <<"kmsKeyId">> => [string()],
-%%   <<"lakehouseRegistrationStatus">> => [string()],
-%%   <<"logExports">> => list(string()),
-%%   <<"namespaceArn">> => [string()],
-%%   <<"namespaceId">> => [string()],
-%%   <<"namespaceName">> => string(),
-%%   <<"status">> => string()
-%% }
--type namespace() :: #{binary() => any()}.
-
-%% Example:
-%% vpc_security_group_membership() :: #{
-%%   <<"status">> => [string()],
-%%   <<"vpcSecurityGroupId">> => string()
-%% }
--type vpc_security_group_membership() :: #{binary() => any()}.
-
-%% Example:
-%% list_endpoint_access_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"ownerAccount">> => string(),
-%%   <<"vpcId">> => [string()],
-%%   <<"workgroupName">> => [string()]
-%% }
--type list_endpoint_access_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_snapshot_copy_configuration_request() :: #{
-%%   <<"snapshotCopyConfigurationId">> := [string()],
-%%   <<"snapshotRetentionPeriod">> => [integer()]
-%% }
--type update_snapshot_copy_configuration_request() :: #{binary() => any()}.
-
-%% Example:
-%% list_workgroups_response() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"workgroups">> => list(workgroup())
-%% }
--type list_workgroups_response() :: #{binary() => any()}.
-
-%% Example:
-%% reservation_offering() :: #{
-%%   <<"currencyCode">> => string(),
-%%   <<"duration">> => integer(),
-%%   <<"hourlyCharge">> => float(),
-%%   <<"offeringId">> => string(),
-%%   <<"offeringType">> => string(),
-%%   <<"upfrontCharge">> => float()
-%% }
--type reservation_offering() :: #{binary() => any()}.
-
-%% Example:
-%% get_workgroup_response() :: #{
-%%   <<"workgroup">> => workgroup()
-%% }
--type get_workgroup_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_workgroups_request() :: #{
-%%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()],
-%%   <<"ownerAccount">> => string()
-%% }
--type list_workgroups_request() :: #{binary() => any()}.
-
-%% Example:
-%% too_many_tags_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceName">> => string()
-%% }
--type too_many_tags_exception() :: #{binary() => any()}.
-
-%% Example:
-%% get_namespace_request() :: #{
-%%   <<"namespaceName">> := string()
-%% }
--type get_namespace_request() :: #{binary() => any()}.
-
-%% Example:
-%% recovery_point() :: #{
-%%   <<"namespaceArn">> => [string()],
-%%   <<"namespaceName">> => string(),
-%%   <<"recoveryPointCreateTime">> => [non_neg_integer()],
-%%   <<"recoveryPointId">> => [string()],
-%%   <<"totalSizeInMegaBytes">> => [float()],
-%%   <<"workgroupName">> => string()
-%% }
--type recovery_point() :: #{binary() => any()}.
-
-%% Example:
-%% delete_snapshot_response() :: #{
-%%   <<"snapshot">> => snapshot()
-%% }
--type delete_snapshot_response() :: #{binary() => any()}.
-
 -type convert_recovery_point_to_snapshot_errors() ::
-    too_many_tags_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    too_many_tags_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_custom_domain_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_endpoint_access_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_namespace_errors() ::
-    too_many_tags_exception() | 
     validation_exception() | 
+    too_many_tags_exception() | 
     internal_server_exception() | 
     conflict_exception().
 
 -type create_reservation_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_scheduled_action_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_snapshot_errors() ::
-    too_many_tags_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    too_many_tags_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_snapshot_copy_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_usage_limit_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type create_workgroup_errors() ::
-    too_many_tags_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
+    too_many_tags_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    ipv6_cidr_block_not_found_exception() | 
+    internal_server_exception() | 
     insufficient_capacity_exception() | 
-    ipv6_cidr_block_not_found_exception().
+    conflict_exception().
 
 -type delete_custom_domain_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_endpoint_access_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_namespace_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_resource_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type delete_scheduled_action_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type delete_snapshot_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_snapshot_copy_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type delete_usage_limit_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type delete_workgroup_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_credentials_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_custom_domain_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type get_endpoint_access_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_identity_center_auth_token_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    dry_run_exception() | 
     conflict_exception() | 
-    dry_run_exception().
+    access_denied_exception().
 
 -type get_namespace_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_recovery_point_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_reservation_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_reservation_offering_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_resource_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_scheduled_action_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_snapshot_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type get_table_restore_status_errors() ::
     validation_exception() | 
     resource_not_found_exception().
 
 -type get_track_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    dry_run_exception() | 
     conflict_exception() | 
-    dry_run_exception().
+    access_denied_exception().
 
 -type get_usage_limit_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type get_workgroup_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_custom_domain_associations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    invalid_pagination_exception() | 
     internal_server_exception() | 
-    invalid_pagination_exception().
+    access_denied_exception().
 
 -type list_endpoint_access_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type list_managed_workgroups_errors() ::
-    access_denied_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_namespaces_errors() ::
     validation_exception() | 
@@ -1755,32 +1757,32 @@
     internal_server_exception().
 
 -type list_reservation_offerings_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_reservations_errors() ::
-    throttling_exception() | 
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception().
 
 -type list_scheduled_actions_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    invalid_pagination_exception().
+    invalid_pagination_exception() | 
+    internal_server_exception().
 
 -type list_snapshot_copy_configurations_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    invalid_pagination_exception().
+    invalid_pagination_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
 
 -type list_snapshots_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_table_restore_status_errors() ::
     validation_exception() | 
@@ -1788,24 +1790,24 @@
     invalid_pagination_exception().
 
 -type list_tags_for_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type list_tracks_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
+    throttling_exception() | 
+    invalid_pagination_exception() | 
     internal_server_exception() | 
-    invalid_pagination_exception().
+    access_denied_exception().
 
 -type list_usage_limits_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    invalid_pagination_exception().
+    invalid_pagination_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
 
 -type list_workgroups_errors() ::
     validation_exception() | 
@@ -1813,109 +1815,109 @@
 
 -type put_resource_policy_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type restore_from_recovery_point_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type restore_from_snapshot_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type restore_table_from_recovery_point_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type restore_table_from_snapshot_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type tag_resource_errors() ::
+    validation_exception() | 
     too_many_tags_exception() | 
     throttling_exception() | 
-    validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type untag_resource_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    internal_server_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
 
 -type update_custom_domain_association_errors() ::
-    throttling_exception() | 
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_endpoint_access_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_lakehouse_configuration_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
-    dry_run_exception().
+    internal_server_exception() | 
+    dry_run_exception() | 
+    conflict_exception().
 
 -type update_namespace_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_scheduled_action_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_snapshot_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_snapshot_copy_configuration_errors() ::
     validation_exception() | 
-    access_denied_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_usage_limit_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception().
 
 -type update_workgroup_errors() ::
     validation_exception() | 
-    internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception() | 
+    ipv6_cidr_block_not_found_exception() | 
+    internal_server_exception() | 
     insufficient_capacity_exception() | 
-    ipv6_cidr_block_not_found_exception().
+    conflict_exception().
 
 %%====================================================================
 %% API

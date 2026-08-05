@@ -186,507 +186,26 @@
 
 
 %% Example:
-%% list_workflow_executions_response() :: #{
-%%   <<"imageBuildVersionArn">> => string(),
-%%   <<"message">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"requestId">> => string(),
-%%   <<"workflowExecutions">> => list(workflow_execution_metadata())
-%% }
--type list_workflow_executions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_lifecycle_execution_response() :: #{
-%%   <<"lifecycleExecutionId">> => string()
-%% }
--type cancel_lifecycle_execution_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflow_build_versions_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workflowSummaryList">> => list(workflow_summary())
-%% }
--type list_workflow_build_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distribution_configurations_request() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_distribution_configurations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_workflow_request() :: #{
-%%   <<"changeDescription">> => string(),
-%%   <<"clientToken">> := string(),
-%%   <<"data">> => string(),
-%%   <<"description">> => string(),
-%%   <<"dryRun">> => boolean(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"semanticVersion">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := list(any()),
-%%   <<"uri">> => string()
-%% }
--type create_workflow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_image_policy_request() :: #{
-%%   <<"imageArn">> := string()
-%% }
--type get_image_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_resource_state_update_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"exclusionRules">> => resource_state_update_exclusion_rules(),
-%%   <<"executionRole">> => string(),
-%%   <<"includeResources">> => resource_state_update_include_resources(),
-%%   <<"resourceArn">> := string(),
-%%   <<"state">> := resource_state(),
-%%   <<"updateAt">> => non_neg_integer()
-%% }
--type start_resource_state_update_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_image_pipeline_images_request() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"imagePipelineArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_image_pipeline_images_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_container_recipe_policy_response() :: #{
-%%   <<"containerRecipeArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type put_container_recipe_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_policy_detail_exclusion_rules() :: #{
-%%   <<"amis">> => lifecycle_policy_detail_exclusion_rules_amis(),
-%%   <<"tagMap">> => map()
-%% }
--type lifecycle_policy_detail_exclusion_rules() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_vm_image_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"description">> => string(),
-%%   <<"loggingConfiguration">> => image_logging_configuration(),
-%%   <<"name">> := string(),
-%%   <<"osVersion">> => string(),
-%%   <<"platform">> := list(any()),
-%%   <<"semanticVersion">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"vmImportTaskId">> := string()
-%% }
--type import_vm_image_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_parameter_detail() :: #{
-%%   <<"defaultValue">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type component_parameter_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_scan_state() :: #{
-%%   <<"reason">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type image_scan_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_policy_detail_action_include_resources() :: #{
-%%   <<"amis">> => boolean(),
-%%   <<"containers">> => boolean(),
-%%   <<"snapshots">> => boolean()
-%% }
--type lifecycle_policy_detail_action_include_resources() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflow_step_executions_response() :: #{
-%%   <<"imageBuildVersionArn">> => string(),
-%%   <<"message">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"requestId">> => string(),
-%%   <<"steps">> => list(workflow_step_metadata()),
-%%   <<"workflowBuildVersionArn">> => string(),
-%%   <<"workflowExecutionId">> => string()
-%% }
--type list_workflow_step_executions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_image_packages_request() :: #{
-%%   <<"imageBuildVersionArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_image_packages_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% container() :: #{
-%%   <<"imageUris">> => list(string()),
-%%   <<"region">> => string()
-%% }
--type container() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_image_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"imageBuildVersionArn">> => string()
-%% }
--type retry_image_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_distribution_configuration_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"distributionConfigurationArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type update_distribution_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% infrastructure_configuration_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"dateCreated">> => string(),
-%%   <<"dateUpdated">> => string(),
-%%   <<"description">> => string(),
-%%   <<"instanceProfileName">> => string(),
-%%   <<"instanceTypes">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"placement">> => placement(),
-%%   <<"resourceTags">> => map(),
-%%   <<"tags">> => map()
-%% }
--type infrastructure_configuration_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_image_recipes_request() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owner">> => list(any())
-%% }
--type list_image_recipes_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_version() :: #{
-%%   <<"arn">> => string(),
-%%   <<"dateCreated">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owner">> => string(),
-%%   <<"type">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type workflow_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% dry_run_operation_exception() :: #{
+%% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type dry_run_operation_exception() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_image_pipelines_response() :: #{
-%%   <<"imagePipelineList">> => list(image_pipeline()),
-%%   <<"nextToken">> => string(),
-%%   <<"requestId">> => string()
+%% account_aggregation() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"severityCounts">> => severity_counts()
 %% }
--type list_image_pipelines_response() :: #{binary() => any()}.
+-type account_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_image_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"imageBuildVersionArn">> => string(),
-%%   <<"latestVersionReferences">> => latest_version_references(),
-%%   <<"requestId">> => string()
+%% additional_instance_configuration() :: #{
+%%   <<"systemsManagerAgent">> => systems_manager_agent(),
+%%   <<"userDataOverride">> => string()
 %% }
--type create_image_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_container_recipe_policy_request() :: #{
-%%   <<"containerRecipeArn">> := string(),
-%%   <<"policy">> := string()
-%% }
--type put_container_recipe_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_waiting_workflow_steps_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"steps">> => list(workflow_step_execution())
-%% }
--type list_waiting_workflow_steps_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_lifecycle_policy_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"description">> => string(),
-%%   <<"executionRole">> := string(),
-%%   <<"lifecyclePolicyArn">> := string(),
-%%   <<"policyDetails">> := list(lifecycle_policy_detail()),
-%%   <<"resourceSelection">> := lifecycle_policy_resource_selection(),
-%%   <<"resourceType">> := list(any()),
-%%   <<"status">> => list(any())
-%% }
--type update_lifecycle_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% remediation() :: #{
-%%   <<"recommendation">> => remediation_recommendation()
-%% }
--type remediation() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_scanning_configuration() :: #{
-%%   <<"ecrConfiguration">> => ecr_configuration(),
-%%   <<"imageScanningEnabled">> => boolean()
-%% }
--type image_scanning_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_image_pipeline_execution_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"imageBuildVersionArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type start_image_pipeline_execution_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_image_recipe_policy_response() :: #{
-%%   <<"imageRecipeArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type put_image_recipe_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_step_execution_response() :: #{
-%%   <<"action">> => string(),
-%%   <<"description">> => string(),
-%%   <<"endTime">> => string(),
-%%   <<"imageBuildVersionArn">> => string(),
-%%   <<"inputs">> => string(),
-%%   <<"message">> => string(),
-%%   <<"name">> => string(),
-%%   <<"onFailure">> => string(),
-%%   <<"outputs">> => string(),
-%%   <<"requestId">> => string(),
-%%   <<"rollbackStatus">> => list(any()),
-%%   <<"startTime">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"stepExecutionId">> => string(),
-%%   <<"timeoutSeconds">> => integer(),
-%%   <<"workflowBuildVersionArn">> => string(),
-%%   <<"workflowExecutionId">> => string()
-%% }
--type get_workflow_step_execution_response() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
-
-
-%% Example:
-%% invalid_version_number_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_version_number_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lifecycle_execution_resources_response() :: #{
-%%   <<"lifecycleExecutionId">> => string(),
-%%   <<"lifecycleExecutionState">> => lifecycle_execution_state(),
-%%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(lifecycle_execution_resource())
-%% }
--type list_lifecycle_execution_resources_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_workflow_request() :: #{
-%%   <<"workflowBuildVersionArn">> := string()
-%% }
--type delete_workflow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_image_scan_finding_aggregations_request() :: #{
-%%   <<"filter">> => filter(),
-%%   <<"nextToken">> => string()
-%% }
--type list_image_scan_finding_aggregations_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_pipeline() :: #{
-%%   <<"arn">> => string(),
-%%   <<"consecutiveFailures">> => integer(),
-%%   <<"containerRecipeArn">> => string(),
-%%   <<"dateCreated">> => string(),
-%%   <<"dateLastRun">> => string(),
-%%   <<"dateNextRun">> => string(),
-%%   <<"dateUpdated">> => string(),
-%%   <<"description">> => string(),
-%%   <<"distributionConfigurationArn">> => string(),
-%%   <<"enhancedImageMetadataEnabled">> => boolean(),
-%%   <<"executionRole">> => string(),
-%%   <<"imageRecipeArn">> => string(),
-%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
-%%   <<"imageTags">> => map(),
-%%   <<"imageTestsConfiguration">> => image_tests_configuration(),
-%%   <<"infrastructureConfigurationArn">> => string(),
-%%   <<"lastRunStatus">> => list(any()),
-%%   <<"loggingConfiguration">> => pipeline_logging_configuration(),
-%%   <<"name">> => string(),
-%%   <<"platform">> => list(any()),
-%%   <<"schedule">> => schedule(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"workflows">> => list(workflow_configuration())
-%% }
--type image_pipeline() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_parameter_detail() :: #{
-%%   <<"defaultValue">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"type">> => string()
-%% }
--type workflow_parameter_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_block_device_mapping() :: #{
-%%   <<"deviceName">> => string(),
-%%   <<"ebs">> => ebs_instance_block_device_specification(),
-%%   <<"noDevice">> => string(),
-%%   <<"virtualName">> => string()
-%% }
--type instance_block_device_mapping() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_lifecycle_policy_response() :: #{
-%%   <<"lifecyclePolicyArn">> => string()
-%% }
--type update_lifecycle_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% auto_disable_policy() :: #{
-%%   <<"failureCount">> => integer()
-%% }
--type auto_disable_policy() :: #{binary() => any()}.
-
-
-%% Example:
-%% ebs_instance_block_device_specification() :: #{
-%%   <<"deleteOnTermination">> => boolean(),
-%%   <<"encrypted">> => boolean(),
-%%   <<"iops">> => integer(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"snapshotId">> => string(),
-%%   <<"throughput">> => integer(),
-%%   <<"volumeSize">> => integer(),
-%%   <<"volumeType">> => list(any())
-%% }
--type ebs_instance_block_device_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_container_recipe_response() :: #{
-%%   <<"containerRecipe">> => container_recipe(),
-%%   <<"latestVersionReferences">> => latest_version_references(),
-%%   <<"requestId">> => string()
-%% }
--type get_container_recipe_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% distribute_image_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"imageBuildVersionArn">> => string()
-%% }
--type distribute_image_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lifecycle_execution_request() :: #{
-%%   <<"lifecycleExecutionId">> := string()
-%% }
--type get_lifecycle_execution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% vulnerability_id_aggregation() :: #{
-%%   <<"severityCounts">> => severity_counts(),
-%%   <<"vulnerabilityId">> => string()
-%% }
--type vulnerability_id_aggregation() :: #{binary() => any()}.
+-type additional_instance_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -702,174 +221,29 @@
 
 
 %% Example:
-%% resource_state() :: #{
-%%   <<"status">> => list(any())
-%% }
--type resource_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_image_response() :: #{
-%%   <<"image">> => image(),
-%%   <<"latestVersionReferences">> => latest_version_references(),
-%%   <<"requestId">> => string()
-%% }
--type get_image_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_image_recipe_policy_response() :: #{
-%%   <<"policy">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type get_image_recipe_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% pipeline_logging_configuration() :: #{
-%%   <<"imageLogGroupName">> => string(),
-%%   <<"pipelineLogGroupName">> => string()
-%% }
--type pipeline_logging_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lifecycle_policies_request() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_lifecycle_policies_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_execution_resource_action() :: #{
-%%   <<"name">> => list(any()),
-%%   <<"reason">> => string()
-%% }
--type lifecycle_execution_resource_action() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_image_pipeline_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"imagePipelineArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type create_image_pipeline_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_infrastructure_configuration_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"description">> => string(),
-%%   <<"instanceMetadataOptions">> => instance_metadata_options(),
-%%   <<"instanceProfileName">> := string(),
-%%   <<"instanceTypes">> => list(string()),
-%%   <<"keyPair">> => string(),
-%%   <<"logging">> => logging(),
-%%   <<"name">> := string(),
-%%   <<"placement">> => placement(),
-%%   <<"resourceTags">> => map(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"snsTopicArn">> => string(),
-%%   <<"subnetId">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"terminateInstanceOnFailure">> => boolean()
-%% }
--type create_infrastructure_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_component_request() :: #{
-%%   <<"componentBuildVersionArn">> := string()
-%% }
--type delete_component_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% send_workflow_step_action_request() :: #{
-%%   <<"action">> := list(any()),
-%%   <<"clientToken">> := string(),
-%%   <<"imageBuildVersionArn">> := string(),
-%%   <<"reason">> => string(),
-%%   <<"stepExecutionId">> := string()
-%% }
--type send_workflow_step_action_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ecr_configuration() :: #{
-%%   <<"containerTags">> => list(string()),
-%%   <<"repositoryName">> => string()
-%% }
--type ecr_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lifecycle_execution_response() :: #{
-%%   <<"lifecycleExecution">> => lifecycle_execution()
-%% }
--type get_lifecycle_execution_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_component_response() :: #{
-%%   <<"component">> => component(),
-%%   <<"latestVersionReferences">> => latest_version_references(),
-%%   <<"requestId">> => string()
-%% }
--type get_component_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_scan_findings_filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type image_scan_findings_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_image_recipe_request() :: #{
-%%   <<"additionalInstanceConfiguration">> => additional_instance_configuration(),
+%% ami_distribution_configuration() :: #{
 %%   <<"amiTags">> => map(),
-%%   <<"amiWatermarks">> => list(string()),
-%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
-%%   <<"clientToken">> := string(),
-%%   <<"components">> => list(component_configuration()),
 %%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"parentImage">> := string(),
-%%   <<"semanticVersion">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"workingDirectory">> => string()
+%%   <<"kmsKeyId">> => string(),
+%%   <<"launchPermission">> => launch_permission_configuration(),
+%%   <<"name">> => string(),
+%%   <<"targetAccountIds">> => list(string())
 %% }
--type create_image_recipe_request() :: #{binary() => any()}.
+-type ami_distribution_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_container_recipe_policy_request() :: #{
-%%   <<"containerRecipeArn">> := string()
+%% auto_disable_policy() :: #{
+%%   <<"failureCount">> => integer()
 %% }
--type get_container_recipe_policy_request() :: #{binary() => any()}.
+-type auto_disable_policy() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_container_recipes_response() :: #{
-%%   <<"containerRecipeSummaryList">> => list(container_recipe_summary()),
-%%   <<"nextToken">> => string(),
-%%   <<"requestId">> => string()
+%% call_rate_limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type list_container_recipes_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_infrastructure_configuration_response() :: #{
-%%   <<"infrastructureConfiguration">> => infrastructure_configuration(),
-%%   <<"requestId">> => string()
-%% }
--type get_infrastructure_configuration_response() :: #{binary() => any()}.
+-type call_rate_limit_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -881,345 +255,27 @@
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_component_build_versions_request() :: #{
-%%   <<"componentVersionArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_component_build_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_component_request() :: #{
-%%   <<"changeDescription">> => string(),
-%%   <<"clientToken">> := string(),
-%%   <<"data">> => string(),
-%%   <<"description">> => string(),
-%%   <<"format">> := list(any()),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"platform">> := list(any()),
-%%   <<"semanticVersion">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"type">> := list(any()),
-%%   <<"uri">> => string()
-%% }
--type import_component_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% call_rate_limit_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type call_rate_limit_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"changeDescription">> => string(),
-%%   <<"dateCreated">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"obfuscate">> => boolean(),
-%%   <<"owner">> => string(),
-%%   <<"platform">> => list(any()),
-%%   <<"publisher">> => string(),
-%%   <<"state">> => component_state(),
-%%   <<"supportedOsVersions">> => list(string()),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type component_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_container_repository() :: #{
-%%   <<"repositoryName">> => string(),
-%%   <<"service">> => list(any())
-%% }
--type target_container_repository() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_distribution_configuration_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"description">> => string(),
-%%   <<"distributions">> := list(distribution()),
-%%   <<"name">> := string(),
-%%   <<"tags">> => map()
-%% }
--type create_distribution_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_container_recipe_response() :: #{
-%%   <<"containerRecipeArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type delete_container_recipe_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_execution_metadata() :: #{
-%%   <<"endTime">> => string(),
-%%   <<"message">> => string(),
-%%   <<"parallelGroup">> => string(),
-%%   <<"retried">> => boolean(),
-%%   <<"startTime">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"totalStepCount">> => integer(),
-%%   <<"totalStepsFailed">> => integer(),
-%%   <<"totalStepsSkipped">> => integer(),
-%%   <<"totalStepsSucceeded">> => integer(),
-%%   <<"type">> => list(any()),
-%%   <<"workflowBuildVersionArn">> => string(),
-%%   <<"workflowExecutionId">> => string()
-%% }
--type workflow_execution_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_state() :: #{
-%%   <<"reason">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type component_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_request() :: #{
-%%   <<"workflowBuildVersionArn">> := string()
-%% }
--type get_workflow_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% severity_counts() :: #{
-%%   <<"all">> => float(),
-%%   <<"critical">> => float(),
-%%   <<"high">> => float(),
-%%   <<"medium">> => float()
-%% }
--type severity_counts() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_combination_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_combination_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_container_recipe_request() :: #{
-%%   <<"containerRecipeArn">> := string()
-%% }
--type delete_container_recipe_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_scan_finding_aggregation() :: #{
-%%   <<"accountAggregation">> => account_aggregation(),
-%%   <<"imageAggregation">> => image_aggregation(),
-%%   <<"imagePipelineAggregation">> => image_pipeline_aggregation(),
-%%   <<"vulnerabilityIdAggregation">> => vulnerability_id_aggregation()
-%% }
--type image_scan_finding_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_version() :: #{
-%%   <<"arn">> => string(),
-%%   <<"buildType">> => list(any()),
-%%   <<"dateCreated">> => string(),
-%%   <<"imageSource">> => list(any()),
-%%   <<"name">> => string(),
-%%   <<"osVersion">> => string(),
-%%   <<"owner">> => string(),
-%%   <<"platform">> => list(any()),
-%%   <<"type">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type image_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_step_execution_request() :: #{
-%%   <<"stepExecutionId">> := string()
-%% }
--type get_workflow_step_execution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_resource_state_update_response() :: #{
-%%   <<"lifecycleExecutionId">> => string(),
-%%   <<"resourceArn">> => string()
-%% }
--type start_resource_state_update_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_image_pipeline_request() :: #{
-%%   <<"imagePipelineArn">> := string()
-%% }
--type delete_image_pipeline_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_parameter() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => list(string())
-%% }
--type workflow_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_image_request() :: #{
-%%   <<"imageBuildVersionArn">> := string()
-%% }
--type get_image_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_step_execution() :: #{
-%%   <<"action">> => string(),
+%% cancel_image_creation_response() :: #{
+%%   <<"clientToken">> => string(),
 %%   <<"imageBuildVersionArn">> => string(),
-%%   <<"name">> => string(),
-%%   <<"startTime">> => string(),
-%%   <<"stepExecutionId">> => string(),
-%%   <<"workflowBuildVersionArn">> => string(),
-%%   <<"workflowExecutionId">> => string()
-%% }
--type workflow_step_execution() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_distribution_configurations_response() :: #{
-%%   <<"distributionConfigurationSummaryList">> => list(distribution_configuration_summary()),
-%%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
--type list_distribution_configurations_response() :: #{binary() => any()}.
+-type cancel_image_creation_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_image_policy_response() :: #{
-%%   <<"policy">> => string(),
-%%   <<"requestId">> => string()
+%% cancel_lifecycle_execution_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"lifecycleExecutionId">> := string()
 %% }
--type get_image_policy_response() :: #{binary() => any()}.
+-type cancel_lifecycle_execution_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_component_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"componentBuildVersionArn">> => string(),
-%%   <<"latestVersionReferences">> => latest_version_references(),
-%%   <<"requestId">> => string()
+%% cancel_lifecycle_execution_response() :: #{
+%%   <<"lifecycleExecutionId">> => string()
 %% }
--type create_component_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_workflow_response() :: #{
-%%   <<"workflowBuildVersionArn">> => string()
-%% }
--type delete_workflow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_lifecycle_policy_response() :: #{
-%%   <<"lifecyclePolicyArn">> => string()
-%% }
--type delete_lifecycle_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_execution_resource() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"action">> => lifecycle_execution_resource_action(),
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"imageUris">> => list(string()),
-%%   <<"region">> => string(),
-%%   <<"resourceId">> => string(),
-%%   <<"snapshots">> => list(lifecycle_execution_snapshot_resource()),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"state">> => lifecycle_execution_resource_state()
-%% }
--type lifecycle_execution_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_distribution_configuration_request() :: #{
-%%   <<"distributionConfigurationArn">> := string()
-%% }
--type delete_distribution_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_image_recipe_request() :: #{
-%%   <<"imageRecipeArn">> := string()
-%% }
--type get_image_recipe_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% systems_manager_agent() :: #{
-%%   <<"uninstallAfterBuild">> => boolean()
-%% }
--type systems_manager_agent() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_image_recipe_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"imageRecipeArn">> => string(),
-%%   <<"latestVersionReferences">> => latest_version_references(),
-%%   <<"requestId">> => string()
-%% }
--type create_image_recipe_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_policy_detail() :: #{
-%%   <<"action">> => lifecycle_policy_detail_action(),
-%%   <<"exclusionRules">> => lifecycle_policy_detail_exclusion_rules(),
-%%   <<"filter">> => lifecycle_policy_detail_filter()
-%% }
--type lifecycle_policy_detail() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_image_recipe_request() :: #{
-%%   <<"imageRecipeArn">> := string()
-%% }
--type delete_image_recipe_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_export_configuration() :: #{
-%%   <<"diskImageFormat">> => list(any()),
-%%   <<"roleName">> => string(),
-%%   <<"s3Bucket">> => string(),
-%%   <<"s3Prefix">> => string()
-%% }
--type s3_export_configuration() :: #{binary() => any()}.
+-type cancel_lifecycle_execution_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1227,182 +283,6 @@
 %%   <<"message">> => string()
 %% }
 -type client_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_infrastructure_configuration_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"description">> => string(),
-%%   <<"infrastructureConfigurationArn">> := string(),
-%%   <<"instanceMetadataOptions">> => instance_metadata_options(),
-%%   <<"instanceProfileName">> := string(),
-%%   <<"instanceTypes">> => list(string()),
-%%   <<"keyPair">> => string(),
-%%   <<"logging">> => logging(),
-%%   <<"placement">> => placement(),
-%%   <<"resourceTags">> => map(),
-%%   <<"securityGroupIds">> => list(string()),
-%%   <<"snsTopicArn">> => string(),
-%%   <<"subnetId">> => string(),
-%%   <<"terminateInstanceOnFailure">> => boolean()
-%% }
--type update_infrastructure_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_components_request() :: #{
-%%   <<"byName">> => boolean(),
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owner">> => list(any())
-%% }
--type list_components_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflow_executions_request() :: #{
-%%   <<"imageBuildVersionArn">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_workflow_executions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_policy_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"dateCreated">> => non_neg_integer(),
-%%   <<"dateLastRun">> => non_neg_integer(),
-%%   <<"dateUpdated">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"executionRole">> => string(),
-%%   <<"name">> => string(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type lifecycle_policy_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% s3_logs() :: #{
-%%   <<"s3BucketName">> => string(),
-%%   <<"s3KeyPrefix">> => string()
-%% }
--type s3_logs() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_logging_configuration() :: #{
-%%   <<"logGroupName">> => string()
-%% }
--type image_logging_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_container_recipe_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"components">> => list(component_configuration()),
-%%   <<"containerType">> := list(any()),
-%%   <<"description">> => string(),
-%%   <<"dockerfileTemplateData">> => string(),
-%%   <<"dockerfileTemplateUri">> => string(),
-%%   <<"imageOsVersionOverride">> => string(),
-%%   <<"instanceConfiguration">> => instance_configuration(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"name">> := string(),
-%%   <<"parentImage">> := string(),
-%%   <<"platformOverride">> => list(any()),
-%%   <<"semanticVersion">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"targetRepository">> := target_container_repository(),
-%%   <<"workingDirectory">> => string()
-%% }
--type create_container_recipe_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_component_policy_request() :: #{
-%%   <<"componentArn">> := string(),
-%%   <<"policy">> := string()
-%% }
--type put_component_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_request_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_request_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_disk_image_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"imageBuildVersionArn">> => string()
-%% }
--type import_disk_image_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_image_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"containerRecipeArn">> => string(),
-%%   <<"distributionConfigurationArn">> => string(),
-%%   <<"enhancedImageMetadataEnabled">> => boolean(),
-%%   <<"executionRole">> => string(),
-%%   <<"imageRecipeArn">> => string(),
-%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
-%%   <<"imageTestsConfiguration">> => image_tests_configuration(),
-%%   <<"infrastructureConfigurationArn">> := string(),
-%%   <<"loggingConfiguration">> => image_logging_configuration(),
-%%   <<"tags">> => map(),
-%%   <<"workflows">> => list(workflow_configuration())
-%% }
--type create_image_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_image_pipeline_response() :: #{
-%%   <<"imagePipeline">> => image_pipeline(),
-%%   <<"requestId">> => string()
-%% }
--type get_image_pipeline_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lifecycle_policies_response() :: #{
-%%   <<"lifecyclePolicySummaryList">> => list(lifecycle_policy_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_lifecycle_policies_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_images_request() :: #{
-%%   <<"byName">> => boolean(),
-%%   <<"filters">> => list(filter()),
-%%   <<"includeDeprecated">> => boolean(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owner">> => list(any())
-%% }
--type list_images_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1431,193 +311,129 @@
 
 
 %% Example:
-%% resource_state_update_include_resources() :: #{
-%%   <<"amis">> => boolean(),
-%%   <<"containers">> => boolean(),
-%%   <<"snapshots">> => boolean()
+%% component_configuration() :: #{
+%%   <<"componentArn">> => string(),
+%%   <<"parameters">> => list(component_parameter())
 %% }
--type resource_state_update_include_resources() :: #{binary() => any()}.
+-type component_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% send_workflow_step_action_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"imageBuildVersionArn">> => string(),
-%%   <<"stepExecutionId">> => string()
-%% }
--type send_workflow_step_action_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% idempotent_parameter_mismatch_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_parameter_value_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type invalid_parameter_value_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_image_recipe_policy_request() :: #{
-%%   <<"imageRecipeArn">> := string(),
-%%   <<"policy">> := string()
-%% }
--type put_image_recipe_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_component_policy_response() :: #{
-%%   <<"policy">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type get_component_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflows_request() :: #{
-%%   <<"byName">> => boolean(),
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owner">> => list(any())
-%% }
--type list_workflows_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_container_recipe_request() :: #{
-%%   <<"containerRecipeArn">> := string()
-%% }
--type get_container_recipe_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% distribution_configuration() :: #{
-%%   <<"arn">> => string(),
-%%   <<"dateCreated">> => string(),
-%%   <<"dateUpdated">> => string(),
-%%   <<"description">> => string(),
-%%   <<"distributions">> => list(distribution()),
+%% component_parameter() :: #{
 %%   <<"name">> => string(),
-%%   <<"tags">> => map(),
-%%   <<"timeoutMinutes">> => integer()
+%%   <<"value">> => list(string())
 %% }
--type distribution_configuration() :: #{binary() => any()}.
+-type component_parameter() :: #{binary() => any()}.
 
 
 %% Example:
-%% lifecycle_execution_resource_state() :: #{
+%% component_parameter_detail() :: #{
+%%   <<"defaultValue">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type component_parameter_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% component_state() :: #{
 %%   <<"reason">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type lifecycle_execution_resource_state() :: #{binary() => any()}.
+-type component_state() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_marketplace_resource_response() :: #{
-%%   <<"data">> => string(),
-%%   <<"resourceArn">> => string(),
-%%   <<"url">> => string()
-%% }
--type get_marketplace_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow() :: #{
+%% component_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"changeDescription">> => string(),
-%%   <<"data">> => string(),
 %%   <<"dateCreated">> => string(),
 %%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
 %%   <<"name">> => string(),
+%%   <<"obfuscate">> => boolean(),
 %%   <<"owner">> => string(),
-%%   <<"parameters">> => list(workflow_parameter_detail()),
-%%   <<"state">> => workflow_state(),
+%%   <<"platform">> => list(any()),
+%%   <<"publisher">> => string(),
+%%   <<"state">> => component_state(),
+%%   <<"supportedOsVersions">> => list(string()),
 %%   <<"tags">> => map(),
 %%   <<"type">> => list(any()),
 %%   <<"version">> => string()
 %% }
--type workflow() :: #{binary() => any()}.
+-type component_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% cvss_score_details() :: #{
-%%   <<"adjustments">> => list(cvss_score_adjustment()),
-%%   <<"cvssSource">> => string(),
-%%   <<"score">> => float(),
-%%   <<"scoreSource">> => string(),
-%%   <<"scoringVector">> => string(),
+%% component_version() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dateCreated">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"platform">> => list(any()),
+%%   <<"productCodes">> => list(product_code_list_item()),
+%%   <<"status">> => list(any()),
+%%   <<"supportedOsVersions">> => list(string()),
+%%   <<"type">> => list(any()),
 %%   <<"version">> => string()
 %% }
--type cvss_score_details() :: #{binary() => any()}.
+-type component_version() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_image_pipelines_request() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% container() :: #{
+%%   <<"imageUris">> => list(string()),
+%%   <<"region">> => string()
 %% }
--type list_image_pipelines_request() :: #{binary() => any()}.
+-type container() :: #{binary() => any()}.
 
 
 %% Example:
-%% distribution() :: #{
-%%   <<"amiDistributionConfiguration">> => ami_distribution_configuration(),
-%%   <<"containerDistributionConfiguration">> => container_distribution_configuration(),
-%%   <<"fastLaunchConfigurations">> => list(fast_launch_configuration()),
-%%   <<"launchTemplateConfigurations">> => list(launch_template_configuration()),
-%%   <<"licenseConfigurationArns">> => list(string()),
-%%   <<"region">> => string(),
-%%   <<"s3ExportConfiguration">> => s3_export_configuration(),
-%%   <<"ssmParameterConfigurations">> => list(ssm_parameter_configuration())
+%% container_distribution_configuration() :: #{
+%%   <<"containerTags">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"targetRepository">> => target_container_repository()
 %% }
--type distribution() :: #{binary() => any()}.
+-type container_distribution_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_image_scan_findings_response() :: #{
-%%   <<"findings">> => list(image_scan_finding()),
-%%   <<"nextToken">> => string(),
-%%   <<"requestId">> => string()
+%% container_recipe() :: #{
+%%   <<"arn">> => string(),
+%%   <<"components">> => list(component_configuration()),
+%%   <<"containerType">> => list(any()),
+%%   <<"dateCreated">> => string(),
+%%   <<"description">> => string(),
+%%   <<"dockerfileTemplateData">> => string(),
+%%   <<"encrypted">> => boolean(),
+%%   <<"instanceConfiguration">> => instance_configuration(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"parentImage">> => string(),
+%%   <<"platform">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"targetRepository">> => target_container_repository(),
+%%   <<"version">> => string(),
+%%   <<"workingDirectory">> => string()
 %% }
--type list_image_scan_findings_response() :: #{binary() => any()}.
+-type container_recipe() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_image_recipe_response() :: #{
-%%   <<"imageRecipeArn">> => string(),
-%%   <<"requestId">> => string()
+%% container_recipe_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"containerType">> => list(any()),
+%%   <<"dateCreated">> => string(),
+%%   <<"instanceImage">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"parentImage">> => string(),
+%%   <<"platform">> => list(any()),
+%%   <<"tags">> => map()
 %% }
--type delete_image_recipe_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% remediation_recommendation() :: #{
-%%   <<"text">> => string(),
-%%   <<"url">> => string()
-%% }
--type remediation_recommendation() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% inspector_score_details() :: #{
-%%   <<"adjustedCvss">> => cvss_score_details()
-%% }
--type inspector_score_details() :: #{binary() => any()}.
+-type container_recipe_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1639,163 +455,65 @@
 
 
 %% Example:
-%% vulnerable_package() :: #{
-%%   <<"arch">> => string(),
-%%   <<"epoch">> => integer(),
-%%   <<"filePath">> => string(),
-%%   <<"fixedInVersion">> => string(),
-%%   <<"name">> => string(),
-%%   <<"packageManager">> => string(),
-%%   <<"release">> => string(),
-%%   <<"remediation">> => string(),
-%%   <<"sourceLayerHash">> => string(),
-%%   <<"version">> => string()
-%% }
--type vulnerable_package() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_distribution_configuration_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"description">> => string(),
-%%   <<"distributionConfigurationArn">> := string(),
-%%   <<"distributions">> := list(distribution())
-%% }
--type update_distribution_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_state_update_exclusion_rules() :: #{
-%%   <<"amis">> => lifecycle_policy_detail_exclusion_rules_amis()
-%% }
--type resource_state_update_exclusion_rules() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% cvss_score_adjustment() :: #{
-%%   <<"metric">> => string(),
-%%   <<"reason">> => string()
-%% }
--type cvss_score_adjustment() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_execution_snapshot_resource() :: #{
-%%   <<"snapshotId">> => string(),
-%%   <<"state">> => lifecycle_execution_resource_state()
-%% }
--type lifecycle_execution_snapshot_resource() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_infrastructure_configurations_response() :: #{
-%%   <<"infrastructureConfigurationSummaryList">> => list(infrastructure_configuration_summary()),
-%%   <<"nextToken">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type list_infrastructure_configurations_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_recipe_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"containerType">> => list(any()),
-%%   <<"dateCreated">> => string(),
-%%   <<"instanceImage">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owner">> => string(),
-%%   <<"parentImage">> => string(),
-%%   <<"platform">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type container_recipe_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_workflow_execution_request() :: #{
-%%   <<"workflowExecutionId">> := string()
-%% }
--type get_workflow_execution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lifecycle_executions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"resourceArn">> := string()
-%% }
--type list_lifecycle_executions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_version() :: #{
-%%   <<"arn">> => string(),
-%%   <<"dateCreated">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owner">> => string(),
-%%   <<"platform">> => list(any()),
-%%   <<"productCodes">> => list(product_code_list_item()),
-%%   <<"status">> => list(any()),
-%%   <<"supportedOsVersions">> => list(string()),
-%%   <<"type">> => list(any()),
-%%   <<"version">> => string()
-%% }
--type component_version() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_lifecycle_policy_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"lifecyclePolicyArn">> => string()
-%% }
--type create_lifecycle_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% register_image_options() :: #{
-%%   <<"secureBootEnabled">> => boolean(),
-%%   <<"uefiData">> => string()
-%% }
--type register_image_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_image_policy_request() :: #{
-%%   <<"imageArn">> := string(),
-%%   <<"policy">> := string()
-%% }
--type put_image_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_distribution_configuration_request() :: #{
-%%   <<"distributionConfigurationArn">> := string()
-%% }
--type get_distribution_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_component_response() :: #{
+%% create_component_response() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"componentBuildVersionArn">> => string(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
 %%   <<"requestId">> => string()
 %% }
--type import_component_response() :: #{binary() => any()}.
+-type create_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_container_recipe_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"components">> => list(component_configuration()),
+%%   <<"containerType">> := list(any()),
+%%   <<"description">> => string(),
+%%   <<"dockerfileTemplateData">> => string(),
+%%   <<"dockerfileTemplateUri">> => string(),
+%%   <<"imageOsVersionOverride">> => string(),
+%%   <<"instanceConfiguration">> => instance_configuration(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"parentImage">> := string(),
+%%   <<"platformOverride">> => list(any()),
+%%   <<"semanticVersion">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"targetRepository">> := target_container_repository(),
+%%   <<"workingDirectory">> => string()
+%% }
+-type create_container_recipe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_container_recipe_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"containerRecipeArn">> => string(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
+%%   <<"requestId">> => string()
+%% }
+-type create_container_recipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_distribution_configuration_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"description">> => string(),
+%%   <<"distributions">> := list(distribution()),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_distribution_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_distribution_configuration_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"distributionConfigurationArn">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type create_distribution_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1822,40 +540,214 @@
 
 
 %% Example:
-%% lifecycle_policy_detail_filter() :: #{
-%%   <<"retainAtLeast">> => integer(),
-%%   <<"type">> => list(any()),
-%%   <<"unit">> => list(any()),
-%%   <<"value">> => integer()
-%% }
--type lifecycle_policy_detail_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% filter() :: #{
-%%   <<"name">> => string(),
-%%   <<"values">> => list(string())
-%% }
--type filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% placement() :: #{
-%%   <<"availabilityZone">> => string(),
-%%   <<"hostId">> => string(),
-%%   <<"hostResourceGroupArn">> => string(),
-%%   <<"tenancy">> => list(any())
-%% }
--type placement() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_distribution_configuration_response() :: #{
+%% create_image_pipeline_response() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"distributionConfigurationArn">> => string(),
+%%   <<"imagePipelineArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
--type create_distribution_configuration_response() :: #{binary() => any()}.
+-type create_image_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_image_recipe_request() :: #{
+%%   <<"additionalInstanceConfiguration">> => additional_instance_configuration(),
+%%   <<"amiTags">> => map(),
+%%   <<"amiWatermarks">> => list(string()),
+%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
+%%   <<"clientToken">> := string(),
+%%   <<"components">> => list(component_configuration()),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"parentImage">> := string(),
+%%   <<"semanticVersion">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"workingDirectory">> => string()
+%% }
+-type create_image_recipe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_image_recipe_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"imageRecipeArn">> => string(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
+%%   <<"requestId">> => string()
+%% }
+-type create_image_recipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_image_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"containerRecipeArn">> => string(),
+%%   <<"distributionConfigurationArn">> => string(),
+%%   <<"enhancedImageMetadataEnabled">> => boolean(),
+%%   <<"executionRole">> => string(),
+%%   <<"imageRecipeArn">> => string(),
+%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
+%%   <<"imageTestsConfiguration">> => image_tests_configuration(),
+%%   <<"infrastructureConfigurationArn">> := string(),
+%%   <<"loggingConfiguration">> => image_logging_configuration(),
+%%   <<"tags">> => map(),
+%%   <<"workflows">> => list(workflow_configuration())
+%% }
+-type create_image_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_image_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"imageBuildVersionArn">> => string(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
+%%   <<"requestId">> => string()
+%% }
+-type create_image_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_infrastructure_configuration_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"description">> => string(),
+%%   <<"instanceMetadataOptions">> => instance_metadata_options(),
+%%   <<"instanceProfileName">> := string(),
+%%   <<"instanceTypes">> => list(string()),
+%%   <<"keyPair">> => string(),
+%%   <<"logging">> => logging(),
+%%   <<"name">> := string(),
+%%   <<"placement">> => placement(),
+%%   <<"resourceTags">> => map(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"snsTopicArn">> => string(),
+%%   <<"subnetId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"terminateInstanceOnFailure">> => boolean()
+%% }
+-type create_infrastructure_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_infrastructure_configuration_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"infrastructureConfigurationArn">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type create_infrastructure_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_lifecycle_policy_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"description">> => string(),
+%%   <<"executionRole">> := string(),
+%%   <<"name">> := string(),
+%%   <<"policyDetails">> := list(lifecycle_policy_detail()),
+%%   <<"resourceSelection">> := lifecycle_policy_resource_selection(),
+%%   <<"resourceType">> := list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_lifecycle_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_lifecycle_policy_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"lifecyclePolicyArn">> => string()
+%% }
+-type create_lifecycle_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workflow_request() :: #{
+%%   <<"changeDescription">> => string(),
+%%   <<"clientToken">> := string(),
+%%   <<"data">> => string(),
+%%   <<"description">> => string(),
+%%   <<"dryRun">> => boolean(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"semanticVersion">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any()),
+%%   <<"uri">> => string()
+%% }
+-type create_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_workflow_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
+%%   <<"workflowBuildVersionArn">> => string()
+%% }
+-type create_workflow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% cvss_score() :: #{
+%%   <<"baseScore">> => float(),
+%%   <<"scoringVector">> => string(),
+%%   <<"source">> => string(),
+%%   <<"version">> => string()
+%% }
+-type cvss_score() :: #{binary() => any()}.
+
+
+%% Example:
+%% cvss_score_adjustment() :: #{
+%%   <<"metric">> => string(),
+%%   <<"reason">> => string()
+%% }
+-type cvss_score_adjustment() :: #{binary() => any()}.
+
+
+%% Example:
+%% cvss_score_details() :: #{
+%%   <<"adjustments">> => list(cvss_score_adjustment()),
+%%   <<"cvssSource">> => string(),
+%%   <<"score">> => float(),
+%%   <<"scoreSource">> => string(),
+%%   <<"scoringVector">> => string(),
+%%   <<"version">> => string()
+%% }
+-type cvss_score_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_component_request() :: #{
+%%   <<"componentBuildVersionArn">> := string()
+%% }
+-type delete_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_component_response() :: #{
+%%   <<"componentBuildVersionArn">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type delete_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_container_recipe_request() :: #{
+%%   <<"containerRecipeArn">> := string()
+%% }
+-type delete_container_recipe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_container_recipe_response() :: #{
+%%   <<"containerRecipeArn">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type delete_container_recipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_distribution_configuration_request() :: #{
+%%   <<"distributionConfigurationArn">> := string()
+%% }
+-type delete_distribution_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1867,82 +759,91 @@
 
 
 %% Example:
-%% list_images_response() :: #{
-%%   <<"imageVersionList">> => list(image_version()),
-%%   <<"nextToken">> => string(),
+%% delete_image_pipeline_request() :: #{
+%%   <<"imagePipelineArn">> := string()
+%% }
+-type delete_image_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_image_pipeline_response() :: #{
+%%   <<"imagePipelineArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
--type list_images_response() :: #{binary() => any()}.
+-type delete_image_pipeline_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_lifecycle_executions_response() :: #{
-%%   <<"lifecycleExecutions">> => list(lifecycle_execution()),
-%%   <<"nextToken">> => string()
+%% delete_image_recipe_request() :: #{
+%%   <<"imageRecipeArn">> := string()
 %% }
--type list_lifecycle_executions_response() :: #{binary() => any()}.
+-type delete_image_recipe_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_component_build_versions_response() :: #{
-%%   <<"componentSummaryList">> => list(component_summary()),
-%%   <<"nextToken">> => string(),
+%% delete_image_recipe_response() :: #{
+%%   <<"imageRecipeArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
--type list_component_build_versions_response() :: #{binary() => any()}.
+-type delete_image_recipe_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_image_packages_response() :: #{
-%%   <<"imagePackageList">> => list(image_package()),
-%%   <<"nextToken">> => string(),
+%% delete_image_request() :: #{
+%%   <<"imageBuildVersionArn">> := string()
+%% }
+-type delete_image_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_image_response() :: #{
+%%   <<"imageBuildVersionArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
--type list_image_packages_response() :: #{binary() => any()}.
+-type delete_image_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% workflow_summary() :: #{
-%%   <<"arn">> => string(),
-%%   <<"changeDescription">> => string(),
-%%   <<"dateCreated">> => string(),
-%%   <<"description">> => string(),
-%%   <<"name">> => string(),
-%%   <<"owner">> => string(),
-%%   <<"state">> => workflow_state(),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
-%%   <<"version">> => string()
+%% delete_infrastructure_configuration_request() :: #{
+%%   <<"infrastructureConfigurationArn">> := string()
 %% }
--type workflow_summary() :: #{binary() => any()}.
+-type delete_infrastructure_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% image_tests_configuration() :: #{
-%%   <<"imageTestsEnabled">> => boolean(),
-%%   <<"timeoutMinutes">> => integer()
+%% delete_infrastructure_configuration_response() :: #{
+%%   <<"infrastructureConfigurationArn">> => string(),
+%%   <<"requestId">> => string()
 %% }
--type image_tests_configuration() :: #{binary() => any()}.
+-type delete_infrastructure_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_container_recipes_request() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"owner">> => list(any())
+%% delete_lifecycle_policy_request() :: #{
+%%   <<"lifecyclePolicyArn">> := string()
 %% }
--type list_container_recipes_request() :: #{binary() => any()}.
+-type delete_lifecycle_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_image_build_versions_request() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"imageVersionArn">> => string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% delete_lifecycle_policy_response() :: #{
+%%   <<"lifecyclePolicyArn">> => string()
 %% }
--type list_image_build_versions_request() :: #{binary() => any()}.
+-type delete_lifecycle_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workflow_request() :: #{
+%%   <<"workflowBuildVersionArn">> := string()
+%% }
+-type delete_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_workflow_response() :: #{
+%%   <<"workflowBuildVersionArn">> => string()
+%% }
+-type delete_workflow_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1958,62 +859,101 @@
 
 
 %% Example:
-%% delete_component_response() :: #{
-%%   <<"componentBuildVersionArn">> => string(),
-%%   <<"requestId">> => string()
+%% distribute_image_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"imageBuildVersionArn">> => string()
 %% }
--type delete_component_response() :: #{binary() => any()}.
+-type distribute_image_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% additional_instance_configuration() :: #{
-%%   <<"systemsManagerAgent">> => systems_manager_agent(),
-%%   <<"userDataOverride">> => string()
+%% distribution() :: #{
+%%   <<"amiDistributionConfiguration">> => ami_distribution_configuration(),
+%%   <<"containerDistributionConfiguration">> => container_distribution_configuration(),
+%%   <<"fastLaunchConfigurations">> => list(fast_launch_configuration()),
+%%   <<"launchTemplateConfigurations">> => list(launch_template_configuration()),
+%%   <<"licenseConfigurationArns">> => list(string()),
+%%   <<"region">> => string(),
+%%   <<"s3ExportConfiguration">> => s3_export_configuration(),
+%%   <<"ssmParameterConfigurations">> => list(ssm_parameter_configuration())
 %% }
--type additional_instance_configuration() :: #{binary() => any()}.
+-type distribution() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_infrastructure_configuration_request() :: #{
-%%   <<"infrastructureConfigurationArn">> := string()
-%% }
--type get_infrastructure_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_image_request() :: #{
-%%   <<"imageBuildVersionArn">> := string()
-%% }
--type delete_image_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_execution_resources_impacted_summary() :: #{
-%%   <<"hasImpactedResources">> => boolean()
-%% }
--type lifecycle_execution_resources_impacted_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_recipe() :: #{
-%%   <<"additionalInstanceConfiguration">> => additional_instance_configuration(),
-%%   <<"amiTags">> => map(),
-%%   <<"amiWatermarks">> => list(string()),
+%% distribution_configuration() :: #{
 %%   <<"arn">> => string(),
-%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
-%%   <<"components">> => list(component_configuration()),
 %%   <<"dateCreated">> => string(),
+%%   <<"dateUpdated">> => string(),
+%%   <<"description">> => string(),
+%%   <<"distributions">> => list(distribution()),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timeoutMinutes">> => integer()
+%% }
+-type distribution_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_configuration_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dateCreated">> => string(),
+%%   <<"dateUpdated">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"owner">> => string(),
-%%   <<"parentImage">> => string(),
-%%   <<"platform">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"type">> => list(any()),
-%%   <<"version">> => string(),
-%%   <<"workingDirectory">> => string()
+%%   <<"regions">> => list(string()),
+%%   <<"tags">> => map()
 %% }
--type image_recipe() :: #{binary() => any()}.
+-type distribution_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% dry_run_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dry_run_operation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% ebs_instance_block_device_specification() :: #{
+%%   <<"deleteOnTermination">> => boolean(),
+%%   <<"encrypted">> => boolean(),
+%%   <<"iops">> => integer(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"snapshotId">> => string(),
+%%   <<"throughput">> => integer(),
+%%   <<"volumeSize">> => integer(),
+%%   <<"volumeType">> => list(any())
+%% }
+-type ebs_instance_block_device_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecr_configuration() :: #{
+%%   <<"containerTags">> => list(string()),
+%%   <<"repositoryName">> => string()
+%% }
+-type ecr_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% fast_launch_configuration() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"enabled">> => boolean(),
+%%   <<"launchTemplate">> => fast_launch_launch_template_specification(),
+%%   <<"maxParallelLaunches">> => integer(),
+%%   <<"snapshotConfiguration">> => fast_launch_snapshot_configuration()
+%% }
+-type fast_launch_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% fast_launch_launch_template_specification() :: #{
+%%   <<"launchTemplateId">> => string(),
+%%   <<"launchTemplateName">> => string(),
+%%   <<"launchTemplateVersion">> => string()
+%% }
+-type fast_launch_launch_template_specification() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2024,29 +964,240 @@
 
 
 %% Example:
-%% lifecycle_policy() :: #{
-%%   <<"arn">> => string(),
-%%   <<"dateCreated">> => non_neg_integer(),
-%%   <<"dateLastRun">> => non_neg_integer(),
-%%   <<"dateUpdated">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"executionRole">> => string(),
+%% filter() :: #{
 %%   <<"name">> => string(),
-%%   <<"policyDetails">> => list(lifecycle_policy_detail()),
-%%   <<"resourceSelection">> => lifecycle_policy_resource_selection(),
-%%   <<"resourceType">> => list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
+%%   <<"values">> => list(string())
 %% }
--type lifecycle_policy() :: #{binary() => any()}.
+-type filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% put_component_policy_response() :: #{
-%%   <<"componentArn">> => string(),
+%% forbidden_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_policy_request() :: #{
+%%   <<"componentArn">> := string()
+%% }
+-type get_component_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_policy_response() :: #{
+%%   <<"policy">> => string(),
 %%   <<"requestId">> => string()
 %% }
--type put_component_policy_response() :: #{binary() => any()}.
+-type get_component_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_request() :: #{
+%%   <<"componentBuildVersionArn">> := string()
+%% }
+-type get_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_component_response() :: #{
+%%   <<"component">> => component(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
+%%   <<"requestId">> => string()
+%% }
+-type get_component_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_container_recipe_policy_request() :: #{
+%%   <<"containerRecipeArn">> := string()
+%% }
+-type get_container_recipe_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_container_recipe_policy_response() :: #{
+%%   <<"policy">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type get_container_recipe_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_container_recipe_request() :: #{
+%%   <<"containerRecipeArn">> := string()
+%% }
+-type get_container_recipe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_container_recipe_response() :: #{
+%%   <<"containerRecipe">> => container_recipe(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
+%%   <<"requestId">> => string()
+%% }
+-type get_container_recipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_distribution_configuration_request() :: #{
+%%   <<"distributionConfigurationArn">> := string()
+%% }
+-type get_distribution_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_distribution_configuration_response() :: #{
+%%   <<"distributionConfiguration">> => distribution_configuration(),
+%%   <<"requestId">> => string()
+%% }
+-type get_distribution_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_pipeline_request() :: #{
+%%   <<"imagePipelineArn">> := string()
+%% }
+-type get_image_pipeline_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_pipeline_response() :: #{
+%%   <<"imagePipeline">> => image_pipeline(),
+%%   <<"requestId">> => string()
+%% }
+-type get_image_pipeline_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_policy_request() :: #{
+%%   <<"imageArn">> := string()
+%% }
+-type get_image_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_policy_response() :: #{
+%%   <<"policy">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type get_image_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_recipe_policy_request() :: #{
+%%   <<"imageRecipeArn">> := string()
+%% }
+-type get_image_recipe_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_recipe_policy_response() :: #{
+%%   <<"policy">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type get_image_recipe_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_recipe_request() :: #{
+%%   <<"imageRecipeArn">> := string()
+%% }
+-type get_image_recipe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_recipe_response() :: #{
+%%   <<"imageRecipe">> => image_recipe(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
+%%   <<"requestId">> => string()
+%% }
+-type get_image_recipe_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_request() :: #{
+%%   <<"imageBuildVersionArn">> := string()
+%% }
+-type get_image_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_image_response() :: #{
+%%   <<"image">> => image(),
+%%   <<"latestVersionReferences">> => latest_version_references(),
+%%   <<"requestId">> => string()
+%% }
+-type get_image_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_infrastructure_configuration_request() :: #{
+%%   <<"infrastructureConfigurationArn">> := string()
+%% }
+-type get_infrastructure_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_infrastructure_configuration_response() :: #{
+%%   <<"infrastructureConfiguration">> => infrastructure_configuration(),
+%%   <<"requestId">> => string()
+%% }
+-type get_infrastructure_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lifecycle_execution_request() :: #{
+%%   <<"lifecycleExecutionId">> := string()
+%% }
+-type get_lifecycle_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lifecycle_execution_response() :: #{
+%%   <<"lifecycleExecution">> => lifecycle_execution()
+%% }
+-type get_lifecycle_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lifecycle_policy_request() :: #{
+%%   <<"lifecyclePolicyArn">> := string()
+%% }
+-type get_lifecycle_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_lifecycle_policy_response() :: #{
+%%   <<"lifecyclePolicy">> => lifecycle_policy()
+%% }
+-type get_lifecycle_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_marketplace_resource_request() :: #{
+%%   <<"resourceArn">> := string(),
+%%   <<"resourceLocation">> => string(),
+%%   <<"resourceType">> := list(any())
+%% }
+-type get_marketplace_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_marketplace_resource_response() :: #{
+%%   <<"data">> => string(),
+%%   <<"resourceArn">> => string(),
+%%   <<"url">> => string()
+%% }
+-type get_marketplace_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_workflow_execution_request() :: #{
+%%   <<"workflowExecutionId">> := string()
+%% }
+-type get_workflow_execution_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2070,107 +1221,55 @@
 
 
 %% Example:
-%% schedule() :: #{
-%%   <<"autoDisablePolicy">> => auto_disable_policy(),
-%%   <<"pipelineExecutionStartCondition">> => list(any()),
-%%   <<"scheduleExpression">> => string(),
-%%   <<"timezone">> => string()
+%% get_workflow_request() :: #{
+%%   <<"workflowBuildVersionArn">> := string()
 %% }
--type schedule() :: #{binary() => any()}.
+-type get_workflow_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_image_scan_findings_request() :: #{
-%%   <<"filters">> => list(image_scan_findings_filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% get_workflow_response() :: #{
+%%   <<"latestVersionReferences">> => latest_version_references(),
+%%   <<"workflow">> => workflow()
 %% }
--type list_image_scan_findings_request() :: #{binary() => any()}.
+-type get_workflow_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% lifecycle_policy_resource_selection() :: #{
-%%   <<"recipes">> => list(lifecycle_policy_resource_selection_recipe()),
-%%   <<"tagMap">> => map()
+%% get_workflow_step_execution_request() :: #{
+%%   <<"stepExecutionId">> := string()
 %% }
--type lifecycle_policy_resource_selection() :: #{binary() => any()}.
+-type get_workflow_step_execution_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_lifecycle_policy_request() :: #{
-%%   <<"lifecyclePolicyArn">> := string()
-%% }
--type delete_lifecycle_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_scan_finding() :: #{
-%%   <<"awsAccountId">> => string(),
+%% get_workflow_step_execution_response() :: #{
+%%   <<"action">> => string(),
 %%   <<"description">> => string(),
-%%   <<"firstObservedAt">> => non_neg_integer(),
-%%   <<"fixAvailable">> => string(),
+%%   <<"endTime">> => string(),
 %%   <<"imageBuildVersionArn">> => string(),
-%%   <<"imagePipelineArn">> => string(),
-%%   <<"inspectorScore">> => float(),
-%%   <<"inspectorScoreDetails">> => inspector_score_details(),
-%%   <<"packageVulnerabilityDetails">> => package_vulnerability_details(),
-%%   <<"remediation">> => remediation(),
-%%   <<"severity">> => string(),
-%%   <<"title">> => string(),
-%%   <<"type">> => string(),
-%%   <<"updatedAt">> => non_neg_integer()
+%%   <<"inputs">> => string(),
+%%   <<"message">> => string(),
+%%   <<"name">> => string(),
+%%   <<"onFailure">> => string(),
+%%   <<"outputs">> => string(),
+%%   <<"requestId">> => string(),
+%%   <<"rollbackStatus">> => list(any()),
+%%   <<"startTime">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"stepExecutionId">> => string(),
+%%   <<"timeoutSeconds">> => integer(),
+%%   <<"workflowBuildVersionArn">> => string(),
+%%   <<"workflowExecutionId">> => string()
 %% }
--type image_scan_finding() :: #{binary() => any()}.
+-type get_workflow_step_execution_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_marketplace_resource_request() :: #{
-%%   <<"resourceArn">> := string(),
-%%   <<"resourceLocation">> => string(),
-%%   <<"resourceType">> := list(any())
+%% idempotent_parameter_mismatch_exception() :: #{
+%%   <<"message">> => string()
 %% }
--type get_marketplace_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflow_step_executions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"workflowExecutionId">> := string()
-%% }
--type list_workflow_step_executions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_image_recipe_policy_request() :: #{
-%%   <<"imageRecipeArn">> := string()
-%% }
--type get_image_recipe_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% account_aggregation() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type account_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% output_resources() :: #{
-%%   <<"amis">> => list(ami()),
-%%   <<"containers">> => list(container())
-%% }
--type output_resources() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_image_creation_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"imageBuildVersionArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type cancel_image_creation_response() :: #{binary() => any()}.
+-type idempotent_parameter_mismatch_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2207,157 +1306,86 @@
 
 
 %% Example:
-%% delete_image_pipeline_response() :: #{
-%%   <<"imagePipelineArn">> => string(),
-%%   <<"requestId">> => string()
+%% image_aggregation() :: #{
+%%   <<"imageBuildVersionArn">> => string(),
+%%   <<"severityCounts">> => severity_counts()
 %% }
--type delete_image_pipeline_response() :: #{binary() => any()}.
+-type image_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_image_pipeline_request() :: #{
-%%   <<"imagePipelineArn">> := string()
+%% image_logging_configuration() :: #{
+%%   <<"logGroupName">> => string()
 %% }
--type get_image_pipeline_request() :: #{binary() => any()}.
+-type image_logging_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% product_code_list_item() :: #{
-%%   <<"productCodeId">> => string(),
-%%   <<"productCodeType">> => list(any())
+%% image_package() :: #{
+%%   <<"packageName">> => string(),
+%%   <<"packageVersion">> => string()
 %% }
--type product_code_list_item() :: #{binary() => any()}.
+-type image_package() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_workflow_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"latestVersionReferences">> => latest_version_references(),
-%%   <<"workflowBuildVersionArn">> => string()
-%% }
--type create_workflow_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_image_policy_response() :: #{
-%%   <<"imageArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type put_image_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% package_vulnerability_details() :: #{
-%%   <<"cvss">> => list(cvss_score()),
-%%   <<"referenceUrls">> => list(string()),
-%%   <<"relatedVulnerabilities">> => list(string()),
-%%   <<"source">> => string(),
-%%   <<"sourceUrl">> => string(),
-%%   <<"vendorCreatedAt">> => non_neg_integer(),
-%%   <<"vendorSeverity">> => string(),
-%%   <<"vendorUpdatedAt">> => non_neg_integer(),
-%%   <<"vulnerabilityId">> => string(),
-%%   <<"vulnerablePackages">> => list(vulnerable_package())
-%% }
--type package_vulnerability_details() :: #{binary() => any()}.
-
-
-%% Example:
-%% cvss_score() :: #{
-%%   <<"baseScore">> => float(),
-%%   <<"scoringVector">> => string(),
-%%   <<"source">> => string(),
-%%   <<"version">> => string()
-%% }
--type cvss_score() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_metadata_options() :: #{
-%%   <<"httpPutResponseHopLimit">> => integer(),
-%%   <<"httpTokens">> => string()
-%% }
--type instance_metadata_options() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_infrastructure_configuration_response() :: #{
-%%   <<"clientToken">> => string(),
+%% image_pipeline() :: #{
+%%   <<"arn">> => string(),
+%%   <<"consecutiveFailures">> => integer(),
+%%   <<"containerRecipeArn">> => string(),
+%%   <<"dateCreated">> => string(),
+%%   <<"dateLastRun">> => string(),
+%%   <<"dateNextRun">> => string(),
+%%   <<"dateUpdated">> => string(),
+%%   <<"description">> => string(),
+%%   <<"distributionConfigurationArn">> => string(),
+%%   <<"enhancedImageMetadataEnabled">> => boolean(),
+%%   <<"executionRole">> => string(),
+%%   <<"imageRecipeArn">> => string(),
+%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
+%%   <<"imageTags">> => map(),
+%%   <<"imageTestsConfiguration">> => image_tests_configuration(),
 %%   <<"infrastructureConfigurationArn">> => string(),
-%%   <<"requestId">> => string()
+%%   <<"lastRunStatus">> => list(any()),
+%%   <<"loggingConfiguration">> => pipeline_logging_configuration(),
+%%   <<"name">> => string(),
+%%   <<"platform">> => list(any()),
+%%   <<"schedule">> => schedule(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"workflows">> => list(workflow_configuration())
 %% }
--type update_infrastructure_configuration_response() :: #{binary() => any()}.
+-type image_pipeline() :: #{binary() => any()}.
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => string()
+%% image_pipeline_aggregation() :: #{
+%%   <<"imagePipelineArn">> => string(),
+%%   <<"severityCounts">> => severity_counts()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type image_pipeline_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_parameter_exception() :: #{
-%%   <<"message">> => string()
+%% image_recipe() :: #{
+%%   <<"additionalInstanceConfiguration">> => additional_instance_configuration(),
+%%   <<"amiTags">> => map(),
+%%   <<"amiWatermarks">> => list(string()),
+%%   <<"arn">> => string(),
+%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
+%%   <<"components">> => list(component_configuration()),
+%%   <<"dateCreated">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"parentImage">> => string(),
+%%   <<"platform">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"version">> => string(),
+%%   <<"workingDirectory">> => string()
 %% }
--type invalid_parameter_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% fast_launch_launch_template_specification() :: #{
-%%   <<"launchTemplateId">> => string(),
-%%   <<"launchTemplateName">> => string(),
-%%   <<"launchTemplateVersion">> => string()
-%% }
--type fast_launch_launch_template_specification() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflow_build_versions_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"workflowVersionArn">> => string()
-%% }
--type list_workflow_build_versions_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_vm_image_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"imageArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type import_vm_image_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_infrastructure_configuration_request() :: #{
-%%   <<"infrastructureConfigurationArn">> := string()
-%% }
--type delete_infrastructure_configuration_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% ssm_parameter_configuration() :: #{
-%%   <<"amiAccountId">> => string(),
-%%   <<"dataType">> => list(any()),
-%%   <<"parameterName">> => string()
-%% }
--type ssm_parameter_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_image_scan_finding_aggregations_response() :: #{
-%%   <<"aggregationType">> => string(),
-%%   <<"nextToken">> => string(),
-%%   <<"requestId">> => string(),
-%%   <<"responses">> => list(image_scan_finding_aggregation())
-%% }
--type list_image_scan_finding_aggregations_response() :: #{binary() => any()}.
-
-%% Example:
-%% tag_resource_response() :: #{}
--type tag_resource_response() :: #{}.
+-type image_recipe() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2374,253 +1402,57 @@
 
 
 %% Example:
-%% fast_launch_configuration() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"enabled">> => boolean(),
-%%   <<"launchTemplate">> => fast_launch_launch_template_specification(),
-%%   <<"maxParallelLaunches">> => integer(),
-%%   <<"snapshotConfiguration">> => fast_launch_snapshot_configuration()
-%% }
--type fast_launch_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% ami_distribution_configuration() :: #{
-%%   <<"amiTags">> => map(),
+%% image_scan_finding() :: #{
+%%   <<"awsAccountId">> => string(),
 %%   <<"description">> => string(),
-%%   <<"kmsKeyId">> => string(),
-%%   <<"launchPermission">> => launch_permission_configuration(),
-%%   <<"name">> => string(),
-%%   <<"targetAccountIds">> => list(string())
-%% }
--type ami_distribution_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_configuration() :: #{
-%%   <<"componentArn">> => string(),
-%%   <<"parameters">> => list(component_parameter())
-%% }
--type component_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% instance_configuration() :: #{
-%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
-%%   <<"image">> => string()
-%% }
--type instance_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_infrastructure_configuration_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"infrastructureConfigurationArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type create_infrastructure_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_distribution_configuration() :: #{
-%%   <<"containerTags">> => list(string()),
-%%   <<"description">> => string(),
-%%   <<"targetRepository">> => target_container_repository()
-%% }
--type container_distribution_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_lifecycle_policy_request() :: #{
-%%   <<"lifecyclePolicyArn">> := string()
-%% }
--type get_lifecycle_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_aggregation() :: #{
+%%   <<"firstObservedAt">> => non_neg_integer(),
+%%   <<"fixAvailable">> => string(),
 %%   <<"imageBuildVersionArn">> => string(),
-%%   <<"severityCounts">> => severity_counts()
+%%   <<"imagePipelineArn">> => string(),
+%%   <<"inspectorScore">> => float(),
+%%   <<"inspectorScoreDetails">> => inspector_score_details(),
+%%   <<"packageVulnerabilityDetails">> => package_vulnerability_details(),
+%%   <<"remediation">> => remediation(),
+%%   <<"severity">> => string(),
+%%   <<"title">> => string(),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
 %% }
--type image_aggregation() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
+-type image_scan_finding() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_container_recipe_policy_response() :: #{
-%%   <<"policy">> => string(),
-%%   <<"requestId">> => string()
+%% image_scan_finding_aggregation() :: #{
+%%   <<"accountAggregation">> => account_aggregation(),
+%%   <<"imageAggregation">> => image_aggregation(),
+%%   <<"imagePipelineAggregation">> => image_pipeline_aggregation(),
+%%   <<"vulnerabilityIdAggregation">> => vulnerability_id_aggregation()
 %% }
--type get_container_recipe_policy_response() :: #{binary() => any()}.
+-type image_scan_finding_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_container_recipe_response() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"containerRecipeArn">> => string(),
-%%   <<"latestVersionReferences">> => latest_version_references(),
-%%   <<"requestId">> => string()
-%% }
--type create_container_recipe_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% container_recipe() :: #{
-%%   <<"arn">> => string(),
-%%   <<"components">> => list(component_configuration()),
-%%   <<"containerType">> => list(any()),
-%%   <<"dateCreated">> => string(),
-%%   <<"description">> => string(),
-%%   <<"dockerfileTemplateData">> => string(),
-%%   <<"encrypted">> => boolean(),
-%%   <<"instanceConfiguration">> => instance_configuration(),
-%%   <<"kmsKeyId">> => string(),
+%% image_scan_findings_filter() :: #{
 %%   <<"name">> => string(),
-%%   <<"owner">> => string(),
-%%   <<"parentImage">> => string(),
-%%   <<"platform">> => list(any()),
-%%   <<"tags">> => map(),
-%%   <<"targetRepository">> => target_container_repository(),
-%%   <<"version">> => string(),
-%%   <<"workingDirectory">> => string()
+%%   <<"values">> => list(string())
 %% }
--type container_recipe() :: #{binary() => any()}.
+-type image_scan_findings_filter() :: #{binary() => any()}.
 
 
 %% Example:
-%% create_lifecycle_policy_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"description">> => string(),
-%%   <<"executionRole">> := string(),
-%%   <<"name">> := string(),
-%%   <<"policyDetails">> := list(lifecycle_policy_detail()),
-%%   <<"resourceSelection">> := lifecycle_policy_resource_selection(),
-%%   <<"resourceType">> := list(any()),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
-%% }
--type create_lifecycle_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_dependency_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_dependency_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_execution_state() :: #{
+%% image_scan_state() :: #{
 %%   <<"reason">> => string(),
 %%   <<"status">> => list(any())
 %% }
--type lifecycle_execution_state() :: #{binary() => any()}.
+-type image_scan_state() :: #{binary() => any()}.
 
 
 %% Example:
-%% image_package() :: #{
-%%   <<"packageName">> => string(),
-%%   <<"packageVersion">> => string()
+%% image_scanning_configuration() :: #{
+%%   <<"ecrConfiguration">> => ecr_configuration(),
+%%   <<"imageScanningEnabled">> => boolean()
 %% }
--type image_package() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_image_response() :: #{
-%%   <<"imageBuildVersionArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type delete_image_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_execution() :: #{
-%%   <<"endTime">> => non_neg_integer(),
-%%   <<"lifecycleExecutionId">> => string(),
-%%   <<"lifecyclePolicyArn">> => string(),
-%%   <<"resourcesImpactedSummary">> => lifecycle_execution_resources_impacted_summary(),
-%%   <<"startTime">> => non_neg_integer(),
-%%   <<"state">> => lifecycle_execution_state()
-%% }
--type lifecycle_execution() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_components_response() :: #{
-%%   <<"componentVersionList">> => list(component_version()),
-%%   <<"nextToken">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type list_components_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_policy_resource_selection_recipe() :: #{
-%%   <<"name">> => string(),
-%%   <<"semanticVersion">> => string()
-%% }
--type lifecycle_policy_resource_selection_recipe() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_step_metadata() :: #{
-%%   <<"action">> => string(),
-%%   <<"description">> => string(),
-%%   <<"endTime">> => string(),
-%%   <<"inputs">> => string(),
-%%   <<"message">> => string(),
-%%   <<"name">> => string(),
-%%   <<"outputs">> => string(),
-%%   <<"rollbackStatus">> => list(any()),
-%%   <<"startTime">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"stepExecutionId">> => string()
-%% }
--type workflow_step_metadata() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_image_build_versions_response() :: #{
-%%   <<"imageSummaryList">> => list(image_summary()),
-%%   <<"nextToken">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type list_image_build_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_image_pipeline_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"containerRecipeArn">> => string(),
-%%   <<"description">> => string(),
-%%   <<"distributionConfigurationArn">> => string(),
-%%   <<"enhancedImageMetadataEnabled">> => boolean(),
-%%   <<"executionRole">> => string(),
-%%   <<"imagePipelineArn">> := string(),
-%%   <<"imageRecipeArn">> => string(),
-%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
-%%   <<"imageTags">> => map(),
-%%   <<"imageTestsConfiguration">> => image_tests_configuration(),
-%%   <<"infrastructureConfigurationArn">> := string(),
-%%   <<"loggingConfiguration">> => pipeline_logging_configuration(),
-%%   <<"schedule">> => schedule(),
-%%   <<"status">> => list(any()),
-%%   <<"workflows">> => list(workflow_configuration())
-%% }
--type update_image_pipeline_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_lifecycle_execution_resources_request() :: #{
-%%   <<"lifecycleExecutionId">> := string(),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string(),
-%%   <<"parentResourceId">> => string()
-%% }
--type list_lifecycle_execution_resources_request() :: #{binary() => any()}.
+-type image_scanning_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2629,70 +1461,6 @@
 %%   <<"status">> => list(any())
 %% }
 -type image_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% cancel_lifecycle_execution_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"lifecycleExecutionId">> := string()
-%% }
--type cancel_lifecycle_execution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_configuration() :: #{
-%%   <<"onFailure">> => list(any()),
-%%   <<"parallelGroup">> => string(),
-%%   <<"parameters">> => list(workflow_parameter()),
-%%   <<"workflowArn">> => string()
-%% }
--type workflow_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% import_disk_image_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"description">> => string(),
-%%   <<"executionRole">> => string(),
-%%   <<"infrastructureConfigurationArn">> := string(),
-%%   <<"loggingConfiguration">> => image_logging_configuration(),
-%%   <<"name">> := string(),
-%%   <<"osVersion">> := string(),
-%%   <<"platform">> := string(),
-%%   <<"registerImageOptions">> => register_image_options(),
-%%   <<"semanticVersion">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"uri">> := string(),
-%%   <<"windowsConfiguration">> => windows_configuration()
-%% }
--type import_disk_image_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% workflow_state() :: #{
-%%   <<"reason">> => string(),
-%%   <<"status">> => list(any())
-%% }
--type workflow_state() :: #{binary() => any()}.
-
-
-%% Example:
-%% latest_version_references() :: #{
-%%   <<"latestMajorVersionArn">> => string(),
-%%   <<"latestMinorVersionArn">> => string(),
-%%   <<"latestPatchVersionArn">> => string(),
-%%   <<"latestVersionArn">> => string()
-%% }
--type latest_version_references() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_infrastructure_configurations_request() :: #{
-%%   <<"filters">> => list(filter()),
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_infrastructure_configurations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2718,63 +1486,105 @@
 
 
 %% Example:
-%% lifecycle_policy_detail_action() :: #{
-%%   <<"includeResources">> => lifecycle_policy_detail_action_include_resources(),
-%%   <<"type">> => list(any())
+%% image_tests_configuration() :: #{
+%%   <<"imageTestsEnabled">> => boolean(),
+%%   <<"timeoutMinutes">> => integer()
 %% }
--type lifecycle_policy_detail_action() :: #{binary() => any()}.
+-type image_tests_configuration() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_image_recipes_response() :: #{
-%%   <<"imageRecipeSummaryList">> => list(image_recipe_summary()),
-%%   <<"nextToken">> => string(),
+%% image_version() :: #{
+%%   <<"arn">> => string(),
+%%   <<"buildType">> => list(any()),
+%%   <<"dateCreated">> => string(),
+%%   <<"imageSource">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"osVersion">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"platform">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type image_version() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_component_request() :: #{
+%%   <<"changeDescription">> => string(),
+%%   <<"clientToken">> := string(),
+%%   <<"data">> => string(),
+%%   <<"description">> => string(),
+%%   <<"format">> := list(any()),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> := string(),
+%%   <<"platform">> := list(any()),
+%%   <<"semanticVersion">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> := list(any()),
+%%   <<"uri">> => string()
+%% }
+-type import_component_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_component_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"componentBuildVersionArn">> => string(),
 %%   <<"requestId">> => string()
 %% }
--type list_image_recipes_response() :: #{binary() => any()}.
+-type import_component_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% retry_image_request() :: #{
+%% import_disk_image_request() :: #{
 %%   <<"clientToken">> := string(),
-%%   <<"imageBuildVersionArn">> := string()
+%%   <<"description">> => string(),
+%%   <<"executionRole">> => string(),
+%%   <<"infrastructureConfigurationArn">> := string(),
+%%   <<"loggingConfiguration">> => image_logging_configuration(),
+%%   <<"name">> := string(),
+%%   <<"osVersion">> := string(),
+%%   <<"platform">> := string(),
+%%   <<"registerImageOptions">> => register_image_options(),
+%%   <<"semanticVersion">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"uri">> := string(),
+%%   <<"windowsConfiguration">> => windows_configuration()
 %% }
--type retry_image_request() :: #{binary() => any()}.
+-type import_disk_image_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% list_waiting_workflow_steps_request() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
+%% import_disk_image_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"imageBuildVersionArn">> => string()
 %% }
--type list_waiting_workflow_steps_request() :: #{binary() => any()}.
+-type import_disk_image_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% lifecycle_policy_detail_exclusion_rules_amis() :: #{
-%%   <<"isPublic">> => boolean(),
-%%   <<"lastLaunched">> => lifecycle_policy_detail_exclusion_rules_amis_last_launched(),
-%%   <<"regions">> => list(string()),
-%%   <<"sharedAccounts">> => list(string()),
-%%   <<"tagMap">> => map()
+%% import_vm_image_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"description">> => string(),
+%%   <<"loggingConfiguration">> => image_logging_configuration(),
+%%   <<"name">> := string(),
+%%   <<"osVersion">> => string(),
+%%   <<"platform">> := list(any()),
+%%   <<"semanticVersion">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"vmImportTaskId">> := string()
 %% }
--type lifecycle_policy_detail_exclusion_rules_amis() :: #{binary() => any()}.
+-type import_vm_image_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% launch_template_configuration() :: #{
-%%   <<"accountId">> => string(),
-%%   <<"launchTemplateId">> => string(),
-%%   <<"setDefaultVersion">> => boolean()
+%% import_vm_image_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"imageArn">> => string(),
+%%   <<"requestId">> => string()
 %% }
--type launch_template_configuration() :: #{binary() => any()}.
+-type import_vm_image_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2801,96 +1611,104 @@
 
 
 %% Example:
-%% windows_configuration() :: #{
-%%   <<"imageIndex">> => float()
-%% }
--type windows_configuration() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_component_policy_request() :: #{
-%%   <<"componentArn">> := string()
-%% }
--type get_component_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_workflows_response() :: #{
-%%   <<"nextToken">> => string(),
-%%   <<"workflowVersionList">> => list(workflow_version())
-%% }
--type list_workflows_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% start_image_pipeline_execution_request() :: #{
-%%   <<"clientToken">> := string(),
-%%   <<"imagePipelineArn">> := string(),
-%%   <<"tags">> => map()
-%% }
--type start_image_pipeline_execution_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% lifecycle_policy_detail_exclusion_rules_amis_last_launched() :: #{
-%%   <<"unit">> => list(any()),
-%%   <<"value">> => integer()
-%% }
--type lifecycle_policy_detail_exclusion_rules_amis_last_launched() :: #{binary() => any()}.
-
-
-%% Example:
-%% image_pipeline_aggregation() :: #{
-%%   <<"imagePipelineArn">> => string(),
-%%   <<"severityCounts">> => severity_counts()
-%% }
--type image_pipeline_aggregation() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_infrastructure_configuration_response() :: #{
-%%   <<"infrastructureConfigurationArn">> => string(),
-%%   <<"requestId">> => string()
-%% }
--type delete_infrastructure_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% component_parameter() :: #{
-%%   <<"name">> => string(),
-%%   <<"value">> => list(string())
-%% }
--type component_parameter() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_image_recipe_response() :: #{
-%%   <<"imageRecipe">> => image_recipe(),
-%%   <<"latestVersionReferences">> => latest_version_references(),
-%%   <<"requestId">> => string()
-%% }
--type get_image_recipe_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_distribution_configuration_response() :: #{
-%%   <<"distributionConfiguration">> => distribution_configuration(),
-%%   <<"requestId">> => string()
-%% }
--type get_distribution_configuration_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% distribution_configuration_summary() :: #{
+%% infrastructure_configuration_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"dateCreated">> => string(),
 %%   <<"dateUpdated">> => string(),
 %%   <<"description">> => string(),
+%%   <<"instanceProfileName">> => string(),
+%%   <<"instanceTypes">> => list(string()),
 %%   <<"name">> => string(),
-%%   <<"regions">> => list(string()),
+%%   <<"placement">> => placement(),
+%%   <<"resourceTags">> => map(),
 %%   <<"tags">> => map()
 %% }
--type distribution_configuration_summary() :: #{binary() => any()}.
+-type infrastructure_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% inspector_score_details() :: #{
+%%   <<"adjustedCvss">> => cvss_score_details()
+%% }
+-type inspector_score_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_block_device_mapping() :: #{
+%%   <<"deviceName">> => string(),
+%%   <<"ebs">> => ebs_instance_block_device_specification(),
+%%   <<"noDevice">> => string(),
+%%   <<"virtualName">> => string()
+%% }
+-type instance_block_device_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_configuration() :: #{
+%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
+%%   <<"image">> => string()
+%% }
+-type instance_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_metadata_options() :: #{
+%%   <<"httpPutResponseHopLimit">> => integer(),
+%%   <<"httpTokens">> => string()
+%% }
+-type instance_metadata_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_pagination_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_pagination_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_combination_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_combination_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_parameter_value_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_request_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_version_number_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_version_number_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% latest_version_references() :: #{
+%%   <<"latestMajorVersionArn">> => string(),
+%%   <<"latestMinorVersionArn">> => string(),
+%%   <<"latestPatchVersionArn">> => string(),
+%%   <<"latestVersionArn">> => string()
+%% }
+-type latest_version_references() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2904,10 +1722,313 @@
 
 
 %% Example:
-%% logging() :: #{
-%%   <<"s3Logs">> => s3_logs()
+%% launch_template_configuration() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"launchTemplateId">> => string(),
+%%   <<"setDefaultVersion">> => boolean()
 %% }
--type logging() :: #{binary() => any()}.
+-type launch_template_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_execution() :: #{
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"lifecycleExecutionId">> => string(),
+%%   <<"lifecyclePolicyArn">> => string(),
+%%   <<"resourcesImpactedSummary">> => lifecycle_execution_resources_impacted_summary(),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"state">> => lifecycle_execution_state()
+%% }
+-type lifecycle_execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_execution_resource() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"action">> => lifecycle_execution_resource_action(),
+%%   <<"endTime">> => non_neg_integer(),
+%%   <<"imageUris">> => list(string()),
+%%   <<"region">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"snapshots">> => list(lifecycle_execution_snapshot_resource()),
+%%   <<"startTime">> => non_neg_integer(),
+%%   <<"state">> => lifecycle_execution_resource_state()
+%% }
+-type lifecycle_execution_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_execution_resource_action() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"reason">> => string()
+%% }
+-type lifecycle_execution_resource_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_execution_resource_state() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type lifecycle_execution_resource_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_execution_resources_impacted_summary() :: #{
+%%   <<"hasImpactedResources">> => boolean()
+%% }
+-type lifecycle_execution_resources_impacted_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_execution_snapshot_resource() :: #{
+%%   <<"snapshotId">> => string(),
+%%   <<"state">> => lifecycle_execution_resource_state()
+%% }
+-type lifecycle_execution_snapshot_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_execution_state() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type lifecycle_execution_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dateCreated">> => non_neg_integer(),
+%%   <<"dateLastRun">> => non_neg_integer(),
+%%   <<"dateUpdated">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"executionRole">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyDetails">> => list(lifecycle_policy_detail()),
+%%   <<"resourceSelection">> => lifecycle_policy_resource_selection(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type lifecycle_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy_detail() :: #{
+%%   <<"action">> => lifecycle_policy_detail_action(),
+%%   <<"exclusionRules">> => lifecycle_policy_detail_exclusion_rules(),
+%%   <<"filter">> => lifecycle_policy_detail_filter()
+%% }
+-type lifecycle_policy_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy_detail_action() :: #{
+%%   <<"includeResources">> => lifecycle_policy_detail_action_include_resources(),
+%%   <<"type">> => list(any())
+%% }
+-type lifecycle_policy_detail_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy_detail_action_include_resources() :: #{
+%%   <<"amis">> => boolean(),
+%%   <<"containers">> => boolean(),
+%%   <<"snapshots">> => boolean()
+%% }
+-type lifecycle_policy_detail_action_include_resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy_detail_exclusion_rules() :: #{
+%%   <<"amis">> => lifecycle_policy_detail_exclusion_rules_amis(),
+%%   <<"tagMap">> => map()
+%% }
+-type lifecycle_policy_detail_exclusion_rules() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy_detail_exclusion_rules_amis() :: #{
+%%   <<"isPublic">> => boolean(),
+%%   <<"lastLaunched">> => lifecycle_policy_detail_exclusion_rules_amis_last_launched(),
+%%   <<"regions">> => list(string()),
+%%   <<"sharedAccounts">> => list(string()),
+%%   <<"tagMap">> => map()
+%% }
+-type lifecycle_policy_detail_exclusion_rules_amis() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy_detail_exclusion_rules_amis_last_launched() :: #{
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type lifecycle_policy_detail_exclusion_rules_amis_last_launched() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy_detail_filter() :: #{
+%%   <<"retainAtLeast">> => integer(),
+%%   <<"type">> => list(any()),
+%%   <<"unit">> => list(any()),
+%%   <<"value">> => integer()
+%% }
+-type lifecycle_policy_detail_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy_resource_selection() :: #{
+%%   <<"recipes">> => list(lifecycle_policy_resource_selection_recipe()),
+%%   <<"tagMap">> => map()
+%% }
+-type lifecycle_policy_resource_selection() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy_resource_selection_recipe() :: #{
+%%   <<"name">> => string(),
+%%   <<"semanticVersion">> => string()
+%% }
+-type lifecycle_policy_resource_selection_recipe() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_policy_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dateCreated">> => non_neg_integer(),
+%%   <<"dateLastRun">> => non_neg_integer(),
+%%   <<"dateUpdated">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"executionRole">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type lifecycle_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_component_build_versions_request() :: #{
+%%   <<"componentVersionArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_component_build_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_component_build_versions_response() :: #{
+%%   <<"componentSummaryList">> => list(component_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type list_component_build_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_request() :: #{
+%%   <<"byName">> => boolean(),
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owner">> => list(any())
+%% }
+-type list_components_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_components_response() :: #{
+%%   <<"componentVersionList">> => list(component_version()),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type list_components_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_container_recipes_request() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owner">> => list(any())
+%% }
+-type list_container_recipes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_container_recipes_response() :: #{
+%%   <<"containerRecipeSummaryList">> => list(container_recipe_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type list_container_recipes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distribution_configurations_request() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_distribution_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distribution_configurations_response() :: #{
+%%   <<"distributionConfigurationSummaryList">> => list(distribution_configuration_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type list_distribution_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_build_versions_request() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"imageVersionArn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_image_build_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_build_versions_response() :: #{
+%%   <<"imageSummaryList">> => list(image_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type list_image_build_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_packages_request() :: #{
+%%   <<"imageBuildVersionArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_image_packages_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_packages_response() :: #{
+%%   <<"imagePackageList">> => list(image_package()),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type list_image_packages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_pipeline_images_request() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"imagePipelineArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_image_pipeline_images_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2920,24 +2041,697 @@
 
 
 %% Example:
-%% get_component_request() :: #{
-%%   <<"componentBuildVersionArn">> := string()
+%% list_image_pipelines_request() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
--type get_component_request() :: #{binary() => any()}.
+-type list_image_pipelines_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_lifecycle_policy_response() :: #{
-%%   <<"lifecyclePolicy">> => lifecycle_policy()
+%% list_image_pipelines_response() :: #{
+%%   <<"imagePipelineList">> => list(image_pipeline()),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string()
 %% }
--type get_lifecycle_policy_response() :: #{binary() => any()}.
+-type list_image_pipelines_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% invalid_pagination_token_exception() :: #{
+%% list_image_recipes_request() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owner">> => list(any())
+%% }
+-type list_image_recipes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_recipes_response() :: #{
+%%   <<"imageRecipeSummaryList">> => list(image_recipe_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type list_image_recipes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_scan_finding_aggregations_request() :: #{
+%%   <<"filter">> => filter(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_image_scan_finding_aggregations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_scan_finding_aggregations_response() :: #{
+%%   <<"aggregationType">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string(),
+%%   <<"responses">> => list(image_scan_finding_aggregation())
+%% }
+-type list_image_scan_finding_aggregations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_scan_findings_request() :: #{
+%%   <<"filters">> => list(image_scan_findings_filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_image_scan_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_image_scan_findings_response() :: #{
+%%   <<"findings">> => list(image_scan_finding()),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type list_image_scan_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_images_request() :: #{
+%%   <<"byName">> => boolean(),
+%%   <<"filters">> => list(filter()),
+%%   <<"includeDeprecated">> => boolean(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owner">> => list(any())
+%% }
+-type list_images_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_images_response() :: #{
+%%   <<"imageVersionList">> => list(image_version()),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type list_images_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_infrastructure_configurations_request() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_infrastructure_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_infrastructure_configurations_response() :: #{
+%%   <<"infrastructureConfigurationSummaryList">> => list(infrastructure_configuration_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type list_infrastructure_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lifecycle_execution_resources_request() :: #{
+%%   <<"lifecycleExecutionId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"parentResourceId">> => string()
+%% }
+-type list_lifecycle_execution_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lifecycle_execution_resources_response() :: #{
+%%   <<"lifecycleExecutionId">> => string(),
+%%   <<"lifecycleExecutionState">> => lifecycle_execution_state(),
+%%   <<"nextToken">> => string(),
+%%   <<"resources">> => list(lifecycle_execution_resource())
+%% }
+-type list_lifecycle_execution_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lifecycle_executions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type list_lifecycle_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lifecycle_executions_response() :: #{
+%%   <<"lifecycleExecutions">> => list(lifecycle_execution()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_lifecycle_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lifecycle_policies_request() :: #{
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_lifecycle_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_lifecycle_policies_response() :: #{
+%%   <<"lifecyclePolicySummaryList">> => list(lifecycle_policy_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_lifecycle_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_waiting_workflow_steps_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_waiting_workflow_steps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_waiting_workflow_steps_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"steps">> => list(workflow_step_execution())
+%% }
+-type list_waiting_workflow_steps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_build_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workflowVersionArn">> => string()
+%% }
+-type list_workflow_build_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_build_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workflowSummaryList">> => list(workflow_summary())
+%% }
+-type list_workflow_build_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_executions_request() :: #{
+%%   <<"imageBuildVersionArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_workflow_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_executions_response() :: #{
+%%   <<"imageBuildVersionArn">> => string(),
+%%   <<"message">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string(),
+%%   <<"workflowExecutions">> => list(workflow_execution_metadata())
+%% }
+-type list_workflow_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_step_executions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"workflowExecutionId">> := string()
+%% }
+-type list_workflow_step_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflow_step_executions_response() :: #{
+%%   <<"imageBuildVersionArn">> => string(),
+%%   <<"message">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"requestId">> => string(),
+%%   <<"steps">> => list(workflow_step_metadata()),
+%%   <<"workflowBuildVersionArn">> => string(),
+%%   <<"workflowExecutionId">> => string()
+%% }
+-type list_workflow_step_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflows_request() :: #{
+%%   <<"byName">> => boolean(),
+%%   <<"filters">> => list(filter()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"owner">> => list(any())
+%% }
+-type list_workflows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_workflows_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"workflowVersionList">> => list(workflow_version())
+%% }
+-type list_workflows_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% logging() :: #{
+%%   <<"s3Logs">> => s3_logs()
+%% }
+-type logging() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_resources() :: #{
+%%   <<"amis">> => list(ami()),
+%%   <<"containers">> => list(container())
+%% }
+-type output_resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% package_vulnerability_details() :: #{
+%%   <<"cvss">> => list(cvss_score()),
+%%   <<"referenceUrls">> => list(string()),
+%%   <<"relatedVulnerabilities">> => list(string()),
+%%   <<"source">> => string(),
+%%   <<"sourceUrl">> => string(),
+%%   <<"vendorCreatedAt">> => non_neg_integer(),
+%%   <<"vendorSeverity">> => string(),
+%%   <<"vendorUpdatedAt">> => non_neg_integer(),
+%%   <<"vulnerabilityId">> => string(),
+%%   <<"vulnerablePackages">> => list(vulnerable_package())
+%% }
+-type package_vulnerability_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_logging_configuration() :: #{
+%%   <<"imageLogGroupName">> => string(),
+%%   <<"pipelineLogGroupName">> => string()
+%% }
+-type pipeline_logging_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% placement() :: #{
+%%   <<"availabilityZone">> => string(),
+%%   <<"hostId">> => string(),
+%%   <<"hostResourceGroupArn">> => string(),
+%%   <<"tenancy">> => list(any())
+%% }
+-type placement() :: #{binary() => any()}.
+
+
+%% Example:
+%% product_code_list_item() :: #{
+%%   <<"productCodeId">> => string(),
+%%   <<"productCodeType">> => list(any())
+%% }
+-type product_code_list_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_component_policy_request() :: #{
+%%   <<"componentArn">> := string(),
+%%   <<"policy">> := string()
+%% }
+-type put_component_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_component_policy_response() :: #{
+%%   <<"componentArn">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type put_component_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_container_recipe_policy_request() :: #{
+%%   <<"containerRecipeArn">> := string(),
+%%   <<"policy">> := string()
+%% }
+-type put_container_recipe_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_container_recipe_policy_response() :: #{
+%%   <<"containerRecipeArn">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type put_container_recipe_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_image_policy_request() :: #{
+%%   <<"imageArn">> := string(),
+%%   <<"policy">> := string()
+%% }
+-type put_image_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_image_policy_response() :: #{
+%%   <<"imageArn">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type put_image_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_image_recipe_policy_request() :: #{
+%%   <<"imageRecipeArn">> := string(),
+%%   <<"policy">> := string()
+%% }
+-type put_image_recipe_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_image_recipe_policy_response() :: #{
+%%   <<"imageRecipeArn">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type put_image_recipe_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_image_options() :: #{
+%%   <<"secureBootEnabled">> => boolean(),
+%%   <<"uefiData">> => string()
+%% }
+-type register_image_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation() :: #{
+%%   <<"recommendation">> => remediation_recommendation()
+%% }
+-type remediation() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_recommendation() :: #{
+%%   <<"text">> => string(),
+%%   <<"url">> => string()
+%% }
+-type remediation_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_already_exists_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_pagination_token_exception() :: #{binary() => any()}.
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_dependency_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_dependency_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_state() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type resource_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_state_update_exclusion_rules() :: #{
+%%   <<"amis">> => lifecycle_policy_detail_exclusion_rules_amis()
+%% }
+-type resource_state_update_exclusion_rules() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_state_update_include_resources() :: #{
+%%   <<"amis">> => boolean(),
+%%   <<"containers">> => boolean(),
+%%   <<"snapshots">> => boolean()
+%% }
+-type resource_state_update_include_resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_image_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"imageBuildVersionArn">> := string()
+%% }
+-type retry_image_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_image_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"imageBuildVersionArn">> => string()
+%% }
+-type retry_image_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_export_configuration() :: #{
+%%   <<"diskImageFormat">> => list(any()),
+%%   <<"roleName">> => string(),
+%%   <<"s3Bucket">> => string(),
+%%   <<"s3Prefix">> => string()
+%% }
+-type s3_export_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_logs() :: #{
+%%   <<"s3BucketName">> => string(),
+%%   <<"s3KeyPrefix">> => string()
+%% }
+-type s3_logs() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule() :: #{
+%%   <<"autoDisablePolicy">> => auto_disable_policy(),
+%%   <<"pipelineExecutionStartCondition">> => list(any()),
+%%   <<"scheduleExpression">> => string(),
+%%   <<"timezone">> => string()
+%% }
+-type schedule() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_workflow_step_action_request() :: #{
+%%   <<"action">> := list(any()),
+%%   <<"clientToken">> := string(),
+%%   <<"imageBuildVersionArn">> := string(),
+%%   <<"reason">> => string(),
+%%   <<"stepExecutionId">> := string()
+%% }
+-type send_workflow_step_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_workflow_step_action_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"imageBuildVersionArn">> => string(),
+%%   <<"stepExecutionId">> => string()
+%% }
+-type send_workflow_step_action_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% severity_counts() :: #{
+%%   <<"all">> => float(),
+%%   <<"critical">> => float(),
+%%   <<"high">> => float(),
+%%   <<"medium">> => float()
+%% }
+-type severity_counts() :: #{binary() => any()}.
+
+
+%% Example:
+%% ssm_parameter_configuration() :: #{
+%%   <<"amiAccountId">> => string(),
+%%   <<"dataType">> => list(any()),
+%%   <<"parameterName">> => string()
+%% }
+-type ssm_parameter_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_image_pipeline_execution_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"imagePipelineArn">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type start_image_pipeline_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_image_pipeline_execution_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"imageBuildVersionArn">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type start_image_pipeline_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_resource_state_update_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"exclusionRules">> => resource_state_update_exclusion_rules(),
+%%   <<"executionRole">> => string(),
+%%   <<"includeResources">> => resource_state_update_include_resources(),
+%%   <<"resourceArn">> := string(),
+%%   <<"state">> := resource_state(),
+%%   <<"updateAt">> => non_neg_integer()
+%% }
+-type start_resource_state_update_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_resource_state_update_response() :: #{
+%%   <<"lifecycleExecutionId">> => string(),
+%%   <<"resourceArn">> => string()
+%% }
+-type start_resource_state_update_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% systems_manager_agent() :: #{
+%%   <<"uninstallAfterBuild">> => boolean()
+%% }
+-type systems_manager_agent() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% target_container_repository() :: #{
+%%   <<"repositoryName">> => string(),
+%%   <<"service">> => list(any())
+%% }
+-type target_container_repository() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_distribution_configuration_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"description">> => string(),
+%%   <<"distributionConfigurationArn">> := string(),
+%%   <<"distributions">> := list(distribution())
+%% }
+-type update_distribution_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_distribution_configuration_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"distributionConfigurationArn">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type update_distribution_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_image_pipeline_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"containerRecipeArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"distributionConfigurationArn">> => string(),
+%%   <<"enhancedImageMetadataEnabled">> => boolean(),
+%%   <<"executionRole">> => string(),
+%%   <<"imagePipelineArn">> := string(),
+%%   <<"imageRecipeArn">> => string(),
+%%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
+%%   <<"imageTags">> => map(),
+%%   <<"imageTestsConfiguration">> => image_tests_configuration(),
+%%   <<"infrastructureConfigurationArn">> := string(),
+%%   <<"loggingConfiguration">> => pipeline_logging_configuration(),
+%%   <<"schedule">> => schedule(),
+%%   <<"status">> => list(any()),
+%%   <<"workflows">> => list(workflow_configuration())
+%% }
+-type update_image_pipeline_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2950,395 +2744,601 @@
 
 
 %% Example:
-%% get_workflow_response() :: #{
-%%   <<"latestVersionReferences">> => latest_version_references(),
-%%   <<"workflow">> => workflow()
+%% update_infrastructure_configuration_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"description">> => string(),
+%%   <<"infrastructureConfigurationArn">> := string(),
+%%   <<"instanceMetadataOptions">> => instance_metadata_options(),
+%%   <<"instanceProfileName">> := string(),
+%%   <<"instanceTypes">> => list(string()),
+%%   <<"keyPair">> => string(),
+%%   <<"logging">> => logging(),
+%%   <<"placement">> => placement(),
+%%   <<"resourceTags">> => map(),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"snsTopicArn">> => string(),
+%%   <<"subnetId">> => string(),
+%%   <<"terminateInstanceOnFailure">> => boolean()
 %% }
--type get_workflow_response() :: #{binary() => any()}.
+-type update_infrastructure_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_infrastructure_configuration_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"infrastructureConfigurationArn">> => string(),
+%%   <<"requestId">> => string()
+%% }
+-type update_infrastructure_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_lifecycle_policy_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"description">> => string(),
+%%   <<"executionRole">> := string(),
+%%   <<"lifecyclePolicyArn">> := string(),
+%%   <<"policyDetails">> := list(lifecycle_policy_detail()),
+%%   <<"resourceSelection">> := lifecycle_policy_resource_selection(),
+%%   <<"resourceType">> := list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type update_lifecycle_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_lifecycle_policy_response() :: #{
+%%   <<"lifecyclePolicyArn">> => string()
+%% }
+-type update_lifecycle_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vulnerability_id_aggregation() :: #{
+%%   <<"severityCounts">> => severity_counts(),
+%%   <<"vulnerabilityId">> => string()
+%% }
+-type vulnerability_id_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% vulnerable_package() :: #{
+%%   <<"arch">> => string(),
+%%   <<"epoch">> => integer(),
+%%   <<"filePath">> => string(),
+%%   <<"fixedInVersion">> => string(),
+%%   <<"name">> => string(),
+%%   <<"packageManager">> => string(),
+%%   <<"release">> => string(),
+%%   <<"remediation">> => string(),
+%%   <<"sourceLayerHash">> => string(),
+%%   <<"version">> => string()
+%% }
+-type vulnerable_package() :: #{binary() => any()}.
+
+
+%% Example:
+%% windows_configuration() :: #{
+%%   <<"imageIndex">> => float()
+%% }
+-type windows_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow() :: #{
+%%   <<"arn">> => string(),
+%%   <<"changeDescription">> => string(),
+%%   <<"data">> => string(),
+%%   <<"dateCreated">> => string(),
+%%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"parameters">> => list(workflow_parameter_detail()),
+%%   <<"state">> => workflow_state(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type workflow() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_configuration() :: #{
+%%   <<"onFailure">> => list(any()),
+%%   <<"parallelGroup">> => string(),
+%%   <<"parameters">> => list(workflow_parameter()),
+%%   <<"workflowArn">> => string()
+%% }
+-type workflow_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_execution_metadata() :: #{
+%%   <<"endTime">> => string(),
+%%   <<"message">> => string(),
+%%   <<"parallelGroup">> => string(),
+%%   <<"retried">> => boolean(),
+%%   <<"startTime">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"totalStepCount">> => integer(),
+%%   <<"totalStepsFailed">> => integer(),
+%%   <<"totalStepsSkipped">> => integer(),
+%%   <<"totalStepsSucceeded">> => integer(),
+%%   <<"type">> => list(any()),
+%%   <<"workflowBuildVersionArn">> => string(),
+%%   <<"workflowExecutionId">> => string()
+%% }
+-type workflow_execution_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_parameter() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => list(string())
+%% }
+-type workflow_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_parameter_detail() :: #{
+%%   <<"defaultValue">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type workflow_parameter_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_state() :: #{
+%%   <<"reason">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type workflow_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_step_execution() :: #{
+%%   <<"action">> => string(),
+%%   <<"imageBuildVersionArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"startTime">> => string(),
+%%   <<"stepExecutionId">> => string(),
+%%   <<"workflowBuildVersionArn">> => string(),
+%%   <<"workflowExecutionId">> => string()
+%% }
+-type workflow_step_execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_step_metadata() :: #{
+%%   <<"action">> => string(),
+%%   <<"description">> => string(),
+%%   <<"endTime">> => string(),
+%%   <<"inputs">> => string(),
+%%   <<"message">> => string(),
+%%   <<"name">> => string(),
+%%   <<"outputs">> => string(),
+%%   <<"rollbackStatus">> => list(any()),
+%%   <<"startTime">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"stepExecutionId">> => string()
+%% }
+-type workflow_step_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"changeDescription">> => string(),
+%%   <<"dateCreated">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"state">> => workflow_state(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type workflow_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% workflow_version() :: #{
+%%   <<"arn">> => string(),
+%%   <<"dateCreated">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"owner">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type workflow_version() :: #{binary() => any()}.
 
 -type cancel_image_creation_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
+    resource_in_use_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type cancel_lifecycle_execution_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
+    resource_in_use_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type create_component_errors() ::
     service_unavailable_exception() | 
-    service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
-    client_exception() | 
-    invalid_parameter_combination_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception() | 
+    service_exception() | 
     resource_in_use_exception() | 
     invalid_version_number_exception() | 
-    dry_run_operation_exception().
+    invalid_request_exception() | 
+    invalid_parameter_combination_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    forbidden_exception() | 
+    dry_run_operation_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type create_container_recipe_errors() ::
-    resource_already_exists_exception() | 
     service_unavailable_exception() | 
-    service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception() | 
+    service_exception() | 
     resource_in_use_exception() | 
-    invalid_version_number_exception().
+    resource_already_exists_exception() | 
+    invalid_version_number_exception() | 
+    invalid_request_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    forbidden_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type create_distribution_configuration_errors() ::
-    resource_already_exists_exception() | 
     service_unavailable_exception() | 
-    service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
+    resource_in_use_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
     invalid_parameter_combination_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type create_image_errors() ::
     service_unavailable_exception() | 
-    service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
+    resource_in_use_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type create_image_pipeline_errors() ::
-    resource_already_exists_exception() | 
     service_unavailable_exception() | 
-    service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
+    resource_in_use_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type create_image_recipe_errors() ::
-    resource_already_exists_exception() | 
     service_unavailable_exception() | 
-    service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception() | 
+    service_exception() | 
     resource_in_use_exception() | 
-    invalid_version_number_exception().
+    resource_already_exists_exception() | 
+    invalid_version_number_exception() | 
+    invalid_request_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    forbidden_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type create_infrastructure_configuration_errors() ::
-    resource_already_exists_exception() | 
     service_unavailable_exception() | 
-    service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
+    resource_in_use_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type create_lifecycle_policy_errors() ::
-    resource_already_exists_exception() | 
     service_unavailable_exception() | 
-    service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
+    service_exception() | 
+    resource_in_use_exception() | 
+    resource_already_exists_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type create_workflow_errors() ::
     service_unavailable_exception() | 
-    service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
-    client_exception() | 
-    invalid_parameter_combination_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception() | 
+    service_exception() | 
     resource_in_use_exception() | 
     invalid_version_number_exception() | 
-    dry_run_operation_exception().
+    invalid_request_exception() | 
+    invalid_parameter_combination_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    forbidden_exception() | 
+    dry_run_operation_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type delete_component_errors() ::
-    resource_dependency_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
+    resource_dependency_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type delete_container_recipe_errors() ::
-    resource_dependency_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
+    resource_dependency_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type delete_distribution_configuration_errors() ::
-    resource_dependency_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
+    resource_dependency_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type delete_image_errors() ::
-    resource_dependency_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
+    resource_dependency_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type delete_image_pipeline_errors() ::
-    resource_dependency_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
+    resource_dependency_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type delete_image_recipe_errors() ::
-    resource_dependency_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
+    resource_dependency_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type delete_infrastructure_configuration_errors() ::
-    resource_dependency_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
+    resource_dependency_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type delete_lifecycle_policy_errors() ::
-    resource_dependency_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
+    resource_dependency_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type delete_workflow_errors() ::
-    resource_dependency_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
+    resource_dependency_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type distribute_image_errors() ::
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
-    service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
     service_quota_exceeded_exception() | 
-    invalid_request_exception() | 
+    service_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    forbidden_exception() | 
     client_exception() | 
     call_rate_limit_exceeded_exception() | 
-    too_many_requests_exception() | 
-    forbidden_exception() | 
-    resource_in_use_exception().
+    access_denied_exception().
 
 -type get_component_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_component_policy_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    invalid_request_exception() | 
+    forbidden_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type get_container_recipe_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_container_recipe_policy_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    invalid_request_exception() | 
+    forbidden_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type get_distribution_configuration_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_image_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_image_pipeline_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_image_policy_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    invalid_request_exception() | 
+    forbidden_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type get_image_recipe_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_image_recipe_policy_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    invalid_request_exception() | 
+    forbidden_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type get_infrastructure_configuration_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_lifecycle_execution_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_lifecycle_policy_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_marketplace_resource_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_workflow_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_workflow_execution_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type get_workflow_step_execution_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type import_component_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    invalid_request_exception() | 
-    client_exception() | 
-    invalid_parameter_combination_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception() | 
     resource_in_use_exception() | 
-    invalid_version_number_exception().
+    invalid_version_number_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_combination_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    forbidden_exception() | 
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type import_disk_image_errors() ::
-    access_denied_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     client_exception() | 
-    too_many_requests_exception().
+    access_denied_exception().
 
 -type import_vm_image_errors() ::
     service_unavailable_exception() | 
@@ -3346,336 +3346,336 @@
     client_exception().
 
 -type list_component_build_versions_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_components_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_container_recipes_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_distribution_configurations_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_image_build_versions_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_image_packages_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_image_pipeline_images_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_image_pipelines_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_image_recipes_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_image_scan_finding_aggregations_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_image_scan_findings_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_images_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_infrastructure_configurations_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_lifecycle_execution_resources_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_lifecycle_executions_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_lifecycle_policies_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_tags_for_resource_errors() ::
-    invalid_parameter_exception() | 
     service_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type list_waiting_workflow_steps_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_workflow_build_versions_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_workflow_executions_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_workflow_step_executions_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type list_workflows_errors() ::
-    invalid_pagination_token_exception() | 
     service_unavailable_exception() | 
     service_exception() | 
     invalid_request_exception() | 
+    invalid_pagination_token_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type put_component_policy_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type put_container_recipe_policy_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type put_image_policy_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type put_image_recipe_policy_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    invalid_parameter_value_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    forbidden_exception() | 
     client_exception() | 
-    call_rate_limit_exceeded_exception() | 
-    forbidden_exception().
+    call_rate_limit_exceeded_exception().
 
 -type retry_image_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
+    resource_in_use_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type send_workflow_step_action_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_value_exception() | 
     idempotent_parameter_mismatch_exception() | 
-    invalid_request_exception() | 
-    resource_not_found_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type start_image_pipeline_execution_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type start_resource_state_update_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
-    invalid_request_exception() | 
     resource_not_found_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type tag_resource_errors() ::
-    invalid_parameter_exception() | 
     service_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type untag_resource_errors() ::
-    invalid_parameter_exception() | 
     service_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameter_exception().
 
 -type update_distribution_configuration_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
+    resource_in_use_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
     invalid_parameter_combination_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type update_image_pipeline_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
+    resource_in_use_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type update_infrastructure_configuration_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
+    resource_in_use_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 -type update_lifecycle_policy_errors() ::
     service_unavailable_exception() | 
     service_exception() | 
-    idempotent_parameter_mismatch_exception() | 
+    resource_in_use_exception() | 
     invalid_request_exception() | 
-    client_exception() | 
     invalid_parameter_combination_exception() | 
-    call_rate_limit_exceeded_exception() | 
+    idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
-    resource_in_use_exception().
+    client_exception() | 
+    call_rate_limit_exceeded_exception().
 
 %%====================================================================
 %% API

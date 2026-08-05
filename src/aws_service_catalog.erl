@@ -200,48 +200,162 @@
 
 
 %% Example:
-%% list_tag_options_input() :: #{
-%%   <<"Filters">> => list_tag_options_filters(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string()
-%% }
--type list_tag_options_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_provisioning_artifact_output() :: #{
-%%   <<"Info">> => map(),
-%%   <<"ProvisioningArtifactDetail">> => provisioning_artifact_detail(),
-%%   <<"Status">> => list(any())
-%% }
--type create_provisioning_artifact_output() :: #{binary() => any()}.
-
-%% Example:
-%% copy_product_output() :: #{
-%%   <<"CopyProductToken">> => string()
-%% }
--type copy_product_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_provisioned_product_plans_input() :: #{
+%% accept_portfolio_share_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"AccessLevelFilter">> => access_level_filter(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"ProvisionProductId">> => string()
+%%   <<"PortfolioId">> := string(),
+%%   <<"PortfolioShareType">> => list(any())
 %% }
--type list_provisioned_product_plans_input() :: #{binary() => any()}.
+-type accept_portfolio_share_input() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_service_action_from_provisioning_artifact_output() :: #{
+%% accept_portfolio_share_output() :: #{
 
 %% }
--type disassociate_service_action_from_provisioning_artifact_output() :: #{binary() => any()}.
+-type accept_portfolio_share_output() :: #{binary() => any()}.
 
 %% Example:
-%% notify_terminate_provisioned_product_engine_workflow_result_output() :: #{
+%% access_level_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type access_level_filter() :: #{binary() => any()}.
+
+%% Example:
+%% associate_budget_with_resource_input() :: #{
+%%   <<"BudgetName">> := string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type associate_budget_with_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_budget_with_resource_output() :: #{
 
 %% }
--type notify_terminate_provisioned_product_engine_workflow_result_output() :: #{binary() => any()}.
+-type associate_budget_with_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% associate_principal_with_portfolio_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PortfolioId">> := string(),
+%%   <<"PrincipalARN">> := string(),
+%%   <<"PrincipalType">> := list(any())
+%% }
+-type associate_principal_with_portfolio_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_principal_with_portfolio_output() :: #{
+
+%% }
+-type associate_principal_with_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% associate_product_with_portfolio_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PortfolioId">> := string(),
+%%   <<"ProductId">> := string(),
+%%   <<"SourcePortfolioId">> => string()
+%% }
+-type associate_product_with_portfolio_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_product_with_portfolio_output() :: #{
+
+%% }
+-type associate_product_with_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% associate_service_action_with_provisioning_artifact_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"ProductId">> := string(),
+%%   <<"ProvisioningArtifactId">> := string(),
+%%   <<"ServiceActionId">> := string()
+%% }
+-type associate_service_action_with_provisioning_artifact_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_service_action_with_provisioning_artifact_output() :: #{
+
+%% }
+-type associate_service_action_with_provisioning_artifact_output() :: #{binary() => any()}.
+
+%% Example:
+%% associate_tag_option_with_resource_input() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"TagOptionId">> := string()
+%% }
+-type associate_tag_option_with_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_tag_option_with_resource_output() :: #{
+
+%% }
+-type associate_tag_option_with_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_service_action_with_provisioning_artifact_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"ServiceActionAssociations">> := list(service_action_association())
+%% }
+-type batch_associate_service_action_with_provisioning_artifact_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_associate_service_action_with_provisioning_artifact_output() :: #{
+%%   <<"FailedServiceActionAssociations">> => list(failed_service_action_association())
+%% }
+-type batch_associate_service_action_with_provisioning_artifact_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_service_action_from_provisioning_artifact_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"ServiceActionAssociations">> := list(service_action_association())
+%% }
+-type batch_disassociate_service_action_from_provisioning_artifact_input() :: #{binary() => any()}.
+
+%% Example:
+%% batch_disassociate_service_action_from_provisioning_artifact_output() :: #{
+%%   <<"FailedServiceActionAssociations">> => list(failed_service_action_association())
+%% }
+-type batch_disassociate_service_action_from_provisioning_artifact_output() :: #{binary() => any()}.
+
+%% Example:
+%% budget_detail() :: #{
+%%   <<"BudgetName">> => string()
+%% }
+-type budget_detail() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_dashboard() :: #{
+%%   <<"Name">> => string()
+%% }
+-type cloud_watch_dashboard() :: #{binary() => any()}.
+
+%% Example:
+%% code_star_parameters() :: #{
+%%   <<"ArtifactPath">> => string(),
+%%   <<"Branch">> => string(),
+%%   <<"ConnectionArn">> => string(),
+%%   <<"Repository">> => string()
+%% }
+-type code_star_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% constraint_detail() :: #{
+%%   <<"ConstraintId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"PortfolioId">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type constraint_detail() :: #{binary() => any()}.
+
+%% Example:
+%% constraint_summary() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type constraint_summary() :: #{binary() => any()}.
 
 %% Example:
 %% copy_product_input() :: #{
@@ -256,10 +370,164 @@
 -type copy_product_input() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_budget_from_resource_output() :: #{
-
+%% copy_product_output() :: #{
+%%   <<"CopyProductToken">> => string()
 %% }
--type disassociate_budget_from_resource_output() :: #{binary() => any()}.
+-type copy_product_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_constraint_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"Parameters">> := string(),
+%%   <<"PortfolioId">> := string(),
+%%   <<"ProductId">> := string(),
+%%   <<"Type">> := string()
+%% }
+-type create_constraint_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_constraint_output() :: #{
+%%   <<"ConstraintDetail">> => constraint_detail(),
+%%   <<"ConstraintParameters">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type create_constraint_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_portfolio_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> := string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"ProviderName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_portfolio_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_portfolio_output() :: #{
+%%   <<"PortfolioDetail">> => portfolio_detail(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_portfolio_share_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"AccountId">> => string(),
+%%   <<"OrganizationNode">> => organization_node(),
+%%   <<"PortfolioId">> := string(),
+%%   <<"SharePrincipals">> => boolean(),
+%%   <<"ShareTagOptions">> => boolean()
+%% }
+-type create_portfolio_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_portfolio_share_output() :: #{
+%%   <<"PortfolioShareToken">> => string()
+%% }
+-type create_portfolio_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_product_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Distributor">> => string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Owner">> := string(),
+%%   <<"ProductType">> := list(any()),
+%%   <<"ProvisioningArtifactParameters">> => provisioning_artifact_properties(),
+%%   <<"SourceConnection">> => source_connection(),
+%%   <<"SupportDescription">> => string(),
+%%   <<"SupportEmail">> => string(),
+%%   <<"SupportUrl">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_product_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_product_output() :: #{
+%%   <<"ProductViewDetail">> => product_view_detail(),
+%%   <<"ProvisioningArtifactDetail">> => provisioning_artifact_detail(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_product_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_provisioned_product_plan_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"NotificationArns">> => list(string()),
+%%   <<"PathId">> => string(),
+%%   <<"PlanName">> := string(),
+%%   <<"PlanType">> := list(any()),
+%%   <<"ProductId">> := string(),
+%%   <<"ProvisionedProductName">> := string(),
+%%   <<"ProvisioningArtifactId">> := string(),
+%%   <<"ProvisioningParameters">> => list(update_provisioning_parameter()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_provisioned_product_plan_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_provisioned_product_plan_output() :: #{
+%%   <<"PlanId">> => string(),
+%%   <<"PlanName">> => string(),
+%%   <<"ProvisionProductId">> => string(),
+%%   <<"ProvisionedProductName">> => string(),
+%%   <<"ProvisioningArtifactId">> => string()
+%% }
+-type create_provisioned_product_plan_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_provisioning_artifact_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"Parameters">> := provisioning_artifact_properties(),
+%%   <<"ProductId">> := string()
+%% }
+-type create_provisioning_artifact_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_provisioning_artifact_output() :: #{
+%%   <<"Info">> => map(),
+%%   <<"ProvisioningArtifactDetail">> => provisioning_artifact_detail(),
+%%   <<"Status">> => list(any())
+%% }
+-type create_provisioning_artifact_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_action_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Definition">> := map(),
+%%   <<"DefinitionType">> := list(any()),
+%%   <<"Description">> => string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_service_action_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_service_action_output() :: #{
+%%   <<"ServiceActionDetail">> => service_action_detail()
+%% }
+-type create_service_action_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_tag_option_input() :: #{
+%%   <<"Key">> := string(),
+%%   <<"Value">> := string()
+%% }
+-type create_tag_option_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_tag_option_output() :: #{
+%%   <<"TagOptionDetail">> => tag_option_detail()
+%% }
+-type create_tag_option_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_constraint_input() :: #{
@@ -269,79 +537,23 @@
 -type delete_constraint_input() :: #{binary() => any()}.
 
 %% Example:
-%% accept_portfolio_share_input() :: #{
+%% delete_constraint_output() :: #{
+
+%% }
+-type delete_constraint_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_portfolio_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"PortfolioId">> := string(),
-%%   <<"PortfolioShareType">> => list(any())
+%%   <<"Id">> := string()
 %% }
--type accept_portfolio_share_input() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_tag_option_from_resource_output() :: #{
-
-%% }
--type disassociate_tag_option_from_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_provisioning_artifacts_for_service_action_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"ProvisioningArtifactViews">> => list(provisioning_artifact_view())
-%% }
--type list_provisioning_artifacts_for_service_action_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_accepted_portfolio_shares_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"PortfolioShareType">> => list(any())
-%% }
--type list_accepted_portfolio_shares_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_portfolio_share_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"AccountId">> => string(),
-%%   <<"OrganizationNode">> => organization_node(),
-%%   <<"PortfolioId">> := string(),
-%%   <<"SharePrincipals">> => boolean(),
-%%   <<"ShareTagOptions">> => boolean()
-%% }
--type update_portfolio_share_input() :: #{binary() => any()}.
+-type delete_portfolio_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_portfolio_output() :: #{
 
 %% }
 -type delete_portfolio_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_constraints_for_portfolio_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"PortfolioId">> := string(),
-%%   <<"ProductId">> => string()
-%% }
--type list_constraints_for_portfolio_input() :: #{binary() => any()}.
-
-%% Example:
-%% associate_service_action_with_provisioning_artifact_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"ProductId">> := string(),
-%%   <<"ProvisioningArtifactId">> := string(),
-%%   <<"ServiceActionId">> := string()
-%% }
--type associate_service_action_with_provisioning_artifact_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_constraint_output() :: #{
-%%   <<"ConstraintDetail">> => constraint_detail(),
-%%   <<"ConstraintParameters">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_constraint_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_portfolio_share_input() :: #{
@@ -353,16 +565,258 @@
 -type delete_portfolio_share_input() :: #{binary() => any()}.
 
 %% Example:
-%% parameter_constraints() :: #{
-%%   <<"AllowedPattern">> => string(),
-%%   <<"AllowedValues">> => list(string()),
-%%   <<"ConstraintDescription">> => string(),
-%%   <<"MaxLength">> => string(),
-%%   <<"MaxValue">> => string(),
-%%   <<"MinLength">> => string(),
-%%   <<"MinValue">> => string()
+%% delete_portfolio_share_output() :: #{
+%%   <<"PortfolioShareToken">> => string()
 %% }
--type parameter_constraints() :: #{binary() => any()}.
+-type delete_portfolio_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_product_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type delete_product_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_product_output() :: #{
+
+%% }
+-type delete_product_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_provisioned_product_plan_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"IgnoreErrors">> => boolean(),
+%%   <<"PlanId">> := string()
+%% }
+-type delete_provisioned_product_plan_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_provisioned_product_plan_output() :: #{
+
+%% }
+-type delete_provisioned_product_plan_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_provisioning_artifact_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"ProductId">> := string(),
+%%   <<"ProvisioningArtifactId">> := string()
+%% }
+-type delete_provisioning_artifact_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_provisioning_artifact_output() :: #{
+
+%% }
+-type delete_provisioning_artifact_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_action_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"IdempotencyToken">> => string()
+%% }
+-type delete_service_action_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_action_output() :: #{
+
+%% }
+-type delete_service_action_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tag_option_input() :: #{
+%%   <<"Id">> := string()
+%% }
+-type delete_tag_option_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_tag_option_output() :: #{
+
+%% }
+-type delete_tag_option_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_constraint_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type describe_constraint_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_constraint_output() :: #{
+%%   <<"ConstraintDetail">> => constraint_detail(),
+%%   <<"ConstraintParameters">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_constraint_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_copy_product_status_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"CopyProductToken">> := string()
+%% }
+-type describe_copy_product_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_copy_product_status_output() :: #{
+%%   <<"CopyProductStatus">> => list(any()),
+%%   <<"StatusDetail">> => string(),
+%%   <<"TargetProductId">> => string()
+%% }
+-type describe_copy_product_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_portfolio_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type describe_portfolio_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_portfolio_output() :: #{
+%%   <<"Budgets">> => list(budget_detail()),
+%%   <<"PortfolioDetail">> => portfolio_detail(),
+%%   <<"TagOptions">> => list(tag_option_detail()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type describe_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_portfolio_share_status_input() :: #{
+%%   <<"PortfolioShareToken">> := string()
+%% }
+-type describe_portfolio_share_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_portfolio_share_status_output() :: #{
+%%   <<"OrganizationNodeValue">> => string(),
+%%   <<"PortfolioId">> => string(),
+%%   <<"PortfolioShareToken">> => string(),
+%%   <<"ShareDetails">> => share_details(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_portfolio_share_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_portfolio_shares_input() :: #{
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"PortfolioId">> := string(),
+%%   <<"Type">> := list(any())
+%% }
+-type describe_portfolio_shares_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_portfolio_shares_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"PortfolioShareDetails">> => list(portfolio_share_detail())
+%% }
+-type describe_portfolio_shares_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_product_as_admin_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SourcePortfolioId">> => string()
+%% }
+-type describe_product_as_admin_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_product_as_admin_output() :: #{
+%%   <<"Budgets">> => list(budget_detail()),
+%%   <<"ProductViewDetail">> => product_view_detail(),
+%%   <<"ProvisioningArtifactSummaries">> => list(provisioning_artifact_summary()),
+%%   <<"TagOptions">> => list(tag_option_detail()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type describe_product_as_admin_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_product_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type describe_product_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_product_output() :: #{
+%%   <<"Budgets">> => list(budget_detail()),
+%%   <<"LaunchPaths">> => list(launch_path()),
+%%   <<"ProductViewSummary">> => product_view_summary(),
+%%   <<"ProvisioningArtifacts">> => list(provisioning_artifact())
+%% }
+-type describe_product_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_product_view_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type describe_product_view_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_product_view_output() :: #{
+%%   <<"ProductViewSummary">> => product_view_summary(),
+%%   <<"ProvisioningArtifacts">> => list(provisioning_artifact())
+%% }
+-type describe_product_view_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_provisioned_product_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type describe_provisioned_product_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_provisioned_product_output() :: #{
+%%   <<"CloudWatchDashboards">> => list(cloud_watch_dashboard()),
+%%   <<"ProvisionedProductDetail">> => provisioned_product_detail()
+%% }
+-type describe_provisioned_product_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_provisioned_product_plan_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"PlanId">> := string()
+%% }
+-type describe_provisioned_product_plan_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_provisioned_product_plan_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"ProvisionedProductPlanDetails">> => provisioned_product_plan_details(),
+%%   <<"ResourceChanges">> => list(resource_change())
+%% }
+-type describe_provisioned_product_plan_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_provisioning_artifact_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"IncludeProvisioningArtifactParameters">> => boolean(),
+%%   <<"ProductId">> => string(),
+%%   <<"ProductName">> => string(),
+%%   <<"ProvisioningArtifactId">> => string(),
+%%   <<"ProvisioningArtifactName">> => string(),
+%%   <<"Verbose">> => boolean()
+%% }
+-type describe_provisioning_artifact_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_provisioning_artifact_output() :: #{
+%%   <<"Info">> => map(),
+%%   <<"ProvisioningArtifactDetail">> => provisioning_artifact_detail(),
+%%   <<"ProvisioningArtifactParameters">> => list(provisioning_artifact_parameter()),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_provisioning_artifact_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_provisioning_parameters_input() :: #{
@@ -377,63 +831,6 @@
 -type describe_provisioning_parameters_input() :: #{binary() => any()}.
 
 %% Example:
-%% provisioned_product_detail() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Id">> => string(),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"LastProvisioningRecordId">> => string(),
-%%   <<"LastRecordId">> => string(),
-%%   <<"LastSuccessfulProvisioningRecordId">> => string(),
-%%   <<"LaunchRoleArn">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ProductId">> => string(),
-%%   <<"ProvisioningArtifactId">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"StatusMessage">> => string(),
-%%   <<"Type">> => string()
-%% }
--type provisioned_product_detail() :: #{binary() => any()}.
-
-%% Example:
-%% describe_product_output() :: #{
-%%   <<"Budgets">> => list(budget_detail()),
-%%   <<"LaunchPaths">> => list(launch_path()),
-%%   <<"ProductViewSummary">> => product_view_summary(),
-%%   <<"ProvisioningArtifacts">> => list(provisioning_artifact())
-%% }
--type describe_product_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_provisioned_product_outputs_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"Outputs">> => list(record_output())
-%% }
--type get_provisioned_product_outputs_output() :: #{binary() => any()}.
-
-%% Example:
-%% provisioning_artifact_properties() :: #{
-%%   <<"Description">> => string(),
-%%   <<"DisableTemplateValidation">> => boolean(),
-%%   <<"Info">> => map(),
-%%   <<"Name">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type provisioning_artifact_properties() :: #{binary() => any()}.
-
-%% Example:
-%% engine_workflow_resource_identifier() :: #{
-%%   <<"UniqueTag">> => unique_tag_resource_identifier()
-%% }
--type engine_workflow_resource_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% resource_in_use_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_in_use_exception() :: #{binary() => any()}.
-
-%% Example:
 %% describe_provisioning_parameters_output() :: #{
 %%   <<"ConstraintSummaries">> => list(constraint_summary()),
 %%   <<"ProvisioningArtifactOutputKeys">> => list(provisioning_artifact_output()),
@@ -446,10 +843,94 @@
 -type describe_provisioning_parameters_output() :: #{binary() => any()}.
 
 %% Example:
-%% get_aws_organizations_access_status_output() :: #{
-%%   <<"AccessStatus">> => list(any())
+%% describe_record_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string()
 %% }
--type get_aws_organizations_access_status_output() :: #{binary() => any()}.
+-type describe_record_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_record_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"RecordDetail">> => record_detail(),
+%%   <<"RecordOutputs">> => list(record_output())
+%% }
+-type describe_record_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_action_execution_parameters_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"ProvisionedProductId">> := string(),
+%%   <<"ServiceActionId">> := string()
+%% }
+-type describe_service_action_execution_parameters_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_action_execution_parameters_output() :: #{
+%%   <<"ServiceActionParameters">> => list(execution_parameter())
+%% }
+-type describe_service_action_execution_parameters_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_action_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Id">> := string()
+%% }
+-type describe_service_action_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_action_output() :: #{
+%%   <<"ServiceActionDetail">> => service_action_detail()
+%% }
+-type describe_service_action_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tag_option_input() :: #{
+%%   <<"Id">> := string()
+%% }
+-type describe_tag_option_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tag_option_output() :: #{
+%%   <<"TagOptionDetail">> => tag_option_detail()
+%% }
+-type describe_tag_option_output() :: #{binary() => any()}.
+
+%% Example:
+%% disable_aws_organizations_access_input() :: #{
+
+%% }
+-type disable_aws_organizations_access_input() :: #{binary() => any()}.
+
+%% Example:
+%% disable_aws_organizations_access_output() :: #{
+
+%% }
+-type disable_aws_organizations_access_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_budget_from_resource_input() :: #{
+%%   <<"BudgetName">> := string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type disassociate_budget_from_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_budget_from_resource_output() :: #{
+
+%% }
+-type disassociate_budget_from_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_principal_from_portfolio_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PortfolioId">> := string(),
+%%   <<"PrincipalARN">> := string(),
+%%   <<"PrincipalType">> => list(any())
+%% }
+-type disassociate_principal_from_portfolio_input() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_principal_from_portfolio_output() :: #{
@@ -458,26 +939,292 @@
 -type disassociate_principal_from_portfolio_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_product_view_output() :: #{
-%%   <<"ProductViewSummary">> => product_view_summary(),
-%%   <<"ProvisioningArtifacts">> => list(provisioning_artifact())
+%% disassociate_product_from_portfolio_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PortfolioId">> := string(),
+%%   <<"ProductId">> := string()
 %% }
--type describe_product_view_output() :: #{binary() => any()}.
+-type disassociate_product_from_portfolio_input() :: #{binary() => any()}.
 
 %% Example:
-%% list_principals_for_portfolio_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"PortfolioId">> := string()
+%% disassociate_product_from_portfolio_output() :: #{
+
 %% }
--type list_principals_for_portfolio_input() :: #{binary() => any()}.
+-type disassociate_product_from_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_service_action_from_provisioning_artifact_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"ProductId">> := string(),
+%%   <<"ProvisioningArtifactId">> := string(),
+%%   <<"ServiceActionId">> := string()
+%% }
+-type disassociate_service_action_from_provisioning_artifact_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_service_action_from_provisioning_artifact_output() :: #{
+
+%% }
+-type disassociate_service_action_from_provisioning_artifact_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_tag_option_from_resource_input() :: #{
+%%   <<"ResourceId">> := string(),
+%%   <<"TagOptionId">> := string()
+%% }
+-type disassociate_tag_option_from_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_tag_option_from_resource_output() :: #{
+
+%% }
+-type disassociate_tag_option_from_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% duplicate_resource_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type duplicate_resource_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_aws_organizations_access_input() :: #{
+
+%% }
+-type enable_aws_organizations_access_input() :: #{binary() => any()}.
+
+%% Example:
+%% enable_aws_organizations_access_output() :: #{
+
+%% }
+-type enable_aws_organizations_access_output() :: #{binary() => any()}.
+
+%% Example:
+%% engine_workflow_resource_identifier() :: #{
+%%   <<"UniqueTag">> => unique_tag_resource_identifier()
+%% }
+-type engine_workflow_resource_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% execute_provisioned_product_plan_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"PlanId">> := string()
+%% }
+-type execute_provisioned_product_plan_input() :: #{binary() => any()}.
+
+%% Example:
+%% execute_provisioned_product_plan_output() :: #{
+%%   <<"RecordDetail">> => record_detail()
+%% }
+-type execute_provisioned_product_plan_output() :: #{binary() => any()}.
+
+%% Example:
+%% execute_provisioned_product_service_action_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"ExecuteToken">> := string(),
+%%   <<"Parameters">> => map(),
+%%   <<"ProvisionedProductId">> := string(),
+%%   <<"ServiceActionId">> := string()
+%% }
+-type execute_provisioned_product_service_action_input() :: #{binary() => any()}.
 
 %% Example:
 %% execute_provisioned_product_service_action_output() :: #{
 %%   <<"RecordDetail">> => record_detail()
 %% }
 -type execute_provisioned_product_service_action_output() :: #{binary() => any()}.
+
+%% Example:
+%% execution_parameter() :: #{
+%%   <<"DefaultValues">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type execution_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% failed_service_action_association() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"ProvisioningArtifactId">> => string(),
+%%   <<"ServiceActionId">> => string()
+%% }
+-type failed_service_action_association() :: #{binary() => any()}.
+
+%% Example:
+%% get_aws_organizations_access_status_input() :: #{
+
+%% }
+-type get_aws_organizations_access_status_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_aws_organizations_access_status_output() :: #{
+%%   <<"AccessStatus">> => list(any())
+%% }
+-type get_aws_organizations_access_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_provisioned_product_outputs_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"OutputKeys">> => list(string()),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"ProvisionedProductId">> => string(),
+%%   <<"ProvisionedProductName">> => string()
+%% }
+-type get_provisioned_product_outputs_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_provisioned_product_outputs_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"Outputs">> => list(record_output())
+%% }
+-type get_provisioned_product_outputs_output() :: #{binary() => any()}.
+
+%% Example:
+%% import_as_provisioned_product_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"PhysicalId">> := string(),
+%%   <<"ProductId">> := string(),
+%%   <<"ProvisionedProductName">> := string(),
+%%   <<"ProvisioningArtifactId">> := string()
+%% }
+-type import_as_provisioned_product_input() :: #{binary() => any()}.
+
+%% Example:
+%% import_as_provisioned_product_output() :: #{
+%%   <<"RecordDetail">> => record_detail()
+%% }
+-type import_as_provisioned_product_output() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_parameters_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_parameters_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_state_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_state_exception() :: #{binary() => any()}.
+
+%% Example:
+%% last_sync() :: #{
+%%   <<"LastSuccessfulSyncProvisioningArtifactId">> => string(),
+%%   <<"LastSuccessfulSyncTime">> => non_neg_integer(),
+%%   <<"LastSyncStatus">> => list(any()),
+%%   <<"LastSyncStatusMessage">> => string(),
+%%   <<"LastSyncTime">> => non_neg_integer()
+%% }
+-type last_sync() :: #{binary() => any()}.
+
+%% Example:
+%% launch_path() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type launch_path() :: #{binary() => any()}.
+
+%% Example:
+%% launch_path_summary() :: #{
+%%   <<"ConstraintSummaries">> => list(constraint_summary()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type launch_path_summary() :: #{binary() => any()}.
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_accepted_portfolio_shares_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"PortfolioShareType">> => list(any())
+%% }
+-type list_accepted_portfolio_shares_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_accepted_portfolio_shares_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"PortfolioDetails">> => list(portfolio_detail())
+%% }
+-type list_accepted_portfolio_shares_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_budgets_for_resource_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"ResourceId">> := string()
+%% }
+-type list_budgets_for_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_budgets_for_resource_output() :: #{
+%%   <<"Budgets">> => list(budget_detail()),
+%%   <<"NextPageToken">> => string()
+%% }
+-type list_budgets_for_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_constraints_for_portfolio_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"PortfolioId">> := string(),
+%%   <<"ProductId">> => string()
+%% }
+-type list_constraints_for_portfolio_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_constraints_for_portfolio_output() :: #{
+%%   <<"ConstraintDetails">> => list(constraint_detail()),
+%%   <<"NextPageToken">> => string()
+%% }
+-type list_constraints_for_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_launch_paths_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"ProductId">> := string()
+%% }
+-type list_launch_paths_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_launch_paths_output() :: #{
+%%   <<"LaunchPathSummaries">> => list(launch_path_summary()),
+%%   <<"NextPageToken">> => string()
+%% }
+-type list_launch_paths_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_organization_portfolio_access_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"OrganizationNodeType">> := list(any()),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"PortfolioId">> := string()
+%% }
+-type list_organization_portfolio_access_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_organization_portfolio_access_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"OrganizationNodes">> => list(organization_node())
+%% }
+-type list_organization_portfolio_access_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_portfolio_access_input() :: #{
@@ -490,48 +1237,75 @@
 -type list_portfolio_access_input() :: #{binary() => any()}.
 
 %% Example:
-%% execute_provisioned_product_plan_output() :: #{
-%%   <<"RecordDetail">> => record_detail()
+%% list_portfolio_access_output() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"NextPageToken">> => string()
 %% }
--type execute_provisioned_product_plan_output() :: #{binary() => any()}.
+-type list_portfolio_access_output() :: #{binary() => any()}.
 
 %% Example:
-%% associate_product_with_portfolio_output() :: #{
-
-%% }
--type associate_product_with_portfolio_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_constraint_output() :: #{
-%%   <<"ConstraintDetail">> => constraint_detail(),
-%%   <<"ConstraintParameters">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type create_constraint_output() :: #{binary() => any()}.
-
-%% Example:
-%% associate_product_with_portfolio_input() :: #{
+%% list_portfolios_for_product_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"PortfolioId">> := string(),
-%%   <<"ProductId">> := string(),
-%%   <<"SourcePortfolioId">> => string()
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"ProductId">> := string()
 %% }
--type associate_product_with_portfolio_input() :: #{binary() => any()}.
+-type list_portfolios_for_product_input() :: #{binary() => any()}.
 
 %% Example:
-%% share_details() :: #{
-%%   <<"ShareErrors">> => list(share_error()),
-%%   <<"SuccessfulShares">> => list(string())
+%% list_portfolios_for_product_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"PortfolioDetails">> => list(portfolio_detail())
 %% }
--type share_details() :: #{binary() => any()}.
+-type list_portfolios_for_product_output() :: #{binary() => any()}.
 
 %% Example:
-%% resource_target_definition() :: #{
-%%   <<"Attribute">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"RequiresRecreation">> => list(any())
+%% list_portfolios_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string()
 %% }
--type resource_target_definition() :: #{binary() => any()}.
+-type list_portfolios_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_portfolios_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"PortfolioDetails">> => list(portfolio_detail())
+%% }
+-type list_portfolios_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_principals_for_portfolio_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"PortfolioId">> := string()
+%% }
+-type list_principals_for_portfolio_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_principals_for_portfolio_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"Principals">> => list(principal())
+%% }
+-type list_principals_for_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_provisioned_product_plans_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"AccessLevelFilter">> => access_level_filter(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"ProvisionProductId">> => string()
+%% }
+-type list_provisioned_product_plans_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_provisioned_product_plans_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"ProvisionedProductPlans">> => list(provisioned_product_plan_summary())
+%% }
+-type list_provisioned_product_plans_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_provisioning_artifacts_for_service_action_input() :: #{
@@ -543,61 +1317,42 @@
 -type list_provisioning_artifacts_for_service_action_input() :: #{binary() => any()}.
 
 %% Example:
-%% service_action_summary() :: #{
-%%   <<"DefinitionType">> => list(any()),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
+%% list_provisioning_artifacts_for_service_action_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"ProvisioningArtifactViews">> => list(provisioning_artifact_view())
 %% }
--type service_action_summary() :: #{binary() => any()}.
+-type list_provisioning_artifacts_for_service_action_output() :: #{binary() => any()}.
 
 %% Example:
-%% describe_tag_option_input() :: #{
-%%   <<"Id">> := string()
-%% }
--type describe_tag_option_input() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_provisioned_product_input() :: #{
+%% list_provisioning_artifacts_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"IgnoreErrors">> => boolean(),
-%%   <<"ProvisionedProductId">> => string(),
-%%   <<"ProvisionedProductName">> => string(),
-%%   <<"RetainPhysicalResources">> => boolean(),
-%%   <<"TerminateToken">> := string()
+%%   <<"ProductId">> := string()
 %% }
--type terminate_provisioned_product_input() :: #{binary() => any()}.
+-type list_provisioning_artifacts_input() :: #{binary() => any()}.
 
 %% Example:
-%% describe_portfolio_output() :: #{
-%%   <<"Budgets">> => list(budget_detail()),
-%%   <<"PortfolioDetail">> => portfolio_detail(),
-%%   <<"TagOptions">> => list(tag_option_detail()),
-%%   <<"Tags">> => list(tag())
-%% }
--type describe_portfolio_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_organization_portfolio_access_output() :: #{
+%% list_provisioning_artifacts_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"OrganizationNodes">> => list(organization_node())
+%%   <<"ProvisioningArtifactDetails">> => list(provisioning_artifact_detail())
 %% }
--type list_organization_portfolio_access_output() :: #{binary() => any()}.
+-type list_provisioning_artifacts_output() :: #{binary() => any()}.
 
 %% Example:
-%% search_products_as_admin_output() :: #{
+%% list_record_history_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"AccessLevelFilter">> => access_level_filter(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"SearchFilter">> => list_record_history_search_filter()
+%% }
+-type list_record_history_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_record_history_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"ProductViewDetails">> => list(product_view_detail())
+%%   <<"RecordDetails">> => list(record_detail())
 %% }
--type search_products_as_admin_output() :: #{binary() => any()}.
-
-%% Example:
-%% source_connection_detail() :: #{
-%%   <<"ConnectionParameters">> => source_connection_parameters(),
-%%   <<"LastSync">> => last_sync(),
-%%   <<"Type">> => list(any())
-%% }
--type source_connection_detail() :: #{binary() => any()}.
+-type list_record_history_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_record_history_search_filter() :: #{
@@ -607,215 +1362,68 @@
 -type list_record_history_search_filter() :: #{binary() => any()}.
 
 %% Example:
-%% principal() :: #{
-%%   <<"PrincipalARN">> => string(),
-%%   <<"PrincipalType">> => list(any())
+%% list_resources_for_tag_option_input() :: #{
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"TagOptionId">> := string()
 %% }
--type principal() :: #{binary() => any()}.
+-type list_resources_for_tag_option_input() :: #{binary() => any()}.
 
 %% Example:
-%% disable_aws_organizations_access_output() :: #{
-
+%% list_resources_for_tag_option_output() :: #{
+%%   <<"PageToken">> => string(),
+%%   <<"ResourceDetails">> => list(resource_detail())
 %% }
--type disable_aws_organizations_access_output() :: #{binary() => any()}.
+-type list_resources_for_tag_option_output() :: #{binary() => any()}.
 
 %% Example:
-%% product_view_aggregation_value() :: #{
-%%   <<"ApproximateCount">> => integer(),
-%%   <<"Value">> => string()
-%% }
--type product_view_aggregation_value() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_state_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_state_exception() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_action_input() :: #{
+%% list_service_actions_for_provisioning_artifact_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"IdempotencyToken">> => string()
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"ProductId">> := string(),
+%%   <<"ProvisioningArtifactId">> := string()
 %% }
--type delete_service_action_input() :: #{binary() => any()}.
+-type list_service_actions_for_provisioning_artifact_input() :: #{binary() => any()}.
 
 %% Example:
-%% batch_disassociate_service_action_from_provisioning_artifact_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"ServiceActionAssociations">> := list(service_action_association())
-%% }
--type batch_disassociate_service_action_from_provisioning_artifact_input() :: #{binary() => any()}.
-
-%% Example:
-%% usage_instruction() :: #{
-%%   <<"Type">> => string(),
-%%   <<"Value">> => string()
-%% }
--type usage_instruction() :: #{binary() => any()}.
-
-%% Example:
-%% describe_service_action_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Id">> := string()
-%% }
--type describe_service_action_input() :: #{binary() => any()}.
-
-%% Example:
-%% disable_aws_organizations_access_input() :: #{
-
-%% }
--type disable_aws_organizations_access_input() :: #{binary() => any()}.
-
-%% Example:
-%% stack_instance() :: #{
-%%   <<"Account">> => string(),
-%%   <<"Region">> => string(),
-%%   <<"StackInstanceStatus">> => list(any())
-%% }
--type stack_instance() :: #{binary() => any()}.
-
-%% Example:
-%% delete_portfolio_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Id">> := string()
-%% }
--type delete_portfolio_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_portfolio_output() :: #{
-%%   <<"PortfolioDetail">> => portfolio_detail(),
-%%   <<"Tags">> => list(tag())
-%% }
--type update_portfolio_output() :: #{binary() => any()}.
-
-%% Example:
-%% budget_detail() :: #{
-%%   <<"BudgetName">> => string()
-%% }
--type budget_detail() :: #{binary() => any()}.
-
-%% Example:
-%% describe_provisioning_artifact_output() :: #{
-%%   <<"Info">> => map(),
-%%   <<"ProvisioningArtifactDetail">> => provisioning_artifact_detail(),
-%%   <<"ProvisioningArtifactParameters">> => list(provisioning_artifact_parameter()),
-%%   <<"Status">> => list(any())
-%% }
--type describe_provisioning_artifact_output() :: #{binary() => any()}.
-
-%% Example:
-%% unique_tag_resource_identifier() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type unique_tag_resource_identifier() :: #{binary() => any()}.
-
-%% Example:
-%% provisioning_artifact_summary() :: #{
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"ProvisioningArtifactMetadata">> => map()
-%% }
--type provisioning_artifact_summary() :: #{binary() => any()}.
-
-%% Example:
-%% associate_budget_with_resource_output() :: #{
-
-%% }
--type associate_budget_with_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_principals_for_portfolio_output() :: #{
+%% list_service_actions_for_provisioning_artifact_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"Principals">> => list(principal())
+%%   <<"ServiceActionSummaries">> => list(service_action_summary())
 %% }
--type list_principals_for_portfolio_output() :: #{binary() => any()}.
+-type list_service_actions_for_provisioning_artifact_output() :: #{binary() => any()}.
 
 %% Example:
-%% create_tag_option_output() :: #{
-%%   <<"TagOptionDetail">> => tag_option_detail()
-%% }
--type create_tag_option_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_product_view_input() :: #{
+%% list_service_actions_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"Id">> := string()
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string()
 %% }
--type describe_product_view_input() :: #{binary() => any()}.
+-type list_service_actions_input() :: #{binary() => any()}.
 
 %% Example:
-%% batch_associate_service_action_with_provisioning_artifact_input() :: #{
+%% list_service_actions_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"ServiceActionSummaries">> => list(service_action_summary())
+%% }
+-type list_service_actions_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_stack_instances_for_provisioned_product_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"ServiceActionAssociations">> := list(service_action_association())
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"ProvisionedProductId">> := string()
 %% }
--type batch_associate_service_action_with_provisioning_artifact_input() :: #{binary() => any()}.
+-type list_stack_instances_for_provisioned_product_input() :: #{binary() => any()}.
 
 %% Example:
-%% constraint_summary() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Type">> => string()
+%% list_stack_instances_for_provisioned_product_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"StackInstances">> => list(stack_instance())
 %% }
--type constraint_summary() :: #{binary() => any()}.
-
-%% Example:
-%% source_connection() :: #{
-%%   <<"ConnectionParameters">> => source_connection_parameters(),
-%%   <<"Type">> => list(any())
-%% }
--type source_connection() :: #{binary() => any()}.
-
-%% Example:
-%% describe_tag_option_output() :: #{
-%%   <<"TagOptionDetail">> => tag_option_detail()
-%% }
--type describe_tag_option_output() :: #{binary() => any()}.
-
-%% Example:
-%% notify_provision_product_engine_workflow_result_output() :: #{
-
-%% }
--type notify_provision_product_engine_workflow_result_output() :: #{binary() => any()}.
-
-%% Example:
-%% import_as_provisioned_product_output() :: #{
-%%   <<"RecordDetail">> => record_detail()
-%% }
--type import_as_provisioned_product_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_product_output() :: #{
-%%   <<"ProductViewDetail">> => product_view_detail(),
-%%   <<"Tags">> => list(tag())
-%% }
--type update_product_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_portfolio_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Id">> := string()
-%% }
--type describe_portfolio_input() :: #{binary() => any()}.
-
-%% Example:
-%% notify_update_provisioned_product_engine_workflow_result_output() :: #{
-
-%% }
--type notify_update_provisioned_product_engine_workflow_result_output() :: #{binary() => any()}.
-
-%% Example:
-%% provisioned_product_plan_summary() :: #{
-%%   <<"PlanId">> => string(),
-%%   <<"PlanName">> => string(),
-%%   <<"PlanType">> => list(any()),
-%%   <<"ProvisionProductId">> => string(),
-%%   <<"ProvisionProductName">> => string(),
-%%   <<"ProvisioningArtifactId">> => string()
-%% }
--type provisioned_product_plan_summary() :: #{binary() => any()}.
+-type list_stack_instances_for_provisioned_product_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_tag_options_filters() :: #{
@@ -826,156 +1434,37 @@
 -type list_tag_options_filters() :: #{binary() => any()}.
 
 %% Example:
-%% code_star_parameters() :: #{
-%%   <<"ArtifactPath">> => string(),
-%%   <<"Branch">> => string(),
-%%   <<"ConnectionArn">> => string(),
-%%   <<"Repository">> => string()
-%% }
--type code_star_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% delete_product_output() :: #{
-
-%% }
--type delete_product_output() :: #{binary() => any()}.
-
-%% Example:
-%% service_action_association() :: #{
-%%   <<"ProductId">> => string(),
-%%   <<"ProvisioningArtifactId">> => string(),
-%%   <<"ServiceActionId">> => string()
-%% }
--type service_action_association() :: #{binary() => any()}.
-
-%% Example:
-%% search_provisioned_products_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"AccessLevelFilter">> => access_level_filter(),
-%%   <<"Filters">> => map(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"SortBy">> => string(),
-%%   <<"SortOrder">> => list(any())
-%% }
--type search_provisioned_products_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioned_product_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PathId">> => string(),
-%%   <<"PathName">> => string(),
-%%   <<"ProductId">> => string(),
-%%   <<"ProductName">> => string(),
-%%   <<"ProvisionedProductId">> => string(),
-%%   <<"ProvisionedProductName">> => string(),
-%%   <<"ProvisioningArtifactId">> => string(),
-%%   <<"ProvisioningArtifactName">> => string(),
-%%   <<"ProvisioningParameters">> => list(update_provisioning_parameter()),
-%%   <<"ProvisioningPreferences">> => update_provisioning_preferences(),
-%%   <<"Tags">> => list(tag()),
-%%   <<"UpdateToken">> := string()
-%% }
--type update_provisioned_product_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_portfolio_share_output() :: #{
-%%   <<"PortfolioShareToken">> => string()
-%% }
--type create_portfolio_share_output() :: #{binary() => any()}.
-
-%% Example:
-%% scan_provisioned_products_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"AccessLevelFilter">> => access_level_filter(),
+%% list_tag_options_input() :: #{
+%%   <<"Filters">> => list_tag_options_filters(),
 %%   <<"PageSize">> => integer(),
 %%   <<"PageToken">> => string()
 %% }
--type scan_provisioned_products_input() :: #{binary() => any()}.
+-type list_tag_options_input() :: #{binary() => any()}.
 
 %% Example:
-%% product_view_detail() :: #{
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"ProductARN">> => string(),
-%%   <<"ProductViewSummary">> => product_view_summary(),
-%%   <<"SourceConnection">> => source_connection_detail(),
-%%   <<"Status">> => list(any())
-%% }
--type product_view_detail() :: #{binary() => any()}.
-
-%% Example:
-%% list_accepted_portfolio_shares_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"PortfolioDetails">> => list(portfolio_detail())
-%% }
--type list_accepted_portfolio_shares_output() :: #{binary() => any()}.
-
-%% Example:
-%% provisioning_artifact_detail() :: #{
-%%   <<"Active">> => boolean(),
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Guidance">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SourceRevision">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type provisioning_artifact_detail() :: #{binary() => any()}.
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-%% Example:
-%% list_budgets_for_resource_output() :: #{
-%%   <<"Budgets">> => list(budget_detail()),
-%%   <<"NextPageToken">> => string()
-%% }
--type list_budgets_for_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_product_from_portfolio_output() :: #{
-
-%% }
--type disassociate_product_from_portfolio_output() :: #{binary() => any()}.
-
-%% Example:
-%% execute_provisioned_product_plan_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"PlanId">> := string()
-%% }
--type execute_provisioned_product_plan_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_portfolio_shares_input() :: #{
-%%   <<"PageSize">> => integer(),
+%% list_tag_options_output() :: #{
 %%   <<"PageToken">> => string(),
-%%   <<"PortfolioId">> := string(),
-%%   <<"Type">> := list(any())
+%%   <<"TagOptionDetails">> => list(tag_option_detail())
 %% }
--type describe_portfolio_shares_input() :: #{binary() => any()}.
+-type list_tag_options_output() :: #{binary() => any()}.
 
 %% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% notify_provision_product_engine_workflow_result_input() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"Outputs">> => list(record_output()),
+%%   <<"RecordId">> := string(),
+%%   <<"ResourceIdentifier">> => engine_workflow_resource_identifier(),
+%%   <<"Status">> := list(any()),
+%%   <<"WorkflowToken">> := string()
 %% }
--type tag() :: #{binary() => any()}.
+-type notify_provision_product_engine_workflow_result_input() :: #{binary() => any()}.
 
 %% Example:
-%% constraint_detail() :: #{
-%%   <<"ConstraintId">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"PortfolioId">> => string(),
-%%   <<"ProductId">> => string(),
-%%   <<"Type">> => string()
+%% notify_provision_product_engine_workflow_result_output() :: #{
+
 %% }
--type constraint_detail() :: #{binary() => any()}.
+-type notify_provision_product_engine_workflow_result_output() :: #{binary() => any()}.
 
 %% Example:
 %% notify_terminate_provisioned_product_engine_workflow_result_input() :: #{
@@ -988,20 +1477,137 @@
 -type notify_terminate_provisioned_product_engine_workflow_result_input() :: #{binary() => any()}.
 
 %% Example:
-%% record_tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
+%% notify_terminate_provisioned_product_engine_workflow_result_output() :: #{
+
 %% }
--type record_tag() :: #{binary() => any()}.
+-type notify_terminate_provisioned_product_engine_workflow_result_output() :: #{binary() => any()}.
 
 %% Example:
-%% disassociate_principal_from_portfolio_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PortfolioId">> := string(),
-%%   <<"PrincipalARN">> := string(),
+%% notify_update_provisioned_product_engine_workflow_result_input() :: #{
+%%   <<"FailureReason">> => string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"Outputs">> => list(record_output()),
+%%   <<"RecordId">> := string(),
+%%   <<"Status">> := list(any()),
+%%   <<"WorkflowToken">> := string()
+%% }
+-type notify_update_provisioned_product_engine_workflow_result_input() :: #{binary() => any()}.
+
+%% Example:
+%% notify_update_provisioned_product_engine_workflow_result_output() :: #{
+
+%% }
+-type notify_update_provisioned_product_engine_workflow_result_output() :: #{binary() => any()}.
+
+%% Example:
+%% operation_not_supported_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type operation_not_supported_exception() :: #{binary() => any()}.
+
+%% Example:
+%% organization_node() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type organization_node() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_constraints() :: #{
+%%   <<"AllowedPattern">> => string(),
+%%   <<"AllowedValues">> => list(string()),
+%%   <<"ConstraintDescription">> => string(),
+%%   <<"MaxLength">> => string(),
+%%   <<"MaxValue">> => string(),
+%%   <<"MinLength">> => string(),
+%%   <<"MinValue">> => string()
+%% }
+-type parameter_constraints() :: #{binary() => any()}.
+
+%% Example:
+%% portfolio_detail() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ProviderName">> => string()
+%% }
+-type portfolio_detail() :: #{binary() => any()}.
+
+%% Example:
+%% portfolio_share_detail() :: #{
+%%   <<"Accepted">> => boolean(),
+%%   <<"PrincipalId">> => string(),
+%%   <<"SharePrincipals">> => boolean(),
+%%   <<"ShareTagOptions">> => boolean(),
+%%   <<"Type">> => list(any())
+%% }
+-type portfolio_share_detail() :: #{binary() => any()}.
+
+%% Example:
+%% principal() :: #{
+%%   <<"PrincipalARN">> => string(),
 %%   <<"PrincipalType">> => list(any())
 %% }
--type disassociate_principal_from_portfolio_input() :: #{binary() => any()}.
+-type principal() :: #{binary() => any()}.
+
+%% Example:
+%% product_view_aggregation_value() :: #{
+%%   <<"ApproximateCount">> => integer(),
+%%   <<"Value">> => string()
+%% }
+-type product_view_aggregation_value() :: #{binary() => any()}.
+
+%% Example:
+%% product_view_detail() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"ProductARN">> => string(),
+%%   <<"ProductViewSummary">> => product_view_summary(),
+%%   <<"SourceConnection">> => source_connection_detail(),
+%%   <<"Status">> => list(any())
+%% }
+-type product_view_detail() :: #{binary() => any()}.
+
+%% Example:
+%% product_view_summary() :: #{
+%%   <<"Distributor">> => string(),
+%%   <<"HasDefaultPath">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"ShortDescription">> => string(),
+%%   <<"SupportDescription">> => string(),
+%%   <<"SupportEmail">> => string(),
+%%   <<"SupportUrl">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type product_view_summary() :: #{binary() => any()}.
+
+%% Example:
+%% provision_product_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"NotificationArns">> => list(string()),
+%%   <<"PathId">> => string(),
+%%   <<"PathName">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"ProductName">> => string(),
+%%   <<"ProvisionToken">> := string(),
+%%   <<"ProvisionedProductName">> := string(),
+%%   <<"ProvisioningArtifactId">> => string(),
+%%   <<"ProvisioningArtifactName">> => string(),
+%%   <<"ProvisioningParameters">> => list(provisioning_parameter()),
+%%   <<"ProvisioningPreferences">> => provisioning_preferences(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type provision_product_input() :: #{binary() => any()}.
+
+%% Example:
+%% provision_product_output() :: #{
+%%   <<"RecordDetail">> => record_detail()
+%% }
+-type provision_product_output() :: #{binary() => any()}.
 
 %% Example:
 %% provisioned_product_attribute() :: #{
@@ -1028,1189 +1634,23 @@
 -type provisioned_product_attribute() :: #{binary() => any()}.
 
 %% Example:
-%% create_constraint_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"Parameters">> := string(),
-%%   <<"PortfolioId">> := string(),
-%%   <<"ProductId">> := string(),
-%%   <<"Type">> := string()
-%% }
--type create_constraint_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_associate_service_action_with_provisioning_artifact_output() :: #{
-%%   <<"FailedServiceActionAssociations">> => list(failed_service_action_association())
-%% }
--type batch_associate_service_action_with_provisioning_artifact_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_portfolio_output() :: #{
-%%   <<"PortfolioDetail">> => portfolio_detail(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_portfolio_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_copy_product_status_output() :: #{
-%%   <<"CopyProductStatus">> => list(any()),
-%%   <<"StatusDetail">> => string(),
-%%   <<"TargetProductId">> => string()
-%% }
--type describe_copy_product_status_output() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_tag_option_from_resource_input() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"TagOptionId">> := string()
-%% }
--type disassociate_tag_option_from_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_provisioned_product_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type describe_provisioned_product_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_portfolios_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string()
-%% }
--type list_portfolios_input() :: #{binary() => any()}.
-
-%% Example:
-%% record_error() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Description">> => string()
-%% }
--type record_error() :: #{binary() => any()}.
-
-%% Example:
-%% list_portfolios_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"PortfolioDetails">> => list(portfolio_detail())
-%% }
--type list_portfolios_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_record_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"RecordDetail">> => record_detail(),
-%%   <<"RecordOutputs">> => list(record_output())
-%% }
--type describe_record_output() :: #{binary() => any()}.
-
-%% Example:
-%% provisioning_artifact_view() :: #{
-%%   <<"ProductViewSummary">> => product_view_summary(),
-%%   <<"ProvisioningArtifact">> => provisioning_artifact()
-%% }
--type provisioning_artifact_view() :: #{binary() => any()}.
-
-%% Example:
-%% describe_provisioned_product_output() :: #{
-%%   <<"CloudWatchDashboards">> => list(cloud_watch_dashboard()),
-%%   <<"ProvisionedProductDetail">> => provisioned_product_detail()
-%% }
--type describe_provisioned_product_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_portfolio_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> := string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"ProviderName">> := string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_portfolio_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_portfolio_share_output() :: #{
-%%   <<"PortfolioShareToken">> => string()
-%% }
--type delete_portfolio_share_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_provisioned_product_plan_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"NotificationArns">> => list(string()),
-%%   <<"PathId">> => string(),
-%%   <<"PlanName">> := string(),
-%%   <<"PlanType">> := list(any()),
-%%   <<"ProductId">> := string(),
-%%   <<"ProvisionedProductName">> := string(),
-%%   <<"ProvisioningArtifactId">> := string(),
-%%   <<"ProvisioningParameters">> => list(update_provisioning_parameter()),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_provisioned_product_plan_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_tag_option_input() :: #{
-%%   <<"Key">> := string(),
-%%   <<"Value">> := string()
-%% }
--type create_tag_option_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_provisioned_product_plans_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"ProvisionedProductPlans">> => list(provisioned_product_plan_summary())
-%% }
--type list_provisioned_product_plans_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_tag_option_input() :: #{
-%%   <<"Active">> => boolean(),
-%%   <<"Id">> := string(),
-%%   <<"Value">> => string()
-%% }
--type update_tag_option_input() :: #{binary() => any()}.
-
-%% Example:
-%% portfolio_detail() :: #{
-%%   <<"ARN">> => string(),
+%% provisioned_product_detail() :: #{
+%%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"ProviderName">> => string()
-%% }
--type portfolio_detail() :: #{binary() => any()}.
-
-%% Example:
-%% enable_aws_organizations_access_input() :: #{
-
-%% }
--type enable_aws_organizations_access_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_actions_for_provisioning_artifact_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"ServiceActionSummaries">> => list(service_action_summary())
-%% }
--type list_service_actions_for_provisioning_artifact_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_option_detail() :: #{
-%%   <<"Active">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"Key">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag_option_detail() :: #{binary() => any()}.
-
-%% Example:
-%% share_error() :: #{
-%%   <<"Accounts">> => list(string()),
-%%   <<"Error">> => string(),
-%%   <<"Message">> => string()
-%% }
--type share_error() :: #{binary() => any()}.
-
-%% Example:
-%% organization_node() :: #{
-%%   <<"Type">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type organization_node() :: #{binary() => any()}.
-
-%% Example:
-%% enable_aws_organizations_access_output() :: #{
-
-%% }
--type enable_aws_organizations_access_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_budgets_for_resource_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"ResourceId">> := string()
-%% }
--type list_budgets_for_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_portfolio_shares_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"PortfolioShareDetails">> => list(portfolio_share_detail())
-%% }
--type describe_portfolio_shares_output() :: #{binary() => any()}.
-
-%% Example:
-%% launch_path() :: #{
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type launch_path() :: #{binary() => any()}.
-
-%% Example:
-%% invalid_parameters_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_parameters_exception() :: #{binary() => any()}.
-
-%% Example:
-%% associate_tag_option_with_resource_input() :: #{
-%%   <<"ResourceId">> := string(),
-%%   <<"TagOptionId">> := string()
-%% }
--type associate_tag_option_with_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% provision_product_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"NotificationArns">> => list(string()),
-%%   <<"PathId">> => string(),
-%%   <<"PathName">> => string(),
-%%   <<"ProductId">> => string(),
-%%   <<"ProductName">> => string(),
-%%   <<"ProvisionToken">> := string(),
-%%   <<"ProvisionedProductName">> := string(),
-%%   <<"ProvisioningArtifactId">> => string(),
-%%   <<"ProvisioningArtifactName">> => string(),
-%%   <<"ProvisioningParameters">> => list(provisioning_parameter()),
-%%   <<"ProvisioningPreferences">> => provisioning_preferences(),
-%%   <<"Tags">> => list(tag())
-%% }
--type provision_product_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_launch_paths_output() :: #{
-%%   <<"LaunchPathSummaries">> => list(launch_path_summary()),
-%%   <<"NextPageToken">> => string()
-%% }
--type list_launch_paths_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_provisioned_product_plan_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"ProvisionedProductPlanDetails">> => provisioned_product_plan_details(),
-%%   <<"ResourceChanges">> => list(resource_change())
-%% }
--type describe_provisioned_product_plan_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_portfolio_share_status_input() :: #{
-%%   <<"PortfolioShareToken">> := string()
-%% }
--type describe_portfolio_share_status_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_resources_for_tag_option_output() :: #{
-%%   <<"PageToken">> => string(),
-%%   <<"ResourceDetails">> => list(resource_detail())
-%% }
--type list_resources_for_tag_option_output() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_product_from_portfolio_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PortfolioId">> := string(),
-%%   <<"ProductId">> := string()
-%% }
--type disassociate_product_from_portfolio_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_provisioned_product_plan_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"IgnoreErrors">> => boolean(),
-%%   <<"PlanId">> := string()
-%% }
--type delete_provisioned_product_plan_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_product_output() :: #{
-%%   <<"ProductViewDetail">> => product_view_detail(),
-%%   <<"ProvisioningArtifactDetail">> => provisioning_artifact_detail(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_product_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_action_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Definition">> => map(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"Name">> => string()
-%% }
--type update_service_action_input() :: #{binary() => any()}.
-
-%% Example:
-%% batch_disassociate_service_action_from_provisioning_artifact_output() :: #{
-%%   <<"FailedServiceActionAssociations">> => list(failed_service_action_association())
-%% }
--type batch_disassociate_service_action_from_provisioning_artifact_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_product_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Distributor">> => string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"Name">> := string(),
-%%   <<"Owner">> := string(),
-%%   <<"ProductType">> := list(any()),
-%%   <<"ProvisioningArtifactParameters">> => provisioning_artifact_properties(),
-%%   <<"SourceConnection">> => source_connection(),
-%%   <<"SupportDescription">> => string(),
-%%   <<"SupportEmail">> => string(),
-%%   <<"SupportUrl">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type create_product_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_actions_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string()
-%% }
--type list_service_actions_input() :: #{binary() => any()}.
-
-%% Example:
-%% import_as_provisioned_product_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"PhysicalId">> := string(),
-%%   <<"ProductId">> := string(),
-%%   <<"ProvisionedProductName">> := string(),
-%%   <<"ProvisioningArtifactId">> := string()
-%% }
--type import_as_provisioned_product_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_constraint_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Id">> := string()
-%% }
--type describe_constraint_input() :: #{binary() => any()}.
-
-%% Example:
-%% execute_provisioned_product_service_action_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"ExecuteToken">> := string(),
-%%   <<"Parameters">> => map(),
-%%   <<"ProvisionedProductId">> := string(),
-%%   <<"ServiceActionId">> := string()
-%% }
--type execute_provisioned_product_service_action_input() :: #{binary() => any()}.
-
-%% Example:
-%% provisioning_parameter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type provisioning_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% associate_principal_with_portfolio_output() :: #{
-
-%% }
--type associate_principal_with_portfolio_output() :: #{binary() => any()}.
-
-%% Example:
-%% failed_service_action_association() :: #{
-%%   <<"ErrorCode">> => list(any()),
-%%   <<"ErrorMessage">> => string(),
-%%   <<"ProductId">> => string(),
-%%   <<"ProvisioningArtifactId">> => string(),
-%%   <<"ServiceActionId">> => string()
-%% }
--type failed_service_action_association() :: #{binary() => any()}.
-
-%% Example:
-%% portfolio_share_detail() :: #{
-%%   <<"Accepted">> => boolean(),
-%%   <<"PrincipalId">> => string(),
-%%   <<"SharePrincipals">> => boolean(),
-%%   <<"ShareTagOptions">> => boolean(),
-%%   <<"Type">> => list(any())
-%% }
--type portfolio_share_detail() :: #{binary() => any()}.
-
-%% Example:
-%% list_provisioning_artifacts_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"ProvisioningArtifactDetails">> => list(provisioning_artifact_detail())
-%% }
--type list_provisioning_artifacts_output() :: #{binary() => any()}.
-
-%% Example:
-%% execution_parameter() :: #{
-%%   <<"DefaultValues">> => list(string()),
+%%   <<"IdempotencyToken">> => string(),
+%%   <<"LastProvisioningRecordId">> => string(),
+%%   <<"LastRecordId">> => string(),
+%%   <<"LastSuccessfulProvisioningRecordId">> => string(),
+%%   <<"LaunchRoleArn">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"ProvisioningArtifactId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
 %%   <<"Type">> => string()
 %% }
--type execution_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_provisioning_artifact_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"ProductId">> := string(),
-%%   <<"ProvisioningArtifactId">> := string()
-%% }
--type delete_provisioning_artifact_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_provisioned_product_plan_output() :: #{
-
-%% }
--type delete_provisioned_product_plan_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioned_product_output() :: #{
-%%   <<"RecordDetail">> => record_detail()
-%% }
--type update_provisioned_product_output() :: #{binary() => any()}.
-
-%% Example:
-%% record_output() :: #{
-%%   <<"Description">> => string(),
-%%   <<"OutputKey">> => string(),
-%%   <<"OutputValue">> => string()
-%% }
--type record_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioning_preferences() :: #{
-%%   <<"StackSetAccounts">> => list(string()),
-%%   <<"StackSetFailureToleranceCount">> => integer(),
-%%   <<"StackSetFailureTolerancePercentage">> => integer(),
-%%   <<"StackSetMaxConcurrencyCount">> => integer(),
-%%   <<"StackSetMaxConcurrencyPercentage">> => integer(),
-%%   <<"StackSetOperationType">> => list(any()),
-%%   <<"StackSetRegions">> => list(string())
-%% }
--type update_provisioning_preferences() :: #{binary() => any()}.
-
-%% Example:
-%% product_view_summary() :: #{
-%%   <<"Distributor">> => string(),
-%%   <<"HasDefaultPath">> => boolean(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"ProductId">> => string(),
-%%   <<"ShortDescription">> => string(),
-%%   <<"SupportDescription">> => string(),
-%%   <<"SupportEmail">> => string(),
-%%   <<"SupportUrl">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type product_view_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_tag_options_output() :: #{
-%%   <<"PageToken">> => string(),
-%%   <<"TagOptionDetails">> => list(tag_option_detail())
-%% }
--type list_tag_options_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_provisioned_product_plan_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"PlanId">> := string()
-%% }
--type describe_provisioned_product_plan_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_provisioning_artifact_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"Parameters">> := provisioning_artifact_properties(),
-%%   <<"ProductId">> := string()
-%% }
--type create_provisioning_artifact_input() :: #{binary() => any()}.
-
-%% Example:
-%% provisioning_artifact_parameter() :: #{
-%%   <<"DefaultValue">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"IsNoEcho">> => boolean(),
-%%   <<"ParameterConstraints">> => parameter_constraints(),
-%%   <<"ParameterKey">> => string(),
-%%   <<"ParameterType">> => string()
-%% }
--type provisioning_artifact_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% delete_constraint_output() :: #{
-
-%% }
--type delete_constraint_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_launch_paths_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"ProductId">> := string()
-%% }
--type list_launch_paths_input() :: #{binary() => any()}.
-
-%% Example:
-%% search_products_as_admin_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Filters">> => map(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"PortfolioId">> => string(),
-%%   <<"ProductSource">> => list(any()),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type search_products_as_admin_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioning_artifact_output() :: #{
-%%   <<"Info">> => map(),
-%%   <<"ProvisioningArtifactDetail">> => provisioning_artifact_detail(),
-%%   <<"Status">> => list(any())
-%% }
--type update_provisioning_artifact_output() :: #{binary() => any()}.
-
-%% Example:
-%% reject_portfolio_share_output() :: #{
-
-%% }
--type reject_portfolio_share_output() :: #{binary() => any()}.
-
-%% Example:
-%% notify_update_provisioned_product_engine_workflow_result_input() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"Outputs">> => list(record_output()),
-%%   <<"RecordId">> := string(),
-%%   <<"Status">> := list(any()),
-%%   <<"WorkflowToken">> := string()
-%% }
--type notify_update_provisioned_product_engine_workflow_result_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_portfolio_access_output() :: #{
-%%   <<"AccountIds">> => list(string()),
-%%   <<"NextPageToken">> => string()
-%% }
--type list_portfolio_access_output() :: #{binary() => any()}.
-
-%% Example:
-%% create_provisioned_product_plan_output() :: #{
-%%   <<"PlanId">> => string(),
-%%   <<"PlanName">> => string(),
-%%   <<"ProvisionProductId">> => string(),
-%%   <<"ProvisionedProductName">> => string(),
-%%   <<"ProvisioningArtifactId">> => string()
-%% }
--type create_provisioned_product_plan_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_tag_option_output() :: #{
-%%   <<"TagOptionDetail">> => tag_option_detail()
-%% }
--type update_tag_option_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_aws_organizations_access_status_input() :: #{
-
-%% }
--type get_aws_organizations_access_status_input() :: #{binary() => any()}.
-
-%% Example:
-%% associate_principal_with_portfolio_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PortfolioId">> := string(),
-%%   <<"PrincipalARN">> := string(),
-%%   <<"PrincipalType">> := list(any())
-%% }
--type associate_principal_with_portfolio_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_actions_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"ServiceActionSummaries">> => list(service_action_summary())
-%% }
--type list_service_actions_output() :: #{binary() => any()}.
-
-%% Example:
-%% accept_portfolio_share_output() :: #{
-
-%% }
--type accept_portfolio_share_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_portfolios_for_product_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"ProductId">> := string()
-%% }
--type list_portfolios_for_product_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_portfolios_for_product_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"PortfolioDetails">> => list(portfolio_detail())
-%% }
--type list_portfolios_for_product_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_portfolio_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"AddTags">> => list(tag()),
-%%   <<"Description">> => string(),
-%%   <<"DisplayName">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"ProviderName">> => string(),
-%%   <<"RemoveTags">> => list(string())
-%% }
--type update_portfolio_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_product_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type describe_product_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioned_product_properties_output() :: #{
-%%   <<"ProvisionedProductId">> => string(),
-%%   <<"ProvisionedProductProperties">> => map(),
-%%   <<"RecordId">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type update_provisioned_product_properties_output() :: #{binary() => any()}.
-
-%% Example:
-%% tag_option_summary() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Values">> => list(string())
-%% }
--type tag_option_summary() :: #{binary() => any()}.
-
-%% Example:
-%% list_constraints_for_portfolio_output() :: #{
-%%   <<"ConstraintDetails">> => list(constraint_detail()),
-%%   <<"NextPageToken">> => string()
-%% }
--type list_constraints_for_portfolio_output() :: #{binary() => any()}.
-
-%% Example:
-%% provisioning_artifact() :: #{
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Description">> => string(),
-%%   <<"Guidance">> => list(any()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type provisioning_artifact() :: #{binary() => any()}.
-
-%% Example:
-%% describe_provisioning_artifact_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"IncludeProvisioningArtifactParameters">> => boolean(),
-%%   <<"ProductId">> => string(),
-%%   <<"ProductName">> => string(),
-%%   <<"ProvisioningArtifactId">> => string(),
-%%   <<"ProvisioningArtifactName">> => string(),
-%%   <<"Verbose">> => boolean()
-%% }
--type describe_provisioning_artifact_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_service_action_output() :: #{
-
-%% }
--type delete_service_action_output() :: #{binary() => any()}.
-
-%% Example:
-%% search_products_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Filters">> => map(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"SortBy">> => list(any()),
-%%   <<"SortOrder">> => list(any())
-%% }
--type search_products_input() :: #{binary() => any()}.
-
-%% Example:
-%% cloud_watch_dashboard() :: #{
-%%   <<"Name">> => string()
-%% }
--type cloud_watch_dashboard() :: #{binary() => any()}.
-
-%% Example:
-%% associate_service_action_with_provisioning_artifact_output() :: #{
-
-%% }
--type associate_service_action_with_provisioning_artifact_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_portfolio_share_status_output() :: #{
-%%   <<"OrganizationNodeValue">> => string(),
-%%   <<"PortfolioId">> => string(),
-%%   <<"PortfolioShareToken">> => string(),
-%%   <<"ShareDetails">> => share_details(),
-%%   <<"Status">> => list(any())
-%% }
--type describe_portfolio_share_status_output() :: #{binary() => any()}.
-
-%% Example:
-%% resource_change_detail() :: #{
-%%   <<"CausingEntity">> => string(),
-%%   <<"Evaluation">> => list(any()),
-%%   <<"Target">> => resource_target_definition()
-%% }
--type resource_change_detail() :: #{binary() => any()}.
-
-%% Example:
-%% describe_service_action_output() :: #{
-%%   <<"ServiceActionDetail">> => service_action_detail()
-%% }
--type describe_service_action_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_resources_for_tag_option_input() :: #{
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"TagOptionId">> := string()
-%% }
--type list_resources_for_tag_option_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioning_parameter() :: #{
-%%   <<"Key">> => string(),
-%%   <<"UsePreviousValue">> => boolean(),
-%%   <<"Value">> => string()
-%% }
--type update_provisioning_parameter() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioning_artifact_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Active">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"Guidance">> => list(any()),
-%%   <<"Name">> => string(),
-%%   <<"ProductId">> := string(),
-%%   <<"ProvisioningArtifactId">> := string()
-%% }
--type update_provisioning_artifact_input() :: #{binary() => any()}.
-
-%% Example:
-%% source_connection_parameters() :: #{
-%%   <<"CodeStar">> => code_star_parameters()
-%% }
--type source_connection_parameters() :: #{binary() => any()}.
-
-%% Example:
-%% last_sync() :: #{
-%%   <<"LastSuccessfulSyncProvisioningArtifactId">> => string(),
-%%   <<"LastSuccessfulSyncTime">> => non_neg_integer(),
-%%   <<"LastSyncStatus">> => list(any()),
-%%   <<"LastSyncStatusMessage">> => string(),
-%%   <<"LastSyncTime">> => non_neg_integer()
-%% }
--type last_sync() :: #{binary() => any()}.
-
-%% Example:
-%% delete_tag_option_input() :: #{
-%%   <<"Id">> := string()
-%% }
--type delete_tag_option_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_service_action_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Definition">> := map(),
-%%   <<"DefinitionType">> := list(any()),
-%%   <<"Description">> => string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"Name">> := string()
-%% }
--type create_service_action_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_instances_for_provisioned_product_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"ProvisionedProductId">> := string()
-%% }
--type list_stack_instances_for_provisioned_product_input() :: #{binary() => any()}.
-
-%% Example:
-%% search_products_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"ProductViewAggregations">> => map(),
-%%   <<"ProductViewSummaries">> => list(product_view_summary())
-%% }
--type search_products_output() :: #{binary() => any()}.
-
-%% Example:
-%% provisioning_artifact_preferences() :: #{
-%%   <<"StackSetAccounts">> => list(string()),
-%%   <<"StackSetRegions">> => list(string())
-%% }
--type provisioning_artifact_preferences() :: #{binary() => any()}.
-
-%% Example:
-%% create_service_action_output() :: #{
-%%   <<"ServiceActionDetail">> => service_action_detail()
-%% }
--type create_service_action_output() :: #{binary() => any()}.
-
-%% Example:
-%% access_level_filter() :: #{
-%%   <<"Key">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type access_level_filter() :: #{binary() => any()}.
-
-%% Example:
-%% tag_option_not_migrated_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type tag_option_not_migrated_exception() :: #{binary() => any()}.
-
-%% Example:
-%% update_constraint_output() :: #{
-%%   <<"ConstraintDetail">> => constraint_detail(),
-%%   <<"ConstraintParameters">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type update_constraint_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_record_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string()
-%% }
--type describe_record_input() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_service_action_from_provisioning_artifact_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"IdempotencyToken">> => string(),
-%%   <<"ProductId">> := string(),
-%%   <<"ProvisioningArtifactId">> := string(),
-%%   <<"ServiceActionId">> := string()
-%% }
--type disassociate_service_action_from_provisioning_artifact_input() :: #{binary() => any()}.
-
-%% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_service_action_execution_parameters_output() :: #{
-%%   <<"ServiceActionParameters">> => list(execution_parameter())
-%% }
--type describe_service_action_execution_parameters_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_provisioned_product_outputs_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"OutputKeys">> => list(string()),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"ProvisionedProductId">> => string(),
-%%   <<"ProvisionedProductName">> => string()
-%% }
--type get_provisioned_product_outputs_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_constraint_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"Parameters">> => string()
-%% }
--type update_constraint_input() :: #{binary() => any()}.
-
-%% Example:
-%% search_provisioned_products_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"ProvisionedProducts">> => list(provisioned_product_attribute()),
-%%   <<"TotalResultsCount">> => integer()
-%% }
--type search_provisioned_products_output() :: #{binary() => any()}.
-
-%% Example:
-%% describe_copy_product_status_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"CopyProductToken">> := string()
-%% }
--type describe_copy_product_status_input() :: #{binary() => any()}.
-
-%% Example:
-%% provisioning_artifact_output() :: #{
-%%   <<"Description">> => string(),
-%%   <<"Key">> => string()
-%% }
--type provisioning_artifact_output() :: #{binary() => any()}.
-
-%% Example:
-%% notify_provision_product_engine_workflow_result_input() :: #{
-%%   <<"FailureReason">> => string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"Outputs">> => list(record_output()),
-%%   <<"RecordId">> := string(),
-%%   <<"ResourceIdentifier">> => engine_workflow_resource_identifier(),
-%%   <<"Status">> := list(any()),
-%%   <<"WorkflowToken">> := string()
-%% }
--type notify_provision_product_engine_workflow_result_input() :: #{binary() => any()}.
-
-%% Example:
-%% reject_portfolio_share_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PortfolioId">> := string(),
-%%   <<"PortfolioShareType">> => list(any())
-%% }
--type reject_portfolio_share_input() :: #{binary() => any()}.
-
-%% Example:
-%% record_detail() :: #{
-%%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"LaunchRoleArn">> => string(),
-%%   <<"PathId">> => string(),
-%%   <<"ProductId">> => string(),
-%%   <<"ProvisionedProductId">> => string(),
-%%   <<"ProvisionedProductName">> => string(),
-%%   <<"ProvisionedProductType">> => string(),
-%%   <<"ProvisioningArtifactId">> => string(),
-%%   <<"RecordErrors">> => list(record_error()),
-%%   <<"RecordId">> => string(),
-%%   <<"RecordTags">> => list(record_tag()),
-%%   <<"RecordType">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"UpdatedTime">> => non_neg_integer()
-%% }
--type record_detail() :: #{binary() => any()}.
-
-%% Example:
-%% service_action_detail() :: #{
-%%   <<"Definition">> => map(),
-%%   <<"ServiceActionSummary">> => service_action_summary()
-%% }
--type service_action_detail() :: #{binary() => any()}.
-
-%% Example:
-%% associate_budget_with_resource_input() :: #{
-%%   <<"BudgetName">> := string(),
-%%   <<"ResourceId">> := string()
-%% }
--type associate_budget_with_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% update_provisioned_product_properties_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"IdempotencyToken">> := string(),
-%%   <<"ProvisionedProductId">> := string(),
-%%   <<"ProvisionedProductProperties">> := map()
-%% }
--type update_provisioned_product_properties_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_service_action_execution_parameters_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"ProvisionedProductId">> := string(),
-%%   <<"ServiceActionId">> := string()
-%% }
--type describe_service_action_execution_parameters_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_provisioning_artifacts_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"ProductId">> := string()
-%% }
--type list_provisioning_artifacts_input() :: #{binary() => any()}.
-
-%% Example:
-%% associate_tag_option_with_resource_output() :: #{
-
-%% }
--type associate_tag_option_with_resource_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_stack_instances_for_provisioned_product_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"StackInstances">> => list(stack_instance())
-%% }
--type list_stack_instances_for_provisioned_product_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_service_actions_for_provisioning_artifact_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"ProductId">> := string(),
-%%   <<"ProvisioningArtifactId">> := string()
-%% }
--type list_service_actions_for_provisioning_artifact_input() :: #{binary() => any()}.
-
-%% Example:
-%% operation_not_supported_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type operation_not_supported_exception() :: #{binary() => any()}.
-
-%% Example:
-%% scan_provisioned_products_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"ProvisionedProducts">> => list(provisioned_product_detail())
-%% }
--type scan_provisioned_products_output() :: #{binary() => any()}.
-
-%% Example:
-%% terminate_provisioned_product_output() :: #{
-%%   <<"RecordDetail">> => record_detail()
-%% }
--type terminate_provisioned_product_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_service_action_output() :: #{
-%%   <<"ServiceActionDetail">> => service_action_detail()
-%% }
--type update_service_action_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_product_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Id">> := string()
-%% }
--type delete_product_input() :: #{binary() => any()}.
-
-%% Example:
-%% create_portfolio_share_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"AccountId">> => string(),
-%%   <<"OrganizationNode">> => organization_node(),
-%%   <<"PortfolioId">> := string(),
-%%   <<"SharePrincipals">> => boolean(),
-%%   <<"ShareTagOptions">> => boolean()
-%% }
--type create_portfolio_share_input() :: #{binary() => any()}.
-
-%% Example:
-%% delete_provisioning_artifact_output() :: #{
-
-%% }
--type delete_provisioning_artifact_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_record_history_output() :: #{
-%%   <<"NextPageToken">> => string(),
-%%   <<"RecordDetails">> => list(record_detail())
-%% }
--type list_record_history_output() :: #{binary() => any()}.
-
-%% Example:
-%% resource_change() :: #{
-%%   <<"Action">> => list(any()),
-%%   <<"Details">> => list(resource_change_detail()),
-%%   <<"LogicalResourceId">> => string(),
-%%   <<"PhysicalResourceId">> => string(),
-%%   <<"Replacement">> => list(any()),
-%%   <<"ResourceType">> => string(),
-%%   <<"Scope">> => list(list(any())())
-%% }
--type resource_change() :: #{binary() => any()}.
-
-%% Example:
-%% update_portfolio_share_output() :: #{
-%%   <<"PortfolioShareToken">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type update_portfolio_share_output() :: #{binary() => any()}.
-
-%% Example:
-%% launch_path_summary() :: #{
-%%   <<"ConstraintSummaries">> => list(constraint_summary()),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"Tags">> => list(tag())
-%% }
--type launch_path_summary() :: #{binary() => any()}.
-
-%% Example:
-%% disassociate_budget_from_resource_input() :: #{
-%%   <<"BudgetName">> := string(),
-%%   <<"ResourceId">> := string()
-%% }
--type disassociate_budget_from_resource_input() :: #{binary() => any()}.
-
-%% Example:
-%% duplicate_resource_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type duplicate_resource_exception() :: #{binary() => any()}.
-
-%% Example:
-%% describe_product_as_admin_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string(),
-%%   <<"SourcePortfolioId">> => string()
-%% }
--type describe_product_as_admin_input() :: #{binary() => any()}.
-
-%% Example:
-%% describe_product_as_admin_output() :: #{
-%%   <<"Budgets">> => list(budget_detail()),
-%%   <<"ProductViewDetail">> => product_view_detail(),
-%%   <<"ProvisioningArtifactSummaries">> => list(provisioning_artifact_summary()),
-%%   <<"TagOptions">> => list(tag_option_detail()),
-%%   <<"Tags">> => list(tag())
-%% }
--type describe_product_as_admin_output() :: #{binary() => any()}.
-
-%% Example:
-%% update_product_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"AddTags">> => list(tag()),
-%%   <<"Description">> => string(),
-%%   <<"Distributor">> => string(),
-%%   <<"Id">> := string(),
-%%   <<"Name">> => string(),
-%%   <<"Owner">> => string(),
-%%   <<"RemoveTags">> => list(string()),
-%%   <<"SourceConnection">> => source_connection(),
-%%   <<"SupportDescription">> => string(),
-%%   <<"SupportEmail">> => string(),
-%%   <<"SupportUrl">> => string()
-%% }
--type update_product_input() :: #{binary() => any()}.
-
-%% Example:
-%% list_record_history_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"AccessLevelFilter">> => access_level_filter(),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"SearchFilter">> => list_record_history_search_filter()
-%% }
--type list_record_history_input() :: #{binary() => any()}.
+-type provisioned_product_detail() :: #{binary() => any()}.
 
 %% Example:
 %% provisioned_product_plan_details() :: #{
@@ -2233,14 +1673,97 @@
 -type provisioned_product_plan_details() :: #{binary() => any()}.
 
 %% Example:
-%% list_organization_portfolio_access_input() :: #{
-%%   <<"AcceptLanguage">> => string(),
-%%   <<"OrganizationNodeType">> := list(any()),
-%%   <<"PageSize">> => integer(),
-%%   <<"PageToken">> => string(),
-%%   <<"PortfolioId">> := string()
+%% provisioned_product_plan_summary() :: #{
+%%   <<"PlanId">> => string(),
+%%   <<"PlanName">> => string(),
+%%   <<"PlanType">> => list(any()),
+%%   <<"ProvisionProductId">> => string(),
+%%   <<"ProvisionProductName">> => string(),
+%%   <<"ProvisioningArtifactId">> => string()
 %% }
--type list_organization_portfolio_access_input() :: #{binary() => any()}.
+-type provisioned_product_plan_summary() :: #{binary() => any()}.
+
+%% Example:
+%% provisioning_artifact() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Guidance">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type provisioning_artifact() :: #{binary() => any()}.
+
+%% Example:
+%% provisioning_artifact_detail() :: #{
+%%   <<"Active">> => boolean(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Guidance">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"SourceRevision">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type provisioning_artifact_detail() :: #{binary() => any()}.
+
+%% Example:
+%% provisioning_artifact_output() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Key">> => string()
+%% }
+-type provisioning_artifact_output() :: #{binary() => any()}.
+
+%% Example:
+%% provisioning_artifact_parameter() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsNoEcho">> => boolean(),
+%%   <<"ParameterConstraints">> => parameter_constraints(),
+%%   <<"ParameterKey">> => string(),
+%%   <<"ParameterType">> => string()
+%% }
+-type provisioning_artifact_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% provisioning_artifact_preferences() :: #{
+%%   <<"StackSetAccounts">> => list(string()),
+%%   <<"StackSetRegions">> => list(string())
+%% }
+-type provisioning_artifact_preferences() :: #{binary() => any()}.
+
+%% Example:
+%% provisioning_artifact_properties() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DisableTemplateValidation">> => boolean(),
+%%   <<"Info">> => map(),
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type provisioning_artifact_properties() :: #{binary() => any()}.
+
+%% Example:
+%% provisioning_artifact_summary() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ProvisioningArtifactMetadata">> => map()
+%% }
+-type provisioning_artifact_summary() :: #{binary() => any()}.
+
+%% Example:
+%% provisioning_artifact_view() :: #{
+%%   <<"ProductViewSummary">> => product_view_summary(),
+%%   <<"ProvisioningArtifact">> => provisioning_artifact()
+%% }
+-type provisioning_artifact_view() :: #{binary() => any()}.
+
+%% Example:
+%% provisioning_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type provisioning_parameter() :: #{binary() => any()}.
 
 %% Example:
 %% provisioning_preferences() :: #{
@@ -2254,10 +1777,79 @@
 -type provisioning_preferences() :: #{binary() => any()}.
 
 %% Example:
-%% delete_tag_option_output() :: #{
+%% record_detail() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LaunchRoleArn">> => string(),
+%%   <<"PathId">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"ProvisionedProductId">> => string(),
+%%   <<"ProvisionedProductName">> => string(),
+%%   <<"ProvisionedProductType">> => string(),
+%%   <<"ProvisioningArtifactId">> => string(),
+%%   <<"RecordErrors">> => list(record_error()),
+%%   <<"RecordId">> => string(),
+%%   <<"RecordTags">> => list(record_tag()),
+%%   <<"RecordType">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedTime">> => non_neg_integer()
+%% }
+-type record_detail() :: #{binary() => any()}.
+
+%% Example:
+%% record_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Description">> => string()
+%% }
+-type record_error() :: #{binary() => any()}.
+
+%% Example:
+%% record_output() :: #{
+%%   <<"Description">> => string(),
+%%   <<"OutputKey">> => string(),
+%%   <<"OutputValue">> => string()
+%% }
+-type record_output() :: #{binary() => any()}.
+
+%% Example:
+%% record_tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type record_tag() :: #{binary() => any()}.
+
+%% Example:
+%% reject_portfolio_share_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PortfolioId">> := string(),
+%%   <<"PortfolioShareType">> => list(any())
+%% }
+-type reject_portfolio_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% reject_portfolio_share_output() :: #{
 
 %% }
--type delete_tag_option_output() :: #{binary() => any()}.
+-type reject_portfolio_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% resource_change() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Details">> => list(resource_change_detail()),
+%%   <<"LogicalResourceId">> => string(),
+%%   <<"PhysicalResourceId">> => string(),
+%%   <<"Replacement">> => list(any()),
+%%   <<"ResourceType">> => string(),
+%%   <<"Scope">> => list(list(any())())
+%% }
+-type resource_change() :: #{binary() => any()}.
+
+%% Example:
+%% resource_change_detail() :: #{
+%%   <<"CausingEntity">> => string(),
+%%   <<"Evaluation">> => list(any()),
+%%   <<"Target">> => resource_target_definition()
+%% }
+-type resource_change_detail() :: #{binary() => any()}.
 
 %% Example:
 %% resource_detail() :: #{
@@ -2270,45 +1862,453 @@
 -type resource_detail() :: #{binary() => any()}.
 
 %% Example:
-%% provision_product_output() :: #{
+%% resource_in_use_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_target_definition() :: #{
+%%   <<"Attribute">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"RequiresRecreation">> => list(any())
+%% }
+-type resource_target_definition() :: #{binary() => any()}.
+
+%% Example:
+%% scan_provisioned_products_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"AccessLevelFilter">> => access_level_filter(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string()
+%% }
+-type scan_provisioned_products_input() :: #{binary() => any()}.
+
+%% Example:
+%% scan_provisioned_products_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"ProvisionedProducts">> => list(provisioned_product_detail())
+%% }
+-type scan_provisioned_products_output() :: #{binary() => any()}.
+
+%% Example:
+%% search_products_as_admin_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Filters">> => map(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"PortfolioId">> => string(),
+%%   <<"ProductSource">> => list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type search_products_as_admin_input() :: #{binary() => any()}.
+
+%% Example:
+%% search_products_as_admin_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"ProductViewDetails">> => list(product_view_detail())
+%% }
+-type search_products_as_admin_output() :: #{binary() => any()}.
+
+%% Example:
+%% search_products_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Filters">> => map(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type search_products_input() :: #{binary() => any()}.
+
+%% Example:
+%% search_products_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"ProductViewAggregations">> => map(),
+%%   <<"ProductViewSummaries">> => list(product_view_summary())
+%% }
+-type search_products_output() :: #{binary() => any()}.
+
+%% Example:
+%% search_provisioned_products_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"AccessLevelFilter">> => access_level_filter(),
+%%   <<"Filters">> => map(),
+%%   <<"PageSize">> => integer(),
+%%   <<"PageToken">> => string(),
+%%   <<"SortBy">> => string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type search_provisioned_products_input() :: #{binary() => any()}.
+
+%% Example:
+%% search_provisioned_products_output() :: #{
+%%   <<"NextPageToken">> => string(),
+%%   <<"ProvisionedProducts">> => list(provisioned_product_attribute()),
+%%   <<"TotalResultsCount">> => integer()
+%% }
+-type search_provisioned_products_output() :: #{binary() => any()}.
+
+%% Example:
+%% service_action_association() :: #{
+%%   <<"ProductId">> => string(),
+%%   <<"ProvisioningArtifactId">> => string(),
+%%   <<"ServiceActionId">> => string()
+%% }
+-type service_action_association() :: #{binary() => any()}.
+
+%% Example:
+%% service_action_detail() :: #{
+%%   <<"Definition">> => map(),
+%%   <<"ServiceActionSummary">> => service_action_summary()
+%% }
+-type service_action_detail() :: #{binary() => any()}.
+
+%% Example:
+%% service_action_summary() :: #{
+%%   <<"DefinitionType">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type service_action_summary() :: #{binary() => any()}.
+
+%% Example:
+%% share_details() :: #{
+%%   <<"ShareErrors">> => list(share_error()),
+%%   <<"SuccessfulShares">> => list(string())
+%% }
+-type share_details() :: #{binary() => any()}.
+
+%% Example:
+%% share_error() :: #{
+%%   <<"Accounts">> => list(string()),
+%%   <<"Error">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type share_error() :: #{binary() => any()}.
+
+%% Example:
+%% source_connection() :: #{
+%%   <<"ConnectionParameters">> => source_connection_parameters(),
+%%   <<"Type">> => list(any())
+%% }
+-type source_connection() :: #{binary() => any()}.
+
+%% Example:
+%% source_connection_detail() :: #{
+%%   <<"ConnectionParameters">> => source_connection_parameters(),
+%%   <<"LastSync">> => last_sync(),
+%%   <<"Type">> => list(any())
+%% }
+-type source_connection_detail() :: #{binary() => any()}.
+
+%% Example:
+%% source_connection_parameters() :: #{
+%%   <<"CodeStar">> => code_star_parameters()
+%% }
+-type source_connection_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% stack_instance() :: #{
+%%   <<"Account">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"StackInstanceStatus">> => list(any())
+%% }
+-type stack_instance() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% tag_option_detail() :: #{
+%%   <<"Active">> => boolean(),
+%%   <<"Id">> => string(),
+%%   <<"Key">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag_option_detail() :: #{binary() => any()}.
+
+%% Example:
+%% tag_option_not_migrated_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type tag_option_not_migrated_exception() :: #{binary() => any()}.
+
+%% Example:
+%% tag_option_summary() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type tag_option_summary() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_provisioned_product_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"IgnoreErrors">> => boolean(),
+%%   <<"ProvisionedProductId">> => string(),
+%%   <<"ProvisionedProductName">> => string(),
+%%   <<"RetainPhysicalResources">> => boolean(),
+%%   <<"TerminateToken">> := string()
+%% }
+-type terminate_provisioned_product_input() :: #{binary() => any()}.
+
+%% Example:
+%% terminate_provisioned_product_output() :: #{
 %%   <<"RecordDetail">> => record_detail()
 %% }
--type provision_product_output() :: #{binary() => any()}.
+-type terminate_provisioned_product_output() :: #{binary() => any()}.
+
+%% Example:
+%% unique_tag_resource_identifier() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type unique_tag_resource_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% update_constraint_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"Parameters">> => string()
+%% }
+-type update_constraint_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_constraint_output() :: #{
+%%   <<"ConstraintDetail">> => constraint_detail(),
+%%   <<"ConstraintParameters">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_constraint_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_portfolio_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"AddTags">> => list(tag()),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"ProviderName">> => string(),
+%%   <<"RemoveTags">> => list(string())
+%% }
+-type update_portfolio_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_portfolio_output() :: #{
+%%   <<"PortfolioDetail">> => portfolio_detail(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type update_portfolio_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_portfolio_share_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"AccountId">> => string(),
+%%   <<"OrganizationNode">> => organization_node(),
+%%   <<"PortfolioId">> := string(),
+%%   <<"SharePrincipals">> => boolean(),
+%%   <<"ShareTagOptions">> => boolean()
+%% }
+-type update_portfolio_share_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_portfolio_share_output() :: #{
+%%   <<"PortfolioShareToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_portfolio_share_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_product_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"AddTags">> => list(tag()),
+%%   <<"Description">> => string(),
+%%   <<"Distributor">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"RemoveTags">> => list(string()),
+%%   <<"SourceConnection">> => source_connection(),
+%%   <<"SupportDescription">> => string(),
+%%   <<"SupportEmail">> => string(),
+%%   <<"SupportUrl">> => string()
+%% }
+-type update_product_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_product_output() :: #{
+%%   <<"ProductViewDetail">> => product_view_detail(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type update_product_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioned_product_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"PathId">> => string(),
+%%   <<"PathName">> => string(),
+%%   <<"ProductId">> => string(),
+%%   <<"ProductName">> => string(),
+%%   <<"ProvisionedProductId">> => string(),
+%%   <<"ProvisionedProductName">> => string(),
+%%   <<"ProvisioningArtifactId">> => string(),
+%%   <<"ProvisioningArtifactName">> => string(),
+%%   <<"ProvisioningParameters">> => list(update_provisioning_parameter()),
+%%   <<"ProvisioningPreferences">> => update_provisioning_preferences(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_provisioned_product_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioned_product_output() :: #{
+%%   <<"RecordDetail">> => record_detail()
+%% }
+-type update_provisioned_product_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioned_product_properties_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"IdempotencyToken">> := string(),
+%%   <<"ProvisionedProductId">> := string(),
+%%   <<"ProvisionedProductProperties">> := map()
+%% }
+-type update_provisioned_product_properties_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioned_product_properties_output() :: #{
+%%   <<"ProvisionedProductId">> => string(),
+%%   <<"ProvisionedProductProperties">> => map(),
+%%   <<"RecordId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_provisioned_product_properties_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioning_artifact_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Active">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"Guidance">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"ProductId">> := string(),
+%%   <<"ProvisioningArtifactId">> := string()
+%% }
+-type update_provisioning_artifact_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioning_artifact_output() :: #{
+%%   <<"Info">> => map(),
+%%   <<"ProvisioningArtifactDetail">> => provisioning_artifact_detail(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_provisioning_artifact_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioning_parameter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"UsePreviousValue">> => boolean(),
+%%   <<"Value">> => string()
+%% }
+-type update_provisioning_parameter() :: #{binary() => any()}.
+
+%% Example:
+%% update_provisioning_preferences() :: #{
+%%   <<"StackSetAccounts">> => list(string()),
+%%   <<"StackSetFailureToleranceCount">> => integer(),
+%%   <<"StackSetFailureTolerancePercentage">> => integer(),
+%%   <<"StackSetMaxConcurrencyCount">> => integer(),
+%%   <<"StackSetMaxConcurrencyPercentage">> => integer(),
+%%   <<"StackSetOperationType">> => list(any()),
+%%   <<"StackSetRegions">> => list(string())
+%% }
+-type update_provisioning_preferences() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_action_input() :: #{
+%%   <<"AcceptLanguage">> => string(),
+%%   <<"Definition">> => map(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> := string(),
+%%   <<"Name">> => string()
+%% }
+-type update_service_action_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_service_action_output() :: #{
+%%   <<"ServiceActionDetail">> => service_action_detail()
+%% }
+-type update_service_action_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_tag_option_input() :: #{
+%%   <<"Active">> => boolean(),
+%%   <<"Id">> := string(),
+%%   <<"Value">> => string()
+%% }
+-type update_tag_option_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_tag_option_output() :: #{
+%%   <<"TagOptionDetail">> => tag_option_detail()
+%% }
+-type update_tag_option_output() :: #{binary() => any()}.
+
+%% Example:
+%% usage_instruction() :: #{
+%%   <<"Type">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type usage_instruction() :: #{binary() => any()}.
 
 -type accept_portfolio_share_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    invalid_parameters_exception().
 
 -type associate_budget_with_resource_errors() ::
-    duplicate_resource_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_parameters_exception() | 
-    resource_not_found_exception().
+    duplicate_resource_exception().
 
 -type associate_principal_with_portfolio_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    invalid_parameters_exception().
 
 -type associate_product_with_portfolio_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    invalid_parameters_exception().
 
 -type associate_service_action_with_provisioning_artifact_errors() ::
-    duplicate_resource_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_parameters_exception() | 
-    resource_not_found_exception().
+    duplicate_resource_exception().
 
 -type associate_tag_option_with_resource_errors() ::
-    duplicate_resource_exception() | 
-    limit_exceeded_exception() | 
     tag_option_not_migrated_exception() | 
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    limit_exceeded_exception() | 
+    invalid_state_exception() | 
+    invalid_parameters_exception() | 
+    duplicate_resource_exception().
 
 -type batch_associate_service_action_with_provisioning_artifact_errors() ::
     invalid_parameters_exception().
@@ -2317,86 +2317,86 @@
     invalid_parameters_exception().
 
 -type copy_product_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type create_constraint_errors() ::
-    duplicate_resource_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_parameters_exception() | 
-    resource_not_found_exception().
+    duplicate_resource_exception().
 
 -type create_portfolio_errors() ::
-    limit_exceeded_exception() | 
     tag_option_not_migrated_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameters_exception().
 
 -type create_portfolio_share_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
     limit_exceeded_exception() | 
-    invalid_parameters_exception() | 
-    resource_not_found_exception() | 
-    invalid_state_exception().
+    invalid_state_exception() | 
+    invalid_parameters_exception().
 
 -type create_product_errors() ::
-    limit_exceeded_exception() | 
     tag_option_not_migrated_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameters_exception().
 
 -type create_provisioned_product_plan_errors() ::
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    invalid_state_exception() | 
+    invalid_parameters_exception().
 
 -type create_provisioning_artifact_errors() ::
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    invalid_parameters_exception().
 
 -type create_service_action_errors() ::
     limit_exceeded_exception() | 
     invalid_parameters_exception().
 
 -type create_tag_option_errors() ::
-    duplicate_resource_exception() | 
+    tag_option_not_migrated_exception() | 
     limit_exceeded_exception() | 
-    tag_option_not_migrated_exception().
+    duplicate_resource_exception().
 
 -type delete_constraint_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type delete_portfolio_errors() ::
     tag_option_not_migrated_exception() | 
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_parameters_exception().
 
 -type delete_portfolio_share_errors() ::
-    operation_not_supported_exception() | 
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    operation_not_supported_exception() | 
+    invalid_state_exception() | 
+    invalid_parameters_exception().
 
 -type delete_product_errors() ::
     tag_option_not_migrated_exception() | 
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_parameters_exception().
 
 -type delete_provisioned_product_plan_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type delete_provisioning_artifact_errors() ::
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_parameters_exception().
 
 -type delete_service_action_errors() ::
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_parameters_exception().
 
 -type delete_tag_option_errors() ::
     tag_option_not_migrated_exception() | 
@@ -2413,41 +2413,41 @@
     resource_not_found_exception().
 
 -type describe_portfolio_share_status_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    invalid_parameters_exception().
 
 -type describe_portfolio_shares_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type describe_product_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type describe_product_as_admin_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type describe_product_view_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type describe_provisioned_product_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type describe_provisioned_product_plan_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type describe_provisioning_artifact_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type describe_provisioning_parameters_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type describe_record_errors() ::
     resource_not_found_exception().
@@ -2456,154 +2456,154 @@
     resource_not_found_exception().
 
 -type describe_service_action_execution_parameters_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type describe_tag_option_errors() ::
     tag_option_not_migrated_exception() | 
     resource_not_found_exception().
 
 -type disable_aws_organizations_access_errors() ::
-    operation_not_supported_exception() | 
     resource_not_found_exception() | 
+    operation_not_supported_exception() | 
     invalid_state_exception().
 
 -type disassociate_budget_from_resource_errors() ::
     resource_not_found_exception().
 
 -type disassociate_principal_from_portfolio_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type disassociate_product_from_portfolio_errors() ::
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    resource_in_use_exception().
+    resource_in_use_exception() | 
+    invalid_parameters_exception().
 
 -type disassociate_service_action_from_provisioning_artifact_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type disassociate_tag_option_from_resource_errors() ::
     tag_option_not_migrated_exception() | 
     resource_not_found_exception().
 
 -type enable_aws_organizations_access_errors() ::
-    operation_not_supported_exception() | 
     resource_not_found_exception() | 
+    operation_not_supported_exception() | 
     invalid_state_exception().
 
 -type execute_provisioned_product_plan_errors() ::
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    invalid_state_exception() | 
+    invalid_parameters_exception().
 
 -type execute_provisioned_product_service_action_errors() ::
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    invalid_state_exception() | 
+    invalid_parameters_exception().
 
 -type get_aws_organizations_access_status_errors() ::
-    operation_not_supported_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    operation_not_supported_exception().
 
 -type get_provisioned_product_outputs_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type import_as_provisioned_product_errors() ::
-    duplicate_resource_exception() | 
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    invalid_state_exception() | 
+    invalid_parameters_exception() | 
+    duplicate_resource_exception().
 
 -type list_accepted_portfolio_shares_errors() ::
     operation_not_supported_exception() | 
     invalid_parameters_exception().
 
 -type list_budgets_for_resource_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_constraints_for_portfolio_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_launch_paths_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_organization_portfolio_access_errors() ::
+    resource_not_found_exception() | 
     operation_not_supported_exception() | 
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    invalid_parameters_exception().
 
 -type list_portfolio_access_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_portfolios_errors() ::
     invalid_parameters_exception().
 
 -type list_portfolios_for_product_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_principals_for_portfolio_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_provisioned_product_plans_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_provisioning_artifacts_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_provisioning_artifacts_for_service_action_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_record_history_errors() ::
     invalid_parameters_exception().
 
 -type list_resources_for_tag_option_errors() ::
     tag_option_not_migrated_exception() | 
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_service_actions_errors() ::
     invalid_parameters_exception().
 
 -type list_service_actions_for_provisioning_artifact_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_stack_instances_for_provisioned_product_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type list_tag_options_errors() ::
     tag_option_not_migrated_exception() | 
     invalid_parameters_exception().
 
 -type notify_provision_product_engine_workflow_result_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type notify_terminate_provisioned_product_engine_workflow_result_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type notify_update_provisioned_product_engine_workflow_result_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type provision_product_errors() ::
-    duplicate_resource_exception() | 
+    resource_not_found_exception() | 
     invalid_parameters_exception() | 
-    resource_not_found_exception().
+    duplicate_resource_exception().
 
 -type reject_portfolio_share_errors() ::
     resource_not_found_exception().
@@ -2615,8 +2615,8 @@
     invalid_parameters_exception().
 
 -type search_products_as_admin_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type search_provisioned_products_errors() ::
     invalid_parameters_exception().
@@ -2625,48 +2625,48 @@
     resource_not_found_exception().
 
 -type update_constraint_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type update_portfolio_errors() ::
-    limit_exceeded_exception() | 
     tag_option_not_migrated_exception() | 
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameters_exception().
 
 -type update_portfolio_share_errors() ::
-    operation_not_supported_exception() | 
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    operation_not_supported_exception() | 
+    invalid_state_exception() | 
+    invalid_parameters_exception().
 
 -type update_product_errors() ::
     tag_option_not_migrated_exception() | 
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type update_provisioned_product_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type update_provisioned_product_properties_errors() ::
-    invalid_parameters_exception() | 
     resource_not_found_exception() | 
-    invalid_state_exception().
+    invalid_state_exception() | 
+    invalid_parameters_exception().
 
 -type update_provisioning_artifact_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type update_service_action_errors() ::
-    invalid_parameters_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    invalid_parameters_exception().
 
 -type update_tag_option_errors() ::
-    duplicate_resource_exception() | 
     tag_option_not_migrated_exception() | 
+    resource_not_found_exception() | 
     invalid_parameters_exception() | 
-    resource_not_found_exception().
+    duplicate_resource_exception().
 
 %%====================================================================
 %% API

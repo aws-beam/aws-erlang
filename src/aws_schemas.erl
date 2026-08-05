@@ -85,276 +85,11 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Tags">> := map()
-%% }
--type tag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_schema_request() :: #{
-%%   <<"Content">> := string(),
-%%   <<"Description">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> := list(any())
-%% }
--type create_schema_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_code_binding_source_request() :: #{
-%%   <<"SchemaVersion">> => string()
-%% }
--type get_code_binding_source_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% unauthorized_exception() :: #{
+%% bad_request_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
--type unauthorized_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_code_binding_request() :: #{
-%%   <<"SchemaVersion">> => string()
-%% }
--type describe_code_binding_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_schemas_request() :: #{
-%%   <<"Keywords">> := string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type search_schemas_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_schema_request() :: #{
-%%   <<"SchemaVersion">> => string()
-%% }
--type describe_schema_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_schema_request() :: #{}
--type delete_schema_request() :: #{}.
-
-%% Example:
-%% delete_registry_request() :: #{}
--type delete_registry_request() :: #{}.
-
-
-%% Example:
-%% forbidden_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type forbidden_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_schema_versions_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaVersions">> => list(schema_version_summary())
-%% }
--type list_schema_versions_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_registry_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type create_registry_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_discoverers_request() :: #{
-%%   <<"DiscovererIdPrefix">> => string(),
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SourceArnPrefix">> => string()
-%% }
--type list_discoverers_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_discoverer_request() :: #{}
--type delete_discoverer_request() :: #{}.
-
-
-%% Example:
-%% create_discoverer_response() :: #{
-%%   <<"CrossAccount">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"DiscovererArn">> => string(),
-%%   <<"DiscovererId">> => string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type create_discoverer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_discovered_schema_request() :: #{
-%%   <<"Events">> := list(string()),
-%%   <<"Type">> := list(any())
-%% }
--type get_discovered_schema_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_response() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type get_resource_policy_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_schema_response() :: #{
-%%   <<"Content">> => string(),
-%%   <<"Description">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaName">> => string(),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => string(),
-%%   <<"VersionCreatedDate">> => non_neg_integer()
-%% }
--type describe_schema_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% gone_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type gone_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_registry_request() :: #{
-%%   <<"Description">> => string()
-%% }
--type update_registry_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_schema_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaName">> => string(),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => string(),
-%%   <<"VersionCreatedDate">> => non_neg_integer()
-%% }
--type update_schema_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_discoverer_response() :: #{
-%%   <<"CrossAccount">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"DiscovererArn">> => string(),
-%%   <<"DiscovererId">> => string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type update_discoverer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_schema_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaName">> => string(),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"Type">> => string(),
-%%   <<"VersionCreatedDate">> => non_neg_integer()
-%% }
--type create_schema_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% too_many_requests_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type too_many_requests_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_discoverer_response() :: #{
-%%   <<"CrossAccount">> => boolean(),
-%%   <<"Description">> => string(),
-%%   <<"DiscovererArn">> => string(),
-%%   <<"DiscovererId">> => string(),
-%%   <<"SourceArn">> => string(),
-%%   <<"State">> => list(any()),
-%%   <<"Tags">> => map()
-%% }
--type describe_discoverer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_code_binding_request() :: #{
-%%   <<"SchemaVersion">> => string()
-%% }
--type put_code_binding_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_schemas_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"SchemaNamePrefix">> => string()
-%% }
--type list_schemas_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_code_binding_response() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"Status">> => list(any())
-%% }
--type put_code_binding_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% export_schema_request() :: #{
-%%   <<"SchemaVersion">> => string(),
-%%   <<"Type">> := string()
-%% }
--type export_schema_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_discoverer_request() :: #{
-%%   <<"CrossAccount">> => boolean(),
-%%   <<"Description">> => string()
-%% }
--type update_discoverer_request() :: #{binary() => any()}.
+-type bad_request_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -376,195 +111,16 @@
 
 
 %% Example:
-%% list_discoverers_response() :: #{
-%%   <<"Discoverers">> => list(discoverer_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_discoverers_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_code_binding_source_response() :: #{
-%%   <<"Body">> => binary()
-%% }
--type get_code_binding_source_response() :: #{binary() => any()}.
-
-%% Example:
-%% delete_schema_version_request() :: #{}
--type delete_schema_version_request() :: #{}.
-
-
-%% Example:
-%% schema_summary() :: #{
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaName">> => string(),
-%%   <<"Tags">> => map(),
-%%   <<"VersionCount">> => float()
-%% }
--type schema_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_schema_summary() :: #{
-%%   <<"RegistryName">> => string(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaName">> => string(),
-%%   <<"SchemaVersions">> => list(search_schema_version_summary())
-%% }
--type search_schema_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% not_found_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_unavailable_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type service_unavailable_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% stop_discoverer_response() :: #{
+%% create_discoverer_response() :: #{
+%%   <<"CrossAccount">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"DiscovererArn">> => string(),
 %%   <<"DiscovererId">> => string(),
-%%   <<"State">> => list(any())
-%% }
--type stop_discoverer_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_resource_policy_request() :: #{
-%%   <<"RegistryName">> => string()
-%% }
--type get_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% describe_registry_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"State">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
--type describe_registry_response() :: #{binary() => any()}.
-
-%% Example:
-%% stop_discoverer_request() :: #{}
--type stop_discoverer_request() :: #{}.
-
-
-%% Example:
-%% search_schema_version_summary() :: #{
-%%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"Type">> => list(any())
-%% }
--type search_schema_version_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% update_registry_response() :: #{
-%%   <<"Description">> => string(),
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"Tags">> => map()
-%% }
--type update_registry_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_schema_versions_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_schema_versions_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_discoverer_request() :: #{}
--type describe_discoverer_request() :: #{}.
-
-
-%% Example:
-%% list_registries_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Registries">> => list(registry_summary())
-%% }
--type list_registries_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% put_resource_policy_request() :: #{
-%%   <<"Policy">> := string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"RevisionId">> => string()
-%% }
--type put_resource_policy_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% search_schemas_response() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Schemas">> => list(search_schema_summary())
-%% }
--type search_schemas_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% get_discovered_schema_response() :: #{
-%%   <<"Content">> => string()
-%% }
--type get_discovered_schema_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_registries_request() :: #{
-%%   <<"Limit">> => integer(),
-%%   <<"NextToken">> => string(),
-%%   <<"RegistryNamePrefix">> => string(),
-%%   <<"Scope">> => string()
-%% }
--type list_registries_request() :: #{binary() => any()}.
-
-%% Example:
-%% describe_registry_request() :: #{}
--type describe_registry_request() :: #{}.
-
-
-%% Example:
-%% export_schema_response() :: #{
-%%   <<"Content">> => string(),
-%%   <<"SchemaArn">> => string(),
-%%   <<"SchemaName">> => string(),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"Type">> => string()
-%% }
--type export_schema_response() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% internal_server_error_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
-%% }
--type internal_server_error_exception() :: #{binary() => any()}.
+-type create_discoverer_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -576,19 +132,45 @@
 
 
 %% Example:
-%% put_resource_policy_response() :: #{
-%%   <<"Policy">> => string(),
-%%   <<"RevisionId">> => string()
+%% create_registry_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RegistryArn">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"Tags">> => map()
 %% }
--type put_resource_policy_response() :: #{binary() => any()}.
+-type create_registry_response() :: #{binary() => any()}.
 
 
 %% Example:
-%% bad_request_exception() :: #{
-%%   <<"Code">> => string(),
-%%   <<"Message">> => string()
+%% create_schema_request() :: #{
+%%   <<"Content">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> := list(any())
 %% }
--type bad_request_exception() :: #{binary() => any()}.
+-type create_schema_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schema_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaName">> => string(),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => string(),
+%%   <<"VersionCreatedDate">> => non_neg_integer()
+%% }
+-type create_schema_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_discoverer_request() :: #{}
+-type delete_discoverer_request() :: #{}.
+
+%% Example:
+%% delete_registry_request() :: #{}
+-type delete_registry_request() :: #{}.
 
 
 %% Example:
@@ -597,13 +179,83 @@
 %% }
 -type delete_resource_policy_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_schema_request() :: #{}
+-type delete_schema_request() :: #{}.
 
 %% Example:
-%% start_discoverer_response() :: #{
-%%   <<"DiscovererId">> => string(),
-%%   <<"State">> => list(any())
+%% delete_schema_version_request() :: #{}
+-type delete_schema_version_request() :: #{}.
+
+
+%% Example:
+%% describe_code_binding_request() :: #{
+%%   <<"SchemaVersion">> => string()
 %% }
--type start_discoverer_response() :: #{binary() => any()}.
+-type describe_code_binding_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_code_binding_response() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type describe_code_binding_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_discoverer_request() :: #{}
+-type describe_discoverer_request() :: #{}.
+
+
+%% Example:
+%% describe_discoverer_response() :: #{
+%%   <<"CrossAccount">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"DiscovererArn">> => string(),
+%%   <<"DiscovererId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type describe_discoverer_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_registry_request() :: #{}
+-type describe_registry_request() :: #{}.
+
+
+%% Example:
+%% describe_registry_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RegistryArn">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_registry_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_schema_request() :: #{
+%%   <<"SchemaVersion">> => string()
+%% }
+-type describe_schema_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_schema_response() :: #{
+%%   <<"Content">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaName">> => string(),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => string(),
+%%   <<"VersionCreatedDate">> => non_neg_integer()
+%% }
+-type describe_schema_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -619,11 +271,178 @@
 
 
 %% Example:
+%% export_schema_request() :: #{
+%%   <<"SchemaVersion">> => string(),
+%%   <<"Type">> := string()
+%% }
+-type export_schema_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_schema_response() :: #{
+%%   <<"Content">> => string(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaName">> => string(),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type export_schema_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_binding_source_request() :: #{
+%%   <<"SchemaVersion">> => string()
+%% }
+-type get_code_binding_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_code_binding_source_response() :: #{
+%%   <<"Body">> => binary()
+%% }
+-type get_code_binding_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_discovered_schema_request() :: #{
+%%   <<"Events">> := list(string()),
+%%   <<"Type">> := list(any())
+%% }
+-type get_discovered_schema_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_discovered_schema_response() :: #{
+%%   <<"Content">> => string()
+%% }
+-type get_discovered_schema_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"RegistryName">> => string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% gone_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type gone_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_error_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_discoverers_request() :: #{
+%%   <<"DiscovererIdPrefix">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SourceArnPrefix">> => string()
+%% }
+-type list_discoverers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_discoverers_response() :: #{
+%%   <<"Discoverers">> => list(discoverer_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_discoverers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_registries_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RegistryNamePrefix">> => string(),
+%%   <<"Scope">> => string()
+%% }
+-type list_registries_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_registries_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Registries">> => list(registry_summary())
+%% }
+-type list_registries_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schema_versions_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_schema_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schema_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaVersions">> => list(schema_version_summary())
+%% }
+-type list_schema_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schemas_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SchemaNamePrefix">> => string()
+%% }
+-type list_schemas_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_schemas_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Schemas">> => list(schema_summary())
 %% }
 -type list_schemas_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% not_found_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -632,6 +451,60 @@
 %%   <<"Message">> => string()
 %% }
 -type precondition_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_code_binding_request() :: #{
+%%   <<"SchemaVersion">> => string()
+%% }
+-type put_code_binding_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_code_binding_response() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type put_code_binding_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_summary() :: #{
+%%   <<"RegistryArn">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type registry_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% schema_summary() :: #{
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaName">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"VersionCount">> => float()
+%% }
+-type schema_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -645,26 +518,139 @@
 
 
 %% Example:
-%% describe_code_binding_response() :: #{
-%%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"LastModified">> => non_neg_integer(),
-%%   <<"SchemaVersion">> => string(),
-%%   <<"Status">> => list(any())
+%% search_schema_summary() :: #{
+%%   <<"RegistryName">> => string(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaName">> => string(),
+%%   <<"SchemaVersions">> => list(search_schema_version_summary())
 %% }
--type describe_code_binding_response() :: #{binary() => any()}.
+-type search_schema_summary() :: #{binary() => any()}.
 
 
 %% Example:
-%% registry_summary() :: #{
-%%   <<"RegistryArn">> => string(),
-%%   <<"RegistryName">> => string(),
-%%   <<"Tags">> => map()
+%% search_schema_version_summary() :: #{
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"Type">> => list(any())
 %% }
--type registry_summary() :: #{binary() => any()}.
+-type search_schema_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_schemas_request() :: #{
+%%   <<"Keywords">> := string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_schemas_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_schemas_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Schemas">> => list(search_schema_summary())
+%% }
+-type search_schemas_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
 
 %% Example:
 %% start_discoverer_request() :: #{}
 -type start_discoverer_request() :: #{}.
+
+
+%% Example:
+%% start_discoverer_response() :: #{
+%%   <<"DiscovererId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type start_discoverer_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_discoverer_request() :: #{}
+-type stop_discoverer_request() :: #{}.
+
+
+%% Example:
+%% stop_discoverer_response() :: #{
+%%   <<"DiscovererId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type stop_discoverer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_requests_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type too_many_requests_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% unauthorized_exception() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_discoverer_request() :: #{
+%%   <<"CrossAccount">> => boolean(),
+%%   <<"Description">> => string()
+%% }
+-type update_discoverer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_discoverer_response() :: #{
+%%   <<"CrossAccount">> => boolean(),
+%%   <<"Description">> => string(),
+%%   <<"DiscovererArn">> => string(),
+%%   <<"DiscovererId">> => string(),
+%%   <<"SourceArn">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type update_discoverer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_registry_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type update_registry_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_registry_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"RegistryArn">> => string(),
+%%   <<"RegistryName">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type update_registry_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -676,242 +662,256 @@
 %% }
 -type update_schema_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_schema_response() :: #{
+%%   <<"Description">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"SchemaArn">> => string(),
+%%   <<"SchemaName">> => string(),
+%%   <<"SchemaVersion">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => string(),
+%%   <<"VersionCreatedDate">> => non_neg_integer()
+%% }
+-type update_schema_response() :: #{binary() => any()}.
+
 -type create_discoverer_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
-    conflict_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_registry_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
-    conflict_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    conflict_exception() | 
+    bad_request_exception().
 
 -type create_schema_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     service_unavailable_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type delete_discoverer_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_registry_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_resource_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_schema_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type delete_schema_version_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_code_binding_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_discoverer_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_registry_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type describe_schema_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type export_schema_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    too_many_requests_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type get_code_binding_source_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type get_discovered_schema_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type get_resource_policy_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_discoverers_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_registries_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_schema_versions_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_schemas_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type list_tags_for_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type put_code_binding_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
-    not_found_exception() | 
+    unauthorized_exception() | 
     too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
     gone_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type put_resource_policy_errors() ::
-    precondition_failed_exception() | 
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    precondition_failed_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type search_schemas_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type start_discoverer_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type stop_discoverer_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type tag_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type untag_resource_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 -type update_discoverer_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_registry_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
+    unauthorized_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    internal_server_error_exception() | 
     forbidden_exception() | 
-    unauthorized_exception().
+    bad_request_exception().
 
 -type update_schema_errors() ::
-    bad_request_exception() | 
-    internal_server_error_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
-    forbidden_exception().
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
 
 %%====================================================================
 %% API

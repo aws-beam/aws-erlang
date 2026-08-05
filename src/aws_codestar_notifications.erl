@@ -91,51 +91,17 @@
 
 
 %% Example:
-%% create_notification_rule_result() :: #{
-%%   <<"Arn">> => string()
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type create_notification_rule_result() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"Tags">> := map()
+%% concurrent_modification_exception() :: #{
+%%   <<"Message">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_result() :: #{}
--type untag_resource_result() :: #{}.
-
-
-%% Example:
-%% list_notification_rules_request() :: #{
-%%   <<"Filters">> => list(list_notification_rules_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_notification_rules_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% unsubscribe_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"TargetAddress">> := string()
-%% }
--type unsubscribe_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_target_result() :: #{}
--type delete_target_result() :: #{}.
-
-
-%% Example:
-%% list_event_types_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type list_event_types_filter() :: #{binary() => any()}.
+-type concurrent_modification_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -143,104 +109,6 @@
 %%   <<"Message">> => string()
 %% }
 -type configuration_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_targets_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"Targets">> => list(target_summary())
-%% }
--type list_targets_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_notification_rule_request() :: #{
-%%   <<"Arn">> := string()
-%% }
--type delete_notification_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string())
-%% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% update_notification_rule_result() :: #{}
--type update_notification_rule_result() :: #{}.
-
-
-%% Example:
-%% target() :: #{
-%%   <<"TargetAddress">> => string(),
-%%   <<"TargetType">> => string()
-%% }
--type target() :: #{binary() => any()}.
-
-
-%% Example:
-%% event_type_summary() :: #{
-%%   <<"EventTypeId">> => string(),
-%%   <<"EventTypeName">> => string(),
-%%   <<"ResourceType">> => string(),
-%%   <<"ServiceName">> => string()
-%% }
--type event_type_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_notification_rule_result() :: #{
-%%   <<"Arn">> => string()
-%% }
--type delete_notification_rule_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% target_summary() :: #{
-%%   <<"TargetAddress">> => string(),
-%%   <<"TargetStatus">> => list(any()),
-%%   <<"TargetType">> => string()
-%% }
--type target_summary() :: #{binary() => any()}.
-
-
-%% Example:
-%% invalid_next_token_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type invalid_next_token_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% delete_target_request() :: #{
-%%   <<"ForceUnsubscribeAll">> => boolean(),
-%%   <<"TargetAddress">> := string()
-%% }
--type delete_target_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notification_rules_filter() :: #{
-%%   <<"Name">> => list(any()),
-%%   <<"Value">> => string()
-%% }
--type list_notification_rules_filter() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_event_types_result() :: #{
-%%   <<"EventTypes">> => list(event_type_summary()),
-%%   <<"NextToken">> => string()
-%% }
--type list_event_types_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -258,111 +126,36 @@
 
 
 %% Example:
-%% subscribe_result() :: #{
+%% create_notification_rule_result() :: #{
 %%   <<"Arn">> => string()
 %% }
--type subscribe_result() :: #{binary() => any()}.
+-type create_notification_rule_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_notification_rule_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"DetailType">> => list(any()),
-%%   <<"EventTypeIds">> => list(string()),
-%%   <<"Name">> => string(),
-%%   <<"Status">> => list(any()),
-%%   <<"Targets">> => list(target())
-%% }
--type update_notification_rule_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_result() :: #{
-%%   <<"Tags">> => map()
-%% }
--type list_tags_for_resource_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_targets_request() :: #{
-%%   <<"Filters">> => list(list_targets_filter()),
-%%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
-%% }
--type list_targets_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% access_denied_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type access_denied_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% concurrent_modification_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type concurrent_modification_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% unsubscribe_result() :: #{
-%%   <<"Arn">> => string()
-%% }
--type unsubscribe_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_tags_for_resource_request() :: #{
+%% delete_notification_rule_request() :: #{
 %%   <<"Arn">> := string()
 %% }
--type list_tags_for_resource_request() :: #{binary() => any()}.
+-type delete_notification_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
-%% subscribe_request() :: #{
-%%   <<"Arn">> := string(),
-%%   <<"ClientRequestToken">> => string(),
-%%   <<"Target">> := target()
+%% delete_notification_rule_result() :: #{
+%%   <<"Arn">> => string()
 %% }
--type subscribe_request() :: #{binary() => any()}.
+-type delete_notification_rule_result() :: #{binary() => any()}.
 
 
 %% Example:
-%% limit_exceeded_exception() :: #{
-%%   <<"Message">> => string()
+%% delete_target_request() :: #{
+%%   <<"ForceUnsubscribeAll">> => boolean(),
+%%   <<"TargetAddress">> := string()
 %% }
--type limit_exceeded_exception() :: #{binary() => any()}.
-
+-type delete_target_request() :: #{binary() => any()}.
 
 %% Example:
-%% tag_resource_result() :: #{
-%%   <<"Tags">> => map()
-%% }
--type tag_resource_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_notification_rules_result() :: #{
-%%   <<"NextToken">> => string(),
-%%   <<"NotificationRules">> => list(notification_rule_summary())
-%% }
--type list_notification_rules_result() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_already_exists_exception() :: #{
-%%   <<"Message">> => string()
-%% }
--type resource_already_exists_exception() :: #{binary() => any()}.
+%% delete_target_result() :: #{}
+-type delete_target_result() :: #{}.
 
 
 %% Example:
@@ -390,11 +183,35 @@
 
 
 %% Example:
-%% notification_rule_summary() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"Id">> => string()
+%% event_type_summary() :: #{
+%%   <<"EventTypeId">> => string(),
+%%   <<"EventTypeName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ServiceName">> => string()
 %% }
--type notification_rule_summary() :: #{binary() => any()}.
+-type event_type_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_next_token_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type invalid_next_token_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_event_types_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type list_event_types_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -407,23 +224,206 @@
 
 
 %% Example:
+%% list_event_types_result() :: #{
+%%   <<"EventTypes">> => list(event_type_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_event_types_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_rules_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type list_notification_rules_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_rules_request() :: #{
+%%   <<"Filters">> => list(list_notification_rules_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_notification_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_notification_rules_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"NotificationRules">> => list(notification_rule_summary())
+%% }
+-type list_notification_rules_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_request() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type list_tags_for_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_result() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_targets_filter() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Value">> => string()
 %% }
 -type list_targets_filter() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_targets_request() :: #{
+%%   <<"Filters">> => list(list_targets_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_targets_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Targets">> => list(target_summary())
+%% }
+-type list_targets_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_rule_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type notification_rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_already_exists_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribe_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Target">> := target()
+%% }
+-type subscribe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribe_result() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type subscribe_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_result() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type tag_resource_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% target() :: #{
+%%   <<"TargetAddress">> => string(),
+%%   <<"TargetType">> => string()
+%% }
+-type target() :: #{binary() => any()}.
+
+
+%% Example:
+%% target_summary() :: #{
+%%   <<"TargetAddress">> => string(),
+%%   <<"TargetStatus">> => list(any()),
+%%   <<"TargetType">> => string()
+%% }
+-type target_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsubscribe_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"TargetAddress">> := string()
+%% }
+-type unsubscribe_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% unsubscribe_result() :: #{
+%%   <<"Arn">> => string()
+%% }
+-type unsubscribe_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_result() :: #{}
+-type untag_resource_result() :: #{}.
+
+
+%% Example:
+%% update_notification_rule_request() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"DetailType">> => list(any()),
+%%   <<"EventTypeIds">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Targets">> => list(target())
+%% }
+-type update_notification_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_notification_rule_result() :: #{}
+-type update_notification_rule_result() :: #{}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type create_notification_rule_errors() ::
+    validation_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
-    validation_exception() | 
+    configuration_exception() | 
     concurrent_modification_exception() | 
-    access_denied_exception() | 
-    configuration_exception().
+    access_denied_exception().
 
 -type delete_notification_rule_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
+    limit_exceeded_exception() | 
     concurrent_modification_exception().
 
 -type delete_target_errors() ::
@@ -455,19 +455,19 @@
     configuration_exception().
 
 -type tag_resource_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    concurrent_modification_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception().
 
 -type unsubscribe_errors() ::
     validation_exception().
 
 -type untag_resource_errors() ::
-    limit_exceeded_exception() | 
     validation_exception() | 
-    concurrent_modification_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception().
 
 -type update_notification_rule_errors() ::
     validation_exception() | 
