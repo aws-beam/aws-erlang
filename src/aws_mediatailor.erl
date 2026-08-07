@@ -311,6 +311,17 @@
 
 
 %% Example:
+%% concurrent_executor_configuration() :: #{
+%%   <<"FunctionList">> => list(function_ref()),
+%%   <<"MaxConcurrency">> => integer(),
+%%   <<"Output">> => map(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"TimeoutMilliseconds">> => integer()
+%% }
+-type concurrent_executor_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% configure_logs_for_channel_request() :: #{
 %%   <<"ChannelName">> := string(),
 %%   <<"LogTypes">> := list(list(any())())
@@ -723,6 +734,7 @@
 
 %% Example:
 %% function_ref() :: #{
+%%   <<"Alias">> => string(),
 %%   <<"FunctionId">> => string(),
 %%   <<"RunCondition">> => string()
 %% }
@@ -765,6 +777,7 @@
 %% Example:
 %% get_function_response() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"ConcurrentExecutorConfiguration">> => concurrent_executor_configuration(),
 %%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
 %%   <<"Description">> => string(),
 %%   <<"FunctionId">> => string(),
@@ -1093,6 +1106,7 @@
 %% Example:
 %% mediatailor_function() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"ConcurrentExecutorConfiguration">> => concurrent_executor_configuration(),
 %%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
 %%   <<"Description">> => string(),
 %%   <<"FunctionId">> => string(),
@@ -1186,6 +1200,7 @@
 
 %% Example:
 %% put_function_request() :: #{
+%%   <<"ConcurrentExecutorConfiguration">> => concurrent_executor_configuration(),
 %%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
 %%   <<"Description">> => string(),
 %%   <<"FunctionType">> := list(any()),
@@ -1199,6 +1214,7 @@
 %% Example:
 %% put_function_response() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"ConcurrentExecutorConfiguration">> => concurrent_executor_configuration(),
 %%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
 %%   <<"Description">> => string(),
 %%   <<"FunctionId">> => string(),

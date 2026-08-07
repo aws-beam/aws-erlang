@@ -63,6 +63,8 @@
 
 -export([associate_whats_app_business_account/2,
          associate_whats_app_business_account/3,
+         create_whats_app_dataset/2,
+         create_whats_app_dataset/3,
          create_whats_app_flow/2,
          create_whats_app_flow/3,
          create_whats_app_message_template/2,
@@ -121,6 +123,8 @@
          publish_whats_app_flow/3,
          put_whats_app_business_account_event_destinations/2,
          put_whats_app_business_account_event_destinations/3,
+         send_whats_app_conversion_event/2,
+         send_whats_app_conversion_event/3,
          send_whats_app_message/2,
          send_whats_app_message/3,
          tag_resource/2,
@@ -167,6 +171,20 @@
 %%   <<"statusCode">> => [integer()]
 %% }
 -type associate_whats_app_business_account_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_dataset_input() :: #{
+%%   <<"id">> := string()
+%% }
+-type create_whats_app_dataset_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_dataset_output() :: #{
+%%   <<"datasetId">> => string()
+%% }
+-type create_whats_app_dataset_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -477,6 +495,7 @@
 %% Example:
 %% linked_whats_app_business_account() :: #{
 %%   <<"arn">> => string(),
+%%   <<"datasetId">> => string(),
 %%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()),
 %%   <<"id">> => string(),
 %%   <<"linkDate">> => non_neg_integer(),
@@ -502,6 +521,7 @@
 %% Example:
 %% linked_whats_app_business_account_summary() :: #{
 %%   <<"arn">> => string(),
+%%   <<"datasetId">> => string(),
 %%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()),
 %%   <<"id">> => string(),
 %%   <<"linkDate">> => non_neg_integer(),
@@ -772,6 +792,22 @@
 
 
 %% Example:
+%% send_whats_app_conversion_event_input() :: #{
+%%   <<"datasetId">> := string(),
+%%   <<"eventData">> := binary(),
+%%   <<"id">> := string()
+%% }
+-type send_whats_app_conversion_event_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_whats_app_conversion_event_output() :: #{
+%%   <<"requestId">> => [string()]
+%% }
+-type send_whats_app_conversion_event_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% send_whats_app_message_input() :: #{
 %%   <<"message">> := binary(),
 %%   <<"metaApiVersion">> := [string()],
@@ -985,6 +1021,14 @@
     invalid_parameters_exception() | 
     dependency_exception().
 
+-type create_whats_app_dataset_errors() ::
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameters_exception() | 
+    internal_service_exception() | 
+    dependency_exception() | 
+    access_denied_by_meta_exception().
+
 -type create_whats_app_flow_errors() ::
     throttled_request_exception() | 
     resource_not_found_exception() | 
@@ -1165,6 +1209,14 @@
     invalid_parameters_exception() | 
     internal_service_exception().
 
+-type send_whats_app_conversion_event_errors() ::
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameters_exception() | 
+    internal_service_exception() | 
+    dependency_exception() | 
+    access_denied_by_meta_exception().
+
 -type send_whats_app_message_errors() ::
     throttled_request_exception() | 
     resource_not_found_exception() | 
@@ -1227,6 +1279,41 @@ associate_whats_app_business_account(Client, Input) ->
 associate_whats_app_business_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/whatsapp/signup"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a Meta Conversions API dataset for a WhatsApp Business
+%% Account.
+-spec create_whats_app_dataset(aws_client:aws_client(), create_whats_app_dataset_input()) ->
+    {ok, create_whats_app_dataset_output(), tuple()} |
+    {error, any()} |
+    {error, create_whats_app_dataset_errors(), tuple()}.
+create_whats_app_dataset(Client, Input) ->
+    create_whats_app_dataset(Client, Input, []).
+
+-spec create_whats_app_dataset(aws_client:aws_client(), create_whats_app_dataset_input(), proplists:proplist()) ->
+    {ok, create_whats_app_dataset_output(), tuple()} |
+    {error, any()} |
+    {error, create_whats_app_dataset_errors(), tuple()}.
+create_whats_app_dataset(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/waba/dataset"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2198,6 +2285,41 @@ put_whats_app_business_account_event_destinations(Client, Input) ->
 put_whats_app_business_account_event_destinations(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/whatsapp/waba/eventdestinations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sends a conversion event to Meta's Conversions API for the
+%% specified WhatsApp Business Account dataset.
+-spec send_whats_app_conversion_event(aws_client:aws_client(), send_whats_app_conversion_event_input()) ->
+    {ok, send_whats_app_conversion_event_output(), tuple()} |
+    {error, any()} |
+    {error, send_whats_app_conversion_event_errors(), tuple()}.
+send_whats_app_conversion_event(Client, Input) ->
+    send_whats_app_conversion_event(Client, Input, []).
+
+-spec send_whats_app_conversion_event(aws_client:aws_client(), send_whats_app_conversion_event_input(), proplists:proplist()) ->
+    {ok, send_whats_app_conversion_event_output(), tuple()} |
+    {error, any()} |
+    {error, send_whats_app_conversion_event_errors(), tuple()}.
+send_whats_app_conversion_event(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/waba/dataset/events"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

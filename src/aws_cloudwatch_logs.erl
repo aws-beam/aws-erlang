@@ -969,6 +969,7 @@
 
 %% Example:
 %% describe_field_indexes_request() :: #{
+%%   <<"indexCategories">> => list(list(any())()),
 %%   <<"logGroupIdentifiers">> := list(string()),
 %%   <<"nextToken">> => string()
 %% }
@@ -1243,6 +1244,7 @@
 %% field_index() :: #{
 %%   <<"fieldIndexName">> => string(),
 %%   <<"firstEventTime">> => float(),
+%%   <<"indexCategory">> => list(any()),
 %%   <<"lastEventTime">> => float(),
 %%   <<"lastScanTime">> => float(),
 %%   <<"logGroupIdentifier">> => string(),
@@ -5051,11 +5053,14 @@ describe_export_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExportTasks">>, Input, Options).
 
-%% @doc Returns a list of custom and default field indexes which are
-%% discovered in log data.
+%% @doc Returns a list of field indexes discovered in log data.
 %%
-%% For
-%% more information about field index policies, see PutIndexPolicy:
+%% By default, the response includes
+%% the `DEFAULT', `CUSTOM', and `INACTIVE' index categories. To
+%% return indexes from other categories, use the `indexCategories'
+%% parameter.
+%%
+%% For more information about field index policies, see PutIndexPolicy:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutIndexPolicy.html.
 -spec describe_field_indexes(aws_client:aws_client(), describe_field_indexes_request()) ->
     {ok, describe_field_indexes_response(), tuple()} |

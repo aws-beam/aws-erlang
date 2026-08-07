@@ -9,6 +9,8 @@
 
 -export([add_dataset_examples/3,
          add_dataset_examples/4,
+         batch_put_gateway_rate_limits/3,
+         batch_put_gateway_rate_limits/4,
          create_agent_runtime/2,
          create_agent_runtime/3,
          create_agent_runtime_endpoint/3,
@@ -19,6 +21,8 @@
          create_browser/3,
          create_browser_profile/2,
          create_browser_profile/3,
+         create_capacity_provider/2,
+         create_capacity_provider/3,
          create_code_interpreter/2,
          create_code_interpreter/3,
          create_configuration_bundle/2,
@@ -31,6 +35,8 @@
          create_evaluator/3,
          create_gateway/2,
          create_gateway/3,
+         create_gateway_rate_limit/3,
+         create_gateway_rate_limit/4,
          create_gateway_rule/3,
          create_gateway_rule/4,
          create_gateway_target/3,
@@ -71,6 +77,8 @@
          delete_browser/4,
          delete_browser_profile/3,
          delete_browser_profile/4,
+         delete_capacity_provider/3,
+         delete_capacity_provider/4,
          delete_code_interpreter/3,
          delete_code_interpreter/4,
          delete_configuration_bundle/3,
@@ -83,6 +91,8 @@
          delete_evaluator/4,
          delete_gateway/3,
          delete_gateway/4,
+         delete_gateway_rate_limit/4,
+         delete_gateway_rate_limit/5,
          delete_gateway_rule/4,
          delete_gateway_rule/5,
          delete_gateway_target/4,
@@ -129,6 +139,9 @@
          get_browser_profile/2,
          get_browser_profile/4,
          get_browser_profile/5,
+         get_capacity_provider/2,
+         get_capacity_provider/4,
+         get_capacity_provider/5,
          get_code_interpreter/2,
          get_code_interpreter/4,
          get_code_interpreter/5,
@@ -147,6 +160,9 @@
          get_gateway/2,
          get_gateway/4,
          get_gateway/5,
+         get_gateway_rate_limit/3,
+         get_gateway_rate_limit/5,
+         get_gateway_rate_limit/6,
          get_gateway_rule/3,
          get_gateway_rule/5,
          get_gateway_rule/6,
@@ -210,6 +226,8 @@
          list_agent_runtime_endpoints/4,
          list_agent_runtime_versions/3,
          list_agent_runtime_versions/4,
+         list_agent_runtime_versions_by_capacity_provider/3,
+         list_agent_runtime_versions_by_capacity_provider/4,
          list_agent_runtimes/2,
          list_agent_runtimes/3,
          list_api_key_credential_providers/2,
@@ -218,6 +236,8 @@
          list_browser_profiles/3,
          list_browsers/2,
          list_browsers/3,
+         list_capacity_providers/2,
+         list_capacity_providers/3,
          list_code_interpreters/2,
          list_code_interpreters/3,
          list_configuration_bundle_versions/3,
@@ -235,6 +255,9 @@
          list_datasets/4,
          list_evaluators/2,
          list_evaluators/3,
+         list_gateway_rate_limits/2,
+         list_gateway_rate_limits/4,
+         list_gateway_rate_limits/5,
          list_gateway_rules/2,
          list_gateway_rules/4,
          list_gateway_rules/5,
@@ -317,6 +340,8 @@
          update_agent_runtime_endpoint/5,
          update_api_key_credential_provider/2,
          update_api_key_credential_provider/3,
+         update_capacity_provider/3,
+         update_capacity_provider/4,
          update_configuration_bundle/3,
          update_configuration_bundle/4,
          update_dataset/3,
@@ -327,6 +352,8 @@
          update_evaluator/4,
          update_gateway/3,
          update_gateway/4,
+         update_gateway_rate_limit/4,
+         update_gateway_rate_limit/5,
          update_gateway_rule/4,
          update_gateway_rule/5,
          update_gateway_target/4,
@@ -436,6 +463,15 @@
 
 
 %% Example:
+%% agent_runtime_version_summary() :: #{
+%%   <<"agentRuntimeArn">> => string(),
+%%   <<"agentRuntimeVersion">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type agent_runtime_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_skills_descriptor() :: #{
 %%   <<"skillDefinition">> => skill_definition(),
 %%   <<"skillMd">> => skill_md_definition()
@@ -530,6 +566,31 @@
 
 
 %% Example:
+%% batch_put_gateway_rate_limits_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"rateLimits">> := list(batch_put_limit_entry())
+%% }
+-type batch_put_gateway_rate_limits_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_gateway_rate_limits_response() :: #{
+%%   <<"rateLimits">> => list(gateway_rate_limit_detail())
+%% }
+-type batch_put_gateway_rate_limits_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_limit_entry() :: #{
+%%   <<"description">> => string(),
+%%   <<"dimensionKeys">> => list(string()),
+%%   <<"entries">> => list(limit_entry()),
+%%   <<"rateLimitId">> => string()
+%% }
+-type batch_put_limit_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% bedrock_evaluator_model_config() :: #{
 %%   <<"additionalModelRequestFields">> => any(),
 %%   <<"inferenceConfig">> => inference_configuration(),
@@ -595,6 +656,48 @@
 %%   <<"status">> => list(any())
 %% }
 -type browser_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_configuration() :: #{
+%%   <<"capacityProviderArn">> => string()
+%% }
+-type capacity_provider_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_summary() :: #{
+%%   <<"capacityProviderArn">> => string(),
+%%   <<"capacityProviderId">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type capacity_provider_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_provider_volume_configuration() :: #{
+%%   <<"mountPath">> => string(),
+%%   <<"volumeName">> => string()
+%% }
+-type capacity_provider_volume_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_reservation_specification() :: #{
+%%   <<"capacityReservationPreference">> => list(any()),
+%%   <<"capacityReservationTarget">> => capacity_reservation_target()
+%% }
+-type capacity_reservation_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% capacity_reservation_target() :: #{
+%%   <<"capacityReservationId">> => string(),
+%%   <<"capacityReservationResourceGroupArn">> => string()
+%% }
+-type capacity_reservation_target() :: #{binary() => any()}.
 
 
 %% Example:
@@ -828,12 +931,13 @@
 %%   <<"agentRuntimeArtifact">> := list(),
 %%   <<"agentRuntimeName">> := string(),
 %%   <<"authorizerConfiguration">> => list(),
+%%   <<"capacityProviderConfiguration">> => capacity_provider_configuration(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
 %%   <<"filesystemConfigurations">> => list(list()),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
-%%   <<"networkConfiguration">> := network_configuration(),
+%%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
 %%   <<"requestHeaderConfiguration">> => list(),
 %%   <<"roleArn">> := string(),
@@ -921,6 +1025,28 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_browser_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_capacity_provider_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"computeConfiguration">> := list(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"permissionsConfiguration">> := permissions_configuration(),
+%%   <<"tags">> => map()
+%% }
+-type create_capacity_provider_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_capacity_provider_output() :: #{
+%%   <<"capacityProviderArn">> => string(),
+%%   <<"capacityProviderId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_capacity_provider_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1034,6 +1160,31 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_evaluator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_rate_limit_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"dimensionKeys">> := list(string()),
+%%   <<"entries">> := list(limit_entry()),
+%%   <<"rateLimitId">> => string()
+%% }
+-type create_gateway_rate_limit_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_gateway_rate_limit_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dimensionKeys">> => list(string()),
+%%   <<"entries">> => list(limit_entry()),
+%%   <<"gatewayIdentifier">> => string(),
+%%   <<"rateLimitId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type create_gateway_rate_limit_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1594,6 +1745,7 @@
 
 %% Example:
 %% delete_agent_runtime_request() :: #{
+%%   <<"agentRuntimeVersion">> => string(),
 %%   <<"clientToken">> => string()
 %% }
 -type delete_agent_runtime_request() :: #{binary() => any()}.
@@ -1602,6 +1754,7 @@
 %% Example:
 %% delete_agent_runtime_response() :: #{
 %%   <<"agentRuntimeId">> => string(),
+%%   <<"agentRuntimeVersion">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type delete_agent_runtime_response() :: #{binary() => any()}.
@@ -1650,6 +1803,21 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_browser_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_capacity_provider_input() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_capacity_provider_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_capacity_provider_output() :: #{
+%%   <<"capacityProviderId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_capacity_provider_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1728,6 +1896,18 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_evaluator_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_rate_limit_request() :: #{}
+-type delete_gateway_rate_limit_request() :: #{}.
+
+
+%% Example:
+%% delete_gateway_rate_limit_response() :: #{
+%%   <<"rateLimitId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_gateway_rate_limit_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_gateway_request() :: #{}
@@ -1974,6 +2154,31 @@
 
 
 %% Example:
+%% ebs_volume_configuration() :: #{
+%%   <<"encrypted">> => [boolean()],
+%%   <<"iops">> => integer(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sizeGiB">> => integer(),
+%%   <<"snapshotId">> => string(),
+%%   <<"throughput">> => integer(),
+%%   <<"volumeType">> => list(any())
+%% }
+-type ebs_volume_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ec2_configuration() :: #{
+%%   <<"launchTemplateSource">> => list(),
+%%   <<"lifecycleConfiguration">> => instance_lifecycle_configuration(),
+%%   <<"rootVolume">> => root_volume_configuration(),
+%%   <<"volumes">> => list(list()),
+%%   <<"vpcConfiguration">> => vpc_configuration()
+%% }
+-type ec2_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% efs_access_point_configuration() :: #{
 %%   <<"accessPointArn">> => string(),
 %%   <<"mountPath">> => string()
@@ -1995,6 +2200,30 @@
 %%   <<"message">> => [string()]
 %% }
 -type encryption_failure() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeral_block_device_mapping() :: #{
+%%   <<"deviceName">> => string(),
+%%   <<"ebs">> => ephemeral_ebs_volume_configuration(),
+%%   <<"virtualName">> => string()
+%% }
+-type ephemeral_block_device_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeral_ebs_volume_configuration() :: #{
+%%   <<"ebsCardIndex">> => integer(),
+%%   <<"encrypted">> => [boolean()],
+%%   <<"iops">> => integer(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"snapshotId">> => string(),
+%%   <<"throughput">> => integer(),
+%%   <<"volumeInitializationRate">> => integer(),
+%%   <<"volumeSize">> => integer(),
+%%   <<"volumeType">> => list(any())
+%% }
+-type ephemeral_ebs_volume_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2160,6 +2389,20 @@
 
 
 %% Example:
+%% gateway_rate_limit_detail() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dimensionKeys">> => list(string()),
+%%   <<"entries">> => list(limit_entry()),
+%%   <<"gatewayIdentifier">> => string(),
+%%   <<"rateLimitId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type gateway_rate_limit_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% gateway_rule_detail() :: #{
 %%   <<"actions">> => list(list()),
 %%   <<"conditions">> => list(list()),
@@ -2247,6 +2490,7 @@
 %%   <<"agentRuntimeName">> => string(),
 %%   <<"agentRuntimeVersion">> => string(),
 %%   <<"authorizerConfiguration">> => list(),
+%%   <<"capacityProviderConfiguration">> => capacity_provider_configuration(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
@@ -2328,6 +2572,27 @@
 %%   <<"status">> => list(any())
 %% }
 -type get_browser_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_provider_input() :: #{}
+-type get_capacity_provider_input() :: #{}.
+
+
+%% Example:
+%% get_capacity_provider_output() :: #{
+%%   <<"capacityProviderArn">> => string(),
+%%   <<"capacityProviderId">> => string(),
+%%   <<"computeConfiguration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"permissionsConfiguration">> => permissions_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"statusCode">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type get_capacity_provider_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_code_interpreter_request() :: #{}
@@ -2446,6 +2711,24 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type get_evaluator_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_gateway_rate_limit_request() :: #{}
+-type get_gateway_rate_limit_request() :: #{}.
+
+
+%% Example:
+%% get_gateway_rate_limit_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dimensionKeys">> => list(string()),
+%%   <<"entries">> => list(limit_entry()),
+%%   <<"gatewayIdentifier">> => string(),
+%%   <<"rateLimitId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_gateway_rate_limit_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_gateway_request() :: #{}
@@ -3327,6 +3610,21 @@
 
 
 %% Example:
+%% instance_lifecycle_configuration() :: #{
+%%   <<"idleInstanceTimeout">> => [integer()],
+%%   <<"maxLifetime">> => [integer()]
+%% }
+-type instance_lifecycle_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_requirements() :: #{
+%%   <<"allowedInstanceTypes">> => list(string())
+%% }
+-type instance_requirements() :: #{binary() => any()}.
+
+
+%% Example:
 %% interceptor_input_configuration() :: #{
 %%   <<"passRequestHeaders">> => [boolean()],
 %%   <<"payloadFilter">> => interceptor_payload_filter()
@@ -3410,11 +3708,43 @@
 
 
 %% Example:
+%% launch_parameters() :: #{
+%%   <<"capacityReservationSpecification">> => capacity_reservation_specification(),
+%%   <<"ephemeralVolumes">> => list(ephemeral_block_device_mapping()),
+%%   <<"instanceProfileArn">> => string(),
+%%   <<"instanceRequirements">> => instance_requirements(),
+%%   <<"licenseSpecifications">> => list(license_specification()),
+%%   <<"monitoring">> => list(any()),
+%%   <<"operatingSystem">> => list(any()),
+%%   <<"propagatedTags">> => map(),
+%%   <<"sshKeyName">> => string()
+%% }
+-type launch_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% license_specification() :: #{
+%%   <<"licenseConfigurationArn">> => string()
+%% }
+-type license_specification() :: #{binary() => any()}.
+
+
+%% Example:
 %% lifecycle_configuration() :: #{
 %%   <<"idleRuntimeSessionTimeout">> => [integer()],
 %%   <<"maxLifetime">> => [integer()]
 %% }
 -type lifecycle_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% limit_entry() :: #{
+%%   <<"connections">> => list(rate_config()),
+%%   <<"dimensions">> => map(),
+%%   <<"requests">> => list(rate_config()),
+%%   <<"tokens">> => list(rate_config())
+%% }
+-type limit_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3449,6 +3779,22 @@
 %%   <<"runtimeEndpoints">> => list(agent_runtime_endpoint())
 %% }
 -type list_agent_runtime_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_runtime_versions_by_capacity_provider_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_runtime_versions_by_capacity_provider_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_runtime_versions_by_capacity_provider_output() :: #{
+%%   <<"agentRuntimes">> => list(agent_runtime_version_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_agent_runtime_versions_by_capacity_provider_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3531,6 +3877,22 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_browsers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_capacity_providers_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_capacity_providers_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_capacity_providers_output() :: #{
+%%   <<"capacityProviders">> => list(capacity_provider_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_capacity_providers_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3649,6 +4011,22 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_evaluators_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateway_rate_limits_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateway_rate_limits_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_gateway_rate_limits_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"rateLimits">> => list(gateway_rate_limit_detail())
+%% }
+-type list_gateway_rate_limits_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4446,6 +4824,13 @@
 
 
 %% Example:
+%% permissions_configuration() :: #{
+%%   <<"capacityProviderOperatorRoleArn">> => string()
+%% }
+-type permissions_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% policy() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"definition">> => list(),
@@ -4608,6 +4993,14 @@
 
 
 %% Example:
+%% rate_config() :: #{
+%%   <<"period">> => list(any()),
+%%   <<"rate">> => [float()]
+%% }
+-type rate_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% reasoning_configuration() :: #{
 %%   <<"effort">> => [string()]
 %% }
@@ -4692,6 +5085,25 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retryable_conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type retryable_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% root_volume_configuration() :: #{
+%%   <<"encrypted">> => [boolean()],
+%%   <<"freeSpaceGiB">> => integer(),
+%%   <<"iops">> => integer(),
+%%   <<"kmsKeyId">> => string(),
+%%   <<"throughput">> => integer(),
+%%   <<"volumeType">> => list(any())
+%% }
+-type root_volume_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5336,13 +5748,14 @@
 %% update_agent_runtime_request() :: #{
 %%   <<"agentRuntimeArtifact">> := list(),
 %%   <<"authorizerConfiguration">> => list(),
+%%   <<"capacityProviderConfiguration">> => capacity_provider_configuration(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
 %%   <<"filesystemConfigurations">> => list(list()),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
 %%   <<"metadataConfiguration">> => runtime_metadata_configuration(),
-%%   <<"networkConfiguration">> := network_configuration(),
+%%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
 %%   <<"requestHeaderConfiguration">> => list(),
 %%   <<"roleArn">> := string()
@@ -5384,6 +5797,26 @@
 %%   <<"name">> => string()
 %% }
 -type update_api_key_credential_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_capacity_provider_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => updated_description()
+%% }
+-type update_capacity_provider_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_capacity_provider_output() :: #{
+%%   <<"capacityProviderArn">> => string(),
+%%   <<"capacityProviderId">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_capacity_provider_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5466,6 +5899,28 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type update_evaluator_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_rate_limit_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"entries">> := list(limit_entry())
+%% }
+-type update_gateway_rate_limit_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_gateway_rate_limit_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"dimensionKeys">> => list(string()),
+%%   <<"entries">> => list(limit_entry()),
+%%   <<"gatewayIdentifier">> => string(),
+%%   <<"rateLimitId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_gateway_rate_limit_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6154,6 +6609,14 @@
 
 
 %% Example:
+%% vpc_configuration() :: #{
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
+%% }
+-type vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% waf_configuration() :: #{
 %%   <<"failureMode">> => list(any())
 %% }
@@ -6189,6 +6652,15 @@
 -type workload_identity_type() :: #{binary() => any()}.
 
 -type add_dataset_examples_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type batch_put_gateway_rate_limits_errors() ::
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
@@ -6243,6 +6715,16 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_capacity_provider_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_code_interpreter_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -6288,6 +6770,15 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_gateway_rate_limit_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -6468,6 +6959,15 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type delete_capacity_provider_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type delete_code_interpreter_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -6510,6 +7010,14 @@
     access_denied_exception().
 
 -type delete_gateway_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_gateway_rate_limit_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -6680,6 +7188,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_capacity_provider_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_code_interpreter_errors() ::
     throttling_exception() | 
     service_quota_exceeded_exception() | 
@@ -6717,6 +7232,13 @@
     access_denied_exception().
 
 -type get_gateway_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_gateway_rate_limit_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -6890,6 +7412,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_agent_runtime_versions_by_capacity_provider_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_agent_runtimes_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -6911,6 +7439,12 @@
     access_denied_exception().
 
 -type list_browsers_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_capacity_providers_errors() ::
     validation_exception() | 
     throttling_exception() | 
     internal_server_exception() | 
@@ -6959,6 +7493,13 @@
 -type list_evaluators_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_gateway_rate_limits_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -7206,6 +7747,15 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type update_capacity_provider_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    retryable_conflict_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_configuration_bundle_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -7244,6 +7794,14 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_gateway_rate_limit_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -7435,6 +7993,44 @@ add_dataset_examples(Client, DatasetId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Atomically creates or updates multiple rate limits for a gateway.
+%%
+%% The operation updates existing limits with matching keys and creates new
+%% limits for new keys. If the operation fails, the service applies no
+%% changes. Retry the request after resolving the issue.
+-spec batch_put_gateway_rate_limits(aws_client:aws_client(), binary() | list(), batch_put_gateway_rate_limits_request()) ->
+    {ok, batch_put_gateway_rate_limits_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_gateway_rate_limits_errors(), tuple()}.
+batch_put_gateway_rate_limits(Client, GatewayIdentifier, Input) ->
+    batch_put_gateway_rate_limits(Client, GatewayIdentifier, Input, []).
+
+-spec batch_put_gateway_rate_limits(aws_client:aws_client(), binary() | list(), batch_put_gateway_rate_limits_request(), proplists:proplist()) ->
+    {ok, batch_put_gateway_rate_limits_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_gateway_rate_limits_errors(), tuple()}.
+batch_put_gateway_rate_limits(Client, GatewayIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/rate-limits/batch"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Amazon Bedrock AgentCore Runtime.
 -spec create_agent_runtime(aws_client:aws_client(), create_agent_runtime_request()) ->
     {ok, create_agent_runtime_response(), tuple()} |
@@ -7591,6 +8187,49 @@ create_browser_profile(Client, Input0, Options0) ->
     Method = put,
     Path = ["/browser-profiles"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a capacity provider.
+%%
+%% A capacity provider defines the Amazon EC2 infrastructure for AgentCore
+%% Runtime, including the operating system, allowed instance types,
+%% networking, and storage. It also specifies the IAM permissions that
+%% AgentCore uses to manage those instances.
+%%
+%% The capacity provider name must be unique within your account. After you
+%% create the capacity provider, it enters a `CREATING' state and
+%% transitions to `READY' when it is available for use.
+-spec create_capacity_provider(aws_client:aws_client(), create_capacity_provider_input()) ->
+    {ok, create_capacity_provider_output(), tuple()} |
+    {error, any()} |
+    {error, create_capacity_provider_errors(), tuple()}.
+create_capacity_provider(Client, Input) ->
+    create_capacity_provider(Client, Input, []).
+
+-spec create_capacity_provider(aws_client:aws_client(), create_capacity_provider_input(), proplists:proplist()) ->
+    {ok, create_capacity_provider_output(), tuple()} |
+    {error, any()} |
+    {error, create_capacity_provider_errors(), tuple()}.
+create_capacity_provider(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/capacity-providers"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -7816,6 +8455,44 @@ create_gateway(Client, Input0, Options0) ->
     Method = post,
     Path = ["/gateways/"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a rate limit for a gateway.
+%%
+%% Rate limits define throttling rules for each dimension that control
+%% request rates, token consumption rates, and concurrent connections through
+%% the gateway.
+-spec create_gateway_rate_limit(aws_client:aws_client(), binary() | list(), create_gateway_rate_limit_request()) ->
+    {ok, create_gateway_rate_limit_response(), tuple()} |
+    {error, any()} |
+    {error, create_gateway_rate_limit_errors(), tuple()}.
+create_gateway_rate_limit(Client, GatewayIdentifier, Input) ->
+    create_gateway_rate_limit(Client, GatewayIdentifier, Input, []).
+
+-spec create_gateway_rate_limit(aws_client:aws_client(), binary() | list(), create_gateway_rate_limit_request(), proplists:proplist()) ->
+    {ok, create_gateway_rate_limit_response(), tuple()} |
+    {error, any()} |
+    {error, create_gateway_rate_limit_errors(), tuple()}.
+create_gateway_rate_limit(Client, GatewayIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/rate-limits"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -8402,7 +9079,8 @@ create_workload_identity(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Bedrock AgentCore Runtime.
+%% @doc Deletes an Amazon Bedrock AgentCore Runtime, or a single version of
+%% an AgentCore Runtime when you provide the version qualifier.
 -spec delete_agent_runtime(aws_client:aws_client(), binary() | list(), delete_agent_runtime_request()) ->
     {ok, delete_agent_runtime_response(), tuple()} |
     {error, any()} |
@@ -8432,12 +9110,13 @@ delete_agent_runtime(Client, AgentRuntimeId, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"version">>, <<"agentRuntimeVersion">>},
                      {<<"clientToken">>, <<"clientToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an AAgentCore Runtime endpoint.
+%% @doc Deletes an AgentCore Runtime endpoint.
 -spec delete_agent_runtime_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_runtime_endpoint_request()) ->
     {ok, delete_agent_runtime_endpoint_response(), tuple()} |
     {error, any()} |
@@ -8557,6 +9236,45 @@ delete_browser_profile(Client, ProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/browser-profiles/", aws_util:encode_uri(ProfileId), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a capacity provider.
+%%
+%% Before you delete a capacity provider, disassociate all agent runtimes and
+%% runtime versions that reference it. If any references remain, the
+%% operation fails.
+-spec delete_capacity_provider(aws_client:aws_client(), binary() | list(), delete_capacity_provider_input()) ->
+    {ok, delete_capacity_provider_output(), tuple()} |
+    {error, any()} |
+    {error, delete_capacity_provider_errors(), tuple()}.
+delete_capacity_provider(Client, CapacityProviderId, Input) ->
+    delete_capacity_provider(Client, CapacityProviderId, Input, []).
+
+-spec delete_capacity_provider(aws_client:aws_client(), binary() | list(), delete_capacity_provider_input(), proplists:proplist()) ->
+    {ok, delete_capacity_provider_output(), tuple()} |
+    {error, any()} |
+    {error, delete_capacity_provider_errors(), tuple()}.
+delete_capacity_provider(Client, CapacityProviderId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/capacity-providers/", aws_util:encode_uri(CapacityProviderId), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -8773,6 +9491,40 @@ delete_gateway(Client, GatewayIdentifier, Input0, Options0) ->
     Method = delete,
     Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a gateway rate limit.
+-spec delete_gateway_rate_limit(aws_client:aws_client(), binary() | list(), binary() | list(), delete_gateway_rate_limit_request()) ->
+    {ok, delete_gateway_rate_limit_response(), tuple()} |
+    {error, any()} |
+    {error, delete_gateway_rate_limit_errors(), tuple()}.
+delete_gateway_rate_limit(Client, GatewayIdentifier, RateLimitId, Input) ->
+    delete_gateway_rate_limit(Client, GatewayIdentifier, RateLimitId, Input, []).
+
+-spec delete_gateway_rate_limit(aws_client:aws_client(), binary() | list(), binary() | list(), delete_gateway_rate_limit_request(), proplists:proplist()) ->
+    {ok, delete_gateway_rate_limit_response(), tuple()} |
+    {error, any()} |
+    {error, delete_gateway_rate_limit_errors(), tuple()}.
+delete_gateway_rate_limit(Client, GatewayIdentifier, RateLimitId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/rate-limits/", aws_util:encode_uri(RateLimitId), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -9558,6 +10310,44 @@ get_browser_profile(Client, ProfileId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a capacity provider, including its
+%% status, permissions configuration, and compute configuration.
+-spec get_capacity_provider(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_capacity_provider_output(), tuple()} |
+    {error, any()} |
+    {error, get_capacity_provider_errors(), tuple()}.
+get_capacity_provider(Client, CapacityProviderId)
+  when is_map(Client) ->
+    get_capacity_provider(Client, CapacityProviderId, #{}, #{}).
+
+-spec get_capacity_provider(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_capacity_provider_output(), tuple()} |
+    {error, any()} |
+    {error, get_capacity_provider_errors(), tuple()}.
+get_capacity_provider(Client, CapacityProviderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_capacity_provider(Client, CapacityProviderId, QueryMap, HeadersMap, []).
+
+-spec get_capacity_provider(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_capacity_provider_output(), tuple()} |
+    {error, any()} |
+    {error, get_capacity_provider_errors(), tuple()}.
+get_capacity_provider(Client, CapacityProviderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/capacity-providers/", aws_util:encode_uri(CapacityProviderId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about a custom code interpreter.
 -spec get_code_interpreter(aws_client:aws_client(), binary() | list()) ->
     {ok, get_code_interpreter_response(), tuple()} |
@@ -9791,6 +10581,43 @@ get_gateway(Client, GatewayIdentifier, QueryMap, HeadersMap)
 get_gateway(Client, GatewayIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a gateway rate limit.
+-spec get_gateway_rate_limit(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_gateway_rate_limit_response(), tuple()} |
+    {error, any()} |
+    {error, get_gateway_rate_limit_errors(), tuple()}.
+get_gateway_rate_limit(Client, GatewayIdentifier, RateLimitId)
+  when is_map(Client) ->
+    get_gateway_rate_limit(Client, GatewayIdentifier, RateLimitId, #{}, #{}).
+
+-spec get_gateway_rate_limit(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_gateway_rate_limit_response(), tuple()} |
+    {error, any()} |
+    {error, get_gateway_rate_limit_errors(), tuple()}.
+get_gateway_rate_limit(Client, GatewayIdentifier, RateLimitId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_gateway_rate_limit(Client, GatewayIdentifier, RateLimitId, QueryMap, HeadersMap, []).
+
+-spec get_gateway_rate_limit(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_gateway_rate_limit_response(), tuple()} |
+    {error, any()} |
+    {error, get_gateway_rate_limit_errors(), tuple()}.
+get_gateway_rate_limit(Client, GatewayIdentifier, RateLimitId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/rate-limits/", aws_util:encode_uri(RateLimitId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -10691,6 +11518,47 @@ list_agent_runtime_versions(Client, AgentRuntimeId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists the agent runtime versions that are associated with a capacity
+%% provider.
+%%
+%% Use this operation to identify the runtimes you must disassociate before
+%% you can delete the capacity provider. Results are paginated; use the
+%% `nextToken' parameter to retrieve additional results.
+-spec list_agent_runtime_versions_by_capacity_provider(aws_client:aws_client(), binary() | list(), list_agent_runtime_versions_by_capacity_provider_input()) ->
+    {ok, list_agent_runtime_versions_by_capacity_provider_output(), tuple()} |
+    {error, any()} |
+    {error, list_agent_runtime_versions_by_capacity_provider_errors(), tuple()}.
+list_agent_runtime_versions_by_capacity_provider(Client, CapacityProviderId, Input) ->
+    list_agent_runtime_versions_by_capacity_provider(Client, CapacityProviderId, Input, []).
+
+-spec list_agent_runtime_versions_by_capacity_provider(aws_client:aws_client(), binary() | list(), list_agent_runtime_versions_by_capacity_provider_input(), proplists:proplist()) ->
+    {ok, list_agent_runtime_versions_by_capacity_provider_output(), tuple()} |
+    {error, any()} |
+    {error, list_agent_runtime_versions_by_capacity_provider_errors(), tuple()}.
+list_agent_runtime_versions_by_capacity_provider(Client, CapacityProviderId, Input0, Options0) ->
+    Method = post,
+    Path = ["/capacity-providers/", aws_util:encode_uri(CapacityProviderId), "/runtime-versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all Amazon Secure Agents in your account.
 -spec list_agent_runtimes(aws_client:aws_client(), list_agent_runtimes_request()) ->
     {ok, list_agent_runtimes_response(), tuple()} |
@@ -10830,6 +11698,47 @@ list_browsers(Client, Input0, Options0) ->
                      {<<"maxResults">>, <<"maxResults">>},
                      {<<"nextToken">>, <<"nextToken">>},
                      {<<"type">>, <<"type">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the capacity providers in your account and returns summary
+%% information for each one.
+%%
+%% To retrieve the full configuration for a specific capacity provider, use
+%% `GetCapacityProvider'. Results are paginated; use the `nextToken'
+%% parameter to retrieve additional results.
+-spec list_capacity_providers(aws_client:aws_client(), list_capacity_providers_input()) ->
+    {ok, list_capacity_providers_output(), tuple()} |
+    {error, any()} |
+    {error, list_capacity_providers_errors(), tuple()}.
+list_capacity_providers(Client, Input) ->
+    list_capacity_providers(Client, Input, []).
+
+-spec list_capacity_providers(aws_client:aws_client(), list_capacity_providers_input(), proplists:proplist()) ->
+    {ok, list_capacity_providers_output(), tuple()} |
+    {error, any()} |
+    {error, list_capacity_providers_errors(), tuple()}.
+list_capacity_providers(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/capacity-providers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -11114,6 +12023,51 @@ list_evaluators(Client, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all rate limits for a gateway.
+%%
+%% Results are paginated. Use the `nextToken' parameter to retrieve
+%% additional results.
+-spec list_gateway_rate_limits(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_gateway_rate_limits_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateway_rate_limits_errors(), tuple()}.
+list_gateway_rate_limits(Client, GatewayIdentifier)
+  when is_map(Client) ->
+    list_gateway_rate_limits(Client, GatewayIdentifier, #{}, #{}).
+
+-spec list_gateway_rate_limits(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_gateway_rate_limits_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateway_rate_limits_errors(), tuple()}.
+list_gateway_rate_limits(Client, GatewayIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_gateway_rate_limits(Client, GatewayIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_gateway_rate_limits(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_gateway_rate_limits_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateway_rate_limits_errors(), tuple()}.
+list_gateway_rate_limits(Client, GatewayIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/rate-limits"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all rules for a gateway.
 -spec list_gateway_rules(aws_client:aws_client(), binary() | list()) ->
@@ -12469,6 +13423,43 @@ update_api_key_credential_provider(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a capacity provider.
+%%
+%% Only the description can be changed. To change other configuration, such
+%% as instance types, networking, or storage, create a new capacity provider.
+-spec update_capacity_provider(aws_client:aws_client(), binary() | list(), update_capacity_provider_input()) ->
+    {ok, update_capacity_provider_output(), tuple()} |
+    {error, any()} |
+    {error, update_capacity_provider_errors(), tuple()}.
+update_capacity_provider(Client, CapacityProviderId, Input) ->
+    update_capacity_provider(Client, CapacityProviderId, Input, []).
+
+-spec update_capacity_provider(aws_client:aws_client(), binary() | list(), update_capacity_provider_input(), proplists:proplist()) ->
+    {ok, update_capacity_provider_output(), tuple()} |
+    {error, any()} |
+    {error, update_capacity_provider_errors(), tuple()}.
+update_capacity_provider(Client, CapacityProviderId, Input0, Options0) ->
+    Method = put,
+    Path = ["/capacity-providers/", aws_util:encode_uri(CapacityProviderId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates a configuration bundle by creating a new version with the
 %% specified changes.
 %%
@@ -12636,6 +13627,42 @@ update_gateway(Client, GatewayIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the entries of a gateway rate limit.
+%%
+%% The dimension keys are immutable after creation.
+-spec update_gateway_rate_limit(aws_client:aws_client(), binary() | list(), binary() | list(), update_gateway_rate_limit_request()) ->
+    {ok, update_gateway_rate_limit_response(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_rate_limit_errors(), tuple()}.
+update_gateway_rate_limit(Client, GatewayIdentifier, RateLimitId, Input) ->
+    update_gateway_rate_limit(Client, GatewayIdentifier, RateLimitId, Input, []).
+
+-spec update_gateway_rate_limit(aws_client:aws_client(), binary() | list(), binary() | list(), update_gateway_rate_limit_request(), proplists:proplist()) ->
+    {ok, update_gateway_rate_limit_response(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_rate_limit_errors(), tuple()}.
+update_gateway_rate_limit(Client, GatewayIdentifier, RateLimitId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/rate-limits/", aws_util:encode_uri(RateLimitId), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

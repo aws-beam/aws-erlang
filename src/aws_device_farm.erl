@@ -903,6 +903,7 @@
 %%   <<"created">> => non_neg_integer(),
 %%   <<"device">> => device(),
 %%   <<"deviceMinutes">> => device_minutes(),
+%%   <<"insights">> => job_insights(),
 %%   <<"instanceArn">> => string(),
 %%   <<"message">> => string(),
 %%   <<"name">> => string(),
@@ -915,6 +916,36 @@
 %%   <<"videoEndpoint">> => string()
 %% }
 -type job() :: #{binary() => any()}.
+
+%% Example:
+%% job_insights() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"testReport">> => test_report()
+%% }
+-type job_insights() :: #{binary() => any()}.
+
+%% Example:
+%% job_report() :: #{
+%%   <<"jobDetailsUrl">> => string(),
+%%   <<"message">> => string(),
+%%   <<"metrics">> => job_report_metrics()
+%% }
+-type job_report() :: #{binary() => any()}.
+
+%% Example:
+%% job_report_metrics() :: #{
+%%   <<"averageJobExecutionDurationSeconds">> => float(),
+%%   <<"jobsErrored">> => integer(),
+%%   <<"jobsFailed">> => integer(),
+%%   <<"jobsPassed">> => integer(),
+%%   <<"jobsPassedPercentage">> => float(),
+%%   <<"jobsSkipped">> => integer(),
+%%   <<"jobsStopped">> => integer(),
+%%   <<"jobsTotal">> => integer(),
+%%   <<"medianJobExecutionDurationSeconds">> => float(),
+%%   <<"totalJobExecutionDurationSeconds">> => float()
+%% }
+-type job_report_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% limit_exceeded_exception() :: #{
@@ -1483,6 +1514,8 @@
 %%   <<"environmentVariables">> => list(environment_variable()),
 %%   <<"eventCount">> => integer(),
 %%   <<"executionRoleArn">> => string(),
+%%   <<"insights">> => run_insights(),
+%%   <<"insightsTypes">> => list(list(any())()),
 %%   <<"jobTimeoutMinutes">> => integer(),
 %%   <<"locale">> => string(),
 %%   <<"location">> => location(),
@@ -1508,6 +1541,13 @@
 -type run() :: #{binary() => any()}.
 
 %% Example:
+%% run_insights() :: #{
+%%   <<"jobReport">> => job_report(),
+%%   <<"status">> => list(any())
+%% }
+-type run_insights() :: #{binary() => any()}.
+
+%% Example:
 %% sample() :: #{
 %%   <<"arn">> => string(),
 %%   <<"type">> => list(any()),
@@ -1524,6 +1564,7 @@
 %%   <<"environmentVariables">> => list(environment_variable()),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"extraDataPackageArn">> => string(),
+%%   <<"insightsTypes">> => list(list(any())()),
 %%   <<"locale">> => string(),
 %%   <<"location">> => location(),
 %%   <<"networkProfileArn">> => string(),
@@ -1715,6 +1756,28 @@
 %%   <<"vpcId">> => string()
 %% }
 -type test_grid_vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% test_report() :: #{
+%%   <<"message">> => string(),
+%%   <<"metrics">> => test_report_metrics(),
+%%   <<"testDetailsUrl">> => string()
+%% }
+-type test_report() :: #{binary() => any()}.
+
+%% Example:
+%% test_report_metrics() :: #{
+%%   <<"medianTestExecutionDurationSeconds">> => float(),
+%%   <<"testsErrored">> => integer(),
+%%   <<"testsFailed">> => integer(),
+%%   <<"testsOther">> => integer(),
+%%   <<"testsPassed">> => integer(),
+%%   <<"testsPassedPercentage">> => float(),
+%%   <<"testsSkipped">> => integer(),
+%%   <<"testsTotal">> => integer(),
+%%   <<"totalTestExecutionDurationSeconds">> => float()
+%% }
+-type test_report_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% too_many_tags_exception() :: #{

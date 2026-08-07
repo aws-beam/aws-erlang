@@ -4664,7 +4664,7 @@ create_fleet(Client, Input, Options)
     request(Client, <<"CreateFleet">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2, Container
+%% This API works with the following fleet types: EC2, Anywhere, Container
 %%
 %% Adds remote locations to an EC2 and begins populating the new locations
 %% with
@@ -5624,7 +5624,7 @@ delete_container_group_definition(Client, Input, Options)
     request(Client, <<"DeleteContainerGroupDefinition">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2, Anywhere, Container
+%% This API works with the following fleet types: EC2, Anywhere
 %%
 %% Deletes all resources and information related to a fleet and shuts down
 %% any currently
@@ -5666,7 +5666,7 @@ delete_fleet(Client, Input, Options)
     request(Client, <<"DeleteFleet">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2, Container
+%% This API works with the following fleet types: EC2, Anywhere, Container
 %%
 %% Removes locations from a multi-location fleet.
 %%
@@ -5871,7 +5871,7 @@ delete_matchmaking_rule_set(Client, Input, Options)
     request(Client, <<"DeleteMatchmakingRuleSet">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2
+%% This API works with the following fleet types: EC2, Container
 %%
 %% Deletes a fleet scaling policy.
 %%
@@ -6622,7 +6622,7 @@ describe_fleet_events(Client, Input, Options)
     request(Client, <<"DescribeFleetEvents">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2, Container
+%% This API works with the following fleet types: EC2, Anywhere, Container
 %%
 %% Retrieves information on a fleet's remote locations, including
 %% life-cycle status and
@@ -6673,7 +6673,7 @@ describe_fleet_location_attributes(Client, Input, Options)
     request(Client, <<"DescribeFleetLocationAttributes">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2, Container
+%% This API works with the following fleet types: EC2, Anywhere, Container
 %%
 %% Retrieves the resource capacity settings for a fleet location.
 %%
@@ -6724,7 +6724,7 @@ describe_fleet_location_capacity(Client, Input, Options)
     request(Client, <<"DescribeFleetLocationCapacity">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2, Anywhere, Container
+%% This API works with the following fleet types: EC2, Anywhere
 %%
 %% Retrieves current usage data for a fleet location.
 %%
@@ -6771,7 +6771,7 @@ describe_fleet_location_utilization(Client, Input, Options)
     request(Client, <<"DescribeFleetLocationUtilization">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2, Container
+%% This API works with the following fleet types: EC2
 %%
 %% Retrieves a fleet's inbound connection permissions.
 %%
@@ -6820,7 +6820,7 @@ describe_fleet_port_settings(Client, Input, Options)
     request(Client, <<"DescribeFleetPortSettings">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2, Container
+%% This API works with the following fleet types: EC2
 %%
 %% Retrieves utilization statistics for one or more fleets.
 %%
@@ -7496,7 +7496,7 @@ describe_runtime_configuration(Client, Input, Options)
     request(Client, <<"DescribeRuntimeConfiguration">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2
+%% This API works with the following fleet types: EC2, Container
 %%
 %% Retrieves all scaling policies applied to a fleet.
 %%
@@ -8401,7 +8401,7 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2
+%% This API works with the following fleet types: EC2, Container
 %%
 %% Creates or updates a scaling policy for a fleet.
 %%
@@ -8525,7 +8525,7 @@ put_scaling_policy(Client, Input, Options)
     request(Client, <<"PutScalingPolicy">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: Anywhere, Container
+%% This API works with the following fleet types: Anywhere
 %%
 %% Registers a compute resource in an Amazon GameLift Servers Anywhere fleet.
 %%
@@ -9779,7 +9779,7 @@ update_container_group_definition(Client, Input, Options)
     request(Client, <<"UpdateContainerGroupDefinition">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2, Anywhere, Container
+%% This API works with the following fleet types: EC2, Anywhere
 %%
 %% Updates a fleet's mutable attributes, such as game session protection
 %% and resource
@@ -9926,7 +9926,7 @@ update_fleet_capacity(Client, Input, Options)
     request(Client, <<"UpdateFleetCapacity">>, Input, Options).
 
 %% @doc
-%% This API works with the following fleet types: EC2, Container
+%% This API works with the following fleet types: EC2
 %%
 %% Updates permissions that allow inbound traffic to connect to game sessions
 %% in the

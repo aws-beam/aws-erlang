@@ -5211,7 +5211,7 @@
 %% create_secondary_network_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Ipv4CidrBlock">> => string(),
+%%   <<"Ipv4CidrBlock">> := string(),
 %%   <<"NetworkType">> := list(any()),
 %%   <<"TagSpecifications">> => list(tag_specification())
 %% }
@@ -13658,6 +13658,7 @@
 %% Example:
 %% get_spot_placement_scores_request() :: #{
 %%   <<"DryRun">> => boolean(),
+%%   <<"IncludeLocalZones">> => boolean(),
 %%   <<"InstanceRequirementsWithMetadata">> => instance_requirements_with_metadata_request(),
 %%   <<"InstanceTypes">> => list(string()),
 %%   <<"MaxResults">> => integer(),

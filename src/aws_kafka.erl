@@ -182,6 +182,15 @@
 
 
 %% Example:
+%% authorizer_logs() :: #{
+%%   <<"CloudWatchLogs">> => cloud_watch_logs(),
+%%   <<"Firehose">> => firehose(),
+%%   <<"S3">> => s3()
+%% }
+-type authorizer_logs() :: #{binary() => any()}.
+
+
+%% Example:
 %% bad_request_exception() :: #{
 %%   <<"InvalidParameter">> => string(),
 %%   <<"Message">> => string()
@@ -1520,6 +1529,7 @@
 
 %% Example:
 %% logging_info() :: #{
+%%   <<"AuthorizerLogs">> => authorizer_logs(),
 %%   <<"BrokerLogs">> := broker_logs()
 %% }
 -type logging_info() :: #{binary() => any()}.

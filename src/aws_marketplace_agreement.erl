@@ -717,6 +717,14 @@
 -type list_billing_adjustment_requests_output() :: #{binary() => any()}.
 
 %% Example:
+%% net_payment_term() :: #{
+%%   <<"id">> => string(),
+%%   <<"paymentDuePeriod">> => string(),
+%%   <<"type">> => string()
+%% }
+-type net_payment_term() :: #{binary() => any()}.
+
+%% Example:
 %% payment_request_summary() :: #{
 %%   <<"agreementId">> => string(),
 %%   <<"chargeAmount">> => string(),

@@ -15,6 +15,8 @@
          associate_backup_vault_mpa_approval_team/4,
          cancel_legal_hold/3,
          cancel_legal_hold/4,
+         create_backup_access_point/2,
+         create_backup_access_point/3,
          create_backup_plan/2,
          create_backup_plan/3,
          create_backup_selection/3,
@@ -37,6 +39,8 @@
          create_restore_testing_selection/4,
          create_tiering_configuration/2,
          create_tiering_configuration/3,
+         delete_backup_access_point/3,
+         delete_backup_access_point/4,
          delete_backup_plan/3,
          delete_backup_plan/4,
          delete_backup_selection/4,
@@ -61,6 +65,9 @@
          delete_restore_testing_selection/5,
          delete_tiering_configuration/3,
          delete_tiering_configuration/4,
+         describe_backup_access_point/2,
+         describe_backup_access_point/4,
+         describe_backup_access_point/5,
          describe_backup_job/2,
          describe_backup_job/4,
          describe_backup_job/5,
@@ -153,6 +160,13 @@
          get_tiering_configuration/2,
          get_tiering_configuration/4,
          get_tiering_configuration/5,
+         list_backup_access_points/1,
+         list_backup_access_points/3,
+         list_backup_access_points/4,
+         list_backup_access_points_by_recovery_point/3,
+         list_backup_access_points_by_recovery_point/4,
+         list_backup_access_points_by_resource/3,
+         list_backup_access_points_by_resource/4,
          list_backup_job_summaries/1,
          list_backup_job_summaries/3,
          list_backup_job_summaries/4,
@@ -633,6 +647,25 @@
 
 
 %% Example:
+%% create_backup_access_point_request() :: #{
+%%   <<"AccessPointMetadata">> => map(),
+%%   <<"AccessPointPolicy">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"RecoveryPointArn">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_backup_access_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_backup_access_point_response() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type create_backup_access_point_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_backup_plan_input() :: #{
 %%   <<"BackupPlan">> := backup_plan_input(),
 %%   <<"BackupPlanTags">> => map(),
@@ -855,6 +888,10 @@
 -type date_range() :: #{binary() => any()}.
 
 %% Example:
+%% delete_backup_access_point_input() :: #{}
+-type delete_backup_access_point_input() :: #{}.
+
+%% Example:
 %% delete_backup_plan_input() :: #{}
 -type delete_backup_plan_input() :: #{}.
 
@@ -925,6 +962,27 @@
 %%   <<"Type">> => string()
 %% }
 -type dependency_failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_backup_access_point_input() :: #{}
+-type describe_backup_access_point_input() :: #{}.
+
+
+%% Example:
+%% describe_backup_access_point_response() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"AccessPointMetadata">> => map(),
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"Name">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => [string()],
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type describe_backup_access_point_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_backup_job_input() :: #{}
@@ -1596,6 +1654,71 @@
 %%   <<"Type">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_points_member() :: #{
+%%   <<"AccessPointArn">> => string(),
+%%   <<"AccessPointMetadata">> => map(),
+%%   <<"BackupVaultArn">> => string(),
+%%   <<"BackupVaultName">> => string(),
+%%   <<"CreationTime">> => [non_neg_integer()],
+%%   <<"Name">> => string(),
+%%   <<"RecoveryPointArn">> => string(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => [string()],
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type list_access_points_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_access_points_by_recovery_point_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_backup_access_points_by_recovery_point_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_access_points_by_recovery_point_response() :: #{
+%%   <<"BackupAccessPoints">> => list(list_access_points_member()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_backup_access_points_by_recovery_point_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_access_points_by_resource_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_backup_access_points_by_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_access_points_by_resource_response() :: #{
+%%   <<"BackupAccessPoints">> => list(list_access_points_member()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_backup_access_points_by_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_access_points_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_backup_access_points_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_backup_access_points_response() :: #{
+%%   <<"BackupAccessPoints">> => list(list_access_points_member()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_backup_access_points_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3000,6 +3123,16 @@
     invalid_resource_state_exception() | 
     invalid_parameter_value_exception().
 
+-type create_backup_access_point_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception() | 
+    already_exists_exception().
+
 -type create_backup_plan_errors() ::
     service_unavailable_exception() | 
     missing_parameter_value_exception() | 
@@ -3082,6 +3215,13 @@
     conflict_exception() | 
     already_exists_exception().
 
+-type delete_backup_access_point_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception().
+
 -type delete_backup_plan_errors() ::
     service_unavailable_exception() | 
     resource_not_found_exception() | 
@@ -3155,6 +3295,13 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
+
+-type describe_backup_access_point_errors() ::
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    missing_parameter_value_exception() | 
+    invalid_request_exception() | 
     invalid_parameter_value_exception().
 
 -type describe_backup_job_errors() ::
@@ -3341,6 +3488,18 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     missing_parameter_value_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_backup_access_points_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_backup_access_points_by_recovery_point_errors() ::
+    service_unavailable_exception() | 
+    invalid_parameter_value_exception().
+
+-type list_backup_access_points_by_resource_errors() ::
+    service_unavailable_exception() | 
     invalid_parameter_value_exception().
 
 -type list_backup_job_summaries_errors() ::
@@ -3721,6 +3880,49 @@ cancel_legal_hold(Client, LegalHoldId, Input0, Options0) ->
                      {<<"retainRecordInDays">>, <<"RetainRecordInDays">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a backup access point for an Amazon S3 recovery point.
+%%
+%% A backup access point provides
+%% on-demand, read-only access to the backup data in a recovery point through
+%% an Amazon S3 access point,
+%% without initiating a restore.
+%%
+%% While a backup access point is active for a recovery point, Backup pauses
+%% lifecycle transitions
+%% and blocks deletion of that recovery point.
+-spec create_backup_access_point(aws_client:aws_client(), create_backup_access_point_request()) ->
+    {ok, create_backup_access_point_response(), tuple()} |
+    {error, any()} |
+    {error, create_backup_access_point_errors(), tuple()}.
+create_backup_access_point(Client, Input) ->
+    create_backup_access_point(Client, Input, []).
+
+-spec create_backup_access_point(aws_client:aws_client(), create_backup_access_point_request(), proplists:proplist()) ->
+    {ok, create_backup_access_point_response(), tuple()} |
+    {error, any()} |
+    {error, create_backup_access_point_errors(), tuple()}.
+create_backup_access_point(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/backup-access-point/create"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a backup plan using a backup plan name and backup rules.
@@ -4167,6 +4369,48 @@ create_tiering_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/tiering-configurations"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a backup access point.
+%%
+%% This deletes the underlying Amazon S3 access point and, if no other
+%% backup access points remain for the recovery point, resumes lifecycle
+%% transitions for that recovery point.
+%%
+%% Always delete backup access points using this operation rather than
+%% deleting the underlying Amazon S3
+%% access point directly.
+-spec delete_backup_access_point(aws_client:aws_client(), binary() | list(), delete_backup_access_point_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_access_point_errors(), tuple()}.
+delete_backup_access_point(Client, AccessPointArn, Input) ->
+    delete_backup_access_point(Client, AccessPointArn, Input, []).
+
+-spec delete_backup_access_point(aws_client:aws_client(), binary() | list(), delete_backup_access_point_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_backup_access_point_errors(), tuple()}.
+delete_backup_access_point(Client, AccessPointArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/backup-access-point/delete/", aws_util:encode_uri(AccessPointArn), ""],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4644,6 +4888,50 @@ delete_tiering_configuration(Client, TieringConfigurationName, Input0, Options0)
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns metadata about a backup access point, including its status
+%% and the details of the underlying
+%% Amazon S3 access point.
+%%
+%% After a backup access point reaches the `AVAILABLE' status, use this
+%% operation to retrieve the
+%% Amazon S3 access point ARN and alias that you need to read the backup
+%% data.
+-spec describe_backup_access_point(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_backup_access_point_response(), tuple()} |
+    {error, any()} |
+    {error, describe_backup_access_point_errors(), tuple()}.
+describe_backup_access_point(Client, AccessPointArn)
+  when is_map(Client) ->
+    describe_backup_access_point(Client, AccessPointArn, #{}, #{}).
+
+-spec describe_backup_access_point(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_backup_access_point_response(), tuple()} |
+    {error, any()} |
+    {error, describe_backup_access_point_errors(), tuple()}.
+describe_backup_access_point(Client, AccessPointArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_backup_access_point(Client, AccessPointArn, QueryMap, HeadersMap, []).
+
+-spec describe_backup_access_point(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_backup_access_point_response(), tuple()} |
+    {error, any()} |
+    {error, describe_backup_access_point_errors(), tuple()}.
+describe_backup_access_point(Client, AccessPointArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/backup-access-point/", aws_util:encode_uri(AccessPointArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns backup job details for the specified `BackupJobId'.
 -spec describe_backup_job(aws_client:aws_client(), binary() | list()) ->
@@ -5914,6 +6202,128 @@ get_tiering_configuration(Client, TieringConfigurationName, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of the backup access points in your account and
+%% Region.
+-spec list_backup_access_points(aws_client:aws_client()) ->
+    {ok, list_backup_access_points_response(), tuple()} |
+    {error, any()} |
+    {error, list_backup_access_points_errors(), tuple()}.
+list_backup_access_points(Client)
+  when is_map(Client) ->
+    list_backup_access_points(Client, #{}, #{}).
+
+-spec list_backup_access_points(aws_client:aws_client(), map(), map()) ->
+    {ok, list_backup_access_points_response(), tuple()} |
+    {error, any()} |
+    {error, list_backup_access_points_errors(), tuple()}.
+list_backup_access_points(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_backup_access_points(Client, QueryMap, HeadersMap, []).
+
+-spec list_backup_access_points(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_backup_access_points_response(), tuple()} |
+    {error, any()} |
+    {error, list_backup_access_points_errors(), tuple()}.
+list_backup_access_points(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/backup-access-point"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the backup access points associated with the specified
+%% recovery point.
+%%
+%% If you own the recovery point and have shared it with other accounts, the
+%% response includes backup access
+%% points created by those accounts.
+-spec list_backup_access_points_by_recovery_point(aws_client:aws_client(), binary() | list(), list_backup_access_points_by_recovery_point_request()) ->
+    {ok, list_backup_access_points_by_recovery_point_response(), tuple()} |
+    {error, any()} |
+    {error, list_backup_access_points_by_recovery_point_errors(), tuple()}.
+list_backup_access_points_by_recovery_point(Client, RecoveryPointArn, Input) ->
+    list_backup_access_points_by_recovery_point(Client, RecoveryPointArn, Input, []).
+
+-spec list_backup_access_points_by_recovery_point(aws_client:aws_client(), binary() | list(), list_backup_access_points_by_recovery_point_request(), proplists:proplist()) ->
+    {ok, list_backup_access_points_by_recovery_point_response(), tuple()} |
+    {error, any()} |
+    {error, list_backup_access_points_by_recovery_point_errors(), tuple()}.
+list_backup_access_points_by_recovery_point(Client, RecoveryPointArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/backup-access-point/recovery-point/", aws_util:encode_uri(RecoveryPointArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"MaxResults">>, <<"MaxResults">>},
+                     {<<"NextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the backup access points associated with the specified
+%% resource, such as an Amazon S3
+%% bucket.
+-spec list_backup_access_points_by_resource(aws_client:aws_client(), binary() | list(), list_backup_access_points_by_resource_request()) ->
+    {ok, list_backup_access_points_by_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_backup_access_points_by_resource_errors(), tuple()}.
+list_backup_access_points_by_resource(Client, ResourceArn, Input) ->
+    list_backup_access_points_by_resource(Client, ResourceArn, Input, []).
+
+-spec list_backup_access_points_by_resource(aws_client:aws_client(), binary() | list(), list_backup_access_points_by_resource_request(), proplists:proplist()) ->
+    {ok, list_backup_access_points_by_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_backup_access_points_by_resource_errors(), tuple()}.
+list_backup_access_points_by_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/backup-access-point/resource/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"MaxResults">>, <<"MaxResults">>},
+                     {<<"NextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This is a request for a summary of backup jobs created
 %% or running within the most recent 30 days.
 %%
@@ -6496,11 +6906,12 @@ list_legal_holds(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns an array of resources successfully backed up by Backup,
-%% including
-%% the time the resource was saved, an Amazon Resource Name (ARN) of the
-%% resource, and a
-%% resource type.
+%% @doc Returns an array of resources with recovery points created by Backup
+%% (regardless of the recovery point's status:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/API_DescribeRecoveryPoint.html#Backup-DescribeRecoveryPoint-response-Status),
+%% including the time the resource was saved, an Amazon Resource Name (ARN)
+%% of the resource,
+%% and a resource type.
 -spec list_protected_resources(aws_client:aws_client()) ->
     {ok, list_protected_resources_output(), tuple()} |
     {error, any()} |

@@ -312,6 +312,7 @@
 %%   <<"MinSize">> => integer(),
 %%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
 %%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
+%%   <<"Operator">> => operator(),
 %%   <<"PlacementGroup">> => string(),
 %%   <<"PredictedCapacity">> => integer(),
 %%   <<"ServiceLinkedRoleARN">> => string(),
@@ -514,6 +515,7 @@
 %%   <<"MinSize">> := integer(),
 %%   <<"MixedInstancesPolicy">> => mixed_instances_policy(),
 %%   <<"NewInstancesProtectedFromScaleIn">> => boolean(),
+%%   <<"Operator">> => operator(),
 %%   <<"PlacementGroup">> => string(),
 %%   <<"ServiceLinkedRoleARN">> => string(),
 %%   <<"SkipZonalShiftValidation">> => boolean(),
@@ -1393,6 +1395,12 @@
 %%   <<"TopicARN">> => string()
 %% }
 -type notification_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% operator() :: #{
+%%   <<"Principal">> => string()
+%% }
+-type operator() :: #{binary() => any()}.
 
 %% Example:
 %% performance_factor_reference_request() :: #{

@@ -316,6 +316,8 @@
          list_finding_aggregators/1,
          list_finding_aggregators/3,
          list_finding_aggregators/4,
+         list_free_trial_statuses_v2/2,
+         list_free_trial_statuses_v2/3,
          list_invitations/1,
          list_invitations/3,
          list_invitations/4,
@@ -430,6 +432,15 @@
 %%   <<"Email">> => string()
 %% }
 -type account_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_free_trial_status() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"EvaluatedAt">> => non_neg_integer(),
+%%   <<"FreeTrialStatuses">> => list(free_trial_status())
+%% }
+-type account_free_trial_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7444,6 +7455,16 @@
 %% }
 -type firewall_policy_stateless_rule_group_references_details() :: #{binary() => any()}.
 
+
+%% Example:
+%% free_trial_status() :: #{
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"FeatureType">> => list(any()),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type free_trial_status() :: #{binary() => any()}.
+
 %% Example:
 %% generate_recommended_policy_v2_request() :: #{}
 -type generate_recommended_policy_v2_request() :: #{}.
@@ -8259,6 +8280,24 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_finding_aggregators_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_free_trial_statuses_v2_request() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Statuses">> => list(list(any())())
+%% }
+-type list_free_trial_statuses_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_free_trial_statuses_v2_response() :: #{
+%%   <<"AccountFreeTrialStatuses">> => list(account_free_trial_status()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_free_trial_statuses_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10883,6 +10922,13 @@
     invalid_input_exception() | 
     invalid_access_exception() | 
     internal_exception() | 
+    access_denied_exception().
+
+-type list_free_trial_statuses_v2_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 -type list_invitations_errors() ::
@@ -15041,6 +15087,44 @@ list_finding_aggregators(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the free trial status of Security Hub features.
+%%
+%% A delegated Security Hub administrator can list the status for accounts in
+%% its organization. Any other account can list the status only for itself.
+%% Free trial status remains available after a feature is disabled.
+-spec list_free_trial_statuses_v2(aws_client:aws_client(), list_free_trial_statuses_v2_request()) ->
+    {ok, list_free_trial_statuses_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_free_trial_statuses_v2_errors(), tuple()}.
+list_free_trial_statuses_v2(Client, Input) ->
+    list_free_trial_statuses_v2(Client, Input, []).
+
+-spec list_free_trial_statuses_v2(aws_client:aws_client(), list_free_trial_statuses_v2_request(), proplists:proplist()) ->
+    {ok, list_free_trial_statuses_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_free_trial_statuses_v2_errors(), tuple()}.
+list_free_trial_statuses_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/freetrial/statusv2/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
 %% We recommend using Organizations instead of Security Hub CSPM invitations

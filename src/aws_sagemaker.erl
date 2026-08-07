@@ -12767,7 +12767,8 @@
 %%   <<"EvaluationType">> => list(any()),
 %%   <<"EvaluatorArn">> => string(),
 %%   <<"JobType">> => list(any()),
-%%   <<"Peft">> => list(any())
+%%   <<"Peft">> => list(any()),
+%%   <<"SequenceLength">> => string()
 %% }
 -type serverless_job_config() :: #{binary() => any()}.
 

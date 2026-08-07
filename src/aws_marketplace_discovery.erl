@@ -534,6 +534,15 @@
 
 
 %% Example:
+%% net_payment_term() :: #{
+%%   <<"id">> => string(),
+%%   <<"paymentDuePeriod">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type net_payment_term() :: #{binary() => any()}.
+
+
+%% Example:
 %% offer_associated_entity() :: #{
 %%   <<"offerSet">> => offer_set_information(),
 %%   <<"product">> => product_information()

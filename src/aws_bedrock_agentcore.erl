@@ -27,6 +27,8 @@
          delete_a_b_test/4,
          delete_batch_evaluation/3,
          delete_batch_evaluation/4,
+         delete_capacity_provider_session/4,
+         delete_capacity_provider_session/5,
          delete_event/6,
          delete_event/7,
          delete_memory_record/4,
@@ -720,6 +722,19 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_batch_evaluation_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_capacity_provider_session_request() :: #{}
+-type delete_capacity_provider_session_request() :: #{}.
+
+
+%% Example:
+%% delete_capacity_provider_session_response() :: #{
+%%   <<"capacityProviderArn">> => string(),
+%%   <<"sessionId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_capacity_provider_session_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_event_input() :: #{}
@@ -3318,6 +3333,13 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type delete_capacity_provider_session_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type delete_event_errors() ::
     validation_exception() | 
     throttled_exception() | 
@@ -4120,6 +4142,45 @@ delete_batch_evaluation(Client, BatchEvaluationId, Input) ->
 delete_batch_evaluation(Client, BatchEvaluationId, Input0, Options0) ->
     Method = delete,
     Path = ["/evaluations/batch-evaluate/", aws_util:encode_uri(BatchEvaluationId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a session associated with a capacity provider in Amazon
+%% Bedrock AgentCore and makes the session unavailable for further use.
+%%
+%% To delete a capacity provider session, specify both the capacity provider
+%% identifier and the session ID. After you delete a session, you cannot
+%% restart it.
+-spec delete_capacity_provider_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_capacity_provider_session_request()) ->
+    {ok, delete_capacity_provider_session_response(), tuple()} |
+    {error, any()} |
+    {error, delete_capacity_provider_session_errors(), tuple()}.
+delete_capacity_provider_session(Client, CapacityProviderId, SessionId, Input) ->
+    delete_capacity_provider_session(Client, CapacityProviderId, SessionId, Input, []).
+
+-spec delete_capacity_provider_session(aws_client:aws_client(), binary() | list(), binary() | list(), delete_capacity_provider_session_request(), proplists:proplist()) ->
+    {ok, delete_capacity_provider_session_response(), tuple()} |
+    {error, any()} |
+    {error, delete_capacity_provider_session_errors(), tuple()}.
+delete_capacity_provider_session(Client, CapacityProviderId, SessionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/capacity-providers/", aws_util:encode_uri(CapacityProviderId), "/sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
