@@ -803,6 +803,8 @@
          update_contact_routing_data/5,
          update_contact_schedule/2,
          update_contact_schedule/3,
+         update_contact_task_template/2,
+         update_contact_task_template/3,
          update_data_table_attribute/5,
          update_data_table_attribute/6,
          update_data_table_metadata/4,
@@ -10649,6 +10651,19 @@
 
 
 %% Example:
+%% update_contact_task_template_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"TaskTemplateId">> := string()
+%% }
+-type update_contact_task_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_task_template_response() :: #{}
+-type update_contact_task_template_response() :: #{}.
+
+
+%% Example:
 %% update_data_table_attribute_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
@@ -14315,6 +14330,15 @@
     invalid_parameter_exception() | 
     internal_service_exception().
 
+-type update_contact_task_template_errors() ::
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    property_validation_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
 -type update_data_table_attribute_errors() ::
     throttling_exception() | 
     service_quota_exceeded_exception() | 
@@ -17826,18 +17850,18 @@ delete_attached_file(Client, FileId, InstanceId, Input0, Options0) ->
 %% information (PII) from a
 %% contact in the specified Connect Customer instance.
 %%
-%% This operation redacts PII (such as
+%% We redact PII (such as
 %% customer endpoints, additional email recipients, and the email subject)
 %% from the contact and its
 %% associated contact trace record (CTR). The contact must be in a terminated
 %% state.
 %%
-%% This operation performs a hard deletion of the specified PII and cannot be
-%% undone. There is
-%% no retention period; after the data is deleted, it cannot be recovered.
-%% Only fields that
-%% Connect Customer identifies and stores as PII are removed. Any PII that
-%% you place in fields
+%% This deletion is permanent and cannot be undone. Performing this
+%% operation permanently deletes the specified PII. There is
+%% no retention period; you cannot recover the data after deletion. We remove
+%% only the fields
+%% that Connect Customer identifies and stores as PII. Any PII that you place
+%% in fields
 %% outside the scope of this operation remains your responsibility to remove.
 -spec delete_contact_data(aws_client:aws_client(), binary() | list(), binary() | list(), delete_contact_data_request()) ->
     {ok, delete_contact_data_response(), tuple()} |
@@ -26968,11 +26992,14 @@ send_outbound_web_notification(Client, InstanceId, Input0, Options0) ->
 %% @doc Provides a pre-signed Amazon S3 URL in response for uploading your
 %% content.
 %%
-%% You may only use this API to upload attachments to an Connect Customer
+%% You may only use this API to upload attachments to a Connect Customer
 %% Case:
-%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html
-%% or Connect Customer Email:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/setup-email-channel.html.
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html,
+%% Connect Customer Email:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/setup-email-channel.html,
+%% or
+%% Connect Customer Task:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/concepts-getting-started-tasks.html.
 -spec start_attached_file_upload(aws_client:aws_client(), binary() | list(), start_attached_file_upload_request()) ->
     {ok, start_attached_file_upload_response(), tuple()} |
     {error, any()} |
@@ -28828,6 +28855,89 @@ update_contact_schedule(Client, Input) ->
 update_contact_schedule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/schedule"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the task template association on an existing task contact.
+%%
+%% You can update the task template on a contact
+%% before assignment to support tasks that are created without a template
+%% (for example Rules:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/connect-rules.html
+%% or disconnect flows:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/set-disconnect-flow.html)
+%% or change the agent interaction
+%% form to represent the latest task data (for example an initial request
+%% that was submitted as a refund gets updated to
+%% an account cancellation and requires a new template).
+%%
+%% This operation can only be used with task contacts that are in progress
+%% and not connected to an agent. A task
+%% template can be updated a maximum of 5 times per contact.
+%%
+%% The task's references must be compatible with the fields of the target
+%% task template. If the target template has
+%% a required field, the task must have a corresponding reference with a
+%% matching name and compatible type. The
+%% following task template field types map to reference types:
+%%
+%% `TEXT', `TEXT_AREA', `BOOLEAN', and `SINGLE_SELECT' map to
+%% references of type `STRING'.
+%%
+%% `NUMBER' maps to references of type `NUMBER'.
+%%
+%% `DATE_TIME' maps to references of type `DATE'.
+%%
+%% `URL' maps to references of type `URL'.
+%%
+%% `EMAIL' maps to references of type `EMAIL'.
+%%
+%% References corresponding to `TEXT' fields must be fewer than 512
+%% characters.
+%% `TEXT_AREA' fields must be fewer than 4,096 characters. `BOOLEAN'
+%% fields must have a value
+%% of `true' or `false'.
+%%
+%% An `InvalidRequestException' occurs when
+%% `UpdateContactTaskTemplate' is called on a
+%% connected or terminated task, when it is called on non-task contacts, and
+%% when the task contact already uses the
+%% provided task template. A `PropertyValidationException' occurs when
+%% the task's references conflict with
+%% the task template's fields, for example if the task is missing a
+%% reference that matches a required field, or if the
+%% task has a reference that matches a required field's name but not its
+%% datatype.
+-spec update_contact_task_template(aws_client:aws_client(), update_contact_task_template_request()) ->
+    {ok, update_contact_task_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_contact_task_template_errors(), tuple()}.
+update_contact_task_template(Client, Input) ->
+    update_contact_task_template(Client, Input, []).
+
+-spec update_contact_task_template(aws_client:aws_client(), update_contact_task_template_request(), proplists:proplist()) ->
+    {ok, update_contact_task_template_response(), tuple()} |
+    {error, any()} |
+    {error, update_contact_task_template_errors(), tuple()}.
+update_contact_task_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/task-template"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

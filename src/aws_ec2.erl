@@ -144,6 +144,8 @@
          authorize_security_group_egress/3,
          authorize_security_group_ingress/2,
          authorize_security_group_ingress/3,
+         batch_modify_ipam_routing_policy_registrations/2,
+         batch_modify_ipam_routing_policy_registrations/3,
          bundle_instance/2,
          bundle_instance/3,
          cancel_bundle_task/2,
@@ -236,6 +238,8 @@
          create_ipam/3,
          create_ipam_external_resource_verification_token/2,
          create_ipam_external_resource_verification_token/3,
+         create_ipam_internet_registry_association/2,
+         create_ipam_internet_registry_association/3,
          create_ipam_policy/2,
          create_ipam_policy/3,
          create_ipam_pool/2,
@@ -246,6 +250,8 @@
          create_ipam_prefix_list_resolver_target/3,
          create_ipam_resource_discovery/2,
          create_ipam_resource_discovery/3,
+         create_ipam_routing_policy_registration/2,
+         create_ipam_routing_policy_registration/3,
          create_ipam_scope/2,
          create_ipam_scope/3,
          create_key_pair/2,
@@ -430,6 +436,8 @@
          delete_ipam/3,
          delete_ipam_external_resource_verification_token/2,
          delete_ipam_external_resource_verification_token/3,
+         delete_ipam_internet_registry_association/2,
+         delete_ipam_internet_registry_association/3,
          delete_ipam_policy/2,
          delete_ipam_policy/3,
          delete_ipam_pool/2,
@@ -440,6 +448,8 @@
          delete_ipam_prefix_list_resolver_target/3,
          delete_ipam_resource_discovery/2,
          delete_ipam_resource_discovery/3,
+         delete_ipam_routing_policy_registration/2,
+         delete_ipam_routing_policy_registration/3,
          delete_ipam_scope/2,
          delete_ipam_scope/3,
          delete_key_pair/2,
@@ -752,6 +762,8 @@
          describe_ipam_byoasn/3,
          describe_ipam_external_resource_verification_tokens/2,
          describe_ipam_external_resource_verification_tokens/3,
+         describe_ipam_internet_registry_associations/2,
+         describe_ipam_internet_registry_associations/3,
          describe_ipam_policies/2,
          describe_ipam_policies/3,
          describe_ipam_pool_allocations/2,
@@ -1102,6 +1114,8 @@
          enable_image_deregistration_protection/3,
          enable_instance_sql_ha_standby_detections/2,
          enable_instance_sql_ha_standby_detections/3,
+         enable_ipam_internet_registry_association/2,
+         enable_ipam_internet_registry_association/3,
          enable_ipam_organization_admin_account/2,
          enable_ipam_organization_admin_account/3,
          enable_ipam_policy/2,
@@ -1196,6 +1210,12 @@
          get_ipam_discovered_public_addresses/3,
          get_ipam_discovered_resource_cidrs/2,
          get_ipam_discovered_resource_cidrs/3,
+         get_ipam_discovered_routes/2,
+         get_ipam_discovered_routes/3,
+         get_ipam_internet_registry_association_asns/2,
+         get_ipam_internet_registry_association_asns/3,
+         get_ipam_internet_registry_association_cidrs/2,
+         get_ipam_internet_registry_association_cidrs/3,
          get_ipam_policy_allocation_rules/2,
          get_ipam_policy_allocation_rules/3,
          get_ipam_policy_organization_targets/2,
@@ -1212,6 +1232,14 @@
          get_ipam_prefix_list_resolver_versions/3,
          get_ipam_resource_cidrs/2,
          get_ipam_resource_cidrs/3,
+         get_ipam_route_origin_authorizations/2,
+         get_ipam_route_origin_authorizations/3,
+         get_ipam_route_protection_findings/2,
+         get_ipam_route_protection_findings/3,
+         get_ipam_routing_policy_registration_deltas/2,
+         get_ipam_routing_policy_registration_deltas/3,
+         get_ipam_routing_policy_registrations/2,
+         get_ipam_routing_policy_registrations/3,
          get_launch_template_data/2,
          get_launch_template_data/3,
          get_managed_prefix_list_associations/2,
@@ -1364,6 +1392,8 @@
          modify_ipam_resource_cidr/3,
          modify_ipam_resource_discovery/2,
          modify_ipam_resource_discovery/3,
+         modify_ipam_routing_policy_registration/2,
+         modify_ipam_routing_policy_registration/3,
          modify_ipam_scope/2,
          modify_ipam_scope/3,
          modify_launch_template/2,
@@ -2914,6 +2944,22 @@
 -type baseline_performance_factors_request() :: #{binary() => any()}.
 
 %% Example:
+%% batch_modify_ipam_routing_policy_registrations_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DeltaJson">> := string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Force">> => boolean(),
+%%   <<"IpamInternetRegistryAssociationId">> := string()
+%% }
+-type batch_modify_ipam_routing_policy_registrations_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_modify_ipam_routing_policy_registrations_result() :: #{
+%%   <<"IpamRoutingPolicyRegistrationDelta">> => ipam_routing_policy_registration_delta()
+%% }
+-type batch_modify_ipam_routing_policy_registrations_result() :: #{binary() => any()}.
+
+%% Example:
 %% blob_attribute_value() :: #{
 %%   <<"Value">> => binary()
 %% }
@@ -2992,7 +3038,9 @@
 %%   <<"AsnAssociations">> => list(asn_association()),
 %%   <<"Cidr">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"IpamPoolId">> => string(),
 %%   <<"NetworkBorderGroup">> => string(),
+%%   <<"PoolId">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"StatusMessage">> => string()
 %% }
@@ -4572,6 +4620,24 @@
 -type create_ipam_external_resource_verification_token_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_ipam_internet_registry_association_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamId">> := string(),
+%%   <<"OrganizationHandle">> := string(),
+%%   <<"Rir">> := list(any()),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_ipam_internet_registry_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_ipam_internet_registry_association_result() :: #{
+%%   <<"IpamInternetRegistryAssociation">> => ipam_internet_registry_association()
+%% }
+-type create_ipam_internet_registry_association_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_ipam_policy_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -4685,6 +4751,26 @@
 %%   <<"Ipam">> => ipam()
 %% }
 -type create_ipam_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_ipam_routing_policy_registration_request() :: #{
+%%   <<"Asns">> := list(string()),
+%%   <<"Cidr">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Force">> => boolean(),
+%%   <<"IpamInternetRegistryAssociationId">> := string(),
+%%   <<"MaxLength">> => integer(),
+%%   <<"PermitMoreSpecificAnnouncements">> => boolean()
+%% }
+-type create_ipam_routing_policy_registration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_ipam_routing_policy_registration_result() :: #{
+%%   <<"IpamRoutingPolicyRegistrationDelta">> => ipam_routing_policy_registration_delta()
+%% }
+-type create_ipam_routing_policy_registration_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_ipam_scope_request() :: #{
@@ -6446,6 +6532,19 @@
 -type delete_ipam_external_resource_verification_token_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_ipam_internet_registry_association_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamInternetRegistryAssociationId">> := string()
+%% }
+-type delete_ipam_internet_registry_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ipam_internet_registry_association_result() :: #{
+%%   <<"IpamInternetRegistryAssociation">> => ipam_internet_registry_association()
+%% }
+-type delete_ipam_internet_registry_association_result() :: #{binary() => any()}.
+
+%% Example:
 %% delete_ipam_policy_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpamPolicyId">> := string()
@@ -6524,6 +6623,22 @@
 %%   <<"Ipam">> => ipam()
 %% }
 -type delete_ipam_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ipam_routing_policy_registration_request() :: #{
+%%   <<"Cidr">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Force">> => boolean(),
+%%   <<"IpamInternetRegistryAssociationId">> := string()
+%% }
+-type delete_ipam_routing_policy_registration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ipam_routing_policy_registration_result() :: #{
+%%   <<"IpamRoutingPolicyRegistrationDelta">> => ipam_routing_policy_registration_delta()
+%% }
+-type delete_ipam_routing_policy_registration_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_ipam_scope_request() :: #{
@@ -8866,6 +8981,23 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipam_external_resource_verification_tokens_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ipam_internet_registry_associations_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamInternetRegistryAssociationIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_internet_registry_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ipam_internet_registry_associations_result() :: #{
+%%   <<"IpamInternetRegistryAssociations">> => list(ipam_internet_registry_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_internet_registry_associations_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ipam_policies_request() :: #{
@@ -12069,6 +12201,25 @@
 -type enable_instance_sql_ha_standby_detections_result() :: #{binary() => any()}.
 
 %% Example:
+%% enable_ipam_internet_registry_association_request() :: #{
+%%   <<"ChildHandle">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamInternetRegistryAssociationId">> := string(),
+%%   <<"ParentBpkiTa">> := string(),
+%%   <<"ParentHandle">> := string(),
+%%   <<"RpkiVersion">> := string(),
+%%   <<"ServiceUri">> := string()
+%% }
+-type enable_ipam_internet_registry_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% enable_ipam_internet_registry_association_result() :: #{
+%%   <<"IpamInternetRegistryAssociation">> => ipam_internet_registry_association()
+%% }
+-type enable_ipam_internet_registry_association_result() :: #{binary() => any()}.
+
+%% Example:
 %% enable_ipam_organization_admin_account_request() :: #{
 %%   <<"DelegatedAdminAccountId">> := string(),
 %%   <<"DryRun">> => boolean()
@@ -13297,6 +13448,58 @@
 -type get_ipam_discovered_resource_cidrs_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_ipam_discovered_routes_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamResourceDiscoveryId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceRegion">> := string()
+%% }
+-type get_ipam_discovered_routes_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_discovered_routes_result() :: #{
+%%   <<"IpamDiscoveredRoutes">> => list(ipam_discovered_route()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_discovered_routes_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_internet_registry_association_asns_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamInternetRegistryAssociationId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_internet_registry_association_asns_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_internet_registry_association_asns_result() :: #{
+%%   <<"IpamInternetRegistryAssociationAsns">> => list(ipam_internet_registry_association_asn()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_internet_registry_association_asns_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_internet_registry_association_cidrs_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamInternetRegistryAssociationId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_internet_registry_association_cidrs_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_internet_registry_association_cidrs_result() :: #{
+%%   <<"IpamInternetRegistryAssociationCidrs">> => list(ipam_internet_registry_association_cidr()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_internet_registry_association_cidrs_result() :: #{binary() => any()}.
+
+%% Example:
 %% get_ipam_policy_allocation_rules_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
@@ -13440,6 +13643,78 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_ipam_resource_cidrs_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_route_origin_authorizations_request() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamInternetRegistryAssociationId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_route_origin_authorizations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_route_origin_authorizations_result() :: #{
+%%   <<"IpamRouteOriginAuthorizations">> => list(ipam_route_origin_authorization_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_route_origin_authorizations_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_route_protection_findings_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_route_protection_findings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_route_protection_findings_result() :: #{
+%%   <<"IpamId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"RouteProtectionFindings">> => list(ipam_route_protection_finding())
+%% }
+-type get_ipam_route_protection_findings_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_routing_policy_registration_deltas_request() :: #{
+%%   <<"ChronologicalOrder">> => list(any()),
+%%   <<"DeltaId">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"IpamInternetRegistryAssociationId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type get_ipam_routing_policy_registration_deltas_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_routing_policy_registration_deltas_result() :: #{
+%%   <<"IpamRoutingPolicyRegistrationDeltas">> => list(ipam_routing_policy_registration_delta()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_routing_policy_registration_deltas_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_routing_policy_registrations_request() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamInternetRegistryAssociationId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_routing_policy_registrations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_routing_policy_registrations_result() :: #{
+%%   <<"IpamRoutingPolicyRegistrations">> => list(ipam_routing_policy_registration()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_routing_policy_registrations_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_launch_template_data_request() :: #{
@@ -15525,6 +15800,22 @@
 -type ipam_discovered_resource_cidr() :: #{binary() => any()}.
 
 %% Example:
+%% ipam_discovered_route() :: #{
+%%   <<"AdvertisementType">> => list(any()),
+%%   <<"Asn">> => string(),
+%%   <<"Cidr">> => string(),
+%%   <<"IpamPoolId">> => string(),
+%%   <<"IpamResourceDiscoveryId">> => string(),
+%%   <<"NetworkBorderGroup">> => string(),
+%%   <<"PoolId">> => string(),
+%%   <<"ResourceOwnerId">> => string(),
+%%   <<"ResourceRegion">> => string(),
+%%   <<"SampleTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type ipam_discovered_route() :: #{binary() => any()}.
+
+%% Example:
 %% ipam_discovery_failure_reason() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
@@ -15546,6 +15837,36 @@
 %%   <<"TokenValue">> => string()
 %% }
 -type ipam_external_resource_verification_token() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_internet_registry_association() :: #{
+%%   <<"ChildRequestXml">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IpamId">> => string(),
+%%   <<"IpamInternetRegistryAssociationArn">> => string(),
+%%   <<"IpamInternetRegistryAssociationId">> => string(),
+%%   <<"IpamRegion">> => string(),
+%%   <<"OrganizationHandle">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"Rir">> => list(any()),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type ipam_internet_registry_association() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_internet_registry_association_asn() :: #{
+%%   <<"Asn">> => string(),
+%%   <<"LastObservedAt">> => non_neg_integer()
+%% }
+-type ipam_internet_registry_association_asn() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_internet_registry_association_cidr() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"LastObservedAt">> => non_neg_integer()
+%% }
+-type ipam_internet_registry_association_cidr() :: #{binary() => any()}.
 
 %% Example:
 %% ipam_operating_region() :: #{
@@ -15843,6 +16164,73 @@
 %%   <<"Value">> => string()
 %% }
 -type ipam_resource_tag() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_route_origin_authorization() :: #{
+%%   <<"Asn">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"Match">> => boolean(),
+%%   <<"MaxLength">> => integer(),
+%%   <<"Prefix">> => string()
+%% }
+-type ipam_route_origin_authorization() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_route_origin_authorization_info() :: #{
+%%   <<"Asn">> => string(),
+%%   <<"Cidr">> => string(),
+%%   <<"MaxLength">> => integer()
+%% }
+-type ipam_route_origin_authorization_info() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_route_overlap() :: #{
+%%   <<"Asn">> => string(),
+%%   <<"DetectedAt">> => non_neg_integer(),
+%%   <<"Prefix">> => string()
+%% }
+-type ipam_route_overlap() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_route_protection_finding() :: #{
+%%   <<"AdvertisementType">> => list(any()),
+%%   <<"Asn">> => string(),
+%%   <<"Cidr">> => string(),
+%%   <<"IpamPoolId">> => string(),
+%%   <<"NetworkBorderGroup">> => string(),
+%%   <<"PoolId">> => string(),
+%%   <<"ResourceOwnerId">> => string(),
+%%   <<"ResourceRegion">> => string(),
+%%   <<"RoaSampleTime">> => non_neg_integer(),
+%%   <<"Roas">> => list(ipam_route_origin_authorization()),
+%%   <<"RouteOverlaps">> => list(ipam_route_overlap()),
+%%   <<"RpkiStatus">> => list(any()),
+%%   <<"RpkiStrength">> => list(any()),
+%%   <<"SampleTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type ipam_route_protection_finding() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_routing_policy_registration() :: #{
+%%   <<"Asns">> => list(string()),
+%%   <<"Cidr">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LatestDeltaId">> => string(),
+%%   <<"MaxLength">> => integer(),
+%%   <<"PermitMoreSpecificAnnouncements">> => boolean(),
+%%   <<"State">> => list(any())
+%% }
+-type ipam_routing_policy_registration() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_routing_policy_registration_delta() :: #{
+%%   <<"DeltaId">> => string(),
+%%   <<"DeltaJson">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StateMessage">> => string()
+%% }
+-type ipam_routing_policy_registration_delta() :: #{binary() => any()}.
 
 %% Example:
 %% ipam_scope() :: #{
@@ -17425,6 +17813,26 @@
 %%   <<"Ipam">> => ipam()
 %% }
 -type modify_ipam_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_ipam_routing_policy_registration_request() :: #{
+%%   <<"Asns">> := list(string()),
+%%   <<"Cidr">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Force">> => boolean(),
+%%   <<"IpamInternetRegistryAssociationId">> := string(),
+%%   <<"MaxLength">> => integer(),
+%%   <<"PermitMoreSpecificAnnouncements">> => boolean()
+%% }
+-type modify_ipam_routing_policy_registration_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_ipam_routing_policy_registration_result() :: #{
+%%   <<"IpamRoutingPolicyRegistrationDelta">> => ipam_routing_policy_registration_delta()
+%% }
+-type modify_ipam_routing_policy_registration_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_ipam_scope_request() :: #{
@@ -24969,6 +25377,24 @@ authorize_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeSecurityGroupIngress">>, Input, Options).
 
+%% @doc Modifies multiple routing policy registrations in a single operation.
+%%
+%% You can create, update, or delete Route Origin Authorizations (ROAs) in
+%% batch.
+-spec batch_modify_ipam_routing_policy_registrations(aws_client:aws_client(), batch_modify_ipam_routing_policy_registrations_request()) ->
+    {ok, batch_modify_ipam_routing_policy_registrations_result(), tuple()} |
+    {error, any()}.
+batch_modify_ipam_routing_policy_registrations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_modify_ipam_routing_policy_registrations(Client, Input, []).
+
+-spec batch_modify_ipam_routing_policy_registrations(aws_client:aws_client(), batch_modify_ipam_routing_policy_registrations_request(), proplists:proplist()) ->
+    {ok, batch_modify_ipam_routing_policy_registrations_result(), tuple()} |
+    {error, any()}.
+batch_modify_ipam_routing_policy_registrations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchModifyIpamRoutingPolicyRegistrations">>, Input, Options).
+
 %% @doc Bundles an Amazon instance store-backed Windows instance.
 %%
 %% During bundling, only the root device volume (C:\) is bundled. Data on
@@ -25524,7 +25950,7 @@ copy_volumes(Client, Input, Options)
 %% status.
 %%
 %% Default values: `Interval' is 60 seconds, `Timeout' is 6 seconds,
-%% `FailureThreshold' is 2, `SuccessThreshold' is 5,
+%% `FailureThreshold' is 2, `SuccessThreshold' is 2,
 %% `StatusCodeMatcher' is `200',
 %% `InitializationGracePeriodSeconds' is 300 seconds.
 %%
@@ -26315,6 +26741,26 @@ create_ipam_external_resource_verification_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIpamExternalResourceVerificationToken">>, Input, Options).
 
+%% @doc Creates an association between an IPAM and a Regional Internet
+%% Registry (RIR) for Resource Public Key Infrastructure (RPKI) management.
+%%
+%% You can use this association to create Route Origin Authorizations (ROAs)
+%% for IP address prefixes registered with the internet registry. Your IPAM
+%% must be in the Advanced tier to use this feature.
+-spec create_ipam_internet_registry_association(aws_client:aws_client(), create_ipam_internet_registry_association_request()) ->
+    {ok, create_ipam_internet_registry_association_result(), tuple()} |
+    {error, any()}.
+create_ipam_internet_registry_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_ipam_internet_registry_association(Client, Input, []).
+
+-spec create_ipam_internet_registry_association(aws_client:aws_client(), create_ipam_internet_registry_association_request(), proplists:proplist()) ->
+    {ok, create_ipam_internet_registry_association_result(), tuple()} |
+    {error, any()}.
+create_ipam_internet_registry_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIpamInternetRegistryAssociation">>, Input, Options).
+
 %% @doc Creates an IPAM policy.
 %%
 %% An IPAM policy is a set of rules that define how public IPv4 addresses
@@ -26439,6 +26885,22 @@ create_ipam_resource_discovery(Client, Input)
 create_ipam_resource_discovery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIpamResourceDiscovery">>, Input, Options).
+
+%% @doc Creates a routing policy registration and publishes Route Origin
+%% Authorizations (ROAs) to the RPKI for the specified CIDR prefix and ASNs.
+-spec create_ipam_routing_policy_registration(aws_client:aws_client(), create_ipam_routing_policy_registration_request()) ->
+    {ok, create_ipam_routing_policy_registration_result(), tuple()} |
+    {error, any()}.
+create_ipam_routing_policy_registration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_ipam_routing_policy_registration(Client, Input, []).
+
+-spec create_ipam_routing_policy_registration(aws_client:aws_client(), create_ipam_routing_policy_registration_request(), proplists:proplist()) ->
+    {ok, create_ipam_routing_policy_registration_result(), tuple()} |
+    {error, any()}.
+create_ipam_routing_policy_registration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIpamRoutingPolicyRegistration">>, Input, Options).
 
 %% @doc Create an IPAM scope.
 %%
@@ -28866,6 +29328,24 @@ delete_ipam_external_resource_verification_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIpamExternalResourceVerificationToken">>, Input, Options).
 
+%% @doc Deletes an IPAM internet registry association.
+%%
+%% Before deleting, you must remove all routing policy registrations
+%% associated with the internet registry.
+-spec delete_ipam_internet_registry_association(aws_client:aws_client(), delete_ipam_internet_registry_association_request()) ->
+    {ok, delete_ipam_internet_registry_association_result(), tuple()} |
+    {error, any()}.
+delete_ipam_internet_registry_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_ipam_internet_registry_association(Client, Input, []).
+
+-spec delete_ipam_internet_registry_association(aws_client:aws_client(), delete_ipam_internet_registry_association_request(), proplists:proplist()) ->
+    {ok, delete_ipam_internet_registry_association_result(), tuple()} |
+    {error, any()}.
+delete_ipam_internet_registry_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIpamInternetRegistryAssociation">>, Input, Options).
+
 %% @doc Deletes an IPAM policy.
 %%
 %% An IPAM policy is a set of rules that define how public IPv4 addresses
@@ -28975,6 +29455,21 @@ delete_ipam_resource_discovery(Client, Input)
 delete_ipam_resource_discovery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIpamResourceDiscovery">>, Input, Options).
+
+%% @doc Deletes a routing policy registration for a specified CIDR prefix.
+-spec delete_ipam_routing_policy_registration(aws_client:aws_client(), delete_ipam_routing_policy_registration_request()) ->
+    {ok, delete_ipam_routing_policy_registration_result(), tuple()} |
+    {error, any()}.
+delete_ipam_routing_policy_registration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_ipam_routing_policy_registration(Client, Input, []).
+
+-spec delete_ipam_routing_policy_registration(aws_client:aws_client(), delete_ipam_routing_policy_registration_request(), proplists:proplist()) ->
+    {ok, delete_ipam_routing_policy_registration_result(), tuple()} |
+    {error, any()}.
+delete_ipam_routing_policy_registration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIpamRoutingPolicyRegistration">>, Input, Options).
 
 %% @doc Delete the scope for an IPAM.
 %%
@@ -32409,6 +32904,24 @@ describe_ipam_external_resource_verification_tokens(Client, Input)
 describe_ipam_external_resource_verification_tokens(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIpamExternalResourceVerificationTokens">>, Input, Options).
+
+%% @doc Describes one or more IPAM internet registry associations.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+-spec describe_ipam_internet_registry_associations(aws_client:aws_client(), describe_ipam_internet_registry_associations_request()) ->
+    {ok, describe_ipam_internet_registry_associations_result(), tuple()} |
+    {error, any()}.
+describe_ipam_internet_registry_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_ipam_internet_registry_associations(Client, Input, []).
+
+-spec describe_ipam_internet_registry_associations(aws_client:aws_client(), describe_ipam_internet_registry_associations_request(), proplists:proplist()) ->
+    {ok, describe_ipam_internet_registry_associations_result(), tuple()} |
+    {error, any()}.
+describe_ipam_internet_registry_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIpamInternetRegistryAssociations">>, Input, Options).
 
 %% @doc Describes one or more IPAM policies.
 %%
@@ -36352,6 +36865,26 @@ enable_instance_sql_ha_standby_detections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableInstanceSqlHaStandbyDetections">>, Input, Options).
 
+%% @doc Enables Resource Public Key Infrastructure (RPKI) on an existing IPAM
+%% internet registry association by providing BGP Public Key Infrastructure
+%% (BPKI) certificate details.
+%%
+%% After enabling, you can create Route Origin Authorizations (ROAs) for
+%% prefixes registered with the internet registry.
+-spec enable_ipam_internet_registry_association(aws_client:aws_client(), enable_ipam_internet_registry_association_request()) ->
+    {ok, enable_ipam_internet_registry_association_result(), tuple()} |
+    {error, any()}.
+enable_ipam_internet_registry_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_ipam_internet_registry_association(Client, Input, []).
+
+-spec enable_ipam_internet_registry_association(aws_client:aws_client(), enable_ipam_internet_registry_association_request(), proplists:proplist()) ->
+    {ok, enable_ipam_internet_registry_association_result(), tuple()} |
+    {error, any()}.
+enable_ipam_internet_registry_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableIpamInternetRegistryAssociation">>, Input, Options).
+
 %% @doc Enable an Organizations member account as the IPAM admin account.
 %%
 %% You cannot select the Organizations management account as the IPAM admin
@@ -37415,6 +37948,64 @@ get_ipam_discovered_resource_cidrs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIpamDiscoveredResourceCidrs">>, Input, Options).
 
+%% @doc Retrieves Border Gateway Protocol (BGP) routes discovered by IPAM
+%% resource discovery for a specified Region.
+%%
+%% Use this operation to view the Bring Your Own IP (BYOIP) address ranges
+%% that are currently advertised through BGP. We recommend using pagination
+%% to ensure that the operation returns quickly and successfully.
+-spec get_ipam_discovered_routes(aws_client:aws_client(), get_ipam_discovered_routes_request()) ->
+    {ok, get_ipam_discovered_routes_result(), tuple()} |
+    {error, any()}.
+get_ipam_discovered_routes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_discovered_routes(Client, Input, []).
+
+-spec get_ipam_discovered_routes(aws_client:aws_client(), get_ipam_discovered_routes_request(), proplists:proplist()) ->
+    {ok, get_ipam_discovered_routes_result(), tuple()} |
+    {error, any()}.
+get_ipam_discovered_routes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamDiscoveredRoutes">>, Input, Options).
+
+%% @doc Retrieves Autonomous System Numbers (ASNs) registered with an
+%% internet registry for an IPAM internet registry association.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+-spec get_ipam_internet_registry_association_asns(aws_client:aws_client(), get_ipam_internet_registry_association_asns_request()) ->
+    {ok, get_ipam_internet_registry_association_asns_result(), tuple()} |
+    {error, any()}.
+get_ipam_internet_registry_association_asns(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_internet_registry_association_asns(Client, Input, []).
+
+-spec get_ipam_internet_registry_association_asns(aws_client:aws_client(), get_ipam_internet_registry_association_asns_request(), proplists:proplist()) ->
+    {ok, get_ipam_internet_registry_association_asns_result(), tuple()} |
+    {error, any()}.
+get_ipam_internet_registry_association_asns(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamInternetRegistryAssociationAsns">>, Input, Options).
+
+%% @doc Retrieves IP address CIDRs registered with an internet registry for
+%% an IPAM internet registry association.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+-spec get_ipam_internet_registry_association_cidrs(aws_client:aws_client(), get_ipam_internet_registry_association_cidrs_request()) ->
+    {ok, get_ipam_internet_registry_association_cidrs_result(), tuple()} |
+    {error, any()}.
+get_ipam_internet_registry_association_cidrs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_internet_registry_association_cidrs(Client, Input, []).
+
+-spec get_ipam_internet_registry_association_cidrs(aws_client:aws_client(), get_ipam_internet_registry_association_cidrs_request(), proplists:proplist()) ->
+    {ok, get_ipam_internet_registry_association_cidrs_result(), tuple()} |
+    {error, any()}.
+get_ipam_internet_registry_association_cidrs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamInternetRegistryAssociationCidrs">>, Input, Options).
+
 %% @doc Gets the allocation rules for an IPAM policy.
 %%
 %% An IPAM policy is a set of rules that define how public IPv4 addresses
@@ -37614,6 +38205,85 @@ get_ipam_resource_cidrs(Client, Input)
 get_ipam_resource_cidrs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIpamResourceCidrs">>, Input, Options).
+
+%% @doc Retrieves the current Route Origin Authorizations (ROAs) published to
+%% the RPKI for an IPAM internet registry association.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+-spec get_ipam_route_origin_authorizations(aws_client:aws_client(), get_ipam_route_origin_authorizations_request()) ->
+    {ok, get_ipam_route_origin_authorizations_result(), tuple()} |
+    {error, any()}.
+get_ipam_route_origin_authorizations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_route_origin_authorizations(Client, Input, []).
+
+-spec get_ipam_route_origin_authorizations(aws_client:aws_client(), get_ipam_route_origin_authorizations_request(), proplists:proplist()) ->
+    {ok, get_ipam_route_origin_authorizations_result(), tuple()} |
+    {error, any()}.
+get_ipam_route_origin_authorizations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamRouteOriginAuthorizations">>, Input, Options).
+
+%% @doc Retrieves route protection findings for an IPAM.
+%%
+%% Route protection findings show the Resource Public Key Infrastructure
+%% (RPKI) validation status of your Bring Your Own IP (BYOIP) routes.
+%% Findings identify routes that have valid, invalid, or unknown validation
+%% states. We recommend using pagination to ensure that the operation returns
+%% quickly and successfully.
+-spec get_ipam_route_protection_findings(aws_client:aws_client(), get_ipam_route_protection_findings_request()) ->
+    {ok, get_ipam_route_protection_findings_result(), tuple()} |
+    {error, any()}.
+get_ipam_route_protection_findings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_route_protection_findings(Client, Input, []).
+
+-spec get_ipam_route_protection_findings(aws_client:aws_client(), get_ipam_route_protection_findings_request(), proplists:proplist()) ->
+    {ok, get_ipam_route_protection_findings_result(), tuple()} |
+    {error, any()}.
+get_ipam_route_protection_findings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamRouteProtectionFindings">>, Input, Options).
+
+%% @doc Retrieves the history of routing policy registration changes for an
+%% IPAM internet registry association.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+-spec get_ipam_routing_policy_registration_deltas(aws_client:aws_client(), get_ipam_routing_policy_registration_deltas_request()) ->
+    {ok, get_ipam_routing_policy_registration_deltas_result(), tuple()} |
+    {error, any()}.
+get_ipam_routing_policy_registration_deltas(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_routing_policy_registration_deltas(Client, Input, []).
+
+-spec get_ipam_routing_policy_registration_deltas(aws_client:aws_client(), get_ipam_routing_policy_registration_deltas_request(), proplists:proplist()) ->
+    {ok, get_ipam_routing_policy_registration_deltas_result(), tuple()} |
+    {error, any()}.
+get_ipam_routing_policy_registration_deltas(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamRoutingPolicyRegistrationDeltas">>, Input, Options).
+
+%% @doc Retrieves routing policy registrations for an IPAM internet registry
+%% association.
+%%
+%% Each registration represents a Route Origin Authorization (ROA) that has
+%% been created or is pending publication to the RPKI. We recommend using
+%% pagination to ensure that the operation returns quickly and successfully.
+-spec get_ipam_routing_policy_registrations(aws_client:aws_client(), get_ipam_routing_policy_registrations_request()) ->
+    {ok, get_ipam_routing_policy_registrations_result(), tuple()} |
+    {error, any()}.
+get_ipam_routing_policy_registrations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_routing_policy_registrations(Client, Input, []).
+
+-spec get_ipam_routing_policy_registrations(aws_client:aws_client(), get_ipam_routing_policy_registrations_request(), proplists:proplist()) ->
+    {ok, get_ipam_routing_policy_registrations_result(), tuple()} |
+    {error, any()}.
+get_ipam_routing_policy_registrations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamRoutingPolicyRegistrations">>, Input, Options).
 
 %% @doc Retrieves the configuration data of the specified instance.
 %%
@@ -39489,6 +40159,24 @@ modify_ipam_resource_discovery(Client, Input)
 modify_ipam_resource_discovery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyIpamResourceDiscovery">>, Input, Options).
+
+%% @doc Modifies an existing routing policy registration.
+%%
+%% You can update the authorized ASNs, maximum prefix length, and other
+%% properties of a Route Origin Authorization (ROA).
+-spec modify_ipam_routing_policy_registration(aws_client:aws_client(), modify_ipam_routing_policy_registration_request()) ->
+    {ok, modify_ipam_routing_policy_registration_result(), tuple()} |
+    {error, any()}.
+modify_ipam_routing_policy_registration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_ipam_routing_policy_registration(Client, Input, []).
+
+-spec modify_ipam_routing_policy_registration(aws_client:aws_client(), modify_ipam_routing_policy_registration_request(), proplists:proplist()) ->
+    {ok, modify_ipam_routing_policy_registration_result(), tuple()} |
+    {error, any()}.
+modify_ipam_routing_policy_registration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyIpamRoutingPolicyRegistration">>, Input, Options).
 
 %% @doc Modify an IPAM scope.
 -spec modify_ipam_scope(aws_client:aws_client(), modify_ipam_scope_request()) ->

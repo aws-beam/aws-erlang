@@ -172,7 +172,8 @@
 
 %% Example:
 %% ad_decision_server_configuration() :: #{
-%%   <<"HttpRequest">> => http_request()
+%%   <<"HttpRequest">> => http_request(),
+%%   <<"VastResponse">> => vast_response()
 %% }
 -type ad_decision_server_configuration() :: #{binary() => any()}.
 
@@ -1052,6 +1053,7 @@
 
 %% Example:
 %% live_pre_roll_configuration() :: #{
+%%   <<"AdDecisionServerConfiguration">> => pre_roll_ad_decision_server_configuration(),
 %%   <<"AdDecisionServerUrl">> => string(),
 %%   <<"MaxDurationSeconds">> => integer()
 %% }
@@ -1149,6 +1151,20 @@
 %%   <<"VideoContentSourceUrl">> => string()
 %% }
 -type playback_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% pre_roll_ad_decision_server_configuration() :: #{
+%%   <<"VastResponse">> => pre_roll_vast_response()
+%% }
+-type pre_roll_ad_decision_server_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% pre_roll_vast_response() :: #{
+%%   <<"AdSequencingMode">> => list(any())
+%% }
+-type pre_roll_vast_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1650,6 +1666,13 @@
 %%   <<"VodSourceName">> => string()
 %% }
 -type update_vod_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% vast_response() :: #{
+%%   <<"AdSequencingMode">> => list(any())
+%% }
+-type vast_response() :: #{binary() => any()}.
 
 
 %% Example:

@@ -335,6 +335,7 @@
 %%   <<"OriginEndpointName">> := string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"StreamNameOutputMode">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"UriSeparator">> => list(any())
 %% }
@@ -359,6 +360,7 @@
 %%   <<"OriginEndpointName">> => string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"StreamNameOutputMode">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"UriSeparator">> => list(any())
 %% }
@@ -715,6 +717,7 @@
 %%   <<"ResetAt">> => [non_neg_integer()],
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"StreamNameOutputMode">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"UriSeparator">> => list(any())
 %% }
@@ -929,6 +932,7 @@
 %%   <<"ModifiedAt">> => [non_neg_integer()],
 %%   <<"MssManifests">> => list(list_mss_manifest_configuration()),
 %%   <<"OriginEndpointName">> => string(),
+%%   <<"StreamNameOutputMode">> => list(any()),
 %%   <<"UriSeparator">> => list(any())
 %% }
 -type origin_endpoint_list_configuration() :: #{binary() => any()}.
@@ -1159,6 +1163,7 @@
 %%   <<"MssManifests">> => list(create_mss_manifest_configuration()),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"StreamNameOutputMode">> => list(any()),
 %%   <<"UriSeparator">> => list(any())
 %% }
 -type update_origin_endpoint_request() :: #{binary() => any()}.
@@ -1182,6 +1187,7 @@
 %%   <<"OriginEndpointName">> => string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
+%%   <<"StreamNameOutputMode">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"UriSeparator">> => list(any())
 %% }

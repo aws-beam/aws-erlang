@@ -217,7 +217,9 @@
 %% actor() :: #{
 %%   <<"authentication">> => authentication(),
 %%   <<"description">> => [string()],
+%%   <<"enableEmailMfa">> => [boolean()],
 %%   <<"identifier">> => [string()],
+%%   <<"mfaForwardingAddress">> => string(),
 %%   <<"uris">> => list([string()]())
 %% }
 -type actor() :: #{binary() => any()}.
