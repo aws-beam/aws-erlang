@@ -4607,7 +4607,8 @@
 %%   <<"PasswordParam">> => string(),
 %%   <<"StreamName">> => string(),
 %%   <<"Url">> => string(),
-%%   <<"Username">> => string()
+%%   <<"Username">> => string(),
+%%   <<"VirtualSourceAddress">> => string()
 %% }
 -type output_destination_settings() :: #{binary() => any()}.
 

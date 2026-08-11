@@ -42,6 +42,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         search_fixtures/2,
+         search_fixtures/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -89,9 +91,18 @@
 
 %% Example:
 %% clipping_config() :: #{
-%%   <<"callbackMetadata">> => string()
+%%   <<"callbackMetadata">> => string(),
+%%   <<"dataSourceConfiguration">> => data_source_configuration()
 %% }
 -type clipping_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% competitor() :: #{
+%%   <<"isHome">> => [boolean()],
+%%   <<"name">> => [string()]
+%% }
+-type competitor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -163,6 +174,13 @@
 %%   <<"templateGroups">> => list(template_group())
 %% }
 -type cropping_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_source_configuration() :: #{
+%%   <<"fixtureId">> => string()
+%% }
+-type data_source_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_dictionary_request() :: #{}
@@ -245,6 +263,25 @@
 %%   <<"status">> => list(any())
 %% }
 -type feed_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% fixture_summary() :: #{
+%%   <<"competitors">> => list(competitor()),
+%%   <<"fixtureGroup">> => [string()],
+%%   <<"fixtureId">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"scheduledStart">> => [non_neg_integer()],
+%%   <<"status">> => [string()]
+%% }
+-type fixture_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_timed_out_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type gateway_timed_out_exception() :: #{binary() => any()}.
 
 %% Example:
 %% get_dictionary_request() :: #{}
@@ -351,10 +388,45 @@
 
 
 %% Example:
+%% search_filter() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_fixtures_request() :: #{
+%%   <<"endDate">> => string(),
+%%   <<"filters">> => list(search_filter()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"sport">> := list(any()),
+%%   <<"startDate">> := string()
+%% }
+-type search_fixtures_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_fixtures_response() :: #{
+%%   <<"fixtures">> => list(fixture_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type search_fixtures_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -545,6 +617,14 @@
     too_many_request_exception() | 
     resource_not_found_exception() | 
     internal_server_error_exception() | 
+    access_denied_exception().
+
+-type search_fixtures_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    gateway_timed_out_exception() | 
     access_denied_exception().
 
 -type tag_resource_errors() ::
@@ -1069,6 +1149,47 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Searches for the fixtures (sports events, such as a specific
+%% basketball game) that are available for a sport in a date window.
+%%
+%% Each fixture in the response includes a fixtureId that you specify in the
+%% clipping output of a feed, so that Elemental Inference maps the event data
+%% for that fixture onto the clipping metadata. This operation is paginated:
+%% if there are more fixtures than fit in one page, the response includes a
+%% nextToken that you pass in a subsequent request.
+-spec search_fixtures(aws_client:aws_client(), search_fixtures_request()) ->
+    {ok, search_fixtures_response(), tuple()} |
+    {error, any()} |
+    {error, search_fixtures_errors(), tuple()}.
+search_fixtures(Client, Input) ->
+    search_fixtures(Client, Input, []).
+
+-spec search_fixtures(aws_client:aws_client(), search_fixtures_request(), proplists:proplist()) ->
+    {ok, search_fixtures_response(), tuple()} |
+    {error, any()} |
+    {error, search_fixtures_errors(), tuple()}.
+search_fixtures(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/fixtures"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates the specified tags to the resource identified by the
 %% specified resourceArn in the current region.

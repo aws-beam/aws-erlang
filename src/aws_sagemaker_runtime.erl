@@ -70,6 +70,7 @@
 %%   <<"EnableExplanations">> => string(),
 %%   <<"InferenceComponentName">> => string(),
 %%   <<"InferenceId">> => string(),
+%%   <<"PrefixAwareId">> => string(),
 %%   <<"SessionId">> => string(),
 %%   <<"TargetContainerHostname">> => string(),
 %%   <<"TargetModel">> => string(),
@@ -98,6 +99,7 @@
 %%   <<"CustomAttributes">> => string(),
 %%   <<"InferenceComponentName">> => string(),
 %%   <<"InferenceId">> => string(),
+%%   <<"PrefixAwareId">> => string(),
 %%   <<"SessionId">> => string(),
 %%   <<"TargetContainerHostname">> => string(),
 %%   <<"TargetVariant">> => string()
@@ -249,6 +251,7 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
                        {<<"X-Amzn-SageMaker-Enable-Explanations">>, <<"EnableExplanations">>},
                        {<<"X-Amzn-SageMaker-Inference-Component">>, <<"InferenceComponentName">>},
                        {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
+                       {<<"X-Amzn-SageMaker-Prefix-Aware-Id">>, <<"PrefixAwareId">>},
                        {<<"X-Amzn-SageMaker-Session-Id">>, <<"SessionId">>},
                        {<<"X-Amzn-SageMaker-Target-Container-Hostname">>, <<"TargetContainerHostname">>},
                        {<<"X-Amzn-SageMaker-Target-Model">>, <<"TargetModel">>},
@@ -441,6 +444,7 @@ invoke_endpoint_with_response_stream(Client, EndpointName, Input0, Options0) ->
                        {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
                        {<<"X-Amzn-SageMaker-Inference-Component">>, <<"InferenceComponentName">>},
                        {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
+                       {<<"X-Amzn-SageMaker-Prefix-Aware-Id">>, <<"PrefixAwareId">>},
                        {<<"X-Amzn-SageMaker-Session-Id">>, <<"SessionId">>},
                        {<<"X-Amzn-SageMaker-Target-Container-Hostname">>, <<"TargetContainerHostname">>},
                        {<<"X-Amzn-SageMaker-Target-Variant">>, <<"TargetVariant">>}

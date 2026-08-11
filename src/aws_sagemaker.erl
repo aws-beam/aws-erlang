@@ -11762,6 +11762,13 @@
 -type predefined_metric_specification() :: #{binary() => any()}.
 
 %% Example:
+%% prefix_aware_routing_config() :: #{
+%%   <<"ConcurrencyThreshold">> => integer(),
+%%   <<"PrefixLength">> => integer()
+%% }
+-type prefix_aware_routing_config() :: #{binary() => any()}.
+
+%% Example:
 %% presigned_url_access_config() :: #{
 %%   <<"AcceptEula">> => boolean(),
 %%   <<"ExpectedS3Url">> => string()
@@ -11959,6 +11966,7 @@
 
 %% Example:
 %% production_variant_routing_config() :: #{
+%%   <<"PrefixAwareRoutingConfig">> => prefix_aware_routing_config(),
 %%   <<"RoutingStrategy">> => list(any())
 %% }
 -type production_variant_routing_config() :: #{binary() => any()}.
